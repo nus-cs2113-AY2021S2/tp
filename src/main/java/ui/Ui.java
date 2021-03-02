@@ -39,4 +39,8 @@ public class Ui {
         }
         System.out.println(LINESPACING);
     }
+
+    public void showError() {
+        System.out.println("Error with input");
+    }
 }

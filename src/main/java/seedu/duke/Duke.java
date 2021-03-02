@@ -17,8 +17,9 @@ public class Duke {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        storage = new Storage(filePath);
         ui = new Ui();
+        ui.showWelcome();
+        storage = new Storage(filePath);
         canteens = storage.load();
         echo();
     }
@@ -32,6 +33,8 @@ public class Duke {
                 displayStores();
             } else if(parsedCommand[0].equals("exit")) {
                 isExit = true;
+            } else {
+                ui.showError();
             }
         }
         ui.showGoodbye();

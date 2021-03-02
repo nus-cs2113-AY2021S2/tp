@@ -14,6 +14,7 @@ public class Storage {
 
     public Storage(String filePath) {
         this.filePath = filePath;
+        this.canteens = new ArrayList<>();
     }
 
     public static ArrayList<Canteen> load() {
@@ -28,8 +29,22 @@ public class Storage {
     }
 
     private static void readFiles(Scanner fileReader) {
+        Canteen canteen = null;
+        Store store = null;
         while(fileReader.hasNextLine()) {
-            return;
+            String line = fileReader.nextLine();
+            String[] storedLine = line.split("<>");
+            if (storedLine[0].equals("canteen")) {
+                canteen = new Canteen(storedLine[1]);
+                canteens.add(canteen);
+            } else if (storedLine[0].equals("store")) {
+                store = new Store(storedLine[1]);
+                canteen.getStores().add(store);
+            } else if (storedLine[0].equals("menu")) {
+                store.getMenus().add(storedLine[1]);
+            } else {
+                continue;
+            }
         }
     }
 }

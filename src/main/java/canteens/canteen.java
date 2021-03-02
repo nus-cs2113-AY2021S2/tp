@@ -13,6 +13,7 @@ public class Canteen {
 
     public Canteen(String canteenName) {
         this.canteenName = canteenName;
+        stores = new ArrayList<>();
     }
 
     public void displayCanteen() {
