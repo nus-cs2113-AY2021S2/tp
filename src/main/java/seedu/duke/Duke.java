@@ -1,21 +1,56 @@
 package seedu.duke;
 
+import seedu.duke.commands.Command;
+import seedu.duke.parser.Parser;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.UI;
+
 import java.util.Scanner;
 
 public class Duke {
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
-    public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    private static final UI ui = new UI();
+    private static final Storage storage = new Storage();
+
+    public static void main(String[] args) {
+
+        //start and load
+        start();
+
+        //receive user input
+        run();
+
+        //exit
+        exit();
+    }
+
+    private static void start() {
+        //print welcome
+        ui.printWelcome();
+
+        //load data from file
+        storage.loadData();
+    }
+
+    private static void run() {
+        Boolean isExit = false;
+
+        //loop
+        while (!isExit) {
+            //scan
+
+            //parse
+            Parser parser = new Parser();
+            Command command = parser.parse(input);
+
+            //execute
+            isExit = command.execute();
+        }
+
+    }
+
+    private static void exit() {
+        //print exit message
+        ui.printBye();
     }
 }
