@@ -5,12 +5,11 @@ import seedu.duke.parser.Parser;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 
-import java.util.Scanner;
-
 public class Duke {
 
     private static final UI ui = new UI();
     private static final Storage storage = new Storage();
+    private static final Parser parser = new Parser();
 
     public static void main(String[] args) {
 
@@ -40,7 +39,6 @@ public class Duke {
             //scan
 
             //parse
-            Parser parser = new Parser();
             Command command = parser.parse(input);
 
             //execute
