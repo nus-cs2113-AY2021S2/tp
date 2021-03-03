@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# allow permissions to use
-
 # change to script directory
 cd "${0%/*}"
 
