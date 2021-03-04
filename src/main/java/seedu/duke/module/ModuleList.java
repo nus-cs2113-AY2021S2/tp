@@ -8,8 +8,9 @@ public class ModuleList {
 
     private static final Storage storage = new Storage();
 
-    public static ArrayList<String> moduleList;
-    public static Module selectedModule;
+    public static ArrayList<String> moduleList = new ArrayList<>();
+    public static Module selectedModule = null;
+    
 
     public static boolean setSelectedModule(String name) {
         if (!moduleList.contains(name)) {
