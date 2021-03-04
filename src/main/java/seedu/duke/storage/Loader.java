@@ -11,7 +11,6 @@ import seedu.duke.task.Task;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -163,7 +162,7 @@ public class Loader {
             return;
         }
         String description = fields[Constants.INDEX_DESCRIPTION].trim();
-        LocalDateTime deadline = getDeadline(fields[Constants.INDEX_DEADLINE].trim());
+        LocalDate deadline = getDeadline(fields[Constants.INDEX_DEADLINE].trim());
         if (deadline == null) {
             //Invalid deadline
             return;
@@ -185,11 +184,11 @@ public class Loader {
      * @param input String of deadline.
      * @return Deadline in LocalDateTime.
      */
-    private LocalDateTime getDeadline(String input) {
+    private LocalDate getDeadline(String input) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
             LocalDate deadline = LocalDate.parse(input, formatter);
-            return deadline.atStartOfDay();
+            return deadline;
         } catch (DateTimeParseException e) {
             //invalid deadline
             return null;

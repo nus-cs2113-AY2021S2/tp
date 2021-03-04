@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Writer {
@@ -194,7 +194,7 @@ public class Writer {
      * @param deadline LocalDateTime to convert.
      * @return String of deadline.
      */
-    private String getDeadlineString(LocalDateTime deadline) {
+    private String getDeadlineString(LocalDate deadline) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
         return deadline.format(formatter);
     }

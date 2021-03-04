@@ -1,16 +1,16 @@
 package seedu.duke.task;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Task {
 
-    private String description = "";
-    private String remarks = "";
-    private LocalDateTime deadline;
-    private Boolean isDone = false;
-    private Boolean isGraded = false;
+    private String description;
+    private String remarks;
+    private LocalDate deadline;
+    private Boolean isDone;
+    private Boolean isGraded;
 
-    public Task(String description, String remarks, LocalDateTime deadline, Boolean isDone, Boolean isGraded) {
+    public Task(String description, String remarks, LocalDate deadline, Boolean isDone, Boolean isGraded) {
         this.description = description;
         this.remarks = remarks;
         this.deadline = deadline;
@@ -26,7 +26,7 @@ public class Task {
         return remarks;
     }
 
-    public LocalDateTime getDeadline() {
+    public LocalDate getDeadline() {
         return deadline;
     }
 
@@ -46,7 +46,7 @@ public class Task {
         this.remarks = remarks;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
     }
 
