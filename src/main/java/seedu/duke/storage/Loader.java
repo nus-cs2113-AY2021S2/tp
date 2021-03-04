@@ -50,6 +50,7 @@ public class Loader {
             Scanner scanner = new Scanner(path);
             readTillLine(scanner);
             readData(scanner, module);
+            scanner.close();
         } catch (FileNotFoundException e) {
             //Unable to find file, return null
             return null;

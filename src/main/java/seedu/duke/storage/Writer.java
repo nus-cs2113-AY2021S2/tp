@@ -22,6 +22,7 @@ public class Writer {
 
     /**
      * Creates file for new module.
+     *
      * @param name Module name, excluding ".txt".
      */
     public void createFile(String name) {
@@ -42,9 +43,26 @@ public class Writer {
         }
     }
 
+    /**
+     * Deletes specified file.
+     * Returns true if deleted, or file does not exist, false if unable to delete.
+     *
+     * @param name Module name, excluding ".txt".
+     * @return True if file is gone, false if file is still around.
+     */
+    public boolean deleteFile(String name) {
+        String fileName = name + Constants.FILE_FORMAT;
+        File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+        if (path.exists()){
+            return path.delete();
+        }
+        return true;
+    }
+
 
     /**
      * Creates directory if it does not exist.
+     *
      * @throws IOException Unable to create directory.
      */
     private void checkForDirectory() throws IOException {

@@ -34,6 +34,23 @@ public class ModuleList {
 
 
     /**
+     * Removes selected module and deletes module file.
+     *
+     * @param index index of module to remove.
+     */
+    public static void removeModule(int index) {
+        if (index < 0 || index >= moduleList.size()) {
+            return;
+        }
+        if (writer.deleteFile(moduleList.get(index))) {
+            moduleList.remove(index);
+        } else {
+            //Unable to remove
+        }
+    }
+
+
+    /**
      * Loads the current module from storage.
      *
      * @param name Module name, excluding ".txt".
