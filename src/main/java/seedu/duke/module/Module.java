@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class Module {
 
     private final String MODULE_CODE;
-    public final ArrayList<Lesson> lessonList = new ArrayList<>();
-    public final ArrayList<Task> taskList = new ArrayList<>();
+    private final ArrayList<Lesson> lessonList = new ArrayList<>();
+    private final ArrayList<Task> taskList = new ArrayList<>();
 
     public Module(String moduleCode) {
         MODULE_CODE = moduleCode;
@@ -17,5 +17,21 @@ public class Module {
 
     public String getModuleCode() {
         return MODULE_CODE;
+    }
+
+    public ArrayList<Lesson> getLessonList() {
+        return lessonList;
+    }
+
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
+
+    public void addLesson(Lesson lesson) {
+        lessonList.add(lesson);
+    }
+
+    public void addTask(Task task) {
+        taskList.add(task);
     }
 }

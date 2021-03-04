@@ -3,6 +3,7 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.parser.Parser;
 import seedu.duke.storage.Loader;
+import seedu.duke.storage.Writer;
 import seedu.duke.ui.UI;
 
 public class Duke {
@@ -10,6 +11,7 @@ public class Duke {
     private static final UI ui = new UI();
     private static final Parser parser = new Parser();
     private static final Loader loader = new Loader();
+    private static final Writer writer = new Writer();
 
     public static void main(String[] args) {
 
@@ -37,6 +39,7 @@ public class Duke {
         //Loop
         while (!isExit) {
             //Scan
+
 
             //Parse
             Command command = parser.parse(input);

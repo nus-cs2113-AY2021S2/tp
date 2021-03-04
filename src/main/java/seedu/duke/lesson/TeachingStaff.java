@@ -2,8 +2,8 @@ package seedu.duke.lesson;
 
 public class TeachingStaff {
 
-    private final String name;
-    private final String email;
+    private String name;
+    private String email;
 
     public TeachingStaff(String name, String email) {
         this.name = name;
@@ -16,5 +16,13 @@ public class TeachingStaff {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

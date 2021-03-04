@@ -43,6 +43,7 @@ public class Writer {
         }
     }
 
+
     /**
      * Deletes specified file.
      * Returns true if deleted, or file does not exist, false if unable to delete.
@@ -75,6 +76,7 @@ public class Writer {
 
 
     /**
+     * Updates changes to module in file.
      * Writes module instructions and data to module file.
      */
     public void writeModule() {
@@ -130,8 +132,8 @@ public class Writer {
      * @param module Selected module.
      * @throws IOException Unable to write to file.
      */
-    public void writeLessons(FileWriter fileWriter, Module module) throws IOException {
-        for (Lesson lesson : module.lessonList) {
+    private void writeLessons(FileWriter fileWriter, Module module) throws IOException {
+        for (Lesson lesson : module.getLessonList()) {
             String entry = Constants.KEYWORD_LESSON;
             entry += getLessonTypeString(lesson.getLessonType()) + Constants.DIVIDER_WRITE;
             entry += lesson.getTime() + Constants.DIVIDER_WRITE;
@@ -150,8 +152,8 @@ public class Writer {
      * @param module Selected module.
      * @throws IOException Unable to write to file.
      */
-    public void writeTasks(FileWriter fileWriter, Module module) throws IOException {
-        for (Task task : module.taskList) {
+    private void writeTasks(FileWriter fileWriter, Module module) throws IOException {
+        for (Task task : module.getTaskList()) {
             String entry = Constants.KEYWORD_TASK;
             entry += task.getDescription() + Constants.DIVIDER_WRITE;
             entry += getDeadlineString(task.getDeadline()) + Constants.DIVIDER_WRITE;

@@ -2,6 +2,11 @@ package seedu.duke.common;
 
 public class Messages {
 
+    //Main
+    public static final String MESSAGE_WELCOME = "";
+    public static final String MESSAGE_EXIT = "";
+
+
     //Storage
     public static final String FILE_INSTRUCTIONS = " Data File\n\n"
             + "Note for editing:\n"

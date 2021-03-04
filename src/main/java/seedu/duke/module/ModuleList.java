@@ -7,9 +7,6 @@ import java.util.ArrayList;
 
 public class ModuleList {
 
-    private static final Loader loader = new Loader();
-    private static final Writer writer = new Writer();
-
     private static final ArrayList<String> moduleList = new ArrayList<>();
     public static Module selectedModule;
 
@@ -19,17 +16,28 @@ public class ModuleList {
 
 
     /**
-     * Adds a new module to the moduleFileList.
+     * Adds a new module to the moduleList and add create file for new module.
+     *
+     * @param name Module name, excluding ".txt".
+     * @param writer Instance of Writer class.
+     */
+    public static void createModule(String name, Writer writer) {
+        insertModule(name);
+        writer.createFile(name);
+    }
+
+
+    /**
+     * Adds a module to the moduleList.
      *
      * @param name Module name, excluding ".txt".
      */
-    public static void addModule(String name) {
+    public static void insertModule(String name) {
         if (moduleList.contains(name)) {
             //Error, module already exists
             return;
         }
         moduleList.add(name);
-        writer.createFile(name);
     }
 
 
@@ -38,7 +46,7 @@ public class ModuleList {
      *
      * @param index index of module to remove.
      */
-    public static void removeModule(int index) {
+    public static void removeModule(int index, Writer writer) {
         if (index < 0 || index >= moduleList.size()) {
             return;
         }
@@ -56,7 +64,7 @@ public class ModuleList {
      * @param name Module name, excluding ".txt".
      * @return True if successful, false if unable to find file.
      */
-    public static boolean setSelectedModule(String name) {
+    public static boolean setSelectedModule(String name, Loader loader) {
         if (!moduleList.contains(name)) {
             //Unable to find file
             return false;

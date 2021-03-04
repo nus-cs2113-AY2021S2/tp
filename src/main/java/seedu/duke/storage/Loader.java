@@ -11,6 +11,7 @@ import seedu.duke.task.Task;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
@@ -30,7 +31,7 @@ public class Loader {
         for (File file : files) {
             String name = file.getName();
             if (name.endsWith(Constants.FILE_FORMAT)) {
-                ModuleList.addModule(name.replace(Constants.FILE_FORMAT, ""));
+                ModuleList.insertModule(name.replace(Constants.FILE_FORMAT, ""));
             }
         }
     }
@@ -110,17 +111,18 @@ public class Loader {
             //Invalid lesson type
             return;
         }
-        Lesson lesson = new Lesson(lessonType);
-        lesson.setTime(fields[Constants.INDEX_DAY_TIME].trim());
+        String time = fields[Constants.INDEX_DAY_TIME].trim();
+        String link = "";
         if (fields.length >= Constants.ENTRY_LESSON_MEDIUM) {
-            lesson.setOnlineLink(fields[Constants.INDEX_LINK].trim());
+            link = fields[Constants.INDEX_LINK].trim();
         }
+        TeachingStaff teachingStaff = new TeachingStaff("","");
         if (fields.length == Constants.ENTRY_LESSON_LONG) {
-            String name = fields[Constants.INDEX_TEACHER_NAME].trim();
-            String email = fields[Constants.INDEX_TEACHER_EMAIL].trim();
-            lesson.setTeachingStaff(new TeachingStaff(name, email));
+            teachingStaff.setName(fields[Constants.INDEX_TEACHER_NAME].trim());
+            teachingStaff.setEmail(fields[Constants.INDEX_TEACHER_EMAIL].trim());
         }
-        module.lessonList.add(lesson);
+        Lesson lesson = new Lesson(lessonType, time, link, teachingStaff);
+        module.addLesson(lesson);
     }
 
 
@@ -160,37 +162,37 @@ public class Loader {
             //Invalid format
             return;
         }
-        Task task = new Task();
-        task.setDescription(fields[Constants.INDEX_DESCRIPTION].trim());
-        if (!setDeadline(task, fields[Constants.INDEX_DEADLINE].trim())) {
+        String description = fields[Constants.INDEX_DESCRIPTION].trim();
+        LocalDateTime deadline = getDeadline(fields[Constants.INDEX_DEADLINE].trim());
+        if (deadline == null) {
             //Invalid deadline
             return;
         }
-        task.setDone(getTrueFalse(fields[Constants.INDEX_IS_DONE].trim()));
-        task.setGraded(getTrueFalse(fields[Constants.INDEX_IS_GRADED].trim()));
+        boolean isDone = getTrueFalse(fields[Constants.INDEX_IS_DONE].trim());
+        boolean isGraded = getTrueFalse(fields[Constants.INDEX_IS_GRADED].trim());
+        String remarks = "";
         if (fields.length == Constants.ENTRY_TASK_LONG) {
-            task.setRemarks(fields[Constants.INDEX_REMARKS].trim());
+            remarks = fields[Constants.INDEX_REMARKS].trim();
         }
-        module.taskList.add(task);
+        Task task = new Task(description, remarks, deadline, isDone, isGraded);
+        module.addTask(task);
     }
 
 
     /**
-     * Sets deadline of task.
+     * Returns deadline of task.
      *
-     * @param task Task to modify.
      * @param input String of deadline.
-     * @return True if deadline is valid, false if invalid.
+     * @return Deadline in LocalDateTime.
      */
-    private boolean setDeadline(Task task, String input) {
+    private LocalDateTime getDeadline(String input) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
             LocalDate deadline = LocalDate.parse(input, formatter);
-            task.setDeadline(deadline.atStartOfDay());
-            return true;
+            return deadline.atStartOfDay();
         } catch (DateTimeParseException e) {
             //invalid deadline
-            return false;
+            return null;
         }
     }
 
