@@ -8,6 +8,9 @@
 .project
 .classpath
 
+# eclipse files
+/.settings
+
 # Gradle build files
 /.gradle/
 /build/
