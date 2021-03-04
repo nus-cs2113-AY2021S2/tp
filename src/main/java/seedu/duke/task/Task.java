@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 
 public class Task {
 
-    private String description;
-    private String remarks;
+    private String description = "";
+    private String remarks = "";
     private LocalDateTime deadline;
-    private Boolean isDone;
-    private Boolean isGraded;
+    private Boolean isDone = false;
+    private Boolean isGraded = false;
 
     public String getDescription() {
         return description;

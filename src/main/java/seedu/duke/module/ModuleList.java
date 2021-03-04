@@ -1,25 +1,57 @@
 package seedu.duke.module;
 
-import seedu.duke.storage.Storage;
+import seedu.duke.storage.Loader;
+import seedu.duke.storage.Writer;
 
 import java.util.ArrayList;
 
 public class ModuleList {
 
-    private static final Storage storage = new Storage();
+    private static final Loader loader = new Loader();
+    private static final Writer writer = new Writer();
 
-    public static ArrayList<String> moduleList;
+    private static final ArrayList<String> moduleList = new ArrayList<>();
     public static Module selectedModule;
 
+    public static ArrayList<String> getModuleList() {
+        return moduleList;
+    }
+
+
+    /**
+     * Adds a new module to the moduleFileList.
+     *
+     * @param name Module name, excluding ".txt".
+     */
+    public static void addModule(String name) {
+        if (moduleList.contains(name)) {
+            //Error, module already exists
+            return;
+        }
+        moduleList.add(name);
+        writer.createFile(name);
+    }
+
+
+    /**
+     * Loads the current module from storage.
+     *
+     * @param name Module name, excluding ".txt".
+     * @return True if successful, false if unable to find file.
+     */
     public static boolean setSelectedModule(String name) {
         if (!moduleList.contains(name)) {
-            //unable to find
+            //Unable to find file
             return false;
         }
-        selectedModule = storage.loadModule(name);
+        selectedModule = loader.loadModule(name);
         return true;
     }
 
+
+    /**
+     * Resets selected module by setting it to null.
+     */
     public static void reset() {
         selectedModule = null;
     }

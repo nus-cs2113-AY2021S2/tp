@@ -2,53 +2,53 @@ package seedu.duke;
 
 import seedu.duke.commands.Command;
 import seedu.duke.parser.Parser;
-import seedu.duke.storage.Storage;
+import seedu.duke.storage.Loader;
 import seedu.duke.ui.UI;
 
 public class Duke {
 
     private static final UI ui = new UI();
-    private static final Storage storage = new Storage();
     private static final Parser parser = new Parser();
+    private static final Loader loader = new Loader();
 
     public static void main(String[] args) {
 
-        //start and load
+        //Start and load
         start();
 
-        //receive user input
+        //Receive user input
         run();
 
-        //exit
+        //Exit
         exit();
     }
 
     private static void start() {
-        //print welcome
+        //Print welcome
         ui.printWelcome();
 
-        //load data from file
-        storage.loadData();
+        //Load module names
+        loader.loadModuleNames();
     }
 
     private static void run() {
         Boolean isExit = false;
 
-        //loop
+        //Loop
         while (!isExit) {
-            //scan
+            //Scan
 
-            //parse
+            //Parse
             Command command = parser.parse(input);
 
-            //execute
+            //Execute
             isExit = command.execute();
         }
 
     }
 
     private static void exit() {
-        //print exit message
+        //Print exit message
         ui.printBye();
     }
 }

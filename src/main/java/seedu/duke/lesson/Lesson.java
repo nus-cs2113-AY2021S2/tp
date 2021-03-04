@@ -2,10 +2,10 @@ package seedu.duke.lesson;
 
 public class Lesson {
 
-    private String time;
+    private String time = "";
     private final LessonType LESSON_TYPE;
-    private TeachingStaff teachingStaff;
-    private String onlineLink;
+    private TeachingStaff teachingStaff = new TeachingStaff("","");
+    private String onlineLink = "";
 
     public Lesson(LessonType lessonType) {
         LESSON_TYPE = lessonType;
