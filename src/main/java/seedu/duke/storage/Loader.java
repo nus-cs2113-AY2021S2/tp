@@ -51,7 +51,8 @@ public class Loader {
             readTillLine(scanner);
             readData(scanner, module);
         } catch (FileNotFoundException e) {
-            //Unable to find file, create new one
+            //Unable to find file, return null
+            return null;
         }
         return module;
     }

@@ -29,6 +29,9 @@ public class Writer {
             checkForDirectory();
             String fileName = name + Constants.FILE_FORMAT;
             File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+            if (path.exists()) {
+                return;
+            }
             path.createNewFile();
             FileWriter fileWriter = new FileWriter(path);
             writeInstructions(fileWriter, name);
@@ -46,6 +49,9 @@ public class Writer {
      */
     private void checkForDirectory() throws IOException {
         Path directory = Paths.get(Constants.FOLDER_PATH);
+        if (Files.isDirectory(directory)) {
+            return;
+        }
         Files.createDirectory(directory);
     }
 

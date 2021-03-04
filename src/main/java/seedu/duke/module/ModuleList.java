@@ -45,7 +45,7 @@ public class ModuleList {
             return false;
         }
         selectedModule = loader.loadModule(name);
-        return true;
+        return selectedModule != null;
     }
 
 
