@@ -16,14 +16,28 @@ public class ModuleList {
 
 
     /**
+     * Searches directory for module files.
+     * Adds their name (excluding ".txt") to the module list.
+     *
+     * @param loader Instance of Loader class.
+     */
+    public static void loadModuleNames(Loader loader) {
+        for (String name : loader.getModuleNames()) {
+            insertModule(name);
+        }
+    }
+
+
+    /**
      * Adds a new module to the moduleList and add create file for new module.
      *
      * @param name Module name, excluding ".txt".
      * @param writer Instance of Writer class.
      */
     public static void addModule(String name, Writer writer) {
-        insertModule(name);
-        writer.createFile(name);
+        if (insertModule(name)) {
+            writer.createFile(name);
+        }
     }
 
 
@@ -32,12 +46,13 @@ public class ModuleList {
      *
      * @param name Module name, excluding ".txt".
      */
-    public static void insertModule(String name) {
+    private static boolean insertModule(String name) {
         if (moduleList.contains(name)) {
             //Error, module already exists
-            return;
+            return false;
         }
         moduleList.add(name);
+        return true;
     }
 
 

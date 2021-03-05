@@ -13,26 +13,29 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Loader {
 
     /**
      * Searches directory for module files.
-     * Stores names (excluding ".txt") in ModuleList.
+     * Returns ArrayList of names (excluding ".txt").
      */
-    public void loadModuleNames() {
+    public ArrayList<String> getModuleNames() {
+        ArrayList<String> names = new ArrayList<>();
         File directory = new File(Constants.FOLDER_PATH);
         File[] files = directory.listFiles();
         if (files == null) {
-            return;
+            return names;
         }
         for (File file : files) {
             String name = file.getName();
             if (name.endsWith(Constants.FILE_FORMAT)) {
-                ModuleList.insertModule(name.replace(Constants.FILE_FORMAT, ""));
+                names.add(name.replace(Constants.FILE_FORMAT, ""));
             }
         }
+        return names;
     }
 
 
@@ -187,8 +190,7 @@ public class Loader {
     private LocalDate getDeadline(String input) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
-            LocalDate deadline = LocalDate.parse(input, formatter);
-            return deadline;
+            return LocalDate.parse(input, formatter);
         } catch (DateTimeParseException e) {
             //invalid deadline
             return null;

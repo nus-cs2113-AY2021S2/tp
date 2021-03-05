@@ -11,9 +11,6 @@ import seedu.duke.task.Task;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -30,10 +27,9 @@ public class Writer {
             checkForDirectory();
             String fileName = name + Constants.FILE_FORMAT;
             File path = new File(Constants.FOLDER_PATH + "/" + fileName);
-            if (path.exists()) {
+            if (!path.createNewFile()) {
                 return;
             }
-            path.createNewFile();
             FileWriter fileWriter = new FileWriter(path);
             writeInstructions(fileWriter, name);
             fileWriter.flush();
@@ -54,7 +50,7 @@ public class Writer {
     public boolean deleteFile(String name) {
         String fileName = name + Constants.FILE_FORMAT;
         File path = new File(Constants.FOLDER_PATH + "/" + fileName);
-        if (path.exists()){
+        if (path.exists()) {
             return path.delete();
         }
         return true;
@@ -67,11 +63,11 @@ public class Writer {
      * @throws IOException Unable to create directory.
      */
     private void checkForDirectory() throws IOException {
-        Path directory = Paths.get(Constants.FOLDER_PATH);
-        if (Files.isDirectory(directory)) {
+        File directory = new File(Constants.FOLDER_PATH);
+        if (directory.exists() && directory.isDirectory()) {
             return;
         }
-        Files.createDirectory(directory);
+        directory.mkdir();
     }
 
 
@@ -103,11 +99,12 @@ public class Writer {
      * @throws IOException Unable to create file.
      */
     private File getFile(Module module) throws IOException {
-        String fileName = module.getModuleCode() + Constants.FILE_FORMAT;
+        String name = module.getModuleCode();
+        String fileName = name + Constants.FILE_FORMAT;
         File path = new File(Constants.FOLDER_PATH + "/" + fileName);
         if (!path.exists()) {
             //File does not exist
-            path.createNewFile();
+            createFile(name);
         }
         return path;
     }

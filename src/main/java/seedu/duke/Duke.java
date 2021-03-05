@@ -1,6 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.commands.Command;
+import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
@@ -30,7 +30,7 @@ public class Duke {
         ui.printWelcome();
 
         //Load module names
-        loader.loadModuleNames();
+        ModuleList.loadModuleNames(loader);
     }
 
     private static void run() {
@@ -42,10 +42,10 @@ public class Duke {
 
 
             //Parse
-            Command command = parser.parse(input);
+            //Command command = parser.parse(input);
 
             //Execute
-            isExit = command.execute();
+            //isExit = command.execute();
         }
 
     }
