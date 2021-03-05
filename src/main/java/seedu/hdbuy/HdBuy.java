@@ -2,7 +2,7 @@ package seedu.hdbuy;
 
 import java.util.Scanner;
 
-public class HDBuy {
+public class HdBuy {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
