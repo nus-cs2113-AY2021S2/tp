@@ -21,7 +21,7 @@ public class ModuleList {
      * @param name Module name, excluding ".txt".
      * @param writer Instance of Writer class.
      */
-    public static void createModule(String name, Writer writer) {
+    public static void addModule(String name, Writer writer) {
         insertModule(name);
         writer.createFile(name);
     }
