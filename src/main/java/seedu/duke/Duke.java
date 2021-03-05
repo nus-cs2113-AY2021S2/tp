@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
+     * Stephanie's copy.
      */
     public static void main(String[] args) {
         String logo = " ____        _        \n"
