@@ -3,12 +3,12 @@ package seedu.duke.lesson;
 public class Lesson {
 
     private String time;
-    private final LessonType LESSON_TYPE;
+    private final LessonType lessonType;
     private TeachingStaff teachingStaff;
     private String onlineLink;
 
     public Lesson(LessonType lessonType) {
-        LESSON_TYPE = lessonType;
+        this.lessonType = lessonType;
     }
 
     public String getTime() {
@@ -16,7 +16,7 @@ public class Lesson {
     }
 
     public LessonType getLessonType() {
-        return LESSON_TYPE;
+        return lessonType;
     }
 
     public TeachingStaff getTeachingStaff() {
