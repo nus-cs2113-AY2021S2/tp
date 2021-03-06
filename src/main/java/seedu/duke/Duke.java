@@ -47,13 +47,12 @@ public class Duke {
             Command command = null;
             try {
                 command = parser.parse(input);
+                isExit = command.execute();
+
             } catch (DukeException e) {
                 // TODO - pass to ui to print warning
                 System.out.println("Unknown Command");
             }
-
-            //execute
-            isExit = command.execute();
         }
 
     }
