@@ -11,4 +11,4 @@ Display | Name | Github Profile | Portfolio
 
 ![img.png](team/lyp_pic.png)| Lee Yang Peng | [Github](https://github.com/Leeyp) | [Portfolio](team/leeyp.md)
 
-![](https://via.placeholder.com/100.png?text=Photo) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)
+![](team/JoohwanPic.png) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)
