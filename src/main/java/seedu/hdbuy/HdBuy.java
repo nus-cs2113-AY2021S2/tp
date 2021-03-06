@@ -1,6 +1,10 @@
 package seedu.hdbuy;
 
+import java.util.HashMap;
 import java.util.Scanner;
+
+import seedu.hdbuy.api.ApiRepository;
+import seedu.hdbuy.data.Unit;
 
 public class HdBuy {
     /**
@@ -13,9 +17,10 @@ public class HdBuy {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+
+        HashMap<Integer, Unit> units = ApiRepository.fetchByLocation(in.nextLine());
+//        HashMap<Integer, Unit> units = ApiRepository.fetchByType(in.nextLine());
     }
 }
