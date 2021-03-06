@@ -2,7 +2,7 @@ package seedu.duke.task;
 
 import java.time.LocalDateTime;
 
-public class Task {
+public class  Task {
 
     private String description;
     private String remarks;

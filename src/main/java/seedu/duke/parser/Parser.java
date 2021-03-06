@@ -7,32 +7,36 @@ import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.ModuleList;
+import seedu.duke.task.Task;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Parser {
 
-    public static final int ADD_MODULE = 1;
-    public static final int DEL_MODULE = 2;
-    public static final int LIST_MODULE = 3;
-    public static final int ENTER_MODULE = 4;
-    public static final int PRINT_HELP = 5;
-    public static final int EXIT_PROGRAM = 6;
+    public static final int ADD_MODULE = 11;
+    public static final int DEL_MODULE = 12;
+    public static final int LIST_MODULE = 13;
+    public static final int ENTER_MODULE = 14;
+    public static final int PRINT_HELP = 15;
+    public static final int EXIT_PROGRAM = 16;
 
-    public static final int IN_MODULE_HELP = 11;
-    public static final int CLOSE_MODULE = 12;
-    public static final int SHOW_MODULE_INFO = 13;
-    public static final int LIST_LESSONS = 14;
-    public static final int OPEN_LINK = 15;
-    public static final int LIST_TASKS = 16;
-    public static final int MARK_DONE = 17;
-    public static final int UNMARK_DONE = 18;
-    public static final int LIST_TEACHING_STAFF = 19;
-    public static final int ADD_LESSON = 20;
-    public static final int DEL_LESSON = 21;
-    public static final int ADD_TASK = 22;
-    public static final int DEL_TASK = 23;
+    public static final int IN_MODULE_HELP = 21;
+    public static final int CLOSE_MODULE = 22;
+    public static final int SHOW_MODULE_INFO = 23;
+    public static final int LIST_LESSONS = 24;
+    public static final int OPEN_LINK = 25;
+    public static final int LIST_TASKS = 26;
+    public static final int MARK_DONE = 27;
+    public static final int UNMARK_DONE = 28;
+    public static final int LIST_TEACHING_STAFF = 29;
+    public static final int ADD_LESSON = 30;
+    public static final int DEL_LESSON = 31;
+    public static final int ADD_TASK = 32;
+    public static final int DEL_TASK = 33;
 
     public static final int UNKNOWN_COMMAND = 99;
 
@@ -48,7 +52,9 @@ public class Parser {
     }
 
     /**
-     * Before user has selected module. (outer commands)
+     * OUTER COMMANDS
+     * Before user has selected module.
+     * -----------------------------------------------------------------------------------------------------------------
      */
     private Command parseAtDashboard(String input) throws UnknownCommandException {
         Command command;
@@ -83,31 +89,6 @@ public class Parser {
         return command;
     }
 
-    private String getModuleCode(String input) {
-        // TODO  - error handling
-        String[] words = input.split(" ");
-
-        return words[1];
-    }
-
-
-    // check if module is selected
-    private boolean moduleIsSelected() {
-        return ModuleList.selectedModule != null;
-    }
-
-    // check if module name is valid
-    private boolean isValidModuleName(String name) {
-        // TODO - add stricter checks
-        boolean isValid;
-        String[] words = name.split(" ");
-
-        // ensure there is only one word
-        isValid = words.length == 1;
-
-        return isValid;
-    }
-
     private int parseDashboardCommandFromInput(String input) {
         if (input.equalsIgnoreCase("help")) {
             return PRINT_HELP;
@@ -126,14 +107,41 @@ public class Parser {
         }
     }
 
+    private String getModuleCode(String input) {
+        // TODO  - error handling
+        String[] words = input.split(" ");
+
+        return words[1];
+    }
+    
+    // check if module is selected
+    private boolean moduleIsSelected() {
+        return ModuleList.selectedModule != null;
+    }
+
+    // check if module name is valid
+    private boolean isValidModuleName(String name) {
+        // TODO - add stricter checks
+        boolean isValid;
+        String[] words = name.split(" ");
+
+        // ensure there is only one word
+        isValid = words.length == 1;
+
+        return isValid;
+    }
+
     private boolean startsWith(String input, String command) {
         return input.toUpperCase().startsWith(command.toUpperCase());
     }
 
 
     /**
-     * After user has selected module. (Inner commands)
+     * INNER COMMANDS
+     * After user has selected module.
+     * -----------------------------------------------------------------------------------------------------------------
      */
+    
     private Command parseInModule(String input) throws UnknownCommandException, InvalidCommandFormatException {
         Command command;
         int commandCode = parseInModuleCommandsFromInput(input);
@@ -175,48 +183,17 @@ public class Parser {
             command = new DeleteLesson();
             break;
         case ADD_TASK:
-            Task newTask;
-            command = new AddLesson(newLesson);
+            Task newTask = parseNewTaskDetails(input);
+            command = new AddLesson(newTask);
+            break;
+        case DEL_TASK:
+            command = new DeleteTask();
             break;
         default:
             throw new UnknownCommandException();
         }
-
-        return null;
+        return command;
     }
-
-    private Lesson parseNewLessonDetails(String input) {
-        // TODO - validate input
-        
-        // initialize an array of empty strings to store lesson details
-        String[] allDetails = new String[5];
-        Arrays.fill(allDetails, "");
-
-        // to remove only the first two words "add lesson"
-        String[] lessonDetails = input.trim().split(" ", 3);
-        
-        // split the details field using DELIMITER to get the individual detail fields
-        String[] details = lessonDetails[2].split("\\s+;;\\s+");
-        
-        // store detail fields that have been filled by the user into an array
-        // if user did not enter that field, it will remain as an empty string
-        for(int i=0; i<details.length && i<allDetails.length; i++) {
-            allDetails[i] = details[i].trim();
-        }
-
-        String type = allDetails[0].toUpperCase();
-        // this throws "illegal argument exception" if enum value is wrong
-        LessonType TYPE = LessonType.valueOf(type);
-        String timeAndDay = allDetails[1];
-        String link = allDetails[2];
-        String teacherName = allDetails[3];
-        String email = allDetails[4];
-        
-        TeachingStaff teacher = new TeachingStaff(teacherName, email);
-
-        return new Lesson (TYPE, timeAndDay, link, teacher);
-    }
-    
 
     private int parseInModuleCommandsFromInput(String input) {
         if (input.equalsIgnoreCase("help")) {
@@ -250,36 +227,103 @@ public class Parser {
         }
     }
 
-    /**
-     * add lesson tutorial // Wednesday 9 am - 10am // https://nus-sg.zoom.us/j/abc
-     *
-     * type = getType();
-     * throws InvalidTypeException;
-     *
-     * time = Wed 9-10am;
-     * link = https://nus-sg.zoom.us
-     *
-     * Command command = new AddLesson(type, time, link);
-     *
-     */
+    private Lesson parseNewLessonDetails(String input) {
+        // TODO - validate input
+
+        // initialize an array of empty strings to store lesson details
+        String[] allDetails = new String[5];
+        Arrays.fill(allDetails, "");
+
+        // to remove only the first two words "add lesson"
+        String[] lessonDetails = input.trim().split(" ", 3);
+
+        // split the details field using DELIMITER to get the individual detail fields
+        String[] details = lessonDetails[2].split("\\s+;;\\s+");
+
+        // store detail fields that have been filled by the user into an array
+        // if user did not enter that field, it will remain as an empty string
+        for (int i = 0; i < details.length && i < allDetails.length; i++) {
+            allDetails[i] = details[i].trim();
+        }
+
+        // Creating Lesson Object
+        String type = allDetails[0].toUpperCase();
+        // throws "illegal argument exception" if enum value is wrong
+        LessonType TYPE = LessonType.valueOf(type);
+        String timeAndDay = allDetails[1];
+        String link = allDetails[2];
+        String teacherName = allDetails[3];
+        String email = allDetails[4];
+
+        TeachingStaff teacher = new TeachingStaff(teacherName, email);
+
+        return new Lesson(TYPE, timeAndDay, link, teacher);
+    }
+
+    private Task parseNewTaskDetails(String input) {
+
+        // initialize an array of empty strings to store task details
+        String[] allDetails = new String[5];
+        Arrays.fill(allDetails, "");
+
+        // to remove only the first two words "add task"
+        String[] taskDetails = input.trim().split(" ", 3);
+
+        // split the details field using DELIMITER to get the individual detail fields
+        String[] details = taskDetails[2].split("\\s+;;\\s+");
+
+        // store detail fields that have been filled by the user into an array
+        // if user did not enter that field, it will remain as an empty string
+        for (int i = 0; i < details.length && i < allDetails.length; i++) {
+            allDetails[i] = details[i].trim();
+        }
+
+        // Creating Task object
+        String description = allDetails[0];
+        String deadlineString = allDetails[1];
+        LocalDate deadline = convertToDate(deadlineString);
+        String remarks = allDetails[2];
+
+        return new Task(description, deadline, remarks);
+    }
+
+    private LocalDate convertToDate(String string) throws DateTimeParseException {
+        // specifies the format that user has to follow
+        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+
+        return LocalDate.parse(string, parseFormat);
+    }
 
 
     /**
-     * Parsers for second stage input.
+     * Second stage input checking.
      */
-
-    public static ArrayList<Integer> checkIndex(String input, int max) throws NumberFormatException {
-        ArrayList<Integer> indices = new ArrayList<>();
+    public static ArrayList<Integer> checkIndices(String input, int max) throws NumberFormatException {
+        ArrayList<Integer> rawIndices = new ArrayList<>();
         int index;
 
         String[] words = input.trim().split(" ");
 
         for (String word : words) {
             index = Integer.parseInt(word);
-            indices.add(index);
+            rawIndices.add(index);
         }
+        
+        // check duplicates
+        ArrayList<Integer> indices = new ArrayList<>();
 
-        // TODO - check duplicates and out of bounds
+        for (int number : rawIndices) {
+            if (!indices.contains(number)) {
+                indices.add(number);
+            }
+        }
+        
+        // remove out of bounds/ invalid index
+        for (int number : indices) {
+            if (number > max || number < 1) {
+                indices.remove(number);
+            }
+        }
 
         return indices;
     }
