@@ -22,4 +22,9 @@ public class Module {
     public void addLessonToList(Lesson newLesson) {
         lessonList.add(newLesson);
     }
+
+    public ArrayList<Lesson> getLessonList(){
+        return lessonList;
+    }
+
 }
