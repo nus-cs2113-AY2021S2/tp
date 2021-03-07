@@ -10,7 +10,8 @@ public class Unit {
     private final String address;
     private final int id;
 
-    public Unit(String location, String type, int price, int leaseValue, String lease, String address, int id) {
+    public Unit(String location, String type, int price, int leaseValue,
+        String lease, String address, int id) {
         this.location = location;
         this.type = type;
         this.price = price;
@@ -50,6 +51,7 @@ public class Unit {
 
     @Override
     public String toString() {
-        return "Hash ID: " + getId() + " - Address: " + getAddress() + " - Type: " + getType() + " - Lease: " + getLease() + " -  Price: $" + getPrice();
+        return "Hash ID: " + getId() + " - Address: " + getAddress() +
+            " - Type: " + getType() + " - Lease: " + getLease() + " -  Price: $" + getPrice();
     }
 }
