@@ -1,10 +1,7 @@
 package seedu.hdbuy.api;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.HashMap;
 
@@ -36,10 +33,13 @@ public class GetRequest {
             httpURLConnection.setRequestProperty(REQUEST_PROPERTY_HEADER, REQUEST_PROPERTY);
             httpURLConnection.setRequestMethod(REQUEST_METHOD);
             httpURLConnection.connect();
-            return ResponseDecoder.decodeResponse(httpURLConnection.getInputStream());
+            HashMap<Integer, Unit> units = ResponseDecoder.
+                decodeResponse(httpURLConnection.getInputStream());
+            httpURLConnection.disconnect();
+            return units;
         } catch (GatewayException | IOException exception) {
             System.out.println(exception.getMessage());
-            return new HashMap<Integer, Unit>();
+            return new HashMap<>();
         }
     }
 }

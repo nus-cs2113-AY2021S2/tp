@@ -1,9 +1,68 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Parameters: location = jurong, type = 4 room, lease = 95 years
 
-What is your name?
-Hello James Gosling
+Hash ID: -471753842 - Address: 22 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 09 months -  Price: $450000
+Hash ID: -471753842 - Address: 22 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 08 months -  Price: $475000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 07 months -  Price: $460000
+Hash ID: -471753842 - Address: 22 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 05 months -  Price: $470000
+Hash ID: -471753842 - Address: 22 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 05 months -  Price: $470000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $450000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $500000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $415000
+Hash ID: -471753842 - Address: 22 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $465000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $392500
+Hash ID: 1035797967 - Address: 23 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $440000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $465000
+Hash ID: 808109836 - Address: 20 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $468000
+Hash ID: 808109836 - Address: 20 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $468000
+Hash ID: 1035797967 - Address: 23 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $460000
+Hash ID: -1979305651 - Address: 21 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $480000
+Hash ID: 808109836 - Address: 20 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $488000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years 06 months -  Price: $430000
+Hash ID: -527535176 - Address: 180C BOON LAY DR - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $410000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $396000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $430000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $442000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years -  Price: $393000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years -  Price: $403000
+Hash ID: -527535176 - Address: 180C BOON LAY DR - Type: 4 ROOM - Lease:  95 years -  Price: $415000
+Hash ID: -527535176 - Address: 180C BOON LAY DR - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $428000
+Hash ID: -446287787 - Address: 181A BOON LAY DR - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $428000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 05 months -  Price: $403000
+Hash ID: 548405544 - Address: 183D BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 05 months -  Price: $415000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 04 months -  Price: $438000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $398000
+Hash ID: 1053964169 - Address: 183C BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $400000
+Hash ID: 548405544 - Address: 183D BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $398000
+Hash ID: 1053964169 - Address: 183C BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $393000
+Hash ID: 1053964169 - Address: 183C BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $417888
+Hash ID: 1053964169 - Address: 183C BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $420000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $425000
+Hash ID: 1053964169 - Address: 183C BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $420000
+Hash ID: 1559522794 - Address: 183B BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $400000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $428000
+Hash ID: 1559522794 - Address: 183B BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 02 months -  Price: $438500
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $390000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years -  Price: $400000
+Hash ID: 2065081419 - Address: 183A BOON LAY AVE - Type: 4 ROOM - Lease:  95 years -  Price: $405000
+Hash ID: 1559522794 - Address: 183B BOON LAY AVE - Type: 4 ROOM - Lease:  95 years -  Price: $395000
+Hash ID: 1736073554 - Address: 197C BOON LAY DR - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $405000
+Hash ID: 1736073554 - Address: 197C BOON LAY DR - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $460000
+Hash ID: 2029476561 - Address: 197B BOON LAY DR - Type: 4 ROOM - Lease:  95 years -  Price: $458888
+Hash ID: -1466529103 - Address: 196A BOON LAY DR - Type: 4 ROOM - Lease:  95 years -  Price: $472000
+Hash ID: -89615775 - Address: 175C YUNG KUANG RD - Type: 4 ROOM - Lease:  95 years 10 months -  Price: $448000
+Hash ID: 1239435376 - Address: 57 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 03 months -  Price: $462000
+Hash ID: 1239435376 - Address: 57 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $460000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $440000
+Hash ID: 1239435376 - Address: 57 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $502888
+Hash ID: -1775668242 - Address: 55 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $530000
+Hash ID: 1239435376 - Address: 57 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $477000
+Hash ID: 1239435376 - Address: 57 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $420000
+Hash ID: -1775668242 - Address: 55 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $488000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $506000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years 01 month -  Price: $440000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $425000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $430000
+Hash ID: -268116433 - Address: 56 TEBAN GDNS RD - Type: 4 ROOM - Lease:  95 years -  Price: $470000
+Hash ID: 102123587 - Address: 697A JURONG WEST CTRL 3 - Type: 4 ROOM - Lease:  95 years 11 months -  Price: $575000
+Hash ID: -306700638 - Address: 697B JURONG WEST CTRL 3 - Type: 4 ROOM - Lease:  95 years 10 months -  Price: $580000
+Hash ID: -95349725 - Address: 698B JURONG WEST CTRL 3 - Type: 4 ROOM - Lease:  95 years 08 months -  Price: $625000
