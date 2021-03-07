@@ -18,4 +18,8 @@ public class Module {
     public String getModuleCode() {
         return moduleCode;
     }
+
+    public void addLessonToList(Lesson newLesson) {
+        lessonList.add(newLesson);
+    }
 }

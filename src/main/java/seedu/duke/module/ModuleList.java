@@ -20,6 +20,11 @@ public class ModuleList {
         return true;
     }
 
+    public static Module getSelectedModule() {
+        return selectedModule;
+    }
+
+
     public static void reset() {
         selectedModule = null;
     }
