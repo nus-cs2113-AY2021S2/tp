@@ -29,7 +29,8 @@ public class AddLessonCommand extends Command{
         System.out.println(String.format("Added %s", getLessonTypeString(newLessonForModule.getLessonType())));
     }
 
-    private String getLessonTypeString(LessonType lessonType) {
+    //To be added in common class
+    public static String getLessonTypeString(LessonType lessonType) {
         switch (lessonType) {
         case LECTURE: {
             return "LECTURE";
