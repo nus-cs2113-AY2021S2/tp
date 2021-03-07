@@ -6,6 +6,11 @@ import seedu.hdbuy.data.Unit;
 
 public class UnitsGenerator {
 
+    /**
+     * Sifts through response string to get details on units and generate each of them.
+     * @param response Response from database containing raw information on units.
+     * @return Units mapped to their unique IDs.
+     */
     public static HashMap<Integer, Unit> getUnits(String response) {
         HashMap<Integer, Unit> map = new HashMap<>();
         String records = response.substring(response.indexOf("records") - 1);

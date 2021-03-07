@@ -15,7 +15,15 @@ import seedu.hdbuy.data.exception.GatewayException;
 
 public class ResponseDecoder {
 
-    public static HashMap<Integer, Unit> decodeResponse(InputStream inputStream) throws EmptyResponseException, GatewayException {
+    /**
+     * Converts response body into units mapped by a unique ID from hashcode.
+     * @param inputStream Response body.
+     * @return Units mapped by a unique ID.
+     * @throws EmptyResponseException When no units are retrieved.
+     * @throws GatewayException When there is an error connecting to database.
+     */
+    public static HashMap<Integer, Unit> decodeResponse(InputStream inputStream) throws
+        EmptyResponseException, GatewayException {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         try {
