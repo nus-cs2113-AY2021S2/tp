@@ -31,7 +31,7 @@ public class DeleteLessonCommand extends Command{
         ArrayList<Integer> indexes = Parser.checkIndices(line,lessonList.size());
         int pointer = 1;
         for(int index: indexes){
-            int modifiedIndex = index-pointer
+            int modifiedIndex = index-pointer;
             System.out.println(index);
             Lesson lesson = lessonList.get(modifiedIndex);
             System.out.println("Removed "+ AddLessonCommand.getLessonTypeString(lesson.getLessonType()));
