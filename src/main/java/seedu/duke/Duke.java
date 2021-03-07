@@ -24,7 +24,6 @@ public class Duke {
         } else {
             storage = new Storage(args[0]);
         }
-//        storage = new Storage(filePath);
         canteens = storage.load();
         echo();
     }
