@@ -19,6 +19,7 @@ public class Parser {
     /**
      * Integer constants used within the parser to represent commands.
      */
+    // Dashboard commands
     public static final int ADD_MODULE = 11;
     public static final int DEL_MODULE = 12;
     public static final int LIST_MODULE = 13;
@@ -26,6 +27,7 @@ public class Parser {
     public static final int PRINT_HELP = 15;
     public static final int EXIT_PROGRAM = 16;
 
+    // In-Module Commands
     public static final int PRINT_HELP_MODULE = 21;
     public static final int EXIT_MODULE = 22;
     public static final int LIST_MODULE_INFO = 23;
@@ -40,6 +42,26 @@ public class Parser {
     public static final int ADD_TASK = 32;
     public static final int DEL_TASK = 33;
     public static final int UNKNOWN_COMMAND = 99;
+    
+    // String Constants
+    public static final String DELIM = "\\s+;;\\s+";
+    public static final String WHITESPACE = " ";
+    
+    // Lesson parser constants
+    public static final int LESSON_TYPE_INDEX = 0;
+    public static final int LESSON_TIME_DAY_INDEX = 1;
+    public static final int LESSON_LINK_INDEX = 2;
+    public static final int LESSON_TEACHER_INDEX = 3;
+    public static final int LESSON_EMAIL_INDEX = 4;
+    
+    public static final int LESSON_MAX_DETAILS = 5;
+    
+    // Task parser constants
+    public static final int TASK_DESCRIPTION_INDEX = 0;
+    public static final int TASK_DEADLINE_INDEX = 1;
+    public static final int TASK_REMARKS_INDEX = 2;
+    
+    public static final int TASK_MAX_DETAILS = 3;
 
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
@@ -156,7 +178,7 @@ public class Parser {
     private boolean isValidModuleName(String name) {
         // TODO - add stricter checks
         boolean isValid;
-        String[] words = name.split(" ");
+        String[] words = name.split(WHITESPACE);
 
         // ensure there is only one word
         isValid = words.length == 1;
@@ -284,14 +306,14 @@ public class Parser {
         // TODO - validate input
 
         // initialize an array of empty strings to store lesson details
-        String[] allDetails = new String[5];
+        String[] allDetails = new String[LESSON_MAX_DETAILS];
         Arrays.fill(allDetails, "");
 
         // to remove only the first two words "add lesson"
         String[] lessonDetails = input.trim().split(" ", 3);
 
         // split the details field using DELIMITER to get the individual detail fields
-        String[] details = lessonDetails[2].split("\\s+;;\\s+");
+        String[] details = lessonDetails[2].split(DELIM);
 
         // store detail fields that have been filled by the user into an array
         // if user did not enter that field, it will remain as an empty string
@@ -300,13 +322,13 @@ public class Parser {
         }
 
         // Creating Lesson Object
-        String type = allDetails[0].toUpperCase();
+        String type = allDetails[LESSON_TYPE_INDEX].toUpperCase();
         // throws "illegal argument exception" if enum value is wrong
         LessonType TYPE = LessonType.valueOf(type);
-        String timeAndDay = allDetails[1];
-        String link = allDetails[2];
-        String teacherName = allDetails[3];
-        String email = allDetails[4];
+        String timeAndDay = allDetails[LESSON_TIME_DAY_INDEX];
+        String link = allDetails[LESSON_LINK_INDEX];
+        String teacherName = allDetails[LESSON_TEACHER_INDEX];
+        String email = allDetails[LESSON_EMAIL_INDEX];
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
 
@@ -322,14 +344,14 @@ public class Parser {
     private Task parseNewTaskDetails(String input) {
 
         // initialize an array of empty strings to store task details
-        String[] allDetails = new String[5];
+        String[] allDetails = new String[TASK_MAX_DETAILS];
         Arrays.fill(allDetails, "");
 
         // to remove only the first two words "add task"
         String[] taskDetails = input.trim().split(" ", 3);
 
         // split the details field using DELIMITER to get the individual detail fields
-        String[] details = taskDetails[2].split("\\s+;;\\s+");
+        String[] details = taskDetails[2].split(DELIM);
 
         // store detail fields that have been filled by the user into an array
         // if user did not enter that field, it will remain as an empty string
@@ -338,10 +360,10 @@ public class Parser {
         }
 
         // Creating Task object
-        String description = allDetails[0];
-        String deadlineString = allDetails[1];
+        String description = allDetails[TASK_DESCRIPTION_INDEX];
+        String deadlineString = allDetails[TASK_DEADLINE_INDEX];
         LocalDate deadline = convertToDate(deadlineString);
-        String remarks = allDetails[2];
+        String remarks = allDetails[TASK_REMARKS_INDEX];
 
         return new Task(description, deadline, remarks);
     }
@@ -373,14 +395,14 @@ public class Parser {
         ArrayList<Integer> rawIndices = new ArrayList<>();
         int index;
 
-        String[] words = input.trim().split(" ");
+        String[] words = input.trim().split(WHITESPACE);
 
         for (String word : words) {
             index = Integer.parseInt(word);
             rawIndices.add(index);
         }
 
-        // check duplicates
+        // remove duplicates
         ArrayList<Integer> indices = new ArrayList<>();
 
         for (int number : rawIndices) {
