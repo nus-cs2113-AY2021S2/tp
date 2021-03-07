@@ -24,12 +24,7 @@ public class DeleteLessonCommand extends Command{
     public void execute(ModuleList moduleList, UI ui) {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        int counter = 1;
-        for(Lesson lesson:lessonList){
-            System.out.println(String.format("%d. %s",counter,
-                    AddLessonCommand.getLessonTypeString(lesson.getLessonType())));
-            counter++;
-        }
+        printLessonOptions(lessonList);
         Scanner input = getCommandLineReader();
         String line = input.nextLine();
         //check indices is implemented in parser
@@ -41,6 +36,15 @@ public class DeleteLessonCommand extends Command{
             System.out.println("Removed "+ AddLessonCommand.getLessonTypeString(lesson.getLessonType()));
             lessonList.remove(index-pointer);
             pointer++;
+        }
+    }
+
+    public static void printLessonOptions(ArrayList<Lesson> lessonList) {
+        int counter = 1;
+        for(Lesson lesson: lessonList){
+            System.out.println(String.format("%d. %s",counter,
+                    AddLessonCommand.getLessonTypeString(lesson.getLessonType())));
+            counter++;
         }
     }
 }
