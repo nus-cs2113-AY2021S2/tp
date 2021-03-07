@@ -1,36 +1,18 @@
 package seedu.duke;
 
-import java.util.Scanner;
-
 public class UniTracker {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-
+        Ui.printWelcomeMessage();
         runMainMenu();
     }
 
-    public static void printMainMenu() {
-        System.out.println("Main Menu:\n" +
-                "[1] Module Information\n" +
-                "[2] CAP Simulator/Calculator\n" +
-                "[3] Task Manager\n" +
-                "[4] External Links");
-    }
-
     public static void runMainMenu() {
-
-        Scanner in = new Scanner(System.in);
         while (true) {
-            printMainMenu();
-            String command = in.nextLine();
+            Ui.printMainMenu();
+            String command = Ui.readCommand();
             try {
                 int commandInt = Integer.parseInt(command);
 
@@ -50,16 +32,18 @@ public class UniTracker {
                     break;
                 case 4:
                     //externalLinks
+                    Ui.printLinksMessage();
+                    int linkCommand = Integer.parseInt(Ui.readCommand());
+                    Links link = new Links(linkCommand);
+                    link.execute();
                     break;
                 default:
-                    System.out.println("Please enter a valid integer from the menu.");
+                    Ui.printInvalidIntegerMessage();
                 }
 
             } catch (NumberFormatException n) {
-                System.out.println("Please enter a valid integer.");
+                Ui.printInvalidIntegerMessage();
             }
         }
-
-
     }
 }
