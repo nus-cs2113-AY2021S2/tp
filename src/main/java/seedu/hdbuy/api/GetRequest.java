@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.HashMap;
 
 import seedu.hdbuy.data.Unit;
+import seedu.hdbuy.data.exception.EmptyResponseException;
+import seedu.hdbuy.data.exception.GatewayException;
 
 public class GetRequest {
 
@@ -18,7 +20,7 @@ public class GetRequest {
         "https://data.gov.sg/api/action/datastore_search" +
         "?resource_id=42ff9cfe-abe5-4b54-beda-c88f9bb438ee&q=";
 
-    public static HashMap<Integer, Unit> getResponse(String query) {
+    public static HashMap<Integer, Unit> getResponse(String query) throws EmptyResponseException {
         try {
             url = new URL(urlString + query);
             httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -26,9 +28,8 @@ public class GetRequest {
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.connect();
             return ResponseDecoder.decodeResponse(httpURLConnection.getInputStream());
-        } catch (IOException ioException) {
-            System.out.println("ERROR");
-            System.out.println(ioException.getMessage());
+        } catch (GatewayException | IOException exception) {
+            System.out.println(exception.getMessage());
         }
         return null;
     }
