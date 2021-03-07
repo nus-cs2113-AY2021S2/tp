@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) {
 
-        welcomeMessage();
+        printWelcomeMessage();
 
         String input;
         Scanner in = new Scanner(System.in);
@@ -13,13 +13,15 @@ public class Duke {
 
         boolean isBye = false;
         while (!isBye) {
-            switch (input) {
+            switch (input.toLowerCase()) {
             case "bye":
                 isBye = true;
-                byeMessage();
+                printByeMessage();
+                break;
             default:
                 System.out.println(input + "\n");
                 input = in.nextLine();
+                break;
             }
         }
 
@@ -27,11 +29,11 @@ public class Duke {
 
     }
 
-    private static void byeMessage() {
+    private static void printByeMessage() {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    private static void welcomeMessage() {
+    private static void printWelcomeMessage() {
         System.out.println("Hello! I'm FridgeFriend!");
         System.out.println("What can I do for you?\n");
     }
