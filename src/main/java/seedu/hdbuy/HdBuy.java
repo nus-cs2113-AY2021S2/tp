@@ -1,7 +1,6 @@
 package seedu.hdbuy;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.data.QueryKey;

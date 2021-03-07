@@ -14,14 +14,11 @@ public class UnitsGenerator {
     public static HashMap<Integer, Unit> getUnits(String response) {
         HashMap<Integer, Unit> map = new HashMap<>();
         String records = response.substring(response.indexOf("records") - 1);
-        if (records.isEmpty()) {
-            return null;
-        }
         String trimmed = records.substring(records.indexOf("[") + 1, records.indexOf("]"));
         String[] unitContents = trimmed.split("},");
         for (String unitContent : unitContents) {
             unitContent = unitContent.replaceAll("\\{", "");
-            unitContent = unitContent.replaceAll("\\}", "");
+            unitContent = unitContent.replaceAll("}", "");
             unitContent = unitContent.replaceAll("\"", "");
             String[] unitDetails = unitContent.split(",");
             Unit unit = getUnit(unitDetails);
