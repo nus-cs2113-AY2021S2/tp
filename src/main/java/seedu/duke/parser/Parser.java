@@ -348,10 +348,10 @@ public class Parser {
 
     /**
      * Converts given string to LocalDate object.
-     * 
+     *
      * @param string string to be converted
      * @return LocalDate object of the date represented by the string
-     * @throws DateTimeParseException if invalid input format / invalid date given  
+     * @throws DateTimeParseException if invalid input format / invalid date given
      */
     private LocalDate convertToDate(String string) throws DateTimeParseException {
         DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
@@ -362,10 +362,10 @@ public class Parser {
 
     /**
      * Converts given input string to an arraylist of integers.
-     * Removes duplicates and indices which are out of bounds. 
-     * 
+     * Removes duplicates and indices which are out of bounds.
+     *
      * @param input full user input string
-     * @param max the maximum accepted index
+     * @param max   the maximum accepted index
      * @return an integer arraylist with valid indices
      * @throws NumberFormatException if non-integer value is present in the input
      */
@@ -390,12 +390,11 @@ public class Parser {
         }
 
         // remove out of bounds/ invalid index
-        for (int number : indices) {
-            if (number > max || number < 1) {
-                indices.remove(number);
+        for (int i = 0; i < indices.size(); i++) {
+            if (indices.get(i) > max || indices.get(i) < 1) {
+                Integer removed = indices.remove(i);
             }
         }
-
         return indices;
     }
 }
