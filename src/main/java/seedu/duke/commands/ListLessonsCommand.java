@@ -11,7 +11,8 @@ public class ListLessonsCommand extends Command {
     public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s\n \t%s\n \t%s\n \t%s";
 
     public ListLessonsCommand() {
-        System.out.println("Lessons for CS2113T:");
+        Module module = ModuleList.getSelectedModule();
+        System.out.println(String.format("Lessons for %s:",module.getModuleCode()));
     }
 
     @Override
