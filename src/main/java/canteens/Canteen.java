@@ -5,7 +5,7 @@ import stores.Store;
 import java.util.ArrayList;
 
 /**
- * Represents a canteen, with all its stores and functionality
+ * Represents a canteen, with all its stores and functionality.
  */
 public class Canteen {
     private String canteenName;
