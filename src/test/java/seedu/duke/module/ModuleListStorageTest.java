@@ -129,10 +129,27 @@ class ModuleListStorageTest {
     }
 
     @Test
-    void setSelectedModule_invalidName_loadsModule() throws IOException {
+    void setSelectedModule_invalidName_remainNull() throws IOException {
         File directory = new File(Constants.FOLDER_PATH);
         directory.mkdir();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/all_content_reference.txt");
+        Path destination = Paths.get("Data/CS2113T.txt");
+        if (Files.exists(destination)) {
+            Files.delete(destination);
+        }
+        Files.copy(reference, destination);
+        ModuleList.loadModuleNames(new Loader());
+        ModuleList.setSelectedModule("CS2100", new Loader());
+        assertThrows(NullPointerException.class, () -> {
+            ModuleList.selectedModule.getModuleCode();
+        });
+    }
+
+    @Test
+    void setSelectedModule_invalidFile_remainNull() throws IOException {
+        File directory = new File(Constants.FOLDER_PATH);
+        directory.mkdir();
+        Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/invalid_file_reference.txt");
         Path destination = Paths.get("Data/CS2113T.txt");
         if (Files.exists(destination)) {
             Files.delete(destination);
