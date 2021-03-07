@@ -21,7 +21,7 @@ public class Ui {
 
     public void showWelcome() {
         System.out.println(LINESPACING);
-        System.out.println("Welcome to our amazing canteen review application!");
+        System.out.println("Welcome to our amazing canteen review application!!");
         System.out.println(LINESPACING);
     }
 
