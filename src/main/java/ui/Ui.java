@@ -2,10 +2,11 @@ package ui;
 
 import canteens.Canteen;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Ui {
-    private final static String LINESPACING = "-----------------------";
+    private static final String LINESPACING = "-----------------------";
     private String line;
     private Scanner userInputScanner;
 
@@ -33,7 +34,7 @@ public class Ui {
     public void showGetCanteen(ArrayList<Canteen> canteens) {
         System.out.println(LINESPACING);
         System.out.println("Please select a canteen:");
-        for (int i=0; i< canteens.size(); i++) {
+        for (int i = 0; i < canteens.size(); i++) {
             System.out.printf("%s.", i + 1);
             canteens.get(i).displayCanteen();
         }
