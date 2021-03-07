@@ -1,7 +1,6 @@
 package seedu.duke.parser;
 
 import seedu.duke.commands.Command;
-import seedu.duke.exception.InvalidCommandFormatException;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -17,6 +16,9 @@ import java.util.Arrays;
 
 public class Parser {
 
+    /**
+     * Integer constants used within the parser to represent commands.
+     */
     public static final int ADD_MODULE = 11;
     public static final int DEL_MODULE = 12;
     public static final int LIST_MODULE = 13;
@@ -24,9 +26,9 @@ public class Parser {
     public static final int PRINT_HELP = 15;
     public static final int EXIT_PROGRAM = 16;
 
-    public static final int IN_MODULE_HELP = 21;
-    public static final int CLOSE_MODULE = 22;
-    public static final int SHOW_MODULE_INFO = 23;
+    public static final int PRINT_HELP_MODULE = 21;
+    public static final int EXIT_MODULE = 22;
+    public static final int LIST_MODULE_INFO = 23;
     public static final int LIST_LESSONS = 24;
     public static final int OPEN_LINK = 25;
     public static final int LIST_TASKS = 26;
@@ -37,9 +39,16 @@ public class Parser {
     public static final int DEL_LESSON = 31;
     public static final int ADD_TASK = 32;
     public static final int DEL_TASK = 33;
-
     public static final int UNKNOWN_COMMAND = 99;
 
+    /**
+     * Calls the appropriate parser method depending on whether user is at dashboard or has selected
+     * a module.
+     *
+     * @param input full user input string
+     * @return command object based on user input
+     * @throws UnknownCommandException if valid command cannot be parsed from user input
+     */
     public Command parse(String input) throws UnknownCommandException {
         Command parsedCommand;
 
@@ -52,9 +61,12 @@ public class Parser {
     }
 
     /**
-     * OUTER COMMANDS
-     * Before user has selected module.
-     * -----------------------------------------------------------------------------------------------------------------
+     * Parses dashboard commands from user input.
+     * User is yet to select a module.
+     *
+     * @param input full user input string
+     * @return dashboard command object based on user input
+     * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
     private Command parseAtDashboard(String input) throws UnknownCommandException {
         Command command;
@@ -62,25 +74,25 @@ public class Parser {
         String moduleCode;
 
         switch (commandCode) {
-        case PRINT_HELP:
-            command = new PrintHelp();
-            break;
-        case EXIT_PROGRAM:
-            command = new ExitProgram();
-            break;
-        case LIST_MODULE:
-            command = new ListModule();
-            break;
         case ADD_MODULE:
             moduleCode = getModuleCode(input);
-            command = new AddModule(moduleCode);
+            command = new AddModuleCommand(moduleCode);
             break;
         case DEL_MODULE:
             moduleCode = getModuleCode(input);
-            command = new DeleteModule(moduleCode);
+            command = new DeleteModuleCommand(moduleCode);
+            break;
+        case LIST_MODULE:
+            command = new ListModuleCommand();
             break;
         case ENTER_MODULE:
-            command = new EnterModule(input);
+            command = new EnterModuleCommand(input);
+            break;
+        case PRINT_HELP:
+            command = new PrintHelpCommand();
+            break;
+        case EXIT_PROGRAM:
+            command = new ExitProgramCommand();
             break;
         default:
             throw new UnknownCommandException();
@@ -89,6 +101,12 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Parses user input to determine the dashboard command specified.
+     *
+     * @param input full user input string
+     * @return an integer representing the command specified
+     */
     private int parseDashboardCommandFromInput(String input) {
         if (input.equalsIgnoreCase("help")) {
             return PRINT_HELP;
@@ -107,19 +125,34 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses module code from user input.
+     *
+     * @param input full user input string
+     * @return module code string
+     */
     private String getModuleCode(String input) {
         // TODO  - error handling
         String[] words = input.split(" ");
 
         return words[1];
     }
-    
-    // check if module is selected
+
+    /**
+     * Checks if user is at dashboard or has already entered a module.
+     *
+     * @return true if user has already entered a module, false otherwise
+     */
     private boolean moduleIsSelected() {
         return ModuleList.selectedModule != null;
     }
 
-    // check if module name is valid
+    /**
+     * Checks if given string is a valid module name.
+     *
+     * @param name string to be validated
+     * @return true if string is a valid module name
+     */
     private boolean isValidModuleName(String name) {
         // TODO - add stricter checks
         boolean isValid;
@@ -131,63 +164,71 @@ public class Parser {
         return isValid;
     }
 
+    /**
+     * Checks if user input string starts with a particular command string.
+     *
+     * @param input   full user input string
+     * @param command command string to be checked with
+     * @return true if user input starts with command string
+     */
     private boolean startsWith(String input, String command) {
         return input.toUpperCase().startsWith(command.toUpperCase());
     }
 
-
     /**
-     * INNER COMMANDS
-     * After user has selected module.
-     * -----------------------------------------------------------------------------------------------------------------
+     * Parses in-module commands from user input.
+     * User has selected a module and is currently in the module.
+     *
+     * @param input full user input string
+     * @return in-module command object based on user input
+     * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
-    
-    private Command parseInModule(String input) throws UnknownCommandException, InvalidCommandFormatException {
+    private Command parseInModule(String input) throws UnknownCommandException {
         Command command;
         int commandCode = parseInModuleCommandsFromInput(input);
         String moduleCode;
 
         switch (commandCode) {
-        case IN_MODULE_HELP:
-            command = new PrintHelp();
+        case PRINT_HELP_MODULE:
+            command = new PrintHelpCommand();
             break;
-        case CLOSE_MODULE:
-            command = new ExitModule();
+        case EXIT_MODULE:
+            command = new ExitModuleCommand();
             break;
-        case SHOW_MODULE_INFO:
-            command = new ListModuleInfo();
+        case LIST_MODULE_INFO:
+            command = new ListModuleInfoCommand();
             break;
         case LIST_LESSONS:
-            command = new ListLessons();
+            command = new ListLessonsCommand();
             break;
         case OPEN_LINK:
-            command = new OpenLessonLink();
+            command = new OpenLessonLinkCommand();
             break;
         case LIST_TASKS:
-            command = new ListTasks();
+            command = new ListTasksCommand();
             break;
         case MARK_DONE:
-            command = new MarkAsDone();
+            command = new MarkAsDoneCommand();
             break;
         case UNMARK_DONE:
-            command = new MarkAsUndone();
+            command = new MarkAsUndoneCommand();
             break;
         case LIST_TEACHING_STAFF:
-            command = new ViewTeachingStaff();
+            command = new ViewTeachingStaffCommand();
             break;
         case ADD_LESSON:
             Lesson newLesson = parseNewLessonDetails(input);
-            command = new AddLesson(newLesson);
+            command = new AddLessonCommand(newLesson);
             break;
         case DEL_LESSON:
-            command = new DeleteLesson();
+            command = new DeleteLessonCommand();
             break;
         case ADD_TASK:
             Task newTask = parseNewTaskDetails(input);
-            command = new AddLesson(newTask);
+            command = new AddLessonCommand(newTask);
             break;
         case DEL_TASK:
-            command = new DeleteTask();
+            command = new DeleteTaskCommand();
             break;
         default:
             throw new UnknownCommandException();
@@ -195,13 +236,19 @@ public class Parser {
         return command;
     }
 
+    /**
+     * Parses user input to determine in-module command specified.
+     *
+     * @param input full user input string
+     * @return an integer representing the command specified
+     */
     private int parseInModuleCommandsFromInput(String input) {
         if (input.equalsIgnoreCase("help")) {
-            return IN_MODULE_HELP;
+            return PRINT_HELP_MODULE;
         } else if (input.equalsIgnoreCase("close")) {
-            return CLOSE_MODULE;
+            return EXIT_MODULE;
         } else if (input.equalsIgnoreCase("info")) {
-            return SHOW_MODULE_INFO;
+            return LIST_MODULE_INFO;
         } else if (input.equalsIgnoreCase("lessons")) {
             return LIST_LESSONS;
         } else if (input.equalsIgnoreCase("link")) {
@@ -227,6 +274,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses details of new lesson from user input string.
+     *
+     * @param input full user input string
+     * @return a Lesson object with the details entered by the user. Fields not found will be left as an empty string.
+     */
     private Lesson parseNewLessonDetails(String input) {
         // TODO - validate input
 
@@ -260,6 +313,12 @@ public class Parser {
         return new Lesson(TYPE, timeAndDay, link, teacher);
     }
 
+    /**
+     * Parses details of new task from user input string.
+     *
+     * @param input full user input string
+     * @return a Task object with the details entered by the user. Fields not found will be left as an empty string.
+     */
     private Task parseNewTaskDetails(String input) {
 
         // initialize an array of empty strings to store task details
@@ -287,8 +346,14 @@ public class Parser {
         return new Task(description, deadline, remarks);
     }
 
+    /**
+     * Converts given string to LocalDate object.
+     * 
+     * @param string string to be converted
+     * @return LocalDate object of the date represented by the string
+     * @throws DateTimeParseException if invalid input format / invalid date given  
+     */
     private LocalDate convertToDate(String string) throws DateTimeParseException {
-        // specifies the format that user has to follow
         DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
 
         return LocalDate.parse(string, parseFormat);
@@ -296,7 +361,13 @@ public class Parser {
 
 
     /**
-     * Second stage input checking.
+     * Converts given input string to an arraylist of integers.
+     * Removes duplicates and indices which are out of bounds. 
+     * 
+     * @param input full user input string
+     * @param max the maximum accepted index
+     * @return an integer arraylist with valid indices
+     * @throws NumberFormatException if non-integer value is present in the input
      */
     public static ArrayList<Integer> checkIndices(String input, int max) throws NumberFormatException {
         ArrayList<Integer> rawIndices = new ArrayList<>();
@@ -308,7 +379,7 @@ public class Parser {
             index = Integer.parseInt(word);
             rawIndices.add(index);
         }
-        
+
         // check duplicates
         ArrayList<Integer> indices = new ArrayList<>();
 
@@ -317,7 +388,7 @@ public class Parser {
                 indices.add(number);
             }
         }
-        
+
         // remove out of bounds/ invalid index
         for (int number : indices) {
             if (number > max || number < 1) {
