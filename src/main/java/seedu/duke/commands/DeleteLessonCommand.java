@@ -31,10 +31,11 @@ public class DeleteLessonCommand extends Command{
         ArrayList<Integer> indexes = Parser.checkIndices(line,lessonList.size());
         int pointer = 1;
         for(int index: indexes){
+            int modifiedIndex = index-pointer
             System.out.println(index);
-            Lesson lesson = lessonList.get(index-pointer);
+            Lesson lesson = lessonList.get(modifiedIndex);
             System.out.println("Removed "+ AddLessonCommand.getLessonTypeString(lesson.getLessonType()));
-            lessonList.remove(index-pointer);
+            module.deleteLessonFromList(lessonList,modifiedIndex);
             pointer++;
         }
     }

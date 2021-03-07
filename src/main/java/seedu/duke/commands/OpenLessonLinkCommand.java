@@ -39,7 +39,7 @@ public class OpenLessonLinkCommand extends Command {
         }
     }
 
-    private void openLessonLink(String onlineLink) {
+    public void openLessonLink(String onlineLink) {
         try {
             Desktop desktop = java.awt.Desktop.getDesktop();
             URI link = new URI(onlineLink);
