@@ -11,7 +11,7 @@ public class Duke {
     private static ArrayList<Canteen> canteens; // todo: add a canteen manager
     private static Ui ui;
     private static Storage storage;
-    private static final String filePath = "./src/main/java/data/storage.txt";
+    private static final String filePath = "data/storage.txt";
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -19,7 +19,12 @@ public class Duke {
     public static void main(String[] args) {
         ui = new Ui();
         ui.showWelcome();
-        storage = new Storage(filePath);
+        if (args.length == 0) {
+            storage = new Storage(filePath);
+        } else {
+            storage = new Storage(args[0]);
+        }
+//        storage = new Storage(filePath);
         canteens = storage.load();
         echo();
     }
