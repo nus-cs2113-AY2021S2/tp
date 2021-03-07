@@ -17,7 +17,7 @@ public class Ui {
     private static final String MESSAGE_GOODBYE = "HUAT AH!";
     private static final String MESSAGE_LOADING = "Loading from save... ";
 
-    /** Decorative prefix for the FINUX Interface */
+    /** Decorative prefix for the FINUX Interface. */
     private static final String FINUX_PREFIX = "$$";
 
     private final Scanner input;

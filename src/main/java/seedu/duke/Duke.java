@@ -26,7 +26,9 @@ public class Duke {
         new Duke().run();
     }
 
-    /** Runner for the FINUX Application */
+    /**
+     * Runner for the FINUX Application.
+     */
     private void run() {
         start();
         commandLooper();
@@ -47,6 +49,6 @@ public class Duke {
         do {
             rawInput = ui.getUserInput();
             System.out.println("You have entered: " + rawInput);
-        } while(!rawInput.equals("exit"));
+        } while (!rawInput.equals("exit"));
     }
 }
