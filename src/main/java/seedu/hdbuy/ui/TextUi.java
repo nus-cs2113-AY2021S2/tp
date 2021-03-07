@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    /** Number of dashes for the separator */
+    /** Number of dashes for the separator. */
     private static final int SEPARATOR_LENGTH = 80;
 
     public void showSeparator() {
-        for(int i = 0; i < SEPARATOR_LENGTH; i++) {
+        for (int i = 0; i < SEPARATOR_LENGTH; i++) {
             System.out.print('-');
         }
         System.out.print('\n');

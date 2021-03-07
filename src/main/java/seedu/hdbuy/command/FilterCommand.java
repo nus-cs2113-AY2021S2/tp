@@ -7,9 +7,10 @@ import java.util.HashMap;
 
 public class FilterCommand extends Command {
 
-    protected String criteria, value;
+    protected String criteria;
+    protected String value;
 
-    public FilterCommand (String criteria, String value) {
+    public FilterCommand(String criteria, String value) {
         this.criteria = criteria;
         this.value = value;
     }

@@ -5,7 +5,7 @@ import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
 
-public class CloseCommand extends Command{
+public class CloseCommand extends Command {
 
     @Override
     public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {

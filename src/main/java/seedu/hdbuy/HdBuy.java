@@ -17,6 +17,7 @@ public class HdBuy {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
+
     public static void main(String[] args) {
         HashMap<QueryKey,String> inputs = new HashMap<>();
         ui.showWelcome();

@@ -1,9 +1,16 @@
 package seedu.hdbuy.parser;
 
-import seedu.hdbuy.command.*;
+import seedu.hdbuy.command.CloseCommand;
+import seedu.hdbuy.command.Command;
+import seedu.hdbuy.command.DefaultCommand;
+import seedu.hdbuy.command.FilterCommand;
+import seedu.hdbuy.command.FindCommand;
+import seedu.hdbuy.command.HelpCommand;
 
 public class Parser {
-    private String keyCommand, criteria, value;
+    private String keyCommand;
+    private String criteria;
+    private String value;
 
     public Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
@@ -21,6 +28,8 @@ public class Parser {
         case "exit":
             command = new CloseCommand();
             break;
+        default:
+            break;
         }
         return command;
     }
@@ -33,6 +42,8 @@ public class Parser {
         case "filter":
             criteria = lineParts[1];
             value = lineParts[2];
+            break;
+        default:
             break;
         }
     }
