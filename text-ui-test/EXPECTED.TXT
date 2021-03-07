@@ -1,13 +1,7 @@
 -----------------------
 Welcome to our amazing canteen review application!!
 -----------------------
------------------------
-Please select a canteen:
-1.The deck
-2.Utown Frangrant
------------------------
-chicken rice stall
-Fish rice stall
+File Path was not found!
 -----------------------
 Thank you for using our application! See you again!
 -----------------------
