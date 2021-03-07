@@ -12,11 +12,11 @@ import seedu.hdbuy.data.exception.GatewayException;
 public class GetRequest {
 
     private static final String URL =
-        "https://data.gov.sg/api/action/datastore_search" +
-        "?resource_id=42ff9cfe-abe5-4b54-beda-c88f9bb438ee&q=";
+        "https://data.gov.sg/api/action/datastore_search"
+        + "?resource_id=42ff9cfe-abe5-4b54-beda-c88f9bb438ee&q=";
     private static final String REQUEST_PROPERTY =
-        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko)" +
-        " Chrome/23.0.1271.95 Safari/537.11";
+        "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko)"
+        + " Chrome/23.0.1271.95 Safari/537.11";
     private static final String REQUEST_PROPERTY_HEADER = "User-Agent";
     private static final String REQUEST_METHOD = "GET";
 
@@ -29,13 +29,13 @@ public class GetRequest {
     public static HashMap<Integer, Unit> getResponse(String query) throws EmptyResponseException {
         try {
             URL url = new URL(URL + query);
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestProperty(REQUEST_PROPERTY_HEADER, REQUEST_PROPERTY);
-            httpURLConnection.setRequestMethod(REQUEST_METHOD);
-            httpURLConnection.connect();
-            HashMap<Integer, Unit> units = ResponseDecoder.
-                decodeResponse(httpURLConnection.getInputStream());
-            httpURLConnection.disconnect();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty(REQUEST_PROPERTY_HEADER, REQUEST_PROPERTY);
+            connection.setRequestMethod(REQUEST_METHOD);
+            connection.connect();
+            HashMap<Integer, Unit> units = ResponseDecoder
+                .decodeResponse(connection.getInputStream());
+            connection.disconnect();
             return units;
         } catch (GatewayException | IOException exception) {
             System.out.println(exception.getMessage());

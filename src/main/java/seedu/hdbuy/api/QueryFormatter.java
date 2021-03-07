@@ -30,6 +30,8 @@ public class QueryFormatter {
                 String lease = String.format("\"remaining_lease\":\"%s\"", value);
                 queryBody.append(lease);
                 break;
+            default:
+                continue;
             }
             queryBody.append(",");
         }
