@@ -6,18 +6,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 
+import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.data.Unit;
+import seedu.hdbuy.data.exception.EmptyResponseException;
 
 public class ApiRepository {
 
-    public static HashMap<Integer, Unit> fetchByLocation(String location) {
-        String query = String.format("{\"town\":\"%s\"}&limit=50", location);
-        return GetRequest.getResponse(query);
+    public static HashMap<Integer, Unit> fetchUnits(HashMap<QueryKey,String> inputs) {
+        String query = QueryFormatter.formQuery(inputs);
+        try {
+            return GetRequest.getResponse(query);
+        } catch (EmptyResponseException emptyResponseException) {
+            System.out.println(emptyResponseException.getMessage());
+            return new HashMap<Integer, Unit>();
+        }
     }
-
-    public static HashMap<Integer, Unit> fetchByType(String type) {
-        String query = String.format("{\"flat_type\":\"%s\"}&limit=50", type);
-        return GetRequest.getResponse(query);
-    }
-
 }
