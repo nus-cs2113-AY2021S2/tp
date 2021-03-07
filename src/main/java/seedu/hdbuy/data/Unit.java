@@ -51,7 +51,7 @@ public class Unit {
 
     @Override
     public String toString() {
-        return "Hash ID: " + getId() + " - Address: " + getAddress() +
-            " - Type: " + getType() + " - Lease: " + getLease() + " -  Price: $" + getPrice();
+        return "Hash ID: " + getId() + " - Address: " + getAddress() + " - Type: "
+            + getType() + " - Lease: " + getLease() + " -  Price: $" + getPrice();
     }
 }

@@ -12,9 +12,6 @@ public class HdBuy {
      */
     public static void main(String[] args) {
         System.out.println("Parameters: location = jurong, type = 4 room, lease = 95 years\n");
-
-//        Scanner in = new Scanner(System.in);
-
         HashMap<QueryKey,String> inputs = new HashMap<>();
         inputs.put(QueryKey.LOCATION, "jurong");
         inputs.put(QueryKey.TYPE, "4 room");
