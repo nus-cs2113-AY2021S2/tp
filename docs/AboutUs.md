@@ -9,3 +9,4 @@ Display | Name | Github Profile | Portfolio
 ![](https://via.placeholder.com/100.png?text=Photo) | Don Roe | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
 ![](https://via.placeholder.com/100.png?text=Photo) | Wonjae Choi | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
 ![](https://via.placeholder.com/100.png?text=Photo) | Sim Bowen | [Github](https://github.com/SimBowen) | [Portfolio](docs/team/johndoe.md)
+![](https://via.placeholder.com/100.png?text=Photo) | Shuhao | [Github](https://github.com/) | [Portfolio](docs/team/johndoe.md)
