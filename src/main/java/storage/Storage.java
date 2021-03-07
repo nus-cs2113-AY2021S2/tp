@@ -22,7 +22,7 @@ public class Storage {
             File canteenFile = new File(filePath);
             Scanner fileReader = new Scanner(canteenFile);
             readFiles(fileReader);
-        } catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File Path was not found!");
         }
         return canteens;
@@ -31,7 +31,7 @@ public class Storage {
     private static void readFiles(Scanner fileReader) {
         Canteen canteen = null;
         Store store = null;
-        while(fileReader.hasNextLine()) {
+        while (fileReader.hasNextLine()) {
             String line = fileReader.nextLine();
             String[] storedLine = line.split("<>");
             if (storedLine[0].equals("canteen")) {
