@@ -7,8 +7,8 @@ Display | Name | Github Profile | Portfolio
 
 ![alt text](team/hwq_pic.png) | Hu Wenqi | [Github](https://github.com/Vinci-Hu) | [Portfolio](team/wenqihu.md)
 
-![](https://via.placeholder.com/100.png?text=Photo) | Kim Joohwan | [Github](https://github.com/joohwan58) | [Portfolio](team/joohwan.md)
+![](team/JoohwanPic.png) | Kim Joohwan | [Github](https://github.com/joohwan58) | [Portfolio](team/joohwan.md)
 
 ![img.png](team/lyp_pic.png)| Lee Yang Peng | [Github](https://github.com/Leeyp) | [Portfolio](team/leeyp.md)
 
-![](https://via.placeholder.com/100.png?text=Photo) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)
+![image](team/sjj_pic.png) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)
