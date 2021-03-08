@@ -21,6 +21,8 @@ public class Links {
                 break;
             case 3:
                 //exit
+            default:
+                Ui.printInvalidIntegerMessage();
             }
         }
     }
