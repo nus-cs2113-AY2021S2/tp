@@ -1,16 +1,11 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
-import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,9 +31,9 @@ class DeleteLessonCommandTest extends LessonCommandTest {
         initialisedIndexes(indexes);
         removeOutputStream();
 
-        os = getOutputStream();
+        OutputStream newOs = getOutputStream();
         DeleteLessonCommand.deleteLessonsFromList(module, module.getLessonList(), indexes);
-        assertEquals(EXPECTED_OUTPUT, os.toString());
+        assertEquals(EXPECTED_OUTPUT, newOs.toString());
         removeOutputStream();
     }
 }

@@ -1,18 +1,13 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
-import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ViewTeachingStaffCommandTest extends LessonCommandTest {
 
@@ -32,9 +27,9 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
         Command command = new ViewTeachingStaffCommand();
         removeOutputStream();
 
-        os = getOutputStream();
+        OutputStream newOs = getOutputStream();
         command.execute(moduleList, ui);
-        assertEquals(EXPECTED_OUTPUT, os.toString());
+        assertEquals(EXPECTED_OUTPUT, newOs.toString());
         removeOutputStream();
     }
 }

@@ -8,12 +8,12 @@ import seedu.duke.ui.UI;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class OpenLessonLinkCommandTest extends LessonCommandTest{
+class OpenLessonLinkCommandTest extends LessonCommandTest {
 
-    public static final String EXPECTED_OUTPUT = "Opening tutorial link in browser." + System.lineSeparator() +
-            "Opening lab link in browser." + System.lineSeparator();
+    public static final String EXPECTED_OUTPUT = "Opening tutorial link in browser." + System.lineSeparator()
+            + "Opening lab link in browser." + System.lineSeparator();
 
     @Test
     void printLessonsLink() {
@@ -21,6 +21,7 @@ class OpenLessonLinkCommandTest extends LessonCommandTest{
         UI ui = new UI();
 
         OutputStream os = getOutputStream();
+
         Module module = new Module(MODULE_CODE);
         String moduleCode = module.getModuleCode();
         boolean isModuleSelected = ModuleList.setSelectedModule(module);
@@ -29,9 +30,9 @@ class OpenLessonLinkCommandTest extends LessonCommandTest{
         initialisedIndexes(indexes);
         removeOutputStream();
 
-        os = getOutputStream();
-        OpenLessonLinkCommand.printLessonsLink(module.getLessonList(),indexes);
-        assertEquals(EXPECTED_OUTPUT,os.toString());
+        OutputStream newOs = getOutputStream();
+        OpenLessonLinkCommand.printLessonsLink(module.getLessonList(), indexes);
+        assertEquals(EXPECTED_OUTPUT, newOs.toString());
         removeOutputStream();
     }
 }

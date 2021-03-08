@@ -9,7 +9,7 @@ import seedu.duke.ui.UI;
 
 import java.io.OutputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AddLessonCommandTest extends LessonCommandTest {
 
