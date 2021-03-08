@@ -3,19 +3,38 @@ package seedu.duke;
 import java.util.Scanner;
 
 public class Duke {
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
 
+        printWelcomeMessage();
+
+        String input;
         Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        input = in.nextLine();
+
+        boolean isBye = false;
+        while (!isBye) {
+            switch (input.toLowerCase()) {
+            case "bye":
+                isBye = true;
+                printByeMessage();
+                break;
+            default:
+                System.out.println(input + "\n");
+                input = in.nextLine();
+                break;
+            }
+        }
+
+
+
+    }
+
+    private static void printByeMessage() {
+        System.out.println("Bye. Hope to see you again soon!\n");
+    }
+
+    private static void printWelcomeMessage() {
+        System.out.println("Hello! I'm FridgeFriend!");
+        System.out.println("What can I do for you?\n");
     }
 }
