@@ -32,6 +32,20 @@ public class Ui {
                 + "[4] --- Exit to main menu\n");
     }
 
+    public static void printModuleInfoMessage() {
+        System.out.println("Welcome to the module information menu ^~^\n"
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- Add/View Module Description\n"
+                + "[2] --- Add/View Components and Their Weightages\n"
+                + "[3] --- Add Zoom Links\n"
+                + "[4] --- Add a New Task\n"
+                + "[5] --- Add a Review\n"
+                + "[6] --- View All Reviews\n"
+                + "[7] --- Delete modules\n"
+                + "[8] --- Delete tasks\n"
+                + "[9] --- Exit to main menu\n");
+    }
+
     public static void printInvalidIntegerMessage() {
         System.out.println("Please enter a valid integer from the menu.");
     }
