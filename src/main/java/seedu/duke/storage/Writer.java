@@ -1,12 +1,13 @@
 package seedu.duke.storage;
 
-import seedu.duke.common.Constants;
-import seedu.duke.common.Messages;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
+
+import static seedu.duke.common.Messages.FILE_INSTRUCTIONS;
+import static seedu.duke.common.StorageConstants.*;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,8 +26,8 @@ public class Writer {
     public void createFile(String name) {
         try {
             checkForDirectory();
-            String fileName = name + Constants.FILE_FORMAT;
-            File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+            String fileName = name + TXT_FORMAT;
+            File path = new File(FOLDER_PATH + "/" + fileName);
             if (!path.createNewFile()) {
                 return;
             }
@@ -48,8 +49,8 @@ public class Writer {
      * @return True if file is gone, false if file is still around.
      */
     public boolean deleteFile(String name) {
-        String fileName = name + Constants.FILE_FORMAT;
-        File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+        String fileName = name + TXT_FORMAT;
+        File path = new File(FOLDER_PATH + "/" + fileName);
         if (path.exists()) {
             return path.delete();
         }
@@ -63,7 +64,7 @@ public class Writer {
      * @throws IOException Unable to create directory.
      */
     private void checkForDirectory() throws IOException {
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         if (directory.exists() && directory.isDirectory()) {
             return;
         }
@@ -100,8 +101,8 @@ public class Writer {
      */
     private File getFile(Module module) throws IOException {
         String name = module.getModuleCode();
-        String fileName = name + Constants.FILE_FORMAT;
-        File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+        String fileName = name + TXT_FORMAT;
+        File path = new File(FOLDER_PATH + "/" + fileName);
         if (!path.exists()) {
             //File does not exist
             createFile(name);
@@ -118,7 +119,7 @@ public class Writer {
      * @throws IOException Unable to write to file.
      */
     private void writeInstructions(FileWriter fileWriter, String name) throws IOException {
-        fileWriter.write(name + Messages.FILE_INSTRUCTIONS);
+        fileWriter.write(name + FILE_INSTRUCTIONS);
     }
 
 
@@ -131,11 +132,11 @@ public class Writer {
      */
     private void writeLessons(FileWriter fileWriter, Module module) throws IOException {
         for (Lesson lesson : module.getLessonList()) {
-            String entry = Constants.KEYWORD_LESSON;
-            entry += getLessonTypeString(lesson.getLessonType()) + Constants.DIVIDER_WRITE;
-            entry += lesson.getTime() + Constants.DIVIDER_WRITE;
-            entry += lesson.getOnlineLink() + Constants.DIVIDER_WRITE;
-            entry += lesson.getTeachingStaff().getName() + Constants.DIVIDER_WRITE;
+            String entry = KEYWORD_LESSON;
+            entry += getLessonTypeString(lesson.getLessonType()) + DIVIDER_WRITE;
+            entry += lesson.getTime() + DIVIDER_WRITE;
+            entry += lesson.getOnlineLink() + DIVIDER_WRITE;
+            entry += lesson.getTeachingStaff().getName() + DIVIDER_WRITE;
             entry += lesson.getTeachingStaff().getEmail();
             fileWriter.write(entry + '\n');
         }
@@ -151,13 +152,13 @@ public class Writer {
      */
     private void writeTasks(FileWriter fileWriter, Module module) throws IOException {
         for (Task task : module.getTaskList()) {
-            String entry = Constants.KEYWORD_TASK;
-            entry += task.getDescription() + Constants.DIVIDER_WRITE;
-            entry += getDeadlineString(task.getDeadline()) + Constants.DIVIDER_WRITE;
-            entry += getTrueFalseString(task.getDone()) + Constants.DIVIDER_WRITE;
+            String entry = KEYWORD_TASK;
+            entry += task.getDescription() + DIVIDER_WRITE;
+            entry += getDeadlineString(task.getDeadline()) + DIVIDER_WRITE;
+            entry += getTrueFalseString(task.getDone()) + DIVIDER_WRITE;
             entry += getTrueFalseString(task.getGraded());
             if (task.getRemarks().length() > 0) {
-                entry += Constants.DIVIDER_WRITE + task.getRemarks();
+                entry += DIVIDER_WRITE + task.getRemarks();
             }
             fileWriter.write(entry + '\n');
         }
@@ -173,13 +174,13 @@ public class Writer {
     private String getLessonTypeString(LessonType lessonType) {
         switch (lessonType) {
         case LECTURE: {
-            return Constants.TYPE_LECTURE;
+            return TYPE_LECTURE;
         }
         case TUTORIAL: {
-            return Constants.TYPE_TUTORIAL;
+            return TYPE_TUTORIAL;
         }
         default: {
-            return Constants.TYPE_LAB;
+            return TYPE_LAB;
         }
         }
     }
@@ -192,7 +193,7 @@ public class Writer {
      * @return String of deadline.
      */
     private String getDeadlineString(LocalDate deadline) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_IO_FORMAT);
         return deadline.format(formatter);
     }
 

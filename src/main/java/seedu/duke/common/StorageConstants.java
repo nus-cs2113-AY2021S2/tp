@@ -4,13 +4,13 @@ package seedu.duke.common;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Constants {
+public class StorageConstants {
 
     public static final String DATE_IO_FORMAT = "d-M-yyyy";
 
     //Storage
     public static final String FOLDER_PATH = "Data";
-    public static final String FILE_FORMAT = ".txt";
+    public static final String TXT_FORMAT = ".txt";
     public static final String STOP_LINE = "------------";
     public static final String DIVIDER_READ = "\\|";
     public static final String DIVIDER_WRITE = " | ";

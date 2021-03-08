@@ -1,12 +1,12 @@
 package seedu.duke.storage;
 
-import seedu.duke.common.Constants;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
-import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
+
+import static seedu.duke.common.StorageConstants.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,15 +24,15 @@ public class Loader {
      */
     public ArrayList<String> getModuleNames() {
         ArrayList<String> names = new ArrayList<>();
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
         if (files == null) {
             return names;
         }
         for (File file : files) {
             String name = file.getName();
-            if (name.endsWith(Constants.FILE_FORMAT)) {
-                names.add(name.replace(Constants.FILE_FORMAT, ""));
+            if (name.endsWith(TXT_FORMAT)) {
+                names.add(name.replace(TXT_FORMAT, ""));
             }
         }
         return names;
@@ -46,9 +46,9 @@ public class Loader {
      * @return Loaded module.
      */
     public Module loadModule(String name) {
-        String fileName = name + Constants.FILE_FORMAT;
+        String fileName = name + TXT_FORMAT;
         Module module = new Module(name);
-        File path = new File(Constants.FOLDER_PATH + "/" + fileName);
+        File path = new File(FOLDER_PATH + "/" + fileName);
         try {
             Scanner scanner = new Scanner(path);
             readTillLine(scanner);
@@ -70,7 +70,7 @@ public class Loader {
     private void readTillLine(Scanner scanner) {
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
-            if (input.startsWith(Constants.STOP_LINE)) {
+            if (input.startsWith(STOP_LINE)) {
                 return;
             }
         }
@@ -87,9 +87,9 @@ public class Loader {
     private void readData(Scanner scanner, Module module) {
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
-            if (input.startsWith(Constants.KEYWORD_LESSON)) {
+            if (input.startsWith(KEYWORD_LESSON)) {
                 readLessonData(input, module);
-            } else if (input.startsWith(Constants.KEYWORD_TASK)) {
+            } else if (input.startsWith(KEYWORD_TASK)) {
                 readTaskData(input, module);
             }
         }
@@ -103,25 +103,25 @@ public class Loader {
      * @param module Module to add data to.
      */
     private void readLessonData(String input, Module module) {
-        String[] fields = input.split(Constants.DIVIDER_READ);
-        if (!Constants.ENTRY_SIZE_LESSON.contains(fields.length)) {
+        String[] fields = input.split(DIVIDER_READ);
+        if (!ENTRY_SIZE_LESSON.contains(fields.length)) {
             //Invalid format
             return;
         }
-        LessonType lessonType = getLessonType(fields[Constants.INDEX_TYPE].trim());
+        LessonType lessonType = getLessonType(fields[INDEX_TYPE].trim());
         if (lessonType == null) {
             //Invalid lesson type
             return;
         }
-        String time = fields[Constants.INDEX_DAY_TIME].trim();
+        String time = fields[INDEX_DAY_TIME].trim();
         String link = "";
-        if (fields.length >= Constants.ENTRY_LESSON_MEDIUM) {
-            link = fields[Constants.INDEX_LINK].trim();
+        if (fields.length >= ENTRY_LESSON_MEDIUM) {
+            link = fields[INDEX_LINK].trim();
         }
         TeachingStaff teachingStaff = new TeachingStaff("","");
-        if (fields.length == Constants.ENTRY_LESSON_LONG) {
-            teachingStaff.setName(fields[Constants.INDEX_TEACHER_NAME].trim());
-            teachingStaff.setEmail(fields[Constants.INDEX_TEACHER_EMAIL].trim());
+        if (fields.length == ENTRY_LESSON_LONG) {
+            teachingStaff.setName(fields[INDEX_TEACHER_NAME].trim());
+            teachingStaff.setEmail(fields[INDEX_TEACHER_EMAIL].trim());
         }
         Lesson lesson = new Lesson(lessonType, time, link, teachingStaff);
         module.addLesson(lesson);
@@ -136,13 +136,13 @@ public class Loader {
      */
     private LessonType getLessonType(String input) {
         switch (input.toLowerCase()) {
-        case Constants.TYPE_LECTURE: {
+        case TYPE_LECTURE: {
             return LessonType.LECTURE;
         }
-        case Constants.TYPE_TUTORIAL: {
+        case TYPE_TUTORIAL: {
             return LessonType.TUTORIAL;
         }
-        case Constants.TYPE_LAB: {
+        case TYPE_LAB: {
             return LessonType.LAB;
         }
         default: {
@@ -159,22 +159,22 @@ public class Loader {
      * @param module Module to add data to.
      */
     private void readTaskData(String input, Module module) {
-        String[] fields = input.split(Constants.DIVIDER_READ);
-        if (!Constants.ENTRY_SIZE_TASK.contains(fields.length)) {
+        String[] fields = input.split(DIVIDER_READ);
+        if (!ENTRY_SIZE_TASK.contains(fields.length)) {
             //Invalid format
             return;
         }
-        String description = fields[Constants.INDEX_DESCRIPTION].trim();
-        LocalDate deadline = getDeadline(fields[Constants.INDEX_DEADLINE].trim());
+        String description = fields[INDEX_DESCRIPTION].trim();
+        LocalDate deadline = getDeadline(fields[INDEX_DEADLINE].trim());
         if (deadline == null) {
             //Invalid deadline
             return;
         }
-        boolean isDone = getTrueFalse(fields[Constants.INDEX_IS_DONE].trim());
-        boolean isGraded = getTrueFalse(fields[Constants.INDEX_IS_GRADED].trim());
+        boolean isDone = getTrueFalse(fields[INDEX_IS_DONE].trim());
+        boolean isGraded = getTrueFalse(fields[INDEX_IS_GRADED].trim());
         String remarks = "";
-        if (fields.length == Constants.ENTRY_TASK_LONG) {
-            remarks = fields[Constants.INDEX_REMARKS].trim();
+        if (fields.length == ENTRY_TASK_LONG) {
+            remarks = fields[INDEX_REMARKS].trim();
         }
         Task task = new Task(description, remarks, deadline, isDone, isGraded);
         module.addTask(task);
@@ -189,7 +189,7 @@ public class Loader {
      */
     private LocalDate getDeadline(String input) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_IO_FORMAT);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_IO_FORMAT);
             return LocalDate.parse(input, formatter);
         } catch (DateTimeParseException e) {
             //invalid deadline

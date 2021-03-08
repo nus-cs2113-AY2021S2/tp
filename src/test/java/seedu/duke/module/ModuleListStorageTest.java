@@ -1,9 +1,11 @@
 package seedu.duke.module;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.common.Constants;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
+
+import static seedu.duke.common.StorageConstants.FOLDER_PATH;
+import static seedu.duke.common.StorageConstants.TXT_FORMAT;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,9 +27,9 @@ class ModuleListStorageTest {
     @Test
     void loadModuleNames_oneInvalidFile_sizeZero() throws IOException {
         //Ensure that "Data" folder is deleted before running
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
-        File file1 = new File(Constants.FOLDER_PATH + "/" + "CS2113T.img");
+        File file1 = new File(FOLDER_PATH + "/" + "CS2113T.img");
         file1.createNewFile();
         ModuleList.loadModuleNames(new Loader());
         assertEquals(0, ModuleList.getModuleList().size());
@@ -36,11 +38,11 @@ class ModuleListStorageTest {
     @Test
     void loadModuleNames_twoDifferentModules_sizeTwo() throws IOException {
         //Ensure that "Data" folder is deleted before running
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
-        File file1 = new File(Constants.FOLDER_PATH + "/" + "CS2113T" + Constants.FILE_FORMAT);
+        File file1 = new File(FOLDER_PATH + "/" + "CS2113T" + TXT_FORMAT);
         file1.createNewFile();
-        File file2 = new File(Constants.FOLDER_PATH + "/" + "CS2101" + Constants.FILE_FORMAT);
+        File file2 = new File(FOLDER_PATH + "/" + "CS2101" + TXT_FORMAT);
         file2.createNewFile();
         ModuleList.loadModuleNames(new Loader());
         assertEquals(2, ModuleList.getModuleList().size());
@@ -49,9 +51,9 @@ class ModuleListStorageTest {
     @Test
     void loadModuleNames_twoSameModules_sizeTwo() throws IOException {
         //Ensure that "Data" folder is deleted before running
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
-        File file1 = new File(Constants.FOLDER_PATH + "/" + "CS2113T" + Constants.FILE_FORMAT);
+        File file1 = new File(FOLDER_PATH + "/" + "CS2113T" + TXT_FORMAT);
         file1.createNewFile();
         file1.createNewFile();
         ModuleList.loadModuleNames(new Loader());
@@ -115,7 +117,7 @@ class ModuleListStorageTest {
 
     @Test
     void setSelectedModule_validName_loadsModule() throws IOException {
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/all_content_reference.txt");
         Path destination = Paths.get("Data/CS2113T.txt");
@@ -130,7 +132,7 @@ class ModuleListStorageTest {
 
     @Test
     void setSelectedModule_invalidName_remainNull() throws IOException {
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/all_content_reference.txt");
         Path destination = Paths.get("Data/CS2113T.txt");
@@ -147,7 +149,7 @@ class ModuleListStorageTest {
 
     @Test
     void setSelectedModule_invalidFile_remainNull() throws IOException {
-        File directory = new File(Constants.FOLDER_PATH);
+        File directory = new File(FOLDER_PATH);
         directory.mkdir();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/invalid_file_reference.txt");
         Path destination = Paths.get("Data/CS2113T.txt");
