@@ -17,11 +17,13 @@ public class LessonCommandTest {
     public static final String TEACHER_NAME = "Ivan Chong Zhi En";
     public static final String TEACHER_EMAIL = "ivanchong@zhi.en";
     public static final String TIME = "Wednesday 9 am - 10am";
-    public static final String ONLINE_LINK = "https://youtu.be/dQw4w9WgXcQ";
+    public static final String ONLINE_LINK =
+            "https://nus-sg.zoom.us/j/84226026127?pwd=anl2M0NuVTRERVZFVEVNaHZjOW55Zz09";
     public static final String TEACHER_NAME1 = "Isa Bin Haron";
     public static final String TEACHER_EMAIL1 = "isa@bin.haron";
     public static final String TIME1 = "Wednesday 9 pm - 10 pm";
-    public static final String ONLINE_LINK1 = "https://youtu.be/YnopHCL1Jk8";
+    public static final String ONLINE_LINK1 =
+            "https://nus-sg.zoom.us/j/87612003377?pwd=NC9OU0hDYU50NmxwZjVURVB1L0NJdz09";
     public static final int FIRST_INDEX = 1;
     public static final int SECOND_INDEX = 2;
 
