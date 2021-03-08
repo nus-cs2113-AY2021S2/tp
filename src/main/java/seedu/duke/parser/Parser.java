@@ -46,6 +46,8 @@ public class Parser {
     // String Constants
     public static final String DELIM = "\\s+;;\\s+";
     public static final String WHITESPACE = " ";
+    public static final String DATE_INPUT_FORMAT = "d-M-yyyy";
+    
     
     // Lesson parser constants
     public static final int LESSON_TYPE_INDEX = 0;
@@ -91,36 +93,26 @@ public class Parser {
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
     private Command parseAtDashboard(String input) throws UnknownCommandException {
-        Command command;
         int commandCode = parseDashboardCommandFromInput(input);
         String moduleCode;
 
         switch (commandCode) {
         case ADD_MODULE:
             moduleCode = getModuleCode(input);
-            command = new AddModuleCommand(moduleCode);
-            break;
+            return new AddModuleCommand(moduleCode);
         case DEL_MODULE:
-            moduleCode = getModuleCode(input);
-            command = new DeleteModuleCommand(moduleCode);
-            break;
+            return new DeleteModuleCommand();
         case LIST_MODULE:
-            command = new ListModuleCommand();
-            break;
+            return new ListModuleCommand();
         case ENTER_MODULE:
-            command = new EnterModuleCommand(input);
-            break;
+            return new EnterModuleCommand(input);
         case PRINT_HELP:
-            command = new PrintHelpCommand();
-            break;
+            return new PrintHelpCommand();
         case EXIT_PROGRAM:
-            command = new ExitProgramCommand();
-            break;
+            return new ExitProgramCommand();
         default:
             throw new UnknownCommandException();
         }
-
-        return command;
     }
 
     /**
@@ -177,13 +169,14 @@ public class Parser {
      */
     private boolean isValidModuleName(String name) {
         // TODO - add stricter checks
-        boolean isValid;
-        String[] words = name.split(WHITESPACE);
-
-        // ensure there is only one word
-        isValid = words.length == 1;
-
-        return isValid;
+        String[] words = name.trim().split(WHITESPACE);
+        
+        // check that input is one word
+        if (!(words.length == 1)) {
+            return false;
+        }
+        
+        return true;
     }
 
     /**
@@ -206,56 +199,40 @@ public class Parser {
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
     private Command parseInModule(String input) throws UnknownCommandException {
-        Command command;
         int commandCode = parseInModuleCommandsFromInput(input);
-        String moduleCode;
 
         switch (commandCode) {
         case PRINT_HELP_MODULE:
-            command = new PrintHelpCommand();
-            break;
+            return new PrintHelpCommand();
         case EXIT_MODULE:
-            command = new ExitModuleCommand();
-            break;
+            return new ExitModuleCommand();
         case LIST_MODULE_INFO:
-            command = new ListModuleInfoCommand();
-            break;
+            return new ListModuleInfoCommand();
         case LIST_LESSONS:
-            command = new ListLessonsCommand();
-            break;
+            return new ListLessonsCommand();
         case OPEN_LINK:
-            command = new OpenLessonLinkCommand();
-            break;
+            return new OpenLessonLinkCommand();
         case LIST_TASKS:
-            command = new ListTasksCommand();
-            break;
+            return new ListTasksCommand();
         case MARK_DONE:
-            command = new MarkAsDoneCommand();
-            break;
+            return new MarkAsDoneCommand();
         case UNMARK_DONE:
-            command = new MarkAsUndoneCommand();
-            break;
+            return new MarkAsUndoneCommand();
         case LIST_TEACHING_STAFF:
-            command = new ViewTeachingStaffCommand();
-            break;
+            return new ViewTeachingStaffCommand();
         case ADD_LESSON:
             Lesson newLesson = parseNewLessonDetails(input);
-            command = new AddLessonCommand(newLesson);
-            break;
+            return new AddLessonCommand(newLesson);
         case DEL_LESSON:
-            command = new DeleteLessonCommand();
-            break;
+            return new DeleteLessonCommand();
         case ADD_TASK:
             Task newTask = parseNewTaskDetails(input);
-            command = new AddLessonCommand(newTask);
-            break;
+            return new AddLessonCommand(newTask);
         case DEL_TASK:
-            command = new DeleteTaskCommand();
-            break;
+            return new DeleteTaskCommand();
         default:
             throw new UnknownCommandException();
         }
-        return command;
     }
 
     /**
@@ -323,7 +300,7 @@ public class Parser {
 
         // Creating Lesson Object
         String type = allDetails[LESSON_TYPE_INDEX].toUpperCase();
-        // throws "illegal argument exception" if enum value is wrong
+        // TODO - throw "illegal argument exception" if enum value is invalid
         LessonType TYPE = LessonType.valueOf(type);
         String timeAndDay = allDetails[LESSON_TIME_DAY_INDEX];
         String link = allDetails[LESSON_LINK_INDEX];
@@ -348,7 +325,7 @@ public class Parser {
         Arrays.fill(allDetails, "");
 
         // to remove only the first two words "add task"
-        String[] taskDetails = input.trim().split(" ", 3);
+        String[] taskDetails = input.trim().split(WHITESPACE, 3);
 
         // split the details field using DELIMITER to get the individual detail fields
         String[] details = taskDetails[2].split(DELIM);
@@ -360,6 +337,7 @@ public class Parser {
         }
 
         // Creating Task object
+        // TODO - throw exception for invalid deadline
         String description = allDetails[TASK_DESCRIPTION_INDEX];
         String deadlineString = allDetails[TASK_DEADLINE_INDEX];
         LocalDate deadline = convertToDate(deadlineString);
@@ -376,7 +354,7 @@ public class Parser {
      * @throws DateTimeParseException if invalid input format / invalid date given
      */
     private LocalDate convertToDate(String string) throws DateTimeParseException {
-        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern("d-M-yyyy");
+        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(DATE_INPUT_FORMAT);
 
         return LocalDate.parse(string, parseFormat);
     }
