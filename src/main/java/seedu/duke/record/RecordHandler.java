@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class RecordHandler {
     private ArrayList<Record> recordList;
 
+    public RecordHandler() {
+        recordList = new ArrayList<>();
+    }
+
     public RecordHandler(ArrayList<Record> recordList) {
         this.recordList = recordList;
     }
