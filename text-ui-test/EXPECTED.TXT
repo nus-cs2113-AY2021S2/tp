@@ -3,5 +3,11 @@ What can I do for you?
 
 James Gosling
 
+Great! I have added [pork] into your fridge.
+
+Sorry my friend, the description cannot be empty.
+
+Sorry my friend, please give a valid input.
+
 Bye. Hope to see you again soon!
 
