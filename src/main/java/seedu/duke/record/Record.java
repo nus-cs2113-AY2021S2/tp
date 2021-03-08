@@ -1,4 +1,13 @@
 package seedu.duke.record;
 
-public class Record {
+public abstract class Record {
+    private double amount;
+    private String issueDate;
+    private String description;
+
+    public Record(double amount, String issueDate, String description) {
+        this.amount = amount;
+        this.issueDate = issueDate;
+        this.description = description;
+    }
 }
