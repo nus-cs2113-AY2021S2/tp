@@ -8,7 +8,9 @@ import seedu.duke.ui.UI;
 
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +19,8 @@ import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
 public class OpenLessonLinkCommand extends Command {
     public static final String MESSAGE_OPEN_LESSON_LINK = "Which lesson’s link would you like to open?";
     public static final String OPEN_LESSON_LINK_FORMAT = "Opening %s link in browser." + System.lineSeparator();
-    public static final String MESSAGE_CANNOT_OPEN_LESSON_LINK = "Cannot open lesson link";
+    public static final String MESSAGE_CANNOT_OPEN_LESSON_LINK = "Cannot open lesson link" + System.lineSeparator();
+    public static final String LINUX_COMMAND = "xdg-open ";
     private final Scanner commandLineReader = new Scanner(System.in);
 
     public OpenLessonLinkCommand() {
@@ -50,12 +53,20 @@ public class OpenLessonLinkCommand extends Command {
     }
 
     public static void openLessonLink(String onlineLink) {
-        try {
-            Desktop desktop = java.awt.Desktop.getDesktop();
-            URI link = new URI(onlineLink);
-            desktop.browse(link);
-        } catch (Exception e) {
-            System.out.println(MESSAGE_CANNOT_OPEN_LESSON_LINK);
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+            try {
+                desktop.browse(new URI(onlineLink));
+            } catch (IOException | URISyntaxException e) {
+                System.out.print(MESSAGE_CANNOT_OPEN_LESSON_LINK);
+            }
+        } else {
+            Runtime runtime = Runtime.getRuntime();
+            try {
+                runtime.exec(LINUX_COMMAND + onlineLink);
+            } catch (IOException e) {
+                System.out.print(MESSAGE_CANNOT_OPEN_LESSON_LINK);
+            }
         }
     }
 }
