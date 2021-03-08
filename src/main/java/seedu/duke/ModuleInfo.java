@@ -49,7 +49,6 @@ public class ModuleInfo {
                 System.out.println("Error! Enter an integer.");
             }
         }
-
     }
 
     private static void deleteTask() {
@@ -67,6 +66,35 @@ public class ModuleInfo {
     }
 
     private static void addNewTask() {
+        String dateAndTime = "";
+
+        Ui.printAddTaskMenu();
+        int taskNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+        Ui.printAddTaskModuleMessage(taskNumber);
+        String module = Ui.readCommand();
+        Ui.printHorizontalLine();
+        Ui.printAddTaskDescriptionMessage(taskNumber);
+        String description = Ui.readCommand();
+        Ui.printHorizontalLine();
+        if (taskNumber != 1) {
+            dateAndTime = TaskList.getDate(taskNumber) + ", " + TaskList.getTime(taskNumber);
+        }
+
+        switch (taskNumber) {
+        case 1:
+            TaskList.addTask(module, description);
+            break;
+        case 2:
+            TaskList.addAssignment(module, description, dateAndTime);
+            break;
+        case 3:
+            TaskList.addMidterm(module, description, dateAndTime);
+            break;
+        case 4:
+            TaskList.addFinal(module, description, dateAndTime);
+        }
+
     }
 
     private static void addZoomLinks() {
