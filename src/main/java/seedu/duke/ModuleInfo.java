@@ -12,8 +12,8 @@ public class ModuleInfo {
             String command = input.nextLine();
             try {
                 int taskNumber = Integer.parseInt(command);
-                if (taskNumber == 1) {
-                    break;
+                if (taskNumber == 9) {
+                    break; // exit option
                 }
                 switch (taskNumber) {
                 case 1:
@@ -40,13 +40,11 @@ public class ModuleInfo {
                 case 8:
                     deleteTask();
                     break;
-                case 9:
-                    break;
                 default:
-                    System.out.println("Please enter a valid integer from the list.");
+                    Ui.printInvalidIntegerMessage();
                 }
             } catch (NumberFormatException n) {
-                System.out.println("Error! Enter an integer.");
+                Ui.printInvalidIntegerMessage();
             }
         }
 
