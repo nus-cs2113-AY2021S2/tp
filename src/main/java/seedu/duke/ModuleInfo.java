@@ -58,6 +58,15 @@ public class ModuleInfo {
     }
 
     private static void deleteModule() {
+        System.out.println("Enter the module number to be deleted:");
+        Scanner input = new Scanner(System.in);
+        try {
+            String moduleNumberString = input.nextLine();
+            int moduleNumberInteger = Integer.parseInt(moduleNumberString);
+            modules.remove(modules.get(moduleNumberInteger));
+        } catch (NumberFormatException n) {
+            Ui.printInvalidIntegerMessage();
+        }
     }
 
     private static void viewAllReviews() {
