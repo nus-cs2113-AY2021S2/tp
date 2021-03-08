@@ -19,7 +19,8 @@ public class Food {
         this.foodName = foodName;
     }
 
-    public Food(FoodCategory category, String foodName, String storageDate, String expiryDate, FoodStorageLocation storageLocation) {
+    public Food(FoodCategory category, String foodName,
+                String storageDate, String expiryDate, FoodStorageLocation storageLocation) {
         this.category = category;
         this.foodName = foodName;
         this.storageDate = storageDate;

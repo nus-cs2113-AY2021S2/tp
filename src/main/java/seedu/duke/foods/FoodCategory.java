@@ -1,7 +1,7 @@
 package seedu.duke.foods;
 
 /**
- * Subject to changes with discussion
+ * Subject to changes with discussion.
  */
 public enum FoodCategory {
     VEGETABLE,      // e.g. eggplant, spinach, bok choy, including beans and fungus
