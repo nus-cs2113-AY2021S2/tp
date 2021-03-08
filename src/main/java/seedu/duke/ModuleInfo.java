@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModuleInfo {
@@ -13,7 +14,7 @@ public class ModuleInfo {
             try {
                 int taskNumber = Integer.parseInt(command);
                 if (taskNumber == 9) {
-                    break; // exit option
+                    break; // exit to Main Menu
                 }
                 switch (taskNumber) {
                 case 1:
@@ -60,8 +61,6 @@ public class ModuleInfo {
     }
 
     private static void addReview() {
-
-
     }
 
     private static void addNewTask() {
