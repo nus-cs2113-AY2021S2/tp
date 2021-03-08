@@ -46,8 +46,8 @@ class MarkAsUndoneCommandTest {
                 + "3. watch video snippets" + NEWLINE + NEWLINE
                 + "Please enter the indices of the tasks you would like to mark as undone." + NEWLINE
                 + "Separate indices with a blank space." + NEWLINE + NEWLINE
-                + "Marked iP increments as undone."+ NEWLINE
-                + "Marked watch video snippets as undone."+ NEWLINE;
+                + "Marked iP increments as undone." + NEWLINE
+                + "Marked watch video snippets as undone." + NEWLINE;
 
         // checks displayed output to user
         assertEquals(output, bos.toString());

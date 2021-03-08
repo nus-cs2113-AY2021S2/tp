@@ -22,19 +22,19 @@ public class CommandTestUtil {
     public static ArrayList<Task> initialiseTaskList(Module module) {
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         Task task1 = new Task("weekly exercise", deadline, "");
+        module.addTaskToList(task1);
         Task task2 = new Task("lecture quiz", deadline, "complete before next lecture");
+        module.addTaskToList(task2);
         Task task3 = new Task("iP increments", deadline, "remember to attach JAR file");
         task3.setDone(true);
+        module.addTaskToList(task3);
         Task task4 = new Task("read up notes", deadline, "complete before lecture");
+        module.addTaskToList(task4);
         Task task5 = new Task("tP milestone", deadline, "meet with team before merging");
         task5.setDone(true);
+        module.addTaskToList(task5);
         Task task6 = new Task("watch video snippets", deadline, "complete before lecture");
         task6.setDone(true);
-        module.addTaskToList(task1);
-        module.addTaskToList(task2);
-        module.addTaskToList(task3);
-        module.addTaskToList(task4);
-        module.addTaskToList(task5);
         module.addTaskToList(task6);
         return module.getTaskList();
     }

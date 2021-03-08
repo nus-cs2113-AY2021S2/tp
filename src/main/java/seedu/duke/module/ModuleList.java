@@ -14,7 +14,7 @@ public class ModuleList {
     public static boolean setSelectedModule(String name) {
         // dummy module created
         selectedModule = new Module(name);
-//        selectedModule = storage.loadModule(name);
+        // selectedModule = storage.loadModule(name);
         return true;
     }
 

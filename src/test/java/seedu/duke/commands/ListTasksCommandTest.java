@@ -39,6 +39,7 @@ class ListTasksCommandTest {
         module.addTaskToList(task3);
         module.addTaskToList(task4);
     }
+
     @Test
     void execute_tasksCommand_allTasksListedSuccessfully() {
         System.setOut(new PrintStream(bos));

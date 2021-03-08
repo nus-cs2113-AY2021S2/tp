@@ -51,10 +51,10 @@ public class UI {
         // store the tasks chosen by user to be deleted/marked/unmarked in a new array list
         ArrayList<Task> chosenTasks = new ArrayList<>();
         for (Integer index : indices) {
-            chosenTasks.add(taskList.get(index-1));
+            chosenTasks.add(taskList.get(index - 1));
         }
         return chosenTasks;
-//        return Parser.checkIndex(readCommand(), taskList.size());
+        // return Parser.checkIndex(readCommand(), taskList.size());
     }
 
     public void printStatement(String message) {
@@ -88,7 +88,7 @@ public class UI {
     // Prints all tasks in the task list.
     public void printTasks(String moduleCode, ArrayList<Task> taskList) {
         String titleAndHeader = "Tasks for " + moduleCode + ":" + NEWLINE
-                +"[Undone]";
+                + "[Undone]";
         printTasks(titleAndHeader, taskList, false);
         String header = "[Done]";
         printTasks(header, taskList, true);

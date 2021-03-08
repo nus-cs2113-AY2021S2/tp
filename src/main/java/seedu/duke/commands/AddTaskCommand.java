@@ -17,7 +17,7 @@ public class AddTaskCommand extends Command {
         Module module = modules.getSelectedModule();
         boolean isGraded = ui.getIsTaskGraded();
         task.setGraded(isGraded);
-        module.addTaskToList(task); //CHECK: got space in tasklist, duplicate tasks
+        module.addTaskToList(task);
         String confirmation = "Added " + task.getDescription() + ".";
         ui.printStatement(confirmation);
     }

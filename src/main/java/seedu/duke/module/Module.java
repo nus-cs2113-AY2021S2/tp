@@ -24,7 +24,7 @@ public class Module {
     }
 
     public Task getTaskAtIndex(int index) {
-        return taskList.get(index-1);
+        return taskList.get(index - 1);
     }
 
     public void addTaskToList(Task task) {
