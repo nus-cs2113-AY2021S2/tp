@@ -1,19 +1,23 @@
 package seedu.duke;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModuleInfo {
     public ModuleInfo() {
     }
 
+    public static ArrayList<Module> modules = new ArrayList<>();
+
     public static void moduleInfoMenu() {
         Scanner input = new Scanner(System.in);
         while (true) {
             String command = input.nextLine();
+            Ui.printModuleInfoMessage();
             try {
                 int taskNumber = Integer.parseInt(command);
-                if (taskNumber == 1) {
-                    break;
+                if (taskNumber == 9) {
+                    break; // exit to Main Menu
                 }
                 switch (taskNumber) {
                 case 1:
@@ -40,13 +44,11 @@ public class ModuleInfo {
                 case 8:
                     deleteTask();
                     break;
-                case 9:
-                    break;
                 default:
-                    System.out.println("Please enter a valid integer from the list.");
+                    Ui.printInvalidIntegerMessage();
                 }
             } catch (NumberFormatException n) {
-                System.out.println("Error! Enter an integer.");
+                Ui.printInvalidIntegerMessage();
             }
         }
     }
@@ -61,8 +63,6 @@ public class ModuleInfo {
     }
 
     private static void addReview() {
-
-
     }
 
     private static void addNewTask() {

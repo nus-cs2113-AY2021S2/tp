@@ -1,6 +1,6 @@
 package seedu.duke;
 
-public class Assignment extends Task{
+public class Assignment extends Task {
     protected String by;
 
     public Assignment(String module, String description, String by) {

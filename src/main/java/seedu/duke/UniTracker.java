@@ -24,7 +24,7 @@ public class UniTracker {
                 case 1:
                     //moduleInfo
                     //TaskList taskList = new TaskList();
-                    //ModuleInfo.moduleInfoMenu(); //for testing
+                    ModuleInfo.moduleInfoMenu();
                     break;
                 case 2:
                     //helpGraduation
