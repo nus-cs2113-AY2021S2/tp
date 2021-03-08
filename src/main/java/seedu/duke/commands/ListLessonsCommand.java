@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
 
 public class ListLessonsCommand extends Command {
-    public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s\n \t%s\n \t%s\n \t%s";
+    public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s\n \t%s\n \t%s\n \t%s" + System.lineSeparator();
     public static final String MESSAGE_LESSONS_FOR_MODULE = "Lessons for %s:";
 
     public ListLessonsCommand() {
@@ -26,7 +26,7 @@ public class ListLessonsCommand extends Command {
         printLessonsFromList(lessonList);
     }
 
-    private void printLessonsFromList(ArrayList<Lesson> lessonList) {
+    public static void printLessonsFromList(ArrayList<Lesson> lessonList) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonName(lesson);
@@ -34,7 +34,7 @@ public class ListLessonsCommand extends Command {
             String lessonOnlineLink = lesson.getOnlineLink();
             String teacherName = lesson.getTeachingStaff().getName();
             String teacherEmail = lesson.getTeachingStaff().getEmail();
-            System.out.println(String.format(PRINT_LESSONS_FORMAT, counter, lessonName, lessonTime, lessonOnlineLink,
+            System.out.print(String.format(PRINT_LESSONS_FORMAT, counter, lessonName, lessonTime, lessonOnlineLink,
                     teacherName, teacherEmail));
             counter++;
         }

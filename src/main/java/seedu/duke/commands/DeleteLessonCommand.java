@@ -13,8 +13,8 @@ import java.util.Scanner;
 import static seedu.duke.commands.AddLessonCommand.getLessonTypeName;
 
 public class DeleteLessonCommand extends Command {
-    public static final String MESSAGE_REMOVED_LESSON = "Removed %s";
-    public static final String MESSAGE_LESSSON_OPTIONS = "%d. %s%n";
+    public static final String MESSAGE_REMOVED_LESSON = "Removed %s." + System.lineSeparator();
+    public static final String MESSAGE_LESSON_OPTIONS = "%d. %s%n";
     public static final String MESSAGE_DELETE_LESSONS = "Which lessons would you like to delete?";
     private final Scanner commandLineReader = new Scanner(System.in);
 
@@ -40,14 +40,13 @@ public class DeleteLessonCommand extends Command {
         deleteLessonsFromList(module, lessonList, indexes);
     }
 
-    private void deleteLessonsFromList(Module module, ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {
+    public static void deleteLessonsFromList(Module module, ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {
         int pointer = 1;
         for (int index : indexes) {
             int modifiedIndex = index - pointer;
-            System.out.println(index);
             Lesson lesson = lessonList.get(modifiedIndex);
             String lessonName = getLessonName(lesson);
-            System.out.println(String.format(MESSAGE_REMOVED_LESSON, lessonName));
+            System.out.print(String.format(MESSAGE_REMOVED_LESSON, lessonName));
             module.deleteLessonFromList(lessonList, modifiedIndex);
             pointer++;
         }
@@ -62,7 +61,7 @@ public class DeleteLessonCommand extends Command {
         int counter = 1;
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonName(lesson);
-            System.out.printf(MESSAGE_LESSSON_OPTIONS, counter, lessonName);
+            System.out.printf(MESSAGE_LESSON_OPTIONS, counter, lessonName);
             counter++;
         }
     }

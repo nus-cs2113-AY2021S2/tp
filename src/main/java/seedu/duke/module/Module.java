@@ -23,11 +23,11 @@ public class Module {
         lessonList.add(newLesson);
     }
 
-    public void deleteLessonFromList(ArrayList<Lesson> lessonList,int index) {
+    public void deleteLessonFromList(ArrayList<Lesson> lessonList, int index) {
         lessonList.remove(index);
     }
 
-    public ArrayList<Lesson> getLessonList(){
+    public ArrayList<Lesson> getLessonList() {
         return lessonList;
     }
 

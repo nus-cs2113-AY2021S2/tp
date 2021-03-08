@@ -7,10 +7,10 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 public class AddLessonCommand extends Command {
-    public static final String MESSAGE_ADDED_LESSON = "Added %s";
-    public static final String LECTURE_STRING = "LECTURE";
-    public static final String TUTORIAL_STRING = "TUTORIAL";
-    public static final String LAB_STRING = "LAB";
+    public static final String MESSAGE_ADDED_LESSON = "Added %s." + System.lineSeparator();
+    public static final String LECTURE_STRING = "lecture";
+    public static final String TUTORIAL_STRING = "tutorial";
+    public static final String LAB_STRING = "lab";
     private Lesson newLessonForModule;
 
     public AddLessonCommand(Lesson newLesson) {
@@ -31,7 +31,7 @@ public class AddLessonCommand extends Command {
         module.addLessonToList(getNewLessonForModule());
         LessonType newLessonType = getNewLessonForModule().getLessonType();
         String lessonName = getLessonTypeName(newLessonType);
-        System.out.println(String.format(MESSAGE_ADDED_LESSON, lessonName));
+        System.out.print(String.format(MESSAGE_ADDED_LESSON, lessonName));
     }
 
     //To be added in common class(DELETE AFTER DONE)

@@ -11,12 +11,8 @@ public class ModuleList {
     public static ArrayList<String> moduleList;
     public static Module selectedModule;
 
-    public static boolean setSelectedModule(String name) {
-        if (!moduleList.contains(name)) {
-            //unable to find
-            return false;
-        }
-        //selectedModule = storage.loadModule(name);
+    public static boolean setSelectedModule(Module name) {
+        selectedModule = name;
         return true;
     }
 

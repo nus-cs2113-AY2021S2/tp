@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class ViewTeachingStaffCommand extends Command {
 
-    public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s";
+    public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s" + System.lineSeparator();
     public static final String MESSAGE_VIEW_TEACHING_STAFF_FOR_MODULE = "Teaching staff for %s:";
 
     public ViewTeachingStaffCommand() {
@@ -26,7 +26,7 @@ public class ViewTeachingStaffCommand extends Command {
         for (Lesson lesson : lessonList) {
             String teacherName = lesson.getTeachingStaff().getName();
             String teacherEmail = lesson.getTeachingStaff().getEmail();
-            System.out.println(String.format(PRINT_LESSONS_FORMAT, counter, teacherName, teacherEmail));
+            System.out.print(String.format(PRINT_LESSONS_FORMAT, counter, teacherName, teacherEmail));
             counter++;
         }
     }
