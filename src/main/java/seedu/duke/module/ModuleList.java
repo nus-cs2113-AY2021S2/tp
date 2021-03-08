@@ -8,16 +8,18 @@ public class ModuleList {
 
     private static final Storage storage = new Storage();
 
-    public static ArrayList<String> moduleList;
+    private ArrayList<String> modules;
     public static Module selectedModule;
 
     public static boolean setSelectedModule(String name) {
-        if (!moduleList.contains(name)) {
-            //unable to find
-            return false;
-        }
-        //selectedModule = storage.loadModule(name);
+        // dummy module created
+        selectedModule = new Module(name);
+//        selectedModule = storage.loadModule(name);
         return true;
+    }
+
+    public static Module getSelectedModule() {
+        return selectedModule;
     }
 
     public static void reset() {
