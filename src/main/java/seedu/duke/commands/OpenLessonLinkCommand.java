@@ -16,7 +16,7 @@ import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
 
 public class OpenLessonLinkCommand extends Command {
     public static final String MESSAGE_OPEN_LESSON_LINK = "Which lesson’s link would you like to open?";
-    public static final String OPEN_LESSON_LINK_FORMAT = "Opening %s link in browser.";
+    public static final String OPEN_LESSON_LINK_FORMAT = "Opening %s link in browser." + System.lineSeparator();
     public static final String MESSAGE_CANNOT_OPEN_LESSON_LINK = "Cannot open lesson link";
     private final Scanner commandLineReader = new Scanner(System.in);
 
@@ -37,10 +37,14 @@ public class OpenLessonLinkCommand extends Command {
         String line = input.nextLine();
 
         ArrayList<Integer> indexes = Parser.checkIndices(line, lessonList.size());
+        printLessonsLink(lessonList, indexes);
+    }
+
+    public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {
         for (int index : indexes) {
             Lesson lesson = lessonList.get(index - 1);
             String lessonName = getLessonName(lesson);
-            System.out.println(String.format(OPEN_LESSON_LINK_FORMAT, lessonName));
+            System.out.print(String.format(OPEN_LESSON_LINK_FORMAT, lessonName));
             openLessonLink(lesson.getOnlineLink());
         }
     }
