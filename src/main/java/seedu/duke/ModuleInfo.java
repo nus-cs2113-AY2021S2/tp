@@ -7,10 +7,13 @@ public class ModuleInfo {
     public ModuleInfo() {
     }
 
+    public static ArrayList<Module> modules = new ArrayList<>();
+
     public static void moduleInfoMenu() {
         Scanner input = new Scanner(System.in);
         while (true) {
             String command = input.nextLine();
+            Ui.printModuleInfoMessage();
             try {
                 int taskNumber = Integer.parseInt(command);
                 if (taskNumber == 9) {

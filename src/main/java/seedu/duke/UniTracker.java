@@ -23,6 +23,7 @@ public class UniTracker {
                 switch (commandInt) {
                 case 1:
                     //moduleInfo
+                    ModuleInfo.moduleInfoMenu();
                     break;
                 case 2:
                     //helpGraduation
