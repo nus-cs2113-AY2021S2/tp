@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # change to script directory
-sudo cd "${0%/*}"
+cd "${0%/*}"
 
 cd ..
 ./gradlew clean shadowJar
