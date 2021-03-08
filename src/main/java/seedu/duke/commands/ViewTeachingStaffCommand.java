@@ -7,13 +7,15 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-public class ViewTeachingStaffCommand extends Command{
+public class ViewTeachingStaffCommand extends Command {
 
     public static final String PRINT_LESSONS_FORMAT = "%d. %s - %s";
+    public static final String MESSAGE_VIEW_TEACHING_STAFF_FOR_MODULE = "Teaching staff for %s:";
 
     public ViewTeachingStaffCommand() {
         Module module = ModuleList.getSelectedModule();
-        System.out.println(String.format("Teaching staff for %s:", module.getModuleCode()));
+        String moduleCode = module.getModuleCode();
+        System.out.println(String.format(MESSAGE_VIEW_TEACHING_STAFF_FOR_MODULE, moduleCode));
     }
 
     @Override
@@ -22,10 +24,10 @@ public class ViewTeachingStaffCommand extends Command{
         ArrayList<Lesson> lessonList = module.getLessonList();
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            System.out.println(String.format(PRINT_LESSONS_FORMAT, counter, lesson.getTeachingStaff().getName(),
-                    lesson.getTeachingStaff().getEmail()));
+            String teacherName = lesson.getTeachingStaff().getName();
+            String teacherEmail = lesson.getTeachingStaff().getEmail();
+            System.out.println(String.format(PRINT_LESSONS_FORMAT, counter, teacherName, teacherEmail));
             counter++;
         }
-
     }
 }

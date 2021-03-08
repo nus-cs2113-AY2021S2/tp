@@ -5,11 +5,19 @@ public class TeachingStaff {
     String name;
     String email;
 
-    public String getName(){
+    public void setName(String teacherName) {
+        name = teacherName;
+    }
+
+    public void setEmail(String teacherEmail) {
+        email = teacherEmail;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public String getEmail(){
+    public String getEmail() {
         return email;
     }
 }

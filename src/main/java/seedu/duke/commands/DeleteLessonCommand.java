@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import seedu.duke.lesson.Lesson;
+import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
@@ -9,14 +10,20 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DeleteLessonCommand extends Command{
-    private Scanner commandLineReader = new Scanner(System.in);
+import static seedu.duke.commands.AddLessonCommand.getLessonTypeName;
 
-    public DeleteLessonCommand(){
-        System.out.println("Which lessons would you like to delete?");
+public class DeleteLessonCommand extends Command {
+    public static final String MESSAGE_REMOVED_LESSON = "Removed %s";
+    public static final String MESSAGE_LESSSON_OPTIONS = "%d. %s%n";
+    public static final String MESSAGE_DELETE_LESSONS = "Which lessons would you like to delete?";
+    private final Scanner commandLineReader = new Scanner(System.in);
+
+    public DeleteLessonCommand() {
+        System.out.println(MESSAGE_DELETE_LESSONS);
 
     }
-    public Scanner getCommandLineReader(){
+
+    public Scanner getCommandLineReader() {
         return commandLineReader;
     }
 
@@ -25,26 +32,37 @@ public class DeleteLessonCommand extends Command{
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessonOptions(lessonList);
+
         Scanner input = getCommandLineReader();
         String line = input.nextLine();
-        //check indices is implemented in parser
-        ArrayList<Integer> indexes = Parser.checkIndices(line,lessonList.size());
+        ArrayList<Integer> indexes = Parser.checkIndices(line, lessonList.size());
+
+        deleteLessonsFromList(module, lessonList, indexes);
+    }
+
+    private void deleteLessonsFromList(Module module, ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {
         int pointer = 1;
-        for(int index: indexes){
-            int modifiedIndex = index-pointer;
+        for (int index : indexes) {
+            int modifiedIndex = index - pointer;
             System.out.println(index);
             Lesson lesson = lessonList.get(modifiedIndex);
-            System.out.println("Removed "+ AddLessonCommand.getLessonTypeString(lesson.getLessonType()));
-            module.deleteLessonFromList(lessonList,modifiedIndex);
+            String lessonName = getLessonName(lesson);
+            System.out.println(String.format(MESSAGE_REMOVED_LESSON, lessonName));
+            module.deleteLessonFromList(lessonList, modifiedIndex);
             pointer++;
         }
     }
 
+    public static String getLessonName(Lesson lesson) {
+        LessonType newLessonType = lesson.getLessonType();
+        return getLessonTypeName(newLessonType);
+    }
+
     public static void printLessonOptions(ArrayList<Lesson> lessonList) {
         int counter = 1;
-        for(Lesson lesson: lessonList){
-            System.out.println(String.format("%d. %s",counter,
-                    AddLessonCommand.getLessonTypeString(lesson.getLessonType())));
+        for (Lesson lesson : lessonList) {
+            String lessonName = getLessonName(lesson);
+            System.out.printf(MESSAGE_LESSSON_OPTIONS, counter, lessonName);
             counter++;
         }
     }

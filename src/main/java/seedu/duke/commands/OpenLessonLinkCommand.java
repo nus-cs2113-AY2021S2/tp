@@ -10,12 +10,16 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
+
 public class OpenLessonLinkCommand extends Command {
-    private Scanner commandLineReader = new Scanner(System.in);
+    public static final String MESSAGE_OPEN_LESSON_LINK = "Which lesson’s link would you like to open?";
+    public static final String OPEN_LESSON_LINK_FORMAT = "Opening %s link in browser.";
+    public static final String MESSAGE_CANNOT_OPEN_LESSON_LINK = "Cannot open lesson link";
+    private final Scanner commandLineReader = new Scanner(System.in);
 
     public OpenLessonLinkCommand() {
-        System.out.println("Which lesson’s link would you like to open?");
-
+        System.out.println(MESSAGE_OPEN_LESSON_LINK);
     }
 
     public Scanner getCommandLineReader() {
@@ -33,8 +37,8 @@ public class OpenLessonLinkCommand extends Command {
         ArrayList<Integer> indexes = checkIndices(line, lessonList.size());
         for (int index : indexes) {
             Lesson lesson = lessonList.get(index - 1);
-            System.out.println("Opening "+AddLessonCommand.getLessonTypeString(lesson.getLessonType())+
-                    " link in browser." );
+            String lessonName = getLessonName(lesson);
+            System.out.println(String.format(OPEN_LESSON_LINK_FORMAT, lessonName));
             openLessonLink(lesson.getOnlineLink());
         }
     }
@@ -45,7 +49,7 @@ public class OpenLessonLinkCommand extends Command {
             URI link = new URI(onlineLink);
             desktop.browse(link);
         } catch (Exception e) {
-            System.out.println("Cannot open link");
+            System.out.println(MESSAGE_CANNOT_OPEN_LESSON_LINK);
         }
     }
 }

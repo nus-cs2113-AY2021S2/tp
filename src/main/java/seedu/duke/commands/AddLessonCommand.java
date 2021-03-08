@@ -6,7 +6,11 @@ import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-public class AddLessonCommand extends Command{
+public class AddLessonCommand extends Command {
+    public static final String MESSAGE_ADDED_LESSON = "Added %s";
+    public static final String LECTURE_STRING = "LECTURE";
+    public static final String TUTORIAL_STRING = "TUTORIAL";
+    public static final String LAB_STRING = "LAB";
     private Lesson newLessonForModule;
 
     public AddLessonCommand(Lesson newLesson) {
@@ -25,21 +29,22 @@ public class AddLessonCommand extends Command{
     public void execute(ModuleList moduleList, UI ui) {
         Module module = ModuleList.getSelectedModule();
         module.addLessonToList(getNewLessonForModule());
-        //Will need to add this to UI during merging(Delete comment)
-        System.out.println(String.format("Added %s", getLessonTypeString(newLessonForModule.getLessonType())));
+        LessonType newLessonType = getNewLessonForModule().getLessonType();
+        String lessonName = getLessonTypeName(newLessonType);
+        System.out.println(String.format(MESSAGE_ADDED_LESSON, lessonName));
     }
 
-    //To be added in common class
-    public static String getLessonTypeString(LessonType lessonType) {
+    //To be added in common class(DELETE AFTER DONE)
+    public static String getLessonTypeName(LessonType lessonType) {
         switch (lessonType) {
         case LECTURE: {
-            return "LECTURE";
+            return LECTURE_STRING;
         }
         case TUTORIAL: {
-            return "TUTORIAL";
+            return TUTORIAL_STRING;
         }
         default: {
-            return "TYPE_LAB";
+            return LAB_STRING;
         }
         }
     }
