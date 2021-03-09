@@ -6,7 +6,32 @@ import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.task.Task;
 
-import static seedu.duke.storage.StorageConstants.*;
+import static seedu.duke.storage.StorageConstants.DATE_IO_FORMAT;
+import static seedu.duke.storage.StorageConstants.DIVIDER_READ;
+import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_EXTRA_LONG;
+import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_LONG;
+import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_MEDIUM;
+import static seedu.duke.storage.StorageConstants.ENTRY_SIZE_LESSON;
+import static seedu.duke.storage.StorageConstants.ENTRY_SIZE_TASK;
+import static seedu.duke.storage.StorageConstants.ENTRY_TASK_LONG;
+import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
+import static seedu.duke.storage.StorageConstants.INDEX_DAY_TIME;
+import static seedu.duke.storage.StorageConstants.INDEX_DEADLINE;
+import static seedu.duke.storage.StorageConstants.INDEX_DESCRIPTION;
+import static seedu.duke.storage.StorageConstants.INDEX_IS_DONE;
+import static seedu.duke.storage.StorageConstants.INDEX_IS_GRADED;
+import static seedu.duke.storage.StorageConstants.INDEX_LINK;
+import static seedu.duke.storage.StorageConstants.INDEX_REMARKS;
+import static seedu.duke.storage.StorageConstants.INDEX_TEACHER_EMAIL;
+import static seedu.duke.storage.StorageConstants.INDEX_TEACHER_NAME;
+import static seedu.duke.storage.StorageConstants.INDEX_TYPE;
+import static seedu.duke.storage.StorageConstants.KEYWORD_LESSON;
+import static seedu.duke.storage.StorageConstants.KEYWORD_TASK;
+import static seedu.duke.storage.StorageConstants.STOP_LINE;
+import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
+import static seedu.duke.storage.StorageConstants.TYPE_LAB;
+import static seedu.duke.storage.StorageConstants.TYPE_LECTURE;
+import static seedu.duke.storage.StorageConstants.TYPE_TUTORIAL;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -120,10 +145,14 @@ public class Loader {
         switch (fields.length) {
         case ENTRY_LESSON_EXTRA_LONG:
             teachingStaff.setEmail(fields[INDEX_TEACHER_EMAIL].trim());
+            // fallthrough
         case ENTRY_LESSON_LONG:
             teachingStaff.setName(fields[INDEX_TEACHER_NAME].trim());
+            // fallthrough
         case ENTRY_LESSON_MEDIUM:
             link = fields[INDEX_LINK].trim();
+            // fallthrough
+        default:
         }
         Lesson lesson = new Lesson(lessonType, time, link, teachingStaff);
         module.addLesson(lesson);

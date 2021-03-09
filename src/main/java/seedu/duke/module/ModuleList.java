@@ -94,6 +94,8 @@ public class ModuleList {
         }
         return selectedModule != null;
     }
+
+
     /**
      * Resets selected module by setting it to null.
      */
