@@ -27,14 +27,10 @@ public class Duke {
                 map.printShortestDistance(from,to);
                 System.out.println("");
             }
-            else if (input == "bye"){
+            else if (input.equals("bye")){
                 break;
             }
-
         }
-
-
-
     }
 
 

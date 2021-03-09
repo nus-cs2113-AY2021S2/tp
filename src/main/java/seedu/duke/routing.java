@@ -1,11 +1,11 @@
 package seedu.duke;// BFS algorithm in Java
 
 import java.util.ArrayList;
-
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.AbstractMap;
 
+/*adapted from https://www.geeksforgeeks.org/shortest-path-unweighted-graph/*/
 
 public class routing {
     private static int v = 8;
@@ -15,16 +15,7 @@ public class routing {
         for (int i = 0; i < v; i++) {
             adj.add(new ArrayList<>());
         }
-        addEdge(0, 1);
-        addEdge(0, 3);
-        addEdge(1, 2);
-        addEdge(3, 4);
-        addEdge(3, 7);
-        addEdge(4, 5);
-        addEdge(4, 6);
-        addEdge(4, 7);
-        addEdge(5, 6);
-        addEdge(6, 7);
+
     }
 
     Map<String, Integer> blockToNumber = Map.ofEntries(
@@ -51,10 +42,12 @@ public class routing {
 
 
 
-    private static void addEdge(int i, int j)
+    private static void addEdge(String i, String j)
     {
-        adj.get(i).add(j);
-        adj.get(j).add(i);
+        int block1 = Integer.getInteger(i);
+        int block2 = Integer.getInteger(j);
+        adj.get(block1).add(block2);
+        adj.get(block2).add(block1);
     }
 
     // function to print the shortest distance and path
@@ -66,10 +59,10 @@ public class routing {
         // from s
         int s = blockToNumber.get(from);
         int dest = blockToNumber.get(to);
-        int pred[] = new int[v];
-        int dist[] = new int[v];
+        int[] pred = new int[v];
+        int[] dist = new int[v];
 
-        if (BFS(adj, s, dest, v, pred, dist) == false) {
+        if (!BFS(adj, s, dest, v, pred, dist)) {
             System.out.println("Given source and destination" +
                     "are not connected");
             return;
@@ -102,7 +95,7 @@ public class routing {
     // of each vertex in array pred
     // and its distance from source in array dist
     private static boolean BFS(ArrayList<ArrayList<Integer>> adj, int src,
-                               int dest, int v, int pred[], int dist[])
+                               int dest, int v, int[] pred, int[] dist)
     {
         // a queue to maintain queue of vertices whose
         // adjacency list is to be scanned as per normal
@@ -112,7 +105,7 @@ public class routing {
         // boolean array visited[] which stores the
         // information whether ith vertex is reached
         // at least once in the Breadth first search
-        boolean visited[] = new boolean[v];
+        boolean[] visited = new boolean[v];
 
         // initially all vertices are unvisited
         // so v[i] for all i is false
@@ -134,7 +127,7 @@ public class routing {
         while (!queue.isEmpty()) {
             int u = queue.remove();
             for (int i = 0; i < adj.get(u).size(); i++) {
-                if (visited[adj.get(u).get(i)] == false) {
+                if (!visited[adj.get(u).get(i)]) {
                     visited[adj.get(u).get(i)] = true;
                     dist[adj.get(u).get(i)] = dist[u] + 1;
                     pred[adj.get(u).get(i)] = u;
