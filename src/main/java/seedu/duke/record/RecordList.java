@@ -1,22 +1,30 @@
 package seedu.duke.record;
 
+import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
-public class RecordHandler {
+public class RecordList {
     private ArrayList<Record> recordList;
 
-    public RecordHandler() {
+    public RecordList() {
         recordList = new ArrayList<>();
     }
 
-    public RecordHandler(ArrayList<Record> recordList) {
+    public RecordList(ArrayList<Record> recordList) {
         this.recordList = recordList;
     }
 
-    public void addRecord(Record recordToAdd) {
+    public void addRecord(Record recordToAdd, Ui ui, Storage storage) {
         recordList.add(recordToAdd);
+        Ui.printSuccessfulAdd(recordToAdd);
+        try {
+            storage.saveFile(recordList);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public Record getRecordAt(int recordIndex) {

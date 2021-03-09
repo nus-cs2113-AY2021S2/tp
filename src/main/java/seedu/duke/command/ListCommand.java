@@ -2,7 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
-import seedu.duke.record.RecordHandler;
+import seedu.duke.record.RecordList;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -35,7 +35,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(RecordHandler records, Ui ui, Storage storage) {
+    public void execute(RecordList records, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
             records.listExpenses(ui);

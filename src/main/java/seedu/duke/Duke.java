@@ -2,17 +2,19 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
-import seedu.duke.exception.CommandException;
+import seedu.duke.command.ExitCommand;
 import seedu.duke.parser.ParserHandler;
-import seedu.duke.record.RecordHandler;
+import seedu.duke.record.RecordList;
+import seedu.duke.exception.CommandException;
+
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
 public class Duke {
-    private RecordHandler records;
     private Ui ui;
+    private RecordList records;
     private Storage storage;
 
     /**
@@ -45,27 +47,41 @@ public class Duke {
 
     private void start() {
         ui = new Ui();
-        records = new RecordHandler();
+        records = new RecordList();
         storage = new Storage();
         ui.printWelcomeMessage();
     }
 
     private void end() {
-        ui.printGoodByeMessage();
+        //ui.printGoodByeMessage();
+        System.out.println("PROGRAM TERMINATES HERE!");
     }
 
     private void commandLooper() {
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String rawInput = ui.getUserInput();
-                ArrayList<String> parsedInput = ParserHandler.getParseInput(rawInput);
-                Command c = CommandHandler.createCommand(parsedInput);
-                c.execute(records, ui, storage);
-                isExit = c.isExit();
-            } catch (CommandException e) {
-                ui.printMessage(e.getMessage());
+        Command command;
+        String rawInput;
+        do {
+            rawInput = ui.getUserInput();
+            //System.out.println("You have entered: " + rawInput);
+            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            //System.out.println("You have entered: " + parsedStringList);
+            command = parseCommand(parsedStringList);
+            if (command == null) {
+                continue;
             }
+            command.execute(records, ui, storage);
+        } while (!ExitCommand.isExit(command));
+    }
+
+    private Command parseCommand(ArrayList<String> parsedString) {
+        try {
+            Command type = CommandHandler.createCommand(parsedString);
+            System.out.println("Command is parsed");
+            return type;
+        } catch (CommandException e) {
+            System.out.println(e.getMessage());
+            //throw new RuntimeException(e);
+            return null;
         }
     }
 }
