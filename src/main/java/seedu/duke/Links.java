@@ -9,17 +9,21 @@ public class Links {
     }
 
     public void execute() {
-        int externalLinksCommand = 0;
+        int externalLinksCommandNumber = 0;
         while (true) {
             switch (linkIndex) {
             case 1:
                 Ui.printExternalLinksMessage();
-                externalLinksCommand = Integer.parseInt(Ui.readCommand());
-                while (externalLinksCommand != 4) {
-                    ExternalLinks externalLinks = new ExternalLinks(externalLinksCommand);
+                String externalLinksCommand = Ui.readCommand();
+                if (externalLinksCommand.isEmpty()) {
+                    return;
+                }
+                externalLinksCommandNumber = Integer.parseInt(externalLinksCommand);
+                while (externalLinksCommandNumber != 4) {
+                    ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
                     externalLinks.execute();
                     Ui.printNextLinkMessage();
-                    externalLinksCommand = Integer.parseInt(Ui.readCommand());
+                    externalLinksCommandNumber = Integer.parseInt(Ui.readCommand());
                 }
                 Ui.printLinksMessage();
                 linkIndex = Integer.parseInt(Ui.readCommand());
@@ -32,6 +36,8 @@ public class Links {
                 return;
             default:
                 Ui.printInvalidIntegerMessage();
+                Ui.printLinksMessage();
+                linkIndex = Integer.parseInt(Ui.readCommand());
             }
         }
     }

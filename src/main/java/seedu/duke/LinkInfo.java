@@ -12,6 +12,10 @@ public class LinkInfo {
     }
 
     public void deleteLink() {
+        if (linksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
         Ui.printLinkToDelete();
         viewLinks();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
@@ -19,6 +23,10 @@ public class LinkInfo {
     }
 
     public void viewLinks() {
+        if (linksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
         Ui.printLinks(linksList);
     }
 

@@ -30,7 +30,8 @@ public class Ui {
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- View Zoom links\n"
-            + "[3] --- Exit to main menu");
+            + "[3] --- Exit to main menu\n"
+            + "Press enter to return back to the main menu");
     }
 
     public static void printLinkToDelete() {
@@ -51,6 +52,7 @@ public class Ui {
 
     public static void printLinks(ArrayList<String> linksList) {
         int sizeOfList = 1;
+        System.out.println("These are the links you have added --->");
         for (String link : linksList) {
             System.out.println("[" + (sizeOfList++) + "] --- " + link);
         }
@@ -63,7 +65,8 @@ public class Ui {
             + "[1] --- add link\n"
             + "[2] --- remove link\n"
             + "[3] --- view links\n"
-            + "[4] --- exit to links menu");
+            + "[4] --- exit to links menu\n"
+            + "Press enter to return back to the main menu");
     }
 
     public static void printNextLinkMessage() {
@@ -71,7 +74,8 @@ public class Ui {
             + "[1] --- add link\n"
             + "[2] --- remove link\n"
             + "[3] --- view links\n"
-            + "[4] --- exit to links menu");
+            + "[4] --- exit to links menu\n"
+            + "Press enter to return back to the main menu");
     }
 
     public static void printAddLinkMessage(String description) {
@@ -85,5 +89,9 @@ public class Ui {
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link\n"
             + "Please enter a valid one!");
+    }
+
+    public static void printListIsEmpty() {
+        System.out.println("No links have been added... Please add one!");
     }
 }
