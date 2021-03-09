@@ -6,10 +6,12 @@ package seedu.duke;
 public class Task {
     protected String description;
     protected String module;
+    protected String message;
 
-    public Task(String module, String description) {
+    public Task(String module, String description, String message) {
         this.description = description;
         this.module = module;
+        this.message = message;
     }
 
     public String getDescription() {
@@ -18,6 +20,10 @@ public class Task {
 
     public String getModule() {
         return module;
+    }
+
+    public String getMessage() {
+        return message;
     }
 
     @Override

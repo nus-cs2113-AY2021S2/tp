@@ -12,8 +12,8 @@ public class ModuleInfo {
     public static void moduleInfoMenu() {
         Scanner input = new Scanner(System.in);
         while (true) {
-            String command = input.nextLine();
             Ui.printModuleInfoMessage();
+            String command = input.nextLine();
             try {
                 int taskNumber = Integer.parseInt(command);
                 if (taskNumber == 9) {
@@ -54,6 +54,11 @@ public class ModuleInfo {
     }
 
     private static void deleteTask() {
+        Ui.printDeleteTaskMenu();
+        int taskTypeNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+
+        TaskList.deleteTask(taskTypeNumber);
     }
 
     private static void deleteModule() {
@@ -89,23 +94,26 @@ public class ModuleInfo {
         if (taskNumber != 1) {
             dateAndTime = TaskList.getDate(taskNumber) + ", " + TaskList.getTime(taskNumber);
         }
+        Ui.printAddMessageAfterCompletedTask();
+        String message = Ui.readCommand();
+
 
         switch (taskNumber) {
         case 1:
-            TaskList.addTask(module, description);
+            TaskList.addTask(module, description, message);
             break;
         case 2:
-            TaskList.addAssignment(module, description, dateAndTime);
+            TaskList.addAssignment(module, description, message, dateAndTime);
             break;
         case 3:
-            TaskList.addMidterm(module, description, dateAndTime);
+            TaskList.addMidterm(module, description, message, dateAndTime);
             break;
         case 4:
-            TaskList.addFinal(module, description, dateAndTime);
+            TaskList.addFinal(module, description, message, dateAndTime);
             break;
         default:
+            Ui.printInvalidIntegerMessage();
         }
-
     }
 
     private static void addZoomLinks() {

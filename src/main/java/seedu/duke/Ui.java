@@ -74,6 +74,14 @@ public class Ui {
                 + "[4] --- Final Exam");
     }
 
+    public static void printDeleteTaskMenu() {
+        System.out.println("Please choose which type of task you would like to delete and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
+    }
+
     public static void printAddTaskModuleMessage(int taskType) {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add?");
@@ -118,6 +126,33 @@ public class Ui {
         }
     }
 
+    public static void printAddMessageAfterCompletedTask() {
+        System.out.println("What is the message you would like to see after completing this?");
+    }
+
+    public static void printAddedTaskMessage(Task task) {
+        System.out.println("You've added this: " + task.toString());
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+
+    public static void printDeletedTaskMessage(Task task) {
+        System.out.println("You've deleted this: " + task.toString());
+        System.out.println("NOTE: " + task.getMessage());
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+
+    public static void printSelectTaskNumberToDeleteMessage() {
+        System.out.println("\nWhat is the number of the task you want to delete?");
+    }
+
+    public static void printTaskListIsEmptyMessage() {
+        System.out.println("Task list is empty, there are no tasks to delete!");
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+
     public static void printInvalidIntegerMessage() {
         System.out.println("Please enter a valid integer from the menu.");
     }
@@ -130,10 +165,8 @@ public class Ui {
         System.out.println("Please enter a valid date format.");
     }
 
-    public static void printAddedTaskMessage(Task task) {
-        System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to ModuleInfo menu now!");
-        printHorizontalLine();
+    public static void printInvalidTaskNumberMessage() {
+        System.out.println("Please input a valid task number.");
     }
 
     public static String readCommand() {

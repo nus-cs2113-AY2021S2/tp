@@ -3,8 +3,8 @@ package seedu.duke;
 public class FinalExam extends Task {
     protected String on;
 
-    public FinalExam(String module, String description, String on) {
-        super(module, description);
+    public FinalExam(String module, String description, String message, String on) {
+        super(module, description, message);
         this.on = on;
     }
 
