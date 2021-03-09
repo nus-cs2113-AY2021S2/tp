@@ -19,7 +19,7 @@ public class Duke {
         start();
 
         //Receive user input
-        run();
+        //run();
 
         //Exit
         exit();
