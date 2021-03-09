@@ -48,7 +48,10 @@ public class ModuleList {
             writer.createFile(name);
         }
     }
-
+    
+    public void addModule(String moduleCode) {
+        modules.add(moduleCode);
+    }
 
     /**
      * Adds a module to the module list.
@@ -111,10 +114,6 @@ public class ModuleList {
   
     public ArrayList<String> getModules() {
         return modules;
-    }
-
-    public void addModule(String moduleCode) {
-        modules.add(moduleCode);
     }
 
     public boolean hasModuleCode(String moduleCode) {
