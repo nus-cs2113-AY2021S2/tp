@@ -53,9 +53,10 @@ public class FridgeFriend {
     }
 
     private static void printExceptionMessage(Exception exception) {
-        if (exception instanceof IndexOutOfBoundsException
-                || exception instanceof NumberFormatException) {
-            System.out.println("Please enter a valid index to remove food.\n");
+        if (exception instanceof IndexOutOfBoundsException) {
+            System.out.println(exception.getMessage());
+        } else if (exception instanceof NumberFormatException) {
+            System.out.println(exception.getMessage());
         } else if (exception instanceof InvalidInputException) {
             System.out.println(exception.getMessage());
         } else if (exception instanceof EmptyDescriptionException) {
@@ -74,11 +75,12 @@ public class FridgeFriend {
         if (input.isEmpty()) {
             throw new InvalidInputException();
         }
-
+        //remove trailing whitespaces and parse input into two separated by a whitespace
         String[] words = input.trim().split("\\s+", LIMIT);
         if (words.length == LIMIT) {
             return words;
         } else {
+            //return an array of command and empty description
             return new String[] {words[COMMAND_WORD], ""};
         }
     }
@@ -94,7 +96,7 @@ public class FridgeFriend {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-
+        //remove trailing whitespaces and parse food description into two separated by category tag
         return foodDescription.trim().split("/c",LIMIT);
     }
 
@@ -102,7 +104,13 @@ public class FridgeFriend {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-        return Integer.parseInt(description);
+
+        try {
+            int index = Integer.parseInt(description);
+            return index;
+        } catch (NumberFormatException numberFormatException) {
+            throw new NumberFormatException("Please enter a valid index to remove food.\n");
+        }
     }
 
     private static void processCommand(String[] parsedInput)
@@ -112,27 +120,51 @@ public class FridgeFriend {
 
         switch (command.toLowerCase()) {
         case "add":
-            Command add = new AddCommand(parseFoodDescription(description));
-            add.execute(fridge);
+            proceedToAdd(description);
             break;
         case "list":
-            Command list = new ListCommand(description);
-            list.execute(fridge);
+            proceedToList(description);
             break;
         case "remove":
-            Command remove = new RemoveCommand(parseIntegerDescription(description), fridge);
-            remove.execute(fridge);
+            proceedToRemove(description);
             break;
         case "search":
-            Command search = new SearchCommand(description);
-            search.execute(fridge);
+            proceedToSearch(description);
             break;
         case "bye":
-            isBye = true;
-            printByeMessage();
+            proceedToExit();
             break;
         default:
             throw new InvalidInputException();
         }
+    }
+
+    private static void proceedToAdd(String description) throws EmptyDescriptionException {
+        Command add = new AddCommand(parseFoodDescription(description));
+        add.execute(fridge);
+    }
+
+    private static void proceedToList(String description) {
+        Command list = new ListCommand(description);
+        list.execute(fridge);
+    }
+
+    private static void proceedToRemove(String description) throws EmptyDescriptionException {
+        try {
+            Command remove = new RemoveCommand(parseIntegerDescription(description), fridge);
+            remove.execute(fridge);
+        } catch (IndexOutOfBoundsException indexOutOfBoundsException) {
+            throw new IndexOutOfBoundsException("Please enter a valid index to remove food.\n");
+        }
+    }
+
+    private static void proceedToSearch(String description) throws EmptyDescriptionException {
+        Command search = new SearchCommand(description);
+        search.execute(fridge);
+    }
+
+    private static void proceedToExit() {
+        isBye = true;
+        printByeMessage();
     }
 }

@@ -26,7 +26,10 @@ public class RemoveCommand extends Command {
         showMessage(fridge);
     }
 
-    private void removeFood(List<Food> fridge) {
+    public void removeFood(List<Food> fridge) {
+        if (indexToRemove > fridge.size()) {
+            throw new IndexOutOfBoundsException();
+        }
         fridge.remove(indexToRemove);
     }
 
