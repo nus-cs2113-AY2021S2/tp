@@ -24,4 +24,8 @@ public class Record {
             i++;
         }
     }
+
+    public void addRecord(String recordDescription) {
+        records.add(recordDescription);
+    }
 }
