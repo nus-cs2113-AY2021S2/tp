@@ -23,15 +23,35 @@ public class Module {
         return lessonList;
     }
 
-    public ArrayList<Task> getTaskList() {
-        return taskList;
-    }
-
     public void addLesson(Lesson lesson) {
         lessonList.add(lesson);
     }
 
+    //Task
+    public ArrayList<Task> getTaskList() {
+        return taskList;
+    }
+  
     public void addTask(Task task) {
         taskList.add(task);
+
+    public Task getTaskAtIndex(int index) {
+        return taskList.get(index - 1);
+    }
+
+    public void addTaskToList(Task task) {
+        taskList.add(task);
+    }
+
+    public void deleteTaskFromList(Task task) {
+        taskList.remove(task);
+    }
+
+    public void markTaskInList(Task task) {
+        task.setDone(true);
+    }
+
+    public void unmarkTaskInList(Task task) {
+        task.setDone(false);
     }
 }

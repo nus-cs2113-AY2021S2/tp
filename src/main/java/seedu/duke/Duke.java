@@ -34,8 +34,7 @@ public class Duke {
     }
 
     private static void run() {
-        Boolean isExit = false;
-
+        boolean isExit = false;
         //Loop
         while (!isExit) {
             //Scan
