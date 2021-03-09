@@ -1,4 +1,4 @@
-package seedu.duke.common;
+package seedu.duke.storage;
 
 
 import java.util.ArrayList;
@@ -22,9 +22,11 @@ public class StorageConstants {
 
     public static final int ENTRY_LESSON_SHORT = 3;
     public static final int ENTRY_LESSON_MEDIUM = 4;
-    public static final int ENTRY_LESSON_LONG = 6;
+    public static final int ENTRY_LESSON_LONG = 5;
+    public static final int ENTRY_LESSON_EXTRA_LONG = 6;
     public static final ArrayList<Integer> ENTRY_SIZE_LESSON
-            = new ArrayList<>(Arrays.asList(ENTRY_LESSON_SHORT,ENTRY_LESSON_MEDIUM,ENTRY_LESSON_LONG));
+            = new ArrayList<>(Arrays.asList(ENTRY_LESSON_SHORT, ENTRY_LESSON_MEDIUM,
+            ENTRY_LESSON_LONG, ENTRY_LESSON_EXTRA_LONG));
 
     public static final int INDEX_TYPE = 1;
     public static final int INDEX_DAY_TIME = 2;
@@ -35,7 +37,7 @@ public class StorageConstants {
     public static final int ENTRY_TASK_SHORT = 5;
     public static final int ENTRY_TASK_LONG = 6;
     public static final ArrayList<Integer> ENTRY_SIZE_TASK
-            = new ArrayList<>(Arrays.asList(ENTRY_TASK_SHORT,ENTRY_TASK_LONG));
+            = new ArrayList<>(Arrays.asList(ENTRY_TASK_SHORT, ENTRY_TASK_LONG));
 
     public static final int INDEX_DESCRIPTION = 1;
     public static final int INDEX_DEADLINE = 2;

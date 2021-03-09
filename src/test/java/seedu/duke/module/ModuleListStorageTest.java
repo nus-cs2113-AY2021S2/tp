@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
-import static seedu.duke.common.StorageConstants.FOLDER_PATH;
-import static seedu.duke.common.StorageConstants.TXT_FORMAT;
+import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
+import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
 
 import java.io.File;
 import java.io.IOException;
@@ -175,7 +175,7 @@ class ModuleListStorageTest {
         Files.copy(reference, destination);
         ModuleList.loadModuleNames(new Loader());
         ModuleList.setSelectedModule("CS2113T", new Loader(), new Writer());
-        assertEquals(1,ModuleList.selectedModule.getLessonList().size());
+        assertEquals(3,ModuleList.selectedModule.getLessonList().size());
         assertEquals(1,ModuleList.selectedModule.getTaskList().size());
     }
 }

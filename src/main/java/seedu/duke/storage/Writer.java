@@ -7,7 +7,7 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
 import static seedu.duke.common.Messages.FILE_INSTRUCTIONS;
-import static seedu.duke.common.StorageConstants.*;
+import static seedu.duke.storage.StorageConstants.*;
 
 import java.io.File;
 import java.io.FileWriter;

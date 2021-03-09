@@ -6,7 +6,7 @@ import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.task.Task;
 
-import static seedu.duke.common.StorageConstants.*;
+import static seedu.duke.storage.StorageConstants.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -115,13 +115,15 @@ public class Loader {
         }
         String time = fields[INDEX_DAY_TIME].trim();
         String link = "";
-        if (fields.length >= ENTRY_LESSON_MEDIUM) {
-            link = fields[INDEX_LINK].trim();
-        }
         TeachingStaff teachingStaff = new TeachingStaff("","");
-        if (fields.length == ENTRY_LESSON_LONG) {
-            teachingStaff.setName(fields[INDEX_TEACHER_NAME].trim());
+
+        switch (fields.length) {
+        case ENTRY_LESSON_EXTRA_LONG:
             teachingStaff.setEmail(fields[INDEX_TEACHER_EMAIL].trim());
+        case ENTRY_LESSON_LONG:
+            teachingStaff.setName(fields[INDEX_TEACHER_NAME].trim());
+        case ENTRY_LESSON_MEDIUM:
+            link = fields[INDEX_LINK].trim();
         }
         Lesson lesson = new Lesson(lessonType, time, link, teachingStaff);
         module.addLesson(lesson);
