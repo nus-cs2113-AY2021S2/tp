@@ -31,11 +31,6 @@ public class Module {
         return lessonList;
     }
 
-
-    public ArrayList<Lesson> getLessonList() {
-        return lessonList;
-    }
-
     public void addLesson(Lesson lesson) {
         lessonList.add(lesson);
     }
