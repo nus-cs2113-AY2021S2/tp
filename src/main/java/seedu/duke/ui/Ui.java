@@ -50,6 +50,12 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    public void printMessage(String message) {
+        System.out.println(DIVIDER);
+        System.out.println(message);
+        System.out.println(DIVIDER);
+    }
+
     private String fileLoadStatus() {
         return "Successful";
     }

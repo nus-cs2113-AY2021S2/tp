@@ -3,9 +3,10 @@ package seedu.duke;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
-import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
+import seedu.duke.exception.CommandException;
+
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -45,7 +46,9 @@ public class Duke {
     }
 
     private void start() {
-        this.ui = new Ui();
+        ui = new Ui();
+        records = new RecordList();
+        storage = new Storage();
         ui.printWelcomeMessage();
     }
 
@@ -72,10 +75,10 @@ public class Duke {
 
     private Command parseCommand(ArrayList<String> parsedString) {
         try {
-            Command type = CommandHandler.handle(parsedString);
+            Command type = CommandHandler.createCommand(parsedString);
             System.out.println("Command is parsed");
             return type;
-        } catch (InvalidCommandException e) {
+        } catch (CommandException e) {
             System.out.println(e.getMessage());
             //throw new RuntimeException(e);
             return null;

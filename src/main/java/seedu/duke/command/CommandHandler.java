@@ -1,29 +1,39 @@
 package seedu.duke.command;
 
+
 import seedu.duke.exception.InvalidCommandException;
+import seedu.duke.exception.CommandException;
+
+import static seedu.duke.command.ListCommand.COMMAND_LIST;
+import static seedu.duke.command.AddCommand.COMMAND_ADD;
+import static seedu.duke.command.RemoveCommand.COMMAND_REMOVE;
+import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
+import static seedu.duke.command.HelpCommand.COMMAND_HELP;
+import static seedu.duke.command.ExitCommand.COMMAND_EXIT;
 
 import java.util.ArrayList;
 
 public class CommandHandler {
-    private static final int INDEX_COMMAND_TYPE = 0;
-    private static final String PREFIX_COST = "-c";
-    private static final String PREFIX_DATE = "-d";
-    private static final String PREFIX_EXPENSE = "-e";
-    private static final String PREFIX_LOAN = "-l";
-    private static final String PREFIX_SALARY = "-s";
-    private static final String MESSAGE_INVALID_COMMAND = "Invalid command provided!";
+    private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
 
-    public static Command handle(ArrayList<String> parsedString) throws InvalidCommandException {
-        String commandType = parsedString.get(INDEX_COMMAND_TYPE);
-        int costIndex = parsedString.indexOf(PREFIX_COST);
+    public static Command createCommand(ArrayList<String> parsedArguments) throws CommandException {
+        String commandWord = parsedArguments.remove(0);
 
-        switch (commandType) {
-        case ExitCommand.KEY_EXIT:
+        switch (commandWord) {
+        case COMMAND_LIST:
+            return new ListCommand(parsedArguments);
+        case COMMAND_ADD:
+            return new AddCommand(parsedArguments);
+        case COMMAND_REMOVE:
+            return new RemoveCommand(parsedArguments);
+        case COMMAND_VIEW:
+            return new ViewCommand(parsedArguments);
+        case COMMAND_HELP:
+            return new HelpCommand();
+        case COMMAND_EXIT:
             return new ExitCommand();
-        case AddCommand.KEY_ADD:
-            //return new AddCommand(commandType);
         default:
-            throw new InvalidCommandException(MESSAGE_INVALID_COMMAND);
+            throw new CommandException(ERROR_INVALID_COMMAND + commandWord);
         }
     }
 }
