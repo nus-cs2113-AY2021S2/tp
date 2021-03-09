@@ -1,10 +1,12 @@
-package seedu.duke;
+package seedu.connoisseur;
+
+import seedu.connoisseur.parser.Parser;
 
 import java.util.Scanner;
 
-public class Duke {
+public class Connoisseur {
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
         String logo = " ____        _        \n"
@@ -17,5 +19,26 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
+
+        ui.printGreeting();
+        String input;
+        boolean isExit = false;
+
+        while (in.hasNext()) {
+            input = in.nextLine().trim();
+
+
+            isExit = Parser.determineCommand(input);
+
+            if (isExit) {
+                break;
+            }
+
+        }
+        ui.printExitMessage();
+        in.close();
+
     }
 }
+
+
