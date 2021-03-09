@@ -42,10 +42,10 @@ public class routing {
 
 
 
-    private static void addEdge(String i, String j)
+    private void addEdge(String i, String j)
     {
-        int block1 = Integer.getInteger(i);
-        int block2 = Integer.getInteger(j);
+        int block1 = blockToNumber.get(i);
+        int block2 = blockToNumber.get(j);
         adj.get(block1).add(block2);
         adj.get(block2).add(block1);
     }
