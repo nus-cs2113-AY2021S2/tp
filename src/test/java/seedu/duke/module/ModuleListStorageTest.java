@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
 import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
 
@@ -12,8 +15,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ModuleListStorageTest {
 

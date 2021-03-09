@@ -2,6 +2,8 @@ package seedu.duke.commands;
 
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
+import seedu.duke.storage.Loader;
+import seedu.duke.storage.Writer;
 import seedu.duke.task.Task;
 
 import java.time.LocalDate;
@@ -13,7 +15,7 @@ public class CommandTestUtil {
     public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
 
     public static Module initialiseModule(ModuleList modules) {
-        modules.setSelectedModule("CS2113T");
+        modules.setSelectedModule("CS2113T", new Loader(), new Writer());
         return ModuleList.getSelectedModule();
     }
 
