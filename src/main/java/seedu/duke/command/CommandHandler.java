@@ -4,14 +4,15 @@ import seedu.duke.exception.CommandException;
 
 import java.util.ArrayList;
 
+import static seedu.duke.command.ListCommand.COMMAND_LIST;
+import static seedu.duke.command.AddCommand.COMMAND_ADD;
+import static seedu.duke.command.RemoveCommand.COMMAND_REMOVE;
+import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
+import static seedu.duke.command.HelpCommand.COMMAND_HELP;
+import static seedu.duke.command.ExitCommand.COMMAND_EXIT;
+
 public class CommandHandler {
-    private static final String ERROR_INVALID_COMMAND = "invalid command: ";
-    private static final String COMMAND_HELP = "help";
-    private static final String COMMAND_LIST = "list";
-    private static final String COMMAND_ADD = "add";
-    private static final String COMMAND_EXIT = "exit";
-    private static final String COMMAND_REMOVE = "remove";
-    private static final String COMMAND_VIEW = "view";
+    private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
 
     public static Command createCommand(ArrayList<String> parsedArguments) throws CommandException {
         String commandWord = parsedArguments.remove(0);

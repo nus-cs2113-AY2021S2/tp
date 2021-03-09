@@ -13,11 +13,13 @@ public class Utils {
     private static final String ERROR_MISSING_OPTION = "missing option: ";
     private static final String ERROR_INVALID_OPTION = "invalid option: ";
     private static final String ERROR_DUPLICATE_OPTION = "duplicate option: ";
+    private static final String ERROR_CONFLICT_OPTION = "conflict with options: ";
     private static final String REGEX_OPTION = "^-\\w$";
 
-    public static String getOptionValue(ArrayList<String> arguments, String option) throws CommandException {
+    public static String getOptionValue(ArrayList<String> arguments, String command,
+                                        String option) throws CommandException {
         if (!hasOption(arguments, option)) {
-            throw new CommandException(ERROR_MISSING_OPTION + option);
+            throw new CommandException(ERROR_MISSING_OPTION + option, command);
         }
         int index = arguments.indexOf(option);
         if (index < arguments.size() - 1) {
@@ -30,30 +32,36 @@ public class Utils {
         return arguments.contains(option);
     }
 
-    public static void checkInvalidOptions(ArrayList<String> arguments, String... validOptions)
-            throws CommandException {
+    public static void checkInvalidOptions(ArrayList<String> arguments, String command,
+                                           String... validOptions) throws CommandException {
         Set<String> nonDuplicates = new HashSet<>();
         for (String arg : arguments) {
             if (!isOption(arg)) {
                 continue;
             }
             if (!ArrayUtils.contains(validOptions, arg)) {
-                throw new CommandException(ERROR_INVALID_OPTION + arg);
+                throw new CommandException(ERROR_INVALID_OPTION + arg, command);
             }
             if (!nonDuplicates.add(arg)) {
-                throw new CommandException(ERROR_DUPLICATE_OPTION + arg);
+                throw new CommandException(ERROR_DUPLICATE_OPTION + arg, command);
             }
         }
     }
 
-    private static void checkDuplicateOptions(ArrayList<String> arguments) throws CommandException {
-        Set<String> nonDuplicates = new HashSet<>();
+    public static void checkOptionConflict(ArrayList<String> arguments, String command,
+                                           String... orOptions) throws CommandException {
+        String option = null;
         for (String arg : arguments) {
-            if (nonDuplicates.add(arg)) {
+            if (!isOption(arg)) {
                 continue;
             }
-            if (isOption(arg)) {
-                throw new CommandException(ERROR_DUPLICATE_OPTION + arg);
+            if (!ArrayUtils.contains(orOptions, arg)) {
+                continue;
+            }
+            if (option == null) {
+                option = arg;
+            } else {
+                throw new CommandException(ERROR_CONFLICT_OPTION + option + ", " + arg, command);
             }
         }
     }
@@ -61,5 +69,4 @@ public class Utils {
     public static boolean isOption(String arg) {
         return Pattern.matches(REGEX_OPTION, arg);
     }
-
 }

@@ -1,5 +1,7 @@
 package seedu.duke.record;
 
+import seedu.duke.ui.Ui;
+
 import java.util.ArrayList;
 
 public class RecordHandler {
@@ -39,5 +41,17 @@ public class RecordHandler {
 
     public int getRecordCount() {
         return recordList.size();
+    }
+
+    public void listExpenses(Ui ui) {
+        ui.printMessage("List expenses!");
+    }
+
+    public void listLoans(Ui ui) {
+        ui.printMessage("List loans!");
+    }
+
+    public void listSavings(Ui ui) {
+        ui.printMessage("List savings!");
     }
 }

@@ -6,6 +6,7 @@ import seedu.duke.ui.Ui;
 
 public abstract class Command {
     protected boolean isExit;
+
     public abstract void execute(RecordHandler records, Ui ui, Storage storage);
 
     public Command() {

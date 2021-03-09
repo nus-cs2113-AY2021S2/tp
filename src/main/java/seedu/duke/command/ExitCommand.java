@@ -6,6 +6,7 @@ import seedu.duke.ui.Ui;
 
 public class ExitCommand extends Command {
     public static final String EXIT_MESSAGE = "Bye for now, remember to save more!";
+    protected static final String COMMAND_EXIT = "exit";
 
     @Override
     public void execute(RecordHandler records, Ui ui, Storage storage) {
