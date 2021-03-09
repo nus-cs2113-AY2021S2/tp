@@ -1,7 +1,5 @@
 package seedu.duke.command;
 
-
-import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.exception.CommandException;
 
 import static seedu.duke.command.ListCommand.COMMAND_LIST;
@@ -15,9 +13,10 @@ import java.util.ArrayList;
 
 public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
+    private static final int INDEX_OF_COMMAND = 0;
 
     public static Command createCommand(ArrayList<String> parsedArguments) throws CommandException {
-        String commandWord = parsedArguments.remove(0);
+        String commandWord = parsedArguments.get(INDEX_OF_COMMAND);
 
         switch (commandWord) {
         case COMMAND_LIST:

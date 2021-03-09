@@ -31,7 +31,7 @@ public class Storage {
 
     public void saveFile(ArrayList<Record> records) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
-        fw.write("Test Save!");
+        fw.write("Test Save!\n");
         for (Record r : records) {
             fw.write(r.convertFileFormat() + System.lineSeparator());
         }
@@ -43,7 +43,7 @@ public class Storage {
             File loadFile = dataFilePath.toFile();
             Scanner sc = new Scanner(loadFile);
             StringJoiner jn = new StringJoiner(" ");
-            while(sc.hasNextLine()){
+            while (sc.hasNextLine()) {
                 String rawData = sc.nextLine();
                 jn.add(rawData);
             }
