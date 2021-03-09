@@ -12,16 +12,17 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class DeleteModuleCommandTest {
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Test
     void execute_validModuleNumbersInput_expectSuccess() throws CommandException {
-        PrintStream originalOut = System.out;
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        ByteArrayInputStream inContent = new ByteArrayInputStream("1 3".getBytes());
         System.setOut(new PrintStream(outContent));
+        ByteArrayInputStream inContent = new ByteArrayInputStream("1 3".getBytes());
         System.setIn(inContent);
 
         ModuleList modules = new ModuleList(
