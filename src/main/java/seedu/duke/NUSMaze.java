@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class NUSMaze {
     public static void main(String[] args) {
         UIManager.showLogo();
+        UIManager.showGreetMessage();
 
         Scanner in = new Scanner(System.in);
         while (true){
@@ -22,6 +23,7 @@ public class NUSMaze {
                 System.out.println("");
             }
             else if (input.equals("bye")){
+                UIManager.showByeMessage();
                 break;
             }
         }

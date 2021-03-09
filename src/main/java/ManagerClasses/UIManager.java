@@ -20,4 +20,16 @@ public class UIManager {
         System.out.println(logo);
         printDivider();
     }
+
+    public static void showGreetMessage() {
+        System.out.println("Hello! Welcome to NUSMaze");
+        System.out.println("Where do you want to go today?");
+        printDivider();
+    }
+
+    public static void showByeMessage() {
+        printDivider();
+        System.out.println("Bye. Hope to see you again soon!");
+        printDivider();
+    }
 }
