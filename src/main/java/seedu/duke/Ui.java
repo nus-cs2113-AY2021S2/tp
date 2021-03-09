@@ -21,8 +21,4 @@ public class Ui {
         System.out.println(printstr);
     }
 
-    /*public void printPatients(HashMap<String,Patient> patients) {
-        //to be implemented
-    }*/
-
 }
