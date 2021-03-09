@@ -1,0 +1,27 @@
+package command;
+
+import canteens.Canteen;
+import stores.Store;
+import ui.Ui;
+
+import java.util.ArrayList;
+
+public class DisplayCommand extends Command {
+
+    @Override
+    public void execute(ArrayList<Canteen> canteens, Ui ui) {
+        ArrayList<Store> stores = canteens.get(0).getStores();
+        if (stores.size() > 0) {
+            ui.showDisplayStoreMessage();
+        }
+        for (int i = 0; i < stores.size(); i++) {
+            System.out.print((i + 1) + ".");
+            stores.get(i).displayStore();
+        }
+    }
+
+    @Override
+    public boolean isExit() {
+        return exit;
+    }
+}

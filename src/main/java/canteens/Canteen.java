@@ -16,10 +16,6 @@ public class Canteen {
         stores = new ArrayList<>();
     }
 
-    public void displayCanteen() {
-        System.out.println(canteenName);
-    }
-
     public ArrayList<Store> getStores() {
         return stores;
     }

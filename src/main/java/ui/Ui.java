@@ -22,6 +22,7 @@ public class Ui {
     public void showWelcome() {
         System.out.println(LINESPACING);
         System.out.println("Welcome to our amazing canteen review application!!");
+        System.out.println("You are now viewing canteen The Deck");
         System.out.println(LINESPACING);
     }
 
@@ -29,20 +30,13 @@ public class Ui {
         System.out.println(LINESPACING);
         System.out.println("Thank you for using our application! See you again!");
         System.out.println(LINESPACING);
-        System.exit(0);
-    }
-
-    public void showGetCanteen(ArrayList<Canteen> canteens) {
-        System.out.println(LINESPACING);
-        System.out.println("Please select a canteen:");
-        for (int i = 0; i < canteens.size(); i++) {
-            System.out.printf("%s.", i + 1);
-            canteens.get(i).displayCanteen();
-        }
-        System.out.println(LINESPACING);
     }
 
     public void showError() {
         System.out.println("Error with input");
+    }
+
+    public void showDisplayStoreMessage() {
+        System.out.println("Here's a list of the stores in the canteen: The Deck");
     }
 }
