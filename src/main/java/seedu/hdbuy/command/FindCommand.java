@@ -9,8 +9,8 @@ import java.util.HashMap;
 
 public class FindCommand extends Command {
     @Override
-    public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {
-        ui.showParameters(inputs);
+    public void execute(HashMap<QueryKey, String> inputs) {
+        TextUi.showParameters(inputs);
         HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputs);
     }
 }

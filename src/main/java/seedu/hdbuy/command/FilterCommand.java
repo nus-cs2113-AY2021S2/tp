@@ -17,7 +17,7 @@ public class FilterCommand extends Command {
 
 
     @Override
-    public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {
+    public void execute(HashMap<QueryKey, String> inputs) {
         switch (criteria) {
         case "location":
             inputs.put(QueryKey.LOCATION, value);
@@ -29,9 +29,9 @@ public class FilterCommand extends Command {
             inputs.put(QueryKey.LEASE_REMAINING, value);
             break;
         default:
-            ui.showInvalidFilter(criteria);
+            TextUi.showInvalidFilter(criteria);
             break;
         }
-        ui.showParameters(inputs);
+        TextUi.showParameters(inputs);
     }
 }

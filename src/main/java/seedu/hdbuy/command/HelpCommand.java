@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class HelpCommand extends Command {
     @Override
-    public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {
-        ui.showHelp();
+    public void execute(HashMap<QueryKey, String> inputs) {
+        TextUi.showHelp();
     }
 }
