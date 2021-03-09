@@ -16,6 +16,7 @@ public class Task {
         this.deadline = deadline;
         this.isDone = isDone;
         this.isGraded = isGraded;
+    }
 
     public Task(String description, LocalDate deadline, String remarks) {
         this.description = description;
