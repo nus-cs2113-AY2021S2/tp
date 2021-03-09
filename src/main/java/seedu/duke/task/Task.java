@@ -10,6 +10,13 @@ public class Task {
     private Boolean isDone;
     private Boolean isGraded;
 
+    public Task(String description, String remarks, LocalDate deadline, Boolean isDone, Boolean isGraded) {
+        this.description = description;
+        this.remarks = remarks;
+        this.deadline = deadline;
+        this.isDone = isDone;
+        this.isGraded = isGraded;
+
     public Task(String description, LocalDate deadline, String remarks) {
         this.description = description;
         this.deadline = deadline;

@@ -1,18 +1,29 @@
 package seedu.duke.ui;
 
 import seedu.duke.task.Task;
+import seedu.duke.common.Messages;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 import static seedu.duke.common.Constants.NEWLINE;
 
 public class UI {
+  
     private final Scanner in;
 
     public UI() {
         in = new Scanner(System.in);
+    }
+  
+    public void printWelcome() {
+        System.out.println(Messages.MESSAGE_WELCOME);
+    }
+
+    public void printBye() {
+        System.out.println(Messages.MESSAGE_EXIT);
     }
 
     public String readCommand() {

@@ -19,9 +19,21 @@ public class Module {
         return moduleCode;
     }
 
+    public ArrayList<Lesson> getLessonList() {
+        return lessonList;
+    }
+
+    public void addLesson(Lesson lesson) {
+        lessonList.add(lesson);
+    }
+
+    //Task
     public ArrayList<Task> getTaskList() {
         return taskList;
     }
+  
+    public void addTask(Task task) {
+        taskList.add(task);
 
     public Task getTaskAtIndex(int index) {
         return taskList.get(index - 1);
