@@ -23,11 +23,9 @@ public class EnterModuleCommand extends Command {
     public void execute(ModuleList modules, UI ui) throws CommandException {
         requireNonNull(modules);
         if (!modules.getModules().contains(moduleCode)) {
-            String messageError = String.format(MESSAGE_ERROR, moduleCode);
-            throw new CommandException(messageError);
+            throw new CommandException(String.format(MESSAGE_ERROR, moduleCode));
         }
-        String messageInfo = String.format(MESSAGE_INFO, moduleCode);
-        ui.printMessage(messageInfo);
+        ui.printMessage(String.format(MESSAGE_INFO, moduleCode));
         ModuleList.selectedModule = new Module(moduleCode);
         ui.printMessage(MESSAGE_OVERVIEW);
     }
