@@ -4,7 +4,6 @@ import seedu.fridgefriend.food.Food;
 
 import java.util.List;
 
-
 /**
  * Remove the food from the fridge by index specify by user.
  */

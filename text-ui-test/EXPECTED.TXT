@@ -5,7 +5,11 @@ Sorry my friend, please give a valid input.
 
 Great! I have added pork [MEAT] into your fridge.
 
+You have pork in your fridge.
+
 Great! I have added beef [MEAT] into your fridge.
+
+You do not have chicken in your fridge.
 
 Great! I have added grouper [SEAFOOD] into your fridge.
 
@@ -24,6 +28,8 @@ These are the MEAT in your fridge:
 
 Sorry my friend, please enter a valid food category.
 
+Sorry my friend, the description cannot be empty.
+
 Noted! I've removed beef from your fridge.
 Now you have 2 food in the fridge.
 
@@ -33,6 +39,7 @@ Here are the items in your fridge:
 
 Sorry my friend, the description cannot be empty.
 
-Please enter a valid index to remove food
+Please enter a valid index to remove food.
+
 Bye. Hope to see you again soon!
 

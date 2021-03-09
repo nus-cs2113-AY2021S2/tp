@@ -4,6 +4,7 @@ import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
+import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
@@ -53,7 +54,7 @@ public class FridgeFriend {
 
     private static void printExceptionMessage(Exception exception) {
         if (exception instanceof IndexOutOfBoundsException) {
-            System.out.println("Please enter a valid index to remove food");
+            System.out.println("Please enter a valid index to remove food.\n");
         } else if (exception instanceof InvalidInputException) {
             System.out.println(exception.getMessage());
         } else if (exception instanceof EmptyDescriptionException) {
@@ -120,6 +121,10 @@ public class FridgeFriend {
         case "remove":
             Command remove = new RemoveCommand(parseIntegerDescription(description));
             remove.execute(fridge);
+            break;
+        case "search":
+            Command search = new SearchCommand(description);
+            search.execute(fridge);
             break;
         case "bye":
             isBye = true;
