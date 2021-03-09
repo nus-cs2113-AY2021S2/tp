@@ -11,4 +11,5 @@ public class Messages {
      * General message formats
      */
     public static final String FORMAT_LIST_HELP = "%-8s - %s";
+    public static final String FORMAT_LIST_ITEMS = "%2s. %s";
 }
