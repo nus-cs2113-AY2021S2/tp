@@ -2,6 +2,7 @@ package seedu.duke;
 
 import java.util.Scanner;
 
+
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -13,9 +14,34 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
 
         Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        while (true){
+            String input = in.nextLine();
+            if (input.equals("go")){
+                System.out.println("STARTING BLOCK:");
+                String from = in.nextLine();
+                System.out.println("DESTINATION BLOCK:");
+                String to = in.nextLine();
+                routing map = new routing();
+                map.printShortestDistance(from,to);
+                System.out.println("");
+            }
+            else if (input == "bye"){
+                break;
+            }
+
+        }
+
+
+
     }
+
+
+
+
+
+
+
+
 }
