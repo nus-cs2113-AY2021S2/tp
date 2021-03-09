@@ -7,21 +7,21 @@ import java.util.Scanner;
 
 public class Ui {
     private static final String LINESPACING = "-----------------------";
-    private String line;
-    private Scanner userInputScanner;
+    private static Scanner userInputScanner;
+    private static String line;
 
     public Ui() {
         userInputScanner = new Scanner(System.in);
     }
 
-    public String readCommand() {
+    public static String readCommand() {
         line = userInputScanner.nextLine();
         return line;
     }
 
     public void showWelcome() {
         System.out.println(LINESPACING);
-        System.out.println("Welcome to our amazing canteen review application!");
+        System.out.println("Welcome to our amazing canteen review application!!");
         System.out.println(LINESPACING);
     }
 
@@ -29,6 +29,7 @@ public class Ui {
         System.out.println(LINESPACING);
         System.out.println("Thank you for using our application! See you again!");
         System.out.println(LINESPACING);
+        System.exit(0);
     }
 
     public void showGetCanteen(ArrayList<Canteen> canteens) {

@@ -1,8 +1,6 @@
+Welcome to our amazing canteen review application!!
 -----------------------
-Welcome to our amazing canteen review application!
+File Path was not found!
 -----------------------
------------------------
-Please select a canteen:
-1.The deck
-2.Utown Frangrant
+Thank you for using our application! See you again!
 -----------------------
