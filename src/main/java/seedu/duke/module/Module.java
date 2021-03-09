@@ -34,6 +34,7 @@ public class Module {
   
     public void addTask(Task task) {
         taskList.add(task);
+    }
 
     public Task getTaskAtIndex(int index) {
         return taskList.get(index - 1);
