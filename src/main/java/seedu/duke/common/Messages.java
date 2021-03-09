@@ -5,7 +5,7 @@ public class Messages {
     /*
      * General messages
      */
-    public static final String MESSAGE_EXIT = "Bye.";
+    public static final String MESSAGE_EXIT = "";
 
     /*
      * General message formats
