@@ -2,13 +2,17 @@ package seedu.duke.lesson;
 
 public class Lesson {
 
-    private String time;
     private final LessonType lessonType;
-    private TeachingStaff teachingStaff;
-    private String onlineLink;
+    private String time;
 
-    public Lesson(LessonType lessonType) {
+    private String onlineLink;
+    private TeachingStaff teachingStaff;
+
+    public Lesson(LessonType lessonType, String time, String onlineLink, TeachingStaff teachingStaff) {
         this.lessonType = lessonType;
+        this.time = time;
+        this.onlineLink = onlineLink;
+        this.teachingStaff = teachingStaff;
     }
 
     public String getTime() {
