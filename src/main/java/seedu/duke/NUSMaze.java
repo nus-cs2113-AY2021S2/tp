@@ -1,16 +1,13 @@
 package seedu.duke;
 
+import ManagerClasses.UIManager;
+
 import java.util.Scanner;
 
 
 public class NUSMaze {
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        UIManager.showLogo();
 
         Scanner in = new Scanner(System.in);
         while (true){
