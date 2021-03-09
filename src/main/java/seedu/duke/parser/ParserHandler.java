@@ -15,10 +15,9 @@ public class ParserHandler {
     }
 
     private static ArrayList<String> extractAfterFirstCheck(ArrayList<String> extracted, String trimmedInput) {
-        String argument;
         int optionIndex = getNextOptionIndex(trimmedInput);
         while (optionIndex != -1) {
-            argument = trimmedInput.substring(0,optionIndex).trim();
+            String argument = trimmedInput.substring(0,optionIndex).trim();
             extracted.add(argument);
             trimmedInput = trimmedInput.substring(optionIndex).stripLeading();
             extracted.add(trimmedInput.substring(0,2));
@@ -29,11 +28,10 @@ public class ParserHandler {
     }
 
     private static ArrayList<String> extractFinalPart(ArrayList<String> extracted, String trimmedInput) {
-        String argument;
         if (checkOptionEndWith(trimmedInput)) {
-            argument = trimmedInput.substring(0, trimmedInput.length()-2).trim();
+            String argument = trimmedInput.substring(0, (trimmedInput.length() - 2)).trim();
             extracted.add(argument);
-            extracted.add(trimmedInput.substring(trimmedInput.length()-2).trim());
+            extracted.add(trimmedInput.substring(trimmedInput.length() - 2).trim());
             extracted.add("");
         } else {
             extracted.add(trimmedInput.trim());
