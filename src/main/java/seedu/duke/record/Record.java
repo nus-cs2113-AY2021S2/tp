@@ -10,4 +10,8 @@ public abstract class Record {
         this.issueDate = issueDate;
         this.description = description;
     }
+
+    public String convertFileFormat() {
+        return "1";
+    }
 }

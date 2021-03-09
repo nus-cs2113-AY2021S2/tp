@@ -2,10 +2,14 @@ package seedu.duke.record;
 
 import java.util.ArrayList;
 
-public class RecordHandler {
+public class RecordList {
     private ArrayList<Record> recordList;
 
-    public RecordHandler(ArrayList<Record> recordList) {
+    public RecordList() {
+        recordList = new ArrayList<>();
+    }
+
+    public RecordList(ArrayList<Record> recordList) {
         this.recordList = recordList;
     }
 
