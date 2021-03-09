@@ -39,7 +39,7 @@ public class ListCommand extends Command {
             }
             System.out.println();
         } catch (InvalidInputException invalidInputException) {
-            System.out.println("Sorry my friend, please enter a valid food category.");
+            System.out.println("Sorry my friend, please enter a valid food category.\n");
         }
     }
 

@@ -3,6 +3,7 @@ package seedu.fridgefriend;
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ListCommand;
+import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
@@ -32,7 +33,7 @@ public class FridgeFriend {
                 input = getUserInput(in);
                 processCommand(parseCommand(input));
             } catch (Exception exception) {
-                printExceptionMessage(exception.getMessage());
+                printExceptionMessage(exception);
             }
         }
     }
@@ -50,8 +51,14 @@ public class FridgeFriend {
         System.out.println("What can I do for you?\n");
     }
 
-    private static void printExceptionMessage(String exceptionMessage) {
-        System.out.println(exceptionMessage);
+    private static void printExceptionMessage(Exception exception) {
+        if (exception instanceof IndexOutOfBoundsException) {
+            System.out.println("Please enter a valid index to remove food");
+        } else if (exception instanceof InvalidInputException) {
+            System.out.println(exception.getMessage());
+        } else if (exception instanceof EmptyDescriptionException) {
+            System.out.println(exception.getMessage());
+        }
     }
 
     /**
@@ -89,6 +96,13 @@ public class FridgeFriend {
         return foodDescription.trim().split("/c",LIMIT);
     }
 
+    public static int parseIntegerDescription(String description) throws EmptyDescriptionException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        return Integer.parseInt(description);
+    }
+
     private static void processCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException {
         String command = parsedInput[COMMAND_WORD];
@@ -102,6 +116,10 @@ public class FridgeFriend {
         case "list":
             Command list = new ListCommand(description);
             list.execute(fridge);
+            break;
+        case "remove":
+            Command remove = new RemoveCommand(parseIntegerDescription(description));
+            remove.execute(fridge);
             break;
         case "bye":
             isBye = true;
