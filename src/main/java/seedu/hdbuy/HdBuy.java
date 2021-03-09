@@ -14,22 +14,16 @@ import seedu.hdbuy.ui.TextUi;
 public class HdBuy {
 
     private static final TextUi ui = new TextUi();
+    private static HashMap<QueryKey,String> inputs = new HashMap<>();
+    private static boolean isExit = false;
     /**
      * Main entry-point for the java.duke.Duke application.
      */
 
     public static void main(String[] args) {
-        HashMap<QueryKey,String> inputs = new HashMap<>();
         ui.showWelcome();
-        boolean isExit = false;
         while (!isExit) {
-            String fullCommand = ui.readCommand();
-            ui.showSeparator();
-            Parser parser = new Parser();
-            Command c =  parser.parse(fullCommand);
-            c.execute(inputs, ui);
-            isExit = c.isExit();
-            ui.showSeparator();
+            init();
         }
         ui.showSeparator();
         /*
@@ -41,5 +35,20 @@ public class HdBuy {
         inputs.put(QueryKey.LEASE_REMAINING, "95");
         HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputsExample);
          */
+    }
+
+    /**
+     * Reads the user input and parses it into the appropriate command.
+     * The command is then executed.
+     * Finally, it updates the "isExit" boolean to know when to exit.
+     */
+    public static void init() {
+        String fullCommand = ui.readCommand();
+        ui.showSeparator();
+        Parser parser = new Parser();
+        Command command =  parser.parse(fullCommand);
+        command.execute(inputs, ui);
+        isExit = command.isExit();
+        ui.showSeparator();
     }
 }

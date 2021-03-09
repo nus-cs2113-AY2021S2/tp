@@ -8,6 +8,11 @@ import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
 
 public class Parser {
+    private static final String HELP = "help";
+    private static final String FILTER = "filter";
+    private static final String FIND = "find";
+    private static final String EXIT = "exit";
+
     private String keyCommand;
     private String criteria;
     private String value;
@@ -16,16 +21,16 @@ public class Parser {
         Command command = new DefaultCommand(fullLine);
         extractInfo(fullLine);
         switch (keyCommand) {
-        case "help":
+        case HELP:
             command = new HelpCommand();
             break;
-        case "filter":
+        case FILTER:
             command = new FilterCommand(criteria, value);
             break;
-        case "find":
+        case FIND:
             command = new FindCommand();
             break;
-        case "exit":
+        case EXIT:
             command = new CloseCommand();
             break;
         default:
@@ -39,7 +44,7 @@ public class Parser {
         lineParts = fullLine.split(" ");
         keyCommand = lineParts[0];
         switch (keyCommand) {
-        case "filter":
+        case FILTER:
             criteria = lineParts[1];
             value = lineParts[2];
             break;
