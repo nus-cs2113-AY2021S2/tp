@@ -7,5 +7,16 @@
 =========================================================
 
 Loading from save... Successful
-$$ You have entered: James Gosling
-$$ 
+$$ Command is parsed
+=========================================================
+List loans!
+=========================================================
+$$ list Command - conflict with options: -l, -e
+$$ list Command - missing option: [-e | -l | -s]
+$$ Command is parsed
+=========================================================
+
+HUAT AH!
+
+=========================================================
+PROGRAM TERMINATES HERE!

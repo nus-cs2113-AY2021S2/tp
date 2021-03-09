@@ -1,11 +1,21 @@
 package seedu.duke;
 
+import seedu.duke.command.Command;
+import seedu.duke.command.CommandHandler;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.parser.ParserHandler;
+import seedu.duke.record.RecordList;
+import seedu.duke.exception.CommandException;
+
+import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
     private Ui ui;
+    private RecordList records;
+    private Storage storage;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -36,19 +46,42 @@ public class Duke {
     }
 
     private void start() {
-        this.ui = new Ui();
+        ui = new Ui();
+        records = new RecordList();
+        storage = new Storage();
         ui.printWelcomeMessage();
     }
 
     private void end() {
-        ui.printGoodByeMessage();
+        //ui.printGoodByeMessage();
+        System.out.println("PROGRAM TERMINATES HERE!");
     }
 
     private void commandLooper() {
+        Command command;
         String rawInput;
         do {
             rawInput = ui.getUserInput();
-            System.out.println("You have entered: " + rawInput);
-        } while (!rawInput.equals("exit"));
+            //System.out.println("You have entered: " + rawInput);
+            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            //System.out.println("You have entered: " + parsedStringList);
+            command = parseCommand(parsedStringList);
+            if (command == null) {
+                continue;
+            }
+            command.execute(records, ui, storage);
+        } while (!ExitCommand.isExit(command));
+    }
+
+    private Command parseCommand(ArrayList<String> parsedString) {
+        try {
+            Command type = CommandHandler.createCommand(parsedString);
+            System.out.println("Command is parsed");
+            return type;
+        } catch (CommandException e) {
+            System.out.println(e.getMessage());
+            //throw new RuntimeException(e);
+            return null;
+        }
     }
 }
