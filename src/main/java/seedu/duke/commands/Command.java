@@ -5,6 +5,6 @@ import seedu.duke.ui.UI;
 
 public abstract class Command {
 
-    public abstract void execute(ModuleList moduleList, UI ui);
+    public abstract void execute(ModuleList modules, UI ui);
 
 }
