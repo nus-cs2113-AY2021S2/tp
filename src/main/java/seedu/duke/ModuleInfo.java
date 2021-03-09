@@ -1,19 +1,23 @@
 package seedu.duke;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ModuleInfo {
     public ModuleInfo() {
     }
 
+    public static ArrayList<Module> modules = new ArrayList<>();
+
     public static void moduleInfoMenu() {
         Scanner input = new Scanner(System.in);
         while (true) {
             String command = input.nextLine();
+            Ui.printModuleInfoMessage();
             try {
                 int taskNumber = Integer.parseInt(command);
-                if (taskNumber == 1) {
-                    break;
+                if (taskNumber == 9) {
+                    break; // exit to Main Menu
                 }
                 switch (taskNumber) {
                 case 1:
@@ -40,33 +44,68 @@ public class ModuleInfo {
                 case 8:
                     deleteTask();
                     break;
-                case 9:
-                    break;
                 default:
-                    System.out.println("Please enter a valid integer from the list.");
+                    Ui.printInvalidIntegerMessage();
                 }
             } catch (NumberFormatException n) {
-                System.out.println("Error! Enter an integer.");
+                Ui.printInvalidIntegerMessage();
             }
         }
-
     }
 
     private static void deleteTask() {
     }
 
     private static void deleteModule() {
+        System.out.println("Enter the module number to be deleted:");
+        Scanner input = new Scanner(System.in);
+        try {
+            String moduleNumberString = input.nextLine();
+            int moduleNumberInteger = Integer.parseInt(moduleNumberString);
+            modules.remove(modules.get(moduleNumberInteger));
+        } catch (NumberFormatException n) {
+            Ui.printInvalidIntegerMessage();
+        }
     }
 
     private static void viewAllReviews() {
     }
 
     private static void addReview() {
-
-
     }
 
     private static void addNewTask() {
+        String dateAndTime = "";
+
+        Ui.printAddTaskMenu();
+        int taskNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+        Ui.printAddTaskModuleMessage(taskNumber);
+        String module = Ui.readCommand();
+        Ui.printHorizontalLine();
+        Ui.printAddTaskDescriptionMessage(taskNumber);
+        String description = Ui.readCommand();
+        Ui.printHorizontalLine();
+        if (taskNumber != 1) {
+            dateAndTime = TaskList.getDate(taskNumber) + ", " + TaskList.getTime(taskNumber);
+        }
+
+        switch (taskNumber) {
+        case 1:
+            TaskList.addTask(module, description);
+            break;
+        case 2:
+            TaskList.addAssignment(module, description, dateAndTime);
+            break;
+        case 3:
+            TaskList.addMidterm(module, description, dateAndTime);
+            break;
+        case 4:
+            TaskList.addFinal(module, description, dateAndTime);
+            break;
+        default:
+        }
+
     }
 
     private static void addZoomLinks() {

@@ -38,6 +38,7 @@ public class Links {
                 Ui.printInvalidIntegerMessage();
                 Ui.printLinksMessage();
                 linkIndex = Integer.parseInt(Ui.readCommand());
+
             }
         }
     }
