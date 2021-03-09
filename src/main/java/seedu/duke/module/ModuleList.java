@@ -1,26 +1,22 @@
 package seedu.duke.module;
 
-import seedu.duke.storage.Storage;
-
 import java.util.ArrayList;
 
 public class ModuleList {
 
-    private static final Storage storage = new Storage();
-
-    public static ArrayList<String> moduleList;
+    private final ArrayList<String> modules;
     public static Module selectedModule;
 
-    public static boolean setSelectedModule(String name) {
-        if (!moduleList.contains(name)) {
-            //unable to find
-            return false;
-        }
-        //selectedModule = storage.loadModule(name);
-        return true;
+    public ModuleList() {
+        this.modules = new ArrayList<>();
     }
 
-    public static void reset() {
-        selectedModule = null;
+    public ArrayList<String> getModules() {
+        return modules;
+    }
+
+    public String addModule(String moduleCode) {
+        modules.add(moduleCode);
+        return moduleCode;
     }
 }
