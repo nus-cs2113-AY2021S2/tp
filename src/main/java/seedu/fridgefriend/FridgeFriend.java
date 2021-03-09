@@ -53,7 +53,8 @@ public class FridgeFriend {
     }
 
     private static void printExceptionMessage(Exception exception) {
-        if (exception instanceof IndexOutOfBoundsException) {
+        if (exception instanceof IndexOutOfBoundsException
+                || exception instanceof NumberFormatException) {
             System.out.println("Please enter a valid index to remove food.\n");
         } else if (exception instanceof InvalidInputException) {
             System.out.println(exception.getMessage());
@@ -119,7 +120,7 @@ public class FridgeFriend {
             list.execute(fridge);
             break;
         case "remove":
-            Command remove = new RemoveCommand(parseIntegerDescription(description));
+            Command remove = new RemoveCommand(parseIntegerDescription(description), fridge);
             remove.execute(fridge);
             break;
         case "search":

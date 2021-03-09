@@ -12,29 +12,28 @@ public class RemoveCommand extends Command {
     private static final int EXTRA_INDEX = 1;
 
     private final int indexToRemove;
+    private Food foodToBeRemove;
 
-    public RemoveCommand(int indexToRemove) {
-        this.indexToRemove = indexToRemove - EXTRA_INDEX;
+    public RemoveCommand(int indexToRemove, List<Food> fridge) {
+        int actualIndexToRemove = indexToRemove - EXTRA_INDEX;
+        this.indexToRemove = actualIndexToRemove;
+        this.foodToBeRemove = fridge.get(actualIndexToRemove);
     }
 
     @Override
     public void execute(List<Food> fridge) {
-        showMessageBeforeRemove(fridge);
         removeFood(fridge);
-        showMessageAfterRemove(fridge);
-    }
-
-    private void showMessageBeforeRemove(List<Food> fridge) {
-        System.out.println("Noted! I've removed " + fridge.get(indexToRemove).getFoodName()
-                + " from your fridge.");
+        showMessage(fridge);
     }
 
     private void removeFood(List<Food> fridge) {
         fridge.remove(indexToRemove);
     }
 
-    private void showMessageAfterRemove(List<Food> fridge) {
-        System.out.println("Now you have " + fridge.size()
+    private void showMessage(List<Food> fridge) {
+        System.out.println("Noted! I've removed " + foodToBeRemove.getFoodName()
+                + " from your fridge.\n"
+                + "Now you have " + fridge.size()
                 + " food in the fridge.\n");
     }
 }
