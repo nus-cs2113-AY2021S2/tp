@@ -1,5 +1,10 @@
 James Gosling
-add pork
+add pork /c meat
+add beef /c meat
+add grouper /c seafood
 add
 
+list
+list meat
+list aldkjadlj
 bye

@@ -5,6 +5,7 @@ import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.food.Food;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +13,10 @@ import java.util.Scanner;
 
 public class FridgeFriend {
 
-    private static final List<String> foods = new ArrayList<>();
+    private static final List<Food> fridge = new ArrayList<>();
 
     private static final int COMMAND_WORD = 0;
-    public static final int LIMIT = 2;
+    private static final int LIMIT = 2;
 
     private static boolean isBye = false;
 
@@ -57,7 +58,7 @@ public class FridgeFriend {
      * Parses input into command and description.
      *
      * @param input user input string
-     * @return
+     * @return String array of command and description
      * @throws InvalidInputException if the input is empty
      */
     public static String[] parseCommand(String input) throws InvalidInputException {
@@ -85,23 +86,22 @@ public class FridgeFriend {
             throw new EmptyDescriptionException();
         }
 
-        return foodDescription.trim().split("/f",LIMIT);
+        return foodDescription.trim().split("/c",LIMIT);
     }
 
     private static void processCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException {
-
         String command = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
 
         switch (command.toLowerCase()) {
         case "add":
             Command add = new AddCommand(parseFoodDescription(description));
-            add.execute(foods);
+            add.execute(fridge);
             break;
         case "list":
-            Command list = new ListCommand();
-            list.execute(foods);
+            Command list = new ListCommand(description);
+            list.execute(fridge);
             break;
         case "bye":
             isBye = true;
