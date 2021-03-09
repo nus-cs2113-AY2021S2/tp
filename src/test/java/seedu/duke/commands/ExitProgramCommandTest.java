@@ -2,6 +2,7 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ExitProgramCommandTest {
 
     @Test
-    void execute_noInput_expectMessageExit() {
+    void execute_noInput_expectMessageExit() throws CommandException {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -32,7 +33,7 @@ class ExitProgramCommandTest {
     }
 
     @Test
-    void isExit() {
-        assertEquals(true, new ExitProgramCommand().isExit());
+    void isExit_noInput_expectReturnsTrue() {
+        assertTrue(new ExitProgramCommand().isExit());
     }
 }

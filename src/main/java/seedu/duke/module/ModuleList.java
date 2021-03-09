@@ -11,6 +11,10 @@ public class ModuleList {
         this.modules = new ArrayList<>();
     }
 
+    public ModuleList(ArrayList<String> modules) {
+        this.modules = modules;
+    }
+
     public ArrayList<String> getModules() {
         return modules;
     }
