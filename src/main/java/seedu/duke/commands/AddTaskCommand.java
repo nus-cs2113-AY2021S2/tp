@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -13,12 +14,17 @@ public class AddTaskCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList modules, UI ui) {
+    public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
         boolean isGraded = ui.getIsTaskGraded();
         task.setGraded(isGraded);
         module.addTaskToList(task);
         String confirmation = "Added " + task.getDescription() + ".";
         ui.printStatement(confirmation);
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -13,7 +14,7 @@ import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_DELETE;
 public class DeleteTaskCommand extends Command {
 
     @Override
-    public void execute(ModuleList modules, UI ui) {
+    public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
         ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_DELETE, COMMAND_VERB_DELETE, module.getTaskList());
         ArrayList<Task> chosenTasks = ui.getChosenTasks(module.getTaskList());
@@ -23,5 +24,10 @@ public class DeleteTaskCommand extends Command {
             ui.printStatement(confirmation);
             module.deleteTaskFromList(task);
         }
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }

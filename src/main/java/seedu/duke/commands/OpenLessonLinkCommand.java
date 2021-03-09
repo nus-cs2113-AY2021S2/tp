@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -32,7 +33,7 @@ public class OpenLessonLinkCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList moduleList, UI ui) {
+    public void execute(ModuleList moduleList, UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         DeleteLessonCommand.printLessonOptions(lessonList);
@@ -41,6 +42,11 @@ public class OpenLessonLinkCommand extends Command {
 
         ArrayList<Integer> indexes = Parser.checkIndices(line, lessonList.size());
         printLessonsLink(lessonList, indexes);
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 
     public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {

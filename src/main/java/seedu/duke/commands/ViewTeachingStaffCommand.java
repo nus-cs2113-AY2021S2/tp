@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -19,7 +20,7 @@ public class ViewTeachingStaffCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList moduleList, UI ui) {
+    public void execute(ModuleList moduleList, UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         int counter = 1;
@@ -29,5 +30,10 @@ public class ViewTeachingStaffCommand extends Command {
             System.out.print(String.format(PRINT_LESSONS_FORMAT, counter, teacherName, teacherEmail));
             counter++;
         }
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }
