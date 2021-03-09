@@ -79,12 +79,16 @@ public class ModuleList {
      * @param name Module name, excluding ".txt".
      * @return True if successful, false if unable to find file.
      */
-    public static boolean setSelectedModule(String name, Loader loader) {
+    public static boolean setSelectedModule(String name, Loader loader, Writer writer) {
         if (!moduleList.contains(name)) {
             //Unable to find file
             return false;
         }
         selectedModule = loader.loadModule(name);
+        if (selectedModule != null) {
+            //Remove invalid inputs
+            writer.writeModule();
+        }
         return selectedModule != null;
     }
 

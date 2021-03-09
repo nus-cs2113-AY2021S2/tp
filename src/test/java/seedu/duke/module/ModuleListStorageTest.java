@@ -126,7 +126,7 @@ class ModuleListStorageTest {
         }
         Files.copy(reference, destination);
         ModuleList.loadModuleNames(new Loader());
-        ModuleList.setSelectedModule("CS2113T", new Loader());
+        ModuleList.setSelectedModule("CS2113T", new Loader(), new Writer());
         assertEquals(2, ModuleList.selectedModule.getTaskList().size());
     }
 
@@ -141,14 +141,14 @@ class ModuleListStorageTest {
         }
         Files.copy(reference, destination);
         ModuleList.loadModuleNames(new Loader());
-        ModuleList.setSelectedModule("CS2100", new Loader());
+        ModuleList.setSelectedModule("CS2100", new Loader(), new Writer());
         assertThrows(NullPointerException.class, () -> {
             ModuleList.selectedModule.getModuleCode();
         });
     }
 
     @Test
-    void setSelectedModule_invalidFile_remainNull() throws IOException {
+    void setSelectedModule_invalidFile_noTaskAndLesson() throws IOException {
         File directory = new File(FOLDER_PATH);
         directory.mkdir();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/invalid_file_reference.txt");
@@ -158,9 +158,24 @@ class ModuleListStorageTest {
         }
         Files.copy(reference, destination);
         ModuleList.loadModuleNames(new Loader());
-        ModuleList.setSelectedModule("CS2100", new Loader());
-        assertThrows(NullPointerException.class, () -> {
-            ModuleList.selectedModule.getModuleCode();
-        });
+        ModuleList.setSelectedModule("CS2113T", new Loader(), new Writer());
+        assertEquals(0,ModuleList.selectedModule.getTaskList().size());
+        assertEquals(0,ModuleList.selectedModule.getLessonList().size());
+    }
+
+    @Test
+    void setSelectedModule_invalidContent_() throws IOException {
+        File directory = new File(FOLDER_PATH);
+        directory.mkdir();
+        Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/invalid_content_reference.txt");
+        Path destination = Paths.get("Data/CS2113T.txt");
+        if (Files.exists(destination)) {
+            Files.delete(destination);
+        }
+        Files.copy(reference, destination);
+        ModuleList.loadModuleNames(new Loader());
+        ModuleList.setSelectedModule("CS2113T", new Loader(), new Writer());
+        assertEquals(1,ModuleList.selectedModule.getLessonList().size());
+        assertEquals(1,ModuleList.selectedModule.getTaskList().size());
     }
 }
