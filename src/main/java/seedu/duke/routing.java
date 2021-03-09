@@ -8,36 +8,95 @@ import java.util.AbstractMap;
 /*adapted from https://www.geeksforgeeks.org/shortest-path-unweighted-graph/*/
 
 public class routing {
-    private static int v = 8;
+    private static int v = 24;
     private static ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(v);
 
     public routing(){
         for (int i = 0; i < v; i++) {
             adj.add(new ArrayList<>());
         }
+        addEdge("EW1","E1");
+        addEdge("E1","LT5");
+        addEdge("E1","E1A");
+        addEdge("E1","E2");
+        addEdge("LT5","TECHNO EDGE");
+        addEdge("E1A","EA");
+        addEdge("EA","EW1A");
+        addEdge("EA","LT7A");
+        addEdge("EA","LT7");
+        addEdge("E2","E1A");
+        addEdge("E2","EA");
+        addEdge("E2","E2A");
+        addEdge("E2","LT1");
+        addEdge("E2","LT2");
+        addEdge("LT5","E3");
+        addEdge("E3","LT6");
+        addEdge("E2","E3");
+        addEdge("E3","T-LAB");
+        addEdge("E3","E4");
+        addEdge("E4","E5");
+        addEdge("E4","E4A");
+        addEdge("E5","IT");
+        addEdge("EW1","E1");
+        addEdge("EA","E3A");
+        addEdge("E4A","EW2");
+        addEdge("EW2","E6");
+        addEdge("E6","E7");
 
     }
 
     Map<String, Integer> blockToNumber = Map.ofEntries(
-            new AbstractMap.SimpleEntry<String, Integer>("E0", 0),
+            new AbstractMap.SimpleEntry<String, Integer>("EW1", 0),
             new AbstractMap.SimpleEntry<String, Integer>("E1", 1),
-            new AbstractMap.SimpleEntry<String, Integer>("E2", 2),
-            new AbstractMap.SimpleEntry<String, Integer>("E3", 3),
-            new AbstractMap.SimpleEntry<String, Integer>("E4", 4),
-            new AbstractMap.SimpleEntry<String, Integer>("E5", 5),
-            new AbstractMap.SimpleEntry<String, Integer>("E6", 6),
-            new AbstractMap.SimpleEntry<String, Integer>("E7", 7)
+            new AbstractMap.SimpleEntry<String, Integer>("E1A", 2),
+            new AbstractMap.SimpleEntry<String, Integer>("EW1A", 3),
+            new AbstractMap.SimpleEntry<String, Integer>("E2", 4),
+            new AbstractMap.SimpleEntry<String, Integer>("E2A", 5),
+            new AbstractMap.SimpleEntry<String, Integer>("EW2", 6),
+            new AbstractMap.SimpleEntry<String, Integer>("E3", 7),
+            new AbstractMap.SimpleEntry<String, Integer>("E3A", 8),
+            new AbstractMap.SimpleEntry<String, Integer>("E4", 9),
+            new AbstractMap.SimpleEntry<String, Integer>("E4A", 10),
+            new AbstractMap.SimpleEntry<String, Integer>("E5", 11),
+            new AbstractMap.SimpleEntry<String, Integer>("E6", 12),
+            new AbstractMap.SimpleEntry<String, Integer>("E7", 13),
+            new AbstractMap.SimpleEntry<String, Integer>("EA", 14),
+            new AbstractMap.SimpleEntry<String, Integer>("LT1", 15),
+            new AbstractMap.SimpleEntry<String, Integer>("LT2", 16),
+            new AbstractMap.SimpleEntry<String, Integer>("LT5", 17),
+            new AbstractMap.SimpleEntry<String, Integer>("LT6", 18),
+            new AbstractMap.SimpleEntry<String, Integer>("LT7A", 19),
+            new AbstractMap.SimpleEntry<String, Integer>("LT7", 20),
+            new AbstractMap.SimpleEntry<String, Integer>("IT", 21),
+            new AbstractMap.SimpleEntry<String, Integer>("T-LAB", 22),
+            new AbstractMap.SimpleEntry<String, Integer>("TECHNO EDGE", 23)
     );
 
     Map<Integer, String> numberToBlock = Map.ofEntries(
-            new AbstractMap.SimpleEntry<Integer, String>(0, "E0"),
-            new AbstractMap.SimpleEntry<Integer, String>(1, "E1"),
-            new AbstractMap.SimpleEntry<Integer, String>(2, "E2"),
-            new AbstractMap.SimpleEntry<Integer, String>(3, "E3"),
-            new AbstractMap.SimpleEntry<Integer, String>(4, "E4"),
-            new AbstractMap.SimpleEntry<Integer, String>(5, "E5"),
-            new AbstractMap.SimpleEntry<Integer, String>(6, "E6"),
-            new AbstractMap.SimpleEntry<Integer, String>(7, "E7")
+            new AbstractMap.SimpleEntry<Integer, String>(0,"EW1"),
+            new AbstractMap.SimpleEntry<Integer, String>(1,"E1"),
+            new AbstractMap.SimpleEntry<Integer, String>(2,"E1A"),
+            new AbstractMap.SimpleEntry<Integer, String>(3,"EW1A"),
+            new AbstractMap.SimpleEntry<Integer, String>(4,"E2"),
+            new AbstractMap.SimpleEntry<Integer, String>(5,"E2A"),
+            new AbstractMap.SimpleEntry<Integer, String>(6,"EW2"),
+            new AbstractMap.SimpleEntry<Integer, String>(7,"E3"),
+            new AbstractMap.SimpleEntry<Integer, String>(8,"E3A"),
+            new AbstractMap.SimpleEntry<Integer, String>(9,"E4"),
+            new AbstractMap.SimpleEntry<Integer, String>(10,"E4A"),
+            new AbstractMap.SimpleEntry<Integer, String>(11,"E5"),
+            new AbstractMap.SimpleEntry<Integer, String>(12,"E6"),
+            new AbstractMap.SimpleEntry<Integer, String>(13,"E7"),
+            new AbstractMap.SimpleEntry<Integer, String>(14,"EA"),
+            new AbstractMap.SimpleEntry<Integer, String>(15,"LT1"),
+            new AbstractMap.SimpleEntry<Integer, String>(16,"LT2"),
+            new AbstractMap.SimpleEntry<Integer, String>(17,"LT5"),
+            new AbstractMap.SimpleEntry<Integer, String>(18,"LT6"),
+            new AbstractMap.SimpleEntry<Integer, String>(19,"LT7A"),
+            new AbstractMap.SimpleEntry<Integer, String>(20,"LT7"),
+            new AbstractMap.SimpleEntry<Integer, String>(21,"IT"),
+            new AbstractMap.SimpleEntry<Integer, String>(22,"T-LAB"),
+            new AbstractMap.SimpleEntry<Integer, String>(23,"TECHNO EDGE")
     );
 
 
@@ -57,8 +116,8 @@ public class routing {
         // predecessor[i] array stores predecessor of
         // i and distance array stores distance of i
         // from s
-        int s = blockToNumber.get(from);
-        int dest = blockToNumber.get(to);
+        int s = blockToNumber.get(from.toUpperCase());
+        int dest = blockToNumber.get(to.toUpperCase());
         int[] pred = new int[v];
         int[] dist = new int[v];
 
@@ -78,7 +137,7 @@ public class routing {
         }
 
         // Print distance
-        System.out.println("Shortest path length is: " + dist[dest]);
+        //System.out.println("Shortest path length is: " + dist[dest]);
 
         // Print path
         System.out.println("Path is ::");
