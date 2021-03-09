@@ -19,6 +19,14 @@ public class Module {
         return moduleCode;
     }
 
+    public void addLessonToList(Lesson newLesson) {
+        lessonList.add(newLesson);
+    }
+
+    public void deleteLessonFromList(ArrayList<Lesson> lessonList, int index) {
+        lessonList.remove(index);
+    }
+
     public ArrayList<Lesson> getLessonList() {
         return lessonList;
     }

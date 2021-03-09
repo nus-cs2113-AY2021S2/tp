@@ -10,13 +10,14 @@ public class ModuleList {
     private static final ArrayList<String> modules = new ArrayList<>();
     public static Module selectedModule;
 
-    public static ArrayList<String> getModuleList() {
-        return modules;
-    }
-  
     public static Module getSelectedModule() {
         return selectedModule;
     }
+
+    public static ArrayList<String> getModuleList() {
+        return modules;
+    }
+ 
 
     /**
      * Searches directory for module files.
