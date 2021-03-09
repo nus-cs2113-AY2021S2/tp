@@ -7,11 +7,11 @@ import java.util.AbstractMap;
 
 /*adapted from https://www.geeksforgeeks.org/shortest-path-unweighted-graph/*/
 
-public class routing {
+public class Routing {
     private static int v = 24;
     private static ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(v);
 
-    public routing(){
+    public Routing(){
         for (int i = 0; i < v; i++) {
             adj.add(new ArrayList<>());
         }
