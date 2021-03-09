@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
@@ -26,7 +27,7 @@ public class AddLessonCommand extends Command {
     }
 
     @Override
-    public void execute(ModuleList moduleList, UI ui) {
+    public void execute(ModuleList moduleList, UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         module.addLessonToList(getNewLessonForModule());
         LessonType newLessonType = getNewLessonForModule().getLessonType();
@@ -49,4 +50,8 @@ public class AddLessonCommand extends Command {
         }
     }
 
+    @Override
+    public boolean isExit() {
+        return false;
+    }
 }
