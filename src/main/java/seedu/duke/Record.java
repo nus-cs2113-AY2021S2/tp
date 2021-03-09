@@ -28,4 +28,8 @@ public class Record {
     public void addRecord(String recordDescription) {
         records.add(recordDescription);
     }
+
+    public void emptyRecords() {
+        records.clear();
+    }
 }
