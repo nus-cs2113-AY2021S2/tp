@@ -1,11 +1,19 @@
 package seedu.duke;
 
+import seedu.duke.command.Command;
+import seedu.duke.command.CommandHandler;
+import seedu.duke.exception.CommandException;
+import seedu.duke.parser.ParserHandler;
+import seedu.duke.record.RecordHandler;
+import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
+    private RecordHandler records;
     private Ui ui;
+    private Storage storage;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -36,7 +44,9 @@ public class Duke {
     }
 
     private void start() {
-        this.ui = new Ui();
+        ui = new Ui();
+        records = new RecordHandler();
+        storage = new Storage();
         ui.printWelcomeMessage();
     }
 
@@ -45,10 +55,17 @@ public class Duke {
     }
 
     private void commandLooper() {
-        String rawInput;
-        do {
-            rawInput = ui.getUserInput();
-            System.out.println("You have entered: " + rawInput);
-        } while (!rawInput.equals("exit"));
+        boolean isExit = false;
+        while (!isExit) {
+            try {
+                String rawInput = ui.getUserInput();
+                ArrayList<String> parsedInput = ParserHandler.getParseInput(rawInput);
+                Command c = CommandHandler.createCommand(parsedInput);
+                c.execute(records, ui, storage);
+                isExit = c.isExit();
+            } catch (CommandException e) {
+                ui.printMessage(e.getMessage());
+            }
+        }
     }
 }
