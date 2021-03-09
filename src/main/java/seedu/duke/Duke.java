@@ -1,9 +1,11 @@
 package seedu.duke;
 
-public class UniTracker {
+public class Duke {
 
     /**
      * Main entry-point for the java.duke.Duke application.
+     *
+     * @param args initialise main
      */
     public static void main(String[] args) {
         Ui.printWelcomeMessage();
