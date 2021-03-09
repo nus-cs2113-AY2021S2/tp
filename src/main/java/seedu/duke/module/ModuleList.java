@@ -1,9 +1,14 @@
 package seedu.duke.module;
 
+
+import java.lang.reflect.Array;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
+import static java.util.Objects.requireNonNull;
 
 public class ModuleList {
 
@@ -43,7 +48,10 @@ public class ModuleList {
             writer.createFile(name);
         }
     }
-
+    
+    public void addModule(String moduleCode) {
+        modules.add(moduleCode);
+    }
 
     /**
      * Adds a module to the module list.
@@ -103,4 +111,23 @@ public class ModuleList {
     public static void reset() {
         selectedModule = null;
     }   
+  
+    public ArrayList<String> getModules() {
+        return modules;
+    }
+
+    public boolean hasModuleCode(String moduleCode) {
+        requireNonNull(moduleCode);
+        return modules.contains(moduleCode);
+    }
+
+    public ArrayList<String> deleteModules(ArrayList<Integer> moduleNumbers) {
+        ArrayList<String> deletedModules = new ArrayList<>();
+        Collections.reverse(moduleNumbers);
+        for (Integer moduleNumber : moduleNumbers) {
+            int indexToRemove = moduleNumber - 1;
+            deletedModules.add(0, modules.remove(indexToRemove));
+        }
+        return deletedModules;
+    }
 }

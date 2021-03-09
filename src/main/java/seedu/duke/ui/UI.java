@@ -128,4 +128,17 @@ public class UI {
             System.out.print("\t" + task.getRemarks() + NEWLINE);
         }
     }
+  
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public ArrayList<Integer> readIntegers() {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> listOfIntegers = new ArrayList<>();
+        while (scanner.hasNextInt()) {
+            listOfIntegers.add(scanner.nextInt());
+        }
+        return listOfIntegers;
+    }
 }
