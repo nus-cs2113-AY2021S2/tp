@@ -1,6 +1,7 @@
 package seedu.duke;
 
 public class UniTracker {
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -35,8 +36,12 @@ public class UniTracker {
                 case 4:
                     //externalLinks
                     Ui.printLinksMessage();
-                    int linkCommand = Integer.parseInt(Ui.readCommand());
-                    Links link = new Links(linkCommand);
+                    String linkCommand = Ui.readCommand();
+                    if (linkCommand.isEmpty()) {
+                        continue;
+                    }
+                    int linkCommandNumber = Integer.parseInt(linkCommand);
+                    Links link = new Links(linkCommandNumber);
                     link.execute();
                     break;
                 default:

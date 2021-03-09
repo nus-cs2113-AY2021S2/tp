@@ -102,6 +102,8 @@ public class ModuleInfo {
             break;
         case 4:
             TaskList.addFinal(module, description, dateAndTime);
+            break;
+        default:
         }
 
     }

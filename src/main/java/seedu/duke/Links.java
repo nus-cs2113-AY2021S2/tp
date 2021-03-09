@@ -9,20 +9,36 @@ public class Links {
     }
 
     public void execute() {
+        int externalLinksCommandNumber = 0;
         while (true) {
             switch (linkIndex) {
             case 1:
-                //external links menu
-                int externalLinksCommand = Integer.parseInt(Ui.readCommand());
-                ExternalLinks externalLinks = new ExternalLinks(externalLinksCommand);
-                break;
+                Ui.printExternalLinksMessage();
+                String externalLinksCommand = Ui.readCommand();
+                if (externalLinksCommand.isEmpty()) {
+                    return;
+                }
+                externalLinksCommandNumber = Integer.parseInt(externalLinksCommand);
+                while (externalLinksCommandNumber != 4) {
+                    ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
+                    externalLinks.execute();
+                    Ui.printNextLinkMessage();
+                    externalLinksCommandNumber = Integer.parseInt(Ui.readCommand());
+                }
+                Ui.printLinksMessage();
+                linkIndex = Integer.parseInt(Ui.readCommand());
+                continue;
             case 2:
                 // zoom menu
                 break;
             case 3:
                 //exit
+                return;
             default:
                 Ui.printInvalidIntegerMessage();
+                Ui.printLinksMessage();
+                linkIndex = Integer.parseInt(Ui.readCommand());
+
             }
         }
     }
