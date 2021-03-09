@@ -9,7 +9,7 @@ public class TextUi {
 
     /** Number of dashes for the separator. */
     private static final int SEPARATOR_LENGTH = 80;
-    private static final Scanner in = new Scanner(System.in);;
+    private static final Scanner in = new Scanner(System.in);
 
     public static void showSeparator() {
         for (int i = 0; i < SEPARATOR_LENGTH; i++) {
