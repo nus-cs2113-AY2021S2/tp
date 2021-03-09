@@ -16,7 +16,6 @@ public class Duke {
     private static final Parser parser = new Parser();
 
     public static void main(String[] args) {
-
         //start and load
         start();
 
@@ -29,14 +28,14 @@ public class Duke {
 
     private static void start() {
         //print welcome
-        ui.printWelcome();
+        //ui.printWelcome();
 
         //load data from file
-        storage.loadData();
+        //storage.loadData();
     }
 
     private static void run() {
-        Boolean isExit = false;
+        boolean isExit = false;
         Scanner in = new Scanner(System.in);
 
         //loop
@@ -44,21 +43,18 @@ public class Duke {
             //scan
             String input = in.nextLine();
             //parse
-            Command command = null;
             try {
-                command = parser.parse(input);
+                Command command = parser.parse(input);
                 isExit = command.execute();
-
             } catch (DukeException e) {
                 // TODO - pass to ui to print warning
                 System.out.println("Unknown Command");
             }
         }
-
     }
 
     private static void exit() {
         //print exit message
-        ui.printBye();
+        //ui.printBye();
     }
 }
