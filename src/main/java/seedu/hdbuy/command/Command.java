@@ -7,13 +7,9 @@ import java.util.HashMap;
 
 public abstract class Command {
 
-    public abstract void execute(HashMap<QueryKey, String> inputs, TextUi ui);
+    public abstract void execute(HashMap<QueryKey, String> inputs);
 
     public boolean isExit() {
-        boolean isExit = false;
-        if (this.getClass().equals(CloseCommand.class)) {
-            isExit = true;
-        }
-        return isExit;
+        return this instanceof CloseCommand;
     }
 }

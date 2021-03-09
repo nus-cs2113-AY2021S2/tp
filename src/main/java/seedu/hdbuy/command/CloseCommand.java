@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class CloseCommand extends Command {
 
     @Override
-    public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {
-        ui.showExit();
+    public void execute(HashMap<QueryKey, String> inputs) {
+        TextUi.showExit();
     }
 }

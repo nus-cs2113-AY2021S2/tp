@@ -13,19 +13,14 @@ import seedu.hdbuy.ui.TextUi;
 
 public class HdBuy {
 
-    private static final TextUi ui = new TextUi();
     private static HashMap<QueryKey,String> inputs = new HashMap<>();
-    private static boolean isExit = false;
     /**
      * Main entry-point for the java.duke.Duke application.
      */
 
     public static void main(String[] args) {
-        ui.showWelcome();
-        while (!isExit) {
-            init();
-        }
-        ui.showSeparator();
+        TextUi.showWelcome();
+        receiveCommand(false);
         /*
           Example IO
         System.out.println("Parameters: location = jurong, type = 4 room, lease = 95 years\n");
@@ -37,18 +32,14 @@ public class HdBuy {
          */
     }
 
-    /**
-     * Reads the user input and parses it into the appropriate command.
-     * The command is then executed.
-     * Finally, it updates the "isExit" boolean to know when to exit.
-     */
-    public static void init() {
-        String fullCommand = ui.readCommand();
-        ui.showSeparator();
-        Parser parser = new Parser();
-        Command command =  parser.parse(fullCommand);
-        command.execute(inputs, ui);
-        isExit = command.isExit();
-        ui.showSeparator();
+    private static void receiveCommand(boolean isExit) {
+        if (!isExit) {
+            String fullCommand = TextUi.readCommand();
+            TextUi.showSeparator();
+            Command command = Parser.parse(fullCommand);
+            command.execute(inputs);
+            TextUi.showSeparator();
+            receiveCommand(command.isExit());
+        }
     }
 }

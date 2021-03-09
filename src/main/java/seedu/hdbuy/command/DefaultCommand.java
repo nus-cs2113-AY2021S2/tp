@@ -19,7 +19,7 @@ public class DefaultCommand extends Command {
     }
 
     @Override
-    public void execute(HashMap<QueryKey, String> inputs, TextUi ui) {
-        ui.showInvalidInput(input);
+    public void execute(HashMap<QueryKey, String> inputs) {
+        TextUi.showInvalidInput(input);
     }
 }
