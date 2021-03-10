@@ -16,9 +16,8 @@ public class MarkAsUndoneCommand extends Command {
     @Override
     public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
-        ArrayList<Task> doneTasks = module.getFilteredTasks(module.getTaskList(), true);
-        ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, doneTasks);
-        ArrayList<Task> chosenTasks = module.getChosenTasks(doneTasks);
+        ArrayList<Task> chosenTasks = module.getTasksToMarkOrUnmark(ui,
+                MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, true);
         for (Task task : chosenTasks) {
             String description = task.getDescription();
             String confirmation = "Marked " + description + " as undone.";

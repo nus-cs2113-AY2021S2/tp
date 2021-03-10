@@ -16,8 +16,8 @@ public class DeleteTaskCommand extends Command {
     @Override
     public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
-        ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_DELETE, COMMAND_VERB_DELETE, module.getTaskList());
-        ArrayList<Task> chosenTasks = module.getChosenTasks(module.getTaskList());
+        ArrayList<Task> chosenTasks = module.getTasksToDelete(ui,
+                MESSAGE_TASKS_TO_DELETE, COMMAND_VERB_DELETE);
         for (Task task : chosenTasks) {
             String description = task.getDescription();
             String confirmation = "Removed " + description + ".";

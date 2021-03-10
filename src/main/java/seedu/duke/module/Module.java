@@ -6,6 +6,9 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Messages.COMMAND_VERB_MARK;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_MARK;
+
 public class Module {
 
     private final String moduleCode;
@@ -67,18 +70,28 @@ public class Module {
         task.setDone(false);
     }
 
-    public ArrayList<Task> getFilteredTasks(ArrayList<Task> taskList, boolean isDone) {
-        ArrayList<Task> tasksToModify = new ArrayList<>();
-        for (Task task : taskList) {
-            if (task.getDone() == isDone) {
-                tasksToModify.add(task);
-            }
-        }
-        return tasksToModify;
+    public ArrayList<Task> getTasksToDelete(UI ui, String message, String commandVerb) {
+        ui.printGetChosenTasksPrompt(message, commandVerb, taskList);
+        return getChosenTasks(ui, taskList);
     }
 
-    public ArrayList<Task> getChosenTasks(ArrayList<Task> taskList) {
-        UI ui = new UI();
+    public ArrayList<Task> getTasksToMarkOrUnmark(UI ui, String message, String commandVerb, boolean isDone) {
+        ArrayList<Task> tasksToModify = getFilteredTasks(isDone);
+        ui.printGetChosenTasksPrompt(message, commandVerb, tasksToModify);
+        return getChosenTasks(ui, tasksToModify);
+    }
+
+    public ArrayList<Task> getFilteredTasks(boolean isDone) {
+        ArrayList<Task> filteredTasks = new ArrayList<>();
+        for (Task task : taskList) {
+            if (task.getDone() == isDone) {
+                filteredTasks.add(task);
+            }
+        }
+        return filteredTasks;
+    }
+
+    public ArrayList<Task> getChosenTasks(UI ui, ArrayList<Task> tasks) {
         // simulating the parser's checkIndex() method
         ArrayList<Integer> indices = new ArrayList<>();
         String input = ui.readCommand();
@@ -86,11 +99,10 @@ public class Module {
         for (String token : tokens) {
             indices.add(Integer.parseInt(token));
         }
-
         // store the tasks chosen by user to be deleted/marked/unmarked in a new array list
         ArrayList<Task> chosenTasks = new ArrayList<>();
         for (Integer index : indices) {
-            chosenTasks.add(taskList.get(index - 1));
+            chosenTasks.add(tasks.get(index - 1));
         }
         return chosenTasks;
         // return Parser.checkIndex(readCommand(), taskList.size());
