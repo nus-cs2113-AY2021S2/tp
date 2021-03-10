@@ -28,9 +28,9 @@ public class CommandHandler {
         case COMMAND_VIEW:
             return new ViewCommand(parsedArguments);
         case COMMAND_HELP:
-            return new HelpCommand();
+            return new HelpCommand(parsedArguments);
         case COMMAND_EXIT:
-            return new ExitCommand();
+            return new ExitCommand(parsedArguments);
         default:
             throw new CommandException(ERROR_INVALID_COMMAND + commandWord);
         }
