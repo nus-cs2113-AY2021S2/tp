@@ -2,10 +2,10 @@ package ManagerClasses;
 
 public enum CommandEnum {
     GO,
-    DISPLAYRECORDS,
-    DELETERECORDS,
-    ADDNOTES,
-    DELETENOTES,
+    HISTORY,
+    CLEARHISTORY,
+    ADDNOTE,
+    DELETENOTE,
     DISPLAYNOTES,
     BYE,
     INVALID
