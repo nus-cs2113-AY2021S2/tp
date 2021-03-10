@@ -10,5 +10,4 @@ list aldkjadlj
 search
 remove 2
 remove 100
-list
 bye

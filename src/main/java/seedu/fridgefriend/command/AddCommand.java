@@ -32,7 +32,7 @@ public class AddCommand extends Command {
 
     private void showResults() {
         System.out.println("Great! I have added " + foodToAdd.getFoodName() + " into your fridge.");
-        System.out.println("Details: " + foodToAdd.toString());
+        System.out.println("Details: " + foodToAdd.toString() + "\n");
     }
 
 }

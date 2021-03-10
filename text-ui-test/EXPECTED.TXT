@@ -12,7 +12,6 @@ Sorry my friend, please give a valid input.
 
 Great! I have added grouper into your fridge.
 Details: ||Food name: grouper, category: SEAFOOD, expiry on: 2021-04-05, stored in: OTHER||
-add
 
 Sorry my friend, the description cannot be empty.
 
@@ -29,12 +28,6 @@ Sorry my friend, the description cannot be empty.
 
 Noted! I've removed grouper from your fridge.
 Now you have 1 food in the fridge.
-
-Here are the items in your fridge:
-	1. pork [MEAT]
-	2. grouper [SEAFOOD]
-
-Sorry my friend, the description cannot be empty.
 
 Please enter a valid index to remove food.
 
