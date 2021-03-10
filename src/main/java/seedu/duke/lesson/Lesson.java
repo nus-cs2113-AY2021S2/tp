@@ -4,14 +4,14 @@ public class Lesson {
 
     private final LessonType lessonType;
     private String time;
-    private TeachingStaff teachingStaff;
     private String onlineLink;
-    
-    public Lesson(LessonType lessonType, String time, String link, TeachingStaff teacher) {
+    private TeachingStaff teachingStaff;
+
+    public Lesson(LessonType lessonType, String time, String onlineLink, TeachingStaff teachingStaff) {
         this.lessonType = lessonType;
         this.time = time;
-        this.onlineLink = link;
-        this.teachingStaff = teacher;
+        this.onlineLink = onlineLink;
+        this.teachingStaff = teachingStaff;
     }
 
     public String getTime() {

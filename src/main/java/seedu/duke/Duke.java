@@ -3,8 +3,10 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.exception.DukeException;
 import seedu.duke.exception.UnknownCommandException;
+import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
-import seedu.duke.storage.Storage;
+import seedu.duke.storage.Loader;
+import seedu.duke.storage.Writer;
 import seedu.duke.ui.UI;
 
 import java.util.Scanner;
@@ -12,49 +14,49 @@ import java.util.Scanner;
 public class Duke {
 
     private static final UI ui = new UI();
-    private static final Storage storage = new Storage();
     private static final Parser parser = new Parser();
+    private static final Loader loader = new Loader();
+    private static final Writer writer = new Writer();
 
     public static void main(String[] args) {
-        //start and load
+
+        //Start and load
         start();
 
-        //receive user input
-        run();
+        //Receive user input
+        //run();
 
-        //exit
+        //Exit
         exit();
     }
 
     private static void start() {
-        //print welcome
-        //ui.printWelcome();
+        //Print welcome
+        ui.printWelcome();
 
-        //load data from file
-        //storage.loadData();
+        //Load module names
+        ModuleList.loadModuleNames(loader);
     }
 
     private static void run() {
         boolean isExit = false;
         Scanner in = new Scanner(System.in);
-
-        //loop
+      
+        //Loop
         while (!isExit) {
-            //scan
-            String input = in.nextLine();
-            //parse
-            try {
-                Command command = parser.parse(input);
-                isExit = command.execute();
-            } catch (DukeException e) {
-                // TODO - pass to ui to print warning
-                System.out.println("Unknown Command");
-            }
+            //Scan
+            //String input = in.nextLine();
+
+            //Parse
+            //Command command = parser.parse(input);
+
+            //Execute
+            //isExit = command.execute();
         }
     }
 
     private static void exit() {
-        //print exit message
-        //ui.printBye();
+        //Print exit message
+        ui.printBye();
     }
 }
