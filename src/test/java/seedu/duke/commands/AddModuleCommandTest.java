@@ -20,6 +20,7 @@ class AddModuleCommandTest {
         System.setOut(new PrintStream(outContent));
 
         ModuleList modules = new ModuleList();
+        modules.clearModules();
         modules.addModule("CS2106");
         modules.addModule("CS2105");
 
