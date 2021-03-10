@@ -17,11 +17,11 @@ public class DeleteTaskCommand extends Command {
     public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
         ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_DELETE, COMMAND_VERB_DELETE, module.getTaskList());
-        ArrayList<Task> chosenTasks = ui.getChosenTasks(module.getTaskList());
+        ArrayList<Task> chosenTasks = module.getChosenTasks(module.getTaskList());
         for (Task task : chosenTasks) {
             String description = task.getDescription();
             String confirmation = "Removed " + description + ".";
-            ui.printStatement(confirmation);
+            ui.printMessage(confirmation);
             module.deleteTaskFromList(task);
         }
     }

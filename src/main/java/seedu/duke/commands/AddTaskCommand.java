@@ -20,7 +20,7 @@ public class AddTaskCommand extends Command {
         task.setGraded(isGraded);
         module.addTaskToList(task); //future: check if there is space in task list to add
         String confirmation = "Added " + task.getDescription() + ".";
-        ui.printStatement(confirmation);
+        ui.printMessage(confirmation);
     }
 
     @Override

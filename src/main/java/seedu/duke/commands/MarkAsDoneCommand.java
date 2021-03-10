@@ -18,13 +18,13 @@ public class MarkAsDoneCommand extends Command {
     @Override
     public void execute(ModuleList modules, UI ui) throws CommandException {
         Module module = modules.getSelectedModule();
-        ArrayList<Task> undoneTasks = ui.getFilteredTasks(module.getTaskList(), false);
+        ArrayList<Task> undoneTasks = module.getFilteredTasks(module.getTaskList(), false);
         ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_MARK, COMMAND_VERB_MARK, undoneTasks);
-        ArrayList<Task> chosenTasks = ui.getChosenTasks(undoneTasks);
+        ArrayList<Task> chosenTasks = module.getChosenTasks(undoneTasks);
         for (Task task : chosenTasks) {
             String description = task.getDescription();
             String confirmation = "Marked " + description + " as done.";
-            ui.printStatement(confirmation);
+            ui.printMessage(confirmation);
             module.markTaskInList(task);
         }
     }

@@ -2,6 +2,7 @@ package seedu.duke.module;
 
 import seedu.duke.lesson.Lesson;
 import seedu.duke.task.Task;
+import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
@@ -64,5 +65,34 @@ public class Module {
 
     public void unmarkTaskInList(Task task) {
         task.setDone(false);
+    }
+
+    public ArrayList<Task> getFilteredTasks(ArrayList<Task> taskList, boolean isDone) {
+        ArrayList<Task> tasksToModify = new ArrayList<>();
+        for (Task task : taskList) {
+            if (task.getDone() == isDone) {
+                tasksToModify.add(task);
+            }
+        }
+        return tasksToModify;
+    }
+
+    public ArrayList<Task> getChosenTasks(ArrayList<Task> taskList) {
+        UI ui = new UI();
+        // simulating the parser's checkIndex() method
+        ArrayList<Integer> indices = new ArrayList<>();
+        String input = ui.readCommand();
+        String[] tokens = input.split(" ");
+        for (String token : tokens) {
+            indices.add(Integer.parseInt(token));
+        }
+
+        // store the tasks chosen by user to be deleted/marked/unmarked in a new array list
+        ArrayList<Task> chosenTasks = new ArrayList<>();
+        for (Integer index : indices) {
+            chosenTasks.add(taskList.get(index - 1));
+        }
+        return chosenTasks;
+        // return Parser.checkIndex(readCommand(), taskList.size());
     }
 }
