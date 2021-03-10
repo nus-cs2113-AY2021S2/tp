@@ -22,7 +22,6 @@ public class ModuleList {
     public static ArrayList<String> getModuleList() {
         return modules;
     }
- 
 
     /**
      * Searches directory for module files.
@@ -130,5 +129,9 @@ public class ModuleList {
             deletedModules.add(0, modules.remove(indexToRemove));
         }
         return deletedModules;
+    }
+
+    public void clearModules() {
+        modules.clear();
     }
 }
