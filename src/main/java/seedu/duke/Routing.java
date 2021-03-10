@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.AbstractMap;
+import java.util.Scanner;
 
 /*adapted from https://www.geeksforgeeks.org/shortest-path-unweighted-graph/*/
 
@@ -140,7 +141,7 @@ public class Routing {
         //System.out.println("Shortest path length is: " + dist[dest]);
 
         // Print path
-        System.out.println("Path is ::");
+        System.out.println("Path is :");
         for (int i = path.size() - 1; i >= 0; i--) {
             if(i > 0) {
                 System.out.print(numberToBlock.get(path.get(i)) + "->");
@@ -202,4 +203,13 @@ public class Routing {
         return false;
     }
 
+    public void executeRouting() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("STARTING BLOCK:");
+        String from = in.nextLine();
+        System.out.println("DESTINATION BLOCK:");
+        String to = in.nextLine();
+        printShortestDistance(from,to);
+        System.out.println("");
+    }
 }
