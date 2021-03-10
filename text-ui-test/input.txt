@@ -1,2 +1,17 @@
 James Gosling
+add pork /c meat
+search pork
+add beef /c meat
+search chicken
+add grouper /c seafood
+add
+
+list
+list meat
+list aldkjadlj
+search
+remove 2
+list
+remove
+remove 100
 bye

@@ -1,7 +1,45 @@
 Hello! I'm FridgeFriend!
 What can I do for you?
 
-James Gosling
+Sorry my friend, please give a valid input.
+
+Great! I have added pork [MEAT] into your fridge.
+
+You have pork in your fridge.
+
+Great! I have added beef [MEAT] into your fridge.
+
+You do not have chicken in your fridge.
+
+Great! I have added grouper [SEAFOOD] into your fridge.
+
+Sorry my friend, the description cannot be empty.
+
+Sorry my friend, please give a valid input.
+
+Here are the items in your fridge:
+	1. pork [MEAT]
+	2. beef [MEAT]
+	3. grouper [SEAFOOD]
+
+These are the MEAT in your fridge:
+	1. pork
+	2. beef
+
+Sorry my friend, please enter a valid food category.
+
+Sorry my friend, the description cannot be empty.
+
+Noted! I've removed beef from your fridge.
+Now you have 2 food in the fridge.
+
+Here are the items in your fridge:
+	1. pork [MEAT]
+	2. grouper [SEAFOOD]
+
+Sorry my friend, the description cannot be empty.
+
+Please enter a valid index to remove food.
 
 Bye. Hope to see you again soon!
 
