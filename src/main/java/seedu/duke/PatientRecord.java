@@ -1,7 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.command.Command;
-
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
