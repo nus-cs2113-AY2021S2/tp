@@ -1,6 +1,24 @@
 package seedu.duke.parser;
 
 import seedu.duke.commands.Command;
+import seedu.duke.commands.AddLessonCommand;
+import seedu.duke.commands.AddModuleCommand;
+import seedu.duke.commands.AddTaskCommand;
+import seedu.duke.commands.Command;
+import seedu.duke.commands.DeleteLessonCommand;
+import seedu.duke.commands.DeleteModuleCommand;
+import seedu.duke.commands.DeleteTaskCommand;
+import seedu.duke.commands.EnterModuleCommand;
+import seedu.duke.commands.ExitProgramCommand;
+import seedu.duke.commands.ListLessonsCommand;
+import seedu.duke.commands.ListModuleCommand;
+import seedu.duke.commands.ListTasksCommand;
+import seedu.duke.commands.MarkAsDoneCommand;
+import seedu.duke.commands.MarkAsUndoneCommand;
+import seedu.duke.commands.OpenLessonLinkCommand;
+import seedu.duke.commands.PrintHelpCommand;
+import seedu.duke.commands.ViewTeachingStaffCommand;
+
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -189,9 +207,11 @@ public class Parser {
         case PRINT_HELP_MODULE:
             return new PrintHelpCommand();
         case EXIT_MODULE:
-            return new ExitModuleCommand();
+            // TODO
+            return new PrintHelpCommand();
         case LIST_MODULE_INFO:
-            return new ListModuleInfoCommand();
+            // TODO
+            return new PrintHelpCommand();
         case LIST_LESSONS:
             return new ListLessonsCommand();
         case OPEN_LINK:
