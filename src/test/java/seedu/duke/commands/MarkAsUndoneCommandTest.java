@@ -71,8 +71,5 @@ class MarkAsUndoneCommandTest {
 
         System.setIn(originalIn);
         System.setOut(originalOut);
-
-        System.setIn(originalIn);
-        System.setOut(originalOut);
     }
 }
