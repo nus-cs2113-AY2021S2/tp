@@ -305,7 +305,7 @@ public class Parser {
         // Creating Lesson Object
         String type = allDetails[LESSON_TYPE_INDEX].toUpperCase();
         // TODO - throw "illegal argument exception" if enum value is invalid
-        LessonType TYPE = LessonType.valueOf(type);
+        LessonType lessonType = LessonType.valueOf(type);
         String timeAndDay = allDetails[LESSON_TIME_DAY_INDEX];
         String link = allDetails[LESSON_LINK_INDEX];
         String teacherName = allDetails[LESSON_TEACHER_INDEX];
@@ -313,7 +313,7 @@ public class Parser {
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
 
-        return new Lesson(TYPE, timeAndDay, link, teacher);
+        return new Lesson(lessonType, timeAndDay, link, teacher);
     }
 
     /**
