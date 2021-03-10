@@ -220,16 +220,4 @@ public class Ui {
     public static void printListIsEmpty() {
         System.out.println("No links have been added... Please add one!");
     }
-
-    public static String validTime(String time) throws DateTimeParseException {
-        LocalTime taskTime = LocalTime.parse(time);
-        String formattedTime = taskTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
-        return formattedTime;
-    }
-
-    public static String validDate(String date) throws DateTimeParseException {
-        LocalDate taskDate = LocalDate.parse(date);
-        String formattedDate = taskDate.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-        return formattedDate;
-    }
 }

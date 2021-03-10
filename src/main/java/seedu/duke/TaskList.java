@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
@@ -8,10 +11,10 @@ import java.util.ArrayList;
 //with modifications
 public class TaskList {
 
-    private static ArrayList<Task> tasks;
-    private static ArrayList<Assignment> assignments;
-    private static ArrayList<Midterm> midterms;
-    private static ArrayList<FinalExam> finalExams;
+    public static ArrayList<Task> tasks;
+    public static ArrayList<Assignment> assignments;
+    public static ArrayList<Midterm> midterms;
+    public static ArrayList<FinalExam> finalExams;
 
     /**
      * Constructs tasklist.
@@ -54,7 +57,7 @@ public class TaskList {
         while (true) {
             try {
                 Ui.printAddTaskTimeMessage(taskNumber);
-                String time = Ui.validTime(Ui.readCommand());
+                String time = validTime(Ui.readCommand());
                 Ui.printHorizontalLine();
                 return time;
             } catch (DateTimeParseException e) {
@@ -67,13 +70,25 @@ public class TaskList {
         while (true) {
             try {
                 Ui.printAddTaskDateMessage(taskNumber);
-                String date = Ui.validDate(Ui.readCommand());
+                String date = validDate(Ui.readCommand());
                 Ui.printHorizontalLine();
                 return date;
             } catch (DateTimeParseException e) {
                 Ui.printInvalidDateFormat();
             }
         }
+    }
+
+    public static String validTime(String time) throws DateTimeParseException {
+        LocalTime taskTime = LocalTime.parse(time);
+        String formattedTime = taskTime.format(DateTimeFormatter.ofPattern("hh:mm a"));
+        return formattedTime;
+    }
+
+    public static String validDate(String date) throws DateTimeParseException {
+        LocalDate taskDate = LocalDate.parse(date);
+        String formattedDate = taskDate.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return formattedDate;
     }
 
     public static boolean isValidTaskType(String command) {
