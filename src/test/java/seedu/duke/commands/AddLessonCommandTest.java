@@ -10,7 +10,7 @@ import seedu.duke.ui.UI;
 
 import java.io.OutputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AddLessonCommandTest extends LessonCommandTest {
 
@@ -22,7 +22,7 @@ class AddLessonCommandTest extends LessonCommandTest {
         UI ui = new UI();
         Module module = new Module(MODULE_CODE);
         String moduleCode = module.getModuleCode();
-        moduleList.selectedModule= module;
+        moduleList.selectedModule = module;
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
         OutputStream os = getOutputStream();

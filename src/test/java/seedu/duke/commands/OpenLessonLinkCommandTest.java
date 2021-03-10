@@ -24,7 +24,7 @@ class OpenLessonLinkCommandTest extends LessonCommandTest {
 
         Module module = new Module(MODULE_CODE);
         String moduleCode = module.getModuleCode();
-        moduleList.selectedModule= module;
+        moduleList.selectedModule = module;
         addLessonsToList(moduleList, ui);
         ArrayList<Integer> indexes = new ArrayList<>();
         initialisedIndexes(indexes);

@@ -41,10 +41,10 @@ public class LessonCommandTest {
 
     public static Lesson initialiseLesson(String teacherName, String teacherEmail, LessonType lessonType, String time,
                                           String onlineLink) {
-        TeachingStaff teachingStaff = new TeachingStaff(teacherName,teacherEmail);
+        TeachingStaff teachingStaff = new TeachingStaff(teacherName, teacherEmail);
         teachingStaff.setName(teacherName);
         teachingStaff.setEmail(teacherEmail);
-        Lesson newLesson = new Lesson(lessonType,time,onlineLink,teachingStaff);
+        Lesson newLesson = new Lesson(lessonType, time, onlineLink, teachingStaff);
         newLesson.setTime(time);
         newLesson.setTeachingStaff(teachingStaff);
         newLesson.setOnlineLink(onlineLink);

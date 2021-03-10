@@ -23,7 +23,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
         OutputStream os = getOutputStream();
         Module module = new Module(MODULE_CODE);
         String moduleCode = module.getModuleCode();
-        moduleList.selectedModule= module;
+        moduleList.selectedModule = module;
         addLessonsToList(moduleList, ui);
         removeOutputStream();
 
