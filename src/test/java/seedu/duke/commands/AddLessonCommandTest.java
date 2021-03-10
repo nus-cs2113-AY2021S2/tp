@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
@@ -21,13 +22,17 @@ class AddLessonCommandTest extends LessonCommandTest {
         UI ui = new UI();
         Module module = new Module(MODULE_CODE);
         String moduleCode = module.getModuleCode();
-        boolean isModuleSelected = ModuleList.setSelectedModule(module);
-
+        moduleList.selectedModule= module;
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
         OutputStream os = getOutputStream();
 
-        command.execute(moduleList, ui);
+        try {
+            command.execute(moduleList, ui);
+        } catch (CommandException e) {
+            printFailedToExecuteCommand();
+        }
         assertEquals(EXPECTED_OUTPUT, os.toString());
         removeOutputStream();
     }
+}
