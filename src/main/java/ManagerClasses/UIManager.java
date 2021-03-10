@@ -28,8 +28,11 @@ public class UIManager {
     }
 
     public static void showByeMessage() {
-        printDivider();
         System.out.println("Bye. Hope to see you again soon!");
         printDivider();
+    }
+
+    public static void showInvalidMessage() {
+        System.out.println("Sorry, I didn't understand that");
     }
 }
