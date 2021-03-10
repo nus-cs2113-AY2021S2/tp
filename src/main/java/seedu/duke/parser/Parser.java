@@ -231,7 +231,7 @@ public class Parser {
             return new DeleteLessonCommand();
         case ADD_TASK:
             Task newTask = parseNewTaskDetails(input);
-            return new AddLessonCommand(newTask);
+            return new AddTaskCommand(newTask);
         case DEL_TASK:
             return new DeleteTaskCommand();
         default:
