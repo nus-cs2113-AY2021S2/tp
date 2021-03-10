@@ -20,3 +20,4 @@ public class Duke {
 
     }
 }
+// Am I doing this right?
