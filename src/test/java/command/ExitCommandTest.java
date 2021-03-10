@@ -4,14 +4,13 @@ import canteens.Canteen;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import storage.Storage;
 import ui.Ui;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExitCommandTest {
     private final PrintStream standardOut = System.out;
@@ -27,9 +26,9 @@ class ExitCommandTest {
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
         Command c = new ExitCommand();
-        String expectedString = "-----------------------\r\n" +
-                "Thank you for using our application! See you again!\r\n" +
-                "-----------------------";
+        String expectedString = "-----------------------\r\n"
+                + "Thank you for using our application! See you again!\r\n"
+                + "-----------------------";
         c.execute(canteens, ui);
         assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }

@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DisplayCommandTest {
     private final PrintStream standardOut = System.out;
@@ -28,9 +28,9 @@ class DisplayCommandTest {
         ArrayList<Canteen> canteens = storage.load();
         Ui ui = new Ui();
         Command c = new DisplayCommand();
-        String expectedString = "Here's a list of the stores in the canteen: The Deck\r\n" +
-                "1.chicken rice stall\r\n" +
-                "2.Fish rice stall";
+        String expectedString = "Here's a list of the stores in the canteen: The Deck\r\n"
+                + "1.chicken rice stall\r\n"
+                + "2.Fish rice stall";
         c.execute(canteens, ui);
         assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }
