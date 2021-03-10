@@ -8,10 +8,17 @@ import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.FoodStorageLocation;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
+import static seedu.fridgefriend.food.FoodStorageLocation.*;
 
 public class FridgeFriend {
 
@@ -86,18 +93,40 @@ public class FridgeFriend {
     }
 
     /**
-     * Parses description into food category and name.
+     * Define arguments format for add food command.
+     * A Pattern object which defines how the input string for food item
+     * that should look like. [^/]+ implies 1 or more characters except for '/'
+     */
+    public static final Pattern FOOD_DATA_ARGS_FORMAT =
+            Pattern.compile("(?<name>[^/]+)"
+                    + " /c (?<category>[^/]+)"
+                    + " /exp (?<expiryDate>[^/]+)"
+                    + " /loc (?<storageLocation>[^/]+)");
+
+    /**
+     * Parses description into name, foodCategory, expiryDate and storageLocation.
      *
      * @param foodDescription the string in the required format of food description
-     * @return String array consist of food category and name
+     * @return a new AddCommand for Food
      * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parse
      */
-    public static String[] parseFoodDescription(String foodDescription) throws EmptyDescriptionException {
+    public static Command parseFoodDescription(String foodDescription)
+            throws EmptyDescriptionException, InvalidInputException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-        //remove trailing whitespaces and parse food description into two separated by category tag
-        return foodDescription.trim().split("/c",LIMIT);
+        final Matcher matcher = FOOD_DATA_ARGS_FORMAT.matcher(foodDescription.trim());
+        // Validate foodDescription string format
+        if (!matcher.matches()) {
+            throw new InvalidInputException();
+        }
+        return new AddCommand(
+            matcher.group("name"),
+            convertStringToFoodCategory(matcher.group("category")),
+            matcher.group("expiryDate"),
+            convertStringToLocation(matcher.group("storageLocation"))
+        );
     }
 
     public static int parseIntegerDescription(String description) throws EmptyDescriptionException {
@@ -139,9 +168,9 @@ public class FridgeFriend {
         }
     }
 
-    private static void proceedToAdd(String description) throws EmptyDescriptionException {
-        Command add = new AddCommand(parseFoodDescription(description));
-        add.execute(fridge);
+    private static void proceedToAdd(String description) throws EmptyDescriptionException, InvalidInputException {
+        Command addCommand = parseFoodDescription(description);
+        addCommand.execute(fridge);
     }
 
     private static void proceedToList(String description) {

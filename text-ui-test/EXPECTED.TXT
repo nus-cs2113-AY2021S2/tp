@@ -3,35 +3,32 @@ What can I do for you?
 
 Sorry my friend, please give a valid input.
 
-Great! I have added pork [MEAT] into your fridge.
+Great! I have added chicken into your fridge.
+Details: ||Food name: chicken, category: MEAT, expiry on: 2021-06-30, stored in: LOWER_SHELF||
 
-You have pork in your fridge.
-
-Great! I have added beef [MEAT] into your fridge.
-
-You do not have chicken in your fridge.
-
-Great! I have added grouper [SEAFOOD] into your fridge.
-
-Sorry my friend, the description cannot be empty.
+You have chicken in your fridge.
 
 Sorry my friend, please give a valid input.
 
+Great! I have added grouper into your fridge.
+Details: ||Food name: grouper, category: SEAFOOD, expiry on: 2021-04-05, stored in: OTHER||
+add
+
+Sorry my friend, the description cannot be empty.
+
 Here are the items in your fridge:
-	1. pork [MEAT]
-	2. beef [MEAT]
-	3. grouper [SEAFOOD]
+	1. chicken [MEAT]
+	2. grouper [SEAFOOD]
 
 These are the MEAT in your fridge:
-	1. pork
-	2. beef
+	1. chicken
 
 Sorry my friend, please enter a valid food category.
 
 Sorry my friend, the description cannot be empty.
 
-Noted! I've removed beef from your fridge.
-Now you have 2 food in the fridge.
+Noted! I've removed grouper from your fridge.
+Now you have 1 food in the fridge.
 
 Here are the items in your fridge:
 	1. pork [MEAT]
