@@ -22,26 +22,26 @@ public class InputManager {
             Record history = new Record();
 
             switch (commandManager.getCommandType()) {
-            case GO:
+            case GoCommand:
                 map.executeRouting();
                 // todo: add records
                 break;
-            case HISTORY:
+            case ShowHistoryCommand:
                 history.displayRecords();
                 break;
-            case CLEARHISTORY:
+            case ClearHistoryCommand:
                 history.emptyRecords();
                 break;
-            case ADDNOTE:
+            case AddNoteCommand:
                 System.out.println("Add note to the selected location");
                 break;
-            case DELETENOTE:
+            case DeleteNoteCommand:
                 System.out.println("Delete note from selected location");
                 break;
-            case DISPLAYNOTES:
+            case DisplayNotesCommand:
                 System.out.println("Display notes of selected location");
                 break;
-            case BYE:
+            case ByeCommand:
                 UIManager.showByeMessage();
                 return;
             default:

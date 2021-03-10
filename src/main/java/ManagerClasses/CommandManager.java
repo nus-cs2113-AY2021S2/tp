@@ -22,21 +22,21 @@ public class CommandManager {
     private CommandEnum getCommandTypeFromInput(String filteredInput) {
         switch (filteredInput) {
         case "go":
-            return CommandEnum.GO;
+            return CommandEnum.GoCommand;
         case "history":
-            return CommandEnum.HISTORY;
+            return CommandEnum.ShowHistoryCommand;
         case "clear history":
-            return CommandEnum.CLEARHISTORY;
+            return CommandEnum.ClearHistoryCommand;
         case "add note":
-            return CommandEnum.ADDNOTE;
+            return CommandEnum.AddNoteCommand;
         case "delete note":
-            return CommandEnum.DELETENOTE;
+            return CommandEnum.DeleteNoteCommand;
         case "notes":
-            return CommandEnum.DISPLAYNOTES;
+            return CommandEnum.DisplayNotesCommand;
         case "bye":
-            return CommandEnum.BYE;
+            return CommandEnum.ByeCommand;
         default:
-            return CommandEnum.INVALID;
+            return CommandEnum.InvalidCommand;
         }
     }
 }
