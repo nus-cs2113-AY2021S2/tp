@@ -4,7 +4,6 @@ public class Lesson {
 
     private final LessonType lessonType;
     private String time;
-
     private String onlineLink;
     private TeachingStaff teachingStaff;
 

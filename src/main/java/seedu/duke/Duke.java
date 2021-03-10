@@ -1,10 +1,15 @@
 package seedu.duke;
 
+import seedu.duke.commands.Command;
+import seedu.duke.exception.DukeException;
+import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 import seedu.duke.ui.UI;
+
+import java.util.Scanner;
 
 public class Duke {
 
@@ -35,10 +40,12 @@ public class Duke {
 
     private static void run() {
         boolean isExit = false;
+        Scanner in = new Scanner(System.in);
+      
         //Loop
         while (!isExit) {
             //Scan
-
+            //String input = in.nextLine();
 
             //Parse
             //Command command = parser.parse(input);
@@ -46,7 +53,6 @@ public class Duke {
             //Execute
             //isExit = command.execute();
         }
-
     }
 
     private static void exit() {
