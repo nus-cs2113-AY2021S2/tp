@@ -31,6 +31,7 @@ public class ModuleList {
      * @param loader Instance of Loader class.
      */
     public static void loadModuleNames(Loader loader) {
+        modules.clear();
         for (String name : loader.getModuleNames()) {
             insertModule(name);
         }
