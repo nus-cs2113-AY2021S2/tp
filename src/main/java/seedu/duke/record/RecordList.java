@@ -53,6 +53,9 @@ public class RecordList {
 
     public void listExpenses(Ui ui) {
         ui.printMessage("List expenses!");
+        for (Record r : recordList) {
+            System.out.println(r.getDescription());
+        }
     }
 
     public void listLoans(Ui ui) {

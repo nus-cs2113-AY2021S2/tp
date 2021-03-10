@@ -1,6 +1,10 @@
 package seedu.duke.storage;
 
+import seedu.duke.exception.InvalidFileInputException;
+import seedu.duke.record.Expense;
+import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
+import seedu.duke.record.Saving;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,10 +14,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.StringJoiner;
+import java.util.regex.Pattern;
 
 public class Storage {
-    public static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
+    private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
+    private static final String REGEX_PATTERN_EXPENSE = "[E]\\s\\|\\s.+";
+    private static final String REGEX_PATTERN_LOAN = "[L]\\s\\|\\s.+";
+    private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s.+";
+    private static final int INDEX_OF_DESCRIPTION = 1;
+    private static final int INDEX_OF_AMOUNT = 2;
+    private static final int INDEX_OF_DATE = 3;
 
     public Path dataFilePath;
 
@@ -29,27 +39,108 @@ public class Storage {
         return Files.exists(filePath);
     }
 
+    /**
+     * Saves the records from the RecordList into a .txt file.
+     *
+     * @param records is the RecordList of all the Record objects
+     * @throws IOException when the file is corrupted.
+     */
     public void saveFile(ArrayList<Record> records) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
-        fw.write("Test Save!\n");
         for (Record r : records) {
             fw.write(r.convertFileFormat() + System.lineSeparator());
         }
         fw.close();
     }
 
-    public void loadFile() {
+    /**
+     * Loads the RecordList from the file into FINUX.
+     *
+     * @return a RecordList from the loaded file.
+     */
+    public ArrayList<Record> loadFile() {
+        ArrayList<Record> records = new ArrayList<>();
         try {
             File loadFile = dataFilePath.toFile();
             Scanner sc = new Scanner(loadFile);
-            StringJoiner jn = new StringJoiner(" ");
             while (sc.hasNextLine()) {
                 String rawData = sc.nextLine();
-                jn.add(rawData);
+                Record record = parseRecord(rawData);
+                if (record != null) {
+                    records.add(record);
+                }
             }
-            System.out.println(jn.toString());
+            return records;
         } catch (Exception e) {
             System.exit(-1);
+            return records;
         }
+    }
+
+    private Record parseRecord(String rawData) {
+        try {
+            if (Pattern.matches(REGEX_PATTERN_EXPENSE, rawData)) {
+                return loadExpense(rawData);
+            } else if (Pattern.matches(REGEX_PATTERN_LOAN, rawData)) {
+                return loadLoan(rawData);
+            } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
+                return loadSaving(rawData);
+            } else {
+                throw new InvalidFileInputException("No such Record type!");
+            }
+        } catch (InvalidFileInputException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    private String extractArg(String rawData, int index) throws InvalidFileInputException {
+        String[] args = rawData.split("\\|");
+        if(index < 0 || index > args.length) {
+            throw new InvalidFileInputException("Record has fewer arguments than expected!");
+        }
+        return args[index].strip();
+    }
+
+    private Record loadExpense(String rawData) throws InvalidFileInputException{
+        double amount;
+        String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
+        String issueDate = extractArg(rawData, INDEX_OF_DATE);
+
+        try {
+            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+        } catch (NumberFormatException e) {
+            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+        }
+
+        return new Expense(amount, issueDate, description);
+    }
+
+    private Record loadLoan(String rawData) throws InvalidFileInputException{
+        double amount;
+        String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
+        String issueDate = extractArg(rawData, INDEX_OF_DATE);
+
+        try {
+            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+        } catch (NumberFormatException e) {
+            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+        }
+
+        return new Loan(amount, issueDate, description);
+    }
+
+    private Record loadSaving(String rawData) throws InvalidFileInputException{
+        double amount;
+        String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
+        String issueDate = extractArg(rawData, INDEX_OF_DATE);
+
+        try {
+            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+        } catch (NumberFormatException e) {
+            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+        }
+
+        return new Saving(amount, issueDate, description);
     }
 }

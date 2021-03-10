@@ -17,22 +17,18 @@ public class Duke {
     private RecordList records;
     private Storage storage;
 
+    /*
+    public Duke() {
+        ui = new Ui();
+        storage = new Storage();
+        records = new RecordList();
+    }
+     */
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        /*
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
-         */
         new Duke().run();
     }
 
@@ -47,8 +43,8 @@ public class Duke {
 
     private void start() {
         ui = new Ui();
-        records = new RecordList();
         storage = new Storage();
+        records = new RecordList(storage.loadFile());
         ui.printWelcomeMessage();
     }
 
@@ -62,9 +58,7 @@ public class Duke {
         String rawInput;
         do {
             rawInput = ui.getUserInput();
-            //System.out.println("You have entered: " + rawInput);
             ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
-            //System.out.println("You have entered: " + parsedStringList);
             command = parseCommand(parsedStringList);
             if (command == null) {
                 continue;
@@ -75,12 +69,10 @@ public class Duke {
 
     private Command parseCommand(ArrayList<String> parsedString) {
         try {
-            Command type = CommandHandler.createCommand(parsedString);
-            System.out.println("Command is parsed");
-            return type;
+            //System.out.println("Command is parsed");
+            return CommandHandler.createCommand(parsedString);
         } catch (CommandException e) {
             System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
             return null;
         }
     }
