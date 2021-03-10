@@ -11,8 +11,20 @@ class CommandManagerTest {
     }
 
     @Test
-    void getCommandType_go_with_space() {
+    void getCommandType_go_with_trailing_space_and_caps() {
         CommandManager cm = new CommandManager("GO ");
+        Assertions.assertEquals("GoCommand", cm.getCommandType().toString());
+    }
+
+    @Test
+    void getCommandType_go_with_leading_space_and_caps() {
+        CommandManager cm = new CommandManager(" GO");
+        Assertions.assertEquals("GoCommand", cm.getCommandType().toString());
+    }
+
+    @Test
+    void getCommandType_go_with_surrounding_space_and_caps() {
+        CommandManager cm = new CommandManager(" GO ");
         Assertions.assertEquals("GoCommand", cm.getCommandType().toString());
     }
 
