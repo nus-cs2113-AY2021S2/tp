@@ -2,7 +2,6 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.CommandException;
-import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -11,21 +10,18 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.initialiseModule;
+import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 import static seedu.duke.commands.CommandTestUtil.initialiseTaskList;
 
 class MarkAsDoneCommandTest {
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-    private final ModuleList modules = new ModuleList();
 
     @Test
     void execute_twoValidTaskIndices_expectSuccess() {
@@ -35,9 +31,9 @@ class MarkAsDoneCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        Module module = initialiseModule(modules);
+        ModuleList modules = initialiseModuleList();
 
-        ArrayList<Task> taskList = initialiseTaskList(module);
+        ArrayList<Task> taskList = initialiseTaskList(modules.getSelectedModule());
 
         MarkAsDoneCommand markAsDoneCommand = new MarkAsDoneCommand();
 

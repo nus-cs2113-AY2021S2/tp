@@ -15,13 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
 import static seedu.duke.commands.CommandTestUtil.formatter;
-import static seedu.duke.commands.CommandTestUtil.initialiseModule;
+import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 
 class ListTasksCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-    private final ModuleList modules = new ModuleList();
 
     void initialiseTaskList(Module module) {
         LocalDate deadline1 = LocalDate.parse("26-02-2021", formatter);
@@ -46,9 +44,9 @@ class ListTasksCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        Module module = initialiseModule(modules);
+        ModuleList modules = initialiseModuleList();
 
-        initialiseTaskList(module);
+        initialiseTaskList(modules.getSelectedModule());
 
         ListTasksCommand listTasksCommand = new ListTasksCommand();
 

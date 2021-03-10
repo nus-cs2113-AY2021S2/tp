@@ -2,8 +2,6 @@ package seedu.duke.commands;
 
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.storage.Loader;
-import seedu.duke.storage.Writer;
 import seedu.duke.task.Task;
 
 import java.time.LocalDate;
@@ -15,11 +13,11 @@ public class CommandTestUtil {
     public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
     public static final String MESSAGE_MODULE_ERROR = "There was a problem with getting selected module." + NEWLINE;
 
-    public static Module initialiseModule(ModuleList modules) {
-        Loader loader = new Loader();
-        Writer writer = new Writer();
-        modules.setSelectedModule("CS2113T",loader, writer);
-        return ModuleList.getSelectedModule();
+    public static ModuleList initialiseModuleList() {
+        ModuleList modules = new ModuleList();
+        Module module = new Module("CS2113T");
+        modules.selectedModule = module;
+        return modules;
     }
 
     // Creates task list for testing MarkAsDoneCommand and MarkAsUndoneCommand.

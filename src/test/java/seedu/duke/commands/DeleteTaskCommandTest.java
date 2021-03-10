@@ -15,18 +15,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
 import static seedu.duke.commands.CommandTestUtil.formatter;
-import static seedu.duke.commands.CommandTestUtil.initialiseModule;
+import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 
 class DeleteTaskCommandTest {
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-    private final ModuleList modules = new ModuleList();
 
     private ArrayList<Task> initialiseTaskList(Module module) {
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
@@ -49,9 +46,9 @@ class DeleteTaskCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        Module module = initialiseModule(modules);
+        ModuleList modules = initialiseModuleList();
 
-        ArrayList<Task> taskList = initialiseTaskList(module);
+        ArrayList<Task> taskList = initialiseTaskList(modules.getSelectedModule());
 
         DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand();
 
