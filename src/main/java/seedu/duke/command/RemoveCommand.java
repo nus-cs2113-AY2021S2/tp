@@ -20,9 +20,9 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 
 public class RemoveCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
-            ArgumentType.COMMAND,
-            ArgumentType.OPTION,
-            ArgumentType.VALUE
+        ArgumentType.COMMAND,
+        ArgumentType.OPTION,
+        ArgumentType.VALUE
     };
     protected static final String COMMAND_REMOVE = "remove";
 

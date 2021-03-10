@@ -37,17 +37,19 @@ public class AddCommand extends Command {
 
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
         } else if (hasOption(arguments, OPTION_LOAN)) {
             recordType = RecordType.LOAN;
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_LOAN);
         } else if (hasOption(arguments, OPTION_SAVING)) {
             recordType = RecordType.SAVING;
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_SAVING);
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
 
         amount = Double.parseDouble(Objects.requireNonNull(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT)));
         issueDate = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
-        description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
     }
 
 

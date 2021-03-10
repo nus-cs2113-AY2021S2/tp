@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 public class ListCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
-            ArgumentType.COMMAND,
-            ArgumentType.OPTION,
-            ArgumentType.EMPTY_VALUE
+        ArgumentType.COMMAND,
+        ArgumentType.OPTION,
+        ArgumentType.EMPTY_VALUE
     };
     protected static final String COMMAND_LIST = "list";
 
