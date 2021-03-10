@@ -10,7 +10,7 @@ public class Task {
     private Boolean isDone;
     private Boolean isGraded;
     
-    public Task (String description, LocalDate deadline, String remarks) {
+    public Task(String description, LocalDate deadline, String remarks) {
         this.description = description;
         this.deadline = deadline;
         this.remarks = remarks;
