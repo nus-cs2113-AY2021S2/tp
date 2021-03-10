@@ -15,7 +15,7 @@ dos2unix EXPECTED-UNIX.TXT ACTUAL.TXT
 diff EXPECTED-UNIX.TXT ACTUAL.TXT
 if [ $? -eq 0 ]
 then
-    echo "Test passed!!"
+    echo "Test passed!"
     exit 0
 else
     echo "Test failed!"
