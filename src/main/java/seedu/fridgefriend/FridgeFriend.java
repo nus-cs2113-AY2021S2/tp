@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
-import static seedu.fridgefriend.food.FoodStorageLocation.*;
+import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocation;
 
 public class FridgeFriend {
 
