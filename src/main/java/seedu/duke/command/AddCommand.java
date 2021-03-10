@@ -3,7 +3,6 @@ package seedu.duke.command;
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.Expense;
-import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -16,9 +15,8 @@ import static seedu.duke.common.Constant.OPTION_AMOUNT;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
-import static seedu.duke.common.Constant.OPTION_SAVINGS;
+import static seedu.duke.common.Constant.OPTION_SAVING;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -32,24 +30,26 @@ public class AddCommand extends Command {
 
     public AddCommand(ArrayList<String> arguments) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_ADD,
-                OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVINGS, OPTION_AMOUNT, OPTION_DATE);
-        checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVINGS);
+                OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
+        checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
 
         //System.out.println(arguments);
 
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
         } else if (hasOption(arguments, OPTION_LOAN)) {
             recordType = RecordType.LOAN;
-        } else if (hasOption(arguments, OPTION_SAVINGS)) {
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_LOAN);
+        } else if (hasOption(arguments, OPTION_SAVING)) {
             recordType = RecordType.SAVING;
+            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_SAVING);
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
 
         amount = Double.parseDouble(Objects.requireNonNull(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT)));
         issueDate = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
-        description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
     }
 
 
