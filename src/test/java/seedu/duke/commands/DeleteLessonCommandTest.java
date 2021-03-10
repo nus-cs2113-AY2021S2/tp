@@ -16,7 +16,7 @@ class DeleteLessonCommandTest extends LessonCommandTest {
             + System.lineSeparator();
 
     @Test
-    void deleteLessonsFromList() {
+    void deleteLessonsFromList_moduleLessonListIndexes_expectPrintsCorrectOutput() {
 
         ModuleList moduleList = new ModuleList();
         UI ui = new UI();

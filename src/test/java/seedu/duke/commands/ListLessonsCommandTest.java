@@ -16,7 +16,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
             + ONLINE_LINK1 + "\n \t" + TEACHER_NAME1 + "\n \t" + TEACHER_EMAIL1 + System.lineSeparator();
 
     @Test
-    void printLessonsFromList() {
+    void printLessonsFromList_lessonList_expectPrintsCorrectOutput() {
         ModuleList moduleList = new ModuleList();
         UI ui = new UI();
 

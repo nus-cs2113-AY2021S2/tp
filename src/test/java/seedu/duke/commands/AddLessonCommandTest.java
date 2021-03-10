@@ -17,7 +17,7 @@ class AddLessonCommandTest extends LessonCommandTest {
     public static final String EXPECTED_OUTPUT = "Added tutorial." + System.lineSeparator();
 
     @Test
-    void execute() {
+    void execute_moduleListUi_expectPrintsCorrectOutput() {
         ModuleList moduleList = new ModuleList();
         UI ui = new UI();
         Module module = new Module(MODULE_CODE);

@@ -16,7 +16,7 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
             + "2. " + TEACHER_NAME1 + " - " + TEACHER_EMAIL1 + System.lineSeparator();
 
     @Test
-    void execute() {
+    void execute_moduleListUi_expectPrintsCorrectOutput() {
         ModuleList moduleList = new ModuleList();
         UI ui = new UI();
 

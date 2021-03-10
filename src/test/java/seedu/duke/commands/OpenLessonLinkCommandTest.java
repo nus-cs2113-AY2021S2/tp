@@ -16,7 +16,7 @@ class OpenLessonLinkCommandTest extends LessonCommandTest {
             + "Opening lab link in browser." + System.lineSeparator();
 
     @Test
-    void printLessonsLink() {
+    void printLessonsLink_lessonListIndexes_expectPrintsCorrectOutput() {
         ModuleList moduleList = new ModuleList();
         UI ui = new UI();
 
