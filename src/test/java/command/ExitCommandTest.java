@@ -26,9 +26,13 @@ class ExitCommandTest {
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
         Command c = new ExitCommand();
-        String expectedString = "-----------------------\r\n"
-                + "Thank you for using our application! See you again!\r\n"
+        String expectedString = "-----------------------\n"
+                + "Thank you for using our application! See you again!\n"
                 + "-----------------------";
+        expectedString = expectedString.replaceAll(
+                "\\n|\\r\\n",
+                System.getProperty("line.separator")
+        );
         c.execute(canteens, ui);
         assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }

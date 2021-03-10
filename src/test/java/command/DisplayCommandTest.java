@@ -28,9 +28,13 @@ class DisplayCommandTest {
         ArrayList<Canteen> canteens = storage.load();
         Ui ui = new Ui();
         Command c = new DisplayCommand();
-        String expectedString = "Here's a list of the stores in the canteen: The Deck\r\n"
-                + "1.chicken rice stall\r\n"
+        String expectedString = "Here's a list of the stores in the canteen: The Deck\n"
+                + "1.chicken rice stall\n"
                 + "2.Fish rice stall";
+        expectedString = expectedString.replaceAll(
+                "\\n|\\r\\n",
+                System.getProperty("line.separator")
+        );
         c.execute(canteens, ui);
         assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }
