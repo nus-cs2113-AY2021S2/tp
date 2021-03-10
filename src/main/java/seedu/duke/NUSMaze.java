@@ -1,20 +1,14 @@
 package seedu.duke;
 
+import ManagerClasses.UIManager;
+
 import java.util.Scanner;
 
 
-public class Duke {
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
+public class NUSMaze {
     public static void main(String[] args) {
-
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        UIManager.showLogo();
+        UIManager.showGreetMessage();
 
         Scanner in = new Scanner(System.in);
         while (true){
@@ -24,11 +18,12 @@ public class Duke {
                 String from = in.nextLine();
                 System.out.println("DESTINATION BLOCK:");
                 String to = in.nextLine();
-                routing map = new routing();
+                Routing map = new Routing();
                 map.printShortestDistance(from,to);
                 System.out.println("");
             }
             else if (input.equals("bye")){
+                UIManager.showByeMessage();
                 break;
             }
         }
