@@ -40,14 +40,14 @@ public class ParserHandler {
     }
 
     private static boolean checkOptionStartWith(String input) {
-        return StringUtils.startsWithAny(input, "-e", "-l", "-s", "-d", "-a");
+        return StringUtils.startsWithAny(input, "-e", "-l", "-s", "-d", "-a", "-i");
     }
 
     private static boolean checkOptionEndWith(String input) {
-        return  StringUtils.endsWithAny(input, " -e", " -l", " -s", " -d", " -a");
+        return  StringUtils.endsWithAny(input, " -e", " -l", " -s", " -d", " -a", " -i");
     }
 
     private static int getNextOptionIndex(String leftOverString) {
-        return StringUtils.indexOfAny(leftOverString, " -e ", " -l ", " -s ", " -d ", " -a ");
+        return StringUtils.indexOfAny(leftOverString, " -e ", " -l ", " -s ", " -d ", " -a ", " -i ");
     }
 }
