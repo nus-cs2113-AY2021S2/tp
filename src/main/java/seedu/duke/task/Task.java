@@ -9,6 +9,14 @@ public class Task {
     private LocalDate deadline;
     private Boolean isDone;
     private Boolean isGraded;
+    
+    public Task(String description, LocalDate deadline, String remarks) {
+        this.description = description;
+        this.deadline = deadline;
+        this.remarks = remarks;
+        this.isDone = false;
+        this.isGraded = false;
+    }
 
     public Task(String description, String remarks, LocalDate deadline, Boolean isDone, Boolean isGraded) {
         this.description = description;
@@ -16,14 +24,6 @@ public class Task {
         this.deadline = deadline;
         this.isDone = isDone;
         this.isGraded = isGraded;
-    }
-
-    public Task(String description, LocalDate deadline, String remarks) {
-        this.description = description;
-        this.deadline = deadline;
-        this.remarks = remarks;
-        this.isDone = false;
-        this.isGraded = false;
     }
 
     public String getDescription() {
