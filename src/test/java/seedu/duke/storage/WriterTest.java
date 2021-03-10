@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class WriteModuleTest {
+class WriterTest {
 
     @Test
     void writeModule_noContentNoDirectory_instructionOnly() throws IOException {

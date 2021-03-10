@@ -3,7 +3,6 @@ package seedu.duke.module;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.task.Task;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Module {
