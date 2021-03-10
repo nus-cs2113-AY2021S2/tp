@@ -24,6 +24,7 @@ class DeleteModuleCommandTest {
         System.setIn(inContent);
 
         ModuleList modules = new ModuleList();
+        modules.clearModules();
         modules.addModule("CS2113T");
         modules.addModule("CS2101");
         modules.addModule("CS2105");
