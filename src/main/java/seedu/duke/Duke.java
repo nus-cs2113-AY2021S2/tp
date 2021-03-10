@@ -49,6 +49,7 @@ public class Duke {
         ui = new Ui();
         records = new RecordList();
         storage = new Storage();
+        ui.setRecordList(records);
         ui.printWelcomeMessage();
     }
 

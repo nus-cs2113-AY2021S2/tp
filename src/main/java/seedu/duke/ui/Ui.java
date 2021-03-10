@@ -1,6 +1,10 @@
 package seedu.duke.ui;
 
+import seedu.duke.record.RecordList;
 import seedu.duke.record.Record;
+import seedu.duke.record.Expense;
+import seedu.duke.record.Saving;
+import seedu.duke.record.Loan;
 
 import java.io.InputStream;
 import java.util.Scanner;
@@ -20,10 +24,13 @@ public class Ui {
     private static final String MESSAGE_LOADING = "Loading from save... ";
     private static final String MESSAGE_SUCCESSFULLY_ADDED = "Record has been added...";
 
-    /** Decorative prefix for the FINUX Interface. */
+    /**
+     * Decorative prefix for the FINUX Interface.
+     */
     private static final String FINUX_PREFIX = "$$";
 
     private final Scanner input;
+    private RecordList recordList;
 
     public Ui() {
         this(System.in);
@@ -31,6 +38,10 @@ public class Ui {
 
     public Ui(InputStream in) {
         this.input = new Scanner(in);
+    }
+
+    public void setRecordList(RecordList recordList) {
+        this.recordList = recordList;
     }
 
     public static void printSuccessfulAdd(Record recordToAdd) {
@@ -46,7 +57,6 @@ public class Ui {
     public String getUserInput() {
         System.out.print(FINUX_PREFIX + " ");
         String userInput = input.nextLine().strip();
-
         return userInput;
     }
 
@@ -71,5 +81,38 @@ public class Ui {
 
     private String fileLoadStatus() {
         return "Successful";
+    }
+
+    public void printExpenses() {
+        System.out.println(DIVIDER);
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Expense) {
+                System.out.println(currentRecord);
+            }
+        }
+        System.out.println(DIVIDER);
+    }
+
+    public void printLoans() {
+        System.out.println(DIVIDER);
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Loan) {
+                System.out.println(currentRecord);
+            }
+        }
+        System.out.println(DIVIDER);
+    }
+
+    public void printSavings() {
+        System.out.println(DIVIDER);
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Saving) {
+                System.out.println(currentRecord);
+            }
+        }
+        System.out.println(DIVIDER);
     }
 }
