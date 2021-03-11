@@ -1,7 +1,8 @@
 package seedu.duke.link;
 
 import java.util.ArrayList;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import seedu.duke.Ui;
 
 public class LinkInfo {
