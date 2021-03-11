@@ -15,6 +15,7 @@ import seedu.duke.commands.ListModuleCommand;
 import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.commands.MarkAsDoneCommand;
 import seedu.duke.commands.MarkAsUndoneCommand;
+import seedu.duke.commands.ModuleInfoCommand;
 import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.commands.ViewTeachingStaffCommand;
@@ -65,7 +66,6 @@ import static seedu.duke.common.ParserConstants.TASK_REMARKS_INDEX;
 import static seedu.duke.common.ParserConstants.UNKNOWN_COMMAND;
 import static seedu.duke.common.ParserConstants.UNMARK_DONE;
 import static seedu.duke.common.ParserConstants.WHITESPACE;
-
 
 
 public class Parser {
@@ -207,8 +207,7 @@ public class Parser {
         case EXIT_MODULE:
             return new ExitModuleCommand();
         case LIST_MODULE_INFO:
-            // TODO
-            return new PrintHelpCommand();
+            return new ModuleInfoCommand();
         case LIST_LESSONS:
             return new ListLessonsCommand();
         case OPEN_LINK:
