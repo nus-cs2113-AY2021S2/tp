@@ -93,5 +93,4 @@ class WriterTest {
         Path actual = Paths.get("Data/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
-
 }

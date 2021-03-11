@@ -14,12 +14,6 @@ public class CommandTestUtil {
     public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
     public static final String MESSAGE_MODULE_ERROR = "There was a problem with getting selected module." + NEWLINE;
 
-    public static void initialiseModuleList() {
-        TestUtil.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
-    }
 
     // Creates task list for testing MarkAsDoneCommand and MarkAsUndoneCommand.
     // Contains mix of undone tasks (by default) and done tasks (explicitly set here).

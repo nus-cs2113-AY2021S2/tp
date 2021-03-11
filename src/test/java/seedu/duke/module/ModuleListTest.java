@@ -214,5 +214,4 @@ class ModuleListTest {
         ModuleList.addModule("CS2101");
         assertEquals(1, ModuleList.getModules().size());
     }
-
 }

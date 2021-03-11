@@ -41,11 +41,7 @@ public class Duke {
 
         //Loop
         while (!isExit) {
-            if (ModuleList.getSelectedModule() == null) {
-                System.out.print("<GULIO>");
-            } else {
-                System.out.print("<" + ModuleList.getSelectedModule().getModuleCode() + ">");
-            }
+            ui.printModuleIndicator();
             //Scan
             String input = scanner.nextLine();
 
