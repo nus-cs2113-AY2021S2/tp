@@ -22,7 +22,7 @@ public class Router {
         String to = in.nextLine();
         try {
             System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Invalid block! Please enter the 'go' command to retry!");
         }
     }
@@ -104,7 +104,7 @@ public class Router {
                 if (i > 0) {
                     route += path.get(i).getName() + "->";
                 } else {
-                   route += path.get(i).getName();
+                    route += path.get(i).getName();
                 }
             }
         }
