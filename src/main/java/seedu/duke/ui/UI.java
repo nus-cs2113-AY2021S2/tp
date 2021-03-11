@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 import static seedu.duke.common.Constants.NEWLINE;
 
 public class UI {
@@ -49,42 +48,10 @@ public class UI {
         return userInput.equals("Y");
     }
 
-    public ArrayList<Task> getFilteredTasks(ArrayList<Task> taskList, boolean isDone) {
-        ArrayList<Task> tasksToModify = new ArrayList<>();
-        for (Task task : taskList) {
-            if (task.getDone() == isDone) {
-                tasksToModify.add(task);
-            }
-        }
-        return tasksToModify;
-    }
-
-    public ArrayList<Task> getChosenTasks(ArrayList<Task> taskList) {
-        // simulating the parser's checkIndex() method
-        ArrayList<Integer> indices = new ArrayList<>();
-        String input = readCommand();
-        String[] tokens = input.split(" ");
-        for (String token : tokens) {
-            indices.add(Integer.parseInt(token));
-        }
-
-        // store the tasks chosen by user to be deleted/marked/unmarked in a new array list
-        ArrayList<Task> chosenTasks = new ArrayList<>();
-        for (Integer index : indices) {
-            chosenTasks.add(taskList.get(index - 1));
-        }
-        return chosenTasks;
-        // return Parser.checkIndex(readCommand(), taskList.size());
-    }
-
-    public void printStatement(String message) {
-        System.out.print(message + NEWLINE);
-    }
-
     public void printGetChosenTasksPrompt(String message, String commandVerb, ArrayList<Task> taskList) {
-        printStatement(message);
+        printMessage(message);
         printSummarisedTasks(taskList);
-        printInstructions(commandVerb);
+        printTaskInstructions(commandVerb);
     }
 
     // Prints only descriptions of all tasks in the task list.
@@ -94,15 +61,15 @@ public class UI {
             tasksCount++;
             String index = tasksCount + ". ";
             String taskListItem = index + task.getDescription();
-            printStatement(taskListItem);
+            printMessage(taskListItem);
         }
     }
 
-    public void printInstructions(String commandVerb) {
+    public void printTaskInstructions(String commandVerb) {
         String instructions = NEWLINE
                 + "Please enter the indices of the tasks you would like to " + commandVerb + "." + NEWLINE
                 + "Separate indices with a blank space." + NEWLINE;
-        printStatement(instructions);
+        printMessage(instructions);
     }
 
     // Prints all tasks in the task list.
@@ -117,16 +84,16 @@ public class UI {
     // Used by previous method.
     // Prints identified tasks in the task list with matching "done" status.
     public void printTasks(String openingStatement, ArrayList<Task> taskList, Boolean isDone) {
-        printStatement(openingStatement);
+        printMessage(openingStatement);
         int tasksCount = 0;
         for (Task task : taskList) {
             if (task.getDone() == isDone) {
                 tasksCount++;
                 String index = tasksCount + ". ";
-                String status = task.getGraded() ? " (graded)" : "";
+                String gradedStatus = task.getGraded() ? " (graded)" : "";
                 String deadline = " - " + task.getDeadline().format(DateTimeFormatter.ofPattern("d MMM yyyy"));
-                String listItem = index + task.getDescription() + status + deadline;
-                printStatement(listItem);
+                String listItem = index + task.getDescription() + gradedStatus + deadline;
+                printMessage(listItem);
                 printRemarks(task);
             }
         }
@@ -137,7 +104,7 @@ public class UI {
             System.out.print("\t" + task.getRemarks() + NEWLINE);
         }
     }
-  
+
     public void printMessage(String message) {
         System.out.println(message);
     }

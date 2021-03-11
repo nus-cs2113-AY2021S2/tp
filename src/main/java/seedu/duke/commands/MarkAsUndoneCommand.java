@@ -16,13 +16,12 @@ public class MarkAsUndoneCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        ArrayList<Task> doneTasks = ui.getFilteredTasks(module.getTaskList(), true);
-        ui.printGetChosenTasksPrompt(MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, doneTasks);
-        ArrayList<Task> chosenTasks = ui.getChosenTasks(doneTasks);
+        ArrayList<Task> chosenTasks = module.getTasksToMarkOrUnmark(ui,
+                MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, true);
         for (Task task : chosenTasks) {
             String description = task.getDescription();
             String confirmation = "Marked " + description + " as undone.";
-            ui.printStatement(confirmation);
+            ui.printMessage(confirmation);
             module.unmarkTaskInList(task);
         }
         ModuleList.writeModule();

@@ -20,7 +20,7 @@ public class AddTaskCommand extends Command {
         task.setGraded(isGraded);
         module.addTaskToList(task);
         String confirmation = "Added " + task.getDescription() + ".";
-        ui.printStatement(confirmation);
+        ui.printMessage(confirmation);
         ModuleList.writeModule();
     }
 
