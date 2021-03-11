@@ -40,5 +40,5 @@ public abstract class Command {
      * Abstract method to be implemented by each individual command.
      * This is where the actual program logic of each command is stored.
      */
-    public abstract void execute();
+    public abstract void execute() throws Exception;
 }

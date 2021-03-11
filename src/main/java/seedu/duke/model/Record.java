@@ -10,6 +10,7 @@ public class Record {
 
     /**
      * Create a new visit record with details as a single string.
+     *
      * @param consultationDetail detail of the visit record (diagnosis, prescription, etc.)
      */
     public Record(String consultationDetail) {
@@ -18,9 +19,15 @@ public class Record {
 
     /**
      * Obtain the consultation detail of this record.
+     *
      * @return Consultation detail related to this record
      */
     public String getConsultationDetail() {
+        return consultationDetail;
+    }
+
+    @Override
+    public String toString() {
         return consultationDetail;
     }
 }
