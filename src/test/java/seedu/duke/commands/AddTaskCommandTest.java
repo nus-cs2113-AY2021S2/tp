@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -17,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
 import static seedu.duke.commands.CommandTestUtil.formatter;
-import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 
 public class AddTaskCommandTest {
     private final InputStream originalIn = System.in;
@@ -32,14 +32,17 @@ public class AddTaskCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        ModuleList modules = initialiseModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.setSelectedModule("CS2113T");
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
         try {
-            addTask.execute(modules, ui);
+            addTask.execute(ui);
         } catch (CommandException e) {
             System.out.println(MESSAGE_MODULE_ERROR);
         }
@@ -51,10 +54,10 @@ public class AddTaskCommandTest {
         assertEquals(bos.toString(), output + NEWLINE);
 
         // checks if task was really added to task list
-        assertTrue(modules.getSelectedModule().getTaskList().contains(task));
+        assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
 
         // checks if task's graded status was set correctly
-        assertEquals(true, modules.getSelectedModule().getTaskList().get(0).getGraded());
+        assertEquals(true, ModuleList.getSelectedModule().getTaskList().get(0).getGraded());
 
         System.setIn(originalIn);
         System.setOut(originalOut);
@@ -68,7 +71,10 @@ public class AddTaskCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        ModuleList modules = initialiseModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.setSelectedModule("CS2113T");
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         // remarks field is empty
@@ -76,7 +82,7 @@ public class AddTaskCommandTest {
         AddTaskCommand addTask = new AddTaskCommand(task);
 
         try {
-            addTask.execute(modules, ui);
+            addTask.execute(ui);
         } catch (CommandException e) {
             System.out.println(MESSAGE_MODULE_ERROR);
         }
@@ -88,10 +94,10 @@ public class AddTaskCommandTest {
         assertEquals(output + NEWLINE, bos.toString());
 
         // checks if task was really added to task list
-        assertTrue(modules.getSelectedModule().getTaskList().contains(task));
+        assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
 
         // checks if task's graded status was set correctly
-        assertEquals(true, modules.getSelectedModule().getTaskList().get(0).getGraded());
+        assertEquals(true, ModuleList.getSelectedModule().getTaskList().get(0).getGraded());
 
         System.setIn(originalIn);
         System.setOut(originalOut);
@@ -107,14 +113,17 @@ public class AddTaskCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        ModuleList modules = initialiseModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.setSelectedModule("CS2113T");
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
         try {
-            addTask.execute(modules, ui);
+            addTask.execute(ui);
         } catch (CommandException e) {
             System.out.println(MESSAGE_MODULE_ERROR);
         }
@@ -128,10 +137,10 @@ public class AddTaskCommandTest {
         assertEquals(output + NEWLINE, bos.toString());
 
         // checks if task was really added to task list
-        assertTrue(modules.getSelectedModule().getTaskList().contains(task));
+        assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
 
         // checks if task's graded status was set correctly
-        assertEquals(false, modules.getSelectedModule().getTaskList().get(0).getGraded());
+        assertEquals(false, ModuleList.getSelectedModule().getTaskList().get(0).getGraded());
 
         System.setIn(originalIn);
         System.setOut(originalOut);

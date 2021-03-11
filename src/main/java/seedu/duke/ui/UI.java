@@ -1,5 +1,6 @@
 package seedu.duke.ui;
 
+import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.common.Messages;
 
@@ -27,6 +28,14 @@ public class UI {
 
     public String readCommand() {
         return in.nextLine();
+    }
+
+    public void printModuleIndicator() {
+        if (ModuleList.getSelectedModule() == null) {
+            System.out.print("<GULIO>");
+        } else {
+            System.out.print("<" + ModuleList.getSelectedModule().getModuleCode() + ">");
+        }
     }
 
     public boolean getIsTaskGraded() {

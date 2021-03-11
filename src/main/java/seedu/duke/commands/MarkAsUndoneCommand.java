@@ -14,8 +14,8 @@ import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_UNMARK;
 public class MarkAsUndoneCommand extends Command {
 
     @Override
-    public void execute(ModuleList modules, UI ui) throws CommandException {
-        Module module = modules.getSelectedModule();
+    public void execute(UI ui) throws CommandException {
+        Module module = ModuleList.getSelectedModule();
         ArrayList<Task> chosenTasks = module.getTasksToMarkOrUnmark(ui,
                 MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, true);
         for (Task task : chosenTasks) {
@@ -24,6 +24,7 @@ public class MarkAsUndoneCommand extends Command {
             ui.printMessage(confirmation);
             module.unmarkTaskInList(task);
         }
+        ModuleList.writeModule();
     }
 
     @Override

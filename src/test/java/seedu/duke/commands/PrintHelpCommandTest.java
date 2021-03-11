@@ -1,9 +1,9 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.module.Module;
 import seedu.duke.ui.UI;
 
 import java.io.ByteArrayOutputStream;
@@ -19,24 +19,25 @@ class PrintHelpCommandTest {
     void execute_noInput_expectAllCommandsWithDescription() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
-        ModuleList modules = new ModuleList();
-        modules.addModule("CS2105");
-        modules.addModule("CS2106");
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2105");
+        ModuleList.addModule("CS2106");
 
         // no module selected
-        ModuleList.selectedModule = null;
+        ModuleList.reset();
 
         // execute command
         Command command1 = new PrintHelpCommand();
-        command1.execute(modules, new UI());
+        command1.execute(new UI());
 
         String output = PrintHelpCommand.HELP_MESSAGE;
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
         // module selected
-        ModuleList.selectedModule = new Module("CS2105");
+        ModuleList.setSelectedModule("CS2105");
         Command command2 = new PrintHelpCommand();
-        command2.execute(modules, new UI());
+        command2.execute(new UI());
 
         System.setOut(originalOut);
     }

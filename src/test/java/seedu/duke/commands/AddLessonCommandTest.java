@@ -1,10 +1,10 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
-import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -18,17 +18,18 @@ class AddLessonCommandTest extends LessonCommandTest {
 
     @Test
     void execute_moduleListUi_expectPrintsCorrectOutput() {
-        ModuleList moduleList = new ModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+
         UI ui = new UI();
-        Module module = new Module(MODULE_CODE);
-        String moduleCode = module.getModuleCode();
-        moduleList.selectedModule = module;
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
         OutputStream os = getOutputStream();
 
         try {
-            command.execute(moduleList, ui);
+            command.execute(ui);
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }

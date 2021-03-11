@@ -7,11 +7,14 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 public class PrintHelpCommand extends Command {
+    public static String HELP_MESSAGE;
 
-    public static final String HELP_MESSAGE = getHelpMessage();
+    public PrintHelpCommand() {
+        HELP_MESSAGE = getHelpMessage();
+    }
 
     private static String getHelpMessage() {
-        if (ModuleList.selectedModule == null) {
+        if (ModuleList.getSelectedModule() == null) {
             return getDashboardCommands();
         }
         return getModuleCommands();
@@ -39,7 +42,7 @@ public class PrintHelpCommand extends Command {
 
 
     @Override
-    public void execute(ModuleList modules, UI ui) {
+    public void execute(UI ui) {
         ui.printMessage(HELP_MESSAGE);
     }
 
