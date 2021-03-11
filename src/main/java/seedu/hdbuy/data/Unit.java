@@ -48,8 +48,8 @@ public class Unit {
         return lease;
     }
 
-    @Override
-    public String toString() {
-        return "Hash ID: " + getId() + " - Address: " + getAddress() + " - Type: " + getType() + " - Lease: " + getLease() + " -  Price: $" + getPrice();
+    @Override public String toString() {
+        return "Hash ID: " + getId() + " - Address: " + getAddress() + " - Type: " + getType() + " - Lease: " +
+                getLease() + " -  Price: $" + getPrice();
     }
 }

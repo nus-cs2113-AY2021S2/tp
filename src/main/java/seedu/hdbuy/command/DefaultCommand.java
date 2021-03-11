@@ -17,8 +17,7 @@ public class DefaultCommand extends Command {
         this.input = input;
     }
 
-    @Override
-    public void execute(HashMap<QueryKey, String> inputs) {
+    @Override public void execute(HashMap<QueryKey, String> inputs) {
         TextUi.showInvalidInput(input);
     }
 }

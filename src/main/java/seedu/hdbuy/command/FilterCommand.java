@@ -16,8 +16,7 @@ public class FilterCommand extends Command {
     }
 
 
-    @Override
-    public void execute(HashMap<QueryKey, String> inputs) {
+    @Override public void execute(HashMap<QueryKey, String> inputs) {
         switch (criteria) {
         case "location":
             inputs.put(QueryKey.LOCATION, value);

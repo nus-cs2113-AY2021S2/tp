@@ -20,7 +20,8 @@ public class ResponseDecoder {
      * @throws EmptyResponseException When no units are retrieved.
      * @throws GatewayException       When there is an error connecting to database.
      */
-    public static HashMap<Integer, Unit> decodeResponse(InputStream inputStream) throws EmptyResponseException, GatewayException {
+    public static HashMap<Integer, Unit> decodeResponse(InputStream inputStream)
+            throws EmptyResponseException, GatewayException {
         BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String response = in.readLine();
