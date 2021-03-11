@@ -1,37 +1,37 @@
 package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
+import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
+import static seedu.duke.common.Messages.NEWLINE;
 
 public class DeleteModuleCommand extends Command {
 
-    public static final String MESSAGE_PROMPT1 = "Which modules would you like to delete?\n";
-    public static final String MESSAGE_PROMPT2 = "Please enter the indices of the modules you would like to delete.\n"
-            + "Separate indices with a blank space.";
-    public static final String MESSAGE_SUCCESS = "Removed %s from the module list.";
+
 
     private String firstStage() {
-        StringBuilder sb = new StringBuilder(MESSAGE_PROMPT1);
+        StringBuilder sb = new StringBuilder(MESSAGE_MODULE_TO_DELETE);
         for (String moduleCode : ModuleList.getModules()) {
             int moduleNumber = ModuleList.getModules().indexOf(moduleCode) + 1;
             sb.append(String.format(Messages.FORMAT_LIST_ITEMS, moduleNumber, moduleCode));
-            sb.append("\n");
+            sb.append(NEWLINE);
         }
-        sb.append("\n" + MESSAGE_PROMPT2);
+        sb.append(NEWLINE).append(MESSAGE_DELETE_MODULE_INFO);
         return sb.toString();
     }
 
     private String secondStage(ArrayList<String> deletedModules) {
         StringBuilder sb = new StringBuilder();
         for (String deletedModule : deletedModules) {
-            sb.append(String.format(MESSAGE_SUCCESS, deletedModule));
-            sb.append("\n");
+            sb.append(String.format(MESSAGE_REMOVED_MODULE, deletedModule));
+            sb.append(NEWLINE);
         }
         return sb.toString();
     }

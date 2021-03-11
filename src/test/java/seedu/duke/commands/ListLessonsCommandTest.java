@@ -1,7 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
+import seedu.duke.TestUtilAndConstants;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -17,7 +17,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
 
     @Test
     void printLessonsFromList_lessonList_expectPrintsCorrectOutput() {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
         UI ui = new UI();
 
@@ -28,7 +28,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
         removeOutputStream();
 
         OutputStream newOs = getOutputStream();
-        ListLessonsCommand.printLessonsFromList(ModuleList.getSelectedModule().getLessonList());
+        ListLessonsCommand.printLessonsFromList(ModuleList.getSelectedModule().getLessonList(), ui);
         assertEquals(EXPECTED_OUTPUT, newOs.toString());
         removeOutputStream();
     }

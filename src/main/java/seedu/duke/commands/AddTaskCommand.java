@@ -1,10 +1,12 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
+
+import static seedu.duke.common.Messages.MESSAGE_ADDED_TASK;
 
 public class AddTaskCommand extends Command {
     private final Task task;
@@ -19,8 +21,7 @@ public class AddTaskCommand extends Command {
         boolean isGraded = ui.getIsTaskGraded();
         task.setGraded(isGraded);
         module.addTaskToList(task);
-        String confirmation = "Added " + task.getDescription() + ".";
-        ui.printMessage(confirmation);
+        ui.printMessage(String.format(MESSAGE_ADDED_TASK, task.getDescription()));
         ModuleList.writeModule();
     }
 

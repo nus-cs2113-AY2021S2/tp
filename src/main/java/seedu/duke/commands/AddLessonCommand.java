@@ -1,17 +1,20 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
+import static seedu.duke.common.Constants.LECTURE_STRING;
+import static seedu.duke.common.Constants.TUTORIAL_STRING;
+import static seedu.duke.common.Constants.LAB_STRING;
+import static seedu.duke.common.Messages.MESSAGE_ADDED_LESSON;
+
+
 public class AddLessonCommand extends Command {
-    public static final String MESSAGE_ADDED_LESSON = "Added %s." + System.lineSeparator();
-    public static final String LECTURE_STRING = "lecture";
-    public static final String TUTORIAL_STRING = "tutorial";
-    public static final String LAB_STRING = "lab";
+
     private Lesson newLessonForModule;
 
     public AddLessonCommand(Lesson newLesson) {
@@ -32,7 +35,7 @@ public class AddLessonCommand extends Command {
         module.addLessonToList(getNewLessonForModule());
         LessonType newLessonType = getNewLessonForModule().getLessonType();
         String lessonName = getLessonTypeName(newLessonType);
-        System.out.print(String.format(MESSAGE_ADDED_LESSON, lessonName));
+        ui.printMessage(String.format(MESSAGE_ADDED_LESSON, lessonName));
         ModuleList.writeModule();
     }
 

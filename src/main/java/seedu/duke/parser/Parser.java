@@ -18,6 +18,8 @@ import seedu.duke.commands.MarkAsUndoneCommand;
 import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.commands.ViewTeachingStaffCommand;
+import seedu.duke.common.DashboardCommands;
+import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -31,42 +33,37 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static seedu.duke.common.ParserConstants.ADD_LESSON;
-import static seedu.duke.common.ParserConstants.ADD_MODULE;
-import static seedu.duke.common.ParserConstants.ADD_TASK;
-import static seedu.duke.common.ParserConstants.DATE_INPUT_FORMAT;
-import static seedu.duke.common.ParserConstants.DELIM;
-import static seedu.duke.common.ParserConstants.DEL_LESSON;
-import static seedu.duke.common.ParserConstants.DEL_MODULE;
-import static seedu.duke.common.ParserConstants.DEL_TASK;
-import static seedu.duke.common.ParserConstants.ENTER_MODULE;
-import static seedu.duke.common.ParserConstants.EXIT_MODULE;
-import static seedu.duke.common.ParserConstants.EXIT_PROGRAM;
-import static seedu.duke.common.ParserConstants.LESSON_EMAIL_INDEX;
-import static seedu.duke.common.ParserConstants.LESSON_LINK_INDEX;
-import static seedu.duke.common.ParserConstants.LESSON_MAX_DETAILS;
-import static seedu.duke.common.ParserConstants.LESSON_TEACHER_INDEX;
-import static seedu.duke.common.ParserConstants.LESSON_TIME_DAY_INDEX;
-import static seedu.duke.common.ParserConstants.LESSON_TYPE_INDEX;
-import static seedu.duke.common.ParserConstants.LIST_LESSONS;
-import static seedu.duke.common.ParserConstants.LIST_MODULE;
-import static seedu.duke.common.ParserConstants.LIST_MODULE_INFO;
-import static seedu.duke.common.ParserConstants.LIST_TASKS;
-import static seedu.duke.common.ParserConstants.LIST_TEACHING_STAFF;
-import static seedu.duke.common.ParserConstants.MARK_DONE;
-import static seedu.duke.common.ParserConstants.MODULE_CODE_FORMAT;
-import static seedu.duke.common.ParserConstants.OPEN_LINK;
-import static seedu.duke.common.ParserConstants.PRINT_HELP;
-import static seedu.duke.common.ParserConstants.PRINT_HELP_MODULE;
-import static seedu.duke.common.ParserConstants.TASK_DEADLINE_INDEX;
-import static seedu.duke.common.ParserConstants.TASK_DESCRIPTION_INDEX;
-import static seedu.duke.common.ParserConstants.TASK_MAX_DETAILS;
-import static seedu.duke.common.ParserConstants.TASK_REMARKS_INDEX;
-import static seedu.duke.common.ParserConstants.UNKNOWN_COMMAND;
-import static seedu.duke.common.ParserConstants.UNMARK_DONE;
-import static seedu.duke.common.ParserConstants.WHITESPACE;
-
-
+import static seedu.duke.common.Constants.DELIM;
+import static seedu.duke.common.Constants.ENTRY_LESSON_MAX_PARSER;
+import static seedu.duke.common.Constants.ENTRY_TASK_MAX_PARSER;
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
+import static seedu.duke.common.Constants.INDEX_DAY_TIME;
+import static seedu.duke.common.Constants.INDEX_DEADLINE;
+import static seedu.duke.common.Constants.INDEX_DESCRIPTION;
+import static seedu.duke.common.Constants.INDEX_LINK;
+import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
+import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
+import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
+import static seedu.duke.common.Constants.INDEX_TYPE;
+import static seedu.duke.common.Constants.WHITESPACE;
+import static seedu.duke.common.DashboardCommands.ADD;
+import static seedu.duke.common.DashboardCommands.DELETE;
+import static seedu.duke.common.DashboardCommands.EXIT;
+import static seedu.duke.common.DashboardCommands.MODULES;
+import static seedu.duke.common.DashboardCommands.OPEN;
+import static seedu.duke.common.ModuleCommands.ADD_LESSON;
+import static seedu.duke.common.ModuleCommands.ADD_TASK;
+import static seedu.duke.common.ModuleCommands.CLOSE;
+import static seedu.duke.common.ModuleCommands.DELETE_LESSON;
+import static seedu.duke.common.ModuleCommands.DELETE_TASK;
+import static seedu.duke.common.ModuleCommands.INFO;
+import static seedu.duke.common.ModuleCommands.LESSONS;
+import static seedu.duke.common.ModuleCommands.LINK;
+import static seedu.duke.common.ModuleCommands.MARK;
+import static seedu.duke.common.ModuleCommands.TASKS;
+import static seedu.duke.common.ModuleCommands.TEACHER;
+import static seedu.duke.common.ModuleCommands.UNMARK;
 
 public class Parser {
 
@@ -98,22 +95,20 @@ public class Parser {
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
     private Command parseAtDashboard(String input) throws UnknownCommandException {
-        int commandCode = parseDashboardCommandFromInput(input);
-        String moduleCode;
-
-        switch (commandCode) {
-        case ADD_MODULE:
-            moduleCode = getModuleCode(input);
+        DashboardCommands command = parseDashboardCommandFromInput(input);
+        switch (command) {
+        case ADD:
+            String moduleCode = getModuleCode(input);
             return new AddModuleCommand(moduleCode);
-        case DEL_MODULE:
+        case DELETE:
             return new DeleteModuleCommand();
-        case LIST_MODULE:
+        case MODULES:
             return new ListModuleCommand();
-        case ENTER_MODULE:
+        case OPEN:
             return new EnterModuleCommand(input);
-        case PRINT_HELP:
+        case HELP:
             return new PrintHelpCommand();
-        case EXIT_PROGRAM:
+        case EXIT:
             return new ExitProgramCommand();
         default:
             throw new UnknownCommandException();
@@ -126,21 +121,21 @@ public class Parser {
      * @param input full user input string
      * @return an integer representing the command specified
      */
-    private int parseDashboardCommandFromInput(String input) {
-        if (input.equalsIgnoreCase("help")) {
-            return PRINT_HELP;
-        } else if (input.equalsIgnoreCase("exit")) {
-            return EXIT_PROGRAM;
-        } else if (input.equalsIgnoreCase("modules")) {
-            return LIST_MODULE;
-        } else if (startsWith(input, "add")) {
-            return ADD_MODULE;
-        } else if (startsWith(input, "delete")) {
-            return DEL_MODULE;
+    private DashboardCommands parseDashboardCommandFromInput(String input) {
+        if (input.equalsIgnoreCase(DashboardCommands.HELP.getWord())) {
+            return DashboardCommands.HELP;
+        } else if (input.equalsIgnoreCase(EXIT.getWord())) {
+            return EXIT;
+        } else if (input.equalsIgnoreCase(MODULES.getWord())) {
+            return MODULES;
+        } else if (startsWith(input, ADD.getWord())) {
+            return ADD;
+        } else if (startsWith(input, DELETE.getWord())) {
+            return DELETE;
         } else if (isValidModuleName(input)) {
-            return ENTER_MODULE;
+            return OPEN;
         } else {
-            return UNKNOWN_COMMAND;
+            return DashboardCommands.INVALID;
         }
     }
 
@@ -176,7 +171,7 @@ public class Parser {
         name = name.trim();
 
         // check that input matches the convention of a standard NUS module code.
-        return (name.matches(MODULE_CODE_FORMAT));
+        return (name.matches(FORMAT_MODULE_CODE));
     }
 
     /**
@@ -199,37 +194,37 @@ public class Parser {
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
     private Command parseInModule(String input) throws UnknownCommandException {
-        int commandCode = parseInModuleCommandsFromInput(input);
+        ModuleCommands command = parseInModuleCommandsFromInput(input);
 
-        switch (commandCode) {
-        case PRINT_HELP_MODULE:
+        switch (command) {
+        case HELP:
             return new PrintHelpCommand();
-        case EXIT_MODULE:
+        case CLOSE:
             return new ExitModuleCommand();
-        case LIST_MODULE_INFO:
+        case INFO:
             // TODO
             return new PrintHelpCommand();
-        case LIST_LESSONS:
+        case LESSONS:
             return new ListLessonsCommand();
-        case OPEN_LINK:
+        case LINK:
             return new OpenLessonLinkCommand();
-        case LIST_TASKS:
+        case TASKS:
             return new ListTasksCommand();
-        case MARK_DONE:
+        case MARK:
             return new MarkAsDoneCommand();
-        case UNMARK_DONE:
+        case UNMARK:
             return new MarkAsUndoneCommand();
-        case LIST_TEACHING_STAFF:
+        case TEACHER:
             return new ViewTeachingStaffCommand();
         case ADD_LESSON:
             Lesson newLesson = parseNewLessonDetails(input);
             return new AddLessonCommand(newLesson);
-        case DEL_LESSON:
+        case DELETE_LESSON:
             return new DeleteLessonCommand();
         case ADD_TASK:
             Task newTask = parseNewTaskDetails(input);
             return new AddTaskCommand(newTask);
-        case DEL_TASK:
+        case DELETE_TASK:
             return new DeleteTaskCommand();
         default:
             throw new UnknownCommandException();
@@ -242,35 +237,35 @@ public class Parser {
      * @param input full user input string
      * @return an integer representing the command specified
      */
-    private int parseInModuleCommandsFromInput(String input) {
-        if (input.equalsIgnoreCase("help")) {
-            return PRINT_HELP_MODULE;
-        } else if (input.equalsIgnoreCase("close")) {
-            return EXIT_MODULE;
-        } else if (input.equalsIgnoreCase("info")) {
-            return LIST_MODULE_INFO;
-        } else if (input.equalsIgnoreCase("lessons")) {
-            return LIST_LESSONS;
-        } else if (input.equalsIgnoreCase("link")) {
-            return OPEN_LINK;
-        } else if (input.equalsIgnoreCase("tasks")) {
-            return LIST_TASKS;
-        } else if (input.equalsIgnoreCase("mark")) {
-            return MARK_DONE;
-        } else if (input.equalsIgnoreCase("unmark")) {
-            return UNMARK_DONE;
-        } else if (input.equalsIgnoreCase("teacher")) {
-            return LIST_TEACHING_STAFF;
-        } else if (startsWith(input, "add lesson")) {
+    private ModuleCommands parseInModuleCommandsFromInput(String input) {
+        if (input.equalsIgnoreCase(ModuleCommands.HELP.getWord())) {
+            return ModuleCommands.HELP;
+        } else if (input.equalsIgnoreCase(CLOSE.getWord())) {
+            return CLOSE;
+        } else if (input.equalsIgnoreCase(INFO.getWord())) {
+            return INFO;
+        } else if (input.equalsIgnoreCase(LESSONS.getWord())) {
+            return LESSONS;
+        } else if (input.equalsIgnoreCase(LINK.getWord())) {
+            return LINK;
+        } else if (input.equalsIgnoreCase(TASKS.getWord())) {
+            return TASKS;
+        } else if (input.equalsIgnoreCase(MARK.getWord())) {
+            return MARK;
+        } else if (input.equalsIgnoreCase(UNMARK.getWord())) {
+            return UNMARK;
+        } else if (input.equalsIgnoreCase(TEACHER.getWord())) {
+            return TEACHER;
+        } else if (startsWith(input, ADD_LESSON.getWord())) {
             return ADD_LESSON;
-        } else if (startsWith(input, "delete lesson")) {
-            return DEL_LESSON;
-        } else if (startsWith(input, "add task")) {
+        } else if (startsWith(input, DELETE_LESSON.getWord())) {
+            return DELETE_LESSON;
+        } else if (startsWith(input, ADD_TASK.getWord())) {
             return ADD_TASK;
-        } else if (startsWith(input, "delete task")) {
-            return DEL_TASK;
+        } else if (startsWith(input, DELETE_TASK.getWord())) {
+            return DELETE_TASK;
         } else {
-            return UNKNOWN_COMMAND;
+            return ModuleCommands.INVALID;
         }
     }
 
@@ -284,7 +279,7 @@ public class Parser {
         // TODO - validate input
 
         // initialize an array of empty strings to store lesson details
-        String[] allDetails = new String[LESSON_MAX_DETAILS];
+        String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
         Arrays.fill(allDetails, "");
 
         // to remove only the first two words "add lesson"
@@ -300,13 +295,13 @@ public class Parser {
         }
 
         // Creating Lesson Object
-        String type = allDetails[LESSON_TYPE_INDEX].toUpperCase();
+        String type = allDetails[INDEX_TYPE].toUpperCase();
         // TODO - throw "illegal argument exception" if enum value is invalid
         LessonType lessonType = LessonType.valueOf(type);
-        String timeAndDay = allDetails[LESSON_TIME_DAY_INDEX];
-        String link = allDetails[LESSON_LINK_INDEX];
-        String teacherName = allDetails[LESSON_TEACHER_INDEX];
-        String email = allDetails[LESSON_EMAIL_INDEX];
+        String timeAndDay = allDetails[INDEX_DAY_TIME];
+        String link = allDetails[INDEX_LINK];
+        String teacherName = allDetails[INDEX_TEACHER_NAME];
+        String email = allDetails[INDEX_TEACHER_EMAIL];
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
 
@@ -322,7 +317,7 @@ public class Parser {
     private Task parseNewTaskDetails(String input) {
 
         // initialize an array of empty strings to store task details
-        String[] allDetails = new String[TASK_MAX_DETAILS];
+        String[] allDetails = new String[ENTRY_TASK_MAX_PARSER];
         Arrays.fill(allDetails, "");
 
         // to remove only the first two words "add task"
@@ -339,10 +334,10 @@ public class Parser {
 
         // Creating Task object
         // TODO - throw exception for invalid deadline
-        String description = allDetails[TASK_DESCRIPTION_INDEX];
-        String deadlineString = allDetails[TASK_DEADLINE_INDEX];
+        String description = allDetails[INDEX_DESCRIPTION];
+        String deadlineString = allDetails[INDEX_DEADLINE];
         LocalDate deadline = convertToDate(deadlineString);
-        String remarks = allDetails[TASK_REMARKS_INDEX];
+        String remarks = allDetails[INDEX_REMARKS_PARSER];
 
         return new Task(description, deadline, remarks);
     }
@@ -355,7 +350,7 @@ public class Parser {
      * @throws DateTimeParseException if invalid input format / invalid date given
      */
     private LocalDate convertToDate(String string) throws DateTimeParseException {
-        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(DATE_INPUT_FORMAT);
+        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
 
         return LocalDate.parse(string, parseFormat);
     }
@@ -393,7 +388,7 @@ public class Parser {
         // remove out of bounds/ invalid index
         for (int i = 0; i < indices.size(); i++) {
             if (indices.get(i) > max || indices.get(i) < 1) {
-                Integer removed = indices.remove(i);
+                indices.remove(i);
             }
         }
         return indices;

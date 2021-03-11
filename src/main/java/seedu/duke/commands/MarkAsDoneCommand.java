@@ -1,6 +1,6 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -9,6 +9,7 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.Messages.COMMAND_VERB_MARK;
+import static seedu.duke.common.Messages.MESSAGE_MARKED_AS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_MARK;
 
 public class MarkAsDoneCommand extends Command {
@@ -22,8 +23,7 @@ public class MarkAsDoneCommand extends Command {
                 MESSAGE_TASKS_TO_MARK, COMMAND_VERB_MARK, false);
         for (Task task : chosenTasks) {
             String description = task.getDescription();
-            String confirmation = "Marked " + description + " as done.";
-            ui.printMessage(confirmation);
+            ui.printMessage(String.format(MESSAGE_MARKED_AS_DONE,description));
             module.markTaskInList(task);
         }
         ModuleList.writeModule();

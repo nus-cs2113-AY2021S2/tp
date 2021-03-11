@@ -6,16 +6,16 @@ import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.LAB_STRING;
+import static seedu.duke.common.Constants.LECTURE_STRING;
+import static seedu.duke.common.Constants.TUTORIAL_STRING;
+import static seedu.duke.common.Constants.DIVIDER_WRITE;
+import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Constants.KEYWORD_LESSON;
+import static seedu.duke.common.Constants.KEYWORD_TASK;
+import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.FILE_INSTRUCTIONS;
-import static seedu.duke.storage.StorageConstants.DATE_IO_FORMAT;
-import static seedu.duke.storage.StorageConstants.DIVIDER_WRITE;
-import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
-import static seedu.duke.storage.StorageConstants.KEYWORD_LESSON;
-import static seedu.duke.storage.StorageConstants.KEYWORD_TASK;
-import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
-import static seedu.duke.storage.StorageConstants.TYPE_LAB;
-import static seedu.duke.storage.StorageConstants.TYPE_LECTURE;
-import static seedu.duke.storage.StorageConstants.TYPE_TUTORIAL;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -182,13 +182,13 @@ public class Writer {
     private String getLessonTypeString(LessonType lessonType) {
         switch (lessonType) {
         case LECTURE: {
-            return TYPE_LECTURE;
+            return LECTURE_STRING;
         }
         case TUTORIAL: {
-            return TYPE_TUTORIAL;
+            return TUTORIAL_STRING;
         }
         default: {
-            return TYPE_LAB;
+            return LAB_STRING;
         }
         }
     }
@@ -201,7 +201,7 @@ public class Writer {
      * @return String of deadline.
      */
     private String getDeadlineString(LocalDate deadline) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_IO_FORMAT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
         return deadline.format(formatter);
     }
 

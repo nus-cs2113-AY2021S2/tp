@@ -6,6 +6,8 @@ import seedu.duke.common.ModuleCommands;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
+import static seedu.duke.common.Messages.NEWLINE;
+
 public class PrintHelpCommand extends Command {
     public static String HELP_MESSAGE;
 
@@ -25,7 +27,7 @@ public class PrintHelpCommand extends Command {
         for (DashboardCommands command : DashboardCommands.values()) {
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     command.getWord(), command.getDescription());
-            sb.append(commandAndDescription + "\n");
+            sb.append(commandAndDescription).append(NEWLINE);
         }
         return sb.toString();
     }
@@ -35,7 +37,7 @@ public class PrintHelpCommand extends Command {
         for (ModuleCommands command : ModuleCommands.values()) {
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     command.getWord(), command.getDescription());
-            sb.append(commandAndDescription + "\n");
+            sb.append(commandAndDescription).append(NEWLINE);
         }
         return sb.toString();
     }

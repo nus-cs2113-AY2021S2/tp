@@ -73,7 +73,7 @@ public class ModuleList {
      */
     public static String removeModule(int index) {
         if (index < 0 || index >= modules.size()) {
-            return " ";
+            return null;
         }
         Writer writer = new Writer();
         if (writer.deleteFile(modules.get(index))) {
@@ -82,7 +82,7 @@ public class ModuleList {
             return moduleName;
         } else {
             //Unable to remove
-            return "";
+            return null;
         }
     }
 
@@ -137,7 +137,10 @@ public class ModuleList {
         Collections.reverse(moduleNumbers);
         for (Integer moduleNumber : moduleNumbers) {
             int indexToRemove = moduleNumber - 1;
-            deletedModules.add(0, removeModule(indexToRemove));
+            String name = removeModule(indexToRemove);
+            if (name != null) {
+                deletedModules.add(0, name);
+            }
         }
         return deletedModules;
     }

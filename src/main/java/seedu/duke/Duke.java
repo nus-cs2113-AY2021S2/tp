@@ -2,7 +2,7 @@ package seedu.duke;
 
 import seedu.duke.commands.Command;
 import seedu.duke.exception.UnknownCommandException;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.ui.UI;
@@ -21,8 +21,6 @@ public class Duke {
         //Receive user input
         run();
 
-        //Exit
-        exit();
     }
 
     private static void start() {
@@ -61,8 +59,4 @@ public class Duke {
         }
     }
 
-    private static void exit() {
-        //Print exit message
-        ui.printBye();
-    }
 }
