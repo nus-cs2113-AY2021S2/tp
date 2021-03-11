@@ -14,10 +14,10 @@ public class Ui {
 
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n");
+            + "|  _ \\ _   _| | _____ \n"
+            + "| | | | | | | |/ / _ \\\n"
+            + "| |_| | |_| |   <  __/\n"
+            + "|____/ \\__,_|_|\\_\\___|\n");
 
     }
 
@@ -27,55 +27,55 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-                + "[1] Module Information\n"
-                + "[2] CAP Simulator/Calculator\n"
-                + "[3] Task Manager\n"
-                + "[4] External Links");
+            + "[1] Module Information\n"
+            + "[2] CAP Simulator/Calculator\n"
+            + "[3] Task Manager\n"
+            + "[4] External Links");
     }
 
     public static void printLinksMessage() {
         System.out.println("Welcome to the links menu ^~^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- External links menu\n"
-                + "[2] --- View Zoom links\n"
-                + "[3] --- Exit to main menu\n"
-                + "Press enter to return back to the main menu");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- External links menu\n"
+            + "[2] --- View Zoom links\n"
+            + "[3] --- Exit to main menu\n");
     }
 
     public static void printLinkToDelete() {
         System.out
-                .println("Please choose which link you would like to delete and enter the number\n"
-                        + "Please choose which action you would like to do and enter the number:\n"
-                        + "[1] --- External links menu\n"
-                        + "[3] --- View Zoom links\n"
-                        + "[4] --- Exit to main menu\n");
+            .println("Please choose which link you would like to delete and enter the number\n"
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- External links menu\n"
+                + "[3] --- View Zoom links\n"
+                + "[4] --- Exit to main menu\n");
     }
 
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- Add/View Module Description\n"
-                + "[2] --- Add/View Components and Their Weightages\n"
-                + "[3] --- Add Zoom Links\n"
-                + "[4] --- Add a New Task\n"
-                + "[5] --- Add a Review\n"
-                + "[6] --- View All Reviews\n"
-                + "[7] --- Delete modules\n"
-                + "[8] --- Delete tasks\n"
-                + "[9] --- Exit to main menu\n");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- Add/View Module Description\n"
+            + "[2] --- Add/View Components and Their Weightages\n"
+            + "[3] --- Add Zoom Links\n"
+            + "[4] --- Add a New Task\n"
+            + "[5] --- Add a Review\n"
+            + "[6] --- View All Reviews\n"
+            + "[7] --- Delete modules\n"
+            + "[8] --- Delete tasks\n"
+            + "[9] --- Exit to main menu\n");
     }
 
     public static void printAddTaskMenu() {
         System.out.println("Welcome to the tasks menu ^o^\n"
-                + "Please choose which type of task you would like to add and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + "Please choose which type of task you would like to add and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
-        System.out.println("Please choose which type of task you would like to delete and enter the number:\n"
+        System.out.println(
+            "Please choose which type of task you would like to delete and enter the number:\n"
                 + "[1] --- Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
@@ -146,9 +146,9 @@ public class Ui {
     public static void printDeletedModuleMessage(Module module) {
         System.out.println("You've deleted this: " + module.getName());
         System.out.println("NOTE: You are deleting your review\n"
-                + module.getReview() + "\n"
-                + "NOTE: You are deleting your module description\n"
-                + module.getDescription());
+            + module.getReview() + "\n"
+            + "NOTE: You are deleting your module description\n"
+            + module.getDescription());
         System.out.println("Returning back to ModuleInfo menu now!");
         printHorizontalLine();
     }
@@ -201,21 +201,23 @@ public class Ui {
 
     public static void printExternalLinksMessage() {
         System.out.println("Welcome to the external links menu!\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- add link\n"
-                + "[2] --- remove link\n"
-                + "[3] --- view links\n"
-                + "[4] --- exit to links menu\n"
-                + "Press enter to return back to the main menu");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- add link\n"
+            + "[2] --- remove link\n"
+            + "[3] --- view links\n"
+            + "[4] --- exit to links menu\n");
     }
 
-    public static void printNextLinkMessage() {
-        System.out.println("What would you like to do next?\n"
-                + "[1] --- add link\n"
-                + "[2] --- remove link\n"
-                + "[3] --- view links\n"
-                + "[4] --- exit to links menu\n"
-                + "Press enter to return back to the main menu");
+    public static int readCommandToInt() {
+        int command;
+        Scanner input = new Scanner(System.in);
+        try {
+            command = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+        return command;
+
     }
 
     public static void printAddLinkMessage(String description) {
@@ -223,12 +225,16 @@ public class Ui {
     }
 
     public static void printEnterLinkMessage() {
-        System.out.println("Please enter the link below :)");
+        System.out.println("Please enter the link in this format:\n"
+            + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+            + "supported schemes: https, http for now... Sorry!\n"
+            + "supported TLD: .com, .org for now... we will work on it!\n");
     }
 
     public static void printInvalidLinkMessage() {
-        System.out.println("Oh no... That was an invalid link\n"
-                + "Please enter a valid one!");
+        System.out.println("Oh no... That was an invalid link *sobs...*\n"
+            + "Please enter a valid one!");
+
     }
 
     public static void printListIsEmpty() {

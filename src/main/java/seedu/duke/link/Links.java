@@ -1,7 +1,10 @@
-package seedu.duke;
+package seedu.duke.link;
+
+import seedu.duke.Ui;
 
 public class Links {
 
+    private static final int EXIT_COMMAND = 4;
     protected int linkIndex;
 
     public Links(int linkIndex) {
@@ -13,20 +16,14 @@ public class Links {
         while (true) {
             switch (linkIndex) {
             case 1:
-                Ui.printExternalLinksMessage();
-                String externalLinksCommand = Ui.readCommand();
-                if (externalLinksCommand.isEmpty()) {
-                    return;
-                }
-                externalLinksCommandNumber = Integer.parseInt(externalLinksCommand);
-                while (externalLinksCommandNumber != 4) {
+                while (externalLinksCommandNumber != EXIT_COMMAND) {
+                    Ui.printExternalLinksMessage();
+                    externalLinksCommandNumber = Ui.readCommandToInt();
                     ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
                     externalLinks.execute();
-                    Ui.printNextLinkMessage();
-                    externalLinksCommandNumber = Integer.parseInt(Ui.readCommand());
                 }
                 Ui.printLinksMessage();
-                linkIndex = Integer.parseInt(Ui.readCommand());
+                linkIndex = Ui.readCommandToInt();
                 continue;
             case 2:
                 // zoom menu
@@ -37,8 +34,7 @@ public class Links {
             default:
                 Ui.printInvalidIntegerMessage();
                 Ui.printLinksMessage();
-                linkIndex = Integer.parseInt(Ui.readCommand());
-
+                linkIndex = Ui.readCommandToInt();
             }
         }
     }
