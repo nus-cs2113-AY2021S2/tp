@@ -60,14 +60,16 @@ public class Parser {
                 String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
                 return new CommandKey(criteria, value, keyCommand);
             }
-        case EXIT:
-            // Fallthrough
-        case HELP:
-            break;
-        default:
+        case FIND:
             if (lineParts.length < 2) {
                 throw new InvalidParameterException();
             }
+            break;
+        case EXIT:
+            // Fallthrough
+        case HELP:
+            // Fallthrough
+        default:
             break;
         }
         return new CommandKey(keyCommand);
