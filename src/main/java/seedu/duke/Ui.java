@@ -1,3 +1,5 @@
+package seedu.duke;
+
 public abstract class Ui {
 
     protected static final String DIVIDER = "-------------------------------------";
