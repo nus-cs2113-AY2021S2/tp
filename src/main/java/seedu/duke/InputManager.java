@@ -1,7 +1,4 @@
-package ManagerClasses;
-
-import seedu.duke.Record;
-import seedu.duke.Router;
+package seedu.duke;
 
 import java.util.Scanner;
 
@@ -10,12 +7,12 @@ public class InputManager {
         System.out.print("> ");
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
-        UIManager.printDivider();
+        UiManager.printDivider();
         return input;
     }
 
     public void inputLoop() {
-        while(true) {
+        while (true) {
             String input = getUserInput();
             CommandManager commandManager = new CommandManager(input);
             Router map = new Router();
@@ -42,12 +39,12 @@ public class InputManager {
                 System.out.println("Display notes of selected location");
                 break;
             case ByeCommand:
-                UIManager.showByeMessage();
+                UiManager.showByeMessage();
                 return;
             default:
-                UIManager.showInvalidMessage();
+                UiManager.showInvalidMessage();
             }
-            UIManager.printDivider();
+            UiManager.printDivider();
         }
     }
 }

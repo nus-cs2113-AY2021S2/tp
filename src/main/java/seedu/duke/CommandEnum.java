@@ -1,4 +1,4 @@
-package ManagerClasses;
+package seedu.duke;
 
 public enum CommandEnum {
     GoCommand,

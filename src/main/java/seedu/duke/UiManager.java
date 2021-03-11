@@ -1,6 +1,6 @@
-package ManagerClasses;
+package seedu.duke;
 
-public class UIManager {
+public class UiManager {
     private static final String DIVIDER = "--------------------------------------------------------------------------";
 
     public static void printDivider() {
