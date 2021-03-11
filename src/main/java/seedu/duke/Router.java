@@ -3,15 +3,24 @@ package seedu.duke;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Router {
-    private Map nusMap;
+    private Map nusMap = new Map();
 
-    public void execute(String from, String to) {
-        nusMap = new Map();
+    public Router(){
         setMap();
         setNeighbours();
-        printShortestDistance(from, to);
+    }
+
+
+    public void execute() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("STARTING BLOCK:");
+        String from = in.nextLine();
+        System.out.println("DESTINATION BLOCK:");
+        String to = in.nextLine();
+        printShortestDistance(from.toUpperCase(), to.toUpperCase());
     }
 
     public void setMap() {
@@ -94,6 +103,7 @@ public class Router {
                     System.out.print(path.get(i).getName());
                 }
             }
+            System.out.println("");
         }
     }
 
