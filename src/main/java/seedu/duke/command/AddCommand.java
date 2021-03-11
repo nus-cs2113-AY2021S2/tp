@@ -20,7 +20,6 @@ import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
@@ -67,7 +66,10 @@ public class AddCommand extends Command {
     public void execute(RecordList records, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            records.addRecord(new Expense(amount, issueDate, description), ui, storage);
+            Expense expenseObj = new Expense(amount, issueDate, description);
+            records.addRecord(expenseObj);
+            storage.saveRecordListData(records);
+            ui.printSuccessfulAdd(expenseObj);
             break;
         case LOAN:
             //records.addRecord(records, ui, storage);

@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.record.Record;
+import seedu.duke.record.RecordList;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,7 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
@@ -29,11 +29,20 @@ public class Storage {
         return Files.exists(filePath);
     }
 
-    public void saveFile(ArrayList<Record> records) throws IOException {
+    public void saveRecordListData(RecordList records) {
+        try {
+            writeToSaveFile(records);
+        } catch (IOException e) {
+            System.out.println("Error in writeToSaveFile()");
+        }
+    }
+
+    private void writeToSaveFile(RecordList records) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
         fw.write("Test Save!\n");
-        for (Record r : records) {
-            fw.write(r.convertFileFormat() + System.lineSeparator());
+        for (int i = 0; i < records.getRecordCount(); i++) {
+            Record currentRecord = records.getRecordAt(i);
+            fw.write(currentRecord.convertFileFormat() + System.lineSeparator());
         }
         fw.close();
     }
