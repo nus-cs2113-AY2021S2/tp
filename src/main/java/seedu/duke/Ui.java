@@ -14,10 +14,10 @@ public class Ui {
 
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n");
+            + "|  _ \\ _   _| | _____ \n"
+            + "| | | | | | | |/ / _ \\\n"
+            + "| |_| | |_| |   <  __/\n"
+            + "|____/ \\__,_|_|\\_\\___|\n");
 
     }
 
@@ -27,10 +27,10 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-                + "[1] Module Information\n"
-                + "[2] CAP Simulator/Calculator\n"
-                + "[3] Task Manager\n"
-                + "[4] External Links");
+            + "[1] Module Information\n"
+            + "[2] CAP Simulator/Calculator\n"
+            + "[3] Task Manager\n"
+            + "[4] External Links");
     }
 
     public static void printLinksMessage() {
@@ -52,29 +52,30 @@ public class Ui {
 
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- Add/View Module Description\n"
-                + "[2] --- Add/View Components and Their Weightages\n"
-                + "[3] --- Add Zoom Links\n"
-                + "[4] --- Add a New Task\n"
-                + "[5] --- Add a Review\n"
-                + "[6] --- View All Reviews\n"
-                + "[7] --- Delete modules\n"
-                + "[8] --- Delete tasks\n"
-                + "[9] --- Exit to main menu\n");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- Add/View Module Description\n"
+            + "[2] --- Add/View Components and Their Weightages\n"
+            + "[3] --- Add Zoom Links\n"
+            + "[4] --- Add a New Task\n"
+            + "[5] --- Add a Review\n"
+            + "[6] --- View All Reviews\n"
+            + "[7] --- Delete modules\n"
+            + "[8] --- Delete tasks\n"
+            + "[9] --- Exit to main menu\n");
     }
 
     public static void printAddTaskMenu() {
         System.out.println("Welcome to the tasks menu ^o^\n"
-                + "Please choose which type of task you would like to add and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + "Please choose which type of task you would like to add and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
-        System.out.println("Please choose which type of task you would like to delete and enter the number:\n"
+        System.out.println(
+            "Please choose which type of task you would like to delete and enter the number:\n"
                 + "[1] --- Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
@@ -142,6 +143,20 @@ public class Ui {
         printHorizontalLine();
     }
 
+    public static void printDeletedModuleMessage(Module module) {
+        System.out.println("You've deleted this: " + module.getName());
+        System.out.println("NOTE: You are deleting your review\n"
+            + module.getReview() + "\n"
+            + "NOTE: You are deleting your module description\n"
+            + module.getDescription());
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+
+    public static void printSelectModuleToDeleteMessage() {
+        System.out.println("Enter the module number to be deleted:");
+    }
+
     public static void printSelectTaskNumberToDeleteMessage() {
         System.out.println("\nWhat is the number of the task you want to delete?");
     }
@@ -202,6 +217,7 @@ public class Ui {
             return -1;
         }
         return command;
+
     }
 
     public static void printAddLinkMessage(String description) {
@@ -218,6 +234,7 @@ public class Ui {
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
             + "Please enter a valid one!");
+
     }
 
     public static void printListIsEmpty() {
