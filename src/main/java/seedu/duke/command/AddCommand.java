@@ -3,7 +3,9 @@ package seedu.duke.command;
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.Expense;
+import seedu.duke.record.Loan;
 import seedu.duke.record.RecordList;
+import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -20,7 +22,6 @@ import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
@@ -34,8 +35,6 @@ public class AddCommand extends Command {
         checkInvalidOptions(arguments, COMMAND_ADD,
                 OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
         checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
-
-        //System.out.println(arguments);
 
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
@@ -61,8 +60,6 @@ public class AddCommand extends Command {
         issueDate = dateInString;
     }
 
-
-
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
         switch (recordType) {
@@ -70,15 +67,12 @@ public class AddCommand extends Command {
             records.addRecord(new Expense(amount, issueDate, description), ui, storage);
             break;
         case LOAN:
-            //records.addRecord(records, ui, storage);
-            System.out.println("Type is LOAN");
+            records.addRecord(new Loan(amount, issueDate, description), ui, storage);
             break;
         case SAVING:
-            //records.addRecord(records, ui, storage);
-            System.out.println("Type is SAVINGS");
-            break;
+            // Fallthrough
         default:
-            ui.printMessage("Unable to list records.");
+            records.addRecord(new Saving(amount, issueDate, description), ui, storage);
         }
     }
 }
