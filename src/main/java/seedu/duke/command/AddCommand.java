@@ -55,7 +55,7 @@ public class AddCommand extends Command {
             amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
             issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
         } catch (NumberFormatException e) {
-            throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
+            throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
         } catch (DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
@@ -71,12 +71,18 @@ public class AddCommand extends Command {
             ui.printSuccessfulAdd(expenseObj);
             break;
         case LOAN:
-            records.addRecord(new Loan(amount, issueDate, description), ui, storage);
+            Loan loanObj = new Loan(amount, issueDate, description);
+            records.addRecord(loanObj);
+            storage.saveRecordListData(records);
+            ui.printSuccessfulAdd(loanObj);
             break;
         case SAVING:
             // Fallthrough
         default:
-            records.addRecord(new Saving(amount, issueDate, description), ui, storage);
+            Saving savingObj = new Saving(amount, issueDate, description);
+            records.addRecord(savingObj);
+            storage.saveRecordListData(records);
+            ui.printSuccessfulAdd(savingObj);
         }
     }
 }
