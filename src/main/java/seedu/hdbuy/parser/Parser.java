@@ -1,11 +1,6 @@
 package seedu.hdbuy.parser;
 
-import seedu.hdbuy.command.CloseCommand;
-import seedu.hdbuy.command.Command;
-import seedu.hdbuy.command.DefaultCommand;
-import seedu.hdbuy.command.FilterCommand;
-import seedu.hdbuy.command.FindCommand;
-import seedu.hdbuy.command.HelpCommand;
+import seedu.hdbuy.command.*;
 import seedu.hdbuy.data.CommandKey;
 import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
@@ -20,7 +15,7 @@ public class Parser {
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
-        try{
+        try {
             CommandKey keyCommand = extractInfo(fullLine);
             switch (keyCommand.getCommand()) {
             case HELP:
@@ -40,8 +35,8 @@ public class Parser {
             default:
                 break;
             }
-        } catch (InvalidParameterException e){
-            TextUi.showInvalidParameter();
+        } catch (InvalidParameterException e) {
+            TextUi.showInvalidParameter(e);
         } finally {
             return command;
         }
@@ -53,7 +48,7 @@ public class Parser {
         String keyCommand = lineParts[0];
         switch (keyCommand) {
         case FILTER:
-            if(lineParts.length < 3){
+            if (lineParts.length < 3) {
                 throw new InvalidParameterException();
             } else {
                 String criteria = lineParts[1];
@@ -65,7 +60,7 @@ public class Parser {
         case HELP:
             break;
         default:
-            if(lineParts.length < 2){
+            if (lineParts.length < 2) {
                 throw new InvalidParameterException();
             }
             break;

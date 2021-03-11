@@ -1,20 +1,16 @@
 package seedu.hdbuy;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-
-import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.command.Command;
 import seedu.hdbuy.data.QueryKey;
-import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
+import java.util.HashMap;
+
 public class HdBuy {
 
-    private static HashMap<QueryKey,String> inputs = new HashMap<>();
+    private static final HashMap<QueryKey, String> inputs = new HashMap<>();
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */

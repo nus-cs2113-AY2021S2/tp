@@ -1,5 +1,7 @@
 package seedu.hdbuy.data.exception;
 
 public class InvalidParameterException extends Exception {
-    // nothing to add here
+    public InvalidParameterException() {
+        super("You must enter at least 1 more parameter.");
+    }
 }

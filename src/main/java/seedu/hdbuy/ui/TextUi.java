@@ -1,13 +1,16 @@
 package seedu.hdbuy.ui;
 
 import seedu.hdbuy.data.QueryKey;
+import seedu.hdbuy.data.exception.InvalidParameterException;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class TextUi {
 
-    /** Number of dashes for the separator. */
+    /**
+     * Number of dashes for the separator.
+     */
     private static final int SEPARATOR_LENGTH = 80;
     private static final Scanner in = new Scanner(System.in);
 
@@ -49,7 +52,7 @@ public class TextUi {
         System.out.print("\"" + criteria + "\" is not a valid filter.\n");
     }
 
-    public static void showInvalidParameter() {
-        System.out.println("You must enter at least 1 more parameter.");
+    public static void showInvalidParameter(InvalidParameterException e) {
+        System.out.println(e.getMessage());
     }
 }

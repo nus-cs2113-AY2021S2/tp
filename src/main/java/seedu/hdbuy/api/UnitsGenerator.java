@@ -1,13 +1,14 @@
 package seedu.hdbuy.api;
 
-import java.util.HashMap;
-
 import seedu.hdbuy.data.Unit;
+
+import java.util.HashMap;
 
 public class UnitsGenerator {
 
     /**
      * Sifts through response string to get details on units and generate each of them.
+     *
      * @param response Response from database containing raw information on units.
      * @return Units mapped to their unique IDs.
      */
