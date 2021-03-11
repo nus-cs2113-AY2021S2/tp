@@ -11,6 +11,11 @@ public class Module {
         this.review = review;
     }
 
+    public Module(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public String getName() {
         return this.name;
     }

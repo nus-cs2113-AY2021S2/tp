@@ -126,7 +126,43 @@ public class ModuleInfo {
     private static void getComponents() {
     }
 
+    /**
+     * This method read in module name and decipher if module exists.
+     * If module exists, module description previously added is printed.
+     * Else, method prompts user to enter module description and creates a new Module object.
+     * This method returns to module information menu.
+     */
     private static void getModuleDescriptions() {
+        Ui.printModuleNameToModifyPrompt();
+        String moduleName = Ui.readCommand(); // read in module name, i.e. CS2113T
+        boolean isModuleExist = false;
+        for(Module module : modules) {
+            if(module.getName().equals(moduleName)) {
+                Ui.printModuleExistMessage();
+                isModuleExist = true;
+                System.out.println(module.getDescription() + "\n");
+                Ui.printReturnToModuleInfoMenuMessage();
+                break; //safety break in cases of more than 1 same module name present.
+                        // In fact, two same module should not be present.
+            }
+        }
+        if(!isModuleExist) {
+            Ui.printModuleDoesNotExistMessage();
+            String userInput;
+            userInput = Ui.readCommand(); //read in [Y/N]
+            if(userInput.equals("Y")) {
+                Ui.printModuleDescriptionPrompt(moduleName);
+                String moduleDescription = Ui.readCommand(); //read in description
+                Module module = new Module(moduleName, moduleDescription);
+                modules.add(module);
+                Ui.printModuleDescriptionAddedMessage(moduleName,
+                        module.getDescription());
+                Ui.printReturnToModuleInfoMenuMessage();
+            } else if(userInput.equals("N")) {
+                Ui.printReturnToModuleInfoMenuMessage();
+            }
+        }
+
     }
 
 }
