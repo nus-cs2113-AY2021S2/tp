@@ -49,15 +49,14 @@ public class AddCommand extends Command {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
 
-        String amountInString = getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT);
-        String dateInString = getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
-        if (!validateAmount(amountInString)) {
+        try {
+            amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
+            issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+        } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
-        } else if (validateDate(dateInString)) {
-            throw new CommandException("date format error", COMMAND_ADD);
+        } catch (CommandException e) {
+            throw new CommandException("date error format", COMMAND_ADD);
         }
-        amount = Double.parseDouble(amountInString);
-        issueDate = dateInString;
     }
 
     @Override
