@@ -1,7 +1,5 @@
 package seedu.duke.common;
 
-import seedu.duke.exception.CommandException;
-
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -23,7 +21,17 @@ public class Validators {
 
     // @@author marklowsk-reused
     // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
-    // with minor edits.
+    private static LocalDate parseDateString(DateTimeFormatter format, String dateInput) {
+        try {
+            return LocalDate.parse(dateInput, format);
+        } catch (DateTimeParseException e) {
+            return null;
+        }
+    }
+
+    // @@author marklowsk-reused
+    // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
+    // Utils.parseDate(String) with minor edits.
     /**
      * Parses dateInput into a LocalDateTime object.
      * Returns null if dateInput cannot be parsed into a LocalDateTime object.
@@ -32,7 +40,7 @@ public class Validators {
      * @return a LocalDateTime object or null if failed to parse dateInput.
      * @see #parseDateString(DateTimeFormatter, String)
      */
-    public static LocalDate parseDate(String dateInput) {
+    public static LocalDate validateDate(String dateInput) throws DateTimeException {
         for (DateTimeFormatter dtf : POSSIBLE_DATE_FORMATS) {
             LocalDate date = parseDateString(dtf, dateInput);
             if (date != null) {
@@ -42,26 +50,8 @@ public class Validators {
         throw new DateTimeException("input \"" + dateInput+ "\" is not an acceptable Date Format.");
     }
 
-    // @@author marklowsk-reused
-    // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
-    private static LocalDate parseDateString(DateTimeFormatter format, String dateInput) {
-        try {
-            return LocalDate.parse(dateInput, format);
-        } catch (DateTimeParseException e) {
-            return null;
-        }
-    }
-
     public static void validateIndex() {
 
-    }
-
-    public static String validateDate(String inputToCheck) throws CommandException {
-        if (inputToCheck.contains("dummy")) {
-            throw new CommandException("");
-        } else {
-            return inputToCheck;
-        }
     }
 
     public static double validateAmount(String inputToCheck) throws NumberFormatException {

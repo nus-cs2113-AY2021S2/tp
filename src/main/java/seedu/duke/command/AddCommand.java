@@ -21,12 +21,14 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
     private final double amount;
-    private final String issueDate;
+    private final LocalDate issueDate;
     private final String description;
 
     private RecordType recordType;
@@ -54,8 +56,8 @@ public class AddCommand extends Command {
             issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
-        } catch (CommandException e) {
-            throw new CommandException("date error format", COMMAND_ADD);
+        } catch (DateTimeException e) {
+            throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
     }
 
