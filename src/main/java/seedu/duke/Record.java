@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class Record {
 
-    private ArrayList<String> records;
+    private static ArrayList<String> records = new ArrayList();
 
     public Record() {
-        records = new ArrayList<String>();
     }
 
     public ArrayList<String> getRecords() {
@@ -15,13 +14,9 @@ public class Record {
     }
 
     public void displayRecords() {
-        /**
-         * Lists out all the entries in records.
-         */
-        int i = 1;
-        for (String record : records) {
-            System.out.println(i + ". " + record);
-            i++;
+        System.out.println("Number of records in your history: " + records.size());
+        for (int i = 1; i-1 < records.size(); i++) {
+            System.out.println(i + ". " + records.get(i-1));
         }
     }
 
@@ -31,5 +26,6 @@ public class Record {
 
     public void emptyRecords() {
         records.clear();
+        System.out.println("Your history has been cleared.");
     }
 }
