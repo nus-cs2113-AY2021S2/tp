@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.link.Links;
+
 public class Duke {
 
     /**
@@ -37,12 +39,9 @@ public class Duke {
                     break;
                 case 4:
                     //externalLinks
+                    int linkCommandNumber;
                     Ui.printLinksMessage();
-                    String linkCommand = Ui.readCommand();
-                    if (linkCommand.isEmpty()) {
-                        continue;
-                    }
-                    int linkCommandNumber = Integer.parseInt(linkCommand);
+                    linkCommandNumber = Ui.readCommandToInt();
                     Links link = new Links(linkCommandNumber);
                     link.execute();
                     break;

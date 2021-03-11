@@ -38,8 +38,7 @@ public class Ui {
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- View Zoom links\n"
-            + "[3] --- Exit to main menu\n"
-            + "Press enter to return back to the main menu");
+            + "[3] --- Exit to main menu\n");
     }
 
     public static void printLinkToDelete() {
@@ -191,17 +190,18 @@ public class Ui {
             + "[1] --- add link\n"
             + "[2] --- remove link\n"
             + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n"
-            + "Press enter to return back to the main menu");
+            + "[4] --- exit to links menu\n");
     }
 
-    public static void printNextLinkMessage() {
-        System.out.println("What would you like to do next?\n"
-            + "[1] --- add link\n"
-            + "[2] --- remove link\n"
-            + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n"
-            + "Press enter to return back to the main menu");
+    public static int readCommandToInt() {
+        int command;
+        Scanner input = new Scanner(System.in);
+        try {
+            command = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+        return command;
     }
 
     public static void printAddLinkMessage(String description) {
@@ -209,11 +209,14 @@ public class Ui {
     }
 
     public static void printEnterLinkMessage() {
-        System.out.println("Please enter the link below :)");
+        System.out.println("Please enter the link in this format:\n"
+            + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+            + "supported schemes: https, http for now... Sorry!\n"
+            + "supported TLD: .com, .org for now... we will work on it!\n");
     }
 
     public static void printInvalidLinkMessage() {
-        System.out.println("Oh no... That was an invalid link\n"
+        System.out.println("Oh no... That was an invalid link *sobs...*\n"
             + "Please enter a valid one!");
     }
 

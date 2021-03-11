@@ -1,7 +1,8 @@
-package seedu.duke;
+package seedu.duke.link;
 
 import java.util.ArrayList;
-import org.apache.commons.validator.routines.UrlValidator;
+import java.util.regex.*;
+import seedu.duke.Ui;
 
 public class LinkInfo {
 
@@ -30,12 +31,26 @@ public class LinkInfo {
         Ui.printLinks(linksList);
     }
 
+
+    //@@author prashant srivastava
+    //Reused from https://www.geeksforgeeks.org/check-if-an-url-is-valid-or-not-using-regular-expression/
+    //with minor modifications
     public static boolean isValidLink(String linkDescription) {
-        String[] schemes = {"http", "https"};
-        UrlValidator urlValidator = new UrlValidator(schemes);
-        if (urlValidator.isValid(linkDescription)) {
-            return true;
+        String regex = "((http|https)://)"
+            + "(www.)"
+            + "[a-zA-Z0-9@:%._\\+~#?&//=]"
+            + "{2,256}\\.[a-z]"
+            + "{2,6}\\b([-a-zA-Z0-9@:%"
+            + "._\\+~#?&//=]*)";
+
+        Pattern p = Pattern.compile(regex);
+
+        if (linkDescription == null) {
+            return false;
         }
-        return false;
+        Matcher m = p.matcher(linkDescription);
+
+        return m.matches();
     }
+    //@@author
 }

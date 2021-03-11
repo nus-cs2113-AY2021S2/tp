@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.duke.link;
+
+import seedu.duke.Ui;
 
 public class ExternalLinks extends Links {
 
