@@ -54,6 +54,14 @@ public class Review {
         NO_OF_STARS = noOfStars;
     }
 
+    public static int getNoOfReviews() {
+        return noOfReviews;
+    }
+
+    public static void setNoOfReviews(int noOfReviews) {
+        Review.noOfReviews = noOfReviews;
+    }
+
     public Review(String title, String category, int rating, String description) {
         this.title = title;
         this.category = category;
@@ -70,7 +78,7 @@ public class Review {
         String starRating = "";
         for (int i = 0; i < NO_OF_STARS; i++) {
             if (rating > 0) {
-               starRating = starRating.concat("★");
+                starRating = starRating.concat("★");
             } else {
                 starRating = starRating.concat("✰");
             }
