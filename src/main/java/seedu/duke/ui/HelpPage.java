@@ -11,6 +11,12 @@ public class HelpPage {
     private static final String MAN_SYNOPSIS_LIST = "list [OPTION]";
     private static final String MAN_HEADER_VIEW = "view - view the total amount of chosen record type";
     private static final String MAN_SYNOPSIS_VIEW = "view [OPTION]";
+    private static final String MAN_HEADER_REMOVE = "remove - remove a record in the program";
+    private static final String MAN_SYNOPSIS_REMOVE = "remove [OPTION] [ARGUMENT]";
+    private static final String MAN_HEADER_RETURN = "return - record a loan as returned";
+    private static final String MAN_SYNOPSIS_RETURN = "return [OPTION] [ARGUMENT]";
+    private static final String MAN_HEADER_EXIT = "exit - terminate the program";
+    private static final String MAN_SYNOPSIS_EXIT = "exit (no option/argument needed)";
     private static final String MAN_OPTION_RECORD_TYPE = "-e, -l, -s";
     private static final String MAN_OPTION_RECORD_TYPE_DESCRIPTION = "[ARGUMENT] used as record description";
     private static final String MAN_OPTION_RECORD_TYPE_LISTING = "used to list the chosen record types";
@@ -21,6 +27,9 @@ public class HelpPage {
     private static final String MAN_OPTION_DATE = "-d";
     private static final String MAN_OPTION_DATE_DESCRIPTION = "[ARGUMENT] date associated with the record";
     private static final String MAN_NO_ARGUMENT = "arguments are not needed";
+    private static final String MAN_OPTION_INDEX = "-i";
+    private static final String MAN_OPTION_INDEX_DESCRIPTION = "[ARGUMENT] positive non zero integer "
+            + "used to reference to index in program";
 
     public static void printHelp(String command) {
         switch (command) {
@@ -114,25 +123,35 @@ public class HelpPage {
     }
 
     public static void printManPageRemove() {
+        printManHeader(MAN_HEADER_REMOVE);
+        printManSynopsis(MAN_SYNOPSIS_REMOVE);
         printManDescriptionRemove();
     }
 
     public static void printManDescriptionRemove() {
         System.out.println("DESCRIPTION");
+        System.out.println(TAB_1SPACE + MAN_OPTION_INDEX);
+        System.out.println((TAB_2SPACE + MAN_OPTION_INDEX_DESCRIPTION));
         System.out.println(DIVIDER);
     }
 
     public static void printManPageReturn() {
+        printManHeader(MAN_HEADER_RETURN);
+        printManSynopsis(MAN_SYNOPSIS_RETURN);
         printManDescriptionReturn();
     }
 
     public static void printManDescriptionReturn() {
         System.out.println("DESCRIPTION");
+        System.out.println(TAB_1SPACE + MAN_OPTION_INDEX);
+        System.out.println((TAB_2SPACE + MAN_OPTION_INDEX_DESCRIPTION));
         System.out.println(DIVIDER);
     }
 
     public static void printManPageExit() {
+        printManHeader(MAN_HEADER_EXIT);
         System.out.println("SYNOPSIS");
+        System.out.println(TAB_1SPACE + MAN_SYNOPSIS_EXIT);
         System.out.println(DIVIDER);
     }
 }
