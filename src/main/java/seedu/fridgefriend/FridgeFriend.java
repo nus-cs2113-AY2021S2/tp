@@ -105,6 +105,8 @@ public class FridgeFriend {
 
     /**
      * Parses description into name, foodCategory, expiryDate and storageLocation.
+     * Matcher objects will try to parse a string according to the Pattern we define
+     * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
      *
      * @param foodDescription the string in the required format of food description
      * @return a new AddCommand for Food
