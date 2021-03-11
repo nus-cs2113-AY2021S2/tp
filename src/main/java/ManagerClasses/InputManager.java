@@ -18,12 +18,12 @@ public class InputManager {
         while(true) {
             String input = getUserInput();
             CommandManager commandManager = new CommandManager(input);
-            Router router = new Router();
+            Router map = new Router();
             Record history = new Record();
 
             switch (commandManager.getCommandType()) {
             case GoCommand:
-                router.executeRouting();
+                map.execute();
                 // todo: add records
                 break;
             case ShowHistoryCommand:
