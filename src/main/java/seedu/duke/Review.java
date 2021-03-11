@@ -66,12 +66,12 @@ public class Review {
         noOfReviews++;
     }
 
-    public String starRating(int rating){
+    public String starRating(int rating) {
         String starRating = "";
-        for(int i = 0; i < NO_OF_STARS; i++){
-            if(rating > 0) {
+        for (int i = 0; i < NO_OF_STARS; i++) {
+            if (rating > 0) {
                 starRating.concat("\uD83D\uDFCA");
-            }else{
+            } else {
                 starRating.concat("✰");
             }
             rating--;
@@ -80,6 +80,6 @@ public class Review {
     }
 
     public String toString() {
-        return title + "      " + rating + "      "+dateOfEntry;
+        return title + "      " + rating + "      " + dateOfEntry;
     }
 }
