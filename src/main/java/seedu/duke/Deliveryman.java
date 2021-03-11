@@ -1,3 +1,5 @@
+package seedu.duke;
+
 public class Deliveryman {
     private String driverName;
     private String licensePlate;
