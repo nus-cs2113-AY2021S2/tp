@@ -51,7 +51,8 @@ public class Parser {
         String[] lineParts;
         lineParts = fullLine.split(" ");
         String keyCommand = lineParts[0];
-        if (keyCommand.equals(FILTER)) {
+        switch (keyCommand) {
+        case FILTER:
             if(lineParts.length < 3){
                 throw new InvalidParameterException();
             } else {
@@ -59,6 +60,15 @@ public class Parser {
                 String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
                 return new CommandKey(criteria, value, keyCommand);
             }
+        case EXIT:
+            // Fallthrough
+        case HELP:
+            break;
+        default:
+            if(lineParts.length < 2){
+                throw new InvalidParameterException();
+            }
+            break;
         }
         return new CommandKey(keyCommand);
     }
