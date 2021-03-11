@@ -16,6 +16,8 @@ import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
+import static seedu.duke.common.Validators.validateAmount;
+import static seedu.duke.common.Validators.validateDate;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -48,8 +50,15 @@ public class AddCommand extends Command {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
 
-        amount = Double.parseDouble(Objects.requireNonNull(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT)));
-        issueDate = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
+        String amountInString = getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT);
+        String dateInString = getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
+        if (!validateAmount(amountInString)) {
+            throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
+        } else if (validateDate(dateInString)) {
+            throw new CommandException("date format error", COMMAND_ADD);
+        }
+        amount = Double.parseDouble(amountInString);
+        issueDate = dateInString;
     }
 
 
