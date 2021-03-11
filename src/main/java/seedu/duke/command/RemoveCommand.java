@@ -41,8 +41,8 @@ public class RemoveCommand extends Command {
         try {
             recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX));
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr +
-                    "\" is not an integer!", COMMAND_REMOVE);
+            throw new CommandException("Index \"" + recordNumberStr
+                    + "\" is not an integer!", COMMAND_REMOVE);
         }
     }
 
@@ -65,8 +65,8 @@ public class RemoveCommand extends Command {
             ui.printMessage("Record to remove: " + recordName);
             records.deleteRecordAt(recordNumberInt);
         } catch (IndexOutOfBoundsException e) {
-            ui.printMessage(COMMAND_REMOVE + " Command - " + "\"" +
-                    recordNumberStr + "\" is out of bounds!");
+            ui.printMessage(COMMAND_REMOVE + " Command - " + "\""
+                    + recordNumberStr + "\" is out of bounds!");
         }
     }
 }
