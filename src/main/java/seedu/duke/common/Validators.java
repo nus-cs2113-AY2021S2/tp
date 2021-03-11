@@ -51,8 +51,8 @@ public class Validators {
         throw new DateTimeException("input \"" + dateInput + "\" is not an acceptable Date Format.");
     }
 
-    public static void validateIndex() {
-
+    public static int validateIndex(String inputToCheck) throws NumberFormatException {
+        return Integer.parseInt(inputToCheck);
     }
 
     public static double validateAmount(String inputToCheck) throws NumberFormatException,
