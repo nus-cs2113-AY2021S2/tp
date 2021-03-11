@@ -1,11 +1,14 @@
 package seedu.duke;
 
-import java.util.Scanner;
+import system.staff.Parser;
+import static system.staff.Parser.run;
+import java.io.IOException;
 
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
+
     private Ui ui;
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
@@ -28,6 +31,7 @@ public class Duke {
                 switch (c) {
                 case "1":
                     System.out.println("Staff Instance!");
+                    Parser.run();
                     break;
                 case "2":
                     new PatientCommandInstance(PATIENT_FILE_PATH).patientInstance();
