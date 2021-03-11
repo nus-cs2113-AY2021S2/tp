@@ -34,7 +34,6 @@ public class Ui {
     private static final String FINUX_PREFIX = "$$";
 
     private final Scanner input;
-    private RecordList recordList;
 
     public Ui() {
         this(System.in);
@@ -42,10 +41,6 @@ public class Ui {
 
     public Ui(InputStream in) {
         this.input = new Scanner(in);
-    }
-
-    public void setRecordList(RecordList recordList) {
-        this.recordList = recordList;
     }
 
     public static void printSuccessfulAdd(Record recordToAdd) {
@@ -87,7 +82,7 @@ public class Ui {
         return "Successful";
     }
 
-    public void printExpenses() {
+    public void printExpenses(RecordList recordList) {
         System.out.println(DIVIDER);
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
@@ -98,7 +93,7 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public void printLoans() {
+    public void printLoans(RecordList recordList) {
         System.out.println(DIVIDER);
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
@@ -109,7 +104,7 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public void printSavings() {
+    public void printSavings(RecordList recordList) {
         System.out.println(DIVIDER);
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
@@ -120,7 +115,7 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public void viewTotalAmountExpense() {
+    public void printTotalAmountExpense(RecordList recordList) {
         System.out.println(DIVIDER);
         double totalAmount = 0;
         for (int i = 0; i < recordList.getRecordCount(); i++) {
@@ -133,7 +128,7 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public void viewTotalAmountLoan() {
+    public void printTotalAmountLoan(RecordList recordList) {
         System.out.println(DIVIDER);
         double totalAmount = 0;
         for (int i = 0; i < recordList.getRecordCount(); i++) {
@@ -146,7 +141,7 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
-    public void viewTotalAmountSaving() {
+    public void printTotalAmountSaving(RecordList recordList) {
         System.out.println(DIVIDER);
         double totalAmount = 0;
         for (int i = 0; i < recordList.getRecordCount(); i++) {
