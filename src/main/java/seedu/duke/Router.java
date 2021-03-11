@@ -20,7 +20,11 @@ public class Router {
         String from = in.nextLine();
         System.out.println("DESTINATION BLOCK:");
         String to = in.nextLine();
-        printShortestDistance(from.toUpperCase(), to.toUpperCase());
+        try {
+            System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
+        }catch(NullPointerException e){
+            System.out.println("Invalid block! Please enter the 'go' command to retry!");
+        }
     }
 
     public void setMap() {
@@ -48,6 +52,7 @@ public class Router {
         nusMap.addLocation(new Block("IT"));
         nusMap.addLocation(new Block("T-LAB"));
         nusMap.addLocation(new Block("TECHNO EDGE"));
+        nusMap.addLocation(new Block("AS1"));
     }
 
     public void setNeighbours() {
@@ -79,14 +84,14 @@ public class Router {
         nusMap.addRelationship("E6", "E7");
     }
 
-    public void printShortestDistance(String from, String to) {
+    public String printShortestDistance(String from, String to) {
         Block start = nusMap.getLocation(from).getBlock();
         Block destination = nusMap.getLocation(to).getBlock();
         HashMap<Block, Block> predecessor = new HashMap<>();
+        String route = "";
 
         if (!BFS(nusMap, predecessor, start, destination)) {
-            System.out.println("Given source and destination are not connected");
-            return;
+            route += "The blocks given have no connected pathways!";
         } else {
             LinkedList<Block> path = new LinkedList<>();
             Block crawl = destination;
@@ -95,16 +100,16 @@ public class Router {
                 path.add(predecessor.get(crawl));
                 crawl = predecessor.get(crawl);
             }
-            System.out.println("Path is ::");
+            route += "Path is ::";
             for (int i = path.size() - 1; i >= 0; i--) {
                 if (i > 0) {
-                    System.out.print(path.get(i).getName() + "->");
+                    route += path.get(i).getName() + "->";
                 } else {
-                    System.out.print(path.get(i).getName());
+                   route += path.get(i).getName();
                 }
             }
-            System.out.println("");
         }
+        return route;
     }
 
     public static boolean BFS(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
