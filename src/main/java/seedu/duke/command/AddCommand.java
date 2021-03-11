@@ -3,7 +3,9 @@ package seedu.duke.command;
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.Expense;
+import seedu.duke.record.Loan;
 import seedu.duke.record.RecordList;
+import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -19,12 +21,14 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
     private final double amount;
-    private final String issueDate;
+    private final LocalDate issueDate;
     private final String description;
 
     private RecordType recordType;
@@ -33,8 +37,6 @@ public class AddCommand extends Command {
         checkInvalidOptions(arguments, COMMAND_ADD,
                 OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
         checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
-
-        //System.out.println(arguments);
 
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
@@ -54,12 +56,10 @@ public class AddCommand extends Command {
             issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
-        } catch (CommandException e) {
-            throw new CommandException("date error format", COMMAND_ADD);
+        } catch (DateTimeException e) {
+            throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
     }
-
-
 
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
@@ -71,15 +71,12 @@ public class AddCommand extends Command {
             ui.printSuccessfulAdd(expenseObj);
             break;
         case LOAN:
-            //records.addRecord(records, ui, storage);
-            System.out.println("Type is LOAN");
+            records.addRecord(new Loan(amount, issueDate, description), ui, storage);
             break;
         case SAVING:
-            //records.addRecord(records, ui, storage);
-            System.out.println("Type is SAVINGS");
-            break;
+            // Fallthrough
         default:
-            ui.printMessage("Unable to list records.");
+            records.addRecord(new Saving(amount, issueDate, description), ui, storage);
         }
     }
 }
