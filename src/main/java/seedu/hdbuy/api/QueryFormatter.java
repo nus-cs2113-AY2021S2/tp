@@ -1,20 +1,21 @@
 package seedu.hdbuy.api;
 
+import seedu.hdbuy.data.QueryKey;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import seedu.hdbuy.data.QueryKey;
 
 public class QueryFormatter {
 
     /**
      * Converts user inputs into query string to be sent to database.
+     *
      * @param parameters User inputs in map format.
      * @return Valid query string.
      */
-    public static String formQuery(HashMap<QueryKey,String> parameters) {
+    public static String formQuery(HashMap<QueryKey, String> parameters) {
         StringBuilder queryBody = new StringBuilder();
-        for (Map.Entry<QueryKey,String> parameter : parameters.entrySet()) {
+        for (Map.Entry<QueryKey, String> parameter : parameters.entrySet()) {
             QueryKey key = parameter.getKey();
             String value = parameter.getValue();
             switch (key) {
