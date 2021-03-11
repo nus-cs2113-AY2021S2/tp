@@ -1,12 +1,42 @@
 package seedu.duke;
 
+import nurseschedule.NurseScheduleStorage;
+import parser.Parser;
+import nurseschedule.NurseSchedule;
+import nurseschedule.NurseScheduleActions;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Duke {
+
+    private Parser parser;
+    private NurseScheduleActions actions;
+    private NurseScheduleStorage storage;
+
+    List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
+        new Duke().run();
+    }
+
+    public void run() {
+        start();
+        runCommandLoopUntilExit();
+    }
+
+    private void start() {
+        this.parser = new Parser();
+        this.actions = new NurseScheduleActions();
+        this.storage = new NurseScheduleStorage();
+
+        storage.load(nurseSchedules);
+
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -17,5 +47,30 @@ public class Duke {
 
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
+    }
+
+    private void runCommandLoopUntilExit() {
+        boolean isRun = true;
+        while (isRun) {
+            String line = parser.getUserInput().trim();
+            String command = parser.getFirstWord(line);
+            String[] details = parser.getDetails(line);
+
+            if (command.equals("add")) {
+                try {
+                    System.out.println("Trip to " + details[1] + " on " + parser.formatDate(line) + " added!");
+                    nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+                } catch (ParseException e) {
+                    System.out.println("Invalid date!");
+                }
+            } else if (command.equals("list")) {
+                actions.listSchedules(nurseSchedules, parser.getDetails(line));
+            } else if (command.equals("delete")) {
+                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
+            } else if (command.equals("exit")) {
+                storage.writeToFile(nurseSchedules);
+                isRun = false;
+            }
+        }
     }
 }
