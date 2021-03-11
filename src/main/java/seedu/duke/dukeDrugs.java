@@ -12,19 +12,19 @@ public class Duke {
      */
     protected Storage storage;
     protected DrugActions drugActions;
-    protected ArrayList<Drug> drugs;
+    protected ArrayList<DrugInstance> drugInstances;
     public Duke(String filePath) {
         storage = new Storage(filePath);
         try {
-            drugs = storage.uploadDrugs();
+            drugInstances = storage.uploadDrugs();
             drugActions = new DrugActions();
         } catch (FileNotFoundException e) {
-            drugs = storage.createNewFile();
+            drugInstances = storage.createNewFile();
         }
     }
     public static void main(String[] args) {
         String pathOfFile = new File("").getAbsolutePath();
-        Duke duke = new Duke(pathOfFile + "/drugs.txt");
+        Duke duke = new Duke(pathOfFile + "/drugInstances.txt");
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
