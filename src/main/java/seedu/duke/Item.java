@@ -1,3 +1,5 @@
+package seedu.duke;
+
 public class Item {
     private String itemName;
     private int itemPrice;
