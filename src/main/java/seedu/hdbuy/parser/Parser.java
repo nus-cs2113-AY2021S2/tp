@@ -7,6 +7,10 @@ import seedu.hdbuy.command.FilterCommand;
 import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
 import seedu.hdbuy.data.CommandKey;
+import seedu.hdbuy.data.exception.InvalidParameterException;
+import seedu.hdbuy.ui.TextUi;
+
+import java.util.Arrays;
 
 public class Parser {
     private static final String HELP = "help";
@@ -16,36 +20,45 @@ public class Parser {
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
-        CommandKey keyCommand = extractInfo(fullLine);
-        switch (keyCommand.getCommand()) {
-        case HELP:
-            command = new HelpCommand();
-            break;
-        case FILTER:
-            String criteria = keyCommand.getCriteria();
-            String value = keyCommand.getValue();
-            command = new FilterCommand(criteria, value);
-            break;
-        case FIND:
-            command = new FindCommand();
-            break;
-        case EXIT:
-            command = new CloseCommand();
-            break;
-        default:
-            break;
+        try{
+            CommandKey keyCommand = extractInfo(fullLine);
+            switch (keyCommand.getCommand()) {
+            case HELP:
+                command = new HelpCommand();
+                break;
+            case FILTER:
+                String criteria = keyCommand.getCriteria();
+                String value = keyCommand.getValue();
+                command = new FilterCommand(criteria, value);
+                break;
+            case FIND:
+                command = new FindCommand();
+                break;
+            case EXIT:
+                command = new CloseCommand();
+                break;
+            default:
+                break;
+            }
+        } catch (InvalidParameterException e){
+            TextUi.showInvalidParameter();
+        } finally {
+            return command;
         }
-        return command;
     }
 
-    public static CommandKey extractInfo(String fullLine) {
+    public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
         String[] lineParts;
         lineParts = fullLine.split(" ");
         String keyCommand = lineParts[0];
         if (keyCommand.equals(FILTER)) {
-            String criteria = lineParts[1];
-            String value = lineParts[2];
-            return new CommandKey(criteria, value, keyCommand);
+            if(lineParts.length < 3){
+                throw new InvalidParameterException();
+            } else {
+                String criteria = lineParts[1];
+                String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
+                return new CommandKey(criteria, value, keyCommand);
+            }
         }
         return new CommandKey(keyCommand);
     }

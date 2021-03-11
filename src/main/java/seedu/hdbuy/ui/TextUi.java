@@ -48,4 +48,8 @@ public class TextUi {
     public static void showInvalidFilter(String criteria) {
         System.out.print("\"" + criteria + "\" is not a valid filter.\n");
     }
+
+    public static void showInvalidParameter() {
+        System.out.println("You must enter at least 1 more parameter.");
+    }
 }

@@ -8,6 +8,7 @@ import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.command.Command;
 import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.data.Unit;
+import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
