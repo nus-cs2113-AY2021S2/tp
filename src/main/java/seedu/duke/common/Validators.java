@@ -20,7 +20,7 @@ public class Validators {
             CommandException {
         double amount = Double.parseDouble(inputToCheck);
         if (amount <= 0) {
-            throw new CommandException("amount must be greater than 0");
+            throw new CommandException("amount must be greater than 0.");
         }
         return amount;
     }

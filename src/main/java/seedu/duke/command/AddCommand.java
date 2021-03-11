@@ -53,7 +53,7 @@ public class AddCommand extends Command {
             amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
             issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
         } catch (NumberFormatException e) {
-            throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
+            throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
         } catch (CommandException e) {
             throw new CommandException(e.getMessage() , COMMAND_ADD);
         }
