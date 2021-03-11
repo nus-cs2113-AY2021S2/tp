@@ -1,4 +1,4 @@
-package nurseschedule;
+package nurseschedules.nurseschedule;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,16 +1,16 @@
-package seedu.duke;
+package nurseschedules;
 
-import nurseschedule.NurseScheduleStorage;
-import parser.Parser;
-import nurseschedule.NurseSchedule;
-import nurseschedule.NurseScheduleActions;
+import nurseschedules.nurseschedule.NurseScheduleStorage;
+import nurseschedules.parser.Parser;
+import nurseschedules.nurseschedule.NurseSchedule;
+import nurseschedules.nurseschedule.NurseScheduleActions;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Duke {
+public class NurseScheduleInstance {
 
     private Parser parser;
     private NurseScheduleActions actions;
@@ -22,7 +22,7 @@ public class Duke {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        new Duke().run();
+        new NurseScheduleInstance().run();
     }
 
     public void run() {
