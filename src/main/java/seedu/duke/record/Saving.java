@@ -8,6 +8,6 @@ public class Saving extends Record {
     @Override
     public String toString() {
         //temporary placeholder. output format to be discussed.
-        return "Savings description for printing";
+        return "List savings!";
     }
 }

@@ -17,6 +17,6 @@ public class Expense extends Record {
     @Override
     public String toString() {
         //temporary placeholder. output format to be discussed.
-        return "Expense description for printing";
+        return "List expenses!";
     }
 }

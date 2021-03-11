@@ -22,6 +22,6 @@ public class Loan extends Record {
     @Override
     public String toString() {
         //temporary placeholder. output format to be discussed.
-        return "Loan description for printing";
+        return "List loans!";
     }
 }
