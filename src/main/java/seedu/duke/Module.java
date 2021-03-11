@@ -10,9 +10,11 @@ public class Module {
         this.description = description;
         this.review = review;
     }
+
     public String getName() {
         return this.name;
     }
+
     public String getDescription() {
         return this.description;
     }
