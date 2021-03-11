@@ -4,6 +4,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import seedu.duke.exception.CommandException;
 
 public class Validators {
 
@@ -54,7 +55,12 @@ public class Validators {
 
     }
 
-    public static double validateAmount(String inputToCheck) throws NumberFormatException {
-        return Double.parseDouble(inputToCheck);
+    public static double validateAmount(String inputToCheck) throws NumberFormatException,
+            CommandException {
+        double amount = Double.parseDouble(inputToCheck);
+        if (amount <= 0) {
+            throw new CommandException("amount must be greater than 0.");
+        }
+        return amount;
     }
 }
