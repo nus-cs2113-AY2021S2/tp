@@ -25,7 +25,7 @@ public class CommandList {
      * List reviews according to different types of input
      *
      * @param input is the listing method preferred by user. If there is no preferred listing method, default listing
-     *             will be used.
+     *              will be used.
      */
     public static void listReviews(String input) {
         if (reviews.size() == 0) {
@@ -71,50 +71,50 @@ public class CommandList {
                 System.out.println(currentReview.getDate());
             }
         }
-            /**
-             * Print text to help user with using the application
-             */
-            public static void printHelp () {
-                Ui.printHelpMessage();
-            }
-
-            /**
-             * Delete review
-             */
-            public static void deleteReview (String title){
-                int reviewIndex = Review.getReviewIndex(title);
-                if (reviewIndex == -1) {
-                    System.out.println("Review does not exists!");
-                } else {
-                    reviews.remove(reviewIndex);
-                    System.out.println(title + " deleted.");
-                }
-            }
+        /**
+         * Print text to help user with using the application
+         */
+        public static void printHelp () {
+            Ui.printHelpMessage();
         }
 
-        public static void sortReview (String sortType){
-            if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date")) {
-                Sort.sort(sortType);
-                System.out.print("Success! Your preferred sorting method has been saved: ");
-                System.out.println(sortType.toUpperCase());
+        /**
+         * Delete review
+         */
+        public static void deleteReview (String title){
+            int reviewIndex = Review.getReviewIndex(title);
+            if (reviewIndex == -1) {
+                System.out.println("Review does not exists!");
             } else {
-                System.out.println(sortType + " is not valid sorting method, please try again.");
+                reviews.remove(reviewIndex);
+                System.out.println(title + " deleted.");
             }
         }
-
-        public static void addReview (String input){
-            try {
-                String review[] = input.split(" ", 5);
-                Review r = new Review(review[0], review[1], review[2], review[3], review[4]);
-                reviews.add(r);
-                System.out.println(review[0] + " created.");
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("Invalid input review, please try again.");
-            }
-        }
-
-        public static void exit () {
-            Ui.printExitMessage();
-        }
-
     }
+
+    public static void sortReview(String sortType) {
+        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date")) {
+            Sort.sort(sortType);
+            System.out.print("Success! Your preferred sorting method has been saved: ");
+            System.out.println(sortType.toUpperCase());
+        } else {
+            System.out.println(sortType + " is not valid sorting method, please try again.");
+        }
+    }
+
+    public static void addReview(String input) {
+        try {
+            String review[] = input.split(" ", 5);
+            Review r = new Review(review[0], review[1], review[2], review[3], review[4]);
+            reviews.add(r);
+            System.out.println(review[0] + " created.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid input review, please try again.");
+        }
+    }
+
+    public static void exit() {
+        Ui.printExitMessage();
+    }
+
+}
