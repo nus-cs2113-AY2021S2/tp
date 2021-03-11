@@ -4,22 +4,20 @@ import ManagerClasses.UIManager;
 
 import java.util.Scanner;
 
-
 public class NUSMaze {
     public static void main(String[] args) {
         UIManager.showLogo();
         UIManager.showGreetMessage();
-
         Scanner in = new Scanner(System.in);
-        while (true){
-            String input = in.nextLine();
-            if (input.equals("go")){
+        String input = in.nextLine();
+        while (true) {
+            if (input.equals("go")) {
                 System.out.println("STARTING BLOCK:");
-                String from = in.nextLine();
+                String from = in.nextLine().toUpperCase();
                 System.out.println("DESTINATION BLOCK:");
-                String to = in.nextLine();
-                Routing map = new Routing();
-                map.printShortestDistance(from,to);
+                String to = in.nextLine().toUpperCase();
+                Router router = new Router();
+                router.execute(from,to);
                 System.out.println("");
             }
             else if (input.equals("bye")){
@@ -28,12 +26,4 @@ public class NUSMaze {
             }
         }
     }
-
-
-
-
-
-
-
-
 }
