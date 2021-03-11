@@ -1,6 +1,6 @@
 package seedu.duke;
 
-public class NusMaze {
+public class Duke {
     public static void main(String[] args) {
         UiManager.showLogo();
         UiManager.showGreetMessage();
