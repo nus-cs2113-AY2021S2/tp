@@ -14,7 +14,7 @@ public class Router {
     }
 
 
-    public void execute(Record history) {
+    public void execute() {
         Scanner in = new Scanner(System.in);
         System.out.println("STARTING BLOCK:");
         String from = in.nextLine();
@@ -22,8 +22,6 @@ public class Router {
         String to = in.nextLine();
         try {
             System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
-            String record = "START: " + from.toUpperCase() + "; DESTINATION: " + to.toUpperCase();
-            history.addRecord(record);
         }catch(NullPointerException e){
             System.out.println("Invalid block! Please enter the 'go' command to retry!");
         }
