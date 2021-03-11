@@ -240,4 +240,38 @@ public class Ui {
     public static void printListIsEmpty() {
         System.out.println("No links have been added... Please add one!");
     }
+
+    public static void printModuleNameToModifyPrompt() {
+        System.out.println("What module would you like to modify? [moduleName e.g. CS2113T]");
+    }
+
+    public static void printModuleExistMessage() {
+        System.out.println("Module exist! ");
+        System.out.println("Here is a description of the module you have added previously");
+        System.out.println();
+    }
+
+    public static void printModuleDoesNotExistMessage() {
+        System.out.println("This module does not exist, would you like to add it? [Y/N]");
+    }
+
+    public static void printReturnToMainMenuMessage() {
+        System.out.println("Returning to main menu...");
+        System.out.println();
+    }
+
+    public static void printReturnToModuleInfoMenuMessage() {
+        System.out.println("Returning to module information menu...");
+        System.out.println();
+    }
+
+    public static void printModuleDescriptionPrompt(String moduleName) {
+        System.out.println("Key in the module description for " + moduleName + ":");
+    }
+
+    public static void printModuleDescriptionAddedMessage(String moduleName,
+                                                          String moduleDescription) {
+        System.out.println("Module description for " + moduleName + " added: ");
+        System.out.println(moduleDescription);
+    }
 }
