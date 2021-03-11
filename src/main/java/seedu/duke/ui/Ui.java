@@ -18,7 +18,7 @@ public class Ui {
             + "||    $$      $$$$$$  $$    $$   $$$$$$    $$    $$    ||\n"
             + "=========================================================\n";
 
-    private static final String DIVIDER = "=========================================================";
+    protected static final String DIVIDER = "=========================================================";
     private static final String MESSAGE_GREETING = "";
     private static final String MESSAGE_GOODBYE = "HUAT AH!";
     private static final String MESSAGE_LOADING = "Loading from save... ";
