@@ -3,11 +3,7 @@ package seedu.duke.command;
 import seedu.duke.common.ArgumentType;
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
-import seedu.duke.record.Expense;
-import seedu.duke.record.Loan;
-import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
-import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -51,51 +47,15 @@ public class ViewCommand extends Command {
     public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            // records.viewExpenses(ui);
-            viewTotalAmountExpense(recordList);
+            ui.viewTotalAmountExpense();
             break;
         case LOAN:
-            // records.viewLoans(ui);
-            viewTotalAmountLoan(recordList);
+            ui.viewTotalAmountLoan();
             break;
         case SAVING:
             // Fallthrough
         default:
-            // records.viewSavings(ui);
-            viewTotalAmountSaving(recordList);
+            ui.viewTotalAmountSaving();
         }
-    }
-
-    public void viewTotalAmountExpense (RecordList recordList) {
-        double totalAmount = 0;
-        for (int i = 0; i < recordList.getRecordCount(); i++) {
-            Record currentRecord = recordList.getRecordAt(i);
-            if (currentRecord instanceof Expense) {
-                totalAmount = totalAmount + currentRecord.getAmount();
-            }
-        }
-        System.out.println("The total amount for expense is " + totalAmount);
-    }
-
-    public void viewTotalAmountLoan (RecordList recordList) {
-        double totalAmount = 0;
-        for (int i = 0; i < recordList.getRecordCount(); i++) {
-            Record currentRecord = recordList.getRecordAt(i);
-            if (currentRecord instanceof Loan) {
-                totalAmount = totalAmount + currentRecord.getAmount();
-            }
-        }
-        System.out.println("The total amount for loan is " + totalAmount);
-    }
-
-    public void viewTotalAmountSaving (RecordList recordList) {
-        double totalAmount = 0;
-        for (int i = 0; i < recordList.getRecordCount(); i++) {
-            Record currentRecord = recordList.getRecordAt(i);
-            if (currentRecord instanceof Saving) {
-                totalAmount = totalAmount + currentRecord.getAmount();
-            }
-        }
-        System.out.println("The total amount for saving is " + totalAmount);
     }
 }
