@@ -44,7 +44,7 @@ class RetrieveCommandTest {
             System.out.println("An error occurred while running tests");
         }
 
-        // Bind stdout to a ByteArrayOutputStream
+        // Bind System.out to a ByteArrayOutputStream
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
@@ -57,7 +57,7 @@ class RetrieveCommandTest {
         }
         assertEquals("coughing" + System.lineSeparator(), bos.toString());
 
-        // undo the binding in System
+        // Bind System.out back to standard output
         System.setOut(originalOut);
     }
 }
