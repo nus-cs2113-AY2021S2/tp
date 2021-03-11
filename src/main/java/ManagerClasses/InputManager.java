@@ -1,7 +1,7 @@
 package ManagerClasses;
 
 import seedu.duke.Record;
-import seedu.duke.Routing;
+import seedu.duke.Router;
 
 import java.util.Scanner;
 
@@ -18,12 +18,12 @@ public class InputManager {
         while(true) {
             String input = getUserInput();
             CommandManager commandManager = new CommandManager(input);
-            Routing map = new Routing();
+            Router router = new Router();
             Record history = new Record();
 
             switch (commandManager.getCommandType()) {
             case GoCommand:
-                map.executeRouting();
+                router.executeRouting();
                 // todo: add records
                 break;
             case ShowHistoryCommand:
