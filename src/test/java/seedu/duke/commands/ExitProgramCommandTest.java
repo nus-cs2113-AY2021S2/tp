@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
@@ -20,12 +21,13 @@ class ExitProgramCommandTest {
     void execute_noInput_expectMessageExit() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
-        ModuleList modules = new ModuleList();
-        modules.addModule("CS2105");
-        modules.addModule("CS2106");
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2105");
+        ModuleList.addModule("CS2106");
 
         Command command = new ExitProgramCommand();
-        command.execute(modules, new UI());
+        command.execute(new UI());
 
         String output = Messages.MESSAGE_EXIT;
         assertEquals(output + System.lineSeparator(), outContent.toString());

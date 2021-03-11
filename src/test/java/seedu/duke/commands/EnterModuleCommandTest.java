@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
@@ -19,17 +20,17 @@ class EnterModuleCommandTest {
     void execute_validModuleCodeInput_expectSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
-        ModuleList modules = new ModuleList();
-        modules.addModule("CS2113T");
-        modules.addModule("CS2102");
-        modules.addModule("CS2106");
-        modules.addModule("CS2105");
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.addModule("CS2102");
+        ModuleList.addModule("CS2106");
+        ModuleList.addModule("CS2105");
 
         Command command = new EnterModuleCommand("CS2106");
-        command.execute(modules, new UI());
+        command.execute(new UI());
 
-        String output = String.format(EnterModuleCommand.MESSAGE_INFO, "CS2106") + System.lineSeparator();
-        output += EnterModuleCommand.MESSAGE_OVERVIEW;
+        String output = EnterModuleCommand.MESSAGE_OVERVIEW;
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
         System.setOut(originalOut);
@@ -39,15 +40,16 @@ class EnterModuleCommandTest {
     void execute_invalidModuleCodeInput_expectException() {
         System.setOut(new PrintStream(outContent));
 
-        ModuleList modules = new ModuleList();
-        modules.addModule("CS2113T");
-        modules.addModule("CS2102");
-        modules.addModule("CS2106");
-        modules.addModule("CS2105");
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.addModule("CS2102");
+        ModuleList.addModule("CS2106");
+        ModuleList.addModule("CS2105");
 
         Command command = new EnterModuleCommand("CS3235");
 
-        assertThrows(CommandException.class, () -> command.execute(modules, new UI()));
+        assertThrows(CommandException.class, () -> command.execute(new UI()));
 
         System.setOut(originalOut);
     }

@@ -51,11 +51,11 @@ public class LessonCommandTest {
         return newLesson;
     }
 
-    public static void addLessonsToList(ModuleList moduleList, UI ui) {
+    public static void addLessonsToList(UI ui) {
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
         try {
-            command.execute(moduleList, ui);
+            command.execute(ui);
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
@@ -63,7 +63,7 @@ public class LessonCommandTest {
         newLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL1, LessonType.LAB, TIME1, ONLINE_LINK1);
         command = new AddLessonCommand(newLesson);
         try {
-            command.execute(moduleList, ui);
+            command.execute(ui);
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }

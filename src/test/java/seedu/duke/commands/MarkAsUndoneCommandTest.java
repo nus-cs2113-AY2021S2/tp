@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 import static seedu.duke.commands.CommandTestUtil.initialiseTaskList;
 
 class MarkAsUndoneCommandTest {
@@ -31,14 +31,17 @@ class MarkAsUndoneCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        ModuleList modules = initialiseModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.setSelectedModule("CS2113T");
 
-        ArrayList<Task> taskList = initialiseTaskList(modules.getSelectedModule());
+        ArrayList<Task> taskList = initialiseTaskList(ModuleList.getSelectedModule());
 
         MarkAsUndoneCommand markAsUndoneCommand = new MarkAsUndoneCommand();
 
         try {
-            markAsUndoneCommand.execute(modules, ui);
+            markAsUndoneCommand.execute(ui);
         } catch (CommandException e) {
             System.out.println(MESSAGE_MODULE_ERROR);
         }
@@ -55,9 +58,9 @@ class MarkAsUndoneCommandTest {
         // checks displayed output to user
         assertEquals(output, bos.toString());
 
-        String actualDone = "";
+        StringBuilder actualDone = new StringBuilder();
         for (Task task : taskList) {
-            actualDone += task.getDone() + NEWLINE;
+            actualDone.append(task.getDone()).append(NEWLINE);
         }
         String expectedDone = "false" + NEWLINE
                 + "false" + NEWLINE
@@ -67,7 +70,7 @@ class MarkAsUndoneCommandTest {
                 + "false" + NEWLINE;
 
         // checks if tasks were correctly unmarked in task list
-        assertEquals(expectedDone, actualDone);
+        assertEquals(expectedDone, actualDone.toString());
 
         System.setIn(originalIn);
         System.setOut(originalOut);

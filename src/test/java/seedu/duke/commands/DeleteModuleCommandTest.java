@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.ModuleList;
@@ -23,15 +24,16 @@ class DeleteModuleCommandTest {
         System.setOut(new PrintStream(outContent));
         System.setIn(inContent);
 
-        ModuleList modules = new ModuleList();
-        modules.clearModules();
-        modules.addModule("CS2113T");
-        modules.addModule("CS2101");
-        modules.addModule("CS2105");
-        modules.addModule("CS2106");
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+
+        ModuleList.addModule("CS2113T");
+        ModuleList.addModule("CS2101");
+        ModuleList.addModule("CS2105");
+        ModuleList.addModule("CS2106");
 
         Command command = new DeleteModuleCommand();
-        command.execute(modules, new UI());
+        command.execute(new UI());
 
         StringBuilder sb = new StringBuilder();
         sb.append(DeleteModuleCommand.MESSAGE_PROMPT1);

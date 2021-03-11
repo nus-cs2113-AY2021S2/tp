@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.TestUtil;
 import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -15,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
 import static seedu.duke.commands.CommandTestUtil.NEWLINE;
 import static seedu.duke.commands.CommandTestUtil.formatter;
-import static seedu.duke.commands.CommandTestUtil.initialiseModuleList;
 
 class ListTasksCommandTest {
     private final PrintStream originalOut = System.out;
@@ -44,14 +44,17 @@ class ListTasksCommandTest {
         System.setOut(new PrintStream(bos));
         UI ui = new UI();
 
-        ModuleList modules = initialiseModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+        ModuleList.addModule("CS2113T");
+        ModuleList.setSelectedModule("CS2113T");
 
-        initialiseTaskList(modules.getSelectedModule());
+        initialiseTaskList(ModuleList.getSelectedModule());
 
         ListTasksCommand listTasksCommand = new ListTasksCommand();
 
         try {
-            listTasksCommand.execute(modules, ui);
+            listTasksCommand.execute(ui);
         } catch (CommandException e) {
             System.out.println(MESSAGE_MODULE_ERROR);
         }

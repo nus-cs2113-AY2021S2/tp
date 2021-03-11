@@ -1,7 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.module.Module;
+import seedu.duke.TestUtil;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -18,21 +18,22 @@ class DeleteLessonCommandTest extends LessonCommandTest {
     @Test
     void deleteLessonsFromList_moduleLessonListIndexes_expectPrintsCorrectOutput() {
 
-        ModuleList moduleList = new ModuleList();
+        TestUtil.removeFiles();
+        ModuleList.loadModuleNames();
+
         UI ui = new UI();
 
-        Module module = new Module(MODULE_CODE);
-        String moduleCode = module.getModuleCode();
-        moduleList.selectedModule = module;
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
 
         OutputStream os = getOutputStream();
-        addLessonsToList(moduleList, ui);
+        addLessonsToList(ui);
         ArrayList<Integer> indexes = new ArrayList<>();
         initialisedIndexes(indexes);
         removeOutputStream();
 
         OutputStream newOs = getOutputStream();
-        DeleteLessonCommand.deleteLessonsFromList(module, module.getLessonList(), indexes);
+        DeleteLessonCommand.deleteLessonsFromList(ModuleList.getSelectedModule().getLessonList(), indexes);
         assertEquals(EXPECTED_OUTPUT, newOs.toString());
         removeOutputStream();
     }
