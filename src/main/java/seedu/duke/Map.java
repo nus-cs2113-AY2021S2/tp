@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Map {
     HashMap<String, Location> map;
+
     public Map() {
         this.map = new HashMap<>();
     }

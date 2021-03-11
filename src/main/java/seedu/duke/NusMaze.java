@@ -1,12 +1,9 @@
 package seedu.duke;
 
-import ManagerClasses.InputManager;
-import ManagerClasses.UIManager;
-
-public class NUSMaze {
+public class NusMaze {
     public static void main(String[] args) {
-        UIManager.showLogo();
-        UIManager.showGreetMessage();
+        UiManager.showLogo();
+        UiManager.showGreetMessage();
 
         InputManager inputManager = new InputManager();
         inputManager.inputLoop();

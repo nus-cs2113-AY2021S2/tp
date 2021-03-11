@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Router {
     private Map nusMap = new Map();
 
-    public Router(){
+    public Router() {
         setMap();
         setNeighbours();
     }
@@ -84,7 +84,7 @@ public class Router {
         Block destination = nusMap.getLocation(to).getBlock();
         HashMap<Block, Block> predecessor = new HashMap<>();
 
-        if (!BFS(nusMap, predecessor, start, destination)) {
+        if (!bfs(nusMap, predecessor, start, destination)) {
             System.out.println("Given source and destination are not connected");
             return;
         } else {
@@ -107,7 +107,7 @@ public class Router {
         }
     }
 
-    public static boolean BFS(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
+    public static boolean bfs(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
         LinkedList<Block> queue = new LinkedList<>();
         queue.add(start);
         start.setAsVisited();
@@ -126,16 +126,5 @@ public class Router {
             }
         }
         return false;
-    }
-
-    public void executeRouting() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("STARTING BLOCK:");
-        String from = in.nextLine().toUpperCase();
-        System.out.println("DESTINATION BLOCK:");
-        String to = in.nextLine().toUpperCase();
-        Router router = new Router();
-        router.execute(from,to);
-        System.out.println("");
     }
 }
