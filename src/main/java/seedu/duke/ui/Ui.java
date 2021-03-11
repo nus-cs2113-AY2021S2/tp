@@ -23,6 +23,10 @@ public class Ui {
     private static final String MESSAGE_GOODBYE = "HUAT AH!";
     private static final String MESSAGE_LOADING = "Loading from save... ";
     private static final String MESSAGE_SUCCESSFULLY_ADDED = "Record has been added...";
+    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
+    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
+    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
+
 
     /**
      * Decorative prefix for the FINUX Interface.
@@ -113,6 +117,45 @@ public class Ui {
                 System.out.println(currentRecord);
             }
         }
+        System.out.println(DIVIDER);
+    }
+
+    public void viewTotalAmountExpense() {
+        System.out.println(DIVIDER);
+        double totalAmount = 0;
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Expense) {
+                totalAmount = totalAmount + currentRecord.getAmount();
+            }
+        }
+        System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount);
+        System.out.println(DIVIDER);
+    }
+
+    public void viewTotalAmountLoan() {
+        System.out.println(DIVIDER);
+        double totalAmount = 0;
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Loan) {
+                totalAmount = totalAmount + currentRecord.getAmount();
+            }
+        }
+        System.out.println(MESSAGE_TOTAL_LOAN + totalAmount);
+        System.out.println(DIVIDER);
+    }
+
+    public void viewTotalAmountSaving() {
+        System.out.println(DIVIDER);
+        double totalAmount = 0;
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Saving) {
+                totalAmount = totalAmount + currentRecord.getAmount();
+            }
+        }
+        System.out.println(MESSAGE_TOTAL_SAVING + totalAmount);
         System.out.println(DIVIDER);
     }
 }
