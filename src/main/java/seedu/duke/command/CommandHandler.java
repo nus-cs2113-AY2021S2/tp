@@ -4,6 +4,7 @@ import seedu.duke.exception.CommandException;
 
 import static seedu.duke.command.ListCommand.COMMAND_LIST;
 import static seedu.duke.command.AddCommand.COMMAND_ADD;
+import static seedu.duke.command.ReturnCommand.COMMAND_RETURN;
 import static seedu.duke.command.RemoveCommand.COMMAND_REMOVE;
 import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
@@ -23,6 +24,8 @@ public class CommandHandler {
             return new ListCommand(parsedArguments);
         case COMMAND_ADD:
             return new AddCommand(parsedArguments);
+        case COMMAND_RETURN:
+            return new ReturnCommand(parsedArguments);
         case COMMAND_REMOVE:
             return new RemoveCommand(parsedArguments);
         case COMMAND_VIEW:
