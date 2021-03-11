@@ -23,8 +23,7 @@ public class InputManager {
 
             switch (commandManager.getCommandType()) {
             case GoCommand:
-                map.execute();
-                // todo: add records
+                map.execute(history);
                 break;
             case ShowHistoryCommand:
                 history.displayRecords();
