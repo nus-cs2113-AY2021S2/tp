@@ -47,15 +47,15 @@ public class ListCommand extends Command {
     public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            ui.printExpenses();
+            ui.printExpenses(recordList);
             break;
         case LOAN:
-            ui.printLoans();
+            ui.printLoans(recordList);
             break;
         case SAVING:
             // Fallthrough
         default:
-            ui.printSavings();
+            ui.printSavings(recordList);
         }
     }
 }

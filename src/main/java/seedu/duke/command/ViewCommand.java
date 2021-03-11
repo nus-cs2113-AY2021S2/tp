@@ -47,15 +47,15 @@ public class ViewCommand extends Command {
     public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            ui.viewTotalAmountExpense();
+            ui.printTotalAmountExpense(recordList);
             break;
         case LOAN:
-            ui.viewTotalAmountLoan();
+            ui.printTotalAmountLoan(recordList);
             break;
         case SAVING:
             // Fallthrough
         default:
-            ui.viewTotalAmountSaving();
+            ui.printTotalAmountSaving(recordList);
         }
     }
 }
