@@ -14,6 +14,7 @@ import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.common.Constant.OPTION_INDEX;
+import static seedu.duke.common.Validators.validateIndex;
 
 public class RemoveCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
@@ -23,7 +24,8 @@ public class RemoveCommand extends Command {
     };
     protected static final String COMMAND_REMOVE = "remove";
 
-    private String recordNumber;
+    private String recordNumberStr;
+    private int recordNumberInt;
 
     public RemoveCommand(ArrayList<String> arguments) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_REMOVE, OPTION_INDEX);
@@ -31,9 +33,16 @@ public class RemoveCommand extends Command {
         validateArguments(arguments, argumentTypeOrder, COMMAND_REMOVE);
 
         if (hasOption(arguments, OPTION_INDEX)) {
-            recordNumber = getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
+            recordNumberStr = getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
         } else {
             throw new CommandException("missing option: -i", COMMAND_REMOVE);
+        }
+
+        try {
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX));
+        } catch (NumberFormatException e) {
+            throw new CommandException("Index \"" + recordNumberStr
+                    + "\" is not an integer!", COMMAND_REMOVE);
         }
     }
 
@@ -48,12 +57,16 @@ public class RemoveCommand extends Command {
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInt = Integer.parseInt(recordNumber);
         int recordNumberInList = recordNumberInt - 1;
-        // Object description is used here, may need to be replaced with the full record entry once
-        // list structure is finalized
-        String recordName = records.getRecordAt(recordNumberInList).getDescription();
-        ui.printMessage("Record to remove: " + recordName);
-        records.deleteRecordAt(recordNumberInList);
+        try {
+            // Object description is used here, may need to be replaced with the full record entry once
+            // list structure is finalized
+            String recordName = records.getRecordAt(recordNumberInList).getDescription();
+            ui.printMessage("Record to remove: " + recordName);
+            records.deleteRecordAt(recordNumberInt);
+        } catch (IndexOutOfBoundsException e) {
+            ui.printMessage(COMMAND_REMOVE + " Command - " + "\""
+                    + recordNumberStr + "\" is out of bounds!");
+        }
     }
 }
