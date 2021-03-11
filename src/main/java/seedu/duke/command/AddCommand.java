@@ -20,7 +20,6 @@ import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
@@ -50,15 +49,14 @@ public class AddCommand extends Command {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
 
-        String amountInString = getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT);
-        String dateInString = getOptionValue(arguments, COMMAND_ADD, OPTION_DATE);
-        if (!validateAmount(amountInString)) {
+        try {
+            amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
+            issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+        } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
-        } else if (validateDate(dateInString)) {
-            throw new CommandException("date format error", COMMAND_ADD);
+        } catch (CommandException e) {
+            throw new CommandException("date error format", COMMAND_ADD);
         }
-        amount = Double.parseDouble(amountInString);
-        issueDate = dateInString;
     }
 
 
@@ -67,7 +65,10 @@ public class AddCommand extends Command {
     public void execute(RecordList records, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            records.addRecord(new Expense(amount, issueDate, description), ui, storage);
+            Expense expenseObj = new Expense(amount, issueDate, description);
+            records.addRecord(expenseObj);
+            storage.saveRecordListData(records);
+            ui.printSuccessfulAdd(expenseObj);
             break;
         case LOAN:
             //records.addRecord(records, ui, storage);
