@@ -1,6 +1,8 @@
+package seedu.duke;
+
 import java.util.Scanner;
 
-public class Diliveri {
+public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -18,3 +20,4 @@ public class Diliveri {
 
     }
 }
+// Am I doing this right?
