@@ -4,8 +4,8 @@ import seedu.duke.exception.CommandException;
 
 public class Validators {
 
-    public static void validateIndex() {
-
+    public static int validateIndex(String inputToCheck) throws NumberFormatException {
+        return Integer.parseInt(inputToCheck);
     }
 
     public static String validateDate(String inputToCheck) throws CommandException {
