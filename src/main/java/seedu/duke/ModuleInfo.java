@@ -10,10 +10,10 @@ public class ModuleInfo {
     public static ArrayList<Module> modules = new ArrayList<>();
 
     public static void moduleInfoMenu() {
-        Scanner input = new Scanner(System.in);
+
         while (true) {
             Ui.printModuleInfoMessage();
-            String command = input.nextLine();
+            String command = Ui.readCommand();
             try {
                 int taskNumber = Integer.parseInt(command);
                 if (taskNumber == 9) {
@@ -62,13 +62,13 @@ public class ModuleInfo {
     }
 
     private static void deleteModule() {
-        System.out.println("Enter the module number to be deleted:");
-        Scanner input = new Scanner(System.in);
+        Ui.printSelectModuleToDeleteMessage();
+        String moduleNumberString = Ui.readCommand();
         try {
-            String moduleNumberString = input.nextLine();
             int moduleNumberInteger = Integer.parseInt(moduleNumberString);
+            Ui.printDeletedModuleMessage(modules.get(moduleNumberInteger));
             modules.remove(modules.get(moduleNumberInteger));
-        } catch (NumberFormatException n) {
+        } catch (NumberFormatException | IndexOutOfBoundsException n) {
             Ui.printInvalidIntegerMessage();
         }
     }

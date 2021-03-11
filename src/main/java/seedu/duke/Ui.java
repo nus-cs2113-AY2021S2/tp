@@ -35,20 +35,20 @@ public class Ui {
 
     public static void printLinksMessage() {
         System.out.println("Welcome to the links menu ^~^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- External links menu\n"
-            + "[2] --- View Zoom links\n"
-            + "[3] --- Exit to main menu\n"
-            + "Press enter to return back to the main menu");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- External links menu\n"
+                + "[2] --- View Zoom links\n"
+                + "[3] --- Exit to main menu\n"
+                + "Press enter to return back to the main menu");
     }
 
     public static void printLinkToDelete() {
         System.out
-            .println("Please choose which link you would like to delete and enter the number\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- External links menu\n"
-                + "[3] --- View Zoom links\n"
-                + "[4] --- Exit to main menu\n");
+                .println("Please choose which link you would like to delete and enter the number\n"
+                        + "Please choose which action you would like to do and enter the number:\n"
+                        + "[1] --- External links menu\n"
+                        + "[3] --- View Zoom links\n"
+                        + "[4] --- Exit to main menu\n");
     }
 
     public static void printModuleInfoMessage() {
@@ -143,6 +143,20 @@ public class Ui {
         printHorizontalLine();
     }
 
+    public static void printDeletedModuleMessage(Module module) {
+        System.out.println("You've deleted this: " + module.getName());
+        System.out.println("NOTE: You are deleting your review\n"
+                + module.getReview() + "\n"
+                + "NOTE: You are deleting your module description\n"
+                + module.getDescription());
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+
+    public static void printSelectModuleToDeleteMessage() {
+        System.out.println("Enter the module number to be deleted:");
+    }
+
     public static void printSelectTaskNumberToDeleteMessage() {
         System.out.println("\nWhat is the number of the task you want to delete?");
     }
@@ -187,21 +201,21 @@ public class Ui {
 
     public static void printExternalLinksMessage() {
         System.out.println("Welcome to the external links menu!\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- add link\n"
-            + "[2] --- remove link\n"
-            + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n"
-            + "Press enter to return back to the main menu");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- add link\n"
+                + "[2] --- remove link\n"
+                + "[3] --- view links\n"
+                + "[4] --- exit to links menu\n"
+                + "Press enter to return back to the main menu");
     }
 
     public static void printNextLinkMessage() {
         System.out.println("What would you like to do next?\n"
-            + "[1] --- add link\n"
-            + "[2] --- remove link\n"
-            + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n"
-            + "Press enter to return back to the main menu");
+                + "[1] --- add link\n"
+                + "[2] --- remove link\n"
+                + "[3] --- view links\n"
+                + "[4] --- exit to links menu\n"
+                + "Press enter to return back to the main menu");
     }
 
     public static void printAddLinkMessage(String description) {
@@ -214,7 +228,7 @@ public class Ui {
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link\n"
-            + "Please enter a valid one!");
+                + "Please enter a valid one!");
     }
 
     public static void printListIsEmpty() {
