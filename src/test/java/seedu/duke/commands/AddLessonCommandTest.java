@@ -17,7 +17,7 @@ class AddLessonCommandTest extends LessonCommandTest {
     public static final String EXPECTED_OUTPUT = "Added tutorial." + System.lineSeparator();
 
     @Test
-    void execute_moduleListUi_expectPrintsCorrectOutput() {
+    void execute_ui_expectPrintsCorrectOutput() {
         TestUtil.removeFiles();
         ModuleList.loadModuleNames();
 
@@ -26,8 +26,8 @@ class AddLessonCommandTest extends LessonCommandTest {
         ModuleList.setSelectedModule(MODULE_CODE);
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
-        OutputStream os = getOutputStream();
 
+        OutputStream os = getOutputStream();
         try {
             command.execute(ui);
         } catch (CommandException e) {
