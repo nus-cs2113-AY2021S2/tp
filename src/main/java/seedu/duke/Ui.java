@@ -142,6 +142,18 @@ public class Ui {
         System.out.println("Returning back to ModuleInfo menu now!");
         printHorizontalLine();
     }
+    public static void printDeletedModuleMessage(Module module) {
+        System.out.println("You've deleted this: " + module.getName());
+        System.out.println("NOTE: You are deleting your review\n"
+                + module.getReview() + "\n"
+                + "NOTE: You are deleting your module description\n"
+                + module.getDescription());
+        System.out.println("Returning back to ModuleInfo menu now!");
+        printHorizontalLine();
+    }
+    public static void printSelectModuleToDeleteMessage() {
+        System.out.println("Enter the module number to be deleted:");
+    }
 
     public static void printSelectTaskNumberToDeleteMessage() {
         System.out.println("\nWhat is the number of the task you want to delete?");
