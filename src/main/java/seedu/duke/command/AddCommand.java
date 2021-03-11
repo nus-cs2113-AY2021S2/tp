@@ -55,7 +55,7 @@ public class AddCommand extends Command {
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value", COMMAND_ADD);
         } catch (CommandException e) {
-            throw new CommandException("date error format", COMMAND_ADD);
+            throw new CommandException(e.getMessage() , COMMAND_ADD);
         }
     }
 
