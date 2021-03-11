@@ -45,7 +45,7 @@ class RetrieveCommandTest {
         }
 
         // Bind stdout to a ByteArrayOutputStream
-        PrintStream originalOut = System.out;
+        final PrintStream originalOut = System.out;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
