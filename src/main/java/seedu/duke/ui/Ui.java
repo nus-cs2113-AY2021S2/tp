@@ -43,12 +43,12 @@ public class Ui {
         this.input = new Scanner(in);
     }
 
-    public static void printSuccessfulAdd(Record recordToAdd) {
+    public void printSuccessfulAdd(Record recordAdded) {
         System.out.println(DIVIDER);
         System.out.println();
         System.out.println(MESSAGE_SUCCESSFULLY_ADDED);
-        System.out.println("\n" + recordToAdd.getDescription() + " " + recordToAdd.getAmount()
-                + " " + recordToAdd.getIssueDate());
+        System.out.println("\n" + recordAdded.getDescription() + " " + recordAdded.getAmount()
+                + " " + recordAdded.getIssueDate());
         System.out.println();
         System.out.println(DIVIDER);
     }
