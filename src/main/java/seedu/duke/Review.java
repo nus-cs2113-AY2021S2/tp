@@ -70,7 +70,7 @@ public class Review {
         String starRating = "";
         for (int i = 0; i < NO_OF_STARS; i++) {
             if (rating > 0) {
-                starRating.concat("\uD83D\uDFCA");
+                starRating.concat("★");
             } else {
                 starRating.concat("✰");
             }
