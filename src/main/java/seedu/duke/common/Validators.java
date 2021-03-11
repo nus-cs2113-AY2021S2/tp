@@ -1,6 +1,6 @@
 package seedu.duke.common;
 
-import org.apache.commons.lang3.StringUtils;
+import seedu.duke.exception.CommandException;
 
 public class Validators {
 
@@ -8,15 +8,15 @@ public class Validators {
 
     }
 
-    public static boolean validateDate(String inputToCheck) {
+    public static String validateDate(String inputToCheck) throws CommandException {
         if (inputToCheck.contains("dummy")) {
-            return true;
+            throw new CommandException("");
         } else {
-            return false;
+            return inputToCheck;
         }
     }
 
-    public static boolean validateAmount(String inputToCheck) {
-        return StringUtils.isNumeric(inputToCheck);
+    public static double validateAmount(String inputToCheck) throws NumberFormatException {
+        return Double.parseDouble(inputToCheck);
     }
 }
