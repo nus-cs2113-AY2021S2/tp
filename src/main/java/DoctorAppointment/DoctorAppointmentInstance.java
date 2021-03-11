@@ -1,11 +1,11 @@
-package seedu.duke;
+package DoctorAppointment;
 
 
 import DoctorAppointment.AppointmentActions;
 
 import java.util.Scanner;
 
-public class Duke {
+public class DoctorAppointmentInstance {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
