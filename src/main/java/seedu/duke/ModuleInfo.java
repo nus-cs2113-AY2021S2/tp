@@ -1,7 +1,6 @@
 package seedu.duke;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ModuleInfo {
     public ModuleInfo() {
@@ -65,12 +64,17 @@ public class ModuleInfo {
         Ui.printSelectModuleToDeleteMessage();
         String moduleNumberString = Ui.readCommand();
         try {
-            int moduleNumberInteger = Integer.parseInt(moduleNumberString);
-            Ui.printDeletedModuleMessage(modules.get(moduleNumberInteger));
-            modules.remove(modules.get(moduleNumberInteger));
+            checkValidModuleToDelete(moduleNumberString);
         } catch (NumberFormatException | IndexOutOfBoundsException n) {
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    public static void checkValidModuleToDelete(String moduleNumberString)
+            throws NumberFormatException, IndexOutOfBoundsException {
+        int moduleNumberInteger = Integer.parseInt(moduleNumberString);
+        Ui.printDeletedModuleMessage(modules.get(moduleNumberInteger));
+        modules.remove(modules.get(moduleNumberInteger));
     }
 
     private static void viewAllReviews() {
