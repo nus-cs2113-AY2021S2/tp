@@ -19,9 +19,7 @@ public class FoodTest {
     @Test
     void testStorageExpiryDate() {
         Food beef = new Food(FoodCategory.MEAT, "beef");
-        beef.setStorageDate("10 March 2021");
         beef.setExpiryDate("15 March 2021");
-        assertEquals("10 March 2021", beef.getStorageDate());
         assertEquals("15 March 2021", beef.getExpiryDate());
     }
 
@@ -45,11 +43,10 @@ public class FoodTest {
 
     @Test
     void testNewFoodAllParameters() {
-        Food eggs = new Food(FoodCategory.EGG, "eggs", "11 March 2021",
+        Food eggs = new Food(FoodCategory.EGG, "eggs",
                 "20 March 2021", FoodStorageLocation.UPPER_SHELF);
         assertEquals(FoodCategory.EGG, eggs.getCategory());
         assertEquals("eggs", eggs.getFoodName());
-        assertEquals("11 March 2021", eggs.getStorageDate());
         assertEquals("20 March 2021", eggs.getExpiryDate());
         assertEquals(FoodStorageLocation.UPPER_SHELF, eggs.getStorageLocation());
     }

@@ -13,7 +13,7 @@ public enum FoodCategory {
     BEVERAGE,       // e.g. coke, orange juice
     COOKED_DISH,    // e.g. tomato scrambled eggs, chicken soup
     READY_TO_EAT,   // e.g. sandwich
-    FROZEN_ONLY,    // e.g. frozen dumpling, ice cream
+    FROZEN,    // e.g. frozen dumpling, ice cream
     OTHER;
 
     public static boolean contains(String string) {
@@ -25,9 +25,10 @@ public enum FoodCategory {
         return false;
     }
 
-    public static FoodCategory convertStringToFoodCategory(String category) {
-        if (FoodCategory.contains(category)) {
-            return FoodCategory.valueOf(category);
+    public static FoodCategory convertStringToFoodCategory(String rawCategoryStr) {
+        String processedCategoryStr = rawCategoryStr.toUpperCase();
+        if (FoodCategory.contains(processedCategoryStr)) {
+            return FoodCategory.valueOf(processedCategoryStr);
         } else {
             return FoodCategory.OTHER;
         }

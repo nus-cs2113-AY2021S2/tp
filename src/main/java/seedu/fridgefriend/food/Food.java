@@ -10,7 +10,6 @@ package seedu.fridgefriend.food;
 public class Food {
     protected FoodCategory category;
     protected String foodName;
-    protected String storageDate;
     protected String expiryDate;
     protected FoodStorageLocation storageLocation;
 
@@ -20,12 +19,17 @@ public class Food {
     }
 
     public Food(FoodCategory category, String foodName,
-                String storageDate, String expiryDate, FoodStorageLocation storageLocation) {
+                String expiryDate, FoodStorageLocation storageLocation) {
         this.category = category;
         this.foodName = foodName;
-        this.storageDate = storageDate;
         this.expiryDate = expiryDate;
         this.storageLocation = storageLocation;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("||Food name: %1$s, category: %2$s, expiry on: %3$s, stored in: %4$s||",
+                foodName, category.name(), expiryDate, storageLocation.name());
     }
 
     public FoodCategory getCategory() {
@@ -42,14 +46,6 @@ public class Food {
 
     public void setFoodName(String foodName) {
         this.foodName = foodName;
-    }
-
-    public String getStorageDate() {
-        return storageDate;
-    }
-
-    public void setStorageDate(String storageDate) {
-        this.storageDate = storageDate;
     }
 
     public String getExpiryDate() {

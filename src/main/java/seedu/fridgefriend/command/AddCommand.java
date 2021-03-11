@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.FoodStorageLocation;
 
 import java.util.List;
 
@@ -10,16 +11,13 @@ import java.util.List;
  */
 public class AddCommand extends Command {
 
-    private static final int FOOD_NAME_INDEX = 0;
-    private static final int FOOD_CATEGORY_INDEX = 1;
+    private final Food foodToAdd;
 
-    private final Food food;
-
-    public AddCommand(String[] foodDescription) {
-        String category = foodDescription[FOOD_CATEGORY_INDEX].trim().toUpperCase();
-        String foodName = foodDescription[FOOD_NAME_INDEX].trim();
-        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(category);
-        this.food = new Food(foodCategory, foodName);
+    public AddCommand(String foodName,
+                      FoodCategory category,
+                      String expiryDate,
+                      FoodStorageLocation location) {
+        this.foodToAdd = new Food(category, foodName, expiryDate, location);
     }
 
     @Override
@@ -29,12 +27,12 @@ public class AddCommand extends Command {
     }
 
     private void addFood(List<Food> fridge) {
-        fridge.add(food);
+        fridge.add(foodToAdd);
     }
 
     private void showResults() {
-        System.out.println("Great! I have added " + food.getFoodName()
-                + " [" + food.getCategory() + "] into your fridge.\n");
+        System.out.println("Great! I have added " + foodToAdd.getFoodName() + " into your fridge.");
+        System.out.println("Details: " + foodToAdd.toString() + "\n");
     }
 
 }
