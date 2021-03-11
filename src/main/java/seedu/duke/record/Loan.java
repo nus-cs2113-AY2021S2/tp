@@ -1,12 +1,14 @@
 package seedu.duke.record;
 
+import java.time.LocalDate;
+
 public class Loan extends Record {
     private boolean isReturn;
     private String dueDate;
     private String returnDate;
     private String recordType;
 
-    public Loan(double amount, String issuedDate, String description) {
+    public Loan(double amount, LocalDate issuedDate, String description) {
         super(amount, issuedDate, description);
         this.isReturn = false;
     }
