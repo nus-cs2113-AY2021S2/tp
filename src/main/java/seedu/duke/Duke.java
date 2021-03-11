@@ -5,15 +5,15 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class dukeDrugs {
+public class Duke {
 
     /**
-     * Main entry-point for the java.duke.dukeDrugs application.
+     * Main entry-point for the java.duke.Duke application.
      */
     protected Storage storage;
     protected DrugActions drugActions;
     protected ArrayList<DrugInstance> drugInstances;
-    public dukeDrugs(String filePath) {
+    public Duke(String filePath) {
         storage = new Storage(filePath);
         try {
             drugInstances = storage.uploadDrugs();
@@ -24,7 +24,7 @@ public class dukeDrugs {
     }
     public static void main(String[] args) {
         String pathOfFile = new File("").getAbsolutePath();
-        dukeDrugs duke = new dukeDrugs(pathOfFile + "/drugInstances.txt");
+        Duke duke = new Duke(pathOfFile + "/drugInstances.txt");
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
