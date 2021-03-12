@@ -1,8 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -15,9 +14,14 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
-import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.formatter;
+import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_TASK;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.common.Constants.NO_STRING;
+import static seedu.duke.common.Constants.YES_STRING;
+import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
+import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
 
 public class AddTaskCommandTest {
     private final InputStream originalIn = System.in;
@@ -26,29 +30,25 @@ public class AddTaskCommandTest {
 
     @Test
     void execute_fullTaskInput_expectSuccess() {
-        String input = "Y" + NEWLINE;
+        String input = YES_STRING + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = "Is this task graded? (Y / N)" + NEWLINE
-                + "Added iP submission.";
+
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
+                + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
         assertEquals(bos.toString(), output + NEWLINE);
@@ -65,30 +65,25 @@ public class AddTaskCommandTest {
 
     @Test
     void execute_taskInputWithNoRemarks_expectSuccess() {
-        String input = "Y" + NEWLINE;
+        String input = YES_STRING + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         // remarks field is empty
         Task task = new Task("iP submission", deadline, "");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = "Is this task graded? (Y / N)" + NEWLINE
-                + "Added iP submission.";
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
+                + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
         assertEquals(output + NEWLINE, bos.toString());
@@ -107,31 +102,26 @@ public class AddTaskCommandTest {
     void execute_taskInputAndInitiallyInvalidIsGradedInputs_expectSuccess() {
         String input = "n" + NEWLINE
                 + "nooooo" + NEWLINE
-                + "N" + NEWLINE;
+                + NO_STRING + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = "Is this task graded? (Y / N)" + NEWLINE
-                + "Please enter \"Y\" or \"N\"" + NEWLINE
-                + "Please enter \"Y\" or \"N\"" + NEWLINE
-                + "Added iP submission.";
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
+                + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
+                + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
+                + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
         assertEquals(output + NEWLINE, bos.toString());

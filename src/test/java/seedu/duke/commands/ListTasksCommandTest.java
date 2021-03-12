@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -13,9 +13,11 @@ import java.io.PrintStream;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
-import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.formatter;
+import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.common.Messages.NEWLINE;
+
 
 class ListTasksCommandTest {
     private final PrintStream originalOut = System.out;
@@ -33,33 +35,27 @@ class ListTasksCommandTest {
         Task task3 = new Task("lecture quiz", deadline1, "complete before next lecture");
         Task task4 = new Task("read up notes", deadline1, "complete before lecture");
 
-        module.addTaskToList(task1);
-        module.addTaskToList(task2);
-        module.addTaskToList(task3);
-        module.addTaskToList(task4);
+        module.addTask(task1);
+        module.addTask(task2);
+        module.addTask(task3);
+        module.addTask(task4);
     }
 
     @Test
     void execute_void_expectSuccess() {
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         initialiseTaskList(ModuleList.getSelectedModule());
 
         ListTasksCommand listTasksCommand = new ListTasksCommand();
+        listTasksCommand.execute(new UI());
 
-        try {
-            listTasksCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
-
-        String output = "Tasks for CS2113T:" + NEWLINE
+        String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE
                 + "[Undone]" + NEWLINE
                 + "1. weekly exercise (graded) - 26 Feb 2021" + NEWLINE
                 + "2. lecture quiz - 26 Feb 2021" + NEWLINE

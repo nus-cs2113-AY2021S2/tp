@@ -1,14 +1,19 @@
 package seedu.duke.commands;
 
-import seedu.duke.common.Messages;
-import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
+
+import static seedu.duke.common.Messages.MESSAGE_EXIT;
 
 public class ExitProgramCommand extends Command {
 
+    /**
+     * Prints exit message.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
     public void execute(UI ui) {
-        ui.printMessage(Messages.MESSAGE_EXIT);
+        ui.printMessage(MESSAGE_EXIT);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -15,9 +15,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
-import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.formatter;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class DeleteTaskCommandTest {
     private final InputStream originalIn = System.in;
@@ -30,10 +30,10 @@ class DeleteTaskCommandTest {
         Task task2 = new Task("iP increments", deadline, "remember to attach JAR file");
         Task task3 = new Task("lecture quiz", deadline, "complete before next lecture");
         Task task4 = new Task("read up notes", deadline, "complete before lecture");
-        ModuleList.getSelectedModule().addTaskToList(task1);
-        ModuleList.getSelectedModule().addTaskToList(task2);
-        ModuleList.getSelectedModule().addTaskToList(task3);
-        ModuleList.getSelectedModule().addTaskToList(task4);
+        ModuleList.getSelectedModule().addTask(task1);
+        ModuleList.getSelectedModule().addTask(task2);
+        ModuleList.getSelectedModule().addTask(task3);
+        ModuleList.getSelectedModule().addTask(task4);
         return ModuleList.getSelectedModule().getTaskList();
     }
 
@@ -43,22 +43,16 @@ class DeleteTaskCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         ArrayList<Task> taskList = initialiseTaskList();
 
         DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand();
-
-        try {
-            deleteTaskCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        deleteTaskCommand.execute(new UI());
 
         String output = "Which tasks would you like to delete?" + NEWLINE
                 + "1. weekly exercise" + NEWLINE
@@ -67,8 +61,8 @@ class DeleteTaskCommandTest {
                 + "4. read up notes" + NEWLINE + NEWLINE
                 + "Please enter the indices of the tasks you would like to delete." + NEWLINE
                 + "Separate indices with a blank space." + NEWLINE + NEWLINE
-                + "Removed weekly exercise." + NEWLINE
-                + "Removed iP increments." + NEWLINE;
+                + "Removed weekly exercise from the task list." + NEWLINE
+                + "Removed iP increments from the task list." + NEWLINE;
 
         // checks displayed output to user
         assertEquals(output, bos.toString());

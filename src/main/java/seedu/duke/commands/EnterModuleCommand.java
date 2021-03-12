@@ -1,16 +1,13 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
-import seedu.duke.module.Module;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-import static java.util.Objects.requireNonNull;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE;
+import static seedu.duke.common.Messages.MESSAGE_OVERVIEW;
 
 public class EnterModuleCommand extends Command {
-
-    public static final String MESSAGE_OVERVIEW = "<Placeholder for overview>";
-    public static final String MESSAGE_ERROR = "%s is an invalid module code.";
 
     private final String moduleCode;
 
@@ -18,12 +15,18 @@ public class EnterModuleCommand extends Command {
         this.moduleCode = moduleCode;
     }
 
+    /**
+     * Opens specified module.
+     *
+     * @param ui Instance of UI.
+     * @throws CommandException Invalid module code.
+     */
     @Override
     public void execute(UI ui) throws CommandException {
         if (ModuleList.setSelectedModule(moduleCode)) {
             ui.printMessage(MESSAGE_OVERVIEW);
         } else {
-            throw new CommandException(String.format(MESSAGE_ERROR, moduleCode));
+            throw new CommandException(String.format(MESSAGE_INVALID_MODULE, moduleCode));
         }
     }
 

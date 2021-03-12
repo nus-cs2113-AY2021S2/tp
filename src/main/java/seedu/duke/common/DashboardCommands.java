@@ -7,7 +7,8 @@ public enum DashboardCommands {
     OPEN("open", "Opens the specified module."),
     ADD("add", "Adds a new module with specified name."),
     DELETE("delete", "Deletes the specified module."),
-    MODULES("modules", "Lists all modules.");
+    MODULES("modules", "Lists all modules."),
+    INVALID("unknown", "Unrecognized command.");
 
     private final String word;
     private final String description;

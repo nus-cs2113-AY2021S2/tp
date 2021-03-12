@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -11,6 +11,12 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
+import static seedu.duke.common.Messages.MESSAGE_OVERVIEW;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class EnterModuleCommandTest {
     private final PrintStream originalOut = System.out;
@@ -20,18 +26,17 @@ class EnterModuleCommandTest {
     void execute_validModuleCodeInput_expectSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.addModule("CS2102");
-        ModuleList.addModule("CS2106");
-        ModuleList.addModule("CS2105");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.addModule(MODULE_CODE_4);
+        ModuleList.addModule(MODULE_CODE_2);
+        ModuleList.addModule(MODULE_CODE_3);
 
-        Command command = new EnterModuleCommand("CS2106");
+        Command command = new EnterModuleCommand(MODULE_CODE_2);
         command.execute(new UI());
 
-        String output = EnterModuleCommand.MESSAGE_OVERVIEW;
-        assertEquals(output + System.lineSeparator(), outContent.toString());
+        assertEquals(MESSAGE_OVERVIEW + NEWLINE, outContent.toString());
 
         System.setOut(originalOut);
     }
@@ -40,12 +45,12 @@ class EnterModuleCommandTest {
     void execute_invalidModuleCodeInput_expectException() {
         System.setOut(new PrintStream(outContent));
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.addModule("CS2102");
-        ModuleList.addModule("CS2106");
-        ModuleList.addModule("CS2105");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.addModule(MODULE_CODE_4);
+        ModuleList.addModule(MODULE_CODE_2);
+        ModuleList.addModule(MODULE_CODE_3);
 
         Command command = new EnterModuleCommand("CS3235");
 

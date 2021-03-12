@@ -1,21 +1,18 @@
 package seedu.duke.storage;
 
 import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
+import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.DIVIDER_WRITE;
+import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Constants.KEYWORD_LESSON;
+import static seedu.duke.common.Constants.KEYWORD_TASK;
+import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.FILE_INSTRUCTIONS;
-import static seedu.duke.storage.StorageConstants.DATE_IO_FORMAT;
-import static seedu.duke.storage.StorageConstants.DIVIDER_WRITE;
-import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
-import static seedu.duke.storage.StorageConstants.KEYWORD_LESSON;
-import static seedu.duke.storage.StorageConstants.KEYWORD_TASK;
-import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
-import static seedu.duke.storage.StorageConstants.TYPE_LAB;
-import static seedu.duke.storage.StorageConstants.TYPE_LECTURE;
-import static seedu.duke.storage.StorageConstants.TYPE_TUTORIAL;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,22 +22,21 @@ import java.time.format.DateTimeFormatter;
 
 public class Writer {
 
-
     /**
      * Creates file for new module.
      *
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      */
-    public void createFile(String name) {
+    public void createFile(String moduleCode) {
         try {
             checkForDirectory();
-            String fileName = name + TXT_FORMAT;
+            String fileName = moduleCode + TXT_FORMAT;
             File path = new File(FOLDER_PATH + "/" + fileName);
             if (!path.createNewFile()) {
                 return;
             }
             FileWriter fileWriter = new FileWriter(path);
-            writeInstructions(fileWriter, name);
+            writeInstructions(fileWriter, moduleCode);
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
@@ -53,18 +49,17 @@ public class Writer {
      * Deletes specified file.
      * Returns true if deleted, or file does not exist, false if unable to delete.
      *
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      * @return True if file is gone, false if file is still around.
      */
-    public boolean deleteFile(String name) {
-        String fileName = name + TXT_FORMAT;
+    public boolean deleteFile(String moduleCode) {
+        String fileName = moduleCode + TXT_FORMAT;
         File path = new File(FOLDER_PATH + "/" + fileName);
         if (path.exists()) {
             return path.delete();
         }
         return true;
     }
-
 
     /**
      * Creates directory if it does not exist.
@@ -78,7 +73,6 @@ public class Writer {
         }
         directory.mkdir();
     }
-
 
     /**
      * Updates changes to module in file.
@@ -99,7 +93,6 @@ public class Writer {
         }
     }
 
-
     /**
      * Returns module file.
      *
@@ -118,18 +111,16 @@ public class Writer {
         return path;
     }
 
-
     /**
      * Writes instructions to module file.
      *
      * @param fileWriter FileWriter for module file.
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      * @throws IOException Unable to write to file.
      */
-    private void writeInstructions(FileWriter fileWriter, String name) throws IOException {
-        fileWriter.write(name + FILE_INSTRUCTIONS);
+    private void writeInstructions(FileWriter fileWriter, String moduleCode) throws IOException {
+        fileWriter.write(moduleCode + FILE_INSTRUCTIONS);
     }
-
 
     /**
      * Writes lessons to module file.
@@ -149,7 +140,6 @@ public class Writer {
             fileWriter.write(entry + '\n');
         }
     }
-
 
     /**
      * Writes tasks to module file.
@@ -172,28 +162,6 @@ public class Writer {
         }
     }
 
-
-    /**
-     * Returns string of lesson type.
-     *
-     * @param lessonType Lesson type to convert.
-     * @return String of lesson type.
-     */
-    private String getLessonTypeString(LessonType lessonType) {
-        switch (lessonType) {
-        case LECTURE: {
-            return TYPE_LECTURE;
-        }
-        case TUTORIAL: {
-            return TYPE_TUTORIAL;
-        }
-        default: {
-            return TYPE_LAB;
-        }
-        }
-    }
-
-
     /**
      * Returns string of deadline.
      *
@@ -201,10 +169,9 @@ public class Writer {
      * @return String of deadline.
      */
     private String getDeadlineString(LocalDate deadline) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_IO_FORMAT);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
         return deadline.format(formatter);
     }
-
 
     /**
      * Converts boolean to storage format.

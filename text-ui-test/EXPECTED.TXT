@@ -1,3 +1,2 @@
-
-<GULIO>
-
+<GULIO> What can I do for you today?
+<GULIO> Have a nice day! Bye bye!

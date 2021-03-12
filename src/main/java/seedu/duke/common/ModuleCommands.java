@@ -14,7 +14,8 @@ public enum ModuleCommands {
     DELETE_TASK("delete task", "Deletes specified tasks."),
     MARK("mark", "Marks specified tasks as done."),
     UNMARK("unmark", "Marks specified tasks as undone."),
-    TASKS("tasks", "Lists all tasks.");
+    TASKS("tasks", "Lists all tasks."),
+    INVALID("unknown", "Unrecognized command.");
 
     private final String word;
     private final String description;

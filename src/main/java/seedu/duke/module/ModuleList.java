@@ -1,7 +1,6 @@
 package seedu.duke.module;
 
 
-import java.lang.reflect.Array;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
@@ -22,7 +21,6 @@ public class ModuleList {
     public static ArrayList<String> getModules() {
         return modules;
     }
- 
 
     /**
      * Searches directory for module files.
@@ -31,11 +29,10 @@ public class ModuleList {
     public static void loadModuleNames() {
         modules.clear();
         Loader loader = new Loader();
-        for (String name : loader.getModuleNames()) {
+        for (String name : loader.getModules()) {
             insertModule(name);
         }
     }
-
 
     /**
      * Adds a new module to the module list and add create file for new module.
@@ -54,77 +51,16 @@ public class ModuleList {
     /**
      * Adds a module to the module list.
      *
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      */
-    private static boolean insertModule(String name) {
-        if (modules.contains(name)) {
+    private static boolean insertModule(String moduleCode) {
+        if (modules.contains(moduleCode)) {
             //Error, module already exists
             return false;
         }
-        modules.add(name);
+        modules.add(moduleCode);
         return true;
     }
-
-
-    /**
-     * Removes selected module and deletes module file.
-     *
-     * @param index index of module to remove.
-     */
-    public static String removeModule(int index) {
-        if (index < 0 || index >= modules.size()) {
-            return " ";
-        }
-        Writer writer = new Writer();
-        if (writer.deleteFile(modules.get(index))) {
-            String moduleName = modules.get(index);
-            modules.remove(index);
-            return moduleName;
-        } else {
-            //Unable to remove
-            return "";
-        }
-    }
-
-
-    /**
-     * Loads the current module from storage.
-     *
-     * @param name Module name, excluding ".txt".
-     * @return True if successful, false if unable to find file.
-     */
-    public static boolean setSelectedModule(String name) {
-        Loader loader = new Loader();
-        if (!modules.contains(name)) {
-            //Unable to find file
-            return false;
-        }
-        selectedModule = loader.loadModule(name);
-        if (selectedModule != null) {
-            //Remove invalid inputs
-            Writer writer = new Writer();
-            writer.writeModule();
-        }
-        return selectedModule != null;
-    }
-
-
-    /**
-     * Resets selected module by setting it to null.
-     */
-    public static void reset() {
-        selectedModule = null;
-    }
-
-
-    /**
-     * Writes updated data to file of selected module.
-     */
-    public static void writeModule() {
-        Writer writer = new Writer();
-        writer.writeModule();
-    }
-
 
     /**
      * Deletes modules specified.
@@ -137,8 +73,67 @@ public class ModuleList {
         Collections.reverse(moduleNumbers);
         for (Integer moduleNumber : moduleNumbers) {
             int indexToRemove = moduleNumber - 1;
-            deletedModules.add(0, removeModule(indexToRemove));
+            String name = removeModule(indexToRemove);
+            if (name != null) {
+                deletedModules.add(0, name);
+            }
         }
         return deletedModules;
+    }
+
+    /**
+     * Removes selected module and deletes module file.
+     *
+     * @param index Index of module to remove.
+     */
+    public static String removeModule(int index) {
+        if (index < 0 || index >= modules.size()) {
+            return null;
+        }
+        Writer writer = new Writer();
+        if (writer.deleteFile(modules.get(index))) {
+            String moduleName = modules.get(index);
+            modules.remove(index);
+            return moduleName;
+        } else {
+            //Unable to remove
+            return null;
+        }
+    }
+
+    /**
+     * Loads the current module from storage.
+     *
+     * @param moduleCode Module name, excluding ".txt".
+     * @return True if successful, false if unable to find file.
+     */
+    public static boolean setSelectedModule(String moduleCode) {
+        Loader loader = new Loader();
+        if (!modules.contains(moduleCode)) {
+            //Unable to find file
+            return false;
+        }
+        selectedModule = loader.loadModule(moduleCode);
+        if (selectedModule != null) {
+            //Remove invalid inputs
+            Writer writer = new Writer();
+            writer.writeModule();
+        }
+        return selectedModule != null;
+    }
+
+    /**
+     * Resets selected module by setting it to null.
+     */
+    public static void reset() {
+        selectedModule = null;
+    }
+
+    /**
+     * Writes updated data to file of selected module.
+     */
+    public static void writeModule() {
+        Writer writer = new Writer();
+        writer.writeModule();
     }
 }

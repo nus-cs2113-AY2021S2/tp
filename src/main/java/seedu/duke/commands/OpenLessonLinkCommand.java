@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -13,35 +12,32 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
+import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
+import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
+import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
 
 public class OpenLessonLinkCommand extends Command {
-    public static final String MESSAGE_OPEN_LESSON_LINK = "Which lesson’s link would you like to open?";
-    public static final String OPEN_LESSON_LINK_FORMAT = "Opening %s link in browser." + System.lineSeparator();
-    public static final String MESSAGE_CANNOT_OPEN_LESSON_LINK = "Cannot open lesson link" + System.lineSeparator();
-    public static final String LINUX_COMMAND = "xdg-open ";
-    private final Scanner commandLineReader = new Scanner(System.in);
 
-    public OpenLessonLinkCommand() {
-        System.out.println(MESSAGE_OPEN_LESSON_LINK);
-    }
-
-    public Scanner getCommandLineReader() {
-        return commandLineReader;
-    }
-
+    /**
+     * Requests for list of indices to open link.
+     * Opens links corresponding to specified indices.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
-    public void execute(UI ui) throws CommandException {
+    public void execute(UI ui) {
+        ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        DeleteLessonCommand.printLessonOptions(lessonList);
-        Scanner input = getCommandLineReader();
-        String line = input.nextLine();
+        printLessons(lessonList,ui);
 
-        ArrayList<Integer> indexes = Parser.checkIndices(line, lessonList.size());
-        printLessonsLink(lessonList, indexes);
+        String line = ui.readCommand();
+        ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
+        printLessonsLink(lessonList, indices, ui);
     }
 
     @Override
@@ -49,30 +45,58 @@ public class OpenLessonLinkCommand extends Command {
         return false;
     }
 
-    public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indexes) {
-        for (int index : indexes) {
+    /**
+     * Prints list of links opened.
+     *
+     * @param lessonList ArrayList of lessons in specified module.
+     * @param indices Indices of links to open.
+     * @param ui Instance of UI.
+     */
+    public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indices, UI ui) {
+        for (int index : indices) {
             Lesson lesson = lessonList.get(index - 1);
-            String lessonName = getLessonName(lesson);
-            System.out.print(String.format(OPEN_LESSON_LINK_FORMAT, lessonName));
-            openLessonLink(lesson.getOnlineLink());
+            String lessonType = getLessonTypeString(lesson.getLessonType());
+            ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
+            openLessonLink(lesson.getOnlineLink(), ui);
         }
     }
 
-    public static void openLessonLink(String onlineLink) {
+    /**
+     * Opens the specified link in browser.
+     *
+     * @param onlineLink Link to open.
+     * @param ui Instance of UI.
+     */
+    public static void openLessonLink(String onlineLink, UI ui) {
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
             try {
                 desktop.browse(new URI(onlineLink));
             } catch (IOException | URISyntaxException e) {
-                System.out.print(MESSAGE_CANNOT_OPEN_LESSON_LINK);
+                ui.printMessage(MESSAGE_UNABLE_TO_OPEN_LINK);
             }
         } else {
             Runtime runtime = Runtime.getRuntime();
             try {
-                runtime.exec(LINUX_COMMAND + onlineLink);
+                runtime.exec(LINUX_OPEN_COMMAND + onlineLink);
             } catch (IOException e) {
-                System.out.print(MESSAGE_CANNOT_OPEN_LESSON_LINK);
+                ui.printMessage(MESSAGE_UNABLE_TO_OPEN_LINK);
             }
+        }
+    }
+
+    /**
+     * Prints list of lessons in specified module.
+     *
+     * @param lessonList ArrayList of lessons in specified module.
+     * @param ui Instance of UI.
+     */
+    private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
+        int counter = 1;
+        for (Lesson lesson : lessonList) {
+            String lessonType = getLessonTypeString(lesson.getLessonType());
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
+            counter++;
         }
     }
 }
