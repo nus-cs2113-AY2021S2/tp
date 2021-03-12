@@ -30,6 +30,7 @@ Noted! I've removed grouper from your fridge.
 Now you have 1 food in the fridge.
 
 Please enter a valid index to remove food.
+Index 99 out of bounds for length 1
 
 Bye. Hope to see you again soon!
 
