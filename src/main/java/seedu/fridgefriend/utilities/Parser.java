@@ -6,7 +6,6 @@ import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocatio
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.fridgefriend.FridgeFriend;
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.ByeCommand;
 import seedu.fridgefriend.command.Command;
@@ -169,7 +168,7 @@ public class Parser {
     public static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         int index = parseIntegerDescription(description);
-        Command removeCommand = new RemoveCommand(index, FridgeFriend.fridge);
+        Command removeCommand = new RemoveCommand(index);
         return removeCommand;
     }
 

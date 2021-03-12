@@ -3,9 +3,8 @@ package seedu.fridgefriend.command;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
-
-import java.util.List;
 
 /**
  * Represents a command to list the items in the fridge to the user.
@@ -24,37 +23,38 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) throws InvalidInputException {
+    public void execute() throws InvalidInputException {
         if (category.equals("")) {
-            listEverythingInFridge(fridge);
+            listEverythingInFridge();
         } else {
-            listByCategory(fridge);
+            listByCategory();
         }
     }
 
-    private void listByCategory(List<Food> fridge) throws InvalidInputException {
+    private void listByCategory() throws InvalidInputException {
         checkIsValidCategory();
         String message = "These are the " + foodCategory + " in your fridge:\n";
-        for (int i = 0; i < fridge.size(); i++) {
-            message += matchCategory(i, fridge);
+        for (int i = 0; i < Fridge.getSize(); i++) {
+            message += matchCategory(i);
         }
         Ui.printMessage(message);
     }
 
-    private void listEverythingInFridge(List<Food> fridge) {
+    private void listEverythingInFridge() {
         String message = "Here are the items in your fridge:";
-        for (int i = 0; i < fridge.size(); i++) {
-            message += getFoodDescription(i, fridge);
+        for (int i = 0; i < Fridge.getSize(); i++) {
+            message += getFoodDescription(i);
         }
         Ui.printMessage(message);
     }
 
-    private String getFoodDescription(int i, List<Food> fridge) {
+    private String getFoodDescription(int i) {
         int indexShownToUser = i + EXTRA_INDEX;
+        Food food = Fridge.getFood(i);
         String foodDescription = 
                 "\n\t" + indexShownToUser +  ". "
-                + fridge.get(i).getFoodName() + " ["
-                + fridge.get(i).getCategory() + "]";
+                + food.getFoodName() + " ["
+                + food.getCategory() + "]";
         return foodDescription;
     }
 
@@ -65,11 +65,13 @@ public class ListCommand extends Command {
         }
     }
 
-    private String matchCategory(int index, List<Food> fridge) {
+    private String matchCategory(int index) {
         String foodAndCategory = "";
-        if (fridge.get(index).getCategory().equals(foodCategory)) {
+        Food food = Fridge.getFood(index);
+        FoodCategory category = food.getCategory();
+        if (category.equals(foodCategory)) {
             int indexShownToUser = index + EXTRA_INDEX;
-            foodAndCategory = "\t" + indexShownToUser + ". " + fridge.get(index).getFoodName();
+            foodAndCategory = "\t" + indexShownToUser + ". " + food.getFoodName();
         }
         return foodAndCategory;
     }

@@ -2,9 +2,8 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
-
-import java.util.List;
 
 /**
  * Represents a command to search for a specific food item in the fridge.
@@ -22,12 +21,13 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) {
-        showResults(isFound(fridge));
+    public void execute() {
+        showResults(isFound());
     }
 
-    private boolean isFound(List<Food> fridge) {
-        for (Food food: fridge) {
+    private boolean isFound() {
+        for (int i = 0; i < Fridge.getSize(); i += 1) {
+            Food food = Fridge.getFood(i);
             if (food.getFoodName().equals(foodName)) {
                 return true;
             }

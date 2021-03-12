@@ -3,9 +3,8 @@ package seedu.fridgefriend.command;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
+import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
-
-import java.util.List;
 
 /**
  * Represents a command to add a food item into the Fridge.
@@ -23,13 +22,13 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) {
-        addFood(fridge);
+    public void execute() {
+        addFood();
         showResults();
     }
 
-    private void addFood(List<Food> fridge) {
-        fridge.add(foodToAdd);
+    private void addFood() {
+        Fridge.add(foodToAdd);
     }
 
     private void showResults() {

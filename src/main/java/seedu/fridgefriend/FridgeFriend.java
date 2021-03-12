@@ -1,17 +1,19 @@
 package seedu.fridgefriend;
 
-import java.util.ArrayList;
-
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.exception.InvalidInputException;
-import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Parser;
 import seedu.fridgefriend.utilities.Ui;
 
 public class FridgeFriend {
 
-    public static final ArrayList<Food> fridge = new ArrayList<>();
     private static boolean isExit = false;
+
+    public FridgeFriend() {
+        new Ui();
+        new Fridge();
+    }
 
     public static void main(String[] args) {
         Ui.printWelcomeMessage();
@@ -20,7 +22,6 @@ public class FridgeFriend {
     }
 
     private static void run() {
-        new Ui();
         while (!isExit) {
             try {
                 String input = Ui.getUserInput();
@@ -34,6 +35,6 @@ public class FridgeFriend {
     }
 
     private static void executeCommand(Command command) throws InvalidInputException {
-        command.execute(fridge);
+        command.execute();
     }
 }

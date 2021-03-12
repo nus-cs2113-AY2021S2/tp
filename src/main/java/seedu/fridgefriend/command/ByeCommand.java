@@ -1,9 +1,5 @@
 package seedu.fridgefriend.command;
 
-import java.util.List;
-
-import seedu.fridgefriend.food.Food;
-
 /**
  * Represents a command to exit the application.
  */
@@ -22,7 +18,7 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) {
+    public void execute() {
         setExit(true);
     }
     
