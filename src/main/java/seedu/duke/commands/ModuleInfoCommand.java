@@ -10,19 +10,18 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
+import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
+import static seedu.duke.common.Messages.FORMAT_TASK_INFO;
 import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.common.Messages.UNDONE_TASK;
 
 public class ModuleInfoCommand extends Command {
-
-    public static final String MESSAGES_LESSONS_INFO_FORMAT = "%s - %s" + NEWLINE;
-    public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
-    public static final String MESSAGES_MODULE_INFO_FORMAT = "<%s>" + NEWLINE;
-    public static final String MESSAGES_TASK_INFO_FORMAT = "%d. %s" + NEWLINE;
 
     public ModuleInfoCommand() {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
-        System.out.print(String.format(MESSAGES_MODULE_INFO_FORMAT, moduleCode));
+        System.out.print(String.format(FORMAT_MODULE_INFO, moduleCode));
     }
 
     @Override
@@ -40,14 +39,14 @@ public class ModuleInfoCommand extends Command {
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
-            System.out.print(String.format(MESSAGES_LESSONS_INFO_FORMAT, lessonName, lessonTime));
+            System.out.print(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
         }
     }
 
     public static void printTasksFromList(ArrayList<Task> tasksList) {
         int counter = 1;
         for (Task task : tasksList) {
-            System.out.print(String.format(MESSAGES_TASK_INFO_FORMAT, counter, task.getDescription()));
+            System.out.print(String.format(FORMAT_TASK_INFO, counter, task.getDescription()));
         }
     }
 

@@ -3,7 +3,6 @@ package seedu.duke.common;
 public class Messages {
 
 
-
     //General message
     public static final String FORMAT_LIST_HELP = "%-8s - %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
@@ -27,7 +26,7 @@ public class Messages {
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
     public static final String MESSAGE_DELETE_MODULE_INFO =
             "Please enter the indices of the modules you would like to delete."
-            + NEWLINE + "Separate indices with a blank space.";
+                    + NEWLINE + "Separate indices with a blank space.";
     public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:" + NEWLINE;
     public static final String MESSAGE_OVERVIEW = "<Placeholder for overview>";
 
@@ -107,5 +106,12 @@ public class Messages {
             + NEWLINE
             + "--------------------------------------------------------------------------------" + NEWLINE
             + NEWLINE;
+
+    //Module info messages
+    public static final String FORMAT_LESSONS_INFO = "%s - %s" + NEWLINE;
+    public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
+    public static final String FORMAT_MODULE_INFO = "<%s>" + NEWLINE;
+    public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
+
 
 }
