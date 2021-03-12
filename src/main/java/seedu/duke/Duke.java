@@ -7,11 +7,12 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
+//main
 public class Duke {
     private static ArrayList<Canteen> canteens; // todo: add a canteen manager
     private static Ui ui;
     private static Storage storage;
-    private static final String filePath = "./src/main/java/data/storage.txt";
+    private final static String filePath = "./src/main/java/data/storage.txt";
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -26,12 +27,12 @@ public class Duke {
 
     public static void echo() {
         boolean isExit = false;
-        while (!isExit) {
+        while(!isExit) {
             String userCommand = ui.readCommand();
             String[] parsedCommand = userCommand.split(" ");
-            if (parsedCommand[0].equals("list")) {
+            if(parsedCommand[0].equals("list")) {
                 displayStores();
-            } else if (parsedCommand[0].equals("exit")) {
+            } else if(parsedCommand[0].equals("exit")) {
                 isExit = true;
             } else {
                 ui.showError();
@@ -45,7 +46,7 @@ public class Duke {
         String userCommand = ui.readCommand();
         int canteenIndex = Integer.parseInt(userCommand) - 1;
         ArrayList<Store> stores = canteens.get(canteenIndex).getStores();
-        for (Store store: stores) {
+        for(Store store: stores) {
             store.displayStore();
         }
     }

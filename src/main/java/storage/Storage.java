@@ -13,7 +13,7 @@ public class Storage {
     private static ArrayList<Canteen> canteens;
 
     public Storage(String filePath) {
-        this.filePath = filePath;
+        this.filePath = "data/storage.txt";
         this.canteens = new ArrayList<>();
     }
 

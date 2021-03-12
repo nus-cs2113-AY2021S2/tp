@@ -29,6 +29,7 @@ public class Ui {
         System.out.println(LINESPACING);
         System.out.println("Thank you for using our application! See you again!");
         System.out.println(LINESPACING);
+        System.exit(0);
     }
 
     public void showGetCanteen(ArrayList<Canteen> canteens) {
