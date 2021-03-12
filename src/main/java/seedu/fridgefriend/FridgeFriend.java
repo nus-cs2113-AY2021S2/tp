@@ -1,15 +1,7 @@
 package seedu.fridgefriend;
 
-import seedu.fridgefriend.command.AddCommand;
-import seedu.fridgefriend.command.Command;
-import seedu.fridgefriend.command.ListCommand;
-import seedu.fridgefriend.command.RemoveCommand;
-import seedu.fridgefriend.command.SearchCommand;
-import seedu.fridgefriend.exception.EmptyDescriptionException;
-import seedu.fridgefriend.exception.InvalidInputException;
-import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.FoodCategory;
-import seedu.fridgefriend.food.FoodStorageLocation;
+import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
+import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +9,17 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
-import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocation;
+import seedu.fridgefriend.command.AddCommand;
+import seedu.fridgefriend.command.Command;
+import seedu.fridgefriend.command.ListCommand;
+import seedu.fridgefriend.command.RemoveCommand;
+import seedu.fridgefriend.command.SearchCommand;
+import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.FoodStorageLocation;
 
 public class FridgeFriend {
 
@@ -60,15 +61,9 @@ public class FridgeFriend {
     }
 
     private static void printExceptionMessage(Exception exception) {
-        if (exception instanceof IndexOutOfBoundsException) {
-            System.out.println(exception.getMessage());
-        } else if (exception instanceof NumberFormatException) {
-            System.out.println(exception.getMessage());
-        } else if (exception instanceof InvalidInputException) {
-            System.out.println(exception.getMessage());
-        } else if (exception instanceof EmptyDescriptionException) {
-            System.out.println(exception.getMessage());
-        }
+        String genericErrorMessage = "There was an error!";
+        System.out.println(genericErrorMessage);
+        System.out.println(exception.getMessage());
     }
 
     /**
@@ -114,7 +109,7 @@ public class FridgeFriend {
      * @throws InvalidInputException if the description cannot parse
      */
     public static Command parseFoodDescription(String foodDescription)
-            throws EmptyDescriptionException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -123,12 +118,13 @@ public class FridgeFriend {
         if (!matcher.matches()) {
             throw new InvalidInputException();
         }
-        return new AddCommand(
-            matcher.group("name"),
-            convertStringToFoodCategory(matcher.group("category")),
-            matcher.group("expiryDate"),
-            convertStringToLocation(matcher.group("storageLocation"))
-        );
+
+        // Get food attributes based on matcher object
+        String foodName = matcher.group("name");
+        FoodCategory foodCategory = convertStringToFoodCategory(matcher.group("category"));
+        String expiryString = matcher.group("expiryDate");
+        FoodStorageLocation foodStorageLocation = convertStringToLocation(matcher.group("storageLocation"));
+        return new AddCommand(foodName, foodCategory, expiryString, foodStorageLocation);
     }
 
     public static int parseIntegerDescription(String description) throws EmptyDescriptionException {
@@ -145,7 +141,7 @@ public class FridgeFriend {
     }
 
     private static void processCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         String command = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
 
@@ -170,7 +166,8 @@ public class FridgeFriend {
         }
     }
 
-    private static void proceedToAdd(String description) throws EmptyDescriptionException, InvalidInputException {
+    private static void proceedToAdd(String description)
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         Command addCommand = parseFoodDescription(description);
         addCommand.execute(fridge);
     }
