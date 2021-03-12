@@ -28,7 +28,7 @@ public class TestUtilAndConstants {
     public static final String MODULE_CODE_4 = "CS2101";
 
 
-    public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d-M-yyyy");
 
 
     public static void removeFiles() {
@@ -46,7 +46,7 @@ public class TestUtilAndConstants {
     // Creates task list for testing MarkAsDoneCommand and MarkAsUndoneCommand.
     // Contains mix of undone tasks (by default) and done tasks (explicitly set here).
     public static ArrayList<Task> initialiseTaskList(Module module) {
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
 
         Task task1 = new Task("weekly exercise", deadline, "");
         module.addTask(task1);

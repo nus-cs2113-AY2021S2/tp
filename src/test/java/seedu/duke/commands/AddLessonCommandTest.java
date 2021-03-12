@@ -25,8 +25,8 @@ class AddLessonCommandTest extends LessonCommandTest {
         ModuleList.setSelectedModule(MODULE_CODE);
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);
-        OutputStream os = getOutputStream();
 
+        OutputStream os = getOutputStream();
         try {
             command.execute(ui);
         } catch (CommandException e) {

@@ -2,7 +2,6 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.TestUtilAndConstants;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.TestUtilAndConstants.FORMATTER;
 import static seedu.duke.common.Messages.NEWLINE;
 
 class DeleteTaskCommandTest {
@@ -25,7 +24,7 @@ class DeleteTaskCommandTest {
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
     private ArrayList<Task> initialiseTaskList() {
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         Task task1 = new Task("weekly exercise", deadline, "");
         Task task2 = new Task("iP increments", deadline, "remember to attach JAR file");
         Task task3 = new Task("lecture quiz", deadline, "complete before next lecture");

@@ -2,7 +2,6 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.TestUtilAndConstants;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -13,9 +12,8 @@ import java.io.PrintStream;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.TestUtilAndConstants.FORMATTER;
 import static seedu.duke.common.Messages.NEWLINE;
 
 
@@ -24,8 +22,8 @@ class ListTasksCommandTest {
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
     void initialiseTaskList(Module module) {
-        LocalDate deadline1 = LocalDate.parse("26-02-2021", formatter);
-        LocalDate deadline2 = LocalDate.parse("3-03-2021", formatter);
+        LocalDate deadline1 = LocalDate.parse("26-02-2021", FORMATTER);
+        LocalDate deadline2 = LocalDate.parse("3-03-2021", FORMATTER);
 
         Task task1 = new Task("weekly exercise", deadline1, "");
         task1.setGraded(true);
