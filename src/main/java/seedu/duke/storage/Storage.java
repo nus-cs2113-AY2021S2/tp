@@ -88,27 +88,27 @@ public class Storage {
     }
 
     private Record parseRecord(String rawData) throws InvalidFileInputException {
-            if (Pattern.matches(REGEX_PATTERN_EXPENSE, rawData)) {
-                return loadExpense(rawData);
-            } else if (Pattern.matches(REGEX_PATTERN_LOAN, rawData)) {
-                return loadLoan(rawData);
-            } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
-                return loadSaving(rawData);
-            } else {
-                throw new InvalidFileInputException();
-            }
+        if (Pattern.matches(REGEX_PATTERN_EXPENSE, rawData)) {
+            return loadExpense(rawData);
+        } else if (Pattern.matches(REGEX_PATTERN_LOAN, rawData)) {
+            return loadLoan(rawData);
+        } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
+            return loadSaving(rawData);
+        } else {
+            throw new InvalidFileInputException();
+        }
     }
 
     private String extractArg(String rawData, int index) throws InvalidFileInputException {
         String[] args = rawData.split("\\|");
-        if(index < 0 || index > args.length) {
+        if (index < 0 || index > args.length) {
             throw new InvalidFileInputException();
         }
 
         return args[index].strip();
     }
 
-    private Record loadExpense(String rawData) throws InvalidFileInputException{
+    private Record loadExpense(String rawData) throws InvalidFileInputException {
         double amount;
         LocalDate issueDate;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
@@ -124,7 +124,7 @@ public class Storage {
         return new Expense(amount, issueDate, description);
     }
 
-    private Record loadLoan(String rawData) throws InvalidFileInputException{
+    private Record loadLoan(String rawData) throws InvalidFileInputException {
         double amount;
         boolean isReturn;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
@@ -141,7 +141,7 @@ public class Storage {
         return new Loan(amount, issueDate, description, isReturn);
     }
 
-    private Record loadSaving(String rawData) throws InvalidFileInputException{
+    private Record loadSaving(String rawData) throws InvalidFileInputException {
         double amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
         LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),

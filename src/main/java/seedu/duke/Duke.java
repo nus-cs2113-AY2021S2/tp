@@ -45,6 +45,10 @@ public class Duke {
         System.exit(0);
     }
 
+    // @@ author jonahtwl-reused
+    // No recovery should be expected from a corrupted file.
+    // Reused from: https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/Main.java
+
     private void start() {
         try {
             ui = new Ui();
