@@ -54,7 +54,7 @@ public class RemoveCommand extends Command {
      * Removes the record at the specified index.
      *
      * @param records is the recordList.
-     * @param ui is the Ui object that interacts with the user.
+     * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override

@@ -20,9 +20,9 @@ import static seedu.duke.common.Validators.validateIndex;
 
 public class ReturnCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
-            ArgumentType.COMMAND,
-            ArgumentType.OPTION,
-            ArgumentType.VALUE
+        ArgumentType.COMMAND,
+        ArgumentType.OPTION,
+        ArgumentType.VALUE
     };
     protected static final String COMMAND_RETURN = "return";
 
