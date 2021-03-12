@@ -1,30 +1,20 @@
 package seedu.duke.record;
 
-import seedu.duke.storage.Storage;
-import seedu.duke.ui.Ui;
-
 import java.util.ArrayList;
 
 public class RecordList {
     private ArrayList<Record> recordList;
 
     public RecordList() {
-        recordList = new ArrayList<>();
+        this(new ArrayList<Record>());
     }
 
     public RecordList(ArrayList<Record> recordList) {
         this.recordList = recordList;
     }
 
-    public void addRecord(Record recordToAdd, Ui ui, Storage storage) {
+    public void addRecord(Record recordToAdd) {
         recordList.add(recordToAdd);
-        Ui.printSuccessfulAdd(recordToAdd);
-        try {
-            storage.saveFile(recordList);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
     }
 
     public Record getRecordAt(int recordIndex) {
@@ -39,10 +29,6 @@ public class RecordList {
         recordList.clear();
     }
 
-    public int indexOfRecord(Record record) {
-        return recordList.indexOf(record);
-    }
-
     public boolean isEmpty() {
         return recordList.isEmpty();
     }
@@ -50,6 +36,7 @@ public class RecordList {
     public int getRecordCount() {
         return recordList.size();
     }
+<<<<<<< HEAD
 
     public void listExpenses(Ui ui) {
         ui.printMessage("List expenses!");
@@ -65,4 +52,6 @@ public class RecordList {
     public void listSavings(Ui ui) {
         ui.printMessage("List savings!");
     }
+=======
+>>>>>>> master
 }

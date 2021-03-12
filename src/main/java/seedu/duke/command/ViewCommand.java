@@ -44,18 +44,18 @@ public class ViewCommand extends Command {
     }
 
     @Override
-    public void execute(RecordList records, Ui ui, Storage storage) {
+    public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
-            // records.viewExpenses(ui);
+            ui.printTotalAmountExpense(recordList);
             break;
         case LOAN:
-            // records.viewLoans(ui);
+            ui.printTotalAmountLoan(recordList);
             break;
         case SAVING:
             // Fallthrough
         default:
-            // records.viewSavings(ui);
+            ui.printTotalAmountSaving(recordList);
         }
     }
 }

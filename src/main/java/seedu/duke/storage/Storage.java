@@ -5,6 +5,7 @@ import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
 import seedu.duke.record.Saving;
+import seedu.duke.record.RecordList;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -12,6 +13,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -49,6 +53,23 @@ public class Storage {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
         for (Record r : records) {
             fw.write(r.convertFileFormat() + System.lineSeparator());
+        }
+    }
+
+    public void saveRecordListData(RecordList records) {
+        try {
+            writeToSaveFile(records);
+        } catch (IOException e) {
+            System.out.println("Error in writeToSaveFile()");
+        }
+    }
+
+    private void writeToSaveFile(RecordList records) throws IOException {
+        FileWriter fw = new FileWriter(dataFilePath.toString(), false);
+        fw.write("Test Save!\n");
+        for (int i = 0; i < records.getRecordCount(); i++) {
+            Record currentRecord = records.getRecordAt(i);
+            fw.write(currentRecord.convertFileFormat() + System.lineSeparator());
         }
         fw.close();
     }
@@ -104,13 +125,17 @@ public class Storage {
 
     private Record loadExpense(String rawData) throws InvalidFileInputException{
         double amount;
+        LocalDate issueDate;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        String issueDate = extractArg(rawData, INDEX_OF_DATE);
 
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern("ddMMyyyy"));
         } catch (NumberFormatException e) {
-            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+            throw new InvalidFileInputException("Amount not in recognisable format!");
+        } catch (DateTimeParseException e) {
+            throw new InvalidFileInputException("Date not in recognisable format!");
         }
 
         return new Expense(amount, issueDate, description);
@@ -119,7 +144,8 @@ public class Storage {
     private Record loadLoan(String rawData) throws InvalidFileInputException{
         double amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        String issueDate = extractArg(rawData, INDEX_OF_DATE);
+        LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                DateTimeFormatter.ofPattern("ddMMyyyy"));
 
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
@@ -133,7 +159,8 @@ public class Storage {
     private Record loadSaving(String rawData) throws InvalidFileInputException{
         double amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        String issueDate = extractArg(rawData, INDEX_OF_DATE);
+        LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                DateTimeFormatter.ofPattern("ddMMyyyy"));
 
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));

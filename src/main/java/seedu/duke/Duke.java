@@ -17,14 +17,6 @@ public class Duke {
     private RecordList records;
     private Storage storage;
 
-    /*
-    public Duke() {
-        ui = new Ui();
-        storage = new Storage();
-        records = new RecordList();
-    }
-     */
-
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -41,16 +33,15 @@ public class Duke {
         end();
     }
 
+    private void end() {
+        System.exit(0);
+    }
+
     private void start() {
         ui = new Ui();
         storage = new Storage();
         records = new RecordList(storage.loadFile());
         ui.printWelcomeMessage();
-    }
-
-    private void end() {
-        //ui.printGoodByeMessage();
-        System.out.println("PROGRAM TERMINATES HERE!");
     }
 
     private void commandLooper() {
@@ -60,17 +51,20 @@ public class Duke {
             rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
             command = parseCommand(parsedStringList);
-            if (command == null) {
-                continue;
+            if (command != null) {
+                command.execute(records, ui, storage);
             }
-            command.execute(records, ui, storage);
         } while (!ExitCommand.isExit(command));
     }
 
+    //Shift to ParserHandler class
     private Command parseCommand(ArrayList<String> parsedString) {
         try {
             //System.out.println("Command is parsed");
-            return CommandHandler.createCommand(parsedString);
+            return CommandHandler.createCommand(parsedString, records);
+            //Command type = CommandHandler.createCommand(parsedString, records);
+            //System.out.println("Command is parsed");
+            //return type;
         } catch (CommandException e) {
             System.out.println(e.getMessage());
             return null;

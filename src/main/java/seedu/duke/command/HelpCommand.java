@@ -4,6 +4,7 @@ import seedu.duke.common.ArgumentType;
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.RecordList;
 import seedu.duke.storage.Storage;
+import seedu.duke.ui.HelpPage;
 import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
@@ -20,6 +21,6 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-
+        HelpPage.printHelp(COMMAND_HELP);
     }
 }
