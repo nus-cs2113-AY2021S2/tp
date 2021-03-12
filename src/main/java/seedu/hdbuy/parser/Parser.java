@@ -61,7 +61,10 @@ public class Parser {
                 return new CommandKey(criteria, value, keyCommand);
             }
         case FIND:
-            // Fallthrough
+            if (lineParts.length != 1) {
+                throw new InvalidParameterException();
+            }
+            break;
         case EXIT:
             // Fallthrough
         case HELP:
