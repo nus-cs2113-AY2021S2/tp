@@ -7,14 +7,14 @@ import java.util.Scanner;
 
 public class Ui {
     private static final String LINESPACING = "-----------------------";
-    private String line;
-    private Scanner userInputScanner;
+    private static Scanner userInputScanner;
+    private static String line;
 
     public Ui() {
         userInputScanner = new Scanner(System.in);
     }
 
-    public String readCommand() {
+    public static String readCommand() {
         line = userInputScanner.nextLine();
         return line;
     }
@@ -22,6 +22,7 @@ public class Ui {
     public void showWelcome() {
         System.out.println(LINESPACING);
         System.out.println("Welcome to our amazing canteen review application!!");
+        System.out.println("You are now viewing canteen The Deck");
         System.out.println(LINESPACING);
     }
 
@@ -32,17 +33,11 @@ public class Ui {
         System.exit(0);
     }
 
-    public void showGetCanteen(ArrayList<Canteen> canteens) {
-        System.out.println(LINESPACING);
-        System.out.println("Please select a canteen:");
-        for (int i = 0; i < canteens.size(); i++) {
-            System.out.printf("%s.", i + 1);
-            canteens.get(i).displayCanteen();
-        }
-        System.out.println(LINESPACING);
-    }
-
     public void showError() {
         System.out.println("Error with input");
+    }
+
+    public void showDisplayStoreMessage() {
+        System.out.println("Here's a list of the stores in the canteen: The Deck");
     }
 }
