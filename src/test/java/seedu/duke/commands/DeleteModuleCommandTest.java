@@ -1,9 +1,9 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
+import seedu.duke.TestUtilAndConstants;
 import seedu.duke.common.Messages;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -12,6 +12,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
+import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
+import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class DeleteModuleCommandTest {
     private final PrintStream originalOut = System.out;
@@ -24,30 +32,30 @@ class DeleteModuleCommandTest {
         System.setOut(new PrintStream(outContent));
         System.setIn(inContent);
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
 
-        ModuleList.addModule("CS2113T");
-        ModuleList.addModule("CS2101");
-        ModuleList.addModule("CS2105");
-        ModuleList.addModule("CS2106");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.addModule(MODULE_CODE_4);
+        ModuleList.addModule(MODULE_CODE_3);
+        ModuleList.addModule(MODULE_CODE_2);
 
         Command command = new DeleteModuleCommand();
         command.execute(new UI());
 
         StringBuilder sb = new StringBuilder();
-        sb.append(DeleteModuleCommand.MESSAGE_PROMPT1);
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 1, "CS2113T")).append("\n");
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, "CS2101")).append("\n");
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, "CS2105")).append("\n");
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 4, "CS2106")).append("\n");
-        sb.append("\n");
-        sb.append(DeleteModuleCommand.MESSAGE_PROMPT2);
+        sb.append(MESSAGE_MODULE_TO_DELETE);
+        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 1, MODULE_CODE_1)).append(NEWLINE);
+        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_4)).append(NEWLINE);
+        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_3)).append(NEWLINE);
+        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 4, MODULE_CODE_2)).append(NEWLINE);
+        sb.append(NEWLINE);
+        sb.append(MESSAGE_DELETE_MODULE_INFO);
         sb.append(System.lineSeparator());
-        sb.append(String.format(DeleteModuleCommand.MESSAGE_SUCCESS, "CS2113T")).append("\n");
-        sb.append(String.format(DeleteModuleCommand.MESSAGE_SUCCESS, "CS2105")).append("\n");
+        sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_1)).append(NEWLINE);
+        sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_3)).append(NEWLINE);
 
-        assertEquals(sb.toString() + System.lineSeparator(), outContent.toString());
+        assertEquals(sb.toString() + NEWLINE, outContent.toString());
 
         System.setOut(originalOut);
     }

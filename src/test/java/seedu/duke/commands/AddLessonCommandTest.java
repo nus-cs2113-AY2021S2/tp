@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.ModuleList;
@@ -11,14 +11,13 @@ import seedu.duke.ui.UI;
 import java.io.OutputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_LESSON;
 
 class AddLessonCommandTest extends LessonCommandTest {
 
-    public static final String EXPECTED_OUTPUT = "Added tutorial." + System.lineSeparator();
-
     @Test
-    void execute_ui_expectPrintsCorrectOutput() {
-        TestUtil.removeFiles();
+    void execute_moduleListUi_expectPrintsCorrectOutput() {
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
 
         UI ui = new UI();
@@ -33,7 +32,7 @@ class AddLessonCommandTest extends LessonCommandTest {
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
-        assertEquals(EXPECTED_OUTPUT, os.toString());
+        assertEquals(EXPECTED_ADD_LESSON, os.toString());
         removeOutputStream();
     }
 }

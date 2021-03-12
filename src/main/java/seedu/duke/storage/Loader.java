@@ -6,33 +6,6 @@ import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.task.Task;
 
-import static seedu.duke.storage.StorageConstants.DATE_IO_FORMAT;
-import static seedu.duke.storage.StorageConstants.DIVIDER_READ;
-import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_EXTRA_LONG;
-import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_LONG;
-import static seedu.duke.storage.StorageConstants.ENTRY_LESSON_MEDIUM;
-import static seedu.duke.storage.StorageConstants.ENTRY_SIZE_LESSON;
-import static seedu.duke.storage.StorageConstants.ENTRY_SIZE_TASK;
-import static seedu.duke.storage.StorageConstants.ENTRY_TASK_LONG;
-import static seedu.duke.storage.StorageConstants.FOLDER_PATH;
-import static seedu.duke.storage.StorageConstants.INDEX_DAY_TIME;
-import static seedu.duke.storage.StorageConstants.INDEX_DEADLINE;
-import static seedu.duke.storage.StorageConstants.INDEX_DESCRIPTION;
-import static seedu.duke.storage.StorageConstants.INDEX_IS_DONE;
-import static seedu.duke.storage.StorageConstants.INDEX_IS_GRADED;
-import static seedu.duke.storage.StorageConstants.INDEX_LINK;
-import static seedu.duke.storage.StorageConstants.INDEX_REMARKS;
-import static seedu.duke.storage.StorageConstants.INDEX_TEACHER_EMAIL;
-import static seedu.duke.storage.StorageConstants.INDEX_TEACHER_NAME;
-import static seedu.duke.storage.StorageConstants.INDEX_TYPE;
-import static seedu.duke.storage.StorageConstants.KEYWORD_LESSON;
-import static seedu.duke.storage.StorageConstants.KEYWORD_TASK;
-import static seedu.duke.storage.StorageConstants.STOP_LINE;
-import static seedu.duke.storage.StorageConstants.TXT_FORMAT;
-import static seedu.duke.storage.StorageConstants.TYPE_LAB;
-import static seedu.duke.storage.StorageConstants.TYPE_LECTURE;
-import static seedu.duke.storage.StorageConstants.TYPE_TUTORIAL;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -41,13 +14,39 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static seedu.duke.common.Constants.DIVIDER_READ;
+import static seedu.duke.common.Constants.ENTRY_LESSON_EXTRA_LONG;
+import static seedu.duke.common.Constants.ENTRY_LESSON_LONG;
+import static seedu.duke.common.Constants.ENTRY_LESSON_MEDIUM;
+import static seedu.duke.common.Constants.ENTRY_SIZE_LESSON;
+import static seedu.duke.common.Constants.ENTRY_SIZE_TASK;
+import static seedu.duke.common.Constants.ENTRY_TASK_LONG;
+import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.INDEX_DAY_TIME;
+import static seedu.duke.common.Constants.INDEX_DEADLINE;
+import static seedu.duke.common.Constants.INDEX_DESCRIPTION;
+import static seedu.duke.common.Constants.INDEX_IS_DONE;
+import static seedu.duke.common.Constants.INDEX_IS_GRADED;
+import static seedu.duke.common.Constants.INDEX_LINK;
+import static seedu.duke.common.Constants.INDEX_REMARKS_LOADER;
+import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
+import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
+import static seedu.duke.common.Constants.INDEX_TYPE;
+import static seedu.duke.common.Constants.KEYWORD_LESSON;
+import static seedu.duke.common.Constants.KEYWORD_TASK;
+import static seedu.duke.common.Constants.STOP_LINE;
+import static seedu.duke.common.Constants.TRUE_STRING;
+import static seedu.duke.common.Constants.TXT_FORMAT;
+import static seedu.duke.common.CommonMethods.getLessonType;
+
 public class Loader {
 
     /**
      * Searches directory for module files.
      * Returns ArrayList of names (excluding ".txt").
      */
-    public ArrayList<String> getModuleNames() {
+    public ArrayList<String> getModules() {
         ArrayList<String> names = new ArrayList<>();
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
@@ -63,16 +62,15 @@ public class Loader {
         return names;
     }
 
-
     /**
      * Loads data from the selected module file.
      *
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      * @return Loaded module.
      */
-    public Module loadModule(String name) {
-        String fileName = name + TXT_FORMAT;
-        Module module = new Module(name);
+    public Module loadModule(String moduleCode) {
+        String fileName = moduleCode + TXT_FORMAT;
+        Module module = new Module(moduleCode);
         File path = new File(FOLDER_PATH + "/" + fileName);
         try {
             Scanner scanner = new Scanner(path);
@@ -85,7 +83,6 @@ public class Loader {
         }
         return module;
     }
-
 
     /**
      * Skips to first line of data.
@@ -101,7 +98,6 @@ public class Loader {
         }
     }
 
-
     /**
      * Identifies data type and calls methods to handle them.
      * Runs through all data.
@@ -113,13 +109,12 @@ public class Loader {
         while (scanner.hasNext()) {
             String input = scanner.nextLine();
             if (input.startsWith(KEYWORD_LESSON)) {
-                readLessonData(input, module);
+                readLessonData(input.substring(KEYWORD_LESSON.length()), module);
             } else if (input.startsWith(KEYWORD_TASK)) {
-                readTaskData(input, module);
+                readTaskData(input.substring(KEYWORD_TASK.length()), module);
             }
         }
     }
-
 
     /**
      * Reads data for lesson.
@@ -158,31 +153,6 @@ public class Loader {
         module.addLesson(lesson);
     }
 
-
-    /**
-     * Returns lesson type if valid, null if invalid.
-     *
-     * @param input String of type.
-     * @return Lesson type specified.
-     */
-    private LessonType getLessonType(String input) {
-        switch (input.toLowerCase()) {
-        case TYPE_LECTURE: {
-            return LessonType.LECTURE;
-        }
-        case TYPE_TUTORIAL: {
-            return LessonType.TUTORIAL;
-        }
-        case TYPE_LAB: {
-            return LessonType.LAB;
-        }
-        default: {
-            return null;
-        }
-        }
-    }
-
-
     /**
      * Reads data for task.
      * Adds task to task list in module.
@@ -205,12 +175,11 @@ public class Loader {
         boolean isGraded = getTrueFalse(fields[INDEX_IS_GRADED].trim());
         String remarks = "";
         if (fields.length == ENTRY_TASK_LONG) {
-            remarks = fields[INDEX_REMARKS].trim();
+            remarks = fields[INDEX_REMARKS_LOADER].trim();
         }
         Task task = new Task(description, remarks, deadline, isDone, isGraded);
         module.addTask(task);
     }
-
 
     /**
      * Returns deadline of task.
@@ -220,14 +189,13 @@ public class Loader {
      */
     private LocalDate getDeadline(String input) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_IO_FORMAT);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
             return LocalDate.parse(input, formatter);
         } catch (DateTimeParseException e) {
             //invalid deadline
             return null;
         }
     }
-
 
     /**
      * Returns true if "T" and false if "F".
@@ -238,7 +206,7 @@ public class Loader {
      */
     private boolean getTrueFalse(String input) {
         //Default is false
-        return input.equalsIgnoreCase("T");
+        return input.equalsIgnoreCase(TRUE_STRING);
     }
 
 }

@@ -1,17 +1,19 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 public class ListTasksCommand extends Command {
 
+    /**
+     * Prints tasks in selected module.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
-    public void execute(UI ui) throws CommandException {
-        Module module = ModuleList.getSelectedModule();
-        String moduleCode = module.getModuleCode();
-        ui.printTasks(moduleCode, module.getTaskList());
+    public void execute(UI ui) {
+        ui.printAllTasks();
     }
 
     @Override

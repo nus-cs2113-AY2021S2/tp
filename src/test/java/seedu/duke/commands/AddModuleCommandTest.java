@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
@@ -11,6 +11,10 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
+import static seedu.duke.common.Messages.MESSAGE_ADDED_MODULE;
 
 class AddModuleCommandTest {
     private final PrintStream originalOut = System.out;
@@ -20,17 +24,17 @@ class AddModuleCommandTest {
     void execute_uniqueModuleCode_expectPrintSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
 
-        ModuleList.addModule("CS2106");
-        ModuleList.addModule("CS2105");
+        ModuleList.addModule(MODULE_CODE_2);
+        ModuleList.addModule(MODULE_CODE_3);
 
-        String moduleCode = "CS2113T";
+        String moduleCode = MODULE_CODE_1;
         Command command = new AddModuleCommand(moduleCode);
         command.execute(new UI());
 
-        String output = String.format(AddModuleCommand.MESSAGE_SUCCESS, moduleCode);
+        String output = String.format(MESSAGE_ADDED_MODULE, moduleCode);
         assertEquals(output + System.lineSeparator(), outContent.toString());
 
         System.setOut(originalOut);
@@ -41,11 +45,11 @@ class AddModuleCommandTest {
         System.setOut(new PrintStream(outContent));
 
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
 
-        Command command = new AddModuleCommand("CS2113T");
+        Command command = new AddModuleCommand(MODULE_CODE_1);
         assertThrows(CommandException.class, () -> command.execute(new UI()));
 
         System.setOut(originalOut);

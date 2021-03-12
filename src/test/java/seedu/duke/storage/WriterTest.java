@@ -1,7 +1,7 @@
 package seedu.duke.storage;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
+import seedu.duke.TestUtilAndConstants;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
@@ -15,15 +15,17 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
 
 class WriterTest {
 
     @Test
     void writeModule_noContentNoDirectory_instructionOnly() throws IOException {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/empty_reference.txt");
@@ -33,10 +35,10 @@ class WriterTest {
 
     @Test
     void writeModule_twoTask_instructionAndTask() throws IOException {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
         Task task1 = new Task("Task1", "Task1Remarks",
                 LocalDate.of(2020,2,20),false,false);
         Task task2 = new Task("Task2", "",
@@ -52,10 +54,10 @@ class WriterTest {
 
     @Test
     void writeModule_twoLesson_instructionAndLesson() throws IOException {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",
                 new TeachingStaff("",""));
         Lesson lesson2 = new Lesson(LessonType.LECTURE, "Weekdays", "",
@@ -71,10 +73,10 @@ class WriterTest {
 
     @Test
     void writeModule_twoLessonTwoTask_allContent() throws IOException {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",
                 new TeachingStaff("",""));
         Lesson lesson2 = new Lesson(LessonType.LECTURE, "Weekdays", "",

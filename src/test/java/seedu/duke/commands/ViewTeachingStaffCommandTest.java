@@ -1,32 +1,29 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.OutputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.common.Messages.MESSAGE_TEACHING_STAFF_TO_LIST;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class ViewTeachingStaffCommandTest extends LessonCommandTest {
 
-    public static final String EXPECTED_OUTPUT = "1. " + TEACHER_NAME + " - " + TEACHER_EMAIL + System.lineSeparator()
-            + "2. " + TEACHER_NAME1 + " - " + TEACHER_EMAIL1 + System.lineSeparator();
-
     @Test
-    void execute_ui_expectPrintsCorrectOutput() {
-        TestUtil.removeFiles();
+    void execute_moduleListUi_expectPrintsCorrectOutput() {
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
         UI ui = new UI();
 
-        OutputStream os = getOutputStream();
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
         addLessonsToList(ui);
         Command command = new ViewTeachingStaffCommand();
-        removeOutputStream();
 
         OutputStream newOs = getOutputStream();
         try {
@@ -34,7 +31,10 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
-        assertEquals(EXPECTED_OUTPUT, newOs.toString());
+        String expectedOutput = String.format(MESSAGE_TEACHING_STAFF_TO_LIST, MODULE_CODE) + NEWLINE
+                + "1. " + TEACHER_NAME + " - " + TEACHER_EMAIL + NEWLINE
+                + "2. " + TEACHER_NAME1 + " - " + TEACHER_EMAIL1 + NEWLINE;
+        assertEquals(expectedOutput, newOs.toString());
         removeOutputStream();
     }
 }

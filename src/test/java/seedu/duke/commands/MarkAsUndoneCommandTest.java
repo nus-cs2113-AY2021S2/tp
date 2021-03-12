@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -14,9 +14,10 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.commands.CommandTestUtil.MESSAGE_MODULE_ERROR;
-import static seedu.duke.commands.CommandTestUtil.NEWLINE;
-import static seedu.duke.commands.CommandTestUtil.initialiseTaskList;
+import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
+import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class MarkAsUndoneCommandTest {
     private final InputStream originalIn = System.in;
@@ -29,22 +30,16 @@ class MarkAsUndoneCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
-        ModuleList.addModule("CS2113T");
-        ModuleList.setSelectedModule("CS2113T");
+        ModuleList.addModule(MODULE_CODE_1);
+        ModuleList.setSelectedModule(MODULE_CODE_1);
 
         ArrayList<Task> taskList = initialiseTaskList(ModuleList.getSelectedModule());
 
         MarkAsUndoneCommand markAsUndoneCommand = new MarkAsUndoneCommand();
-
-        try {
-            markAsUndoneCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        markAsUndoneCommand.execute(new UI());
 
         String output = "Which done tasks would you like to undo?" + NEWLINE
                 + "1. iP increments" + NEWLINE

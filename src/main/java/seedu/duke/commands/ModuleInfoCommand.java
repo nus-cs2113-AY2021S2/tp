@@ -1,6 +1,6 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -9,8 +9,8 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
-import static seedu.duke.common.Constants.NEWLINE;
+import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Messages.NEWLINE;
 
 public class ModuleInfoCommand extends Command {
 
@@ -38,7 +38,7 @@ public class ModuleInfoCommand extends Command {
 
     public static void printLessonsFromList(ArrayList<Lesson> lessonList) {
         for (Lesson lesson : lessonList) {
-            String lessonName = getLessonName(lesson);
+            String lessonName = getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
             System.out.print(String.format(MESSAGES_LESSONS_INFO_FORMAT, lessonName, lessonTime));
         }

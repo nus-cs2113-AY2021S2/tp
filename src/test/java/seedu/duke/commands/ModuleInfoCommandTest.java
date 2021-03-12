@@ -1,8 +1,8 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtil;
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.TestUtilAndConstants;
+import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -12,8 +12,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.commands.CommandTestUtil.formatter;
-import static seedu.duke.common.Constants.NEWLINE;
+import static seedu.duke.TestUtilAndConstants.FORMATTER;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class ModuleInfoCommandTest extends LessonCommandTest {
 
@@ -23,7 +23,7 @@ class ModuleInfoCommandTest extends LessonCommandTest {
 
     @Test
     void execute_ui_expectPrintsCorrectOutput() {
-        TestUtil.removeFiles();
+        TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
         UI ui = new UI();
 
@@ -31,7 +31,7 @@ class ModuleInfoCommandTest extends LessonCommandTest {
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
         addLessonsToList(ui);
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         task.setGraded(true);
         ArrayList<Task> tasksList = ModuleList.getSelectedModule().getTaskList();

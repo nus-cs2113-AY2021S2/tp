@@ -1,10 +1,9 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.CommandException;
+import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
-import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.ByteArrayOutputStream;
