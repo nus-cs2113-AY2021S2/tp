@@ -22,7 +22,9 @@ public class Ui {
     private static final String MESSAGE_GREETING = "";
     private static final String MESSAGE_GOODBYE = "HUAT AH!";
     private static final String MESSAGE_LOADING = "Loading from save... ";
-    private static final String MESSAGE_SUCCESSFULLY_ADDED = "Record has been added...";
+    private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
+    private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
+    private static final String MESSAGE_SAVING_SUCCESSFULLY_ADDED = "Saving has been added...";
     private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
     private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
     private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
@@ -43,12 +45,20 @@ public class Ui {
         this.input = new Scanner(in);
     }
 
-    public void printSuccessfulAdd(Record recordAdded) {
+    public void printSuccessfulAdd(Record recordAdded, int index) {
         System.out.println(DIVIDER);
         System.out.println();
-        System.out.println(MESSAGE_SUCCESSFULLY_ADDED);
-        System.out.println("\n" + recordAdded.getDescription() + " " + recordAdded.getAmount()
-                + " " + recordAdded.getIssueDate());
+        if (recordAdded instanceof Expense) {
+            System.out.println(MESSAGE_EXPENSE_SUCCESSFULLY_ADDED);
+        } else if (recordAdded instanceof Loan) {
+            System.out.println(MESSAGE_LOAN_SUCCESSFULLY_ADDED);
+        } else {
+            System.out.println(MESSAGE_SAVING_SUCCESSFULLY_ADDED);
+        }
+        int formattedIndex = index - 1;
+        System.out.println();
+        printIndex(formattedIndex);
+        System.out.println(recordAdded);
         System.out.println();
         System.out.println(DIVIDER);
     }
@@ -84,9 +94,11 @@ public class Ui {
 
     public void printExpenses(RecordList recordList) {
         System.out.println(DIVIDER);
+        System.out.println("Here is your Expense list:" + "\n");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
+                printIndex(i);
                 System.out.println(currentRecord);
             }
         }
@@ -95,9 +107,11 @@ public class Ui {
 
     public void printLoans(RecordList recordList) {
         System.out.println(DIVIDER);
+        System.out.println("Here is your Loan list:" + "\n");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
+                printIndex(i);
                 System.out.println(currentRecord);
             }
         }
@@ -106,9 +120,11 @@ public class Ui {
 
     public void printSavings(RecordList recordList) {
         System.out.println(DIVIDER);
+        System.out.println("Here is your Saving list:" + "\n");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
+                printIndex(i);
                 System.out.println(currentRecord);
             }
         }
@@ -152,5 +168,10 @@ public class Ui {
         }
         System.out.println(MESSAGE_TOTAL_SAVING + totalAmount);
         System.out.println(DIVIDER);
+    }
+
+    public void printIndex(int index) {
+        int formattedIndex = index + 1;
+        System.out.print(formattedIndex + ". ");
     }
 }
