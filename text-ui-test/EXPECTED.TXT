@@ -16,7 +16,7 @@ Great! I have added grouper into your fridge.
 Details: ||Food name: grouper, category: SEAFOOD, expiry: 05-04-2021, stored in: OTHER||
 
 There was an error!
-Sorry my friend, the date must be in the form 'dd/mm/yy'.
+Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
 
 There was an error!
