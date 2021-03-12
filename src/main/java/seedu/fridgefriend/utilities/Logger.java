@@ -6,12 +6,12 @@ import java.lang.Throwable;
 public class Logger {
     public static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger("FridgeFriend");
 
-    public static java.util.logging.Logger getLogger() {
-        return logger;
-    }
-
     public static void logInfo(String message) {
         logger.log(Level.INFO, message);
+    }
+
+    public static void logInfo(String message, Throwable e) {
+        logger.log(Level.INFO, message, e);
     }
 
     public static void logWarning(String message) {
