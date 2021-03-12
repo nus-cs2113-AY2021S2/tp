@@ -1,6 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.exception.CommandException;
+import seedu.duke.record.RecordList;
 
 import static seedu.duke.command.ListCommand.COMMAND_LIST;
 import static seedu.duke.command.AddCommand.COMMAND_ADD;
@@ -16,7 +17,7 @@ public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final int INDEX_OF_COMMAND = 0;
 
-    public static Command createCommand(ArrayList<String> parsedArguments) throws CommandException {
+    public static Command createCommand(ArrayList<String> parsedArguments, RecordList records) throws CommandException {
         String commandWord = parsedArguments.get(INDEX_OF_COMMAND);
 
         switch (commandWord) {
@@ -25,9 +26,9 @@ public class CommandHandler {
         case COMMAND_ADD:
             return new AddCommand(parsedArguments);
         case COMMAND_RETURN:
-            return new ReturnCommand(parsedArguments);
+            return new ReturnCommand(parsedArguments, records);
         case COMMAND_REMOVE:
-            return new RemoveCommand(parsedArguments);
+            return new RemoveCommand(parsedArguments, records);
         case COMMAND_VIEW:
             return new ViewCommand(parsedArguments);
         case COMMAND_HELP:
