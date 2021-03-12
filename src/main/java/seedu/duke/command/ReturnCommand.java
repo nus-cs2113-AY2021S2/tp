@@ -16,6 +16,7 @@ import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.common.Constant.OPTION_INDEX;
+import static seedu.duke.common.Validators.validateIndex;
 
 public class ReturnCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
@@ -25,7 +26,8 @@ public class ReturnCommand extends Command {
     };
     protected static final String COMMAND_RETURN = "return";
 
-    private String recordNumber;
+    private String recordNumberStr;
+    private int recordNumberInt;
 
     public ReturnCommand(ArrayList<String> arguments) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
@@ -33,9 +35,16 @@ public class ReturnCommand extends Command {
         validateArguments(arguments, argumentTypeOrder, COMMAND_RETURN);
 
         if (hasOption(arguments, OPTION_INDEX)) {
-            recordNumber = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
+            recordNumberStr = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
         } else {
             throw new CommandException("missing option: -i", COMMAND_RETURN);
+        }
+
+        try {
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX));
+        } catch (NumberFormatException e) {
+            throw new CommandException("Index \"" + recordNumberStr
+                    + "\" is not an integer!", COMMAND_RETURN);
         }
     }
 
@@ -49,16 +58,20 @@ public class ReturnCommand extends Command {
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInt = Integer.parseInt(recordNumber);
         int recordNumberInList = recordNumberInt - 1;
 
-        Record currentRecord = records.getRecordAt(recordNumberInList);
-        if (currentRecord instanceof Loan) {
-            Loan currentLoan = (Loan) currentRecord;
-            currentLoan.markAsReturned();
-            ui.printMessage("Loan marked as returned: " + currentLoan);
-        } else {
-            ui.printMessage("Specified record number is not a loan!");
+        try {
+            Record currentRecord = records.getRecordAt(recordNumberInList);
+            if (currentRecord instanceof Loan) {
+                Loan currentLoan = (Loan) currentRecord;
+                currentLoan.markAsReturned();
+                ui.printMessage("Loan marked as returned: " + currentLoan);
+            } else {
+                ui.printMessage("Specified record number is not a loan!");
+            }
+        } catch (IndexOutOfBoundsException e) {
+            ui.printMessage(COMMAND_RETURN + " Command - " + "\""
+                    + recordNumberStr + "\" is out of bounds!");
         }
     }
 }
