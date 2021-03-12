@@ -1,6 +1,7 @@
 package seedu.hdbuy.ui;
 
 import seedu.hdbuy.data.QueryKey;
+import seedu.hdbuy.data.exception.InvalidFilterException;
 import seedu.hdbuy.data.exception.InvalidParameterException;
 
 import java.util.HashMap;
@@ -48,8 +49,8 @@ public class TextUi {
         System.out.print("Parameters:\n" + inputs + "\n");
     }
 
-    public static void showInvalidFilter(String criteria) {
-        System.out.print("\"" + criteria + "\" is not a valid filter.\n");
+    public static void showInvalidFilter(String criteria, InvalidFilterException e) {
+        System.out.println("\"" + criteria + "\" " + e.getMessage());
     }
 
     public static void showInvalidParameter(InvalidParameterException e) {

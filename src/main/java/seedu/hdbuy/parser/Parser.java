@@ -61,7 +61,7 @@ public class Parser {
                 return new CommandKey(criteria, value, keyCommand);
             }
         case FIND:
-            if (lineParts.length < 2) {
+            if (lineParts.length != 1) {
                 throw new InvalidParameterException();
             }
             break;
