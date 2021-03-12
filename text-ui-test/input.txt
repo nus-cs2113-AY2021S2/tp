@@ -1,1 +1,14 @@
 James Gosling
+add chicken /c meat /exp 30-06-2021 /loc lower_shelf
+search chicken
+add pork no param blabla
+add grouper /c seafood /exp 05-04-2021 /loc idontknow
+add grouper /c seafood /exp 32-46-9876 /loc idontknow
+add
+list
+list meat
+list aldkjadlj
+search
+remove 2
+remove 100
+bye

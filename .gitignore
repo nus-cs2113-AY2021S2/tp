@@ -3,8 +3,17 @@
 /out/
 /*.iml
 
+# vscode files
+/.vscode
+.project
+.classpath
+
+# eclipse files
+/.settings
+
 # Gradle build files
 /.gradle/
+/gradle
 /build/
 src/main/resources/docs/
 
