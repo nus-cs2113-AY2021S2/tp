@@ -32,7 +32,8 @@ public abstract class Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "Common description across Loan, Saving & Expense classes";
+        String formattedDate = "[" + this.issueDate + "]";
+        String formattedDescription = " " + this.description + " ";
+        return formattedDate + formattedDescription;
     }
 }
