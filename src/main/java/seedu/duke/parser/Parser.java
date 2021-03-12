@@ -68,7 +68,6 @@ import static seedu.duke.common.ParserConstants.UNMARK_DONE;
 import static seedu.duke.common.ParserConstants.WHITESPACE;
 
 
-import java.util.ArrayList;
 
 public class Parser {
 
