@@ -2,8 +2,6 @@ canteen<>The deck
 store<>chicken rice stall
 menu<>chicken rice
 menu<>spicy chicken rice
-menu<>chicken bones
 store<>Fish rice stall
 menu<>fish rice
 menu<>spicy fish rice
-menu<>fish bones

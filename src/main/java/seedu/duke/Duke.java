@@ -1,6 +1,11 @@
 package seedu.duke;
 
 import canteens.Canteen;
+import command.Command;
+import command.DisplayCommand;
+import command.ExitCommand;
+import exceptions.DukeExceptions;
+import parser.Parser;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
@@ -18,36 +23,25 @@ public class Duke {
      */
     public static void main(String[] args) {
         ui = new Ui();
-        ui.showWelcome();
         storage = new Storage(filePath);
         canteens = storage.load();
+
         echo();
+        System.exit(0);
     }
 
     public static void echo() {
+        ui.showWelcome();
         boolean isExit = false;
         while (!isExit) {
-            String userCommand = ui.readCommand();
-            String[] parsedCommand = userCommand.split(" ");
-            if (parsedCommand[0].equals("list")) {
-                displayStores();
-            } else if (parsedCommand[0].equals("exit")) {
-                isExit = true;
-            } else {
+            try {
+                String line = ui.readCommand();
+                Command c = Parser.parse(line);
+                c.execute(canteens, ui);
+                isExit = c.isExit();
+            } catch (DukeExceptions e) {
                 ui.showError();
             }
         }
-        ui.showGoodbye();
     }
-
-    public static void displayStores() {
-        ui.showGetCanteen(canteens);
-        String userCommand = ui.readCommand();
-        int canteenIndex = Integer.parseInt(userCommand) - 1;
-        ArrayList<Store> stores = canteens.get(canteenIndex).getStores();
-        for (Store store: stores) {
-            store.displayStore();
-        }
-    }
-
 }
