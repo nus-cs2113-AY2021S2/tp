@@ -1,6 +1,8 @@
 package seedu.duke;
 
+import system.staff.Nurse;
 import system.staff.Parser;
+import nurseschedules.NurseScheduleInstance;
 import static system.staff.Parser.run;
 import java.io.IOException;
 
@@ -41,6 +43,7 @@ public class Duke {
                     break;
                 case "4":
                     System.out.println("Nurse Schedule Instance!");
+                    NurseScheduleInstance.main();
                     break;
                 case "5":
                     System.out.println("Drug Viewer Instance!");
@@ -57,7 +60,7 @@ public class Duke {
                     System.out.println("OOPS! That is not a registered command! Please type \"help\" to see the list of commands");
                     break;
                 }
-            } catch (NullPointerException e) {
+            } catch (NullPointerException | IOException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             }
