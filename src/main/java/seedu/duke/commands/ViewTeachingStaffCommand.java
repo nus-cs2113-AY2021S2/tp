@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import static seedu.duke.common.Messages.FORMAT_PRINT_TEACHING_STAFF;
 import static seedu.duke.common.Messages.MESSAGE_TEACHING_STAFF_TO_LIST;
 
+/**
+ * Represents the command used to print the teaching staff for a selected lesson.
+ */
 public class ViewTeachingStaffCommand extends Command {
 
 

@@ -11,6 +11,9 @@ import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 
+/**
+ * Represents the command used to print the list of lessons.
+ */
 public class ListLessonsCommand extends Command {
 
     public ListLessonsCommand() {
@@ -39,7 +42,7 @@ public class ListLessonsCommand extends Command {
      * Prints list of lessons.
      *
      * @param lessonList ArrayList of lessons.
-     * @param ui Instance of lessons
+     * @param ui         Instance of lessons.
      */
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;

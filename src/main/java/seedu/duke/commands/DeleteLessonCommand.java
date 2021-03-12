@@ -13,6 +13,9 @@ import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
 
+/**
+ * Represents the command used to delete a lesson from the list of lessons.
+ */
 public class DeleteLessonCommand extends Command {
 
     public DeleteLessonCommand() {
@@ -20,7 +23,6 @@ public class DeleteLessonCommand extends Command {
     }
 
     /**
-     * Requests for list of indices to delete.
      * Deletes all lessons corresponding to specified indices.
      *
      * @param ui Instance of UI.
@@ -48,7 +50,7 @@ public class DeleteLessonCommand extends Command {
      * Prints list of lessons in specified module.
      *
      * @param lessonList ArrayList of lessons in specified module.
-     * @param ui Instance of UI.
+     * @param ui         Instance of UI.
      */
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
@@ -63,8 +65,8 @@ public class DeleteLessonCommand extends Command {
      * Removes lessons corresponding to the indices from the specified module.
      *
      * @param lessonList ArrayList of lessons in specified module.
-     * @param indices Indices of lessons to delete.
-     * @param ui Instance of UI.
+     * @param indices    Indices of lessons to delete.
+     * @param ui         Instance of UI.
      */
     public static void deleteLessonsFromList(ArrayList<Lesson> lessonList, ArrayList<Integer> indices, UI ui) {
         int pointer = 1;
