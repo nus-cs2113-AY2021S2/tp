@@ -22,7 +22,7 @@ public class Messages {
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
     public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list.";
-    public static final String MESSAGE_INVALID_MODULE = "%s is an invalid module code.";
+    public static final String MESSAGE_INVALID_MODULE = "Unable to find %s.";
 
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
     public static final String MESSAGE_DELETE_MODULE_INFO =
