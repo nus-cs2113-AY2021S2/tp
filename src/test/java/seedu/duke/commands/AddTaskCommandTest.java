@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_TASK;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.formatter;
+import static seedu.duke.TestUtilAndConstants.FORMATTER;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
@@ -40,7 +40,7 @@ public class AddTaskCommandTest {
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
@@ -75,7 +75,7 @@ public class AddTaskCommandTest {
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         // remarks field is empty
         Task task = new Task("iP submission", deadline, "");
         AddTaskCommand addTask = new AddTaskCommand(task);
@@ -112,7 +112,7 @@ public class AddTaskCommandTest {
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
+        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 

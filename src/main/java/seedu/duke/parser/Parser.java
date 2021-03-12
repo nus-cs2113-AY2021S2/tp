@@ -15,6 +15,7 @@ import seedu.duke.commands.ListModulesCommand;
 import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.commands.MarkAsDoneCommand;
 import seedu.duke.commands.MarkAsUndoneCommand;
+import seedu.duke.commands.ModuleInfoCommand;
 import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.commands.ViewTeachingStaffCommand;
@@ -202,8 +203,7 @@ public class Parser {
         case CLOSE:
             return new ExitModuleCommand();
         case INFO:
-            // TODO
-            return new PrintHelpCommand();
+            return new ModuleInfoCommand();
         case LESSONS:
             return new ListLessonsCommand();
         case LINK:
