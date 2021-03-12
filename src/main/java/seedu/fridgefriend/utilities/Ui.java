@@ -6,29 +6,16 @@ import java.util.Scanner;
  * Represents an object that deals with interactions with the user.
  */
 public class Ui {
-    public static Scanner scanner;
-
-    public static final String logo =
-            "  ______    _     _            ______    _                _ \n"
-            + " |  ____|  (_)   | |          |  ____|  (_)              | |\n"
-            + " | |__ _ __ _  __| | __ _  ___| |__ _ __ _  ___ _ __   __| |\n"
-            + " |  __| '__| |/ _` |/ _` |/ _ \\  __| '__| |/ _ \\ '_ \\ / _` |\n"
-            + " | |  | |  | | (_| | (_| |  __/ |  | |  | |  __/ | | | (_| |\n"
-            + " |_|  |_|  |_|\\__,_|\\__, |\\___|_|  |_|  |_|\\___|_| |_|\\__,_|\n"
-            + "                     __/ |\n"
-            + "                    |___/\n\n";
-    
-    public Ui() {
-        scanner = new Scanner(System.in);
-    }
+    public static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Retrieves the next line of input provided by the user.
      * 
      * @return string of next input
      */
-    public static String getUserInput() {
-        return scanner.nextLine();
+    public static String getNextLine() {
+        String line = scanner.nextLine();    
+        return line;
     }
     
     /**
@@ -42,6 +29,15 @@ public class Ui {
     }
 
     public static void printWelcomeMessage() {
+        String logo =
+                "  ______    _     _            ______    _                _ \n"
+                + " |  ____|  (_)   | |          |  ____|  (_)              | |\n"
+                + " | |__ _ __ _  __| | __ _  ___| |__ _ __ _  ___ _ __   __| |\n"
+                + " |  __| '__| |/ _` |/ _` |/ _ \\  __| '__| |/ _ \\ '_ \\ / _` |\n"
+                + " | |  | |  | | (_| | (_| |  __/ |  | |  | |  __/ | | | (_| |\n"
+                + " |_|  |_|  |_|\\__,_|\\__, |\\___|_|  |_|  |_|\\___|_| |_|\\__,_|\n"
+                + "                     __/ |\n"
+                + "                    |___/\n\n";
         String welcomeMessage = "Hello! I'm FridgeFriend!\n" + "What can I do for you?";
         printMessage(logo + welcomeMessage);
     }

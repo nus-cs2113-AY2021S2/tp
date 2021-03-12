@@ -24,7 +24,7 @@ public class FridgeFriend {
     private static void run() {
         while (!isExit) {
             try {
-                String input = Ui.getUserInput();
+                String input = Ui.getNextLine();
                 Command command = Parser.getCommand(input);
                 executeCommand(command);
                 isExit = command.isExit();
