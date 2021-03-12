@@ -11,7 +11,7 @@ import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ExitModuleCommand;
 import seedu.duke.commands.ExitProgramCommand;
 import seedu.duke.commands.ListLessonsCommand;
-import seedu.duke.commands.ListModuleCommand;
+import seedu.duke.commands.ListModulesCommand;
 import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.commands.MarkAsDoneCommand;
 import seedu.duke.commands.MarkAsUndoneCommand;
@@ -103,7 +103,7 @@ public class Parser {
         case DELETE:
             return new DeleteModuleCommand();
         case MODULES:
-            return new ListModuleCommand();
+            return new ListModulesCommand();
         case OPEN:
             return new EnterModuleCommand(input);
         case HELP:
@@ -132,7 +132,7 @@ public class Parser {
             return ADD;
         } else if (startsWith(input, DELETE.getWord())) {
             return DELETE;
-        } else if (isValidModuleName(input)) {
+        } else if (isValidModuleCode(input)) {
             return OPEN;
         } else {
             return DashboardCommands.INVALID;
@@ -164,14 +164,14 @@ public class Parser {
     /**
      * Checks if given string is a valid module name.
      *
-     * @param name string to be validated
+     * @param moduleCode string to be validated
      * @return true if string is a valid module name
      */
-    private boolean isValidModuleName(String name) {
-        name = name.trim();
+    private boolean isValidModuleCode(String moduleCode) {
+        moduleCode = moduleCode.trim();
 
         // check that input matches the convention of a standard NUS module code.
-        return (name.matches(FORMAT_MODULE_CODE));
+        return (moduleCode.matches(FORMAT_MODULE_CODE));
     }
 
     /**

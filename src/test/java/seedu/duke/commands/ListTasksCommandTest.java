@@ -35,16 +35,15 @@ class ListTasksCommandTest {
         Task task3 = new Task("lecture quiz", deadline1, "complete before next lecture");
         Task task4 = new Task("read up notes", deadline1, "complete before lecture");
 
-        module.addTaskToList(task1);
-        module.addTaskToList(task2);
-        module.addTaskToList(task3);
-        module.addTaskToList(task4);
+        module.addTask(task1);
+        module.addTask(task2);
+        module.addTask(task3);
+        module.addTask(task4);
     }
 
     @Test
     void execute_void_expectSuccess() {
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -54,12 +53,7 @@ class ListTasksCommandTest {
         initialiseTaskList(ModuleList.getSelectedModule());
 
         ListTasksCommand listTasksCommand = new ListTasksCommand();
-
-        try {
-            listTasksCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        listTasksCommand.execute(new UI());
 
         String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE
                 + "[Undone]" + NEWLINE

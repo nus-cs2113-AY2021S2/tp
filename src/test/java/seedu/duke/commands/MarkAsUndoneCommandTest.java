@@ -30,7 +30,6 @@ class MarkAsUndoneCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -40,12 +39,7 @@ class MarkAsUndoneCommandTest {
         ArrayList<Task> taskList = initialiseTaskList(ModuleList.getSelectedModule());
 
         MarkAsUndoneCommand markAsUndoneCommand = new MarkAsUndoneCommand();
-
-        try {
-            markAsUndoneCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        markAsUndoneCommand.execute(new UI());
 
         String output = "Which done tasks would you like to undo?" + NEWLINE
                 + "1. iP increments" + NEWLINE

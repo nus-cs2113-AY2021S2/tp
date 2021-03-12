@@ -49,25 +49,25 @@ public class TestUtilAndConstants {
         LocalDate deadline = LocalDate.parse("3-3-2021", formatter);
 
         Task task1 = new Task("weekly exercise", deadline, "");
-        module.addTaskToList(task1);
+        module.addTask(task1);
 
         Task task2 = new Task("lecture quiz", deadline, "complete before next lecture");
-        module.addTaskToList(task2);
+        module.addTask(task2);
 
         Task task3 = new Task("iP increments", deadline, "remember to attach JAR file");
         task3.setDone(true);
-        module.addTaskToList(task3);
+        module.addTask(task3);
 
         Task task4 = new Task("read up notes", deadline, "complete before lecture");
-        module.addTaskToList(task4);
+        module.addTask(task4);
 
         Task task5 = new Task("tP milestone", deadline, "meet with team before merging");
         task5.setDone(true);
-        module.addTaskToList(task5);
+        module.addTask(task5);
 
         Task task6 = new Task("watch video snippets", deadline, "complete before lecture");
         task6.setDone(true);
-        module.addTaskToList(task6);
+        module.addTask(task6);
 
         return module.getTaskList();
     }

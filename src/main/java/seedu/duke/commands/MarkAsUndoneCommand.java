@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -8,21 +7,30 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
 import static seedu.duke.common.Messages.COMMAND_VERB_UNMARK;
 import static seedu.duke.common.Messages.MESSAGE_MARKED_AS_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_UNMARK;
+import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class MarkAsUndoneCommand extends Command {
 
+    /**
+     * Requests for list of indices to mark as done.
+     * Marks all tasks corresponding to specified indices as undone.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
-    public void execute(UI ui) throws CommandException {
+    public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
-        ArrayList<Task> chosenTasks = module.getTasksToMarkOrUnmark(ui,
-                MESSAGE_TASKS_TO_UNMARK, COMMAND_VERB_UNMARK, true);
-        for (Task task : chosenTasks) {
+        ArrayList<Task> doneTasks = module.getDoneOrUndoneTasks(true);
+        printPrompt(ui, doneTasks);
+        ArrayList<Task> selectedTasks = getSpecifiedTasks(ui, doneTasks);
+        for (Task task : selectedTasks) {
             String description = task.getDescription();
             ui.printMessage(String.format(MESSAGE_MARKED_AS_UNDONE,description));
-            module.unmarkTaskInList(task);
+            module.unmarkTask(task);
         }
         ModuleList.writeModule();
     }
@@ -30,5 +38,17 @@ public class MarkAsUndoneCommand extends Command {
     @Override
     public boolean isExit() {
         return false;
+    }
+
+    /**
+     * Prints prompt to mark tasks as undone.
+     *
+     * @param ui Instance of UI.
+     * @param doneTasks Array list of done tasks.
+     */
+    private void printPrompt(UI ui, ArrayList<Task> doneTasks) {
+        ui.printMessage(MESSAGE_TASKS_TO_UNMARK);
+        ui.printSummarisedTasks(doneTasks);
+        ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_UNMARK));
     }
 }

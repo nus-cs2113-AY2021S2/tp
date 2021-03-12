@@ -15,6 +15,12 @@ public class AddModuleCommand extends Command {
         this.moduleCode = moduleCode;
     }
 
+    /**
+     * Creates new module.
+     *
+     * @param ui Instance of UI.
+     * @throws CommandException Specified module already exists.
+     */
     @Override
     public void execute(UI ui) throws CommandException {
         if (ModuleList.addModule(moduleCode)) {

@@ -35,12 +35,10 @@ import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
 import static seedu.duke.common.Constants.KEYWORD_LESSON;
 import static seedu.duke.common.Constants.KEYWORD_TASK;
-import static seedu.duke.common.Constants.LAB_STRING;
-import static seedu.duke.common.Constants.LECTURE_STRING;
 import static seedu.duke.common.Constants.STOP_LINE;
 import static seedu.duke.common.Constants.TRUE_STRING;
-import static seedu.duke.common.Constants.TUTORIAL_STRING;
 import static seedu.duke.common.Constants.TXT_FORMAT;
+import static seedu.duke.common.CommonMethods.getLessonType;
 
 public class Loader {
 
@@ -48,7 +46,7 @@ public class Loader {
      * Searches directory for module files.
      * Returns ArrayList of names (excluding ".txt").
      */
-    public ArrayList<String> getModuleNames() {
+    public ArrayList<String> getModules() {
         ArrayList<String> names = new ArrayList<>();
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
@@ -64,16 +62,15 @@ public class Loader {
         return names;
     }
 
-
     /**
      * Loads data from the selected module file.
      *
-     * @param name Module name, excluding ".txt".
+     * @param moduleCode Module code, excluding ".txt".
      * @return Loaded module.
      */
-    public Module loadModule(String name) {
-        String fileName = name + TXT_FORMAT;
-        Module module = new Module(name);
+    public Module loadModule(String moduleCode) {
+        String fileName = moduleCode + TXT_FORMAT;
+        Module module = new Module(moduleCode);
         File path = new File(FOLDER_PATH + "/" + fileName);
         try {
             Scanner scanner = new Scanner(path);
@@ -86,7 +83,6 @@ public class Loader {
         }
         return module;
     }
-
 
     /**
      * Skips to first line of data.
@@ -101,7 +97,6 @@ public class Loader {
             }
         }
     }
-
 
     /**
      * Identifies data type and calls methods to handle them.
@@ -120,7 +115,6 @@ public class Loader {
             }
         }
     }
-
 
     /**
      * Reads data for lesson.
@@ -159,31 +153,6 @@ public class Loader {
         module.addLesson(lesson);
     }
 
-
-    /**
-     * Returns lesson type if valid, null if invalid.
-     *
-     * @param input String of type.
-     * @return Lesson type specified.
-     */
-    private LessonType getLessonType(String input) {
-        switch (input.toLowerCase()) {
-        case LECTURE_STRING: {
-            return LessonType.LECTURE;
-        }
-        case TUTORIAL_STRING: {
-            return LessonType.TUTORIAL;
-        }
-        case LAB_STRING: {
-            return LessonType.LAB;
-        }
-        default: {
-            return null;
-        }
-        }
-    }
-
-
     /**
      * Reads data for task.
      * Adds task to task list in module.
@@ -212,7 +181,6 @@ public class Loader {
         module.addTask(task);
     }
 
-
     /**
      * Returns deadline of task.
      *
@@ -228,7 +196,6 @@ public class Loader {
             return null;
         }
     }
-
 
     /**
      * Returns true if "T" and false if "F".

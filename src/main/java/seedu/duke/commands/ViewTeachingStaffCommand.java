@@ -15,10 +15,16 @@ public class ViewTeachingStaffCommand extends Command {
 
 
     public ViewTeachingStaffCommand() {
+
     }
 
+    /**
+     * Prints list of teaching staff for selected module.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
-    public void execute(UI ui) throws CommandException {
+    public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
         ui.printMessage(String.format(MESSAGE_TEACHING_STAFF_TO_LIST, moduleCode));

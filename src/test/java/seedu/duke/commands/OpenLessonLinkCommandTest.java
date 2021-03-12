@@ -23,12 +23,12 @@ class OpenLessonLinkCommandTest extends LessonCommandTest {
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
         addLessonsToList(ui);
-        ArrayList<Integer> indexes = new ArrayList<>();
-        initialisedIndexes(indexes);
+        ArrayList<Integer> indices = new ArrayList<>();
+        initialisedIndexes(indices);
         removeOutputStream();
 
         OutputStream newOs = getOutputStream();
-        OpenLessonLinkCommand.printLessonsLink(ModuleList.getSelectedModule().getLessonList(), indexes, ui);
+        OpenLessonLinkCommand.printLessonsLink(ModuleList.getSelectedModule().getLessonList(), indices, ui);
         assertEquals(EXPECTED_OPEN_LINK, newOs.toString());
         removeOutputStream();
     }

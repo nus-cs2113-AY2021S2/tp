@@ -30,7 +30,6 @@ class MarkAsDoneCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -40,12 +39,8 @@ class MarkAsDoneCommandTest {
         ArrayList<Task> taskList = initialiseTaskList(ModuleList.getSelectedModule());
 
         MarkAsDoneCommand markAsDoneCommand = new MarkAsDoneCommand();
+        markAsDoneCommand.execute(new UI());
 
-        try {
-            markAsDoneCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
 
         String output = "Which undone tasks have you completed?" + NEWLINE
                 + "1. weekly exercise" + NEWLINE

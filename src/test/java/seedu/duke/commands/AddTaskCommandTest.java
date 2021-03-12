@@ -2,7 +2,6 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.TestUtilAndConstants;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -17,13 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_TASK;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
 import static seedu.duke.TestUtilAndConstants.formatter;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SET_GRADED;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SET_GRADED_INFO;
+import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
+import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
 
 public class AddTaskCommandTest {
     private final InputStream originalIn = System.in;
@@ -36,7 +34,6 @@ public class AddTaskCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -47,13 +44,10 @@ public class AddTaskCommandTest {
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = MESSAGE_TASK_SET_GRADED + NEWLINE
+
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
                 + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
@@ -75,7 +69,6 @@ public class AddTaskCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -87,13 +80,9 @@ public class AddTaskCommandTest {
         Task task = new Task("iP submission", deadline, "");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = MESSAGE_TASK_SET_GRADED + NEWLINE
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
                 + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
@@ -117,7 +106,6 @@ public class AddTaskCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -128,15 +116,11 @@ public class AddTaskCommandTest {
         Task task = new Task("iP submission", deadline, "remember to attach JAR file");
         AddTaskCommand addTask = new AddTaskCommand(task);
 
-        try {
-            addTask.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        addTask.execute(new UI());
 
-        String output = MESSAGE_TASK_SET_GRADED + NEWLINE
-                + MESSAGE_TASK_SET_GRADED_INFO + NEWLINE
-                + MESSAGE_TASK_SET_GRADED_INFO + NEWLINE
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
+                + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
+                + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
                 + EXPECTED_ADD_TASK;
 
         // checks displayed output to user

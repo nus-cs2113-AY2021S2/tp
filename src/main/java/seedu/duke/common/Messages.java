@@ -21,7 +21,7 @@ public class Messages {
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
-    public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list";
+    public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list.";
     public static final String MESSAGE_INVALID_MODULE = "%s is an invalid module code.";
 
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
@@ -67,8 +67,8 @@ public class Messages {
     public static final String MESSAGE_TASKS_TO_LIST = "Tasks for %s:";
     public static final String MESSAGE_TASKS_TO_MARK = "Which undone tasks have you completed?";
     public static final String MESSAGE_TASKS_TO_UNMARK = "Which done tasks would you like to undo?";
-    public static final String MESSAGE_TASK_SET_GRADED = "Is this task graded? (Y / N)";
-    public static final String MESSAGE_TASK_SET_GRADED_INFO = "Please enter \"Y\" or \"N\"";
+    public static final String MESSAGE_TASK_CHECK_GRADED = "Is this task graded? (Y / N)";
+    public static final String MESSAGE_TASK_CHECK_GRADED_INFO = "Please enter \"Y\" or \"N\"";
     public static final String MESSAGE_TASK_SELECT_INFO = NEWLINE
             + "Please enter the indices of the tasks you would like to %s." + NEWLINE
             + "Separate indices with a blank space." + NEWLINE;

@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -8,7 +7,7 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.commands.DeleteLessonCommand.getLessonName;
+import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 
@@ -18,13 +17,17 @@ public class ListLessonsCommand extends Command {
 
     }
 
+    /**
+     * Prints list of lessons in selected module.
+     *
+     * @param ui Instance of UI.
+     */
     @Override
-    public void execute(UI ui) throws CommandException {
+    public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
         ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
-        ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessonsFromList(lessonList, ui);
+        printLessons(module.getLessonList(), ui);
     }
 
     @Override
@@ -32,16 +35,22 @@ public class ListLessonsCommand extends Command {
         return false;
     }
 
-    public static void printLessonsFromList(ArrayList<Lesson> lessonList, UI ui) {
+    /**
+     * Prints list of lessons.
+     *
+     * @param lessonList ArrayList of lessons.
+     * @param ui Instance of lessons
+     */
+    private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonName = getLessonName(lesson);
+            String lessonType = getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
             String lessonOnlineLink = lesson.getOnlineLink();
             String teacherName = lesson.getTeachingStaff().getName();
             String teacherEmail = lesson.getTeachingStaff().getEmail();
-            ui.printMessage(String.format(FORMAT_PRINT_LESSON, counter, lessonName, lessonTime, lessonOnlineLink,
-                    teacherName, teacherEmail));
+            ui.printMessage(String.format(FORMAT_PRINT_LESSON, counter, lessonType, lessonTime,
+                    lessonOnlineLink, teacherName, teacherEmail));
             counter++;
         }
     }

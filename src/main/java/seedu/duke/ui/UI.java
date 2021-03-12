@@ -1,5 +1,6 @@
 package seedu.duke.ui;
 
+import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
@@ -8,47 +9,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
-import static seedu.duke.common.Constants.NO_STRING;
-import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
-import static seedu.duke.common.Messages.MESSAGE_EXIT;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SET_GRADED;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SET_GRADED_INFO;
-import static seedu.duke.common.Messages.MESSAGE_WELCOME;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
 import static seedu.duke.common.Messages.TAG_MODULE;
 
 public class UI {
   
-    private final Scanner in;
+    private final Scanner scanner;
 
     public UI() {
-        in = new Scanner(System.in);
+        scanner = new Scanner(System.in);
     }
 
+    /**
+     * Prints specified message.
+     *
+     * @param message String to print.
+     */
     public void printMessage(String message) {
         System.out.println(message);
     }
 
-    public void printWelcome() {
-        System.out.println(TAG_GULIO + MESSAGE_WELCOME);
-    }
-
-    public void printBye() {
-        System.out.println(MESSAGE_EXIT);
-    }
-
+    /**
+     * Reads input from user.
+     *
+     * @return String of input.
+     */
     public String readCommand() {
-        return in.nextLine();
+        return scanner.nextLine();
     }
 
+    /**
+     * Prints module indicator for user input.
+     */
     public void printModuleIndicator() {
         if (ModuleList.getSelectedModule() == null) {
             System.out.print(TAG_GULIO);
@@ -58,23 +57,11 @@ public class UI {
         }
     }
 
-    public boolean getIsTaskGraded() {
-        printMessage(MESSAGE_TASK_SET_GRADED);
-        String userInput = readCommand();
-        while (!userInput.equals(YES_STRING) && !userInput.equals(NO_STRING)) {
-            printMessage(MESSAGE_TASK_SET_GRADED_INFO);
-            userInput = readCommand();
-        }
-        return userInput.equals(YES_STRING);
-    }
-
-    public void printGetChosenTasksPrompt(String message, String commandVerb, ArrayList<Task> taskList) {
-        printMessage(message);
-        printSummarisedTasks(taskList);
-        printTaskInstructions(commandVerb);
-    }
-
-    // Prints only descriptions of all tasks in the task list.
+    /**
+     * Prints description of all tasks in task list.
+     *
+     * @param taskList Array list of tasks to print.
+     */
     public void printSummarisedTasks(ArrayList<Task> taskList) {
         int tasksCount = 0;
         for (Task task : taskList) {
@@ -84,20 +71,22 @@ public class UI {
         }
     }
 
-    public void printTaskInstructions(String commandVerb) {
-        String instructions = String.format(MESSAGE_TASK_SELECT_INFO, commandVerb);
-        printMessage(instructions);
+    /**
+     * Prints all tasks in selected module's task list.
+     */
+    public void printAllTasks() {
+        Module module = ModuleList.getSelectedModule();
+        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()));
+        printTasks(module.getTaskList(), false);
+        printTasks(module.getTaskList(), true);
     }
 
-    // Prints all tasks in the task list.
-    public void printAllTasks(String moduleCode, ArrayList<Task> taskList) {
-        printMessage(String.format(MESSAGE_TASKS_TO_LIST, moduleCode));
-        printTasks(taskList, false);
-        printTasks(taskList, true);
-    }
-
-    // Used by previous method.
-    // Prints identified tasks in the task list with matching "done" status.
+    /**
+     * Prints all tasks in specified task list.
+     *
+     * @param taskList Array list of tasks to print.
+     * @param isDone Status of tasks in taskList.
+     */
     public void printTasks(ArrayList<Task> taskList, Boolean isDone) {
         if (isDone) {
             printMessage(HEADER_DONE);
@@ -108,23 +97,34 @@ public class UI {
         for (Task task : taskList) {
             if (task.getDone() == isDone) {
                 tasksCount++;
-                String description = task.getDescription();
-                String gradedStatus = task.getGraded() ? MESSAGE_GRADED : "";
-                String deadline = task.getDeadline().format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
-                String listItem = String.format(FORMAT_PRINT_TASK, tasksCount, description, gradedStatus, deadline);
-                printMessage(listItem);
-                printRemarks(task);
+                printTask(task, tasksCount);
             }
         }
     }
 
-    public void printRemarks(Task task) {
+    /**
+     * Prints specified task.
+     *
+     * @param task Task to print.
+     * @param tasksCount Position of task in printed list.
+     */
+    public void printTask(Task task, int tasksCount) {
+        String description = task.getDescription();
+        String gradedStatus = task.getGraded() ? MESSAGE_GRADED : "";
+        String deadline = task.getDeadline().format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
+        String listItem = String.format(FORMAT_PRINT_TASK, tasksCount, description, gradedStatus, deadline);
+        printMessage(listItem);
         if (!task.getRemarks().equals("")) {
             System.out.print("\t" + task.getRemarks() + NEWLINE);
         }
     }
 
-
+    /**
+     * Reads user input until non-integer.
+     * Returns list of integers user input.
+     *
+     * @return Array list of integers users input.
+     */
     public ArrayList<Integer> readIntegers() {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Integer> listOfIntegers = new ArrayList<>();

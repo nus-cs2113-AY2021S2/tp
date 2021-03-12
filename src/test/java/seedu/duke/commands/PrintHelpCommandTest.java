@@ -2,6 +2,8 @@ package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.TestUtilAndConstants;
+import seedu.duke.common.DashboardCommands;
+import seedu.duke.common.Messages;
 import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
@@ -12,6 +14,7 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class PrintHelpCommandTest {
     private final PrintStream originalOut = System.out;
@@ -30,16 +33,22 @@ class PrintHelpCommandTest {
         ModuleList.reset();
 
         // execute command
-        Command command1 = new PrintHelpCommand();
-        command1.execute(new UI());
+        PrintHelpCommand printHelpCommand = new PrintHelpCommand();
+        printHelpCommand.execute(new UI());
 
-        String output = PrintHelpCommand.HELP_MESSAGE;
-        assertEquals(output + System.lineSeparator(), outContent.toString());
+        StringBuilder stringBuilder = new StringBuilder();
+        for (DashboardCommands command : DashboardCommands.values()) {
+            String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
+                    command.getWord(), command.getDescription());
+            stringBuilder.append(commandAndDescription).append(NEWLINE);
+        }
+        String output = stringBuilder.toString();
+        assertEquals(output + NEWLINE, outContent.toString());
 
         // module selected
         ModuleList.setSelectedModule(MODULE_CODE_3);
-        Command command2 = new PrintHelpCommand();
-        command2.execute(new UI());
+        printHelpCommand = new PrintHelpCommand();
+        printHelpCommand.execute(new UI());
 
         System.setOut(originalOut);
     }

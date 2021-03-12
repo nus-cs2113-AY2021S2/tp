@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
 import static seedu.duke.TestUtilAndConstants.formatter;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -31,10 +30,10 @@ class DeleteTaskCommandTest {
         Task task2 = new Task("iP increments", deadline, "remember to attach JAR file");
         Task task3 = new Task("lecture quiz", deadline, "complete before next lecture");
         Task task4 = new Task("read up notes", deadline, "complete before lecture");
-        ModuleList.getSelectedModule().addTaskToList(task1);
-        ModuleList.getSelectedModule().addTaskToList(task2);
-        ModuleList.getSelectedModule().addTaskToList(task3);
-        ModuleList.getSelectedModule().addTaskToList(task4);
+        ModuleList.getSelectedModule().addTask(task1);
+        ModuleList.getSelectedModule().addTask(task2);
+        ModuleList.getSelectedModule().addTask(task3);
+        ModuleList.getSelectedModule().addTask(task4);
         return ModuleList.getSelectedModule().getTaskList();
     }
 
@@ -44,7 +43,6 @@ class DeleteTaskCommandTest {
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
-        UI ui = new UI();
 
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
@@ -54,12 +52,7 @@ class DeleteTaskCommandTest {
         ArrayList<Task> taskList = initialiseTaskList();
 
         DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand();
-
-        try {
-            deleteTaskCommand.execute(ui);
-        } catch (CommandException e) {
-            System.out.println(MESSAGE_MODULE_ERROR);
-        }
+        deleteTaskCommand.execute(new UI());
 
         String output = "Which tasks would you like to delete?" + NEWLINE
                 + "1. weekly exercise" + NEWLINE
