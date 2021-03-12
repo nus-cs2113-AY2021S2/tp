@@ -16,14 +16,26 @@ import static seedu.duke.common.Messages.FORMAT_TASK_INFO;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.UNDONE_TASK;
 
+/**
+ * Represents the command used to print the module overview.
+ */
 public class ModuleInfoCommand extends Command {
 
+    /**
+     * Constructs a ModuleInfoCommand.
+     */
     public ModuleInfoCommand() {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
         System.out.print(String.format(FORMAT_MODULE_INFO, moduleCode));
     }
 
+    /**
+     * prints module overview.
+     *
+     * @param ui Instance of UI.
+     * @throws CommandException if command was not constructed properly.
+     */
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
@@ -35,6 +47,11 @@ public class ModuleInfoCommand extends Command {
         printTasksFromList(tasksList);
     }
 
+    /**
+     * prints lessons info for module overview.
+     *
+     * @param lessonList is the list of lessons.
+     */
     public static void printLessonsFromList(ArrayList<Lesson> lessonList) {
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonTypeString(lesson.getLessonType());
@@ -43,6 +60,11 @@ public class ModuleInfoCommand extends Command {
         }
     }
 
+    /**
+     * prints tasks info for module overview.
+     *
+     * @param tasksList is the list of tasks.
+     */
     public static void printTasksFromList(ArrayList<Task> tasksList) {
         int counter = 1;
         for (Task task : tasksList) {

@@ -10,7 +10,9 @@ import seedu.duke.ui.UI;
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.MESSAGE_ADDED_LESSON;
 
-
+/**
+ * Represents the command used to add a new lesson to the list of lessons.
+ */
 public class AddLessonCommand extends Command {
 
     private final Lesson lesson;

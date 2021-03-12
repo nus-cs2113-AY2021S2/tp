@@ -20,10 +20,12 @@ import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
 import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
 
+/**
+ * Represents the command used to open a lesson link.
+ */
 public class OpenLessonLinkCommand extends Command {
 
     /**
-     * Requests for list of indices to open link.
      * Opens links corresponding to specified indices.
      *
      * @param ui Instance of UI.
@@ -33,7 +35,7 @@ public class OpenLessonLinkCommand extends Command {
         ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessons(lessonList,ui);
+        printLessons(lessonList, ui);
 
         String line = ui.readCommand();
         ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
@@ -49,8 +51,8 @@ public class OpenLessonLinkCommand extends Command {
      * Prints list of links opened.
      *
      * @param lessonList ArrayList of lessons in specified module.
-     * @param indices Indices of links to open.
-     * @param ui Instance of UI.
+     * @param indices    Indices of links to open.
+     * @param ui         Instance of UI.
      */
     public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indices, UI ui) {
         for (int index : indices) {
@@ -65,7 +67,7 @@ public class OpenLessonLinkCommand extends Command {
      * Opens the specified link in browser.
      *
      * @param onlineLink Link to open.
-     * @param ui Instance of UI.
+     * @param ui         Instance of UI.
      */
     public static void openLessonLink(String onlineLink, UI ui) {
         if (Desktop.isDesktopSupported()) {
@@ -89,7 +91,7 @@ public class OpenLessonLinkCommand extends Command {
      * Prints list of lessons in specified module.
      *
      * @param lessonList ArrayList of lessons in specified module.
-     * @param ui Instance of UI.
+     * @param ui         Instance of UI.
      */
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
