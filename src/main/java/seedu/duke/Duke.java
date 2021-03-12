@@ -56,7 +56,7 @@ public class Duke {
     //Shift to ParserHandler class
     private Command parseCommand(ArrayList<String> parsedString) {
         try {
-            Command type = CommandHandler.createCommand(parsedString);
+            Command type = CommandHandler.createCommand(parsedString, records);
             System.out.println("Command is parsed");
             return type;
         } catch (CommandException e) {

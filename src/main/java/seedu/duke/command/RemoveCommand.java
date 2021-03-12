@@ -28,7 +28,7 @@ public class RemoveCommand extends Command {
     private String recordNumberStr;
     private int recordNumberInt;
 
-    public RemoveCommand(ArrayList<String> arguments) throws CommandException {
+    public RemoveCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_REMOVE, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_REMOVE, OPTION_INDEX);
         validateArguments(arguments, argumentTypeOrder, COMMAND_REMOVE);
@@ -40,10 +40,11 @@ public class RemoveCommand extends Command {
         }
 
         try {
-            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX));
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX), records);
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr
-                    + "\" is not an integer!", COMMAND_REMOVE);
+            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_REMOVE);
+        } catch (IndexOutOfBoundsException e) {
+            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_REMOVE);
         }
     }
 
@@ -53,18 +54,13 @@ public class RemoveCommand extends Command {
      * Removes the record at the specified index.
      *
      * @param records is the recordList.
-     * @param ui is the Ui object that interacts with the user.
+     * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInList = recordNumberInt - 1;
-        try {
-            Record currentRecord = records.getRecordAt(recordNumberInList);
-            ui.printMessage("This record will be removed: " + currentRecord);
-        } catch (IndexOutOfBoundsException e) {
-            ui.printMessage(COMMAND_REMOVE + " Command - " + "\""
-                    + recordNumberStr + "\" is out of bounds!");
-        }
+        Record currentRecord = records.getRecordAt(recordNumberInt);
+        ui.printMessage("This record will be removed: " + currentRecord);
+        records.deleteRecordAt(recordNumberInt);
     }
 }

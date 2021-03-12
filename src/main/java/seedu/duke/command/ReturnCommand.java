@@ -29,7 +29,7 @@ public class ReturnCommand extends Command {
     private String recordNumberStr;
     private int recordNumberInt;
 
-    public ReturnCommand(ArrayList<String> arguments) throws CommandException {
+    public ReturnCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_RETURN, OPTION_INDEX);
         validateArguments(arguments, argumentTypeOrder, COMMAND_RETURN);
@@ -41,10 +41,11 @@ public class ReturnCommand extends Command {
         }
 
         try {
-            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX));
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), records);
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr
-                    + "\" is not an integer!", COMMAND_RETURN);
+            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
+        } catch (IndexOutOfBoundsException e) {
+            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_RETURN);
         }
     }
 
@@ -53,25 +54,19 @@ public class ReturnCommand extends Command {
      * Prints a message containing the loan that will be marked as returned.
      *
      * @param records is the recordList.
-     * @param ui is the Ui object that interacts with the user.
+     * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInList = recordNumberInt - 1;
 
-        try {
-            Record currentRecord = records.getRecordAt(recordNumberInList);
-            if (currentRecord instanceof Loan) {
-                Loan currentLoan = (Loan) currentRecord;
-                currentLoan.markAsReturned();
-                ui.printMessage("Loan marked as returned: " + currentLoan);
-            } else {
-                ui.printMessage("Specified record number is not a loan!");
-            }
-        } catch (IndexOutOfBoundsException e) {
-            ui.printMessage(COMMAND_RETURN + " Command - " + "\""
-                    + recordNumberStr + "\" is out of bounds!");
+        Record currentRecord = records.getRecordAt(recordNumberInt);
+        if (currentRecord instanceof Loan) {
+            Loan currentLoan = (Loan) currentRecord;
+            currentLoan.markAsReturned();
+            ui.printMessage("Loan marked as returned: " + currentLoan);
+        } else {
+            ui.printMessage("Specified record number is not a loan!");
         }
     }
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import seedu.duke.exception.CommandException;
+import seedu.duke.record.RecordList;
 
 public class Validators {
 
@@ -51,8 +52,11 @@ public class Validators {
         throw new DateTimeException("input \"" + dateInput + "\" is not an acceptable Date Format.");
     }
 
-    public static int validateIndex(String inputToCheck) throws NumberFormatException {
-        return Integer.parseInt(inputToCheck);
+    public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
+            IndexOutOfBoundsException {
+        int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
+        records.getRecordAt(recordNumberInList);
+        return recordNumberInList;
     }
 
     public static double validateAmount(String inputToCheck) throws NumberFormatException,
