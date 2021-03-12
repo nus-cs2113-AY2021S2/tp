@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import java.util.List;
 
+import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 
 /**
@@ -19,6 +20,6 @@ public abstract class Command {
         return isExit;
     }
 
-    public abstract void execute(List<Food> fridge);
+    public abstract void execute(List<Food> fridge) throws InvalidInputException;
 
 }

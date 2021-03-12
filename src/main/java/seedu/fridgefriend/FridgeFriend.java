@@ -1,11 +1,12 @@
 package seedu.fridgefriend;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import seedu.fridgefriend.command.Command;
+import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Parser;
+import seedu.fridgefriend.utilities.Ui;
 
 public class FridgeFriend {
 
@@ -13,43 +14,26 @@ public class FridgeFriend {
     private static boolean isExit = false;
 
     public static void main(String[] args) {
-        printWelcomeMessage();
-        Scanner in = new Scanner(System.in);
-        run(in);
-        printByeMessage();
+        Ui.printWelcomeMessage();
+        run();
+        Ui.printByeMessage();
     }
 
-    private static void run(Scanner in) {
+    private static void run() {
+        new Ui();
         while (!isExit) {
             try {
-                String input = getUserInput(in);
+                String input = Ui.getUserInput();
                 Command command = Parser.getCommand(input);
                 executeCommand(command);
                 isExit = command.isExit();
             } catch (Exception exception) {
-                printExceptionMessage(exception);
+                Ui.printExceptionMessage(exception);
             }
         }
     }
 
-    private static void executeCommand(Command command) {
+    private static void executeCommand(Command command) throws InvalidInputException {
         command.execute(fridge);
-    }
-
-    private static String getUserInput(Scanner in) {
-        return in.nextLine();
-    }
-
-    private static void printByeMessage() {
-        System.out.println("Bye. Hope to see you again soon!\n");
-    }
-
-    private static void printWelcomeMessage() {
-        System.out.println("Hello! I'm FridgeFriend!");
-        System.out.println("What can I do for you?\n");
-    }
-
-    private static void printExceptionMessage(Exception exception) {
-        System.out.println(exception.getMessage());
     }
 }

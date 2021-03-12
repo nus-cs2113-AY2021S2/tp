@@ -3,6 +3,7 @@ package seedu.fridgefriend.command;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
+import seedu.fridgefriend.utilities.Ui;
 
 import java.util.List;
 
@@ -32,8 +33,12 @@ public class AddCommand extends Command {
     }
 
     private void showResults() {
-        System.out.println("Great! I have added " + foodToAdd.getFoodName() + " into your fridge.");
-        System.out.println("Details: " + foodToAdd.toString() + "\n");
+        String message = "Great! I have added "
+                + foodToAdd.getFoodName()
+                + " into your fridge.\n"
+                + "Details: "
+                + foodToAdd.toString();
+        Ui.printMessage(message);
     }
 
 }

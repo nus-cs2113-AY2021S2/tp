@@ -3,6 +3,7 @@ package seedu.fridgefriend.command;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.utilities.Ui;
 
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) {
+    public void execute(List<Food> fridge) throws InvalidInputException {
         if (category.equals("")) {
             listEverythingInFridge(fridge);
         } else {
@@ -31,42 +32,46 @@ public class ListCommand extends Command {
         }
     }
 
-    private void listByCategory(List<Food> fridge) {
-        try {
-            checkIsValidCategory();
-            System.out.println("These are the " + foodCategory + " in your fridge:");
-            for (int i = 0; i < fridge.size(); i++) {
-                matchCategory(i, fridge);
-            }
-            System.out.println();
-        } catch (InvalidInputException invalidInputException) {
-            System.out.println("Sorry my friend, please enter a valid food category.\n");
+    private void listByCategory(List<Food> fridge) throws InvalidInputException {
+        checkIsValidCategory();
+        String message = "These are the " + foodCategory + " in your fridge:\n";
+        for (int i = 0; i < fridge.size(); i++) {
+            message += matchCategory(i, fridge);
         }
+        Ui.printMessage(message);
     }
 
     private void listEverythingInFridge(List<Food> fridge) {
-        System.out.println("Here are the items in your fridge:");
+        String message = "Here are the items in your fridge:";
         for (int i = 0; i < fridge.size(); i++) {
-            int indexShownToUser = i + EXTRA_INDEX;
-            System.out.println("\t" + indexShownToUser +  ". "
-                    + fridge.get(i).getFoodName() + " ["
-                    + fridge.get(i).getCategory() + "]");
+            message += getFoodDescription(i, fridge);
         }
-        System.out.println();
+        Ui.printMessage(message);
+    }
+
+    private String getFoodDescription(int i, List<Food> fridge) {
+        int indexShownToUser = i + EXTRA_INDEX;
+        String foodDescription = 
+                "\n\t" + indexShownToUser +  ". "
+                + fridge.get(i).getFoodName() + " ["
+                + fridge.get(i).getCategory() + "]";
+        return foodDescription;
     }
 
     private void checkIsValidCategory() throws InvalidInputException {
         if (!FoodCategory.contains(category)) {
-            throw new InvalidInputException();
+            String errorMessage = "Sorry my friend, please enter a valid food category.";
+            throw new InvalidInputException(errorMessage);
         }
     }
 
-    private void matchCategory(int index, List<Food> fridge) {
+    private String matchCategory(int index, List<Food> fridge) {
+        String foodAndCategory = "";
         if (fridge.get(index).getCategory().equals(foodCategory)) {
             int indexShownToUser = index + EXTRA_INDEX;
-            System.out.println("\t" + indexShownToUser +  ". "
-                    + fridge.get(index).getFoodName());
+            foodAndCategory = "\t" + indexShownToUser + ". " + fridge.get(index).getFoodName();
         }
+        return foodAndCategory;
     }
 
 }

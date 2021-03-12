@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.utilities.Ui;
 
 import java.util.List;
 
@@ -46,9 +47,10 @@ public class RemoveCommand extends Command {
     }
 
     private void showMessage(List<Food> fridge) {
-        System.out.println("Noted! I've removed " + foodToBeRemove.getFoodName()
+        String message = "Noted! I've removed " + foodToBeRemove.getFoodName()
                 + " from your fridge.\n"
                 + "Now you have " + fridge.size()
-                + " food in the fridge.\n");
+                + " food in the fridge.";
+        Ui.printMessage(message);
     }
 }

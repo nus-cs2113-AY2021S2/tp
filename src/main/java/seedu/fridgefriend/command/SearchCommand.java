@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
+import seedu.fridgefriend.utilities.Ui;
 
 import java.util.List;
 
@@ -35,12 +36,12 @@ public class SearchCommand extends Command {
     }
 
     private void showResults(Boolean isFound) {
+        String message;
         if (isFound == true) {
-            System.out.println("You have " + foodName
-                    + " in your fridge.\n");
+            message = "You have " + foodName + " in your fridge.";
         } else {
-            System.out.println("You do not have " + foodName
-                    + " in your fridge.\n");
+            message = "You do not have " + foodName + " in your fridge.";
         }
+        Ui.printMessage(message);
     }
 }
