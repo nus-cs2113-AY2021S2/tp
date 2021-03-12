@@ -68,13 +68,13 @@ public class AddCommand extends Command {
             Expense expenseObj = new Expense(amount, issueDate, description);
             records.addRecord(expenseObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(expenseObj);
+            ui.printSuccessfulAdd(expenseObj, records.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description);
             records.addRecord(loanObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(loanObj);
+            ui.printSuccessfulAdd(loanObj, records.getRecordCount());
             break;
         case SAVING:
             // Fallthrough
@@ -82,7 +82,7 @@ public class AddCommand extends Command {
             Saving savingObj = new Saving(amount, issueDate, description);
             records.addRecord(savingObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(savingObj);
+            ui.printSuccessfulAdd(savingObj, records.getRecordCount());
         }
     }
 }
