@@ -7,7 +7,8 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 import java.util.List;
 
 /**
- * Add a food item into the Fridge.
+ * Represents a command to add a food item into the Fridge.
+ * When calling constructor, foodName, category, expiryDate, and location are necessary fields
  */
 public class AddCommand extends Command {
 

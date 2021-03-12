@@ -6,12 +6,11 @@ import seedu.fridgefriend.food.Food;
 import java.util.List;
 
 /**
- * Search for a specific food in the fridge.
+ * Represents a command to search for a specific food item in the fridge.
  */
 public class SearchCommand extends Command {
 
     private String foodName;
-    private static int START_COUNTER = 1;
 
     public SearchCommand(String foodName) throws EmptyDescriptionException {
         if (foodName.isEmpty()) {

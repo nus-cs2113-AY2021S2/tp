@@ -7,7 +7,7 @@ import seedu.fridgefriend.food.FoodCategory;
 import java.util.List;
 
 /**
- * List the items in the fridge to the user.
+ * Represents a command to list the items in the fridge to the user.
  * When calling constructor, description is a necessary field
  * to specify whether to list everything or list by category.
  */

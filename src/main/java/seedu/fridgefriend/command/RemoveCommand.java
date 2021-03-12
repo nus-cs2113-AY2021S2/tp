@@ -1,11 +1,12 @@
 package seedu.fridgefriend.command;
 
+import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.food.Food;
 
 import java.util.List;
 
 /**
- * Remove the food from the fridge by index specify by user.
+ * Represents a command to remove a food item from the fridge by index specify by user.
  */
 public class RemoveCommand extends Command {
 
@@ -14,10 +15,21 @@ public class RemoveCommand extends Command {
     private final int indexToRemove;
     private Food foodToBeRemove;
 
-    public RemoveCommand(int indexToRemove, List<Food> fridge) {
+    /**
+     * Constructor creates a RemoveCommand object.
+     * 
+     * @param indexToRemove integer index given by user
+     * @param fridge fridge data structure
+     * @throws InvalidIndexException if provided index is out of bounds
+     */
+    public RemoveCommand(int indexToRemove, List<Food> fridge) throws InvalidIndexException {
         int actualIndexToRemove = indexToRemove - EXTRA_INDEX;
         this.indexToRemove = actualIndexToRemove;
-        this.foodToBeRemove = fridge.get(actualIndexToRemove);
+        try {
+            this.foodToBeRemove = fridge.get(actualIndexToRemove);
+        } catch (Exception e) {
+            throw new InvalidIndexException(e);
+        }
     }
 
     @Override

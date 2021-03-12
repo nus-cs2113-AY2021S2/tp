@@ -4,6 +4,9 @@ import java.util.List;
 
 import seedu.fridgefriend.food.Food;
 
+/**
+ * Represents a command to exit the application.
+ */
 public class ByeCommand extends Command {
 
     public ByeCommand() {
