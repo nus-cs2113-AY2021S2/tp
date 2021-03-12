@@ -14,11 +14,11 @@ import seedu.duke.task.Task;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParserTest {
     @Test
-        // DASHBOARD COMMAND
+    // DASHBOARD COMMAND
     void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException {
         ModuleList.reset();
 
@@ -31,32 +31,32 @@ class ParserTest {
     }
 
     @Test
-        // IN MODULE COMMAND
-        // add lesson command
+    // IN MODULE COMMAND
+    // add lesson command
     void parse_inModuleCommandListTask_ListTask() throws UnknownCommandException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
-        
+
         Parser parser = new Parser();
         String input = "tasks";
-        
+
         Command actualCommand = parser.parse(input);
         assertTrue(actualCommand instanceof ListTasksCommand);
     }
 
     @Test
-        // add lesson command - all detail fields included
+    // add lesson command - all detail fields included
     void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws UnknownCommandException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 
         Parser parser = new Parser();
-        String input = "add lesson tutorial ;; Wednesday 9am-10am ;; www.zoom.com/1234 ;; Xianhao Cheng ;; xh123@nus.edu.sg";
+        String input = "add lesson tutorial ;; Wednesday 9am-10am ;; www.zoom.com/1234 ;; Xianhao Cheng ;; " 
+                + "xh123@nus.edu.sg";
 
         Command actualCommand = parser.parse(input);
         assertTrue(actualCommand instanceof AddLessonCommand);
     }
-
 
 
 }
