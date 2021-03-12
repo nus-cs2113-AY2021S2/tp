@@ -3,6 +3,7 @@ package seedu.duke;
 import java.util.ArrayList;
 
 public class Delivery {
+    
     private String deliveryID;
     private String address; // todo implement enums?
     private String recipient; // contains name of receipient
