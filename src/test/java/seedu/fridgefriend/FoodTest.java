@@ -58,7 +58,7 @@ public class FoodTest {
                 "20-03-2021", FoodStorageLocation.UPPER_SHELF);
         assertEquals(FoodCategory.EGG, eggs.getCategory());
         assertEquals("eggs", eggs.getFoodName());
-        assertEquals("20-03-2021", eggs.getExpiryDate());
+        assertEquals("20-03-2021", eggs.getExpiryDate().toString());
         assertEquals(FoodStorageLocation.UPPER_SHELF, eggs.getStorageLocation());
     }
 }
