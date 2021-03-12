@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.common.ArgumentType;
 import seedu.duke.exception.CommandException;
+import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -27,7 +28,7 @@ public class RemoveCommand extends Command {
     private String recordNumberStr;
     private int recordNumberInt;
 
-    public RemoveCommand(ArrayList<String> arguments) throws CommandException {
+    public RemoveCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_REMOVE, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_REMOVE, OPTION_INDEX);
         validateArguments(arguments, argumentTypeOrder, COMMAND_REMOVE);
@@ -39,10 +40,11 @@ public class RemoveCommand extends Command {
         }
 
         try {
-            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX));
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX), records);
         } catch (NumberFormatException e) {
-            throw new CommandException("Index \"" + recordNumberStr
-                    + "\" is not an integer!", COMMAND_REMOVE);
+            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_REMOVE);
+        } catch (IndexOutOfBoundsException e) {
+            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_REMOVE);
         }
     }
 
@@ -52,21 +54,13 @@ public class RemoveCommand extends Command {
      * Removes the record at the specified index.
      *
      * @param records is the recordList.
-     * @param ui is the Ui object that interacts with the user.
+     * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInList = recordNumberInt - 1;
-        try {
-            // Object description is used here, may need to be replaced with the full record entry once
-            // list structure is finalized
-            String recordName = records.getRecordAt(recordNumberInList).getDescription();
-            ui.printMessage("Record to remove: " + recordName);
-            records.deleteRecordAt(recordNumberInt);
-        } catch (IndexOutOfBoundsException e) {
-            ui.printMessage(COMMAND_REMOVE + " Command - " + "\""
-                    + recordNumberStr + "\" is out of bounds!");
-        }
+        Record currentRecord = records.getRecordAt(recordNumberInt);
+        ui.printMessage("This record will be removed: " + currentRecord);
+        records.deleteRecordAt(recordNumberInt);
     }
 }

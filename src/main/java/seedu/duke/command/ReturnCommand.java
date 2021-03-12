@@ -16,6 +16,7 @@ import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.common.Constant.OPTION_INDEX;
+import static seedu.duke.common.Validators.validateIndex;
 
 public class ReturnCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
@@ -25,17 +26,26 @@ public class ReturnCommand extends Command {
     };
     protected static final String COMMAND_RETURN = "return";
 
-    private String recordNumber;
+    private String recordNumberStr;
+    private int recordNumberInt;
 
-    public ReturnCommand(ArrayList<String> arguments) throws CommandException {
+    public ReturnCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_RETURN, OPTION_INDEX);
         validateArguments(arguments, argumentTypeOrder, COMMAND_RETURN);
 
         if (hasOption(arguments, OPTION_INDEX)) {
-            recordNumber = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
+            recordNumberStr = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
         } else {
             throw new CommandException("missing option: -i", COMMAND_RETURN);
+        }
+
+        try {
+            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), records);
+        } catch (NumberFormatException e) {
+            throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
+        } catch (IndexOutOfBoundsException e) {
+            throw new CommandException("Index \"" + recordNumberStr + "\" is out of bounds!", COMMAND_RETURN);
         }
     }
 
@@ -44,15 +54,13 @@ public class ReturnCommand extends Command {
      * Prints a message containing the loan that will be marked as returned.
      *
      * @param records is the recordList.
-     * @param ui is the Ui object that interacts with the user.
+     * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        int recordNumberInt = Integer.parseInt(recordNumber);
-        int recordNumberInList = recordNumberInt - 1;
 
-        Record currentRecord = records.getRecordAt(recordNumberInList);
+        Record currentRecord = records.getRecordAt(recordNumberInt);
         if (currentRecord instanceof Loan) {
             Loan currentLoan = (Loan) currentRecord;
             currentLoan.markAsReturned();
