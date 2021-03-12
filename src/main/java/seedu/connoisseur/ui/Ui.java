@@ -4,6 +4,12 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import static seedu.connoisseur.messages.Messages.WELCOME_MESSAGE;
+import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
+import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
+import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.FOLDER_SUCCESS;
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -35,21 +41,27 @@ public class Ui {
     }
 
     public static void printHelpMessage() {
+        printToScreen(HELP_MESSAGE);
     }
 
     public static void printExitMessage() {
+        printToScreen(EXIT_MESSAGE);
     }
 
     public static void printErrorMessage() {
+        printToScreen(ERROR_MESSAGE);
     }
 
     public static void printFileExistsMessage() {
+        printToScreen(FILE_ALREADY_EXISTS);
     }
 
     public static void printFolderExistsMessage() {
+        printToScreen(FOLDER_ALREADY_EXISTS);
     }
 
     public static void printSuccessfulCreateFolderMessage() {
+        printToScreen(FOLDER_SUCCESS);
     }
 
     public static void printPresentDirectory() {
