@@ -119,7 +119,7 @@ public class FridgeFriend {
             throw new InvalidInputException();
         }
 
-        // Get Objects
+        // Get food attributes based on matcher object
         String foodName = matcher.group("name");
         FoodCategory foodCategory = convertStringToFoodCategory(matcher.group("category"));
         String expiryString = matcher.group("expiryDate");
