@@ -23,24 +23,24 @@ public class Sorter {
      */
     public void changeSortMethod(String sortMethod) {
         switch (sortMethod) {
-            case "rating":
-                this.sortMethod = SortMethod.RATING;
-                break;
-            case "category":
-                this.sortMethod = SortMethod.CATEGORY;
-                break;
-            case "title":
-                this.sortMethod = SortMethod.TITLE;
-                break;
-            case "date_earliest":
-                this.sortMethod = SortMethod.DATE_EARLIEST;
-                break;
-            case "date_latest":
-                this.sortMethod = SortMethod.DATE_LATEST;
-                break;
-            default:
-                break;
-            }
+        case "rating":
+            this.sortMethod = SortMethod.RATING;
+            break;
+        case "category":
+            this.sortMethod = SortMethod.CATEGORY;
+            break;
+        case "title":
+            this.sortMethod = SortMethod.TITLE;
+            break;
+        case "date_earliest":
+            this.sortMethod = SortMethod.DATE_EARLIEST;
+            break;
+        case "date_latest":
+            this.sortMethod = SortMethod.DATE_LATEST;
+            break;
+        default:
+            break;
+        }
     }
 
     /**

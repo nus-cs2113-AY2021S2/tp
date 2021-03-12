@@ -8,11 +8,11 @@ import seedu.connoisseur.sorter.Sorter;
 import java.util.ArrayList;
 
 /**
- * Class with methods for different commands
+ * Class with methods for different commands. 
  */
 public class CommandList {
-    final static int LIST_CATEGORY_INPUT_LENGTH = 4;
-    final static int MAX_WHITE_SPACE = 20;
+    static final int LIST_CATEGORY_INPUT_LENGTH = 4;
+    static final int MAX_WHITE_SPACE = 20;
 
     private ArrayList<Review> reviewList;
     private Sorter sorter;
@@ -23,16 +23,18 @@ public class CommandList {
     }
 
     /**
-     * List reviews according to different types of input
+     * List reviews according to different types of input. 
      *
-     * @param input is the listing method preferred by user. If there is no preferred listing method, default listing
-     *              will be used.
+     * @param input is the listing method preferred by user. If there is no
+     *              preferred listing method, default listing will be used.
      */
     public void listReviews(String input) {
         if (reviewList.size() == 0) {
             System.out.println("No reviews found. \uD83D\uDE1E");
         } else {
-            if (input.length() <= 0) {};
+            if (input.length() <= 0) {
+            }
+            ;
             String listType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
             Sorter.sort(reviewList, listType);
             System.out.println("Here are your reviews:");
@@ -74,16 +76,16 @@ public class CommandList {
     }
 
     /**
-     * Print text to help user with using the application
+     * Print text to help user with using the application. 
      */
     public static void printHelp() {
         Ui.printHelpMessage();
     }
 
     /**
-     * Delete review
+     * Delete review. 
      */
-    public void deleteReview (String title){
+    public void deleteReview(String title) {
         int reviewIndex = Review.getReviewIndex(title);
         if (reviewIndex == -1) {
             System.out.println("Review does not exists!");
@@ -94,7 +96,8 @@ public class CommandList {
     }
 
     public void sortReview(String sortType) {
-        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest") || sortType.equals("date_latest")) {
+        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest")
+                || sortType.equals("date_latest")) {
             sorter.changeSortMethod(sortType);
             System.out.print("Success! Your preferred sorting method has been saved: ");
             System.out.println(sortType.toUpperCase());
@@ -105,7 +108,7 @@ public class CommandList {
 
     public void addReview(String input) {
         try {
-            String review[] = input.split(" ", 4);
+            String[] review = input.split(" ", 4);
             Review r = new Review(review[0], review[1], Integer.parseInt(review[2]), review[3]);
             reviewList.add(r);
             System.out.println(review[0] + " created.");

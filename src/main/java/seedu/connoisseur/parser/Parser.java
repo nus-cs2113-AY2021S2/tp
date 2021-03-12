@@ -17,7 +17,7 @@ public class Parser {
         String description;
         try { 
             description = input.split(" ", 2)[1].trim();
-        } catch(ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             description = "";
         }
 
@@ -31,15 +31,15 @@ public class Parser {
             commandList.deleteReview(description);
         } else if (command.equals("help")) {
             CommandList.printHelp();
-//            Ui.printDivider();
-//            Ui.printHelpCommandList();
-//            Ui.printDivider();
+            /*Ui.printDivider();
+            Ui.printHelpCommandList();
+            Ui.printDivider();*/
         } else if (command.equals("bye")) {
             return true;
         }
-//        else {
-//            throw new InvalidTaskCommandException();
-//        }
+        /*else {
+            throw new InvalidTaskCommandException();
+        }*/
 
         return false;
     }
