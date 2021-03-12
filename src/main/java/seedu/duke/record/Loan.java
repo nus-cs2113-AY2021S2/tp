@@ -3,6 +3,7 @@ package seedu.duke.record;
 import java.time.LocalDate;
 
 public class Loan extends Record {
+    private static final String TYPE_LOAN = "L";
     private boolean isReturn;
 
     public Loan(double amount, LocalDate issuedDate, String description) {
@@ -16,7 +17,8 @@ public class Loan extends Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "List loans!";
+        String formattedRecordType = "[" + TYPE_LOAN + "]";
+        String formattedLoanStatus = "[" + (isReturn ? "v" : " ") + "]";
+        return formattedRecordType + super.toString() + formattedLoanStatus;
     }
 }

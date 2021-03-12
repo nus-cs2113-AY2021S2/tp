@@ -9,6 +9,8 @@
 Loading from save... Successful
 $$ Command is parsed
 =========================================================
+Here is your Loan list:
+
 =========================================================
 $$ list Command - conflict with options: -l, -e
 $$ list Command - missing option: [-e | -l | -s]

@@ -18,7 +18,7 @@ public class Expense extends Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "List expenses!";
+        String formattedRecordType = "[" + TYPE_EXPENSE + "]";
+        return formattedRecordType + super.toString();
     }
 }

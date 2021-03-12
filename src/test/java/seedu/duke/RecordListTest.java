@@ -18,9 +18,9 @@ public class RecordListTest {
         records.addRecord(new Loan(100, validateDate("2020/01/01"), "loan to bob"));
         records.addRecord(new Saving(20, validateDate("2020/01/01"), "red packet"));
         assertEquals(3, records.getRecordCount());
-        assertEquals("List expenses!", records.getRecordAt(0).toString());
-        assertEquals("List loans!", records.getRecordAt(1).toString());
-        assertEquals("List savings!", records.getRecordAt(2).toString());
+        assertEquals("[E][2020-01-01] electric bills ", records.getRecordAt(0).toString());
+        assertEquals("[L][2020-01-01] loan to bob [ ]", records.getRecordAt(1).toString());
+        assertEquals("[S][2020-01-01] red packet ", records.getRecordAt(2).toString());
     }
 
     @Test
@@ -31,8 +31,8 @@ public class RecordListTest {
         records.addRecord(new Saving(20, validateDate("2020/01/01"), "red packet"));
         records.deleteRecordAt(1);
         assertEquals(2, records.getRecordCount());
-        assertEquals("List expenses!", records.getRecordAt(0).toString());
-        assertEquals("List savings!", records.getRecordAt(1).toString());
+        assertEquals("[E][2020-01-01] electric bills ", records.getRecordAt(0).toString());
+        assertEquals("[S][2020-01-01] red packet ", records.getRecordAt(1).toString());
     }
 
     @Test
