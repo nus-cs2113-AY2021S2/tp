@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.common.ArgumentType;
 import seedu.duke.exception.CommandException;
+import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -59,11 +60,8 @@ public class RemoveCommand extends Command {
     public void execute(RecordList records, Ui ui, Storage storage) {
         int recordNumberInList = recordNumberInt - 1;
         try {
-            // Object description is used here, may need to be replaced with the full record entry once
-            // list structure is finalized
-            String recordName = records.getRecordAt(recordNumberInList).getDescription();
-            ui.printMessage("Record to remove: " + recordName);
-            records.deleteRecordAt(recordNumberInt);
+            Record currentRecord = records.getRecordAt(recordNumberInList);
+            ui.printMessage("This record will be removed: " + currentRecord);
         } catch (IndexOutOfBoundsException e) {
             ui.printMessage(COMMAND_REMOVE + " Command - " + "\""
                     + recordNumberStr + "\" is out of bounds!");
