@@ -22,7 +22,7 @@ public class FoodTest {
     @Test
     void testStorageExpiryDate() throws InvalidDateException {
         Food beef = new Food(FoodCategory.MEAT, "beef");
-        beef.setExpiryDate("15-3-2021");
+        beef.setExpiryDate("15-0    3-2021");
         assertEquals("15-03-2021", beef.getExpiryDate().toString());
     }
 
