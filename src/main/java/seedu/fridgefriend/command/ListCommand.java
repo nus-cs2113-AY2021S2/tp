@@ -33,11 +33,16 @@ public class ListCommand extends Command {
 
     private void listByCategory() throws InvalidInputException {
         checkIsValidCategory();
+        String message = getListByCategoryMessage();
+        Ui.printMessage(message);
+    }
+
+    private String getListByCategoryMessage() {
         String message = "These are the " + foodCategory + " in your fridge:\n";
         for (int i = 0; i < Fridge.getSize(); i++) {
             message += matchCategory(i);
         }
-        Ui.printMessage(message);
+        return message;
     }
 
     private void listEverythingInFridge() {
