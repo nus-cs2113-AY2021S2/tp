@@ -3,9 +3,10 @@ package seedu.duke;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
+import seedu.duke.exception.FileLoadingException;
+import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
-import seedu.duke.exception.CommandException;
 
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -16,6 +17,12 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
+
+    public Duke() {
+        ui = new Ui();
+        storage = new Storage();
+        records = new RecordList();
+    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -34,14 +41,20 @@ public class Duke {
     }
 
     private void end() {
+        ui.printGoodByeMessage();
         System.exit(0);
     }
 
     private void start() {
-        ui = new Ui();
-        storage = new Storage();
-        records = new RecordList(storage.loadFile());
-        ui.printWelcomeMessage();
+        try {
+            ui = new Ui();
+            storage = new Storage();
+            records = new RecordList(storage.loadFile());
+            ui.printWelcomeMessage();
+        } catch (FileLoadingException e) {
+            Ui.printInitError();
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     private void commandLooper() {
@@ -50,24 +63,11 @@ public class Duke {
         do {
             rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
-            command = parseCommand(parsedStringList);
+            command = CommandHandler.parseCommand(parsedStringList, records);
             if (command != null) {
                 command.execute(records, ui, storage);
             }
         } while (!ExitCommand.isExit(command));
     }
 
-    //Shift to ParserHandler class
-    private Command parseCommand(ArrayList<String> parsedString) {
-        try {
-            //System.out.println("Command is parsed");
-            return CommandHandler.createCommand(parsedString, records);
-            //Command type = CommandHandler.createCommand(parsedString, records);
-            //System.out.println("Command is parsed");
-            //return type;
-        } catch (CommandException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
 }

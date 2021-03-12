@@ -62,5 +62,6 @@ public class RemoveCommand extends Command {
         Record currentRecord = records.getRecordAt(recordNumberInt);
         ui.printMessage("This record will be removed: " + currentRecord);
         records.deleteRecordAt(recordNumberInt);
+        storage.saveRecordListData(records);
     }
 }

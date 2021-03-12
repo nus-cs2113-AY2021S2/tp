@@ -1,5 +1,6 @@
 package seedu.duke.storage;
 
+import seedu.duke.exception.FileLoadingException;
 import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
@@ -8,6 +9,7 @@ import seedu.duke.record.Saving;
 import seedu.duke.record.RecordList;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,12 +24,13 @@ import java.util.regex.Pattern;
 
 public class Storage {
     private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
-    private static final String REGEX_PATTERN_EXPENSE = "[E]\\s\\|\\s.+";
-    private static final String REGEX_PATTERN_LOAN = "[L]\\s\\|\\s.+";
-    private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s.+";
+    private static final String REGEX_PATTERN_EXPENSE = "[E]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
+    private static final String REGEX_PATTERN_LOAN = "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]";
+    private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final int INDEX_OF_DESCRIPTION = 1;
     private static final int INDEX_OF_AMOUNT = 2;
     private static final int INDEX_OF_DATE = 3;
+    private static final int INDEX_OF_ISRETURN = 4;
 
     public Path dataFilePath;
 
@@ -43,19 +46,6 @@ public class Storage {
         return Files.exists(filePath);
     }
 
-    /**
-     * Saves the records from the RecordList into a .txt file.
-     *
-     * @param records is the RecordList of all the Record objects
-     * @throws IOException when the file is corrupted.
-     */
-    public void saveFile(ArrayList<Record> records) throws IOException {
-        FileWriter fw = new FileWriter(dataFilePath.toString(), false);
-        for (Record r : records) {
-            fw.write(r.convertFileFormat() + System.lineSeparator());
-        }
-    }
-
     public void saveRecordListData(RecordList records) {
         try {
             writeToSaveFile(records);
@@ -66,7 +56,6 @@ public class Storage {
 
     private void writeToSaveFile(RecordList records) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
-        fw.write("Test Save!\n");
         for (int i = 0; i < records.getRecordCount(); i++) {
             Record currentRecord = records.getRecordAt(i);
             fw.write(currentRecord.convertFileFormat() + System.lineSeparator());
@@ -79,7 +68,7 @@ public class Storage {
      *
      * @return a RecordList from the loaded file.
      */
-    public ArrayList<Record> loadFile() {
+    public ArrayList<Record> loadFile() throws FileLoadingException {
         ArrayList<Record> records = new ArrayList<>();
         try {
             File loadFile = dataFilePath.toFile();
@@ -91,15 +80,14 @@ public class Storage {
                     records.add(record);
                 }
             }
-            return records;
-        } catch (Exception e) {
-            System.exit(-1);
-            return records;
+        } catch (FileNotFoundException | InvalidFileInputException e) {
+            throw new FileLoadingException();
         }
+
+        return records;
     }
 
-    private Record parseRecord(String rawData) {
-        try {
+    private Record parseRecord(String rawData) throws InvalidFileInputException {
             if (Pattern.matches(REGEX_PATTERN_EXPENSE, rawData)) {
                 return loadExpense(rawData);
             } else if (Pattern.matches(REGEX_PATTERN_LOAN, rawData)) {
@@ -107,19 +95,16 @@ public class Storage {
             } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
                 return loadSaving(rawData);
             } else {
-                throw new InvalidFileInputException("No such Record type!");
+                throw new InvalidFileInputException();
             }
-        } catch (InvalidFileInputException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
     }
 
     private String extractArg(String rawData, int index) throws InvalidFileInputException {
         String[] args = rawData.split("\\|");
         if(index < 0 || index > args.length) {
-            throw new InvalidFileInputException("Record has fewer arguments than expected!");
+            throw new InvalidFileInputException();
         }
+
         return args[index].strip();
     }
 
@@ -131,11 +116,9 @@ public class Storage {
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
             issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                    DateTimeFormatter.ofPattern("ddMMyyyy"));
-        } catch (NumberFormatException e) {
-            throw new InvalidFileInputException("Amount not in recognisable format!");
-        } catch (DateTimeParseException e) {
-            throw new InvalidFileInputException("Date not in recognisable format!");
+                    DateTimeFormatter.ofPattern("yyyy-M-d"));
+        } catch (NumberFormatException | DateTimeParseException e) {
+            throw new InvalidFileInputException();
         }
 
         return new Expense(amount, issueDate, description);
@@ -143,29 +126,31 @@ public class Storage {
 
     private Record loadLoan(String rawData) throws InvalidFileInputException{
         double amount;
+        boolean isReturn;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
         LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                DateTimeFormatter.ofPattern("ddMMyyyy"));
+                DateTimeFormatter.ofPattern("yyyy-M-d"));
 
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
-        } catch (NumberFormatException e) {
-            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+            isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_ISRETURN)) == 1;
+        } catch (NumberFormatException | DateTimeParseException e) {
+            throw new InvalidFileInputException();
         }
 
-        return new Loan(amount, issueDate, description);
+        return new Loan(amount, issueDate, description, isReturn);
     }
 
     private Record loadSaving(String rawData) throws InvalidFileInputException{
         double amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
         LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                DateTimeFormatter.ofPattern("ddMMyyyy"));
+                DateTimeFormatter.ofPattern("yyyy-M-d"));
 
         try {
             amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
-        } catch (NumberFormatException e) {
-            throw new InvalidFileInputException("Amount not in unrecognisable format!");
+        } catch (NumberFormatException | DateTimeParseException e) {
+            throw new InvalidFileInputException();
         }
 
         return new Saving(amount, issueDate, description);

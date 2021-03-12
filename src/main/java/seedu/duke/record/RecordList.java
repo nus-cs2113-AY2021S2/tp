@@ -36,22 +36,5 @@ public class RecordList {
     public int getRecordCount() {
         return recordList.size();
     }
-<<<<<<< HEAD
 
-    public void listExpenses(Ui ui) {
-        ui.printMessage("List expenses!");
-        for (Record r : recordList) {
-            System.out.println(r.getDescription());
-        }
-    }
-
-    public void listLoans(Ui ui) {
-        ui.printMessage("List loans!");
-    }
-
-    public void listSavings(Ui ui) {
-        ui.printMessage("List savings!");
-    }
-=======
->>>>>>> master
 }

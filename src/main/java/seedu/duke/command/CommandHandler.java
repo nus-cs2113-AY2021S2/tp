@@ -39,4 +39,13 @@ public class CommandHandler {
             throw new CommandException(ERROR_INVALID_COMMAND + commandWord);
         }
     }
+
+    public static Command parseCommand(ArrayList<String> parsedString, RecordList records) {
+        try {
+            return CommandHandler.createCommand(parsedString, records);
+        } catch (CommandException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
 }
