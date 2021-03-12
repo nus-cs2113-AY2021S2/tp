@@ -1,22 +1,34 @@
 package seedu.connoisseur.parser;
 
+import seedu.connoisseur.commandlist.CommandList;
+
 /**
  * Handles Connoisseur's commands.
  */
 public class Parser {
+    public CommandList commandList;
 
-    public static boolean determineCommand(String input) {
+    public Parser() {
+        commandList = new CommandList();
+    }
+
+    public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
-        String description = input.split(" ", 2)[1].trim();
+        String description;
+        try { 
+            description = input.split(" ", 2)[1].trim();
+        } catch(ArrayIndexOutOfBoundsException e) {
+            description = "";
+        }
 
         if (command.equals("list")) {
-            CommandList.listReviews();
+            commandList.listReviews(description);
         } else if (command.equals("sort")) {
-            CommandList.sortReview(description);
+            commandList.sortReview(description);
         } else if (command.equals("new")) {
-            CommandList.addReview(description);
+            commandList.addReview(description);
         } else if (command.equals("delete")) {
-            CommandList.deleteReview(description);
+            commandList.deleteReview(description);
         } else if (command.equals("help")) {
             CommandList.printHelp();
 //            Ui.printDivider();

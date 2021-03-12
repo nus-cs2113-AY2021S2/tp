@@ -1,20 +1,13 @@
-package seedu.duke.sorter;
+package seedu.connoisseur.sorter;
 
 import java.util.Collections;
 import java.util.ArrayList;
 
-import seedu.duke.review.Review;
+import seedu.connoisseur.review.Review;
 
 public class Sorter {
-    enum SortMethod {
-        STARS,
-        CATEGORY,
-        TITLE,
-        DATE_LATEST,
-        DATE_EARLIEST
-    }
 
-    private SortMethod sortMethod;
+    public SortMethod sortMethod;
 
     /**
      * Constructor for Sorter class.
@@ -28,8 +21,26 @@ public class Sorter {
      * Change default sort method for this instance. 
      * @param sortMethod SortMethod to be saved
      */
-    public void changeSortMethod(SortMethod sortMethod) {
-        this.sortMethod = sortMethod;
+    public void changeSortMethod(String sortMethod) {
+        switch (sortMethod) {
+            case "rating":
+                this.sortMethod = SortMethod.RATING;
+                break;
+            case "category":
+                this.sortMethod = SortMethod.CATEGORY;
+                break;
+            case "title":
+                this.sortMethod = SortMethod.TITLE;
+                break;
+            case "date_earliest":
+                this.sortMethod = SortMethod.DATE_EARLIEST;
+                break;
+            case "date_latest":
+                this.sortMethod = SortMethod.DATE_LATEST;
+                break;
+            default:
+                break;
+            }
     }
 
     /**
@@ -39,8 +50,8 @@ public class Sorter {
      */
     public ArrayList<Review> sort(ArrayList<Review> reviewList) {
         switch (this.sortMethod) {
-        case STARS:
-            sortByStars(reviewList);
+        case RATING:
+            sortByRating(reviewList);
             break;
         case CATEGORY:
             sortByCategory(reviewList);
@@ -64,48 +75,50 @@ public class Sorter {
      * @param sortMethod method to sort
      * @return sorted review list
      */
-    public ArrayList<Review> sort(ArrayList<Review> reviewList, SortMethod sortMethod) {
+    public static ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) {
         switch (sortMethod) {
-        case STARS:
-            sortByStars(reviewList);
+        case "rating":
+            sortByRating(reviewList);
             break;
-        case CATEGORY:
+        case "category":
             sortByCategory(reviewList);
             break;
-        case TITLE:
+        case "title":
             sortByTitle(reviewList);
             break;
-        case DATE_EARLIEST:
+        case "date_earliest":
             sortByDateEarliest(reviewList);
             break;
-        default:
+        case "date_latest":
             sortByDateLatest(reviewList);
+            break;
+        default:
             break;
         }
         return reviewList;
     }
 
-    private ArrayList<Review> sortByStars(ArrayList<Review> reviewList) {
-        Collections.sort(reviewList, new SortByStars());
+    private static ArrayList<Review> sortByRating(ArrayList<Review> reviewList) {
+        Collections.sort(reviewList, new SortByRating());
         return reviewList;
     }
 
-    private ArrayList<Review> sortByCategory(ArrayList<Review> reviewList) {
+    private static ArrayList<Review> sortByCategory(ArrayList<Review> reviewList) {
         Collections.sort(reviewList, new SortByCategory());
         return reviewList;
     }
 
-    private ArrayList<Review> sortByTitle(ArrayList<Review> reviewList) {
+    private static ArrayList<Review> sortByTitle(ArrayList<Review> reviewList) {
         Collections.sort(reviewList, new SortByTitle());
         return reviewList;
     }
 
-    private ArrayList<Review> sortByDateEarliest(ArrayList<Review> reviewList) {
+    private static ArrayList<Review> sortByDateEarliest(ArrayList<Review> reviewList) {
         Collections.sort(reviewList, new SortByDateEarliest());
         return reviewList;
     }
 
-    private ArrayList<Review> sortByDateLatest(ArrayList<Review> reviewList) {
+    private static ArrayList<Review> sortByDateLatest(ArrayList<Review> reviewList) {
         Collections.sort(reviewList, new SortByDateLatest());
         return reviewList;
     }

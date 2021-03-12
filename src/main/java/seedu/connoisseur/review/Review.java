@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.connoisseur.review;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -8,12 +8,17 @@ public class Review {
     protected String title;
     protected String category;
     protected String dateOfEntry;
-    protected String rating;
+    protected int rating;
+    protected String starRating;
     protected String description;
     public static int NO_OF_STARS = 5;
     private static final ArrayList<Review> reviewList = new ArrayList<>();
     private static int noOfReviews = 0;
 
+    public String getDate() {
+        return dateOfEntry;
+    }
+    
     public String getTitle() {
         return title;
     }
@@ -30,12 +35,12 @@ public class Review {
         this.category = category;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
     public void setRating(int rating) {
-        this.rating = starRating(rating);
+        this.rating = rating;
     }
 
     public String getDescription() {
@@ -65,7 +70,8 @@ public class Review {
     public Review(String title, String category, int rating, String description) {
         this.title = title;
         this.category = category;
-        this.rating = starRating(rating);
+        this.rating = rating;
+        this.starRating = starRating(rating);
         this.description = description;
         LocalDate date = LocalDate.now();
         this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
@@ -89,5 +95,13 @@ public class Review {
 
     public String toString() {
         return title + "      " + rating + "      " + dateOfEntry;
+    }
+
+    public static int getReviewIndex(String title2) {
+        return 0;
+    }
+
+    public String reviewToText() {
+        return null;
     }
 }

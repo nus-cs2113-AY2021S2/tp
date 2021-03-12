@@ -1,42 +1,33 @@
 package seedu.connoisseur;
 
 import seedu.connoisseur.parser.Parser;
-
-import java.util.Scanner;
+import seedu.connoisseur.ui.Ui;
 
 public class Connoisseur {
+    private Ui ui;
+    private Parser parser;
+
     /**
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
+        new Connoisseur().run();
+    }
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    public void run() {
+        ui = new Ui();
+        parser = new Parser();
 
-        ui.printGreeting();
+        Ui.printGreeting();
         String input;
         boolean isExit = false;
 
-        while (in.hasNext()) {
-            input = in.nextLine().trim();
-
-
-            isExit = Parser.determineCommand(input);
-
-            if (isExit) {
-                break;
-            }
-
+        while (!isExit) {
+            input = ui.readCommand();
+            isExit = parser.determineCommand(input);
         }
-        ui.printExitMessage();
-        in.close();
+
+        Ui.printExitMessage();
 
     }
 }

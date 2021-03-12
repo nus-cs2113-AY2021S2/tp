@@ -1,4 +1,4 @@
-package seedu.duke.messages;
+package seedu.connoisseur.messages;
 
 public class Messages {
     public static final String LOGO = "   _____                        _                         \n"

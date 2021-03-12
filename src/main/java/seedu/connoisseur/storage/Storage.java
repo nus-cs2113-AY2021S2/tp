@@ -1,5 +1,8 @@
 package seedu.connoisseur.storage;
 
+import seedu.connoisseur.review.Review;
+import seedu.connoisseur.ui.Ui;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -51,7 +54,7 @@ public class Storage {
                 Ui.printFileExistsMessage();
             }
         } catch (IOException e) { //creating or retrieving data has errors
-            Ui.printErrorMessage(e);
+            Ui.printErrorMessage();
         }
         return hasTextFile;
     }
@@ -73,7 +76,7 @@ public class Storage {
             }
             sc.close();
         } catch (FileNotFoundException e) {
-            Ui.printErrorMessage(e);
+            Ui.printErrorMessage();
         }
         return reviewList;
     }
@@ -92,7 +95,7 @@ public class Storage {
             }
             fileWriter.close();
         } catch (IOException e) {
-            Ui.printErrorMessage(e);
+            Ui.printErrorMessage();
         }
     }
 

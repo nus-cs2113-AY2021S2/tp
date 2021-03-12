@@ -1,11 +1,11 @@
-package seedu.duke.sorter;
+package seedu.connoisseur.sorter;
 
 import java.util.Comparator;
 
-import seedu.duke.review.Review;
+import seedu.connoisseur.review.Review;
 
 public class SortByTitle implements Comparator<Review> {
     public int compare(Review a, Review b) {
-        return a.title.compareTo(b.title);
+        return a.getTitle().compareTo(b.getTitle());
     }
 }
