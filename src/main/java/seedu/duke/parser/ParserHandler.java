@@ -1,6 +1,8 @@
 package seedu.duke.parser;
 
 import org.apache.commons.lang3.StringUtils;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ParserHandler {
@@ -11,6 +13,7 @@ public class ParserHandler {
             extracted.add(trimmedInput.substring(0,2));
             trimmedInput = trimmedInput.substring(2);
         }
+
         return extractAfterFirstCheck(extracted, trimmedInput);
     }
 
@@ -35,6 +38,17 @@ public class ParserHandler {
             extracted.add("");
         } else {
             extracted.add(trimmedInput.trim());
+        }
+        return checkFirstBlock(extracted);
+    }
+
+    private static ArrayList<String> checkFirstBlock(ArrayList<String> extracted) {
+        String firstblock = extracted.get(0);
+        if (StringUtils.startsWithAny(firstblock, "remove ", "return ", "help ")) {
+            String[] splitBlock = firstblock.split(" ", 2);
+            extracted.remove(0);
+            extracted.add(splitBlock[0]);
+            extracted.add(splitBlock[1].trim());
         }
         return extracted;
     }
