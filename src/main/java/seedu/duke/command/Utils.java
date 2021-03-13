@@ -214,7 +214,14 @@ public class Utils {
         }
     }
 
-    public static boolean isOption(String arg) {
-        return Pattern.matches(REGEX_OPTION, arg);
+    /**
+     * Checks if {@code argument} is an option.<br>
+     * An option can be in the form {@code "-L"}, where {@code L} is a letter of any case.
+     *
+     * @param argument a {@code String} to be checked.
+     * @return {@code true} if {@code argument} matches the {@link #REGEX_OPTION} {@code Pattern}.
+     */
+    public static boolean isOption(String argument) {
+        return Pattern.matches(REGEX_OPTION, argument);
     }
 }
