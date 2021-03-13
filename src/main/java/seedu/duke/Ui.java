@@ -37,8 +37,9 @@ public class Ui {
         System.out.println("Welcome to the links menu ^~^\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
-            + "[2] --- View Zoom links\n"
-            + "[3] --- Exit to main menu\n");
+            + "[2] --- Add Zoom links\n"
+            + "[3] --- View Zoom links\n"
+            + "[4] --- Exit to main menu\n");
     }
 
     public static void printLinkToDelete() {
@@ -270,7 +271,7 @@ public class Ui {
     }
 
     public static void printModuleDescriptionAddedMessage(String moduleName,
-                                                          String moduleDescription) {
+        String moduleDescription) {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
@@ -290,5 +291,26 @@ public class Ui {
     public static void printModuleComponentPrompt() {
         System.out.println("Please key in your component and percentage of the component.");
         System.out.println("Example: Final Exam 20");
+    }
+
+    public static void printEnterZoomLinkMessage() {
+        System.out.println("Please enter the zoom link and the module it is for in this format:\n"
+            + "<zoom link> <module code>");
+    }
+
+    public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
+        System.out.println("Here are your zoom links! Study hard :)\n");
+        for (int i = 0; i < zoomLinksList.size(); ++i) {
+            System.out.println(zoomLinksList.get(i));
+        }
+    }
+
+    public static void printNoInputDetected() {
+        System.out.println("Sorry! I didn't catch that. Please try again");
+    }
+
+    public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
+        System.out.println("Woohoo~ Zoom link added:");
+        System.out.println(zoomLink + " for " + moduleCode);
     }
 }

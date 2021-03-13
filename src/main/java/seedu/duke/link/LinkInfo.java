@@ -1,6 +1,7 @@
 package seedu.duke.link;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import seedu.duke.Ui;
@@ -8,6 +9,7 @@ import seedu.duke.Ui;
 public class LinkInfo {
 
     private static ArrayList<String> linksList = new ArrayList<>();
+    private static ArrayList<ArrayList<String>> zoomLinksList = new ArrayList<ArrayList<String>>();
 
     public void addLink(String linkDescription) {
         linksList.add(linkDescription);
@@ -32,6 +34,17 @@ public class LinkInfo {
         Ui.printLinks(linksList);
     }
 
+    public static void addZoomLink(String linkDescription, String moduleCode) {
+        zoomLinksList.add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode)));
+    }
+
+    public static void viewZoomLinks() {
+        if (zoomLinksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
+        Ui.printZoomLinks(zoomLinksList);
+    }
 
     //@@author prashant srivastava
     //Reused from https://www.geeksforgeeks.org/check-if-an-url-is-valid-or-not-using-regular-expression/
