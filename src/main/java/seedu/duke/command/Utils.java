@@ -24,10 +24,10 @@ public class Utils {
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
 
     /**
-     * Checks if value is not null and not empty.
+     * Checks if {@code value} is not {@code null} and not empty.
      *
      * @param value the String to check.
-     * @throws CommandException if {@code value} is null or empty.
+     * @throws CommandException if {@code value} is {@code null} or empty.
      */
     private static void validateNotEmpty(String value) throws CommandException {
         if (value == null || value.length() == 0) {
@@ -36,12 +36,13 @@ public class Utils {
     }
 
     /**
-     * Checks if value is not null and not empty, and returns it if {@code true}.
+     * Checks if {@code value} is not {@code null} and not empty,
+     * and returns it if {@code true}.
      *
-     * @param value the String to check.
+     * @param value the {@code String} to check.
      * @param command the name of the {@code Command} calling it.
-     * @param option the name of the option pertaining to the value.
-     * @return the value if not empty
+     * @param option the name of the {@code option} pertaining to the {@code value}.
+     * @return the {@code value} if not empty
      * @throws CommandException if {@code value} is null or empty.
      */
     private static String validateNotEmpty(String value, String command, String option)
