@@ -274,4 +274,21 @@ public class Ui {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
+
+    public static void printModulePrompt() {
+        System.out.println("Would you like to add/view component(s) to a module? [Y/N]");
+        String yesNo = Ui.readCommand();
+        if (yesNo.trim().equalsIgnoreCase("Y")) {
+            System.out.println("Key in 1 to add component and 2 to view component");
+        }
+//        for (Module module : ModuleInfo.modules) {
+//            System.out.println(module.getName());
+//        }
+
+    }
+
+    public static void printModuleComponentPrompt() {
+        System.out.println("Please key in your component and percentage of the component.");
+        System.out.println("Example: Final Exam 20");
+    }
 }
