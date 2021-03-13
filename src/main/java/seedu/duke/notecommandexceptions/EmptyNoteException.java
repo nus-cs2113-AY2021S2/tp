@@ -1,4 +1,4 @@
-package seedu.duke.NoteCommandExceptions;
+package seedu.duke.notecommandexceptions;
 
 import java.io.IOException;
 

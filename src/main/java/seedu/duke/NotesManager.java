@@ -1,6 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.NoteCommandExceptions.*;
+import seedu.duke.notecommandexceptions.*;
 
 import static seedu.duke.NotesCommandParser.parseAddNotesCommand;
 import static seedu.duke.NotesCommandParser.parseDeleteNotesCommand;

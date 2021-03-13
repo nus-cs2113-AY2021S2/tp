@@ -1,6 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.NoteCommandExceptions.*;
+import seedu.duke.notecommandexceptions.*;
 
 import static seedu.duke.NotesManager.locationsList;
 import static seedu.duke.NotesManager.locationNotesCountList;
