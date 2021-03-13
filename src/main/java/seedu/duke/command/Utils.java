@@ -56,6 +56,12 @@ public class Utils {
         return arguments.contains(option);
     }
 
+    public static void validateOptions(ArrayList<String> arguments, String command,
+                                       String[] validOptions, String[] orOptions) throws CommandException {
+        checkInvalidOptions(arguments, command, validOptions);
+        checkOptionConflict(arguments, command, orOptions);
+    }
+
     public static void checkInvalidOptions(ArrayList<String> arguments, String command,
                                            String... validOptions) throws CommandException {
         Set<String> nonDuplicates = new HashSet<>();
