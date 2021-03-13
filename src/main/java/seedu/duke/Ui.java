@@ -271,7 +271,7 @@ public class Ui {
     }
 
     public static void printModuleDescriptionAddedMessage(String moduleName,
-                                                          String moduleDescription) {
+        String moduleDescription) {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
@@ -295,12 +295,12 @@ public class Ui {
 
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
-        + "<zoom link> <module code>");
+            + "<zoom link> <module code>");
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
         System.out.println("Here are your zoom links! Study hard :)\n");
-        for (int i = 0; i< zoomLinksList.size(); ++i) {
+        for (int i = 0; i < zoomLinksList.size(); ++i) {
             System.out.println(zoomLinksList.get(i));
         }
     }
