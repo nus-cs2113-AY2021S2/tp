@@ -1,6 +1,9 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskList;
+import seedu.duke.task.TaskManager;
 
 public class Duke {
 
@@ -28,7 +31,6 @@ public class Duke {
                 switch (commandInt) {
                 case 1:
                     //moduleInfo
-                    //TaskList taskList = new TaskList();
                     ModuleInfo.moduleInfoMenu();
                     break;
                 case 2:
@@ -36,6 +38,8 @@ public class Duke {
                     break;
                 case 3:
                     //manageTask
+                    TaskList taskList = new TaskList();
+                    TaskManager.execute();
                     break;
                 case 4:
                     //externalLinks
