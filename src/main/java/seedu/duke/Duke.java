@@ -20,4 +20,3 @@ public class Duke {
         new Duke().run();
     }
 }
-// Am I doing this right?

@@ -46,6 +46,12 @@ public class Ui {
         printDivider();
     }
 
+    public void showFarewellScreen() {
+        printDivider();
+        System.out.println("Safe travels! Goodbye!");
+        printDivider();
+    }
+
     /**
      * Shows help message with accepted commands
      */
@@ -55,44 +61,60 @@ public class Ui {
         printDivider();
     }
 
+    /**
+     * Asks for user input
+     */
     public void promptUserInput() {
         printDivider();
         System.out.println("How can Diliveri help you today?");
         printDivider();
     }
 
+    /**
+     * Method backbone for menu selection
+     * Parser is only called for commands that require argument parsing
+     */
     public void showLoopingMenuUntilExit() {
         Parser parser = new Parser();
         Scanner sc = new Scanner(System.in);
         String userInput;
         String userCommand;
-
+        String userArguments;
         promptUserInput();
         do {
             userInput = sc.nextLine();
-            userCommand = userInput.split(" ")[0];
-            // consider putting the above into Parser? e.g. parser.parseCommand(userInput)
+            userCommand = parser.parseCommand(userInput);
+            userArguments = parser.parseArguments(userInput);
             switch (userCommand) {
                 case "help":
-                    showHelpMessage();
+                    showHelpMessage(); // relocate this to inside parser?
                     break;
-                case "view":
+                case "profile":
                     // view profile
                     break;
+                case "edit":
                 case "editprofile":
-                    // edit profile
+                    parser.parseInput("edit", userArguments);
+                    // parser needs to validate the arguments are entered properly
                     break;
                 case "start":
                     // load delivery assignment
                     break;
                 case "list":
+                    parser.parseInput("list", userArguments);
                     // show delivery list
                     break;
+                case "view":
                 case "viewdelivery":
-                    // show selected delivery list - need parser to get selected item
+                    parser.parseInput("viewdelivery", userArguments);
+                    // show selected delivery list - need parser to get and check selected item
                     break;
                 case "complete":
-                    // mark delivery as completed - use parser to get selected item
+                    parser.parseInput("complete", userArguments);
+                    // mark delivery as completed - use parser to get and check selected item
+                    break;
+                case "bye":
+                    showFarewellScreen();
                     break;
                 default:
                     System.out.println("Incorrect entry"); // raise exception
