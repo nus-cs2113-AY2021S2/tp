@@ -1,42 +1,54 @@
 package seedu.fridgefriend.command;
 
+import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.food.Food;
-
-import java.util.List;
+import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Remove the food from the fridge by index specify by user.
+ * Represents a command to remove a food item from the fridge by index specify by user.
  */
 public class RemoveCommand extends Command {
 
     private static final int EXTRA_INDEX = 1;
 
     private final int indexToRemove;
-    private Food foodToBeRemove;
+    private Food foodToBeRemoved;
 
-    public RemoveCommand(int indexToRemove, List<Food> fridge) {
-        int actualIndexToRemove = indexToRemove - EXTRA_INDEX;
-        this.indexToRemove = actualIndexToRemove;
-        this.foodToBeRemove = fridge.get(actualIndexToRemove);
+    /**
+     * Constructor creates a RemoveCommand object.
+     * 
+     * @param indexToRemove integer index given by user
+     * @throws InvalidIndexException if provided index is out of bounds
+     */
+    public RemoveCommand(int indexToRemove) throws InvalidIndexException {
+        int actualIndexToRemoved = indexToRemove - EXTRA_INDEX;
+        this.indexToRemove = actualIndexToRemoved;
+        try {
+            this.foodToBeRemoved = Fridge.getFood(actualIndexToRemoved);
+        } catch (Exception e) {
+            throw new InvalidIndexException(e);
+        }
     }
 
     @Override
-    public void execute(List<Food> fridge) {
-        removeFood(fridge);
-        showMessage(fridge);
+    public void execute() {
+        removeFood();
+        showMessage();
     }
 
-    public void removeFood(List<Food> fridge) {
-        if (indexToRemove > fridge.size()) {
+    public void removeFood() {
+        if (indexToRemove > Fridge.getSize()) {
             throw new IndexOutOfBoundsException();
         }
-        fridge.remove(indexToRemove);
+        Fridge.removeByIndex(indexToRemove);
     }
 
-    private void showMessage(List<Food> fridge) {
-        System.out.println("Noted! I've removed " + foodToBeRemove.getFoodName()
+    private void showMessage() {
+        String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
                 + " from your fridge.\n"
-                + "Now you have " + fridge.size()
-                + " food in the fridge.\n");
+                + "Now you have " + Fridge.getSize()
+                + " food in the fridge.";
+        Ui.printMessage(message);
     }
 }
