@@ -28,14 +28,18 @@ This is the list of storage locations:
 	[FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
 -----------------------------------------------------------------
 Great! I have added chicken into your fridge.
-Details: ||Food name: chicken, category: MEAT, expiry on: 2021-06-30, stored in: LOWER_SHELF||
+Details: ||Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF||
 -----------------------------------------------------------------
 You have chicken in your fridge.
 -----------------------------------------------------------------
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
 Great! I have added grouper into your fridge.
-Details: ||Food name: grouper, category: SEAFOOD, expiry on: 2021-04-05, stored in: OTHER||
+Details: ||Food name: grouper, category: SEAFOOD, expiry: 05-04-2021, stored in: OTHER||
+-----------------------------------------------------------------
+Sorry my friend, the date must be in the form 'dd-mm-yy'.
+Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
+
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
