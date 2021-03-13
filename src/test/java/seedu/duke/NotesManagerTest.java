@@ -29,12 +29,13 @@ public class NotesManagerTest {
                 "Please include a '/' in between the location and the notes.");
         parseAddNotesCommandUnsuccessfully("add note /Group Project Meeting",
                 "Please add a location to the command before the notes. :))");
-        parseAddNotesCommandUnsuccessfully("add note e/", "Location does not exists. :(( " +
-                "Please key in a valid location.");
+        parseAddNotesCommandUnsuccessfully("add note e/", "Location does not exists. :(( "
+                + "Please key in a valid location.");
         parseAddNotesCommandUnsuccessfully("add note e2/", "Please add a note behind. :))");
 
         parseDeleteNotesCommandSuccessfully("delete note E4/1", "E4", 0);
-        parseDeleteNotesCommandUnsuccessfully("delete note E4/2", "Please enter a number that is positive and not more than");
+        parseDeleteNotesCommandUnsuccessfully("delete note E4/2",
+                "Please enter a number that is positive and not more than");
 
         parseListNotesCommandSuccessfully("list notes techno edge", "TECHNO EDGE");
         parseListNotesUnsuccessfully("list notes ", "Please add a location after the command. :))");
