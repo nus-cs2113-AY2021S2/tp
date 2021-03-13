@@ -26,9 +26,27 @@ public class Links {
                 linkIndex = Ui.readCommandToInt();
                 continue;
             case 2:
-                // zoom menu
+                // add zoom links
+                Ui.printEnterZoomLinkMessage();
+                String instruction = Ui.readCommand();
+                String[] words = instruction.split(" ");
+                try {
+                    LinkInfo.addZoomLink(words[0], words[1]);
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    Ui.printNoInputDetected();
+                    continue;
+                }
+                Ui.printZoomLinksAdded(words[0], words[1]);
+                Ui.printLinksMessage();
+                linkIndex = Ui.readCommandToInt();
                 break;
             case 3:
+                // view zoom links
+                LinkInfo.viewZoomLinks();
+                Ui.printLinksMessage();
+                linkIndex = Ui.readCommandToInt();
+                break;
+            case 4:
                 //exit
                 return;
             default:
