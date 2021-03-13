@@ -124,6 +124,16 @@ public class ModuleInfo {
     }
 
     private static void getComponents() {
+        Ui.printModulePrompt(); // prompts user for view or add instruction
+        String addView = Ui.readCommand().trim();
+        if (Integer.parseInt(addView) == 1) {
+            Component.addComponent(modules);
+        } else if (Integer.parseInt(addView) == 2) {
+            Component.viewComponent(modules);
+        } else {
+            Ui.printReturnToModuleInfoMenuMessage();
+        }
+
     }
 
     /**
