@@ -6,9 +6,10 @@ import command.DisplayStoresCommand;
 import command.ExitCommand;
 import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
-import seedu.duke.Duke;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class ParserTest {
