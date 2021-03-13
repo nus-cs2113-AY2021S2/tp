@@ -1,7 +1,6 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
-import seedu.duke.task.Task;
 import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
