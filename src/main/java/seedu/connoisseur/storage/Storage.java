@@ -54,7 +54,7 @@ public class Storage {
                 Ui.printFileExistsMessage();
             }
         } catch (IOException e) { //creating or retrieving data has errors
-            Ui.printErrorMessage();
+            Ui.printErrorMessage(e);
         }
         return hasTextFile;
     }
@@ -76,7 +76,7 @@ public class Storage {
             }
             sc.close();
         } catch (FileNotFoundException e) {
-            Ui.printErrorMessage();
+            Ui.printErrorMessage(e);
         }
         return reviewList;
     }
@@ -95,7 +95,7 @@ public class Storage {
             }
             fileWriter.close();
         } catch (IOException e) {
-            Ui.printErrorMessage();
+            Ui.printErrorMessage(e);
         }
     }
 

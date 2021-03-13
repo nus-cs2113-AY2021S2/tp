@@ -1,5 +1,6 @@
 package seedu.connoisseur.ui;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -40,19 +41,25 @@ public class Ui {
     public static void printExitMessage() {
     }
 
-    public static void printErrorMessage() {
+    public static void printErrorMessage(IOException e) {
+        System.out.println("An error occurred.");
+        e.printStackTrace();
     }
 
     public static void printFileExistsMessage() {
+        System.out.println("Text file already exists.");
     }
 
     public static void printFolderExistsMessage() {
+        System.out.println("Folder already exists.");
     }
 
     public static void printSuccessfulCreateFolderMessage() {
+        System.out.println("Folder created successfully.");
     }
 
     public static void printPresentDirectory() {
+        System.out.println("Present project directory is: " + System.getProperty("user.dir"));
     }
 
 }

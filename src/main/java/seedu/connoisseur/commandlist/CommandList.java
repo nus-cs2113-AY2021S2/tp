@@ -1,6 +1,7 @@
 package seedu.connoisseur.commandlist;
 
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
@@ -14,11 +15,28 @@ public class CommandList {
     static final int LIST_CATEGORY_INPUT_LENGTH = 4;
     static final int MAX_WHITE_SPACE = 20;
 
-    private ArrayList<Review> reviewList;
+    public static ArrayList<Review> reviewList = new ArrayList<>();
     private Sorter sorter;
 
+    /**
+     * Creates tasks according to user data from files.
+     *
+     * @param dataReviews List of tasks from user connoisseur.txt file.
+
+     */
+    public CommandList(ArrayList<String> dataReviews) {
+        for (String review : dataReviews) {
+            reviewList.add(Review.textToReview(review));
+        }
+    }
+
+    /**
+     * Creates new tasks if no existing data in files.
+     *
+     */
+
     public CommandList() {
-        reviewList = new ArrayList<Review>();
+        reviewList = new ArrayList<>();
         sorter = new Sorter(SortMethod.DATE_EARLIEST);
     }
 
@@ -34,7 +52,7 @@ public class CommandList {
         } else {
             if (input.length() <= 0) {
             }
-            ;
+
             String listType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
             Sorter.sort(reviewList, listType);
             System.out.println("Here are your reviews:");
@@ -93,6 +111,7 @@ public class CommandList {
             reviewList.remove(reviewIndex);
             System.out.println(title + " deleted.");
         }
+        Storage.saveData(reviewList);
     }
 
     public void sortReview(String sortType) {
@@ -104,6 +123,7 @@ public class CommandList {
         } else {
             System.out.println(sortType + " is not valid sorting method, please try again.");
         }
+        Storage.saveData(reviewList);
     }
 
     public void addReview(String input) {
@@ -115,6 +135,8 @@ public class CommandList {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid input review, please try again.");
         }
+        Storage.saveData(reviewList);
+
     }
 
     public static void exit() {
