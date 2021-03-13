@@ -35,6 +35,8 @@ public class CommandHandler {
             return new HelpCommand(parsedArguments);
         case COMMAND_EXIT:
             return new ExitCommand(parsedArguments);
+        case "":
+            return null;
         default:
             throw new CommandException(ERROR_INVALID_COMMAND + commandWord);
         }
