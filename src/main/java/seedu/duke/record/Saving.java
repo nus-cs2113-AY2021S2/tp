@@ -1,11 +1,12 @@
 package seedu.duke.record;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Saving extends Record {
     private static final String TYPE_SAVING = "S";
 
-    public Saving(double amount, LocalDate issueDate, String description) {
+    public Saving(BigDecimal amount, LocalDate issueDate, String description) {
         super(amount, issueDate, description);
     }
 
