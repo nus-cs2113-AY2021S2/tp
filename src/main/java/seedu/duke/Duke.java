@@ -38,6 +38,10 @@ public class Duke {
     public void echo() {
         ui.showWelcome();
         boolean isExit = false;
+        // Have not yet added ability to add stores, for now: end application if storage is empty.
+        if (canteens.size() == 0) {
+            return;
+        }
         while (!isExit) {
             try {
                 String line = ui.readCommand();

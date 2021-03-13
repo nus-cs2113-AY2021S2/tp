@@ -1,6 +1,5 @@
-Welcome to our amazing canteen review application!!
------------------------
 File Path was not found!
 -----------------------
-Thank you for using our application! See you again!
+Welcome to our amazing canteen review application!!
+You are now viewing canteen The Deck
 -----------------------
