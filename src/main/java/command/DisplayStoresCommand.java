@@ -6,7 +6,7 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
-public class DisplayCommand extends Command {
+public class DisplayStoresCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {

@@ -1,11 +1,13 @@
 package stores;
 
+import menus.Menu;
+
 import java.util.ArrayList;
 
 public class Store {
     private String storeName;
-    private ArrayList<String> menus;
     private ArrayList<String> reviews;
+    private ArrayList<Menu> menus;
 
 
     public Store(String storeName) {
@@ -31,7 +33,16 @@ public class Store {
         return reviews;
     }
 
-    public ArrayList<String> getMenus() {
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public ArrayList<Menu> getMenus() {
         return menus;
+    }
+
+    public void addMenu(Menu newMenu) {
+        menus.add(newMenu);
     }
 }
