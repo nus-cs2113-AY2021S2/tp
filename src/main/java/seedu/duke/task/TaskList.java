@@ -31,27 +31,61 @@ public class TaskList {
         pinnedTasks = new HashMap<>();
     }
 
-    public static void addTask(String module, String description, String message) {
+    public static void addNewTask(int taskTypeNumber) {
+        String dateAndTime = "";
+
+        Ui.printAddTaskModuleMessage(taskTypeNumber);
+        String module = Ui.readCommand();
+        Ui.printHorizontalLine();
+        Ui.printAddTaskDescriptionMessage(taskTypeNumber);
+        String description = Ui.readCommand();
+        Ui.printHorizontalLine();
+        if (taskTypeNumber != 1) {
+            dateAndTime = TaskList.getDate(taskTypeNumber) + ", " + TaskList.getTime(taskTypeNumber);
+        }
+        Ui.printAddMessageAfterCompletedTask();
+        String message = Ui.readCommand();
+        Ui.printHorizontalLine();
+
+        switch (taskTypeNumber) {
+        case 1:
+            addTask(module, description, message);
+            break;
+        case 2:
+            addAssignment(module, description, message, dateAndTime);
+            break;
+        case 3:
+            addMidterm(module, description, message, dateAndTime);
+            break;
+        case 4:
+            addFinal(module, description, message, dateAndTime);
+            break;
+        default:
+            Ui.printInvalidIntegerMessage();
+        }
+    }
+
+    private static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
         tasks.add(task);
         Ui.printAddedTaskMessage(task);
     }
 
-    public static void addAssignment(String module, String description,
+    private static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
         assignments.add(assignment);
         Ui.printAddedTaskMessage(assignment);
     }
 
-    public static void addMidterm(String module, String description,
+    private static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
         midterms.add(midterm);
         Ui.printAddedTaskMessage(midterm);
     }
 
-    public static void addFinal(String module, String description,
+    private static void addFinal(String module, String description,
                                 String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
@@ -134,24 +168,16 @@ public class TaskList {
                 Ui.printHorizontalLine();
                 switch (taskTypeNumber) {
                 case 1:
-                    Task deletedTask = tasks.get(taskNumber - 1);
-                    tasks.remove(deletedTask);
-                    Ui.printDeletedTaskMessage(deletedTask);
+                    findAndDeleteTask(taskNumber);
                     break;
                 case 2:
-                    Assignment deletedAssignment = assignments.get(taskNumber - 1);
-                    assignments.remove(deletedAssignment);
-                    Ui.printDeletedTaskMessage(deletedAssignment);
+                    findAndDeleteAssigment(taskNumber);
                     break;
                 case 3:
-                    Midterm deletedMidterm = midterms.get(taskNumber - 1);
-                    midterms.remove(deletedMidterm);
-                    Ui.printDeletedTaskMessage(deletedMidterm);
+                    findAndDeleteMidterm(taskNumber);
                     break;
                 case 4:
-                    FinalExam deletedFinalExam = finalExams.get(taskNumber - 1);
-                    finalExams.remove(deletedFinalExam);
-                    Ui.printDeletedTaskMessage(deletedFinalExam);
+                    findAndDeleteFinalExam(taskNumber);
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -184,6 +210,42 @@ public class TaskList {
             Ui.printInvalidIntegerMessage();
         }
         return isEmpty;
+    }
+
+    private static void findAndDeleteTask(int taskNumber) {
+        Task deletedTask = tasks.get(taskNumber - 1);
+        tasks.remove(deletedTask);
+        if (pinnedTasks.get("[Task]").contains((deletedTask))) {
+            pinnedTasks.get("[Task]").remove(deletedTask);
+        }
+        Ui.printDeletedTaskMessage(deletedTask);
+    }
+
+    private static void findAndDeleteAssigment(int taskNumber) {
+        Assignment deletedAssignment = assignments.get(taskNumber - 1);
+        assignments.remove(deletedAssignment);
+        if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
+            pinnedTasks.get("[Assignment]").remove(deletedAssignment);
+        }
+        Ui.printDeletedTaskMessage(deletedAssignment);
+    }
+
+    private static void findAndDeleteMidterm(int taskNumber) {
+        Midterm deletedMidterm = midterms.get(taskNumber - 1);
+        midterms.remove(deletedMidterm);
+        if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
+            pinnedTasks.get("[Midterm]").remove(deletedMidterm);
+        }
+        Ui.printDeletedTaskMessage(deletedMidterm);
+    }
+
+    private static void findAndDeleteFinalExam(int taskNumber) {
+        FinalExam deletedFinalExam = finalExams.get(taskNumber - 1);
+        finalExams.remove(deletedFinalExam);
+        if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
+            pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
+        }
+        Ui.printDeletedTaskMessage(deletedFinalExam);
     }
 
     public static void pinTask(int taskTypeNumber) {
