@@ -29,6 +29,18 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
+### Viewing the highlight menu of a store: `menu`
+View the highlight menu items of the store, along with their prices.
+
+Format: `menu INDEX`
+
+* The `INDEX` is the index of the store in the displayed store list.
+
+Example of usage:
+
+`menu 2`
+
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 

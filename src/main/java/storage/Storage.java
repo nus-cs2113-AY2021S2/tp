@@ -1,6 +1,7 @@
 package storage;
 
 import canteens.Canteen;
+import menus.Menu;
 import stores.Store;
 
 import java.io.File;
@@ -41,7 +42,8 @@ public class Storage {
                 store = new Store(storedLine[1]);
                 canteen.getStores().add(store);
             } else if (storedLine[0].equals("menu")) {
-                store.getMenus().add(storedLine[1]);
+                String[] menuDetails = storedLine[1].split("//");
+                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
             } else {
                 continue;
             }

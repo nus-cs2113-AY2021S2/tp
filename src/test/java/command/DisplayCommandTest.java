@@ -27,7 +27,7 @@ class DisplayCommandTest {
         Storage storage = new Storage("data/testStorage.txt");
         ArrayList<Canteen> canteens = storage.load();
         Ui ui = new Ui();
-        Command c = new DisplayCommand();
+        Command c = new DisplayStoresCommand();
         String expectedString = "Here's a list of the stores in the canteen: The Deck\n"
                 + "1.chicken rice stall\n"
                 + "2.Fish rice stall";
