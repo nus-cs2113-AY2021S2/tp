@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -109,12 +110,12 @@ public class Storage {
     }
 
     private Record loadExpense(String rawData) throws InvalidFileInputException {
-        double amount;
+        BigDecimal amount;
         LocalDate issueDate;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
 
         try {
-            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+            amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
             issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
                     DateTimeFormatter.ofPattern("yyyy-M-d"));
         } catch (NumberFormatException | DateTimeParseException e) {
@@ -125,14 +126,14 @@ public class Storage {
     }
 
     private Record loadLoan(String rawData) throws InvalidFileInputException {
-        double amount;
+        BigDecimal amount;
         boolean isReturn;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
         LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
                 DateTimeFormatter.ofPattern("yyyy-M-d"));
 
         try {
-            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+            amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
             isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_ISRETURN)) == 1;
         } catch (NumberFormatException | DateTimeParseException e) {
             throw new InvalidFileInputException();
@@ -142,13 +143,13 @@ public class Storage {
     }
 
     private Record loadSaving(String rawData) throws InvalidFileInputException {
-        double amount;
+        BigDecimal amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
         LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
                 DateTimeFormatter.ofPattern("yyyy-M-d"));
 
         try {
-            amount = Double.parseDouble(extractArg(rawData, INDEX_OF_AMOUNT));
+            amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
         } catch (NumberFormatException | DateTimeParseException e) {
             throw new InvalidFileInputException();
         }

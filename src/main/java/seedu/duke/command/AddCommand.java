@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.common.RecordType;
 import seedu.duke.exception.CommandException;
+import seedu.duke.exception.CustomException;
 import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
 import seedu.duke.record.RecordList;
@@ -21,13 +22,14 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
-    private final double amount;
+    private final BigDecimal amount;
     private final LocalDate issueDate;
     private final String description;
 
@@ -56,7 +58,7 @@ public class AddCommand extends Command {
             issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
-        } catch (DateTimeException e) {
+        } catch (CustomException | DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
     }
@@ -68,13 +70,13 @@ public class AddCommand extends Command {
             Expense expenseObj = new Expense(amount, issueDate, description);
             records.addRecord(expenseObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(expenseObj);
+            ui.printSuccessfulAdd(expenseObj, records.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description);
             records.addRecord(loanObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(loanObj);
+            ui.printSuccessfulAdd(loanObj, records.getRecordCount());
             break;
         case SAVING:
             // Fallthrough
@@ -82,7 +84,7 @@ public class AddCommand extends Command {
             Saving savingObj = new Saving(amount, issueDate, description);
             records.addRecord(savingObj);
             storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(savingObj);
+            ui.printSuccessfulAdd(savingObj, records.getRecordCount());
         }
     }
 }
