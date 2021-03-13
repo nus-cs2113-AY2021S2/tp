@@ -13,6 +13,7 @@ import static seedu.duke.TestUtilAndConstants.EXPECTED_OPEN_LINK;
 
 class OpenLessonLinkCommandTest extends LessonCommandTest {
 
+    //@@author H-horizon
     @Test
     void printLessonsLink_lessonListIndexes_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();

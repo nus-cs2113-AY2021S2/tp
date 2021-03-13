@@ -22,6 +22,7 @@ class EnterModuleCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    //@@author isaharon
     @Test
     void execute_validModuleCodeInput_expectSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
@@ -41,6 +42,7 @@ class EnterModuleCommandTest {
         System.setOut(originalOut);
     }
 
+    //@@author isaharon
     @Test
     void execute_invalidModuleCodeInput_expectException() {
         System.setOut(new PrintStream(outContent));

@@ -21,6 +21,7 @@ public class AddLessonCommand extends Command {
         this.lesson = lesson;
     }
 
+    //@@author H-horizon
     /**
      * Adds new lesson to selected module.
      *

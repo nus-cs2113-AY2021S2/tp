@@ -20,6 +20,7 @@ import static seedu.duke.common.Constants.TXT_FORMAT;
 
 class ModuleListTest {
 
+    //@@author 8kdesign
     @Test
     void loadModuleNames_noDirectory_sizeZero() {
         TestUtilAndConstants.removeFiles();
@@ -27,6 +28,7 @@ class ModuleListTest {
         assertEquals(0, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void loadModuleNames_oneInvalidFile_sizeZero() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -38,6 +40,7 @@ class ModuleListTest {
         assertEquals(0, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void loadModuleNames_twoDifferentModules_sizeTwo() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -51,6 +54,7 @@ class ModuleListTest {
         assertEquals(2, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void loadModuleNames_twoSameModules_sizeTwo() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -63,6 +67,7 @@ class ModuleListTest {
         assertEquals(1, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void setSelectedModule_validName_loadsModule() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -81,6 +86,7 @@ class ModuleListTest {
         assertEquals(2, ModuleList.getSelectedModule().getTaskList().size());
     }
 
+    //@@author 8kdesign
     @Test
     void setSelectedModule_invalidName_remainNull() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -101,6 +107,7 @@ class ModuleListTest {
         });
     }
 
+    //@@author 8kdesign
     @Test
     void setSelectedModule_invalidFile_noTaskAndLesson() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -120,6 +127,7 @@ class ModuleListTest {
         assertEquals(0,ModuleList.getSelectedModule().getLessonList().size());
     }
 
+    //@@author 8kdesign
     @Test
     void setSelectedModule_invalidContent_() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -139,6 +147,7 @@ class ModuleListTest {
         assertEquals(1,ModuleList.getSelectedModule().getTaskList().size());
     }
 
+    //@@author 8kdesign
     @Test
     void addModule_twoDifferentModules_sizeTwo() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -157,6 +166,7 @@ class ModuleListTest {
         assertTrue(isTwo);
     }
 
+    //@@author 8kdesign
     @Test
     void addModule_twoSameModules_sizeOne() throws  IOException {
         TestUtilAndConstants.removeFiles();
@@ -175,6 +185,7 @@ class ModuleListTest {
         assertTrue(isOne);
     }
 
+    //@@author 8kdesign
     @Test
     void removeModule_validIndex_removes() {
         TestUtilAndConstants.removeFiles();
@@ -185,6 +196,7 @@ class ModuleListTest {
         assertEquals(1, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void removeModule_negativeIndex_noChange() {
         TestUtilAndConstants.removeFiles();
@@ -195,6 +207,7 @@ class ModuleListTest {
         assertEquals(2, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void removeModule_indexOutOfBounds_noChange() {
         TestUtilAndConstants.removeFiles();
@@ -205,6 +218,7 @@ class ModuleListTest {
         assertEquals(2, ModuleList.getModules().size());
     }
 
+    //@@author 8kdesign
     @Test
     void addRemoveAddModule_SameModule_sizeOne() {
         TestUtilAndConstants.removeFiles();

@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParserTest {
+
+    //@@author ivanchongzhien
     @Test
     // DASHBOARD COMMAND
     void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException {
@@ -30,6 +32,7 @@ class ParserTest {
         assertTrue(actualCommand instanceof AddModuleCommand);
     }
 
+    //@@author ivanchongzhien
     @Test
     // IN MODULE COMMAND
     // add lesson command
@@ -44,6 +47,7 @@ class ParserTest {
         assertTrue(actualCommand instanceof ListTasksCommand);
     }
 
+    //@@author ivanchongzhien
     @Test
     // add lesson command - all detail fields included
     void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws UnknownCommandException {

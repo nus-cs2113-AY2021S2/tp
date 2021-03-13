@@ -14,6 +14,7 @@ public class PrintHelpCommand extends Command {
 
     }
 
+    //@@author isaharon
     /**
      * Prints list of commands.
      *
@@ -33,6 +34,7 @@ public class PrintHelpCommand extends Command {
         return false;
     }
 
+    //@@author isaharon
     /**
      * Returns string containing dashboard commands and their descriptions.
      *
@@ -48,6 +50,7 @@ public class PrintHelpCommand extends Command {
         return stringBuilder.toString();
     }
 
+    //@@author isaharon
     /**
      * Returns string containing module commands and their descriptions.
      *

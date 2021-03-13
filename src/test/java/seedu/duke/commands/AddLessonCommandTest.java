@@ -15,6 +15,7 @@ import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_LESSON;
 
 class AddLessonCommandTest extends LessonCommandTest {
 
+    //@@author H-horizon
     @Test
     void execute_moduleListUi_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();

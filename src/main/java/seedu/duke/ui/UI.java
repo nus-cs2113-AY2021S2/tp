@@ -45,6 +45,7 @@ public class UI {
         return scanner.nextLine();
     }
 
+    //@@author 8kdesign
     /**
      * Prints module indicator for user input.
      */
@@ -57,6 +58,7 @@ public class UI {
         }
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints description of all tasks in task list.
      *
@@ -71,6 +73,7 @@ public class UI {
         }
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints all tasks in selected module's task list.
      */
@@ -81,6 +84,7 @@ public class UI {
         printTasks(module.getTaskList(), true);
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints all tasks in specified task list.
      *
@@ -102,6 +106,7 @@ public class UI {
         }
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints specified task.
      *
@@ -119,6 +124,7 @@ public class UI {
         }
     }
 
+    //@@author isaharon
     /**
      * Reads user input until non-integer.
      * Returns list of integers user input.

@@ -20,6 +20,7 @@ class AddModuleCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    //@@author isaharon
     @Test
     void execute_uniqueModuleCode_expectPrintSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));
@@ -40,6 +41,7 @@ class AddModuleCommandTest {
         System.setOut(originalOut);
     }
 
+    //@@author isaharon
     @Test
     void execute_duplicateModuleCode_expectDuplicateModuleException() {
         System.setOut(new PrintStream(outContent));

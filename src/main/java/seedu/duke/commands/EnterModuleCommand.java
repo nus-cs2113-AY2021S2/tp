@@ -15,6 +15,7 @@ public class EnterModuleCommand extends Command {
         this.moduleCode = moduleCode;
     }
 
+    //@@author isaharon
     /**
      * Opens specified module.
      *

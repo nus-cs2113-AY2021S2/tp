@@ -21,6 +21,7 @@ import static seedu.duke.common.Messages.UNDONE_TASK;
  */
 public class ModuleInfoCommand extends Command {
 
+    //@@author H-horizon
     /**
      * Constructs a ModuleInfoCommand.
      */
@@ -30,6 +31,7 @@ public class ModuleInfoCommand extends Command {
         System.out.print(String.format(FORMAT_MODULE_INFO, moduleCode));
     }
 
+    //@@author H-horizon
     /**
      * prints module overview.
      *
@@ -47,6 +49,7 @@ public class ModuleInfoCommand extends Command {
         printTasksFromList(tasksList);
     }
 
+    //@@author H-horizon
     /**
      * prints lessons info for module overview.
      *
@@ -60,6 +63,7 @@ public class ModuleInfoCommand extends Command {
         }
     }
 
+    //@@author H-horizon
     /**
      * prints tasks info for module overview.
      *

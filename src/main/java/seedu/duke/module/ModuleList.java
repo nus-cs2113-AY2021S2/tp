@@ -29,6 +29,7 @@ public class ModuleList {
         return modules;
     }
 
+    //@@author 8kdesign
     /**
      * Searches directory for module files.
      * Adds their name (excluding ".txt") to the module list.
@@ -41,6 +42,7 @@ public class ModuleList {
         }
     }
 
+    //@@author 8kdesign
     /**
      * Adds a new module to the module list and add create file for new module.
      *
@@ -55,6 +57,7 @@ public class ModuleList {
         return false;
     }
 
+    //@@author 8kdesign
     /**
      * Adds a module to the module list.
      *
@@ -69,6 +72,7 @@ public class ModuleList {
         return true;
     }
 
+    //@@author isaharon
     /**
      * Deletes modules specified.
      *
@@ -88,6 +92,7 @@ public class ModuleList {
         return deletedModules;
     }
 
+    //@@author 8kdesign
     /**
      * Removes selected module and deletes module file.
      *
@@ -108,6 +113,7 @@ public class ModuleList {
         }
     }
 
+    //@@author 8kdesign
     /**
      * Loads the current module from storage.
      *

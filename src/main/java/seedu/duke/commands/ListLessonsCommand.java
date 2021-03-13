@@ -20,6 +20,7 @@ public class ListLessonsCommand extends Command {
 
     }
 
+    //@@author H-horizon
     /**
      * Prints list of lessons in selected module.
      *
@@ -38,6 +39,7 @@ public class ListLessonsCommand extends Command {
         return false;
     }
 
+    //@@author H-horizon
     /**
      * Prints list of lessons.
      *

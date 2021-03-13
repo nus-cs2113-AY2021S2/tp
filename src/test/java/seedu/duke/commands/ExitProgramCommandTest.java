@@ -19,6 +19,7 @@ class ExitProgramCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    //@@author isaharon
     @Test
     void execute_noInput_expectMessageExit() throws CommandException {
         System.setOut(new PrintStream(outContent));

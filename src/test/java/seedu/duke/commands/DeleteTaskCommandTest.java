@@ -23,6 +23,7 @@ class DeleteTaskCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
+    //@@author aliciatay-zls
     private ArrayList<Task> initialiseTaskList() {
         LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         Task task1 = new Task("weekly exercise", deadline, "");
@@ -36,6 +37,7 @@ class DeleteTaskCommandTest {
         return ModuleList.getSelectedModule().getTaskList();
     }
 
+    //@@author aliciatay-zls
     @Test
     void execute_twoValidTaskIndices_expectSuccess() {
         String input = "1 2" + NEWLINE;

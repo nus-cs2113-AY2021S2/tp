@@ -33,6 +33,7 @@ public class CommonMethods {
         }
     }
 
+    //@@author 8kdesign
     /**
      * Returns lesson type if valid, null if invalid.
      *
@@ -56,6 +57,7 @@ public class CommonMethods {
         }
     }
 
+    //@@author aliciatay-zls
     /**
      * Requests for list of indices.
      * Returns tasks corresponding to indices specified.

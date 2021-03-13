@@ -15,6 +15,7 @@ import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class MarkAsDoneCommand extends Command {
 
+    //@@author aliciatay-zls
     /**
      * Requests for list of indices to mark as done.
      * Marks all tasks corresponding to specified indices as done.
@@ -40,6 +41,7 @@ public class MarkAsDoneCommand extends Command {
         return false;
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints prompt to mark tasks as done.
      *

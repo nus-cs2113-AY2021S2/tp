@@ -55,6 +55,13 @@ public class Module {
         task.setDone(false);
     }
 
+    //@@author aliciatay-zls
+    /**
+     * Returns array list of done/undone tasks.
+     *
+     * @param isDone Boolean to filter done or undone.
+     * @return Array list of filtered tasks.
+     */
     public ArrayList<Task> getDoneOrUndoneTasks(boolean isDone) {
         ArrayList<Task> filteredTasks = new ArrayList<>();
         for (Task task : taskList) {

@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
@@ -21,6 +20,7 @@ public class ViewTeachingStaffCommand extends Command {
 
     }
 
+    //@@author H-horizon
     /**
      * Prints list of teaching staff for selected module.
      *

@@ -15,6 +15,7 @@ public class AddModuleCommand extends Command {
         this.moduleCode = moduleCode;
     }
 
+    //@@author isaharon
     /**
      * Creates new module.
      *
