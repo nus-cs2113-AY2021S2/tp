@@ -32,7 +32,7 @@ class ParserTest {
     }
 
     @Test
-    public void parse_menuExceedStoreIndex_exceptionThrown() throws DukeExceptions {
+    public void parse_menuExceedStoreIndex_exceptionThrown() {
         Parser parser = new Parser();
         try {
             Command c = parser.parse("menu 5", maxStores);
@@ -42,7 +42,7 @@ class ParserTest {
     }
 
     @Test
-    public void parse_menuNoNumbers_exceptionThrown() throws DukeExceptions {
+    public void parse_menuNoNumbers_exceptionThrown() {
         Parser parser = new Parser();
         try {
             Command c = parser.parse("menu abc", maxStores);
@@ -59,7 +59,7 @@ class ParserTest {
     }
 
     @Test
-    public void parse_faultyCommand_throwException() throws DukeExceptions {
+    public void parse_faultyCommand_throwException() {
         Parser parser = new Parser();
         assertThrows(DukeExceptions.class, () -> {
             Command c = parser.parse("RandomInput", maxStores);
@@ -69,7 +69,18 @@ class ParserTest {
     @Test
     public void parse_read_displayCommand() throws DukeExceptions {
         Parser parser = new Parser();
-        Command c = parser.parse("exit",maxStores);
+        Command c = parser.parse("exit", maxStores);
         assertTrue(c instanceof ReadCommand);
     }
+
+    @Test
+    public void parse_reviewIndexExceedReviewNo_exceptionThrown() {
+        Parser parser = new Parser();
+        try {
+            Command c = parser.parse("review 5", maxStores);
+        } catch (Exception e) {
+            assertEquals("Invalid index! Please enter a valid index for your 'review' command.", e.getMessage());
+        }
+    }
+
 }
