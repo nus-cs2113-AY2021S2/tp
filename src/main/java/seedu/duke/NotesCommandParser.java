@@ -35,6 +35,10 @@ public class NotesCommandParser {
             int indexOfLocation = 7;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
         }
+        //for locations with spacing: add the spacing back
+        if (location.equals("TECHNOEDGE")) {
+            location = "TECHNO EDGE";
+        }
         //if there is no user input for the location, throw an exception:
         if (location.isEmpty()) {
             throw new NoLocationForNotesCommandException();
@@ -71,6 +75,10 @@ public class NotesCommandParser {
             int indexOfLocation = 10;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
         }
+        //for locations with spacing: add the spacing back
+        if (location.equals("TECHNOEDGE")) {
+            location = "TECHNO EDGE";
+        }
         //if there is no user input for the location, throw an exception:
         if (location.isEmpty()) {
             throw new NoLocationForNotesCommandException();
@@ -104,6 +112,10 @@ public class NotesCommandParser {
             //take out location and store location as UPPERCASE:
             int indexOfLocation = 9;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
+        }
+        //for locations with spacing: add the spacing back
+        if (location.equals("TECHNOEDGE")) {
+            location = "TECHNO EDGE";
         }
         //if there is no user input for the location, throw an exception:
         if (location.isEmpty()) {

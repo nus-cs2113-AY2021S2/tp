@@ -44,7 +44,7 @@ public class NotesManagerTest {
     }
 
     public void parseAddNotesCommandSuccessfully(String input, String location, String notes) {
-        NotesManager.parseAddNotesCommandAndAddNotes(input);
+        nm.parseAddNotesCommandAndAddNotes(input);
 
         assertEquals(NotesCommandParser.location, location);
         assertEquals(NotesCommandParser.note, notes);
