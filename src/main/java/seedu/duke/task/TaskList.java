@@ -7,16 +7,18 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 //@@author hazelhedmine-reused
 //Reused from https://github.com/hazelhedmine/ip/blob/master/src/main/java/duke/task/TaskList.java
-//with modifications
+//with modifications and additional methods
 public class TaskList {
 
     public static ArrayList<Task> tasks;
     public static ArrayList<Assignment> assignments;
     public static ArrayList<Midterm> midterms;
     public static ArrayList<FinalExam> finalExams;
+    public static HashMap<String, ArrayList<Task>> pinnedTasks;
 
     /**
      * Constructs tasklist.
@@ -26,6 +28,7 @@ public class TaskList {
         assignments = new ArrayList<>();
         midterms = new ArrayList<>();
         finalExams = new ArrayList<>();
+        pinnedTasks = new HashMap<>();
     }
 
     public static void addTask(String module, String description, String message) {
@@ -119,64 +122,12 @@ public class TaskList {
         return taskNumber;
     }
 
-    public static void printSelectTaskNumberToDelete(int taskNumber) {
-        switch (taskNumber) {
-        case 1:
-            printTaskList(tasks);
-            break;
-        case 2:
-            printAssignmentList(assignments);
-            break;
-        case 3:
-            printMidtermList(midterms);
-            break;
-        case 4:
-            printFinalExamList(finalExams);
-            break;
-        default:
-            Ui.printInvalidIntegerMessage();
-        }
-        Ui.printSelectTaskNumberToDeleteMessage();
-    }
-
-    public static void printTaskList(ArrayList<Task> tasks) {
-        int taskNumber = 1;
-        System.out.println("Here are the tasks in your list:");
-        for (Task task: tasks) {
-            System.out.println(taskNumber + ". " + task.toString());
-        }
-    }
-
-    public static void printAssignmentList(ArrayList<Assignment> assignments) {
-        int taskNumber = 1;
-        System.out.println("Here are the assignments in your list:");
-        for (Assignment assignment: assignments) {
-            System.out.println(taskNumber + ". " + assignment.toString());
-        }
-    }
-
-    public static void printMidtermList(ArrayList<Midterm> midterms) {
-        int taskNumber = 1;
-        System.out.println("Here are the midterms in your list:");
-        for (Midterm midterm: midterms) {
-            System.out.println(taskNumber + ". " + midterm.toString());
-        }
-    }
-
-    public static void printFinalExamList(ArrayList<FinalExam> finalExams) {
-        int taskNumber = 1;
-        System.out.println("Here are the finals in your list:");
-        for (FinalExam finalExam: finalExams) {
-            System.out.println(taskNumber + ". " + finalExam.toString());
-        }
-    }
-
     public static void deleteTask(int taskTypeNumber) {
         if (taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
             return;
         }
-        printSelectTaskNumberToDelete(taskTypeNumber);
+        Ui.printSelectTaskNumberToDelete(taskTypeNumber);
         while (true) {
             try {
                 int taskNumber = Integer.parseInt(Ui.readCommand());
@@ -234,4 +185,50 @@ public class TaskList {
         }
         return isEmpty;
     }
+
+    public static void pinTask(int taskTypeNumber) {
+        if (taskListIsEmpty(taskTypeNumber)) {
+            Ui.printTaskListIsEmptyMessage();
+            return;
+        }
+        Ui.printSelectTaskNumberToPin(taskTypeNumber);
+        while (true) {
+            try {
+                int taskNumber = Integer.parseInt(Ui.readCommand());
+                Ui.printHorizontalLine();
+                switch (taskTypeNumber) {
+                case 1:
+                    addTaskToPinnedTasks(tasks.get(taskNumber - 1), "[Task]");
+                    break;
+                case 2:
+                    addTaskToPinnedTasks(assignments.get(taskNumber - 1), "[Assignment]");
+                    break;
+                case 3:
+                    addTaskToPinnedTasks(midterms.get(taskNumber - 1), "[Midterm]");
+                    break;
+                case 4:
+                    addTaskToPinnedTasks(finalExams.get(taskNumber - 1), "[Final Exam]");
+                    break;
+                default:
+                    Ui.printInvalidIntegerMessage();
+                }
+                return;
+            } catch (NumberFormatException e) {
+                Ui.printInvalidIntegerMessage();
+            } catch (IndexOutOfBoundsException e) {
+                Ui.printInvalidTaskNumberMessage();
+            }
+        }
+    }
+
+    private static void addTaskToPinnedTasks(Task task, String taskTypeName) {
+        pinnedTasks.computeIfAbsent(taskTypeName, k -> new ArrayList<>());
+        if (pinnedTasks.get(taskTypeName).contains((task))) {
+            Ui.printTaskAlreadyPinnedMessage();
+            return;
+        }
+        pinnedTasks.get(taskTypeName).add(task);
+        return;
+    }
+
 }

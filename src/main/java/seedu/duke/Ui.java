@@ -1,8 +1,10 @@
 package seedu.duke;
 
-import seedu.duke.task.Task;
+import seedu.duke.task.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -85,8 +87,17 @@ public class Ui {
     }
 
     public static void printDeleteTaskMenu() {
-        System.out.println(
-            "Please choose which type of task you would like to delete and enter the number:\n"
+        System.out.println("Please choose which type of task you would like to delete"
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
+    }
+
+    public static void printPinTaskMenu() {
+        System.out.println("Please choose which type of task you would like to pin"
+                + " and enter the number:\n"
                 + "[1] --- Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
@@ -172,9 +183,18 @@ public class Ui {
         System.out.println("\nWhat is the number of the task you want to delete?");
     }
 
+    public static void printSelectTaskNumberToPinMessage() {
+        System.out.println("\nWhat is the number of the task you want to pin?");
+    }
+
+    public static void printTaskAlreadyPinnedMessage() {
+        System.out.println("This task is already pinned!");
+        printHorizontalLine();
+    }
+
     public static void printTaskListIsEmptyMessage() {
-        System.out.println("Task list is empty, there are no tasks to delete!");
-        System.out.println("Returning back to ModuleInfo menu now!");
+        System.out.println("Task list is empty!\n"
+                + "Returning back to ModuleInfo menu now!");
         printHorizontalLine();
     }
 
@@ -322,5 +342,89 @@ public class Ui {
     public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
+    }
+
+    public static void printTaskList(ArrayList<Task> tasks) {
+        int taskNumber = 1;
+        System.out.println("This is the list of your tasks:");
+        for (Task task: tasks) {
+            System.out.println(taskNumber + ". " + task.toString());
+        }
+    }
+
+    public static void printAssignmentList(ArrayList<Assignment> assignments) {
+        int taskNumber = 1;
+        System.out.println("This is the list of your assignments:");
+        for (Assignment assignment: assignments) {
+            System.out.println(taskNumber + ". " + assignment.toString());
+        }
+    }
+
+    public static void printMidtermList(ArrayList<Midterm> midterms) {
+        int taskNumber = 1;
+        System.out.println("This is the list of your midterms:");
+        for (Midterm midterm: midterms) {
+            System.out.println(taskNumber + ". " + midterm.toString());
+        }
+    }
+
+    public static void printFinalExamList(ArrayList<FinalExam> finalExams) {
+        int taskNumber = 1;
+        System.out.println("This is the list of your final exams:");
+        for (FinalExam finalExam: finalExams) {
+            System.out.println(taskNumber + ". " + finalExam.toString());
+        }
+    }
+
+    public static void printPinnedTaskList(HashMap<String, ArrayList<Task>> pinnedTasks) {
+        int taskNumber = 1;
+        System.out.println("This is the list of your pinned tasks:");
+        for (Map.Entry<String, ArrayList<Task>> item : pinnedTasks.entrySet()) {
+            String taskType = item.getKey();
+            ArrayList<Task> tasks = item.getValue();
+            for (Task task: tasks) {
+                System.out.println(taskNumber + ". " + taskType + task.toString());
+            }
+        }
+    }
+
+    public static void printSelectTaskNumberToDelete(int taskNumber) {
+        switch (taskNumber) {
+        case 1:
+            printTaskList(TaskList.tasks);
+            break;
+        case 2:
+            printAssignmentList(TaskList.assignments);
+            break;
+        case 3:
+            printMidtermList(TaskList.midterms);
+            break;
+        case 4:
+            printFinalExamList(TaskList.finalExams);
+            break;
+        default:
+            printInvalidIntegerMessage();
+        }
+        printSelectTaskNumberToDeleteMessage();
+    }
+
+    public static void printSelectTaskNumberToPin(int taskNumber) {
+        switch (taskNumber) {
+        case 1:
+            printTaskList(TaskList.tasks);
+            break;
+        case 2:
+            printAssignmentList(TaskList.assignments);
+            break;
+        case 3:
+            printMidtermList(TaskList.midterms);
+            break;
+        case 4:
+            printFinalExamList(TaskList.finalExams);
+            break;
+        default:
+            printInvalidIntegerMessage();
+        }
+        printSelectTaskNumberToPinMessage();
     }
 }

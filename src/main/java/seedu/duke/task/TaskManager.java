@@ -74,18 +74,25 @@ public class TaskManager {
     }
 
     private static void viewAllTasks() {
-        TaskList.printTaskList(TaskList.tasks);
+        Ui.printPinnedTaskList(TaskList.pinnedTasks);
         Ui.printEmptyLine();
-        TaskList.printAssignmentList(TaskList.assignments);
+        Ui.printTaskList(TaskList.tasks);
         Ui.printEmptyLine();
-        TaskList.printMidtermList(TaskList.midterms);
+        Ui.printAssignmentList(TaskList.assignments);
         Ui.printEmptyLine();
-        TaskList.printFinalExamList(TaskList.finalExams);
+        Ui.printMidtermList(TaskList.midterms);
+        Ui.printEmptyLine();
+        Ui.printFinalExamList(TaskList.finalExams);
         Ui.printEmptyLine();
         Ui.printHorizontalLine();
     }
 
     private static void pinTask() {
+        Ui.printPinTaskMenu();
+        int taskTypeNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+
+        TaskList.pinTask(taskTypeNumber);
     }
 
     private static void deleteTask() {
