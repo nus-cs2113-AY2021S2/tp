@@ -124,6 +124,14 @@ public class Utils {
         }
     }
 
+    /**
+     * Checks {@code arguments} for conflict options.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command the name of the {@code Command} calling it.
+     * @param orOptions conflict options pertaining to {@code command}.
+     * @throws CommandException if {@code arguments} contains a conflict option.
+     */
     public static void checkOptionConflict(ArrayList<String> arguments, String command,
                                            String... orOptions) throws CommandException {
         String option = null;
