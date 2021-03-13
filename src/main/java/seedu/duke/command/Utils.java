@@ -24,7 +24,7 @@ public class Utils {
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
 
     /**
-     * Checks if {@code value} is not {@code null} and not empty.
+     * Checks {@code value} to see if it is not {@code null} and not empty.
      *
      * @param value the String to check.
      * @throws CommandException if {@code value} is {@code null} or empty.
@@ -36,7 +36,7 @@ public class Utils {
     }
 
     /**
-     * Checks if {@code value} is not {@code null} and not empty,
+     * Checks {@code value} to see if it is not {@code null} and not empty,
      * and returns it if {@code true}.
      *
      * @param value the {@code String} to check.
@@ -75,10 +75,11 @@ public class Utils {
             String value = arguments.get(index + 1);
             return validateNotEmpty(value, command, option);
         }
-        // Throw ERROR_MISSING_OPTION_VALUE error.
+        // Below return results in an ERROR_MISSING_OPTION_VALUE exception thrown.
         return validateNotEmpty("", command, option);
     }
 
+    // This hasOption method is only meant to improve readability.
     public static boolean hasOption(ArrayList<String> arguments, String option) {
         return arguments.contains(option);
     }
