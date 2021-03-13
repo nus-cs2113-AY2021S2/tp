@@ -3,7 +3,12 @@ store<>chicken rice stall
 menu<>chicken rice
 menu<>spicy chicken rice
 menu<>chicken bones
+review<>Best Chicken Rice ever!
+review<>I love their chilli
 store<>Fish rice stall
 menu<>fish rice
 menu<>spicy fish rice
 menu<>fish bones
+review<>Best Fish Soup Ever!
+review<>Fish doesn't taste very fresh...
+

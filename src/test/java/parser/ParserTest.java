@@ -3,6 +3,7 @@ package parser;
 import command.Command;
 import command.DisplayCommand;
 import command.ExitCommand;
+import command.ReadCommand;
 import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
 import seedu.duke.Duke;
@@ -33,5 +34,12 @@ class ParserTest {
         assertThrows(DukeExceptions.class, () -> {
             Command c = parser.parse("RandomInput");
         });
+    }
+
+    @Test
+    public void parse_read_displayCommand() throws DukeExceptions {
+        Parser parser = new Parser();
+        Command c = parser.parse("exit");
+        assertTrue(c instanceof ReadCommand);
     }
 }

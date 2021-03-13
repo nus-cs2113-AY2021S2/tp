@@ -42,6 +42,8 @@ public class Storage {
                 canteen.getStores().add(store);
             } else if (storedLine[0].equals("menu")) {
                 store.getMenus().add(storedLine[1]);
+            } else if (storedLine[0].equals("review")) {
+                store.getReviews().add(storedLine[1]);
             } else {
                 continue;
             }

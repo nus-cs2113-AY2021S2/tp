@@ -2,12 +2,9 @@ package seedu.duke;
 
 import canteens.Canteen;
 import command.Command;
-import command.DisplayCommand;
-import command.ExitCommand;
 import exceptions.DukeExceptions;
 import parser.Parser;
 import storage.Storage;
-import stores.Store;
 import ui.Ui;
 
 import java.util.ArrayList;

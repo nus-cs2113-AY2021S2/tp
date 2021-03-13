@@ -39,4 +39,8 @@ public class Ui {
     public void showDisplayStoreMessage() {
         System.out.println("Here's a list of the stores in the canteen: The Deck");
     }
+
+    public void showDisplayReviewMessage() {
+        System.out.println("Here's a list of reviews of your chosen store: ");
+    }
 }
