@@ -23,6 +23,10 @@ public class Ui {
         System.out.println("--------------------------------------------");
     }
 
+    public static void printEmptyLine() {
+        System.out.println();
+    }
+
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
             + "[1] Module Information\n"

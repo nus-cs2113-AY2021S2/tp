@@ -8,6 +8,7 @@ public class TaskManager {
         while (true) {
             Ui.printTaskManagerMenu();
             String command = Ui.readCommand();
+            Ui.printHorizontalLine();
             try {
                 int taskNumber = Integer.parseInt(command);
                 switch (taskNumber) {
@@ -30,22 +31,9 @@ public class TaskManager {
                 }
             } catch (NumberFormatException e) {
                 Ui.printInvalidIntegerMessage();
+                Ui.printHorizontalLine();
             }
         }
-    }
-
-    private static void pinTask() {
-    }
-
-    private static void viewAllTasks() {
-    }
-
-    private static void deleteTask() {
-        Ui.printDeleteTaskMenu();
-        int taskTypeNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
-
-        TaskList.deleteTask(taskTypeNumber);
     }
 
     private static void addNewTask() {
@@ -83,5 +71,28 @@ public class TaskManager {
         default:
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    private static void viewAllTasks() {
+        TaskList.printTaskList(TaskList.tasks);
+        Ui.printEmptyLine();
+        TaskList.printAssignmentList(TaskList.assignments);
+        Ui.printEmptyLine();
+        TaskList.printMidtermList(TaskList.midterms);
+        Ui.printEmptyLine();
+        TaskList.printFinalExamList(TaskList.finalExams);
+        Ui.printEmptyLine();
+        Ui.printHorizontalLine();
+    }
+
+    private static void pinTask() {
+    }
+
+    private static void deleteTask() {
+        Ui.printDeleteTaskMenu();
+        int taskTypeNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+
+        TaskList.deleteTask(taskTypeNumber);
     }
 }
