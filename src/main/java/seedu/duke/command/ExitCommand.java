@@ -6,7 +6,7 @@ import seedu.duke.Ui;
 
 import java.util.HashMap;
 
-public class ExitCommand extends Command{
+public class ExitCommand extends Command {
     protected Boolean isExit = true;
     /**
      * This is the constructor of the command. Arguments are passed to parent class.
