@@ -75,13 +75,13 @@ public class NotesManagerTest {
         try {
             NotesCommandParser.parseDeleteNotesCommand(input);
         } catch (InvalidNoteIndexException e) {
-            assertEquals("Please include a '/' in between the location and the note index.", error);
+            assertEquals("Please enter a number that is positive and not more than", error);
         } catch (NoNoteIndexException e) {
             assertEquals("Please add a note index behind. :))", error);
         } catch (NonExistentLocationForNotesCommandException e) {
             assertEquals("Location does not exists. :(( Please key in a valid location.", error);
         } catch (WrongInputFormatException e) {
-            assertEquals("Please enter a number that is positive and not more than", error);
+            assertEquals("Please include a '/' in between the location and the note index.", error);
         } catch (NoLocationForNotesCommandException e) {
             assertEquals("Please add a location to the command before the note index. :))", error);
         }
