@@ -150,6 +150,23 @@ public class Utils {
         }
     }
 
+    /**
+     * Checks the {@code Command}'s {@code arguments} ordering based on the {@code argumentTypeOrder}.<br>
+     * Recommended for {@code Command}s with strict argument order.<br>
+     * This method should be used only when:<br>
+     * <ul>
+     *     <li>{@link #validateOptions(ArrayList, String, String[], String[])} has been called, or</li>
+     *     <li>{@code Command} does not require option validation.</li>
+     * </ul>
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param argumentTypeOrder an Enumeration array of type {@code ArgumentType} containing the argument
+     *                          type order.
+     * @param command the name of the {@code Command} calling it.
+     * @throws CommandException if there is a violation to the argument type order.
+     * @see ArgumentType
+     * @see #validateArgument(String, ArgumentType, String)
+     */
     public static void validateArguments(ArrayList<String> arguments, ArgumentType[] argumentTypeOrder,
                                          String command) throws CommandException {
         if (arguments.size() > argumentTypeOrder.length) {
