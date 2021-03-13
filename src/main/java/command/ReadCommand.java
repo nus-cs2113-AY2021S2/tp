@@ -1,7 +1,7 @@
 package command;
 
 import canteens.Canteen;
-import exceptions.DukeExceptions;
+import reviews.Review;
 import stores.Store;
 import ui.Ui;
 
@@ -11,24 +11,19 @@ import java.util.ArrayList;
 
 public class ReadCommand extends Command {
     public int index;
-    public ReadCommand(String input) {
-        this.index = Integer.parseInt(input);
-    }
 
+    public ReadCommand(int index) {
+        this.index = index;
+    }
 
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
 
-        ArrayList<Store> stores = canteens.get(0).getStores();
-        try {
-            if (index > stores.size() || index < 0) {
-                throw new ArrayIndexOutOfBoundsException();
-            }
-            stores.get(index - 1).displayReviews();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("☹ OOPS!!! Please enter a valid index after your command");
-        }
+        Store currentStore = canteens.get(0).getStore(index);
+        ArrayList<Review> reviews = currentStore.getReviews();
+        ui.showReviews(currentStore.getStoreName(), reviews);
+
 
     }
 

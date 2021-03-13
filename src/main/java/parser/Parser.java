@@ -1,13 +1,11 @@
 package parser;
 
-import canteens.Canteen;
 import command.Command;
 import command.DisplayMenusCommand;
 import command.DisplayStoresCommand;
 import command.ExitCommand;
 import command.ReadCommand;
 import exceptions.DukeExceptions;
-import java.util.ArrayList;
 
 
 public class Parser {
@@ -18,7 +16,7 @@ public class Parser {
         String invalidIndexMessage = "Invalid index! Please enter a valid index for your '" + keyword + "' command.";
 
         // parse to get index from input
-        for (String word: inputArray) {
+        for (String word : inputArray) {
             if (word.equals(keyword)) {
                 continue;
             }
@@ -48,7 +46,8 @@ public class Parser {
         } else if (line.startsWith("exit")) {
             newCommand = new ExitCommand();
         } else if (parsedLine[0].equals("read")) {
-            newCommand = new ReadCommand(parsedLine[1]);
+            int reviewDisplayedIndex = parseIndex(line, "read", maxStores);
+            newCommand = new ReadCommand(reviewDisplayedIndex - 1);
 
         } else {
             throw new DukeExceptions("Please enter a valid command!");

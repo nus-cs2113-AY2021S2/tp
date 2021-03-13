@@ -2,6 +2,7 @@ package storage;
 
 import canteens.Canteen;
 import menus.Menu;
+import reviews.Review;
 import stores.Store;
 
 import java.io.File;
@@ -45,7 +46,7 @@ public class Storage {
                 String[] menuDetails = storedLine[1].split("//");
                 store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
             } else if (storedLine[0].equals("review")) {
-                store.getReviews().add(storedLine[1]);
+                store.addReview(new Review(storedLine[1]));
 
             } else {
                 continue;

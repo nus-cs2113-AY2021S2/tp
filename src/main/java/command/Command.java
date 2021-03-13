@@ -10,6 +10,7 @@ public abstract class Command {
     protected boolean exit;
     protected String commandArg;
     private int targetIndex = -1;
+
     public Command() {
         exit = false;
     }

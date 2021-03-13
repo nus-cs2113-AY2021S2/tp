@@ -1,12 +1,13 @@
 package stores;
 
 import menus.Menu;
+import reviews.Review;
 
 import java.util.ArrayList;
 
 public class Store {
     private String storeName;
-    private ArrayList<String> reviews;
+    private ArrayList<Review> reviews;
     private ArrayList<Menu> menus;
 
 
@@ -20,16 +21,8 @@ public class Store {
         System.out.println(storeName);
     }
 
-    public void displayReviews() {
-        int count=1;
-        for (String review : reviews) {
-            System.out.println(count+"."+review);
-            count++;
-        }
 
-    }
-
-    public ArrayList<String> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
@@ -40,6 +33,10 @@ public class Store {
 
     public ArrayList<Menu> getMenus() {
         return menus;
+    }
+
+    public void addReview(Review newReview) {
+        reviews.add(newReview);
     }
 
     public void addMenu(Menu newMenu) {
