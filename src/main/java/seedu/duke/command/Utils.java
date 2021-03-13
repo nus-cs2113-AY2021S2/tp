@@ -179,6 +179,15 @@ public class Utils {
         }
     }
 
+    /**
+     * Checks {@code argument}'s type matches {@code argumentType}.
+     *
+     * @param argument a portion of the {@code Command}'s arguments.
+     * @param argumentType an Enumeration of ArgumentType to match with.
+     * @param command the name of the {@code Command} calling it.
+     * @throws CommandException if {@code argument}'s type does not match {@code argumentType}.
+     * @see ArgumentType
+     */
     private static void validateArgument(String argument, ArgumentType argumentType, String command)
             throws CommandException {
         switch (argumentType) {
