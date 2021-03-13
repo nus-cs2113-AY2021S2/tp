@@ -2,7 +2,12 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.duke.notecommandexceptions.*;
+import seedu.duke.notecommandexceptions.EmptyNoteException;
+import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
+import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.NoNoteIndexException;
+import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -15,12 +20,17 @@ public class NotesManagerTest {
     @Test
     public void parseTest() {
 
-        parseAddNotesCommandSuccessfully("add note E4/Bring Origami for GET lesson.", "E4", "Bring Origami for GET lesson.");
-        parseAddNotesCommandSuccessfully("add note TECHNO EDGE/Try out the new western stall. :))", "TECHNO EDGE", "Try out the new western stall. :))");
+        parseAddNotesCommandSuccessfully("add note E4/Bring Origami for GET lesson.", "E4",
+                "Bring Origami for GET lesson.");
+        parseAddNotesCommandSuccessfully("add note TECHNO EDGE/Try out the new western stall. :))",
+                "TECHNO EDGE", "Try out the new western stall. :))");
 
-        parseAddNotesCommandUnsuccessfully("add note ", "Please include a '/' in between the location and the notes.");
-        parseAddNotesCommandUnsuccessfully("add note /Group Project Meeting", "Please add a location to the command before the notes. :))");
-        parseAddNotesCommandUnsuccessfully("add note e/", "Location does not exists. :(( Please key in a valid location.");
+        parseAddNotesCommandUnsuccessfully("add note ",
+                "Please include a '/' in between the location and the notes.");
+        parseAddNotesCommandUnsuccessfully("add note /Group Project Meeting",
+                "Please add a location to the command before the notes. :))");
+        parseAddNotesCommandUnsuccessfully("add note e/", "Location does not exists. :(( " +
+                "Please key in a valid location.");
         parseAddNotesCommandUnsuccessfully("add note e2/", "Please add a note behind. :))");
 
         parseDeleteNotesCommandSuccessfully("delete note E4/1", "E4", 0);
