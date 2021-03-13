@@ -22,4 +22,6 @@ public class Constants {
             + "Usage: retrieve\n\n";
     public static final String EXIT_INFO_MESSAGE = "Exit the program\n"
             + "Usage: exit\n\n";
+
+    public static final String EXIT_MESSAGE = "Goodbye, we hope to see you again!";
 }
