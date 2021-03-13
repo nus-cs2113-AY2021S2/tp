@@ -1,10 +1,12 @@
 package seedu.duke.common;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.exception.CustomException;
 
 import java.time.DateTimeException;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
 class ValidatorsTest {
@@ -42,6 +44,34 @@ class ValidatorsTest {
             }
         }
         if (finalCount != counter) {
+            fail();
+        }
+    }
+
+    @Test
+    void validateAmount_properFormat_expectSuccess() {
+        String[] arrayOfAmount = {"0.1", "1.0", "1", "987654321", "0.987654321"};
+        try {
+            for (String testAmount : arrayOfAmount) {
+                validateAmount(testAmount);
+            }
+        } catch (NumberFormatException | CustomException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void validateAmount_wrongFormat_expectFailure() {
+        int numFailCase = 0;
+        String[] arrayOfAmount = {"0", "-1", "1num1word", "wordonly"};
+        for (String testAmount : arrayOfAmount) {
+            try {
+                validateAmount(testAmount);
+            } catch (NumberFormatException | CustomException e) {
+                numFailCase++;
+            }
+        }
+        if (arrayOfAmount.length != numFailCase) {
             fail();
         }
     }
