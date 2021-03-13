@@ -21,6 +21,7 @@ import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
+import seedu.duke.exception.CommandException;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -76,7 +77,7 @@ public class Parser {
      * @return command object based on user input
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
-    public Command parse(String input) throws UnknownCommandException {
+    public Command parse(String input) throws UnknownCommandException, CommandException {
         Command parsedCommand;
 
         if (moduleIsSelected()) {
@@ -95,7 +96,7 @@ public class Parser {
      * @return dashboard command object based on user input
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
-    private Command parseAtDashboard(String input) throws UnknownCommandException {
+    private Command parseAtDashboard(String input) throws UnknownCommandException, CommandException {
         DashboardCommands command = parseDashboardCommandFromInput(input);
         switch (command) {
         case ADD:
@@ -106,7 +107,7 @@ public class Parser {
         case MODULES:
             return new ListModulesCommand();
         case OPEN:
-            return new EnterModuleCommand(input);
+            return new EnterModuleCommand(input.toUpperCase());
         case HELP:
             return new PrintHelpCommand();
         case EXIT:
@@ -146,11 +147,19 @@ public class Parser {
      * @param input full user input string
      * @return module code string
      */
-    private String getModuleCode(String input) {
-        // TODO  - error handling
+    private String getModuleCode(String input) throws CommandException {
         String[] words = input.split(" ");
+        if (words.length < 2) {
+            throw new CommandException("Module not specified.");
+        }
 
-        return words[1];
+        String moduleCode = words[1].toUpperCase();
+
+        if (!isValidModuleCode(moduleCode)) {
+            throw new CommandException("Invalid module code.");
+        }
+
+        return moduleCode;
     }
 
     /**
@@ -372,6 +381,7 @@ public class Parser {
         String[] words = input.trim().split(WHITESPACE);
 
         for (String word : words) {
+            // TODO - inform team using this
             index = Integer.parseInt(word);
             rawIndices.add(index);
         }
