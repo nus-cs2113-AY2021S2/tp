@@ -6,6 +6,7 @@ import static seedu.duke.common.Messages.MESSAGE_EXIT;
 
 public class ExitProgramCommand extends Command {
 
+    //@@author isaharon
     /**
      * Prints exit message.
      *

@@ -10,10 +10,7 @@ import static seedu.duke.common.Messages.NEWLINE;
 
 public class PrintHelpCommand extends Command {
 
-    public PrintHelpCommand() {
-
-    }
-
+    //@@author isaharon
     /**
      * Prints list of commands.
      *

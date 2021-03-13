@@ -16,10 +16,7 @@ import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
  */
 public class ListLessonsCommand extends Command {
 
-    public ListLessonsCommand() {
-
-    }
-
+    //@@author H-horizon
     /**
      * Prints list of lessons in selected module.
      *

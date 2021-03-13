@@ -21,6 +21,7 @@ class ModuleInfoCommandTest extends LessonCommandTest {
             + "lab - Wednesday 9 pm - 10 pm" + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE + "1. iP submission"
             + NEWLINE;
 
+    //@@author H-horizon
     @Test
     void execute_ui_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();

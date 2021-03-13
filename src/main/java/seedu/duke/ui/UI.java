@@ -45,6 +45,7 @@ public class UI {
         return scanner.nextLine();
     }
 
+    //@@author 8kdesign
     /**
      * Prints module indicator for user input.
      */
@@ -57,6 +58,7 @@ public class UI {
         }
     }
 
+    //@@author aliciatay-zls
     /**
      * Prints description of all tasks in task list.
      *
@@ -119,6 +121,7 @@ public class UI {
         }
     }
 
+    //@@author isaharon
     /**
      * Reads user input until non-integer.
      * Returns list of integers user input.

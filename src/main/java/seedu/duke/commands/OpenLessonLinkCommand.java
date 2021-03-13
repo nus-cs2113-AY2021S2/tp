@@ -25,6 +25,7 @@ import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
  */
 public class OpenLessonLinkCommand extends Command {
 
+    //@@author H-horizon
     /**
      * Opens links corresponding to specified indices.
      *

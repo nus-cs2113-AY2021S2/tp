@@ -15,6 +15,7 @@ import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class DeleteTaskCommand extends Command {
 
+    //@@author aliciatay-zls
     /**
      * Requests for list of indices to delete.
      * Deletes all tasks corresponding to specified indices.

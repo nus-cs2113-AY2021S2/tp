@@ -21,6 +21,7 @@ import static seedu.duke.common.Messages.UNDONE_TASK;
  */
 public class ModuleInfoCommand extends Command {
 
+    //@@author H-horizon
     /**
      * Constructs a ModuleInfoCommand.
      */

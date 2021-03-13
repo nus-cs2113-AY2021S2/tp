@@ -17,6 +17,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParserTest {
+
+    //@@author ivanchongzhien
     @Test
     // DASHBOARD COMMAND
     void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException {

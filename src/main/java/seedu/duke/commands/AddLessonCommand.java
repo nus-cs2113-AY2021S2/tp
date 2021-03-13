@@ -17,6 +17,7 @@ public class AddLessonCommand extends Command {
 
     private final Lesson lesson;
 
+    //@@author H-horizon
     public AddLessonCommand(Lesson lesson) {
         this.lesson = lesson;
     }

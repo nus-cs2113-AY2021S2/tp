@@ -11,6 +11,7 @@ public class EnterModuleCommand extends Command {
 
     private final String moduleCode;
 
+    //@@author isaharon
     public EnterModuleCommand(String moduleCode) {
         this.moduleCode = moduleCode;
     }

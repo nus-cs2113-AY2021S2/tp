@@ -68,6 +68,7 @@ import static seedu.duke.common.ModuleCommands.UNMARK;
 
 public class Parser {
 
+    //@@author ivanchongzhien
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
      * a module.
@@ -354,7 +355,6 @@ public class Parser {
 
         return LocalDate.parse(string, parseFormat);
     }
-
 
     /**
      * Converts given input string to an arraylist of integers.

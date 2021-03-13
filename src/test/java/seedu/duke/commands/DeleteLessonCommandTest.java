@@ -13,6 +13,7 @@ import static seedu.duke.TestUtilAndConstants.EXPECTED_DELETE_LESSON;
 
 class DeleteLessonCommandTest extends LessonCommandTest {
 
+    //@@author H-horizon
     @Test
     void deleteLessonsFromList_moduleLessonListIndexes_expectPrintsCorrectOutput() {
 

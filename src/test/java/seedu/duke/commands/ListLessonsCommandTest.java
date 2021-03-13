@@ -18,6 +18,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
             + TEACHER_NAME + "\n \t" + TEACHER_EMAIL + System.lineSeparator() + "2. lab - " + TIME1 + "\n \t"
             + ONLINE_LINK1 + "\n \t" + TEACHER_NAME1 + "\n \t" + TEACHER_EMAIL1 + System.lineSeparator();
 
+    //@@author H-horizon
     @Test
     void printLessonsFromList_lessonList_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();

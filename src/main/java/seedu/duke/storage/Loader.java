@@ -42,6 +42,7 @@ import static seedu.duke.common.CommonMethods.getLessonType;
 
 public class Loader {
 
+    //@@author 8kdesign
     /**
      * Searches directory for module files.
      * Returns ArrayList of names (excluding ".txt").

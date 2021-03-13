@@ -14,6 +14,7 @@ import static seedu.duke.common.Messages.NEWLINE;
 
 class ViewTeachingStaffCommandTest extends LessonCommandTest {
 
+    //@@author H-horizon
     @Test
     void execute_moduleListUi_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();

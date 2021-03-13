@@ -28,6 +28,7 @@ public class AddTaskCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
 
+    //@@author aliciatay-zls
     @Test
     void execute_fullTaskInput_expectSuccess() {
         String input = YES_STRING + NEWLINE;

@@ -22,6 +22,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Writer {
 
+    //@@author 8kdesign
     /**
      * Creates file for new module.
      *
@@ -43,7 +44,6 @@ public class Writer {
             //Error creating file
         }
     }
-
 
     /**
      * Deletes specified file.

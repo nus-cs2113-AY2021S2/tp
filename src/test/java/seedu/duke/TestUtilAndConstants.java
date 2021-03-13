@@ -27,10 +27,10 @@ public class TestUtilAndConstants {
     public static final String MODULE_CODE_3 = "CS2105";
     public static final String MODULE_CODE_4 = "CS2101";
 
-
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("d-M-yyyy");
 
 
+    //@@author 8kdesign
     public static void removeFiles() {
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
@@ -43,8 +43,13 @@ public class TestUtilAndConstants {
         directory.delete();
     }
 
-    // Creates task list for testing MarkAsDoneCommand and MarkAsUndoneCommand.
-    // Contains mix of undone tasks (by default) and done tasks (explicitly set here).
+    //@@author aliciatay-zls
+    /**
+     * Creates task list for testing MarkAsDoneCommand and MarkAsUndoneCommand.
+     * Contains mix of undone tasks (by default) and done tasks (explicitly set here).
+     * @param module Selected module.
+     * @return Array list of selected module.
+     */
     public static ArrayList<Task> initialiseTaskList(Module module) {
         LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
 

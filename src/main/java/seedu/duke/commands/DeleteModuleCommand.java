@@ -14,6 +14,7 @@ import static seedu.duke.common.Messages.NEWLINE;
 
 public class DeleteModuleCommand extends Command {
 
+    //@@author isaharon
     /**
      * Requests for list of indices to delete.
      * Deletes all modules corresponding to specified indices.

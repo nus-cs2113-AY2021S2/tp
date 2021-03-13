@@ -20,6 +20,7 @@ import static seedu.duke.common.Constants.TXT_FORMAT;
 
 class ModuleListTest {
 
+    //@@author 8kdesign
     @Test
     void loadModuleNames_noDirectory_sizeZero() {
         TestUtilAndConstants.removeFiles();

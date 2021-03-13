@@ -26,6 +26,7 @@ public class LessonCommandTest {
     public static final int SECOND_INDEX = 2;
     public static final String COMMAND_FAILED = "Command failed";
 
+    //@@author H-horizon
     public static void removeOutputStream() {
         PrintStream originalOut = System.out;
         System.setOut(originalOut);

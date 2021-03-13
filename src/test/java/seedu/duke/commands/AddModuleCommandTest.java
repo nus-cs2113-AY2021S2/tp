@@ -20,6 +20,7 @@ class AddModuleCommandTest {
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
+    //@@author isaharon
     @Test
     void execute_uniqueModuleCode_expectPrintSuccess() throws CommandException {
         System.setOut(new PrintStream(outContent));

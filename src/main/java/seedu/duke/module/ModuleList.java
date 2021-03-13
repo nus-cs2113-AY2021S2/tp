@@ -29,6 +29,7 @@ public class ModuleList {
         return modules;
     }
 
+    //@@author 8kdesign
     /**
      * Searches directory for module files.
      * Adds their name (excluding ".txt") to the module list.
@@ -69,6 +70,7 @@ public class ModuleList {
         return true;
     }
 
+    //@@author isaharon
     /**
      * Deletes modules specified.
      *
@@ -88,6 +90,7 @@ public class ModuleList {
         return deletedModules;
     }
 
+    //@@author 8kdesign
     /**
      * Removes selected module and deletes module file.
      *
