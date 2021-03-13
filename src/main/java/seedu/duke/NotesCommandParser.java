@@ -20,7 +20,9 @@ public class NotesCommandParser {
 
     }
 
-    public static void parseAddNotesCommand(String input) throws WrongInputFormatException, NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException, EmptyNoteException {
+    public static void parseAddNotesCommand(String input)
+            throws WrongInputFormatException, NoLocationForNotesCommandException,
+            NonExistentLocationForNotesCommandException, EmptyNoteException {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");
         if (!lowerCaseInputWithNoSpaces.contains("/")) {
@@ -54,7 +56,9 @@ public class NotesCommandParser {
         note = input.substring(notesIndexForOriginalInput).trim();
     }
 
-    public static void parseDeleteNotesCommand(String input) throws WrongInputFormatException, NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException, NoNoteIndexException, InvalidNoteIndexException {
+    public static void parseDeleteNotesCommand(String input)
+            throws WrongInputFormatException, NoLocationForNotesCommandException,
+            NonExistentLocationForNotesCommandException, NoNoteIndexException, InvalidNoteIndexException {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");
         if (!lowerCaseInputWithNoSpaces.contains("/")) {
@@ -83,7 +87,7 @@ public class NotesCommandParser {
         if (noteIndexString.isEmpty() || noteIndexString.isBlank()) {
             throw new NoNoteIndexException();
         }
-        int noteIndex = Integer.parseInt(noteIndexString); //throws NumberFormatException if user did not input a proper number for the note index
+        int noteIndex = Integer.parseInt(noteIndexString); //throws NumberFormatException
         //if noteIndex is invalid (not within the total number of notes made for that location):
         if (noteIndex < 1 || noteIndex > locationNotesCountList[locationsList.indexOf(location)]) {
             throw new InvalidNoteIndexException();
@@ -91,7 +95,8 @@ public class NotesCommandParser {
         noteIndexInList = noteIndex - 1;
     }
 
-    public static void parseListNotesCommand(String input) throws NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException  {
+    public static void parseListNotesCommand(String input)
+            throws NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException  {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");
         String commandWithLocation = lowerCaseInputWithNoSpaces;

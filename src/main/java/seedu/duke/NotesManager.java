@@ -1,6 +1,11 @@
 package seedu.duke;
 
-import seedu.duke.notecommandexceptions.*;
+import seedu.duke.notecommandexceptions.EmptyNoteException;
+import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
+import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.NoNoteIndexException;
+import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
 import static seedu.duke.NotesCommandParser.parseAddNotesCommand;
 import static seedu.duke.NotesCommandParser.parseDeleteNotesCommand;
@@ -55,7 +60,7 @@ public class NotesManager {
     }
 
     public static void instantiateLocationsNotesList() {
-        for(int i = 0; i < LOCATIONS_COUNT; i++)  {
+        for (int i = 0; i < LOCATIONS_COUNT; i++)  {
             locationNotesList.add(new ArrayList<>());
         }
     }
@@ -78,7 +83,7 @@ public class NotesManager {
             addNotes();
         } catch (WrongInputFormatException e) {
             System.out.println("Please include a '/' in between the location and the notes.");
-        } catch (NoLocationForNotesCommandException e){
+        } catch (NoLocationForNotesCommandException e) {
             System.out.println("Please add a location to the command before the notes. :))");
             System.out.println();
             System.out.println("List of locations: ");
@@ -109,7 +114,7 @@ public class NotesManager {
             deleteNotes();
         } catch(WrongInputFormatException e) {
             System.out.println("Please include a '/' in between the location and the note index.");
-        } catch (NoLocationForNotesCommandException e){
+        } catch (NoLocationForNotesCommandException e) {
             System.out.println("Please add a location to the command before the note index. :))");
             System.out.println();
             System.out.println("List of locations: ");
@@ -124,16 +129,17 @@ public class NotesManager {
         } catch (NumberFormatException e) {
             System.out.println("Please enter a valid number for note index.");
         } catch (InvalidNoteIndexException e) {
-            System.out.println("Please enter a number that is positive and not more than " + locationNotesCountList[locationsList.indexOf(location)]);
+            System.out.print("Please enter a number that is positive and not more than ");
+            System.out.println(locationNotesCountList[locationsList.indexOf(location)]);
         }
     }
 
     public static void deleteNotes() {
         int locationIndex = locationsList.indexOf(location);
 
-        String deletedNote = locationNotesList.get(locationIndex).get(noteIndexInList); //record down deleted note
+        final String deletedNote = locationNotesList.get(locationIndex).get(noteIndexInList); //record down deleted note
 
-        locationNotesList.get(locationIndex).remove(noteIndexInList); //remove note using given Note Index from list for given location
+        locationNotesList.get(locationIndex).remove(noteIndexInList); //remove note using given Note Index from list
         locationNotesCountList[locationIndex]--; //reduce count for number of notes made for that location
         System.out.println("This note tagged to " + location + " has been deleted:");
         System.out.println("\t" + deletedNote);
@@ -143,7 +149,7 @@ public class NotesManager {
         try {
             parseListNotesCommand(input);
             listNotes();
-        } catch (NoLocationForNotesCommandException e){
+        } catch (NoLocationForNotesCommandException e) {
             System.out.println("Please add a location after the command. :))");
             System.out.println();
             System.out.println("List of locations: ");
@@ -157,14 +163,12 @@ public class NotesManager {
     }
 
     public static void listNotes() {
-
         for (int i = 1; i <= locationNotesCountList[locationsList.indexOf(location)]; i++) {
             int currentNoteIndex = i;
             System.out.print("\t");
             System.out.print(currentNoteIndex + ". ");
-            System.out.println(locationNotesList.get(locationsList.indexOf(location)).get(currentNoteIndex-1));
+            System.out.println(locationNotesList.get(locationsList.indexOf(location)).get(currentNoteIndex - 1));
         }
-
     }
 
 }
