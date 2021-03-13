@@ -5,7 +5,7 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE;
-import static seedu.duke.common.Messages.MESSAGE_OVERVIEW;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_OPENED;
 
 public class EnterModuleCommand extends Command {
 
@@ -25,7 +25,9 @@ public class EnterModuleCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         if (ModuleList.setSelectedModule(moduleCode)) {
-            ui.printMessage(MESSAGE_OVERVIEW);
+            ui.printMessage(String.format(MESSAGE_MODULE_OPENED, moduleCode));
+            Command command = new ModuleInfoCommand();
+            command.execute(ui);
         } else {
             throw new CommandException(String.format(MESSAGE_INVALID_MODULE, moduleCode));
         }

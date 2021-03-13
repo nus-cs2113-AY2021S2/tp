@@ -13,6 +13,7 @@ import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
 import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
 import static seedu.duke.common.Messages.FORMAT_TASK_INFO;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_ALL_DONE;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.UNDONE_TASK;
 
@@ -23,15 +24,6 @@ public class ModuleInfoCommand extends Command {
 
     //@@author H-horizon
     /**
-     * Constructs a ModuleInfoCommand.
-     */
-    public ModuleInfoCommand() {
-        Module module = ModuleList.getSelectedModule();
-        String moduleCode = module.getModuleCode();
-        System.out.print(String.format(FORMAT_MODULE_INFO, moduleCode));
-    }
-
-    /**
      * prints module overview.
      *
      * @param ui Instance of UI.
@@ -40,12 +32,14 @@ public class ModuleInfoCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
+        String moduleCode = module.getModuleCode();
+        ui.printMessage(String.format(FORMAT_MODULE_INFO, moduleCode));
         ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessonsFromList(lessonList);
-        System.out.print(NEWLINE);
-        System.out.print(UNDONE_TASK);
+        printLessonsFromList(lessonList, ui);
+        ui.printMessage("");
+        ui.printMessage(UNDONE_TASK);
         ArrayList<Task> tasksList = module.getTaskList();
-        printTasksFromList(tasksList);
+        printTasksFromList(tasksList, ui);
     }
 
     /**
@@ -53,11 +47,11 @@ public class ModuleInfoCommand extends Command {
      *
      * @param lessonList is the list of lessons.
      */
-    public static void printLessonsFromList(ArrayList<Lesson> lessonList) {
+    public static void printLessonsFromList(ArrayList<Lesson> lessonList, UI ui) {
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
-            System.out.print(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
+            ui.printMessage(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
         }
     }
 
@@ -66,10 +60,13 @@ public class ModuleInfoCommand extends Command {
      *
      * @param tasksList is the list of tasks.
      */
-    public static void printTasksFromList(ArrayList<Task> tasksList) {
+    public static void printTasksFromList(ArrayList<Task> tasksList, UI ui) {
         int counter = 1;
+        if (tasksList.size() == 0) {
+            ui.printMessage(MESSAGE_TASKS_ALL_DONE);
+        }
         for (Task task : tasksList) {
-            System.out.print(String.format(FORMAT_TASK_INFO, counter, task.getDescription()));
+            ui.printMessage(String.format(FORMAT_TASK_INFO, counter, task.getDescription()));
         }
     }
 

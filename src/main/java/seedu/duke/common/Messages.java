@@ -8,13 +8,14 @@ public class Messages {
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
+    public static final String DIVIDER = "--------------------------------------------------------------------------";
 
     public static final String MESSAGE_EXIT = "Have a nice day! Bye bye!";
     public static final String MESSAGE_WELCOME = "What can I do for you today?";
     public static final String MESSAGE_CLOSED_MODULE = "%s closed.";
 
-    public static final String TAG_GULIO = "<GULIO> ";
-    public static final String TAG_MODULE = "<%s> ";
+    public static final String TAG_GULIO = "GULIO >> ";
+    public static final String TAG_MODULE = "%s >> ";
 
 
     //Module messages
@@ -28,6 +29,7 @@ public class Messages {
             "Please enter the indices of the modules you would like to delete."
                     + NEWLINE + "Separate indices with a blank space.";
     public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:" + NEWLINE;
+    public static final String MESSAGE_MODULE_OPENED = "Opening module %s." + NEWLINE;
     public static final String MESSAGE_OVERVIEW = "<Placeholder for overview>";
 
 
@@ -70,7 +72,8 @@ public class Messages {
     public static final String MESSAGE_TASK_CHECK_GRADED_INFO = "Please enter \"Y\" or \"N\"";
     public static final String MESSAGE_TASK_SELECT_INFO = NEWLINE
             + "Please enter the indices of the tasks you would like to %s." + NEWLINE
-            + "Separate indices with a blank space." + NEWLINE;
+            + "Separate indices with a blank space.";
+    public static final String MESSAGE_TASKS_ALL_DONE = "You have completed all your tasks.";
 
 
     //Storage messages
@@ -108,10 +111,10 @@ public class Messages {
             + NEWLINE;
 
     //Module info messages
-    public static final String FORMAT_LESSONS_INFO = "%s - %s" + NEWLINE;
-    public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
-    public static final String FORMAT_MODULE_INFO = "<%s>" + NEWLINE;
-    public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
+    public static final String FORMAT_LESSONS_INFO = "%s - %s";
+    public static final String UNDONE_TASK = "Undone tasks:";
+    public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
+    public static final String FORMAT_TASK_INFO = "%d. %s";
 
 
 }

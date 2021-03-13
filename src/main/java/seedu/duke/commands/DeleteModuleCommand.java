@@ -1,12 +1,12 @@
 package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
@@ -61,9 +61,11 @@ public class DeleteModuleCommand extends Command {
      */
     private String getDeletedModuleCodes(ArrayList<String> deletedModuleCodes) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (String moduleCode : deletedModuleCodes) {
-            stringBuilder.append(String.format(MESSAGE_REMOVED_MODULE, moduleCode));
-            stringBuilder.append(NEWLINE);
+        for (int i = 0; i < deletedModuleCodes.size(); i++) {
+            if (i != INDEX_FIRST) {
+                stringBuilder.append(NEWLINE);
+            }
+            stringBuilder.append(String.format(MESSAGE_REMOVED_MODULE, deletedModuleCodes.get(i)));
         }
         return stringBuilder.toString();
     }

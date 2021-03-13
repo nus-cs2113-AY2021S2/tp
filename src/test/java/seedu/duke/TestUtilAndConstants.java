@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.Constants.FOLDER_PATH;
 import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_ALL_DONE;
 
 public class TestUtilAndConstants {
 
@@ -19,6 +20,12 @@ public class TestUtilAndConstants {
             + "Removed lab from the lesson list." + NEWLINE;
     public static final String EXPECTED_OPEN_LINK = "Opening tutorial link in browser." + NEWLINE
             + "Opening lab link in browser." + NEWLINE;
+    public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
+            + "tutorial - Wednesday 9 am - 10am" + NEWLINE + "lab - Wednesday 9 pm - 10 pm"
+            + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE + "1. iP submission" + NEWLINE;
+    public static final String EXPECTED_ENTER_MODULE = "Opening module CS2106." + NEWLINE + NEWLINE
+            + "<Overview for CS2106>" + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE
+            + MESSAGE_TASKS_ALL_DONE + NEWLINE;
 
     public static final String MESSAGE_MODULE_ERROR = "There was a problem with getting selected module." + NEWLINE;
 

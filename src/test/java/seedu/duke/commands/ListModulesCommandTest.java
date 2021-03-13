@@ -41,7 +41,7 @@ class ListModulesCommandTest {
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_3)).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_2)).append(NEWLINE);
 
-        assertEquals(sb.toString() + System.lineSeparator(), outContent.toString());
+        assertEquals(sb.toString(), outContent.toString());
 
         System.setOut(originalOut);
     }

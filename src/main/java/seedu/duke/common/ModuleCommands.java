@@ -1,6 +1,6 @@
 package seedu.duke.common;
 
-public enum ModuleCommands {
+public enum ModuleCommands implements CommandList {
 
     HELP("help", "List out commands available for the selected module."),
     CLOSE("close", "Closes the current module."),

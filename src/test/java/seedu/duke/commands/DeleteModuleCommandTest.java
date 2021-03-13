@@ -56,7 +56,7 @@ class DeleteModuleCommandTest {
         sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_1)).append(NEWLINE);
         sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_3)).append(NEWLINE);
 
-        assertEquals(sb.toString() + NEWLINE, outContent.toString());
+        assertEquals(sb.toString(), outContent.toString());
 
         System.setOut(originalOut);
     }

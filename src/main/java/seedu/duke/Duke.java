@@ -7,10 +7,9 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.ui.UI;
 
-import java.util.Scanner;
-
+import static seedu.duke.common.Messages.DIVIDER;
 import static seedu.duke.common.Messages.MESSAGE_WELCOME;
-import static seedu.duke.common.Messages.TAG_GULIO;
+import static seedu.duke.common.Messages.NEWLINE;
 
 public class Duke {
 
@@ -22,7 +21,7 @@ public class Duke {
     }
 
     private static void start() {
-        ui.printMessage(TAG_GULIO + MESSAGE_WELCOME);
+        ui.printMessage(DIVIDER + NEWLINE + MESSAGE_WELCOME);
         ModuleList.loadModuleNames();
     }
 
@@ -31,8 +30,10 @@ public class Duke {
         Parser parser = new Parser();
 
         while (!isExit) {
+            ui.printMessage(DIVIDER);
             ui.printModuleIndicator();
             String input = ui.readCommand();
+            ui.printMessage("");
             try {
                 Command command = parser.parse(input);
                 command.execute(ui);

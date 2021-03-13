@@ -11,12 +11,11 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static seedu.duke.TestUtilAndConstants.EXPECTED_ENTER_MODULE;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
-import static seedu.duke.common.Messages.MESSAGE_OVERVIEW;
-import static seedu.duke.common.Messages.NEWLINE;
 
 class EnterModuleCommandTest {
     private final PrintStream originalOut = System.out;
@@ -37,7 +36,7 @@ class EnterModuleCommandTest {
         Command command = new EnterModuleCommand(MODULE_CODE_2);
         command.execute(new UI());
 
-        assertEquals(MESSAGE_OVERVIEW + NEWLINE, outContent.toString());
+        assertEquals(EXPECTED_ENTER_MODULE, outContent.toString());
 
         System.setOut(originalOut);
     }
