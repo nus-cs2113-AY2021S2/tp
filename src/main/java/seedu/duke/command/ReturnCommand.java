@@ -65,6 +65,7 @@ public class ReturnCommand extends Command {
             Loan currentLoan = (Loan) currentRecord;
             currentLoan.markAsReturned();
             ui.printMessage("Loan marked as returned: " + currentLoan);
+            storage.saveRecordListData(records);
         } else {
             ui.printMessage("Specified record number is not a loan!");
         }
