@@ -1,12 +1,13 @@
 package seedu.duke.record;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Saving extends Record {
     private static final String TYPE_SAVING = "S";
     private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %s | %f | %s";
 
-    public Saving(double amount, LocalDate issueDate, String description) {
+    public Saving(BigDecimal amount, LocalDate issueDate, String description) {
         super(amount, issueDate, description);
     }
 
@@ -18,7 +19,7 @@ public class Saving extends Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "List savings!";
+        String formattedRecordType = "[" + TYPE_SAVING + "]";
+        return formattedRecordType + super.toString();
     }
 }

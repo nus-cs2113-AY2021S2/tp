@@ -21,7 +21,7 @@ public class Utils {
     private static final String ERROR_TOO_FEW_ARGUMENTS = "not enough arguments.";
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
-    private static final String REGEX_OPTION = "^-\\w$";
+    private static final String REGEX_OPTION = "^-[a-zA-Z]$";
 
     private static void validateNotEmpty(String value) throws CommandException {
         if (value == null || value.length() == 0) {

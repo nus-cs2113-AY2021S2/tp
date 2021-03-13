@@ -1,5 +1,6 @@
 package seedu.duke.record;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Loan extends Record {
@@ -7,7 +8,7 @@ public class Loan extends Record {
     private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %s | %f | %s | %d";
     private boolean isReturn;
 
-    public Loan(double amount, LocalDate issuedDate, String description) {
+    public Loan(BigDecimal amount, LocalDate issuedDate, String description) {
         super(amount, issuedDate, description);
         isReturn = false;
     }
@@ -29,7 +30,8 @@ public class Loan extends Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "List loans!";
+        String formattedRecordType = "[" + TYPE_LOAN + "]";
+        String formattedLoanStatus = "[" + (isReturn ? "v" : " ") + "]";
+        return formattedRecordType + super.toString() + formattedLoanStatus;
     }
 }

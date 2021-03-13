@@ -1,10 +1,11 @@
 package seedu.duke.common;
 
+import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import seedu.duke.exception.CommandException;
+import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 
 public class Validators {
@@ -59,11 +60,11 @@ public class Validators {
         return recordNumberInList;
     }
 
-    public static double validateAmount(String inputToCheck) throws NumberFormatException,
-            CommandException {
-        double amount = Double.parseDouble(inputToCheck);
-        if (amount <= 0) {
-            throw new CommandException("amount must be greater than 0.");
+    public static BigDecimal validateAmount(String inputToCheck) throws NumberFormatException,
+            CustomException {
+        BigDecimal amount = new BigDecimal(inputToCheck);
+        if (!(amount.compareTo(new BigDecimal("0")) == 1)) {
+            throw new CustomException("amount must be greater than 0.");
         }
         return amount;
     }
