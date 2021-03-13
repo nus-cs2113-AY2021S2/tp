@@ -38,6 +38,10 @@ public class PrintHelpCommand extends Command {
     private static String getDashboardCommands() {
         StringBuilder stringBuilder = new StringBuilder();
         for (DashboardCommands command : DashboardCommands.values()) {
+            // skip invalid command
+            if (command.equals(DashboardCommands.INVALID)) {
+                continue;
+            }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     command.getWord(), command.getDescription());
             stringBuilder.append(commandAndDescription).append(NEWLINE);
@@ -53,6 +57,10 @@ public class PrintHelpCommand extends Command {
     private static String getModuleCommands() {
         StringBuilder sb = new StringBuilder();
         for (ModuleCommands command : ModuleCommands.values()) {
+            // skip invalid command
+            if (command.equals(ModuleCommands.INVALID)) {
+                continue;
+            }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     command.getWord(), command.getDescription());
             sb.append(commandAndDescription).append(NEWLINE);
