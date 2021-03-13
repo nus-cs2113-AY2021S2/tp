@@ -3,6 +3,9 @@ package seedu.duke;
 import java.util.Scanner;
 
 public class InputManager {
+
+    NotesManager notesManager = new NotesManager();
+
     private String getUserInput() {
         System.out.print("> ");
         Scanner in = new Scanner(System.in);
@@ -30,13 +33,13 @@ public class InputManager {
                 history.emptyRecords();
                 break;
             case AddNoteCommand:
-                System.out.println("Add note to the selected location");
+                notesManager.parseAddNotesCommandAndAddNotes(input);
                 break;
             case DeleteNoteCommand:
-                System.out.println("Delete note from selected location");
+                notesManager.parseDeleteNotesCommandAndDeleteNotes(input);
                 break;
             case DisplayNotesCommand:
-                System.out.println("Display notes of selected location");
+                notesManager.parseListNotesCommandAndListNotes(input);
                 break;
             case ByeCommand:
                 UiManager.showByeMessage();

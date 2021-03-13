@@ -1,6 +1,7 @@
 package seedu.duke;
 
 public class Duke {
+
     public static void main(String[] args) {
         UiManager.showLogo();
         UiManager.showGreetMessage();
@@ -8,4 +9,5 @@ public class Duke {
         InputManager inputManager = new InputManager();
         inputManager.inputLoop();
     }
+
 }
