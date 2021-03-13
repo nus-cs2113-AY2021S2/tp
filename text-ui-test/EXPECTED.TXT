@@ -12,6 +12,21 @@ What can I do for you?
 -----------------------------------------------------------------
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
+These are the list of available commands:
+	add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
+	list
+	list categoryName
+	remove index
+	search searchString
+	help
+	bye
+
+This is the list of food categories:
+	[VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER]
+
+This is the list of storage locations:
+	[FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
+-----------------------------------------------------------------
 Great! I have added chicken into your fridge.
 Details: ||Food name: chicken, category: MEAT, expiry on: 2021-06-30, stored in: LOWER_SHELF||
 -----------------------------------------------------------------
