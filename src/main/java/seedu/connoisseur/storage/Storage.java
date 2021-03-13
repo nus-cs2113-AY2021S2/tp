@@ -23,7 +23,7 @@ public class Storage {
     }
 
     /**
-     * Creates data folder if it does not exist. 
+     * Creates data folder if it does not exist.
      */
     public static void createFolder() {
         Ui.printPresentDirectory();

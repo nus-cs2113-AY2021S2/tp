@@ -19,14 +19,15 @@ public class Ui {
     }
 
     /**
-     * Prints the welcome message to the printstream. 
+     * Prints the welcome message to the printstream.
      */
     public static void printGreeting() {
         printToScreen(WELCOME_MESSAGE);
     }
-    
+
     /**
-     * Prints an array of Strings to the output stream. 
+     * Prints an array of Strings to the output stream.
+     *
      * @param message lines to be printed, separated by commas
      */
     public static void printToScreen(String... message) {

@@ -14,11 +14,10 @@ public class Review {
     public static int NUM_OF_STARS = 5;
 
 
-
     public String getDate() {
         return dateOfEntry;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -94,6 +93,7 @@ public class Review {
     public String reviewToText() {
         return null;
     }
+
     public static Review textToReview(String review) {
         return null;
     }

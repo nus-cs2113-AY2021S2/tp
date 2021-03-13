@@ -14,7 +14,8 @@ public class Connoisseur {
      */
     private CommandList reviewList = new CommandList();
 
-     /** Main entry-point for the java.connoisseur.Connoisseur application.
+    /**
+     * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
         new Connoisseur().run();
@@ -22,7 +23,6 @@ public class Connoisseur {
 
     /**
      * Sets up required files for Duke to start.
-     *
      */
     public Connoisseur() {
 
@@ -34,6 +34,7 @@ public class Connoisseur {
         }
 
     }
+
     public void run() {
         Ui ui = new Ui();
         Parser parser = new Parser();
