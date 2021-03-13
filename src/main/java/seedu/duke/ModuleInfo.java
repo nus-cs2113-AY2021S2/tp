@@ -146,21 +146,22 @@ public class ModuleInfo {
         Ui.printModuleNameToModifyPrompt();
         String moduleName = Ui.readCommand(); // read in module name, i.e. CS2113T
         boolean isModuleExist = false;
-        for(Module module : modules) {
-            if(module.getName().equals(moduleName)) {
+        for (Module module : modules) {
+            if (module.getName().equals(moduleName)) {
                 Ui.printModuleExistMessage();
                 isModuleExist = true;
                 System.out.println(module.getDescription() + "\n");
                 Ui.printReturnToModuleInfoMenuMessage();
-                break; //safety break in cases of more than 1 same module name present.
-                        // In fact, two same module should not be present.
+                //Safety break in cases of more than 1 same module name present.
+                //In fact, two same module should not be present.
+                break;
             }
         }
-        if(!isModuleExist) {
+        if (!isModuleExist) {
             Ui.printModuleDoesNotExistMessage();
             String userInput;
             userInput = Ui.readCommand(); //read in [Y/N]
-            if(userInput.equals("Y")) {
+            if (userInput.equals("Y")) {
                 Ui.printModuleDescriptionPrompt(moduleName);
                 String moduleDescription = Ui.readCommand(); //read in description
                 Module module = new Module(moduleName, moduleDescription);
@@ -168,7 +169,7 @@ public class ModuleInfo {
                 Ui.printModuleDescriptionAddedMessage(moduleName,
                         module.getDescription());
                 Ui.printReturnToModuleInfoMenuMessage();
-            } else if(userInput.equals("N")) {
+            } else if (userInput.equals("N")) {
                 Ui.printReturnToModuleInfoMenuMessage();
             }
         }
