@@ -41,7 +41,6 @@ public class DeleteTaskCommand extends Command {
         return false;
     }
 
-    //@@author aliciatay-zls
     /**
      * Prints prompt to delete tasks.
      *

@@ -73,7 +73,6 @@ public class UI {
         }
     }
 
-    //@@author aliciatay-zls
     /**
      * Prints all tasks in selected module's task list.
      */
@@ -84,7 +83,6 @@ public class UI {
         printTasks(module.getTaskList(), true);
     }
 
-    //@@author aliciatay-zls
     /**
      * Prints all tasks in specified task list.
      *
@@ -106,7 +104,6 @@ public class UI {
         }
     }
 
-    //@@author aliciatay-zls
     /**
      * Prints specified task.
      *

@@ -15,11 +15,11 @@ public class AddTaskCommand extends Command {
 
     private final Task task;
 
+    //@@author aliciatay-zls
     public AddTaskCommand(Task task) {
         this.task = task;
     }
 
-    //@@author aliciatay-zls
     /**
      * Adds new task to selected module.
      *
@@ -40,7 +40,6 @@ public class AddTaskCommand extends Command {
         return false;
     }
 
-    //@@author aliciatay-zls
     /**
      * Reads user input for whether the task is graded.
      *

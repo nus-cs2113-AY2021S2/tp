@@ -41,7 +41,6 @@ class AddModuleCommandTest {
         System.setOut(originalOut);
     }
 
-    //@@author isaharon
     @Test
     void execute_duplicateModuleCode_expectDuplicateModuleException() {
         System.setOut(new PrintStream(outContent));

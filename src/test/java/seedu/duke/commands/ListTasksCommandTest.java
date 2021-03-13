@@ -40,7 +40,6 @@ class ListTasksCommandTest {
         module.addTask(task4);
     }
 
-    //@@author aliciatay-zls
     @Test
     void execute_void_expectSuccess() {
         System.setOut(new PrintStream(bos));

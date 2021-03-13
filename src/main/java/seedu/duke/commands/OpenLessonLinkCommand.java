@@ -48,7 +48,6 @@ public class OpenLessonLinkCommand extends Command {
         return false;
     }
 
-    //@@author H-horizon
     /**
      * Prints list of links opened.
      *
@@ -65,7 +64,6 @@ public class OpenLessonLinkCommand extends Command {
         }
     }
 
-    //@@author H-horizon
     /**
      * Opens the specified link in browser.
      *
@@ -90,7 +88,6 @@ public class OpenLessonLinkCommand extends Command {
         }
     }
 
-    //@@author H-horizon
     /**
      * Prints list of lessons in specified module.
      *

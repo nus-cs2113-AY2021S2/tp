@@ -63,7 +63,6 @@ public class Loader {
         return names;
     }
 
-    //@@author 8kdesign
     /**
      * Loads data from the selected module file.
      *
@@ -86,7 +85,6 @@ public class Loader {
         return module;
     }
 
-    //@@author 8kdesign
     /**
      * Skips to first line of data.
      *
@@ -101,7 +99,6 @@ public class Loader {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Identifies data type and calls methods to handle them.
      * Runs through all data.
@@ -120,7 +117,6 @@ public class Loader {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Reads data for lesson.
      * Adds lesson to lesson list in module.
@@ -158,7 +154,6 @@ public class Loader {
         module.addLesson(lesson);
     }
 
-    //@@author 8kdesign
     /**
      * Reads data for task.
      * Adds task to task list in module.
@@ -187,7 +182,6 @@ public class Loader {
         module.addTask(task);
     }
 
-    //@@author 8kdesign
     /**
      * Returns deadline of task.
      *

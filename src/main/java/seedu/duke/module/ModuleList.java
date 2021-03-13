@@ -42,7 +42,6 @@ public class ModuleList {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Adds a new module to the module list and add create file for new module.
      *
@@ -57,7 +56,6 @@ public class ModuleList {
         return false;
     }
 
-    //@@author 8kdesign
     /**
      * Adds a module to the module list.
      *
@@ -113,7 +111,6 @@ public class ModuleList {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Loads the current module from storage.
      *

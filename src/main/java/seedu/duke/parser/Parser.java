@@ -88,7 +88,6 @@ public class Parser {
         return parsedCommand;
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses dashboard commands from user input.
      * User is yet to select a module.
@@ -118,7 +117,6 @@ public class Parser {
         }
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses user input to determine the dashboard command specified.
      *
@@ -189,7 +187,6 @@ public class Parser {
         return input.toUpperCase().startsWith(command.toUpperCase());
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses in-module commands from user input.
      * User has selected a module and is currently in the module.
@@ -235,7 +232,6 @@ public class Parser {
         }
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses user input to determine in-module command specified.
      *
@@ -274,7 +270,6 @@ public class Parser {
         }
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses details of new lesson from user input string.
      *
@@ -314,7 +309,6 @@ public class Parser {
         return new Lesson(lessonType, timeAndDay, link, teacher);
     }
 
-    //@@author ivanchongzhien
     /**
      * Parses details of new task from user input string.
      *
@@ -362,8 +356,6 @@ public class Parser {
         return LocalDate.parse(string, parseFormat);
     }
 
-
-    //@@author ivanchongzhien
     /**
      * Converts given input string to an arraylist of integers.
      * Removes duplicates and indices which are out of bounds.

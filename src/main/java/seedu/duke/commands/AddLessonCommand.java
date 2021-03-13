@@ -17,11 +17,11 @@ public class AddLessonCommand extends Command {
 
     private final Lesson lesson;
 
+    //@@author H-horizon
     public AddLessonCommand(Lesson lesson) {
         this.lesson = lesson;
     }
 
-    //@@author H-horizon
     /**
      * Adds new lesson to selected module.
      *

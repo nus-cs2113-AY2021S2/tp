@@ -11,11 +11,11 @@ public class AddModuleCommand extends Command {
 
     private final String moduleCode;
 
+    //@@author isaharon
     public AddModuleCommand(String moduleCode) {
         this.moduleCode = moduleCode;
     }
 
-    //@@author isaharon
     /**
      * Creates new module.
      *

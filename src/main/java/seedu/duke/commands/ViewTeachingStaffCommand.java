@@ -15,11 +15,6 @@ import static seedu.duke.common.Messages.MESSAGE_TEACHING_STAFF_TO_LIST;
  */
 public class ViewTeachingStaffCommand extends Command {
 
-
-    public ViewTeachingStaffCommand() {
-
-    }
-
     //@@author H-horizon
     /**
      * Prints list of teaching staff for selected module.

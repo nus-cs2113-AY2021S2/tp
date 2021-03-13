@@ -34,7 +34,6 @@ class WriterTest {
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
-    //@@author 8kdesign
     @Test
     void writeModule_twoTask_instructionAndTask() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -54,7 +53,6 @@ class WriterTest {
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
-    //@@author 8kdesign
     @Test
     void writeModule_twoLesson_instructionAndLesson() throws IOException {
         TestUtilAndConstants.removeFiles();
@@ -74,7 +72,6 @@ class WriterTest {
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
-    //@@author 8kdesign
     @Test
     void writeModule_twoLessonTwoTask_allContent() throws IOException {
         TestUtilAndConstants.removeFiles();

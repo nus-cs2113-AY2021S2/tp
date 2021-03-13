@@ -64,7 +64,6 @@ public class AddTaskCommandTest {
         System.setOut(originalOut);
     }
 
-    //@@author aliciatay-zls
     @Test
     void execute_taskInputWithNoRemarks_expectSuccess() {
         String input = YES_STRING + NEWLINE;
@@ -100,7 +99,6 @@ public class AddTaskCommandTest {
         System.setOut(originalOut);
     }
 
-    //@@author aliciatay-zls
     @Test
     void execute_taskInputAndInitiallyInvalidIsGradedInputs_expectSuccess() {
         String input = "n" + NEWLINE

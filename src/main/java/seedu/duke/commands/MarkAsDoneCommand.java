@@ -41,7 +41,6 @@ public class MarkAsDoneCommand extends Command {
         return false;
     }
 
-    //@@author aliciatay-zls
     /**
      * Prints prompt to mark tasks as done.
      *

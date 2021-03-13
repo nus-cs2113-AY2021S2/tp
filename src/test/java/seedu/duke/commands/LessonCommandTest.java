@@ -26,12 +26,12 @@ public class LessonCommandTest {
     public static final int SECOND_INDEX = 2;
     public static final String COMMAND_FAILED = "Command failed";
 
+    //@@author H-horizon
     public static void removeOutputStream() {
         PrintStream originalOut = System.out;
         System.setOut(originalOut);
     }
 
-    //@@author H-horizon
     public static OutputStream getOutputStream() {
         OutputStream os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
@@ -39,7 +39,6 @@ public class LessonCommandTest {
         return os;
     }
 
-    //@@author H-horizon
     public static Lesson initialiseLesson(String teacherName, String teacherEmail, LessonType lessonType, String time,
                                           String onlineLink) {
         TeachingStaff teachingStaff = new TeachingStaff(teacherName, teacherEmail);
@@ -52,7 +51,6 @@ public class LessonCommandTest {
         return newLesson;
     }
 
-    //@@author H-horizon
     public static void addLessonsToList(UI ui) {
         Lesson newLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, LessonType.TUTORIAL, TIME, ONLINE_LINK);
         Command command = new AddLessonCommand(newLesson);

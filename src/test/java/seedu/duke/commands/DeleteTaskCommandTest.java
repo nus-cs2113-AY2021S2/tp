@@ -37,7 +37,6 @@ class DeleteTaskCommandTest {
         return ModuleList.getSelectedModule().getTaskList();
     }
 
-    //@@author aliciatay-zls
     @Test
     void execute_twoValidTaskIndices_expectSuccess() {
         String input = "1 2" + NEWLINE;

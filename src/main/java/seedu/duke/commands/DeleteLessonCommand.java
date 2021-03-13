@@ -18,10 +18,6 @@ import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
  */
 public class DeleteLessonCommand extends Command {
 
-    public DeleteLessonCommand() {
-
-    }
-
     //@@author H-horizon
     /**
      * Deletes all lessons corresponding to specified indices.
@@ -47,7 +43,6 @@ public class DeleteLessonCommand extends Command {
         return false;
     }
 
-    //@@author H-horizon
     /**
      * Prints list of lessons in specified module.
      *
@@ -63,7 +58,6 @@ public class DeleteLessonCommand extends Command {
         }
     }
 
-    //@@author H-horizon
     /**
      * Removes lessons corresponding to the indices from the specified module.
      *

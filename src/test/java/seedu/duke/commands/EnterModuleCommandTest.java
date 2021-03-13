@@ -42,7 +42,6 @@ class EnterModuleCommandTest {
         System.setOut(originalOut);
     }
 
-    //@@author isaharon
     @Test
     void execute_invalidModuleCodeInput_expectException() {
         System.setOut(new PrintStream(outContent));

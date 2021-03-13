@@ -36,7 +36,6 @@ public class DeleteModuleCommand extends Command {
         return false;
     }
 
-    //@@author isaharon
     /**
      * Returns string containing instructions and module list.
      *
@@ -54,7 +53,6 @@ public class DeleteModuleCommand extends Command {
         return stringBuilder.toString();
     }
 
-    //@@author isaharon
     /**
      * Returns string containing list of deleted modules.
      *

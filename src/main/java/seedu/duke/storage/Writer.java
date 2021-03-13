@@ -45,8 +45,6 @@ public class Writer {
         }
     }
 
-
-    //@@author 8kdesign
     /**
      * Deletes specified file.
      * Returns true if deleted, or file does not exist, false if unable to delete.
@@ -63,7 +61,6 @@ public class Writer {
         return true;
     }
 
-    //@@author 8kdesign
     /**
      * Creates directory if it does not exist.
      *
@@ -77,7 +74,6 @@ public class Writer {
         directory.mkdir();
     }
 
-    //@@author 8kdesign
     /**
      * Updates changes to module in file.
      * Writes module instructions and data to module file.
@@ -97,7 +93,6 @@ public class Writer {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Returns module file.
      *
@@ -116,7 +111,6 @@ public class Writer {
         return path;
     }
 
-    //@@author 8kdesign
     /**
      * Writes instructions to module file.
      *
@@ -128,7 +122,6 @@ public class Writer {
         fileWriter.write(moduleCode + FILE_INSTRUCTIONS);
     }
 
-    //@@author 8kdesign
     /**
      * Writes lessons to module file.
      *
@@ -148,7 +141,6 @@ public class Writer {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Writes tasks to module file.
      *
@@ -170,7 +162,6 @@ public class Writer {
         }
     }
 
-    //@@author 8kdesign
     /**
      * Returns string of deadline.
      *
@@ -182,7 +173,6 @@ public class Writer {
         return deadline.format(formatter);
     }
 
-    //@@author 8kdesign
     /**
      * Converts boolean to storage format.
      *
