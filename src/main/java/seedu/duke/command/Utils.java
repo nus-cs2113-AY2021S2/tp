@@ -83,6 +83,17 @@ public class Utils {
         return arguments.contains(option);
     }
 
+    /**
+     * Checks {@code arguments} for invalid options and conflict options.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command the name of the {@code Command} calling it.
+     * @param validOptions a {@code String} array containing valid options pertaining to {@code command}.
+     * @param orOptions a {@code String} array containing conflict options pertaining to {@code command}.
+     * @throws CommandException if {@code arguments} contains invalid options and conflict options.
+     * @see #checkInvalidOptions(ArrayList, String, String...)
+     * @see #checkOptionConflict(ArrayList, String, String...)
+     */
     public static void validateOptions(ArrayList<String> arguments, String command,
                                        String[] validOptions, String[] orOptions) throws CommandException {
         checkInvalidOptions(arguments, command, validOptions);
