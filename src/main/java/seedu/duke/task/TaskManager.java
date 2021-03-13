@@ -53,7 +53,7 @@ public class TaskManager {
         }
         Ui.printAddMessageAfterCompletedTask();
         String message = Ui.readCommand();
-
+        Ui.printHorizontalLine();
 
         switch (taskNumber) {
         case 1:

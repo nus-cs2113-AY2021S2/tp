@@ -187,6 +187,11 @@ public class Ui {
         System.out.println("\nWhat is the number of the task you want to pin?");
     }
 
+    public static void printPinnedTaskMessage(Task task) {
+        System.out.println("You've pinned this: " + task.toString());
+        System.out.println("Returning back to TaskManager menu now!");
+        printHorizontalLine();
+    }
     public static void printTaskAlreadyPinnedMessage() {
         System.out.println("This task is already pinned!");
         printHorizontalLine();

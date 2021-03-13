@@ -228,6 +228,7 @@ public class TaskList {
             return;
         }
         pinnedTasks.get(taskTypeName).add(task);
+        Ui.printPinnedTaskMessage(task);
         return;
     }
 
