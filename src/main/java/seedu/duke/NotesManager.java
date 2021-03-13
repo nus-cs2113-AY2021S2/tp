@@ -112,7 +112,7 @@ public class NotesManager {
         try {
             parseDeleteNotesCommand(input);
             deleteNotes();
-        } catch(WrongInputFormatException e) {
+        } catch (WrongInputFormatException e) {
             System.out.println("Please include a '/' in between the location and the note index.");
         } catch (NoLocationForNotesCommandException e) {
             System.out.println("Please add a location to the command before the note index. :))");
