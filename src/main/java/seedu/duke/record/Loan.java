@@ -1,12 +1,13 @@
 package seedu.duke.record;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Loan extends Record {
     private static final String TYPE_LOAN = "L";
     private boolean isReturn;
 
-    public Loan(double amount, LocalDate issuedDate, String description) {
+    public Loan(BigDecimal amount, LocalDate issuedDate, String description) {
         super(amount, issuedDate, description);
         isReturn = false;
     }

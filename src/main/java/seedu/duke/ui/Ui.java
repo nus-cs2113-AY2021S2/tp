@@ -7,6 +7,8 @@ import seedu.duke.record.Saving;
 import seedu.duke.record.Loan;
 
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Ui {
@@ -133,40 +135,40 @@ public class Ui {
 
     public void printTotalAmountExpense(RecordList recordList) {
         System.out.println(DIVIDER);
-        double totalAmount = 0;
+        BigDecimal totalAmount = new BigDecimal("0");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
-                totalAmount = totalAmount + currentRecord.getAmount();
+                totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
-        System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount);
+        System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
     public void printTotalAmountLoan(RecordList recordList) {
         System.out.println(DIVIDER);
-        double totalAmount = 0;
+        BigDecimal totalAmount = new BigDecimal("0");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
-                totalAmount = totalAmount + currentRecord.getAmount();
+                totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
-        System.out.println(MESSAGE_TOTAL_LOAN + totalAmount);
+        System.out.println(MESSAGE_TOTAL_LOAN + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
     public void printTotalAmountSaving(RecordList recordList) {
         System.out.println(DIVIDER);
-        double totalAmount = 0;
+        BigDecimal totalAmount = new BigDecimal("0");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
-                totalAmount = totalAmount + currentRecord.getAmount();
+                totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
-        System.out.println(MESSAGE_TOTAL_SAVING + totalAmount);
+        System.out.println(MESSAGE_TOTAL_SAVING + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
