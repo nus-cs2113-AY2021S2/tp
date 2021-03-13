@@ -281,9 +281,9 @@ public class Ui {
         if (yesNo.trim().equalsIgnoreCase("Y")) {
             System.out.println("Key in 1 to add component and 2 to view component");
         }
-//        for (Module module : ModuleInfo.modules) {
-//            System.out.println(module.getName());
-//        }
+        //for (Module module : ModuleInfo.modules) {
+        //System.out.println(module.getName());
+        //}
 
     }
 

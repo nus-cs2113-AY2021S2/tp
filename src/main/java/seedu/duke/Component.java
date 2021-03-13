@@ -17,13 +17,13 @@ public class Component {
         System.out.println("Module Name?");
         String moduleName = Ui.readCommand();
         for (Module module : modules) {
-            if(module.getName().contains(moduleName)) {
+            if (module.getName().contains(moduleName)) {
                 isModuleExist = true;
                 break; // safety break
             }
         }
 
-        if(isModuleExist) {
+        if (isModuleExist) {
             Ui.printModuleComponentPrompt(); // prompts user for component and its weightage
             String[] userInput = Ui.readCommand().split(" ");
             components.put(userInput[0], Integer.parseInt(userInput[1]));
@@ -53,10 +53,10 @@ public class Component {
         }
     }
 
-//
-//    public static void deleteComponent(String component) {
-//        components.remove(component);
-//    }
+    //
+    //    public static void deleteComponent(String component) {
+    //        components.remove(component);
+    //    }
 
 
 
