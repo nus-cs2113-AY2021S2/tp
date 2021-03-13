@@ -53,6 +53,7 @@ import static seedu.duke.common.DashboardCommands.DELETE;
 import static seedu.duke.common.DashboardCommands.EXIT;
 import static seedu.duke.common.DashboardCommands.MODULES;
 import static seedu.duke.common.DashboardCommands.OPEN;
+import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.duke.common.ModuleCommands.ADD_LESSON;
 import static seedu.duke.common.ModuleCommands.ADD_TASK;
 import static seedu.duke.common.ModuleCommands.CLOSE;
@@ -113,7 +114,7 @@ public class Parser {
         case EXIT:
             return new ExitProgramCommand();
         default:
-            throw new UnknownCommandException();
+            throw new UnknownCommandException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
@@ -228,7 +229,7 @@ public class Parser {
         case DELETE_TASK:
             return new DeleteTaskCommand();
         default:
-            throw new UnknownCommandException();
+            throw new UnknownCommandException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 

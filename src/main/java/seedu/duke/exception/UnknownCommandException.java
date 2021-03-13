@@ -1,5 +1,8 @@
 package seedu.duke.exception;
 
 public class UnknownCommandException extends DukeException {
-    // nothing to be done
+
+    public UnknownCommandException(String message) {
+        super(message);
+    }
 }

@@ -1,6 +1,9 @@
 package seedu.duke.exception;
 
-public class CommandException extends Exception {
+/**
+ * Exception class for Commands.
+ */
+public class CommandException extends DukeException {
 
     public CommandException(String message) {
         super(message);

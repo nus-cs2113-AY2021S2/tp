@@ -16,6 +16,7 @@ public class Messages {
     public static final String TAG_GULIO = "<GULIO> ";
     public static final String TAG_MODULE = "<%s> ";
 
+    public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
 
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
