@@ -1,6 +1,10 @@
 package seedu.duke;
 
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -192,6 +196,7 @@ public class Ui {
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
+
     public static void printTaskAlreadyPinnedMessage() {
         System.out.println("This task is already pinned!");
         printHorizontalLine();
