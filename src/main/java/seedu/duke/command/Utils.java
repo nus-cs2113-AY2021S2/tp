@@ -100,6 +100,14 @@ public class Utils {
         checkOptionConflict(arguments, command, orOptions);
     }
 
+    /**
+     * Checks {@code arguments} for invalid options.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command the name of the {@code Command} calling it.
+     * @param validOptions valid options pertaining to {@code command}.
+     * @throws CommandException if {@code arguments} contains an invalid option.
+     */
     public static void checkInvalidOptions(ArrayList<String> arguments, String command,
                                            String... validOptions) throws CommandException {
         Set<String> nonDuplicates = new HashSet<>();
