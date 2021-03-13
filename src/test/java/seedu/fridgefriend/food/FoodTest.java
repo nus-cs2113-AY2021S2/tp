@@ -1,14 +1,9 @@
-package seedu.fridgefriend;
-
-import org.junit.jupiter.api.Test;
-
-import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.FoodCategory;
-import seedu.fridgefriend.food.FoodStorageLocation;
+package seedu.fridgefriend.food;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class FoodTest {
 
