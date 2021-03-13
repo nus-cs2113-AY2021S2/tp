@@ -23,12 +23,27 @@ public class Utils {
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
 
+    /**
+     * Checks if value is not null and not empty.
+     *
+     * @param value the String to check.
+     * @throws CommandException if {@code value} is null or empty.
+     */
     private static void validateNotEmpty(String value) throws CommandException {
         if (value == null || value.length() == 0) {
             throw new CommandException(ERROR_MISSING_ARGUMENT_VALUE);
         }
     }
 
+    /**
+     * Checks if value is not null and not empty, and returns it if {@code true}.
+     *
+     * @param value the String to check.
+     * @param command the name of the {@code Command} calling it.
+     * @param option the name of the option pertaining to the value.
+     * @return the value if not empty
+     * @throws CommandException if {@code value} is null or empty.
+     */
     private static String validateNotEmpty(String value, String command, String option)
             throws CommandException {
         if (value != null && value.length() > 0) {
