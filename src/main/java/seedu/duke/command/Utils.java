@@ -54,6 +54,17 @@ public class Utils {
         throw new CommandException(errorMessage, command);
     }
 
+    /**
+     * Extracts the {@code option}'s {@code value} from {@code arguments} {@code ArrayList}.<br>
+     * e.g. {@code ["return", "-i", "2"], option = "-i", value = "2"}.<br>
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command the name of the {@code Command} calling it.
+     * @param option the name of the {@code option} pertaining to the {@code value}.
+     * @return the {@code option}'s {@code value}
+     * @throws CommandException if {@code option} does not exist, or {@code value} is missing or empty.
+     * @see #validateNotEmpty(String, String, String)
+     */
     public static String getOptionValue(ArrayList<String> arguments, String command,
                                         String option) throws CommandException {
         if (!hasOption(arguments, option)) {
