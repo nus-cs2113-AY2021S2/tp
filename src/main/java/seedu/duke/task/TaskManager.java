@@ -5,12 +5,12 @@ import seedu.duke.Ui;
 public class TaskManager {
 
     public static void execute() {
-        while(true) {
+        while (true) {
             Ui.printTaskManagerMenu();
             String command = Ui.readCommand();
             try {
                 int taskNumber = Integer.parseInt(command);
-                switch(taskNumber) {
+                switch (taskNumber) {
                 case 1:
                     addNewTask();
                     break;
