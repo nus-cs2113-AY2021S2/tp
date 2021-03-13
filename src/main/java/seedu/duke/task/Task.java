@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.task;
 
 //@@author hazelhedmine-reused
 //Reused from https://github.com/hazelhedmine/ip/blob/master/src/main/java/duke/task/Task.java

@@ -1,10 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.task.Task;
+
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 /**
@@ -57,21 +55,29 @@ public class Ui {
             + "[1] --- Add/View Module Description\n"
             + "[2] --- Add/View Components and Their Weightages\n"
             + "[3] --- Add Zoom Links\n"
-            + "[4] --- Add a New Task\n"
-            + "[5] --- Add a Review\n"
-            + "[6] --- View All Reviews\n"
-            + "[7] --- Delete modules\n"
-            + "[8] --- Delete tasks\n"
-            + "[9] --- Exit to main menu\n");
+            + "[4] --- Add a Review\n"
+            + "[5] --- View All Reviews\n"
+            + "[6] --- Delete modules\n"
+            + "[7] --- Exit to main menu\n");
+    }
+
+    public static void printTaskManagerMenu() {
+        System.out.println("Welcome to the Task Manager menu ^o^\n"
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- Add New Task\n"
+                + "[2] --- Delete a Task\n"
+                + "[3] --- View All Tasks\n"
+                + "[4] --- Pin a Task\n"
+                + "[5] --- Exit");
     }
 
     public static void printAddTaskMenu() {
-        System.out.println("Welcome to the tasks menu ^o^\n"
-            + "Please choose which type of task you would like to add and enter the number:\n"
-            + "[1] --- Task\n"
-            + "[2] --- Assignment\n"
-            + "[3] --- Midterm\n"
-            + "[4] --- Final Exam");
+        System.out.println("Please choose which type of task you would like to add"
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
@@ -133,7 +139,7 @@ public class Ui {
 
     public static void printAddedTaskMessage(Task task) {
         System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to ModuleInfo menu now!");
+        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 

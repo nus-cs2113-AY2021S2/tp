@@ -1,9 +1,9 @@
-package seedu.duke;
+package seedu.duke.task;
 
-public class FinalExam extends Task {
+public class Midterm extends Task {
     protected String on;
 
-    public FinalExam(String module, String description, String message, String on) {
+    public Midterm(String module, String description, String message, String on) {
         super(module, description, message);
         this.on = on;
     }

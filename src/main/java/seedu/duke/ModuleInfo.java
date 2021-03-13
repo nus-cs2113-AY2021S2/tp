@@ -15,7 +15,7 @@ public class ModuleInfo {
             String command = Ui.readCommand();
             try {
                 int taskNumber = Integer.parseInt(command);
-                if (taskNumber == 9) {
+                if (taskNumber == 7) {
                     break; // exit to Main Menu
                 }
                 switch (taskNumber) {
@@ -29,19 +29,13 @@ public class ModuleInfo {
                     addZoomLinks();
                     break;
                 case 4:
-                    addNewTask();
-                    break;
-                case 5:
                     addReview();
                     break;
-                case 6:
+                case 5:
                     viewAllReviews();
                     break;
-                case 7:
+                case 6:
                     deleteModule();
-                    break;
-                case 8:
-                    deleteTask();
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -50,14 +44,6 @@ public class ModuleInfo {
                 Ui.printInvalidIntegerMessage();
             }
         }
-    }
-
-    private static void deleteTask() {
-        Ui.printDeleteTaskMenu();
-        int taskTypeNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
-
-        TaskList.deleteTask(taskTypeNumber);
     }
 
     private static void deleteModule() {
@@ -81,43 +67,6 @@ public class ModuleInfo {
     }
 
     private static void addReview() {
-    }
-
-    private static void addNewTask() {
-        String dateAndTime = "";
-
-        Ui.printAddTaskMenu();
-        int taskNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
-        Ui.printAddTaskModuleMessage(taskNumber);
-        String module = Ui.readCommand();
-        Ui.printHorizontalLine();
-        Ui.printAddTaskDescriptionMessage(taskNumber);
-        String description = Ui.readCommand();
-        Ui.printHorizontalLine();
-        if (taskNumber != 1) {
-            dateAndTime = TaskList.getDate(taskNumber) + ", " + TaskList.getTime(taskNumber);
-        }
-        Ui.printAddMessageAfterCompletedTask();
-        String message = Ui.readCommand();
-
-
-        switch (taskNumber) {
-        case 1:
-            TaskList.addTask(module, description, message);
-            break;
-        case 2:
-            TaskList.addAssignment(module, description, message, dateAndTime);
-            break;
-        case 3:
-            TaskList.addMidterm(module, description, message, dateAndTime);
-            break;
-        case 4:
-            TaskList.addFinal(module, description, message, dateAndTime);
-            break;
-        default:
-            Ui.printInvalidIntegerMessage();
-        }
     }
 
     private static void addZoomLinks() {

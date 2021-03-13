@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.duke.task;
+
+import seedu.duke.Ui;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
