@@ -12,6 +12,7 @@ import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Ui {
+    protected static final String DIVIDER = "=========================================================";
     private static final String logo = "=========================================================\n"
             + "||    $$$$$$  $$$$$$  $$    $$  $$    $$   $$    $$    ||\n"
             + "||    $$        $$    $$$   $$  $$    $$    $$  $$     ||\n"
@@ -20,9 +21,15 @@ public class Ui {
             + "||    $$      $$$$$$  $$    $$   $$$$$$    $$    $$    ||\n"
             + "=========================================================\n";
 
-    protected static final String DIVIDER = "=========================================================";
-    private static final String MESSAGE_GREETING = "";
-    private static final String MESSAGE_GOODBYE = "HUAT AH!";
+    private static final String MESSAGE_GOODBYE =
+            "=======================================================================\n"
+            + "||   $$  $$  $$    $$   $$$$$   $$$$$$$$     $$$$$   $$  $$  $$    ||\n"
+            + "||   $$  $$  $$    $$  $$   $$     $$       $$   $$  $$  $$  $$    ||\n"
+            + "||   $$$$$$  $$    $$  $$$$$$$     $$       $$$$$$$  $$$$$$  $$    ||\n"
+            + "||   $$  $$  $$    $$  $$   $$     $$       $$   $$  $$  $$        ||\n"
+            + "||   $$  $$   $$$$$$   $$   $$     $$       $$   $$  $$  $$  $$    ||\n"
+            + "=====================================================================\n";
+
     private static final String MESSAGE_LOADING = "Loading from save... ";
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
     private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
@@ -30,6 +37,7 @@ public class Ui {
     private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
     private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
     private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
+    private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!";
 
 
     /**
@@ -45,6 +53,14 @@ public class Ui {
 
     public Ui(InputStream in) {
         this.input = new Scanner(in);
+    }
+
+    public static void printInitError() {
+        System.out.println(DIVIDER);
+        System.out.println();
+        System.out.println(MESSAGE_FAILED_INIT);
+        System.out.println();
+        System.out.println(DIVIDER);
     }
 
     public void printSuccessfulAdd(Record recordAdded, int index) {
@@ -67,8 +83,7 @@ public class Ui {
 
     public String getUserInput() {
         System.out.print(FINUX_PREFIX + " ");
-        String userInput = input.nextLine().strip();
-        return userInput;
+        return input.nextLine().strip();
     }
 
     public void printWelcomeMessage() {
@@ -77,11 +92,7 @@ public class Ui {
     }
 
     public void printGoodByeMessage() {
-        System.out.println(DIVIDER);
-        System.out.println();
         System.out.println(MESSAGE_GOODBYE);
-        System.out.println();
-        System.out.println(DIVIDER);
     }
 
     public void printMessage(String message) {

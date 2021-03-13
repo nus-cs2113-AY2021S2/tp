@@ -13,6 +13,7 @@ import static seedu.duke.command.Utils.validateArguments;
 public class ExitCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = { ArgumentType.COMMAND };
     protected static final String COMMAND_EXIT = "exit";
+    private static final String MESSAGE_EXITING = "You are exiting FINUX now...";
 
     public ExitCommand(ArrayList<String> arguments) throws CommandException {
         validateArguments(arguments, argumentTypeOrder, COMMAND_EXIT);
@@ -27,7 +28,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public void execute(RecordList records, Ui ui, Storage storage) {
-        ui.printGoodByeMessage();
+        System.out.println(MESSAGE_EXITING);
     }
 
     public static boolean isExit(Command command) {

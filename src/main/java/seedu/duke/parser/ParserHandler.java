@@ -1,6 +1,11 @@
 package seedu.duke.parser;
 
 import org.apache.commons.lang3.StringUtils;
+import seedu.duke.command.Command;
+import seedu.duke.command.CommandHandler;
+import seedu.duke.exception.CommandException;
+import seedu.duke.record.RecordList;
+
 import java.util.ArrayList;
 
 public class ParserHandler {
