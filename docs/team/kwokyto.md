@@ -45,7 +45,8 @@ Given below are my contributions to the project
 - **Community**
   - Pull Requests reviewed with non-trivial review comments (
       [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38)
-      [#54](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/54))
+      [#54](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/54)
+      [#56](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/56))
   - Contributed to forum discussions (examples: [1]())
   - Reported bugs and suggestions for other teams in the class (
       examples:
