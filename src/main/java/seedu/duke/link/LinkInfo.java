@@ -24,8 +24,10 @@ public class LinkInfo {
         Ui.printLinkToDelete();
         viewLinks();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+        String deletedString = linksList.get(deleteIndex);
         assert deleteIndex < 0 : "Index is invalid";
         linksList.remove(deleteIndex);
+        Ui.printLinkDeleted(deletedString);
     }
 
     public void viewLinks() {

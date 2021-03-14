@@ -54,11 +54,7 @@ public class Ui {
 
     public static void printLinkToDelete() {
         System.out
-            .println("Please choose which link you would like to delete and enter the number\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- External links menu\n"
-                + "[3] --- View Zoom links\n"
-                + "[4] --- Exit to main menu\n");
+            .println("Please choose which link you would like to delete and enter the number\n");
     }
 
     public static void printModuleInfoMessage() {
@@ -588,5 +584,9 @@ public class Ui {
             password = Ui.readCommand();
         }
         return password;
+    }
+
+    public static void printLinkDeleted(String deletedString) {
+        System.out.println("You have deleted --- " + deletedString);
     }
 }
