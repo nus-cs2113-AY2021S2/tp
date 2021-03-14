@@ -22,6 +22,7 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -43,26 +44,45 @@ public class AddCommand extends Command {
                 OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
         checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
 
-        if (hasOption(arguments, OPTION_EXPENSE)) {
-            recordType = RecordType.EXPENSE;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
-        } else if (hasOption(arguments, OPTION_LOAN)) {
-            recordType = RecordType.LOAN;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_LOAN);
-        } else if (hasOption(arguments, OPTION_SAVING)) {
-            recordType = RecordType.SAVING;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_SAVING);
-        } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
-        }
+        description = getDescription(arguments);
+        amount = getAmount(arguments);
+        issueDate = getDate(arguments);
+    }
 
+    private String getDescription(ArrayList<String> arguments) throws CommandException {
+        return Utils.getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
+    }
+
+    private BigDecimal getAmount(ArrayList<String> arguments) throws CommandException {
         try {
-            amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
-            issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+            return validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
-        } catch (CustomException | DateTimeException e) {
+        } catch (CustomException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
+        }
+    }
+
+    private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
+        try {
+            return validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+        } catch (DateTimeException e) {
+            throw new CommandException(e.getMessage(), COMMAND_ADD);
+        }
+    }
+
+    private String checkRecordType(ArrayList<String> arguments) throws CommandException {
+        if (hasOption(arguments, OPTION_EXPENSE)) {
+            recordType = RecordType.EXPENSE;
+            return OPTION_EXPENSE;
+        } else if (hasOption(arguments, OPTION_LOAN)) {
+            recordType = RecordType.LOAN;
+            return OPTION_LOAN;
+        } else if (hasOption(arguments, OPTION_SAVING)) {
+            recordType = RecordType.SAVING;
+            return OPTION_SAVING;
+        } else {
+            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
     }
 

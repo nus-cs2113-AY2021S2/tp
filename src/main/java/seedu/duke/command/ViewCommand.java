@@ -30,7 +30,11 @@ public class ViewCommand extends Command {
     public ViewCommand(ArrayList<String> arguments) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_VIEW, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
         checkOptionConflict(arguments, COMMAND_VIEW, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
+        checkRecordType(arguments);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_VIEW);
+    }
 
+    private void checkRecordType(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
         } else if (hasOption(arguments, OPTION_LOAN)) {
@@ -40,7 +44,6 @@ public class ViewCommand extends Command {
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_VIEW);
         }
-        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_VIEW);
     }
 
     @Override
