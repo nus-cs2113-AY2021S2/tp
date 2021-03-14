@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Router {
     private Map nusMap = new Map();
 
-    public Router(){
+    public Router() {
         setMap();
         setNeighbours();
     }
@@ -24,7 +24,7 @@ public class Router {
             System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
             String record = "START: " + from.toUpperCase() + "; TO: " + to.toUpperCase();
             history.addRecord(record);
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             System.out.println("Invalid block! Please enter the 'go' command to retry!");
         }
     }
@@ -91,8 +91,7 @@ public class Router {
         Block destination = nusMap.getLocation(to).getBlock();
         HashMap<Block, Block> predecessor = new HashMap<>();
         String route = "";
-
-        if (!BFS(nusMap, predecessor, start, destination)) {
+        if (!bfs(nusMap, predecessor, start, destination)) {
             route += "The blocks given have no connected pathways!";
         } else {
             LinkedList<Block> path = new LinkedList<>();
@@ -107,14 +106,14 @@ public class Router {
                 if (i > 0) {
                     route += path.get(i).getName() + "->";
                 } else {
-                   route += path.get(i).getName();
+                    route += path.get(i).getName();
                 }
             }
         }
         return route;
     }
 
-    public static boolean BFS(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
+    public static boolean bfs(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
         LinkedList<Block> queue = new LinkedList<>();
         queue.add(start);
         start.setAsVisited();

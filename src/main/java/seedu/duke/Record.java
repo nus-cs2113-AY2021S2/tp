@@ -15,8 +15,8 @@ public class Record {
 
     public void displayRecords() {
         System.out.println("Number of records in your history: " + records.size());
-        for (int i = 1; i-1 < records.size(); i++) {
-            System.out.println(i + ". " + records.get(i-1));
+        for (int i = 1; i - 1 < records.size(); i++) {
+            System.out.println(i + ". " + records.get(i - 1));
         }
     }
 
