@@ -38,9 +38,6 @@ public class RemoveCommand extends Command {
     }
 
     public void removeFood() {
-        if (indexToRemove > Fridge.getSize()) {
-            throw new IndexOutOfBoundsException();
-        }
         Fridge.removeByIndex(indexToRemove);
     }
 
@@ -50,5 +47,18 @@ public class RemoveCommand extends Command {
                 + "Now you have " + Fridge.getSize()
                 + " food in the fridge.";
         Ui.printMessage(message);
+    }
+
+    /**
+     * Return the actual message shown to user for JUnit-test.
+     *
+     * @return the actual message after remove food from fridge to the user
+     */
+    public String actualMessage() {
+        String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
+                + " from your fridge.\n"
+                + "Now you have " + Fridge.getSize()
+                + " food in the fridge.";
+        return message;
     }
 }
