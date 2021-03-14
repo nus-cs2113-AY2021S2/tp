@@ -13,12 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AddCommandTest {
 
+    /**
+     * Test the successful case.
+     */
     @Test
-    void addCommand_correctData_correctlyConstructed() throws InvalidDateException, InvalidInputException {
+    public void addCommand_correctData_correctlyConstructed() throws InvalidDateException, InvalidInputException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER);
-        ExpiryDate expiryDate = new ExpiryDate("30-06-2021");
         addCommand.execute();
+        ExpiryDate expiryDate = new ExpiryDate("30-06-2021");
 
         assertEquals("chicken",Fridge.getFood(0).getFoodName());
         assertEquals(FoodCategory.MEAT,Fridge.getFood(0).getCategory());
@@ -26,8 +29,11 @@ class AddCommandTest {
         assertEquals(FoodStorageLocation.FREEZER, Fridge.getFood(0).getStorageLocation());
     }
 
+    /**
+     * Test the invalid case.
+     */
     @Test
-    void addCommand_invalidDate_expectException() {
+    public void addCommand_invalidDate_expectException() {
         assertThrows(InvalidDateException.class, () -> {
             Command addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER);
