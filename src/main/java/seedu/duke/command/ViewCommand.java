@@ -18,7 +18,7 @@ import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 
 public class ViewCommand extends Command {
-    private static final ArgumentType[] argumentTypeOrder = {
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
         ArgumentType.EMPTY_VALUE
@@ -40,7 +40,7 @@ public class ViewCommand extends Command {
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_VIEW);
         }
-        validateArguments(arguments, argumentTypeOrder, COMMAND_VIEW);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_VIEW);
     }
 
     @Override

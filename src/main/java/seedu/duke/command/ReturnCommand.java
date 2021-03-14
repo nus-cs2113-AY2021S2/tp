@@ -22,7 +22,7 @@ import static seedu.duke.common.Validators.validateIndex;
  * Handles all operations related to the return command.
  */
 public class ReturnCommand extends Command {
-    private static final ArgumentType[] argumentTypeOrder = {
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
         ArgumentType.VALUE
@@ -35,7 +35,7 @@ public class ReturnCommand extends Command {
     public ReturnCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_RETURN, OPTION_INDEX);
-        validateArguments(arguments, argumentTypeOrder, COMMAND_RETURN);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_RETURN);
 
         if (hasOption(arguments, OPTION_INDEX)) {
             recordNumberStr = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);

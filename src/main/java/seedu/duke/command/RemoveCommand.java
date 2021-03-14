@@ -21,7 +21,7 @@ import static seedu.duke.common.Validators.validateIndex;
  * Handles all operations related to the remove command.
  */
 public class RemoveCommand extends Command {
-    private static final ArgumentType[] argumentTypeOrder = {
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
         ArgumentType.VALUE
@@ -34,7 +34,7 @@ public class RemoveCommand extends Command {
     public RemoveCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_REMOVE, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_REMOVE, OPTION_INDEX);
-        validateArguments(arguments, argumentTypeOrder, COMMAND_REMOVE);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_REMOVE);
 
         if (hasOption(arguments, OPTION_INDEX)) {
             recordNumberStr = getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);

@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Handles all operations related to the list command.
  */
 public class ListCommand extends Command {
-    private static final ArgumentType[] argumentTypeOrder = {
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
         ArgumentType.EMPTY_VALUE
@@ -43,7 +43,7 @@ public class ListCommand extends Command {
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_LIST);
         }
-        validateArguments(arguments, argumentTypeOrder, COMMAND_LIST);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_LIST);
     }
 
     @Override
