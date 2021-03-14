@@ -33,6 +33,8 @@ public class CommandManager {
             return CommandEnum.GoCommand;
         case "history":
             return CommandEnum.ShowHistoryCommand;
+        case "repeat":
+            return CommandEnum.RepeatCommand;
         case "clear history":
             return CommandEnum.ClearHistoryCommand;
         case "add note":
@@ -43,6 +45,8 @@ public class CommandManager {
             return CommandEnum.DisplayNotesCommand;
         case "bye":
             return CommandEnum.ByeCommand;
+        case "help":
+            return CommandEnum.HelpCommand;
         default:
             return CommandEnum.InvalidCommand;
         }

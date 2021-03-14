@@ -24,7 +24,9 @@ public class InputManager {
             switch (commandManager.getCommandType()) {
             case GoCommand:
                 map.execute(history);
-                // todo: add records
+                break;
+            case RepeatCommand:
+                map.repeatExecution(history);
                 break;
             case ShowHistoryCommand:
                 history.displayRecords();
@@ -40,6 +42,9 @@ public class InputManager {
                 break;
             case DisplayNotesCommand:
                 notesManager.parseListNotesCommandAndListNotes(input);
+                break;
+            case HelpCommand:
+                UiManager.showHelpMessage();
                 break;
             case ByeCommand:
                 UiManager.showByeMessage();
