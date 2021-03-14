@@ -26,7 +26,6 @@ public class InputManager {
                 map.execute(history);
                 break;
             case RepeatCommand:
-                // todo: add repeat
                 map.repeatExecution(history);
                 break;
             case ShowHistoryCommand:
