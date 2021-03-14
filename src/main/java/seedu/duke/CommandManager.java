@@ -1,6 +1,7 @@
 package seedu.duke;
 
 public class CommandManager {
+
     private CommandEnum commandType;
 
     public CommandManager(String input) {
@@ -15,7 +16,14 @@ public class CommandManager {
         // Trim input to remove unnecessary whitespaces
         // Convert input to lowercase to make command case insensitive
         String filteredInput = input.trim().toLowerCase();
-
+        // For commands related to adding, deleting or listing notes, need to filter input one step further:
+        if (filteredInput.startsWith("add note ")) {
+            filteredInput = "add note";
+        } else if (filteredInput.startsWith("delete note ")) {
+            filteredInput = "delete note";
+        } else if (filteredInput.startsWith("list notes ")) {
+            filteredInput = "notes";
+        }
         commandType = getCommandTypeFromInput(filteredInput);
     }
 
