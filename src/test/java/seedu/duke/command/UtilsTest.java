@@ -9,12 +9,14 @@ import seedu.duke.parser.ParserHandler;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.duke.command.AddCommand.COMMAND_ADD;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
+import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.isOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateOptions;
@@ -192,5 +194,37 @@ class UtilsTest {
                 validateOptions(command2, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
         assertThrows(CommandException.class, () ->
                 validateOptions(command3, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+    }
+
+    @DisplayName("[getOptionValue] - Option exists - success:")
+    @Test
+    public void getOptionValue_optionExists_success() {
+        ArrayList<String> command1 = ParserHandler.getParseInput("add -s savings -a 200.00 -d 20/1/2021");
+        ArrayList<String> command2 = ParserHandler.getParseInput("add -a 200.00 -d 20/1/2021 -s savings");
+        try {
+            assertEquals("200.00", getOptionValue(command1, COMMAND_ADD, "-a"));
+            assertEquals("20/1/2021", getOptionValue(command1, COMMAND_ADD, "-d"));
+            assertEquals("savings", getOptionValue(command1, COMMAND_ADD, "-s"));
+            assertEquals("200.00", getOptionValue(command2, COMMAND_ADD, "-a"));
+            assertEquals("20/1/2021", getOptionValue(command2, COMMAND_ADD, "-d"));
+            assertEquals("savings", getOptionValue(command2, COMMAND_ADD, "-s"));
+        } catch (CommandException e) {
+            fail();
+        }
+    }
+
+    @DisplayName("[getOptionValue] - Option empty - failure:")
+    @Test
+    public void getOptionValue_optionEmpty() {
+        ArrayList<String> command1 = ParserHandler.getParseInput("add -s -a -d");
+        ArrayList<String> command2 = ParserHandler.getParseInput("add -a 200.00 -d -s savings");
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command1, COMMAND_ADD, "-a"));
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command1, COMMAND_ADD, "-d"));
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command1, COMMAND_ADD, "-s"));
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command2, COMMAND_ADD, "-d"));
     }
 }
