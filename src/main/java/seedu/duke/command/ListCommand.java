@@ -17,6 +17,9 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 
 import java.util.ArrayList;
 
+/**
+ * Handles all operations related to the list command.
+ */
 public class ListCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
         ArgumentType.COMMAND,

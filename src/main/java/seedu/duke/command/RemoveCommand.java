@@ -17,6 +17,9 @@ import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.common.Constant.OPTION_INDEX;
 import static seedu.duke.common.Validators.validateIndex;
 
+/**
+ * Handles all operations related to the remove command.
+ */
 public class RemoveCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = {
         ArgumentType.COMMAND,

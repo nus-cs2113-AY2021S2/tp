@@ -10,6 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+/**
+ * Provides common validation and get methods/tools.
+ */
 public class Utils {
     private static final String ERROR_MISSING_OPTION = "missing option: ";
     private static final String ERROR_INVALID_OPTION = "invalid option: ";
