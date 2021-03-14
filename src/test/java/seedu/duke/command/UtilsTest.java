@@ -13,10 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
+import static seedu.duke.command.AddCommand.COMMAND_ADD;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
 import static seedu.duke.command.Utils.isOption;
 import static seedu.duke.command.Utils.validateArguments;
+import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
+import static seedu.duke.common.Constant.OPTION_AMOUNT;
+import static seedu.duke.common.Constant.OPTION_DATE;
+import static seedu.duke.common.Constant.OPTION_EXPENSE;
+import static seedu.duke.common.Constant.OPTION_LOAN;
+import static seedu.duke.common.Constant.OPTION_SAVING;
 
 class UtilsTest {
     private static final ArgumentType[] ARG_TYPE_ORDER_CMD_HELP = { ArgumentType.COMMAND };
@@ -25,6 +32,9 @@ class UtilsTest {
         ArgumentType.OPTION,
         ArgumentType.EMPTY_VALUE
     };
+    private static final String[] OR_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
+    private static final String[] VALID_OPTIONS_ADD = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING,
+            OPTION_AMOUNT, OPTION_DATE};
 
     @DisplayName("[isOption] - Valid Options - success:")
     @Test
@@ -152,5 +162,35 @@ class UtilsTest {
         ArrayList<String> command5 = ParserHandler.getParseInput("view");
         validateArguments_improperCommand_helper(command5, ARG_TYPE_ORDER_CMD_VIEW,
                 expected25, COMMAND_VIEW);
+    }
+
+    @DisplayName("[validateOptions] - Valid options - success:")
+    @Test
+    public void validateOptions_validOptions_success() {
+        ArrayList<String> command1 = ParserHandler.getParseInput("view -l");
+        ArrayList<String> command2 = ParserHandler.getParseInput("add -s savings -a 200.00 -d 20/1/2021");
+        ArrayList<String> command3 = ParserHandler.getParseInput("add -a 200.00 -d 20/1/2021 -s savings");
+
+        try {
+            validateOptions(command1, COMMAND_VIEW, OR_OPTIONS, OR_OPTIONS);
+            validateOptions(command2, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS);
+            validateOptions(command3, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS);
+        } catch (CommandException e) {
+            fail();
+        }
+    }
+
+    @DisplayName("[validateOptions] - Invalid options - failure:")
+    @Test
+    public void validateOptions_invalidOptions() {
+        ArrayList<String> command1 = ParserHandler.getParseInput("view -l -z");
+        ArrayList<String> command2 = ParserHandler.getParseInput("add -s -a 200.00 -d -d");
+        ArrayList<String> command3 = ParserHandler.getParseInput("add -a -s -s -d");
+        assertThrows(CommandException.class, () ->
+                validateOptions(command1, COMMAND_VIEW, OR_OPTIONS, OR_OPTIONS));
+        assertThrows(CommandException.class, () ->
+                validateOptions(command2, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+        assertThrows(CommandException.class, () ->
+                validateOptions(command3, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
     }
 }
