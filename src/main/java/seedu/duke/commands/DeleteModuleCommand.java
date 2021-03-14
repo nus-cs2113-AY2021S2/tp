@@ -25,7 +25,7 @@ public class DeleteModuleCommand extends Command {
     @Override
     public void execute(UI ui) {
         ui.printMessage(getDeleteInfo());
-        ArrayList<Integer> indices = getIndicesFromUser(ui);
+        ArrayList<Integer> indices = ui.getIndicesFromUser();
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         ui.printMessage(getDeletedModuleCodes(deletedModulesCodes));
     }
@@ -65,29 +65,5 @@ public class DeleteModuleCommand extends Command {
             stringBuilder.append(NEWLINE);
         }
         return stringBuilder.toString();
-    }
-
-    /**
-     * Reads user input and returns valid indices of modules to be deleted.
-     * @param ui user interface object
-     * @return ArrayList of integers
-     */
-    private ArrayList<Integer> getIndicesFromUser(UI ui) {
-        boolean isValidInput = false;
-        ArrayList<Integer> indices = null;
-
-        do {
-            String userInput = ui.readCommand();
-            try {
-                indices = Parser.checkIndices(userInput, ModuleList.getModules().size());
-            } catch (NumberFormatException e) {
-                // keep reading input until given valid
-                ui.printMessage(MESSAGE_INVALID_INDICES);
-                continue;
-            }
-            isValidInput = true;
-        } while (!isValidInput);
-
-        return indices;
     }
 }

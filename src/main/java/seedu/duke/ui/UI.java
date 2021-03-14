@@ -3,6 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
 
 import java.time.format.DateTimeFormatter;
@@ -15,6 +16,7 @@ import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
@@ -128,5 +130,24 @@ public class UI {
      */
     public void printError(DukeException e) {
         System.out.println(e.getMessage());
+    }
+
+    public ArrayList<Integer> getIndicesFromUser() {
+        boolean isValidInput = false;
+        ArrayList<Integer> indices = null;
+
+        do {
+            String userInput = readCommand();
+            try {
+                indices = Parser.checkIndices(userInput, ModuleList.getModules().size());
+            } catch (NumberFormatException e) {
+                // keep reading input until given valid
+                printMessage(MESSAGE_INVALID_INDICES);
+                continue;
+            }
+            isValidInput = true;
+        } while (!isValidInput);
+
+        return indices;
     }
 }
