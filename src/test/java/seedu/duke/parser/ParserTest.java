@@ -4,6 +4,7 @@ import seedu.duke.commands.AddLessonCommand;
 import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.ListTasksCommand;
+import seedu.duke.exception.CommandException;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.module.Module;
 import seedu.duke.lesson.Lesson;
@@ -21,7 +22,7 @@ class ParserTest {
     //@@author ivanchongzhien
     @Test
     // DASHBOARD COMMAND
-    void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException {
+    void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException, CommandException {
         ModuleList.reset();
 
         Parser parser = new Parser();
@@ -35,7 +36,7 @@ class ParserTest {
     @Test
     // IN MODULE COMMAND
     // add lesson command
-    void parse_inModuleCommandListTask_ListTask() throws UnknownCommandException {
+    void parse_inModuleCommandListTask_ListTask() throws UnknownCommandException, CommandException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 
@@ -48,7 +49,7 @@ class ParserTest {
 
     @Test
     // add lesson command - all detail fields included
-    void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws UnknownCommandException {
+    void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws UnknownCommandException, CommandException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 
