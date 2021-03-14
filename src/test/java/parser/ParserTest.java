@@ -69,18 +69,29 @@ class ParserTest {
     @Test
     public void parse_read_displayCommand() throws DukeExceptions {
         Parser parser = new Parser();
-        Command c = parser.parse("exit", maxStores);
+        Command c = parser.parse("read 1", maxStores);
         assertTrue(c instanceof ReadCommand);
     }
 
     @Test
-    public void parse_reviewIndexExceedReviewNo_exceptionThrown() {
+    public void parse_readIndexExceedReviewNo_exceptionThrown() {
         Parser parser = new Parser();
         try {
-            Command c = parser.parse("review 5", maxStores);
+            Command c = parser.parse("read 5", maxStores);
         } catch (Exception e) {
-            assertEquals("Invalid index! Please enter a valid index for your 'review' command.", e.getMessage());
+            assertEquals("Invalid index! Please enter a valid index for your 'read' command.", e.getMessage());
         }
     }
+
+    @Test
+    public void parse_readIndexNoNumbers_exceptionThrown() {
+        Parser parser = new Parser();
+        try {
+            Command c = parser.parse("read hi", maxStores);
+        } catch (Exception e) {
+            assertEquals("Invalid index! Please enter a valid index for your 'read' command.", e.getMessage());
+        }
+    }
+
 
 }
