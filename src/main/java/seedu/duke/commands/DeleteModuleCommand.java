@@ -1,13 +1,14 @@
 package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.Parser;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -24,9 +25,7 @@ public class DeleteModuleCommand extends Command {
     @Override
     public void execute(UI ui) {
         ui.printMessage(getDeleteInfo());
-
-        // TODO validate list of integers. Assume input is valid for now.
-        ArrayList<Integer> indices = ui.readIntegers();
+        ArrayList<Integer> indices = getIndices(ui);
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         ui.printMessage(getDeletedModuleCodes(deletedModulesCodes));
     }
@@ -66,5 +65,29 @@ public class DeleteModuleCommand extends Command {
             stringBuilder.append(NEWLINE);
         }
         return stringBuilder.toString();
+    }
+
+    /**
+     * Reads user input and returns valid indices of modules to be deleted.
+     * @param ui user interface object
+     * @return ArrayList of integers
+     */
+    private ArrayList<Integer> getIndices(UI ui) {
+        boolean isValidInput = false;
+        ArrayList<Integer> indices = null;
+
+        do {
+            String userInput = ui.readCommand();
+            try {
+                indices = Parser.checkIndices(userInput, ModuleList.getModules().size());
+            } catch (NumberFormatException e) {
+                // keep reading input until given valid
+                ui.printMessage(MESSAGE_INVALID_INDICES);
+                continue;
+            }
+            isValidInput = true;
+        } while (!isValidInput);
+
+        return indices;
     }
 }

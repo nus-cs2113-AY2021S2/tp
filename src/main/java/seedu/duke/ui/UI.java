@@ -122,22 +122,6 @@ public class UI {
         }
     }
 
-    //@@author isaharon
-    /**
-     * Reads user input until non-integer.
-     * Returns list of integers user input.
-     *
-     * @return Array list of integers users input.
-     */
-    public ArrayList<Integer> readIntegers() {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Integer> listOfIntegers = new ArrayList<>();
-        while (scanner.hasNextInt()) {
-            listOfIntegers.add(scanner.nextInt());
-        }
-        return listOfIntegers;
-    }
-
     /**
      * Prints error message of an exception within the program.
      * @param e Exception to be printed

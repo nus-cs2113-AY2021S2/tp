@@ -18,6 +18,8 @@ public class Messages {
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
 
+    public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
+
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
