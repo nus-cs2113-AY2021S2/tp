@@ -18,6 +18,7 @@ import static seedu.duke.common.Messages.MESSAGE_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
 import static seedu.duke.common.Messages.TAG_MODULE;
@@ -83,9 +84,9 @@ public class UI {
     public void printAllTasks() {
         Module module = ModuleList.getSelectedModule();
         printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()) + NEWLINE);
-        printTasks(module.getTaskList(), false);
+        printTasks(module.getTaskList(), false, false);
         printMessage("");
-        printTasks(module.getTaskList(), true);
+        printTasks(module.getTaskList(), true, false);
     }
 
     /**
@@ -94,9 +95,11 @@ public class UI {
      * @param taskList Array list of tasks to print.
      * @param isDone Status of tasks in taskList.
      */
-    public void printTasks(ArrayList<Task> taskList, Boolean isDone) {
+    public void printTasks(ArrayList<Task> taskList, Boolean isDone, Boolean isOverview) {
         if (isDone) {
             printMessage(HEADER_DONE);
+        } else if (isOverview) {
+            printMessage(MESSAGE_TASKS_TO_LIST_UNDONE);
         } else {
             printMessage(HEADER_UNDONE);
         }

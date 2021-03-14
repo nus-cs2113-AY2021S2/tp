@@ -34,7 +34,7 @@ public class ModuleInfoCommand extends Command {
         printLessonsFromList(lessonList, ui);
         ui.printMessage("");
         ArrayList<Task> tasksList = module.getTaskList();
-        ui.printTasks(tasksList, false);
+        ui.printTasks(tasksList, false, true);
     }
 
     /**

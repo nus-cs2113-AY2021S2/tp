@@ -9,6 +9,7 @@ public class Messages {
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
+    public static final String INDENTATION = "\t\t\t";
 
     public static final String MESSAGE_EXIT = "Have a nice day! Bye bye!";
     public static final String MESSAGE_WELCOME = "What can I do for you today?";
@@ -30,12 +31,11 @@ public class Messages {
             "Please enter the indices of the modules you would like to delete."
                     + NEWLINE + "Separate indices with a blank space.";
     public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:" + NEWLINE;
-    public static final String MESSAGE_MODULE_OPENED = "Opening module %s." + NEWLINE;
-    public static final String MESSAGE_OVERVIEW = "<Placeholder for overview>";
+    public static final String MESSAGE_MODULE_OPENED = "Opening %s." + NEWLINE;
 
 
     //Lesson messages
-    public static final String FORMAT_PRINT_LESSON = "%d. %s - %s\n \t%s\n \t%s\n \t%s";
+    public static final String FORMAT_PRINT_LESSON = "%d. %s - %s";
     public static final String FORMAT_PRINT_TEACHING_STAFF = "%d. %s - %s";
 
     public static final String MESSAGE_ADDED_LESSON = "Added %s to lesson list.";
@@ -115,5 +115,6 @@ public class Messages {
     //Module info messages
     public static final String FORMAT_LESSONS_INFO = "%s - %s";
     public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
+    public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
 
 }

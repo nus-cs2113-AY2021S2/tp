@@ -13,11 +13,11 @@ Modules in your list:
  1. CS2113T
 --------------------------------------------------------------------------
 GULIO >>
-Opening module CS2113T.
+Opening CS2113T.
 
 <Overview for CS2113T>
 
-[Undone]
+Undone tasks:
 You have completed all your tasks.
 --------------------------------------------------------------------------
 CS2113T >>
