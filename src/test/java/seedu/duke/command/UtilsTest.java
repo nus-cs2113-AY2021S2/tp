@@ -35,8 +35,9 @@ class UtilsTest {
         ArgumentType.EMPTY_VALUE
     };
     private static final String[] OR_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
-    private static final String[] VALID_OPTIONS_ADD = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING,
-            OPTION_AMOUNT, OPTION_DATE};
+    private static final String[] VALID_OPTIONS_ADD = {
+        OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE
+    };
 
     @DisplayName("[isOption] - Valid Options - success:")
     @Test
@@ -217,13 +218,14 @@ class UtilsTest {
     @Test
     public void getOptionValue_optionEmpty() {
         ArrayList<String> command1 = ParserHandler.getParseInput("add -s -a -d");
-        ArrayList<String> command2 = ParserHandler.getParseInput("add -a 200.00 -d -s savings");
         assertThrows(CommandException.class, () ->
                 getOptionValue(command1, COMMAND_ADD, "-a"));
         assertThrows(CommandException.class, () ->
                 getOptionValue(command1, COMMAND_ADD, "-d"));
         assertThrows(CommandException.class, () ->
                 getOptionValue(command1, COMMAND_ADD, "-s"));
+
+        ArrayList<String> command2 = ParserHandler.getParseInput("add -a 200.00 -d -s savings");
         assertThrows(CommandException.class, () ->
                 getOptionValue(command2, COMMAND_ADD, "-d"));
     }
