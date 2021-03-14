@@ -13,6 +13,7 @@ import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 
@@ -31,9 +32,11 @@ public class Parser {
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
+     * @throws InvalidDateException if the date input cannot be parsed
      */
     public static Command getCommand(String input)
-            throws EmptyDescriptionException, InvalidInputException, InvalidIndexException {
+            throws EmptyDescriptionException, InvalidInputException, 
+            InvalidIndexException, InvalidDateException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -68,9 +71,11 @@ public class Parser {
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
+     * @throws InvalidDateException if the date input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException, InvalidIndexException {
+            throws EmptyDescriptionException, InvalidInputException, 
+            InvalidIndexException, InvalidDateException {
         String commandString = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
         Command command;
@@ -118,9 +123,10 @@ public class Parser {
      * @return a new AddCommand for Food
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
+     * @throws InvalidDateException if the date input cannot be parsed
      */
     public static Command parseFoodDescription(String foodDescription)
-            throws EmptyDescriptionException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -140,9 +146,10 @@ public class Parser {
      * @return AddCommand object
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
+     * @throws InvalidDateException if the date input cannot be parsed
      */
     public static Command getAddCommand(String description) 
-            throws EmptyDescriptionException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
     }
