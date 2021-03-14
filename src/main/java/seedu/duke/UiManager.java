@@ -3,6 +3,7 @@ package seedu.duke;
 public class UiManager {
     private static final String DIVIDER = "--------------------------------------------------------------------------";
     private static final String SPACING = "      ";
+
     public static void printDivider() {
         System.out.println(DIVIDER);
     }
@@ -38,12 +39,21 @@ public class UiManager {
 
     public static void showHelpMessage() {
         System.out.print(
-                "1. go:\n" + SPACING + "finds the route to go from one block to another\n" +
-                "2. history:\n" + SPACING + "lists past 10 route searches\n" +
-                "3. add note LOCATION/DESCRIPTION:\n" + SPACING + "adds and tags a note to a particular location\n" +
-                "4. list notes LOCATION:\n" + SPACING + "list notes tagged to the given location\n" +
-                "5. delete note LOCATION/NOTE INDEX:\n" + SPACING +
-                "deletes notes based on index number tagged to the given location\n"
+                "1. go:\n"
+                + SPACING
+                + "finds the route to go from one block to another\n"
+                + "2. history:\n"
+                + SPACING
+                + "lists past 10 route searches\n"
+                + "3. add note LOCATION/DESCRIPTION:\n"
+                + SPACING
+                + "adds and tags a note to a particular location\n"
+                + "4. list notes LOCATION:\n"
+                + SPACING
+                + "list notes tagged to the given location\n"
+                + "5. delete note LOCATION/NOTE INDEX:\n"
+                + SPACING
+                + "deletes notes based on index number tagged to the given location\n"
         );
     }
 }
