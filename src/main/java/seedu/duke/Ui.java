@@ -38,7 +38,8 @@ public class Ui {
                 + "[1] Module Information\n"
                 + "[2] CAP Simulator/Calculator\n"
                 + "[3] Task Manager\n"
-                + "[4] External Links");
+                + "[4] External Links\n"
+                + "[5] Exit Program");
     }
 
     public static void printLinksMessage() {
