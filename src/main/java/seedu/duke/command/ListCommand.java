@@ -33,7 +33,11 @@ public class ListCommand extends Command {
     public ListCommand(ArrayList<String> arguments) throws CommandException {
         checkInvalidOptions(arguments, COMMAND_LIST, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
         checkOptionConflict(arguments, COMMAND_LIST, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
+        checkRecordType(arguments);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_LIST);
+    }
 
+    private void checkRecordType(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
         } else if (hasOption(arguments, OPTION_LOAN)) {
@@ -43,7 +47,6 @@ public class ListCommand extends Command {
         } else {
             throw new CommandException("missing option: [-e | -l | -s]", COMMAND_LIST);
         }
-        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_LIST);
     }
 
     @Override

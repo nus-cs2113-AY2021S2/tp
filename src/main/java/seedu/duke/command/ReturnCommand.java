@@ -36,15 +36,21 @@ public class ReturnCommand extends Command {
         checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
         checkOptionConflict(arguments, COMMAND_RETURN, OPTION_INDEX);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_RETURN);
+        recordNumberStr = getIndexInString(arguments);
+        recordNumberInt = getIndexInInteger(arguments, records);
+    }
 
+    private String getIndexInString(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_INDEX)) {
-            recordNumberStr = getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
+            return getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
         } else {
             throw new CommandException("missing option: -i", COMMAND_RETURN);
         }
+    }
 
+    private int getIndexInInteger(ArrayList<String> arguments, RecordList records) throws CommandException {
         try {
-            recordNumberInt = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), records);
+            return validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), records);
         } catch (NumberFormatException e) {
             throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
