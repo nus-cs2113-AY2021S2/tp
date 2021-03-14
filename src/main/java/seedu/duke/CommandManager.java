@@ -45,6 +45,8 @@ public class CommandManager {
             return CommandEnum.DisplayNotesCommand;
         case "bye":
             return CommandEnum.ByeCommand;
+        case "help":
+            return CommandEnum.HelpCommand;
         default:
             return CommandEnum.InvalidCommand;
         }

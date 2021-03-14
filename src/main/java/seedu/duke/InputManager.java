@@ -43,6 +43,9 @@ public class InputManager {
             case DisplayNotesCommand:
                 notesManager.parseListNotesCommandAndListNotes(input);
                 break;
+            case HelpCommand:
+                UiManager.showHelpMessage();
+                break;
             case ByeCommand:
                 UiManager.showByeMessage();
                 return;
