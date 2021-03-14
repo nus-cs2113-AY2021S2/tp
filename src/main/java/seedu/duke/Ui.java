@@ -264,7 +264,12 @@ public class Ui {
             System.out.println("Would you like to replace this with another review? [Y/N]");
             String command = readCommand();
             if (command.equalsIgnoreCase("N")) {
-                System.out.println("Okay:)");
+                System.out.println("Okay:) You still have the same review!");
+                printReturnToModuleInfoMenuMessage();
+                return module.getReview();
+            } else if (!command.equalsIgnoreCase("Y")) {
+                System.out.println("You did not enter a valid letter:(");
+                printReturnToModuleInfoMenuMessage();
                 return module.getReview();
             }
         }
@@ -294,6 +299,7 @@ public class Ui {
     public static void printReviewAdded(String review) {
         System.out.println("Woohoo~ Review added:");
         System.out.println(review);
+        printReturnToModuleInfoMenuMessage();
     }
 
     public static void printSelectModuleToDeleteMessage() {
