@@ -277,7 +277,6 @@ public class Parser {
      * @return a Lesson object with the details entered by the user. Fields not found will be left as an empty string.
      */
     private Lesson parseNewLessonDetails(String input) throws CommandException {
-        // TODO - validate input
 
         // initialize an array of empty strings to store lesson details
         String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
@@ -286,7 +285,7 @@ public class Parser {
         // to remove only the first two words "add lesson"
         String[] lessonDetails = input.trim().split(WHITESPACE, 3);
 
-        // E1- User does not enter any parameters.
+        // ERROR - User does not enter any parameters.
         if (lessonDetails.length < 3) {
             throw new CommandException("Missing lesson details.");
         }
@@ -354,14 +353,19 @@ public class Parser {
      * @param input full user input string
      * @return a Task object with the details entered by the user. Fields not found will be left as an empty string.
      */
-    private Task parseNewTaskDetails(String input) {
+    private Task parseNewTaskDetails(String input) throws CommandException {
 
         // initialize an array of empty strings to store task details
         String[] allDetails = new String[ENTRY_TASK_MAX_PARSER];
-        Arrays.fill(allDetails, "");
+        Arrays.fill(allDetails, PLACEHOLDER);
 
         // to remove only the first two words "add task"
         String[] taskDetails = input.trim().split(WHITESPACE, 3);
+
+        // ERROR - User does not enter any parameters.
+        if (taskDetails.length < 3) {
+            throw new CommandException("Missing task details.");
+        }
 
         // split the details field using DELIMITER to get the individual detail fields
         String[] details = taskDetails[2].split(DELIM);
@@ -373,10 +377,16 @@ public class Parser {
         }
 
         // Creating Task object
-        // TODO - throw exception for invalid deadline
         String description = allDetails[INDEX_DESCRIPTION];
+
         String deadlineString = allDetails[INDEX_DEADLINE];
-        LocalDate deadline = convertToDate(deadlineString);
+        LocalDate deadline;
+        try {
+            deadline = convertToDate(deadlineString);
+        } catch (DateTimeParseException e) {
+            throw new CommandException("Invalid/missing deadline.");
+        }
+
         String remarks = allDetails[INDEX_REMARKS_PARSER];
 
         return new Task(description, deadline, remarks);
@@ -404,19 +414,22 @@ public class Parser {
      * @return an integer arraylist with valid indices
      * @throws NumberFormatException if non-integer value is present in the input
      */
-    public static ArrayList<Integer> checkIndices(String input, int max) throws NumberFormatException {
+    public static ArrayList<Integer> checkIndices(String input, int max) {
         ArrayList<Integer> rawIndices = new ArrayList<>();
         int index;
 
         String[] words = input.trim().split(WHITESPACE);
-
+        
         for (String word : words) {
-            // TODO - inform team using this
-            index = Integer.parseInt(word);
-            rawIndices.add(index);
+            try {
+                index = Integer.parseInt(word);
+                rawIndices.add(index);
+            } catch (NumberFormatException ignored) {
+                // Non-integer inputs are ignored and will not be added to the array list rawIndices.
+            }
         }
 
-        // remove duplicates
+        // Remove duplicates
         ArrayList<Integer> indices = new ArrayList<>();
 
         for (int number : rawIndices) {
@@ -425,10 +438,11 @@ public class Parser {
             }
         }
 
-        // remove out of bounds/ invalid index
+        // Remove out of bounds/ invalid index
         for (int i = 0; i < indices.size(); i++) {
-            if (indices.get(i) > max || indices.get(i) < 1) {
+            if (indices.get(i) > max || indices.get(i) <= 0) {
                 indices.remove(i);
+                i--;
             }
         }
         return indices;
