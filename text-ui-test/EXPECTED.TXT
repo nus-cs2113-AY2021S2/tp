@@ -10,3 +10,4 @@ Main Menu:
 [2] CAP Simulator/Calculator
 [3] Task Manager
 [4] External Links
+[5] Exit Program
