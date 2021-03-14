@@ -28,4 +28,13 @@ public class Record {
         records.clear();
         System.out.println("Your history has been cleared.");
     }
+
+    public String[] getSpecificEntry(int entryNumber) {
+        String[] pathDetails = records.get(entryNumber - 1).split(";");
+        int startingVenueIndex = 7;
+        String from = pathDetails[0].substring(startingVenueIndex);
+        int destinationVenueIndex = 5;
+        String to = pathDetails[1].substring(destinationVenueIndex);
+        return new String[] {from, to};
+    }
 }
