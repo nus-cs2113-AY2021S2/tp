@@ -1,6 +1,7 @@
 # User Guide
 
 ## Table of Contents
+
 [1. Introduction](#1-introduction)
 
 [2. Quick Start](#2-quick-start)  
@@ -21,19 +22,25 @@
 
 [4. Command Summary](#4-command-summary)
 
+---
 ## 1. Introduction
 
 UniTracker helps NUS Students to keep track/add/edit module information and deadlines.  
 It helps to integrate all the information they need in one place.  
-This product is for students who prefer Command Line Interface (CLI) over Graphical User Interface (GUI).
-
+This product is for students who prefer Command Line Interface (CLI) over Graphical User Interface (
+GUI).
+---
 ## 2. Quick Start
 
 ### 2.1 System Requirements
+
 - Operating system should be: Windows 7 and above, Mac OS or Linux.
-- Ensure that Java 11 is installed on your computer. 
-    - You can download the latest version of Java 11 from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+- Ensure that Java 11 is installed on your computer.
+    - You can download the latest version of Java 11
+      from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+
 #### 2.1.1 Windows 7 and above
+
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
@@ -42,6 +49,7 @@ This product is for students who prefer Command Line Interface (CLI) over Graphi
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
+
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
@@ -50,6 +58,7 @@ This product is for students who prefer Command Line Interface (CLI) over Graphi
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
+
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
@@ -58,7 +67,9 @@ This product is for students who prefer Command Line Interface (CLI) over Graphi
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
-- Upon successful installation of your Jar file, you should see this welcome message after running the Jar file:
+
+- Upon successful installation of your Jar file, you should see this welcome message after running
+  the Jar file:
   ````  
    Hello from
     ____        _        
@@ -66,16 +77,19 @@ This product is for students who prefer Command Line Interface (CLI) over Graphi
    | | | | | | | |/ / _ \
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
-  ````
 
-## 3. Features 
+  ````
+---
+## 3. Features
 
 {Give detailed description of each feature}
 
 ### 3.1 Module Information
+
 The Module Information feature allows you to add/edit/delete modules,  
 and add information or review for the module of your choice.  
 Module Information menu:
+
 ```
 Welcome to the module information menu ^~^
 Please choose which action you would like to do and enter the number:
@@ -87,12 +101,15 @@ Please choose which action you would like to do and enter the number:
 [6] --- Delete modules
 [7] --- Exit to main menu
 ```
+
 #### 3.1.3 View all modules
+
 Lists out all the modules added to UniTracker.
+
 * Example for listing all the modules:  
   Input:   
   `3`  
-  Output:  
+  Output:
   ```  
   Here are the modules in your Modules List:  
   --------------------------------------------  
@@ -102,7 +119,9 @@ Lists out all the modules added to UniTracker.
   ```
 
 #### 3.1.4 Add a review
+
 Adds a review for the module of your choice.
+
 * Format: Once you have finished typing your review, type `/end` and hit `Enter`
 * Example for adding a review:  
   Input:   
@@ -114,15 +133,15 @@ Adds a review for the module of your choice.
   `[2] --- CS2113T`  
   `--------------------------------------------`  
   `Please choose which module you would like to review and enter the number:`
- 
+
   Input:  
   `1`  
   Output:
-   
+
   `You have already added a review:`  
   `Very very very difficult for me:( But, very important to know!`  
-  `5/5`  
-  
+  `5/5`
+
   `Would you like to replace this with another review? [Y/N]`  
   Input:  
   `Y`  
@@ -135,7 +154,7 @@ Adds a review for the module of your choice.
   `important algorithms.`  
   `Assignments and quizzes helped me learn concepts faster.`  
   `Overall: 5/5`  `/end`  
-  Output:  
+  Output:
     ```
   Woohoo~ Review added:  
   The lectures were very entertaining. I have learnt a lot of important algorithms.  
@@ -144,9 +163,11 @@ Adds a review for the module of your choice.
   
   Returning to module information menu...
   ```
-  
+
 #### 3.1.5 View all reviews
+
 Lists out all the reviews for all modules added to UniTracker.
+
 * Example for listing all the modules' reviews:  
   Input:   
   `5`  
@@ -168,11 +189,14 @@ Lists out all the reviews for all modules added to UniTracker.
   Returning to module information menu...
 
   ```
+
 #### 3.1.6 Delete a module
+
 Deletes a module from the list of modules.
+
 * Format: enter the index (integer) of the module that you want to delete.
 * Example for deleting a module:  
-Input:  
+  Input:  
   `6`  
   Output:  
   `Here are the modules in your Modules List:`  
@@ -183,7 +207,7 @@ Input:
   `Enter the module number to be deleted:`  
   Input:  
   `1`  
-  Output:  
+  Output:
   ```
   You've deleted this: CS3243  
   NOTE: You are deleting your review
@@ -195,11 +219,15 @@ Input:
   --------------------------------------------
   Returning to module information menu...
   ```
+---
 ### 3.2 CAP Simulator/Calculator
 
+---
 ### 3.3 Task Manager
+
 The task manager feature allows you to add, delete, pin or view your tasks.  
 Task Manager menu:
+
 ````
 Welcome to the Task Manager menu ^o^
 Please choose which action you would like to do and enter the number:\n"
@@ -211,6 +239,7 @@ Please choose which action you would like to do and enter the number:\n"
 ````
 
 #### 3.3.1 Add New Task
+
 Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the task list.
 
 * `Add New Task` menu:
@@ -236,30 +265,31 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
   `What is the message you would like to see after completing this?`  
   Input:  
   `Wow yay~`  
-  Output: 
+  Output:
   ````
   You've added this: [CS2113T] Work on User Guide
   Returning back to TaskManager menu now!
   ````
-* For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.  
-  * Format for date: `yyyy-mm-dd`
-  * Format for time (24-h clock): `hh:mm`
-  * Example:  
-    Output:  
-    `What is the date of the assignment you want to add?`  
-    Input:  
-    `2021-03-14`
-    Output:  
-    `What is the time of the assignment you want to add?`  
-    Input:  
-    `23:59`  
-    Output:
-    ````
-    You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-    Returning back to TaskManager menu now!
-    ````
+* For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
+    * Format for date: `yyyy-mm-dd`
+    * Format for time (24-h clock): `hh:mm`
+    * Example:  
+      Output:  
+      `What is the date of the assignment you want to add?`  
+      Input:  
+      `2021-03-14`
+      Output:  
+      `What is the time of the assignment you want to add?`  
+      Input:  
+      `23:59`  
+      Output:
+      ````
+      You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+      Returning back to TaskManager menu now!
+      ````
 
 #### 3.3.2 Delete a Task
+
 Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
 * `Delete a Task` menu:
@@ -273,7 +303,7 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
 * Example for deleting a `task`:  
   Input:  
   `1`    
-  Output:  
+  Output:
   ````
   This is the list of your tasks:
   1. [CS2113T] Work on User Guide
@@ -282,7 +312,7 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
   ```` 
   Input:    
   `1`  
-  Output:  
+  Output:
   ````
   You've deleted this: [CS2113T] Work on User Guide
   NOTE: Wow yay~
@@ -290,7 +320,9 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
   ````
 
 #### 3.3.3 View All Tasks
-Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task list.
+
+Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task
+list.
 
 * Example Output:
   ````
@@ -308,6 +340,7 @@ Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exa
   ````
 
 #### 3.3.4 Pin a Task
+
 Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
 * `Pin a Task` menu:
@@ -335,9 +368,171 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
   You've pinned this: [CS2113T] Work on User Guide
   Returning back to TaskManager menu now!
   ````
+---
+### 3.4  Links Menu
 
-### 3.4 External Links
+The Links feature allows you to add and keep track of http and https links. It also allows users to
+keep their zoom links separately. 
 
+Links menu:
+````
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- View Zoom links
+[4] --- Exit to main menu
+````
+
+#### 3.4.1 External Links 
+Add, remove or view all your links (except zoom links) here.
+````
+Welcome to the external links menu!
+Please choose which action you would like to do and enter the number:
+[1] --- add link
+[2] --- remove link
+[3] --- view links
+[4] --- exit to links menu
+````
+
+####3.4.2 Add External Link
+Adds an external link that follows the format to the external links list.
+
+Format: `<scheme>www.<domain name>.<TLD>/<path name>`
+
+Supported schemes include: https, http only
+
+Supported Top Level Domain(TLD) include: .com, .org only
+
+Example for adding an external link:
+
+Input: `1`
+
+Output:
+````
+Please enter the link in this format:
+<scheme>www.<domain name>.<TLD>/<path name>
+supported schemes: https, http for now... Sorry!
+supported TLD: .com, .org for now... we will work on it!
+````
+
+Input: `https://www.youtube.com/java`
+
+Output: 
+````
+Alright! I have added the following link ---  https://www.youtube.com/java
+
+Welcome to the external links menu!
+Please choose which action you would like to do and enter the number:
+[1] --- add link
+[2] --- remove link
+[3] --- view links
+[4] --- exit to links menu
+````
+
+#### 3.4.3 Remove External Link
+Removes an external link from the external links list.
+
+Input: `2`
+
+Output: 
+````
+Please choose which link you would like to delete and enter the number
+
+These are the links you have added --->
+[1] --- https://www.youtube.com/java
+[2] --- https://www.facebook.com
+````
+
+Input: `2`
+
+Output:
+````
+You have deleted --- https://www.facebook.com
+Welcome to the external links menu!
+Please choose which action you would like to do and enter the number:
+[1] --- add link
+[2] --- remove link
+[3] --- view links
+[4] --- exit to links menu
+````
+
+#### 3.4.4 View External Links
+Allows the user to view all external links added.
+
+Input: `3`
+
+Output: 
+````
+These are the links you have added --->
+[1] --- https://www.youtube.com/java
+[2] --- https://www.google.com
+[3] --- https://www.yahoo.com
+
+Welcome to the external links menu!
+Please choose which action you would like to do and enter the number:
+[1] --- add link
+[2] --- remove link
+[3] --- view links
+[4] --- exit to links menu
+````
+
+#### 3.4.5 Add Zoom Link
+Adds a zoom link, and tags it to a module of your choice together with  the meeting password (if available).
+
+Input: `2`
+
+Output:
+````
+Please enter the zoom link and the module it is for in this format:
+<zoom link> <module code>
+````
+Input: `https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 cs2101`
+
+Output:
+````
+Does your meeting have password which you would like to add? [Y/N]
+````
+
+Input: `Y`
+
+Output: 
+````
+Please enter your password below!
+````
+
+Input: `open sesame`
+
+Output:
+````
+Woohoo~ Zoom link added:
+https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for cs2101
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- View Zoom links
+[4] --- Exit to main menu
+````
+
+#### 3.4.6 View Zoom Links
+View all zoom links stored in the application
+
+Input: `3`
+
+Output:
+````
+Here are your zoom links! Study hard :)
+
+[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09, cs2101, open sesame]
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- View Zoom links
+[4] --- Exit to main menu
+````
+---
 ## 4. Command Summary
 
 {Give a 'cheat sheet' of commands here}
