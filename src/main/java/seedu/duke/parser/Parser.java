@@ -35,26 +35,15 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static seedu.duke.common.Constants.DELIM;
-import static seedu.duke.common.Constants.ENTRY_LESSON_MAX_PARSER;
-import static seedu.duke.common.Constants.ENTRY_TASK_MAX_PARSER;
-import static seedu.duke.common.Constants.FORMAT_DATE_IO;
-import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
-import static seedu.duke.common.Constants.INDEX_DAY_TIME;
-import static seedu.duke.common.Constants.INDEX_DEADLINE;
-import static seedu.duke.common.Constants.INDEX_DESCRIPTION;
-import static seedu.duke.common.Constants.INDEX_LINK;
-import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
-import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
-import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
-import static seedu.duke.common.Constants.INDEX_TYPE;
-import static seedu.duke.common.Constants.WHITESPACE;
+import static seedu.duke.common.Constants.*;
 import static seedu.duke.common.DashboardCommands.ADD;
 import static seedu.duke.common.DashboardCommands.DELETE;
 import static seedu.duke.common.DashboardCommands.EXIT;
 import static seedu.duke.common.DashboardCommands.MODULES;
 import static seedu.duke.common.DashboardCommands.OPEN;
+
 import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
+
 import static seedu.duke.common.ModuleCommands.ADD_LESSON;
 import static seedu.duke.common.ModuleCommands.ADD_TASK;
 import static seedu.duke.common.ModuleCommands.CLOSE;
@@ -71,6 +60,7 @@ import static seedu.duke.common.ModuleCommands.UNMARK;
 public class Parser {
 
     //@@author ivanchongzhien
+
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
      * a module.
@@ -150,7 +140,7 @@ public class Parser {
      * @return module code string
      */
     private String getModuleCode(String input) throws CommandException {
-        String[] words = input.split(" ");
+        String[] words = input.split(WHITESPACE);
         if (words.length < 2) {
             throw new CommandException("Module not specified.");
         }
@@ -205,7 +195,7 @@ public class Parser {
      * @return in-module command object based on user input
      * @throws UnknownCommandException if valid command cannot be parsed from user input
      */
-    private Command parseInModule(String input) throws UnknownCommandException {
+    private Command parseInModule(String input) throws UnknownCommandException, CommandException {
         ModuleCommands command = parseInModuleCommandsFromInput(input);
 
         switch (command) {
@@ -286,15 +276,20 @@ public class Parser {
      * @param input full user input string
      * @return a Lesson object with the details entered by the user. Fields not found will be left as an empty string.
      */
-    private Lesson parseNewLessonDetails(String input) {
+    private Lesson parseNewLessonDetails(String input) throws CommandException {
         // TODO - validate input
 
         // initialize an array of empty strings to store lesson details
         String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
-        Arrays.fill(allDetails, "");
+        Arrays.fill(allDetails, PLACEHOLDER);
 
         // to remove only the first two words "add lesson"
-        String[] lessonDetails = input.trim().split(" ", 3);
+        String[] lessonDetails = input.trim().split(WHITESPACE, 3);
+
+        // E1- User does not enter any parameters.
+        if (lessonDetails.length < 3) {
+            throw new CommandException("Missing lesson details.");
+        }
 
         // split the details field using DELIMITER to get the individual detail fields
         String[] details = lessonDetails[2].split(DELIM);
@@ -307,16 +302,50 @@ public class Parser {
 
         // Creating Lesson Object
         String type = allDetails[INDEX_TYPE].toUpperCase();
-        // TODO - throw "illegal argument exception" if enum value is invalid
-        LessonType lessonType = LessonType.valueOf(type);
+        LessonType lessonType;
+        try {
+            lessonType = LessonType.valueOf(type);
+        } catch (IllegalArgumentException e) {
+            throw new CommandException("Invalid lesson type entered.");
+        }
+
         String timeAndDay = allDetails[INDEX_DAY_TIME];
+
         String link = allDetails[INDEX_LINK];
+        if (!isValidLink(link)) {
+            throw new CommandException("Invalid link entered.");
+        }
+
         String teacherName = allDetails[INDEX_TEACHER_NAME];
+
         String email = allDetails[INDEX_TEACHER_EMAIL];
+        if (!isValidEmail(email) && !email.equals(PLACEHOLDER)) {
+            throw new CommandException("Invalid email entered.");
+        }
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
 
         return new Lesson(lessonType, timeAndDay, link, teacher);
+    }
+
+    /**
+     * Check if given string is a valid email.
+     *
+     * @param email string to be checked
+     * @return true if string follows the format of a valid email
+     */
+    private boolean isValidEmail(String email) {
+        return email.trim().matches(FORMAT_EMAIL);
+    }
+
+    /**
+     * Check if given string is a valid link.
+     *
+     * @param link string to be checked
+     * @return true if string follows the format of a valid email
+     */
+    private boolean isValidLink(String link) {
+        return link.matches(FORMAT_LINK);
     }
 
     /**
