@@ -24,7 +24,7 @@ public class LinkInfo {
         Ui.printLinkToDelete();
         viewLinks();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
-        assert deleteIndex < 0: "Index is invalid";
+        assert deleteIndex < 0 : "Index is invalid";
         linksList.remove(deleteIndex);
     }
 
@@ -40,11 +40,11 @@ public class LinkInfo {
         String passwordCommand = Ui.printEnterRequirePassword();
         if (passwordCommand.equals("y")) {
             String password = Ui.printEnterPassword();
-            assert password.isEmpty(): "password cannot be empty";
+            assert password.isEmpty() : "password cannot be empty";
             zoomLinksList
                 .add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode, password)));
         } else {
-            assert !passwordCommand.equals("n"): "password should be y or n";
+            assert !passwordCommand.equals("n") : "password should be y or n";
             zoomLinksList.add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode)));
         }
     }

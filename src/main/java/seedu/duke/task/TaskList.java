@@ -215,8 +215,11 @@ public class TaskList {
     private static void findAndDeleteTask(int taskNumber) {
         Task deletedTask = tasks.get(taskNumber - 1);
         tasks.remove(deletedTask);
-        if (pinnedTasks.get("[Task]").contains((deletedTask))) {
-            pinnedTasks.get("[Task]").remove(deletedTask);
+        boolean typeTaskIsPinned = pinnedTasks.containsKey("[Task]");
+        if (typeTaskIsPinned) {
+            if (pinnedTasks.get("[Task]").contains((deletedTask))) {
+                pinnedTasks.get("[Task]").remove(deletedTask);
+            }
         }
         Ui.printDeletedTaskMessage(deletedTask);
     }
