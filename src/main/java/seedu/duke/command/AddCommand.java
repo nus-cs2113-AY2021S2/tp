@@ -10,10 +10,9 @@ import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
-import static seedu.duke.command.Utils.checkInvalidOptions;
-import static seedu.duke.command.Utils.checkOptionConflict;
 import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
+import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_AMOUNT;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
@@ -22,7 +21,6 @@ import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -33,6 +31,10 @@ import java.util.ArrayList;
  */
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
+    private static final String[] VALID_OPTIONS = {
+        OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE
+    };
+    private static final String[] CONFLICT_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
     private final BigDecimal amount;
     private final LocalDate issueDate;
     private final String description;
@@ -40,9 +42,7 @@ public class AddCommand extends Command {
     private RecordType recordType;
 
     public AddCommand(ArrayList<String> arguments) throws CommandException {
-        checkInvalidOptions(arguments, COMMAND_ADD,
-                OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
-        checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
+        validateOptions(arguments, COMMAND_ADD, VALID_OPTIONS, CONFLICT_OPTIONS);
 
         description = getDescription(arguments);
         amount = getAmount(arguments);
