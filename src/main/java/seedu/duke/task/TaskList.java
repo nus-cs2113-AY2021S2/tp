@@ -97,7 +97,7 @@ public class TaskList {
             try {
                 Ui.printAddTaskTimeMessage(taskNumber);
                 String time = validTime(Ui.readCommand());
-                assert !time.isBlank(): "Time field cannot be empty";
+                assert !time.isBlank() : "Time field cannot be empty";
                 Ui.printHorizontalLine();
                 return time;
             } catch (DateTimeParseException e) {
@@ -111,7 +111,7 @@ public class TaskList {
             try {
                 Ui.printAddTaskDateMessage(taskNumber);
                 String date = validDate(Ui.readCommand());
-                assert !date.isBlank(): "Time field cannot be empty";
+                assert !date.isBlank() : "Time field cannot be empty";
                 Ui.printHorizontalLine();
                 return date;
             } catch (DateTimeParseException e) {
