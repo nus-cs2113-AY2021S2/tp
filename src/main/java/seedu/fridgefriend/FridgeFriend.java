@@ -25,7 +25,7 @@ public class FridgeFriend {
     }
 
     private static void run() {
-        Logger.logInfo("Main programme loop started.")
+        Logger.logInfo("Main programme loop started.");
         while (!isExit) {
             try {
                 String input = Ui.getNextLine();
