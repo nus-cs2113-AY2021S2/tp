@@ -1,6 +1,7 @@
 package ui;
 
-import canteens.Canteen;
+import menus.Menu;
+import reviews.Review;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,11 +34,26 @@ public class Ui {
         System.exit(0);
     }
 
-    public void showError() {
-        System.out.println("Error with input");
+    public void showError(String errorMessage) {
+        System.out.println(errorMessage);
     }
 
     public void showDisplayStoreMessage() {
         System.out.println("Here's a list of the stores in the canteen: The Deck");
+    }
+
+
+    public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
+        System.out.println("Here are the menus of the " + storeName + ":");
+        for (Menu menuItem: menus) {
+            System.out.println(menuItem.toString());
+        }
+    }
+
+    public void showReviews(String storeName, ArrayList<Review> reviews) {
+        System.out.println("Here are the reviews of the " + storeName + ":");
+        for (Review review: reviews) {
+            System.out.println(review.toString());
+        }
     }
 }

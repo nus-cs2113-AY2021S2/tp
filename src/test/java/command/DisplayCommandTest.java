@@ -1,6 +1,7 @@
 package command;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,11 +24,11 @@ class DisplayCommandTest {
     }
 
     @Test
-    public void execute_canteenFromTestData_print() {
+    public void execute_canteenFromTestData_print() throws DukeExceptions {
         Storage storage = new Storage("data/testStorage.txt");
         ArrayList<Canteen> canteens = storage.load();
         Ui ui = new Ui();
-        Command c = new DisplayCommand();
+        Command c = new DisplayStoresCommand();
         String expectedString = "Here's a list of the stores in the canteen: The Deck\n"
                 + "1.chicken rice stall\n"
                 + "2.Fish rice stall";

@@ -1,7 +1,7 @@
 canteen<>The deck
 store<>chicken rice stall
-menu<>chicken rice
-menu<>spicy chicken rice
+menus<>chicken rice
+menus<>spicy chicken rice
 store<>Fish rice stall
-menu<>fish rice
-menu<>spicy fish rice
+menus<>fish rice
+menus<>spicy fish rice
