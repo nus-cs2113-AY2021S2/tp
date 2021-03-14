@@ -1,6 +1,7 @@
 package command;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class ExitCommandTest {
     }
 
     @Test
-    public void execute_null_goodbyeMessage() {
+    public void execute_null_goodbyeMessage() throws DukeExceptions {
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
         Command c = new ExitCommand();
