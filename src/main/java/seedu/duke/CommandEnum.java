@@ -7,6 +7,7 @@ public enum CommandEnum {
     AddNoteCommand,
     DeleteNoteCommand,
     DisplayNotesCommand,
+    HelpCommand,
     ByeCommand,
     InvalidCommand
 }
