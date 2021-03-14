@@ -2,6 +2,7 @@ package stores;
 
 import menus.Menu;
 import reviews.Review;
+import ui.Ui;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,6 @@ public class Store {
     private String storeName;
     private ArrayList<Review> reviews;
     private ArrayList<Menu> menus;
-
 
     public Store(String storeName) {
         this.storeName = storeName;
