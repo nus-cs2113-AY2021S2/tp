@@ -10,6 +10,9 @@ import java.util.ArrayList;
 
 import static seedu.duke.command.Utils.validateArguments;
 
+/**
+ * Handles all operations related to the exit command.
+ */
 public class ExitCommand extends Command {
     private static final ArgumentType[] argumentTypeOrder = { ArgumentType.COMMAND };
     protected static final String COMMAND_EXIT = "exit";

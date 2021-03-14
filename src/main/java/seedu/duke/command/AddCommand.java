@@ -27,6 +27,9 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Handles all operations related to the add command.
+ */
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
     private final BigDecimal amount;
