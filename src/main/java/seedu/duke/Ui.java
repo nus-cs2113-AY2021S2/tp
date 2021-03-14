@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import java.util.Locale;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
@@ -18,10 +19,10 @@ public class Ui {
 
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n");
+            + "|  _ \\ _   _| | _____ \n"
+            + "| | | | | | | |/ / _ \\\n"
+            + "| |_| | |_| |   <  __/\n"
+            + "|____/ \\__,_|_|\\_\\___|\n");
 
     }
 
@@ -44,69 +45,69 @@ public class Ui {
 
     public static void printLinksMessage() {
         System.out.println("Welcome to the links menu ^~^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- External links menu\n"
-                + "[2] --- Add Zoom links\n"
-                + "[3] --- View Zoom links\n"
-                + "[4] --- Exit to main menu\n");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- External links menu\n"
+            + "[2] --- Add Zoom links\n"
+            + "[3] --- View Zoom links\n"
+            + "[4] --- Exit to main menu\n");
     }
 
     public static void printLinkToDelete() {
         System.out
-                .println("Please choose which link you would like to delete and enter the number\n"
-                        + "Please choose which action you would like to do and enter the number:\n"
-                        + "[1] --- External links menu\n"
-                        + "[3] --- View Zoom links\n"
-                        + "[4] --- Exit to main menu\n");
+            .println("Please choose which link you would like to delete and enter the number\n"
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- External links menu\n"
+                + "[3] --- View Zoom links\n"
+                + "[4] --- Exit to main menu\n");
     }
 
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- Add/View Module Description\n"
-                + "[2] --- Add/View Components and Their Weightages\n"
-                + "[3] --- View All Modules\n"
-                + "[4] --- Add a Review\n"
-                + "[5] --- View All Reviews\n"
-                + "[6] --- Delete modules\n"
-                + "[7] --- Exit to main menu\n");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- Add/View Module Description\n"
+            + "[2] --- Add/View Components and Their Weightages\n"
+            + "[3] --- View All Modules\n"
+            + "[4] --- Add a Review\n"
+            + "[5] --- View All Reviews\n"
+            + "[6] --- Delete modules\n"
+            + "[7] --- Exit to main menu\n");
     }
 
     public static void printTaskManagerMenu() {
         System.out.println("Welcome to the Task Manager menu ^o^\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- Add New Task\n"
-                + "[2] --- Delete a Task\n"
-                + "[3] --- View All Tasks\n"
-                + "[4] --- Pin a Task\n"
-                + "[5] --- Exit");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- Add New Task\n"
+            + "[2] --- Delete a Task\n"
+            + "[3] --- View All Tasks\n"
+            + "[4] --- Pin a Task\n"
+            + "[5] --- Exit");
     }
 
     public static void printAddTaskMenu() {
         System.out.println("Please choose which type of task you would like to add"
-                + " and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + " and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
         System.out.println("Please choose which type of task you would like to delete"
-                + " and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + " and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printPinTaskMenu() {
         System.out.println("Please choose which type of task you would like to pin"
-                + " and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + " and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printAddTaskModuleMessage(int taskType) {
@@ -202,9 +203,9 @@ public class Ui {
     public static void printDeletedModuleMessage(Module module) {
         System.out.println("You've deleted this: " + module.getName());
         System.out.println("NOTE: You are deleting your review\n"
-                + module.getReview() + "\n"
-                + "NOTE: You are deleting your module description\n"
-                + module.getDescription());
+            + module.getReview() + "\n"
+            + "NOTE: You are deleting your module description\n"
+            + module.getDescription());
         printHorizontalLine();
     }
 
@@ -215,7 +216,7 @@ public class Ui {
         }
         printAllModulesIfNotEmpty(modules);
         System.out.println("Please choose which module you would like to review"
-                + " and enter the number:\n");
+            + " and enter the number:\n");
         int moduleNumberInt = Ui.readCommandToInt();
         try {
             if (moduleNumberInt != -1) {
@@ -268,7 +269,7 @@ public class Ui {
             }
         }
         System.out.println("After you finish your review, "
-                + "type '/end' to finish reviewing.");
+            + "type '/end' to finish reviewing.");
         System.out.println("Enter your review for " + module.getName() + " below: ");
         return readReview();
     }
@@ -358,11 +359,11 @@ public class Ui {
 
     public static void printExternalLinksMessage() {
         System.out.println("Welcome to the external links menu!\n"
-                + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- add link\n"
-                + "[2] --- remove link\n"
-                + "[3] --- view links\n"
-                + "[4] --- exit to links menu\n");
+            + "Please choose which action you would like to do and enter the number:\n"
+            + "[1] --- add link\n"
+            + "[2] --- remove link\n"
+            + "[3] --- view links\n"
+            + "[4] --- exit to links menu\n");
     }
 
     public static int readCommandToInt() {
@@ -383,14 +384,14 @@ public class Ui {
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
-                + "<scheme>www.<domain name>.<TLD>/<path name>\n"
-                + "supported schemes: https, http for now... Sorry!\n"
-                + "supported TLD: .com, .org for now... we will work on it!\n");
+            + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+            + "supported schemes: https, http for now... Sorry!\n"
+            + "supported TLD: .com, .org for now... we will work on it!\n");
     }
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
-                + "Please enter a valid one!");
+            + "Please enter a valid one!");
 
     }
 
@@ -427,7 +428,7 @@ public class Ui {
     }
 
     public static void printModuleDescriptionAddedMessage(String moduleName,
-                                                          String moduleDescription) {
+        String moduleDescription) {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
@@ -451,7 +452,7 @@ public class Ui {
 
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
-                + "<zoom link> <module code>");
+            + "<zoom link> <module code>");
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
@@ -557,5 +558,29 @@ public class Ui {
             printInvalidIntegerMessage();
         }
         printSelectTaskNumberToPinMessage();
+    }
+
+    public static String printEnterRequirePassword() {
+        System.out.println("Does your meeting have password which you would like to add? [Y/N]");
+        String password = Ui.readCommand().toLowerCase();
+        while (!password.equals("y") && !password.equals("n")) {
+            Ui.printEnterValidPasswordMessage();
+            password = Ui.readCommand().toLowerCase();
+        }
+        return password;
+    }
+
+    private static void printEnterValidPasswordMessage() {
+        System.out.println("Please enter either Y or N!");
+    }
+
+    public static String printEnterPassword() {
+        System.out.println("Please enter your password below!");
+        String password = Ui.readCommand();
+        while (password.isEmpty()) {
+            System.out.println("Your password is currently empty! Please enter something");
+            password = Ui.readCommand();
+        }
+        return password;
     }
 }

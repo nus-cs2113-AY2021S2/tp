@@ -2,6 +2,7 @@ package seedu.duke.link;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import seedu.duke.Ui;
@@ -23,6 +24,7 @@ public class LinkInfo {
         Ui.printLinkToDelete();
         viewLinks();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+        assert deleteIndex < 0 : "Index is invalid";
         linksList.remove(deleteIndex);
     }
 
@@ -35,7 +37,16 @@ public class LinkInfo {
     }
 
     public static void addZoomLink(String linkDescription, String moduleCode) {
-        zoomLinksList.add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode)));
+        String passwordCommand = Ui.printEnterRequirePassword();
+        if (passwordCommand.equals("y")) {
+            String password = Ui.printEnterPassword();
+            assert password.isEmpty() : "password cannot be empty";
+            zoomLinksList
+                .add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode, password)));
+        } else {
+            assert !passwordCommand.equals("n") : "password should be y or n";
+            zoomLinksList.add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode)));
+        }
     }
 
     public static void viewZoomLinks() {
