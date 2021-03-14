@@ -43,7 +43,9 @@ public class PrintHelpCommand extends Command {
     private static String getCommands(CommandList[] commands) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < commands.length; i++) {
-            if (i != INDEX_FIRST) {
+            if (commands[i].equals(DashboardCommands.INVALID)) {
+                continue;
+            } else if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE);
             }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,

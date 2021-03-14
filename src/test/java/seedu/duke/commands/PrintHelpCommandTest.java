@@ -39,6 +39,9 @@ class PrintHelpCommandTest {
 
         StringBuilder stringBuilder = new StringBuilder();
         for (DashboardCommands command : DashboardCommands.values()) {
+            if (command.equals(DashboardCommands.INVALID)) {
+                continue;
+            }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     command.getWord(), command.getDescription());
             stringBuilder.append(commandAndDescription).append(NEWLINE);
