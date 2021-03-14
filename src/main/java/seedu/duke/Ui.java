@@ -18,10 +18,10 @@ public class Ui {
 
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
-            + "|  _ \\ _   _| | _____ \n"
-            + "| | | | | | | |/ / _ \\\n"
-            + "| |_| | |_| |   <  __/\n"
-            + "|____/ \\__,_|_|\\_\\___|\n");
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n");
 
     }
 
@@ -35,40 +35,41 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-            + "[1] Module Information\n"
-            + "[2] CAP Simulator/Calculator\n"
-            + "[3] Task Manager\n"
-            + "[4] External Links");
+                + "[1] Module Information\n"
+                + "[2] CAP Simulator/Calculator\n"
+                + "[3] Task Manager\n"
+                + "[4] External Links\n"
+                + "[5] Exit Program");
     }
 
     public static void printLinksMessage() {
         System.out.println("Welcome to the links menu ^~^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- External links menu\n"
-            + "[2] --- Add Zoom links\n"
-            + "[3] --- View Zoom links\n"
-            + "[4] --- Exit to main menu\n");
-    }
-
-    public static void printLinkToDelete() {
-        System.out
-            .println("Please choose which link you would like to delete and enter the number\n"
                 + "Please choose which action you would like to do and enter the number:\n"
                 + "[1] --- External links menu\n"
+                + "[2] --- Add Zoom links\n"
                 + "[3] --- View Zoom links\n"
                 + "[4] --- Exit to main menu\n");
     }
 
+    public static void printLinkToDelete() {
+        System.out
+                .println("Please choose which link you would like to delete and enter the number\n"
+                        + "Please choose which action you would like to do and enter the number:\n"
+                        + "[1] --- External links menu\n"
+                        + "[3] --- View Zoom links\n"
+                        + "[4] --- Exit to main menu\n");
+    }
+
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- Add/View Module Description\n"
-            + "[2] --- Add/View Components and Their Weightages\n"
-            + "[3] --- Add Zoom Links\n"
-            + "[4] --- Add a Review\n"
-            + "[5] --- View All Reviews\n"
-            + "[6] --- Delete modules\n"
-            + "[7] --- Exit to main menu\n");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- Add/View Module Description\n"
+                + "[2] --- Add/View Components and Their Weightages\n"
+                + "[3] --- View All Modules\n"
+                + "[4] --- Add a Review\n"
+                + "[5] --- View All Reviews\n"
+                + "[6] --- Delete modules\n"
+                + "[7] --- Exit to main menu\n");
     }
 
     public static void printTaskManagerMenu() {
@@ -169,14 +170,129 @@ public class Ui {
         printHorizontalLine();
     }
 
+    public static boolean printAllModulesIfNotEmpty(ArrayList<Module> modules) {
+        if (isEmptyModulesList(modules)) {
+            printReturnToModuleInfoMenuMessage();
+            return false;
+        }
+        System.out.println("Here are the modules in your Modules List:");
+        printHorizontalLine();
+        for (int i = 1; i <= modules.size(); ++i) {
+            System.out.println("[" + i + "] --- " + modules.get(i - 1).getName());
+        }
+        printHorizontalLine();
+        return true;
+    }
+
+    public static void readModuleNumberToBeDeleted(ArrayList<Module> modules) {
+        if (printAllModulesIfNotEmpty(modules)) {
+            Ui.printSelectModuleToDeleteMessage();
+            int moduleNumberInt = Ui.readCommandToInt();
+            if (moduleNumberInt != -1) {
+                moduleNumberInt--;
+                Ui.printDeletedModuleMessage(modules.get(moduleNumberInt));
+                modules.remove(modules.get(moduleNumberInt));
+            } else {
+                Ui.printInvalidIntegerMessage();
+            }
+            printReturnToModuleInfoMenuMessage();
+        }
+    }
+
     public static void printDeletedModuleMessage(Module module) {
         System.out.println("You've deleted this: " + module.getName());
         System.out.println("NOTE: You are deleting your review\n"
-            + module.getReview() + "\n"
-            + "NOTE: You are deleting your module description\n"
-            + module.getDescription());
-        System.out.println("Returning back to ModuleInfo menu now!");
+                + module.getReview() + "\n"
+                + "NOTE: You are deleting your module description\n"
+                + module.getDescription());
         printHorizontalLine();
+    }
+
+    public static void printReviewMenu(ArrayList<Module> modules) {
+        if (isEmptyModulesList(modules)) {
+            printReturnToModuleInfoMenuMessage();
+            return;
+        }
+        printAllModulesIfNotEmpty(modules);
+        System.out.println("Please choose which module you would like to review"
+                + " and enter the number:\n");
+        int moduleNumberInt = Ui.readCommandToInt();
+        try {
+            if (moduleNumberInt != -1) {
+                moduleNumberInt--;
+                String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
+                modules.get(moduleNumberInt).setReview(review);
+            } else {
+                printInvalidIntegerMessage();
+            }
+        } catch (IndexOutOfBoundsException e) {
+            printInvalidIntegerMessage();
+        }
+    }
+
+    public static void printAllReviews(ArrayList<Module> modules) {
+        if (isEmptyModulesList(modules)) {
+            return;
+        }
+        printHorizontalLine();
+        for (Module module : modules) {
+            System.out.println("For " + module.getName() + ":");
+            if (module.getReview().equals("")) {
+                System.out.println("You have not reviewed this module yet.");
+            } else {
+                System.out.println(module.getReview());
+            }
+            printHorizontalLine();
+        }
+    }
+
+    public static boolean isEmptyModulesList(ArrayList<Module> modules) {
+        if (modules.isEmpty()) {
+            printHorizontalLine();
+            System.out.println("You have not added any modules.");
+            printHorizontalLine();
+            return true;
+        }
+        return false;
+    }
+
+    public static String printAddReviewMessage(Module module) {
+        if (!module.getReview().equals("")) {
+            System.out.println("You already have added a review:");
+            System.out.println(module.getReview());
+            System.out.println("Would you like to replace this with another review? [Y/N]");
+            String command = readCommand();
+            if (command.equalsIgnoreCase("N")) {
+                System.out.println("Okay:)");
+                return module.getReview();
+            }
+        }
+        System.out.println("After you finish your review, "
+                + "type '/end' to finish reviewing.");
+        System.out.println("Enter your review for " + module.getName() + " below: ");
+        return readReview();
+    }
+
+    public static String readReview() {
+        StringBuilder review = new StringBuilder();
+        while (true) {
+            String input = Ui.readCommand();
+            review.append(input);
+            review.append("\n");
+            if (input.contains("/end")) {
+                break;
+            }
+        }
+        //drop everything after "/end"
+        String reviewString = review.toString().split("/end")[0];
+
+        printReviewAdded(reviewString);
+        return reviewString;
+    }
+
+    public static void printReviewAdded(String review) {
+        System.out.println("Woohoo~ Review added:");
+        System.out.println(review);
     }
 
     public static void printSelectModuleToDeleteMessage() {
@@ -242,11 +358,11 @@ public class Ui {
 
     public static void printExternalLinksMessage() {
         System.out.println("Welcome to the external links menu!\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- add link\n"
-            + "[2] --- remove link\n"
-            + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- add link\n"
+                + "[2] --- remove link\n"
+                + "[3] --- view links\n"
+                + "[4] --- exit to links menu\n");
     }
 
     public static int readCommandToInt() {
@@ -267,14 +383,14 @@ public class Ui {
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
-            + "<scheme>www.<domain name>.<TLD>/<path name>\n"
-            + "supported schemes: https, http for now... Sorry!\n"
-            + "supported TLD: .com, .org for now... we will work on it!\n");
+                + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+                + "supported schemes: https, http for now... Sorry!\n"
+                + "supported TLD: .com, .org for now... we will work on it!\n");
     }
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
-            + "Please enter a valid one!");
+                + "Please enter a valid one!");
 
     }
 
@@ -311,7 +427,7 @@ public class Ui {
     }
 
     public static void printModuleDescriptionAddedMessage(String moduleName,
-        String moduleDescription) {
+                                                          String moduleDescription) {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
@@ -335,7 +451,7 @@ public class Ui {
 
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
-            + "<zoom link> <module code>");
+                + "<zoom link> <module code>");
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
@@ -357,7 +473,7 @@ public class Ui {
     public static void printTaskList(ArrayList<Task> tasks) {
         int taskNumber = 1;
         System.out.println("This is the list of your tasks:");
-        for (Task task: tasks) {
+        for (Task task : tasks) {
             System.out.println(taskNumber + ". " + task.toString());
             taskNumber++;
         }
@@ -366,7 +482,7 @@ public class Ui {
     public static void printAssignmentList(ArrayList<Assignment> assignments) {
         int taskNumber = 1;
         System.out.println("This is the list of your assignments:");
-        for (Assignment assignment: assignments) {
+        for (Assignment assignment : assignments) {
             System.out.println(taskNumber + ". " + assignment.toString());
             taskNumber++;
         }
@@ -375,7 +491,7 @@ public class Ui {
     public static void printMidtermList(ArrayList<Midterm> midterms) {
         int taskNumber = 1;
         System.out.println("This is the list of your midterms:");
-        for (Midterm midterm: midterms) {
+        for (Midterm midterm : midterms) {
             System.out.println(taskNumber + ". " + midterm.toString());
             taskNumber++;
         }
@@ -384,7 +500,7 @@ public class Ui {
     public static void printFinalExamList(ArrayList<FinalExam> finalExams) {
         int taskNumber = 1;
         System.out.println("This is the list of your final exams:");
-        for (FinalExam finalExam: finalExams) {
+        for (FinalExam finalExam : finalExams) {
             System.out.println(taskNumber + ". " + finalExam.toString());
             taskNumber++;
         }
@@ -396,7 +512,7 @@ public class Ui {
             int taskNumber = 1;
             String taskType = item.getKey();
             ArrayList<Task> tasks = item.getValue();
-            for (Task task: tasks) {
+            for (Task task : tasks) {
                 System.out.println(taskNumber + ". " + taskType + task.toString());
                 taskNumber++;
             }
