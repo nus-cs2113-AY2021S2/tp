@@ -32,10 +32,10 @@ public class Ui {
 
     /**
      * Prints the String specified in @param.
-     * @param printstr String to be printed
+     * @param message String to be printed
      */
-    public void printString(String printstr) {
-        System.out.println(printstr);
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
 }

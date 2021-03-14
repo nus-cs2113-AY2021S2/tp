@@ -23,7 +23,11 @@ public class LoadCommand extends Command {
         Ui ui = new Ui();
         String id = arguments.get("payload");
         data.loadCurrentPatient(id);
-        ui.printString("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
+        if(data.currentPatient != null) {
+            ui.printMessage("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
+        } else {
+            ui.printMessage("Patient\'s data is not found.");
+        }
         ui.closeScanner();
     }
 }

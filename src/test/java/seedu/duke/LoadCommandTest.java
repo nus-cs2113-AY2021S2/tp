@@ -19,12 +19,14 @@ public class LoadCommandTest {
         data.setPatient(patient);
         patient = new Patient("S7654321B");
         data.setPatient(patient);
-        LoadCommand loadCommand = new LoadCommand(null, data, arguments);
+        Ui ui = new Ui();
+        LoadCommand loadCommand = new LoadCommand(ui, data, arguments);
         try {
             loadCommand.execute();
         } catch (Exception exception) {
-            System.out.println("Unable to load patient data.");
+            System.out.println("Error occurred while loading patient data.");
         }
+        ui.closeScanner();
     }
 
 }
