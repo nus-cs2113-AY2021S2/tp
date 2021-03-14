@@ -16,6 +16,7 @@ public class ModuleInfo {
             try {
                 int taskNumber = Integer.parseInt(command);
                 if (taskNumber == 7) {
+                    Ui.printReturnToMainMenuMessage();
                     break; // exit to Main Menu
                 }
                 switch (taskNumber) {
@@ -26,7 +27,7 @@ public class ModuleInfo {
                     getComponents();
                     break;
                 case 3:
-                    addZoomLinks();
+                    viewAllModules();
                     break;
                 case 4:
                     addReview();
@@ -47,29 +48,20 @@ public class ModuleInfo {
     }
 
     private static void deleteModule() {
-        Ui.printSelectModuleToDeleteMessage();
-        String moduleNumberString = Ui.readCommand();
-        try {
-            checkValidModuleToDelete(moduleNumberString);
-        } catch (NumberFormatException | IndexOutOfBoundsException n) {
-            Ui.printInvalidIntegerMessage();
-        }
+        Ui.readModuleNumberToBeDeleted(modules);
     }
 
-    public static void checkValidModuleToDelete(String moduleNumberString)
-            throws NumberFormatException, IndexOutOfBoundsException {
-        int moduleNumberInteger = Integer.parseInt(moduleNumberString);
-        Ui.printDeletedModuleMessage(modules.get(moduleNumberInteger));
-        modules.remove(modules.get(moduleNumberInteger));
+    public static void viewAllReviews() {
+        Ui.printAllReviews(modules);
+        Ui.printReturnToModuleInfoMenuMessage();
     }
 
-    private static void viewAllReviews() {
+    public static void addReview() {
+        Ui.printReviewMenu(modules);
     }
 
-    private static void addReview() {
-    }
-
-    private static void addZoomLinks() {
+    public static void viewAllModules() {
+        Ui.printAllModulesIfNotEmpty(modules);
     }
 
     private static void getComponents() {
@@ -113,7 +105,7 @@ public class ModuleInfo {
             if (userInput.equals("Y")) {
                 Ui.printModuleDescriptionPrompt(moduleName);
                 String moduleDescription = Ui.readCommand(); //read in description
-                Module module = new Module(moduleName, moduleDescription);
+                Module module = new Module(moduleName, moduleDescription, "");
                 modules.add(module);
                 Ui.printModuleDescriptionAddedMessage(moduleName,
                         module.getDescription());

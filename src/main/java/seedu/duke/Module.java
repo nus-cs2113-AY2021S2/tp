@@ -11,9 +11,16 @@ public class Module {
         this.review = review;
     }
 
-    public Module(String name, String description) {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
     }
 
     public String getName() {
@@ -25,7 +32,7 @@ public class Module {
     }
 
     public String getReview() {
-        return this.description;
+        return this.review;
     }
 
     public String toString() {
