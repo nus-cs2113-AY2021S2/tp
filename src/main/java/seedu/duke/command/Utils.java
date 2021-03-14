@@ -88,13 +88,13 @@ public class Utils {
     }
 
     /**
-     * Checks {@code arguments} for invalid options and conflict options.
+     * Checks {@code arguments} for invalid, duplicate and conflict options.
      *
      * @param arguments an {@code ArrayList} containing {@code Command} arguments.
      * @param command the name of the {@code Command} calling it.
      * @param validOptions a {@code String} array containing valid options pertaining to {@code command}.
      * @param orOptions a {@code String} array containing conflict options pertaining to {@code command}.
-     * @throws CommandException if {@code arguments} contains invalid options and conflict options.
+     * @throws CommandException if {@code arguments} contains invalid/duplicate options and conflict options.
      * @see #checkInvalidOptions(ArrayList, String, String...)
      * @see #checkOptionConflict(ArrayList, String, String...)
      */
@@ -105,12 +105,12 @@ public class Utils {
     }
 
     /**
-     * Checks {@code arguments} for invalid options.
+     * Checks {@code arguments} for invalid/duplicate options.
      *
      * @param arguments an {@code ArrayList} containing {@code Command} arguments.
      * @param command the name of the {@code Command} calling it.
      * @param validOptions valid options pertaining to {@code command}.
-     * @throws CommandException if {@code arguments} contains an invalid option.
+     * @throws CommandException if {@code arguments} contains an invalid or a duplicate option.
      */
     public static void checkInvalidOptions(ArrayList<String> arguments, String command,
                                            String... validOptions) throws CommandException {

@@ -15,6 +15,7 @@ import static seedu.duke.command.Utils.checkOptionConflict;
 import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
+import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_INDEX;
 import static seedu.duke.common.Validators.validateIndex;
 
@@ -22,6 +23,7 @@ import static seedu.duke.common.Validators.validateIndex;
  * Handles all operations related to the return command.
  */
 public class ReturnCommand extends Command {
+    private static final String[] VALID_OPTIONS = {OPTION_INDEX};
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
@@ -33,11 +35,10 @@ public class ReturnCommand extends Command {
     private int recordNumberInt;
 
     public ReturnCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
-        checkInvalidOptions(arguments, COMMAND_RETURN, OPTION_INDEX);
-        checkOptionConflict(arguments, COMMAND_RETURN, OPTION_INDEX);
-        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_RETURN);
+        validateOptions(arguments, COMMAND_RETURN, VALID_OPTIONS, VALID_OPTIONS);
         recordNumberStr = getIndexInString(arguments);
         recordNumberInt = getIndexInInteger(arguments, records);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_RETURN);
     }
 
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
