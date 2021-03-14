@@ -8,5 +8,4 @@ class DukeTest {
     public void sampleTest() {
         assertTrue(true);
     }
-
 }
