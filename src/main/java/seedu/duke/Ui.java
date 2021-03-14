@@ -166,7 +166,7 @@ public class Ui {
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
         System.out.println("NOTE: " + task.getMessage());
-        System.out.println("Returning back to ModuleInfo menu now!");
+        System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -320,7 +320,7 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-                + "Returning back to ModuleInfo menu now!");
+                + "Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -475,6 +475,7 @@ public class Ui {
         System.out.println("This is the list of your tasks:");
         for (Task task : tasks) {
             System.out.println(taskNumber + ". " + task.toString());
+            taskNumber++;
         }
     }
 
@@ -483,6 +484,7 @@ public class Ui {
         System.out.println("This is the list of your assignments:");
         for (Assignment assignment : assignments) {
             System.out.println(taskNumber + ". " + assignment.toString());
+            taskNumber++;
         }
     }
 
@@ -491,6 +493,7 @@ public class Ui {
         System.out.println("This is the list of your midterms:");
         for (Midterm midterm : midterms) {
             System.out.println(taskNumber + ". " + midterm.toString());
+            taskNumber++;
         }
     }
 
@@ -499,17 +502,19 @@ public class Ui {
         System.out.println("This is the list of your final exams:");
         for (FinalExam finalExam : finalExams) {
             System.out.println(taskNumber + ". " + finalExam.toString());
+            taskNumber++;
         }
     }
 
     public static void printPinnedTaskList(HashMap<String, ArrayList<Task>> pinnedTasks) {
-        int taskNumber = 1;
         System.out.println("This is the list of your pinned tasks:");
         for (Map.Entry<String, ArrayList<Task>> item : pinnedTasks.entrySet()) {
+            int taskNumber = 1;
             String taskType = item.getKey();
             ArrayList<Task> tasks = item.getValue();
             for (Task task : tasks) {
                 System.out.println(taskNumber + ". " + taskType + task.toString());
+                taskNumber++;
             }
         }
     }
