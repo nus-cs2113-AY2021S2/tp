@@ -234,7 +234,7 @@ public class Ui {
         if (isEmptyModulesList(modules)) {
             return;
         }
-
+        printHorizontalLine();
         for (Module module : modules) {
             System.out.println("For " + module.getName() + ":");
             if (module.getReview().equals("")) {
@@ -242,6 +242,7 @@ public class Ui {
             } else {
                 System.out.println(module.getReview());
             }
+            printHorizontalLine();
         }
     }
 
