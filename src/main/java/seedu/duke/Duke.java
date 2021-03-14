@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.commands.Command;
+import seedu.duke.exception.DukeException;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
@@ -38,11 +39,8 @@ public class Duke {
                 Command command = parser.parse(input);
                 command.execute(ui);
                 isExit = command.isExit();
-            } catch (UnknownCommandException e) {
-                //Invalid command
-            } catch (CommandException e) {
-                //Error running command
-                ui.printMessage(e.getMessage());
+            } catch (DukeException e) {
+                ui.printError(e);
             }
 
         }

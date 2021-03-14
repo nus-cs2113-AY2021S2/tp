@@ -1,5 +1,6 @@
 package seedu.duke.ui;
 
+import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
@@ -135,5 +136,13 @@ public class UI {
             listOfIntegers.add(scanner.nextInt());
         }
         return listOfIntegers;
+    }
+
+    /**
+     * Prints error message of an exception within the program.
+     * @param e Exception to be printed
+     */
+    public void printError(DukeException e) {
+        System.out.println(e.getMessage());
     }
 }
