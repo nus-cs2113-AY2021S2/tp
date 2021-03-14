@@ -29,6 +29,28 @@ public class Router {
         }
     }
 
+    public void repeatExecution(Record history) {
+        /**
+         * Repeats the execute function for a past history search.
+         */
+        Scanner in = new Scanner(System.in);
+        history.displayRecords();
+        System.out.println("SELECT ENTRY TO REPEAT:");
+        try {
+            int entry = Integer.parseInt(in.nextLine());
+            String[] pathDetails = history.getSpecificEntry(entry);
+            String from = pathDetails[0];
+            String to = pathDetails[1];
+            System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
+            String record = "START: " + from.toUpperCase() + "; TO: " + to.toUpperCase();
+            history.addRecord(record);
+        } catch (NumberFormatException e) {
+            System.out.println("PLEASE ENTER A NUMBER INSTEAD!");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("ERROR, NO ENTRY AVAILABLE.");
+        }
+    }
+
     public void setMap() {
         nusMap.addLocation(new Block("E1"));
         nusMap.addLocation(new Block("E1A"));
