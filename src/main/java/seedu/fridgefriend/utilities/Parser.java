@@ -27,6 +27,7 @@ public class Parser {
 
     /**
      * Returns a Command object based on the user's raw input.
+     *
      * @param input user's raw input
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
