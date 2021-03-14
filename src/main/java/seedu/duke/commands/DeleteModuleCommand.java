@@ -25,7 +25,7 @@ public class DeleteModuleCommand extends Command {
     @Override
     public void execute(UI ui) {
         ui.printMessage(getDeleteInfo());
-        ArrayList<Integer> indices = getIndices(ui);
+        ArrayList<Integer> indices = getIndicesFromUser(ui);
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         ui.printMessage(getDeletedModuleCodes(deletedModulesCodes));
     }
@@ -72,7 +72,7 @@ public class DeleteModuleCommand extends Command {
      * @param ui user interface object
      * @return ArrayList of integers
      */
-    private ArrayList<Integer> getIndices(UI ui) {
+    private ArrayList<Integer> getIndicesFromUser(UI ui) {
         boolean isValidInput = false;
         ArrayList<Integer> indices = null;
 
