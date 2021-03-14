@@ -15,6 +15,8 @@ import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
@@ -24,6 +26,7 @@ public class UI {
   
     private final Scanner scanner;
 
+    //@@author aliciatay-zls
     public UI() {
         scanner = new Scanner(System.in);
     }
@@ -79,8 +82,9 @@ public class UI {
      */
     public void printAllTasks() {
         Module module = ModuleList.getSelectedModule();
-        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()));
+        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()) + NEWLINE);
         printTasks(module.getTaskList(), false);
+        printMessage("");
         printTasks(module.getTaskList(), true);
     }
 
@@ -102,6 +106,21 @@ public class UI {
                 tasksCount++;
                 printTask(task, tasksCount);
             }
+        }
+        if (tasksCount == 0) {
+            printEmpty(isDone);
+        }
+    }
+
+    /**
+     * Prints message to indicate task list empty.
+     * @param isDone Status of tasks in taskList.
+     */
+    private void printEmpty(Boolean isDone) {
+        if (isDone) {
+            printMessage(MESSAGE_TASKS_EMPTY);
+        } else {
+            printMessage(MESSAGE_TASKS_DONE);
         }
     }
 

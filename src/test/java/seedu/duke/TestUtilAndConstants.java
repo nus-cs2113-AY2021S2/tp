@@ -9,8 +9,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Messages.HEADER_UNDONE;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.NEWLINE;
-import static seedu.duke.common.Messages.MESSAGE_TASKS_ALL_DONE;
 
 public class TestUtilAndConstants {
 
@@ -22,10 +23,11 @@ public class TestUtilAndConstants {
             + "Opening lab link in browser." + NEWLINE;
     public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
             + "tutorial - Wednesday 9 am - 10am" + NEWLINE + "lab - Wednesday 9 pm - 10 pm"
-            + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE + "1. iP submission" + NEWLINE;
+            + NEWLINE + NEWLINE + HEADER_UNDONE + NEWLINE + "1. iP submission (graded) - 3 Mar 2021" + NEWLINE
+            + "\tremember to attach JAR file" + NEWLINE;
     public static final String EXPECTED_ENTER_MODULE = "Opening module CS2106." + NEWLINE + NEWLINE
-            + "<Overview for CS2106>" + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE
-            + MESSAGE_TASKS_ALL_DONE + NEWLINE;
+            + "<Overview for CS2106>" + NEWLINE + NEWLINE + HEADER_UNDONE + NEWLINE
+            + MESSAGE_TASKS_DONE + NEWLINE;
 
     public static final String MESSAGE_MODULE_ERROR = "There was a problem with getting selected module." + NEWLINE;
 

@@ -2,8 +2,6 @@ package seedu.duke;
 
 import seedu.duke.commands.Command;
 import seedu.duke.exception.DukeException;
-import seedu.duke.exception.UnknownCommandException;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.ui.UI;
