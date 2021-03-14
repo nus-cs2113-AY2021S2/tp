@@ -23,7 +23,9 @@
 
 ## 1. Introduction
 
-{Give a product intro}
+UniTracker helps NUS Students to keep track/add/edit module information and deadlines.  
+It helps to integrate all the information they need in one place.  
+This product is for students who prefer Command Line Interface (CLI) over Graphical User Interface (GUI).
 
 ## 2. Quick Start
 
@@ -71,7 +73,128 @@
 {Give detailed description of each feature}
 
 ### 3.1 Module Information
+The Module Information feature allows you to add/edit/delete modules,  
+and add information or review for the module of your choice.  
+Module Information menu:
+```
+Welcome to the module information menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- Add/View Module Description
+[2] --- Add/View Components and Their Weightages
+[3] --- View All Modules
+[4] --- Add a Review
+[5] --- View All Reviews
+[6] --- Delete modules
+[7] --- Exit to main menu
+```
+#### 3.1.3 View all modules
+Lists out all the modules added to UniTracker.
+* Example for listing all the modules:  
+  Input:   
+  `3`  
+  Output:  
+  ```  
+  Here are the modules in your Modules List:  
+  --------------------------------------------  
+  [1] --- CS3243  
+  [2] --- CS2113T  
+  --------------------------------------------
+  ```
 
+#### 3.1.4 Add a review
+Adds a review for the module of your choice.
+* Format: Once you have finished typing your review, type `/end` and hit `Enter`
+* Example for adding a review:  
+  Input:   
+  `4`  
+  Output:  
+  `Here are the modules in your Modules List:`  
+  `--------------------------------------------`  
+  `[1] --- CS3243`  
+  `[2] --- CS2113T`  
+  `--------------------------------------------`  
+  `Please choose which module you would like to review and enter the number:`
+ 
+  Input:  
+  `1`  
+  Output:
+   
+  `You have already added a review:`  
+  `Very very very difficult for me:( But, very important to know!`  
+  `5/5`  
+  
+  `Would you like to replace this with another review? [Y/N]`  
+  Input:  
+  `Y`  
+  Output:  
+  `After you finish your review, type '/end' to finish reviewing.`  
+  `Enter your review for CS3243 below:`
+
+  Input:  
+  `The lectures were very entertaining. I have learnt a lot of`   
+  `important algorithms.`  
+  `Assignments and quizzes helped me learn concepts faster.`  
+  `Overall: 5/5`  `/end`  
+  Output:  
+    ```
+  Woohoo~ Review added:  
+  The lectures were very entertaining. I have learnt a lot of important algorithms.  
+  Assignments and quizzes helped me learn concepts faster.  
+  Overall: 5/5
+  
+  Returning to module information menu...
+  ```
+  
+#### 3.1.5 View all reviews
+Lists out all the reviews for all modules added to UniTracker.
+* Example for listing all the modules' reviews:  
+  Input:   
+  `5`  
+  Output:
+  ```  
+  --------------------------------------------  
+  For CS3243:  
+  The lectures were very entertaining. I have learnt a lot of important algorithms.  
+  Assignments and quizzes helped me learn concepts faster.  
+  Overall: 5/5  
+  --------------------------------------------  
+  For CS2113T:  
+  Very fun! We learnt a lot of important programming concepts.  
+  Java is also a fun language:)  
+  GitHub is difficult but very important to know about it.  
+  Overall: 5/5   
+  
+  --------------------------------------------  
+  Returning to module information menu...
+
+  ```
+#### 3.1.6 Delete a module
+Deletes a module from the list of modules.
+* Format: enter the index (integer) of the module that you want to delete.
+* Example for deleting a module:  
+Input:  
+  `6`  
+  Output:  
+  `Here are the modules in your Modules List:`  
+  `--------------------------------------------`  
+  `[1] --- CS3243`  
+  `[2] --- CS2113T`  
+  `--------------------------------------------`  
+  `Enter the module number to be deleted:`  
+  Input:  
+  `1`  
+  Output:  
+  ```
+  You've deleted this: CS3243  
+  NOTE: You are deleting your review
+  The lectures were very entertaining. I have learnt a lot of important algorithms.
+  Assignments and quizzes helped me learn concepts faster.
+  Overall: 5/5
+  NOTE: You are deleting your module description
+  Intro to AI
+  --------------------------------------------
+  Returning to module information menu...
+  ```
 ### 3.2 CAP Simulator/Calculator
 
 ### 3.3 Task Manager
