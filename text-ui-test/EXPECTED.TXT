@@ -5,5 +5,9 @@ Hello from
 | |_| | |_| |   <  __/
 |____/ \__,_|_|\_\___|
 
-What is your name?
-Hello James Gosling
+Main Menu:
+[1] Module Information
+[2] CAP Simulator/Calculator
+[3] Task Manager
+[4] External Links
+[5] Exit Program

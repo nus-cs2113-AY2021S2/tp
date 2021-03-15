@@ -1,21 +1,60 @@
 package seedu.duke;
 
-import java.util.Scanner;
+import seedu.duke.link.Links;
+import seedu.duke.task.TaskList;
+import seedu.duke.task.TaskManager;
 
 public class Duke {
+
     /**
      * Main entry-point for the java.duke.Duke application.
+     *
+     * @param args initialise main
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
+        Ui.printWelcomeMessage();
+        runMainMenu();
+    }
 
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+    public static void runMainMenu() {
+        while (true) {
+            Ui.printMainMenu();
+            String command = Ui.readCommand();
+            try {
+                int commandInt = Integer.parseInt(command);
+
+                if (commandInt == 5) {
+                    break;
+                }
+
+                switch (commandInt) {
+                case 1:
+                    //moduleInfo
+                    ModuleInfo.moduleInfoMenu();
+                    break;
+                case 2:
+                    //helpGraduation
+                    break;
+                case 3:
+                    //manageTask
+                    TaskList taskList = new TaskList();
+                    TaskManager.execute();
+                    break;
+                case 4:
+                    //externalLinks
+                    int linkCommandNumber;
+                    Ui.printLinksMessage();
+                    linkCommandNumber = Ui.readCommandToInt();
+                    Links link = new Links(linkCommandNumber);
+                    link.execute();
+                    break;
+                default:
+                    Ui.printInvalidIntegerMessage();
+                }
+
+            } catch (NumberFormatException n) {
+                Ui.printInvalidIntegerMessage();
+            }
+        }
     }
 }
