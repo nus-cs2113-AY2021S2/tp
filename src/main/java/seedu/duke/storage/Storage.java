@@ -7,6 +7,7 @@ import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
 import seedu.duke.record.Saving;
 import seedu.duke.record.RecordList;
+import seedu.duke.ui.Ui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -43,8 +44,8 @@ public class Storage {
         this.dataFilePath = dataFilePath;
     }
 
-    private boolean saveFileExists(Path filePath) {
-        return Files.exists(filePath);
+    private boolean saveFileExists() {
+        return Files.exists(SAVED_FILE_PATH);
     }
 
     public void saveRecordListData(RecordList records) {
@@ -72,6 +73,10 @@ public class Storage {
     public ArrayList<Record> loadFile() throws FileLoadingException {
         ArrayList<Record> records = new ArrayList<>();
         try {
+            if (!saveFileExists()) {
+                initSaveFile();
+                return records;
+            }
             File loadFile = dataFilePath.toFile();
             Scanner sc = new Scanner(loadFile);
             while (sc.hasNextLine()) {
@@ -81,11 +86,20 @@ public class Storage {
                     records.add(record);
                 }
             }
-        } catch (FileNotFoundException | InvalidFileInputException e) {
+        } catch (InvalidFileInputException | IOException e) {
             throw new FileLoadingException();
         }
 
         return records;
+    }
+
+    private void initSaveFile() throws IOException {
+        File newSaveFile = new File(String.valueOf(SAVED_FILE_PATH));
+        if (newSaveFile.createNewFile()) {
+            Ui.printSuccessfulFileCreation();
+        } else {
+            throw new IOException("File creation unsuccessful!");
+        }
     }
 
     private Record parseRecord(String rawData) throws InvalidFileInputException {
