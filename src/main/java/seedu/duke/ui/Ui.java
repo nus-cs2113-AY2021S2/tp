@@ -110,7 +110,7 @@ public class Ui {
 
     public void printExpenses(RecordList recordList) {
         System.out.println(DIVIDER);
-        System.out.println("Here is your Expense list:" + "\n");
+        System.out.println("Here is your Expense list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
@@ -123,7 +123,7 @@ public class Ui {
 
     public void printLoans(RecordList recordList) {
         System.out.println(DIVIDER);
-        System.out.println("Here is your Loan list:" + "\n");
+        System.out.println("Here is your Loan list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
@@ -136,7 +136,7 @@ public class Ui {
 
     public void printSavings(RecordList recordList) {
         System.out.println(DIVIDER);
-        System.out.println("Here is your Saving list:" + "\n");
+        System.out.println("Here is your Saving list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
