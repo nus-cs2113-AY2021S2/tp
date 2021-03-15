@@ -27,10 +27,10 @@ public class Connoisseur {
         Ui.printGreeting();
         String input;
         Ui ui = new Ui();
+        Parser parser = new Parser();
         boolean isExitCommand = false;
         while (!isExitCommand) {
             input = ui.readCommand();
-            Parser parser = new Parser();
             isExitCommand = parser.determineCommand(input);
         }
     }

@@ -15,7 +15,7 @@ public class CommandList {
     static final int LIST_CATEGORY_INPUT_LENGTH = 4;
     static final int MAX_WHITE_SPACE = 20;
 
-    public static ArrayList<Review> reviewList = new ArrayList<>();
+    public ArrayList<Review> reviewList = new ArrayList<>();
     private Sorter sorter;
 
     /**
@@ -32,7 +32,6 @@ public class CommandList {
     /**
      * Creates new tasks if no existing data in files.
      */
-
     public CommandList() {
         reviewList = new ArrayList<>();
         sorter = new Sorter(SortMethod.DATE_EARLIEST);
@@ -48,47 +47,58 @@ public class CommandList {
         if (reviewList.size() == 0) {
             System.out.println("No reviews found. :(");
         } else {
-            if (input.length() <= 0) {
-                System.out.println("Catch some exception"); //remember to change this part jjbafdbal!!!
+            if (input.length() == 0) {
+                sorter.sort(reviewList);
+                printReviews(reviewList);
+            } else {
+                String sortType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
+                sorter.sort(reviewList, sortType);
+                printReviews(reviewList);
             }
+        }
+    }
 
-            String listType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
-            Sorter.sort(reviewList, listType);
-            System.out.println("Here are your reviews:");
-            int whiteSpaceNeeded = MAX_WHITE_SPACE - 5;
-            System.out.print("Title");
+    /**
+     * Prints the sorted reviews. 
+     */
+    public void printReviews(ArrayList<Review> reviewList) {
+        System.out.println("Here are your reviews:");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(" ");
+        }
+        int whiteSpaceNeeded = MAX_WHITE_SPACE - 5;
+        System.out.print("Title");
+        while (whiteSpaceNeeded > 0) {
+            System.out.print(" ");
+            whiteSpaceNeeded--;
+        }
+        whiteSpaceNeeded = MAX_WHITE_SPACE - 6;
+        System.out.print("Rating");
+        while (whiteSpaceNeeded > 0) {
+            System.out.print(" ");
+            whiteSpaceNeeded--;
+        }
+        System.out.println("Date");
+
+        for (int i = 0; i < reviewList.size(); i++) {
+            Review currentReview = reviewList.get(i);
+            System.out.print((i + 1) + ". ");
+            if (i < 9) {
+                System.out.print(" ");
+            }
+            System.out.print(currentReview.getTitle());
+            whiteSpaceNeeded = MAX_WHITE_SPACE - (currentReview.getTitle().length());
             while (whiteSpaceNeeded > 0) {
                 System.out.print(" ");
                 whiteSpaceNeeded--;
             }
-            whiteSpaceNeeded = MAX_WHITE_SPACE - 6;
-            System.out.print("Rating");
+            System.out.print(currentReview.starRating());
+            whiteSpaceNeeded = MAX_WHITE_SPACE - 10;
             while (whiteSpaceNeeded > 0) {
                 System.out.print(" ");
                 whiteSpaceNeeded--;
             }
-
-            for (int i = 0; i < reviewList.size(); i++) {
-                Review currentReview = reviewList.get(i);
-                System.out.print((i + 1) + ". ");
-                System.out.print(currentReview.getTitle());
-                whiteSpaceNeeded = MAX_WHITE_SPACE - (currentReview.getTitle().length());
-                while (whiteSpaceNeeded > 0) {
-                    System.out.print(" ");
-                    whiteSpaceNeeded--;
-                }
-                for (int j = 0; j < 5; j++) {
-                    int numberOfShadedBoxes = currentReview.getRating();
-                    if (numberOfShadedBoxes > 0) {
-                        System.out.print("\u2588");
-                        numberOfShadedBoxes--;
-                    } else {
-                        System.out.print("\u25A2");
-                    }
-                }
-                System.out.print("    ");
-                System.out.println(currentReview.getDate());
-            }
+            System.out.println(currentReview.getDate());
         }
     }
 
@@ -97,6 +107,10 @@ public class CommandList {
      */
     public static void printHelp() {
         Ui.printHelpMessage();
+    }
+
+    public static void invalidCommand() {
+        Ui.printToScreen("Invalid Command. ");
     }
 
     /**
@@ -142,14 +156,13 @@ public class CommandList {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid input review, please try again.");
         }
-        Storage.saveData(reviewList);
-
     }
 
     /**
-     * Prints exit message. 
+     * Exits connoisseur. 
      */
-    public static void exit() {
+    public void exit() {
+        Storage.saveData(reviewList);
         Ui.printExitMessage();
     }
 

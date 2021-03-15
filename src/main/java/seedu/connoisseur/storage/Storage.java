@@ -23,6 +23,7 @@ public class Storage {
      */
     public Storage() {
         path = System.getProperty("user.dir") + "/data/connoisseur.txt";
+        System.out.println(path);
     }
 
     /**
@@ -75,6 +76,7 @@ public class Storage {
             String reviewsToLoad;
             while (sc.hasNextLine()) {
                 reviewsToLoad = sc.nextLine();
+                System.out.println(reviewsToLoad);
                 reviewList.add(reviewsToLoad);
             }
             sc.close();
@@ -94,13 +96,11 @@ public class Storage {
             FileWriter fileWriter = new FileWriter(path);
             for (Review review : reviewList) {
                 String reviewToWrite = review.reviewToText() + "\n";
-                fileWriter.write(reviewToWrite);
+                fileWriter.append(reviewToWrite);
             }
             fileWriter.close();
         } catch (IOException e) {
             Ui.printErrorMessage(e);
         }
     }
-
-
 }

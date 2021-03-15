@@ -75,7 +75,7 @@ public class Sorter {
      * @param sortMethod method to sort
      * @return sorted review list
      */
-    public static ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) {
+    public ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) {
         switch (sortMethod) {
         case "rating":
             sortByRating(reviewList);
@@ -93,6 +93,7 @@ public class Sorter {
             sortByDateLatest(reviewList);
             break;
         default:
+            //TODO: sorterror
             break;
         }
         return reviewList;

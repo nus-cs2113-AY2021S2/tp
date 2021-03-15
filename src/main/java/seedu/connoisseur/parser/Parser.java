@@ -40,8 +40,10 @@ public class Parser {
         } else if (command.equals("help")) {
             CommandList.printHelp();
         } else if (command.equals("bye")) {
-            CommandList.exit();
+            commandList.exit();
             return true;
+        } else {
+            CommandList.invalidCommand();
         }
         return false;
     }

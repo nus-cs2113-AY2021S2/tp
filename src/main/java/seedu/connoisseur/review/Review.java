@@ -8,7 +8,6 @@ public class Review {
     protected String category;
     protected String dateOfEntry;
     protected int rating;
-    protected String starRating;
     protected String description;
     public static int MAX_NUM_OF_STARS = 5;
 
@@ -96,7 +95,6 @@ public class Review {
         this.title = title;
         this.category = category;
         this.rating = rating;
-        this.starRating = starRating(rating);
         this.description = description;
         LocalDate date = LocalDate.now();
         this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
@@ -105,18 +103,17 @@ public class Review {
 
     /**
      * Converts the rating to visual form. 
-     * @param rating rating of the experience
      * @return rating of the experience as a string
      */
-    public String starRating(int rating) {
+    public String starRating() {
         String starRating = "";
         for (int i = 0; i < MAX_NUM_OF_STARS; i++) {
-            if (rating > 0) {
-                starRating = starRating.concat("★");
+            if (this.rating > 0) {
+                starRating = starRating.concat("★ ");
             } else {
-                starRating = starRating.concat("✰");
+                starRating = starRating.concat("✰ ");
             }
-            rating--;
+            this.rating--;
         }
         return starRating;
     }
@@ -135,7 +132,7 @@ public class Review {
     }
 
     public String reviewToText() {
-        return null;
+        return getDate() + "|" + getCategory() + "|" + getTitle() + "|" + getRating() + "|" + getDescription();
     }
 
     public static Review textToReview(String review) {
