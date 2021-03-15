@@ -101,8 +101,8 @@ public class AddTaskCommandTest {
 
     @Test
     void execute_taskInputAndInitiallyInvalidIsGradedInputs_expectSuccess() {
-        String input = "n" + NEWLINE
-                + "nooooo" + NEWLINE
+        String input = " " + NEWLINE
+                + "no" + NEWLINE
                 + NO_STRING + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);

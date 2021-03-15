@@ -43,8 +43,8 @@ public class PrintHelpCommand extends Command {
     private static String getCommands(CommandList[] commands) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < commands.length; i++) {
-            if (commands[i].equals(DashboardCommands.INVALID) || 
-                    commands[i].equals(ModuleCommands.INVALID)) {
+            if (commands[i].equals(DashboardCommands.INVALID) 
+                    || commands[i].equals(ModuleCommands.INVALID)) {
                 continue;
             } else if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE);
