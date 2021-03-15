@@ -122,13 +122,14 @@ public class Review {
      */
     public String starRating() {
         String starRating = "";
+        int stars = this.rating;
         for (int i = 0; i < MAX_NUM_OF_STARS; i++) {
-            if (this.rating > 0) {
+            if (stars > 0) {
                 starRating = starRating.concat("★ ");
             } else {
                 starRating = starRating.concat("✰ ");
             }
-            this.rating--;
+            stars--;
         }
         return starRating;
     }
