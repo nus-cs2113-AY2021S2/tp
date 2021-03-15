@@ -31,9 +31,6 @@ public class Parser {
             commandList.deleteReview(description);
         } else if (command.equals("help")) {
             CommandList.printHelp();
-            /*Ui.printDivider();
-            Ui.printHelpCommandList();
-            Ui.printDivider();*/
         } else if (command.equals("bye")) {
             return true;
         }

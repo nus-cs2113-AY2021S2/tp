@@ -11,14 +11,13 @@ public class Review {
     protected int rating;
     protected String starRating;
     protected String description;
-    public static int NO_OF_STARS = 5;
-    private static final ArrayList<Review> reviewList = new ArrayList<>();
-    private static int noOfReviews = 0;
+    public static int NUM_OF_STARS = 5;
+
 
     public String getDate() {
         return dateOfEntry;
     }
-    
+
     public String getTitle() {
         return title;
     }
@@ -51,20 +50,12 @@ public class Review {
         this.description = description;
     }
 
-    public static int getNoOfStars() {
-        return NO_OF_STARS;
+    public static int getNumOfStars() {
+        return NUM_OF_STARS;
     }
 
-    public static void setNoOfStars(int noOfStars) {
-        NO_OF_STARS = noOfStars;
-    }
-
-    public static int getNoOfReviews() {
-        return noOfReviews;
-    }
-
-    public static void setNoOfReviews(int noOfReviews) {
-        Review.noOfReviews = noOfReviews;
+    public static void setNumOfStars(int noOfStars) {
+        NUM_OF_STARS = noOfStars;
     }
 
     public Review(String title, String category, int rating, String description) {
@@ -76,13 +67,11 @@ public class Review {
         LocalDate date = LocalDate.now();
         this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
 
-        reviewList.add(new Review(title, category, rating, description));
-        noOfReviews++;
     }
 
     public String starRating(int rating) {
         String starRating = "";
-        for (int i = 0; i < NO_OF_STARS; i++) {
+        for (int i = 0; i < NUM_OF_STARS; i++) {
             if (rating > 0) {
                 starRating = starRating.concat("★");
             } else {
@@ -102,6 +91,10 @@ public class Review {
     }
 
     public String reviewToText() {
+        return null;
+    }
+
+    public static Review textToReview(String review) {
         return null;
     }
 }
