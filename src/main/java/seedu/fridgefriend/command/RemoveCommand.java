@@ -11,7 +11,6 @@ import seedu.fridgefriend.utilities.Ui;
 public class RemoveCommand extends Command {
 
     private static final int EXTRA_INDEX = 1;
-
     private final int indexToRemove;
     private Food foodToBeRemoved;
 
@@ -34,25 +33,21 @@ public class RemoveCommand extends Command {
     @Override
     public void execute() {
         removeFood();
-        showMessage();
+        showResults();
     }
 
     public void removeFood() {
         Fridge.removeByIndex(indexToRemove);
     }
 
-    private void showMessage() {
-        String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
-                + " from your fridge.\n"
-                + "Now you have " + Fridge.getSize()
-                + " food in the fridge.";
-        Ui.printMessage(message);
+    private void showResults() {
+        Ui.printMessage(getMessagePrintedToUser());
     }
 
     /**
-     * Return the actual message shown to user for JUnit-test.
+     * Return the results after remove the item from the fridge.
      *
-     * @return the actual message after remove food from fridge to the user
+     * @return the message shown to user
      */
     public String getMessagePrintedToUser() {
         String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
@@ -61,4 +56,5 @@ public class RemoveCommand extends Command {
                 + " food in the fridge.";
         return message;
     }
+
 }

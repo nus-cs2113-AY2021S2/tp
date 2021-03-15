@@ -29,26 +29,22 @@ class RemoveCommandTest {
         Fridge.add(lettuce);
     }
 
-    private RemoveCommand createRemoveCommand(int displayIndexToRemove) throws InvalidIndexException {
-        return new RemoveCommand(displayIndexToRemove);
-    }
-
     @Test
-    public void removeCommand_correctData_correctlyConstructed() throws InvalidIndexException {
-        int actualIndex = 0;
-        String expectedMessage = "Noted! I've removed " + Fridge.getFood(actualIndex).getFoodName()
+    public void removeCommand_validIndex_successfullyRemove() throws InvalidIndexException {
+        RemoveCommand removeCommand = new RemoveCommand(1);
+        removeCommand.execute();
+        String actualMessage = removeCommand.getMessagePrintedToUser();
+        String expectedMessage = "Noted! I've removed chicken"
                 + " from your fridge.\n"
-                + "Now you have " + Fridge.getSize()
+                + "Now you have 2"
                 + " food in the fridge.";
-        String actualMessage = createRemoveCommand(1).getMessagePrintedToUser();
         assertEquals(expectedMessage,actualMessage);
     }
 
     @Test
-    public void removeCommand_invalidIndex_expectException() {
+    public void removeCommand_invalidIndex_invalidIndexException() {
         assertThrows(InvalidIndexException.class, () ->
-                createRemoveCommand(0));
+                new RemoveCommand(10).execute());
     }
-
 
 }
