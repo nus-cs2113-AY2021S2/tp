@@ -81,6 +81,10 @@ public class Ui {
         }
     }
 
+    public void showProfile() {
+        System.out.println(Deliveryman.deliveryman);
+    }
+
     /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
@@ -102,11 +106,14 @@ public class Ui {
                     showHelpMessage();
                     break;
                 case "profile":
+                    // todo: create (default) profile and display
+                    showProfile();
                     // view profile
                     break;
                 case "edit":
                 case "editprofile":
                     String inputProfileData = parser.parseInput("edit", userArguments);
+                    // todo: create profile and load
                     break;
                 case "start":
                     new DeliveryList();

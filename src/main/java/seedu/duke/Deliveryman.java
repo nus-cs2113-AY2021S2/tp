@@ -4,6 +4,7 @@ public class Deliveryman {
     private String driverName;
     private String licensePlate;
     private String vehicleModel;
+    public static Deliveryman deliveryman;
 
     public Deliveryman(String driverName, String licensePlate, String vehicleModel) {
         this.driverName = driverName;
@@ -33,5 +34,13 @@ public class Deliveryman {
 
     public void setVehicleModel(String vehicleModel) {
         this.vehicleModel = vehicleModel;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + getDriverName() + '\n'
+                + "License Plate: " + getLicensePlate() + '\n'
+                + "Vehicle Model: " + getVehicleModel()
+        ;
     }
 }

@@ -12,5 +12,6 @@ public class DeliveryList {
      */
     public DeliveryList() {
         // todo create (load) the list of deliveries using a .txt containing delivery information
+        // deliveries = loadfile()
     }
 }
