@@ -71,6 +71,17 @@ public class Ui {
     }
 
     /**
+     * Prints list of deliveries present in delivery list
+     */
+    public void showDeliveryList() {
+        System.out.println("No. || Status || Delivery ID || Address || Recipient");
+        int i = 1;
+        for (Delivery delivery : DeliveryList.deliveries) {
+            System.out.println(Integer.toString(i) + delivery);
+        }
+    }
+
+    /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
      */
@@ -80,6 +91,7 @@ public class Ui {
         String userInput;
         String userCommand;
         String userArguments;
+        int deliveryNumber;
         promptUserInput();
         do {
             userInput = sc.nextLine();
@@ -87,41 +99,41 @@ public class Ui {
             userArguments = parser.parseArguments(userInput);
             switch (userCommand) {
                 case "help":
-                    showHelpMessage(); // relocate this to inside parser?
+                    showHelpMessage();
                     break;
                 case "profile":
                     // view profile
                     break;
                 case "edit":
                 case "editprofile":
-                    parser.parseInput("edit", userArguments);
-                    // parser needs to validate the arguments are entered properly
+                    String inputProfileData = parser.parseInput("edit", userArguments);
                     break;
                 case "start":
-                    // load delivery assignment
+                    new DeliveryList();
+                    // todo: load delivery assignment
                     break;
                 case "list":
-                    parser.parseInput("list", userArguments);
-                    // show delivery list
+                    showDeliveryList();
                     break;
                 case "view":
                 case "viewdelivery":
-                    parser.parseInput("viewdelivery", userArguments);
-                    // show selected delivery list - need parser to get and check selected item
+                    deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments));
+                    // show selected delivery - use parser to check selected item
+                    System.out.println(DeliveryList.deliveries.get(deliveryNumber));
                     break;
                 case "complete":
-                    parser.parseInput("complete", userArguments);
+                    deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments));
                     // mark delivery as completed - use parser to get and check selected item
+                    DeliveryList.deliveries.get(deliveryNumber).setDeliveryAsComplete();
                     break;
                 case "bye":
-                    showFarewellScreen();
                     break;
                 default:
                     System.out.println("Incorrect entry"); // raise exception
             }
-            promptUserInput();
-
-
+            if (!userCommand.equalsIgnoreCase("bye")) {
+                promptUserInput();
+            }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
 

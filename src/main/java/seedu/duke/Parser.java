@@ -45,12 +45,16 @@ public class Parser {
         return arguments;
     }
 
-    // used to process user data when required
-    public void parseInput(String commandWord, String arguments) {
+    /**
+     * This method is only called when certain input commands are called by the user
+     * The specific commands that require this method call are outlined in Ui
+     * @param commandWord is the user input command
+     * @param arguments are any user input arguments following the command word
+     */
+    public String parseInput(String commandWord, String arguments) {
+        String parsedData = null;
         switch (commandWord) {
-            case "profile":
-                System.out.println("View Profile");
-                break;
+            case "edit":
             case "editprofile":
 //               TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F
                 System.out.println("Edit Profile ");
@@ -58,34 +62,28 @@ public class Parser {
                 if (!editProfileMatcher.matches()){
                     System.out.println("Invalid Command");
                 } else {
-                    String str = String.format("Name: %s | Vehicle: %s | License: %s",
+                    parsedData = String.format("Name: %s | Vehicle: %s | License: %s",
                             editProfileMatcher.group("name"),
                             editProfileMatcher.group("vehicle"),
                             editProfileMatcher.group("license"));
-                    System.out.println(str);
                 }
-                break;
-            case "start":
-                System.out.println("start");
-                break;
-            case "list":
-                System.out.println("List");
                 break;
             case "view":
             case "viewdelivery":
-                System.out.println("Delivery Details");
+                // parse delivery number (in arguments)
+                System.out.println("view the details about a particular delivery!");
+                parsedData = arguments;
                 break;
             case "complete":
-                System.out.println("complete");
+                // parse delivery number (in arguments)
+                System.out.println("mark a delivery as completed!");
+                parsedData = arguments;
                 break;
-            case "exit":
-                System.out.println("Exiting Diliveri");
-                System.exit(0);
-            case "help":
             default:
-                System.out.println("help");
+                System.out.println("You shouldn't have been able to get here..");
+                // consider setting parsedData to a flagger value and handling from there
                 break;
         }
-
+        return parsedData;
     }
 }
