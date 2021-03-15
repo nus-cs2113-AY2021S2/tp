@@ -1,10 +1,37 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Welcome to the Patient Manager.
 
-Please input a command!
+Please input a command: 
+java.lang.Exception: Invalid command is provided
 You said this: Do remember to wake up early tomorrow!
 This is the full argument hashmap content: {payload=Do remember to wake up early tomorrow!, option1=A, option2=B C, command=echo}
+Patient A1234567R has been added!
+1. A1234567R
+Add a patient to the list
+Command prefix: add
+Argument(s): name, IC number
+Usage: add /<IC_NUMBER>
+Example: add S1234567A
+
+Show the list of all patients
+Usage: list
+
+<WIP> Select a specified patient to add and retrieve records
+Command prefix: load
+Arguments(s): IC number
+Usage: load <IC_NUMBER>
+Example: load S1234567A
+
+Add a consultation record to the selected patient
+Command prefix: record
+Arguments(s): consultation details
+Usage: record <CONSULTATION DETAILS>
+Example: record fever
+
+Retrieve past consultation record from the selected patient
+Usage: retrieve
+
+Exit the program
+Usage: exit
+
+
+Goodbye, we hope to see you again!

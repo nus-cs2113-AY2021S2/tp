@@ -22,7 +22,7 @@ public class EchoCommand extends Command {
     @Override
     public void execute() {
         // Replace by ui after ui is implemented
-        System.out.println("You said this: " + arguments.get("payload"));
-        System.out.println("This is the full argument hashmap content: " + arguments);
+        ui.printMessage("You said this: " + arguments.get("payload"));
+        ui.printMessage("This is the full argument hashmap content: " + arguments);
     }
 }
