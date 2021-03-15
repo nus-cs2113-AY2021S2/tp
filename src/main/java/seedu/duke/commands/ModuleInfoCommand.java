@@ -10,6 +10,7 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Messages.EMPTY_STRING;
 import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
 import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
 
@@ -32,7 +33,7 @@ public class ModuleInfoCommand extends Command {
         ui.printMessage(String.format(FORMAT_MODULE_INFO, moduleCode));
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessonsFromList(lessonList, ui);
-        ui.printMessage("");
+        ui.printMessage(EMPTY_STRING);
         ArrayList<Task> tasksList = module.getTaskList();
         ui.printTasks(tasksList, false, true);
     }

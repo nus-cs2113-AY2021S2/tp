@@ -29,7 +29,7 @@ public class ListModulesCommand extends Command {
             stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, counter, moduleCode));
         }
         String listMessage = stringBuilder.toString();
-        if (listMessage.length() > 0) {
+        if (!listMessage.isEmpty()) {
             ui.printMessage(listMessage);
         }
     }

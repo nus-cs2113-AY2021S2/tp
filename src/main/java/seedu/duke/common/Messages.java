@@ -10,6 +10,7 @@ public class Messages {
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t\t";
+    public static final String EMPTY_STRING = "";
 
     public static final String MESSAGE_EXIT = "Have a nice day! Bye bye!";
     public static final String MESSAGE_WELCOME = "What can I do for you today?";
@@ -19,7 +20,6 @@ public class Messages {
     public static final String TAG_MODULE = "%s >> ";
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
-
     public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
 
     //Module messages

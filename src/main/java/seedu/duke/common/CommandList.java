@@ -3,10 +3,10 @@ package seedu.duke.common;
 public interface CommandList {
 
     default String getWord() {
-        return "";
+        return null;
     }
 
     default String getDescription() {
-        return "";
+        return null;
     }
 }
