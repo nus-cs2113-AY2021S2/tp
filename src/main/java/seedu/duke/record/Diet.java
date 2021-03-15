@@ -19,11 +19,11 @@ public class Diet extends Record {
 
     }
 
-    public double getTotalCal(){
+    public double getTotalCal() {
         return totalCalories;
     }
 
-    public void printFoodList(){
+    public void printFoodList() {
 
     }
 

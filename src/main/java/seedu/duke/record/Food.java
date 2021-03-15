@@ -10,27 +10,27 @@ public class Food {
     private double calorie;
     private FoodCategory category;
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public double getWeight(){
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight){
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public double getCal(){
+    public double getCal() {
         return calorie;
     }
 
-    public void setCal(double calorie){
+    public void setCal(double calorie) {
         this.calorie = calorie;
     }
 
@@ -38,7 +38,7 @@ public class Food {
         return category;
     }
 
-    public void setCategory(FoodCategory category){
+    public void setCategory(FoodCategory category) {
         this.category = category;
     }
 }
