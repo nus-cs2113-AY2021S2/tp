@@ -76,7 +76,6 @@ public class Storage {
             String reviewsToLoad;
             while (sc.hasNextLine()) {
                 reviewsToLoad = sc.nextLine();
-                System.out.println(reviewsToLoad);
                 reviewList.add(reviewsToLoad);
             }
             sc.close();

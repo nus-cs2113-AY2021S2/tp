@@ -13,6 +13,38 @@ public class Review {
 
 
     /**
+     * Creates a review. 
+     * @param title title of the review
+     * @param category category of the experience
+     * @param rating rating of the experience
+     * @param description description of the experience
+     */
+    public Review(String title, String category, int rating, String description) {
+        this.title = title;
+        this.category = category;
+        this.rating = rating;
+        this.description = description;
+        LocalDate date = LocalDate.now();
+        this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+    }
+
+    /**
+     * Creates a review with specified date. 
+     * @param title title of the review
+     * @param category category of the experience
+     * @param rating rating of the experience
+     * @param description description of the experience
+     * @param date date of review
+     */
+    public Review(String title, String category, int rating, String description, String date) {
+        this.title = title;
+        this.category = category;
+        this.rating = rating;
+        this.description = description;
+        this.dateOfEntry = date;
+    }
+
+    /**
      * Gets the date of the review. 
      * @return date of entry as a string
      */
@@ -85,23 +117,6 @@ public class Review {
     }
 
     /**
-     * Creates a review. 
-     * @param title title of the review
-     * @param category category of the experience
-     * @param rating rating of the experience
-     * @param description description of the experience
-     */
-    public Review(String title, String category, int rating, String description) {
-        this.title = title;
-        this.category = category;
-        this.rating = rating;
-        this.description = description;
-        LocalDate date = LocalDate.now();
-        this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
-
-    }
-
-    /**
      * Converts the rating to visual form. 
      * @return rating of the experience as a string
      */
@@ -126,16 +141,28 @@ public class Review {
         return title + "      " + rating + "      " + dateOfEntry;
     }
 
-    //TODO: implement following functions
+    //TODO: implement this
     public static int getReviewIndex(String title2) {
         return 0;
     }
 
+    /**
+     * Converts a review into text for storage. 
+     * @return review in a single string
+     */
     public String reviewToText() {
-        return getDate() + "|" + getCategory() + "|" + getTitle() + "|" + getRating() + "|" + getDescription();
+        return getDate() + "|" + getTitle() + "|" + getCategory() + "|" + getRating() + "|" + getDescription();
     }
 
+    /**
+     * Converts a single string into a review. 
+     * @param review the review saves as a single string
+     * @return review as a Review object
+     */
     public static Review textToReview(String review) {
-        return null;
+        String[] reviewFields = review.split("\\|", 5);
+        Review r = new Review(reviewFields[1], reviewFields[2], Integer.parseInt(reviewFields[3]), 
+                reviewFields[4], reviewFields[0]);
+        return r;
     }
 }
