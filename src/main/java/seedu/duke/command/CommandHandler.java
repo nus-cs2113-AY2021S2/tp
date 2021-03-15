@@ -17,7 +17,8 @@ public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final int INDEX_OF_COMMAND = 0;
 
-    public static Command createCommand(ArrayList<String> parsedArguments, RecordList records) throws CommandException {
+    public static Command createCommand(ArrayList<String> parsedArguments, RecordList records)
+            throws CommandException {
         String commandWord = parsedArguments.get(INDEX_OF_COMMAND);
 
         switch (commandWord) {

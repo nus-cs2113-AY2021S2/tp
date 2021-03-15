@@ -60,9 +60,16 @@ public class Validators {
         return recordNumberInList;
     }
 
-    public static BigDecimal validateAmount(String inputToCheck) throws NumberFormatException,
+    /**
+     * Parse the stringAmount into a BigDecimal object.
+     * @param stringAmount contains a string representing the amount entered.
+     * @return a BigDecimal object.
+     * @throws NumberFormatException when the stringAmount contains non numeric.
+     * @throws CustomException when the numeric amount is less than or equals to zero.
+     */
+    public static BigDecimal validateAmount(String stringAmount) throws NumberFormatException,
             CustomException {
-        BigDecimal amount = new BigDecimal(inputToCheck);
+        BigDecimal amount = new BigDecimal(stringAmount);
         if (!(amount.compareTo(new BigDecimal("0")) == 1)) {
             throw new CustomException("amount must be greater than 0.");
         }

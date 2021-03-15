@@ -11,6 +11,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Scanner;
 
+/**
+ * Handles all user interactions and printing of text to the console.
+ */
 public class Ui {
     protected static final String DIVIDER = "=========================================================";
     private static final String logo = "=========================================================\n"
@@ -144,6 +147,10 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the total expenses in 2 decimal place.
+     * @param recordList contains the full list of records.
+     */
     public void printTotalAmountExpense(RecordList recordList) {
         System.out.println(DIVIDER);
         BigDecimal totalAmount = new BigDecimal("0");
@@ -157,6 +164,10 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the total loan in 2 decimal place.
+     * @param recordList contains the full list of records.
+     */
     public void printTotalAmountLoan(RecordList recordList) {
         System.out.println(DIVIDER);
         BigDecimal totalAmount = new BigDecimal("0");
@@ -170,6 +181,10 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the total saving in 2 decimal place.
+     * @param recordList contains the full list of records.
+     */
     public void printTotalAmountSaving(RecordList recordList) {
         System.out.println(DIVIDER);
         BigDecimal totalAmount = new BigDecimal("0");

@@ -10,10 +10,9 @@ import seedu.duke.record.Saving;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
-import static seedu.duke.command.Utils.checkInvalidOptions;
-import static seedu.duke.command.Utils.checkOptionConflict;
 import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
+import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_AMOUNT;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
@@ -27,8 +26,15 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Handles all operations related to the add command.
+ */
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
+    private static final String[] VALID_OPTIONS = {
+        OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE
+    };
+    private static final String[] CONFLICT_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
     private final BigDecimal amount;
     private final LocalDate issueDate;
     private final String description;
@@ -36,30 +42,47 @@ public class AddCommand extends Command {
     private RecordType recordType;
 
     public AddCommand(ArrayList<String> arguments) throws CommandException {
-        checkInvalidOptions(arguments, COMMAND_ADD,
-                OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE);
-        checkOptionConflict(arguments, COMMAND_ADD, OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING);
+        validateOptions(arguments, COMMAND_ADD, VALID_OPTIONS, CONFLICT_OPTIONS);
 
-        if (hasOption(arguments, OPTION_EXPENSE)) {
-            recordType = RecordType.EXPENSE;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_EXPENSE);
-        } else if (hasOption(arguments, OPTION_LOAN)) {
-            recordType = RecordType.LOAN;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_LOAN);
-        } else if (hasOption(arguments, OPTION_SAVING)) {
-            recordType = RecordType.SAVING;
-            description = Utils.getOptionValue(arguments, COMMAND_ADD, OPTION_SAVING);
-        } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
-        }
+        description = getDescription(arguments);
+        amount = getAmount(arguments);
+        issueDate = getDate(arguments);
+    }
 
+    private String getDescription(ArrayList<String> arguments) throws CommandException {
+        return Utils.getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
+    }
+
+    private BigDecimal getAmount(ArrayList<String> arguments) throws CommandException {
         try {
-            amount = validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
-            issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+            return validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
         } catch (NumberFormatException e) {
             throw new CommandException("amount contains a non numeric value.", COMMAND_ADD);
-        } catch (CustomException | DateTimeException e) {
+        } catch (CustomException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
+        }
+    }
+
+    private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
+        try {
+            return validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+        } catch (DateTimeException e) {
+            throw new CommandException(e.getMessage(), COMMAND_ADD);
+        }
+    }
+
+    private String checkRecordType(ArrayList<String> arguments) throws CommandException {
+        if (hasOption(arguments, OPTION_EXPENSE)) {
+            recordType = RecordType.EXPENSE;
+            return OPTION_EXPENSE;
+        } else if (hasOption(arguments, OPTION_LOAN)) {
+            recordType = RecordType.LOAN;
+            return OPTION_LOAN;
+        } else if (hasOption(arguments, OPTION_SAVING)) {
+            recordType = RecordType.SAVING;
+            return OPTION_SAVING;
+        } else {
+            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_ADD);
         }
     }
 

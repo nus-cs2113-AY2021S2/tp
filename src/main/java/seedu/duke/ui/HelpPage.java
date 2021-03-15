@@ -2,6 +2,9 @@ package seedu.duke.ui;
 
 import static seedu.duke.ui.Ui.DIVIDER;
 
+/**
+ * Handles all printing of help related command messages to the console.
+ */
 public class HelpPage {
     private static final String TAB_1SPACE = "\t";
     private static final String TAB_2SPACE = "\t\t";
@@ -31,6 +34,10 @@ public class HelpPage {
     private static final String MAN_OPTION_INDEX_DESCRIPTION = "[ARGUMENT] positive non zero integer "
             + "used to reference to index in program";
 
+    /**
+     * Prints the respective help messages based on the command given.
+     * @param command contains the command that help is needed to be printed.
+     */
     public static void printHelp(String command) {
         switch (command) {
         case "help":
@@ -52,24 +59,35 @@ public class HelpPage {
             printManPageReturn();
             break;
         case "exit":
-            printManPageExit();
-            break;
+            // Fallthrough
         default:
+            printManPageExit();
         }
     }
 
+    /**
+     * Prints the man page header format.
+     * @param header contains the description of the command.
+     */
     public static void printManHeader(String header) {
         System.out.println("NAME");
         System.out.println(TAB_1SPACE + header);
         System.out.println();
     }
 
+    /**
+     * Prints the man page synopsis format.
+     * @param synopsis contains the availability options and argument.
+     */
     public static void printManSynopsis(String synopsis) {
         System.out.println("SYNOPSIS");
         System.out.println(TAB_1SPACE + synopsis);
         System.out.println();
     }
 
+    /**
+     * Prints the entire man page for all commands.
+     */
     public static void printManPageMaster() {
         printManPageAdd();
         printManPageView();
@@ -79,12 +97,18 @@ public class HelpPage {
         printManPageExit();
     }
 
+    /**
+     * Prints the man page for add command.
+     */
     public static void printManPageAdd() {
         printManHeader(MAN_HEADER_ADD);
         printManSynopsis(MAN_SYNOPSIS_ADD);
         printManDescriptionAdd();
     }
 
+    /**
+     * Prints the add command options and arguments description.
+     */
     public static void printManDescriptionAdd() {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE);
@@ -96,12 +120,18 @@ public class HelpPage {
         System.out.println(Ui.DIVIDER);
     }
 
+    /**
+     * Prints the man page for list command.
+     */
     public static void printManPageList() {
         printManHeader(MAN_HEADER_LIST);
         printManSynopsis(MAN_SYNOPSIS_LIST);
         printManDescriptionList();
     }
 
+    /**
+     * Prints the list command options and arguments description.
+     */
     public static void printManDescriptionList() {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE);
@@ -109,12 +139,18 @@ public class HelpPage {
         System.out.println(Ui.DIVIDER);
     }
 
+    /**
+     * Prints the man page for view command.
+     */
     public static void printManPageView() {
         printManHeader(MAN_HEADER_VIEW);
         printManSynopsis(MAN_SYNOPSIS_VIEW);
         printManDescriptionView();
     }
 
+    /**
+     * Prints the view command options and arguments description.
+     */
     public static void printManDescriptionView() {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE);
@@ -122,12 +158,18 @@ public class HelpPage {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the man page for remove command.
+     */
     public static void printManPageRemove() {
         printManHeader(MAN_HEADER_REMOVE);
         printManSynopsis(MAN_SYNOPSIS_REMOVE);
         printManDescriptionRemove();
     }
 
+    /**
+     * Prints the remove command options and arguments description.
+     */
     public static void printManDescriptionRemove() {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_INDEX);
@@ -135,12 +177,18 @@ public class HelpPage {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the man page for return command.
+     */
     public static void printManPageReturn() {
         printManHeader(MAN_HEADER_RETURN);
         printManSynopsis(MAN_SYNOPSIS_RETURN);
         printManDescriptionReturn();
     }
 
+    /**
+     * Prints the return command options and arguments description.
+     */
     public static void printManDescriptionReturn() {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_INDEX);
@@ -148,6 +196,9 @@ public class HelpPage {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the man page for exit command.
+     */
     public static void printManPageExit() {
         printManHeader(MAN_HEADER_EXIT);
         System.out.println("SYNOPSIS");
