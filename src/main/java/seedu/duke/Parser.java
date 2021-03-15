@@ -50,19 +50,22 @@ public class Parser {
      * The specific commands that require this method call are outlined in Ui
      * @param commandWord is the user input command
      * @param arguments are any user input arguments following the command word
+     * @param deliveryman
      */
-    public String parseInput(String commandWord, String arguments) {
+    public String parseInput(String commandWord, String arguments, Deliveryman deliveryman) {
         String parsedData = null;
         switch (commandWord) {
             case "edit":
             case "editprofile":
 //               TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F
-                System.out.println("Edit Profile ");
                 Matcher editProfileMatcher = DRIVER_PROFILE_EDIT_FORMAT.matcher(arguments.trim());
                 if (!editProfileMatcher.matches()){
                     System.out.println("Invalid Command");
+                    System.out.println("Please use the format: n/name v/vehicle model l/license plate");
+                    System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F");
+                    parsedData = "fail";
                 } else {
-                    parsedData = String.format("Name: %s | Vehicle: %s | License: %s",
+                    parsedData = String.format("%s | %s | %s",
                             editProfileMatcher.group("name"),
                             editProfileMatcher.group("vehicle"),
                             editProfileMatcher.group("license"));

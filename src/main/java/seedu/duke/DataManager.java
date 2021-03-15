@@ -13,8 +13,8 @@ public class DataManager {
 
 	public Deliveryman loadProfile(){
 		String driverName = "Obi Wan";
-		String licensePlate = "HIGHGROUND";
 		String vehicleModel = "YT-1300";
+		String licensePlate = "HIGHGROUND";
 
 		try {
 			File directory = new File(TXT_FILE_DIRECTORY);
@@ -25,11 +25,11 @@ public class DataManager {
 			}
 			Scanner sc = new Scanner(saveFile);
 			while(sc.hasNext()){
-				String loadedInfo = sc.next();
-				String[] userInfo = loadedInfo.split(" \\| ");
+				String loadedInfo = sc.nextLine();
+				String[] userInfo = loadedInfo.split(" \\| ", 3);
 				driverName = userInfo[0];
-				licensePlate = userInfo[1];
 				vehicleModel = userInfo[2];
+				licensePlate = userInfo[1];
 			}
 
 		} catch (FileNotFoundException e) {
