@@ -6,14 +6,14 @@ import seedu.duke.command.Command;
  * Main class of the application, where the entry point is.
  */
 public class Duke {
-    protected Data data;
-    protected Ui ui;
-    protected Parser parser;
+    private Data data;
+    private Ui ui;
+    private Parser parser;
 
     /**
      * This initializes all resources for the program.
      */
-    protected Duke() {
+    private Duke() {
         ui = new Ui();
         data = new Data();
         parser = new Parser(ui, data);
@@ -22,13 +22,13 @@ public class Duke {
     /**
      * This is the actual program logic for the application.
      */
-    protected void run() {
+    private void run() {
         ui.printWelcome();
 
         while (true) {
             String fullCommand = ui.readInput();
             if (fullCommand == null) {
-                // Reached EOF
+                // Reached EOF but no exit command is executed - we still exit
                 break;
             }
 
