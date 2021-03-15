@@ -1,5 +1,8 @@
 File Path was not found!
------------------------
-Welcome to our amazing canteen review application!!
-You are now viewing canteen The Deck
------------------------
+====================================================
+Enter 1 for Public User
+Enter 2 for Admin
+====================================================
+====================================================
+Thank you for using our application! See you again!
+====================================================
