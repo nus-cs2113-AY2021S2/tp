@@ -20,7 +20,6 @@ public class LoadCommand extends Command {
     @Override
     public void execute() {
         // TODO: Replace printed string with actual details of the patient.
-        Ui ui = new Ui();
         String id = arguments.get("payload");
         data.loadCurrentPatient(id);
         if (data.currentPatient != null) {
@@ -28,6 +27,5 @@ public class LoadCommand extends Command {
         } else {
             ui.printMessage("Patient\'s data is not found.");
         }
-        ui.closeScanner();
     }
 }
