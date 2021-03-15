@@ -15,7 +15,7 @@ public class CommandList {
     static final int LIST_CATEGORY_INPUT_LENGTH = 4;
     static final int MAX_WHITE_SPACE = 20;
 
-    public ArrayList<Review> reviewList = new ArrayList<>();
+    public ArrayList<Review> reviewList;
     private Sorter sorter;
 
     /**
@@ -24,16 +24,22 @@ public class CommandList {
      * @param dataReviews List of tasks from user connoisseur.txt file.
      */
     public CommandList(ArrayList<String> dataReviews) {
+        reviewList = new ArrayList<Review>();
+        System.out.println(dataReviews);
         for (String review : dataReviews) {
+            if (review.length() == 0) {
+                continue;
+            }
             reviewList.add(Review.textToReview(review));
         }
+        sorter = new Sorter(SortMethod.DATE_EARLIEST);
     }
 
     /**
      * Creates new tasks if no existing data in files.
      */
     public CommandList() {
-        reviewList = new ArrayList<>();
+        reviewList = new ArrayList<Review>();
         sorter = new Sorter(SortMethod.DATE_EARLIEST);
     }
 
@@ -43,16 +49,16 @@ public class CommandList {
      * @param input is the listing method preferred by user. If there is no
      *              preferred listing method, default listing will be used.
      */
-    public void listReviews(String input) {
+    public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
             System.out.println("No reviews found. :(");
         } else {
-            if (input.length() == 0) {
+            if (sortMethod.length() == 0) {
                 sorter.sort(reviewList);
                 printReviews(reviewList);
             } else {
-                String sortType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
-                sorter.sort(reviewList, sortType);
+                System.out.println(sortMethod);
+                sorter.sort(reviewList, sortMethod);
                 printReviews(reviewList);
             }
         }
@@ -109,6 +115,9 @@ public class CommandList {
         Ui.printHelpMessage();
     }
 
+    /**
+     * Print invalid command text. 
+     */
     public static void invalidCommand() {
         Ui.printToScreen("Invalid Command. ");
     }

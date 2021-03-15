@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.ui.Ui;
 
 public class Sorter {
 
@@ -93,7 +94,7 @@ public class Sorter {
             sortByDateLatest(reviewList);
             break;
         default:
-            //TODO: sorterror
+            Ui.printToScreen("Invalid sort method");
             break;
         }
         return reviewList;

@@ -36,7 +36,6 @@ public class Storage {
         boolean isSuccessful = folder.mkdir();
         if (isSuccessful) {
             Ui.printSuccessfulCreateFolderMessage();
-
         } else {
             Ui.printFolderExistsMessage();
         }

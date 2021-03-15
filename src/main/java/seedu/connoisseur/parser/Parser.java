@@ -11,8 +11,8 @@ public class Parser {
     /**
      * Constructor for parser class. 
      */
-    public Parser() {
-        commandList = new CommandList();
+    public Parser(CommandList commandList) {
+        this.commandList = commandList;
     }
 
     /**

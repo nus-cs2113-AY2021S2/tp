@@ -21,13 +21,16 @@ public class Connoisseur {
     public Connoisseur() {
         Storage.createFolder();
         Storage storage = new Storage();
+        CommandList commandList;
         if (storage.retrieveTextFile()) {
-            new CommandList(storage.loadData());
+            commandList = new CommandList(storage.loadData());
+        } else {
+            commandList = new CommandList();
         }
         Ui.printGreeting();
         String input;
         Ui ui = new Ui();
-        Parser parser = new Parser();
+        Parser parser = new Parser(commandList);
         boolean isExitCommand = false;
         while (!isExitCommand) {
             input = ui.readCommand();
