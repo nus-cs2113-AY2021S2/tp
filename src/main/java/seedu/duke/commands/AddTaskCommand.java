@@ -48,7 +48,7 @@ public class AddTaskCommand extends Command {
      */
     public boolean getIsTaskGraded(UI ui) {
         ui.printMessage(MESSAGE_TASK_CHECK_GRADED);
-        String userInput = ui.readCommand();
+        String userInput = ui.readCommand().toUpperCase();
         while (!userInput.equals(YES_STRING) && !userInput.equals(NO_STRING)) {
             ui.printMessage(MESSAGE_TASK_CHECK_GRADED_INFO);
             userInput = ui.readCommand();
