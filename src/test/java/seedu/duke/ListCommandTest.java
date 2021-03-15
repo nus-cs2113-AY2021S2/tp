@@ -33,8 +33,6 @@ public class ListCommandTest {
 
         Patient patient = new Patient("S1234567A");
         data.setPatient(patient);
-        patient = new Patient("S7654321B");
-        data.setPatient(patient);
         ListCommand listCommand = new ListCommand(null, data, arguments);
 
         final PrintStream originalOut = System.out;
@@ -46,7 +44,7 @@ public class ListCommandTest {
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        assertEquals("List of patients:\n" + "1. S7654321B\n" + "2. S1234567A\n", bos.toString());
+        assertEquals("List of patients:\n" + "1. S1234567A\n", bos.toString());
 
         System.setOut(originalOut);
     }
