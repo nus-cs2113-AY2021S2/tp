@@ -6,16 +6,16 @@ import seedu.duke.ui.UI;
 public class Duke {
     private UI ui;
 
-    private void start(){
+    private void start() {
         ui = new UI();
         ui.printGreetings();
     }
 
-    private void loopCommand(){
+    private void loopCommand() {
         CommandParser commandParser = new CommandParser();
         ui.printHelpPrompt();
         String command = ui.getUserInput();
-        while(!command.equals("exit")){
+        while (!command.equals("exit")) {
             commandParser.parseCommand(command);
             ui.printHelpPrompt();
             command = ui.getUserInput();
@@ -23,7 +23,7 @@ public class Duke {
         ui.printExitMessage();
     }
 
-    public void run(){
+    public void run() {
         start();
         loopCommand();
     }

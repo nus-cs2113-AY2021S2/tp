@@ -1,4 +1,4 @@
-package seedu.duke.Command;
+package seedu.duke.command;
 
 public abstract class Command {
     protected String feedback;
