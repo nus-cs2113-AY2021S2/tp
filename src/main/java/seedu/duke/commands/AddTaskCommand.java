@@ -41,10 +41,10 @@ public class AddTaskCommand extends Command {
     }
 
     /**
-     * Reads user input for whether the task is graded.
+     * Asks user if the task to be added is a graded one.
      *
      * @param ui Instance of UI.
-     * @return Boolean of is new task graded.
+     * @return Boolean of whether new task is graded.
      */
     public boolean getIsTaskGraded(UI ui) {
         ui.printMessage(MESSAGE_TASK_CHECK_GRADED);

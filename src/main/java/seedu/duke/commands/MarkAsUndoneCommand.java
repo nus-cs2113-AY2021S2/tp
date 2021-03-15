@@ -17,8 +17,8 @@ public class MarkAsUndoneCommand extends Command {
 
     //@@author aliciatay-zls
     /**
-     * Requests for list of indices to mark as done.
-     * Marks all tasks corresponding to specified indices as undone.
+     * Displays list of done tasks, asks user for a string of space-separated  
+     * indices and marks all corresponding tasks as undone.
      *
      * @param ui Instance of UI.
      */
@@ -42,7 +42,7 @@ public class MarkAsUndoneCommand extends Command {
     }
 
     /**
-     * Prints prompt to mark tasks as undone.
+     * Prints prompt for indices of tasks to mark as undone.
      *
      * @param ui Instance of UI.
      * @param doneTasks Array list of done tasks.
