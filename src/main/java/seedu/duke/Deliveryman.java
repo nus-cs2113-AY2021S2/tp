@@ -43,4 +43,8 @@ public class Deliveryman {
                 + "Vehicle Model: " + getVehicleModel()
         ;
     }
+
+    public String saveFormat() {
+        return getDriverName() + " | " + getLicensePlate() + " | " + getVehicleModel();
+    }
 }

@@ -16,7 +16,7 @@ public class Ui {
     protected static final String HELP_MESSAGE =
             "The following are several accepted commands by Diliveri:\n\n" +
                     "'help': Displays this help message\n" +
-                    "'view': Displays your profile\n" +
+                    "'profile': Displays your profile\n" +
                     "'editprofile': Allows you to edit your profile details\n" +
                     "'start': Loads up an allocated delivery assignment into the delivery list\n" +
                     "'list': Displays the list of deliveries in your assignment\n" +
@@ -96,8 +96,9 @@ public class Ui {
         String userCommand;
         String userArguments;
         int deliveryNumber;
-        promptUserInput();
         do {
+            //Shifted this line down so we can do without the if statement in line 142
+            promptUserInput();
             userInput = sc.nextLine();
             userCommand = parser.parseCommand(userInput);
             userArguments = parser.parseArguments(userInput);
@@ -138,9 +139,10 @@ public class Ui {
                 default:
                     System.out.println("Incorrect entry"); // raise exception
             }
-            if (!userCommand.equalsIgnoreCase("bye")) {
-                promptUserInput();
-            }
+//            Look at comment in line 100
+//            if (!userCommand.equalsIgnoreCase("bye")) {
+//                promptUserInput();
+//            }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
 
