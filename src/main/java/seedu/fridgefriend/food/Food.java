@@ -30,7 +30,7 @@ public class Food {
 
     @Override
     public String toString() {
-        String format = "||Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s||";
+        String format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s";
         return String.format(
                 format,
                 getFoodName(),

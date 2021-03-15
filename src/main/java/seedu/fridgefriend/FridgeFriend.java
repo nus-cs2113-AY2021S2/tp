@@ -4,20 +4,24 @@ import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Parser;
+import seedu.fridgefriend.utilities.Save;
 import seedu.fridgefriend.utilities.Ui;
 
 public class FridgeFriend {
 
     private static boolean isExit = false;
+    private static Fridge fridge = new Fridge();
 
     public FridgeFriend() {
         new Ui();
-        new Fridge();
+        new Save();
     }
 
     public static void main(String[] args) {
         Ui.printWelcomeMessage();
+        Save.checkSave();
         run();
+        Save.save(fridge);
         Ui.printByeMessage();
     }
 
