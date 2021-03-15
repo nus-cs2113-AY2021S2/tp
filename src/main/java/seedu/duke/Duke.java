@@ -12,6 +12,7 @@ public class Duke {
     }
 
     public void run() {
+        Deliveryman.deliveryman = new Deliveryman("Obi Wan", "HIGHGROUND", "YT-1300");
         ui.showWelcomeScreen();
         ui.showLoopingMenuUntilExit();
     }
