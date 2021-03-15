@@ -62,7 +62,7 @@ public class Save {
     }
 
     /**
-     * Overwrites the current textfile with data from the current session
+     * Overwrites the current textfile with data from the current session.
      * @param fridge the Fridge object from the current session to be encoded into the textfile
      */
     public static void save(Fridge fridge) {
