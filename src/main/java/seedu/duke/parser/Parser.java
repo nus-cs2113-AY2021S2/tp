@@ -447,14 +447,15 @@ public class Parser {
                 index = Integer.parseInt(word);
                 rawIndices.add(index);
             } catch (NumberFormatException ignored) {
-                // Non-integer inputs are ignored and will not be added to the array list rawIndices.
+                // Non-integer inputs will not be added to the array list rawIndices.
                 // PLACEHOLDER
-                System.out.println("Warning, non-integer value has been removed: " + word);
+                System.out.println("Warning, non-integer values removed: " + word);
             }
         }
 
         // Remove duplicates
         ArrayList<Integer> indices = new ArrayList<>();
+        ArrayList<Integer> removed = new ArrayList<>();
 
         for (int number : rawIndices) {
             if (!indices.contains(number)) {
@@ -465,9 +466,15 @@ public class Parser {
         // Remove out of bounds/ invalid index
         for (int i = 0; i < indices.size(); i++) {
             if (indices.get(i) > max || indices.get(i) <= 0) {
-                indices.remove(i);
+                int removedIndex = indices.remove(i);
+                removed.add(removedIndex);
                 i--;
             }
+        }
+        // PLACEHOLDER
+        // Prints indices that were removed.
+        if (removed.size() != 0) {
+            System.out.println("Warning, out of bounds index removed:" + removed);
         }
         return indices;
     }
