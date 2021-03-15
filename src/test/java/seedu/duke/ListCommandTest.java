@@ -17,7 +17,7 @@ public class ListCommandTest {
         Data data = new Data();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
-        arguments.put("payload", "");
+        
         ListCommand listCommand = new ListCommand(null, data, arguments);
 
         Exception exception = assertThrows(Exception.class, () -> {
@@ -31,8 +31,7 @@ public class ListCommandTest {
         Data data = new Data();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
-        arguments.put("payload", "");
-        
+
         Patient patient = new Patient("S1234567A");
         data.setPatient(patient);
         ListCommand listCommand = new ListCommand(null, data, arguments);
