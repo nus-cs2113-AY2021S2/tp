@@ -8,10 +8,18 @@ import seedu.connoisseur.commandlist.CommandList;
 public class Parser {
     public CommandList commandList;
 
+    /**
+     * Constructor for parser class. 
+     */
     public Parser() {
         commandList = new CommandList();
     }
 
+    /**
+     * Processes user input and executes the relevant commands. 
+     * @param input user input
+     * @return true if exit command, false otherwise
+     */
     public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String description;
@@ -31,16 +39,10 @@ public class Parser {
             commandList.deleteReview(description);
         } else if (command.equals("help")) {
             CommandList.printHelp();
-            /*Ui.printDivider();
-            Ui.printHelpCommandList();
-            Ui.printDivider();*/
         } else if (command.equals("bye")) {
+            CommandList.exit();
             return true;
         }
-        /*else {
-            throw new InvalidTaskCommandException();
-        }*/
-
         return false;
     }
 }

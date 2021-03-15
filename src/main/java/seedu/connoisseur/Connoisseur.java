@@ -1,34 +1,38 @@
 package seedu.connoisseur;
 
+import seedu.connoisseur.commandlist.CommandList;
 import seedu.connoisseur.parser.Parser;
+import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
+
 public class Connoisseur {
-    private Ui ui;
-    private Parser parser;
 
     /**
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
-        new Connoisseur().run();
+        new Connoisseur();
     }
 
-    public void run() {
-        ui = new Ui();
-        parser = new Parser();
-
+    /**
+     * Sets up required files for Duke to start.
+     */
+    public Connoisseur() {
+        Storage.createFolder();
+        Storage storage = new Storage();
+        if (storage.retrieveTextFile()) {
+            new CommandList(storage.loadData());
+        }
         Ui.printGreeting();
         String input;
-        boolean isExit = false;
-
-        while (!isExit) {
+        Ui ui = new Ui();
+        boolean isExitCommand = false;
+        while (!isExitCommand) {
             input = ui.readCommand();
-            isExit = parser.determineCommand(input);
+            Parser parser = new Parser();
+            isExitCommand = parser.determineCommand(input);
         }
-
-        Ui.printExitMessage();
-
     }
 }
 

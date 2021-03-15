@@ -13,9 +13,10 @@ public class Messages {
             + "\n                     Waiting for command...";
 
     public static final String HELP_MESSAGE = "How may I help you?";
-    public static final String EXIT_MESSAGE = "Bye, see you soon!";
+    public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";
     public static final String FILE_ALREADY_EXISTS = "Data file already exists";
     public static final String FOLDER_ALREADY_EXISTS = "Data folder already exists";
     public static final String FOLDER_SUCCESS = "Created new data folder";
+    public static final String CURRENT_DIRECTORY = "Present project directory is: " + System.getProperty("user.dir");
 }
