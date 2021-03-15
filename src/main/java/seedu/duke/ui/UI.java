@@ -11,13 +11,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
+import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
 import static seedu.duke.common.Messages.TAG_MODULE;
@@ -26,6 +30,7 @@ public class UI {
   
     private final Scanner scanner;
 
+    //@@author aliciatay-zls
     public UI() {
         scanner = new Scanner(System.in);
     }
@@ -81,9 +86,10 @@ public class UI {
      */
     public void printAllTasks() {
         Module module = ModuleList.getSelectedModule();
-        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()));
-        printTasks(module.getTaskList(), false);
-        printTasks(module.getTaskList(), true);
+        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()) + NEWLINE);
+        printTasks(module.getTaskList(), false, false);
+        printMessage("");
+        printTasks(module.getTaskList(), true, false);
     }
 
     /**
@@ -92,9 +98,11 @@ public class UI {
      * @param taskList Array list of tasks to print.
      * @param isDone Status of tasks in taskList.
      */
-    public void printTasks(ArrayList<Task> taskList, Boolean isDone) {
+    public void printTasks(ArrayList<Task> taskList, Boolean isDone, Boolean isOverview) {
         if (isDone) {
             printMessage(HEADER_DONE);
+        } else if (isOverview) {
+            printMessage(MESSAGE_TASKS_TO_LIST_UNDONE);
         } else {
             printMessage(HEADER_UNDONE);
         }
@@ -104,6 +112,21 @@ public class UI {
                 tasksCount++;
                 printTask(task, tasksCount);
             }
+        }
+        if (tasksCount == INDEX_FIRST) {
+            printEmpty(isDone);
+        }
+    }
+
+    /**
+     * Prints message to indicate task list empty.
+     * @param isDone Status of tasks in taskList.
+     */
+    private void printEmpty(Boolean isDone) {
+        if (isDone) {
+            printMessage(MESSAGE_TASKS_EMPTY);
+        } else {
+            printMessage(MESSAGE_TASKS_DONE);
         }
     }
 
@@ -132,6 +155,13 @@ public class UI {
         System.out.println(e.getMessage());
     }
 
+    //@@author isaharon
+    /**
+     * Reads input for indices from user. 
+     * Splits and returns array list of indices if valid.
+     * 
+     * @return Array list of valid indices.
+     */
     public ArrayList<Integer> getIndicesFromUser() {
         boolean isValidInput = false;
         ArrayList<Integer> indices = null;

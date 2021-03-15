@@ -30,6 +30,9 @@ public class ViewTeachingStaffCommand extends Command {
         int counter = 1;
         for (Lesson lesson : lessonList) {
             String teacherName = lesson.getTeachingStaff().getName();
+            if (teacherName.length() == 0) {
+                continue;
+            }
             String teacherEmail = lesson.getTeachingStaff().getEmail();
             ui.printMessage(String.format(FORMAT_PRINT_TEACHING_STAFF, counter, teacherName, teacherEmail));
             counter++;

@@ -47,7 +47,7 @@ class MarkAsUndoneCommandTest {
                 + "2. tP milestone" + NEWLINE
                 + "3. watch video snippets" + NEWLINE + NEWLINE
                 + "Please enter the indices of the tasks you would like to mark as undone." + NEWLINE
-                + "Separate indices with a blank space." + NEWLINE + NEWLINE
+                + "Separate indices with a blank space." + NEWLINE
                 + "Marked iP increments as undone." + NEWLINE
                 + "Marked watch video snippets as undone." + NEWLINE;
 

@@ -9,6 +9,8 @@ public class Constants {
     public static final String FORMAT_DATE_IO = "d-M-yyyy";
     public static final String FORMAT_DATE_NORMAL = "d MMM yyyy";
     public static final String LINUX_OPEN_COMMAND = "xdg-open ";
+    public static final int INDEX_FIRST = 0;
+    public static final String EMPTY_STRING = "";
 
     //Lecture type
     public static final String LECTURE_STRING = "lecture";

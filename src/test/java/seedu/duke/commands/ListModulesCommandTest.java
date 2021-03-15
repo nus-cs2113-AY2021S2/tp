@@ -35,13 +35,13 @@ class ListModulesCommandTest {
         Command command = new ListModulesCommand();
         command.execute(new UI());
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(MESSAGE_MODULE_TO_LIST);
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 1, MODULE_CODE_1)).append(NEWLINE);
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_3)).append(NEWLINE);
-        sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_2)).append(NEWLINE);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(MESSAGE_MODULE_TO_LIST).append(NEWLINE);
+        stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, 1, MODULE_CODE_1)).append(NEWLINE);
+        stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_3)).append(NEWLINE);
+        stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_2)).append(NEWLINE);
 
-        assertEquals(sb.toString() + System.lineSeparator(), outContent.toString());
+        assertEquals(stringBuilder.toString(), outContent.toString());
 
         System.setOut(originalOut);
     }

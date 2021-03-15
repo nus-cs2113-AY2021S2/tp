@@ -17,8 +17,8 @@ public class DeleteTaskCommand extends Command {
 
     //@@author aliciatay-zls
     /**
-     * Requests for list of indices to delete.
-     * Deletes all tasks corresponding to specified indices.
+     * Displays list of all tasks, asks user for a string of space-separated  
+     * indices and deletes all corresponding tasks.
      *
      * @param ui Instance of UI.
      */
@@ -42,7 +42,7 @@ public class DeleteTaskCommand extends Command {
     }
 
     /**
-     * Prints prompt to delete tasks.
+     * Prints prompt for indices of tasks to remove from the list.
      *
      * @param ui Instance of UI.
      * @param taskList Array list of tasks.

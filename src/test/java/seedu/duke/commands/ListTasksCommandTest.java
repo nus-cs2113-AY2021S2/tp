@@ -54,13 +54,13 @@ class ListTasksCommandTest {
         ListTasksCommand listTasksCommand = new ListTasksCommand();
         listTasksCommand.execute(new UI());
 
-        String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE
+        String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE + NEWLINE
                 + "[Undone]" + NEWLINE
                 + "1. weekly exercise (graded) - 26 Feb 2021" + NEWLINE
                 + "2. lecture quiz - 26 Feb 2021" + NEWLINE
                 + "\tcomplete before next lecture" + NEWLINE
                 + "3. read up notes - 26 Feb 2021" + NEWLINE
-                + "\tcomplete before lecture" + NEWLINE
+                + "\tcomplete before lecture" + NEWLINE + NEWLINE
                 + "[Done]" + NEWLINE
                 + "1. iP increments (graded) - 3 Mar 2021" + NEWLINE
                 + "\tremember to attach JAR file" + NEWLINE;

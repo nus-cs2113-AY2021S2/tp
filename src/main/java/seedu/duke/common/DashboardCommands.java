@@ -1,8 +1,9 @@
 package seedu.duke.common;
 
-public enum DashboardCommands {
+//@@author isaharon
+public enum DashboardCommands implements CommandList {
 
-    HELP("help", "Lists out all commands available when a module isn't selected."),
+    HELP("help", "Lists all commands available when no module is selected."),
     EXIT("exit", "Exits the program."),
     OPEN("open", "Opens the specified module."),
     ADD("add", "Adds a new module with specified name."),

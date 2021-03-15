@@ -47,7 +47,7 @@ class PrintHelpCommandTest {
             stringBuilder.append(commandAndDescription).append(NEWLINE);
         }
         String output = stringBuilder.toString();
-        assertEquals(output + NEWLINE, outContent.toString());
+        assertEquals(output, outContent.toString());
 
         // module selected
         ModuleList.setSelectedModule(MODULE_CODE_3);
