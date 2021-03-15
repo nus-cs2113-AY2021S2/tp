@@ -303,6 +303,7 @@ public class Parser {
 
         // ERROR - User does not enter any parameters.
         if (lessonDetails.length < 3) {
+            // PLACEHOLDER
             throw new CommandException("Missing lesson details.");
         }
 
@@ -321,6 +322,7 @@ public class Parser {
         try {
             lessonType = LessonType.valueOf(type);
         } catch (IllegalArgumentException e) {
+            // PLACEHOLDER
             throw new CommandException("Invalid lesson type entered.");
         }
 
@@ -328,6 +330,7 @@ public class Parser {
 
         String link = allDetails[INDEX_LINK];
         if (!isValidLink(link)) {
+            // PLACEHOLDER
             throw new CommandException("Invalid link entered.");
         }
 
@@ -335,6 +338,7 @@ public class Parser {
 
         String email = allDetails[INDEX_TEACHER_EMAIL];
         if (!isValidEmail(email) && !email.equals(PLACEHOLDER)) {
+            // PLACEHOLDER
             throw new CommandException("Invalid email entered.");
         }
 
@@ -380,6 +384,7 @@ public class Parser {
 
         // ERROR - User does not enter any parameters.
         if (taskDetails.length < 3) {
+            // PLACEHOLDER
             throw new CommandException("Missing task details.");
         }
 
@@ -400,6 +405,7 @@ public class Parser {
         try {
             deadline = convertToDate(deadlineString);
         } catch (DateTimeParseException e) {
+            // PLACEHOLDER
             throw new CommandException("Invalid/missing deadline.");
         }
 
@@ -442,6 +448,8 @@ public class Parser {
                 rawIndices.add(index);
             } catch (NumberFormatException ignored) {
                 // Non-integer inputs are ignored and will not be added to the array list rawIndices.
+                // PLACEHOLDER
+                System.out.println("Warning, non-integer value has been removed: " + word);
             }
         }
 
