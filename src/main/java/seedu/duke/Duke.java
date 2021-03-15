@@ -6,7 +6,7 @@ import seedu.duke.routing.Router;
 public class Duke {
 
     private Router router;
-    private static UiManager ui;
+    private UiManager ui;
     private History history;
     private NotesManager notesManager;
 

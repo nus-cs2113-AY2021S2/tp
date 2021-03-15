@@ -1,6 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.*;
+import seedu.duke.History;
+import seedu.duke.NotesManager;
+import seedu.duke.UiManager;
 import seedu.duke.routing.Router;
 
 public class RepeatCommand extends Command {

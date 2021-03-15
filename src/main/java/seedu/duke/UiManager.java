@@ -17,8 +17,8 @@ public class UiManager {
             + "| $$\\  $$$| $$  | $$ /$$  \\ $$| $$\\  $ | $$ /$$__  $$  /$$__/  | $$_____/\n"
             + "| $$ \\  $$|  $$$$$$/|  $$$$$$/| $$ \\/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$\n"
             + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/\n";
-    private static final String GREETING_MESSAGE = "Hello! Welcome to NUSMaze" + LS +
-            "Where do you want to go today?";
+    private static final String GREETING_MESSAGE = "Hello! Welcome to NUSMaze" + LS
+            + "Where do you want to go today?";
     private static final String BYE_MESSAGE = "Bye. Hope to see you again soon!";
 
     private final Scanner in;
