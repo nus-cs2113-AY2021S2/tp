@@ -2,35 +2,34 @@ package seedu.duke;
 
 import java.util.ArrayList;
 
-public class Record {
+public class History {
+    private static ArrayList<String> history = new ArrayList();
 
-    private static ArrayList<String> records = new ArrayList();
-
-    public Record() {
+    public History() {
     }
 
     public ArrayList<String> getRecords() {
-        return records;
+        return history;
     }
 
     public void displayRecords() {
-        System.out.println("Number of records in your history: " + records.size());
-        for (int i = 1; i - 1 < records.size(); i++) {
-            System.out.println(i + ". " + records.get(i - 1));
+        System.out.println("Number of records in your history: " + history.size());
+        for (int i = 1; i - 1 < history.size(); i++) {
+            System.out.println(i + ". " + history.get(i - 1));
         }
     }
 
     public void addRecord(String recordDescription) {
-        records.add(recordDescription);
+        history.add(recordDescription);
     }
 
     public void emptyRecords() {
-        records.clear();
+        history.clear();
         System.out.println("Your history has been cleared.");
     }
 
     public String[] getSpecificEntry(int entryNumber) {
-        String[] pathDetails = records.get(entryNumber - 1).split(";");
+        String[] pathDetails = history.get(entryNumber - 1).split(";");
         int startingVenueIndex = 7;
         String from = pathDetails[0].substring(startingVenueIndex);
         int destinationVenueIndex = 5;

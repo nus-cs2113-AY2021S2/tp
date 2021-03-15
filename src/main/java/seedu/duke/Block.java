@@ -10,6 +10,7 @@ public class Block {
     public Block(String name) {
         this.name = name;
         this.isVisited = false;
+        this.neighbours = new ArrayList<>();
     }
 
     public String getName() {

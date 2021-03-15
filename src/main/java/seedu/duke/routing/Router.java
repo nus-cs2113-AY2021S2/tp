@@ -1,4 +1,7 @@
-package seedu.duke;
+package seedu.duke.routing;
+
+import seedu.duke.History;
+import seedu.duke.Block;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +17,7 @@ public class Router {
     }
 
 
-    public void execute(Record history) {
+    public void execute(History history) {
         Scanner in = new Scanner(System.in);
         System.out.println("STARTING BLOCK:");
         String from = in.nextLine();
@@ -29,7 +32,7 @@ public class Router {
         }
     }
 
-    public void repeatExecution(Record history) {
+    public void repeatExecution(History history) {
         /**
          * Repeats the execute function for a past history search.
          */

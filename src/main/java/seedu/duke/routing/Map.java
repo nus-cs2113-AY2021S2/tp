@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.duke.routing;
+
+import seedu.duke.Block;
 
 import java.util.HashMap;
 
