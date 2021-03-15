@@ -7,12 +7,14 @@ public class Review {
     public Review(String description) {
         this.description = description;
     }
+
     public Review(String description,double rating) {
         this.description = description;
         this.rating = rating;
     }
 
     @Override
+
     public String toString() {
         return description;
     }

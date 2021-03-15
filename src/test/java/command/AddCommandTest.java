@@ -21,7 +21,6 @@ public class AddCommandTest {
 
     @Test
     public void addCommandIntoList() throws DukeExceptions {
-//        canteens.get(0).getStore(0).addReview(new Review("I loved it"));
         AddCommand command = new AddCommand(0, "I loved it",3.5);
         command.execute(canteens, new Ui());
         assertEquals(canteens.get(0).getStore(0).getReviews().get(0).toString(), "I loved it");

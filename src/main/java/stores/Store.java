@@ -37,7 +37,6 @@ public class Store {
 
     public void addReview(Review newReview) {
         reviews.add(newReview);
-//        return null;
     }
 
     public void addMenu(Menu newMenu) {
