@@ -5,12 +5,14 @@ import java.time.LocalDate;
 public class Diet extends Record {
 
     private double totalCalories;
+    
     /**
      * Initializes the object with given record type and date.
      *
      * @param type the type of the record.
      * @param date the date of the record.
      */
+
     public Diet(RecordType type, LocalDate date) {
         super(type, date);
     }
