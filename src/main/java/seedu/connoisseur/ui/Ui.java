@@ -37,6 +37,7 @@ public class Ui {
     }
 
     public static void printHelpMessage() {
+        System.out.println("Thanks for using Connoisseur, see you again!");
     }
 
     public static void printExitMessage() {
