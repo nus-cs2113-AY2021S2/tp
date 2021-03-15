@@ -42,14 +42,10 @@ public class Connoisseur {
 
         Ui.printGreeting();
         String input;
-        boolean isExit = false;
 
-        while (!isExit) {
-            input = ui.readCommand();
-            isExit = parser.determineCommand(input);
-        }
+        input = ui.readCommand();
+        parser.determineCommand(input);
 
-        Ui.printExitMessage();
 
     }
 }

@@ -12,7 +12,7 @@ public class Parser {
         commandList = new CommandList();
     }
 
-    public boolean determineCommand(String input) {
+    public void determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String description;
         try { 
@@ -32,12 +32,8 @@ public class Parser {
         } else if (command.equals("help")) {
             CommandList.printHelp();
         } else if (command.equals("bye")) {
-            return true;
+            CommandList.exit();
         }
-        /*else {
-            throw new InvalidTaskCommandException();
-        }*/
 
-        return false;
     }
 }
