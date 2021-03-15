@@ -42,8 +42,8 @@ public class Ui {
      * Prints a welcome message.
      */
     public void printWelcome() {
-        printMessage("Welcome to the Patient Manager.\n");
-        printMessage("Please input a command: ");
+        printMessage(Constants.WELCOME_MESSAGE);
+        printMessage(Constants.INPUT_PROMPT);
     }
 
     /**
