@@ -38,7 +38,7 @@ class RemoveCommandTest {
                 + " from your fridge.\n"
                 + "Now you have " + Fridge.getSize()
                 + " food in the fridge.";
-        String actualMessage = createRemoveCommand(1).actualMessage();
+        String actualMessage = createRemoveCommand(1).getMessagePrintedToUser();
         assertEquals(expectedMessage,actualMessage);
     }
 

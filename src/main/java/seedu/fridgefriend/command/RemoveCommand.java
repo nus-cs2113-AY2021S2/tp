@@ -54,7 +54,7 @@ public class RemoveCommand extends Command {
      *
      * @return the actual message after remove food from fridge to the user
      */
-    public String actualMessage() {
+    public String getMessagePrintedToUser() {
         String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
                 + " from your fridge.\n"
                 + "Now you have " + Fridge.getSize()
