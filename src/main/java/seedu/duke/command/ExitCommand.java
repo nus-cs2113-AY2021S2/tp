@@ -7,7 +7,7 @@ import seedu.duke.Ui;
 import java.util.HashMap;
 
 public class ExitCommand extends Command {
-    protected Boolean isExit = true;
+
     /**
      * This is the constructor of the command. Arguments are passed to parent class.
      *
@@ -18,11 +18,11 @@ public class ExitCommand extends Command {
 
     public ExitCommand(Ui ui, Data data, HashMap<String, String> arguments) {
         super(ui, data, arguments);
+        isExit = true;
     }
 
     @Override
     public void execute() throws Exception {
-        System.out.println(Constants.EXIT_MESSAGE);
-        System.exit(0);
+        ui.printMessage(Constants.EXIT_MESSAGE);
     }
 }

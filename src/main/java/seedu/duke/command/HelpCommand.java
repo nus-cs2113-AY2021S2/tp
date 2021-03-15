@@ -19,8 +19,7 @@ public class HelpCommand extends Command {
 
     @Override
     public void execute() {
-        // TODO: replace with Ui methods after Ui is implemented
-        System.out.println(Constants.ADD_INFO_MESSAGE
+        ui.printMessage(Constants.ADD_INFO_MESSAGE
                 + Constants.LIST_INFO_MESSAGE
                 + Constants.LOAD_INFO_MESSAGE
                 + Constants.RECORD_CONSULTATION_INFO_MESSAGE
