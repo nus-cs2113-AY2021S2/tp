@@ -1,5 +1,7 @@
 package seedu.fridgefriend.food;
 
+import seedu.fridgefriend.exception.InvalidDateException;
+
 /**
  * Represents a portion of a specific food that is stored in the smart fridge.
  * When calling constructor, FoodCategory and foodName are NECESSARY fields.
@@ -10,26 +12,31 @@ package seedu.fridgefriend.food;
 public class Food {
     protected FoodCategory category;
     protected String foodName;
-    protected String expiryDate;
+    protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
 
     public Food(FoodCategory category, String foodName) {
-        this.category = category;
-        this.foodName = foodName;
+        this.setCategory(category);
+        this.setFoodName(foodName);
     }
 
-    public Food(FoodCategory category, String foodName,
-                String expiryDate, FoodStorageLocation storageLocation) {
-        this.category = category;
-        this.foodName = foodName;
-        this.expiryDate = expiryDate;
-        this.storageLocation = storageLocation;
+    public Food(FoodCategory category, String foodName, String expiryString,
+            FoodStorageLocation storageLocation) throws InvalidDateException {
+        this.setCategory(category);
+        this.setFoodName(foodName);
+        this.setExpiryDate(expiryString);
+        this.setStorageLocation(storageLocation);
     }
 
     @Override
     public String toString() {
-        return String.format("||Food name: %1$s, category: %2$s, expiry on: %3$s, stored in: %4$s||",
-                foodName, category.name(), expiryDate, storageLocation.name());
+        String format = "||Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s||";
+        return String.format(
+                format,
+                getFoodName(),
+                getCategory().name(), 
+                getExpiryDate().toString(), 
+                getStorageLocation().name());
     }
 
     public FoodCategory getCategory() {
@@ -48,11 +55,12 @@ public class Food {
         this.foodName = foodName;
     }
 
-    public String getExpiryDate() {
+    public ExpiryDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(String expiryDate) {
+    public void setExpiryDate(String expiryString) throws InvalidDateException {
+        ExpiryDate expiryDate = new ExpiryDate(expiryString);
         this.expiryDate = expiryDate;
     }
 

@@ -1,35 +1,49 @@
+  ______    _     _            ______    _                _ 
+ |  ____|  (_)   | |          |  ____|  (_)              | |
+ | |__ _ __ _  __| | __ _  ___| |__ _ __ _  ___ _ __   __| |
+ |  __| '__| |/ _` |/ _` |/ _ \  __| '__| |/ _ \ '_ \ / _` |
+ | |  | |  | | (_| | (_| |  __/ |  | |  | |  __/ | | | (_| |
+ |_|  |_|  |_|\__,_|\__, |\___|_|  |_|  |_|\___|_| |_|\__,_|
+                     __/ |
+                    |___/
+
 Hello! I'm FridgeFriend!
 What can I do for you?
-
+-----------------------------------------------------------------
 Sorry my friend, please give a valid input.
-
+-----------------------------------------------------------------
 Great! I have added chicken into your fridge.
-Details: ||Food name: chicken, category: MEAT, expiry on: 2021-06-30, stored in: LOWER_SHELF||
-
+Details: ||Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF||
+-----------------------------------------------------------------
 You have chicken in your fridge.
-
+-----------------------------------------------------------------
 Sorry my friend, please give a valid input.
-
+-----------------------------------------------------------------
 Great! I have added grouper into your fridge.
-Details: ||Food name: grouper, category: SEAFOOD, expiry on: 2021-04-05, stored in: OTHER||
+Details: ||Food name: grouper, category: SEAFOOD, expiry: 05-04-2021, stored in: OTHER||
+-----------------------------------------------------------------
+Sorry my friend, the date must be in the form 'dd-mm-yy'.
+Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
 
+-----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
-
+-----------------------------------------------------------------
 Here are the items in your fridge:
 	1. chicken [MEAT]
 	2. grouper [SEAFOOD]
-
+-----------------------------------------------------------------
 These are the MEAT in your fridge:
 	1. chicken
-
+-----------------------------------------------------------------
 Sorry my friend, please enter a valid food category.
-
+-----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
-
+-----------------------------------------------------------------
 Noted! I've removed grouper from your fridge.
 Now you have 1 food in the fridge.
-
+-----------------------------------------------------------------
 Please enter a valid index to remove food.
-
-Bye. Hope to see you again soon!
-
+Index 99 out of bounds for length 1
+-----------------------------------------------------------------
+Bye! Hope to see you again soon!
+-----------------------------------------------------------------

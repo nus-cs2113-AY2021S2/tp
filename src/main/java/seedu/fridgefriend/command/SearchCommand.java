@@ -2,16 +2,15 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
-
-import java.util.List;
+import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Search for a specific food in the fridge.
+ * Represents a command to search for a specific food item in the fridge.
  */
 public class SearchCommand extends Command {
 
     private String foodName;
-    private static int START_COUNTER = 1;
 
     public SearchCommand(String foodName) throws EmptyDescriptionException {
         if (foodName.isEmpty()) {
@@ -22,12 +21,13 @@ public class SearchCommand extends Command {
     }
 
     @Override
-    public void execute(List<Food> fridge) {
-        showResults(isFound(fridge));
+    public void execute() {
+        showResults(isFound());
     }
 
-    private boolean isFound(List<Food> fridge) {
-        for (Food food: fridge) {
+    private boolean isFound() {
+        for (int i = 0; i < Fridge.getSize(); i += 1) {
+            Food food = Fridge.getFood(i);
             if (food.getFoodName().equals(foodName)) {
                 return true;
             }
@@ -36,12 +36,12 @@ public class SearchCommand extends Command {
     }
 
     private void showResults(Boolean isFound) {
+        String message;
         if (isFound == true) {
-            System.out.println("You have " + foodName
-                    + " in your fridge.\n");
+            message = "You have " + foodName + " in your fridge.";
         } else {
-            System.out.println("You do not have " + foodName
-                    + " in your fridge.\n");
+            message = "You do not have " + foodName + " in your fridge.";
         }
+        Ui.printMessage(message);
     }
 }
