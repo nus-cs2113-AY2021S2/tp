@@ -5,6 +5,9 @@ import seedu.duke.record.Record;
 import java.time.LocalDate;
 import java.util.Comparator;
 
+/**
+ * Comparator for comparing two records by date.
+ */
 public class RecordDateComparator implements Comparator<Record> {
     @Override
     public int compare(Record record1, Record record2) {

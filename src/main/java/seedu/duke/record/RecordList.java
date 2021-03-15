@@ -7,23 +7,44 @@ import seedu.duke.ui.UI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Represents the list that contains all records of one type.
+ */
 public class RecordList {
     private final ArrayList<Record> records = new ArrayList<>();
     private RecordType type;
 
+    /**
+     * Initializes the record list object with a given record type.
+     *
+     * @param type the type of record that this list contains.
+     */
     public RecordList(RecordType type) {
         this.type = type;
     }
 
+    /**
+     * Adds a record to the current list.
+     *
+     * @param newRecord the new record to add.
+     */
     public void addRecord(Record newRecord) {
         records.add(newRecord);
         records.sort(new RecordDateComparator());
     }
 
+    /**
+     * Removes a record from the current list by index.
+     *
+     * @param index the index of the record.
+     */
     public void removeRecord(int index) {
         records.remove(index);
     }
 
+    /**
+     * Prints the list of records.
+     */
     public void printRecords() {
         if (records.isEmpty()) {
             UI.printMessage(Messages.MESSAGE_NO_RECORD
@@ -37,6 +58,11 @@ public class RecordList {
         }
     }
 
+    /**
+     * Prints the list of records on a specific date.
+     *
+     * @param date the date of records.
+     */
     public void printRecords(LocalDate date) {
         if (records.isEmpty()) {
             UI.printMessage(Messages.MESSAGE_NO_RECORD

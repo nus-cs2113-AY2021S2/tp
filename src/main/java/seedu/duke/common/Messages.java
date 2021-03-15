@@ -1,5 +1,8 @@
 package seedu.duke.common;
 
+/**
+ * Container for commonly used messages.
+ */
 public class Messages {
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
             + "You can try adding records by using command 'add'.";
