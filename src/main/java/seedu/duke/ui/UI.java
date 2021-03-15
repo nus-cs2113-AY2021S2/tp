@@ -3,6 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
 
 import java.time.format.DateTimeFormatter;
@@ -17,6 +18,7 @@ import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -144,27 +146,37 @@ public class UI {
         }
     }
 
-    //@@author isaharon
-    /**
-     * Reads user input until non-integer.
-     * Returns list of integers user input.
-     *
-     * @return Array list of integers users input.
-     */
-    public ArrayList<Integer> readIntegers() {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<Integer> listOfIntegers = new ArrayList<>();
-        while (scanner.hasNextInt()) {
-            listOfIntegers.add(scanner.nextInt());
-        }
-        return listOfIntegers;
-    }
-
     /**
      * Prints error message of an exception within the program.
      * @param e Exception to be printed
      */
     public void printError(DukeException e) {
         System.out.println(e.getMessage());
+    }
+
+    //@@author isaharon
+    /**
+     * Reads input for indices from user. 
+     * Splits and returns array list of indices if valid.
+     * 
+     * @return Array list of valid indices.
+     */
+    public ArrayList<Integer> getIndicesFromUser() {
+        boolean isValidInput = false;
+        ArrayList<Integer> indices = null;
+
+        do {
+            String userInput = readCommand();
+            try {
+                indices = Parser.checkIndices(userInput, ModuleList.getModules().size());
+            } catch (NumberFormatException e) {
+                // keep reading input until given valid
+                printMessage(MESSAGE_INVALID_INDICES);
+                continue;
+            }
+            isValidInput = true;
+        } while (!isValidInput);
+
+        return indices;
     }
 }
