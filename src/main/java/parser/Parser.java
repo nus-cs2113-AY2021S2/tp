@@ -1,11 +1,6 @@
 package parser;
 
-import command.AddCommand;
-import command.Command;
-import command.DisplayMenusCommand;
-import command.ExitCommand;
-import command.ReadCommand;
-import command.DisplayStoresCommand;
+import command.*;
 import exceptions.DukeExceptions;
 
 
@@ -54,6 +49,22 @@ public class Parser {
             String newStoreReview = line.substring(line.indexOf("r/") + 2);
             double newStoreRating = Double.parseDouble(line.substring(line.indexOf("s/") + 2,line.indexOf("r/")));
             newCommand = new AddCommand(storeDisplayedIndex - 1,newStoreReview,newStoreRating);
+        } else {
+            throw new DukeExceptions("Please enter a valid command!");
+        }
+        return newCommand;
+    }
+
+    //receive command from admin
+    public Command parseAdminCommand(String line, int maxStores) throws DukeExceptions {
+        Command newCommand;
+
+        if (line.equals("1")) {
+            newCommand = new AddStoreCommand();
+        } else if (line.startsWith("list")) {
+            newCommand = new DisplayStoresCommand();
+        } else if (line.startsWith("exit")) {
+            newCommand = new ExitCommand();
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }

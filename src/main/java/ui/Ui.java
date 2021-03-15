@@ -83,9 +83,9 @@ public class Ui {
     }
 
     public void showDisplayStoreMessage() {
+        System.out.println(Ui.LINESPACING);
         System.out.println("Here's a list of the stores in the canteen: The Deck");
     }
-
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println("Here are the menus of the " + storeName + ":");
