@@ -535,6 +535,21 @@ Please choose which action you would like to do and enter the number:
 ---
 ## 4. Command Summary
 
-{Give a 'cheat sheet' of commands here}
+ Features|Menu | Command to enter from the Main Menu
+----|-----|-------
+Add/View Module Description | Module Information | 1, 1
+Add/View Components and Their Weightages | Module Information| 1, 2
+[View All Modules](#313-view-all-modules) | Module Information | 1, 3
+[Add a Review](#314-add-a-review) | Module Information | 1, 4
+[View All Reviews](#315-view-all-reviews) | Module Information | 1, 5
+[Delete a Module](#316-delete-a-module) | Module Information | 1, 6
+[Add a new Task](#331-add-new-task) | Task Manager | 3, 1
+[Delete a new Task](#332-delete-a-task) | Task Manager | 3, 2
+[View all Tasks](#333-view-all-tasks) | Task Manager | 3, 3
+[Pin a Task](#334-pin-a-task) | Task Manager | 3, 4
+[Add an External Link](#342-add-external-link) | External Links | 4, 1, 1
+[Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
+[View all Links](#344-view-external-links) | External Links | 4, 1 , 3
+[Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2
+[View Zoom Links](#346-view-zoom-links) | Links | 4, 3
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
