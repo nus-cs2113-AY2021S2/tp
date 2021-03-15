@@ -116,15 +116,11 @@ public class Messages {
     //Module info messages
     public static final String FORMAT_LESSONS_INFO = "%s - %s" + NEWLINE;
     public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
-    public static final String FORMAT_MODULE_INFO = "<%s>" + NEWLINE;
+    public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
     public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
+    public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
 
     //Command messages
-    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
-
-    //Mpdule info messages
-    public static final String FORMAT_LESSONS_INFO = "%s - %s";
-    public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
-    public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
+    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";    
 
 }
