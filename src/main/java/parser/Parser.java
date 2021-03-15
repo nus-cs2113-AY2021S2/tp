@@ -1,6 +1,12 @@
 package parser;
 
-import command.*;
+import command.AddCommand;
+import command.AddStoreCommand;
+import command.Command;
+import command.DisplayMenusCommand;
+import command.DisplayStoresCommand;
+import command.ExitCommand;
+import command.ReadCommand;
 import exceptions.DukeExceptions;
 
 

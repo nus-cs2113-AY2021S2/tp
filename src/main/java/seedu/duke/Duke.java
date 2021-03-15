@@ -54,7 +54,7 @@ public class Duke {
                 }
                 if (input.equals("1")) {
                     isPublicUser = true;
-                } else if (input.equals("2")){
+                } else if (input.equals("2")) {
                     isAdmin = true;
                 } else {
                     ui.showGoodbye();
