@@ -6,7 +6,6 @@ import seedu.fridgefriend.exception.InvalidDateException;
  * Represents a portion of a specific food that is stored in the smart fridge.
  * When calling constructor, FoodCategory and foodName are NECESSARY fields.
  * The date fields are represented by strings for now, they are OPTIONAL as well as storage location.
- * todo: If needed, make the class abstract and add children classes(only when necessary unique methods are needed).
  */
 public class Food {
     protected FoodCategory category;
