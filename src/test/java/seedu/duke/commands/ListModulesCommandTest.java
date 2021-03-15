@@ -36,7 +36,7 @@ class ListModulesCommandTest {
         command.execute(new UI());
 
         StringBuilder sb = new StringBuilder();
-        sb.append(MESSAGE_MODULE_TO_LIST);
+        sb.append(MESSAGE_MODULE_TO_LIST).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 1, MODULE_CODE_1)).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_3)).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_2)).append(NEWLINE);

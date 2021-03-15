@@ -5,4 +5,7 @@ CS2113T
 add task tP Submission ;; 16-3-2021
 Y
 close
+delete
+1
+modules
 exit

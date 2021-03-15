@@ -3,7 +3,6 @@ What can I do for you today?
 --------------------------------------------------------------------------
 GULIO >> 
 Modules in your list:
-
 --------------------------------------------------------------------------
 GULIO >> 
 Added CS2113T to the module list.
@@ -26,6 +25,17 @@ Added tP Submission to task list.
 --------------------------------------------------------------------------
 CS2113T >> 
 CS2113T closed.
+--------------------------------------------------------------------------
+GULIO >> 
+Which modules would you like to delete?
+ 1. CS2113T
+
+Please enter the indices of the modules you would like to delete.
+Separate indices with a blank space.
+Removed CS2113T from the module list.
+--------------------------------------------------------------------------
+GULIO >> 
+Modules in your list:
 --------------------------------------------------------------------------
 GULIO >> 
 Have a nice day! Bye bye!
