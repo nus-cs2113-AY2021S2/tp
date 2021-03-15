@@ -1,7 +1,5 @@
 package seedu.fridgefriend.command;
 
-import java.util.List;
-
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
