@@ -1,13 +1,14 @@
 package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.Parser;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -24,9 +25,7 @@ public class DeleteModuleCommand extends Command {
     @Override
     public void execute(UI ui) {
         ui.printMessage(getDeleteInfo());
-
-        // TODO validate list of integers. Assume input is valid for now.
-        ArrayList<Integer> indices = ui.readIntegers();
+        ArrayList<Integer> indices = ui.getIndicesFromUser();
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         ui.printMessage(getDeletedModuleCodes(deletedModulesCodes));
     }
