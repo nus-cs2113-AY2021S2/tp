@@ -22,10 +22,10 @@ public class Ui {
             + "||    $$$$$$    $$    $$ $$ $$  $$    $$      $$       ||\n"
             + "||    $$        $$    $$   $$$  $$    $$    $$  $$     ||\n"
             + "||    $$      $$$$$$  $$    $$   $$$$$$    $$    $$    ||\n"
-            + "=========================================================\n";
+            + "=========================================================";
 
     private static final String MESSAGE_GOODBYE =
-            "=======================================================================\n"
+            "=====================================================================\n"
             + "||   $$  $$  $$    $$   $$$$$   $$$$$$$$     $$$$$   $$  $$  $$    ||\n"
             + "||   $$  $$  $$    $$  $$   $$     $$       $$   $$  $$  $$  $$    ||\n"
             + "||   $$$$$$  $$    $$  $$$$$$$     $$       $$$$$$$  $$$$$$  $$    ||\n"
@@ -33,7 +33,8 @@ public class Ui {
             + "||   $$  $$   $$$$$$   $$   $$     $$       $$   $$  $$  $$  $$    ||\n"
             + "=====================================================================\n";
 
-    private static final String MESSAGE_LOADING = "Loading from save... ";
+    private static final String MESSAGE_LOADING = "Loading from save file... ";
+    private static final String MESSAGE_FILE_CREATION_SUCCESS = "New save file created!";
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
     private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
     private static final String MESSAGE_SAVING_SUCCESSFULLY_ADDED = "Saving has been added...";
@@ -66,6 +67,12 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    public static void printSuccessfulFileCreation() {
+        System.out.println(DIVIDER);
+        System.out.println(MESSAGE_FILE_CREATION_SUCCESS);
+        System.out.println(DIVIDER);
+    }
+
     public void printSuccessfulAdd(Record recordAdded, int index) {
         System.out.println(DIVIDER);
         System.out.println();
@@ -91,7 +98,9 @@ public class Ui {
 
     public void printWelcomeMessage() {
         System.out.println(logo);
-        System.out.println(MESSAGE_LOADING + fileLoadStatus());
+        System.out.println(DIVIDER);
+        System.out.println(MESSAGE_LOADING);
+        System.out.println(DIVIDER);
     }
 
     public void printGoodByeMessage() {
@@ -102,10 +111,6 @@ public class Ui {
         System.out.println(DIVIDER);
         System.out.println(message);
         System.out.println(DIVIDER);
-    }
-
-    private String fileLoadStatus() {
-        return "Successful";
     }
 
     public void printExpenses(RecordList recordList) {
