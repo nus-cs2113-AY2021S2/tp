@@ -9,12 +9,14 @@ public class Delivery {
     private String recipient; // contains name of receipient
     private int weight; // weight of the delivery
     private ArrayList<Item> items;
+    private boolean isComplete;
 
     public Delivery(String deliveryID, String address, String recipient, ArrayList<Item> items) {
         this.deliveryID = deliveryID;
         this.address = address;
         this. recipient = recipient;
         this.items = items;
+        this.isComplete = false;
         for (Item item : items) {
             this.weight += item.getItemWeight();
         }
@@ -58,6 +60,30 @@ public class Delivery {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public void setDeliveryAsComplete() {
+        this.isComplete = true;
+    }
+
+    public String getDeliveryStatusSymbol() {
+        if (this.isComplete) {
+            return "[Y]";
+        }
+        else {
+            return "[N]";
+        }
+    }
+
+    /**
+     * @return formatted line used in Ui.java methods
+     */
+    @Override
+    public String toString() {
+        return this.getDeliveryID() + " "
+                + this.getDeliveryStatusSymbol() + " "
+                + this.getAddress() + " "
+                + this.getRecipient();
     }
 
 
