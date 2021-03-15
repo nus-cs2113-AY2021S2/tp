@@ -10,13 +10,16 @@ import java.util.ArrayList;
 
 import static seedu.duke.command.Utils.validateArguments;
 
+/**
+ * Handles all operations related to the exit command.
+ */
 public class ExitCommand extends Command {
-    private static final ArgumentType[] argumentTypeOrder = { ArgumentType.COMMAND };
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = { ArgumentType.COMMAND };
     protected static final String COMMAND_EXIT = "exit";
     private static final String MESSAGE_EXITING = "You are exiting FINUX now...";
 
     public ExitCommand(ArrayList<String> arguments) throws CommandException {
-        validateArguments(arguments, argumentTypeOrder, COMMAND_EXIT);
+        validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_EXIT);
     }
 
     /**
