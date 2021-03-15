@@ -4,7 +4,7 @@ public class Messages {
 
 
     //General message
-    public static final String FORMAT_LIST_HELP = "%-8s - %s";
+    public static final String FORMAT_LIST_HELP = "%-16s - %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
