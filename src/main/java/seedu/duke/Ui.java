@@ -50,7 +50,7 @@ public class Ui {
      * Prints the exception message specified in @param.
      * @param e Exception to be printed
      */
-    public void printException(Exception e){
+    public void printException(Exception e) {
         printMessage(e.toString());
     }
 
