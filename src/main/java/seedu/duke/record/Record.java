@@ -11,6 +11,17 @@ public abstract class Record {
     protected LocalDate date;
 
     /**
+     * Initializes the object with given record type and date.
+     *
+     * @param type the type of the record.
+     * @param date the date of the record.
+     */
+    public Record(RecordType type, LocalDate date) {
+        this.type = type;
+        this.date = date;
+    }
+
+    /**
      * Gets the date of the record.
      *
      * @return the date of the record in LocalDate.
