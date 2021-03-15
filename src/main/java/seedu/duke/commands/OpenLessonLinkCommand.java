@@ -9,13 +9,17 @@ import seedu.duke.ui.UI;
 
 import java.awt.Desktop;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LINK_ENTERED;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
 import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
@@ -26,6 +30,7 @@ import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
 public class OpenLessonLinkCommand extends Command {
 
     //@@author H-horizon
+
     /**
      * Opens links corresponding to specified indices.
      *
@@ -60,7 +65,19 @@ public class OpenLessonLinkCommand extends Command {
             Lesson lesson = lessonList.get(index - 1);
             String lessonType = getLessonTypeString(lesson.getLessonType());
             ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
-            openLessonLink(lesson.getOnlineLink(), ui);
+            HttpURLConnection connection = null;
+            String lessonLink = lesson.getOnlineLink();
+            try {
+                URL lessonUrl = new URL(lessonLink);
+                connection = (HttpURLConnection) lessonUrl.openConnection();
+                connection.setRequestMethod(HEAD);
+                int statusCode = connection.getResponseCode();
+                openLessonLink(lessonLink, ui);
+            } catch (IOException e) {
+                ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
+            }
+
+
         }
     }
 

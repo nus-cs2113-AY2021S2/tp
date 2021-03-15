@@ -116,5 +116,8 @@ public class Messages {
     public static final String FORMAT_MODULE_INFO = "<%s>" + NEWLINE;
     public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
 
+    //Command messages
+    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
+
 
 }
