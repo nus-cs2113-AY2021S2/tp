@@ -39,12 +39,18 @@ public class Deliveryman {
     @Override
     public String toString() {
         return "Name: " + getDriverName() + '\n'
-                + "License Plate: " + getLicensePlate() + '\n'
-                + "Vehicle Model: " + getVehicleModel()
+                + "Vehicle Model: " + getVehicleModel() + '\n'
+                + "License Plate: " + getLicensePlate()
         ;
     }
 
     public String saveFormat() {
         return getDriverName() + " | " + getLicensePlate() + " | " + getVehicleModel();
+    }
+
+    public void editProfile(String name, String vehicleModel, String licensePlate) {
+        this.setDriverName(name);
+        this.setVehicleModel(vehicleModel);
+        this.setLicensePlate(licensePlate);
     }
 }

@@ -17,8 +17,7 @@ public class Duke {
     public void run() {
         deliveryman = dataManager.loadProfile();
         ui.showWelcomeScreen();
-        ui.showLoopingMenuUntilExit();
-        dataManager.saveProfile(deliveryman);
+        ui.showLoopingMenuUntilExit(deliveryman, dataManager);
     }
 
     public static void main(String[] args) {

@@ -81,15 +81,17 @@ public class Ui {
         }
     }
 
-    public void showProfile() {
-        System.out.println(Deliveryman.deliveryman);
+    public void showProfile(Deliveryman deliveryman) {
+        System.out.println(deliveryman);
     }
 
     /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
+     * @param deliveryman
+     * @param dataManager
      */
-    public void showLoopingMenuUntilExit() {
+    public void showLoopingMenuUntilExit(Deliveryman deliveryman, DataManager dataManager) {
         Parser parser = new Parser();
         Scanner sc = new Scanner(System.in);
         String userInput;
@@ -108,13 +110,28 @@ public class Ui {
                     break;
                 case "profile":
                     // todo: create (default) profile and display
-                    showProfile();
+                    showProfile(deliveryman);
                     // view profile
                     break;
                 case "edit":
                 case "editprofile":
-                    String inputProfileData = parser.parseInput("edit", userArguments);
+                    String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
                     // todo: create profile and load
+                    if(inputProfileData != "fail"){
+                        String[] splitInputProfileData = inputProfileData.split(" \\| ");
+                        System.out.println("Based on your input:");
+                        System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n",
+                                splitInputProfileData[0],
+                                splitInputProfileData[1],
+                                splitInputProfileData[2]
+                        );
+                        deliveryman.editProfile(
+                                splitInputProfileData[0],
+                                splitInputProfileData[1],
+                                splitInputProfileData[2]
+                        );
+                        dataManager.saveProfile(deliveryman);
+                    }
                     break;
                 case "start":
                     new DeliveryList();
@@ -125,12 +142,12 @@ public class Ui {
                     break;
                 case "view":
                 case "viewdelivery":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments));
+                    deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments, deliveryman));
                     // show selected delivery - use parser to check selected item
                     System.out.println(DeliveryList.deliveries.get(deliveryNumber));
                     break;
                 case "complete":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments));
+                    deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
                     // mark delivery as completed - use parser to get and check selected item
                     DeliveryList.deliveries.get(deliveryNumber).setDeliveryAsComplete();
                     break;
