@@ -1,0 +1,7 @@
+canteen<>The deck
+store<>chicken rice stall
+menus<>chicken rice
+menus<>spicy chicken rice
+store<>Fish rice stall
+menus<>fish rice
+menus<>spicy fish rice
