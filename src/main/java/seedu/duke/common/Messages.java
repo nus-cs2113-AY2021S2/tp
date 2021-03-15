@@ -32,7 +32,7 @@ public class Messages {
     public static final String MESSAGE_DELETE_MODULE_INFO =
             "Please enter the indices of the modules you would like to delete."
                     + NEWLINE + "Separate indices with a blank space.";
-    public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:" + NEWLINE;
+    public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:";
     public static final String MESSAGE_MODULE_OPENED = "Opening %s." + NEWLINE;
 
 

@@ -18,7 +18,8 @@ public class ListModulesCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        StringBuilder stringBuilder = new StringBuilder(MESSAGE_MODULE_TO_LIST);
+        ui.printMessage(MESSAGE_MODULE_TO_LIST);
+        StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < ModuleList.getModules().size(); i++) {
             if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE);
@@ -28,7 +29,9 @@ public class ListModulesCommand extends Command {
             stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, counter, moduleCode));
         }
         String listMessage = stringBuilder.toString();
-        ui.printMessage(listMessage);
+        if (listMessage.length() > 0) {
+            ui.printMessage(listMessage);
+        }
     }
 
     @Override
