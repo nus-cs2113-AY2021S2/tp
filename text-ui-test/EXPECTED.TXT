@@ -13,7 +13,6 @@ Loading from save file...
 =========================================================
 $$ =========================================================
 Here is your Loan list:
-
 =========================================================
 $$ list Command - conflict with options: -l, -e
 $$ list Command - missing option: [-e | -l | -s]
