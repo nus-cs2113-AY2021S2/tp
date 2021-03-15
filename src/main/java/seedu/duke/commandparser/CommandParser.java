@@ -1,6 +1,6 @@
 package seedu.duke.commandparser;
 
-import seedu.duke.command.RecordType;
+import seedu.duke.command.CommandRecordType;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -398,7 +398,7 @@ public class CommandParser {
             return "";
         }
         String type = "" + input.charAt(2);
-        if (!RecordType.isValidType(type)) {
+        if (!CommandRecordType.isValidType(type)) {
             return "";
         }
         return type.toUpperCase(Locale.ROOT);
