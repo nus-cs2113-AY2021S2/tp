@@ -37,7 +37,7 @@ public class Parser {
     }
 
     public Command parse(String line, int maxStores) throws DukeExceptions {
-        Command newCommand = null;
+        Command newCommand;
         String[] parsedLine = line.split(" ");
         if (line.startsWith("list")) {
             newCommand = new DisplayStoresCommand();

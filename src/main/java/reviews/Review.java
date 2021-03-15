@@ -1,8 +1,8 @@
 package reviews;
 
 public class Review {
-    private String description;
     private double rating;
+    private String description;
 
     public Review(String description) {
         this.description = description;
@@ -14,7 +14,6 @@ public class Review {
     }
 
     @Override
-
     public String toString() {
         return description;
     }
