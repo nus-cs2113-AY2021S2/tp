@@ -24,4 +24,6 @@ public class Constants {
             + "Usage: exit\n\n";
 
     public static final String EXIT_MESSAGE = "Goodbye, we hope to see you again!";
+    public static final String WELCOME_MESSAGE = "Welcome to the Patient Manager.\n";
+    public static final String INPUT_PROMPT = "Please input a command: ";
 }
