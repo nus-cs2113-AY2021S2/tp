@@ -124,7 +124,13 @@ public class CommandList {
      * Delete review.
      */
     public void deleteReview(String title) {
-        int reviewIndex = Review.getReviewIndex(title);
+        int reviewIndex = -1;
+        for (int i = 0; i < reviewList.size(); i++) {
+            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+                reviewIndex = i;
+                break;
+            }
+        }
         if (reviewIndex == -1) {
             System.out.println("Review does not exists!");
         } else {

@@ -142,11 +142,6 @@ public class Review {
         return title + "      " + rating + "      " + dateOfEntry;
     }
 
-    //TODO: implement this
-    public static int getReviewIndex(String title2) {
-        return 0;
-    }
-
     /**
      * Converts a review into text for storage. 
      * @return review in a single string
