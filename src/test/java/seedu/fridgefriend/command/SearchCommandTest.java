@@ -1,6 +1,6 @@
 package seedu.fridgefriend.command;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SearchCommandTest {
 
-    @BeforeEach
-    public void setUp() throws Exception {
+    @BeforeAll
+    public static void setUp() throws Exception {
         Food chicken = new Food(FoodCategory.MEAT, "chicken",
                 "30-06-2021", FoodStorageLocation.FREEZER);
         Food pork = new Food(FoodCategory.MEAT, "pork",
