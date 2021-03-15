@@ -9,14 +9,12 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ViewCommand extends Command{
+public class ViewCommand extends Command {
     private static final String FEEDBACK_FORMAT = "Displaying all %s exercise records %s:";
     private Record record;
     private SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public ViewCommand (String type, ArrayList<String> params) throws ParseException {
-        switch (type) {
-        }
+    public ViewCommand(String type, ArrayList<String> params) throws ParseException {
     }
 
     public CommandResult execute() {
