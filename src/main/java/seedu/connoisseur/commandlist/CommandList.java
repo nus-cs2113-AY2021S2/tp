@@ -25,7 +25,6 @@ public class CommandList {
      */
     public CommandList(ArrayList<String> dataReviews) {
         reviewList = new ArrayList<Review>();
-        System.out.println(dataReviews);
         for (String review : dataReviews) {
             if (review.length() == 0) {
                 continue;
@@ -46,7 +45,7 @@ public class CommandList {
     /**
      * List reviews according to different types of input.
      *
-     * @param input is the listing method preferred by user. If there is no
+     * @param sortMethod is the listing method preferred by user. If there is no
      *              preferred listing method, default listing will be used.
      */
     public void listReviews(String sortMethod) {
@@ -57,7 +56,6 @@ public class CommandList {
                 sorter.sort(reviewList);
                 printReviews(reviewList);
             } else {
-                System.out.println(sortMethod);
                 sorter.sort(reviewList, sortMethod);
                 printReviews(reviewList);
             }
