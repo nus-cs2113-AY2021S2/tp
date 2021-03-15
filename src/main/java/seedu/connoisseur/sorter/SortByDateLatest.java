@@ -7,7 +7,13 @@ import java.util.Date;
 
 import seedu.connoisseur.review.Review;
 
+/**
+ * Sort reviews by later date. 
+ */
 public class SortByDateLatest implements Comparator<Review> {
+    /**
+     * Comparator function for comparing review dates, returns latest first. 
+     */
     public int compare(Review a, Review b) {
         try {
             Date dateA = new SimpleDateFormat("MMM d yyyy").parse(a.getDate());

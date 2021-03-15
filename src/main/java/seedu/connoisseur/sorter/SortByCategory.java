@@ -9,7 +9,7 @@ import seedu.connoisseur.review.Review;
  */
 public class SortByCategory implements Comparator<Review> {
     /**
-     * Compare reviews by category. 
+     * Compare reviews by category. Returns in alphabetical order. 
      */
     public int compare(Review a, Review b) {
         return a.getCategory().compareTo(b.getCategory());
