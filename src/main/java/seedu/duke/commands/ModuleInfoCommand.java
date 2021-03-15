@@ -10,7 +10,7 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Messages.EMPTY_STRING;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
 import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
 

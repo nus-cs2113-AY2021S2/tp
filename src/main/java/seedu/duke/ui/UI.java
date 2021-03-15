@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
+import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
@@ -112,7 +113,7 @@ public class UI {
                 printTask(task, tasksCount);
             }
         }
-        if (tasksCount == 0) {
+        if (tasksCount == INDEX_FIRST) {
             printEmpty(isDone);
         }
     }
