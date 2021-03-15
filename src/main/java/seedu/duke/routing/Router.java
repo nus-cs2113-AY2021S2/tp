@@ -1,4 +1,7 @@
-package seedu.duke;
+package seedu.duke.routing;
+
+import seedu.duke.History;
+import seedu.duke.Block;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +17,7 @@ public class Router {
     }
 
 
-    public void execute(Record history) {
+    public void execute(History history) {
         Scanner in = new Scanner(System.in);
         System.out.println("STARTING BLOCK:");
         String from = in.nextLine();
@@ -29,7 +32,7 @@ public class Router {
         }
     }
 
-    public void repeatExecution(Record history) {
+    public void repeatExecution(History history) {
         /**
          * Repeats the execute function for a past history search.
          */
@@ -52,31 +55,31 @@ public class Router {
     }
 
     public void setMap() {
-        nusMap.addLocation(new Block("E1"));
-        nusMap.addLocation(new Block("E1A"));
-        nusMap.addLocation(new Block("E2"));
-        nusMap.addLocation(new Block("E2A"));
-        nusMap.addLocation(new Block("E3"));
-        nusMap.addLocation(new Block("E3A"));
-        nusMap.addLocation(new Block("E4"));
-        nusMap.addLocation(new Block("E4A"));
-        nusMap.addLocation(new Block("E5"));
-        nusMap.addLocation(new Block("E6"));
-        nusMap.addLocation(new Block("E7"));
-        nusMap.addLocation(new Block("EA"));
-        nusMap.addLocation(new Block("EW1"));
-        nusMap.addLocation(new Block("EW1A"));
-        nusMap.addLocation(new Block("EW2"));
-        nusMap.addLocation(new Block("LT1"));
-        nusMap.addLocation(new Block("LT2"));
-        nusMap.addLocation(new Block("LT5"));
-        nusMap.addLocation(new Block("LT6"));
-        nusMap.addLocation(new Block("LT7"));
-        nusMap.addLocation(new Block("LT7A"));
-        nusMap.addLocation(new Block("IT"));
-        nusMap.addLocation(new Block("T-LAB"));
-        nusMap.addLocation(new Block("TECHNO EDGE"));
-        nusMap.addLocation(new Block("AS1"));
+        nusMap.addBlock("E1");
+        nusMap.addBlock("E1A");
+        nusMap.addBlock("E2");
+        nusMap.addBlock("E2A");
+        nusMap.addBlock("E3");
+        nusMap.addBlock("E3A");
+        nusMap.addBlock("E4");
+        nusMap.addBlock("E4A");
+        nusMap.addBlock("E5");
+        nusMap.addBlock("E6");
+        nusMap.addBlock("E7");
+        nusMap.addBlock("EA");
+        nusMap.addBlock("EW1");
+        nusMap.addBlock("EW1A");
+        nusMap.addBlock("EW2");
+        nusMap.addBlock("LT1");
+        nusMap.addBlock("LT2");
+        nusMap.addBlock("LT5");
+        nusMap.addBlock("LT6");
+        nusMap.addBlock("LT7");
+        nusMap.addBlock("LT7A");
+        nusMap.addBlock("IT");
+        nusMap.addBlock("T-LAB");
+        nusMap.addBlock("TECHNO EDGE");
+        nusMap.addBlock("AS1");
     }
 
     public void setNeighbours() {
@@ -109,8 +112,8 @@ public class Router {
     }
 
     public String printShortestDistance(String from, String to) {
-        Block start = nusMap.getLocation(from).getBlock();
-        Block destination = nusMap.getLocation(to).getBlock();
+        Block start = nusMap.getBlock(from);
+        Block destination = nusMap.getBlock(to);
         HashMap<Block, Block> predecessor = new HashMap<>();
         String route = "";
         if (!bfs(nusMap, predecessor, start, destination)) {
@@ -141,7 +144,7 @@ public class Router {
         start.setAsVisited();
         while (!queue.isEmpty()) {
             Block currentBlock = queue.poll();
-            ArrayList<Block> neighbours = nusMap.getLocation(currentBlock.getName()).getNeighbours();
+            ArrayList<Block> neighbours = nusMap.getBlock(currentBlock.getName()).getNeighbours();
             for (Block neighbour : neighbours) {
                 if (!neighbour.isVisited()) {
                     neighbour.setAsVisited();
