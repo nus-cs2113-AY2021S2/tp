@@ -13,20 +13,26 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class AddCommandTest {
 
     @Test
-    public void addCommand_correctData_correctlyConstructed() throws InvalidDateException {
+    public void addCommand_foodInCorrectFormat_successfullyAdded() throws InvalidDateException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER);
         addCommand.execute();
-        ExpiryDate expiryDate = new ExpiryDate("30-06-2021");
-
-        assertEquals("chicken",Fridge.getFood(0).getFoodName());
-        assertEquals(FoodCategory.MEAT,Fridge.getFood(0).getCategory());
-        assertEquals(expiryDate.getExpiry(), Fridge.getFood(0).getExpiryDate().getExpiry());
+        assertEquals("chicken", Fridge.getFood(0).getFoodName());
+        assertEquals(FoodCategory.MEAT, Fridge.getFood(0).getCategory());
         assertEquals(FoodStorageLocation.FREEZER, Fridge.getFood(0).getStorageLocation());
+
+        ExpiryDate expiryDate = new ExpiryDate("30-06-2021");
+        assertEquals(expiryDate.getExpiry(), Fridge.getFood(0).getExpiryDate().getExpiry());
+
+        String expectedMessage = "Great! I have added chicken into your fridge.\n"
+                + "Details: ||Food name: chicken, category: MEAT, "
+                + "expiry: 30-06-2021, stored in: FREEZER||";
+        String actualMessage = addCommand.getMessagePrintedToUser();
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
-    public void addCommand_invalidDate_expectException() {
+    public void addCommand_invalidDate_InvalidDateException() {
         assertThrows(InvalidDateException.class, () -> {
             Command addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER);

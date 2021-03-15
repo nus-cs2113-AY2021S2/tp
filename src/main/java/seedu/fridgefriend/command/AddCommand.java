@@ -31,12 +31,21 @@ public class AddCommand extends Command {
     }
 
     private void showResults() {
+        Ui.printMessage(getMessagePrintedToUser());
+    }
+
+    /**
+     * Returns the results of add command.
+     *
+     * @return the message shown to the user
+     */
+    public String getMessagePrintedToUser() {
         String message = "Great! I have added "
                 + foodToAdd.getFoodName()
                 + " into your fridge.\n"
                 + "Details: "
                 + foodToAdd.toString();
-        Ui.printMessage(message);
+        return message;
     }
 
 }
