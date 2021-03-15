@@ -13,6 +13,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RemoveCommandTest {
 
+    /*Solution below adapted from https://github.com/se-edu/addressbook-level2/blob/master
+            /test/java/seedu/addressbook/commands/DeleteCommandTest.java*/
     @BeforeEach
     public void setUp() throws Exception {
         Food chicken = new Food(FoodCategory.MEAT, "chicken",
