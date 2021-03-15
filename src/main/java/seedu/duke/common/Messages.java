@@ -114,7 +114,7 @@ public class Messages {
             + NEWLINE;
 
     //Module info messages
-    public static final String FORMAT_LESSONS_INFO = "%s - %s" + NEWLINE;
+    public static final String FORMAT_LESSONS_INFO = "%s - %s";
     public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
     public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
     public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
