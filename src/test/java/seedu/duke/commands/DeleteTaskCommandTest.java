@@ -60,7 +60,7 @@ class DeleteTaskCommandTest {
                 + "3. lecture quiz" + NEWLINE
                 + "4. read up notes" + NEWLINE + NEWLINE
                 + "Please enter the indices of the tasks you would like to delete." + NEWLINE
-                + "Separate indices with a blank space." + NEWLINE + NEWLINE
+                + "Separate indices with a blank space." + NEWLINE
                 + "Removed weekly exercise from the task list." + NEWLINE
                 + "Removed iP increments from the task list." + NEWLINE;
 

@@ -12,14 +12,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static seedu.duke.TestUtilAndConstants.EXPECTED_MODULE_OVERVIEW;
 import static seedu.duke.TestUtilAndConstants.FORMATTER;
-import static seedu.duke.common.Messages.NEWLINE;
 
 class ModuleInfoCommandTest extends LessonCommandTest {
 
-    private static final String EXPECTED_OUTPUT = "<CS3235>" + NEWLINE + "tutorial - Wednesday 9 am - 10am" + NEWLINE
-            + "lab - Wednesday 9 pm - 10 pm" + NEWLINE + NEWLINE + "Undone tasks:" + NEWLINE + "1. iP submission"
-            + NEWLINE;
 
     //@@author H-horizon
     @Test
@@ -46,7 +43,7 @@ class ModuleInfoCommandTest extends LessonCommandTest {
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
-        assertEquals(EXPECTED_OUTPUT, newOs.toString());
+        assertEquals(EXPECTED_MODULE_OVERVIEW, newOs.toString());
         removeOutputStream();
     }
 }

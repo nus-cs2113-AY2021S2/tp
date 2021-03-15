@@ -1,11 +1,13 @@
 package seedu.duke.commands;
 
+import seedu.duke.common.CommandList;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.Messages;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
+import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.NEWLINE;
 
 public class PrintHelpCommand extends Command {
@@ -19,9 +21,11 @@ public class PrintHelpCommand extends Command {
     @Override
     public void execute(UI ui) {
         if (ModuleList.getSelectedModule() == null) {
-            ui.printMessage(getDashboardCommands());
+            DashboardCommands[] commands = DashboardCommands.values();
+            ui.printMessage(getCommands(commands));
         } else {
-            ui.printMessage(getModuleCommands());
+            ModuleCommands[] commands = ModuleCommands.values();
+            ui.printMessage(getCommands(commands));
         }
     }
 
@@ -31,40 +35,23 @@ public class PrintHelpCommand extends Command {
     }
 
     /**
-     * Returns string containing dashboard commands and their descriptions.
+     * Returns string containing commands and their descriptions.
      *
+     * @param commands Array of commands to print.
      * @return Message to print.
      */
-    private static String getDashboardCommands() {
+    private static String getCommands(CommandList[] commands) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (DashboardCommands command : DashboardCommands.values()) {
-            // skip invalid command
-            if (command.equals(DashboardCommands.INVALID)) {
+        for (int i = 0; i < commands.length; i++) {
+            if (commands[i].equals(DashboardCommands.INVALID)) {
                 continue;
+            } else if (i != INDEX_FIRST) {
+                stringBuilder.append(NEWLINE);
             }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
-                    command.getWord(), command.getDescription());
-            stringBuilder.append(commandAndDescription).append(NEWLINE);
+                    commands[i].getWord(), commands[i].getDescription());
+            stringBuilder.append(commandAndDescription);
         }
         return stringBuilder.toString();
-    }
-
-    /**
-     * Returns string containing module commands and their descriptions.
-     *
-     * @return Message to print.
-     */
-    private static String getModuleCommands() {
-        StringBuilder sb = new StringBuilder();
-        for (ModuleCommands command : ModuleCommands.values()) {
-            // skip invalid command
-            if (command.equals(ModuleCommands.INVALID)) {
-                continue;
-            }
-            String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
-                    command.getWord(), command.getDescription());
-            sb.append(commandAndDescription).append(NEWLINE);
-        }
-        return sb.toString();
     }
 }

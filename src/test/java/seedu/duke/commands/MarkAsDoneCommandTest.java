@@ -48,7 +48,7 @@ class MarkAsDoneCommandTest {
                 + "2. lecture quiz" + NEWLINE
                 + "3. read up notes" + NEWLINE + NEWLINE
                 + "Please enter the indices of the tasks you would like to mark as done." + NEWLINE
-                + "Separate indices with a blank space." + NEWLINE + NEWLINE
+                + "Separate indices with a blank space." + NEWLINE
                 + "Marked weekly exercise as done." + NEWLINE
                 + "Marked lecture quiz as done." + NEWLINE;
 
