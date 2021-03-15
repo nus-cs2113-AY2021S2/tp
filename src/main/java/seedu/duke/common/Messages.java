@@ -15,8 +15,8 @@ public class Messages {
     public static final String MESSAGE_WELCOME = "What can I do for you today?";
     public static final String MESSAGE_CLOSED_MODULE = "%s closed.";
 
-    public static final String TAG_GULIO = "GULIO >>";
-    public static final String TAG_MODULE = "%s >>";
+    public static final String TAG_GULIO = "GULIO >> ";
+    public static final String TAG_MODULE = "%s >> ";
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
 
