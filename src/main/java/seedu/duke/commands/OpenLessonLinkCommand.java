@@ -65,19 +65,29 @@ public class OpenLessonLinkCommand extends Command {
             Lesson lesson = lessonList.get(index - 1);
             String lessonType = getLessonTypeString(lesson.getLessonType());
             ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
-            HttpURLConnection connection = null;
             String lessonLink = lesson.getOnlineLink();
-            try {
-                URL lessonUrl = new URL(lessonLink);
-                connection = (HttpURLConnection) lessonUrl.openConnection();
-                connection.setRequestMethod(HEAD);
-                int statusCode = connection.getResponseCode();
-                openLessonLink(lessonLink, ui);
-            } catch (IOException e) {
-                ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
-            }
+            validateLessonLink(ui, lessonLink);
 
 
+        }
+    }
+
+    /**
+     * Validates link before trying to open it in a browser.
+     *
+     * @param ui         Instance of UI.
+     * @param lessonLink link to open.
+     */
+    private static void validateLessonLink(UI ui, String lessonLink) {
+        HttpURLConnection connection;
+        try {
+            URL lessonUrl = new URL(lessonLink);
+            connection = (HttpURLConnection) lessonUrl.openConnection();
+            connection.setRequestMethod(HEAD);
+            int statusCode = connection.getResponseCode();
+            openLessonLink(lessonLink, ui);
+        } catch (IOException e) {
+            ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
         }
     }
 
