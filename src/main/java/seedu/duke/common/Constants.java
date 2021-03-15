@@ -53,8 +53,8 @@ public class Constants {
     //Parser
     public static final String FORMAT_MODULE_CODE = "([A-z]{2,3}[\\d]{4}[A-z]?)";
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
-    public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}" 
-                                            + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+    public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}"
+            + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
     public static final String DELIM = "\\s+;;\\s+";
     public static final String WHITESPACE = " ";
     public static final String PLACEHOLDER = "-";
@@ -68,4 +68,8 @@ public class Constants {
     public static final String KEYWORD_LESSON = "lesson | ";
     public static final String KEYWORD_TASK = "task | ";
     public static final String TRUE_STRING = "T";
+
+    //Command
+    public static final String HEAD = "HEAD";
+
 }
