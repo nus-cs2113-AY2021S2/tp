@@ -15,7 +15,7 @@ Sorry my friend, please give a valid input.
 Great! I have added chicken into your fridge.
 Details: ||Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF||
 -----------------------------------------------------------------
-You have chicken in your fridge.
+You have chicken stored in LOWER_SHELF of your fridge.
 -----------------------------------------------------------------
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
