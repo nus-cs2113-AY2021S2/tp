@@ -1,5 +1,7 @@
 package seedu.connoisseur.ui;
 
+import seedu.connoisseur.exceptions.InvalidReviewCommandException;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -15,13 +17,13 @@ import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
 
 public class Ui {
     private static final PrintStream out = System.out;
-    private final Scanner in;
+    private static Scanner in;
 
     /**
      * Constructor for Ui class.
      */
     public Ui() {
-        this.in = new Scanner(System.in);
+        in = new Scanner(System.in);
     }
 
     /**
@@ -29,9 +31,19 @@ public class Ui {
      *
      * @return the input line as a string
      */
-    public String readCommand() {
+    public static String readCommand() {
         return in.nextLine();
     }
+
+    /**
+     * Reads user input.
+     *
+     * @return the input line as a string
+     */
+    public static boolean nextCommand() {
+        return in.hasNext();
+    }
+
 
     /**
      * Prints the welcome message to the printstream.
@@ -103,13 +115,15 @@ public class Ui {
         printToScreen(CURRENT_DIRECTORY);
     }
 
-    public static void printDetermineReviewTypeMessage(String reviewType) {
+    public static void printDetermineReviewTypeMessage(String reviewType) throws InvalidReviewCommandException {
         if (reviewType.equals("quick")) {
             System.out.print("Quick Review Select\n"
                     + "Please enter Category, Title, Rating/5\n");
         } else if (reviewType.equals("long")) {
             System.out.print("Long Review Select\n"
                     + "Please enter Category, Title, Rating/5, Details\n");
+        }else{
+            throw new InvalidReviewCommandException();
         }
     }
 

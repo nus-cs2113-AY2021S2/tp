@@ -1,6 +1,7 @@
 package seedu.connoisseur;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.exceptions.ConnoisseurException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -32,9 +33,16 @@ public class Connoisseur {
         Ui ui = new Ui();
         Parser parser = new Parser(commandList);
         boolean isExitCommand = false;
-        while (!isExitCommand) {
-            input = ui.readCommand();
-            isExitCommand = parser.determineCommand(input);
+        while (Ui.nextCommand()) {
+            try {
+                input = Ui.readCommand();
+                isExitCommand = parser.determineCommand(input);
+            } catch (ConnoisseurException ignored) {
+
+            }
+            if(isExitCommand){
+                break;
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 package seedu.connoisseur.commandlist;
 
+import seedu.connoisseur.exceptions.InvalidReviewCommandException;
+import seedu.connoisseur.exceptions.InvalidReviewDescriptionException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -7,8 +9,6 @@ import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
 
 /**
  * Class with methods for different commands.
@@ -19,7 +19,6 @@ public class CommandList {
 
     public ArrayList<Review> reviewList;
     private Sorter sorter;
-    private final Scanner in = new Scanner(System.in);
 
     /**
      * Creates tasks according to user data from files.
@@ -117,13 +116,6 @@ public class CommandList {
     }
 
     /**
-     * Print invalid command text.
-     */
-    public static void invalidCommand() {
-        Ui.printToScreen("Invalid Command. ");
-    }
-
-    /**
      * Delete review.
      */
     public void deleteReview(String title) {
@@ -163,33 +155,33 @@ public class CommandList {
     /**
      * Add a review.
      */
-    public void addQuickReview() {
+    public void addQuickReview() throws InvalidReviewDescriptionException {
         try {
-            String input = in.nextLine();
+            String input = Ui.readCommand();
             String[] review = input.split(" ", 4);
             Review r = new Review(review[0].trim(), review[1].trim(),
                     Integer.parseInt(review[2].trim()), "Currently no description");
             reviewList.add(r);
             System.out.println(review[0] + " created.");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input review, please try again.");
+            throw new InvalidReviewDescriptionException();
         }
     }
 
-    public void addLongReview() {
+    public void addLongReview() throws InvalidReviewDescriptionException {
         try {
-            String input = in.nextLine();
+            String input = Ui.readCommand();
             String[] review = input.split(" ", 4);
             Review r = new Review(review[0].trim(), review[1].trim(),
                     Integer.parseInt(review[2].trim()), review[3].trim());
             reviewList.add(r);
             System.out.println(review[0] + " created.");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input review, please try again.");
+            throw new InvalidReviewDescriptionException();
         }
     }
 
-    public String determineReviewType(String input) {
+    public String determineReviewType(String input) throws InvalidReviewCommandException {
         String reviewType = input.toLowerCase().trim();
         Ui.printDetermineReviewTypeMessage(reviewType);
         return reviewType;

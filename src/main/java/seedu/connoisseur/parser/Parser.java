@@ -1,6 +1,11 @@
 package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.exceptions.ConnoisseurException;
+import seedu.connoisseur.exceptions.InvalidReviewCommandException;
+import seedu.connoisseur.exceptions.InvalidReviewDescriptionException;
+
+import java.net.ConnectException;
 
 /**
  * Handles Connoisseur's commands.
@@ -21,7 +26,7 @@ public class Parser {
      * @param input user input
      * @return true if exit command, false otherwise
      */
-    public boolean determineCommand(String input) {
+    public boolean determineCommand(String input) throws ConnoisseurException {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String description;
         try {
@@ -49,7 +54,7 @@ public class Parser {
             commandList.exit();
             return true;
         } else {
-            CommandList.invalidCommand();
+            throw new InvalidReviewCommandException();
         }
         return false;
     }
