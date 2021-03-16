@@ -2,7 +2,6 @@ package seedu.connoisseur;
 
 import seedu.connoisseur.commandlist.CommandList;
 import seedu.connoisseur.parser.Parser;
-import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
@@ -10,43 +9,33 @@ import seedu.connoisseur.ui.Ui;
 public class Connoisseur {
 
     /**
-     * Task list created for user.
-     */
-    private CommandList reviewList = new CommandList();
-
-    /**
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
     public static void main(String[] args) {
-        new Connoisseur().run();
+        new Connoisseur();
     }
 
     /**
      * Sets up required files for Duke to start.
      */
     public Connoisseur() {
-
         Storage.createFolder();
-
         Storage storage = new Storage();
+        CommandList commandList;
         if (storage.retrieveTextFile()) {
-            reviewList = new CommandList(storage.loadData());
+            commandList = new CommandList(storage.loadData());
+        } else {
+            commandList = new CommandList();
         }
-
-    }
-
-    public void run() {
-        Ui ui = new Ui();
-        Parser parser = new Parser();
-
-
         Ui.printGreeting();
         String input;
-
-        input = ui.readCommand();
-        parser.determineCommand(input);
-
-
+        Ui ui = new Ui();
+        Parser parser = new Parser(commandList);
+        boolean isExitCommand = false;
+        while (!isExitCommand) {
+            input = ui.readCommand();
+            isExitCommand = parser.determineCommand(input);
+        }
     }
 }
 

@@ -15,7 +15,7 @@ public class CommandList {
     static final int LIST_CATEGORY_INPUT_LENGTH = 4;
     static final int MAX_WHITE_SPACE = 20;
 
-    public static ArrayList<Review> reviewList = new ArrayList<>();
+    public ArrayList<Review> reviewList;
     private Sorter sorter;
 
     /**
@@ -24,71 +24,85 @@ public class CommandList {
      * @param dataReviews List of tasks from user connoisseur.txt file.
      */
     public CommandList(ArrayList<String> dataReviews) {
+        reviewList = new ArrayList<Review>();
         for (String review : dataReviews) {
+            if (review.length() == 0) {
+                continue;
+            }
             reviewList.add(Review.textToReview(review));
         }
+        sorter = new Sorter(SortMethod.DATE_EARLIEST);
     }
 
     /**
      * Creates new tasks if no existing data in files.
      */
-
     public CommandList() {
-        reviewList = new ArrayList<>();
+        reviewList = new ArrayList<Review>();
         sorter = new Sorter(SortMethod.DATE_EARLIEST);
     }
 
     /**
      * List reviews according to different types of input.
      *
-     * @param input is the listing method preferred by user. If there is no
+     * @param sortMethod is the listing method preferred by user. If there is no
      *              preferred listing method, default listing will be used.
      */
-    public void listReviews(String input) {
+    public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
-            System.out.println("No reviews found. \uD83D\uDE1E");
+            System.out.println("No reviews found. :(");
         } else {
-            if (input.length() <= 0) {
-                System.out.println("Catch some exception"); //remember to change this part jjbafdbal!!!
+            if (sortMethod.length() == 0) {
+                sorter.sort(reviewList);
+                printReviews(reviewList);
+            } else {
+                sorter.sort(reviewList, sortMethod);
+                printReviews(reviewList);
             }
+        }
+    }
 
-            String listType = input.substring(LIST_CATEGORY_INPUT_LENGTH);
-            Sorter.sort(reviewList, listType);
-            System.out.println("Here are your reviews:");
-            int whiteSpaceNeeded = MAX_WHITE_SPACE - 5;
-            System.out.print("Title");
+    /**
+     * Prints the sorted reviews. 
+     */
+    public void printReviews(ArrayList<Review> reviewList) {
+        System.out.println("Here are your reviews:");
+        for (int i = 0; i < 4; i++) {
+            System.out.print(" ");
+        }
+        int whiteSpaceNeeded = MAX_WHITE_SPACE - 5;
+        System.out.print("Title");
+        while (whiteSpaceNeeded > 0) {
+            System.out.print(" ");
+            whiteSpaceNeeded--;
+        }
+        whiteSpaceNeeded = MAX_WHITE_SPACE - 6;
+        System.out.print("Rating");
+        while (whiteSpaceNeeded > 0) {
+            System.out.print(" ");
+            whiteSpaceNeeded--;
+        }
+        System.out.println("Date");
+
+        for (int i = 0; i < reviewList.size(); i++) {
+            Review currentReview = reviewList.get(i);
+            System.out.print((i + 1) + ". ");
+            if (i < 9) {
+                System.out.print(" ");
+            }
+            System.out.print(currentReview.getTitle());
+            whiteSpaceNeeded = MAX_WHITE_SPACE - (currentReview.getTitle().length());
             while (whiteSpaceNeeded > 0) {
                 System.out.print(" ");
                 whiteSpaceNeeded--;
             }
-            whiteSpaceNeeded = MAX_WHITE_SPACE - 6;
-            System.out.print("Rating");
+            System.out.print(currentReview.starRating());
+            whiteSpaceNeeded = MAX_WHITE_SPACE - 10;
             while (whiteSpaceNeeded > 0) {
                 System.out.print(" ");
                 whiteSpaceNeeded--;
             }
-
-            for (int i = 0; i < reviewList.size(); i++) {
-                Review currentReview = reviewList.get(i);
-                System.out.print((i + 1) + ". ");
-                System.out.print(currentReview.getTitle());
-                whiteSpaceNeeded = MAX_WHITE_SPACE - (currentReview.getTitle().length());
-                while (whiteSpaceNeeded > 0) {
-                    System.out.print(" ");
-                    whiteSpaceNeeded--;
-                }
-                for (int j = 0; j < 5; j++) {
-                    int numberOfShadedBoxes = currentReview.getRating();
-                    if (numberOfShadedBoxes > 0) {
-                        System.out.print("\u2588");
-                        numberOfShadedBoxes--;
-                    } else {
-                        System.out.print("\u25A2");
-                    }
-                }
-                System.out.print("    ");
-                System.out.println(currentReview.getDate());
-            }
+            System.out.println(currentReview.getDate());
         }
     }
 
@@ -100,10 +114,23 @@ public class CommandList {
     }
 
     /**
+     * Print invalid command text. 
+     */
+    public static void invalidCommand() {
+        Ui.printToScreen("Invalid Command. ");
+    }
+
+    /**
      * Delete review.
      */
     public void deleteReview(String title) {
-        int reviewIndex = Review.getReviewIndex(title);
+        int reviewIndex = -1;
+        for (int i = 0; i < reviewList.size(); i++) {
+            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+                reviewIndex = i;
+                break;
+            }
+        }
         if (reviewIndex == -1) {
             System.out.println("Review does not exists!");
         } else {
@@ -113,6 +140,10 @@ public class CommandList {
         Storage.saveData(reviewList);
     }
 
+    /**
+     * Sort a review based on input sort type. 
+     * @param sortType sorting method to be used
+     */
     public void sortReview(String sortType) {
         if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest")
                 || sortType.equals("date_latest")) {
@@ -125,6 +156,10 @@ public class CommandList {
         Storage.saveData(reviewList);
     }
 
+    /**
+     * Add a review. 
+     * @param input review fields split by spaces
+     */
     public void addReview(String input) {
         try {
             String[] review = input.split(" ", 4);
@@ -134,11 +169,13 @@ public class CommandList {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid input review, please try again.");
         }
-        Storage.saveData(reviewList);
-
     }
 
-    public static void exit() {
+    /**
+     * Exits connoisseur. 
+     */
+    public void exit() {
+        Storage.saveData(reviewList);
         Ui.printExitMessage();
     }
 

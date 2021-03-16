@@ -2,99 +2,163 @@ package seedu.connoisseur.review;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 public class Review {
     protected String title;
     protected String category;
     protected String dateOfEntry;
     protected int rating;
-    protected String starRating;
     protected String description;
-    public static int NUM_OF_STARS = 5;
+    public static int MAX_NUM_OF_STARS = 5;
 
 
-    public String getDate() {
-        return dateOfEntry;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public static int getNumOfStars() {
-        return NUM_OF_STARS;
-    }
-
-    public static void setNumOfStars(int noOfStars) {
-        NUM_OF_STARS = noOfStars;
-    }
-
+    /**
+     * Creates a review. 
+     * @param title title of the review
+     * @param category category of the experience
+     * @param rating rating of the experience
+     * @param description description of the experience
+     */
     public Review(String title, String category, int rating, String description) {
         this.title = title;
         this.category = category;
         this.rating = rating;
-        this.starRating = starRating(rating);
         this.description = description;
         LocalDate date = LocalDate.now();
         this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
-
     }
 
-    public String starRating(int rating) {
+    /**
+     * Creates a review with specified date. 
+     * @param title title of the review
+     * @param category category of the experience
+     * @param rating rating of the experience
+     * @param description description of the experience
+     * @param date date of review
+     */
+    public Review(String title, String category, int rating, String description, String date) {
+        this.title = title;
+        this.category = category;
+        this.rating = rating;
+        this.description = description;
+        this.dateOfEntry = date;
+    }
+
+    /**
+     * Gets the date of the review. 
+     * @return date of entry as a string
+     */
+    public String getDate() {
+        return dateOfEntry;
+    }
+
+    /**
+     * Gets the title of the review. 
+     * @return title of review
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the title of the review. 
+     * @param title new title to be set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Gets the category of the experience. 
+     * @return category of the experience as a string
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Sets the category of the experience. 
+     * @param category new category of experience
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /**
+     * Gets the rating of the experience. 
+     * @return rating of the experience as an integer
+     */
+    public int getRating() {
+        return rating;
+    }
+
+    /**
+     * Sets the rating of the experience. 
+     * @param rating new rating to be set
+     */
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    /**
+     * Gets the description of the experience. 
+     * @return description of the experience as a string
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Sets the description of the experience. 
+     * @param description new description to be set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Converts the rating to visual form. 
+     * @return rating of the experience as a string
+     */
+    public String starRating() {
         String starRating = "";
-        for (int i = 0; i < NUM_OF_STARS; i++) {
-            if (rating > 0) {
-                starRating = starRating.concat("★");
+        int stars = this.rating;
+        for (int i = 0; i < MAX_NUM_OF_STARS; i++) {
+            if (stars > 0) {
+                starRating = starRating.concat("★ ");
             } else {
-                starRating = starRating.concat("✰");
+                starRating = starRating.concat("✰ ");
             }
-            rating--;
+            stars--;
         }
         return starRating;
     }
 
+    /**
+     * Converts the review to a string. 
+     * @return review as a string for display
+     */
     public String toString() {
         return title + "      " + rating + "      " + dateOfEntry;
     }
 
-    public static int getReviewIndex(String title2) {
-        return 0;
-    }
-
+    /**
+     * Converts a review into text for storage. 
+     * @return review in a single string
+     */
     public String reviewToText() {
-        return null;
+        return getDate() + "|" + getTitle() + "|" + getCategory() + "|" + getRating() + "|" + getDescription();
     }
 
+    /**
+     * Converts a single string into a review. 
+     * @param review the review saves as a single string
+     * @return review as a Review object
+     */
     public static Review textToReview(String review) {
-        return null;
+        String[] reviewFields = review.split("\\|", 5);
+        Review r = new Review(reviewFields[1], reviewFields[2], Integer.parseInt(reviewFields[3]), 
+                reviewFields[4], reviewFields[0]);
+        return r;
     }
 }

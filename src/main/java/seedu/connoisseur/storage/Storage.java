@@ -18,8 +18,12 @@ import java.util.Scanner;
 public class Storage {
     private static String path;
 
+    /**
+     * Constructor for Storage class. 
+     */
     public Storage() {
         path = System.getProperty("user.dir") + "/data/connoisseur.txt";
+        System.out.println(path);
     }
 
     /**
@@ -32,7 +36,6 @@ public class Storage {
         boolean isSuccessful = folder.mkdir();
         if (isSuccessful) {
             Ui.printSuccessfulCreateFolderMessage();
-
         } else {
             Ui.printFolderExistsMessage();
         }
@@ -91,13 +94,11 @@ public class Storage {
             FileWriter fileWriter = new FileWriter(path);
             for (Review review : reviewList) {
                 String reviewToWrite = review.reviewToText() + "\n";
-                fileWriter.write(reviewToWrite);
+                fileWriter.append(reviewToWrite);
             }
             fileWriter.close();
         } catch (IOException e) {
             Ui.printErrorMessage(e);
         }
     }
-
-
 }

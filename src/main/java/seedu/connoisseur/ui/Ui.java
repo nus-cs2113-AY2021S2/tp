@@ -5,15 +5,29 @@ import java.io.PrintStream;
 import java.util.Scanner;
 
 import static seedu.connoisseur.messages.Messages.WELCOME_MESSAGE;
+import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
+import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
+import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.FOLDER_SUCCESS;
+import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
 
 public class Ui {
     private static final PrintStream out = System.out;
     private final Scanner in;
 
+    /**
+     * Constructor for Ui class. 
+     */
     public Ui() {
         this.in = new Scanner(System.in);
     }
 
+    /**
+     * Reads user input. 
+     * @return the input line as a string
+     */
     public String readCommand() {
         return in.nextLine();
     }
@@ -36,32 +50,55 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints help message. 
+     */
     public static void printHelpMessage() {
-        System.out.println("Thanks for using Connoisseur, see you again!");
+        printToScreen(HELP_MESSAGE);
     }
 
+    /**
+     * Prints exit message. 
+     */
     public static void printExitMessage() {
+        printToScreen(EXIT_MESSAGE);
     }
 
+    /**
+     * Prints error message. 
+     * @param e error encountered
+     */
     public static void printErrorMessage(IOException e) {
-        System.out.println("An error occurred.");
+        printToScreen(ERROR_MESSAGE);
         e.printStackTrace();
     }
 
+    /**
+     * Prints file exists message. 
+     */
     public static void printFileExistsMessage() {
-        System.out.println("Text file already exists.");
+        printToScreen(FILE_ALREADY_EXISTS);
     }
 
+    /**
+     * Prints folder exists message. 
+     */
     public static void printFolderExistsMessage() {
-        System.out.println("Folder already exists.");
+        printToScreen(FOLDER_ALREADY_EXISTS);
     }
 
+    /**
+     * Prints folder created message. 
+     */
     public static void printSuccessfulCreateFolderMessage() {
-        System.out.println("Folder created successfully.");
+        printToScreen(FOLDER_SUCCESS);
     }
 
+    /**
+     * Prints current directory. 
+     */
     public static void printPresentDirectory() {
-        System.out.println("Present project directory is: " + System.getProperty("user.dir"));
+        printToScreen(CURRENT_DIRECTORY);
     }
 
 }
