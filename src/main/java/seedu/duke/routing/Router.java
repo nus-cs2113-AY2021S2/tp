@@ -25,7 +25,7 @@ public class Router {
         }
     }
 
-    public void resetMap(){
+    public void resetMap() {
         this.nusMap = new Map();
     }
 

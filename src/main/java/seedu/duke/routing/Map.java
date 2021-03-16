@@ -26,7 +26,7 @@ public class Map {
         map.get(b).addNeighbour(map.get(a));
     }
 
-    public void initValidBlocks(){
+    public void initValidBlocks() {
         addBlock("E1");
         addBlock("E1A");
         addBlock("E2");
@@ -54,7 +54,7 @@ public class Map {
         addBlock("AS1");
     }
 
-    public void initNeighbouringBlocks(){
+    public void initNeighbouringBlocks() {
         addRelationship("EW1", "E1");
         addRelationship("E1", "LT5");
         addRelationship("E1", "E1A");
