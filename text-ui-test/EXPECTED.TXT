@@ -15,9 +15,7 @@ Usage: add /<IC_NUMBER>
 Example: add S1234567A
 
 Show the list of all patients
-Command prefix: list
 Usage: list
-Example: list
 
 <WIP> Select a specified patient to add and retrieve records
 Command prefix: load
