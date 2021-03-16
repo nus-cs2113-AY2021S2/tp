@@ -14,7 +14,9 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.MESSAGE_DASHBOARD_HELP;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_HELP;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class PrintHelpCommandTest {
     private final PrintStream originalOut = System.out;
