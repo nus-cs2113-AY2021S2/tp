@@ -12,12 +12,13 @@ This is the full argument hashmap content: {payload=Do remember to wake up early
 Patient A1234567R has been added!
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
+List of patients:
 1. A1234567R
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Add a patient to the list
 Command prefix: add
-Argument(s): name, IC number
+Argument(s): IC number
 Usage: add /<IC_NUMBER>
 Example: add S1234567A
 

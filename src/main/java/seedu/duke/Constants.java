@@ -3,7 +3,7 @@ package seedu.duke;
 public class Constants {
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
-            + "Argument(s): name, IC number\n"
+            + "Argument(s): IC number\n"
             + "Usage: add /<IC_NUMBER>\n"
             + "Example: add S1234567A\n\n";
     public static final String LIST_INFO_MESSAGE = "Show the list of all patients\n"
