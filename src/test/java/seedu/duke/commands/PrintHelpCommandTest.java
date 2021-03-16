@@ -53,10 +53,10 @@ class PrintHelpCommandTest {
             String commandWordAndArgs = command.getWord() + " " + command.getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     commandWordAndArgs, command.getDescription());
-            stringBuilder.append(commandAndDescription).append(NEWLINE);
+            stringBuilder.append(commandAndDescription).append(NEWLINE).append(NEWLINE);
         }
         String output = stringBuilder.toString();
-        assertEquals(output, outContent.toString());
+        assertEquals(output, outContent.toString() + NEWLINE);
 
         // module selected
         ModuleList.setSelectedModule(MODULE_CODE_3);

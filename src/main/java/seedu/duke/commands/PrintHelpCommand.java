@@ -51,7 +51,7 @@ public class PrintHelpCommand extends Command {
                     || commands[i].equals(ModuleCommands.INVALID)) {
                 continue;
             } else if (i != INDEX_FIRST) {
-                stringBuilder.append(NEWLINE);
+                stringBuilder.append(NEWLINE).append(NEWLINE);
             }
             String commandWordAndArgs = commands[i].getWord() + " " + commands[i].getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
