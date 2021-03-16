@@ -9,13 +9,11 @@
 {Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Download the latest version of `Duke` from [here](http://link.to/duke).
 
 ## Features 
 
-{Give detailed description of each feature}
-
-### Adding a todo: `todo`
+### (Example)Adding a todo: `todo`
 Adds a new item to the list of todo items.
 
 Format: `todo n/TODO_NAME d/DEADLINE`
@@ -43,7 +41,7 @@ Example of usage:
 ### Display the list of foods by category: `list <CATEGORY>`
 Displays the list of food items under specified category stored in the fridge.
 
-Format: `todo CATEGORY_NAME`
+Format: `list CATEGORY_NAME`
 
 * The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
 `VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
