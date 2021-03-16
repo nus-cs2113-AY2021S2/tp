@@ -29,6 +29,7 @@ public class RetrieveCommand extends Command {
             throw new Exception("No patient loaded!");
         }
         ArrayList<Record> records = patient.getRecords();
+        ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
         for (Record record : records) {
             ui.printMessage(record.toString());
         }
