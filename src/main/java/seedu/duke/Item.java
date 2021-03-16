@@ -24,4 +24,10 @@ public class Item {
     public void setItemWeight(int itemWeight) {
         this.itemWeight = itemWeight;
     }
+
+    @Override
+    public String toString() {
+        return "Item Number: " + this.getItemNumber() + '\n'
+                + "Item Weight: " + this.getItemWeight();
+    }
 }
