@@ -6,14 +6,18 @@ You said this: Do remember to wake up early tomorrow!
 This is the full argument hashmap content: {payload=Do remember to wake up early tomorrow!, option1=A, option2=B C, command=echo}
 Patient A1234567R has been added!
 1. A1234567R
+List of patients:
+1. A1234567R
 Add a patient to the list
 Command prefix: add
-Argument(s): name, IC number
+Argument(s): IC number
 Usage: add /<IC_NUMBER>
 Example: add S1234567A
 
 Show the list of all patients
+Command prefix: list
 Usage: list
+Example: list
 
 <WIP> Select a specified patient to add and retrieve records
 Command prefix: load
