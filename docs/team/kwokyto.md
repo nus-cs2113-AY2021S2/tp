@@ -38,7 +38,7 @@ Given below are my contributions to the project
 
 - **Documentation**
   - User Guide
-    - Added documentation for the features `xxx` ([#xx](placeholder))
+    - Added documentation for the feature `expiring` ([#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69))
     - Did cosmetic tweaks to existing documentation of features `xxx` ([#xx](placeholder))
   - Developer Guide
     - Added implementation details of the `xxx` feature ([#xx](placeholder))
