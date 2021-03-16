@@ -45,7 +45,7 @@ public class History {
         }
     }
 
-    public String getHistoryAsString () {
+    public String getHistoryAsString() {
         StringBuilder fullHistory = new StringBuilder();
         for (int i = 1; i - 1 < history.size(); i++) {
             fullHistory.append(i).append(". ").append(history.get(i - 1));
