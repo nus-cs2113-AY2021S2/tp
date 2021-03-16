@@ -1,9 +1,10 @@
 package seedu.duke;
 
+import seedu.duke.command.Command;
 import seedu.duke.commandparser.CommandParser;
 import seedu.duke.ui.UI;
 
-public class Healthier {
+public class Duke {
     private UI ui;
 
     private void start() {
@@ -33,7 +34,7 @@ public class Healthier {
 
 
     public static void main(String[] args) {
-        new Healthier().run();
+        new Duke().run();
     }
     /*
     private static void exit() {
