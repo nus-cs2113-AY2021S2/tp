@@ -38,6 +38,9 @@ public class Constants {
     // Exception messages
     public static final String EXCEPTION_PARSER_EMPTYSTRING = "Empty string is found when trying to parse command";
     public static final String EXCEPTION_PARSER_INVALIDCOMMAND = "Invalid command is provided";
+    public static final String EXCEPTION_ADD_INVALIDNRIC = "Please key in a valid NRIC number!";
+    public static final String EXCEPTION_ADD_PATIENTEXISTS = "Patient already exists!";
+    public static final String EXCEPTION_LIST_EMPTY = "List is currently empty!";
     public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
     public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please give me more details about the patient's visit";
 }
