@@ -25,4 +25,15 @@ public class UI {
                 + "Run command 'help' to see what you can do.\n"
                 + DIVIDER);
     }
+
+    public static void printMessage(String message) {
+        System.out.println(DIVIDER
+                + message
+                + "\n"
+                + DIVIDER);
+    }
+
+    public static void printDivider() {
+        System.out.println(DIVIDER);
+    }
 }
