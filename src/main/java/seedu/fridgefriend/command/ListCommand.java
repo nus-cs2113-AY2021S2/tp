@@ -17,15 +17,15 @@ public class ListCommand extends Command {
     private final FoodCategory foodCategory;
     private final String category;
 
-    public ListCommand(String description) {
-        this.category = description.toUpperCase();
+    public ListCommand(String categoryType) {
+        this.category = categoryType.toUpperCase();
         this.foodCategory = FoodCategory.convertStringToFoodCategory(category);
     }
 
     @Override
     public void execute() throws InvalidInputException {
         if (category.equals("")) {
-            listEverythingInFridge();
+            listAll();
         } else {
             listByCategory();
         }
@@ -37,25 +37,39 @@ public class ListCommand extends Command {
         Ui.printMessage(message);
     }
 
-    private String getListByCategoryMessage() {
-        String message = "These are the " + foodCategory + " in your fridge:\n";
-        for (int i = 0; i < Fridge.getSize(); i++) {
-            message += matchCategory(i);
-        }
-        return message;
+    private void listAll() {
+        Ui.printMessage(getListAllMessage());
     }
 
-    private void listEverythingInFridge() {
-        String message = "Here are the items in your fridge:";
+    /**
+     * Returns the food that match the category that was specified.
+     *
+     * @return string of food that match the category in the fridge
+     */
+    public String getListByCategoryMessage() {
+        StringBuilder message = new StringBuilder("These are the " + foodCategory + " in your fridge:");
         for (int i = 0; i < Fridge.getSize(); i++) {
-            message += getFoodDescription(i);
+            message.append(getMatchCategoryFoodDescription(i));
         }
-        Ui.printMessage(message);
+        return message.toString();
     }
 
-    private String getFoodDescription(int i) {
-        int indexShownToUser = i + EXTRA_INDEX;
-        Food food = Fridge.getFood(i);
+    /**
+     * Returns all the food in the fridge.
+     *
+     * @return string of the food names that are in the fridge
+     */
+    public String getListAllMessage() {
+        StringBuilder message = new StringBuilder("Here are the items in your fridge:");
+        for (int i = 0; i < Fridge.getSize(); i++) {
+            message.append(getFoodDescription(i));
+        }
+        return message.toString();
+    }
+
+    private String getFoodDescription(int index) {
+        int indexShownToUser = index + EXTRA_INDEX;
+        Food food = Fridge.getFood(index);
         String foodDescription = 
                 "\n\t" + indexShownToUser +  ". "
                 + food.getFoodName() + " ["
@@ -70,15 +84,15 @@ public class ListCommand extends Command {
         }
     }
 
-    private String matchCategory(int index) {
-        String foodAndCategory = "";
+    private String getMatchCategoryFoodDescription(int index) {
+        String foodDescription = "";
         Food food = Fridge.getFood(index);
         FoodCategory category = food.getCategory();
         if (category.equals(foodCategory)) {
             int indexShownToUser = index + EXTRA_INDEX;
-            foodAndCategory = "\t" + indexShownToUser + ". " + food.getFoodName();
+            foodDescription = "\n\t" + indexShownToUser + ". " + food.getFoodName();
         }
-        return foodAndCategory;
+        return foodDescription;
     }
 
 }
