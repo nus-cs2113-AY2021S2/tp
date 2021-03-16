@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.ByeCommand;
 import seedu.fridgefriend.command.Command;
+import seedu.fridgefriend.command.HelpCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.SearchCommand;
@@ -93,6 +94,9 @@ public class Parser {
         case "search":
             command = Parser.getSearchCommand(description);
             break;
+        case "help":
+            command = Parser.getHelpCommand();
+            break;
         case "bye":
             command = Parser.getByeCommand();
             break;
@@ -109,7 +113,7 @@ public class Parser {
      */
     public static final Pattern FOOD_DATA_ARGS_FORMAT =
             Pattern.compile("(?<name>[^/]+)"
-                    + " /c (?<category>[^/]+)"
+                    + " /cat (?<category>[^/]+)"
                     + " /exp (?<expiryDate>[^/]+)"
                     + " /loc (?<storageLocation>[^/]+)");
 
@@ -189,6 +193,11 @@ public class Parser {
     public static Command getSearchCommand(String description) throws EmptyDescriptionException {
         Command searchCommand = new SearchCommand(description);
         return searchCommand;
+    }
+
+    public static Command getHelpCommand() {
+        Command helpCommand = new HelpCommand();
+        return helpCommand;
     }
 
     /**
