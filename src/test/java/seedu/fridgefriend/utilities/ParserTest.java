@@ -50,7 +50,7 @@ public class ParserTest {
     @Test
     public void parse_addCommandMissingArgs_InvalidInputException() {
         assertThrows(InvalidInputException.class, () -> {
-            Parser.getCommand("add /c meat");
+            Parser.getCommand("add /cat meat");
         });
     }
 
