@@ -29,14 +29,14 @@ UniTracker is a one-stop application for NUS students to keep track of
 their work in school. It comprises 4 key features [Refer to Section 3. Features] that helps to organise
 all information they need in one place. Users are allowed to add and edit
 module information, tasks, zoom links to suit their needs.
-This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User Interface (
-GUI).
+This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User Interface (GUI).
+
 ---
 ## 2. Quick Start
 
 ### 2.1 System Requirements
 
-- Operating system should be: Windows 7 and above, Mac OS or Linux.
+- Operating system should be: Windows 7 and above, macOS or Linux.
 - Ensure that Java 11 is installed on your computer.
     - You can download the latest version of Java 11
       from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
@@ -90,6 +90,7 @@ GUI).
 
 The Module Information feature allows you to add/edit/delete modules,  
 and add information or review for the module of your choice.  
+
 Module Information menu:
 
 ```
@@ -224,10 +225,93 @@ Deletes a module from the list of modules.
 ---
 ### 3.2 CAP Simulator/Calculator
 
+The CAP Simulator/Calculator allows you to calculate your future CAP base on your
+current CAP and modules you have taken before.
+
+CAP Simulator/Calculator menu:
+
+````
+Please choose which action you would like to do and enter the number:
+[1] --- Add CAP and Number of MCs graded taken
+[2] --- View CAP and Number of MCs graded taken
+[3] --- Simulate future CAP
+[4] --- Exit
+````
+
+#### 3.2.1 Add CAP and Number of MCs graded taken
+
+Adds current CAP and MCs counted into the CAP.
+
+Input:  
+`1`  
+Output:  
+````
+Please key in your current CAP: [e.g. 4.33]
+````  
+Input:  
+`5`  
+Output:  
+````
+Please key in the number of MCs graded you have taken so far: 
+````  
+Input:  
+`20`  
+Output:  
+````
+Current CAP: 5.0  
+Number of Graded MCs Taken: 20
+````  
+
+#### 3.2.2 View CAP and Number of MCs graded taken
+
+Views current CAP and MCs counted into the CAP.  
+
+Input:  
+`2`  
+Output:  
+````
+Current CAP: 5.0  
+Number of Graded MCs Taken: 20
+````
+
+#### 3.2.3 Simulate future CAP
+
+Simulates future CAP base on the current CAP and MCs counted into the CAP.  
+Once done, enter `ok` when prompt with entering a new grade again.
+
+Input:  
+`3`  
+Output:   
+````
+You may key in your letter grades and MCs associated with the letter grade.
+Key in a grade: [e.g. A+, B, B-]
+````  
+Input:  
+`C`  
+Output:
+````
+Key in MCs for the associated module: 
+````  
+Input:  
+`4`  
+Output:
+````
+Key in a grade: [e.g. A+, B, B-] 
+````  
+Input:  
+`ok`  
+Output:  
+````
+The simulated cumulative average point you have is:  
+4.5
+````  
+
+
 ---
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, delete, pin or view your tasks.  
+The task manager feature allows you to add, delete, pin or view your tasks. 
+
 Task Manager menu:
 
 ````
@@ -397,7 +481,7 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
-####3.4.2 Add External Link
+#### 3.4.2 Add External Link
 Adds an external link that follows the format to the external links list.
 
 Format: `<scheme>www.<domain name>.<TLD>/<path name>`
