@@ -15,8 +15,6 @@ public class Router {
     }
 
     public String execute(String from, String to) {
-        System.out.println(from);
-        System.out.println(to);
         resetMap();
         try {
             return printShortestDistance(from, to);
