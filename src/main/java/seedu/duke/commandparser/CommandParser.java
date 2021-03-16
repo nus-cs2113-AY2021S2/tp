@@ -8,12 +8,17 @@ import seedu.duke.record.RecordType;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 
 import static seedu.duke.command.CommandType.ADD;
+import static seedu.duke.command.CommandType.VIEW;
 
 public class CommandParser {
+    private HashMap<String, String> params;
+
     public CommandParser() {
+        params = new HashMap<>();
     }
 
     //public Command parseCommand(String userInput) {
@@ -22,17 +27,20 @@ public class CommandParser {
         String commandWord = inputParts[0];
         switch (commandWord) {
         case "add":
-            //return prepareAdd(inputParts);
             prepareAdd(inputParts);
+            //return prepareAdd(inputParts);
             break;
+            /*
         case "view":
-            prepareView(inputParts);
+            return prepareView(inputParts);
             break;
         //    return prepareView(inputParts);
         case "delete":
-            prepareDelete(inputParts);
+            return prepareDelete(inputParts);
             break;
         //   return prepareDelete();
+
+             */
         default:
             //return new InvalidCommand();
             System.out.println("Invalid");
@@ -65,47 +73,50 @@ public class CommandParser {
         index = index.substring(2);
         System.out.println(index);
     }
-
-    //private Command prepareView(String[] inputParts) {
-    private void prepareView(String[] inputParts) {
+    /*
+    private Command prepareView(String[] inputParts) {
+    //private void prepareView(String[] inputParts) {
         if (inputParts.length < 2) {
-            //return new InvalidCommand();
-            System.out.println("invalid");
-            return;
+            return new InvalidCommand(VIEW);
+            //System.out.println("invalid");
+            //return;
         }
         String recordType = parseType(inputParts[1]);
         if (recordType.equals("")) {
-            System.out.println("invalid");
-            return;
+            //System.out.println("invalid");
+            //return;
+            return new InvalidCommand(VIEW);
         }
         String typeContent = inputParts[1];
         switch (recordType) {
         case "E":
             //return prepareExercise(content.trim());
-            prepareViewExercise(typeContent.trim());
-            break;
+            return prepareViewExercise(typeContent.trim());
+            //break;
         case "W":
-            //return prepareViewBodyWeight(typeContent.trim());
-            prepareViewBodyWeight(typeContent.trim());
-            break;
+            return prepareViewBodyWeight(typeContent.trim());
+            //prepareViewBodyWeight(typeContent.trim());
+            //break;
         case "D":
-            //return prepareAddDiet(typeContent.trim());
-            prepareViewDiet(typeContent.trim());
-            break;
+            return prepareViewDiet(typeContent.trim());
+            //prepareViewDiet(typeContent.trim());
+            //break;
         case "S":
-            //return prepareViewSleep(typeContent.trim());
-            prepareViewSleep(typeContent.trim());
-            break;
+            return prepareViewSleep(typeContent.trim());
+            //prepareViewSleep(typeContent.trim());
+            //break;
         default:
-            //return new InvalidCommand();
-            System.out.println("Invalid");
-            break;
+            return new InvalidCommand(VIEW);
+            //System.out.println("Invalid");
+            //break;
         }
     }
 
+ */
+
     private void prepareViewExercise(String typeContent) {
         if (typeContent.length() == 3) {
-            System.out.println("print all exercise records");
+            //System.out.println("print all exercise records");
             return;
         }
         String[] rawInput = typeContent.split("\\s+", 2);
@@ -251,61 +262,76 @@ public class CommandParser {
         System.out.println(date);
     }
 
-    private Command prepareAdd(String[] inputParts) {
-        //private void prepareAdd(String[] inputParts) {
+    //private Command prepareAdd(String[] inputParts) {
+    private void prepareAdd(String[] inputParts) {
         try {
             if (inputParts.length < 2) {
-                return new InvalidCommand(ADD);
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
-                //return;
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
             }
             String recordType = parseType(inputParts[1]);
             if (recordType.equals("")) {
                 //System.out.println("Invalid");
-                return new InvalidCommand(ADD);
+                //return new InvalidCommand(ADD);
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
             }
             String[] typeContent = inputParts[1].split("\\s+", 2);
             if (typeContent.length < 2) {
-                return new InvalidCommand(ADD);
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
                 //return;
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
             }
             String content = typeContent[1];
             switch (recordType) {
             case "E":
-                return prepareAddExercise(content.trim());
+                prepareAddExercise(content.trim());
+                return;
+            //    return prepareAddExercise(content.trim());
             //prepareAddExercise(content.trim());
             //break;
             case "W":
-                return prepareAddBodyWeight(content.trim());
+                prepareAddBodyWeight(content.trim());
+                return;
+            //    return prepareAddBodyWeight(content.trim());
             //prepareAddBodyWeight(content.trim());
             //break;
             case "D":
-                return prepareAddDiet(content.trim());
-            //prepareAddDiet(content.trim());
-            //break;
+                //return prepareAddDiet(content.trim());
+                prepareAddDiet(content.trim());
+                break;
             case "S":
-                return prepareAddSleep(content.trim());
+                prepareAddSleep(content.trim());
+                return;
+            //    return prepareAddSleep(content.trim());
             //prepareAddSleep(content.trim());
             //break;
             default:
-                return new InvalidCommand("The command word is invalid. Enter help to see help messages\n");
-            //System.out.println("Invalid");
-            //break;
+                //return new InvalidCommand("The command word is invalid. Enter help to see help messages\n");
+                System.out.println("Invalid");
+                break;
             }
         } catch (ParseException e) {
-            return new InvalidCommand("The date format is incorrect");
+            //return new InvalidCommand("The date format is incorrect");
+            //System.out.println("Invalid");
+            InvalidCommand invalidCommand = new InvalidCommand("The date format is incorrect");
+            return;
         }
 
     }
 
-    private Command prepareAddSleep(String content) throws ParseException {
-        //private void prepareAddSleep(String content) {
-        ArrayList<String> params = new ArrayList<>();
+    //private Command prepareAddSleep(String content) throws ParseException {
+    private void prepareAddSleep(String content) throws ParseException {
         String durationRawInput = content.trim();
         String duration = parseDuration(durationRawInput,false);
         if (duration.equals("")) {
-            return new InvalidCommand(ADD);
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
         }
@@ -314,24 +340,29 @@ public class CommandParser {
         if (hasDate) {
             String[] durationDate = getDate(duration);
             if (durationDate.length == 0) {
-                return new InvalidCommand(ADD);
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
                 //return;
             }
             duration = durationDate[0];
             date = durationDate[1];
-            params.add(duration);
-            params.add(date);
-            return new AddCommand("S", params);
+            params.put("duration", duration);
+            params.put("date", date);
+            //return new AddCommand("S", params);
+            AddCommand addCommand = new AddCommand("S", params);
+            return;
         }
-        params.add(duration);
-        params.add(duration);
-        return new AddCommand("S", params);
+        params.put("duration", duration);
+        AddCommand addCommand = new AddCommand("S", params);
+        return;
         //return new AddCommand("S", params);
         //for (int i = 0; i < params.size(); i++) {
         //    System.out.println(params.get(i));
         //}
     }
+
 
     private String[] getDate(String stringWithDate) {
         String[] paramDateRaw = stringWithDate.split("date/", 2);
@@ -348,106 +379,128 @@ public class CommandParser {
         return paramDate;
     }
 
-    private Command prepareAddDiet(String content) throws ParseException {
-        //private void prepareAddDiet(String content) {
-        ArrayList<String> params = new ArrayList<>();
+    //private Command prepareAddDiet(String content) throws ParseException {
+    private void prepareAddDiet(String content) throws ParseException {
         String[] foodWeight = content.split("w/",2);
         if (foodWeight.length < 2) {
-            return new InvalidCommand(ADD);
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
         }
         String foodRawInput = foodWeight[0].trim();
         String weightRawInput = foodWeight[1].trim();
         String food = parseDiet(foodRawInput,false);
         if (food.equals("")) {
-            return new InvalidCommand(ADD);
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
         }
         String weight = parseWeight(weightRawInput,true);
         if (weight.equals("")) {
-            return new InvalidCommand(ADD);
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
         }
         boolean hasDate = weightRawInput.contains("date/");
         String date = "";
         if (hasDate) {
             String[] weightDate = getDate(weight);
             if (weightDate.length == 0) {
-                return new InvalidCommand(ADD);
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
                 //return;
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
             }
             weight = weightDate[0];
             date = weightDate[1];
-            params.add(food);
-            params.add(weight);
-            params.add(date);
-            return new AddCommand("D", params);
+            params.put("food", food);
+            params.put("weight", weight);
+            params.put("date", date);
+            //return new AddCommand("D", params);
+            Command addCommand = new AddCommand("D", params);
+            return;
         }
-        params.add(food);
-        params.add(weight);
-        return new AddCommand("D", params);
+        params.put("food", food);
+        params.put("weight", weight);
+        //return new AddCommand("D", params);
+        Command addCommand = new AddCommand("D", params);
+        return;
         //for (int i = 0; i < params.size(); i++) {
         //    System.out.println(params.get(i));
         //}
     }
 
-    private Command prepareAddBodyWeight(String content) throws ParseException {
-        //private void prepareAddBodyWeight(String content) {
-        ArrayList<String> params = new ArrayList<>();
+    //private Command prepareAddBodyWeight(String content) throws ParseException {
+    private void prepareAddBodyWeight(String content) throws ParseException {
         String weightRawInput = content.trim();
         String weight = parseWeight(weightRawInput,false);
         if (weight.equals("")) {
-            return new InvalidCommand(ADD);
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
         }
         boolean hasDate = content.contains("date/");
         String date = "";
         if (hasDate) {
             String[] weightDate = getDate(weight);
             if (weightDate.length == 0) {
-                return new InvalidCommand(ADD);
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
                 //return;
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
             }
             weight = weightDate[0];
             date = weightDate[1];
-            params.add(weight);
-            params.add(date);
-            return new AddCommand("W", params);
+            params.put("weight",weight);
+            params.put("date",date);
+            //return new AddCommand("W", params);
+            AddCommand addCommand = new AddCommand("W", params);
+            return;
         }
-        params.add(weight);
-        return new AddCommand("W", params);
+        params.put("weight",weight);
+        AddCommand addCommand = new AddCommand("W", params);
+        return;
         //return new AddCommand("W", params);
         //for (int i = 0; i < params.size(); i++) {
         //    System.out.println(params.get(i));
         //}
     }
 
-    private Command prepareAddExercise(String content) throws ParseException {
-        //private void prepareAddExercise(String content) {
-        ArrayList<String> params = new ArrayList<>();
+    //private Command prepareAddExercise(String content) throws ParseException {
+    private void prepareAddExercise(String content) throws ParseException {
         String[] activityDuration = content.split("d/",2);
         if (activityDuration.length < 2) {
-            return new InvalidCommand(ADD);
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
         }
         String activityRawInput = activityDuration[0].trim();
         String activity = parseExerciseActivity(activityRawInput,false);
         if (activity.equals("")) {
-            return new InvalidCommand(ADD);
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
         }
         String durationRawInput = activityDuration[1].trim();
         String duration = parseDuration(durationRawInput,true);
         if (duration.equals("")) {
-            return new InvalidCommand(ADD);
+            InvalidCommand invalidCommand = new InvalidCommand(ADD);
+            return;
+            //return new InvalidCommand(ADD);
             //System.out.println("Invalid");
             //return;
         }
@@ -456,21 +509,27 @@ public class CommandParser {
         if (hasDate) {
             String[] durationDate = getDate(duration);
             if (durationDate.length == 0) {
-                return new InvalidCommand(ADD);
+                InvalidCommand invalidCommand = new InvalidCommand(ADD);
+                return;
+                //return new InvalidCommand(ADD);
                 //System.out.println("Invalid");
                 //return;
             }
             duration = durationDate[0];
             date = durationDate[1];
-            params.add(activity);
-            params.add(duration);
-            params.add(date);
-            return new AddCommand("E", params);
+            params.put("activity", activity);
+            params.put("duration", duration);
+            params.put("date", date);
+            //return new AddCommand("E", params);
+            AddCommand addCommand = new AddCommand("E", params);
+            return;
         }
         //duration = duration.substring(2,duration.length());
-        params.add(activity);
-        params.add(duration);
-        return new AddCommand("E", params);
+        params.put("activity", activity);
+        params.put("duration", duration);
+        AddCommand addCommand = new AddCommand("E", params);
+        return;
+        //return new AddCommand("E", params);
         //for (int i = 0; i < params.size(); i++) {
         //    System.out.println(params.get(i));
         //}
@@ -554,6 +613,10 @@ public class CommandParser {
             }
             return dietRawInput.substring(2);
         }
+    }
+
+    public void clearParserParams() {
+        params.clear();
     }
 
 }

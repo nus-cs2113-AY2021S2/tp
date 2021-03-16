@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 //import static seedu.duke.record.RecordType;
 
@@ -16,51 +17,32 @@ public class AddCommand extends Command {
     private Record record;
     private SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public AddCommand(String type, ArrayList<String> params) throws ParseException {
+    public AddCommand(String type, HashMap<String,String> params) throws ParseException {
+        spf.setLenient(false);
+        String dateString = params.get("date");
+        LocalDate localDate;
+        if (dateString != null) {
+            Date date = spf.parse(dateString);
+            localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        } else {
+            localDate = LocalDate.now();
+        }
         switch (type) {
         case "E":
-            if (params.size() == 3) {
-                Date date = spf.parse(params.get(3));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.EXERCISE, params.get(1), params.get(2), localDate);
-                System.out.println(params.get(1) + params.get(2) + params.get(3));
-            } else {
-                //record = new DietRecord(recordType.params.get(1), params.get(2), LocalDate.now());
-                System.out.println(params.get(1) + params.get(2));
-            }
+            //record = new DietRecord(recordType.EXERCISE, params.get("activity"), params.get("duration"), localDate);
+            System.out.println(params.get("activity") + params.get("duration") + localDate.toString());
             break;
         case "D":
-            if (params.size() == 3) {
-                Date date = spf.parse(params.get(3));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.DIET, params.get(1), params.get(2), localDate);
-                System.out.println(params.get(1) + params.get(2) + params.get(3));
-            } else {
-                //record = new DietRecord(recordType.DIET, params.get(1), params.get(2), LocalDate.now());
-                System.out.println(params.get(1) + params.get(2));
-            }
+            //record = new DietRecord(recordType.DIET, params.get("food"), params.get("weight"), localDate);
+            System.out.println(params.get("food") + params.get("weight") + localDate.toString());
             break;
         case "S":
-            if (params.size() == 2) {
-                Date date = spf.parse(params.get(2));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.SLEEP, params.get(1), localDate);
-                System.out.println(params.get(1) + params.get(2));
-            } else {
-                //record = new DietRecord(recordType.SLEEP, params.get(1), LocalDate.now());
-                System.out.println(params.get(1));
-            }
+            //record = new DietRecord(recordType.SLEEP, params.get("duration"), localDate);
+            System.out.println(params.get("duration") + localDate.toString());
             break;
         case "W":
-            if (params.size() == 2) {
-                Date date = spf.parse(params.get(2));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.BODYWEIGHT, params.get(1), localDate);
-                System.out.println(params.get(1) + params.get(2));
-            } else {
-                //record = new DietRecord(RecordType.BODYWEIGHT, params.get(1), LocalDate.now());
-                System.out.println(params.get(1));
-            }
+            //record = new DietRecord(recordType.BODYWEIGHT, params.get("weight"), localDate);
+            System.out.println(params.get("weight") + localDate.toString());
             break;
         default:
             System.out.println("There is something wrong within the system.");

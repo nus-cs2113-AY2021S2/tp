@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.command.Command;
 import seedu.duke.commandparser.CommandParser;
 import seedu.duke.ui.UI;
 
@@ -14,11 +15,14 @@ public class Duke {
     private void loopCommand() {
         CommandParser commandParser = new CommandParser();
         ui.printHelpPrompt();
-        String command = ui.getUserInput();
-        while (!command.equals("exit")) {
-            commandParser.parseCommand(command);
+        String userInput = ui.getUserInput();
+        while (!userInput.equals("exit")) {
+            //Command command = commandParser.parseCommand(userInput);
+            commandParser.parseCommand(userInput);
             ui.printHelpPrompt();
-            command = ui.getUserInput();
+            //command = ui.getUserInput();
+            commandParser.clearParserParams();
+            userInput = ui.getUserInput();
         }
         ui.printExitMessage();
     }
