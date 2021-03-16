@@ -11,7 +11,7 @@ class RouterTest {
     @Test
     void printShortestDistance_linkedBlocks_expectRoute() {
         Router map = new Router();
-        String out = map.printShortestDistance("E2","E7");
+        String out = map.execute("E2","E7");
         assertEquals(out, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
     }
 
@@ -24,9 +24,21 @@ class RouterTest {
     }
 
     @Test
+    void printShortestDistance_linkedBlocks_expectRouteAfterRepeatedCall() {
+        Router map = new Router();
+        String out1 = map.execute("E2", "E7");
+        assertEquals(out1, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
+        map.resetMap();
+        String out2 = map.execute("E2","E7");
+        assertEquals(out2, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
+    }
+
+    @Test
     void printShortestDistance_linkedBlocks_expectNoRoute() {
         Router map = new Router();
-        String out = map.printShortestDistance("AS1","EA");
+        String out = map.execute("AS1","EA");
         assertEquals(out, "The blocks given have no connected pathways!");
     }
+
+
 }
