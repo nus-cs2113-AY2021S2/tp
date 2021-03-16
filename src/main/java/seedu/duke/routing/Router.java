@@ -14,29 +14,19 @@ public class Router {
     public Router() {
     }
 
-
-/*    public void execute(History history) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("STARTING BLOCK:");
-        String from = in.nextLine();
-        System.out.println("DESTINATION BLOCK:");
-        String to = in.nextLine();
-        try {
-            System.out.println(printShortestDistance(from.toUpperCase(), to.toUpperCase()));
-            String record = "START: " + from.toUpperCase() + "; TO: " + to.toUpperCase();
-            history.addRecord(record);
-        } catch (NullPointerException e) {
-            System.out.println("Invalid block! Please enter the 'go' command to retry!");
-        }
-    }*/
     public String execute(String from, String to) {
         System.out.println(from);
         System.out.println(to);
+        resetMap();
         try {
             return printShortestDistance(from, to);
         } catch (NullPointerException e) {
             return "Invalid block! Please enter the 'go' command to retry!";
         }
+    }
+
+    public void resetMap(){
+        this.nusMap = new Map();
     }
 
     public String printShortestDistance(String from, String to) {
