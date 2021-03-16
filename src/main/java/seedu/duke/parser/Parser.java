@@ -57,9 +57,7 @@ import static seedu.duke.common.DashboardCommands.DELETE;
 import static seedu.duke.common.DashboardCommands.EXIT;
 import static seedu.duke.common.DashboardCommands.MODULES;
 import static seedu.duke.common.DashboardCommands.OPEN;
-
 import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
-
 import static seedu.duke.common.ModuleCommands.ADD_LESSON;
 import static seedu.duke.common.ModuleCommands.ADD_TASK;
 import static seedu.duke.common.ModuleCommands.CLOSE;
@@ -329,7 +327,7 @@ public class Parser {
         String timeAndDay = allDetails[INDEX_DAY_TIME];
 
         String link = allDetails[INDEX_LINK];
-        if (!isValidLink(link)) {
+        if (!isValidLink(link) && !link.equals(PLACEHOLDER)) {
             // PLACEHOLDER
             throw new CommandException("Invalid link entered.");
         }
