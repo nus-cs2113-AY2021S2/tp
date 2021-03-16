@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Diet extends Record {
 
     private double totalCalories;
-    
+
     /**
      * Initializes the object with given record type and date.
      *
@@ -17,8 +17,12 @@ public class Diet extends Record {
         super(type, date);
     }
 
-    public void addFood() {
+    public void addFood(FoodCategory category) {
+//        this.Food.setCategory(category);     // Not sure how to write this part
+    }
 
+    public void totalCalories(double totalCalories ){
+        this.totalCalories = totalCalories;
     }
 
     public double getTotalCal() {
@@ -26,7 +30,7 @@ public class Diet extends Record {
     }
 
     public void printFoodList() {
-
+     //   System.out.println(Food.getCategory());  // Not sure how to write this part
     }
 
     @Override

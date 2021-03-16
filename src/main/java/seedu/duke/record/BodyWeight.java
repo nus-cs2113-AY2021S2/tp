@@ -15,6 +15,10 @@ public class BodyWeight extends Record {
         super(type, date);
     }
 
+    public void weight(){
+
+    }
+
     @Override
     public String getRecordSummary() {
         return null;
