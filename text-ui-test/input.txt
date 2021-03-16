@@ -1,5 +1,4 @@
 invalid_command
-echo Do remember to wake up early tomorrow! /option1 A /option2 B C
 add A1234567R
 list
 help

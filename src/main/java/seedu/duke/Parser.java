@@ -62,7 +62,7 @@ public class Parser {
         }
         if (tokens.length == 0) {
             // TODO: Exception handling using a custom exception
-            throw new Exception("Empty string is found when trying to parse command");
+            throw new Exception(Constants.EXCEPTION_PARSER_EMPTYSTRING);
         }
         arguments.put("command", tokens[0]);
 
@@ -98,7 +98,7 @@ public class Parser {
         } catch (Exception e) {
             // If any exception thrown above, it means the command is not formatted properly
             // TODO: Exception handling using a custom exception
-            throw new Exception("Invalid command is provided", e);
+            throw new Exception(Constants.EXCEPTION_PARSER_INVALIDCOMMAND, e);
         }
     }
 }
