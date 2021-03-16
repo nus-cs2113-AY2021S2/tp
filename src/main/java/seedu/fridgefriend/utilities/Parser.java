@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.ByeCommand;
 import seedu.fridgefriend.command.Command;
+import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
@@ -94,6 +95,9 @@ public class Parser {
             break;
         case "search":
             command = Parser.getSearchCommand(description);
+            break;
+        case "expiring":
+            command = Parser.getExpiringCommand();
             break;
         case "help":
             command = Parser.getHelpCommand();
@@ -196,6 +200,19 @@ public class Parser {
         Command searchCommand = new SearchCommand(description);
         return searchCommand;
     }
+
+    /**
+     * Returns an ExpiringCommand object.
+     */
+
+    private static Command getExpiringCommand() {
+        Command expiringCommand = new ExpiringCommand();
+        return expiringCommand;
+    }
+
+    /**
+     * Returns a HelpCommand object.
+     */
 
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
