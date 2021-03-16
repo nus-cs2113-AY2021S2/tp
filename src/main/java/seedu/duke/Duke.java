@@ -34,6 +34,7 @@ public class Duke {
                     break;
                 case 2:
                     //helpGraduation
+                    HelpGraduationManager.execute();
                     break;
                 case 3:
                     //manageTask
