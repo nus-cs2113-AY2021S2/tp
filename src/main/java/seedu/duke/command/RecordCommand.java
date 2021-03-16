@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -26,10 +27,10 @@ public class RecordCommand extends Command {
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception("No patient loaded!");
+            throw new Exception(Constants.NULL_PATIENT_ERROR_MESSAGE);
         }
         if (arguments.get("payload").length() == 0) {
-            throw new Exception("Please give me more details!");
+            throw new Exception(Constants.EMPTY_PAYLOAD_ERROR_MESSAGE);
         }
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);

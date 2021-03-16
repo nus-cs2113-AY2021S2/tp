@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -26,7 +27,7 @@ public class RetrieveCommand extends Command {
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception("No patient loaded!");
+            throw new Exception(Constants.NULL_PATIENT_ERROR_MESSAGE);
         }
         ArrayList<Record> records = patient.getRecords();
         ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
