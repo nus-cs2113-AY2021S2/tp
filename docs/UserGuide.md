@@ -34,22 +34,23 @@ Additional info:
 * MEAT 
 * SEAFOOD 
 * EGG 
-* DAIRY, 
-* VEGETABLE, 
-* FRUIT, 
-* BEVERAGE, 
-* COOKED_DISH, 
-* READY_TO_EAT, 
+* DAIRY 
+* VEGETABLE 
+* FRUIT
+* BEVERAGE 
+* COOKED_DISH 
+* READY_TO_EAT 
 * FROZEN
 * OTHERS
 
 **Basic fridge location**
 * FREEZER 
 * UPPER_SHELF
-* MIDDLE_SHELF,
+* MIDDLE_SHELF
 * LOWER_SHELF
 * DRAWERS
-* FRIDGE_DOOR.
+* FRIDGE_DOOR
+* OTHERS
 
 Example of usage: 
 
