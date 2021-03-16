@@ -74,10 +74,10 @@ public class Ui {
      * Prints list of deliveries present in delivery list
      */
     public void showDeliveryList() {
-        System.out.println("No. || Status || Delivery ID || Address || Recipient");
+        System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
-            System.out.println(Integer.toString(i) + delivery);
+            System.out.println(Integer.toString(i) + ". " + delivery);
         }
     }
 
@@ -134,7 +134,7 @@ public class Ui {
                     }
                     break;
                 case "start":
-                    new DeliveryList();
+                    DeliveryList.loadDeliveryList();
                     // todo: load delivery assignment
                     break;
                 case "list":
