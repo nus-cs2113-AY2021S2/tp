@@ -50,6 +50,8 @@ public class ListCommand extends Command {
         for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getMatchCategoryFoodDescription(i));
         }
+
+        assert message != null : "message string should not be null";
         return message.toString();
     }
 

@@ -64,7 +64,7 @@ public class Food {
         ExpiryDate expiryDate = new ExpiryDate(expiryString);
         this.expiryDate = expiryDate;
         Logger.logInfo("Expiry date has been changed to "
-                + expiryDate + "in food object " + foodName);
+                + expiryDate + " in food object " + foodName);
     }
 
     public FoodStorageLocation getStorageLocation() {
@@ -74,6 +74,6 @@ public class Food {
     public void setStorageLocation(FoodStorageLocation storageLocation) {
         this.storageLocation = storageLocation;
         Logger.logInfo("Storage location has been changed to "
-                + storageLocation + "in food object " + foodName);
+                + storageLocation + " in food object " + foodName);
     }
 }
