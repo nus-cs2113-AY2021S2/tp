@@ -2,4 +2,7 @@ invalid_command
 add A1234567R
 list
 help
+load A1234567R
+record coughing
+retrieve
 exit
