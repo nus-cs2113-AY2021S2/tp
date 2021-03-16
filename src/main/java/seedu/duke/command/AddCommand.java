@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -26,14 +27,14 @@ public class AddCommand extends Command {
 
         // TODO more ways to check for invalid NRIC and other exceptions
         if (stringLength != 9) {
-            throw new Exception("Please key in a valid NRIC number!");
+            throw new Exception(Constants.EXCEPTION_ADD_INVALIDNRIC);
         } else if (data.getPatients().containsKey(patientID)) {
-            throw new Exception("Patient already exists!");
+            throw new Exception(Constants.EXCEPTION_ADD_PATIENTEXISTS);
         }
 
         Patient patient = new Patient(patientID);
         data.setPatient(patient);
 
-        System.out.print("Patient " + patientID + " has been added!\n");
+        ui.printMessage("Patient " + patientID + " has been added!");
     }
 }

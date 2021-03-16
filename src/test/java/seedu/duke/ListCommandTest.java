@@ -15,10 +15,11 @@ public class ListCommandTest {
     @Test
     public void executeListCommand_listEmpty_exceptionThrown() {
         Data data = new Data();
+        Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
         
-        ListCommand listCommand = new ListCommand(null, data, arguments);
+        ListCommand listCommand = new ListCommand(ui, data, arguments);
 
         Exception exception = assertThrows(Exception.class, () -> {
             listCommand.execute();
@@ -29,12 +30,13 @@ public class ListCommandTest {
     @Test
     public void executeListCommand() {
         Data data = new Data();
+        Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
 
         Patient patient = new Patient("S1234567A");
         data.setPatient(patient);
-        ListCommand listCommand = new ListCommand(null, data, arguments);
+        ListCommand listCommand = new ListCommand(ui, data, arguments);
 
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -46,7 +48,7 @@ public class ListCommandTest {
             System.out.println("An error occurred while running tests");
         }
 
-        assertEquals("List of patients:\n" + "1. S1234567A\n", bos.toString());
+        assertEquals("List of patients:\n" + "1. S1234567A" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 }

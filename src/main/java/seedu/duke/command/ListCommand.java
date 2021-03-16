@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -23,17 +24,17 @@ public class ListCommand extends Command {
         // Todo Replace by ui after ui is implemented
         HashMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
-        String list = "List of patients:\n";
+        String list = "List of patients:";
 
         for (String patientID : patients.keySet()) {
-            list += ++patientCount + ". " + patientID + "\n";
+            list += "\n" + ++patientCount + ". " + patientID;
         }
 
         // Todo implement more exceptions
         if (patientCount == 0) {
-            throw new Exception("List is currently empty!");
+            throw new Exception(Constants.EXCEPTION_LIST_EMPTY);
         } else {
-            System.out.print(list);
+            ui.printMessage(list);
         }
     }
 }
