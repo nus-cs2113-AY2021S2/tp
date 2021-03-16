@@ -17,7 +17,7 @@ public enum DashboardCommands implements CommandList {
 
     DashboardCommands(String word, String description) {
         this.word = word;
-        this.argumentsFormat = "";
+        this.argumentsFormat = Constants.EMPTY_STRING;
         this.description = description;
     }
 
