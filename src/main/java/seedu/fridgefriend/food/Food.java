@@ -1,6 +1,7 @@
 package seedu.fridgefriend.food;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.utilities.Logger;
 
 /**
  * Represents a portion of a specific food that is stored in the smart fridge.
@@ -14,12 +15,14 @@ public class Food {
     protected FoodStorageLocation storageLocation;
 
     public Food(FoodCategory category, String foodName) {
+        Logger.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
         this.setFoodName(foodName);
     }
 
     public Food(FoodCategory category, String foodName, String expiryString,
             FoodStorageLocation storageLocation) throws InvalidDateException {
+        Logger.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
         this.setFoodName(foodName);
         this.setExpiryDate(expiryString);
@@ -60,6 +63,8 @@ public class Food {
     public void setExpiryDate(String expiryString) throws InvalidDateException {
         ExpiryDate expiryDate = new ExpiryDate(expiryString);
         this.expiryDate = expiryDate;
+        Logger.logInfo("Expiry date has been changed to "
+                + expiryDate + "in food object " + foodName);
     }
 
     public FoodStorageLocation getStorageLocation() {
@@ -68,5 +73,7 @@ public class Food {
 
     public void setStorageLocation(FoodStorageLocation storageLocation) {
         this.storageLocation = storageLocation;
+        Logger.logInfo("Storage location has been changed to "
+                + storageLocation + "in food object " + foodName);
     }
 }
