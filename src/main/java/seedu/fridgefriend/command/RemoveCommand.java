@@ -19,7 +19,7 @@ public class RemoveCommand extends Command {
      * @param indexToRemove integer index given by user
      * @throws InvalidIndexException if provided index is out of bounds
      */
-    public RemoveCommand(int indexToRemove) throws InvalidIndexException {
+    public RemoveCommand(int indexToRemove) {
         int actualIndexToRemoved = indexToRemove - EXTRA_INDEX;
         this.indexToRemove = actualIndexToRemoved;
     }
