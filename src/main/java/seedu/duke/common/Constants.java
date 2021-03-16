@@ -68,4 +68,8 @@ public class Constants {
     public static final String KEYWORD_LESSON = "lesson | ";
     public static final String KEYWORD_TASK = "task | ";
     public static final String TRUE_STRING = "T";
+
+    //Command
+    public static final String HEAD = "HEAD";
+
 }

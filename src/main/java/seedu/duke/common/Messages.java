@@ -21,6 +21,21 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
     public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
 
+    //Parser messages
+    public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
+    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code.";
+    
+    public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
+    public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";
+    public static final String MESSAGE_INVALID_LESSON_LINK = "Invalid link entered.";
+    public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered.";
+    
+    public static final String MESSAGE_TASK_FIELDS_EMPTY = "Missing task details.";
+    public static final String MESSAGE_INVALID_TASK_DEADLINE = "Invalid/missing deadline.";
+    
+    public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
+    public static final String MESSAGE_OUT_OF_BOUNDS_INDICES = "Warning, out of bounds index removed: %s";
+
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
@@ -115,7 +130,12 @@ public class Messages {
 
     //Module info messages
     public static final String FORMAT_LESSONS_INFO = "%s - %s";
+    public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
     public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
+    public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
     public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
+
+    //Command messages
+    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";    
 
 }
