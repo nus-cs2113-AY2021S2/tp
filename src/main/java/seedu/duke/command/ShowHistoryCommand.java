@@ -12,6 +12,6 @@ public class ShowHistoryCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history, NotesManager notesManager) {
-        history.displayRecords();
+        ui.showHistory(history);
     }
 }

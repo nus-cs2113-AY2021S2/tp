@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.exception.InvalidRepeatEntryException;
+import seedu.duke.exception.RepeatEntryOutOfBoundException;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -48,12 +51,8 @@ public class UiManager {
         out.println(DIVIDER);
     }
 
-    public void showLogo() {
-        showToUser(DIVIDER, LOGO);
-    }
-
     public void showGreetMessage() {
-        showToUser(GREETING_MESSAGE);
+        showToUser(DIVIDER, LOGO, DIVIDER, GREETING_MESSAGE);
     }
 
     public void showByeMessage() {
@@ -75,6 +74,18 @@ public class UiManager {
         );
     }
 
+    public void showHistory(History history) {
+        showToUser(
+                "Number of records in your history: " + history.getTotalNoOfHistory(),
+                history.getHistoryAsString()
+        );
+    }
+
+    public void showClearHistoryResponse() {
+        showToUser("Your history has been cleared.");
+    }
+
+
     public String[] getRoutingInfo() {
         String[] startAndDestination = new String[2];
 
@@ -85,5 +96,14 @@ public class UiManager {
         startAndDestination[1] = in.nextLine().toUpperCase().trim();
 
         return startAndDestination;
+    }
+
+    public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {
+        try {
+            out.println("SELECT ENTRY TO REPEAT:");
+            return Integer.parseInt(in.nextLine());
+        } catch (NumberFormatException e) {
+            throw new InvalidRepeatEntryException();
+        }
     }
 }

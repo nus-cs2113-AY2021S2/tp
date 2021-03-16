@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.command.Command;
+import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.routing.Router;
 
 public class Duke {
@@ -20,7 +21,6 @@ public class Duke {
         this.ui = new UiManager();
         this.history = new History();
         this.notesManager = new NotesManager();
-        ui.showLogo();
         ui.showGreetMessage();
         runCommandLoopUntilByeCommand();
     }
@@ -32,7 +32,6 @@ public class Duke {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
                 command.execute(router, ui, history, notesManager);
-                ui.showToUser();
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());

@@ -10,6 +10,7 @@ import seedu.duke.command.AddNoteCommand;
 import seedu.duke.command.DeleteNoteCommand;
 import seedu.duke.command.ByeCommand;
 import seedu.duke.command.HelpCommand;
+import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
     public static Command prepareForCommandExecution(String userInput) throws InvalidCommandException {

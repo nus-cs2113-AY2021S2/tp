@@ -12,6 +12,7 @@ public class ClearHistoryCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history, NotesManager notesManager) {
-        history.emptyRecords();
+        history.emptyHistory();
+        ui.showClearHistoryResponse();
     }
 }
