@@ -27,13 +27,11 @@ public class Constants {
     public static final String WELCOME_MESSAGE = "Welcome to the Patient Manager.\n";
     public static final String INPUT_PROMPT = "Please input a command: ";
 
-    public static final String NULL_PATIENT_ERROR_MESSAGE = "No patient loaded!";
-    public static final String EMPTY_PAYLOAD_ERROR_MESSAGE = "Please tell me what to record";
-
-
     public static final String LONG_LINE = "----------------------------------------------------------------------";
 
     // Exception messages
     public static final String EXCEPTION_PARSER_EMPTYSTRING = "Empty string is found when trying to parse command";
     public static final String EXCEPTION_PARSER_INVALIDCOMMAND = "Invalid command is provided";
+    public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
+    public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please tell me what to record";
 }

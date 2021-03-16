@@ -27,10 +27,10 @@ public class RecordCommand extends Command {
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception(Constants.NULL_PATIENT_ERROR_MESSAGE);
+            throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
         }
         if (arguments.get("payload").length() == 0) {
-            throw new Exception(Constants.EMPTY_PAYLOAD_ERROR_MESSAGE);
+            throw new Exception(Constants.EXCEPTION_RECORD_EMPTYPAYLOAD);
         }
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);
