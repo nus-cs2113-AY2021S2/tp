@@ -167,7 +167,8 @@ public class CommandList {
         try {
             String input = in.nextLine();
             String[] review = input.split(" ", 4);
-            Review r = new Review(review[0].trim(), review[1].trim(), Integer.parseInt(review[2].trim()), "Currently no description");
+            Review r = new Review(review[0].trim(), review[1].trim(),
+                    Integer.parseInt(review[2].trim()), "Currently no description");
             reviewList.add(r);
             System.out.println(review[0] + " created.");
         } catch (IndexOutOfBoundsException e) {
@@ -179,7 +180,8 @@ public class CommandList {
         try {
             String input = in.nextLine();
             String[] review = input.split(" ", 4);
-            Review r = new Review(review[0].trim(), review[1].trim(), Integer.parseInt(review[2].trim()), review[3].trim());
+            Review r = new Review(review[0].trim(), review[1].trim(),
+                    Integer.parseInt(review[2].trim()), review[3].trim());
             reviewList.add(r);
             System.out.println(review[0] + " created.");
         } catch (IndexOutOfBoundsException e) {

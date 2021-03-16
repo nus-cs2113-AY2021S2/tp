@@ -105,11 +105,11 @@ public class Ui {
 
     public static void printDetermineReviewTypeMessage(String reviewType) {
         if (reviewType.equals("quick")) {
-            System.out.print("Quick Review Select\n" +
-                    "Please enter Category, Title, Rating/5\n");
+            System.out.print("Quick Review Select\n"
+                    + "Please enter Category, Title, Rating/5\n");
         } else if (reviewType.equals("long")) {
-            System.out.print("Long Review Select\n" +
-                    "Please enter Category, Title, Rating/5, Details\n");
+            System.out.print("Long Review Select\n"
+                    + "Please enter Category, Title, Rating/5, Details\n");
         }
     }
 
