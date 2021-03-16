@@ -6,8 +6,6 @@ import seedu.fridgefriend.exception.InvalidDateException;
  * Represents a portion of a specific food that is stored in the smart fridge.
  * When calling constructor, FoodCategory and foodName are NECESSARY fields.
  * The date fields are represented by strings for now, they are OPTIONAL as well as storage location.
- * For Jingjie: for now you can use the first constructor.
- * todo: If needed, make the class abstract and add children classes(only when necessary unique methods are needed).
  */
 public class Food {
     protected FoodCategory category;
@@ -30,7 +28,7 @@ public class Food {
 
     @Override
     public String toString() {
-        String format = "||Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s||";
+        String format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s";
         return String.format(
                 format,
                 getFoodName(),

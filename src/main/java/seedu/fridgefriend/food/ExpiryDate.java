@@ -15,7 +15,7 @@ public class ExpiryDate {
             LocalDate expiry = LocalDate.parse(string, formatter);
             this.expiry = expiry;            
         } catch (DateTimeParseException e) {
-            String message = e.getLocalizedMessage() + "\n";
+            String message = e.getLocalizedMessage();
             throw new InvalidDateException(message);
         }
     }
