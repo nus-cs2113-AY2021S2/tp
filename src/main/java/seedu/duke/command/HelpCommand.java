@@ -26,6 +26,7 @@ public class HelpCommand extends Command {
                     + Constants.LOAD_INFO_MESSAGE + System.lineSeparator()
                     + Constants.RECORD_CONSULTATION_INFO_MESSAGE + System.lineSeparator()
                     + Constants.RETRIEVE_INFO_MESSAGE + System.lineSeparator()
+                    + Constants.HELP_INFO_MESSAGE + System.lineSeparator()
                     + Constants.EXIT_INFO_MESSAGE
             );
         } else {
@@ -45,6 +46,9 @@ public class HelpCommand extends Command {
                     break;
                 case "retrieve":
                     ui.printMessage(Constants.RETRIEVE_INFO_MESSAGE);
+                    break;
+                case "help":
+                    ui.printMessage(Constants.HELP_INFO_MESSAGE);
                     break;
                 case "exit":
                     ui.printMessage(Constants.EXIT_INFO_MESSAGE);
