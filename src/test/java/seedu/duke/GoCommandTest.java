@@ -8,11 +8,12 @@ public class GoCommandTest {
     @Test
     public void goCommandTest() throws InvalidBlockException {
         RouterTest routerTest = new RouterTest();
-        HistoryTest historyTest = new HistoryTest();
         routerTest.printShortestDistance_linkedBlocks_expectNoRoute();
         routerTest.printShortestDistance_linkedBlocks_expectRoute();
         routerTest.printShortestDistance_unknownBlock_expectException();
         routerTest.printShortestDistance_linkedBlocks_expectRouteAfterRepeatedCall();
+
+        HistoryTest historyTest = new HistoryTest();
         historyTest.getHistory_addOneHistory_oneHistoryInHistory();
     }
 }
