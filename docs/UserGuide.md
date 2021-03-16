@@ -14,20 +14,48 @@
 ## Features 
 
 {Give detailed description of each feature}
+**Notes about the command format:**
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+* Words in UPPER_CASE are the parameters to be supplied by the user.\
+  e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
+  
+### Adding a food item: `add`
+Adds a food item to the fridge.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `FOOD_NAME` can be the name of a food but not an empty description. 
+* The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
+* The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
+* The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+  
+Additional info:
+**Basic Food Groups**:
+* MEAT 
+* SEAFOOD 
+* EGG 
+* DAIRY, 
+* VEGETABLE, 
+* FRUIT, 
+* BEVERAGE, 
+* COOKED_DISH, 
+* READY_TO_EAT, 
+* FROZEN
+* OTHERS
+
+**Basic fridge location**
+* FREEZER 
+* UPPER_SHELF
+* MIDDLE_SHELF,
+* LOWER_SHELF
+* DRAWERS
+* FRIDGE_DOOR.
 
 Example of usage: 
 
-`todo n/Write the rest of the User Guide d/next week`
+`add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+`add grouper /cat seafood /exp 04-05-2021 /loc freezer`
 
 ## FAQ
 
