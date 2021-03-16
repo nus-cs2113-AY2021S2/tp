@@ -33,7 +33,7 @@ public class EchoCommand extends Command {
     }
 
     /**
-     * This is the getter for data object
+     * This is the getter for the data object.
      * @return data object
      */
     public Data getData() {
