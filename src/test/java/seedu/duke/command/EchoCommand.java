@@ -6,7 +6,7 @@ import seedu.duke.Data;
 import seedu.duke.Ui;
 
 /**
- * A demo of how the Command class is used.
+ * This is a command for testing purposes.
  */
 public class EchoCommand extends Command {
     /**
@@ -21,8 +21,22 @@ public class EchoCommand extends Command {
 
     @Override
     public void execute() {
-        // Replace by ui after ui is implemented
-        ui.printMessage("You said this: " + arguments.get("payload"));
-        ui.printMessage("This is the full argument hashmap content: " + arguments);
+        ui.printMessage(arguments.get("payload"));
+    }
+
+    /**
+     * This is the getter for arguments hashmap.
+     * @return Arguments hashmap
+     */
+    public HashMap<String, String> getArguments() {
+        return arguments;
+    }
+
+    /**
+     * This is the getter for data object
+     * @return data object
+     */
+    public Data getData() {
+        return data;
     }
 }
