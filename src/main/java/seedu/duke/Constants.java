@@ -39,5 +39,5 @@ public class Constants {
     public static final String EXCEPTION_PARSER_EMPTYSTRING = "Empty string is found when trying to parse command";
     public static final String EXCEPTION_PARSER_INVALIDCOMMAND = "Invalid command is provided";
     public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
-    public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please tell me what to record";
+    public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please give me more details about the patient's visit";
 }
