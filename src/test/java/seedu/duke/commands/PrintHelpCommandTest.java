@@ -14,6 +14,8 @@ import java.io.PrintStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
+import static seedu.duke.common.Messages.MESSAGE_DASHBOARD_HELP;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_HELP;
 import static seedu.duke.common.Messages.NEWLINE;
 
 class PrintHelpCommandTest {
@@ -38,12 +40,19 @@ class PrintHelpCommandTest {
         printHelpCommand.execute(new UI());
 
         StringBuilder stringBuilder = new StringBuilder();
+
+        if (ModuleList.getSelectedModule() == null) {
+            stringBuilder.append(MESSAGE_DASHBOARD_HELP).append(NEWLINE);
+        } else {
+            stringBuilder.append(MESSAGE_MODULE_HELP).append(NEWLINE);
+        }
         for (DashboardCommands command : DashboardCommands.values()) {
             if (command.equals(DashboardCommands.INVALID)) {
                 continue;
             }
+            String commandWordAndArgs = command.getWord() + " " + command.getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
-                    command.getWord(), command.getDescription());
+                    commandWordAndArgs, command.getDescription());
             stringBuilder.append(commandAndDescription).append(NEWLINE);
         }
         String output = stringBuilder.toString();

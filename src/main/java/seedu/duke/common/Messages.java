@@ -4,7 +4,7 @@ public class Messages {
 
 
     //General message
-    public static final String FORMAT_LIST_HELP = "%-16s - %s";
+    public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
@@ -21,12 +21,33 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
     public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
 
+    //Parser messages
+    public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
+    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code.";
+
+    public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
+    public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";
+    public static final String MESSAGE_INVALID_LESSON_LINK = "Invalid link entered.";
+    public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered.";
+
+    public static final String MESSAGE_TASK_FIELDS_EMPTY = "Missing task details.";
+    public static final String MESSAGE_INVALID_TASK_DEADLINE = "Invalid/missing deadline.";
+
+    public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
+    public static final String MESSAGE_OUT_OF_BOUNDS_INDICES = "Warning, out of bounds index removed: %s";
+
+    public static final String MESSAGE_INVALID_DAY_TIME = "Invalid format. Please enter a valid day and time!";
+
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
     public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list.";
     public static final String MESSAGE_INVALID_MODULE = "Unable to find %s.";
     public static final String MESSAGE_NO_MODULES_TO_DELETE = "No modules to be deleted.";
+    public static final String MESSAGE_DASHBOARD_HELP = "Dashboard commands information"
+            + "\n------------------------------";
+    public static final String MESSAGE_MODULE_HELP = "Module commands information"
+            + "\n---------------------------";
 
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
     public static final String MESSAGE_DELETE_MODULE_INFO =
@@ -49,7 +70,6 @@ public class Messages {
     public static final String MESSAGE_LESSONS_TO_LIST = "Lessons for %s:";
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson’s link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
-
 
     //Task messages
     public static final String FORMAT_PRINT_TASK = "%d. %s%s - %s";
@@ -122,6 +142,6 @@ public class Messages {
     public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
 
     //Command messages
-    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";    
+    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
 
 }
