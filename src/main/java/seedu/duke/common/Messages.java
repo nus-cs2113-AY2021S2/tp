@@ -43,6 +43,7 @@ public class Messages {
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
     public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list.";
     public static final String MESSAGE_INVALID_MODULE = "Unable to find %s.";
+    public static final String MESSAGE_NO_MODULES_TO_DELETE = "No modules to be deleted.";
     public static final String MESSAGE_DASHBOARD_HELP = "Dashboard commands information"
             + "\n------------------------------";
     public static final String MESSAGE_MODULE_HELP = "Module commands information"

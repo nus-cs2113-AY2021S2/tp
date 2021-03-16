@@ -156,28 +156,15 @@ public class UI {
     }
 
     //@@author isaharon
+
     /**
-     * Reads input for indices from user. 
-     * Splits and returns array list of indices if valid.
-     * 
-     * @return Array list of valid indices.
+     * Read input from user and returns list of indices.
+     * @param max the maximum accepted index
+     * @return an integer arraylist with valid indices
      */
-    public ArrayList<Integer> getIndicesFromUser() {
-        boolean isValidInput = false;
-        ArrayList<Integer> indices = null;
-
-        do {
-            String userInput = readCommand();
-            try {
-                indices = Parser.checkIndices(userInput, ModuleList.getModules().size());
-            } catch (NumberFormatException e) {
-                // keep reading input until given valid
-                printMessage(MESSAGE_INVALID_INDICES);
-                continue;
-            }
-            isValidInput = true;
-        } while (!isValidInput);
-
+    public ArrayList<Integer> getIndicesFromUser(int max) {
+        String userInput = readCommand();
+        ArrayList<Integer> indices = Parser.checkIndices(userInput, max);
         return indices;
     }
 }
