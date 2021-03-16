@@ -24,17 +24,19 @@ public class Messages {
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
     public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code.";
-    
+
     public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
     public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";
     public static final String MESSAGE_INVALID_LESSON_LINK = "Invalid link entered.";
     public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered.";
-    
+
     public static final String MESSAGE_TASK_FIELDS_EMPTY = "Missing task details.";
     public static final String MESSAGE_INVALID_TASK_DEADLINE = "Invalid/missing deadline.";
-    
+
     public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
     public static final String MESSAGE_OUT_OF_BOUNDS_INDICES = "Warning, out of bounds index removed: %s";
+
+    public static final String MESSAGE_INVALID_DAY_TIME = "Invalid format. Please enter a valid day and time!";
 
     //Module messages
     public static final String MESSAGE_ADDED_MODULE = "Added %s to the module list.";
@@ -64,7 +66,6 @@ public class Messages {
     public static final String MESSAGE_LESSONS_TO_LIST = "Lessons for %s:";
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson’s link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
-
 
     //Task messages
     public static final String FORMAT_PRINT_TASK = "%d. %s%s - %s";
@@ -136,6 +137,5 @@ public class Messages {
 
     //Logging messages
     public static final String MESSAGE_LOAD_FAILED = "LOADER: failed to load %s.";
-    
 
 }
