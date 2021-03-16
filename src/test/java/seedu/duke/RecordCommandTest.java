@@ -20,7 +20,8 @@ class RecordCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RecordCommand recordCommand = new RecordCommand(null, data, arguments);
+        Ui ui = new Ui();
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         Exception exception = assertThrows(Exception.class, () -> {
             recordCommand.execute();
         });
@@ -36,7 +37,8 @@ class RecordCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RecordCommand recordCommand = new RecordCommand(null, data, arguments);
+        Ui ui = new Ui();
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
             recordCommand.execute();
         } catch (Exception exception) {
@@ -44,5 +46,22 @@ class RecordCommandTest {
         }
         ArrayList<Record> records = patient.getRecords();
         assertEquals(1, records.size());
+    }
+
+    @Test
+    public void executeRecordCommand_emptyPayload_exceptionThrown() {
+        Data data = new Data();
+        Patient patient = new Patient("S1234567A");
+        data.setPatient(patient);
+        data.loadCurrentPatient(patient.getID());
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "record");
+        arguments.put("payload", "");
+        Ui ui = new Ui();
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
+        Exception exception = assertThrows(Exception.class, () -> {
+            recordCommand.execute();
+        });
+        assertEquals("Please give me more details about the patient's visit", exception.getMessage());
     }
 }

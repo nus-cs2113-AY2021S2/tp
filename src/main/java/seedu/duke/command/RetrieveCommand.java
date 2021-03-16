@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -22,15 +23,17 @@ public class RetrieveCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        // TODO: Replace System.out.println() with ui after ui is implemented
+        assert ui != null : "Ui must not be null";
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception("No patient loaded!");
+            throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
         }
         ArrayList<Record> records = patient.getRecords();
-        for (Record record : records) {
-            System.out.println(record);
+        ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
+        for (int i = 0; i < records.size(); i++) {
+            Record record = records.get(i);
+            ui.printMessage(Integer.toString(i + 1) + ". " + record.toString());
         }
     }
 }

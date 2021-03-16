@@ -21,7 +21,8 @@ class RetrieveCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RetrieveCommand retrieveCommand = new RetrieveCommand(null, data, arguments);
+        Ui ui = new Ui();
+        RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
         Exception exception = assertThrows(Exception.class, () -> {
             retrieveCommand.execute();
         });
@@ -37,7 +38,8 @@ class RetrieveCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RecordCommand recordCommand = new RecordCommand(null, data, arguments);
+        Ui ui = new Ui();
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
             recordCommand.execute();
         } catch (Exception exception) {
@@ -49,13 +51,14 @@ class RetrieveCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        RetrieveCommand retrieveCommand = new RetrieveCommand(null, data, arguments);
+        RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
         try {
             retrieveCommand.execute();
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        assertEquals("coughing" + System.lineSeparator(), bos.toString());
+        assertEquals("Here is a list of " + patient.getID() + "'s records:" + System.lineSeparator()
+                + "1. coughing" + System.lineSeparator(), bos.toString());
 
         // Bind System.out back to standard output
         System.setOut(originalOut);

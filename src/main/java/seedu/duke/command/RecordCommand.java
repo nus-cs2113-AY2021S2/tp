@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
@@ -21,15 +22,19 @@ public class RecordCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        // TODO: Replace System.out.println() with ui after ui is implemented
+        assert ui != null : "Ui must not be null";
+        assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception("No patient loaded!");
+            throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
+        }
+        if (arguments.get("payload").length() == 0) {
+            throw new Exception(Constants.EXCEPTION_RECORD_EMPTYPAYLOAD);
         }
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);
         patient.addRecord(record);
-        System.out.println("Added new record: " + record);
+        ui.printMessage("Added new record: " + record.toString());
     }
 }
