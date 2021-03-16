@@ -21,6 +21,8 @@ public class RecordCommand extends Command {
 
     @Override
     public void execute() throws Exception {
+        assert ui != null : "Ui must not be null";
+        assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {

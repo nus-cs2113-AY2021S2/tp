@@ -22,6 +22,7 @@ public class RetrieveCommand extends Command {
 
     @Override
     public void execute() throws Exception {
+        assert ui != null : "Ui must not be null";
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
