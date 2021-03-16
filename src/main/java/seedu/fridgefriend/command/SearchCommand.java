@@ -2,7 +2,6 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -40,7 +39,7 @@ public class SearchCommand extends Command {
         String message;
         if (indexOfFoodStored >= 0) {
             message = "You have " + foodName + " stored in "
-                    + Fridge.getFood(indexOfFoodStored).getStorageLocation()
+                    + fridge.getFood(indexOfFoodStored).getStorageLocation()
                     + " of your fridge.";
         } else {
             message = "You do not have " + foodName + " in your fridge.";
@@ -49,8 +48,8 @@ public class SearchCommand extends Command {
     }
 
     private int getIndexOfFoodStored() {
-        for (int i = 0; i < Fridge.getSize(); i += 1) {
-            Food food = Fridge.getFood(i);
+        for (int i = 0; i < fridge.getSize(); i += 1) {
+            Food food = fridge.getFood(i);
             if (food.getFoodName().equals(foodName)) {
                 return i;
             }
