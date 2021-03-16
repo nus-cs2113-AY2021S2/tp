@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import java.util.Locale;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
@@ -588,5 +587,45 @@ public class Ui {
 
     public static void printLinkDeleted(String deletedString) {
         System.out.println("You have deleted --- " + deletedString);
+    }
+
+    public static void printCapSimulatorPrompt() {
+        System.out.println("You may key in your letter grades "
+                + "and MCs associated with the letter grade.");
+    }
+
+    public static void printMCsPerModulePrompt() {
+        System.out.println("Key in MCs for the associated module: ");
+    }
+
+    public static void printGradePerModulePrompt() {
+        System.out.println("Key in a grade: [e.g. A+, B, B-]");
+    }
+
+    public static void printHelpGraduationMenu() {
+        System.out.println("Please choose which action you would like to do"
+                + " and enter the number:\n"
+                + "[1] --- Add CAP and Number of MCs graded taken\n"
+                + "[2] --- View CAP and Number of MCs graded taken\n"
+                + "[3] --- Simulate future CAP\n"
+                + "[4] --- Exit\n");
+    }
+
+    public static void getCurrentCapPrompt() {
+        System.out.println("Please key in your current CAP: [e.g. 4.33]");
+    }
+
+    public static void getNumberOfGradedMCsTakenPrompt() {
+        System.out.println("Please key in the number of MCs graded you have taken so far: ");
+    }
+
+    public static void printRegisteredCapAndMCsTakenMessage() {
+        System.out.println("Current CAP: " + HelpGraduation.getCurrentCap());
+        System.out.println("Number of Graded MCs Taken: "
+                + HelpGraduation.getNumberOfGradedMCsTaken());
+    }
+
+    public static void printInvalidGradeMessage() {
+        System.out.println("Please enter a valid grade.");
     }
 }
