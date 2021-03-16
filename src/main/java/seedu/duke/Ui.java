@@ -54,4 +54,10 @@ public class Ui {
         printMessage(e.toString());
     }
 
+    /**
+     * This prints a long breaking line to separate user input and command outputs.
+     */
+    public void printLine() {
+        printMessage(Constants.LONG_LINE);
+    }
 }
