@@ -49,7 +49,7 @@ public class CommandList {
      * List reviews according to different types of input.
      *
      * @param sortMethod is the listing method preferred by user. If there is no
-     *              preferred listing method, default listing will be used.
+     *                   preferred listing method, default listing will be used.
      */
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
@@ -66,7 +66,7 @@ public class CommandList {
     }
 
     /**
-     * Prints the sorted reviews. 
+     * Prints the sorted reviews.
      */
     public void printReviews(ArrayList<Review> reviewList) {
         System.out.println("Here are your reviews:");
@@ -117,7 +117,7 @@ public class CommandList {
     }
 
     /**
-     * Print invalid command text. 
+     * Print invalid command text.
      */
     public static void invalidCommand() {
         Ui.printToScreen("Invalid Command. ");
@@ -144,7 +144,8 @@ public class CommandList {
     }
 
     /**
-     * Sort a review based on input sort type. 
+     * Sort a review based on input sort type.
+     *
      * @param sortType sorting method to be used
      */
     public void sortReview(String sortType) {
@@ -160,7 +161,7 @@ public class CommandList {
     }
 
     /**
-     * Add a review. 
+     * Add a review.
      */
     public void addQuickReview() {
         try {
@@ -186,14 +187,14 @@ public class CommandList {
         }
     }
 
-    public String determineReviewType(String input){
+    public String determineReviewType(String input) {
         String reviewType = input.toLowerCase().trim();
         Ui.printDetermineReviewTypeMessage(reviewType);
         return reviewType;
     }
 
     /**
-     * Exits connoisseur. 
+     * Exits connoisseur.
      */
     public void exit() {
         Storage.saveData(reviewList);

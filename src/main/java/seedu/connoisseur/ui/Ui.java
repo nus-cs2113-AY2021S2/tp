@@ -18,14 +18,15 @@ public class Ui {
     private final Scanner in;
 
     /**
-     * Constructor for Ui class. 
+     * Constructor for Ui class.
      */
     public Ui() {
         this.in = new Scanner(System.in);
     }
 
     /**
-     * Reads user input. 
+     * Reads user input.
+     *
      * @return the input line as a string
      */
     public String readCommand() {
@@ -51,21 +52,22 @@ public class Ui {
     }
 
     /**
-     * Prints help message. 
+     * Prints help message.
      */
     public static void printHelpMessage() {
         printToScreen(HELP_MESSAGE);
     }
 
     /**
-     * Prints exit message. 
+     * Prints exit message.
      */
     public static void printExitMessage() {
         printToScreen(EXIT_MESSAGE);
     }
 
     /**
-     * Prints error message. 
+     * Prints error message.
+     *
      * @param e error encountered
      */
     public static void printErrorMessage(IOException e) {
@@ -74,38 +76,38 @@ public class Ui {
     }
 
     /**
-     * Prints file exists message. 
+     * Prints file exists message.
      */
     public static void printFileExistsMessage() {
         printToScreen(FILE_ALREADY_EXISTS);
     }
 
     /**
-     * Prints folder exists message. 
+     * Prints folder exists message.
      */
     public static void printFolderExistsMessage() {
         printToScreen(FOLDER_ALREADY_EXISTS);
     }
 
     /**
-     * Prints folder created message. 
+     * Prints folder created message.
      */
     public static void printSuccessfulCreateFolderMessage() {
         printToScreen(FOLDER_SUCCESS);
     }
 
     /**
-     * Prints current directory. 
+     * Prints current directory.
      */
     public static void printPresentDirectory() {
         printToScreen(CURRENT_DIRECTORY);
     }
 
-    public static void printDetermineReviewTypeMessage(String reviewType){
-        if(reviewType.equals("quick")){
+    public static void printDetermineReviewTypeMessage(String reviewType) {
+        if (reviewType.equals("quick")) {
             System.out.print("Quick Review Select\n" +
                     "Please enter Category, Title, Rating/5\n");
-        }else if(reviewType.equals("long")){
+        } else if (reviewType.equals("long")) {
             System.out.print("Long Review Select\n" +
                     "Please enter Category, Title, Rating/5, Details\n");
         }

@@ -13,10 +13,11 @@ public class Review {
 
 
     /**
-     * Creates a review. 
-     * @param title title of the review
-     * @param category category of the experience
-     * @param rating rating of the experience
+     * Creates a review.
+     *
+     * @param title       title of the review
+     * @param category    category of the experience
+     * @param rating      rating of the experience
      * @param description description of the experience
      */
     public Review(String title, String category, int rating, String description) {
@@ -29,12 +30,13 @@ public class Review {
     }
 
     /**
-     * Creates a review with specified date. 
-     * @param title title of the review
-     * @param category category of the experience
-     * @param rating rating of the experience
+     * Creates a review with specified date.
+     *
+     * @param title       title of the review
+     * @param category    category of the experience
+     * @param rating      rating of the experience
      * @param description description of the experience
-     * @param date date of review
+     * @param date        date of review
      */
     public Review(String title, String category, int rating, String description, String date) {
         this.title = title;
@@ -45,7 +47,8 @@ public class Review {
     }
 
     /**
-     * Gets the date of the review. 
+     * Gets the date of the review.
+     *
      * @return date of entry as a string
      */
     public String getDate() {
@@ -53,7 +56,8 @@ public class Review {
     }
 
     /**
-     * Gets the title of the review. 
+     * Gets the title of the review.
+     *
      * @return title of review
      */
     public String getTitle() {
@@ -61,7 +65,8 @@ public class Review {
     }
 
     /**
-     * Sets the title of the review. 
+     * Sets the title of the review.
+     *
      * @param title new title to be set
      */
     public void setTitle(String title) {
@@ -69,7 +74,8 @@ public class Review {
     }
 
     /**
-     * Gets the category of the experience. 
+     * Gets the category of the experience.
+     *
      * @return category of the experience as a string
      */
     public String getCategory() {
@@ -77,7 +83,8 @@ public class Review {
     }
 
     /**
-     * Sets the category of the experience. 
+     * Sets the category of the experience.
+     *
      * @param category new category of experience
      */
     public void setCategory(String category) {
@@ -85,7 +92,8 @@ public class Review {
     }
 
     /**
-     * Gets the rating of the experience. 
+     * Gets the rating of the experience.
+     *
      * @return rating of the experience as an integer
      */
     public int getRating() {
@@ -93,7 +101,8 @@ public class Review {
     }
 
     /**
-     * Sets the rating of the experience. 
+     * Sets the rating of the experience.
+     *
      * @param rating new rating to be set
      */
     public void setRating(int rating) {
@@ -101,7 +110,8 @@ public class Review {
     }
 
     /**
-     * Gets the description of the experience. 
+     * Gets the description of the experience.
+     *
      * @return description of the experience as a string
      */
     public String getDescription() {
@@ -109,7 +119,8 @@ public class Review {
     }
 
     /**
-     * Sets the description of the experience. 
+     * Sets the description of the experience.
+     *
      * @param description new description to be set
      */
     public void setDescription(String description) {
@@ -117,7 +128,8 @@ public class Review {
     }
 
     /**
-     * Converts the rating to visual form. 
+     * Converts the rating to visual form.
+     *
      * @return rating of the experience as a string
      */
     public String starRating() {
@@ -135,7 +147,8 @@ public class Review {
     }
 
     /**
-     * Converts the review to a string. 
+     * Converts the review to a string.
+     *
      * @return review as a string for display
      */
     public String toString() {
@@ -143,7 +156,8 @@ public class Review {
     }
 
     /**
-     * Converts a review into text for storage. 
+     * Converts a review into text for storage.
+     *
      * @return review in a single string
      */
     public String reviewToText() {
@@ -151,13 +165,14 @@ public class Review {
     }
 
     /**
-     * Converts a single string into a review. 
+     * Converts a single string into a review.
+     *
      * @param review the review saves as a single string
      * @return review as a Review object
      */
     public static Review textToReview(String review) {
         String[] reviewFields = review.split("\\|", 5);
-        Review r = new Review(reviewFields[1], reviewFields[2], Integer.parseInt(reviewFields[3]), 
+        Review r = new Review(reviewFields[1], reviewFields[2], Integer.parseInt(reviewFields[3]),
                 reviewFields[4], reviewFields[0]);
         return r;
     }
