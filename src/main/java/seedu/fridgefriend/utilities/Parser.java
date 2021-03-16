@@ -103,6 +103,7 @@ public class Parser {
         default:
             throw new InvalidInputException();
         }
+        assert command != null : "Command should not be null";
         return command;
     }
 
