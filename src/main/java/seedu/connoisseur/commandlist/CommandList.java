@@ -7,6 +7,8 @@ import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Scanner;
 
 /**
  * Class with methods for different commands.
@@ -17,6 +19,7 @@ public class CommandList {
 
     public ArrayList<Review> reviewList;
     private Sorter sorter;
+    private final Scanner in = new Scanner(System.in);
 
     /**
      * Creates tasks according to user data from files.
@@ -158,17 +161,35 @@ public class CommandList {
 
     /**
      * Add a review. 
-     * @param input review fields split by spaces
      */
-    public void addReview(String input) {
+    public void addQuickReview() {
         try {
+            String input = in.nextLine();
             String[] review = input.split(" ", 4);
-            Review r = new Review(review[0], review[1], Integer.parseInt(review[2]), review[3]);
+            Review r = new Review(review[0].trim(), review[1].trim(), Integer.parseInt(review[2].trim()), "Currently no description");
             reviewList.add(r);
             System.out.println(review[0] + " created.");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid input review, please try again.");
         }
+    }
+
+    public void addLongReview() {
+        try {
+            String input = in.nextLine();
+            String[] review = input.split(" ", 4);
+            Review r = new Review(review[0].trim(), review[1].trim(), Integer.parseInt(review[2].trim()), review[3].trim());
+            reviewList.add(r);
+            System.out.println(review[0] + " created.");
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Invalid input review, please try again.");
+        }
+    }
+
+    public String determineReviewType(String input){
+        String reviewType = input.toLowerCase().trim();
+        Ui.printDetermineReviewTypeMessage(reviewType);
+        return reviewType;
     }
 
     /**

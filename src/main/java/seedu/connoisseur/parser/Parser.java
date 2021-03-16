@@ -34,7 +34,12 @@ public class Parser {
         } else if (command.equals("sort")) {
             commandList.sortReview(description);
         } else if (command.equals("new")) {
-            commandList.addReview(description);
+            String reviewType = commandList.determineReviewType(description);   //catch the errors here
+            if(reviewType.equals("quick")){
+                commandList.addQuickReview();
+            }else{
+                commandList.addLongReview();
+            }
         } else if (command.equals("delete")) {
             commandList.deleteReview(description);
         } else if (command.equals("help")) {
