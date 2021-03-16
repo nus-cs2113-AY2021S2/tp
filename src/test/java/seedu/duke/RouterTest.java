@@ -12,7 +12,7 @@ class RouterTest {
     void printShortestDistance_linkedBlocks_expectRoute() {
         Router map = new Router();
         String out = map.printShortestDistance("E2","E7");
-        assertEquals(out, "Path is ::E2->E3->E4->E4A->EW2->E6->E7");
+        assertEquals(out, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
     }
 
     @Test

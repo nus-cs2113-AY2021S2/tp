@@ -3,7 +3,7 @@ package seedu.duke;
 import java.util.ArrayList;
 
 public class History {
-    private static ArrayList<String> history = new ArrayList();
+    private static ArrayList<String> history = new ArrayList<String>();
 
     public History() {
     }
@@ -21,6 +21,11 @@ public class History {
 
     public void addRecord(String recordDescription) {
         history.add(recordDescription);
+    }
+
+    public void addRecord(String from, String to) {
+        String record = "START: " + from.toUpperCase() + "; TO: " + to.toUpperCase();
+        history.add(record);
     }
 
     public void emptyRecords() {
