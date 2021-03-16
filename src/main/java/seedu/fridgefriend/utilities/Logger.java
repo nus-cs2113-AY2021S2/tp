@@ -21,6 +21,13 @@ public class Logger {
     }
 
     /**
+     * Logs a message at level INFO with an exception.
+     */
+    public static void logInfo(String message, Throwable e) {
+        logger.log(Level.INFO, message, e);
+    }
+
+    /**
      * Logs a message at level WARNING.
      */
     public static void logWarning(String message) {

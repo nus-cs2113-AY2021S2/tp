@@ -2,7 +2,6 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -26,8 +25,8 @@ public class SearchCommand extends Command {
     }
 
     private boolean isFound() {
-        for (int i = 0; i < Fridge.getSize(); i += 1) {
-            Food food = Fridge.getFood(i);
+        for (int i = 0; i < fridge.getSize(); i += 1) {
+            Food food = fridge.getFood(i);
             if (food.getFoodName().equals(foodName)) {
                 return true;
             }
