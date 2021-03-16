@@ -10,36 +10,36 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
+import static seedu.connoisseur.messages.Messages.FILE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.FOLDER_SUCCESS;
+import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
+
 /**
  * Loads reviews from connoisseur.txt or
  * creates and saves new reviews to connoisseur's.txt
  */
-
 public class Storage {
-    private static String path;
+    private static String filePath;
+    private Ui ui;
 
     /**
      * Constructor for Storage class. 
      */
-    public Storage() {
-        path = System.getProperty("user.dir") + "/data/connoisseur.txt";
-        // System.out.println(path);
-    }
-
-    /**
-     * Creates data folder if it does not exist.
-     */
-    public static void createFolder() {
-        // Ui.printPresentDirectory();
+    public Storage(Ui ui) {
+        ui.printLog(CURRENT_DIRECTORY);
         String folderPath = System.getProperty("user.dir") + "/data";
         File folder = new File(folderPath);
-        folder.mkdir();
-        // boolean isSuccessful = folder.mkdir();
-        // if (isSuccessful) {
-        //     Ui.printSuccessfulCreateFolderMessage();
-        // } else {
-        //     Ui.printFolderExistsMessage();
-        // }
+        boolean folderIsCreated = folder.mkdir();
+        if (folderIsCreated) {
+            ui.printLog(FOLDER_SUCCESS);
+        } else {
+            ui.printLog(FOLDER_ALREADY_EXISTS);
+        }
+        filePath = System.getProperty("user.dir") + "/data/connoisseur.txt";
+        this.ui = ui;
+        ui.printLog(filePath);
     }
 
     /**
@@ -50,15 +50,15 @@ public class Storage {
     public boolean retrieveTextFile() {
         boolean hasTextFile = false;
         try {
-            File data = new File(path);
+            File data = new File(filePath);
             if (data.createNewFile()) {
-                System.out.println("Text file created: " + data.getName());
+                ui.printLog(FILE_SUCCESS);
             } else {
                 hasTextFile = true;
-                Ui.printFileExistsMessage();
+                ui.printLog(FILE_ALREADY_EXISTS);;
             }
         } catch (IOException e) { //creating or retrieving data has errors
-            Ui.printErrorMessage(e);
+            ui.printErrorMessage(e);
         }
         return hasTextFile;
     }
@@ -71,16 +71,16 @@ public class Storage {
     public ArrayList<String> loadData() {
         ArrayList<String> reviewList = new ArrayList<>();
         try {
-            File data = new File(path);
-            Scanner sc = new Scanner(data);
+            File data = new File(filePath);
+            Scanner fileScanner = new Scanner(data);
             String reviewsToLoad;
-            while (sc.hasNextLine()) {
-                reviewsToLoad = sc.nextLine();
+            while (fileScanner.hasNextLine()) {
+                reviewsToLoad = fileScanner.nextLine();
                 reviewList.add(reviewsToLoad);
             }
-            sc.close();
+            fileScanner.close();
         } catch (FileNotFoundException e) {
-            Ui.printErrorMessage(e);
+            ui.printErrorMessage(e);
         }
         return reviewList;
     }
@@ -90,16 +90,16 @@ public class Storage {
      *
      * @param reviewList Reviews list to be updated.
      */
-    public static void saveData(ArrayList<Review> reviewList) {
+    public void saveData(ArrayList<Review> reviewList) {
         try {
-            FileWriter fileWriter = new FileWriter(path);
+            FileWriter fileWriter = new FileWriter(filePath);
             for (Review review : reviewList) {
                 String reviewToWrite = review.reviewToText() + "\n";
                 fileWriter.append(reviewToWrite);
             }
             fileWriter.close();
         } catch (IOException e) {
-            Ui.printErrorMessage(e);
+            ui.printErrorMessage(e);
         }
     }
 }
