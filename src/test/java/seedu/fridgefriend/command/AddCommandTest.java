@@ -34,8 +34,8 @@ class AddCommandTest {
         assertEquals(expiryDate.getExpiry(), fridge.getFood(0).getExpiryDate().getExpiry());
 
         String expectedMessage = "Great! I have added chicken into your fridge.\n"
-                + "Details: ||Food name: chicken, category: MEAT, "
-                + "expiry: 30-06-2021, stored in: FREEZER||";
+                + "Details: Food name: chicken, category: MEAT, "
+                + "expiry: 30-06-2021, stored in: FREEZER";
         String actualMessage = addCommand.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }
