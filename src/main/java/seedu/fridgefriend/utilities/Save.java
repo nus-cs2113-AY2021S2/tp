@@ -21,9 +21,9 @@ public class Save {
     public static String directory = "save";
 
     /**
-     * Creates a textfile if it does not already exist.
+     * Creates a textfile and the folder directory if it does not already exist.
      */
-    public static void checkSave() {
+    public static void checkSave(Fridge fridge) {
         Path path = Paths.get(filePath); //creates Path instance
         File file = new File(filePath);
 
@@ -31,15 +31,14 @@ public class Save {
             Files.createDirectories(Paths.get(directory));
             Path p = Files.createFile(path);     //creates file at specified location
         } catch (IOException e) {
-            loadSave();
+            loadSave(fridge);
         }
     }
 
     /**
      * Reads the data from the textfile.
-     * @return a Fridge object constructed from the data in the savefile.
      */
-    public static void loadSave() {
+    public static void loadSave(Fridge fridge) {
         File file = new File(filePath);
         try {
             Scanner s = new Scanner(file); // create a Scanner using the File as the source
@@ -57,7 +56,7 @@ public class Save {
 
                 String storageStr = parameters[4];
                 FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
-                Fridge.add(new Food(category, name, expiry, storage));
+                fridge.add(new Food(category, name, expiry, storage));
             }
         } catch (FileNotFoundException e) {
             Ui.printExceptionMessage(new NoSaveException());
@@ -69,14 +68,14 @@ public class Save {
     /**
      * Overwrites the current textfile with data from the current session.
      */
-    public static void save() {
+    public static void save(Fridge fridge) {
         try {
             FileWriter fw = new FileWriter(filePath);
             fw.write("");//clear file
             fw.close();
             FileWriter f = new FileWriter(filePath, true); // create a FileWriter in append mode
-            for (int i = 0; i < Fridge.getSize(); i++) {
-                f.write(Fridge.getFood(i).toString() + "\n");
+            for (int i = 0; i < fridge.getSize(); i++) {
+                f.write(fridge.getFood(i).toString() + "\n");
             }
             f.close();
         } catch (IOException e) {

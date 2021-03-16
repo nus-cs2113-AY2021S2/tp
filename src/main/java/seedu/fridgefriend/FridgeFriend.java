@@ -18,15 +18,14 @@ public class FridgeFriend {
         new Ui();
         new Logger();
         Logger.logInfo("FridgeFriend application initialised.");
-        new Fridge();
         new Save();
     }
 
     public static void main(String[] args) {
         Ui.printWelcomeMessage();
-        Save.checkSave();
+        Save.checkSave(fridge);
         run();
-        Save.save();
+        Save.save(fridge);
         Ui.printByeMessage();
     }
 
