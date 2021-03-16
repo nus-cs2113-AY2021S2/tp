@@ -23,22 +23,23 @@ public class Storage {
      */
     public Storage() {
         path = System.getProperty("user.dir") + "/data/connoisseur.txt";
-        System.out.println(path);
+        // System.out.println(path);
     }
 
     /**
      * Creates data folder if it does not exist.
      */
     public static void createFolder() {
-        Ui.printPresentDirectory();
+        // Ui.printPresentDirectory();
         String folderPath = System.getProperty("user.dir") + "/data";
         File folder = new File(folderPath);
-        boolean isSuccessful = folder.mkdir();
-        if (isSuccessful) {
-            Ui.printSuccessfulCreateFolderMessage();
-        } else {
-            Ui.printFolderExistsMessage();
-        }
+        folder.mkdir();
+        // boolean isSuccessful = folder.mkdir();
+        // if (isSuccessful) {
+        //     Ui.printSuccessfulCreateFolderMessage();
+        // } else {
+        //     Ui.printFolderExistsMessage();
+        // }
     }
 
     /**

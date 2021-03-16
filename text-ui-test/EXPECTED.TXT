@@ -1,3 +1,4 @@
+Text file created: connoisseur.txt
                          Welcome to
    _____                        _                         
   / ____|                      (_)                        
@@ -7,3 +8,21 @@
   \_____\___/|_| |_|_| |_|\___/|_|___/___/\___|\__,_|_|   
 
                      Waiting for command...
+No reviews found. :(
+superman created.
+avengers created.
+Here are your reviews:
+    Title               Rating              Date
+1.  superman            ★ ★ ★ ★ ✰           Mar 16 2021
+2.  avengers            ★ ★ ★ ★ ★           Mar 16 2021
+Success! Your preferred sorting method has been saved: TITLE
+Here are your reviews:
+    Title               Rating              Date
+1.  avengers            ★ ★ ★ ★ ★           Mar 16 2021
+2.  superman            ★ ★ ★ ★ ✰           Mar 16 2021
+Here are your reviews:
+    Title               Rating              Date
+1.  avengers            ★ ★ ★ ★ ★           Mar 16 2021
+2.  superman            ★ ★ ★ ★ ✰           Mar 16 2021
+superman deleted.
+Thanks for using Connoisseur, see you again!
