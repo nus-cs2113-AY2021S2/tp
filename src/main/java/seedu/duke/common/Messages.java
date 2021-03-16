@@ -4,7 +4,7 @@ public class Messages {
 
 
     //General message
-    public static final String FORMAT_LIST_HELP = "%-16s - %s";
+    public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
@@ -43,6 +43,10 @@ public class Messages {
     public static final String MESSAGE_REMOVED_MODULE = "Removed %s from the module list.";
     public static final String MESSAGE_DUPLICATE_MODULE = "Module code %s already exists in the module list.";
     public static final String MESSAGE_INVALID_MODULE = "Unable to find %s.";
+    public static final String MESSAGE_DASHBOARD_HELP = "Dashboard commands information"
+            + "\n------------------------------";
+    public static final String MESSAGE_MODULE_HELP = "Module commands information"
+            + "\n---------------------------";
 
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
     public static final String MESSAGE_DELETE_MODULE_INFO =
