@@ -96,6 +96,10 @@ public class Ui {
         }
     }
 
+    /**
+     * Displays to a user that a delivery has been completed
+     * @param deliveryNumber is the index of the delivery to be marked as completed
+     */
     public void showCompletedDelivery(int deliveryNumber) {
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         delivery.setDeliveryAsComplete();
