@@ -8,6 +8,8 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import static seedu.duke.common.Constants.INDEX_FIRST;
+import static seedu.duke.common.Messages.MESSAGE_DASHBOARD_HELP;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_HELP;
 import static seedu.duke.common.Messages.NEWLINE;
 
 public class PrintHelpCommand extends Command {
@@ -21,9 +23,11 @@ public class PrintHelpCommand extends Command {
     @Override
     public void execute(UI ui) {
         if (ModuleList.getSelectedModule() == null) {
+            ui.printMessage(MESSAGE_DASHBOARD_HELP);
             DashboardCommands[] commands = DashboardCommands.values();
             ui.printMessage(getCommands(commands));
         } else {
+            ui.printMessage(MESSAGE_MODULE_HELP);
             ModuleCommands[] commands = ModuleCommands.values();
             ui.printMessage(getCommands(commands));
         }
@@ -49,8 +53,9 @@ public class PrintHelpCommand extends Command {
             } else if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE);
             }
+            String commandWordAndArgs = commands[i].getWord() + " " + commands[i].getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
-                    commands[i].getWord(), commands[i].getDescription());
+                    commandWordAndArgs, commands[i].getDescription());
             stringBuilder.append(commandAndDescription);
         }
         return stringBuilder.toString();

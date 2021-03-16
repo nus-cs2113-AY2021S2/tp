@@ -9,4 +9,6 @@ public interface CommandList {
     default String getDescription() {
         return null;
     }
+
+    String getArgumentsFormat();
 }
