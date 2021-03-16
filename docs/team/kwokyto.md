@@ -19,7 +19,7 @@ Given below are my contributions to the project
   - What it does: Allows the user to get a list of all food items that are going to expire in a week.
   - Justification: Improves the product signicantly because a user can effectively track the status of
   all food items in the fridge with a single command.
-  - Pull request: ([#xx](placeholder))
+  - Pull request: ([#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66))
 
 - **Code contributed**: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto)
 
@@ -34,6 +34,7 @@ Given below are my contributions to the project
   - Write additional tests for `Parser` class ([#47](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/47)])
   - Write `Logger` class ([#51](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/51))
   - Write logging for `FridgeFriend` ([#52](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/52))
+  - Improve Coding Standards for `Storage` class ([#68](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/68))
 
 - **Documentation**
   - User Guide
