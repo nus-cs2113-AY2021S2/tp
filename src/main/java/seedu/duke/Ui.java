@@ -82,6 +82,10 @@ public class Ui {
         }
     }
 
+    /**
+     * Shows details about a single delivery order
+     * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
+     */
     public void showDeliveryDetails(int deliveryNumber) {
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         System.out.println(delivery);
@@ -90,7 +94,13 @@ public class Ui {
             System.out.println(i + ": \n" + item);
             i++;
         }
+    }
 
+    public void showCompletedDelivery(int deliveryNumber) {
+        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+        delivery.setDeliveryAsComplete();
+        System.out.println("The following delivery has been marked as completed:");
+        System.out.println(delivery);
     }
 
     public void showProfile(Deliveryman deliveryman) {
@@ -100,8 +110,8 @@ public class Ui {
     /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
-     * @param deliveryman
-     * @param dataManager
+     * @param deliveryman is the currently loaded profile
+     * @param dataManager is to save the deliveryman's profile // todo: extract profile saving to another method
      */
     public void showLoopingMenuUntilExit(Deliveryman deliveryman, DataManager dataManager) {
         Parser parser = new Parser();
@@ -125,6 +135,7 @@ public class Ui {
                     break;
                 case "edit":
                 case "editprofile":
+                    // todo: extract the below as a method - see line 114
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
                     if(inputProfileData != "fail"){
                         String[] splitInputProfileData = inputProfileData.split(" \\| ");
@@ -157,17 +168,13 @@ public class Ui {
                 case "complete":
                     deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
                     // todo: exception handling (numbers that are already complete/out of range)
-                    DeliveryList.deliveries.get(deliveryNumber).setDeliveryAsComplete();
+                    showCompletedDelivery(deliveryNumber);
                     break;
                 case "bye":
                     break;
                 default:
                     System.out.println("Incorrect entry"); // raise exception
             }
-//            Look at comment in line 100
-//            if (!userCommand.equalsIgnoreCase("bye")) {
-//                promptUserInput();
-//            }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
 
