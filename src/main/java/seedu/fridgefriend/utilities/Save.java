@@ -1,6 +1,7 @@
 package seedu.fridgefriend.utilities;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.NoSaveException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -17,15 +18,18 @@ import java.util.Scanner;
 
 public class Save {
     public static String filePath = "save/savefile.txt";
+    public static String directory = "save";
 
     /**
      * Creates a textfile if it does not already exist.
      */
     public static void checkSave() {
         Path path = Paths.get(filePath); //creates Path instance
-        try {
-            Path p = Files.createFile(path);     //creates file at specified location
+        File file = new File(filePath);
 
+        try {
+            Files.createDirectories(Paths.get(directory));
+            Path p = Files.createFile(path);     //creates file at specified location
         } catch (IOException e) {
             loadSave();
         }
@@ -35,11 +39,11 @@ public class Save {
      * Reads the data from the textfile.
      * @return a Fridge object constructed from the data in the savefile.
      */
-    public static Fridge loadSave() {
-        Fridge fridge = new Fridge();
-        File f = new File(filePath);
+    public static void loadSave() {
+        File file = new File(filePath);
         try {
-            Scanner s = new Scanner(f); // create a Scanner using the File as the source
+            Scanner s = new Scanner(file); // create a Scanner using the File as the source
+
             while (s.hasNext()) {
                 String line = s.nextLine();
                 String[] parameters = line.split(":");
@@ -53,32 +57,30 @@ public class Save {
 
                 String storageStr = parameters[4];
                 FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
-                fridge.add(new Food(category, name, expiry, storage));
+                Fridge.add(new Food(category, name, expiry, storage));
             }
-        } catch (FileNotFoundException | InvalidDateException e) {
-            System.out.println("error loading save");
+        } catch (FileNotFoundException e) {
+            Ui.printExceptionMessage(new NoSaveException());
+        } catch (InvalidDateException e) {
+            Ui.printExceptionMessage(e);
         }
-        return fridge;
     }
 
     /**
      * Overwrites the current textfile with data from the current session.
-     * @param fridge the Fridge object from the current session to be encoded into the textfile
      */
-    public static void save(Fridge fridge) {
+    public static void save() {
         try {
             FileWriter fw = new FileWriter(filePath);
             fw.write("");//clear file
             fw.close();
             FileWriter f = new FileWriter(filePath, true); // create a FileWriter in append mode
-            for (int i = 0; i < fridge.getSize(); i++) {
-                f.write(fridge.getFood(i).toString() + "\n");
+            for (int i = 0; i < Fridge.getSize(); i++) {
+                f.write(Fridge.getFood(i).toString() + "\n");
             }
             f.close();
         } catch (IOException e) {
             System.out.println("cannot write to file");
         }
     }
-
-
 }

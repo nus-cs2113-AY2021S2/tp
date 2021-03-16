@@ -10,10 +10,10 @@ import seedu.fridgefriend.utilities.Ui;
 public class FridgeFriend {
 
     private static boolean isExit = false;
-    private static Fridge fridge = new Fridge();
 
     public FridgeFriend() {
         new Ui();
+        new Fridge();
         new Save();
     }
 
@@ -21,7 +21,7 @@ public class FridgeFriend {
         Ui.printWelcomeMessage();
         Save.checkSave();
         run();
-        Save.save(fridge);
+        Save.save();
         Ui.printByeMessage();
     }
 

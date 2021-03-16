@@ -1,0 +1,1 @@
+Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
