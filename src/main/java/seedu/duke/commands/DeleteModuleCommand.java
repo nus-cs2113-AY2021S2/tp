@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
+import static seedu.duke.common.Messages.MESSAGE_NO_MODULES_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
 import static seedu.duke.common.Messages.NEWLINE;
 
@@ -23,13 +24,20 @@ public class DeleteModuleCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
+        if (ModuleList.getModules().size() == 0) {
+            ui.printMessage(MESSAGE_NO_MODULES_TO_DELETE);
+            return;
+        }
         ui.printMessage(getDeleteInfo());
-        ArrayList<Integer> indices = ui.getIndicesFromUser();
+
+        ArrayList<Integer> indices = ui.getIndicesFromUser(ModuleList.getModules().size());
+        if (indices.size() == 0) {
+            return;
+        }
+
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         String deletedMessage = getDeletedModuleCodes(deletedModulesCodes);
-        if (deletedMessage.length() > 0) {
-            ui.printMessage(deletedMessage);
-        }
+        ui.printMessage(deletedMessage);
     }
 
     @Override
