@@ -20,6 +20,8 @@ public class Constants {
             + "Example: record fever\n";
     public static final String RETRIEVE_INFO_MESSAGE = "Retrieve past consultation record from the selected patient\n"
             + "Usage: retrieve\n";
+    public static final String CURRENT_INFO_MESSAGE = "Print out the current patient being loaded.\n"
+            + "Usage: current\n";
     public static final String HELP_INFO_MESSAGE = "Display information about all commands or selected commands only\n"
             + "Command prefix: help\n"
             + "Argument(s): commands (optional)\n"
