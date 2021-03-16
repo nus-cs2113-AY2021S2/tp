@@ -58,7 +58,17 @@ import static seedu.duke.common.DashboardCommands.DELETE;
 import static seedu.duke.common.DashboardCommands.EXIT;
 import static seedu.duke.common.DashboardCommands.MODULES;
 import static seedu.duke.common.DashboardCommands.OPEN;
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_TYPE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE_CODE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELDS_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_CODE_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.duke.common.ModuleCommands.ADD_LESSON;
 import static seedu.duke.common.ModuleCommands.ADD_TASK;
 import static seedu.duke.common.ModuleCommands.CLOSE;
@@ -431,6 +441,7 @@ public class Parser {
      */
     public static ArrayList<Integer> checkIndices(String input, int max) {
         ArrayList<Integer> rawIndices = new ArrayList<>();
+        ArrayList<String> nonIntegers = new ArrayList<>();
         int index;
         UI ui = new UI();
 
@@ -440,10 +451,13 @@ public class Parser {
             try {
                 index = Integer.parseInt(word);
                 rawIndices.add(index);
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException e) {
                 // Non-integer inputs will not be added to the array list rawIndices.
-                printNonIntegerWarning(word, ui);
+                nonIntegers.add(word);
             }
+        }
+        if (nonIntegers.size() != 0) {
+            printNonIntegerWarning(nonIntegers, ui);
         }
 
         // Remove duplicates
@@ -471,11 +485,25 @@ public class Parser {
         return indices;
     }
 
+    /**
+     * Prints warning to inform user that some inputs were out of bounds and removed.
+     * Prints the integers that were removed.
+     * 
+     * @param removed array list of integers that were out of bounds and have been removed
+     * @param ui UI object for printing
+     */
     private static void printOutOfBoundsWarning(ArrayList<Integer> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_OUT_OF_BOUNDS_INDICES, removed));
     }
 
-    private static void printNonIntegerWarning(String word, UI ui) {
-        ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, word));
+    /**
+     * Prints warning to inform user that some inputs were not integers.
+     * Prints the strings that were removed.
+     *
+     * @param removed array list of strings that were invalid and have been removed
+     * @param ui UI object for printing
+     */
+    private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
+        ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));
     }
 }
