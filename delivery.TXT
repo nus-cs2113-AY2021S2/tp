@@ -1,1 +1,2 @@
-N / 1 / NTU Hall 5 / Jethro / 13-2 , 14-3
+N / 1001 / NTU Hall 5 / Jethro / 13-2 , 14-3
+N / 1002 / NTU Hall 3 / Manika / 13-5 , 16-2

@@ -75,11 +75,15 @@ public class Parser {
             case "viewdelivery":
                 // parse delivery number (in arguments)
                 System.out.println("view the details about a particular delivery!");
+                arguments = Integer.toString(Integer.parseInt(arguments) - 1);
+                // display list starts from 1 while array index starts from 0, hence the decrement
                 parsedData = arguments;
                 break;
             case "complete":
                 // parse delivery number (in arguments)
                 System.out.println("mark a delivery as completed!");
+                arguments = Integer.toString(Integer.parseInt(arguments) - 1);
+                // display list starts from 1 while array index starts from 0, hence the decrement
                 parsedData = arguments;
                 break;
             default:
