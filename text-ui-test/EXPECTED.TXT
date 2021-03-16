@@ -21,7 +21,7 @@ Example: add S1234567A
 Show the list of all patients
 Usage: list
 
-<WIP> Select a specified patient to add and retrieve records
+Select a specified patient to add and retrieve records
 Command prefix: load
 Arguments(s): IC number
 Usage: load <IC_NUMBER>
@@ -36,9 +36,14 @@ Example: record fever
 Retrieve past consultation record from the selected patient
 Usage: retrieve
 
+Display information about all commands or selected commands only
+Command prefix: help
+Argument(s): commands (optional)
+Usage: help <OPTIONAL COMMANDS>
+Example: help list add
+
 Exit the program
 Usage: exit
-
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
