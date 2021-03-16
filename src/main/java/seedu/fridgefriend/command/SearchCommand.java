@@ -2,7 +2,6 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -10,6 +9,7 @@ import seedu.fridgefriend.utilities.Ui;
  */
 public class SearchCommand extends Command {
 
+    public static final int NOT_FOUND = -1;
     private String foodName;
 
     public SearchCommand(String foodName) throws EmptyDescriptionException {
@@ -22,26 +22,39 @@ public class SearchCommand extends Command {
 
     @Override
     public void execute() {
-        showResults(isFound());
+        showResults();
     }
 
-    private boolean isFound() {
-        for (int i = 0; i < Fridge.getSize(); i += 1) {
-            Food food = Fridge.getFood(i);
-            if (food.getFoodName().equals(foodName)) {
-                return true;
-            }
-        }
-        return false;
+    private void showResults() {
+        Ui.printMessage(getMessagePrintedToUser());
     }
 
-    private void showResults(Boolean isFound) {
+    /**
+     * Returns the result of the command.
+     *
+     * @return the message shown to the user
+     */
+    public String getMessagePrintedToUser() {
+        int indexOfFoodStored = getIndexOfFoodStored();
         String message;
-        if (isFound == true) {
-            message = "You have " + foodName + " in your fridge.";
+        if (indexOfFoodStored >= 0) {
+            message = "You have " + foodName + " stored in "
+                    + fridge.getFood(indexOfFoodStored).getStorageLocation()
+                    + " of your fridge.";
         } else {
             message = "You do not have " + foodName + " in your fridge.";
         }
-        Ui.printMessage(message);
+        return message;
     }
+
+    private int getIndexOfFoodStored() {
+        for (int i = 0; i < fridge.getSize(); i += 1) {
+            Food food = fridge.getFood(i);
+            if (food.getFoodName().equals(foodName)) {
+                return i;
+            }
+        }
+        return NOT_FOUND;
+    }
+
 }
