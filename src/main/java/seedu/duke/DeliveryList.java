@@ -17,7 +17,7 @@ public class DeliveryList {
         // todo create (load) the list of deliveries using a .txt containing delivery information
         boolean isDone;
         try {
-            File saveDelivery = new File("delivery.txt");
+            File saveDelivery = new File("data/delivery.txt");
             Scanner fileReader = new Scanner(saveDelivery);
             while (fileReader.hasNext()) {
                 String line = fileReader.nextLine();
