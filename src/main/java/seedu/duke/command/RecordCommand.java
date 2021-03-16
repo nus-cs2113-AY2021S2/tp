@@ -5,7 +5,6 @@ import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
@@ -22,7 +21,6 @@ public class RecordCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        // TODO: Replace System.out.println() with ui after ui is implemented
         // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
@@ -31,6 +29,6 @@ public class RecordCommand extends Command {
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);
         patient.addRecord(record);
-        System.out.println("Added new record: " + record);
+        ui.printMessage("Added new record: " + record.toString());
     }
 }

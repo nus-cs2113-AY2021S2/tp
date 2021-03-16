@@ -15,13 +15,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class RetrieveCommandTest {
     @Test
     public void executeRetrieveCommand_noPatientLoaded_exceptionThrown() {
+        Ui ui = new Ui();
         Data data = new Data();
         Patient patient = new Patient("S1234567A");
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RetrieveCommand retrieveCommand = new RetrieveCommand(null, data, arguments);
+        RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
         Exception exception = assertThrows(Exception.class, () -> {
             retrieveCommand.execute();
         });
@@ -30,6 +31,7 @@ class RetrieveCommandTest {
 
     @Test
     public void executeRetrieveCommand_patientLoadedAndRecordsAdded_printsRecords() {
+        Ui ui = new Ui();
         Data data = new Data();
         Patient patient = new Patient("S1234567A");
         data.setPatient(patient);
@@ -37,7 +39,7 @@ class RetrieveCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
         arguments.put("payload", "coughing");
-        RecordCommand recordCommand = new RecordCommand(null, data, arguments);
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
             recordCommand.execute();
         } catch (Exception exception) {
@@ -49,7 +51,7 @@ class RetrieveCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        RetrieveCommand retrieveCommand = new RetrieveCommand(null, data, arguments);
+        RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
         try {
             retrieveCommand.execute();
         } catch (Exception exception) {
