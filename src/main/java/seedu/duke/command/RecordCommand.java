@@ -28,6 +28,9 @@ public class RecordCommand extends Command {
         if (patient == null) {
             throw new Exception("No patient loaded!");
         }
+        if (arguments.get("payload").length() == 0) {
+            throw new Exception("Please give me more details!");
+        }
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);
         patient.addRecord(record);

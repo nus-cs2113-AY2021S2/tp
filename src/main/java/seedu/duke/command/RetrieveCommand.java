@@ -30,8 +30,9 @@ public class RetrieveCommand extends Command {
         }
         ArrayList<Record> records = patient.getRecords();
         ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
-        for (Record record : records) {
-            ui.printMessage(record.toString());
+        for (int i = 0; i < records.size(); i++) {
+            Record record = records.get(i);
+            ui.printMessage(Integer.toString(i + 1) + ". " + record.toString());
         }
     }
 }
