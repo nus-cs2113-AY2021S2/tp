@@ -1,6 +1,6 @@
 package seedu.fridgefriend.command;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
@@ -13,23 +13,28 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ListCommandTest {
 
-    @BeforeAll
-    public static void setUp() throws Exception {
+    private Fridge fridge;
+
+    @BeforeEach
+    public void setUp() throws Exception {
+        fridge = new Fridge();
         Food chicken = new Food(FoodCategory.MEAT, "chicken",
-                "30-06-2021", FoodStorageLocation.FREEZER);
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF);
+        fridge.add(chicken);
+
         Food pork = new Food(FoodCategory.MEAT, "pork",
                 "31-07-2021", FoodStorageLocation.LOWER_SHELF);
+        fridge.add(pork);
+
         Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
                 "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
-
-        Fridge.add(chicken);
-        Fridge.add(pork);
-        Fridge.add(lettuce);
+        fridge.add(lettuce);
     }
 
     @Test
     public void listCommand_listAValidCategory_ListTheCategory() throws InvalidInputException {
         ListCommand listCommand = new ListCommand("MEAT");
+        listCommand.setData(fridge);
         String expectedMessage = "These are the MEAT in your fridge:\n"
                 + "\t1. chicken\n"
                 + "\t2. pork";
@@ -46,6 +51,7 @@ class ListCommandTest {
     @Test
     public void listCommand_listAll_listAllFoodInFridge() {
         ListCommand listCommand = new ListCommand("");
+        listCommand.setData(fridge);
         String expectedMessage = "Here are the items in your fridge:\n"
                 + "\t1. chicken [MEAT]\n"
                 + "\t2. pork [MEAT]\n"

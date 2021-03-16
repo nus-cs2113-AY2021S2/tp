@@ -29,7 +29,6 @@ This is the list of storage locations:
 -----------------------------------------------------------------
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '2021-06-30' could not be parsed at index 2
-
 -----------------------------------------------------------------
 You do not have chicken in your fridge.
 -----------------------------------------------------------------
@@ -37,28 +36,23 @@ Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '2021-04-05' could not be parsed at index 2
-
 -----------------------------------------------------------------
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
-
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Here are the items in your fridge:
 -----------------------------------------------------------------
 These are the MEAT in your fridge:
-
 -----------------------------------------------------------------
 Sorry my friend, please enter a valid food category.
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Please enter a valid index to remove food.
-Index 1 out of bounds for length 0
 -----------------------------------------------------------------
 Please enter a valid index to remove food.
-Index 99 out of bounds for length 0
 -----------------------------------------------------------------
 Bye! Hope to see you again soon!
 -----------------------------------------------------------------

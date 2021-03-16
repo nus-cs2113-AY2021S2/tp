@@ -3,7 +3,6 @@ package seedu.fridgefriend.command;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -48,7 +47,7 @@ public class ListCommand extends Command {
      */
     public String getListByCategoryMessage() {
         StringBuilder message = new StringBuilder("These are the " + foodCategory + " in your fridge:");
-        for (int i = 0; i < Fridge.getSize(); i++) {
+        for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getMatchCategoryFoodDescription(i));
         }
         return message.toString();
@@ -61,7 +60,7 @@ public class ListCommand extends Command {
      */
     public String getListAllMessage() {
         StringBuilder message = new StringBuilder("Here are the items in your fridge:");
-        for (int i = 0; i < Fridge.getSize(); i++) {
+        for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getFoodDescription(i));
         }
         return message.toString();
@@ -69,7 +68,7 @@ public class ListCommand extends Command {
 
     private String getFoodDescription(int index) {
         int indexShownToUser = index + EXTRA_INDEX;
-        Food food = Fridge.getFood(index);
+        Food food = fridge.getFood(index);
         String foodDescription = 
                 "\n\t" + indexShownToUser +  ". "
                 + food.getFoodName() + " ["
@@ -86,7 +85,7 @@ public class ListCommand extends Command {
 
     private String getMatchCategoryFoodDescription(int index) {
         String foodDescription = "";
-        Food food = Fridge.getFood(index);
+        Food food = fridge.getFood(index);
         FoodCategory category = food.getCategory();
         if (category.equals(foodCategory)) {
             int indexShownToUser = index + EXTRA_INDEX;
