@@ -28,6 +28,7 @@ import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
+import seedu.duke.ui.UI;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -57,7 +58,7 @@ import static seedu.duke.common.DashboardCommands.DELETE;
 import static seedu.duke.common.DashboardCommands.EXIT;
 import static seedu.duke.common.DashboardCommands.MODULES;
 import static seedu.duke.common.DashboardCommands.OPEN;
-import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.duke.common.Messages.*;
 import static seedu.duke.common.ModuleCommands.ADD_LESSON;
 import static seedu.duke.common.ModuleCommands.ADD_TASK;
 import static seedu.duke.common.ModuleCommands.CLOSE;
@@ -156,13 +157,13 @@ public class Parser {
     private String getModuleCode(String input) throws CommandException {
         String[] words = input.split(WHITESPACE);
         if (words.length < 2) {
-            throw new CommandException("Module not specified.");
+            throw new CommandException(MESSAGE_MODULE_CODE_EMPTY);
         }
 
         String moduleCode = words[1].toUpperCase();
 
         if (!isValidModuleCode(moduleCode)) {
-            throw new CommandException("Invalid module code.");
+            throw new CommandException(MESSAGE_INVALID_MODULE_CODE);
         }
 
         return moduleCode;
@@ -301,8 +302,7 @@ public class Parser {
 
         // ERROR - User does not enter any parameters.
         if (lessonDetails.length < 3) {
-            // PLACEHOLDER
-            throw new CommandException("Missing lesson details.");
+            throw new CommandException(MESSAGE_LESSON_FIELDS_EMPTY);
         }
 
         // split the details field using DELIMITER to get the individual detail fields
@@ -320,24 +320,21 @@ public class Parser {
         try {
             lessonType = LessonType.valueOf(type);
         } catch (IllegalArgumentException e) {
-            // PLACEHOLDER
-            throw new CommandException("Invalid lesson type entered.");
+            throw new CommandException(MESSAGE_INVALID_LESSON_TYPE);
         }
 
         String timeAndDay = allDetails[INDEX_DAY_TIME];
 
         String link = allDetails[INDEX_LINK];
         if (!isValidLink(link) && !link.equals(PLACEHOLDER)) {
-            // PLACEHOLDER
-            throw new CommandException("Invalid link entered.");
+            throw new CommandException(MESSAGE_INVALID_LESSON_LINK);
         }
 
         String teacherName = allDetails[INDEX_TEACHER_NAME];
 
         String email = allDetails[INDEX_TEACHER_EMAIL];
         if (!isValidEmail(email) && !email.equals(PLACEHOLDER)) {
-            // PLACEHOLDER
-            throw new CommandException("Invalid email entered.");
+            throw new CommandException(MESSAGE_INVALID_LESSON_EMAIL);
         }
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
@@ -382,8 +379,7 @@ public class Parser {
 
         // ERROR - User does not enter any parameters.
         if (taskDetails.length < 3) {
-            // PLACEHOLDER
-            throw new CommandException("Missing task details.");
+            throw new CommandException(MESSAGE_TASK_FIELDS_EMPTY);
         }
 
         // split the details field using DELIMITER to get the individual detail fields
@@ -403,8 +399,7 @@ public class Parser {
         try {
             deadline = convertToDate(deadlineString);
         } catch (DateTimeParseException e) {
-            // PLACEHOLDER
-            throw new CommandException("Invalid/missing deadline.");
+            throw new CommandException(MESSAGE_INVALID_TASK_DEADLINE);
         }
 
         String remarks = allDetails[INDEX_REMARKS_PARSER];
@@ -437,6 +432,7 @@ public class Parser {
     public static ArrayList<Integer> checkIndices(String input, int max) {
         ArrayList<Integer> rawIndices = new ArrayList<>();
         int index;
+        UI ui = new UI();
 
         String[] words = input.trim().split(WHITESPACE);
         
@@ -446,8 +442,7 @@ public class Parser {
                 rawIndices.add(index);
             } catch (NumberFormatException ignored) {
                 // Non-integer inputs will not be added to the array list rawIndices.
-                // PLACEHOLDER
-                System.out.println("Warning, non-integer values removed: " + word);
+                printNonIntegerWarning(word, ui);
             }
         }
 
@@ -469,11 +464,18 @@ public class Parser {
                 i--;
             }
         }
-        // PLACEHOLDER
         // Prints indices that were removed.
         if (removed.size() != 0) {
-            System.out.println("Warning, out of bounds index removed:" + removed);
+            printOutOfBoundsWarning(removed, ui);
         }
         return indices;
+    }
+
+    private static void printOutOfBoundsWarning(ArrayList<Integer> removed, UI ui) {
+        ui.printMessage(String.format(MESSAGE_OUT_OF_BOUNDS_INDICES, removed));
+    }
+
+    private static void printNonIntegerWarning(String word, UI ui) {
+        ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, word));
     }
 }
