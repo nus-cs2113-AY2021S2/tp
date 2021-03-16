@@ -23,33 +23,28 @@ public class Parser {
      */
     public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
-        String description;
+        String arguments;
         try {
-            description = input.split(" ", 2)[1].trim();
+            arguments = input.split(" ", 2)[1].trim();
         } catch (ArrayIndexOutOfBoundsException e) {
-            description = "";
+            arguments = null;
         }
 
         if (command.equals("list")) {
-            commandList.listReviews(description);
+            commandList.listReviews(arguments);
         } else if (command.equals("sort")) {
-            commandList.sortReview(description);
+            commandList.sortReview(arguments);
         } else if (command.equals("new")) {
-            String reviewType = commandList.determineReviewType(description);   //catch the errors here
-            if (reviewType.equals("quick")) {
-                commandList.addQuickReview();
-            } else {
-                commandList.addLongReview();
-            }
+            commandList.addReview(arguments);
         } else if (command.equals("delete")) {
-            commandList.deleteReview(description);
+            commandList.deleteReview(arguments);
         } else if (command.equals("help")) {
-            CommandList.printHelp();
+            commandList.printHelp();
         } else if (command.equals("bye")) {
             commandList.exit();
             return true;
         } else {
-            CommandList.invalidCommand();
+            commandList.invalidCommand();
         }
         return false;
     }
