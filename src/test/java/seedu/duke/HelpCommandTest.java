@@ -31,8 +31,7 @@ public class HelpCommandTest {
 
         assertEquals(Constants.LIST_INFO_MESSAGE + System.lineSeparator()
                 + Constants.ADD_INFO_MESSAGE + System.lineSeparator()
-                + Constants.EXIT_INFO_MESSAGE  + System.lineSeparator()
-                , bos.toString());
+                + Constants.EXIT_INFO_MESSAGE  + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -58,8 +57,7 @@ public class HelpCommandTest {
         assertEquals(Constants.LIST_INFO_MESSAGE + System.lineSeparator()
                         + Constants.ADD_INFO_MESSAGE + System.lineSeparator()
                         + String.format(Constants.INVALID_COMMAND_MESSAGE, "bye")
-                        + System.lineSeparator() + System.lineSeparator()
-                , bos.toString());
+                        + System.lineSeparator() + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 }
