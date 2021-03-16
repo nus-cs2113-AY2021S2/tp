@@ -4,7 +4,6 @@ import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -27,7 +26,7 @@ public class AddCommand extends Command {
     }
 
     private void addFood() {
-        Fridge.add(foodToAdd);
+        fridge.add(foodToAdd);
     }
 
     private void showResults() {

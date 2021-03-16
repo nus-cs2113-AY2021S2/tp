@@ -2,7 +2,6 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -23,21 +22,21 @@ public class RemoveCommand extends Command {
     public RemoveCommand(int indexToRemove) throws InvalidIndexException {
         int actualIndexToRemoved = indexToRemove - EXTRA_INDEX;
         this.indexToRemove = actualIndexToRemoved;
-        try {
-            this.foodToBeRemoved = Fridge.getFood(actualIndexToRemoved);
-        } catch (Exception e) {
-            throw new InvalidIndexException(e);
-        }
     }
 
     @Override
-    public void execute() {
+    public void execute() throws InvalidIndexException {
         removeFood();
         showResults();
     }
 
-    public void removeFood() {
-        Fridge.removeByIndex(indexToRemove);
+    public void removeFood() throws InvalidIndexException {
+        try {
+            this.foodToBeRemoved = fridge.getFood(indexToRemove);
+        } catch (Exception e) {
+            throw new InvalidIndexException(e);
+        }
+        fridge.removeByIndex(indexToRemove);
     }
 
     private void showResults() {
@@ -52,7 +51,7 @@ public class RemoveCommand extends Command {
     public String getMessagePrintedToUser() {
         String message = "Noted! I've removed " + foodToBeRemoved.getFoodName()
                 + " from your fridge.\n"
-                + "Now you have " + Fridge.getSize()
+                + "Now you have " + fridge.getSize()
                 + " food in the fridge.";
         return message;
     }

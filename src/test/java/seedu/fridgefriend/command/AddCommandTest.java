@@ -1,5 +1,6 @@
 package seedu.fridgefriend.command;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.food.ExpiryDate;
@@ -12,17 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AddCommandTest {
 
+    private Fridge fridge;
+
+    @BeforeEach
+    public void setUp() {
+        fridge = new Fridge();
+    }
+
     @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded() throws InvalidDateException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER);
+        addCommand.setData(fridge);
         addCommand.execute();
-        assertEquals("chicken", Fridge.getFood(0).getFoodName());
-        assertEquals(FoodCategory.MEAT, Fridge.getFood(0).getCategory());
-        assertEquals(FoodStorageLocation.FREEZER, Fridge.getFood(0).getStorageLocation());
+        assertEquals("chicken", fridge.getFood(0).getFoodName());
+        assertEquals(FoodCategory.MEAT, fridge.getFood(0).getCategory());
+        assertEquals(FoodStorageLocation.FREEZER, fridge.getFood(0).getStorageLocation());
 
         ExpiryDate expiryDate = new ExpiryDate("30-06-2021");
-        assertEquals(expiryDate.getExpiry(), Fridge.getFood(0).getExpiryDate().getExpiry());
+        assertEquals(expiryDate.getExpiry(), fridge.getFood(0).getExpiryDate().getExpiry());
 
         String expectedMessage = "Great! I have added chicken into your fridge.\n"
                 + "Details: ||Food name: chicken, category: MEAT, "
