@@ -5,7 +5,6 @@ import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {

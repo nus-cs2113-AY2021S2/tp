@@ -5,10 +5,6 @@ Please input a command:
 java.lang.Exception: Invalid command is provided
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-You said this: Do remember to wake up early tomorrow!
-This is the full argument hashmap content: {payload=Do remember to wake up early tomorrow!, option1=A, option2=B C, command=echo}
-----------------------------------------------------------------------
-----------------------------------------------------------------------
 Patient A1234567R has been added!
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
