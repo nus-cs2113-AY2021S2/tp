@@ -1,7 +1,8 @@
 package seedu.duke;
 
 public class Item {
-    private int itemNumber, itemWeight;
+    private int itemNumber;
+    private int itemWeight;
 
     public Item(int itemNumber, int itemWeight) {
         this.itemNumber = itemNumber;
@@ -14,5 +15,13 @@ public class Item {
 
     public int getItemWeight() {
         return itemWeight;
+    }
+
+    public void setItemNumber(int itemNumber) {
+        this.itemNumber = itemNumber;
+    }
+
+    public void setItemWeight(int itemWeight) {
+        this.itemWeight = itemWeight;
     }
 }
