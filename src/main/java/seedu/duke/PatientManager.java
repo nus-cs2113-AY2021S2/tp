@@ -5,7 +5,7 @@ import seedu.duke.command.Command;
 /**
  * Main class of the application, where the entry point is.
  */
-public class Duke {
+public class PatientManager {
     private Data data;
     private Ui ui;
     private Parser parser;
@@ -13,7 +13,7 @@ public class Duke {
     /**
      * This initializes all resources for the program.
      */
-    private Duke() {
+    private PatientManager() {
         ui = new Ui();
         data = new Data();
         parser = new Parser(ui, data);
@@ -32,6 +32,7 @@ public class Duke {
                 break;
             }
 
+            ui.printLine();
             try {
                 Command cmd = parser.parse(fullCommand);
                 cmd.execute();
@@ -40,6 +41,8 @@ public class Duke {
                 }
             } catch (Exception e) {
                 ui.printException(e);
+            } finally {
+                ui.printLine();
             }
         }
         // Program Exits, do some cleaning
@@ -47,10 +50,10 @@ public class Duke {
     }
 
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the PatientManager application.
      */
     public static void main(String[] args) {
-        Duke duke = new Duke();
-        duke.run();
+        PatientManager pm = new PatientManager();
+        pm.run();
     }
 }

@@ -4,7 +4,6 @@ import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ListCommand extends Command {
@@ -24,7 +23,7 @@ public class ListCommand extends Command {
         // Todo Replace by ui after ui is implemented
         HashMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
-        String list = "";
+        String list = "List of patients:\n";
 
         for (String patientID : patients.keySet()) {
             list += ++patientCount + ". " + patientID + "\n";

@@ -4,7 +4,6 @@ import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class AddCommand extends Command {
