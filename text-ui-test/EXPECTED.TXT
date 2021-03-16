@@ -36,6 +36,9 @@ Example: record fever
 Retrieve past consultation record from the selected patient
 Usage: retrieve
 
+Print out the current patient being loaded.
+Usage: current
+
 Display information about all commands or selected commands only
 Command prefix: help
 Argument(s): commands (optional)
@@ -47,6 +50,9 @@ Usage: exit
 
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
+There is no patient being loaded now.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
 Patient A1234567R's data has been found and loaded.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
@@ -55,6 +61,9 @@ Added new record: coughing
 ----------------------------------------------------------------------
 Here is a list of A1234567R's records:
 1. coughing
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+The currently loaded patient's ID is A1234567R.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Goodbye, we hope to see you again!
