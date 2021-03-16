@@ -25,9 +25,11 @@
 ---
 ## 1. Introduction
 
-UniTracker helps NUS Students to keep track/add/edit module information and deadlines.  
-It helps to integrate all the information they need in one place.  
-This product is for students who prefer Command Line Interface (CLI) over Graphical User Interface (
+UniTracker is a one-stop application for NUS students to keep track of
+their work in school. It comprises 4 key features [Refer to Section 3. Features] that helps to organise
+all information they need in one place. Users are allowed to add and edit
+module information, tasks, zoom links to suit their needs.
+This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User Interface (
 GUI).
 ---
 ## 2. Quick Start
