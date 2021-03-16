@@ -71,5 +71,9 @@ public class Constants {
 
     //Command
     public static final String HEAD = "HEAD";
+    
+    //Logging
+    public static final String LOGGER_PATH = "GULIOLog.log";
+    public static final String LOGGER_NAME = "LOGGER";
 
 }
