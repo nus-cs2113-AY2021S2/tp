@@ -2,15 +2,12 @@
 Welcome to your personal fitness app - Healthier
 What's in your mind today?
 ------------------------------------------------
-
 ------------------------------------------------
 Not sure what to do?
 Run command 'help' to see what you can do.
 ------------------------------------------------
-
+Invalid
 ------------------------------------------------
-Nice work today!
-You are one step closer to ultimate fitness!
-See you again soon!
+Not sure what to do?
+Run command 'help' to see what you can do.
 ------------------------------------------------
-
