@@ -2,6 +2,9 @@ package seedu.duke.commandparser;
 
 import seedu.duke.command.AddCommand;
 import seedu.duke.command.ViewCommand;
+import seedu.duke.command.Command;
+import seedu.duke.command.InvalidCommand;
+import seedu.duke.command.CommandRecordType;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -15,7 +18,7 @@ import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 
 public class CommandParser {
-    private HashMap<String, String> params;
+    private final HashMap<String, String> params;
 
     public CommandParser() {
         params = new HashMap<>();
@@ -121,6 +124,14 @@ public class CommandParser {
         }
     }
 
+    private boolean checkDateValid(String dateString) {
+        if (dateString.startsWith("date/") && dateString.length() > 5) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private Command prepareViewExercise(String optionalParams) throws ParseException {
         String activity;
         String date;
@@ -148,13 +159,10 @@ public class CommandParser {
             params.put("date", date);
             return new ViewCommand(EXERCISE, params);
         }
-        if (!optionalParams.startsWith("date/") || optionalParams.length() > 5) {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
         date = optionalParams.substring(5);
-        if (date.length() == 0) {
-            return new InvalidCommand(VIEW);
-        }
         params.put("date", date);
         return new ViewCommand(EXERCISE, params);
     }
@@ -191,21 +199,17 @@ public class CommandParser {
             params.put("date", date);
             return new ViewCommand(DIET, params);
         }
-        if (!optionalParams.startsWith("date/") || optionalParams.length() > 5) {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
         date = optionalParams.substring(5);
-        if (date.length() == 0) {
-            return new InvalidCommand(VIEW);
-        }
         params.put("date", date);
         return new ViewCommand(DIET, params);
     }
 
 
     private Command prepareViewSleep(String optionalParmas) throws ParseException {
-        boolean isDateValid = optionalParmas.startsWith("date/") && optionalParmas.length() > 5;
-        if (!isDateValid) {
+        if (!checkDateValid(optionalParmas)) {
             return new InvalidCommand(VIEW);
         }
         String date = optionalParmas.substring(5);
@@ -214,8 +218,7 @@ public class CommandParser {
     }
 
     private Command prepareViewBodyWeight(String optionalParmas) throws ParseException {
-        boolean isDateValid = optionalParmas.startsWith("date/") && optionalParmas.length() > 5;
-        if (!isDateValid) {
+        if (!checkDateValid(optionalParmas)) {
             return new InvalidCommand(VIEW);
         }
         String date = optionalParmas.substring(5);
