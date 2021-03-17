@@ -1,10 +1,12 @@
-package system.staff;
+package seedu.staff;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static system.staff.UI.*;
+import static seedu.staff.UI.printLine;
+import static seedu.staff.UI.staffHeader;
+
 
 public class Parser {
 

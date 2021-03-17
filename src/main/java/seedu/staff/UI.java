@@ -1,4 +1,4 @@
-package system.staff;
+package seedu.staff;
 
 public class UI {
 

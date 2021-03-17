@@ -1,4 +1,4 @@
-package system.staff;
+package seedu.staff;
 
 import java.io.File;
 import java.io.FileNotFoundException;

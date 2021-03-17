@@ -1,4 +1,9 @@
-package seedu.duke;
+package seedu.patient;
+
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.parser.Parser;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 public class PatientCommandInstance {
 

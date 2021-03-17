@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.drugs;
 
 import java.util.ArrayList;
 

@@ -1,15 +1,15 @@
 package seedu.duke;
 
-import system.staff.Parser;
-import static system.staff.Parser.run;
+import seedu.staff.Parser;
 import java.io.IOException;
+import seedu.duke.ui.Ui;
+import seedu.patient.PatientCommandInstance;
 
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
 
-    private Ui ui;
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
     public Duke() {
@@ -19,14 +19,14 @@ public class Duke {
      * Logic for the main loop that processes information
      */
     public void run() {
-        ui.printWelcome();
-        String Username = ui.scanInput();
-        ui.printUserName(Username);
-        ui.printStartMenu();
+        Ui.printWelcome();
+        String Username = Ui.scanInput();
+        Ui.printUserName(Username);
+        Ui.printStartMenu();
         boolean isExit = false;
         while (!isExit) {
             try {
-                String startMenuCommand = ui.scanInput();
+                String startMenuCommand = Ui.scanInput();
                 String c = startMenuCommand.trim();
                 switch (c) {
                     case "1":
@@ -47,11 +47,11 @@ public class Duke {
                         break;
                     case "help":
                         System.out.println("Here is the list of Start Menu commands!");
-                        ui.printStartMenu();
+                        Ui.printStartMenu();
                         break;
                     case "bye":
                         isExit = true;
-                        ui.printGoodbye();
+                        Ui.printGoodbye();
                         break;
                     default:
                         System.out.println("OOPS! That is not a registered command! Please type \"help\" to see the list of commands");

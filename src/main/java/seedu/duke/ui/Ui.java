@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.ui;
 
 import java.util.Scanner;
 
@@ -84,7 +84,7 @@ public class Ui {
         System.out.println("Now you have " + inputInt + " patients in the list");
     }
 
-    public void printGoodbye() {
+    public static void printGoodbye() {
         System.out.println("Goodbye! Have a nice day!");
     }
 

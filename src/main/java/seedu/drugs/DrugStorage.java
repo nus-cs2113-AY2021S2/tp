@@ -1,10 +1,11 @@
-package seedu.duke;
+package seedu.drugs;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class DrugStorage {
     protected String filepath;
@@ -44,7 +45,7 @@ public class DrugStorage {
 
     public void saveDrugs() throws IOException {
         FileWriter fw = new FileWriter(getFilepath());
-        for (seedu.duke.drugInstance drugInstance : drugInstances) {
+        for (drugInstance drugInstance : drugInstances) {
             fw.write(drugInstance.stringToSave());
             fw.write(System.lineSeparator());
         }
