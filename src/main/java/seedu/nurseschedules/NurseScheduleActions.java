@@ -1,4 +1,4 @@
-package nurseschedules.nurseschedule;
+package seedu.nurseschedules;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package nurseschedules.nurseschedule;
+package seedu.nurseschedules;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

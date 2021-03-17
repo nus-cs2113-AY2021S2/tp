@@ -42,6 +42,8 @@ public class Duke {
                         break;
                     case "5":
                         System.out.println("Drug Viewer Instance!");
+                        DrugInstance addict = new DrugInstance(PATIENT_FILE_PATH);
+                        addict.run();
                         break;
                     case "help":
                         System.out.println("Here is the list of Start Menu commands!");

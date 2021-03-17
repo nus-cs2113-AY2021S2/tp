@@ -23,7 +23,7 @@ public class Parser {
      * @param text User input
      * @return First word of user input
      */
-    public String getFirstWord(String text) {
+    public static String getFirstWord(String text) {
         int index = text.indexOf(' ');
 
         if (index > -1) {
