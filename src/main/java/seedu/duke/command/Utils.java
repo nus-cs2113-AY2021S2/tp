@@ -100,6 +100,7 @@ public class Utils {
      */
     public static void validateOptions(ArrayList<String> arguments, String command,
                                        String[] validOptions, String[] orOptions) throws CommandException {
+        assert arguments != null : "arguments is null!";
         checkInvalidOptions(arguments, command, validOptions);
         checkOptionConflict(arguments, command, orOptions);
     }
@@ -173,6 +174,8 @@ public class Utils {
      */
     public static void validateArguments(ArrayList<String> arguments, ArgumentType[] argumentTypeOrder,
                                          String command) throws CommandException {
+        assert arguments != null : "arguments is null!";
+        assert argumentTypeOrder != null : "argumentTypeOrder is null!";
         if (arguments.size() > argumentTypeOrder.length) {
             throw new CommandException(ERROR_TOO_MANY_ARGUMENTS, command);
         } else if (arguments.size() < argumentTypeOrder.length) {
@@ -226,6 +229,7 @@ public class Utils {
      * @return {@code true} if {@code argument} matches the {@link #REGEX_OPTION} {@code Pattern}.
      */
     public static boolean isOption(String argument) {
+        assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
     }
 }
