@@ -16,10 +16,11 @@ public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:%s";
     private Record record;
     private final SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
-    private FitCenter fitCenter;
+    private CommandRecordType recordType;
 
-    public AddCommand(String type, HashMap<String,String> params, FitCenter fitCenter) throws ParseException {
-        this.fitCenter = fitCenter;
+    public AddCommand(CommandRecordType recordType, HashMap<String,String> params)
+            throws ParseException {
+        this.recordType = recordType;
         spf.setLenient(false);
         String dateString = params.get("date");
         LocalDate localDate;
@@ -29,20 +30,20 @@ public class AddCommand extends Command {
         } else {
             localDate = LocalDate.now();
         }
-        switch (type) {
-        case "E":
+        switch (recordType) {
+        case EXERCISE:
             //record = new DietRecord(recordType.EXERCISE, params.get("activity"), params.get("duration"), localDate);
             System.out.println(params.get("activity") + params.get("duration") + localDate.toString());
             break;
-        case "D":
+        case DIET:
             //record = new DietRecord(recordType.DIET, params.get("food"), params.get("weight"), localDate);
             System.out.println(params.get("food") + params.get("weight") + localDate.toString());
             break;
-        case "S":
+        case SLEEP:
             //record = new DietRecord(recordType.SLEEP, params.get("duration"), localDate);
             System.out.println(params.get("duration") + localDate.toString());
             break;
-        case "W":
+        case BODY_WEIGHT:
             //record = new DietRecord(recordType.BODYWEIGHT, params.get("weight"), localDate);
             System.out.println(params.get("weight") + localDate.toString());
             break;
