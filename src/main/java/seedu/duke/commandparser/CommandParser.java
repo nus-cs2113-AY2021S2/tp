@@ -10,6 +10,7 @@ import seedu.duke.command.InvalidCommand;
 import seedu.duke.command.ViewCommand;
 import seedu.duke.command.Command;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.TypeException;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -25,11 +26,9 @@ import static seedu.duke.command.CommandType.VIEW;
 
 public class CommandParser {
     private final HashMap<String, String> params;
-    private final FitCenter fitCenter;
 
-    public CommandParser(FitCenter fitCenter) {
+    public CommandParser() {
         params = new HashMap<>();
-        this.fitCenter = fitCenter;
     }
 
     public Command parseCommand(String userInput) {
@@ -89,6 +88,10 @@ public class CommandParser {
             }
         } catch (ParseException e) {
             return new InvalidCommand(Messages.MESSAGE_INVALID_DATE_FORMAT);
+        } catch (TypeException e) {
+            return new InvalidCommand(e.toString());
+        } catch (NumberFormatException e) {
+            return new InvalidCommand("Please check the value you filled in for the number field");
         }
     }
 
@@ -243,25 +246,25 @@ public class CommandParser {
         return new ViewCommand(DIET, params);
     }
 
-    private Command prepareViewSleep(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewSleep(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(SLEEP, params);
     }
 
-    private Command prepareViewBodyWeight(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewBodyWeight(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(BODY_WEIGHT, params);
     }
 
-    private Command prepareAddSleep(String content) throws ParseException {
+    private Command prepareAddSleep(String content) throws ParseException, TypeException, NumberFormatException {
         String duration = parseDuration(content, false);
         if (duration.equals("")) {
             return new InvalidCommand(ADD);
@@ -298,7 +301,7 @@ public class CommandParser {
         return paramDate;
     }
 
-    private Command prepareAddDiet(String content) throws ParseException {
+    private Command prepareAddDiet(String content) throws ParseException, TypeException, NumberFormatException {
         String[] foodWeight = getFoodAndFoodWeight(content);
         if (foodWeight.length < 2) {
             return new InvalidCommand(ADD);
@@ -336,7 +339,7 @@ public class CommandParser {
         return content.split("w/", 2);
     }
 
-    private Command prepareAddBodyWeight(String content) throws ParseException {
+    private Command prepareAddBodyWeight(String content) throws ParseException, TypeException, NumberFormatException {
         String weight = parseWeight(content, false);
         if (weight.equals("")) {
             return new InvalidCommand(ADD);
@@ -358,7 +361,7 @@ public class CommandParser {
         return new AddCommand(BODY_WEIGHT, params);
     }
 
-    private Command prepareAddExercise(String content) throws ParseException {
+    private Command prepareAddExercise(String content) throws ParseException, TypeException, NumberFormatException {
         String[] activityDuration = getActivityAndDuration(content);
         if (activityDuration.length < 2) {
             return new InvalidCommand(ADD);

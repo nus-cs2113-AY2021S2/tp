@@ -1,6 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
+import seedu.duke.exception.TypeException;
 import seedu.duke.record.Record;
 
 import java.text.ParseException;
@@ -10,16 +11,14 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 
-//import static seedu.duke.record.RecordType;
-
 public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:%s";
     private Record record;
-    private final SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
     private CommandRecordType recordType;
 
     public AddCommand(CommandRecordType recordType, HashMap<String,String> params)
-            throws ParseException {
+            throws ParseException, TypeException, NumberFormatException {
+        SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
         this.recordType = recordType;
         spf.setLenient(false);
         String dateString = params.get("date");
@@ -33,18 +32,22 @@ public class AddCommand extends Command {
         switch (recordType) {
         case EXERCISE:
             //record = new DietRecord(recordType.EXERCISE, params.get("activity"), params.get("duration"), localDate);
+            recordType = CommandRecordType.EXERCISE;
             System.out.println(params.get("activity") + params.get("duration") + localDate.toString());
             break;
         case DIET:
             //record = new DietRecord(recordType.DIET, params.get("food"), params.get("weight"), localDate);
+            recordType = CommandRecordType.DIET;
             System.out.println(params.get("food") + params.get("weight") + localDate.toString());
             break;
         case SLEEP:
             //record = new DietRecord(recordType.SLEEP, params.get("duration"), localDate);
+            recordType = CommandRecordType.SLEEP;
             System.out.println(params.get("duration") + localDate.toString());
             break;
         case BODY_WEIGHT:
             //record = new DietRecord(recordType.BODYWEIGHT, params.get("weight"), localDate);
+            recordType = CommandRecordType.BODY_WEIGHT;
             System.out.println(params.get("weight") + localDate.toString());
             break;
         default:
@@ -52,8 +55,8 @@ public class AddCommand extends Command {
         }
     }
 
-    public CommandResult execute() {
-        //fitCenter.addRecordToList(record);
+    public CommandResult execute(FitCenter fitCenter) {
+        fitCenter.addRecordToList(recordType, record);
         feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
         return new CommandResult(feedback);
     }

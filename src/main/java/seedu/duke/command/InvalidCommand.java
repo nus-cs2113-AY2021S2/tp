@@ -1,10 +1,10 @@
 package seedu.duke.command;
 
+import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
-import seedu.duke.ui.UI;
 
 public class InvalidCommand extends Command {
-    private String feedback;
+    private final String feedback;
 
     public InvalidCommand(String errorMessage) {
         feedback = errorMessage;
@@ -19,13 +19,12 @@ public class InvalidCommand extends Command {
             feedback = Messages.MESSAGE_INVALID_COMMAND_SYNTAX + Messages.MESSAGE_INVALID_VIEW_COMMAND;
             break;
         default:
-            UI.printMessage(Messages.MESSAGE_SYSTEM_ERROR);
+            feedback = Messages.MESSAGE_SYSTEM_ERROR;
         }
-        UI.printMessage(feedback);
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute(FitCenter fitCenter) {
         return new CommandResult(feedback);
     }
 }

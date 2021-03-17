@@ -1,8 +1,11 @@
 package seedu.duke.account;
 
+import seedu.duke.command.CommandRecordType;
+import seedu.duke.common.Messages;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.RecordType;
+
 
 import java.time.LocalDate;
 
@@ -16,7 +19,7 @@ public class FitCenter {
     private final RecordList bodyRecordList = new RecordList(RecordType.BODYWEIGHT);
 
 
-    private RecordList getRecordListByType(RecordType type) {
+    private RecordList getRecordListByType(CommandRecordType type) {
         switch (type) {
         case SLEEP:
             return sleepRecordList;
@@ -24,7 +27,7 @@ public class FitCenter {
             return exerciseRecordList;
         case DIET:
             return dietRecordList;
-        case BODYWEIGHT:
+        case BODY_WEIGHT:
             return bodyRecordList;
         default:
             return null;
@@ -34,10 +37,10 @@ public class FitCenter {
     /**
      * Adds a given record to a list that stores the same type of records.
      *
+     * @param type   the type of the record.
      * @param record the record to add.
      */
-    public void addRecordToList(Record record) {
-        RecordType type = record.getType();
+    public void addRecordToList(CommandRecordType type, Record record) {
         RecordList list = getRecordListByType(type);
         if (list != null) {
             list.addRecord(record);
@@ -50,8 +53,10 @@ public class FitCenter {
      *
      * @param type  the type of the record.
      * @param index the index of the record in the list.
+     *              EXCEPTION!
      */
-    public String removeRecordFromList(RecordType type, int index) throws IndexOutOfBoundsException {
+
+    public String removeRecordFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
         RecordList list = getRecordListByType(type);
         if (list != null) {
             return list.removeRecord(index);
@@ -65,11 +70,12 @@ public class FitCenter {
      *
      * @param type the type of the record that the list stores.
      */
-    public void printRecordList(RecordType type) {
+    public String getRecordListString(CommandRecordType type) {
         RecordList list = getRecordListByType(type);
         if (list != null) {
-            list.printRecords();
+            return list.getRecordsToPrint();
         }
+        return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
     /**
@@ -78,10 +84,27 @@ public class FitCenter {
      * @param type the type of the record that the list stores.
      * @param date the date of records.
      */
-    public void printRecordList(RecordType type, LocalDate date) {
+    public String getRecordListString(CommandRecordType type, LocalDate date) {
         RecordList list = getRecordListByType(type);
         if (list != null) {
-            list.printRecords(date);
+            return list.getRecordsToPrint(date);
         }
+        return Messages.MESSAGE_CANT_VIEW_LIST;
+    }
+
+    public String getRecordListString(CommandRecordType type, String optionalParam) {
+        RecordList list = getRecordListByType(type);
+        if (list != null) {
+            return list.getRecordsToPrint(optionalParam);
+        }
+        return Messages.MESSAGE_CANT_VIEW_LIST;
+    }
+
+    public String getRecordListString(CommandRecordType type, LocalDate date, String optionalParam) {
+        RecordList list = getRecordListByType(type);
+        if (list != null) {
+            return list.getRecordsToPrint(date, optionalParam);
+        }
+        return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 }
