@@ -9,9 +9,10 @@
 {Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Download the latest version of `FridgeFriend` from [here](update_link_here_after_release).
 
 ## Features 
+
 
 {Give detailed description of each feature}
 **Notes about the command format:**
@@ -20,7 +21,7 @@
   e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
   
 ### Adding a food item: `add`
-Adds a food item to the fridge.
+Adds a food item into the fridge.
 
 Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
 
@@ -47,11 +48,69 @@ Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
 ```
 
+### Display the list of all foods: `list`
+Displays the full list of food items stored in the fridge.
+
+Format: `list`
+
+* There should not be any descriptions after keyword `list`.  
+
+Example of usage: 
+
+Input: `list`
+
+Output: 
+```
+Here are the items in your fridge:
+  	1. chicken [MEAT]
+   	2. grouper [SEAFOOD]
+```
+
+### Display the list of foods by category: `list <CATEGORY>`
+Displays the list of food items under specified category stored in the fridge.
+
+Format: `list CATEGORY_NAME`
+
+* The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
+`VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
+* The `CATEGORY_NAME` is case-insensitive
+* If other category names are detected, it would give an error message
+
+Example of usage: 
+
+*Situation 1: There is one food called chicken under MEAT category.*
+
+Input: `list MEAT`
+
+Output: 
+```
+These are the MEAT in your fridge:
+	1. chicken
+```
+*Situation 2: There are no foods under READY_TO_EAT category.*
+
+Input: `list ready_to_eat`
+
+Output: 
+```
+These are the READY_TO_EAT in your fridge:
+```
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Copy the `.jar` file along with `save` folder to the target computer.
+As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
+
+**Q**: What if I forget the correct format of a command?
+
+**A**: You will get a tip if you use any of the command keywords incorrectly. 
+Plus, you are always welcomed to use `help` command.
+
+**Q**: How do I report a bug?
+
+**A**: You can either create a pull request or state in the issues.
 
 ## Command Summary
 
