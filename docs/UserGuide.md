@@ -2,17 +2,16 @@
 
 ## Introduction
 
-{Give a product intro}
+`FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
+If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
+It is written in Java, and has more than 1.5kLoC.
 
 ## Quick Start
-
-{Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed.
 1. Download the latest version of `FridgeFriend` from [here](update_link_here_after_release).
 
 ## Features
-
 
 {Give detailed description of each feature}
 **Notes about the command format:**
@@ -21,29 +20,27 @@
   e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
   
 ### Adding a food item: `add`
+
 Adds a food item into the fridge.
 
 Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
 
-* The `FOOD_NAME` can be the name of a food but not an empty description. 
+* The `FOOD_NAME` can be the name of a food but not an empty description.
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
 
 Additional info:
 
-Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`, 
+* Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
- 
-Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+* Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
-Example of usage: 
+Example of usage:
 
-Input: `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
-
-Output: 
 ```
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf
 Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
 ```
@@ -73,8 +70,8 @@ Format: `list CATEGORY_NAME`
 
 * The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
 `VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
-* The `CATEGORY_NAME` is case-insensitive
-* If other category names are detected, it would give an error message
+* The `CATEGORY_NAME` is case-insensitive.
+* If other category names are detected, `FridgeFriend` would give an error message.
 
 Example of usage:
 
@@ -93,18 +90,35 @@ These are the MEAT in your fridge:
 These are the READY_TO_EAT in your fridge:
 ```
 
-### List expiring foods: `expiring`
+### Remove a food item: `remove`
 
-Displays a list of food items that are expiring within a week.
+Removes a food item based on its index.
 
-Format: `expiring`
+Format: `remove INDEX`
 
+* The `INDEX` must be a valid index.
+* If the `INDEX` is out of bounds, `FridgeFriend` will give an error message.
+
+Example of usage:
 ```
->> expiring
-These are the food expiring in the next week:
-1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
+>> list
+Here are the items in your fridge:
+        1. chicken [MEAT]
+        2. mango [OTHER]
+        3. milk [OTHER]
+
+>> remove 2
+Noted! I've removed mango from your fridge.
+Now you have 2 food in the fridge.
+
+>> list
+Here are the items in your fridge:
+        1. chicken [MEAT]
+        2. milk [OTHER]
+```
 
 ### Search: `search`
+
 Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food's storage location.
 
 Format: `search FOOD_NAME`
@@ -119,13 +133,67 @@ Example of usage:
 
 *In this example, Fridge contains only one item `grouper` stored in the `FREEZER` location.*
 
-Input: `search grouper`
+```
+>> search grouper
+You have grouper stored in FREEZER of your fridge.
 
-Output: `You have grouper stored in FREEZER of your fridge.`
+>> search oyster
+You do not have oyster in your fridge.
+```
 
-Input: `search oyster`
+### List expiring foods: `expiring`
 
-Output: `You do not have oyster in your fridge.`
+Displays a list of food items that are expiring within a week.
+
+Format: `expiring`
+
+Example of usage:
+
+```
+>> expiring
+These are the food expiring in the next week:
+1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
+```
+
+### Get help message: `help`
+
+Prints a list of available commands and formats.
+
+Format: `help`
+
+Example of usage:
+
+```
+>> help
+These are the list of available commands:
+        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
+        list
+        list categoryName
+        remove index
+        search searchString
+        expiring
+        help
+        bye
+
+This is the list of food categories:
+        [VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER]
+
+This is the list of storage locations:
+        [FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
+```
+
+### Exit the application: `bye`
+
+Exits the application.
+
+Format: `bye`
+
+Example of usage:
+
+```
+>> bye
+Bye! Hope to see you again soon!
+```
 
 ## FAQ
 
@@ -136,7 +204,7 @@ As long as the target computer satisfies our project prerequisites, it can run w
 
 **Q**: What if I forget the correct format of a command?
 
-**A**: You will get a tip if you use any of the command keywords incorrectly. 
+**A**: You will get a tip if you use any of the command keywords incorrectly.
 Plus, you are always welcomed to use `help` command.
 
 **Q**: How do I report a bug?
@@ -145,6 +213,11 @@ Plus, you are always welcomed to use `help` command.
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+* Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+* List food `list`
+* List food by category `list CATEGORY_NAME`
+* Remove food `remove INDEX`
+* Search for food `search FOOD_NAME`
+* List expiring foods `expiring`
+* Get help message `help`
+* Exit application `bye`
