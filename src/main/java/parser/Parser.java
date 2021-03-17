@@ -14,6 +14,7 @@ public class Parser {
 
     public int parseIndex(String input, String keyword, int maxStores) throws DukeExceptions {
         String[] inputArray = input.split(" ");
+        assert inputArray.length > 0;
         int index = -1;
         String invalidIndexMessage = "Invalid index! Please enter a valid index for your '" + keyword + "' command.";
 

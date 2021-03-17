@@ -29,6 +29,17 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
+### Listing stores in canteen: `list`
+Lists all stores in the canteen
+
+Format: `list`
+
+* There should be no arguments after `list`
+
+Example of usage:
+
+`list`
+
 ### Reading reviews of a store: `read`
 Reads review of a store by selecting its index from the list
 
