@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.account.FitCenter;
 import seedu.duke.record.RecordType;
 
 
@@ -15,28 +16,12 @@ public class DeleteCommand extends Command {
     public DeleteCommand(CommandRecordType recordType, HashMap<String, String> params) throws NumberFormatException {
         this.recordType = recordType;
         indexToDelete = Integer.parseInt(params.get("index"));
-        switch (recordType) {
-        case EXERCISE:
-            type = RecordType.EXERCISE;
-            break;
-        case DIET:
-            type = RecordType.DIET;
-            break;
-        case BODY_WEIGHT:
-            type = RecordType.BODYWEIGHT;
-            break;
-        case SLEEP:
-            type = RecordType.SLEEP;
-            break;
-        default:
-            System.out.println("The is something wrong within our system.");
-        }
     }
 
     @Override
-    public CommandResult execute() {
+    public CommandResult execute(FitCenter fitCenter) {
         try {
-            String recordSummary = fitCenter.removeRecordFromList(type, indexToDelete);
+            String recordSummary = fitCenter.removeRecordFromList(recordType, indexToDelete);
             feedback = String.format(FEEDBACK_FORMAT, type, indexToDelete, recordSummary);
             return new CommandResult(feedback);
         } catch (IndexOutOfBoundsException e) {
