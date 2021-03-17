@@ -13,21 +13,27 @@ public class BodyWeight extends Record {
      */
     public BodyWeight(RecordType type, LocalDate date) {
         super(type, date);
+        this.weight = 0;
     }
 
-    public void weight(){
-
-    }
-
+    /**
+     * Return the summary of record
+     */
     @Override
     public String getRecordSummary() {
         return null;
     }
 
+    /**
+     * Get the weight data
+     */
     public double getWeight() {
         return weight;
     }
 
+    /**
+     * Set the weight data
+     */
     public void setWeight(double weight) {
         this.weight = weight;
     }

@@ -15,22 +15,32 @@ public class Diet extends Record {
 
     public Diet(RecordType type, LocalDate date) {
         super(type, date);
+        this.totalCalories = 0;
     }
 
     public void addFood(FoodCategory category) {
-//        this.Food.setCategory(category);     // Not sure how to write this part
+ //       Food.setCategory(category);     // Not sure how to write this part
     }
 
+    /**
+     * Set the total calories
+     */
     public void totalCalories(double totalCalories ){
         this.totalCalories = totalCalories;
     }
 
+    /**
+     * Get the total calories
+     */
     public double getTotalCal() {
         return totalCalories;
     }
 
+    /**
+     * Print the list of food
+     */
     public void printFoodList() {
-     //   System.out.println(Food.getCategory());  // Not sure how to write this part
+        System.out.println(Food.getCategory());  // Not sure how to write this part
     }
 
     @Override
