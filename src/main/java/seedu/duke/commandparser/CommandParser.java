@@ -26,11 +26,9 @@ import static seedu.duke.command.CommandType.VIEW;
 
 public class CommandParser {
     private final HashMap<String, String> params;
-    private final FitCenter fitCenter;
 
-    public CommandParser(FitCenter fitCenter) {
+    public CommandParser() {
         params = new HashMap<>();
-        this.fitCenter = fitCenter;
     }
 
     public Command parseCommand(String userInput) {
@@ -248,20 +246,20 @@ public class CommandParser {
         return new ViewCommand(DIET, params);
     }
 
-    private Command prepareViewSleep(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewSleep(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(SLEEP, params);
     }
 
-    private Command prepareViewBodyWeight(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewBodyWeight(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(BODY_WEIGHT, params);
     }

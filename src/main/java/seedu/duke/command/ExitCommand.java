@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
 
 /**
@@ -7,7 +8,7 @@ import seedu.duke.common.Messages;
  */
 public class ExitCommand extends Command {
     @Override
-    public CommandResult execute() {
+    public CommandResult execute(FitCenter fitCenter) {
         return new CommandResult(Messages.MESSAGE_EXIT);
     }
 
