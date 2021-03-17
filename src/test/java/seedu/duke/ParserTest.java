@@ -1,7 +1,16 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.command.*;
+import seedu.duke.command.Command;
+import seedu.duke.command.GoCommand;
+import seedu.duke.command.RepeatCommand;
+import seedu.duke.command.ShowHistoryCommand;
+import seedu.duke.command.ClearHistoryCommand;
+import seedu.duke.command.ListNoteCommand;
+import seedu.duke.command.AddNoteCommand;
+import seedu.duke.command.DeleteNoteCommand;
+import seedu.duke.command.ByeCommand;
+import seedu.duke.command.HelpCommand;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -63,9 +72,8 @@ class ParserTest {
     }
 
     @Test
-    void prepareForCommandExecution_unknown_expectException() throws InvalidCommandException {
-        assertThrows(InvalidCommandException.class, () -> {
-            Parser.prepareForCommandExecution("unknown command");
-        });
+    void prepareForCommandExecution_unknown_expectException() {
+        assertThrows(InvalidCommandException.class,
+            () -> Parser.prepareForCommandExecution("unknown command"));
     }
 }
