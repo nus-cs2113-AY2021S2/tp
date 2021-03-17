@@ -15,7 +15,11 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Locale;
 
-import static seedu.duke.command.CommandRecordType.*;
+import static seedu.duke.command.CommandRecordType.EXERCISE;
+import static seedu.duke.command.CommandRecordType.DIET;
+import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
+import static seedu.duke.command.CommandRecordType.SLEEP;
+import static seedu.duke.command.CommandRecordType.INVALID;
 import static seedu.duke.command.CommandType.ADD;
 import static seedu.duke.command.CommandType.VIEW;
 
@@ -396,7 +400,7 @@ public class CommandParser {
     private String[] getActivityAndDuration(String content) {
         return content.split("d/", 2);
     }
-/*
+    /*
     private CommandRecordType parseType(String input) {
         boolean isTypeKeywordValid = input.startsWith("t/") && input.length() >= 3;
         if (!isTypeKeywordValid) {
@@ -409,7 +413,7 @@ public class CommandParser {
         return type.toUpperCase(Locale.ROOT);
     }
 
- */
+    */
 
     private String parseExerciseActivity(String activityRawInput, boolean isPrefixChecked) {
         boolean isActivityValid;
