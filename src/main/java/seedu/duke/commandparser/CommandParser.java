@@ -1,18 +1,18 @@
 package seedu.duke.commandparser;
 
 import seedu.duke.command.AddCommand;
-import seedu.duke.command.Command;
-import seedu.duke.command.CommandRecordType;
-import seedu.duke.command.InvalidCommand;
-import seedu.duke.record.RecordType;
+import seedu.duke.command.ViewCommand;
 
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 
 import static seedu.duke.command.CommandType.ADD;
 import static seedu.duke.command.CommandType.VIEW;
+import static seedu.duke.command.CommandRecordType.EXERCISE;
+import static seedu.duke.command.CommandRecordType.DIET;
+import static seedu.duke.command.CommandRecordType.SLEEP;
+import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 
 public class CommandParser {
     private HashMap<String, String> params;
@@ -30,24 +30,21 @@ public class CommandParser {
             prepareAdd(inputParts);
             //return prepareAdd(inputParts);
             break;
-            /*
         case "view":
-            return prepareView(inputParts);
+            prepareView(inputParts);
             break;
         //    return prepareView(inputParts);
         case "delete":
-            return prepareDelete(inputParts);
+            //return prepareDelete(inputParts);
             break;
         //   return prepareDelete();
-
-             */
         default:
             //return new InvalidCommand();
             System.out.println("Invalid");
             break;
         }
     }
-
+    /*
     private void prepareDelete(String[] inputParts) {
         if (inputParts.length < 2) {
             //return new InvalidCommand();
@@ -73,193 +70,157 @@ public class CommandParser {
         index = index.substring(2);
         System.out.println(index);
     }
-    /*
+     */
+
     private Command prepareView(String[] inputParts) {
-    //private void prepareView(String[] inputParts) {
-        if (inputParts.length < 2) {
-            return new InvalidCommand(VIEW);
-            //System.out.println("invalid");
-            //return;
-        }
-        String recordType = parseType(inputParts[1]);
-        if (recordType.equals("")) {
-            //System.out.println("invalid");
-            //return;
-            return new InvalidCommand(VIEW);
-        }
-        String typeContent = inputParts[1];
-        switch (recordType) {
-        case "E":
-            //return prepareExercise(content.trim());
-            return prepareViewExercise(typeContent.trim());
-            //break;
-        case "W":
-            return prepareViewBodyWeight(typeContent.trim());
-            //prepareViewBodyWeight(typeContent.trim());
-            //break;
-        case "D":
-            return prepareViewDiet(typeContent.trim());
-            //prepareViewDiet(typeContent.trim());
-            //break;
-        case "S":
-            return prepareViewSleep(typeContent.trim());
-            //prepareViewSleep(typeContent.trim());
-            //break;
-        default:
-            return new InvalidCommand(VIEW);
-            //System.out.println("Invalid");
-            //break;
+        try {
+            if (inputParts.length < 2) {
+                return new InvalidCommand(VIEW);
+            }
+            String recordType = parseType(inputParts[1]);
+            if (recordType.equals("")) {
+                return new InvalidCommand(VIEW);
+            }
+            String typeContent = inputParts[1];
+            String optionalParams = getOptionalParamsForView(typeContent);
+            switch (recordType) {
+            case "E":
+                if (!optionalParams.equals("")) {
+                    return prepareViewExercise(optionalParams);
+                }
+                return new ViewCommand(EXERCISE);
+            case "W":
+                if (!optionalParams.equals("")) {
+                    return prepareViewBodyWeight(optionalParams);
+                }
+                return new ViewCommand(BODY_WEIGHT);
+            case "D":
+                if (!optionalParams.equals("")) {
+                    return prepareViewDiet(optionalParams);
+                }
+                return new ViewCommand(DIET);
+            case "S":
+                if (!optionalParams.equals("")) {
+                    return prepareViewSleep(optionalParams);
+                }
+                return new ViewCommand(SLEEP);
+            default:
+                return new InvalidCommand(VIEW);
+            }
+        } catch (ParseException e) {
+            return new InvalidCommand("The date format is incorrect");
         }
     }
 
- */
-
-    private void prepareViewExercise(String typeContent) {
-        if (typeContent.length() == 3) {
-            //System.out.println("print all exercise records");
-            return;
-        }
+    private String getOptionalParamsForView(String typeContent) {
         String[] rawInput = typeContent.split("\\s+", 2);
         if (rawInput.length == 1) {
-            System.out.println("Invalid");
-            return;
+            return "";
+        } else {
+            return rawInput[1].trim();
         }
-        String optionParams = rawInput[1].trim();
-        String activity = "";
-        String date = "";
-        boolean hasActivity = optionParams.contains("a/");
-        boolean hasDate = optionParams.contains("date/");
+    }
+
+    private Command prepareViewExercise(String optionalParams) throws ParseException {
+        String activity;
+        String date;
+        boolean hasActivity = optionalParams.contains("a/");
+        boolean hasDate = optionalParams.contains("date/");
         if (!hasActivity && !hasDate) {
-            System.out.println("Invalid");
-            return;
+            return new InvalidCommand(VIEW);
         }
         if (hasActivity) {
-            activity = parseExerciseActivity(optionParams,false);
+            activity = parseExerciseActivity(optionalParams,false);
             if (activity.equals("")) {
-                System.out.println("Invalid");
-                return;
+                return new InvalidCommand(VIEW);
             }
             if (!hasDate) {
-                System.out.println(activity);
-                return;
+                params.put("activity", activity);
+                return new ViewCommand(EXERCISE, params);
             }
             String[] activityDate = getDate(activity);
             if (activityDate.length == 0) {
-                //return new InvalidCommand();
-                System.out.println("Invalid");
-                return;
+                return new InvalidCommand(VIEW);
             }
             activity = activityDate[0];
             date = activityDate[1];
-            System.out.println(activity);
-            System.out.println(date);
-            return;
+            params.put("activity", activity);
+            params.put("date", date);
+            return new ViewCommand(EXERCISE, params);
         }
-        if (!optionParams.startsWith("date/")) {
-            System.out.println("Invalid");
-            return;
+        if (!optionalParams.startsWith("date/") || optionalParams.length() > 5) {
+            return new InvalidCommand(VIEW);
         }
-        date = optionParams.substring(5);
+        date = optionalParams.substring(5);
         if (date.length() == 0) {
-            System.out.println("Invalid");
-            return;
+            return new InvalidCommand(VIEW);
         }
-        ArrayList<String> params = new ArrayList<>();
-        System.out.println(date);
+        params.put("date", date);
+        return new ViewCommand(EXERCISE, params);
     }
 
-    private void prepareViewDiet(String typeContent) {
-        if (typeContent.length() == 3) {
-            System.out.println("print all diet records");
-            return;
-        }
-        String[] rawInput = typeContent.split("\\s+", 2);
-        if (rawInput.length == 1) {
-            System.out.println("Invalid");
-            return;
-        }
-        String optionalParams = rawInput[1].trim();
-        String food = "";
-        String date = "";
+    private Command prepareViewDiet(String optionalParams) throws ParseException {
+        String food;
+        String date;
         boolean hasFood = optionalParams.contains("f/");
         boolean hasDate = optionalParams.contains("date/");
         if (!hasFood && !hasDate) {
-            System.out.println("Invalid");
-            return;
+            return new InvalidCommand(VIEW);
         }
         if (hasFood) {
             food = parseDiet(optionalParams,false);
             if (food.equals("")) {
-                System.out.println("Invalid");
-                return;
+                //System.out.println("Invalid");
+                return new InvalidCommand(VIEW);
             }
             if (!hasDate) {
-                System.out.println(food);
-                return;
+                //System.out.println(activity);
+                params.put("food", food);
+                //return;
+                return new ViewCommand(DIET, params);
             }
-            String[] activityDate = getDate(food);
-            if (activityDate.length == 0) {
-                //return new InvalidCommand();
-                System.out.println("Invalid");
-                return;
+            String[] foodDate = getDate(food);
+            if (foodDate.length == 0) {
+                return new InvalidCommand(VIEW);
+                //System.out.println("Invalid");
+                //return;
             }
-            food = activityDate[0];
-            date = activityDate[1];
-            System.out.println(food);
-            System.out.println(date);
-            return;
+            food = foodDate[0];
+            date = foodDate[1];
+            params.put("food", food);
+            params.put("date", date);
+            return new ViewCommand(DIET, params);
         }
-        if (!optionalParams.startsWith("date/")) {
-            System.out.println("Invalid");
-            return;
+        if (!optionalParams.startsWith("date/") || optionalParams.length() > 5) {
+            return new InvalidCommand(VIEW);
         }
         date = optionalParams.substring(5);
         if (date.length() == 0) {
-            System.out.println("Invalid");
-            return;
+            return new InvalidCommand(VIEW);
         }
-        ArrayList<String> params = new ArrayList<>();
-        System.out.println(date);
+        params.put("date", date);
+        return new ViewCommand(DIET, params);
     }
 
-    private void prepareViewSleep(String typeContent) {
-        if (typeContent.length() == 3) {
-            System.out.println("print all sleep records");
-            return;
+
+    private Command prepareViewSleep(String optionalParmas) throws ParseException {
+        boolean isDateValid = optionalParmas.startsWith("date/") && optionalParmas.length() > 5;
+        if (!isDateValid) {
+            return new InvalidCommand(VIEW);
         }
-        boolean hasDate = typeContent.contains("date/");
-        if (!hasDate) {
-            System.out.println("Invalid");
-            return;
-        }
-        String[] typeDate = getDate(typeContent);
-        if (typeDate.length == 0) {
-            //return new InvalidCommand();
-            System.out.println("Invalid");
-            return;
-        }
-        String date = typeDate[1];
-        System.out.println(date);
+        String date = optionalParmas.substring(5);
+        params.put("date", date);
+        return new ViewCommand(SLEEP, params);
     }
 
-    private void prepareViewBodyWeight(String typeContent) {
-        if (typeContent.length() == 3) {
-            System.out.println("print all body weight records");
-            return;
+    private Command prepareViewBodyWeight(String optionalParmas) throws ParseException {
+        boolean isDateValid = optionalParmas.startsWith("date/") && optionalParmas.length() > 5;
+        if (!isDateValid) {
+            return new InvalidCommand(VIEW);
         }
-        boolean hasDate = typeContent.contains("date/");
-        if (!hasDate) {
-            System.out.println("Invalid");
-            return;
-        }
-        String[] typeDate = getDate(typeContent);
-        if (typeDate.length == 0) {
-            //return new InvalidCommand();
-            System.out.println("Invalid");
-            return;
-        }
-        String date = typeDate[1];
-        System.out.println(date);
+        String date = optionalParmas.substring(5);
+        params.put("date", date);
+        return new ViewCommand(BODY_WEIGHT, params);
     }
 
     //private Command prepareAdd(String[] inputParts) {
