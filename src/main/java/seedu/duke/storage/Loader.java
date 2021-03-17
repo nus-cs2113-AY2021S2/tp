@@ -14,7 +14,10 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static seedu.duke.common.CommonMethods.getLessonType;
+import static seedu.duke.common.CommonMethods.writeLog;
 import static seedu.duke.common.Constants.DIVIDER_READ;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.ENTRY_LESSON_EXTRA_LONG;
 import static seedu.duke.common.Constants.ENTRY_LESSON_LONG;
 import static seedu.duke.common.Constants.ENTRY_LESSON_MEDIUM;
@@ -38,7 +41,7 @@ import static seedu.duke.common.Constants.KEYWORD_TASK;
 import static seedu.duke.common.Constants.STOP_LINE;
 import static seedu.duke.common.Constants.TRUE_STRING;
 import static seedu.duke.common.Constants.TXT_FORMAT;
-import static seedu.duke.common.CommonMethods.getLessonType;
+import static seedu.duke.common.Messages.MESSAGE_LOAD_FAILED;
 
 public class Loader {
 
@@ -57,7 +60,7 @@ public class Loader {
         for (File file : files) {
             String name = file.getName();
             if (name.endsWith(TXT_FORMAT)) {
-                names.add(name.replace(TXT_FORMAT, ""));
+                names.add(name.replace(TXT_FORMAT, EMPTY_STRING));
             }
         }
         return names;
@@ -80,6 +83,7 @@ public class Loader {
             scanner.close();
         } catch (FileNotFoundException e) {
             //Unable to find file, return null
+            writeLog(String.format(MESSAGE_LOAD_FAILED, moduleCode));
             return null;
         }
         return module;
@@ -136,7 +140,7 @@ public class Loader {
         }
         String time = fields[INDEX_DAY_TIME].trim();
         String link = "";
-        TeachingStaff teachingStaff = new TeachingStaff("","");
+        TeachingStaff teachingStaff = new TeachingStaff(EMPTY_STRING,EMPTY_STRING);
 
         switch (fields.length) {
         case ENTRY_LESSON_EXTRA_LONG:
@@ -174,7 +178,7 @@ public class Loader {
         }
         boolean isDone = getTrueFalse(fields[INDEX_IS_DONE].trim());
         boolean isGraded = getTrueFalse(fields[INDEX_IS_GRADED].trim());
-        String remarks = "";
+        String remarks = EMPTY_STRING;
         if (fields.length == ENTRY_TASK_LONG) {
             remarks = fields[INDEX_REMARKS_LOADER].trim();
         }

@@ -65,6 +65,7 @@ public class Messages {
     public static final String MESSAGE_REMOVED_LESSON = "Removed %s from the lesson list.";
     public static final String MESSAGE_OPENED_LESSON_LINK = "Opening %s link in browser.";
     public static final String MESSAGE_UNABLE_TO_OPEN_LINK = "Cannot open lesson link";
+    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
 
     public static final String MESSAGE_LESSONS_TO_DELETE = "Which lessons would you like to delete?";
     public static final String MESSAGE_LESSONS_TO_LIST = "Lessons for %s:";
@@ -136,12 +137,10 @@ public class Messages {
 
     //Module info messages
     public static final String FORMAT_LESSONS_INFO = "%s - %s";
-    public static final String UNDONE_TASK = "Undone tasks:" + NEWLINE;
     public static final String FORMAT_MODULE_INFO = "<Overview for %s>";
-    public static final String FORMAT_TASK_INFO = "%d. %s" + NEWLINE;
     public static final String MESSAGE_TASKS_TO_LIST_UNDONE = "Undone tasks:";
 
-    //Command messages
-    public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
+    //Logging messages
+    public static final String MESSAGE_LOAD_FAILED = "LOADER: failed to load %s.";
 
 }

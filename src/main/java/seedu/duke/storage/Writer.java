@@ -107,6 +107,7 @@ public class Writer {
         if (!path.exists()) {
             //File does not exist
             createFile(name);
+            assert path.exists();
         }
         return path;
     }

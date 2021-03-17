@@ -7,8 +7,6 @@ import seedu.duke.storage.Writer;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static java.util.Objects.requireNonNull;
-
 public class ModuleList {
 
     private static final ArrayList<String> modules = new ArrayList<>();
