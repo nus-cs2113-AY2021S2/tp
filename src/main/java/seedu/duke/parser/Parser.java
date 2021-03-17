@@ -147,9 +147,9 @@ public class Parser {
             return EXIT;
         } else if (input.equalsIgnoreCase(MODULES.getWord())) {
             return MODULES;
-        } else if (startsWith(input, ADD.getWord())) {
+        } else if (isStartsWith(input, ADD.getWord())) {
             return ADD;
-        } else if (startsWith(input, DELETE.getWord())) {
+        } else if (isStartsWith(input, DELETE.getWord())) {
             return DELETE;
         } else if (isValidModuleCode(input)) {
             return OPEN;
@@ -208,7 +208,7 @@ public class Parser {
      * @param command command string to be checked with
      * @return true if user input starts with command string
      */
-    private boolean startsWith(String input, String command) {
+    private boolean isStartsWith(String input, String command) {
         return input.toUpperCase().startsWith(command.toUpperCase());
     }
 
@@ -282,13 +282,13 @@ public class Parser {
             return UNMARK;
         } else if (input.equalsIgnoreCase(TEACHER.getWord())) {
             return TEACHER;
-        } else if (startsWith(input, ADD_LESSON.getWord())) {
+        } else if (isStartsWith(input, ADD_LESSON.getWord())) {
             return ADD_LESSON;
-        } else if (startsWith(input, DELETE_LESSON.getWord())) {
+        } else if (isStartsWith(input, DELETE_LESSON.getWord())) {
             return DELETE_LESSON;
-        } else if (startsWith(input, ADD_TASK.getWord())) {
+        } else if (isStartsWith(input, ADD_TASK.getWord())) {
             return ADD_TASK;
-        } else if (startsWith(input, DELETE_TASK.getWord())) {
+        } else if (isStartsWith(input, DELETE_TASK.getWord())) {
             return DELETE_TASK;
         } else {
             return ModuleCommands.INVALID;
