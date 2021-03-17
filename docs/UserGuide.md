@@ -22,7 +22,7 @@
 ### Adding a food item: `add`
 Adds a food item to the fridge.
 
-Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description. 
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
@@ -30,33 +30,39 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
   
 Additional info:
-**Basic Food Groups**:
-* MEAT 
-* SEAFOOD 
-* EGG 
-* DAIRY 
-* VEGETABLE 
-* FRUIT
-* BEVERAGE 
-* COOKED_DISH 
-* READY_TO_EAT 
-* FROZEN
-* OTHERS
+* **Basic Food Groups**:
+  * MEAT 
+  * SEAFOOD 
+  * EGG 
+  * DAIRY 
+  * VEGETABLE 
+  * FRUIT
+  * BEVERAGE 
+  * COOKED_DISH 
+  * READY_TO_EAT 
+  * FROZEN
+  * OTHERS
 
-**Basic fridge location**
-* FREEZER 
-* UPPER_SHELF
-* MIDDLE_SHELF
-* LOWER_SHELF
-* DRAWERS
-* FRIDGE_DOOR
-* OTHERS
+- **Basic fridge location**
+  * FREEZER 
+  * UPPER_SHELF
+  * MIDDLE_SHELF
+  * LOWER_SHELF
+  * DRAWERS
+  * FRIDGE_DOOR
+  * OTHERS
 
 Example of usage: 
 
-`add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
+1. `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
 
-`add grouper /cat seafood /exp 04-05-2021 /loc freezer`
+2. `add grouper /cat seafood /exp 04-05-2021 /loc freezer`
+
+Expected outcome: 
+1. `Great! I have added chicken into your fridge.`\
+   `Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF`
+2. `Great! I have added grouper into your fridge.`\
+   `Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: OTHER`   
 
 ## FAQ
 
