@@ -1,6 +1,6 @@
 package seedu.nurseschedules;
 
-import nurseschedules.parser.Parser;
+import seedu.nurseschedules.parser.Parser;
 
 import java.text.ParseException;
 import java.util.ArrayList;
