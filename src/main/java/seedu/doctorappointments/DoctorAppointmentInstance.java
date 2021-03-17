@@ -1,6 +1,4 @@
-package seedu.doctor;
-
-import seedu.doctor.DoctorAppointment;
+package seedu.doctorappointments;
 
 import java.util.Scanner;
 
