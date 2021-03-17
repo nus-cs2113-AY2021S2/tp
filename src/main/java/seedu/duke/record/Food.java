@@ -20,7 +20,7 @@ public class Food {
     /**
      * Gets the name of food which user added.
      *
-     * @return the name of the food.
+     * @return name the name of the food.
      */
     public String getName() {
         return name;
@@ -38,7 +38,7 @@ public class Food {
     /**
      * Gets the food weight.
      *
-     * @return the weight of food.
+     * @return weight the weight of food.
      */
     public double getWeight() {
         return weight;
@@ -85,7 +85,7 @@ public class Food {
      *
      * @param category set new category.
      */
-    public void setCategory(String food) {
+    public void setCategory(FoodCategory category) {
         this.category = category;
     }
 }

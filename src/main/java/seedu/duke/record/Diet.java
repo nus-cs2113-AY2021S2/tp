@@ -30,7 +30,7 @@ public class Diet extends Record {
     /**
      * Sets a new category of food.
      *
-     * @param category set new category.
+     * @param totalCalories set new category.
      */
     public void totalCalories(double totalCalories) {
         this.totalCalories = totalCalories;
