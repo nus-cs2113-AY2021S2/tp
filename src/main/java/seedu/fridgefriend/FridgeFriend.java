@@ -4,7 +4,7 @@ import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Fridge;
-import seedu.fridgefriend.utilities.Logger;
+import seedu.fridgefriend.utilities.LoggingHandler;
 import seedu.fridgefriend.utilities.Parser;
 import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
@@ -28,8 +28,8 @@ public class FridgeFriend {
 
     public FridgeFriend() {
         new Ui();
-        new Logger();
-        Logger.logInfo("FridgeFriend application initialised.");
+        new LoggingHandler();
+        LoggingHandler.logInfo("FridgeFriend application initialised.");
         new Storage();
     }
 
@@ -42,7 +42,7 @@ public class FridgeFriend {
     }
 
     private static void run() {
-        Logger.logInfo("Main programme loop started.");
+        LoggingHandler.logInfo("Main programme loop started.");
         while (!isExit) {
             try {
                 String input = Ui.getNextLine();
@@ -51,10 +51,10 @@ public class FridgeFriend {
                 isExit = command.isExit();
             } catch (Exception exception) {
                 Ui.printExceptionMessage(exception);
-                Logger.logInfo("Error found.", exception);
+                LoggingHandler.logInfo("Error found.", exception);
             }
         }
-        Logger.logInfo("Main programme loop exited.");
+        LoggingHandler.logInfo("Main programme loop exited.");
     }
 
     private static void executeCommand(Command command) throws InvalidInputException, InvalidIndexException {
