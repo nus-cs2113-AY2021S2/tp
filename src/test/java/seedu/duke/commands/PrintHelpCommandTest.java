@@ -50,7 +50,12 @@ class PrintHelpCommandTest {
             if (command.equals(DashboardCommands.INVALID)) {
                 continue;
             }
-            String commandWordAndArgs = command.getWord() + " " + command.getArgumentsFormat();
+            String commandWordAndArgs;
+            if (command.equals(DashboardCommands.OPEN)) {
+                commandWordAndArgs = command.getArgumentsFormat();
+            } else {
+                commandWordAndArgs = command.getWord() + " " + command.getArgumentsFormat();
+            }
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     commandWordAndArgs, command.getDescription());
             stringBuilder.append(commandAndDescription).append(NEWLINE).append(NEWLINE);
