@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.drugs;
 
 public class drugInstance {
     protected String name;

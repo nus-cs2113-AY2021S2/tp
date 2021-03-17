@@ -1,4 +1,4 @@
-package DoctorAppointment;
+package seedu.doctor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

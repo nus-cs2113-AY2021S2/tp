@@ -1,4 +1,9 @@
-package seedu.duke;
+package seedu.duke.parser;
+
+
+import seedu.duke.exceptions.DukeException;
+import seedu.duke.ui.Ui;
+import seedu.patient.PatientList;
 
 public class Parser {
 

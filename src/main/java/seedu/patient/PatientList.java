@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.patient;
+
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 

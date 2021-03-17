@@ -1,4 +1,8 @@
-package seedu.duke;
+package seedu.duke.storage;
+
+import seedu.duke.exceptions.DukeException;
+import seedu.patient.Patient;
+import seedu.patient.PatientList;
 
 import java.io.FileWriter;
 import java.util.ArrayList;

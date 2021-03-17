@@ -1,4 +1,4 @@
-package DoctorAppointment;
+package seedu.doctor;
 
 
 import java.util.ArrayList;

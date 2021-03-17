@@ -1,10 +1,8 @@
-package system.staff;
+package seedu.staff;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import static system.staff.Parser.addFunctionParser;
-import static system.staff.UI.prettyPrint;
+import static seedu.staff.Parser.addFunctionParser;
+import static seedu.staff.UI.prettyPrint;
 
 
 public class Staff {
