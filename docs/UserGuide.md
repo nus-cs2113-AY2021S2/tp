@@ -13,6 +13,41 @@
 
 ## Features 
 
+
+{Give detailed description of each feature}
+**Notes about the command format:**
+
+* Words in UPPER_CASE are the parameters to be supplied by the user.\
+  e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
+  
+### Adding a food item: `add`
+Adds a food item into the fridge.
+
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+
+* The `FOOD_NAME` can be the name of a food but not an empty description. 
+* The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
+* The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
+* The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+
+Additional info:
+
+Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`, 
+  `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
+ 
+Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+  `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
+
+Example of usage: 
+
+Input: `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
+
+Output: 
+```
+Great! I have added chicken into your fridge.
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
+```
+
 ### Display the list of all foods: `list`
 Displays the full list of food items stored in the fridge.
 
