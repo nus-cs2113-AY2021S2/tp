@@ -104,6 +104,29 @@ Format: `expiring`
 These are the food expiring in the next week:
 1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
 
+### Search: `search`
+Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food's storage location.
+
+Format: `search FOOD_NAME`
+
+* The `FOOD_NAME` can be the name of a food but not an empty description.
+* The command requires the user to input the exact name of the food item `FOOD_NAME` to be searched for.
+  The names of food items stored in the fridge can be determined with `list`. 
+* If there are multiple items with the same name in the fridge, only the first item added to the fridge
+  in order of the output of `list` will be returned.
+
+Example of usage:
+
+*In this example, Fridge contains only one item `grouper` stored in the `FREEZER` location.*
+
+Input: `search grouper`
+
+Output: `You have grouper stored in FREEZER of your fridge.`
+
+Input: `search oyster`
+
+Output: `You do not have oyster in your fridge.`
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?
