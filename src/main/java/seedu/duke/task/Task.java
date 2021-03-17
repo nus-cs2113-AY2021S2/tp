@@ -2,11 +2,12 @@ package seedu.duke.task;
 
 import java.time.LocalDate;
 
+//@@author 8kdesign
 public class Task {
 
     private String description;
-    private String remarks;
     private LocalDate deadline;
+    private String remarks;
     private Boolean isDone;
     private Boolean isGraded;
     
@@ -18,10 +19,11 @@ public class Task {
         this.isGraded = false;
     }
 
-    public Task(String description, String remarks, LocalDate deadline, Boolean isDone, Boolean isGraded) {
+    public Task(String description, LocalDate deadline, String remarks, 
+                Boolean isDone, Boolean isGraded) {
         this.description = description;
-        this.remarks = remarks;
         this.deadline = deadline;
+        this.remarks = remarks;
         this.isDone = isDone;
         this.isGraded = isGraded;
     }
@@ -30,12 +32,12 @@ public class Task {
         return description;
     }
 
-    public String getRemarks() {
-        return remarks;
-    }
-
     public LocalDate getDeadline() {
         return deadline;
+    }
+
+    public String getRemarks() {
+        return remarks;
     }
 
     public Boolean getDone() {
@@ -50,12 +52,12 @@ public class Task {
         this.description = description;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
     public void setDeadline(LocalDate deadline) {
         this.deadline = deadline;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public void setDone(Boolean done) {
