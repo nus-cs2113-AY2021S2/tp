@@ -1,12 +1,12 @@
 package seedu.duke.command;
 
+import seedu.duke.account.FitCenter;
 import seedu.duke.record.Record;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -15,9 +15,11 @@ import java.util.HashMap;
 public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:%s";
     private Record record;
-    private SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
+    private FitCenter fitCenter;
 
-    public AddCommand(String type, HashMap<String,String> params) throws ParseException {
+    public AddCommand(String type, HashMap<String,String> params, FitCenter fitCenter) throws ParseException {
+        this.fitCenter = fitCenter;
         spf.setLenient(false);
         String dateString = params.get("date");
         LocalDate localDate;
