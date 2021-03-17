@@ -1,4 +1,4 @@
-package nusreview;
+package nusfoodreview;
 
 import admin.AdminVerification;
 import canteens.Canteen;
@@ -10,7 +10,7 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
-public class NusReview {
+public class NusFoodReview {
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
     private Storage storage;
@@ -20,7 +20,7 @@ public class NusReview {
     private boolean isVerified = false;
     private boolean isExit = false;
 
-    public NusReview(String filePath) {
+    public NusFoodReview(String filePath) {
         ui = new Ui();
         parser = new Parser();
         storage = new Storage(filePath);
@@ -31,7 +31,7 @@ public class NusReview {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        new NusReview("data/storage.txt").run();
+        new NusFoodReview("data/storage.txt").run();
     }
 
     public void run() {
