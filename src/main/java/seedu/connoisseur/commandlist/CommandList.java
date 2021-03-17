@@ -1,5 +1,7 @@
 package seedu.connoisseur.commandlist;
 
+import seedu.connoisseur.exceptions.InvalidRatingException;
+import seedu.connoisseur.exceptions.InvalidSortMethodException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -7,26 +9,40 @@ import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
+
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
+import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
+import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 
 /**
  * Class with methods for different commands.
  */
 public class CommandList {
     static final int LIST_CATEGORY_INPUT_LENGTH = 4;
-    static final int MAX_WHITE_SPACE = 20;
 
     public ArrayList<Review> reviewList;
     private Sorter sorter;
-    private final Scanner in = new Scanner(System.in);
+    private Ui ui;
+    private Storage storage;
 
     /**
      * Creates tasks according to user data from files.
      *
      * @param dataReviews List of tasks from user connoisseur.txt file.
      */
-    public CommandList(ArrayList<String> dataReviews) {
+    public CommandList(ArrayList<String> dataReviews, Ui ui, Storage storage) {
+        this.ui = ui;
+        this.storage = storage;
         reviewList = new ArrayList<Review>();
         for (String review : dataReviews) {
             if (review.length() == 0) {
@@ -34,15 +50,17 @@ public class CommandList {
             }
             reviewList.add(Review.textToReview(review));
         }
-        sorter = new Sorter(SortMethod.DATE_EARLIEST);
+        sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
     /**
      * Creates new tasks if no existing data in files.
      */
-    public CommandList() {
+    public CommandList(Ui ui, Storage storage) {
+        this.ui = ui;
+        this.storage = storage;
         reviewList = new ArrayList<Review>();
-        sorter = new Sorter(SortMethod.DATE_EARLIEST);
+        sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
     /**
@@ -53,14 +71,18 @@ public class CommandList {
      */
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
-            System.out.println("No reviews found. :(");
+            ui.println("No reviews found. :(");
         } else {
-            if (sortMethod.length() == 0) {
+            if (sortMethod == null) {
                 sorter.sort(reviewList);
                 printReviews(reviewList);
             } else {
-                sorter.sort(reviewList, sortMethod);
-                printReviews(reviewList);
+                try {
+                    sorter.sort(reviewList, sortMethod);
+                    printReviews(reviewList);
+                } catch (InvalidSortMethodException e) {
+                    ui.println("Invalid sort method");
+                }
             }
         }
     }
@@ -69,78 +91,21 @@ public class CommandList {
      * Prints the sorted reviews.
      */
     public void printReviews(ArrayList<Review> reviewList) {
-        System.out.println("Here are your reviews:");
-        for (int i = 0; i < 4; i++) {
-            System.out.print(" ");
-        }
-        int whiteSpaceNeeded = MAX_WHITE_SPACE - 5;
-        System.out.print("Title");
-        while (whiteSpaceNeeded > 0) {
-            System.out.print(" ");
-            whiteSpaceNeeded--;
-        }
-        whiteSpaceNeeded = MAX_WHITE_SPACE - 6;
-        System.out.print("Rating");
-        while (whiteSpaceNeeded > 0) {
-            System.out.print(" ");
-            whiteSpaceNeeded--;
-        }
-        System.out.println("Date");
-
+        ui.printListHeading();
         for (int i = 0; i < reviewList.size(); i++) {
             Review currentReview = reviewList.get(i);
-            System.out.print((i + 1) + ". ");
+            ui.print((i + 1) + ". ");
             if (i < 9) {
-                System.out.print(" ");
+                ui.print(" ");
             }
-            System.out.print(currentReview.getTitle());
-            whiteSpaceNeeded = MAX_WHITE_SPACE - (currentReview.getTitle().length());
-            while (whiteSpaceNeeded > 0) {
-                System.out.print(" ");
-                whiteSpaceNeeded--;
-            }
-            System.out.print(currentReview.starRating());
-            whiteSpaceNeeded = MAX_WHITE_SPACE - 10;
-            while (whiteSpaceNeeded > 0) {
-                System.out.print(" ");
-                whiteSpaceNeeded--;
-            }
-            System.out.println(currentReview.getDate());
+            ui.print(currentReview.getTitle());
+            ui.printWhiteSpace(currentReview.getTitle().length());
+            ui.print(currentReview.getCategory());
+            ui.printWhiteSpace(currentReview.getCategory().length());
+            ui.print(currentReview.starRating());
+            ui.printWhiteSpace(currentReview.starRating().length());
+            ui.println(currentReview.getDate());
         }
-    }
-
-    /**
-     * Print text to help user with using the application.
-     */
-    public static void printHelp() {
-        Ui.printHelpMessage();
-    }
-
-    /**
-     * Print invalid command text.
-     */
-    public static void invalidCommand() {
-        Ui.printToScreen("Invalid Command. ");
-    }
-
-    /**
-     * Delete review.
-     */
-    public void deleteReview(String title) {
-        int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
-                reviewIndex = i;
-                break;
-            }
-        }
-        if (reviewIndex == -1) {
-            System.out.println("Review does not exists!");
-        } else {
-            reviewList.remove(reviewIndex);
-            System.out.println(title + " deleted.");
-        }
-        Storage.saveData(reviewList);
     }
 
     /**
@@ -149,58 +114,146 @@ public class CommandList {
      * @param sortType sorting method to be used
      */
     public void sortReview(String sortType) {
-        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest")
-                || sortType.equals("date_latest")) {
-            sorter.changeSortMethod(sortType);
-            System.out.print("Success! Your preferred sorting method has been saved: ");
-            System.out.println(sortType.toUpperCase());
-        } else {
-            System.out.println(sortType + " is not valid sorting method, please try again.");
+        if (sortType == null) {
+            ui.println(MISSING_SORT_METHOD);
+            return;
         }
-        Storage.saveData(reviewList);
+        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest")
+                || sortType.equals("date_latest") || sortType.equals("rating") || sortType.equals("category")) {
+            sorter.changeSortMethod(sortType);
+            ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
+        } else {
+            ui.println(sortType + INVALID_SORT_METHOD);
+        }
     }
 
     /**
-     * Add a review.
+     * Add a review. 
+     * @param input quick or long review
+     */
+    public void addReview(String input) {
+        if (input == null) {
+            ui.println(QUICK_PROMPT);
+            switch (ui.readCommand()) {
+            case "y":
+            case "Y":
+                addQuickReview();
+                break;
+            case "n":
+            case "N":
+                addLongReview();
+                break;
+            default:
+                ui.println(INVALID_COMMAND);
+                return;
+            }
+        } else {
+            switch (input) {
+            case "quick":
+                addQuickReview();
+                break;
+            case "long":
+                addLongReview();
+                break;
+            default:
+                ui.println(INVALID_COMMAND);
+                return;
+            }
+        }
+    }
+
+    /**
+     * Add a quick review.
      */
     public void addQuickReview() {
+        String description = "No description entered. ";
+        ui.println(TITLE_PROMPT);
+        String title = ui.readCommand();
+        ui.println(CATEGORY_PROMPT);
+        String category = ui.readCommand();
+        ui.println(RATING_PROMPT);
         try {
-            String input = in.nextLine();
-            String[] review = input.split(" ", 4);
-            Review r = new Review(review[0].trim(), review[1].trim(),
-                    Integer.parseInt(review[2].trim()), "Currently no description");
+            int rating = Integer.parseInt(ui.readCommand());
+            if (rating < 0 || rating > 5) {
+                throw new InvalidRatingException();
+            }
+            Review r = new Review(title, category, rating, description);
             reviewList.add(r);
-            System.out.println(review[0] + " created.");
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input review, please try again.");
+            ui.println(title + ADD_SUCCESS);
+        } catch (NumberFormatException | InvalidRatingException e) {
+            ui.println("Invalid rating");
+            return;
         }
     }
 
+    /**
+     * Add a long review. 
+     */
     public void addLongReview() {
+        ui.println(TITLE_PROMPT);
+        String title = ui.readCommand();
+        ui.println(CATEGORY_PROMPT);
+        String category = ui.readCommand();
+        ui.println(RATING_PROMPT);
         try {
-            String input = in.nextLine();
-            String[] review = input.split(" ", 4);
-            Review r = new Review(review[0].trim(), review[1].trim(),
-                    Integer.parseInt(review[2].trim()), review[3].trim());
+            int rating = Integer.parseInt(ui.readCommand());
+            if (rating < 0 || rating > 5) {
+                throw new InvalidRatingException();
+            }
+            ui.println(DESCRIPTION_PROMPT);
+            String description = ui.readCommand();
+            Review r = new Review(title, category, rating, description);
             reviewList.add(r);
-            System.out.println(review[0] + " created.");
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Invalid input review, please try again.");
+            ui.println(title + ADD_SUCCESS);
+        } catch (NumberFormatException | InvalidRatingException e) {
+            ui.println("Invalid rating");
+            return;
         }
     }
 
-    public String determineReviewType(String input) {
-        String reviewType = input.toLowerCase().trim();
-        Ui.printDetermineReviewTypeMessage(reviewType);
-        return reviewType;
+    /**
+     * Delete review.
+     */
+    public void deleteReview(String title) {
+        if (title == null) {
+            ui.println(MISSING_DELETE_TITLE);
+            return;
+        }
+        int reviewIndex = -1;
+        for (int i = 0; i < reviewList.size(); i++) {
+            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+                reviewIndex = i;
+                break;
+            }
+        }
+        if (reviewIndex == -1) {
+            ui.println(INVALID_DELETE_TITLE);
+        } else {
+            reviewList.remove(reviewIndex);
+            ui.println(title + DELETE_SUCCESS);
+        }
+    }
+
+    /**
+     * Print text to help user with using the application.
+     */
+    public void printHelp() {
+        ui.printHelpMessage();
+    }
+
+    /**
+     * Print invalid command text.
+     */
+    public void invalidCommand() {
+        ui.println(INVALID_COMMAND);
     }
 
     /**
      * Exits connoisseur.
      */
     public void exit() {
-        Storage.saveData(reviewList);
-        Ui.printExitMessage();
+        storage.saveData(reviewList);
+        ui.printExitMessage();
     }
 
 }
