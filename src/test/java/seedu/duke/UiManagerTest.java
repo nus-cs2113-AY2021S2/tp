@@ -26,8 +26,8 @@ class UiManagerTest {
                 + "| $$  $$$$| $$  | $$ \\____  $$| $$  $$$| $$  /$$$$$$$   /$$$$/ | $$$$$$$$\n"
                 + "| $$\\  $$$| $$  | $$ /$$  \\ $$| $$\\  $ | $$ /$$__  $$  /$$__/  | $$_____/\n"
                 + "| $$ \\  $$|  $$$$$$/|  $$$$$$/| $$ \\/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$\n"
-                + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/\n";
-        assertEquals(divider + lineSeparator + logo + divider, outContent.toString().trim());
+                + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/";
+        assertEquals(divider + lineSeparator + logo + lineSeparator + divider, outContent.toString().trim());
     }
 
     @Test
