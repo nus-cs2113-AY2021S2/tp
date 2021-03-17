@@ -10,6 +10,6 @@ class ParserTest {
     void getFirstWord() {
 
         assertEquals("test",
-                Parser.getFirstWord("test get first word"));
+                nurseschedules.parser.Parser.getFirstWord("test get first word"));
     }
 }

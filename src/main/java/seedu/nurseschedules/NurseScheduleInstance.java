@@ -1,14 +1,10 @@
-package nurseschedules;
+package seedu.nurseschedules;
 
-import nurseschedules.nurseschedule.NurseScheduleStorage;
 import nurseschedules.parser.Parser;
-import nurseschedules.nurseschedule.NurseSchedule;
-import nurseschedules.nurseschedule.NurseScheduleActions;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class NurseScheduleInstance {
 
