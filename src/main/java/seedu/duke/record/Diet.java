@@ -23,21 +23,21 @@ public class Diet extends Record {
     }
 
     /**
-     * Set the total calories
+     * Set the total calories.
      */
     public void totalCalories(double totalCalories ){
         this.totalCalories = totalCalories;
     }
 
     /**
-     * Get the total calories
+     * Get the total calories.
      */
     public double getTotalCal() {
         return totalCalories;
     }
 
     /**
-     * Print the list of food
+     * Print the list of food.
      */
     public void printFoodList() {
         System.out.println(Food.getCategory());  // Not sure how to write this part
