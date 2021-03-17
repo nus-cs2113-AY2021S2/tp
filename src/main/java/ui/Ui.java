@@ -101,5 +101,6 @@ public class Ui {
             System.out.println(review.toString());
         }
         System.out.println(LINESPACING);
+
     }
 }

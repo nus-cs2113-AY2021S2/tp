@@ -73,6 +73,7 @@ public class Duke {
         if (canteens.size() == 0) {
             return;
         }
+        assert false;
         while (!isExit) {
             try {
                 String line = ui.readCommand();
