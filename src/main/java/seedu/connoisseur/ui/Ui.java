@@ -122,4 +122,12 @@ public class Ui {
     public void printFileExistsMessage() {
         printLog(FILE_ALREADY_EXISTS);
     }
+
+    public void printInvalidRatingMessage() {
+        System.out.println("Invalid number please add in a valid rating!");
+    }
+
+    public void printInvalidSortMethodMessage() {
+        System.out.println("Invalid sort type!");
+    }
 }

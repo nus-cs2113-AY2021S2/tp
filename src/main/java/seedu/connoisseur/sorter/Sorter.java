@@ -3,12 +3,13 @@ package seedu.connoisseur.sorter;
 import java.util.Collections;
 import java.util.ArrayList;
 
-import seedu.connoisseur.exceptions.InvalidSortMethodException;
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.ui.Ui;
 
 public class Sorter {
 
     public SortMethod sortMethod;
+    private Ui ui;
 
     /**
      * Constructor for Sorter class.
@@ -76,7 +77,7 @@ public class Sorter {
      * @param sortMethod method to sort
      * @return sorted review list
      */
-    public ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) throws InvalidSortMethodException {
+    public ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) {
         switch (sortMethod) {
         case "rating":
             sortByRating(reviewList);
@@ -94,7 +95,8 @@ public class Sorter {
             sortByDateLatest(reviewList);
             break;
         default:
-            throw new InvalidSortMethodException();
+
+            ui.printInvalidSortMethodMessage();
         }
         return reviewList;
     }

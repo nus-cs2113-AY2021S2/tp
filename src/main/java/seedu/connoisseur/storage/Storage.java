@@ -55,7 +55,7 @@ public class Storage {
                 ui.printLog(FILE_SUCCESS);
             } else {
                 hasTextFile = true;
-                ui.printLog(FILE_ALREADY_EXISTS);;
+                ui.printLog(FILE_ALREADY_EXISTS);
             }
         } catch (IOException e) { //creating or retrieving data has errors
             ui.printErrorMessage(e);
