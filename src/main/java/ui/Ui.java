@@ -15,6 +15,15 @@ public class Ui {
         userInputScanner = new Scanner(System.in);
     }
 
+    public void showLogo() {
+        System.out.println(" _    _   _    _   _______\n"
+                + "| \\  | | | |  | | |  _____| \n"
+                + "|  \\ | | | |  | | | |_____\n"
+                + "| |\\\\| | | |  | | |______ |\n"
+                + "| | \\  | | |__| |  _____| |\n"
+                + "|_|  \\_| |______| |_______|");
+    }
+
     public static String readCommand() {
         line = userInputScanner.nextLine();
         return line;

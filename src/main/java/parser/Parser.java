@@ -61,7 +61,7 @@ public class Parser {
         return newCommand;
     }
 
-    //receive command from admin
+    //parse admin commands only
     public Command parseAdminCommand(String line, int maxStores) throws DukeExceptions {
         Command newCommand;
 
@@ -76,7 +76,4 @@ public class Parser {
         }
         return newCommand;
     }
-
-
-
 }
