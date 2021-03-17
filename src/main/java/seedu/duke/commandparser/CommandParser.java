@@ -277,10 +277,10 @@ public class CommandParser {
             date = durationDate[1];
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand(SLEEP, params, fitCenter);
+            return new AddCommand(SLEEP, params);
         }
         params.put("duration", duration);
-        return new AddCommand(SLEEP, params, fitCenter);
+        return new AddCommand(SLEEP, params);
     }
 
     private String[] getDate(String stringWithDate) {
@@ -325,11 +325,11 @@ public class CommandParser {
             params.put("food", food);
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand(DIET, params, fitCenter);
+            return new AddCommand(DIET, params);
         }
         params.put("food", food);
         params.put("weight", weight);
-        return new AddCommand(DIET, params, fitCenter);
+        return new AddCommand(DIET, params);
     }
 
     private String[] getFoodAndFoodWeight(String content) {
@@ -352,10 +352,10 @@ public class CommandParser {
             date = weightDate[1];
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand(BODY_WEIGHT, params, fitCenter);
+            return new AddCommand(BODY_WEIGHT, params);
         }
         params.put("weight", weight);
-        return new AddCommand(BODY_WEIGHT, params, fitCenter);
+        return new AddCommand(BODY_WEIGHT, params);
     }
 
     private Command prepareAddExercise(String content) throws ParseException {
@@ -388,13 +388,13 @@ public class CommandParser {
             params.put("activity", activity);
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand(EXERCISE, params, fitCenter);
+            return new AddCommand(EXERCISE, params);
         }
 
         duration = duration.substring(2);
         params.put("activity", activity);
         params.put("duration", duration);
-        return new AddCommand(EXERCISE, params, fitCenter);
+        return new AddCommand(EXERCISE, params);
     }
 
     private String[] getActivityAndDuration(String content) {

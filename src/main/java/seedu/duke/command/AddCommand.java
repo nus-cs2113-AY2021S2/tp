@@ -16,12 +16,10 @@ public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:%s";
     private Record record;
     private final SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
-    private FitCenter fitCenter;
     private CommandRecordType recordType;
 
-    public AddCommand(CommandRecordType recordType, HashMap<String,String> params, FitCenter fitCenter)
+    public AddCommand(CommandRecordType recordType, HashMap<String,String> params)
             throws ParseException {
-        this.fitCenter = fitCenter;
         this.recordType = recordType;
         spf.setLenient(false);
         String dateString = params.get("date");

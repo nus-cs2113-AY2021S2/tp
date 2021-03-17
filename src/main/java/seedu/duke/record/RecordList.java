@@ -35,11 +35,15 @@ public class RecordList {
 
     /**
      * Removes a record from the current list by index.
+     * Return the summary of the deleted record.
      *
      * @param index the index of the record.
      */
-    public void removeRecord(int index) {
+    public String removeRecord(int index) {
+        Record recordToRemove = records.get(index);
+        String recordSummary = recordToRemove.getRecordSummary();
         records.remove(index);
+        return recordSummary;
     }
 
     /**
