@@ -12,7 +12,7 @@ public class MainMenu {
         
 
     public static ArrayList<Movie> importMovieDatabase() throws Exception {
-        File f_movie = new File("C:\\Users\\19006\\Desktop\\CS2113\\CS2113-tp\\data\\movieList.txt");
+        File f_movie = new File("data\\movieList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
 
@@ -23,7 +23,7 @@ public class MainMenu {
     }
 
     public static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
-        File f_cineplex = new File("C:\\Users\\19006\\Desktop\\CS2113\\CS2113-tp\\data\\cineplexList.txt");
+        File f_cineplex = new File("data\\cineplexList.txt");
         FileInputStream fis_cineplex = new FileInputStream(f_cineplex);
         ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
 
@@ -34,7 +34,7 @@ public class MainMenu {
     }
 
     private static ArrayList<Showtimes> importShowtimesDatabase() throws Exception {
-        File f_showtime = new File("C:\\Users\\19006\\Desktop\\CS2113\\CS2113-tp\\data\\showtimeList.txt");
+        File f_showtime = new File("data\\showtimeList.txt");
         FileInputStream fis_showtime = new FileInputStream(f_showtime);
         ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
 

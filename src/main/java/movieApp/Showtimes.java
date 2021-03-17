@@ -42,13 +42,11 @@ public class Showtimes implements Serializable{
 		System.out.println("Showtime ID "+showtimeID+", Movie title: "+movieTitle+", Datetime: "+ dateTime.get(Calendar.YEAR)+" "+(dateTime.get(Calendar.MONTH)+1)+" "+dateTime.get(Calendar.DATE)+" "+dateTime.get(Calendar.HOUR_OF_DAY)+" "+dateTime.get(Calendar.MINUTE));
 	}
 	
-	public int getShowtimeID() 
-	{
+	public int getShowtimeID() {
 		return showtimeID;		
 	}
 	
-	public int getMovieID() 
-	{
+	public int getMovieID() {
 		return movieID;
 	}
 	
@@ -87,9 +85,7 @@ public class Showtimes implements Serializable{
 	}
 	
 	public int getCineplexID() {
-		return cineplexID; 
-		
-
+		return cineplexID;
 	}
 	
 	public int getMaxRow() {
