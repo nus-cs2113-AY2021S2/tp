@@ -46,14 +46,17 @@ public class FitCenter {
 
     /**
      * Removes a given record from a list that stores the same type of records.
+     * Returns the summary of the deleted record.
      *
      * @param type  the type of the record.
      * @param index the index of the record in the list.
      */
-    public void removeRecordFromList(RecordType type, int index) {
+    public String removeRecordFromList(RecordType type, int index) throws IndexOutOfBoundsException {
         RecordList list = getRecordListByType(type);
         if (list != null) {
-            list.removeRecord(index);
+            return list.removeRecord(index);
+        } else {
+            throw new IndexOutOfBoundsException();
         }
     }
 

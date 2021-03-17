@@ -24,6 +24,7 @@ public class Healthier {
         do {
             String userInput = ui.getUserInput();
             command = commandParser.parseCommand(userInput);
+            command.setFitCenter(currentFitCenter);
             CommandResult result = command.execute();
             UI.printMessage(result.getFeedback());
             commandParser.clearParserParams();
