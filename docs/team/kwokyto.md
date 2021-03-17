@@ -38,8 +38,10 @@ Given below are my contributions to the project
 
 - **Documentation**
   - User Guide
+    - Added introduction ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
     - Added documentation for the feature `expiring` ([#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69))
-    - Did cosmetic tweaks to existing documentation of features `xxx` ([#xx](placeholder))
+    - Added documentation for the feature `remove`, `help`, and `bye` ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
+    - Standardised input/output format for existing documentation of all features ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Developer Guide
     - Added implementation details of the `xxx` feature ([#xx](placeholder))
 
