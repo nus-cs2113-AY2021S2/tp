@@ -6,7 +6,7 @@ import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.Logger;
 import seedu.fridgefriend.utilities.Parser;
-import seedu.fridgefriend.utilities.Save;
+import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
 
 public class FridgeFriend {
@@ -18,14 +18,14 @@ public class FridgeFriend {
         new Ui();
         new Logger();
         Logger.logInfo("FridgeFriend application initialised.");
-        new Save();
+        new Storage();
     }
 
     public static void main(String[] args) {
         Ui.printWelcomeMessage();
-        Save.checkSave(fridge);
+        Storage.load(fridge);
         run();
-        Save.save(fridge);
+        Storage.save(fridge);
         Ui.printByeMessage();
     }
 
