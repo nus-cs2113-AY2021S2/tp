@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * Provides common validation and get methods/tools.
+ * Provides common validation methods for {@code Command} validation.
  */
 public class Utils {
     private static final String ERROR_MISSING_OPTION = "missing option: ";
@@ -84,6 +84,7 @@ public class Utils {
 
     // This hasOption method is only meant to improve readability.
     public static boolean hasOption(ArrayList<String> arguments, String option) {
+        assert arguments != null : "arguments is null!";
         return arguments.contains(option);
     }
 
