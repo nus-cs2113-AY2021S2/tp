@@ -6,6 +6,7 @@ import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
+import static seedu.connoisseur.messages.Messages.COMMAND_PROMPT;
 
 public class Connoisseur {
 
@@ -17,32 +18,26 @@ public class Connoisseur {
     }
 
     /**
-     * Sets up required files for Duke to start.
+     * Sets up required files for Connoisseur to start.
      */
     public Connoisseur() {
-        Storage.createFolder();
-        Storage storage = new Storage();
+        Ui ui = new Ui(true);
+        Storage storage = new Storage(ui);
         CommandList commandList;
         if (storage.retrieveTextFile()) {
-            commandList = new CommandList(storage.loadData());
+            commandList = new CommandList(storage.loadData(), ui, storage);
         } else {
-            commandList = new CommandList();
+            commandList = new CommandList(ui, storage);
         }
-        Ui.printGreeting();
+        ui.printGreeting();
         String input;
-        Ui ui = new Ui();
         Parser parser = new Parser(commandList);
         boolean isExitCommand = false;
-        while (Ui.nextCommand()) {
-            try {
-                input = Ui.readCommand();
-                isExitCommand = parser.determineCommand(input);
-            } catch (ConnoisseurException ignored) {
 
-            }
-            if(isExitCommand){
-                break;
-            }
+        while (!isExitCommand) {
+            ui.println(COMMAND_PROMPT);
+            input = ui.readCommand();
+            isExitCommand = parser.determineCommand(input);
         }
     }
 }

@@ -1,7 +1,5 @@
 package seedu.connoisseur.ui;
 
-import seedu.connoisseur.exceptions.InvalidReviewCommandException;
-
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -11,19 +9,20 @@ import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
 import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
 import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
-import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
-import static seedu.connoisseur.messages.Messages.FOLDER_SUCCESS;
-import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
 
 public class Ui {
     private static final PrintStream out = System.out;
-    private static Scanner in;
+    private static final PrintStream logPrintStream = System.out;
+    private static final int MAX_WHITE_SPACE = 15;
+    private final Scanner in;
+    private final boolean showLogs;
 
     /**
      * Constructor for Ui class.
      */
-    public Ui() {
-        in = new Scanner(System.in);
+    public Ui(boolean showLogs) {
+        this.in = new Scanner(System.in);
+        this.showLogs = showLogs;
     }
 
     /**
@@ -31,50 +30,80 @@ public class Ui {
      *
      * @return the input line as a string
      */
-    public static String readCommand() {
+    public String readCommand() {
         return in.nextLine();
     }
 
     /**
-     * Reads user input.
-     *
-     * @return the input line as a string
-     */
-    public static boolean nextCommand() {
-        return in.hasNext();
-    }
-
-
-    /**
      * Prints the welcome message to the printstream.
      */
-    public static void printGreeting() {
-        printToScreen(WELCOME_MESSAGE);
+    public void printGreeting() {
+        println(WELCOME_MESSAGE);
+    }
+
+    /**
+     * Prints header for list command. 
+     */
+    public void printListHeading() {
+        println("Here are your reviews: ");
+        println("    Title          Category       Rating         Date");
+    }
+    
+    /**
+     * Prints whitespace to align items to header. 
+     * @param wordLength length of word to subtract
+     */
+    public void printWhiteSpace(int wordLength) {
+        int numOfSpaces = MAX_WHITE_SPACE - wordLength;
+        while (numOfSpaces > 0) {
+            out.print(" ");
+            numOfSpaces--;
+        }
     }
 
     /**
      * Prints an array of Strings to the output stream.
      *
-     * @param message lines to be printed, separated by commas
+     * @param message array of strings to be printed
      */
-    public static void printToScreen(String... message) {
+    public void println(String... message) {
         for (String m : message) {
             out.println(m);
         }
     }
 
     /**
+     * Prints a message to the output stream without a newline ending. 
+     * @param message string to be printed
+     */
+    public void print(String message) {
+        out.print(message);
+    }
+
+    /**
+     * Prints log messages. 
+     * @param message log message to be printed
+     */
+    public void printLog(String... message) {
+        if (showLogs) {
+            for (String m : message) {
+                logPrintStream.println(m);
+            }
+        }
+    }
+
+    /**
      * Prints help message.
      */
-    public static void printHelpMessage() {
-        printToScreen(HELP_MESSAGE);
+    public void printHelpMessage() {
+        println(HELP_MESSAGE);
     }
 
     /**
      * Prints exit message.
      */
-    public static void printExitMessage() {
-        printToScreen(EXIT_MESSAGE);
+    public void printExitMessage() {
+        println(EXIT_MESSAGE);
     }
 
     /**
@@ -82,50 +111,15 @@ public class Ui {
      *
      * @param e error encountered
      */
-    public static void printErrorMessage(IOException e) {
-        printToScreen(ERROR_MESSAGE);
+    public void printErrorMessage(IOException e) {
+        println(ERROR_MESSAGE);
         e.printStackTrace();
     }
 
     /**
      * Prints file exists message.
      */
-    public static void printFileExistsMessage() {
-        printToScreen(FILE_ALREADY_EXISTS);
+    public void printFileExistsMessage() {
+        printLog(FILE_ALREADY_EXISTS);
     }
-
-    /**
-     * Prints folder exists message.
-     */
-    public static void printFolderExistsMessage() {
-        printToScreen(FOLDER_ALREADY_EXISTS);
-    }
-
-    /**
-     * Prints folder created message.
-     */
-    public static void printSuccessfulCreateFolderMessage() {
-        printToScreen(FOLDER_SUCCESS);
-    }
-
-    /**
-     * Prints current directory.
-     */
-    public static void printPresentDirectory() {
-        printToScreen(CURRENT_DIRECTORY);
-    }
-
-    public static void printDetermineReviewTypeMessage(String reviewType) throws InvalidReviewCommandException {
-        if (reviewType.equals("quick")) {
-            System.out.print("Quick Review Select\n"
-                    + "Please enter Category, Title, Rating/5\n");
-        } else if (reviewType.equals("long")) {
-            System.out.print("Long Review Select\n"
-                    + "Please enter Category, Title, Rating/5, Details\n");
-        }else{
-            throw new InvalidReviewCommandException();
-        }
-    }
-
-
 }

@@ -1,11 +1,6 @@
 package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commandlist.CommandList;
-import seedu.connoisseur.exceptions.ConnoisseurException;
-import seedu.connoisseur.exceptions.InvalidReviewCommandException;
-import seedu.connoisseur.exceptions.InvalidReviewDescriptionException;
-
-import java.net.ConnectException;
 
 /**
  * Handles Connoisseur's commands.
@@ -26,35 +21,30 @@ public class Parser {
      * @param input user input
      * @return true if exit command, false otherwise
      */
-    public boolean determineCommand(String input) throws ConnoisseurException {
+    public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
-        String description;
+        String arguments;
         try {
-            description = input.split(" ", 2)[1].trim();
+            arguments = input.split(" ", 2)[1].trim();
         } catch (ArrayIndexOutOfBoundsException e) {
-            description = "";
+            arguments = null;
         }
 
         if (command.equals("list")) {
-            commandList.listReviews(description);
+            commandList.listReviews(arguments);
         } else if (command.equals("sort")) {
-            commandList.sortReview(description);
+            commandList.sortReview(arguments);
         } else if (command.equals("new")) {
-            String reviewType = commandList.determineReviewType(description);   //catch the errors here
-            if (reviewType.equals("quick")) {
-                commandList.addQuickReview();
-            } else {
-                commandList.addLongReview();
-            }
+            commandList.addReview(arguments);
         } else if (command.equals("delete")) {
-            commandList.deleteReview(description);
+            commandList.deleteReview(arguments);
         } else if (command.equals("help")) {
-            CommandList.printHelp();
+            commandList.printHelp();
         } else if (command.equals("bye")) {
             commandList.exit();
             return true;
         } else {
-            throw new InvalidReviewCommandException();
+            commandList.invalidCommand();
         }
         return false;
     }
