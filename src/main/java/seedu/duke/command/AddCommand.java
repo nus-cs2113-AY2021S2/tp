@@ -19,7 +19,8 @@ public class AddCommand extends Command {
     private FitCenter fitCenter;
     private CommandRecordType recordType;
 
-    public AddCommand(CommandRecordType recordType, HashMap<String,String> params, FitCenter fitCenter) throws ParseException {
+    public AddCommand(CommandRecordType recordType, HashMap<String,String> params, FitCenter fitCenter)
+            throws ParseException {
         this.fitCenter = fitCenter;
         this.recordType = recordType;
         spf.setLenient(false);

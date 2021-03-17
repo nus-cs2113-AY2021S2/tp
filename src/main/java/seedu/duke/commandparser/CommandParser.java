@@ -1,7 +1,14 @@
 package seedu.duke.commandparser;
 
 import seedu.duke.account.FitCenter;
-import seedu.duke.command.*;
+import seedu.duke.command.AddCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.CommandRecordType;
+import seedu.duke.command.CommandType;
+import seedu.duke.command.ExitCommand;
+import seedu.duke.command.InvalidCommand;
+import seedu.duke.command.ViewCommand;
+import seedu.duke.command.Command;
 import seedu.duke.common.Messages;
 
 import java.text.ParseException;
