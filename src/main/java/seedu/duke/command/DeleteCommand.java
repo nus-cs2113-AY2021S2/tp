@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+
 import seedu.duke.account.FitCenter;
 import seedu.duke.record.RecordType;
 

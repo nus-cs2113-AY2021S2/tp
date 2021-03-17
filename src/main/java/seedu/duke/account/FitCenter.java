@@ -55,6 +55,7 @@ public class FitCenter {
      * @param index the index of the record in the list.
      *              EXCEPTION!
      */
+
     public String removeRecordFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
         RecordList list = getRecordListByType(type);
         if (list != null) {

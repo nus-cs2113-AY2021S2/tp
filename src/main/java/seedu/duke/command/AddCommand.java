@@ -1,6 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
+import seedu.duke.exception.TypeException;
 import seedu.duke.record.Record;
 
 import java.text.ParseException;
@@ -16,7 +17,7 @@ public class AddCommand extends Command {
     private CommandRecordType recordType;
 
     public AddCommand(CommandRecordType recordType, HashMap<String,String> params)
-            throws ParseException {
+            throws ParseException, TypeException, NumberFormatException {
         SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
         this.recordType = recordType;
         spf.setLenient(false);

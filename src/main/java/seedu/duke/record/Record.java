@@ -2,6 +2,7 @@ package seedu.duke.record;
 
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the record for a type of Health info. Contains the date and type of the record.
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 public abstract class Record {
     protected RecordType type;
     protected LocalDate date;
+    protected static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     /**
      * Initializes the object with given record type and date.
