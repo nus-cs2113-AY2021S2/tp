@@ -9,7 +9,7 @@ It is written in Java, and has more than 1.5kLoC.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-1. Download the latest version of `FridgeFriend` from [here](update_link_here_after_release).
+1. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
 
 ## Features
 
