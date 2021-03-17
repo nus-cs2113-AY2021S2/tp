@@ -29,7 +29,7 @@ public class UiManager {
             + "4. list notes LOCATION:\n"
             + SPACING + "list notes tagged to the given location\n"
             + "5. delete note LOCATION/NOTE INDEX:\n"
-            + SPACING + "deletes notes based on index number tagged to the given location\n";
+            + SPACING + "deletes notes based on index number tagged to the given location";
 
     private final Scanner in;
     private final PrintStream out;
@@ -55,23 +55,22 @@ public class UiManager {
         for (String m : message) {
             out.println(m);
         }
-        out.println(DIVIDER);
     }
 
     public void showLogo() {
-        showToUser(DIVIDER, LOGO);
+        showToUser(DIVIDER, LOGO, DIVIDER);
     }
 
     public void showGreetMessage() {
-        showToUser(GREETING_MESSAGE);
+        showToUser(GREETING_MESSAGE, DIVIDER);
     }
 
     public void showByeMessage() {
-        showToUser(BYE_MESSAGE);
+        showToUser(BYE_MESSAGE, DIVIDER);
     }
 
     public void showHelpMessage() {
-        showToUser(HELP_MESSAGE);
+        showToUser(HELP_MESSAGE, DIVIDER);
     }
 
     public String[] getRoutingInfo() {
