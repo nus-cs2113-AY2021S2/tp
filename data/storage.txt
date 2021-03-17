@@ -3,10 +3,10 @@ store<>chicken rice stall
 menu<>chicken rice//2.50
 menu<>spicy chicken rice//3.00
 menu<>chicken bones//0.9
-review<>Best Chicken Rice ever!
+review<>Best Chicken Rice ever!//5.0
 store<>Fish rice stall
 menu<>fish rice//4.0
 menu<>spicy fish rice//4.50
 menu<>fish bones//0.6
-review<>Best Fish Soup Ever!
-review<>Fish doesn't taste very fresh...
+review<>Best Fish Soup Ever!//5.0
+review<>Fish doesn't taste very fresh...//0.2

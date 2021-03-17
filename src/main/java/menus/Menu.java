@@ -14,4 +14,12 @@ public class Menu {
     public String toString() {
         return itemName + " ($" + String.valueOf(price) + ")";
     }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
 }
