@@ -1,24 +1,27 @@
 package seedu.duke.commandparser;
 
 import seedu.duke.account.FitCenter;
-import seedu.duke.command.Command;
-import seedu.duke.command.CommandRecordType;
 import seedu.duke.command.AddCommand;
-import seedu.duke.command.ViewCommand;
-import seedu.duke.command.InvalidCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.CommandRecordType;
+import seedu.duke.command.CommandType;
 import seedu.duke.command.ExitCommand;
+import seedu.duke.command.InvalidCommand;
+import seedu.duke.command.ViewCommand;
+import seedu.duke.command.Command;
 import seedu.duke.common.Messages;
 
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Locale;
 
-import static seedu.duke.command.CommandType.ADD;
-import static seedu.duke.command.CommandType.VIEW;
 import static seedu.duke.command.CommandRecordType.EXERCISE;
 import static seedu.duke.command.CommandRecordType.DIET;
-import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
+import static seedu.duke.command.CommandRecordType.SLEEP;
+import static seedu.duke.command.CommandRecordType.INVALID;
+import static seedu.duke.command.CommandType.ADD;
+import static seedu.duke.command.CommandType.VIEW;
 
 public class CommandParser {
     private final HashMap<String, String> params;
@@ -58,8 +61,8 @@ public class CommandParser {
                 return new InvalidCommand(ADD);
             }
 
-            String recordType = parseType(inputParts[1]);
-            if (recordType.equals("")) {
+            CommandRecordType recordType = CommandRecordType.getType(inputParts[1]);
+            if (recordType == INVALID) {
                 return new InvalidCommand(ADD);
             }
 
@@ -71,13 +74,13 @@ public class CommandParser {
             String content = typeContent[1];
             content = content.trim();
             switch (recordType) {
-            case "E":
+            case EXERCISE:
                 return prepareAddExercise(content);
-            case "W":
+            case BODY_WEIGHT:
                 return prepareAddBodyWeight(content);
-            case "D":
+            case DIET:
                 return prepareAddDiet(content);
-            case "S":
+            case SLEEP:
                 return prepareAddSleep(content);
             default:
                 return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND_WORD);
@@ -96,33 +99,24 @@ public class CommandParser {
             if (inputParts.length < 2) {
                 return new InvalidCommand(VIEW);
             }
-            String recordType = parseType(inputParts[1]);
-            if (recordType.equals("")) {
+            CommandRecordType recordType = CommandRecordType.getType(inputParts[1]);
+            if (recordType == INVALID) {
                 return new InvalidCommand(VIEW);
             }
             String typeContent = inputParts[1];
             String optionalParams = getOptionalParamsForView(typeContent);
+            if (optionalParams.equals("")) {
+                return new ViewCommand(recordType);
+            }
             switch (recordType) {
-            case "E":
-                if (!optionalParams.equals("")) {
-                    return prepareViewExercise(optionalParams);
-                }
-                return new ViewCommand(EXERCISE);
-            case "W":
-                if (!optionalParams.equals("")) {
-                    return prepareViewBodyWeight(optionalParams);
-                }
-                return new ViewCommand(BODY_WEIGHT);
-            case "D":
-                if (!optionalParams.equals("")) {
-                    return prepareViewDiet(optionalParams);
-                }
-                return new ViewCommand(DIET);
-            case "S":
-                if (!optionalParams.equals("")) {
-                    return prepareViewSleep(optionalParams);
-                }
-                return new ViewCommand(SLEEP);
+            case EXERCISE:
+                return prepareViewExercise(optionalParams);
+            case BODY_WEIGHT:
+                return prepareViewBodyWeight(optionalParams);
+            case DIET:
+                return prepareViewDiet(optionalParams);
+            case SLEEP:
+                return prepareViewSleep(optionalParams);
             default:
                 return new InvalidCommand(VIEW);
             }
@@ -145,25 +139,31 @@ public class CommandParser {
     }
 
     private Command prepareDelete(String[] inputParts) {
-        if (inputParts.length < 2) {
-            return new InvalidCommand("Invalid");
+        try {
+            if (inputParts.length < 2) {
+                return new InvalidCommand("Invalid");
+            }
+            CommandRecordType recordType = CommandRecordType.getType(inputParts[1]);
+            if (recordType == INVALID) {
+                return new InvalidCommand("Invalid");
+            }
+            String[] typeIndex = inputParts[1].split("\\s+", 2);
+            if (typeIndex.length < 2) {
+                return new InvalidCommand("Invalid");
+            }
+            String index = typeIndex[1];
+            boolean isIndexValid = index.startsWith("i/") && index.length() >= 3;
+            if (!isIndexValid) {
+                return new InvalidCommand("Invalid");
+            }
+            index = index.substring(2);
+            params.put("index", index);
+            return new DeleteCommand(recordType, params);
+            //System.out.println(index);
+            //return new InvalidCommand("Invalid");
+        } catch (NumberFormatException e) {
+            return new InvalidCommand("The index should be an integer");
         }
-        String recordType = parseType(inputParts[1]);
-        if (recordType.equals("")) {
-            return new InvalidCommand("Invalid");
-        }
-        String[] typeIndex = inputParts[1].split("\\s+", 2);
-        if (typeIndex.length < 2) {
-            return new InvalidCommand("Invalid");
-        }
-        String index = typeIndex[1];
-        boolean isIndexValid = index.startsWith("i/") && index.length() >= 3;
-        if (!isIndexValid) {
-            return new InvalidCommand("Invalid");
-        }
-        index = index.substring(2);
-        System.out.println(index);
-        return new InvalidCommand("Invalid");
     }
 
     private Command prepareViewExercise(String optionalParams) throws ParseException {
@@ -275,10 +275,10 @@ public class CommandParser {
             date = durationDate[1];
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand("S", params);
+            return new AddCommand(SLEEP, params);
         }
         params.put("duration", duration);
-        return new AddCommand("S", params);
+        return new AddCommand(SLEEP, params);
     }
 
     private String[] getDate(String stringWithDate) {
@@ -323,11 +323,11 @@ public class CommandParser {
             params.put("food", food);
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand("D", params);
+            return new AddCommand(DIET, params);
         }
         params.put("food", food);
         params.put("weight", weight);
-        return new AddCommand("D", params);
+        return new AddCommand(DIET, params);
     }
 
     private String[] getFoodAndFoodWeight(String content) {
@@ -350,10 +350,10 @@ public class CommandParser {
             date = weightDate[1];
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand("W", params);
+            return new AddCommand(BODY_WEIGHT, params);
         }
         params.put("weight", weight);
-        return new AddCommand("W", params);
+        return new AddCommand(BODY_WEIGHT, params);
     }
 
     private Command prepareAddExercise(String content) throws ParseException {
@@ -386,30 +386,33 @@ public class CommandParser {
             params.put("activity", activity);
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand("E", params);
+          
+            return new AddCommand(EXERCISE, params);
         }
 
         duration = duration.substring(2);
         params.put("activity", activity);
         params.put("duration", duration);
-        return new AddCommand("E", params);
+        return new AddCommand(EXERCISE, params);
     }
 
     private String[] getActivityAndDuration(String content) {
         return content.split("d/", 2);
     }
-
-    private String parseType(String input) {
+    /*
+    private CommandRecordType parseType(String input) {
         boolean isTypeKeywordValid = input.startsWith("t/") && input.length() >= 3;
         if (!isTypeKeywordValid) {
-            return "";
+            return INVALID;
         }
         String type = "" + input.charAt(2);
         if (!CommandRecordType.isValidType(type)) {
-            return "";
+            return INVALID;
         }
         return type.toUpperCase(Locale.ROOT);
     }
+
+    */
 
     private String parseExerciseActivity(String activityRawInput, boolean isPrefixChecked) {
         boolean isActivityValid;
