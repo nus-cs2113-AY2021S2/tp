@@ -21,21 +21,25 @@ public class Diet extends Record {
     }
 
     /**
-     * Add food inside foodlist.
+     * Add food inside food list.
      */
     public void addFood(Food food) {
         foodList.add(food);    // Not sure how to write this part
     }
 
     /**
-     * Set the total calories.
+     * Sets a new category of food.
+     *
+     * @param category set new category.
      */
     public void totalCalories(double totalCalories) {
         this.totalCalories = totalCalories;
     }
 
     /**
-     * Get the total calories.
+     * Gets the total calorie.
+     *
+     * @return the total calorie.
      */
     public double getTotalCal() {
         return totalCalories;
@@ -51,7 +55,9 @@ public class Diet extends Record {
     }
 
     /**
-     * Return a record summary.
+     * Gets the summary of users' diet record.
+     *
+     * @return the diet summary.
      */
     @Override
     public String getRecordSummary() {

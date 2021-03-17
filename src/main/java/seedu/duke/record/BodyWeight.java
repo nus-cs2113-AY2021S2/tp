@@ -17,7 +17,9 @@ public class BodyWeight extends Record {
     }
 
     /**
-     * Return the summary of record.
+     * Gets the body weight summary.
+     *
+     * @return the summary of body weight.
      */
     @Override
     public String getRecordSummary() {
@@ -25,14 +27,18 @@ public class BodyWeight extends Record {
     }
 
     /**
-     * Get the weight data.
+     * Gets the weight date.
+     *
+     * @return the user's weight.
      */
     public double getWeight() {
         return weight;
     }
 
     /**
-     * Set the weight data.
+     * Sets a new weight of user.
+     *
+     * @param weight set users' weight.
      */
     public void setWeight(double weight) {
         this.weight = weight;

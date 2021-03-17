@@ -18,56 +18,72 @@ public class Food {
     }
 
     /**
-     * Get the food name.
+     * Gets the name of food which user added.
+     *
+     * @return the name of the food.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Set the food name.
+     * Sets a name for a food user add.
+     *
+     * @param name to give the food a name.
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Get the weight data.
+     * Gets the food weight.
+     *
+     * @return the weight of food.
      */
     public double getWeight() {
         return weight;
     }
 
     /**
-     * Set the weight data.
+     * Sets weight for a kind of food.
+     *
+     * @param weight to measure the weight of food.
      */
     public void setWeight(double weight) {
         this.weight = weight;
     }
 
     /**
-     * Get the calories data.
+     * Gets the calorie data.
+     *
+     * @return calorie the calorie data.
      */
     public double getCal() {
         return calorie;
     }
 
     /**
-     * Set the calories data.
+     * Sets a new calorie of food.
+     *
+     * @param calorie the calorie of food.
      */
     public void setCal(double calorie) {
         this.calorie = calorie;
     }
 
     /**
-     * Get the category.
+     * Gets the category of the food.
+     *
+     * @return category the food category.
      */
     public FoodCategory getCategory() {
         return category;
     }
 
     /**
-     * Get the category.
+     * Sets a new category of food.
+     *
+     * @param category set new category.
      */
     public void setCategory(String food) {
         this.category = category;
