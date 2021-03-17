@@ -1,14 +1,10 @@
-package nurseschedules;
+package seedu.nurseschedules;
 
-import nurseschedules.nurseschedule.NurseScheduleStorage;
 import nurseschedules.parser.Parser;
-import nurseschedules.nurseschedule.NurseSchedule;
-import nurseschedules.nurseschedule.NurseScheduleActions;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class NurseScheduleInstance {
 
@@ -21,7 +17,7 @@ public class NurseScheduleInstance {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
-    public static void main(String[] args) {
+    public static void main() {
         new NurseScheduleInstance().run();
     }
 
@@ -37,21 +33,22 @@ public class NurseScheduleInstance {
 
         storage.load(nurseSchedules);
 
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+//        String logo = " ____        _        \n"
+//                + "|  _ \\ _   _| | _____ \n"
+//                + "| | | | | | | |/ / _ \\\n"
+//                + "| |_| | |_| |   <  __/\n"
+//                + "|____/ \\__,_|_|\\_\\___|\n";
+//        System.out.println("Hello from\n" + logo);
+//        System.out.println("What is your name?");
+//
+//        Scanner in = new Scanner(System.in);
+//        System.out.println("Hello " + in.nextLine());
     }
 
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
+            System.out.print("->NSchedule: ");
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
             String[] details = parser.getDetails(line);

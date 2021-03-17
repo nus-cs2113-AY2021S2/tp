@@ -1,4 +1,4 @@
-package nurseschedules.nurseschedule;
+package seedu.nurseschedules;
 
 import java.io.File;
 import java.io.FileInputStream;

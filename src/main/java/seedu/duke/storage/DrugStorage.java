@@ -1,4 +1,6 @@
-package seedu.drugs;
+package seedu.duke.storage;
+import seedu.drugs.Drug;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -9,12 +11,12 @@ import java.util.Scanner;
 
 public class DrugStorage {
     protected String filepath;
-    protected ArrayList<drugInstance> drugInstances = new ArrayList<>();
+    protected ArrayList<Drug> Drugs = new ArrayList<>();
     public DrugStorage(String filepath) {
         this.filepath = filepath;
     }
 
-    public ArrayList<drugInstance> createNewFile() {
+    public ArrayList<Drug> createNewFile() {
         File drugsFile = new File(getFilepath());
         try {
             if (drugsFile.createNewFile()) {
@@ -26,27 +28,27 @@ public class DrugStorage {
             System.out.println("\tThere was an I/O error:\nBye!\n");
             e.printStackTrace();
         }
-        return drugInstances;
+        return Drugs;
     }
 
     public String getFilepath() {
         return this.filepath;
     }
 
-    public ArrayList<drugInstance> uploadDrugs() throws FileNotFoundException {
+    public ArrayList<Drug> uploadDrugs() throws FileNotFoundException {
         File f = new File(getFilepath());
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" | ");
-            drugInstances.add(new drugInstance(part[0], part[1], part[2]));
+            Drugs.add(new Drug(part[0], part[1], part[2]));
         }
-        return drugInstances;
+        return Drugs;
     }
 
     public void saveDrugs() throws IOException {
         FileWriter fw = new FileWriter(getFilepath());
-        for (drugInstance drugInstance : drugInstances) {
-            fw.write(drugInstance.stringToSave());
+        for (Drug Drug : Drugs) {
+            fw.write(Drug.stringToSave());
             fw.write(System.lineSeparator());
         }
         fw.close();
