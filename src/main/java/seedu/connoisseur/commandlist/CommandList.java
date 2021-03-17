@@ -1,7 +1,5 @@
 package seedu.connoisseur.commandlist;
 
-import seedu.connoisseur.exceptions.InvalidRatingException;
-import seedu.connoisseur.exceptions.InvalidSortMethodException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -80,7 +78,7 @@ public class CommandList {
                 try {
                     sorter.sort(reviewList, sortMethod);
                     printReviews(reviewList);
-                } catch (InvalidSortMethodException e) {
+                } catch (ArrayIndexOutOfBoundsException e) {
                     ui.println("Invalid sort method");
                 }
             }
@@ -174,13 +172,13 @@ public class CommandList {
         try {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
-                throw new InvalidRatingException();
+                ui.printInvalidRatingMessage();
             }
             Review r = new Review(title, category, rating, description);
             reviewList.add(r);
             ui.println(title + ADD_SUCCESS);
-        } catch (NumberFormatException | InvalidRatingException e) {
-            ui.println("Invalid rating");
+        } catch (NumberFormatException e) {
+            ui.printInvalidRatingMessage();
             return;
         }
     }
@@ -197,15 +195,15 @@ public class CommandList {
         try {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
-                throw new InvalidRatingException();
+                ui.printInvalidRatingMessage();
             }
             ui.println(DESCRIPTION_PROMPT);
             String description = ui.readCommand();
             Review r = new Review(title, category, rating, description);
             reviewList.add(r);
             ui.println(title + ADD_SUCCESS);
-        } catch (NumberFormatException | InvalidRatingException e) {
-            ui.println("Invalid rating");
+        } catch (NumberFormatException e) {
+            ui.printInvalidRatingMessage();
             return;
         }
     }
