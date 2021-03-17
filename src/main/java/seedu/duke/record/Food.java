@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Food {
     private static HashMap<String, Integer> foodCalPer;
-    private static FoodCategory category;
+    private FoodCategory category;
 
     private String name;
     private double weight;
@@ -62,14 +62,14 @@ public class Food {
     /**
      * Get the category.
      */
-    public static FoodCategory getCategory() {
+    public FoodCategory getCategory() {
         return category;
     }
 
     /**
      * Get the category.
      */
-    public void setCategory(FoodCategory category) {
-        this.category = category;
+    public void setCategory(String food) {
+        this.category=category;
     }
 }

@@ -11,9 +11,9 @@ public class BodyWeight extends Record {
      * @param type the type of the record.
      * @param date the date of the record.
      */
-    public BodyWeight(RecordType type, LocalDate date) {
+    public BodyWeight(RecordType type, LocalDate date, double weight) {
         super(type, date);
-        this.weight = 0;
+        this.weight = weight;
     }
 
     /**
