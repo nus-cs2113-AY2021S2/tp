@@ -42,7 +42,7 @@ public class Parser {
         String[] parsedLine = line.split(" ");
         if (line.startsWith("list")) {
             newCommand = new DisplayStoresCommand();
-        } else if (line.startsWith("menu")) {
+        } else if (parsedLine[0].equals("menu")) {
             int storeDisplayedIndex = parseIndex(line, "menu", maxStores);
             newCommand = new DisplayMenusCommand(storeDisplayedIndex - 1);
         } else if (line.startsWith("exit")) {
