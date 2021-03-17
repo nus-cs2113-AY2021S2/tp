@@ -28,41 +28,24 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
-  
-Additional info:
-* **Basic Food Groups**:
-  * MEAT 
-  * SEAFOOD 
-  * EGG 
-  * DAIRY 
-  * VEGETABLE 
-  * FRUIT
-  * BEVERAGE 
-  * COOKED_DISH 
-  * READY_TO_EAT 
-  * FROZEN
-  * OTHERS
 
-- **Basic fridge location**
-  * FREEZER 
-  * UPPER_SHELF
-  * MIDDLE_SHELF
-  * LOWER_SHELF
-  * DRAWERS
-  * FRIDGE_DOOR
-  * OTHERS
+Additional info:
+
+Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`, 
+  `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
+ 
+Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+  `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
 Example of usage: 
 
-1. `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
+Input: `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf`
 
-2. `add grouper /cat seafood /exp 04-05-2021 /loc freezer`
-
-Expected outcome: 
-1. `Great! I have added chicken into your fridge.`\
-   `Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF`
-2. `Great! I have added grouper into your fridge.`\
-   `Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: OTHER`   
+Output: 
+```
+Great! I have added chicken into your fridge.
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
+```
 
 ## FAQ
 
