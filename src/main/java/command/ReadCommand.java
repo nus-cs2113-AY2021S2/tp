@@ -19,12 +19,9 @@ public class ReadCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-
         Store currentStore = canteens.get(0).getStore(index);
         ArrayList<Review> reviews = currentStore.getReviews();
         ui.showReviews(currentStore.getStoreName(), reviews);
-
-
     }
 
 
