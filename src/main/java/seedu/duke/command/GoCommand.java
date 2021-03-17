@@ -22,8 +22,5 @@ public class GoCommand extends Command {
         String route = router.execute(from,to);
         history.addRecord(from, to);
         System.out.println(route);
-
-
-
     }
 }
