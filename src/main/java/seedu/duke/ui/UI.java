@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class UI {
 
     static Scanner scanner = new Scanner(System.in);
-    static String LINEBREAK = "____________________________________________________________\n";
+    static String LINEBREAK = "____________________________________________________________";
     static String LOGO = " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
             + "| | | | | | | |/ / _ \\\n"
@@ -34,7 +34,7 @@ public class UI {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
     }
 
-    public void showLine() {
+    public static void showLine() {
         System.out.println(LINEBREAK);
     }
 
@@ -125,9 +125,6 @@ public class UI {
         return new String(new char[count]).replace("\0", with);
     }
 
-    public static void printLine() {
-    }
-
     public static void staffHeader() {
         System.out.println(
                 prettyPrint("ID", 10) + " " + prettyPrint("Name", 10) + " "
@@ -144,6 +141,13 @@ public class UI {
         System.out.println("\"return\" returns you to the Start Menu!");
     }
 
+    public static void WrongStaffIDErrorMessage() {
+        System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
+    }
+
+    public static void WrongListInputErrorMessage() {
+        System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
+    }
 
 
 }
