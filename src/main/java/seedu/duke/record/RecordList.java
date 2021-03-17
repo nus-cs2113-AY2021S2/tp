@@ -2,7 +2,6 @@ package seedu.duke.record;
 
 import seedu.duke.common.Messages;
 import seedu.duke.record.comparator.RecordDateComparator;
-import seedu.duke.ui.UI;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,11 +13,6 @@ public class RecordList {
     private final ArrayList<Record> records = new ArrayList<>();
     private RecordType type;
 
-    /**
-     * Initializes the record list object with a given record type.
-     *
-     * @param type the type of record that this list contains.
-     */
     public RecordList(RecordType type) {
         this.type = type;
     }
@@ -43,38 +37,102 @@ public class RecordList {
     }
 
     /**
-     * Prints the list of records.
+     * Gets all records in a string.
+     *
+     * @return a string of all records.
      */
-    public void printRecords() {
+    public String getRecordsToPrint() {
         if (records.isEmpty()) {
-            UI.printMessage(Messages.MESSAGE_NO_RECORD
-                    + Messages.MESSAGE_SEE_HELP);
+            return Messages.MESSAGE_NO_RECORD;
         } else {
-            UI.printDivider();
+            StringBuilder recordStringBuilder = new StringBuilder();
             for (Record record : records) {
-                System.out.println(record.getRecordSummary());
+                recordStringBuilder.append(record.getRecordSummary()).append("\n");
             }
-            UI.printDivider();
+            return recordStringBuilder.toString();
         }
     }
 
     /**
-     * Prints the list of records on a specific date.
+     * Gets all records with a given date in a string.
      *
-     * @param date the date of records.
+     * @param date the date of the record.
+     * @return a string of all records with a given date.
      */
-    public void printRecords(LocalDate date) {
+    public String getRecordsToPrint(LocalDate date) {
         if (records.isEmpty()) {
-            UI.printMessage(Messages.MESSAGE_NO_RECORD
-                    + Messages.MESSAGE_SEE_HELP);
+            return Messages.MESSAGE_NO_RECORD;
         } else {
-            UI.printDivider();
+            StringBuilder recordStringBuilder = new StringBuilder();
             for (Record record : records) {
                 if (record.getDate().isEqual(date)) {
-                    System.out.println(record.getRecordSummary());
+                    recordStringBuilder.append(record.getRecordSummary()).append("\n");
                 }
             }
-            UI.printDivider();
+            return recordStringBuilder.toString();
+        }
+    }
+
+    /**
+     * Gets all records that match the pattern in the given parameter.
+     *
+     * @param optionalParam an optional parameter for filtering the records.
+     * @return a string of all records that match the pattern in the given parameter.
+     */
+    public String getRecordsToPrint(String optionalParam) {
+        if (records.isEmpty()) {
+            return Messages.MESSAGE_NO_RECORD;
+        } else {
+            StringBuilder recordStringBuilder = new StringBuilder();
+            if (type.equals(RecordType.EXERCISE)) {
+//                for (Exercise record : records) {
+//                    if (record.getWorkOut().equals(optionalParam)) {
+//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+//                    }
+//                }
+                return recordStringBuilder.toString();
+            } else if (type.equals(RecordType.DIET)) {
+//                for (Diet record : records) {
+//                    if (record.getFood().equals(optionalParam)) {
+//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+//                    }
+//                }
+                return recordStringBuilder.toString();
+            } else {
+                return Messages.MESSAGE_CANT_VIEW_LIST;
+            }
+        }
+    }
+
+    /**
+     * Gets all records that match the pattern in the given parameter on a given date.
+     *
+     * @param date          the date of the record.
+     * @param optionalParam an optional parameter for filtering the records.
+     * @return a string of all records that match the pattern in the given parameter on a given date.
+     */
+    public String getRecordsToPrint(LocalDate date, String optionalParam) {
+        if (records.isEmpty()) {
+            return Messages.MESSAGE_NO_RECORD;
+        } else {
+            StringBuilder recordStringBuilder = new StringBuilder();
+            if (type.equals(RecordType.EXERCISE)) {
+//                for (Exercise record : records) {
+//                    if (record.getDate().isEqual(date) && record.getWorkOut().equals(optionalParam)) {
+//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+//                    }
+//                }
+                return recordStringBuilder.toString();
+            } else if (type.equals(RecordType.DIET)) {
+//                for (Diet record : records) {
+//                    if (record.getDate().isEqual(date) && record.getFood().equals(optionalParam)) {
+//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+//                    }
+//                }
+                return recordStringBuilder.toString();
+            } else {
+                return Messages.MESSAGE_CANT_VIEW_LIST;
+            }
         }
     }
 }

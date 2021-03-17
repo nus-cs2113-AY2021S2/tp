@@ -22,11 +22,9 @@ import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 
 public class CommandParser {
     private final HashMap<String, String> params;
-    private final FitCenter fitCenter;
 
-    public CommandParser(FitCenter fitCenter) {
+    public CommandParser() {
         params = new HashMap<>();
-        this.fitCenter = fitCenter;
     }
 
     public Command parseCommand(String userInput) {
@@ -243,20 +241,20 @@ public class CommandParser {
         return new ViewCommand(DIET, params);
     }
 
-    private Command prepareViewSleep(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewSleep(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(SLEEP, params);
     }
 
-    private Command prepareViewBodyWeight(String optionalParmas) throws ParseException {
-        if (!checkDateValid(optionalParmas)) {
+    private Command prepareViewBodyWeight(String optionalParams) throws ParseException {
+        if (!checkDateValid(optionalParams)) {
             return new InvalidCommand(VIEW);
         }
-        String date = optionalParmas.substring(5);
+        String date = optionalParams.substring(5);
         params.put("date", date);
         return new ViewCommand(BODY_WEIGHT, params);
     }
@@ -277,10 +275,10 @@ public class CommandParser {
             date = durationDate[1];
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand("S", params, fitCenter);
+            return new AddCommand("S", params);
         }
         params.put("duration", duration);
-        return new AddCommand("S", params, fitCenter);
+        return new AddCommand("S", params);
     }
 
     private String[] getDate(String stringWithDate) {
@@ -325,11 +323,11 @@ public class CommandParser {
             params.put("food", food);
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand("D", params, fitCenter);
+            return new AddCommand("D", params);
         }
         params.put("food", food);
         params.put("weight", weight);
-        return new AddCommand("D", params, fitCenter);
+        return new AddCommand("D", params);
     }
 
     private String[] getFoodAndFoodWeight(String content) {
@@ -352,10 +350,10 @@ public class CommandParser {
             date = weightDate[1];
             params.put("weight", weight);
             params.put("date", date);
-            return new AddCommand("W", params, fitCenter);
+            return new AddCommand("W", params);
         }
         params.put("weight", weight);
-        return new AddCommand("W", params, fitCenter);
+        return new AddCommand("W", params);
     }
 
     private Command prepareAddExercise(String content) throws ParseException {
@@ -388,13 +386,13 @@ public class CommandParser {
             params.put("activity", activity);
             params.put("duration", duration);
             params.put("date", date);
-            return new AddCommand("E", params, fitCenter);
+            return new AddCommand("E", params);
         }
 
         duration = duration.substring(2);
         params.put("activity", activity);
         params.put("duration", duration);
-        return new AddCommand("E", params, fitCenter);
+        return new AddCommand("E", params);
     }
 
     private String[] getActivityAndDuration(String content) {

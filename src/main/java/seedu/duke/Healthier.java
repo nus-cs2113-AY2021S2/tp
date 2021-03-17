@@ -10,8 +10,8 @@ import seedu.duke.ui.UI;
 
 public class Healthier {
     private UI ui;
-    private User currentUser = new User();
-    private FitCenter currentFitCenter = currentUser.getFitCenter();
+    private final User currentUser = new User();
+    private final FitCenter currentFitCenter = currentUser.getFitCenter();
 
     private void start() {
         ui = new UI();
@@ -19,12 +19,12 @@ public class Healthier {
     }
 
     private void loopCommand() {
-        CommandParser commandParser = new CommandParser(currentFitCenter);
+        CommandParser commandParser = new CommandParser();
         Command command;
         do {
             String userInput = ui.getUserInput();
             command = commandParser.parseCommand(userInput);
-            CommandResult result = command.execute();
+            CommandResult result = command.execute(currentFitCenter);
             UI.printMessage(result.getFeedback());
             commandParser.clearParserParams();
         } while (!ExitCommand.isExitCommand(command));

@@ -1,8 +1,9 @@
 package seedu.duke.command;
 
+import seedu.duke.account.FitCenter;
+
 public abstract class Command {
     protected String feedback;
-    //protected FitCenter fitCenter;
 
-    public abstract CommandResult execute();
+    public abstract CommandResult execute(FitCenter fitCenter);
 }

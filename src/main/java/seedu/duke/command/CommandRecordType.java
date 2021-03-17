@@ -5,7 +5,7 @@ import java.util.Locale;
 public enum CommandRecordType {
     EXERCISE("E"), DIET("D"), SLEEP("S"), BODY_WEIGHT("W");
     private String recordType;
-    private CommandRecordType(String type) {
+    CommandRecordType(String type) {
         recordType = type;
     }
 
