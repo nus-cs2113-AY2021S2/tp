@@ -1,4 +1,7 @@
-package system.staff;
+package seedu.duke.storage;
+
+import seedu.staff.Staff;
+import seedu.staff.StaffList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,8 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-
-public class Storage {
+public class StaffStorage {
     private static final String FILE_PATH = "Staff.txt";
 
     public static void fileHandling(){
@@ -23,7 +25,7 @@ public class Storage {
     public static void loadTask(String line){
         String[] arr = line.split("\\|");
         Staff staff = new Staff(arr);
-        Staff.addStaff(staff);
+        StaffList.addStaff(staff);
     }
 
     public static void loadFile() throws FileNotFoundException {
@@ -37,8 +39,8 @@ public class Storage {
     public static void writeToFile() throws IOException {
         createFile();
         FileWriter fw = new FileWriter(FILE_PATH);
-        for (int i=0; i<Staff.numStaff; i++) {
-            ArrayList<Staff> buffer = Staff.getList();
+        for (int i=0; i<StaffList.getNumStaff(); i++) {
+            ArrayList<Staff> buffer = StaffList.getList();
             fw.write(formWriteData(buffer.get(i)));
         }
         fw.close();
@@ -61,5 +63,4 @@ public class Storage {
     public static String formWriteData(Staff staff) {
         return (staff.getId() + "|" + staff.getName() + "|" + staff.getAge() + "|" + staff.getSpecialisation() + "\n");
     }
-
 }
