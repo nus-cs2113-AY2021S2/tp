@@ -21,6 +21,7 @@ public class Duke {
         this.ui = new UiManager();
         this.history = new History();
         this.notesManager = new NotesManager();
+        ui.showLogo();
         ui.showGreetMessage();
         runCommandLoopUntilByeCommand();
     }
