@@ -12,6 +12,18 @@ public class User {
     private FitCenter fitCenter = new FitCenter();
 
     /**
+     * Initializes a default user object with default attributes.
+     */
+    public User() {
+        int DEFAULT_AGE = 20;
+        double DEFAULT_WEIGHT = 50;
+        this.name = "Default User";
+        this.gender = Gender.UNKNOWN;
+        this.age = DEFAULT_AGE;
+        this.bodyWeight = DEFAULT_WEIGHT;
+    }
+
+    /**
      * Initializes a user object. Assumes that all params are not null.
      *
      * @param name       the name of the user.
