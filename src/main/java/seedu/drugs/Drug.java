@@ -1,10 +1,10 @@
 package seedu.drugs;
 
-public class drugInstance {
+public class Drug {
     protected String name;
     protected String price;
     protected String quantity;
-    public drugInstance(String name, String price, String quantity) {
+    public Drug(String name, String price, String quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;

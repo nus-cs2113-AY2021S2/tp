@@ -12,13 +12,11 @@ public class Duke {
 
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
-    public Duke() {
-    }
 
     /**
      * Logic for the main loop that processes information
      */
-    public void run() {
+    public static void run(){
         UI.printWelcome();
         String Username = UI.scanInput();
         UI.printUserName(Username);
@@ -44,6 +42,8 @@ public class Duke {
                         break;
                     case "5":
                         System.out.println("Drug Viewer Instance!");
+                        DrugInstance addict = new DrugInstance(PATIENT_FILE_PATH);
+                        addict.run();
                         break;
                     case "help":
                         System.out.println("Here is the list of Start Menu commands!");
@@ -70,6 +70,6 @@ public class Duke {
      * @param args Runtime arguments are unused
      */
     public static void main(String[] args) {
-        new Duke().run();
+        Duke.run();
     }
 }
