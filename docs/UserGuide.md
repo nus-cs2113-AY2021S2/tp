@@ -21,6 +21,12 @@ Displays a list of food items that are expiring within a week.
 
 Format: `expiring`
 
+```
+>> expiring
+These are the food expiring in the next week:
+1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
+```
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer?
