@@ -157,7 +157,6 @@ public class CommandList {
                 break;
             default:
                 ui.println(INVALID_COMMAND);
-                return;
             }
         }
     }

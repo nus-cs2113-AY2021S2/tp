@@ -1,6 +1,7 @@
 package seedu.connoisseur;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.exceptions.ConnoisseurException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -17,7 +18,7 @@ public class Connoisseur {
     }
 
     /**
-     * Sets up required files for Duke to start.
+     * Sets up required files for Connoisseur to start.
      */
     public Connoisseur() {
         Ui ui = new Ui(true);
@@ -32,6 +33,7 @@ public class Connoisseur {
         String input;
         Parser parser = new Parser(commandList);
         boolean isExitCommand = false;
+
         while (!isExitCommand) {
             ui.println(COMMAND_PROMPT);
             input = ui.readCommand();
