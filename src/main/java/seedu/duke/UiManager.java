@@ -58,22 +58,23 @@ public class UiManager {
         for (String m : message) {
             out.println(m);
         }
+        out.println(DIVIDER);
     }
 
     public void showLogo() {
-        showToUser(DIVIDER, LOGO, DIVIDER);
+        showToUser(DIVIDER, LOGO);
     }
 
     public void showGreetMessage() {
-        showToUser(GREETING_MESSAGE, DIVIDER);
+        showToUser(GREETING_MESSAGE);
     }
 
     public void showByeMessage() {
-        showToUser(BYE_MESSAGE, DIVIDER);
+        showToUser(BYE_MESSAGE);
     }
 
     public void showHelpMessage() {
-        showToUser(HELP_MESSAGE, DIVIDER);
+        showToUser(HELP_MESSAGE);
     }
 
     public void showHistory(History history) {
