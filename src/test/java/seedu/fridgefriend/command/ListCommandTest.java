@@ -22,17 +22,17 @@ class ListCommandTest {
                 "31-07-2021", FoodStorageLocation.LOWER_SHELF);
         fridge.add(chicken);
 
-        Food pork = new Food(FoodCategory.MEAT, "pork",
-                "31-07-2021", FoodStorageLocation.LOWER_SHELF);
-        fridge.add(pork);
-
         Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
                 "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
         fridge.add(lettuce);
+
+        Food pork = new Food(FoodCategory.MEAT, "pork",
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF);
+        fridge.add(pork);
     }
 
     @Test
-    public void listCommand_listAValidCategory_ListTheCategory() throws InvalidInputException {
+    public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() {
         ListCommand listCommand = new ListCommand("MEAT");
         listCommand.setData(fridge);
         String expectedMessage = "These are the MEAT in your fridge:\n"
@@ -54,8 +54,8 @@ class ListCommandTest {
         listCommand.setData(fridge);
         String expectedMessage = "Here are the items in your fridge:\n"
                 + "\t1. chicken [MEAT]\n"
-                + "\t2. pork [MEAT]\n"
-                + "\t3. lettuce [VEGETABLE]";
+                + "\t2. lettuce [VEGETABLE]\n"
+                + "\t3. pork [MEAT]";
         String actualMessage = listCommand.getListAllMessage();
         assertEquals(expectedMessage, actualMessage);
     }
