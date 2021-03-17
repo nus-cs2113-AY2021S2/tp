@@ -14,24 +14,24 @@
 ## Features
 
 ### Display the list of all foods: `list`
+
 Displays the full list of food items stored in the fridge.
 
 Format: `list`
 
 * There should not be any descriptions after keyword `list`.  
 
-Example of usage: 
+Example of usage:
 
-Input: `list`
-
-Output: 
 ```
+>> list
 Here are the items in your fridge:
-  	1. chicken [MEAT]
-   	2. grouper [SEAFOOD]
+    1. chicken [MEAT]
+    2. grouper [SEAFOOD]
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
+
 Displays the list of food items under specified category stored in the fridge.
 
 Format: `list CATEGORY_NAME`
@@ -41,23 +41,20 @@ Format: `list CATEGORY_NAME`
 * The `CATEGORY_NAME` is case-insensitive
 * If other category names are detected, it would give an error message
 
-Example of usage: 
+Example of usage:
 
 *Situation 1: There is one food called chicken under MEAT category.*
 
-Input: `list MEAT`
-
-Output: 
 ```
+>> list MEAT
 These are the MEAT in your fridge:
 	1. chicken
 ```
+
 *Situation 2: There are no foods under READY_TO_EAT category.*
 
-Input: `list ready_to_eat`
-
-Output: 
 ```
+>> list ready_to_eat
 These are the READY_TO_EAT in your fridge:
 ```
 
