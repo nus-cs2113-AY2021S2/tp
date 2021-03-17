@@ -1,16 +1,11 @@
-------------------------------------------------
+----------------------------------------------------------------
 Welcome to your personal fitness app - Healthier
 What's in your mind today?
-------------------------------------------------
+----------------------------------------------------------------
+----------------------------------------------------------------
+Sorry, the command you entered cannot be recognized.
 
-------------------------------------------------
-Not sure what to do?
-Run command 'help' to see what you can do.
-------------------------------------------------
-
-------------------------------------------------
-Nice work today!
-You are one step closer to ultimate fitness!
-See you again soon!
-------------------------------------------------
+Not sure how to use this app?
+Use command 'help' to see what you can do.
+----------------------------------------------------------------
 
