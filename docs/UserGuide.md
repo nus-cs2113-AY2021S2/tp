@@ -22,7 +22,14 @@ Format: `list`
 
 Example of usage: 
 
-`list`
+Input: `list`
+
+Output: 
+```
+Here are the items in your fridge:
+  	1. chicken [MEAT]
+   	2. grouper [SEAFOOD]
+```
 
 ### Display the list of foods by category: `list <CATEGORY>`
 Displays the list of food items under specified category stored in the fridge.
@@ -32,15 +39,27 @@ Format: `list CATEGORY_NAME`
 * The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
 `VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
 * The `CATEGORY_NAME` is case-insensitive
-* If other category names are detected, it would automatically be recorded as `OTHER`
+* If other category names are detected, it would give an error message
 
 Example of usage: 
 
-`list MEAT`
+*Situation 1: There is one food called chicken under MEAT category.*
 
-`list ready_to_eat`
+Input: `list MEAT`
 
-`list idontknow`
+Output: 
+```
+These are the MEAT in your fridge:
+	1. chicken
+```
+*Situation 2: There are no foods under READY_TO_EAT category.*
+
+Input: `list ready_to_eat`
+
+Output: 
+```
+These are the READY_TO_EAT in your fridge:
+```
 
 ## FAQ
 
