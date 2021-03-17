@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class UI {
 
     public static final String DIVIDER = "----------------------------------------------------------------\n";
+    public static final String DIVIDER_LINE_ONLY = "----------------------------------------------------------------";
     private Scanner sc;
 
     public UI() {
@@ -32,14 +33,14 @@ public class UI {
     public void printHelpPrompt() {
         System.out.print(DIVIDER
                 + Messages.MESSAGE_HELP
-                + DIVIDER);
+                + DIVIDER_LINE_ONLY);
     }
 
     public static void printMessage(String message) {
         System.out.println(DIVIDER
                 + message
                 + "\n"
-                + DIVIDER);
+                + DIVIDER_LINE_ONLY);
     }
 
     public static void printDivider() {
