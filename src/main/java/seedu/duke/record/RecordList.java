@@ -85,18 +85,22 @@ public class RecordList {
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
             if (type.equals(RecordType.EXERCISE)) {
-//                for (Exercise record : records) {
-//                    if (record.getWorkOut().equals(optionalParam)) {
-//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-//                    }
-//                }
+                /*
+                for (Exercise record : records) {
+                    if (record.getWorkOut().equals(optionalParam)) {
+                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                    }
+                }
+                */
                 return recordStringBuilder.toString();
             } else if (type.equals(RecordType.DIET)) {
-//                for (Diet record : records) {
-//                    if (record.getFood().equals(optionalParam)) {
-//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-//                    }
-//                }
+                /*
+                for (Diet record : records) {
+                    if (record.getFood().equals(optionalParam)) {
+                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                    }
+                }
+                 */
                 return recordStringBuilder.toString();
             } else {
                 return Messages.MESSAGE_CANT_VIEW_LIST;
@@ -117,18 +121,22 @@ public class RecordList {
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
             if (type.equals(RecordType.EXERCISE)) {
-//                for (Exercise record : records) {
-//                    if (record.getDate().isEqual(date) && record.getWorkOut().equals(optionalParam)) {
-//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-//                    }
-//                }
+                /*
+                for (Exercise record : records) {
+                    if (record.getDate().isEqual(date) && record.getWorkOut().equals(optionalParam)) {
+                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                    }
+                }
+                 */
                 return recordStringBuilder.toString();
             } else if (type.equals(RecordType.DIET)) {
-//                for (Diet record : records) {
-//                    if (record.getDate().isEqual(date) && record.getFood().equals(optionalParam)) {
-//                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-//                    }
-//                }
+                /*
+                for (Diet record : records) {
+                    if (record.getDate().isEqual(date) && record.getFood().equals(optionalParam)) {
+                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                    }
+                }
+                */
                 return recordStringBuilder.toString();
             } else {
                 return Messages.MESSAGE_CANT_VIEW_LIST;
