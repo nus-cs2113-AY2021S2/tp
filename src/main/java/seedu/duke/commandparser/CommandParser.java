@@ -10,6 +10,7 @@ import seedu.duke.command.InvalidCommand;
 import seedu.duke.command.ViewCommand;
 import seedu.duke.command.Command;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.TypeException;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -89,6 +90,10 @@ public class CommandParser {
             }
         } catch (ParseException e) {
             return new InvalidCommand(Messages.MESSAGE_INVALID_DATE_FORMAT);
+        } catch (TypeException e) {
+            return new InvalidCommand(e.toString());
+        } catch (NumberFormatException e) {
+            return new InvalidCommand("Please check the value you filled in for the number field");
         }
     }
 
@@ -261,7 +266,7 @@ public class CommandParser {
         return new ViewCommand(BODY_WEIGHT, params);
     }
 
-    private Command prepareAddSleep(String content) throws ParseException {
+    private Command prepareAddSleep(String content) throws ParseException, TypeException, NumberFormatException {
         String duration = parseDuration(content, false);
         if (duration.equals("")) {
             return new InvalidCommand(ADD);
@@ -298,7 +303,7 @@ public class CommandParser {
         return paramDate;
     }
 
-    private Command prepareAddDiet(String content) throws ParseException {
+    private Command prepareAddDiet(String content) throws ParseException, TypeException, NumberFormatException {
         String[] foodWeight = getFoodAndFoodWeight(content);
         if (foodWeight.length < 2) {
             return new InvalidCommand(ADD);
@@ -336,7 +341,7 @@ public class CommandParser {
         return content.split("w/", 2);
     }
 
-    private Command prepareAddBodyWeight(String content) throws ParseException {
+    private Command prepareAddBodyWeight(String content) throws ParseException, TypeException, NumberFormatException {
         String weight = parseWeight(content, false);
         if (weight.equals("")) {
             return new InvalidCommand(ADD);
@@ -358,7 +363,7 @@ public class CommandParser {
         return new AddCommand(BODY_WEIGHT, params);
     }
 
-    private Command prepareAddExercise(String content) throws ParseException {
+    private Command prepareAddExercise(String content) throws ParseException, TypeException, NumberFormatException {
         String[] activityDuration = getActivityAndDuration(content);
         if (activityDuration.length < 2) {
             return new InvalidCommand(ADD);

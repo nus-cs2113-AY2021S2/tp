@@ -1,57 +1,38 @@
 package seedu.duke.record;
 
+import seedu.duke.exception.TypeException;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+
+import static seedu.duke.record.FoodCategory.INVALID;
+import static seedu.duke.record.RecordType.DIET;
 
 public class Diet extends Record {
-
-    private double totalCalories;
-    private ArrayList<Food> foodList = new ArrayList<>();
+    private double calory;
+    private FoodCategory food;
+    private double amount;
+    private LocalDate date;
+    private String formattedDate;
+    private static final String SUMMARY_FORMAT = "%sg %s on %s";
+    private static final String LIST_VIEW_FORMAT = "%s     %s      %sg";
 
     /**
      * Initializes the object with given record type and date.
      *
-     * @param type the type of the record.
      * @param date the date of the record.
      */
-
-    public Diet(RecordType type, LocalDate date, double totalCalories) {
-        super(type, date);
-        this.totalCalories = totalCalories;
-    }
-
-    /**
-     * Add food inside food list.
-     */
-    public void addFood(Food food) {
-        foodList.add(food);    // Not sure how to write this part
-    }
-
-    /**
-     * Sets a new category of food.
-     *
-     * @param totalCalories set new category.
-     */
-    public void totalCalories(double totalCalories) {
-        this.totalCalories = totalCalories;
-    }
-
-    /**
-     * Gets the total calorie.
-     *
-     * @return the total calorie.
-     */
-    public double getTotalCal() {
-        return totalCalories;
-    }
-
-    /**
-     * Print the list of food.
-     */
-    public void printFoodList() {
-        for (int i = 0; i < foodList.size(); i++) {
-            System.out.print(foodList.get(i));
+    public Diet(String foodString, String amountString, LocalDate date) throws TypeException, NumberFormatException {
+        super(DIET, date);
+        food = FoodCategory.getFoodCategory(foodString);
+        if (food == INVALID) {
+            throw new TypeException("food type exception");
         }
+        amount = Double.parseDouble(amountString);
+        calory = amount * food.getCaloriePer100g();
+        this.date = date;
+        formattedDate = date.format(DATE_FORMATTER);
     }
 
     /**
@@ -61,6 +42,10 @@ public class Diet extends Record {
      */
     @Override
     public String getRecordSummary() {
-        return "You have eat total calories:" + this.totalCalories;
+        return String.format(SUMMARY_FORMAT, "" + amount, food.toString().toLowerCase(Locale.ROOT), formattedDate);
+    }
+
+    public String getListViewFormat() {
+        return String.format(SUMMARY_FORMAT, food.toString().toLowerCase(Locale.ROOT), "" + amount, formattedDate);
     }
 }
