@@ -16,7 +16,7 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
 
     //@@author H-horizon
     @Test
-    void execute_moduleListUi_expectPrintsCorrectOutput() {
+    void execute_ui_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
         UI ui = new UI();
