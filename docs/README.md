@@ -1,4 +1,4 @@
-# Duke
+# FridgeFriend
 
 {Give product intro here}
 

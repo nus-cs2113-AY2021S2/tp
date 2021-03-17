@@ -100,7 +100,7 @@ These are the READY_TO_EAT in your fridge:
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: Copy the `.jar` file along with `save` folder to the target computer.
+**A**: Copy the `.jar` file along with `save` folder to the target computer and place them together into an empty folder.
 As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
 
 **Q**: What if I forget the correct format of a command?
