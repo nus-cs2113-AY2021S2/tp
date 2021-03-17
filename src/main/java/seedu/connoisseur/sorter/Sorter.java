@@ -96,7 +96,7 @@ public class Sorter {
             break;
         default:
 
-            ui.InvalidSortMethodMessage();
+            ui.printInvalidSortMethodMessage();
         }
         return reviewList;
     }

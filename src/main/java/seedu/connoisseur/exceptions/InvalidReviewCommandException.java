@@ -1,6 +1,7 @@
 package seedu.connoisseur.exceptions;
 
 public class InvalidReviewCommandException extends ConnoisseurException {
+
     /**
      * Creates connoisseur for methods to throw.
      */
