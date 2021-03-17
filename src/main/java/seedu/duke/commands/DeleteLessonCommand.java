@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
 
@@ -19,6 +20,7 @@ import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
 public class DeleteLessonCommand extends Command {
 
     //@@author H-horizon
+
     /**
      * Deletes all lessons corresponding to specified indices.
      *
@@ -26,16 +28,29 @@ public class DeleteLessonCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessons(lessonList, ui);
+        verifyLessonsToDelete(ui, lessonList);
+    }
 
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
+    /**
+     * Validates lessons to delete from list.
+     *
+     * @param ui         Instance of UI.
+     * @param lessonList ArrayList of lessons in specified module.
+     */
+    private void verifyLessonsToDelete(UI ui, ArrayList<Lesson> lessonList) {
+        if (lessonList.size() == 0) {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
+            String line = ui.readCommand();
+            ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
 
-        deleteLessonsFromList(lessonList, indices, ui);
-        ModuleList.writeModule();
+            deleteLessonsFromList(lessonList, indices, ui);
+            ModuleList.writeModule();
+        }
     }
 
     @Override
