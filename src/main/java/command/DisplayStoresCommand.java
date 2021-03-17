@@ -18,6 +18,7 @@ public class DisplayStoresCommand extends Command {
             System.out.print((i + 1) + ".");
             stores.get(i).displayStore();
         }
+        System.out.println(Ui.LINESPACING);
     }
 
     @Override
