@@ -14,14 +14,14 @@ public class ListCommand extends Command {
 
     private static final int EXTRA_INDEX = 1;
     private static final int START_INDEX_SHOWN_TO_USER = 1;
-    private int counter;
     private final FoodCategory foodCategory;
     private final String category;
+    private int indexShownToUserByCategory;
 
     public ListCommand(String categoryType) {
         this.category = categoryType.toUpperCase();
         this.foodCategory = FoodCategory.convertStringToFoodCategory(category);
-        this.counter = START_INDEX_SHOWN_TO_USER;
+        this.indexShownToUserByCategory = START_INDEX_SHOWN_TO_USER;
     }
 
     @Override
@@ -93,8 +93,8 @@ public class ListCommand extends Command {
         Food food = fridge.getFood(index);
         FoodCategory category = food.getCategory();
         if (category.equals(foodCategory)) {
-            foodDescription = "\n\t" + counter + ". " + food.getFoodName();
-            ++counter;
+            foodDescription = "\n\t" + indexShownToUserByCategory + ". " + food.getFoodName();
+            ++indexShownToUserByCategory;
         }
         return foodDescription;
     }
