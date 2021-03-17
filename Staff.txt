@@ -1,3 +1,0 @@
-D12345|Mingshun|30|Pediatrician
-N11111|Alex|45|Elderly care
-D67890|Alexander|31|Heart Surgeon
