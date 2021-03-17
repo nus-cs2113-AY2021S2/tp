@@ -41,6 +41,10 @@ public class UI {
         System.out.println(LINEBREAK);
     }
 
+    public static void emptyLine() {
+        System.out.print("\n");
+    }
+
     public static void printWelcome() {
         System.out.println("Hello from\n" + LOGO + "What is your name?");
     }
@@ -130,8 +134,8 @@ public class UI {
 
     public static void staffHeader() {
         System.out.println(
-                prettyPrint("ID", 10) + " " + prettyPrint("Name", 10) + " "
-                        + prettyPrint("Age",5) + " " + prettyPrint("Specialisation", 20));
+                prettyPrint("ID", 10) + " | " + prettyPrint("Name", 10) + " | "
+                        + prettyPrint("Age",5) + " | " + prettyPrint("Specialisation", 20));
     }
 
     public static void printStaffHelpList() {
@@ -161,7 +165,4 @@ public class UI {
     public static void staffMenuHeader() {
         System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n");
     }
-
-
-
 }
