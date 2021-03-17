@@ -79,7 +79,7 @@ class UiManagerTest {
                 + "4. list notes LOCATION:\n"
                 + spacing + "list notes tagged to the given location\n"
                 + "5. delete note LOCATION/NOTE INDEX:\n"
-                + spacing + "deletes notes based on index number tagged to the given location\n";
+                + spacing + "deletes notes based on index number tagged to the given location";
         assertEquals(helpMessage + lineSeparator + divider, outContent.toString().trim());
     }
 }
