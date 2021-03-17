@@ -26,9 +26,10 @@ Given below are my contributions to the project:
 
 **Documentation**
 - User Guide
-- Added documentation for the command `search` ([#](x))
+    - Added documentation for the command `search` ([#72](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/72))
 
 
 **Community**
 - Review pull requests and help maintain group repo
 - Gave suggestions and help debug in weekly meetings
+- [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts) 
