@@ -93,7 +93,6 @@ public class Ui {
             System.out.println(menuItem.toString());
         }
         System.out.println(LINESPACING);
-        assert true;
     }
 
     public void showReviews(String storeName, ArrayList<Review> reviews) {
@@ -102,6 +101,6 @@ public class Ui {
             System.out.println(review.toString());
         }
         System.out.println(LINESPACING);
-        assert true;
+
     }
 }
