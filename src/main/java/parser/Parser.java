@@ -1,6 +1,6 @@
 package parser;
 
-import command.AddCommand;
+import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
 import command.DisplayMenusCommand;
@@ -54,7 +54,7 @@ public class Parser {
             int storeDisplayedIndex = parseIndex(line, "add", maxStores);
             String newStoreReview = line.substring(line.indexOf("r/") + 2);
             double newStoreRating = Double.parseDouble(line.substring(line.indexOf("s/") + 2,line.indexOf("r/")));
-            newCommand = new AddCommand(storeDisplayedIndex - 1,newStoreReview,newStoreRating);
+            newCommand = new AddReviewCommand(storeDisplayedIndex - 1,newStoreReview,newStoreRating);
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }

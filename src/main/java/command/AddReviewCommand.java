@@ -8,12 +8,12 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
-public class AddCommand extends Command {
+public class AddReviewCommand extends Command {
     protected int storeIndex;
     protected String description;
     protected double rating;
 
-    public AddCommand(int storeIndex, String description, double rating) {
+    public AddReviewCommand(int storeIndex, String description, double rating) {
         this.storeIndex = storeIndex;
         this.description = description;
         this.rating = rating;
