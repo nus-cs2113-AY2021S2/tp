@@ -42,7 +42,7 @@ public class ListLessonsCommand extends Command {
      * @param lessonList ArrayList of lessons.
      * @param ui         Instance of lessons.
      */
-    private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
+    public static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
             String lessonType = getLessonTypeString(lesson.getLessonType());
