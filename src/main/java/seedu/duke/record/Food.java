@@ -10,7 +10,7 @@ public class Food {
     private double weight;
     private double calorie;
 
-    public Food(String name, double weight, double calorie, FoodCategory category){
+    public Food(String name, double weight, double calorie, FoodCategory category) {
         this.name = name;
         this.weight = weight;
         this.calorie = calorie;
@@ -70,6 +70,6 @@ public class Food {
      * Get the category.
      */
     public void setCategory(String food) {
-        this.category=category;
+        this.category = category;
     }
 }

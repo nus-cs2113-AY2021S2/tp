@@ -30,7 +30,7 @@ public class Diet extends Record {
     /**
      * Set the total calories.
      */
-    public void totalCalories(double totalCalories ){
+    public void totalCalories(double totalCalories) {
         this.totalCalories = totalCalories;
     }
 
@@ -45,7 +45,7 @@ public class Diet extends Record {
      * Print the list of food.
      */
     public void printFoodList() {
-        for(int i = 0; i < foodList.size(); i++) {
+        for (int i = 0; i < foodList.size(); i++) {
             System.out.print(foodList.get(i));
         }
     }
@@ -55,6 +55,6 @@ public class Diet extends Record {
      */
     @Override
     public String getRecordSummary() {
-        return "You have eat total calories:"+this.totalCalories;
+        return "You have eat total calories:" + this.totalCalories;
     }
 }
