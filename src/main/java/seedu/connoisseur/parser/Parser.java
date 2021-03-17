@@ -27,7 +27,7 @@ public class Parser {
         try {
             arguments = input.split(" ", 2)[1].trim();
         } catch (ArrayIndexOutOfBoundsException e) {
-            arguments = null;
+            arguments = "";
         }
 
         if (command.equals("list")) {
@@ -39,7 +39,7 @@ public class Parser {
         } else if (command.equals("delete")) {
             commandList.deleteReview(arguments);
         } else if (command.equals("help")) {
-            commandList.printHelp();
+            commandList.printHelp(arguments);
         } else if (command.equals("bye")) {
             commandList.exit();
             return true;

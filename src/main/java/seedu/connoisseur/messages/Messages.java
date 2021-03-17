@@ -13,7 +13,13 @@ public class Messages {
 
     public static final String COMMAND_PROMPT = "____________________________________________________________\n" 
             + "Please enter a command: ";
-    public static final String HELP_MESSAGE = "How may I help you?";
+    public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!" +
+            "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n" +
+            "new\t\tadds a new review\nsort\tsets your preferred sorting method for your reviews"
+            + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur";
+    public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
+            + "Currently recognised methods are:\nstars\ndate earliest\ndate latest\ntitle\n" +
+            "\nCommand syntax: sort <method>";
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";
     public static final String INVALID_COMMAND = "Invalid command.";
