@@ -29,8 +29,8 @@ public class CommandParser {
             return prepareAdd(inputParts);
         case "view":
             return prepareView(inputParts);
-//        case "delete":
-//            return prepareDelete(inputParts);
+        case "delete":
+            return prepareDelete(inputParts);
         case "exit":
             return new ExitCommand();
         default:
