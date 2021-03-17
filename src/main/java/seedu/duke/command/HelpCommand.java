@@ -18,12 +18,24 @@ public class HelpCommand extends Command {
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = { ArgumentType.COMMAND };
     protected static final String COMMAND_HELP = "help";
 
+    /**
+     * Constructor to validate the format for help command.
+     * @param arguments parsed input containing options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     public HelpCommand(ArrayList<String> arguments) throws CommandException {
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_HELP);
     }
 
+    /**
+     * Executes the help function.
+     *
+     * @param recordList is the recordList.
+     * @param ui      is the Ui object that interacts with the user.
+     * @param storage is the Storage object that reads and writes to the save file.
+     */
     @Override
-    public void execute(RecordList records, Ui ui, Storage storage) {
+    public void execute(RecordList recordList, Ui ui, Storage storage) {
         HelpPage.printHelp(COMMAND_HELP);
     }
 }

@@ -34,13 +34,25 @@ public class ReturnCommand extends Command {
     private String recordNumberStr;
     private int recordNumberInt;
 
-    public ReturnCommand(ArrayList<String> arguments, RecordList records) throws CommandException {
+    /**
+     * Constructor to validate the format for return command.
+     * @param arguments parsed input containing options and arguments.
+     * @param recordList is the recordList.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
+    public ReturnCommand(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         validateOptions(arguments, COMMAND_RETURN, VALID_OPTIONS, VALID_OPTIONS);
         recordNumberStr = getIndexInString(arguments);
-        recordNumberInt = getIndexInInteger(arguments, records);
+        recordNumberInt = getIndexInInteger(arguments, recordList);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_RETURN);
     }
 
+    /**
+     * Get the index field in String.
+     * @param arguments parsed input containing options and arguments.
+     * @return a String containing the index of the record.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_INDEX)) {
             return getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
@@ -49,9 +61,16 @@ public class ReturnCommand extends Command {
         }
     }
 
-    private int getIndexInInteger(ArrayList<String> arguments, RecordList records) throws CommandException {
+    /**
+     * Get the index field in Integer.
+     * @param arguments parsed input containing options and arguments.
+     * @param recordList is the recordList.
+     * @return a Integer containing the index of the record.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
+    private int getIndexInInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         try {
-            return validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), records);
+            return validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
         } catch (NumberFormatException e) {
             throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
@@ -63,19 +82,18 @@ public class ReturnCommand extends Command {
      * Executes the return function.
      * Prints a message containing the loan that will be marked as returned.
      *
-     * @param records is the recordList.
+     * @param recordList is the recordList.
      * @param ui      is the Ui object that interacts with the user.
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList records, Ui ui, Storage storage) {
-
-        Record currentRecord = records.getRecordAt(recordNumberInt);
+    public void execute(RecordList recordList, Ui ui, Storage storage) {
+        Record currentRecord = recordList.getRecordAt(recordNumberInt);
         if (currentRecord instanceof Loan) {
             Loan currentLoan = (Loan) currentRecord;
             currentLoan.markAsReturned();
             ui.printMessage("Loan marked as returned: " + currentLoan);
-            storage.saveRecordListData(records);
+            storage.saveRecordListData(recordList);
         } else {
             ui.printMessage("Specified record number is not a loan!");
         }
