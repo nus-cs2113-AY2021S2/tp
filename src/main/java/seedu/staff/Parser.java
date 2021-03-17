@@ -1,17 +1,19 @@
 package seedu.staff;
 
+import seedu.duke.storage.StaffStorage;
+import seedu.duke.ui.UI;
+
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static seedu.staff.UI.printLine;
-import static seedu.staff.UI.staffHeader;
-
+import static seedu.duke.ui.UI.printLine;
+import static seedu.duke.ui.UI.staffHeader;
 
 public class Parser {
 
     public static void run() throws IOException {
-        Storage.fileHandling();
+        StaffStorage.fileHandling();
         System.out.println("Type something");
         Scanner in = new Scanner(System.in);
         while (true) {
@@ -27,18 +29,18 @@ public class Parser {
 
         switch (line.split(" ")[0]) {
         case ("add"):
-            Staff.add(line);
+            StaffList.add(line);
             break;
 
         case ("list"):
             staffHeader();
             printLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
-            Staff.list(string);
+            StaffList.list(string);
             break;
 
         case ("delete"):
-            Staff.delete(line);
+            StaffList.delete(line);
             break;
         case ("help"):
             UI.printStaffHelpList();
@@ -46,20 +48,19 @@ public class Parser {
 
         case ("find"):
             try {
-                Staff.find(line.split(" ")[1]);
+                StaffList.find(line.split(" ")[1]);
             } catch (IndexOutOfBoundsException e ) {
                 System.out.println("No input error");
             }
             break;
 
         case ("bye"):
-            Storage.writeToFile();
+            StaffStorage.writeToFile();
             return 0;
         }
 
     return 1;
     }
-
 
     protected static String[] addFunctionParser(String line) {
         int length = line.split(" ").length;
