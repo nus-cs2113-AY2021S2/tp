@@ -1,10 +1,10 @@
 package system.staff;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
-import static system.staff.UI.printLine;
-import static system.staff.UI.staffHeader;
+import static system.staff.UI.*;
 
 public class Parser {
 
@@ -28,29 +28,29 @@ public class Parser {
             Staff.add(line);
             break;
 
-        case ("print"):
-            staffHeader();
-            printLine();
-            Staff.print();
-            break;
-
         case ("list"):
             staffHeader();
             printLine();
-            if (line.split(" ")[1].equals("nurses")) {
-                Staff.listNurse();
-            } else if (line.split(" ")[1].equals("doctors")) {
-                Staff.listDoctor();
-            } else {
-
-            }
+            String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
+            Staff.list(string);
             break;
 
         case ("delete"):
             Staff.delete(line);
             break;
+        case ("help"):
+            UI.printStaffHelpList();
+            break;
 
-        default:
+        case ("find"):
+            try {
+                Staff.find(line.split(" ")[1]);
+            } catch (IndexOutOfBoundsException e ) {
+                System.out.println("No input error");
+            }
+            break;
+
+        case ("bye"):
             Storage.writeToFile();
             return 0;
         }
