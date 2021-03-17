@@ -1,4 +1,4 @@
-package seedu.duke;
+package movieApp;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
