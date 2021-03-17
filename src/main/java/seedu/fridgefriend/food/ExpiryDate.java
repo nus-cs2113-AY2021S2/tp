@@ -12,6 +12,7 @@ public class ExpiryDate {
 
     public ExpiryDate(String string) throws InvalidDateException {
         try {
+            assert string != null : "date string should not be null";
             LocalDate expiry = LocalDate.parse(string, formatter);
             this.expiry = expiry;            
         } catch (DateTimeParseException e) {

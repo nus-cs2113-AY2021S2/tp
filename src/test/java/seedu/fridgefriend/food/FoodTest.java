@@ -1,14 +1,11 @@
-package seedu.fridgefriend;
+package seedu.fridgefriend.food;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.FoodCategory;
-import seedu.fridgefriend.food.FoodStorageLocation;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FoodTest {
 
@@ -20,14 +17,7 @@ public class FoodTest {
     }
 
     @Test
-    void testStorageExpiryDate() throws InvalidDateException {
-        Food beef = new Food(FoodCategory.MEAT, "beef");
-        beef.setExpiryDate("15-03-2021");
-        assertEquals("15-03-2021", beef.getExpiryDate().toString());
-    }
-
-    @Test
-    void invalidDate_wrongDateFormate_exceptionThrown() {
+    void invalidDate_wrongDateFormat_exceptionThrown() {
         Food chicken = new Food(FoodCategory.MEAT, "chicken");
         assertThrows(InvalidDateException.class, () -> {
             chicken.setExpiryDate("15-3-2021");
@@ -60,5 +50,13 @@ public class FoodTest {
         assertEquals("eggs", eggs.getFoodName());
         assertEquals("20-03-2021", eggs.getExpiryDate().toString());
         assertEquals(FoodStorageLocation.UPPER_SHELF, eggs.getStorageLocation());
+    }
+
+    @Test
+    void testUpdateExpiryDate() throws InvalidDateException {
+        Food eggs = new Food(FoodCategory.EGG, "eggs",
+                "20-03-2021", FoodStorageLocation.UPPER_SHELF);
+        eggs.setExpiryDate("12-04-2021");
+        assertEquals("12-04-2021", eggs.getExpiryDate().toString());
     }
 }

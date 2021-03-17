@@ -1,0 +1,1 @@
+Food name: cake, category: VEGETABLE, expiry: 18-03-2021, stored in: OTHER
