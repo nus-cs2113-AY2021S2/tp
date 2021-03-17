@@ -178,7 +178,7 @@ public class Loader {
         if (fields.length == ENTRY_TASK_LONG) {
             remarks = fields[INDEX_REMARKS_LOADER].trim();
         }
-        Task task = new Task(description, remarks, deadline, isDone, isGraded);
+        Task task = new Task(description, deadline, remarks, isDone, isGraded);
         module.addTask(task);
     }
 
