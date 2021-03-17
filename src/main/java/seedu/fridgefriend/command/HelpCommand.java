@@ -17,6 +17,7 @@ public class HelpCommand extends Command {
             + "\tlist categoryName\n"
             + "\tremove index\n"
             + "\tsearch searchString\n"
+            + "\texpiring\n"
             + "\thelp\n"
             + "\tbye";
     
