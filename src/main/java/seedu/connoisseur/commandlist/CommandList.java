@@ -173,7 +173,7 @@ public class CommandList {
         try {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
-               ui.printInvalidRatingMessage();
+                ui.printInvalidRatingMessage();
             }
             Review r = new Review(title, category, rating, description);
             reviewList.add(r);
@@ -196,7 +196,7 @@ public class CommandList {
         try {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
-               ui.printInvalidRatingMessage();
+                ui.printInvalidRatingMessage();
             }
             ui.println(DESCRIPTION_PROMPT);
             String description = ui.readCommand();
