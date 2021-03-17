@@ -25,6 +25,10 @@ public class Block {
         this.isVisited = true;
     }
 
+    public void setAsNotVisited() {
+        this.isVisited = false;
+    }
+
     public boolean isSameBlock(Block block) {
         return this.name.equals(block.name);
     }

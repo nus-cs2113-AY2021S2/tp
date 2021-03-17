@@ -98,7 +98,6 @@ public class NotesManager {
         }
     }
 
-
     public static void addNotes() {
         int locationIndex = locationsList.indexOf(location);
 

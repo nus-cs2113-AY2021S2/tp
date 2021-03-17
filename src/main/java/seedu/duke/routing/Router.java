@@ -1,25 +1,25 @@
 package seedu.duke.routing;
 
-import seedu.duke.History;
 import seedu.duke.Block;
+import seedu.duke.exception.InvalidBlockException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Router {
-    private Map nusMap = new Map();
+    private Map nusMap;
 
     public Router() {
+        this.nusMap = new Map();
     }
 
-    public String execute(String from, String to) {
+    public String execute(String from, String to) throws InvalidBlockException {
         resetMap();
         try {
             return printShortestDistance(from, to);
         } catch (NullPointerException e) {
-            return "Invalid block! Please enter the 'go' command to retry!";
+            throw new InvalidBlockException();
         }
     }
 
