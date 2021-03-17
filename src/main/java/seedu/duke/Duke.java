@@ -2,7 +2,7 @@ package seedu.duke;
 
 import seedu.staff.Parser;
 import java.io.IOException;
-import seedu.duke.ui.Ui;
+import seedu.duke.ui.UI;
 import seedu.patient.PatientCommandInstance;
 
 public class Duke {
@@ -19,14 +19,14 @@ public class Duke {
      * Logic for the main loop that processes information
      */
     public void run() {
-        Ui.printWelcome();
-        String Username = Ui.scanInput();
-        Ui.printUserName(Username);
-        Ui.printStartMenu();
+        UI.printWelcome();
+        String Username = UI.scanInput();
+        UI.printUserName(Username);
+        UI.printStartMenu();
         boolean isExit = false;
         while (!isExit) {
             try {
-                String startMenuCommand = Ui.scanInput();
+                String startMenuCommand = UI.scanInput();
                 String c = startMenuCommand.trim();
                 switch (c) {
                     case "1":
@@ -47,11 +47,11 @@ public class Duke {
                         break;
                     case "help":
                         System.out.println("Here is the list of Start Menu commands!");
-                        Ui.printStartMenu();
+                        UI.printStartMenu();
                         break;
                     case "bye":
                         isExit = true;
-                        Ui.printGoodbye();
+                        UI.printGoodbye();
                         break;
                     default:
                         System.out.println("OOPS! That is not a registered command! Please type \"help\" to see the list of commands");

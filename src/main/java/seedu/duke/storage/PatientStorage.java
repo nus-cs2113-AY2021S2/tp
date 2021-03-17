@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class Storage {
+public class PatientStorage {
 
     static File saveFile;
     static ArrayList<Patient> patients = new ArrayList<>();
@@ -22,9 +22,9 @@ public class Storage {
      *
      * @param filePath the filepath where the file will be created
      */
-    public Storage(String filePath) {
+    public PatientStorage(String filePath) {
         saveFile = new File(filePath);
-        Storage.filePath = filePath;
+        PatientStorage.filePath = filePath;
     }
 
     /**
