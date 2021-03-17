@@ -67,6 +67,7 @@ public class Duke {
         do {
             rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            assert parsedStringList.size() != 0 : "Empty Parser Error";
             command = CommandHandler.parseCommand(parsedStringList, records);
             if (command != null) {
                 command.execute(records, ui, storage);

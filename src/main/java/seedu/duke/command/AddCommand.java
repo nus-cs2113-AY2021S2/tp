@@ -41,6 +41,11 @@ public class AddCommand extends Command {
 
     private RecordType recordType;
 
+    /**
+     * Constructor to validate the format for add command.
+     * @param arguments parsed input containing options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     public AddCommand(ArrayList<String> arguments) throws CommandException {
         validateOptions(arguments, COMMAND_ADD, VALID_OPTIONS, CONFLICT_OPTIONS);
 
@@ -49,10 +54,22 @@ public class AddCommand extends Command {
         issueDate = getDate(arguments);
     }
 
+    /**
+     * Get the description field.
+     * @param arguments parsed input containing options and arguments.
+     * @return a String containing the description of the record.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private String getDescription(ArrayList<String> arguments) throws CommandException {
         return Utils.getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
     }
 
+    /**
+     * Get the amount field.
+     * @param arguments parsed input containing options and arguments.
+     * @return a BigDecimal object containing the amount of the record.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private BigDecimal getAmount(ArrayList<String> arguments) throws CommandException {
         try {
             return validateAmount(getOptionValue(arguments, COMMAND_ADD, OPTION_AMOUNT));
@@ -63,6 +80,12 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Get the date field.
+     * @param arguments parsed input containing options and arguments.
+     * @return a LocalDate object containing the date of the record.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
         try {
             return validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
@@ -71,6 +94,11 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Check if the input contains the correct record type and options.
+     * @param arguments parsed input containing the options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private String checkRecordType(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
@@ -86,28 +114,35 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Executes the add function.
+     *
+     * @param recordList is the recordList.
+     * @param ui      is the Ui object that interacts with the user.
+     * @param storage is the Storage object that reads and writes to the save file.
+     */
     @Override
-    public void execute(RecordList records, Ui ui, Storage storage) {
+    public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
         case EXPENSE:
             Expense expenseObj = new Expense(amount, issueDate, description);
-            records.addRecord(expenseObj);
-            storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(expenseObj, records.getRecordCount());
+            recordList.addRecord(expenseObj);
+            storage.saveRecordListData(recordList);
+            ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description);
-            records.addRecord(loanObj);
-            storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(loanObj, records.getRecordCount());
+            recordList.addRecord(loanObj);
+            storage.saveRecordListData(recordList);
+            ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
             break;
         case SAVING:
             // Fallthrough
         default:
             Saving savingObj = new Saving(amount, issueDate, description);
-            records.addRecord(savingObj);
-            storage.saveRecordListData(records);
-            ui.printSuccessfulAdd(savingObj, records.getRecordCount());
+            recordList.addRecord(savingObj);
+            storage.saveRecordListData(recordList);
+            ui.printSuccessfulAdd(savingObj, recordList.getRecordCount());
         }
     }
 }

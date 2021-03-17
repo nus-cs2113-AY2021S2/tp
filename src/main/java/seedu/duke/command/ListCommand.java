@@ -30,12 +30,22 @@ public class ListCommand extends Command {
 
     private RecordType recordType;
 
+    /**
+     * Constructor to validate the format for list command.
+     * @param arguments parsed input containing options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     public ListCommand(ArrayList<String> arguments) throws CommandException {
         validateOptions(arguments, COMMAND_LIST, VALID_OPTIONS, VALID_OPTIONS);
         checkRecordType(arguments);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_LIST);
     }
 
+    /**
+     * Check if the input contains the correct record type and options.
+     * @param arguments parsed input containing the options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private void checkRecordType(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
@@ -48,6 +58,13 @@ public class ListCommand extends Command {
         }
     }
 
+    /**
+     * Executes the list function.
+     *
+     * @param recordList is the recordList.
+     * @param ui      is the Ui object that interacts with the user.
+     * @param storage is the Storage object that reads and writes to the save file.
+     */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {

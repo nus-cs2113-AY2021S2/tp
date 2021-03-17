@@ -18,6 +18,9 @@ import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 
+/**
+ * Handles all operations related to the view command.
+ */
 public class ViewCommand extends Command {
     private static final String[] VALID_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
@@ -29,12 +32,22 @@ public class ViewCommand extends Command {
 
     private RecordType recordType;
 
+    /**
+     * Constructor to validate the format for view command.
+     * @param arguments parsed input containing options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     public ViewCommand(ArrayList<String> arguments) throws CommandException {
         validateOptions(arguments, COMMAND_VIEW, VALID_OPTIONS, VALID_OPTIONS);
         checkRecordType(arguments);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_VIEW);
     }
 
+    /**
+     * Check if the input contains the correct record type and options.
+     * @param arguments parsed input containing the options and arguments.
+     * @throws CommandException contains the error messages when a incorrect format is detected.
+     */
     private void checkRecordType(ArrayList<String> arguments) throws CommandException {
         if (hasOption(arguments, OPTION_EXPENSE)) {
             recordType = RecordType.EXPENSE;
@@ -47,6 +60,13 @@ public class ViewCommand extends Command {
         }
     }
 
+    /**
+     * Executes the view function.
+     *
+     * @param recordList is the recordList.
+     * @param ui      is the Ui object that interacts with the user.
+     * @param storage is the Storage object that reads and writes to the save file.
+     */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage) {
         switch (recordType) {
