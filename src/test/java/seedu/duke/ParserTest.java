@@ -11,6 +11,7 @@ import seedu.duke.command.AddNoteCommand;
 import seedu.duke.command.DeleteNoteCommand;
 import seedu.duke.command.ByeCommand;
 import seedu.duke.command.HelpCommand;
+import seedu.duke.exception.InvalidCommandException;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
