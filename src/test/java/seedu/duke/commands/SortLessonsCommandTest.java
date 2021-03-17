@@ -11,9 +11,8 @@ import seedu.duke.ui.UI;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static seedu.duke.common.Messages.*;
 import static seedu.duke.common.Messages.INDENTATION;
+import static seedu.duke.common.Messages.NEWLINE;
 
 class SortLessonsCommandTest extends LessonCommandTest {
 

@@ -10,13 +10,14 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.commands.ListLessonsCommand.printLessons;
+import static seedu.duke.common.Messages.MESSAGE_SORT_LESSON_LIST;
 
 
 public class SortLessonsCommand extends Command {
 
     @Override
     public void execute(UI ui) throws CommandException {
-        ui.printMessage("Sorting list of lessons based on lesson type...");
+        ui.printMessage(MESSAGE_SORT_LESSON_LIST);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         sortLessonList(ui, lessonList);

@@ -72,6 +72,8 @@ public class Messages {
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson's link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
 
+    public static final String MESSAGE_SORT_LESSON_LIST = "Sorting list of lessons based on lesson type...";
+
     //Task messages
     public static final String FORMAT_PRINT_TASK = "%d. %s%s - %s";
 
