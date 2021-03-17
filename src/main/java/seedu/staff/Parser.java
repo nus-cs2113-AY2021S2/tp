@@ -25,6 +25,7 @@ public class Parser {
             line = in.nextLine();
             try {
                 if (commandHandler(line) == 0) {
+                    System.out.println("Back to main menu\n");
                     break;
                 }
             } catch (WrongStaffIdException e) {
@@ -43,7 +44,7 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
-        if ((line.charAt(0) == 'D' || line.charAt(0) == 'N')){
+        if (!(line.charAt(0) == 'D' || line.charAt(0) == 'N')){
             throw new WrongStaffIdException();
         }
     }
@@ -55,7 +56,8 @@ public class Parser {
 
     public static void checkListCommand(String line) throws WrongListInputException {
 
-        if ((line.split(" ").length > 1) && !((line.equals("nurses") || line.equals("doctors")))) {
+        if ((line.split(" ").length > 1) &&
+                !((line.split(" ")[1].equals("nurses") || line.split(" ")[1].equals("doctors")))) {
             throw new WrongListInputException();
         }
     }
@@ -72,36 +74,37 @@ public class Parser {
             break;
 
         case ("list"):
+            UI.emptyLine();
             checkListCommand(line);
             UI.staffHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
             StaffList.list(string);
+            UI.emptyLine();
             break;
 
         case ("delete"):
+            checkEmptyInput(line);
             checkID(line);
             StaffList.delete(line);
             break;
+
         case ("help"):
             UI.printStaffHelpList();
             break;
 
         case ("find"):
             checkEmptyInput(line);
-            UI.showLine();
             staffHeader();
             UI.showLine();
-            try {
-                StaffList.find(line.split(" ")[1]);
-            } catch (IndexOutOfBoundsException e ) {
-                System.out.println("No input error");
-            }
+            StaffList.find(line.split(" ")[1]);
+            UI.emptyLine();
             break;
 
-        case ("bye"):
+        case ("return"):
             StaffStorage.writeToFile();
             return 0;
+
         default:
             UI.unrecognizedCommandMessage();
         }
@@ -119,7 +122,6 @@ public class Parser {
                 } else {
                     input[3] = input[3] + " " + array[i];
                 }
-
             } catch (IndexOutOfBoundsException e){
                 input[i-1] = " ";
             }
