@@ -17,6 +17,9 @@ Code contributions:
 - Modified the 'Food' class to better work with the 'Save' class
 - Created new exceptions to handle possible errors with 'Save' class
 
+Docs:
+- Added explanation of how to transfer save data between devices
+
 Team contributions:
 - Help review PRs and suggest changes
 - Give suggestions and assist in meetings
