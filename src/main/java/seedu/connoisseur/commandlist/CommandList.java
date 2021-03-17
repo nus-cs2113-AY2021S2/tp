@@ -235,7 +235,7 @@ public class CommandList {
     /**
      * Print text to help user with using the application.
      *
-     * @param arguments
+     * @param arguments is the type of help determined by user input.
      */
     public void printHelp(String arguments) {
         if (arguments.length() == 0) {
