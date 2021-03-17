@@ -1,8 +1,8 @@
 package seedu.staff;
 
+import seedu.duke.exceptions.NoInputException;
 import seedu.duke.exceptions.WrongListInputException;
 import seedu.duke.exceptions.WrongStaffIdException;
-
 import seedu.duke.storage.StaffStorage;
 import seedu.duke.ui.UI;
 
@@ -11,14 +11,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import static seedu.duke.ui.UI.staffHeader;
+import static seedu.duke.ui.UI.staffMenuHeader;
 
 public class Parser {
 
-    public static void run() throws IOException {
+    public static void run() throws IOException{
         StaffStorage.fileHandling();
-        System.out.println("Type something");
+        staffMenuHeader();
         Scanner in = new Scanner(System.in);
         while (true) {
+            UI.staffMenuPrompt();
             String line;
             line = in.nextLine();
             try {
@@ -29,6 +31,8 @@ public class Parser {
                 UI.WrongStaffIDErrorMessage();
             } catch (WrongListInputException e) {
                 UI.WrongListInputErrorMessage();
+            } catch (NoInputException e) {
+                UI.NoInputErrorMessage();
             }
         }
     }
@@ -43,6 +47,11 @@ public class Parser {
             throw new WrongStaffIdException();
         }
     }
+    public static void checkEmptyInput(String line) throws NoInputException {
+        if (line.split(" ").length < 2) {
+            throw new NoInputException();
+        }
+    }
 
     public static void checkListCommand(String line) throws WrongListInputException {
 
@@ -52,8 +61,11 @@ public class Parser {
     }
 
     public static int commandHandler(String line) throws IOException, WrongStaffIdException,
-            WrongListInputException {
-
+            WrongListInputException, NoInputException {
+        if (line.equals(" ")) {
+            UI.noCommandErrorMessage();
+            return 1;
+        }
         switch (line.split(" ")[0]) {
         case ("add"):
             StaffList.add(line);
@@ -61,7 +73,7 @@ public class Parser {
 
         case ("list"):
             checkListCommand(line);
-            staffHeader();
+            UI.staffHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
             StaffList.list(string);
@@ -76,7 +88,7 @@ public class Parser {
             break;
 
         case ("find"):
-            checkID(line);
+            checkEmptyInput(line);
             UI.showLine();
             staffHeader();
             UI.showLine();
@@ -90,6 +102,8 @@ public class Parser {
         case ("bye"):
             StaffStorage.writeToFile();
             return 0;
+        default:
+            UI.unrecognizedCommandMessage();
         }
         return 1;
     }
