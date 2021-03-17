@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.exceptions.WrongListInputException;
+import seedu.duke.exceptions.WrongStaffIdException;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
@@ -18,7 +20,7 @@ public class Duke {
     /**
      * Logic for the main loop that processes information
      */
-    public void run() {
+    public void run() throws WrongListInputException, WrongStaffIdException {
         UI.printWelcome();
         String Username = UI.scanInput();
         UI.printUserName(Username);
@@ -69,7 +71,7 @@ public class Duke {
      *
      * @param args Runtime arguments are unused
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WrongStaffIdException, WrongListInputException {
         new Duke().run();
     }
 }
