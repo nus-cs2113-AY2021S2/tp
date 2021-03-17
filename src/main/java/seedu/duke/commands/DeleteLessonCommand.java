@@ -91,6 +91,4 @@ public class DeleteLessonCommand extends Command {
             pointer++;
         }
     }
-
-
 }
