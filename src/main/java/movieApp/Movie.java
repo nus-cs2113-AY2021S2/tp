@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.*;
 
 
-public class Movie {
+public class Movie implements Serializable{
+	private static final long serialVersionUID = -7893868657490723698L;
 	private String movieTitle;
 	private int movieID;
 	private Calendar startDate; 

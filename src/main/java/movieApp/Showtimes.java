@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Showtimes implements Serializable{
+	private static final long serialVersionUID = -6009080018075884803L;
 	private int showtimeID;
 	private Calendar dateTime;
 	private int cinemaID;

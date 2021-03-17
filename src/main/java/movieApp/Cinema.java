@@ -2,7 +2,8 @@ package movieApp;
 
 import java.io.Serializable;
 
-public class Cinema implements Serializable {
+public class Cinema implements Serializable{
+    private static final long serialVersionUID = 6815178382261501263L;
     private int cineplexID;
     private int capacity;
     private String cinemaCode;

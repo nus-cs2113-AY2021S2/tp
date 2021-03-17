@@ -4,6 +4,7 @@ package movieApp;
 import java.io.Serializable;
 
 public class Review implements  Serializable{
+	private static final long serialVersionUID = -7155346385146047745L;
 	private String comment;
 	private int rating;
 	

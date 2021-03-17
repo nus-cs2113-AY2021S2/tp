@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList; // import the ArrayList class
 
 public class Cineplex implements Serializable{
+	private static final long serialVersionUID = 7128894551549758309L;
 	private int cineplexID;
 	private String cineplexName;
 	private ArrayList<Integer> movieList;
