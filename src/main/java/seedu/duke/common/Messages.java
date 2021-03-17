@@ -10,14 +10,15 @@ public class Messages {
             + "You are one step closer to ultimate fitness!\n"
             + "See you again soon :)\n";
     public static final String MESSAGE_EXIT = "Thank you for using this app. The app is exiting...";
-    public static final String MESSAGE_HELP = "Not sure what to do?\n"
-            + "Run command 'help' to see what you can do.\n";
+    public static final String MESSAGE_HELP = "Not sure how to use this app?\n"
+            + "Use command 'help' to see what you can do.";
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
             + "You can try adding records by using command 'add'.";
     public static final String MESSAGE_SEE_HELP = "To learn more about the commands, try use command 'help'";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, cannot view record list of an incorrect record type.";
     public static final String MESSAGE_SYSTEM_ERROR = "There is something wrong within the system.";
     public static final String MESSAGE_INVALID_DATE_FORMAT = "The date format is incorrect. Please try again.\n";
+    public static final String MESSAGE_INVALID_COMMAND = "Sorry, the command you entered cannot be recognized.\n\n";
     public static final String MESSAGE_INVALID_COMMAND_WORD = "The command word is invalid. "
             + "Enter help to see help messages\n";
     public static final String MESSAGE_INVALID_COMMAND_SYNTAX = "Sorry, "

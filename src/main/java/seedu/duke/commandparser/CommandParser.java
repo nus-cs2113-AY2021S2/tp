@@ -39,7 +39,7 @@ public class CommandParser {
         case "exit":
             return new ExitCommand();
         default:
-            return new InvalidCommand("Invalid");
+            return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND + Messages.MESSAGE_HELP);
         }
     }
 
