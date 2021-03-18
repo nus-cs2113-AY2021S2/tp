@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 public class RecordList {
     private final ArrayList<Record> records = new ArrayList<>();
-    private RecordType type;
+    private final RecordType type;
 
     public RecordList(RecordType type) {
         this.type = type;
@@ -50,8 +50,10 @@ public class RecordList {
             return Messages.MESSAGE_NO_RECORD;
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
+            int i = 0;
             for (Record record : records) {
-                recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                i++;
             }
             return recordStringBuilder.toString();
         }
@@ -68,10 +70,16 @@ public class RecordList {
             return Messages.MESSAGE_NO_RECORD;
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
+            int i = 0;
             for (Record record : records) {
                 if (record.getDate().isEqual(date)) {
-                    recordStringBuilder.append(record.getRecordSummary()).append("\n");
+                    recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                    i++;
                 }
+            }
+            boolean hasRecord = recordStringBuilder.length() != 0;
+            if (!hasRecord) {
+                recordStringBuilder.append(Messages.MESSAGE_NO_RECORD);
             }
             return recordStringBuilder.toString();
         }
@@ -89,23 +97,9 @@ public class RecordList {
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
             if (type.equals(RecordType.EXERCISE)) {
-                /*
-                for (Exercise record : records) {
-                    if (record.getWorkOut().equals(optionalParam)) {
-                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-                    }
-                }
-                */
-                return recordStringBuilder.toString();
+                return getExerciseRecordString(optionalParam, recordStringBuilder);
             } else if (type.equals(RecordType.DIET)) {
-                /*
-                for (Diet record : records) {
-                    if (record.getFood().equals(optionalParam)) {
-                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-                    }
-                }
-                 */
-                return recordStringBuilder.toString();
+                return getDietRecordString(optionalParam, recordStringBuilder);
             } else {
                 return Messages.MESSAGE_CANT_VIEW_LIST;
             }
@@ -125,26 +119,109 @@ public class RecordList {
         } else {
             StringBuilder recordStringBuilder = new StringBuilder();
             if (type.equals(RecordType.EXERCISE)) {
-                /*
-                for (Exercise record : records) {
-                    if (record.getDate().isEqual(date) && record.getWorkOut().equals(optionalParam)) {
-                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-                    }
-                }
-                 */
-                return recordStringBuilder.toString();
+                return getExerciseRecordString(date, optionalParam, recordStringBuilder);
             } else if (type.equals(RecordType.DIET)) {
-                /*
-                for (Diet record : records) {
-                    if (record.getDate().isEqual(date) && record.getFood().equals(optionalParam)) {
-                        recordStringBuilder.append(record.getRecordSummary()).append("\n");
-                    }
-                }
-                */
-                return recordStringBuilder.toString();
+                return getDietRecordString(date, optionalParam, recordStringBuilder);
             } else {
                 return Messages.MESSAGE_CANT_VIEW_LIST;
             }
         }
+    }
+
+    private FoodCategory parseStringToFoodCategory(String optionalParam) throws IllegalArgumentException {
+        return FoodCategory.valueOf(optionalParam.toUpperCase());
+    }
+
+    private WorkoutCategory parseStringToWorkoutCategory(String optionalParam) throws IllegalArgumentException {
+        return WorkoutCategory.valueOf(optionalParam.toUpperCase());
+    }
+
+    private String getDietRecordString(String optionalParam, StringBuilder recordStringBuilder) {
+        int i = 0;
+        for (Record record : records) {
+            Diet diet = (Diet) record;
+            FoodCategory paramCategory = getFoodCategory(optionalParam);
+            if (diet.getFoodCategory().equals(paramCategory)) {
+                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                i++;
+            }
+        }
+        boolean hasRecord = recordStringBuilder.length() != 0;
+        if (!hasRecord) {
+            recordStringBuilder.append(Messages.MESSAGE_NO_RECORD);
+        }
+        return recordStringBuilder.toString();
+    }
+
+    private String getDietRecordString(LocalDate date, String optionalParam, StringBuilder recordStringBuilder) {
+        int i = 0;
+        for (Record record : records) {
+            Diet diet = (Diet) record;
+            FoodCategory paramCategory = getFoodCategory(optionalParam);
+            if (diet.getDate().isEqual(date) && diet.getFoodCategory().equals(paramCategory)) {
+                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                i++;
+            }
+        }
+        boolean hasRecord = recordStringBuilder.length() != 0;
+        if (!hasRecord) {
+            recordStringBuilder.append(Messages.MESSAGE_NO_RECORD);
+        }
+        return recordStringBuilder.toString();
+    }
+
+
+    private String getExerciseRecordString(String optionalParam, StringBuilder recordStringBuilder) {
+        int i = 0;
+        for (Record record : records) {
+            Exercise exercise = (Exercise) record;
+            WorkoutCategory paramCategory = getWorkOutCategory(optionalParam);
+            if (exercise.getWorkoutCategory().equals(paramCategory)) {
+                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                i++;
+            }
+        }
+        boolean hasRecord = recordStringBuilder.length() != 0;
+        if (!hasRecord) {
+            recordStringBuilder.append(Messages.MESSAGE_NO_RECORD);
+        }
+        return recordStringBuilder.toString();
+    }
+
+    private String getExerciseRecordString(LocalDate date, String optionalParam, StringBuilder recordStringBuilder) {
+        int i = 0;
+        for (Record record : records) {
+            Exercise exercise = (Exercise) record;
+            WorkoutCategory paramCategory = getWorkOutCategory(optionalParam);
+            if (exercise.getDate().isEqual(date) && exercise.getWorkoutCategory().equals(paramCategory)) {
+                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                i++;
+            }
+        }
+        boolean hasRecord = recordStringBuilder.length() != 0;
+        if (!hasRecord) {
+            recordStringBuilder.append(Messages.MESSAGE_NO_RECORD);
+        }
+        return recordStringBuilder.toString();
+    }
+
+    private FoodCategory getFoodCategory(String optionalParam) {
+        FoodCategory paramCategory;
+        try {
+            paramCategory = parseStringToFoodCategory(optionalParam);
+        } catch (IllegalArgumentException e) {
+            paramCategory = FoodCategory.INVALID;
+        }
+        return paramCategory;
+    }
+
+    private WorkoutCategory getWorkOutCategory(String optionalParam) {
+        WorkoutCategory paramCategory;
+        try {
+            paramCategory = parseStringToWorkoutCategory(optionalParam);
+        } catch (IllegalArgumentException e) {
+            paramCategory = WorkoutCategory.INVALID;
+        }
+        return paramCategory;
     }
 }

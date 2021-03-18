@@ -1,14 +1,16 @@
 package seedu.duke.ui;
 
+import seedu.duke.command.CommandResult;
 import seedu.duke.common.Messages;
 
 import java.util.Scanner;
 
 public class UI {
 
-    public static final String DIVIDER = "----------------------------------------------------------------\n";
-    public static final String DIVIDER_LINE_ONLY = "----------------------------------------------------------------";
-    private Scanner sc;
+    public static final String DIVIDER = "--------------------------------------------------------------------\n";
+    public static final String DIVIDER_LINE_ONLY =
+            "--------------------------------------------------------------------";
+    private final Scanner sc;
 
     public UI() {
         sc = new Scanner(System.in);
@@ -30,20 +32,10 @@ public class UI {
                 + DIVIDER);
     }
 
-    public void printHelpPrompt() {
-        System.out.print(DIVIDER
-                + Messages.MESSAGE_HELP
-                + DIVIDER_LINE_ONLY);
-    }
-
-    public static void printMessage(String message) {
+    public void printCommandResult(CommandResult commandResult) {
         System.out.println(DIVIDER
-                + message
+                + commandResult.getFeedback()
                 + "\n"
                 + DIVIDER_LINE_ONLY);
-    }
-
-    public static void printDivider() {
-        System.out.println(DIVIDER);
     }
 }
