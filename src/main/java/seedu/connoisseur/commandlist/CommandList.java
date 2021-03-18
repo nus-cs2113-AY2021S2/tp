@@ -126,7 +126,8 @@ public class CommandList {
     }
 
     /**
-     * Add a review. 
+     * Add a review.
+     *
      * @param input quick or long review
      */
     public void addReview(String input) {
@@ -184,7 +185,7 @@ public class CommandList {
     }
 
     /**
-     * Add a long review. 
+     * Add a long review.
      */
     public void addLongReview() {
         ui.println(TITLE_PROMPT);
@@ -233,9 +234,17 @@ public class CommandList {
 
     /**
      * Print text to help user with using the application.
+     *
+     * @param arguments is the type of help determined by user input.
      */
-    public void printHelp() {
-        ui.printHelpMessage();
+    public void printHelp(String arguments) {
+        if (arguments == null) {
+            ui.printGeneralHelpMessage();
+        } else if (arguments.equals("sort")) {
+            ui.printSortHelpMessage();
+        } else {
+            ui.printInvalidHelpMessage();
+        }
     }
 
     /**
