@@ -17,10 +17,8 @@ public class SortCommand extends Command {
         try {
             switch (criteria) {
             case "asc":
-                inputs.put(QueryKey.LOCATION, value);
                 break;
             case "desc":
-                inputs.put(QueryKey.TYPE, value);
                 break;
             default:
                 //throw new InvalidSortException();
