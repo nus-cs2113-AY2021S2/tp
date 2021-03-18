@@ -37,6 +37,6 @@ public class Employee {
             formattedString.append("#");
             formattedString.append(schedule);
         }
-        return formattedString + "\n";
+        return formattedString +"\n";
     }
 }

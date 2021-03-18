@@ -1,14 +1,25 @@
 package controller;
 
+import employee.Employee;
+import io.FileManager;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import employee.Employee;
 
 public class AppController {
     private static ArrayList<Employee> employees = new ArrayList<>();
-    private static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
+    FileManager fileManager = new FileManager();
 
-    public void run() {
+    public void run() throws IOException {
+        try {
+            employees = fileManager.loadFile();
+            System.out.println("Save data loaded!");
+        } catch (Exception e) {
+            System.out.println("No save files found.");
+        }
+
         String input;
         while (true) {
             System.out.println("Enter command: ");
@@ -27,9 +38,10 @@ public class AppController {
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
-
+                break;
             case "quit":
                 System.out.println("bye");
+                fileManager.saveFile(employees);
                 return;
             default:
                 System.out.println("invalid command");
@@ -48,8 +60,8 @@ public class AppController {
     private void addSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(Employee person:employees)
-            if(person.getName().equals(name)) {
+        for (Employee person:employees)
+            if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
                 person.addSchedule(schedule);
@@ -62,13 +74,13 @@ public class AppController {
     private void dropSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(Employee person:employees)
-            if(person.getName().equals(name)) {
+        for (Employee person:employees)
+            if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String scheduleToDrop = sc.nextLine();
                 ArrayList<String> schedules = person.getSchedules();
-                for(String schedule:schedules){
-                    if(schedule.equals(scheduleToDrop)){
+                for (String schedule:schedules){
+                    if (schedule.equals(scheduleToDrop)){
                         person.dropSchedule(scheduleToDrop);
                         System.out.println("schedule dropped");
                         return;
@@ -83,8 +95,8 @@ public class AppController {
     private void viewEmployeeSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(Employee person:employees)
-            if(person.getName().equals(name)) {
+        for (Employee person:employees)
+            if (person.getName().equals(name)) {
                 System.out.println(person.getSchedules());
                 return;
             }
