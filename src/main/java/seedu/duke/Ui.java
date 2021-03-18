@@ -10,12 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Deals with all interactions with the user.
  */
 public class Ui {
-
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
@@ -184,14 +186,25 @@ public class Ui {
 
     public static void readModuleNumberToBeDeleted(ArrayList<Module> modules) {
         if (printAllModulesIfNotEmpty(modules)) {
-            Ui.printSelectModuleToDeleteMessage();
-            int moduleNumberInt = Ui.readCommandToInt();
-            if (moduleNumberInt != -1) {
-                moduleNumberInt--;
-                Ui.printDeletedModuleMessage(modules.get(moduleNumberInt));
-                modules.remove(modules.get(moduleNumberInt));
+            printSelectModuleToDeleteMessage();
+            int moduleNumberInt = readCommandToInt();
+            moduleNumberInt--;
+            if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
+                logger.log(Level.WARNING, "You are making a change that cannot be undone.");
+                System.out.println("Are you sure you want to delete "
+                        + modules.get(moduleNumberInt).getName()
+                        + "? [Y/N]");
+                String command = readCommand();
+                if (readYN(command) == 1) {
+                    printDeletedModuleMessage(modules.get(moduleNumberInt));
+                    modules.remove(modules.get(moduleNumberInt));
+                } else if (readYN(command) == 0) {
+                    System.out.println("Ok. I did not delete "
+                            + modules.get(moduleNumberInt).getName());
+                }
             } else {
-                Ui.printInvalidIntegerMessage();
+                logger.log(Level.INFO, "You did not enter a valid integer.");
+                printInvalidIntegerMessage();
             }
             printReturnToModuleInfoMenuMessage();
         }
@@ -199,10 +212,12 @@ public class Ui {
 
     public static void printDeletedModuleMessage(Module module) {
         System.out.println("You've deleted this: " + module.getName());
-        System.out.println("NOTE: You are deleting your review\n"
-            + module.getReview() + "\n"
-            + "NOTE: You are deleting your module description\n"
+        System.out.println("NOTE: You are deleting your module description\n"
             + module.getDescription());
+        if (!module.getReview().trim().isEmpty()) {
+            System.out.println("NOTE: You are deleting your review\n"
+                    + module.getReview());
+        }
         printHorizontalLine();
     }
 
@@ -246,9 +261,7 @@ public class Ui {
 
     public static boolean isEmptyModulesList(ArrayList<Module> modules) {
         if (modules.isEmpty()) {
-            printHorizontalLine();
-            System.out.println("You have not added any modules.");
-            printHorizontalLine();
+            logger.log(Level.INFO, "You have not added any modules.");
             return true;
         }
         return false;
@@ -259,13 +272,13 @@ public class Ui {
             System.out.println("You already have added a review:");
             System.out.println(module.getReview());
             System.out.println("Would you like to replace this with another review? [Y/N]");
+            logger.log(Level.WARNING, "You will delete your old review. This cannot be undone.");
             String command = readCommand();
-            if (command.equalsIgnoreCase("N")) {
+            if (readYN(command) == 0) {
                 System.out.println("Okay:) You still have the same review!");
                 printReturnToModuleInfoMenuMessage();
                 return module.getReview();
-            } else if (!command.equalsIgnoreCase("Y")) {
-                System.out.println("You did not enter a valid letter:(");
+            } else if (readYN(command) == 2) {
                 printReturnToModuleInfoMenuMessage();
                 return module.getReview();
             }
@@ -274,6 +287,16 @@ public class Ui {
             + "type '/end' to finish reviewing.");
         System.out.println("Enter your review for " + module.getName() + " below: ");
         return readReview();
+    }
+
+    public static int readYN(String command) {
+        if (command.equalsIgnoreCase("N")) {
+            return 0;
+        } else if (!command.equalsIgnoreCase("Y")) {
+            System.out.println("You did not enter a valid letter:(");
+            return 2;
+        }
+        return 1;
     }
 
     public static String readReview() {

@@ -117,7 +117,7 @@ Lists out all the modules added to UniTracker.
   Input:   
   `3`  
   Output:
-  ```  
+  ```
   Here are the modules in your Modules List:  
   --------------------------------------------  
   [1] --- CS3243  
