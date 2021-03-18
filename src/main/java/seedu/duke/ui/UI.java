@@ -127,7 +127,7 @@ public class UI {
     }
 
     public static void returningToStartMenuMessage() {
-        System.out.println("Returning to start Menu!");
+        System.out.println("Returning to start menu!");
     }
 
     public void showLoadingError() {
