@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
 public class StaffStorage {
-    private static final String FILE_PATH = "Staff.txt";
+    private static final String FILE_PATH = "data/Staff.txt";
 
     public static void fileHandling() {
         try {
