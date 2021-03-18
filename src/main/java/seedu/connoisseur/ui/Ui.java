@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import static seedu.connoisseur.messages.Messages.WELCOME_MESSAGE;
 import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.SORT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
 import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
 import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
@@ -93,10 +94,17 @@ public class Ui {
     }
 
     /**
-     * Prints help message.
+     * Prints general help message.
      */
-    public void printHelpMessage() {
+    public void printGeneralHelpMessage() {
         println(HELP_MESSAGE);
+    }
+
+    /**
+     * Prints sort help message.
+     */
+    public void printSortHelpMessage() {
+        println(SORT_HELP_MESSAGE);
     }
 
     /**
@@ -129,5 +137,9 @@ public class Ui {
 
     public void printInvalidSortMethodMessage() {
         System.out.println("Invalid sort type!");
+    }
+
+    public void printInvalidHelpMessage() {
+        System.out.println("Invalid help command!");
     }
 }
