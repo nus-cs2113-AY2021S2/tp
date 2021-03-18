@@ -35,25 +35,27 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-                + "[1] Module Information\n"
-                + "[2] CAP Simulator/Calculator\n"
-                + "[3] Task Manager\n"
-                + "[4] External Links\n"
-                + "[5] Exit Program");
+            + "[1] Module Information\n"
+            + "[2] CAP Simulator/Calculator\n"
+            + "[3] Task Manager\n"
+            + "[4] External Links\n"
+            + "[5] Exit Program");
     }
 
     public static void printLinksMessage() {
+        printHorizontalLine();
         System.out.println("Welcome to the links menu ^~^\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- Add Zoom links\n"
             + "[3] --- View Zoom links\n"
-            + "[4] --- Exit to main menu\n");
+            + "[4] --- Exit to main menu");
+        printHorizontalLine();
     }
 
     public static void printLinkToDelete() {
         System.out
-            .println("Please choose which link you would like to delete and enter the number\n");
+            .println("Please choose which link you would like to delete and enter the number");
     }
 
     public static void printModuleInfoMessage() {
@@ -322,7 +324,7 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-                + "Returning back to TaskManager menu now!");
+            + "Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -355,16 +357,18 @@ public class Ui {
         for (String link : linksList) {
             System.out.println("[" + (sizeOfList++) + "] --- " + link);
         }
-        System.out.print("\n");
+        printHorizontalLine();
     }
 
     public static void printExternalLinksMessage() {
+        printHorizontalLine();
         System.out.println("Welcome to the external links menu!\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- add link\n"
             + "[2] --- remove link\n"
             + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n");
+            + "[4] --- exit to links menu");
+        printHorizontalLine();
     }
 
     public static int readCommandToInt() {
@@ -380,20 +384,21 @@ public class Ui {
     }
 
     public static void printAddLinkMessage(String description) {
-        System.out.println("Alright! I have added the following link ---  " + description + "\n");
+        System.out.println("Alright! I have added the following link ---  " + description);
+        printHorizontalLine();
     }
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
             + "<scheme>www.<domain name>.<TLD>/<path name>\n"
             + "supported schemes: https, http for now... Sorry!\n"
-            + "supported TLD: .com, .org for now... we will work on it!\n");
+            + "supported TLD: .com, .org for now... we will work on it!");
+        printHorizontalLine();
     }
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
             + "Please enter a valid one!");
-
     }
 
     public static void printListIsEmpty() {
@@ -454,6 +459,7 @@ public class Ui {
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
             + "<zoom link> <module code>");
+        printHorizontalLine();
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
@@ -468,6 +474,7 @@ public class Ui {
     }
 
     public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
+        printHorizontalLine();
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
     }
@@ -587,11 +594,12 @@ public class Ui {
 
     public static void printLinkDeleted(String deletedString) {
         System.out.println("You have deleted --- " + deletedString);
+        printHorizontalLine();
     }
 
     public static void printCapSimulatorPrompt() {
         System.out.println("You may key in your letter grades "
-                + "and MCs associated with the letter grade.");
+            + "and MCs associated with the letter grade.");
     }
 
     public static void printMCsPerModulePrompt() {
@@ -604,11 +612,11 @@ public class Ui {
 
     public static void printHelpGraduationMenu() {
         System.out.println("Please choose which action you would like to do"
-                + " and enter the number:\n"
-                + "[1] --- Add CAP and Number of MCs graded taken\n"
-                + "[2] --- View CAP and Number of MCs graded taken\n"
-                + "[3] --- Simulate future CAP\n"
-                + "[4] --- Exit\n");
+            + " and enter the number:\n"
+            + "[1] --- Add CAP and Number of MCs graded taken\n"
+            + "[2] --- View CAP and Number of MCs graded taken\n"
+            + "[3] --- Simulate future CAP\n"
+            + "[4] --- Exit\n");
     }
 
     public static void getCurrentCapPrompt() {
@@ -622,7 +630,7 @@ public class Ui {
     public static void printRegisteredCapAndMCsTakenMessage() {
         System.out.println("Current CAP: " + HelpGraduation.getCurrentCap());
         System.out.println("Number of Graded MCs Taken: "
-                + HelpGraduation.getNumberOfGradedMCsTaken());
+            + HelpGraduation.getNumberOfGradedMCsTaken());
     }
 
     public static void printInvalidGradeMessage() {
