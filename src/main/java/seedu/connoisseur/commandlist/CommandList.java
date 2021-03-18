@@ -267,7 +267,7 @@ public class CommandList {
             for (int i = 0; i < titleMatch.size(); i++) {
                 Review currentReview = reviewList.get(titleMatch.get(i));
                 ui.printView(currentReview.getTitle(), currentReview.getCategory(), currentReview.getDateTime(), currentReview.starRating(), currentReview.getDescription());
-                if(!((i+1) == titleMatch.size())) {
+                if (!((i + 1) == titleMatch.size())) {
                     ui.print("\n");
                 }
             }
