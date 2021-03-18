@@ -11,7 +11,7 @@ public class Messages {
     public static final String WELCOME_MESSAGE = "                         Welcome to\n"
             + LOGO;
 
-    public static final String COMMAND_PROMPT = "___________________________________________________________________________________________________________________________________\n"
+    public static final String COMMAND_PROMPT = "____________________________________________________________________\n"
             + "Please enter a command: ";
     public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!"
             + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"

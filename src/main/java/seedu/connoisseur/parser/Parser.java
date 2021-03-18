@@ -30,7 +30,7 @@ public class Parser {
             arguments = null;
         }
 
-        switch(command){
+        switch (command) {
         case "list":
             commandList.listReviews(arguments);
             break;

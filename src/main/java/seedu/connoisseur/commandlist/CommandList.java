@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static seedu.connoisseur.messages.Messages.*;
 
+
 /**
  * Class with methods for different commands.
  */
@@ -266,7 +267,7 @@ public class CommandList {
             ui.println("Found " + titleMatch.size() + " matching title(s)");
             for (int i = 0; i < titleMatch.size(); i++) {
                 Review currentReview = reviewList.get(titleMatch.get(i));
-                ui.printView(currentReview.getTitle(), currentReview.getCategory(), currentReview.getDateTime(), currentReview.starRating(), currentReview.getDescription());
+                ui.printView(currentReview);
                 if (!((i + 1) == titleMatch.size())) {
                     ui.print("\n");
                 }

@@ -1,5 +1,7 @@
 package seedu.connoisseur.ui;
 
+import seedu.connoisseur.review.Review;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -50,12 +52,12 @@ public class Ui {
         println("    Title          Category       Rating         Date");
     }
 
-    public void printView(String title, String category, String dateAndTimeOfEntry, String rating, String description) {
-        println("Title               : " + title);
-        println("Category            : " + category);
-        println("Date & Time of Entry: " + dateAndTimeOfEntry);
-        println("Rating              : " + rating);
-        println("Description         : " + description);
+    public void printView(Review currentReview) {
+        println("Title               : " + currentReview.getTitle());
+        println("Category            : " + currentReview.getCategory());
+        println("Date & Time of Entry: " + currentReview.getDateTime());
+        println("Rating              : " + currentReview.starRating());
+        println("Description         : " + currentReview.getDescription());
     }
 
     /**
