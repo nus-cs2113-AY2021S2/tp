@@ -34,20 +34,24 @@ public class NurseScheduleActions {
 
     public void listAllSchedules(List<NurseSchedule> nurseSchedules) {
         nursesFound.clear();
-        for (int i = 0; i<nurseSchedules.size(); i++) {
-            findSchedules.clear();
-            if (!nursesFound.contains(nurseSchedules.get(i).getNurseID())) {
-                nursesFound.add(nurseSchedules.get(i).getNurseID());
-                String nurseID = nurseSchedules.get(i).getNurseID();
-                for (NurseSchedule nurseSchedule : nurseSchedules) {
-                    if (nurseID.equals(nurseSchedule.getNurseID())) {
-                        findSchedules.add(nurseSchedule);
+        if(nurseSchedules.size() == 0) {
+            System.out.println("No schedules found!");
+        } else {
+            for (int i = 0; i < nurseSchedules.size(); i++) {
+                findSchedules.clear();
+                if (!nursesFound.contains(nurseSchedules.get(i).getNurseID())) {
+                    nursesFound.add(nurseSchedules.get(i).getNurseID());
+                    String nurseID = nurseSchedules.get(i).getNurseID();
+                    for (NurseSchedule nurseSchedule : nurseSchedules) {
+                        if (nurseID.equals(nurseSchedule.getNurseID())) {
+                            findSchedules.add(nurseSchedule);
+                        }
                     }
-                }
-                Collections.sort(findSchedules);
-                System.out.println(nurseID);
-                for (NurseSchedule findSchedule : findSchedules) {
-                    System.out.println("\t" + findSchedule.toFind());
+                    Collections.sort(findSchedules);
+                    System.out.println(nurseID);
+                    for (NurseSchedule findSchedule : findSchedules) {
+                        System.out.println("\t" + findSchedule.toFind());
+                    }
                 }
             }
         }

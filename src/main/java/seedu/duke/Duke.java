@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.drugs.DrugInstance;
+import seedu.nurseschedules.NurseScheduleInstance;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
@@ -28,7 +30,7 @@ public class Duke {
                 String c = startMenuCommand.trim();
                 switch (c) {
                     case "1":
-                        System.out.println("Staff Instance!");
+                        UI.showLine();
                         Parser.run();
                         break;
                     case "2":
@@ -38,7 +40,7 @@ public class Duke {
                         System.out.println("Doctor's Appointment Instance!");
                         break;
                     case "4":
-                        System.out.println("Nurse Schedule Instance!");
+                        NurseScheduleInstance.main();
                         break;
                     case "5":
                         System.out.println("Drug Viewer Instance!");

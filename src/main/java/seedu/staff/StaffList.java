@@ -5,15 +5,18 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static seedu.duke.ui.UI.prettyPrint;
+import static seedu.duke.ui.UI.*;
 import static seedu.staff.Parser.addFunctionParser;
 
 public class StaffList {
     private static final String DOCTOR_TYPE = "D";
     private static final String NURSE_TYPE = "N";
-    private static final ArrayList<Staff> list = new ArrayList<>();
+    private static ArrayList<Staff> list = new ArrayList<>();
     protected static int numStaff = 0;
 
+    public static void resetList() {
+        list.clear();
+    }
     public static void addStaff(Staff staff) {
         list.add(staff);
         numStaff++;
@@ -30,7 +33,7 @@ public class StaffList {
     public static boolean isValidID(String id) {
         for (Staff staff: list){
             if (staff.getId().equals(id)) {
-                System.out.println("Error that staff ID has been taken/n");
+                System.out.println("Error that staff ID has been taken\n");
                 return false;
             }
         }
@@ -76,14 +79,20 @@ public class StaffList {
 
     public static void delete(String line) {
         int i = 0;
+        boolean isExistingID = false;
         for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext(); ) {
             Staff staff = iterator.next();
             if (staff.getId().equals(line.split(" ")[1])) {
                 iterator.remove();
+                isExistingID = true;
             }
             i++;
         }
-        System.out.println(line.split(" ")[1] + " has been fired.");
+        if (isExistingID) {
+            firedOutput(line);
+        } else {
+            staffDoesNotExist(line);
+        }
     }
 
     public static void display(Staff staff) {

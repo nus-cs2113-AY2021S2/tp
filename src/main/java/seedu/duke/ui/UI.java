@@ -117,11 +117,27 @@ public class UI {
 
     public static void hiredOutput(String line) {
         if (line.split(" ")[1].charAt(0) == 'D') {
-            System.out.println("Doctor " + line.split(" ")[2] + " hired!");
+            try {
+                System.out.println("Doctor " + line.split(" ")[2] + " hired!");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Unknown Doctor hired!");
+            }
         }
         else if (line.split(" ")[1].charAt(0) == 'N') {
-            System.out.println("Nurse " + line.split(" ")[2] + " hired!");
+            try {
+                System.out.println("Nurse " + line.split(" ")[2] + " hired!");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Unknown Doctor hired!");
+            }
         }
+    }
+
+    public static void firedOutput(String line) {
+        System.out.println(line.split(" ")[1] + " has been fired.");
+    }
+
+    public static void staffDoesNotExist(String line) {
+        System.out.println("Staff with ID: " + line.split(" ")[1]+ " does not exist");
     }
 
     public static String prettyPrint(String string, int length) {
@@ -132,7 +148,7 @@ public class UI {
         return new String(new char[count]).replace("\0", with);
     }
 
-    public static void staffHeader() {
+    public static void staffListHeader() {
         System.out.println(
                 prettyPrint("ID", 10) + " | " + prettyPrint("Name", 10) + " | "
                         + prettyPrint("Age",5) + " | " + prettyPrint("Specialisation", 20));
@@ -163,6 +179,22 @@ public class UI {
         System.out.print("Staff --> ");
     }
     public static void staffMenuHeader() {
-        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n");
+        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
+    }
+
+    public static boolean isListTypo() {
+        Scanner in = new Scanner(System.in);
+        String input;
+        System.out.println("Do you mean \"list\" (y/n)");
+        input = in.nextLine();
+        return input.equals("y");
+    }
+
+    public static boolean isFindTypo() {
+        Scanner in = new Scanner(System.in);
+        String input;
+        System.out.println("Do you mean \"find\" (y/n)");
+        input = in.nextLine();
+        return input.equals("y");
     }
 }
