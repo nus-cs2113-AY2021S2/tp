@@ -11,7 +11,7 @@ public class Shift {
     private int vacancy;
     private int shiftIndex;
 
-    public Shift(ArrayList<Employee> employees, LocalDate shiftDate, int vacancy, int shiftIndex) {
+    public Shift(ArrayList<Employee> employees, LocalDate shiftDate, int shiftIndex, int vacancy) {
         this.employees = employees;
         this.shiftDate = shiftDate;
         this.vacancy = vacancy;
