@@ -17,8 +17,10 @@ public class SortCommand extends Command {
         try {
             switch (criteria) {
             case "asc":
+
                 break;
             case "desc":
+
                 break;
             default:
                 //throw new InvalidSortException();
