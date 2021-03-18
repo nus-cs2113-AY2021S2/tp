@@ -40,7 +40,7 @@ public class NurseScheduleInstance {
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            System.out.print("--> NSchedule: ");
+            System.out.print("NSchedule --> ");
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
             String[] details = parser.getDetails(line);
