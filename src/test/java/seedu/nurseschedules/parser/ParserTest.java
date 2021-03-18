@@ -2,7 +2,7 @@ package seedu.nurseschedules.parser;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ParserTest {
 
@@ -15,7 +15,7 @@ class ParserTest {
     @Test
     void getDetails() {
         Parser parser = new Parser();
-        String details[] = new String[3];
+        String[] details;
         details = parser.getDetails("add test details padding");
         assertEquals(details[0], "test");
     }
