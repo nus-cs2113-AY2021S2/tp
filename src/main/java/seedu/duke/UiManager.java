@@ -12,26 +12,26 @@ public class UiManager {
     private static final String DIVIDER = "--------------------------------------------------------------------------";
     private static final String SPACING = "      ";
     private static final String INPUT_HEADER = "> ";
-    private static final String LOGO =  " /$$   /$$ /$$   /$$  /$$$$$$  /$$      /$$" + LINE_SEPARATOR
-            + "| $$$ | $$| $$  | $$ /$$__  $$| $$$    /$$$" + LINE_SEPARATOR
-            + "| $$$$| $$| $$  | $$| $$  \\__/| $$$$  /$$$$  /$$$$$$  /$$$$$$$$  /$$$$$$" + LINE_SEPARATOR
-            + "| $$ $$ $$| $$  | $$|  $$$$$$ | $$ $$/$$ $$ |____  $$|____ /$$/ /$$__  $$" + LINE_SEPARATOR
-            + "| $$  $$$$| $$  | $$ \\____  $$| $$  $$$| $$  /$$$$$$$   /$$$$/ | $$$$$$$$" + LINE_SEPARATOR
-            + "| $$\\  $$$| $$  | $$ /$$  \\ $$| $$\\  $ | $$ /$$__  $$  /$$__/  | $$_____/" + LINE_SEPARATOR
-            + "| $$ \\  $$|  $$$$$$/|  $$$$$$/| $$ \\/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$" + LINE_SEPARATOR
+    private static final String LOGO =  " /$$   /$$ /$$   /$$  /$$$$$$  /$$      /$$\n"
+            + "| $$$ | $$| $$  | $$ /$$__  $$| $$$    /$$$\n"
+            + "| $$$$| $$| $$  | $$| $$  \\__/| $$$$  /$$$$  /$$$$$$  /$$$$$$$$  /$$$$$$\n"
+            + "| $$ $$ $$| $$  | $$|  $$$$$$ | $$ $$/$$ $$ |____  $$|____ /$$/ /$$__  $$\n"
+            + "| $$  $$$$| $$  | $$ \\____  $$| $$  $$$| $$  /$$$$$$$   /$$$$/ | $$$$$$$$\n"
+            + "| $$\\  $$$| $$  | $$ /$$  \\ $$| $$\\  $ | $$ /$$__  $$  /$$__/  | $$_____/\n"
+            + "| $$ \\  $$|  $$$$$$/|  $$$$$$/| $$ \\/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$\n"
             + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/";
     private static final String GREETING_MESSAGE = "Hello! Welcome to NUSMaze" + LINE_SEPARATOR
             + "Where do you want to go today?";
     private static final String BYE_MESSAGE = "Bye. Hope to see you again soon!";
-    private static final String HELP_MESSAGE = "1. go:" + LINE_SEPARATOR
-            + SPACING + "finds the route to go from one block to another" + LINE_SEPARATOR
-            + "2. history:" + LINE_SEPARATOR
-            + SPACING + "lists past 10 route searches" + LINE_SEPARATOR
-            + "3. add note LOCATION/DESCRIPTION:" + LINE_SEPARATOR
-            + SPACING + "adds and tags a note to a particular location" + LINE_SEPARATOR
-            + "4. list notes LOCATION:" + LINE_SEPARATOR
-            + SPACING + "list notes tagged to the given location" + LINE_SEPARATOR
-            + "5. delete note LOCATION/NOTE INDEX:" + LINE_SEPARATOR
+    private static final String HELP_MESSAGE = "1. go:\n"
+            + SPACING + "finds the route to go from one block to another\n"
+            + "2. history:\n"
+            + SPACING + "lists past 10 route searches\n"
+            + "3. add note LOCATION/DESCRIPTION:\n"
+            + SPACING + "adds and tags a note to a particular location\n"
+            + "4. list notes LOCATION:\n"
+            + SPACING + "list notes tagged to the given location\n"
+            + "5. delete note LOCATION/NOTE INDEX:\n"
             + SPACING + "deletes notes based on index number tagged to the given location";
 
     private final Scanner in;
