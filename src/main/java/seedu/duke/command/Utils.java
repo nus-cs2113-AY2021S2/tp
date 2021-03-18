@@ -45,9 +45,9 @@ public class Utils {
      * Checks {@code value} to see if it is not {@code null} and not empty,
      * and returns it if {@code true}.
      *
-     * @param value the {@code String} to check.
+     * @param value   the {@code String} to check.
      * @param command the name of the {@code Command} calling it.
-     * @param option the name of the {@code option} pertaining to the {@code value}.
+     * @param option  the name of the {@code option} pertaining to the {@code value}.
      * @return the {@code value} if not empty
      * @throws CommandException if {@code value} is null or empty.
      */
@@ -62,11 +62,11 @@ public class Utils {
 
     /**
      * Extracts the {@code option}'s {@code value} from {@code arguments} {@code ArrayList}.<br>
-     * e.g. {@code ["return", "-i", "2"], option = "-i", value = "2"}.<br>
+     * Example: {@code ["return", "-i", "2"], option = "-i", value = "2"}.<br>
      *
      * @param arguments an {@code ArrayList} containing {@code Command} arguments.
-     * @param command the name of the {@code Command} calling it.
-     * @param option the name of the {@code option} pertaining to the {@code value}.
+     * @param command   the name of the {@code Command} calling it.
+     * @param option    the name of the {@code option} pertaining to the {@code value}.
      * @return the {@code option}'s {@code value}
      * @throws CommandException if {@code option} does not exist, or {@code value} is missing or empty.
      * @see #validateNotEmpty(String, String, String)
@@ -89,15 +89,15 @@ public class Utils {
      * Gets the value of the second argument from {@code arguments}.
      *
      * @param arguments an {@code ArrayList} containing {@code Command} arguments.
-     * @param command the name of the {@code Command} calling it.
+     * @param command   the name of the {@code Command} calling it.
      * @return the non-empty value.
      * @throws CommandException if value is missing or empty.
      */
     public static String getValue(ArrayList<String> arguments, String command)
             throws CommandException {
         assert arguments != null : "arguments is null!";
-        boolean isValuable = (arguments.size() > VALUE_INDEX) &&
-                (arguments.get(VALUE_INDEX).length() == 0);
+        boolean isValuable = (arguments.size() > VALUE_INDEX)
+                && (arguments.get(VALUE_INDEX).length() == 0);
         if (isValuable) {
             return arguments.get(VALUE_INDEX);
         }
@@ -113,10 +113,10 @@ public class Utils {
     /**
      * Checks {@code arguments} for invalid, duplicate and conflict options.
      *
-     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
-     * @param command the name of the {@code Command} calling it.
+     * @param arguments    an {@code ArrayList} containing {@code Command} arguments.
+     * @param command      the name of the {@code Command} calling it.
      * @param validOptions a {@code String} array containing valid options pertaining to {@code command}.
-     * @param orOptions a {@code String} array containing conflict options pertaining to {@code command}.
+     * @param orOptions    a {@code String} array containing conflict options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains invalid/duplicate options and conflict options.
      * @see #checkInvalidOptions(ArrayList, String, String...)
      * @see #checkOptionConflict(ArrayList, String, String...)
@@ -131,8 +131,8 @@ public class Utils {
     /**
      * Checks {@code arguments} for invalid/duplicate options.
      *
-     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
-     * @param command the name of the {@code Command} calling it.
+     * @param arguments    an {@code ArrayList} containing {@code Command} arguments.
+     * @param command      the name of the {@code Command} calling it.
      * @param validOptions valid options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains an invalid or a duplicate option.
      */
@@ -156,7 +156,7 @@ public class Utils {
      * Checks {@code arguments} for conflict options.
      *
      * @param arguments an {@code ArrayList} containing {@code Command} arguments.
-     * @param command the name of the {@code Command} calling it.
+     * @param command   the name of the {@code Command} calling it.
      * @param orOptions conflict options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains a conflict option.
      */
@@ -187,10 +187,10 @@ public class Utils {
      *     <li>{@code Command} does not require option validation.</li>
      * </ul>
      *
-     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param arguments         an {@code ArrayList} containing {@code Command} arguments.
      * @param argumentTypeOrder an Enumeration array of type {@code ArgumentType} containing the argument
      *                          type order.
-     * @param command the name of the {@code Command} calling it.
+     * @param command           the name of the {@code Command} calling it.
      * @throws CommandException if there is a violation to the argument type order.
      * @see ArgumentType
      * @see #validateArgument(String, ArgumentType, String)
@@ -212,9 +212,9 @@ public class Utils {
     /**
      * Checks {@code argument}'s type matches {@code argumentType}.
      *
-     * @param argument a portion of the {@code Command}'s arguments.
+     * @param argument     a portion of the {@code Command}'s arguments.
      * @param argumentType an Enumeration of ArgumentType to match with.
-     * @param command the name of the {@code Command} calling it.
+     * @param command      the name of the {@code Command} calling it.
      * @throws CommandException if {@code argument}'s type does not match {@code argumentType}.
      * @see ArgumentType
      */
