@@ -8,7 +8,7 @@ import seedu.duke.ui.Ui;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-public class CreditScoreCommand extends Command{
+public class CreditScoreCommand extends Command {
 
     protected static final String COMMAND_CREDIT_SCORE = "creditscore";
 

@@ -59,7 +59,7 @@ public class Validators {
             IndexOutOfBoundsException {
         int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
         records.getRecordAt(recordNumberInList);
-        assert recordNumberInList > 0: "recordNumberInList should be greater than 0 and non-negative";
+        assert recordNumberInList > 0 : "recordNumberInList should be greater than 0 and non-negative";
         return recordNumberInList;
     }
 
