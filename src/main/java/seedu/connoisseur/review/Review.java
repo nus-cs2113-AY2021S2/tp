@@ -26,7 +26,7 @@ public class Review {
         this.rating = rating;
         this.description = description;
         LocalDateTime dateTime = LocalDateTime.now();
-        this.dateAndTimeOfEntry = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm:ss a"));
+        this.dateAndTimeOfEntry = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy h:mm a"));
     }
 
     /**
