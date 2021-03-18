@@ -45,6 +45,7 @@ public class MenuParser {
                 break;
             case "help":
                 UI.printPatientHelpList();
+                break;
             case "return":
                 return true;
             default:
