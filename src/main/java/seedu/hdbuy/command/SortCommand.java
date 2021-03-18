@@ -2,7 +2,7 @@ package seedu.hdbuy.command;
 
 import seedu.hdbuy.data.QueryKey;
 //import seedu.hdbuy.data.exception.InvalidSortException;
-import seedu.hdbuy.ui.TextUi;
+//import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
 
