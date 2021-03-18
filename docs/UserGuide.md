@@ -12,12 +12,12 @@
 
 [3. Features](#3-features)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add/View Module Description](#311-addview-module-description)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add/View Components and Their Weightages](#312-addview-components-and-their-weightages)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View All Modules](#313-view-all-modules)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add a Review](#314-add-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View All Reviews](#315-view-all-reviews)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Delete a Module](#316-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add/View Module Description](#311-addview-module-description)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Add/View Components and Their Weightages](#312-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. View All Modules](#313-view-all-modules)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Add a Review](#314-add-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. View All Reviews](#315-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Delete a Module](#316-delete-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
@@ -28,11 +28,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 View All Tasks](#333-view-all-tasks)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Pin a Task](#334-pin-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add an External Link](#342-add-external-link)    
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Remove an External Link](#343-remove-external-link)   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View all Links](#344-view-external-links)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add a Zoom Link](#345-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View Zoom Links](#346-view-zoom-links)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Add a Zoom Link](#345-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#346-view-zoom-links)
 
 [4. Command Summary](#4-command-summary)
 
@@ -54,8 +55,8 @@ Graphical User Interface (GUI).
 
 - Operating system should be: Windows 7 and above, macOS or Linux.
 - Ensure that Java 11 is installed on your computer.
-    - You can download the latest version of Java 11
-      from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+  - You can download the latest version of Java 11
+    from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
 #### 2.1.1 Windows 7 and above
 
@@ -63,7 +64,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
@@ -72,7 +73,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
@@ -81,7 +82,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
@@ -136,7 +137,7 @@ User can view module description added previously.
   ````
   Input:  
   `CS2113T`   
-  Output:  
+  Output:
   ````
   This module does not exist, would you like to add it? [Y/N]
   ````
@@ -186,25 +187,25 @@ User can view module description added previously.
 * Example for adding components and weightage to a module
   Input:  
   `2`  
-  Output:  
+  Output:
   ````
   Would you like to add/view component(s) to a module? [Y/N]
   ````
   Input:  
   `Y`  
-  Output:  
+  Output:
   ````
   Key in 1 to add component and 2 to view component
   ````
   Input:  
   `1`  
-  Output:  
+  Output:
   ````
   Module Name?
   ````
-  Input:
-  `CS2113T`
-  Output:  
+  Input:  
+  `CS2113T`  
+  Output:
   ````
   Please key in your component and percentage of the component.
   Leave space between component and percentage only.
@@ -212,7 +213,7 @@ User can view module description added previously.
   ````
   Input:  
   `FinalExam 20`  
-  Output:  
+  Output:
   ````
   Component and weightage added!
   ````
@@ -241,7 +242,7 @@ User can view module description added previously.
     ````
   {FinalExam=20}
     ````
-  
+
 #### 3.1.3 View all modules
 
 Lists out all the modules added to UniTracker.
@@ -511,22 +512,22 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
   Returning back to TaskManager menu now!
   ````
 * For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-    * Format for date: `yyyy-mm-dd`
-    * Format for time (24-h clock): `hh:mm`
-    * Example:  
-      Output:  
-      `What is the date of the assignment you want to add?`  
-      Input:  
-      `2021-03-14`
-      Output:  
-      `What is the time of the assignment you want to add?`  
-      Input:  
-      `23:59`  
-      Output:
-      ````
-      You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-      Returning back to TaskManager menu now!
-      ````
+  * Format for date: `yyyy-mm-dd`
+  * Format for time (24-h clock): `hh:mm`
+  * Example:  
+    Output:  
+    `What is the date of the assignment you want to add?`  
+    Input:  
+    `2021-03-14`
+    Output:  
+    `What is the time of the assignment you want to add?`  
+    Input:  
+    `23:59`  
+    Output:
+    ````
+    You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+    Returning back to TaskManager menu now!
+    ````
 
 #### 3.3.2 Delete a Task
 
