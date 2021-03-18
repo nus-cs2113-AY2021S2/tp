@@ -1,4 +1,4 @@
-package nurseschedules.parser;
+package seedu.nurseschedules.parser;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +23,7 @@ public class Parser {
      * @param text User input
      * @return First word of user input
      */
-    public static String getFirstWord(String text) {
+    public String getFirstWord(String text) {
         int index = text.indexOf(' ');
 
         if (index > -1) {
