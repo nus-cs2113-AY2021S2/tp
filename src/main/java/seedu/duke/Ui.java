@@ -18,6 +18,7 @@ import java.util.logging.Logger;
  */
 public class Ui {
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
             + "|  _ \\ _   _| | _____ \n"
