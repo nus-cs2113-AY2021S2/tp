@@ -448,8 +448,9 @@ public class Ui {
     }
 
     public static void printModuleComponentPrompt() {
-        System.out.println("Please key in your component and percentage of the component.");
-        System.out.println("Example: Final Exam 20");
+        System.out.println("Please key in your component and percentage of the component. ");
+        System.out.println("Leave space between component and percentage only.");
+        System.out.println("Example: FinalExam 20");
     }
 
     public static void printEnterZoomLinkMessage() {
