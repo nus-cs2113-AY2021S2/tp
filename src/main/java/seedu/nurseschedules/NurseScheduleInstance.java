@@ -1,6 +1,7 @@
 package seedu.nurseschedules;
 
-import nurseschedules.parser.Parser;
+import seedu.duke.storage.NurseScheduleStorage;
+import seedu.nurseschedules.parser.Parser;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -32,23 +33,14 @@ public class NurseScheduleInstance {
         this.storage = new NurseScheduleStorage();
 
         storage.load(nurseSchedules);
-
-//        String logo = " ____        _        \n"
-//                + "|  _ \\ _   _| | _____ \n"
-//                + "| | | | | | | |/ / _ \\\n"
-//                + "| |_| | |_| |   <  __/\n"
-//                + "|____/ \\__,_|_|\\_\\___|\n";
-//        System.out.println("Hello from\n" + logo);
-//        System.out.println("What is your name?");
-//
-//        Scanner in = new Scanner(System.in);
-//        System.out.println("Hello " + in.nextLine());
+        System.out.println("Welcome to Nurse Schedules!");
+        System.out.println("Type \"help\" to for nurse schedules commands");
     }
 
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            System.out.print("->NSchedule: ");
+            System.out.print("--> NSchedule: ");
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
             String[] details = parser.getDetails(line);
@@ -64,8 +56,16 @@ public class NurseScheduleInstance {
                 actions.listSchedules(nurseSchedules, parser.getDetails(line));
             } else if (command.equals("delete")) {
                 actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-            } else if (command.equals("exit")) {
+            } else if (command.equals("help")) {
+                System.out.println("Here is a list of Nurse Schedules commands: ");
+                System.out.println("\"help\" brings up this list of commands!");
+                System.out.println("\"add [NurseID] [Patient ID] [Date (DDMMYYYY)]\" adds a schedule to the schedule list!");
+                System.out.println("\"list [NurseID/all]\" brings up the list of either all or specified nurse schedules!");
+                System.out.println("\"delete [NurseID] [Date (DDMMYYYY)]\" deletes the schedule with the specified nurse ID!");
+                System.out.println("\"return\" returns you to the Start Menu!");
+            } else if (command.equals("return")) {
                 storage.writeToFile(nurseSchedules);
+                System.out.println("Back to main menu");
                 isRun = false;
             }
         }

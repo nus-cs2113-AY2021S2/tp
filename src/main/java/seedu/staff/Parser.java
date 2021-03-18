@@ -10,8 +10,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import static seedu.duke.ui.UI.staffHeader;
-import static seedu.duke.ui.UI.staffMenuHeader;
+import static seedu.duke.ui.UI.*;
 
 public class Parser {
 
@@ -68,15 +67,22 @@ public class Parser {
             UI.noCommandErrorMessage();
             return 1;
         }
+
         switch (line.split(" ")[0]) {
         case ("add"):
+            checkID(line);
             StaffList.add(line);
             break;
 
+        case ("lsit"):
+            if (!isListTypo()) {
+                UI.unrecognizedCommandMessage();
+                break;
+            }
         case ("list"):
             UI.emptyLine();
             checkListCommand(line);
-            UI.staffHeader();
+            UI.staffListHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
             StaffList.list(string);
@@ -93,9 +99,15 @@ public class Parser {
             UI.printStaffHelpList();
             break;
 
+        case ("fidn"):
+            if (!isFindTypo()) {
+                UI.unrecognizedCommandMessage();
+                break;
+            }
         case ("find"):
+            UI.emptyLine();
             checkEmptyInput(line);
-            staffHeader();
+            staffListHeader();
             UI.showLine();
             StaffList.find(line.split(" ")[1]);
             UI.emptyLine();
@@ -103,6 +115,7 @@ public class Parser {
 
         case ("return"):
             StaffStorage.writeToFile();
+            StaffList.resetList();
             return 0;
 
         default:
