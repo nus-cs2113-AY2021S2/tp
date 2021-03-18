@@ -55,8 +55,8 @@ Graphical User Interface (GUI).
 
 - Operating system should be: Windows 7 and above, macOS or Linux.
 - Ensure that Java 11 is installed on your computer.
-    - You can download the latest version of Java 11
-      from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+  - You can download the latest version of Java 11
+    from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
 #### 2.1.1 Windows 7 and above
 
@@ -64,7 +64,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
@@ -73,7 +73,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
@@ -82,7 +82,7 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
 4. Navigate to the folder you stored your Jar file in.
-    - You can open a folder by typing `cd` followed by space then the name of your folder.
+  - You can open a folder by typing `cd` followed by space then the name of your folder.
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
@@ -137,7 +137,7 @@ User can view module description added previously.
   ````
   Input:  
   `CS2113T`   
-  Output:  
+  Output:
   ````
   This module does not exist, would you like to add it? [Y/N]
   ````
@@ -148,7 +148,7 @@ User can view module description added previously.
   Key in the module description for CS2113T:
   ````
   Input:  
-  `Y`
+  `Y`  
   Output:
   ````
   Key in the module description for CS2113T:
@@ -187,25 +187,29 @@ User can view module description added previously.
 * Example for adding components and weightage to a module
   Input:  
   `2`  
-  Output:  
+  Output:
   ````
   Would you like to add/view component(s) to a module? [Y/N]
   ````
   Input:  
   `Y`  
-  Output:  
+  Output:
   ````
   Key in 1 to add component and 2 to view component
   ````
   Input:  
   `1`  
-  Output:  
+  Output:
   ````
   Module Name?
   ````
   Input:  
   `CS2113T`  
+<<<<<<< HEAD
   Output:  
+=======
+  Output:
+>>>>>>> c88c6dccc25cdf597159b828453e9f196d9f2dd9
   ````
   Please key in your component and percentage of the component.
   Leave space between component and percentage only.
@@ -213,7 +217,7 @@ User can view module description added previously.
   ````
   Input:  
   `FinalExam 20`  
-  Output:  
+  Output:
   ````
   Component and weightage added!
   ````
@@ -242,7 +246,7 @@ User can view module description added previously.
     ````
   {FinalExam=20}
     ````
-  
+
 #### 3.1.3 View all modules
 
 Lists out all the modules added to UniTracker.
@@ -512,22 +516,22 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
   Returning back to TaskManager menu now!
   ````
 * For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-    * Format for date: `yyyy-mm-dd`
-    * Format for time (24-h clock): `hh:mm`
-    * Example:  
-      Output:  
-      `What is the date of the assignment you want to add?`  
-      Input:  
-      `2021-03-14`
-      Output:  
-      `What is the time of the assignment you want to add?`  
-      Input:  
-      `23:59`  
-      Output:
-      ````
-      You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-      Returning back to TaskManager menu now!
-      ````
+  * Format for date: `yyyy-mm-dd`
+  * Format for time (24-h clock): `hh:mm`
+  * Example:  
+    Output:  
+    `What is the date of the assignment you want to add?`  
+    Input:  
+    `2021-03-14`
+    Output:  
+    `What is the time of the assignment you want to add?`  
+    Input:  
+    `23:59`  
+    Output:
+    ````
+    You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+    Returning back to TaskManager menu now!
+    ````
 
 #### 3.3.2 Delete a Task
 
