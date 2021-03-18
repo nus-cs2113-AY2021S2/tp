@@ -231,15 +231,11 @@ public class Ui {
         System.out.println("Please choose which module you would like to review"
             + " and enter the number:\n");
         int moduleNumberInt = Ui.readCommandToInt();
-        try {
-            if (moduleNumberInt != -1) {
-                moduleNumberInt--;
-                String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
-                modules.get(moduleNumberInt).setReview(review);
-            } else {
-                printInvalidIntegerMessage();
-            }
-        } catch (IndexOutOfBoundsException e) {
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
+            modules.get(moduleNumberInt).setReview(review);
+        } else {
             printInvalidIntegerMessage();
         }
     }
