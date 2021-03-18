@@ -21,6 +21,7 @@ public class QueryFormatter {
             if (value.contains(" ")) {
                 value = value.replaceAll("\\s", "%20");
             }
+            assert !value.contains(" ") : "Request will fail due to whitespace in query";
             switch (key) {
             case TYPE:
                 String type = String.format("\"flat_type\":\"%s\"", value);
