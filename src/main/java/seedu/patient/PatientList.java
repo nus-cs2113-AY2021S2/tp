@@ -25,7 +25,7 @@ public class PatientList {
         for (int i = 0; i < numberOfPatients; i++) {
             String patientDetails = patients.get(i).getPatientDetails();
             if (patientDetails.contains(inputString)) {
-                UI.printPatientList(i, patientDetails);
+                UI.printPatientList(i+1, patientDetails);
             }
         }
     }
