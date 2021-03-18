@@ -1,4 +1,4 @@
 package seedu.duke.exceptions;
 
-public class WrongListInputException extends Exception{
+public class WrongListInputException extends Exception {
 }

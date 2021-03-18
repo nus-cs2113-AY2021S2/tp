@@ -17,6 +17,7 @@ public class StaffList {
     public static void resetList() {
         list.clear();
     }
+
     public static void addStaff(Staff staff) {
         list.add(staff);
         numStaff++;
@@ -30,8 +31,9 @@ public class StaffList {
             UI.hiredOutput(line);
         }
     }
+
     public static boolean isValidID(String id) {
-        for (Staff staff: list){
+        for (Staff staff : list) {
             if (staff.getId().equals(id)) {
                 System.out.println("Error that staff ID has been taken\n");
                 return false;
@@ -40,23 +42,23 @@ public class StaffList {
         return true;
     }
 
-    public static ArrayList getList(){
+    public static ArrayList getList() {
         return list;
     }
 
-    public static void list(String ... parameter){
+    public static void list(String... parameter) {
         if (parameter[0] == (null)) {
             for (Staff staff : list) {
                 display(staff);
             }
         } else if (parameter[0].equals("nurses")) {
-            for (Staff staff: list){
+            for (Staff staff : list) {
                 if (staff.getType().equals(NURSE_TYPE)) {
                     display(staff);
                 }
             }
         } else if (parameter[0].equals("doctors")) {
-            for (Staff staff: list){
+            for (Staff staff : list) {
                 if (staff.getType().equals(DOCTOR_TYPE)) {
                     display(staff);
                 }
@@ -65,7 +67,7 @@ public class StaffList {
     }
 
     public static void find(String keyword) {
-        for (Staff staff: list){
+        for (Staff staff : list) {
             if (search(keyword, staff)) {
                 display(staff);
             }

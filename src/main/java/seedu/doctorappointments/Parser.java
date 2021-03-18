@@ -21,7 +21,7 @@ public class Parser {
         case "help":
             AppointmentActions.helpAppointment();
             break;
-        default :
+        default:
             System.out.println("Sorry, I don't know what that means :(");
         }
         return false;

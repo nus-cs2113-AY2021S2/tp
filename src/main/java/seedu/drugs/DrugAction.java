@@ -22,7 +22,7 @@ public class DrugAction {
     public void deleteDrugs(String description) {
         try {
             description = description.substring(7);
-            for (int i = 0; i< Drugs.size(); ++i) {
+            for (int i = 0; i < Drugs.size(); ++i) {
                 if (Drugs.get(i).getName().contains(description)) {
                     System.out.println("Deleted " + Drugs.get(i).getName() + " from inventory!");
                     Drugs.remove(Drugs.get(i));
@@ -48,7 +48,7 @@ public class DrugAction {
         if (Drugs.size() != 0) {
             System.out.println("Current Inventory: ");
             for (int i = 1; i <= Drugs.size(); ++i) {
-                System.out.println(i + ". " + Drugs.get(i-1).getName() + " " + Drugs.get(i-1).getPrice() + " " + Drugs.get(i-1).getQuantity());
+                System.out.println(i + ". " + Drugs.get(i - 1).getName() + " " + Drugs.get(i - 1).getPrice() + " " + Drugs.get(i - 1).getQuantity());
             }
         } else {
             System.out.println("You do not have any Drugs in your inventory:(");

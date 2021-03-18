@@ -9,6 +9,7 @@ public class Parser {
     public Parser(DrugAction drugAction) {
         this.drugAction = drugAction;
     }
+
     public void parseMethod() {
         Scanner myObj = new Scanner(System.in);
         String command = myObj.nextLine();

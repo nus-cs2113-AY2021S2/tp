@@ -36,9 +36,9 @@ public class MenuParser {
     }
 
     private static void isValidID(String userID) throws invalidIDLengthException, invalidIDTypeException, invalidIDValueException {
-        if (userID.length() != 6 ) {
+        if (userID.length() != 6) {
             throw new invalidIDLengthException("IDLength");
-        } else if (!(userID.charAt(0) == 'P')){
+        } else if (!(userID.charAt(0) == 'P')) {
             throw new invalidIDTypeException("IDType");
         } else if (numberOfIntegersInString(userID) != 5) {
             throw new invalidIDValueException("IDValue");
@@ -110,7 +110,7 @@ public class MenuParser {
         try {
             isValidID(stringTokens[1]);
             isIDExist(stringTokens[1], patients, command);
-        } catch (invalidIDLengthException e){
+        } catch (invalidIDLengthException e) {
             e.getError("IDLength");
             return false;
         } catch (invalidIDTypeException e) {

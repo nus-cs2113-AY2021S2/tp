@@ -5,7 +5,9 @@ import seedu.drugs.DrugInstance;
 import seedu.nurseschedules.NurseScheduleInstance;
 import seedu.doctorappointments.DoctorAppointmentInstance;
 import seedu.staff.Parser;
+
 import java.io.IOException;
+
 import seedu.duke.ui.UI;
 import seedu.patient.PatientCommandInstance;
 
@@ -18,7 +20,7 @@ public class Duke {
     /**
      * Logic for the main loop that processes information
      */
-    public static void run(){
+    public static void run() {
         UI.printWelcome();
         UI.userNamePrompt();
         String Username = UI.scanInput();

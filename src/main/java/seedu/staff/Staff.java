@@ -1,4 +1,5 @@
 package seedu.staff;
+
 public class Staff {
 
     protected String id;
@@ -6,7 +7,7 @@ public class Staff {
     protected String age;
     protected String specialisation;
 
-    public Staff(String[] list){
+    public Staff(String[] list) {
 
         this.id = list[0];
         this.name = list[1];
@@ -19,17 +20,21 @@ public class Staff {
     public String getName() {
         return this.name;
     }
+
     public String getAge() {
         return this.age;
     }
+
     public String getSpecialisation() {
         return this.specialisation;
     }
+
     public String getId() {
         return this.id;
     }
+
     public String getType() {
-        return this.id.substring(0,1);
+        return this.id.substring(0, 1);
     }
 
 
