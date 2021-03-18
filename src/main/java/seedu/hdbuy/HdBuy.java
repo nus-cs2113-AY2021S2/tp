@@ -5,17 +5,20 @@ import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
+import java.util.logging.Logger;
 import java.util.HashMap;
 
 public class HdBuy {
 
     private static final HashMap<QueryKey, String> inputs = new HashMap<>();
+    private static final Logger logger = Logger.getLogger("HDBuy");
 
     /**
      * Main entry-point for the java.duke.Duke application.
      */
 
     public static void main(String[] args) {
+        logger.info("Starting process");
         TextUi.showWelcome();
         receiveCommand(false);
         /*
