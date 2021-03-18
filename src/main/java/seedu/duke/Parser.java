@@ -14,6 +14,8 @@ import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
     public static Command prepareForCommandExecution(String userInput) throws InvalidCommandException {
+        assert userInput != null : "User input cannot be null";
+
         Command command;
         String filteredUserInput = userInput.trim().toLowerCase();
         if (filteredUserInput.equals("go")) {
