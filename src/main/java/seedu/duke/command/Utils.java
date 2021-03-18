@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * Provides common validation and get methods/tools.
+ * Provides common validation methods for {@code Command} validation.
  */
 public class Utils {
     private static final String ERROR_MISSING_OPTION = "missing option: ";
@@ -84,6 +84,7 @@ public class Utils {
 
     // This hasOption method is only meant to improve readability.
     public static boolean hasOption(ArrayList<String> arguments, String option) {
+        assert arguments != null : "arguments is null!";
         return arguments.contains(option);
     }
 
@@ -100,6 +101,7 @@ public class Utils {
      */
     public static void validateOptions(ArrayList<String> arguments, String command,
                                        String[] validOptions, String[] orOptions) throws CommandException {
+        assert arguments != null : "arguments is null!";
         checkInvalidOptions(arguments, command, validOptions);
         checkOptionConflict(arguments, command, orOptions);
     }
@@ -173,6 +175,8 @@ public class Utils {
      */
     public static void validateArguments(ArrayList<String> arguments, ArgumentType[] argumentTypeOrder,
                                          String command) throws CommandException {
+        assert arguments != null : "arguments is null!";
+        assert argumentTypeOrder != null : "argumentTypeOrder is null!";
         if (arguments.size() > argumentTypeOrder.length) {
             throw new CommandException(ERROR_TOO_MANY_ARGUMENTS, command);
         } else if (arguments.size() < argumentTypeOrder.length) {
@@ -226,6 +230,7 @@ public class Utils {
      * @return {@code true} if {@code argument} matches the {@link #REGEX_OPTION} {@code Pattern}.
      */
     public static boolean isOption(String argument) {
+        assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
     }
 }
