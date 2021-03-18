@@ -5,6 +5,8 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
+
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 
@@ -57,6 +59,7 @@ public class Validators {
             IndexOutOfBoundsException {
         int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
         records.getRecordAt(recordNumberInList);
+        assert recordNumberInList > -1 : "recordNumberInList should be greater than 0 and non-negative";
         return recordNumberInList;
     }
 
