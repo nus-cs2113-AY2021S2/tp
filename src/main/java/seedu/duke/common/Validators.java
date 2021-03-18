@@ -65,7 +65,7 @@ public class Validators {
      * @return validated index.
      * @throws NumberFormatException when the inputToCheck contains non numeric.
      * @throws IndexOutOfBoundsException when the inputToCheck is less than zero, equals to zero or greater than the
-     * size of the records.
+     *     size of the records.
      */
     public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
             IndexOutOfBoundsException {

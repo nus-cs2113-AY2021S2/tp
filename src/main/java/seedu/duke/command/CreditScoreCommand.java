@@ -19,8 +19,8 @@ public class CreditScoreCommand extends Command {
 
     protected static final String COMMAND_CREDIT_SCORE = "creditscore";
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
-            ArgumentType.COMMAND,
-            ArgumentType.VALUE
+        ArgumentType.COMMAND,
+        ArgumentType.VALUE
     };
 
     /**
@@ -36,7 +36,7 @@ public class CreditScoreCommand extends Command {
     private long getDayDifference(LocalDate issueDate, LocalDate returnDate) {
         LocalDate from = issueDate;
         LocalDate to;
-        if(returnDate == null) {
+        if (returnDate == null) {
             to = LocalDate.now();
         } else {
             assert returnDate != null : "returnDate should not be empty";
