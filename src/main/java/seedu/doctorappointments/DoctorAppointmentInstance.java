@@ -37,6 +37,7 @@ public class DoctorAppointmentInstance {
         Scanner userInput = new Scanner(System.in);
         while (!isReturnToStartMenu) {
             try {
+                System.out.print("Appointments --> ");
                 String input = userInput.nextLine();
                 ui.showLine(); // show the divider line ("_______")
                 isReturnToStartMenu = Parser.parse(input);
