@@ -8,7 +8,21 @@ import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.*;
+import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
+import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
+import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 
 
 /**
