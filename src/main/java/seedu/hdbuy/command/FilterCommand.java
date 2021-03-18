@@ -16,7 +16,6 @@ public class FilterCommand extends Command {
         this.value = value;
     }
 
-
     @Override public void execute(HashMap<QueryKey, String> inputs) {
         try {
             switch (criteria) {
