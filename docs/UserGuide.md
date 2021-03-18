@@ -23,15 +23,17 @@
 [4. Command Summary](#4-command-summary)
 
 ---
+
 ## 1. Introduction
 
-UniTracker is a one-stop application for NUS students to keep track of
-their work in school. It comprises 4 key features [Refer to Section 3. Features] that helps to organise
-all information they need in one place. Users are allowed to add and edit
-module information, tasks, zoom links to suit their needs.
-This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User Interface (GUI).
+UniTracker is a one-stop application for NUS students to keep track of their work in school. It
+comprises 4 key features [Refer to Section 3. Features] that helps to organise all information they
+need in one place. Users are allowed to add and edit module information, tasks, zoom links to suit
+their needs. This product is optimal for students who prefer Command Line Interface (CLI) over
+Graphical User Interface (GUI).
 
 ---
+
 ## 2. Quick Start
 
 ### 2.1 System Requirements
@@ -81,7 +83,9 @@ This product is optimal for students who prefer Command Line Interface (CLI) ove
    |____/ \__,_|_|\_\___|
 
   ````
+
 ---
+
 ## 3. Features
 
 {Give detailed description of each feature}
@@ -89,7 +93,7 @@ This product is optimal for students who prefer Command Line Interface (CLI) ove
 ### 3.1 Module Information
 
 The Module Information feature allows you to add/edit/delete modules,  
-and add information or review for the module of your choice.  
+and add information or review for the module of your choice.
 
 Module Information menu:
 
@@ -113,7 +117,7 @@ Lists out all the modules added to UniTracker.
   Input:   
   `3`  
   Output:
-  ```  
+  ```
   Here are the modules in your Modules List:  
   --------------------------------------------  
   [1] --- CS3243  
@@ -222,11 +226,13 @@ Deletes a module from the list of modules.
   --------------------------------------------
   Returning to module information menu...
   ```
+
 ---
+
 ### 3.2 CAP Simulator/Calculator
 
-The CAP Simulator/Calculator allows you to calculate your future CAP base on your
-current CAP and modules you have taken before.
+The CAP Simulator/Calculator allows you to calculate your future CAP base on your current CAP and
+modules you have taken before.
 
 CAP Simulator/Calculator menu:
 
@@ -244,19 +250,24 @@ Adds current CAP and MCs counted into the CAP.
 
 Input:  
 `1`  
-Output:  
+Output:
+
 ````
 Please key in your current CAP: [e.g. 4.33]
 ````  
+
 Input:  
 `5`  
-Output:  
+Output:
+
 ````
 Please key in the number of MCs graded you have taken so far: 
 ````  
+
 Input:  
 `20`  
-Output:  
+Output:
+
 ````
 Current CAP: 5.0  
 Number of Graded MCs Taken: 20
@@ -264,11 +275,12 @@ Number of Graded MCs Taken: 20
 
 #### 3.2.2 View CAP and Number of MCs graded taken
 
-Views current CAP and MCs counted into the CAP.  
+Views current CAP and MCs counted into the CAP.
 
 Input:  
 `2`  
-Output:  
+Output:
+
 ````
 Current CAP: 5.0  
 Number of Graded MCs Taken: 20
@@ -281,36 +293,43 @@ Once done, enter `ok` when prompt with entering a new grade again.
 
 Input:  
 `3`  
-Output:   
+Output:
+
 ````
 You may key in your letter grades and MCs associated with the letter grade.
 Key in a grade: [e.g. A+, B, B-]
 ````  
+
 Input:  
 `C`  
 Output:
+
 ````
 Key in MCs for the associated module: 
 ````  
+
 Input:  
 `4`  
 Output:
+
 ````
 Key in a grade: [e.g. A+, B, B-] 
 ````  
+
 Input:  
 `ok`  
-Output:  
+Output:
+
 ````
 The simulated cumulative average point you have is:  
 4.5
 ````  
 
-
 ---
+
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, delete, pin or view your tasks. 
+The task manager feature allows you to add, delete, pin or view your tasks.
 
 Task Manager menu:
 
@@ -454,13 +473,16 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
   You've pinned this: [CS2113T] Work on User Guide
   Returning back to TaskManager menu now!
   ````
+
 ---
+
 ### 3.4  Links Menu
 
 The Links feature allows you to add and keep track of http and https links. It also allows users to
-keep their zoom links separately. 
+keep their zoom links separately.
 
 Links menu:
+
 ````
 Welcome to the links menu ^~^
 Please choose which action you would like to do and enter the number:
@@ -470,8 +492,10 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit to main menu
 ````
 
-#### 3.4.1 External Links 
+#### 3.4.1 External Links
+
 Add, remove or view all your links (except zoom links) here.
+
 ````
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
@@ -482,6 +506,7 @@ Please choose which action you would like to do and enter the number:
 ````
 
 #### 3.4.2 Add External Link
+
 Adds an external link that follows the format to the external links list.
 
 Format: `<scheme>www.<domain name>.<TLD>/<path name>`
@@ -495,6 +520,7 @@ Example for adding an external link:
 Input: `1`
 
 Output:
+
 ````
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
@@ -504,7 +530,8 @@ supported TLD: .com, .org for now... we will work on it!
 
 Input: `https://www.youtube.com/java`
 
-Output: 
+Output:
+
 ````
 Alright! I have added the following link ---  https://www.youtube.com/java
 
@@ -517,11 +544,13 @@ Please choose which action you would like to do and enter the number:
 ````
 
 #### 3.4.3 Remove External Link
+
 Removes an external link from the external links list.
 
 Input: `2`
 
-Output: 
+Output:
+
 ````
 Please choose which link you would like to delete and enter the number
 
@@ -533,6 +562,7 @@ These are the links you have added --->
 Input: `2`
 
 Output:
+
 ````
 You have deleted --- https://www.facebook.com
 Welcome to the external links menu!
@@ -544,11 +574,13 @@ Please choose which action you would like to do and enter the number:
 ````
 
 #### 3.4.4 View External Links
+
 Allows the user to view all external links added.
 
 Input: `3`
 
-Output: 
+Output:
+
 ````
 These are the links you have added --->
 [1] --- https://www.youtube.com/java
@@ -564,25 +596,31 @@ Please choose which action you would like to do and enter the number:
 ````
 
 #### 3.4.5 Add Zoom Link
-Adds a zoom link, and tags it to a module of your choice together with  the meeting password (if available).
+
+Adds a zoom link, and tags it to a module of your choice together with the meeting password (if
+available).
 
 Input: `2`
 
 Output:
+
 ````
 Please enter the zoom link and the module it is for in this format:
 <zoom link> <module code>
 ````
+
 Input: `https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 cs2101`
 
 Output:
+
 ````
 Does your meeting have password which you would like to add? [Y/N]
 ````
 
 Input: `Y`
 
-Output: 
+Output:
+
 ````
 Please enter your password below!
 ````
@@ -590,6 +628,7 @@ Please enter your password below!
 Input: `open sesame`
 
 Output:
+
 ````
 Woohoo~ Zoom link added:
 https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for cs2101
@@ -602,11 +641,13 @@ Please choose which action you would like to do and enter the number:
 ````
 
 #### 3.4.6 View Zoom Links
+
 View all zoom links stored in the application
 
 Input: `3`
 
 Output:
+
 ````
 Here are your zoom links! Study hard :)
 
@@ -618,10 +659,12 @@ Please choose which action you would like to do and enter the number:
 [3] --- View Zoom links
 [4] --- Exit to main menu
 ````
+
 ---
+
 ## 4. Command Summary
 
- Features|Menu | Command to enter from the Main Menu
+Features|Menu | Command to enter from the Main Menu
 ----|-----|-------
 Add/View Module Description | Module Information | 1, 1
 Add/View Components and Their Weightages | Module Information| 1, 2
@@ -629,6 +672,9 @@ Add/View Components and Their Weightages | Module Information| 1, 2
 [Add a Review](#314-add-a-review) | Module Information | 1, 4
 [View All Reviews](#315-view-all-reviews) | Module Information | 1, 5
 [Delete a Module](#316-delete-a-module) | Module Information | 1, 6
+[Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,1
+[View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,2
+[Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
 [Add a new Task](#331-add-new-task) | Task Manager | 3, 1
 [Delete a new Task](#332-delete-a-task) | Task Manager | 3, 2
 [View all Tasks](#333-view-all-tasks) | Task Manager | 3, 3

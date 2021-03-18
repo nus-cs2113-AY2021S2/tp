@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Deals with all interactions with the user.
  */
 public class Ui {
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void printWelcomeMessage() {
         System.out.println("Hello from\n" + " ____        _        \n"
@@ -35,25 +38,27 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-                + "[1] Module Information\n"
-                + "[2] CAP Simulator/Calculator\n"
-                + "[3] Task Manager\n"
-                + "[4] External Links\n"
-                + "[5] Exit Program");
+            + "[1] Module Information\n"
+            + "[2] CAP Simulator/Calculator\n"
+            + "[3] Task Manager\n"
+            + "[4] External Links\n"
+            + "[5] Exit Program");
     }
 
     public static void printLinksMessage() {
+        printHorizontalLine();
         System.out.println("Welcome to the links menu ^~^\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- Add Zoom links\n"
             + "[3] --- View Zoom links\n"
-            + "[4] --- Exit to main menu\n");
+            + "[4] --- Exit to main menu");
+        printHorizontalLine();
     }
 
     public static void printLinkToDelete() {
         System.out
-            .println("Please choose which link you would like to delete and enter the number\n");
+            .println("Please choose which link you would like to delete and enter the number");
     }
 
     public static void printModuleInfoMessage() {
@@ -180,27 +185,25 @@ public class Ui {
         return true;
     }
 
-    public static void readModuleNumberToBeDeleted(ArrayList<Module> modules) {
+    public static int readModuleNumberToBeDeleted(ArrayList<Module> modules) {
+        int moduleNumberInt = -1;
         if (printAllModulesIfNotEmpty(modules)) {
-            Ui.printSelectModuleToDeleteMessage();
-            int moduleNumberInt = Ui.readCommandToInt();
-            if (moduleNumberInt != -1) {
-                moduleNumberInt--;
-                Ui.printDeletedModuleMessage(modules.get(moduleNumberInt));
-                modules.remove(modules.get(moduleNumberInt));
-            } else {
-                Ui.printInvalidIntegerMessage();
-            }
-            printReturnToModuleInfoMenuMessage();
+            printSelectModuleToDeleteMessage();
+            moduleNumberInt = readCommandToInt();
+            moduleNumberInt--;
+            return moduleNumberInt;
         }
+        return moduleNumberInt;
     }
 
     public static void printDeletedModuleMessage(Module module) {
         System.out.println("You've deleted this: " + module.getName());
-        System.out.println("NOTE: You are deleting your review\n"
-            + module.getReview() + "\n"
-            + "NOTE: You are deleting your module description\n"
+        System.out.println("NOTE: You are deleting your module description\n"
             + module.getDescription());
+        if (!module.getReview().trim().isEmpty()) {
+            System.out.println("NOTE: You are deleting your review\n"
+                    + module.getReview());
+        }
         printHorizontalLine();
     }
 
@@ -210,20 +213,6 @@ public class Ui {
             return;
         }
         printAllModulesIfNotEmpty(modules);
-        System.out.println("Please choose which module you would like to review"
-            + " and enter the number:\n");
-        int moduleNumberInt = Ui.readCommandToInt();
-        try {
-            if (moduleNumberInt != -1) {
-                moduleNumberInt--;
-                String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
-                modules.get(moduleNumberInt).setReview(review);
-            } else {
-                printInvalidIntegerMessage();
-            }
-        } catch (IndexOutOfBoundsException e) {
-            printInvalidIntegerMessage();
-        }
     }
 
     public static void printAllReviews(ArrayList<Module> modules) {
@@ -244,9 +233,7 @@ public class Ui {
 
     public static boolean isEmptyModulesList(ArrayList<Module> modules) {
         if (modules.isEmpty()) {
-            printHorizontalLine();
-            System.out.println("You have not added any modules.");
-            printHorizontalLine();
+            logger.log(Level.INFO, "You have not added any modules.");
             return true;
         }
         return false;
@@ -257,21 +244,32 @@ public class Ui {
             System.out.println("You already have added a review:");
             System.out.println(module.getReview());
             System.out.println("Would you like to replace this with another review? [Y/N]");
+            logger.log(Level.WARNING, "You will delete your old review. This cannot be undone.");
             String command = readCommand();
-            if (command.equalsIgnoreCase("N")) {
+            if (readYN(command) == 0) {
                 System.out.println("Okay:) You still have the same review!");
                 printReturnToModuleInfoMenuMessage();
                 return module.getReview();
-            } else if (!command.equalsIgnoreCase("Y")) {
-                System.out.println("You did not enter a valid letter:(");
+            } else if (readYN(command) == 2) {
                 printReturnToModuleInfoMenuMessage();
                 return module.getReview();
             }
+            assert readYN(command) == 1 : "readYN(command) should be 1 here";
         }
         System.out.println("After you finish your review, "
             + "type '/end' to finish reviewing.");
         System.out.println("Enter your review for " + module.getName() + " below: ");
         return readReview();
+    }
+
+    public static int readYN(String command) {
+        if (command.equalsIgnoreCase("N")) {
+            return 0;
+        } else if (!command.equalsIgnoreCase("Y")) {
+            System.out.println("You did not enter a valid letter:(");
+            return 2;
+        }
+        return 1;
     }
 
     public static String readReview() {
@@ -322,7 +320,7 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-                + "Returning back to TaskManager menu now!");
+            + "Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -355,16 +353,18 @@ public class Ui {
         for (String link : linksList) {
             System.out.println("[" + (sizeOfList++) + "] --- " + link);
         }
-        System.out.print("\n");
+        printHorizontalLine();
     }
 
     public static void printExternalLinksMessage() {
+        printHorizontalLine();
         System.out.println("Welcome to the external links menu!\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- add link\n"
             + "[2] --- remove link\n"
             + "[3] --- view links\n"
-            + "[4] --- exit to links menu\n");
+            + "[4] --- exit to links menu");
+        printHorizontalLine();
     }
 
     public static int readCommandToInt() {
@@ -380,20 +380,21 @@ public class Ui {
     }
 
     public static void printAddLinkMessage(String description) {
-        System.out.println("Alright! I have added the following link ---  " + description + "\n");
+        System.out.println("Alright! I have added the following link ---  " + description);
+        printHorizontalLine();
     }
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
             + "<scheme>www.<domain name>.<TLD>/<path name>\n"
             + "supported schemes: https, http for now... Sorry!\n"
-            + "supported TLD: .com, .org for now... we will work on it!\n");
+            + "supported TLD: .com, .org for now... we will work on it!");
+        printHorizontalLine();
     }
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
             + "Please enter a valid one!");
-
     }
 
     public static void printListIsEmpty() {
@@ -454,6 +455,7 @@ public class Ui {
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
             + "<zoom link> <module code>");
+        printHorizontalLine();
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
@@ -468,6 +470,7 @@ public class Ui {
     }
 
     public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
+        printHorizontalLine();
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
     }
@@ -587,11 +590,12 @@ public class Ui {
 
     public static void printLinkDeleted(String deletedString) {
         System.out.println("You have deleted --- " + deletedString);
+        printHorizontalLine();
     }
 
     public static void printCapSimulatorPrompt() {
         System.out.println("You may key in your letter grades "
-                + "and MCs associated with the letter grade.");
+            + "and MCs associated with the letter grade.");
     }
 
     public static void printMCsPerModulePrompt() {
@@ -604,11 +608,11 @@ public class Ui {
 
     public static void printHelpGraduationMenu() {
         System.out.println("Please choose which action you would like to do"
-                + " and enter the number:\n"
-                + "[1] --- Add CAP and Number of MCs graded taken\n"
-                + "[2] --- View CAP and Number of MCs graded taken\n"
-                + "[3] --- Simulate future CAP\n"
-                + "[4] --- Exit\n");
+            + " and enter the number:\n"
+            + "[1] --- Add CAP and Number of MCs graded taken\n"
+            + "[2] --- View CAP and Number of MCs graded taken\n"
+            + "[3] --- Simulate future CAP\n"
+            + "[4] --- Exit\n");
     }
 
     public static void getCurrentCapPrompt() {
@@ -622,7 +626,7 @@ public class Ui {
     public static void printRegisteredCapAndMCsTakenMessage() {
         System.out.println("Current CAP: " + HelpGraduation.getCurrentCap());
         System.out.println("Number of Graded MCs Taken: "
-                + HelpGraduation.getNumberOfGradedMCsTaken());
+            + HelpGraduation.getNumberOfGradedMCsTaken());
     }
 
     public static void printInvalidGradeMessage() {

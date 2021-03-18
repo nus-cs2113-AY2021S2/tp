@@ -1,11 +1,14 @@
 package seedu.duke;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ModuleInfo {
     public ModuleInfo() {
     }
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
 
     public static void moduleInfoMenu() {
@@ -48,7 +51,25 @@ public class ModuleInfo {
     }
 
     private static void deleteModule() {
-        Ui.readModuleNumberToBeDeleted(modules);
+        int moduleNumberInt = Ui.readModuleNumberToBeDeleted(modules);
+        if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
+            logger.log(Level.WARNING, "You are making a change that cannot be undone.");
+            System.out.println("Are you sure you want to delete "
+                    + modules.get(moduleNumberInt).getName()
+                    + "? [Y/N]");
+            String command = Ui.readCommand();
+            if (Ui.readYN(command) == 1) {
+                Ui.printDeletedModuleMessage(modules.get(moduleNumberInt));
+                modules.remove(modules.get(moduleNumberInt));
+            } else if (Ui.readYN(command) == 0) {
+                System.out.println("Ok. I did not delete "
+                        + modules.get(moduleNumberInt).getName());
+            }
+        } else {
+            logger.log(Level.INFO, "You did not enter a valid integer.");
+            Ui.printInvalidIntegerMessage();
+        }
+        Ui.printReturnToModuleInfoMenuMessage();
     }
 
     public static void viewAllReviews() {
@@ -58,6 +79,16 @@ public class ModuleInfo {
 
     public static void addReview() {
         Ui.printReviewMenu(modules);
+        System.out.println("Please choose which module you would like to review"
+                + " and enter the number:\n");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
+            modules.get(moduleNumberInt).setReview(review);
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
     }
 
     public static void viewAllModules() {
