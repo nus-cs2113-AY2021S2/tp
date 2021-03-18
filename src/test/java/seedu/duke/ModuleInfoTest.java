@@ -1,23 +1,13 @@
 package seedu.duke;
-//I HAVE CHANGED THE METHODS!! I'LL UPDATE THIS SOON!
-//import org.junit.jupiter.api.Test;
 
-//import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class ModuleInfoTest {
-    /*
     @Test
-    void isValidModuleNumber_invalidModuleNumber_throwsNumberFormatException() {
-        assertThrows(NumberFormatException.class, () -> {
-            ModuleInfo.checkValidModuleToDelete("A");
-        });
+    void isEmptyList_emptyList_printEmptyListMessage() {
+        ArrayList<Module> emptyList = new ArrayList<>();
+        assertFalse(Ui.printAllModulesIfNotEmpty(emptyList));
     }
-
-    @Test
-    void isValidModuleNumber_invalidModuleNumber_throwsIndexOutOfBoundsException() {
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            ModuleInfo.checkValidModuleToDelete("-1");
-        });
-    }
-     */
 }
