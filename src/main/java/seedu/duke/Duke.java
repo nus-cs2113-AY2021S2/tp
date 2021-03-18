@@ -13,6 +13,7 @@ public class Duke {
 
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
     static final String APPOINTMENT_FILE_PATH = "data/DoctorAppointmentList.txt";
+    static final String DRUG_FILE_PATH = "data/DrugsInventoryList.txt";
 
     /**
      * Logic for the main loop that processes information
@@ -53,7 +54,7 @@ public class Duke {
                 case "5":
                     UI.showLine();
                     System.out.println("Drug Viewer Instance!");
-                    DrugInstance addict = new DrugInstance(PATIENT_FILE_PATH);
+                    DrugInstance addict = new DrugInstance(DRUG_FILE_PATH);
                     addict.run();
                     break;
                 case "help":
