@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class StaffStorage {
     private static final String FILE_PATH = "Staff.txt";
 
-    public static void fileHandling(){
+    public static void fileHandling() {
         try {
             loadFile();
         } catch (FileNotFoundException e) {
@@ -22,7 +22,7 @@ public class StaffStorage {
         }
     }
 
-    public static void loadTask(String line){
+    public static void loadTask(String line) {
         String[] arr = line.split("\\|");
         Staff staff = new Staff(arr);
         StaffList.addStaff(staff);
@@ -39,14 +39,14 @@ public class StaffStorage {
     public static void writeToFile() throws IOException {
         createFile();
         FileWriter fw = new FileWriter(FILE_PATH);
-        for (int i=0; i<StaffList.getNumStaff(); i++) {
+        for (int i = 0; i < StaffList.getNumStaff(); i++) {
             ArrayList<Staff> buffer = StaffList.getList();
             fw.write(formWriteData(buffer.get(i)));
         }
         fw.close();
     }
 
-    public static void createFile(){
+    public static void createFile() {
         try {
             File myObj = new File(FILE_PATH);
             if (myObj.createNewFile()) {

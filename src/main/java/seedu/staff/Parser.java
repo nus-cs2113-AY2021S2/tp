@@ -14,7 +14,7 @@ import static seedu.duke.ui.UI.*;
 
 public class Parser {
 
-    public static void run() throws IOException{
+    public static void run() throws IOException {
         StaffStorage.fileHandling();
         staffMenuHeader();
         Scanner in = new Scanner(System.in);
@@ -36,6 +36,7 @@ public class Parser {
             }
         }
     }
+
     public static void checkID(String line) throws WrongStaffIdException {
         line = line.split(" ")[1];
         try {
@@ -43,10 +44,11 @@ public class Parser {
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
-        if (!(line.charAt(0) == 'D' || line.charAt(0) == 'N')){
+        if (!(line.charAt(0) == 'D' || line.charAt(0) == 'N')) {
             throw new WrongStaffIdException();
         }
     }
+
     public static void checkEmptyInput(String line) throws NoInputException {
         if (line.split(" ").length < 2) {
             throw new NoInputException();
@@ -128,15 +130,15 @@ public class Parser {
         int length = line.split(" ").length;
         String[] input = new String[4];
         String[] array = line.split(" ");
-        for (int i = 1; i<length; i++) {
+        for (int i = 1; i < length; i++) {
             try {
                 if (i <= 4) {
-                    input[i-1] = array[i];
+                    input[i - 1] = array[i];
                 } else {
                     input[3] = input[3] + " " + array[i];
                 }
-            } catch (IndexOutOfBoundsException e){
-                input[i-1] = " ";
+            } catch (IndexOutOfBoundsException e) {
+                input[i - 1] = " ";
             }
         }
         return input;

@@ -3,6 +3,7 @@ package seedu.doctorappointments;
 
 import seedu.duke.storage.DoctorAppointmentStorage;
 import seedu.duke.ui.UI;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;

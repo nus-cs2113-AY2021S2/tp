@@ -15,7 +15,9 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         this.datetime = datetime;
     }
 
-    /** Compares as Date object */
+    /**
+     * Compares as Date object
+     */
     @Override
     public int compareTo(NurseSchedule o) {
         if (getDatetime() == null || o.getDatetime() == null) {
@@ -33,7 +35,9 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         return date.compareTo(odate);
     }
 
-    /** Formats String date into dd/MM/YYYY */
+    /**
+     * Formats String date into dd/MM/YYYY
+     */
     public String formatDate(String datetime) throws ParseException {
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
         Date date = parser.parse(datetime);
@@ -42,11 +46,17 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         return formatter.format(date);
     }
 
-    public String getNurseID() { return nurseID; }
+    public String getNurseID() {
+        return nurseID;
+    }
 
-    public String getPatientID() { return patientID; }
+    public String getPatientID() {
+        return patientID;
+    }
 
-    public String getDatetime() { return datetime; }
+    public String getDatetime() {
+        return datetime;
+    }
 
     public String getFormattedDatetime() {
         String date = null;
@@ -58,9 +68,15 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         return date;
     }
 
-    public String toSave() { return getNurseID() + "|" + getPatientID() + "|" + getDatetime(); }
+    public String toSave() {
+        return getNurseID() + "|" + getPatientID() + "|" + getDatetime();
+    }
 
-    public String toFind() { return getFormattedDatetime() + " " + patientID; }
+    public String toFind() {
+        return getFormattedDatetime() + " " + patientID;
+    }
 
-    public String toString() { return nurseID + " " + patientID + " " + getFormattedDatetime(); }
+    public String toString() {
+        return nurseID + " " + patientID + " " + getFormattedDatetime();
+    }
 }
