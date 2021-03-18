@@ -1,5 +1,6 @@
 package seedu.nurseschedules;
 
+import seedu.duke.storage.NurseScheduleStorage;
 import seedu.nurseschedules.parser.Parser;
 
 import java.text.ParseException;
@@ -32,17 +33,6 @@ public class NurseScheduleInstance {
         this.storage = new NurseScheduleStorage();
 
         storage.load(nurseSchedules);
-
-//        String logo = " ____        _        \n"
-//                + "|  _ \\ _   _| | _____ \n"
-//                + "| | | | | | | |/ / _ \\\n"
-//                + "| |_| | |_| |   <  __/\n"
-//                + "|____/ \\__,_|_|\\_\\___|\n";
-//        System.out.println("Hello from\n" + logo);
-//        System.out.println("What is your name?");
-//
-//        Scanner in = new Scanner(System.in);
-//        System.out.println("Hello " + in.nextLine());
     }
 
     private void runCommandLoopUntilExit() {
@@ -64,8 +54,9 @@ public class NurseScheduleInstance {
                 actions.listSchedules(nurseSchedules, parser.getDetails(line));
             } else if (command.equals("delete")) {
                 actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-            } else if (command.equals("exit")) {
+            } else if (command.equals("return")) {
                 storage.writeToFile(nurseSchedules);
+                System.out.println("Back to main menu");
                 isRun = false;
             }
         }
