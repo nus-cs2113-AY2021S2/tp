@@ -1,5 +1,7 @@
 package seedu.drugs;
 
+import seedu.duke.Duke;
+
 import java.util.ArrayList;
 
 public class DrugAction {
@@ -31,6 +33,15 @@ public class DrugAction {
             System.out.println("The description of 'delete' cannot be empty");
             return;
         }
+    }
+
+    public void printHelpMessage() {
+        System.out.println("Here is a list of Drug commands: ");
+        System.out.println("\"help\" brings up this list of commands!");
+        System.out.println("\"add [Name] [Price] [Quantity]\" adds a Drug to the drug list!");
+        System.out.println("\"list\" brings up the list of all current drugs!");
+        System.out.println("\"delete [Name]\" deletes the drug with the specific name from the list!");
+        System.out.println("\"return\" returns you to the Start Menu!");
     }
 
     public void printList() {
