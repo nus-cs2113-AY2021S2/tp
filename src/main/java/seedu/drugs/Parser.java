@@ -11,6 +11,7 @@ public class Parser {
     }
 
     public void parseMethod() {
+        System.out.print("Drug --> ");
         Scanner myObj = new Scanner(System.in);
         String command = myObj.nextLine();
         while (!command.equals("bye")) {
