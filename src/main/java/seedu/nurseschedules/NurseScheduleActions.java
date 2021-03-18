@@ -34,7 +34,7 @@ public class NurseScheduleActions {
 
     public void listAllSchedules(List<NurseSchedule> nurseSchedules) {
         nursesFound.clear();
-        if(nurseSchedules.size() == 0) {
+        if (nurseSchedules.size() == 0) {
             System.out.println("No schedules found!");
         } else {
             for (int i = 0; i < nurseSchedules.size(); i++) {

@@ -1,4 +1,5 @@
 package seedu.duke.storage;
+
 import seedu.drugs.Drug;
 
 import java.io.File;
@@ -12,6 +13,7 @@ import java.util.Scanner;
 public class DrugStorage {
     protected String filepath;
     protected ArrayList<Drug> Drugs = new ArrayList<>();
+
     public DrugStorage(String filepath) {
         this.filepath = filepath;
     }

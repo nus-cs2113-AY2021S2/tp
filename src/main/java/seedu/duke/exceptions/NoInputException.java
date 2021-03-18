@@ -1,4 +1,4 @@
 package seedu.duke.exceptions;
 
-public class NoInputException extends Exception{
+public class NoInputException extends Exception {
 }

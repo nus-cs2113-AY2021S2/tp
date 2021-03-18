@@ -13,6 +13,7 @@ public class DrugInstance {
     protected DrugStorage drugStorage;
     protected DrugAction drugAction;
     protected ArrayList<Drug> Drugs;
+
     public DrugInstance(String filePath) {
         drugStorage = new DrugStorage(filePath);
         try {

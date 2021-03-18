@@ -49,7 +49,7 @@ public class PatientList {
             UI.notEmptyPatientListMessage();
             for (int i = 0; i < numberOfPatients; i++) {
                 UI.showLine();
-                UI.printPatientList(i+1, patients.get(i).getPatientDetails());
+                UI.printPatientList(i + 1, patients.get(i).getPatientDetails());
             }
         }
     }

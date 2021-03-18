@@ -1,4 +1,4 @@
 package seedu.duke.exceptions;
 
-public class WrongStaffIdException extends Exception{
+public class WrongStaffIdException extends Exception {
 }

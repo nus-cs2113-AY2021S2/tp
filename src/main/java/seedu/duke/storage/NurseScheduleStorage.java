@@ -11,11 +11,14 @@ import java.util.Scanner;
 
 public class NurseScheduleStorage {
 
-    /** Creates new file */
+    /**
+     * Creates new file
+     */
     private static void createFile() {
         try {
             File file = new File("duke.txt");
-            if (file.createNewFile()) {}
+            if (file.createNewFile()) {
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

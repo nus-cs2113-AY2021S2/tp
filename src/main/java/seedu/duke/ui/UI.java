@@ -1,4 +1,5 @@
 package seedu.duke.ui;
+
 import java.util.Scanner;
 
 public class UI {
@@ -34,6 +35,7 @@ public class UI {
     public static void unrecognizedCommandMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
     }
+
     public static void noCommandErrorMessage() {
         System.out.println("OOPS! There is no command entered! ");
     }
@@ -140,8 +142,7 @@ public class UI {
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Unknown Doctor hired!");
             }
-        }
-        else if (line.split(" ")[1].charAt(0) == 'N') {
+        } else if (line.split(" ")[1].charAt(0) == 'N') {
             try {
                 System.out.println("Nurse " + line.split(" ")[2] + " hired!");
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -155,7 +156,7 @@ public class UI {
     }
 
     public static void staffDoesNotExist(String line) {
-        System.out.println("Staff with ID: " + line.split(" ")[1]+ " does not exist");
+        System.out.println("Staff with ID: " + line.split(" ")[1] + " does not exist");
     }
 
     public static String prettyPrint(String string, int length) {
@@ -169,7 +170,7 @@ public class UI {
     public static void staffListHeader() {
         System.out.println(
                 prettyPrint("ID", 10) + " | " + prettyPrint("Name", 10) + " | "
-                        + prettyPrint("Age",5) + " | " + prettyPrint("Specialisation", 20));
+                        + prettyPrint("Age", 5) + " | " + prettyPrint("Specialisation", 20));
     }
 
     public static void printStaffHelpList() {
@@ -193,9 +194,11 @@ public class UI {
     public static void NoInputErrorMessage() {
         System.out.println("Command is missing input parameter");
     }
+
     public static void staffMenuPrompt() {
         System.out.print("Staff --> ");
     }
+
     public static void staffMenuHeader() {
         System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
     }
@@ -216,7 +219,7 @@ public class UI {
         return input.equals("y");
     }
 
-    public static void doctorAppointmentsWelcome(){
+    public static void doctorAppointmentsWelcome() {
         System.out.println("Welcome to the Appointments' Menu!");
     }
 
