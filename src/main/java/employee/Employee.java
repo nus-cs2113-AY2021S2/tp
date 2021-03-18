@@ -2,11 +2,11 @@ package employee;
 
 import java.util.ArrayList;
 
-public class employee {
+public class Employee {
     private String name;
     private ArrayList<String> schedules = new ArrayList<>();
 
-    public employee(String name){
+    public Employee(String name){
         this.name = name;
     }
 

@@ -19,7 +19,7 @@ public class Duke {
         Scanner in = new Scanner(System.in);
         System.out.println("Hello " + in.nextLine());
 
-        appController controller = new appController();
+        AppController controller = new AppController();
         controller.run();
     }
 }
