@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 public class ModuleInfo {
     public ModuleInfo() {
     }
+
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
 
