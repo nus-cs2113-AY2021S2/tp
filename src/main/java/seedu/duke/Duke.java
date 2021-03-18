@@ -2,11 +2,14 @@ package seedu.duke;
 
 import java.util.Scanner;
 import controller.*;
+import io.FileManager;
 
 public class Duke {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
+    private final FileManager fileManager = new FileManager();
+
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"

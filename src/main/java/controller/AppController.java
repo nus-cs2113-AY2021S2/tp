@@ -2,15 +2,15 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import employee.*;
+import employee.Employee;
 
 public class AppController {
     private static ArrayList<Employee> employees = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    public void run(){
+    public void run() {
         String input;
-        while (true){
+        while (true) {
             System.out.println("Enter command: ");
             input = sc.nextLine();
             switch (input){
@@ -37,7 +37,7 @@ public class AppController {
         }
     }
 
-    private void addEmployee(){
+    private void addEmployee() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
         Employee newEmployee = new Employee(name);
@@ -45,7 +45,7 @@ public class AppController {
         System.out.println("Employee added");
     }
 
-    private void addSchedule(){
+    private void addSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
         for(Employee person:employees)
@@ -59,7 +59,7 @@ public class AppController {
         System.out.println("Employee not found");
     }
 
-    private void dropSchedule(){
+    private void dropSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
         for(Employee person:employees)
@@ -80,7 +80,7 @@ public class AppController {
         System.out.println("Employee not found");
     }
 
-    private void viewEmployeeSchedule(){
+    private void viewEmployeeSchedule() {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
         for(Employee person:employees)

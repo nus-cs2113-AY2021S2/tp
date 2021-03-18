@@ -14,6 +14,10 @@ public class Employee {
         return name;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
     public void addSchedule(String schedule){
         schedules.add(schedule);
     }
@@ -24,5 +28,15 @@ public class Employee {
 
     public ArrayList<String> getSchedules(){
         return schedules;
+    }
+
+    public String formatData() {
+        StringBuilder formattedString = new StringBuilder(getName());
+
+        for (String schedule : getSchedules()) {
+            formattedString.append("#");
+            formattedString.append(schedule);
+        }
+        return formattedString + "\n";
     }
 }
