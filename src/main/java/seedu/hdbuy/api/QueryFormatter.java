@@ -18,6 +18,9 @@ public class QueryFormatter {
         for (Map.Entry<QueryKey, String> parameter : parameters.entrySet()) {
             QueryKey key = parameter.getKey();
             String value = parameter.getValue();
+            if (value.contains(" ")) {
+                value = value.replaceAll("\\s", "%20");
+            }
             switch (key) {
             case TYPE:
                 String type = String.format("\"flat_type\":\"%s\"", value);

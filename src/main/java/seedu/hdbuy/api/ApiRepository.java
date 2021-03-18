@@ -5,6 +5,7 @@ import seedu.hdbuy.data.Unit;
 import seedu.hdbuy.data.exception.EmptyResponseException;
 
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class ApiRepository {
 
@@ -20,7 +21,7 @@ public class ApiRepository {
         try {
             return GetRequest.getResponse(query);
         } catch (EmptyResponseException emptyResponseException) {
-            System.out.println(emptyResponseException.getMessage());
+            Logger.getLogger("ApiRepository").warning(emptyResponseException.getMessage());
             return new HashMap<>();
         }
     }
