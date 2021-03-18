@@ -40,7 +40,6 @@ public class Duke {
                         System.out.println("Doctor's Appointment Instance!");
                         break;
                     case "4":
-                        System.out.println("Nurse Schedule Instance!");
                         NurseScheduleInstance.main();
                         break;
                     case "5":
