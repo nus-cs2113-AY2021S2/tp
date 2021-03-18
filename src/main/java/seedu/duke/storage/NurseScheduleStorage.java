@@ -1,4 +1,6 @@
-package seedu.nurseschedules;
+package seedu.duke.storage;
+
+import seedu.nurseschedules.NurseSchedule;
 
 import java.io.File;
 import java.io.FileInputStream;

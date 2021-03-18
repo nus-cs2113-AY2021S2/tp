@@ -1,7 +1,11 @@
 package seedu.doctorappointments;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class DoctorAppointment {
     protected String doctorId;
@@ -15,6 +19,7 @@ public class DoctorAppointment {
         this.gender = gender;
         this.date = date;
     }
+
 
     public String getDoctorId() {
         return this.doctorId;
@@ -35,10 +40,16 @@ public class DoctorAppointment {
     /*
         Date format = YYYY-MM-DD
     */
-    public void getDateFormat(String inputDate) {
-        String dateInString = inputDate;
-        LocalDate dater = LocalDate.parse(dateInString, DateTimeFormatter.BASIC_ISO_DATE);
-        System.out.println(dater);
+    public String getDateFormat(String inputDate) throws ParseException {
+        SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
+        Date date = parser.parse(inputDate);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+
+        return formatter.format(date);
+    }
+
+    public String saveTask() {
+        return doctorId + " | " + patientsName + " | " + gender + " | " + date;
     }
 
 
