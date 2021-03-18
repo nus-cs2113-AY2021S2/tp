@@ -29,7 +29,7 @@ public class Duke {
                 String c = startMenuCommand.trim();
                 switch (c) {
                     case "1":
-                        System.out.println("Staff Instance!");
+                        UI.showLine();
                         Parser.run();
                         break;
                     case "2":
