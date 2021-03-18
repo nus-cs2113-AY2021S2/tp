@@ -43,15 +43,24 @@ public class Ui {
     }
 
     /**
-     * Prints header for list command. 
+     * Prints header for list command.
      */
     public void printListHeading() {
         println("Here are your reviews: ");
         println("    Title          Category       Rating         Date");
     }
-    
+
+    public void printView(String title, String category, String dateAndTimeOfEntry, String rating, String description) {
+        println("Title               : " + title);
+        println("Category            : " + category);
+        println("Date & Time of Entry: " + dateAndTimeOfEntry);
+        println("Rating              : " + rating);
+        println("Description         : " + description);
+    }
+
     /**
-     * Prints whitespace to align items to header. 
+     * Prints whitespace to align items to header.
+     *
      * @param wordLength length of word to subtract
      */
     public void printWhiteSpace(int wordLength) {
@@ -74,7 +83,8 @@ public class Ui {
     }
 
     /**
-     * Prints a message to the output stream without a newline ending. 
+     * Prints a message to the output stream without a newline ending.
+     *
      * @param message string to be printed
      */
     public void print(String message) {
@@ -82,7 +92,8 @@ public class Ui {
     }
 
     /**
-     * Prints log messages. 
+     * Prints log messages.
+     *
      * @param message log message to be printed
      */
     public void printLog(String... message) {

@@ -8,16 +8,16 @@ import java.util.Date;
 import seedu.connoisseur.review.Review;
 
 /**
- * Sort reviews by earlier date. 
+ * Sort reviews by earlier date.
  */
 public class SortByDateEarliest implements Comparator<Review> {
     /**
-     * Comparator function for comparing review dates, returns earliest first. 
+     * Comparator function for comparing review dates, returns earliest first.
      */
     public int compare(Review a, Review b) {
         try {
-            Date dateA = new SimpleDateFormat("MMM d yyyy HH:mm:ss a").parse(a.getDateTime());
-            Date dateB = new SimpleDateFormat("MMM d yyyy HH:mm:ss a").parse(b.getDateTime());
+            Date dateA = new SimpleDateFormat("MMM d yyyy h:mm a").parse(a.getDateTime());
+            Date dateB = new SimpleDateFormat("MMM d yyyy h:mm a").parse(b.getDateTime());
             return dateA.compareTo(dateB);
         } catch (ParseException e) {
             System.out.println("Wrong date format");

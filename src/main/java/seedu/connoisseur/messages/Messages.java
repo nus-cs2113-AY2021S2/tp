@@ -11,7 +11,7 @@ public class Messages {
     public static final String WELCOME_MESSAGE = "                         Welcome to\n"
             + LOGO;
 
-    public static final String COMMAND_PROMPT = "____________________________________________________________\n" 
+    public static final String COMMAND_PROMPT = "___________________________________________________________________________________________________________________________________\n"
             + "Please enter a command: ";
     public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!"
             + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"
@@ -46,6 +46,8 @@ public class Messages {
 
     // Delete
     public static final String MISSING_DELETE_TITLE = "Please specify title of review to be deleted";
+    public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
     public static final String INVALID_DELETE_TITLE = "Specified review does not exist!";
+    public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
     public static final String DELETE_SUCCESS = " has been deleted.";
 }
