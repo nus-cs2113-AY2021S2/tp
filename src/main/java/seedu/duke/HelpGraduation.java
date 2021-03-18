@@ -150,8 +150,8 @@ public class HelpGraduation {
     }
 
 
-    private static void capCalculator(ArrayList<Double> listOfGrades,
-                                      ArrayList<Integer> listOfMCs, Integer totalMCs) {
+    public Double capCalculator(ArrayList<Double> listOfGrades,
+                                        ArrayList<Integer> listOfMCs, Integer totalMCs) {
         Double calculatedCap = 0.0;
         for (int i = 0; i < listOfGrades.size(); i++) {
             calculatedCap += listOfGrades.get(i) * listOfMCs.get(i);
@@ -161,6 +161,7 @@ public class HelpGraduation {
                 / (totalMCs + numberOfGradedMCsTaken);
         System.out.println("The simulated cumulative average point you have is: ");
         System.out.println(calculatedCap);
+        return calculatedCap;
     }
 
 }
