@@ -2,19 +2,19 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import employee.*;
+import employee.Employee;
 
-public class appController {
-    private static ArrayList<employee> employees = new ArrayList<>();
+public class AppController {
+    private static ArrayList<Employee> employees = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
-    public void run(){
+    public void run() {
         String input;
-        while (true){
+        while (true) {
             System.out.println("Enter command: ");
             input = sc.nextLine();
             switch (input){
-            case "add employee":
+            case "add Employee":
                 addEmployee();
                 break;
             case "add schedule" :
@@ -23,7 +23,7 @@ public class appController {
             case "drop schedule" :
                 dropSchedule();
                 break;
-            case "view employee schedule":
+            case "view Employee schedule":
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
@@ -37,34 +37,34 @@ public class appController {
         }
     }
 
-    private void addEmployee(){
-        System.out.println("enter employee name");
+    private void addEmployee() {
+        System.out.println("enter Employee name");
         String name = sc.nextLine();
-        employee newEmployee = new employee(name);
+        Employee newEmployee = new Employee(name);
         employees.add(newEmployee);
-        System.out.println("employee added");
+        System.out.println("Employee added");
     }
 
-    private void addSchedule(){
-        System.out.println("enter employee name");
+    private void addSchedule() {
+        System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(employee person:employees)
+        for(Employee person:employees)
             if(person.getName().equals(name)) {
-                System.out.println("enter employee schedule");
+                System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
                 person.addSchedule(schedule);
                 System.out.println("schedule added");
                 return;
             }
-        System.out.println("employee not found");
+        System.out.println("Employee not found");
     }
 
-    private void dropSchedule(){
-        System.out.println("enter employee name");
+    private void dropSchedule() {
+        System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(employee person:employees)
+        for(Employee person:employees)
             if(person.getName().equals(name)) {
-                System.out.println("enter employee schedule");
+                System.out.println("enter Employee schedule");
                 String scheduleToDrop = sc.nextLine();
                 ArrayList<String> schedules = person.getSchedules();
                 for(String schedule:schedules){
@@ -77,18 +77,18 @@ public class appController {
                 System.out.println("schedule not found");
                 return;
             }
-        System.out.println("employee not found");
+        System.out.println("Employee not found");
     }
 
-    private void viewEmployeeSchedule(){
-        System.out.println("enter employee name");
+    private void viewEmployeeSchedule() {
+        System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for(employee person:employees)
+        for(Employee person:employees)
             if(person.getName().equals(name)) {
                 System.out.println(person.getSchedules());
                 return;
             }
-        System.out.println("employee not found");
+        System.out.println("Employee not found");
     }
 
 }

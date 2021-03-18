@@ -1,6 +1,6 @@
-/*
 package io;
 
+import employee.Employee;
 import parser.DataParser;
 
 import java.io.File;
@@ -18,26 +18,25 @@ public class FileManager {
         dataParser = new DataParser();
     }
 
-    // TODO: insert object
-    public void saveFile(ArrayList<_> _) throws IOException {
-        File path = new File("_.txt");
+    public void saveFile(ArrayList<Employee> employees) throws IOException {
+        File path = new File("employees.txt");
         if (!path.exists()) {
             if (!path.createNewFile()) {
                 throw new IOException();
             }
         }
         FileWriter fileWriter = new FileWriter(path);
-        for (_ _ : _) {
-            fileWriter.write(_.formatData());
+        for (Employee employee : employees) {
+            fileWriter.write(employee.formatData());
         }
         fileWriter.flush();
         fileWriter.close();
     }
 
-    public ArrayList<_> loadFile() throws FileNotFoundException {
-        ArrayList<_> _ = new ArrayList<>();
+    public ArrayList<Employee> loadFile() throws FileNotFoundException {
+        ArrayList<Employee> employees = new ArrayList<Employee>();
 
-        File path = new File("_.txt");
+        File path = new File("employees.txt");
         if (!path.exists()) {
             throw new FileNotFoundException();
         }
@@ -45,15 +44,14 @@ public class FileManager {
         try {
             while (scanner.hasNext()) {
                 String line = scanner.nextLine();
-                _ _ = dataParser.parseData(line);
-                if (_ != null) {
-                    _.add(_);
+                Employee employee = dataParser.parseData(line);
+                if (employee != null) {
+                    employees.add(employee);
                 }
             }
         } catch (Exception e) {
             System.out.println("Failed to load!");
         }
-        return _;
+        return employees;
     }
 }
-*/

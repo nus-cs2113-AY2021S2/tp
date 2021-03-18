@@ -2,16 +2,20 @@ package employee;
 
 import java.util.ArrayList;
 
-public class employee {
+public class Employee {
     private String name;
     private ArrayList<String> schedules = new ArrayList<>();
 
-    public employee(String name){
+    public Employee(String name){
         this.name = name;
     }
 
     public String getName(){
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public void addSchedule(String schedule){
@@ -24,5 +28,15 @@ public class employee {
 
     public ArrayList<String> getSchedules(){
         return schedules;
+    }
+
+    public String formatData() {
+        StringBuilder formattedString = new StringBuilder(getName());
+
+        for (String schedule : getSchedules()) {
+            formattedString.append("#");
+            formattedString.append(schedule);
+        }
+        return formattedString + "\n";
     }
 }
