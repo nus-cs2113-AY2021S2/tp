@@ -1,12 +1,22 @@
 package seedu.doctorappointments;
 
 
+import seedu.duke.exceptions.EmptyListException;
+import seedu.duke.storage.DoctorAppointmentStorage;
+import seedu.duke.ui.UI;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AppointmentActions {
-    public static ArrayList<DoctorAppointment> appointmentList = new ArrayList<DoctorAppointment>();
+    public static ArrayList<DoctorAppointment> appointmentList;
+    protected static DoctorAppointmentStorage storage = new DoctorAppointmentStorage("data/DoctorAppointmentList.txt");
 
-    public static void addAppointment(String input) {
+    public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
+        appointmentList = loadAppointments;
+    }
+
+    public static void addAppointment(String input) throws IOException {
         String[] inputArray = input.split(" ");
 
         String iD = inputArray[1];
@@ -19,43 +29,49 @@ public class AppointmentActions {
 
         System.out.println("Appointment Added");
         appointmentList.add(newAppointment);
+        storage.writeToFile(appointmentList);
     }
 
     public static void listAppointment(String input) throws Exception {
         String[] inputArray = input.split(" ");
 
         String iD = inputArray[1];
-        if (appointmentList.size() == 0) throw new Exception();
+        if (appointmentList.size() == 0) throw new EmptyListException();
         else {
             for (DoctorAppointment doc : appointmentList) {
                 if (doc.getDoctorId().equals(iD)) {
-                    System.out.println(doc.getDoctorId());
-                    System.out.println(doc.getPatientsName());
-                    System.out.println(doc.getGender());
-                    doc.getDateFormat(doc.getDate());
+                    System.out.println("ID: " + doc.getDoctorId());
+                    System.out.println("Patient's Name: " + doc.getPatientsName());
+                    System.out.println("Gender: " + doc.getGender());
+                    System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
                 }
             }
         }
     }
 
-    public static void deleteAppointment(String input) {
+    public static void deleteAppointment(String input) throws IOException {
         String[] inputArray = input.split(" ");
         String iD = inputArray[1];
+        int index = 999;
+        int counter = 0;
 
         for (DoctorAppointment doc : appointmentList) {
             if (doc.getDoctorId().equals(iD)) {
-                appointmentList.remove(iD);
+                index = counter;
             }
         }
+        storage.writeToFile(appointmentList);
 
-        int index = 2;
-        for (int i = 0; i < appointmentList.size(); i++) {
-            if(appointmentList.get(i).doctorId.equals(iD))
-                index =i;
-                //System.out.println(appointmentList.get(i).doctorId.equals(iD));
+        if (index == 999) System.out.println("ID number not found");
+        else {
+            System.out.println("iD: " + appointmentList.get(index).getDoctorId() + " has been deleted!");
+            appointmentList.remove(index);
+            storage.writeToFile(appointmentList);
         }
-        System.out.print(index);
-        appointmentList.remove(index);
 
+    }
+
+    public static void helpAppointment() {
+        UI.doctorAppointmentHelp();
     }
 }
