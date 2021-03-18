@@ -13,7 +13,14 @@ public class HelpGraduationManager {
                 case 1:
                     Ui.getCurrentCapPrompt();
                     //missing exception to catch <0 >5 CAP user input
-                    HelpGraduation.setCurrentCap(Double.parseDouble(Ui.readCommand()));
+                    double cap = Double.parseDouble(Ui.readCommand());
+                    assert cap >= 0.0: "Not Valid";
+                    assert cap <= 5.0: "Not Valid";
+                    HelpGraduation.setCurrentCap(cap);
+                    System.out.println(cap);
+                    //assert false;
+
+
 
                     Ui.getNumberOfGradedMCsTakenPrompt();
                     //missing exception to catch <0 >180? MCs user input
