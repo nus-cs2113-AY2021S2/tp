@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class ResponseDecoder {
 
@@ -28,8 +29,10 @@ public class ResponseDecoder {
             in.close();
             return UnitsGenerator.getUnits(response);
         } catch (IOException ioException) {
+            Logger.getLogger("ResponseDecoder").severe("Failed to read response");
             throw new GatewayException();
         } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
+            Logger.getLogger("ResponseDecoder").severe(arrayIndexOutOfBoundsException.getMessage());
             throw new EmptyResponseException();
         }
     }
