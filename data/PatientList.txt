@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 P12345 | owen | 22 | M | blah | blah
 P12344 | jiaen | 22 | M | blah | blah
 P12333 | alex | 22 | M | blah | blah
+=======
+P12345 | | | Owen
+>>>>>>> 185ad7b7747ccaf4b004556133f2812ecaf0a674

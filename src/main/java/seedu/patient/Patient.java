@@ -18,8 +18,20 @@ public class Patient {
     }
 
     public String getPatientDetails() {
-        return (patientID + ", " + name + ", " + age + ", " +
-                gender + ", " + illness + ", " + drugsNeeded);
+        return ("ID: " + patientID + " \n" +
+                "name: " + name + " \n" +
+                "age: " + age + " \n" +
+                "gender: " + gender + " \n" +
+                "illness: " + illness + " \n" +
+                "drugsNeeded: " + drugsNeeded);
+    }
+
+    public String getPatientID() {
+        return this.patientID;
+    }
+
+    public String getPatientName() {
+        return this.name;
     }
 
     public String toSaveFormat() {

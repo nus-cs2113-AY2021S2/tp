@@ -10,11 +10,10 @@ public class PatientCommandInstance {
     private UI ui;
     private PatientList patients;
     private PatientStorage patientStorage;
-    static final String PATIENT_FILE_PATH = "data/PatientList.txt";
 
     public PatientCommandInstance(String filepath) {
         ui = new UI();
-        patientStorage = new PatientStorage(PATIENT_FILE_PATH);
+        patientStorage = new PatientStorage(filepath);
         try {
             patients = new PatientList(patientStorage.loadPatients());
         } catch (DukeException e) {
@@ -24,18 +23,16 @@ public class PatientCommandInstance {
         }
     }
 
-    public void patientInstance() {
+    public void run() {
         ui.patientCommandWelcome();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
+                UI.showLine(); // show the divider line ("_______")
+                UI.patientMenuPrompt();
                 String fullCommand = UI.scanInput();
-                ui.showLine(); // show the divider line ("_______")
-                isReturnToStartMenu = MenuParser.patientParse(fullCommand);
-                if (isReturnToStartMenu) {
-                    ui.returningToStartMenuMessage();
-                }
-                ui.showLine();
+                isReturnToStartMenu = MenuParser.patientParse(fullCommand, patients);
+                UI.showLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
