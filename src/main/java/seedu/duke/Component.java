@@ -13,20 +13,26 @@ public class Component {
 
     public static void addComponent(ArrayList<Module> modules) {
 
+        int moduleIndex = 0;
         boolean isModuleExist = false;
         System.out.println("Module Name?");
         String moduleName = Ui.readCommand();
-        for (Module module : modules) {
-            if (module.getName().contains(moduleName)) {
+        for (int i = 0; i < modules.size(); i++) {
+            if (modules.get(i).getName().contains(moduleName)) {
                 isModuleExist = true;
+                moduleIndex = i;
                 break; // safety break
             }
         }
 
         if (isModuleExist) {
-            Ui.printModuleComponentPrompt(); // prompts user for component and its weightage
+            // prompts user for component and its weightage
+            Ui.printModuleComponentPrompt();
             String[] userInput = Ui.readCommand().split(" ");
             components.put(userInput[0], Integer.parseInt(userInput[1]));
+            modules.get(moduleIndex)
+                    .setComponents(components);
+            System.out.println("Component and weightage added!");
         } else {
             Ui.printModuleDoesNotExistMessage();
             Ui.printReturnToModuleInfoMenuMessage();

@@ -12,13 +12,27 @@
 
 [3. Features](#3-features)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add/View Module Description](#311-addview-module-description)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add/View Components and Their Weightages](#312-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View All Modules](#313-view-all-modules)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add a Review](#314-add-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View All Reviews](#315-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Delete a Module](#316-delete-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Add New Task](#331-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Delete a Task](#332-delete-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 View All Tasks](#333-view-all-tasks)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Pin a Task](#334-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.4 External Links](#34-external-links)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add an External Link](#342-add-external-link)    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Remove an External Link](#343-remove-external-link)   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View all Links](#344-view-external-links)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Add a Zoom Link](#345-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[View Zoom Links](#346-view-zoom-links)
 
 [4. Command Summary](#4-command-summary)
 
@@ -88,7 +102,7 @@ Graphical User Interface (GUI).
 
 ## 3. Features
 
-{Give detailed description of each feature}
+This section gives a detailed description of each feature.
 
 ### 3.1 Module Information
 
@@ -108,7 +122,126 @@ Please choose which action you would like to do and enter the number:
 [6] --- Delete modules
 [7] --- Exit to main menu
 ```
+#### 3.1.1 Add/View Module Description
 
+Adds user-defined module description.  
+User can view module description added previously.
+
+* Example for adding a module description:  
+  Input:  
+  `1`  
+  Output:
+  ````
+  What module would you like to modify? [moduleName e.g. CS2113T]
+  ````
+  Input:  
+  `CS2113T`   
+  Output:  
+  ````
+  This module does not exist, would you like to add it? [Y/N]
+  ````
+  Input:  
+  `Y`  
+  Output:
+  ````
+  Key in the module description for CS2113T:
+  ````
+  Input:  
+  `Y`
+  Output:
+  ````
+  Key in the module description for CS2113T:
+  ````
+  Input: [Retrieved from NUSMods]  
+  `This module introduces the necessary skills for systematic and rigorous development of software systems. It covers requirements, design, implementation, quality assurance, and project management aspects of small-to-medium size multi-person software projects`  
+  Output:
+  ````
+  Module description for CS2113T added:
+  This module introduces the necessary skills for systematic and rigorous development of software systems. 
+  It covers requirements, design, implementation, quality assurance,  
+  and project management aspects of small-to-medium size multi-person software projects.
+  Returning to module information menu...
+  ````
+* Example for viewing module description  
+  Input:
+  `1`  
+  Output:
+  ````
+  What module would you like to modify? [moduleName e.g. CS2113T]
+  ````
+  Input:  
+  `CS2113T`  
+  Output:
+  ````
+  Module exist!
+  Here is a description of the module you have added previously
+  
+  This module introduces the necessary skills for systematic and rigorous development of software systems. 
+  It covers requirements, design, implementation, quality assurance, 
+  and project management aspects of small-to-medium size multi-person software projects.
+  
+  Returning to module information menu...
+  ````
+#### 3.1.2 Add/View Components and Their Weightages
+* Example for adding components and weightage to a module
+  Input:  
+  `2`  
+  Output:  
+  ````
+  Would you like to add/view component(s) to a module? [Y/N]
+  ````
+  Input:  
+  `Y`  
+  Output:  
+  ````
+  Key in 1 to add component and 2 to view component
+  ````
+  Input:  
+  `1`  
+  Output:  
+  ````
+  Module Name?
+  ````
+  Input:
+  `CS2113T`
+  Output:  
+  ````
+  Please key in your component and percentage of the component.
+  Leave space between component and percentage only.
+  Example: FinalExam 20
+  ````
+  Input:  
+  `FinalExam 20`  
+  Output:  
+  ````
+  Component and weightage added!
+  ````
+* Example for viewing the components and weightage of an existing module
+  Input:  
+  `2`  
+  Output:
+    ````
+    Would you like to add/view component(s) to a module? [Y/N]
+    ````
+  Input:  
+  `Y`  
+  Output:
+    ````
+    Key in 1 to add component and 2 to view component
+    ````
+  Input:  
+  `2`  
+  Output:
+    ````
+    Module Name?
+    ````
+  Input:  
+  `CS2113T`  
+  Output:
+    ````
+  {FinalExam=20}
+    ````
+  
 #### 3.1.3 View all modules
 
 Lists out all the modules added to UniTracker.
@@ -246,7 +379,9 @@ Please choose which action you would like to do and enter the number:
 
 #### 3.2.1 Add CAP and Number of MCs graded taken
 
-Adds current CAP and MCs counted into the CAP.
+Adds current CAP and MCs counted into the CAP.  
+Exits program if CAP is invalid (to be rectified later).  
+[i.e. negative CAP or CAP > 5.0]
 
 Input:  
 `1`  
@@ -476,7 +611,7 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
 
 ---
 
-### 3.4  Links Menu
+### 3.4 Links Menu
 
 The Links feature allows you to add and keep track of http and https links. It also allows users to
 keep their zoom links separately.
@@ -666,8 +801,8 @@ Please choose which action you would like to do and enter the number:
 
 Features|Menu | Command to enter from the Main Menu
 ----|-----|-------
-Add/View Module Description | Module Information | 1, 1
-Add/View Components and Their Weightages | Module Information| 1, 2
+[Add/View Module Description](#311-addview-module-description) | Module Information | 1, 1
+[Add/View Components and Their Weightages](#312-addview-components-and-their-weightages) | Module Information| 1, 2
 [View All Modules](#313-view-all-modules) | Module Information | 1, 3
 [Add a Review](#314-add-a-review) | Module Information | 1, 4
 [View All Reviews](#315-view-all-reviews) | Module Information | 1, 5
