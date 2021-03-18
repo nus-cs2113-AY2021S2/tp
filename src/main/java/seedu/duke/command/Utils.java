@@ -18,6 +18,7 @@ public class Utils {
     private static final String ERROR_INVALID_OPTION = "invalid option: ";
     private static final String ERROR_MISSING_OPTION_VALUE = "value of option %s is missing.";
     private static final String ERROR_MISSING_ARGUMENT_VALUE = "missing argument value.";
+    private static final String ERROR_MISSING_VALUE = "missing value after command.";
     private static final String ERROR_DUPLICATE_OPTION = "duplicate option: ";
     private static final String ERROR_CONFLICT_OPTION = "conflict with options: ";
     private static final String ERROR_TOO_MANY_ARGUMENTS = "too many arguments.";
@@ -25,16 +26,18 @@ public class Utils {
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
+    private static final int VALUE_INDEX = 1;
 
     /**
      * Checks {@code value} to see if it is not {@code null} and not empty.
      *
-     * @param value the String to check.
+     * @param value        the String to check.
+     * @param errorMessage the exception message to print.
      * @throws CommandException if {@code value} is {@code null} or empty.
      */
-    private static void validateNotEmpty(String value) throws CommandException {
+    private static void validateNotEmpty(String value, String errorMessage) throws CommandException {
         if (value == null || value.length() == 0) {
-            throw new CommandException(ERROR_MISSING_ARGUMENT_VALUE);
+            throw new CommandException(errorMessage);
         }
     }
 
@@ -80,6 +83,25 @@ public class Utils {
         }
         // Below return results in an ERROR_MISSING_OPTION_VALUE exception thrown.
         return validateNotEmpty("", command, option);
+    }
+
+    /**
+     * Gets the value of the second argument from {@code arguments}.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command the name of the {@code Command} calling it.
+     * @return the non-empty value.
+     * @throws CommandException if value is missing or empty.
+     */
+    public static String getValue(ArrayList<String> arguments, String command)
+            throws CommandException {
+        assert arguments != null : "arguments is null!";
+        boolean isValuable = (arguments.size() > VALUE_INDEX) &&
+                (arguments.get(VALUE_INDEX).length() == 0);
+        if (isValuable) {
+            return arguments.get(VALUE_INDEX);
+        }
+        throw new CommandException(ERROR_MISSING_VALUE, command);
     }
 
     // This hasOption method is only meant to improve readability.
@@ -200,7 +222,7 @@ public class Utils {
             throws CommandException {
         switch (argumentType) {
         case VALUE:
-            validateNotEmpty(argument);
+            validateNotEmpty(argument, ERROR_MISSING_ARGUMENT_VALUE);
             break;
         case OPTION:
             if (isOption(argument)) {
