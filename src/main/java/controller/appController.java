@@ -26,8 +26,6 @@ public class appController {
             case "view employee schedule":
                 viewEmployeeSchedule();
                 break;
-            case "view shift status":
-
             case "quit":
                 System.out.println("bye");
                 return;
