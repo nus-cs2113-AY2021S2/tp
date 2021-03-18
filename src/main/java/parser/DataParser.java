@@ -1,14 +1,11 @@
-
 package parser;
 
 import employee.Employee;
 
-import java.text.ParseException;
-
 public class DataParser {
-    public Employee parseData(String line) throws ParseException {
+    public Employee parseData(String line) {
         String[] splitByHex = line.split("#");
-        Employee parsedEmployee = null;
+        Employee parsedEmployee = new Employee(null);
 
         parsedEmployee.setName(splitByHex[0]);
         for (int scheduleIndex=1; scheduleIndex<splitByHex.length; scheduleIndex++) {

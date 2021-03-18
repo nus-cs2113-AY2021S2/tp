@@ -34,7 +34,7 @@ public class FileManager {
     }
 
     public ArrayList<Employee> loadFile() throws FileNotFoundException {
-        ArrayList<Employee> employees = new ArrayList<Employee>();
+        ArrayList<Employee> employees = new ArrayList<>();
 
         File path = new File("employees.txt");
         if (!path.exists()) {
