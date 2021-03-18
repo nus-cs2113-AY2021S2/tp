@@ -49,6 +49,7 @@ public class Parser {
         case "help":
             commandList.printHelp(arguments);
             break;
+        case "exit":
         case "bye":
             commandList.exit();
             return true;

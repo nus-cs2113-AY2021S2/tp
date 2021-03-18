@@ -9,9 +9,14 @@ import java.util.Scanner;
 import static seedu.connoisseur.messages.Messages.WELCOME_MESSAGE;
 import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.SORT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.LIST_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
 import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
 import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
+import static seedu.connoisseur.messages.Messages.EXIT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.REVIEW_HELP_MESSAGE;
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -118,6 +123,41 @@ public class Ui {
      */
     public void printSortHelpMessage() {
         println(SORT_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints sort help message.
+     */
+    public void printExitHelpMessage() {
+        println(EXIT_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints list help message.
+     */
+    public void printListHelpMessage() {
+        println(LIST_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints delete help message.
+     */
+    public void printDeleteHelpMessage() {
+        println(DELETE_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints view help message.
+     */
+    public void printViewHelpMessage() {
+        println(VIEW_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints view help message.
+     */
+    public void printReviewHelpMessage() {
+        println(REVIEW_HELP_MESSAGE);
     }
 
     /**
