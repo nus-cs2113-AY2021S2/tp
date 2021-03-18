@@ -30,6 +30,17 @@ public class PatientList {
         }
     }
 
+    public static boolean isIDTaken(String inputString) {
+        int numberOfPatients = patients.size();
+        for (int i = 0; i < numberOfPatients; i++) {
+            String patientID = patients.get(i).getPatientID();
+            if (patientID.equals(inputString)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void listPatients() {
         int numberOfPatients = patients.size();
         if (numberOfPatients == 0) {
@@ -37,19 +48,27 @@ public class PatientList {
         } else {
             UI.notEmptyPatientListMessage();
             for (int i = 0; i < numberOfPatients; i++) {
-                UI.printPatientList(i, patients.get(i).getPatientDetails());
+                UI.showLine();
+                UI.printPatientList(i+1, patients.get(i).getPatientDetails());
             }
         }
     }
 
-    public static void deletePatient(int inputInt) {
-        int patientIndex = inputInt - 1;
-        if (inputInt <= 0 || inputInt > patients.size()) {
-            UI.incorrectInput();
+    public static void deletePatient(String inputID) {
+        int patientIndex = 0;
+        String patientName = null;
+        for (int i = 0; i < patients.size(); i++) {
+            Patient patientTemp = patients.get(i);
+            String tempID = patientTemp.getPatientID();
+            String tempName = patientTemp.getPatientName();
+            if (tempID.equals(inputID)) {
+                patientIndex = i;
+                patientName = tempName;
+                break;
+            }
         }
-        Patient toBeDeleted = patients.get(patientIndex);
         patients.remove(patientIndex);
-        UI.deletePatientMessage(toBeDeleted.getPatientDetails(), patients.size());
+        UI.deletePatientMessage(patientName, patients.size());
     }
 
     public int getSize() {

@@ -20,10 +20,14 @@ public class UI {
         System.out.println("Here is a list of patient commands: ");
         System.out.println("\"help\" brings up this list of commands!");
         System.out.println("\"add [Patient ID] [Name] [Age] [Gender] [Illness] [Drugs Needed]\" adds a patient to the patient list!");
+        System.out.println("*The name must not have a space included!");
+        System.out.println("*The patient ID must start with a \"P\" and have a 5 digit number after! eg. P12345");
+        System.out.println("*The age must be an integer!");
         System.out.println("\"list\" brings up the list of all current patients!");
-        System.out.println("\"delete [index in list]\" deletes the patient at that index from the list!");
-        System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding patient!");
+        System.out.println("\"delete [Patient ID]\" deletes the patient with the ID from the list!");
+        System.out.println("\"find [Patient ID]\" finds the corresponding patient that matches the ID!");
         System.out.println("\"return\" returns you to the Start Menu!");
+        System.out.println("Please take note the follow the number of parameters in each command strictly!");
     }
 
     public static void unrecognizedCommandMessage() {
@@ -46,11 +50,13 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Hello from\n" + LOGO + "What is your name?");
+        System.out.println("Welcome to \n" + LOGO + "What is your name?");
+        showLine();
     }
 
     public static void printUserName(String userName) {
         System.out.println("Hello " + userName + "!");
+        showLine();
     }
 
     public static void printStartMenu() {
@@ -85,8 +91,8 @@ public class UI {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
     }
 
-    public static void deletePatientMessage(String deletedPatientDetails, int inputInt) {
-        System.out.println("Noted. I've removed this patient: \n" + deletedPatientDetails);
+    public static void deletePatientMessage(String deletedPatient, int inputInt) {
+        System.out.println("Noted. I've removed this patient: \n" + deletedPatient);
         System.out.println("Now you have " + inputInt + " patients in the list");
     }
 
@@ -94,25 +100,36 @@ public class UI {
         System.out.println("Goodbye! Have a nice day!");
     }
 
+    public static void patientMenuPrompt() {
+        System.out.print("Patient --> ");
+    }
+
+    public static void startMenuPrompt() {
+        System.out.print("Start Menu --> ");
+    }
+
+    public static void userNamePrompt() {
+        System.out.print("User Name --> ");
+    }
+
     public void patientCommandWelcome() {
         System.out.println("Welcome to the patient Commands section!");
         System.out.println("Here is a list of patient commands: ");
         System.out.println("\"add [Patient ID] [Name] [Age] [Gender] [Illness] [Drugs Needed]\" adds a patient to the patient list!");
         System.out.println("\"list\" brings up the list of all current patients!");
-        System.out.println("\"delete [index in list]\" deletes the patient at that index from the list!");
-        System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding patient!");
+        System.out.println("\"delete [Patient ID]\" deletes the patient with the ID from the list!");
+        System.out.println("\"find [Patient ID]\" finds the corresponding patient that matches the ID!");
         System.out.println("\"help\" brings up a list of commands!");
         System.out.println("\"return\" returns you to the Start Menu!");
     }
 
-    public void returningToStartMenuMessage() {
+    public static void returningToStartMenuMessage() {
         System.out.println("Returning to start Menu!");
     }
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
     }
-
 
 
     public static void hiredOutput(String line) {
