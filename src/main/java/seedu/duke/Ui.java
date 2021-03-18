@@ -185,30 +185,15 @@ public class Ui {
         return true;
     }
 
-    public static void readModuleNumberToBeDeleted(ArrayList<Module> modules) {
+    public static int readModuleNumberToBeDeleted(ArrayList<Module> modules) {
+        int moduleNumberInt = -1;
         if (printAllModulesIfNotEmpty(modules)) {
             printSelectModuleToDeleteMessage();
-            int moduleNumberInt = readCommandToInt();
+            moduleNumberInt = readCommandToInt();
             moduleNumberInt--;
-            if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
-                logger.log(Level.WARNING, "You are making a change that cannot be undone.");
-                System.out.println("Are you sure you want to delete "
-                        + modules.get(moduleNumberInt).getName()
-                        + "? [Y/N]");
-                String command = readCommand();
-                if (readYN(command) == 1) {
-                    printDeletedModuleMessage(modules.get(moduleNumberInt));
-                    modules.remove(modules.get(moduleNumberInt));
-                } else if (readYN(command) == 0) {
-                    System.out.println("Ok. I did not delete "
-                            + modules.get(moduleNumberInt).getName());
-                }
-            } else {
-                logger.log(Level.INFO, "You did not enter a valid integer.");
-                printInvalidIntegerMessage();
-            }
-            printReturnToModuleInfoMenuMessage();
+            return moduleNumberInt;
         }
+        return moduleNumberInt;
     }
 
     public static void printDeletedModuleMessage(Module module) {
@@ -228,16 +213,6 @@ public class Ui {
             return;
         }
         printAllModulesIfNotEmpty(modules);
-        System.out.println("Please choose which module you would like to review"
-            + " and enter the number:\n");
-        int moduleNumberInt = Ui.readCommandToInt();
-        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
-            moduleNumberInt--;
-            String review = Ui.printAddReviewMessage(modules.get(moduleNumberInt));
-            modules.get(moduleNumberInt).setReview(review);
-        } else {
-            printInvalidIntegerMessage();
-        }
     }
 
     public static void printAllReviews(ArrayList<Module> modules) {
@@ -279,6 +254,7 @@ public class Ui {
                 printReturnToModuleInfoMenuMessage();
                 return module.getReview();
             }
+            assert readYN(command) == 1 : "readYN(command) should be 1 here";
         }
         System.out.println("After you finish your review, "
             + "type '/end' to finish reviewing.");
