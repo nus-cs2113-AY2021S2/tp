@@ -40,7 +40,7 @@ public class NurseScheduleInstance {
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            System.out.print("--> NSchedule: ");
+            System.out.print("NSchedule --> ");
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
             String[] details = parser.getDetails(line);
@@ -65,7 +65,7 @@ public class NurseScheduleInstance {
                 System.out.println("\"return\" returns you to the Start Menu!");
             } else if (command.equals("return")) {
                 storage.writeToFile(nurseSchedules);
-                System.out.println("Back to main menu");
+                System.out.println("Returning to start menu!");
                 isRun = false;
             }
         }
