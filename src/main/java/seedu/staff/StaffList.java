@@ -16,6 +16,7 @@ public class StaffList {
 
     public static void resetList() {
         list.clear();
+        numStaff=0;
     }
 
     public static void addStaff(Staff staff) {
@@ -86,6 +87,7 @@ public class StaffList {
             Staff staff = iterator.next();
             if (staff.getId().equals(line.split(" ")[1])) {
                 iterator.remove();
+                numStaff--;
                 isExistingID = true;
             }
             i++;
