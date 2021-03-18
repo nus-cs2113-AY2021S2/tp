@@ -238,7 +238,7 @@ public class CommandList {
      * @param arguments is the type of help determined by user input.
      */
     public void printHelp(String arguments) {
-        if (arguments.length() == 0) {
+        if (arguments == null) {
             ui.printGeneralHelpMessage();
         } else if (arguments.equals("sort")) {
             ui.printSortHelpMessage();

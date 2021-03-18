@@ -27,7 +27,7 @@ public class Parser {
         try {
             arguments = input.split(" ", 2)[1].trim();
         } catch (ArrayIndexOutOfBoundsException e) {
-            arguments = "";
+            arguments = null;
         }
 
         if (command.equals("list")) {
