@@ -5,12 +5,12 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.logging.Level;
 
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 
 public class Validators {
+    private static final String KEYWORD_TODAY = "today";
 
     // @@author marklowsk-reused
     // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
@@ -36,7 +36,7 @@ public class Validators {
 
     // @@author marklowsk-reused
     // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
-    // Utils.parseDate(String) with minor edits.
+    // Utils.parseDate(String) with new additions.
     /**
      * Parses dateInput into a LocalDateTime object.
      * Returns null if dateInput cannot be parsed into a LocalDateTime object.
@@ -46,6 +46,10 @@ public class Validators {
      * @see #parseDateString(DateTimeFormatter, String)
      */
     public static LocalDate validateDate(String dateInput) throws DateTimeException {
+        assert dateInput != null : "dateInput is null!";
+        if (dateInput.trim().equals(KEYWORD_TODAY)) {
+            return LocalDate.now();
+        }
         for (DateTimeFormatter dtf : POSSIBLE_DATE_FORMATS) {
             LocalDate date = parseDateString(dtf, dateInput);
             if (date != null) {
