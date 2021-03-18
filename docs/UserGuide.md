@@ -205,11 +205,7 @@ User can view module description added previously.
   ````
   Input:  
   `CS2113T`  
-<<<<<<< HEAD
   Output:  
-=======
-  Output:
->>>>>>> c88c6dccc25cdf597159b828453e9f196d9f2dd9
   ````
   Please key in your component and percentage of the component.
   Leave space between component and percentage only.
