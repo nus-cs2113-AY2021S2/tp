@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.drugs.DrugInstance;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
@@ -32,6 +33,7 @@ public class Duke {
                         Parser.run();
                         break;
                     case "2":
+                        System.out.println("Patient Instance!");
                         new PatientCommandInstance(PATIENT_FILE_PATH).patientInstance();
                         break;
                     case "3":
