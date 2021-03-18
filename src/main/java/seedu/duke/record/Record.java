@@ -1,14 +1,15 @@
 package seedu.duke.record;
 
 import java.time.LocalDate;
+import java.math.BigDecimal;
 
 public abstract class Record {
-    private double amount;
+    private BigDecimal amount;
     private LocalDate issueDate;
     private String description;
-    private static final String FILE_OUTPUT_STRING_FORMAT = "| %s | %f | %s";
+    private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %f | %s";
 
-    public Record(double amount, LocalDate issueDate, String description) {
+    public Record(BigDecimal amount, LocalDate issueDate, String description) {
         this.amount = amount;
         this.issueDate = issueDate;
         this.description = description;
@@ -18,7 +19,7 @@ public abstract class Record {
         return description;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -32,7 +33,8 @@ public abstract class Record {
 
     @Override
     public String toString() {
-        //temporary placeholder. output format to be discussed.
-        return "Common description across Loan, Saving & Expense classes";
+        String formattedDate = "[" + this.issueDate + "]";
+        String formattedDescription = " " + this.description + " ";
+        return formattedDate + formattedDescription;
     }
 }

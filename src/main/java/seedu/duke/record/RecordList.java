@@ -36,4 +36,5 @@ public class RecordList {
     public int getRecordCount() {
         return recordList.size();
     }
+
 }

@@ -3,9 +3,10 @@ package seedu.duke;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
+import seedu.duke.exception.FileLoadingException;
+import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
-import seedu.duke.exception.CommandException;
 
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -19,31 +20,8 @@ public class Duke {
 
     public Duke() {
         ui = new Ui();
-        records = new RecordList();
         storage = new Storage();
-    }
-
-    /**
-     * Runner for the FINUX Application.
-     */
-    private void run() {
-        ui.printWelcomeMessage();
-        commandLooper();
-        //ui.printGoodByeMessage();
-        System.out.println("PROGRAM TERMINATES HERE!");
-    }
-
-    private void commandLooper() {
-        Command command;
-        String rawInput;
-        do {
-            rawInput = ui.getUserInput();
-            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
-            command = parseCommand(parsedStringList);
-            if (command != null) {
-                command.execute(records, ui, storage);
-            }
-        } while (!ExitCommand.isExit(command));
+        records = new RecordList();
     }
 
     /**
@@ -53,16 +31,48 @@ public class Duke {
         new Duke().run();
     }
 
-    //Shift to ParserHandler class
-    private Command parseCommand(ArrayList<String> parsedString) {
+    /**
+     * Runner for the FINUX Application.
+     */
+    private void run() {
+        start();
+        commandLooper();
+        end();
+    }
+
+    private void end() {
+        ui.printGoodByeMessage();
+        System.exit(0);
+    }
+
+    // @@ author jonahtwl-reused
+    // No recovery should be expected from a corrupted file.
+    // Reused from: https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/Main.java
+
+    private void start() {
         try {
-            Command type = CommandHandler.createCommand(parsedString, records);
-            System.out.println("Command is parsed");
-            return type;
-        } catch (CommandException e) {
-            System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
-            return null;
+            ui = new Ui();
+            storage = new Storage();
+            records = new RecordList(storage.loadFile());
+            ui.printWelcomeMessage();
+        } catch (FileLoadingException e) {
+            Ui.printInitError();
+            throw new RuntimeException(e.getMessage());
         }
     }
+
+    private void commandLooper() {
+        Command command;
+        String rawInput;
+        do {
+            rawInput = ui.getUserInput();
+            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            assert parsedStringList.size() != 0 : "Empty Parser Error";
+            command = CommandHandler.parseCommand(parsedStringList, records);
+            if (command != null) {
+                command.execute(records, ui, storage);
+            }
+        } while (!ExitCommand.isExit(command));
+    }
+
 }

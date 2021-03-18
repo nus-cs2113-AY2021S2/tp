@@ -17,7 +17,8 @@ public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final int INDEX_OF_COMMAND = 0;
 
-    public static Command createCommand(ArrayList<String> parsedArguments, RecordList records) throws CommandException {
+    public static Command createCommand(ArrayList<String> parsedArguments, RecordList recordList)
+            throws CommandException {
         String commandWord = parsedArguments.get(INDEX_OF_COMMAND);
 
         switch (commandWord) {
@@ -26,17 +27,28 @@ public class CommandHandler {
         case COMMAND_ADD:
             return new AddCommand(parsedArguments);
         case COMMAND_RETURN:
-            return new ReturnCommand(parsedArguments, records);
+            return new ReturnCommand(parsedArguments, recordList);
         case COMMAND_REMOVE:
-            return new RemoveCommand(parsedArguments, records);
+            return new RemoveCommand(parsedArguments, recordList);
         case COMMAND_VIEW:
             return new ViewCommand(parsedArguments);
         case COMMAND_HELP:
             return new HelpCommand(parsedArguments);
         case COMMAND_EXIT:
             return new ExitCommand(parsedArguments);
+        case "":
+            return null;
         default:
             throw new CommandException(ERROR_INVALID_COMMAND + commandWord);
+        }
+    }
+
+    public static Command parseCommand(ArrayList<String> parsedString, RecordList records) {
+        try {
+            return CommandHandler.createCommand(parsedString, records);
+        } catch (CommandException e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }
