@@ -67,6 +67,10 @@ public class ListCommand extends Command {
      */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage) {
+        assert recordList != null : "recordList should not be null";
+        assert ui != null : "ui should not be null";
+        assert storage != null : "storage should not be null";
+
         switch (recordType) {
         case EXPENSE:
             ui.printExpenses(recordList);
