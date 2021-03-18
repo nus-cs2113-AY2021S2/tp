@@ -65,7 +65,7 @@ public class ParserHandler {
 
     private static ArrayList<String> checkFirstBlock(ArrayList<String> extracted) {
         String firstblock = extracted.get(0);
-        if (StringUtils.startsWithAny(firstblock, "remove ", "return ", "help ")) {
+        if (StringUtils.startsWithAny(firstblock, "remove ", "return ", "help ", "creditscore ")) {
             String[] splitBlock = firstblock.split(" ", 2);
             extracted.remove(0);
             extracted.add(splitBlock[0]);
@@ -80,7 +80,7 @@ public class ParserHandler {
      * @return true if input starts with valid options, else otherwise.
      */
     private static boolean checkOptionStartWith(String input) {
-        return StringUtils.startsWithAny(input, "-e", "-l", "-s", "-d", "-a", "-i");
+        return StringUtils.startsWithAny(input, "-e", "-l", "-s", "-d", "-a", "-i", "-p");
     }
 
     /**
@@ -89,7 +89,7 @@ public class ParserHandler {
      * @return true if input ends with valid options, else otherwise.
      */
     private static boolean checkOptionEndWith(String input) {
-        return  StringUtils.endsWithAny(input, " -e", " -l", " -s", " -d", " -a", " -i");
+        return  StringUtils.endsWithAny(input, " -e", " -l", " -s", " -d", " -a", " -i", " -p");
     }
 
     /**
@@ -98,6 +98,6 @@ public class ParserHandler {
      * @return the first index if matches any valid options in input, else -1.
      */
     private static int getNextOptionIndex(String leftOverString) {
-        return StringUtils.indexOfAny(leftOverString, " -e ", " -l ", " -s ", " -d ", " -a ", " -i ");
+        return StringUtils.indexOfAny(leftOverString, " -e ", " -l ", " -s ", " -d ", " -a ", " -i ", " -p ");
     }
 }
