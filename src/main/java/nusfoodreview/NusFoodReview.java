@@ -74,7 +74,7 @@ public class NusFoodReview {
         if (canteens.size() == 0) {
             return;
         }
-        assert false;
+        assert true;
         while (!isExit) {
             try {
                 String line = ui.readCommand();
