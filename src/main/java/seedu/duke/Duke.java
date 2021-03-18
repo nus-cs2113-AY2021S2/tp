@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.doctorappointments.DoctorAppointmentInstance;
+import seedu.drugs.DrugInstance;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
@@ -11,6 +13,7 @@ public class Duke {
      */
 
     static final String PATIENT_FILE_PATH = "data/PatientList.txt";
+    static final String APPOINTMENT_FILE_PATH = "data/DoctorAppointmentList.txt";
 
 
     /**
@@ -36,6 +39,8 @@ public class Duke {
                         break;
                     case "3":
                         System.out.println("Doctor's Appointment Instance!");
+                        DoctorAppointmentInstance appointments = new DoctorAppointmentInstance(APPOINTMENT_FILE_PATH);
+                        appointments.run();
                         break;
                     case "4":
                         System.out.println("Nurse Schedule Instance!");
