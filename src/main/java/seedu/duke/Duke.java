@@ -1,9 +1,9 @@
 package seedu.duke;
 
 import seedu.drugs.DrugInstance;
+
 import seedu.nurseschedules.NurseScheduleInstance;
 import seedu.doctorappointments.DoctorAppointmentInstance;
-import seedu.drugs.DrugInstance;
 import seedu.staff.Parser;
 import java.io.IOException;
 import seedu.duke.ui.UI;
