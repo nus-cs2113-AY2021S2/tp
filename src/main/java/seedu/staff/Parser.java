@@ -24,7 +24,7 @@ public class Parser {
             line = in.nextLine();
             try {
                 if (commandHandler(line) == 0) {
-                    System.out.println("Back to main menu\n");
+                    System.out.println("Returning to start Menu!\n");
                     break;
                 }
             } catch (WrongStaffIdException e) {
