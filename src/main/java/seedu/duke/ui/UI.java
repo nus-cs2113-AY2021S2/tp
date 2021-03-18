@@ -1,11 +1,16 @@
 package seedu.duke.ui;
 
+import seedu.duke.command.CommandResult;
+import seedu.duke.common.Messages;
+
 import java.util.Scanner;
 
 public class UI {
 
-    public static final String DIVIDER = "------------------------------------------------\n";
-    private Scanner sc;
+    public static final String DIVIDER = "--------------------------------------------------------------------\n";
+    public static final String DIVIDER_LINE_ONLY =
+            "--------------------------------------------------------------------";
+    private final Scanner sc;
 
     public UI() {
         sc = new Scanner(System.in);
@@ -17,34 +22,20 @@ public class UI {
 
     public void printGreetings() {
         System.out.print(DIVIDER
-                + "Welcome to your personal fitness app - Healthier\n"
-                + "What's in your mind today?\n"
+                + Messages.MESSAGE_WELCOME
                 + DIVIDER);
     }
 
     public void printExitMessage() {
         System.out.print(DIVIDER
-                + "Nice work today!\n"
-                + "You are one step closer to ultimate fitness!\n"
-                + "See you again soon!\n"
+                + Messages.MESSAGE_BYE
                 + DIVIDER);
     }
 
-    public void printHelpPrompt() {
-        System.out.print(DIVIDER
-                + "Not sure what to do?\n"
-                + "Run command 'help' to see what you can do.\n"
-                + DIVIDER);
-    }
-
-    public static void printMessage(String message) {
+    public void printCommandResult(CommandResult commandResult) {
         System.out.println(DIVIDER
-                + message
+                + commandResult.getFeedback()
                 + "\n"
-                + DIVIDER);
-    }
-
-    public static void printDivider() {
-        System.out.println(DIVIDER);
+                + DIVIDER_LINE_ONLY);
     }
 }

@@ -1,73 +1,95 @@
 package seedu.duke.command;
 
-import seedu.duke.record.Record;
+import seedu.duke.account.FitCenter;
+import seedu.duke.common.Messages;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ViewCommand extends Command {
-    private static final String FEEDBACK_FORMAT = "Displaying all %s exercise records %s:";
-    private Record record;
-    private SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
+    private final CommandRecordType recordType;
+    private HashMap<String, String> specifiedParams = null;
+    private LocalDate recordDate;
 
-    public ViewCommand(String type, ArrayList<String> params) throws ParseException {
-        switch (type) {
-        case "E":
-            if (params.size() == 3) {
-                Date date = spf.parse(params.get(3));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.EXERCISE, params.get(1), params.get(2), localDate);
-                System.out.println(params.get(1) + params.get(2) + params.get(3));
-            } else {
-                //record = new DietRecord(recordType.params.get(1), params.get(2), LocalDate.now());
-                System.out.println(params.get(1) + params.get(2));
-            }
-            break;
-        case "D":
-            if (params.size() == 3) {
-                Date date = spf.parse(params.get(3));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.DIET, params.get(1), params.get(2), localDate);
-                System.out.println(params.get(1) + params.get(2) + params.get(3));
-            } else {
-                //record = new DietRecord(recordType.DIET, params.get(1), params.get(2), LocalDate.now());
-                System.out.println(params.get(1) + params.get(2));
-            }
-            break;
-        case "S":
-            if (params.size() == 2) {
-                Date date = spf.parse(params.get(2));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.SLEEP, params.get(1), localDate);
-                System.out.println(params.get(1) + params.get(2));
-            } else {
-                //record = new DietRecord(recordType.SLEEP, params.get(1), LocalDate.now());
-                System.out.println(params.get(1));
-            }
-            break;
-        case "W":
-            if (params.size() == 2) {
-                Date date = spf.parse(params.get(2));
-                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-                //record = new DietRecord(recordType.BODYWEIGHT, params.get(1), localDate);
-                System.out.println(params.get(1) + params.get(2));
-            } else {
-                //record = new DietRecord(RecordType.BODYWEIGHT, params.get(1), LocalDate.now());
-                System.out.println(params.get(1));
-            }
-            break;
-        default:
-            System.out.println("There is something wrong within the system.");
+    public ViewCommand(CommandRecordType type) {
+        recordType = type;
+    }
+
+    public ViewCommand(CommandRecordType type, HashMap<String, String> params) throws ParseException {
+        recordType = type;
+        specifiedParams = params;
+
+        String dateString = params.get("date");
+        if (dateString != null) {
+            SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
+            spf.setLenient(false);
+            Date date = spf.parse(dateString);
+            recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         }
     }
 
-    public CommandResult execute() {
-        //fitCenter.addRecordToList(record);
-        feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
+    public CommandResult execute(FitCenter fitCenter) {
+        switch (recordType) {
+        case SLEEP:
+            feedback = getRecordsWithoutOptionalParam(fitCenter);
+            feedback = getFeedbackWithHeader(Messages.MESSAGE_VIEW_HEADER_SLEEP);
+            break;
+        case BODY_WEIGHT:
+            feedback = getRecordsWithoutOptionalParam(fitCenter);
+            feedback = getFeedbackWithHeader(Messages.MESSAGE_VIEW_HEADER_WEIGHT);
+            break;
+        case EXERCISE:
+            if (specifiedParams != null) {
+                feedback = getRecordsWithOptionalParam(fitCenter, specifiedParams.get("activity"));
+            } else {
+                feedback = getRecordsWithoutOptionalParam(fitCenter);
+            }
+            feedback = getFeedbackWithHeader(Messages.MESSAGE_VIEW_HEADER_EXERCISE);
+            break;
+        case DIET:
+            if (specifiedParams != null) {
+                feedback = getRecordsWithOptionalParam(fitCenter, specifiedParams.get("food"));
+            } else {
+                feedback = getRecordsWithoutOptionalParam(fitCenter);
+            }
+            feedback = getFeedbackWithHeader(Messages.MESSAGE_VIEW_HEADER_DIET);
+            break;
+        default:
+            feedback = Messages.MESSAGE_CANT_VIEW_LIST;
+        }
+        addTitleToFeedback();
         return new CommandResult(feedback);
+    }
+
+    private String getRecordsWithOptionalParam(FitCenter fitCenter, String optionalParam) {
+        if (specifiedParams.size() == 2) {
+            return fitCenter.getRecordListString(recordType, recordDate, optionalParam);
+        } else if (specifiedParams.size() == 1 && specifiedParams.containsKey("date")) {
+            return fitCenter.getRecordListString(recordType, recordDate);
+        } else {
+            return fitCenter.getRecordListString(recordType, optionalParam);
+        }
+    }
+
+    private String getRecordsWithoutOptionalParam(FitCenter fitCenter) {
+        if (specifiedParams != null) {
+            return fitCenter.getRecordListString(recordType, recordDate);
+        } else {
+            return fitCenter.getRecordListString(recordType);
+        }
+    }
+
+    private void addTitleToFeedback() {
+        String recordString = recordType.toString().toLowerCase().replace("_", " ");
+        String feedbackHeading = String.format(Messages.MESSAGE_VIEW_TITLE, recordString);
+        feedback = feedbackHeading + feedback;
+    }
+
+    private String getFeedbackWithHeader(String header) {
+        return feedback.contains("Sorry") ? feedback : header + feedback;
     }
 }

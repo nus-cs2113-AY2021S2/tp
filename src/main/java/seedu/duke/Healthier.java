@@ -1,10 +1,17 @@
 package seedu.duke;
 
+import seedu.duke.account.FitCenter;
+import seedu.duke.account.User;
+import seedu.duke.command.Command;
+import seedu.duke.command.CommandResult;
+import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
 import seedu.duke.ui.UI;
 
 public class Healthier {
     private UI ui;
+    private final User currentUser = new User();
+    private final FitCenter currentFitCenter = currentUser.getFitCenter();
 
     private void start() {
         ui = new UI();
@@ -13,33 +20,28 @@ public class Healthier {
 
     private void loopCommand() {
         CommandParser commandParser = new CommandParser();
-        ui.printHelpPrompt();
-        String userInput = ui.getUserInput();
-        while (!userInput.equals("exit")) {
-            //Command command = commandParser.parseCommand(userInput);
-            commandParser.parseCommand(userInput);
-            ui.printHelpPrompt();
-            //command = ui.getUserInput();
+        Command command;
+        do {
+            String userInput = ui.getUserInput();
+            command = commandParser.parseCommand(userInput);
+            CommandResult result = command.execute(currentFitCenter);
+            ui.printCommandResult(result);
             commandParser.clearParserParams();
-            userInput = ui.getUserInput();
-        }
+        } while (!ExitCommand.isExitCommand(command));
+    }
+
+    private void exit() {
         ui.printExitMessage();
+        System.exit(0);
     }
 
     public void run() {
         start();
         loopCommand();
+        exit();
     }
-
 
     public static void main(String[] args) {
         new Healthier().run();
     }
-    /*
-    private static void exit() {
-        ui.printExitMessage();
-        System.exit(0);
-    }
-
-     */
 }
