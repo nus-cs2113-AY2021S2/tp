@@ -5,7 +5,7 @@ import java.util.Scanner;
 import employee.*;
 
 public class appController {
-    private static ArrayList<employee> emloyees = new ArrayList<>();
+    private static ArrayList<employee> employees = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
 
     public void run(){
@@ -23,6 +23,11 @@ public class appController {
             case "drop schedule" :
                 dropSchedule();
                 break;
+            case "view employee schedule":
+                viewEmployeeSchedule();
+                break;
+            case "view shift status":
+
             case "quit":
                 System.out.println("bye");
                 return;
@@ -36,14 +41,14 @@ public class appController {
         System.out.println("enter employee name");
         String name = sc.nextLine();
         employee newEmployee = new employee(name);
-        emloyees.add(newEmployee);
+        employees.add(newEmployee);
         System.out.println("employee added");
     }
 
     private void addSchedule(){
         System.out.println("enter employee name");
         String name = sc.nextLine();
-        for(employee person:emloyees)
+        for(employee person:employees)
             if(person.getName().equals(name)) {
                 System.out.println("enter employee schedule");
                 String schedule = sc.nextLine();
@@ -57,7 +62,7 @@ public class appController {
     private void dropSchedule(){
         System.out.println("enter employee name");
         String name = sc.nextLine();
-        for(employee person:emloyees)
+        for(employee person:employees)
             if(person.getName().equals(name)) {
                 System.out.println("enter employee schedule");
                 String scheduleToDrop = sc.nextLine();
@@ -70,6 +75,17 @@ public class appController {
                     }
                 }
                 System.out.println("schedule not found");
+                return;
+            }
+        System.out.println("employee not found");
+    }
+
+    private void viewEmployeeSchedule(){
+        System.out.println("enter employee name");
+        String name = sc.nextLine();
+        for(employee person:employees)
+            if(person.getName().equals(name)) {
+                System.out.println(person.getSchedules());
                 return;
             }
         System.out.println("employee not found");
