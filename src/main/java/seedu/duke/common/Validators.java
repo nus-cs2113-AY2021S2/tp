@@ -56,6 +56,17 @@ public class Validators {
         throw new DateTimeException("input \"" + dateInput + "\" is not an acceptable Date Format.");
     }
 
+    /**
+     * Validates the index supplied by the user.
+     * Throws exception if the index is out of range or is negative.
+     *
+     * @param inputToCheck index supplied by user to be validated.
+     * @param records list of all records.
+     * @return validated index.
+     * @throws NumberFormatException when the inputToCheck contains non numeric.
+     * @throws IndexOutOfBoundsException when the inputToCheck is less than zero, equals to zero or greater than the
+     * size of the records.
+     */
     public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
             IndexOutOfBoundsException {
         Logger logger = Logger.getLogger("validateIndex_Log");
