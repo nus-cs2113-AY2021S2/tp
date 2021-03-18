@@ -34,10 +34,10 @@ public class Sorter {
         case "title":
             this.sortMethod = SortMethod.TITLE;
             break;
-        case "date_earliest":
+        case "date earliest":
             this.sortMethod = SortMethod.DATE_EARLIEST;
             break;
-        case "date_latest":
+        case "date latest":
             this.sortMethod = SortMethod.DATE_LATEST;
             break;
         default:
@@ -88,10 +88,10 @@ public class Sorter {
         case "title":
             sortByTitle(reviewList);
             break;
-        case "date_earliest":
+        case "date earliest":
             sortByDateEarliest(reviewList);
             break;
-        case "date_latest":
+        case "date latest":
             sortByDateLatest(reviewList);
             break;
         default:
