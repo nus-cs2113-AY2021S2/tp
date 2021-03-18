@@ -45,6 +45,7 @@ public class AddCommand extends Command {
 
     /**
      * Constructor to validate the format for add command.
+     *
      * @param arguments parsed input containing options and arguments.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
@@ -59,17 +60,19 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Get the description field.
+     * Gets the description field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the description of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getDescription(ArrayList<String> arguments) throws CommandException {
-        return Utils.getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
+        return getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
     }
 
     /**
-     * Get the amount field.
+     * Gets the amount field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a BigDecimal object containing the amount of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
@@ -85,7 +88,8 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Get the date field.
+     * Gets the date field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a LocalDate object containing the date of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
