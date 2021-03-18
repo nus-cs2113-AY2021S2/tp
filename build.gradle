@@ -42,10 +42,6 @@ checkstyle {
 }
 
 run {
+    enableAssertions = true
     standardInput = System.in
-    enableAssertions = true
-}
-
-run {
-    enableAssertions = true
 }
