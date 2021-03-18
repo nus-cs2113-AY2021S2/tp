@@ -57,7 +57,7 @@ public class DrugStorage {
     }
 
     public void exitProgram() {
-        System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("Returning to start menu!");
         try {
             saveDrugs();
         } catch (IOException e) {
