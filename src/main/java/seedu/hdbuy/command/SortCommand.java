@@ -1,8 +1,8 @@
 package seedu.hdbuy.command;
 
 import seedu.hdbuy.data.QueryKey;
-//import seedu.hdbuy.data.exception.InvalidSortException;
-//import seedu.hdbuy.ui.TextUi;
+import seedu.hdbuy.data.exception.InvalidSortException;
+import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
 
@@ -23,11 +23,11 @@ public class SortCommand extends Command {
 
                 break;
             default:
-                //throw new InvalidSortException();
+                throw new InvalidSortException();
             }
-            //TextUi.showParameters(inputs);
-        } //catch (InvalidSortException e) {
-            //TextUi.showInvalidSort(criteria, e);
+            TextUi.showParameters(inputs);
+        } catch (InvalidSortException e) {
+            TextUi.showInvalidSort(criteria, e);
         }
     }
 }
