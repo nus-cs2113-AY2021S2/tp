@@ -6,7 +6,7 @@ import java.util.*;
 public class MovieMenu {
 
 	public static int getAction() {
-		int action=-1;
+		int action = -1;
 		Scanner sc = new Scanner(System.in);
 		while ((action < 1) || (action > 4)) {
 			System.out.println("\n\n======== Menu Choice =======");
@@ -17,7 +17,7 @@ public class MovieMenu {
 				continue;
 			} 
 			action = sc.nextInt();
-			if ((action < 1) ||(action >4)) {
+			if ((action < 1) ||(action > 4)) {
 				System.out.println("Please input an integer between 1 and 4.\n");
 			}
 		}
@@ -100,7 +100,10 @@ public class MovieMenu {
 		int maxcolumn = ShowtimeDatabase.get(index_st).getMaxColumn(); 
 
 		int[][] seatChoice = new int[num_tic][2];
-		for (int i=0;i<num_tic;i++) {seatChoice[i][0] = -1 ; seatChoice[i][1] = -1 ;}
+		for (int i=0;i<num_tic;i++) {
+			seatChoice[i][0] = -1 ;
+			seatChoice[i][1] = -1 ;
+		}
 
 		ShowtimeDatabase.get(index_st).printSeats();
 		for(int b = 0; b<num_tic; b++) {
@@ -140,7 +143,7 @@ public class MovieMenu {
 			RC[1] = col; 
 	
 			boolean selectAgain = false;
-			for (int i = 0;i<num_tic;i++) {
+			for (int i = 0; i < num_tic; i++) {
 				if(seatChoice[i][0]==RC[0]&&seatChoice[i][1]==RC[1]) {selectAgain=true;}
 			}
 			
@@ -196,7 +199,7 @@ public class MovieMenu {
 		String comment = sc.nextLine();
 		int rating = ratingVerification();
 		movie.addReview(comment, rating);
-		System.out.println("The comment ' "+comment+" ' and the rating "+rating+" have been successfully added to the movie "+movie.getMovieTitle()+".\nThank you for your review!\n");
+		System.out.println("The comment ' " + comment + " ' and the rating " + rating + " have been successfully added to the movie " + movie.getMovieTitle() + ".\nThank you for your review!\n");
 	}
 	
 	public static int ratingVerification() {
@@ -225,27 +228,28 @@ public class MovieMenu {
 
 
 	public static void movieAction(Movie movie) {
-		int Action;
+		int action;
 		do {
-			Action = getAction();
+			action = getAction();
 			
-			switch(Action) {			
-			case 1: 
-				Action = -1;
+			switch(action) {
+			case 1:
+				action = -1;
 					System.out.println("\n======== Book Ticket ========");
-					bookTicket(MainMenu.MovieDatabase, MainMenu.ShowtimesDatabase, MainMenu.CineplexDatabase, movie.getMovieID());
+					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase, Database.CineplexDatabase, movie.getMovieID());
 
 				break;	
 			case 2:
-				Action = -1;
+				action = -1;
 				viewMovieDetails(movie);
 				break;
-			case 3: 
-				Action = -1;
+			case 3:
+				action = -1;
 				addReview(movie);
 				break;
 			}			
-		} while (Action != 4);
+		} while (action != 4);
+		//TODO: Is this supposed to quit the app when action 4 is chosen?
 	}
 	
 }

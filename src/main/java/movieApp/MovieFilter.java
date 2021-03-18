@@ -323,7 +323,7 @@ public class MovieFilter {
 						movieList = selectMovie(movieList);
 						break;
 					case 7:
-						movieList = new ArrayList<Movie>(MainMenu.MovieDatabase);
+						movieList = new ArrayList<Movie>(Database.MovieDatabase);
 						break;
 
 				}
