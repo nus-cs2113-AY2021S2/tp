@@ -155,4 +155,9 @@ public class Ui {
     public void printInvalidHelpMessage() {
         System.out.println("Invalid help command!");
     }
+
+    public void printEmptyCommandListMessage() {
+        System.out.println("You have no reviews, type 'new' to start!");
+    }
+
 }

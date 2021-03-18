@@ -72,7 +72,7 @@ public class CommandList {
      */
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
-            ui.println("No reviews found. :(");
+            ui.printEmptyCommandListMessage();
         } else {
             if (sortMethod == null) {
                 sorter.sort(reviewList);
@@ -82,7 +82,7 @@ public class CommandList {
                     sorter.sort(reviewList, sortMethod);
                     printReviews(reviewList);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    ui.println("Invalid sort method");
+                    ui.printInvalidSortMethodMessage();
                 }
             }
         }
@@ -145,7 +145,6 @@ public class CommandList {
                 break;
             default:
                 ui.println(INVALID_COMMAND);
-                return;
             }
         } else {
             switch (input) {
@@ -181,7 +180,6 @@ public class CommandList {
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
-            return;
         }
     }
 
@@ -206,7 +204,6 @@ public class CommandList {
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
-            return;
         }
     }
 
