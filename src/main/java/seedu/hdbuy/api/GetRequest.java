@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class GetRequest {
 
@@ -29,6 +30,7 @@ public class GetRequest {
     public static HashMap<Integer, Unit> getResponse(String query) throws EmptyResponseException {
         try {
             URL url = new URL(URL + query);
+            Logger.getLogger("GetRequest").info(url.toString());
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestProperty(REQUEST_PROPERTY_HEADER, REQUEST_PROPERTY);
             connection.setRequestMethod(REQUEST_METHOD);
@@ -37,7 +39,7 @@ public class GetRequest {
             connection.disconnect();
             return units;
         } catch (GatewayException | IOException exception) {
-            System.out.println(exception.getMessage());
+            Logger.getLogger("GetRequest").warning(exception.getMessage());
             return new HashMap<>();
         }
     }
