@@ -148,7 +148,7 @@ User can view module description added previously.
   Key in the module description for CS2113T:
   ````
   Input:  
-  `Y`
+  `Y`  
   Output:
   ````
   Key in the module description for CS2113T:
