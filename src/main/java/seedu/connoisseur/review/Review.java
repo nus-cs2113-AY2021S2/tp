@@ -1,12 +1,12 @@
 package seedu.connoisseur.review;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Review {
     protected String title;
     protected String category;
-    protected String dateOfEntry;
+    protected String dateAndTimeOfEntry;
     protected int rating;
     protected String description;
     public static int MAX_NUM_OF_STARS = 5;
@@ -25,8 +25,8 @@ public class Review {
         this.category = category;
         this.rating = rating;
         this.description = description;
-        LocalDate date = LocalDate.now();
-        this.dateOfEntry = date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        LocalDateTime dateTime = LocalDateTime.now();
+        this.dateAndTimeOfEntry = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy HH:mm:ss a"));
     }
 
     /**
@@ -43,7 +43,7 @@ public class Review {
         this.category = category;
         this.rating = rating;
         this.description = description;
-        this.dateOfEntry = date;
+        this.dateAndTimeOfEntry = date;
     }
 
     /**
@@ -51,8 +51,8 @@ public class Review {
      *
      * @return date of entry as a string
      */
-    public String getDate() {
-        return dateOfEntry;
+    public String getDateTime() {
+        return dateAndTimeOfEntry;
     }
 
     /**
@@ -152,7 +152,7 @@ public class Review {
      * @return review as a string for display
      */
     public String toString() {
-        return title + "      " + rating + "      " + dateOfEntry;
+        return title + "      " + rating + "      " + dateAndTimeOfEntry;
     }
 
     /**
@@ -161,7 +161,7 @@ public class Review {
      * @return review in a single string
      */
     public String reviewToText() {
-        return getDate() + "|" + getTitle() + "|" + getCategory() + "|" + getRating() + "|" + getDescription();
+        return getDateTime() + "|" + getTitle() + "|" + getCategory() + "|" + getRating() + "|" + getDescription();
     }
 
     /**

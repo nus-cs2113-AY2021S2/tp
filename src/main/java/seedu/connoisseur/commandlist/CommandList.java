@@ -102,7 +102,7 @@ public class CommandList {
             ui.printWhiteSpace(currentReview.getCategory().length());
             ui.print(currentReview.starRating());
             ui.printWhiteSpace(currentReview.starRating().length());
-            ui.println(currentReview.getDate());
+            ui.println(currentReview.getDateTime());
         }
     }
 
@@ -116,7 +116,7 @@ public class CommandList {
             ui.println(MISSING_SORT_METHOD);
             return;
         }
-        if (sortType.equals("stars") || sortType.equals("title") || sortType.equals("date_earliest")
+        if (sortType.equals("title") || sortType.equals("date_earliest")
                 || sortType.equals("date_latest") || sortType.equals("rating") || sortType.equals("category")) {
             sorter.changeSortMethod(sortType);
             ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());

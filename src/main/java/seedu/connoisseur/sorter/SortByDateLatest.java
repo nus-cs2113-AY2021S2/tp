@@ -16,8 +16,8 @@ public class SortByDateLatest implements Comparator<Review> {
      */
     public int compare(Review a, Review b) {
         try {
-            Date dateA = new SimpleDateFormat("MMM d yyyy").parse(a.getDate());
-            Date dateB = new SimpleDateFormat("MMM d yyyy").parse(b.getDate());
+            Date dateA = new SimpleDateFormat("MMM d yyyy HH:mm:ss a").parse(a.getDateTime());
+            Date dateB = new SimpleDateFormat("MMM d yyyy HH:mm:ss a").parse(b.getDateTime());
             return dateB.compareTo(dateA);
         } catch (ParseException e) {
             System.out.println("Wrong date format");
