@@ -10,6 +10,7 @@ import static seedu.duke.command.RemoveCommand.COMMAND_REMOVE;
 import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
 import static seedu.duke.command.ExitCommand.COMMAND_EXIT;
+import static seedu.duke.command.CreditScoreCommand.COMMAND_CREDIT_SCORE;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -39,6 +40,8 @@ public class CommandHandler {
             return new HelpCommand(parsedArguments);
         case COMMAND_EXIT:
             return new ExitCommand(parsedArguments);
+        case COMMAND_CREDIT_SCORE:
+            return new CreditScoreCommand(parsedArguments);
         case "":
             return null;
         default:
