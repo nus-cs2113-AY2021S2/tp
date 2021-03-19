@@ -14,6 +14,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.HEAD;
@@ -29,7 +33,25 @@ import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
  */
 public class OpenLessonLinkCommand extends Command {
 
+    public static final String FILE_LOGGER_NOT_WORKING = "File logger not working.";
+    private static Logger logger = Logger.getLogger(OpenLessonLinkCommand.class.getName());
+    private static FileHandler fileHandler;
     //@@author H-horizon
+
+    /**
+     * Sets up logger when command is created.
+     */
+    public OpenLessonLinkCommand() {
+        LogManager.getLogManager().reset();
+        try {
+            fileHandler = new FileHandler(logger.getName());
+            fileHandler.setLevel(Level.FINE);
+            logger.addHandler(fileHandler);
+
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, FILE_LOGGER_NOT_WORKING, e);
+        }
+    }
 
     /**
      * Opens links corresponding to specified indices.
@@ -85,9 +107,11 @@ public class OpenLessonLinkCommand extends Command {
             connection = (HttpURLConnection) lessonUrl.openConnection();
             connection.setRequestMethod(HEAD);
             int statusCode = connection.getResponseCode();
+            assert statusCode >= -1 : MESSAGE_UNABLE_TO_OPEN_LINK;
             openLessonLink(lessonLink, ui);
         } catch (IOException e) {
             ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
+            logger.info(lessonLink);
         }
     }
 
