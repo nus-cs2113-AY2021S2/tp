@@ -8,19 +8,22 @@ import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
 
+import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
+import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
 import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
-import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+
 
 /**
  * Class with methods for different commands.
@@ -69,7 +72,7 @@ public class CommandList {
      */
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
-            ui.println("No reviews found. :(");
+            ui.printEmptyCommandListMessage();
         } else {
             if (sortMethod == null) {
                 sorter.sort(reviewList);
@@ -79,7 +82,7 @@ public class CommandList {
                     sorter.sort(reviewList, sortMethod);
                     printReviews(reviewList);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    ui.println("Invalid sort method");
+                    ui.printInvalidSortMethodMessage();
                 }
             }
         }
@@ -133,18 +136,15 @@ public class CommandList {
     public void addReview(String input) {
         if (input == null) {
             ui.println(QUICK_PROMPT);
-            switch (ui.readCommand()) {
+            switch (ui.readCommand().toLowerCase()) {
             case "y":
-            case "Y":
                 addQuickReview();
                 break;
             case "n":
-            case "N":
                 addLongReview();
                 break;
             default:
                 ui.println(INVALID_COMMAND);
-                return;
             }
         } else {
             switch (input) {
@@ -180,7 +180,6 @@ public class CommandList {
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
-            return;
         }
     }
 
@@ -205,7 +204,6 @@ public class CommandList {
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
-            return;
         }
     }
 
@@ -242,6 +240,16 @@ public class CommandList {
             ui.printGeneralHelpMessage();
         } else if (arguments.equals("sort")) {
             ui.printSortHelpMessage();
+        } else if (arguments.equals("list")) {
+            ui.printListHelpMessage();
+        } else if (arguments.equals("review") || arguments.equals("new")) {
+            ui.printReviewHelpMessage();
+        } else if (arguments.equals("delete")) {
+            ui.printDeleteHelpMessage();
+        } else if (arguments.equals("view")) {
+            ui.printViewHelpMessage();
+        } else if (arguments.equals("exit")) {
+            ui.printExitHelpMessage();
         } else {
             ui.printInvalidHelpMessage();
         }
@@ -262,4 +270,29 @@ public class CommandList {
         ui.printExitMessage();
     }
 
+    public void viewReview(String title) {
+        ArrayList<Integer> titleMatch = new ArrayList<Integer>();
+        if (title == null) {
+            ui.println(MISSING_VIEW_TITLE);
+            return;
+        }
+
+        for (int i = 0; i < reviewList.size(); i++) {
+            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+                titleMatch.add(i);
+            }
+        }
+        if (titleMatch.isEmpty()) {
+            ui.println(INVALID_VIEW_TITLE);
+        } else {
+            ui.println("Found " + titleMatch.size() + " matching title(s)");
+            for (int i = 0; i < titleMatch.size(); i++) {
+                Review currentReview = reviewList.get(titleMatch.get(i));
+                ui.printView(currentReview);
+                if (!((i + 1) == titleMatch.size())) {
+                    ui.print("\n");
+                }
+            }
+        }
+    }
 }

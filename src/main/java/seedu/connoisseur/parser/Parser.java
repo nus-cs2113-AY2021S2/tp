@@ -30,20 +30,30 @@ public class Parser {
             arguments = null;
         }
 
-        if (command.equals("list")) {
+        switch (command) {
+        case "list":
             commandList.listReviews(arguments);
-        } else if (command.equals("sort")) {
+            break;
+        case "sort":
             commandList.sortReview(arguments);
-        } else if (command.equals("new")) {
+            break;
+        case "new":
             commandList.addReview(arguments);
-        } else if (command.equals("delete")) {
+            break;
+        case "delete":
             commandList.deleteReview(arguments);
-        } else if (command.equals("help")) {
+            break;
+        case "view":
+            commandList.viewReview(arguments);
+            break;
+        case "help":
             commandList.printHelp(arguments);
-        } else if (command.equals("bye")) {
+            break;
+        case "exit":
+        case "bye":
             commandList.exit();
             return true;
-        } else {
+        default:
             commandList.invalidCommand();
         }
         return false;
