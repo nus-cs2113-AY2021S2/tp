@@ -31,7 +31,6 @@ public class CreditScoreCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     public CreditScoreCommand(ArrayList<String> arguments) throws CommandException {
-        System.out.println(arguments);
         borrower = getValue(arguments, COMMAND_CREDIT_SCORE);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_CREDIT_SCORE);
     }
@@ -55,6 +54,6 @@ public class CreditScoreCommand extends Command {
 
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage) {
-        System.out.println("borrower is: " + borrower);
+
     }
 }
