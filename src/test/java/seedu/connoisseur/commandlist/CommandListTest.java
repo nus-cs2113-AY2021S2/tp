@@ -17,12 +17,12 @@ public class CommandListTest {
     private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @BeforeEach
-    public static void setUpStreams() {
+    public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
 
     @AfterEach
-    public static void cleanUpStreams() {
+    public void cleanUpStreams() {
         System.setOut(System.out);
     }
 
