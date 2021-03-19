@@ -42,6 +42,9 @@ public class UiManager {
     }
 
     public UiManager(InputStream in, PrintStream out) {
+        assert in != null : "Input stream cannot be null";
+        assert out != null : "Output stream cannot be null";
+
         this.in = new Scanner(in);
         this.out = out;
     }
@@ -51,10 +54,11 @@ public class UiManager {
         String userInput = in.nextLine();
         out.println(DIVIDER);
         return userInput;
-
     }
 
     public void showToUser(String... message) {
+        assert message != null : "Message cannot be null";
+
         for (String m : message) {
             out.println(m);
         }
@@ -78,6 +82,8 @@ public class UiManager {
     }
 
     public void showHistory(History history) {
+        assert history != null : "History must be initialized before, cannot be null";
+
         showToUser(
                 "Number of records in your history: " + history.getTotalNoOfHistory(),
                 history.getHistoryAsString()
