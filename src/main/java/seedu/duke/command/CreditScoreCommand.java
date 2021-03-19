@@ -10,18 +10,19 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+import static seedu.duke.command.Utils.getValue;
 import static seedu.duke.command.Utils.validateArguments;
 
 /**
  * Handles all operations related to the credit score command.
  */
 public class CreditScoreCommand extends Command {
-
-    protected static final String COMMAND_CREDIT_SCORE = "creditscore";
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.VALUE
     };
+    protected static final String COMMAND_CREDIT_SCORE = "creditscore";
+    private final String borrower;
 
     /**
      * Constructor to validate the format for credit score command.
@@ -30,6 +31,7 @@ public class CreditScoreCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     public CreditScoreCommand(ArrayList<String> arguments) throws CommandException {
+        borrower = getValue(arguments, COMMAND_CREDIT_SCORE);
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_CREDIT_SCORE);
     }
 
