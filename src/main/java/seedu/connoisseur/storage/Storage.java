@@ -31,6 +31,7 @@ public class Storage {
      * Constructor for Storage class. 
      */
     public Storage(Ui ui) {
+        logger.setLevel(Level.OFF);
         logger.log(Level.INFO, CURRENT_DIRECTORY);
         String folderPath = System.getProperty("user.dir") + "/data";
         File folder = new File(folderPath);
