@@ -16,7 +16,6 @@ public class AppController {
     FileManager fileManager = new FileManager();
     private static final ArrayList<Shift> shifts = new ArrayList<Shift>();
 
-
     public void run() throws IOException {
         try {
             employees = fileManager.loadFile();
@@ -50,7 +49,10 @@ public class AppController {
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
+                viewAllShifts();
                 break;
+            case "view one shift":
+                viewOneShift();
             case "quit":
                 System.out.println("bye");
                 fileManager.saveFile(employees);
@@ -180,6 +182,27 @@ public class AppController {
                 }
             }
         System.out.println("Employee not found");
+    }
+
+    private void viewAllShifts(){
+        System.out.println(shifts);
+    }
+
+    private void viewOneShift() {
+        System.out.println("Enter Shift date (in DDMMYYYY):");
+        String date = sc.nextLine();
+        LocalDate shiftDate = LocalDate.parse(date);
+        for (Shift item : shifts) {
+            if (shifts.get(2).equals(shiftDate)) {
+                System.out.println("Enter Shift index:");
+                int shiftIndex = Integer.parseInt(sc.nextLine());
+                if (shifts.get(2).equals(shiftIndex)) {
+                    System.out.println("The people assigned to the shift are:" + shifts.get(1));
+                }
+                System.out.println("Shift Index selected is not available");
+            }
+            System.out.println("Date chosen has no shifts.");
+        }
     }
 }
 
