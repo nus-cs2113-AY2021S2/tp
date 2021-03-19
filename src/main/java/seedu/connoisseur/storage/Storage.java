@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
 import static seedu.connoisseur.messages.Messages.FILE_SUCCESS;
@@ -21,6 +23,7 @@ import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
  * creates and saves new reviews to connoisseur's.txt
  */
 public class Storage {
+    private static Logger logger = Logger.getLogger("ConnoisseurLogger");
     private static String filePath;
     private Ui ui;
 
@@ -28,18 +31,18 @@ public class Storage {
      * Constructor for Storage class. 
      */
     public Storage(Ui ui) {
-        ui.printLog(CURRENT_DIRECTORY);
+        logger.log(Level.INFO, CURRENT_DIRECTORY);
         String folderPath = System.getProperty("user.dir") + "/data";
         File folder = new File(folderPath);
         boolean folderIsCreated = folder.mkdir();
         if (folderIsCreated) {
-            ui.printLog(FOLDER_SUCCESS);
+            logger.log(Level.INFO, FOLDER_SUCCESS);
         } else {
-            ui.printLog(FOLDER_ALREADY_EXISTS);
+            logger.log(Level.WARNING, FOLDER_ALREADY_EXISTS);
         }
         filePath = System.getProperty("user.dir") + "/data/connoisseur.txt";
         this.ui = ui;
-        ui.printLog(filePath);
+        logger.log(Level.INFO, filePath);
     }
 
     /**
@@ -52,10 +55,10 @@ public class Storage {
         try {
             File data = new File(filePath);
             if (data.createNewFile()) {
-                ui.printLog(FILE_SUCCESS);
+                logger.log(Level.INFO, FILE_SUCCESS);
             } else {
                 hasTextFile = true;
-                ui.printLog(FILE_ALREADY_EXISTS);
+                logger.log(Level.WARNING, FILE_ALREADY_EXISTS);
             }
         } catch (IOException e) { //creating or retrieving data has errors
             ui.printErrorMessage(e);
