@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static seedu.duke.commands.ListLessonsCommand.printLessons;
 import static seedu.duke.common.Messages.MESSAGE_SORT_LESSON_LIST;
 
-//@@author H-horizon
+//@@author H-horizon-unused
 /**
  * Replaced with method as command is not needed in this case.
  * 
