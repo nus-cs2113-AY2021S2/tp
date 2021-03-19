@@ -30,72 +30,76 @@ to organize the records of their patients.
    of Java installed, `Java 11` can be downloaded from 
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
    
-
-2. Obtain a copy of the latest version of the Patient Manager (tp.jar) from 
+1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from 
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
    
-
-3. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:\
+1. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:\
    \
    ![PowerShell](./images/WindowsPowerShell.png)
    
+1. Execute `java -jar tp.jar` to start the Patient Manager.
 
-4. Execute `java -jar tp.jar` to start the Patient Manager.
+1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit `ENTER` at the end.
 
-
-5. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit `ENTER` at the end.
-
-
-6. Refer to the Features section below for more detailed explanations and usage of the available commands.
+1. Refer to the Features section below for more detailed explanations and usage of the available commands.
 
 ---
 
 ## Features
 
 ### Print a help message: `help`
+
 Prints out the help message with a brief explanation of the available commands. If one or more
 commands are provided as arguments, the info messages for the indicated commands will be printed.
 
 Usage: `help` `OPTIONAL_COMMAND(S)`
 
 Example of usage:
+
 ```
 help list load exit
 ```
 
 ### Adding a patient: `add`
+
 Adds a patient to the list by entering their IC number.
 
 Usage: `add` `IC_NUMBER`
 
 Example of usage:
+
 ```
 add S1234567A
 ```
 
 ### Listing all patients: `list`
+
 Shows a list of all patients.
 
 Usage: `list`
 
 ### Loading a patient's medical records: `load`
+
 Finds the patient whose IC number matches the given search query and loads their medical records.
 If none of the patients' IC numbers match the search query, it will print an error message.
 
 Usage: `load` `IC_NUMBER`
 
 Example of usage:
+
 ```
 load S1234567A
 ```
 
 ### Displaying the current loaded patient: `current`
+
 Displays the patient that has been loaded through the [`load`](#loading-a-patients-medical-records-load) command.
 If no patient has been loaded, it will inform the user that there is no loaded patient.
 
 Usage: `current`
 
 ### Recording a patient's consultation details: `record`
+
 Adds a patient's consultation details to the patient's records.
 This command requires that a patient has been loaded with the 
 [`load`](#loading-a-patients-medical-records-load) command. 
@@ -104,11 +108,13 @@ If no patient has been loaded, it will print an error message.
 Usage: `record` `DETAILS`
 
 Example of usage:
+
 ```
 record fever and slight cough
 ```
 
 ### Retrieving a patient's consultation details: `retrieve`
+
 Retrieves all consultation details of a patient.
 This command requires that a patient has been loaded with the
 [`load`](#loading-a-patients-medical-records-load) command.
@@ -117,6 +123,7 @@ If no patient has been loaded, it will print an error message.
 Usage: `retrieve`
 
 ### Exiting the program: `exit`
+
 Exits the program
 
 Usage: `exit`
@@ -124,6 +131,7 @@ Usage: `exit`
 ---
 
 ## Command Summary
+
 Listed below are all currently implemented commands in alphabetical order.\
 Click on the commands to navigate to specific feature details.
 
