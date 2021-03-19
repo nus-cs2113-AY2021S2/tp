@@ -309,7 +309,7 @@ public class Parser {
         // to remove only the first two words "add lesson"
         String[] lessonDetails = input.trim().split(WHITESPACE, 3);
         // assumption that the "add lesson" will always be present in input
-        assert(lessonDetails.length >= 2);
+        assert (lessonDetails.length >= 2);
 
         // ERROR - User does not enter any parameters.
         if (lessonDetails.length < 3) {
@@ -388,7 +388,7 @@ public class Parser {
         // to remove only the first two words "add task"
         String[] taskDetails = input.trim().split(WHITESPACE, 3);
         // assumption that the "add task" will always be present in input
-        assert(taskDetails.length >= 2);
+        assert (taskDetails.length >= 2);
 
         // ERROR - User does not enter any parameters.
         if (taskDetails.length < 3) {
@@ -449,7 +449,7 @@ public class Parser {
         UI ui = new UI();
 
         // assumption that input is non-null
-        assert(input != null);
+        assert (input != null);
         String[] words = input.trim().split(WHITESPACE);
         
         for (String word : words) {
