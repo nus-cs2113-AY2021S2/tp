@@ -228,7 +228,7 @@ public class Utils {
             throws CommandException {
         String helpType = argument.get(1);
         if (StringUtils.containsAny(helpType, "all", "add", "creditscore", "exit",
-            "list", "remove", "return", "view") ) {
+            "list", "remove", "return", "view")) {
             return helpType;
         } else {
             throw new CommandException(ERROR_WRONG_HELP_TYPE + helpType, command);
