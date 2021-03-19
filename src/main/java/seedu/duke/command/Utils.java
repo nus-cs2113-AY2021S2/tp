@@ -249,7 +249,7 @@ public class Utils {
     protected static String validateHelpType(ArrayList<String> argument, String command)
             throws CommandException {
         String helpType = argument.get(1);
-        if (StringUtils.containsAny(helpType, "all", "add", "creditscore", "exit",
+        if (StringUtils.equalsAny(helpType, "all", "add", "creditscore", "exit",
             "list", "remove", "return", "view")) {
             return helpType;
         } else {
