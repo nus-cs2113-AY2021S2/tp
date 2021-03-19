@@ -11,18 +11,36 @@ public class Messages {
     public static final String WELCOME_MESSAGE = "                         Welcome to\n"
             + LOGO;
 
-    public static final String COMMAND_PROMPT = "____________________________________________________________\n" 
+    public static final String COMMAND_PROMPT = "____________________________________________________________________\n"
             + "Please enter a command: ";
-    public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!"
-            + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"
-            + "new\t\tadds a new review\nsort\tsets your preferred sorting method for your reviews"
-            + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur";
-    public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
-            + "Currently recognised methods are:\nstars\ndate_earliest\ndate_latest\ntitle\n"
-            + "\nCommand syntax: sort <method>";
+
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";
     public static final String INVALID_COMMAND = "Invalid command.";
+
+    // Help
+    public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!\n"
+            + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"
+            + "new\t\tadds a new review\nsort\tsets your preferred sorting method for your reviews"
+            + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur\n"
+            + "\nType <help> followed by <command> to learn more about how each command can be used.";
+    public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
+            + "Currently recognised methods are:\nstars\ndate\_earliest\ndate\_latest\ntitle\n"
+            + "\nCommand syntax: sort <method>";
+    public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews.\n\n"
+            + "Command syntax: list";
+    public static final String EXIT_HELP_MESSAGE = "Exit will allow you to exit the application.\n\n"
+            + "Command syntax: bye";
+    public static final String REVIEW_HELP_MESSAGE = "New will allow you to add a review.\n"
+            + "\nDetails to include in the review:\n\tTitle of Review\n\tQuick Review: y/n\n\tCategory of Experience"
+            + "\n\tRating\n\tIf it is not a quick review, you can also enter a description of the experience."
+            + "\n\nCommand syntax for review: new\nAlternatively, you can also type:\n\tFor quick review: new quick"
+            + "\n\tFor full review: new long ";
+    public static final String DELETE_HELP_MESSAGE = "Delete will allow you to remove an entry you input previously\n\n"
+            + "Command syntax: delete <title of review>";
+    public static final String VIEW_HELP_MESSAGE = "View will allow you to view the details of a review entry you"
+            + " made.\nYou can view the title, ratings, date and the full description of your experience.\n\n"
+            + "Command Syntax: view <title of review>";
 
     // Storage
     public static final String FILE_ALREADY_EXISTS = "Data file already exists";
@@ -46,6 +64,8 @@ public class Messages {
 
     // Delete
     public static final String MISSING_DELETE_TITLE = "Please specify title of review to be deleted";
+    public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
     public static final String INVALID_DELETE_TITLE = "Specified review does not exist!";
+    public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
     public static final String DELETE_SUCCESS = " has been deleted.";
 }
