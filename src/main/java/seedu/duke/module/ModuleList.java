@@ -152,19 +152,7 @@ public class ModuleList {
         Writer writer = new Writer();
         writer.writeModule();
     }
-
-    /**
-     * Sorts lesson list by lesson type.
-     */
-    public static void sortLessons() {
-        selectedModule.getLessonList().sort((lesson1, lesson2) -> {
-            if (lesson1.getLessonType() != lesson2.getLessonType()) {
-                return lesson1.getLessonType().compareTo(lesson2.getLessonType());
-            }
-            return lesson1.getTime().compareTo(lesson2.getTime());
-        });
-    }
-
+    
     /**
      * Sorts tasks by deadline.
      */
@@ -176,6 +164,19 @@ public class ModuleList {
                 return (int) (daysRemaining1 - daysRemaining2);
             }
             return task1.getDescription().compareTo(task2.getDescription());
+        });
+    }
+
+    //@@author H-horizon
+    /**
+     * Sorts lesson list by lesson type.
+     */
+    public static void sortLessons() {
+        selectedModule.getLessonList().sort((lesson1, lesson2) -> {
+            if (lesson1.getLessonType() != lesson2.getLessonType()) {
+                return lesson1.getLessonType().compareTo(lesson2.getLessonType());
+            }
+            return lesson1.getTime().compareTo(lesson2.getTime());
         });
     }
 }

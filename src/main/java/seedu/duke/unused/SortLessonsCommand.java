@@ -1,5 +1,6 @@
-package seedu.duke.commands;
+package seedu.duke.unused;
 
+import seedu.duke.commands.Command;
 import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -12,7 +13,10 @@ import java.util.ArrayList;
 import static seedu.duke.commands.ListLessonsCommand.printLessons;
 import static seedu.duke.common.Messages.MESSAGE_SORT_LESSON_LIST;
 
+//@@author H-horizon
 /**
+ * Replaced with method as command is not needed in this case.
+ * 
  * Represents the command used to sort the lessons on the list of lessons.
  */
 public class SortLessonsCommand extends Command {
