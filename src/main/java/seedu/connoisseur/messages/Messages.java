@@ -18,7 +18,7 @@ public class Messages {
             + "new\t\tadds a new review\nsort\tsets your preferred sorting method for your reviews"
             + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur";
     public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
-            + "Currently recognised methods are:\nstars\ndate_earliest\ndate_latest\ntitle\n"
+            + "Currently recognised methods are:\nstars\ndate earliest\ndate latest\ntitle\n"
             + "\nCommand syntax: sort <method>";
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";

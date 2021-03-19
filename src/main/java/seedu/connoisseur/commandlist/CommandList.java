@@ -116,8 +116,8 @@ public class CommandList {
             ui.println(MISSING_SORT_METHOD);
             return;
         }
-        if (sortType.equals("title") || sortType.equals("date_earliest")
-                || sortType.equals("date_latest") || sortType.equals("rating") || sortType.equals("category")) {
+        if (sortType.equals("title") || sortType.equals("date earliest")
+                || sortType.equals("date latest") || sortType.equals("rating") || sortType.equals("category")) {
             sorter.changeSortMethod(sortType);
             ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
         } else {
