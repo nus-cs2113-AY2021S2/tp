@@ -3,8 +3,8 @@ package seedu.connoisseur.commandlist;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.storage.Storage;
@@ -16,12 +16,12 @@ public class CommandListTest {
     private Storage storage = new Storage(ui);
     private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    @BeforeAll
+    @BeforeEach
     public static void setUpStreams() {
         System.setOut(new PrintStream(outContent));
     }
 
-    @AfterAll
+    @AfterEach
     public static void cleanUpStreams() {
         System.setOut(System.out);
     }
