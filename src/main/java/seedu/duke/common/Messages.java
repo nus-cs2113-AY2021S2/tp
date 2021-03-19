@@ -9,7 +9,7 @@ public class Messages {
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
-    public static final String INDENTATION = "\t\t\t";
+    public static final String INDENTATION = "\t\t";
 
     public static final String MESSAGE_EXIT = "Have a nice day! Bye bye!";
     public static final String MESSAGE_WELCOME = "What can I do for you today?";
@@ -77,6 +77,9 @@ public class Messages {
 
     //Task messages
     public static final String FORMAT_PRINT_TASK = "%d. %s%s - %s";
+    public static final String FORMAT_DAYS_REMAINING = " (%d days remaining)";
+    public static final String FORMAT_OVERDUE = " (Overdue by %d days)";
+    public static final String FORMAT_DUE_TODAY = " (Due today)";
 
     public static final String COMMAND_VERB_DELETE = "delete";
     public static final String COMMAND_VERB_MARK = "mark as done";

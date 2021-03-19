@@ -57,7 +57,6 @@ public class Constants {
                                             + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
-    public static final String PLACEHOLDER = "-";
 
     //Storage
     public static final String FOLDER_PATH = "Data";

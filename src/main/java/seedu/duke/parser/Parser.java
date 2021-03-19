@@ -51,7 +51,7 @@ import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
 import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
-import static seedu.duke.common.Constants.PLACEHOLDER;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.WHITESPACE;
 import static seedu.duke.common.DashboardCommands.ADD;
 import static seedu.duke.common.DashboardCommands.DELETE;
@@ -85,7 +85,6 @@ import static seedu.duke.common.ModuleCommands.UNMARK;
 public class Parser {
 
     //@@author ivanchongzhien
-
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
      * a module.
@@ -305,7 +304,7 @@ public class Parser {
 
         // initialize an array of empty strings to store lesson details
         String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
-        Arrays.fill(allDetails, PLACEHOLDER);
+        Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add lesson"
         String[] lessonDetails = input.trim().split(WHITESPACE, 3);
@@ -336,14 +335,14 @@ public class Parser {
         String timeAndDay = allDetails[INDEX_DAY_TIME];
 
         String link = allDetails[INDEX_LINK];
-        if (!isValidLink(link) && !link.equals(PLACEHOLDER)) {
+        if (!isValidLink(link) && !link.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_LINK);
         }
 
         String teacherName = allDetails[INDEX_TEACHER_NAME];
 
         String email = allDetails[INDEX_TEACHER_EMAIL];
-        if (!isValidEmail(email) && !email.equals(PLACEHOLDER)) {
+        if (!isValidEmail(email) && !email.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_EMAIL);
         }
 
@@ -382,7 +381,7 @@ public class Parser {
 
         // initialize an array of empty strings to store task details
         String[] allDetails = new String[ENTRY_TASK_MAX_PARSER];
-        Arrays.fill(allDetails, PLACEHOLDER);
+        Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add task"
         String[] taskDetails = input.trim().split(WHITESPACE, 3);

@@ -6,20 +6,26 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static seedu.duke.common.CommonMethods.getDaysRemaining;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
 import static seedu.duke.common.Constants.INDEX_FIRST;
+import static seedu.duke.common.Messages.FORMAT_DAYS_REMAINING;
+import static seedu.duke.common.Messages.FORMAT_DUE_TODAY;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.FORMAT_OVERDUE;
 import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
+import static seedu.duke.common.Messages.INDENTATION;
 import static seedu.duke.common.Messages.MESSAGE_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -44,6 +50,14 @@ public class UI {
         System.out.println(message);
     }
 
+    /**
+     * Prints error message of an exception within the program.
+     * @param e Exception to be printed
+     */
+    public void printError(DukeException e) {
+        System.out.println(e.getMessage());
+    }
+    
     /**
      * Reads input from user.
      *
@@ -110,7 +124,7 @@ public class UI {
         for (Task task : taskList) {
             if (task.getDone() == isDone) {
                 tasksCount++;
-                printTask(task, tasksCount);
+                printTask(task, tasksCount, isDone);
             }
         }
         if (tasksCount == INDEX_FIRST) {
@@ -136,27 +150,40 @@ public class UI {
      * @param task Task to print.
      * @param tasksCount Position of task in printed list.
      */
-    public void printTask(Task task, int tasksCount) {
+    private void printTask(Task task, int tasksCount, boolean isDone) {
         String description = task.getDescription();
         String gradedStatus = task.getGraded() ? MESSAGE_GRADED : "";
         String deadline = task.getDeadline().format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
         String listItem = String.format(FORMAT_PRINT_TASK, tasksCount, description, gradedStatus, deadline);
+        if (!isDone) {
+            listItem += getDaysRemainingMessage(task.getDeadline());
+        }
         printMessage(listItem);
-        if (!task.getRemarks().equals("")) {
-            System.out.print("\t" + task.getRemarks() + NEWLINE);
+        if (!task.getRemarks().equals(EMPTY_STRING)) {
+            System.out.print(INDENTATION + task.getRemarks() + NEWLINE);
         }
     }
-
+    
+    //@@author 8kdesign
     /**
-     * Prints error message of an exception within the program.
-     * @param e Exception to be printed
+     * Returns message for days remaining.
+     * 
+     * @param dueDate LocalDate of task deadline.
+     * @return Message for days remaining.
      */
-    public void printError(DukeException e) {
-        System.out.println(e.getMessage());
+    private String getDaysRemainingMessage(LocalDate dueDate) {
+        long daysRemaining = getDaysRemaining(dueDate);
+        if (daysRemaining < 0) {
+            return String.format(FORMAT_OVERDUE, -daysRemaining);
+        } else if (daysRemaining == 0) {
+            return FORMAT_DUE_TODAY;
+        } else {
+            return String.format(FORMAT_DAYS_REMAINING, daysRemaining);
+        }
     }
+    
 
     //@@author isaharon
-
     /**
      * Read input from user and returns list of indices.
      * @param max the maximum accepted index
@@ -164,7 +191,6 @@ public class UI {
      */
     public ArrayList<Integer> getIndicesFromUser(int max) {
         String userInput = readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(userInput, max);
-        return indices;
+        return Parser.checkIndices(userInput, max);
     }
 }

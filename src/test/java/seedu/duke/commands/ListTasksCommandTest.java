@@ -56,14 +56,14 @@ class ListTasksCommandTest {
 
         String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE + NEWLINE
                 + "[Undone]" + NEWLINE
-                + "1. weekly exercise (graded) - 26 Feb 2021" + NEWLINE
-                + "2. lecture quiz - 26 Feb 2021" + NEWLINE
-                + "\tcomplete before next lecture" + NEWLINE
-                + "3. read up notes - 26 Feb 2021" + NEWLINE
-                + "\tcomplete before lecture" + NEWLINE + NEWLINE
+                + "1. weekly exercise (graded) - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
+                + "2. lecture quiz - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
+                + "\t\tcomplete before next lecture" + NEWLINE
+                + "3. read up notes - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
+                + "\t\tcomplete before lecture" + NEWLINE + NEWLINE
                 + "[Done]" + NEWLINE
                 + "1. iP increments (graded) - 3 Mar 2021" + NEWLINE
-                + "\tremember to attach JAR file" + NEWLINE;
+                + "\t\tremember to attach JAR file" + NEWLINE;
 
         // checks displayed output to user
         assertEquals(output, bos.toString());
