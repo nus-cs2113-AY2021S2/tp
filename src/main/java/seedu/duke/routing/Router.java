@@ -15,6 +15,8 @@ public class Router {
     }
 
     public String execute(String from, String to) throws InvalidBlockException {
+        assert from != null : "From block cannot be null";
+        assert to != null : "Destination block cannot be null";
         resetMap();
         try {
             return printShortestDistance(from, to);
@@ -28,6 +30,8 @@ public class Router {
     }
 
     public String printShortestDistance(String from, String to) {
+        assert from != null : "From block cannot be null";
+        assert to != null : "Destination block cannot be null";
         Block start = nusMap.getBlock(from);
         Block destination = nusMap.getBlock(to);
         HashMap<Block, Block> predecessor = new HashMap<>();
