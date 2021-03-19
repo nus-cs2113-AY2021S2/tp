@@ -25,7 +25,7 @@ public class Messages {
             + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur\n"
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
-            + "\nCurrently recognised methods are:\nratings\ndate earliest\ndate latest\ntitle\n"
+            + "Currently recognised methods are:\nstars\ndate earliest\ndate latest\ntitle\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews.\n\n"
             + "Command syntax: list";
