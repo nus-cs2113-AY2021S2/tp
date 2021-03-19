@@ -35,6 +35,6 @@ public class CommandListTest {
     @Test
     public void listReviews_noReviews_noReviewsFound() {
         new CommandList(ui, storage).listReviews("ANY_SORT_METHOD");
-        assertEquals("No reviews found. :(\r\n", outContent.toString());
+        assertEquals("You have no reviews, type 'new' to start!\r\n", outContent.toString());
     }
 }
