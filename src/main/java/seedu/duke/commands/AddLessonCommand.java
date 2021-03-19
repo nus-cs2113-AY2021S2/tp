@@ -35,6 +35,7 @@ public class AddLessonCommand extends Command {
         String lessonTypeString = getLessonTypeString(lessonType);
         ui.printMessage(String.format(MESSAGE_ADDED_LESSON, lessonTypeString));
         ModuleList.writeModule();
+        ModuleList.sortLessons();
     }
 
     @Override

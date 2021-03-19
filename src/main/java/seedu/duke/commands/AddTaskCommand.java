@@ -33,6 +33,7 @@ public class AddTaskCommand extends Command {
         module.addTask(task);
         ui.printMessage(String.format(MESSAGE_ADDED_TASK, task.getDescription()));
         ModuleList.writeModule();
+        ModuleList.sortTasks();
     }
 
     @Override

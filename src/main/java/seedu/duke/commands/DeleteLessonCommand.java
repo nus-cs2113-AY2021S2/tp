@@ -32,6 +32,7 @@ public class DeleteLessonCommand extends Command {
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessons(lessonList, ui);
         verifyLessonsToDelete(ui, lessonList);
+        ModuleList.sortLessons();
     }
 
     /**
