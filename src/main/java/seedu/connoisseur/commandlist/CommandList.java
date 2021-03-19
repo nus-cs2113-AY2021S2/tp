@@ -240,6 +240,16 @@ public class CommandList {
             ui.printGeneralHelpMessage();
         } else if (arguments.equals("sort")) {
             ui.printSortHelpMessage();
+        } else if (arguments.equals("list")) {
+            ui.printListHelpMessage();
+        } else if (arguments.equals("review") || arguments.equals("new")) {
+            ui.printReviewHelpMessage();
+        } else if (arguments.equals("delete")) {
+            ui.printDeleteHelpMessage();
+        } else if (arguments.equals("view")) {
+            ui.printViewHelpMessage();
+        } else if (arguments.equals("exit")) {
+            ui.printExitHelpMessage();
         } else {
             ui.printInvalidHelpMessage();
         }
