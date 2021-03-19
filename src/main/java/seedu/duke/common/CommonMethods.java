@@ -6,6 +6,8 @@ import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -87,6 +89,17 @@ public class CommonMethods {
         }
     }
 
+    /**
+     * Calculates difference in specified date with current date.
+     * 
+     * @param dueDate LocalDate of task due date.
+     * @return Long of difference in days.
+     */
+    public static long getDaysRemaining(LocalDate dueDate) {
+        LocalDate currentDate = LocalDate.now();
+        return ChronoUnit.DAYS.between(currentDate, dueDate);
+    }
+    
     //@@author aliciatay-zls
     /**
      * Requests for list of indices.
