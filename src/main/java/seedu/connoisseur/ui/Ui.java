@@ -57,6 +57,10 @@ public class Ui {
         println("    Title          Category       Rating         Date");
     }
 
+    /**
+     * Prints view command output. 
+     * @param currentReview review to be viewed
+     */
     public void printView(Review currentReview) {
         println("Title               : " + currentReview.getTitle());
         println("Category            : " + currentReview.getCategory());
@@ -184,18 +188,30 @@ public class Ui {
         printLog(FILE_ALREADY_EXISTS);
     }
 
+    /**
+     * Prints invalid rating message. 
+     */
     public void printInvalidRatingMessage() {
         System.out.println("Invalid number please add in a valid rating!");
     }
 
+    /**
+     * Prints invalid sort method message. 
+     */
     public void printInvalidSortMethodMessage() {
         System.out.println("Invalid sort type!");
     }
 
+    /**
+     * Prints invalid help command message. 
+     */
     public void printInvalidHelpMessage() {
         System.out.println("Invalid help command!");
     }
 
+    /**
+     * Prints empty review list message. 
+     */
     public void printEmptyCommandListMessage() {
         System.out.println("You have no reviews, type 'new' to start!");
     }

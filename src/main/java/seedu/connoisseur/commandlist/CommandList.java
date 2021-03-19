@@ -175,6 +175,7 @@ public class CommandList {
             if (rating < 0 || rating > 5) {
                 ui.printInvalidRatingMessage();
             }
+            assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
             Review r = new Review(title, category, rating, description);
             reviewList.add(r);
             ui.println(title + ADD_SUCCESS);
@@ -197,6 +198,7 @@ public class CommandList {
             if (rating < 0 || rating > 5) {
                 ui.printInvalidRatingMessage();
             }
+            assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
             ui.println(DESCRIPTION_PROMPT);
             String description = ui.readCommand();
             Review r = new Review(title, category, rating, description);
@@ -270,6 +272,10 @@ public class CommandList {
         ui.printExitMessage();
     }
 
+    /**
+     * View a selected review. 
+     * @param title title of the review to be viewed
+     */
     public void viewReview(String title) {
         ArrayList<Integer> titleMatch = new ArrayList<Integer>();
         if (title == null) {
@@ -285,6 +291,7 @@ public class CommandList {
         if (titleMatch.isEmpty()) {
             ui.println(INVALID_VIEW_TITLE);
         } else {
+            assert titleMatch.size() != 0 : "Should have at least 1 found title";
             ui.println("Found " + titleMatch.size() + " matching title(s)");
             for (int i = 0; i < titleMatch.size(); i++) {
                 Review currentReview = reviewList.get(titleMatch.get(i));
