@@ -187,22 +187,5 @@ public class AppController {
     private void viewAllShifts(){
         System.out.println(shifts);
     }
-
-    private void viewOneShift() {
-        System.out.println("Enter Shift date (in DDMMYYYY):");
-        String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date);
-        for (Shift item : shifts) {
-            if (shifts.get(2).equals(shiftDate)) {
-                System.out.println("Enter Shift index:");
-                int shiftIndex = Integer.parseInt(sc.nextLine());
-                if (shifts.get(2).equals(shiftIndex)) {
-                    System.out.println("The people assigned to the shift are:" + shifts.get(1));
-                }
-                System.out.println("Shift Index selected is not available");
-            }
-            System.out.println("Date chosen has no shifts.");
-        }
-    }
 }
 
