@@ -15,7 +15,10 @@ import static seedu.duke.command.Utils.validateArguments;
  * Handles all operations related to the help command.
  */
 public class HelpCommand extends Command {
-    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = { ArgumentType.COMMAND };
+    private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
+        ArgumentType.COMMAND,
+        ArgumentType.VALUE
+    };
     protected static final String COMMAND_HELP = "help";
 
     /**

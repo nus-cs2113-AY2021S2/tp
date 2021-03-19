@@ -28,7 +28,10 @@ import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 
 class UtilsTest {
-    private static final ArgumentType[] ARG_TYPE_ORDER_CMD_HELP = { ArgumentType.COMMAND };
+    private static final ArgumentType[] ARG_TYPE_ORDER_CMD_HELP = {
+        ArgumentType.COMMAND,
+        ArgumentType.VALUE
+    };
     private static final ArgumentType[] ARG_TYPE_ORDER_CMD_VIEW = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
@@ -77,7 +80,7 @@ class UtilsTest {
                                                           String expected,
                                                           String command) {
         CommandException e = assertThrows(
-            CommandException.class,
+                CommandException.class,
             () -> validateArguments(arguments, argumentTypeOrder, command)
         );
         if (!e.getMessage().equals(expected)) {
@@ -99,28 +102,7 @@ class UtilsTest {
     @DisplayName("[validateArguments] - help Command - failure:")
     @Test
     public void validateArguments_improperHelp() {
-        String expected1245 = "invalid command order, expected command word.";
-        String expected3 = COMMAND_HELP + " Command - too many arguments.";
-
-        ArrayList<String> command1 = ParserHandler.getParseInput("help gerard oi");
-        validateArguments_improperCommand_helper(command1, ARG_TYPE_ORDER_CMD_HELP,
-                expected1245, COMMAND_HELP);
-
-        ArrayList<String> command2 = ParserHandler.getParseInput("help -z oi");
-        validateArguments_improperCommand_helper(command2, ARG_TYPE_ORDER_CMD_HELP,
-                expected1245, COMMAND_HELP);
-
-        ArrayList<String> command3 = ParserHandler.getParseInput("help -a");
-        validateArguments_improperCommand_helper(command3, ARG_TYPE_ORDER_CMD_HELP,
-                expected3, COMMAND_HELP);
-
-        ArrayList<String> command4 = ParserHandler.getParseInput("help me");
-        validateArguments_improperCommand_helper(command4, ARG_TYPE_ORDER_CMD_HELP,
-                expected1245, COMMAND_HELP);
-
-        ArrayList<String> command5 = ParserHandler.getParseInput("helpz");
-        validateArguments_improperCommand_helper(command5, ARG_TYPE_ORDER_CMD_HELP,
-                expected1245, COMMAND_HELP);
+        // new test case to be written.
     }
 
     @DisplayName("[validateArguments] - view Command - success:")

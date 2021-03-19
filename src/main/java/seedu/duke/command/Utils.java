@@ -97,7 +97,7 @@ public class Utils {
             throws CommandException {
         assert arguments != null : "arguments is null!";
         boolean isValuable = (arguments.size() > VALUE_INDEX)
-                && (arguments.get(VALUE_INDEX).length() == 0);
+                && (arguments.get(VALUE_INDEX).length() != 0);
         if (isValuable) {
             return arguments.get(VALUE_INDEX);
         }
