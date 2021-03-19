@@ -174,6 +174,7 @@ public class CommandList {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
                 ui.printInvalidRatingMessage();
+                return;
             }
             assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
             Review r = new Review(title, category, rating, description);
@@ -197,6 +198,7 @@ public class CommandList {
             int rating = Integer.parseInt(ui.readCommand());
             if (rating < 0 || rating > 5) {
                 ui.printInvalidRatingMessage();
+                return;
             }
             assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
             ui.println(DESCRIPTION_PROMPT);
