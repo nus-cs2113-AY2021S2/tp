@@ -35,7 +35,8 @@ to organize the records of their patients.
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
    
 
-3. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here: 
+3. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:\
+   \
    ![PowerShell](./images/WindowsPowerShell.png)
    
 
