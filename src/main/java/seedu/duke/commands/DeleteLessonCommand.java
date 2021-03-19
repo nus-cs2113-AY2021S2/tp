@@ -41,17 +41,15 @@ public class DeleteLessonCommand extends Command {
      * @param lessonList ArrayList of lessons in specified module.
      */
     private void verifyLessonsToDelete(UI ui, ArrayList<Lesson> lessonList) {
-        try {
-            assert lessonList.size() > 0;
+        if (lessonList.size() == 0) {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        } else {
             ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
             String line = ui.readCommand();
             ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
 
             deleteLessonsFromList(lessonList, indices, ui);
             ModuleList.writeModule();
-
-        } catch (AssertionError e) {
-            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
         }
     }
 

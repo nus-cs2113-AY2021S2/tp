@@ -107,6 +107,7 @@ public class OpenLessonLinkCommand extends Command {
             connection = (HttpURLConnection) lessonUrl.openConnection();
             connection.setRequestMethod(HEAD);
             int statusCode = connection.getResponseCode();
+            assert statusCode >= -1 : MESSAGE_UNABLE_TO_OPEN_LINK;
             openLessonLink(lessonLink, ui);
         } catch (IOException e) {
             ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
