@@ -8,7 +8,6 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
 import static seedu.duke.common.Messages.INDENTATION;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;

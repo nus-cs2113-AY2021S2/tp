@@ -1,11 +1,16 @@
 package seedu.duke.module;
 
 
+import seedu.duke.lesson.Lesson;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
+import seedu.duke.task.Task;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+
+import static seedu.duke.common.CommonMethods.getDaysRemaining;
 
 public class ModuleList {
 
@@ -123,6 +128,9 @@ public class ModuleList {
         }
         selectedModule = loader.loadModule(moduleCode);
         if (selectedModule != null) {
+            //Sort data
+            sortLessons();
+            sortTasks();
             //Remove invalid inputs
             Writer writer = new Writer();
             writer.writeModule();
@@ -143,5 +151,31 @@ public class ModuleList {
     public static void writeModule() {
         Writer writer = new Writer();
         writer.writeModule();
+    }
+
+    /**
+     * Sorts lesson list by lesson type.
+     */
+    public static void sortLessons() {
+        selectedModule.getLessonList().sort((lesson1, lesson2) -> {
+            if (lesson1.getLessonType() != lesson2.getLessonType()) {
+                return lesson1.getLessonType().compareTo(lesson2.getLessonType());
+            }
+            return lesson1.getTime().compareTo(lesson2.getTime());
+        });
+    }
+
+    /**
+     * Sorts tasks by deadline.
+     */
+    public static void sortTasks() {
+        selectedModule.getTaskList().sort((task1, task2) -> {
+            long daysRemaining1 = getDaysRemaining(task1.getDeadline());
+            long daysRemaining2 = getDaysRemaining(task2.getDeadline());
+            if (daysRemaining1 != daysRemaining2) {
+                return (int) (daysRemaining1 - daysRemaining2);
+            }
+            return task1.getDescription().compareTo(task2.getDescription());
+        });
     }
 }

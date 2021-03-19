@@ -33,8 +33,8 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
             printFailedToExecuteCommand();
         }
         String expectedOutput = String.format(MESSAGE_TEACHING_STAFF_TO_LIST, MODULE_CODE) + NEWLINE
-                + "1. " + TEACHER_NAME + " - " + TEACHER_EMAIL + NEWLINE
-                + "2. " + TEACHER_NAME1 + " - " + TEACHER_EMAIL1 + NEWLINE;
+                + "1. " + TEACHER_NAME1 + " - " + TEACHER_EMAIL1 + NEWLINE
+                + "2. " + TEACHER_NAME + " - " + TEACHER_EMAIL + NEWLINE;
         assertEquals(expectedOutput, newOs.toString());
         removeOutputStream();
     }

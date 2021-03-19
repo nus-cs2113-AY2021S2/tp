@@ -18,12 +18,12 @@ public class TestUtilAndConstants {
 
     public static final String EXPECTED_ADD_LESSON = "Added tutorial to lesson list." + NEWLINE;
     public static final String EXPECTED_ADD_TASK = "Added iP submission to task list.";
-    public static final String EXPECTED_DELETE_LESSON = "Removed tutorial from the lesson list." + NEWLINE
-            + "Removed lab from the lesson list." + NEWLINE;
-    public static final String EXPECTED_OPEN_LINK = "Opening tutorial link in browser." + NEWLINE
-            + "Opening lab link in browser." + NEWLINE;
+    public static final String EXPECTED_DELETE_LESSON = "Removed lab from the lesson list." + NEWLINE
+            + "Removed tutorial from the lesson list." + NEWLINE;
+    public static final String EXPECTED_OPEN_LINK = "Opening lab link in browser." + NEWLINE
+            + "Opening tutorial link in browser." + NEWLINE;
     public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
-            + "tutorial - Wednesday 9 am - 10am" + NEWLINE + "lab - Wednesday 9 pm - 10 pm"
+            + "lab - Wednesday 9 pm - 10 pm" + NEWLINE + "tutorial - Wednesday 9 am - 10am"
             + NEWLINE + NEWLINE + MESSAGE_TASKS_TO_LIST_UNDONE + NEWLINE 
             + "1. iP submission (graded) - 3 Mar 2021 (Overdue by 16 days)"
             + NEWLINE + INDENTATION + "remember to attach JAR file" + NEWLINE;

@@ -34,6 +34,7 @@ public class DeleteTaskCommand extends Command {
             module.removeTask(task);
         }
         ModuleList.writeModule();
+        ModuleList.sortTasks();
     }
 
     @Override
