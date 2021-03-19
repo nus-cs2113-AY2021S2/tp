@@ -17,6 +17,7 @@ import static seedu.duke.common.Constant.OPTION_AMOUNT;
 import static seedu.duke.common.Constant.OPTION_DATE;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
+import static seedu.duke.common.Constant.OPTION_PERSON;
 import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
@@ -32,17 +33,19 @@ import java.util.ArrayList;
 public class AddCommand extends Command {
     protected static final String COMMAND_ADD = "add";
     private static final String[] VALID_OPTIONS = {
-        OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE
+        OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_AMOUNT, OPTION_DATE, OPTION_PERSON
     };
     private static final String[] CONFLICT_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
     private final BigDecimal amount;
     private final LocalDate issueDate;
     private final String description;
+    private final String borrower;
 
     private RecordType recordType;
 
     /**
      * Constructor to validate the format for add command.
+     *
      * @param arguments parsed input containing options and arguments.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
@@ -52,20 +55,24 @@ public class AddCommand extends Command {
         description = getDescription(arguments);
         amount = getAmount(arguments);
         issueDate = getDate(arguments);
+        borrower = getPerson(arguments);
+        System.out.println("borrower is: " + borrower);
     }
 
     /**
-     * Get the description field.
+     * Gets the description field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a String containing the description of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getDescription(ArrayList<String> arguments) throws CommandException {
-        return Utils.getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
+        return getOptionValue(arguments, COMMAND_ADD, checkRecordType(arguments));
     }
 
     /**
-     * Get the amount field.
+     * Gets the amount field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a BigDecimal object containing the amount of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
@@ -81,7 +88,8 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Get the date field.
+     * Gets the date field.
+     *
      * @param arguments parsed input containing options and arguments.
      * @return a LocalDate object containing the date of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
@@ -95,7 +103,26 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Check if the input contains the correct record type and options.
+     * Gets the person field.
+     *
+     * @param arguments parsed input containing the options and arguments.
+     * @return the option value of person, or {@code null} if {@code recordType} is not a loan.
+     * @throws CommandException if {@code recordType} is not a loan but arguments contains the person option,
+     *                          or if the option value of person is empty.
+     */
+    private String getPerson(ArrayList<String> arguments) throws CommandException {
+        if (recordType == RecordType.LOAN) {
+            return getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
+        } else if (hasOption(arguments, OPTION_PERSON)) {
+            throw new CommandException("option -p not valid for this record type.", COMMAND_ADD);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Checks if the input contains the correct record type and options.
+     *
      * @param arguments parsed input containing the options and arguments.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
