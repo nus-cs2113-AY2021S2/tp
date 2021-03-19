@@ -10,6 +10,7 @@ import seedu.duke.ui.Ui;
 import java.util.ArrayList;
 
 import static seedu.duke.command.Utils.validateArguments;
+import static seedu.duke.command.Utils.validateHelpType;
 
 /**
  * Handles all operations related to the help command.
@@ -19,7 +20,9 @@ public class HelpCommand extends Command {
         ArgumentType.COMMAND,
         ArgumentType.VALUE
     };
+
     protected static final String COMMAND_HELP = "help";
+    private static String HELP_TYPE;
 
     /**
      * Constructor to validate the format for help command.
@@ -28,6 +31,7 @@ public class HelpCommand extends Command {
      */
     public HelpCommand(ArrayList<String> arguments) throws CommandException {
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_HELP);
+        HELP_TYPE = validateHelpType(arguments, COMMAND_HELP);
     }
 
     /**
@@ -39,6 +43,6 @@ public class HelpCommand extends Command {
      */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage) {
-        HelpPage.printHelp(COMMAND_HELP);
+        HelpPage.printHelp(HELP_TYPE);
     }
 }

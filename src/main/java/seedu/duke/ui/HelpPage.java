@@ -29,10 +29,14 @@ public class HelpPage {
             + "amount associated with the record";
     private static final String MAN_OPTION_DATE = "-d";
     private static final String MAN_OPTION_DATE_DESCRIPTION = "[ARGUMENT] date associated with the record";
+    private static final String MAN_OPTION_DATE_RETURN_DESCRIPTION = "[ARGUMENT] date of loan return";
     private static final String MAN_NO_ARGUMENT = "arguments are not needed";
     private static final String MAN_OPTION_INDEX = "-i";
     private static final String MAN_OPTION_INDEX_DESCRIPTION = "[ARGUMENT] positive non zero integer "
             + "used to reference to index in program";
+    private static final String MAN_OPTION_PERSON = "-p ";
+    private static final String MAN_OPTION_PERSON_DESCRIPTION = "[ARGUMENT] the person name";
+    private static final String MAN_OPTION_PERSON_IN_ADD_DESCRIPTION = ", use only with '-l' option";
 
     /**
      * Prints the respective help messages based on the command given.
@@ -40,7 +44,7 @@ public class HelpPage {
      */
     public static void printHelp(String command) {
         switch (command) {
-        case "help":
+        case "all":
             printManPageMaster();
             break;
         case "add":
@@ -117,6 +121,8 @@ public class HelpPage {
         System.out.println(TAB_2SPACE + MAN_OPTION_AMOUNT_DESCRIPTION);
         System.out.println(TAB_1SPACE + MAN_OPTION_DATE);
         System.out.println(TAB_2SPACE + MAN_OPTION_DATE_DESCRIPTION);
+        System.out.println(TAB_1SPACE + MAN_OPTION_PERSON);
+        System.out.println(TAB_2SPACE + MAN_OPTION_PERSON_DESCRIPTION + MAN_OPTION_PERSON_IN_ADD_DESCRIPTION);
         System.out.println(Ui.DIVIDER);
     }
 
@@ -193,6 +199,8 @@ public class HelpPage {
         System.out.println("DESCRIPTION");
         System.out.println(TAB_1SPACE + MAN_OPTION_INDEX);
         System.out.println((TAB_2SPACE + MAN_OPTION_INDEX_DESCRIPTION));
+        System.out.println(TAB_1SPACE + MAN_OPTION_DATE);
+        System.out.println(TAB_2SPACE + MAN_OPTION_DATE_RETURN_DESCRIPTION);
         System.out.println(DIVIDER);
     }
 

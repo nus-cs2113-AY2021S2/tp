@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import org.apache.commons.lang3.StringUtils;
 import seedu.duke.common.ArgumentType;
 import seedu.duke.exception.CommandException;
 
@@ -26,6 +27,7 @@ public class Utils {
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
+    private static final String ERROR_WRONG_HELP_TYPE = "invalid help type: ";
     private static final int VALUE_INDEX = 1;
 
     /**
@@ -241,6 +243,17 @@ public class Utils {
             if (argument.length() > 0) {
                 throw new CommandException(ERROR_INVALID_INPUT + argument, command);
             }
+        }
+    }
+
+    protected static String validateHelpType(ArrayList<String> argument, String command)
+            throws CommandException {
+        String helpType = argument.get(1);
+        if (StringUtils.containsAny(helpType, "all", "add", "creditscore", "exit",
+            "list", "remove", "return", "view")) {
+            return helpType;
+        } else {
+            throw new CommandException(ERROR_WRONG_HELP_TYPE + helpType, command);
         }
     }
 
