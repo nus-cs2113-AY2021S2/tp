@@ -20,7 +20,7 @@ public class Connoisseur {
      * Sets up required files for Connoisseur to start.
      */
     public Connoisseur() {
-        Ui ui = new Ui(true);
+        Ui ui = new Ui();
         Storage storage = new Storage(ui);
         CommandList commandList;
         if (storage.retrieveTextFile()) {

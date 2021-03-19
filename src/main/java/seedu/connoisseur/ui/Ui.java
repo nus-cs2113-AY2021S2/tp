@@ -12,7 +12,6 @@ import static seedu.connoisseur.messages.Messages.SORT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.LIST_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
 import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
-import static seedu.connoisseur.messages.Messages.FILE_ALREADY_EXISTS;
 import static seedu.connoisseur.messages.Messages.EXIT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
@@ -20,17 +19,14 @@ import static seedu.connoisseur.messages.Messages.REVIEW_HELP_MESSAGE;
 
 public class Ui {
     private static final PrintStream out = System.out;
-    private static final PrintStream logPrintStream = System.out;
     private static final int MAX_WHITE_SPACE = 15;
     private final Scanner in;
-    private final boolean showLogs;
 
     /**
      * Constructor for Ui class.
      */
-    public Ui(boolean showLogs) {
+    public Ui() {
         this.in = new Scanner(System.in);
-        this.showLogs = showLogs;
     }
 
     /**
@@ -103,19 +99,6 @@ public class Ui {
     }
 
     /**
-     * Prints log messages.
-     *
-     * @param message log message to be printed
-     */
-    public void printLog(String... message) {
-        if (showLogs) {
-            for (String m : message) {
-                logPrintStream.println(m);
-            }
-        }
-    }
-
-    /**
      * Prints general help message.
      */
     public void printGeneralHelpMessage() {
@@ -182,38 +165,31 @@ public class Ui {
     }
 
     /**
-     * Prints file exists message.
-     */
-    public void printFileExistsMessage() {
-        printLog(FILE_ALREADY_EXISTS);
-    }
-
-    /**
      * Prints invalid rating message. 
      */
     public void printInvalidRatingMessage() {
-        System.out.println("Invalid number please add in a valid rating!");
+        println("Invalid number please add in a valid rating!");
     }
 
     /**
      * Prints invalid sort method message. 
      */
     public void printInvalidSortMethodMessage() {
-        System.out.println("Invalid sort type!");
+        println("Invalid sort type!");
     }
 
     /**
      * Prints invalid help command message. 
      */
     public void printInvalidHelpMessage() {
-        System.out.println("Invalid help command!");
+        println("Invalid help command!");
     }
 
     /**
      * Prints empty review list message. 
      */
     public void printEmptyCommandListMessage() {
-        System.out.println("You have no reviews, type 'new' to start!");
+        println("You have no reviews, type 'new' to start!");
     }
 
 }
