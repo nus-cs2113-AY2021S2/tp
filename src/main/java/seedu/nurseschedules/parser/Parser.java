@@ -61,7 +61,7 @@ public class Parser {
         String[] details = getDetails(text);
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
         Date date = parser.parse(details[2]);
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDate = formatter.format(date);
 
         return formattedDate;

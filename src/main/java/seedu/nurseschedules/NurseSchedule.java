@@ -16,7 +16,7 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
     }
 
     /**
-     * Compares as Date object
+     * Compares as Date object.
      */
     @Override
     public int compareTo(NurseSchedule o) {
@@ -36,7 +36,7 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
     }
 
     /**
-     * Formats String date into dd/MM/YYYY
+     * Formats String date into dd/MM/YYYY.
      */
     public String formatDate(String datetime) throws ParseException {
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");

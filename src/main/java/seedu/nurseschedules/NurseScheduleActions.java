@@ -3,11 +3,15 @@ package seedu.nurseschedules;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import seedu.duke.ui.NurseScheduleUI;
+import seedu.duke.ui.UI;
 
 public class NurseScheduleActions {
 
     List<NurseSchedule> findSchedules = new ArrayList<NurseSchedule>();
     List<String> nursesFound = new ArrayList<String>();
+
+    NurseScheduleUI ui = new NurseScheduleUI();
 
     public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) {
         int i = 0;
@@ -55,6 +59,7 @@ public class NurseScheduleActions {
                 }
             }
         }
+        UI.showLine();
     }
 
     public void deleteSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
@@ -62,8 +67,8 @@ public class NurseScheduleActions {
         while (i < nurseSchedules.size()) {
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
                     && nurseSchedules.get(i).getDatetime().equals(details[1])) {
-                System.out.println("Trip to " + nurseSchedules.get(i).getPatientID() +
-                        " on " + nurseSchedules.get(i).getFormattedDatetime() + " has been cancelled!");
+                ui.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),
+                        nurseSchedules.get(i).getFormattedDatetime());
                 nurseSchedules.remove(i);
                 break;
             }
