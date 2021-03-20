@@ -41,20 +41,20 @@ public class Parser {
     public String[] getDetails(String text) throws WrongInputsException {
         String[] details = new String[3];
 
-            String[] parts = text.split(" ", 0);
+        String[] parts = text.split(" ", 0);
 
-            if (parts.length == 1) {
-                throw new WrongInputsException();
-            } else if (getFirstWord(text).equals("add")) {
-                details[0] = parts[1];
-                details[1] = parts[2];
-                details[2] = parts[3];
-            } else if (getFirstWord(text).equals("delete")) {
-                details[0] = parts[1];
-                details[1] = parts[2];
-            } else if (getFirstWord(text).equals("list")) {
-                details[0] = parts[1];
-            }
+        if (parts.length == 1) {
+            throw new WrongInputsException();
+        } else if (getFirstWord(text).equals("add")) {
+            details[0] = parts[1];
+            details[1] = parts[2];
+            details[2] = parts[3];
+        } else if (getFirstWord(text).equals("delete")) {
+            details[0] = parts[1];
+            details[1] = parts[2];
+        } else if (getFirstWord(text).equals("list")) {
+            details[0] = parts[1];
+        }
         return details;
     }
 

@@ -23,8 +23,8 @@ public class NurseScheduleUI extends UI {
     }
 
     public void printDeletedSchedule(String id, String datetime) {
-        System.out.println("Trip to " + id +
-                " on " + datetime + " has been cancelled!");
+        System.out.println("Trip to " + id
+                + " on " + datetime + " has been cancelled!");
         showLine();
     }
 
