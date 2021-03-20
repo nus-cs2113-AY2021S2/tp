@@ -4,10 +4,8 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.exception.FileLoadingException;
-import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
-
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
