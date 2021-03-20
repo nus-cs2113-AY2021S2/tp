@@ -43,7 +43,10 @@ class ModuleInfoCommandTest extends LessonCommandTest {
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
-        assertEquals(EXPECTED_MODULE_OVERVIEW, newOs.toString());
+
+        String deadlineMessage = ui.getDaysRemainingMessage(deadline);
+        String expectedMessage = String.format(EXPECTED_MODULE_OVERVIEW, deadlineMessage);
+        assertEquals(expectedMessage, newOs.toString());
         removeOutputStream();
     }
 }
