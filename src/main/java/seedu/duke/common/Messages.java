@@ -19,11 +19,12 @@ public class Messages {
     public static final String TAG_MODULE = "%s >> ";
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
-    public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
+    public static final String MESSAGE_INVALID_COMMAND = "Invalid command. Enter \"help\" for list of valid commands.";
 
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
-    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code.";
+    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code. "
+            + "Only valid NUS module codes are allowed.";
 
     public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
     public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";

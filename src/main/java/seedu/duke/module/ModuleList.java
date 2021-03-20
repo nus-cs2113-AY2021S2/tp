@@ -1,10 +1,7 @@
 package seedu.duke.module;
 
-
-import seedu.duke.lesson.Lesson;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
-import seedu.duke.task.Task;
 
 import java.util.ArrayList;
 import java.util.Collections;

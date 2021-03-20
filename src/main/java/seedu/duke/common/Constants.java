@@ -58,6 +58,9 @@ public class Constants {
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
 
+    public static final String ADD = "add";
+    public static final String DELETE = "delete";
+
     //Storage
     public static final String FOLDER_PATH = "Data";
     public static final String TXT_FORMAT = ".txt";
