@@ -149,7 +149,7 @@ public class AppController {
     private void assignEmployee() {
         System.out.println("Enter Employee name to assign:");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 System.out.println("Enter Shift date (in dd/MM/yyyy)");
                 String date = sc.nextLine();
@@ -162,13 +162,14 @@ public class AppController {
                     }
                 }
             }
+        }
         System.out.println("Employee not found");
     }
 
     private void unassignEmployee() {
         System.out.println("Enter Employee name to unassign:");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 System.out.println("Enter Shift date (in dd/MM/yyyy)");
                 String date = sc.nextLine();
@@ -181,6 +182,7 @@ public class AppController {
                     }
                 }
             }
+        }
         System.out.println("Employee not found");
     }
 
