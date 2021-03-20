@@ -57,7 +57,7 @@ Output:
 
 ![add expense example output](https://via.placeholder.com/100.png?text=Photo)
 
-#### 3.1.2 Add a saving record
+#### 3.1.2 Add a loan record
 
 This operation will add a loan record to the list.
 
@@ -69,7 +69,7 @@ Output:
 
 ![add loan example output]()
 
-#### 3.1.3 Add an expense record
+#### 3.1.3 Add a saving record
 
 This operation will add a saving record to the list.
 
@@ -91,7 +91,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![list example output]()
 
 ### 3.3 View category total amount: `view`
 
@@ -103,7 +103,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![view example output]()
 
 ### 3.4 Set a loan as return: `return`
 
@@ -115,7 +115,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![return example output]()
 
 ### 3.5 Remove a record: `remove`
 
@@ -127,7 +127,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![remove example output]()
 
 ### 3.6 Check a person credit score: `creditscore`
 
@@ -139,7 +139,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![creditscore example output]()
 
 ### 3.7 Exit the program: `exit`
 
@@ -151,7 +151,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![exit example output]()
 
 ### 3.8 Help function: `help`
 
@@ -163,17 +163,17 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![add saving example output]()
+![help example output]()
 
 ### 3.9 Task Storage
 
 #### 3.9.1 Automatically load data from an existing file to the program.
 
 * Expected Outcome if successful:
-  ![add saving example output]()
+  ![load success example output]()
 
 * Expected outcome if not successful:
-  ![add saving example output]()
+  ![load fail example output]()
   
 #### 3.9.2 Automatically save the current task list to a file.
 
