@@ -173,7 +173,7 @@ public class UI {
      * @param dueDate LocalDate of task deadline.
      * @return Message for days remaining.
      */
-    private String getDaysRemainingMessage(LocalDate dueDate) {
+    public String getDaysRemainingMessage(LocalDate dueDate) {
         long daysRemaining = getDaysRemaining(dueDate);
         if (daysRemaining < 0) {
             return String.format(FORMAT_OVERDUE, -daysRemaining);

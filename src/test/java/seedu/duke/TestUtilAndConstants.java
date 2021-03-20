@@ -25,7 +25,7 @@ public class TestUtilAndConstants {
     public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
             + "lab - Wednesday 9 pm - 10 pm" + NEWLINE + "tutorial - Wednesday 9 am - 10am"
             + NEWLINE + NEWLINE + MESSAGE_TASKS_TO_LIST_UNDONE + NEWLINE 
-            + "1. iP submission (graded) - 3 Mar 2021 (Overdue by 16 days)"
+            + "1. iP submission (graded) - 3 Mar 2021%s"
             + NEWLINE + INDENTATION + "remember to attach JAR file" + NEWLINE;
     public static final String EXPECTED_ENTER_MODULE = "Opening CS2106." + NEWLINE + NEWLINE
             + "<Overview for CS2106>" + NEWLINE + NEWLINE + MESSAGE_TASKS_TO_LIST_UNDONE + NEWLINE

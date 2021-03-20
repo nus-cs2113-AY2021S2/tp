@@ -51,15 +51,18 @@ class ListTasksCommandTest {
 
         initialiseTaskList(ModuleList.getSelectedModule());
 
+        UI ui = new UI();
+        LocalDate date = LocalDate.parse("26-02-2021", FORMATTER);
+        
         ListTasksCommand listTasksCommand = new ListTasksCommand();
-        listTasksCommand.execute(new UI());
+        listTasksCommand.execute(ui);
 
         String output = "Tasks for " + MODULE_CODE_1 + ":" + NEWLINE + NEWLINE
                 + "[Undone]" + NEWLINE
-                + "1. weekly exercise (graded) - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
-                + "2. lecture quiz - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
+                + "1. weekly exercise (graded) - 26 Feb 2021" + ui.getDaysRemainingMessage(date) + NEWLINE
+                + "2. lecture quiz - 26 Feb 2021" + ui.getDaysRemainingMessage(date) + NEWLINE
                 + "\t\tcomplete before next lecture" + NEWLINE
-                + "3. read up notes - 26 Feb 2021 (Overdue by 21 days)" + NEWLINE
+                + "3. read up notes - 26 Feb 2021" + ui.getDaysRemainingMessage(date) + NEWLINE
                 + "\t\tcomplete before lecture" + NEWLINE + NEWLINE
                 + "[Done]" + NEWLINE
                 + "1. iP increments (graded) - 3 Mar 2021" + NEWLINE
