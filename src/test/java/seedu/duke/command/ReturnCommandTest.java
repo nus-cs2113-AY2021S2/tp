@@ -57,9 +57,9 @@ public class ReturnCommandTest {
 
     private RecordList getLoanList() {
         RecordList loans = new RecordList();
-        loans.addRecord(new Loan(new BigDecimal("43.28"), validateDate("2021/03/15"), "Loan to Andy"));
-        loans.addRecord(new Loan(new BigDecimal("89.23"), validateDate("2021/03/17"), "Loan to Mark"));
-        loans.addRecord(new Loan(new BigDecimal("5.67"), validateDate("2021/03/16"), "Loan to Jason"));
+        loans.addRecord(new Loan(new BigDecimal("43.28"), validateDate("2021/03/15"), "Loan to Andy", "Andy"));
+        loans.addRecord(new Loan(new BigDecimal("89.23"), validateDate("2021/03/17"), "Loan to Mark", "Mark"));
+        loans.addRecord(new Loan(new BigDecimal("5.67"), validateDate("2021/03/16"), "Loan to Jason", "Jason"));
         return loans;
     }
 }

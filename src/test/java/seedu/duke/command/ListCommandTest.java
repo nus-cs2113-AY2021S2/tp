@@ -74,9 +74,9 @@ class ListCommandTest {
             records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
         }
 
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         if (listCmdTypeToTest.equals("loan")) {
-            records.addRecord(new Loan(new BigDecimal("300"), validateDate("2020/01/02"), "loan to alice"));
+            records.addRecord(new Loan(new BigDecimal("300"), validateDate("2020/01/02"), "loan to alice", "alice"));
         }
 
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));

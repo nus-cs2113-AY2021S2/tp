@@ -153,7 +153,7 @@ public class Storage {
             throw new InvalidFileInputException();
         }
 
-        return new Loan(amount, issueDate, description, isReturn);
+        return new Loan(amount, issueDate, description, "borrowerName", null, isReturn);
     }
 
     private Record loadSaving(String rawData) throws InvalidFileInputException {

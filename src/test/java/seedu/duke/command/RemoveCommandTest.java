@@ -23,7 +23,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeExpenseCmd = "remove -i 1";
@@ -50,7 +50,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeLoanCmd = "remove -i 3";
@@ -77,7 +77,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeSavingCmd = "remove -i 4";

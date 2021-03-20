@@ -39,7 +39,7 @@ public class AddCommand extends Command {
     private final BigDecimal amount;
     private final LocalDate issueDate;
     private final String description;
-    private final String borrower;
+    private final String borrowerName;
 
     private RecordType recordType;
 
@@ -55,8 +55,8 @@ public class AddCommand extends Command {
         description = getDescription(arguments);
         amount = getAmount(arguments);
         issueDate = getDate(arguments);
-        borrower = getPerson(arguments);
-        System.out.println("borrower is: " + borrower);
+        borrowerName = getPerson(arguments);
+        System.out.println("borrower is: " + borrowerName);
     }
 
     /**
@@ -158,7 +158,7 @@ public class AddCommand extends Command {
             ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
             break;
         case LOAN:
-            Loan loanObj = new Loan(amount, issueDate, description);
+            Loan loanObj = new Loan(amount, issueDate, description, borrowerName);
             recordList.addRecord(loanObj);
             storage.saveRecordListData(recordList);
             ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
