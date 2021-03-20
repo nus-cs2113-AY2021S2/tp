@@ -1,5 +1,6 @@
 package seedu.nurseschedules;
 
+import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
 import seedu.nurseschedules.parser.Parser;
 import seedu.duke.ui.NurseScheduleUI;
@@ -46,27 +47,47 @@ public class NurseScheduleInstance {
             ui.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
-            String[] details = parser.getDetails(line);
 
-            if (command.equals("add")) {
+            switch (command) {
+            case "add":
                 try {
+                    String[] details = parser.getDetails(line);
                     ui.printAddedSchedule(details[1], parser.formatDate(line));
                     nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
                     storage.writeToFile(nurseSchedules);
-                } catch (ParseException e) {
-                    System.out.println("Invalid date!");
+                } catch (ParseException | WrongInputsException e) {
+                    ui.invalidInputsMessage();
+                    ui.addHelpMessage();
                 }
-            } else if (command.equals("list")) {
-                actions.listSchedules(nurseSchedules, parser.getDetails(line));
-            } else if (command.equals("delete")) {
-                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-                storage.writeToFile(nurseSchedules);
-            } else if (command.equals("help")) {
+                break;
+            case "list":
+                try {
+                    actions.listSchedules(nurseSchedules, parser.getDetails(line));
+                } catch (WrongInputsException e) {
+                    ui.invalidInputsMessage();
+                    ui.listHelpMessage();
+                }
+                break;
+            case "delete":
+                try {
+                    actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
+                    storage.writeToFile(nurseSchedules);
+                } catch (WrongInputsException e) {
+                    ui.invalidInputsMessage();
+                    ui.deleteHelpMessage();
+                }
+                break;
+            case "help":
                 ui.printNurseScheduleHelpList();
-            } else if (command.equals("return")) {
+                break;
+            case "return":
                 storage.writeToFile(nurseSchedules);
                 ui.returnToStart();
                 isRun = false;
+                break;
+            default:
+                ui.invalidCommandMessage();
+                break;
             }
         }
     }

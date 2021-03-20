@@ -32,4 +32,28 @@ public class NurseScheduleUI extends UI {
         System.out.println("Trip to " + id + " on " + datetime + " added!");
         showLine();
     }
+
+    public void invalidCommandMessage() {
+        System.out.println("OOPS! Please check to see if your command is properly formatted!");
+        showLine();
+    }
+
+    public void invalidInputsMessage() {
+        System.out.println("Invalid inputs!");
+    }
+
+    public void addHelpMessage() {
+        System.out.println("Format: add [NurseID] [Patient ID] [Date (DDMMYYYY)]");
+        showLine();
+    }
+
+    public void listHelpMessage() {
+        System.out.println("Format: list [NurseID/all]");
+        showLine();
+    }
+
+    public void deleteHelpMessage() {
+        System.out.println("Format: delete [NurseID] [Date (DDMMYYYY)]");
+        showLine();
+    }
 }
