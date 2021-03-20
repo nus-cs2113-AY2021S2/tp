@@ -42,7 +42,15 @@ finance management rather than using the traditional management system.
 
 ## 3. Features
 > ❗ **CAUTION:** Insert any warning.
-
+> * _Finux_ supports multiple Date formats, for ease of use:
+>   * `DDMMYYYY`
+>   * `D.M.YYYY`
+>   * `D-M-YYYY`
+>   * `D/M/YYYY`
+>   * `YYYY.M.D`
+>   * `YYYY-M-D`
+>   * `YYYY/M/D`
+> * `today` keyword specifies today's date, replacing the need to type in the actual date.
 ### 3.1 Add a record: `add`
 > For the `add` command, there is no strict ordering for options.
 <br>
