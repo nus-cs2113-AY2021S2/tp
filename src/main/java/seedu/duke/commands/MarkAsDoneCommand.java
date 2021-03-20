@@ -36,11 +36,6 @@ public class MarkAsDoneCommand extends Command {
         ModuleList.writeModule();
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints prompt for indices of tasks to mark as done.
      *
@@ -51,5 +46,10 @@ public class MarkAsDoneCommand extends Command {
         ui.printMessage(MESSAGE_TASKS_TO_MARK);
         ui.printSummarisedTasks(undoneTasks);
         ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_MARK));
+    }
+    
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }

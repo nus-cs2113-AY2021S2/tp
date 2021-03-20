@@ -37,11 +37,6 @@ public class DeleteTaskCommand extends Command {
         ModuleList.sortTasks();
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints prompt for indices of tasks to remove from the list.
      *
@@ -54,4 +49,8 @@ public class DeleteTaskCommand extends Command {
         ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_DELETE));
     }
 
+    @Override
+    public boolean isExit() {
+        return false;
+    }
 }

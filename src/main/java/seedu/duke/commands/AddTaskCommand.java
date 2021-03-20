@@ -36,11 +36,6 @@ public class AddTaskCommand extends Command {
         ModuleList.sortTasks();
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Asks user if the task to be added is a graded one.
      *
@@ -55,5 +50,10 @@ public class AddTaskCommand extends Command {
             userInput = ui.readCommand();
         }
         return userInput.equals(YES_STRING);
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }
