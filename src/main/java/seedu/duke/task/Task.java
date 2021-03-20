@@ -7,11 +7,13 @@ public class Task {
     protected String description;
     protected String module;
     protected String message;
+    protected boolean isDone;
 
     public Task(String module, String description, String message) {
         this.description = description;
         this.module = module;
         this.message = message;
+        this.isDone = false;
     }
 
     public String getDescription() {
@@ -26,9 +28,21 @@ public class Task {
         return message;
     }
 
+    public String getStatus() {
+        return (isDone ? "[DONE] " : "[    ] ");
+    }
+
+    public void markAsDone() {
+        this.isDone = true;
+    }
+
+    public void markAsUnDone() {
+        this.isDone = false;
+    }
+
     @Override
     public String toString() {
-        return "[" + this.getModule() + "] " + description;
+        return "[" + this.getModule() + "]" + this.getStatus() + description;
     }
 
 }

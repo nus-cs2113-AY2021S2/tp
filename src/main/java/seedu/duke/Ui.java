@@ -77,10 +77,11 @@ public class Ui {
         System.out.println("Welcome to the Task Manager menu ^o^\n"
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- Add New Task\n"
-            + "[2] --- Delete a Task\n"
-            + "[3] --- View All Tasks\n"
-            + "[4] --- Pin a Task\n"
-            + "[5] --- Exit");
+            + "[2] --- Mark/Unmark a Task as Done\n"
+            + "[3] --- Delete a Task\n"
+            + "[4] --- View All Tasks\n"
+            + "[5] --- Pin a Task\n"
+            + "[6] --- Exit");
     }
 
     public static void printAddTaskMenu() {
@@ -90,6 +91,15 @@ public class Ui {
             + "[2] --- Assignment\n"
             + "[3] --- Midterm\n"
             + "[4] --- Final Exam");
+    }
+
+    public static void printMarkTaskMenu() {
+        System.out.println("Please choose which type of task you would like to mark/unmark as done"
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
@@ -164,9 +174,29 @@ public class Ui {
         printHorizontalLine();
     }
 
+    public static void printTaskisDoneMessage() {
+        System.out.println("This task is marked as done. Would you like to unmark it? [Y/N]");
+    }
+
+    public static void printTaskisNotDoneMessage() {
+        System.out.println("This task is not marked as done. Would you like to mark it? [Y/N]");
+    }
+
+    public static void printMarkedTaskMessage(Task task) {
+        System.out.println("You've mark this as done: " + task.toString());
+        System.out.println("NOTE: " + task.getMessage());
+        System.out.println("Returning back to TaskManager menu now!");
+        printHorizontalLine();
+    }
+
+    public static void printUnmarkedTaskMessage(Task task) {
+        System.out.println("You've mark this as not done: " + task.toString());
+        System.out.println("Returning back to TaskManager menu now!");
+        printHorizontalLine();
+    }
+
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
-        System.out.println("NOTE: " + task.getMessage());
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
@@ -297,6 +327,10 @@ public class Ui {
 
     public static void printSelectModuleToDeleteMessage() {
         System.out.println("Enter the module number to be deleted:");
+    }
+
+    public static void printSelectTaskNumberToMarkOrUnmarkMessage() {
+        System.out.println("\nWhat is the number of the task you want to mark/unmark?");
     }
 
     public static void printSelectTaskNumberToDeleteMessage() {
@@ -523,6 +557,26 @@ public class Ui {
                 taskNumber++;
             }
         }
+    }
+
+    public static void printSelectTaskNumberToMarkOrUnmark(int taskNumber) {
+        switch (taskNumber) {
+        case 1:
+            printTaskList(TaskList.tasks);
+            break;
+        case 2:
+            printAssignmentList(TaskList.assignments);
+            break;
+        case 3:
+            printMidtermList(TaskList.midterms);
+            break;
+        case 4:
+            printFinalExamList(TaskList.finalExams);
+            break;
+        default:
+            printInvalidIntegerMessage();
+        }
+        printSelectTaskNumberToMarkOrUnmarkMessage();
     }
 
     public static void printSelectTaskNumberToDelete(int taskNumber) {
