@@ -4,7 +4,6 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.exception.FileLoadingException;
-import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
 
@@ -17,12 +16,6 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
-
-    public Duke() {
-        ui = new Ui();
-        storage = new Storage();
-        records = new RecordList();
-    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
