@@ -232,4 +232,9 @@ public class UI {
         System.out.println("\"help\" brings up a list of commands!");
         System.out.println("\"return\" returns you to the Start Menu!");
     }
+
+    public void returnToStart() {
+        System.out.println("Returning to start menu!");
+        showLine();
+    }
 }
