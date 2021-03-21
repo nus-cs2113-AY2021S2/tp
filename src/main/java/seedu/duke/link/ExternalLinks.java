@@ -14,6 +14,7 @@ public class ExternalLinks extends Links {
     @Override
     public void execute() {
         LinkInfo link = new LinkInfo();
+        LinkInfo.initialiseList();
 
         switch (linkIndex) {
         case 1:

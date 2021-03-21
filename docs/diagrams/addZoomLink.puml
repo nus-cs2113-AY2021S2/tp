@@ -1,0 +1,37 @@
+@startuml
+participant Duke
+Duke -> Links : execute()
+activate Links
+Links -> Ui : readCommand()
+activate Ui
+Ui --> Links : command
+deactivate Ui
+Links -> LinkInfo : addZoomLink()
+activate LinkInfo
+LinkInfo -> Ui : printEnterRequirePassword
+activate Ui
+Ui -> Ui : readCommand
+activate Ui
+deactivate Ui
+Ui --> LinkInfo :  passwordCommand
+deactivate Ui
+LinkInfo -> Ui : printEnterPassword()
+activate Ui
+Ui -> Ui : readCommand
+activate Ui
+deactivate Ui
+Ui --> LinkInfo : password
+deactivate Ui
+LinkInfo -> ModuleInfo : getModule()
+activate ModuleInfo
+ModuleInfo --> LinkInfo : module
+deactivate ModuleInfo
+LinkInfo --> Module : setZoomLink()
+activate Module
+Module --> LinkInfo
+deactivate Module
+LinkInfo --> Links
+deactivate LinkInfo
+
+return
+@enduml

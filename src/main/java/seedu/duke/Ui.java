@@ -279,7 +279,6 @@ public class Ui {
         for (String link : linksList) {
             System.out.println("[" + (sizeOfList++) + "] --- " + link);
         }
-        printHorizontalLine();
     }
 
     public static void printExternalLinksMessage() {
