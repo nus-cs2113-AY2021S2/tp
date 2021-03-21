@@ -8,6 +8,7 @@ add grouper /cat seafood /exp 32-46-9876 /loc idontknow
 add
 list
 list meat
+list lower_shelf
 list aldkjadlj
 search
 remove 2

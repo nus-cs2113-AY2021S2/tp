@@ -50,7 +50,10 @@ Here are the items in your fridge:
 These are the MEAT in your fridge:
 	1. chicken
 -----------------------------------------------------------------
-Sorry my friend, please enter a valid food category.
+These are the food stored in LOWER_SHELF:
+        1. chicken
+-----------------------------------------------------------------
+Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
