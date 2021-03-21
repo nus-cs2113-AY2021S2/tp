@@ -31,7 +31,7 @@ public class DeleteLessonCommand extends Command {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessons(lessonList, ui);
-        verifyLessonsToDelete(ui, lessonList);
+        verifyLessonsToDelete(lessonList, ui);
         ModuleList.sortLessons();
     }
 
@@ -41,7 +41,7 @@ public class DeleteLessonCommand extends Command {
      * @param ui         Instance of UI.
      * @param lessonList ArrayList of lessons in specified module.
      */
-    private void verifyLessonsToDelete(UI ui, ArrayList<Lesson> lessonList) {
+    private void verifyLessonsToDelete(ArrayList<Lesson> lessonList, UI ui) {
         if (lessonList.size() == 0) {
             ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
         } else {

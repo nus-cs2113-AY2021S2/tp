@@ -22,6 +22,7 @@ import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
+import seedu.duke.exception.DukeException;
 import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -85,6 +86,7 @@ import static seedu.duke.common.ModuleCommands.UNMARK;
 public class Parser {
 
     //@@author ivanchongzhien
+
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
      * a module.
@@ -451,7 +453,7 @@ public class Parser {
         // assumption that input is non-null
         assert (input != null);
         String[] words = input.trim().split(WHITESPACE);
-        
+
         for (String word : words) {
             try {
                 index = Integer.parseInt(word);
@@ -493,9 +495,9 @@ public class Parser {
     /**
      * Prints warning to inform user that some inputs were out of bounds and removed.
      * Prints the integers that were removed.
-     * 
+     *
      * @param removed array list of integers that were out of bounds and have been removed
-     * @param ui UI object for printing
+     * @param ui      UI object for printing
      */
     private static void printOutOfBoundsWarning(ArrayList<Integer> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_OUT_OF_BOUNDS_INDICES, removed));
@@ -506,9 +508,32 @@ public class Parser {
      * Prints the strings that were removed.
      *
      * @param removed array list of strings that were invalid and have been removed
-     * @param ui UI object for printing
+     * @param ui      UI object for printing
      */
     private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));
+    }
+
+    /**
+     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
+     * TODO : print proper warning, can consider throwing ParserException and handling
+     * in EditLessonsCommand.
+     *
+     * @param input user input string
+     * @return index parsed from input string
+     */
+    public static int checkIndex(String input, int max) throws DukeException {
+        int index = 0;
+        try {
+            index = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new DukeException("Invalid non-integer input");
+        }
+
+        if ( index < 1 || index > max) {
+           throw new DukeException("Index given is out of bounds."); 
+        }
+        
+        return index;
     }
 }

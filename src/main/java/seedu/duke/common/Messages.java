@@ -72,6 +72,15 @@ public class Messages {
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson's link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
 
+    public static final String MESSAGE_LESSON_TO_EDIT = "Which lesson would you like to edit?";
+    public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which field would you like to edit? (Select 1-4):\n";
+    public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new [%s]:";
+    
+    public static final String MESSAGE_TEACHER_NAME_UPDATED = "Teaching staff updated to: %s";
+    public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Teaching staff email updated to: %s";
+    public static final String MESSAGE_LINK_UPDATED = "Lesson link updated to: %s";
+    public static final String MESSAGE_LESSON_TIME_UPDATED = "Lesson time/day updated to: %s";
+
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
     public static final String MESSAGE_SORT_LESSON_LIST = "Sorting list of lessons based on lesson type...";
 
