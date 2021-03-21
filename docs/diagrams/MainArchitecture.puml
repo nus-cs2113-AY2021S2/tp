@@ -1,0 +1,22 @@
+@startuml
+
+hide members
+hide circle
+
+class Duke
+class Ui
+class ModuleInfo
+class helpGraduation
+class TaskManager
+class Links
+class Storage
+
+Duke --> Ui
+Duke --> Storage
+Ui --> ModuleInfo
+Ui --> helpGraduation
+Ui --> TaskManager
+Ui --> Links
+
+
+@enduml
