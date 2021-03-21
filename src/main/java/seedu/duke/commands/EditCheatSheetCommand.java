@@ -16,13 +16,15 @@ public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
 
     @Override
     public void performFunction(UI ui, Path path) throws IOException {
-        openTextEditor(ui,path,filePath);
+        openTextEditor(ui, path, filePath);
     }
 
     @Override
-    public void openTextEditor(UI ui, Path path, String filePath) { ;
+    public void openTextEditor(UI ui, Path path, String filePath) {
+        ;
         if (Files.exists(path)) {
             TextEditor textEditor = new TextEditor(filePath);
+            textEditor.loadFile(filePath);
             ui.printMessage(String.format("Opened %s", fileName));
         } else {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));

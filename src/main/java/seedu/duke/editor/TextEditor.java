@@ -19,8 +19,11 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 import static seedu.duke.common.Constants.BOX_HEIGHT;
 import static seedu.duke.common.Constants.BOX_WIDTH;
@@ -35,6 +38,7 @@ import static seedu.duke.common.Constants.TEXT_AREA_WIDTH;
 import static seedu.duke.common.Constants.TEXT_EDITOR_HEIGHT;
 import static seedu.duke.common.Constants.TEXT_EDITOR_TITLE;
 import static seedu.duke.common.Constants.TEXT_EDITOR_WIDTH;
+import static seedu.duke.common.Messages.NEWLINE;
 
 public class TextEditor extends JFrame implements ActionListener {
 
@@ -61,6 +65,22 @@ public class TextEditor extends JFrame implements ActionListener {
         setScrollPane();
         setLayout();
 
+    }
+
+    public void loadFile(String filePath) {
+        File file = new File(filePath);
+        Scanner fileReader = null;
+        try {
+            fileReader = new Scanner(file);
+            while (fileReader.hasNext()) {
+                String line = fileReader.nextLine() + NEWLINE;
+                textArea.append(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            fileReader.close();
+        }
     }
 
     private void setPathName(String path) {
@@ -145,7 +165,7 @@ public class TextEditor extends JFrame implements ActionListener {
             fileWriter.write(textArea.getText());
             fileWriter.close();
         } catch (IOException fileNotFoundException) {
-            assert false :"File has not been created";
+            assert false : "File has not been created";
         }
     }
 
