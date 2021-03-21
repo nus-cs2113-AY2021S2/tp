@@ -4,10 +4,12 @@
 
 ### Architecture
 
-<img src="images/ArchitectureDiagram.png" width="450" />
+![Architecture Diagram](diagrams/ArchitectureDiagram.png) 
 
 The ***Architecture Diagram*** given above explains the high-level design of the App. 
 Given below is a quick overview of each component.
+
+tbd 
 
 ## Product scope
 ### Target user profile
