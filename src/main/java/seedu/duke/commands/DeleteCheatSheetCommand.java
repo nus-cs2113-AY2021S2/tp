@@ -7,6 +7,7 @@ import seedu.duke.ui.UI;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -27,7 +28,7 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
         String filePath = directoryPath + fileName;
         path = Paths.get(filePath);
         try {
-            Files.deleteIfExists(path);
+            Files.delete(path);
             ui.printMessage(String.format(MESSAGE_FILE_HAS_BEEN_DELETED, fileName));
         } catch (IOException e) {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
