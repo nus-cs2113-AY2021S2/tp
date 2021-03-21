@@ -117,7 +117,7 @@ Our product allows users to organize their own daily schedules and keep track of
 Information and materials of our various modules are on varying platforms; some could be on Luminus, or the professor's personal websites, or sent to us via email, or on Wiki.nus.
 We want to solve the issue of being disorganized and confused over not knowing or remembering where certain information is. 
 
-By using UniTasker, this allows them to store the necessary details on one platform 
+By using UniTracker, users will be able to store all necessary details on one platform 
 so that they can keep track of commonly accessed information while keeping track of the tasks they have.
 
 ---

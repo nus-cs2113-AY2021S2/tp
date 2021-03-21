@@ -20,6 +20,7 @@ public class Duke {
 
     public static void runMainMenu() {
         StorageModuleInfo.loadModuleInfoFile();
+        TaskList taskList = new TaskList();
         while (true) {
             Ui.printMainMenu();
             String command = Ui.readCommand();
@@ -46,7 +47,6 @@ public class Duke {
                     break;
                 case 3:
                     //manageTask
-                    TaskList taskList = new TaskList();
                     TaskManager.execute();
                     break;
                 case 4:

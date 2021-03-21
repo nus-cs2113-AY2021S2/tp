@@ -1,5 +1,6 @@
 package seedu.duke.task;
 
+import seedu.duke.ModuleInfo;
 import seedu.duke.Ui;
 
 import java.time.LocalDate;
@@ -34,8 +35,13 @@ public class TaskList {
     public static void addNewTask(int taskTypeNumber) {
         String dateAndTime = "";
 
+        if (ModuleInfo.modules.isEmpty()) {
+            Ui.printNoModulesMessage();
+            return;
+        }
+
         Ui.printAddTaskModuleMessage(taskTypeNumber);
-        String module = Ui.readCommand();
+        String module = getModule();
         Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
@@ -90,6 +96,16 @@ public class TaskList {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
         Ui.printAddedTaskMessage(finalExam);
+    }
+
+    public static String getModule() {
+        for (int i = 1; i <= ModuleInfo.modules.size(); ++i) {
+            System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
+        }
+        int moduleNumber = Integer.parseInt(Ui.readCommand());
+        String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
+
+        return module;
     }
 
     public static String getTime(int taskNumber) {

@@ -32,6 +32,10 @@ public class Task {
         return (isDone ? "[DONE] " : "[    ] ");
     }
 
+    public String getTaskType() {
+        return "[Task]";
+    }
+
     public void markAsDone() {
         this.isDone = true;
     }

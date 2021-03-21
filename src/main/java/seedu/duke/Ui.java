@@ -134,14 +134,18 @@ public class Ui {
 
     public static void printAddTaskModuleMessage(int taskType) {
         if (taskType == 1) {
-            System.out.println("What is the module of the task you want to add?");
+            System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println("What is the module of the assignment you want to add?");
+            System.out.println("What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println("What is the module of the midterm you want to add?");
+            System.out.println("What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println("What is the module of the final exam you want to add?");
+            System.out.println("What is the module of the final exam you want to add? Enter the number:");
         }
+    }
+
+    public static void printNoModulesMessage() {
+        System.out.println("There are no modules! Please head to the ModuleInfo menu to add them!");
     }
 
     public static void printAddTaskDescriptionMessage(int taskType) {
@@ -182,7 +186,7 @@ public class Ui {
 
     public static void printAddedTaskMessage(Task task) {
         System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
+        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -209,7 +213,7 @@ public class Ui {
 
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
+        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
