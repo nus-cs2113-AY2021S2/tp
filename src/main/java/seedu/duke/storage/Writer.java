@@ -6,9 +6,10 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.CHEATSHEET_STRING;
 import static seedu.duke.common.Constants.DIVIDER_WRITE;
 import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.KEYWORD_LESSON;
 import static seedu.duke.common.Constants.KEYWORD_TASK;
 import static seedu.duke.common.Constants.TXT_FORMAT;
@@ -30,7 +31,7 @@ public class Writer {
      */
     public void createFile(String moduleCode) {
         try {
-            checkForDirectory(moduleCode);
+            checkForDirectories(moduleCode);
             String fileName = moduleCode + TXT_FORMAT;
             File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
             path.createNewFile();
@@ -84,11 +85,16 @@ public class Writer {
      *
      * @throws IOException Unable to create directory.
      */
-    private void checkForDirectory(String moduleCode) throws IOException {
-        File mainDirectory = new File(FOLDER_PATH);
+    private void checkForDirectories(String moduleCode) throws IOException {
+        String directory = FOLDER_PATH;
+        File mainDirectory = new File(directory);
         mainDirectory.mkdir();
-        File moduleDirectory = new File(FOLDER_PATH + "/" + moduleCode);
+        directory += "/" + moduleCode;
+        File moduleDirectory = new File(directory);
         moduleDirectory.mkdir();
+        directory += "/" + CHEATSHEET_STRING;
+        File cheatsheetDirectory = new File(directory);
+        cheatsheetDirectory.mkdir();
     }
 
     /**
