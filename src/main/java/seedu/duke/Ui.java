@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * Deals with all interactions with the user.
  */
 public class Ui {
+
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void printWelcomeMessage() {
@@ -53,8 +54,9 @@ public class Ui {
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- Add Zoom links\n"
-            + "[3] --- View Zoom links\n"
-            + "[4] --- Exit to main menu");
+            + "[3] --- Delete Zoom links\n"
+            + "[4] --- View Zoom links\n"
+            + "[5] --- Exit to main menu");
         printHorizontalLine();
     }
 
@@ -97,11 +99,11 @@ public class Ui {
 
     public static void printMarkTaskMenu() {
         System.out.println("Please choose which type of task you would like to mark/unmark as done"
-                + " and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + " and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
@@ -234,7 +236,7 @@ public class Ui {
             + module.getDescription());
         if (!module.getReview().trim().isEmpty()) {
             System.out.println("NOTE: You are deleting your review\n"
-                    + module.getReview());
+                + module.getReview());
         }
         printHorizontalLine();
     }
@@ -496,9 +498,10 @@ public class Ui {
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
-        System.out.println("Here are your zoom links! Study hard :)\n");
+        System.out.println("Here are your zoom links!\n");
+        int sizeOfList = 1;
         for (int i = 0; i < zoomLinksList.size(); ++i) {
-            System.out.println(zoomLinksList.get(i));
+            System.out.println("[" + (sizeOfList++) + "] --- " + zoomLinksList.get(i));
         }
     }
 
@@ -647,7 +650,6 @@ public class Ui {
 
     public static void printLinkDeleted(String deletedString) {
         System.out.println("You have deleted --- " + deletedString);
-        printHorizontalLine();
     }
 
     public static void printCapSimulatorPrompt() {

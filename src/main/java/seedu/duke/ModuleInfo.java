@@ -148,4 +148,13 @@ public class ModuleInfo {
 
     }
 
+    public static Module getModule(String description) {
+        for (Module module: modules) {
+            if (module.getName().equals(description)) {
+                return module;
+            }
+        }
+        return null;
+    }
+
 }
