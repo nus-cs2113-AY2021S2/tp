@@ -8,6 +8,6 @@ class ModuleInfoTest {
     @Test
     void isEmptyList_emptyList_printEmptyListMessage() {
         ModuleInfo.modules = new ArrayList<>();
-        assertFalse(ModuleInfo.viewAllModules());
+        assertFalse(ModuleInfo.viewAllModules(true));
     }
 }
