@@ -16,6 +16,7 @@ import seedu.fridgefriend.food.categories.ReadyToEat;
 import seedu.fridgefriend.food.categories.Seafood;
 import seedu.fridgefriend.food.categories.Vegetable;
 import seedu.fridgefriend.utilities.Ui;
+import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**
  * Represents a command to add a food item into the Fridge.
@@ -28,7 +29,12 @@ public class AddCommand extends Command {
     public AddCommand(String foodName, FoodCategory category, String expiryString,
                       FoodStorageLocation location) throws InvalidDateException {
         assert category != null : "category should not be null";
+        LoggingHandler.logInfo("Adding food: " + foodName + " with parameters: ");
+        LoggingHandler.logInfo("Category: " + category);
+        LoggingHandler.logInfo("Expiry: " + expiryString);
+        LoggingHandler.logInfo("Storage Location: " + location);
         foodToAdd = categoriseAndGenerateFood(foodName, category, expiryString, location);
+        LoggingHandler.logInfo("Food " + foodName + " successfully added!");
 
     }
 
@@ -68,36 +74,47 @@ public class AddCommand extends Command {
         switch (category) {
         case VEGETABLE:
             newFood = new Vegetable(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Vegetable: " + foodName + " created.");
             break;
         case FRUIT:
             newFood = new Fruit(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Fruit: " + foodName + " created.");
             break;
         case MEAT:
             newFood = new Meat(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Meat: " + foodName + " created.");
             break;
         case SEAFOOD:
             newFood = new Seafood(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Seafood: " + foodName + " created.");
             break;
         case EGG:
             newFood = new Egg(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Egg: " + foodName + " created.");
             break;
         case DAIRY:
             newFood = new Dairy(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Dairy: " + foodName + " created.");
             break;
         case BEVERAGE:
             newFood = new Beverage(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Beverage: " + foodName + " created.");
             break;
         case COOKED_DISH:
             newFood = new CookedDish(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Cooked Dish: " + foodName + " created.");
             break;
         case READY_TO_EAT:
             newFood = new ReadyToEat(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Ready-To-Eat: " + foodName + " created.");
             break;
         case FROZEN:
             newFood = new Frozen(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Frozen Food: " + foodName + " created.");
             break;
         case OTHER:
             newFood = new Other(foodName, category, expiryString, location);
+            LoggingHandler.logInfo("New Unknown Category Food: " + foodName + " created.");
             break;
         default:
             throw new IllegalStateException("Unexpected category value: " + category);

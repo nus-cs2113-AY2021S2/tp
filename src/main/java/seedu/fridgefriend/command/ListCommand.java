@@ -5,6 +5,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.utilities.Ui;
+import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**
  * Represents a command to list the items in the fridge to the user.
@@ -20,6 +21,7 @@ public class ListCommand extends Command {
     private int indexShownToUser;
 
     public ListCommand(String description) {
+        LoggingHandler.logInfo("List command initialized with parameter: " + description);
         this.description = description.toUpperCase();
         this.indexShownToUser = START_INDEX_SHOWN_TO_USER;
     }
@@ -27,12 +29,16 @@ public class ListCommand extends Command {
     @Override
     public void execute() throws InvalidInputException {
         if (description.equals("")) {
+            LoggingHandler.logInfo("Listing all food.");
             listAll();
         } else if (checkIsValidCategory()) {
+            LoggingHandler.logInfo("Listing by category.");
             listByCategory();
         } else if (checkIsValidStorageLocation()) {
+            LoggingHandler.logInfo("Listing by storage location.");
             listByStorageLocation();
         } else {
+            LoggingHandler.logInfo("Cannot list, because invalid parameter inputted.");
             invalidInputError();
         }
     }
@@ -57,6 +63,7 @@ public class ListCommand extends Command {
      * @return string of food that match the category in the fridge
      */
     public String getListByCategoryMessage() {
+        LoggingHandler.logInfo("Category detected:" + description);
         StringBuilder message = new StringBuilder("These are the " + description + " in your fridge:");
         for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getMatchCategoryFoodDescription(i));
@@ -72,6 +79,7 @@ public class ListCommand extends Command {
      * @return string of food that match the storage location in the fridge
      */
     public String getListByStorageLocationMessage() {
+        LoggingHandler.logInfo("Storage Location detected:" + description);
         StringBuilder message = new StringBuilder("These are the food stored in " + description + ":");
         for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getMatchStorageFoodDescription(i));
@@ -87,6 +95,7 @@ public class ListCommand extends Command {
      * @return string of the food names that are in the fridge
      */
     public String getListAllMessage() {
+        LoggingHandler.logInfo("No input detected, printing all items.");
         StringBuilder message = new StringBuilder("Here are the items in your fridge:");
         for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getFoodDescription(i));
