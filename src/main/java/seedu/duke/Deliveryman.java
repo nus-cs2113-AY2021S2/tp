@@ -53,4 +53,23 @@ public class Deliveryman {
         this.setVehicleModel(vehicleModel);
         this.setLicensePlate(licensePlate);
     }
+
+    public void updateProfile(String inputProfileData) {
+        if(!inputProfileData.equals("fail")){
+            String[] splitInputProfileData = inputProfileData.split(" \\| ");
+            System.out.println("Based on your input:");
+            System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n",
+                    splitInputProfileData[0],
+                    splitInputProfileData[1],
+                    splitInputProfileData[2]
+            );
+            editProfile(
+                    splitInputProfileData[0],
+                    splitInputProfileData[1],
+                    splitInputProfileData[2]
+            );
+            DataManager.saveProfile(this);
+        }
+
+    }
 }

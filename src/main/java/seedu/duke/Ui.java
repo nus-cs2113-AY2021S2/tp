@@ -115,9 +115,8 @@ public class Ui {
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
      * @param deliveryman is the currently loaded profile
-     * @param dataManager is to save the deliveryman's profile // todo: extract profile saving to another method
      */
-    public void showLoopingMenuUntilExit(Deliveryman deliveryman, DataManager dataManager) {
+    public void showLoopingMenuUntilExit(Deliveryman deliveryman) {
         Parser parser = new Parser();
         Scanner sc = new Scanner(System.in);
         String userInput;
@@ -125,7 +124,6 @@ public class Ui {
         String userArguments;
         int deliveryNumber;
         do {
-            //Shifted this line down so we can do without the if statement in line 142
             promptUserInput();
             userInput = sc.nextLine();
             userCommand = parser.parseCommand(userInput);
@@ -139,26 +137,12 @@ public class Ui {
                     break;
                 case "edit":
                 case "editprofile":
-                    // todo: extract the below as a method - see line 114
+                    // todo: extract the below as a method
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
-                    if(inputProfileData != "fail"){
-                        String[] splitInputProfileData = inputProfileData.split(" \\| ");
-                        System.out.println("Based on your input:");
-                        System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n",
-                                splitInputProfileData[0],
-                                splitInputProfileData[1],
-                                splitInputProfileData[2]
-                        );
-                        deliveryman.editProfile(
-                                splitInputProfileData[0],
-                                splitInputProfileData[1],
-                                splitInputProfileData[2]
-                        );
-                        dataManager.saveProfile(deliveryman);
-                    }
+                    deliveryman.updateProfile(inputProfileData);
                     break;
                 case "start":
-                    DeliveryList.loadDeliveryList();
+                    DeliveryList.load();
                     break;
                 case "list":
                     showDeliveryList();
