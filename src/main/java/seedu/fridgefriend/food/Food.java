@@ -8,7 +8,7 @@ import seedu.fridgefriend.utilities.LoggingHandler;
  * When calling constructor, FoodCategory and foodName are NECESSARY fields.
  * The date fields are represented by strings for now, they are OPTIONAL as well as storage location.
  */
-public class Food {
+public abstract class Food {
     protected FoodCategory category;
     protected String foodName;
     protected ExpiryDate expiryDate;
