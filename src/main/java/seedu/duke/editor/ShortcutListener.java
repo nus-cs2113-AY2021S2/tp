@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import static seedu.duke.common.Constants.KEYCODE_S;
+
 public class ShortcutListener implements KeyListener {
 
     JFrame frame;
@@ -32,7 +34,7 @@ public class ShortcutListener implements KeyListener {
             checkSaveShortcut();
             break;
         }
-        case 83: {
+        case KEYCODE_S: {
             isSPressed = true;
             checkSaveShortcut();
             break;
@@ -48,7 +50,7 @@ public class ShortcutListener implements KeyListener {
             isCtrlPressed = false;
             break;
         }
-        case 83: {
+        case KEYCODE_S: {
             isSPressed = false;
             break;
         }
