@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +13,6 @@ public class ModuleInfo {
     }
 
     public static void moduleInfoMenu() {
-
         while (true) {
             Ui.printModuleInfoMessage();
             String command = Ui.readCommand();
@@ -71,6 +71,12 @@ public class ModuleInfo {
             } catch (NumberFormatException n) {
                 Ui.printInvalidIntegerMessage();
             }
+            try {
+                StorageModuleInfo.modulesFileSaver();
+            } catch (IOException e) {
+                System.out.println("modules.txt file could not be auto-saved:(");
+            }
+
         }
     }
 
@@ -158,7 +164,7 @@ public class ModuleInfo {
         String reviewString = review.toString().split("/end")[0];
 
         printReviewAddedMessage(reviewString);
-        return reviewString;
+        return reviewString.trim();
     }
 
     public static void printReviewAddedMessage(String review) {
