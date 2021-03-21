@@ -4,6 +4,8 @@ import seedu.duke.link.Links;
 import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
+import java.io.IOException;
+
 public class Duke {
 
     /**
@@ -17,6 +19,7 @@ public class Duke {
     }
 
     public static void runMainMenu() {
+        StorageModuleInfo.loadModuleInfoFile();
         while (true) {
             Ui.printMainMenu();
             String command = Ui.readCommand();
@@ -24,6 +27,11 @@ public class Duke {
                 int commandInt = Integer.parseInt(command);
 
                 if (commandInt == 5) {
+                    try {
+                        StorageModuleInfo.modulesFileSaver();
+                    } catch (IOException e) {
+                        System.out.println("modules.txt file could not be saved:(");
+                    }
                     break;
                 }
 
