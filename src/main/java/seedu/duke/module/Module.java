@@ -71,4 +71,15 @@ public class Module {
         }
         return filteredTasks;
     }
+
+    public ArrayList<String> checkIfTaskExists(Task targetTask) {
+        ArrayList<String> similarTaskDescriptions = new ArrayList<>();
+        String targetDescription = targetTask.getDescription().toUpperCase();
+        for (Task task : taskList) {
+            if (targetDescription.equals(task.getDescription().toUpperCase())) {
+                similarTaskDescriptions.add(task.getDescription());
+            }
+        }
+        return similarTaskDescriptions;
+    }
 }

@@ -90,6 +90,8 @@ public class Messages {
     public static final String MESSAGE_GRADED = " (graded)";
 
     public static final String MESSAGE_ADDED_TASK = "Added %s to task list.";
+    public static final String MESSAGE_DUPLICATE_TASK = "Found similar task(s) in the list: %s";
+    public static final String MESSAGE_ADD_TASK_CONFIRMATION = "Are you sure you want to add this task? (Y / N)";
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
