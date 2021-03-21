@@ -16,12 +16,6 @@ public class Duke {
     private RecordList records;
     private Storage storage;
 
-    public Duke() {
-        ui = new Ui();
-        storage = new Storage();
-        records = new RecordList();
-    }
-
     /**
      * Main entry-point for the java.duke.Duke application.
      */
