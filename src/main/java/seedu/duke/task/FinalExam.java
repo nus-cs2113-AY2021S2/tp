@@ -9,6 +9,11 @@ public class FinalExam extends Task {
     }
 
     @Override
+    public String getTaskType() {
+        return "[Final Exam]";
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " (on: " + on + ")";
     }

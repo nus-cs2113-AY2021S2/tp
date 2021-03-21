@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.task.TaskList;
+import seedu.duke.task.TaskManager;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -43,7 +46,7 @@ public class ModuleInfo {
                     viewAllModules(true);
                     break;
                 case 7:
-                    //addNewTask method
+                    TaskManager.addNewTask();
                     break;
                 case 8:
                     //addZoomLink method
@@ -58,7 +61,7 @@ public class ModuleInfo {
                     deleteModule();
                     break;
                 case 12:
-                    //deleteTask method
+                    TaskManager.deleteTask();
                     break;
                 case 13:
                     //deleteZoomLink method

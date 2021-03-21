@@ -9,6 +9,11 @@ public class Assignment extends Task {
     }
 
     @Override
+    public String getTaskType() {
+        return "[Assignment]";
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " (by: " + by + ")";
     }

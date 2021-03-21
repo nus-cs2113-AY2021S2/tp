@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.task.Task;
+
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Module {
@@ -8,12 +11,14 @@ public class Module {
     protected String name;
     protected Hashtable<String, Integer> components;
     protected String zoomLink;
+    protected ArrayList<Task> tasks;
 
     public Module(String name, String description) {
         this.name = name;
         this.description = description;
         this.review = "You have not reviewed this module yet.";
         this.components = new Hashtable<>();
+        this.tasks = new ArrayList<>();
         zoomLink = "No zoom link found!";
     }
 

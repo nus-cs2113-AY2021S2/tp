@@ -39,7 +39,7 @@ public class TaskManager {
         }
     }
 
-    private static void addNewTask() {
+    public static void addNewTask() {
         Ui.printAddTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
         Ui.printHorizontalLine();
@@ -78,7 +78,7 @@ public class TaskManager {
         TaskList.pinTask(taskTypeNumber);
     }
 
-    private static void deleteTask() {
+    public static void deleteTask() {
         Ui.printDeleteTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
         Ui.printHorizontalLine();

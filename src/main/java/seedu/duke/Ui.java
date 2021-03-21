@@ -182,7 +182,7 @@ public class Ui {
 
     public static void printAddedTaskMessage(Task task) {
         System.out.println("You've added this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
+        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
@@ -209,7 +209,7 @@ public class Ui {
 
     public static void printDeletedTaskMessage(Task task) {
         System.out.println("You've deleted this: " + task.toString());
-        System.out.println("Returning back to TaskManager menu now!");
+        System.out.println("Returning back to the menu now!");
         printHorizontalLine();
     }
 
