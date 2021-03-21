@@ -7,8 +7,8 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 
 public class Dairy extends Food {
 
-    public Dairy(FoodCategory category, String foodName, String expiryString,
+    public Dairy(String foodName, FoodCategory category, String expiryString,
                  FoodStorageLocation storageLocation) throws InvalidDateException {
-        super(category, foodName, expiryString, storageLocation);
+        super(foodName, category, expiryString, storageLocation);
     }
 }

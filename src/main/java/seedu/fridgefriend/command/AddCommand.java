@@ -51,41 +51,41 @@ public class AddCommand extends Command {
         return message;
     }
 
-    private Food categoriseAndGenerateFood(String foodName, FoodCategory category, String expiryString, FoodStorageLocation location) throws InvalidDateException {
+    public static Food categoriseAndGenerateFood(String foodName, FoodCategory category, String expiryString, FoodStorageLocation location) throws InvalidDateException {
         Food newFood;
         switch (category){
         case VEGETABLE:
-            newFood = new Vegetable(category, foodName, expiryString, location);
+            newFood = new Vegetable(foodName, category, expiryString, location);
             break;
         case FRUIT:
-            newFood = new Fruit(category, foodName, expiryString, location);
+            newFood = new Fruit(foodName, category, expiryString, location);
             break;
         case MEAT:
-            newFood = new Meat(category, foodName, expiryString, location);
+            newFood = new Meat(foodName, category, expiryString, location);
             break;
         case SEAFOOD:
-            newFood = new Seafood(category, foodName, expiryString, location);
+            newFood = new Seafood(foodName, category, expiryString, location);
             break;
         case EGG:
-            newFood = new Egg(category, foodName, expiryString, location);
+            newFood = new Egg(foodName, category, expiryString, location);
             break;
         case DAIRY:
-            newFood = new Dairy(category, foodName, expiryString, location);
+            newFood = new Dairy(foodName, category, expiryString, location);
             break;
         case BEVERAGE:
-            newFood = new Beverage(category, foodName, expiryString, location);
+            newFood = new Beverage(foodName, category, expiryString, location);
             break;
         case COOKED_DISH:
-            newFood = new CookedDish(category, foodName, expiryString, location);
+            newFood = new CookedDish(foodName, category, expiryString, location);
             break;
         case READY_TO_EAT:
-            newFood = new ReadyToEat(category, foodName, expiryString, location);
+            newFood = new ReadyToEat(foodName, category, expiryString, location);
             break;
         case FROZEN:
-            newFood = new Frozen(category, foodName, expiryString, location);
+            newFood = new Frozen(foodName, category, expiryString, location);
             break;
         case OTHER:
-            newFood = new Other(category, foodName, expiryString, location);
+            newFood = new Other(foodName, category, expiryString, location);
             break;
         default:
             throw new IllegalStateException("Unexpected value: " + category);

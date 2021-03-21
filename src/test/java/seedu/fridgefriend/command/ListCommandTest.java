@@ -18,15 +18,15 @@ class ListCommandTest {
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
-        Food chicken = new Food(FoodCategory.MEAT, "chicken",
+        Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT,
                 "31-07-2021", FoodStorageLocation.LOWER_SHELF);
         fridge.add(chicken);
 
-        Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
+        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
                 "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
         fridge.add(lettuce);
 
-        Food pork = new Food(FoodCategory.MEAT, "pork",
+        Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
                 "31-07-2021", FoodStorageLocation.LOWER_SHELF);
         fridge.add(pork);
     }

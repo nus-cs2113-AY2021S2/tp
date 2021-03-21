@@ -14,7 +14,7 @@ public abstract class Food {
     protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
 
-    public Food(FoodCategory category, String foodName, String expiryString,
+    public Food(String foodName, FoodCategory category, String expiryString,
             FoodStorageLocation storageLocation) throws InvalidDateException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
