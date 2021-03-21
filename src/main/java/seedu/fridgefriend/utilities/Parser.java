@@ -33,12 +33,12 @@ public class Parser {
      * @param input user's raw input
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
-     * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
-     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidInputException     if the command is not recognised
+     * @throws InvalidIndexException     if the index given in description is out of bounds
+     * @throws InvalidDateException      if the date input cannot be parsed
      */
     public static Command getCommand(String input)
-            throws EmptyDescriptionException, InvalidInputException, 
+            throws EmptyDescriptionException, InvalidInputException,
             InvalidIndexException, InvalidDateException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
@@ -62,22 +62,22 @@ public class Parser {
             return words;
         } else {
             //return an array of command and empty description
-            return new String[] {words[COMMAND_WORD], ""};
+            return new String[]{words[COMMAND_WORD], ""};
         }
     }
 
     /**
      * Returns the appropriate Command object based on command and description.
-     * 
+     *
      * @param parsedInput string array containing command and description
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
-     * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
-     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidInputException     if the command is not recognised
+     * @throws InvalidIndexException     if the index given in description is out of bounds
+     * @throws InvalidDateException      if the date input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException, 
+            throws EmptyDescriptionException, InvalidInputException,
             InvalidIndexException, InvalidDateException {
         String commandString = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
@@ -131,8 +131,8 @@ public class Parser {
      * @param foodDescription the string in the required format of food description
      * @return a new AddCommand for Food
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidInputException if the description cannot parse
-     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidInputException     if the description cannot parse
+     * @throws InvalidDateException      if the date input cannot be parsed
      */
     public static Command parseFoodDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
@@ -150,14 +150,14 @@ public class Parser {
 
     /**
      * Returns an AddCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return AddCommand object
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidInputException if the description cannot parse
-     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidInputException     if the description cannot parse
+     * @throws InvalidDateException      if the date input cannot be parsed
      */
-    public static Command getAddCommand(String description) 
+    public static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
@@ -165,7 +165,7 @@ public class Parser {
 
     /**
      * Returns a ListCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return ListCommand object
      */
@@ -176,11 +176,11 @@ public class Parser {
 
     /**
      * Returns a RemoveCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidIndexException if the index given in description is out of bounds
+     * @throws InvalidIndexException     if the index given in description is out of bounds
      */
     public static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidIndexException {
@@ -191,7 +191,7 @@ public class Parser {
 
     /**
      * Returns a SearchCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return SearchCommand object
      * @throws EmptyDescriptionException if the description is empty
@@ -229,18 +229,18 @@ public class Parser {
 
     /**
      * Parses the description into an integer.
-     * 
+     *
      * @param description description for command
      * @return integer index
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidIndexException if the description is not a number
+     * @throws InvalidIndexException     if the description is not a number
      */
     public static int parseIntegerDescription(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-    
+
         try {
             int index = Integer.parseInt(description);
             return index;
@@ -248,5 +248,5 @@ public class Parser {
             throw new InvalidIndexException(e);
         }
     }
-    
+
 }

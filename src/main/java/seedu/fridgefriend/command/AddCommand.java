@@ -4,7 +4,17 @@ import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
-import seedu.fridgefriend.food.categories.*;
+import seedu.fridgefriend.food.categories.Beverage;
+import seedu.fridgefriend.food.categories.CookedDish;
+import seedu.fridgefriend.food.categories.Dairy;
+import seedu.fridgefriend.food.categories.Egg;
+import seedu.fridgefriend.food.categories.Frozen;
+import seedu.fridgefriend.food.categories.Fruit;
+import seedu.fridgefriend.food.categories.Meat;
+import seedu.fridgefriend.food.categories.Other;
+import seedu.fridgefriend.food.categories.ReadyToEat;
+import seedu.fridgefriend.food.categories.Seafood;
+import seedu.fridgefriend.food.categories.Vegetable;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
@@ -16,7 +26,7 @@ public class AddCommand extends Command {
     private final Food foodToAdd;
 
     public AddCommand(String foodName, FoodCategory category, String expiryString,
-            FoodStorageLocation location) throws InvalidDateException {
+                      FoodStorageLocation location) throws InvalidDateException {
         assert category != null : "category should not be null";
         foodToAdd = categoriseAndGenerateFood(foodName, category, expiryString, location);
 
@@ -51,9 +61,11 @@ public class AddCommand extends Command {
         return message;
     }
 
-    public static Food categoriseAndGenerateFood(String foodName, FoodCategory category, String expiryString, FoodStorageLocation location) throws InvalidDateException {
+    public static Food categoriseAndGenerateFood(String foodName, FoodCategory category,
+                                                 String expiryString, FoodStorageLocation location)
+            throws InvalidDateException {
         Food newFood;
-        switch (category){
+        switch (category) {
         case VEGETABLE:
             newFood = new Vegetable(foodName, category, expiryString, location);
             break;

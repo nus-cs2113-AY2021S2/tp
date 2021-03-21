@@ -28,9 +28,9 @@ public class ListCommand extends Command {
     public void execute() throws InvalidInputException {
         if (description.equals("")) {
             listAll();
-        } else if (checkIsValidCategory()){
+        } else if (checkIsValidCategory()) {
             listByCategory();
-        } else if (checkIsValidStorageLocation()){
+        } else if (checkIsValidStorageLocation()) {
             listByStorageLocation();
         } else {
             invalidInputError();
@@ -97,18 +97,17 @@ public class ListCommand extends Command {
     private String getFoodDescription(int index) {
         int indexShownToUser = index + EXTRA_INDEX;
         Food food = fridge.getFood(index);
-        String foodDescription = 
-                "\n\t" + indexShownToUser +  ". "
-                + food.getFoodName() + " ["
-                + food.getCategory() + "]";
+        String foodDescription =
+                "\n\t" + indexShownToUser + ". "
+                        + food.getFoodName() + " ["
+                        + food.getCategory() + "]";
         return foodDescription;
     }
 
     private boolean checkIsValidCategory() {
         if (FoodCategory.contains(description)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -116,8 +115,7 @@ public class ListCommand extends Command {
     private boolean checkIsValidStorageLocation() {
         if (FoodStorageLocation.contains(description)) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
