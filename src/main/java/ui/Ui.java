@@ -16,16 +16,17 @@ public class Ui {
     }
 
     public void showLogo() {
-        System.out.println(" _    _   _    _   ______     ______   _____   _____   ____   \n" +
-                "|  \\ | | | |  | | |  ____|   |  ____| |  _  | |  _  | |  _ \\  \n" +
-                "| |\\\\| | | |  | | | |____    | |___   | | | | | | | | | | | |\n" +
-                "| | \\  | | |__| |  ____| |   |  ___|  | |_| | | |_| | | |_| |  \n" +
-                "|_|  \\_| |______| |______|   |__|     |_____| |_____| |____/\n" +
-                " _____   _____  __      __  _   _____   _       _\n" +
-                "|  _  \\ | ____| \\ \\    / / | | | ____| | |  _  | |\n" +
-                "| |_|_/ | |___   \\ \\  / /  | | | |___  | | | | | |\n" +
-                "| |\\ \\  | |___    \\ \\/ /   | | | |___  | \\_| |_/ |\n" +
-                "|_| \\_\\ |_____|    \\__/    |_| |_____| |_________| \n"+"Welcome to NUS FOOD REVIEW");
+        System.out.println(" _    _   _    _   ______     ______   _____   _____   ____   \n"
+                + "|  \\ | | | |  | | |  ____|   |  ____| |  _  | |  _  | |  _ \\  \n"
+                + "| |\\\\| | | |  | | | |____    | |___   | | | | | | | | | | | |\n"
+                + "| | \\  | | |__| |  ____| |   |  ___|  | |_| | | |_| | | |_| |  \n"
+                + "|_|  \\_| |______| |______|   |__|     |_____| |_____| |____/\n"
+                + " _____   _____  __      __  _   _____   _       _\n"
+                + "|  _  \\ | ____| \\ \\    / / | | | ____| | |  _  | |\n"
+                + "| |_|_/ | |___   \\ \\  / /  | | | |___  | | | | | |\n"
+                + "| |\\ \\  | |___    \\ \\/ /   | | | |___  | \\_| |_/ |\n"
+                + "|_| \\_\\ |_____|    \\__/    |_| |_____| |_________| \n"
+                + "Welcome to NUS FOOD REVIEW");
     }
 
     public static String readCommand() {
@@ -106,7 +107,6 @@ public class Ui {
         for (Menu menuItem: menus) {
             System.out.println(menuItem.toString());
         }
-        System.out.println(LINESPACING);
     }
 
     public void showReviews(String storeName, ArrayList<Review> reviews) {
@@ -118,12 +118,13 @@ public class Ui {
 
     }
 
-    public void showStoreOptions(String canteenName, String storeName){
+    public void showStoreOptions(String canteenName, String storeName) {
         System.out.println(Ui.LINESPACING);
-        System.out.println("You are now viewing: "+ canteenName + ", " + storeName);
-        System.out.println ("Enter 'Menu' to view sample menu");
-        System.out.println("Enter 'Reviews' to show reviews of " +storeName);
+        System.out.println("You are now viewing: " + canteenName + ", " + storeName);
+        System.out.println("Enter 'menu' to view sample menu");
+        System.out.println("Enter 'reviews' to show reviews of " + storeName);
         System.out.println("Enter 'add' to add a new review");
+        System.out.println("Enter 'exit' to exit the application");
         System.out.println(Ui.LINESPACING);
     }
 }

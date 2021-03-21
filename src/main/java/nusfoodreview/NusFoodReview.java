@@ -47,27 +47,30 @@ public class NusFoodReview {
         System.exit(0);
     }
 
-
-
     public void runPublicUser() throws DukeExceptions {
         ui.userShowWelcome();
         displayStore.execute(canteens, ui);
-        boolean isExit = false;
         // Have not yet added ability to add stores, for now: end application if storage is empty.
         if (canteens.size() == 0) {
             return;
         }
         assert true;
 
+
+        //take in the store the user wants to see first
+        String index = ui.readCommand();
+        ui.showStoreOptions(canteens.get(0).getCanteenName(),
+                canteens.get(0).getStore(Integer.parseInt(index) - 1).getStoreName());
+        boolean isExit = false;
+
         while (!isExit) {
 
             try {
-                String index = ui.readCommand();
-                ui.showStoreOptions(canteens.get(0).getCanteenName(),
-                        canteens.get(0).getStore(Integer.parseInt(index)-1).getStoreName());
                 String line = ui.readCommand();
-                Command c = parser.parse(line, canteens.get(0).getNumStores());
+                Command c = parser.parse(line,index,canteens.get(0).getNumStores());
                 c.execute(canteens, ui);
+                ui.showStoreOptions(canteens.get(0).getCanteenName(),
+                        canteens.get(0).getStore(Integer.parseInt(index) - 1).getStoreName());
                 isExit = c.isExit();
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
