@@ -13,10 +13,17 @@ public class AddReviewCommand extends Command {
     protected String description;
     protected double rating;
 
-    public AddReviewCommand(int storeIndex, String description, double rating) {
+    public AddReviewCommand(int storeIndex) {
         this.storeIndex = storeIndex;
+        //enter review here
+        Ui.enterReview();
+        description =  Ui.readCommand();
         this.description = description;
+        //enter rating here
+        Ui.enterRating();
+        rating = Double.parseDouble(Ui.readCommand());
         this.rating = rating;
+        Ui.reviewAdded();
     }
 
     @Override

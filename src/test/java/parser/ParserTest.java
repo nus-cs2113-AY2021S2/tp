@@ -4,7 +4,7 @@ import command.Command;
 import command.DisplayMenusCommand;
 import command.DisplayStoresCommand;
 import command.ExitCommand;
-import command.ReadCommand;
+import command.ReadReviewsCommand;
 import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
 
@@ -70,7 +70,7 @@ class ParserTest {
     public void parse_read_displayCommand() throws DukeExceptions {
         Parser parser = new Parser();
         Command c = parser.parse("read 1","1", maxStores);
-        assertTrue(c instanceof ReadCommand);
+        assertTrue(c instanceof ReadReviewsCommand);
     }
 
     @Test

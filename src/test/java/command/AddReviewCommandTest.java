@@ -19,7 +19,7 @@ public class AddReviewCommandTest {
 
     @Test
     public void addCommandIntoList() throws DukeExceptions {
-        AddReviewCommand command = new AddReviewCommand(0, "I loved it",3.5);
+        AddReviewCommand command = new AddReviewCommand(0);
         command.execute(canteens, new Ui());
         assertEquals(canteens.get(0).getStore(0).getReviews().get(0).toString(), "I loved it");
     }

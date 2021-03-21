@@ -103,18 +103,24 @@ public class Ui {
     }
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
+        System.out.println(Ui.LINESPACING);
         System.out.println("Here are the menus of the " + storeName + ":");
         for (Menu menuItem: menus) {
             System.out.println(menuItem.toString());
         }
     }
 
-    public void showReviews(String storeName, ArrayList<Review> reviews) {
+    public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
+        System.out.println(Ui.LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
+        System.out.println("Recommended: " + Math.round(averageRating*100.0)/100.0 + "/5.0");
+        System.out.println(Ui.LINESPACING);
+        int count = 1;
         for (Review review: reviews) {
-            System.out.println(review.toString());
+            System.out.println(count + ")" + review.toString());
+            System.out.println("Customer rating: " + review.getRating());
+            System.out.println(Ui.LINESPACING);
         }
-        System.out.println(LINESPACING);
 
     }
 
@@ -124,7 +130,23 @@ public class Ui {
         System.out.println("Enter 'menu' to view sample menu");
         System.out.println("Enter 'reviews' to show reviews of " + storeName);
         System.out.println("Enter 'add' to add a new review");
+        System.out.println("Enter 'list' to list all stores for " + canteenName);
         System.out.println("Enter 'exit' to exit the application");
         System.out.println(Ui.LINESPACING);
+    }
+
+    public static void enterReview(){
+        System.out.println(Ui.LINESPACING);
+        System.out.println("Please type your review:");
+    }
+
+    public static void enterRating(){
+        System.out.println(Ui.LINESPACING);
+        System.out.println("Please give your rating from 1 to 5");
+    }
+
+    public static void reviewAdded(){
+        System.out.println(Ui.LINESPACING);
+        System.out.println("Review successfully added!");
     }
 }

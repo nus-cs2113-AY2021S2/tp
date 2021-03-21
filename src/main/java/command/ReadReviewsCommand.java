@@ -9,10 +9,13 @@ import ui.Ui;
 import java.util.ArrayList;
 
 
-public class ReadCommand extends Command {
+public class ReadReviewsCommand extends Command {
     public int index;
+    private static double ratingSum=0;
+    private static int ratingCount=0;
+    private static double averageRating=0;
 
-    public ReadCommand(int index) {
+    public ReadReviewsCommand(int index) {
         this.index = index;
     }
 
@@ -21,7 +24,12 @@ public class ReadCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         Store currentStore = canteens.get(0).getStore(index);
         ArrayList<Review> reviews = currentStore.getReviews();
-        ui.showReviews(currentStore.getStoreName(), reviews);
+        for(Review rating : reviews){
+            ratingSum = ratingSum + rating.getRating();
+            ratingCount++;
+        }
+        averageRating = ratingSum/ratingCount;
+        ui.showReviews(currentStore.getStoreName(), reviews,averageRating);
     }
 
 

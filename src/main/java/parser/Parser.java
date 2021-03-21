@@ -1,17 +1,13 @@
 package parser;
 
-import canteens.Canteen;
 import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
 import command.DisplayMenusCommand;
 import command.DisplayStoresCommand;
 import command.ExitCommand;
-import command.ReadCommand;
+import command.ReadReviewsCommand;
 import exceptions.DukeExceptions;
-import ui.Ui;
-
-import java.util.ArrayList;
 
 
 public class Parser {
@@ -38,8 +34,14 @@ public class Parser {
         } else if (line.equals("menu")) {
             indexCheckValid(Integer.parseInt(index) - 1,maxStores);
             newCommand = new DisplayMenusCommand(Integer.parseInt(index) - 1);
+        } else if (line.equals("add")) {
+            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
+            newCommand = new AddReviewCommand(Integer.parseInt(index) - 1);
         } else if (line.startsWith("exit")) {
             newCommand = new ExitCommand();
+        } else if (line.equals("reviews")) {
+            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
+            newCommand = new ReadReviewsCommand( Integer.parseInt(index) - 1);
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }

@@ -1,4 +1,4 @@
-package nusfoodreview;
+package nusfoodreviews;
 
 import admin.AdminVerification;
 import canteens.Canteen;
@@ -12,7 +12,7 @@ import checkuser.CheckUser;
 
 import java.util.ArrayList;
 
-public class NusFoodReview {
+public class NusFoodReviews {
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
     private Storage storage;
@@ -21,7 +21,7 @@ public class NusFoodReview {
     private boolean isPublicUser;
     private Command displayStore = new DisplayStoresCommand();
 
-    public NusFoodReview(String filePath) {
+    public NusFoodReviews(String filePath) {
         ui = new Ui();
         parser = new Parser();
         storage = new Storage(filePath);
@@ -32,7 +32,7 @@ public class NusFoodReview {
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) throws DukeExceptions {
-        new NusFoodReview("data/storage.txt").run();
+        new NusFoodReviews("data/storage.txt").run();
     }
 
     public void run() throws DukeExceptions {
@@ -40,6 +40,7 @@ public class NusFoodReview {
         ui.showLoginPage();
         isPublicUser = CheckUser.checkUserType(isPublicUser);
         if (isPublicUser) {
+            ui.userShowWelcome();
             runPublicUser();
         } else {
             runAdmin();
@@ -48,14 +49,12 @@ public class NusFoodReview {
     }
 
     public void runPublicUser() throws DukeExceptions {
-        ui.userShowWelcome();
         displayStore.execute(canteens, ui);
         // Have not yet added ability to add stores, for now: end application if storage is empty.
         if (canteens.size() == 0) {
             return;
         }
         assert true;
-
 
         //take in the store the user wants to see first
         String index = ui.readCommand();
@@ -64,9 +63,11 @@ public class NusFoodReview {
         boolean isExit = false;
 
         while (!isExit) {
-
             try {
                 String line = ui.readCommand();
+                if(line.equals("list")){
+                    runPublicUser();
+                }
                 Command c = parser.parse(line,index,canteens.get(0).getNumStores());
                 c.execute(canteens, ui);
                 ui.showStoreOptions(canteens.get(0).getCanteenName(),
@@ -75,7 +76,6 @@ public class NusFoodReview {
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
             }
-
         }
     }
 

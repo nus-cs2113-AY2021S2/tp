@@ -2,8 +2,6 @@ package command;
 
 import canteens.Canteen;
 import ui.Ui;
-import storage.Storage;
-
 import java.util.ArrayList;
 
 public class AddStoreCommand extends Command {
