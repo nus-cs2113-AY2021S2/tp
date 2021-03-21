@@ -6,9 +6,10 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.CHEATSHEET_STRING;
 import static seedu.duke.common.Constants.DIVIDER_WRITE;
 import static seedu.duke.common.Constants.FOLDER_PATH;
+import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.KEYWORD_LESSON;
 import static seedu.duke.common.Constants.KEYWORD_TASK;
 import static seedu.duke.common.Constants.TXT_FORMAT;
@@ -30,12 +31,10 @@ public class Writer {
      */
     public void createFile(String moduleCode) {
         try {
-            checkForDirectory();
+            checkForDirectories(moduleCode);
             String fileName = moduleCode + TXT_FORMAT;
-            File path = new File(FOLDER_PATH + "/" + fileName);
-            if (!path.createNewFile()) {
-                return;
-            }
+            File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
+            path.createNewFile();
             FileWriter fileWriter = new FileWriter(path);
             writeInstructions(fileWriter, moduleCode);
             fileWriter.flush();
@@ -52,13 +51,33 @@ public class Writer {
      * @param moduleCode Module code, excluding ".txt".
      * @return True if file is gone, false if file is still around.
      */
-    public boolean deleteFile(String moduleCode) {
-        String fileName = moduleCode + TXT_FORMAT;
-        File path = new File(FOLDER_PATH + "/" + fileName);
-        if (path.exists()) {
-            return path.delete();
+    public boolean deleteDirectory(String moduleCode) {
+        File directory = new File(FOLDER_PATH + "/" + moduleCode);
+        return recursivelyRemoveFiles(directory);
+    }
+
+    /**
+     * Deletes all files in specified directory.
+     * Recursively calls itself if a directory is in the specified directory.
+     * 
+     * @param directory Directory to delete.
+     * @return False if error deleting, true if successful.
+     */
+    public static boolean recursivelyRemoveFiles(File directory) {
+        File[] files = directory.listFiles();
+        if (files == null) {
+            return true;
         }
-        return true;
+        for (File file : files) {
+            if (file.isDirectory()) {
+                if (!recursivelyRemoveFiles(file)) {
+                    return false;
+                }
+            } else if (!file.delete()) {
+                return false;
+            }
+        }
+        return directory.delete();
     }
 
     /**
@@ -66,12 +85,16 @@ public class Writer {
      *
      * @throws IOException Unable to create directory.
      */
-    private void checkForDirectory() throws IOException {
-        File directory = new File(FOLDER_PATH);
-        if (directory.exists() && directory.isDirectory()) {
-            return;
-        }
-        directory.mkdir();
+    private void checkForDirectories(String moduleCode) throws IOException {
+        String directory = FOLDER_PATH;
+        File mainDirectory = new File(directory);
+        mainDirectory.mkdir();
+        directory += "/" + moduleCode;
+        File moduleDirectory = new File(directory);
+        moduleDirectory.mkdir();
+        directory += "/" + CHEATSHEET_STRING;
+        File cheatsheetDirectory = new File(directory);
+        cheatsheetDirectory.mkdir();
     }
 
     /**
@@ -101,12 +124,12 @@ public class Writer {
      * @throws IOException Unable to create file.
      */
     private File getFile(Module module) throws IOException {
-        String name = module.getModuleCode();
-        String fileName = name + TXT_FORMAT;
-        File path = new File(FOLDER_PATH + "/" + fileName);
+        String moduleCode = module.getModuleCode();
+        String fileName = moduleCode + TXT_FORMAT;
+        File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
         if (!path.exists()) {
             //File does not exist
-            createFile(name);
+            createFile(moduleCode);
             assert path.exists();
         }
         return path;
