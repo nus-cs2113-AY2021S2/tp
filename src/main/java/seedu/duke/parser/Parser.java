@@ -530,10 +530,10 @@ public class Parser {
             throw new DukeException("Invalid non-integer input");
         }
 
-        if ( index < 1 || index > max) {
-           throw new DukeException("Index given is out of bounds."); 
+        if (index < 1 || index > max) {
+            throw new DukeException("Index given is out of bounds.");
         }
-        
+
         return index;
     }
 }
