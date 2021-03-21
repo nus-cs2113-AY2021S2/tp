@@ -5,12 +5,11 @@ import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
-import seedu.duke.record.Saving;
 import seedu.duke.record.RecordList;
+import seedu.duke.record.Saving;
 import seedu.duke.ui.Ui;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -85,6 +84,7 @@ public class Storage {
                 if (record != null) {
                     records.add(record);
                 }
+                assert !records.isEmpty() : "RecordList should have data!";
             }
         } catch (InvalidFileInputException | IOException e) {
             throw new FileLoadingException();

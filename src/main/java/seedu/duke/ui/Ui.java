@@ -59,6 +59,9 @@ public class Ui {
         this.input = new Scanner(in);
     }
 
+    /**
+     * Prints the initialization error with the application UI.
+     */
     public static void printInitError() {
         System.out.println(DIVIDER);
         System.out.println();
@@ -67,12 +70,21 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the success message when the file is created.
+     */
     public static void printSuccessfulFileCreation() {
         System.out.println(DIVIDER);
         System.out.println(MESSAGE_FILE_CREATION_SUCCESS);
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the current input that is added into the RecordList.
+     *
+     * @param recordAdded is the current record that is added into the RecordList.
+     * @param index is the index of the current record that is added into the RecordList.
+     */
     public void printSuccessfulAdd(Record recordAdded, int index) {
         System.out.println(DIVIDER);
         System.out.println();
@@ -91,11 +103,19 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the FINUX CLI prefix and gets the user input.
+     *
+     * @return the current user input.
+     */
     public String getUserInput() {
         System.out.print(FINUX_PREFIX + " ");
         return input.nextLine().strip();
     }
 
+    /**
+     * Prints the FINUX welcome message with the FINUX logo.
+     */
     public void printWelcomeMessage() {
         System.out.println(logo);
         System.out.println(DIVIDER);
@@ -103,16 +123,29 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the exit message.
+     */
     public void printGoodByeMessage() {
         System.out.println(MESSAGE_GOODBYE);
     }
 
+    /**
+     * Prints the message parsed into it with the dividers.
+     *
+     * @param message is the concatenated message and the Record object string.
+     */
     public void printMessage(String message) {
         System.out.println(DIVIDER);
         System.out.println(message);
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the entire list of all Expenses from the RecordList.
+     *
+     * @param recordList is the RecordList of all Records.
+     */
     public void printExpenses(RecordList recordList) {
         System.out.println(DIVIDER);
         System.out.println("Here is your Expense list:");
@@ -126,6 +159,11 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the entire list of all Loans from the RecordList.
+     *
+     * @param recordList is the RecordList of all Records.
+     */
     public void printLoans(RecordList recordList) {
         System.out.println(DIVIDER);
         System.out.println("Here is your Loan list:");
@@ -139,6 +177,11 @@ public class Ui {
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the entire list of all Savings from the RecordList.
+     *
+     * @param recordList is the RecordList of all Records.
+     */
     public void printSavings(RecordList recordList) {
         System.out.println(DIVIDER);
         System.out.println("Here is your Saving list:");
@@ -154,6 +197,7 @@ public class Ui {
 
     /**
      * Prints the total expenses in 2 decimal place.
+     *
      * @param recordList contains the full list of records.
      */
     public void printTotalAmountExpense(RecordList recordList) {
@@ -165,12 +209,14 @@ public class Ui {
                 totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
+        assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
         System.out.println(MESSAGE_TOTAL_EXPENSE + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
     /**
      * Prints the total loan in 2 decimal place.
+     *
      * @param recordList contains the full list of records.
      */
     public void printTotalAmountLoan(RecordList recordList) {
@@ -178,16 +224,18 @@ public class Ui {
         BigDecimal totalAmount = new BigDecimal("0");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
-            if (currentRecord instanceof Loan) {
+            if (currentRecord instanceof Loan && !((Loan) currentRecord).checkIsReturn()) {
                 totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
+        assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
         System.out.println(MESSAGE_TOTAL_LOAN + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
     /**
      * Prints the total saving in 2 decimal place.
+     *
      * @param recordList contains the full list of records.
      */
     public void printTotalAmountSaving(RecordList recordList) {
@@ -199,10 +247,16 @@ public class Ui {
                 totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
+        assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
         System.out.println(MESSAGE_TOTAL_SAVING + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
+    /**
+     * Prints the commonly understood index of the record.
+     *
+     * @param index is the index of the record.
+     */
     public void printIndex(int index) {
         int formattedIndex = index + 1;
         System.out.print(formattedIndex + ". ");

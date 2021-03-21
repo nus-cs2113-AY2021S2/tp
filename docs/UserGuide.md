@@ -107,13 +107,18 @@ Output:
 
 This operation will view the total amount of chosen record type.
 
-Format: `insert format`
+Format: `view <OPTION>`
 
-Examples: `insert example`, `insert example`
+> Available Options:
+>* `-e`: view the total amount of expenditure.
+>* `-l`: view the total amount of unreturned loans.
+>* `-s`: view the total amount of saving.
+
+Examples: `view -e`, `view -l`
 
 Output:
 
-![view example output]()
+![view example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/View%20Example%20Output.jpg?raw=true)
 
 ### 3.4 Set a loan as return: `return`
 
@@ -167,9 +172,20 @@ Output:
 
 This operation lists the help page for the application.
 
-Format: `insert format`
+Format: `help <FEATURE>`
 
-Examples: `insert example`, `insert example`
+> Available Features:
+>* `add`: view the help page for `add` command.
+>* `list`: view the help page for `list` command.
+>* `view`: view the help page for `view` command.
+>* `return`: view the help page for `return` command.
+>* `remove`: view the help page for `remove` command.
+>* `creditscore`: view the help page for `creditscore` command.
+>* `exit`: view the help page for `exit` command.
+>* `all`: view entire help page.
+>* 💡 **Tip**: Just type `help` and you can view the entire help page.
+
+Examples: `help exit`, `help list`
 
 Output:
 
@@ -196,6 +212,10 @@ Output:
 
 **A**: {your answer here}
 
+**Q**: Does the `view -l` shows the total loan amount?
+
+**A**: No. `view -l` only shows the total unreturned loans amount.
+
 
 ## 5. Command Summary
 
@@ -203,9 +223,9 @@ Command | Format | Example |
 ------- | ------- | ------- | 
 add | `insert format` | `insert example` |
 list | `insert format` | `insert example` |
-view | `insert format` | `insert example` |
+view | `view <OPTION>` | `view -e` |
 return | `insert format` | `insert example` |
 remove | `insert format` | `insert example` |
 creditscore | `insert format` | `insert example` |
-exit | `insert format` | `insert example` |
+exit | `help <FEATURE>` | `help exit` |
 help | `insert format` | `insert example` |
