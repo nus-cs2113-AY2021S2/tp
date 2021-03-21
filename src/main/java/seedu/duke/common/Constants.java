@@ -93,4 +93,5 @@ public class Constants {
     public static final String SAVE_ICON = "Save";
     public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
     public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
+    public static final int KEYCODE_S = 83;
 }
