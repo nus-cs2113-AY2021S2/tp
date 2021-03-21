@@ -2,7 +2,6 @@ package seedu.duke.link;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import seedu.duke.Module;
@@ -76,7 +75,7 @@ public class LinkInfo {
             Module moduleInfo = ModuleInfo.getModule(linkDescription);
             moduleInfo.setZoomLink(linkDescription);
         } catch (NullPointerException e) {
-            Module module = new Module(moduleCode, "no description", "no review");
+            Module module = new Module(moduleCode, "no description");
             ModuleInfo.modules.add(module);
             module.setZoomLink(linkDescription);
         }
