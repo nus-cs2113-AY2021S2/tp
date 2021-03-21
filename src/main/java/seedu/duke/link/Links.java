@@ -41,12 +41,18 @@ public class Links {
                 linkIndex = Ui.readCommandToInt();
                 break;
             case 3:
+                // delete zoom links
+                LinkInfo.deleteZoomLink();
+                Ui.printLinksMessage();
+                linkIndex = Ui.readCommandToInt();
+                break;
+            case 4:
                 // view zoom links
                 LinkInfo.viewZoomLinks();
                 Ui.printLinksMessage();
                 linkIndex = Ui.readCommandToInt();
                 break;
-            case 4:
+            case 5:
                 //exit
                 return;
             default:

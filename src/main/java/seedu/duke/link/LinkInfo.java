@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import seedu.duke.Module;
+import seedu.duke.ModuleInfo;
 import seedu.duke.Ui;
 
 public class LinkInfo {
@@ -26,7 +28,9 @@ public class LinkInfo {
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
         String deletedString = linksList.get(deleteIndex);
         assert deleteIndex < 0 : "Index is invalid";
+        Module moduleInfo = ModuleInfo.getModule(deletedString);
         linksList.remove(deleteIndex);
+        moduleInfo.removeZoomLink();
         Ui.printLinkDeleted(deletedString);
     }
 
@@ -42,13 +46,40 @@ public class LinkInfo {
         String passwordCommand = Ui.printEnterRequirePassword();
         if (passwordCommand.equals("y")) {
             String password = Ui.printEnterPassword();
-            assert password.isEmpty() : "password cannot be empty";
+            assert !password.isEmpty() : "password cannot be empty";
             zoomLinksList
                 .add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode, password)));
         } else {
-            assert !passwordCommand.equals("n") : "password should be y or n";
+            if (passwordCommand.equals("n")) {
+                System.out.println("command is " + passwordCommand);
+            }
+            assert passwordCommand.equals("n") : "password should be y or n";
             zoomLinksList.add(new ArrayList<>(Arrays.asList(linkDescription, moduleCode)));
         }
+        try {
+            Module moduleInfo = ModuleInfo.getModule(linkDescription);
+            moduleInfo.setZoomLink(linkDescription);
+        } catch (NullPointerException e) {
+            Module module = new Module(moduleCode, "no description", "no review");
+            ModuleInfo.modules.add(module);
+            module.setZoomLink(linkDescription);
+        }
+    }
+
+    public static void deleteZoomLink() {
+        if (zoomLinksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
+        Ui.printLinkToDelete();
+        viewZoomLinks();
+        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+        ArrayList<String> deletedString = zoomLinksList.get(deleteIndex);
+        assert deleteIndex >= 0 : "Index is invalid";
+        Module moduleInfo = ModuleInfo.getModule(deletedString.get(1));
+        moduleInfo.removeZoomLink();
+        zoomLinksList.remove(deleteIndex);
+        Ui.printLinkDeleted(deletedString.get(0));
     }
 
     public static void viewZoomLinks() {

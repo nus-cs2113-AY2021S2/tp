@@ -51,8 +51,9 @@ public class Ui {
             + "Please choose which action you would like to do and enter the number:\n"
             + "[1] --- External links menu\n"
             + "[2] --- Add Zoom links\n"
-            + "[3] --- View Zoom links\n"
-            + "[4] --- Exit to main menu");
+            + "[3] --- Delete Zoom links\n"
+            + "[4] --- View Zoom links\n"
+            + "[5] --- Exit to main menu");
         printHorizontalLine();
     }
 
@@ -494,9 +495,10 @@ public class Ui {
     }
 
     public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
-        System.out.println("Here are your zoom links! Study hard :)\n");
+        System.out.println("Here are your zoom links!\n");
+        int sizeOfList = 1;
         for (int i = 0; i < zoomLinksList.size(); ++i) {
-            System.out.println(zoomLinksList.get(i));
+            System.out.println("[" + (sizeOfList++) + "] --- " +zoomLinksList.get(i));
         }
     }
 
@@ -645,7 +647,6 @@ public class Ui {
 
     public static void printLinkDeleted(String deletedString) {
         System.out.println("You have deleted --- " + deletedString);
-        printHorizontalLine();
     }
 
     public static void printCapSimulatorPrompt() {
