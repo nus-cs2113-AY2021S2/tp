@@ -11,6 +11,8 @@
 [3. Implementation](#3-implementation)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.10 Add New Task](#310-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.11 Delete a Task](#311-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.11 Add Zoom Link](#312-add-zoom-link)
+
 
 [4. Product scope](#4-product-scope)    
 &nbsp;&nbsp;&nbsp;&nbsp;[4.1 Target user profile](#41-target-user-profile)   
@@ -37,16 +39,21 @@ Graphical User Interface (GUI).
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+
 ### 2.1 Architecture
 
 The `Duke` class contains the main method of our application. 
 - At the start of the application, it initializes all the classes in sequence.
 
-We have 4 main classes for our key features.
+We have 5 main classes for our key features.
 - `ModuleInfo`: contains methods for our module information features.
 - `HelpGraduation`: contains methods for our SU calculator/simulator.
 - `TaskManager`: contains methods for our task management features.
 - `Links`: contains methods for our links features.
+- `Storage`: Write data to, and loads data to hard disk
+  
+![Diagram](diagrams/MainArchitecture.png)
+
 
 ### 2.2 UI Class
 
@@ -87,6 +94,10 @@ All existing tasks in the `ArrayList` for the task type they chose will then be 
 The task they select will then be deleted from the `ArrayList`. 
 
 The `Message` that the user inputted upon creation of this particular task will then be printed out. 
+
+### 3.12 Add Zoom Link 
+Given below is the sequence diagram for the feature:
+![Diagram](diagrams/addZoomLink.png)
 
 ---
 ## 4. Product scope

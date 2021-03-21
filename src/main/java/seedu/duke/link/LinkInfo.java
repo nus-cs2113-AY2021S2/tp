@@ -14,6 +14,22 @@ public class LinkInfo {
     private static ArrayList<String> linksList = new ArrayList<>();
     private static ArrayList<ArrayList<String>> zoomLinksList = new ArrayList<ArrayList<String>>();
 
+    private static String nusRedditLink = "https://www.reddit.com/r/nus";
+    private static String luminusLink = "https://www.luminus.nus.edu.sg";
+    private static String edurecLink = "https://www.myedurec.nus.edu.sg";
+
+    public static void initialiseList() {
+        if (!linksList.contains(nusRedditLink)) {
+            linksList.add(nusRedditLink);
+        }
+        if (!linksList.contains(luminusLink)) {
+            linksList.add(luminusLink);
+        }
+        if (!linksList.contains(edurecLink)) {
+            linksList.add(edurecLink);
+        }
+    }
+
     public void addLink(String linkDescription) {
         linksList.add(linkDescription);
     }
