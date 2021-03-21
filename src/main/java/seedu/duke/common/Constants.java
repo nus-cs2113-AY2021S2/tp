@@ -55,11 +55,16 @@ public class Constants {
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
     public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}" 
                                             + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+    public static final String FORMAT_COMMAND_WORD_AND_ARGS = "(^\\S+)(.*)";
+    public static final String FORMAT_TWO_COMMAND_WORD_AND_ARGS = "(^\\S+\\s+\\S+)(.*)";
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
 
     public static final String ADD = "add";
     public static final String DELETE = "delete";
+
+    public static final int INDEX_COMMAND_WORD = 0;
+    public static final int INDEX_COMMAND_ARGS = 1;
 
     //Storage
     public static final String FOLDER_PATH = "Data";

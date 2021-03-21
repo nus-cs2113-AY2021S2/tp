@@ -45,7 +45,11 @@ import static seedu.duke.common.Constants.DELIM;
 import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.ENTRY_LESSON_MAX_PARSER;
 import static seedu.duke.common.Constants.ENTRY_TASK_MAX_PARSER;
+import static seedu.duke.common.Constants.FORMAT_COMMAND_WORD_AND_ARGS;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
+import static seedu.duke.common.Constants.FORMAT_TWO_COMMAND_WORD_AND_ARGS;
+import static seedu.duke.common.Constants.INDEX_COMMAND_ARGS;
+import static seedu.duke.common.Constants.INDEX_COMMAND_WORD;
 import static seedu.duke.common.Constants.INDEX_DAY_TIME;
 import static seedu.duke.common.Constants.INDEX_DEADLINE;
 import static seedu.duke.common.Constants.INDEX_DESCRIPTION;
@@ -99,7 +103,10 @@ public class Parser {
      * @throws ParserException if valid command cannot be parsed from user input
      */
     private Command parseAtDashboard(String input) throws ParserException {
-        String commandWord = getCommandWord(input);
+        String[] commandWordAndArgs = getCommandWordAndArgs(input);
+        String commandWord = commandWordAndArgs[INDEX_COMMAND_WORD];
+        String commandArgs = commandWordAndArgs[INDEX_COMMAND_ARGS].trim();
+
         DashboardCommands command = DashboardCommands.getDashboardCommandFromString(commandWord);
         if (command == null) {
             throw new ParserException(MESSAGE_INVALID_COMMAND);
@@ -107,15 +114,15 @@ public class Parser {
 
         switch (command) {
         case ADD:
-            String moduleCodeToAdd = parseModuleCode(input);
+            String moduleCodeToAdd = parseModuleCode(commandArgs);
             return new AddModuleCommand(moduleCodeToAdd);
         case DELETE:
             return new DeleteModuleCommand();
         case MODULES:
             return new ListModulesCommand();
         case OPEN:
-            String moduleCodeToOpen = parseModuleCode(input);
-            return new EnterModuleCommand(moduleCodeToOpen.toUpperCase());
+            String moduleCodeToOpen = parseModuleCode(commandArgs);
+            return new EnterModuleCommand(moduleCodeToOpen);
         case HELP:
             return new PrintHelpCommand();
         case EXIT:
@@ -123,85 +130,6 @@ public class Parser {
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
-    }
-
-    /**
-     * Gets the single command word from user input.
-     * @param input full user input
-     * @return command word string
-     * @throws ParserException if invalid word is given
-     */
-    private String getCommandWord(String input) throws ParserException {
-        Pattern commandWordPattern = Pattern.compile("^\\S+");
-        Matcher matcher = commandWordPattern.matcher(input.trim());
-        if (!matcher.find()) {
-            throw new ParserException(MESSAGE_INVALID_COMMAND);
-        }
-        String commandWord = matcher.group(0);
-        return commandWord;
-    }
-
-    /**
-     * Enchanced version of getCommandWord for module commands.
-     * @param input full user input
-     * @return module command word string
-     * @throws ParserException if invalid word given
-     */
-    private String getModuleCommandWord(String input) throws ParserException {
-        String commandWord = getCommandWord(input);
-        // command is more than 1 word
-        if (commandWord.equalsIgnoreCase(ADD) || commandWord.equalsIgnoreCase(DELETE)) {
-            commandWord = getTwoCommandWord(input);
-        }
-        return commandWord;
-    }
-
-    /**
-     * Gets two command word from user input.
-     * Only called when first command word is "add" or "delete".
-     * @param input full user input
-     * @return command words string
-     * @throws ParserException if insufficient number of words given
-     */
-    private String getTwoCommandWord(String input) throws ParserException {
-        Pattern twoCommandWordPattern = Pattern.compile("^\\S+\\s+\\S+");
-        Matcher matcher = twoCommandWordPattern.matcher(input.trim());
-        if (!matcher.find()) {
-            throw new ParserException(MESSAGE_INVALID_COMMAND);
-        }
-        String commandWords = matcher.group(0);
-        return commandWords;
-    }
-
-    /**
-     * Parses module code from user input.
-     *
-     * @param input full user input string
-     * @return module code string
-     * @throws ParserException if empty/invalid module code given
-     */
-    private String parseModuleCode(String input) throws ParserException {
-        String[] words = input.split(WHITESPACE);
-        if (words.length < 2) {
-            throw new ParserException(MESSAGE_MODULE_CODE_EMPTY);
-        }
-
-        String moduleCode = words[1].toUpperCase();
-
-        if (!Module.isValidModuleCode(moduleCode)) {
-            throw new ParserException(MESSAGE_INVALID_MODULE_CODE);
-        }
-
-        return moduleCode;
-    }
-
-    /**
-     * Checks if user is at dashboard or has already entered a module.
-     *
-     * @return true if user has already entered a module, false otherwise
-     */
-    private boolean moduleIsSelected() {
-        return ModuleList.getSelectedModule() != null;
     }
 
     /**
@@ -213,7 +141,10 @@ public class Parser {
      * @throws ParserException if valid command cannot be parsed from user input
      */
     private Command parseInModule(String input) throws CommandException, ParserException {
-        String commandWord = getModuleCommandWord(input);
+        String[] commandWordAndArgs = getModuleCommandWordAndArgs(input);
+        String commandWord = commandWordAndArgs[INDEX_COMMAND_WORD];
+        String commandArgs = commandWordAndArgs[INDEX_COMMAND_ARGS].trim();
+
         ModuleCommands command = ModuleCommands.getModuleCommandsFromString(commandWord);
         if (command == null) {
             throw new ParserException(MESSAGE_INVALID_COMMAND);
@@ -251,6 +182,84 @@ public class Parser {
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
+    }
+
+    /**
+     * Gets the single command word and arguments from user input.
+     * @param input full user input
+     * @return string array of command word and arguments
+     * @throws ParserException if invalid word is given
+     */
+    private String[] getCommandWordAndArgs(String input) throws ParserException {
+        Pattern commandWordAndArgsPattern = Pattern.compile(FORMAT_COMMAND_WORD_AND_ARGS);
+        Matcher matcher = commandWordAndArgsPattern.matcher(input.trim());
+        if (!matcher.matches()) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
+        String[] commandWordAndArgs = { matcher.group(1), matcher.group(2) };
+        return commandWordAndArgs;
+    }
+
+    /**
+     * Enchanced version of getCommandWordAndArgs for module commands.
+     * @param input full user input
+     * @return string array of command word and arguments
+     * @throws ParserException if invalid word given
+     */
+    private String[] getModuleCommandWordAndArgs(String input) throws ParserException {
+        String[] commandWordAndArgs = getCommandWordAndArgs(input);
+        // command is more than 1 word
+        if (commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(ADD)
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE)) {
+            commandWordAndArgs = getTwoCommandWordAndArgs(input);
+        }
+        return commandWordAndArgs;
+    }
+
+    /**
+     * Gets two command word and arguments from user input.
+     * Only called when first command word is "add" or "delete".
+     * @param input full user input
+     * @return string array of two command words and arguments
+     * @throws ParserException if insufficient number of words given
+     */
+    private String[] getTwoCommandWordAndArgs(String input) throws ParserException {
+        Pattern twoCommandWordAndArgsPattern = Pattern.compile(FORMAT_TWO_COMMAND_WORD_AND_ARGS);
+        Matcher matcher = twoCommandWordAndArgsPattern.matcher(input.trim());
+        if (!matcher.matches()) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
+        String[] commandWordsAndArgs = { matcher.group(1), matcher.group(2) };
+        return commandWordsAndArgs;
+    }
+
+    /**
+     * Parses module code from user input.
+     *
+     * @param input full user input string
+     * @return module code string
+     * @throws ParserException if empty/invalid module code given
+     */
+    private String parseModuleCode(String input) throws ParserException {
+        if (input.isEmpty()) {
+            throw new ParserException(MESSAGE_MODULE_CODE_EMPTY);
+        }
+
+        String moduleCode = input.toUpperCase();
+        if (!Module.isValidModuleCode(moduleCode)) {
+            throw new ParserException(MESSAGE_INVALID_MODULE_CODE);
+        }
+
+        return moduleCode;
+    }
+
+    /**
+     * Checks if user is at dashboard or has already entered a module.
+     *
+     * @return true if user has already entered a module, false otherwise
+     */
+    private boolean moduleIsSelected() {
+        return ModuleList.getSelectedModule() != null;
     }
 
     /**
