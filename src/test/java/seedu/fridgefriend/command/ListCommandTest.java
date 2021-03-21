@@ -23,11 +23,11 @@ class ListCommandTest {
         fridge.add(chicken);
 
         Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
+                "17-03-2021", FoodStorageLocation.LOWER_SHELF);
         fridge.add(lettuce);
 
         Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
-                "31-07-2021", FoodStorageLocation.LOWER_SHELF);
+                "31-07-2021", FoodStorageLocation.MIDDLE_SHELF);
         fridge.add(pork);
     }
 
@@ -39,6 +39,17 @@ class ListCommandTest {
                 + "\t1. chicken\n"
                 + "\t2. pork";
         String actualMessage = listCommand.getListByCategoryMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
+
+    @Test
+    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
+        ListCommand listCommand = new ListCommand("LOWER_SHELF");
+        listCommand.setData(fridge);
+        String expectedMessage = "These are the food stored in LOWER_SHELF:\n"
+                + "\t1. chicken\n"
+                + "\t2. lettuce";
+        String actualMessage = listCommand.getListByStorageLocationMessage();
         assertEquals(expectedMessage, actualMessage);
     }
 

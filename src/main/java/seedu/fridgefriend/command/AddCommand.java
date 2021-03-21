@@ -88,7 +88,7 @@ public class AddCommand extends Command {
             newFood = new Other(foodName, category, expiryString, location);
             break;
         default:
-            throw new IllegalStateException("Unexpected value: " + category);
+            throw new IllegalStateException("Unexpected category value: " + category);
         }
         return newFood;
     }
