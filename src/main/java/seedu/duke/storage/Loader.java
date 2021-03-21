@@ -58,9 +58,8 @@ public class Loader {
             return names;
         }
         for (File file : files) {
-            String name = file.getName();
-            if (name.endsWith(TXT_FORMAT)) {
-                names.add(name.replace(TXT_FORMAT, EMPTY_STRING));
+            if (file.isDirectory()) {
+                names.add(file.getName());
             }
         }
         return names;
@@ -75,7 +74,7 @@ public class Loader {
     public Module loadModule(String moduleCode) {
         String fileName = moduleCode + TXT_FORMAT;
         Module module = new Module(moduleCode);
-        File path = new File(FOLDER_PATH + "/" + fileName);
+        File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
         try {
             Scanner scanner = new Scanner(path);
             readTillLine(scanner);

@@ -30,12 +30,10 @@ public class Writer {
      */
     public void createFile(String moduleCode) {
         try {
-            checkForDirectory();
+            checkForDirectory(moduleCode);
             String fileName = moduleCode + TXT_FORMAT;
-            File path = new File(FOLDER_PATH + "/" + fileName);
-            if (!path.createNewFile()) {
-                return;
-            }
+            File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
+            path.createNewFile();
             FileWriter fileWriter = new FileWriter(path);
             writeInstructions(fileWriter, moduleCode);
             fileWriter.flush();
@@ -52,13 +50,33 @@ public class Writer {
      * @param moduleCode Module code, excluding ".txt".
      * @return True if file is gone, false if file is still around.
      */
-    public boolean deleteFile(String moduleCode) {
-        String fileName = moduleCode + TXT_FORMAT;
-        File path = new File(FOLDER_PATH + "/" + fileName);
-        if (path.exists()) {
-            return path.delete();
+    public boolean deleteDirectory(String moduleCode) {
+        File directory = new File(FOLDER_PATH + "/" + moduleCode);
+        return recursivelyRemoveFiles(directory);
+    }
+
+    /**
+     * Deletes all files in specified directory.
+     * Recursively calls itself if a directory is in the specified directory.
+     * 
+     * @param directory Directory to delete.
+     * @return False if error deleting, true if successful.
+     */
+    public static boolean recursivelyRemoveFiles(File directory) {
+        File[] files = directory.listFiles();
+        if (files == null) {
+            return true;
         }
-        return true;
+        for (File file : files) {
+            if (file.isDirectory()) {
+                if (!recursivelyRemoveFiles(file)) {
+                    return false;
+                }
+            } else if (!file.delete()) {
+                return false;
+            }
+        }
+        return directory.delete();
     }
 
     /**
@@ -66,12 +84,11 @@ public class Writer {
      *
      * @throws IOException Unable to create directory.
      */
-    private void checkForDirectory() throws IOException {
-        File directory = new File(FOLDER_PATH);
-        if (directory.exists() && directory.isDirectory()) {
-            return;
-        }
-        directory.mkdir();
+    private void checkForDirectory(String moduleCode) throws IOException {
+        File mainDirectory = new File(FOLDER_PATH);
+        mainDirectory.mkdir();
+        File moduleDirectory = new File(FOLDER_PATH + "/" + moduleCode);
+        moduleDirectory.mkdir();
     }
 
     /**
@@ -101,12 +118,12 @@ public class Writer {
      * @throws IOException Unable to create file.
      */
     private File getFile(Module module) throws IOException {
-        String name = module.getModuleCode();
-        String fileName = name + TXT_FORMAT;
-        File path = new File(FOLDER_PATH + "/" + fileName);
+        String moduleCode = module.getModuleCode();
+        String fileName = moduleCode + TXT_FORMAT;
+        File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
         if (!path.exists()) {
             //File does not exist
-            createFile(name);
+            createFile(moduleCode);
             assert path.exists();
         }
         return path;
