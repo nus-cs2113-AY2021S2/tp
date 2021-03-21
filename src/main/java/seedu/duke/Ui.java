@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * Deals with all interactions with the user.
  */
 public class Ui {
+
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void printWelcomeMessage() {
@@ -98,11 +99,11 @@ public class Ui {
 
     public static void printMarkTaskMenu() {
         System.out.println("Please choose which type of task you would like to mark/unmark as done"
-                + " and enter the number:\n"
-                + "[1] --- Task\n"
-                + "[2] --- Assignment\n"
-                + "[3] --- Midterm\n"
-                + "[4] --- Final Exam");
+            + " and enter the number:\n"
+            + "[1] --- Task\n"
+            + "[2] --- Assignment\n"
+            + "[3] --- Midterm\n"
+            + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
@@ -235,7 +236,7 @@ public class Ui {
             + module.getDescription());
         if (!module.getReview().trim().isEmpty()) {
             System.out.println("NOTE: You are deleting your review\n"
-                    + module.getReview());
+                + module.getReview());
         }
         printHorizontalLine();
     }
@@ -500,7 +501,7 @@ public class Ui {
         System.out.println("Here are your zoom links!\n");
         int sizeOfList = 1;
         for (int i = 0; i < zoomLinksList.size(); ++i) {
-            System.out.println("[" + (sizeOfList++) + "] --- " +zoomLinksList.get(i));
+            System.out.println("[" + (sizeOfList++) + "] --- " + zoomLinksList.get(i));
         }
     }
 
