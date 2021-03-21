@@ -31,11 +31,4 @@ public class ReadReviewsCommand extends Command {
         averageRating = ratingSum/ratingCount;
         ui.showReviews(currentStore.getStoreName(), reviews,averageRating);
     }
-
-
-    @Override
-    public boolean isExit() {
-        return exit;
-    }
-
 }

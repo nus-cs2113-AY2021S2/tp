@@ -21,8 +21,4 @@ public class DisplayMenusCommand extends Command {
         ArrayList<Menu> menus = currentStore.getMenus();
         ui.showDisplayMenu(currentStore.getStoreName(), menus);
     }
-
-    public boolean isExit() {
-        return exit;
-    }
 }

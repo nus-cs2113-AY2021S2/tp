@@ -117,7 +117,7 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
         int count = 1;
         for (Review review: reviews) {
-            System.out.println(count + ")" + review.toString());
+            System.out.println(count++ + ")" + review.toString());
             System.out.println("Customer rating: " + review.getRating());
             System.out.println(Ui.LINESPACING);
         }

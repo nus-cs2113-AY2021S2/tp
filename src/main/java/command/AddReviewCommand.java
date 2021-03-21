@@ -33,8 +33,4 @@ public class AddReviewCommand extends Command {
         currentStore.addReview(currentStoreReview);
     }
 
-    @Override
-    public boolean isExit() {
-        return exit;
-    }
 }

@@ -72,7 +72,6 @@ public class NusFoodReviews {
                 c.execute(canteens, ui);
                 ui.showStoreOptions(canteens.get(0).getCanteenName(),
                         canteens.get(0).getStore(Integer.parseInt(index) - 1).getStoreName());
-                isExit = c.isExit();
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
             }
@@ -84,13 +83,12 @@ public class NusFoodReviews {
         AdminVerification.verifyInputPassword();
         ui.showAdminVerified();
 
-        while (!isExit) {
+        while (true) {
             ui.showAdminOptions();
             try {
                 String line = ui.readCommand();
                 Command c = parser.parseAdminCommand(line,canteens.get(0).getNumStores());
                 c.execute(canteens, ui);
-                isExit = c.isExit();
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
             }

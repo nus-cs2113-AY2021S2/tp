@@ -15,8 +15,4 @@ public class AddStoreCommand extends Command {
 
     }
 
-    @Override
-    public boolean isExit() {
-        return exit;
-    }
 }
