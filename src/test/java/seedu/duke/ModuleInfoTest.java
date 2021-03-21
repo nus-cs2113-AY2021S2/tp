@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 class ModuleInfoTest {
     @Test
     void isEmptyList_emptyList_printEmptyListMessage() {
-        ArrayList<Module> emptyList = new ArrayList<>();
-        assertFalse(Ui.printAllModulesIfNotEmpty(emptyList));
+        ModuleInfo.modules = new ArrayList<>();
+        assertFalse(ModuleInfo.viewAllModules());
     }
 }
