@@ -217,6 +217,10 @@ public class Ui {
         System.out.println("Enter the module number to be deleted:");
     }
 
+    public static void printSelectReviewToDeleteMessage() {
+        System.out.println("Enter the module number to delete review:");
+    }
+
     public static void printSelectTaskNumberToMarkOrUnmarkMessage() {
         System.out.println("\nWhat is the number of the task you want to mark/unmark?");
     }
