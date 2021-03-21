@@ -12,7 +12,8 @@ import java.util.ArrayList;
 
 public class CommandListTest {
 
-    public ArrayList<Review> reviewList;
+    public ArrayList<Review> reviewList = new ArrayList<Review>();
+    CommandList commandList;
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -26,7 +27,7 @@ public class CommandListTest {
     public void deleteReview_reviewExists_removesNormally() throws Exception {
         int numberOfReviewsBeforeRemoval = reviewList.size();
         String title = "superman";
-        reviewList.remove(title);
+        commandList.deleteReview(title);
 
         assertFalse(reviewList.contains(title));
 
