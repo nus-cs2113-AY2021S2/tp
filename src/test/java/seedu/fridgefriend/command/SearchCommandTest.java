@@ -39,7 +39,7 @@ class SearchCommandTest {
 
     @Test
     public void searchCommand_foodInFridge_foodFound() throws EmptyDescriptionException {
-        String expectedMessage = "You have chicken stored in FREEZER of your fridge.";
+        String expectedMessage = "You have chicken stored in LOWER_SHELF of your fridge.";
         String actualMessage = searchCommand("chicken").getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }
