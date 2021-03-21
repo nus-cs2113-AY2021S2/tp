@@ -21,17 +21,44 @@ public class AddCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        // TODO Replace by ui after ui is implemented
-        String patientID = arguments.get("payload");
-        int stringLength = patientID.length();
 
-        // TODO more ways to check for invalid NRIC and other exceptions
+        String patientID = arguments.get("payload");
+        patientID = patientID.toUpperCase();
+        int stringLength = patientID.length();
+        boolean validID = true;
+
+        // Checks if ID has 9 characters
         if (stringLength != 9) {
+            validID = false;
+        }
+        // Checks if ID is valid
+        for (int i = 0; i < stringLength; i++) {
+            char c = patientID.charAt(i);
+            if (i == 0) {
+                // Checks if first value of ID is S,T,F or G
+                if (c != 'S' && c != 'T' && c != 'F' && c != 'G') {
+                    validID = false;
+                }
+            } else if (i == 8) {
+                // Checks if last value of ID is a letter
+                if (!Character.isLetter(c)) {
+                    validID = false;
+                }
+            } else {
+                // Checks if the rest of the values are digits
+                if (!Character.isDigit(c)) {
+                    validID = false;
+                }
+            }
+        }
+
+        if (!validID) {
             throw new Exception(Constants.EXCEPTION_ADD_INVALIDNRIC);
         } else if (data.getPatients().containsKey(patientID)) {
             throw new Exception(Constants.EXCEPTION_ADD_PATIENTEXISTS);
         }
 
+        assert validID : "validID should be true";
         Patient patient = new Patient(patientID);
         data.setPatient(patient);
 
