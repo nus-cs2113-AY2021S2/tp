@@ -13,6 +13,7 @@ public class Duke {
 
     public void run() {
         deliveryman = DataManager.loadProfile();
+        Route.loadRoutes();
         ui.showWelcomeScreen();
         ui.showLoopingMenuUntilExit(deliveryman);
     }

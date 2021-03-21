@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Delivery {
     
-    private String deliveryID;
-    private String address; // todo implement enums?
-    private String recipient; // contains name of receipient
+    private final String deliveryID;
+    private final String address; // todo implement enums?
+    private final String recipient; // contains name of receipient
     private int weight; // weight of the delivery
-    private ArrayList<Item> items;
+    private double deliveryFee;
+    private int distance;
+    private final ArrayList<Item> items;
     private boolean isComplete;
 
     public Delivery(String deliveryID, String address, String recipient, ArrayList<Item> items) {
@@ -20,6 +22,9 @@ public class Delivery {
         for (Item item : items) {
             this.weight += item.getItemWeight();
         }
+        ArrayList<Object> matchedData = Route.getMatchingRouteData(address);
+        this.deliveryFee = (double) matchedData.get(0);
+        this.distance = (int) matchedData.get(1);
     }
 
     public String getDeliveryID() {
@@ -48,6 +53,14 @@ public class Delivery {
         this.isComplete = true;
     }
 
+    public double getDeliveryFee() {
+        return this.deliveryFee;
+    }
+
+    public int getDistance() {
+        return this.distance;
+    }
+
     public String getDeliveryStatusSymbol() {
         if (this.isComplete) {
             return "[Y]";
@@ -55,6 +68,12 @@ public class Delivery {
         else {
             return "[N]";
         }
+    }
+
+    public static void completeDelivery(Deliveryman deliveryman, int deliveryNumber) {
+        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+        deliveryman.completeDelivery(delivery);
+        delivery.setDeliveryAsComplete();
     }
 
     /**

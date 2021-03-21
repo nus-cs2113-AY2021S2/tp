@@ -1,10 +1,13 @@
 package seedu.duke;
 
+import java.util.ArrayList;
+
 public class Deliveryman {
     private String driverName;
     private String licensePlate;
     private String vehicleModel;
     private int maxWeight;
+    private ArrayList<Delivery> records = new ArrayList<>();
 
     public Deliveryman(String driverName, String licensePlate, String vehicleModel, int maxWeight) {
         this.driverName = driverName;
@@ -83,5 +86,13 @@ public class Deliveryman {
             DataManager.saveProfile(this);
         }
 
+    }
+
+    public void completeDelivery(Delivery delivery) {
+        records.add(delivery);
+    }
+
+    public ArrayList<Delivery> getRecords() {
+        return records;
     }
 }

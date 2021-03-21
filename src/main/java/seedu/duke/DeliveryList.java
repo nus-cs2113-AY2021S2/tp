@@ -13,7 +13,6 @@ public class DeliveryList {
      */
     public static void load() {
         deliveries = DataManager.loadDeliveryList();
-        System.out.println("loaded deliveries");
         calculateCombinedWeight();
         checkWeight();
     }

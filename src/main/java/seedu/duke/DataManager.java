@@ -11,6 +11,7 @@ public class DataManager {
 	private static final String TXT_FILE_DIRECTORY= "./data";
 	private static final String PATH_TO_PROFILE = "./data/profile.txt";
 	private static final String PATH_TO_DELIVERY = "./data/delivery.txt";
+	private static final String PATH_TO_ROUTES = "./data/routes.txt";
 
 	/**
 	 * Method to load deliveryman details from a .txt file
@@ -105,5 +106,22 @@ public class DataManager {
 			itemsArray.add(item);
 		}
 		return itemsArray;
+	}
+
+	public static ArrayList<Route> loadRoutes() {
+		ArrayList<Route> routes = new ArrayList<>();
+		try {
+			File deliveryRoute = new File(PATH_TO_ROUTES);
+			Scanner fileReader = new Scanner(deliveryRoute);
+			while (fileReader.hasNext()) {
+				String line = fileReader.nextLine();
+				String[] routeInfo = line.split(" \\| ");
+				routes.add(new Route(routeInfo[0], Double.parseDouble(routeInfo[1]), Integer.parseInt(routeInfo[2])));
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Cannot load file...you are clapped! Please load a file.");
+			System.exit(0);
+		}
+		return routes;
 	}
 }
