@@ -50,7 +50,8 @@ finance management rather than using the traditional management system.
 >   * `YYYY.M.D`
 >   * `YYYY-M-D`
 >   * `YYYY/M/D`
-> * `today` keyword specifies today's date, replacing the need to type in the actual date.
+> * `today` keyword specifies today's date, replacing the need to type in the actual date
+    for date inputs.
 ### 3.1 Add a record: `add`
 > For the `add` command, there is no strict ordering for options.
 <br>
