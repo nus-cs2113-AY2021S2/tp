@@ -75,7 +75,7 @@ public class Constants {
     //Logging
     public static final String LOGGER_PATH = "GULIOLog.log";
     public static final String LOGGER_NAME = "LOGGER";
-    
+
     //Cheatsheet
     public static final String CHEATSHEET_STRING = "Cheatsheet";
 
@@ -93,4 +93,8 @@ public class Constants {
     public static final String SAVE_ICON = "Save";
     public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
     public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
+
+    //Cheat sheet
+    public static final String CHEATSHEET_DIR = "Cheatsheet";
+    public static final String PATH_DELIMITER = "/";
 }
