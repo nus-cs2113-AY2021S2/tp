@@ -47,6 +47,9 @@ public class Ui {
         printDivider();
     }
 
+    /**
+     * Prints goodbye screen
+     */
     public void showFarewellScreen() {
         printDivider();
         System.out.println("Safe travels! Goodbye!");
@@ -83,6 +86,10 @@ public class Ui {
         }
     }
 
+    /**
+     * shows deliveryman's completed deliveries together with total earnings
+     * @param records the ArrayList of completed deliveries to print
+     */
     public void showRecords(ArrayList<Delivery> records) {
         System.out.println("Congratulations on completing the following deliveries:");
         System.out.println(" Number | ID | Location | Earned Amount ");
@@ -93,6 +100,7 @@ public class Ui {
             System.out.println(i + " | "
                     + delivery.getDeliveryID() + " | "
                     + delivery.getAddress() + " | " + delivery.getDeliveryFee());
+            i++;
         }
         System.out.println("Total Earnings: " + total);
     }
@@ -121,6 +129,9 @@ public class Ui {
         System.out.println(delivery);
     }
 
+    /**
+     * @param deliveryman deliveryman to show details about
+     */
     public void showProfile(Deliveryman deliveryman) {
         System.out.println(deliveryman);
     }

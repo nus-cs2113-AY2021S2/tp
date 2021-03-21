@@ -8,11 +8,19 @@ public class Delivery {
     private final String address; // todo implement enums?
     private final String recipient; // contains name of receipient
     private int weight; // weight of the delivery
-    private double deliveryFee;
-    private int distance;
+    private final double deliveryFee;
+    private final int distance;
     private final ArrayList<Item> items;
     private boolean isComplete;
 
+    /**
+     * This constructor only requires some attributes to be loaded from the .txt file - the rest are dynamically
+     * generated
+     * @param deliveryID unique ID of the delivery
+     * @param address address for the delivery
+     * @param recipient name of the delivery's recipient
+     * @param items items contained in the delivery
+     */
     public Delivery(String deliveryID, String address, String recipient, ArrayList<Item> items) {
         this.deliveryID = deliveryID;
         this.address = address;
@@ -70,6 +78,11 @@ public class Delivery {
         }
     }
 
+    /**
+     * Marks a delivery as completed and also adds the delivery to the deliveryman's record
+     * @param deliveryman deliveryman that completed the delivery
+     * @param deliveryNumber corresponding index of the delivery in the DeliveryList.deliveries
+     */
     public static void completeDelivery(Deliveryman deliveryman, int deliveryNumber) {
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         deliveryman.completeDelivery(delivery);
