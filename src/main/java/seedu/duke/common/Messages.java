@@ -149,4 +149,10 @@ public class Messages {
     //Logging messages
     public static final String MESSAGE_LOAD_FAILED = "LOADER: failed to load %s.";
 
+    //Cheat sheet
+    public static final String MESSAGE_CHEAT_SHEET_ALREADY_EXISTS = "Cheat sheet already exists!";
+    public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder";
+    public static final String MESSAGE_FILE_HAS_BEEN_DELETED = "%s has been deleted!";
+    public static final String MESSAGE_FILE_DOES_NOT_EXIST = "%s does not exist!";
+
 }
