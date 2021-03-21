@@ -33,6 +33,7 @@ public class Canteen {
     }
 
     public Store getStore(int index) {
+
         return stores.get(index);
     }
 

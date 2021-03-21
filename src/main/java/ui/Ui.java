@@ -36,11 +36,12 @@ public class Ui {
     public void userShowWelcome() {
         System.out.println(LINESPACING);
         System.out.println("Welcome to our amazing canteen review application!!");
-        System.out.println("You are now viewing canteen The Deck");
+        System.out.println("You are now viewing canteen: The Deck");
         System.out.println(LINESPACING);
     }
 
     public void adminShowWelcome() {
+        System.out.println(Ui.LINESPACING);
         System.out.println("Welcome Admin! ");
         System.out.println("Please enter your password: ");
         System.out.println(LINESPACING);
@@ -52,7 +53,7 @@ public class Ui {
     }
 
     public void showAdminVerified() {
-        System.out.println(LINESPACING);
+        System.out.println(Ui.LINESPACING);
         System.out.println("Successfully verified!");
         System.out.println(LINESPACING);
     }
@@ -64,13 +65,12 @@ public class Ui {
     }
 
     public void printStoreAdded(String storeName) {
-        System.out.println(LINESPACING);
+        System.out.println(Ui.LINESPACING);
         System.out.println("Got it ! Successfully added " + storeName + " to The Deck");
         System.out.println(LINESPACING);
     }
 
     public void showAddStore() {
-        System.out.println(LINESPACING);
         System.out.println("Please enter store name");
         System.out.println(LINESPACING);
     }
@@ -96,8 +96,9 @@ public class Ui {
     }
 
     public void showDisplayStoreMessage() {
-        System.out.println(Ui.LINESPACING);
         System.out.println("Here's a list of the stores in the canteen: The Deck");
+        System.out.println("Please select one of the follow stores:");
+        System.out.println(Ui.LINESPACING);
     }
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
@@ -115,5 +116,14 @@ public class Ui {
         }
         System.out.println(LINESPACING);
 
+    }
+
+    public void showStoreOptions(String canteenName, String storeName){
+        System.out.println(Ui.LINESPACING);
+        System.out.println("You are now viewing: "+ canteenName + ", " + storeName);
+        System.out.println ("Enter 'Menu' to view sample menu");
+        System.out.println("Enter 'Reviews' to show reviews of " +storeName);
+        System.out.println("Enter 'add' to add a new review");
+        System.out.println(Ui.LINESPACING);
     }
 }

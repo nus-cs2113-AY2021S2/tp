@@ -3,10 +3,12 @@ package nusfoodreview;
 import admin.AdminVerification;
 import canteens.Canteen;
 import command.Command;
+import command.DisplayStoresCommand;
 import exceptions.DukeExceptions;
 import parser.Parser;
 import storage.Storage;
 import ui.Ui;
+import checkuser.CheckUser;
 
 import java.util.ArrayList;
 
@@ -15,10 +17,9 @@ public class NusFoodReview {
     private Ui ui;
     private Storage storage;
     private Parser parser;
-    private boolean isPublicUser = false;
-    private boolean isAdmin = false;
-    private boolean isVerified = false;
     private boolean isExit = false;
+    private boolean isPublicUser;
+    private Command displayStore = new DisplayStoresCommand();
 
     public NusFoodReview(String filePath) {
         ui = new Ui();
@@ -30,14 +31,14 @@ public class NusFoodReview {
     /**
      * Main entry-point for the java.duke.Duke application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DukeExceptions {
         new NusFoodReview("data/storage.txt").run();
     }
 
-    public void run() {
+    public void run() throws DukeExceptions {
         ui.showLogo();
         ui.showLoginPage();
-        checkUser();
+        isPublicUser = CheckUser.checkUserType(isPublicUser);
         if (isPublicUser) {
             runPublicUser();
         } else {
@@ -46,37 +47,24 @@ public class NusFoodReview {
         System.exit(0);
     }
 
-    public void checkUser() {
-        while (!(isPublicUser | isAdmin)) {
-            try {
-                String input = Ui.readCommand();
-                if (!(input.equals("1") | input.equals("2") | input.equals("exit"))) {
-                    throw new DukeExceptions("Wrong input, enter either 1 or 2.");
-                }
-                if (input.equals("1")) {
-                    isPublicUser = true;
-                } else if (input.equals("2")) {
-                    isAdmin = true;
-                } else {
-                    ui.showGoodbye();
-                    System.exit(0);
-                }
-            } catch (DukeExceptions e) {
-                ui.showError(e.getMessage());
-            }
-        }
-    }
 
-    public void runPublicUser() {
+
+    public void runPublicUser() throws DukeExceptions {
         ui.userShowWelcome();
+        displayStore.execute(canteens, ui);
         boolean isExit = false;
         // Have not yet added ability to add stores, for now: end application if storage is empty.
         if (canteens.size() == 0) {
             return;
         }
         assert true;
+
         while (!isExit) {
+
             try {
+                String index = ui.readCommand();
+                ui.showStoreOptions(canteens.get(0).getCanteenName(),
+                        canteens.get(0).getStore(Integer.parseInt(index)-1).getStoreName());
                 String line = ui.readCommand();
                 Command c = parser.parse(line, canteens.get(0).getNumStores());
                 c.execute(canteens, ui);
@@ -84,6 +72,7 @@ public class NusFoodReview {
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
             }
+
         }
     }
 

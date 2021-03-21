@@ -1,5 +1,6 @@
 package parser;
 
+import canteens.Canteen;
 import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
@@ -8,6 +9,9 @@ import command.DisplayStoresCommand;
 import command.ExitCommand;
 import command.ReadCommand;
 import exceptions.DukeExceptions;
+import ui.Ui;
+
+import java.util.ArrayList;
 
 
 public class Parser {
@@ -37,6 +41,7 @@ public class Parser {
         }
         return index;
     }
+
 
     public Command parse(String line, int maxStores) throws DukeExceptions {
         Command newCommand;
