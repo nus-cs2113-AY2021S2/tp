@@ -13,13 +13,7 @@ public abstract class Food {
     protected String foodName;
     protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
-
-    public Food(FoodCategory category, String foodName) {
-        LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
-        this.setCategory(category);
-        this.setFoodName(foodName);
-    }
-
+    
     public Food(FoodCategory category, String foodName, String expiryString,
             FoodStorageLocation storageLocation) throws InvalidDateException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
