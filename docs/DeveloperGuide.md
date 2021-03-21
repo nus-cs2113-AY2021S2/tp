@@ -2,8 +2,12 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Architecture
 
+<img src="images/ArchitectureDiagram.png" width="450" />
+
+The ***Architecture Diagram*** given above explains the high-level design of the App. 
+Given below is a quick overview of each component.
 
 ## Product scope
 ### Target user profile
