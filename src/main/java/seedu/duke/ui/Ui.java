@@ -224,7 +224,7 @@ public class Ui {
         BigDecimal totalAmount = new BigDecimal("0");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
-            if (currentRecord instanceof Loan) {
+            if (currentRecord instanceof Loan && !((Loan) currentRecord).checkIsReturn()) {
                 totalAmount = totalAmount.add(currentRecord.getAmount());
             }
         }
