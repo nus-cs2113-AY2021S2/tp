@@ -9,10 +9,10 @@ public class Module {
     protected Hashtable<String, Integer> components;
     protected String zoomLink;
 
-    public Module(String name, String description, String review) {
+    public Module(String name, String description) {
         this.name = name;
         this.description = description;
-        this.review = review;
+        this.review = "You have not reviewed this module yet.";
         this.components = new Hashtable<>();
         zoomLink = "No zoom link found!";
     }
@@ -59,6 +59,10 @@ public class Module {
 
     public void removeZoomLink() {
         this.zoomLink = "No zoom links found!";
+    }
+
+    public void removeReview() {
+        this.review = "You have not reviewed this module yet.";
     }
 
 }
