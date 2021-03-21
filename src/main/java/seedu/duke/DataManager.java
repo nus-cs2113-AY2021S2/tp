@@ -20,6 +20,7 @@ public class DataManager {
 		String driverName = "Obi Wan";
 		String vehicleModel = "YT-1300";
 		String licensePlate = "HIGHGROUND";
+		int maxWeight = 4;
 
 		try {
 			File directory = new File(TXT_FILE_DIRECTORY);
@@ -31,10 +32,11 @@ public class DataManager {
 			Scanner sc = new Scanner(saveFile);
 			while(sc.hasNext()){
 				String loadedInfo = sc.nextLine();
-				String[] userInfo = loadedInfo.split(" \\| ", 3);
+				String[] userInfo = loadedInfo.split(" \\| ", 4);
 				driverName = userInfo[0];
 				vehicleModel = userInfo[2];
 				licensePlate = userInfo[1];
+				maxWeight = Integer.parseInt(userInfo[3]);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -43,7 +45,7 @@ public class DataManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return new Deliveryman(driverName, licensePlate, vehicleModel);
+		return new Deliveryman(driverName, licensePlate, vehicleModel, maxWeight);
 	}
 
 	/**
@@ -51,7 +53,7 @@ public class DataManager {
 	 * @param deliveryman the Deliveryman object being used in the program
 	 */
 	public static void saveProfile(Deliveryman deliveryman){
-		FileWriter fw = null;
+		FileWriter fw;
 		try {
 			fw = new FileWriter(PATH_TO_PROFILE);
 			String profileInfo = deliveryman.saveFormat();

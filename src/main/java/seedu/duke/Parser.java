@@ -16,7 +16,8 @@ public class Parser {
     public static final Pattern DRIVER_PROFILE_EDIT_FORMAT
             = Pattern.compile("n/(?<name>[^/]+)"
             + " v/(?<vehicle>[^/]+)"
-            + " l/(?<license>[^/]+)");
+            + " l/(?<license>[^/]+)"
+            + " w/(?<weight>[^/]+)");
 
     public String parseCommand(String userInput) {
         Matcher matcher = BASIC_USER_INPUT_FORMAT.matcher(userInput.trim());
@@ -48,18 +49,19 @@ public class Parser {
         switch (commandWord) {
             case "edit":
             case "editprofile":
-               // TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F
+               // TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/2
                 Matcher editProfileMatcher = DRIVER_PROFILE_EDIT_FORMAT.matcher(arguments.trim());
                 if (!editProfileMatcher.matches()){
                     System.out.println("Invalid Command");
-                    System.out.println("Please use the format: n/name v/vehicle model l/license plate");
-                    System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F");
+                    System.out.println("Please use the format: n/name v/vehicle model l/license plate w/weight");
+                    System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/5");
                     parsedData = "fail";
                 } else {
-                    parsedData = String.format("%s | %s | %s",
+                    parsedData = String.format("%s | %s | %s | %s",
                             editProfileMatcher.group("name"),
                             editProfileMatcher.group("vehicle"),
-                            editProfileMatcher.group("license"));
+                            editProfileMatcher.group("license"),
+                            editProfileMatcher.group("weight"));
                 }
                 break;
             case "view":

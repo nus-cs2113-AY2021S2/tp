@@ -139,6 +139,7 @@ public class Ui {
                 case "editprofile":
                     // todo: extract the below as a method
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
+                    System.out.println("im here!");
                     deliveryman.updateProfile(inputProfileData);
                     break;
                 case "start":
