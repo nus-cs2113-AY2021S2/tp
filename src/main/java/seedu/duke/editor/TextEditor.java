@@ -75,6 +75,7 @@ public class TextEditor extends JFrame implements ActionListener {
     private void setLayout() {
         this.setLayout(new FlowLayout());
         this.setVisible(true);
+        textArea.requestFocus();
     }
 
     private void setFontStyleIcon() {
