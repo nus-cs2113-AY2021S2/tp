@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXIST;
 
 public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
     public EditCheatSheetCommand(String nameOfFile) {
