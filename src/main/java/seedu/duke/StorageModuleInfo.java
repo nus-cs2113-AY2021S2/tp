@@ -47,19 +47,19 @@ public class StorageModuleInfo {
         File f = new File(filePath); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
-                String[] part = s.nextLine().split(" ~~ ");
-                Module module = new Module(part[0], part[1]);
-                StringBuilder review = new StringBuilder();
-                while (true) {
-                    String line = s.nextLine();
-                    if (line.contains(" -- end of module -- ")) {
-                        review.append(line.split(" -- end of module -- ")[0]);
-                        break;
-                    }
-                    review.append(line).append("\n");
+            String[] part = s.nextLine().split(" ~~ ");
+            Module module = new Module(part[0], part[1]);
+            StringBuilder review = new StringBuilder();
+            while (true) {
+                String line = s.nextLine();
+                if (line.contains(" -- end of module -- ")) {
+                    review.append(line.split(" -- end of module -- ")[0]);
+                    break;
                 }
-                module.setReview(review.toString());
-                ModuleInfo.modules.add(module);
+                review.append(line).append("\n");
+            }
+            module.setReview(review.toString());
+            ModuleInfo.modules.add(module);
         }
     }
 
