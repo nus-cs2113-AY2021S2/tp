@@ -145,7 +145,7 @@ public class TextEditor extends JFrame implements ActionListener {
             fileWriter.write(textArea.getText());
             fileWriter.close();
         } catch (IOException fileNotFoundException) {
-            File file = new File(pathName);
+            assert false :"File has not been created";
         }
     }
 

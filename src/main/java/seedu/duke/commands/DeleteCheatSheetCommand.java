@@ -16,6 +16,8 @@ import static seedu.duke.common.Messages.MESSAGE_FILE_HAS_BEEN_DELETED;
 
 public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
 
+    public static String filePath;
+
     public DeleteCheatSheetCommand(String nameOfFile) {
         super(nameOfFile);
     }
@@ -25,14 +27,18 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
         Path path;
-        String filePath = directoryPath + fileName;
+        filePath = directoryPath + fileName;
         path = Paths.get(filePath);
         try {
-            Files.delete(path);
-            ui.printMessage(String.format(MESSAGE_FILE_HAS_BEEN_DELETED, fileName));
+            performFunction(ui, path);
         } catch (IOException e) {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
         }
+    }
+
+    public void performFunction(UI ui, Path path) throws IOException {
+        Files.delete(path);
+        ui.printMessage(String.format(MESSAGE_FILE_HAS_BEEN_DELETED, fileName));
     }
 
     @Override

@@ -6,6 +6,7 @@ import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,10 +34,12 @@ public class AddCheatSheetCommand extends Command {
         openTextEditor(ui, path, filePath);
     }
 
-    private void openTextEditor(UI ui, Path path, String filePath) {
-        if (Files.isDirectory(path)) {
+    public void openTextEditor(UI ui, Path path, String filePath) {
+
+        if (Files.exists(path)) {
             ui.printMessage(MESSAGE_CHEAT_SHEET_ALREADY_EXISTS);
         } else {
+            File file = new File(filePath);
             ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
             TextEditor textEditor = new TextEditor(filePath);
         }
