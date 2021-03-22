@@ -50,12 +50,6 @@ public class NusFoodReviews {
 
     public void runPublicUser() throws DukeExceptions {
         displayStore.execute(canteens, ui);
-        // Have not yet added ability to add stores, for now: end application if storage is empty.
-        if (canteens.size() == 0) {
-            return;
-        }
-        assert true;
-
         //take in the store the user wants to see first
         String index = ui.readCommand();
         ui.showStoreOptions(canteens.get(0).getCanteenName(),
@@ -65,7 +59,7 @@ public class NusFoodReviews {
         while (!isExit) {
             try {
                 String line = ui.readCommand();
-                if(line.equals("list")){
+                if (line.equals("list")) {
                     runPublicUser();
                 }
                 Command c = parser.parse(line,index,canteens.get(0).getNumStores());

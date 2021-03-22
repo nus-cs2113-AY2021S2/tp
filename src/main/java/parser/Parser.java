@@ -41,7 +41,7 @@ public class Parser {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
             indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new ReadReviewsCommand( Integer.parseInt(index) - 1);
+            newCommand = new ReadReviewsCommand(Integer.parseInt(index) - 1);
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 public class ReadReviewsCommand extends Command {
     public int index;
-    private static double ratingSum=0;
-    private static int ratingCount=0;
-    private static double averageRating=0;
+    private static double ratingSum = 0;
+    private static int ratingCount = 0;
+    private static double averageRating = 0;
 
     public ReadReviewsCommand(int index) {
         this.index = index;
@@ -24,11 +24,11 @@ public class ReadReviewsCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         Store currentStore = canteens.get(0).getStore(index);
         ArrayList<Review> reviews = currentStore.getReviews();
-        for(Review rating : reviews){
+        for (Review rating : reviews) {
             ratingSum = ratingSum + rating.getRating();
             ratingCount++;
         }
-        averageRating = ratingSum/ratingCount;
+        averageRating = ratingSum / ratingCount;
         ui.showReviews(currentStore.getStoreName(), reviews,averageRating);
     }
 }

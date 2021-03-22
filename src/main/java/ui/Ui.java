@@ -30,7 +30,11 @@ public class Ui {
     }
 
     public static String readCommand() {
-        line = userInputScanner.nextLine();
+        try {
+            line = userInputScanner.nextLine();
+        } catch (NullPointerException e) {
+            System.out.println("Input cannot be empty.");
+        }
         return line;
     }
 
@@ -113,7 +117,7 @@ public class Ui {
     public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
         System.out.println(Ui.LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
-        System.out.println("Recommended: " + Math.round(averageRating*100.0)/100.0 + "/5.0");
+        System.out.println("Recommended: " + Math.round(averageRating * 100.0) / 100.0 + "/5.0");
         System.out.println(Ui.LINESPACING);
         int count = 1;
         for (Review review: reviews) {
@@ -135,17 +139,17 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
-    public static void enterReview(){
+    public static void enterReview() {
         System.out.println(Ui.LINESPACING);
         System.out.println("Please type your review:");
     }
 
-    public static void enterRating(){
+    public static void enterRating() {
         System.out.println(Ui.LINESPACING);
         System.out.println("Please give your rating from 1 to 5");
     }
 
-    public static void reviewAdded(){
+    public static void reviewAdded() {
         System.out.println(Ui.LINESPACING);
         System.out.println("Review successfully added!");
     }

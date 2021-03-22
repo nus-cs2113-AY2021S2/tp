@@ -15,15 +15,15 @@ public class AddReviewCommand extends Command {
 
     public AddReviewCommand(int storeIndex) {
         this.storeIndex = storeIndex;
-        //enter review here
-        Ui.enterReview();
-        description =  Ui.readCommand();
-        this.description = description;
-        //enter rating here
-        Ui.enterRating();
-        rating = Double.parseDouble(Ui.readCommand());
-        this.rating = rating;
-        Ui.reviewAdded();
+        try {
+            Ui.enterReview();
+            this.description = Ui.readCommand();
+            Ui.enterRating();
+            this.rating = Double.parseDouble(Ui.readCommand());
+            Ui.reviewAdded();
+        } catch (NullPointerException e) {
+            System.out.println("Input cannot empty.");
+        }
     }
 
     @Override
