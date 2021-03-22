@@ -1,12 +1,15 @@
 package seedu.duke.parser;
 
+import seedu.duke.commands.AddCheatSheetCommand;
 import seedu.duke.commands.AddLessonCommand;
 import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.AddTaskCommand;
 import seedu.duke.commands.Command;
+import seedu.duke.commands.DeleteCheatSheetCommand;
 import seedu.duke.commands.DeleteLessonCommand;
 import seedu.duke.commands.DeleteModuleCommand;
 import seedu.duke.commands.DeleteTaskCommand;
+import seedu.duke.commands.EditCheatSheetCommand;
 import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ExitModuleCommand;
 import seedu.duke.commands.ExitProgramCommand;
@@ -24,9 +27,11 @@ import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.DukeException;
 import seedu.duke.exception.UnknownCommandException;
+import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
+import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -36,14 +41,21 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import static seedu.duke.common.Constants.ADD;
+import static seedu.duke.common.Constants.DELETE;
 import static seedu.duke.common.Constants.DELIM;
+import static seedu.duke.common.Constants.EDIT;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.ENTRY_LESSON_MAX_PARSER;
 import static seedu.duke.common.Constants.ENTRY_TASK_MAX_PARSER;
+import static seedu.duke.common.Constants.FORMAT_COMMAND_WORD_AND_ARGS;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
-import static seedu.duke.common.Constants.FORMAT_EMAIL;
-import static seedu.duke.common.Constants.FORMAT_LINK;
-import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
+import static seedu.duke.common.Constants.FORMAT_TWO_COMMAND_WORD_AND_ARGS;
+import static seedu.duke.common.Constants.INDEX_COMMAND_ARGS;
+import static seedu.duke.common.Constants.INDEX_COMMAND_WORD;
 import static seedu.duke.common.Constants.INDEX_DAY_TIME;
 import static seedu.duke.common.Constants.INDEX_DEADLINE;
 import static seedu.duke.common.Constants.INDEX_DESCRIPTION;
@@ -52,13 +64,8 @@ import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
 import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
-import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.WHITESPACE;
-import static seedu.duke.common.DashboardCommands.ADD;
-import static seedu.duke.common.DashboardCommands.DELETE;
-import static seedu.duke.common.DashboardCommands.EXIT;
-import static seedu.duke.common.DashboardCommands.MODULES;
-import static seedu.duke.common.DashboardCommands.OPEN;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_TYPE;
@@ -70,18 +77,6 @@ import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.duke.common.ModuleCommands.ADD_LESSON;
-import static seedu.duke.common.ModuleCommands.ADD_TASK;
-import static seedu.duke.common.ModuleCommands.CLOSE;
-import static seedu.duke.common.ModuleCommands.DELETE_LESSON;
-import static seedu.duke.common.ModuleCommands.DELETE_TASK;
-import static seedu.duke.common.ModuleCommands.INFO;
-import static seedu.duke.common.ModuleCommands.LESSONS;
-import static seedu.duke.common.ModuleCommands.LINK;
-import static seedu.duke.common.ModuleCommands.MARK;
-import static seedu.duke.common.ModuleCommands.TASKS;
-import static seedu.duke.common.ModuleCommands.TEACHER;
-import static seedu.duke.common.ModuleCommands.UNMARK;
 
 public class Parser {
 
@@ -93,9 +88,9 @@ public class Parser {
      *
      * @param input full user input string
      * @return command object based on user input
-     * @throws UnknownCommandException if valid command cannot be parsed from user input
+     * @throws ParserException if valid command cannot be parsed from user input
      */
-    public Command parse(String input) throws UnknownCommandException, CommandException {
+    public Command parse(String input) throws CommandException, ParserException {
         Command parsedCommand;
 
         if (moduleIsSelected()) {
@@ -112,105 +107,36 @@ public class Parser {
      *
      * @param input full user input string
      * @return dashboard command object based on user input
-     * @throws UnknownCommandException if valid command cannot be parsed from user input
+     * @throws ParserException if valid command cannot be parsed from user input
      */
-    private Command parseAtDashboard(String input) throws UnknownCommandException, CommandException {
-        DashboardCommands command = parseDashboardCommandFromInput(input);
+    private Command parseAtDashboard(String input) throws ParserException {
+        String[] commandWordAndArgs = getCommandWordAndArgs(input);
+        String commandWord = commandWordAndArgs[INDEX_COMMAND_WORD];
+        String commandArgs = commandWordAndArgs[INDEX_COMMAND_ARGS].trim();
+
+        DashboardCommands command = DashboardCommands.getDashboardCommandFromString(commandWord);
+        if (command == null) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
+
         switch (command) {
         case ADD:
-            String moduleCode = getModuleCode(input);
-            return new AddModuleCommand(moduleCode);
+            String moduleCodeToAdd = parseModuleCode(commandArgs);
+            return new AddModuleCommand(moduleCodeToAdd);
         case DELETE:
             return new DeleteModuleCommand();
         case MODULES:
             return new ListModulesCommand();
         case OPEN:
-            return new EnterModuleCommand(input.toUpperCase());
+            String moduleCodeToOpen = parseModuleCode(commandArgs);
+            return new EnterModuleCommand(moduleCodeToOpen);
         case HELP:
             return new PrintHelpCommand();
         case EXIT:
             return new ExitProgramCommand();
         default:
-            throw new UnknownCommandException(MESSAGE_UNKNOWN_COMMAND);
+            throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
-    }
-
-    /**
-     * Parses user input to determine the dashboard command specified.
-     *
-     * @param input full user input string
-     * @return an integer representing the command specified
-     */
-    private DashboardCommands parseDashboardCommandFromInput(String input) {
-        if (input.equalsIgnoreCase(DashboardCommands.HELP.getWord())) {
-            return DashboardCommands.HELP;
-        } else if (input.equalsIgnoreCase(EXIT.getWord())) {
-            return EXIT;
-        } else if (input.equalsIgnoreCase(MODULES.getWord())) {
-            return MODULES;
-        } else if (isStartsWith(input, ADD.getWord())) {
-            return ADD;
-        } else if (isStartsWith(input, DELETE.getWord())) {
-            return DELETE;
-        } else if (isValidModuleCode(input)) {
-            return OPEN;
-        } else {
-            return DashboardCommands.INVALID;
-        }
-    }
-
-    /**
-     * Parses module code from user input.
-     *
-     * @param input full user input string
-     * @return module code string
-     */
-    private String getModuleCode(String input) throws CommandException {
-        String[] words = input.split(WHITESPACE);
-        if (words.length < 2) {
-            throw new CommandException(MESSAGE_MODULE_CODE_EMPTY);
-        }
-
-        String moduleCode = words[1].toUpperCase();
-
-        if (!isValidModuleCode(moduleCode)) {
-            throw new CommandException(MESSAGE_INVALID_MODULE_CODE);
-        }
-
-        return moduleCode;
-    }
-
-    /**
-     * Checks if user is at dashboard or has already entered a module.
-     *
-     * @return true if user has already entered a module, false otherwise
-     */
-    private boolean moduleIsSelected() {
-        return ModuleList.getSelectedModule() != null;
-    }
-
-    /**
-     * Checks if given string is a valid module name.
-     *
-     * @param moduleCode string to be validated
-     * @return true if string is a valid module name
-     */
-    private boolean isValidModuleCode(String moduleCode) {
-        moduleCode = moduleCode.trim();
-
-        // check that input matches the convention of a standard NUS module code.
-        return (moduleCode.matches(FORMAT_MODULE_CODE));
-    }
-
-    /**
-     * Checks if user input string starts with a particular command string.
-     *
-     * @param input   full user input string
-     * @param command command string to be checked with
-     * @return true if user input starts with command string
-     */
-    private boolean isStartsWith(String input, String command) {
-        return input.toUpperCase().startsWith(command.toUpperCase());
     }
 
     /**
@@ -219,10 +145,17 @@ public class Parser {
      *
      * @param input full user input string
      * @return in-module command object based on user input
-     * @throws UnknownCommandException if valid command cannot be parsed from user input
+     * @throws ParserException if valid command cannot be parsed from user input
      */
-    private Command parseInModule(String input) throws UnknownCommandException, CommandException {
-        ModuleCommands command = parseInModuleCommandsFromInput(input);
+    private Command parseInModule(String input) throws CommandException, ParserException {
+        String[] commandWordAndArgs = getModuleCommandWordAndArgs(input);
+        String commandWord = commandWordAndArgs[INDEX_COMMAND_WORD];
+        String commandArgs = commandWordAndArgs[INDEX_COMMAND_ARGS].trim();
+
+        ModuleCommands command = ModuleCommands.getModuleCommandsFromString(commandWord);
+        if (command == null) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
 
         switch (command) {
         case HELP:
@@ -253,47 +186,97 @@ public class Parser {
             return new AddTaskCommand(newTask);
         case DELETE_TASK:
             return new DeleteTaskCommand();
+        case ADD_CHEAT_SHEET:
+            return new AddCheatSheetCommand(commandArgs);
+        case DELETE_CHEAT_SHEET:
+            return new DeleteCheatSheetCommand(commandArgs);
+        case EDIT_CHEAT_SHEET:
+            return new EditCheatSheetCommand(commandArgs);
         default:
-            throw new UnknownCommandException(MESSAGE_UNKNOWN_COMMAND);
+            throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
 
     /**
-     * Parses user input to determine in-module command specified.
+     * Gets the single command word and arguments from user input.
+     *
+     * @param input full user input
+     * @return string array of command word and arguments
+     * @throws ParserException if invalid word is given
+     */
+    private String[] getCommandWordAndArgs(String input) throws ParserException {
+        Pattern commandWordAndArgsPattern = Pattern.compile(FORMAT_COMMAND_WORD_AND_ARGS);
+        Matcher matcher = commandWordAndArgsPattern.matcher(input.trim());
+        if (!matcher.matches()) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
+        String[] commandWordAndArgs = {matcher.group(1), matcher.group(2)};
+        return commandWordAndArgs;
+    }
+
+    /**
+     * Enchanced version of getCommandWordAndArgs for module commands.
+     *
+     * @param input full user input
+     * @return string array of command word and arguments
+     * @throws ParserException if invalid word given
+     */
+    private String[] getModuleCommandWordAndArgs(String input) throws ParserException {
+        String[] commandWordAndArgs = getCommandWordAndArgs(input);
+        // command is more than 1 word
+        if (commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(ADD)
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE)
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(EDIT)) {
+            commandWordAndArgs = getTwoCommandWordAndArgs(input);
+        }
+        return commandWordAndArgs;
+    }
+
+    /**
+     * Gets two command word and arguments from user input.
+     * Only called when first command word is "add" or "delete".
+     *
+     * @param input full user input
+     * @return string array of two command words and arguments
+     * @throws ParserException if insufficient number of words given
+     */
+    private String[] getTwoCommandWordAndArgs(String input) throws ParserException {
+        Pattern twoCommandWordAndArgsPattern = Pattern.compile(FORMAT_TWO_COMMAND_WORD_AND_ARGS);
+        Matcher matcher = twoCommandWordAndArgsPattern.matcher(input.trim());
+        if (!matcher.matches()) {
+            throw new ParserException(MESSAGE_INVALID_COMMAND);
+        }
+        String[] commandWordsAndArgs = {matcher.group(1), matcher.group(2)};
+        return commandWordsAndArgs;
+    }
+
+    /**
+     * Parses module code from user input.
      *
      * @param input full user input string
-     * @return an integer representing the command specified
+     * @return module code string
+     * @throws ParserException if empty/invalid module code given
      */
-    private ModuleCommands parseInModuleCommandsFromInput(String input) {
-        if (input.equalsIgnoreCase(ModuleCommands.HELP.getWord())) {
-            return ModuleCommands.HELP;
-        } else if (input.equalsIgnoreCase(CLOSE.getWord())) {
-            return CLOSE;
-        } else if (input.equalsIgnoreCase(INFO.getWord())) {
-            return INFO;
-        } else if (input.equalsIgnoreCase(LESSONS.getWord())) {
-            return LESSONS;
-        } else if (input.equalsIgnoreCase(LINK.getWord())) {
-            return LINK;
-        } else if (input.equalsIgnoreCase(TASKS.getWord())) {
-            return TASKS;
-        } else if (input.equalsIgnoreCase(MARK.getWord())) {
-            return MARK;
-        } else if (input.equalsIgnoreCase(UNMARK.getWord())) {
-            return UNMARK;
-        } else if (input.equalsIgnoreCase(TEACHER.getWord())) {
-            return TEACHER;
-        } else if (isStartsWith(input, ADD_LESSON.getWord())) {
-            return ADD_LESSON;
-        } else if (isStartsWith(input, DELETE_LESSON.getWord())) {
-            return DELETE_LESSON;
-        } else if (isStartsWith(input, ADD_TASK.getWord())) {
-            return ADD_TASK;
-        } else if (isStartsWith(input, DELETE_TASK.getWord())) {
-            return DELETE_TASK;
-        } else {
-            return ModuleCommands.INVALID;
+    private String parseModuleCode(String input) throws ParserException {
+        if (input.isEmpty()) {
+            throw new ParserException(MESSAGE_MODULE_CODE_EMPTY);
         }
+
+        String moduleCode = input.toUpperCase();
+        if (!Module.isValidModuleCode(moduleCode)) {
+            throw new ParserException(MESSAGE_INVALID_MODULE_CODE);
+        }
+
+        return moduleCode;
+    }
+
+    /**
+     * Checks if user is at dashboard or has already entered a module.
+     *
+     * @return true if user has already entered a module, false otherwise
+     */
+    private boolean moduleIsSelected() {
+        return ModuleList.getSelectedModule() != null;
     }
 
     /**
@@ -339,40 +322,20 @@ public class Parser {
         String timeAndDay = allDetails[INDEX_DAY_TIME];
 
         String link = allDetails[INDEX_LINK];
-        if (!isValidLink(link) && !link.equals(EMPTY_STRING)) {
+        if (!Lesson.isValidLink(link) && !link.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_LINK);
         }
 
         String teacherName = allDetails[INDEX_TEACHER_NAME];
 
         String email = allDetails[INDEX_TEACHER_EMAIL];
-        if (!isValidEmail(email) && !email.equals(EMPTY_STRING)) {
+        if (!TeachingStaff.isValidEmail(email) && !email.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_EMAIL);
         }
 
         TeachingStaff teacher = new TeachingStaff(teacherName, email);
 
         return new Lesson(lessonType, timeAndDay, link, teacher);
-    }
-
-    /**
-     * Check if given string is a valid email.
-     *
-     * @param email string to be checked
-     * @return true if string follows the format of a valid email
-     */
-    private boolean isValidEmail(String email) {
-        return email.trim().matches(FORMAT_EMAIL);
-    }
-
-    /**
-     * Check if given string is a valid link.
-     *
-     * @param link string to be checked
-     * @return true if string follows the format of a valid email
-     */
-    private boolean isValidLink(String link) {
-        return link.matches(FORMAT_LINK);
     }
 
     /**

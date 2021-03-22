@@ -12,12 +12,17 @@ public enum ModuleCommands implements CommandList {
     LINK("link", "Opens link to the lesson in a browser."),
     LESSONS("lessons", "Lists all lessons."),
     TEACHER("teacher", "Lists all teaching staff."),
-    ADD_TASK("add task", "NAME ;; DEADLINE ;; [REMARKS]","Adds new task."),
+    ADD_TASK("add task", "NAME ;; DD-MM-YY ;; [REMARKS]", "Adds new task."),
     DELETE_TASK("delete task", "Deletes specified tasks."),
     MARK("mark", "Marks specified tasks as done."),
     UNMARK("unmark", "Marks specified tasks as undone."),
-    TASKS("tasks", "Lists all tasks."),
-    INVALID("unknown", "Unrecognized command.");
+    ADD_CHEAT_SHEET("add cheat-sheet", "[Cheat-Sheet name]",
+            "Add a new cheat-sheet for that module."),
+    DELETE_CHEAT_SHEET("delete cheat-sheet", "[Cheat-Sheet name]",
+            "Delete a cheat-sheet stored in the cheat-sheet directory of the module."),
+    EDIT_CHEAT_SHEET("edit cheat-sheet", "[Cheat-Sheet name]",
+            "Edit a cheat-sheet stored in the cheat-sheet directory of the module."),
+    TASKS("tasks", "Lists all tasks.");
 
     private final String word;
     private final String argumentsFormat;
@@ -46,5 +51,50 @@ public enum ModuleCommands implements CommandList {
 
     public String getDescription() {
         return description;
+    }
+
+    //@@author ivanchongzhien
+
+    /**
+     * Converts given string to a module command.
+     *
+     * @param commandWord word string
+     * @return the enum type of ModuleCommands representing the command specified
+     */
+    public static ModuleCommands getModuleCommandsFromString(String commandWord) {
+        if (commandWord.equalsIgnoreCase(ModuleCommands.HELP.getWord())) {
+            return ModuleCommands.HELP;
+        } else if (commandWord.equalsIgnoreCase(CLOSE.getWord())) {
+            return CLOSE;
+        } else if (commandWord.equalsIgnoreCase(INFO.getWord())) {
+            return INFO;
+        } else if (commandWord.equalsIgnoreCase(LESSONS.getWord())) {
+            return LESSONS;
+        } else if (commandWord.equalsIgnoreCase(LINK.getWord())) {
+            return LINK;
+        } else if (commandWord.equalsIgnoreCase(TASKS.getWord())) {
+            return TASKS;
+        } else if (commandWord.equalsIgnoreCase(MARK.getWord())) {
+            return MARK;
+        } else if (commandWord.equalsIgnoreCase(UNMARK.getWord())) {
+            return UNMARK;
+        } else if (commandWord.equalsIgnoreCase(TEACHER.getWord())) {
+            return TEACHER;
+        } else if (commandWord.equalsIgnoreCase(ADD_LESSON.getWord())) {
+            return ADD_LESSON;
+        } else if (commandWord.equalsIgnoreCase(DELETE_LESSON.getWord())) {
+            return DELETE_LESSON;
+        } else if (commandWord.equalsIgnoreCase(ADD_TASK.getWord())) {
+            return ADD_TASK;
+        } else if (commandWord.equalsIgnoreCase(DELETE_TASK.getWord())) {
+            return DELETE_TASK;
+        } else if (commandWord.equalsIgnoreCase(ADD_CHEAT_SHEET.getWord())) {
+            return ADD_CHEAT_SHEET;
+        } else if (commandWord.equalsIgnoreCase(DELETE_CHEAT_SHEET.getWord())) {
+            return DELETE_CHEAT_SHEET;
+        } else if (commandWord.equalsIgnoreCase(EDIT_CHEAT_SHEET.getWord())) {
+            return EDIT_CHEAT_SHEET;
+        }
+        return null;
     }
 }

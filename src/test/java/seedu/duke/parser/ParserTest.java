@@ -5,13 +5,8 @@ import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.exception.CommandException;
-import seedu.duke.exception.UnknownCommandException;
-import seedu.duke.module.Module;
-import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
-import seedu.duke.lesson.TeachingStaff;
+import seedu.duke.exception.ParserException;
 import seedu.duke.module.ModuleList;
-import seedu.duke.task.Task;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +20,8 @@ class ParserTest {
     //@@author ivanchongzhien
     @Test
     // DASHBOARD COMMAND
-    void parse_dashboardCommandAddModule_addCommandObject() throws UnknownCommandException, CommandException {
+    void parse_dashboardCommandAddModule_addCommandObject() throws CommandException,
+            ParserException {
         ModuleList.reset();
 
         Parser parser = new Parser();
@@ -39,7 +35,7 @@ class ParserTest {
     @Test
     // IN MODULE COMMAND
     // add lesson command
-    void parse_inModuleCommandListTask_ListTaskCommandObject() throws UnknownCommandException, CommandException {
+    void parse_inModuleCommandListTask_ListTaskCommandObject() throws CommandException, ParserException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 
@@ -52,7 +48,8 @@ class ParserTest {
 
     @Test
     // add lesson command - all detail fields included
-    void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws UnknownCommandException, CommandException {
+    void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws CommandException,
+            ParserException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 

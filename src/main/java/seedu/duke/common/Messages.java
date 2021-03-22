@@ -19,11 +19,12 @@ public class Messages {
     public static final String TAG_MODULE = "%s >> ";
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
-    public static final String MESSAGE_INVALID_INDICES = "Invalid indices. Please enter only numbers.";
+    public static final String MESSAGE_INVALID_COMMAND = "Invalid command. Enter \"help\" for list of valid commands.";
 
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
-    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code.";
+    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code. "
+            + "Only valid NUS module codes are allowed.";
 
     public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
     public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";
@@ -99,6 +100,10 @@ public class Messages {
     public static final String MESSAGE_GRADED = " (graded)";
 
     public static final String MESSAGE_ADDED_TASK = "Added %s to task list.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task is already in the list.";
+    public static final String MESSAGE_SAME_DESCRIPTION_TASK = "This task already exists but "
+            + "with different field(s)." + NEWLINE
+            + "You could edit this task instead.";
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
@@ -157,5 +162,11 @@ public class Messages {
 
     //Logging messages
     public static final String MESSAGE_LOAD_FAILED = "LOADER: failed to load %s.";
+
+    //Cheat sheet
+    public static final String MESSAGE_CHEAT_SHEET_ALREADY_EXISTS = "Cheat sheet already exists!";
+    public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder";
+    public static final String MESSAGE_FILE_HAS_BEEN_DELETED = "%s has been deleted!";
+    public static final String MESSAGE_FILE_DOES_NOT_EXIST = "%s does not exist!";
 
 }

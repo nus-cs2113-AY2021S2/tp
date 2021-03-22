@@ -1,5 +1,7 @@
 package seedu.duke.lesson;
 
+import static seedu.duke.common.Constants.FORMAT_LINK;
+
 public class Lesson {
 
     private final LessonType lessonType;
@@ -40,5 +42,15 @@ public class Lesson {
 
     public void setTeachingStaff(TeachingStaff teachingStaff) {
         this.teachingStaff = teachingStaff;
+
+    //@@author ivanchongzhien
+    /**
+     * Check if given string is a valid link.
+     *
+     * @param link string to be checked
+     * @return true if string follows the format of a valid email
+     */
+    public static boolean isValidLink(String link) {
+        return link.matches(FORMAT_LINK);
     }
 }
