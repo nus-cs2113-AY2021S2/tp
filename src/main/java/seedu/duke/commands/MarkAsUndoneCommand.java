@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
 import static seedu.duke.common.Messages.COMMAND_VERB_UNMARK;
 import static seedu.duke.common.Messages.MESSAGE_MARKED_AS_UNDONE;
+import static seedu.duke.common.Messages.MESSAGE_NO_TASK_MODIFIED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_UNMARK;
 import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
@@ -33,6 +34,10 @@ public class MarkAsUndoneCommand extends Command {
         }
         printPrompt(ui, doneTasks);
         ArrayList<Task> selectedTasks = getSpecifiedTasks(ui, doneTasks);
+        if (selectedTasks.isEmpty()) {
+            ui.printMessage(MESSAGE_NO_TASK_MODIFIED);
+            return;
+        }
         for (Task task : selectedTasks) {
             String description = task.getDescription();
             ui.printMessage(String.format(MESSAGE_MARKED_AS_UNDONE,description));
