@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.Messages.MESSAGE_DUPLICATE_TASK;
 import static seedu.duke.common.Messages.MESSAGE_SAME_DESCRIPTION_TASK;
+import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
 
 public class Module {
 
@@ -76,7 +77,7 @@ public class Module {
         }
         return filteredTasks;
     }
-
+    
     public boolean getIsAddTaskAllowed(UI ui, Task targetTask) {
         String targetDescription = targetTask.getDescription().toUpperCase();
         LocalDate targetDeadline = targetTask.getDeadline();
@@ -91,5 +92,19 @@ public class Module {
             }
         }
         return true;
+    }
+
+    //@@author ivanchongzhien
+    /**
+     * Checks if given string is a valid module name.
+     *
+     * @param moduleCode string to be validated
+     * @return true if string is a valid module name
+     */
+    public static boolean isValidModuleCode(String moduleCode) {
+        moduleCode = moduleCode.trim();
+
+        // check that input matches the convention of a standard NUS module code.
+        return (moduleCode.matches(FORMAT_MODULE_CODE));
     }
 }

@@ -30,7 +30,7 @@ class WriterTest {
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/empty_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
@@ -49,7 +49,7 @@ class WriterTest {
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/task_only_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
@@ -68,7 +68,7 @@ class WriterTest {
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/lesson_only_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
@@ -93,7 +93,7 @@ class WriterTest {
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/all_content_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 }
