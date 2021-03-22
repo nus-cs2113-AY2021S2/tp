@@ -7,6 +7,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.food.Weight;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -21,15 +22,15 @@ class RemoveCommandTest {
     public void setUp() throws Exception {
         fridge = new Fridge();
         Food chicken = new Food(FoodCategory.MEAT, "chicken",
-                "30-06-2021", FoodStorageLocation.FREEZER);
+                "30-06-2021", FoodStorageLocation.FREEZER, new Weight("200g"));
         fridge.add(chicken);
 
         Food pork = new Food(FoodCategory.MEAT, "pork",
-                "31-07-2021",FoodStorageLocation.LOWER_SHELF);
+                "31-07-2021",FoodStorageLocation.LOWER_SHELF, new Weight("500g"));
         fridge.add(pork);
 
         Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
+                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF, new Weight("100g"));
         fridge.add(lettuce);
     }
 
