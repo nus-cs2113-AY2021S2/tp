@@ -56,4 +56,12 @@ public class NurseScheduleUI extends UI {
         System.out.println("Format: delete [NurseID] [Date (DDMMYYYY)]");
         showLine();
     }
+
+    public static void nurseIDDoesNotExistMessage() {
+        System.out.println("NurseID does not exist! Please check ID and try again!");
+    }
+
+    public static void noNurseSchedulesFoundMessage() {
+        System.out.println("No schedules are found in the system!");
+    }
 }
