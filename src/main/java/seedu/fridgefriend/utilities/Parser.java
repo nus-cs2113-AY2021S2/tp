@@ -27,12 +27,12 @@ public class Parser {
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
     /**
-    * Define arguments format for add food command.
-    * A Pattern object which defines how the input string for food item
-    * that should look like. [^/]+ implies 1 or more characters except for '/'
-    */
-   private static final Pattern FOOD_DATA_ARGS_FORMAT =
-           Pattern.compile("(?<name>[^/]+)"
+     * Define arguments format for add food command.
+     * A Pattern object which defines how the input string for food item
+     * that should look like. [^/]+ implies 1 or more characters except for '/'
+     */
+    private static final Pattern FOOD_DATA_ARGS_FORMAT =
+            Pattern.compile("(?<name>[^/]+)"
             + " /cat (?<category>[^/]+)"
             + " /exp (?<expiryDate>[^/]+)"
             + " /loc (?<storageLocation>[^/]+)");
