@@ -9,16 +9,18 @@ import static seedu.duke.common.Constants.KEYCODE_S;
 public class ShortcutListener implements KeyListener {
 
     JFrame frame;
+    TextEditor textEditor;
     boolean isCtrlPressed = false;
     boolean isSPressed = false;
-    
-    public ShortcutListener(JFrame frame) {
+
+    public ShortcutListener(JFrame frame, TextEditor editor) {
         this.frame = frame;
-    }    
-    
+        this.textEditor = editor;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
-        
+
     }
 
     @Override
@@ -67,7 +69,7 @@ public class ShortcutListener implements KeyListener {
             isCtrlPressed = false;
             isSPressed = false;
             //Save
-            
+            textEditor.saveTextToFile();
         }
     }
 }
