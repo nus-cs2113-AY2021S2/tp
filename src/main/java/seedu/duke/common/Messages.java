@@ -119,6 +119,8 @@ public class Messages {
             + "Separate indices with a blank space.";
     public static final String MESSAGE_TASKS_EMPTY = "No task here.";
     public static final String MESSAGE_TASKS_DONE = "You have completed all your tasks.";
+    public static final String MESSAGE_TASK_LIST_EMPTY = "No tasks to %s.";
+    public static final String MESSAGE_NO_TASK_MODIFIED = "No changes to task list.";
 
 
     //Storage messages
