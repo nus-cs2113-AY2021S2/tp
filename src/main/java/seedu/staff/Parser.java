@@ -38,6 +38,7 @@ public class Parser {
     }
 
     public static void checkID(String line) throws WrongStaffIdException {
+
         line = line.split(" ")[1];
         try {
             Integer.parseInt(line.substring(1));
@@ -130,6 +131,7 @@ public class Parser {
         int length = line.split(" ").length;
         String[] input = new String[4];
         String[] array = line.split(" ");
+
         for (int i = 1; i < length; i++) {
             try {
                 if (i <= 4) {

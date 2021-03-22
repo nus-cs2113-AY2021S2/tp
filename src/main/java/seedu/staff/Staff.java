@@ -18,18 +18,30 @@ public class Staff {
     //Need to implement addNurse and addDoctor if the parameters will be changed
 
     public String getName() {
+        if (this.name == null){
+            return "-";
+        }
         return this.name;
     }
 
     public String getAge() {
+        if (this.age == null){
+            return "-";
+        }
         return this.age;
     }
 
     public String getSpecialisation() {
+        if (this.specialisation == null){
+            return "-";
+        }
         return this.specialisation;
     }
 
     public String getId() {
+        if (this.id == null){
+            return "-";
+        }
         return this.id;
     }
 
