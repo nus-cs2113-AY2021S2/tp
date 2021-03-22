@@ -53,8 +53,9 @@ class ListCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         RecordList records = getPopulatedRecordList(listCmdTypeToTest);
+        CommandHandler commandHandler = new CommandHandler();
 
-        Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(listCmdStr), records);
+        Command command = commandHandler.parseCommand(ParserHandler.getParseInput(listCmdStr), records);
         assertTrue(command instanceof ListCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ListCommand.", listCmdTestName));
 

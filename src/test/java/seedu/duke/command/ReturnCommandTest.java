@@ -40,10 +40,11 @@ public class ReturnCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         RecordList loans = getLoanList();
+        CommandHandler commandHandler = new CommandHandler();
         ByteArrayOutputStream returnCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(returnCmdBos));
 
-        Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(returnCmdInput), loans);
+        Command command = commandHandler.parseCommand(ParserHandler.getParseInput(returnCmdInput), loans);
         assertTrue(command instanceof ReturnCommand,
                 String.format("Failed test '%s' command object "
                         + "returned by parseCommand() is not an instance of ReturnCommand", testName));

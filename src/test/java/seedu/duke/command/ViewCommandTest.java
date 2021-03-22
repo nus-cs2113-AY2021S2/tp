@@ -47,8 +47,9 @@ class ViewCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
+        CommandHandler commandHandler = new CommandHandler();
 
-        Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(viewCmdStr), records);
+        Command command = commandHandler.parseCommand(ParserHandler.getParseInput(viewCmdStr), records);
         assertTrue(command instanceof ViewCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ViewCommand.", viewCmdTestName));
 
