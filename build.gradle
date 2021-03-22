@@ -29,11 +29,11 @@ test {
 }
 
 application {
-    mainClassName = "nusfoodreview.NusFoodReview"
+    mainClassName = "nusfoodreviews.NusFoodReviews"
 }
 
 shadowJar {
-    archiveBaseName = "nusfoodreview"
+    archiveBaseName = "nusfoodreviews"
     archiveClassifier = null
 }
 

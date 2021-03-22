@@ -26,7 +26,6 @@ public class Store {
         return reviews;
     }
 
-
     public String getStoreName() {
         return storeName;
     }
