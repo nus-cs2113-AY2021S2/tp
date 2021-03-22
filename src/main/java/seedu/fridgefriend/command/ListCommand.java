@@ -114,19 +114,11 @@ public class ListCommand extends Command {
     }
 
     private boolean checkIsValidCategory() {
-        if (FoodCategory.contains(description)) {
-            return true;
-        } else {
-            return false;
-        }
+        return FoodCategory.contains(description);
     }
 
     private boolean checkIsValidStorageLocation() {
-        if (FoodStorageLocation.contains(description)) {
-            return true;
-        } else {
-            return false;
-        }
+        return FoodStorageLocation.contains(description);
     }
 
     private void invalidInputError() throws InvalidInputException {
