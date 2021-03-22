@@ -12,6 +12,7 @@ public class History {
     }
 
     public ArrayList<String> getHistory() {
+        assert history.size() != 0 : "There are no past searches made.";
         return history;
     }
 
