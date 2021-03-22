@@ -13,10 +13,17 @@ public class AddReviewCommand extends Command {
     protected String description;
     protected double rating;
 
-    public AddReviewCommand(int storeIndex, String description, double rating) {
+    public AddReviewCommand(int storeIndex) {
         this.storeIndex = storeIndex;
-        this.description = description;
-        this.rating = rating;
+        try {
+            Ui.enterReview();
+            this.description = Ui.readCommand();
+            Ui.enterRating();
+            this.rating = Double.parseDouble(Ui.readCommand());
+            Ui.reviewAdded();
+        } catch (NullPointerException e) {
+            System.out.println("Input cannot empty.");
+        }
     }
 
     @Override
@@ -26,8 +33,4 @@ public class AddReviewCommand extends Command {
         currentStore.addReview(currentStoreReview);
     }
 
-    @Override
-    public boolean isExit() {
-        return exit;
-    }
 }

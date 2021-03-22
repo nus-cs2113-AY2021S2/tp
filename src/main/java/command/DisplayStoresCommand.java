@@ -20,9 +20,4 @@ public class DisplayStoresCommand extends Command {
         }
         System.out.println(Ui.LINESPACING);
     }
-
-    @Override
-    public boolean isExit() {
-        return exit;
-    }
 }

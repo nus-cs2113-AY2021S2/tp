@@ -14,11 +14,7 @@ public class ExitCommand extends Command {
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ui.showGoodbye();
-    }
-
-    @Override
-    public boolean isExit() {
-        return exit;
+        System.exit(0);
     }
 
 }
