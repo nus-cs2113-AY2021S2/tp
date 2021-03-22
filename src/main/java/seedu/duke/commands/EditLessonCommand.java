@@ -52,7 +52,7 @@ public class EditLessonCommand extends Command {
         if (lessonList.size() == 0) {
             ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
         } else {
-            int index = getLessonIndexFromUser(lessonList, ui);
+            int index = getLessonIndexFromUser(lessonList, ui) - 1;
             chosenLesson = lessonList.get(index);
         }
         return chosenLesson;
