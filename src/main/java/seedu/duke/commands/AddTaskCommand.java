@@ -5,13 +5,9 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
-import java.util.ArrayList;
-
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.MESSAGE_ADDED_TASK;
-import static seedu.duke.common.Messages.MESSAGE_ADD_TASK_CONFIRMATION;
-import static seedu.duke.common.Messages.MESSAGE_DUPLICATE_TASK;
 import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
 
@@ -32,12 +28,8 @@ public class AddTaskCommand extends Command {
     @Override
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
-        ArrayList<String> similarTaskDescriptions = module.checkIfTaskExists(task);
-        boolean isGoAhead = true;
-        if (!similarTaskDescriptions.isEmpty()) {
-            isGoAhead = getConfirmationToAddTask(ui, similarTaskDescriptions);
-        }
-        if (!isGoAhead) {
+        boolean isAddTaskAllowed = module.getIsAddTaskAllowed(ui, task);
+        if (!isAddTaskAllowed) {
             return;
         }
         boolean isGraded = getIsTaskGraded(ui);
@@ -46,13 +38,6 @@ public class AddTaskCommand extends Command {
         ui.printMessage(String.format(MESSAGE_ADDED_TASK, task.getDescription()));
         ModuleList.writeModule();
         ModuleList.sortTasks();
-    }
-    
-    public boolean getConfirmationToAddTask(UI ui, ArrayList<String> similarDescriptions) {
-        ui.printMessage(String.format(MESSAGE_DUPLICATE_TASK, similarDescriptions));
-        ui.printMessage(MESSAGE_ADD_TASK_CONFIRMATION);
-        String userInput = ui.readCommand().toUpperCase();
-        return userInput.equals(YES_STRING);
     }
 
     /**
