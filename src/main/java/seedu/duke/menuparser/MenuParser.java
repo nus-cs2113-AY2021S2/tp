@@ -3,6 +3,7 @@ package seedu.duke.menuparser;
 
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.exceptions.patient.*;
+import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
 import seedu.patient.PatientList;
 
@@ -88,18 +89,18 @@ public class MenuParser {
                 break;
             case "help":
                 lengthCheck(numberOfTokens, command);
-                UI.printPatientHelpList();
+                PatientUI.printPatientHelpList();
                 break;
             case "return":
                 lengthCheck(numberOfTokens, command);
                 UI.returningToStartMenuMessage();
                 return true;
             default:
-                UI.unrecognizedCommandMessage();
+                UI.invalidCommandErrorMessage();
                 break;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            UI.invalidFormatMessage();
+            UI.invalidFormatErrorMessage();
         } catch (DukeException e) {
             e.getError(command);
         }

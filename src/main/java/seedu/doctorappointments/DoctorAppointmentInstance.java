@@ -2,6 +2,7 @@ package seedu.doctorappointments;
 
 
 import seedu.duke.storage.DoctorAppointmentStorage;
+import seedu.duke.ui.DoctorAppointmentUI;
 import seedu.duke.ui.UI;
 
 import java.io.FileNotFoundException;
@@ -31,7 +32,7 @@ public class DoctorAppointmentInstance {
     }
 
     public void run() {
-        UI.doctorAppointmentsWelcome();
+        DoctorAppointmentUI.doctorAppointmentsWelcome();
         UI.showLine();
         boolean isReturnToStartMenu = false;
         Scanner userInput = new Scanner(System.in);

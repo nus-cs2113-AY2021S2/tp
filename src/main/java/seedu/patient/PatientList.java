@@ -1,5 +1,6 @@
 package seedu.patient;
 
+import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class PatientList {
     public static void addPatient(String patientID, String name, int age, String gender, String illness, String drugsNeeded) {
         Patient newPatient = new Patient(patientID, name, age, gender, illness, drugsNeeded);
         patients.add(newPatient);
-        UI.patientAddedMessage(name);
+        PatientUI.patientAddedMessage(name);
     }
 
     public static void findPatient(String inputString) {
@@ -25,7 +26,7 @@ public class PatientList {
         for (int i = 0; i < numberOfPatients; i++) {
             String patientDetails = patients.get(i).getPatientDetails();
             if (patientDetails.contains(inputString)) {
-                UI.printPatientList(i+1, patientDetails);
+                PatientUI.printPatientList(i+1, patientDetails);
             }
         }
     }
@@ -44,12 +45,12 @@ public class PatientList {
     public static void listPatients() {
         int numberOfPatients = patients.size();
         if (numberOfPatients == 0) {
-            UI.emptyPatientListMessage();
+            PatientUI.emptyPatientListMessage();
         } else {
-            UI.notEmptyPatientListMessage();
+            PatientUI.notEmptyPatientListMessage();
             for (int i = 0; i < numberOfPatients; i++) {
                 UI.showLine();
-                UI.printPatientList(i + 1, patients.get(i).getPatientDetails());
+                PatientUI.printPatientList(i + 1, patients.get(i).getPatientDetails());
             }
         }
     }
@@ -68,7 +69,7 @@ public class PatientList {
             }
         }
         patients.remove(patientIndex);
-        UI.deletePatientMessage(patientName, patients.size());
+        PatientUI.deletePatientMessage(patientName, patients.size());
     }
 
     public int getSize() {

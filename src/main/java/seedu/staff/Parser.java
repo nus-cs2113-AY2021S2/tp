@@ -1,25 +1,30 @@
 package seedu.staff;
 
 import seedu.duke.exceptions.NoInputException;
-import seedu.duke.exceptions.WrongListInputException;
-import seedu.duke.exceptions.WrongStaffIdException;
+import seedu.duke.exceptions.staffexceptions.AbortException;
+import seedu.duke.exceptions.staffexceptions.WrongListInputException;
+import seedu.duke.exceptions.staffexceptions.WrongStaffIdException;
 import seedu.duke.storage.StaffStorage;
+import seedu.duke.ui.StaffUI;
 import seedu.duke.ui.UI;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import static seedu.duke.ui.StaffUI.inputToCreateStaff;
 import static seedu.duke.ui.UI.*;
+import static seedu.staff.StaffList.addStaff;
 
 public class Parser {
+    static final String[] COMMANDS = {"add", "delete", "list", "addline", "find", "return", "help"};
 
     public static void run() throws IOException {
         StaffStorage.fileHandling();
-        staffMenuHeader();
+        StaffUI.staffMenuHeader();
         Scanner in = new Scanner(System.in);
         while (true) {
-            UI.staffMenuPrompt();
+            StaffUI.staffMenuPrompt();
             String line;
             line = in.nextLine();
             try {
@@ -28,24 +33,24 @@ public class Parser {
                     break;
                 }
             } catch (WrongStaffIdException e) {
-                UI.WrongStaffIDErrorMessage();
+                StaffUI.wrongStaffIDErrorMessage();
             } catch (WrongListInputException e) {
-                UI.WrongListInputErrorMessage();
+                StaffUI.wrongStaffListInputErrorMessage();
             } catch (NoInputException e) {
-                UI.NoInputErrorMessage();
+                UI.noInputErrorMessage();
+            } catch (AbortException e) {
+                UI.abortInputErrorMessage();
             }
         }
     }
 
-    public static void checkID(String line) throws WrongStaffIdException {
-
-        line = line.split(" ")[1];
+    public static void checkID(String id) throws WrongStaffIdException {
         try {
-            Integer.parseInt(line.substring(1));
+            Integer.parseInt(id.substring(1));
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
-        if (!(line.charAt(0) == 'D' || line.charAt(0) == 'N')) {
+        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N')) {
             throw new WrongStaffIdException();
         }
     }
@@ -65,27 +70,30 @@ public class Parser {
     }
 
     public static int commandHandler(String line) throws IOException, WrongStaffIdException,
-            WrongListInputException, NoInputException {
+            WrongListInputException, NoInputException, AbortException {
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
             return 1;
         }
 
-        switch (line.split(" ")[0]) {
+        switch (smartCommandRecognition(COMMANDS, line.split(" ")[0])) {
         case ("add"):
-            checkID(line);
-            StaffList.add(line);
+            System.out.println("added");
+            addStaff(inputToCreateStaff());
+            StaffStorage.writeToFile();
             break;
 
-        case ("lsit"):
-            if (!isListTypo()) {
-                UI.unrecognizedCommandMessage();
-                break;
-            }
+        case ("addline"):
+            checkEmptyInput(line);
+            checkID(line.split(" ")[1]);
+            StaffList.add(line);
+            StaffStorage.writeToFile();
+            break;
+
         case ("list"):
             UI.emptyLine();
             checkListCommand(line);
-            UI.staffListHeader();
+            StaffUI.staffListHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
             StaffList.list(string);
@@ -94,23 +102,19 @@ public class Parser {
 
         case ("delete"):
             checkEmptyInput(line);
-            checkID(line);
+            checkID(line.split(" ")[1]);
             StaffList.delete(line);
+            StaffStorage.writeToFile();
             break;
 
         case ("help"):
-            UI.printStaffHelpList();
+            StaffUI.printStaffHelpList();
             break;
 
-        case ("fidn"):
-            if (!isFindTypo()) {
-                UI.unrecognizedCommandMessage();
-                break;
-            }
         case ("find"):
             UI.emptyLine();
             checkEmptyInput(line);
-            staffListHeader();
+            StaffUI.staffListHeader();
             UI.showLine();
             StaffList.find(line.split(" ")[1]);
             UI.emptyLine();
@@ -122,7 +126,7 @@ public class Parser {
             return 0;
 
         default:
-            UI.unrecognizedCommandMessage();
+            UI.invalidCommandErrorMessage();
         }
         return 1;
     }
