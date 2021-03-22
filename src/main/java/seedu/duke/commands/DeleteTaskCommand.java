@@ -11,6 +11,7 @@ import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
 import static seedu.duke.common.Messages.COMMAND_VERB_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_TASK;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_DELETE;
+import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class DeleteTaskCommand extends Command {
@@ -26,6 +27,10 @@ public class DeleteTaskCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Task> taskList = module.getTaskList();
+        if (taskList.isEmpty()) {
+            ui.printMessage(String.format(MESSAGE_TASK_LIST_EMPTY, COMMAND_VERB_DELETE));
+            return;
+        }
         printPrompt(ui, taskList);
         ArrayList<Task> tasks = getSpecifiedTasks(ui, taskList);
         for (Task task : tasks) {

@@ -11,6 +11,7 @@ import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
 import static seedu.duke.common.Messages.COMMAND_VERB_MARK;
 import static seedu.duke.common.Messages.MESSAGE_MARKED_AS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_MARK;
+import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class MarkAsDoneCommand extends Command {
@@ -26,6 +27,10 @@ public class MarkAsDoneCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Task> undoneTasks = module.getDoneOrUndoneTasks(false);
+        if (undoneTasks.isEmpty()) {
+            ui.printMessage(String.format(MESSAGE_TASK_LIST_EMPTY, COMMAND_VERB_MARK));
+            return;
+        }
         printPrompt(ui, undoneTasks);
         ArrayList<Task> selectedTasks = getSpecifiedTasks(ui, undoneTasks);
         for (Task task : selectedTasks) {
