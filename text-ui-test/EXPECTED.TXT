@@ -47,6 +47,8 @@ Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: F
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
 -----------------------------------------------------------------
+Sorry my friend, the quantity must be in the form 'digits_unit' or 'digits'.
+-----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Here are the items in your fridge:

@@ -7,6 +7,7 @@ search chicken
 add pork no param blabla
 add grouper /cat seafood /exp 04-05-2021 /loc freezer /qty 1
 add oyster /cat seafood /exp 32-46-9876 /loc idontknow /qty 10
+add oyster /cat seafood /exp 04-05-2021 /loc idontknow /qty abc
 add
 list
 list meat
