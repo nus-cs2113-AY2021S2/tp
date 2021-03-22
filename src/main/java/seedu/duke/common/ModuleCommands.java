@@ -16,11 +16,11 @@ public enum ModuleCommands implements CommandList {
     DELETE_TASK("delete task", "Deletes specified tasks."),
     MARK("mark", "Marks specified tasks as done."),
     UNMARK("unmark", "Marks specified tasks as undone."),
-    ADD_CHEAT_SHEET("cheat-sheet add", "[Cheat-Sheet name]",
+    ADD_CHEAT_SHEET("add cheat-sheet", "[Cheat-Sheet name]",
             "Add a new cheat-sheet for that module."),
-    DELETE_CHEAT_SHEET("cheat-sheet delete", "[Cheat-Sheet name]",
+    DELETE_CHEAT_SHEET("delete cheat-sheet", "[Cheat-Sheet name]",
             "Delete a cheat-sheet stored in the cheat-sheet directory of the module."),
-    EDIT_CHEAT_SHEET("cheat-sheet edit", "[Cheat-Sheet name]",
+    EDIT_CHEAT_SHEET("edit cheat-sheet", "[Cheat-Sheet name]",
             "Edit a cheat-sheet stored in the cheat-sheet directory of the module."),
     TASKS("tasks", "Lists all tasks.");
 
