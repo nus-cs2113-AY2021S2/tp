@@ -57,7 +57,7 @@ public class Constants {
             + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
     public static final String FORMAT_COMMAND_WORD_AND_ARGS = "(^\\S+)(.*)";
     public static final String FORMAT_TWO_COMMAND_WORD_AND_ARGS = "(^\\S+\\s+\\S+)(.*)";
-  
+
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
 
@@ -83,7 +83,7 @@ public class Constants {
     //Logging
     public static final String LOGGER_PATH = "GULIOLog.log";
     public static final String LOGGER_NAME = "LOGGER";
-    
+
     //Cheatsheet
     public static final String CHEATSHEET_STRING = "Cheatsheet";
 
@@ -101,5 +101,9 @@ public class Constants {
     public static final String SAVE_ICON = "Save";
     public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
     public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
+
+    //Cheat sheet
+    public static final String CHEATSHEET_DIR = "Cheatsheet";
+    public static final String PATH_DELIMITER = "/";
     public static final int KEYCODE_S = 83;
 }
