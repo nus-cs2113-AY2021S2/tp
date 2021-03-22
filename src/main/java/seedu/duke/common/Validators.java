@@ -74,12 +74,12 @@ public class Validators {
      */
     public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
             IndexOutOfBoundsException {
-        Logger logger = Logger.getLogger("validateIndex_Log");
-        logger.log(Level.INFO, "going to start validating index");
+        //Logger logger = Logger.getLogger("validateIndex_Log");
+        //logger.log(Level.INFO, "going to start validating index");
         int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
         records.getRecordAt(recordNumberInList);
         assert recordNumberInList > -1 : "recordNumberInList should be greater than 0 and non-negative";
-        logger.log(Level.INFO, "done validating index");
+        //logger.log(Level.INFO, "done validating index");
         return recordNumberInList;
     }
 

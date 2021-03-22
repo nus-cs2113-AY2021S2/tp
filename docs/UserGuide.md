@@ -135,23 +135,29 @@ Output:
 
 ### 3.5 Remove a record: `remove`
 
-This operation will remove a record from the list.
+This operation will remove a record from the record list.
 
-Format: `insert format`
+Format: `remove -i <index>`
+> - The `<index>` refers to the index number shown on the record list
+> - `<index>` must be a **positive integer** 1,2,3...
+> - `<index>` must be referring to an existing record
 
-Examples: `insert example`, `insert example`
+Examples: `remove -i 1`, `remove -i 2`
 
 Output:
 
-![remove example output]()
+![remove example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/Remove%5FExample%5FOutput.jpg?raw=true)
 
-### 3.6 Check a person credit score: `creditscore`
+### 3.6 Check a person's credit score: `creditscore`
 
 This operation will check the credit score of a person.
 
-Format: `insert format`
+Format: `creditscore <person>`
 
-Examples: `insert example`, `insert example`
+> - `<person>` refers to existing loanees in the loan list
+> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+
+Examples: `creditscore jason`, `creditscore andy`
 
 Output:
 
@@ -161,13 +167,7 @@ Output:
 
 This operation exit the program.
 
-Format: `insert format`
-
-Examples: `insert example`, `insert example`
-
-Output:
-
-![exit example output]()
+Format: `exit`
 
 ### 3.8 Help function: `help`
 
