@@ -52,7 +52,7 @@ Given below are my contributions to the project
   - Added documentation for the feature `remove`, `help`, and `bye` ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Standardised input/output format for existing documentation of all features ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
 - Developer Guide
-  - Added implementation details of the `xxx` feature ([#xx](placeholder))
+  - Added implementation details of the `Utilities` component ([#106](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/106))
 
 ### Community
 
@@ -65,5 +65,5 @@ Given below are my contributions to the project
 - Contributed to forum discussions (examples:
     [1](https://github.com/nus-cs2113-AY2021S2/forum/issues/45)
     [2](https://github.com/nus-cs2113-AY2021S2/forum/issues/49))
-- Reported bugs and suggestions for other teams in the class (https://github.com/nus-cs2113-AY2021S2/addressbook-level3/tree/master/docs/diagramsexamples:
+- Reported bugs and suggestions for other teams in the class (
     [#xx](placeholder))
