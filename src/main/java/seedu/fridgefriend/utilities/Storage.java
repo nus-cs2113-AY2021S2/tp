@@ -1,5 +1,6 @@
 package seedu.fridgefriend.utilities;
 
+import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.StorageLoadingException;
@@ -96,8 +97,8 @@ public class Storage {
         } else {
             quantity = new Quantity(quantityString);
         }
-
-        Food food = new Food(category, name, expiry, storage, quantity);
+        //Food food = new Food(category, name, expiry, storage, quantity);
+        Food food = AddCommand.categoriseAndGenerateFood(name, category, expiry, storage, quantity);
         fridge.add(food);
     }
 

@@ -58,7 +58,11 @@ These are the MEAT in your fridge:
 	1. chicken
 	2. pork
 -----------------------------------------------------------------
-Sorry my friend, please enter a valid food category.
+These are the food stored in LOWER_SHELF:
+	1. chicken
+	2. pork
+-----------------------------------------------------------------
+Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
 These are the food expiring in the next week:
 1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, weight: 200g

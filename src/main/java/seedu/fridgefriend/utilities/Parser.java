@@ -66,13 +66,13 @@ public class Parser {
             return words;
         } else {
             //return an array of command and empty description
-            return new String[] {words[COMMAND_WORD], ""};
+            return new String[]{words[COMMAND_WORD], ""};
         }
     }
 
     /**
      * Returns the appropriate Command object based on command and description.
-     * 
+     *
      * @param parsedInput string array containing command and description
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
@@ -183,7 +183,7 @@ public class Parser {
 
     /**
      * Returns an AddCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return AddCommand object
      * @throws EmptyDescriptionException if the description is empty
@@ -199,7 +199,7 @@ public class Parser {
 
     /**
      * Returns a ListCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return ListCommand object
      */
@@ -210,7 +210,7 @@ public class Parser {
 
     /**
      * Returns a RemoveCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
@@ -225,7 +225,7 @@ public class Parser {
 
     /**
      * Returns a SearchCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return SearchCommand object
      * @throws EmptyDescriptionException if the description is empty
@@ -238,7 +238,6 @@ public class Parser {
     /**
      * Returns an ExpiringCommand object.
      */
-
     private static Command getExpiringCommand() {
         Command expiringCommand = new ExpiringCommand();
         return expiringCommand;
@@ -266,7 +265,7 @@ public class Parser {
 
     /**
      * Parses the description into an integer.
-     * 
+     *
      * @param description description for command
      * @return integer index
      * @throws EmptyDescriptionException if the description is empty
@@ -277,7 +276,7 @@ public class Parser {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-    
+
         try {
             int index = Integer.parseInt(description);
             return index;
@@ -285,5 +284,5 @@ public class Parser {
             throw new InvalidIndexException(e);
         }
     }
-    
+
 }

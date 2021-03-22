@@ -10,10 +10,10 @@ add oyster /cat seafood /exp 32-46-9876 /loc idontknow /qty 10
 add
 list
 list meat
+list lower_shelf
 list aldkjadlj
 expiring
 search
 remove 2
 remove 100
 bye
-add grouper /cat seafood /exp 04-05-2021 /loc lower_shelf /qty 200g

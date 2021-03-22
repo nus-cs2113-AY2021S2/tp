@@ -9,14 +9,14 @@ import seedu.fridgefriend.utilities.LoggingHandler;
  * When calling constructor, category, foodName, expiryString, storageLocation
  * and quantity are NECESSARY fields.
  */
-public class Food {
+public abstract class Food {
     protected FoodCategory category;
     protected String foodName;
     protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
     protected Quantity quantity;
 
-    public Food(FoodCategory category, String foodName, String expiryString,
+    public Food(String foodName, FoodCategory category, String expiryString,
                 FoodStorageLocation storageLocation, Quantity quantity)
             throws InvalidDateException, InvalidQuantityException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
