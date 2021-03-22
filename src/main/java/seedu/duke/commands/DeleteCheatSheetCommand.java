@@ -32,6 +32,8 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
             performFunction(ui, path);
         } catch (IOException e) {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
+            Command command = new ListCheatSheetCommand();
+            command.execute(ui);
         }
     }
 

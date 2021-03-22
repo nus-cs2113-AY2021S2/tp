@@ -22,6 +22,7 @@ public enum ModuleCommands implements CommandList {
             "Delete a cheat-sheet stored in the cheat-sheet directory of the module."),
     EDIT_CHEAT_SHEET("edit cheat-sheet", "[Cheat-Sheet name]",
             "Edit a cheat-sheet stored in the cheat-sheet directory of the module."),
+    LIST_CHEAT_SHEET("cheat-sheets", "Lists all cheat-sheets"),
     TASKS("tasks", "Lists all tasks.");
 
     private final String word;
@@ -94,6 +95,8 @@ public enum ModuleCommands implements CommandList {
             return DELETE_CHEAT_SHEET;
         } else if (commandWord.equalsIgnoreCase(EDIT_CHEAT_SHEET.getWord())) {
             return EDIT_CHEAT_SHEET;
+        } else if (commandWord.equalsIgnoreCase(LIST_CHEAT_SHEET.getWord())) {
+            return LIST_CHEAT_SHEET;
         }
         return null;
     }

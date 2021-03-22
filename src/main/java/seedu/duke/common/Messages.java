@@ -76,7 +76,7 @@ public class Messages {
     public static final String MESSAGE_LESSON_TO_EDIT = "Which lesson would you like to edit?";
     public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which field would you like to edit? (Select 1-4):\n";
     public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new [%s]:";
-    
+
     public static final String MESSAGE_TEACHER_NAME_UPDATED = "Teaching staff updated to: %s";
     public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Teaching staff email updated to: %s";
     public static final String MESSAGE_LINK_UPDATED = "Lesson link updated to: %s";
@@ -168,5 +168,7 @@ public class Messages {
     public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder";
     public static final String MESSAGE_FILE_HAS_BEEN_DELETED = "%s has been deleted!";
     public static final String MESSAGE_FILE_DOES_NOT_EXIST = "%s does not exist!";
+    public static final String MESSAGE_LIST_OF_CHEAT_SHEETS = "Here is your list of cheat-sheets:" + NEWLINE;
+    public static final String MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY = "You have no cheat-sheet.";
 
 }

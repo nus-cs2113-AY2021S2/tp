@@ -13,6 +13,7 @@ import seedu.duke.commands.EditCheatSheetCommand;
 import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ExitModuleCommand;
 import seedu.duke.commands.ExitProgramCommand;
+import seedu.duke.commands.ListCheatSheetCommand;
 import seedu.duke.commands.ListLessonsCommand;
 import seedu.duke.commands.ListModulesCommand;
 import seedu.duke.commands.ListTasksCommand;
@@ -191,6 +192,8 @@ public class Parser {
             return new DeleteCheatSheetCommand(commandArgs);
         case EDIT_CHEAT_SHEET:
             return new EditCheatSheetCommand(commandArgs);
+        case LIST_CHEAT_SHEET:
+            return new ListCheatSheetCommand();
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }

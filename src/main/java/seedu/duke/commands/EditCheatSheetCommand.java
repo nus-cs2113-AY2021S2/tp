@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import seedu.duke.editor.TextEditor;
+import seedu.duke.exception.CommandException;
 import seedu.duke.ui.UI;
 
 import java.io.IOException;
@@ -30,6 +31,12 @@ public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
             ui.printMessage(String.format(MESSAGE_OPEN_FILE, fileName));
         } else {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
+            Command command = new ListCheatSheetCommand();
+            try {
+                command.execute(ui);
+            } catch (CommandException e) {
+                assert false : "Directory not found";
+            }
         }
     }
 }
