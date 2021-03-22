@@ -1,5 +1,7 @@
 package seedu.nurseschedules;
 
+import seedu.duke.exceptions.nurseschedules.EmptyListException;
+import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
 import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
 import seedu.duke.menuparser.NurseSchedulesParser;
@@ -9,21 +11,23 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main entry-point for the NurseSchedules instance.
+ */
 public class NurseScheduleInstance {
 
     private NurseSchedulesParser parser;
     private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
 
+    /** The list of nurse schedules */
     List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
 
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
     public static void main() {
         new NurseScheduleInstance().run();
     }
 
+    /** Runs the program until termination. */
     public void run() {
         start();
         runCommandLoopUntilExit();
@@ -39,6 +43,7 @@ public class NurseScheduleInstance {
         NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
+    /** Reads the user command and executes it, until the user issues the exit command */
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
@@ -64,6 +69,10 @@ public class NurseScheduleInstance {
                 } catch (WrongInputsException e) {
                     NurseScheduleUI.invalidInputsMessage();
                     NurseScheduleUI.listHelpMessage();
+                } catch (EmptyListException e) {
+                    System.out.println(e.getMessage());
+                } catch (NurseIDNotFound e) {
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "delete":
@@ -80,7 +89,7 @@ public class NurseScheduleInstance {
                 break;
             case "return":
                 storage.writeToFile(nurseSchedules);
-                NurseScheduleUI.returnToStart();
+                NurseScheduleUI.returningToStartMenuMessage();
                 isRun = false;
                 break;
             default:

@@ -168,9 +168,4 @@ public class UI {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
     }
-
-    public static void returnToStart() {
-        System.out.println("Returning to start menu!");
-        showLine();
-    }
 }
