@@ -30,9 +30,6 @@ class EditLessonCommandTest extends LessonCommandTest {
         TeachingStaff oriTeacher = new TeachingStaff(TEACHER_NAME, TEACHER_EMAIL);
         Lesson oriLesson = new Lesson(LessonType.TUTORIAL, TIME, ONLINE_LINK, oriTeacher);
         module.addLesson(oriLesson);
-
-        TeachingStaff editedTeacher = new TeachingStaff(TEACHER_NAME1, TEACHER_EMAIL1);
-        Lesson editedLesson = new Lesson(LessonType.TUTORIAL, TIME1, ONLINE_LINK1, editedTeacher);
         
         String lessonIndex = "1" + System.lineSeparator();
         String lessonFields = "1 2 3 4" + System.lineSeparator();
@@ -50,7 +47,11 @@ class EditLessonCommandTest extends LessonCommandTest {
 
         Command command = new EditLessonCommand();
         command.execute(ui);
+        
         Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
+        
+        TeachingStaff editedTeacher = new TeachingStaff(TEACHER_NAME1, TEACHER_EMAIL1);
+        Lesson editedLesson = new Lesson(LessonType.TUTORIAL, TIME1, ONLINE_LINK1, editedTeacher);
         
         assertEquals(editedLesson.getTime(), actualLessonAfterEdit.getTime());
         assertEquals(editedLesson.getOnlineLink(), actualLessonAfterEdit.getOnlineLink());
