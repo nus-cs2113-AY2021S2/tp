@@ -12,7 +12,6 @@ public class History {
     }
 
     public ArrayList<String> getHistory() {
-        assert history.size() != 0 : "There are no past searches made.";
         return history;
     }
 
@@ -48,6 +47,7 @@ public class History {
 
     public String getHistoryAsString() {
         StringBuilder fullHistory = new StringBuilder();
+        assert history.size() != 0 : "There are no past searches made.";
         for (int i = 1; i - 1 < history.size(); i++) {
             fullHistory.append(i).append(". ").append(history.get(i - 1));
             fullHistory.append(System.lineSeparator());
