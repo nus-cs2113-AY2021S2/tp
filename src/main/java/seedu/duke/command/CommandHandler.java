@@ -52,11 +52,11 @@ public class CommandHandler {
     public static Command parseCommand(ArrayList<String> parsedString, RecordList records) {
         try {
             Command command = CommandHandler.createCommand(parsedString, records);
-            //LOGGER.log(Level.INFO, "command object successfully created.");
+            LOGGER.log(Level.INFO, "command object successfully created.");
             return command;
         } catch (CommandException e) {
             System.out.println(e.getMessage());
-            //LOGGER.log(Level.WARNING, e.getMessage());
+            LOGGER.log(Level.WARNING, e.getMessage());
             return null;
         }
     }
