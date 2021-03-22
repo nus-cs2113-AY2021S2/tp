@@ -11,7 +11,7 @@ import static seedu.staff.Parser.addFunctionParser;
 public class StaffList {
     private static final String DOCTOR_TYPE = "D";
     private static final String NURSE_TYPE = "N";
-    private static ArrayList<Staff> list = new ArrayList<>();
+    private static final ArrayList<Staff> list = new ArrayList<>();
     protected static int numStaff = 0;
 
     public static void resetList() {
@@ -77,11 +77,11 @@ public class StaffList {
 
     public static boolean search(String keyword, Staff staff) {
         return staff.getAge().contains(keyword) || staff.getName().contains(keyword)
-                || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
+                    || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
     }
 
+
     public static void delete(String line) {
-        int i = 0;
         boolean isExistingID = false;
         for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext(); ) {
             Staff staff = iterator.next();
@@ -90,7 +90,6 @@ public class StaffList {
                 numStaff--;
                 isExistingID = true;
             }
-            i++;
         }
         if (isExistingID) {
             firedOutput(line);
