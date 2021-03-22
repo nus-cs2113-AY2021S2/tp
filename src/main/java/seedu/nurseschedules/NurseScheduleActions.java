@@ -21,7 +21,8 @@ public class NurseScheduleActions {
      * @param nurseSchedules List of all schedules
      * @param details Contains either NurseID or 'all'
      */
-    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) throws EmptyListException, NurseIdNotFound {
+    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details)
+            throws EmptyListException, NurseIdNotFound {
         if (details[0].equals("all")) {
             listAllSchedules(nurseSchedules);
         } else if (isValidNurseID(nurseSchedules, details[0])) {
@@ -35,7 +36,7 @@ public class NurseScheduleActions {
     /**
      * Handler for 'list all' schedules.
      *
-     * @param nurseSchedules
+     * @param nurseSchedules List of all schedules
      * @throws EmptyListException when nurse schedule list is empty
      */
     public void listAllSchedules(List<NurseSchedule> nurseSchedules) throws EmptyListException {
