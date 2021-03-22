@@ -64,7 +64,7 @@ public class TextEditor extends JFrame implements ActionListener {
         setTextArea();
         setScrollPane();
         setLayout();
-
+        setShortcutListener();
     }
 
     public void loadFile(String filePath) {
@@ -95,6 +95,7 @@ public class TextEditor extends JFrame implements ActionListener {
     private void setLayout() {
         this.setLayout(new FlowLayout());
         this.setVisible(true);
+        textArea.requestFocus();
     }
 
     private void setFontStyleIcon() {
@@ -178,5 +179,9 @@ public class TextEditor extends JFrame implements ActionListener {
         JColorChooser colourChooser = new JColorChooser();
         Color colour = colourChooser.showDialog(null, FONT_COLOUR_HEADER, Color.BLACK);
         textArea.setForeground(colour);
+    }
+    
+    private void setShortcutListener() {
+        textArea.addKeyListener(new ShortcutListener(this));
     }
 }
