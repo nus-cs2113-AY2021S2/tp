@@ -7,7 +7,7 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Represents a command to exit the application.
+ * Represents a command to show help instructions.
  */
 public class HelpCommand extends Command {
 

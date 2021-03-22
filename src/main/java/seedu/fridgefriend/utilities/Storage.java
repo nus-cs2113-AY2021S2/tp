@@ -92,12 +92,11 @@ public class Storage {
 
         FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
         Quantity quantity;
-        if (quantityString.contains(Weight.UNIT_CHARACTER)) {
+        if (quantityString.contains("g")) {
             quantity = new Weight(quantityString);
         } else {
             quantity = new Quantity(quantityString);
         }
-        //Food food = new Food(category, name, expiry, storage, quantity);
         Food food = AddCommand.categoriseAndGenerateFood(name, category, expiry, storage, quantity);
         fridge.add(food);
     }
@@ -110,7 +109,7 @@ public class Storage {
     public static void save(Fridge fridgeInput) {
         fridge = fridgeInput;
         try {
-            //clearFile();
+            clearFile();
             populateData();
         } catch (Exception e) {
             StorageSavingException exception = new StorageSavingException(e);

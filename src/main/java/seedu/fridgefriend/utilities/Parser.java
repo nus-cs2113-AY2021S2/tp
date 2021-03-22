@@ -246,7 +246,7 @@ public class Parser {
     /**
      * Returns a HelpCommand object.
      *
-     * @return a list of instructions on how to use the various commands
+     * @return help instructions
      */
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
@@ -256,7 +256,7 @@ public class Parser {
     /**
      * Returns a ByeCommand object.
      *
-     * @return a ByeCommand to exit the program
+     * @return acknowledgement to exit the program
      */
     public static Command getByeCommand() {
         Command byeCommand = new ByeCommand();
