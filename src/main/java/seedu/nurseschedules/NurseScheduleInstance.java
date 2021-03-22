@@ -2,7 +2,7 @@ package seedu.nurseschedules;
 
 import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
-import seedu.nurseschedules.parser.Parser;
+import seedu.duke.menuparser.NurseSchedulesParser;
 import seedu.duke.ui.NurseScheduleUI;
 
 import java.text.ParseException;
@@ -11,10 +11,9 @@ import java.util.List;
 
 public class NurseScheduleInstance {
 
-    private Parser parser;
+    private NurseSchedulesParser parser;
     private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
-    private NurseScheduleUI ui;
 
     List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
 
@@ -31,20 +30,19 @@ public class NurseScheduleInstance {
     }
 
     private void start() {
-        this.parser = new Parser();
+        this.parser = new NurseSchedulesParser();
         this.actions = new NurseScheduleActions();
         this.storage = new NurseScheduleStorage();
-        this.ui = new NurseScheduleUI();
 
         storage.load(nurseSchedules);
 
-        ui.printNurseScheduleWelcomeMessage();
+        NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            ui.nurseSchedulePrompt();
+            NurseScheduleUI.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
 
@@ -52,20 +50,20 @@ public class NurseScheduleInstance {
             case "add":
                 try {
                     String[] details = parser.getDetails(line);
-                    ui.printAddedSchedule(details[1], parser.formatDate(line));
+                    NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
                     nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
                     storage.writeToFile(nurseSchedules);
                 } catch (ParseException | WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.addHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.addHelpMessage();
                 }
                 break;
             case "list":
                 try {
                     actions.listSchedules(nurseSchedules, parser.getDetails(line));
                 } catch (WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.listHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.listHelpMessage();
                 }
                 break;
             case "delete":
@@ -73,20 +71,20 @@ public class NurseScheduleInstance {
                     actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
                     storage.writeToFile(nurseSchedules);
                 } catch (WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.deleteHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.deleteHelpMessage();
                 }
                 break;
             case "help":
-                ui.printNurseScheduleHelpList();
+                NurseScheduleUI.printNurseScheduleHelpList();
                 break;
             case "return":
                 storage.writeToFile(nurseSchedules);
-                ui.returnToStart();
+                NurseScheduleUI.returnToStart();
                 isRun = false;
                 break;
             default:
-                ui.invalidCommandMessage();
+                NurseScheduleUI.invalidCommandMessage();
                 break;
             }
         }

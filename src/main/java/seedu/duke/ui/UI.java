@@ -233,7 +233,7 @@ public class UI {
         System.out.println("\"return\" returns you to the Start Menu!");
     }
 
-    public void returnToStart() {
+    public static void returnToStart() {
         System.out.println("Returning to start menu!");
         showLine();
     }
