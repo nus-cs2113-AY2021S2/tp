@@ -1,5 +1,7 @@
 package seedu.nurseschedules;
 
+import seedu.duke.exceptions.nurseschedules.EmptyListException;
+import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
 import seedu.duke.ui.NurseScheduleUI;
 import seedu.duke.ui.UI;
 
@@ -13,7 +15,13 @@ public class NurseScheduleActions {
     List<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
 
-    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) {
+    /**
+     * Handler when list command is issued
+     *
+     * @param nurseSchedules List of all schedules
+     * @param details Contains either NurseID or 'all'
+     */
+    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) throws EmptyListException, NurseIDNotFound {
         if (details[0].equals("all")) {
             listAllSchedules(nurseSchedules);
         } else if (isValidNurseID(nurseSchedules, details[0])) {
@@ -24,10 +32,16 @@ public class NurseScheduleActions {
         UI.showLine();
     }
 
-    public void listAllSchedules(List<NurseSchedule> nurseSchedules) {
+    /**
+     * Handler for 'list all' schedules
+     *
+     * @param nurseSchedules
+     * @throws EmptyListException when nurse schedule list is empty
+     */
+    public void listAllSchedules(List<NurseSchedule> nurseSchedules) throws EmptyListException {
         nursesFound.clear();
         if (nurseSchedules.size() == 0) {
-            NurseScheduleUI.noNurseSchedulesFoundMessage();
+            throw new EmptyListException();
         } else {
             for (int i = 0; i < nurseSchedules.size(); i++) {
                 findSchedules.clear();
@@ -39,6 +53,12 @@ public class NurseScheduleActions {
         }
     }
 
+    /**
+     * Deletes schedule with given nurseID and datetime
+     *
+     * @param nurseSchedules List of all schedules
+     * @param details nurseID to delete
+     */
     public void deleteSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
         int i = 0;
         while (i < nurseSchedules.size()) {
@@ -65,6 +85,11 @@ public class NurseScheduleActions {
         System.out.println(id);
     }
 
+    /**
+     * Prints schedules
+     *
+     * @param list List of schedules to be printed
+     */
     private void printSchedules(List<NurseSchedule> list) {
         int i = 0;
         while (i < list.size()) {
@@ -83,13 +108,22 @@ public class NurseScheduleActions {
         }
     }
 
-    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) {
+    /**
+     * Checks if nurseID exists within schedules
+     *
+     * @param nurseSchedules List of all schedules
+     * @param id NurseID to check
+     * @return boolean
+     * @throws NurseIDNotFound if id does not exist
+     */
+    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) throws NurseIDNotFound {
         int i = 0;
         while (i < nurseSchedules.size()) {
-            if (nurseSchedules.get(i).getNurseID().equals(id)) return true;
+            if (nurseSchedules.get(i).getNurseID().equals(id)) {
+                return true;
+            }
             i++;
         }
-        NurseScheduleUI.nurseIDDoesNotExistMessage();
-        return false;
+        throw new NurseIDNotFound();
     }
 }
