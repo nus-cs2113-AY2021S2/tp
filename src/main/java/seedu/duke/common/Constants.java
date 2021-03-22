@@ -63,6 +63,7 @@ public class Constants {
 
     public static final String ADD = "add";
     public static final String DELETE = "delete";
+    public static final String EDIT = "edit";
 
     public static final int INDEX_COMMAND_WORD = 0;
     public static final int INDEX_COMMAND_ARGS = 1;
@@ -106,4 +107,5 @@ public class Constants {
     public static final String CHEATSHEET_DIR = "Cheatsheet";
     public static final String PATH_DELIMITER = "/";
     public static final int KEYCODE_S = 83;
+    public static final String MESSAGE_OPEN_FILE = "Opened %s";
 }

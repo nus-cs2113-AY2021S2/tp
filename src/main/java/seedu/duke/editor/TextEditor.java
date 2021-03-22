@@ -93,6 +93,7 @@ public class TextEditor extends JFrame implements ActionListener {
     }
 
     private void setLayout() {
+        this.setLocationRelativeTo(null);
         this.setLayout(new FlowLayout());
         this.setVisible(true);
         textArea.requestFocus();
@@ -160,7 +161,7 @@ public class TextEditor extends JFrame implements ActionListener {
         }
     }
 
-    private void saveTextToFile() {
+    public void saveTextToFile() {
         try {
             FileWriter fileWriter = new FileWriter(pathName);
             fileWriter.write(textArea.getText());
@@ -180,8 +181,8 @@ public class TextEditor extends JFrame implements ActionListener {
         Color colour = colourChooser.showDialog(null, FONT_COLOUR_HEADER, Color.BLACK);
         textArea.setForeground(colour);
     }
-    
+
     private void setShortcutListener() {
-        textArea.addKeyListener(new ShortcutListener(this));
+        textArea.addKeyListener(new ShortcutListener(this, this));
     }
 }

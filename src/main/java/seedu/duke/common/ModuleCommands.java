@@ -12,10 +12,16 @@ public enum ModuleCommands implements CommandList {
     LINK("link", "Opens link to the lesson in a browser."),
     LESSONS("lessons", "Lists all lessons."),
     TEACHER("teacher", "Lists all teaching staff."),
-    ADD_TASK("add task", "NAME ;; DD-MM-YY ;; [REMARKS]","Adds new task."),
+    ADD_TASK("add task", "NAME ;; DD-MM-YY ;; [REMARKS]", "Adds new task."),
     DELETE_TASK("delete task", "Deletes specified tasks."),
     MARK("mark", "Marks specified tasks as done."),
     UNMARK("unmark", "Marks specified tasks as undone."),
+    ADD_CHEAT_SHEET("add cheat-sheet", "[Cheat-Sheet name]",
+            "Add a new cheat-sheet for that module."),
+    DELETE_CHEAT_SHEET("delete cheat-sheet", "[Cheat-Sheet name]",
+            "Delete a cheat-sheet stored in the cheat-sheet directory of the module."),
+    EDIT_CHEAT_SHEET("edit cheat-sheet", "[Cheat-Sheet name]",
+            "Edit a cheat-sheet stored in the cheat-sheet directory of the module."),
     TASKS("tasks", "Lists all tasks.");
 
     private final String word;
@@ -48,6 +54,7 @@ public enum ModuleCommands implements CommandList {
     }
 
     //@@author ivanchongzhien
+
     /**
      * Converts given string to a module command.
      *
@@ -81,6 +88,12 @@ public enum ModuleCommands implements CommandList {
             return ADD_TASK;
         } else if (commandWord.equalsIgnoreCase(DELETE_TASK.getWord())) {
             return DELETE_TASK;
+        } else if (commandWord.equalsIgnoreCase(ADD_CHEAT_SHEET.getWord())) {
+            return ADD_CHEAT_SHEET;
+        } else if (commandWord.equalsIgnoreCase(DELETE_CHEAT_SHEET.getWord())) {
+            return DELETE_CHEAT_SHEET;
+        } else if (commandWord.equalsIgnoreCase(EDIT_CHEAT_SHEET.getWord())) {
+            return EDIT_CHEAT_SHEET;
         }
         return null;
     }

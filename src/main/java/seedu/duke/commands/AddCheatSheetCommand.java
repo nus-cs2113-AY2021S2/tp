@@ -18,6 +18,7 @@ import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
 
 public class AddCheatSheetCommand extends Command {
+    public static final String FILE_EXTENSION = ".txt";
     public static String fileName;
 
     public AddCheatSheetCommand(String nameOfFile) {
@@ -28,7 +29,7 @@ public class AddCheatSheetCommand extends Command {
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
-        String filePath = directoryPath + fileName;
+        String filePath = directoryPath + fileName + FILE_EXTENSION;
         Path path = Paths.get(filePath);
         openTextEditor(ui, path, filePath);
     }
