@@ -26,7 +26,6 @@ import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.DukeException;
-import seedu.duke.exception.UnknownCommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
