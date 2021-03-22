@@ -41,7 +41,7 @@ public class Ui {
     private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
     private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
     private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
-    private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!";
+    private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!\nSystem will now exit!";
 
 
     /**

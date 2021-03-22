@@ -192,20 +192,36 @@ Output:
 
 ![help example output]()
 
-### 3.9 Task Storage
+### 3.9 Records storage
 
-#### 3.9.1 Automatically load data from an existing file to the program.
+#### 3.9.1 Automatically saving all records into a file.
 
-* Expected Outcome if successful:
-  ![load success example output]()
+* All records are automatically saved after the following commands: `add`, `remove`, `return`.
+* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`.
 
-* Expected outcome if not successful:
-  ![load fail example output]()
+> ❗ **WARNING:** Do ensure that permissions are given for FINUX to write into the folder it is in,
+> FINUX will exit upon unsuccessful file creation.
+
+#### 3.9.2 Automatically loading data from an existing file into FINUX.
+
+* FINUX will automatically load the data from "finux.txt" when it finds the text
+file in the same directory. <br><br>
+
+* Expected output for new file creation:
+![new_file_creation_output](img/New_File_Creation_Example.jpg)
+
+* Expected output if successful load:
+![load success example output](img/Successful_Load_Example.jpg)
+
+* Expected output if not successfully loaded:
+![load fail example output](img/Failed_Load_Example_Output.jpg)
   
-#### 3.9.2 Automatically save the current task list to a file.
+#### 3.9.3 Editing the saved file directly
+* The FINUX team encourages higher leveled users to edit the save directly.
 
-* After entering `exit`, program will automatically store all the tasks into a task_logs.txt file.
-
+> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX. 
+> The team highly suggests that users only make minor changes like
+> spelling errors instead of inserting new Records into the save file.
 
 ## 4. FAQ
 
@@ -213,10 +229,14 @@ Output:
 
 **A**: {your answer here}
 
-**Q**: Does the `view -l` shows the total loan amount?
+>**Q**: Does the `view -l` shows the total loan amount? <br>
+>**A**: No. `view -l` only shows the total unreturned loans amount.
 
-**A**: No. `view -l` only shows the total unreturned loans amount.
+>**Q**: What happens if FINUX crashes unexpectedly? <br>
+>**A**: All records are saved upon addition or deletion or returned, no worries!
 
+>**Q**: FINUX keeps having a `bad init` error message, but it is my first time launching FINUX. <br>
+>**A**: Do check and ensure that FINUX has the proper write permissions in the directory.
 
 ## 5. Command Summary
 
