@@ -1,0 +1,94 @@
+@startuml UtilitiesClassDiagram
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+
+package Utilities <<Rectangle>> {
+    class Ui
+    class LoggerHandler
+    class Storage
+    class Parser
+}
+
+package Food <<Rectangle>> {
+    class hiddenFood #FFFFFF
+}
+
+package Exception <<Rectangle>> {
+    class hiddenException #FFFFFF
+}
+
+package Command <<Rectangle>>{
+    class hiddenCommand #FFFFFF
+}
+
+class Ui {
+  -{static} Scanner scanner
+  +{static} String getNextLine()
+  +{static} void printMessage()
+  +{static} void printWelcomeMessage()
+  +{static} void printByeMessage()
+  +{static} void printExceptionMessage()
+}
+
+class LoggerHandler {
+  -{static} Logger logger
+  +{static} void logInfo(String message)
+  +{static} void logInfo(String message, Throwable e)
+  +{static} void logWarning(String message)
+  +{static} void logWarning(String message, Throwable e)
+  +{static} void logSevere(String message)
+  +{static} void logSevere(String message, Throwable e)
+}
+
+class Storage {
+  -{static} String filePath
+  -{static} String directory
+  -{static} Fridge fridge
+  +{static} void load(Fridge fridgeInput)
+  -{static} void checkDrectory()
+  -{static} void loadData
+  -{static} void readData(String line)
+  +{static} void save(Fridge fridgeInput)
+  -{static} void clearFile()
+  -{static} void populateData()
+}
+
+class Parser {
+  -{static} int COMMAND_WORD_INDEX
+  -{static} int NUMBER_OF_PHRASES
+  -{static} Pattern FOOD_DATA_ARGS_FORMAT
+  +{static} Command getCommand(String input)
+  +{static} String[] parseInput(String input)
+  -{static} Command parseCommand(String[] parsedInput)
+  -{static} Command parseFoodDescription(String foodDescription)
+  -{static} Command getAddCommand(String description)
+  -{static} Command getListCommand(String description)
+  -{static} Command getRemoveCommand(String description)
+  -{static} Command getSearchCommand(String description)
+  -{static} Command getExpiringCommand()
+  -{static} Command getHelpCommand()
+  -{static} Command getByeCommand()
+  -{static} int parseIntegerDescription(String description)
+}
+
+
+User -down-> Ui
+
+Ui -left-> FridgeFriend
+
+Storage .down.> Food
+Storage .down.> Exception
+Storage .up.> Ui
+
+Parser ..> Exception
+Parser ..> Command
+Parser -[hidden]up-> LoggerHandler
+
+FridgeFriend -right-> Storage
+
+note right of LoggerHandler : Used by all other classes\nfor logging purposes
+
+@enduml

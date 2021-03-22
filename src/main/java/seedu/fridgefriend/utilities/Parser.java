@@ -24,8 +24,18 @@ import seedu.fridgefriend.exception.InvalidInputException;
  */
 public class Parser {
 
-    public static final int COMMAND_WORD = 0;
-    public static final int LIMIT = 2;
+    private static final int COMMAND_WORD_INDEX = 0;
+    private static final int NUMBER_OF_PHRASES = 2;
+    /**
+    * Define arguments format for add food command.
+    * A Pattern object which defines how the input string for food item
+    * that should look like. [^/]+ implies 1 or more characters except for '/'
+    */
+   private static final Pattern FOOD_DATA_ARGS_FORMAT =
+           Pattern.compile("(?<name>[^/]+)"
+            + " /cat (?<category>[^/]+)"
+            + " /exp (?<expiryDate>[^/]+)"
+            + " /loc (?<storageLocation>[^/]+)");
 
     /**
      * Returns a Command object based on the user's raw input.
@@ -57,12 +67,12 @@ public class Parser {
             throw new InvalidInputException();
         }
         //remove trailing whitespaces and parse input into two separated by a whitespace
-        String[] words = input.trim().split("\\s+", Parser.LIMIT);
-        if (words.length == Parser.LIMIT) {
+        String[] words = input.trim().split("\\s+", Parser.NUMBER_OF_PHRASES);
+        if (words.length == Parser.NUMBER_OF_PHRASES) {
             return words;
         } else {
             //return an array of command and empty description
-            return new String[] {words[COMMAND_WORD], ""};
+            return new String[] {words[COMMAND_WORD_INDEX], ""};
         }
     }
 
@@ -76,10 +86,10 @@ public class Parser {
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      */
-    public static Command parseCommand(String[] parsedInput)
+    private static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException, 
             InvalidIndexException, InvalidDateException {
-        String commandString = parsedInput[COMMAND_WORD];
+        String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
 
@@ -113,17 +123,6 @@ public class Parser {
     }
 
     /**
-     * Define arguments format for add food command.
-     * A Pattern object which defines how the input string for food item
-     * that should look like. [^/]+ implies 1 or more characters except for '/'
-     */
-    public static final Pattern FOOD_DATA_ARGS_FORMAT =
-            Pattern.compile("(?<name>[^/]+)"
-                    + " /cat (?<category>[^/]+)"
-                    + " /exp (?<expiryDate>[^/]+)"
-                    + " /loc (?<storageLocation>[^/]+)");
-
-    /**
      * Parses description into name, foodCategory, expiryDate and storageLocation.
      * Matcher objects will try to parse a string according to the Pattern we define
      * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
@@ -134,7 +133,7 @@ public class Parser {
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
      */
-    public static Command parseFoodDescription(String foodDescription)
+    private static Command parseFoodDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
@@ -157,7 +156,7 @@ public class Parser {
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
      */
-    public static Command getAddCommand(String description) 
+    private static Command getAddCommand(String description) 
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
@@ -169,7 +168,7 @@ public class Parser {
      * @param description description for command
      * @return ListCommand object
      */
-    public static Command getListCommand(String description) {
+    private static Command getListCommand(String description) {
         Command listCommand = new ListCommand(description);
         return listCommand;
     }
@@ -182,7 +181,7 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidIndexException if the index given in description is out of bounds
      */
-    public static Command getRemoveCommand(String description)
+    private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         int index = parseIntegerDescription(description);
         Command removeCommand = new RemoveCommand(index);
@@ -196,7 +195,7 @@ public class Parser {
      * @return SearchCommand object
      * @throws EmptyDescriptionException if the description is empty
      */
-    public static Command getSearchCommand(String description) throws EmptyDescriptionException {
+    private static Command getSearchCommand(String description) throws EmptyDescriptionException {
         Command searchCommand = new SearchCommand(description);
         return searchCommand;
     }
@@ -214,7 +213,7 @@ public class Parser {
      * Returns a HelpCommand object.
      */
 
-    public static Command getHelpCommand() {
+    private static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
     }
@@ -222,7 +221,7 @@ public class Parser {
     /**
      * Returns a ByeCommand object.
      */
-    public static Command getByeCommand() {
+    private static Command getByeCommand() {
         Command byeCommand = new ByeCommand();
         return byeCommand;
     }
@@ -235,7 +234,7 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidIndexException if the description is not a number
      */
-    public static int parseIntegerDescription(String description)
+    private static int parseIntegerDescription(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
