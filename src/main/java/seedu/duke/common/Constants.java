@@ -32,6 +32,17 @@ public class Constants {
     public static final ArrayList<Integer> ENTRY_SIZE_LESSON
             = new ArrayList<>(Arrays.asList(ENTRY_LESSON_SHORT, ENTRY_LESSON_MEDIUM,
             ENTRY_LESSON_LONG, ENTRY_LESSON_EXTRA_LONG));
+    
+    public static final int EDIT_INDEX_DAY_TIME = 0;
+    public static final int EDIT_INDEX_LINK = 1;
+    public static final int EDIT_INDEX_TEACHER_NAME = 2;
+    public static final int EDIT_INDEX_TEACHER_EMAIL = 3;
+    public static final int MAX_EDITABLE_FIELDS = 4;
+    
+    public static final String LESSON_FIELD_1_TIME_DAY = "Time and day";
+    public static final String LESSON_FIELD_2_LINK = "Lesson link";
+    public static final String LESSON_FIELD_3_T_NAME = "Teaching staff name";
+    public static final String LESSON_FIELD_4_T_EMAIL = "Teaching staff email";
 
     //Task
     public static final int INDEX_DESCRIPTION = 0;
@@ -55,6 +66,7 @@ public class Constants {
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
     public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}"
             + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+
     public static final String FORMAT_COMMAND_WORD_AND_ARGS = "(^\\S+)(.*)";
     public static final String FORMAT_TWO_COMMAND_WORD_AND_ARGS = "(^\\S+\\s+\\S+)(.*)";
 

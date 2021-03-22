@@ -36,12 +36,12 @@ public class Lesson {
         this.time = time;
     }
 
-    public void setTeachingStaff(TeachingStaff teachingStaff) {
-        this.teachingStaff = teachingStaff;
-    }
-
     public void setOnlineLink(String onlineLink) {
         this.onlineLink = onlineLink;
+    }
+
+    public void setTeachingStaff(TeachingStaff teachingStaff) {
+        this.teachingStaff = teachingStaff;
     }
 
     //@@author ivanchongzhien

@@ -25,6 +25,7 @@ import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
+import seedu.duke.exception.DukeException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -473,5 +474,28 @@ public class Parser {
      */
     private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));
+    }
+
+    /**
+     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
+     * TODO : print proper warning, can consider throwing ParserException and handling
+     * in EditLessonsCommand.
+     *
+     * @param input user input string
+     * @return index parsed from input string
+     */
+    public static int checkIndex(String input, int max) throws DukeException {
+        int index = 0;
+        try {
+            index = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new DukeException("Invalid non-integer input");
+        }
+
+        if (index < 1 || index > max) {
+            throw new DukeException("Index given is out of bounds.");
+        }
+
+        return index;
     }
 }
