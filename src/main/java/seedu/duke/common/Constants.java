@@ -120,4 +120,8 @@ public class Constants {
     public static final String PATH_DELIMITER = "/";
     public static final int KEYCODE_S = 83;
     public static final String MESSAGE_OPEN_FILE = "Opened %s";
+    public static final int BEGIN_INDEX = 0;
+    public static final int EXTENSION = 4;
+    public static final String DOT = ". ";
+    public static final int EMPTY = 0;
 }
