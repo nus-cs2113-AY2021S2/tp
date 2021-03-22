@@ -1,5 +1,6 @@
 package seedu.fridgefriend.utilities;
 
+import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.StorageLoadingException;
 import seedu.fridgefriend.exception.StorageSavingException;
@@ -85,7 +86,7 @@ public class Storage {
         String storageStr = parameters[4];
         FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
 
-        Food food = new Food(category, name, expiry, storage); 
+        Food food = AddCommand.categoriseAndGenerateFood(name, category, expiry, storage);
         fridge.add(food);
     }
 
