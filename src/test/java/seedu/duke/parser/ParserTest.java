@@ -39,7 +39,7 @@ class ParserTest {
     @Test
     // IN MODULE COMMAND
     // add lesson command
-    void parse_inModuleCommandListTask_ListTask() throws UnknownCommandException, CommandException {
+    void parse_inModuleCommandListTask_ListTaskCommandObject() throws UnknownCommandException, CommandException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
 
