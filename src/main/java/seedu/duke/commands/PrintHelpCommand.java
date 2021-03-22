@@ -47,18 +47,10 @@ public class PrintHelpCommand extends Command {
     private static String getCommands(CommandList[] commands) {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < commands.length; i++) {
-            if (commands[i].equals(DashboardCommands.INVALID) 
-                    || commands[i].equals(ModuleCommands.INVALID)) {
-                continue;
-            } else if (i != INDEX_FIRST) {
+            if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE).append(NEWLINE);
             }
-            String commandWordAndArgs;
-            if (commands[i].equals(DashboardCommands.OPEN)) {
-                commandWordAndArgs = commands[i].getArgumentsFormat();
-            } else {
-                commandWordAndArgs = commands[i].getWord() + " " + commands[i].getArgumentsFormat();
-            }
+            String commandWordAndArgs = commands[i].getWord() + " " + commands[i].getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     commandWordAndArgs, commands[i].getDescription());
             stringBuilder.append(commandAndDescription);

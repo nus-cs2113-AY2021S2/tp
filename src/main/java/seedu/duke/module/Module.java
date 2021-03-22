@@ -5,6 +5,8 @@ import seedu.duke.task.Task;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
+
 public class Module {
 
     private final String moduleCode;
@@ -70,5 +72,19 @@ public class Module {
             }
         }
         return filteredTasks;
+    }
+
+    //@@author ivanchongzhien
+    /**
+     * Checks if given string is a valid module name.
+     *
+     * @param moduleCode string to be validated
+     * @return true if string is a valid module name
+     */
+    public static boolean isValidModuleCode(String moduleCode) {
+        moduleCode = moduleCode.trim();
+
+        // check that input matches the convention of a standard NUS module code.
+        return (moduleCode.matches(FORMAT_MODULE_CODE));
     }
 }

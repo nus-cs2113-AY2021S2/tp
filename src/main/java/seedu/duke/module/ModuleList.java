@@ -1,6 +1,5 @@
 package seedu.duke.module;
 
-
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
