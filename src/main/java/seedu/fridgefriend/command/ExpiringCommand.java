@@ -1,7 +1,5 @@
 package seedu.fridgefriend.command;
 
-import java.time.LocalDate;
-
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Ui;
 
@@ -10,7 +8,6 @@ import seedu.fridgefriend.utilities.Ui;
  */
 public class ExpiringCommand extends Command {
 
-    private static final LocalDate cutOff = LocalDate.now().plusDays(7);
     private String message = "These are the food expiring in the next week:";
     private int index = 1;
 
@@ -32,8 +29,7 @@ public class ExpiringCommand extends Command {
      * @param food food item in the fridge
      */
     private void updateMessage(Food food) {
-        LocalDate expiry = food.getExpiryDate().getExpiry();
-        if (expiry.isBefore(cutOff)) {
+        if (food.isExpiring()) {
             addToMessage(food);
         }
     }
