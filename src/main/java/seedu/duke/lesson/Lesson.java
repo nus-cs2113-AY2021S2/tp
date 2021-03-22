@@ -42,6 +42,7 @@ public class Lesson {
 
     public void setTeachingStaff(TeachingStaff teachingStaff) {
         this.teachingStaff = teachingStaff;
+    }
 
     //@@author ivanchongzhien
     /**
