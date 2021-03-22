@@ -91,6 +91,10 @@ public class Messages {
     public static final String MESSAGE_GRADED = " (graded)";
 
     public static final String MESSAGE_ADDED_TASK = "Added %s to task list.";
+    public static final String MESSAGE_DUPLICATE_TASK = "This task is already in the list.";
+    public static final String MESSAGE_SAME_DESCRIPTION_TASK = "This task already exists but "
+            + "with different field(s)." + NEWLINE
+            + "You could edit this task instead.";
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
@@ -151,5 +155,11 @@ public class Messages {
 
     //Logging messages
     public static final String MESSAGE_LOAD_FAILED = "LOADER: failed to load %s.";
+
+    //Cheat sheet
+    public static final String MESSAGE_CHEAT_SHEET_ALREADY_EXISTS = "Cheat sheet already exists!";
+    public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder";
+    public static final String MESSAGE_FILE_HAS_BEEN_DELETED = "%s has been deleted!";
+    public static final String MESSAGE_FILE_DOES_NOT_EXIST = "%s does not exist!";
 
 }

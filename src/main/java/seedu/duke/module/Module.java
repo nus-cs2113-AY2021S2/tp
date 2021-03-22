@@ -2,9 +2,13 @@ package seedu.duke.module;
 
 import seedu.duke.lesson.Lesson;
 import seedu.duke.task.Task;
+import seedu.duke.ui.UI;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
+import static seedu.duke.common.Messages.MESSAGE_DUPLICATE_TASK;
+import static seedu.duke.common.Messages.MESSAGE_SAME_DESCRIPTION_TASK;
 import static seedu.duke.common.Constants.FORMAT_MODULE_CODE;
 
 public class Module {
@@ -72,6 +76,30 @@ public class Module {
             }
         }
         return filteredTasks;
+    }
+
+    /**
+     * Prevents task from being added once a duplicate (same task description and deadline) 
+     * is found in the list. If different deadline, suggest editing task fields instead.
+     * 
+     * @param ui Instance of UI
+     * @param targetTask Task user is trying to add to the list
+     * @return true when no task with same description is found.
+     */
+    public boolean getIsAddTaskAllowed(UI ui, Task targetTask) {
+        String targetDescription = targetTask.getDescription().toUpperCase();
+        LocalDate targetDeadline = targetTask.getDeadline();
+        for (Task task : taskList) {
+            if (targetDescription.equals(task.getDescription().toUpperCase())) {
+                if (targetDeadline.equals(task.getDeadline())) {
+                    ui.printMessage(String.format(MESSAGE_DUPLICATE_TASK, task.getDescription()));
+                    return false;
+                }
+                ui.printMessage(MESSAGE_SAME_DESCRIPTION_TASK);
+                return false;
+            }
+        }
+        return true;
     }
 
     //@@author ivanchongzhien

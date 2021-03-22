@@ -28,17 +28,16 @@ public class AddTaskCommand extends Command {
     @Override
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
+        boolean isAddTaskAllowed = module.getIsAddTaskAllowed(ui, task);
+        if (!isAddTaskAllowed) {
+            return;
+        }
         boolean isGraded = getIsTaskGraded(ui);
         task.setGraded(isGraded);
         module.addTask(task);
         ui.printMessage(String.format(MESSAGE_ADDED_TASK, task.getDescription()));
         ModuleList.writeModule();
         ModuleList.sortTasks();
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 
     /**
@@ -55,5 +54,10 @@ public class AddTaskCommand extends Command {
             userInput = ui.readCommand();
         }
         return userInput.equals(YES_STRING);
+    }
+
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }

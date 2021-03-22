@@ -46,11 +46,6 @@ public class MarkAsUndoneCommand extends Command {
         ModuleList.writeModule();
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints prompt for indices of tasks to mark as undone.
      *
@@ -61,5 +56,10 @@ public class MarkAsUndoneCommand extends Command {
         ui.printMessage(MESSAGE_TASKS_TO_UNMARK);
         ui.printSummarisedTasks(doneTasks);
         ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_UNMARK));
+    }
+    
+    @Override
+    public boolean isExit() {
+        return false;
     }
 }
