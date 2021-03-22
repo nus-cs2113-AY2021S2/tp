@@ -1,6 +1,6 @@
 package seedu.staff;
 
-import seedu.duke.ui.UI;
+import seedu.duke.ui.StaffUI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ public class StaffList {
         if (isValidID(array[0])) {
             Staff staff = new Staff(array);
             addStaff(staff);
-            UI.hiredOutput(line);
+            StaffUI.staffHiredOutput(array[0], array[1]);
         }
     }
 
@@ -92,9 +92,9 @@ public class StaffList {
             }
         }
         if (isExistingID) {
-            firedOutput(line);
+            StaffUI.staffFiredOutput(line);
         } else {
-            staffDoesNotExist(line);
+            StaffUI.staffDoesNotExist(line);
         }
     }
 

@@ -3,7 +3,7 @@ package seedu.doctorappointments;
 
 import seedu.duke.exceptions.EmptyListException;
 import seedu.duke.storage.DoctorAppointmentStorage;
-import seedu.duke.ui.UI;
+import seedu.duke.ui.DoctorAppointmentUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +72,6 @@ public class AppointmentActions {
     }
 
     public static void helpAppointment() {
-        UI.doctorAppointmentHelp();
+        DoctorAppointmentUI.doctorAppointmentHelp();
     }
 }
