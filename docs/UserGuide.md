@@ -42,16 +42,27 @@ finance management rather than using the traditional management system.
 
 ## 3. Features
 > ❗ **CAUTION:** Insert any warning.
-
+> * _Finux_ supports multiple Date formats, for ease of use:
+>   * `DDMMYYYY`
+>   * `D.M.YYYY`
+>   * `D-M-YYYY`
+>   * `D/M/YYYY`
+>   * `YYYY.M.D`
+>   * `YYYY-M-D`
+>   * `YYYY/M/D`
+> * `today` keyword specifies today's date, replacing the need to type in the actual date
+    for date inputs.
 ### 3.1 Add a record: `add`
-
+> For the `add` command, there is no strict ordering for options.
+<br>
+> i.e. options `-a` can come before/after option `-d`.
 #### 3.1.1 Add an expense record
 
 This operation will add an expense record to the list.
 
-Format: `insert format`
+Format: `add -e <description> -a <amount> -d <date>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
@@ -61,9 +72,9 @@ Output:
 
 This operation will add a loan record to the list.
 
-Format: `insert format`
+Format: `add -l <description> -a <amount> -d <date> -p <borrower>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
@@ -73,9 +84,9 @@ Output:
 
 This operation will add a saving record to the list.
 
-Format: `insert format`
+Format: `add -s <description> -a <amount> -d <date>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
