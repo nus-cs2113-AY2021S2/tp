@@ -1,0 +1,33 @@
+@startuml
+!include <office/Concepts/globe_internet>
+!include <office/Concepts/documents>
+!include <office/Users/user>
+!include style.puml
+
+'Need to rework current Finux Architecture
+
+Package "Finux"<<Rectangle>> {
+    Class UI #green
+    Class Storage #magenta
+    Class RecordList #indigo
+    Class Main #grey
+    Class CommandLogic #orange
+    Class Command #purple
+}
+
+Class "<$user>" as User #black
+Class "<$documents>" as File #skyblue
+
+Main -[#grey]-> UI
+Main -[#grey]-> RecordList
+Main -[#grey]-> Storage
+Main -[#grey]-> CommandLogic
+UI -[#green]-> Main
+CommandLogic -[#red]-> Command
+UI .right[#green].> Command
+RecordList .[#indigo].> Command
+Storage .[#magenta].> Command
+Storage .[#magenta].> File
+File .[#skyblue].> Storage
+User ..> UI
+@enduml

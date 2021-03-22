@@ -1,14 +1,37 @@
 # Developer Guide
 
-## Design & implementation
+## Design
+### Architecture
+
+![ArchitectureDiagram](img/ArchitectureDiagram.png)
+Note: Not final implementation yet, need refactor Parser and CommandHandler into
+CommandLogic.
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+### UI component
+...
+
+### ... component
+etc...
+
+## Implementation
+Some Class diagrams, etc...
+Some sequence diagrams, etc...
 
 ## Product scope
 ### Target user profile
 
 {Describe the target user profile}
+
+## **Appendix: Requirements**
+
+### Product scope
+
+**Target user profile**:
+
+* prefers typing in CLI instead of GUI interactions
+* ...
 
 ### Value proposition
 
@@ -29,6 +52,6 @@
 
 * *glossary item* - Definition
 
-## Instructions for manual testing
+## **Appendix: Instructions for manual testing**
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
