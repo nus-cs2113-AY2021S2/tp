@@ -83,6 +83,10 @@ public class TextEditor extends JFrame implements ActionListener {
         }
     }
 
+    public void setTextAreaToVoid() {
+        textArea.setText(null);
+    }
+
     private void setPathName(String path) {
         pathName = path;
     }

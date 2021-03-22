@@ -42,6 +42,9 @@ public class AddCheatSheetCommand extends Command {
             File file = new File(filePath);
             ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
             TextEditor textEditor = new TextEditor(filePath);
+            textEditor.setTextAreaToVoid();
+            textEditor.saveTextToFile();
+            textEditor.loadFile(filePath);
         }
     }
 
