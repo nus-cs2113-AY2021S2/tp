@@ -3,6 +3,7 @@ package seedu.patient;
 import seedu.duke.exceptions.DukeException;
 import seedu.duke.menuparser.MenuParser;
 import seedu.duke.storage.PatientStorage;
+import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
 
 public class PatientCommandInstance {
@@ -24,12 +25,12 @@ public class PatientCommandInstance {
     }
 
     public void run() {
-        ui.patientCommandWelcome();
+        PatientUI.patientCommandWelcome();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
                 UI.showLine(); // show the divider line ("_______")
-                UI.patientMenuPrompt();
+                PatientUI.patientMenuPrompt();
                 String fullCommand = UI.scanInput();
                 isReturnToStartMenu = MenuParser.patientParse(fullCommand, patients);
                 UI.showLine();

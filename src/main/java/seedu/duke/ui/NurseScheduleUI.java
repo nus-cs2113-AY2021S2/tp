@@ -2,17 +2,17 @@ package seedu.duke.ui;
 
 public class NurseScheduleUI extends UI {
 
-    public void nurseSchedulePrompt() {
+    public static void nurseSchedulePrompt() {
         System.out.print("NSchedule --> ");
     }
 
-    public void printNurseScheduleWelcomeMessage() {
+    public static void printNurseScheduleWelcomeMessage() {
         System.out.println("Welcome to Nurse Schedules!");
         System.out.println("Type \"help\" to for nurse schedules commands");
         showLine();
     }
 
-    public void printNurseScheduleHelpList() {
+    public static void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedules commands: ");
         System.out.println("\"help\" brings up this list of commands!");
         System.out.println("\"add [NurseID] [Patient ID] [Date (DDMMYYYY)]\" adds a schedule to the schedule list!");
@@ -22,37 +22,37 @@ public class NurseScheduleUI extends UI {
         showLine();
     }
 
-    public void printDeletedSchedule(String id, String datetime) {
-        System.out.println("Trip to " + id +
-                " on " + datetime + " has been cancelled!");
+    public static void printDeletedSchedule(String id, String datetime) {
+        System.out.println("Trip to " + id
+                + " on " + datetime + " has been cancelled!");
         showLine();
     }
 
-    public void printAddedSchedule(String id, String datetime) {
+    public static void printAddedSchedule(String id, String datetime) {
         System.out.println("Trip to " + id + " on " + datetime + " added!");
         showLine();
     }
 
-    public void invalidCommandMessage() {
+    public static void invalidCommandMessage() {
         System.out.println("OOPS! Please check to see if your command is properly formatted!");
         showLine();
     }
 
-    public void invalidInputsMessage() {
+    public static void invalidInputsMessage() {
         System.out.println("Invalid inputs!");
     }
 
-    public void addHelpMessage() {
+    public static void addHelpMessage() {
         System.out.println("Format: add [NurseID] [Patient ID] [Date (DDMMYYYY)]");
         showLine();
     }
 
-    public void listHelpMessage() {
+    public static void listHelpMessage() {
         System.out.println("Format: list [NurseID/all]");
         showLine();
     }
 
-    public void deleteHelpMessage() {
+    public static void deleteHelpMessage() {
         System.out.println("Format: delete [NurseID] [Date (DDMMYYYY)]");
         showLine();
     }

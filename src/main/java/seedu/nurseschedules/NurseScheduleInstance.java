@@ -1,50 +1,53 @@
 package seedu.nurseschedules;
 
+import seedu.duke.exceptions.nurseschedules.EmptyListException;
+import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
 import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
-import seedu.nurseschedules.parser.Parser;
+import seedu.duke.menuparser.NurseSchedulesParser;
 import seedu.duke.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main entry-point for the NurseSchedules instance.
+ */
 public class NurseScheduleInstance {
 
-    private Parser parser;
+    private NurseSchedulesParser parser;
     private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
-    private NurseScheduleUI ui;
 
+    /** The list of nurse schedules */
     List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
 
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
     public static void main() {
         new NurseScheduleInstance().run();
     }
 
+    /** Runs the program until termination. */
     public void run() {
         start();
         runCommandLoopUntilExit();
     }
 
     private void start() {
-        this.parser = new Parser();
+        this.parser = new NurseSchedulesParser();
         this.actions = new NurseScheduleActions();
         this.storage = new NurseScheduleStorage();
-        this.ui = new NurseScheduleUI();
 
         storage.load(nurseSchedules);
 
-        ui.printNurseScheduleWelcomeMessage();
+        NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
+    /** Reads the user command and executes it, until the user issues the exit command */
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            ui.nurseSchedulePrompt();
+            NurseScheduleUI.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
 
@@ -52,20 +55,24 @@ public class NurseScheduleInstance {
             case "add":
                 try {
                     String[] details = parser.getDetails(line);
-                    ui.printAddedSchedule(details[1], parser.formatDate(line));
+                    NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
                     nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
                     storage.writeToFile(nurseSchedules);
                 } catch (ParseException | WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.addHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.addHelpMessage();
                 }
                 break;
             case "list":
                 try {
                     actions.listSchedules(nurseSchedules, parser.getDetails(line));
                 } catch (WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.listHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.listHelpMessage();
+                } catch (EmptyListException e) {
+                    System.out.println(e.getMessage());
+                } catch (NurseIDNotFound e) {
+                    System.out.println(e.getMessage());
                 }
                 break;
             case "delete":
@@ -73,20 +80,20 @@ public class NurseScheduleInstance {
                     actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
                     storage.writeToFile(nurseSchedules);
                 } catch (WrongInputsException e) {
-                    ui.invalidInputsMessage();
-                    ui.deleteHelpMessage();
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.deleteHelpMessage();
                 }
                 break;
             case "help":
-                ui.printNurseScheduleHelpList();
+                NurseScheduleUI.printNurseScheduleHelpList();
                 break;
             case "return":
                 storage.writeToFile(nurseSchedules);
-                ui.returnToStart();
+                NurseScheduleUI.returningToStartMenuMessage();
                 isRun = false;
                 break;
             default:
-                ui.invalidCommandMessage();
+                NurseScheduleUI.invalidCommandMessage();
                 break;
             }
         }
