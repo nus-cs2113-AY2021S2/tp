@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.nurseschedules.NurseSchedule;
+import seedu.staff.Staff;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,5 +58,4 @@ public class NurseScheduleStorage {
         createFile();
         readFile(nurseSchedules);
     }
-
 }
