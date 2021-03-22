@@ -5,7 +5,6 @@ import seedu.duke.storage.Writer;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 import static seedu.duke.common.CommonMethods.getDaysRemaining;
 
@@ -101,7 +100,7 @@ public class ModuleList {
             return null;
         }
         Writer writer = new Writer();
-        if (writer.deleteFile(modules.get(index))) {
+        if (writer.deleteDirectory(modules.get(index))) {
             String moduleName = modules.get(index);
             modules.remove(index);
             return moduleName;

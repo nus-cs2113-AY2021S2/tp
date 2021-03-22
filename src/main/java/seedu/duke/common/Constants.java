@@ -53,10 +53,11 @@ public class Constants {
     //Parser
     public static final String FORMAT_MODULE_CODE = "([A-z]{2,3}[\\d]{4}[A-z]?)";
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
-    public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}" 
-                                            + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
+    public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}"
+            + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
     public static final String FORMAT_COMMAND_WORD_AND_ARGS = "(^\\S+)(.*)";
     public static final String FORMAT_TWO_COMMAND_WORD_AND_ARGS = "(^\\S+\\s+\\S+)(.*)";
+  
     public static final String DELIM = ";;";
     public static final String WHITESPACE = " ";
 
@@ -78,9 +79,27 @@ public class Constants {
 
     //Command
     public static final String HEAD = "HEAD";
-    
+
     //Logging
     public static final String LOGGER_PATH = "GULIOLog.log";
     public static final String LOGGER_NAME = "LOGGER";
+    
+    //Cheatsheet
+    public static final String CHEATSHEET_STRING = "Cheatsheet";
 
+    //Editor
+    public static final int TEXT_EDITOR_WIDTH = 800;
+    public static final int TEXT_EDITOR_HEIGHT = 800;
+    public static final int TEXT_AREA_WIDTH = 700;
+    public static final int TEXT_AREA_HEIGHT = 700;
+    public static final String DEFAULT_FONT_STYLE = "Times New Roman";
+    public static final int DEFAULT_FONT_SIZE = 16;
+    public static final int BOX_WIDTH = 50;
+    public static final int BOX_HEIGHT = 25;
+    public static final String FONT_SIZE_ICON = "Font size: ";
+    public static final String FONT_COLOUR_ICON = "Font colour";
+    public static final String SAVE_ICON = "Save";
+    public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
+    public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
+    public static final int KEYCODE_S = 83;
 }

@@ -13,6 +13,7 @@ import static seedu.duke.common.Messages.INDENTATION;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.storage.Writer.recursivelyRemoveFiles;
 
 public class TestUtilAndConstants {
 
@@ -44,14 +45,7 @@ public class TestUtilAndConstants {
     //@@author 8kdesign
     public static void removeFiles() {
         File directory = new File(FOLDER_PATH);
-        File[] files = directory.listFiles();
-        if (files == null) {
-            return;
-        }
-        for (File file : files) {
-            file.delete();
-        }
-        directory.delete();
+        recursivelyRemoveFiles(directory);
     }
 
     //@@author aliciatay-zls
