@@ -28,6 +28,14 @@ public class Task {
         this.isGraded = isGraded;
     }
 
+    public void markDone() {
+        this.setDone(true);
+    }
+
+    public void markUndone() {
+        this.setDone(false);
+    }
+
     public String getDescription() {
         return description;
     }

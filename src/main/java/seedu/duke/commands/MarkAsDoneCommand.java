@@ -41,7 +41,7 @@ public class MarkAsDoneCommand extends Command {
         for (Task task : selectedTasks) {
             String description = task.getDescription();
             ui.printMessage(String.format(MESSAGE_MARKED_AS_DONE, description));
-            module.markTask(task);
+            task.markDone();
         }
         ModuleList.writeModule();
     }
