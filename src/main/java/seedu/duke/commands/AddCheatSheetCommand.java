@@ -28,9 +28,8 @@ public class AddCheatSheetCommand extends Command {
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
-        Path path;
         String filePath = directoryPath + fileName;
-        path = Paths.get(filePath);
+        Path path = Paths.get(filePath);
         openTextEditor(ui, path, filePath);
     }
 
