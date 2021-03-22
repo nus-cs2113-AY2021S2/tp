@@ -18,8 +18,9 @@ import java.util.logging.Level;
 
 public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
-    private static final int INDEX_OF_COMMAND = 0;
     private static final String DEFAULT_LOGGER_NAME = "CommandLogger";
+    private static final String LOGGER_OKAY_MESSAGE = "command object successfully created.";
+    private static final int INDEX_OF_COMMAND = 0;
     private final Logger logger;
 
     public CommandHandler() {
@@ -58,10 +59,10 @@ public class CommandHandler {
         }
     }
 
-    public Command parseCommand(ArrayList<String> parsedString, RecordList records) {
+    public Command parseCommand(ArrayList<String> parsedString, RecordList recordList) {
         try {
-            Command command = createCommand(parsedString, records);
-            logger.log(Level.INFO, "command object successfully created.");
+            Command command = createCommand(parsedString, recordList);
+            logger.log(Level.INFO, LOGGER_OKAY_MESSAGE);
             return command;
         } catch (CommandException e) {
             System.out.println(e.getMessage());
