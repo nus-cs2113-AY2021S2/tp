@@ -1,7 +1,7 @@
 package seedu.nurseschedules;
 
 import seedu.duke.exceptions.nurseschedules.EmptyListException;
-import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
+import seedu.duke.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.duke.ui.NurseScheduleUI;
 import seedu.duke.ui.UI;
 
@@ -16,12 +16,12 @@ public class NurseScheduleActions {
     private String nurseID = null;
 
     /**
-     * Handler when list command is issued
+     * Handler when list command is issued.
      *
      * @param nurseSchedules List of all schedules
      * @param details Contains either NurseID or 'all'
      */
-    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) throws EmptyListException, NurseIDNotFound {
+    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details) throws EmptyListException, NurseIdNotFound {
         if (details[0].equals("all")) {
             listAllSchedules(nurseSchedules);
         } else if (isValidNurseID(nurseSchedules, details[0])) {
@@ -33,7 +33,7 @@ public class NurseScheduleActions {
     }
 
     /**
-     * Handler for 'list all' schedules
+     * Handler for 'list all' schedules.
      *
      * @param nurseSchedules
      * @throws EmptyListException when nurse schedule list is empty
@@ -54,7 +54,7 @@ public class NurseScheduleActions {
     }
 
     /**
-     * Deletes schedule with given nurseID and datetime
+     * Deletes schedule with given nurseID and datetime.
      *
      * @param nurseSchedules List of all schedules
      * @param details nurseID to delete
@@ -86,7 +86,7 @@ public class NurseScheduleActions {
     }
 
     /**
-     * Prints schedules
+     * Prints schedules.
      *
      * @param list List of schedules to be printed
      */
@@ -109,14 +109,14 @@ public class NurseScheduleActions {
     }
 
     /**
-     * Checks if nurseID exists within schedules
+     * Checks if nurseID exists within schedules.
      *
      * @param nurseSchedules List of all schedules
      * @param id NurseID to check
      * @return boolean
-     * @throws NurseIDNotFound if id does not exist
+     * @throws NurseIdNotFound if id does not exist
      */
-    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) throws NurseIDNotFound {
+    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) throws NurseIdNotFound {
         int i = 0;
         while (i < nurseSchedules.size()) {
             if (nurseSchedules.get(i).getNurseID().equals(id)) {
@@ -124,6 +124,6 @@ public class NurseScheduleActions {
             }
             i++;
         }
-        throw new NurseIDNotFound();
+        throw new NurseIdNotFound();
     }
 }
