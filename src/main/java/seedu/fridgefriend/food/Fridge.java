@@ -21,5 +21,4 @@ public class Fridge {
         fridge.remove(index);
     }
 
-
 }

@@ -18,6 +18,9 @@ import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.food.Quantity;
+import seedu.fridgefriend.food.Weight;
 
 /**
  * Represents an object that deals with making sense of the user command.
@@ -36,10 +39,11 @@ public class Parser {
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command getCommand(String input)
-            throws EmptyDescriptionException, InvalidInputException, 
-            InvalidIndexException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidIndexException, InvalidDateException, InvalidQuantityException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -75,10 +79,11 @@ public class Parser {
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException, 
-            InvalidIndexException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidIndexException, InvalidDateException, InvalidQuantityException {
         String commandString = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
         Command command;
@@ -113,15 +118,28 @@ public class Parser {
     }
 
     /**
-     * Define arguments format for add food command.
+     * Define arguments format for add food command with quantity.
      * A Pattern object which defines how the input string for food item
      * that should look like. [^/]+ implies 1 or more characters except for '/'
      */
-    public static final Pattern FOOD_DATA_ARGS_FORMAT =
+    public static final Pattern FOOD_DATA_ARGS_FORMAT_QUANTITY =
             Pattern.compile("(?<name>[^/]+)"
                     + " /cat (?<category>[^/]+)"
                     + " /exp (?<expiryDate>[^/]+)"
-                    + " /loc (?<storageLocation>[^/]+)");
+                    + " /loc (?<storageLocation>[^/]+)"
+                    + " /qty (?<quantity>[^/]+)");
+
+    /**
+     * Define arguments format for add food command with weight.
+     * A Pattern object which defines how the input string for food item
+     * that should look like. [^/]+ implies 1 or more characters except for '/'
+     */
+    public static final Pattern FOOD_DATA_ARGS_FORMAT_WEIGHT =
+            Pattern.compile("(?<name>[^/]+)"
+                    + " /cat (?<category>[^/]+)"
+                    + " /exp (?<expiryDate>[^/]+)"
+                    + " /loc (?<storageLocation>[^/]+)"
+                    + " /wgt (?<weight>[^/]+)");
 
     /**
      * Parses description into name, foodCategory, expiryDate and storageLocation.
@@ -133,19 +151,34 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command parseFoodDescription(String foodDescription)
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException, InvalidQuantityException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-        final Matcher matcher = FOOD_DATA_ARGS_FORMAT.matcher(foodDescription.trim());
+        Matcher matcherQuantity = FOOD_DATA_ARGS_FORMAT_QUANTITY.matcher(foodDescription.trim());
+        Matcher matcherWeight = FOOD_DATA_ARGS_FORMAT_WEIGHT.matcher(foodDescription.trim());
+
         // Validate foodDescription string format
-        if (!matcher.matches()) {
+        if (matcherQuantity.matches()) {
+            Quantity quantity = new Quantity(matcherQuantity.group("quantity"));
+            return new AddCommand(matcherQuantity.group("name"),
+                    convertStringToFoodCategory(matcherQuantity.group("category")),
+                    matcherQuantity.group("expiryDate"),
+                    convertStringToLocation(matcherQuantity.group("storageLocation")),
+                    quantity);
+        } else if (matcherWeight.matches()) {
+            Weight weight = new Weight(matcherWeight.group("weight"));
+            return new AddCommand(matcherWeight.group("name"),
+                    convertStringToFoodCategory(matcherWeight.group("category")),
+                    matcherWeight.group("expiryDate"),
+                    convertStringToLocation(matcherWeight.group("storageLocation")),
+                    weight);
+        } else {
             throw new InvalidInputException();
         }
-        return new AddCommand(matcher.group("name"), convertStringToFoodCategory(matcher.group("category")),
-                matcher.group("expiryDate"), convertStringToLocation(matcher.group("storageLocation")));
     }
 
     /**
@@ -156,9 +189,10 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
-    public static Command getAddCommand(String description) 
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
+    public static Command getAddCommand(String description)
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException, InvalidQuantityException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
     }
@@ -212,8 +246,9 @@ public class Parser {
 
     /**
      * Returns a HelpCommand object.
+     *
+     * @return a list of instructions on how to use the various commands
      */
-
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
@@ -221,6 +256,8 @@ public class Parser {
 
     /**
      * Returns a ByeCommand object.
+     *
+     * @return a ByeCommand to exit the program
      */
     public static Command getByeCommand() {
         Command byeCommand = new ByeCommand();
