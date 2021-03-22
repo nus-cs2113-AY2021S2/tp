@@ -1,24 +1,6 @@
 package seedu.duke.parser;
 
-import seedu.duke.commands.AddLessonCommand;
-import seedu.duke.commands.AddModuleCommand;
-import seedu.duke.commands.AddTaskCommand;
-import seedu.duke.commands.Command;
-import seedu.duke.commands.DeleteLessonCommand;
-import seedu.duke.commands.DeleteModuleCommand;
-import seedu.duke.commands.DeleteTaskCommand;
-import seedu.duke.commands.EnterModuleCommand;
-import seedu.duke.commands.ExitModuleCommand;
-import seedu.duke.commands.ExitProgramCommand;
-import seedu.duke.commands.ListLessonsCommand;
-import seedu.duke.commands.ListModulesCommand;
-import seedu.duke.commands.ListTasksCommand;
-import seedu.duke.commands.MarkAsDoneCommand;
-import seedu.duke.commands.MarkAsUndoneCommand;
-import seedu.duke.commands.ModuleInfoCommand;
-import seedu.duke.commands.OpenLessonLinkCommand;
-import seedu.duke.commands.PrintHelpCommand;
-import seedu.duke.commands.ViewTeachingStaffCommand;
+import seedu.duke.commands.*;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
@@ -42,6 +24,7 @@ import java.util.regex.Pattern;
 import static seedu.duke.common.Constants.ADD;
 import static seedu.duke.common.Constants.DELETE;
 import static seedu.duke.common.Constants.DELIM;
+import static seedu.duke.common.Constants.EDIT;
 import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.ENTRY_LESSON_MAX_PARSER;
 import static seedu.duke.common.Constants.ENTRY_TASK_MAX_PARSER;
@@ -75,6 +58,7 @@ import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
 public class Parser {
 
     //@@author ivanchongzhien
+
     /**
      * Calls the appropriate parser method depending on whether user is at dashboard or has selected
      * a module.
@@ -179,6 +163,12 @@ public class Parser {
             return new AddTaskCommand(newTask);
         case DELETE_TASK:
             return new DeleteTaskCommand();
+        case ADD_CHEAT_SHEET:
+            return new AddCheatSheetCommand(commandArgs);
+        case DELETE_CHEAT_SHEET:
+            return new DeleteCheatSheetCommand(commandArgs);
+        case EDIT_CHEAT_SHEET:
+            return new EditCheatSheetCommand(commandArgs);
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
@@ -186,6 +176,7 @@ public class Parser {
 
     /**
      * Gets the single command word and arguments from user input.
+     *
      * @param input full user input
      * @return string array of command word and arguments
      * @throws ParserException if invalid word is given
@@ -196,12 +187,13 @@ public class Parser {
         if (!matcher.matches()) {
             throw new ParserException(MESSAGE_INVALID_COMMAND);
         }
-        String[] commandWordAndArgs = { matcher.group(1), matcher.group(2) };
+        String[] commandWordAndArgs = {matcher.group(1), matcher.group(2)};
         return commandWordAndArgs;
     }
 
     /**
      * Enchanced version of getCommandWordAndArgs for module commands.
+     *
      * @param input full user input
      * @return string array of command word and arguments
      * @throws ParserException if invalid word given
@@ -210,7 +202,8 @@ public class Parser {
         String[] commandWordAndArgs = getCommandWordAndArgs(input);
         // command is more than 1 word
         if (commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(ADD)
-                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE)) {
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE)
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(EDIT)) {
             commandWordAndArgs = getTwoCommandWordAndArgs(input);
         }
         return commandWordAndArgs;
@@ -219,6 +212,7 @@ public class Parser {
     /**
      * Gets two command word and arguments from user input.
      * Only called when first command word is "add" or "delete".
+     *
      * @param input full user input
      * @return string array of two command words and arguments
      * @throws ParserException if insufficient number of words given
@@ -229,7 +223,7 @@ public class Parser {
         if (!matcher.matches()) {
             throw new ParserException(MESSAGE_INVALID_COMMAND);
         }
-        String[] commandWordsAndArgs = { matcher.group(1), matcher.group(2) };
+        String[] commandWordsAndArgs = {matcher.group(1), matcher.group(2)};
         return commandWordsAndArgs;
     }
 
@@ -399,7 +393,7 @@ public class Parser {
         // assumption that input is non-null
         assert (input != null);
         String[] words = input.trim().split(WHITESPACE);
-        
+
         for (String word : words) {
             try {
                 index = Integer.parseInt(word);
@@ -441,9 +435,9 @@ public class Parser {
     /**
      * Prints warning to inform user that some inputs were out of bounds and removed.
      * Prints the integers that were removed.
-     * 
+     *
      * @param removed array list of integers that were out of bounds and have been removed
-     * @param ui UI object for printing
+     * @param ui      UI object for printing
      */
     private static void printOutOfBoundsWarning(ArrayList<Integer> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_OUT_OF_BOUNDS_INDICES, removed));
@@ -454,7 +448,7 @@ public class Parser {
      * Prints the strings that were removed.
      *
      * @param removed array list of strings that were invalid and have been removed
-     * @param ui UI object for printing
+     * @param ui      UI object for printing
      */
     private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));

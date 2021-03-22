@@ -63,6 +63,7 @@ public class Constants {
 
     public static final String ADD = "add";
     public static final String DELETE = "delete";
+    public static final String EDIT ="edit";
 
     public static final int INDEX_COMMAND_WORD = 0;
     public static final int INDEX_COMMAND_ARGS = 1;
