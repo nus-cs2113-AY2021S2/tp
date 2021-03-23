@@ -10,6 +10,7 @@ import seedu.duke.commands.DeleteLessonCommand;
 import seedu.duke.commands.DeleteModuleCommand;
 import seedu.duke.commands.DeleteTaskCommand;
 import seedu.duke.commands.EditCheatSheetCommand;
+import seedu.duke.commands.EditLessonCommand;
 import seedu.duke.commands.EditTaskCommand;
 import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ExitModuleCommand;
@@ -200,6 +201,8 @@ public class Parser {
             return new ListCheatSheetCommand();
         case EDIT_TASK:
             return new EditTaskCommand();
+        case EDIT_LESSON:
+            return new EditLessonCommand();
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
@@ -324,7 +327,7 @@ public class Parser {
      * @param allDetails  array storing parsed details
      */
     private void parseLessonDetails(String inputString, String[] allDetails) {
-        // split the details field using DELIMITER to get the individual detail fields
+        // split the details field using delimiter to get the individual detail fields
         String[] splitDetails = inputString.split(DELIM);
 
         // store detail fields that have been filled by the user into an array
