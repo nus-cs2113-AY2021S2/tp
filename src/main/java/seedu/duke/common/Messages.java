@@ -37,6 +37,8 @@ public class Messages {
 
     public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
     public static final String MESSAGE_OUT_OF_BOUNDS_INDICES = "Warning, out of bounds index removed: %s";
+    public static final String MESSAGE_NON_INTEGER_INDEX = "Please enter a valid index!";
+    public static final String MESSAGE_OUT_OF_BOUNDS_INDEX = "Warning, index given is out of bounds/invalid!";
 
     public static final String MESSAGE_INVALID_DAY_TIME = "Invalid format. Please enter a valid day and time!";
 
@@ -82,6 +84,10 @@ public class Messages {
     public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Teaching staff email updated to: %s";
     public static final String MESSAGE_LINK_UPDATED = "Lesson link updated to: %s";
     public static final String MESSAGE_LESSON_TIME_UPDATED = "Lesson time/day updated to: %s";
+    
+    public static final String WARNING_NO_VALID_INPUT = "No valid inputs received. "
+            + "Please enter the values of the fields you would like to edit (1-4).";
+    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.";
 
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
     public static final String MESSAGE_SORT_LESSON_LIST = "Sorting list of lessons based on lesson type...";

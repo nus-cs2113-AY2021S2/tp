@@ -27,7 +27,6 @@ import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
-import seedu.duke.exception.DukeException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -65,6 +64,8 @@ import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
 import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
+import static seedu.duke.common.Constants.LESSON_COMMAND_WITH_DETAILS;
+import static seedu.duke.common.Constants.TASK_COMMAND_WITH_DETAILS;
 import static seedu.duke.common.Constants.WHITESPACE;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
@@ -74,7 +75,9 @@ import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE_CODE;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELDS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_CODE_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDEX;
 import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDEX;
 import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
@@ -178,12 +181,12 @@ public class Parser {
         case TEACHER:
             return new ViewTeachingStaffCommand();
         case ADD_LESSON:
-            Lesson newLesson = parseNewLessonDetails(input);
+            Lesson newLesson = parseNewLesson(input);
             return new AddLessonCommand(newLesson);
         case DELETE_LESSON:
             return new DeleteLessonCommand();
         case ADD_TASK:
-            Task newTask = parseNewTaskDetails(input);
+            Task newTask = parseNewTask(input);
             return new AddTaskCommand(newTask);
         case DELETE_TASK:
             return new DeleteTaskCommand();
@@ -290,33 +293,57 @@ public class Parser {
      * @param input full user input string
      * @return a Lesson object with the details entered by the user. Fields not found will be left as an empty string.
      */
-    private Lesson parseNewLessonDetails(String input) throws CommandException {
+    private Lesson parseNewLesson(String input) throws CommandException {
 
         // initialize an array of empty strings to store lesson details
         String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
         Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add lesson"
-        String[] lessonDetails = input.trim().split(WHITESPACE, 3);
-        // assumption that the "add lesson" will always be present in input
-        assert (lessonDetails.length >= 2);
+        String[] inputSections = input.trim().split(WHITESPACE, LESSON_COMMAND_WITH_DETAILS);
+        // assumption that "add lesson" will always be present in input
+        assert (inputSections.length >= 2);
 
         // ERROR - User does not enter any parameters.
-        if (lessonDetails.length < 3) {
+        if (inputSections.length < LESSON_COMMAND_WITH_DETAILS) {
             throw new CommandException(MESSAGE_LESSON_FIELDS_EMPTY);
         }
+        // first two words are "add" and "lesson"
+        String lessonDetails = inputSections[2];
 
+        parseLessonDetails(lessonDetails, allDetails);
+        Lesson newLesson = createLessonObject(allDetails);
+
+        return newLesson;
+    }
+
+    /**
+     * Splits input string into its respective fields and stores each substring in an array.
+     *
+     * @param inputString user input containing new lesson details
+     * @param allDetails  array storing parsed details
+     */
+    private void parseLessonDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
-        String[] details = lessonDetails[2].split(DELIM);
+        String[] splitDetails = inputString.split(DELIM);
 
         // store detail fields that have been filled by the user into an array
         // if user did not enter that field, it will remain as an empty string
-        for (int i = 0; i < details.length && i < allDetails.length; i++) {
-            allDetails[i] = details[i].trim();
+        for (int i = 0; i < splitDetails.length && i < ENTRY_LESSON_MAX_PARSER; i++) {
+            allDetails[i] = splitDetails[i].trim();
         }
+    }
 
-        // Creating Lesson Object
-        String type = allDetails[INDEX_TYPE].toUpperCase();
+    /**
+     * Creates a new Lesson object with its attributes initialised based on given details array.
+     *
+     * @param allLessonDetails an array of lesson details
+     * @return a new Lesson object
+     * @throws CommandException if invalid lesson type, invalid link format or invalid email format
+     */
+    private Lesson createLessonObject(String[] allLessonDetails) throws CommandException {
+        // type
+        String type = allLessonDetails[INDEX_TYPE].toUpperCase();
         LessonType lessonType;
         try {
             lessonType = LessonType.valueOf(type);
@@ -324,16 +351,20 @@ public class Parser {
             throw new CommandException(MESSAGE_INVALID_LESSON_TYPE);
         }
 
-        String timeAndDay = allDetails[INDEX_DAY_TIME];
+        // time and day
+        String timeAndDay = allLessonDetails[INDEX_DAY_TIME];
 
-        String link = allDetails[INDEX_LINK];
+        // online link
+        String link = allLessonDetails[INDEX_LINK];
         if (!Lesson.isValidLink(link) && !link.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_LINK);
         }
 
-        String teacherName = allDetails[INDEX_TEACHER_NAME];
+        // teacher name
+        String teacherName = allLessonDetails[INDEX_TEACHER_NAME];
 
-        String email = allDetails[INDEX_TEACHER_EMAIL];
+        // teacher email
+        String email = allLessonDetails[INDEX_TEACHER_EMAIL];
         if (!TeachingStaff.isValidEmail(email) && !email.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_EMAIL);
         }
@@ -348,36 +379,62 @@ public class Parser {
      *
      * @param input full user input string
      * @return a Task object with the details entered by the user. Fields not found will be left as an empty string.
+     * @throws CommandException if user does not enter any details
      */
-    private Task parseNewTaskDetails(String input) throws CommandException {
+    private Task parseNewTask(String input) throws CommandException {
 
         // initialize an array of empty strings to store task details
         String[] allDetails = new String[ENTRY_TASK_MAX_PARSER];
         Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add task"
-        String[] taskDetails = input.trim().split(WHITESPACE, 3);
+        String[] inputSections = input.trim().split(WHITESPACE, TASK_COMMAND_WITH_DETAILS);
         // assumption that the "add task" will always be present in input
-        assert (taskDetails.length >= 2);
+        assert (inputSections.length >= 2);
 
-        // ERROR - User does not enter any parameters.
-        if (taskDetails.length < 3) {
+        // user does not enter any parameters.
+        if (inputSections.length < TASK_COMMAND_WITH_DETAILS) {
             throw new CommandException(MESSAGE_TASK_FIELDS_EMPTY);
         }
+        // first two words are "add" and "lesson"
+        String taskDetails = inputSections[2];
 
+        parseTaskDetails(taskDetails, allDetails);
+        Task newTask = createNewTask(allDetails);
+
+        return newTask;
+    }
+
+    /**
+     * Splits input string into its respective fields and stores each substring in an array.
+     *
+     * @param inputString user input containing new task details
+     * @param allDetails  array storing parsed details
+     */
+    private void parseTaskDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
-        String[] details = taskDetails[2].split(DELIM);
+        String[] details = inputString.split(DELIM);
 
         // store detail fields that have been filled by the user into an array
         // if user did not enter that field, it will remain as an empty string
         for (int i = 0; i < details.length && i < allDetails.length; i++) {
             allDetails[i] = details[i].trim();
         }
+    }
 
-        // Creating Task object
-        String description = allDetails[INDEX_DESCRIPTION];
+    /**
+     * Creates a new Task object with its attributes initialised based on given details array.
+     *
+     * @param allTaskDetails an array of task details
+     * @return a new Task object
+     * @throws CommandException if deadline cannot be parsed as a valid date
+     */
+    private Task createNewTask(String[] allTaskDetails) throws CommandException {
+        // description
+        String description = allTaskDetails[INDEX_DESCRIPTION];
 
-        String deadlineString = allDetails[INDEX_DEADLINE];
+        // deadline
+        String deadlineString = allTaskDetails[INDEX_DEADLINE];
         LocalDate deadline;
         try {
             deadline = convertToDate(deadlineString);
@@ -385,7 +442,8 @@ public class Parser {
             throw new CommandException(MESSAGE_INVALID_TASK_DEADLINE);
         }
 
-        String remarks = allDetails[INDEX_REMARKS_PARSER];
+        // remarks
+        String remarks = allTaskDetails[INDEX_REMARKS_PARSER];
 
         return new Task(description, deadline, remarks);
     }
@@ -404,7 +462,28 @@ public class Parser {
     }
 
     /**
-     * Converts given input string to an arraylist of integers.
+     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
+     *
+     * @param input user input string
+     * @return index parsed from input string
+     */
+    public static int checkIndex(String input, int max) throws ParserException {
+        int index = 0;
+        try {
+            index = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new ParserException(MESSAGE_NON_INTEGER_INDEX);
+        }
+
+        if (index < 1 || index > max) {
+            throw new ParserException(MESSAGE_OUT_OF_BOUNDS_INDEX);
+        }
+
+        return index;
+    }
+
+    /**
+     * Converts given input string to an array list of integers.
      * Removes duplicates and indices which are out of bounds.
      *
      * @param input full user input string
@@ -413,51 +492,87 @@ public class Parser {
      * @throws NumberFormatException if non-integer value is present in the input
      */
     public static ArrayList<Integer> checkIndices(String input, int max) {
-        ArrayList<Integer> rawIndices = new ArrayList<>();
-        ArrayList<String> nonIntegers = new ArrayList<>();
-        int index;
         UI ui = new UI();
+        ArrayList<Integer> rawIndices = new ArrayList<>();
 
         // assumption that input is non-null
         assert (input != null);
+        ArrayList<String> nonIntegers = parseIndicesFromString(rawIndices, input);
+        if (nonIntegers.size() != 0) {
+            printNonIntegerWarning(nonIntegers, ui);
+        }
+        // remove duplicates
+        ArrayList<Integer> indices = removeDuplicateIndex(rawIndices);
+
+        // remove out of bounds
+        ArrayList<Integer> removed = removeOutOfBoundIndex(indices, max);
+        if (removed.size() != 0) {
+            printOutOfBoundsWarning(removed, ui);
+        }
+        return indices;
+    }
+
+    /**
+     * Converts input string into integers and stores them in given array list. Non-integer inputs are stored in
+     * a different array list.
+     *
+     * @param indices integer array list used to store parsed integers
+     * @param input   input string to be converted
+     * @return a new array list of non-integers that were removed
+     */
+    private static ArrayList<String> parseIndicesFromString(ArrayList<Integer> indices, String input) {
+        int index;
+        ArrayList<String> nonIntegers = new ArrayList<>();
         String[] words = input.trim().split(WHITESPACE);
 
         for (String word : words) {
             try {
                 index = Integer.parseInt(word);
-                rawIndices.add(index);
+                indices.add(index);
             } catch (NumberFormatException e) {
-                // Non-integer inputs will not be added to the array list rawIndices.
+                // Non-integer inputs will not be added to the indices array list
                 nonIntegers.add(word);
             }
         }
-        if (nonIntegers.size() != 0) {
-            printNonIntegerWarning(nonIntegers, ui);
-        }
+        return nonIntegers;
+    }
 
+    /**
+     * Removes duplicates from an array list of indices.
+     *
+     * @param indexList array list of indices to be checked
+     * @return a copy of the original array list without duplicates
+     */
+    private static ArrayList<Integer> removeDuplicateIndex(ArrayList<Integer> indexList) {
         // Remove duplicates
-        ArrayList<Integer> indices = new ArrayList<>();
-        ArrayList<Integer> removed = new ArrayList<>();
+        ArrayList<Integer> noDuplicates = new ArrayList<>();
 
-        for (int number : rawIndices) {
-            if (!indices.contains(number)) {
-                indices.add(number);
+        for (int number : indexList) {
+            if (!noDuplicates.contains(number)) {
+                noDuplicates.add(number);
             }
         }
+        return noDuplicates;
+    }
 
-        // Remove out of bounds/ invalid index
-        for (int i = 0; i < indices.size(); i++) {
-            if (indices.get(i) > max || indices.get(i) <= 0) {
-                int removedIndex = indices.remove(i);
+    /**
+     * Removes indices that are out of bounds from given array list.
+     *
+     * @param indexList array list indices to be checked
+     * @param max       the upper bound limit
+     * @return a new array list containing indices which were out of bounds
+     */
+    private static ArrayList<Integer> removeOutOfBoundIndex(ArrayList<Integer> indexList, int max) {
+        ArrayList<Integer> removed = new ArrayList<>();
+
+        for (int i = 0; i < indexList.size(); i++) {
+            if (indexList.get(i) > max || indexList.get(i) <= 0) {
+                int removedIndex = indexList.remove(i);
                 removed.add(removedIndex);
                 i--;
             }
         }
-        // Prints indices that were removed.
-        if (removed.size() != 0) {
-            printOutOfBoundsWarning(removed, ui);
-        }
-        return indices;
+        return removed;
     }
 
     /**
@@ -480,28 +595,5 @@ public class Parser {
      */
     private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));
-    }
-
-    /**
-     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
-     * TODO : print proper warning, can consider throwing ParserException and handling
-     * in EditLessonsCommand.
-     *
-     * @param input user input string
-     * @return index parsed from input string
-     */
-    public static int checkIndex(String input, int max) throws DukeException {
-        int index = 0;
-        try {
-            index = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new DukeException("Invalid non-integer input");
-        }
-
-        if (index < 1 || index > max) {
-            throw new DukeException("Index given is out of bounds.");
-        }
-
-        return index;
     }
 }

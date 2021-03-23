@@ -23,6 +23,8 @@ public class Constants {
     public static final int INDEX_LINK = 2;
     public static final int INDEX_TEACHER_NAME = 3;
     public static final int INDEX_TEACHER_EMAIL = 4;
+    
+    public static final int LESSON_COMMAND_WITH_DETAILS = 3;
 
     public static final int ENTRY_LESSON_MAX_PARSER = 5;
     public static final int ENTRY_LESSON_SHORT = 2;
@@ -51,6 +53,8 @@ public class Constants {
     public static final int INDEX_IS_DONE = 2;
     public static final int INDEX_IS_GRADED = 3;
     public static final int INDEX_REMARKS_LOADER = 4;
+    
+    public static final int TASK_COMMAND_WITH_DETAILS = 3;
 
     public static final int ENTRY_TASK_MAX_PARSER = 3;
     public static final int ENTRY_TASK_SHORT = 4;
