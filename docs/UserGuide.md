@@ -43,6 +43,28 @@ finance management rather than using the traditional management system.
 ## 3. Features
 > ❗ **CAUTION:** Insert any warning.
 
+> 💡 **Explanation for Command formats:**
+>> Commands in Finux follow these argument orders (depending on the command):
+>> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
+>> * `CMD -OPT`
+>> * `CMD { -OPT_1 | -OPT_2 | ... } ...`
+>> * `CMD <FIELD>`
+>> * `CMD [<FIELD>]`
+>> * `CMD`
+>>
+>> Argument types and notation:\
+>> `CMD` - a valid command.\
+>> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
+>> `<FIELD>` - an area where data is required.\
+>> `[...]` - optional argument(s).\
+>> `{ -OPT_1 | -OPT_2 | ... }` - mutually exclusive options.
+>>
+> ❗ **Commands and options are case-sensitive.**\
+> E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
+> will not be recognised.\
+> E.g. `view -s` will work, but using `-S` will not be recognised as
+> a valid option.
+
 > 💡 **Date and Date formats:**
 >> Finux supports multiple Date formats, for ease of use:
 >> * `DDMMYYYY`
