@@ -3,11 +3,11 @@ package seedu.duke.common;
 public class Messages {
 
 
-    //General message
+    //General messages
     public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
-    public static final String FORMAT_TASK_FIELDS = "%s - %s - %s";
+    public static final String FORMAT_TASK_FIELDS = "%s - %s \n\t\t- %s - %s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t";
@@ -100,6 +100,8 @@ public class Messages {
     public static final String HEADER_DONE = "[Done]";
     public static final String HEADER_UNDONE = "[Undone]";
     public static final String MESSAGE_GRADED = " (graded)";
+    public static final String MESSAGE_GRADED_STATUS = "Graded";
+    public static final String MESSAGE_UNGRADED_STATUS = "Not graded";
 
     public static final String MESSAGE_ADDED_TASK = "Added %s to task list.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task is already in the list.";
