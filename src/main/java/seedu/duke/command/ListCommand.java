@@ -6,6 +6,7 @@ import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 
 import java.util.HashMap;
+import java.util.SortedMap;
 
 public class ListCommand extends Command {
     /**
@@ -22,7 +23,7 @@ public class ListCommand extends Command {
     @Override
     public void execute() throws Exception {
 
-        HashMap<String, Patient> patients = data.getPatients();
+        SortedMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
         String list = "List of patients:";
 
