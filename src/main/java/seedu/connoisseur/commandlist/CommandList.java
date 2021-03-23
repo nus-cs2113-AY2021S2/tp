@@ -310,7 +310,7 @@ public class CommandList {
             ui.println(MISSING_VIEW_TITLE);
             return;
         }
-        assert title != null: "title should not be empty";
+        assert title != null : "title should not be empty";
         int reviewIndex = -1;
         for (int i = 0; i < reviewList.size(); i++) {
             if (reviewList.get(i).getTitle().compareTo(title) == 0) {
