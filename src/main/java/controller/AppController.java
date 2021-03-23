@@ -208,7 +208,9 @@ public class AppController {
     }
 
     private void viewAllShifts(){
-        System.out.println(shifts);
+        for (Shift item : shifts){
+            System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
+        }
     }
 
     private void viewOneShift() {
@@ -222,9 +224,9 @@ public class AppController {
                 if (item.getShiftIndex() == shiftIndex) {
                     System.out.println("The people assigned to the shift are:" + item.getEmployees());
                 }
-                System.out.println("Shift Index selected is not available");
+                else {System.out.println("Shift Index selected is not available");}
             }
-            System.out.println("Date chosen has no shifts.");
+            else {System.out.println("Date chosen has no shifts.");}
         }
     }
 }
