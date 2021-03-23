@@ -27,9 +27,9 @@ public class CommandListTest {
     @Test
     public void listReview_noReviewsExist() {
 
-        System.setOut(new PrintStream(outContent));
+        setUpStreams();
         System.out.print("You have no reviews, type 'new' to start!");
         assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
-        System.setOut(originalOut);
+        restoreStreams();
     }
 }
