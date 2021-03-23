@@ -13,7 +13,7 @@ What can I do for you?
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
 These are the list of available commands:
-	add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
+	add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
 	list
 	list categoryName
 	remove index
@@ -29,36 +29,50 @@ This is the list of storage locations:
 	[FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
 -----------------------------------------------------------------
 Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
+Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
+-----------------------------------------------------------------
+Great! I have added pork into your fridge.
+Details: Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+-----------------------------------------------------------------
+Sorry my friend, the quantity must be a number.
 -----------------------------------------------------------------
 You have chicken stored in LOWER_SHELF of your fridge.
 -----------------------------------------------------------------
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
 Great! I have added grouper into your fridge.
-Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: OTHER
+Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 1
 -----------------------------------------------------------------
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
+-----------------------------------------------------------------
+Sorry my friend, the quantity must be a number.
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Here are the items in your fridge:
 	1. chicken [MEAT]
-	2. grouper [SEAFOOD]
+	2. pork [MEAT]
+	3. grouper [SEAFOOD]
 -----------------------------------------------------------------
 These are the MEAT in your fridge:
 	1. chicken
+	2. pork
 -----------------------------------------------------------------
 These are the food stored in LOWER_SHELF:
 	1. chicken
+	2. pork
 -----------------------------------------------------------------
 Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
+These are the food expiring in the next week:
+1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
+2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+-----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
-Noted! I've removed grouper from your fridge.
-Now you have 1 food in the fridge.
+Noted! I've removed pork from your fridge.
+Now you have 2 food in the fridge.
 -----------------------------------------------------------------
 Please enter a valid index to remove food.
 -----------------------------------------------------------------

@@ -8,7 +8,9 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 public class Beverage extends Food {
 
     public Beverage(String foodName, FoodCategory category, String expiryString,
-                    FoodStorageLocation storageLocation) throws InvalidDateException {
-        super(foodName, category, expiryString, storageLocation);
+                    FoodStorageLocation storageLocation, int quantity)
+                    throws InvalidDateException {
+        super(foodName, category, expiryString, storageLocation, quantity);
     }
+
 }
