@@ -1,6 +1,7 @@
 package seedu.duke;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -46,6 +47,9 @@ public class Ui {
         printDivider();
     }
 
+    /**
+     * Prints goodbye screen
+     */
     public void showFarewellScreen() {
         printDivider();
         System.out.println("Safe travels! Goodbye!");
@@ -83,6 +87,25 @@ public class Ui {
     }
 
     /**
+     * shows deliveryman's completed deliveries together with total earnings
+     * @param records the ArrayList of completed deliveries to print
+     */
+    public void showRecords(ArrayList<Delivery> records) {
+        System.out.println("Congratulations on completing the following deliveries:");
+        System.out.println(" Number | ID | Location | Earned Amount ");
+        int i = 1;
+        double total = 0;
+        for (Delivery delivery : records) {
+            total += delivery.getDeliveryFee();
+            System.out.println(i + " | "
+                    + delivery.getDeliveryID() + " | "
+                    + delivery.getAddress() + " | " + delivery.getDeliveryFee());
+            i++;
+        }
+        System.out.println("Total Earnings: " + total);
+    }
+
+    /**
      * Shows details about a single delivery order
      * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
      */
@@ -102,11 +125,13 @@ public class Ui {
      */
     public void showCompletedDelivery(int deliveryNumber) {
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
-        delivery.setDeliveryAsComplete();
         System.out.println("The following delivery has been marked as completed:");
         System.out.println(delivery);
     }
 
+    /**
+     * @param deliveryman deliveryman to show details about
+     */
     public void showProfile(Deliveryman deliveryman) {
         System.out.println(deliveryman);
     }
@@ -155,9 +180,12 @@ public class Ui {
                     break;
                 case "complete":
                     deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
-                    // todo: exception handling (numbers that are already complete/out of range)
+                    // todo: exception handling (numbers that are already complete/out of range) !important
+                    Delivery.completeDelivery(deliveryman, deliveryNumber);
                     showCompletedDelivery(deliveryNumber);
                     break;
+                case "record":
+                    showRecords(deliveryman.getRecords());
                 case "bye":
                     break;
                 default:

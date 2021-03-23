@@ -11,6 +11,7 @@ public class DataManager {
 	private static final String TXT_FILE_DIRECTORY= "./data";
 	private static final String PATH_TO_PROFILE = "./data/profile.txt";
 	private static final String PATH_TO_DELIVERY = "./data/delivery.txt";
+	private static final String PATH_TO_ROUTES = "./data/routes.txt";
 
 	/**
 	 * Method to load deliveryman details from a .txt file
@@ -20,6 +21,7 @@ public class DataManager {
 		String driverName = "Obi Wan";
 		String vehicleModel = "YT-1300";
 		String licensePlate = "HIGHGROUND";
+		int maxWeight = 4;
 
 		try {
 			File directory = new File(TXT_FILE_DIRECTORY);
@@ -31,10 +33,11 @@ public class DataManager {
 			Scanner sc = new Scanner(saveFile);
 			while(sc.hasNext()){
 				String loadedInfo = sc.nextLine();
-				String[] userInfo = loadedInfo.split(" \\| ", 3);
+				String[] userInfo = loadedInfo.split(" \\| ", 4);
 				driverName = userInfo[0];
 				vehicleModel = userInfo[2];
 				licensePlate = userInfo[1];
+				maxWeight = Integer.parseInt(userInfo[3]);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -43,7 +46,7 @@ public class DataManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return new Deliveryman(driverName, licensePlate, vehicleModel);
+		return new Deliveryman(driverName, licensePlate, vehicleModel, maxWeight);
 	}
 
 	/**
@@ -51,7 +54,7 @@ public class DataManager {
 	 * @param deliveryman the Deliveryman object being used in the program
 	 */
 	public static void saveProfile(Deliveryman deliveryman){
-		FileWriter fw = null;
+		FileWriter fw;
 		try {
 			fw = new FileWriter(PATH_TO_PROFILE);
 			String profileInfo = deliveryman.saveFormat();
@@ -103,5 +106,22 @@ public class DataManager {
 			itemsArray.add(item);
 		}
 		return itemsArray;
+	}
+
+	public static ArrayList<Route> loadRoutes() {
+		ArrayList<Route> routes = new ArrayList<>();
+		try {
+			File deliveryRoute = new File(PATH_TO_ROUTES);
+			Scanner fileReader = new Scanner(deliveryRoute);
+			while (fileReader.hasNext()) {
+				String line = fileReader.nextLine();
+				String[] routeInfo = line.split(" \\| ");
+				routes.add(new Route(routeInfo[0], Double.parseDouble(routeInfo[1]), Integer.parseInt(routeInfo[2])));
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("Cannot load file...you are clapped! Please load a file.");
+			System.exit(0);
+		}
+		return routes;
 	}
 }
