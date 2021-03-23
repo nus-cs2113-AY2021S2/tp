@@ -25,7 +25,7 @@ public class ListCommand extends Command {
 
         SortedMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
-        String list = "List of patients:";
+        String list = "List of patients (in alphanumeric order):";
 
         for (String patientID : patients.keySet()) {
             list += "\n" + ++patientCount + ". " + patientID;
