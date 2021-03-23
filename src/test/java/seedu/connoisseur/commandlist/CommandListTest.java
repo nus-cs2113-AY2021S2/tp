@@ -1,6 +1,8 @@
 package seedu.connoisseur.commandlist;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.After;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,16 +11,25 @@ import java.io.ByteArrayOutputStream;
 
 public class CommandListTest {
 
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams() {
+        System.setOut(originalOut);
+    }
+
     @Test
-    void listReview_noReviewsExist() {
+    public void listReview_noReviewsExist() {
 
-        PrintStream saveOut = System.out;
-        final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-
-        System.out.println("You have no reviews, type 'new' to start!");
-        assertEquals("You have no reviews, type 'new' to start!\n", out.toString());
-
-        System.setOut(saveOut);
+        System.setOut(new PrintStream(outContent));
+        System.out.print("You have no reviews, type 'new' to start!");
+        assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
+        System.setOut(originalOut);
     }
 }
