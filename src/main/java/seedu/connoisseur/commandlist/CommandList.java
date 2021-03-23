@@ -29,7 +29,6 @@ import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
  * Class with methods for different commands.
  */
 public class CommandList {
-    static final int LIST_CATEGORY_INPUT_LENGTH = 4;
 
     public ArrayList<Review> reviewList;
     private Sorter sorter;
@@ -275,7 +274,8 @@ public class CommandList {
     }
 
     /**
-     * View a selected review. 
+     * View a selected review.
+     *
      * @param title title of the review to be viewed
      */
     public void viewReview(String title) {
