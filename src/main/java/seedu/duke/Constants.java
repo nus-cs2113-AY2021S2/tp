@@ -50,4 +50,11 @@ public class Constants {
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
+
+    // Keys for the argument HashMap
+    public static final String PAYLOAD_KEY = "payload";
+    public static final String SYMPTOM_KEY = "s";
+    public static final String DIAGNOSIS_KEY = "d";
+    public static final String PRESCRIPTION_KEY = "p";
+    public static final String EXCEPTION_RECORD_RETRIEVE_INVALID_DATE = "That's not a valid date";
 }
