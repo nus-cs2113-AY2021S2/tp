@@ -256,5 +256,24 @@ public class AppController {
             System.out.println("Date chosen has no shifts");
         }
     }
+
+    public boolean isEmployeeFound(String name) {
+        for (Employee person : employees) {
+            if (person.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Employee getEmployeeObjectByName(String name){
+        for (Employee person: employees){
+            if(person.getName().equals(name)){
+                return person;
+            }
+        }
+        return null;
+    }
+
 }
 
