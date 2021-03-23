@@ -15,6 +15,10 @@ public class NurseScheduleActions {
     List<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
 
+    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
+        nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+    }
+
     /**
      * Handler when list command is issued.
      *

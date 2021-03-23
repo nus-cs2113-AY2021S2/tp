@@ -6,6 +6,7 @@ import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
 import seedu.duke.menuparser.NurseSchedulesParser;
 import seedu.duke.ui.NurseScheduleUI;
+import seedu.staff.Nurse;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class NurseScheduleInstance {
                 try {
                     String[] details = parser.getDetails(line);
                     NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
-                    nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+                    actions.addSchedule(nurseSchedules, details);
                     storage.writeToFile(nurseSchedules);
                 } catch (ParseException | WrongInputsException e) {
                     NurseScheduleUI.invalidInputsMessage();
