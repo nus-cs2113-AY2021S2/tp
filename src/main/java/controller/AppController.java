@@ -43,8 +43,10 @@ public class AppController {
                 break;
             case "assign Employee":
                 assignEmployee();
+                break;
             case "unassign Employee":
                 unassignEmployee();
+                break;
             case "view Employee schedule":
                 viewEmployeeSchedule();
                 break;
@@ -53,6 +55,9 @@ public class AppController {
                 break;
             case "view one shift":
                 viewOneShift();
+                break;
+            case "list":
+                listAllEmployees();
                 break;
             case "quit":
                 System.out.println("bye");
@@ -70,6 +75,15 @@ public class AppController {
         Employee newEmployee = new Employee(name);
         employees.add(newEmployee);
         System.out.println("Employee added");
+    }
+
+    private void listAllEmployees() {
+        int i;
+
+        System.out.println("Here is the employee list:");
+        for (i = 0; i < employees.size(); i++) {
+            System.out.println(i+1 + ") " + employees.get(i).getName());
+        }
     }
 
     private void addSchedule() {
@@ -134,13 +148,17 @@ public class AppController {
             if (name.equalsIgnoreCase("Q")) {
                 runLoop = false;
             } else {
+                boolean employeeFound = false;
                 for (Employee person : employees) {
                     if (person.getName().equals(name)) {
                         employeesOnShift.add(person);
                         System.out.println("Employee " + name + " added to shift.");
+                        employeeFound = true;
                     }
                 }
-                System.out.println("Employee not found.");
+                if (!employeeFound) {
+                    System.out.println("Employee not found.");
+                }
             }
         } while (runLoop);
         Shift shift = new Shift(employeesOnShift, shiftDate, shiftIndex, vacancy);
