@@ -39,4 +39,10 @@ public class Employee {
         }
         return formattedString +"\n";
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
+
 }
