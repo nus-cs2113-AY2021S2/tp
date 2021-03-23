@@ -177,7 +177,7 @@ public class Parser {
         case TEACHER:
             return new ViewTeachingStaffCommand();
         case ADD_LESSON:
-            Lesson newLesson = parseNewLessonDetails(input);
+            Lesson newLesson = parseNewLesson(input);
             return new AddLessonCommand(newLesson);
         case DELETE_LESSON:
             return new DeleteLessonCommand();
@@ -287,32 +287,42 @@ public class Parser {
      * @param input full user input string
      * @return a Lesson object with the details entered by the user. Fields not found will be left as an empty string.
      */
-    private Lesson parseNewLessonDetails(String input) throws CommandException {
+    private Lesson parseNewLesson(String input) throws CommandException {
 
         // initialize an array of empty strings to store lesson details
         String[] allDetails = new String[ENTRY_LESSON_MAX_PARSER];
         Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add lesson"
-        String[] lessonDetails = input.trim().split(WHITESPACE, 3);
-        // assumption that the "add lesson" will always be present in input
-        assert (lessonDetails.length >= 2);
+        String[] inputSections = input.trim().split(WHITESPACE, 3);
+        // assumption that "add lesson" will always be present in input
+        assert (inputSections.length >= 2);
 
         // ERROR - User does not enter any parameters.
-        if (lessonDetails.length < 3) {
+        if (inputSections.length < 3) {
             throw new CommandException(MESSAGE_LESSON_FIELDS_EMPTY);
         }
-
+        String lessonDetails = inputSections[2];
+        
+        parseLessonDetails(lessonDetails, allDetails);
+        Lesson newLesson = createLessonObject(allDetails);
+        
+        return newLesson;
+    }
+    
+    private void parseLessonDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
-        String[] details = lessonDetails[2].split(DELIM);
+        String[] splitDetails = inputString.split(DELIM);
 
         // store detail fields that have been filled by the user into an array
         // if user did not enter that field, it will remain as an empty string
-        for (int i = 0; i < details.length && i < allDetails.length; i++) {
-            allDetails[i] = details[i].trim();
+            for (int i = 0; i < splitDetails.length && i < ENTRY_LESSON_MAX_PARSER; i++) {
+            allDetails[i] = splitDetails[i].trim();
         }
-
-        // Creating Lesson Object
+    }
+    
+    private Lesson createLessonObject(String[] allDetails) throws CommandException {
+        // type
         String type = allDetails[INDEX_TYPE].toUpperCase();
         LessonType lessonType;
         try {
@@ -321,15 +331,19 @@ public class Parser {
             throw new CommandException(MESSAGE_INVALID_LESSON_TYPE);
         }
 
+        // time and day
         String timeAndDay = allDetails[INDEX_DAY_TIME];
 
+        // online link
         String link = allDetails[INDEX_LINK];
         if (!Lesson.isValidLink(link) && !link.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_LINK);
         }
 
+        // teacher name
         String teacherName = allDetails[INDEX_TEACHER_NAME];
 
+        // teacher email
         String email = allDetails[INDEX_TEACHER_EMAIL];
         if (!TeachingStaff.isValidEmail(email) && !email.equals(EMPTY_STRING)) {
             throw new CommandException(MESSAGE_INVALID_LESSON_EMAIL);
