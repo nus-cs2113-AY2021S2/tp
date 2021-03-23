@@ -13,14 +13,15 @@ public class Fridge {
      * checks if its quantity can be added to existing food item.
      * If foodname exists but storage or expiry information are not identical,
      * will throw an exception to ask user to use a different foodname.
-     * @param food
+     * @param food food object to add obtained from parser.
+     * @throws RepetitiveFoodIdentifierException as name suggests.
      */
-    public void add(Food food) throws RepetitiveFoodIdentifierException{
+    public void add(Food food) throws RepetitiveFoodIdentifierException {
         UniqueFoodnameChecker checker = new UniqueFoodnameChecker(fridge, food);
-        if (checker.isFoodnameUnique()){
+        if (checker.isFoodnameUnique()) {
             fridge.add(food);
         } else {
-            if (checker.isParamIdentical()){
+            if (checker.isParamIdentical()) {
                 Food existingFood = checker.getExistingFood();
                 editFoodQuantity(food, existingFood);
             } else {

@@ -82,4 +82,25 @@ class AddCommandTest {
         });
     }
 
+    @Test
+    public void addCommand_foodWithSameName_successfullyAdded()
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
+        AddCommand addCommand1 = new AddCommand("Milk", FoodCategory.DAIRY,
+                "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 2);
+        addCommand1.setData(fridge);
+        addCommand1.execute();
+        AddCommand addCommand2 = new AddCommand("Milk", FoodCategory.DAIRY,
+                "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 3);
+        addCommand2.setData(fridge);
+        addCommand2.execute();
+        assertEquals(1, fridge.getSize());
+        assertEquals(5, fridge.getFood(0).getQuantity());
+
+        String expectedMessage = "Great! I have added Milk into your fridge.\n"
+                + "Details: Food name: Milk, category: DAIRY, "
+                + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 3";
+        String actualMessage = addCommand2.getMessagePrintedToUser();
+        assertEquals(expectedMessage, actualMessage);
+    }
+
 }

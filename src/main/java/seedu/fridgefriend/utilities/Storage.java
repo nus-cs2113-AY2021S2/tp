@@ -1,7 +1,12 @@
 package seedu.fridgefriend.utilities;
 
 import seedu.fridgefriend.command.AddCommand;
-import seedu.fridgefriend.exception.*;
+import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
+import seedu.fridgefriend.exception.StorageLoadingException;
+import seedu.fridgefriend.exception.StorageSavingException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -59,8 +64,8 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      * @throws InvalidDateException if the date cannot be parsed
      */
-    private static void loadData() throws FileNotFoundException,
-            InvalidDateException, InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+    private static void loadData() throws FileNotFoundException, InvalidDateException,
+            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {

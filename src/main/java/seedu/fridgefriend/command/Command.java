@@ -21,7 +21,8 @@ public abstract class Command {
         return isExit;
     }
 
-    public abstract void execute() throws InvalidInputException, InvalidIndexException, RepetitiveFoodIdentifierException;
+    public abstract void execute() throws InvalidInputException,
+            InvalidIndexException, RepetitiveFoodIdentifierException;
 
     public void setData(Fridge fridge) {
         this.fridge = fridge;

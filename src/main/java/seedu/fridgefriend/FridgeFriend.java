@@ -58,7 +58,8 @@ public class FridgeFriend {
         LoggingHandler.logInfo("Main programme loop exited.");
     }
 
-    private static void executeCommand(Command command) throws InvalidInputException, InvalidIndexException, RepetitiveFoodIdentifierException {
+    private static void executeCommand(Command command) throws InvalidInputException,
+            InvalidIndexException, RepetitiveFoodIdentifierException {
         command.setData(fridge);
         command.execute();
     }
