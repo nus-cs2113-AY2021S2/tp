@@ -178,6 +178,7 @@ public class AppController {
                 for (Shift shift : shifts) {
                     if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
                         shift.assignEmployee(person);
+                        return;
                     }
                 }
             }
@@ -198,6 +199,7 @@ public class AppController {
                 for (Shift shift : shifts) {
                     if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
                         shift.unassignEmployee(person);
+                        return;
                     }
                 }
             }
