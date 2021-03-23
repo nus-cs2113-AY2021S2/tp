@@ -3,6 +3,7 @@ package shift;
 import employee.Employee;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Shift {
@@ -50,6 +51,10 @@ public class Shift {
 
     public LocalDate getShiftDate() {
         return shiftDate;
+    }
+
+    public String getShiftDateToString() {
+        return shiftDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setShiftDate(LocalDate shiftDate) {
