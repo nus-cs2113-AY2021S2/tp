@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.link.LinkInfo;
+import seedu.duke.link.Links;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,6 +13,7 @@ import java.util.Scanner;
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
 public class StorageModuleInfo {
     public static String filePath = new File("").getAbsolutePath();
+    public static String filePathForLinks = new File("").getAbsolutePath();
 
     /**
      * Checks if file exists, or creates new file if it doesn't already exist.
@@ -81,4 +85,43 @@ public class StorageModuleInfo {
         fw.close();
     }
 
+    public static void loadLinkInfoFile() {
+        filePathForLinks += "/UniTracker Data";
+        File data = new File(filePathForLinks);
+        if (!data.exists()) {
+            boolean isCreated = data.mkdir();
+            if (!isCreated) {
+                System.out.println("New directory could not be created:(");
+            }
+        }
+        try {
+            filePathForLinks += "/link.txt";
+            data = new File(filePathForLinks);
+            if (data.createNewFile()) {
+                // System.out.println("New file created at:\n" + data.getAbsolutePath());
+                return;
+            }
+            downloadLinks();
+        } catch (IOException e) {
+            System.out.println("There was an I/O error:(");
+        }
+    }
+
+    public static void downloadLinks() throws FileNotFoundException {
+        File f = new File(filePathForLinks); // create a File for the given file path
+        Scanner s = new Scanner(f); // create a Scanner using the File as the source
+        while (s.hasNext()) {
+            LinkInfo link = new LinkInfo(s.nextLine());
+            LinkInfo.addLink(link);
+        }
+    }
+
+    public static void linksFileSaver() throws IOException {
+        FileWriter fw = new FileWriter(filePathForLinks);
+        for (LinkInfo link : LinkInfo.linksList) {
+            fw.write(link.getLink());
+            fw.write(System.lineSeparator());
+        }
+        fw.close();
+    }
 }
