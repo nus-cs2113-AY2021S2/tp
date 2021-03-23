@@ -1,6 +1,8 @@
 package seedu.duke.model;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.TreeMap;
 
 /**
  * Each instance of this class represents a patient, and no two patients should
@@ -12,28 +14,35 @@ public class Patient {
      * In SG's context, we use NRIC/FIN for this field
      */
     protected String id;
-    protected ArrayList<Record> records;
+    protected TreeMap<LocalDate, Record> records;
+    protected String symptom, diagnosis, prescription;
 
     /**
      * Initialize a patient instance with an empty record list.
+     *
      * @param id Patient's unique identifier
      */
     public Patient(String id) {
-        this(id, new ArrayList<>());
+        this(id, new TreeMap<LocalDate, Record>());
     }
 
     /**
      * Initialize a patient instance with a pre-defined record list.
-     * @param id Patient's unique identifier
+     *
+     * @param id      Patient's unique identifier
      * @param records Patient's visit record list
      */
-    public Patient(String id, ArrayList<Record> records) {
+    public Patient(String id, TreeMap<LocalDate, Record> records) {
         this.id = id;
         this.records = records;
+        this.symptom = null;
+        this.diagnosis = null;
+        this.prescription = null;
     }
 
     /**
      * Get unique identifier of the patient.
+     *
      * @return Patient's unique identifier
      */
     public String getID() {
@@ -41,19 +50,46 @@ public class Patient {
     }
 
     /* Functionals for manipulating records */
+
     /**
      * Get all records associated with this patient.
+     *
      * @return All records in an ArrayList
      */
-    public ArrayList<Record> getRecords() {
+    public TreeMap<LocalDate, Record> getRecords() {
         return records;
     }
 
     /**
      * Add a single record into the patient's record list.
-     * @param record Record to be inserted to the back
+     *
+     * @param date Appointment date to add the record to
+     * @param symptom Patient's symptoms to add to the record
+     * @param diagnosis Patient's diagnosis to add to the record
+     * @param prescription Patient's prescription to add to the record
      */
-    public void addRecord(Record record) {
-        records.add(record);
+    public void addRecord(LocalDate date, String symptom, String diagnosis, String prescription) {
+        if (!records.containsKey(date)) {
+            records.put(date, new Record());
+        }
+        Record record = records.get(date);
+        record.addDetails(symptom, diagnosis, prescription);
+        this.symptom = symptom;
+        this.diagnosis = diagnosis;
+        this.prescription = prescription;
+    }
+
+    public String recentlyAdded() {
+        String recentDetails = "\n";
+        if (symptom != null) {
+            recentDetails += "Symptom: " + symptom + "\n";
+        }
+        if (diagnosis != null) {
+            recentDetails += "Diagnosis: " + diagnosis + "\n";
+        }
+        if (prescription != null) {
+            recentDetails += "Prescription: " + prescription + "\n";
+        }
+        return recentDetails;
     }
 }
