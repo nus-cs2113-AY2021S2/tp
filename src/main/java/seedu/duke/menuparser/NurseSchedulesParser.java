@@ -43,6 +43,8 @@ public class NurseSchedulesParser {
 
         String[] parts = text.split(" ", 0);
 
+        assert parts.length > 0;
+
         if (parts.length == 1) {
             throw new WrongInputsException();
         } else if (getFirstWord(text).equals("add")) {
