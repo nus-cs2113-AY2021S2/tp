@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exception.DukeException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.TeachingStaff;

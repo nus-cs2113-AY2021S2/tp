@@ -26,7 +26,6 @@ import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
 import seedu.duke.exception.CommandException;
-import seedu.duke.exception.DukeException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
@@ -64,6 +63,8 @@ import static seedu.duke.common.Constants.INDEX_REMARKS_PARSER;
 import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
+import static seedu.duke.common.Constants.LESSON_COMMAND_WITH_DETAILS;
+import static seedu.duke.common.Constants.TASK_COMMAND_WITH_DETAILS;
 import static seedu.duke.common.Constants.WHITESPACE;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
@@ -296,14 +297,15 @@ public class Parser {
         Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add lesson"
-        String[] inputSections = input.trim().split(WHITESPACE, 3);
+        String[] inputSections = input.trim().split(WHITESPACE, LESSON_COMMAND_WITH_DETAILS);
         // assumption that "add lesson" will always be present in input
         assert (inputSections.length >= 2);
 
         // ERROR - User does not enter any parameters.
-        if (inputSections.length < 3) {
+        if (inputSections.length < LESSON_COMMAND_WITH_DETAILS) {
             throw new CommandException(MESSAGE_LESSON_FIELDS_EMPTY);
         }
+        // first two words are "add" and "lesson"
         String lessonDetails = inputSections[2];
 
         parseLessonDetails(lessonDetails, allDetails);
@@ -383,14 +385,15 @@ public class Parser {
         Arrays.fill(allDetails, EMPTY_STRING);
 
         // to remove only the first two words "add task"
-        String[] inputSections = input.trim().split(WHITESPACE, 3);
+        String[] inputSections = input.trim().split(WHITESPACE, TASK_COMMAND_WITH_DETAILS);
         // assumption that the "add task" will always be present in input
         assert (inputSections.length >= 2);
 
         // user does not enter any parameters.
-        if (inputSections.length < 3) {
+        if (inputSections.length < TASK_COMMAND_WITH_DETAILS) {
             throw new CommandException(MESSAGE_TASK_FIELDS_EMPTY);
         }
+        // first two words are "add" and "lesson"
         String taskDetails = inputSections[2];
 
         parseTaskDetails(taskDetails, allDetails);
