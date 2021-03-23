@@ -1,6 +1,7 @@
 package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -41,12 +42,12 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws RepetitiveFoodIdentifierException {
         addFood();
         showResults();
     }
 
-    private void addFood() {
+    private void addFood() throws RepetitiveFoodIdentifierException {
         assert foodToAdd != null : "Unable to add a null food";
         fridge.add(foodToAdd);
     }

@@ -11,6 +11,9 @@
 # eclipse files
 /.settings
 
+# local data
+/data
+
 # Gradle build files
 /.gradle/
 /gradle

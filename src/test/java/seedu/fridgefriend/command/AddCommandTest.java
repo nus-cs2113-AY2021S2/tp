@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.ExpiryDate;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -24,7 +25,7 @@ class AddCommandTest {
 
     @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded()
-            throws InvalidDateException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
         AddCommand addCommand = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand.setData(fridge);
@@ -46,7 +47,7 @@ class AddCommandTest {
 
     @Test
     public void addCommand_foodCorrectFormat_changeFoodParameters()
-            throws InvalidDateException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER, 200);
         addCommand.setData(fridge);
@@ -79,6 +80,27 @@ class AddCommandTest {
             Command addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER, 200);
         });
+    }
+
+    @Test
+    public void addCommand_foodWithSameName_successfullyAdded()
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
+        AddCommand addCommand1 = new AddCommand("Milk", FoodCategory.DAIRY,
+                "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 2);
+        addCommand1.setData(fridge);
+        addCommand1.execute();
+        AddCommand addCommand2 = new AddCommand("Milk", FoodCategory.DAIRY,
+                "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 3);
+        addCommand2.setData(fridge);
+        addCommand2.execute();
+        assertEquals(1, fridge.getSize());
+        assertEquals(5, fridge.getFood(0).getQuantity());
+
+        String expectedMessage = "Great! I have added Milk into your fridge.\n"
+                + "Details: Food name: Milk, category: DAIRY, "
+                + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 3";
+        String actualMessage = addCommand2.getMessagePrintedToUser();
+        assertEquals(expectedMessage, actualMessage);
     }
 
 }

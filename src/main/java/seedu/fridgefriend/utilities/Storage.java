@@ -4,6 +4,7 @@ import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.exception.StorageLoadingException;
 import seedu.fridgefriend.exception.StorageSavingException;
 import seedu.fridgefriend.food.Food;
@@ -47,7 +48,7 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      */
     private static void checkDirectory() throws FileNotFoundException, InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException {
+            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
         Path path = Paths.get(filePath); //creates Path instance
         try {
             Files.createDirectories(Paths.get(directory));
@@ -63,8 +64,8 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      * @throws InvalidDateException if the date cannot be parsed
      */
-    private static void loadData() throws FileNotFoundException,
-            InvalidDateException, InvalidQuantityException, EmptyDescriptionException {
+    private static void loadData() throws FileNotFoundException, InvalidDateException,
+            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -82,7 +83,7 @@ public class Storage {
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void readData(String line) throws InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException {
+            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
         String[] parameters = line.split(":");
 
         String name = parameters[1].substring(1, parameters[1].indexOf((",")));

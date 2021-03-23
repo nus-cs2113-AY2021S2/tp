@@ -31,6 +31,18 @@ This is the list of storage locations:
 Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
+Great! I have added chicken into your fridge.
+Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 100
+-----------------------------------------------------------------
+Sorry my friend, you have added this food before but in a different location or have different expiry dates. please specify another foodname.
+-----------------------------------------------------------------
+Great! I have added roast chicken into your fridge.
+Details: Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+-----------------------------------------------------------------
+Here are the items in your fridge:
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+-----------------------------------------------------------------
 Great! I have added pork into your fridge.
 Details: Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
@@ -51,28 +63,29 @@ Sorry my friend, the quantity must be a number.
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Here are the items in your fridge:
-	1. chicken [MEAT]
-	2. pork [MEAT]
-	3. grouper [SEAFOOD]
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+	3. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+	4. Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 1
 -----------------------------------------------------------------
 These are the MEAT in your fridge:
-	1. chicken
-	2. pork
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 These are the food stored in LOWER_SHELF:
-	1. chicken
-	2. pork
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
 These are the food expiring in the next week:
-1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
+1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
 2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
-Noted! I've removed pork from your fridge.
-Now you have 2 food in the fridge.
+Noted! I've removed roast chicken from your fridge.
+Now you have 3 food in the fridge.
 -----------------------------------------------------------------
 Please enter a valid index to remove food.
 -----------------------------------------------------------------
