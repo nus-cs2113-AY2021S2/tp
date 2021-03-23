@@ -24,12 +24,12 @@ public class Employee {
         this.name = name;
     }
 
-    public void addSchedule(String schedule){
+    public boolean addSchedule(String schedule){
         if(isScheduleValid(schedule) == true){
             schedules.add(schedule);
-            System.out.println("schedule added");
+            return true;
         }else {
-            System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
+            return false;
         }
     }
 
