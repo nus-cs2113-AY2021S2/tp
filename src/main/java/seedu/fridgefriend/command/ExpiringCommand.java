@@ -6,7 +6,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Represents a command to find food items that are expring within a week.
+ * Represents a command to find food items that are expiring within a week.
  */
 public class ExpiringCommand extends Command {
 

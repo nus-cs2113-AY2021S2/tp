@@ -7,12 +7,12 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Represents a command to exit the application.
+ * Represents a command to show help instructions.
  */
 public class HelpCommand extends Command {
 
     private static final String COMMANDS = "These are the list of available commands:\n"
-            + "\tadd foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation\n"
+            + "\tadd foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity\n"
             + "\tlist\n"
             + "\tlist categoryName\n"
             + "\tremove index\n"

@@ -17,7 +17,6 @@ public class RemoveCommand extends Command {
      * Constructor creates a RemoveCommand object.
      * 
      * @param indexToRemove integer index given by user
-     * @throws InvalidIndexException if provided index is out of bounds
      */
     public RemoveCommand(int indexToRemove) {
         int actualIndexToRemoved = indexToRemove - EXTRA_INDEX;

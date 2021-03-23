@@ -1,0 +1,1 @@
+Food name: milk, category: DAIRY, expiry: 01-01-2022, stored in: UPPER_SHELF, quantity: 3

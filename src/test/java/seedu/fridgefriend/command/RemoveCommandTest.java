@@ -20,17 +20,18 @@ class RemoveCommandTest {
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
-        Food chicken = new Food(FoodCategory.MEAT, "chicken",
-                "30-06-2021", FoodStorageLocation.FREEZER);
+
+        Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 200);
         fridge.add(chicken);
 
-        Food pork = new Food(FoodCategory.MEAT, "pork",
-                "31-07-2021",FoodStorageLocation.LOWER_SHELF);
-        fridge.add(pork);
-
-        Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
+        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
+                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF, 100);
         fridge.add(lettuce);
+
+        Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 500);
+        fridge.add(pork);
     }
 
     @Test
