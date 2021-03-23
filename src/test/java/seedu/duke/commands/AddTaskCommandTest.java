@@ -1,7 +1,6 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtilAndConstants;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
@@ -16,7 +15,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_TASK;
 import static seedu.duke.TestUtilAndConstants.FORMATTER;
-import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.INPUT_ADD_TASK_DESCRIPTION;
+import static seedu.duke.TestUtilAndConstants.INPUT_ADD_TASK_REMARKS;
+import static seedu.duke.TestUtilAndConstants.INPUT_INVALID_IS_GRADED;
+import static seedu.duke.TestUtilAndConstants.initialiseModuleList;
+import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.MESSAGE_DUPLICATE_TASK;
@@ -29,6 +32,8 @@ public class AddTaskCommandTest {
     private final InputStream originalIn = System.in;
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    private static final LocalDate FORMATTED_DEADLINE_1 = LocalDate.parse("3-3-2021", FORMATTER);
+    private static final LocalDate FORMATTED_DEADLINE_2 = LocalDate.parse("5-3-2021", FORMATTER);
 
     //@@author aliciatay-zls
     @Test
@@ -38,28 +43,26 @@ public class AddTaskCommandTest {
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule(MODULE_CODE_1);
-        ModuleList.setSelectedModule(MODULE_CODE_1);
+        initialiseModuleList();
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
-        Task task = new Task("iP submission", deadline, "remember to attach JAR file");
+        Task task = new Task(INPUT_ADD_TASK_DESCRIPTION, FORMATTED_DEADLINE_1, INPUT_ADD_TASK_REMARKS);
         AddTaskCommand addTaskCommand = new AddTaskCommand(task);
 
         addTaskCommand.execute(new UI());
         
         String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
-                + EXPECTED_ADD_TASK;
+                + EXPECTED_ADD_TASK + NEWLINE;
 
         // checks displayed output to user
-        assertEquals(output + NEWLINE, bos.toString());
+        assertEquals(output, bos.toString());
 
         // checks if new task was really added to task list
         assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
 
-        // checks if new task's graded status was set correctly
+        // checks if new task's graded status and 
+        // done status (default false) were set correctly
         assertEquals(true, ModuleList.getSelectedModule().getTaskList().get(0).getGraded());
+        assertEquals(false, ModuleList.getSelectedModule().getTaskList().get(0).getDone());
 
         System.setIn(originalIn);
         System.setOut(originalOut);
@@ -72,29 +75,22 @@ public class AddTaskCommandTest {
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule(MODULE_CODE_1);
-        ModuleList.setSelectedModule(MODULE_CODE_1);
+        initialiseModuleList();
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
         // remarks field is empty
-        Task task = new Task("iP submission", deadline, "");
+        Task task = new Task(INPUT_ADD_TASK_DESCRIPTION, FORMATTED_DEADLINE_1, EMPTY_STRING);
         AddTaskCommand addTaskCommand = new AddTaskCommand(task);
 
         addTaskCommand.execute(new UI());
 
         String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
-                + EXPECTED_ADD_TASK;
+                + EXPECTED_ADD_TASK + NEWLINE;
 
         // checks displayed output to user
-        assertEquals(output + NEWLINE, bos.toString());
+        assertEquals(output, bos.toString());
 
         // checks if new task was really added to task list
         assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
-
-        // checks if new task's graded status was set correctly
-        assertEquals(true, ModuleList.getSelectedModule().getTaskList().get(0).getGraded());
 
         System.setIn(originalIn);
         System.setOut(originalOut);
@@ -102,20 +98,16 @@ public class AddTaskCommandTest {
 
     @Test
     void execute_taskInputAndInitiallyInvalidIsGradedInputs_expectSuccess() {
-        String isGradedInput = " " + NEWLINE
-                + "no" + NEWLINE
+        String isGradedInput = EMPTY_STRING + NEWLINE
+                + INPUT_INVALID_IS_GRADED + NEWLINE
                 + NO_STRING + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(isGradedInput.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule(MODULE_CODE_1);
-        ModuleList.setSelectedModule(MODULE_CODE_1);
+        initialiseModuleList();
 
-        LocalDate deadline = LocalDate.parse("3-3-2021", FORMATTER);
-        Task task = new Task("iP submission", deadline, "remember to attach JAR file");
+        Task task = new Task(INPUT_ADD_TASK_DESCRIPTION, FORMATTED_DEADLINE_1, INPUT_ADD_TASK_REMARKS);
         AddTaskCommand addTaskCommand = new AddTaskCommand(task);
 
         addTaskCommand.execute(new UI());
@@ -123,10 +115,10 @@ public class AddTaskCommandTest {
         String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
                 + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
                 + MESSAGE_TASK_CHECK_GRADED_INFO + NEWLINE
-                + EXPECTED_ADD_TASK;
+                + EXPECTED_ADD_TASK + NEWLINE;
 
         // checks displayed output to user
-        assertEquals(output + NEWLINE, bos.toString());
+        assertEquals(output, bos.toString());
 
         // checks if new task was really added to task list
         assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
@@ -145,32 +137,29 @@ public class AddTaskCommandTest {
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule(MODULE_CODE_1);
-        ModuleList.setSelectedModule(MODULE_CODE_1);
-        
-        LocalDate sameDeadline = LocalDate.parse("3-3-2021", FORMATTER);
-        Task duplicateTask = new Task("iP submission", sameDeadline, 
-                "Remember to attach the jar file.");
+        initialiseModuleList();
+
+        // New task
+        Task duplicateTask = new Task(INPUT_ADD_TASK_DESCRIPTION, FORMATTED_DEADLINE_1, INPUT_ADD_TASK_REMARKS);
         AddTaskCommand addTaskCommand1 = new AddTaskCommand(duplicateTask);
         addTaskCommand1.execute(new UI());
         
+        // Duplicate
         AddTaskCommand addTaskCommand2 = new AddTaskCommand(duplicateTask);
         addTaskCommand2.execute(new UI());
 
-        LocalDate differentDeadline = LocalDate.parse("5-3-2021", FORMATTER);
-        Task similarTask = new Task("iP submission", differentDeadline, "");
+        // Similar
+        Task similarTask = new Task(INPUT_ADD_TASK_DESCRIPTION, FORMATTED_DEADLINE_2, EMPTY_STRING);
         AddTaskCommand addTaskCommand3 = new AddTaskCommand(similarTask);
         addTaskCommand3.execute(new UI());
 
         String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
                 + EXPECTED_ADD_TASK + NEWLINE
                 + MESSAGE_DUPLICATE_TASK + NEWLINE
-                + MESSAGE_SAME_DESCRIPTION_TASK;
+                + MESSAGE_SAME_DESCRIPTION_TASK + NEWLINE;
         
         // checks displayed output to user
-        assertEquals(output + NEWLINE, bos.toString());
+        assertEquals(output, bos.toString());
 
         // checks if duplicate and similar tasks were really ignored
         int count = (int)ModuleList.getSelectedModule().getTaskList().stream()
