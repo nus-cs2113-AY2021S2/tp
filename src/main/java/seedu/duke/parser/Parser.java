@@ -327,7 +327,7 @@ public class Parser {
      * @param allDetails  array storing parsed details
      */
     private void parseLessonDetails(String inputString, String[] allDetails) {
-        // split the details field using DELIMITER to get the individual detail fields
+        // split the details field using delimiter to get the individual detail fields
         String[] splitDetails = inputString.split(DELIM);
 
         // store detail fields that have been filled by the user into an array
