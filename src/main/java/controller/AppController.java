@@ -3,6 +3,7 @@ package controller;
 import employee.Employee;
 import io.FileManager;
 import shift.Shift;
+import ui.ui;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -29,8 +30,11 @@ public class AppController {
             System.out.println("Enter command: ");
             input = sc.nextLine();
             switch (input) {
-            case "add Employee":
+            case "add employee":
                 addEmployee();
+                break;
+            case "drop employee":
+                dropEmployee();
                 break;
             case "add schedule":
                 addSchedule();
@@ -38,16 +42,16 @@ public class AppController {
             case "drop schedule":
                 dropSchedule();
                 break;
-            case "add Shift":
+            case "add shift":
                 addShift();
                 break;
-            case "assign Employee":
+            case "assign employee":
                 assignEmployee();
                 break;
-            case "unassign Employee":
+            case "unassign employee":
                 unassignEmployee();
                 break;
-            case "view Employee schedule":
+            case "view employee schedule":
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
@@ -58,6 +62,9 @@ public class AppController {
                 break;
             case "list":
                 listAllEmployees();
+                break;
+            case "help":
+                ui.printHelpMessage();
                 break;
             case "quit":
                 System.out.println("bye");
@@ -77,6 +84,18 @@ public class AppController {
         System.out.println("Employee added");
     }
 
+    private void dropEmployee(){
+        System.out.println("enter Employee name");
+        String name = sc.nextLine();
+        for (Employee person : employees)
+            if (person.getName().equals(name)) {
+                employees.remove(person);
+                System.out.printf(person.getName() + " removed\n");
+                return;
+            }
+        System.out.println("The name is not found");
+    }
+
     private void listAllEmployees() {
         int i;
 
@@ -93,7 +112,12 @@ public class AppController {
             if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
-                person.addSchedule(schedule);
+                Boolean isScheduleValid = person.addSchedule(schedule);
+                if(isScheduleValid == true){
+                    System.out.println("schedule added");
+                }else{
+                    System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
+                }
                 return;
             }
         System.out.println("Employee not found");
