@@ -1,11 +1,13 @@
 package seedu.nurseschedules;
 
 import seedu.duke.exceptions.nurseschedules.EmptyListException;
-import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
+import seedu.duke.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.duke.exceptions.nurseschedules.WrongInputsException;
-import seedu.duke.storage.NurseScheduleStorage;
+import seedu.duke.exceptions.staffexceptions.AbortException;
 import seedu.duke.menuparser.NurseSchedulesParser;
+import seedu.duke.storage.NurseScheduleStorage;
 import seedu.duke.ui.NurseScheduleUI;
+import seedu.duke.ui.UI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ public class NurseScheduleInstance {
     private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
 
-    /** The list of nurse schedules */
+    /** The list of nurse schedules. */
     List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
 
     public static void main() {
@@ -43,7 +45,7 @@ public class NurseScheduleInstance {
         NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
-    /** Reads the user command and executes it, until the user issues the exit command */
+    /** Reads the user command and executes it, until the user issues the exit command. */
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
@@ -54,13 +56,10 @@ public class NurseScheduleInstance {
             switch (command) {
             case "add":
                 try {
-                    String[] details = parser.getDetails(line);
-                    NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
-                    nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+                    actions.addSchedule(nurseSchedules, NurseScheduleUI.inputToCreateSchedule());
                     storage.writeToFile(nurseSchedules);
-                } catch (ParseException | WrongInputsException e) {
-                    NurseScheduleUI.invalidInputsMessage();
-                    NurseScheduleUI.addHelpMessage();
+                } catch (AbortException | ParseException e) {
+                    UI.abortInputErrorMessage();
                 }
                 break;
             case "list":
@@ -71,7 +70,7 @@ public class NurseScheduleInstance {
                     NurseScheduleUI.listHelpMessage();
                 } catch (EmptyListException e) {
                     System.out.println(e.getMessage());
-                } catch (NurseIDNotFound e) {
+                } catch (NurseIdNotFound e) {
                     System.out.println(e.getMessage());
                 }
                 break;
