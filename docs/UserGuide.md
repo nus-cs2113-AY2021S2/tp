@@ -47,7 +47,7 @@ finance management rather than using the traditional management system.
 >> Commands in Finux follow these argument orders (depending on the command):
 >> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
 >> * `CMD -OPT`
->> * `CMD { -OPT_1 | -OPT_2 | ... } ...`
+>> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
 >> * `CMD <FIELD>`
 >> * `CMD [<FIELD>]`
 >> * `CMD`
@@ -57,7 +57,7 @@ finance management rather than using the traditional management system.
 >> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
 >> `<FIELD>` - an area where data is required.\
 >> `[...]` - optional argument(s).\
->> `{ -OPT_1 | -OPT_2 | ... }` - mutually exclusive options.
+>> `{ ... | ... | ... }` - mutually exclusive arguments.
 >>
 > ❗ **Commands and options are case-sensitive.**\
 > E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
@@ -103,7 +103,7 @@ Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
-![add loan example output]()
+![add loan example output](https://via.placeholder.com/100.png?text=Photo)
 
 #### 3.1.3 Add a saving record
 
@@ -115,7 +115,7 @@ Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
-![add saving example output]()
+![add saving example output](https://via.placeholder.com/100.png?text=Photo)
 
 ### 3.2 List the records details: `list`
 
