@@ -97,9 +97,6 @@ public class Constants {
     public static final String LOGGER_PATH = "GULIOLog.log";
     public static final String LOGGER_NAME = "LOGGER";
 
-    //Cheatsheet
-    public static final String CHEATSHEET_STRING = "Cheatsheet";
-
     //Editor
     public static final int TEXT_EDITOR_WIDTH = 800;
     public static final int TEXT_EDITOR_HEIGHT = 800;
@@ -107,21 +104,22 @@ public class Constants {
     public static final int TEXT_AREA_HEIGHT = 700;
     public static final String DEFAULT_FONT_STYLE = "Times New Roman";
     public static final int DEFAULT_FONT_SIZE = 16;
-    public static final int BOX_WIDTH = 50;
-    public static final int BOX_HEIGHT = 25;
-    public static final String FONT_SIZE_ICON = "Font size: ";
     public static final String FONT_COLOUR_ICON = "Font colour";
     public static final String SAVE_ICON = "Save";
     public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
     public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
 
     //Cheat sheet
-    public static final String CHEATSHEET_DIR = "Cheatsheet";
+    public static final String STRING_CHEATSHEET = "Cheatsheet";
     public static final String PATH_DELIMITER = "/";
     public static final int KEYCODE_S = 83;
+    public static final int KEYCODE_UP = 38;
+    public static final int KEYCODE_DOWN = 40;
     public static final String MESSAGE_OPEN_FILE = "Opened %s";
     public static final int BEGIN_INDEX = 0;
     public static final int EXTENSION = 4;
     public static final String DOT = ". ";
     public static final int EMPTY = 0;
+    public static final int FONT_SIZE_MIN = 10;
+    public static final int FONT_SIZE_MAX = 50;
 }

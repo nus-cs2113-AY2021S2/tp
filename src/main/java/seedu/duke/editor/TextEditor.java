@@ -4,13 +4,9 @@ import javax.swing.JButton;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -22,16 +18,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.Scanner;
 
-import static seedu.duke.common.Constants.BOX_HEIGHT;
-import static seedu.duke.common.Constants.BOX_WIDTH;
 import static seedu.duke.common.Constants.DEFAULT_FONT_SIZE;
 import static seedu.duke.common.Constants.DEFAULT_FONT_STYLE;
 import static seedu.duke.common.Constants.FONT_COLOUR_HEADER;
 import static seedu.duke.common.Constants.FONT_COLOUR_ICON;
-import static seedu.duke.common.Constants.FONT_SIZE_ICON;
+import static seedu.duke.common.Constants.FONT_SIZE_MAX;
+import static seedu.duke.common.Constants.FONT_SIZE_MIN;
 import static seedu.duke.common.Constants.SAVE_ICON;
 import static seedu.duke.common.Constants.TEXT_AREA_HEIGHT;
 import static seedu.duke.common.Constants.TEXT_AREA_WIDTH;
@@ -45,8 +39,6 @@ public class TextEditor extends JFrame implements ActionListener {
     public static String[] fontStyles = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     public static JTextArea textArea = new JTextArea();
     public static JScrollPane scrollPane = new JScrollPane(textArea);
-    public static JSpinner fontSizeSpinner = new JSpinner();
-    public static JLabel fontSizeLabel = new JLabel(FONT_SIZE_ICON);
     public static JButton fontColourButton = new JButton(FONT_COLOUR_ICON);
     public static JComboBox<String> fontStyleBox = new JComboBox<>(fontStyles);
     public static JButton saveButton = new JButton(SAVE_ICON);
@@ -57,7 +49,6 @@ public class TextEditor extends JFrame implements ActionListener {
         setTextEditorTitle();
         setCloseIcon();
         setTextEditorDimension();
-        setFontSizeIcon();
         setFontColourIcon();
         setFontStyleIcon();
         setSaveIcon();
@@ -115,19 +106,24 @@ public class TextEditor extends JFrame implements ActionListener {
         this.add(fontColourButton);
         fontColourButton.addActionListener(this);
     }
+    
+    
+    public void increaseFontSize() {
+        int size = textArea.getFont().getSize();
+        if (size >= FONT_SIZE_MAX) {
+            return;
+        }
+        size++;
+        textArea.setFont(new Font(textArea.getFont().getFamily(), Font.PLAIN, size));
+    }
 
-    private void setFontSizeIcon() {
-        fontSizeSpinner.setPreferredSize(new Dimension(BOX_WIDTH, BOX_HEIGHT));
-        fontSizeSpinner.setValue(DEFAULT_FONT_SIZE);
-        fontSizeSpinner.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                textArea.setFont(new Font(textArea.getFont().getFamily(), Font.PLAIN,
-                        (int) fontSizeSpinner.getValue()));
-            }
-        });
-        add(fontSizeLabel);
-        add(fontSizeSpinner);
+    public void decreaseFontSize() {
+        int size = textArea.getFont().getSize();
+        if (size <= FONT_SIZE_MIN) {
+            return;
+        }
+        size--;
+        textArea.setFont(new Font(textArea.getFont().getFamily(), Font.PLAIN, size));
     }
 
     private void setScrollPane() {
