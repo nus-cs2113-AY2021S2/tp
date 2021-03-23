@@ -14,11 +14,11 @@ public abstract class Food {
     protected String foodName;
     protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
-    protected Quantity quantity;
+    protected int quantity;
 
     public Food(String foodName, FoodCategory category, String expiryString,
-                FoodStorageLocation storageLocation, Quantity quantity)
-                throws InvalidDateException, InvalidQuantityException {
+                FoodStorageLocation storageLocation, int quantity)
+                throws InvalidDateException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
         this.setFoodName(foodName);
@@ -29,19 +29,15 @@ public abstract class Food {
 
     @Override
     public String toString() {
-        String format;
-        if (getQuantity() instanceof Weight) {
-            format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s, weight: %5$s";
-        } else {
-            format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s, quantity: %5$s";
-        }
+        String format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s, quantity: %5$s";;
+
         return String.format(
                 format,
                 getFoodName(),
                 getCategory().name(), 
                 getExpiryDate().toString(), 
                 getStorageLocation().name(),
-                getQuantity().toString());
+                getQuantity());
     }
 
     public FoodCategory getCategory() {
@@ -81,11 +77,11 @@ public abstract class Food {
                 + storageLocation + " in food object " + foodName);
     }
 
-    public Quantity getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Quantity quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

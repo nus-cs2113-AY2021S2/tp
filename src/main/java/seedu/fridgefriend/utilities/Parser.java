@@ -19,8 +19,6 @@ import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
-import seedu.fridgefriend.food.Quantity;
-import seedu.fridgefriend.food.Weight;
 
 /**
  * Represents an object that deals with making sense of the user command.
@@ -122,24 +120,12 @@ public class Parser {
      * A Pattern object which defines how the input string for food item
      * that should look like. [^/]+ implies 1 or more characters except for '/'
      */
-    public static final Pattern FOOD_DATA_ARGS_FORMAT_QUANTITY =
+    public static final Pattern FOOD_DATA_ARGS_FORMAT =
             Pattern.compile("(?<name>[^/]+)"
                     + " /cat (?<category>[^/]+)"
                     + " /exp (?<expiryDate>[^/]+)"
                     + " /loc (?<storageLocation>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
-
-    /**
-     * Define arguments format for add food command with weight.
-     * A Pattern object which defines how the input string for food item
-     * that should look like. [^/]+ implies 1 or more characters except for '/'
-     */
-    public static final Pattern FOOD_DATA_ARGS_FORMAT_WEIGHT =
-            Pattern.compile("(?<name>[^/]+)"
-                    + " /cat (?<category>[^/]+)"
-                    + " /exp (?<expiryDate>[^/]+)"
-                    + " /loc (?<storageLocation>[^/]+)"
-                    + " /wgt (?<weight>[^/]+)");
 
     /**
      * Parses description into name, foodCategory, expiryDate and storageLocation.
@@ -159,24 +145,16 @@ public class Parser {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-        Matcher matcherQuantity = FOOD_DATA_ARGS_FORMAT_QUANTITY.matcher(foodDescription.trim());
-        Matcher matcherWeight = FOOD_DATA_ARGS_FORMAT_WEIGHT.matcher(foodDescription.trim());
+        Matcher matcherQuantity = FOOD_DATA_ARGS_FORMAT.matcher(foodDescription.trim());
 
         // Validate foodDescription string format
         if (matcherQuantity.matches()) {
-            Quantity quantity = new Quantity(matcherQuantity.group("quantity"));
+            int quantity = parseIntegerQuantity(matcherQuantity.group("quantity"));
             return new AddCommand(matcherQuantity.group("name"),
                     convertStringToFoodCategory(matcherQuantity.group("category")),
                     matcherQuantity.group("expiryDate"),
                     convertStringToLocation(matcherQuantity.group("storageLocation")),
                     quantity);
-        } else if (matcherWeight.matches()) {
-            Weight weight = new Weight(matcherWeight.group("weight"));
-            return new AddCommand(matcherWeight.group("name"),
-                    convertStringToFoodCategory(matcherWeight.group("category")),
-                    matcherWeight.group("expiryDate"),
-                    convertStringToLocation(matcherWeight.group("storageLocation")),
-                    weight);
         } else {
             throw new InvalidInputException();
         }
@@ -284,6 +262,28 @@ public class Parser {
             return index;
         } catch (Exception e) {
             throw new InvalidIndexException(e);
+        }
+    }
+
+    /**
+     * Parses the description of quantity to integer.
+     *
+     * @param description quantity description
+     * @return integer quantity
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidQuantityException if the description is not a number
+     */
+    public static int parseIntegerQuantity(String description)
+            throws EmptyDescriptionException, InvalidQuantityException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+
+        try {
+            int quantity = Integer.parseInt(description);
+            return quantity;
+        } catch (Exception e) {
+            throw new InvalidQuantityException();
         }
     }
 

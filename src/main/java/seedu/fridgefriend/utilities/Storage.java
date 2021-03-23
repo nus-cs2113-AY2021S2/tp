@@ -1,6 +1,7 @@
 package seedu.fridgefriend.utilities;
 
 import seedu.fridgefriend.command.AddCommand;
+import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.StorageLoadingException;
@@ -9,8 +10,6 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
-import seedu.fridgefriend.food.Quantity;
-import seedu.fridgefriend.food.Weight;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -47,7 +46,8 @@ public class Storage {
      * @throws InvalidDateException if the date cannot be parsed
      * @throws FileNotFoundException if file does not exist
      */
-    private static void checkDirectory() throws FileNotFoundException, InvalidDateException, InvalidQuantityException {
+    private static void checkDirectory() throws FileNotFoundException, InvalidDateException,
+            InvalidQuantityException, EmptyDescriptionException {
         Path path = Paths.get(filePath); //creates Path instance
         try {
             Files.createDirectories(Paths.get(directory));
@@ -63,7 +63,8 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      * @throws InvalidDateException if the date cannot be parsed
      */
-    private static void loadData() throws FileNotFoundException, InvalidDateException, InvalidQuantityException {
+    private static void loadData() throws FileNotFoundException,
+            InvalidDateException, InvalidQuantityException, EmptyDescriptionException {
         File file = new File(filePath);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -80,7 +81,8 @@ public class Storage {
      * @throws InvalidDateException if date in data file cannot be parsed
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
-    private static void readData(String line) throws InvalidDateException, InvalidQuantityException {
+    private static void readData(String line) throws InvalidDateException,
+            InvalidQuantityException, EmptyDescriptionException {
         String[] parameters = line.split(":");
 
         String name = parameters[1].substring(1, parameters[1].indexOf((",")));
@@ -88,15 +90,9 @@ public class Storage {
         FoodCategory category = FoodCategory.convertStringToFoodCategory(categoryStr);
         String expiry = parameters[3].substring(1, parameters[3].indexOf((",")));
         String storageStr = parameters[4].substring(1, parameters[4].indexOf((",")));
-        String quantityString = parameters[5].trim();
+        int quantity = Parser.parseIntegerQuantity(parameters[5].trim());
 
         FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
-        Quantity quantity;
-        if (quantityString.contains("g")) {
-            quantity = new Weight(quantityString);
-        } else {
-            quantity = new Quantity(quantityString);
-        }
         Food food = AddCommand.categoriseAndGenerateFood(name, category, expiry, storage, quantity);
         fridge.add(food);
     }

@@ -1,11 +1,9 @@
 package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
-import seedu.fridgefriend.food.Quantity;
 import seedu.fridgefriend.food.categories.Beverage;
 import seedu.fridgefriend.food.categories.CookedDish;
 import seedu.fridgefriend.food.categories.Dairy;
@@ -30,8 +28,8 @@ public class AddCommand extends Command {
     private final Food foodToAdd;
 
     public AddCommand(String foodName, FoodCategory category, String expiryString,
-                      FoodStorageLocation location, Quantity quantity)
-                      throws InvalidDateException, InvalidQuantityException {
+                      FoodStorageLocation location, int quantity)
+            throws InvalidDateException {
 
         assert category != null : "category should not be null";
         LoggingHandler.logInfo("Adding food: " + foodName + " with parameters: ");
@@ -73,8 +71,7 @@ public class AddCommand extends Command {
 
     public static Food categoriseAndGenerateFood(String foodName, FoodCategory category,
                                                  String expiryString, FoodStorageLocation location,
-                                                 Quantity quantity) throws InvalidDateException,
-                                                 InvalidQuantityException {
+                                                 int quantity) throws InvalidDateException {
         Food newFood;
         switch (category) {
         case VEGETABLE:
