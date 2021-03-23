@@ -274,7 +274,8 @@ public class CommandList {
     }
 
     /**
-     * View a selected review. 
+     * View a selected review.
+     *
      * @param title title of the review to be viewed
      */
     public void viewReview(String title) {
