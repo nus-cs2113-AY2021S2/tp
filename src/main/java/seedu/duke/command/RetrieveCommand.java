@@ -6,8 +6,10 @@ import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class RetrieveCommand extends Command {
     /**
@@ -29,11 +31,13 @@ public class RetrieveCommand extends Command {
         if (patient == null) {
             throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
         }
-        ArrayList<Record> records = patient.getRecords();
-        ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
-        for (int i = 0; i < records.size(); i++) {
-            Record record = records.get(i);
-            ui.printMessage(Integer.toString(i + 1) + ". " + record.toString());
+        TreeMap<LocalDate, Record> records = patient.getRecords();
+        ui.printMessage("Here are " + patient.getID() + "'s records:");
+        for(Map.Entry<LocalDate, Record> entry : records.entrySet()) {
+            LocalDate date = entry.getKey();
+            Record record = entry.getValue();
+            ui.printMessage(date.toString() + ":");
+            ui.printMessage(record.toString());
         }
     }
 }
