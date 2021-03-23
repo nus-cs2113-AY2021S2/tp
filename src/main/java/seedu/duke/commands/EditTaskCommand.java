@@ -29,7 +29,7 @@ public class EditTaskCommand extends Command {
         TASK_FIELD_REMARKS, TASK_FIELD_GRADED_STATUS};
 
     @Override
-    public void execute(UI ui) throws CommandException {
+    public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Task> taskList = module.getTaskList();
         if (taskList.isEmpty()) {
