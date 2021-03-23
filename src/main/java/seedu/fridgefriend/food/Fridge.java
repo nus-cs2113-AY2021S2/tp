@@ -51,4 +51,25 @@ public class Fridge {
     public void clearFridge() {
         fridge.clear();
     }
+    
+    /**
+     * Returns a boolean indicated if the food in a category is running out.
+     * 
+     * @param foodCategory category to check
+     * @return true if food in that category is running out, false otherwise
+     */
+    public boolean isRunningOut(FoodCategory foodCategory) {
+        int totalQuantity = getTotalQuantity(foodCategory);
+        return totalQuantity > FoodCategory.getMinimumQuantity(foodCategory);
+    }
+
+    public int getTotalQuantity(FoodCategory foodCategory) {
+        int totalQuantity = 0;
+        for (Food food : this.fridge) {
+            if (food.getCategory() == foodCategory) {
+                totalQuantity += food.getQuantity();
+            }
+        }
+        return totalQuantity;
+    }
 }
