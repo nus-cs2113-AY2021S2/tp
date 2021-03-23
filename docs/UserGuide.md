@@ -59,7 +59,7 @@ finance management rather than using the traditional management system.
 >> `[...]` - optional argument(s).\
 >> `{ ... | ... | ... }` - mutually exclusive arguments.
 >>
-> ❗ **Commands and options are case-sensitive.**\
+> ❗ **Commands and options are case-sensitive:**\
 > E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
 > will not be recognised.\
 > E.g. `view -s` will work, but using `-S` will not be recognised as
@@ -78,8 +78,7 @@ finance management rather than using the traditional management system.
 >> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
 
 ### 3.1 Add a record: `add`
-> For the `add` command, there is no strict ordering for options.
-<br>
+> For the `add` command, there is no strict ordering for options.\
 > i.e. options `-a` can come before/after option `-d`.
 #### 3.1.1 Add an expense record
 
@@ -97,7 +96,7 @@ Output:
 
 This operation will add a loan record to the list.
 
-Format: `add -l <description> -a <amount> -d <date> -p <borrower>`
+Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
 Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
