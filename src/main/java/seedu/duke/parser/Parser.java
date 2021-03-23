@@ -399,9 +399,32 @@ public class Parser {
 
         return LocalDate.parse(string, parseFormat);
     }
+    
+    /**
+     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
+     * TODO : print proper warning, can consider throwing ParserException and handling
+     * in EditLessonsCommand.
+     *
+     * @param input user input string
+     * @return index parsed from input string
+     */
+    public static int checkIndex(String input, int max) throws DukeException {
+        int index = 0;
+        try {
+            index = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new DukeException("Invalid non-integer input");
+        }
+
+        if (index < 1 || index > max) {
+            throw new DukeException("Index given is out of bounds.");
+        }
+
+        return index;
+    }
 
     /**
-     * Converts given input string to an arraylist of integers.
+     * Converts given input string to an array list of integers.
      * Removes duplicates and indices which are out of bounds.
      *
      * @param input full user input string
@@ -410,51 +433,66 @@ public class Parser {
      * @throws NumberFormatException if non-integer value is present in the input
      */
     public static ArrayList<Integer> checkIndices(String input, int max) {
-        ArrayList<Integer> rawIndices = new ArrayList<>();
-        ArrayList<String> nonIntegers = new ArrayList<>();
-        int index;
         UI ui = new UI();
-
+        ArrayList<Integer> rawIndices = new ArrayList<>();
+        
         // assumption that input is non-null
         assert (input != null);
-        String[] words = input.trim().split(WHITESPACE);
-
-        for (String word : words) {
-            try {
-                index = Integer.parseInt(word);
-                rawIndices.add(index);
-            } catch (NumberFormatException e) {
-                // Non-integer inputs will not be added to the array list rawIndices.
-                nonIntegers.add(word);
-            }
-        }
+        ArrayList<String> nonIntegers = parseIndicesFromString(rawIndices, input);
         if (nonIntegers.size() != 0) {
             printNonIntegerWarning(nonIntegers, ui);
         }
-
-        // Remove duplicates
-        ArrayList<Integer> indices = new ArrayList<>();
-        ArrayList<Integer> removed = new ArrayList<>();
-
-        for (int number : rawIndices) {
-            if (!indices.contains(number)) {
-                indices.add(number);
-            }
-        }
-
-        // Remove out of bounds/ invalid index
-        for (int i = 0; i < indices.size(); i++) {
-            if (indices.get(i) > max || indices.get(i) <= 0) {
-                int removedIndex = indices.remove(i);
-                removed.add(removedIndex);
-                i--;
-            }
-        }
-        // Prints indices that were removed.
+        // remove duplicates
+        ArrayList<Integer> indices = removeDuplicateIndex(rawIndices);
+        
+        // remove out of bounds
+        ArrayList<Integer> removed = removeOutOfBoundIndex(indices, max);
         if (removed.size() != 0) {
             printOutOfBoundsWarning(removed, ui);
         }
         return indices;
+    }
+    
+    private static ArrayList<String> parseIndicesFromString(ArrayList<Integer> indices, String input) {
+        int index;
+        ArrayList<String> nonIntegers = new ArrayList<>();
+        String[] words = input.trim().split(WHITESPACE);
+        
+        for (String word : words) {
+            try {
+                index = Integer.parseInt(word);
+                indices.add(index);
+            } catch (NumberFormatException e) {
+                // Non-integer inputs will not be added to the indices array list
+                nonIntegers.add(word);
+            }
+        }
+        return nonIntegers;
+    }
+    
+    private static ArrayList<Integer> removeDuplicateIndex(ArrayList<Integer> indexList) {
+        // Remove duplicates
+        ArrayList<Integer> noDuplicates = new ArrayList<>();
+
+        for (int number : indexList) {
+            if (!noDuplicates.contains(number)) {
+                noDuplicates.add(number);
+            }
+        }
+     return noDuplicates;
+    }
+
+    private static ArrayList<Integer> removeOutOfBoundIndex(ArrayList<Integer> indexList, int max) {
+        ArrayList<Integer> removed = new ArrayList<>();
+        
+        for (int i = 0; i < indexList.size(); i++) {
+            if (indexList.get(i) > max || indexList.get(i) <= 0) {
+                int removedIndex = indexList.remove(i);
+                removed.add(removedIndex);
+                i--;
+            }
+        }
+        return removed;
     }
 
     /**
@@ -477,28 +515,5 @@ public class Parser {
      */
     private static void printNonIntegerWarning(ArrayList<String> removed, UI ui) {
         ui.printMessage(String.format(MESSAGE_NON_INTEGER_INDICES, removed));
-    }
-
-    /**
-     * Parses given input string to integer, ensuring that parsed index is not out of bounds.
-     * TODO : print proper warning, can consider throwing ParserException and handling
-     * in EditLessonsCommand.
-     *
-     * @param input user input string
-     * @return index parsed from input string
-     */
-    public static int checkIndex(String input, int max) throws DukeException {
-        int index = 0;
-        try {
-            index = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new DukeException("Invalid non-integer input");
-        }
-
-        if (index < 1 || index > max) {
-            throw new DukeException("Index given is out of bounds.");
-        }
-
-        return index;
     }
 }
