@@ -5,6 +5,8 @@ import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 
 
 public class Fridge {
+
+
     private ArrayList<Food> fridge = new ArrayList<>();
 
     /**
@@ -45,7 +47,13 @@ public class Fridge {
     private void editFoodQuantity(Food newFood, Food existingFood) {
         int deltaQuantity = newFood.getQuantity();
         int oriQuantity = existingFood.getQuantity();
-        existingFood.setQuantity(deltaQuantity + oriQuantity);
+        int newQuantity = deltaQuantity + oriQuantity;
+        newFood.setQuantity(newQuantity);
+        existingFood.setQuantity(newQuantity);
+    }
+
+    public ArrayList<Food> getFridge() {
+        return fridge;
     }
 
     public void clearFridge() {
