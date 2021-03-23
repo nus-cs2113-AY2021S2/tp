@@ -15,6 +15,7 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
+    private ParserHandler parserHandler;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -48,6 +49,7 @@ public class Duke {
             ui = new Ui();
             storage = new Storage();
             records = new RecordList(storage.loadFile());
+            parserHandler = new ParserHandler();
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
@@ -63,7 +65,7 @@ public class Duke {
         String rawInput;
         do {
             rawInput = ui.getUserInput();
-            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
             command = CommandHandler.parseCommand(parsedStringList, records);
             if (command != null) {

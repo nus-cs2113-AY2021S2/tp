@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.common.Validators.validateDate;
 
 class ViewCommandTest {
+    private ParserHandler parserHandler;
 
     @Test
     public void executeViewExpense_viewExpenseCmd_success() {
@@ -46,9 +47,10 @@ class ViewCommandTest {
                                 String viewCmdStr, String expectedOutput) {
         Ui ui = new Ui();
         Storage storage = new Storage();
+        ParserHandler parserHandler = new ParserHandler();
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
 
-        Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(viewCmdStr), records);
+        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(viewCmdStr), records);
         assertTrue(command instanceof ViewCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ViewCommand.", viewCmdTestName));
 
