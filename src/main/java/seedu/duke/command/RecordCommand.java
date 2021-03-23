@@ -4,7 +4,6 @@ import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -33,15 +32,27 @@ public class RecordCommand extends Command {
             throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
         }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
-        LocalDate date = LocalDate.now();
+        LocalDate date = null;
         try {
-            if (dateString.length() > 0) {
-                date = LocalDate.parse(dateString);
-            }
+            date = parseDate(dateString);
         } catch (DateTimeParseException dateTimeParseException) {
             throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_INVALID_DATE);
         }
-        String symptom = null, diagnosis = null, prescription = null;
+        addRecord(patient, date);
+        printNewRecord(patient);
+    }
+
+    private LocalDate parseDate(String dateString) throws DateTimeParseException {
+        if (dateString.length() > 0) {
+            return LocalDate.parse(dateString);
+        }
+        return LocalDate.now();
+    }
+
+    private void addRecord(Patient patient, LocalDate date) {
+        String symptom = null;
+        String diagnosis = null;
+        String prescription = null;
         if (arguments.containsKey(Constants.SYMPTOM_KEY)) {
             symptom = arguments.get(Constants.SYMPTOM_KEY);
         }
@@ -52,6 +63,10 @@ public class RecordCommand extends Command {
             prescription = arguments.get(Constants.PRESCRIPTION_KEY);
         }
         patient.addRecord(date, symptom, diagnosis, prescription);
-        ui.printMessage("Added new record: \n" + patient.recentlyAdded());
+    }
+
+    private void printNewRecord(Patient patient) {
+        ui.printMessage("Added new record to patient " + patient.getID() + ":");
+        ui.printMessage(patient.recentlyAdded());
     }
 }
