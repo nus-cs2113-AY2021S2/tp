@@ -73,11 +73,19 @@ There is no patient being loaded now.
 Patient S1234567D's data has been found and loaded.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Added new record: coughing
+Added new record to patient S1234567D:
+
+Symptom: coughing
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Here is a list of S1234567D's records:
-1. coughing
+Here are S1234567D's records:
+2021-03-23:
+Symptoms:
+	coughing
+Diagnoses:
+Prescriptions:
+
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 The currently loaded patient's ID is S1234567D.
