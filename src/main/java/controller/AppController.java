@@ -94,7 +94,6 @@ public class AppController {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
                 person.addSchedule(schedule);
-                System.out.println("schedule added");
                 return;
             }
         System.out.println("Employee not found");
