@@ -312,7 +312,7 @@ Lists out all the reviews for all modules added to UniTracker.
 * Example for listing all the modules' reviews:  
   Input:   
   `5`  
-  Output:
+  Output:  
   ```  
   --------------------------------------------  
   For CS3243:  

@@ -9,6 +9,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#22-ui-class)
 
 [3. Implementation](#3-implementation)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.08 Add New Review](#308-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.09 Delete a Review](#309-delete-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.10 Add New Task](#310-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.11 Delete a Task](#311-delete-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.11 Add Zoom Link](#312-add-zoom-link)
@@ -61,6 +63,64 @@ This class handles the interactions with the user and contains the methods for s
 
 ---
 ## 3. Implementation
+
+### 3.08 Add New Review
+
+This feature allows user to `add a review` for any of the modules they have taken.
+
+**NOTE**: This action will **overwrite** the existing review with the new review.
+
+E.g. Input:  
+`CS2113T is very fun:) I have learnt so many important concepts.`  
+`Though it was difficult at first, the Java exercises helped me`  
+`catch up with the rest of my peers. Overall 10/10 :)`  
+`/end`
+
+Output:
+```
+Woohoo~ Review added:  
+CS2113T is very fun:) I have learnt so many important concepts.
+Though it was difficult at first, the Java exercises helped me 
+catch up with the rest of my peers.
+Overall 10/10 :) 
+
+Returning to module information menu...
+  ```
+
+A general explanation of how this feature works:  
+
+**Problem**: When the user wants to review a module, 
+he/she should be able to type ___multiple lines of input___, as reviews are generally long and detailed.   
+
+**Solution**: A `while` loop is used to take in multiple lines of input until the input contains the `/end` symbol. 
+Anything typed after this `/end` symbol will be erased.
+
+**When overwriting this review with a new review**: The old review will be printed for user reference.
+The user will also be alerted that this action will delete his/her old review via a log. 
+The log is printed out as a warning.
+
+E.g. 
+```
+You already have added a review:
+
+CS2113T is very fun:) I have learnt so many important concepts.
+Though it was difficult at first, the Java exercises helped me 
+catch up with the rest of my peers.
+Overall 10/10 :)
+ 
+Would you like to replace this with another review? [Y/N]
+
+Mar 23, 2021 9:52:21 PM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage
+WARNING: You will delete your old review. This cannot be undone.
+```
+
+### 3.09 Delete a Review
+This feature allows user to delete a review from the `module`.
+
+A general explanation of how this feature works:  
+
+Deleting a review would __reset__ the `Review` *String* attribute of a `module` to a default value of:  
+`"You have not reviewed this module yet."`
 
 ### 3.10 Add New Task
 
