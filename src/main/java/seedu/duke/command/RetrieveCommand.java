@@ -33,7 +33,7 @@ public class RetrieveCommand extends Command {
         }
         TreeMap<LocalDate, Record> records = patient.getRecords();
         ui.printMessage("Here are " + patient.getID() + "'s records:");
-        for(Map.Entry<LocalDate, Record> entry : records.entrySet()) {
+        for (Map.Entry<LocalDate, Record> entry : records.entrySet()) {
             LocalDate date = entry.getKey();
             Record record = entry.getValue();
             printRecord(date, record);

@@ -60,12 +60,12 @@ class RetrieveCommandTest {
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        String expected = "Here are S1234567A's records:" + System.lineSeparator() +
-                "2021-03-31:" + System.lineSeparator() +
-                "Symptoms:" + System.lineSeparator() +
-                "\tcoughing" + System.lineSeparator() +
-                "Diagnoses:" + System.lineSeparator() +
-                "Prescriptions:" + System.lineSeparator() + System.lineSeparator();
+        String expected = "Here are S1234567A's records:" + System.lineSeparator()
+                + "2021-03-31:" + System.lineSeparator()
+                + "Symptoms:" + System.lineSeparator()
+                + "\tcoughing" + System.lineSeparator()
+                + "Diagnoses:" + System.lineSeparator()
+                + "Prescriptions:" + System.lineSeparator() + System.lineSeparator();
         assertEquals(expected, bos.toString());
 
         // Bind System.out back to standard output

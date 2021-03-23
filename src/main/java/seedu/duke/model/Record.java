@@ -7,7 +7,9 @@ import java.util.ArrayList;
  * medical diagnosis, prescription, test results, etc.
  */
 public class Record {
-    protected ArrayList<String> symptoms, diagnoses, prescriptions;
+    protected ArrayList<String> symptoms;
+    protected ArrayList<String> diagnoses;
+    protected ArrayList<String> prescriptions;
 
     /**
      * Create a new visit record with details as a single string.

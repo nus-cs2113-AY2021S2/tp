@@ -15,7 +15,9 @@ public class Patient {
      */
     protected String id;
     protected TreeMap<LocalDate, Record> records;
-    protected String symptom, diagnosis, prescription;
+    protected String symptom;
+    protected String diagnosis;
+    protected String prescription;
 
     /**
      * Initialize a patient instance with an empty record list.
