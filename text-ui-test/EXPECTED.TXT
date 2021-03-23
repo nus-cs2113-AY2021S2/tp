@@ -87,9 +87,13 @@ Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Noted! I've removed 200 of the food chicken from your fridge.
 New quantity: 100
+WARNING! MEAT is running low on food!
+Total MEAT quantity: 300
 -----------------------------------------------------------------
 Noted! I've removed pork from your fridge.
 Now you have 3 food in the fridge.
+WARNING! MEAT is running low on food!
+Total MEAT quantity: 100
 -----------------------------------------------------------------
 Not enough in fridge to remove!
 -----------------------------------------------------------------
