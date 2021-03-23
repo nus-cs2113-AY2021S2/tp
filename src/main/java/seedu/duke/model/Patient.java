@@ -80,15 +80,15 @@ public class Patient {
     }
 
     public String recentlyAdded() {
-        String recentDetails = "\n";
+        String recentDetails = System.lineSeparator();
         if (symptom != null) {
-            recentDetails += "Symptom: " + symptom + "\n";
+            recentDetails += "Symptom: " + symptom + System.lineSeparator();
         }
         if (diagnosis != null) {
-            recentDetails += "Diagnosis: " + diagnosis + "\n";
+            recentDetails += "Diagnosis: " + diagnosis + System.lineSeparator();
         }
         if (prescription != null) {
-            recentDetails += "Prescription: " + prescription + "\n";
+            recentDetails += "Prescription: " + prescription + System.lineSeparator();
         }
         return recentDetails;
     }

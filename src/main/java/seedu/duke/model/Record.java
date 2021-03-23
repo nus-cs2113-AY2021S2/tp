@@ -25,17 +25,17 @@ public class Record {
      */
     public String getConsultationDetail() {
         String consultationDetail = "";
-        consultationDetail += "Symptoms:\n";
+        consultationDetail += "Symptoms:" + System.lineSeparator();
         for (String symptom : symptoms) {
-            consultationDetail += "\t" + symptom + "\n";
+            consultationDetail += "\t" + symptom + System.lineSeparator();
         }
-        consultationDetail += "Diagnoses:\n";
+        consultationDetail += "Diagnoses:" + System.lineSeparator();
         for (String diagnosis : diagnoses) {
-            consultationDetail += "\t" + diagnosis + "\n";
+            consultationDetail += "\t" + diagnosis + System.lineSeparator();
         }
-        consultationDetail += "Prescriptions:\n";
+        consultationDetail += "Prescriptions:" + System.lineSeparator();
         for (String prescription : prescriptions) {
-            consultationDetail += "\t" + prescription + "\n";
+            consultationDetail += "\t" + prescription + System.lineSeparator();
         }
         return consultationDetail;
     }
