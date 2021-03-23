@@ -69,12 +69,12 @@ Here are the items in your fridge:
 	4. Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 1
 -----------------------------------------------------------------
 These are the MEAT in your fridge:
-	1. chicken
-	2. pork
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 These are the food stored in LOWER_SHELF:
-	1. chicken
-	2. pork
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
