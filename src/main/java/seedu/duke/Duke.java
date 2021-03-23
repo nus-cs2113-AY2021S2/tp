@@ -21,6 +21,7 @@ public class Duke {
     public static void runMainMenu() {
         StorageModuleInfo.loadModuleInfoFile();
         StorageModuleInfo.loadLinkInfoFile();
+        StorageModuleInfo.loadZoomLinkInfoFile();
         TaskList taskList = new TaskList();
         while (true) {
             Ui.printMainMenu();
@@ -32,6 +33,7 @@ public class Duke {
                     try {
                         StorageModuleInfo.modulesFileSaver();
                         StorageModuleInfo.linksFileSaver();
+                        StorageModuleInfo.zoomLinksFileSaver();
                     } catch (IOException e) {
                         System.out.println("modules.txt file could not be saved:(");
                     }

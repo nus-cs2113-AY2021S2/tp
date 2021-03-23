@@ -1,23 +1,25 @@
 package seedu.duke;
 
 import seedu.duke.link.LinkInfo;
-import seedu.duke.link.Links;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import seedu.duke.link.ZoomLinkInfo;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
 public class StorageModuleInfo {
+
     public static String filePath = new File("").getAbsolutePath();
     public static String filePathForLinks = new File("").getAbsolutePath();
+    public static String filePathForZoom = new File("").getAbsolutePath();
 
     /**
-     * Checks if file exists, or creates new file if it doesn't already exist.
-     * Edits filepath variable within storage
+     * Checks if file exists, or creates new file if it doesn't already exist. Edits filepath
+     * variable within storage
      */
     public static void loadModuleInfoFile() {
         filePath += "/UniTracker Data";
@@ -68,8 +70,7 @@ public class StorageModuleInfo {
     }
 
     /**
-     * Writes tasks ArrayList data into modules.txt file on computer
-     * Delimiter is ' ~~ '
+     * Writes tasks ArrayList data into modules.txt file on computer Delimiter is ' ~~ '
      *
      * @throws IOException if modules.txt file cannot be accessed.
      */
@@ -120,6 +121,49 @@ public class StorageModuleInfo {
         FileWriter fw = new FileWriter(filePathForLinks);
         for (LinkInfo link : LinkInfo.linksList) {
             fw.write(link.getLink());
+            fw.write(System.lineSeparator());
+        }
+        fw.close();
+    }
+
+    public static void loadZoomLinkInfoFile() {
+        filePathForZoom += "/UniTracker Data";
+        File data = new File(filePathForZoom);
+        if (!data.exists()) {
+            boolean isCreated = data.mkdir();
+            if (!isCreated) {
+                System.out.println("New directory could not be created:(");
+            }
+        }
+        try {
+            filePathForZoom += "/zoom.txt";
+            data = new File(filePathForZoom);
+            if (data.createNewFile()) {
+                // System.out.println("New file created at:\n" + data.getAbsolutePath());
+                return;
+            }
+            downloadZoomLinks();
+        } catch (IOException e) {
+            System.out.println("There was an I/O error:(");
+        }
+    }
+
+    public static void downloadZoomLinks() throws FileNotFoundException {
+        File f = new File(filePathForZoom); // create a File for the given file path
+        Scanner s = new Scanner(f); // create a Scanner using the File as the source
+        while (s.hasNext()) {
+            String[] part = s.nextLine().split("~~");
+            ZoomLinkInfo link = new ZoomLinkInfo(part[0], part[1], part[2]);
+            ZoomLinkInfo.zoomLinksList.add(link);
+        }
+    }
+
+    public static void zoomLinksFileSaver() throws IOException {
+        FileWriter fw = new FileWriter(filePathForZoom);
+        for (ZoomLinkInfo link : ZoomLinkInfo.zoomLinksList) {
+            fw.write(link.getDescription() + "~~"
+                    + link.getModuleCode() + "~~"
+                    + link.getPassword());
             fw.write(System.lineSeparator());
         }
         fw.close();
