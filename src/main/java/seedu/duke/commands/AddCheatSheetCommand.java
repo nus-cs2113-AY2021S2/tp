@@ -11,7 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static seedu.duke.common.Constants.CHEATSHEET_DIR;
+import static seedu.duke.common.Constants.STRING_CHEATSHEET;
 import static seedu.duke.common.Constants.FOLDER_PATH;
 import static seedu.duke.common.Constants.PATH_DELIMITER;
 import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
@@ -49,8 +49,8 @@ public class AddCheatSheetCommand extends Command {
     }
 
     public String getDirectoryPath(Module module) {
-        String directoryPath = FOLDER_PATH + PATH_DELIMITER + module.getModuleCode() + PATH_DELIMITER + CHEATSHEET_DIR
-                + PATH_DELIMITER;
+        String directoryPath = FOLDER_PATH + PATH_DELIMITER + module.getModuleCode() + PATH_DELIMITER 
+                + STRING_CHEATSHEET + PATH_DELIMITER;
         Path path = Paths.get(directoryPath);
         assert Files.isDirectory(path) : "Directory missing";
         return directoryPath;

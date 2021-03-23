@@ -6,7 +6,7 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Constants.CHEATSHEET_STRING;
+import static seedu.duke.common.Constants.STRING_CHEATSHEET;
 import static seedu.duke.common.Constants.DIVIDER_WRITE;
 import static seedu.duke.common.Constants.FOLDER_PATH;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
@@ -92,7 +92,7 @@ public class Writer {
         directory += "/" + moduleCode;
         File moduleDirectory = new File(directory);
         moduleDirectory.mkdir();
-        directory += "/" + CHEATSHEET_STRING;
+        directory += "/" + STRING_CHEATSHEET;
         File cheatsheetDirectory = new File(directory);
         cheatsheetDirectory.mkdir();
     }
