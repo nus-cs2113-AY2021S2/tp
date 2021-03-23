@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class CommandListTest {
 
-    public ArrayList<Review> reviewList = new ArrayList<Review>();
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     Ui ui = new Ui();
@@ -28,19 +27,19 @@ public class CommandListTest {
     public void setUp() {
         Review reviewa = new Review("superman", "category", 5, "description");
         Review reviewb = new Review("avengers", "category", 5, "description");
-        reviewList.add(reviewa);
-        reviewList.add(reviewb);
+        commandList.reviewList.add(reviewa);
+        commandList.reviewList.add(reviewb);
     }
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
-        int numberOfReviewsBeforeRemoval = reviewList.size();
+        int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
         String title = "superman";
         commandList.deleteReview(title);
 
-        assertFalse(reviewList.contains(title));
+        assertFalse(commandList.reviewList.contains(title));
 
-        int numberOfReviewsAfterRemoval = reviewList.size();
+        int numberOfReviewsAfterRemoval = commandList.reviewList.size();
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
     }
 
