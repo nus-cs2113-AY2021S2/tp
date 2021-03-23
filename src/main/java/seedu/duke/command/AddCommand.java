@@ -28,24 +28,24 @@ public class AddCommand extends Command {
         boolean validID = true;
 
         // Checks if ID has 9 characters
-        if (stringLength != 9) {
+        if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
             validID = false;
         }
         // Checks if ID is valid
         for (int i = 0; i < stringLength; i++) {
             char c = patientID.charAt(i);
-            if (i == 0) {
-                // Checks if first value of ID is S,T,F or G
+            if (i == Constants.INDEX_OF_FIRST_CHARACTER) {
+                // Checks if first index of ID is S,T,F or G
                 if (c != 'S' && c != 'T' && c != 'F' && c != 'G') {
                     validID = false;
                 }
-            } else if (i == 8) {
-                // Checks if last value of ID is a letter
+            } else if (i == Constants.INDEX_OF_LAST_CHARACTER) {
+                // Checks if last index of ID is a letter
                 if (!Character.isLetter(c)) {
                     validID = false;
                 }
             } else {
-                // Checks if the rest of the values are digits
+                // Checks if the rest of the indexes are digits
                 if (!Character.isDigit(c)) {
                     validID = false;
                 }

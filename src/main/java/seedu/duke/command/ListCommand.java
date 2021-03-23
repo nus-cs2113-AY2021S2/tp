@@ -33,7 +33,7 @@ public class ListCommand extends Command {
         if (patientCount == 0) {
             throw new Exception(Constants.EXCEPTION_LIST_EMPTY);
         } else {
-            assert list != null : "List should not be empty";
+            assert list != "" : "List should not be empty";
             ui.printMessage(list);
         }
     }
