@@ -122,46 +122,48 @@ public class UiManager {
         }
     }
 
-    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() throws InvalidDayException, InvalidBlockException {
+    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() 
+            throws InvalidDayException, InvalidBlockException {
         out.println("Enter the day: ");
-        String Day = in.nextLine().toUpperCase().trim();
-        CheckValidDay(Day);
-        ArrayList<String> DailyBlocks = new ArrayList<>();
+        String day = in.nextLine().toUpperCase().trim();
+        checkValidDay(day);
+        ArrayList<String> dailyBlocks = new ArrayList<>();
         out.println("Enter Location of the first activity of the day: ");
-        String InitialBlock = in.nextLine().toUpperCase().trim();
-        CheckValidBlock(InitialBlock);
-        DailyBlocks.add(InitialBlock);
+        String initialBlock = in.nextLine().toUpperCase().trim();
+        checkValidBlock(initialBlock);
+        dailyBlocks.add(initialBlock);
         while (true) {
             out.println("Enter Location of the next activity of the day: ");
-            String NextBlock = in.nextLine().toUpperCase().trim();
-            if (NextBlock.equals("END")){
+            String nextBlock = in.nextLine().toUpperCase().trim();
+            if (nextBlock.equals("END")) {
                 break;
             } else {
-                CheckValidBlock(NextBlock);
-                DailyBlocks.add(NextBlock);
+                checkValidBlock(nextBlock);
+                dailyBlocks.add(nextBlock);
             }
         }
-        return new AbstractMap.SimpleEntry<>(Day, DailyBlocks);
+        return new AbstractMap.SimpleEntry<>(day, dailyBlocks);
     }
 
-    public void CheckValidBlock(String Block) throws InvalidBlockException {
+    public void checkValidBlock(String block) throws InvalidBlockException {
         Map nusMap = new Map();
-        if (nusMap.getBlock(Block) == null){
+        if (nusMap.getBlock(block) == null) {
             throw new InvalidBlockException();
         }
     }
 
-    public void CheckValidDay(String Day) throws InvalidDayException {
-        ArrayList<String> Days = new ArrayList<>(List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"));
-        if (!Days.contains(Day)){
+    public void checkValidDay(String day) throws InvalidDayException {
+        List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
+        ArrayList<String> days = new ArrayList<>(daysList);
+        if (!days.contains(day)) {
             throw new InvalidDayException();
         }
     }
 
-    public String getDay() throws InvalidDayException{
+    public String getDay() throws InvalidDayException {
         out.println("Select Day:");
-        String Day = in.nextLine().toUpperCase().trim();
-        CheckValidDay(Day);
-        return Day;
+        String day = in.nextLine().toUpperCase().trim();
+        checkValidDay(day);
+        return day;
     }
 }

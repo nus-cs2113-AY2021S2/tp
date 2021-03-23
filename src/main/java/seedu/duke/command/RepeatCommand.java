@@ -15,7 +15,8 @@ public class RepeatCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history, NotesManager notesManager, DailyRoute dailyRoute) {
+    public void execute(Router router, UiManager ui, History history,
+                        NotesManager notesManager, DailyRoute dailyRoute) {
         ui.showHistory(history);
         try {
             int entry = ui.getRepeatEntry();

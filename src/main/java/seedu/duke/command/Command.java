@@ -17,6 +17,7 @@ public class Command {
         return false;
     }
 
-    public void execute(Router router, UiManager ui, History history, NotesManager notesManager, DailyRoute dailyRoute) {
+    public void execute(Router router, UiManager ui, History history,
+                        NotesManager notesManager, DailyRoute dailyRoute) {
     }
 }

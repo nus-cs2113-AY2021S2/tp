@@ -16,22 +16,23 @@ public class ShowDailyRouteCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history, NotesManager notesManager, DailyRoute dailyRoute) {
-        String Day = null;
+    public void execute(Router router, UiManager ui, History history,
+                        NotesManager notesManager, DailyRoute dailyRoute) {
+        String day = null;
         try {
-            Day = ui.getDay();
-            assert Day != null;
-            ArrayList<String> Blocks = dailyRoute.getDailyRoute(Day);
-            StringBuilder DayRoute = new StringBuilder();
-            for(int i = 0; i < Blocks.size() - 1; i++){
+            day = ui.getDay();
+            assert day != null;
+            ArrayList<String> blocks = dailyRoute.getDailyRoute(day);
+            StringBuilder dayRoute = new StringBuilder();
+            for (int i = 0; i < blocks.size() - 1; i++) {
                 try {
-                    String route = router.execute(Blocks.get(i), Blocks.get(i + 1));
-                    DayRoute.append(route);
-                    if(i < Blocks.size()-2){
-                        DayRoute.append("\n");
+                    String route = router.execute(blocks.get(i), blocks.get(i + 1));
+                    dayRoute.append(route);
+                    if (i < blocks.size() - 2) {
+                        dayRoute.append("\n");
                     }
-                    ui.showToUser(DayRoute.toString());
-                } catch (InvalidBlockException e){
+                    ui.showToUser(dayRoute.toString());
+                } catch (InvalidBlockException e) {
                     ui.showToUser(e.getMessage());
                 }
             }
