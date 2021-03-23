@@ -3,10 +3,11 @@ package seedu.nurseschedules;
 import seedu.duke.exceptions.nurseschedules.EmptyListException;
 import seedu.duke.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.duke.exceptions.nurseschedules.WrongInputsException;
-import seedu.duke.storage.NurseScheduleStorage;
+import seedu.duke.exceptions.staffexceptions.AbortException;
 import seedu.duke.menuparser.NurseSchedulesParser;
+import seedu.duke.storage.NurseScheduleStorage;
 import seedu.duke.ui.NurseScheduleUI;
-import seedu.staff.Nurse;
+import seedu.duke.ui.UI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -55,13 +56,10 @@ public class NurseScheduleInstance {
             switch (command) {
             case "add":
                 try {
-                    String[] details = parser.getDetails(line);
-                    NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
-                    actions.addSchedule(nurseSchedules, details);
+                    actions.addSchedule(nurseSchedules, NurseScheduleUI.inputToCreateSchedule());
                     storage.writeToFile(nurseSchedules);
-                } catch (ParseException | WrongInputsException e) {
-                    NurseScheduleUI.invalidInputsMessage();
-                    NurseScheduleUI.addHelpMessage();
+                } catch (AbortException | ParseException e) {
+                    UI.abortInputErrorMessage();
                 }
                 break;
             case "list":

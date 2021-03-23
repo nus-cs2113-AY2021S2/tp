@@ -25,7 +25,7 @@ public class NurseSchedulesParser {
      * @param text User input
      * @return First word of user input
      */
-    public String getFirstWord(String text) {
+    public static String getFirstWord(String text) {
         int index = text.indexOf(' ');
 
         if (index > -1) {
@@ -38,7 +38,7 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String text) throws WrongInputsException {
+    public static String[] getDetails(String text) throws WrongInputsException {
         String[] details = new String[3];
 
         String[] parts = text.split(" ", 0);
@@ -58,10 +58,9 @@ public class NurseSchedulesParser {
         return details;
     }
 
-    public String formatDate(String text) throws ParseException, WrongInputsException {
-        String[] details = getDetails(text);
+    public static String formatDate(String datetime) throws ParseException {
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
-        Date date = parser.parse(details[2]);
+        Date date = parser.parse(datetime);
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         return formatter.format(date);
