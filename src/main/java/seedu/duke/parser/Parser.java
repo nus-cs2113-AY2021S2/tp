@@ -310,6 +310,12 @@ public class Parser {
         return newLesson;
     }
 
+    /**
+     * Splits input string into its respective fields and stores each substring in an array.
+     * 
+     * @param inputString user input containing new lesson details
+     * @param allDetails array storing parsed details
+     */
     private void parseLessonDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
         String[] splitDetails = inputString.split(DELIM);
@@ -321,6 +327,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Creates a new Lesson object with its attributes initialised based on given details array.
+     * 
+     * @param allLessonDetails an array of lesson details
+     * @return a new Lesson object
+     * @throws CommandException if invalid lesson type, invalid link format or invalid email format
+     */
     private Lesson createLessonObject(String[] allLessonDetails) throws CommandException {
         // type
         String type = allLessonDetails[INDEX_TYPE].toUpperCase();
@@ -359,6 +372,7 @@ public class Parser {
      *
      * @param input full user input string
      * @return a Task object with the details entered by the user. Fields not found will be left as an empty string.
+     * @throws CommandException if user does not enter any details
      */
     private Task parseNewTask(String input) throws CommandException {
 
@@ -371,7 +385,7 @@ public class Parser {
         // assumption that the "add task" will always be present in input
         assert (inputSections.length >= 2);
 
-        // ERROR - User does not enter any parameters.
+        // user does not enter any parameters.
         if (inputSections.length < 3) {
             throw new CommandException(MESSAGE_TASK_FIELDS_EMPTY);
         }
@@ -382,7 +396,13 @@ public class Parser {
 
         return newTask;
     }
-    
+
+    /**
+     * Splits input string into its respective fields and stores each substring in an array.
+     *
+     * @param inputString user input containing new task details
+     * @param allDetails array storing parsed details
+     */
     private void parseTaskDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
         String[] details = inputString.split(DELIM);
@@ -394,6 +414,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Creates a new Task object with its attributes initialised based on given details array.
+     * 
+     * @param allTaskDetails an array of task details
+     * @return a new Task object
+     * @throws CommandException if deadline cannot be parsed as a valid date
+     */
     private Task createNewTask(String[] allTaskDetails) throws CommandException {
         // description
         String description = allTaskDetails[INDEX_DESCRIPTION];
