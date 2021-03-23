@@ -60,7 +60,7 @@ class RetrieveCommandTest {
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        String expected = "Here are S1234567A's records:" + System.lineSeparator()
+        String expected = "Here are " + patient.getID() + "'s records:" + System.lineSeparator()
                 + "2021-03-31:" + System.lineSeparator()
                 + "Symptoms:" + System.lineSeparator()
                 + "\tcoughing" + System.lineSeparator()
