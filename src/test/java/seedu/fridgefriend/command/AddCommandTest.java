@@ -98,7 +98,7 @@ class AddCommandTest {
 
         String expectedMessage = "Great! I have added Milk into your fridge.\n"
                 + "Details: Food name: Milk, category: DAIRY, "
-                + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 3";
+                + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 5";
         String actualMessage = addCommand2.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }
