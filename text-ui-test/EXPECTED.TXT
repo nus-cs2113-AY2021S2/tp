@@ -33,7 +33,7 @@ Add a patient to the list
 Command prefix: add
 Argument(s): IC number
 Usage: add /<IC_NUMBER>
-Example: add S1234567A
+Example: add S1234567D
 
 Show the list of all patients
 Usage: list
@@ -42,7 +42,7 @@ Select a specified patient to add and retrieve records
 Command prefix: load
 Arguments(s): IC number
 Usage: load <IC_NUMBER>
-Example: load S1234567A
+Example: load S1234567D
 
 Add a consultation record to the selected patient
 Command prefix: record

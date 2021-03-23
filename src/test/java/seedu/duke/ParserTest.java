@@ -110,7 +110,7 @@ public class ParserTest {
         String fullCommand = "echo Hi!";
         SortedMap<String, Patient> patients = new TreeMap<>();
 
-        String nric = "S1234567A";
+        String nric = "S1234567D";
         patients.put(nric, new Patient(nric));
         Data data = new Data(patients);
         Parser parser = new Parser(new Ui(), data);

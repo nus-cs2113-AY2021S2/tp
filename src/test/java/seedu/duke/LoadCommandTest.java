@@ -15,7 +15,7 @@ public class LoadCommandTest {
         arguments.put("command", "load");
         arguments.put("payload", "S7654321B");
 
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         patient = new Patient("S7654321B");
         data.setPatient(patient);
