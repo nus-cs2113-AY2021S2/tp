@@ -28,7 +28,7 @@ public class ModuleInfo {
                 }
                 switch (taskNumber) {
                 case 1:
-                    //addNewModule method;
+                    addNewModule();
                     break;
                 case 2:
                     getModuleDescriptions(); //becomes viewAModule method
@@ -82,6 +82,17 @@ public class ModuleInfo {
             }
 
         }
+    }
+
+    public static void addNewModule() {
+        System.out.println("Enter name of the new module:");
+        String moduleName = Ui.readCommand();
+        System.out.println("Enter module description:");
+        String moduleDescription = Ui.readCommand();
+        modules.add(new Module(moduleName, moduleDescription));
+        Ui.printHorizontalLine();
+        System.out.println("New module added:\n" + moduleName + ":\n" + moduleDescription);
+        Ui.printHorizontalLine();
     }
 
     public static int readYN(String command) {
