@@ -20,7 +20,18 @@ import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
 import static seedu.duke.common.Constants.LESSON_FIELD_3_T_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_4_T_EMAIL;
 import static seedu.duke.common.Constants.MAX_EDITABLE_FIELDS;
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELD_TO_EDIT;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_TIME_UPDATED;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_EDIT;
+import static seedu.duke.common.Messages.MESSAGE_LINK_UPDATED;
+import static seedu.duke.common.Messages.MESSAGE_NOT_UPDATED;
+import static seedu.duke.common.Messages.MESSAGE_TEACHER_EMAIL_UPDATED;
+import static seedu.duke.common.Messages.MESSAGE_TEACHER_NAME_UPDATED;
+import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
+import static seedu.duke.common.Messages.WARNING_NO_VALID_INPUT;
 
 public class EditLessonCommand extends Command {
     private final String[] fields = {LESSON_FIELD_1_TIME_DAY, LESSON_FIELD_2_LINK, 
@@ -133,7 +144,7 @@ public class EditLessonCommand extends Command {
             ui.printMessage(String.format(MESSAGE_TEACHER_NAME_UPDATED, newFieldValue));
             break;
         default:
-            if(TeachingStaff.isValidEmail(newFieldValue)) {
+            if (TeachingStaff.isValidEmail(newFieldValue)) {
                 lesson.getTeachingStaff().setEmail(newFieldValue);
                 ui.printMessage(String.format(MESSAGE_TEACHER_EMAIL_UPDATED, newFieldValue));
             } else {

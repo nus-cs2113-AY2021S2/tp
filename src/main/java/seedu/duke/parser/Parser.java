@@ -65,7 +65,20 @@ import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
 import static seedu.duke.common.Constants.WHITESPACE;
-import static seedu.duke.common.Messages.*;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_TYPE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE_CODE;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
+import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELDS_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_MODULE_CODE_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDEX;
+import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDEX;
+import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
+import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 public class Parser {
 
