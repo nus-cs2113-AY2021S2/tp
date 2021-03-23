@@ -14,8 +14,8 @@ public class ShortcutListener implements KeyListener {
     TextEditor textEditor;
     boolean isCtrlPressed = false;
     boolean isSPressed = false;
-    boolean isPlusPressed = false;
-    boolean isMinusPressed = false;
+    boolean isUpPressed = false;
+    boolean isDownPressed = false;
 
     public ShortcutListener(JFrame frame, TextEditor editor) {
         this.frame = frame;
@@ -46,12 +46,12 @@ public class ShortcutListener implements KeyListener {
             break;
         }
         case KEYCODE_UP: {
-            isPlusPressed = true;
+            isUpPressed = true;
             checkZoomShortcut();
             break;
         }
         case KEYCODE_DOWN: {
-            isMinusPressed = true;
+            isDownPressed = true;
             checkZoomShortcut();
             break;
         }
@@ -71,11 +71,11 @@ public class ShortcutListener implements KeyListener {
             break;
         }
         case KEYCODE_UP: {
-            isPlusPressed = false;
+            isUpPressed = false;
             break;
         }
         case KEYCODE_DOWN: {
-            isMinusPressed = false;
+            isDownPressed = false;
             break;
         }
         default:
@@ -102,15 +102,15 @@ public class ShortcutListener implements KeyListener {
         if (!isCtrlPressed) {
             return;
         }
-        if (isMinusPressed && isPlusPressed) {
+        if (isDownPressed && isUpPressed) {
             return;
         }
-        if (isPlusPressed) {
-            isPlusPressed = false;
+        if (isUpPressed) {
+            isUpPressed = false;
             //Increase font size
             textEditor.increaseFontSize();
-        } else if (isMinusPressed) {
-            isMinusPressed = false;
+        } else if (isDownPressed) {
+            isDownPressed = false;
             //Decrease font size
             textEditor.decreaseFontSize();
         }
