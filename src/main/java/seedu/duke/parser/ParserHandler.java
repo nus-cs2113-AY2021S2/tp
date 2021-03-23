@@ -18,18 +18,28 @@ public class ParserHandler {
     }
 
     /**
-     * Check and parse if the input starts with option.
+     * Parse the input into an ArrayList of String.
      * @param userInput contains a single string to be parsed.
      * @return a ArrayList of String containing trimmed options and arguments.
      */
     public ArrayList<String> getParseInput(String userInput) {
         ArrayList<String> extracted = new ArrayList<>();
         String trimmedInput = userInput.stripLeading();
+        return startExtraction(extracted, trimmedInput);
+    }
+
+    /**
+     * Check if first block starts of option, then continue with extracting the input.
+     * @param extracted ArrayList of String containing the initial parsed option or argument.
+     * @param trimmedInput contains the remaining input that is needed to be parse.
+     * @return a ArrayList of String containing trimmed options and arguments.
+     */
+    private ArrayList<String> startExtraction(ArrayList<String> extracted, String trimmedInput) {
         if (checkOptionStartWith(trimmedInput)) {
             extracted.add(trimmedInput.substring(0,2));
             trimmedInput = trimmedInput.substring(2);
         }
-        return extractAfterFirstCheck(extracted, trimmedInput);
+        return extractSubsequentPart(extracted, trimmedInput);
     }
 
     /**
@@ -38,7 +48,7 @@ public class ParserHandler {
      * @param trimmedInput contains the remaining input that is needed to be parse.
      * @return a ArrayList of String containing trimmed options and arguments.
      */
-    private ArrayList<String> extractAfterFirstCheck(ArrayList<String> extracted, String trimmedInput) {
+    private ArrayList<String> extractSubsequentPart(ArrayList<String> extracted, String trimmedInput) {
         int optionIndex = getNextOptionIndex(trimmedInput);
         while (optionIndex != -1) {
             String argument = trimmedInput.substring(0,optionIndex).trim();
@@ -76,7 +86,7 @@ public class ParserHandler {
      * @param extracted ArrayList of String containing the pre-final parsed option or argument.
      * @return the final parsed ArrayList of String containing the options and arguments.
      */
-    private static ArrayList<String> checkFirstBlock(ArrayList<String> extracted) {
+    private ArrayList<String> checkFirstBlock(ArrayList<String> extracted) {
         String firstblock = extracted.get(0);
         if (StringUtils.startsWithAny(firstblock, "help ", "creditscore ")) {
             String[] splitBlock = firstblock.split(" ", 2);
