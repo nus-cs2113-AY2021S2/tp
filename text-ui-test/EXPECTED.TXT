@@ -5,18 +5,35 @@ Please input a command:
 java.lang.Exception: Invalid command is provided
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Patient S1234567A has been added!
+Patient S7654321F has been added!
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-List of patients:
-1. S1234567A
+List of patients (in alphanumeric order):
+1. S7654321F
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Patient G1234567X has been added!
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+List of patients (in alphanumeric order):
+1. G1234567X
+2. S7654321F
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Patient S1234567D has been added!
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+List of patients (in alphanumeric order):
+1. G1234567X
+2. S1234567D
+3. S7654321F
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Add a patient to the list
 Command prefix: add
 Argument(s): IC number
 Usage: add /<IC_NUMBER>
-Example: add S1234567A
+Example: add S1234567D
 
 Show the list of all patients
 Usage: list
@@ -25,7 +42,7 @@ Select a specified patient to add and retrieve records
 Command prefix: load
 Arguments(s): IC number
 Usage: load <IC_NUMBER>
-Example: load S1234567A
+Example: load S1234567D
 
 Add a consultation record to the selected patient
 Command prefix: record
@@ -53,17 +70,17 @@ Usage: exit
 There is no patient being loaded now.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Patient S1234567A's data has been found and loaded.
+Patient S1234567D's data has been found and loaded.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Added new record: coughing
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Here is a list of S1234567A's records:
+Here is a list of S1234567D's records:
 1. coughing
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-The currently loaded patient's ID is S1234567A.
+The currently loaded patient's ID is S1234567D.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Goodbye, we hope to see you again!

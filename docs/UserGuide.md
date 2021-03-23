@@ -69,7 +69,7 @@ Usage: `add` `IC_NUMBER`
 Example of usage:
 
 ```
-add S1234567A
+add S1234567D
 ```
 
 ### Listing all patients: `list`
@@ -88,7 +88,7 @@ Usage: `load` `IC_NUMBER`
 Example of usage:
 
 ```
-load S1234567A
+load S1234567D
 ```
 
 ### Displaying the current loaded patient: `current`

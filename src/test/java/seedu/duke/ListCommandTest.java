@@ -34,7 +34,7 @@ public class ListCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "list");
 
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         ListCommand listCommand = new ListCommand(ui, data, arguments);
 
@@ -48,7 +48,8 @@ public class ListCommandTest {
             System.out.println("An error occurred while running tests");
         }
 
-        assertEquals("List of patients:\n" + "1. S1234567A" + System.lineSeparator(), bos.toString());
+        assertEquals("List of patients (in alphanumeric order):\n"
+                + "1. S1234567D" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 }

@@ -17,7 +17,7 @@ class RetrieveCommandTest {
     @Test
     public void executeRetrieveCommand_noPatientLoaded_exceptionThrown() {
         Data data = new Data();
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
@@ -34,7 +34,7 @@ class RetrieveCommandTest {
     @Test
     public void executeRetrieveCommand_patientLoadedAndRecordsAdded_printsRecords() {
         Data data = new Data();
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();

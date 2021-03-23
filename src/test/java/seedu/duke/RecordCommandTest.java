@@ -6,7 +6,6 @@ import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 
@@ -17,7 +16,7 @@ class RecordCommandTest {
     @Test
     public void executeRecordCommand_noPatientLoaded_exceptionThrown() {
         Data data = new Data();
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
@@ -34,7 +33,7 @@ class RecordCommandTest {
     @Test
     public void executeRecordCommand_patientLoaded_recordAdded() {
         Data data = new Data();
-        Patient patient = new Patient("S1234567A");
+        Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
@@ -51,5 +50,4 @@ class RecordCommandTest {
         TreeMap<LocalDate, Record> records = patient.getRecords();
         assertEquals(1, records.size());
     }
-
 }
