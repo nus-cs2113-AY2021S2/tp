@@ -26,7 +26,7 @@ import static seedu.duke.common.Messages.MESSAGE_TASK_TO_EDIT;
 
 public class EditTaskCommand extends Command {
     private final String[] fields = {TASK_FIELD_DESCRIPTION, TASK_FIELD_DEADLINE, 
-            TASK_FIELD_REMARKS, TASK_FIELD_GRADED_STATUS};
+        TASK_FIELD_REMARKS, TASK_FIELD_GRADED_STATUS};
 
     @Override
     public void execute(UI ui) throws CommandException {
