@@ -1,6 +1,6 @@
 package seedu.patient;
 
-import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.HealthVaultException;
 import seedu.duke.menuparser.MenuParser;
 import seedu.duke.storage.PatientStorage;
 import seedu.duke.ui.PatientUI;
@@ -17,7 +17,7 @@ public class PatientCommandInstance {
         patientStorage = new PatientStorage(filepath);
         try {
             patients = new PatientList(patientStorage.loadPatients());
-        } catch (DukeException e) {
+        } catch (HealthVaultException e) {
             ui.showLoadingError();
             //creates new task list if failure to load from folder.
             patients = new PatientList();

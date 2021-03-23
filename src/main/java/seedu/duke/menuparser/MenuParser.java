@@ -1,7 +1,7 @@
 package seedu.duke.menuparser;
 
 
-import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.HealthVaultException;
 import seedu.duke.exceptions.patient.*;
 import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
@@ -14,15 +14,15 @@ public class MenuParser {
      *
      * @param numberOfTokens number of tokens in the string
      * @param command        interpreted command from the user to be used in error finding
-     * @throws DukeException exception based on command
+     * @throws HealthVaultException exception based on command
      */
-    public static void lengthCheck(int numberOfTokens, String command) throws DukeException {
+    public static void lengthCheck(int numberOfTokens, String command) throws HealthVaultException {
         if (command.equals("add") && numberOfTokens != 7) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         } else if ((command.equals("list") || command.equals("return") || command.equals("help")) && numberOfTokens != 1) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         }
     }
 
@@ -101,7 +101,7 @@ public class MenuParser {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             UI.invalidFormatErrorMessage();
-        } catch (DukeException e) {
+        } catch (HealthVaultException e) {
             e.getError(command);
         }
         return false;

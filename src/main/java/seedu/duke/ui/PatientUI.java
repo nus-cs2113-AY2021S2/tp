@@ -1,10 +1,11 @@
 package seedu.duke.ui;
 
-public class PatientUI {
+public class PatientUI extends UI{
     public static void printPatientHelpList() {
         System.out.println("Here is a list of patient commands: ");
         System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add [Patient ID] [Name] [Age] [Gender] [Illness] [Drugs Needed]\" adds a patient to the patient list!");
+        System.out.println("\"add [Patient ID] [Name] [Age] [Gender] [Illness] [Drugs Needed]\" " +
+                "adds a patient to the patient list!");
         System.out.println("*The name must not have a space included!");
         System.out.println("*The patient ID must start with a \"P\" and have a 5 digit number after! eg. P12345");
         System.out.println("*The age must be an integer!");

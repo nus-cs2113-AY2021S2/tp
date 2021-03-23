@@ -1,6 +1,6 @@
 package seedu.duke.exceptions.nurseschedules;
 
-import seedu.duke.exceptions.DukeException;
+import seedu.duke.exceptions.HealthVaultException;
 
-public class WrongInputsException extends DukeException {
+public class WrongInputsException extends HealthVaultException {
 }

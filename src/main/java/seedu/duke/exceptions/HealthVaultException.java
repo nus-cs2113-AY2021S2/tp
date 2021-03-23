@@ -1,6 +1,6 @@
 package seedu.duke.exceptions;
 
-public class DukeException extends Exception {
+public class HealthVaultException extends Exception {
 
     protected String error;
 
@@ -9,11 +9,11 @@ public class DukeException extends Exception {
      *
      * @param error error type
      */
-    public DukeException(String error) {
+    public HealthVaultException(String error) {
         this.error = error;
     }
 
-    public DukeException() {
+    public HealthVaultException() {
     }
 
     /**
