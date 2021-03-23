@@ -43,8 +43,10 @@ public class AppController {
                 break;
             case "assign Employee":
                 assignEmployee();
+                break;
             case "unassign Employee":
                 unassignEmployee();
+                break;
             case "view Employee schedule":
                 viewEmployeeSchedule();
                 break;
@@ -53,6 +55,10 @@ public class AppController {
                 break;
             case "view one shift":
                 viewOneShift();
+                break;
+            case "list":
+                listAllEmployees();
+                break;
             case "quit":
                 System.out.println("bye");
                 fileManager.saveFile(employees);
@@ -69,6 +75,15 @@ public class AppController {
         Employee newEmployee = new Employee(name);
         employees.add(newEmployee);
         System.out.println("Employee added");
+    }
+
+    private void listAllEmployees() {
+        int i;
+
+        System.out.println("Here is the employee list:");
+        for (i = 0; i < employees.size(); i++) {
+            System.out.println(i+1 + ") " + employees.get(i).getName());
+        }
     }
 
     private void addSchedule() {
