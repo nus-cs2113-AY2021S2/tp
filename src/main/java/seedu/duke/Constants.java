@@ -45,4 +45,9 @@ public class Constants {
     public static final String EXCEPTION_LIST_EMPTY = "List is currently empty!";
     public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
     public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please give me more details about the patient's visit";
+
+    // Number constants
+    public static final int ID_NUMBER_OF_CHARACTERS = 9;
+    public static final int INDEX_OF_FIRST_CHARACTER = 0;
+    public static final int INDEX_OF_LAST_CHARACTER = 8;
 }

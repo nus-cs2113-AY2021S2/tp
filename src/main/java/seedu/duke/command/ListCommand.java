@@ -21,7 +21,7 @@ public class ListCommand extends Command {
 
     @Override
     public void execute() throws Exception {
-        // Todo Replace by ui after ui is implemented
+
         HashMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
         String list = "List of patients:";
@@ -30,10 +30,10 @@ public class ListCommand extends Command {
             list += "\n" + ++patientCount + ". " + patientID;
         }
 
-        // Todo implement more exceptions
         if (patientCount == 0) {
             throw new Exception(Constants.EXCEPTION_LIST_EMPTY);
         } else {
+            assert list != "" : "List should not be empty";
             ui.printMessage(list);
         }
     }
