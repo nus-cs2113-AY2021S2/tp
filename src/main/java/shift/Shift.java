@@ -35,6 +35,7 @@ public class Shift {
         if (this.vacancy > 0) {
             employees.add(e);
             this.vacancy--;
+            System.out.println("Employee " + e.getName() + " assigned.");
         }
         else {
             System.out.println("Shift is full!");
@@ -44,6 +45,7 @@ public class Shift {
     public void unassignEmployee(Employee e) {
         employees.remove(e);
         this.vacancy++;
+        System.out.println("Employee " + e.getName() + " unassigned.");
     }
 
     public LocalDate getShiftDate() {
