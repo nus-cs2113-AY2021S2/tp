@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CommandListTest {
 
     public ArrayList<Review> reviewList = new ArrayList<Review>();
-    CommandList commandList;
+    CommandList commandList = null;
 
     @BeforeEach
     public void setUp() throws Exception {
