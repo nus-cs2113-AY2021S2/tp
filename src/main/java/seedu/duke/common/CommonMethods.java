@@ -1,5 +1,6 @@
 package seedu.duke.common;
 
+import seedu.duke.exception.DukeException;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
@@ -18,6 +19,7 @@ import static seedu.duke.common.Constants.LAB_STRING;
 import static seedu.duke.common.Constants.LECTURE_STRING;
 import static seedu.duke.common.Constants.LOGGER_NAME;
 import static seedu.duke.common.Constants.LOGGER_PATH;
+import static seedu.duke.common.Constants.NUMBER_OF_FIELDS_FOR_TASK;
 import static seedu.duke.common.Constants.TUTORIAL_STRING;
 
 public class CommonMethods {
@@ -118,5 +120,21 @@ public class CommonMethods {
             selectedTasks.add(taskList.get(index - 1));
         }
         return selectedTasks;
+    }
+    
+    public static ArrayList<Integer> getSpecifiedIndices(UI ui) {
+        String line = ui.readCommand();
+        return Parser.checkIndices(line, NUMBER_OF_FIELDS_FOR_TASK);
+    }
+    
+    public static Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
+        String line = ui.readCommand();
+        try {
+            int index = Parser.checkIndex(line, taskList.size());
+            return taskList.get(index - 1);
+        } catch (DukeException e) {
+            ui.printError(e);
+            return null;
+        }
     }
 }
