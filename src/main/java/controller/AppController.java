@@ -6,15 +6,15 @@ import shift.Shift;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class AppController {
     private static ArrayList<Employee> employees = new ArrayList<>();
     private static final Scanner sc = new Scanner(System.in);
     FileManager fileManager = new FileManager();
-    private static final ArrayList<Shift> shifts = new ArrayList<Shift>();
+    private static final ArrayList<Shift> shifts = new ArrayList<>();
 
     public void run() throws IOException {
         try {
@@ -118,14 +118,14 @@ public class AppController {
     }
 
     private void addShift() {
-        System.out.println("Enter Shift date (in DDMMYYYY):");
+        System.out.println("Enter Shift date (in dd/MM/yyyy):");
         String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date);
+        LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         System.out.println("Enter Shift index:");
         int shiftIndex = Integer.parseInt(sc.nextLine());
         System.out.println("Enter vacancy for this shift:");
         int vacancy = Integer.parseInt(sc.nextLine());
-        ArrayList<Employee> employeesOnShift = new ArrayList<Employee>();
+        ArrayList<Employee> employeesOnShift = new ArrayList<>();
         boolean runLoop = true;
         do {
             System.out.println("Enter employees on this shift (Q to quit):");
@@ -149,11 +149,11 @@ public class AppController {
     private void assignEmployee() {
         System.out.println("Enter Employee name to assign:");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
-                System.out.println("Enter Shift date (in DDMMYYYY)");
+                System.out.println("Enter Shift date (in dd/MM/yyyy)");
                 String date = sc.nextLine();
-                LocalDate shiftDate = LocalDate.parse(date);
+                LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 System.out.println("Enter Shift index:");
                 int shiftIndex = Integer.parseInt(sc.nextLine());
                 for (Shift shift : shifts) {
@@ -162,17 +162,18 @@ public class AppController {
                     }
                 }
             }
+        }
         System.out.println("Employee not found");
     }
 
     private void unassignEmployee() {
         System.out.println("Enter Employee name to unassign:");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
-                System.out.println("Enter Shift date (in DDMMYYYY)");
+                System.out.println("Enter Shift date (in dd/MM/yyyy)");
                 String date = sc.nextLine();
-                LocalDate shiftDate = LocalDate.parse(date);
+                LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 System.out.println("Enter Shift index:");
                 int shiftIndex = Integer.parseInt(sc.nextLine());
                 for (Shift shift : shifts) {
@@ -181,6 +182,7 @@ public class AppController {
                     }
                 }
             }
+        }
         System.out.println("Employee not found");
     }
 
@@ -189,15 +191,15 @@ public class AppController {
     }
 
     private void viewOneShift() {
-        System.out.println("Enter Shift date (in DDMMYYYY):");
+        System.out.println("Enter Shift date (in dd/MM/yyyy):");
         String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date);
+        LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         for (Shift item : shifts) {
-            if (shifts.get(2).equals(shiftDate)) {
+            if (item.getShiftDate().equals(shiftDate)) {
                 System.out.println("Enter Shift index:");
                 int shiftIndex = Integer.parseInt(sc.nextLine());
-                if (shifts.get(2).equals(shiftIndex)) {
-                    System.out.println("The people assigned to the shift are:" + shifts.get(1));
+                if (item.getShiftIndex() == shiftIndex) {
+                    System.out.println("The people assigned to the shift are:" + item.getEmployees());
                 }
                 System.out.println("Shift Index selected is not available");
             }
