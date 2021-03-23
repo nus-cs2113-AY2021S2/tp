@@ -1,6 +1,11 @@
 James Gosling
 help
+clear
 add chicken /cat meat /exp 27-03-2021 /loc lower_shelf /qty 200
+add chicken /cat meat /exp 27-03-2021 /loc lower_shelf /qty 100
+add chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1
+add roast chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1
+list
 add pork /cat meat /exp 28-03-2021 /loc lower_shelf /qty 200
 add pork /cat meat /exp 30-06-2021 /loc lower_shelf /qty 20 !@# g!
 search chicken

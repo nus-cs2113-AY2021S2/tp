@@ -108,8 +108,7 @@ public class ListCommand extends Command {
         Food food = fridge.getFood(index);
         String foodDescription =
                 "\n\t" + indexShownToUser + ". "
-                + food.getFoodName() + " ["
-                + food.getCategory() + "]";
+                + food.toString();
         return foodDescription;
     }
 

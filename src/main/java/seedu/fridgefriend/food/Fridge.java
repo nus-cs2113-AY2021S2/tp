@@ -47,4 +47,7 @@ public class Fridge {
         existingFood.setQuantity(deltaQuantity + oriQuantity);
     }
 
+    public void clearFridge() {
+        fridge.clear();
+    }
 }
