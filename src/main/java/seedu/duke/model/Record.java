@@ -46,8 +46,14 @@ public class Record {
     }
 
     public void addDetails(String symptom, String diagnosis, String prescription) {
-        symptoms.add(symptom);
-        diagnoses.add(diagnosis);
-        prescriptions.add(prescription);
+        if (symptom != null) {
+            symptoms.add(symptom);
+        }
+        if (diagnosis != null) {
+            diagnoses.add(diagnosis);
+        }
+        if (prescription != null) {
+            prescriptions.add(prescription);
+        }
     }
 }

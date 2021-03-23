@@ -63,9 +63,9 @@ public class Patient {
     /**
      * Add a single record into the patient's record list.
      *
-     * @param date Appointment date to add the record to
-     * @param symptom Patient's symptoms to add to the record
-     * @param diagnosis Patient's diagnosis to add to the record
+     * @param date         Appointment date to add the record to
+     * @param symptom      Patient's symptoms to add to the record
+     * @param diagnosis    Patient's diagnosis to add to the record
      * @param prescription Patient's prescription to add to the record
      */
     public void addRecord(LocalDate date, String symptom, String diagnosis, String prescription) {
