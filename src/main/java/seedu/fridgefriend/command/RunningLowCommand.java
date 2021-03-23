@@ -29,4 +29,8 @@ public class RunningLowCommand extends Command {
             index += 1;
         }
     }
+
+    public String getMessage() {
+        return message;
+    }
 }
