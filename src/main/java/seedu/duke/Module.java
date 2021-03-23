@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Module {
+
     protected String description;
     protected String review;
     protected String name;
@@ -69,5 +70,4 @@ public class Module {
     public void removeReview() {
         this.review = "You have not reviewed this module yet.";
     }
-
 }

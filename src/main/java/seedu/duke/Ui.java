@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.link.LinkInfo;
+import seedu.duke.link.ZoomLinkInfo;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
@@ -22,13 +24,13 @@ public class Ui {
 
     public static void printWelcomeMessage() {
         System.out.println("Welcome to\n"
-            + "  _   _               _      _____                                _\n"
-            + " | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _\n"
-            + " | |_| |  | ' \\      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|\n"
-            + "  \\___/   |_||_|    _|_|_    _|_|_    _|_|_   \\__,_|    \\__|_    |_\\_\\    \\___|    _|_|_\n"
-            + "_|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|"
-            + "\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"|\n"
-            + "\"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-'\n");
+                + "  _   _               _      _____                                _\n"
+                + " | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _\n"
+                + " | |_| |  | ' \\      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|\n"
+                + "  \\___/   |_||_|    _|_|_    _|_|_    _|_|_   \\__,_|    \\__|_    |_\\_\\    \\___|    _|_|_\n"
+                + "_|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"| _|"
+                + "\"\"\"\"\"| _|\"\"\"\"\"| _|\"\"\"\"\"|\n"
+                + "\"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-' \"`-0-0-'\n");
     }
 
     public static void printHorizontalLine() {
@@ -41,106 +43,112 @@ public class Ui {
 
     public static void printMainMenu() {
         System.out.println("Main Menu:\n"
-            + "[1] Module Information\n"
-            + "[2] CAP Simulator/Calculator\n"
-            + "[3] Task Manager\n"
-            + "[4] External Links\n"
-            + "[5] Exit Program");
+                + "[1] Module Information\n"
+                + "[2] CAP Simulator/Calculator\n"
+                + "[3] Task Manager\n"
+                + "[4] External Links\n"
+                + "[5] Exit Program");
     }
 
     public static void printLinksMessage() {
         printHorizontalLine();
         System.out.println("Welcome to the links menu ^~^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- External links menu\n"
-            + "[2] --- Add Zoom links\n"
-            + "[3] --- Delete Zoom links\n"
-            + "[4] --- View Zoom links\n"
-            + "[5] --- Exit to main menu");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- External links menu\n"
+                + "[2] --- Add Zoom links\n"
+                + "[3] --- Delete Zoom links\n"
+                + "[4] --- View Zoom links\n"
+                + "[5] --- Exit to main menu");
         printHorizontalLine();
     }
 
     public static void printLinkToDelete() {
         System.out
-            .println("Please choose which link you would like to delete and enter the number");
+                .println("Please choose which link you would like to delete and enter the number");
     }
 
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1]  --- Add New Module\n"
-            + "[2]  --- View a Module\n"
-            + "[3]  --- Add/View Components and Their Weightages\n"
-            + "[4]  --- Add Module's Modular Credits (MC)\n"
-            + "[5]  --- Add Module Grade\n"
-            + "[6]  --- View All Modules\n"
-            + "[7]  --- Add New Task\n"
-            + "[8]  --- Add Zoom Link\n"
-            + "[9]  --- Add a Review\n"
-            + "[10] --- View All Reviews\n"
-            + "[11] --- Delete Module\n"
-            + "[12] --- Delete Task\n"
-            + "[13] --- Delete Zoom Link\n"
-            + "[14] --- Delete Review\n"
-            + "[15] --- Exit to main menu\n");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1]  --- Add New Module\n"
+                + "[2]  --- View a Module\n"
+                + "[3]  --- Add/View Components and Their Weightages\n"
+                + "[4]  --- Add Module's Modular Credits (MC)\n"
+                + "[5]  --- Add Module Grade\n"
+                + "[6]  --- View All Modules\n"
+                + "[7]  --- Add New Task\n"
+                + "[8]  --- Add Zoom Link\n"
+                + "[9]  --- Add a Review\n"
+                + "[10] --- View All Reviews\n"
+                + "[11] --- Delete Module\n"
+                + "[12] --- Delete Task\n"
+                + "[13] --- Delete Zoom Link\n"
+                + "[14] --- Delete Review\n"
+                + "[15] --- Exit to main menu\n");
     }
 
     public static void printTaskManagerMenu() {
         System.out.println("Welcome to the Task Manager menu ^o^\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- Add New Task\n"
-            + "[2] --- Mark/Unmark a Task as Done\n"
-            + "[3] --- Delete a Task\n"
-            + "[4] --- View All Tasks\n"
-            + "[5] --- Pin a Task\n"
-            + "[6] --- Exit");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- Add New Task\n"
+                + "[2] --- Mark/Unmark a Task as Done\n"
+                + "[3] --- Delete a Task\n"
+                + "[4] --- View All Tasks\n"
+                + "[5] --- Pin a Task\n"
+                + "[6] --- Exit");
     }
 
     public static void printAddTaskMenu() {
         System.out.println("Please choose which type of task you would like to add"
-            + " and enter the number:\n"
-            + "[1] --- Task\n"
-            + "[2] --- Assignment\n"
-            + "[3] --- Midterm\n"
-            + "[4] --- Final Exam");
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printMarkTaskMenu() {
         System.out.println("Please choose which type of task you would like to mark/unmark as done"
-            + " and enter the number:\n"
-            + "[1] --- Task\n"
-            + "[2] --- Assignment\n"
-            + "[3] --- Midterm\n"
-            + "[4] --- Final Exam");
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printDeleteTaskMenu() {
         System.out.println("Please choose which type of task you would like to delete"
-            + " and enter the number:\n"
-            + "[1] --- Task\n"
-            + "[2] --- Assignment\n"
-            + "[3] --- Midterm\n"
-            + "[4] --- Final Exam");
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printPinTaskMenu() {
         System.out.println("Please choose which type of task you would like to pin"
-            + " and enter the number:\n"
-            + "[1] --- Task\n"
-            + "[2] --- Assignment\n"
-            + "[3] --- Midterm\n"
-            + "[4] --- Final Exam");
+                + " and enter the number:\n"
+                + "[1] --- Task\n"
+                + "[2] --- Assignment\n"
+                + "[3] --- Midterm\n"
+                + "[4] --- Final Exam");
     }
 
     public static void printAddTaskModuleMessage(int taskType) {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println("What is the module of the assignment you want to add? Enter the number:");
+            System.out
+                    .println(
+                            "What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println("What is the module of the midterm you want to add? Enter the number:");
+            System.out
+                    .println(
+                            "What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println("What is the module of the final exam you want to add? Enter the number:");
+            System.out
+                    .println(
+                            "What is the module of the final exam you want to add? Enter the number:");
         }
     }
 
@@ -250,7 +258,7 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-            + "Returning back to TaskManager menu now!");
+                + "Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
@@ -277,22 +285,22 @@ public class Ui {
         return command;
     }
 
-    public static void printLinks(ArrayList<String> linksList) {
+    public static void printLinks(ArrayList<LinkInfo> linksList) {
         int sizeOfList = 1;
         System.out.println("These are the links you have added --->");
-        for (String link : linksList) {
-            System.out.println("[" + (sizeOfList++) + "] --- " + link);
+        for (LinkInfo link : linksList) {
+            System.out.println("[" + (sizeOfList++) + "] --- " + link.getLink());
         }
     }
 
     public static void printExternalLinksMessage() {
         printHorizontalLine();
         System.out.println("Welcome to the external links menu!\n"
-            + "Please choose which action you would like to do and enter the number:\n"
-            + "[1] --- add link\n"
-            + "[2] --- remove link\n"
-            + "[3] --- view links\n"
-            + "[4] --- exit to links menu");
+                + "Please choose which action you would like to do and enter the number:\n"
+                + "[1] --- add link\n"
+                + "[2] --- remove link\n"
+                + "[3] --- view links\n"
+                + "[4] --- exit to links menu");
         printHorizontalLine();
     }
 
@@ -310,20 +318,19 @@ public class Ui {
 
     public static void printAddLinkMessage(String description) {
         System.out.println("Alright! I have added the following link ---  " + description);
-        printHorizontalLine();
     }
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
-            + "<scheme>www.<domain name>.<TLD>/<path name>\n"
-            + "supported schemes: https, http for now... Sorry!\n"
-            + "supported TLD: .com, .org for now... we will work on it!");
+                + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+                + "supported schemes: https, http for now... Sorry!\n"
+                + "supported TLD: .com, .org for now... we will work on it!");
         printHorizontalLine();
     }
 
     public static void printInvalidLinkMessage() {
         System.out.println("Oh no... That was an invalid link *sobs...*\n"
-            + "Please enter a valid one!");
+                + "Please enter a valid one!");
     }
 
     public static void printListIsEmpty() {
@@ -359,7 +366,7 @@ public class Ui {
     }
 
     public static void printModuleDescriptionAddedMessage(String moduleName,
-        String moduleDescription) {
+            String moduleDescription) {
         System.out.println("Module description for " + moduleName + " added: ");
         System.out.println(moduleDescription);
     }
@@ -384,15 +391,18 @@ public class Ui {
 
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
-            + "<zoom link> <module code>");
+                + "<zoom link> <module code>");
         printHorizontalLine();
     }
 
-    public static void printZoomLinks(ArrayList<ArrayList<String>> zoomLinksList) {
+    public static void printZoomLinks(ArrayList<ZoomLinkInfo> zoomLinksList) {
         System.out.println("Here are your zoom links!\n");
         int sizeOfList = 1;
         for (int i = 0; i < zoomLinksList.size(); ++i) {
-            System.out.println("[" + (sizeOfList++) + "] --- " + zoomLinksList.get(i));
+            ZoomLinkInfo zoomLink = zoomLinksList.get(i);
+            System.out.println(
+                    "[" + (sizeOfList++) + "] --- " + zoomLink.getDescription() + " " + zoomLink
+                            .getModuleCode() + " " + zoomLink.getPassword());
         }
     }
 
@@ -539,13 +549,13 @@ public class Ui {
         return password;
     }
 
-    public static void printLinkDeleted(String deletedString) {
-        System.out.println("You have deleted --- " + deletedString);
+    public static void printLinkDeleted(LinkInfo deletedLink) {
+        System.out.println("You have deleted --- " + deletedLink.getLink());
     }
 
     public static void printCapSimulatorPrompt() {
         System.out.println("You may key in your letter grades "
-            + "and MCs associated with the letter grade.");
+                + "and MCs associated with the letter grade.");
     }
 
     public static void printMCsPerModulePrompt() {
@@ -558,11 +568,11 @@ public class Ui {
 
     public static void printHelpGraduationMenu() {
         System.out.println("Please choose which action you would like to do"
-            + " and enter the number:\n"
-            + "[1] --- Add CAP and Number of MCs graded taken\n"
-            + "[2] --- View CAP and Number of MCs graded taken\n"
-            + "[3] --- Simulate future CAP\n"
-            + "[4] --- Exit\n");
+                + " and enter the number:\n"
+                + "[1] --- Add CAP and Number of MCs graded taken\n"
+                + "[2] --- View CAP and Number of MCs graded taken\n"
+                + "[3] --- Simulate future CAP\n"
+                + "[4] --- Exit\n");
     }
 
     public static void getCurrentCapPrompt() {
@@ -576,10 +586,14 @@ public class Ui {
     public static void printRegisteredCapAndMCsTakenMessage() {
         System.out.println("Current CAP: " + HelpGraduation.getCurrentCap());
         System.out.println("Number of Graded MCs Taken: "
-            + HelpGraduation.getNumberOfGradedMCsTaken());
+                + HelpGraduation.getNumberOfGradedMCsTaken());
     }
 
     public static void printInvalidGradeMessage() {
         System.out.println("Please enter a valid grade.");
+    }
+
+    public static void printZoomLinkDeleted(ZoomLinkInfo zoomLink) {
+        System.out.println("You have deleted --- " + zoomLink.getDescription());
     }
 }
