@@ -21,7 +21,7 @@ class RecordCommandTest {
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "");
+        arguments.put("payload", "2021-03-31");
         arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
@@ -39,7 +39,7 @@ class RecordCommandTest {
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "");
+        arguments.put("payload", "2021-03-31");
         arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);

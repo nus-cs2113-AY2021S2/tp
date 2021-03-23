@@ -36,8 +36,12 @@ public class RetrieveCommand extends Command {
         for(Map.Entry<LocalDate, Record> entry : records.entrySet()) {
             LocalDate date = entry.getKey();
             Record record = entry.getValue();
-            ui.printMessage(date.toString() + ":");
-            ui.printMessage(record.toString());
+            printRecord(date, record);
         }
+    }
+
+    private void printRecord(LocalDate date, Record record) {
+        ui.printMessage(date.toString() + ":");
+        ui.printMessage(record.toString());
     }
 }

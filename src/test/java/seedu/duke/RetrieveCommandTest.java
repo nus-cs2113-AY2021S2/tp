@@ -7,6 +7,7 @@ import seedu.duke.model.Patient;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -20,7 +21,8 @@ class RetrieveCommandTest {
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "coughing");
+        arguments.put("payload", "2021-03-31");
+        arguments.put("s", "coughing");
         Ui ui = new Ui();
         RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
         Exception exception = assertThrows(Exception.class, () -> {
@@ -37,7 +39,8 @@ class RetrieveCommandTest {
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "coughing");
+        arguments.put("payload", "2021-03-31");
+        arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
@@ -57,8 +60,13 @@ class RetrieveCommandTest {
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        assertEquals("Here is a list of " + patient.getID() + "'s records:" + System.lineSeparator()
-                + "1. coughing" + System.lineSeparator(), bos.toString());
+        String expected = "Here are S1234567A's records:" + System.lineSeparator() +
+                "2021-03-31:" + System.lineSeparator() +
+                "Symptoms:" + System.lineSeparator() +
+                "\tcoughing" + System.lineSeparator() +
+                "Diagnoses:" + System.lineSeparator() +
+                "Prescriptions:" + System.lineSeparator() + System.lineSeparator();
+        assertEquals(expected, bos.toString());
 
         // Bind System.out back to standard output
         System.setOut(originalOut);
