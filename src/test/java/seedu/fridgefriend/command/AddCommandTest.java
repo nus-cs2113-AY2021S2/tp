@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.ExpiryDate;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -24,7 +25,7 @@ class AddCommandTest {
 
     @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded()
-            throws InvalidDateException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
         AddCommand addCommand = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand.setData(fridge);
@@ -46,7 +47,7 @@ class AddCommandTest {
 
     @Test
     public void addCommand_foodCorrectFormat_changeFoodParameters()
-            throws InvalidDateException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER, 200);
         addCommand.setData(fridge);
