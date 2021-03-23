@@ -19,7 +19,6 @@ import static seedu.duke.common.Constants.LAB_STRING;
 import static seedu.duke.common.Constants.LECTURE_STRING;
 import static seedu.duke.common.Constants.LOGGER_NAME;
 import static seedu.duke.common.Constants.LOGGER_PATH;
-import static seedu.duke.common.Constants.NUMBER_OF_FIELDS_FOR_TASK;
 import static seedu.duke.common.Constants.TUTORIAL_STRING;
 
 public class CommonMethods {
@@ -112,8 +111,7 @@ public class CommonMethods {
      * @return Array list of selected tasks.
      */
     public static ArrayList<Task> getSpecifiedTasks(UI ui, ArrayList<Task> taskList) {
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, taskList.size());
+        ArrayList<Integer> indices = getSpecifiedIndices(ui, taskList.size());
         //Store the tasks chosen by user to new array list
         ArrayList<Task> selectedTasks = new ArrayList<>();
         for (Integer index : indices) {
@@ -122,9 +120,9 @@ public class CommonMethods {
         return selectedTasks;
     }
     
-    public static ArrayList<Integer> getSpecifiedIndices(UI ui) {
+    public static ArrayList<Integer> getSpecifiedIndices(UI ui, int maxIndex) {
         String line = ui.readCommand();
-        return Parser.checkIndices(line, NUMBER_OF_FIELDS_FOR_TASK);
+        return Parser.checkIndices(line, maxIndex);
     }
     
     public static Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {

@@ -56,7 +56,7 @@ public class Task {
     }
     
     public void editTask(UI ui, int fieldIndex) {
-        switch(fieldIndex) {
+        switch (fieldIndex) {
         case 1:
             editTaskDescription(ui);
             break;
@@ -66,6 +66,7 @@ public class Task {
         case 3:
             editTaskRemarks(ui);
             break;
+        default:
         }
     }
     

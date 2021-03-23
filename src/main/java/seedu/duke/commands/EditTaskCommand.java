@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getSpecifiedIndices;
 import static seedu.duke.common.CommonMethods.getTaskToEdit;
-import static seedu.duke.common.Constants.EMPTY_STRING;
 import static seedu.duke.common.Constants.TASK_FIELD_DEADLINE;
 import static seedu.duke.common.Constants.TASK_FIELD_DESCRIPTION;
 import static seedu.duke.common.Constants.TASK_FIELD_REMARKS;
@@ -25,6 +24,7 @@ import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_TO_EDIT;
 
 public class EditTaskCommand extends Command {
+    private final String[] fields = {TASK_FIELD_DESCRIPTION, TASK_FIELD_DEADLINE, TASK_FIELD_REMARKS};
 
     @Override
     public void execute(UI ui) throws CommandException {
@@ -41,7 +41,7 @@ public class EditTaskCommand extends Command {
             return;
         }
         printPromptForFields(ui, selectedTask);
-        ArrayList<Integer> selectedIndices = getSpecifiedIndices(ui);
+        ArrayList<Integer> selectedIndices = getSpecifiedIndices(ui, fields.length);
         if (selectedIndices.isEmpty()) {
             ui.printMessage(MESSAGE_NO_TASK_MODIFIED);
             return;
@@ -60,7 +60,6 @@ public class EditTaskCommand extends Command {
     }
     
     private void printPromptForFields(UI ui, Task task) {
-        ui.printMessage(EMPTY_STRING);
         ui.printMessage(String.format(MESSAGE_TASK_BEING_EDITED, task.toString()));
         ui.printMessage(MESSAGE_TASK_FIELDS_TO_EDIT);
         printTaskFields(ui);
@@ -68,8 +67,7 @@ public class EditTaskCommand extends Command {
     }
     
     private void printTaskFields(UI ui) {
-        String[] fields = {TASK_FIELD_DESCRIPTION, TASK_FIELD_DEADLINE, TASK_FIELD_REMARKS};
-        for (int i=0; i<fields.length; i++) {
+        for (int i = 0; i < fields.length; i++) {
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, i + 1, fields[i]));
         }
     }

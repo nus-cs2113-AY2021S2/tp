@@ -61,7 +61,6 @@ public class Constants {
     public static final String TASK_FIELD_DESCRIPTION = "Description";
     public static final String TASK_FIELD_DEADLINE = "Deadline";
     public static final String TASK_FIELD_REMARKS = "Remarks";
-    public static final int NUMBER_OF_FIELDS_FOR_TASK = 3;
 
     public static final String YES_STRING = "Y";
     public static final String NO_STRING = "N";

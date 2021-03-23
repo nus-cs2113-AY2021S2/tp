@@ -115,7 +115,7 @@ public class Messages {
     public static final String MESSAGE_TASKS_TO_LIST = "Tasks for %s:";
     public static final String MESSAGE_TASKS_TO_MARK = "Which undone tasks have you completed?";
     public static final String MESSAGE_TASKS_TO_UNMARK = "Which done tasks would you like to undo?";
-    public static final String MESSAGE_TASK_BEING_EDITED = "Editing: %s";
+    public static final String MESSAGE_TASK_BEING_EDITED = NEWLINE + "Editing: %s";
     public static final String MESSAGE_TASK_TO_EDIT = "Which task would you like to edit?";
     public static final String MESSAGE_TASK_FIELDS_TO_EDIT = "Which fields?";
     public static final String MESSAGE_TASK_FIELDS_SELECT_INFO = NEWLINE
