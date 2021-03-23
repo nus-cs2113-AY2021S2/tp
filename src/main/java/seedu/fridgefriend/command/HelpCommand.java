@@ -18,6 +18,7 @@ public class HelpCommand extends Command {
             + "\tremove foodName /qty removeQuantity\n"
             + "\tsearch searchString\n"
             + "\texpiring\n"
+            + "\trunninglow\n"
             + "\tclear\n"
             + "\thelp\n"
             + "\tbye";

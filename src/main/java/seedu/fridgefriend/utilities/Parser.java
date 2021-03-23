@@ -14,6 +14,7 @@ import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
+import seedu.fridgefriend.command.RunningLowCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
@@ -104,11 +105,14 @@ public class Parser {
         case "expiring":
             command = Parser.getExpiringCommand();
             break;
+        case "runninglow":
+            command = Parser.getRunningLowCommand();
+            break;
         case "help":
             command = Parser.getHelpCommand();
             break;
         case "clear":
-            command = new ClearCommand();
+            command = Parser.getClearCommand();
             break;
         case "bye":
             command = Parser.getByeCommand();
@@ -261,6 +265,14 @@ public class Parser {
     }
 
     /**
+     * Returns an RunningLowCommand object.
+     */
+    private static Command getRunningLowCommand() {
+        Command runningLowCommand = new RunningLowCommand();
+        return runningLowCommand;
+    }
+
+    /**
      * Returns a HelpCommand object.
      *
      * @return HelpCommand object
@@ -268,6 +280,16 @@ public class Parser {
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
+    }
+
+    /**
+     * Returns a ClearCommand object.
+     *
+     * @return ClearCommand object
+     */
+    public static Command getClearCommand() {
+        Command clearCommand = new ClearCommand();
+        return clearCommand;
     }
 
     /**
