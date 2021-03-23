@@ -108,8 +108,7 @@ public class ListCommand extends Command {
         Food food = fridge.getFood(index);
         String foodDescription =
                 "\n\t" + indexShownToUser + ". "
-                + food.getFoodName() + " ["
-                + food.getCategory() + "]";
+                + food.toString();
         return foodDescription;
     }
 
@@ -132,7 +131,7 @@ public class ListCommand extends Command {
         Food food = fridge.getFood(index);
         FoodCategory category = food.getCategory();
         if (category.equals(categoryToFind)) {
-            foodDescription = "\n\t" + indexShownToUser + ". " + food.getFoodName();
+            foodDescription = "\n\t" + indexShownToUser + ". " + food.toString();
             ++indexShownToUser;
         }
         return foodDescription;
@@ -144,7 +143,7 @@ public class ListCommand extends Command {
         Food food = fridge.getFood(index);
         FoodStorageLocation storageLocation = food.getStorageLocation();
         if (storageLocation.equals(locationToFind)) {
-            foodDescription = "\n\t" + indexShownToUser + ". " + food.getFoodName();
+            foodDescription = "\n\t" + indexShownToUser + ". " + food.toString();
             ++indexShownToUser;
         }
         return foodDescription;

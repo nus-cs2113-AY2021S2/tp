@@ -37,8 +37,10 @@ class ListCommandTest {
         ListCommand listCommand = new ListCommand("MEAT");
         listCommand.setData(fridge);
         String expectedMessage = "These are the MEAT in your fridge:\n"
-                + "\t1. chicken\n"
-                + "\t2. pork";
+                + "\t1. Food name: chicken, category: MEAT, expiry: "
+                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
+                + "\t2. Food name: pork, category: MEAT, expiry: "
+                + "31-07-2021, stored in: MIDDLE_SHELF, quantity: 500";
         String actualMessage = listCommand.getListByCategoryMessage();
         assertEquals(expectedMessage, actualMessage);
     }
@@ -48,8 +50,10 @@ class ListCommandTest {
         ListCommand listCommand = new ListCommand("LOWER_SHELF");
         listCommand.setData(fridge);
         String expectedMessage = "These are the food stored in LOWER_SHELF:\n"
-                + "\t1. chicken\n"
-                + "\t2. lettuce";
+                + "\t1. Food name: chicken, category: MEAT, expiry: "
+                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
+                + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
+                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100";
         String actualMessage = listCommand.getListByStorageLocationMessage();
         assertEquals(expectedMessage, actualMessage);
     }
@@ -65,9 +69,12 @@ class ListCommandTest {
         ListCommand listCommand = new ListCommand("");
         listCommand.setData(fridge);
         String expectedMessage = "Here are the items in your fridge:\n"
-                + "\t1. chicken [MEAT]\n"
-                + "\t2. lettuce [VEGETABLE]\n"
-                + "\t3. pork [MEAT]";
+                + "\t1. Food name: chicken, category: MEAT, expiry: "
+                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
+                + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
+                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100\n"
+                + "\t3. Food name: pork, category: MEAT, expiry: "
+                + "31-07-2021, stored in: MIDDLE_SHELF, quantity: 500";
         String actualMessage = listCommand.getListAllMessage();
         assertEquals(expectedMessage, actualMessage);
     }
