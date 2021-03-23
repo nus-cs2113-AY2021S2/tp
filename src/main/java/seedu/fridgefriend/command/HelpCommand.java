@@ -15,9 +15,10 @@ public class HelpCommand extends Command {
             + "\tadd foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity\n"
             + "\tlist\n"
             + "\tlist categoryName\n"
-            + "\tremove index\n"
+            + "\tremove foodName /qty removeQuantity\n"
             + "\tsearch searchString\n"
             + "\texpiring\n"
+            + "\tclear\n"
             + "\thelp\n"
             + "\tbye";
     

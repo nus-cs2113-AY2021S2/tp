@@ -16,6 +16,7 @@ import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
@@ -42,7 +43,7 @@ public class Parser {
      */
     public static Command getCommand(String input)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidIndexException, InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -82,7 +83,7 @@ public class Parser {
      */
     public static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidIndexException, InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
         String commandString = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
         Command command;
@@ -120,7 +121,7 @@ public class Parser {
     }
 
     /**
-     * Define arguments format for add food command with quantity.
+     * Define arguments format for add food command.
      * A Pattern object which defines how the input string for food item
      * that should look like. [^/]+ implies 1 or more characters except for '/'
      */
@@ -129,6 +130,13 @@ public class Parser {
                     + " /cat (?<category>[^/]+)"
                     + " /exp (?<expiryDate>[^/]+)"
                     + " /loc (?<storageLocation>[^/]+)"
+                    + " /qty (?<quantity>[^/]+)");
+
+    /**
+     * Define arguments format for remove food command with quantity.
+     */
+    public static final Pattern REMOVE_ARGS_FORMAT =
+            Pattern.compile("(?<name>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
 
     /**
@@ -159,6 +167,22 @@ public class Parser {
                     matcherQuantity.group("expiryDate"),
                     convertStringToLocation(matcherQuantity.group("storageLocation")),
                     quantity);
+        } else {
+            throw new InvalidInputException();
+        }
+    }
+
+    public static Command parseRemoveDescription(String removeDescription)
+            throws EmptyDescriptionException, InvalidQuantityException,
+            FoodNameNotFoundException, InvalidInputException {
+        if (removeDescription.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        Matcher matcherRemove = REMOVE_ARGS_FORMAT.matcher(removeDescription.trim());
+        if (matcherRemove.matches()) {
+            String name = matcherRemove.group("name");
+            int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
+            return new RemoveCommand(name, quantity);
         } else {
             throw new InvalidInputException();
         }
@@ -200,10 +224,19 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidIndexException if the index given in description is out of bounds
      */
+    /*
     public static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         int index = parseIntegerDescription(description);
         Command removeCommand = new RemoveCommand(index);
+        return removeCommand;
+    }
+    */
+
+    public static Command getRemoveCommand(String description)
+            throws EmptyDescriptionException, InvalidQuantityException,
+            InvalidInputException, FoodNameNotFoundException {
+        Command removeCommand = parseRemoveDescription(description);
         return removeCommand;
     }
 
