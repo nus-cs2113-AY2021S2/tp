@@ -265,13 +265,39 @@ file in the same directory. <br><br>
 
 ## 5. Command Summary
 
-Command | Format | Example |
-------- | ------- | ------- | 
-add | `insert format` | `insert example` |
-list | `insert format` | `insert example` |
-view | `view <OPTION>` | `view -e` |
-return | `insert format` | `insert example` |
-remove | `insert format` | `insert example` |
-creditscore | `insert format` | `insert example` |
-exit | `help <FEATURE>` | `help exit` |
-help | `insert format` | `insert example` |
+| Feature                                | Command                                                  |
+| -------------------------------------- | -------------------------------------------------------- |
+| Add an expense record                  | `add -e <description> -a <amount> -d <date>`             |
+| Add a savings record                   | `add -s <description> -a <amount> -d <date>`             |
+| Add a loan record                      | `add -l <description> -a <amount> -d <date> -p <person>` |
+| List all expense records               | `list -e`                                                |
+| List all savings records               | `list -s`                                                |
+| List all loan records                  | `list -l`                                                |
+| View total expenditure                 | `view -e`                                                |
+| View total savings amount              | `view -s`                                                |
+| View total amount of unreturned loans  | `view -l`                                                |
+| Mark a loan as returned                | `return -i <loan_index> -d <return_date>`                |
+| Remove a record (expense/savings/loan) | `remove -i <index>`                                      |
+| Print a person's credit score          | `creditscore <person>`                                   |
+| Help (selected command)                | `help <feature>`                                         |
+| Help (all commands)                    | `help`                                                   |
+| Exit the application                   | `exit`                                                   |
+
+#### _List of command formats_
+```
+list { -e | -s | -l }
+
+add { -e | -s | -l } <description> -a <amount> -d <date> [-p <person>]
+
+creditscore <person>
+
+return -i <loan_index> -d <return_date>
+
+remove -i <index>
+
+view { -e | -s | -l }
+
+help [<feature>]
+
+exit
+```
