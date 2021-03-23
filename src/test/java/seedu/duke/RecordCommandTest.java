@@ -5,8 +5,10 @@ import seedu.duke.command.RecordCommand;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -19,7 +21,8 @@ class RecordCommandTest {
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "coughing");
+        arguments.put("payload", "");
+        arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         Exception exception = assertThrows(Exception.class, () -> {
@@ -36,7 +39,8 @@ class RecordCommandTest {
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "coughing");
+        arguments.put("payload", "");
+        arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
@@ -44,24 +48,8 @@ class RecordCommandTest {
         } catch (Exception exception) {
             System.out.println("An error occurred while running tests");
         }
-        ArrayList<Record> records = patient.getRecords();
+        TreeMap<LocalDate, Record> records = patient.getRecords();
         assertEquals(1, records.size());
     }
 
-    @Test
-    public void executeRecordCommand_emptyPayload_exceptionThrown() {
-        Data data = new Data();
-        Patient patient = new Patient("S1234567A");
-        data.setPatient(patient);
-        data.loadCurrentPatient(patient.getID());
-        HashMap<String, String> arguments = new HashMap<>();
-        arguments.put("command", "record");
-        arguments.put("payload", "");
-        Ui ui = new Ui();
-        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
-        Exception exception = assertThrows(Exception.class, () -> {
-            recordCommand.execute();
-        });
-        assertEquals("Please give me more details about the patient's visit", exception.getMessage());
-    }
 }
