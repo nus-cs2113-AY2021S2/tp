@@ -4,18 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.Before;
 import org.junit.After;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
-import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class CommandListTest {
 
@@ -65,5 +63,12 @@ public class CommandListTest {
         assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
         restoreStreams();
 
+    }
+
+    @Test
+    void checkAndPrintDuplicate() {
+        CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+        commandList.reviewList = new ArrayList<Review>();
+        assertFalse(commandList.checkAndPrintDuplicate("Avengers"));
     }
 }
