@@ -1,6 +1,7 @@
 package seedu.duke;
 
-import java.util.HashMap;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import seedu.duke.model.Patient;
 
@@ -9,7 +10,7 @@ import seedu.duke.model.Patient;
  * includes patient list and miscellaneous config.
  */
 public class Data {
-    protected HashMap<String, Patient> patients;
+    protected SortedMap<String, Patient> patients;
 
     /**
      * This is the patient that is currently being selected. Command sub-classes can read/write
@@ -23,14 +24,14 @@ public class Data {
      * This initilizes a empty data instance.
      */
     public Data() {
-        this(new HashMap<>());
+        this(new TreeMap<>());
     }
 
     /**
      * This initializes a data instance with an existing patient list.
      * @param patients The patient list
      */
-    public Data(HashMap<String, Patient> patients) {
+    public Data(SortedMap<String, Patient> patients) {
         this.patients = patients;
         currentPatient = null;
     }
@@ -39,7 +40,7 @@ public class Data {
      * This retrieves the full hashmap of patients.
      * @return the patient hashmap
      */
-    public HashMap<String, Patient> getPatients() {
+    public SortedMap<String, Patient> getPatients() {
         return patients;
     }
 

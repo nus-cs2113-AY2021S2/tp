@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import org.junit.jupiter.api.Test;
 
@@ -106,9 +108,9 @@ public class ParserTest {
     @Test
     public void parse_customData_parsedSuccessfully() {
         String fullCommand = "echo Hi!";
-        HashMap<String, Patient> patients = new HashMap<>();
+        SortedMap<String, Patient> patients = new TreeMap<>();
 
-        String nric = "S1234567A";
+        String nric = "S1234567D";
         patients.put(nric, new Patient(nric));
         Data data = new Data(patients);
         Parser parser = new Parser(new Ui(), data);

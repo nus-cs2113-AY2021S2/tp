@@ -5,14 +5,14 @@ public class Constants {
             + "Command prefix: add\n"
             + "Argument(s): IC number\n"
             + "Usage: add /<IC_NUMBER>\n"
-            + "Example: add S1234567A\n";
+            + "Example: add S1234567D\n";
     public static final String LIST_INFO_MESSAGE = "Show the list of all patients\n"
             + "Usage: list\n";
     public static final String LOAD_INFO_MESSAGE = "Select a specified patient to add and retrieve records\n"
             + "Command prefix: load\n"
             + "Arguments(s): IC number\n"
             + "Usage: load <IC_NUMBER>\n"
-            + "Example: load S1234567A\n";
+            + "Example: load S1234567D\n";
     public static final String RECORD_CONSULTATION_INFO_MESSAGE = "Add a consultation record to the selected patient\n"
             + "Command prefix: record\n"
             + "Arguments(s): consultation details\n"

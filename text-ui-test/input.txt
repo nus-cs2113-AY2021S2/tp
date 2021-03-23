@@ -1,9 +1,13 @@
 invalid_command
-add S1234567A
+add S7654321F
+list
+add G1234567X
+list
+add S1234567D
 list
 help
 current
-load S1234567A
+load S1234567D
 record coughing
 retrieve
 current
