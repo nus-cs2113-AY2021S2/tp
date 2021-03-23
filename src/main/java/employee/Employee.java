@@ -90,4 +90,9 @@ public class Employee {
         }
         return true;
     }
+
+    @Override
+    public String toString(){
+        return name;
+    }
 }

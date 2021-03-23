@@ -147,13 +147,17 @@ public class AppController {
             if (name.equalsIgnoreCase("Q")) {
                 runLoop = false;
             } else {
+                boolean employeeFound = false;
                 for (Employee person : employees) {
                     if (person.getName().equals(name)) {
                         employeesOnShift.add(person);
                         System.out.println("Employee " + name + " added to shift.");
+                        employeeFound = true;
                     }
                 }
-                System.out.println("Employee not found.");
+                if (!employeeFound) {
+                    System.out.println("Employee not found.");
+                }
             }
         } while (runLoop);
         Shift shift = new Shift(employeesOnShift, shiftDate, shiftIndex, vacancy);
@@ -173,6 +177,7 @@ public class AppController {
                 for (Shift shift : shifts) {
                     if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
                         shift.assignEmployee(person);
+                        return;
                     }
                 }
             }
@@ -193,6 +198,7 @@ public class AppController {
                 for (Shift shift : shifts) {
                     if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
                         shift.unassignEmployee(person);
+                        return;
                     }
                 }
             }
@@ -201,13 +207,16 @@ public class AppController {
     }
 
     private void viewAllShifts(){
-        System.out.println(shifts);
+        for (Shift item : shifts){
+            System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
+        }
     }
 
     private void viewOneShift() {
         System.out.println("Enter Shift date (in dd/MM/yyyy):");
         String date = sc.nextLine();
         LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        boolean dateFound = false;
         for (Shift item : shifts) {
             if (item.getShiftDate().equals(shiftDate)) {
                 System.out.println("Enter Shift index:");
@@ -215,9 +224,12 @@ public class AppController {
                 if (item.getShiftIndex() == shiftIndex) {
                     System.out.println("The people assigned to the shift are:" + item.getEmployees());
                 }
-                System.out.println("Shift Index selected is not available");
+                else {System.out.println("Shift Index selected is not available");}
+                dateFound = true;
             }
-            System.out.println("Date chosen has no shifts.");
+        }
+        if (!dateFound){
+            System.out.println("Date chosen has no shifts");
         }
     }
 }
