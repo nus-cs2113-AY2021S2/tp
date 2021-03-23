@@ -4,6 +4,8 @@ import seedu.duke.link.Links;
 import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
+import java.io.IOException;
+
 public class Duke {
 
     /**
@@ -17,6 +19,9 @@ public class Duke {
     }
 
     public static void runMainMenu() {
+        StorageModuleInfo.loadModuleInfoFile();
+        StorageModuleInfo.loadLinkInfoFile();
+        TaskList taskList = new TaskList();
         while (true) {
             Ui.printMainMenu();
             String command = Ui.readCommand();
@@ -24,25 +29,30 @@ public class Duke {
                 int commandInt = Integer.parseInt(command);
 
                 if (commandInt == 5) {
+                    try {
+                        StorageModuleInfo.modulesFileSaver();
+                        StorageModuleInfo.linksFileSaver();
+                    } catch (IOException e) {
+                        System.out.println("modules.txt file could not be saved:(");
+                    }
                     break;
                 }
 
                 switch (commandInt) {
                 case 1:
-                    //moduleInfo
+                    // moduleInfo
                     ModuleInfo.moduleInfoMenu();
                     break;
                 case 2:
-                    //helpGraduation
+                    // helpGraduation
                     HelpGraduationManager.execute();
                     break;
                 case 3:
-                    //manageTask
-                    TaskList taskList = new TaskList();
+                    // manageTask
                     TaskManager.execute();
                     break;
                 case 4:
-                    //externalLinks
+                    // externalLinks
                     int linkCommandNumber;
                     Ui.printLinksMessage();
                     linkCommandNumber = Ui.readCommandToInt();

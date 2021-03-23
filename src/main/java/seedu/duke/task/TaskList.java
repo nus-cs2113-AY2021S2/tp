@@ -1,5 +1,6 @@
 package seedu.duke.task;
 
+import seedu.duke.ModuleInfo;
 import seedu.duke.Ui;
 
 import java.time.LocalDate;
@@ -34,8 +35,13 @@ public class TaskList {
     public static void addNewTask(int taskTypeNumber) {
         String dateAndTime = "";
 
+        if (ModuleInfo.modules.isEmpty()) {
+            Ui.printNoModulesMessage();
+            return;
+        }
+
         Ui.printAddTaskModuleMessage(taskTypeNumber);
-        String module = Ui.readCommand();
+        String module = getModule();
         Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
@@ -90,6 +96,16 @@ public class TaskList {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
         Ui.printAddedTaskMessage(finalExam);
+    }
+
+    public static String getModule() {
+        for (int i = 1; i <= ModuleInfo.modules.size(); ++i) {
+            System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
+        }
+        int moduleNumber = Integer.parseInt(Ui.readCommand());
+        String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
+
+        return module;
     }
 
     public static String getTime(int taskNumber) {
@@ -159,6 +175,41 @@ public class TaskList {
         return taskNumber;
     }
 
+    public static void markOrUnmarkTask(int taskTypeNumber) {
+        if (taskListIsEmpty(taskTypeNumber)) {
+            Ui.printTaskListIsEmptyMessage();
+            return;
+        }
+        Ui.printSelectTaskNumberToMarkOrUnmark(taskTypeNumber);
+        while (true) {
+            try {
+                int taskNumber = Integer.parseInt(Ui.readCommand());
+                Ui.printHorizontalLine();
+                switch (taskTypeNumber) {
+                case 1:
+                    toggleTaskStatus(taskNumber);
+                    break;
+                case 2:
+                    toggleAssigmentStatus(taskNumber);
+                    break;
+                case 3:
+                    toggleMidtermStatus(taskNumber);
+                    break;
+                case 4:
+                    toggleFinalExamStatus(taskNumber);
+                    break;
+                default:
+                    Ui.printInvalidIntegerMessage();
+                }
+                return;
+            } catch (NumberFormatException e) {
+                Ui.printInvalidIntegerMessage();
+            } catch (IndexOutOfBoundsException e) {
+                Ui.printInvalidTaskNumberMessage();
+            }
+        }
+    }
+
     public static void deleteTask(int taskTypeNumber) {
         if (taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
@@ -213,6 +264,94 @@ public class TaskList {
             Ui.printInvalidIntegerMessage();
         }
         return isEmpty;
+    }
+
+    private static void toggleTaskStatus(int taskNumber) {
+        Task task = tasks.get(taskNumber - 1);
+        String taskStatus = task.getStatus();
+        String done = "[DONE] ";
+        String notDone = "[    ] ";
+        if (taskStatus.equals(done)) {
+            Ui.printTaskisDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsUnDone();
+                Ui.printUnmarkedTaskMessage(task);
+            }
+        } else if (taskStatus.equals(notDone)) {
+            Ui.printTaskisNotDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsDone();
+                Ui.printMarkedTaskMessage(task);
+            }
+        }
+    }
+
+    private static void toggleAssigmentStatus(int taskNumber) {
+        Assignment task = assignments.get(taskNumber - 1);
+        String taskStatus = task.getStatus();
+        String done = "[DONE] ";
+        String notDone = "[    ] ";
+        if (taskStatus.equals(done)) {
+            Ui.printTaskisDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsUnDone();
+                Ui.printUnmarkedTaskMessage(task);
+            }
+        } else if (taskStatus.equals(notDone)) {
+            Ui.printTaskisNotDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsDone();
+                Ui.printMarkedTaskMessage(task);
+            }
+        }
+    }
+
+    private static void toggleMidtermStatus(int taskNumber) {
+        Midterm task = midterms.get(taskNumber - 1);
+        String taskStatus = task.getStatus();
+        String done = "[DONE] ";
+        String notDone = "[    ] ";
+        if (taskStatus.equals(done)) {
+            Ui.printTaskisDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsUnDone();
+                Ui.printUnmarkedTaskMessage(task);
+            }
+        } else if (taskStatus.equals(notDone)) {
+            Ui.printTaskisNotDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsDone();
+                Ui.printMarkedTaskMessage(task);
+            }
+        }
+    }
+
+    private static void toggleFinalExamStatus(int taskNumber) {
+        FinalExam task = finalExams.get(taskNumber - 1);
+        String taskStatus = task.getStatus();
+        String done = "[DONE] ";
+        String notDone = "[    ] ";
+        if (taskStatus.equals(done)) {
+            Ui.printTaskisDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsUnDone();
+                Ui.printUnmarkedTaskMessage(task);
+            }
+        } else if (taskStatus.equals(notDone)) {
+            Ui.printTaskisNotDoneMessage();
+            String input = Ui.readCommand().trim();
+            if (input.equals("Y")) {
+                task.markAsDone();
+                Ui.printMarkedTaskMessage(task);
+            }
+        }
     }
 
     private static void findAndDeleteTask(int taskNumber) {

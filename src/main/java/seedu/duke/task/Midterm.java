@@ -9,6 +9,11 @@ public class Midterm extends Task {
     }
 
     @Override
+    public String getTaskType() {
+        return "[Midterm]";
+    }
+
+    @Override
     public String toString() {
         return super.toString() + " (on: " + on + ")";
     }

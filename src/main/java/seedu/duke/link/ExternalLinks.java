@@ -4,7 +4,7 @@ import seedu.duke.Ui;
 
 public class ExternalLinks extends Links {
 
-    int linkIndex;
+    protected int linkIndex;
 
     public ExternalLinks(int linkIndex) {
         super(linkIndex);
@@ -13,7 +13,6 @@ public class ExternalLinks extends Links {
 
     @Override
     public void execute() {
-        LinkInfo link = new LinkInfo();
 
         switch (linkIndex) {
         case 1:
@@ -23,19 +22,29 @@ public class ExternalLinks extends Links {
                 Ui.printInvalidLinkMessage();
                 break;
             }
-            link.addLink(linkDescription);
+            LinkInfo.addLink(linkDescription);
             Ui.printAddLinkMessage(linkDescription);
             break;
         case 2:
-            link.deleteLink();
+            viewLinks();
+            Ui.printLinkToDelete();
+            LinkInfo.deleteLink();
             break;
         case 3:
-            link.viewLinks();
+            viewLinks();
             break;
         case 4:
             return;
         default:
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    public void viewLinks() {
+        if (LinkInfo.linksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
+        Ui.printLinks(LinkInfo.linksList);
     }
 }

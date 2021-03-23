@@ -16,15 +16,18 @@ public class TaskManager {
                     addNewTask();
                     break;
                 case 2:
-                    deleteTask();
+                    markOrUnmarkTask();
                     break;
                 case 3:
-                    viewAllTasks();
+                    deleteTask();
                     break;
                 case 4:
-                    pinTask();
+                    viewAllTasks();
                     break;
                 case 5:
+                    pinTask();
+                    break;
+                case 6:
                     return;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -36,12 +39,21 @@ public class TaskManager {
         }
     }
 
-    private static void addNewTask() {
+    public static void addNewTask() {
         Ui.printAddTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
         Ui.printHorizontalLine();
 
         TaskList.addNewTask(taskTypeNumber);
+    }
+
+    private static void markOrUnmarkTask() {
+        Ui.printMarkTaskMenu();
+        int taskTypeNumber = TaskList.getTaskNumber();
+        Ui.printHorizontalLine();
+
+        TaskList.markOrUnmarkTask(taskTypeNumber);
+
     }
 
     private static void viewAllTasks() {
@@ -66,7 +78,7 @@ public class TaskManager {
         TaskList.pinTask(taskTypeNumber);
     }
 
-    private static void deleteTask() {
+    public static void deleteTask() {
         Ui.printDeleteTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
         Ui.printHorizontalLine();

@@ -16,12 +16,14 @@ public class Links {
         while (true) {
             switch (linkIndex) {
             case 1:
+                LinkInfo.initialiseList();
                 while (externalLinksCommandNumber != EXIT_COMMAND) {
                     Ui.printExternalLinksMessage();
                     externalLinksCommandNumber = Ui.readCommandToInt();
                     ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
                     externalLinks.execute();
                 }
+                externalLinksCommandNumber = -1;
                 Ui.printLinksMessage();
                 linkIndex = Ui.readCommandToInt();
                 continue;
@@ -31,7 +33,7 @@ public class Links {
                 String instruction = Ui.readCommand();
                 String[] words = instruction.split(" ");
                 try {
-                    LinkInfo.addZoomLink(words[0], words[1]);
+                    ZoomLinkInfo.addZoomLink(words[0], words[1]);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     Ui.printNoInputDetected();
                     continue;
@@ -41,13 +43,21 @@ public class Links {
                 linkIndex = Ui.readCommandToInt();
                 break;
             case 3:
-                // view zoom links
-                LinkInfo.viewZoomLinks();
+                // delete zoom links
+                viewLinks();
+                Ui.printLinkToDelete();
+                ZoomLinkInfo.deleteZoomLink();
                 Ui.printLinksMessage();
                 linkIndex = Ui.readCommandToInt();
                 break;
             case 4:
-                //exit
+                // view zoom links
+                viewLinks();
+                Ui.printLinksMessage();
+                linkIndex = Ui.readCommandToInt();
+                break;
+            case 5:
+                // exit
                 return;
             default:
                 Ui.printInvalidIntegerMessage();
@@ -55,5 +65,13 @@ public class Links {
                 linkIndex = Ui.readCommandToInt();
             }
         }
+    }
+
+    public void viewLinks() {
+        if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
+            Ui.printListIsEmpty();
+            return;
+        }
+        Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);
     }
 }
