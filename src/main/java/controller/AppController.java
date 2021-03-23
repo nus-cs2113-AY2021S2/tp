@@ -133,13 +133,17 @@ public class AppController {
             if (name.equalsIgnoreCase("Q")) {
                 runLoop = false;
             } else {
+                boolean employeeFound = false;
                 for (Employee person : employees) {
                     if (person.getName().equals(name)) {
                         employeesOnShift.add(person);
                         System.out.println("Employee " + name + " added to shift.");
+                        employeeFound = true;
                     }
                 }
-                System.out.println("Employee not found.");
+                if (!employeeFound) {
+                    System.out.println("Employee not found.");
+                }
             }
         } while (runLoop);
         Shift shift = new Shift(employeesOnShift, shiftDate, shiftIndex, vacancy);
