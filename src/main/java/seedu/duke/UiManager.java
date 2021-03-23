@@ -145,10 +145,8 @@ public class UiManager {
     }
 
     public void CheckValidBlock(String Block) throws InvalidBlockException {
-        try{
-            Map nusMap = new Map();
-            nusMap.getBlock(Block);
-        } catch(NullPointerException e){
+        Map nusMap = new Map();
+        if (nusMap.getBlock(Block) == null){
             throw new InvalidBlockException();
         }
     }

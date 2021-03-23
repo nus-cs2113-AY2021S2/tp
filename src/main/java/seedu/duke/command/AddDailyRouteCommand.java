@@ -20,7 +20,7 @@ public class AddDailyRouteCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history, NotesManager notesManager, DailyRoute dailyRoute) {
-        AbstractMap.SimpleEntry<String, ArrayList<String>> DayAndRoute = null;
+        AbstractMap.SimpleEntry<String, ArrayList<String>> DayAndRoute;
         try {
             DayAndRoute = ui.getDailyRouteInfo();
             assert DayAndRoute != null;

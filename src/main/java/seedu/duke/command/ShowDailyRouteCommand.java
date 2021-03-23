@@ -20,23 +20,23 @@ public class ShowDailyRouteCommand extends Command {
         String Day = null;
         try {
             Day = ui.getDay();
+            assert Day != null;
+            ArrayList<String> Blocks = dailyRoute.getDailyRoute(Day);
+            StringBuilder DayRoute = new StringBuilder();
+            for(int i = 0; i < Blocks.size() - 1; i++){
+                try {
+                    String route = router.execute(Blocks.get(i), Blocks.get(i + 1));
+                    DayRoute.append(route);
+                    if(i < Blocks.size()-2){
+                        DayRoute.append("\n");
+                    }
+                    ui.showToUser(DayRoute.toString());
+                } catch (InvalidBlockException e){
+                    ui.showToUser(e.getMessage());
+                }
+            }
         } catch (InvalidDayException e) {
             ui.showToUser(e.getMessage());
         }
-        assert Day != null;
-        ArrayList<String> Blocks = dailyRoute.getDailyRoute(Day);
-        StringBuilder DayRoute = new StringBuilder();
-        for(int i = 0; i < Blocks.size() - 1; i++){
-            try {
-                String route = router.execute(Blocks.get(i), Blocks.get(i + 1));
-                DayRoute.append(route);
-                if(i < Blocks.size()-2){
-                    DayRoute.append("\n");
-                }
-            } catch (InvalidBlockException e){
-                ui.showToUser(e.getMessage());
-            }
-        }
-        ui.showToUser(DayRoute.toString());
     }
 }
