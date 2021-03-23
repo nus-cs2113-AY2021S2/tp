@@ -217,6 +217,7 @@ public class AppController {
         System.out.println("Enter Shift date (in dd/MM/yyyy):");
         String date = sc.nextLine();
         LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        boolean dateFound = false;
         for (Shift item : shifts) {
             if (item.getShiftDate().equals(shiftDate)) {
                 System.out.println("Enter Shift index:");
@@ -225,8 +226,11 @@ public class AppController {
                     System.out.println("The people assigned to the shift are:" + item.getEmployees());
                 }
                 else {System.out.println("Shift Index selected is not available");}
+                dateFound = true;
             }
-            else {System.out.println("Date chosen has no shifts.");}
+        }
+        if (!dateFound){
+            System.out.println("Date chosen has no shifts");
         }
     }
 }
