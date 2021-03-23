@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.routing.Router;
@@ -16,6 +17,7 @@ public class Command {
         return false;
     }
 
-    public void execute(Router router, UiManager ui, History history, NotesManager notesManager) {
+    public void execute(Router router, UiManager ui, History history,
+                        NotesManager notesManager, DailyRoute dailyRoute) {
     }
 }
