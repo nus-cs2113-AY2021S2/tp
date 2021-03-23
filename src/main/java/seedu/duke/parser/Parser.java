@@ -65,18 +65,7 @@ import static seedu.duke.common.Constants.INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.INDEX_TYPE;
 import static seedu.duke.common.Constants.WHITESPACE;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_COMMAND;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_TYPE;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_MODULE_CODE;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELDS_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_MODULE_CODE_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_NON_INTEGER_INDICES;
-import static seedu.duke.common.Messages.MESSAGE_OUT_OF_BOUNDS_INDICES;
-import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.duke.common.Messages.*;
 
 public class Parser {
 
@@ -312,9 +301,9 @@ public class Parser {
 
     /**
      * Splits input string into its respective fields and stores each substring in an array.
-     * 
+     *
      * @param inputString user input containing new lesson details
-     * @param allDetails array storing parsed details
+     * @param allDetails  array storing parsed details
      */
     private void parseLessonDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
@@ -329,7 +318,7 @@ public class Parser {
 
     /**
      * Creates a new Lesson object with its attributes initialised based on given details array.
-     * 
+     *
      * @param allLessonDetails an array of lesson details
      * @return a new Lesson object
      * @throws CommandException if invalid lesson type, invalid link format or invalid email format
@@ -390,7 +379,7 @@ public class Parser {
             throw new CommandException(MESSAGE_TASK_FIELDS_EMPTY);
         }
         String taskDetails = inputSections[2];
-        
+
         parseTaskDetails(taskDetails, allDetails);
         Task newTask = createNewTask(allDetails);
 
@@ -401,7 +390,7 @@ public class Parser {
      * Splits input string into its respective fields and stores each substring in an array.
      *
      * @param inputString user input containing new task details
-     * @param allDetails array storing parsed details
+     * @param allDetails  array storing parsed details
      */
     private void parseTaskDetails(String inputString, String[] allDetails) {
         // split the details field using DELIMITER to get the individual detail fields
@@ -416,7 +405,7 @@ public class Parser {
 
     /**
      * Creates a new Task object with its attributes initialised based on given details array.
-     * 
+     *
      * @param allTaskDetails an array of task details
      * @return a new Task object
      * @throws CommandException if deadline cannot be parsed as a valid date
@@ -455,22 +444,20 @@ public class Parser {
 
     /**
      * Parses given input string to integer, ensuring that parsed index is not out of bounds.
-     * TODO : print proper warning, can consider throwing ParserException and handling
-     * in EditLessonsCommand.
      *
      * @param input user input string
      * @return index parsed from input string
      */
-    public static int checkIndex(String input, int max) throws DukeException {
+    public static int checkIndex(String input, int max) throws ParserException {
         int index = 0;
         try {
             index = Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new DukeException("Invalid non-integer input");
+            throw new ParserException(MESSAGE_NON_INTEGER_INDEX);
         }
 
         if (index < 1 || index > max) {
-            throw new DukeException("Index given is out of bounds.");
+            throw new ParserException(MESSAGE_OUT_OF_BOUNDS_INDEX);
         }
 
         return index;

@@ -1,7 +1,9 @@
 package seedu.duke.commands;
 
 import seedu.duke.exception.DukeException;
+import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
+import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
@@ -18,14 +20,7 @@ import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
 import static seedu.duke.common.Constants.LESSON_FIELD_3_T_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_4_T_EMAIL;
 import static seedu.duke.common.Constants.MAX_EDITABLE_FIELDS;
-import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELD_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_TIME_UPDATED;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_LINK_UPDATED;
-import static seedu.duke.common.Messages.MESSAGE_TEACHER_EMAIL_UPDATED;
-import static seedu.duke.common.Messages.MESSAGE_TEACHER_NAME_UPDATED;
-import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
+import static seedu.duke.common.Messages.*;
 
 public class EditLessonCommand extends Command {
     private final String[] fields = {LESSON_FIELD_1_TIME_DAY, LESSON_FIELD_2_LINK, 
@@ -69,7 +64,7 @@ public class EditLessonCommand extends Command {
             try {
                 index = Parser.checkIndex(line, lessonList.size());
                 isValidIndex = true;
-            } catch (DukeException e) {
+            } catch (ParserException e) {
                 ui.printError(e);
             }
         }
@@ -99,7 +94,7 @@ public class EditLessonCommand extends Command {
             indices = Parser.checkIndices(input, MAX_EDITABLE_FIELDS);
 
             if (indices.size() == 0) {
-                ui.printMessage("No valid inputs received. Pls reenter.");
+                ui.printMessage(WARNING_NO_VALID_INPUT);
             } else {
                 isValidInput = true;
             }
@@ -125,18 +120,26 @@ public class EditLessonCommand extends Command {
             ui.printMessage(String.format(MESSAGE_LESSON_TIME_UPDATED, newFieldValue));
             break;
         case EDIT_INDEX_LINK:
-            // TODO: validate link?
-            lesson.setOnlineLink(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_LINK_UPDATED, newFieldValue));
+            if (Lesson.isValidLink(newFieldValue)) {
+                lesson.setOnlineLink(newFieldValue);
+                ui.printMessage(String.format(MESSAGE_LINK_UPDATED, newFieldValue));
+            } else {
+                ui.printMessage(MESSAGE_INVALID_LESSON_LINK);
+                ui.printMessage(MESSAGE_NOT_UPDATED);
+            }
             break;
         case EDIT_INDEX_TEACHER_NAME:
             lesson.getTeachingStaff().setName(newFieldValue);
             ui.printMessage(String.format(MESSAGE_TEACHER_NAME_UPDATED, newFieldValue));
             break;
         default:
-            // TODO: validate email
-            lesson.getTeachingStaff().setEmail(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_TEACHER_EMAIL_UPDATED, newFieldValue));
+            if(TeachingStaff.isValidEmail(newFieldValue)) {
+                lesson.getTeachingStaff().setEmail(newFieldValue);
+                ui.printMessage(String.format(MESSAGE_TEACHER_EMAIL_UPDATED, newFieldValue));
+            } else {
+                ui.printMessage(MESSAGE_INVALID_LESSON_EMAIL);
+                ui.printMessage(MESSAGE_NOT_UPDATED);
+            }
             break;
         }
     }
