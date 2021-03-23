@@ -1,15 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.command.Command;
-import seedu.duke.command.GoCommand;
-import seedu.duke.command.RepeatCommand;
-import seedu.duke.command.ShowHistoryCommand;
-import seedu.duke.command.ClearHistoryCommand;
-import seedu.duke.command.ListNoteCommand;
-import seedu.duke.command.AddNoteCommand;
-import seedu.duke.command.DeleteNoteCommand;
-import seedu.duke.command.ByeCommand;
-import seedu.duke.command.HelpCommand;
+import seedu.duke.command.*;
 import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
@@ -36,6 +27,10 @@ public class Parser {
             command = new ByeCommand(filteredUserInput);
         }  else if (filteredUserInput.equals("help")) {
             command = new HelpCommand(filteredUserInput);
+        }  else if (filteredUserInput.startsWith("add day")) {
+                command = new AddDailyRouteCommand(filteredUserInput);
+        }  else if (filteredUserInput.equals("day")) {
+            command = new ShowDailyRouteCommand(filteredUserInput);
         } else {
             throw new InvalidCommandException();
         }

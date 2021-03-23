@@ -1,10 +1,16 @@
 package seedu.duke;
 
+import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
+import seedu.duke.routing.Map;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UiManager {
@@ -114,5 +120,50 @@ public class UiManager {
         } catch (NumberFormatException e) {
             throw new InvalidRepeatEntryException();
         }
+    }
+
+    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() throws InvalidDayException, InvalidBlockException {
+        out.println("Enter the day: ");
+        String Day = in.nextLine().toUpperCase().trim();
+        CheckValidDay(Day);
+        ArrayList<String> DailyBlocks = new ArrayList<>();
+        out.println("Enter Location of the first activity of the day: ");
+        String InitialBlock = in.nextLine().toUpperCase().trim();
+        CheckValidBlock(InitialBlock);
+        DailyBlocks.add(InitialBlock);
+        while (true) {
+            out.println("Enter Location of the next activity of the day: ");
+            String NextBlock = in.nextLine().toUpperCase().trim();
+            if (NextBlock.equals("END")){
+                break;
+            } else {
+                CheckValidBlock(NextBlock);
+                DailyBlocks.add(NextBlock);
+            }
+        }
+        return new AbstractMap.SimpleEntry<>(Day, DailyBlocks);
+    }
+
+    public void CheckValidBlock(String Block) throws InvalidBlockException {
+        try{
+            Map nusMap = new Map();
+            nusMap.getBlock(Block);
+        } catch(NullPointerException e){
+            throw new InvalidBlockException();
+        }
+    }
+
+    public void CheckValidDay(String Day) throws InvalidDayException {
+        ArrayList<String> Days = new ArrayList<>(List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"));
+        if (!Days.contains(Day)){
+            throw new InvalidDayException();
+        }
+    }
+
+    public String getDay() throws InvalidDayException{
+        out.println("Select Day:");
+        String Day = in.nextLine().toUpperCase().trim();
+        CheckValidDay(Day);
+        return Day;
     }
 }
