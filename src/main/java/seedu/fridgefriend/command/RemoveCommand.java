@@ -1,7 +1,6 @@
 package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
-import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -13,26 +12,14 @@ import seedu.fridgefriend.utilities.Ui;
 public class RemoveCommand extends Command {
 
     //variables used in remove by index
-    private static final int EXTRA_INDEX = 1;
     private String foodNameToEdit;
-    private int indexToRemove;
     private Food foodToBeRemoved;
-    private String runningOutMessage = "";
 
     //variables used in remove by name and qty
     private Food foodToBeEditted;
     private int editQuantity;
     private boolean isRemoveObject = false;
-
-    /**
-     * Constructor creates a RemoveCommand object.
-     * Not used currently
-     * @param indexToRemove integer index given by user
-     */
-    public RemoveCommand(int indexToRemove) {
-        int actualIndexToRemoved = indexToRemove - EXTRA_INDEX;
-        this.indexToRemove = actualIndexToRemoved;
-    }
+    private String runningOutMessage = "";
 
     /**
      * Constructor which takes in foodname and quantity to remove.
@@ -61,16 +48,6 @@ public class RemoveCommand extends Command {
         showResults();
     }
 
-    private void removeFood() throws InvalidIndexException {
-        //currently not using, may change to delete command
-        try {
-            this.foodToBeRemoved = fridge.getFood(indexToRemove);
-        } catch (Exception e) {
-            throw new InvalidIndexException(e);
-        }
-        fridge.removeByIndex(indexToRemove);
-    }
-
     private void removePortion() throws InvalidQuantityException {
         int originalQty = foodToBeEditted.getQuantity();
         int newQty = originalQty - editQuantity;
@@ -87,7 +64,7 @@ public class RemoveCommand extends Command {
 
     private void showResults() {
         String message = getMessagePrintedToUser();
-        message += runningOutMessage;
+        message += this.runningOutMessage;
         Ui.printMessage(message);
     }
 
@@ -118,10 +95,10 @@ public class RemoveCommand extends Command {
      * Appends a warning message to the user if true.
      */
     private void checkRunningOut() {
-        FoodCategory foodCategory = foodToBeRemoved.getCategory();
+        FoodCategory foodCategory = foodToBeEditted.getCategory();
         if (fridge.isRunningOut(foodCategory)) {
             int totalQuantity = fridge.getTotalQuantity(foodCategory);
-            runningOutMessage = "WARNING! " + foodCategory.toString() + " is running low on food!\n"
+            this.runningOutMessage = "\nWARNING! " + foodCategory.toString() + " is running low on food!\n Total"
                     + foodCategory.toString() + " quantity: " + totalQuantity;
         }
     }

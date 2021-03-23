@@ -1,17 +1,17 @@
 package seedu.fridgefriend.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
-import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RemoveCommandTest {
 
@@ -50,7 +50,7 @@ class RemoveCommandTest {
         String expectedMessage = "Noted! I've removed 100 of the food "
                 + "chicken from your fridge.\n"
                 + "New quantity: 100";
-        assertEquals(expectedMessage,actualMessage);
+        assertEquals(expectedMessage, actualMessage);
     }
 
     @Test

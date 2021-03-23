@@ -68,7 +68,7 @@ public class Fridge {
      */
     public boolean isRunningOut(FoodCategory foodCategory) {
         int totalQuantity = getTotalQuantity(foodCategory);
-        return totalQuantity > FoodCategory.getMinimumQuantity(foodCategory);
+        return totalQuantity < FoodCategory.getMinimumQuantity(foodCategory);
     }
 
     public int getTotalQuantity(FoodCategory foodCategory) {
