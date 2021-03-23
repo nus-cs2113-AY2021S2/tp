@@ -452,7 +452,15 @@ public class Parser {
         }
         return indices;
     }
-    
+
+    /**
+     * Converts input string into integers and stores them in given array list. Non-integer inputs are stored in
+     * a different array list.
+     * 
+     * @param indices integer array list used to store parsed integers
+     * @param input input string to be converted
+     * @return a new array list of non-integers that were removed
+     */
     private static ArrayList<String> parseIndicesFromString(ArrayList<Integer> indices, String input) {
         int index;
         ArrayList<String> nonIntegers = new ArrayList<>();
@@ -469,7 +477,13 @@ public class Parser {
         }
         return nonIntegers;
     }
-    
+
+    /**
+     * Removes duplicates from an array list of indices.
+     * 
+     * @param indexList array list of indices to be checked
+     * @return a copy of the original array list without duplicates
+     */
     private static ArrayList<Integer> removeDuplicateIndex(ArrayList<Integer> indexList) {
         // Remove duplicates
         ArrayList<Integer> noDuplicates = new ArrayList<>();
@@ -482,6 +496,13 @@ public class Parser {
      return noDuplicates;
     }
 
+    /**
+     * Removes indices that are out of bounds from given array list.
+     * 
+     * @param indexList array list indices to be checked
+     * @param max the upper bound limit
+     * @return a new array list containing indices which were out of bounds
+     */
     private static ArrayList<Integer> removeOutOfBoundIndex(ArrayList<Integer> indexList, int max) {
         ArrayList<Integer> removed = new ArrayList<>();
         
