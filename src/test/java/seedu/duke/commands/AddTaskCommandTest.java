@@ -13,12 +13,10 @@ import java.io.PrintStream;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.TestUtilAndConstants.EXPECTED_ADD_TASK;
 import static seedu.duke.TestUtilAndConstants.FORMATTER;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.MESSAGE_DUPLICATE_TASK;
@@ -50,13 +48,12 @@ public class AddTaskCommandTest {
         AddTaskCommand addTaskCommand = new AddTaskCommand(task);
 
         addTaskCommand.execute(new UI());
-
-
+        
         String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
                 + EXPECTED_ADD_TASK;
 
         // checks displayed output to user
-        assertEquals(bos.toString(), output + NEWLINE);
+        assertEquals(output + NEWLINE, bos.toString());
 
         // checks if new task was really added to task list
         assertTrue(ModuleList.getSelectedModule().getTaskList().contains(task));
@@ -142,7 +139,10 @@ public class AddTaskCommandTest {
     }
     
     @Test
-    void execute_duplicateAndSimilarTasks_expectFail() {
+    void execute_duplicateAndSimilarTasks_expectIgnore() {
+        String isGradedInput = YES_STRING + NEWLINE;
+        ByteArrayInputStream bis = new ByteArrayInputStream(isGradedInput.getBytes());
+        System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
         TestUtilAndConstants.removeFiles();
@@ -150,28 +150,35 @@ public class AddTaskCommandTest {
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         
-        initialiseTaskList(ModuleList.getSelectedModule());
-
         LocalDate sameDeadline = LocalDate.parse("3-3-2021", FORMATTER);
-        Task duplicateTask = new Task("tP milestone", sameDeadline, "");
+        Task duplicateTask = new Task("iP submission", sameDeadline, 
+                "Remember to attach the jar file.");
         AddTaskCommand addTaskCommand1 = new AddTaskCommand(duplicateTask);
         addTaskCommand1.execute(new UI());
-
-        LocalDate differentDeadline = LocalDate.parse("20-4-2021", FORMATTER);
-        Task similarTask = new Task("tP milestone", differentDeadline, "");
-        AddTaskCommand addTaskCommand2 = new AddTaskCommand(similarTask);
+        
+        AddTaskCommand addTaskCommand2 = new AddTaskCommand(duplicateTask);
         addTaskCommand2.execute(new UI());
 
-        String output = MESSAGE_DUPLICATE_TASK + NEWLINE
+        LocalDate differentDeadline = LocalDate.parse("5-3-2021", FORMATTER);
+        Task similarTask = new Task("iP submission", differentDeadline, "");
+        AddTaskCommand addTaskCommand3 = new AddTaskCommand(similarTask);
+        addTaskCommand3.execute(new UI());
+
+        String output = MESSAGE_TASK_CHECK_GRADED + NEWLINE
+                + EXPECTED_ADD_TASK + NEWLINE
+                + MESSAGE_DUPLICATE_TASK + NEWLINE
                 + MESSAGE_SAME_DESCRIPTION_TASK;
         
         // checks displayed output to user
         assertEquals(output + NEWLINE, bos.toString());
 
         // checks if duplicate and similar tasks were really ignored
-        assertFalse(ModuleList.getSelectedModule().getTaskList().contains(duplicateTask));
-        assertFalse(ModuleList.getSelectedModule().getTaskList().contains(similarTask));
+        int count = (int)ModuleList.getSelectedModule().getTaskList().stream()
+                .filter((t) -> t.getDescription().equalsIgnoreCase(duplicateTask.getDescription()))
+                .count();
+        assertEquals(1, count);
 
+        System.setIn(originalIn);
         System.setOut(originalOut);
     }
 }
