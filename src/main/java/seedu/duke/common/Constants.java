@@ -57,6 +57,11 @@ public class Constants {
     public static final int ENTRY_TASK_LONG = 5;
     public static final ArrayList<Integer> ENTRY_SIZE_TASK
             = new ArrayList<>(Arrays.asList(ENTRY_TASK_SHORT, ENTRY_TASK_LONG));
+    
+    public static final String TASK_FIELD_DESCRIPTION = "Description";
+    public static final String TASK_FIELD_DEADLINE = "Deadline";
+    public static final String TASK_FIELD_REMARKS = "Remarks";
+    public static final String TASK_FIELD_GRADED_STATUS = "Graded/not graded";
 
     public static final String YES_STRING = "Y";
     public static final String NO_STRING = "N";

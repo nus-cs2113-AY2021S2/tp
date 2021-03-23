@@ -53,14 +53,6 @@ public class Module {
         taskList.remove(task);
     }
 
-    public void markTask(Task task) {
-        task.setDone(true);
-    }
-
-    public void unmarkTask(Task task) {
-        task.setDone(false);
-    }
-
     //@@author aliciatay-zls
     /**
      * Returns array list of done/undone tasks.

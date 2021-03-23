@@ -1,5 +1,6 @@
 package seedu.duke.common;
 
+import seedu.duke.exception.DukeException;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
@@ -110,13 +111,28 @@ public class CommonMethods {
      * @return Array list of selected tasks.
      */
     public static ArrayList<Task> getSpecifiedTasks(UI ui, ArrayList<Task> taskList) {
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, taskList.size());
+        ArrayList<Integer> indices = getSpecifiedIndices(ui, taskList.size());
         //Store the tasks chosen by user to new array list
         ArrayList<Task> selectedTasks = new ArrayList<>();
         for (Integer index : indices) {
             selectedTasks.add(taskList.get(index - 1));
         }
         return selectedTasks;
+    }
+    
+    public static ArrayList<Integer> getSpecifiedIndices(UI ui, int maxIndex) {
+        String line = ui.readCommand();
+        return Parser.checkIndices(line, maxIndex);
+    }
+    
+    public static Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
+        String line = ui.readCommand();
+        try {
+            int index = Parser.checkIndex(line, taskList.size());
+            return taskList.get(index - 1);
+        } catch (DukeException e) {
+            ui.printError(e);
+            return null;
+        }
     }
 }

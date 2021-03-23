@@ -3,10 +3,11 @@ package seedu.duke.common;
 public class Messages {
 
 
-    //General message
+    //General messages
     public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
+    public static final String FORMAT_TASK_FIELDS = "%s - %s \n\t\t- %s - %s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t";
@@ -94,10 +95,13 @@ public class Messages {
     public static final String COMMAND_VERB_DELETE = "delete";
     public static final String COMMAND_VERB_MARK = "mark as done";
     public static final String COMMAND_VERB_UNMARK = "mark as undone";
+    public static final String COMMAND_VERB_EDIT = "edit";
 
     public static final String HEADER_DONE = "[Done]";
     public static final String HEADER_UNDONE = "[Undone]";
     public static final String MESSAGE_GRADED = " (graded)";
+    public static final String MESSAGE_GRADED_STATUS = "Graded";
+    public static final String MESSAGE_UNGRADED_STATUS = "Not graded";
 
     public static final String MESSAGE_ADDED_TASK = "Added %s to task list.";
     public static final String MESSAGE_DUPLICATE_TASK = "This task is already in the list.";
@@ -107,11 +111,21 @@ public class Messages {
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
+    public static final String MESSAGE_EDITED_TASK = "Edited task successfully: %s";
 
     public static final String MESSAGE_TASKS_TO_DELETE = "Which tasks would you like to delete?";
     public static final String MESSAGE_TASKS_TO_LIST = "Tasks for %s:";
     public static final String MESSAGE_TASKS_TO_MARK = "Which undone tasks have you completed?";
     public static final String MESSAGE_TASKS_TO_UNMARK = "Which done tasks would you like to undo?";
+    public static final String MESSAGE_TASK_BEING_EDITED = NEWLINE + "Editing: %s";
+    public static final String MESSAGE_TASK_TO_EDIT = "Which task would you like to edit?";
+    public static final String MESSAGE_TASK_FIELDS_TO_EDIT = "Which fields?";
+    public static final String MESSAGE_TASK_FIELDS_SELECT_INFO = NEWLINE
+            + "Separate indices with a blank space.";
+    public static final String MESSAGE_TASK_DESCRIPTION_TO_EDIT = "New task description:";
+    public static final String MESSAGE_TASK_DEADLINE_TO_EDIT = "New deadline:";
+    public static final String MESSAGE_TASK_REMARKS_TO_EDIT = "New remarks:";
+
     public static final String MESSAGE_TASK_CHECK_GRADED = "Is this task graded? (Y / N)";
     public static final String MESSAGE_TASK_CHECK_GRADED_INFO = "Please enter \"Y\" or \"N\"";
     public static final String MESSAGE_TASK_SELECT_INFO = NEWLINE

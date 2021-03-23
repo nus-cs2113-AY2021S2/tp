@@ -1,9 +1,6 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.TestUtilAndConstants;
-import seedu.duke.exception.CommandException;
-import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
@@ -14,9 +11,11 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.TestUtilAndConstants.MESSAGE_MODULE_ERROR;
-import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
+import static seedu.duke.TestUtilAndConstants.initialiseModuleList;
 import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
+import static seedu.duke.common.Messages.COMMAND_VERB_UNMARK;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_UNMARK;
+import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 import static seedu.duke.common.Messages.NEWLINE;
 
 class MarkAsUndoneCommandTest {
@@ -27,28 +26,22 @@ class MarkAsUndoneCommandTest {
     //@@author aliciatay-zls
     @Test
     void execute_twoValidTaskIndices_expectSuccess() {
-        String input = "1 3" + NEWLINE;
+        String input = "1" + NEWLINE;
         ByteArrayInputStream bis = new ByteArrayInputStream(input.getBytes());
         System.setIn(bis);
         System.setOut(new PrintStream(bos));
 
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
-        ModuleList.addModule(MODULE_CODE_1);
-        ModuleList.setSelectedModule(MODULE_CODE_1);
+        initialiseModuleList();
 
-        ArrayList<Task> taskList = initialiseTaskList(ModuleList.getSelectedModule());
+        ArrayList<Task> taskList = initialiseTaskList();
 
         MarkAsUndoneCommand markAsUndoneCommand = new MarkAsUndoneCommand();
         markAsUndoneCommand.execute(new UI());
 
-        String output = "Which done tasks would you like to undo?" + NEWLINE
-                + "1. iP increments" + NEWLINE
-                + "2. tP milestone" + NEWLINE
-                + "3. watch video snippets" + NEWLINE + NEWLINE
-                + "Please enter the indices of the tasks you would like to mark as undone." + NEWLINE
-                + "Separate indices with a blank space." + NEWLINE
-                + "Marked iP increments as undone." + NEWLINE
+        String output = MESSAGE_TASKS_TO_UNMARK + NEWLINE
+                + "1. watch video snippets" + NEWLINE
+                + "2. iP submission" + NEWLINE
+                + String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_UNMARK) + NEWLINE
                 + "Marked watch video snippets as undone." + NEWLINE;
 
         // checks displayed output to user
@@ -62,8 +55,7 @@ class MarkAsUndoneCommandTest {
                 + "false" + NEWLINE
                 + "false" + NEWLINE
                 + "false" + NEWLINE
-                + "true" + NEWLINE
-                + "false" + NEWLINE;
+                + "true" + NEWLINE;
 
         // checks if tasks were correctly unmarked in task list
         assertEquals(expectedDone, actualDone.toString());
