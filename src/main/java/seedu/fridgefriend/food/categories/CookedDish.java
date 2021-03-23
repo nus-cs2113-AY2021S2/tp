@@ -10,8 +10,8 @@ import seedu.fridgefriend.food.Quantity;
 public class CookedDish extends Food {
 
     public CookedDish(String foodName, FoodCategory category, String expiryString,
-                      FoodStorageLocation storageLocation, Quantity quantity) throws InvalidDateException,
-            InvalidQuantityException {
+                      FoodStorageLocation storageLocation, Quantity quantity)
+                      throws InvalidDateException, InvalidQuantityException {
         super(foodName, category, expiryString, storageLocation, quantity);
     }
 }

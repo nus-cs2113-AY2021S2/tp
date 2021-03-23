@@ -18,7 +18,7 @@ public abstract class Food {
 
     public Food(String foodName, FoodCategory category, String expiryString,
                 FoodStorageLocation storageLocation, Quantity quantity)
-            throws InvalidDateException, InvalidQuantityException {
+                throws InvalidDateException, InvalidQuantityException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
         this.setFoodName(foodName);
@@ -88,6 +88,5 @@ public abstract class Food {
     public void setQuantity(Quantity quantity) {
         this.quantity = quantity;
     }
-
 
 }

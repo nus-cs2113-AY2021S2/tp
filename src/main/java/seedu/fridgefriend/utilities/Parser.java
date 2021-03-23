@@ -154,7 +154,8 @@ public class Parser {
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command parseFoodDescription(String foodDescription)
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException, InvalidQuantityException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -192,7 +193,8 @@ public class Parser {
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command getAddCommand(String description)
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException, InvalidQuantityException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
     }
@@ -246,7 +248,7 @@ public class Parser {
     /**
      * Returns a HelpCommand object.
      *
-     * @return help instructions
+     * @return HelpCommand object
      */
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
@@ -256,7 +258,7 @@ public class Parser {
     /**
      * Returns a ByeCommand object.
      *
-     * @return acknowledgement to exit the program
+     * @return ByeCommand object
      */
     public static Command getByeCommand() {
         Command byeCommand = new ByeCommand();

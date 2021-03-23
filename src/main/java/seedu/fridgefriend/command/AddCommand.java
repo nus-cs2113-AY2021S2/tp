@@ -31,7 +31,7 @@ public class AddCommand extends Command {
 
     public AddCommand(String foodName, FoodCategory category, String expiryString,
                       FoodStorageLocation location, Quantity quantity)
-            throws InvalidDateException, InvalidQuantityException {
+                      throws InvalidDateException, InvalidQuantityException {
 
         assert category != null : "category should not be null";
         LoggingHandler.logInfo("Adding food: " + foodName + " with parameters: ");
@@ -73,8 +73,8 @@ public class AddCommand extends Command {
 
     public static Food categoriseAndGenerateFood(String foodName, FoodCategory category,
                                                  String expiryString, FoodStorageLocation location,
-                                                 Quantity quantity)
-            throws InvalidDateException, InvalidQuantityException {
+                                                 Quantity quantity) throws InvalidDateException,
+                                                 InvalidQuantityException {
         Food newFood;
         switch (category) {
         case VEGETABLE:
