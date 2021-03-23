@@ -33,7 +33,7 @@ Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 100
+Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
 -----------------------------------------------------------------
 Sorry my friend, you have added this food before but in a different location or have different expiry dates. please specify another foodname.
 -----------------------------------------------------------------
