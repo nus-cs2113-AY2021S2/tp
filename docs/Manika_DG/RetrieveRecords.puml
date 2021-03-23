@@ -1,0 +1,14 @@
+@startuml
+!include Style.puml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Ui -> Delivery: completeDelivery()
+
+Delivery -> Deliveryman: completeDelivery(Deliveryman : deliveryman)
+Deliveryman -> Deliveryman : records.add(Delivery : delivery)
+Deliveryman -> Delivery
+
+Delivery --> Ui
+@enduml
