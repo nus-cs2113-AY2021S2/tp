@@ -17,6 +17,7 @@ public class Command {
     public boolean isExit() {
         return false;
     }
+
     public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
     }
