@@ -146,7 +146,7 @@ enum FoodCategory {
 Food .left.> FoodCategory
 
 package Exception <<Rectangle>> {
-    class hiddenException #FFFFFF
+
 }
 
 food ..> Exception
