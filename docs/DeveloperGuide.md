@@ -145,7 +145,57 @@ The `Ui` component actively listens for:
 * the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
-...
+![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)
+*Figure X: ParserHandler Class Diagram*
+
+#### Description
+The Parser component consist of 1 class called `ParserHandler`.
+The role of `ParserHandler` can be interpreted as a "manager" or "middle man" to parse
+the user input from the console into an `ArrayList<String>` format.
+
+#### Design
+In the main program, `ParserHandler` is instantiated through the constructor `new ParserHandler()`,
+finalizing the startOptionArray, endOptionArray, and middleOptionArray. Whenever the program needs
+to parse a user input, the ParserHandler calls the method `getParseInput` and returns an `ArrayList<String>`.
+
+1. `getParseInput` will trim the leading white space before calling `startExtraction`.
+2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and 
+   remove the option from the trimmed input before calling `extractSubsequencePart`.
+3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the 
+   trimmed input to the start of the next option index. This is the argument tagged after the option. 
+   * Any leading or trailing white space of the argument field will be removed.
+   * If no argument is provided, the argument would be stored an empty string.
+
+   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling
+   `extractFinalPart`.
+   * Valid next option format: `' <option> '` with 1 leading and trailing whitespace. e.g. `' -e '`
+4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and 
+   add an empty string as the argument, else just add the last trimmed input to the ArrayList. 
+5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will 
+   call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
+   
+#### Parser Component Design Consideration
+1. Leading and trailing whitespace should be considered carefully especially with options involve.
+   * Input starting with valid option should consider the possibility of multiple leading whitespaces, 
+   thus `stripLeading()` should be applied.
+   * Input ending with valid option should also be considered with possibility of multiple trailing whitespaces,
+   thus `stripTrailing()` should be applied as well.
+2. Checking of options in the start, end, and during the processing should be considered carefully with accordance 
+   to consideration 1.
+   * Starting option should be in the form of `'<option> '` with no leading whitespace and 1 trailing whitespace. 
+     e.g. `'-e '`
+   * Ending option should be in the form of `' <option>'` with 1 leading whitespace and no trailing whitespace.
+     e.g. `' -e'`
+   * During processing, next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
+     e.g. `' -e '`
+3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
+   Apache Commons Lang, 3.11, providing the StringUtils class is used to cater to consideration 2.
+   * StringUtils.startsWithAny() - detection of start option with non-fixed order.
+   * StringUtils.endsWithAny()   - detection of end option with non-fixed order.
+   * StringUtils.indexOfAny()    - detection of during processing option with non-fixed order.
+4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
+5. getParseInput should always return a new ArrayList<String> per new input.
+
 
 ### 3.4 CommandHandler Component
 ...
