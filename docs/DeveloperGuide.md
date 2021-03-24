@@ -33,7 +33,7 @@ By design, the user is greeted with a dashboard upon launching GULIO. The comman
 
 [Class diagram for DashboardCommands, ModuleCommands]
 
-###UI component
+### UI component
 **API**: UI.java
 
 * Facilitates the CLI interface
@@ -43,11 +43,28 @@ By design, the user is greeted with a dashboard upon launching GULIO. The comman
 * Instances of UI are used by tests in general
 
 &nbsp;&nbsp;
-###Model component
+
+## Parser component
+**API**: `Parser.java`
+
+* Determines the command entered by the user
+
+* Parses the parameters needed by the `Command` object (for commands which require additional details)
+
+* Checks the validity of parsed parameters, in some instances calling methods from other relevant classes, e.g. calling a method from the `Lessons` class to verify parsed lesson links.
+
+* May instruct `UI` to print warnings and prompts to users, e.g. when users enter invalid parameters.
+
+* Returns a new `Command` object with all the necessary attributes filled
+
+&nbsp;&nbsp;
+
+### Model component
 
 [Class diagram for all these objects - include attributes for each of them]
 
 **ModuleList:**
+
 * The ModuleList class keeps an ArrayList of module code strings, 
   and if a user is in a module, the selected module’s code
 * Mainly handles operations related to Module objects such as loading
@@ -55,5 +72,32 @@ By design, the user is greeted with a dashboard upon launching GULIO. The comman
 * Acts as a facade between storage and the other components
 
 **Module:**
+
 * The Module class contains attributes related to a course module in NUS
 * It also holds an ArrayList for the Lesson and Task model
+
+**Lesson:**
+
+The `Lesson` class contains attributes related to a typical course lesson
+
+* Lesson type, e.g. Lab, Tutorial or Lecture
+* Time and day of the lesson
+* Link to the lesson session
+* Teaching staff information
+
+**Teaching staff:**
+
+The `TeachingStaff` class contains attributes related to the teacher(s) of a particular lesson
+
+* Name of the teacher
+* Email address of the teacher
+
+**Task:**
+
+The Task class contains attributes related to an assignment, deadline or task in a university setting
+
+* Description of task
+* Deadline of task
+* Remarks
+* Done status
+* Graded status
