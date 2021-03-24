@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.command.BorrowersCreditScoreForReturnedLoans;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
@@ -17,6 +18,7 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
+    private BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans;
 
     public Duke() {
         ui = new Ui();
@@ -53,7 +55,10 @@ public class Duke {
         try {
             ui = new Ui();
             storage = new Storage();
-            records = new RecordList(storage.loadFile());
+            storage.loadFile();
+            records = new RecordList(storage.getRecordListData());
+            borrowersCreditScoreForReturnedLoans = new BorrowersCreditScoreForReturnedLoans(
+                    storage.getBorrowersCreditScoreForReturnedLoansMapData());
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
@@ -70,9 +75,8 @@ public class Duke {
             assert parsedStringList.size() != 0 : "Empty Parser Error";
             command = CommandHandler.parseCommand(parsedStringList, records);
             if (command != null) {
-                command.execute(records, ui, storage);
+                command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
             }
         } while (!ExitCommand.isExit(command));
     }
-
 }

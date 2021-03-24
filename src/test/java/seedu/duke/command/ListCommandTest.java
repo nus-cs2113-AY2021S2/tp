@@ -12,6 +12,7 @@ import seedu.duke.ui.Ui;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.common.Validators.validateDate;
@@ -53,6 +54,8 @@ class ListCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         RecordList records = getPopulatedRecordList(listCmdTypeToTest);
+        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
+                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
 
         Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(listCmdStr), records);
         assertTrue(command instanceof ListCommand, String.format("Failed test '%s', "
@@ -61,7 +64,7 @@ class ListCommandTest {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream listCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(listCmdBos));
-        command.execute(records, ui, storage);
+        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
         System.setOut(originalOut);
         assertTrue(listCmdBos.toString().equals(expectedOutput), String.format("Failed test '%s', wrong output.",
                 listCmdTestName));

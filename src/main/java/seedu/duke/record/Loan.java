@@ -51,8 +51,13 @@ public class Loan extends Record {
     /**
      * Marks a loan as returned.
      */
-    public void markAsReturned() {
-        isReturn = true;
+    public void markAsReturned(LocalDate returnDate) {
+        this.isReturn = true;
+        this.returnDate = returnDate;
+    }
+
+    public boolean isReturn() {
+        return isReturn;
     }
 
     /**

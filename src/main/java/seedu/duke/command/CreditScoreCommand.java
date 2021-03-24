@@ -9,11 +9,11 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 import static seedu.duke.command.Utils.getValue;
 import static seedu.duke.command.Utils.validateArguments;
+import static seedu.duke.command.Utils.getDaysDifference;
+import static seedu.duke.command.Utils.computeCreditScore;
 
 /**
  * Handles all operations related to the credit score command.
@@ -37,44 +37,22 @@ public class CreditScoreCommand extends Command {
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_CREDIT_SCORE);
     }
 
-    private long getDayDifference(LocalDate issueDate, LocalDate returnDate) {
-        LocalDate from = issueDate;
-        LocalDate to;
-        if (returnDate == null) {
-            to = LocalDate.now();
-        } else {
-            assert returnDate != null : "returnDate should not be empty";
-            to = returnDate;
-        }
-        long dayDifference = ChronoUnit.DAYS.between(from, to);
-        return dayDifference;
-    }
-
-
-    private int computeCreditScore(long daysDifference, int currentCreditScore) {
-        long loanPeriod = 10; //need to get this as input from user, save in loan object.
-        long computedCreditScore = currentCreditScore;
-
-        if (daysDifference > loanPeriod) {
-            computedCreditScore -= (daysDifference - loanPeriod);
-            if (computedCreditScore < 0) {
-                computedCreditScore = 0;
-            }
-        }
-        return (int) computedCreditScore;
-    }
-
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage) {
-        int creditScore = 10; //score in the range of [0,10]
+    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
+            borrowersCreditScoreForReturnedLoans) {
+        int creditScore = borrowersCreditScoreForReturnedLoans.getCurrentBorrowerCreditScoreForReturnedLoans(
+                borrowerName.toLowerCase());
 
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
                 Loan currentLoan = (Loan) currentRecord;
-                if (currentLoan.getBorrowerName().equalsIgnoreCase(borrowerName)) {
-                    long daysDifference = getDayDifference(currentLoan.getIssueDate(), currentLoan.getReturnDate());
-                    creditScore = computeCreditScore(daysDifference, creditScore);
+                boolean isLoanedToCurrentBorrower = currentLoan.getBorrowerName().equalsIgnoreCase(borrowerName);
+                boolean isNotReturned = !currentLoan.isReturn();
+                boolean isLoanedToCurrentBorrowerAndNotReturned = isLoanedToCurrentBorrower && isNotReturned;
+                if (isLoanedToCurrentBorrowerAndNotReturned) {
+                    long daysDifference = getDaysDifference(currentLoan.getIssueDate(), currentLoan.getReturnDate());
+                    creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
                 }
             }
         }

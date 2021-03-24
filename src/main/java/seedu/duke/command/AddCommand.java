@@ -51,13 +51,13 @@ public class AddCommand extends Command {
      */
     public AddCommand(ArrayList<String> arguments) throws CommandException {
         validateOptions(arguments, COMMAND_ADD, VALID_OPTIONS, CONFLICT_OPTIONS);
-
         description = getDescription(arguments);
         amount = getAmount(arguments);
         issueDate = getDate(arguments);
         borrowerName = getPerson(arguments);
         System.out.println("borrower is: " + borrowerName);
     }
+
 
     /**
      * Gets the description field.
@@ -112,7 +112,11 @@ public class AddCommand extends Command {
      */
     private String getPerson(ArrayList<String> arguments) throws CommandException {
         if (recordType == RecordType.LOAN) {
-            return getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
+            String borrowerName = getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
+            if (borrowerName.contains("|")) {
+                throw new CommandException("Borrower name cannot contain '|' as input.", COMMAND_ADD);
+            }
+            return borrowerName;
         } else if (hasOption(arguments, OPTION_PERSON)) {
             throw new CommandException("option -p not valid for this record type.", COMMAND_ADD);
         } else {
@@ -149,18 +153,19 @@ public class AddCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
+            borrowersCreditScoreForReturnedLoans) {
         switch (recordType) {
         case EXPENSE:
             Expense expenseObj = new Expense(amount, issueDate, description);
             recordList.addRecord(expenseObj);
-            storage.saveRecordListData(recordList);
+            storage.saveData(recordList, borrowersCreditScoreForReturnedLoans);
             ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description, borrowerName);
             recordList.addRecord(loanObj);
-            storage.saveRecordListData(recordList);
+            storage.saveData(recordList, borrowersCreditScoreForReturnedLoans);
             ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
             break;
         case SAVING:
@@ -168,7 +173,7 @@ public class AddCommand extends Command {
         default:
             Saving savingObj = new Saving(amount, issueDate, description);
             recordList.addRecord(savingObj);
-            storage.saveRecordListData(recordList);
+            storage.saveData(recordList, borrowersCreditScoreForReturnedLoans);
             ui.printSuccessfulAdd(savingObj, recordList.getRecordCount());
         }
     }
