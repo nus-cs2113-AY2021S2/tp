@@ -4,15 +4,13 @@ import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
-import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.Map;
 import seedu.duke.FavouriteLocation;
-import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
-import seedu.duke.DaySchedulePair;
+import seedu.duke.exception.InvalidAliasException;
 
-public class AddNoteCommand extends Command {
-    public AddNoteCommand(String userInput) {
+public class DeleteCustomAliasCommand extends Command {
+    public DeleteCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
@@ -20,6 +18,12 @@ public class AddNoteCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        notesManager.parseAddNotesCommandAndAddNotes(userInput);
+        try {
+            String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
+            blockAlias.getAliasMap().remove(aliasToDelete);
+        } catch (InvalidAliasException e) {
+            ui.showToUser(e.getMessage());
+        }
+
     }
 }

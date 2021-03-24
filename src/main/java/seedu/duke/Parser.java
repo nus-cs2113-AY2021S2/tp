@@ -1,6 +1,5 @@
 package seedu.duke;
 
-
 import seedu.duke.command.Command;
 import seedu.duke.command.GoCommand;
 import seedu.duke.command.RepeatCommand;
@@ -14,6 +13,9 @@ import seedu.duke.command.HelpCommand;
 import seedu.duke.command.AddDailyRouteCommand;
 import seedu.duke.command.ShowDailyRouteCommand;
 import seedu.duke.command.ShowFavouriteLocationsCommand;
+import seedu.duke.command.AddCustomAliasCommand;
+import seedu.duke.command.DeleteCustomAliasCommand;
+import seedu.duke.command.ShowCustomAliasCommand;
 import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
@@ -46,6 +48,12 @@ public class Parser {
             command = new ShowDailyRouteCommand(filteredUserInput);
         } else if (filteredUserInput.startsWith("favourite")) {
             command = new ShowFavouriteLocationsCommand(filteredUserInput);
+        } else if (filteredUserInput.equals("add alias")) {
+            command = new AddCustomAliasCommand(filteredUserInput);
+        } else if (filteredUserInput.equals("show alias")) {
+            command = new ShowCustomAliasCommand(filteredUserInput);
+        } else if (filteredUserInput.equals("delete alias")) {
+            command = new DeleteCustomAliasCommand(filteredUserInput);
         } else {
             throw new InvalidCommandException();
         }

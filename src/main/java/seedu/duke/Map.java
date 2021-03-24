@@ -1,6 +1,4 @@
-package seedu.duke.routing;
-
-import seedu.duke.Block;
+package seedu.duke;
 
 import java.util.HashMap;
 
@@ -24,6 +22,12 @@ public class Map {
     public void addRelationship(String a, String b) {
         map.get(a).addNeighbour(map.get(b));
         map.get(b).addNeighbour(map.get(a));
+    }
+
+    public void resetVisitedFlag() {
+        for (Block block : map.values()) {
+            block.setAsNotVisited();
+        }
     }
 
     public void initValidBlocks() {
@@ -51,7 +55,11 @@ public class Map {
         addBlock("IT");
         addBlock("T-LAB");
         addBlock("TECHNO EDGE");
-        addBlock("AS1");
+        addBlock("TECHNO EDGE CANTEEN");
+        addBlock("CHEERS MINIMART");
+        addBlock("ARISE & SHINE");
+        addBlock("PLATYPUS FOOD BAR");
+        addBlock("SPINELLI COFFEE");
     }
 
     public void initNeighbouringBlocks() {
@@ -81,6 +89,10 @@ public class Map {
         addRelationship("E4A", "EW2");
         addRelationship("EW2", "E6");
         addRelationship("E6", "E7");
-
+        addRelationship("TECHNO EDGE", "TECHNO EDGE CANTEEN");
+        addRelationship("E3", "CHEERS MINIMART");
+        addRelationship("E4", "ARISE & SHINE");
+        addRelationship("E2A", "PLATYPUS FOOD BAR");
+        addRelationship("EA","SPINELLI COFFEE");
     }
 }

@@ -4,14 +4,14 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
-import seedu.duke.routing.Map;
+import seedu.duke.exception.InvalidAliasException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class UiManager {
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -89,7 +89,6 @@ public class UiManager {
 
     public void showHistory(History history) {
         assert history != null : "History must be initialized before, cannot be null";
-
         showToUser(
                 "Number of records in your history: " + history.getTotalNoOfHistory(),
                 history.getHistoryAsString()
@@ -99,7 +98,6 @@ public class UiManager {
     public void showClearHistoryResponse() {
         showToUser("Your history has been cleared.");
     }
-
 
     public String[] getRoutingInfo() {
         String[] startAndDestination = new String[2];
@@ -113,6 +111,16 @@ public class UiManager {
         return startAndDestination;
     }
 
+    public int getEateryEntry(Block[] eateries) {
+        out.println(DIVIDER);
+        out.println("Here are the list of eateries(from closest to furthest):");
+        for (int i = 0; i < eateries.length; i++) {
+            out.println((i + 1) + ". " + eateries[i].getName());
+        }
+        out.println(LINE_SEPARATOR + "SELECT ENTRY TO GO:");
+        return Integer.parseInt(in.nextLine());
+    }
+
     public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {
         try {
             out.println("SELECT ENTRY TO REPEAT:");
@@ -122,49 +130,123 @@ public class UiManager {
         }
     }
 
-    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() 
+    public DaySchedulePair getDailyRouteInfo()
             throws InvalidDayException, InvalidBlockException {
-        out.println("Enter the day: ");
-        String day = in.nextLine().toUpperCase().trim();
-        checkValidDay(day);
-        ArrayList<String> dailyBlocks = new ArrayList<>();
+        String day = getValidDay();
+        ArrayList<String> dailyBlocks = getSchedule();;
+        return new DaySchedulePair(day, dailyBlocks);
+    }
+
+    public ArrayList<String> getSchedule() throws InvalidBlockException {
         out.println("Enter Location of the first activity of the day: ");
-        String initialBlock = in.nextLine().toUpperCase().trim();
-        checkValidBlock(initialBlock);
+        ArrayList<String> dailyBlocks = new ArrayList<>();
+        String initialBlock = checkValidBlock();
         dailyBlocks.add(initialBlock);
         while (true) {
             out.println("Enter Location of the next activity of the day: ");
-            String nextBlock = in.nextLine().toUpperCase().trim();
+            String nextBlock = checkValidBlock();
             if (nextBlock.equals("END")) {
                 break;
             } else {
-                checkValidBlock(nextBlock);
                 dailyBlocks.add(nextBlock);
             }
         }
-        return new AbstractMap.SimpleEntry<>(day, dailyBlocks);
+        return dailyBlocks;
     }
 
-    public void checkValidBlock(String block) throws InvalidBlockException {
+    public String checkValidBlock() throws InvalidBlockException {
+        String block = in.nextLine().toUpperCase().trim();
+        Map nusMap = new Map();
+        if (block.equals("END")) {
+            out.println(DIVIDER);
+            return block;
+        } else if (nusMap.getBlock(block) == null) {
+            throw new InvalidBlockException();
+        }
+        return block;
+    }
+
+    public String getValidDay() throws InvalidDayException {
+        out.println("Enter the day: ");
+        String day = in.nextLine().toUpperCase().trim();
+        List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
+        ArrayList<String> days = new ArrayList<>(daysList);
+        if (!days.contains(day)) {
+            throw new InvalidDayException();
+        }
+        return day;
+    }
+
+    public HashMap<String, String> getAliasInfo(HashMap<String, String> aliasMap)
+            throws InvalidAliasException, InvalidBlockException {
+        String block = getAliasBlock("Enter the block: ");
+        String alias = getAliasName(aliasMap).toUpperCase();
+
+        HashMap<String, String> newAlias = new HashMap<>();
+        newAlias.put(alias, block);
+
+        System.out.println("Got it! Successfully added " + alias + " for block " + block);
+        System.out.println(DIVIDER);
+        return newAlias;
+    }
+
+    private String getAliasName(HashMap<String, String> aliasMap) throws InvalidAliasException {
+        out.println("Enter the alias name: ");
+        String alias = in.nextLine().trim();
+        checkValidAlias(alias, aliasMap);
+        return alias;
+    }
+
+    private String getAliasBlock(String s) throws InvalidBlockException {
+        out.println(s);
+        String block = in.nextLine().toUpperCase().trim();
+        checkValidAliasBlock(block);
+        return block;
+    }
+
+    private void checkValidAlias(String alias, HashMap<String, String> aliasMap) throws InvalidAliasException {
+        Map nusMap = new Map();
+        if (aliasMap.containsValue(alias)) {
+            throw new InvalidAliasException();
+        } else if (nusMap.getBlock(alias.toUpperCase()) != null) {
+            throw new InvalidAliasException();
+        }
+    }
+
+    public void checkValidAliasBlock(String block) throws InvalidBlockException {
         Map nusMap = new Map();
         if (nusMap.getBlock(block) == null) {
             throw new InvalidBlockException();
         }
     }
 
-    public void checkValidDay(String day) throws InvalidDayException {
-        List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
-        ArrayList<String> days = new ArrayList<>(daysList);
-        if (!days.contains(day)) {
-            throw new InvalidDayException();
+    public void showCustomAliases(HashMap<String, String> aliasMap) {
+        if (aliasMap.isEmpty()) {
+            System.out.println("It seems that you currently do not have any aliases");
+        } else {
+            System.out.println("Your aliases are:");
+            for (String alias: aliasMap.keySet()) {
+                String block = aliasMap.get(alias);
+                System.out.println(block + " - " + alias);
+            }
         }
+        System.out.println(DIVIDER);
     }
 
-    public String getDay() throws InvalidDayException {
-        out.println("Select Day:");
-        String day = in.nextLine().toUpperCase().trim();
-        checkValidDay(day);
-        return day;
+    public String getDeleteAliasInfo(BlockAlias blockAlias) throws InvalidAliasException {
+        out.println("Enter the alias name that you wish to delete: ");
+        String toDelete = in.nextLine().trim().toUpperCase();
+        checkValidDeleteAlias(toDelete, blockAlias.getAliasMap());
+        System.out.println("Got it! Successfully deleted " + toDelete + " from the aliases");
+        System.out.println(DIVIDER);
+        return toDelete;
+    }
+
+    private void checkValidDeleteAlias(String aliasToDelete, HashMap<String, String> aliasMap)
+            throws InvalidAliasException {
+        if (!aliasMap.containsKey(aliasToDelete)) {
+            throw new InvalidAliasException();
+        }
     }
 
     public void showFavouriteLocations(FavouriteLocation favouriteLocation) {

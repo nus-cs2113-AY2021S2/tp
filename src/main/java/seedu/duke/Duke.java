@@ -2,28 +2,35 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidCommandException;
-import seedu.duke.routing.Router;
 
 public class Duke {
 
-    private Router router;
+    private Map nusMap;
     private UiManager ui;
     private History history;
     private NotesManager notesManager;
     private DailyRoute dailyroute;
     private FavouriteLocation favouriteLocation;
-
+    private BlockAlias blockAlias;
 
     public static void main(String[] args) {
         new Duke().run();
     }
 
     private void run() {
-        this.router = new Router();
+        initializeDuke();
+        ui.showLogo();
+        ui.showGreetMessage();
+        runCommandLoopUntilByeCommand();
+    }
+
+    private void initializeDuke() {
+        this.nusMap = new Map();
         this.ui = new UiManager();
         this.history = new History();
         this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
+        this.blockAlias = new BlockAlias();
         this.favouriteLocation = new FavouriteLocation();
         ui.showLogo();
         ui.showGreetMessage();
@@ -36,7 +43,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(router, ui, history, notesManager, dailyroute, favouriteLocation);
+                command.execute(nusMap, ui, history, notesManager, dailyroute, blockAlias, favouriteLocation);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());

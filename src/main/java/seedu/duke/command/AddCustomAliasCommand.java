@@ -1,18 +1,18 @@
 package seedu.duke.command;
 
-import seedu.duke.Map;
 import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
+import seedu.duke.FavouriteLocation;
 import seedu.duke.History;
+import seedu.duke.Map;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
-import seedu.duke.FavouriteLocation;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
-import seedu.duke.DaySchedulePair;
+import seedu.duke.exception.InvalidAliasException;
+import java.util.HashMap;
 
-public class AddDailyRouteCommand extends Command {
-    public AddDailyRouteCommand(String userInput) {
+public class AddCustomAliasCommand extends Command {
+    public AddCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
@@ -20,12 +20,11 @@ public class AddDailyRouteCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        DaySchedulePair dayAndRoute;
         try {
-            dayAndRoute = ui.getDailyRouteInfo();
-            assert dayAndRoute != null;
-            dailyRoute.addDailyRoute(dayAndRoute.getDay(), dayAndRoute.getSchedule());
-        } catch (InvalidDayException e) {
+            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasMap());
+            assert addAlias != null;
+            blockAlias.getAliasMap().putAll(addAlias);
+        } catch (InvalidAliasException e) {
             ui.showToUser(e.getMessage());
         } catch (InvalidBlockException r) {
             ui.showToUser(r.getMessage());

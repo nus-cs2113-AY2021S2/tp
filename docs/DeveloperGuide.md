@@ -34,8 +34,9 @@ Cons: Only highly effective when limited to use of one user. <br/>
 
 ### Daily route planning when daily schedule is input
 ####Current Implementation
-The current implementation is facilitated by `DailyRoute` subclass, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` subclass provides. </br>
+The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
 `AddDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
+`DaySchedulePair` class is implemented to act as a pair between a day input String and schedule ArrayList.
 Additionally, they implement the following operations:
 
 `addDailyRoute(String ,ArrayList<String>)` — Maps the inputted day string to the inputted ArrayList of the schedule of the day in a hashmap . <br />
@@ -47,18 +48,51 @@ Step 1. The user launches the application.<br />
 Step 2. The user executes `add day` command. UI will then prompt the user `Enter the day:`  to input a day. <br /> The UI parser will then check if the inputted day is valid and throw an exception if it is not. <br />
 Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
 Step 4. Step 3 is looped until the word `END` is input. <br /> 
-Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> This is done using an AbstractMap which pairs the Day string and Schedule ArrayList together. <br />
-Step 6. This AbstractMap pair is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
+Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> This is done the `DaySchedulePair` which pairs the Day string and Schedule ArrayList together. <br />
+Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
 
 
+### Finding the Shortest Route
+####Current Implementation
+
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map` and `Block` class to return the 
+
+which calls the `Router` class to execute the routing algorithm.<br /> 
 
 
+Given below is an example scenario of how the routing algorithm functions.
 
+###[Proposed] Custom aliases feature
+####Proposed Implementation
+The proposed custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
 
+The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` classes extends the `Command` class. These command classes contain the respective `execute` functions for adding, viewing and deleting the user's custom aliases.
 
+The `Storage` class has the feature to save the custom aliases into a local file so that users can load back their custom alias names when restarting the app.
 
+Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
+>>>>>>> 0cdea5e12cd6ca39621c809264486a14d423191e
 
+Step 1. The user launches the application for the first time. If there is a storage file with pre-exisiting alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data and an empty hashmap if it does not exist.  
 
+Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. The new command will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
+
+Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
+
+Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
+
+Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and `Got it! Successfully deleted ALIASTOREMOVE from the aliases` will be displayed to the user.  
+
+Step 6. The user executes `bye` and exits the app. This will invoke the instance of the `Storage` class which will convert the hashmap into the text file format and append to the text file to save the alias data locally.    
+
+#### Design Consideration
+Alternative 1 (current choice): Each command to add, view and delete are implemented using separate classes.  
+Pros: Easy to understand and each command is standalone.  
+Cons: Might have to repeat some code fragments.  
+
+Alternative 2: Place all commands (add, view, delete) as functions in 1 command class.  
+Pros: Lesser code to be written and hashmap can be shared by the 3 commands in 1 class.  
+Cons: Might be confusing since there is less distinction between each command.
 
 ### Target user profile
 
