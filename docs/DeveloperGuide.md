@@ -55,12 +55,16 @@ Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to 
 ### Finding the Shortest Route
 ####Current Implementation
 
-The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map` and `Block` class to return the 
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map`, `Block`, and `BlockAlias` class to return the shortest path.
 
-which calls the `Router` class to execute the routing algorithm.<br /> 
-
+The `GoCommand` class extends the `Command` class and overrides the `execute` method to run the routing algorithm.
 
 Given below is an example scenario of how the routing algorithm functions.
+
+Step 1. User executes `Gocommand` and the `UiManager` reads in the starting location and destination.<br />
+Step 2. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search.<br />
+Step 3. The `UiManager` will then show the shortest route to the user through `showToUser()` method.<br />
+
 
 ###[Proposed] Custom aliases feature
 ####Proposed Implementation
