@@ -11,6 +11,7 @@ public class Duke {
     private History history;
     private NotesManager notesManager;
     private DailyRoute dailyroute;
+    private FavouriteLocation favouriteLocation;
 
 
     public static void main(String[] args) {
@@ -23,6 +24,7 @@ public class Duke {
         this.history = new History();
         this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
+        this.favouriteLocation = new FavouriteLocation();
         ui.showLogo();
         ui.showGreetMessage();
         runCommandLoopUntilByeCommand();
