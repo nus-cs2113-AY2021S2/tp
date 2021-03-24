@@ -159,12 +159,13 @@ The task they select will then be deleted from the `ArrayList`.
 The `Message` that the user inputted upon creation of this particular task will then be printed out. 
 
 ### 3.12 Add Zoom Link 
-Given below is the sequence diagram for the feature:
-![Diagram](diagrams/addZoomLink.png)
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/addZoomLink.png)  
 
 ### 3.13 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an existing module.
 
+![Diagram](diagrams/addComponent.png)  
 How the feature works:  
 The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon expected user input to add a new component to a module.  
 
@@ -177,7 +178,13 @@ Here, there are two possible routes:
 Assuming the first route is well executed,
 the component (and its weightage) is stored in a Hashtable format in the `Module` object specified by the user previously*.
 
+#### View Module Components
+How the feature works:  
+The feature is an extension of the `Component` feature.
 
+It allows user to view all the module components under a module specified by the user input.
+
+Improvement: the total weightage (in whole numbers) of the module should not exceed 100. 
 
 
 ---

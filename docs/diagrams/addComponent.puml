@@ -1,0 +1,22 @@
+@startuml
+participant Duke
+Duke -> ModuleInfo : execute()
+activate ModuleInfo
+ModuleInfo -> Component : getComponent()
+activate Component
+Component -> Component : addComponent()
+activate Component
+Component -> Ui : readCommand()
+activate Ui
+Ui --> Component : command
+deactivate Ui
+
+Component -> Module : setComponent()
+activate Module
+Module --> ModuleInfo
+deactivate Module
+deactivate Component
+deactivate Component
+
+return
+@enduml
