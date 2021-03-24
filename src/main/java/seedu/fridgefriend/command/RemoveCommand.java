@@ -98,7 +98,7 @@ public class RemoveCommand extends Command {
         FoodCategory foodCategory = foodToBeEditted.getCategory();
         if (fridge.isRunningOut(foodCategory)) {
             int totalQuantity = fridge.getTotalQuantity(foodCategory);
-            this.runningOutMessage = "\nWARNING! You are running low on" + foodCategory.toString()
+            this.runningOutMessage = "\nWARNING! You are running low on " + foodCategory.toString()
                     + "\nTotal " + foodCategory.toString() + " quantity: " + totalQuantity;
         }
     }
