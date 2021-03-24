@@ -46,6 +46,10 @@ public enum FoodCategory {
         }
     }
 
+    public static boolean isValidCategory(String line) {
+        return FoodCategory.contains(line.toUpperCase());
+    }
+
     public static int getMinimumQuantity(FoodCategory foodCategory) {
         assert foodCategory != null : "foodCategory cannot be null";
         switch (foodCategory) {
