@@ -15,15 +15,11 @@ public class NurseScheduleUI extends UI {
 
         String[] scheduleInput = new String[3];
         System.out.print("Nurse ID: ");
-        System.out.println("line 1");
         scheduleInput[0] = abortEnabledScanInput();
-        System.out.println("line 2");
         System.out.print("Patient ID: ");
         scheduleInput[1] = abortEnabledScanInput();
-        System.out.println("line 3");
         System.out.print("Date: ");
         scheduleInput[2] = abortEnabledScanInput();
-        System.out.println("line 4");
 
         printAddedSchedule(scheduleInput[0], NurseSchedulesParser.formatDate(scheduleInput[2]));
 
