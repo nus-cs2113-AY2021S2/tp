@@ -6,14 +6,17 @@
 
 [2. Design](#2-design)  
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#21-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#22-ui-class)
+&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#22-ui-class)  
 
 [3. Implementation](#3-implementation)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.08 Add New Review](#308-add-new-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.09 Delete a Review](#309-delete-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.10 Add New Task](#310-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.11 Delete a Task](#311-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.11 Add Zoom Link](#312-add-zoom-link)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.12 Add Zoom Link](#312-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.13 Add Module Components](#313-add-module-components)
+
+
 
 
 [4. Product scope](#4-product-scope)    
@@ -158,6 +161,24 @@ The `Message` that the user inputted upon creation of this particular task will 
 ### 3.12 Add Zoom Link 
 Given below is the sequence diagram for the feature:
 ![Diagram](diagrams/addZoomLink.png)
+
+### 3.13 Add Module Components
+This feature allows user to add user-defined module components and its related weightage for an existing module.
+
+How the feature works:  
+The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon expected user input to add a new component to a module.  
+
+First, a call to `Ui` is performed to find out what module* the user wishes to add a component (and its weightage).
+Secondly, a `for` loop is run to find whether the module entered by the user is stored in the system.  
+Here, there are two possible routes:  
+- If the module is present, a call to `Ui` is performed to find out the component name and the associated weightage for that component.
+- If the module is not present, the call to `addComponent()` returns to `ModuleInfo` class (main class for module-related commands).
+
+Assuming the first route is well executed,
+the component (and its weightage) is stored in a Hashtable format in the `Module` object specified by the user previously*.
+
+
+
 
 ---
 ## 4. Product scope
