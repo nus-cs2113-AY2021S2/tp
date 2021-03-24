@@ -146,7 +146,10 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
    * StringUtils.endsWithAny()   - detection of end option with non-fixed order.
    * StringUtils.indexOfAny()    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
-5. getParseInput should always return a new ArrayList<String> per new input.
+5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
+   the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
+   pairwise logic.
+6. getParseInput should always return a new ArrayList<String> per new input.
 
 
 ### 3.4 CommandHandler Component
@@ -194,16 +197,41 @@ Some sequence diagrams, etc...
 
 ## Appendix A: Product Scope
 
----
-
 ### A.1 Target User Profile
 
-* prefers typing in CLI instead of GUI interactions
-* ...
+* Computing students
+* Background in CLI interface
+* Prefer typing in CLI over traditional GUI clicking
+* Need to track expenditure and saving
+* Borrowed some money to their friends
+* Need to track borrowings and loans 
+* Good with typing
 
 ### A.2 Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+#### Problem Identification
+Problems faced by students that Finux aim to assist with.
+> * [Problem] Wastage of time due to connection/latency issues went accessing finance tracking website.
+> * [Solution] Use a local based application.
+
+> * [Problem] Hassle to use different applications to keep track of various stuff.
+> * [Solution] Provide an integrated platform to record any expenses, loans, or saving.
+
+> * [Problem] Disorganization issues arising from keep multiple tracking applications.
+> * [Solution] Provide the option to view each category of records within an integrated platform.
+
+> * [Problem] Spending time to gauge whether to borrow money to a friend.
+> * [Solution] Provide a soft gauge through credit score indicators.
+
+#### Value Adding
+
+Finux aims to integrate the process of managing and keeping track of finance movements without the need to access online
+websites and using different applications to keep track various movement such as loans and expenditure. Finux
+provide an all-in-one platform for students who are usually in front of their computers. The student's expertises in 
+coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
+
+> ❗ **CAUTION:** Finux does not provide any finance advise.
+
 
 ## Appendix B: User Stories
 
