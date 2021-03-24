@@ -18,7 +18,7 @@ public class ShowDailyRouteCommand extends Command {
     @Override
     public void execute(Router router, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute) {
-        String day = null;
+        String day;
         try {
             day = ui.getValidDay();
             assert day != null;
