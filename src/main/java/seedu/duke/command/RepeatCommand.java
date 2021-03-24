@@ -2,8 +2,9 @@ package seedu.duke.command;
 
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
-import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
+import seedu.duke.routing.Router;
+
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
@@ -16,7 +17,7 @@ public class RepeatCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute) {
+                        DailyRoute dailyRoute) {
         ui.showHistory(history);
         try {
             int entry = ui.getRepeatEntry();

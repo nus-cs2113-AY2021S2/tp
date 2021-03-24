@@ -20,17 +20,18 @@ import static seedu.duke.NotesCommandParser.noteIndexInList;
 
 public class NotesManager {
 
-    public static final int LOCATIONS_COUNT = 25;
-    public static ArrayList<String> locationsList = new ArrayList<>(LOCATIONS_COUNT);
-    public static List<List<String>> locationNotesList = new ArrayList<>(LOCATIONS_COUNT);
-    public static int[] locationNotesCountList = new int[LOCATIONS_COUNT];
+    public static final int LOCATIONS_COUNT = 25; //useless
+    public static ArrayList<String> locationsList = new ArrayList<>(LOCATIONS_COUNT); //useless
+    public static List<List<String>> locationNotesList = new ArrayList<>(LOCATIONS_COUNT); //scaled - useless
+    public static int[] locationNotesCountList = new int[LOCATIONS_COUNT]; //scaled - useless
 
+    //useless
     public NotesManager() {
         setLocationsList();
         instantiateLocationsNotesList();
         initialiseLocationNotesCountList();
     }
-
+    //useless
     public static void setLocationsList() {
         locationsList.add("E1");
         locationsList.add("E1A");
@@ -58,13 +59,14 @@ public class NotesManager {
         locationsList.add("TECHNO EDGE");
         locationsList.add("AS1");
     }
-
+    //useless
     public static void instantiateLocationsNotesList() {
         for (int i = 0; i < LOCATIONS_COUNT; i++)  {
             locationNotesList.add(new ArrayList<>());
         }
     }
 
+    //useless
     public static void initialiseLocationNotesCountList() {
         for (int i = 0; i < LOCATIONS_COUNT; i++) {
             locationNotesCountList[i] = 0;
@@ -77,6 +79,7 @@ public class NotesManager {
         }
     }
 
+    //d
     public static void parseAddNotesCommandAndAddNotes(String input) {
         try {
             parseAddNotesCommand(input);
@@ -98,6 +101,7 @@ public class NotesManager {
         }
     }
 
+    //revamp - useless
     public static void addNotes() {
         int locationIndex = locationsList.indexOf(location);
 
@@ -106,7 +110,7 @@ public class NotesManager {
         System.out.println("This note has been added and tagged to " + location + ":");
         System.out.println("\t" + note);
     }
-
+    //d
     public static void parseDeleteNotesCommandAndDeleteNotes(String input) {
         try {
             parseDeleteNotesCommand(input);
@@ -133,6 +137,7 @@ public class NotesManager {
         }
     }
 
+    //revamp - useless
     public static void deleteNotes() {
         int locationIndex = locationsList.indexOf(location);
 
@@ -143,7 +148,7 @@ public class NotesManager {
         System.out.println("This note tagged to " + location + " has been deleted:");
         System.out.println("\t" + deletedNote);
     }
-
+    //to be edit
     public static void parseListNotesCommandAndListNotes(String input) {
         try {
             parseListNotesCommand(input);
@@ -160,7 +165,7 @@ public class NotesManager {
             printListOfLocations();
         }
     }
-
+    //revamp - useless
     public static void listNotes() {
         for (int i = 1; i <= locationNotesCountList[locationsList.indexOf(location)]; i++) {
             int currentNoteIndex = i;

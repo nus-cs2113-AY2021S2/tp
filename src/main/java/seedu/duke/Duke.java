@@ -9,7 +9,6 @@ public class Duke {
     private Router router;
     private UiManager ui;
     private History history;
-    private NotesManager notesManager;
     private DailyRoute dailyroute;
 
 
@@ -21,7 +20,6 @@ public class Duke {
         this.router = new Router();
         this.ui = new UiManager();
         this.history = new History();
-        this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
         ui.showLogo();
         ui.showGreetMessage();
@@ -34,7 +32,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(router, ui, history, notesManager, dailyroute);
+                command.execute(router, ui, history, dailyroute);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());

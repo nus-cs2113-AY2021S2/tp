@@ -5,7 +5,7 @@ import seedu.duke.Block;
 import java.util.HashMap;
 
 public class Map {
-    private HashMap<String, Block> map;
+    public static HashMap<String, Block> map;
 
     public Map() {
         this.map = new HashMap<>();

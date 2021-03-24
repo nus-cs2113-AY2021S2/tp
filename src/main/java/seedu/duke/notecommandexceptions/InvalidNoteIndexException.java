@@ -1,7 +1,13 @@
 package seedu.duke.notecommandexceptions;
 
-import java.io.IOException;
+import static seedu.duke.NotesCommandParser.location;
+import static seedu.duke.routing.Map.map;
+public class InvalidNoteIndexException extends NotesException {
+//"Please enter a number that is positive and not more than " + block.count
+    @Override
+    public String getMessage() {
 
-public class InvalidNoteIndexException extends IOException {
-
+        return "Please enter a number that is positive and not more than "
+                + map.get(location).getNotesCount();
+    }
 }

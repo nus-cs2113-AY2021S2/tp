@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static seedu.duke.routing.Map.map;
+
 public class UiManager {
     private static final String LINE_SEPARATOR = System.lineSeparator();
     private static final String DIVIDER = "--------------------------------------------------------------------------";
@@ -122,6 +124,16 @@ public class UiManager {
         }
     }
 
+    public static String getListOfLocations() {
+        return "E1  E1A  E2  E2A  E3  E3A  E4  E4A  E5" +
+                System.lineSeparator() +
+                "E6  E7  EA  EW1  EW1A EW2  LT1  LT2  LT5  LT6" +
+                System.lineSeparator() +
+                "AS1 LT7  LT7A IT  T-LAB"  +
+                System.lineSeparator() +
+                "TECHNO EDGE";
+    }
+
     public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() 
             throws InvalidDayException, InvalidBlockException {
         out.println("Enter the day: ");
@@ -166,4 +178,5 @@ public class UiManager {
         checkValidDay(day);
         return day;
     }
+
 }

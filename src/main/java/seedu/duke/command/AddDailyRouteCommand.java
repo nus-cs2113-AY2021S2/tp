@@ -2,11 +2,11 @@ package seedu.duke.command;
 
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
-import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
+import seedu.duke.routing.Router;
+
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
-import seedu.duke.routing.Router;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class AddDailyRouteCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute) {
+                        DailyRoute dailyRoute) {
         AbstractMap.SimpleEntry<String, ArrayList<String>> dayAndRoute;
         try {
             dayAndRoute = ui.getDailyRouteInfo();
