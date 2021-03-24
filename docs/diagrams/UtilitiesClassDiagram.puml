@@ -110,11 +110,11 @@ Ui -down[hidden]-> Storage
 Command -right[hidden]-> Exception
 Exception -right[hidden]-> Food
 Ui -right-> FridgeFriend
-Storage -right-> DataFiles
+Storage -right-> "creates" DataFiles
 DataFiles -up[hidden]-> FridgeFriend
 
 
-User --> Ui
+User --> "interacts" Ui
 Storage .down.> Food
 Storage .down.> Exception
 Storage ..> Ui
@@ -123,6 +123,6 @@ Parser .down.> Exception
 Parser .down.> Command
 FridgeFriend --> Storage
 
-'note right of LoggerHandler : Used by all other classes\nfor logging purposes
+note top of LoggerHandler : Used by all other classes\nfor logging purposes
 
 @enduml
