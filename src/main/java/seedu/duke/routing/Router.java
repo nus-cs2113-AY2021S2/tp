@@ -10,11 +10,15 @@ import java.util.LinkedList;
 
 public class Router {
     private Map nusMap;
-    private final BlockAlias aliasMap;
+    private BlockAlias aliasMap;
 
     public Router(BlockAlias blockAlias) {
         this.nusMap = new Map();
         this.aliasMap = blockAlias;
+    }
+
+    public Router() {
+        this.nusMap = new Map();
     }
 
     public String execute(String from, String to) throws InvalidBlockException {
