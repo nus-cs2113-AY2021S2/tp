@@ -52,7 +52,15 @@ Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> Th
 Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
 
 
+### Finding the Shortest Route
+####Current Implementation
 
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map` and `Block` class to return the 
+
+which calls the `Router` class to execute the routing algorithm.<br /> 
+
+
+Given below is an example scenario of how the routing algorithm functions.
 
 
 
