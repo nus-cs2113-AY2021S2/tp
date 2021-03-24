@@ -49,7 +49,7 @@ public class TextUi {
     }
 
     public static void showParameters(HashMap<QueryKey, String> inputs) {
-            System.out.print("Parameters:\n" + inputs + "\n");
+        System.out.print("Parameters:\n" + inputs + "\n");
     }
 
     public static void showInvalidFilter(String criteria, InvalidFilterException e) {
@@ -61,23 +61,12 @@ public class TextUi {
     }
 
     public static void showUnits(HashMap<Integer, Unit> units) {
-        Object[] columnNames = {
-                "Index",
-                "Address",
-                "Type",
-                "Lease",
-                "Price"
-        };
+        Object[] columnNames = {"Index", "Address", "Type", "Lease", "Price"};
         System.out.format("%5s%24s%12s%24s%12s\n", columnNames);
         int i = 0;
-        for(HashMap.Entry<Integer, Unit> mapElement : units.entrySet()) {
-            Object[] unitData = {
-                    ++i,
-                    (mapElement.getValue()).getAddress(),
-                    (mapElement.getValue()).getType(),
-                    (mapElement.getValue()).getLease(),
-                    "$" + (mapElement.getValue()).getPrice(),
-            };
+        for (HashMap.Entry<Integer, Unit> mapElement : units.entrySet()) {
+            Object[] unitData = {++i, (mapElement.getValue()).getAddress(), (mapElement.getValue()).getType(),
+                    (mapElement.getValue()).getLease(), "$" + (mapElement.getValue()).getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
             //System.out.println((mapElement.getValue()).toString());
         }
