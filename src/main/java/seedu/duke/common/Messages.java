@@ -77,7 +77,7 @@ public class Messages {
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
 
     public static final String MESSAGE_LESSON_TO_EDIT = "Which lesson would you like to edit?";
-    public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which field would you like to edit? (Select 1-4):\n";
+    public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which field would you like to edit? (eg. 1 2 4):";
     public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new [%s]:";
 
     public static final String MESSAGE_TEACHER_NAME_UPDATED = "Teaching staff updated to: %s";
