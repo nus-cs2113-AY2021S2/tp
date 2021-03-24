@@ -32,9 +32,6 @@ public class Duke {
         this.dailyroute = new DailyRoute();
         this.blockAlias = new BlockAlias();
         this.favouriteLocation = new FavouriteLocation();
-        ui.showLogo();
-        ui.showGreetMessage();
-        runCommandLoopUntilByeCommand();
     }
 
     public void runCommandLoopUntilByeCommand() {
