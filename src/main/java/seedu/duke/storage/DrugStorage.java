@@ -42,7 +42,7 @@ public class DrugStorage {
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" | ");
-            Drugs.add(new Drug(part[0], part[1], part[2]));
+            Drugs.add(new Drug(part[0], Double.parseDouble(part[1]), part[2]));
         }
         return Drugs;
     }

@@ -1,5 +1,8 @@
 package seedu.drugs;
 
+import seedu.duke.exceptions.drugexceptions.WrongInputException;
+import seedu.duke.ui.DrugUI;
+
 import java.util.Scanner;
 
 public class Parser {
@@ -11,25 +14,45 @@ public class Parser {
     }
 
     public void parseMethod() {
-        System.out.print("Drug --> ");
+        DrugUI.drugMenuPrompt();
         Scanner myObj = new Scanner(System.in);
         String command = myObj.nextLine();
-        while (!command.equals("bye")) {
-            if (command.equals("list")) {
-                drugAction.printList();
-            } else if (command.contains("add")) {
-                drugAction.addDrugs(command);
-            } else if (command.contains("delete")) {
-                drugAction.deleteDrugs(command);
-            } else if (command.contains("help")) {
-                drugAction.printHelpMessage();
-            } else if (command.contains("return")) {
-                return;
-            } else {
-                System.out.println("There is no such action! Please only enter the following: ");
-                System.out.println("1) help\r\n2) add <...>\r\n3) list\r\n4) delete <...>\r\n5) return");
+        while (!command.equals("return")) {
+            try {
+                switch (command) {
+                    case "list":
+                        drugAction.printList();
+                        break;
+                    case "add":
+                        Scanner addIn = new Scanner(System.in);
+                        DrugUI.drugNamePrompt();
+                        String name = addIn.nextLine();
+                        DrugUI.drugPricePrompt();
+                        String price = addIn.nextLine();
+                        DrugUI.drugQuantityPrompt();
+                        String quantity = addIn.nextLine();
+                        drugAction.addDrugs(name, price, quantity);
+                        break;
+                    case "delete":
+                        Scanner deleteIn = new Scanner(System.in);
+                        drugAction.checkDrugsSize();
+                        DrugUI.drugNamePrompt();
+                        name = deleteIn.nextLine();
+                        drugAction.deleteDrugs(name);
+                        break;
+                    case "help":
+                        DrugUI.printDrugHelpList();
+                        break;
+                    default:
+                        DrugUI.invalidCommandMessage();
+                }
+                DrugUI.drugMenuPrompt();
+                command = myObj.nextLine();
+            } catch (WrongInputException w) {
+                w.getError(command);
+                DrugUI.drugMenuPrompt();
+                command = myObj.nextLine();
             }
-            command = myObj.nextLine();
         }
     }
 }

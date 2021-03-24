@@ -2,10 +2,10 @@ package seedu.drugs;
 
 public class Drug {
     protected String name;
-    protected String price;
+    protected Double price;
     protected String quantity;
 
-    public Drug(String name, String price, String quantity) {
+    public Drug(String name, Double price, String quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -16,7 +16,7 @@ public class Drug {
         return this.name;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
