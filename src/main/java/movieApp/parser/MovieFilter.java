@@ -1,10 +1,10 @@
-package movieApp;
-
+package movieApp.parser;
 
 import java.util.*;
-import movieApp.MainMenu;
-import movieApp.Movie.movieStatus;
 
+import movieApp.movie.Cineplex;
+import movieApp.movie.Movie;
+import movieApp.storage.Database;
 
 public class MovieFilter {
 

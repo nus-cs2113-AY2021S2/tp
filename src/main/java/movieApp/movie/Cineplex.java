@@ -1,4 +1,6 @@
-package movieApp;
+package movieApp.movie;
+
+import movieApp.movie.Cinema;
 
 import java.io.Serializable;
 

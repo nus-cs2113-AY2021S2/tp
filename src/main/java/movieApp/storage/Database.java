@@ -1,13 +1,17 @@
-package movieApp;
+package movieApp.storage;
+
+import movieApp.movie.Cineplex;
+import movieApp.movie.Movie;
+import movieApp.movie.Showtimes;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
-    static ArrayList<Movie> MovieDatabase;
-    static ArrayList<Cineplex> CineplexDatabase;
-    static ArrayList<Showtimes> ShowtimesDatabase;
+    public static ArrayList<Movie> MovieDatabase;
+    public static ArrayList<Cineplex> CineplexDatabase;
+    public static ArrayList<Showtimes> ShowtimesDatabase;
 
     public Database() throws Exception {
         importDatabase();

@@ -1,5 +1,9 @@
-package movieApp;
+package movieApp.command;
 
+import movieApp.movie.Cineplex;
+import movieApp.movie.Movie;
+import movieApp.movie.Showtimes;
+import movieApp.storage.Database;
 
 import java.util.*;
 
@@ -25,7 +29,7 @@ public class MovieMenu {
 	}
 
 
-	public static void bookTicket(ArrayList<Movie> MovieDatabase ,ArrayList<Showtimes> ShowtimeDatabase, ArrayList<Cineplex> CineplexDatabase, int movieID) {
+	public static void bookTicket(ArrayList<Movie> MovieDatabase , ArrayList<Showtimes> ShowtimeDatabase, ArrayList<Cineplex> CineplexDatabase, int movieID) {
 		String ms = "NOT FOUND";
 		for (Movie movie : MovieDatabase) {
 			if (movie.getMovieID() == movieID) {

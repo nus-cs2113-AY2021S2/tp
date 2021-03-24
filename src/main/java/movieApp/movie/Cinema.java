@@ -1,4 +1,6 @@
-package movieApp;
+package movieApp.movie;
+
+import movieApp.Seat;
 
 import java.io.Serializable;
 

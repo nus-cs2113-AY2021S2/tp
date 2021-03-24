@@ -1,5 +1,9 @@
-package movieApp;
+package movieApp.movie;
 
+
+import movieApp.Seat;
+import movieApp.movie.Cinema;
+import movieApp.movie.Movie;
 
 import java.io.Serializable;
 import java.util.Calendar;
