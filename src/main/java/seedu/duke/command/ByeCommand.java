@@ -6,6 +6,7 @@ import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
 
 public class ByeCommand extends Command {
     public ByeCommand(String userInput) {
@@ -19,7 +20,8 @@ public class ByeCommand extends Command {
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
+                        NotesManager notesManager, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         ui.showByeMessage();
     }
 }

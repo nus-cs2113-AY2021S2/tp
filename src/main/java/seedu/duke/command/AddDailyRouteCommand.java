@@ -6,6 +6,7 @@ import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.DaySchedulePair;
@@ -17,7 +18,8 @@ public class AddDailyRouteCommand extends Command {
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
+                        NotesManager notesManager, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         DaySchedulePair dayAndRoute;
         try {
             dayAndRoute = ui.getDailyRouteInfo();

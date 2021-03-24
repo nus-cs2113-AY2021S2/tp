@@ -6,6 +6,7 @@ import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
 import seedu.duke.Map;
+import seedu.duke.FavouriteLocation;
 import seedu.duke.exception.InvalidAliasException;
 
 public class DeleteCustomAliasCommand extends Command {
@@ -15,7 +16,8 @@ public class DeleteCustomAliasCommand extends Command {
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
+                        NotesManager notesManager, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
             String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
             blockAlias.getAliasMap().remove(aliasToDelete);
