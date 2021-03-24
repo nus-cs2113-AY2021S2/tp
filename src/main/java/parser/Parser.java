@@ -1,6 +1,17 @@
 package parser;
 
-import command.*;
+
+import command.Command;
+import command.HomeCommand;
+import command.ResetStoreCommand;
+import command.DisplayMenusCommand;
+import command.AddReviewCommand;
+import command.ExitCommand;
+import command.ReadReviewsCommand;
+import command.DisplayCanteensCommand;
+import command.AddCanteenCommand;
+import command.AddStoreCommand;
+import command.DeleteCanteenCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import reviews.Review;
