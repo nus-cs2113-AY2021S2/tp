@@ -16,6 +16,7 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
+    private ParserHandler parserHandler;
     private BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans;
 
     /**
@@ -49,6 +50,8 @@ public class Duke {
         try {
             ui = new Ui();
             storage = new Storage();
+            records = new RecordList();
+            parserHandler = new ParserHandler();
             storage.loadFile();
             records = new RecordList(storage.getRecordListData());
             borrowersCreditScoreForReturnedLoans = new BorrowersCreditScoreForReturnedLoans(
@@ -68,7 +71,7 @@ public class Duke {
         String rawInput;
         do {
             rawInput = ui.getUserInput();
-            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
             command = CommandHandler.parseCommand(parsedStringList, records);
             if (command != null) {
