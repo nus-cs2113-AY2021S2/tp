@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
@@ -16,7 +17,7 @@ public class RepeatCommand extends Command {
 
     @Override
     public void execute(Router router, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute) {
+                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         ui.showHistory(history);
         try {
             int entry = ui.getRepeatEntry();

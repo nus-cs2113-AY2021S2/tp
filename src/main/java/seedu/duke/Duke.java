@@ -11,18 +11,19 @@ public class Duke {
     private History history;
     private NotesManager notesManager;
     private DailyRoute dailyroute;
-
+    private BlockAlias blockAlias;
 
     public static void main(String[] args) {
         new Duke().run();
     }
 
     private void run() {
-        this.router = new Router();
         this.ui = new UiManager();
         this.history = new History();
         this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
+        this.blockAlias = new BlockAlias();
+        this.router = new Router(blockAlias);
         ui.showLogo();
         ui.showGreetMessage();
         runCommandLoopUntilByeCommand();
@@ -34,7 +35,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(router, ui, history, notesManager, dailyroute);
+                command.execute(router, ui, history, notesManager, dailyroute, blockAlias);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());
