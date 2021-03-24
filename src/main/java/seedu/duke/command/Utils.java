@@ -6,7 +6,10 @@ import seedu.duke.exception.CommandException;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -29,6 +32,15 @@ public class Utils {
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
     private static final String ERROR_WRONG_HELP_TYPE = "invalid help type: ";
     private static final int VALUE_INDEX = 1;
+    private static final long MAX_CREDIT_SCORE = 100;
+    private static final long MIN_CREDIT_SCORE = 0;
+    private static final long RETURN_REWARD_FIRST_WEEK = 5;
+    private static final long RETURN_PENALTY_SECOND_WEEK = -10;
+    private static final long RETURN_PENALTY_FORTH_WEEK = -20;
+    private static final long RETURN_PENALTY_FORTH_WEEK_ONWARDS = -50;
+    private static final long FIRST_WEEK = 7;
+    private static final long SECOND_WEEK = 14;
+    private static final long FORTH_WEEK = 28;
 
     /**
      * Checks {@code value} to see if it is not {@code null} and not empty.
@@ -267,5 +279,32 @@ public class Utils {
     public static boolean isOption(String argument) {
         assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
+    }
+
+    // NOTE: To be committed by Jason
+    public static long getDaysDifference(LocalDate issueDate, LocalDate returnDate) {
+        return 10;
+    }
+
+    public static int computeCreditScore(long daysDifference, int currentCreditScore, boolean isReturn) {
+        long computedCreditScore = currentCreditScore;
+        if (daysDifference < FIRST_WEEK) {
+            if (isReturn) {
+                computedCreditScore += RETURN_REWARD_FIRST_WEEK;
+            }
+        } else if (daysDifference <= SECOND_WEEK) {
+            computedCreditScore += RETURN_PENALTY_SECOND_WEEK;
+        } else if (daysDifference <= FORTH_WEEK) {
+            computedCreditScore += RETURN_PENALTY_FORTH_WEEK;
+        } else {
+            computedCreditScore += RETURN_PENALTY_FORTH_WEEK_ONWARDS;
+        }
+
+        if (computedCreditScore > MAX_CREDIT_SCORE) {
+            computedCreditScore = MAX_CREDIT_SCORE;
+        } else if (computedCreditScore < MIN_CREDIT_SCORE) {
+            computedCreditScore = MIN_CREDIT_SCORE;
+        }
+        return (int) computedCreditScore;
     }
 }

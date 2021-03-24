@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam classAttributeIconSize 0
+
+class ParserHandler {
+    -startOptionArray: String[]
+    -endOptionArray: String[]
+    -middleOptionArray: String[]
+    +ParserHandler()
+    +getParseInput(userInput: String): ArrayList<String>
+    -startExtraction(extracted: ArrayList<String>, trimmedInput: String): ArrayList<String>
+    -extractSubsequentPart(extracted: ArrayList<String>, trimmedInput: String): ArrayList<String>
+    -extractFinalPart(extracted: ArrayList<String>, trimmedInput: String): ArrayList<String>
+    -checkFirstBlock(extracted: ArrayList<String>): ArrayList<String>
+    -checkOptionStartWith(input: String): boolean
+    -checkOptionStartWith(input: String): boolean
+    -getNextOptionIndex(leftOverString: String): int
+}
+
+class Duke {
+
+}
+
+ParserHandler"1" <-- Duke
+
+@enduml
