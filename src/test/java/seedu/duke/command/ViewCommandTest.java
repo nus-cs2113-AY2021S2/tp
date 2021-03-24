@@ -12,11 +12,13 @@ import seedu.duke.ui.Ui;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.common.Validators.validateDate;
 
 class ViewCommandTest {
+    private ParserHandler parserHandler;
 
     @Test
     public void executeViewExpense_viewExpenseCmd_success() {
@@ -46,16 +48,19 @@ class ViewCommandTest {
                                 String viewCmdStr, String expectedOutput) {
         Ui ui = new Ui();
         Storage storage = new Storage();
+        ParserHandler parserHandler = new ParserHandler();
+        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
+                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
 
-        Command command = CommandHandler.parseCommand(ParserHandler.getParseInput(viewCmdStr), records);
+        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(viewCmdStr), records);
         assertTrue(command instanceof ViewCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ViewCommand.", viewCmdTestName));
 
         PrintStream originalOut = System.out;
         ByteArrayOutputStream viewCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(viewCmdBos));
-        command.execute(records, ui, storage);
+        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
         System.setOut(originalOut);
         assertTrue(viewCmdBos.toString().equals(expectedOutput), String.format("Failed test '%s', wrong output.",
                 viewCmdTestName));
@@ -68,9 +73,9 @@ class ViewCommandTest {
             records.addRecord(new Expense(new BigDecimal("10.88"), validateDate("2020/01/02"), "phone bills"));
         }
 
-        records.addRecord(new Loan(new BigDecimal("10.601"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("10.601"), validateDate("2020/01/01"), "loan to bob", "bob"));
         if (viewCmdTypeToTest.equals("loan")) {
-            records.addRecord(new Loan(new BigDecimal("3.755"), validateDate("2020/01/02"), "loan to alice"));
+            records.addRecord(new Loan(new BigDecimal("3.755"), validateDate("2020/01/02"), "loan to alice", "alice"));
         }
 
         records.addRecord(new Saving(new BigDecimal("9876543210.54"), validateDate("2020/01/01"), "red packet"));
