@@ -59,6 +59,6 @@ public class StaffStorage {
     }
 
     public static String formWriteData(Staff staff) {
-        return (staff.getId() + "|" + staff.getName() + "|" + staff.getAge() + "|" + staff.getSpecialisation() + "\n");
+        return (staff.getId() + " | " + staff.getName() + " | " + staff.getAge() + " | " + staff.getSpecialisation() + "\n");
     }
 }
