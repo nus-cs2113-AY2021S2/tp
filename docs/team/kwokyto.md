@@ -15,7 +15,7 @@ It is written in Java, and has more than 1.5kLoC.
 
 Given below are my contributions to the project
 
-### Added New Features
+### New Features
 
 - Added the ability to display a help message
   - What it does: Provides the user with a list of available commands and formats.
@@ -24,9 +24,23 @@ Given below are my contributions to the project
 
 - Added the ability to search for items that are expiring
   - What it does: Allows the user to get a list of all food items that are going to expire in a week.
-  - Justification: Improves the product signicantly because a user can effectively track the status of
-  all food items in the fridge with a single command.
+  - Justification: Improves the product signicantly because a user can effectively track the status of all food items in the fridge with a single command.
   - Pull request: ([#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66))
+
+- Added a warning feature for food that is running low
+  - What it does: Sends the user a warning if a removal of a food item brings the total food quanitity of that category below a specified limit.
+  - Justification: Allows the user to better track the relative quantity of food in the fridge.
+  - Pull request: ([#112](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/112))
+
+- Added the ability to list all food categories that are running low
+  - What it does: Provides the user with a list of food categories that have food quanities below the specified limit
+  - Justification: Allows the user to easily create a shopping list of items based on food categories
+  - Pull request: ([#114](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/114))
+
+- Added the ability for users to specify the minimum quantity of food for each category
+  - What it does: Allows the user to modify the lower quantity limit for each category
+  - Justification: Allows for personalisation of fridge, since different users have differing requirements and preferences for the quantity of each food category
+  - Pull request: ([#115](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/115))
 
 - Code contributed: [RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto)
 
@@ -61,7 +75,9 @@ Given below are my contributions to the project
     [#54](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/54)
     [#56](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/56)
     [#61](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/61)
-    [#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))
+    [#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93)
+    [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108)
+    [#110](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/110))
 - Contributed to forum discussions (examples:
     [1](https://github.com/nus-cs2113-AY2021S2/forum/issues/45)
     [2](https://github.com/nus-cs2113-AY2021S2/forum/issues/49))
