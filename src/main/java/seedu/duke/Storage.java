@@ -1,2 +1,5 @@
-package seedu.duke;public class Storage {
+package seedu.duke;
+
+public class Storage {
+    
 }
