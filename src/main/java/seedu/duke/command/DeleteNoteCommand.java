@@ -3,7 +3,7 @@ package seedu.duke.command;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
-import seedu.duke.routing.Map;
+import seedu.duke.Map;
 import seedu.duke.UiManager;
 
 public class DeleteNoteCommand extends Command {

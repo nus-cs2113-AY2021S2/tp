@@ -4,8 +4,7 @@ import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
-import seedu.duke.routing.Map;
-import seedu.duke.routing.Router;
+import seedu.duke.Map;
 
 public class ShowHistoryCommand extends Command {
     public ShowHistoryCommand(String userInput) {

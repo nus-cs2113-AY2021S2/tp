@@ -4,7 +4,6 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
-import seedu.duke.routing.Map;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -106,19 +105,6 @@ public class UiManager {
         startAndDestination[1] = in.nextLine().toUpperCase().trim();
 
         return startAndDestination;
-    }
-
-    public void showRoute(LinkedList<Block> route) {
-        String routeAsString = "";
-        routeAsString += "Route is :";
-        for (int i = route.size() - 1; i >= 0; i--) {
-            if (i > 0) {
-                routeAsString += route.get(i).getName() + "->";
-            } else {
-                routeAsString += route.get(i).getName();
-            }
-        }
-        showToUser(routeAsString);
     }
 
     public int getEateryEntry(Block[] eateries) {

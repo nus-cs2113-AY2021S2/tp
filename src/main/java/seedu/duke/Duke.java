@@ -2,7 +2,6 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidCommandException;
-import seedu.duke.routing.Map;
 
 public class Duke {
 

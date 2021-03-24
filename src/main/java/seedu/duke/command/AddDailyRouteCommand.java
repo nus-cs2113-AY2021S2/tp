@@ -6,8 +6,7 @@ import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
-import seedu.duke.routing.Map;
-import seedu.duke.routing.Router;
+import seedu.duke.Map;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

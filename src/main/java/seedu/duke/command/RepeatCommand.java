@@ -4,8 +4,8 @@ import seedu.duke.*;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
-import seedu.duke.routing.Map;
-import seedu.duke.routing.Router;
+import seedu.duke.Map;
+import seedu.duke.Router;
 
 import java.util.LinkedList;
 
@@ -23,9 +23,9 @@ public class RepeatCommand extends Command {
             String[] pathDetails = history.getSpecificEntry(entry);
             String from = pathDetails[0];
             String to = pathDetails[1];
-            LinkedList<Block> route = new Router().execute(nusMap, from, to);
+            String route = new Router().execute(nusMap, from, to);
             history.addHistory(from, to);
-            ui.showRoute(route);
+            ui.showToUser(route);
         } catch (RepeatEntryOutOfBoundException | InvalidRepeatEntryException | InvalidBlockException e) {
             ui.showToUser(e.getMessage());
         }

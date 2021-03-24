@@ -3,8 +3,8 @@ package seedu.duke.command;
 import seedu.duke.*;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
-import seedu.duke.routing.Map;
-import seedu.duke.routing.Router;
+import seedu.duke.Map;
+import seedu.duke.Router;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -25,9 +25,8 @@ public class ShowDailyRouteCommand extends Command {
             StringBuilder dayRoute = new StringBuilder();
             for (int i = 0; i < blocks.size() - 1; i++) {
                 try {
-                    LinkedList<Block> route = new Router().execute(nusMap, blocks.get(i), blocks.get(i + 1));
-                    String routeAsString = new Router().getRouteAsString(route);
-                    dayRoute.append(routeAsString);
+                    String route = new Router().execute(nusMap, blocks.get(i), blocks.get(i + 1));
+                    dayRoute.append(route);
                     if (i < blocks.size() - 2) {
                         dayRoute.append("\n");
                     }

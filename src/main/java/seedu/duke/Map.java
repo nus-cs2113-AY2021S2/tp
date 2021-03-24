@@ -1,6 +1,4 @@
-package seedu.duke.routing;
-
-import seedu.duke.Block;
+package seedu.duke;
 
 import java.util.HashMap;
 
@@ -56,7 +54,6 @@ public class Map {
         addBlock("LT7A");
         addBlock("IT");
         addBlock("T-LAB");
-        addBlock("AS1");
         addBlock("TECHNO EDGE");
         addBlock("TECHNO EDGE CANTEEN");
         addBlock("CHEERS MINIMART");

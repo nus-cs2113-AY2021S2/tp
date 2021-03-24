@@ -4,7 +4,7 @@ import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
-import seedu.duke.routing.Map;
+import seedu.duke.Map;
 
 public class ClearHistoryCommand extends Command {
     public ClearHistoryCommand(String userInput) {
