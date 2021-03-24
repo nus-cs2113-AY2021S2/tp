@@ -29,7 +29,7 @@ public class Patient {
     }
 
     /**
-     * Initialize a patient instance with a pre-defined record list.
+     * Initialize a patient instance with a pre-defined record TreeMap.
      *
      * @param id      Patient's unique identifier
      * @param records Patient's visit record list
@@ -56,7 +56,7 @@ public class Patient {
     /**
      * Get all records associated with this patient.
      *
-     * @return All records in an ArrayList
+     * @return All records in a TreeMap, mapping consultation dates to records
      */
     public TreeMap<LocalDate, Record> getRecords() {
         return records;

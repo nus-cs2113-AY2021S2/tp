@@ -12,7 +12,7 @@ public class Record {
     protected ArrayList<String> prescriptions;
 
     /**
-     * Create a new visit record with details as a single string.
+     * Initialize a new visit record
      */
     public Record() {
         this.symptoms = new ArrayList<>();

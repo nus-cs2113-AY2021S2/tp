@@ -43,7 +43,7 @@ public class RecordCommand extends Command {
     }
 
     private LocalDate parseDate(String dateString) throws DateTimeParseException {
-        if (dateString.length() > 0) {
+        if (!dateString.isEmpty()) {
             return LocalDate.parse(dateString);
         }
         return LocalDate.now();
