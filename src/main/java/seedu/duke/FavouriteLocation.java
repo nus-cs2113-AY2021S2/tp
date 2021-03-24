@@ -16,9 +16,9 @@ public class FavouriteLocation {
 
     public void addFavouriteLocation(String venue, seedu.duke.Map nusMap) {
         try {
-            if (nusMap.getBlock(venue)==null) {
+            if (nusMap.getBlock(venue) == null) {
                 throw new NullPointerException();
-            };
+            }
             favouriteLocations.add(venue);
         } catch (NullPointerException e) {
             System.out.println("Invalid venue!");
