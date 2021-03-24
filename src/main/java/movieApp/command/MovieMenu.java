@@ -1,8 +1,8 @@
 package movieApp.command;
 
-import movieApp.movie.Cineplex;
-import movieApp.movie.Movie;
-import movieApp.movie.Showtimes;
+import movieApp.Cineplex;
+import movieApp.Movie;
+import movieApp.Showtimes;
 import movieApp.storage.Database;
 
 import java.util.*;

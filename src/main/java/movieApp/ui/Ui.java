@@ -1,6 +1,6 @@
 package movieApp.ui;
 
-import movieApp.movie.Movie;
+import movieApp.Movie;
 import movieApp.parser.MovieFilter;
 import movieApp.command.MovieMenu;
 import movieApp.storage.Database;

@@ -2,8 +2,8 @@ package movieApp.parser;
 
 import java.util.*;
 
-import movieApp.movie.Cineplex;
-import movieApp.movie.Movie;
+import movieApp.Cineplex;
+import movieApp.Movie;
 import movieApp.storage.Database;
 
 public class MovieFilter {
