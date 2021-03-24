@@ -8,22 +8,30 @@ import java.util.LinkedList;
 
 public class Router {
 
-    public String execute(Map nusMap, String from, String to) throws InvalidBlockException {
+    public String execute(Map nusMap, BlockAlias blockAlias, String from, String to) throws InvalidBlockException {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
         try {
             LinkedList<Block> route = new LinkedList<>();
-            findShortestRoute(nusMap, route, from, to);
+            findShortestRoute(nusMap, route, blockAlias, from, to);
             return getRouteAsString(route);
         } catch (NullPointerException e) {
             throw new InvalidBlockException();
         }
     }
 
-    public void findShortestRoute(Map nusMap, LinkedList<Block> route, String from, String to) {
+    public void findShortestRoute(Map nusMap, LinkedList<Block> route, BlockAlias blockAlias, String from, String to) {
         nusMap.resetVisitedFlag();
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
+
+        if (blockAlias.getAliasMap().containsKey(from)) {
+            from = blockAlias.getAliasMap().get(from);
+        }
+        if (blockAlias.getAliasMap().containsKey(to)) {
+            to = blockAlias.getAliasMap().get(to);
+        }
+
         Block start = nusMap.getBlock(from);
         Block destination = nusMap.getBlock(to);
         HashMap<Block, Block> predecessor = new HashMap<>();

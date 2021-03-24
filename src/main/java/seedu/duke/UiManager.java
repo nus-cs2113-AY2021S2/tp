@@ -4,12 +4,14 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
+import seedu.duke.exception.InvalidAliasException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class UiManager {
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -115,7 +117,7 @@ public class UiManager {
         for (int i = 0; i < eateries.length; i++) {
             out.println((i + 1) + ". " + eateries[i].getName());
         }
-        out.println(LINE_SEPARATOR + "SELECT ENTRY TO REPEAT:");
+        out.println(LINE_SEPARATOR + "SELECT ENTRY TO GO:");
         return Integer.parseInt(in.nextLine());
     }
 
@@ -175,4 +177,75 @@ public class UiManager {
         return day;
     }
 
+    public HashMap<String, String> getAliasInfo(HashMap<String, String> aliasMap)
+            throws InvalidAliasException, InvalidBlockException {
+        String block = getAliasBlock("Enter the block: ");
+        String alias = getAliasName(aliasMap).toUpperCase();
+
+        HashMap<String, String> newAlias = new HashMap<>();
+        newAlias.put(alias, block);
+
+        System.out.println("Got it! Successfully added " + alias + " for block " + block);
+        System.out.println(DIVIDER);
+        return newAlias;
+    }
+
+    private String getAliasName(HashMap<String, String> aliasMap) throws InvalidAliasException {
+        out.println("Enter the alias name: ");
+        String alias = in.nextLine().trim();
+        checkValidAlias(alias, aliasMap);
+        return alias;
+    }
+
+    private String getAliasBlock(String s) throws InvalidBlockException {
+        out.println(s);
+        String block = in.nextLine().toUpperCase().trim();
+        checkValidAliasBlock(block);
+        return block;
+    }
+
+    private void checkValidAlias(String alias, HashMap<String, String> aliasMap) throws InvalidAliasException {
+        Map nusMap = new Map();
+        if (aliasMap.containsValue(alias)) {
+            throw new InvalidAliasException();
+        } else if (nusMap.getBlock(alias.toUpperCase()) != null) {
+            throw new InvalidAliasException();
+        }
+    }
+
+    public void checkValidAliasBlock(String block) throws InvalidBlockException {
+        Map nusMap = new Map();
+        if (nusMap.getBlock(block) == null) {
+            throw new InvalidBlockException();
+        }
+    }
+
+    public void showCustomAliases(HashMap<String, String> aliasMap) {
+        if (aliasMap.isEmpty()) {
+            System.out.println("It seems that you currently do not have any aliases");
+        } else {
+            System.out.println("Your aliases are:");
+            for (String alias: aliasMap.keySet()) {
+                String block = aliasMap.get(alias);
+                System.out.println(block + " - " + alias);
+            }
+        }
+        System.out.println(DIVIDER);
+    }
+
+    public String getDeleteAliasInfo(BlockAlias blockAlias) throws InvalidAliasException {
+        out.println("Enter the alias name that you wish to delete: ");
+        String toDelete = in.nextLine().trim().toUpperCase();
+        checkValidDeleteAlias(toDelete, blockAlias.getAliasMap());
+        System.out.println("Got it! Successfully deleted " + toDelete + " from the aliases");
+        System.out.println(DIVIDER);
+        return toDelete;
+    }
+
+    private void checkValidDeleteAlias(String aliasToDelete, HashMap<String, String> aliasMap)
+            throws InvalidAliasException {
+        if (!aliasMap.containsKey(aliasToDelete)) {
+            throw new InvalidAliasException();
+        }
+    }
 }

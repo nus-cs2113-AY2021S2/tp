@@ -6,15 +6,22 @@ import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
 import seedu.duke.Map;
+import seedu.duke.exception.InvalidAliasException;
 
-public class ShowHistoryCommand extends Command {
-    public ShowHistoryCommand(String userInput) {
+public class DeleteCustomAliasCommand extends Command {
+    public DeleteCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
-        ui.showHistory(history);
+        try {
+            String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
+            blockAlias.getAliasMap().remove(aliasToDelete);
+        } catch (InvalidAliasException e) {
+            ui.showToUser(e.getMessage());
+        }
+
     }
 }

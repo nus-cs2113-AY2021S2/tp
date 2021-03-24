@@ -5,9 +5,9 @@ import java.util.LinkedList;
 public class EateryList {
     private Block[] eateries;
 
-    public EateryList(Map nusMap, String from) {
+    public EateryList(Map nusMap, BlockAlias blockAlias, String from) {
         this.eateries = new Block[5];
-        setRouteLengths(nusMap, from);
+        setRouteLengths(nusMap, blockAlias, from);
         setEateries(nusMap);
     }
 
@@ -19,12 +19,12 @@ public class EateryList {
         return eateries[i];
     }
 
-    public void setRouteLengths(Map nusMap, String from) {
-        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "TECHNO EDGE CANTEEN");
-        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "CHEERS MINIMART");
-        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "ARISE & SHINE");
-        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "PLATYPUS FOOD BAR");
-        new Router().findShortestRoute(nusMap, new LinkedList<>(), from, "SPINELLI COFFEE");
+    public void setRouteLengths(Map nusMap, BlockAlias blockAlias, String from) {
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "TECHNO EDGE CANTEEN");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "CHEERS MINIMART");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "ARISE & SHINE");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "PLATYPUS FOOD BAR");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "SPINELLI COFFEE");
     }
 
     public void setEateries(Map nusMap) {

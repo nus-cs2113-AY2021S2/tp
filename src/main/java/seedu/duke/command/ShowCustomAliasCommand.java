@@ -4,22 +4,17 @@ import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
-import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.Map;
 
-public class ByeCommand extends Command {
-    public ByeCommand(String userInput) {
+public class ShowCustomAliasCommand extends Command {
+    public ShowCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
     @Override
-    public boolean isExit() {
-        return true;
-    }
-
-    @Override
-    public void execute(Map nusMap, UiManager ui, History history,
+    public void execute(Map map, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
-        ui.showByeMessage();
+        ui.showCustomAliases(blockAlias.getAliasMap());
     }
 }
