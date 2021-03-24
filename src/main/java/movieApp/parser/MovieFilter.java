@@ -5,6 +5,7 @@ import java.util.*;
 import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.storage.Database;
+import movieApp.ui.Ui;
 
 public class MovieFilter {
 
@@ -12,7 +13,7 @@ public class MovieFilter {
 		int i;
 		System.out.println("Movie List:");
 		for (i=0;i<MovieList.size();i++) {
-			System.out.println(i+". "+MovieList.get(i).getMovieTitle());
+			System.out.println((i+1)+". "+MovieList.get(i).getMovieTitle());
 		}
 		System.out.println("\n");
 	}
@@ -325,7 +326,9 @@ public class MovieFilter {
 					case 7:
 						movieList = new ArrayList<Movie>(Database.MovieDatabase);
 						break;
-
+					case 8:
+						new Ui();
+						break;
 				}
 				if (movieList.size() == 0) {
 					System.out.println("\nSorry! We couldn't find any matches.\nWould you like to try something else?");
