@@ -25,7 +25,7 @@ public class NusFoodReviews {
 
     public NusFoodReviews(String filePath) {
         ui = new Ui();
-        parser = new Parser();
+        parser = new Parser(this);
         storage = new Storage(filePath);
         canteens = storage.load();
     }
@@ -56,14 +56,9 @@ public class NusFoodReviews {
         while (!isExit) {
             try {
                 if (canteenIndex < 0) {
-                    ui.showDisplayCanteens(canteens);
-                    String line = ui.readCommand();
-                    canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+                    setCanteenIndex();
                 } else if (storeIndex < 0) {
-                    Canteen canteen = canteens.get(canteenIndex);
-                    ui.showDisplayStores(canteen);
-                    String line = ui.readCommand();
-                    storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
+                    setStoreIndex();
                 } else {
                     Canteen canteen = canteens.get(canteenIndex);
                     Store store = canteen.getStore(storeIndex);
@@ -88,7 +83,7 @@ public class NusFoodReviews {
             ui.showAdminOptions();
             try {
                 String line = ui.readCommand();
-                Command c = parser.parseAdminCommand(line,canteens.get(0).getNumStores());
+                Command c = parser.parseAdminCommand(line);
                 c.execute(canteens, ui);
             } catch (DukeExceptions e) {
                 ui.showError(e.getMessage());
@@ -99,6 +94,31 @@ public class NusFoodReviews {
     public static void resetIndexes() {
         canteenIndex = -1;
         storeIndex = -1;
+    }
+
+    public int getCanteenIndex() {
+        return canteenIndex;
+    }
+
+    public void setCanteenIndex() throws DukeExceptions {
+        ui.showDisplaySelectCanteens(canteens);
+        String line = ui.readCommand();
+        canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+    }
+
+    public int getStoreIndex() {
+        return storeIndex;
+    }
+
+    public void setStoreIndex() throws DukeExceptions {
+        Canteen canteen = canteens.get(canteenIndex);
+        ui.showDisplaySelectStores(canteen);
+        String line = ui.readCommand();
+        storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
+    }
+
+    public ArrayList<Canteen> getCanteens() {
+        return canteens;
     }
 
 }

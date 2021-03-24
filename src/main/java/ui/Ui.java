@@ -67,7 +67,12 @@ public class Ui {
 
     public void showAdminOptions() {
         System.out.println("Please select task:");
-        System.out.println("1) Add stores");
+        System.out.println("1. View canteens");
+        System.out.println("2. Add canteen");
+        System.out.println("3. Add store in canteen");
+        System.out.println("4. Delete canteen");
+        System.out.println("5. Delete store in canteen");
+        System.out.println("6. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -77,8 +82,8 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showAddStore() {
-        System.out.println("Please enter store name");
+    public static void showAddStore() {
+        System.out.println("Please enter the new store's name");
         System.out.println(LINESPACING);
     }
 
@@ -102,7 +107,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showDisplayStores(Canteen canteen) {
+    public void showDisplaySelectStores(Canteen canteen) {
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
         }
@@ -110,6 +115,20 @@ public class Ui {
         ArrayList<Store> stores = canteen.getStores();
         System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
         System.out.println("Please select one of the following stores:");
+        for (int i = 0; i < stores.size(); i++) {
+            System.out.print((i + 1) + ". ");
+            stores.get(i).displayStore();
+        }
+        System.out.println(Ui.LINESPACING);
+    }
+
+    public static void showDisplayStores(Canteen canteen) {
+        if (canteen.getNumStores() <= 0) {
+            System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
+        }
+        System.out.println(LINESPACING);
+        ArrayList<Store> stores = canteen.getStores();
+        System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
         for (int i = 0; i < stores.size(); i++) {
             System.out.print((i + 1) + ". ");
             stores.get(i).displayStore();
@@ -125,9 +144,18 @@ public class Ui {
         }
     }
     
+    public static void showDisplaySelectCanteens(ArrayList<Canteen> canteens) {
+        System.out.println(LINESPACING);
+        System.out.println("Select one of the following NUS canteens:");
+        for (int i = 0; i < canteens.size(); i++) {
+            System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+        }
+        System.out.println(LINESPACING);
+    }
+
     public void showDisplayCanteens(ArrayList<Canteen> canteens) {
         System.out.println(LINESPACING);
-        System.out.println("Please select a canteen:");
+        System.out.println("Here is a list of NUS canteens:");
         for (int i = 0; i < canteens.size(); i++) {
             System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
         }
@@ -172,5 +200,14 @@ public class Ui {
     public static void reviewAdded() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully added!");
+    }
+
+    public static void showAddCanteen() {
+        System.out.println(LINESPACING);
+        System.out.println("Please type the name of the new canteen:");
+    }
+
+    public void showAddCanteenSuccess(String canteenName) {
+        System.out.println("The canteen '" + canteenName + "' has been added!");
     }
 }
