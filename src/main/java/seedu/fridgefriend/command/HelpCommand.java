@@ -19,6 +19,7 @@ public class HelpCommand extends Command {
             + "\tsearch searchString\n"
             + "\texpiring\n"
             + "\trunninglow\n"
+            + "\tsetlimit foodCategory /qty newLimit\n"
             + "\tclear\n"
             + "\thelp\n"
             + "\tbye";
