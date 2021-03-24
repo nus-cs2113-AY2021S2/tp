@@ -79,7 +79,46 @@ list of icons:
 
 ### 2.1 Setting up the project in your computer
 
+Ensure that you have the following installed:
+* JDK 11
+* Intellij IDEA (Highly Recommended)
+
+Firstly, **fork** this repo and **clone** a copy into your computer.
+
+If you plan to use IntelliJ IDEA:
+1. **Ensure IntelliJ is configured to develop in JDK 11.**
+   1. If you are not at the welcome screen, click `File` > `Close Projects` to close any currently opened projects.
+   1. Click on `Configure` > `Structure for New Projects` > `Project Settings` > `Project`, ensure
+      the `Project SDK` is using **JDK 11**.
+1. **Import the project as a Gradle Project.**
+   1. Click on `Import Project` and locate the `build.gradle` file and select it. Click `OK`.
+   1. If prompted, choose to `Open as Project` (not `Open as File`).
+   1. Click `OK` to accept the default settings but do ensure that the selected version of `Gradle JVM`
+      matches the JDK being used for the project.
+   1. Wait for the importing process to finish (it could take a few minutes).
+1. **Verify the setup.**
+   1. After importing successfully, locate the `src/main/java/seedu.duke/Duke.java` file, right click it, 
+      and choose `Run...`. If the setup is correct, you should see the following:
+   ![Login_Page](img/LoginPageExampleOutput.png)
+
 ### 2.2 Before writing code
+
+#### 2.2.1 Configuring the Coding Style
+
+If you are using IDEA, follow this guide 
+[IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html)
+to setup IDEA's coding style to match ours.
+
+#### 2.2.2 Set up CI
+
+There is no set up required as the project comes with GitHub Actions config files, located in `.github/workflows`
+folder. When GitHub detects these files, it will run the CI for the project automatically at each push to the master
+branch or to any PR.
+
+#### 2.2.3 Learn the Design
+
+Before starting to write any code, we recommend that you have a look at Finux's overall design by reading
+[Finux's Architecture](#31-architecture) section.
 
 ## 3. Design
 
@@ -94,7 +133,16 @@ CommandLogic.
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 ### 3.2 UI Component
-...
+
+![UIComponentDiagram](img/UIComponentDiagram.png)\
+*Figure 1: Ui Class Diagram*
+
+The Ui Component consists of a `Ui` class which handles all user input and system output.
+The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
+ensuring a high level of cohesiveness, low level of coupling and separation of roles.
+
+The `Ui` component actively listens for:
+* the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
 ...
@@ -112,8 +160,8 @@ CommandLogic.
 
 ---
 
-Some Class diagrams, etc...
-Some sequence diagrams, etc...
+This section introduces the specific implementation details and design thought processes
+of some features in **Finux**.
 
 ### 4.1 Add Feature
 ...
@@ -128,7 +176,15 @@ Some sequence diagrams, etc...
 ...
 
 ### 4.5 Remove Feature
-...
+
+The remove feature aims to allow users to remove records after querying the record's
+index number with the `list` command. The users will be able to then use the `remove`
+command to delete certain records that they deem obsolete or is incorrect. Hence, this feature
+allows them to amend their mistakes or edit their list with constraints.
+
+#### 4.5.1 Current Implementation
+
+#### 4.5.2 Design Consideration
 
 ### 4.6 Storage Feature
 ...
