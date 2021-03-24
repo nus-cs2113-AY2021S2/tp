@@ -1,18 +1,17 @@
 package seedu.fridgefriend.command;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidIndexException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.ExpiryDate;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class AddCommandTest {
 
@@ -77,7 +76,7 @@ class AddCommandTest {
     @Test
     public void addCommand_invalidDate_InvalidDateException() {
         assertThrows(InvalidDateException.class, () -> {
-            Command addCommand = new AddCommand("chicken", FoodCategory.MEAT,
+            new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER, 200);
         });
     }
