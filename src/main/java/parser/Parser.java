@@ -114,6 +114,7 @@ public class Parser {
         default:
             throw new DukeExceptions("Please enter a valid index!");
         }
+        assert true;
         return newCommand;
     }
 }
