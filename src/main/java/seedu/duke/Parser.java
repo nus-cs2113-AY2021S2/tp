@@ -10,22 +10,14 @@ public class Parser {
      */
     public static final Pattern BASIC_USER_INPUT_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
+    /**
+     * Used to more easily format the driver profile input data // todo: what if user only wants to change name?
+     */
     public static final Pattern DRIVER_PROFILE_EDIT_FORMAT
             = Pattern.compile("n/(?<name>[^/]+)"
             + " v/(?<vehicle>[^/]+)"
-            + " l/(?<license>[^/]+)");
-
-    // original method is split it into 2 methods below
-
-//    public void parse(String userInput) {
-//        Matcher matcher = BASIC_USER_INPUT_FORMAT.matcher(userInput.trim());
-//        String commandWord = null;
-//        String arguments = null;
-//        while (matcher.find()) {
-//            commandWord = matcher.group("commandWord").trim();
-//            arguments = matcher.group("arguments").trim();
-//        }
-//    }
+            + " l/(?<license>[^/]+)"
+            + " w/(?<weight>[^/]+)");
 
     public String parseCommand(String userInput) {
         Matcher matcher = BASIC_USER_INPUT_FORMAT.matcher(userInput.trim());
@@ -50,36 +42,33 @@ public class Parser {
      * The specific commands that require this method call are outlined in Ui
      * @param commandWord is the user input command
      * @param arguments are any user input arguments following the command word
-     * @param deliveryman
+     * @param deliveryman is the user profile
      */
     public String parseInput(String commandWord, String arguments, Deliveryman deliveryman) {
         String parsedData = null;
         switch (commandWord) {
             case "edit":
             case "editprofile":
-//               TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F
+               // TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/2
                 Matcher editProfileMatcher = DRIVER_PROFILE_EDIT_FORMAT.matcher(arguments.trim());
                 if (!editProfileMatcher.matches()){
                     System.out.println("Invalid Command");
-                    System.out.println("Please use the format: n/name v/vehicle model l/license plate");
-                    System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F");
+                    System.out.println("Please use the format: n/name v/vehicle model l/license plate w/weight");
+                    System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/5");
                     parsedData = "fail";
                 } else {
-                    parsedData = String.format("%s | %s | %s",
+                    parsedData = String.format("%s | %s | %s | %s",
                             editProfileMatcher.group("name"),
                             editProfileMatcher.group("vehicle"),
-                            editProfileMatcher.group("license"));
+                            editProfileMatcher.group("license"),
+                            editProfileMatcher.group("weight"));
                 }
                 break;
             case "view":
             case "viewdelivery":
-                // parse delivery number (in arguments)
-                System.out.println("view the details about a particular delivery!");
-                parsedData = arguments;
-                break;
             case "complete":
-                // parse delivery number (in arguments)
-                System.out.println("mark a delivery as completed!");
+                arguments = Integer.toString(Integer.parseInt(arguments) - 1);
+                // display list starts from 1 while array index starts from 0, hence the decrement
                 parsedData = arguments;
                 break;
             default:

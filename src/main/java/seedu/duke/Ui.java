@@ -1,6 +1,7 @@
 package seedu.duke;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -46,6 +47,9 @@ public class Ui {
         printDivider();
     }
 
+    /**
+     * Prints goodbye screen
+     */
     public void showFarewellScreen() {
         printDivider();
         System.out.println("Safe travels! Goodbye!");
@@ -77,10 +81,57 @@ public class Ui {
         System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
-            System.out.println(Integer.toString(i) + ". " + delivery);
+            System.out.println(i + ". " + delivery);
+            i++;
         }
     }
 
+    /**
+     * shows deliveryman's completed deliveries together with total earnings
+     * @param records the ArrayList of completed deliveries to print
+     */
+    public void showRecords(ArrayList<Delivery> records) {
+        System.out.println("Congratulations on completing the following deliveries:");
+        System.out.println(" Number | ID | Location | Earned Amount ");
+        int i = 1;
+        double total = 0;
+        for (Delivery delivery : records) {
+            total += delivery.getDeliveryFee();
+            System.out.println(i + " | "
+                    + delivery.getDeliveryID() + " | "
+                    + delivery.getAddress() + " | " + delivery.getDeliveryFee());
+            i++;
+        }
+        System.out.println("Total Earnings: " + total);
+    }
+
+    /**
+     * Shows details about a single delivery order
+     * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
+     */
+    public void showDeliveryDetails(int deliveryNumber) {
+        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+        System.out.println(delivery);
+        int i = 1;
+        for (Item item : delivery.getItems()) {
+            System.out.println(i + ": \n" + item);
+            i++;
+        }
+    }
+
+    /**
+     * Displays to a user that a delivery has been completed
+     * @param deliveryNumber is the index of the delivery to be marked as completed
+     */
+    public void showCompletedDelivery(int deliveryNumber) {
+        Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
+        System.out.println("The following delivery has been marked as completed:");
+        System.out.println(delivery);
+    }
+
+    /**
+     * @param deliveryman deliveryman to show details about
+     */
     public void showProfile(Deliveryman deliveryman) {
         System.out.println(deliveryman);
     }
@@ -88,10 +139,9 @@ public class Ui {
     /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
-     * @param deliveryman
-     * @param dataManager
+     * @param deliveryman is the currently loaded profile
      */
-    public void showLoopingMenuUntilExit(Deliveryman deliveryman, DataManager dataManager) {
+    public void showLoopingMenuUntilExit(Deliveryman deliveryman) {
         Parser parser = new Parser();
         Scanner sc = new Scanner(System.in);
         String userInput;
@@ -99,7 +149,6 @@ public class Ui {
         String userArguments;
         int deliveryNumber;
         do {
-            //Shifted this line down so we can do without the if statement in line 142
             promptUserInput();
             userInput = sc.nextLine();
             userCommand = parser.parseCommand(userInput);
@@ -109,33 +158,16 @@ public class Ui {
                     showHelpMessage();
                     break;
                 case "profile":
-                    // todo: create (default) profile and display
                     showProfile(deliveryman);
-                    // view profile
                     break;
                 case "edit":
                 case "editprofile":
+                    // todo: extract the below as a method
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
-                    // todo: create profile and load
-                    if(inputProfileData != "fail"){
-                        String[] splitInputProfileData = inputProfileData.split(" \\| ");
-                        System.out.println("Based on your input:");
-                        System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n",
-                                splitInputProfileData[0],
-                                splitInputProfileData[1],
-                                splitInputProfileData[2]
-                        );
-                        deliveryman.editProfile(
-                                splitInputProfileData[0],
-                                splitInputProfileData[1],
-                                splitInputProfileData[2]
-                        );
-                        dataManager.saveProfile(deliveryman);
-                    }
+                    deliveryman.updateProfile(inputProfileData);
                     break;
                 case "start":
-                    DeliveryList.loadDeliveryList();
-                    // todo: load delivery assignment
+                    DeliveryList.load();
                     break;
                 case "list":
                     showDeliveryList();
@@ -143,23 +175,22 @@ public class Ui {
                 case "view":
                 case "viewdelivery":
                     deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments, deliveryman));
-                    // show selected delivery - use parser to check selected item
-                    System.out.println(DeliveryList.deliveries.get(deliveryNumber));
+                    // todo: exception handling (delivery numbers that are out of range)
+                    showDeliveryDetails(deliveryNumber);
                     break;
                 case "complete":
                     deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
-                    // mark delivery as completed - use parser to get and check selected item
-                    DeliveryList.deliveries.get(deliveryNumber).setDeliveryAsComplete();
+                    // todo: exception handling (numbers that are already complete/out of range) !important
+                    Delivery.completeDelivery(deliveryman, deliveryNumber);
+                    showCompletedDelivery(deliveryNumber);
                     break;
+                case "record":
+                    showRecords(deliveryman.getRecords());
                 case "bye":
                     break;
                 default:
                     System.out.println("Incorrect entry"); // raise exception
             }
-//            Look at comment in line 100
-//            if (!userCommand.equalsIgnoreCase("bye")) {
-//                promptUserInput();
-//            }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
 
