@@ -78,7 +78,6 @@ public class Parser {
 
         switch (smartCommandRecognition(COMMANDS, line.split(" ")[0])) {
         case ("add"):
-            System.out.println("added");
             addStaff(inputToCreateStaff());
             StaffStorage.writeToFile();
             break;
@@ -91,13 +90,13 @@ public class Parser {
             break;
 
         case ("list"):
-            UI.emptyLine();
+            UI.printEmptyLine();
             checkListCommand(line);
             StaffUI.staffListHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
             StaffList.list(string);
-            UI.emptyLine();
+            UI.printEmptyLine();
             break;
 
         case ("delete"):
@@ -112,12 +111,12 @@ public class Parser {
             break;
 
         case ("find"):
-            UI.emptyLine();
+            UI.printEmptyLine();
             checkEmptyInput(line);
             StaffUI.staffListHeader();
             UI.showLine();
             StaffList.find(line.split(" ")[1]);
-            UI.emptyLine();
+            UI.printEmptyLine();
             break;
 
         case ("return"):

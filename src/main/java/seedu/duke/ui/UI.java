@@ -113,7 +113,7 @@ public class UI {
         System.out.println(LINEBREAK);
     }
 
-    public static void emptyLine() {
+    public static void printEmptyLine() {
         System.out.print("\n");
     }
 
