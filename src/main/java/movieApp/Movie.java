@@ -42,6 +42,10 @@ public class Movie implements Serializable{
 	public String getMovieTitle() {
 		return movieTitle; 
 	}
+
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
 	
 	public int getMovieID() {
 		return movieID;
@@ -68,6 +72,10 @@ public class Movie implements Serializable{
 		return director; 
 	}
 
+	public void setDirector(String director) {
+		this.director = director;
+	}
+
 	public void printCast() {
 		int i = 0;
 		while (i<cast.length) {
@@ -82,6 +90,10 @@ public class Movie implements Serializable{
 	
 	public String getSynopsis() {
 		return synopsis; 
+	}
+
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
 	}
 
 	public void printReviews() {

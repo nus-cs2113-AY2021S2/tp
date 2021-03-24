@@ -20,10 +20,10 @@ public class MovieFilter {
 	
 	////////////////////////////////////////////////////////////////////////////
 	public static int getFilter() {
-		int Filter = -1;
+		int filter = -1;
 		Scanner sc = new Scanner(System.in);
 		
-		while ((Filter < 1) || (Filter > 10)) {
+		while ((filter < 1) || (filter > 10)) {
 			System.out.println("======= Movie Filter =======");
 			System.out.println(" 1 Filter by genre\n 2 Filter by rating\n 3 Filter by showing status\n 4 Filter by cineplex\n 5 Filter by title\n 6 Select movie\n 7 Clear all filters\n 8 Back to Main Menu\n============================\nPlease indicate your choice:");
 			if (!sc.hasNextInt()) {
@@ -31,13 +31,13 @@ public class MovieFilter {
 				sc.next();
 				continue;
 			} 
-			Filter = sc.nextInt();
-			if ((Filter < 1) ||(Filter > 8)) {
-				System.out.println("Please input a integer between 1 and 10.\n");
+			filter = sc.nextInt();
+			if ((filter < 1) ||(filter > 8)) {
+				System.out.println("Please input an integer between 1 and 10.\n");
 				continue;
 			}
 		}
-		return Filter;
+		return filter;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
