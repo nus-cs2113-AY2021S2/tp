@@ -18,17 +18,19 @@ class SearchCommandTest {
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
-        Food chicken = new Food(FoodCategory.MEAT, "chicken",
-                "30-06-2021", FoodStorageLocation.FREEZER);
+
+        Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 200);
         fridge.add(chicken);
 
-        Food pork = new Food(FoodCategory.MEAT, "pork",
-                "31-07-2021", FoodStorageLocation.LOWER_SHELF);
-        fridge.add(pork);
+        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
+                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF, 100);
 
-        Food lettuce = new Food(FoodCategory.VEGETABLE,"lettuce",
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF);
         fridge.add(lettuce);
+
+        Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 500);
+        fridge.add(pork);
     }
 
     private SearchCommand searchCommand(String foodName) throws EmptyDescriptionException {
@@ -39,7 +41,7 @@ class SearchCommandTest {
 
     @Test
     public void searchCommand_foodInFridge_foodFound() throws EmptyDescriptionException {
-        String expectedMessage = "You have chicken stored in FREEZER of your fridge.";
+        String expectedMessage = "You have chicken stored in LOWER_SHELF of your fridge.";
         String actualMessage = searchCommand("chicken").getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }

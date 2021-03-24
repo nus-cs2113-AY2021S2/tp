@@ -62,6 +62,7 @@ public class ParserTest {
         });
     }
 
+    /*
     @Test
     public void parse_removeCommandAlphabeticalArgs_InvalidIndexException() {
         assertThrows(InvalidIndexException.class, () -> {
@@ -80,6 +81,7 @@ public class ParserTest {
             command.execute();
         });
     }
+   */
 
     @Test
     public void parse_searchCommandNoArg_EmptyDescriptionException() {

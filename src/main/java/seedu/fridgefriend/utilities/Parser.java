@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.ByeCommand;
+import seedu.fridgefriend.command.ClearCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
@@ -15,9 +16,11 @@ import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
 
 /**
  * Represents an object that deals with making sense of the user command.
@@ -36,10 +39,11 @@ public class Parser {
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command getCommand(String input)
-            throws EmptyDescriptionException, InvalidInputException, 
-            InvalidIndexException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -62,23 +66,24 @@ public class Parser {
             return words;
         } else {
             //return an array of command and empty description
-            return new String[] {words[COMMAND_WORD], ""};
+            return new String[]{words[COMMAND_WORD], ""};
         }
     }
 
     /**
      * Returns the appropriate Command object based on command and description.
-     * 
+     *
      * @param parsedInput string array containing command and description
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException, 
-            InvalidIndexException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
         String commandString = parsedInput[COMMAND_WORD];
         String description = parsedInput[1];
         Command command;
@@ -102,6 +107,9 @@ public class Parser {
         case "help":
             command = Parser.getHelpCommand();
             break;
+        case "clear":
+            command = new ClearCommand();
+            break;
         case "bye":
             command = Parser.getByeCommand();
             break;
@@ -121,7 +129,15 @@ public class Parser {
             Pattern.compile("(?<name>[^/]+)"
                     + " /cat (?<category>[^/]+)"
                     + " /exp (?<expiryDate>[^/]+)"
-                    + " /loc (?<storageLocation>[^/]+)");
+                    + " /loc (?<storageLocation>[^/]+)"
+                    + " /qty (?<quantity>[^/]+)");
+
+    /**
+     * Define arguments format for remove food command with quantity.
+     */
+    public static final Pattern REMOVE_ARGS_FORMAT =
+            Pattern.compile("(?<name>[^/]+)"
+                    + " /qty (?<quantity>[^/]+)");
 
     /**
      * Parses description into name, foodCategory, expiryDate and storageLocation.
@@ -133,39 +149,65 @@ public class Parser {
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     public static Command parseFoodDescription(String foodDescription)
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-        final Matcher matcher = FOOD_DATA_ARGS_FORMAT.matcher(foodDescription.trim());
+        Matcher matcherQuantity = FOOD_DATA_ARGS_FORMAT.matcher(foodDescription.trim());
+
         // Validate foodDescription string format
-        if (!matcher.matches()) {
+        if (matcherQuantity.matches()) {
+            int quantity = parseIntegerQuantity(matcherQuantity.group("quantity"));
+            return new AddCommand(matcherQuantity.group("name"),
+                    convertStringToFoodCategory(matcherQuantity.group("category")),
+                    matcherQuantity.group("expiryDate"),
+                    convertStringToLocation(matcherQuantity.group("storageLocation")),
+                    quantity);
+        } else {
             throw new InvalidInputException();
         }
-        return new AddCommand(matcher.group("name"), convertStringToFoodCategory(matcher.group("category")),
-                matcher.group("expiryDate"), convertStringToLocation(matcher.group("storageLocation")));
+    }
+
+    public static Command parseRemoveDescription(String removeDescription)
+            throws EmptyDescriptionException, InvalidQuantityException,
+            FoodNameNotFoundException, InvalidInputException {
+        if (removeDescription.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        Matcher matcherRemove = REMOVE_ARGS_FORMAT.matcher(removeDescription.trim());
+        if (matcherRemove.matches()) {
+            String name = matcherRemove.group("name");
+            int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
+            return new RemoveCommand(name, quantity);
+        } else {
+            throw new InvalidInputException();
+        }
     }
 
     /**
      * Returns an AddCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return AddCommand object
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
-    public static Command getAddCommand(String description) 
-            throws EmptyDescriptionException, InvalidInputException, InvalidDateException {
+    public static Command getAddCommand(String description)
+            throws EmptyDescriptionException, InvalidInputException,
+            InvalidDateException, InvalidQuantityException {
         Command addCommand = parseFoodDescription(description);
         return addCommand;
     }
 
     /**
      * Returns a ListCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return ListCommand object
      */
@@ -176,22 +218,31 @@ public class Parser {
 
     /**
      * Returns a RemoveCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidIndexException if the index given in description is out of bounds
      */
+    /*
     public static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidIndexException {
         int index = parseIntegerDescription(description);
         Command removeCommand = new RemoveCommand(index);
         return removeCommand;
     }
+    */
+
+    public static Command getRemoveCommand(String description)
+            throws EmptyDescriptionException, InvalidQuantityException,
+            InvalidInputException, FoodNameNotFoundException {
+        Command removeCommand = parseRemoveDescription(description);
+        return removeCommand;
+    }
 
     /**
      * Returns a SearchCommand object based on description.
-     * 
+     *
      * @param description description for command
      * @return SearchCommand object
      * @throws EmptyDescriptionException if the description is empty
@@ -204,7 +255,6 @@ public class Parser {
     /**
      * Returns an ExpiringCommand object.
      */
-
     private static Command getExpiringCommand() {
         Command expiringCommand = new ExpiringCommand();
         return expiringCommand;
@@ -212,8 +262,9 @@ public class Parser {
 
     /**
      * Returns a HelpCommand object.
+     *
+     * @return HelpCommand object
      */
-
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
@@ -221,6 +272,8 @@ public class Parser {
 
     /**
      * Returns a ByeCommand object.
+     *
+     * @return ByeCommand object
      */
     public static Command getByeCommand() {
         Command byeCommand = new ByeCommand();
@@ -229,7 +282,7 @@ public class Parser {
 
     /**
      * Parses the description into an integer.
-     * 
+     *
      * @param description description for command
      * @return integer index
      * @throws EmptyDescriptionException if the description is empty
@@ -240,7 +293,7 @@ public class Parser {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-    
+
         try {
             int index = Integer.parseInt(description);
             return index;
@@ -248,5 +301,27 @@ public class Parser {
             throw new InvalidIndexException(e);
         }
     }
-    
+
+    /**
+     * Parses the description of quantity to integer.
+     *
+     * @param description quantity description
+     * @return integer quantity
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidQuantityException if the description is not a number
+     */
+    public static int parseIntegerQuantity(String description)
+            throws EmptyDescriptionException, InvalidQuantityException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+
+        try {
+            int quantity = Integer.parseInt(description);
+            return quantity;
+        } catch (Exception e) {
+            throw new InvalidQuantityException();
+        }
+    }
+
 }

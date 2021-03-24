@@ -1,43 +1,45 @@
 package seedu.fridgefriend.food;
 
+import java.time.LocalDate;
+
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**
  * Represents a portion of a specific food that is stored in the smart fridge.
- * When calling constructor, FoodCategory and foodName are NECESSARY fields.
- * The date fields are represented by strings for now, they are OPTIONAL as well as storage location.
+ * When calling constructor, category, foodName, expiryString, storageLocation
+ * and quantity are NECESSARY fields.
  */
-public class Food {
+public abstract class Food {
     protected FoodCategory category;
     protected String foodName;
     protected ExpiryDate expiryDate;
     protected FoodStorageLocation storageLocation;
+    protected int quantity;
 
-    public Food(FoodCategory category, String foodName) {
-        LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
-        this.setCategory(category);
-        this.setFoodName(foodName);
-    }
-
-    public Food(FoodCategory category, String foodName, String expiryString,
-            FoodStorageLocation storageLocation) throws InvalidDateException {
+    public Food(String foodName, FoodCategory category, String expiryString,
+                FoodStorageLocation storageLocation, int quantity)
+                throws InvalidDateException {
         LoggingHandler.logInfo("Food object initiated. food name: " + foodName);
         this.setCategory(category);
         this.setFoodName(foodName);
         this.setExpiryDate(expiryString);
         this.setStorageLocation(storageLocation);
+        this.setQuantity(quantity);
     }
 
     @Override
     public String toString() {
-        String format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s";
+        String format = "Food name: %1$s, category: %2$s, expiry: %3$s, stored in: %4$s, quantity: %5$s";;
+
         return String.format(
                 format,
                 getFoodName(),
                 getCategory().name(), 
                 getExpiryDate().toString(), 
-                getStorageLocation().name());
+                getStorageLocation().name(),
+                getQuantity());
     }
 
     public FoodCategory getCategory() {
@@ -73,7 +75,22 @@ public class Food {
 
     public void setStorageLocation(FoodStorageLocation storageLocation) {
         this.storageLocation = storageLocation;
-        LoggingHandler.logInfo("Storage location has been changed to "
-                + storageLocation + " in food object " + foodName);
+        LoggingHandler
+                .logInfo("Storage location has been changed to " + storageLocation + " in food object " + foodName);
     }
+
+    public boolean isExpiring() {
+        LocalDate cutOff = LocalDate.now().plusDays(7);
+        LocalDate expiry = this.getExpiryDate().getExpiry();
+        return expiry.isBefore(cutOff);
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 }

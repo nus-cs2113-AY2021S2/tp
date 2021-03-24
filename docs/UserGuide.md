@@ -71,7 +71,7 @@ Format: `list CATEGORY_NAME`
 * The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
 `VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
 * The `CATEGORY_NAME` is case-insensitive.
-* If other category names are detected, `FridgeFriend` would give an error message.
+* If invalid input detected, `FridgeFriend` would give an error message.
 
 Example of usage:
 
@@ -88,6 +88,34 @@ These are the MEAT in your fridge:
 ```
 >> list ready_to_eat
 These are the READY_TO_EAT in your fridge:
+```
+
+### Display the list of foods by storage location: `list <LOCATION>`
+
+Displays the list of food items under specified category stored in the fridge.
+
+Format: `list STORAGE_LOCATION_NAME`
+
+* The `STORAGE_LOCATION_NAME` can only be recognized if it is in the pre-defined categories:
+  `FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER`
+* The `STORAGE_LOCATION_NAME` is case-insensitive.
+* If invalid input detected, `FridgeFriend` would give an error message.
+
+Example of usage:
+
+*Situation 1: There is one food called chicken stored in FREEZER.*
+
+```
+>> list FREEZER
+These are the food stored in FREEZER:
+	1. chicken
+```
+
+*Situation 2: There are no foods stored in DRAWERS.*
+
+```
+>> list ready_to_eat
+These are the food stored in DRAWERS:
 ```
 
 ### Remove a food item: `remove`
