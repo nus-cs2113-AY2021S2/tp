@@ -1,34 +1,26 @@
-# Developer Guide
+###Editor component
+API: TextEditor.java
+&nbsp;
 
-## Design & implementation
+The editor component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+**The Text Editor**
+* Sets up the editor
+* Loads existing file from Cheatsheet directory within a module for the edit cheat-sheet command
+* Flushes out the text from the editor when a different or new file is opened.
+* Adjusts the font size of the text within the editor
+* Detects mouse input to change font style and save the text
+* Saves the text from the text editor into a file 
+  
+&nbsp; 
+**The ShortcutListener**
+
+* Detects keyboard input for shortcuts
+
+&nbsp; 
+
+&nbsp; 
 
 
-## Product scope
-### Target user profile
 
-{Describe the target user profile}
 
-### Value proposition
-
-{Describe the value proposition: what problem does it solve?}
-
-## User Stories
-
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-
-## Non-Functional Requirements
-
-{Give non-functional requirements}
-
-## Glossary
-
-* *glossary item* - Definition
-
-## Instructions for manual testing
-
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
