@@ -24,7 +24,9 @@ public class UI {
     }
     public static String abortEnabledScanInput() throws AbortException {
         String input = scanner.nextLine().trim();
-        if (input.equals("\\abort")) {
+        if (input.equals("\\abort") ) {
+            System.out.println(input.equals(""));
+            System.out.println("qwer");
             throw new AbortException();
         }
         else {
