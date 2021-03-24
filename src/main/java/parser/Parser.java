@@ -1,51 +1,73 @@
 package parser;
 
 import command.AddReviewCommand;
-import command.AddStoreCommand;
-import command.Command;
 import command.DisplayMenusCommand;
-import command.DisplayStoresCommand;
 import command.ExitCommand;
+import command.ResetIndexesCommand;
 import command.ReadReviewsCommand;
+import command.Command;
+import command.AddStoreCommand;
+import command.DisplayStoresCommand;
 import exceptions.DukeExceptions;
+import reviews.Review;
+import stores.Store;
+import ui.Ui;
 
 
 public class Parser {
 
-    public void indexCheckValid(int storeIndex, int maxStores) throws DukeExceptions {
+    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws DukeExceptions {
+        int parsedInt;
 
         try {
-            if (storeIndex < 0 | storeIndex > maxStores) {
-                throw new DukeExceptions("Index out of bound, "
-                        + "please re-enter a valid index.");
+            parsedInt = Integer.parseInt(line);
+            if (parsedInt < inclusiveMin || parsedInt > inclusiveMax) {
+                String exceptionMessage;
+                if (inclusiveMin == inclusiveMax) {
+                    exceptionMessage = "Please enter a valid index!";
+                } else {
+                    exceptionMessage = "Please enter a valid index in the range of " + inclusiveMin
+                            + " and " + inclusiveMax + "!";
+                }
+                throw new DukeExceptions(exceptionMessage);
             }
-
-        } catch (DukeExceptions e) {
-            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("Please enter a valid integer index!");
         }
-
+        return parsedInt;
     }
 
-
-    public Command parse(String line, String index, int maxStores) throws DukeExceptions {
+    public Command parse(String line, Store store, int maxStores) throws DukeExceptions {
         Command newCommand;
-        if (line.startsWith("list")) {
-            newCommand = new DisplayStoresCommand();
+        if (line.equals("list")) {
+            newCommand = new ResetIndexesCommand();
         } else if (line.equals("menu")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new DisplayMenusCommand(Integer.parseInt(index) - 1);
+            newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new AddReviewCommand(Integer.parseInt(index) - 1);
+            Review review = getReviewDetails();
+            newCommand = new AddReviewCommand(store, review);
         } else if (line.startsWith("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new ReadReviewsCommand(Integer.parseInt(index) - 1);
+            newCommand = new ReadReviewsCommand(store);
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }
         return newCommand;
+    }
+
+    public Review getReviewDetails() throws DukeExceptions {
+        String description;
+        double rating;
+        try {
+            Ui.enterReview();
+            description = Ui.readCommand();
+            Ui.enterRating();
+            rating = Double.parseDouble(Ui.readCommand());
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("Review not added. Please input your review in proper format!");
+        }
+        return new Review(description, rating);
     }
 
     //parse admin commands only
