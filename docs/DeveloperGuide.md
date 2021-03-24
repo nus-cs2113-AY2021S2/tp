@@ -1,34 +1,25 @@
-# Developer Guide
+##Parser component
+**API**: Parser.java
 
-## Design & implementation
+* Determines the command entered by the user
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+* Parses the parameters needed by the command object (for commands which require additional details)
+
+* Checks the validity of parsed parameters, in some instances calling methods from other relevant classes, e.g. calling a method from the Lessons class to verify parsed lesson links.
+
+* May instruct UI to print warnings and prompts to users, e.g. when users enter invalid parameters.
+
+* Returns a new Command object with all the necessary attributes filled
 
 
-## Product scope
-### Target user profile
+**Lesson:**
 
-{Describe the target user profile}
+The Lesson class contains attributes related to a typical course lesson
 
-### Value proposition
+* Lesson type, e.g. Lab, Tutorial or Lecture
 
-{Describe the value proposition: what problem does it solve?}
+* Time and day of the lesson
 
-## User Stories
+* Link to the lesson session
 
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-
-## Non-Functional Requirements
-
-{Give non-functional requirements}
-
-## Glossary
-
-* *glossary item* - Definition
-
-## Instructions for manual testing
-
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+* Teaching staff information
