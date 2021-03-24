@@ -13,6 +13,7 @@ import seedu.duke.command.ByeCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.command.AddDailyRouteCommand;
 import seedu.duke.command.ShowDailyRouteCommand;
+import seedu.duke.command.ShowFavouriteLocationsCommand;
 import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
@@ -43,6 +44,8 @@ public class Parser {
             command = new AddDailyRouteCommand(filteredUserInput);
         }  else if (filteredUserInput.equals("day")) {
             command = new ShowDailyRouteCommand(filteredUserInput);
+        } else if (filteredUserInput.startsWith("favourite")) {
+            command = new ShowFavouriteLocationsCommand(filteredUserInput);
         } else {
             throw new InvalidCommandException();
         }
