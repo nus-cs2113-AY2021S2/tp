@@ -30,11 +30,11 @@ public class Parser {
         } else if (filteredUserInput.equals("clear history")) {
             command = new ClearHistoryCommand(filteredUserInput);
         } else if (filteredUserInput.startsWith("list notes")) {
-            command = new ListNoteCommand(filteredUserInput);
+            command = new ListNoteCommand(userInput);
         } else if (filteredUserInput.startsWith("add note")) {
-            command = new AddNoteCommand(filteredUserInput);
+            command = new AddNoteCommand(userInput);
         } else if (filteredUserInput.startsWith("delete note")) {
-            command = new DeleteNoteCommand(filteredUserInput);
+            command = new DeleteNoteCommand(userInput);
         } else if (filteredUserInput.equals("bye")) {
             command = new ByeCommand(filteredUserInput);
         }  else if (filteredUserInput.equals("help")) {

@@ -23,11 +23,13 @@ public class AddNoteCommand extends Command {
     @Override
     public void execute(Router router, UiManager ui, History history,
                         DailyRoute dailyRoute) {
+
         try {
             NotesCommandParser.parseAddNotesCommand(userInput);
             map.get(location).addNotes(); //add notes to block given by user
         } catch (WrongInputFormatException | NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException | EmptyNoteException e) {
             ui.showToUser(e.getMessage());
         }
+
     }
 }
