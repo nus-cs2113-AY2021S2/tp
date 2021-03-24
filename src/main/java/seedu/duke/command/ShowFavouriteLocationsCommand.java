@@ -1,6 +1,13 @@
 package seedu.duke.command;
 
-import seedu.duke.*;
+import seedu.duke.DailyRoute;
+import seedu.duke.History;
+import seedu.duke.NotesManager;
+import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
+import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidRepeatEntryException;
+import seedu.duke.exception.RepeatEntryOutOfBoundException;
 import seedu.duke.routing.Router;
 
 public class ShowFavouriteLocationsCommand extends Command{
