@@ -6,6 +6,18 @@ import java.util.Scanner;
 public class Ui {
 
     public Ui(){
+        final String LOGO = "\n" +
+                "___  ___           _       ___              \n" +
+                "|  \\/  |          (_)     / _ \\             \n" +
+                "| .  . | _____   ___  ___/ /_\\ \\_ __  _ __  \n" +
+                "| |\\/| |/ _ \\ \\ / / |/ _ \\  _  | '_ \\| '_ \\ \n" +
+                "| |  | | (_) \\ V /| |  __/ | | | |_) | |_) |\n" +
+                "\\_|  |_/\\___/ \\_/ |_|\\___\\_| |_/ .__/| .__/ \n" +
+                "                               | |   | |    \n" +
+                "                               |_|   |_|    ";
+
+        System.out.println(LOGO);
+
         int option = getOption();
         ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 

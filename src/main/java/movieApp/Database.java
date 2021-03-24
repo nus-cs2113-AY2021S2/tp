@@ -25,7 +25,7 @@ public class Database {
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
 
         ArrayList<Movie> MList = (ArrayList<Movie>) ois_movie.readObject();
-        System.out.println(MList);
+        // System.out.println(MList);
         ois_movie.close();
         return MList;
     }
@@ -36,7 +36,7 @@ public class Database {
         ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
 
         ArrayList<Cineplex> CPList = (ArrayList<Cineplex>) ois_cineplex.readObject();
-        System.out.println(CPList);
+        // System.out.println(CPList);
         ois_cineplex.close();
         return CPList;
     }
@@ -47,7 +47,7 @@ public class Database {
         ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
 
         ArrayList<Showtimes> STList = (ArrayList<Showtimes>) ois_showtime.readObject();
-        System.out.println(STList);
+        // System.out.println(STList);
         ois_showtime.close();
         return STList;
     }
