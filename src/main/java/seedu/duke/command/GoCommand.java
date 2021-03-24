@@ -1,6 +1,11 @@
 package seedu.duke.command;
 
-import seedu.duke.*;
+import seedu.duke.DailyRoute;
+import seedu.duke.History;
+import seedu.duke.NotesManager;
+import seedu.duke.routing.Router;
+import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.routing.Router;
 

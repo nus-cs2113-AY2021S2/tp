@@ -10,7 +10,7 @@ import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
 import seedu.duke.routing.Router;
 
-public class ShowFavouriteLocationsCommand extends Command{
+public class ShowFavouriteLocationsCommand extends Command {
     public ShowFavouriteLocationsCommand(String userInput) {
         super(userInput);
     }
