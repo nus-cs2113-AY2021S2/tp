@@ -36,7 +36,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(router, ui, history, notesManager, dailyroute);
+                command.execute(router, ui, history, notesManager, dailyroute, favouriteLocation);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());
