@@ -8,6 +8,10 @@ public class Midterm extends Task {
         this.on = on;
     }
 
+    public String getOn() {
+        return on;
+    }
+
     @Override
     public String getTaskType() {
         return "[Midterm]";

@@ -455,8 +455,8 @@ public class Ui {
 
     public static void printPinnedTaskList(HashMap<String, ArrayList<Task>> pinnedTasks) {
         System.out.println("This is the list of your pinned tasks:");
+        int taskNumber = 1;
         for (Map.Entry<String, ArrayList<Task>> item : pinnedTasks.entrySet()) {
-            int taskNumber = 1;
             String taskType = item.getKey();
             ArrayList<Task> tasks = item.getValue();
             for (Task task : tasks) {

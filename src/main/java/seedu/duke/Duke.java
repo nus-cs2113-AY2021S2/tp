@@ -19,10 +19,15 @@ public class Duke {
     }
 
     public static void runMainMenu() {
+        TaskList taskList = new TaskList();
         StorageModuleInfo.loadModuleInfoFile();
+        StorageModuleInfo.loadTasksFile();
+        StorageModuleInfo.loadAssignmentsFile();
+        StorageModuleInfo.loadMidtermsFile();
+        StorageModuleInfo.loadFinalExamsFile();
+        StorageModuleInfo.loadPinnedTasksFile();
         StorageModuleInfo.loadLinkInfoFile();
         StorageModuleInfo.loadZoomLinkInfoFile();
-        TaskList taskList = new TaskList();
         while (true) {
             Ui.printMainMenu();
             String command = Ui.readCommand();
@@ -32,6 +37,11 @@ public class Duke {
                 if (commandInt == 5) {
                     try {
                         StorageModuleInfo.modulesFileSaver();
+                        StorageModuleInfo.tasksFileSaver();
+                        StorageModuleInfo.assignmentsFileSaver();
+                        StorageModuleInfo.midtermsFileSaver();
+                        StorageModuleInfo.finalExamsFileSaver();
+                        StorageModuleInfo.pinnedTasksFileSaver();
                         StorageModuleInfo.linksFileSaver();
                         StorageModuleInfo.zoomLinksFileSaver();
                     } catch (IOException e) {
