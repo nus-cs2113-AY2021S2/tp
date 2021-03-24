@@ -21,15 +21,12 @@ package DataFiles <<Rectangle>> {
 }
 
 package Food <<Rectangle>> {
-    class hiddenFood #FFFFFF
 }
 
 package Exception <<Rectangle>> {
-    class hiddenException #FFFFFF
 }
 
 package Command <<Rectangle>>{
-    class hiddenCommand #FFFFFF
 }
 
 class Ui {
@@ -56,14 +53,18 @@ class Storage {
   -{static} String LIMITS_FILE_PATH
   -{static} String DIRECTORY
   -{static} Fridge fridge
+  --
+  .. Entry Points ..
   +{static} void load(Fridge fridgeInput)
   +{static} void save(Fridge fridgeInput)
+  .. Fridge Data ..
   -{static} void loadFridgeData(Fridge fridgeInput)
   -{static} void checkFridgeDataDirectory()
   -{static} void readFridgeData()
   -{static} void populateFridge(String line)
   -{static} void saveFridgeData()
   -{static} void populateFridgeDataFile()
+  .. Limits Data ..
   -{static} void loadLimitsData()
   -{static} void checkLimitsDirectory()
   -{static} void readLimitsData()
@@ -77,10 +78,13 @@ class Parser {
   -{static} int NUMBER_OF_PHRASES
   -{static} Pattern FOOD_DATA_ARGS_FORMAT
   -{static} Pattern REMOVE_ARGS_FORMAT
-  -{static} Pattern SET_LIMIT_ARGS_FORMAT
+  -{static} Pattern SET_LIMIT_ARGS_FORMAT]
+  --
+  .. Entry Points ..
   +{static} Command getCommand(String input)
   +{static} String[] parseInput(String input)
   -{static} Command parseCommand(String[] parsedInput)
+  .. Command Getters ..
   -{static} Command getAddCommand(String description)
   -{static} Command parseFoodDescription(String foodDescription)
   -{static} Command getListCommand(String description)
@@ -94,6 +98,7 @@ class Parser {
   -{static} Command getHelpCommand()
   -{static} Command getClearCommand()
   -{static} Command getByeCommand()
+  .. Helper Methods ..
   +{static} int parseIntegerQuantity(String description)
 }
 
