@@ -1,10 +1,33 @@
 @startuml
 !include style.puml
+allow_mixing
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 skinparam classAttributeIconSize 0
 skinparam groupInheritance 3
+
+package food <<Rectangle>> {
+  abstract class Food
+  package categories <<Rectangle>> {
+  class Beverage
+  class CookedDish
+  class Dairy
+  class Egg
+  class Frozen
+  class Fruit
+  class Meat
+  class ReadyToEat
+  class Seafood
+  class Vegetable
+  class Other
+  }
+  enum FoodCategory
+  enum FoodStorageLocation
+  class ExpiryDate
+  class Fridge
+  class UniqueFoodnameChecker
+}
 
 abstract class Food {
   # FoodCategory category
@@ -26,19 +49,7 @@ abstract class Food {
   + int getQuantity()
 }
 
-package categories <<Rectangle>> {
-    class Beverage
-    class CookedDish
-    class Dairy
-    class Egg
-    class Frozen
-    class Fruit
-    class Meat
-    class ReadyToEat
-    class Seafood
-    class Vegetable
-    class Other
-}
+
 
 Food <|-- Beverage
 Food <|-- CookedDish
@@ -60,7 +71,7 @@ class ExpiryDate {
     + String toString()
 }
 
-Food ..> ExpiryDate
+Food .right.> ExpiryDate
 
 class Fridge {
     - ArrayList<Food> fridge
@@ -74,7 +85,7 @@ class Fridge {
     + int getTotalQuantity(FoodCategory)
 }
 
-Fridge --> "*" Food
+Fridge -down-> "*" Food
 
 class UniqueFoodnameChecker {
     - ArrayList<Food> fridge
@@ -86,7 +97,7 @@ class UniqueFoodnameChecker {
     + boolean isParamIdentical()
 }
 
-Fridge *-- "UniqueFoodnameChecker" : use
+Fridge *-right- "UniqueFoodnameChecker" : use
 
 enum FoodStorageLocation {
     FREEZER
@@ -100,7 +111,7 @@ enum FoodStorageLocation {
     + {static} FoodStorageLocation convertStringToLocation(String)
 }
 
-Food ..> FoodStorageLocation
+Food .right.> FoodStorageLocation
 
 enum FoodCategory {
     VEGETABLE
@@ -132,7 +143,13 @@ enum FoodCategory {
     + {static} void setMinimumQuantity(FoodCategory, int)
 }
 
-Food ..> FoodCategory
+Food .left.> FoodCategory
+
+package Exception <<Rectangle>> {
+    class hiddenException #FFFFFF
+}
+
+food ..> Exception
 
 show circle
 
