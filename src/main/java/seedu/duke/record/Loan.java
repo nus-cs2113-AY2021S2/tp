@@ -9,39 +9,55 @@ import java.time.LocalDate;
 public class Loan extends Record {
     private static final String TYPE_LOAN = "L";
     private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %s | %f | %s | %d";
-
+    private String borrowerName;
+    private LocalDate returnDate;
     private boolean isReturn;
 
     /**
      * Constructor to create loan record.
      *
-     * @param amount loan amount.
-     * @param issuedDate date of loan.
+     * @param amount      loan amount.
+     * @param issuedDate  date of loan.
      * @param description loan details.
      */
-    public Loan(BigDecimal amount, LocalDate issuedDate, String description) {
-        super(amount, issuedDate, description);
-        isReturn = false;
+    public Loan(BigDecimal amount, LocalDate issuedDate, String description, String borrowerName) {
+        this(amount, issuedDate, description, borrowerName, null, false);
     }
 
     /**
      * Constructor to create loan record with predefined isReturn.
      *
-     * @param amount loan amount.
-     * @param issuedDate date of loan.
+     * @param amount      loan amount.
+     * @param issuedDate  date of loan.
      * @param description loan details.
-     * @param isReturn if the loan has been returned.
+     * @param isReturn    if the loan has been returned.
      */
-    public Loan(BigDecimal amount, LocalDate issuedDate, String description, boolean isReturn) {
+    public Loan(BigDecimal amount, LocalDate issuedDate, String description, String borrowerName, LocalDate returnDate,
+                boolean isReturn) {
         super(amount, issuedDate, description);
+        this.borrowerName = borrowerName;
+        this.returnDate = returnDate;
         this.isReturn = isReturn;
+    }
+
+    public String getBorrowerName() {
+        return borrowerName;
+    }
+
+    public LocalDate getReturnDate() {
+        return returnDate;
     }
 
     /**
      * Marks a loan as returned.
      */
-    public void markAsReturned() {
-        isReturn = true;
+    public void markAsReturned(LocalDate returnDate) {
+        this.isReturn = true;
+        this.returnDate = returnDate;
+    }
+
+    public boolean isReturn() {
+        return isReturn;
     }
 
     /**
