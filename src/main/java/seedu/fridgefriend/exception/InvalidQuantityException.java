@@ -10,4 +10,8 @@ public class InvalidQuantityException extends Exception {
     public InvalidQuantityException() {
         super(errorMessage);
     }
+
+    public InvalidQuantityException(String msg) {
+        super(msg);
+    }
 }

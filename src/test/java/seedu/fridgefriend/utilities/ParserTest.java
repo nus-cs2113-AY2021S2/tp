@@ -6,12 +6,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.fridgefriend.exception.EmptyDescriptionException;
-import seedu.fridgefriend.exception.InvalidIndexException;
-import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.command.ByeCommand;
-import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ListCommand;
+import seedu.fridgefriend.exception.EmptyDescriptionException;
+import seedu.fridgefriend.exception.InvalidInputException;
 
 // Solution below adapted from https://github.com/se-edu/addressbook-level2/blob/157fcf19c6b73289dc4cc7b2dd1152bc2b8e197a/test/java/seedu/addressbook/parser/ParserTest.java
 public class ParserTest {
@@ -62,6 +60,7 @@ public class ParserTest {
         });
     }
 
+    /*
     @Test
     public void parse_removeCommandAlphabeticalArgs_InvalidIndexException() {
         assertThrows(InvalidIndexException.class, () -> {
@@ -80,6 +79,7 @@ public class ParserTest {
             command.execute();
         });
     }
+   */
 
     @Test
     public void parse_searchCommandNoArg_EmptyDescriptionException() {

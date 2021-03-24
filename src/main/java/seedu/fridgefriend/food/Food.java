@@ -1,7 +1,8 @@
 package seedu.fridgefriend.food;
 
+import java.time.LocalDate;
+
 import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**
@@ -73,8 +74,14 @@ public abstract class Food {
 
     public void setStorageLocation(FoodStorageLocation storageLocation) {
         this.storageLocation = storageLocation;
-        LoggingHandler.logInfo("Storage location has been changed to "
-                + storageLocation + " in food object " + foodName);
+        LoggingHandler
+                .logInfo("Storage location has been changed to " + storageLocation + " in food object " + foodName);
+    }
+
+    public boolean isExpiring() {
+        LocalDate cutOff = LocalDate.now().plusDays(7);
+        LocalDate expiry = this.getExpiryDate().getExpiry();
+        return expiry.isBefore(cutOff);
     }
 
     public int getQuantity() {
