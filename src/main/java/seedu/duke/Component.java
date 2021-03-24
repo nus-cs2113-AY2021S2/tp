@@ -29,9 +29,17 @@ public class Component {
             // prompts user for component and its weightage
             Ui.printModuleComponentPrompt();
             String[] userInput = Ui.readCommand().split(" ");
-            components.put(userInput[0], Integer.parseInt(userInput[1]));
-            modules.get(moduleIndex)
-                    .setComponents(components);
+
+
+            //Test2 stores the old components and adds in the new component.
+            Hashtable<String, Integer> component = new Hashtable<>();
+            component = modules.get(moduleIndex).getComponents();
+            component.put(userInput[0], Integer.parseInt(userInput[1]));
+            modules.get(moduleIndex).setComponents(component);
+
+
+
+
             System.out.println("Component and weightage added!");
         } else {
             Ui.printModuleDoesNotExistMessage();
@@ -41,18 +49,26 @@ public class Component {
     }
 
     public static void viewComponent(ArrayList<Module> modules) {
+
+        int moduleIndex = 0;
         boolean isModuleExist = false;
         System.out.println("Module Name?");
         String moduleName = Ui.readCommand();
-        for (Module module : modules) {
-            if (module.getName().contains(moduleName)) {
+        for (int i = 0; i < modules.size(); i++) {
+            if (modules.get(i).getName().contains(moduleName)) {
                 isModuleExist = true;
+                moduleIndex = i;
+                System.out.println("module index: " + i);
                 break; // safety break
             }
         }
 
         if (isModuleExist) {
-            System.out.println(Component.components);
+            //System.out.println(Component.components);
+
+            System.out.println("From Module object: ");
+            System.out.println(modules.get(moduleIndex).getComponents());
+            System.out.println("module index: " + moduleIndex);
         } else {
             Ui.printModuleDoesNotExistMessage();
             Ui.printReturnToModuleInfoMenuMessage();
