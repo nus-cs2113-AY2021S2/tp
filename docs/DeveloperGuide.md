@@ -156,7 +156,40 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 ...
 
 ### 3.6 Storage Component
-...
+
+#### Description
+The Storage component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
+`records` from the `RecordList` into a text format in a text output file and vice versa.
+
+#### Design
+In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
+is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, the
+`saveRecordListData` method will be called and all `record` up to that point will be converted into a text output
+and saved into the `finux.txt` file. The `loadFile` method will do the exact opposite, and load the data from the
+`finux.txt` file back into the FINUX application.
+
+1. `saveRecordListData` is the method that is called after any `records` are added, deleted, or marked as returned. It 
+   will then call the `writeToSaveFile` method.
+
+2. `writeToSaveFile` will add the currently addressed `recordList` and all its stored `records` into the `finux.txt` file 
+   after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile` method will also output each 
+   individual records in separate lines.
+   
+3. `loadFile` method does the opposite of the `writeToSaveFile` method. In the `loadFile` method, a new ArrayList of
+   `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, `initSaveFile`
+   method will be called and a new `finux.txt` will be created in the same directory of the FINUX application. The
+   `loadFile` method will then return a new and empty ArrayList of `record` back to the `start` method in the `Duke` 
+   class. Should the `saveFileExist` returns true, for each line of text in the `finux.txt` file will be parsed into
+   the `parseRecord` method which will call the individual load methods `loadExpense`, `loadLoan`, `loadSaving` based on
+   a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is unable to be read, an 
+   exception will be thrown to the `start` method and FINUX will terminate. If all the text data is properly loaded, 
+   the `loadFile` method will return the ArrayList of `record` to the `RecordList` object in the `start` method.
+
+4. `parseRecord` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
+   `loadExpense`, `loadLoan`, `loadSaving` based on the pattern that matches the `Expense`, `Loan`, or `Saving` in the
+   saved file. This method will throw an exception back to the `loadFile` method if any of the REGEX pattern does not 
+   match.
+   
 
 ## 4. Implementation
 
