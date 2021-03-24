@@ -4,10 +4,6 @@ import ui.Ui;
 
 public class CheckUser {
 
-    private boolean isPublicUser = false;
-    private boolean isAdmin = false;
-    private boolean isVerified = false;
-
     public static boolean checkUserType(Ui ui) {
         while (true) {
             String input = Ui.readCommand();
