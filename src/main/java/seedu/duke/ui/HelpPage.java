@@ -20,6 +20,8 @@ public class HelpPage {
     private static final String MAN_SYNOPSIS_RETURN = "return [OPTION] [ARGUMENT]";
     private static final String MAN_HEADER_EXIT = "exit - terminate the program";
     private static final String MAN_SYNOPSIS_EXIT = "exit (no option/argument needed)";
+    private static final String MAN_HEADER_CREDITSCORE = "creditscore - check a person credit rating";
+    private static final String MAN_SYNOPSIS_CREDITSCORE = "creditscore [ARGUMENT]";
     private static final String MAN_OPTION_RECORD_TYPE = "-e, -l, -s";
     private static final String MAN_OPTION_RECORD_TYPE_DESCRIPTION = "[ARGUMENT] used as record description";
     private static final String MAN_OPTION_RECORD_TYPE_LISTING = "used to list the chosen record types";
@@ -37,6 +39,8 @@ public class HelpPage {
     private static final String MAN_OPTION_PERSON = "-p ";
     private static final String MAN_OPTION_PERSON_DESCRIPTION = "[ARGUMENT] the person name";
     private static final String MAN_OPTION_PERSON_IN_ADD_DESCRIPTION = ", use only with '-l' option";
+    private static final String MAN_ARGUMENT_CREDITSCORE_DESCRIPTION = "[ARGUMENT] name of the person "
+            + "to check their credit score";
 
     /**
      * Prints the respective help messages based on the command given.
@@ -61,6 +65,9 @@ public class HelpPage {
             break;
         case "return":
             printManPageReturn();
+            break;
+        case "creditscore":
+            printManPageCreditscore();
             break;
         case "exit":
             // Fallthrough
@@ -98,6 +105,7 @@ public class HelpPage {
         printManPageList();
         printManPageRemove();
         printManPageReturn();
+        printManPageCreditscore();
         printManPageExit();
     }
 
@@ -201,6 +209,24 @@ public class HelpPage {
         System.out.println((TAB_2SPACE + MAN_OPTION_INDEX_DESCRIPTION));
         System.out.println(TAB_1SPACE + MAN_OPTION_DATE);
         System.out.println(TAB_2SPACE + MAN_OPTION_DATE_RETURN_DESCRIPTION);
+        System.out.println(DIVIDER);
+    }
+
+    /**
+     * Prints the man page for creditscore command.
+     */
+    public static void printManPageCreditscore() {
+        printManHeader(MAN_HEADER_CREDITSCORE);
+        printManSynopsis(MAN_SYNOPSIS_CREDITSCORE);
+        printManDescriptionCreditscore();
+    }
+
+    /**
+     * Prints the creditscore command options arguments description.
+     */
+    public static void printManDescriptionCreditscore() {
+        System.out.println("DESCRIPTION");
+        System.out.println(TAB_1SPACE + MAN_ARGUMENT_CREDITSCORE_DESCRIPTION);
         System.out.println(DIVIDER);
     }
 

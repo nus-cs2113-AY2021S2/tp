@@ -12,6 +12,7 @@ import seedu.duke.ui.Ui;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.common.Validators.validateDate;
@@ -23,7 +24,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeExpenseCmd = "remove -i 1";
@@ -34,13 +35,15 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
+        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
+                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [E][2020-01-01] electric bills " + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage);
+        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveExpense_removeExpenseCmd_success', wrong output.");
         System.setOut(originalOut);
@@ -51,7 +54,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeLoanCmd = "remove -i 3";
@@ -62,13 +65,15 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
+        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
+                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [L][2020-01-01] loan to bob [ ]" + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage);
+        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveLoan_removeLoanCmd_success', wrong output.");
         System.setOut(originalOut);
@@ -79,7 +84,7 @@ class RemoveCommandTest {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
 
         String removeSavingCmd = "remove -i 4";
@@ -90,13 +95,15 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
+        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
+                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [S][2020-01-01] red packet " + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage);
+        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveSaving_removeSavingCmd_success', wrong output.");
         System.setOut(originalOut);
