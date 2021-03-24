@@ -1,13 +1,15 @@
 package seedu.duke.command;
 
-import seedu.duke.*;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
+import seedu.duke.DailyRoute;
+import seedu.duke.History;
+import seedu.duke.NotesManager;
 import seedu.duke.Map;
+import seedu.duke.UiManager;
 import seedu.duke.Router;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class ShowDailyRouteCommand extends Command {
     public ShowDailyRouteCommand(String userInput) {

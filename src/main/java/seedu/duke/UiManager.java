@@ -7,7 +7,10 @@ import seedu.duke.exception.RepeatEntryOutOfBoundException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class UiManager {
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -126,7 +129,7 @@ public class UiManager {
         }
     }
 
-    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() 
+    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo()
             throws InvalidDayException, InvalidBlockException {
         out.println("Enter the day: ");
         String day = in.nextLine().toUpperCase().trim();
