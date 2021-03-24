@@ -8,10 +8,7 @@ import seedu.duke.routing.Map;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class UiManager {
     private static final String LINE_SEPARATOR = System.lineSeparator();
@@ -89,7 +86,6 @@ public class UiManager {
 
     public void showHistory(History history) {
         assert history != null : "History must be initialized before, cannot be null";
-
         showToUser(
                 "Number of records in your history: " + history.getTotalNoOfHistory(),
                 history.getHistoryAsString()
@@ -99,7 +95,6 @@ public class UiManager {
     public void showClearHistoryResponse() {
         showToUser("Your history has been cleared.");
     }
-
 
     public String[] getRoutingInfo() {
         String[] startAndDestination = new String[2];
@@ -111,6 +106,29 @@ public class UiManager {
         startAndDestination[1] = in.nextLine().toUpperCase().trim();
 
         return startAndDestination;
+    }
+
+    public void showRoute(LinkedList<Block> route) {
+        String routeAsString = "";
+        routeAsString += "Route is :";
+        for (int i = route.size() - 1; i >= 0; i--) {
+            if (i > 0) {
+                routeAsString += route.get(i).getName() + "->";
+            } else {
+                routeAsString += route.get(i).getName();
+            }
+        }
+        showToUser(routeAsString);
+    }
+
+    public int getEateryEntry(Block[] eateries) {
+        out.println(DIVIDER);
+        out.println("Here are the list of eateries(from closest to furthest):");
+        for (int i = 0; i < eateries.length; i++) {
+            out.println((i + 1) + ". " + eateries[i].getName());
+        }
+        out.println(LINE_SEPARATOR + "SELECT ENTRY TO REPEAT:");
+        return Integer.parseInt(in.nextLine());
     }
 
     public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {

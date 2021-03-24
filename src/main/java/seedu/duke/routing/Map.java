@@ -26,6 +26,12 @@ public class Map {
         map.get(b).addNeighbour(map.get(a));
     }
 
+    public void resetVisitedFlag() {
+        for (Block block : map.values()) {
+            block.setAsNotVisited();
+        }
+    }
+
     public void initValidBlocks() {
         addBlock("E1");
         addBlock("E1A");
@@ -50,8 +56,13 @@ public class Map {
         addBlock("LT7A");
         addBlock("IT");
         addBlock("T-LAB");
-        addBlock("TECHNO EDGE");
         addBlock("AS1");
+        addBlock("TECHNO EDGE");
+        addBlock("TECHNO EDGE CANTEEN");
+        addBlock("CHEERS MINIMART");
+        addBlock("ARISE & SHINE");
+        addBlock("PLATYPUS FOOD BAR");
+        addBlock("SPINELLI COFFEE");
     }
 
     public void initNeighbouringBlocks() {
@@ -81,6 +92,10 @@ public class Map {
         addRelationship("E4A", "EW2");
         addRelationship("EW2", "E6");
         addRelationship("E6", "E7");
-
+        addRelationship("TECHNO EDGE", "TECHNO EDGE CANTEEN");
+        addRelationship("E3", "CHEERS MINIMART");
+        addRelationship("E4", "ARISE & SHINE");
+        addRelationship("E2A", "PLATYPUS FOOD BAR");
+        addRelationship("EA","SPINELLI COFFEE");
     }
 }

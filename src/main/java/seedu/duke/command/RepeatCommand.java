@@ -1,13 +1,13 @@
 package seedu.duke.command;
 
-import seedu.duke.DailyRoute;
-import seedu.duke.History;
-import seedu.duke.NotesManager;
-import seedu.duke.UiManager;
+import seedu.duke.*;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
+import seedu.duke.routing.Map;
 import seedu.duke.routing.Router;
+
+import java.util.LinkedList;
 
 public class RepeatCommand extends Command {
     public RepeatCommand(String userInput) {
@@ -15,7 +15,7 @@ public class RepeatCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
+    public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute) {
         ui.showHistory(history);
         try {
@@ -23,9 +23,9 @@ public class RepeatCommand extends Command {
             String[] pathDetails = history.getSpecificEntry(entry);
             String from = pathDetails[0];
             String to = pathDetails[1];
-            String route = router.execute(from,to);
+            LinkedList<Block> route = new Router().execute(nusMap, from, to);
             history.addHistory(from, to);
-            ui.showToUser(route);
+            ui.showRoute(route);
         } catch (RepeatEntryOutOfBoundException | InvalidRepeatEntryException | InvalidBlockException e) {
             ui.showToUser(e.getMessage());
         }
