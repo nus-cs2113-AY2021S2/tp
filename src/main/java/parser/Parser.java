@@ -1,15 +1,6 @@
 package parser;
 
-import command.AddCanteenCommand;
-import command.AddReviewCommand;
-import command.AddStoreCommand;
-import command.Command;
-import command.DeleteCanteenCommand;
-import command.DisplayCanteensCommand;
-import command.DisplayMenusCommand;
-import command.ExitCommand;
-import command.ReadReviewsCommand;
-import command.ResetIndexesCommand;
+import command.*;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import reviews.Review;
@@ -47,8 +38,10 @@ public class Parser {
 
     public Command parse(String line, Store store, int maxStores) throws DukeExceptions {
         Command newCommand;
-        if (line.equals("list")) {
-            newCommand = new ResetIndexesCommand();
+        if (line.equals("home")) {
+            newCommand = new HomeCommand();
+        } else if (line.equals("list")) {
+            newCommand = new ResetStoreCommand();
         } else if (line.equals("menu")) {
             newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
@@ -69,6 +62,7 @@ public class Parser {
         double rating;
         try {
             Ui.enterReview();
+            String line = Ui.readCommand();
             description = Ui.readCommand();
             Ui.enterRating();
             rating = Double.parseDouble(Ui.readCommand());

@@ -182,7 +182,8 @@ public class Ui {
         System.out.println("Enter 'menu' to view sample menu");
         System.out.println("Enter 'reviews' to show reviews of " + storeName);
         System.out.println("Enter 'add' to add a new review");
-        System.out.println("Enter 'list' to select a new canteen/store");
+        System.out.println("Enter 'home' to select a new canteen");
+        System.out.println("Enter 'list' to select a new store");
         System.out.println("Enter 'exit' to exit the application");
         System.out.println(LINESPACING);
     }

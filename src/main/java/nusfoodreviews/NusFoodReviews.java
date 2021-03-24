@@ -3,7 +3,6 @@ package nusfoodreviews;
 import admin.AdminVerification;
 import canteens.Canteen;
 import command.Command;
-import command.DisplayStoresCommand;
 import exceptions.DukeExceptions;
 import parser.Parser;
 import storage.Storage;
@@ -42,7 +41,6 @@ public class NusFoodReviews {
         ui.showLoginPage();
         isPublicUser = CheckUser.checkUserType(ui);
         if (isPublicUser) {
-            ui.userShowWelcome();
             runPublicUser();
         } else {
             runAdmin();
@@ -51,6 +49,7 @@ public class NusFoodReviews {
     }
 
     public void runPublicUser() throws DukeExceptions {
+        ui.userShowWelcome();
         boolean isExit = false;
 
         while (!isExit) {
@@ -91,8 +90,12 @@ public class NusFoodReviews {
         }
     }
 
-    public static void resetIndexes() {
+    public static void resetAllIndexes() {
         canteenIndex = -1;
+        storeIndex = -1;
+    }
+
+    public static void resetStoreIndex() {
         storeIndex = -1;
     }
 
@@ -103,6 +106,10 @@ public class NusFoodReviews {
     public void setCanteenIndex() throws DukeExceptions {
         ui.showDisplaySelectCanteens(canteens);
         String line = ui.readCommand();
+        if (line.equals("exit")) {
+            ui.showGoodbye();
+            System.exit(0);
+        }
         canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
     }
 
@@ -114,6 +121,10 @@ public class NusFoodReviews {
         Canteen canteen = canteens.get(canteenIndex);
         ui.showDisplaySelectStores(canteen);
         String line = ui.readCommand();
+        if (line.equals("exit")) {
+            ui.showGoodbye();
+            System.exit(0);
+        }
         storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
     }
 
