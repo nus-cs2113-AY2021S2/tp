@@ -1,65 +1,118 @@
 package parser;
 
+import command.AddCanteenCommand;
 import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
+import command.DeleteCanteenCommand;
+import command.DisplayCanteensCommand;
 import command.DisplayMenusCommand;
-import command.DisplayStoresCommand;
 import command.ExitCommand;
 import command.ReadReviewsCommand;
+import command.ResetIndexesCommand;
 import exceptions.DukeExceptions;
+import nusfoodreviews.NusFoodReviews;
+import reviews.Review;
+import stores.Store;
+import ui.Ui;
 
 
 public class Parser {
+    private NusFoodReviews nusFoodReviews;
 
-    public void indexCheckValid(int storeIndex, int maxStores) throws DukeExceptions {
-
-        try {
-            if (storeIndex < 0 | storeIndex > maxStores) {
-                throw new DukeExceptions("Index out of bound, "
-                        + "please re-enter a valid index.");
-            }
-
-        } catch (DukeExceptions e) {
-            System.out.println(e.getMessage());
-        }
-
+    public Parser(NusFoodReviews nusFoodReviews) {
+        this.nusFoodReviews = nusFoodReviews;
     }
 
+    public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws DukeExceptions {
+        int parsedInt;
 
-    public Command parse(String line, String index, int maxStores) throws DukeExceptions {
+        try {
+            parsedInt = Integer.parseInt(line);
+            if (parsedInt < inclusiveMin || parsedInt > inclusiveMax) {
+                String exceptionMessage;
+                if (inclusiveMin == inclusiveMax) {
+                    exceptionMessage = "Please enter a valid index!";
+                } else {
+                    exceptionMessage = "Please enter a valid index in the range of " + inclusiveMin
+                            + " and " + inclusiveMax + "!";
+                }
+                throw new DukeExceptions(exceptionMessage);
+            }
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("Please enter a valid integer index!");
+        }
+        return parsedInt;
+    }
+
+    public Command parse(String line, Store store, int maxStores) throws DukeExceptions {
         Command newCommand;
-        if (line.startsWith("list")) {
-            newCommand = new DisplayStoresCommand();
+        if (line.equals("list")) {
+            newCommand = new ResetIndexesCommand();
         } else if (line.equals("menu")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new DisplayMenusCommand(Integer.parseInt(index) - 1);
+            newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new AddReviewCommand(Integer.parseInt(index) - 1);
+            Review review = getReviewDetails();
+            newCommand = new AddReviewCommand(store, review);
         } else if (line.startsWith("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
-            indexCheckValid(Integer.parseInt(index) - 1,maxStores);
-            newCommand = new ReadReviewsCommand(Integer.parseInt(index) - 1);
+            newCommand = new ReadReviewsCommand(store);
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }
         return newCommand;
     }
 
+    public Review getReviewDetails() throws DukeExceptions {
+        String description;
+        double rating;
+        try {
+            Ui.enterReview();
+            description = Ui.readCommand();
+            Ui.enterRating();
+            rating = Double.parseDouble(Ui.readCommand());
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("Review not added. Please input your review in proper format!");
+        }
+        return new Review(description, rating);
+    }
+
     //parse admin commands only
-    public Command parseAdminCommand(String line, int maxStores) throws DukeExceptions {
+    public Command parseAdminCommand(String line) throws DukeExceptions {
         Command newCommand;
 
-        if (line.equals("1")) {
-            newCommand = new AddStoreCommand();
-        } else if (line.startsWith("list")) {
-            newCommand = new DisplayStoresCommand();
-        } else if (line.startsWith("exit")) {
+        switch (line) {
+        case "1":
+            newCommand = new DisplayCanteensCommand();
+            break;
+        case "2":
+            Ui.showAddCanteen();
+            String canteenName = Ui.readCommand();
+            newCommand = new AddCanteenCommand(canteenName);
+            break;
+        case "3":
+            nusFoodReviews.setCanteenIndex();
+            int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            Ui.showDisplayStores(nusFoodReviews.getCanteens().get(currentCanteenIndex));
+            Ui.showAddStore();
+            String storeName = Ui.readCommand();
+            newCommand = new AddStoreCommand(currentCanteenIndex, storeName);
+            break;
+        case "4":
+            Ui.showDisplaySelectCanteens(nusFoodReviews.getCanteens());
+            int canteenIndex = parseInt(Ui.readCommand(), 1, nusFoodReviews.getCanteens().size()) - 1;
+            newCommand = new DeleteCanteenCommand(canteenIndex);
+            break;
+        case "5":
+            //delete store (refer to 3)
             newCommand = new ExitCommand();
-        } else {
-            throw new DukeExceptions("Please enter a valid command!");
+            break;
+        case "6":
+            newCommand = new ExitCommand();
+            break;
+        default:
+            throw new DukeExceptions("Please enter a valid index!");
         }
         return newCommand;
     }

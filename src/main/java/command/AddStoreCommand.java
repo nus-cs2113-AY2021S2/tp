@@ -6,13 +6,18 @@ import java.util.ArrayList;
 
 public class AddStoreCommand extends Command {
 
+    private int canteenIndex;
+    private String storeName;
+
+    public AddStoreCommand(int canteenIndex, String storeName) {
+        this.canteenIndex = canteenIndex;
+        this.storeName = storeName;
+    }
+
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-        ui.showAddStore();
-        String storeName = ui.readCommand();
-        canteens.get(0).addStore(storeName);
+        canteens.get(canteenIndex).addStore(storeName);
         ui.printStoreAdded(storeName);
-
     }
 
 }

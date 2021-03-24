@@ -9,28 +9,18 @@ import ui.Ui;
 import java.util.ArrayList;
 
 public class AddReviewCommand extends Command {
-    protected int storeIndex;
-    protected String description;
-    protected double rating;
+    private Store store;
+    private Review review;
 
-    public AddReviewCommand(int storeIndex) {
-        this.storeIndex = storeIndex;
-        try {
-            Ui.enterReview();
-            this.description = Ui.readCommand();
-            Ui.enterRating();
-            this.rating = Double.parseDouble(Ui.readCommand());
-            Ui.reviewAdded();
-        } catch (NullPointerException e) {
-            System.out.println("Input cannot empty.");
-        }
+    public AddReviewCommand(Store store, Review review) {
+        this.store = store;
+        this.review = review;
     }
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
-        Store currentStore = canteens.get(0).getStore(storeIndex);
-        Review currentStoreReview = new Review(description,rating);
-        currentStore.addReview(currentStoreReview);
+        store.addReview(review);
+        Ui.reviewAdded();
     }
 
 }
