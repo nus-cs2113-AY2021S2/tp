@@ -77,6 +77,7 @@ Given below are my contributions to the project
     [#56](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/56)
     [#61](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/61)
     [#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93)
+    [#94](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/94)
     [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108)
     [#110](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/110))
 - Contributed to forum discussions (examples:
