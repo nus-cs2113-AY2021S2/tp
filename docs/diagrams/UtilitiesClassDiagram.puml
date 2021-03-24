@@ -1,15 +1,23 @@
 @startuml UtilitiesClassDiagram
+allow_mixing
 !include style.puml
 skinparam arrowThickness 1.1
 skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 skinparam classAttributeIconSize 0
 
+actor User
+
 package Utilities <<Rectangle>> {
     class Ui
     class LoggerHandler
     class Storage
     class Parser
+}
+
+package DataFiles <<Rectangle>> {
+    file limitsData
+    file fridgeData
 }
 
 package Food <<Rectangle>> {
@@ -44,51 +52,72 @@ class LoggerHandler {
 }
 
 class Storage {
-  -{static} String filePath
-  -{static} String directory
+  -{static} String DATA_FILE_PATH
+  -{static} String LIMITS_FILE_PATH
+  -{static} String DIRECTORY
   -{static} Fridge fridge
   +{static} void load(Fridge fridgeInput)
-  -{static} void checkDrectory()
-  -{static} void loadData
-  -{static} void readData(String line)
   +{static} void save(Fridge fridgeInput)
-  -{static} void clearFile()
-  -{static} void populateData()
+  -{static} void loadFridgeData(Fridge fridgeInput)
+  -{static} void checkFridgeDataDirectory()
+  -{static} void readFridgeData()
+  -{static} void populateFridge(String line)
+  -{static} void saveFridgeData()
+  -{static} void populateFridgeDataFile()
+  -{static} void loadLimitsData()
+  -{static} void checkLimitsDirectory()
+  -{static} void readLimitsData()
+  -{static} void populateFoodCategory()
+  -{static} void saveLimitsData()
+  -{static} void populateLimitsDataFile()
 }
 
 class Parser {
   -{static} int COMMAND_WORD_INDEX
   -{static} int NUMBER_OF_PHRASES
   -{static} Pattern FOOD_DATA_ARGS_FORMAT
+  -{static} Pattern REMOVE_ARGS_FORMAT
+  -{static} Pattern SET_LIMIT_ARGS_FORMAT
   +{static} Command getCommand(String input)
   +{static} String[] parseInput(String input)
   -{static} Command parseCommand(String[] parsedInput)
-  -{static} Command parseFoodDescription(String foodDescription)
   -{static} Command getAddCommand(String description)
+  -{static} Command parseFoodDescription(String foodDescription)
   -{static} Command getListCommand(String description)
   -{static} Command getRemoveCommand(String description)
+  -{static} Command parseRemoveDescription(String removeDescription)
   -{static} Command getSearchCommand(String description)
   -{static} Command getExpiringCommand()
+  -{static} Command getRunningLowCommand()
+  -{static} Command getSetLimitCommand(String description)
+  -{static} Command parseSetLimitDescription(String description)
   -{static} Command getHelpCommand()
+  -{static} Command getClearCommand()
   -{static} Command getByeCommand()
-  -{static} int parseIntegerDescription(String description)
+  +{static} int parseIntegerQuantity(String description)
 }
 
+' Basic Layout '
+LoggerHandler -right[hidden]-> Ui
+LoggerHandler -down[hidden]-> Parser
+Parser -right[hidden]-> Storage
+Ui -down[hidden]-> Storage
+Command -right[hidden]-> Exception
+Exception -right[hidden]-> Food
+Ui -right-> FridgeFriend
+Storage -right-> DataFiles
+DataFiles -up[hidden]-> FridgeFriend
 
-User -down-> Ui
 
-Ui -left-> FridgeFriend
-
+User --> Ui
 Storage .down.> Food
 Storage .down.> Exception
-Storage .up.> Ui
+Storage ..> Ui
+Storage ..> Parser
+Parser .down.> Exception
+Parser .down.> Command
+FridgeFriend --> Storage
 
-Parser ..> Exception
-Parser ..> Command
-Parser -[hidden]up-> LoggerHandler
-
-FridgeFriend -right-> Storage
-
-note right of LoggerHandler : Used by all other classes\nfor logging purposes
+'note right of LoggerHandler : Used by all other classes\nfor logging purposes
 
 @enduml

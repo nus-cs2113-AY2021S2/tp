@@ -23,8 +23,8 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Storage {
-    private static final String DATA_FILE_PATH = "data/data.txt";
-    private static final String LIMITS_FILE_PATH = "data/limits.txt";
+    private static final String DATA_FILE_PATH = "data/fridgeData.txt";
+    private static final String LIMITS_FILE_PATH = "data/limitsData.txt";
     private static final String DIRECTORY = "data";
     private static Fridge fridge;
 
@@ -53,7 +53,7 @@ public class Storage {
      * 
      * @param fridgeInput fridge to be populated
      */
-    public static void loadFridgeData(Fridge fridgeInput) {
+    private static void loadFridgeData(Fridge fridgeInput) {
         fridge = fridgeInput;
         try {
             checkFridgeDataDirectory();
@@ -126,7 +126,7 @@ public class Storage {
      * 
      * @param fridgeInput fridge to be saved
      */
-    public static void saveFridgeData(Fridge fridgeInput) {
+    private static void saveFridgeData(Fridge fridgeInput) {
         fridge = fridgeInput;
         try {
             clearFile(DATA_FILE_PATH);
@@ -154,7 +154,7 @@ public class Storage {
     /**
      * Loads the saved limits data into the FoodCategory class.
      */
-    public static void loadLimitsData() {
+    private static void loadLimitsData() {
         try {
             checkLimitsDirectory();
         } catch (Exception e) {
