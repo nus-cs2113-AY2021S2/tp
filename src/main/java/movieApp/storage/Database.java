@@ -1,5 +1,7 @@
 package movieApp.storage;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.Showtimes;
@@ -23,7 +25,7 @@ public class Database {
     }
 
     public static ArrayList<Movie> importMovieDatabase() throws Exception {
-        File f_movie = new File("data\\movieList.txt");
+        File f_movie = new File("data/movieList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
 
@@ -34,7 +36,7 @@ public class Database {
     }
 
     public static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
-        File f_cineplex = new File("data\\cineplexList.txt");
+        File f_cineplex = new File("data/cineplexList.txt");
         FileInputStream fis_cineplex = new FileInputStream(f_cineplex);
         ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
 
@@ -45,7 +47,7 @@ public class Database {
     }
 
     private static ArrayList<Showtimes> importShowtimesDatabase() throws Exception {
-        File f_showtime = new File("data\\showtimeList.txt");
+        File f_showtime = new File("data/showtimeList.txt");
         FileInputStream fis_showtime = new FileInputStream(f_showtime);
         ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
 
@@ -85,7 +87,7 @@ public class Database {
 
         MovieDatabase.remove(choice - 1);
         try {
-            File f_movie = new File("data\\movieList.txt");
+            File f_movie = new File("data/movieList.txt");
             FileOutputStream fos_movie = new FileOutputStream(f_movie);
             ObjectOutputStream oos_movie = new ObjectOutputStream(fos_movie);
             oos_movie.writeObject(MovieDatabase);
@@ -163,7 +165,7 @@ public class Database {
 
 
         try {
-            File f_movie = new File("data\\movieList.txt");
+            File f_movie = new File("data/movieList.txt");
             FileOutputStream fos_movie = new FileOutputStream(f_movie);
             ObjectOutputStream oos_movie = new ObjectOutputStream(fos_movie);
             oos_movie.writeObject(MovieDatabase);

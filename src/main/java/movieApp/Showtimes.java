@@ -67,7 +67,7 @@ public class Showtimes implements Serializable{
 		for (int row = 0; row < rownum; row++) {
 			 System.out.print("row "+ (row + 1) + " ");
 			for (int col = 0; col < colnum; col++) {
-				if(seatPlan[row][col].getStatus()) System.out.print("taken ");
+				if(seatPlan[row][col].getStatus()) System.out.print("  XX  ");
 				else  System.out.print("  --  ");
 			}
 			System.out.println();

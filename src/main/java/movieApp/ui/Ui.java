@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
-
     public Ui(){
         final String LOGO = "\n" +
                 "___  ___           _       ___              \n" +
@@ -23,24 +22,40 @@ public class Ui {
 
         System.out.println(LOGO);
 
-        int option = getOption();
+        getOption();
+
+        // go back
+
+    }
+
+    public static void doOption(int option) {
         ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 
-        if (option != 2) {
+        if (option == 1) {
+            //MovieFilter.printMovieList(MovieList);
             Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
             if (movie != null) MovieMenu.movieAction(movie);
+        } else if (option == 2) {
+            exit();
         }
+    }
 
+
+    public static void exit() {
         System.out.println("\n\nThank you for your time.\nHave a good day!\n\nSystem Exiting...");
         System.exit(0);
     }
-
-    public static int getOption() {
+    /**
+     *
+     * @return
+     */
+    public static void getOption() {
         int menu_choice = -1;
         Scanner sc = new Scanner(System.in);
-        while ((menu_choice < 1) || (menu_choice > 2)) {
-            System.out.println("======== Menu Choice =======");
-            System.out.println(" 1 Select a movie\n 2 Exit\n============================\nPlease indicate your choice:");
+        while (menu_choice != 2) {
+            System.out.println("\n======== Menu Choice =======");
+            System.out.println(" 1 View Movies\n " +
+                                "2 Exit\n============================\nPlease indicate your choice:");
             if (!sc.hasNextInt()) {
                 System.out.println("Please input an integer.\n");
                 sc.next();
@@ -49,9 +64,11 @@ public class Ui {
             menu_choice = sc.nextInt();
             if ((menu_choice < 1) || (menu_choice > 2)) {
                 System.out.println("Please input an integer between 1 and 2.\n");
+            } else {
+                doOption(menu_choice);
             }
         }
-        return menu_choice;
+        //return menu_choice;
     }
 
 

@@ -11,11 +11,12 @@ public class MovieFilter {
 
 	public static void printMovieList(ArrayList<Movie> MovieList) {
 		int i;
+		System.out.println("\n===========================");
 		System.out.println("Movie List:");
 		for (i=0;i<MovieList.size();i++) {
 			System.out.println((i+1)+". "+MovieList.get(i).getMovieTitle());
 		}
-		System.out.println("\n");
+		System.out.println("===========================\n");
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -292,9 +293,9 @@ public class MovieFilter {
 		while (movieList.size() != 1) {
 
 			ArrayList<Movie> movieListCopy = new ArrayList<Movie>(movieList);
-				System.out.println("\n\n");
+
 				Filter = getFilter();
-				if(Filter==10) {return null;}
+				if(Filter==8) {return null;}
 				printMovieList(movieList);
 				
 				switch(Filter) {	
@@ -327,9 +328,10 @@ public class MovieFilter {
 						movieList = new ArrayList<Movie>(Database.MovieDatabase);
 						break;
 					case 8:
-						new Ui();
-						break;
+						return null;
+
 				}
+
 				if (movieList.size() == 0) {
 					System.out.println("\nSorry! We couldn't find any matches.\nWould you like to try something else?");
 					movieList = movieListCopy;

@@ -38,7 +38,7 @@ public class MovieMenu {
 			}
 		}
 		if(!ms.equals("PREORDER") && !ms.equals("NOWSHOWING")) {
-			System.out.println("The movie is not available for sales. Thank you. ");
+			System.out.println("The movie is not available for sale. COMING SOON");
 			return; 
 		}
 		
@@ -47,10 +47,12 @@ public class MovieMenu {
 		ArrayList<Integer> showtime_index = new ArrayList(); 
 		for(int i=0; i<ShowtimeDatabase.size(); i++) {
 			if(ShowtimeDatabase.get(i).getMovieID() == movieID) {
-				System.out.println("Enter "+ n + " for the timing below: ");
-				Calendar d = ShowtimeDatabase.get(i).getDateTime(); 
-				System.out.println(d.get(Calendar.YEAR) + " " + (d.get(Calendar.MONTH)+1) + " " + d.get(Calendar.DATE)+ " Timing: " + d.get(Calendar.HOUR_OF_DAY)+ ": " + d.get(Calendar.MINUTE));
-				System.out.println("Location: Cineplex: " + CineplexDatabase.get(ShowtimeDatabase.get(i).getCineplexID()).getCineplexName()+ " -> " +"Cinema: " + (ShowtimeDatabase.get(i).getCinemaID()+1));
+				System.out.println("\nEnter "+ n + " for the timing below: ");
+				System.out.println("--------------------------");
+				Calendar d = ShowtimeDatabase.get(i).getDateTime();
+				System.out.print("[Timing] " + d.get(Calendar.YEAR) + "/" + (d.get(Calendar.MONTH)+1) + "/" + d.get(Calendar.DATE) + " ");
+				System.out.printf("%02d:%02d%n", d.get(Calendar.HOUR_OF_DAY), d.get(Calendar.MINUTE) );
+				System.out.println("[Location] Cineplex: " + CineplexDatabase.get(ShowtimeDatabase.get(i).getCineplexID()).getCineplexName()+ " -> " +"Cinema: " + (ShowtimeDatabase.get(i).getCinemaID()+1));
 				showtime_index.add(i); 
 				n++; 
 			}
@@ -61,7 +63,7 @@ public class MovieMenu {
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
 		while ((choice < 0) || (choice > (n-1))) {
-			System.out.println("Please enter your choice: ");
+			System.out.println("\n>>Please enter your choice: ");
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -75,15 +77,16 @@ public class MovieMenu {
 		
 
 		
-		int index_st = showtime_index.get(choice); 
-		
+		int index_st = showtime_index.get(choice);
 		int cinemaID = ShowtimeDatabase.get(index_st).getCinemaID(); 
-		int cineplexID = ShowtimeDatabase.get(index_st).getCineplexID(); 
-		System.out.println("You have selected: ");
-		Calendar d = ShowtimeDatabase.get(index_st).getDateTime(); 
-		System.out.println(d.get(Calendar.YEAR) + " " + (d.get(Calendar.MONTH)+1) + " " + d.get(Calendar.DATE)+ " Timing: " + d.get(Calendar.HOUR_OF_DAY)+ " : " + d.get(Calendar.MINUTE)); 
+		int cineplexID = ShowtimeDatabase.get(index_st).getCineplexID();
 
-		System.out.println("Location: Cineplex: " + CineplexDatabase.get(cineplexID).getCineplexName() +" -> " + "Cinema: " + (cinemaID+1));
+		System.out.println("You have selected: ");
+		System.out.println("--------------------------");
+		Calendar d = ShowtimeDatabase.get(index_st).getDateTime();
+		System.out.print("[Timing] " + d.get(Calendar.YEAR) + "/" + (d.get(Calendar.MONTH)+1) + "/" + d.get(Calendar.DATE) + " ");
+		System.out.printf("%02d:%02d%n", d.get(Calendar.HOUR_OF_DAY), d.get(Calendar.MINUTE) );
+		System.out.println("[Location] Cineplex: " + CineplexDatabase.get(cineplexID).getCineplexName()+ " -> " +"Cinema: " + (cinemaID+1));
 
 		 
 		int num_tic = -1;
@@ -112,7 +115,7 @@ public class MovieMenu {
 		ShowtimeDatabase.get(index_st).printSeats();
 		for(int b = 0; b<num_tic; b++) {
 			
-			System.out.println("Please select the seat for buyer No. " + (b+1));
+			System.out.println("\nPlease select the seat for buyer No. " + (b+1));
 			
 			int row = -1;
 			while ((row <1) || (row > maxrow)) {
@@ -127,6 +130,7 @@ public class MovieMenu {
 					System.out.println("Please input a row number that is within the range.\n");
 				}
 			}
+
 			
 			int col = -1;
 			while ((col <1) || (col > maxcolumn)) {
@@ -144,8 +148,8 @@ public class MovieMenu {
 
 			int[] RC = new int[2];
 			RC[0] = row;
-			RC[1] = col; 
-	
+			RC[1] = col;
+			System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 			boolean selectAgain = false;
 			for (int i = 0; i < num_tic; i++) {
 				if(seatChoice[i][0]==RC[0]&&seatChoice[i][1]==RC[1]) {selectAgain=true;}
@@ -181,8 +185,10 @@ public class MovieMenu {
 						System.out.println("Please input a column number that is within the range.\n");
 					}
 				}
+
 				RC[0] = row;
-				RC[1] = col; 
+				RC[1] = col;
+				System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 				selectAgain = false;
 				for (int i = 0;i<b;i++) {
 					if(seatChoice[i]==RC) {selectAgain=true;}
@@ -193,7 +199,9 @@ public class MovieMenu {
 			
 		}
 
-		System.out.println("The Transaction is made, total ticket number: "+ num_tic+" ");
+		System.out.println("\nThe Transaction is made, total ticket number: "+ num_tic+" ");
+
+// TODO: print seats
  
 	}
 	
