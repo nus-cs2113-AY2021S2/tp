@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 
 import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.command.ByeCommand;
-import seedu.fridgefriend.command.ClearCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
@@ -118,9 +117,6 @@ public class Parser {
             break;
         case "help":
             command = Parser.getHelpCommand();
-            break;
-        case "clear":
-            command = Parser.getClearCommand();
             break;
         case "bye":
             command = Parser.getByeCommand();
@@ -317,16 +313,6 @@ public class Parser {
     public static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
-    }
-
-    /**
-     * Returns a ClearCommand object.
-     *
-     * @return ClearCommand object
-     */
-    public static Command getClearCommand() {
-        Command clearCommand = new ClearCommand();
-        return clearCommand;
     }
 
     /**
