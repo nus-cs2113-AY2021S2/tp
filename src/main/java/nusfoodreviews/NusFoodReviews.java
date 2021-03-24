@@ -29,7 +29,7 @@ public class NusFoodReviews {
     }
 
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the java.nusfoodreviews.NusFoodReviews application.
      */
     public static void main(String[] args) throws DukeExceptions {
         new NusFoodReviews("data/storage.txt").run();
