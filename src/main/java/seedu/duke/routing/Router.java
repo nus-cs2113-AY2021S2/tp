@@ -1,6 +1,7 @@
 package seedu.duke.routing;
 
 import seedu.duke.Block;
+import seedu.duke.BlockAlias;
 import seedu.duke.exception.InvalidBlockException;
 
 import java.util.ArrayList;
@@ -9,9 +10,11 @@ import java.util.LinkedList;
 
 public class Router {
     private Map nusMap;
+    private final BlockAlias aliasMap;
 
-    public Router() {
+    public Router(BlockAlias blockAlias) {
         this.nusMap = new Map();
+        this.aliasMap = blockAlias;
     }
 
     public String execute(String from, String to) throws InvalidBlockException {
@@ -32,6 +35,14 @@ public class Router {
     public String printShortestDistance(String from, String to) {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
+
+        if (aliasMap.getAliasMap().containsKey(from)) {
+            from = aliasMap.getAliasMap().get(from);
+        }
+        if (aliasMap.getAliasMap().containsKey(to)) {
+            to = aliasMap.getAliasMap().get(to);
+        }
+
         Block start = nusMap.getBlock(from);
         Block destination = nusMap.getBlock(to);
         HashMap<Block, Block> predecessor = new HashMap<>();

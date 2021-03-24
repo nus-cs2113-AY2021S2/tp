@@ -5,11 +5,14 @@ import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
+import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.routing.Router;
 
-public class GoCommand extends Command {
-    public GoCommand(String userInput) {
+import java.util.HashMap;
+
+public class AddCustomAliasCommand extends Command {
+    public AddCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
@@ -17,12 +20,13 @@ public class GoCommand extends Command {
     public void execute(Router router, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         try {
-            String[] startAndDestination = ui.getRoutingInfo();
-            String route = router.execute(startAndDestination[0], startAndDestination[1]);
-            history.addHistory(startAndDestination[0], startAndDestination[1]);
-            ui.showToUser(route);
-        } catch (InvalidBlockException e) {
+            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasMap());
+            assert addAlias != null;
+            blockAlias.getAliasMap().putAll(addAlias);
+        } catch (InvalidAliasException e) {
             ui.showToUser(e.getMessage());
+        } catch (InvalidBlockException r) {
+            ui.showToUser(r.getMessage());
         }
     }
 }
