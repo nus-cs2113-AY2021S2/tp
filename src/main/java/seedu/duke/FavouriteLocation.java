@@ -30,4 +30,14 @@ public class FavouriteLocation {
             System.out.println("Invalid index!");
         }
     }
+
+    public void showFavouriteLocations() {
+        if (favouriteLocations.size() == 0) {
+            System.out.println("There are no favourite locations.");
+        } else {
+            for (int i = 0; i != favouriteLocations.size(); i += 1) {
+                System.out.println((i+1) + ". " + favouriteLocations.get(i));
+            }
+        }
+    }
 }

@@ -166,4 +166,9 @@ public class UiManager {
         checkValidDay(day);
         return day;
     }
+
+    public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
+        assert favouriteLocation != null : "favouriteLocation must be initialised";
+        favouriteLocation.showFavouriteLocations();
+    }
 }
