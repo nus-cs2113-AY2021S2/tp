@@ -1,13 +1,11 @@
 package seedu.duke.editor;
 
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -22,7 +20,6 @@ import java.util.Scanner;
 
 import static seedu.duke.common.Constants.DEFAULT_FONT_SIZE;
 import static seedu.duke.common.Constants.DEFAULT_FONT_STYLE;
-import static seedu.duke.common.Constants.FONT_COLOUR_HEADER;
 import static seedu.duke.common.Constants.FONT_COLOUR_ICON;
 import static seedu.duke.common.Constants.FONT_SIZE_MAX;
 import static seedu.duke.common.Constants.FONT_SIZE_MIN;
@@ -49,7 +46,6 @@ public class TextEditor extends JFrame implements ActionListener {
         setTextEditorTitle();
         setCloseIcon();
         setTextEditorDimension();
-        setFontColourIcon();
         setFontStyleIcon();
         setSaveIcon();
         setTextArea();
@@ -70,6 +66,7 @@ public class TextEditor extends JFrame implements ActionListener {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
+            assert fileReader != null;
             fileReader.close();
         }
     }
@@ -98,16 +95,10 @@ public class TextEditor extends JFrame implements ActionListener {
         String[] fontStyles = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
         fontStyleBox = new JComboBox<>(fontStyles);
         fontStyleBox.addActionListener(this);
-        fontStyleBox.setSelectedItem(DEFAULT_FONT_STYLE);
+        fontStyleBox.setSelectedItem(textArea.getFont().getFontName());
         add(fontStyleBox);
     }
 
-    private void setFontColourIcon() {
-        this.add(fontColourButton);
-        fontColourButton.addActionListener(this);
-    }
-    
-    
     public void increaseFontSize() {
         int size = textArea.getFont().getSize();
         if (size >= FONT_SIZE_MAX) {
@@ -135,7 +126,7 @@ public class TextEditor extends JFrame implements ActionListener {
     private void setTextArea() {
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        textArea.setFont(new Font(DEFAULT_FONT_STYLE, Font.PLAIN, DEFAULT_FONT_SIZE));
+        textArea.setFont(new Font(textArea.getFont().getFontName(), Font.PLAIN, textArea.getFont().getSize()));
     }
 
     private void setTextEditorDimension() {
@@ -152,9 +143,7 @@ public class TextEditor extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == fontColourButton) {
-            openFontColourOptions();
-        } else if (e.getSource() == fontStyleBox) {
+        if (e.getSource() == fontStyleBox) {
             openFontStyleOptions();
         } else if (e.getSource() == saveButton) {
             saveTextToFile();
@@ -174,12 +163,6 @@ public class TextEditor extends JFrame implements ActionListener {
     private void openFontStyleOptions() {
         textArea.setFont(new Font((String) fontStyleBox.getSelectedItem(), Font.PLAIN,
                 textArea.getFont().getSize()));
-    }
-
-    private void openFontColourOptions() {
-        JColorChooser colourChooser = new JColorChooser();
-        Color colour = colourChooser.showDialog(null, FONT_COLOUR_HEADER, Color.BLACK);
-        textArea.setForeground(colour);
     }
 
     private void setShortcutListener() {
