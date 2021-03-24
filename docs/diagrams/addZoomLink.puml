@@ -6,32 +6,32 @@ Links -> Ui : readCommand()
 activate Ui
 Ui --> Links : command
 deactivate Ui
-Links -> LinkInfo : addZoomLink()
-activate LinkInfo
-LinkInfo -> Ui : printEnterRequirePassword
+Links -> ZoomLinkInfo : addZoomLink()
+activate ZoomLinkInfo
+ZoomLinkInfo -> Ui : printEnterRequirePassword
 activate Ui
 Ui -> Ui : readCommand
 activate Ui
 deactivate Ui
-Ui --> LinkInfo :  passwordCommand
+Ui --> ZoomLinkInfo :  passwordCommand
 deactivate Ui
-LinkInfo -> Ui : printEnterPassword()
+ZoomLinkInfo -> Ui : printEnterPassword()
 activate Ui
 Ui -> Ui : readCommand
 activate Ui
 deactivate Ui
-Ui --> LinkInfo : password
+Ui --> ZoomLinkInfo : password
 deactivate Ui
-LinkInfo -> ModuleInfo : getModule()
+ZoomLinkInfo -> ModuleInfo : getModule()
 activate ModuleInfo
-ModuleInfo --> LinkInfo : module
+ModuleInfo --> ZoomLinkInfo : module
 deactivate ModuleInfo
-LinkInfo --> Module : setZoomLink()
+ZoomLinkInfo --> Module : setZoomLink()
 activate Module
-Module --> LinkInfo
+Module --> ZoomLinkInfo
 deactivate Module
-LinkInfo --> Links
-deactivate LinkInfo
+ZoomLinkInfo --> Links
+deactivate ZoomLinkInfo
 
 return
 @enduml
