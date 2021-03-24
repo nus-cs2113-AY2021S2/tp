@@ -10,6 +10,7 @@ public class Duke {
     private History history;
     private NotesManager notesManager;
     private DailyRoute dailyroute;
+    private FavouriteLocation favouriteLocation;
     private BlockAlias blockAlias;
 
     public static void main(String[] args) {
@@ -30,6 +31,10 @@ public class Duke {
         this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
         this.blockAlias = new BlockAlias();
+        this.favouriteLocation = new FavouriteLocation();
+        ui.showLogo();
+        ui.showGreetMessage();
+        runCommandLoopUntilByeCommand();
     }
 
     public void runCommandLoopUntilByeCommand() {
@@ -38,7 +43,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(nusMap, ui, history, notesManager, dailyroute, blockAlias);
+                command.execute(nusMap, ui, history, notesManager, dailyroute, blockAlias, favouriteLocation);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());

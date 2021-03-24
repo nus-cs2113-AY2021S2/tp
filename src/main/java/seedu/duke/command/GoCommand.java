@@ -4,8 +4,9 @@ import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
-import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
+import seedu.duke.Map;
 import seedu.duke.EateryList;
 import seedu.duke.Router;
 import seedu.duke.exception.InvalidBlockException;
@@ -17,7 +18,8 @@ public class GoCommand extends Command {
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
+                        NotesManager notesManager, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
             String[] startAndDestination = ui.getRoutingInfo();
             if (startAndDestination[1].equals("EATERY")) {

@@ -6,6 +6,7 @@ import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.FavouriteLocation;
 
 public class ListNoteCommand extends Command {
     public ListNoteCommand(String userInput) {
@@ -14,7 +15,8 @@ public class ListNoteCommand extends Command {
 
     @Override
     public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
+                        NotesManager notesManager, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         notesManager.parseListNotesCommandAndListNotes(userInput);;
     }
 }

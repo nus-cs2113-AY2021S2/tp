@@ -248,4 +248,9 @@ public class UiManager {
             throw new InvalidAliasException();
         }
     }
+
+    public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
+        assert favouriteLocation != null : "favouriteLocation must be initialised";
+        favouriteLocation.showFavouriteLocations();
+    }
 }
