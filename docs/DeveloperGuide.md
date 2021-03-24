@@ -1,4 +1,4 @@
-###Editor component
+### Editor component
 API: TextEditor.java
 &nbsp;
 
