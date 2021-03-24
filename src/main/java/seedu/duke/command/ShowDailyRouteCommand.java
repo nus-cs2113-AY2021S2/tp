@@ -18,9 +18,9 @@ public class ShowDailyRouteCommand extends Command {
     @Override
     public void execute(Router router, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute) {
-        String day = null;
+        String day;
         try {
-            day = ui.getDay();
+            day = ui.getValidDay();
             assert day != null;
             ArrayList<String> blocks = dailyRoute.getDailyRoute(day);
             StringBuilder dayRoute = new StringBuilder();
@@ -31,11 +31,12 @@ public class ShowDailyRouteCommand extends Command {
                     if (i < blocks.size() - 2) {
                         dayRoute.append("\n");
                     }
-                    ui.showToUser(dayRoute.toString());
+
                 } catch (InvalidBlockException e) {
                     ui.showToUser(e.getMessage());
                 }
             }
+            ui.showToUser(dayRoute.toString());
         } catch (InvalidDayException e) {
             ui.showToUser(e.getMessage());
         }

@@ -7,9 +7,8 @@ import seedu.duke.UiManager;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.routing.Router;
+import seedu.duke.DaySchedulePair;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
 
 public class AddDailyRouteCommand extends Command {
 
@@ -22,11 +21,11 @@ public class AddDailyRouteCommand extends Command {
     @Override
     public void execute(Router router, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute) {
-        AbstractMap.SimpleEntry<String, ArrayList<String>> dayAndRoute;
+        DaySchedulePair dayAndRoute;
         try {
             dayAndRoute = ui.getDailyRouteInfo();
             assert dayAndRoute != null;
-            dailyRoute.addDailyRoute(dayAndRoute.getKey(), dayAndRoute.getValue());
+            dailyRoute.addDailyRoute(dayAndRoute.getDay(), dayAndRoute.getSchedule());
         } catch (InvalidDayException e) {
             ui.showToUser(e.getMessage());
         } catch (InvalidBlockException r) {
