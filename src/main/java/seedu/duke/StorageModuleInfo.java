@@ -12,7 +12,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskList;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
@@ -316,13 +320,6 @@ public class StorageModuleInfo {
             String[] part = s.nextLine().split(" ~~ ");
             TaskList.pinnedTasks.computeIfAbsent(part[0], k -> new ArrayList<>());
             switch (part[0]) {
-            case "[Task]":
-                Task task = new Task(part[1], part[3], part[4]);
-                TaskList.pinnedTasks.get(part[0]).add(task);
-                if (part[2].equals("[DONE] ")) {
-                    task.markAsDone();
-                }
-                break;
             case "[Assignment]":
                 Assignment assignment = new Assignment(part[1], part[3], part[4], part[5]);
                 TaskList.pinnedTasks.get(part[0]).add(assignment);
@@ -344,6 +341,13 @@ public class StorageModuleInfo {
                     finalExam.markAsDone();
                 }
                 break;
+            default:
+                Task task = new Task(part[1], part[3], part[4]);
+                TaskList.pinnedTasks.get(part[0]).add(task);
+                if (part[2].equals("[DONE] ")) {
+                    task.markAsDone();
+                }
+                break;
             }
         }
     }
@@ -351,19 +355,8 @@ public class StorageModuleInfo {
     public static void pinnedTasksFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForPinnedTasks);
         Set<String> taskTypes = TaskList.pinnedTasks.keySet();
-        for(String taskType : taskTypes) {
+        for (String taskType : taskTypes) {
             switch (taskType) {
-            case "[Task]":
-                ArrayList<Task> tasks = TaskList.pinnedTasks.get(taskType);
-                for (Task task : tasks) {
-                    fw.write("[Task] ~~ "
-                            + task.getModule() + " ~~ "
-                            + task.getStatus() + " ~~ "
-                            + task.getDescription() + " ~~ "
-                            + task.getMessage());
-                    fw.write(System.lineSeparator());
-                }
-                break;
             case "[Assignment]":
                 ArrayList<Task> assignments = TaskList.pinnedTasks.get(taskType);
                 for (Task task : assignments) {
@@ -400,6 +393,17 @@ public class StorageModuleInfo {
                             + finalExam.getDescription() + " ~~ "
                             + finalExam.getMessage() + " ~~ "
                             + finalExam.getOn());
+                    fw.write(System.lineSeparator());
+                }
+                break;
+            default:
+                ArrayList<Task> tasks = TaskList.pinnedTasks.get(taskType);
+                for (Task task : tasks) {
+                    fw.write("[Task] ~~ "
+                            + task.getModule() + " ~~ "
+                            + task.getStatus() + " ~~ "
+                            + task.getDescription() + " ~~ "
+                            + task.getMessage());
                     fw.write(System.lineSeparator());
                 }
                 break;
