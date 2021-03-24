@@ -14,13 +14,17 @@ import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
+import seedu.fridgefriend.command.RunningLowCommand;
 import seedu.fridgefriend.command.SearchCommand;
+import seedu.fridgefriend.command.SetLimitCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.food.FoodCategory;
 
 /**
  * Represents an object that deals with making sense of the user command.
@@ -40,10 +44,11 @@ public class Parser {
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
      */
     public static Command getCommand(String input)
-            throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
+            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -80,10 +85,11 @@ public class Parser {
      * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
-            throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException, FoodNameNotFoundException {
+            throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
+            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
         String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
@@ -104,11 +110,17 @@ public class Parser {
         case "expiring":
             command = Parser.getExpiringCommand();
             break;
+        case "runninglow":
+            command = Parser.getRunningLowCommand();
+            break;
+        case "setlimit":
+            command = Parser.getSetLimitCommand(description);
+            break;
         case "help":
             command = Parser.getHelpCommand();
             break;
         case "clear":
-            command = new ClearCommand();
+            command = Parser.getClearCommand();
             break;
         case "bye":
             command = Parser.getByeCommand();
@@ -157,7 +169,7 @@ public class Parser {
      * @param foodDescription the string in the required format of food description
      * @return a new AddCommand for Food
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidInputException if the description cannot parse
+     * @throws InvalidInputException if the description cannot parsed
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
@@ -252,6 +264,52 @@ public class Parser {
     }
 
     /**
+     * Returns a RunningLowCommand object.
+     */
+    private static Command getRunningLowCommand() {
+        Command runningLowCommand = new RunningLowCommand();
+        return runningLowCommand;
+    }
+
+    /**
+     * Returns a SetLimitCommand object.
+     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
+     */
+    private static Command getSetLimitCommand(String description) throws EmptyDescriptionException,
+            InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
+        Command setLimitCommand = parseSetLimitDescription(description);
+        return setLimitCommand;
+    }
+
+    /**
+     * Define arguments format for remove food command with quantity.
+     */
+    public static final Pattern SETLIMIT_ARGS_FORMAT =
+            Pattern.compile("(?<foodCategory>[^/]+)"
+                    + " /qty (?<quantity>[^/]+)");
+
+    public static Command parseSetLimitDescription(String description) throws EmptyDescriptionException,
+            InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        Matcher matcherRemove = SETLIMIT_ARGS_FORMAT.matcher(description.trim());
+        if (!matcherRemove.matches()) {
+            throw new InvalidInputException();
+        }
+        String foodCategoryString = matcherRemove.group("foodCategory");
+        if (!FoodCategory.isValidCategory(foodCategoryString)) {
+            throw new InvalidFoodCategoryException(foodCategoryString);
+        }
+        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);            
+        int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
+        return new SetLimitCommand(foodCategory, quantity);
+    }
+
+    /**
      * Returns a HelpCommand object.
      *
      * @return HelpCommand object
@@ -260,6 +318,16 @@ public class Parser {
     private static Command getHelpCommand() {
         Command helpCommand = new HelpCommand();
         return helpCommand;
+    }
+
+    /**
+     * Returns a ClearCommand object.
+     *
+     * @return ClearCommand object
+     */
+    public static Command getClearCommand() {
+        Command clearCommand = new ClearCommand();
+        return clearCommand;
     }
 
     /**

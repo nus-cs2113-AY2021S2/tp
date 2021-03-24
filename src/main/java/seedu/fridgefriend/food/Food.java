@@ -3,7 +3,6 @@ package seedu.fridgefriend.food;
 import java.time.LocalDate;
 
 import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**

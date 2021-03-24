@@ -1,8 +1,5 @@
 package seedu.fridgefriend.command;
 
-import seedu.fridgefriend.exception.InvalidIndexException;
-import seedu.fridgefriend.exception.InvalidInputException;
-import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
 /**

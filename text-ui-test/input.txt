@@ -23,4 +23,5 @@ search
 remove chicken /qty 200
 remove pork /qty 200
 remove roast chicken /qty 2
+runninglow
 bye

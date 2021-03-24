@@ -19,6 +19,8 @@ These are the list of available commands:
 	remove foodName /qty removeQuantity
 	search searchString
 	expiring
+	runninglow
+	setlimit foodCategory /qty newLimit
 	clear
 	help
 	bye
@@ -87,11 +89,28 @@ Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Noted! I've removed 200 of the food chicken from your fridge.
 New quantity: 100
+WARNING! You are running low on MEAT
+Total MEAT quantity: 300
 -----------------------------------------------------------------
 Noted! I've removed pork from your fridge.
 Now you have 3 food in the fridge.
+WARNING! You are running low on MEAT
+Total MEAT quantity: 100
 -----------------------------------------------------------------
 Not enough in fridge to remove!
+-----------------------------------------------------------------
+You are running low on food in these categories:
+1. VEGETABLE quantity: 0 out of 500
+2. FRUIT quantity: 0 out of 500
+3. MEAT quantity: 100 out of 500
+4. SEAFOOD quantity: 1 out of 500
+5. EGG quantity: 0 out of 500
+6. DAIRY quantity: 0 out of 500
+7. BEVERAGE quantity: 0 out of 500
+8. COOKED_DISH quantity: 0 out of 500
+9. READY_TO_EAT quantity: 1 out of 500
+10. FROZEN quantity: 0 out of 500
+11. OTHER quantity: 0 out of 500
 -----------------------------------------------------------------
 Bye! Hope to see you again soon!
 -----------------------------------------------------------------
