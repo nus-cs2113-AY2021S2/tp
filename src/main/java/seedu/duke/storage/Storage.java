@@ -159,11 +159,12 @@ public class Storage {
     private Record loadSaving(String rawData) throws InvalidFileInputException {
         BigDecimal amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                DateTimeFormatter.ofPattern("yyyy-M-d"));
+        LocalDate issueDate;
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern("yyyy-M-d"));
         } catch (NumberFormatException | DateTimeParseException e) {
             throw new InvalidFileInputException();
         }

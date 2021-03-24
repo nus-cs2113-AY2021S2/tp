@@ -188,8 +188,38 @@ and saved into the `finux.txt` file. The `loadFile` method will do the exact opp
 4. `parseRecord` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
    `loadExpense`, `loadLoan`, `loadSaving` based on the pattern that matches the `Expense`, `Loan`, or `Saving` in the
    saved file. This method will throw an exception back to the `loadFile` method if any of the REGEX pattern does not 
-   match.
+   match. (Add stuff here!)
    
+5. `loadExpense` will extract the individual components from the raw data parsed into it. This method will call the
+   `extractArg` method which returns the components that are addressed by the index after splitting up the raw save
+   file. The `amount` object in this method will be converted into a `BigInteger` type and the `issueDate` will be 
+   parsed in the `localDate` type. An exception will be thrown if either `amount` or `issueDate` is not in the right 
+   format which prevents them from being parsed into their respective types. It will then return a new `Expense` object
+   to the `parseRecord` method.
+   
+6. `loadSaving` works similar to `loadExpense` method, where the only difference is that it returns a new `Saving`
+   object to the `parseRecord` method.
+   
+7. `loadLoan` also works similar to both `loadExpense` and `loadSaving` method, but in the `loadLoan` method, 
+   it has an extra boolean parameter, `isReturn`. Where `1` signifies returned and `0` not returned. This method then
+   returns a new `Loan` object to the `parseRecord` method.
+   
+#### Storage Component Design Consideration
+
+1. Regex pattern has to be strictly adhered to.
+   * Spacings between the `|` and components have to be separated clearly.
+   * Components in the `finux.txt` file should not contain any extraneous `|`.
+   * Each component's index must be the same regardless of the instance of the object.
+   
+2. Save file has to exist.
+   * `finux.txt` has to be created upon the first time start of the application .
+   * `finux.txt` is to be checked if exist before loading or creating a new file.
+
+3. Variable components of each `record` object has to be parsed properly.
+   * As the save function saves these `record` in a particular regex pattern and type, users who edit the save file
+   directly may enter ambiguous characters like the `|`, thus each variable has to be parsed without any error thrown. 
+   * Error has to be thrown if the saved text is unable to be parsed, as by allowing ambiguous values to be parsed into
+   the application may cause unknown and unwanted outputs.
 
 ## 4. Implementation
 
