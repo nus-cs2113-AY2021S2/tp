@@ -14,6 +14,7 @@ public class AdminVerificationTest {
 
     @Test
     public void testAdminPassword() {
+
         assertEquals("Wrong Password!",verifyInputPassword());
     }
 

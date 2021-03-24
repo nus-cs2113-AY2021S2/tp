@@ -34,11 +34,13 @@ public class NusFoodReviews {
      */
     public static void main(String[] args) throws DukeExceptions {
         new NusFoodReviews("data/storage.txt").run();
+
     }
 
     public void run() throws DukeExceptions {
         ui.showLogo();
         ui.showLoginPage();
+        assert (!isPublicUser);
         isPublicUser = CheckUser.checkUserType(ui);
         if (isPublicUser) {
             runPublicUser();
@@ -50,9 +52,8 @@ public class NusFoodReviews {
 
     public void runPublicUser() throws DukeExceptions {
         ui.userShowWelcome();
-        boolean isExit = false;
 
-        while (!isExit) {
+        while (true) {
             try {
                 if (canteenIndex < 0) {
                     setCanteenIndex();
