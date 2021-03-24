@@ -369,8 +369,11 @@ public class TaskList {
     private static void findAndDeleteAssigment(int taskNumber) {
         Assignment deletedAssignment = assignments.get(taskNumber - 1);
         assignments.remove(deletedAssignment);
-        if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
-            pinnedTasks.get("[Assignment]").remove(deletedAssignment);
+        boolean typeAssignmentIsPinned = pinnedTasks.containsKey("[Assignment]");
+        if (typeAssignmentIsPinned) {
+            if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
+                pinnedTasks.get("[Assignment]").remove(deletedAssignment);
+            }
         }
         Ui.printDeletedTaskMessage(deletedAssignment);
     }
@@ -378,8 +381,11 @@ public class TaskList {
     private static void findAndDeleteMidterm(int taskNumber) {
         Midterm deletedMidterm = midterms.get(taskNumber - 1);
         midterms.remove(deletedMidterm);
-        if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
-            pinnedTasks.get("[Midterm]").remove(deletedMidterm);
+        boolean typeMidtermIsPinned = pinnedTasks.containsKey("[Midterm]");
+        if (typeMidtermIsPinned) {
+            if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
+                pinnedTasks.get("[Midterm]").remove(deletedMidterm);
+            }
         }
         Ui.printDeletedTaskMessage(deletedMidterm);
     }
@@ -387,8 +393,11 @@ public class TaskList {
     private static void findAndDeleteFinalExam(int taskNumber) {
         FinalExam deletedFinalExam = finalExams.get(taskNumber - 1);
         finalExams.remove(deletedFinalExam);
-        if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
-            pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
+        boolean typeFinalExamIsPinned = pinnedTasks.containsKey("[Final Exam]");
+        if (typeFinalExamIsPinned) {
+            if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
+                pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
+            }
         }
         Ui.printDeletedTaskMessage(deletedFinalExam);
     }
