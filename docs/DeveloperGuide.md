@@ -2,11 +2,11 @@
 
 ## Introduction
 
-Purpose
+**Purpose**
 
 This document describes the architecture and implementation details of the command line application, GULIO.
 
-Design
+**Overview**
 
 GULIO is a command line application for NUS students to organize their modules. The application separates commands into 2 categories: those allowed on the dashboard and those allowed only when a module has been selected (the user is in a module). As such, the commands are similarly structured to command-line shell commands. For example, the command `open cs2113t` mimics `cd` into the folder named “CS2113T”, and the commands `modules`, `lessons`, `tasks` or `cheat-sheets` are similar to `ls` in power shell.
 
