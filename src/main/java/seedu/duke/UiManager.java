@@ -10,7 +10,6 @@ import seedu.duke.exception.InvalidAliasException;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -125,46 +124,50 @@ public class UiManager {
         }
     }
 
-    public AbstractMap.SimpleEntry<String, ArrayList<String>> getDailyRouteInfo() 
+    public DaySchedulePair getDailyRouteInfo()
             throws InvalidDayException, InvalidBlockException {
-        out.println("Enter the day: ");
-        String day = in.nextLine().toUpperCase().trim();
-        checkValidDay(day);
+        String day = getValidDay();
+        ArrayList<String> dailyBlocks = getSchedule();;
+        return new DaySchedulePair(day, dailyBlocks);
+    }
+
+    public ArrayList<String> getSchedule() throws InvalidBlockException {
+        out.println("Enter Location of the first activity of the day: ");
         ArrayList<String> dailyBlocks = new ArrayList<>();
-        String initialBlock = getAliasBlock("Enter Location of the first activity of the day: ");
+        String initialBlock = checkValidBlock();
         dailyBlocks.add(initialBlock);
         while (true) {
             out.println("Enter Location of the next activity of the day: ");
-            String nextBlock = in.nextLine().toUpperCase().trim();
+            String nextBlock = checkValidBlock();
             if (nextBlock.equals("END")) {
                 break;
             } else {
-                checkValidBlock(nextBlock);
                 dailyBlocks.add(nextBlock);
             }
         }
-        return new AbstractMap.SimpleEntry<>(day, dailyBlocks);
+        return dailyBlocks;
     }
 
-    public void checkValidBlock(String block) throws InvalidBlockException {
+    public String checkValidBlock() throws InvalidBlockException {
+        String block = in.nextLine().toUpperCase().trim();
         Map nusMap = new Map();
-        if (nusMap.getBlock(block) == null) {
+        if (block.equals("END")) {
+            out.println(DIVIDER);
+            return block;
+        } else if (nusMap.getBlock(block) == null) {
             throw new InvalidBlockException();
         }
+        return block;
     }
 
-    public void checkValidDay(String day) throws InvalidDayException {
+    public String getValidDay() throws InvalidDayException {
+        out.println("Enter the day: ");
+        String day = in.nextLine().toUpperCase().trim();
         List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
         ArrayList<String> days = new ArrayList<>(daysList);
         if (!days.contains(day)) {
             throw new InvalidDayException();
         }
-    }
-
-    public String getDay() throws InvalidDayException {
-        out.println("Select Day:");
-        String day = in.nextLine().toUpperCase().trim();
-        checkValidDay(day);
         return day;
     }
 
@@ -191,7 +194,7 @@ public class UiManager {
     private String getAliasBlock(String s) throws InvalidBlockException {
         out.println(s);
         String block = in.nextLine().toUpperCase().trim();
-        checkValidBlock(block);
+        checkValidAliasBlock(block);
         return block;
     }
 
@@ -201,6 +204,13 @@ public class UiManager {
             throw new InvalidAliasException();
         } else if (nusMap.getBlock(alias.toUpperCase()) != null) {
             throw new InvalidAliasException();
+        }
+    }
+
+    public void checkValidAliasBlock(String block) throws InvalidBlockException {
+        Map nusMap = new Map();
+        if (nusMap.getBlock(block) == null) {
+            throw new InvalidBlockException();
         }
     }
 
