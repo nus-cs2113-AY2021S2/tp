@@ -57,8 +57,9 @@ class ListCommandTest {
         RecordList records = getPopulatedRecordList(listCmdTypeToTest);
         BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
                 new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CommandHandler commandHandler = new CommandHandler();
 
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(listCmdStr), records);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(listCmdStr), records);
         assertTrue(command instanceof ListCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ListCommand.", listCmdTestName));
 

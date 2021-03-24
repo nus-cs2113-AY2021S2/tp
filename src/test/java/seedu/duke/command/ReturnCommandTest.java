@@ -43,11 +43,13 @@ public class ReturnCommandTest {
         BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
                 new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         RecordList loans = getLoanList();
+        CommandHandler commandHandler = new CommandHandler();
         ByteArrayOutputStream returnCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(returnCmdBos));
 
         ParserHandler parserHandler = new ParserHandler();
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(returnCmdInput), loans);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(returnCmdInput), loans);
+
         assertTrue(command instanceof ReturnCommand,
                 String.format("Failed test '%s' command object "
                         + "returned by parseCommand() is not an instance of ReturnCommand", testName));

@@ -22,6 +22,7 @@ class RemoveCommandTest {
     @Test
     void executeRemoveExpense_removeExpenseCmd_success() {
         RecordList records = new RecordList();
+        CommandHandler commandHandler = new CommandHandler();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
         records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
@@ -29,7 +30,8 @@ class RemoveCommandTest {
 
         String removeExpenseCmd = "remove -i 1";
         ParserHandler parserHandler = new ParserHandler();
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(removeExpenseCmd), records);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(removeExpenseCmd), records);
+
         assertTrue(command instanceof RemoveCommand, "Failed test 'executeRemoveExpense_removeExpenseCmd_success', "
                 + "command object returned by parseCommand() is not an instance of RemoveCommand");
 
@@ -52,6 +54,7 @@ class RemoveCommandTest {
     @Test
     void executeRemoveLoan_removeLoanCmd_success() {
         RecordList records = new RecordList();
+        CommandHandler commandHandler = new CommandHandler();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
         records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
@@ -59,7 +62,8 @@ class RemoveCommandTest {
 
         String removeLoanCmd = "remove -i 3";
         ParserHandler parserHandler = new ParserHandler();
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(removeLoanCmd), records);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(removeLoanCmd), records);
+
         assertTrue(command instanceof RemoveCommand, "Failed test 'executeRemoveLoan_removeLoanCmd_success', "
                 + "command object returned by parseCommand() is not an instance of RemoveCommand");
 
@@ -82,6 +86,7 @@ class RemoveCommandTest {
     @Test
     void executeRemoveSaving_removeSavingCmd_success() {
         RecordList records = new RecordList();
+        CommandHandler commandHandler = new CommandHandler();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
         records.addRecord(new Expense(new BigDecimal("420.50"), validateDate("2020/01/02"), "phone bills"));
         records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
@@ -89,7 +94,8 @@ class RemoveCommandTest {
 
         String removeSavingCmd = "remove -i 4";
         ParserHandler parserHandler = new ParserHandler();
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(removeSavingCmd), records);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(removeSavingCmd), records);
+
         assertTrue(command instanceof RemoveCommand, "Failed test 'executeRemoveSaving_removeSavingCmd_success', "
                 + "command object returned by parseCommand() is not an instance of RemoveCommand");
 

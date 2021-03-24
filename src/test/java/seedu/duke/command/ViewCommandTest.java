@@ -52,8 +52,10 @@ class ViewCommandTest {
         BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
                 new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
+        CommandHandler commandHandler = new CommandHandler();
 
-        Command command = CommandHandler.parseCommand(parserHandler.getParseInput(viewCmdStr), records);
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(viewCmdStr), records);
+
         assertTrue(command instanceof ViewCommand, String.format("Failed test '%s', "
                 + "command object returned by parseCommand() is not an instance of ViewCommand.", viewCmdTestName));
 
