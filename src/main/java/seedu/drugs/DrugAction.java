@@ -1,57 +1,59 @@
 package seedu.drugs;
 
-import seedu.duke.Duke;
+import seedu.duke.exceptions.drugexceptions.WrongInputException;
+import seedu.duke.ui.DrugUI;
 
 import java.util.ArrayList;
 
 public class DrugAction {
     public ArrayList<Drug> Drugs = new ArrayList<>();
 
-    public void addDrugs(String description) {
+    public void addDrugs(String name, String price, String quantity) throws WrongInputException {
         try {
-            description = description.substring(4);
-            String[] elements = description.split(" ");
-            Drugs.add(new Drug(elements[0], elements[1], elements[2]));
-            System.out.println("Added " + elements[elements.length - 1] + " " + elements[0] + " to inventory!");
-        } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("The description of 'add' cannot be empty");
-            return;
+            double priceDouble = Double.parseDouble(price); //check if price is a double
+            if (name.isEmpty() || quantity.isEmpty()) {
+                throw new WrongInputException("empty");
+            }
+            Drugs.add(new Drug(name, priceDouble, quantity));
+            DrugUI.drugAddedMessage(name);
+        } catch (NumberFormatException e) {
+            throw new WrongInputException("price");
         }
     }
 
-    public void deleteDrugs(String description) {
+    public void deleteDrugs(String name) throws WrongInputException {
         try {
-            description = description.substring(7);
+            boolean isContaining = false;
             for (int i = 0; i < Drugs.size(); ++i) {
-                if (Drugs.get(i).getName().contains(description)) {
-                    System.out.println("Deleted " + Drugs.get(i).getName() + " from inventory!");
+                if (Drugs.get(i).getName().equals(name)) {
+                    String drugName = Drugs.get(i).getName();
+                    DrugUI.deleteDrugMessage(drugName);
                     Drugs.remove(Drugs.get(i));
+                    isContaining = true;
                     break;
                 }
             }
+            if(!isContaining) {
+                throw new WrongInputException("doesNotExist");
+            }
         } catch (StringIndexOutOfBoundsException e) {
-            System.out.println("The description of 'delete' cannot be empty");
-            return;
+            throw new WrongInputException("empty");
         }
     }
-
-    public void printHelpMessage() {
-        System.out.println("Here is a list of Drug commands: ");
-        System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add [Name] [Price] [Quantity]\" adds a Drug to the drug list!");
-        System.out.println("\"list\" brings up the list of all current drugs!");
-        System.out.println("\"delete [Name]\" deletes the drug with the specific name from the list!");
-        System.out.println("\"return\" returns you to the Start Menu!");
-    }
-
     public void printList() {
         if (Drugs.size() != 0) {
-            System.out.println("Current Inventory: ");
+            DrugUI.drugListMessage();
             for (int i = 1; i <= Drugs.size(); ++i) {
                 System.out.println(i + ". " + Drugs.get(i - 1).getName() + " " + Drugs.get(i - 1).getPrice() + " " + Drugs.get(i - 1).getQuantity());
             }
         } else {
-            System.out.println("You do not have any Drugs in your inventory:(");
+            DrugUI.emptyDrugListMessage();
+        }
+    }
+
+    public void checkDrugsSize() throws WrongInputException {
+        if (Drugs.size() == 0) {
+            throw new WrongInputException("emptyList");
         }
     }
 

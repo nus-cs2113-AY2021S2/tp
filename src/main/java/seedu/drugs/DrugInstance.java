@@ -1,6 +1,7 @@
 package seedu.drugs;
 
 import seedu.duke.storage.DrugStorage;
+import seedu.duke.ui.DrugUI;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class DrugInstance {
     }
 
     public void run() {
+        DrugUI.DrugCommandWelcome();
         Parser parser = new Parser(drugAction);
         parser.parseMethod();
         drugStorage.exitProgram();
