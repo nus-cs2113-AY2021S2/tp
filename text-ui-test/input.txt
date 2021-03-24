@@ -8,7 +8,7 @@ list
 help
 current
 load S1234567D
-record /s coughing
+record 2021-03-31 /s coughing
 retrieve
 current
 exit
