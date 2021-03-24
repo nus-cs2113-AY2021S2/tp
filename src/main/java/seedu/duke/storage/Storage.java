@@ -6,8 +6,8 @@ import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
 import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
-import seedu.duke.record.Saving;
 import seedu.duke.record.RecordList;
+import seedu.duke.record.Saving;
 import seedu.duke.ui.Ui;
 
 import java.io.File;
@@ -116,6 +116,7 @@ public class Storage {
                     borrowersCreditScoreForReturnedLoansMap.put(borrowerNameInLowerCase,
                             Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]));
                 }
+                assert !records.isEmpty() : "RecordList should have data!";
             }
         } catch (InvalidFileInputException | IOException e) {
             throw new FileLoadingException();

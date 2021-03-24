@@ -5,10 +5,8 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.exception.FileLoadingException;
-import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
-
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
@@ -19,12 +17,6 @@ public class Duke {
     private RecordList records;
     private Storage storage;
     private BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans;
-
-    public Duke() {
-        ui = new Ui();
-        storage = new Storage();
-        records = new RecordList();
-    }
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -42,15 +34,17 @@ public class Duke {
         end();
     }
 
+    /**
+     * Exits the application.
+     */
     private void end() {
         ui.printGoodByeMessage();
         System.exit(0);
     }
 
-    // @@ author jonahtwl-reused
-    // No recovery should be expected from a corrupted file.
-    // Reused from: https://github.com/se-edu/addressbook-level2/blob/master/src/seedu/addressbook/Main.java
-
+    /**
+     * Starts the main application.
+     */
     private void start() {
         try {
             ui = new Ui();
@@ -62,10 +56,13 @@ public class Duke {
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
-            throw new RuntimeException(e.getMessage());
+            System.exit(-1);
         }
     }
 
+    /**
+     * Loops the application until an EXIT command is parsed.
+     */
     private void commandLooper() {
         Command command;
         String rawInput;

@@ -42,16 +42,27 @@ finance management rather than using the traditional management system.
 
 ## 3. Features
 > ❗ **CAUTION:** Insert any warning.
-
+> * _Finux_ supports multiple Date formats, for ease of use:
+>   * `DDMMYYYY`
+>   * `D.M.YYYY`
+>   * `D-M-YYYY`
+>   * `D/M/YYYY`
+>   * `YYYY.M.D`
+>   * `YYYY-M-D`
+>   * `YYYY/M/D`
+> * `today` keyword specifies today's date, replacing the need to type in the actual date
+    for date inputs.
 ### 3.1 Add a record: `add`
-
+> For the `add` command, there is no strict ordering for options.
+<br>
+> i.e. options `-a` can come before/after option `-d`.
 #### 3.1.1 Add an expense record
 
-This operation will add a expense record to the list.
+This operation will add an expense record to the list.
 
-Format: `insert format`
+Format: `add -e <description> -a <amount> -d <date>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
@@ -61,9 +72,9 @@ Output:
 
 This operation will add a loan record to the list.
 
-Format: `insert format`
+Format: `add -l <description> -a <amount> -d <date> -p <borrower>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
@@ -73,9 +84,9 @@ Output:
 
 This operation will add a saving record to the list.
 
-Format: `insert format`
+Format: `add -s <description> -a <amount> -d <date>`
 
-Examples: `insert example`, `insert example`
+Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
@@ -97,13 +108,18 @@ Output:
 
 This operation will view the total amount of chosen record type.
 
-Format: `insert format`
+Format: `view <OPTION>`
 
-Examples: `insert example`, `insert example`
+> Available Options:
+>* `-e`: view the total amount of expenditure.
+>* `-l`: view the total amount of unreturned loans.
+>* `-s`: view the total amount of saving.
+
+Examples: `view -e`, `view -l`
 
 Output:
 
-![view example output]()
+![view example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/View%20Example%20Output.jpg?raw=true)
 
 ### 3.4 Set a loan as return: `return`
 
@@ -119,23 +135,29 @@ Output:
 
 ### 3.5 Remove a record: `remove`
 
-This operation will remove a record from the list.
+This operation will remove a record from the record list.
 
-Format: `insert format`
+Format: `remove -i <index>`
+> - The `<index>` refers to the index number shown on the record list
+> - `<index>` must be a **positive integer** 1,2,3...
+> - `<index>` must be referring to an existing record
 
-Examples: `insert example`, `insert example`
+Examples: `remove -i 1`, `remove -i 2`
 
 Output:
 
-![remove example output]()
+![remove example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/Remove%5FExample%5FOutput.jpg?raw=true)
 
-### 3.6 Check a person credit score: `creditscore`
+### 3.6 Check a person's credit score: `creditscore`
 
 This operation will check the credit score of a person.
 
-Format: `insert format`
+Format: `creditscore <person>`
 
-Examples: `insert example`, `insert example`
+> - `<person>` refers to existing loanees in the loan list
+> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+
+Examples: `creditscore jason`, `creditscore andy`
 
 Output:
 
@@ -145,40 +167,61 @@ Output:
 
 This operation exit the program.
 
-Format: `insert format`
-
-Examples: `insert example`, `insert example`
-
-Output:
-
-![exit example output]()
+Format: `exit`
 
 ### 3.8 Help function: `help`
 
 This operation lists the help page for the application.
 
-Format: `insert format`
+Format: `help <FEATURE>`
 
-Examples: `insert example`, `insert example`
+> Available Features:
+>* `add`: view the help page for `add` command.
+>* `list`: view the help page for `list` command.
+>* `view`: view the help page for `view` command.
+>* `return`: view the help page for `return` command.
+>* `remove`: view the help page for `remove` command.
+>* `creditscore`: view the help page for `creditscore` command.
+>* `exit`: view the help page for `exit` command.
+>* `all`: view entire help page.
+>* 💡 **Tip**: Just type `help` and you can view the entire help page.
+
+Examples: `help exit`, `help list`
 
 Output:
 
 ![help example output]()
 
-### 3.9 Task Storage
+### 3.9 Records storage
 
-#### 3.9.1 Automatically load data from an existing file to the program.
+#### 3.9.1 Automatically saving all records into a file.
 
-* Expected Outcome if successful:
-  ![load success example output]()
+* All records are automatically saved after the following commands: `add`, `remove`, `return`.
+* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`.
 
-* Expected outcome if not successful:
-  ![load fail example output]()
+> ❗ **WARNING:** Do ensure that permissions are given for FINUX to write into the folder it is in,
+> FINUX will exit upon unsuccessful file creation.
+
+#### 3.9.2 Automatically loading data from an existing file into FINUX.
+
+* FINUX will automatically load the data from "finux.txt" when it finds the text
+file in the same directory. <br><br>
+
+* Expected output for new file creation:
+![new_file_creation_output](img/New_File_Creation_Example.jpg)
+
+* Expected output if successful load:
+![load success example output](img/Successful_Load_Example.jpg)
+
+* Expected output if not successfully loaded:
+![load fail example output](img/Failed_Load_Example_Output.jpg)
   
-#### 3.9.2 Automatically save the current task list to a file.
+#### 3.9.3 Editing the saved file directly
+* The FINUX team encourages higher leveled users to edit the save directly.
 
-* After entering `exit`, program will automatically store all the tasks into a task_logs.txt file.
-
+> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX. 
+> The team highly suggests that users only make minor changes like
+> spelling errors instead of inserting new Records into the save file.
 
 ## 4. FAQ
 
@@ -186,6 +229,14 @@ Output:
 
 **A**: {your answer here}
 
+>**Q**: Does the `view -l` shows the total loan amount? <br>
+>**A**: No. `view -l` only shows the total unreturned loans amount.
+
+>**Q**: What happens if FINUX crashes unexpectedly? <br>
+>**A**: All records are saved upon addition or deletion or returned, no worries!
+
+>**Q**: FINUX keeps having a `bad init` error message, but it is my first time launching FINUX. <br>
+>**A**: Do check and ensure that FINUX has the proper write permissions in the directory.
 
 ## 5. Command Summary
 
@@ -193,9 +244,9 @@ Command | Format | Example |
 ------- | ------- | ------- | 
 add | `insert format` | `insert example` |
 list | `insert format` | `insert example` |
-view | `insert format` | `insert example` |
+view | `view <OPTION>` | `view -e` |
 return | `insert format` | `insert example` |
 remove | `insert format` | `insert example` |
 creditscore | `insert format` | `insert example` |
-exit | `insert format` | `insert example` |
+exit | `help <FEATURE>` | `help exit` |
 help | `insert format` | `insert example` |

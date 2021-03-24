@@ -83,4 +83,13 @@ public class Loan extends Record {
         String formattedLoanStatus = "[" + (isReturn ? "v" : " ") + "]";
         return formattedRecordType + super.toString() + formattedLoanStatus;
     }
+
+    /**
+     * Method to check if the loan is returned.
+     *
+     * @return true if loan is returned, false if loan is not return.
+     */
+    public boolean checkIsReturn() {
+        return isReturn;
+    }
 }
