@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to 
+Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find movie recommendation to watch!
 
 ## Quick Start
 

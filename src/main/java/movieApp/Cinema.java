@@ -1,5 +1,7 @@
 package movieApp;
 
+import movieApp.Seat;
+
 import java.io.Serializable;
 
 public class Cinema implements Serializable{

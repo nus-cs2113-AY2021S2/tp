@@ -1,10 +1,10 @@
-package movieApp;
-
+package movieApp.parser;
 
 import java.util.*;
-import movieApp.MainMenu;
-import movieApp.Movie.movieStatus;
 
+import movieApp.Cineplex;
+import movieApp.Movie;
+import movieApp.storage.Database;
 
 public class MovieFilter {
 
@@ -323,7 +323,7 @@ public class MovieFilter {
 						movieList = selectMovie(movieList);
 						break;
 					case 7:
-						movieList = new ArrayList<Movie>(MainMenu.MovieDatabase);
+						movieList = new ArrayList<Movie>(Database.MovieDatabase);
 						break;
 
 				}

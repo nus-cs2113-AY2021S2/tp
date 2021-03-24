@@ -22,7 +22,7 @@ public class Showtimes implements Serializable{
 		int c = cinema.getC();
 		this.seatPlan = new Seat[r][c];
 		
-		for (int row = 0;row<r;row++) {
+		for (int row = 0; row<r; row++) {
 			for (int col = 0; col < c; col++) {
 				seatPlan[row][col]=new Seat(row, col, false);
 			}
@@ -56,17 +56,16 @@ public class Showtimes implements Serializable{
 		return dateTime;
 	}
 
-
 	public void printSeats() {
 		int rownum = seatPlan.length;
 		int colnum = seatPlan[0].length;
 		 System.out.println("---------------- <THE SCREEN>-----------------");
 		 System.out.println();
-		 	System.out.print("colums  ");
-		 	for (int i=0;i<colnum;i++ )  System.out.print(i+1+"     ");
+		 	System.out.print("columns  ");
+		 	for (int i = 0; i < colnum; i++ )  System.out.print(i + 1+"     ");
 		 	 System.out.println();
-		for (int row = 0;row<rownum;row++) {
-			 System.out.print("row "+(row+1)+" ");
+		for (int row = 0; row < rownum; row++) {
+			 System.out.print("row "+ (row + 1) + " ");
 			for (int col = 0; col < colnum; col++) {
 				if(seatPlan[row][col].getStatus()) System.out.print("taken ");
 				else  System.out.print("  --  ");
