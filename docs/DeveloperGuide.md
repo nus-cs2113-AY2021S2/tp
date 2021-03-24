@@ -52,6 +52,16 @@ Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> Th
 Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
 
 
+### Finding the Shortest Route
+####Current Implementation
+
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map` and `Block` class to return the 
+
+which calls the `Router` class to execute the routing algorithm.<br /> 
+
+
+Given below is an example scenario of how the routing algorithm functions.
+
 ###[Proposed] Custom aliases feature
 ####Proposed Implementation
 The proposed custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
@@ -61,6 +71,7 @@ The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasComm
 The `Storage` class has the feature to save the custom aliases into a local file so that users can load back their custom alias names when restarting the app.
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
+>>>>>>> 0cdea5e12cd6ca39621c809264486a14d423191e
 
 Step 1. The user launches the application for the first time. If there is a storage file with pre-exisiting alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data and an empty hashmap if it does not exist.  
 

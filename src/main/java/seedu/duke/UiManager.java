@@ -1,7 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.routing.Map;
-
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
@@ -91,7 +89,6 @@ public class UiManager {
 
     public void showHistory(History history) {
         assert history != null : "History must be initialized before, cannot be null";
-
         showToUser(
                 "Number of records in your history: " + history.getTotalNoOfHistory(),
                 history.getHistoryAsString()
@@ -101,7 +98,6 @@ public class UiManager {
     public void showClearHistoryResponse() {
         showToUser("Your history has been cleared.");
     }
-
 
     public String[] getRoutingInfo() {
         String[] startAndDestination = new String[2];
@@ -113,6 +109,16 @@ public class UiManager {
         startAndDestination[1] = in.nextLine().toUpperCase().trim();
 
         return startAndDestination;
+    }
+
+    public int getEateryEntry(Block[] eateries) {
+        out.println(DIVIDER);
+        out.println("Here are the list of eateries(from closest to furthest):");
+        for (int i = 0; i < eateries.length; i++) {
+            out.println((i + 1) + ". " + eateries[i].getName());
+        }
+        out.println(LINE_SEPARATOR + "SELECT ENTRY TO GO:");
+        return Integer.parseInt(in.nextLine());
     }
 
     public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {
@@ -231,7 +237,7 @@ public class UiManager {
         out.println("Enter the alias name that you wish to delete: ");
         String toDelete = in.nextLine().trim().toUpperCase();
         checkValidDeleteAlias(toDelete, blockAlias.getAliasMap());
-        System.out.println("Got it! Successfully deleted " + toDelete + "from the aliases");
+        System.out.println("Got it! Successfully deleted " + toDelete + " from the aliases");
         System.out.println(DIVIDER);
         return toDelete;
     }

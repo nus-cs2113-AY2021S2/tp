@@ -1,13 +1,13 @@
 package seedu.duke.command;
 
+import seedu.duke.Map;
 import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
-import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.routing.Router;
+import seedu.duke.exception.InvalidAliasException;
 
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ public class AddCustomAliasCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
+    public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         try {
             HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasMap());

@@ -5,7 +5,7 @@ import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
 import seedu.duke.UiManager;
-import seedu.duke.routing.Router;
+import seedu.duke.Map;
 
 public class ClearHistoryCommand extends Command {
     public ClearHistoryCommand(String userInput) {
@@ -13,7 +13,7 @@ public class ClearHistoryCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
+    public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         history.emptyHistory();
         ui.showClearHistoryResponse();

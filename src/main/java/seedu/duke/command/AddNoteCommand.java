@@ -4,8 +4,8 @@ import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
+import seedu.duke.Map;
 import seedu.duke.UiManager;
-import seedu.duke.routing.Router;
 
 public class AddNoteCommand extends Command {
     public AddNoteCommand(String userInput) {
@@ -13,7 +13,7 @@ public class AddNoteCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
+    public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         notesManager.parseAddNotesCommandAndAddNotes(userInput);
     }

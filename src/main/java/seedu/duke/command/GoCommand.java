@@ -4,9 +4,11 @@ import seedu.duke.BlockAlias;
 import seedu.duke.DailyRoute;
 import seedu.duke.History;
 import seedu.duke.NotesManager;
+import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.EateryList;
+import seedu.duke.Router;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.routing.Router;
 
 public class GoCommand extends Command {
     public GoCommand(String userInput) {
@@ -14,11 +16,18 @@ public class GoCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
+    public void execute(Map nusMap, UiManager ui, History history,
                         NotesManager notesManager, DailyRoute dailyRoute, BlockAlias blockAlias) {
         try {
             String[] startAndDestination = ui.getRoutingInfo();
-            String route = router.execute(startAndDestination[0], startAndDestination[1]);
+            if (startAndDestination[1].equals("EATERY")) {
+                EateryList eateryList = new EateryList(nusMap, blockAlias, startAndDestination[0]);
+                eateryList.sortEateriesByDistance();
+                int eateryEntry = ui.getEateryEntry(eateryList.getEateries());
+                assert (eateryEntry > 0 & eateryEntry < 6) : "Entry must be within bound";
+                startAndDestination[1] = eateryList.getSpecificEatery(eateryEntry - 1).getName();
+            }
+            String route = new Router().execute(nusMap, blockAlias, startAndDestination[0], startAndDestination[1]);
             history.addHistory(startAndDestination[0], startAndDestination[1]);
             ui.showToUser(route);
         } catch (InvalidBlockException e) {
