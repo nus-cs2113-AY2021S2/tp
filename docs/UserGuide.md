@@ -90,7 +90,7 @@ Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
-![add expense example output](https://via.placeholder.com/100.png?text=Photo)
+![add expense example output](img/Add_Expense_Example_Output.png)
 
 #### 3.1.2 Add a loan record
 
@@ -102,7 +102,7 @@ Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
-![add loan example output](https://via.placeholder.com/100.png?text=Photo)
+![add loan example output](img/Add_Loan_Example_Output.png)
 
 #### 3.1.3 Add a saving record
 
@@ -114,7 +114,7 @@ Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
-![add saving example output](https://via.placeholder.com/100.png?text=Photo)
+![add saving example output](img/Add_Savings_Example_Output.png)
 
 ### 3.2 List the records details: `list`
 
