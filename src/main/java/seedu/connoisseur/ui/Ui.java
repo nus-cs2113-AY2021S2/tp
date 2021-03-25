@@ -16,6 +16,7 @@ import static seedu.connoisseur.messages.Messages.EXIT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.REVIEW_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -54,7 +55,8 @@ public class Ui {
     }
 
     /**
-     * Prints view command output. 
+     * Prints view command output.
+     *
      * @param currentReview review to be viewed
      */
     public void printView(Review currentReview) {
@@ -126,6 +128,10 @@ public class Ui {
         println(LIST_HELP_MESSAGE);
     }
 
+    public void printEditHelpMessage() {
+        println(EDIT_HELP_MESSAGE);
+    }
+
     /**
      * Prints delete help message.
      */
@@ -165,28 +171,28 @@ public class Ui {
     }
 
     /**
-     * Prints invalid rating message. 
+     * Prints invalid rating message.
      */
     public void printInvalidRatingMessage() {
         println("Invalid number please add in a valid rating!");
     }
 
     /**
-     * Prints invalid sort method message. 
+     * Prints invalid sort method message.
      */
     public void printInvalidSortMethodMessage() {
         println("Invalid sort type!");
     }
 
     /**
-     * Prints invalid help command message. 
+     * Prints invalid help command message.
      */
     public void printInvalidHelpMessage() {
         println("Invalid help command!");
     }
 
     /**
-     * Prints empty review list message. 
+     * Prints empty review list message.
      */
     public void printEmptyCommandListMessage() {
         println("You have no reviews, type 'new' to start!");
