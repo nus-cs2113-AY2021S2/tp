@@ -250,7 +250,8 @@ It functions as a mapping from `parsedArguments[0]` to a set of predefined comma
 (the actual commands of the Application).
 
 ### 3.5 RecordList Component
-...
+The `recordlist` class maintains an internal arraylist of record objects used throughout Finux's execution.
+
 
 ### 3.6 Storage Component
 ...
@@ -266,13 +267,37 @@ of some features in **Finux**.
 ...
 
 ### 4.2 List Feature
-...
+The `list` feature allows Finux users to list records that they have entered into the system.
+
+To list loans:
+
+`list -l`
+
+To list expenses:
+
+`list -e`
+
+To list savings:
+
+`list -s`
+
 
 ### 4.3 View Feature
 ...
 
 ### 4.4 Return Feature
-...
+The `return` feature allows Finux users to mark a loan as returned.
+
+`return -i <index of loan to return> -d <return date>`
+
+Upon marking the loan as returned, *creditscore* for the borrower who loaned the book will be updated and saved into `finux.txt`
+
+Example:
+`return -i 2 -d 2021-03-16`
+
+Output:
+Loan marked as returned: [L][2021-03-16] Loan to Tom [v]
+
 
 ### 4.5 Remove Feature
 
@@ -368,7 +393,19 @@ long-term benefit.
 ...
 
 ### 4.7 Credit Score Feature
-...
+The `creditscore` feature aims to provide users with a computation of borrowers' credibility via a point scoring system.
+
+`creditscore <borrower_name>`
+
+With this score, Finux users can view and assess the credibility of the borrowers.
+
+Example:
+
+`creditscore Tom`
+
+Output:
+
+Credit score for Tom is 90
 
 ## 5. Documentation, Logging, Testing, and DevOps
 
