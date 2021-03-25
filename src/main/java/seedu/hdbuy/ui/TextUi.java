@@ -3,6 +3,7 @@ package seedu.hdbuy.ui;
 import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.data.Unit;
 import seedu.hdbuy.data.exception.EmptyFilterException;
+import seedu.hdbuy.data.exception.EmptyParameterException;
 import seedu.hdbuy.data.exception.InvalidFilterException;
 import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.data.exception.NoFlatsException;
@@ -78,5 +79,9 @@ public class TextUi {
 
     public static void showNoFlats(NoFlatsException e) {
         System.out.println(e.getMessage());
+    }
+  
+    public static void showEmptyParameter(String key, EmptyParameterException e) {
+        System.out.println("\"" + key + "\"" + e.getMessage());
     }
 }
