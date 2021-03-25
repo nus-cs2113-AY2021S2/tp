@@ -48,7 +48,7 @@ Given below is a sequence diagram of the View One Shift feature
 ### add schedule to employee feature
 #### Implementation
 
-The add schedule feature makes use of the `Employee` object in the `employee` package to store the schedules of each employee. 
+The add schedule feature uses of the `Employee` object in the `employee` package to store the schedules of each employee. 
 
 The class diagram for the `Employee` class is as follows:
 
@@ -56,7 +56,7 @@ The class diagram for the `Employee` class is as follows:
 
 Each `Employee` object has an employee name, and an arrayList of schedules, together with the functionality to set/get the employee name, add or drop a schedule from the employee object.
 
-Each schedule is a String which follows certain constraints as described below:
+The arraylist of schedules contains all of the employee's schedules. Each schedule is a String which follows certain constraints as described below:
 
 A schedule must be in the format: dd/mm/yyyy
 
