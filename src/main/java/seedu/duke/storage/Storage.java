@@ -200,13 +200,16 @@ public class Storage {
 
     private String[] loadBorrowerCreditScoreForReturnedLoans(String rawData) throws InvalidFileInputException {
         String[] borrowerCreditScoreForReturnedLoansData = rawData.split(" \\| ");
-        borrowerCreditScoreForReturnedLoansData[0] = borrowerCreditScoreForReturnedLoansData[0].toLowerCase();
-        int creditScore = Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]);
+        String borrowerNameInLowerCase = borrowerCreditScoreForReturnedLoansData[0].toLowerCase();
+        if (!borrowerNameInLowerCase.equals(borrowerCreditScoreForReturnedLoansData[0])) {
+            throw new InvalidFileInputException();
+        }
 
         if (borrowersCreditScoreForReturnedLoansMap.containsKey(borrowerCreditScoreForReturnedLoansData[0])) {
             throw new InvalidFileInputException();
         }
 
+        int creditScore = Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]);
         if (creditScore < 0 || creditScore > 100) {
             throw new InvalidFileInputException();
         }
