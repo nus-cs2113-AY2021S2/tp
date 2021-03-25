@@ -28,6 +28,7 @@ public class Block {
     public String getName() {
         return name;
     }
+
     public int getNotesCount() {
         return notesCount;
     }
