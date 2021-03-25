@@ -1,4 +1,4 @@
-package seedu.hdbuy.data.exception;
+package seedu.hdbuy.common.exception;
 
 public class EmptyParameterException extends Exception {
     public EmptyParameterException() {

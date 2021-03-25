@@ -1,6 +1,6 @@
 package seedu.hdbuy.api;
 
-import seedu.hdbuy.data.Unit;
+import seedu.hdbuy.common.Unit;
 
 import java.util.HashMap;
 

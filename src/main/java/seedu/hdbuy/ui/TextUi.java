@@ -1,11 +1,11 @@
 package seedu.hdbuy.ui;
 
-import seedu.hdbuy.data.QueryKey;
-import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.EmptyParameterException;
-import seedu.hdbuy.data.exception.InvalidFilterException;
-import seedu.hdbuy.data.exception.InvalidParameterException;
-import seedu.hdbuy.data.exception.NoFlatsException;
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.Unit;
+import seedu.hdbuy.common.exception.EmptyParameterException;
+import seedu.hdbuy.common.exception.InvalidFilterException;
+import seedu.hdbuy.common.exception.InvalidParameterException;
+import seedu.hdbuy.common.exception.NoFlatsException;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -51,7 +51,11 @@ public class TextUi {
     }
 
     public static void showParameters(HashMap<QueryKey, String> inputs) {
-        System.out.print("Parameters:\n" + inputs + "\n");
+        if (inputs.isEmpty()) {
+            System.out.println("Currently there are no filter conditions set.");
+            return;
+        }
+        System.out.print("Filter conditions:\n" + inputs + "\n");
     }
 
     public static void showInvalidFilter(String criteria, InvalidFilterException e) {
@@ -96,5 +100,9 @@ public class TextUi {
         System.out.println("Please specified a filter to use before executing this command.");
         System.out.println("Filters included: " + Arrays.asList(QueryKey.values()));
         System.out.println("An example will be \"filter location clementi\"");
+    }
+
+    public static void showClearedFilterConditions() {
+        System.out.print("Cleared filter conditions.\n");
     }
 }
