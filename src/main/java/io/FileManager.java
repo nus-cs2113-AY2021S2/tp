@@ -2,6 +2,7 @@ package io;
 
 import employee.Employee;
 import parser.DataParser;
+import shift.Shift;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +19,7 @@ public class FileManager {
         dataParser = new DataParser();
     }
 
-    public void saveFile(ArrayList<Employee> employees) throws IOException {
+    public void saveEmployees(ArrayList<Employee> employees) throws IOException {
         File path = new File("employees.txt");
         if (!path.exists()) {
             if (!path.createNewFile()) {
@@ -33,7 +34,22 @@ public class FileManager {
         fileWriter.close();
     }
 
-    public ArrayList<Employee> loadFile() throws FileNotFoundException {
+    public void saveShifts(ArrayList<Shift> shifts) throws IOException {
+        File path = new File("shifts.txt");
+        if (!path.exists()) {
+            if (!path.createNewFile()) {
+                throw new IOException();
+            }
+        }
+        FileWriter fileWriter = new FileWriter(path);
+        for (Shift shift : shifts) {
+            fileWriter.write(shift.formatData());
+        }
+        fileWriter.flush();
+        fileWriter.close();
+    }
+
+    public ArrayList<Employee> loadEmployees() throws FileNotFoundException {
         ArrayList<Employee> employees = new ArrayList<>();
 
         File path = new File("employees.txt");
@@ -50,8 +66,30 @@ public class FileManager {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Failed to load!");
+            System.out.println("Failed to load employees!");
         }
         return employees;
+    }
+
+    public ArrayList<Shift> loadShifts() throws FileNotFoundException {
+        ArrayList<Shift> shifts = new ArrayList<>();
+
+        File path = new File("shifts.txt");
+        if (!path.exists()) {
+            throw new FileNotFoundException();
+        }
+        Scanner scanner = new Scanner(path);
+        try {
+            while (scanner.hasNext()) {
+                String line = scanner.nextLine();
+                Shift shift = dataParser.parseShift(line);
+                if (shift != null) {
+                    shifts.add(shift);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to load shifts!");
+        }
+        return shifts;
     }
 }
