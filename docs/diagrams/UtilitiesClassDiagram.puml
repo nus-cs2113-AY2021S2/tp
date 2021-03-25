@@ -15,7 +15,7 @@ package Utilities <<Rectangle>> {
     class Parser
 }
 
-package DataFiles <<Rectangle>> {
+package "/data" <<folder>> {
     file limitsData
     file fridgeData
 }
@@ -30,98 +30,63 @@ package Command <<Rectangle>>{
 }
 
 class Ui {
-  -{static} Scanner scanner
-  +{static} String getNextLine()
-  +{static} void printMessage()
-  +{static} void printWelcomeMessage()
-  +{static} void printByeMessage()
-  +{static} void printExceptionMessage()
+  - {static} Scanner scanner
+  + {static} String getNextLine()
+  + {static} void printMessage()
+  + {static} void printWelcomeMessage()
+  + {static} void printByeMessage()
+  + {static} void printExceptionMessage()
 }
 
 class LoggerHandler {
-  -{static} Logger logger
-  +{static} void logInfo(String message)
-  +{static} void logInfo(String message, Throwable e)
-  +{static} void logWarning(String message)
-  +{static} void logWarning(String message, Throwable e)
-  +{static} void logSevere(String message)
-  +{static} void logSevere(String message, Throwable e)
+  - {static} Logger logger
+  + {static} void logInfo(String message)
+  + {static} void logWarning(String message)
+  + {static} void logSevere(String message)
 }
 
 class Storage {
-  -{static} String DATA_FILE_PATH
-  -{static} String LIMITS_FILE_PATH
-  -{static} String DIRECTORY
-  -{static} Fridge fridge
-  --
-  .. Entry Points ..
-  +{static} void load(Fridge fridgeInput)
-  +{static} void save(Fridge fridgeInput)
-  .. Fridge Data ..
-  -{static} void loadFridgeData(Fridge fridgeInput)
-  -{static} void checkFridgeDataDirectory()
-  -{static} void readFridgeData()
-  -{static} void populateFridge(String line)
-  -{static} void saveFridgeData()
-  -{static} void populateFridgeDataFile()
-  .. Limits Data ..
-  -{static} void loadLimitsData()
-  -{static} void checkLimitsDirectory()
-  -{static} void readLimitsData()
-  -{static} void populateFoodCategory()
-  -{static} void saveLimitsData()
-  -{static} void populateLimitsDataFile()
+  - {static} String DATA_FILE_PATH
+  - {static} String LIMITS_FILE_PATH
+  - {static} String DIRECTORY
+  - {static} Fridge fridge
+  + {static} void load(Fridge fridgeInput)
+  + {static} void save(Fridge fridgeInput)
 }
 
 class Parser {
-  -{static} int COMMAND_WORD_INDEX
-  -{static} int NUMBER_OF_PHRASES
-  -{static} Pattern FOOD_DATA_ARGS_FORMAT
-  -{static} Pattern REMOVE_ARGS_FORMAT
-  -{static} Pattern SET_LIMIT_ARGS_FORMAT]
-  --
-  .. Entry Points ..
-  +{static} Command getCommand(String input)
-  +{static} String[] parseInput(String input)
-  -{static} Command parseCommand(String[] parsedInput)
-  .. Command Getters ..
-  -{static} Command getAddCommand(String description)
-  -{static} Command parseFoodDescription(String foodDescription)
-  -{static} Command getListCommand(String description)
-  -{static} Command getRemoveCommand(String description)
-  -{static} Command parseRemoveDescription(String removeDescription)
-  -{static} Command getSearchCommand(String description)
-  -{static} Command getExpiringCommand()
-  -{static} Command getRunningLowCommand()
-  -{static} Command getSetLimitCommand(String description)
-  -{static} Command parseSetLimitDescription(String description)
-  -{static} Command getHelpCommand()
-  -{static} Command getClearCommand()
-  -{static} Command getByeCommand()
-  .. Helper Methods ..
-  +{static} int parseIntegerQuantity(String description)
+  - {static} Pattern FOOD_DATA_ARGS_FORMAT
+  - {static} Pattern REMOVE_ARGS_FORMAT
+  - {static} Pattern SET_LIMIT_ARGS_FORMAT
+  + {static} Command getCommand(String input)
+  - {static} Command parseFoodDescription(String foodDescription)
+  - {static} Command parseRemoveDescription(String removeDescription)
+  - {static} Command parseSetLimitDescription(String description)
+  + {static} int parseIntegerQuantity(String description)
 }
 
 ' Basic Layout '
-LoggerHandler -right[hidden]-> Ui
+LoggerHandler -left[hidden]-> Ui
 LoggerHandler -down[hidden]-> Parser
-Parser -right[hidden]-> Storage
+Parser -left[hidden]-> Storage
 Ui -down[hidden]-> Storage
 Command -right[hidden]-> Exception
-Exception -right[hidden]-> Food
-Ui -right-> FridgeFriend
-Storage -right-> "creates" DataFiles
-DataFiles -up[hidden]-> FridgeFriend
+"/data" -right[hidden]-> Food
+Food -right[hidden]-> Exception
+Exception -right[hidden]-> Command
+Parser -down[hidden]-> "/data"
 
+User -down-> Ui : interacts with
+FridgeFriend -right-> Ui : prints with
+FridgeFriend -right-> Storage : uses
 
-User --> "interacts" Ui
-Storage .down.> Food
-Storage .down.> Exception
-Storage ..> Ui
-Storage ..> Parser
-Parser .down.> Exception
-Parser .down.> Command
-FridgeFriend --> Storage
+Storage .up.> Ui : prints with
+Storage .right.> Parser : uses
+Storage -down-> "/data" : creates and writes
+Storage .down.> Food : loads and saves
+Storage .down.> Exception : throws
+Parser .down.> Exception : throws
+Parser .down.> Command : gets
 
 note top of LoggerHandler : Used by all other classes\nfor logging purposes
 
