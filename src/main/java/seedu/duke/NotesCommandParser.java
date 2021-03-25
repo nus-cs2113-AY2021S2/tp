@@ -1,6 +1,11 @@
 package seedu.duke;
 
-import seedu.duke.notecommandexceptions.*;
+import seedu.duke.notecommandexceptions.EmptyNoteException;
+import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
+import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.NoNoteIndexException;
+import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
+import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
 import static seedu.duke.Map.map;
 
@@ -28,8 +33,7 @@ public class NotesCommandParser {
             //take out location and store location as UPPERCASE:
             int indexOfLocation = 7;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
-        }
-        else if (commandWithLocation.startsWith("deletenote")) {
+        } else if (commandWithLocation.startsWith("deletenote")) {
             //take out location and store location as UPPERCASE:
             int indexOfLocation = 10;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
@@ -64,7 +68,8 @@ public class NotesCommandParser {
         note = input.substring(notesIndexForOriginalInput).trim();
     }
 
-    public static void getNoteIndex(String input, int beforeNoteNumberIndex) throws NoNoteIndexException, InvalidNoteIndexException {
+    public static void getNoteIndex(String input, int beforeNoteNumberIndex)
+            throws NoNoteIndexException, InvalidNoteIndexException {
         //2. Filter out Note Index added by user:
         int noteNumberIndex = beforeNoteNumberIndex + 1;
 

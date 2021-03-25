@@ -29,7 +29,8 @@ public class AddNoteCommand extends Command {
         try {
             NotesCommandParser.parseAddNotesCommand(userInput);
             map.get(location).addNotes(); //add notes to block given by user
-        } catch (WrongInputFormatException | NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException | EmptyNoteException e) {
+        } catch (WrongInputFormatException | NoLocationForNotesCommandException
+                | NonExistentLocationForNotesCommandException | EmptyNoteException e) {
             ui.showToUser(e.getMessage());
         }
     }

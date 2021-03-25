@@ -26,13 +26,14 @@ public class DeleteNoteCommand extends Command {
     @Override
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-            try {
-                NotesCommandParser.parseDeleteNotesCommand(userInput);
-                map.get(location).deleteNotes();
-            } catch (WrongInputFormatException | NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException | NoNoteIndexException | InvalidNoteIndexException e) {
-                ui.showToUser(e.getMessage());
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter a valid number for note index.");
-            }
+        try {
+            NotesCommandParser.parseDeleteNotesCommand(userInput);
+            map.get(location).deleteNotes();
+        } catch (WrongInputFormatException | NoLocationForNotesCommandException
+                | NonExistentLocationForNotesCommandException | NoNoteIndexException | InvalidNoteIndexException e) {
+            ui.showToUser(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Please enter a valid number for note index.");
+        }
     }
 }
