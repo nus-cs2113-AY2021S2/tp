@@ -3,7 +3,7 @@ package seedu.duke;
 import java.util.HashMap;
 
 public class Map {
-    public static HashMap<String, Block> map;
+    public HashMap<String, Block> map;
 
     public Map() {
         this.map = new HashMap<>();

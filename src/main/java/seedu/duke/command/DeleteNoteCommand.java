@@ -14,7 +14,6 @@ import seedu.duke.notecommandexceptions.NoNoteIndexException;
 import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
 import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
-import static seedu.duke.Map.map;
 import static seedu.duke.NotesCommandParser.location;
 
 public class DeleteNoteCommand extends Command {
@@ -27,11 +26,13 @@ public class DeleteNoteCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
-            NotesCommandParser.parseDeleteNotesCommand(userInput);
-            map.get(location).deleteNotes();
+            NotesCommandParser.parseDeleteNotesCommand(userInput, nusMap);
+            nusMap.map.get(location).deleteNotes();
         } catch (WrongInputFormatException | NoLocationForNotesCommandException
-                | NonExistentLocationForNotesCommandException | NoNoteIndexException | InvalidNoteIndexException e) {
+                | NonExistentLocationForNotesCommandException | NoNoteIndexException e) {
             ui.showToUser(e.getMessage());
+        } catch (InvalidNoteIndexException e) {
+            ui.showToUser(e.getMessage(nusMap));
         } catch (NumberFormatException e) {
             System.out.println("Please enter a valid number for note index.");
         }

@@ -11,7 +11,7 @@ public class Block {
     private String name;
     private boolean isVisited;
     private ArrayList<Block> neighbours;
-    private ArrayList<String> notesList;
+    public ArrayList<String> notesList;
     private int notesCount;
     private int distanceFromStart;
 
@@ -29,8 +29,16 @@ public class Block {
         return name;
     }
 
+    public ArrayList<String> getNotesList() {
+        return this.notesList;
+    }
+
     public int getNotesCount() {
-        return notesCount;
+        return this.notesCount;
+    }
+
+    public void addNotesCount() {
+        this.notesCount++;
     }
 
     public boolean isVisited() {
@@ -53,11 +61,27 @@ public class Block {
         neighbours.add(block);
     }
 
+    public ArrayList<Block> getNeighbours() {
+        return neighbours;
+    }
+
+    public int getDistanceFromStart() {
+        return distanceFromStart;
+    }
+
+    public void setDistanceFromStart(int distanceFromStart) {
+        this.distanceFromStart = distanceFromStart;
+    }
+
     public void addNotes() {
         this.notesList.add(note); //add notes to list for that location
         this.notesCount++; //add to count for number of notes made for that location
         System.out.println("This note has been added and tagged to " + location + ":");
         System.out.println("\t" + note);
+    }
+
+    public void addGivenNote(String currentNote) {
+        this.notesList.add(currentNote);
     }
 
     public void deleteNotes() {
@@ -84,15 +108,4 @@ public class Block {
         }
     }
 
-    public ArrayList<Block> getNeighbours() {
-        return neighbours;
-    }
-
-    public int getDistanceFromStart() {
-        return distanceFromStart;
-    }
-
-    public void setDistanceFromStart(int distanceFromStart) {
-        this.distanceFromStart = distanceFromStart;
-    }
 }

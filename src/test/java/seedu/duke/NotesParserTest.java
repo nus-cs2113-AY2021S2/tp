@@ -73,7 +73,7 @@ public class NotesParserTest {
 
     public void parseAddNotesCommandUnsuccessfully(String input, String error) {
         try {
-            NotesCommandParser.parseAddNotesCommand(input);
+            NotesCommandParser.parseAddNotesCommand(input, nusMap);
         } catch (WrongInputFormatException e) {
             assertEquals("Please include a '/' in between the location and the notes.", error);
         } catch (NoLocationForNotesCommandException e) {
@@ -100,7 +100,7 @@ public class NotesParserTest {
 
     public void parseDeleteNotesCommandUnsuccessfully(String input, String error) {
         try {
-            NotesCommandParser.parseDeleteNotesCommand(input);
+            NotesCommandParser.parseDeleteNotesCommand(input, nusMap);
         } catch (InvalidNoteIndexException e) {
             assertEquals("Please enter a number that is positive and not more than", error);
         } catch (NoNoteIndexException e) {
@@ -128,7 +128,7 @@ public class NotesParserTest {
 
     public void parseListNotesUnsuccessfully(String input, String error) {
         try {
-            NotesCommandParser.parseListNotesCommand(input);
+            NotesCommandParser.parseListNotesCommand(input, nusMap);
         } catch (NoLocationForNotesCommandException e) {
             assertEquals("Please add a location after the command. :))", error);
         } catch (NonExistentLocationForNotesCommandException e) {
