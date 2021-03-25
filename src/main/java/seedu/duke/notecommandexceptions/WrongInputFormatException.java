@@ -1,7 +1,10 @@
 package seedu.duke.notecommandexceptions;
 
-import java.io.IOException;
+public class WrongInputFormatException extends NotesException {
+    @Override
+    public String getMessage() {
 
-public class WrongInputFormatException extends IOException {
-
+        return "Please include a '/' in between the location and the note "
+                + "or between the location and the notes index.";
+    }
 }

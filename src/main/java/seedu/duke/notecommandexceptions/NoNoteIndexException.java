@@ -1,7 +1,9 @@
 package seedu.duke.notecommandexceptions;
 
-import java.io.IOException;
+public class NoNoteIndexException extends NotesException {
 
-public class NoNoteIndexException extends IOException {
-
+    @Override
+    public String getMessage() {
+        return "Please add a note index behind. :))";
+    }
 }

@@ -2,6 +2,8 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.duke.command.Command;
+import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.notecommandexceptions.EmptyNoteException;
 import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
 import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
@@ -12,10 +14,23 @@ import seedu.duke.notecommandexceptions.WrongInputFormatException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+public class NotesParserTest {
 
-public class NotesManagerTest {
+    private Map nusMap;
+    private UiManager ui;
+    private History history;
+    private DailyRoute dailyroute;
+    private FavouriteLocation favouriteLocation;
+    private BlockAlias blockAlias;
 
-    NotesManager nm = new NotesManager();
+    private void initializeDuke() {
+        this.nusMap = new Map();
+        this.ui = new UiManager();
+        this.history = new History();
+        this.dailyroute = new DailyRoute();
+        this.blockAlias = new BlockAlias();
+        this.favouriteLocation = new FavouriteLocation();
+    }
 
     @Test
     public void parseTest() {
@@ -44,10 +59,16 @@ public class NotesManagerTest {
     }
 
     public void parseAddNotesCommandSuccessfully(String input, String location, String notes) {
-        nm.parseAddNotesCommandAndAddNotes(input);
-
-        assertEquals(NotesCommandParser.location, location);
-        assertEquals(NotesCommandParser.note, notes);
+        try {
+            initializeDuke();
+            Command command = Parser.prepareForCommandExecution(input);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+        } catch (InvalidCommandException e) {
+            ui.showToUser(e.getMessage());
+        } finally {
+            assertEquals(NotesCommandParser.location, location);
+            assertEquals(NotesCommandParser.note, notes);
+        }
     }
 
     public void parseAddNotesCommandUnsuccessfully(String input, String error) {
@@ -65,10 +86,16 @@ public class NotesManagerTest {
     }
 
     public void parseDeleteNotesCommandSuccessfully(String input, String location, int index) {
-        nm.parseDeleteNotesCommandAndDeleteNotes(input);
-
-        assertEquals(NotesCommandParser.location, location);
-        assertEquals(NotesCommandParser.noteIndexInList, index);
+        try {
+            initializeDuke();
+            Command command = Parser.prepareForCommandExecution(input);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+        } catch (InvalidCommandException e) {
+            ui.showToUser(e.getMessage());
+        } finally {
+            assertEquals(NotesCommandParser.location, location);
+            assertEquals(NotesCommandParser.noteIndexInList, index);
+        }
     }
 
     public void parseDeleteNotesCommandUnsuccessfully(String input, String error) {
@@ -88,8 +115,15 @@ public class NotesManagerTest {
     }
 
     public void parseListNotesCommandSuccessfully(String input, String location) {
-        nm.parseListNotesCommandAndListNotes(input);
-        assertEquals(NotesCommandParser.location, location);
+        try {
+            initializeDuke();
+            Command command = Parser.prepareForCommandExecution(input);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+        } catch (InvalidCommandException e) {
+            ui.showToUser(e.getMessage());
+        } finally {
+            assertEquals(NotesCommandParser.location, location);
+        }
     }
 
     public void parseListNotesUnsuccessfully(String input, String error) {
