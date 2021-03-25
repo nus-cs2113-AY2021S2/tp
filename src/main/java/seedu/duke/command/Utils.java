@@ -280,10 +280,18 @@ public class Utils {
         assert argument != null : "argument is null!";
         return Pattern.matches(REGEX_OPTION, argument);
     }
-
-    // NOTE: To be committed by Jason
+    
     public static long getDaysDifference(LocalDate issueDate, LocalDate returnDate) {
-        return 10;
+        LocalDate fromDate = issueDate;
+        LocalDate toDate;
+        if (returnDate == null) {
+            toDate = LocalDate.now();
+        } else {
+            assert returnDate != null : "returnDate should not be empty";
+            toDate = returnDate;
+        }
+        long daysDifference = ChronoUnit.DAYS.between(fromDate, toDate);
+        return daysDifference;
     }
 
     public static int computeCreditScore(long daysDifference, int currentCreditScore, boolean isReturn) {
