@@ -26,11 +26,13 @@ public class DataParser {
 
         parsedShift.setShiftDate(LocalDate.parse(splitByHex[0], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         parsedShift.setVacancy(Integer.parseInt(splitByHex[1]));
+        parsedShift.setShiftIndex(Integer.parseInt(splitByHex[2]));
 
-        ArrayList<Employee> employees = new ArrayList<>();
-        for (int shiftIndex=2; shiftIndex< splitByHex.length; shiftIndex++) {
+        ArrayList<String> employees = new ArrayList<>();
+        for (int shiftIndex=3; shiftIndex< splitByHex.length; shiftIndex++) {
             employees.add(splitByHex[shiftIndex]);
         }
+        parsedShift.setEmployees(employees);
 
         return parsedShift;
     }

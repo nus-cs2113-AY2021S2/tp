@@ -1,6 +1,5 @@
 package employee;
 
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Employee {
@@ -25,42 +24,39 @@ public class Employee {
         this.name = name;
     }
 
-    public boolean addSchedule(String schedule){
-        if(isScheduleValid(schedule) == true){
+    public boolean addSchedule(String schedule) {
+        if (isScheduleValid(schedule)){
             schedules.add(schedule);
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
-    private boolean isScheduleValid(String schedule){
-        if(schedule.length()!= 10){
+    private boolean isScheduleValid(String schedule) {
+        if (schedule.length()!= 10){
             return false;
         }
-        if(schedule.substring("dd".length(), "dd/".length()).equals("/") == false ||
-        schedule.substring("dd/mm".length(), "dd/mm/".length()).equals("/") == false){
+        if (!schedule.substring("dd".length(), "dd/".length()).equals("/") ||
+                !schedule.substring("dd/mm".length(), "dd/mm/".length()).equals("/")){
             return false;
         }
         String day = schedule.substring(0,"dd".length());
         String month = schedule.substring("dd/".length(), "dd/mm".length());
         String year = schedule.substring("dd/mm/".length(), "dd/mm/yyyy".length());
-        if(isInteger(day) == false || isInteger(month) == false || isInteger(year) == false){
+        if (!isInteger(day) || !isInteger(month) || !isInteger(year)){
             return false;
         }
         int yyyy = Integer.parseInt(year);
         int mm = Integer.parseInt(month);
         int dd = Integer.parseInt(day);
-        if(yyyy<MIN_ALLOWABLE_YEAR || yyyy>MAX_ALLOWABLE_YEAR){
+        if (yyyy<MIN_ALLOWABLE_YEAR || yyyy>MAX_ALLOWABLE_YEAR){
             return false;
         }
-        if(mm<MIN_MONTH_OF_YEAR || mm>MAX_MONTH_OF_YEAR){
+        if (mm<MIN_MONTH_OF_YEAR || mm>MAX_MONTH_OF_YEAR){
             return false;
         }
-        if(dd<MIN_DAY_OF_MONTH || dd>MAX_DAY_OF_MONTH){
-            return false;
-        }
-        return true;
+        return dd >= MIN_DAY_OF_MONTH && dd <= MAX_DAY_OF_MONTH;
     }
 
     public void dropSchedule(String schedule){
@@ -70,10 +66,6 @@ public class Employee {
     public ArrayList<String> getSchedules(){
         return schedules;
     }
-
-//    public String getScheduleDateToString() {
-//        return shiftDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-//    }
 
     public String formatData() {
         StringBuilder formattedString = new StringBuilder(getName());
@@ -88,9 +80,7 @@ public class Employee {
     public static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
-        } catch(NumberFormatException e) {
-            return false;
-        } catch(NullPointerException e) {
+        } catch(NumberFormatException | NullPointerException e) {
             return false;
         }
         return true;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Shift {
     private ArrayList<Employee> employees;
+    private ArrayList<String> employeeList;
     private LocalDate shiftDate;
     private int vacancy;
     private int shiftIndex;
@@ -28,8 +29,8 @@ public class Shift {
         return employees;
     }
 
-    public void setEmployees(ArrayList<Employee> employees) {
-        this.employees = employees;
+    public void setEmployees(ArrayList<String> employees) {
+        this.employeeList = employees;
     }
 
     public void assignEmployee(Employee e) {
@@ -51,10 +52,6 @@ public class Shift {
 
     public LocalDate getShiftDate() {
         return shiftDate;
-    }
-
-    public String getShiftDateToString() {
-        return shiftDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
     public void setShiftDate(LocalDate shiftDate) {
@@ -93,9 +90,9 @@ public class Shift {
         formattedString.append("#");
         formattedString.append(shiftIndex);
 
-        for (Employee employee : employees) {
+        for (String employee : employeeList) {
             formattedString.append("#");
-            formattedString.append(employee.getName());
+            formattedString.append(employee);
         }
         return formattedString +"\n";
     }
