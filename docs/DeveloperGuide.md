@@ -12,8 +12,9 @@ The rest of the App consists of:
 * [**`Command`**](#command-component): The command executor.
 * [**`Parser`**](#parser-component): Translate user input to valid commands to be executed.
 * [**`Ui`**](#ui-component): Communicates with user via messages.
-* [**`Data`**](#data-component): Models of objects used internally.
+* [**`Data`**](#data-component): Contains user input history and temporary memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`Common`**](#common-component): Models of objects used internally.
 
 ### Api component
 

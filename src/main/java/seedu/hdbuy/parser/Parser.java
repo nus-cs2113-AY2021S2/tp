@@ -7,8 +7,8 @@ import seedu.hdbuy.command.DefaultCommand;
 import seedu.hdbuy.command.FilterCommand;
 import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
-import seedu.hdbuy.data.CommandKey;
-import seedu.hdbuy.data.exception.InvalidParameterException;
+import seedu.hdbuy.common.CommandKey;
+import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.Arrays;

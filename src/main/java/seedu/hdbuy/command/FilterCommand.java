@@ -1,7 +1,7 @@
 package seedu.hdbuy.command;
 
-import seedu.hdbuy.data.QueryKey;
-import seedu.hdbuy.data.exception.InvalidFilterException;
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.exception.InvalidFilterException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;

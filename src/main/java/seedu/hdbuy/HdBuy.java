@@ -1,7 +1,8 @@
 package seedu.hdbuy;
 
 import seedu.hdbuy.command.Command;
-import seedu.hdbuy.data.QueryKey;
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
@@ -10,8 +11,8 @@ import java.util.logging.Logger;
 
 public class HdBuy {
 
-    private static final HashMap<QueryKey, String> inputs = new HashMap<>();
-    private static final Logger logger = Logger.getLogger("HDBuy");
+    private static Logger logger = Logger.getLogger("HDBuy");
+    private static UserInput userInput;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -19,8 +20,10 @@ public class HdBuy {
 
     public static void main(String[] args) {
         logger.info("Starting process");
+        userInput = new UserInput();
         TextUi.showWelcome();
         receiveCommand(false);
+        cleanUp();
         /*
           Example IO
         System.out.println("Parameters: location = jurong, type = 4 room, lease = 95 years\n");
@@ -37,9 +40,15 @@ public class HdBuy {
             String fullCommand = TextUi.readCommand();
             TextUi.showSeparator();
             Command command = Parser.parse(fullCommand);
-            command.execute(inputs);
+            assert userInput != null : "Input is not initiated";
+            command.execute(userInput.getInputs());
             TextUi.showSeparator();
             receiveCommand(command.isExit());
         }
+    }
+
+    private static void cleanUp() {
+        userInput = null;
+        logger = null;
     }
 }

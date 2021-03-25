@@ -1,10 +1,10 @@
 package seedu.hdbuy.command;
 
 import seedu.hdbuy.api.ApiRepository;
-import seedu.hdbuy.data.QueryKey;
-import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.EmptyParameterException;
-import seedu.hdbuy.data.exception.NoFlatsException;
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.Unit;
+import seedu.hdbuy.common.exception.EmptyParameterException;
+import seedu.hdbuy.common.exception.NoFlatsException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;

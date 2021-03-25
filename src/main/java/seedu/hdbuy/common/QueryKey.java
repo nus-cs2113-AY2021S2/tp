@@ -1,4 +1,4 @@
-package seedu.hdbuy.data;
+package seedu.hdbuy.common;
 
 public enum QueryKey {
     LOCATION {
