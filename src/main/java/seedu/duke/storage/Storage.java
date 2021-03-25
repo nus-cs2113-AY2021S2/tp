@@ -104,16 +104,11 @@ public class Storage {
             while (sc.hasNextLine()) {
                 String rawData = sc.nextLine();
                 Object parsedObject = parseRawData(rawData);
-
                 if (parsedObject instanceof Record) {
                     records.add((Record) parsedObject);
                 } else if (parsedObject != null) {
                     String[] borrowerCreditScoreForReturnedLoansData = (String[]) parsedObject;
-                    String borrowerNameInLowerCase = borrowerCreditScoreForReturnedLoansData[0].toLowerCase();
-                    if (borrowersCreditScoreForReturnedLoansMap.containsKey(borrowerNameInLowerCase)) {
-                        throw new InvalidFileInputException(); //Duplicate records
-                    }
-                    borrowersCreditScoreForReturnedLoansMap.put(borrowerNameInLowerCase,
+                    borrowersCreditScoreForReturnedLoansMap.put(borrowerCreditScoreForReturnedLoansData[0],
                             Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]));
                 }
                 assert !records.isEmpty() : "RecordList should have data!";
@@ -203,8 +198,20 @@ public class Storage {
         return new Saving(amount, issueDate, description);
     }
 
-    private String[] loadBorrowerCreditScoreForReturnedLoans(String rawData) {
-        return rawData.split(" \\| ");
+    private String[] loadBorrowerCreditScoreForReturnedLoans(String rawData) throws InvalidFileInputException {
+        String[] borrowerCreditScoreForReturnedLoansData = rawData.split(" \\| ");
+        borrowerCreditScoreForReturnedLoansData[0] = borrowerCreditScoreForReturnedLoansData[0].toLowerCase();
+        int creditScore = Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]);
+
+        if (borrowersCreditScoreForReturnedLoansMap.containsKey(borrowerCreditScoreForReturnedLoansData[0])) {
+            throw new InvalidFileInputException();
+        }
+
+        if (creditScore < 0 || creditScore > 100) {
+            throw new InvalidFileInputException();
+        }
+
+        return borrowerCreditScoreForReturnedLoansData;
     }
 
     public ArrayList<Record> getRecordListData() {
@@ -214,5 +221,4 @@ public class Storage {
     public HashMap<String, Integer> getBorrowersCreditScoreForReturnedLoansMapData() {
         return borrowersCreditScoreForReturnedLoansMap;
     }
-
 }
