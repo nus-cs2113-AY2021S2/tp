@@ -13,7 +13,21 @@ it once they logged in as admin. Admin has the ability to add/delete canteen, st
 that allows the saving and loading of data. This allows all parameters of the data to be stored and read whenever is needed.
 
 ##Implementation
-This section describes some noteworthy details on how certain features are implemented.
+Below is the list of commands available.
+
+Below is the list of commands available.
+
+* Display selected store sample menu: `menu`
+* Display all reviews of the selected store : `reviews`
+* Add a new review of the selected store: `add`
+* Goes back to home page to select canteen: `home`
+* Display all the stores of the selected canteen: `list`
+* Exiting the application: `exit`
+
+#### Sequence Diagram for `admin`
+When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
+the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
+`exit` to exit the application.
 
 ###[Proposed] delete feature 
 ####Proposed Implementation
