@@ -1,5 +1,6 @@
 package employee;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Employee {
@@ -69,6 +70,10 @@ public class Employee {
     public ArrayList<String> getSchedules(){
         return schedules;
     }
+
+//    public String getScheduleDateToString() {
+//        return shiftDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//    }
 
     public String formatData() {
         StringBuilder formattedString = new StringBuilder(getName());

@@ -2,6 +2,7 @@ package io;
 
 import employee.Employee;
 import parser.DataParser;
+import shift.Shift;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +20,7 @@ public class FileManager {
     }
 
     public void saveFile(ArrayList<Employee> employees) throws IOException {
+        // TODO: OOP this
         File path = new File("employees.txt");
         if (!path.exists()) {
             if (!path.createNewFile()) {
@@ -31,6 +33,19 @@ public class FileManager {
         }
         fileWriter.flush();
         fileWriter.close();
+
+        File path2 = new File("shifts.txt");
+        if (!path2.exists()) {
+            if (!path2.createNewFile()) {
+                throw new IOException();
+            }
+        }
+        FileWriter fileWriter2 = new FileWriter(path2);
+        for (Employee employee : employees) {
+            fileWriter2.write(employee.formatData());
+        }
+        fileWriter2.flush();
+        fileWriter2.close();
     }
 
     public ArrayList<Employee> loadFile() throws FileNotFoundException {
@@ -53,5 +68,28 @@ public class FileManager {
             System.out.println("Failed to load!");
         }
         return employees;
+    }
+
+    public ArrayList<Shift> loadShifts() throws FileNotFoundException {
+        //TODO: Make it OOP
+        ArrayList<Shift> shifts = new ArrayList<>();
+
+        File path2 = new File("shifts.txt");
+        if (!path2.exists()) {
+            throw new FileNotFoundException();
+        }
+        Scanner scanner2 = new Scanner(path2);
+        try {
+            while (scanner2.hasNext()) {
+                String line = scanner2.nextLine();
+                Shift shift = dataParser.parseShift(line);
+                if (shift != null) {
+                    shifts.add(shift);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to load!");
+        }
+        return shifts;
     }
 }

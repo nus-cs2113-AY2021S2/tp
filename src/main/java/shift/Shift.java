@@ -81,4 +81,22 @@ public class Shift {
     public void setVacancy(int vacancy) {
         this.vacancy = vacancy;
     }
+
+    public String getShiftDateToString() {
+        return shiftDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+
+    public String formatData() {
+        StringBuilder formattedString = new StringBuilder(getShiftDateToString());
+        formattedString.append("#");
+        formattedString.append(vacancy);
+        formattedString.append("#");
+        formattedString.append(shiftIndex);
+
+        for (Employee employee : employees) {
+            formattedString.append("#");
+            formattedString.append(employee.getName());
+        }
+        return formattedString +"\n";
+    }
 }
