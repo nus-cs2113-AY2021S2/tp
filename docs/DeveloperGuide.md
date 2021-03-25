@@ -124,6 +124,16 @@ output "Employee Eve assigned." and `vacancy` becomes 1.
 Given below is a sequence diagram of the Assign Employee feature.
 ![assignEmployee.PNG](assignEmployee.png) 
 
+### Saving of Data
+#### Implementation
+Employee and shift details are saved on separate text files "employees.text" and "shifts.text".
+A FileWriter is used to write formatted data from the Employee and Shift classes, with "#" as the delimiter.
+
+### Loading of Data
+#### Implementation
+![loadEmployees.puml](loadEmployees.puml)<br>
+![loadShifts.puml](loadShifts.puml)
+
 ## Product scope
 ### Target user profile
 

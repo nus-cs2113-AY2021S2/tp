@@ -1,0 +1,10 @@
+@startuml
+participant Actor
+Actor -> FileManager : loadShifts
+activate FileManager
+FileManager -> DataParser : parseShift
+activate DataParser
+DataParser --> FileManager
+deactivate DataParser
+return
+@enduml
