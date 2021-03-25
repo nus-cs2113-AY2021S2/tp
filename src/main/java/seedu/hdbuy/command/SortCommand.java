@@ -13,7 +13,8 @@ public class SortCommand extends Command {
         this.criteria = criteria;
     }
 
-    @Override public void execute(HashMap<QueryKey, String> inputs){
+    @Override public void execute(HashMap<QueryKey, String> inputs) {
+        System.out.println("SortCommand not implemented");
 //        try {
 //            switch (criteria) {
 //            case "asc":
