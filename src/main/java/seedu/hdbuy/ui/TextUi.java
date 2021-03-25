@@ -2,7 +2,6 @@ package seedu.hdbuy.ui;
 
 import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.EmptyFilterException;
 import seedu.hdbuy.data.exception.EmptyParameterException;
 import seedu.hdbuy.data.exception.InvalidFilterException;
 import seedu.hdbuy.data.exception.InvalidParameterException;
@@ -69,12 +68,7 @@ public class TextUi {
             Object[] unitData = {++i, (mapElement.getValue()).getAddress(), (mapElement.getValue()).getType(),
                     (mapElement.getValue()).getLease(), "$" + (mapElement.getValue()).getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
-            //System.out.println((mapElement.getValue()).toString());
         }
-    }
-
-    public static void showEmptyFilter(EmptyFilterException e) {
-        System.out.println(e.getMessage());
     }
 
     public static void showNoFlats(NoFlatsException e) {

@@ -3,7 +3,6 @@ package seedu.hdbuy.command;
 import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.EmptyFilterException;
 import seedu.hdbuy.data.exception.NoFlatsException;
 import seedu.hdbuy.data.exception.EmptyParameterException;
 import seedu.hdbuy.ui.TextUi;
