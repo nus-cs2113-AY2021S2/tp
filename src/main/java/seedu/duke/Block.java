@@ -32,6 +32,7 @@ public class Block {
     public ArrayList<String> getNotesList() {
         return this.notesList;
     }
+
     public int getNotesCount() {
         return this.notesCount;
     }
