@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+[-> ":Finux": commandLooper()
+activate ":Finux"
+":Finux" -> ":RemoveCommand": execute()
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":RecordList" : getRecordAt(recordNumberInt)
+activate ":RecordList"
+":RecordList" --> ":RemoveCommand"
+deactivate ":RecordList"
+
+
+":RemoveCommand" -> ":Ui" : printMessage()
+activate ":Ui"
+":Ui" --> ":RemoveCommand"
+deactivate ":Ui"
+
+":RemoveCommand" -> ":RecordList" : deleteRecordAt(recordNumberInt)
+activate ":RecordList"
+":RecordList" --> ":RemoveCommand"
+deactivate ":RecordList"
+
+":RemoveCommand" -> ":Storage" : saveData()
+activate ":Storage"
+":Storage" --> ":RemoveCommand"
+deactivate ":Storage"
+
+":RemoveCommand" --> ":Finux"
+deactivate ":RemoveCommand"
+destroy ":RemoveCommand"
+[<-- ":Finux"
+deactivate ":Finux"
+@enduml

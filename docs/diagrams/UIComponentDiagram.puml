@@ -1,0 +1,6 @@
+@startuml
+!include style.puml
+
+Duke -> [UI]
+
+@enduml
