@@ -186,7 +186,17 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 
 
 ### 3.4 CommandHandler Component
-...
+![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
+_Figure X. CommandHandler Class Diagram_
+
+#### Description
+The `CommandHandler` component is the object class itself.
+The role of the `CommandHandler` is to convert parsed arguments from the `ParserHandler`
+into subsequent `Command` objects which will be executed thereafter.
+
+#### Design
+It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
+(the actual commands of the Application).
 
 ### 3.5 RecordList Component
 ...
