@@ -1,0 +1,19 @@
+@startuml
+participant Actor
+Actor -> FileManager : loadEmployees
+activate FileManager
+FileManager -> DataParser : parseData
+activate DataParser
+deactivate Employee
+DataParser -> Employee : addSchedule
+activate Employee
+Employee -> Employee : isScheduleValid
+activate Employee
+Employee --> Employee
+deactivate Employee
+Employee --> DataParser
+deactivate Employee
+DataParser --> FileManager
+deactivate DataParser
+return
+@enduml
