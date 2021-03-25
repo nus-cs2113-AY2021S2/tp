@@ -46,8 +46,10 @@ Easily find and bookmark resale flats available matching user's preference.
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|user|find units by location, flat type and lease remaining|search for resale flats matching my preferences|
+|v2.0|new user|see usage instructions|understand all the available commands|
+|v2.0|returning user|bookmark potential flats|refer to them in the future|
+|v2.0|user|sort flats by price, in either ascending or descending order|view flats matching my budget|
 
 ## Non-Functional Requirements
 
