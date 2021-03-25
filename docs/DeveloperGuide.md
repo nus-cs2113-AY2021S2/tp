@@ -88,10 +88,46 @@ list of icons:
 ### 3.1 Architecture
 
 ![ArchitectureDiagram](img/ArchitectureDiagram.png)
-Note: Not final implementation yet, need refactor Parser and CommandHandler into
-CommandLogic.
+_Figure 1. **Finux** Architecture Diagram_
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+> 💡 The diagrams are built with [PlantUML](https://plantuml.com/).
+> The `.puml` files can be found in the [diagrams](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/diagrams) folder and
+> the generated picture diagrams are in the [img](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/img) folder.
+
+The _**Architecture Diagram**_ above details the high-level design of the **Finux** Application.
+Brief explanations of the components involved are given below.
+
+The `Finux` component contains only one class `Finux`, It is responsible for,
+* At launch: Initializes the components in the correct sequence and attempts to load data from file.  
+* At shut down: Shuts down the components and invokes cleanup method where necessary.
+
+The rest of the Application consists of six components.
+* `UI`: The user interface (UI) of the App which handles all user input and Application output.
+* `Parser`: The user input parser of the CLI.
+* `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
+* `Command`: The appropriate command to be executed.
+* `RecordList`: The list of records of the Application stored in-memory.
+* `Storage`: The storage manager that handles the saving of data, or data retrieval to/from file. 
+
+Given below are sequence diagrams describing the general Application flow and how the different objects
+interact with each other.
+
+![Initialization](img/InitializationSequenceDiagram.png)
+_Figure 2. Initialization_
+
+The initialization sequence diagram above shows the systematic flow of object creation and record
+retrieval from storage file for creation of the `RecordList` object.
+
+![Main program flow](img/CommandLooperSequenceDiagram.png)
+_Figure 3. Main Application loop and exit sequence_
+
+> 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML,
+> the lifeline reaches the end of diagram.
+
+This sequence diagram follows suit after initialization in _Figure 2_.\
+This shows the main flow until the `exit` command is input by the user.
+
+The following sections below will provide more details of each component.
 
 ### 3.2 UI Component
 ...
@@ -150,7 +186,17 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 
 
 ### 3.4 CommandHandler Component
-...
+![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
+_Figure X. CommandHandler Class Diagram_
+
+#### Description
+The `CommandHandler` component is the object class itself.
+The role of the `CommandHandler` is to convert parsed arguments from the `ParserHandler`
+into subsequent `Command` objects which will be executed thereafter.
+
+#### Design
+It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
+(the actual commands of the Application).
 
 ### 3.5 RecordList Component
 ...
