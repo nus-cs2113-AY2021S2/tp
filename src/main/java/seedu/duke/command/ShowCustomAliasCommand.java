@@ -7,15 +7,14 @@ import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
 import seedu.duke.FavouriteLocation;
 
-public class ClearHistoryCommand extends Command {
-    public ClearHistoryCommand(String userInput) {
+public class ShowCustomAliasCommand extends Command {
+    public ShowCustomAliasCommand(String userInput) {
         super(userInput);
     }
 
     @Override
-    public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
+    public void execute(Map map, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        history.emptyHistory();
-        ui.showClearHistoryResponse();
+        ui.showCustomAliases(blockAlias.getAliasMap());
     }
 }

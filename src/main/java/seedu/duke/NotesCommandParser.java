@@ -2,7 +2,7 @@ package seedu.duke;
 
 import seedu.duke.notecommandexceptions.*;
 
-import static seedu.duke.routing.Map.map;
+import static seedu.duke.Map.map;
 
 public class NotesCommandParser {
 
@@ -60,7 +60,7 @@ public class NotesCommandParser {
         if (note.isEmpty() || note.isBlank()) {
             throw new EmptyNoteException();
         }
-        int notesIndexForOriginalInput = input.indexOf("/") + 1;;
+        int notesIndexForOriginalInput = input.indexOf("/") + 1;
         note = input.substring(notesIndexForOriginalInput).trim();
     }
 

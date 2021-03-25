@@ -1,9 +1,5 @@
 package seedu.duke.notecommandexceptions;
 
-import java.io.IOException;
-
-import static seedu.duke.UiManager.getListOfLocations;
-
 public class NoNoteIndexException extends NotesException {
 
     @Override

@@ -1,9 +1,11 @@
 package seedu.duke.command;
 
-import seedu.duke.DailyRoute;
-import seedu.duke.History;
+import seedu.duke.Map;
 import seedu.duke.UiManager;
-import seedu.duke.routing.Router;
+import seedu.duke.History;
+import seedu.duke.DailyRoute;
+import seedu.duke.BlockAlias;
+import seedu.duke.FavouriteLocation;
 
 public class ShowHistoryCommand extends Command {
     public ShowHistoryCommand(String userInput) {
@@ -11,8 +13,8 @@ public class ShowHistoryCommand extends Command {
     }
 
     @Override
-    public void execute(Router router, UiManager ui, History history,
-                        DailyRoute dailyRoute) {
+    public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
+                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         ui.showHistory(history);
     }
 }

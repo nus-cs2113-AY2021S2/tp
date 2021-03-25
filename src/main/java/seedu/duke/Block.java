@@ -13,6 +13,8 @@ public class Block {
     private ArrayList<Block> neighbours;
     private ArrayList<String> notesList;
     private int notesCount;
+    private int distanceFromStart;
+
 
     public Block(String name) {
         this.name = name;
@@ -20,6 +22,7 @@ public class Block {
         this.neighbours = new ArrayList<>();
         this.notesList = new ArrayList<>();
         this.notesCount = 0;
+        this.distanceFromStart = 0;
     }
 
     public String getName() {
@@ -82,5 +85,13 @@ public class Block {
 
     public ArrayList<Block> getNeighbours() {
         return neighbours;
+    }
+
+    public int getDistanceFromStart() {
+        return distanceFromStart;
+    }
+
+    public void setDistanceFromStart(int distanceFromStart) {
+        this.distanceFromStart = distanceFromStart;
     }
 }
