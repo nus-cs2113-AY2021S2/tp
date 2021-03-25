@@ -1,11 +1,11 @@
 package seedu.hdbuy.ui;
 
-import seedu.hdbuy.data.QueryKey;
-import seedu.hdbuy.data.Unit;
-import seedu.hdbuy.data.exception.EmptyParameterException;
-import seedu.hdbuy.data.exception.InvalidFilterException;
-import seedu.hdbuy.data.exception.InvalidParameterException;
-import seedu.hdbuy.data.exception.NoFlatsException;
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.Unit;
+import seedu.hdbuy.common.exception.EmptyParameterException;
+import seedu.hdbuy.common.exception.InvalidFilterException;
+import seedu.hdbuy.common.exception.InvalidParameterException;
+import seedu.hdbuy.common.exception.NoFlatsException;
 
 import java.util.Arrays;
 import java.util.HashMap;

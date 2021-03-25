@@ -1,6 +1,6 @@
 package seedu.hdbuy.command;
 
-import seedu.hdbuy.data.QueryKey;
+import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
