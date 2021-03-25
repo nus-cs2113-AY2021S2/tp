@@ -43,6 +43,7 @@ public class TextUi {
 
     public static void showInvalidInput(String input) {
         System.out.print("I'm sorry. \"" + input + "\" is not a valid command.\n");
+        System.out.println("You can type \"help\" for more information.");
     }
 
     public static void showHelp() {
@@ -62,8 +63,21 @@ public class TextUi {
         System.out.println("Please use these filters: " + Arrays.asList(QueryKey.values()));
     }
 
-    public static void showInvalidParameter(InvalidParameterException e) {
+    public static void showInvalidParameter(String key, InvalidParameterException e) {
         System.out.println(e.getMessage());
+        switch (key) {
+        case "filter":
+            System.out.println("FILTER command needs a type and a parameter to work.");
+            System.out.println("Filter types: " + Arrays.asList(QueryKey.values()));
+            System.out.println("Example: \"filter location clementi\"");
+            break;
+        case "find":
+            System.out.println("FIND command does not need any parameters.");
+            System.out.println("However, you need to provide filter before you execute the FIND command.");
+            break;
+        default:
+            break;
+        }
     }
 
     public static void showUnits(HashMap<Integer, Unit> units) {
@@ -83,6 +97,9 @@ public class TextUi {
 
     public static void showEmptyParameter(String key, EmptyParameterException e) {
         System.out.println("\"" + key + "\"" + e.getMessage());
+        System.out.println("Please specified a filter to use before executing this command.");
+        System.out.println("Filters included: " + Arrays.asList(QueryKey.values()));
+        System.out.println("An example will be \"filter location clementi\"");
     }
 
     public static void showClearedFilterConditions() {

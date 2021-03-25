@@ -1,12 +1,10 @@
 package seedu.hdbuy;
 
 import seedu.hdbuy.command.Command;
-import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 public class HdBuy {
