@@ -24,7 +24,7 @@ public class UnitsGenerator {
             String[] unitDetails = unitContent.split(",");
             Unit unit = getUnit(unitDetails);
             map.put(unit.getId(), unit);
-            System.out.println(unit.toString());
+            //System.out.println(unit.toString());
         }
         return map;
     }

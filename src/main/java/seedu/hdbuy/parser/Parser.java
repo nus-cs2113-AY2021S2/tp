@@ -11,6 +11,7 @@ import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.Arrays;
+import org.junit.Assert;
 
 public class Parser {
     private static final String HELP = "help";
@@ -20,6 +21,7 @@ public class Parser {
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
+        Assert.assertNotNull(command);
         try {
             CommandKey keyCommand = extractInfo(fullLine);
             switch (keyCommand.getCommand()) {
