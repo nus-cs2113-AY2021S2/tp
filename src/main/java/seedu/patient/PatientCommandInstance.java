@@ -1,7 +1,7 @@
 package seedu.patient;
 
 import seedu.duke.exceptions.HealthVaultException;
-import seedu.duke.menuparser.MenuParser;
+import seedu.duke.menuparser.PatientParser;
 import seedu.duke.storage.PatientStorage;
 import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
@@ -32,7 +32,7 @@ public class PatientCommandInstance {
                 UI.showLine(); // show the divider line ("_______")
                 PatientUI.patientMenuPrompt();
                 String fullCommand = UI.scanInput();
-                isReturnToStartMenu = MenuParser.patientParse(fullCommand, patients);
+                isReturnToStartMenu = PatientParser.patientParse(fullCommand, patients);
                 UI.showLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser

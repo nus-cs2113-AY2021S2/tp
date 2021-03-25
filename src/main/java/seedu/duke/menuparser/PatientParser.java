@@ -7,7 +7,7 @@ import seedu.duke.ui.PatientUI;
 import seedu.duke.ui.UI;
 import seedu.patient.PatientList;
 
-public class MenuParser {
+public class PatientParser {
 
     /**
      * Checks the number of tokens and throws an exception based on the command

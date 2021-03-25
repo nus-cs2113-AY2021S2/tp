@@ -27,6 +27,11 @@ public class PatientStorage extends CommonStorage{
         saveFile = getFile();
     }
 
+    @Override
+    public void storeFile(String filePath) throws FileNotFoundException, HealthVaultException {
+
+    }
+
     /**
      * Checks if the file exists and initializes one if there is not.
      */

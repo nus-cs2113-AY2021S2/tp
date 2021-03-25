@@ -35,5 +35,6 @@ public abstract class CommonStorage {
         return file;
     }
 
+    public abstract void storeFile(String filePath) throws FileNotFoundException, HealthVaultException;
 
 }
