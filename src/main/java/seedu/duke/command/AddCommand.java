@@ -55,7 +55,6 @@ public class AddCommand extends Command {
         amount = getAmount(arguments);
         issueDate = getDate(arguments);
         borrowerName = getPerson(arguments);
-        System.out.println("borrower is: " + borrowerName);
     }
 
 
