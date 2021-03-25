@@ -16,19 +16,22 @@ public class Messages {
 
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";
-    public static final String INVALID_COMMAND = "Invalid command.";
+    public static final String INVALID_COMMAND = "Invalid command, please try again.";
 
     // Help
     public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!\n"
             + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"
             + "new\t\tadds a new review\nsort\tsets your preferred sorting method for your reviews"
-            + "\nlist\tlists your stored reviews\ndelete\tdeletes a review\nexit\texits connoisseur\n"
+            + "\nlist\tlists your stored reviews\nedit\tedits an existing review in your list\n"
+            + "delete\tdeletes a review\nexit\texits connoisseur\n"
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
             + "Currently recognised methods are:\nstars\ndate earliest\ndate latest\ntitle\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews.\n\n"
             + "Command syntax: list";
+    public static final String EDIT_HELP_MESSAGE = "Edit will allow you to edit an existing review in your list.\n\n"
+            + "Command syntax: edit <title of review you would like to edit>";
     public static final String EXIT_HELP_MESSAGE = "Exit will allow you to exit the application.\n\n"
             + "Command syntax: bye";
     public static final String REVIEW_HELP_MESSAGE = "New will allow you to add a review.\n"
@@ -64,8 +67,14 @@ public class Messages {
 
     // Delete
     public static final String MISSING_DELETE_TITLE = "Please specify title of review to be deleted";
-    public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
     public static final String INVALID_DELETE_TITLE = "Specified review does not exist!";
-    public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
     public static final String DELETE_SUCCESS = " has been deleted.";
+
+    // View
+    public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
+    public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
+
+    //Edit
+    public static final String INVALID_EDIT_TITLE = "Specified review does not exist!";
+    public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
 }

@@ -55,6 +55,11 @@ public class Review {
         return dateAndTimeOfEntry;
     }
 
+    public void setDateAndTimeOfEntry() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        this.dateAndTimeOfEntry = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy h:mm a"));
+    }
+
     /**
      * Gets the title of the review.
      *

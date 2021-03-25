@@ -1,7 +1,8 @@
 package seedu.connoisseur.commandlist;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.Before;
 import org.junit.After;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
@@ -18,6 +19,30 @@ public class CommandListTest {
 
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    Ui ui = new Ui();
+    Storage storage = new Storage(ui);
+    CommandList commandList = new CommandList(ui, storage);
+
+    @BeforeEach
+    public void setUp() {
+        Review reviewa = new Review("superman", "category", 5, "description");
+        Review reviewb = new Review("avengers", "category", 5, "description");
+        commandList.reviewList.add(reviewa);
+        commandList.reviewList.add(reviewb);
+    }
+
+    @Test
+    public void deleteReview_reviewExists_removesNormally() {
+        int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
+        String title = "superman";
+        commandList.deleteReview(title);
+
+        assertFalse(commandList.reviewList.contains(title));
+
+        int numberOfReviewsAfterRemoval = commandList.reviewList.size();
+        assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
+    }
+
 
     @Before
     public void setUpStreams() {
@@ -36,6 +61,7 @@ public class CommandListTest {
         System.out.print("You have no reviews, type 'new' to start!");
         assertEquals("You have no reviews, type 'new' to start!", outContent.toString());
         restoreStreams();
+
     }
 
     @Test
