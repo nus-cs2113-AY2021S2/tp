@@ -17,5 +17,6 @@ public class ReviewsCommandTest {
             System.out.println(review.toString());
         }
         assertEquals(reviews, store.getReviews());
+        assertEquals("Fish rice stall",store.getStoreName());
     }
 }
