@@ -5,8 +5,8 @@ import seedu.fridgefriend.utilities.Ui;
 
 public class SetLimitCommand extends Command {
 
-    FoodCategory foodCategory;
-    int quantity;
+    private FoodCategory foodCategory;
+    private int quantity;
 
     public SetLimitCommand(FoodCategory foodCategory, int quantity) {
         this.foodCategory = foodCategory;
