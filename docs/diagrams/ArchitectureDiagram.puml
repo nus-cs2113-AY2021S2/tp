@@ -12,7 +12,7 @@ Package " "<<Rectangle>> {
     Class RecordList #indigo
     Class Finux #grey
     Class CommandHandler #orange
-    Class ParserHandler #olivedrab
+    Class Parser #olivedrab
     Class Command #purple
     Class HiddenRecordList #white
     Class HiddenUI #white
@@ -23,8 +23,8 @@ Class "<$user>" as User #black
 Class "<$document>" as File #skyblue
 
 User ..> UI
-UI -[#green]-> ParserHandler
-ParserHandler -[#olivedrab]-> CommandHandler
+UI -[#green]-> Parser
+Parser -[#olivedrab]-> CommandHandler
 CommandHandler -[#orange]-> Command
 Command -[#purple]-> RecordList
 Command -right[#purple]-> Storage

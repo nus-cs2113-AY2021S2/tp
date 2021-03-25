@@ -103,7 +103,7 @@ The `Finux` component contains only one class `Finux`, It is responsible for,
 
 The rest of the Application consists of six components.
 * `UI`: The user interface (UI) of the App which handles all user input and Application output.
-* `ParserHandler`: The user input parser of the CLI.
+* `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
 * `Command`: The appropriate command to be executed.
 * `RecordList`: The list of records of the Application stored in-memory.

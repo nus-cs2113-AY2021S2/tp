@@ -3,7 +3,7 @@
 
 Participant ":Finux" as Finux
 Participant ":UI" as UI
-Participant ":ParserHandler" as ParserHandler
+Participant ":Parser" as ParserHandler
 Participant ":CommandHandler" as CommandHandler
 Participant ":Command" as Command
 Participant ":RecordList" as RecordList
