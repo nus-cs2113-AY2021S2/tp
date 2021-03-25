@@ -2,15 +2,15 @@ package seedu.staff;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.NoInputException;
-import seedu.duke.exceptions.staffexceptions.AbortException;
-import seedu.duke.exceptions.staffexceptions.WrongListInputException;
-import seedu.duke.exceptions.staffexceptions.WrongStaffIdException;
+import seedu.exceptions.NoInputException;
+import seedu.exceptions.staffexceptions.AbortException;
+import seedu.exceptions.staffexceptions.WrongListInputException;
+import seedu.exceptions.staffexceptions.WrongStaffIdException;
 
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.staff.Parser.commandHandler;
+import static seedu.logic.parser.staffparser.commandHandler;
 
 
 public class StaffParserTest {
