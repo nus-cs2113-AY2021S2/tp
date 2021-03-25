@@ -204,6 +204,8 @@ public class AppController {
                         return;
                     }
                 }
+                System.out.println("Shift not found");
+                return;
             }
         }
         System.out.println("Employee not found");
@@ -225,6 +227,8 @@ public class AppController {
                         return;
                     }
                 }
+                System.out.println("Shift not found");
+                return;
             }
         }
         System.out.println("Employee not found");

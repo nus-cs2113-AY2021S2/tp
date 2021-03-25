@@ -88,7 +88,41 @@ Control is then passed back to the `addSchedule` method in `AppController`, with
 
 `addSchedule` in `AppController` will provide feedback to the user on if the schedule is added successfully, and end the method call by passing control back to the `run` method in `AppController`.
 
+### Assign Employee feature
+#### Implementation
 
+The proposed Assign Employee feature is facilitated by the `Shift` object in the `shift` package,
+where it stores the employees on the shift, its shift date, shift index, and vacancy. 
+This method, like its name suggests, assigns an employee to an available shift.
+
+Given below is an example usage scenario and how the Assign Employee method behaves at each step.
+
+Step 1: The user launches the application and the `Employee` and `Shift` objects are initialised with the saved data.
+For this example, we will use the `Employee` object to store all employees and their schedules, where `employees: `[Adam, Eve], and 
+`shifts` which is an ArrayList of `Shift` objects. The example will use a `Shift` object with attributes `employees: `[Adam], 
+an ArrayList of employees assigned to this shift, meaning `Adam` is assigned to this shift, `shiftDate: `04/04/2021, `shiftIndex: `3, meaning that the shift period is 0800 to 1200, 
+and `vacancy: `2.
+
+Step 2: The system calls `App Controller` and prompts "Enter Command: ".
+
+Step 3: The user enters `assign employee`. This command will call `assignEmployee()` in `App Controller`, which then 
+causes the system to output "Enter Employee name to assign: ".
+
+Step 4: The user inputs "Eve", which calls the`getName()` method in `Employee` to check whether `Eve` exists in the database.
+If `Eve` does not exist in the database, the system will output "Employee not found", and the method ends here. Since `Eve`
+exist in the database, the system proceeds to output "Enter Shift date (in dd/MM/yyyy)".
+
+Step 5: The user inputs "04/04/2021" and this is stored as a temporary `shiftDate` object in the method, where the `LocalDate.parse()` method will parse the `String` input using the `DateTimeFormatter` into a `LocalDate` object.
+The system will then output "Enter Shift index:".
+
+Step 6: The user inputs "3" which is temporarily stored as `shiftIndex`, and the system proceeds to verify that the `Shift` object with this particular `shiftDate` and `shiftIndex` exists.
+The system outputs "Shift not found" if the particular `Shift` object does not exist. Since this `Shift` exists, the system
+calls the `assignEmployee()` method in `Shift` to assign `Eve` to this shift by adding `Eve` into the ArrayList of `employees` stored in the `Shift` object. This causes the `vacancy` in this current `Shift` object to decrement by 1.
+If the `vacancy` is 0, the system outputs "Shift is full!". Since there is still 2 vacancies for this shift, the system will instead
+output "Employee Eve assigned." and `vacancy` becomes 1.
+
+Given below is a sequence diagram of the Assign Employee feature.
+![assignEmployee.PNG](assignEmployee.png) 
 
 ## Product scope
 ### Target user profile
