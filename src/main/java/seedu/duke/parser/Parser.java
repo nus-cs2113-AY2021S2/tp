@@ -208,6 +208,7 @@ public class Parser {
         }
     }
 
+    //@@author isaharon
     /**
      * Gets the single command word and arguments from user input.
      *
@@ -261,6 +262,7 @@ public class Parser {
         return commandWordsAndArgs;
     }
 
+    //@@author ivanchongzhien
     /**
      * Parses module code from user input.
      *
