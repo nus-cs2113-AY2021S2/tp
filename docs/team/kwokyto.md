@@ -9,7 +9,7 @@ I am one of the contributors to the `FridgeFriend` project.
 
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 1.5kLoC.
+It is written in Java, and has more than 3.2kLoC.
 
 ## Summary of Contributions
 
@@ -42,7 +42,7 @@ Given below are my contributions to the project
   - Justification: Allows for personalisation of fridge, since different users have differing requirements and preferences for the quantity of each food category
   - Pull request: ([#115](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/115))
 
-- Code contributed: [RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto)
+- Code contributed: more than 1600 lines of code ([RepoSense](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=kwokyto))
 
 ### Enhancements to Existing Features
 
