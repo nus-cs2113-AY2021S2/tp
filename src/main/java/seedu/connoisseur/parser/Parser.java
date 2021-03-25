@@ -16,11 +16,6 @@ public class Parser {
         Parser.commandList = commandList;
     }
 
-    /**
-     * Processes user input and executes the relevant commands.
-     *
-     * @return true if exit command, false otherwise
-     */
     public static void determineEditCommand(int Index) {
         Ui ui = new Ui();
         String input = ui.readCommand();
@@ -66,6 +61,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Processes user input and executes the relevant commands.
+     *
+     * @return true if exit command, false otherwise
+     */
     public boolean determineCommand(String input) {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;

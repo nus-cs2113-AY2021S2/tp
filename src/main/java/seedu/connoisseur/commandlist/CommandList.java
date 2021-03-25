@@ -390,10 +390,12 @@ public class CommandList {
             case "y":
                 Review currentReview = reviewList.get(index);
                 currentReview.setDateAndTimeOfEntry();
+                break;
             case "n":
                 break;
             default:
                 ui.println(INVALID_COMMAND);
+                break;
             }
         }
     }
