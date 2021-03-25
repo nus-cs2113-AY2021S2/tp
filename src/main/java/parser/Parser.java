@@ -20,9 +20,11 @@ import ui.Ui;
 
 
 public class Parser {
+
     private NusFoodReviews nusFoodReviews;
 
     public Parser(NusFoodReviews nusFoodReviews) {
+
         this.nusFoodReviews = nusFoodReviews;
     }
 
