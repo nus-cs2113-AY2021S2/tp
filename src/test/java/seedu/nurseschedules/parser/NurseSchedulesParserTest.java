@@ -1,8 +1,8 @@
 package seedu.nurseschedules.parser;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.exceptions.nurseschedules.WrongInputsException;
-import seedu.duke.menuparser.NurseSchedulesParser;
+import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.logic.parser.NurseSchedulesParser;
 
 
 import java.text.ParseException;
