@@ -11,14 +11,23 @@ package Command <<Rectangle>> {
     class "{abstract}\nCommand" as Command
     class AddCommand
     class RemoveCommand
-    class SearchCommand
     class ListCommand
-    class HelpCommand
-    class ByeCommand
-    class ExpiringCommand
-    class ClearCommand
+    class SearchCommand
     class SetLimitCommand
+    class HelpCommand
+    class ClearCommand
+    class ByeCommand
     class RunningLowCommand
+    class ExpiringCommand
+}
+
+package Fridge <<Rectangle>>  {
+}
+
+package Main <<Rectangle>> {
+}
+
+package UI <<Rectangle>> {
 }
 
 class Command {
@@ -37,29 +46,12 @@ class AddCommand {
   +categoriseAndGenerateFood(): Food {static}
 }
 
-class ByeCommand {
-  +isExit(): boolean
-  +setExit(isExit: boolean): void
+class RemoveCommand {
+  -foodNameToEdit: String
+  -foodToBeRemoved: Food
   +execute(): void
-}
-
-class ClearCommand {
-  +execute(): void
-}
-
-class ExpiringCommand {
-  -message: String
-  -index: int
-  +execute(): void
-  +updateMessage(food: Food): void
-  +addToMessage(food: Food): void
-}
-
-class HelpCommand {
-  - COMMANDS: String {static}
-  - CATEGORIES: String {static}
-  - LOCATIONS: String {static}
-  + execute() : void
+  -removePortion(): void
+  -checkRunningOUt(): void
 }
 
 class ListCommand {
@@ -69,20 +61,6 @@ class ListCommand {
   -listByCategory(): void
   -listByStorageLocation(): void
   -listAll(): void
-}
-
-class RemoveCommand {
-  -foodNameToEdit: String
-  -foodToBeRemoved: Food
-  +execute(): void
-  -removePortion(): void
-  -checkRunningOUt(): void
-}
-
-class RunningLowCommand {
-  +execute(): void
-  +getMessage(): String
-  -updateMessage(foodCategory: FoodCategory): void
 }
 
 class SearchCommand {
@@ -100,27 +78,50 @@ class SetLimitCommand {
   -getSetLimitMessage(): String
 }
 
-package Fridge <<Rectangle>>  {
+
+class HelpCommand {
+  - COMMANDS: String {static}
+  - CATEGORIES: String {static}
+  - LOCATIONS: String {static}
+  + execute() : void
 }
 
-package Main <<Rectangle>> {
+class ClearCommand {
+  +execute(): void
 }
 
-package UI <<Rectangle>> {
+class ByeCommand {
+  +isExit(): boolean
+  +setExit(isExit: boolean): void
+  +execute(): void
 }
 
-RemoveCommand --up|> Command
-SearchCommand --up|> Command
-ExpiringCommand --up|> Command
-AddCommand --up|> Command
-ListCommand --right|> Command
-HelpCommand --left|> Command
-ByeCommand --|> Command
-ClearCommand --|> Command
-RunningLowCommand --|> Command
-SetLimitCommand --|> Command
+class RunningLowCommand {
+  +execute(): void
+  +getMessage(): String
+  -updateMessage(foodCategory: FoodCategory): void
+}
+
+class ExpiringCommand {
+  -message: String
+  -index: int
+  +execute(): void
+  +updateMessage(food: Food): void
+  +addToMessage(food: Food): void
+}
+
 Command ---.down> Fridge: uses
-Command -.> UI: prints with
-Main -.down> Command: execute >
+Command ---.down> UI: prints with
+Main ---.down> Command: execute >
+AddCommand --right|> Command
+RemoveCommand --down|> Command
+ListCommand ---down|> Command
+SearchCommand ---down|> Command
+SetLimitCommand ---up|> Command
+HelpCommand --up|> Command
+ClearCommand --up|> Command
+ByeCommand --down|> Command
+RunningLowCommand --left|> Command
+ExpiringCommand ---up|> Command
 
 @enduml
