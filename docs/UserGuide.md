@@ -170,7 +170,7 @@ Examples: `remove -i 1`, `remove -i 2`
 
 Output:
 
-![remove example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/Remove%5FExample%5FOutput.jpg?raw=true)
+![remove example output](img/RemoveExampleOutput.png)
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -185,7 +185,7 @@ Examples: `creditscore jason`, `creditscore andy`
 
 Output:
 
-![creditscore example output]()
+![creditscore example output](img/CreditScoreExampleOutput.jpg)
 
 ### 3.7 Exit the program: `exit`
 
