@@ -7,8 +7,6 @@ import seedu.duke.notecommandexceptions.NoNoteIndexException;
 import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
 import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
-import static seedu.duke.Map.map;
-
 public class NotesCommandParser {
 
     public static String location;
@@ -19,7 +17,7 @@ public class NotesCommandParser {
 
     }
 
-    public static int getLocation(String input) throws WrongInputFormatException,
+    public static int getLocation(String input, Map nusMap) throws WrongInputFormatException,
             NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException {
         //1. Filter out location (UPPERCASE) from input:
@@ -48,7 +46,7 @@ public class NotesCommandParser {
             throw new NoLocationForNotesCommandException();
         }
         //if location does not exists in current list of locations in the program:
-        if (!map.containsKey(location)) {
+        if (!nusMap.map.containsKey(location)) {
             throw new NonExistentLocationForNotesCommandException();
         }
 
@@ -68,7 +66,7 @@ public class NotesCommandParser {
         note = input.substring(notesIndexForOriginalInput).trim();
     }
 
-    public static void getNoteIndex(String input, int beforeNoteNumberIndex)
+    public static void getNoteIndex(String input, int beforeNoteNumberIndex, Map nusMap)
             throws NoNoteIndexException, InvalidNoteIndexException {
         //2. Filter out Note Index added by user:
         int noteNumberIndex = beforeNoteNumberIndex + 1;
@@ -82,34 +80,34 @@ public class NotesCommandParser {
         }
         int noteIndex = Integer.parseInt(noteIndexString); //throws NumberFormatException
         //if noteIndex is invalid (not within the total number of notes made for that location):
-        if (noteIndex < 1 || noteIndex > map.get(location).getNotesCount()) {
+        if (noteIndex < 1 || noteIndex > nusMap.map.get(location).getNotesCount()) {
             throw new InvalidNoteIndexException();
         }
         noteIndexInList = noteIndex - 1;
     }
 
-    public static void parseAddNotesCommand(String input)
+    public static void parseAddNotesCommand(String input, Map nusMap)
             throws WrongInputFormatException, NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException, EmptyNoteException {
 
         //1. Filter out location (UPPERCASE) from input:
-        getLocation(input);
+        getLocation(input, nusMap);
         //2. Filter out notes (original case) added by user:
         getNotes(input);
     }
 
-    public static void parseDeleteNotesCommand(String input)
+    public static void parseDeleteNotesCommand(String input, Map nusMap)
             throws WrongInputFormatException, NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException, NoNoteIndexException, InvalidNoteIndexException {
 
         //1. Filter out location (UPPERCASE) from input:
-        int beforeNoteNumberIndex = getLocation(input);
+        int beforeNoteNumberIndex = getLocation(input, nusMap);
         //2. Filter out Note Index added by user:
-        getNoteIndex(input, beforeNoteNumberIndex);
+        getNoteIndex(input, beforeNoteNumberIndex, nusMap);
 
     }
 
-    public static void parseListNotesCommand(String input)
+    public static void parseListNotesCommand(String input, Map nusMap)
             throws NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException  {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");
@@ -128,7 +126,7 @@ public class NotesCommandParser {
             throw new NoLocationForNotesCommandException();
         }
         //if location does not exists in current list of locations in the program:
-        if (!map.containsKey(location)) {
+        if (!nusMap.map.containsKey(location)) {
             throw new NonExistentLocationForNotesCommandException();
         }
     }

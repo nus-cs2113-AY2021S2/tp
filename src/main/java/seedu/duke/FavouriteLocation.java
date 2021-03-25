@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FavouriteLocation {
 
-    private static ArrayList<String> favouriteLocations;
+    public ArrayList<String> favouriteLocations;
 
     public FavouriteLocation() {
         this.favouriteLocations = new ArrayList<String>();
