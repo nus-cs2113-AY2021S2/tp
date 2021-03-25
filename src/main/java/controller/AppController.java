@@ -34,9 +34,9 @@ public class AppController {
             case "add employee":
                 addEmployee();
                 break;
-            case "drop employee":
+            /**case "drop employee":
                 dropEmployee();
-                break;
+                break;**/
             case "add schedule":
                 addSchedule();
                 break;

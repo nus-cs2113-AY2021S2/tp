@@ -10,8 +10,8 @@ public class ui {
     public static void printHelpMessage(){
      System.out.println("Command options available:\n");
      System.out.println("add employee (add a new employee to the database)");
-     System.out.println("drop employee (delete an existing employee from the database," +
-             "including all his shifts and schedules)");
+     /**System.out.println("drop employee (delete an existing employee from the database," +
+             "including all his shifts and schedules)");**/
      System.out.println("add schedule (add a new schedule to an employee)");
      System.out.println("drop schedule (drop an existing schedule from an employee)");
      System.out.println("add shift (add a new shift for the restaurant)");
