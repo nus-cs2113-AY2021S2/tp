@@ -79,7 +79,46 @@ list of icons:
 
 ### 2.1 Setting up the project in your computer
 
+Ensure that you have the following installed:
+* JDK 11
+* Intellij IDEA (Highly Recommended)
+
+Firstly, **fork** this repo and **clone** a copy into your computer.
+
+If you plan to use IntelliJ IDEA:
+1. **Ensure IntelliJ is configured to develop in JDK 11.**
+   1. If you are not at the welcome screen, click `File` > `Close Projects` to close any currently opened projects.
+   1. Click on `Configure` > `Structure for New Projects` > `Project Settings` > `Project`, ensure
+      the `Project SDK` is using **JDK 11**.
+1. **Import the project as a Gradle Project.**
+   1. Click on `Import Project` and locate the `build.gradle` file and select it. Click `OK`.
+   1. If prompted, choose to `Open as Project` (not `Open as File`).
+   1. Click `OK` to accept the default settings but do ensure that the selected version of `Gradle JVM`
+      matches the JDK being used for the project.
+   1. Wait for the importing process to finish (it could take a few minutes).
+1. **Verify the setup.**
+   1. After importing successfully, locate the `src/main/java/seedu.duke/Duke.java` file, right click it, 
+      and choose `Run...`. If the setup is correct, you should see the following:
+   ![Login_Page](img/LoginPageExampleOutput.png)
+
 ### 2.2 Before writing code
+
+#### 2.2.1 Configuring the Coding Style
+
+If you are using IDEA, follow this guide 
+[IDEA: Configuring the code style](https://se-education.org/guides/tutorials/intellijCodeStyle.html)
+to setup IDEA's coding style to match ours.
+
+#### 2.2.2 Set up CI
+
+There is no set up required as the project comes with GitHub Actions config files, located in `.github/workflows`
+folder. When GitHub detects these files, it will run the CI for the project automatically at each push to the master
+branch or to any PR.
+
+#### 2.2.3 Learn the Design
+
+Before starting to write any code, we recommend that you have a look at Finux's overall design by reading
+[Finux's Architecture](#31-architecture) section.
 
 ## 3. Design
 
@@ -130,7 +169,16 @@ This shows the main flow until the `exit` command is input by the user.
 The following sections below will provide more details of each component.
 
 ### 3.2 UI Component
-...
+
+![UIComponentDiagram](img/UIComponentDiagram.png)\
+*Figure 1: Ui Class Diagram*
+
+The Ui Component consists of a `Ui` class which handles all user input and system output.
+The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
+ensuring a high level of cohesiveness, low level of coupling and separation of roles.
+
+The `Ui` component actively listens for:
+* the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
 ![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)
@@ -208,8 +256,8 @@ It functions as a mapping from `parsedArguments[0]` to a set of predefined comma
 
 ---
 
-Some Class diagrams, etc...
-Some sequence diagrams, etc...
+This section introduces the specific implementation details and design thought processes
+of some features in **Finux**.
 
 ### 4.1 Add Feature
 ...
@@ -224,7 +272,94 @@ Some sequence diagrams, etc...
 ...
 
 ### 4.5 Remove Feature
-...
+
+The remove feature aims to allow users to remove records after querying the record's
+index number with the `list` command. The users will be able to then use the `remove`
+command to delete certain records that they deem obsolete or is incorrect. Hence, this feature
+allows them to amend their mistakes or edit their list with constraints.
+
+#### 4.5.1 Current Implementation
+
+The remove feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
+parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
+relevant parameters that will be used in the execute function.
+
+Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
+
+***Step 1:***\
+User executes the command `remove -i 1`. The application invokes `CommandHandler#createCommand()`, and since the 
+command type is `remove`, the `createCommand` constructs a `RemoveCommand` object. The validation of the constructed
+`RemoveCommand` is done in the constructor. The created command is then returned to `Finux`.
+
+***Step 2:***\
+The `CommandHandler` terminates after parsing user input and creating the corresponding Command object. The application
+invokes `RemoveCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+The `RemoveCommand` first invokes `RecordList#getRecordAt(recordNumberInt)` to get the record located at index
+`recordNumberInt`. The record retrieved will be used in the next step.
+> 📝 `recordNumberInt` is the index number that you will see on the list minus by one.
+
+***Step 4:***\
+The application invokes `Ui#printMessage()` and prints the record that will be removed with their respective 
+`toString()` method. 
+
+***Step 5:***\
+The application invokes `RecordList#deleteRecordAt(recordNumberInt)` which removes the record located at the index 
+`recordNumberInt`.
+
+***Step 6:***\
+The application invokes `Storage#saveData()` to save the modification on the record list onto the save file after the
+removal of the record is successful. This will then enable future file loading to be accurate and there are no mismatch
+of information or records.
+
+The sequence diagram presented below depicts the interaction between the components for running the command.
+`remove -i 1`.
+> 📝 The sequence diagram starts from Step 2 onward.
+> 
+> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
+> are given.
+
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+*Figure x: Sequence Diagram for `remove -i 1`*
+
+#### 4.5.2 Design Consideration
+
+This section shows the design considerations taken when implementing the remove feature.
+
+Aspect: **When should the application validate the user input index**
+
+Since it is entirely possible that the index provided by the user can be invalid where the indices may be one of the
+following:
+* negative numbers
+* numbers that refer to non-existent records
+* non-numerics (e.g. alphabets, symbols, etc.)\
+
+There is a need to validate the index given by the user to ensure that the application does not terminate unexpectedly
+and that suitable error messages are printed to notify the user of their intentional or unintentional parameter inputs.
+
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|During command execution.|No additional class required.|A new argument for the `execute()` method is needed. It also increases coupling and decreases cohesion.|
+|During command creation.|Decreases coupling and increases cohesion as there is a clear cut in between responsibilities. The arguments of `execute()` can remain consistent with other command types.|Duplication of validation may occur in other commands.|
+
+Having considered two of the approaches, we have decided to adopt the second approach which is to validate the index
+during command creation. The lower coupling and higher cohesion was the deterministic factor here and also the
+consistency of the arguments in `execute()` can also be maintained.
+
+Aspect: **The way the index is specified(option)**
+
+As the user has to specify the index of which record to remove, the index has to be provided but is `-i` required?
+
+|Approach|Pros|Cons|
+|--------|----|----|
+|Have to use `-i`|The options will be consistent with the `return` command as it requires the user to input an index as well|Extra time is used to enter 2 more characters just to satisfy the application requirement where the `remove` command actually only need one parameter.|
+|Do not have to use `-i`|Saves the time needed to input the 2 characters.|It will be inconsistent to require users to include `-i` for the `return` command but not for the `remove` command.|
+
+With the two approaches considered, we have decided to adopt the first approach as it gives consistency for the
+user experience, and it will not cause any confusion. The time wasted is negligible, and the consistency provides
+long-term benefit.
 
 ### 4.6 Storage Feature
 ...
