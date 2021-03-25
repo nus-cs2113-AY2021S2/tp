@@ -130,10 +130,21 @@ public class UiManager {
         }
     }
 
+    public static String getListOfLocations() {
+        return "E1  E1A  E2  E2A  E3  E3A  E4  E4A  E5"
+                + System.lineSeparator()
+                + "E6  E7  EA  EW1  EW1A EW2  LT1  LT2  LT5  LT6"
+                + System.lineSeparator()
+                + "AS1 LT7  LT7A IT  T-LAB"
+                + System.lineSeparator()
+                + "TECHNO EDGE";
+    }
+
+
     public DaySchedulePair getDailyRouteInfo()
             throws InvalidDayException, InvalidBlockException {
         String day = getValidDay();
-        ArrayList<String> dailyBlocks = getSchedule();;
+        ArrayList<String> dailyBlocks = getSchedule();
         return new DaySchedulePair(day, dailyBlocks);
     }
 
@@ -253,4 +264,5 @@ public class UiManager {
         assert favouriteLocation != null : "favouriteLocation must be initialised";
         favouriteLocation.showFavouriteLocations();
     }
+
 }

@@ -8,7 +8,6 @@ public class Duke {
     private Map nusMap;
     private UiManager ui;
     private History history;
-    private NotesManager notesManager;
     private DailyRoute dailyroute;
     private FavouriteLocation favouriteLocation;
     private BlockAlias blockAlias;
@@ -28,7 +27,6 @@ public class Duke {
         this.nusMap = new Map();
         this.ui = new UiManager();
         this.history = new History();
-        this.notesManager = new NotesManager();
         this.dailyroute = new DailyRoute();
         this.blockAlias = new BlockAlias();
         this.favouriteLocation = new FavouriteLocation();
@@ -40,7 +38,7 @@ public class Duke {
             try {
                 String input = ui.getUserInput();
                 Command command = Parser.prepareForCommandExecution(input);
-                command.execute(nusMap, ui, history, notesManager, dailyroute, blockAlias, favouriteLocation);
+                command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
                 isExit = command.isExit();
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());
