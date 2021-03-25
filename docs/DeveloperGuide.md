@@ -2,8 +2,6 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
-
 ### Command Component
 
 The Command component contains the sub classes of the features that will be executed.
@@ -30,7 +28,23 @@ The Command Component consist of 10 sub class which each command represents a fe
 * **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
 * **ByeCommand**: Indicate to the main method to exit the program. 
 
+### Utilities Compoenent
+
+The Utilities component contains the main classes that run the main functions of FridgeFriend.
+
+![Utilities Class Diagram](diagrams/UtilitiesClassDiagram.png)
+
+The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
+
+The Utilities Component consists for 4 classes.
+
+- **`LoggingHandler`**: Logs information during execution to the console.
+- **`Parser`**: Breaks down user input into relevant objects.
+- **`Storage`**: Reads data from, and writes data to, the local disk.
+- **`Ui`**: Handles the input and output of the application.
+
 ## Product scope
+
 ### Target user profile
 
 {Describe the target user profile}

@@ -183,6 +183,56 @@ These are the food expiring in the next week:
 1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
 ```
 
+### List categories with food running low: `runninglow`
+
+Displays a list of food categories which total quantity is below a specified minimum limit.
+
+Format: `runninglow`
+
+Example of usage:
+
+```
+>> runninglow
+You are running low on food in these categories:
+1. VEGETABLE quantity: 0 out of 500
+2. FRUIT quantity: 0 out of 500
+3. MEAT quantity: 200 out of 500
+4. SEAFOOD quantity: 1 out of 500
+5. EGG quantity: 0 out of 500
+6. DAIRY quantity: 0 out of 500
+7. BEVERAGE quantity: 0 out of 500
+8. COOKED_DISH quantity: 0 out of 500
+9. READY_TO_EAT quantity: 1 out of 500
+10. FROZEN quantity: 0 out of 500
+11. OTHER quantity: 0 out of 500
+```
+
+### Modify the minimum quantity limits: `setlimit`
+
+Changes the minimum quantity limit for a specific food category.
+
+Format: `setlimit FOOD_CATEGORY /qty QUANTITY`
+
+Example of usage:
+```
+>> runninglow
+You are running low on food in these categories:
+1. MEAT quantity: 250 out of 500
+
+>> setlimit meat /qty 300
+Okie dokie! The new minimum quantity for category 'MEAT' is 300
+
+>> runninglow
+You are running low on food in these categories:
+1. MEAT quantity: 250 out of 300
+
+>> setlimit meat /qty 200
+Okie dokie! The new minimum quantity for category 'MEAT' is 200
+
+>> runninglow
+Congrats! You are all stocked up on food! :D
+```
+
 ### Get help message: `help`
 
 Prints a list of available commands and formats.
@@ -247,5 +297,7 @@ Plus, you are always welcomed to use `help` command.
 * Remove food `remove INDEX`
 * Search for food `search FOOD_NAME`
 * List expiring foods `expiring`
+* List categories with food running low: `runninglow`
+* Modify the minimum quantity limits: `setlimit`
 * Get help message `help`
 * Exit application `bye`

@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Represents an object that deals with interactions with the user.
  */
 public class Ui {
-    public static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Retrieves the next line of input provided by the user.
