@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+":Finux" -> ":ViewCommand": execute()
+activate ":Finux"
+activate ":ViewCommand"
+
+alt EXPENSE
+
+    ":ViewCommand" -> ":Ui": printTotalAmountExpense(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ViewCommand"
+    deactivate ":Ui"
+
+else LOAN
+
+    ":ViewCommand" -> ":Ui": printTotalAmountLoan(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ViewCommand"
+    deactivate ":Ui"
+
+else SAVING
+
+    ":ViewCommand" -> ":Ui": printTotalAmountSaving(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ViewCommand"
+    deactivate ":Ui"
+
+end
+
+":ViewCommand" --> ":Finux"
+deactivate ":ViewCommand"
+deactivate ":Finux"
+
+@enduml
