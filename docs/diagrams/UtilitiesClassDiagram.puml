@@ -30,7 +30,7 @@ package Command <<Rectangle>>{
 }
 
 class Ui {
-  - {static} Scanner scanner
+  - {static} scanner: Scanner
   + {static} String getNextLine()
   + {static} void printMessage()
   + {static} void printWelcomeMessage()
@@ -39,25 +39,25 @@ class Ui {
 }
 
 class LoggerHandler {
-  - {static} Logger logger
+  - {static} logger: Logger
   + {static} void logInfo(String message)
   + {static} void logWarning(String message)
   + {static} void logSevere(String message)
 }
 
 class Storage {
-  - {static} String DATA_FILE_PATH
-  - {static} String LIMITS_FILE_PATH
-  - {static} String DIRECTORY
-  - {static} Fridge fridge
+  - {static} DATA_FILE_PATH: String
+  - {static} LIMITS_FILE_PATH: String
+  - {static} DIRECTORY: String
+  - {static} fridge: Fridge
   + {static} void load(Fridge fridgeInput)
   + {static} void save(Fridge fridgeInput)
 }
 
 class Parser {
-  - {static} Pattern FOOD_DATA_ARGS_FORMAT
-  - {static} Pattern REMOVE_ARGS_FORMAT
-  - {static} Pattern SET_LIMIT_ARGS_FORMAT
+  - {static} FOOD_DATA_ARGS_FORMAT: Pattern
+  - {static} REMOVE_ARGS_FORMAT: Pattern
+  - {static} SET_LIMIT_ARGS_FORMAT: Pattern
   + {static} Command getCommand(String input)
   - {static} Command parseFoodDescription(String foodDescription)
   - {static} Command parseRemoveDescription(String removeDescription)
