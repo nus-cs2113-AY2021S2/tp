@@ -4,7 +4,7 @@
 
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 1.5kLoC.
+It is written in Java, and has more than 3.2kLoC.
 
 ## Quick Start
 
