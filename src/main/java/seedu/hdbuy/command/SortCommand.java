@@ -14,20 +14,20 @@ public class SortCommand extends Command {
     }
 
     @Override public void execute(HashMap<QueryKey, String> inputs){
-        try {
-            switch (criteria) {
-            case "asc":
-
-                break;
-            case "desc":
-
-                break;
-            default:
-                throw new InvalidSortException();
-            }
-            TextUi.showParameters(inputs);
-        } catch (InvalidSortException e) {
-            TextUi.showInvalidSort(criteria, e);
-        }
+//        try {
+//            switch (criteria) {
+//            case "asc":
+//
+//                break;
+//            case "desc":
+//
+//                break;
+//            default:
+//                throw new InvalidSortException();
+//            }
+//            TextUi.showParameters(inputs);
+//        } catch (InvalidSortException e) {
+//            TextUi.showInvalidSort(criteria, e);
+//        }
     }
 }

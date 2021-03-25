@@ -17,17 +17,21 @@ The rest of the App consists of:
 
 ### Api component
 
-![Structure of the Api Component](diagrams/ModelClassDiagram.png)
-
-**API** : [`ApiRepository.java`](https://https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/src/main/java/seedu/hdbuy/api/ApiRepository.java)
+![Structure of the Api Component](diagrams/ApiClass.png)
 
 The `Api`,
 
-* receives a raw query from each Command, query will contain filter conditions.
+* receives a raw query from Find Command, query will contain filter conditions.
 * creates a connection to remote server containing data on resale flats.
 * formats raw query into valid query to be sent as a GET request.
 * returns all flats matching filter conditions and is parsed back to Command to be shown to user via Ui.
 * does not depend on other components apart from being called by Command.
+
+**How classes within Api component interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where a Find command is executed.
+
+<img src="diagrams/ApiSequence.png" />
 
 ## Product scope
 ### Target user profile
