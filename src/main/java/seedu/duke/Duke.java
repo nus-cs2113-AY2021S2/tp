@@ -31,27 +31,27 @@ public class Duke {
                 String startMenuCommand = UI.scanInput();
                 String c = startMenuCommand.trim();
                 switch (c) {
-                case "1":
+                case "Staff":
                     UI.showLine();
                     staffparser.run();
                     break;
-                case "2":
+                case "Patient":
                     UI.showLine();
                     System.out.println("Patient Instance!");
                     PatientCommandInstance patients = new PatientCommandInstance(PATIENT_FILE_PATH);
                     patients.run();
                     break;
-                case "3":
+                case "Appointment":
                     UI.showLine();
                     System.out.println("Doctor's Appointment Instance!");
                     DoctorAppointmentInstance appointments = new DoctorAppointmentInstance(APPOINTMENT_FILE_PATH);
                     appointments.run();
                     break;
-                case "4":
+                case "Schedule":
                     UI.showLine();
                     NurseScheduleInstance.main();
                     break;
-                case "5":
+                case "Inventory":
                     UI.showLine();
                     System.out.println("Drug Viewer Instance!");
                     DrugInstance addict = new DrugInstance(DRUG_FILE_PATH);

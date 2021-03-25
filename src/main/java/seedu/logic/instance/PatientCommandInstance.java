@@ -1,11 +1,13 @@
 package seedu.logic.instance;
 
 import seedu.exceptions.DukeException;
-import seedu.logic.parser.MenuParser;
+import seedu.logic.parser.PatientParser;
 import seedu.model.objectList.PatientList;
 import seedu.storage.PatientStorage;
 import seedu.ui.PatientUI;
 import seedu.ui.UI;
+
+import java.io.FileNotFoundException;
 
 public class PatientCommandInstance {
 
@@ -33,7 +35,7 @@ public class PatientCommandInstance {
                 UI.showLine(); // show the divider line ("_______")
                 PatientUI.patientMenuPrompt();
                 String fullCommand = UI.scanInput();
-                isReturnToStartMenu = MenuParser.patientParse(fullCommand, patients);
+                isReturnToStartMenu = PatientParser.patientParse(fullCommand, patients);
                 UI.showLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser

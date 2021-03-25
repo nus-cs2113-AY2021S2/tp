@@ -12,12 +12,15 @@ public class UI {
     static final String UNKNOWN_COMMAND = "unknown";
     static Scanner scanner = new Scanner(System.in);
     static String LINEBREAK = "____________________________________________________________";
-    static String LOGO = " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
+    static String LOGO =
+            " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
             + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
             + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
             + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
             + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
             + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
+    public void fileCreatedMessage() {
+    };
 
     public static String scanInput() {
         return scanner.nextLine().trim();
@@ -169,5 +172,8 @@ public class UI {
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
+    }
+
+    public void fileCreateErrorMessage() {
     }
 }

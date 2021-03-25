@@ -2,9 +2,9 @@ package seedu.exceptions.patient;
 
 import seedu.exceptions.DukeException;
 
-public class nonexistentIDException extends DukeException {
+public class DuplicateIDException extends DukeException {
 
-    public nonexistentIDException(String error) {
+    public DuplicateIDException(String error) {
         this.error = error;
     }
 

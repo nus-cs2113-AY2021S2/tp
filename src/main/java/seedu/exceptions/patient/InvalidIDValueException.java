@@ -2,9 +2,9 @@ package seedu.exceptions.patient;
 
 import seedu.exceptions.DukeException;
 
-public class invalidIDLengthException extends DukeException {
+public class InvalidIDValueException extends DukeException {
 
-    public invalidIDLengthException(String error) {
+    public InvalidIDValueException(String error) {
         this.error = error;
     }
 

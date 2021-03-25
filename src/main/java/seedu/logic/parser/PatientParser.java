@@ -1,13 +1,12 @@
 package seedu.logic.parser;
 
-
 import seedu.exceptions.DukeException;
 import seedu.exceptions.patient.*;
 import seedu.ui.PatientUI;
 import seedu.ui.UI;
 import seedu.model.objectList.PatientList;
 
-public class MenuParser {
+public class PatientParser {
 
     /**
      * Checks the number of tokens and throws an exception based on the command
@@ -36,24 +35,24 @@ public class MenuParser {
         return numberOfIntegers;
     }
 
-    private static void isValidID(String userID) throws invalidIDLengthException, invalidIDTypeException, invalidIDValueException {
+    private static void isValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException, InvalidIDValueException {
         if (userID.length() != 6) {
-            throw new invalidIDLengthException("IDLength");
+            throw new InvalidIDLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
-            throw new invalidIDTypeException("IDType");
+            throw new InvalidIDTypeException("IDType");
         } else if (numberOfIntegersInString(userID) != 5) {
-            throw new invalidIDValueException("IDValue");
+            throw new InvalidIDValueException("IDValue");
         }
     }
 
-    private static void isIDExist(String userID, PatientList patients, String command) throws nonexistentIDException, duplicateIDException {
+    private static void isIDExist(String userID, PatientList patients, String command) throws NonExistentIDException, DuplicateIDException {
         if (patients.isIDTaken(userID)) {
             if (command.equals("add")) {
-                throw new duplicateIDException("IDTaken");
+                throw new DuplicateIDException("IDTaken");
             }
         } else {
             if ((command.equals("delete") || command.equals("find"))) {
-                throw new nonexistentIDException("IDDoesNotExist");
+                throw new NonExistentIDException("IDDoesNotExist");
             }
         }
     }
@@ -111,19 +110,19 @@ public class MenuParser {
         try {
             isValidID(stringTokens[1]);
             isIDExist(stringTokens[1], patients, command);
-        } catch (invalidIDLengthException e) {
+        } catch (InvalidIDLengthException e) {
             e.getError("IDLength");
             return false;
-        } catch (invalidIDTypeException e) {
+        } catch (InvalidIDTypeException e) {
             e.getError("IDType");
             return false;
-        } catch (invalidIDValueException e) {
+        } catch (InvalidIDValueException e) {
             e.getError("IDValue");
             return false;
-        } catch (nonexistentIDException e) {
+        } catch (NonExistentIDException e) {
             e.getError("IDDoesNotExist");
             return false;
-        } catch (duplicateIDException e) {
+        } catch (DuplicateIDException e) {
             e.getError("IDTaken");
             return false;
         }

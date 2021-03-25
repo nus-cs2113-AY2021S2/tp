@@ -17,15 +17,16 @@ public class PatientStorage {
     static ArrayList<Patient> patients = new ArrayList<>();
     static String filePath;
 
+    public PatientStorage(String filepath) {
+        filePath = filepath;
+        saveFile = new File(filepath);
+    }
+
     /**
      * Instantiates a storage handler by taking in the filepath
      *
      * @param filePath the filepath where the file will be created
      */
-    public PatientStorage(String filePath) {
-        saveFile = new File(filePath);
-        PatientStorage.filePath = filePath;
-    }
 
     /**
      * Checks if the file exists and initializes one if there is not.
