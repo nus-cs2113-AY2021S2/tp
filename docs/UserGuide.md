@@ -143,7 +143,7 @@ Examples: `view -e`, `view -l`
 
 Output:
 
-![view example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/View%20Example%20Output.jpg?raw=true)
+![view example output](img/View_Example_Output.jpg)
 
 ### 3.4 Set a loan as return: `return`
 
@@ -214,7 +214,7 @@ Examples: `help exit`, `help list`
 
 Output:
 
-![help example output]()
+![help example output](img/Help_Example_Output.jpg)
 
 ### 3.9 Records storage
 
