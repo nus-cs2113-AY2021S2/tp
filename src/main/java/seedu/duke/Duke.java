@@ -1,15 +1,13 @@
 package seedu.duke;
 
-import seedu.drugs.DrugInstance;
-
-import seedu.nurseschedules.NurseScheduleInstance;
-import seedu.doctorappointments.DoctorAppointmentInstance;
-import seedu.staff.Parser;
+import seedu.logic.instance.DoctorAppointmentInstance;
+import seedu.logic.instance.DrugInstance;
+import seedu.ui.UI;
+import seedu.logic.instance.NurseScheduleInstance;
+import seedu.logic.parser.staffparser;
+import seedu.logic.instance.PatientCommandInstance;
 
 import java.io.IOException;
-
-import seedu.duke.ui.UI;
-import seedu.patient.PatientCommandInstance;
 
 public class Duke {
 
@@ -35,7 +33,7 @@ public class Duke {
                 switch (c) {
                 case "Staff":
                     UI.showLine();
-                    Parser.run();
+                    staffparser.run();
                     break;
                 case "Patient":
                     UI.showLine();
