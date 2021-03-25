@@ -5,8 +5,8 @@ import seedu.hdbuy.data.QueryKey;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
-import java.util.logging.Logger;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class HdBuy {
 

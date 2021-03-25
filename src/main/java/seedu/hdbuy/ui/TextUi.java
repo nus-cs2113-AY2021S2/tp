@@ -7,6 +7,7 @@ import seedu.hdbuy.data.exception.InvalidFilterException;
 import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.data.exception.NoFlatsException;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -54,6 +55,7 @@ public class TextUi {
 
     public static void showInvalidFilter(String criteria, InvalidFilterException e) {
         System.out.println("\"" + criteria + "\" " + e.getMessage());
+        System.out.println("Please use these filters: " + Arrays.asList(QueryKey.values()));
     }
 
     public static void showInvalidParameter(InvalidParameterException e) {
@@ -74,7 +76,7 @@ public class TextUi {
     public static void showNoFlats(NoFlatsException e) {
         System.out.println(e.getMessage());
     }
-  
+
     public static void showEmptyParameter(String key, EmptyParameterException e) {
         System.out.println("\"" + key + "\"" + e.getMessage());
     }

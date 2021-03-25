@@ -1,5 +1,6 @@
 package seedu.hdbuy.parser;
 
+import org.junit.Assert;
 import seedu.hdbuy.command.CloseCommand;
 import seedu.hdbuy.command.Command;
 import seedu.hdbuy.command.DefaultCommand;
@@ -11,7 +12,6 @@ import seedu.hdbuy.data.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.Arrays;
-import org.junit.Assert;
 
 public class Parser {
     private static final String HELP = "help";
