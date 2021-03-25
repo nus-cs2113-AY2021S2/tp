@@ -41,7 +41,7 @@ public class HdBuy {
             TextUi.showSeparator();
             Command command = Parser.parse(fullCommand);
             assert userInput != null : "Input is not initiated";
-            command.execute(userInput.getInputs());
+            command.execute(userInput);
             TextUi.showSeparator();
             receiveCommand(command.isExit());
         }

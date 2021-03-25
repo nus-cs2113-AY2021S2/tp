@@ -1,6 +1,7 @@
 package seedu.hdbuy.command;
 
 import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.data.UserInput;
 
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ public class SortCommand extends Command {
         this.criteria = criteria;
     }
 
-    @Override public void execute(HashMap<QueryKey, String> inputs) {
+    @Override public void execute(UserInput userInput) {
         System.out.println("SortCommand not implemented");
 //        try {
 //            switch (criteria) {

@@ -5,6 +5,7 @@ import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.EmptyParameterException;
 import seedu.hdbuy.common.exception.NoFlatsException;
+import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
@@ -14,8 +15,9 @@ public class FindCommand extends Command {
 
     private static final Logger logger = Logger.getLogger("FindCommand");
 
-    @Override public void execute(HashMap<QueryKey, String> inputs) {
+    @Override public void execute(UserInput userInput) {
         try {
+            HashMap<QueryKey, String> inputs = userInput.getInputs();
             if (inputs.isEmpty()) {
                 logger.warning("Unable to execute find command due to an empty filter");
                 throw new EmptyParameterException();
@@ -27,6 +29,7 @@ public class FindCommand extends Command {
                 } else {
                     TextUi.showUnits(units);
                 }
+                userInput.clearInputs();
             }
         } catch (EmptyParameterException e) {
             TextUi.showEmptyParameter("FIND", e);

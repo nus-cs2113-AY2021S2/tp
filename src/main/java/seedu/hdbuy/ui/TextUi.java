@@ -50,7 +50,11 @@ public class TextUi {
     }
 
     public static void showParameters(HashMap<QueryKey, String> inputs) {
-        System.out.print("Parameters:\n" + inputs + "\n");
+        if (inputs.isEmpty()) {
+            System.out.println("Currently there are no filter conditions set.");
+            return;
+        }
+        System.out.print("Filter conditions:\n" + inputs + "\n");
     }
 
     public static void showInvalidFilter(String criteria, InvalidFilterException e) {
@@ -79,5 +83,9 @@ public class TextUi {
 
     public static void showEmptyParameter(String key, EmptyParameterException e) {
         System.out.println("\"" + key + "\"" + e.getMessage());
+    }
+
+    public static void showClearedFilterConditions() {
+        System.out.print("Cleared filter conditions.\n");
     }
 }

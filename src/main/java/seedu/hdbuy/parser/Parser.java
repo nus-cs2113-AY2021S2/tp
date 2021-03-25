@@ -1,12 +1,15 @@
 package seedu.hdbuy.parser;
 
 import org.junit.Assert;
+
+import seedu.hdbuy.command.ClearCommand;
 import seedu.hdbuy.command.CloseCommand;
 import seedu.hdbuy.command.Command;
 import seedu.hdbuy.command.DefaultCommand;
 import seedu.hdbuy.command.FilterCommand;
 import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
+import seedu.hdbuy.command.ListCommand;
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
@@ -18,6 +21,8 @@ public class Parser {
     private static final String FILTER = "filter";
     private static final String FIND = "find";
     private static final String EXIT = "exit";
+    private static final String CLEAR = "clear";
+    private static final String LIST = "list";
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
@@ -38,6 +43,12 @@ public class Parser {
                 break;
             case EXIT:
                 command = new CloseCommand();
+                break;
+            case CLEAR:
+                command = new ClearCommand();
+                break;
+            case LIST:
+                command = new ListCommand();
                 break;
             default:
                 break;
@@ -70,6 +81,10 @@ public class Parser {
         case EXIT:
             // Fallthrough
         case HELP:
+            // Fallthrough
+        case CLEAR:
+            // Fallthrough
+        case LIST:
             // Fallthrough
         default:
             break;
