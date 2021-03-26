@@ -17,7 +17,7 @@ The execution of the command can affect the fridge.
 After the execution, the results of the command object is pass to the UI.
 The results of the command instruct the Ui to display the message return to the user.
 
-![Command Class Diagram](diagrams/CommandClass.png)
+![Command Class Diagram](diagrams/diagram_images/CommandClass.png)
 
 The ***Command Class Diagram*** given above shows how the Command interact with Fridge. 
 
@@ -38,7 +38,7 @@ The Command Component consist of 10 sub class which each command represents a fe
 
 The Utilities component contains the main classes that run the main functions of FridgeFriend.
 
-![Utilities Class Diagram](diagrams/UtilitiesClassDiagram.png)
+![Utilities Class Diagram](diagrams/diagram_images/UtilitiesClassDiagram.png)
 
 The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
 
