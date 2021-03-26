@@ -8,7 +8,7 @@ import java.time.LocalDate;
  */
 public class Loan extends Record {
     private static final String TYPE_LOAN = "L";
-    private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %s | %f | %s | %d";
+    private static final String FILE_OUTPUT_STRING_FORMAT = "%s | %s | %f | %s | %d | %s | %s";
     private String borrowerName;
     private LocalDate returnDate;
     private boolean isReturn;
@@ -68,7 +68,8 @@ public class Loan extends Record {
     @Override
     public String convertFileFormat() {
         return String.format(FILE_OUTPUT_STRING_FORMAT, TYPE_LOAN, super.getDescription(),
-                super.getAmount(), super.getIssueDate(), this.isReturn ? 1 : 0);
+                super.getAmount(), super.getIssueDate(), this.isReturn ? 1 : 0,
+                this.borrowerName.toLowerCase(), this.returnDate);
     }
 
     /**

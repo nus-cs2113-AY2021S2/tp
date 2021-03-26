@@ -37,14 +37,6 @@ public class Duke {
     }
 
     /**
-     * Exits the application.
-     */
-    private void end() {
-        ui.printGoodByeMessage();
-        System.exit(0);
-    }
-
-    /**
      * Starts the main application.
      */
     private void start() {
@@ -80,5 +72,13 @@ public class Duke {
                 command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
             }
         } while (!ExitCommand.isExit(command));
+    }
+
+    /**
+     * Exits the application.
+     */
+    private void end() {
+        ui.printGoodByeMessage();
+        System.exit(0);
     }
 }
