@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class Shift {
     private ArrayList<Employee> employees;
-    private ArrayList<String> employeeList;
+    private ArrayList<String> employeeList = null;
     private LocalDate shiftDate;
-    private int vacancy;
-    private int shiftIndex;
+    private int vacancy = 0;
+    private int shiftIndex = 1;
 
     public Shift(ArrayList<Employee> employees, LocalDate shiftDate, int shiftIndex, int vacancy) {
         this.employees = employees;
