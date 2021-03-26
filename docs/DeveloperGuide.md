@@ -57,6 +57,66 @@ The *Sequence Diagram* below shows how the components interact with each other f
 ![Sequence Diagram](./images/Sequence_Diagram.png)
 *Fig. 2: Sequence Diagram of Connoisseur*
 
+The sections below give more details of each component.
+
+###UI component
+This component is the user-facing component of our app, which the user interacts with. It takes input from the user through a Command Line Interface and displays the information to the user. It passes the input to the Parser.java class in order to process the commands and execute the respective methods.
+###Logic component
+This component would be the brain component of our app, where commands given by the user are determined and executed by calling the respective classes.
+
+The command is passed into the `Parser.java` class which would determine the actions to perform. The actions are called from the `CommandList.java` class with their respective functions.
+
+**API:** `Logic.java`
+
+1. `Parser` class to parse the user command.
+   
+2. This results in a `Command` object which is executed by the `CommandList`.
+   
+3. The command execution can affect the `ReviewList` (e.g. adding a review). 
+   
+4. The result of the command execution is encapsulated as a `Command` object which is passed back to the `CommandList`. 
+   
+5. In addition, the `Command` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+
+Given below is the *Sequence Diagram* for interactions within the logic component for the `execute (“delete”)` API call.
+![Sequence Diagram when delete executed](./images/Sequence_Diagram_Delete.png)
+*Fig. 3: Sequence Diagram when executing delete*
+
+###Model
+![Model Diagram](./images/Model_Diagram.png)
+*Fig. 4: Model of Connoisseur*
+
+###Storage component
+
+**API**: `Storage.java`
+
+The storage component: 
+* Can save Review objects in plaintext format and read it back.
+* Can save the sorting preference of user in plaintext format and read it back
+
+Methods:
+
+1. `retrieveTextFile()` : Call upon this method in setting up Connoisseur, to ensure that a file is available for the writing and retrieving of data.
+
+2. `loadData()` : Call upon this method while setting up data input from text file, before running Connoisseur
+
+3. `saveData()` : Call upon this method to ensure that any changes in existing text file will be saved, for future reference.
+
+
+### Common classes
+The following are classes used by multiple components:
+1. Review
+
+2. Sorter
+
+## Implementation
+This section describes how the features in Connoisseur are implemented. The scope will include adding, deleting, listing and sorting of Reviews.
+
+###Review related features
+There are 2 main types of reviews that users can enter. One is the ‘quick review’ type and the other is the ‘long review’ type.
+Users are able to add in new reviews in 2 different ways.
+
+
 ## Product scope
 ### Target user profile
 
