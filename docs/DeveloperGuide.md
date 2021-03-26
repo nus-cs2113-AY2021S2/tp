@@ -283,7 +283,86 @@ To list savings:
 
 
 ### 4.3 View Feature
-...
+The view feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
+category of *expense*, *loan*, and *saving* of the added records.  
+
+#### 4.3.1 Current Implementation
+
+The view feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
+`{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
+By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
+
+![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)
+*Figure x: Sequence Diagram for `view -e`*
+
+> 📝 The sequence diagram starts from Step 2 onward.
+>
+> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
+> are given.
+
+Given below is an example usage scenario of how `ViewCommand` behaves at each step.
+
+***Step 1:***\
+User executes the command `view -e`. The application invokes `ParserHandler#getParseInput()` to provide the parsed
+input to `CommandHandler#createCommand()`. This checks for the command type, `view`, and proceeds to validate the
+parsed input in the `new ViewCommand()` constructor before returning the constructed `ViewCommand` object to `Finux`.
+
+***Step 2:***\
+The application next invokes the `ViewCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+Inside the `ViewCommand#execute()`, the method conducts a check on the object record type before executing the 
+respective method.
+> ✔️ `Expense` type invokes `Ui#printTotalAmountExpense()`
+
+> ✔️ `Loan` type invokes `Ui#printTotalAmountLoan()`
+
+> ✔️ `Saving` type invokes `Ui#printTotalAmountSaving()`
+
+***Step 4:***\
+The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
+iterate through the `recordList` and will only add to the `totalAmount` if it is an instance of the respective
+record type.
+> 📝 The `Ui#printTotalAmountLoan()` will imposed additional check on whether the record is returned.
+> Only records that are not returned will be added to the `totalAmount`
+
+***Step 5:***\
+Finally, the `totalAmount` will be rounded off to two decimal place before printing onto the console.
+
+#### 4.3.2 Design Consideration
+
+This section shows the design considerations taken when implementing the view feature.
+
+Aspect: **How many figures should the amount be allowed up to**
+
+Since it is entirely possible that the amount provided by user to be very large or very small, the two choices to
+consider would be:
+* Integer (Classic approach)
+* BigDecimal (Non-classic approach)
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|Integer|No additional class required|Limited to a fix amount of digit available to enter|
+|BigDecimal|Allow more digits than classic approach|Need to create a BigDecimal object|
+
+Having considered two of the approaches, we have decided to adopt the second approach. 
+The deterministic factor was the possibility of very large number such as 1000 billions. Thus, covering more than
+what the integer data type provided can cater to higher flexibility of the application.
+
+Aspect: **When to round off the amount to two decimal place**
+
+As the user can enter decimal into the amount field, the `ViewCommand` has two options of when to round off the value:
+* When assigning value to the amount variable
+* When printing the final computed value
+
+|Approach|Pros|Cons|
+|--------|----|----|
+|Assigning value to the amount variable|Round off early to avoid complication|Additional time per assignment to round off|
+|Printing the final computed value|Only round off once|Rounding off might be couple to other method which needs the amount field|
+
+With the two approaches considered, we have decided to adopt the second approach as it is more efficient to round off
+at the end and to preserve the accuracy for two decimal place. Since no other method is accessing the amount variable,
+is it possible avoid rounding off during each value assignment until new or existing features requires it.
 
 ### 4.4 Return Feature
 The `return` feature allows Finux users to mark a loan as returned.
@@ -427,7 +506,7 @@ Credit score for Tom is 90
 
 ### A.2 Value proposition
 
-#### Problem Identification
+#### A.2.1 Problem Identification
 Problems faced by students that Finux aim to assist with.
 > * [Problem] Wastage of time due to connection/latency issues went accessing finance tracking website.
 > * [Solution] Use a local based application.
@@ -441,7 +520,7 @@ Problems faced by students that Finux aim to assist with.
 > * [Problem] Spending time to gauge whether to borrow money to a friend.
 > * [Solution] Provide a soft gauge through credit score indicators.
 
-#### Value Adding
+#### A.2.2 Value Adding
 
 Finux aims to integrate the process of managing and keeping track of finance movements without the need to access online
 websites and using different applications to keep track various movement such as loans and expenditure. Finux
