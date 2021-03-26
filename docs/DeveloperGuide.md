@@ -20,10 +20,6 @@ The rest of the App consists of four components.
 
 * [**`Utilities`**](#utilities-component): The main component containing the key driver classes in 
   FridgeFriend, such as `Parser`, `UI`, and `Storage`. 
-  - `Parser` processes user input, and determines the related command to be executed.
-  - `UI` displays the User Interface to users, including welcome messages, command outputs, and 
-    error messages.
-  - `Storage` reads data from, and writes data to, the hard disk.
     
 
 * [**`Command`**](#command-component): Executes commands based on the input obtained
