@@ -1,10 +1,11 @@
 package movieApp.parser;
 
-import java.util.*;
-
 import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.storage.Database;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MovieFilter {
 
@@ -25,7 +26,17 @@ public class MovieFilter {
 		
 		while ((filter < 1) || (filter > 10)) {
 			System.out.println("======= Movie Filter =======");
-			System.out.println(" 1 Filter by genre\n 2 Filter by rating\n 3 Filter by showing status\n 4 Filter by cineplex\n 5 Filter by title\n 6 Select movie\n 7 Clear all filters\n 8 Back to Main Menu\n============================\nPlease indicate your choice:");
+			System.out.println(" 1 Filter by genre");
+			System.out.println(" 2 Filter by rating");
+			System.out.println(" 3 Filter by showing status");
+			System.out.println(" 4 Filter by cineplex");
+			System.out.println(" 5 Filter by title");
+			System.out.println(" 6 Select movie");
+			System.out.println(" 7 Clear all filters");
+			System.out.println(" 8 Back to Main Menu");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -33,8 +44,7 @@ public class MovieFilter {
 			} 
 			filter = sc.nextInt();
 			if ((filter < 1) ||(filter > 8)) {
-				System.out.println("Please input an integer between 1 and 10.\n");
-				continue;
+				System.out.println("Please input an integer between 1 and 8.\n");
 			}
 		}
 		return filter;
@@ -47,40 +57,48 @@ public class MovieFilter {
 		
 		while ((genre_choice < 1) || (genre_choice > 7)) {
 			System.out.println("======= Select Genre =======");
-			System.out.println(" 1 Sci-fi\n 2 Action\n 3 Comedy\n 4 Family\n 5 Horror\n 6 Romance\n 7 Drama\n============================\nPlease indicate your choice:");
+			System.out.println(" 1 Sci-fi");
+			System.out.println(" 2 Action");
+			System.out.println(" 3 Comedy");
+			System.out.println(" 4 Family");
+			System.out.println(" 5 Horror");
+			System.out.println(" 6 Romance");
+			System.out.println(" 7 Drama");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
 				continue;
 			} 
 			genre_choice = sc.nextInt();
-			if ((genre_choice < 1) ||(genre_choice >3)) {
+			if ((genre_choice < 1) ||(genre_choice >7)) {
 				System.out.println("Please input an integer between 1 and 7.\n");
-				continue;
 			}
 		}
 		
 		switch (genre_choice) {
-			case 1:
-					return "Sci-fi";
-			case 2:
-					return "Action";
-			case 3:
-					return "Comedy";
-			case 4:
-					return "Family";
-			case 5:
-					return "Horror";
-			case 6:
-					return "Romance";
-			case 7:
-					return "Drama";
+		case 1:
+			return "Sci-fi";
+		case 2:
+			return "Action";
+		case 3:
+			return "Comedy";
+		case 4:
+			return "Family";
+		case 5:
+			return "Horror";
+		case 6:
+			return "Romance";
+		case 7:
+			return "Drama";
+		default:
+			return "No such genre.";
 		}
-	return "No such genre.";
-}
+	}
 	
 	////////////////////////////////////////////////////////////////////////////
-
 	public static ArrayList<Movie> filterByGenre(ArrayList<Movie> movieList){
 		int i=0;
 		String genre = getGenre();
@@ -95,6 +113,7 @@ public class MovieFilter {
 		}
 		return movieList;
 	}
+
 	////////////////////////////////////////////////////////////////////////////
 	public static float getRating() {
 		float rating = -1;
@@ -110,14 +129,12 @@ public class MovieFilter {
 			rating = sc.nextFloat();
 			if ((rating < 0) ||(rating >5)) {
 				System.out.println("Please input a float between 0 and 5.\n");
-				continue;
 			}
 		}
 		return rating;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-	
 	public static ArrayList<Movie> filterByRating(ArrayList<Movie> movieList){
 		int i=0;
 		float rating = getRating();
@@ -135,8 +152,6 @@ public class MovieFilter {
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-	
-	
 	public static String getShowingStatus() {
 		int showing_status_choice = -1;
 		Scanner sc = new Scanner(System.in);
@@ -144,7 +159,13 @@ public class MovieFilter {
 		while ((showing_status_choice < 1) || (showing_status_choice > 4)) {
 			System.out.println("======= Select Genre =======");
 			System.out.println("== Select Showing Status ===");
-			System.out.println(" 1 Coming Soon\n 2 Pre-Order\n 3 Now Showing\n 4 End of Showing\n ============================\nPlease indicate your choice:");
+			System.out.println(" 1 Coming Soon");
+			System.out.println(" 2 Pre-Order");
+			System.out.println(" 3 Now Showing");
+			System.out.println(" 4 End of Showing");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -153,30 +174,28 @@ public class MovieFilter {
 			showing_status_choice = sc.nextInt();
 			if ((showing_status_choice < 1) ||(showing_status_choice > 4)) {
 				System.out.println("Please input an integer between 1 and 4.\n");
-				continue;
 			}
 		}
 	
 		switch (showing_status_choice) {
-			case 1:
-				return "COMINGSOON";
-			case 2:
-				return "PREORDER";
-			case 3:
-				return "NOWSHOWING";
-			case 4:
-				return "ENDSHOWING";
+		case 1:
+			return "COMINGSOON";
+		case 2:
+			return "PREORDER";
+		case 3:
+			return "NOWSHOWING";
+		case 4:
+			return "ENDSHOWING";
+		default:
+			return "No such showing status.";
 		}
-		return "No such showing status.";
 	}
 
 	////////////////////////////////////////////////////////////////////////////
-	
-	
 	public static ArrayList<Movie> filterByShowingStatus(ArrayList<Movie> movieList){
 		int i=0;
 		String showingStatus = getShowingStatus();
-		System.out.println("\nThe selected showing status is: "+showingStatus);
+		System.out.println("\nThe selected showing status is: "+ showingStatus);
 		
 		while (i<movieList.size()) {
 			if (!showingStatus.equals(movieList.get(i).getShowingStatus())){
@@ -194,7 +213,12 @@ public class MovieFilter {
 		Scanner sc = new Scanner(System.in);
 		
 		while ((cineplex_choice < 1) || (cineplex_choice > 3)) {
-			System.out.println(" 1 Jurong Point\n 2 VivoCity\n 3 Bishan\n============================\nPlease indicate your choice:");
+			System.out.println(" 1 Jurong Point");
+			System.out.println(" 2 VivoCity");
+			System.out.println(" 3 Bishan");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -203,15 +227,12 @@ public class MovieFilter {
 			cineplex_choice = sc.nextInt();
 			if ((cineplex_choice < 1) ||(cineplex_choice > 3)) {
 				System.out.println("Please input an integer between 1 and 3.\n");
-				continue;
 			}
 		}
 		return (cineplex_choice-1);
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-	
-	
 	public static ArrayList<Movie> filterByCineplex(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase){
 		
 		int cineplexID = getCineplex();
@@ -228,9 +249,9 @@ public class MovieFilter {
 			i++;
 		}
 		return movieList;
-	}	
+	}
+
 	////////////////////////////////////////////////////////////////////////////
-		
 	public static String getTitle() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Search: ");
@@ -238,13 +259,12 @@ public class MovieFilter {
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-	
 	public static ArrayList<Movie> filterByTitle(ArrayList<Movie> movieList){
 		String title = getTitle();
 		System.out.println("movies containing "+title);
 		int i=0;
 		while (i<movieList.size()){
-			if (movieList.get(i).getMovieTitle().toLowerCase().contains(title.toLowerCase()) != true){
+			if (!movieList.get(i).getMovieTitle().toLowerCase().contains(title.toLowerCase())){
 				movieList.remove(i);
 				i--;
 			}
@@ -253,8 +273,8 @@ public class MovieFilter {
 		return movieList;
 		
 	}
+
 	////////////////////////////////////////////////////////////////////////////
-		
 	public static int getMovieChoice(int size) {
 		int movie_choice = -1;
 		Scanner sc = new Scanner(System.in);
@@ -269,73 +289,71 @@ public class MovieFilter {
 			movie_choice = sc.nextInt();
 			if ((movie_choice < 0) ||(movie_choice > size)) {
 				System.out.println("Please input an integer between 0 and "+size+".\n");
-				continue;
 			}
 		}
 		return movie_choice;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-	
-	
 	public static ArrayList<Movie> selectMovie(ArrayList<Movie> movieList){
-		ArrayList<Movie> result = new ArrayList<Movie>();
+		ArrayList<Movie> result = new ArrayList<>();
 		result.add(movieList.get(getMovieChoice(movieList.size()-1)));
 		return result;
 		
 	}
 
-	
 	////////////////////////////////////////////////////////////////////////////
 	public static Movie filter(ArrayList<Movie> movieList,ArrayList<Cineplex> CineplexDatabase) {
 		int Filter;
 		while (movieList.size() != 1) {
-
-			ArrayList<Movie> movieListCopy = new ArrayList<Movie>(movieList);
+			ArrayList<Movie> movieListCopy = new ArrayList<>(movieList);
 
 				Filter = getFilter();
-				if(Filter==8) {return null;}
+				if(Filter==8) {
+					return null;
+				}
 				printMovieList(movieList);
 				
-				switch(Filter) {	
-					case 1: 
-						System.out.println("===== Filter by Genre ======");
-						movieList = filterByGenre(movieList);
-						break;
-						
-					case 2:
-						System.out.println("===== Filter by Rating =====");
-						movieList = filterByRating(movieList);
-						break;
-					case 3:
-						System.out.println("= Filter by Showing Status =");
-						movieList = filterByShowingStatus(movieList);
-						break;
-					case 4:
-						System.out.println("==== Filter by Cineplex ====");
-						movieList = filterByCineplex(movieList,CineplexDatabase);
-						break;
-					case 5:
-						System.out.println("===== Filter by Title ======");
-						movieList = filterByTitle(movieList);
-						break;
-					case 6:
-						System.out.println("======= Select Movie =======");
-						movieList = selectMovie(movieList);
-						break;
-					case 7:
-						movieList = new ArrayList<Movie>(Database.MovieDatabase);
-						break;
-					case 8:
-						return null;
-
+				switch(Filter) {
+				case 1:
+					System.out.println("===== Filter by Genre ======");
+					movieList = filterByGenre(movieList);
+					break;
+				case 2:
+					System.out.println("===== Filter by Rating =====");
+					movieList = filterByRating(movieList);
+					break;
+				case 3:
+					System.out.println("= Filter by Showing Status =");
+					movieList = filterByShowingStatus(movieList);
+					break;
+				case 4:
+					System.out.println("==== Filter by Cineplex ====");
+					movieList = filterByCineplex(movieList,CineplexDatabase);
+					break;
+				case 5:
+					System.out.println("===== Filter by Title ======");
+					movieList = filterByTitle(movieList);
+					break;
+				case 6:
+					System.out.println("======= Select Movie =======");
+					movieList = selectMovie(movieList);
+					break;
+				case 7:
+					movieList = new ArrayList<>(Database.MovieDatabase);
+					break;
+				case 8:
+					return null;
+				default:
+					System.out.println("Invalid input. Please try again.");
+					return null;
 				}
 
 				if (movieList.size() == 0) {
-					System.out.println("\nSorry! We couldn't find any matches.\nWould you like to try something else?");
+					System.out.println("\nSorry! We couldn't find any matches.");
+					System.out.println("Would you like to try something else?");
 					movieList = movieListCopy;
-				} 
-				else {
+				} else {
 					printMovieList(movieList);
 				}
 		}

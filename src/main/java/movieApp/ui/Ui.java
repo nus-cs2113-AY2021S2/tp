@@ -11,37 +11,43 @@ import java.util.Scanner;
 public class Ui {
     public Ui(){
         final String LOGO = "\n" +
-                "___  ___           _       ___              \n" +
-                "|  \\/  |          (_)     / _ \\             \n" +
-                "| .  . | _____   ___  ___/ /_\\ \\_ __  _ __  \n" +
+                "___  ___           _       ___                    \n" +
+                "|  \\/  |          (_)     / _ \\                 \n" +
+                "| .  . | _____   ___  ___/ /_\\ \\_ __  _ __      \n" +
                 "| |\\/| |/ _ \\ \\ / / |/ _ \\  _  | '_ \\| '_ \\ \n" +
-                "| |  | | (_) \\ V /| |  __/ | | | |_) | |_) |\n" +
-                "\\_|  |_/\\___/ \\_/ |_|\\___\\_| |_/ .__/| .__/ \n" +
-                "                               | |   | |    \n" +
-                "                               |_|   |_|    ";
+                "| |  | | (_) \\ V /| |  __/ | | | |_) | |_) |     \n" +
+                "\\_|  |_/\\___/ \\_/ |_|\\___\\_| |_/ .__/| .__/  \n" +
+                "                               | |   | |          \n" +
+                "                               |_|   |_|          \n";
 
         System.out.println(LOGO);
-
         getOption();
-        // go back
-
     }
 
     public static void doOption(int option) {
         ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 
-        if (option == 1) {
-            //MovieFilter.printMovieList(MovieList);
+        switch(option){
+        case 1:
             Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
-            if (movie != null) MovieMenu.movieAction(movie);
-        } else if (option == 2) {
+            if (movie != null) {
+                MovieMenu.movieAction(movie);
+            }
+            break;
+        case 2:
             exit();
+        default:
+            System.out.println("Invalid input. Please try again.");
+            getOption();
         }
     }
 
 
     public static void exit() {
-        System.out.println("\n\nThank you for your time.\nHave a good day!\n\nSystem Exiting...");
+        System.out.println("\nThank you for your time.");
+        System.out.println("Have a good day!");
+        System.out.println("");
+        System.out.println("System Exiting...");
         System.exit(0);
     }
 
@@ -54,8 +60,11 @@ public class Ui {
         Scanner sc = new Scanner(System.in);
         while (menu_choice != 2) {
             System.out.println("\n======== Menu Choice =======");
-            System.out.println(" 1 View Movies\n " +
-                                "2 Exit\n============================\nPlease indicate your choice:");
+            System.out.println(" 1 View Movies");
+            System.out.println(" 2 Exit");
+            System.out.println("============================");
+            System.out.println("Please indicate your choice:");
+
             if (!sc.hasNextInt()) {
                 System.out.println("Please input an integer.\n");
                 sc.next();
