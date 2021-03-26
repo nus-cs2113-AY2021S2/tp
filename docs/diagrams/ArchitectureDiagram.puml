@@ -5,11 +5,10 @@
 !include style.puml
 
 Package " "<<Rectangle>>{
-    Class UI UI_COLOR
-    Class Parser LOGIC_COLOR
-    Class Storage STORAGE_COLOR
+    Class FridgeFriend UI_COLOR
+    Class Utilities LOGIC_COLOR
+    Class Exception STORAGE_COLOR
     Class Command MODEL_COLOR
-    Class Main #grey
     Class Food LOGIC_COLOR_T2
 }
 
@@ -17,14 +16,16 @@ Class "<$user>" as User MODEL_COLOR_T2
 Class "<$documents>" as File UI_COLOR_T2
 
 
-UI -[#green]> Parser
-Parser -[#blue]-> Command
-Command -> Main
-Main -[#grey]-> UI
-Main -[#grey]-> Storage
+FridgeFriend -[#green]> Utilities
+Utilities -[#blue]-> Command
+Utilities -[#blue]-> Exception
+Food -[#grey]> Utilities
+Command -> Food
+Command -> FridgeFriend
 
-Storage .right[STORAGE_COLOR].>File
-User ..> UI
+
+Utilities .right[STORAGE_COLOR].>File
+User ..> FridgeFriend
 @enduml
 
 @enduml
