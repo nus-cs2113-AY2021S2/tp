@@ -10,7 +10,8 @@
 * [User stories](#user-stories)
 * [Non-Functional Requirements](#non-functional-requirements)
 * [Glossary](#glossary)
-* [Instructions for manual testing](#instructions-for-manual-testing)
+* [Testing](#testing)
+<!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
 ## Introduction
 
@@ -34,7 +35,7 @@ If you plan to use Intellij IDEA (highly recommended):
    IDEA: Importing a Gradle project to import 
    the project into IDEA.
    > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
-3. Verify the setup: Run the `seedu.duke` and try a few commands. 
+3. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
    Run the tests to ensure they all pass.
 
 ## Design & implementation
@@ -67,6 +68,59 @@ List of available commands:
 Enter help <command> for more details of each command
 -----------------------------------------------------------------
 ```
+### Architecture
+
+The Architecture Diagram shown above gives a high-level explanation of PatientManager.
+Given below is a brief overview of each component.
+
+The user starts the program from the main class `PatientManager`.
+
+This class is responsible for:
+- When the app is launched: Initializing the other components in the correct sequence and connecting them with each other
+- When the app exits: Shuts down the components and invokes cleanup methods where necessary
+
+`Commons` contains constants that are shared across the other classes.
+
+`UI` is responsible for reading user input.
+It is also responsible for displaying the response from PatientManager to the screen.
+
+`Logic` parses and executes commands.
+
+`Model` contains the data of PatientManager in memory and models the various entities (e.g patients, medical records).
+
+`Storage` manages writing and reading saved data to and from the hard disk.
+
+#### How the architecture components interact with each other
+
+The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command `add S1234567D`.
+
+{TO BE ADDED}
+
+The sections below give more details for each component.
+
+### UI Component
+### Logic Component
+### Model Component
+
+API: `Patient.java`, `Record.java` and `Data.java` 
+
+`Record.java` contains:
+- all the symptoms recorded by a GP during the consultation
+- all the diagnoses made by a GP during the consultation
+- all the prescriptions made by a GP during the consultation
+- the most recently added symptom/diagnosis/prescription, which corresponds to the most recently executed `record` command
+
+`Patient.java` contains:
+- the patient's NRIC/FIN number, which uniquely identifies the patient
+- a `TreeMap<LocalDate, Record>` which maps the patient's consultation dates to the visit records for that date
+
+`Data.java`,
+- stores a `SortedMap<String, Patient>`, which maps the patient's NRIC/FIN number to their corresponding `Patient` instance
+- implements methods to add new patients and delete existing patients
+- implements methods to load an existing patient's medical records
+
+### Storage Component
+### Common Classes
 
 ## Product scope
 
