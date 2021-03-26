@@ -17,7 +17,7 @@ public class AddReviewCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
-        try{
+        try {
             getReviewFromUser();
         } catch (NumberFormatException e) {
             throw new DukeExceptions("Review not added. Please input your review in proper format!");
