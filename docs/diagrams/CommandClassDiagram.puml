@@ -1,0 +1,127 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include style.puml
+
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+
+package Command <<Rectangle>> {
+    class "{abstract}\nCommand" as Command
+    class AddCommand
+    class RemoveCommand
+    class ListCommand
+    class SearchCommand
+    class SetLimitCommand
+    class HelpCommand
+    class ClearCommand
+    class ByeCommand
+    class RunningLowCommand
+    class ExpiringCommand
+}
+
+package Fridge <<Rectangle>>  {
+}
+
+package Main <<Rectangle>> {
+}
+
+package UI <<Rectangle>> {
+}
+
+class Command {
+  #fridge: Fridge
+  #isExit: boolean
+  +execute(): void{abstract}
+  +setData(fridge: Fridge): void
+}
+
+class AddCommand {
+  -foodToAdd: Food
+  +execute(): void
+  -addFood(): void
+  -showResults(): void
+  +getMessagePrintedToUser(): String
+  +categoriseAndGenerateFood(): Food {static}
+}
+
+class RemoveCommand {
+  -foodNameToEdit: String
+  -foodToBeRemoved: Food
+  +execute(): void
+  -removePortion(): void
+  -checkRunningOUt(): void
+}
+
+class ListCommand {
+  -description: String
+  -indexShownToUser: int
+  +execute(): void
+  -listByCategory(): void
+  -listByStorageLocation(): void
+  -listAll(): void
+}
+
+class SearchCommand {
+  -foodName: String
+  +execute(): void
+  -showResults(): void
+  +getMessagePrintedToUser(): String
+  -getIndexOfFoodStored(): int
+}
+
+class SetLimitCommand {
+  -foodCategory: FoodCategory
+  -quantity: int
+  +execute(): void
+  -getSetLimitMessage(): String
+}
+
+
+class HelpCommand {
+  - COMMANDS: String {static}
+  - CATEGORIES: String {static}
+  - LOCATIONS: String {static}
+  + execute() : void
+}
+
+class ClearCommand {
+  +execute(): void
+}
+
+class ByeCommand {
+  +isExit(): boolean
+  +setExit(isExit: boolean): void
+  +execute(): void
+}
+
+class RunningLowCommand {
+  +execute(): void
+  +getMessage(): String
+  -updateMessage(foodCategory: FoodCategory): void
+}
+
+class ExpiringCommand {
+  -message: String
+  -index: int
+  +execute(): void
+  +updateMessage(food: Food): void
+  +addToMessage(food: Food): void
+}
+
+Command ---.down> Fridge: uses
+Command ---.down> UI: prints with
+Main ---.down> Command: execute >
+AddCommand --right|> Command
+RemoveCommand --down|> Command
+ListCommand ---down|> Command
+SearchCommand ---down|> Command
+SetLimitCommand ---up|> Command
+HelpCommand --up|> Command
+ClearCommand --up|> Command
+ByeCommand --down|> Command
+RunningLowCommand --left|> Command
+ExpiringCommand ---up|> Command
+
+@enduml

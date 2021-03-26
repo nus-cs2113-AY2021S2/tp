@@ -1,0 +1,2 @@
+Food name: lettuce, category: VEGETABLE, expiry: 17-03-2021, stored in: LOWER_SHELF, quantity: 3
+Food name: pork, category: MEAT, expiry: 31-07-2021, stored in: MIDDLE_SHELF, quantity: 1

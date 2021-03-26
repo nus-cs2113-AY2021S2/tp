@@ -1,8 +1,11 @@
 package seedu.fridgefriend;
 
 import seedu.fridgefriend.command.Command;
+import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.LoggingHandler;
 import seedu.fridgefriend.utilities.Parser;
@@ -57,7 +60,9 @@ public class FridgeFriend {
         LoggingHandler.logInfo("Main programme loop exited.");
     }
 
-    private static void executeCommand(Command command) throws InvalidInputException, InvalidIndexException {
+    private static void executeCommand(Command command) throws InvalidInputException,
+            InvalidIndexException, RepetitiveFoodIdentifierException,
+            InvalidQuantityException, FoodNameNotFoundException {
         command.setData(fridge);
         command.execute();
     }
