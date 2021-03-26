@@ -1,8 +1,10 @@
 package movieApp.storage;
 
-import movieApp.Cineplex;
-import movieApp.Movie;
-import movieApp.Showtimes;
+import movieApp.*;
+import movieApp.user.Admin;
+import movieApp.user.Customer;
+import movieApp.user.User;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,18 +13,27 @@ public class Database {
     public static ArrayList<Movie> MovieDatabase;
     public static ArrayList<Cineplex> CineplexDatabase;
     public static ArrayList<Showtimes> ShowtimesDatabase;
+    public static ArrayList<User> users;
 
     public Database() throws Exception {
         importDatabase();
     }
 
-    public static void importDatabase() throws Exception {
+    private static void importDatabase() throws Exception {
         MovieDatabase = importMovieDatabase();
         CineplexDatabase = importCineplexDatabase();
         ShowtimesDatabase = importShowtimesDatabase();
+        users = importUserDatabase();
     }
 
-    public static ArrayList<Movie> importMovieDatabase() throws Exception {
+    private static ArrayList<User> importUserDatabase() throws Exception {
+        ArrayList<User> users = new ArrayList<>();
+        users.add(new Admin("zul", "hello"));
+        users.add(new Customer("alex", "12345"));
+        return users;
+    }
+
+    private static ArrayList<Movie> importMovieDatabase() throws Exception {
         File f_movie = new File("data/movieList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
@@ -33,7 +44,7 @@ public class Database {
         return MList;
     }
 
-    public static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
+    private static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
         File f_cineplex = new File("data/cineplexList.txt");
         FileInputStream fis_cineplex = new FileInputStream(f_cineplex);
         ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
