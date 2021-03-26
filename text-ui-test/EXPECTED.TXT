@@ -32,7 +32,7 @@ List of patients (in alphanumeric order):
 Add a patient to the list
 Command prefix: add
 Argument(s): IC number
-Usage: add /<IC_NUMBER>
+Usage: add IC_NUMBER
 Example: add S1234567D
 
 Show the list of all patients
@@ -41,14 +41,14 @@ Usage: list
 Select a specified patient to add and retrieve records
 Command prefix: load
 Arguments(s): IC number
-Usage: load <IC_NUMBER>
+Usage: load IC_NUMBER
 Example: load S1234567D
 
 Add a consultation record to the selected patient
 Command prefix: record
-Arguments(s): consultation details
-Usage: record <CONSULTATION DETAILS>
-Example: record fever
+Arguments(s): consultation details, symptom, diagnosis, prescription
+Usage: record [CONSULTATION_DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]
+Example: record /s fever
 
 Retrieve past consultation record from the selected patient
 Usage: retrieve
@@ -58,8 +58,8 @@ Usage: current
 
 Display information about all commands or selected commands only
 Command prefix: help
-Argument(s): commands (optional)
-Usage: help <OPTIONAL COMMANDS>
+Argument(s): commands
+Usage: help [OPTIONAL_COMMANDS]
 Example: help list add
 
 Exit the program
@@ -80,7 +80,7 @@ Symptom: coughing
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Here are S1234567D's records:
-2021-03-31:
+31/03/2021:
 Symptoms:
 	coughing
 Diagnoses:
