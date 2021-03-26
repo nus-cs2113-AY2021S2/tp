@@ -16,7 +16,13 @@ public class MovieMenu {
 		Scanner sc = new Scanner(System.in);
 		while ((action < 1) || (action > 4)) {
 			System.out.println("\n\n======== Menu Choice =======");
-			System.out.println(" 1 Buy ticket\n 2 View movie details\n 3 Add review\n 4 Go back\n============================\nPlease indicate your choice:");
+			System.out.println(" 1 Buy ticket");
+			System.out.println(" 2 View movie details");
+			System.out.println(" 3 Add review");
+			System.out.println(" 4 Go back");
+			System.out.println(" ============================");
+			System.out.println(" Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -31,7 +37,8 @@ public class MovieMenu {
 	}
 
 
-	public static void bookTicket(ArrayList<Movie> MovieDatabase , ArrayList<Showtimes> ShowtimeDatabase, ArrayList<Cineplex> CineplexDatabase, int movieID) {
+	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Showtimes> ShowtimeDatabase,
+								  ArrayList<Cineplex> CineplexDatabase, int movieID) {
 		String ms = "NOT FOUND";
 		for (Movie movie : MovieDatabase) {
 			if (movie.getMovieID() == movieID) {
@@ -43,7 +50,6 @@ public class MovieMenu {
 			System.out.println("The movie is not available for sale. COMING SOON");
 			return; 
 		}
-		
 			
 		int n = 0;
 		ArrayList<Integer> showtime_index = new ArrayList<>();
@@ -214,7 +220,10 @@ public class MovieMenu {
 		String comment = sc.nextLine();
 		int rating = ratingVerification();
 		movie.addReview(comment, rating);
-		System.out.println("The comment ' " + comment + " ' and the rating " + rating + " have been successfully added to the movie " + movie.getMovieTitle() + ".\nThank you for your review!\n");
+		System.out.println("The comment ' " + comment + " ' and the rating " + rating +
+				" have been successfully added to the movie " + movie.getMovieTitle() + ".");
+		System.out.println("Thank you for your review!");
+		System.out.println();
 	}
 	
 	public static int ratingVerification() {
@@ -239,8 +248,6 @@ public class MovieMenu {
 	public static void viewMovieDetails(Movie movie) {
 		movie.displayMovie();
 	}
-	
-
 
 	public static void movieAction(Movie movie) {
 		int action;
@@ -251,8 +258,8 @@ public class MovieMenu {
 			case 1:
 				action = -1;
 					System.out.println("\n======== Book Ticket ========");
-					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase, Database.CineplexDatabase, movie.getMovieID());
-
+					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase,
+							Database.CineplexDatabase, movie.getMovieID());
 				break;	
 			case 2:
 				action = -1;
@@ -262,6 +269,8 @@ public class MovieMenu {
 				action = -1;
 				addReview(movie);
 				break;
+			default:
+				System.out.println("Please input a integer between 1 and 4.\n");
 			}			
 		} while (action != 4);
 		//TODO: Is this supposed to quit the app when action 4 is chosen?
