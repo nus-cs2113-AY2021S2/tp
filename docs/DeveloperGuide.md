@@ -1,7 +1,16 @@
 # Developer Guide
 
 ## Table of Contents
-{to be added}
+* [Introduction](#introduction)
+* [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
+* [Design and implementation](#design--implementation)
+* [Product scope](#product-scope)
+   * [Target user profile](#target-user-profile)
+   * [Value proposition](#value-proposition)
+* [User stories](#user-stories)
+* [Non-Functional Requirements](#non-functional-requirements)
+* [Glossary](#glossary)
+* [Instructions for manual testing](#instructions-for-manual-testing)
 
 ## Introduction
 
@@ -16,17 +25,48 @@ to organize the records of their patients.
 First, fork this repo, and clone the fork into your computer.
 
 If you plan to use Intellij IDEA (highly recommended):
-1. Configure the JDK: Follow the guide [se-edu/guides] IDEA: Configuring the JDK to ensure Intellij is configured 
+1. Configure the JDK: Follow the guide 
+   [Intellij IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) \
+   IDEA: Configuring the JDK to ensure Intellij is configured 
    to use JDK 11.
-2. Import the project as a Gradle project: Follow the guide [se-edu/guides] IDEA: Importing a Gradle project to import 
+2. Import the project as a Gradle project: Follow the guide 
+   [Intellij IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) \
+   IDEA: Importing a Gradle project to import 
    the project into IDEA.
-   ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
+   > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
 3. Verify the setup: Run the `seedu.duke` and try a few commands. 
    Run the tests to ensure they all pass.
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Help command
+
+When invoked by the user via the `help` command, information about the available commands is printed.
+If arguments are provided, the arguments are parsed into the separate commands, and the information about each
+command present in the arguments is printed in order. If the user provides an invalid command, an invalid command
+message is shown, and the messages for the following commands are printed.
+
+#### Alternatives considered
+
+The original version of this command simply printed out the information messages of all commands. 
+However, with a growing list of commands, we were worried that the help message would be too long and would
+require scrolling.
+
+The current version reads the arguments that are provided by the user, and prints out information messages for each
+of the commands indicated. Unknown/invalid commands will not be skipped with a message indicating that the command is 
+invalid, and the subsequent commands will continue to be processed. 
+
+A future consideration would be to convert the message printed out when no arguments are provided to only print a list
+of available commands for easier reference:
+```
+> help
+-----------------------------------------------------------------
+List of available commands:
+...
+...
+Enter help <command> for more details of each command
+-----------------------------------------------------------------
+```
 
 ## Product scope
 
