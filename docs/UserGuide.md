@@ -48,22 +48,34 @@ to organize the records of their patients.
 ## Features
 
 > ❗ Notes about the command format
-> - Words in `UPPER_CASE` are parameters supplied by the user\
-e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified\
+> - Words in `UPPER_CASE` are parameters supplied by the user.\
+e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 (sample command: `add S1234567D`)
-> - Parameters in square brackets are optional\
+> 
+> 
+> - Parameters in square brackets are optional.\
 e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
-both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands
-> - Parameters with `...` allow multiple parameters (including zero) to be specified\
-e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands
-> - Parameters can be given in any order\
+both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
+>
+>
+> - Parameters with `...` allow multiple parameters (including zero) to be specified.\
+e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
+>
+>
+> - Parameters can be given in any order.\
 e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-`/p PRESCTIPTION /s SYMPTOMS` is also acceptable
+`/p PRESCTIPTION /s SYMPTOMS` is also acceptable.
+>
+>
 > - If a parameter is expected only once in the command, but you specify it multiple times, only the last occurrence of
 the parameter will be taken.\
-e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken
-> - Extraneous parameters for commands that do not take in parameters (such as `list` and `exit`) will be ignored\
+e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
+>
+>
+> - Extraneous parameters for commands that do not take in parameters (such as `list` and `exit`) will be ignored.\
 e.g. if the command given is `list 123`, it will be interpreted as `list`.
+>
+>
 > - Dates must be specified in the format `dd/MM/yyyy`, for example, `05/03/2021`. All dates given must be valid,
 according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
