@@ -1,4 +1,4 @@
-@startuml UtilitiesClassDiagram
+UtilitiesClassDiagram.puml@startuml UtilitiesClassDiagram
 allow_mixing
 !include style.puml
 skinparam arrowThickness 1.1

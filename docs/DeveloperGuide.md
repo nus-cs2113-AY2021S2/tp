@@ -6,8 +6,6 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
-## Design & implementation
-
 ### Command Component
 
 The Command component contains the sub classes of the features that will be executed.
@@ -34,7 +32,7 @@ The Command Component consist of 10 sub class which each command represents a fe
 * **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
 * **ByeCommand**: Indicate to the main method to exit the program. 
 
-### Utilities Compoenent
+### Utilities Component
 
 The Utilities component contains the main classes that run the main functions of FridgeFriend.
 
@@ -48,6 +46,57 @@ The Utilities Component consists for 4 classes.
 - **`Parser`**: Breaks down user input into relevant objects.
 - **`Storage`**: Reads data from, and writes data to, the local disk.
 - **`Ui`**: Handles the input and output of the application.
+
+### Exception Component
+
+The Exception component represents a collection of classes that represent potential
+exception events that may occur during the usage of `FridgeFriend`. 
+
+The `Exception` component facilitates the return of exceptions to the `UI` class 
+in `Utilities`, which will display the corresponding error message to the user.
+![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
+
+The ***Exception Class Diagram*** given above shows the custom `Exceptions`
+created for the FridgeFriend project, and stored inside the `Exceptions` component. 
+
+All exceptions extend from the Java default `Exception` class. They only differ with regard
+to the throwable error message.
+
+The `Exceptions` component currently consists of ten (10) custom Exceptions, as of v2.0:
+
+- **`EmptyDescriptionException`**: Is thrown when an empty input string is detected by `Parser`, where
+  an input is expected.
+  - Error Message: `"Sorry my friend, the description cannot be empty."`
+- **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is 
+  not found in the Fridge, where the name of a food existing in the Fridge is expected.
+  - Error Message: `"Food specified not found."`
+- **`InvalidDateException`**: Is thrown when user input, where a date is expected, does not
+  match the `dd-mm-yy` format.
+    - Error Message: `"Sorry my friend, the date must be in the form 'dd-mm-yy'."`
+- **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`, 
+  where a valid `FoodCategory` is expected. Users can check `help` or the 
+  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
+    - Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
+- **`InvalidIndexException`**: Is thrown when user input does not translate into a valid integer index that represents
+  an existing Food in the Fridge, where
+  a valid input index that represents Food that exists in the Fridge is expected.
+    - Error Message: `"Please enter a valid index to remove food."`
+- **`InvalidInputException`**: Is thrown when an unrecognised command is input into FridgeFriend,
+  or when the List Command does not recognise the secondary input string.
+    - Error Message: `"Sorry my friend, please give a valid input."`
+- **`InvalidQuantityException`**: Is thrown when user input is not an integer where an integer is expected for
+  `Quantity` related functions, or when excess quantity of food is removed from the Fridge, where the quantity
+  of food in the fridge remaining would be negative.
+    - Error Message: `"Sorry my friend, the quantity QUANTITY_INPUT must be a number."`
+    - Error Message: `"Not enough in fridge to remove!"`
+- **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a 
+  different location or with a different expiry date. This is not allowed as of v2.0.
+    - Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
+      Please specify another foodname."`
+- **`StorageLoadingException`**: Is thrown when an error occurred during loading of the saved data.
+    - Error Message: `"There was an error loading the data for FridgeFriend!"`
+- **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
+    - Error Message: `"There was an error saving the data for FridgeFriend!"`
 
 ## Product scope
 

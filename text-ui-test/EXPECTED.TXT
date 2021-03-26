@@ -37,7 +37,7 @@ Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWE
 Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
 -----------------------------------------------------------------
-Sorry my friend, you have added this food before but in a different location or have different expiry dates. please specify another foodname.
+Sorry my friend, you have added this food before but in a different location or have different expiry dates. Please specify another foodname.
 -----------------------------------------------------------------
 Great! I have added roast chicken into your fridge.
 Details: Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
