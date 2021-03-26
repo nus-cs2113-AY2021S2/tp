@@ -21,7 +21,7 @@ public class RecordCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() throws InvalidInputException {
         assert ui != null : "Ui must not be null";
         assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
         Patient patient = data.currentPatient;

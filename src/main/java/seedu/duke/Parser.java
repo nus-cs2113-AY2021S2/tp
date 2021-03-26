@@ -55,7 +55,7 @@ public class Parser {
      * @return A Command instance which is ready to be executed
      * @see Command
      */
-    public Command parse(String fullCommand) throws Exception {
+    public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
         HashMap<String, String> arguments = new HashMap<>();
         String[] tokens = fullCommand.split("\\s+");
         // If first token (command) is empty, there are empty spaces typed in at the front - so we remove it

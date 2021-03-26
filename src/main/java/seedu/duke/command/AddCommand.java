@@ -21,7 +21,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() throws InvalidInputException {
 
         String patientID = arguments.get("payload");
         patientID = patientID.toUpperCase();

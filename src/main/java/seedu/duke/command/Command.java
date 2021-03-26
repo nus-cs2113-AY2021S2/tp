@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.BaseException;
 
 /* Adapted from https://github.com/fsgmhoward/ip/blob/master/src/main/java/duke/command/Command.java */
 /**
@@ -40,5 +41,5 @@ public abstract class Command {
      * Abstract method to be implemented by each individual command.
      * This is where the actual program logic of each command is stored.
      */
-    public abstract void execute() throws Exception;
+    public abstract void execute() throws BaseException;
 }

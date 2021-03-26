@@ -22,7 +22,7 @@ public class RetrieveCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() throws InvalidInputException {
         assert ui != null : "Ui must not be null";
         Patient patient = data.currentPatient;
         if (patient == null) {
