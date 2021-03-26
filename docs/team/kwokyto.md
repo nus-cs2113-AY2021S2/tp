@@ -79,7 +79,8 @@ Given below are my contributions to the project
     [#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93)
     [#94](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/94)
     [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108)
-    [#110](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/110))
+    [#110](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/110)
+    [£119](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/119))
 - Contributed to forum discussions (examples:
     [1](https://github.com/nus-cs2113-AY2021S2/forum/issues/45)
     [2](https://github.com/nus-cs2113-AY2021S2/forum/issues/49))
