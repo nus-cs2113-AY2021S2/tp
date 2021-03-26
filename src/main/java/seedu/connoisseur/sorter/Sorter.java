@@ -20,6 +20,34 @@ public class Sorter {
     }
 
     /**
+     * Get sort method as string. 
+     * @return SortMethod as a String
+     */
+    public String getSortMethod() {
+        String sortMethodString;
+        switch (sortMethod) {
+        case RATING:
+            sortMethodString = "rating";
+            break;
+        case CATEGORY:
+            sortMethodString = "category";
+            break;
+        case TITLE:
+            sortMethodString = "title";
+            break;
+        case DATE_EARLIEST:
+            sortMethodString = "date earliest";
+            break;
+        case DATE_LATEST:
+            sortMethodString = "date latest";
+            break;
+        default:
+            sortMethodString = "";
+        }
+        return sortMethodString;
+    }
+
+    /**
      * Change default sort method for this instance. 
      * @param sortMethod SortMethod to be saved
      */
