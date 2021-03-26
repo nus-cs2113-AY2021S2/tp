@@ -86,7 +86,7 @@ It is also responsible for displaying the response from PatientManager to the sc
 
 `Logic` parses and executes commands.
 
-`Model` contains the data of PatientManager in memory
+`Model` contains the data of PatientManager in memory and models the various entities (e.g patients, medical records).
 
 `Storage` manages writing and reading saved data to and from the hard disk.
 
@@ -111,8 +111,13 @@ API: `Patient.java`, `Record.java` and `Data.java`
 - the most recently added symptom/diagnosis/prescription, which corresponds to the most recently executed `record` command
 
 `Patient.java` contains:
-- the patient's identification number, which uniquely identifies the patient
+- the patient's NRIC/FIN number, which uniquely identifies the patient
 - a `TreeMap<LocalDate, Record>` which maps the patient's consultation dates to the visit records for that date
+
+`Data.java`,
+- stores a `SortedMap<String, Patient>`, which maps the patient's NRIC/FIN number to their corresponding `Patient` instance
+- implements methods to add new patients and delete existing patients
+- implements methods to load an existing patient's medical records
 
 ### Storage Component
 ### Common Classes
