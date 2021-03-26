@@ -17,11 +17,12 @@ Class "<$documents>" as File UI_COLOR_T2
 
 
 FridgeFriend -[#green]> Utilities
-Utilities -[#blue]-> Command
-Utilities -[#blue]-> Exception
-Food -[#grey]> Utilities
-Command -> Food
-Command -> FridgeFriend
+Utilities -[#blue]--> Command
+Food -[#grey]-> Utilities
+Command --> Food
+Command --> FridgeFriend
+Command -> Exception
+Exception -> Utilities
 
 
 Utilities .right[STORAGE_COLOR].>File
