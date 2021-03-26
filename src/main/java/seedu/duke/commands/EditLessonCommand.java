@@ -32,6 +32,8 @@ import static seedu.duke.common.Messages.MESSAGE_TEACHER_NAME_UPDATED;
 import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
 import static seedu.duke.common.Messages.WARNING_NO_VALID_INPUT;
 
+//@@author ivanchongzhien
+
 public class EditLessonCommand extends Command {
     private final String[] fields = {LESSON_FIELD_1_TIME_DAY, LESSON_FIELD_2_LINK, 
         LESSON_FIELD_3_T_NAME, LESSON_FIELD_4_T_EMAIL};
