@@ -3,7 +3,9 @@ package seedu.duke.parser;
 import seedu.duke.commands.AddLessonCommand;
 import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.Command;
+import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ListTasksCommand;
+import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.module.ModuleList;
@@ -25,16 +27,27 @@ class ParserTest {
         ModuleList.reset();
 
         Parser parser = new Parser();
-        String input = "add CS2113T";
+        
+        String input1 = "add CS2113T";
+        Command command1 = parser.parse(input1);
+        assertTrue(command1 instanceof AddModuleCommand);
 
-        // Command expectedCommand = new AddModuleCommand("CS2113T");
-        Command actualCommand = parser.parse(input);
-        assertTrue(actualCommand instanceof AddModuleCommand);
+        String input2 = "help";
+        Command command2 = parser.parse(input2);
+        assertTrue(command2 instanceof PrintHelpCommand);
+
+        String input3 = "open cs1234";
+        Command command3 = parser.parse(input3);
+        assertTrue(command3 instanceof EnterModuleCommand);
+
+        String input4 = "delete cs1234";
+        Command command4 = parser.parse(input4);
+        assertTrue(command4 instanceof AddModuleCommand);
     }
 
     @Test
     // IN MODULE COMMAND
-    // add lesson command
+    // list task command
     void parse_inModuleCommandListTask_ListTaskCommandObject() throws CommandException, ParserException {
         ModuleList.reset();
         ModuleList.hardSetSelectedModule("CS1234");
