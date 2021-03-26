@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Scanner;
 
-public class AliasStorage extends Storage{
+public class AliasStorage extends Storage {
     public AliasStorage(String path) {
         super(path);
     }

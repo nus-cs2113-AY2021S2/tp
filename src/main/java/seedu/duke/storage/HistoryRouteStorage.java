@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class HistoryRouteStorage extends Storage{
+public class HistoryRouteStorage extends Storage {
     public HistoryRouteStorage(String path) {
         super(path);
     }
