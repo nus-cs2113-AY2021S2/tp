@@ -31,7 +31,7 @@ There are 2 pre-requisites for Connoisseur to run:
 
 3. **Verify the setup:**
     1. Run the `seedu.address.connoisseur` and try a few commands.
-    2. Run the tests to ensure they all pass.
+    2. Run the [tests](https://github.com/AY2021S2-CS2113T-F08-3/tp/tree/master/src/test/java/seedu/connoisseur) to ensure they all pass.
 <div class="alert alert-block alert-info">
 <b>Note:</b>  Importing a Gradle project is slightly different from importing a normal Java project.</div>
 
