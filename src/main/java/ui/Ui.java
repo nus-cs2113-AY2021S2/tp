@@ -203,6 +203,11 @@ public class Ui {
         System.out.println("Review successfully added!");
     }
 
+    public static void reviewNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Review not added");
+    }
+
     public static void showAddCanteen() {
         System.out.println(LINESPACING);
         System.out.println("Please type the name of the new canteen:");

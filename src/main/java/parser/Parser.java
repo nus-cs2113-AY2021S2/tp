@@ -14,7 +14,6 @@ import command.AddStoreCommand;
 import command.DeleteCanteenCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
-import reviews.Review;
 import stores.Store;
 import ui.Ui;
 
@@ -58,8 +57,8 @@ public class Parser {
         } else if (line.equals("menu")) {
             newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
-            Review review = getReviewDetails();
-            newCommand = new AddReviewCommand(store, review);
+//            Review review = getReviewDetails();
+            newCommand = new AddReviewCommand(store);
         } else if (line.startsWith("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
@@ -68,21 +67,6 @@ public class Parser {
             throw new DukeExceptions("Please enter a valid command!");
         }
         return newCommand;
-    }
-
-    public Review getReviewDetails() throws DukeExceptions {
-        String description;
-        double rating;
-        try {
-            Ui.enterReview();
-            String line = Ui.readCommand();
-            description = Ui.readCommand();
-            Ui.enterRating();
-            rating = Double.parseDouble(Ui.readCommand());
-        } catch (NumberFormatException e) {
-            throw new DukeExceptions("Review not added. Please input your review in proper format!");
-        }
-        return new Review(description, rating);
     }
 
     //parse admin commands only
