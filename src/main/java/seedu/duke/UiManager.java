@@ -141,13 +141,6 @@ public class UiManager {
     }
 
 
-    public DaySchedulePair getDailyRouteInfo()
-            throws InvalidDayException, InvalidBlockException {
-        String day = getValidDay();
-        ArrayList<String> dailyBlocks = getSchedule();
-        return new DaySchedulePair(day, dailyBlocks);
-    }
-
     public ArrayList<String> getSchedule() throws InvalidBlockException {
         out.println("Enter Location of the first activity of the day: ");
         ArrayList<String> dailyBlocks = new ArrayList<>();
@@ -175,17 +168,6 @@ public class UiManager {
             throw new InvalidBlockException();
         }
         return block;
-    }
-
-    public String getValidDay() throws InvalidDayException {
-        out.println("Enter the day: ");
-        String day = in.nextLine().toUpperCase().trim();
-        List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
-        ArrayList<String> days = new ArrayList<>(daysList);
-        if (!days.contains(day)) {
-            throw new InvalidDayException();
-        }
-        return day;
     }
 
     public HashMap<String, String> getAliasInfo(HashMap<String, String> aliasMap)

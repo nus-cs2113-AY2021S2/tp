@@ -1,29 +1,49 @@
 package seedu.duke;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DailyRoute {
-    HashMap<String, ArrayList<String>> dailyRoutes;
+    private HashMap<String, ArrayList<String>> dailyRoutes;
+    private final ArrayList<String> days = new ArrayList<>(List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"));
+    private boolean[] selectableDays = {false,false,false,false,false,false,false};
 
     public DailyRoute() {
-        this.dailyRoutes = new HashMap<String, ArrayList<String>>();
-        this.dailyRoutes.put("MONDAY", new ArrayList<String>());
-        this.dailyRoutes.put("TUESDAY", new ArrayList<String>());
-        this.dailyRoutes.put("WEDNESDAY", new ArrayList<String>());
-        this.dailyRoutes.put("THURSDAY", new ArrayList<String>());
-        this.dailyRoutes.put("FRIDAY", new ArrayList<String>());
-        this.dailyRoutes.put("SATURDAY", new ArrayList<String>());
-        this.dailyRoutes.put("SUNDAY", new ArrayList<String>());
+        this.dailyRoutes = new HashMap<>();
+        this.dailyRoutes.put("MONDAY", new ArrayList<>());
+        this.dailyRoutes.put("TUESDAY", new ArrayList<>());
+        this.dailyRoutes.put("WEDNESDAY", new ArrayList<>());
+        this.dailyRoutes.put("THURSDAY", new ArrayList<>());
+        this.dailyRoutes.put("FRIDAY", new ArrayList<>());
+        this.dailyRoutes.put("SATURDAY", new ArrayList<>());
+        this.dailyRoutes.put("SUNDAY", new ArrayList<>());
     }
 
     public void addDailyRoute(String day, ArrayList<String> blocks) {
         dailyRoutes.remove(day);
         dailyRoutes.put(day, blocks);
+        int index = days.indexOf(day);
+        selectableDays[index] = true;
     }
 
-    public ArrayList<String> getDailyRoute(String day) {
-        return dailyRoutes.get(day);
+    public ArrayList<String> getDailyRoute(int selection) {
+        return dailyRoutes.get(days.get(selection));
+    }
+
+
+    public ArrayList<String> getSelectableDays(){
+        ArrayList<String> daysFound = new ArrayList<>();
+        for (int i = 0; i < 7; i++){
+            if (selectableDays[i]){
+                daysFound.add(days.get(i));
+            }
+        }
+        return daysFound;
+    }
+    public ArrayList<String> getValidDays(){
+        return days;
     }
 
 }
