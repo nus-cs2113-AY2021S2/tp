@@ -105,7 +105,7 @@ Usage: `list`
 Finds the patient whose IC number matches the given search query and loads their medical records.
 If none of the patients' IC numbers match the search query, it will print an error message.
 
-Usage: `load` `IC_NUMBER`
+Usage: `load IC_NUMBER`
 
 Example of usage:
 
