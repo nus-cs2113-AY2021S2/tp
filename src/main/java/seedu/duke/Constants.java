@@ -50,4 +50,8 @@ public class Constants {
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
+
+    //Storage delimiter constants
+    public static final String KEY_VALUE_SEPARATOR = "||";
+    public static final String PATIENT_RECORDS_SEPARATOR = "|";
 }
