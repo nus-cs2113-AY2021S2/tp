@@ -1,5 +1,6 @@
 package seedu.duke.storage;
 
+import seedu.duke.BlockAlias;
 import seedu.duke.FavouriteLocation;
 import seedu.duke.History;
 import seedu.duke.Map;
@@ -37,5 +38,11 @@ public abstract class Storage {
 
     }
 
+    public void loadAlias(BlockAlias blockAlias) throws IOException  {
 
+    }
+
+    public void overwriteAliasListFile(BlockAlias blockAlias) {
+
+    }
 }

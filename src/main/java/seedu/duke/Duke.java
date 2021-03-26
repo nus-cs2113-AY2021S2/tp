@@ -2,6 +2,7 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidCommandException;
+import seedu.duke.storage.AliasStorage;
 import seedu.duke.storage.FavouriteLocationsStorage;
 import seedu.duke.storage.NotesStorage;
 import seedu.duke.storage.HistoryRouteStorage;
@@ -20,6 +21,7 @@ public class Duke {
     private Storage notesStorage;
     private Storage favLocationStorage;
     private Storage historyStorage;
+    private Storage aliasStorage;
 
     public static void main(String[] args) {
         new Duke().run();
@@ -47,6 +49,8 @@ public class Duke {
             favLocationStorage.loadFavourites(favouriteLocation); //load all favourite locations
             historyStorage = new HistoryRouteStorage("data/historyList.txt");
             historyStorage.loadHistory(history); //load all history
+            aliasStorage = new AliasStorage("data/aliasList.txt");
+            aliasStorage.loadAlias(blockAlias); //load all alias
         } catch (IOException e) {
             ui.showToUser(e.getMessage());
         }
@@ -63,6 +67,7 @@ public class Duke {
                 notesStorage.overwriteNotesListFile(nusMap);
                 favLocationStorage.overwriteFavouritesListFile(favouriteLocation);
                 historyStorage.overwriteHistoryListFile(history);
+                aliasStorage.overwriteAliasListFile(blockAlias);
             } catch (InvalidCommandException e) {
                 ui.showToUser(e.getMessage());
             }
