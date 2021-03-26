@@ -1,16 +1,16 @@
 # Developer Guide
 
-##Introduction
+## Introduction
 
-###What is Connoisseur
+### What is Connoisseur
 Connoisseur is a desktop app for managing and storing personal reviews that students would like to keep. It is a revolutionary app that not only provides an organised user friendly database for its users, but provides customisable categories to enhance the user experience. Through its intuitive command line interface, students would be able to store and share their recommendations easily.
 
-###Purpose and Scope
+### Purpose and Scope
 The purpose of this developer guide is to describe the architecture and software design decisions for our application. This guide will cover our program architecture, logical view of major components and functionalities of our features.
 
-##Setting up, getting started
+## Setting up, getting started
 
-###Setting up
+### Setting up
 There are 2 pre-requisites for Connoisseur to run:
 
 1. JDK 11
@@ -18,7 +18,7 @@ There are 2 pre-requisites for Connoisseur to run:
       
 2. Intellij IDEA (highly recommended)
 
-###Getting Started
+### Getting Started
 
 <div class="alert alert-block alert-warning">
 <b>Caution:</b> Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
@@ -36,7 +36,11 @@ There are 2 pre-requisites for Connoisseur to run:
 <b>Note:</b>  Importing a Gradle project is slightly different from importing a normal Java project.</div>
 
 ## Design & implementation
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+
+### Sorting
+1. The sorting component is used to sort the reviews using a variety of sorting methods. 
+2. A predefined number of sorting methods are enumerated and custom comparator methods are generated for them. 
+3. When a sorting method is chosen, the reviews will be sorted based on that method and returned to the UI be displayed. 
 
 
 ## Product scope
@@ -46,14 +50,21 @@ There are 2 pre-requisites for Connoisseur to run:
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+Currently, many of us jot down our thoughts and opinions on restaurants, movies or other experiences in our notes. This is a disorganised and messy way to keep track of our opinions on things. Connoisseur helps us to organise and keep our reviews in one place, where we can easily search for experiences and recommendations for our friends and family. 
 
 ## User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|user|see the number of recommendations I have|keep track of the number of reviews I've made|
+|v1.0|user|be able to save my previous recommendations|refer to the old entries that I have|
+|v1.0|busy user|be able to do quick ratings|save time|
+|v1.0|user|delete selected items that I no longer wish to recommend|edit my list according to my liking|
+|v1.0|busy user|have a template to guide my reviews|input my reviews quickly|
+|v2.0|indecisive user|change my review and opinnions on things|record my opinions accurately at all times|
+|v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
+|v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
 
 ## Non-Functional Requirements
 
