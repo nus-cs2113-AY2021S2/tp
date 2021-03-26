@@ -74,6 +74,7 @@ public class TaskList {
     public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
         tasks.add(task);
+        assert tasks.contains(task) : "Task was not added to task list";
         Ui.printAddedTaskMessage(task);
     }
 
@@ -81,6 +82,7 @@ public class TaskList {
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
         assignments.add(assignment);
+        assert assignments.contains(assignment) : "Assignment was not added to assignment list";
         Ui.printAddedTaskMessage(assignment);
     }
 
@@ -88,6 +90,7 @@ public class TaskList {
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
         midterms.add(midterm);
+        assert midterms.contains(midterm) : "Midterm was not added to midterm list";
         Ui.printAddedTaskMessage(midterm);
     }
 
@@ -95,6 +98,7 @@ public class TaskList {
                                 String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
+        assert finalExams.contains(finalExam) : "Final exam was not added to final exam list";
         Ui.printAddedTaskMessage(finalExam);
     }
 
@@ -274,15 +278,19 @@ public class TaskList {
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsUnDone();
+                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsDone();
+                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
@@ -296,15 +304,19 @@ public class TaskList {
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsUnDone();
+                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsDone();
+                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
@@ -318,15 +330,19 @@ public class TaskList {
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsUnDone();
+                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsDone();
+                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
@@ -340,15 +356,19 @@ public class TaskList {
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsUnDone();
+                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
+            assert input.equals("Y") : "if input is not Y, should catch exception";
             if (input.equals("Y")) {
                 task.markAsDone();
+                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
@@ -359,7 +379,9 @@ public class TaskList {
         tasks.remove(deletedTask);
         boolean typeTaskIsPinned = pinnedTasks.containsKey("[Task]");
         if (typeTaskIsPinned) {
+            assert pinnedTasks.containsKey("[Task]") : "Pinned task list for task should exist";
             if (pinnedTasks.get("[Task]").contains((deletedTask))) {
+                assert !pinnedTasks.get("[Task]").isEmpty() : "Pinned task list should not be empty";
                 pinnedTasks.get("[Task]").remove(deletedTask);
             }
         }
@@ -371,7 +393,9 @@ public class TaskList {
         assignments.remove(deletedAssignment);
         boolean typeAssignmentIsPinned = pinnedTasks.containsKey("[Assignment]");
         if (typeAssignmentIsPinned) {
+            assert pinnedTasks.containsKey("[Assignment]") : "Pinned task list for assignment should exist";
             if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
+                assert !pinnedTasks.get("[Assignment]").isEmpty() : "Pinned task list should not be empty";
                 pinnedTasks.get("[Assignment]").remove(deletedAssignment);
             }
         }
@@ -383,7 +407,9 @@ public class TaskList {
         midterms.remove(deletedMidterm);
         boolean typeMidtermIsPinned = pinnedTasks.containsKey("[Midterm]");
         if (typeMidtermIsPinned) {
+            assert pinnedTasks.containsKey("[Midterm]") : "Pinned task list for midterm should exist";
             if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
+                assert !pinnedTasks.get("[Midterm]").isEmpty() : "Pinned task list should not be empty";
                 pinnedTasks.get("[Midterm]").remove(deletedMidterm);
             }
         }
@@ -395,7 +421,9 @@ public class TaskList {
         finalExams.remove(deletedFinalExam);
         boolean typeFinalExamIsPinned = pinnedTasks.containsKey("[Final Exam]");
         if (typeFinalExamIsPinned) {
+            assert pinnedTasks.containsKey("[Final Exam]") : "Pinned task list for final exam should exist";
             if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
+                assert !pinnedTasks.get("[Final Exam]").isEmpty() : "Pinned task list should not be empty";
                 pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
             }
         }
@@ -444,6 +472,7 @@ public class TaskList {
             return;
         }
         pinnedTasks.get(taskTypeName).add(task);
+        assert pinnedTasks.get(taskTypeName).contains(task) : "Task was not added to pinned list";
         Ui.printPinnedTaskMessage(task);
         return;
     }
