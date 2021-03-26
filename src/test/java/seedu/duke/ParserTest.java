@@ -39,7 +39,7 @@ public class ParserTest {
             defaultParser.parse(fullCommand);
         });
 
-        assertEquals(e.getMessage(), Constants.INVALID_INPUT_EMPTY_STRING);
+        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e.getMessage());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ParserTest {
             defaultParser.parse(fullCommand);
         });
 
-        assertEquals(e.getMessage(), Constants.INVALID_INPUT_UNKNOWN_COMMAND);
+        assertEquals(Constants.INVALID_INPUT_UNKNOWN_COMMAND, e.getMessage());
     }
 
     /**
@@ -98,7 +98,7 @@ public class ParserTest {
             System.setOut(new PrintStream(myOut));
             command.execute();
             final String standardOutput = myOut.toString();
-            assertEquals(standardOutput, words);
+            assertEquals(words, standardOutput);
         });
     }
 

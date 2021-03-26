@@ -19,10 +19,6 @@ public class Parser {
      * default value is a single whitespace (for string split, it is any number of whitespaces)
      */
     public static final String DELIMITER = " ";
-    /**
-     * This is the class prefix, which will be put in front of the class name when parsing the command.
-     */
-    public static final String CLASS_PREFIX = "seedu.duke.command.";
 
     protected Ui ui;
     protected Data data;
@@ -90,7 +86,7 @@ public class Parser {
         // Initialize a respective class from the command (by capitalize first character)
         String className = tokens[0] + "Command";
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
-        className = CLASS_PREFIX + className;
+        className = Constants.COMMAND_CLASS_PREFIX + className;
         try {
             Class<?> cls = Class.forName(className);
             Constructor<?> constructor = cls.getDeclaredConstructor(Ui.class, Data.class, HashMap.class);

@@ -40,6 +40,8 @@ public class Constants {
     public static final String LONG_LINE = "----------------------------------------------------------------------";
 
     // Exception messages
+    public static final String EXCEPTION_INDENT = "\t";
+    
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Empty string is found when trying to parse command!";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided!";
@@ -54,4 +56,7 @@ public class Constants {
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
+
+    // Class path for command classes
+    public static final String COMMAND_CLASS_PREFIX = "seedu.duke.command.";
 }
