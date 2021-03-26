@@ -54,11 +54,6 @@ public class DeleteLessonCommand extends Command {
         }
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints list of lessons in specified module.
      *

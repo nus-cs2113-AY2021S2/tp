@@ -49,9 +49,4 @@ public class ListCheatSheetCommand extends Command {
             ui.printMessage(MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY);
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

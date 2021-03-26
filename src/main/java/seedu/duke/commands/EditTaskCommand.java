@@ -73,9 +73,4 @@ public class EditTaskCommand extends Command {
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, i + 1, fields[i]));
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

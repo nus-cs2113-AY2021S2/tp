@@ -33,11 +33,6 @@ public class PrintHelpCommand extends Command {
         }
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Returns string containing commands and their descriptions.
      *

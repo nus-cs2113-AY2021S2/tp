@@ -31,11 +31,6 @@ public class ListLessonsCommand extends Command {
         printLessons(module.getLessonList(), ui);
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints list of lessons.
      *

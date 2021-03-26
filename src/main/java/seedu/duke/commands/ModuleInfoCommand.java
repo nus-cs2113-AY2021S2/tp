@@ -50,9 +50,4 @@ public class ModuleInfoCommand extends Command {
             ui.printMessage(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

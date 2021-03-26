@@ -58,9 +58,4 @@ public class DeleteTaskCommand extends Command {
         ui.printSummarisedTasks(taskList);
         ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_DELETE));
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }
