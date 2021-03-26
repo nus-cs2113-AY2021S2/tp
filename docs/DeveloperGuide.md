@@ -33,9 +33,29 @@ There are 2 pre-requisites for Connoisseur to run:
 >ℹ️ <b>Note:</b>  Importing a Gradle project is slightly different from importing a normal Java project.</div>
 
 ## Design & implementation
+
 ### Architecture
+![Design Architecture of Connoisseur](./images/Design_Architecture_of_Connoisseur.png)
+*Fig. 1: Design Architecture of Connoisseur*
+
+The Architecture Diagram given above explains the high-level design of Connoisseur.
+Our application utilised many layers of abstraction which allows each individual component to be able to maintain their own properties while interacting with the other components. The main component acts as the root component that allows access to other components.
 
 
+Given below is a quick overview of each component.
+The app consists of four main components.
+
+* `Ui`: The UI of the App.
+* `Parser`: The command processor.
+* `CommandList`: The command executor.
+* `Storage`: Reads data from, and writes data to, the hard disk.
+
+**How the architecture components interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete title`.
+
+![Sequence Diagram](./images/Sequence_Diagram.png)
+*Fig. 2: Sequence Diagram of Connoisseur*
 
 ## Product scope
 ### Target user profile
