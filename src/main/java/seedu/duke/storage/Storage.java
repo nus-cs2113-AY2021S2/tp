@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -28,13 +29,16 @@ import java.util.regex.Pattern;
 public class Storage {
     private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
     private static final String REGEX_PATTERN_EXPENSE = "[E]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
-    private static final String REGEX_PATTERN_LOAN = "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]";
+    private static final String REGEX_PATTERN_LOAN =
+            "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_BORROWER_CREDIT_SCORE_FOR_RETURNED_LOANS = "[^|]+\\s\\|\\s\\d{1,3}";
     private static final int INDEX_OF_DESCRIPTION = 1;
     private static final int INDEX_OF_AMOUNT = 2;
     private static final int INDEX_OF_DATE = 3;
     private static final int INDEX_OF_ISRETURN = 4;
+    private static final int INDEX_OF_NAME = 5;
+    private static final int INDEX_OF_RETURN_DATE = 6;
     private ArrayList<Record> records;
     private HashMap<String, Integer> borrowersCreditScoreForReturnedLoansMap;
 
@@ -75,7 +79,7 @@ public class Storage {
     private void writeBorrowersCreditScoreForReturnedLoansToSaveFile(BorrowersCreditScoreForReturnedLoans
             borrowersCreditScoreForReturnedLoans) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), true);
-        for (String borrowerNameInLowerCase: borrowersCreditScoreForReturnedLoans.getBorrowersNamesInLowerCase()) {
+        for (String borrowerNameInLowerCase : borrowersCreditScoreForReturnedLoans.getBorrowersNamesInLowerCase()) {
             int creditScore = getCreditScore(borrowersCreditScoreForReturnedLoans, borrowerNameInLowerCase);
             fw.write(borrowerNameInLowerCase + " | " + creditScore + System.lineSeparator());
         }
@@ -106,12 +110,12 @@ public class Storage {
                 Object parsedObject = parseRawData(rawData);
                 if (parsedObject instanceof Record) {
                     records.add((Record) parsedObject);
+                    assert !records.isEmpty() : "RecordList should have data!";
                 } else if (parsedObject != null) {
                     String[] borrowerCreditScoreForReturnedLoansData = (String[]) parsedObject;
                     borrowersCreditScoreForReturnedLoansMap.put(borrowerCreditScoreForReturnedLoansData[0],
                             Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]));
                 }
-                assert !records.isEmpty() : "RecordList should have data!";
             }
         } catch (InvalidFileInputException | IOException e) {
             throw new FileLoadingException();
@@ -170,17 +174,26 @@ public class Storage {
         BigDecimal amount;
         boolean isReturn;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                DateTimeFormatter.ofPattern("yyyy-M-d"));
+        LocalDate issueDate;
+        String borrowerName = extractArg(rawData, INDEX_OF_NAME);
+        LocalDate returnDate;
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
             isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_ISRETURN)) == 1;
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
+                    DateTimeFormatter.ofPattern("yyyy-M-d"));
+            if (extractArg(rawData, INDEX_OF_RETURN_DATE).equals("null")) {
+                returnDate = null;
+            } else {
+                returnDate = LocalDate.parse(extractArg(rawData, INDEX_OF_RETURN_DATE),
+                        DateTimeFormatter.ofPattern("yyyy-M-d"));
+            }
         } catch (NumberFormatException | DateTimeParseException e) {
             throw new InvalidFileInputException();
         }
 
-        return new Loan(amount, issueDate, description, "borrowerName", null, isReturn);
+        return new Loan(amount, issueDate, description, borrowerName, returnDate, isReturn);
     }
 
     private Record loadSaving(String rawData) throws InvalidFileInputException {
