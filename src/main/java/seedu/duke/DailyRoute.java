@@ -7,7 +7,8 @@ import java.util.List;
 
 public class DailyRoute {
     private HashMap<String, ArrayList<String>> dailyRoutes;
-    private final ArrayList<String> days = new ArrayList<>(List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"));
+    private final ArrayList<String> days =
+            new ArrayList<>(List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"));
     private boolean[] selectableDays = {false,false,false,false,false,false,false};
 
     public DailyRoute() {
@@ -32,17 +33,27 @@ public class DailyRoute {
         return dailyRoutes.get(days.get(selection));
     }
 
+    public String saveDaySchedule(String day) {
+        StringBuilder saveLine = new StringBuilder(day + "+");
+        ArrayList<String> blocks = dailyRoutes.get(day);
+        for (String block: blocks) {
+            saveLine.append(block).append("|");
+        }
+        return saveLine.toString();
+    }
 
-    public ArrayList<String> getSelectableDays(){
+
+    public ArrayList<String> getSelectableDays() {
         ArrayList<String> daysFound = new ArrayList<>();
-        for (int i = 0; i < 7; i++){
-            if (selectableDays[i]){
+        for (int i = 0; i < 7; i++) {
+            if (selectableDays[i]) {
                 daysFound.add(days.get(i));
             }
         }
         return daysFound;
     }
-    public ArrayList<String> getValidDays(){
+
+    public ArrayList<String> getValidDays() {
         return days;
     }
 

@@ -26,7 +26,7 @@ public class AddDailyRouteCommand extends Command {
         StringBuilder dayIndexing = new StringBuilder();
         for (int i = 0; i < 7; i++) {
             dayIndexing.append(i + 1).append(". ").append(selectableDays.get(i));
-            if (i < 6){
+            if (i < 6) {
                 dayIndexing.append("\n");
             }
         }
@@ -36,25 +36,24 @@ public class AddDailyRouteCommand extends Command {
             String day = selectableDays.get(index);
             ArrayList<String> schedule = ui.getSchedule();
             dailyRoute.addDailyRoute(day, schedule);
-        }catch (InvalidDayException e) {
+        } catch (InvalidDayException e) {
             ui.showToUser(e.getMessage());
-        }catch (InvalidBlockException e) {
+        } catch (InvalidBlockException e) {
             ui.showToUser(e.getMessage());
         }
     }
 
-    public int getIndex(UiManager ui) throws InvalidDayException{
+    public int getIndex(UiManager ui) throws InvalidDayException {
         try {
             int selection = Integer.parseInt(ui.getUserInput()) - 1;
             if (selection < 0 || selection > 6) {
                 throw new InvalidDayException();
             }
             return selection;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new InvalidDayException();
         }
     }
-
 
 
 }

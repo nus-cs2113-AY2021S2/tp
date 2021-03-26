@@ -22,7 +22,7 @@ public class ShowDailyRouteCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         ArrayList<String> selectableDays = dailyRoute.getSelectableDays();
-        if (selectableDays.size() == 0){
+        if (selectableDays.size() == 0) {
             ui.showToUser("There are no schedules set!");
             return;
         }
@@ -30,7 +30,7 @@ public class ShowDailyRouteCommand extends Command {
         StringBuilder dayIndexing = new StringBuilder();
         for (int i = 0; i < selectableDays.size(); i++) {
             dayIndexing.append(i + 1).append(". ").append(selectableDays.get(i));
-            if (i < selectableDays.size() - 1){
+            if (i < selectableDays.size() - 1) {
                 dayIndexing.append("\n");
             }
         }
@@ -42,12 +42,13 @@ public class ShowDailyRouteCommand extends Command {
             ui.showToUser(routedSchedule);
         } catch (InvalidBlockException e) {
             ui.showToUser(e.getMessage());
-        } catch (InvalidDayException r){
+        } catch (InvalidDayException r) {
             ui.showToUser(r.getMessage());
         }
     }
 
-    public String getRoutedSchedule(int index, DailyRoute dailyRoute, Map nusMap, BlockAlias blockAlias) throws InvalidDayException, InvalidBlockException {
+    public String getRoutedSchedule(int index, DailyRoute dailyRoute, Map nusMap,
+                                    BlockAlias blockAlias) throws InvalidDayException, InvalidBlockException {
         try {
             ArrayList<String> blocks = dailyRoute.getDailyRoute(index);
             StringBuilder dayRoute = new StringBuilder();
@@ -64,7 +65,8 @@ public class ShowDailyRouteCommand extends Command {
         }
     }
 
-    public int getIndex(UiManager ui, ArrayList<String> selectableDays, DailyRoute dailyRoute) throws InvalidDayException{
+    public int getIndex(UiManager ui, ArrayList<String> selectableDays,
+                        DailyRoute dailyRoute) throws InvalidDayException {
         try {
             int selection = Integer.parseInt(ui.getUserInput()) - 1;
             if (selection < 0 || selection > selectableDays.size() - 1) {
@@ -72,7 +74,7 @@ public class ShowDailyRouteCommand extends Command {
             }
             String day = selectableDays.get(selection);
             return dailyRoute.getValidDays().indexOf(day);
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new InvalidDayException();
         }
     }
