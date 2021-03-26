@@ -8,7 +8,7 @@ It is written in Java, and has more than 3.2kLoC.
 
 ### Architecture
 
-![Architecture Diagram](diagrams/ArchitectureDiagram.png)
+![Architecture Diagram](diagrams/diagram_images/ArchitectureDiagram.png)
 The ***Architecture Diagram*** given above explains the high-level design of the App. 
 Given below is a quick overview of each component.
 
