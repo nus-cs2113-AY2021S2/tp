@@ -1,10 +1,8 @@
 package movieApp;
 
-import movieApp.Cinema;
-
 import java.io.Serializable;
 
-import java.util.ArrayList; // import the ArrayList class
+import java.util.ArrayList;
 
 public class Cineplex implements Serializable{
 	private static final long serialVersionUID = 7128894551549758309L;
@@ -17,7 +15,7 @@ public class Cineplex implements Serializable{
 		this.cineplexID = ID;
 		this.cineplexName = name;
 		this.movieList = movieList;
-		this.cinemaList = new ArrayList<Cinema>();
+		this.cinemaList = new ArrayList<>();
 	}
 	
 	//Cineplex
