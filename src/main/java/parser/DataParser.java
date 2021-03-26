@@ -22,7 +22,7 @@ public class DataParser {
 
     public Shift parseShift(String line) {
         String[] splitByHex = line.split("#");
-        Shift parsedShift = new Shift(null, null, -1, 0);
+        Shift parsedShift = new Shift(null, null, 1, 0);
 
         parsedShift.setShiftDate(LocalDate.parse(splitByHex[0], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         parsedShift.setVacancy(Integer.parseInt(splitByHex[1]));

@@ -131,8 +131,8 @@ A FileWriter is used to write formatted data from the Employee and Shift classes
 
 ### Loading of Data
 #### Implementation
-![loadEmployees.puml](loadEmployees.puml)<br>
-![loadShifts.puml](loadShifts.puml)
+![loadEmployees](loadEmployees.puml)<br>
+![loadShifts](loadShifts.puml)
 
 ## Product scope
 ### Target user profile
