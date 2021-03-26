@@ -20,9 +20,7 @@ There are 2 pre-requisites for Connoisseur to run:
 
 ###Getting Started
 
-<div class="alert alert-block alert-warning">
-<b>Caution:</b> Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
-</div>
+> ⚠ <b>Caution:</b> Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
 1. First, **fork** this repo, and **clone** the fork into your computer.
    
@@ -32,11 +30,11 @@ There are 2 pre-requisites for Connoisseur to run:
 3. **Verify the setup:**
     1. Run the `seedu.address.connoisseur` and try a few commands.
     2. Run the [tests](https://github.com/AY2021S2-CS2113T-F08-3/tp/tree/master/src/test/java/seedu/connoisseur) to ensure they all pass.
-<div class="alert alert-block alert-info">
-<b>Note:</b>  Importing a Gradle project is slightly different from importing a normal Java project.</div>
+>ℹ️ <b>Note:</b>  Importing a Gradle project is slightly different from importing a normal Java project.</div>
 
 ## Design & implementation
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Architecture
+
 
 
 ## Product scope
