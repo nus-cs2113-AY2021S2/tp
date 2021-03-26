@@ -15,7 +15,8 @@ import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
 import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
 import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
@@ -46,14 +47,17 @@ public class CommandList {
     public CommandList(ArrayList<String> dataReviews, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
+        sorter = new Sorter(SortMethod.DATE_LATEST);
         reviewList = new ArrayList<Review>();
         for (String review : dataReviews) {
             if (review.length() == 0) {
                 continue;
+            } else if (review.startsWith("SortMethod: ")) {
+                sorter.changeSortMethod(review.split(" ", 2)[1]);
+            } else {
+                reviewList.add(Review.textToReview(review));
             }
-            reviewList.add(Review.textToReview(review));
         }
-        sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
     /**
@@ -118,7 +122,9 @@ public class CommandList {
      */
     public void sortReview(String sortType) {
         if (sortType == null || sortType.isBlank()) {
-            ui.println(MISSING_SORT_METHOD);
+            String sortMethod = sorter.getSortMethod();
+            ui.println(CURRENT_SORT_METHOD + sortMethod.toUpperCase());
+            ui.println(SORT_METHOD_PROMPT);
             return;
         }
         if (sortType.equals("title") || sortType.equals("date earliest")
@@ -300,7 +306,7 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveData(reviewList);
+        storage.saveData(reviewList, sorter.getSortMethod());
         ui.printExitMessage();
     }
 

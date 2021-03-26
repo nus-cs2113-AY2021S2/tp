@@ -61,7 +61,8 @@ public class Messages {
     public static final String ADD_SUCCESS = " has been saved to your list.";
 
     // Sort
-    public static final String MISSING_SORT_METHOD = "Please specify sort method";
+    public static final String CURRENT_SORT_METHOD = "Your current sort method is: ";
+    public static final String SORT_METHOD_PROMPT = "Use sort [method] to change sorting method";
     public static final String INVALID_SORT_METHOD = " is not valid sorting method, please try again.";
     public static final String SORT_METHOD_SUCCESS = "Success! Your preferred sorting method has been saved: ";
 
