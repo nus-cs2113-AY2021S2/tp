@@ -7,6 +7,7 @@ import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -41,7 +42,7 @@ public class RetrieveCommand extends Command {
     }
 
     private void printRecord(LocalDate date, Record record) {
-        ui.printMessage(date.toString() + ":");
+        ui.printMessage(date.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN)) + ":");
         ui.printMessage(record.toString());
     }
 }

@@ -4,28 +4,28 @@ public class Constants {
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
             + "Argument(s): IC number\n"
-            + "Usage: add /<IC_NUMBER>\n"
+            + "Usage: add IC_NUMBER\n"
             + "Example: add S1234567D\n";
     public static final String LIST_INFO_MESSAGE = "Show the list of all patients\n"
             + "Usage: list\n";
     public static final String LOAD_INFO_MESSAGE = "Select a specified patient to add and retrieve records\n"
             + "Command prefix: load\n"
             + "Arguments(s): IC number\n"
-            + "Usage: load <IC_NUMBER>\n"
+            + "Usage: load IC_NUMBER\n"
             + "Example: load S1234567D\n";
     public static final String RECORD_CONSULTATION_INFO_MESSAGE = "Add a consultation record to the selected patient\n"
             + "Command prefix: record\n"
-            + "Arguments(s): consultation details\n"
-            + "Usage: record <CONSULTATION DETAILS>\n"
-            + "Example: record fever\n";
+            + "Arguments(s): consultation details, symptom, diagnosis, prescription\n"
+            + "Usage: record [CONSULTATION_DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]\n"
+            + "Example: record /s fever\n";
     public static final String RETRIEVE_INFO_MESSAGE = "Retrieve past consultation record from the selected patient\n"
             + "Usage: retrieve\n";
     public static final String CURRENT_INFO_MESSAGE = "Print out the current patient being loaded.\n"
             + "Usage: current\n";
     public static final String HELP_INFO_MESSAGE = "Display information about all commands or selected commands only\n"
             + "Command prefix: help\n"
-            + "Argument(s): commands (optional)\n"
-            + "Usage: help <OPTIONAL COMMANDS>\n"
+            + "Argument(s): commands\n"
+            + "Usage: help [OPTIONAL_COMMANDS]\n"
             + "Example: help list add\n";
     public static final String EXIT_INFO_MESSAGE = "Exit the program\n"
             + "Usage: exit\n";
@@ -44,7 +44,6 @@ public class Constants {
     public static final String EXCEPTION_ADD_PATIENTEXISTS = "Patient already exists!";
     public static final String EXCEPTION_LIST_EMPTY = "List is currently empty!";
     public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
-    public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please give me more details about the patient's visit";
 
     // Number constants
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
@@ -57,4 +56,7 @@ public class Constants {
     public static final String DIAGNOSIS_KEY = "d";
     public static final String PRESCRIPTION_KEY = "p";
     public static final String EXCEPTION_RECORD_RETRIEVE_INVALID_DATE = "That's not a valid date";
+
+    // Date format
+    public static final String DATE_PATTERN = "dd/MM/yyyy";
 }

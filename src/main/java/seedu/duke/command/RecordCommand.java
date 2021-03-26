@@ -6,6 +6,7 @@ import seedu.duke.Ui;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
@@ -44,7 +45,7 @@ public class RecordCommand extends Command {
 
     private LocalDate parseDate(String dateString) throws DateTimeParseException {
         if (!dateString.isEmpty()) {
-            return LocalDate.parse(dateString);
+            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
         }
         return LocalDate.now();
     }

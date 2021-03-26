@@ -21,7 +21,7 @@ class RetrieveCommandTest {
         data.setPatient(patient);
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "2021-03-31");
+        arguments.put("payload", "31/03/2021");
         arguments.put("s", "coughing");
         Ui ui = new Ui();
         RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
@@ -39,7 +39,7 @@ class RetrieveCommandTest {
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "record");
-        arguments.put("payload", "2021-03-31");
+        arguments.put("payload", "31/03/2021");
         arguments.put("s", "coughing");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
@@ -61,7 +61,7 @@ class RetrieveCommandTest {
             System.out.println("An error occurred while running tests");
         }
         String expected = "Here are " + patient.getID() + "'s records:" + System.lineSeparator()
-                + "2021-03-31:" + System.lineSeparator()
+                + "31/03/2021:" + System.lineSeparator()
                 + "Symptoms:" + System.lineSeparator()
                 + "\tcoughing" + System.lineSeparator()
                 + "Diagnoses:" + System.lineSeparator()
