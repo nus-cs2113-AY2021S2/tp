@@ -13,7 +13,6 @@ It is written in Java, and has more than 3.2kLoC.
 
 ## Features
 
-{Give detailed description of each feature}
 **Notes about the command format:**
 
 * Words in UPPER_CASE are the parameters to be supplied by the user.\
@@ -23,26 +22,40 @@ It is written in Java, and has more than 3.2kLoC.
 
 Adds a food item into the fridge.
 
-Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
+
+**Tip:** 
+If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to 
+add the quantity. Otherwise, a unique FOOD_NAME has to be used to add the food into the FridgeFriend.
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+* The `FOOD_QUANTITY` must be a positive integer.
 
 Additional info:
 
 * Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
 Example of usage:
 
+*Situation 1: Adding a new food items into the fridge.*
 ```
->> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
 Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 200
+```
+
+*Situation 2: Adding food item with the same food name and details in the fridge.*
+
+```
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100
+Great! I have added chicken into your fridge.
+Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
 ```
 
 ### Display the list of all foods: `list`
@@ -58,8 +71,8 @@ Example of usage:
 ```
 >> list
 Here are the items in your fridge:
-    1. chicken [MEAT]
-    2. grouper [SEAFOOD]
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -75,12 +88,13 @@ Format: `list CATEGORY_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called chicken under MEAT category.*
+*Situation 1: There are two food chicken and pork under MEAT category.*
 
 ```
 >> list MEAT
 These are the MEAT in your fridge:
-	1. chicken
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods under READY_TO_EAT category.*
@@ -103,12 +117,13 @@ Format: `list STORAGE_LOCATION_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called chicken stored in FREEZER.*
+*Situation 1: There are two food chicken and pork stored in LOWER_SHELF.*
 
 ```
->> list FREEZER
-These are the food stored in FREEZER:
-	1. chicken
+>> list LOWER_SHELF
+These are the food stored in LOWER_SHELF:
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods stored in DRAWERS.*
@@ -244,7 +259,7 @@ Example of usage:
 ```
 >> help
 These are the list of available commands:
-        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
+        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
         list
         list categoryName
         remove index
@@ -291,7 +306,7 @@ Plus, you are always welcomed to use `help` command.
 
 ## Command Summary
 
-* Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+* Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 * List food `list`
 * List food by category `list CATEGORY_NAME`
 * Remove food `remove INDEX`
