@@ -35,16 +35,20 @@ public class Constants {
     public static final String WELCOME_MESSAGE = "Welcome to the Patient Manager.\n";
     public static final String INPUT_PROMPT = "Please input a command: ";
 
+    public static final String EMPTY_LIST_MESSAGE = "List is currently empty!";
+
     public static final String LONG_LINE = "----------------------------------------------------------------------";
 
     // Exception messages
-    public static final String EXCEPTION_PARSER_EMPTYSTRING = "Empty string is found when trying to parse command";
-    public static final String EXCEPTION_PARSER_INVALIDCOMMAND = "Invalid command is provided";
-    public static final String EXCEPTION_ADD_INVALIDNRIC = "Please key in a valid NRIC number!";
-    public static final String EXCEPTION_ADD_PATIENTEXISTS = "Patient already exists!";
-    public static final String EXCEPTION_LIST_EMPTY = "List is currently empty!";
-    public static final String EXCEPTION_RECORD_RETRIEVE_NULLPATIENT = "No patient loaded!";
-    public static final String EXCEPTION_RECORD_EMPTYPAYLOAD = "Please give me more details about the patient's visit";
+    public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
+    public static final String INVALID_INPUT_EMPTY_STRING = "Empty string is found when trying to parse command!";
+    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided!";
+    public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number!";
+    public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists!";
+    public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
+    public static final String INVALID_INPUT_EMPTY_DESCRIPTION = "Please provide details about the patient's visit!";
+
+    public static final String UNKNOWN = "We have encountered an unknown error";
 
     // Number constants
     public static final int ID_NUMBER_OF_CHARACTERS = 9;

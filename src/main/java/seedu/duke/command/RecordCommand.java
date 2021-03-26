@@ -1,8 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
@@ -24,13 +24,12 @@ public class RecordCommand extends Command {
     public void execute() throws Exception {
         assert ui != null : "Ui must not be null";
         assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
-        // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
+            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
         }
         if (arguments.get("payload").length() == 0) {
-            throw new Exception(Constants.EXCEPTION_RECORD_EMPTYPAYLOAD);
+            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
         }
         String consultationDetail = arguments.get("payload");
         Record record = new Record(consultationDetail);

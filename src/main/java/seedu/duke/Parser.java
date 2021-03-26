@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import seedu.duke.command.Command;
+import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.UnknownException;
 
 /* Adapted from https://github.com/fsgmhoward/ip/blob/master/src/main/java/duke/Parser.java */
 /**
@@ -61,8 +63,7 @@ public class Parser {
             tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
         }
         if (tokens.length == 0) {
-            // TODO: Exception handling using a custom exception
-            throw new Exception(Constants.EXCEPTION_PARSER_EMPTYSTRING);
+            throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
         }
         arguments.put("command", tokens[0]);
 
@@ -95,10 +96,12 @@ public class Parser {
             Constructor<?> constructor = cls.getDeclaredConstructor(Ui.class, Data.class, HashMap.class);
             Object obj = constructor.newInstance(ui, data, arguments);
             return (Command) obj;
+        } catch (ClassNotFoundException e) {
+            // *Command class cannot be found!
+            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, e);
         } catch (Exception e) {
-            // If any exception thrown above, it means the command is not formatted properly
-            // TODO: Exception handling using a custom exception
-            throw new Exception(Constants.EXCEPTION_PARSER_INVALIDCOMMAND, e);
+            // Some other weird error occurred here
+            throw new UnknownException(e);
         }
     }
 }

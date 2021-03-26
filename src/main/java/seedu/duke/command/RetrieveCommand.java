@@ -1,8 +1,8 @@
 package seedu.duke.command;
 
-import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
@@ -24,10 +24,9 @@ public class RetrieveCommand extends Command {
     @Override
     public void execute() throws Exception {
         assert ui != null : "Ui must not be null";
-        // TODO: Implement proper exception
         Patient patient = data.currentPatient;
         if (patient == null) {
-            throw new Exception(Constants.EXCEPTION_RECORD_RETRIEVE_NULLPATIENT);
+            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
         }
         ArrayList<Record> records = patient.getRecords();
         ui.printMessage("Here is a list of " + patient.getID() + "'s records:");
