@@ -5,7 +5,9 @@ import movieApp.Movie;
 import movieApp.Showtimes;
 import movieApp.storage.Database;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 public class MovieMenu {
 
@@ -44,7 +46,7 @@ public class MovieMenu {
 		
 			
 		int n = 0;
-		ArrayList<Integer> showtime_index = new ArrayList(); 
+		ArrayList<Integer> showtime_index = new ArrayList<>();
 		for(int i=0; i<ShowtimeDatabase.size(); i++) {
 			if(ShowtimeDatabase.get(i).getMovieID() == movieID) {
 				System.out.println("\nEnter "+ n + " for the timing below: ");
@@ -75,8 +77,6 @@ public class MovieMenu {
 			}
 		}
 		
-
-		
 		int index_st = showtime_index.get(choice);
 		int cinemaID = ShowtimeDatabase.get(index_st).getCinemaID(); 
 		int cineplexID = ShowtimeDatabase.get(index_st).getCineplexID();
@@ -103,8 +103,8 @@ public class MovieMenu {
 			}
 		}
 		
-		int maxrow = ShowtimeDatabase.get(index_st).getMaxRow(); 
-		int maxcolumn = ShowtimeDatabase.get(index_st).getMaxColumn(); 
+		int max_row = ShowtimeDatabase.get(index_st).getMaxRow();
+		int max_column = ShowtimeDatabase.get(index_st).getMaxColumn();
 
 		int[][] seatChoice = new int[num_tic][2];
 		for (int i=0;i<num_tic;i++) {
@@ -118,7 +118,7 @@ public class MovieMenu {
 			System.out.println("\nPlease select the seat for buyer No. " + (b+1));
 			
 			int row = -1;
-			while ((row <1) || (row > maxrow)) {
+			while ((row <1) || (row > max_row)) {
 				System.out.println("Please enter the row number:  " );
 				if (!sc.hasNextInt()) {
 					System.out.println("Please input an integer.\n");
@@ -126,14 +126,14 @@ public class MovieMenu {
 					continue;
 				} 
 				row = sc.nextInt();
-				if ((row <1) || (row > maxrow)) {
+				if ((row <1) || (row > max_row)) {
 					System.out.println("Please input a row number that is within the range.\n");
 				}
 			}
 
 			
 			int col = -1;
-			while ((col <1) || (col > maxcolumn)) {
+			while ((col <1) || (col > max_column)) {
 				System.out.println("Please enter the column number: ");
 				if (!sc.hasNextInt()) {
 					System.out.println("Please input an integer.\n");
@@ -141,7 +141,7 @@ public class MovieMenu {
 					continue;
 				} 
 				col = sc.nextInt();
-				if ((col <1) || (col > maxcolumn)) {
+				if ((col <1) || (col > max_column)) {
 					System.out.println("Please input a column number that is within the range.\n");
 				}
 			}
@@ -152,14 +152,16 @@ public class MovieMenu {
 			System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 			boolean selectAgain = false;
 			for (int i = 0; i < num_tic; i++) {
-				if(seatChoice[i][0]==RC[0]&&seatChoice[i][1]==RC[1]) {selectAgain=true;}
+				if(seatChoice[i][0]==RC[0] && seatChoice[i][1]==RC[1]) {
+					selectAgain=true;
+				}
 			}
 			
 			while(ShowtimeDatabase.get(index_st).checkSeatTaken(RC) || selectAgain) {
 				System.out.println("Sorry, the seat has been taken, Please choose another seat. ");
 				
 				row = -1;
-				while ((row <1) || (row > maxrow)) {
+				while ((row <1) || (row > max_row)) {
 					System.out.println("Please enter the row number:  " );
 					if (!sc.hasNextInt()) {
 						System.out.println("Please input an integer.\n");
@@ -167,13 +169,13 @@ public class MovieMenu {
 						continue;
 					} 
 					row = sc.nextInt();
-					if ((row <1) || (row > maxrow)) {
+					if ((row <1) || (row > max_row)) {
 						System.out.println("Please input a row number that is within the range.\n");
 					}
 				}
 				
 				col = -1;
-				while ((col <1) || (col > maxcolumn)) {
+				while ((col <1) || (col > max_column)) {
 					System.out.println("Please enter the column number: ");
 					if (!sc.hasNextInt()) {
 						System.out.println("Please input an integer.\n");
@@ -181,7 +183,7 @@ public class MovieMenu {
 						continue;
 					} 
 					col = sc.nextInt();
-					if ((col <1) || (col > maxcolumn)) {
+					if ((col <1) || (col > max_column)) {
 						System.out.println("Please input a column number that is within the range.\n");
 					}
 				}
@@ -191,11 +193,12 @@ public class MovieMenu {
 				System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 				selectAgain = false;
 				for (int i = 0;i<b;i++) {
-					if(seatChoice[i]==RC) {selectAgain=true;}
+					if(seatChoice[i] == RC) {
+						selectAgain=true;
+					}
 				}
 			}
-
-			seatChoice[b]=RC;
+			seatChoice[b] = RC;
 			
 		}
 

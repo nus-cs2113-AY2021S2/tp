@@ -54,8 +54,7 @@ public class Movie implements Serializable{
 	public float getOverallRating() {
 		if(reviews.size()==0) {
 			return -1;
-		}
-		else {
+		}else{
 			return calculateOverallRating(); 
 		}
 	}

@@ -24,6 +24,7 @@ public class Cineplex implements Serializable{
 	public int getCineplexID() {
 		return cineplexID;
 	}
+
 	public String getCineplexName() {
 		return cineplexName;
 	}

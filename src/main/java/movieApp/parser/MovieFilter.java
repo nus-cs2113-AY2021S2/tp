@@ -5,7 +5,6 @@ import java.util.*;
 import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.storage.Database;
-import movieApp.ui.Ui;
 
 public class MovieFilter {
 
@@ -19,7 +18,7 @@ public class MovieFilter {
 		System.out.println("===========================\n");
 	}
 	
-	////////////////////////////////////////////////////////////////////////////
+
 	public static int getFilter() {
 		int filter = -1;
 		Scanner sc = new Scanner(System.in);

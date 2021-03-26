@@ -23,7 +23,6 @@ public class Ui {
         System.out.println(LOGO);
 
         getOption();
-
         // go back
 
     }
@@ -45,6 +44,7 @@ public class Ui {
         System.out.println("\n\nThank you for your time.\nHave a good day!\n\nSystem Exiting...");
         System.exit(0);
     }
+
     /**
      *
      * @return
@@ -70,7 +70,4 @@ public class Ui {
         }
         //return menu_choice;
     }
-
-
-
 }

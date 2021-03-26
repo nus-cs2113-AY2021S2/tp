@@ -1,7 +1,5 @@
 package movieApp.storage;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.Showtimes;
