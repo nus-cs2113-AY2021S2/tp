@@ -26,7 +26,7 @@ public abstract class BaseException extends Exception {
         if (cause != null) {
             s += System.lineSeparator()
                     + "... and is caused by ..." + System.lineSeparator()
-                    + BaseException.INDENT + cause.getMessage(); 
+                    + BaseException.INDENT + cause.toString(); 
         }
 
         return s;
