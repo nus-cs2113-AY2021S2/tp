@@ -70,6 +70,24 @@ Through Patient Manager, general practitioners are able to manage patients faste
 
 * *glossary item* - Definition
 
-## Instructions for manual testing
+## Testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### Automated Testing
+We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
+```
+### For JUnit tests
+# *nix OS and MacOSX bash
+./gradlew check
+# Windows CMD
+gradlew.bat check
+
+### For I/O redirection tests
+cd text-ui-test
+# *nix OS and MacOSX bash
+./runtest.sh
+# Windows CMD
+runtest.bat
+```
+
+### Manual Testing
+The current version does not support storing the data on the local drive. To start with the manual testing process, you may refer to the "QuickStart" section of the [User Guide](UserGuide.md).
