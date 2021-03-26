@@ -47,7 +47,7 @@ to organize the records of their patients.
 
 ## Features
 
-> ❗ Notes about the command format
+> ❗ Notes about the command format:
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
 e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 (sample command: `add S1234567D`)
