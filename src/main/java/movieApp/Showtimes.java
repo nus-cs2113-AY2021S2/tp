@@ -15,7 +15,6 @@ public class Showtimes implements Serializable{
 	
 	protected Movie mv;
 
-	
 	Showtimes(int id, Calendar date, Cinema cinema, Movie movie){
 		int r = cinema.getR();
 		int c = cinema.getC();
@@ -80,6 +79,13 @@ public class Showtimes implements Serializable{
 		return seatPlan[RC[0] - 1][RC[1] - 1].getStatus();
 	}
 
+	public void setSeatStatus(int row, int col, boolean status){
+		seatPlan[row][col].setStatus(status);
+	}
+
+	public Seat getSeat(int row, int col) {
+		return seatPlan[row][col];
+	}
 	
 	public int getCinemaID() {
 		return cinemaID; 

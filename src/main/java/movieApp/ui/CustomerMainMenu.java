@@ -23,24 +23,24 @@ public class CustomerMainMenu implements MainMenu{
 
 		System.out.println(LOGO);
 		System.out.println("Welcome, " + user.get(currentUserIndex).getName());
-		getOption();
+		getOption(user.get(currentUserIndex));
 	}
 
-	public static void doOption(int option) {
+	public static void doOption(int option, User user) {
 		ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 
 		switch(option){
 		case 1:
 			Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
 			if (movie != null) {
-				MovieMenu.movieAction(movie);
+				MovieMenu.movieAction(movie, user);
 			}
 			break;
 		case 2:
 			exit();
 		default:
 			System.out.println("Invalid input. Please try again.");
-			getOption();
+			getOption(user);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class CustomerMainMenu implements MainMenu{
 		System.exit(0);
 	}
 
-	public static void getOption() {
+	public static void getOption(User user) {
 		int menu_choice = -1;
 		Scanner sc = new Scanner(System.in);
 		while (menu_choice != 2) {
@@ -72,7 +72,7 @@ public class CustomerMainMenu implements MainMenu{
 			if ((menu_choice < 1) || (menu_choice > 2)) {
 				System.out.println("Please input an integer between 1 and 2.\n");
 			} else {
-				doOption(menu_choice);
+				doOption(menu_choice, user);
 			}
 		}
 		//return menu_choice;

@@ -16,7 +16,7 @@ public class AdminMainMenu implements MainMenu{
 	private static int functionSelection;
 	private static Scanner sc = new Scanner(System.in);
 
-	public static void displayMenu(ArrayList<User> user) {
+	public static void displayMenu(int currentUserIndex, ArrayList<User> user) {
 		System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
 
 		do
@@ -42,7 +42,7 @@ public class AdminMainMenu implements MainMenu{
 			case 1:
 				Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
 				if (movie != null) {
-					MovieMenu.movieAction(movie);
+					MovieMenu.movieAction(movie, user.get(currentUserIndex));
 				}
 				break;
 			case 2:

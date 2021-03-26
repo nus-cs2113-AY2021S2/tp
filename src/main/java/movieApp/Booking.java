@@ -1,46 +1,41 @@
 package movieApp;
 
-import movieApp.user.Customer;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Booking implements Serializable, Cloneable {
+public class Booking implements Serializable {
+    private Showtimes showtimes;
+    private ArrayList<Seat> seats;
+    private Status status;
+    private Date date;
 
-    private Date date = null;
-    private String bookingID = null;
-    private Customer customer = null;
-    private Status status = Status.PROCESSING;
-    private ArrayList<String> seats = new ArrayList<>();
-
-    public Booking(Customer customer, Date date, String bookingID){
-        //this.show = show;
-        this.customer= customer;
-        this.date = date;
-        this.bookingID = bookingID;
-    }
-
-    public String getBookingID() {
-        return bookingID;
-    }
-
-    public Customer getCustomer(){
-        return customer;
+    public Booking(Showtimes showtimes, ArrayList<Seat> seats){
+        this.showtimes = showtimes;
+        this.seats = seats;
+        this.status = Status.PROCESSING;
+        this.date = new Date();
+        print();
     }
 
 
     public void print(){
         System.out.println("==========================================");
-        System.out.println("Booking No:      " + bookingID);
-        System.out.println("Customer No:     " + customer.getName());
-        System.out.println("Show Details:    ");
-        System.out.println("Seats Booked:    "+ seats);
+        System.out.println("Showtimes No:     " + showtimes.getMovieTitle());
+        showtimes.printSeats();
+        System.out.println("seats:     " + seats);
+        /*
+        for(int i = 0; i<seats.size(); i++){
+            System.out.println("Seats Booked:    "+ seats.get(i).getRow());
+            System.out.println("Seats Booked:    "+ seats.get(i).getColumn());
+        }
+         */
         System.out.println("Status:          "+ status);
+        System.out.println("Date:          "+ date);
         System.out.println("==========================================");
     }
 
-    public ArrayList<String> getSeats(){
+    public ArrayList<Seat> getSeats(){
         return seats;
     }
 

@@ -10,6 +10,10 @@ public class Customer extends User{
 
 	public Customer(String name, String password){
 		super(name, password, "Customer");
+		bookings = new ArrayList<>();
 	}
 
+	public void addNewBooking(Booking booking){
+		bookings.add(booking);
+	}
 }

@@ -29,7 +29,7 @@ public class MovieApp {
             if(user.get(currentUserIndex).getUserType().equals("Customer")) {
                 CustomerMainMenu.displayMenu(currentUserIndex, user);
             } else {
-                AdminMainMenu.displayMenu(user);
+                AdminMainMenu.displayMenu(currentUserIndex, user);
             }
         }
     }

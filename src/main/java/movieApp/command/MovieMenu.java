@@ -1,9 +1,9 @@
 package movieApp.command;
 
-import movieApp.Cineplex;
-import movieApp.Movie;
-import movieApp.Showtimes;
+import movieApp.*;
 import movieApp.storage.Database;
+import movieApp.user.Customer;
+import movieApp.user.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +38,7 @@ public class MovieMenu {
 
 
 	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Showtimes> ShowtimeDatabase,
-								  ArrayList<Cineplex> CineplexDatabase, int movieID) {
+								  ArrayList<Cineplex> CineplexDatabase, int movieID, User user) {
 		String ms = "NOT FOUND";
 		for (Movie movie : MovieDatabase) {
 			if (movie.getMovieID() == movieID) {
@@ -66,7 +66,6 @@ public class MovieMenu {
 			}
 			
 		}
-		
 		
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
@@ -118,6 +117,7 @@ public class MovieMenu {
 			seatChoice[i][1] = -1 ;
 		}
 
+		ArrayList<Seat> seatsBooked = new ArrayList<>();
 		ShowtimeDatabase.get(index_st).printSeats();
 		for(int b = 0; b<num_tic; b++) {
 			
@@ -198,17 +198,22 @@ public class MovieMenu {
 				RC[1] = col;
 				System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 				selectAgain = false;
-				for (int i = 0;i<b;i++) {
+				for (int i = 0; i<b; i++) {
 					if(seatChoice[i] == RC) {
 						selectAgain=true;
 					}
 				}
 			}
 			seatChoice[b] = RC;
-			
+			ShowtimeDatabase.get(index_st).setSeatStatus(row-1, col-1, true);
+			ShowtimeDatabase.get(index_st).printSeats();
+			seatsBooked.add(ShowtimeDatabase.get(index_st).getSeat(row-1, col-1));
 		}
 
 		System.out.println("\nThe Transaction is made, total ticket number: "+ num_tic+" ");
+		((Customer)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
+
+
 
 // TODO: print seats
  
@@ -249,7 +254,7 @@ public class MovieMenu {
 		movie.displayMovie();
 	}
 
-	public static void movieAction(Movie movie) {
+	public static void movieAction(Movie movie, User user) {
 		int action;
 		do {
 			action = getAction();
@@ -259,7 +264,7 @@ public class MovieMenu {
 				action = -1;
 					System.out.println("\n======== Book Ticket ========");
 					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase,
-							Database.CineplexDatabase, movie.getMovieID());
+							Database.CineplexDatabase, movie.getMovieID(), user);
 				break;	
 			case 2:
 				action = -1;
