@@ -64,34 +64,34 @@ public class TaskList {
             addMidterm(module, description, message, dateAndTime);
             break;
         case 4:
-            addFinal(module, description, message, dateAndTime);
+            addFinalExam(module, description, message, dateAndTime);
             break;
         default:
             Ui.printInvalidIntegerMessage();
         }
     }
 
-    private static void addTask(String module, String description, String message) {
+    public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
         tasks.add(task);
         Ui.printAddedTaskMessage(task);
     }
 
-    private static void addAssignment(String module, String description,
+    public static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
         assignments.add(assignment);
         Ui.printAddedTaskMessage(assignment);
     }
 
-    private static void addMidterm(String module, String description,
+    public static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
         midterms.add(midterm);
         Ui.printAddedTaskMessage(midterm);
     }
 
-    private static void addFinal(String module, String description,
+    public static void addFinalExam(String module, String description,
                                 String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
@@ -245,7 +245,7 @@ public class TaskList {
         }
     }
 
-    private static boolean taskListIsEmpty(int taskTypeNumber) {
+    public static boolean taskListIsEmpty(int taskTypeNumber) {
         boolean isEmpty = false;
         switch (taskTypeNumber) {
         case 1:
@@ -266,7 +266,7 @@ public class TaskList {
         return isEmpty;
     }
 
-    private static void toggleTaskStatus(int taskNumber) {
+    public static void toggleTaskStatus(int taskNumber) {
         Task task = tasks.get(taskNumber - 1);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
@@ -288,7 +288,7 @@ public class TaskList {
         }
     }
 
-    private static void toggleAssigmentStatus(int taskNumber) {
+    public static void toggleAssigmentStatus(int taskNumber) {
         Assignment task = assignments.get(taskNumber - 1);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
@@ -310,7 +310,7 @@ public class TaskList {
         }
     }
 
-    private static void toggleMidtermStatus(int taskNumber) {
+    public static void toggleMidtermStatus(int taskNumber) {
         Midterm task = midterms.get(taskNumber - 1);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
@@ -332,7 +332,7 @@ public class TaskList {
         }
     }
 
-    private static void toggleFinalExamStatus(int taskNumber) {
+    public static void toggleFinalExamStatus(int taskNumber) {
         FinalExam task = finalExams.get(taskNumber - 1);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
@@ -354,7 +354,7 @@ public class TaskList {
         }
     }
 
-    private static void findAndDeleteTask(int taskNumber) {
+    public static void findAndDeleteTask(int taskNumber) {
         Task deletedTask = tasks.get(taskNumber - 1);
         tasks.remove(deletedTask);
         boolean typeTaskIsPinned = pinnedTasks.containsKey("[Task]");
@@ -366,7 +366,7 @@ public class TaskList {
         Ui.printDeletedTaskMessage(deletedTask);
     }
 
-    private static void findAndDeleteAssigment(int taskNumber) {
+    public static void findAndDeleteAssigment(int taskNumber) {
         Assignment deletedAssignment = assignments.get(taskNumber - 1);
         assignments.remove(deletedAssignment);
         boolean typeAssignmentIsPinned = pinnedTasks.containsKey("[Assignment]");
@@ -378,7 +378,7 @@ public class TaskList {
         Ui.printDeletedTaskMessage(deletedAssignment);
     }
 
-    private static void findAndDeleteMidterm(int taskNumber) {
+    public static void findAndDeleteMidterm(int taskNumber) {
         Midterm deletedMidterm = midterms.get(taskNumber - 1);
         midterms.remove(deletedMidterm);
         boolean typeMidtermIsPinned = pinnedTasks.containsKey("[Midterm]");
@@ -390,7 +390,7 @@ public class TaskList {
         Ui.printDeletedTaskMessage(deletedMidterm);
     }
 
-    private static void findAndDeleteFinalExam(int taskNumber) {
+    public static void findAndDeleteFinalExam(int taskNumber) {
         FinalExam deletedFinalExam = finalExams.get(taskNumber - 1);
         finalExams.remove(deletedFinalExam);
         boolean typeFinalExamIsPinned = pinnedTasks.containsKey("[Final Exam]");
@@ -437,7 +437,7 @@ public class TaskList {
         }
     }
 
-    private static void addTaskToPinnedTasks(Task task, String taskTypeName) {
+    public static void addTaskToPinnedTasks(Task task, String taskTypeName) {
         pinnedTasks.computeIfAbsent(taskTypeName, k -> new ArrayList<>());
         if (pinnedTasks.get(taskTypeName).contains((task))) {
             Ui.printTaskAlreadyPinnedMessage();
