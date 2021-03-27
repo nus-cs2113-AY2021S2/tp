@@ -17,13 +17,6 @@ public class ModuleList {
         return selectedModule;
     }
 
-    /**
-     * For testing purposes only.
-     */
-    public static void hardSetSelectedModule(String moduleCode) {
-        ModuleList.selectedModule = new Module(moduleCode);
-    }
-
     public static ArrayList<String> getModules() {
         return modules;
     }

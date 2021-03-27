@@ -5,13 +5,9 @@ import seedu.duke.TestUtilAndConstants;
 import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
-import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,18 +15,19 @@ class EditLessonCommandTest extends LessonCommandTest {
 
     //@@author ivanchongzhien
     @Test
-    void execute_validIndexAndAllFields_lessonFieldsEdited() throws CommandException {
+    void execute_validIndexAllFields_lessonFieldsEdited() throws CommandException {
         TestUtilAndConstants.removeFiles();
         ModuleList.loadModuleNames();
         
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
         Module module = ModuleList.getSelectedModule();
-
-        TeachingStaff oriTeacher = new TeachingStaff(TEACHER_NAME, TEACHER_EMAIL);
-        Lesson oriLesson = new Lesson(LessonType.TUTORIAL, TIME, ONLINE_LINK, oriTeacher);
+        
+        Lesson oriLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, 
+                LessonType.TUTORIAL, TIME, ONLINE_LINK);
         module.addLesson(oriLesson);
         
+        // Prepare user input
         String lessonIndex = "1" + System.lineSeparator();
         String lessonFields = "1 2 3 4" + System.lineSeparator();
         String newTime = TIME1 + System.lineSeparator();
@@ -39,20 +36,62 @@ class EditLessonCommandTest extends LessonCommandTest {
         String newTeacherEmail = TEACHER_EMAIL1 + System.lineSeparator();
         
         String entireInput = lessonIndex + lessonFields + newTime + newLink + newTeacherName + newTeacherEmail;
-        ByteArrayInputStream inContent = new ByteArrayInputStream(entireInput.getBytes());
-        System.setIn(inContent);
-        System.setOut(System.out);
+        initialiseUserInput(entireInput);
 
+        // Run command
         UI ui = new UI();
-
         Command command = new EditLessonCommand();
         command.execute(ui);
-        
         Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
+
+        removeOutputStream();
+        ModuleList.reset();
         
-        TeachingStaff editedTeacher = new TeachingStaff(TEACHER_NAME1, TEACHER_EMAIL1);
-        Lesson editedLesson = new Lesson(LessonType.TUTORIAL, TIME1, ONLINE_LINK1, editedTeacher);
-        
+        // Expected lesson after edit
+        Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL1, 
+                LessonType.TUTORIAL, TIME1, ONLINE_LINK1);
+
+        assertEquals(editedLesson.getTime(), actualLessonAfterEdit.getTime());
+        assertEquals(editedLesson.getOnlineLink(), actualLessonAfterEdit.getOnlineLink());
+        assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
+        assertEquals(editedLesson.getTeachingStaff().getEmail(), actualLessonAfterEdit.getTeachingStaff().getEmail());
+    }
+
+    @Test
+    void execute_validAndInvalidIndexPartialFields_lessonFieldsEdited() throws CommandException {
+        TestUtilAndConstants.removeFiles();
+        ModuleList.loadModuleNames();
+
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
+        Module module = ModuleList.getSelectedModule();
+
+        Lesson oriLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL,
+                LessonType.TUTORIAL, TIME, ONLINE_LINK);
+        module.addLesson(oriLesson);
+
+        // Prepare user input
+        String lessonIndex = "1" + System.lineSeparator();
+        String lessonFields = "1 10 -1 3 0 abc" + System.lineSeparator(); // 1 and 3 are valid
+        String newTime = TIME1 + System.lineSeparator();
+        String newTeacherName = TEACHER_NAME1 + System.lineSeparator();
+
+        String entireInput = lessonIndex + lessonFields + newTime + newTeacherName;
+        initialiseUserInput(entireInput);
+
+        // Run command
+        UI ui = new UI();
+        Command command = new EditLessonCommand();
+        command.execute(ui);
+        Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
+
+        removeOutputStream();
+        ModuleList.reset();
+
+        // Expected lesson after edit
+        Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL,
+                LessonType.TUTORIAL, TIME1, ONLINE_LINK);
+
         assertEquals(editedLesson.getTime(), actualLessonAfterEdit.getTime());
         assertEquals(editedLesson.getOnlineLink(), actualLessonAfterEdit.getOnlineLink());
         assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
