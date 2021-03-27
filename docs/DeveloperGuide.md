@@ -104,19 +104,20 @@ to the throwable error message.
 
 The `Exceptions` component currently consists of ten (10) custom Exceptions, as of v2.0:
 
+Among these ten custom exceptions, the `Exceptions` component can generally be 
+classified into three broad categories:
+
+_Exceptions related to invalid user input:_
 - **`EmptyDescriptionException`**: Is thrown when an empty input string is detected by `Parser`, where
   an input is expected.
   - Error Message: `"Sorry my friend, the description cannot be empty."`
-- **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is 
-  not found in the Fridge, where the name of a food existing in the Fridge is expected.
-  - Error Message: `"Food specified not found."`
+- **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`,
+  where a valid `FoodCategory` is expected. Users can check `help` or the
+  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
+  - Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
 - **`InvalidDateException`**: Is thrown when user input, where a date is expected, does not
   match the `dd-mm-yy` format.
     - Error Message: `"Sorry my friend, the date must be in the form 'dd-mm-yy'."`
-- **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`, 
-  where a valid `FoodCategory` is expected. Users can check `help` or the 
-  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
-    - Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
 - **`InvalidIndexException`**: Is thrown when user input does not translate into a valid integer index that represents
   an existing Food in the Fridge, where
   a valid input index that represents Food that exists in the Fridge is expected.
@@ -129,10 +130,17 @@ The `Exceptions` component currently consists of ten (10) custom Exceptions, as 
   of food in the fridge remaining would be negative.
     - Error Message: `"Sorry my friend, the quantity QUANTITY_INPUT must be a number."`
     - Error Message: `"Not enough in fridge to remove!"`
+
+_Exceptions related to Food:_
+- **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is
+  not found in the Fridge, where the name of a food existing in the Fridge is expected.
+  - Error Message: `"Food specified not found."`
 - **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a 
   different location or with a different expiry date. This is not allowed as of v2.0.
     - Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
       Please specify another foodname."`
+
+_Exceptions related to file storage:_
 - **`StorageLoadingException`**: Is thrown when an error occurred during loading of the saved data.
     - Error Message: `"There was an error loading the data for FridgeFriend!"`
 - **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
