@@ -45,6 +45,7 @@ class ListCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    //@@author leeyp
     @Test
     public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
         ListCommand listCommand = new ListCommand("LOWER_SHELF");

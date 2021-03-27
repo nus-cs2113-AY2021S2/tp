@@ -44,6 +44,7 @@ class AddCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    //@@author leeyp
     @Test
     public void addCommand_foodCorrectFormat_changeFoodParameters()
             throws InvalidDateException, RepetitiveFoodIdentifierException {

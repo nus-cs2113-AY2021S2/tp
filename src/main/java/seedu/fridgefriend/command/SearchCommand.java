@@ -5,6 +5,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author leeyp
 /**
  * Represents a command to search for a specific food item in the fridge.
  */

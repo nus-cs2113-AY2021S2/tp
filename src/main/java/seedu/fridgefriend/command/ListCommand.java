@@ -43,18 +43,41 @@ public class ListCommand extends Command {
         }
     }
 
-    private void listByCategory() {
-        String message = getListByCategoryMessage();
-        Ui.printMessage(message);
+    private void invalidInputError() throws InvalidInputException {
+        String errorMessage = "Sorry my friend, please enter a valid food category or storage location.";
+        throw new InvalidInputException(errorMessage);
     }
 
-    private void listByStorageLocation() {
-        String message = getListByStorageLocationMessage();
-        Ui.printMessage(message);
+    private String getFoodDescription(int index) {
+        int indexShownToUser = index + EXTRA_INDEX;
+        Food food = fridge.getFood(index);
+        String foodDescription =
+                "\n\t" + indexShownToUser + ". "
+                        + food.toString();
+        return foodDescription;
     }
 
     private void listAll() {
         Ui.printMessage(getListAllMessage());
+    }
+
+    /**
+     * Returns all the food in the fridge.
+     *
+     * @return string of the food names that are in the fridge
+     */
+    public String getListAllMessage() {
+        LoggingHandler.logInfo("No input detected, printing all items.");
+        StringBuilder message = new StringBuilder("Here are the items in your fridge:");
+        for (int i = 0; i < fridge.getSize(); i++) {
+            message.append(getFoodDescription(i));
+        }
+        return message.toString();
+    }
+
+    private void listByCategory() {
+        String message = getListByCategoryMessage();
+        Ui.printMessage(message);
     }
 
     /**
@@ -73,6 +96,28 @@ public class ListCommand extends Command {
         return message.toString();
     }
 
+    private boolean checkIsValidCategory() {
+        return FoodCategory.contains(description);
+    }
+
+    private String getMatchCategoryFoodDescription(int index) {
+        String foodDescription = "";
+        FoodCategory categoryToFind = FoodCategory.convertStringToFoodCategory(description);
+        Food food = fridge.getFood(index);
+        FoodCategory category = food.getCategory();
+        if (category.equals(categoryToFind)) {
+            foodDescription = "\n\t" + indexShownToUser + ". " + food.toString();
+            ++indexShownToUser;
+        }
+        return foodDescription;
+    }
+
+    //@@author leeyp
+    private void listByStorageLocation() {
+        String message = getListByStorageLocationMessage();
+        Ui.printMessage(message);
+    }
+
     /**
      * Returns the food that match the storage location that was specified.
      *
@@ -89,52 +134,8 @@ public class ListCommand extends Command {
         return message.toString();
     }
 
-    /**
-     * Returns all the food in the fridge.
-     *
-     * @return string of the food names that are in the fridge
-     */
-    public String getListAllMessage() {
-        LoggingHandler.logInfo("No input detected, printing all items.");
-        StringBuilder message = new StringBuilder("Here are the items in your fridge:");
-        for (int i = 0; i < fridge.getSize(); i++) {
-            message.append(getFoodDescription(i));
-        }
-        return message.toString();
-    }
-
-    private String getFoodDescription(int index) {
-        int indexShownToUser = index + EXTRA_INDEX;
-        Food food = fridge.getFood(index);
-        String foodDescription =
-                "\n\t" + indexShownToUser + ". "
-                + food.toString();
-        return foodDescription;
-    }
-
-    private boolean checkIsValidCategory() {
-        return FoodCategory.contains(description);
-    }
-
     private boolean checkIsValidStorageLocation() {
         return FoodStorageLocation.contains(description);
-    }
-
-    private void invalidInputError() throws InvalidInputException {
-        String errorMessage = "Sorry my friend, please enter a valid food category or storage location.";
-        throw new InvalidInputException(errorMessage);
-    }
-
-    private String getMatchCategoryFoodDescription(int index) {
-        String foodDescription = "";
-        FoodCategory categoryToFind = FoodCategory.convertStringToFoodCategory(description);
-        Food food = fridge.getFood(index);
-        FoodCategory category = food.getCategory();
-        if (category.equals(categoryToFind)) {
-            foodDescription = "\n\t" + indexShownToUser + ". " + food.toString();
-            ++indexShownToUser;
-        }
-        return foodDescription;
     }
 
     private String getMatchStorageFoodDescription(int index) {

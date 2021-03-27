@@ -5,6 +5,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 
+//@@author leeyp
 public class Dairy extends Food {
 
     public Dairy(String foodName, FoodCategory category, String expiryString,
