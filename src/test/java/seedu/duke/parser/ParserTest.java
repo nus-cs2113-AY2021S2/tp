@@ -1,83 +1,102 @@
 package seedu.duke.parser;
 
-import seedu.duke.commands.AddLessonCommand;
 import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.Command;
+import seedu.duke.commands.DeleteModuleCommand;
+import seedu.duke.commands.EditCheatSheetCommand;
 import seedu.duke.commands.EnterModuleCommand;
+import seedu.duke.commands.ListLessonsCommand;
 import seedu.duke.commands.ListTasksCommand;
+import seedu.duke.commands.ModuleInfoCommand;
+import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.module.ModuleList;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.duke.common.ModuleCommands.EDIT_CHEAT_SHEET;
+import static seedu.duke.common.ModuleCommands.INFO;
+import static seedu.duke.common.ModuleCommands.LESSONS;
+import static seedu.duke.common.ModuleCommands.LINK;
+import static seedu.duke.common.ModuleCommands.TASKS;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 class ParserTest {
 
+    public static final String MODULE_CODE = "CS1234";
+    public static final String ADD_MODULE = "add CS2113T";
+    public static final String HELP = "help";
+    public static final String OPEN_MODULE = "open cs1234";
+    public static final String DELETE_MODULE = "delete cs1234";
+    public static final String ARBITRARY_STRING = "AakjhdLKLlkjlLJAAasldkj 12801 =123-=-';";
+    
+    
     //@@author ivanchongzhien
     @Test
-    // DASHBOARD COMMAND
+    // DASHBOARD COMMANDS
     void parse_dashboardCommandAddModule_addCommandObject() throws CommandException,
             ParserException {
         ModuleList.reset();
 
         Parser parser = new Parser();
-        
-        String input1 = "add CS2113T";
-        Command command1 = parser.parse(input1);
+
+        Command command1 = parser.parse(ADD_MODULE);
         assertTrue(command1 instanceof AddModuleCommand);
 
-        String input2 = "help";
-        Command command2 = parser.parse(input2);
+        Command command2 = parser.parse(HELP);
         assertTrue(command2 instanceof PrintHelpCommand);
 
-        String input3 = "open cs1234";
-        Command command3 = parser.parse(input3);
+        Command command3 = parser.parse(OPEN_MODULE);
         assertTrue(command3 instanceof EnterModuleCommand);
 
-        String input4 = "delete cs1234";
-        Command command4 = parser.parse(input4);
-        assertTrue(command4 instanceof AddModuleCommand);
+        Command command4 = parser.parse(DELETE_MODULE);
+        assertTrue(command4 instanceof DeleteModuleCommand);
     }
 
     @Test
     // IN MODULE COMMAND
-    // list task command
     void parse_inModuleCommandListTask_ListTaskCommandObject() throws CommandException, ParserException {
-        ModuleList.reset();
-        ModuleList.hardSetSelectedModule("CS1234");
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
 
         Parser parser = new Parser();
-        String input = "tasks";
 
-        Command actualCommand = parser.parse(input);
+        Command actualCommand = parser.parse(TASKS.getWord());
         assertTrue(actualCommand instanceof ListTasksCommand);
-    }
 
-    @Test
-    // add lesson command - all detail fields included
-    void parse_inModuleCommandAddLessonFullDetails_addLessonObject() throws CommandException,
-            ParserException {
+        actualCommand = parser.parse(LINK.getWord());
+        assertTrue(actualCommand instanceof OpenLessonLinkCommand);
+
+        actualCommand = parser.parse(LESSONS.getWord());
+        assertTrue(actualCommand instanceof ListLessonsCommand);
+
+        actualCommand = parser.parse(INFO.getWord());
+        assertTrue(actualCommand instanceof ModuleInfoCommand);
+
+        actualCommand = parser.parse(EDIT_CHEAT_SHEET.getWord());
+        assertTrue(actualCommand instanceof EditCheatSheetCommand);
+
+        // Invalid command case - not so happy case
+        boolean isThrown = false;
+        try {
+            parser.parse(ARBITRARY_STRING);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+
         ModuleList.reset();
-        ModuleList.hardSetSelectedModule("CS1234");
-
-        Parser parser = new Parser();
-        String input = "add lesson tutorial ;; Wednesday 9am-10am ;; www.zoom.com/1234 ;; Xianhao Cheng ;; " 
-                + "xh123@nus.edu.sg";
-
-        Command actualCommand = parser.parse(input);
-        assertTrue(actualCommand instanceof AddLessonCommand);
     }
 
 
     @Test
-    // test check indices method - providing various valid and invalid inputs
-    // invalid inputs : out of bounds, duplicate index, non-integer inputs
+    // Test check indices method - providing various valid and invalid inputs
+    // Invalid inputs : out of bounds, duplicate index, non-integer inputs
     void checkIndices_variousInputs_processedArrayList() {
         ArrayList<Integer> expected = new ArrayList<>();
         expected.add(1);
