@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exception.CommandException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
