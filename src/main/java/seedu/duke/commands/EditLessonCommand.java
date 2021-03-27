@@ -33,11 +33,15 @@ import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
 import static seedu.duke.common.Messages.WARNING_NO_VALID_INPUT;
 
 //@@author ivanchongzhien
-
 public class EditLessonCommand extends Command {
     private final String[] fields = {LESSON_FIELD_1_TIME_DAY, LESSON_FIELD_2_LINK, 
         LESSON_FIELD_3_T_NAME, LESSON_FIELD_4_T_EMAIL};
 
+    /**
+     * Edits the fields of selected lesson.
+     * 
+     * @param ui instance of UI
+     */
     @Override
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
@@ -53,6 +57,13 @@ public class EditLessonCommand extends Command {
         ModuleList.sortLessons();
     }
 
+    /**
+     * Obtains the fields to be edited from the user and makes the changes
+     * to the Lesson object.
+     * 
+     * @param lesson the lesson to be edited
+     * @param ui instance of UI for printing prompts
+     */
     private void editLessonFields(Lesson lesson, UI ui) {
         ArrayList<Integer> indices = getFieldIndicesFromUser(ui);
         String newFieldValue;
@@ -63,6 +74,13 @@ public class EditLessonCommand extends Command {
         }
     }
 
+    /**
+     * Determines the lesson the user wants to edit.
+     * 
+     * @param lessonList list of lessons that can be edited
+     * @param ui instance of UI for printing prompts and warnings
+     * @return the lesson chosen by the user
+     */
     private Lesson getLessonToEdit(ArrayList<Lesson> lessonList, UI ui) {
         Lesson chosenLesson = null;
 
@@ -75,6 +93,13 @@ public class EditLessonCommand extends Command {
         return chosenLesson;
     }
 
+    /**
+     * Prompts user to choose the lesson to be edited.
+     * 
+     * @param lessonList list of lessons that can be edited
+     * @param ui instance of UI for printing user prompts
+     * @return the index of the chosen lesson, 0 if user enters invalid index
+     */
     private int getLessonIndexFromUser(ArrayList<Lesson> lessonList, UI ui) {
         boolean isValidIndex = false;
         int index = 0;
@@ -93,6 +118,12 @@ public class EditLessonCommand extends Command {
         return index;
     }
 
+    /**
+     * Prompts user to choose the fields of the lesson to be edited.
+     * 
+     * @param ui instance of UI for printing prompts and warnings
+     * @return an array list of indices chosen by the user
+     */
     private ArrayList<Integer> getFieldIndicesFromUser(UI ui) {
         boolean isValidInput = false;
         ArrayList<Integer> indices = new ArrayList<>();
@@ -114,6 +145,13 @@ public class EditLessonCommand extends Command {
         return indices;
     }
 
+    /**
+     * Reads in a new lesson field from the user.
+     * 
+     * @param userIndex the index of the field being read (as entered by the user)
+     * @param ui instance of UI for printing prompts
+     * @return trimmed user input string
+     */
     private String getNewFieldFromUser(int userIndex, UI ui) {
         int fieldIndex = userIndex - 1;
 
@@ -123,6 +161,14 @@ public class EditLessonCommand extends Command {
         return input.trim();
     }
 
+    /**
+     * Sets the value of a lesson field to the new value entered by the user.
+     * 
+     * @param lesson the lesson being edited
+     * @param newFieldValue new field entered obtained from the user
+     * @param userIndex the index of the field being edited
+     * @param ui instance of UI for printing messages and warnings
+     */
     private void setNewFieldValue(Lesson lesson, String newFieldValue, int userIndex, UI ui) {
         int fieldIndex = userIndex - 1;
 
@@ -156,6 +202,11 @@ public class EditLessonCommand extends Command {
         }
     }
 
+    /**
+     * Prints the fields of a lesson with numbering.
+     * 
+     * @param ui instance of UI to print the fields
+     */
     private void printFieldsAsList(UI ui) {
         int numbering = 1;
         for (String field : this.fields) {
