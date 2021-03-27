@@ -6,6 +6,8 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
+## Design
+
 ### Architecture
 
 ![Architecture Diagram](diagrams/diagram_images/ArchitectureDiagram.png)
@@ -135,6 +137,8 @@ The `Exceptions` component currently consists of ten (10) custom Exceptions, as 
     - Error Message: `"There was an error loading the data for FridgeFriend!"`
 - **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
     - Error Message: `"There was an error saving the data for FridgeFriend!"`
+
+## Implementation
 
 ## Product scope
 
