@@ -6,8 +6,27 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
-* Table of Contents
-  {:toc}
+Table of Contents
+=================
+
+* [User Guide](#user-guide)
+  * [Introduction](#introduction)
+  * [Quick Start](#quick-start)
+  * [Features](#features)
+    * [Adding a food item: add](#adding-a-food-item-add)
+    * [Display the list of all foods: list](#display-the-list-of-all-foods-list)
+    * [Display the list of foods by category: list &lt;CATEGORY&gt;](#display-the-list-of-foods-by-category-list-category)
+    * [Display the list of foods by storage location: list &lt;LOCATION&gt;](#display-the-list-of-foods-by-storage-location-list-location)
+    * [Remove a food item: remove](#remove-a-food-item-remove)
+    * [Search: search](#search-search)
+    * [List expiring foods: expiring](#list-expiring-foods-expiring)
+    * [List categories with food running low: runninglow](#list-categories-with-food-running-low-runninglow)
+    * [Modify the minimum quantity limits: setlimit](#modify-the-minimum-quantity-limits-setlimit)
+    * [Get help message: help](#get-help-message-help)
+    * [Exit the application: bye](#exit-the-application-bye)
+  * [FAQ](#faq)
+  * [Command Summary](#command-summary)
+
   
 ## Quick Start
 
