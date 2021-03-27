@@ -6,6 +6,9 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
+* Table of Contents
+  {:toc}
+  
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
@@ -13,7 +16,7 @@ It is written in Java, and has more than 3.2kLoC.
 
 ## Features
 
-{Give detailed description of each feature}
+
 **Notes about the command format:**
 
 * Words in UPPER_CASE are the parameters to be supplied by the user.\
@@ -32,7 +35,7 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 
 Additional info:
 
-* Basic Food Groups:`MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
+* Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
 * Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
@@ -58,8 +61,8 @@ Example of usage:
 ```
 >> list
 Here are the items in your fridge:
-    1. chicken [MEAT]
-    2. grouper [SEAFOOD]
+	1. Food name: chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -75,12 +78,12 @@ Format: `list CATEGORY_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called chicken under MEAT category.*
+*Situation 1: There is one food called pork under MEAT category.*
 
 ```
 >> list MEAT
 These are the MEAT in your fridge:
-	1. chicken
+	1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods under READY_TO_EAT category.*
@@ -103,18 +106,18 @@ Format: `list STORAGE_LOCATION_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called chicken stored in FREEZER.*
+*Situation 1: There is one food called pork stored in LOWER_SHELF.*
 
 ```
->> list FREEZER
-These are the food stored in FREEZER:
-	1. chicken
+>> list LOWER_SHELF
+These are the food stored in LOWER_SHELF:
+	1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods stored in DRAWERS.*
 
 ```
->> list ready_to_eat
+>> list DRAWERS
 These are the food stored in DRAWERS:
 ```
 
@@ -294,10 +297,11 @@ Plus, you are always welcomed to use `help` command.
 * Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
 * List food `list`
 * List food by category `list CATEGORY_NAME`
+* List food by storage location `list STORAGE_LOCATION_NAME`  
 * Remove food `remove INDEX`
 * Search for food `search FOOD_NAME`
 * List expiring foods `expiring`
 * List categories with food running low: `runninglow`
-* Modify the minimum quantity limits: `setlimit`
+* Modify the minimum quantity limits: `setlimit FOOD_CATEGORY /qty QUANTITY`
 * Get help message `help`
 * Exit application `bye`
