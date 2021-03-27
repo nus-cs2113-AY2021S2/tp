@@ -57,8 +57,12 @@ public class Messages {
     public static final String TITLE_PROMPT = "Please enter title of review: ";
     public static final String CATEGORY_PROMPT = "Please enter category of experience: ";
     public static final String RATING_PROMPT = "Please enter rating of experience (out of 5): ";
+    public static final String PRICE_PROMPT = "Please enter price range of recommendation (out of 5): ";
     public static final String DESCRIPTION_PROMPT = "Please enter description of the experience: ";
+    public static final String RECOBY_PROMPT = "How did you know about this recommendation";
     public static final String ADD_SUCCESS = " has been saved to your list.";
+    public static final String MISSING_RECO_TITLE = "Please specify title of recommendation";
+
 
     // Sort
     public static final String CURRENT_SORT_METHOD = "Your current sort method is: ";

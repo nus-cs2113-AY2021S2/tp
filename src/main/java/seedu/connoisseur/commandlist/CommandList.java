@@ -24,10 +24,13 @@ import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
+import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
 import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
+import static seedu.connoisseur.messages.Messages.MISSING_RECO_TITLE;
 
 
 /**
@@ -50,7 +53,7 @@ public class CommandList {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(SortMethod.DATE_LATEST);
-        if(!dataReviews.isEmpty()) {
+        if (!dataReviews.isEmpty()) {
             for (String review : dataReviews) {
                 if (review.length() != 0) {
                     if (review.startsWith("SortMethod: ")) {
@@ -62,7 +65,7 @@ public class CommandList {
             }
         }
 
-        if(!dataRecommendations.isEmpty()) {
+        if (!dataRecommendations.isEmpty()) {
             for (String recommendation : dataRecommendations) {
                 if (recommendation.length() != 0) {
                     recommendationList.add(Recommendation.textToRecommendation(recommendation));
@@ -83,21 +86,22 @@ public class CommandList {
     /**
      * List reviews according to different types of input.
      *
-     * @param sortMethod is the listing method preferred by user. If there is no
-     *                   preferred listing method, default listing will be used.
+     * @param input is either to show recommendations list
+     *              or the listing method preferred by user. If there is no
+     *              preferred listing method, default listing will be used.
      */
-    public void listReviews(String sortMethod) {
+    public void listReviews(String input) {
         if (reviewList.size() == 0) {
-            ui.printEmptyCommandListMessage();
-        } else if (!validSortMethod(sortMethod)) {
+            ui.printEmptyReviewListMessage();
+        } else if (!validSortMethod(input)) {
             ui.printInvalidSortMethodMessage();
         } else {
-            if (sortMethod == null) {
-                sorter.sort(reviewList);
+            if (input == null) {
+                sorter.sortReview(reviewList);
                 printReviews(reviewList);
             } else {
                 try {
-                    sorter.sort(reviewList, sortMethod);
+                    sorter.sortReview(reviewList, input);
                     printReviews(reviewList);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidSortMethodMessage();
@@ -121,7 +125,7 @@ public class CommandList {
      * Prints the sorted reviews.
      */
     public void printReviews(ArrayList<Review> reviewList) {
-        ui.printListHeading();
+        ui.printReviewListHeading();
         for (int i = 0; i < reviewList.size(); i++) {
             Review currentReview = reviewList.get(i);
             ui.print((i + 1) + ". ");
@@ -448,5 +452,66 @@ public class CommandList {
     public void editReviewCategory(String newCategory, int index) {
         Review currentReview = reviewList.get(index);
         currentReview.setCategory(newCategory);
+    }
+
+    /**
+     * List reviews according to different types of input.
+     */
+    public void listRecommendations() {
+        if (recommendationList.size() == 0) {
+            ui.printEmptyRecommendationListMessage();
+        } else {
+            printRecommendation(recommendationList);
+        }
+    }
+
+    /**
+     * Prints the sorted recommendation.
+     */
+    public void printRecommendation(ArrayList<Recommendation> recommendationList) {
+        ui.printRecommendationListHeading();
+        for (int i = 0; i < recommendationList.size(); i++) {
+            Recommendation currentRecommendation = recommendationList.get(i);
+            ui.print((i + 1) + ". ");
+            if (i < 9) {
+                ui.print(" ");
+            }
+            ui.print(currentRecommendation.getTitle());
+            ui.printWhiteSpace(currentRecommendation.getTitle().length());
+            ui.print(currentRecommendation.getCategory());
+            ui.printWhiteSpace(currentRecommendation.getCategory().length());
+            ui.println(currentRecommendation.dollarRange());
+        }
+    }
+
+    public void addRecommendation(String title) throws DuplicateException {
+        boolean isDuplicate;
+
+        if (title == null || title.isBlank()) {
+            ui.println(MISSING_RECO_TITLE);
+            return;
+        }
+        isDuplicate = checkAndPrintDuplicate(title);
+        if (isDuplicate) {
+            throw new DuplicateException();
+        }
+        ui.println(CATEGORY_PROMPT);
+        String category = ui.readCommand().toLowerCase();
+        ui.println(PRICE_PROMPT);
+        try {
+            int pricing = Integer.parseInt(ui.readCommand());
+            if (pricing < 0 || pricing > 5) {
+                ui.printInvalidPricingMessage();
+                return;
+            }
+            assert pricing >= 0 && pricing <= 5 : "rating should be between 0 and 5";
+            ui.println(RECOBY_PROMPT);
+            String recommendedBy = ui.readCommand();
+            Recommendation r = new Recommendation(title, category, pricing, recommendedBy);
+            recommendationList.add(r);
+            ui.println(title + ADD_SUCCESS);
+        } catch (NumberFormatException e) {
+            ui.printInvalidRatingMessage();
+        }
     }
 }

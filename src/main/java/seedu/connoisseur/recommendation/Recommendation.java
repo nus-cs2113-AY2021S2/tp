@@ -34,10 +34,10 @@ public class Recommendation {
     /**
      * Sets the title of the recommendation.
      *
-     * @param title new title to be set
+     * @param newTitle new title to be set
      */
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String newTitle) {
+        this.title = newTitle;
     }
 
     /**
@@ -52,10 +52,10 @@ public class Recommendation {
     /**
      * Sets the category of the recommendation.
      *
-     * @param category new category of recommendation
+     * @param newCategory new category of recommendation
      */
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(String newCategory) {
+        this.category = newCategory;
     }
 
     /**
@@ -70,10 +70,10 @@ public class Recommendation {
     /**
      * Sets the price of the recommendation.
      *
-     * @param new_price new price to be set
+     * @param newPrice new price to be set
      */
-    public void setPrice(int new_price) {
-        this.price = new_price;
+    public void setPrice(int newPrice) {
+        this.price = newPrice;
     }
 
     /**
@@ -88,10 +88,10 @@ public class Recommendation {
     /**
      * Sets the description that recommended the area.
      *
-     * @param input_by new description to be set
+     * @param newBy new description to be set
      */
-    public void setDescription(String input_by) {
-        this.recommendedBy = input_by;
+    public void setDescription(String newBy) {
+        this.recommendedBy = newBy;
     }
 
     /**
@@ -141,8 +141,7 @@ public class Recommendation {
     public static Recommendation textToRecommendation(String recommendation) {
         String[] recommendationFields = recommendation.split("\\|", 4);
         Recommendation dataRec = new Recommendation(recommendationFields[0], recommendationFields[1],
-                Integer.parseInt(recommendationFields[1]),
-                recommendationFields[3]);
+                Integer.parseInt(recommendationFields[2]), recommendationFields[3]);
         return dataRec;
     }
 }

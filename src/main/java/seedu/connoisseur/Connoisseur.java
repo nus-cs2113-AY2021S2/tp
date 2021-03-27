@@ -1,6 +1,7 @@
 package seedu.connoisseur;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -14,14 +15,14 @@ public class Connoisseur {
     /**
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DuplicateException {
         new Connoisseur();
     }
 
     /**
      * Sets up required files for Connoisseur to start.
      */
-    public Connoisseur() {
+    public Connoisseur() throws DuplicateException {
         Ui ui = new Ui();
         Storage storage = new Storage(ui);
         CommandList commandList;
