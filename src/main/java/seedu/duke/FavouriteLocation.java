@@ -1,11 +1,10 @@
 package seedu.duke;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class FavouriteLocation {
 
-    private static ArrayList<String> favouriteLocations;
+    public ArrayList<String> favouriteLocations;
 
     public FavouriteLocation() {
         this.favouriteLocations = new ArrayList<String>();
@@ -15,10 +14,13 @@ public class FavouriteLocation {
         return favouriteLocations;
     }
 
-    public void addFavouriteLocation(String venue, Map nusMap) {
-        if (nusMap.containsKey(venue)) {
+    public void addFavouriteLocation(String venue, seedu.duke.Map nusMap) {
+        try {
+            if (nusMap.getBlock(venue) == null) {
+                throw new NullPointerException();
+            }
             favouriteLocations.add(venue);
-        } else {
+        } catch (NullPointerException e) {
             System.out.println("Invalid venue!");
         }
     }

@@ -1,16 +1,16 @@
 package seedu.duke.command;
 
-import seedu.duke.BlockAlias;
-import seedu.duke.DailyRoute;
-import seedu.duke.History;
-import seedu.duke.NotesManager;
+import seedu.duke.Map;
 import seedu.duke.UiManager;
+import seedu.duke.History;
+import seedu.duke.DailyRoute;
+import seedu.duke.BlockAlias;
 import seedu.duke.FavouriteLocation;
+import seedu.duke.Router;
+
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
-import seedu.duke.Map;
-import seedu.duke.Router;
 
 public class RepeatCommand extends Command {
     public RepeatCommand(String userInput) {
@@ -18,8 +18,8 @@ public class RepeatCommand extends Command {
     }
 
     @Override
-    public void execute(Map nusMap, UiManager ui, History history,
-                        NotesManager notesManager, DailyRoute dailyRoute,
+
+    public void execute(Map nusMap, UiManager ui, History history,DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         ui.showHistory(history);
         try {
