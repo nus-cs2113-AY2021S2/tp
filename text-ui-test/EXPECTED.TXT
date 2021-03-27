@@ -6,9 +6,12 @@ Welcome to
 _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
 "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
 
+This is the list of your pinned tasks:
+
 Main Menu:
 [1] Module Information
 [2] CAP Simulator/Calculator
 [3] Task Manager
 [4] External Links
 [5] Exit Program
+--------------------------------------------
