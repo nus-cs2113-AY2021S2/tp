@@ -60,7 +60,7 @@ public class Module {
     }
 
     public String toString() {
-        return getName() + "\n" + getDescription() + "\n" + getReview() + "\n";
+        return "Name: " + getName() + "\n\nDescription:\n" + getDescription() + "\n\nReview:\n" + getReview();
     }
 
     public void removeZoomLink() {

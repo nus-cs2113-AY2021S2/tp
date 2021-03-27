@@ -5,6 +5,7 @@ import seedu.duke.task.TaskManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,7 +32,7 @@ public class ModuleInfo {
                     addNewModule();
                     break;
                 case 2:
-                    getModuleDescriptions(); //becomes viewAModule method
+                    viewAModule(); //becomes viewAModule method
                     break;
                 case 3:
                     getComponents();
@@ -87,13 +88,39 @@ public class ModuleInfo {
     public static void addNewModule() {
         System.out.println("Enter name of the new module:");
         String moduleName = Ui.readCommand();
+        for (Module module : modules) {
+            if (module.getName().trim().equalsIgnoreCase(moduleName)) {
+                System.out.println("Hey, you have already added this module!");
+                Ui.printReturnToModuleInfoMenuMessage();
+                return;
+            }
+        }
+        moduleName = moduleName.trim().toUpperCase();
         System.out.println("Enter module description:");
         String moduleDescription = Ui.readCommand();
         modules.add(new Module(moduleName, moduleDescription));
         Ui.printHorizontalLine();
         System.out.println("New module added:\n" + moduleName + ":\n" + moduleDescription);
         Ui.printHorizontalLine();
+        Ui.printReturnToModuleInfoMenuMessage();
     }
+
+    public static void viewAModule() {
+        viewAllModules(false);
+        System.out.println("Which module would you like to view?");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            Module module = modules.get(moduleNumberInt);
+            Ui.printHorizontalLine();
+            System.out.println(module.toString());
+            Ui.printHorizontalLine();
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
+        Ui.printReturnToModuleInfoMenuMessage();
+    }
+
 
     public static int readYN(String command) {
         if (command.trim().equalsIgnoreCase("N")) {
