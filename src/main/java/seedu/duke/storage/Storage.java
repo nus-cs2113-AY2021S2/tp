@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.BlockAlias;
+import seedu.duke.DailyRoute;
 import seedu.duke.FavouriteLocation;
 import seedu.duke.History;
 import seedu.duke.Map;
@@ -43,6 +44,14 @@ public abstract class Storage {
     }
 
     public void overwriteAliasListFile(BlockAlias blockAlias) {
+
+    }
+
+    public void loadDailyRoute(DailyRoute dailyRoute) throws IOException  {
+
+    }
+
+    public void overwriteDailyRouteFile(DailyRoute dailyRoute) {
 
     }
 }
