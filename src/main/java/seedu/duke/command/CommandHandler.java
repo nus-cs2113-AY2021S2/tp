@@ -13,22 +13,20 @@ import static seedu.duke.command.ExitCommand.COMMAND_EXIT;
 import static seedu.duke.command.CreditScoreCommand.COMMAND_CREDIT_SCORE;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final String DEFAULT_LOGGER_NAME = "CommandLogger";
     private static final String LOGGER_OKAY_MESSAGE = "command object successfully created.";
     private static final int INDEX_OF_COMMAND = 0;
-    private final Logger logger;
+    private FinuxLogger finuxLogger;
 
     public CommandHandler() {
         this(DEFAULT_LOGGER_NAME);
     }
 
     public CommandHandler(String loggerName) {
-        logger = Logger.getLogger(loggerName);
+        finuxLogger = new FinuxLogger(loggerName);
     }
 
     private Command createCommand(ArrayList<String> parsedArguments, RecordList recordList)
@@ -62,11 +60,11 @@ public class CommandHandler {
     public Command parseCommand(ArrayList<String> parsedString, RecordList recordList) {
         try {
             Command command = createCommand(parsedString, recordList);
-            logger.log(Level.INFO, LOGGER_OKAY_MESSAGE);
+            finuxLogger.logInfo(LOGGER_OKAY_MESSAGE);
             return command;
         } catch (CommandException e) {
             System.out.println(e.getMessage());
-            logger.log(Level.WARNING, e.getMessage());
+            finuxLogger.logWarning(e.getMessage());
             return null;
         }
     }
