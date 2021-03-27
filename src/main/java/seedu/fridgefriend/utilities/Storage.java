@@ -303,7 +303,7 @@ public class Storage {
 
 
     /**
-     * Appends food item to history data file
+     * Appends food item to history data file.
      *
      */
     public static void saveHistoryData(Food foodInput) {
@@ -322,7 +322,7 @@ public class Storage {
     }
 
     /**
-     * Clears history data file
+     * Clears history data file.
      *
      */
     public static void clearHistoryData() {
