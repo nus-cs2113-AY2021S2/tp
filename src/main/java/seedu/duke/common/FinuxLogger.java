@@ -1,4 +1,4 @@
-package seedu.duke.command;
+package seedu.duke.common;
 
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
@@ -16,6 +16,7 @@ public class FinuxLogger {
             logger.addHandler(logFileHandler);
             logger.setUseParentHandlers(false);
         } catch (IOException | SecurityException e) {
+            logger = null;
             System.out.println("Error occurred in setting up finux logger!");
         }
     }
