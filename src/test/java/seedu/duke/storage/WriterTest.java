@@ -16,7 +16,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
 
 class WriterTest {
 
@@ -24,7 +23,7 @@ class WriterTest {
     @Test
     void writeModule_noContentNoDirectory_instructionOnly() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Writer writer = new Writer();
@@ -37,7 +36,7 @@ class WriterTest {
     @Test
     void writeModule_twoTask_instructionAndTask() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Task task1 = new Task("Task1", LocalDate.of(2020,2,20), "Task1Remarks",
@@ -56,7 +55,7 @@ class WriterTest {
     @Test
     void writeModule_twoLesson_instructionAndLesson() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",
@@ -75,7 +74,7 @@ class WriterTest {
     @Test
     void writeModule_twoLessonTwoTask_allContent() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",

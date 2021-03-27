@@ -11,7 +11,6 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,7 +20,7 @@ class EditLessonCommandTest extends LessonCommandTest {
     @Test
     void execute_validIndexAndAllFields_lessonFieldsEdited() throws CommandException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);

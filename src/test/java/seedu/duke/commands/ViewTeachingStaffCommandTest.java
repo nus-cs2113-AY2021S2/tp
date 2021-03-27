@@ -18,7 +18,7 @@ class ViewTeachingStaffCommandTest extends LessonCommandTest {
     @Test
     void execute_ui_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         UI ui = new UI();
 
         ModuleList.addModule(MODULE_CODE);

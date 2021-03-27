@@ -33,11 +33,11 @@ public class ModuleList {
      * Searches directory for module files.
      * Adds their name (excluding ".txt") to the module list.
      */
-    public static void loadModuleNames() {
+    public static void loadModuleCodes() {
         modules.clear();
         Loader loader = new Loader();
-        for (String name : loader.getModules()) {
-            insertModule(name);
+        for (String moduleCode : loader.getModules()) {
+            insertModule(moduleCode);
         }
     }
 

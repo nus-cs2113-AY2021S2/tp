@@ -91,7 +91,7 @@ public class TestUtilAndConstants {
     
     public static void initialiseModuleList() {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
     }

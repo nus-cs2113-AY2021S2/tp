@@ -21,7 +21,7 @@ public class Duke {
 
     private static void start() {
         ui.printMessage(DIVIDER + NEWLINE + MESSAGE_WELCOME);
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
     }
 
     private static void run() {

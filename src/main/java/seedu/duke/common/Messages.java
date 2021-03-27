@@ -144,6 +144,7 @@ public class Messages {
 
 
     //Storage messages
+    public static final String MESSAGE_WRITER_FAILED_TO_SAVE = "Error: Failed to save data.";
     public static final String FILE_INSTRUCTIONS = " Data File" + NEWLINE
             + NEWLINE
             + "Note for editing:" + NEWLINE
@@ -187,10 +188,11 @@ public class Messages {
 
     //Cheat sheet
     public static final String MESSAGE_CHEAT_SHEET_ALREADY_EXISTS = "Cheat sheet already exists!";
-    public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder";
+    public static final String MESSAGE_CHEATSHEET_ADDED = "%s has been added to your Cheatsheet folder.";
     public static final String MESSAGE_FILE_HAS_BEEN_DELETED = "%s has been deleted!";
     public static final String MESSAGE_FILE_DOES_NOT_EXIST = "%s does not exist!";
     public static final String MESSAGE_LIST_OF_CHEAT_SHEETS = "Here is your list of cheat-sheets:" + NEWLINE;
     public static final String MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY = "You have no cheat-sheet.";
+    public static final String MESSAGE_OPEN_FILE = "Opened %s.";
 
 }

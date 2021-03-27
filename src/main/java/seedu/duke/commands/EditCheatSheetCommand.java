@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static seedu.duke.common.Constants.MESSAGE_OPEN_FILE;
 import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXIST;
+import static seedu.duke.common.Messages.MESSAGE_OPEN_FILE;
 
 public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
 

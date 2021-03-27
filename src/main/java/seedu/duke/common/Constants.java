@@ -98,6 +98,7 @@ public class Constants {
     public static final String KEYWORD_LESSON = "lesson | ";
     public static final String KEYWORD_TASK = "task | ";
     public static final String TRUE_STRING = "T";
+    public static final String FALSE_STRING = "F";
 
     //Command
     public static final String HEAD = "HEAD";
@@ -116,7 +117,6 @@ public class Constants {
     public static final String FONT_COLOUR_ICON = "Font colour";
     public static final String SAVE_ICON = "Save";
     public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
-    public static final String FONT_COLOUR_HEADER = "Choose Font Colour";
 
     //Cheat sheet
     public static final String STRING_CHEATSHEET = "Cheatsheet";
@@ -124,7 +124,6 @@ public class Constants {
     public static final int KEYCODE_S = 83;
     public static final int KEYCODE_UP = 38;
     public static final int KEYCODE_DOWN = 40;
-    public static final String MESSAGE_OPEN_FILE = "Opened %s";
     public static final int BEGIN_INDEX = 0;
     public static final int EXTENSION = 4;
     public static final String DOT = ". ";

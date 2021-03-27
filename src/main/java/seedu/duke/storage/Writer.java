@@ -4,16 +4,20 @@ import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
+import seedu.duke.ui.UI;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Constants.STRING_CHEATSHEET;
 import static seedu.duke.common.Constants.DIVIDER_WRITE;
+import static seedu.duke.common.Constants.FALSE_STRING;
 import static seedu.duke.common.Constants.FOLDER_PATH;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.KEYWORD_LESSON;
 import static seedu.duke.common.Constants.KEYWORD_TASK;
+import static seedu.duke.common.Constants.STRING_CHEATSHEET;
+import static seedu.duke.common.Constants.TRUE_STRING;
 import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.FILE_INSTRUCTIONS;
+import static seedu.duke.common.Messages.MESSAGE_WRITER_FAILED_TO_SAVE;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -71,9 +75,11 @@ public class Writer {
         for (File file : files) {
             if (file.isDirectory()) {
                 if (!recursivelyRemoveFiles(file)) {
+                    //Unable to remove directory
                     return false;
                 }
             } else if (!file.delete()) {
+                //Unable to remove file
                 return false;
             }
         }
@@ -113,6 +119,7 @@ public class Writer {
             fileWriter.close();
         } catch (IOException e) {
             //Error editing file
+            new UI().printMessage(MESSAGE_WRITER_FAILED_TO_SAVE);
         }
     }
 
@@ -205,8 +212,8 @@ public class Writer {
      */
     private String getTrueFalseString(Boolean isTrue) {
         if (isTrue) {
-            return "T";
+            return TRUE_STRING;
         }
-        return "F";
+        return FALSE_STRING;
     }
 }
