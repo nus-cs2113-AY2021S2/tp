@@ -6,17 +6,7 @@ import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocatio
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.fridgefriend.command.AddCommand;
-import seedu.fridgefriend.command.ByeCommand;
-import seedu.fridgefriend.command.ClearCommand;
-import seedu.fridgefriend.command.Command;
-import seedu.fridgefriend.command.ExpiringCommand;
-import seedu.fridgefriend.command.HelpCommand;
-import seedu.fridgefriend.command.ListCommand;
-import seedu.fridgefriend.command.RemoveCommand;
-import seedu.fridgefriend.command.RunningLowCommand;
-import seedu.fridgefriend.command.SearchCommand;
-import seedu.fridgefriend.command.SetLimitCommand;
+import seedu.fridgefriend.command.*;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
@@ -147,6 +137,9 @@ public class Parser {
             break;
         case "clear":
             command = Parser.getClearCommand();
+            break;
+        case "history":
+            command = Parser.getHistoryCommand(description);
             break;
         case "bye":
             command = Parser.getByeCommand();
@@ -328,6 +321,16 @@ public class Parser {
     private static Command getClearCommand() {
         Command clearCommand = new ClearCommand();
         return clearCommand;
+    }
+
+    /**
+     * Returns a HistoryCommand object.
+     *
+     * @return ClearCommand object
+     */
+    private static Command getHistoryCommand(String description) {
+        Command historyCommand = new HistoryCommand(description);
+        return historyCommand;
     }
 
     /**

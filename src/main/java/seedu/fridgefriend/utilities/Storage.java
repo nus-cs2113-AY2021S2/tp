@@ -24,9 +24,11 @@ import java.util.Scanner;
 
 public class Storage {
     private static final String DATA_FILE_PATH = "data/fridgeData.txt";
+    private static final String HISTORY_FILE_PATH = "data/historyData.txt";
     private static final String LIMITS_FILE_PATH = "data/limitsData.txt";
     private static final String DIRECTORY = "data";
     private static Fridge fridge;
+    private static String history;
 
     /**
      * Entry point for loading of all data.
@@ -130,7 +132,7 @@ public class Storage {
         fridge = fridgeInput;
         try {
             clearFile(DATA_FILE_PATH);
-            populateFridgeDataFile();
+            populateFridgeDataFile(DATA_FILE_PATH);
         } catch (Exception e) {
             StorageSavingException exception = new StorageSavingException(e);
             Ui.printExceptionMessage(exception);
@@ -143,8 +145,8 @@ public class Storage {
         fileWriter.close();
     }
 
-    private static void populateFridgeDataFile() throws IOException {
-        FileWriter fileWriter = new FileWriter(DATA_FILE_PATH, true); // create a FileWriter in append mode
+    private static void populateFridgeDataFile(String filePath) throws IOException {
+        FileWriter fileWriter = new FileWriter(filePath, true); // create a FileWriter in append mode
         for (int i = 0; i < fridge.getSize(); i++) {
             fileWriter.write(fridge.getFood(i).toString() + "\n");
         }
@@ -241,4 +243,95 @@ public class Storage {
         }
         fileWriter.close();
     }
+
+    //@@author leeyp
+    /**
+     * Loads the saved data into a fridge that represents the history of items added.
+     *
+     * @return
+     */
+    public static String loadHistoryData() {
+        try {
+            checkHistoryDirectory();
+            return history;
+        } catch (Exception e) {
+            StorageLoadingException exception = new StorageLoadingException(e);
+            Ui.printExceptionMessage(exception);
+        }
+        return null;
+    }
+
+    /**
+     * Creates a history data textfile and the folder directory if it does not already exist.
+     *
+     * @throws FileNotFoundException if file does not exist
+     * @throws EmptyDescriptionException if quantity in data file is empty
+     * @throws InvalidQuantityException if quantity in data file cannot be parsed
+     */
+    private static void checkHistoryDirectory()
+            throws FileNotFoundException {
+        Path path = Paths.get(HISTORY_FILE_PATH); //creates Path instance
+        try {
+            Files.createDirectories(Paths.get(DIRECTORY));
+            Files.createFile(path); //creates file at specified location
+        } catch (IOException e) {
+            readHistoryData();
+        }
+    }
+
+    /**
+     * Reads the history data from the textfile.
+     *
+     * @throws FileNotFoundException if file does not exist
+     */
+    private static void readHistoryData()
+            throws FileNotFoundException {
+        File file = new File(HISTORY_FILE_PATH);
+        Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
+        StringBuilder message = new StringBuilder();
+        int index = 1;
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            message.append("\n\t" + index + ". " + line);
+            index++;
+        }
+        scanner.close();
+
+        history = message.toString();
+    }
+
+
+
+    /**
+     * Appends food item to history data file
+     *
+     */
+    public static void saveHistoryData(Food foodInput) {
+        try {
+            addFoodToHistoryFile(HISTORY_FILE_PATH, foodInput);
+        } catch (Exception e) {
+            StorageSavingException exception = new StorageSavingException(e);
+            Ui.printExceptionMessage(exception);
+        }
+    }
+
+    private static void addFoodToHistoryFile(String filePath, Food foodInput) throws IOException {
+        FileWriter fileWriter = new FileWriter(filePath, true); // create a FileWriter in append mode
+        fileWriter.write(foodInput.toString() + "\n");
+        fileWriter.close();
+    }
+
+    /**
+     * Clears history data file
+     *
+     */
+    public static void clearHistoryData() {
+        try {
+            clearFile(HISTORY_FILE_PATH);
+        } catch (Exception e) {
+            StorageSavingException exception = new StorageSavingException(e);
+            Ui.printExceptionMessage(exception);
+        }
+    }
+
 }
