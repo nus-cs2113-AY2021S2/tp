@@ -43,7 +43,7 @@ public class Ui {
     }
 
     public static void printMainMenu() {
-        System.out.println("Main Menu:\n"
+        System.out.println("\nMain Menu:\n"
                 + "[1] Module Information\n"
                 + "[2] CAP Simulator/Calculator\n"
                 + "[3] Task Manager\n"
