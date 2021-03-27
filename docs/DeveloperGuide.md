@@ -800,7 +800,7 @@ a.  patientParse returns true to PatientCommandInstance and this causes
     > the PatientCommandInstance to break out of its input loop. Thereby
     > returning to the main menu from the PatientCommandInstance.
 
-### **Nurse Schedule-related Features**
+## **Nurse Schedule-related Features**
 
 When the user accesses an instance of Nurse Schedules, the
 NurseScheduleParser, NurseScheduleActions and NurseScheduleStorage
@@ -808,7 +808,7 @@ classes will be accessed. If data is found on the NurseSchedules text
 file, it will be loaded into the arraylist, else a new text file is
 created.
 
-##### Implementation:
+### Implementation:
 
 1.  User executes a command
 
@@ -820,9 +820,9 @@ created.
 
 5.  NurseScheduleActions will either add, list or delete a NurseSchedule object.
 
-#### **Adding a new Nurse Schedule**
+### **Adding a new Nurse Schedule**
 
-##### Implementation
+### Implementation
 
 When the user attempts to add a new nurse schedule, the
 NurseScheduleStorage, NurseScheduleActions, UI and NurseScheduleUI
@@ -845,9 +845,9 @@ Saving NurseSchedule objects into .txt file:
 
 4. The command loop then calls NurseScheduleStorage.writeToFile() which starts the process of writing details of all existing Nurse Schedule objects within the ArrayList to the specified .txt file
 
-#### **Listing Nurse Schedules**
+### **Listing Nurse Schedules**
 
-#### Implementation:
+### Implementation:
 
 When the user attempts to list nurse schedules, they will have the
 choice of listing all schedules or a specified nurse id's schedule. This
@@ -869,9 +869,9 @@ Printing schedules
 
 4. printSchedules() is then called to print all schedules.
 
-#### **Deleting Nurse Schedules**
+### **Deleting Nurse Schedules**
 
-#### Implementation:
+### Implementation:
 
 When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed.
 
