@@ -55,7 +55,7 @@ public class Links {
         Ui.printZoomLinksAdded(instruction);
     }
 
-    public static void delete () {
+    public static void delete() {
         viewLinks();
         Ui.printLinkToDelete();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
