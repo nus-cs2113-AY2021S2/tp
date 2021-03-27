@@ -4,22 +4,22 @@
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.} 
 
-### [Proposed] Save feature for visited routes & favourite locations 
+### [Proposed] Save feature for location aliases, visited routes, tagged notes & favourite locations 
 #### Proposed Implementation
 The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `FavouriteLocationsStorage` subclasses. </br>
-They extend `Storage` (superclass) with a feature to save the block aliases, tagged notes, history of visited routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList` and `favouritesList`. <br />
-Additionally, they implement the following operations:
-`AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks <br />
-`AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks <br />
-`HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history. <br />
-`HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes from its history. <br />
-`NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location in its history. <br />
-`NotesStorage#loadNotes()` —  Restores all notes tagged to a location from its history. <br />
-`FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in its history. <br />
-`FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from its history. <br />
+They extend `Storage` (superclass) with a feature to save the block aliases,  history of visited routes, tagged notes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList` and `favouritesList`. <br />
+Additionally, they implement the following operations: <br/>
+`AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
+`AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
+`HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history into `historyList`. <br />
+`HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
+`NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
+`NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
+`FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
+`FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
+These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile` <br />
 The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
 ![img.png](Overview%20for%20Safe%20Feature.png)
-These operations are exposed in the `Storage` class  as `Storage#save()` and `Storage#load()`. <br />
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
 Step 1. The user launches the application for the first time. 
 `AliasStorage`, `HistoryRouteStorage`, `NotesStorage` and `FavouriteLocationsStorage` 
