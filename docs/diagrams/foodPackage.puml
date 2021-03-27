@@ -1,0 +1,156 @@
+@startuml
+!include style.puml
+allow_mixing
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+skinparam groupInheritance 3
+
+package food <<Rectangle>> {
+  abstract class Food
+  package categories <<Rectangle>> {
+  class Beverage
+  class CookedDish
+  class Dairy
+  class Egg
+  class Frozen
+  class Fruit
+  class Meat
+  class ReadyToEat
+  class Seafood
+  class Vegetable
+  class Other
+  }
+  enum FoodCategory
+  enum FoodStorageLocation
+  class ExpiryDate
+  class Fridge
+  class UniqueFoodnameChecker
+}
+
+abstract class Food {
+  # FoodCategory category
+  # String foodName;
+  # ExpiryDate expiryDate;
+  # FoodStorageLocation storageLocation;
+  # int quantity;
+  ==
+  .. Constructor ..
+  + public Food(String, FoodCategory, String,
+                    FoodStorageLocation, int)
+  .. Util functions ..
+  + String toString()
+  + boolean isExpiring()
+  .. Some Setter ..
+  + void setExpiryDate(String)
+  + void setQuantity(int quantity)
+  .. Simple Getter ..
+  + int getQuantity()
+}
+
+
+
+Food <|-- Beverage
+Food <|-- CookedDish
+Food <|-- Dairy
+Food <|-- Egg
+Food <|-- Frozen
+Food <|-- Fruit
+Food <|-- Meat
+Food <|-- ReadyToEat
+Food <|-- Seafood
+Food <|-- Vegetable
+Food <|-- Other
+
+class ExpiryDate {
+    - {static} DateTimeFormatter formatter
+    # LocalDate expiry
+    + ExpiryDate(String)
+    + LocalDate getExpiry()
+    + String toString()
+}
+
+Food .right.> ExpiryDate
+
+class Fridge {
+    - ArrayList<Food> fridge
+    + void add(Food)
+    + int getSize()
+    + Food getFood(int)
+    + void editFoodQuantity(Food, Food)
+    + ArrayList<Food> getFridge()
+    + void clearFridge()
+    + boolean isRunningOut(FoodCategory)
+    + int getTotalQuantity(FoodCategory)
+}
+
+Fridge -down-> "*" Food
+
+class UniqueFoodnameChecker {
+    - ArrayList<Food> fridge
+    - Food foodToCheck
+    - Food existingFood
+    + UniqueFoodnameChecker(ArrayList<Food>, Food)
+    + Food getExistingFood()
+    + boolean isFoodnameUnique()
+    + boolean isParamIdentical()
+}
+
+Fridge *-right- "UniqueFoodnameChecker" : use
+
+enum FoodStorageLocation {
+    FREEZER
+    UPPER_SHELF
+    MIDDLE_SHELF
+    LOWER_SHELF
+    DRAWERS
+    FRIDGE_DOOR
+    OTHER
+    + {static} boolean contains(String)
+    + {static} FoodStorageLocation convertStringToLocation(String)
+}
+
+Food .right.> FoodStorageLocation
+
+enum FoodCategory {
+    VEGETABLE
+    FRUIT
+    MEAT
+    SEAFOOD
+    EGG
+    DAIRY
+    BEVERAGE
+    COOKED_DISH
+    READY_TO_EAT
+    FROZEN
+    OTHER
+    - {static} int vegetableMinimumQuantity
+    - {static} int fruitMinimumQuantity
+    - {static} int meatMinimumQuantity
+    - {static} int seafoodMinimumQuantity
+    - {static} int eggMinimumQuantity
+    - {static} int dairyMinimumQuantity
+    - {static} int beverageMinimumQuantity
+    - {static} int cookedMinimumQuantity
+    - {static} int readyMinimumQuantity
+    - {static} int frozenMinimumQuantity
+    - {static} int otherMinimumQuantity
+    + {static} boolean contains(String)
+    + {static} FoodCategory convertStringToFoodCategory(String)
+    + {static} boolean isValidCategory(String)
+    + {static} int getMinimumQuantity(FoodCategory)
+    + {static} void setMinimumQuantity(FoodCategory, int)
+}
+
+Food .left.> FoodCategory
+
+package Exception <<Rectangle>> {
+
+}
+
+food ..> Exception
+
+show circle
+
+@enduml
