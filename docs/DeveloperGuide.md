@@ -881,7 +881,7 @@ Getting User Input
 1. User inputs delete \[Nurse ID\] \[Date (DDMMYYYY)\] command
 2. Command loop calls NurseSchedulesActions.deleteSchedule().
 
-Deleting Schedule:
+Deleting Schedule
 3. deleteSchedule() loops through the arraylist of schedules and calls remove() to delete the specified schedule. 
 
 ### **Doctor Appointment-related Features**
