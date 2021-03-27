@@ -30,9 +30,9 @@ public class GoCommand extends Command {
             }
             String route = new Router().execute(nusMap, blockAlias, startAndDestination[0], startAndDestination[1]);
             history.addHistory(startAndDestination[0], startAndDestination[1]);
-            ui.showToUser(route);
+            ui.showToUser(route, ui.divider);
         } catch (InvalidBlockException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
     }
 }

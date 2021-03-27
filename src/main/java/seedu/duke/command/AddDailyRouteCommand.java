@@ -25,9 +25,9 @@ public class AddDailyRouteCommand extends Command {
             assert dayAndRoute != null;
             dailyRoute.addDailyRoute(dayAndRoute.getDay(), dayAndRoute.getSchedule());
         } catch (InvalidDayException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidBlockException r) {
-            ui.showToUser(r.getMessage());
+            ui.showToUser(r.getMessage(), ui.divider);
         }
     }
 }

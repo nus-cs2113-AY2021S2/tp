@@ -20,8 +20,7 @@ public class DeleteCustomAliasCommand extends Command {
             String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
             blockAlias.getAliasMap().remove(aliasToDelete);
         } catch (InvalidAliasException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
-
     }
 }

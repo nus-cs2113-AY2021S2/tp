@@ -25,9 +25,9 @@ public class AddCustomAliasCommand extends Command {
             assert addAlias != null;
             blockAlias.getAliasMap().putAll(addAlias);
         } catch (InvalidAliasException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidBlockException r) {
-            ui.showToUser(r.getMessage());
+            ui.showToUser(r.getMessage(), ui.divider);
         }
     }
 }

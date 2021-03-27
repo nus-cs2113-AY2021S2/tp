@@ -36,12 +36,12 @@ public class ShowDailyRouteCommand extends Command {
                     }
 
                 } catch (InvalidBlockException e) {
-                    ui.showToUser(e.getMessage());
+                    ui.showToUser(e.getMessage(), ui.divider);
                 }
             }
-            ui.showToUser(dayRoute.toString());
+            ui.showToUser(dayRoute.toString(), ui.divider);
         } catch (InvalidDayException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
     }
 }

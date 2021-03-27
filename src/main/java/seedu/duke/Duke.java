@@ -56,7 +56,7 @@ public class Duke {
         boolean isExit = false;
         while (!isExit) {
             try {
-                String input = ui.getUserInput();
+                String input = ui.getUserCommandInput();
                 Command command = Parser.prepareForCommandExecution(input);
                 command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
                 isExit = command.isExit();

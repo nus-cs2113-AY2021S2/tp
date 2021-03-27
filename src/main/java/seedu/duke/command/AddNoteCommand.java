@@ -14,6 +14,7 @@ import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandExcept
 import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
 import static seedu.duke.NotesCommandParser.location;
+import static seedu.duke.NotesCommandParser.note;
 
 public class AddNoteCommand extends Command {
 
@@ -27,9 +28,12 @@ public class AddNoteCommand extends Command {
         try {
             NotesCommandParser.parseAddNotesCommand(userInput, nusMap);
             nusMap.map.get(location).addNotes(); //add notes to block given by user
+            ui.showToUser("This note has been added and tagged to " + location + ":" + ui.lineSeparator
+                    + "\t" + note + ui.lineSeparator
+                    + ui.divider);
         } catch (WrongInputFormatException | NoLocationForNotesCommandException
                 | NonExistentLocationForNotesCommandException | EmptyNoteException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
     }
 }
