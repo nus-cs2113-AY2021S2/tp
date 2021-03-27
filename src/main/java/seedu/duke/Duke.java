@@ -5,6 +5,7 @@ import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.storage.FavouriteLocationsStorage;
 import seedu.duke.storage.NotesStorage;
 import seedu.duke.storage.Storage;
+import seedu.duke.ui.UiManager;
 
 import java.io.IOException;
 

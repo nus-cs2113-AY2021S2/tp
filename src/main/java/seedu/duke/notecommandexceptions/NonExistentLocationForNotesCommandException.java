@@ -1,6 +1,6 @@
 package seedu.duke.notecommandexceptions;
 
-import static seedu.duke.UiManager.getListOfLocations;
+import static seedu.duke.ui.UiManager.getListOfLocations;
 
 public class NonExistentLocationForNotesCommandException extends NotesException {
     @Override

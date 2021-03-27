@@ -10,6 +10,7 @@ import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
 import seedu.duke.notecommandexceptions.NoNoteIndexException;
 import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
 import seedu.duke.notecommandexceptions.WrongInputFormatException;
+import seedu.duke.ui.UiManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;

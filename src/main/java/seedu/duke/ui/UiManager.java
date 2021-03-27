@@ -1,5 +1,11 @@
-package seedu.duke;
+package seedu.duke.ui;
 
+import seedu.duke.Block;
+import seedu.duke.BlockAlias;
+import seedu.duke.DaySchedulePair;
+import seedu.duke.FavouriteLocation;
+import seedu.duke.History;
+import seedu.duke.Map;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
@@ -14,34 +20,9 @@ import java.util.Scanner;
 import java.util.HashMap;
 
 public class UiManager {
-    private static final String LINE_SEPARATOR = System.lineSeparator();
-    private static final String DIVIDER = "--------------------------------------------------------------------------";
-    private static final String SPACING = "      ";
-    private static final String INPUT_HEADER = "> ";
-    private static final String LOGO =  " /$$   /$$ /$$   /$$  /$$$$$$  /$$      /$$\n"
-            + "| $$$ | $$| $$  | $$ /$$__  $$| $$$    /$$$\n"
-            + "| $$$$| $$| $$  | $$| $$  \\__/| $$$$  /$$$$  /$$$$$$  /$$$$$$$$  /$$$$$$\n"
-            + "| $$ $$ $$| $$  | $$|  $$$$$$ | $$ $$/$$ $$ |____  $$|____ /$$/ /$$__  $$\n"
-            + "| $$  $$$$| $$  | $$ \\____  $$| $$  $$$| $$  /$$$$$$$   /$$$$/ | $$$$$$$$\n"
-            + "| $$\\  $$$| $$  | $$ /$$  \\ $$| $$\\  $ | $$ /$$__  $$  /$$__/  | $$_____/\n"
-            + "| $$ \\  $$|  $$$$$$/|  $$$$$$/| $$ \\/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$\n"
-            + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/";
-    private static final String GREETING_MESSAGE = "Hello! Welcome to NUSMaze" + LINE_SEPARATOR
-            + "Where do you want to go today?";
-    private static final String BYE_MESSAGE = "Bye. Hope to see you again soon!";
-    private static final String HELP_MESSAGE = "1. go:\n"
-            + SPACING + "finds the route to go from one block to another\n"
-            + "2. history:\n"
-            + SPACING + "lists past 10 route searches\n"
-            + "3. add note LOCATION/DESCRIPTION:\n"
-            + SPACING + "adds and tags a note to a particular location\n"
-            + "4. list notes LOCATION:\n"
-            + SPACING + "list notes tagged to the given location\n"
-            + "5. delete note LOCATION/NOTE INDEX:\n"
-            + SPACING + "deletes notes based on index number tagged to the given location";
-
     private final Scanner in;
     private final PrintStream out;
+    private final UiUtils uiUtils = new UiUtils();
 
     public UiManager() {
         this(System.in, System.out);
@@ -56,9 +37,9 @@ public class UiManager {
     }
 
     public String getUserInput() {
-        out.print(INPUT_HEADER);
+        out.print(uiUtils.getInputHeader());
         String userInput = in.nextLine();
-        out.println(DIVIDER);
+        out.println(uiUtils.getDivider());
         return userInput;
     }
 
@@ -68,23 +49,22 @@ public class UiManager {
         for (String m : message) {
             out.println(m);
         }
-        out.println(DIVIDER);
     }
 
     public void showLogo() {
-        showToUser(DIVIDER, LOGO);
+        showToUser(uiUtils.getDivider(), uiUtils.getLogo());
     }
 
     public void showGreetMessage() {
-        showToUser(GREETING_MESSAGE);
+        showToUser(uiUtils.getGreetingMessage(), uiUtils.getDivider());
     }
 
     public void showByeMessage() {
-        showToUser(BYE_MESSAGE);
+        showToUser(uiUtils.getByeMessage(), uiUtils.getDivider());
     }
 
     public void showHelpMessage() {
-        showToUser(HELP_MESSAGE);
+        showToUser(uiUtils.getHelpMessage(), uiUtils.getDivider());
     }
 
     public void showHistory(History history) {
@@ -102,28 +82,28 @@ public class UiManager {
     public String[] getRoutingInfo() {
         String[] startAndDestination = new String[2];
 
-        out.println("Starting Block:");
+        showToUser("Starting Block:");
         startAndDestination[0] = in.nextLine().toUpperCase().trim();
 
-        out.println("Destination Block:");
+        showToUser("Destination Block:");
         startAndDestination[1] = in.nextLine().toUpperCase().trim();
 
         return startAndDestination;
     }
 
     public int getEateryEntry(Block[] eateries) {
-        out.println(DIVIDER);
-        out.println("Here are the list of eateries(from closest to furthest):");
+        showToUser(uiUtils.getDivider());
+        showToUser("Here are the list of eateries(from closest to furthest):");
         for (int i = 0; i < eateries.length; i++) {
             out.println((i + 1) + ". " + eateries[i].getName());
         }
-        out.println(LINE_SEPARATOR + "SELECT ENTRY TO GO:");
+        showToUser(uiUtils.getLineSeparator() + "SELECT ENTRY TO GO:");
         return Integer.parseInt(in.nextLine());
     }
 
     public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {
         try {
-            out.println("SELECT ENTRY TO REPEAT:");
+            showToUser("SELECT ENTRY TO REPEAT:");
             return Integer.parseInt(in.nextLine());
         } catch (NumberFormatException e) {
             throw new InvalidRepeatEntryException();
@@ -140,7 +120,6 @@ public class UiManager {
                 + "TECHNO EDGE";
     }
 
-
     public DaySchedulePair getDailyRouteInfo()
             throws InvalidDayException, InvalidBlockException {
         String day = getValidDay();
@@ -149,12 +128,12 @@ public class UiManager {
     }
 
     public ArrayList<String> getSchedule() throws InvalidBlockException {
-        out.println("Enter Location of the first activity of the day: ");
+        showToUser("Enter Location of the first activity of the day: ");
         ArrayList<String> dailyBlocks = new ArrayList<>();
         String initialBlock = checkValidBlock();
         dailyBlocks.add(initialBlock);
         while (true) {
-            out.println("Enter Location of the next activity of the day: ");
+            showToUser("Enter Location of the next activity of the day: ");
             String nextBlock = checkValidBlock();
             if (nextBlock.equals("END")) {
                 break;
@@ -169,7 +148,7 @@ public class UiManager {
         String block = in.nextLine().toUpperCase().trim();
         Map nusMap = new Map();
         if (block.equals("END")) {
-            out.println(DIVIDER);
+            showToUser(uiUtils.getDivider());
             return block;
         } else if (nusMap.getBlock(block) == null) {
             throw new InvalidBlockException();
@@ -178,7 +157,7 @@ public class UiManager {
     }
 
     public String getValidDay() throws InvalidDayException {
-        out.println("Enter the day: ");
+        showToUser("Enter the day: ");
         String day = in.nextLine().toUpperCase().trim();
         List<String> daysList = List.of("MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY");
         ArrayList<String> days = new ArrayList<>(daysList);
@@ -196,20 +175,20 @@ public class UiManager {
         HashMap<String, String> newAlias = new HashMap<>();
         newAlias.put(alias, block);
 
-        System.out.println("Got it! Successfully added " + alias + " for block " + block);
-        System.out.println(DIVIDER);
+        showToUser("Got it! Successfully added " + alias + " for block " + block);
+        showToUser(uiUtils.getDivider());
         return newAlias;
     }
 
     private String getAliasName(HashMap<String, String> aliasMap) throws InvalidAliasException {
-        out.println("Enter the alias name: ");
+        showToUser("Enter the alias name: ");
         String alias = in.nextLine().trim();
         checkValidAlias(alias, aliasMap);
         return alias;
     }
 
     private String getAliasBlock(String s) throws InvalidBlockException {
-        out.println(s);
+        showToUser(s);
         String block = in.nextLine().toUpperCase().trim();
         checkValidAliasBlock(block);
         return block;
@@ -233,36 +212,37 @@ public class UiManager {
 
     public void showCustomAliases(HashMap<String, String> aliasMap) {
         if (aliasMap.isEmpty()) {
-            System.out.println("It seems that you currently do not have any aliases");
+            showToUser("It seems that you currently do not have any aliases");
         } else {
-            System.out.println("Your aliases are:");
+            showToUser("Your aliases are:");
             for (String alias: aliasMap.keySet()) {
                 String block = aliasMap.get(alias);
                 System.out.println(block + " - " + alias);
             }
         }
-        System.out.println(DIVIDER);
+        showToUser(uiUtils.getDivider());
     }
 
     public String getDeleteAliasInfo(BlockAlias blockAlias) throws InvalidAliasException {
-        out.println("Enter the alias name that you wish to delete: ");
+        showToUser("Enter the alias name that you wish to delete: ");
         String toDelete = in.nextLine().trim().toUpperCase();
-        checkValidDeleteAlias(toDelete, blockAlias.getAliasMap());
-        System.out.println("Got it! Successfully deleted " + toDelete + " from the aliases");
-        System.out.println(DIVIDER);
+        if (checkValidDeleteAlias(toDelete, blockAlias.getAliasMap())) {
+            showToUser("Got it! Successfully deleted " + toDelete + " from the aliases");
+        }
+        showToUser(uiUtils.getDivider());
         return toDelete;
     }
 
-    private void checkValidDeleteAlias(String aliasToDelete, HashMap<String, String> aliasMap)
+    private boolean checkValidDeleteAlias(String aliasToDelete, HashMap<String, String> aliasMap)
             throws InvalidAliasException {
         if (!aliasMap.containsKey(aliasToDelete)) {
             throw new InvalidAliasException();
         }
+        return true;
     }
 
     public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
         assert favouriteLocation != null : "favouriteLocation must be initialised";
         favouriteLocation.showFavouriteLocations();
     }
-
 }

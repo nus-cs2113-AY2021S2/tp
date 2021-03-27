@@ -4,7 +4,7 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;

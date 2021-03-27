@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.ui.UiManager;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
