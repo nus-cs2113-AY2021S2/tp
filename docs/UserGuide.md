@@ -22,6 +22,8 @@ Table of Contents
     * [List expiring foods: expiring](#list-expiring-foods-expiring)
     * [List categories with food running low: runninglow](#list-categories-with-food-running-low-runninglow)
     * [Modify the minimum quantity limits: setlimit](#modify-the-minimum-quantity-limits-setlimit)
+    * [List history of items added: history](#list-history-of-items-added-history)
+    * [Clear list history of items added: history clear](#clear-list-history-of-items-added-history-clear)
     * [Get help message: help](#get-help-message-help)
     * [Exit the application: bye](#exit-the-application-bye)
   * [FAQ](#faq)
@@ -255,6 +257,43 @@ Okie dokie! The new minimum quantity for category 'MEAT' is 200
 Congrats! You are all stocked up on food! :D
 ```
 
+### List history of items added: `history`
+
+Displays a history of food items that have been added to the Fridge
+since it was last cleared.
+
+The Fridge keeps track of all Food items added in its lifetime automatically.
+
+The data is saved to a text file, with default location as `data/historyData.txt`
+
+Format: `history`
+
+Example of usage:
+
+```
+>> history
+This is the full history of items you've added in the fridge:
+  1. Food name: Coke, category: BEVERAGE, expiry: 30-06-2021, stored in: FREEZER, quantity: 5
+  2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 200
+```
+
+### Clear list history of items added: `history clear`
+
+Wipes the data from the history text file.
+
+Format: `history clear`
+
+Example of usage:
+
+```
+>> history clear
+History successfully cleared!
+
+>> history 
+This is the full history of items you've added in the fridge:
+```
+
+
 ### Get help message: `help`
 
 Prints a list of available commands and formats.
@@ -299,7 +338,7 @@ Bye! Hope to see you again soon!
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Copy the `.jar` file along with `save` folder to the target computer and place them together into an empty folder.
+**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder.
 As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
 
 **Q**: What if I forget the correct format of a command?
@@ -322,5 +361,7 @@ Plus, you are always welcomed to use `help` command.
 * List expiring foods `expiring`
 * List categories with food running low: `runninglow`
 * Modify the minimum quantity limits: `setlimit FOOD_CATEGORY /qty QUANTITY`
+* List history of items added: `history`  
+* Clear list history of items added: `history clear`  
 * Get help message `help`
 * Exit application `bye`
