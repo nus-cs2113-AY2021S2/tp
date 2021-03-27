@@ -9,26 +9,27 @@
 The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
 They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
 Additionally, they implement the following operations: <br/>
-`AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
-`AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
-`HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history into `historyList`. <br />
-`HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
-`NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
-`NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
-`DailyRouteStorage#loadDailyRoute()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
-`DailyRouteStorage#overwriteDailyRouteFile()` Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
-`FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
-`FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
-These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile`. <br />
+- `AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
+- `AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
+- `HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history into `historyList`. <br />
+- `HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
+- `NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
+- `NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
+- `DailyRouteStorage#loadDailyRoute()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
+- `DailyRouteStorage#overwriteDailyRouteFile()` Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
+- `FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
+- `FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
+
+These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile()`. <br />
 The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
 ![img.png](Overview%20for%20Safe%20Feature.png)
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
 Step 1. The user launches the application for the first time. 
-`AliasStorage`, `HistoryRouteStorage`, `NotesStorage` and `FavouriteLocationsStorage` 
-will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList` and `favouritesList`. 
- The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
+`AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage` and `FavouriteLocationsStorage` 
+will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
+The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](img.png)
+![img.png](SaveStep1.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
@@ -38,10 +39,10 @@ The `add note` command calls `NotesStorage#overwriteNotesListFile()`, causing  t
 Step 4. The user executes `delete note E4/1` to remove a note with the given note index from that location, assuming that it exists. <br /> 
 The `delete note` command also calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
 Step 5. The user executes `like E4` command to add a location to favourites. <br /> The `like` command calls `FavouriteLocationsStorage#save()`, causing the modified state of the `favouritesList` to be saved into the `favouritesList.txt`. <br />
-Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`,  `HistoryRouteStorage#overwriteHistoryListFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
-but not all files will be modified. The above steps explains which files will be modified after the commands listed above are called.
-For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList` and `favouritesList`. 
-Thus, the `notesList.txt` `routesHistoryList.txt` and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
+Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`, `DailyRouteStorage#overwriteDailyRouteFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
+but not all files will be modified. The above steps explains which lists will be modified after the commands listed above are called.
+For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
+Thus, the `aliasList.txt`, `routesHistoryList.txt`, `notesList.txt`, `dailyRouteList.txt`  and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
 #### Design Consideration
 Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 Pros: Easy to implement. <br/>
