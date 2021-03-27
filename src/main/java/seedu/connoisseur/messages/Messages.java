@@ -76,6 +76,5 @@ public class Messages {
     public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
 
     //Edit
-    public static final String INVALID_EDIT_TITLE = "Specified review does not exist!";
     public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
 }

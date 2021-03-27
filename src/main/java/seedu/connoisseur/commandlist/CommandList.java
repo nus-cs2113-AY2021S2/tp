@@ -35,9 +35,9 @@ import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 public class CommandList {
 
     public ArrayList<Review> reviewList;
-    private Sorter sorter;
-    private Ui ui;
-    private Storage storage;
+    private final Sorter sorter;
+    private final Ui ui;
+    private final Storage storage;
 
     /**
      * Creates tasks according to user data from files.
@@ -66,7 +66,7 @@ public class CommandList {
     public CommandList(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        reviewList = new ArrayList<Review>();
+        reviewList = new ArrayList<>();
         sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
@@ -79,6 +79,8 @@ public class CommandList {
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
             ui.printEmptyCommandListMessage();
+        } else if (!validSortMethod(sortMethod)) {
+            ui.printInvalidSortMethodMessage();
         } else {
             if (sortMethod == null) {
                 sorter.sort(reviewList);
@@ -92,6 +94,17 @@ public class CommandList {
                 }
             }
         }
+    }
+
+    private boolean validSortMethod(String sortMethod) {
+        ArrayList<String> validSortMethods = new ArrayList<String>();
+        validSortMethods.add("rating");
+        validSortMethods.add("category");
+        validSortMethods.add("title");
+        validSortMethods.add("date earliest");
+        validSortMethods.add("date latest");
+        validSortMethods.add(null);
+        return validSortMethods.contains(sortMethod);
     }
 
     /**
