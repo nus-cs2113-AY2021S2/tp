@@ -26,7 +26,7 @@ class AddModuleCommandTest {
         System.setOut(new PrintStream(outContent));
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
 
         ModuleList.addModule(MODULE_CODE_2);
         ModuleList.addModule(MODULE_CODE_3);
@@ -47,7 +47,7 @@ class AddModuleCommandTest {
 
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
 
         Command command = new AddModuleCommand(MODULE_CODE_1);

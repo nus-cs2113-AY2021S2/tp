@@ -17,7 +17,7 @@ class EditLessonCommandTest extends LessonCommandTest {
     @Test
     void execute_validIndexAllFields_lessonFieldsEdited() throws CommandException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
@@ -60,7 +60,7 @@ class EditLessonCommandTest extends LessonCommandTest {
     @Test
     void execute_validAndInvalidIndexPartialFields_lessonFieldsEdited() throws CommandException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
 
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);

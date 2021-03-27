@@ -34,7 +34,7 @@ class DeleteModuleCommandTest {
         System.setIn(inContent);
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
 
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.addModule(MODULE_CODE_4);

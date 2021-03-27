@@ -24,7 +24,7 @@ class ListLessonsCommandTest extends LessonCommandTest {
     @Test
     void printLessonsFromList_lessonList_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         UI ui = new UI();
 
         OutputStream os = getOutputStream();

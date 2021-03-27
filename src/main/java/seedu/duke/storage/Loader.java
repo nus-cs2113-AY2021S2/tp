@@ -51,18 +51,18 @@ public class Loader {
      * Returns ArrayList of names (excluding ".txt").
      */
     public ArrayList<String> getModules() {
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> moduleCodes = new ArrayList<>();
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
         if (files == null) {
-            return names;
+            return moduleCodes;
         }
         for (File file : files) {
             if (file.isDirectory()) {
-                names.add(file.getName());
+                moduleCodes.add(file.getName());
             }
         }
-        return names;
+        return moduleCodes;
     }
 
     /**

@@ -28,7 +28,7 @@ class PrintHelpCommandTest {
         System.setOut(new PrintStream(outContent));
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_3);
         ModuleList.addModule(MODULE_CODE_2);
 

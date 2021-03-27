@@ -17,7 +17,7 @@ class OpenLessonLinkCommandTest extends LessonCommandTest {
     @Test
     void printLessonsLink_lessonListIndexes_expectPrintsCorrectOutput() {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         UI ui = new UI();
 
         OutputStream os = getOutputStream();
