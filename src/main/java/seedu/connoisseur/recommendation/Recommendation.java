@@ -128,7 +128,7 @@ public class Recommendation {
      *
      * @return recommendations in a single string
      */
-    public String recommendationsToText() {
+    public String recommendationToText() {
         return  getTitle() + "|" + getCategory() + "|" + getPrice() + "|" + getRecommendedBy();
     }
 

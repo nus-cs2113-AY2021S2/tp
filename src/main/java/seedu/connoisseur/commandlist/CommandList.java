@@ -2,6 +2,7 @@ package seedu.connoisseur.commandlist;
 
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
+import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -34,7 +35,8 @@ import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
  */
 public class CommandList {
 
-    public ArrayList<Review> reviewList;
+    public ArrayList<Review> reviewList = new ArrayList<>();
+    public ArrayList<Recommendation> recommendationList = new ArrayList<>();
     private final Sorter sorter;
     private final Ui ui;
     private final Storage storage;
@@ -44,18 +46,27 @@ public class CommandList {
      *
      * @param dataReviews List of tasks from user connoisseur.txt file.
      */
-    public CommandList(ArrayList<String> dataReviews, Ui ui, Storage storage) {
+    public CommandList(ArrayList<String> dataReviews, ArrayList<String> dataRecommendations, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(SortMethod.DATE_LATEST);
-        reviewList = new ArrayList<Review>();
-        for (String review : dataReviews) {
-            if (review.length() == 0) {
-                continue;
-            } else if (review.startsWith("SortMethod: ")) {
-                sorter.changeSortMethod(review.split(" ", 2)[1]);
-            } else {
-                reviewList.add(Review.textToReview(review));
+        if(!dataReviews.isEmpty()) {
+            for (String review : dataReviews) {
+                if (review.length() != 0) {
+                    if (review.startsWith("SortMethod: ")) {
+                        sorter.changeSortMethod(review.split(" ", 2)[1]);
+                    } else {
+                        reviewList.add(Review.textToReview(review));
+                    }
+                }
+            }
+        }
+
+        if(!dataRecommendations.isEmpty()) {
+            for (String recommendation : dataRecommendations) {
+                if (recommendation.length() != 0) {
+                    recommendationList.add(Recommendation.textToRecommendation(recommendation));
+                }
             }
         }
     }
@@ -66,7 +77,6 @@ public class CommandList {
     public CommandList(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        reviewList = new ArrayList<>();
         sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
@@ -319,7 +329,8 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveData(reviewList, sorter.getSortMethod());
+        storage.saveConnoisseurData(reviewList, sorter.getSortMethod());
+        storage.saveRecommendationData(recommendationList);
         ui.printExitMessage();
     }
 

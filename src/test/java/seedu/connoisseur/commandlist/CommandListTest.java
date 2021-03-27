@@ -66,7 +66,7 @@ public class CommandListTest {
 
     @Test
     void checkAndPrintDuplicate() {
-        CommandList commandList = new CommandList(new ArrayList<String>(), new Ui(), new Storage(new Ui()));
+        CommandList commandList = new CommandList(new ArrayList<String>(),new ArrayList<String>(), new Ui(), new Storage(new Ui()));
         commandList.reviewList = new ArrayList<Review>();
         assertFalse(commandList.checkAndPrintDuplicate("Avengers"));
     }

@@ -38,11 +38,9 @@ public class Parser {
                     commandList.editReviewRating(newRating, index);
                 } else {
                     System.out.println("Invalid rating, failed to edit rating ");
-                    ;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Invalid rating, failed to edit rating ");
-                ;
             }
             break;
         case "description":
