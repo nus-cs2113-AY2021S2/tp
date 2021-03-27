@@ -808,7 +808,7 @@ classes will be accessed. If data is found on the NurseSchedules text
 file, it will be loaded into the arraylist, else a new text file is
 created.
 
-[Implementation:]{.ul}
+#### Implementation:
 
 1.  User executes a command
 
@@ -824,40 +824,34 @@ created.
 5.  NurseScheduleActions will either add, list or delete a NurseSchedule
     > object.
 
-**Adding a new Nurse Schedule**
+###### **Adding a new Nurse Schedule**
 
-[Implementation:]{.ul}
+#### Implementation
 
 When the user attempts to add a new nurse schedule, the
 NurseScheduleStorage, NurseScheduleActions, UI and NurseScheduleUI
 classes will be assessed, and the following sequence of actions is
 called to prompt execution results to user:
 
-add \[Nurse ID\] \[Date (DDMMYYYY)\]:
+*add* \[Nurse ID\] \[Date (DDMMYYYY)\]:
 
-Getting User Input
+Getting User Input:
 
-> User inputs add command which is processed by
-> NurseScheduleInstance.runCommandLoopUntilExit().
->
-> This calls NurseScheduleActions.addSchedule() which calls
-> NurseScheduleUI.inputToCreateSchedule().
+1. User inputs add command which is processed by NurseScheduleInstance.runCommandLoopUntilExit().
+2. This calls NurseScheduleActions.addSchedule() which calls NurseScheduleUI.inputToCreateSchedule().
 
-Creating NurseSchedule object with User Input
+Creating NurseSchedule object with User Input:
 
-> NurseScheduleUI.inputToCreateSchedule() creates a new NurseSchedule
-> object and is stored into an existing ArrayList\<NurseSchedule\>
-> nurseSchedules which contains all the nurse schedule objects
+3. NurseScheduleUI.inputToCreateSchedule() creates a new NurseSchedule object and is stored into an existing ArrayList\<NurseSchedule\>
+nurseSchedules which contains all the nurse schedule objects
 
-Saving NurseSchedule objects into .txt file
+Saving NurseSchedule objects into .txt file:
 
-> The command loop then calls NurseScheduleStorage.writeToFile() which
-> starts the process of writing details of all existing Nurse Schedule
-> objects within the ArrayList to the specified .txt file
+4. The command loop then calls NurseScheduleStorage.writeToFile() which starts the process of writing details of all existing Nurse Schedule objects within the ArrayList to the specified .txt file
 
-list \[Nurse ID\] or list \[all\]:
+*list* \[Nurse ID\] or list \[all\]:
 
-[Implementation:]{.ul}
+#### Implementation:
 
 When the user attempts to list nurse schedules, they will have the
 choice of listing all schedules or a specified nurse id's schedule. This
