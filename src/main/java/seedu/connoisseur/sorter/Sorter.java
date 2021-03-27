@@ -127,6 +127,8 @@ public class Sorter {
         case "date latest":
             sortByDateLatest(reviewList);
             break;
+        default:
+            break;
         }
         return reviewList;
     }
