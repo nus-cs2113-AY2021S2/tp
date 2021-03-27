@@ -411,7 +411,10 @@ public class Ui {
         System.out.println("Sorry! I didn't catch that. Please try again");
     }
 
-    public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
+    public static void printZoomLinksAdded(String instruction) {
+        String[] words = instruction.split(" ");
+        String zoomLink = words[0];
+        String moduleCode = words[1];
         printHorizontalLine();
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
