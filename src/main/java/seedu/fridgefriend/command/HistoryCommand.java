@@ -18,16 +18,28 @@ public class HistoryCommand extends Command {
 
     @Override
     public void execute() {
-        if (description.contains("clear")) {
-            Storage.clearHistoryData();
-            Ui.printMessage("History successfully cleared!");
+        if (isClearHistory()) {
+            clearHistory();
         } else {
-            String message = getHistoryMessage();
-            Ui.printMessage(message);
+            printHistory();
         }
     }
 
-    public String getHistoryMessage() {
+    private boolean isClearHistory() {
+        return description.contains("clear");
+    }
+
+    private void printHistory() {
+        String message = getHistoryMessage();
+        Ui.printMessage(message);
+    }
+
+    public static void clearHistory() {
+        Storage.clearHistoryData();
+        Ui.printMessage("History successfully cleared!");
+    }
+
+    public static String getHistoryMessage() {
         StringBuilder message = new StringBuilder("This is the full history of items you've added in the fridge:");
         message.append(Storage.loadHistoryData());
 
