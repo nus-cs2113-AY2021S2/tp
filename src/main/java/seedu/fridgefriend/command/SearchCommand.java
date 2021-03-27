@@ -11,14 +11,15 @@ import seedu.fridgefriend.utilities.LoggingHandler;
  */
 public class SearchCommand extends Command {
 
-    public static final int NOT_FOUND = -1;
-    private String foodName;
+    private final String foodName;
+    private boolean isContain;
 
     public SearchCommand(String foodName) throws EmptyDescriptionException {
         if (foodName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
         this.foodName = foodName;
+        this.isContain = false;
     }
 
     @Override
@@ -36,30 +37,27 @@ public class SearchCommand extends Command {
      * @return the message shown to the user
      */
     public String getMessagePrintedToUser() {
-        int indexOfFoodStored = getIndexOfFoodStored();
-        String message;
-        if (indexOfFoodStored >= 0) {
-            LoggingHandler.logInfo("Search for food successful: " + foodName + " found.");
-            message = "You have " + foodName + " stored in "
-                    + fridge.getFood(indexOfFoodStored).getStorageLocation()
-                    + " of your fridge.";
-        } else {
-            LoggingHandler.logInfo("Search for food unsuccessful: No " + foodName + " found.");
-            message = "You do not have " + foodName + " in your fridge.";
-        }
-        assert message != null : "message string should not be null";
-        return message;
-    }
-
-    private int getIndexOfFoodStored() {
         assert !foodName.equals(null) : "Unable to search a null food name";
+        StringBuilder message = new StringBuilder("These are the "
+                + foodName + " in your fridge:");
+        int indexShownToUser = 1;
         for (int i = 0; i < fridge.getSize(); i += 1) {
             Food food = fridge.getFood(i);
-            if (food.getFoodName().equals(foodName)) {
-                return i;
+            if (food.getFoodName().contains(foodName)) {
+                isContain = true;
+                message.append("\n\t").append(indexShownToUser)
+                        .append(". ").append(food.toString());
+                ++indexShownToUser;
             }
         }
-        return NOT_FOUND;
+
+        if (!isContain) {
+            LoggingHandler.logInfo("Search for food unsuccessful: No " + foodName + " found.");
+            return "You do not have " + foodName + " in your fridge.";
+        }
+
+        LoggingHandler.logInfo("Search for food successful: " + foodName + " found.");
+        return message.toString();
     }
 
 }
