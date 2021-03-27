@@ -53,6 +53,16 @@ public class EditLessonCommand extends Command {
         ModuleList.sortLessons();
     }
 
+    private void editLessonFields(Lesson lesson, UI ui) {
+        ArrayList<Integer> indices = getFieldIndicesFromUser(ui);
+        String newFieldValue;
+
+        for (int index : indices) {
+            newFieldValue = getNewFieldFromUser(index, ui);
+            setNewFieldValue(lesson, newFieldValue, index, ui);
+        }
+    }
+
     private Lesson getLessonToEdit(ArrayList<Lesson> lessonList, UI ui) {
         Lesson chosenLesson = null;
 
@@ -81,16 +91,6 @@ public class EditLessonCommand extends Command {
             }
         }
         return index;
-    }
-
-    private void editLessonFields(Lesson lesson, UI ui) {
-        ArrayList<Integer> indices = getFieldIndicesFromUser(ui);
-        String newFieldValue;
-
-        for (int index : indices) {
-            newFieldValue = getNewFieldFromUser(index, ui);
-            setNewFieldValue(lesson, newFieldValue, index, ui);
-        }
     }
 
     private ArrayList<Integer> getFieldIndicesFromUser(UI ui) {
