@@ -1,0 +1,29 @@
+UtilitiesClassDiagram.puml@startuml UtilitiesClassDiagram
+allow_mixing
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+
+
+package Exceptions <<Rectangle>> {
+    class EmptyDescriptionException
+    class EmptyDescriptionException
+    class FoodNameNotFoundException
+    class InvalidDateException
+    class InvalidFoodCategoryException
+    class InvalidIndexException
+    class InvalidInputException
+    class InvalidQuantityException
+    class RepetitiveFoodIdentifierException
+    class StorageLoadingException
+    class StorageSavingException
+}
+
+' Basic Layout `
+Exceptions -down-|> Exception
+
+note top of Exception : All Exception Classes\nin the Exception component \ninherit from standard Java Exception.
+
+@enduml

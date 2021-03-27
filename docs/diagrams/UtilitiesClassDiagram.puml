@@ -1,0 +1,93 @@
+UtilitiesClassDiagram.puml@startuml UtilitiesClassDiagram
+allow_mixing
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+skinparam classAttributeIconSize 0
+
+actor User
+
+package Utilities <<Rectangle>> {
+    class Ui
+    class LoggerHandler
+    class Storage
+    class Parser
+}
+
+package "/data" <<folder>> {
+    file limitsData
+    file fridgeData
+}
+
+package Food <<Rectangle>> {
+}
+
+package Exception <<Rectangle>> {
+}
+
+package Command <<Rectangle>>{
+}
+
+class Ui {
+  - {static} scanner: Scanner
+  + {static} String getNextLine()
+  + {static} void printMessage()
+  + {static} void printWelcomeMessage()
+  + {static} void printByeMessage()
+  + {static} void printExceptionMessage()
+}
+
+class LoggerHandler {
+  - {static} logger: Logger
+  + {static} void logInfo(String message)
+  + {static} void logWarning(String message)
+  + {static} void logSevere(String message)
+}
+
+class Storage {
+  - {static} DATA_FILE_PATH: String
+  - {static} LIMITS_FILE_PATH: String
+  - {static} DIRECTORY: String
+  - {static} fridge: Fridge
+  + {static} void load(Fridge fridgeInput)
+  + {static} void save(Fridge fridgeInput)
+}
+
+class Parser {
+  - {static} FOOD_DATA_ARGS_FORMAT: Pattern
+  - {static} REMOVE_ARGS_FORMAT: Pattern
+  - {static} SET_LIMIT_ARGS_FORMAT: Pattern
+  + {static} Command getCommand(String input)
+  - {static} Command parseFoodDescription(String foodDescription)
+  - {static} Command parseRemoveDescription(String removeDescription)
+  - {static} Command parseSetLimitDescription(String description)
+  + {static} int parseIntegerQuantity(String description)
+}
+
+' Basic Layout '
+LoggerHandler -left[hidden]-> Ui
+LoggerHandler -down[hidden]-> Parser
+Parser -left[hidden]-> Storage
+Ui -down[hidden]-> Storage
+Command -right[hidden]-> Exception
+"/data" -right[hidden]-> Food
+Food -right[hidden]-> Exception
+Exception -right[hidden]-> Command
+Parser -down[hidden]-> "/data"
+
+User -down-> Ui : interacts with
+FridgeFriend -right-> Ui : prints with
+FridgeFriend -right-> Storage : uses
+
+Storage .up.> Ui : prints with
+Storage .right.> Parser : uses
+Storage -down-> "/data" : creates and writes
+Storage .down.> Food : loads and saves
+Storage .down.> Exception : throws
+Parser .down.> Exception : throws
+Parser .down.> Command : gets
+
+note top of LoggerHandler : Used by all other classes\nfor logging purposes
+
+@enduml
