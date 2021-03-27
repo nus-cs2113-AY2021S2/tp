@@ -94,9 +94,10 @@ public class Storage {
      *
      * @param reviewList Reviews list to be updated.
      */
-    public void saveData(ArrayList<Review> reviewList) {
+    public void saveData(ArrayList<Review> reviewList, String sortMethod) {
         try {
             FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.append("SortMethod: " + sortMethod + "\n");
             for (Review review : reviewList) {
                 String reviewToWrite = review.reviewToText() + "\n";
                 fileWriter.append(reviewToWrite);

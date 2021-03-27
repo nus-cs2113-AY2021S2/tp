@@ -1,24 +1,69 @@
 package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.ui.Ui;
 
 /**
  * Handles Connoisseur's commands.
  */
 public class Parser {
-    public CommandList commandList;
+    private static CommandList commandList;
 
     /**
      * Constructor for parser class.
      */
     public Parser(CommandList commandList) {
-        this.commandList = commandList;
+        Parser.commandList = commandList;
+    }
+
+    public static void determineEditCommand(int index) {
+        Ui ui = new Ui();
+        String input = ui.readCommand();
+        try {
+            input = input.trim().toLowerCase();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            input = null;
+        }
+        switch (input) {
+        case "title":
+            System.out.println("What would you like to change the title to?");
+            String newTitle = ui.readCommand();
+            commandList.editReviewTitle(newTitle, index);
+            break;
+        case "rating":
+            System.out.println("What would you like to change the rating to out of 5 stars?");
+            String newRating = ui.readCommand();
+            try {
+                if (Integer.parseInt(newRating) <= 5 && Integer.parseInt(newRating) >= 0) {
+                    commandList.editReviewRating(newRating, index);
+                } else {
+                    System.out.println("Invalid rating, failed to edit rating ");
+                    ;
+                }
+            } catch (NumberFormatException ne) {
+                System.out.println("Invalid rating, failed to edit rating ");
+                ;
+            }
+            break;
+        case "description":
+            System.out.println("Enter your new description of the review: ");
+            String newDescription = ui.readCommand();
+            commandList.editReviewDescription(newDescription, index);
+            break;
+        case "category":
+            System.out.println("What would you like to change the category to?");
+            String newCategory = ui.readCommand();
+            commandList.editReviewCategory(newCategory, index);
+            break;
+        default:
+            commandList.invalidCommand();
+            break;
+        }
     }
 
     /**
      * Processes user input and executes the relevant commands.
      *
-     * @param input user input
      * @return true if exit command, false otherwise
      */
     public boolean determineCommand(String input) {
@@ -33,6 +78,9 @@ public class Parser {
         switch (command) {
         case "list":
             commandList.listReviews(arguments);
+            break;
+        case "edit":
+            commandList.editReviews(arguments);
             break;
         case "sort":
             commandList.sortReview(arguments);

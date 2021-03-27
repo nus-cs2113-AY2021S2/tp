@@ -13,6 +13,7 @@ public class Sorter {
 
     /**
      * Constructor for Sorter class.
+     *
      * @param sortMethod specify default sort method
      */
     public Sorter(SortMethod sortMethod) {
@@ -20,7 +21,37 @@ public class Sorter {
     }
 
     /**
-     * Change default sort method for this instance. 
+     * Get sort method as string.
+     *
+     * @return SortMethod as a String
+     */
+    public String getSortMethod() {
+        String sortMethodString;
+        switch (sortMethod) {
+        case RATING:
+            sortMethodString = "rating";
+            break;
+        case CATEGORY:
+            sortMethodString = "category";
+            break;
+        case TITLE:
+            sortMethodString = "title";
+            break;
+        case DATE_EARLIEST:
+            sortMethodString = "date earliest";
+            break;
+        case DATE_LATEST:
+            sortMethodString = "date latest";
+            break;
+        default:
+            sortMethodString = "";
+        }
+        return sortMethodString;
+    }
+
+    /**
+     * Change default sort method for this instance.
+     *
      * @param sortMethod SortMethod to be saved
      */
     public void changeSortMethod(String sortMethod) {
@@ -46,7 +77,8 @@ public class Sorter {
     }
 
     /**
-     * Sorts the reviewList based on the saved sort method. 
+     * Sorts the reviewList based on the saved sort method.
+     *
      * @param reviewList reviewList to be sorted
      * @return sorted review list
      */
@@ -72,7 +104,8 @@ public class Sorter {
     }
 
     /**
-     * Sorts the reviewList by the sort method specified. 
+     * Sorts the reviewList by the sort method specified.
+     *
      * @param reviewList reviewList to be sorted
      * @param sortMethod method to sort
      * @return sorted review list
@@ -95,8 +128,7 @@ public class Sorter {
             sortByDateLatest(reviewList);
             break;
         default:
-
-            ui.printInvalidSortMethodMessage();
+            break;
         }
         return reviewList;
     }

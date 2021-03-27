@@ -1,6 +1,7 @@
 package seedu.connoisseur.commandlist;
 
 import seedu.connoisseur.exceptions.DuplicateException;
+import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -14,7 +15,8 @@ import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.MISSING_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
+import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
 import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
 import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
@@ -24,6 +26,7 @@ import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 
 
 /**
@@ -32,9 +35,9 @@ import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 public class CommandList {
 
     public ArrayList<Review> reviewList;
-    private Sorter sorter;
-    private Ui ui;
-    private Storage storage;
+    private final Sorter sorter;
+    private final Ui ui;
+    private final Storage storage;
 
     /**
      * Creates tasks according to user data from files.
@@ -44,14 +47,17 @@ public class CommandList {
     public CommandList(ArrayList<String> dataReviews, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
+        sorter = new Sorter(SortMethod.DATE_LATEST);
         reviewList = new ArrayList<Review>();
         for (String review : dataReviews) {
             if (review.length() == 0) {
                 continue;
+            } else if (review.startsWith("SortMethod: ")) {
+                sorter.changeSortMethod(review.split(" ", 2)[1]);
+            } else {
+                reviewList.add(Review.textToReview(review));
             }
-            reviewList.add(Review.textToReview(review));
         }
-        sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
     /**
@@ -60,7 +66,7 @@ public class CommandList {
     public CommandList(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        reviewList = new ArrayList<Review>();
+        reviewList = new ArrayList<>();
         sorter = new Sorter(SortMethod.DATE_LATEST);
     }
 
@@ -73,6 +79,8 @@ public class CommandList {
     public void listReviews(String sortMethod) {
         if (reviewList.size() == 0) {
             ui.printEmptyCommandListMessage();
+        } else if (!validSortMethod(sortMethod)) {
+            ui.printInvalidSortMethodMessage();
         } else {
             if (sortMethod == null) {
                 sorter.sort(reviewList);
@@ -86,6 +94,17 @@ public class CommandList {
                 }
             }
         }
+    }
+
+    private boolean validSortMethod(String sortMethod) {
+        ArrayList<String> validSortMethods = new ArrayList<String>();
+        validSortMethods.add("rating");
+        validSortMethods.add("category");
+        validSortMethods.add("title");
+        validSortMethods.add("date earliest");
+        validSortMethods.add("date latest");
+        validSortMethods.add(null);
+        return validSortMethods.contains(sortMethod);
     }
 
     /**
@@ -115,8 +134,10 @@ public class CommandList {
      * @param sortType sorting method to be used
      */
     public void sortReview(String sortType) {
-        if (sortType == null) {
-            ui.println(MISSING_SORT_METHOD);
+        if (sortType == null || sortType.isBlank()) {
+            String sortMethod = sorter.getSortMethod();
+            ui.println(CURRENT_SORT_METHOD + sortMethod.toUpperCase());
+            ui.println(SORT_METHOD_PROMPT);
             return;
         }
         if (sortType.equals("title") || sortType.equals("date earliest")
@@ -134,7 +155,7 @@ public class CommandList {
      * @param input quick or long review
      */
     public void addReview(String input) {
-        if (input == null) {
+        if (input == null || input.isBlank()) {
             ui.println(QUICK_PROMPT);
             switch (ui.readCommand().toLowerCase()) {
             case "y":
@@ -189,7 +210,7 @@ public class CommandList {
             throw new DuplicateException();
         }
         ui.println(CATEGORY_PROMPT);
-        String category = ui.readCommand();
+        String category = ui.readCommand().toLowerCase();
         ui.println(RATING_PROMPT);
         try {
             int rating = Integer.parseInt(ui.readCommand());
@@ -218,7 +239,7 @@ public class CommandList {
             throw new DuplicateException();
         }
         ui.println(CATEGORY_PROMPT);
-        String category = ui.readCommand();
+        String category = ui.readCommand().toLowerCase();
         ui.println(RATING_PROMPT);
         try {
             int rating = Integer.parseInt(ui.readCommand());
@@ -241,7 +262,7 @@ public class CommandList {
      * Delete review.
      */
     public void deleteReview(String title) {
-        if (title == null) {
+        if (title == null || title.isBlank()) {
             ui.println(MISSING_DELETE_TITLE);
             return;
         }
@@ -272,6 +293,8 @@ public class CommandList {
             ui.printSortHelpMessage();
         } else if (arguments.equals("list")) {
             ui.printListHelpMessage();
+        } else if (arguments.equals("edit")) {
+            ui.printEditHelpMessage();
         } else if (arguments.equals("review") || arguments.equals("new")) {
             ui.printReviewHelpMessage();
         } else if (arguments.equals("delete")) {
@@ -296,7 +319,7 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveData(reviewList);
+        storage.saveData(reviewList, sorter.getSortMethod());
         ui.printExitMessage();
     }
 
@@ -305,10 +328,10 @@ public class CommandList {
      *
      * @param title title of the review to be viewed
      */
-    public void viewReview(String title) {
-        if (title == null) {
+    public int viewReview(String title) {
+        if (title == null || title.isBlank()) {
             ui.println(MISSING_VIEW_TITLE);
-            return;
+            return -1;
         }
         assert title != null : "title should not be empty";
         int reviewIndex = -1;
@@ -322,11 +345,10 @@ public class CommandList {
             ui.println(INVALID_VIEW_TITLE);
         } else {
             ui.println("Found a matching title: ");
-            for (int i = 0; i < reviewList.size(); i++) {
-                Review currentReview = reviewList.get(reviewIndex);
-                ui.printView(currentReview);
-            }
+            Review currentReview = reviewList.get(reviewIndex);
+            ui.printView(currentReview);
         }
+        return reviewIndex;
     }
 
     public boolean checkAndPrintDuplicate(String title) {
@@ -354,5 +376,66 @@ public class CommandList {
         } else {
             return false;
         }
+    }
+
+    public void editReviews(String title) {
+        if (title == null || title.isBlank()) {
+            ui.println(MISSING_EDIT_TITLE);
+        } else {
+            int index = viewReview(title);
+            if (index == -1) {
+                return;
+            }
+            boolean isDoneEditing = false;
+            do {
+                ui.println("What would you like to edit (Title / Category / Rating / Description)?");
+                Parser.determineEditCommand(index);
+                ui.println("Would you like to edit anything else (y/n)?");
+                String answer = ui.readCommand();
+                switch (answer.toLowerCase()) {
+                case "y":
+                    break;
+                case "n":
+                    isDoneEditing = true;
+                    break;
+                default:
+                    ui.println(INVALID_COMMAND);
+                    isDoneEditing = true;
+                }
+            } while (!isDoneEditing);
+            ui.println("Would You like to update the date of entry for the changes made(y/n)?");
+            String answer = ui.readCommand();
+            switch (answer) {
+            case "y":
+                Review currentReview = reviewList.get(index);
+                currentReview.setDateAndTimeOfEntry();
+                break;
+            case "n":
+                break;
+            default:
+                ui.println(INVALID_COMMAND);
+                break;
+            }
+        }
+    }
+
+    public void editReviewTitle(String newTitle, int index) {
+        Review currentReview = reviewList.get(index);
+        currentReview.setTitle(newTitle);
+    }
+
+    public void editReviewRating(String newRating, int index) {
+        Review currentReview = reviewList.get(index);
+        currentReview.setRating(Integer.parseInt(newRating));
+    }
+
+    public void editReviewDescription(String newDescription, int index) {
+        Review currentReview = reviewList.get(index);
+        currentReview.setDescription(newDescription);
+    }
+
+    public void editReviewCategory(String newCategory, int index) {
+        Review currentReview = reviewList.get(index);
+        currentReview.setCategory(newCategory);
     }
 }
