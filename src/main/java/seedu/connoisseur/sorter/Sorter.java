@@ -13,6 +13,7 @@ public class Sorter {
 
     /**
      * Constructor for Sorter class.
+     *
      * @param sortMethod specify default sort method
      */
     public Sorter(SortMethod sortMethod) {
@@ -20,7 +21,8 @@ public class Sorter {
     }
 
     /**
-     * Get sort method as string. 
+     * Get sort method as string.
+     *
      * @return SortMethod as a String
      */
     public String getSortMethod() {
@@ -48,7 +50,8 @@ public class Sorter {
     }
 
     /**
-     * Change default sort method for this instance. 
+     * Change default sort method for this instance.
+     *
      * @param sortMethod SortMethod to be saved
      */
     public void changeSortMethod(String sortMethod) {
@@ -74,7 +77,8 @@ public class Sorter {
     }
 
     /**
-     * Sorts the reviewList based on the saved sort method. 
+     * Sorts the reviewList based on the saved sort method.
+     *
      * @param reviewList reviewList to be sorted
      * @return sorted review list
      */
@@ -100,7 +104,8 @@ public class Sorter {
     }
 
     /**
-     * Sorts the reviewList by the sort method specified. 
+     * Sorts the reviewList by the sort method specified.
+     *
      * @param reviewList reviewList to be sorted
      * @param sortMethod method to sort
      * @return sorted review list
@@ -122,9 +127,6 @@ public class Sorter {
         case "date latest":
             sortByDateLatest(reviewList);
             break;
-        default:
-
-            ui.printInvalidSortMethodMessage();
         }
         return reviewList;
     }
