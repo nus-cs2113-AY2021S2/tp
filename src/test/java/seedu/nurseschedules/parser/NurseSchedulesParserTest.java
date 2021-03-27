@@ -28,7 +28,7 @@ class NurseSchedulesParserTest {
     @Test
     void testFormatDate() throws ParseException, WrongInputsException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String input = "add N1 P1 20032021";
+        String input = "20032021";
         assertEquals("20/03/2021", parser.formatDate(input));
     }
 }

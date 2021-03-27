@@ -800,7 +800,7 @@ a.  patientParse returns true to PatientCommandInstance and this causes
     > the PatientCommandInstance to break out of its input loop. Thereby
     > returning to the main menu from the PatientCommandInstance.
 
-### **Nurse Schedule-related Features**
+## **Nurse Schedule-related Features**
 
 When the user accesses an instance of Nurse Schedules, the
 NurseScheduleParser, NurseScheduleActions and NurseScheduleStorage
@@ -808,93 +808,83 @@ classes will be accessed. If data is found on the NurseSchedules text
 file, it will be loaded into the arraylist, else a new text file is
 created.
 
-[Implementation:]{.ul}
+### Implementation:
 
 1.  User executes a command
 
-2.  NurseScheduleInstance calls UI.abortEnabledScanInput() to receive
-    > user input.
+2.  NurseScheduleInstance calls UI.abortEnabledScanInput() to receive user input.
 
-3.  NurseScheduleInstance calls NurseScheduleParser.getFirstWord() to
-    > parse user input for specific commands.
+3.  NurseScheduleInstance calls NurseScheduleParser.getFirstWord() to parse user input for specific commands.
 
-4.  Depending on the command, NurseScheduleInstance will call the
-    > relevant methods in NurseScheduleActions.
+4.  Depending on the command, NurseScheduleInstance will call the relevant methods in NurseScheduleActions.
 
-5.  NurseScheduleActions will either add, list or delete a NurseSchedule
-    > object.
+5.  NurseScheduleActions will either add, list or delete a NurseSchedule object.
 
-**Adding a new Nurse Schedule**
+### **Adding a new Nurse Schedule**
 
-[Implementation:]{.ul}
+### Implementation
 
 When the user attempts to add a new nurse schedule, the
 NurseScheduleStorage, NurseScheduleActions, UI and NurseScheduleUI
 classes will be assessed, and the following sequence of actions is
 called to prompt execution results to user:
 
-add \[Nurse ID\] \[Date (DDMMYYYY)\]:
+*add* \[Nurse ID\] \[Date (DDMMYYYY)\]:
 
-Getting User Input
+Getting User Input:
 
-> User inputs add command which is processed by
-> NurseScheduleInstance.runCommandLoopUntilExit().
->
-> This calls NurseScheduleActions.addSchedule() which calls
-> NurseScheduleUI.inputToCreateSchedule().
+1. User inputs add command which is processed by NurseScheduleInstance.runCommandLoopUntilExit().
+2. This calls NurseScheduleActions.addSchedule() which calls NurseScheduleUI.inputToCreateSchedule().
 
-Creating NurseSchedule object with User Input
+Creating NurseSchedule object with User Input:
 
-> NurseScheduleUI.inputToCreateSchedule() creates a new NurseSchedule
-> object and is stored into an existing ArrayList\<NurseSchedule\>
-> nurseSchedules which contains all the nurse schedule objects
+3. NurseScheduleUI.inputToCreateSchedule() creates a new NurseSchedule object and is stored into an existing ArrayList\<NurseSchedule\>
+nurseSchedules which contains all the nurse schedule objects
 
-Saving NurseSchedule objects into .txt file
+Saving NurseSchedule objects into .txt file:
 
-> The command loop then calls NurseScheduleStorage.writeToFile() which
-> starts the process of writing details of all existing Nurse Schedule
-> objects within the ArrayList to the specified .txt file
+4. The command loop then calls NurseScheduleStorage.writeToFile() which starts the process of writing details of all existing Nurse Schedule objects within the ArrayList to the specified .txt file
 
-list \[Nurse ID\] or list \[all\]:
+### **Listing Nurse Schedules**
 
-[Implementation:]{.ul}
+### Implementation:
 
 When the user attempts to list nurse schedules, they will have the
 choice of listing all schedules or a specified nurse id's schedule. This
 is similar to a search function. This will access the
 NurseScheduleActions class.
 
+*list* \[Nurse ID\] or list \[all\]:
+
 Getting User Input
 
-1.  User inputs list \[Nurse ID/all\] command.
-
-2.  Command loop calls NurseScheduleActions.listSchedules().
+1. User inputs list \[Nurse ID/all\] command.
+2. Command loop calls NurseScheduleActions.listSchedules().
 
 Gathering necessary schedules
 
-3.  listSchedules will call listAllSchedules() if the user inputs all,
-    > else it will check if Nurse ID is valid and call
-    > getNurseSchedulesById().
+3. listSchedules will call listAllSchedules() if the user inputs all, else it will check if Nurse ID is valid and call getNurseSchedulesById().
 
 Printing schedules
 
-4.  printSchedules() is then called to print all schedules.
+4. printSchedules() is then called to print all schedules.
 
-```{=html}
-<!-- -->
-```
-1.  delete \[Nurse ID\] \[Date (DDMMYYYY)\]:
+### **Deleting Nurse Schedules**
 
--   When a delete command is
-    > issued,NurseScheduleActions.deleteSchedule() is called.
+### Implementation:
 
--   deleteSchedule() loops through the array list nurseSchedules to find
-    > all objects that are equal to given \[Nurse ID\] and \[Date
-    > (DDMMYYYY)\].
+When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed.
 
--   Found objects are then removed by nurseSchedules.remove().
+*delete* \[Nurse ID\] \[Date (DDMMYYYY)\]:
 
-###  
+Getting User Input
+
+1. User inputs delete \[Nurse ID\] \[Date (DDMMYYYY)\] command
+2. Command loop calls NurseSchedulesActions.deleteSchedule().
+
+Deleting Schedule
+
+3. deleteSchedule() loops through the arraylist of schedules and calls remove() to delete the specified schedule. 
 
 ### **Doctor Appointment-related Features**
 

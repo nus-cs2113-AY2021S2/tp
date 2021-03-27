@@ -36,6 +36,8 @@ public class NurseScheduleStorage {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error loading saved file!");
         }
     }
 
