@@ -1,12 +1,18 @@
 package seedu.fridgefriend.command;
 
-
-import seedu.fridgefriend.food.Food;
-import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.LoggingHandler;
 import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
 
+/**
+ * Represents a command to read the history data from the history textfile
+ * History textfile is stored by default in data/historyData.txt.
+ * Food data is automatically added into history textfile
+ * after every AddCommand is called.
+ * History can also be cleared
+ * using command "history clear".
+ *
+ */
 public class HistoryCommand extends Command {
 
     private final String description;
@@ -19,8 +25,10 @@ public class HistoryCommand extends Command {
     @Override
     public void execute() {
         if (isClearHistory()) {
+            LoggingHandler.logInfo("Proceeding to clear history file.");
             clearHistory();
         } else {
+            LoggingHandler.logInfo("Keyword 'clear' not found. Proceeding to print history:");
             printHistory();
         }
     }

@@ -22,6 +22,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+/**
+ * Reads data from,
+ * and writes data to,
+ * the local disk.
+ *
+ */
 public class Storage {
     private static final String DATA_FILE_PATH = "data/fridgeData.txt";
     private static final String HISTORY_FILE_PATH = "data/historyData.txt";
@@ -248,7 +254,7 @@ public class Storage {
     /**
      * Loads the saved data into a fridge that represents the history of items added.
      *
-     * @return
+     * @return String that contains the list of data in history textfile.
      */
     public static String loadHistoryData() {
         try {
@@ -265,8 +271,6 @@ public class Storage {
      * Creates a history data textfile and the folder directory if it does not already exist.
      *
      * @throws FileNotFoundException if file does not exist
-     * @throws EmptyDescriptionException if quantity in data file is empty
-     * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void checkHistoryDirectory()
             throws FileNotFoundException {
@@ -300,10 +304,9 @@ public class Storage {
         history = message.toString();
     }
 
-
-
     /**
-     * Appends food item to history data file.
+     * Appends food item to history data textfile.
+     * Is called after every AddCommand.
      *
      */
     public static void saveHistoryData(Food foodInput) {
@@ -322,7 +325,7 @@ public class Storage {
     }
 
     /**
-     * Clears history data file.
+     * Clears history data textfile.
      *
      */
     public static void clearHistoryData() {
