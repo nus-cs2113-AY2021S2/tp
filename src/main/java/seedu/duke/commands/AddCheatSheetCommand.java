@@ -55,10 +55,4 @@ public class AddCheatSheetCommand extends Command {
         assert Files.isDirectory(path) : "Directory missing";
         return directoryPath;
     }
-
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

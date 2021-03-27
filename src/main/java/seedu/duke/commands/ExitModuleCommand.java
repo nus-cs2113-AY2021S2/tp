@@ -20,9 +20,4 @@ public class ExitModuleCommand extends Command {
         ModuleList.reset();
         ui.printMessage(String.format(MESSAGE_CLOSED_MODULE, moduleCode));
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

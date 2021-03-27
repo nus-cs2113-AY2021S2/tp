@@ -14,9 +14,4 @@ public class ListTasksCommand extends Command {
     public void execute(UI ui) {
         ui.printAllTasks();
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

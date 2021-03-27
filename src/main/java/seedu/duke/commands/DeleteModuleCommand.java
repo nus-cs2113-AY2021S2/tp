@@ -40,11 +40,6 @@ public class DeleteModuleCommand extends Command {
         ui.printMessage(deletedMessage);
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Returns string containing instructions and module list.
      *

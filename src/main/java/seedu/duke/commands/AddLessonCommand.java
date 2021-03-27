@@ -37,9 +37,4 @@ public class AddLessonCommand extends Command {
         ModuleList.writeModule();
         ModuleList.sortLessons();
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

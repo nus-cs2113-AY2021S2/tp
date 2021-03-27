@@ -33,9 +33,4 @@ public class ListModulesCommand extends Command {
             ui.printMessage(listMessage);
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

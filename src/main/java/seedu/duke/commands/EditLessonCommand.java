@@ -164,9 +164,4 @@ public class EditLessonCommand extends Command {
             numbering++;
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

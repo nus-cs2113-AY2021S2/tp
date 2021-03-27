@@ -35,9 +35,4 @@ public class AddTaskCommand extends Command {
         ModuleList.writeModule();
         ModuleList.sortTasks();
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

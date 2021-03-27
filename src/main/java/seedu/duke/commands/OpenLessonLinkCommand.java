@@ -70,11 +70,6 @@ public class OpenLessonLinkCommand extends Command {
         printLessonsLink(lessonList, indices, ui);
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
-    }
-
     /**
      * Prints list of links opened.
      *

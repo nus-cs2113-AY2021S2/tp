@@ -57,9 +57,4 @@ public class MarkAsUndoneCommand extends Command {
         ui.printSummarisedTasks(doneTasks);
         ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_UNMARK));
     }
-    
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

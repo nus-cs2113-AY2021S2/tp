@@ -32,9 +32,4 @@ public class EnterModuleCommand extends Command {
             throw new CommandException(String.format(MESSAGE_INVALID_MODULE, moduleCode));
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

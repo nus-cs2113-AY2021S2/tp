@@ -38,9 +38,4 @@ public class ViewTeachingStaffCommand extends Command {
             counter++;
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

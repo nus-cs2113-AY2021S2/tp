@@ -41,9 +41,4 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
         Files.delete(path);
         ui.printMessage(String.format(MESSAGE_FILE_HAS_BEEN_DELETED, fileName));
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }
