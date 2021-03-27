@@ -62,6 +62,6 @@ class RecordCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             recordCommand.execute();
         });
-        assertEquals("Please give me more details about the patient's visit", exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, exception.getMessage());
     }
 }

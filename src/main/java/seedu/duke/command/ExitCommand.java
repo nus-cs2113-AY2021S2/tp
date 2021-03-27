@@ -22,7 +22,7 @@ public class ExitCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() {
         ui.printMessage(Constants.EXIT_MESSAGE);
     }
 }
