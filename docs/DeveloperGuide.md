@@ -39,10 +39,10 @@ The `add note` command calls `NotesStorage#overwriteNotesListFile()`, causing  t
 Step 4. The user executes `delete note E4/1` to remove a note with the given note index from that location, assuming that it exists. <br /> 
 The `delete note` command also calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
 Step 5. The user executes `like E4` command to add a location to favourites. <br /> The `like` command calls `FavouriteLocationsStorage#save()`, causing the modified state of the `favouritesList` to be saved into the `favouritesList.txt`. <br />
-Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`,  `HistoryRouteStorage#overwriteHistoryListFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
-but not all files will be modified. The above steps explains which files will be modified after the commands listed above are called.
-For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList` and `favouritesList`. 
-Thus, the `notesList.txt` `routesHistoryList.txt` and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
+Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`, `DailyRouteStorage#overwriteDailyRouteFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
+but not all files will be modified. The above steps explains which lists will be modified after the commands listed above are called.
+For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
+Thus, the `aliasList.txt`, `routesHistoryList.txt`, `notesList.txt`, `dailyRouteList.txt`  and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
 #### Design Consideration
 Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 Pros: Easy to implement. <br/>
