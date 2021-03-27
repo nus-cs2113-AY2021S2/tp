@@ -10,16 +10,16 @@ public class Recommendation {
     /**
      * Creates a recommendation.
      *
-     * @param input_title       title of the review
-     * @param input_category    category of the experience
-     * @param input_price      rating of the experience
-     * @param input_by description of the experience
+     * @param inputTitle    title of the recommendation
+     * @param inputCategory category of the recommendation
+     * @param inputPrice    price of the recommendation
+     * @param inputBy       description of the recommended person
      */
-    public Recommendation(String input_title, String input_category, int input_price, String input_by){
-        this.title = input_title;
-        this.category = input_category;
-        this.price = input_price;
-        this.recommendedBy = input_by;
+    public Recommendation(String inputTitle, String inputCategory, int inputPrice, String inputBy) {
+        this.title = inputTitle;
+        this.category = inputCategory;
+        this.price = inputPrice;
+        this.recommendedBy = inputBy;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Recommendation {
      * @return recommendations in a single string
      */
     public String recommendationToText() {
-        return  getTitle() + "|" + getCategory() + "|" + getPrice() + "|" + getRecommendedBy();
+        return getTitle() + "|" + getCategory() + "|" + getPrice() + "|" + getRecommendedBy();
     }
 
     /**
@@ -140,9 +140,10 @@ public class Recommendation {
      */
     public static Recommendation textToRecommendation(String recommendation) {
         String[] recommendationFields = recommendation.split("\\|", 4);
-        Recommendation data_rec = new Recommendation(recommendationFields[0], recommendationFields[1], Integer.parseInt(recommendationFields[1]),
+        Recommendation dataRec = new Recommendation(recommendationFields[0], recommendationFields[1],
+                Integer.parseInt(recommendationFields[1]),
                 recommendationFields[3]);
-        return data_rec;
+        return dataRec;
     }
 }
 

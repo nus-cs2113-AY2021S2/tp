@@ -26,12 +26,12 @@ public class Connoisseur {
         Storage storage = new Storage(ui);
         CommandList commandList;
         if (storage.retrieveConnoisseurTextFile() & storage.retrieveRecommendationTextFile()) {
-            commandList = new CommandList(storage.loadConnoisseurData(),storage.loadRecommendationData(), ui, storage);
-        } else if(storage.retrieveConnoisseurTextFile() & !storage.retrieveRecommendationTextFile()) {
+            commandList = new CommandList(storage.loadConnoisseurData(), storage.loadRecommendationData(), ui, storage);
+        } else if (storage.retrieveConnoisseurTextFile() & !storage.retrieveRecommendationTextFile()) {
             commandList = new CommandList(storage.loadConnoisseurData(), new ArrayList<>(), ui, storage);
-        }else if(!storage.retrieveConnoisseurTextFile() & storage.retrieveRecommendationTextFile()) {
-            commandList = new CommandList(new ArrayList<>(),storage.loadRecommendationData(), ui, storage);
-        }else{
+        } else if (!storage.retrieveConnoisseurTextFile() & storage.retrieveRecommendationTextFile()) {
+            commandList = new CommandList(new ArrayList<>(), storage.loadRecommendationData(), ui, storage);
+        } else {
             commandList = new CommandList(ui, storage);
         }
         ui.printGreeting();

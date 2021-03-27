@@ -28,9 +28,11 @@ public class Storage {
     private static String connoisseurFilePath;
     private static String recommendationFilePath;
     private Ui ui;
+    ArrayList<String> reviewList = new ArrayList<>();
+    ArrayList<String> recommendationsList = new ArrayList<>();
 
     /**
-     * Constructor for Storage class. 
+     * Constructor for Storage class.
      */
     public Storage(Ui ui) {
         logger.setLevel(Level.OFF);
@@ -98,7 +100,6 @@ public class Storage {
      * @return Loaded review into connoisseur's list unformatted.
      */
     public ArrayList<String> loadConnoisseurData() {
-        ArrayList<String> reviewList = new ArrayList<>();
         try {
             File connoisseurData = new File(connoisseurFilePath);
             Scanner connoisseurFileScanner = new Scanner(connoisseurData);
@@ -113,19 +114,19 @@ public class Storage {
         }
         return reviewList;
     }
+
     /**
      * Loads information from data.txt into recommendationsList without change.
      *
-     * @return Loaded recommendations into crecommendationsList unformatted.
+     * @return Loaded recommendations into recommendationsList unformatted.
      */
     public ArrayList<String> loadRecommendationData() {
-        ArrayList<String> recommendationsList = new ArrayList<>();
         try {
             File recommendationData = new File(recommendationFilePath);
             Scanner recommendationFileScanner = new Scanner(recommendationData);
             String recommendationsToLoad;
 
-            while(recommendationFileScanner.hasNextLine()){
+            while (recommendationFileScanner.hasNextLine()) {
                 recommendationsToLoad = recommendationFileScanner.nextLine();
                 recommendationsList.add(recommendationsToLoad);
             }
