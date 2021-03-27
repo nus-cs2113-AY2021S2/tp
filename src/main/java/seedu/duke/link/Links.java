@@ -24,50 +24,49 @@ public class Links {
                     externalLinks.execute();
                 }
                 externalLinksCommandNumber = -1;
-                Ui.printLinksMessage();
-                linkIndex = Ui.readCommandToInt();
                 continue;
             case 2:
                 // add zoom links
-                Ui.printEnterZoomLinkMessage();
-                String instruction = Ui.readCommand();
-                String[] words = instruction.split(" ");
-                try {
-                    ZoomLinkInfo.addZoomLink(words[0], words[1]);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    Ui.printNoInputDetected();
-                    continue;
-                }
-                Ui.printZoomLinksAdded(words[0], words[1]);
-                Ui.printLinksMessage();
-                linkIndex = Ui.readCommandToInt();
+                add();
                 break;
             case 3:
                 // delete zoom links
-                viewLinks();
-                Ui.printLinkToDelete();
-                ZoomLinkInfo.deleteZoomLink();
-                Ui.printLinksMessage();
-                linkIndex = Ui.readCommandToInt();
+                delete();
                 break;
             case 4:
                 // view zoom links
                 viewLinks();
-                Ui.printLinksMessage();
-                linkIndex = Ui.readCommandToInt();
                 break;
             case 5:
                 // exit
                 return;
             default:
                 Ui.printInvalidIntegerMessage();
-                Ui.printLinksMessage();
-                linkIndex = Ui.readCommandToInt();
             }
+            Ui.printLinksMessage();
+            linkIndex = Ui.readCommandToInt();
         }
     }
 
-    public void viewLinks() {
+    public static void add() {
+        Ui.printEnterZoomLinkMessage();
+        String instruction = Ui.readCommand();
+        ZoomLinkInfo.addZoomLink(instruction);
+        Ui.printZoomLinksAdded(instruction);
+    }
+
+    public static void delete () {
+        viewLinks();
+        Ui.printLinkToDelete();
+        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+        try {
+            ZoomLinkInfo.deleteZoomLink(deleteIndex);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Oops you have entered an invalid index number...");
+        }
+    }
+
+    public static void viewLinks() {
         if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
             Ui.printListIsEmpty();
             return;

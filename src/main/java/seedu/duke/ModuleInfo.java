@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.link.Links;
+import seedu.duke.link.ZoomLinkInfo;
 import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
@@ -50,7 +52,7 @@ public class ModuleInfo {
                     TaskManager.addNewTask();
                     break;
                 case 8:
-                    //addZoomLink method
+                    Links.add();
                     break;
                 case 9:
                     addReview();
@@ -65,7 +67,7 @@ public class ModuleInfo {
                     TaskManager.deleteTask();
                     break;
                 case 13:
-                    //deleteZoomLink method
+                    Links.delete();
                     break;
                 case 14:
                     deleteReview();

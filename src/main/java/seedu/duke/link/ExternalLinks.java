@@ -41,7 +41,7 @@ public class ExternalLinks extends Links {
         }
     }
 
-    public void viewLinks() {
+    public static void viewLinks() {
         if (LinkInfo.linksList.isEmpty()) {
             Ui.printListIsEmpty();
             return;
