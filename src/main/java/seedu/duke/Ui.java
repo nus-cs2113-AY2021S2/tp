@@ -282,7 +282,8 @@ public class Ui {
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine();
+        command = input.nextLine().trim();
+        printHorizontalLine();
         return command;
     }
 
