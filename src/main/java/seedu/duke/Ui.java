@@ -43,7 +43,7 @@ public class Ui {
     }
 
     public static void printMainMenu() {
-        System.out.println("Main Menu:\n"
+        System.out.println("\nMain Menu:\n"
                 + "[1] Module Information\n"
                 + "[2] CAP Simulator/Calculator\n"
                 + "[3] Task Manager\n"
@@ -282,7 +282,8 @@ public class Ui {
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine();
+        command = input.nextLine().trim();
+        printHorizontalLine();
         return command;
     }
 
@@ -599,5 +600,11 @@ public class Ui {
 
     public static void printZoomLinkDeleted(ZoomLinkInfo zoomLink) {
         System.out.println("You have deleted --- " + zoomLink.getDescription());
+    }
+
+    public static void printModuleNumberDoesNotExistMessage() {
+        System.out.println("A module for that number does not exist. "
+                + "You can add modules through the ModuleInfo menu!");
+        printHorizontalLine();
     }
 }

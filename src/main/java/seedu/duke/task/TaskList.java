@@ -42,6 +42,9 @@ public class TaskList {
 
         Ui.printAddTaskModuleMessage(taskTypeNumber);
         String module = getModule();
+        if (module.equals("")) {
+            return;
+        }
         Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
@@ -107,9 +110,13 @@ public class TaskList {
             System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
         }
         int moduleNumber = Integer.parseInt(Ui.readCommand());
-        String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
-
-        return module;
+        try {
+            String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
+            return module;
+        } catch (IndexOutOfBoundsException e) {
+            Ui.printModuleNumberDoesNotExistMessage();
+            return "";
+        }
     }
 
     public static String getTime(int taskNumber) {
@@ -191,16 +198,16 @@ public class TaskList {
                 Ui.printHorizontalLine();
                 switch (taskTypeNumber) {
                 case 1:
-                    toggleTaskStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Task]");
                     break;
                 case 2:
-                    toggleAssigmentStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Assignment]");
                     break;
                 case 3:
-                    toggleMidtermStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Midterm]");
                     break;
                 case 4:
-                    toggleFinalExamStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Final Exam]");
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -270,107 +277,48 @@ public class TaskList {
         return isEmpty;
     }
 
-    public static void toggleTaskStatus(int taskNumber) {
-        Task task = tasks.get(taskNumber - 1);
+    public static void toggleTaskStatus(int taskNumber, String taskType) {
+        Task task = getTaskToMarkOrUnMark(taskType, taskNumber);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
         String notDone = "[    ] ";
+
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
+            assert input.equalsIgnoreCase("Y") : "if input is not Y, should catch exception";
+            if (input.equalsIgnoreCase("Y")) {
                 task.markAsUnDone();
+                markPinnedTaskAsUnDone(taskType, task.getModule(), task.getDescription());
                 assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
+            assert input.equalsIgnoreCase("Y") : "if input is not Y, should catch exception";
+            if (input.equalsIgnoreCase("Y")) {
                 task.markAsDone();
+                markPinnedTaskAsDone(taskType, task.getModule(), task.getDescription());
                 assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
     }
 
-    public static void toggleAssigmentStatus(int taskNumber) {
-        Assignment task = assignments.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsDone();
-                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
-                Ui.printMarkedTaskMessage(task);
-            }
-        }
-    }
-
-    public static void toggleMidtermStatus(int taskNumber) {
-        Midterm task = midterms.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsDone();
-                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
-                Ui.printMarkedTaskMessage(task);
-            }
-        }
-    }
-
-    public static void toggleFinalExamStatus(int taskNumber) {
-        FinalExam task = finalExams.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            assert input.equals("Y") : "if input is not Y, should catch exception";
-            if (input.equals("Y")) {
-                task.markAsDone();
-                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
-                Ui.printMarkedTaskMessage(task);
-            }
+    public static Task getTaskToMarkOrUnMark(String taskType, int taskNumber) {
+        switch (taskType) {
+        case "[Task]":
+            return tasks.get(taskNumber - 1);
+        case "[Assignment]":
+            return assignments.get(taskNumber - 1);
+        case "[Midterm]":
+            return midterms.get(taskNumber - 1);
+        case "[Final Exam]":
+            return finalExams.get(taskNumber - 1);
+        default:
+            System.out.println("Task type does not exist!");
+            return null;
         }
     }
 
@@ -475,6 +423,34 @@ public class TaskList {
         assert pinnedTasks.get(taskTypeName).contains(task) : "Task was not added to pinned list";
         Ui.printPinnedTaskMessage(task);
         return;
+    }
+
+    public static void markPinnedTaskAsDone(String tasktype, String module, String description) {
+        if (!pinnedTasks.containsKey(tasktype)) {
+            return;
+        }
+        ArrayList<Task> tasks = pinnedTasks.get(tasktype);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            if (isSameModule && isSameDescription) {
+                task.markAsDone();
+            }
+        }
+    }
+
+    public static void markPinnedTaskAsUnDone(String tasktype, String module, String description) {
+        if (!pinnedTasks.containsKey(tasktype)) {
+            return;
+        }
+        ArrayList<Task> tasks = pinnedTasks.get(tasktype);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            if (isSameModule && isSameDescription) {
+                task.markAsUnDone();
+            }
+        }
     }
 
 }

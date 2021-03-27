@@ -30,6 +30,7 @@ public class Duke {
         StorageModuleInfo.loadLinkInfoFile();
         StorageModuleInfo.loadZoomLinkInfoFile();
         while (true) {
+            Ui.printPinnedTaskList(TaskList.pinnedTasks);
             Ui.printMainMenu();
             String command = Ui.readCommand();
             try {

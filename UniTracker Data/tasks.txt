@@ -1,1 +1,2 @@
-CS2113T ~~ [DONE]  ~~ yes ~~ woo
+CS2113T ~~ [    ]  ~~ yes ~~ woo
+CS1010 ~~ [    ]  ~~ test2 ~~ testingagain
