@@ -32,7 +32,7 @@ public class ModuleInfo {
                     addNewModule();
                     break;
                 case 2:
-                    viewAModule(); //becomes viewAModule method
+                    viewAModule();
                     break;
                 case 3:
                     getComponents();
@@ -113,7 +113,12 @@ public class ModuleInfo {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
             Ui.printHorizontalLine();
-            System.out.println(module.toString());
+            System.out.println(module.toString()); //name, description, review are printed
+
+
+            // add other methods to print other features of a module
+
+
             Ui.printHorizontalLine();
         } else {
             Ui.printInvalidIntegerMessage();
