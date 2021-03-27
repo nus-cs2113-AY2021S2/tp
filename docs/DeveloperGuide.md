@@ -6,8 +6,8 @@
 
 ### [Proposed] Save feature for location aliases, visited routes, tagged notes & favourite locations 
 #### Proposed Implementation
-The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `FavouriteLocationsStorage` subclasses. </br>
-They extend `Storage` (superclass) with a feature to save the block aliases,  history of visited routes, tagged notes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList` and `favouritesList`. <br />
+The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
+They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
 Additionally, they implement the following operations: <br/>
 `AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
 `AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
@@ -15,9 +15,11 @@ Additionally, they implement the following operations: <br/>
 `HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
 `NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
 `NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
+`DailyRouteStorage#loadDailyRoute()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
+`DailyRouteStorage#overwriteDailyRouteFile()` Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
 `FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
 `FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
-These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile` <br />
+These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile`. <br />
 The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
 ![img.png](Overview%20for%20Safe%20Feature.png)
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
@@ -41,12 +43,12 @@ but not all files will be modified. The above steps explains which files will be
 For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList` and `favouritesList`. 
 Thus, the `notesList.txt` `routesHistoryList.txt` and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
 #### Design Consideration
-Alternative 1 (current choice): Saves the entire list of notes tagged, routing history and favourite locations. <br/>
+Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 Pros: Easy to implement. <br/>
 Cons: Only highly effective when limited to use of one user. <br/>
 
 ### Daily route planning when daily schedule is input
-####Current Implementation
+#### Current Implementation
 The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
 `AddDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
 `DaySchedulePair` class is implemented to act as a pair between a day input String and schedule ArrayList.
@@ -66,7 +68,7 @@ Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to 
 
 
 ### Finding the Shortest Route
-####Current Implementation
+#### Current Implementation
 
 The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map`, `Block`, and `BlockAlias` class to return the shortest path.
 
@@ -79,8 +81,8 @@ Step 2. The Router will then run the `findShortestRoute()` method which is a rou
 Step 3. The `UiManager` will then show the shortest route to the user through `showToUser()` method.<br />
 
 
-###[Proposed] Custom aliases feature
-####Proposed Implementation
+### [Proposed] Custom aliases feature
+#### Proposed Implementation
 The proposed custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
 
 The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` classes extends the `Command` class. These command classes contain the respective `execute` functions for adding, viewing and deleting the user's custom aliases.
