@@ -600,4 +600,10 @@ public class Ui {
     public static void printZoomLinkDeleted(ZoomLinkInfo zoomLink) {
         System.out.println("You have deleted --- " + zoomLink.getDescription());
     }
+
+    public static void printModuleNumberDoesNotExistMessage() {
+        System.out.println("A module for that number does not exist. "
+                + "You can add modules through the ModuleInfo menu!");
+        printHorizontalLine();
+    }
 }

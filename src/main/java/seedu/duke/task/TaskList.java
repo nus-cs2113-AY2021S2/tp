@@ -42,6 +42,9 @@ public class TaskList {
 
         Ui.printAddTaskModuleMessage(taskTypeNumber);
         String module = getModule();
+        if (module.equals("")) {
+            return;
+        }
         Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
@@ -107,9 +110,13 @@ public class TaskList {
             System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
         }
         int moduleNumber = Integer.parseInt(Ui.readCommand());
-        String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
-
-        return module;
+        try {
+            String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
+            return module;
+        } catch (IndexOutOfBoundsException e) {
+            Ui.printModuleNumberDoesNotExistMessage();
+            return "";
+        }
     }
 
     public static String getTime(int taskNumber) {
