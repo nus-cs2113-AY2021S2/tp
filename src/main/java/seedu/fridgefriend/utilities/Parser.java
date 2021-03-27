@@ -357,7 +357,7 @@ public class Parser {
         try {
             int quantity = Integer.parseInt(description);
             return quantity;
-        } catch (Exception e) {
+        } catch (NumberFormatException numberFormatException) {
             throw new InvalidQuantityException();
         }
     }
