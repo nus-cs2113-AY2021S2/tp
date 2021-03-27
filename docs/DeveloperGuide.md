@@ -4,7 +4,7 @@
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.} 
 
-### [Proposed] Save feature for location aliases, visited routes, tagged notes & favourite locations 
+### [Proposed] Save feature for location aliases, visited routes, tagged notes, daily routes & favourite locations 
 #### Proposed Implementation
 The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
 They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
