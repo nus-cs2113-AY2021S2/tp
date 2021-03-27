@@ -24,7 +24,8 @@ class HistoryCommandTest {
     }
 
     @Test
-    public void historyCommand_SuccessfullyReadHistory() throws InvalidDateException, RepetitiveFoodIdentifierException {
+    public void historyCommand_SuccessfullyReadHistory() throws InvalidDateException,
+            RepetitiveFoodIdentifierException {
         AddCommand addCommand1 = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand1.setData(fridge);
@@ -67,7 +68,6 @@ class HistoryCommandTest {
 
         String actualMessage = HistoryCommand.getHistoryMessage();
         assertEquals(expectedMessage, actualMessage);
-
     }
 
 }
