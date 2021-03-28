@@ -105,7 +105,7 @@ public class UI {
         for (Task task : taskList) {
             if (task.getDone() == isDone) {
                 tasksCount++;
-                printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getFullTaskString()));
+                printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getTaskString()));
             }
         }
         if (tasksCount == INDEX_FIRST) {
