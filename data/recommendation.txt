@@ -1,2 +1,0 @@
-reco1|new|2|tele
-reco2|new|4|idk
