@@ -2,7 +2,11 @@ package seedu.duke;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 import seedu.duke.task.command.AddTask;
 import seedu.duke.task.command.DeleteTask;
 import seedu.duke.task.command.PinTask;
@@ -198,7 +202,7 @@ class TaskListTest {
 
         AddTask.addTask(module, description, message);
         assertFalse(TaskManager.tasks.isEmpty());
-        DeleteTask.findAndDeleteTask(1);
+        DeleteTask.findAndDeleteTask(1, "[Task]");
         assertTrue(TaskManager.tasks.isEmpty());
     }
 
@@ -211,7 +215,7 @@ class TaskListTest {
 
         AddTask.addAssignment(module, description, message, dateAndTime);
         assertFalse(TaskManager.assignments.isEmpty());
-        DeleteTask.findAndDeleteAssigment(1);
+        DeleteTask.findAndDeleteTask(1, "[Assignment]");
         assertTrue(TaskManager.assignments.isEmpty());
     }
 
@@ -224,7 +228,7 @@ class TaskListTest {
 
         AddTask.addMidterm(module, description, message, dateAndTime);
         assertFalse(TaskManager.midterms.isEmpty());
-        DeleteTask.findAndDeleteMidterm(1);
+        DeleteTask.findAndDeleteTask(1, "[Midterm]");
         assertTrue(TaskManager.midterms.isEmpty());
     }
 
@@ -237,7 +241,7 @@ class TaskListTest {
 
         AddTask.addFinalExam(module, description, message, dateAndTime);
         assertFalse(TaskManager.finalExams.isEmpty());
-        DeleteTask.findAndDeleteFinalExam(1);
+        DeleteTask.findAndDeleteTask(1, "[Final Exam]");
         assertTrue(TaskManager.finalExams.isEmpty());
     }
 

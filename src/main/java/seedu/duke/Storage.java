@@ -11,7 +11,11 @@ import java.util.Scanner;
 import java.util.Set;
 
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications

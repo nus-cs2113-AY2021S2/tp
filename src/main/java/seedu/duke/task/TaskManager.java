@@ -70,15 +70,14 @@ public class TaskManager {
         Ui.printAddTaskMenu();
         int taskTypeNumber = getTaskNumber();
 
-        //AddTask.addNewTask(taskTypeNumber);
-        AddTask addTask = new AddTask(taskTypeNumber);
+        AddTask.execute(taskTypeNumber);
     }
 
     private static void markOrUnmarkTask() {
         Ui.printMarkTaskMenu();
         int taskTypeNumber = getTaskNumber();
 
-        MarkOrUnmarkTask.markOrUnmarkTask(taskTypeNumber);
+        MarkOrUnmarkTask.execute(taskTypeNumber);
 
     }
 
@@ -100,15 +99,14 @@ public class TaskManager {
         Ui.printPinTaskMenu();
         int taskTypeNumber = getTaskNumber();
 
-        PinTask.pinTask(taskTypeNumber);
+        PinTask.execute(taskTypeNumber);
     }
 
     public static void deleteTask() {
         Ui.printDeleteTaskMenu();
         int taskTypeNumber = getTaskNumber();
-        Ui.printHorizontalLine();
 
-        DeleteTask.deleteTask(taskTypeNumber);
+        DeleteTask.execute(taskTypeNumber);
     }
 
     public static boolean isValidTaskType(String command) {
@@ -157,5 +155,54 @@ public class TaskManager {
             Ui.printInvalidIntegerMessage();
         }
         return isEmpty;
+    }
+
+    public static boolean compareTasks(String taskType, String module, String description,
+                                       String status, String message) {
+        if (!pinnedTasks.containsKey(taskType)) {
+            return false;
+        }
+        ArrayList<Task> tasks = pinnedTasks.get(taskType);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            boolean isSameStatus = task.getStatus().equals(status);
+            boolean isSameMessage = task.getMessage().equals(message);
+            if (isSameModule && isSameDescription && isSameStatus & isSameMessage) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Task getPinnedTask(String taskType, String module, String description,
+                                       String status, String message) {
+        ArrayList<Task> tasks = pinnedTasks.get(taskType);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            boolean isSameStatus = task.getStatus().equals(status);
+            boolean isSameMessage = task.getMessage().equals(message);
+            if (isSameModule && isSameDescription && isSameStatus & isSameMessage) {
+                return task;
+            }
+        }
+        return null;
+    }
+
+    public static Task getTask(String taskType, int taskNumber) {
+        switch (taskType) {
+        case "[Task]":
+            return tasks.get(taskNumber - 1);
+        case "[Assignment]":
+            return assignments.get(taskNumber - 1);
+        case "[Midterm]":
+            return midterms.get(taskNumber - 1);
+        case "[Final Exam]":
+            return finalExams.get(taskNumber - 1);
+        default:
+            System.out.println("Task type does not exist!");
+            return null;
+        }
     }
 }

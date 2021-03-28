@@ -1,10 +1,21 @@
 package seedu.duke.task.command;
 
 import seedu.duke.Ui;
-import seedu.duke.task.*;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 
 public class DeleteTask {
-    public static void deleteTask(int taskTypeNumber) {
+
+    private static final int DELETE_TASK = 1;
+    private static final int DELETE_ASSIGNMENT = 2;
+    private static final int DELETE_MIDTERM = 3;
+    private static final int DELETE_FINAL_EXAM = 4;
+    private static final String TASK_TYPE = "[Task]";
+    private static final String ASSIGNMENT_TYPE = "[Assignment]";
+    private static final String MIDTERM_TYPE = "[Midterm]";
+    private static final String FINAL_EXAM_TYPE = "[Final Exam]";
+
+    public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
             return;
@@ -13,19 +24,18 @@ public class DeleteTask {
         while (true) {
             try {
                 int taskNumber = Integer.parseInt(Ui.readCommand());
-                Ui.printHorizontalLine();
                 switch (taskTypeNumber) {
-                case 1:
-                    findAndDeleteTask(taskNumber);
+                case DELETE_TASK:
+                    findAndDeleteTask(taskNumber, TASK_TYPE);
                     break;
-                case 2:
-                    findAndDeleteAssigment(taskNumber);
+                case DELETE_ASSIGNMENT:
+                    findAndDeleteTask(taskNumber, ASSIGNMENT_TYPE);
                     break;
-                case 3:
-                    findAndDeleteMidterm(taskNumber);
+                case DELETE_MIDTERM:
+                    findAndDeleteTask(taskNumber, MIDTERM_TYPE);
                     break;
-                case 4:
-                    findAndDeleteFinalExam(taskNumber);
+                case DELETE_FINAL_EXAM:
+                    findAndDeleteTask(taskNumber, FINAL_EXAM_TYPE);
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -39,59 +49,47 @@ public class DeleteTask {
         }
     }
 
-    public static void findAndDeleteTask(int taskNumber) {
-        Task deletedTask = TaskManager.tasks.get(taskNumber - 1);
-        TaskManager.tasks.remove(deletedTask);
-        boolean typeTaskIsPinned = TaskManager.pinnedTasks.containsKey("[Task]");
+    public static void findAndDeleteTask(int taskNumber, String taskType) {
+        Task task = TaskManager.getTask(taskType, taskNumber);
+        deleteTask(taskType, task);
+        boolean typeTaskIsPinned = TaskManager.pinnedTasks.containsKey(taskType);
         if (typeTaskIsPinned) {
-            assert TaskManager.pinnedTasks.containsKey("[Task]") : "Pinned task list for task should exist";
-            if (TaskManager.pinnedTasks.get("[Task]").contains((deletedTask))) {
-                assert !TaskManager.pinnedTasks.get("[Task]").isEmpty() : "Pinned task list should not be empty";
-                TaskManager.pinnedTasks.get("[Task]").remove(deletedTask);
-            }
+            assert TaskManager.pinnedTasks.containsKey(taskType) : "Pinned task list for task should exist";
+            assert task != null : "Task should not be null";
+            findAndDeletePinnedTask(taskType, task);
         }
-        Ui.printDeletedTaskMessage(deletedTask);
+        assert task != null : "Task should not be null";
+        Ui.printDeletedTaskMessage(task);
     }
 
-    public static void findAndDeleteAssigment(int taskNumber) {
-        Assignment deletedAssignment = TaskManager.assignments.get(taskNumber - 1);
-        TaskManager.assignments.remove(deletedAssignment);
-        boolean typeAssignmentIsPinned = TaskManager.pinnedTasks.containsKey("[Assignment]");
-        if (typeAssignmentIsPinned) {
-            assert TaskManager.pinnedTasks.containsKey("[Assignment]") : "Pinned task list for assignment should exist";
-            if (TaskManager.pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
-                assert !TaskManager.pinnedTasks.get("[Assignment]").isEmpty() : "Pinned task list should not be empty";
-                TaskManager.pinnedTasks.get("[Assignment]").remove(deletedAssignment);
-            }
+    public static void deleteTask(String taskType, Task task) {
+        switch (taskType) {
+        case TASK_TYPE:
+            TaskManager.tasks.remove(task);
+            break;
+        case ASSIGNMENT_TYPE:
+            TaskManager.assignments.remove(task);
+            break;
+        case MIDTERM_TYPE:
+            TaskManager.midterms.remove(task);
+            break;
+        case FINAL_EXAM_TYPE:
+            TaskManager.finalExams.remove(task);
+            break;
+        default:
+            System.out.println("Task type does not exist!");
         }
-        Ui.printDeletedTaskMessage(deletedAssignment);
     }
 
-    public static void findAndDeleteMidterm(int taskNumber) {
-        Midterm deletedMidterm = TaskManager.midterms.get(taskNumber - 1);
-        TaskManager.midterms.remove(deletedMidterm);
-        boolean typeMidtermIsPinned = TaskManager.pinnedTasks.containsKey("[Midterm]");
-        if (typeMidtermIsPinned) {
-            assert TaskManager.pinnedTasks.containsKey("[Midterm]") : "Pinned task list for midterm should exist";
-            if (TaskManager.pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
-                assert !TaskManager.pinnedTasks.get("[Midterm]").isEmpty() : "Pinned task list should not be empty";
-                TaskManager.pinnedTasks.get("[Midterm]").remove(deletedMidterm);
-            }
-        }
-        Ui.printDeletedTaskMessage(deletedMidterm);
-    }
 
-    public static void findAndDeleteFinalExam(int taskNumber) {
-        FinalExam deletedFinalExam = TaskManager.finalExams.get(taskNumber - 1);
-        TaskManager.finalExams.remove(deletedFinalExam);
-        boolean typeFinalExamIsPinned = TaskManager.pinnedTasks.containsKey("[Final Exam]");
-        if (typeFinalExamIsPinned) {
-            assert TaskManager.pinnedTasks.containsKey("[Final Exam]") : "Pinned task list for final exam should exist";
-            if (TaskManager.pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
-                assert !TaskManager.pinnedTasks.get("[Final Exam]").isEmpty() : "Pinned task list should not be empty";
-                TaskManager.pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
-            }
+    private static void findAndDeletePinnedTask(String taskType, Task task) {
+        boolean taskIsPinned = TaskManager.compareTasks(taskType, task.getModule(), task.getDescription(),
+                task.getStatus(), task.getMessage());
+        if (taskIsPinned) {
+            assert !TaskManager.pinnedTasks.get(taskType).isEmpty() : "Pinned task list should not be empty";
+            Task pinnedTask = TaskManager.getPinnedTask(taskType, task.getModule(), task.getDescription(),
+                    task.getStatus(), task.getMessage());
+            TaskManager.pinnedTasks.get(taskType).remove(pinnedTask);
         }
-        Ui.printDeletedTaskMessage(deletedFinalExam);
     }
 }
