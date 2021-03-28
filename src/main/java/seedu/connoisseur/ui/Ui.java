@@ -17,6 +17,7 @@ import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.REVIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.RECOMMENDATION_HELP_MESSAGE;
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -136,6 +137,9 @@ public class Ui {
         println(LIST_HELP_MESSAGE);
     }
 
+    /**
+     * Prints edit help message.
+     */
     public void printEditHelpMessage() {
         println(EDIT_HELP_MESSAGE);
     }
@@ -148,14 +152,21 @@ public class Ui {
     }
 
     /**
-     * Prints view help message.
+     * Prints view review help message.
      */
     public void printViewHelpMessage() {
         println(VIEW_HELP_MESSAGE);
     }
 
     /**
-     * Prints view help message.
+     * Prints recommendation help message.
+     */
+    public void printRecommendationHelpMessage() {
+        println(RECOMMENDATION_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints review help message.
      */
     public void printReviewHelpMessage() {
         println(REVIEW_HELP_MESSAGE);
