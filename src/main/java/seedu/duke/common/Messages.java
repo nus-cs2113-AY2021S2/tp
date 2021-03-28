@@ -196,5 +196,6 @@ public class Messages {
     public static final String MESSAGE_LIST_OF_CHEAT_SHEETS = "Here is your list of cheat-sheets:" + NEWLINE;
     public static final String MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY = "You have no cheat-sheet.";
     public static final String MESSAGE_OPEN_FILE = "Opened %s.";
+    public static final String MESSAGE_INVALID_FILE_NAME = "Invalid file name.";
 
 }
