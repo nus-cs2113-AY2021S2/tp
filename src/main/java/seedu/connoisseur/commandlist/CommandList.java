@@ -114,19 +114,20 @@ public class CommandList {
         ui.printReviewListHeading();
         for (int i = 0; i < reviewList.size(); i++) {
             Review currentReview = reviewList.get(i);
-            ui.print((i + 1) + ". ");
+            ui.print("| "+(i + 1) + ". ");
             if (i < 9) {
                 ui.print(" ");
             }
             ui.print(currentReview.getTitle());
             ui.printWhiteSpaceTitle(currentReview.getTitle().length());
-            ui.print(currentReview.getCategory());
+            ui.print("| " + currentReview.getCategory());
             ui.printWhiteSpace(currentReview.getCategory().length());
-            ui.print(currentReview.starRating());
+            ui.print("| " + currentReview.starRating());
             ui.printWhiteSpace(currentReview.starRating().length());
             System.out.print("   ");
-            ui.println(currentReview.getDateTime());
+            ui.println("| " + currentReview.getDateTime() + "   |");
         }
+        ui.printTableEndBorderForReview();
     }
 
     /**
@@ -497,20 +498,21 @@ public class CommandList {
         ui.printRecommendationListHeading();
         for (int i = 0; i < recommendationList.size(); i++) {
             Recommendation currentRecommendation = recommendationList.get(i);
-            ui.print((i + 1) + ". ");
+            ui.print("| "+ (i + 1) + ". ");
             if (i < 9) {
                 ui.print(" ");
             }
             ui.print(currentRecommendation.getTitle());
             ui.printWhiteSpaceTitle(currentRecommendation.getTitle().length());
-            ui.print(currentRecommendation.getCategory());
+            ui.print("| "+currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print(currentRecommendation.dollarRange());
-            ui.printWhiteSpace(2);
-            ui.print(currentRecommendation.getLocation());
+            ui.print("| "+currentRecommendation.dollarRange());
+            ui.printWhiteSpace(5);
+            ui.print("| "+currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
-            ui.println(currentRecommendation.getRecommendedBy());
+            ui.println("| "+currentRecommendation.getRecommendedBy()+"    |");
         }
+        ui.printTableEndBorderForReco();
     }
 
     /**
