@@ -19,11 +19,33 @@ public class Sorter {
     }
 
     /**
-     * Get sort method as string.
-     *
-     * @return SortMethod as a String
+     * Converts a string to sort method. 
+     * @param sortMethod sort method as a string
+     * @return sort method
      */
-    public String getSortMethod() {
+    public static SortMethod stringToSortMethod(String sortMethod) {
+        switch (sortMethod) {
+        case "rating":
+            return SortMethod.RATING;
+        case "category":
+            return SortMethod.CATEGORY;
+        case "title":
+            return SortMethod.TITLE;
+        case "earliest":
+            return SortMethod.EARLIEST;
+        case "latest":
+            return SortMethod.LATEST;
+        default:
+            return null;
+        }
+    }
+
+    /**
+     * Converts sort method to a readable string. 
+     * @param sortMethod sort method
+     * @return sort method as a string
+     */
+    public static String sortMethodToString(SortMethod sortMethod) {
         String sortMethodString;
         switch (sortMethod) {
         case RATING:
@@ -48,30 +70,21 @@ public class Sorter {
     }
 
     /**
+     * Get sort method as string.
+     *
+     * @return SortMethod as a String
+     */
+    public String getSortMethod() {
+        return sortMethodToString(sortMethod);
+    }
+
+    /**
      * Change default sort method for this instance.
      *
      * @param sortMethod SortMethod to be saved
      */
     public void changeSortMethod(String sortMethod) {
-        switch (sortMethod) {
-        case "rating":
-            this.sortMethod = SortMethod.RATING;
-            break;
-        case "category":
-            this.sortMethod = SortMethod.CATEGORY;
-            break;
-        case "title":
-            this.sortMethod = SortMethod.TITLE;
-            break;
-        case "earliest":
-            this.sortMethod = SortMethod.EARLIEST;
-            break;
-        case "latest":
-            this.sortMethod = SortMethod.LATEST;
-            break;
-        default:
-            break;
-        }
+        this.sortMethod = stringToSortMethod(sortMethod);
     }
 
     /**
@@ -81,23 +94,7 @@ public class Sorter {
      * @return sorted review list
      */
     public ArrayList<Review> sortReview(ArrayList<Review> reviewList) {
-        switch (this.sortMethod) {
-        case RATING:
-            sortByRating(reviewList);
-            break;
-        case CATEGORY:
-            sortByCategory(reviewList);
-            break;
-        case TITLE:
-            sortByTitle(reviewList);
-            break;
-        case EARLIEST:
-            sortByEarliest(reviewList);
-            break;
-        default:
-            sortByLatest(reviewList);
-            break;
-        }
+        reviewList = sortReview(reviewList, sortMethodToString(this.sortMethod));
         return reviewList;
     }
 
