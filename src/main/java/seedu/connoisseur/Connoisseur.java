@@ -30,12 +30,12 @@ public class Connoisseur {
             commandList = new CommandList(ui, storage);
         }
         ui.printGreeting();
-        String input;
         Parser parser = new Parser(commandList);
         boolean isExitCommand = false;
 
         while (!isExitCommand) {
             ui.println(COMMAND_PROMPT);
+            String input;
             input = ui.readCommand();
             isExitCommand = parser.determineCommand(input);
         }
