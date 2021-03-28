@@ -82,13 +82,13 @@ public class Messages {
     public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which fields would you like to edit?";
     public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new %s:";
 
-    public static final String MESSAGE_TEACHER_NAME_UPDATED = "Teaching staff updated to: %s";
-    public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Teaching staff email updated to: %s";
-    public static final String MESSAGE_LINK_UPDATED = "Lesson link updated to: %s";
-    public static final String MESSAGE_LESSON_TIME_UPDATED = "Lesson time/day updated to: %s";
+    public static final String MESSAGE_TEACHER_NAME_UPDATED = "Updated teaching staff name.\n";
+    public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Updated teaching staff email.\n";
+    public static final String MESSAGE_LINK_UPDATED = "Updated lesson link.\n";
+    public static final String MESSAGE_LESSON_TIME_UPDATED = "Updated time and day.\n";
     
     public static final String WARNING_NO_VALID_INPUT = "No valid inputs received, lesson unchanged.";
-    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.";
+    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.\n";
     public static final String  MESSAGE_NO_CHANGES = "No changes to lesson list.";
 
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
