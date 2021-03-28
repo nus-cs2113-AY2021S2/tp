@@ -18,7 +18,7 @@ public class DeleteFavouriteLocationCommand extends Command {
         System.out.println("Enter the index of the block which you wish to delete: ");
         try {
             int index = Integer.parseInt(ui.getUserInput());
-            ui.deleteFavouriteLocation(favouriteLocation, index);
+            ui.deleteFavouriteLocation(favouriteLocation, index - 1);
             System.out.println(ui.divider);
         } catch (NumberFormatException e) {
             System.out.println("Please only input integers!");
