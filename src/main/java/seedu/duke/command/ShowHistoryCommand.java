@@ -16,5 +16,6 @@ public class ShowHistoryCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         ui.showHistory(history);
+        ui.showToUser(ui.divider);
     }
 }

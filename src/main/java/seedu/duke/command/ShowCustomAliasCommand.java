@@ -15,6 +15,6 @@ public class ShowCustomAliasCommand extends Command {
     @Override
     public void execute(Map map, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        ui.showCustomAliases(blockAlias.getAliasMap());
+        ui.showCustomAliases(blockAlias.getAliasHashMap());
     }
 }

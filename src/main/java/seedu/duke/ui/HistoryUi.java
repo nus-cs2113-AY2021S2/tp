@@ -17,7 +17,7 @@ public class HistoryUi extends Ui {
     }
 
     public void showClearHistoryResponse() {
-        showToUser("Your history has been cleared.");
+        showToUser("Your history has been cleared.", divider);
     }
 
     public int getRepeatEntry() throws InvalidRepeatEntryException {

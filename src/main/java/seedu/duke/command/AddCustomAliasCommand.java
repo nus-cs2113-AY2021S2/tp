@@ -21,9 +21,9 @@ public class AddCustomAliasCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
-            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasMap());
+            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasHashMap());
             assert addAlias != null;
-            blockAlias.getAliasMap().putAll(addAlias);
+            blockAlias.getAliasHashMap().putAll(addAlias);
         } catch (InvalidAliasException e) {
             ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidBlockException r) {

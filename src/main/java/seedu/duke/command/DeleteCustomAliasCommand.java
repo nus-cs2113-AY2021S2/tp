@@ -18,7 +18,7 @@ public class DeleteCustomAliasCommand extends Command {
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
             String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
-            blockAlias.getAliasMap().remove(aliasToDelete);
+            blockAlias.getAliasHashMap().remove(aliasToDelete);
         } catch (InvalidAliasException e) {
             ui.showToUser(e.getMessage(), ui.divider);
         }

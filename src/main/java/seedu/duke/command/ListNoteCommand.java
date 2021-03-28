@@ -25,6 +25,7 @@ public class ListNoteCommand extends Command {
         try {
             NotesCommandParser.parseListNotesCommand(userInput, nusMap);
             nusMap.map.get(location).listNotes();
+            ui.showToUser(ui.divider);
         } catch (NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException e) {
             ui.showToUser(e.getMessage(), ui.divider);
         }

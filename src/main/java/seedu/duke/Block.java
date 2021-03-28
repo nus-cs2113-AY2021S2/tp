@@ -78,10 +78,6 @@ public class Block {
         this.notesCount++; //add to count for number of notes made for that location
     }
 
-    public void addGivenNote(String currentNote) {
-        this.notesList.add(currentNote);
-    }
-
     public void deleteNotes() {
         final String deletedNote = this.notesList.get(noteIndexInList); //record down deleted note
 

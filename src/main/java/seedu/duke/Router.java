@@ -25,11 +25,11 @@ public class Router {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
 
-        if (blockAlias.getAliasMap().containsKey(from)) {
-            from = blockAlias.getAliasMap().get(from);
+        if (blockAlias.getAliasHashMap().containsKey(from)) {
+            from = blockAlias.getAliasHashMap().get(from);
         }
-        if (blockAlias.getAliasMap().containsKey(to)) {
-            to = blockAlias.getAliasMap().get(to);
+        if (blockAlias.getAliasHashMap().containsKey(to)) {
+            to = blockAlias.getAliasHashMap().get(to);
         }
 
         Block start = nusMap.getBlock(from);

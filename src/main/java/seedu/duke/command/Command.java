@@ -7,7 +7,7 @@ import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
 import seedu.duke.FavouriteLocation;
 
-public class Command {
+public abstract class Command {
     protected String userInput;
 
     public Command(String userInput) {
