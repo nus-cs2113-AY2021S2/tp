@@ -261,9 +261,20 @@ Congrats! You are all stocked up on food! :D
 Displays a history of food items that have been added to the Fridge
 since it was last cleared.
 
-The Fridge keeps track of all Food items added in its lifetime automatically.
 
-The data is saved to a text file, with default location as `data/historyData.txt`
+* The Fridge keeps track of all Food items added in its lifetime automatically.
+* Unlike adding Food to a Fridge, which merges the quantity of duplicate Foods together,
+  the history command will not merge the quantities of food.
+  * Thus, the user can use this command to keep track of all occurrences where Food 
+  has been added to the Fridge.
+    
+
+The data is saved to disk in a text file, with default location as `data/historyData.txt`.
+  * In the event that the data in the text file is corrupted or in an unreadable format, the
+  `history` command may fail to output the contents of the file. Users may have to manually
+   inspect the file to delete the invalid content, or wipe the contents of the file with
+   `history clear`, to resume normal function. 
+    * The execution of the FridgeFriend program, however, will not be interrupted.
 
 Format: `history`
 
@@ -274,6 +285,7 @@ Example of usage:
 This is the full history of items you've added in the fridge:
   1. Food name: Coke, category: BEVERAGE, expiry: 30-06-2021, stored in: FREEZER, quantity: 5
   2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 200
+  3. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 300
 ```
 
 ### Clear list history of items added: `history clear`
