@@ -23,6 +23,8 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command.";
     public static final String MESSAGE_INVALID_COMMAND = "Invalid command. Enter \"help\" for list of valid commands.";
 
+    public static final String MESSAGE_SEPARATE_INDICES = NEWLINE + "Separate indices with a blank space.";
+
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
     public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code. "
@@ -30,15 +32,15 @@ public class Messages {
 
     public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
     public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";
-    public static final String MESSAGE_INVALID_LESSON_LINK = "Invalid link entered.";
-    public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered.";
+    public static final String MESSAGE_INVALID_LESSON_LINK = "Invalid link entered. ";
+    public static final String MESSAGE_INVALID_LESSON_EMAIL = "Invalid email entered. ";
 
     public static final String MESSAGE_TASK_FIELDS_EMPTY = "Missing task details.";
     public static final String MESSAGE_INVALID_TASK_DEADLINE = "Invalid/missing deadline.";
 
     public static final String MESSAGE_NON_INTEGER_INDICES = "Warning, non-integer values removed: %s";
     public static final String MESSAGE_OUT_OF_BOUNDS_INDICES = "Warning, out of bounds index removed: %s";
-    public static final String MESSAGE_NON_INTEGER_INDEX = "Please enter a valid index!";
+    public static final String MESSAGE_NON_INTEGER_INDEX = "Warning, value entered is not a valid integer!";
     public static final String MESSAGE_OUT_OF_BOUNDS_INDEX = "Warning, index given is out of bounds/invalid!";
 
     public static final String MESSAGE_INVALID_DAY_TIME = "Invalid format. Please enter a valid day and time!";
@@ -56,8 +58,7 @@ public class Messages {
 
     public static final String MESSAGE_MODULE_TO_DELETE = "Which modules would you like to delete?" + NEWLINE;
     public static final String MESSAGE_DELETE_MODULE_INFO =
-            "Please enter the indices of the modules you would like to delete."
-                    + NEWLINE + "Separate indices with a blank space.";
+            "Please enter the indices of the modules you would like to delete." + MESSAGE_SEPARATE_INDICES;
     public static final String MESSAGE_MODULE_TO_LIST = "Modules in your list:";
     public static final String MESSAGE_MODULE_OPENED = "Opening %s." + NEWLINE;
 
@@ -78,17 +79,18 @@ public class Messages {
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
 
     public static final String MESSAGE_LESSON_TO_EDIT = "Which lesson would you like to edit?";
-    public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which field would you like to edit? (eg. 1 2 4):";
-    public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new [%s]:";
+    public static final String MESSAGE_LESSON_BEING_EDITED = "Editing: %s";
+    public static final String MESSAGE_LESSON_FIELD_TO_EDIT = "Which fields would you like to edit?";
+    public static final String PROMPT_ENTER_FIELD_DETAILS = "Enter new %s:";
 
-    public static final String MESSAGE_TEACHER_NAME_UPDATED = "Teaching staff updated to: %s";
-    public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Teaching staff email updated to: %s";
-    public static final String MESSAGE_LINK_UPDATED = "Lesson link updated to: %s";
-    public static final String MESSAGE_LESSON_TIME_UPDATED = "Lesson time/day updated to: %s";
+    public static final String MESSAGE_TEACHER_NAME_UPDATED = "Updated teaching staff name.\n";
+    public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Updated teaching staff email.\n";
+    public static final String MESSAGE_LINK_UPDATED = "Updated lesson link.\n";
+    public static final String MESSAGE_LESSON_TIME_UPDATED = "Updated time and day.\n";
     
-    public static final String WARNING_NO_VALID_INPUT = "No valid inputs received. "
-            + "Please enter the values of the fields you would like to edit (1-4).";
-    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.";
+    public static final String WARNING_NO_VALID_INPUT = "No valid inputs received, lesson unchanged.";
+    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.\n";
+    public static final String  MESSAGE_NO_CHANGES = "No changes to lesson list.";
 
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
     public static final String MESSAGE_SORT_LESSON_LIST = "Sorting list of lessons based on lesson type...";
@@ -126,7 +128,7 @@ public class Messages {
     public static final String MESSAGE_TASKS_TO_UNMARK = "Which done tasks would you like to undo?";
     public static final String MESSAGE_TASK_BEING_EDITED = NEWLINE + "Editing: %s";
     public static final String MESSAGE_TASK_TO_EDIT = "Which task would you like to edit?";
-    public static final String MESSAGE_TASK_FIELDS_TO_EDIT = "Which fields?";
+    public static final String MESSAGE_TASK_FIELDS_TO_EDIT = "Which fields would you like to edit?";
     public static final String MESSAGE_TASK_FIELDS_SELECT_INFO = NEWLINE
             + "Separate indices with a blank space.";
     public static final String MESSAGE_TASK_DESCRIPTION_TO_EDIT = NEWLINE + "New task description:";
@@ -195,5 +197,6 @@ public class Messages {
     public static final String MESSAGE_LIST_OF_CHEAT_SHEETS = "Here is your list of cheat-sheets:" + NEWLINE;
     public static final String MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY = "You have no cheat-sheet.";
     public static final String MESSAGE_OPEN_FILE = "Opened %s.";
+    public static final String MESSAGE_INVALID_FILE_NAME = "Invalid file name.";
 
 }
