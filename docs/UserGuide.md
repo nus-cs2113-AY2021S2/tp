@@ -309,30 +309,32 @@ Adds a review for the module of your choice.
 
 Lists out all the reviews for all modules added to UniTracker.
 <details>  
-<summary>  <span style="color:#717de3  ">`Click to see example for listing all the modules' reviews:` </span>  </summary>  
+  <summary> <span style="color:#717de3  ">
+      Click to see example for listing all the modules' reviews: </span>  
+  </summary>  
 
   Input:  <span style="color:#2b9948  "> `10` </span>  
 
 
   Output:  
   
-  ```  
-  <span style="color:#2b9948  "> `10` </span>  
-  --------------------------------------------  
-  For CS3243:  
-  The lectures were very entertaining. I have learnt a lot of important algorithms.  
-  Assignments and quizzes helped me learn concepts faster.  
-  Overall: 5/5  
-  --------------------------------------------  
-  For CS2113T:  
-  Very fun! We learnt a lot of important programming concepts.  
-  Java is also a fun language:)  
-  GitHub is difficult but very important to know about it.  
-  Overall: 5/5  
-  
-  --------------------------------------------  
-  Returning to module information menu...  
-  ```  
+
+    <span style="color:#2b9948  "> `10` </span>  
+    --------------------------------------------  
+    For CS3243:  
+    The lectures were very entertaining. I have learnt a lot of important algorithms.  
+    Assignments and quizzes helped me learn concepts faster.  
+    Overall: 5/5  
+    --------------------------------------------  
+    For CS2113T:  
+    Very fun! We learnt a lot of important programming concepts.  
+    Java is also a fun language:)  
+    GitHub is difficult but very important to know about it.  
+    Overall: 5/5  
+    
+    --------------------------------------------  
+    Returning to module information menu...  
+
 </details>  
 
 #### 3.1.6 Delete a module
