@@ -85,19 +85,19 @@ public class Parser {
             System.out.println("You are now in recommendation mode");
             break;
         case "list":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.listReviews(arguments);
-            }else {
+            } else {
                 commandList.listRecommendations();
             }
             break;
         case "edit":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.editReviews(arguments);
             }
             break;
         case "sort":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.sortReview(arguments);
             }
             break;
@@ -107,17 +107,17 @@ public class Parser {
             }
             break;
         case "delete":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.deleteReview(arguments);
             }
             break;
         case "view":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.viewReview(arguments);
             }
             break;
         case "add":
-            if(isReviewMode) {
+            if (isReviewMode) {
                 commandList.addRecommendation(arguments);
             }
             break;

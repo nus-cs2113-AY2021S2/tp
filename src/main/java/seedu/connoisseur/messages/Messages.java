@@ -10,7 +10,7 @@ public class Messages {
 
     public static final String WELCOME_MESSAGE = "                         Welcome to\n"
             + LOGO
-            +"\n"
+            + "\n"
             + "Connoisseur is in review mode by default!\n"
             + "Enter 'review' or 'reco' to change mode at any point:) ";
 
