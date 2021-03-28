@@ -1,33 +1,43 @@
 package seedu.duke.task;
 
 import seedu.duke.Ui;
+import seedu.duke.task.command.AddTask;
+import seedu.duke.task.command.DeleteTask;
+import seedu.duke.task.command.MarkOrUnmarkTask;
+import seedu.duke.task.command.PinTask;
 
 public class TaskManager {
+
+    private static final int ADD_NEW_TASK_COMMAND = 1;
+    private static final int MARK_OR_UNMARK_TASK_COMMAND = 2;
+    private static final int DELETE_TASK_COMMAND = 3;
+    private static final int VIEW_ALL_TASKS_COMMAND = 4;
+    private static final int PIN_TASK_COMMAND = 5;
+    private static final int EXIT_COMMAND = 6;
 
     public static void execute() {
         while (true) {
             Ui.printTaskManagerMenu();
             String command = Ui.readCommand();
-            Ui.printHorizontalLine();
             try {
                 int taskNumber = Integer.parseInt(command);
                 switch (taskNumber) {
-                case 1:
+                case ADD_NEW_TASK_COMMAND:
                     addNewTask();
                     break;
-                case 2:
+                case MARK_OR_UNMARK_TASK_COMMAND:
                     markOrUnmarkTask();
                     break;
-                case 3:
+                case DELETE_TASK_COMMAND:
                     deleteTask();
                     break;
-                case 4:
+                case VIEW_ALL_TASKS_COMMAND:
                     viewAllTasks();
                     break;
-                case 5:
+                case PIN_TASK_COMMAND:
                     pinTask();
                     break;
-                case 6:
+                case EXIT_COMMAND:
                     return;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -42,17 +52,16 @@ public class TaskManager {
     public static void addNewTask() {
         Ui.printAddTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
 
-        TaskList.addNewTask(taskTypeNumber);
+        //AddTask.addNewTask(taskTypeNumber);
+        new AddTask(taskTypeNumber);
     }
 
     private static void markOrUnmarkTask() {
         Ui.printMarkTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
 
-        TaskList.markOrUnmarkTask(taskTypeNumber);
+        MarkOrUnmarkTask.markOrUnmarkTask(taskTypeNumber);
 
     }
 
@@ -73,9 +82,8 @@ public class TaskManager {
     private static void pinTask() {
         Ui.printPinTaskMenu();
         int taskTypeNumber = TaskList.getTaskNumber();
-        Ui.printHorizontalLine();
 
-        TaskList.pinTask(taskTypeNumber);
+        PinTask.pinTask(taskTypeNumber);
     }
 
     public static void deleteTask() {
@@ -83,6 +91,6 @@ public class TaskManager {
         int taskTypeNumber = TaskList.getTaskNumber();
         Ui.printHorizontalLine();
 
-        TaskList.deleteTask(taskTypeNumber);
+        DeleteTask.deleteTask(taskTypeNumber);
     }
 }
