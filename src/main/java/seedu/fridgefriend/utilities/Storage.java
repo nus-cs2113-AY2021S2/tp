@@ -23,9 +23,7 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
- * Reads data from,
- * and writes data to,
- * the local disk.
+ * Reads data from, and writes data to, the local disk.
  *
  */
 public class Storage {

@@ -5,12 +5,9 @@ import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
 
 /**
- * Represents a command to read the history data from the history textfile.
  * History textfile is stored by default in data/historyData.txt.
- * Food data is automatically added into history textfile,
- * after every AddCommand is called.
- * History can also be cleared,
- * by using command "history clear".
+ * Food data is automatically added into history textfile, after every AddCommand is called.
+ * History can also be cleared, by using command "history clear".
  *
  */
 public class HistoryCommand extends Command {
