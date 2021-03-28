@@ -7,10 +7,10 @@ import seedu.duke.ui.UI;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXIST;
 import static seedu.duke.common.Messages.MESSAGE_FILE_HAS_BEEN_DELETED;
 
@@ -26,7 +26,7 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
-        filePath = directoryPath + fileName + FILE_EXTENSION;
+        filePath = directoryPath + fileName + TXT_FORMAT;
         try {
             Path path = Paths.get(filePath);
             performFunction(ui, path);
