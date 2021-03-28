@@ -72,30 +72,6 @@ public class EditTaskCommand extends Command {
         ModuleList.sortTasks();
     }
     
-    private void editTaskField(UI ui, int fieldIndex) {
-        switch (fieldIndex) { 
-        case 1:
-            selectedTask.setDescription(getNewTaskDescription(ui));
-            break;
-        case 2:
-            LocalDate newDeadline = getNewTaskDeadline(ui);
-            if (newDeadline == null) {
-                return;
-            }
-            selectedTask.setDeadline(newDeadline);
-            break;
-        case 3:
-            selectedTask.setRemarks(getNewTaskRemarks(ui));
-            break;
-        case 4:
-             ui.printMessage("");
-             selectedTask.setGraded(getIsTaskGraded(ui));
-             break;
-        default:
-        }
-        ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex - 1].toLowerCase()));
-    }
-
     private void printPromptForTask(UI ui, ArrayList<Task> taskList) {
         ui.printMessage(MESSAGE_TASK_TO_EDIT);
         for (int i = 0; i < taskList.size(); i++) {
@@ -138,6 +114,30 @@ public class EditTaskCommand extends Command {
         for (int i = 0; i < fields.length; i++) {
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, i + 1, fields[i]));
         }
+    }
+
+    private void editTaskField(UI ui, int fieldIndex) {
+        switch (fieldIndex) {
+        case 1:
+            selectedTask.setDescription(getNewTaskDescription(ui));
+            break;
+        case 2:
+            LocalDate newDeadline = getNewTaskDeadline(ui);
+            if (newDeadline == null) {
+                return;
+            }
+            selectedTask.setDeadline(newDeadline);
+            break;
+        case 3:
+            selectedTask.setRemarks(getNewTaskRemarks(ui));
+            break;
+        case 4:
+            ui.printMessage("");
+            selectedTask.setGraded(getIsTaskGraded(ui));
+            break;
+        default:
+        }
+        ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex - 1].toLowerCase()));
     }
     
     private String getNewTaskDescription(UI ui) {
