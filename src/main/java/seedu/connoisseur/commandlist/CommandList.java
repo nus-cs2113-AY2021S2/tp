@@ -394,9 +394,9 @@ public class CommandList {
     }
 
     /**
-     * Checks for duplicate recommendation
+     * Checks for duplicate recommendation.
      *
-     * @param title title of recomendation
+     * @param title title of recommendation.
      */
     public boolean checkAndPrintDuplicateRecommendation(String title) {
         int recIndex = -1;
@@ -526,7 +526,7 @@ public class CommandList {
      *
      * @param title title of recommendation
      */
-    public void addRecommendation (String title){
+    public void addRecommendation(String title) {
         try {
             addRecommendationDetails(title);
         } catch (DuplicateException de) {
@@ -535,9 +535,9 @@ public class CommandList {
     }
 
     /**
-     * Prompts for details of recommendation
+     * Prompts for details of recommendation.
      *
-     * @param title title of recommendation
+     * @param title title of recommendation.
      */
     public void addRecommendationDetails(String title) throws DuplicateException {
         if (title == null || title.isBlank()) {
