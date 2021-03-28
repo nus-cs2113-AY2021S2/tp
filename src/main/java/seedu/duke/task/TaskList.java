@@ -42,6 +42,9 @@ public class TaskList {
 
         Ui.printAddTaskModuleMessage(taskTypeNumber);
         String module = getModule();
+        if (module.equals("")) {
+            return;
+        }
         Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
@@ -64,37 +67,41 @@ public class TaskList {
             addMidterm(module, description, message, dateAndTime);
             break;
         case 4:
-            addFinal(module, description, message, dateAndTime);
+            addFinalExam(module, description, message, dateAndTime);
             break;
         default:
             Ui.printInvalidIntegerMessage();
         }
     }
 
-    private static void addTask(String module, String description, String message) {
+    public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
         tasks.add(task);
+        assert tasks.contains(task) : "Task was not added to task list";
         Ui.printAddedTaskMessage(task);
     }
 
-    private static void addAssignment(String module, String description,
+    public static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
         assignments.add(assignment);
+        assert assignments.contains(assignment) : "Assignment was not added to assignment list";
         Ui.printAddedTaskMessage(assignment);
     }
 
-    private static void addMidterm(String module, String description,
+    public static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
         midterms.add(midterm);
+        assert midterms.contains(midterm) : "Midterm was not added to midterm list";
         Ui.printAddedTaskMessage(midterm);
     }
 
-    private static void addFinal(String module, String description,
+    public static void addFinalExam(String module, String description,
                                 String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         finalExams.add(finalExam);
+        assert finalExams.contains(finalExam) : "Final exam was not added to final exam list";
         Ui.printAddedTaskMessage(finalExam);
     }
 
@@ -103,9 +110,13 @@ public class TaskList {
             System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
         }
         int moduleNumber = Integer.parseInt(Ui.readCommand());
-        String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
-
-        return module;
+        try {
+            String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
+            return module;
+        } catch (IndexOutOfBoundsException e) {
+            Ui.printModuleNumberDoesNotExistMessage();
+            return "";
+        }
     }
 
     public static String getTime(int taskNumber) {
@@ -187,16 +198,16 @@ public class TaskList {
                 Ui.printHorizontalLine();
                 switch (taskTypeNumber) {
                 case 1:
-                    toggleTaskStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Task]");
                     break;
                 case 2:
-                    toggleAssigmentStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Assignment]");
                     break;
                 case 3:
-                    toggleMidtermStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Midterm]");
                     break;
                 case 4:
-                    toggleFinalExamStatus(taskNumber);
+                    toggleTaskStatus(taskNumber, "[Final Exam]");
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -245,7 +256,7 @@ public class TaskList {
         }
     }
 
-    private static boolean taskListIsEmpty(int taskTypeNumber) {
+    public static boolean taskListIsEmpty(int taskTypeNumber) {
         boolean isEmpty = false;
         switch (taskTypeNumber) {
         case 1:
@@ -266,129 +277,103 @@ public class TaskList {
         return isEmpty;
     }
 
-    private static void toggleTaskStatus(int taskNumber) {
-        Task task = tasks.get(taskNumber - 1);
+    public static void toggleTaskStatus(int taskNumber, String taskType) {
+        Task task = getTaskToMarkOrUnMark(taskType, taskNumber);
         String taskStatus = task.getStatus();
         String done = "[DONE] ";
         String notDone = "[    ] ";
+
         if (taskStatus.equals(done)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
+            assert input.equalsIgnoreCase("Y") : "if input is not Y, should catch exception";
+            if (input.equalsIgnoreCase("Y")) {
                 task.markAsUnDone();
+                markPinnedTaskAsUnDone(taskType, task.getModule(), task.getDescription());
+                assert task.getStatus().equals("[    ] ") : "Task should not be marked as done";
                 Ui.printUnmarkedTaskMessage(task);
             }
         } else if (taskStatus.equals(notDone)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
+            assert input.equalsIgnoreCase("Y") : "if input is not Y, should catch exception";
+            if (input.equalsIgnoreCase("Y")) {
                 task.markAsDone();
+                markPinnedTaskAsDone(taskType, task.getModule(), task.getDescription());
+                assert task.getStatus().equals("[DONE] ") : "Task should be marked as done";
                 Ui.printMarkedTaskMessage(task);
             }
         }
     }
 
-    private static void toggleAssigmentStatus(int taskNumber) {
-        Assignment task = assignments.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsDone();
-                Ui.printMarkedTaskMessage(task);
-            }
+    public static Task getTaskToMarkOrUnMark(String taskType, int taskNumber) {
+        switch (taskType) {
+        case "[Task]":
+            return tasks.get(taskNumber - 1);
+        case "[Assignment]":
+            return assignments.get(taskNumber - 1);
+        case "[Midterm]":
+            return midterms.get(taskNumber - 1);
+        case "[Final Exam]":
+            return finalExams.get(taskNumber - 1);
+        default:
+            System.out.println("Task type does not exist!");
+            return null;
         }
     }
 
-    private static void toggleMidtermStatus(int taskNumber) {
-        Midterm task = midterms.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsDone();
-                Ui.printMarkedTaskMessage(task);
-            }
-        }
-    }
-
-    private static void toggleFinalExamStatus(int taskNumber) {
-        FinalExam task = finalExams.get(taskNumber - 1);
-        String taskStatus = task.getStatus();
-        String done = "[DONE] ";
-        String notDone = "[    ] ";
-        if (taskStatus.equals(done)) {
-            Ui.printTaskisDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsUnDone();
-                Ui.printUnmarkedTaskMessage(task);
-            }
-        } else if (taskStatus.equals(notDone)) {
-            Ui.printTaskisNotDoneMessage();
-            String input = Ui.readCommand().trim();
-            if (input.equals("Y")) {
-                task.markAsDone();
-                Ui.printMarkedTaskMessage(task);
-            }
-        }
-    }
-
-    private static void findAndDeleteTask(int taskNumber) {
+    public static void findAndDeleteTask(int taskNumber) {
         Task deletedTask = tasks.get(taskNumber - 1);
         tasks.remove(deletedTask);
         boolean typeTaskIsPinned = pinnedTasks.containsKey("[Task]");
         if (typeTaskIsPinned) {
+            assert pinnedTasks.containsKey("[Task]") : "Pinned task list for task should exist";
             if (pinnedTasks.get("[Task]").contains((deletedTask))) {
+                assert !pinnedTasks.get("[Task]").isEmpty() : "Pinned task list should not be empty";
                 pinnedTasks.get("[Task]").remove(deletedTask);
             }
         }
         Ui.printDeletedTaskMessage(deletedTask);
     }
 
-    private static void findAndDeleteAssigment(int taskNumber) {
+    public static void findAndDeleteAssigment(int taskNumber) {
         Assignment deletedAssignment = assignments.get(taskNumber - 1);
         assignments.remove(deletedAssignment);
-        if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
-            pinnedTasks.get("[Assignment]").remove(deletedAssignment);
+        boolean typeAssignmentIsPinned = pinnedTasks.containsKey("[Assignment]");
+        if (typeAssignmentIsPinned) {
+            assert pinnedTasks.containsKey("[Assignment]") : "Pinned task list for assignment should exist";
+            if (pinnedTasks.get("[Assignment]").contains((deletedAssignment))) {
+                assert !pinnedTasks.get("[Assignment]").isEmpty() : "Pinned task list should not be empty";
+                pinnedTasks.get("[Assignment]").remove(deletedAssignment);
+            }
         }
         Ui.printDeletedTaskMessage(deletedAssignment);
     }
 
-    private static void findAndDeleteMidterm(int taskNumber) {
+    public static void findAndDeleteMidterm(int taskNumber) {
         Midterm deletedMidterm = midterms.get(taskNumber - 1);
         midterms.remove(deletedMidterm);
-        if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
-            pinnedTasks.get("[Midterm]").remove(deletedMidterm);
+        boolean typeMidtermIsPinned = pinnedTasks.containsKey("[Midterm]");
+        if (typeMidtermIsPinned) {
+            assert pinnedTasks.containsKey("[Midterm]") : "Pinned task list for midterm should exist";
+            if (pinnedTasks.get("[Midterm]").contains((deletedMidterm))) {
+                assert !pinnedTasks.get("[Midterm]").isEmpty() : "Pinned task list should not be empty";
+                pinnedTasks.get("[Midterm]").remove(deletedMidterm);
+            }
         }
         Ui.printDeletedTaskMessage(deletedMidterm);
     }
 
-    private static void findAndDeleteFinalExam(int taskNumber) {
+    public static void findAndDeleteFinalExam(int taskNumber) {
         FinalExam deletedFinalExam = finalExams.get(taskNumber - 1);
         finalExams.remove(deletedFinalExam);
-        if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
-            pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
+        boolean typeFinalExamIsPinned = pinnedTasks.containsKey("[Final Exam]");
+        if (typeFinalExamIsPinned) {
+            assert pinnedTasks.containsKey("[Final Exam]") : "Pinned task list for final exam should exist";
+            if (pinnedTasks.get("[Final Exam]").contains((deletedFinalExam))) {
+                assert !pinnedTasks.get("[Final Exam]").isEmpty() : "Pinned task list should not be empty";
+                pinnedTasks.get("[Final Exam]").remove(deletedFinalExam);
+            }
         }
         Ui.printDeletedTaskMessage(deletedFinalExam);
     }
@@ -428,15 +413,44 @@ public class TaskList {
         }
     }
 
-    private static void addTaskToPinnedTasks(Task task, String taskTypeName) {
+    public static void addTaskToPinnedTasks(Task task, String taskTypeName) {
         pinnedTasks.computeIfAbsent(taskTypeName, k -> new ArrayList<>());
         if (pinnedTasks.get(taskTypeName).contains((task))) {
             Ui.printTaskAlreadyPinnedMessage();
             return;
         }
         pinnedTasks.get(taskTypeName).add(task);
+        assert pinnedTasks.get(taskTypeName).contains(task) : "Task was not added to pinned list";
         Ui.printPinnedTaskMessage(task);
         return;
+    }
+
+    public static void markPinnedTaskAsDone(String tasktype, String module, String description) {
+        if (!pinnedTasks.containsKey(tasktype)) {
+            return;
+        }
+        ArrayList<Task> tasks = pinnedTasks.get(tasktype);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            if (isSameModule && isSameDescription) {
+                task.markAsDone();
+            }
+        }
+    }
+
+    public static void markPinnedTaskAsUnDone(String tasktype, String module, String description) {
+        if (!pinnedTasks.containsKey(tasktype)) {
+            return;
+        }
+        ArrayList<Task> tasks = pinnedTasks.get(tasktype);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            if (isSameModule && isSameDescription) {
+                task.markAsUnDone();
+            }
+        }
     }
 
 }

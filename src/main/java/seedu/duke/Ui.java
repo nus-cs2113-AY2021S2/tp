@@ -38,12 +38,16 @@ public class Ui {
         System.out.println("--------------------------------------------");
     }
 
+    public static void printShortHorizontalLine() {
+        System.out.println("----------------------");
+    }
+
     public static void printEmptyLine() {
         System.out.println();
     }
 
     public static void printMainMenu() {
-        System.out.println("Main Menu:\n"
+        System.out.println("\nMain Menu:\n"
                 + "[1] Module Information\n"
                 + "[2] CAP Simulator/Calculator\n"
                 + "[3] Task Manager\n"
@@ -85,7 +89,7 @@ public class Ui {
                 + "[12] --- Delete Task\n"
                 + "[13] --- Delete Zoom Link\n"
                 + "[14] --- Delete Review\n"
-                + "[15] --- Exit to main menu\n");
+                + "[15] --- Exit to main menu");
     }
 
     public static void printTaskManagerMenu() {
@@ -282,7 +286,20 @@ public class Ui {
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine();
+        command = input.nextLine().trim();
+        printHorizontalLine();
+        return command;
+    }
+
+    public static int readCommandToInt() {
+        int command;
+        Scanner input = new Scanner(System.in);
+        try {
+            command = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+        printHorizontalLine();
         return command;
     }
 
@@ -303,18 +320,6 @@ public class Ui {
                 + "[3] --- view links\n"
                 + "[4] --- exit to links menu");
         printHorizontalLine();
-    }
-
-    public static int readCommandToInt() {
-        int command;
-        Scanner input = new Scanner(System.in);
-        try {
-            command = Integer.parseInt(input.nextLine());
-        } catch (NumberFormatException e) {
-            return -1;
-        }
-        return command;
-
     }
 
     public static void printAddLinkMessage(String description) {
@@ -411,7 +416,10 @@ public class Ui {
         System.out.println("Sorry! I didn't catch that. Please try again");
     }
 
-    public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
+    public static void printZoomLinksAdded(String instruction) {
+        String[] words = instruction.split(" ");
+        String zoomLink = words[0];
+        String moduleCode = words[1];
         printHorizontalLine();
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
@@ -455,8 +463,8 @@ public class Ui {
 
     public static void printPinnedTaskList(HashMap<String, ArrayList<Task>> pinnedTasks) {
         System.out.println("This is the list of your pinned tasks:");
+        int taskNumber = 1;
         for (Map.Entry<String, ArrayList<Task>> item : pinnedTasks.entrySet()) {
-            int taskNumber = 1;
             String taskType = item.getKey();
             ArrayList<Task> tasks = item.getValue();
             for (Task task : tasks) {
@@ -596,5 +604,11 @@ public class Ui {
 
     public static void printZoomLinkDeleted(ZoomLinkInfo zoomLink) {
         System.out.println("You have deleted --- " + zoomLink.getDescription());
+    }
+
+    public static void printModuleNumberDoesNotExistMessage() {
+        System.out.println("A module for that number does not exist. "
+                + "You can add modules through the ModuleInfo menu!");
+        printHorizontalLine();
     }
 }

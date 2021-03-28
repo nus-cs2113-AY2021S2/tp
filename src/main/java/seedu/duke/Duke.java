@@ -19,11 +19,10 @@ public class Duke {
     }
 
     public static void runMainMenu() {
-        StorageModuleInfo.loadModuleInfoFile();
-        StorageModuleInfo.loadLinkInfoFile();
-        StorageModuleInfo.loadZoomLinkInfoFile();
         TaskList taskList = new TaskList();
+        loadAllFiles();
         while (true) {
+            Ui.printPinnedTaskList(TaskList.pinnedTasks);
             Ui.printMainMenu();
             String command = Ui.readCommand();
             try {
@@ -31,11 +30,9 @@ public class Duke {
 
                 if (commandInt == 5) {
                     try {
-                        StorageModuleInfo.modulesFileSaver();
-                        StorageModuleInfo.linksFileSaver();
-                        StorageModuleInfo.zoomLinksFileSaver();
+                        saveAllFiles();
                     } catch (IOException e) {
-                        System.out.println("modules.txt file could not be saved:(");
+                        System.out.println("Files could not be saved:(");
                     }
                     break;
                 }
@@ -69,5 +66,27 @@ public class Duke {
                 Ui.printInvalidIntegerMessage();
             }
         }
+    }
+
+    public static void saveAllFiles() throws IOException {
+        Storage.modulesFileSaver();
+        Storage.tasksFileSaver();
+        Storage.assignmentsFileSaver();
+        Storage.midtermsFileSaver();
+        Storage.finalExamsFileSaver();
+        Storage.pinnedTasksFileSaver();
+        Storage.linksFileSaver();
+        Storage.zoomLinksFileSaver();
+    }
+
+    public static void loadAllFiles() {
+        Storage.loadModuleInfoFile();
+        Storage.loadTasksFile();
+        Storage.loadAssignmentsFile();
+        Storage.loadMidtermsFile();
+        Storage.loadFinalExamsFile();
+        Storage.loadPinnedTasksFile();
+        Storage.loadLinkInfoFile();
+        Storage.loadZoomLinkInfoFile();
     }
 }

@@ -44,10 +44,9 @@ public class LinkInfo {
         linksList.add(linkDescription);
     }
 
-    public static void deleteLink() {
-        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+    public static void deleteLink(int deleteIndex) {
+        assert deleteIndex >= 0 : "Index is invalid";
         LinkInfo deletedLinkInfo = linksList.get(deleteIndex);
-        assert deleteIndex < 0 : "Index is invalid";
         linksList.remove(deleteIndex);
         Ui.printLinkDeleted(deletedLinkInfo);
     }

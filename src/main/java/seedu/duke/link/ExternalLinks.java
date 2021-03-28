@@ -28,7 +28,8 @@ public class ExternalLinks extends Links {
         case 2:
             viewLinks();
             Ui.printLinkToDelete();
-            LinkInfo.deleteLink();
+            int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+            LinkInfo.deleteLink(deleteIndex);
             break;
         case 3:
             viewLinks();
@@ -40,7 +41,7 @@ public class ExternalLinks extends Links {
         }
     }
 
-    public void viewLinks() {
+    public static void viewLinks() {
         if (LinkInfo.linksList.isEmpty()) {
             Ui.printListIsEmpty();
             return;

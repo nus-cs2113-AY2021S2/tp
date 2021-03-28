@@ -26,8 +26,12 @@ public class ZoomLinkInfo {
         password = "no password entered";
     }
 
-    public static void addZoomLink(String linkDescription, String moduleCode) {
+    public static void addZoomLink(String instruction) {
+        String[] words = checkWordValidity(instruction.split(" "));
+        String linkDescription = words[0];
+        String moduleCode = words[1];
         String passwordCommand = Ui.printEnterRequirePassword();
+
         if (passwordCommand.equals("y")) {
             String password = Ui.printEnterPassword();
             assert !password.isEmpty() : "password cannot be empty";
@@ -48,16 +52,22 @@ public class ZoomLinkInfo {
         }
     }
 
-    public static void deleteZoomLink() {
-        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+    public static String[] checkWordValidity(String[] words) {
+        while (words.length != 2) {
+            System.out.println("Please enter only your link and module code!");
+            String instruction = Ui.readCommand();
+            words = instruction.split(" ");
+        }
+        return words;
+    }
+
+    public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {
         ZoomLinkInfo deletedZoomLink = zoomLinksList.get(deleteIndex);
-        assert deleteIndex >= 0 : "Index is invalid";
         Module moduleInfo = ModuleInfo.getModule(deletedZoomLink.getModuleCode());
         moduleInfo.removeZoomLink();
         zoomLinksList.remove(deleteIndex);
         Ui.printZoomLinkDeleted(deletedZoomLink);
     }
-
 
     public String getDescription() {
         return linkDescription;

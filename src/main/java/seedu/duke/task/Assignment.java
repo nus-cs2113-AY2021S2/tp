@@ -8,6 +8,10 @@ public class Assignment extends Task {
         this.by = by;
     }
 
+    public String getBy() {
+        return by;
+    }
+
     @Override
     public String getTaskType() {
         return "[Assignment]";
