@@ -7,7 +7,8 @@ public class FavouriteLocationsUi extends Ui {
     public FavouriteLocationsUi() {
     }
 
-    public static void addFavouriteLocations(FavouriteLocation favouriteLocation, String location, seedu.duke.Map nusMap) {
+    public static void addFavouriteLocations(FavouriteLocation favouriteLocation,
+                                             String location, seedu.duke.Map nusMap) {
         if (favouriteLocation.getFavouriteLocations().contains(location)) {
             System.out.println("This location is already in favourites.");
         } else {

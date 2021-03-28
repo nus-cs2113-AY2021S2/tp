@@ -7,7 +7,7 @@ import seedu.duke.History;
 import seedu.duke.Map;
 import seedu.duke.ui.UiManager;
 
-public class AddFavouriteLocationCommand extends Command{
+public class AddFavouriteLocationCommand extends Command {
 
     public AddFavouriteLocationCommand(String userInput) {
         super(userInput);

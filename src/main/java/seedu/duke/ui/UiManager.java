@@ -1,6 +1,10 @@
 package seedu.duke.ui;
 
-import seedu.duke.*;
+import seedu.duke.Block;
+import seedu.duke.BlockAlias;
+import seedu.duke.FavouriteLocation;
+import seedu.duke.History;
+import seedu.duke.Map;
 import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidRepeatEntryException;

@@ -1,9 +1,13 @@
 package seedu.duke.command;
 
-import seedu.duke.*;
+import seedu.duke.BlockAlias;
+import seedu.duke.DailyRoute;
+import seedu.duke.FavouriteLocation;
+import seedu.duke.History;
+import seedu.duke.Map;
 import seedu.duke.ui.UiManager;
 
-public class DeleteFavouriteLocationCommand extends Command{
+public class DeleteFavouriteLocationCommand extends Command {
 
     public DeleteFavouriteLocationCommand(String userInput) {
         super(userInput);
