@@ -47,11 +47,19 @@ public class Ui {
     }
 
     /**
-     * Prints header for list command.
+     * Prints header for review list command.
      */
-    public void printListHeading() {
+    public void printReviewListHeading() {
         println("Here are your reviews: ");
         println("    Title          Category       Rating         Date");
+    }
+
+    /**
+     * Prints header for recommendation list command.
+     */
+    public void printRecommendationListHeading() {
+        println("Here are your recommendations: ");
+        println("    Title          Category       Rating");
     }
 
     /**
@@ -178,6 +186,13 @@ public class Ui {
     }
 
     /**
+     * Prints invalid rating message.
+     */
+    public void printInvalidPricingMessage() {
+        println("Invalid number please add in a valid pricing!");
+    }
+
+    /**
      * Prints invalid sort method message.
      */
     public void printInvalidSortMethodMessage() {
@@ -194,8 +209,15 @@ public class Ui {
     /**
      * Prints empty review list message.
      */
-    public void printEmptyCommandListMessage() {
+    public void printEmptyReviewListMessage() {
         println("You have no reviews, type 'new' to start!");
+    }
+
+    /**
+     * Prints empty recommendation list message.
+     */
+    public void printEmptyRecommendationListMessage() {
+        println("You have no recommendations, type 'add' followed by a title to start!");
     }
 
 }

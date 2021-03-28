@@ -3,6 +3,7 @@ package seedu.connoisseur.sorter;
 import java.util.Collections;
 import java.util.ArrayList;
 
+import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.ui.Ui;
 
@@ -82,7 +83,7 @@ public class Sorter {
      * @param reviewList reviewList to be sorted
      * @return sorted review list
      */
-    public ArrayList<Review> sort(ArrayList<Review> reviewList) {
+    public ArrayList<Review> sortReview(ArrayList<Review> reviewList) {
         switch (this.sortMethod) {
         case RATING:
             sortByRating(reviewList);
@@ -110,7 +111,7 @@ public class Sorter {
      * @param sortMethod method to sort
      * @return sorted review list
      */
-    public ArrayList<Review> sort(ArrayList<Review> reviewList, String sortMethod) {
+    public ArrayList<Review> sortReview(ArrayList<Review> reviewList, String sortMethod) {
         switch (sortMethod) {
         case "rating":
             sortByRating(reviewList);

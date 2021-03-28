@@ -1,6 +1,7 @@
 package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.ui.Ui;
 
 /**
@@ -38,11 +39,9 @@ public class Parser {
                     commandList.editReviewRating(newRating, index);
                 } else {
                     System.out.println("Invalid rating, failed to edit rating ");
-                    ;
                 }
             } catch (NumberFormatException ne) {
                 System.out.println("Invalid rating, failed to edit rating ");
-                ;
             }
             break;
         case "description":
@@ -66,7 +65,7 @@ public class Parser {
      *
      * @return true if exit command, false otherwise
      */
-    public boolean determineCommand(String input) {
+    public boolean determineCommand(String input) throws DuplicateException {
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {
@@ -78,6 +77,9 @@ public class Parser {
         switch (command) {
         case "list":
             commandList.listReviews(arguments);
+            break;
+        case "reco":
+            commandList.listRecommendations();
             break;
         case "edit":
             commandList.editReviews(arguments);
@@ -93,6 +95,9 @@ public class Parser {
             break;
         case "view":
             commandList.viewReview(arguments);
+            break;
+        case "add":
+            commandList.addRecommendation(arguments);
             break;
         case "help":
             commandList.printHelp(arguments);
