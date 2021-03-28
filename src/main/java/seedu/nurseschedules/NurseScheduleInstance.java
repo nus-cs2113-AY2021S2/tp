@@ -1,72 +1,100 @@
 package seedu.nurseschedules;
 
+import seedu.duke.exceptions.nurseschedules.EmptyListException;
+import seedu.duke.exceptions.nurseschedules.NurseIDNotFound;
+import seedu.duke.exceptions.nurseschedules.WrongInputsException;
 import seedu.duke.storage.NurseScheduleStorage;
-import seedu.nurseschedules.parser.Parser;
+import seedu.duke.menuparser.NurseSchedulesParser;
+import seedu.duke.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main entry-point for the NurseSchedules instance.
+ */
 public class NurseScheduleInstance {
 
-    private Parser parser;
+    private NurseSchedulesParser parser;
     private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
 
+    /** The list of nurse schedules */
     List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
 
-    /**
-     * Main entry-point for the java.duke.Duke application.
-     */
     public static void main() {
         new NurseScheduleInstance().run();
     }
 
+    /** Runs the program until termination. */
     public void run() {
         start();
         runCommandLoopUntilExit();
     }
 
     private void start() {
-        this.parser = new Parser();
+        this.parser = new NurseSchedulesParser();
         this.actions = new NurseScheduleActions();
         this.storage = new NurseScheduleStorage();
 
         storage.load(nurseSchedules);
-        System.out.println("Welcome to Nurse Schedules!");
-        System.out.println("Type \"help\" to for nurse schedules commands");
+
+        NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
+    /** Reads the user command and executes it, until the user issues the exit command */
     private void runCommandLoopUntilExit() {
         boolean isRun = true;
         while (isRun) {
-            System.out.print("NSchedule --> ");
+            NurseScheduleUI.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
-            String[] details = parser.getDetails(line);
 
-            if (command.equals("add")) {
+            switch (command) {
+            case "add":
                 try {
-                    System.out.println("Trip to " + details[1] + " on " + parser.formatDate(line) + " added!");
+                    String[] details = parser.getDetails(line);
+                    NurseScheduleUI.printAddedSchedule(details[1], parser.formatDate(line));
                     nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-                } catch (ParseException e) {
-                    System.out.println("Invalid date!");
+                    storage.writeToFile(nurseSchedules);
+                } catch (ParseException | WrongInputsException e) {
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.addHelpMessage();
                 }
-            } else if (command.equals("list")) {
-                actions.listSchedules(nurseSchedules, parser.getDetails(line));
-            } else if (command.equals("delete")) {
-                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-            } else if (command.equals("help")) {
-                System.out.println("Here is a list of Nurse Schedules commands: ");
-                System.out.println("\"help\" brings up this list of commands!");
-                System.out.println("\"add [NurseID] [Patient ID] [Date (DDMMYYYY)]\" adds a schedule to the schedule list!");
-                System.out.println("\"list [NurseID/all]\" brings up the list of either all or specified nurse schedules!");
-                System.out.println("\"delete [NurseID] [Date (DDMMYYYY)]\" deletes the schedule with the specified nurse ID!");
-                System.out.println("\"return\" returns you to the Start Menu!");
-            } else if (command.equals("return")) {
+                break;
+            case "list":
+                try {
+                    actions.listSchedules(nurseSchedules, parser.getDetails(line));
+                } catch (WrongInputsException e) {
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.listHelpMessage();
+                } catch (EmptyListException e) {
+                    System.out.println(e.getMessage());
+                } catch (NurseIDNotFound e) {
+                    System.out.println(e.getMessage());
+                }
+                break;
+            case "delete":
+                try {
+                    actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
+                    storage.writeToFile(nurseSchedules);
+                } catch (WrongInputsException e) {
+                    NurseScheduleUI.invalidInputsMessage();
+                    NurseScheduleUI.deleteHelpMessage();
+                }
+                break;
+            case "help":
+                NurseScheduleUI.printNurseScheduleHelpList();
+                break;
+            case "return":
                 storage.writeToFile(nurseSchedules);
-                System.out.println("Returning to start menu!");
+                NurseScheduleUI.returningToStartMenuMessage();
                 isRun = false;
+                break;
+            default:
+                NurseScheduleUI.invalidCommandMessage();
+                break;
             }
         }
     }

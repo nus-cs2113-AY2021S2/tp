@@ -51,8 +51,6 @@ public class StaffStorage {
             File myObj = new File(FILE_PATH);
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
-            } else {
-                System.out.println("File is overwritten.");
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");

@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.nurseschedules.NurseSchedule;
+import seedu.staff.Staff;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,14 +12,15 @@ import java.util.Scanner;
 
 public class NurseScheduleStorage {
 
+    private static final String FILE_PATH = "NurseSchedules.txt";
+
     /**
-     * Creates new file
+     * Creates new file.
      */
     private static void createFile() {
         try {
-            File file = new File("duke.txt");
-            if (file.createNewFile()) {
-            }
+            File file = new File(FILE_PATH);
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -26,7 +28,7 @@ public class NurseScheduleStorage {
 
     private static void readFile(List<NurseSchedule> nurseSchedules) {
         try {
-            FileInputStream file = new FileInputStream("duke.txt");
+            FileInputStream file = new FileInputStream(FILE_PATH);
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {
@@ -40,7 +42,7 @@ public class NurseScheduleStorage {
 
     public void writeToFile(List<NurseSchedule> nurseSchedules) {
         try {
-            File file = new File("duke.txt");
+            File file = new File(FILE_PATH);
             FileWriter writer = new FileWriter(file);
             for (NurseSchedule n : nurseSchedules) {
                 writer.write(n.toSave());
@@ -56,5 +58,4 @@ public class NurseScheduleStorage {
         createFile();
         readFile(nurseSchedules);
     }
-
 }
