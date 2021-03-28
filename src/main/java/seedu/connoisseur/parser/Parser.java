@@ -9,6 +9,7 @@ import seedu.connoisseur.ui.Ui;
  */
 public class Parser {
     private static CommandList commandList;
+    private boolean isReviewMode = true;
 
     /**
      * Constructor for parser class.
@@ -75,29 +76,50 @@ public class Parser {
         }
 
         switch (command) {
-        case "list":
-            commandList.listReviews(arguments);
+        case "review":
+            isReviewMode = true;
+            System.out.println("You are now in review mode");
             break;
         case "reco":
-            commandList.listRecommendations();
+            isReviewMode = false;
+            System.out.println("You are now in recommendation mode");
+            break;
+        case "list":
+            if (isReviewMode) {
+                commandList.listReviews(arguments);
+            } else {
+                commandList.listRecommendations();
+            }
             break;
         case "edit":
-            commandList.editReviews(arguments);
+            if (isReviewMode) {
+                commandList.editReviews(arguments);
+            }
             break;
         case "sort":
-            commandList.sortReview(arguments);
+            if (isReviewMode) {
+                commandList.sortReview(arguments);
+            }
             break;
         case "new":
-            commandList.addReview(arguments);
+            if (isReviewMode) {
+                commandList.addReview(arguments);
+            }
             break;
         case "delete":
-            commandList.deleteReview(arguments);
+            if (isReviewMode) {
+                commandList.deleteReview(arguments);
+            }
             break;
         case "view":
-            commandList.viewReview(arguments);
+            if (isReviewMode) {
+                commandList.viewReview(arguments);
+            }
             break;
         case "add":
-            commandList.addRecommendation(arguments);
+            if (isReviewMode) {
+                commandList.addRecommendation(arguments);
+            }
             break;
         case "help":
             commandList.printHelp(arguments);
