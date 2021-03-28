@@ -1,7 +1,9 @@
 package seedu.logic.instance;
 
 
-import seedu.logic.parser.doctorappointmentparser;
+import seedu.exceptions.DukeException;
+import seedu.exceptions.doctorappointment.FileCreatingErrorException;
+import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.logic.command.AppointmentActions;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
@@ -10,6 +12,11 @@ import seedu.ui.UI;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+
+/**
+ * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running
+ *
+ */
 
 public class DoctorAppointmentInstance {
 
@@ -28,7 +35,8 @@ public class DoctorAppointmentInstance {
                 doctorAppointmentStorage.createFile();
                 details = doctorAppointmentStorage.loadFile();
             } catch (IOException e1) {
-                System.out.println("File cannot be created");
+                e1.getMessage();
+
             }
         }
     }
@@ -40,10 +48,10 @@ public class DoctorAppointmentInstance {
         Scanner userInput = new Scanner(System.in);
         while (!isReturnToStartMenu) {
             try {
-                System.out.print("Appointments --> ");
+                DoctorAppointmentUI.printAppointmentMenuPrompt();
                 String input = userInput.nextLine();
                 ui.showLine(); // show the divider line ("_______")
-                isReturnToStartMenu = doctorappointmentparser.parse(input);
+                isReturnToStartMenu = DoctorAppointmentParser.parse(input);
                 if (isReturnToStartMenu) {
                     ui.returningToStartMenuMessage();
                 }

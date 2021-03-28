@@ -3,7 +3,7 @@ package seedu.logic.parser;
 
 import seedu.logic.command.AppointmentActions;
 
-public class doctorappointmentparser {
+public class DoctorAppointmentParser {
 
     public static boolean parse(String input) throws Exception {
         String[] inputArray = input.split(" ");

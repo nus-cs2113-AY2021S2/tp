@@ -14,4 +14,8 @@ public class DoctorAppointmentUI {
         System.out.println("\"help\" brings up a list of commands!");
         System.out.println("\"return\" returns you to the Start Menu!");
     }
+
+    public static void printAppointmentMenuPrompt(){
+        System.out.print("Appointments --> ");
+    }
 }
