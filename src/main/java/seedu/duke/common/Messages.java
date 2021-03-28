@@ -117,7 +117,7 @@ public class Messages {
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
-    public static final String MESSAGE_EDITED_TASK = "Edited task successfully: %s";
+    public static final String MESSAGE_EDITED_FIELD = "Updated %s.";
 
     public static final String MESSAGE_TASKS_TO_DELETE = "Which tasks would you like to delete?";
     public static final String MESSAGE_TASKS_TO_LIST = "Tasks for %s:";

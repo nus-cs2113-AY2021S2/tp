@@ -1,23 +1,11 @@
 package seedu.duke.task;
 
-import seedu.duke.ui.UI;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
-import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
-import static seedu.duke.common.Constants.NO_STRING;
-import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.FORMAT_TASK_FIELDS;
 import static seedu.duke.common.Messages.MESSAGE_GRADED_STATUS;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
-import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
-import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
-import static seedu.duke.common.Messages.MESSAGE_TASK_DEADLINE_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_TASK_DESCRIPTION_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_TASK_REMARKS_TO_EDIT;
 import static seedu.duke.common.Messages.MESSAGE_UNGRADED_STATUS;
 
 public class Task {
@@ -104,68 +92,22 @@ public class Task {
         this.setDone(false);
     }
 
-    public void editTask(UI ui, int fieldIndex) {
-        switch (fieldIndex) {
-        case 1:
-            editTaskDescription(ui);
-            break;
-        case 2:
-            editTaskDeadline(ui);
-            break;
-        case 3:
-            editTaskRemarks(ui);
-            break;
-        case 4:
-            editTaskGradedStatus(ui);
-            break;
-        default:
-        }
-    }
-
-    public void editTaskDescription(UI ui) {
-        ui.printMessage(MESSAGE_TASK_DESCRIPTION_TO_EDIT);
-        String newDescription = ui.readCommand();
+    public void editTaskDescription(String newDescription) {
         this.setDescription(newDescription);
     }
 
-    public void editTaskDeadline(UI ui) {
-        ui.printMessage(MESSAGE_TASK_DEADLINE_TO_EDIT);
-        String input = ui.readCommand();
-        DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
-        try {
-            LocalDate newDeadline = LocalDate.parse(input, parseFormat);
-            this.setDeadline(newDeadline);
-        } catch (DateTimeParseException e) {
-            ui.printMessage(MESSAGE_INVALID_TASK_DEADLINE);
-            editTask(ui, 2);
+    public void editTaskDeadline(LocalDate newDeadline) {
+        if (newDeadline == null) {
+            return;
         }
+        this.setDeadline(newDeadline);
     }
 
-    public void editTaskRemarks(UI ui) {
-        ui.printMessage(MESSAGE_TASK_REMARKS_TO_EDIT);
-        String newRemarks = ui.readCommand();
+    public void editTaskRemarks(String newRemarks) {
         this.setRemarks(newRemarks);
     }
 
-    public void editTaskGradedStatus(UI ui) {
-        boolean isGraded = this.getIsTaskGraded(ui);
+    public void editTaskGradedStatus(boolean isGraded) {
         this.setGraded(isGraded);
-    }
-
-    /**
-     * Asks user if the task to be added is a graded one.
-     *
-     * @param ui Instance of UI.
-     * @return Boolean of whether new task is graded.
-     */
-    public boolean getIsTaskGraded(UI ui) {
-        ui.printMessage(MESSAGE_TASK_CHECK_GRADED);
-        String userInput = ui.readCommand();
-        while (!userInput.equalsIgnoreCase(YES_STRING) 
-                && !userInput.equalsIgnoreCase(NO_STRING)) {
-            ui.printMessage(MESSAGE_TASK_CHECK_GRADED_INFO);
-            userInput = ui.readCommand();
-        }
-        return userInput.equalsIgnoreCase(YES_STRING);
     }
 }
