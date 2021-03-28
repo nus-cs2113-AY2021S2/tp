@@ -32,14 +32,14 @@ class ParserTest {
     public static final String ADD_MODULE = "add CS2113T";
     public static final String HELP = "help";
     public static final String OPEN_MODULE = "open cs1234";
-    public static final String DELETE_MODULE = "delete cs1234";
+    public static final String DELETE_MODULE = "delete";
     public static final String ARBITRARY_STRING = "AakjhdLKLlkjlLJAAasldkj 12801 =123-=-';";
     
     
     //@@author ivanchongzhien
     @Test
     // DASHBOARD COMMANDS
-    void parse_dashboardCommandAddModule_addCommandObject() throws CommandException,
+    void parse_dashboardCommands_correctCommandObject() throws CommandException,
             ParserException {
         ModuleList.reset();
 
@@ -60,7 +60,7 @@ class ParserTest {
 
     @Test
     // IN MODULE COMMAND
-    void parse_inModuleCommandListTask_ListTaskCommandObject() throws CommandException, ParserException {
+    void parse_inModuleCommands_correctCommandObject() throws CommandException, ParserException {
         ModuleList.addModule(MODULE_CODE);
         ModuleList.setSelectedModule(MODULE_CODE);
 

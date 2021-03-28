@@ -140,6 +140,7 @@ public class Parser {
         if (!commandArgs.isEmpty()) {
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
+        
         switch (command) {
         case HELP:
             return new PrintHelpCommand();
