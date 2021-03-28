@@ -1,7 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -25,8 +25,9 @@ public class ListNoteCommand extends Command {
         try {
             NotesCommandParser.parseListNotesCommand(userInput, nusMap);
             nusMap.map.get(location).listNotes();
+            ui.showToUser(ui.divider);
         } catch (NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
     }
 

@@ -20,6 +20,7 @@ public class FavouriteLocation {
                 throw new NullPointerException();
             }
             favouriteLocations.add(venue);
+            System.out.println("Favourite location has been added!");
         } catch (NullPointerException e) {
             System.out.println("Invalid venue!");
         }
@@ -28,18 +29,9 @@ public class FavouriteLocation {
     public void removeFavouriteLocation(int index) {
         try {
             favouriteLocations.remove(index);
+            System.out.println("Favourite location has been removed.");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid index!");
-        }
-    }
-
-    public void showFavouriteLocations() {
-        if (favouriteLocations.size() == 0) {
-            System.out.println("There are no favourite locations.");
-        } else {
-            for (int i = 0; i != favouriteLocations.size(); i += 1) {
-                System.out.println((i + 1) + ". " + favouriteLocations.get(i));
-            }
         }
     }
 }

@@ -1,7 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -30,11 +30,11 @@ public class DeleteNoteCommand extends Command {
             nusMap.map.get(location).deleteNotes();
         } catch (WrongInputFormatException | NoLocationForNotesCommandException
                 | NonExistentLocationForNotesCommandException | NoNoteIndexException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidNoteIndexException e) {
-            ui.showToUser(e.getMessage(nusMap));
+            ui.showToUser(e.getMessage(nusMap), ui.divider);
         } catch (NumberFormatException e) {
-            System.out.println("Please enter a valid number for note index.");
+            ui.showToUser("Please enter a valid number for note index.", ui.divider);
         }
     }
 }

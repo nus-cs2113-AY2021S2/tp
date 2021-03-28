@@ -1,7 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -21,13 +21,13 @@ public class AddCustomAliasCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
-            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasMap());
+            HashMap<String, String> addAlias = ui.getAliasInfo(blockAlias.getAliasHashMap());
             assert addAlias != null;
-            blockAlias.getAliasMap().putAll(addAlias);
+            blockAlias.getAliasHashMap().putAll(addAlias);
         } catch (InvalidAliasException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidBlockException r) {
-            ui.showToUser(r.getMessage());
+            ui.showToUser(r.getMessage(), ui.divider);
         }
     }
 }

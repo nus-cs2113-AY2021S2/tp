@@ -4,7 +4,7 @@ import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidDayException;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -39,11 +39,11 @@ public class ShowDailyRouteCommand extends Command {
         try {
             int index = getIndex(ui, selectableDays, dailyRoute);
             String routedSchedule = getRoutedSchedule(index, dailyRoute, nusMap, blockAlias);
-            ui.showToUser(routedSchedule);
+            ui.showToUser(routedSchedule, ui.divider);
         } catch (InvalidBlockException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         } catch (InvalidDayException r) {
-            ui.showToUser(r.getMessage());
+            ui.showToUser(r.getMessage(), ui.divider);
         }
     }
 

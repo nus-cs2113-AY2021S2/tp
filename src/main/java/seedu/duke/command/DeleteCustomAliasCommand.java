@@ -1,7 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -18,10 +18,9 @@ public class DeleteCustomAliasCommand extends Command {
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         try {
             String aliasToDelete = ui.getDeleteAliasInfo(blockAlias);
-            blockAlias.getAliasMap().remove(aliasToDelete);
+            blockAlias.getAliasHashMap().remove(aliasToDelete);
         } catch (InvalidAliasException e) {
-            ui.showToUser(e.getMessage());
+            ui.showToUser(e.getMessage(), ui.divider);
         }
-
     }
 }

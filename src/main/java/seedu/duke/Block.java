@@ -76,12 +76,6 @@ public class Block {
     public void addNotes() {
         this.notesList.add(note); //add notes to list for that location
         this.notesCount++; //add to count for number of notes made for that location
-        System.out.println("This note has been added and tagged to " + location + ":");
-        System.out.println("\t" + note);
-    }
-
-    public void addGivenNote(String currentNote) {
-        this.notesList.add(currentNote);
     }
 
     public void deleteNotes() {

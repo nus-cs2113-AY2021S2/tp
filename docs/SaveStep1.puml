@@ -19,9 +19,8 @@ object __FavouriteLocationsStorage__ {
     filepath = "data/favouritesList.txt"
 }
 
-__AliasStorage__ ---> __Storage__
-__NotesStorage__ ---> __Storage__
-__HistoryRouteStorage__ ---> __Storage__
-__FavouriteLocationsStorage__ ---> __Storage__
-
+__Storage__ <--- __AliasStorage__
+__Storage__ <--- __NotesStorage__
+__Storage__ <--- __HistoryRouteStorage__
+__Storage__ <--- __FavouriteLocationsStorage__
 @enduml

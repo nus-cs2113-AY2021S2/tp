@@ -13,6 +13,8 @@ import seedu.duke.command.HelpCommand;
 import seedu.duke.command.AddDailyRouteCommand;
 import seedu.duke.command.ShowDailyRouteCommand;
 import seedu.duke.command.ShowFavouriteLocationsCommand;
+import seedu.duke.command.AddFavouriteLocationCommand;
+import seedu.duke.command.DeleteFavouriteLocationCommand;
 import seedu.duke.command.AddCustomAliasCommand;
 import seedu.duke.command.DeleteCustomAliasCommand;
 import seedu.duke.command.ShowCustomAliasCommand;
@@ -46,8 +48,12 @@ public class Parser {
             command = new AddDailyRouteCommand(filteredUserInput);
         }  else if (filteredUserInput.equals("day")) {
             command = new ShowDailyRouteCommand(filteredUserInput);
-        } else if (filteredUserInput.startsWith("favourite")) {
+        } else if (filteredUserInput.startsWith("show favourite")) {
             command = new ShowFavouriteLocationsCommand(filteredUserInput);
+        } else if (filteredUserInput.startsWith("add favourite")) {
+            command = new AddFavouriteLocationCommand(filteredUserInput);
+        } else if (filteredUserInput.startsWith("delete favourite")) {
+            command = new DeleteFavouriteLocationCommand(filteredUserInput);
         } else if (filteredUserInput.equals("add alias")) {
             command = new AddCustomAliasCommand(filteredUserInput);
         } else if (filteredUserInput.equals("show alias")) {
