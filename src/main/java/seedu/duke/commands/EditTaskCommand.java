@@ -23,6 +23,7 @@ import static seedu.duke.common.Messages.COMMAND_VERB_EDIT;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_EDITED_FIELD;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
+import static seedu.duke.common.Messages.MESSAGE_NOT_UPDATED;
 import static seedu.duke.common.Messages.MESSAGE_NO_TASK_MODIFIED;
 import static seedu.duke.common.Messages.MESSAGE_TASK_BEING_EDITED;
 import static seedu.duke.common.Messages.MESSAGE_TASK_DEADLINE_TO_EDIT;
@@ -60,33 +61,35 @@ public class EditTaskCommand extends Command {
             ui.printMessage(MESSAGE_NO_TASK_MODIFIED);
             return;
         }
-        
-        editTaskFields(ui, selectedIndices);
+        for (int index : selectedIndices) {
+            editTaskField(ui, index, selectedIndices);
+        }
         ModuleList.writeModule();
         ModuleList.sortTasks();
     }
     
-    private void editTaskFields(UI ui, ArrayList<Integer> selectedIndices) {
-        for (int fieldIndex : selectedIndices) {
-            switch (fieldIndex) {
-            case 1:
-                selectedTask.editTaskDescription(getNewTaskDescription(ui));
-                break;
-            case 2:
-                selectedTask.editTaskDeadline(getNewTaskDeadline(ui));
-                break;
-            case 3:
-                selectedTask.editTaskRemarks(getNewTaskRemarks(ui));
-                break;
-            case 4:
-                selectedTask.editTaskGradedStatus(getIsTaskGraded(ui));
-                break;
-            default:
+    private void editTaskField(UI ui, int fieldIndex, ArrayList<Integer> selectedIndices) {
+        switch (fieldIndex) { 
+        case 1:
+            selectedTask.editTaskDescription(getNewTaskDescription(ui));
+            break;
+        case 2:
+            LocalDate newDeadline = getNewTaskDeadline(ui);
+            if (newDeadline == null) {
+                return;
             }
+            selectedTask.editTaskDeadline(newDeadline);
+            break;
+        case 3:
+            selectedTask.editTaskRemarks(getNewTaskRemarks(ui));
+            break;
+        case 4:
+             ui.printMessage("");
+             selectedTask.editTaskGradedStatus(getIsTaskGraded(ui));
+             break;
+        default:
         }
-        for (int fieldIndex : selectedIndices) {
-            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex - 1].toLowerCase()));
-        }
+        ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex - 1].toLowerCase()));
     }
 
     private void printPromptForTask(UI ui, ArrayList<Task> taskList) {
@@ -133,6 +136,7 @@ public class EditTaskCommand extends Command {
             return LocalDate.parse(input, parseFormat);
         } catch (DateTimeParseException e) {
             ui.printMessage(MESSAGE_INVALID_TASK_DEADLINE);
+            ui.printMessage(MESSAGE_NOT_UPDATED);
             return null;
         }
     }
