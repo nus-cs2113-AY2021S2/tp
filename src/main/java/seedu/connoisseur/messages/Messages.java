@@ -9,7 +9,10 @@ public class Messages {
             + "  \\_____\\___/|_| |_|_| |_|\\___/|_|___/___/\\___|\\__,_|_|   \n";
 
     public static final String WELCOME_MESSAGE = "                         Welcome to\n"
-            + LOGO;
+            + LOGO
+            +"\n"
+            + "Connoisseur is in review mode by default!\n"
+            + "Enter 'review' or 'reco' to change mode at any point:) ";
 
     public static final String COMMAND_PROMPT = "____________________________________________________________________\n"
             + "Please enter a command: ";
