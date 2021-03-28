@@ -20,7 +20,7 @@ import seedu.duke.task.TaskList;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
-public class StorageModuleInfo {
+public class Storage {
 
     public static String filePath = new File("").getAbsolutePath();
     public static String filePathForTasks = new File("").getAbsolutePath();

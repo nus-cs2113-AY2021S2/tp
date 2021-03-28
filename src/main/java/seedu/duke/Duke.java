@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.link.LinkInfo;
 import seedu.duke.link.Links;
 import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
@@ -21,14 +20,7 @@ public class Duke {
 
     public static void runMainMenu() {
         TaskList taskList = new TaskList();
-        StorageModuleInfo.loadModuleInfoFile();
-        StorageModuleInfo.loadTasksFile();
-        StorageModuleInfo.loadAssignmentsFile();
-        StorageModuleInfo.loadMidtermsFile();
-        StorageModuleInfo.loadFinalExamsFile();
-        StorageModuleInfo.loadPinnedTasksFile();
-        StorageModuleInfo.loadLinkInfoFile();
-        StorageModuleInfo.loadZoomLinkInfoFile();
+        loadAllFiles();
         while (true) {
             Ui.printPinnedTaskList(TaskList.pinnedTasks);
             Ui.printMainMenu();
@@ -38,16 +30,9 @@ public class Duke {
 
                 if (commandInt == 5) {
                     try {
-                        StorageModuleInfo.modulesFileSaver();
-                        StorageModuleInfo.tasksFileSaver();
-                        StorageModuleInfo.assignmentsFileSaver();
-                        StorageModuleInfo.midtermsFileSaver();
-                        StorageModuleInfo.finalExamsFileSaver();
-                        StorageModuleInfo.pinnedTasksFileSaver();
-                        StorageModuleInfo.linksFileSaver();
-                        StorageModuleInfo.zoomLinksFileSaver();
+                        saveAllFiles();
                     } catch (IOException e) {
-                        System.out.println("modules.txt file could not be saved:(");
+                        System.out.println("Files could not be saved:(");
                     }
                     break;
                 }
@@ -81,5 +66,27 @@ public class Duke {
                 Ui.printInvalidIntegerMessage();
             }
         }
+    }
+
+    public static void saveAllFiles() throws IOException {
+        Storage.modulesFileSaver();
+        Storage.tasksFileSaver();
+        Storage.assignmentsFileSaver();
+        Storage.midtermsFileSaver();
+        Storage.finalExamsFileSaver();
+        Storage.pinnedTasksFileSaver();
+        Storage.linksFileSaver();
+        Storage.zoomLinksFileSaver();
+    }
+
+    public static void loadAllFiles() {
+        Storage.loadModuleInfoFile();
+        Storage.loadTasksFile();
+        Storage.loadAssignmentsFile();
+        Storage.loadMidtermsFile();
+        Storage.loadFinalExamsFile();
+        Storage.loadPinnedTasksFile();
+        Storage.loadLinkInfoFile();
+        Storage.loadZoomLinkInfoFile();
     }
 }
