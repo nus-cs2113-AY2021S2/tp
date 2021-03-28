@@ -14,8 +14,8 @@ public class Messages {
             + "Connoisseur is in review mode by default!\n"
             + "Enter 'review' or 'reco' to change mode at any point:) ";
 
-    public static final String COMMAND_PROMPT = "_____________________________________________________________________" +
-            "______________________\n"
+    public static final String COMMAND_PROMPT = "_____________________________________________________________________"
+            + "______________________\n"
             + "Please enter a command: ";
 
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
