@@ -178,24 +178,24 @@ public class EditLessonCommand extends Command {
         switch (fieldIndex) {
         case EDIT_INDEX_DAY_TIME:
             lesson.setTime(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_LESSON_TIME_UPDATED, newFieldValue));
+            ui.printMessage(MESSAGE_LESSON_TIME_UPDATED);
             break;
         case EDIT_INDEX_LINK:
             if (Lesson.isValidLink(newFieldValue)) {
                 lesson.setOnlineLink(newFieldValue);
-                ui.printMessage(String.format(MESSAGE_LINK_UPDATED, newFieldValue));
+                ui.printMessage(MESSAGE_LINK_UPDATED);
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_LINK + MESSAGE_NOT_UPDATED);
             }
             break;
         case EDIT_INDEX_TEACHER_NAME:
             lesson.getTeachingStaff().setName(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_TEACHER_NAME_UPDATED, newFieldValue));
+            ui.printMessage(MESSAGE_TEACHER_NAME_UPDATED);
             break;
         default:
             if (TeachingStaff.isValidEmail(newFieldValue)) {
                 lesson.getTeachingStaff().setEmail(newFieldValue);
-                ui.printMessage(String.format(MESSAGE_TEACHER_EMAIL_UPDATED, newFieldValue));
+                ui.printMessage(MESSAGE_TEACHER_EMAIL_UPDATED);
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_EMAIL + MESSAGE_NOT_UPDATED);
             }
