@@ -308,13 +308,16 @@ Adds a review for the module of your choice.
 #### 3.1.5 View all reviews
 
 Lists out all the reviews for all modules added to UniTracker.
-<details>
-  <summary>Click to see example for listing all the modules' reviews:</summary>
-  Input:  <span style="color:#2b9948">10</span>
+<details>  
+<summary>  <span style="color:#717de3  ">`Click to see example for listing all the modules' reviews:` </span>  </summary>  
+
+  Input:  <span style="color:#2b9948  "> `10` </span>  
+
 
   Output:  
   
   ```  
+  <span style="color:#2b9948  "> `10` </span>  
   --------------------------------------------  
   For CS3243:  
   The lectures were very entertaining. I have learnt a lot of important algorithms.  
