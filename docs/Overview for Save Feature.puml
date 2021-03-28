@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class AliasStorage {
+    +loadAlias(:BlockAlias)
+    +overwriteAliasListFile(:BlockAlias)
+}
+class HistoryRouteStorage {
+    +loadHistory(:History)
+    +overwriteHistoryListFile(:History)
+}
+class NotesStorage {
+    +loadNotes(:Map)
+    +overwriteNotesListFile(:Map)
+}
+class FavouriteLocationsStorage {
+    +loadFavourites(:FavouriteLocation)
+    +overwriteFavouritesListFile(:FavouriteLocation)
+}
+abstract class "Storage" {
+    +filepath
+}
+
+class Duke {
+}
+
+
+"Storage" <|-- AliasStorage
+"Storage" <|-- HistoryRouteStorage
+"Storage" <|-- NotesStorage
+"Storage" <|-- FavouriteLocationsStorage
+
+AliasStorage "**1**" <.. Duke : creates <
+HistoryRouteStorage "**1**" <.. Duke : creates <
+NotesStorage  "**1**" <.. Duke : creates <
+FavouriteLocationsStorage  "**1**" <.. Duke : creates <
+
+@enduml

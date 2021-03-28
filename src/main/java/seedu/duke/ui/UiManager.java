@@ -11,6 +11,7 @@ import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
 import seedu.duke.exception.InvalidAliasException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UiManager extends Ui {
@@ -67,13 +68,8 @@ public class UiManager extends Ui {
     }
 
     // Daily Route
-    public DaySchedulePair getDailyRouteInfo()
-            throws InvalidDayException, InvalidBlockException {
-        return dailyRouteUi.getDailyRouteInfo();
-    }
-
-    public String getValidDay() throws InvalidDayException {
-        return dailyRouteUi.getValidDay();
+    public ArrayList<String> getSchedule() throws InvalidBlockException {
+        return dailyRouteUi.getSchedule();
     }
 
     // Alias

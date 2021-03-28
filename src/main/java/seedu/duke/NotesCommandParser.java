@@ -9,6 +9,10 @@ import seedu.duke.notecommandexceptions.WrongInputFormatException;
 
 public class NotesCommandParser {
 
+    private static final int ADDNOTELENGTH = 7;
+    private static final int DELETENOTELENGTH = 10;
+    public static final int LISTNOTESLENGTH = 9;
+
     public static String location;
     public static String note;
     public static int noteIndexInList;
@@ -26,14 +30,15 @@ public class NotesCommandParser {
             throw new WrongInputFormatException();
         }
         int beforeNoteIndex = lowerCaseInputWithNoSpaces.indexOf("/");
+        assert beforeNoteIndex >= ADDNOTELENGTH : "beforeNoteIndex should not be less than 7 after checking for format";
         String commandWithLocation = lowerCaseInputWithNoSpaces.substring(0, beforeNoteIndex);
         if (commandWithLocation.startsWith("addnote")) {
             //take out location and store location as UPPERCASE:
-            int indexOfLocation = 7;
+            int indexOfLocation = ADDNOTELENGTH;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
         } else if (commandWithLocation.startsWith("deletenote")) {
             //take out location and store location as UPPERCASE:
-            int indexOfLocation = 10;
+            int indexOfLocation = DELETENOTELENGTH;
             location = commandWithLocation.substring(indexOfLocation).toUpperCase();
         }
 
@@ -112,11 +117,9 @@ public class NotesCommandParser {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");
         String commandWithLocation = lowerCaseInputWithNoSpaces;
-        if (commandWithLocation.startsWith("listnotes")) {
-            //take out location and store location as UPPERCASE:
-            int indexOfLocation = 9;
-            location = commandWithLocation.substring(indexOfLocation).toUpperCase();
-        }
+        int indexOfLocation = LISTNOTESLENGTH;
+        location = commandWithLocation.substring(indexOfLocation).toUpperCase();
+
         //for locations with spacing: add the spacing back
         if (location.equals("TECHNOEDGE")) {
             location = "TECHNO EDGE";
