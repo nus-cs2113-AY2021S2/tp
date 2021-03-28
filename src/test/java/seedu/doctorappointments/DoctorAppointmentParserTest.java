@@ -23,4 +23,10 @@ public class DoctorAppointmentParserTest {
         assertFalse(output);
     }
 
+    @Test
+    public void offCommand() throws Exception {
+        boolean output = Parser.parse("off");
+        assertFalse(output);
+    }
+
 }
