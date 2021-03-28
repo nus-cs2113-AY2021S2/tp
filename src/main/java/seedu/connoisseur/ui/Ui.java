@@ -59,7 +59,7 @@ public class Ui {
      */
     public void printRecommendationListHeading() {
         println("Here are your recommendations: ");
-        println("    Title          Category       Rating");
+        println("    Title          Category       Price range");
     }
 
     /**

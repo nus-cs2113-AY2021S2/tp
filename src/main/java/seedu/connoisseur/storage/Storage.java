@@ -111,9 +111,10 @@ public class Storage {
         for (int i = 0; i < recommendations.length(); i++) {
             String title = recommendations.getJSONObject(i).getString("title");
             String category = recommendations.getJSONObject(i).getString("category");
-            int price = recommendations.getJSONObject(i).getInt("price");
+            int priceLow = recommendations.getJSONObject(i).getInt("priceLow");
+            int priceHigh = recommendations.getJSONObject(i).getInt("priceHigh");
             String referrer = recommendations.getJSONObject(i).getString("referrer");
-            Recommendation reco = new Recommendation(title, category, price, referrer);
+            Recommendation reco = new Recommendation(title, category, priceLow, priceHigh, referrer);
             recommendationList.add(reco);
         }
         return recommendationList;
@@ -158,7 +159,8 @@ public class Storage {
             JSONObject recommendationToWrite = new JSONObject();
             recommendationToWrite.put("title", recommendation.getTitle());
             recommendationToWrite.put("category", recommendation.getCategory());
-            recommendationToWrite.put("price", recommendation.getPrice());
+            recommendationToWrite.put("priceLow", recommendation.getPriceLow());
+            recommendationToWrite.put("priceHigh", recommendation.getPriceHigh());
             recommendationToWrite.put("referrer", recommendation.getRecommendedBy());
             recommendations.put(i, recommendationToWrite);
         }
