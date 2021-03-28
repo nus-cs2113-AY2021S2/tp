@@ -128,20 +128,27 @@ public class Parser {
         case ADD:
             String moduleCodeToAdd = parseModuleCode(commandArgs);
             return new AddModuleCommand(moduleCodeToAdd);
-        case DELETE:
-            return new DeleteModuleCommand();
-        case MODULES:
-            return new ListModulesCommand();
         case OPEN:
             String moduleCodeToOpen = parseModuleCode(commandArgs);
             return new EnterModuleCommand(moduleCodeToOpen);
+        }
+        
+        if (!commandArgs.isEmpty()) {
+            throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
+        }
+        switch (command) {
         case HELP:
             return new PrintHelpCommand();
         case EXIT:
             return new ExitProgramCommand();
+        case DELETE:
+            return new DeleteModuleCommand();
+        case MODULES:
+            return new ListModulesCommand();
         default:
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
+        
     }
 
     /**
