@@ -4,6 +4,7 @@ import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
@@ -45,33 +46,17 @@ public class CommandList {
     private final Storage storage;
 
     /**
-     * Creates tasks according to user data from files.
-     *
-     * @param dataReviews List of tasks from user connoisseur.txt file.
+     * Creates CommandList based on stored data. 
+     * @param connoisseurData locally stored data
+     * @param ui ui instance
+     * @param storage storage instance
      */
-    public CommandList(ArrayList<String> dataReviews, ArrayList<String> dataRecommendations, Ui ui, Storage storage) {
+    public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.DATE_LATEST);
-        if (!dataReviews.isEmpty()) {
-            for (String review : dataReviews) {
-                if (review.length() != 0) {
-                    if (review.startsWith("SortMethod: ")) {
-                        sorter.changeSortMethod(review.split(" ", 2)[1]);
-                    } else {
-                        reviewList.add(Review.textToReview(review));
-                    }
-                }
-            }
-        }
-
-        if (!dataRecommendations.isEmpty()) {
-            for (String recommendation : dataRecommendations) {
-                if (recommendation.length() != 0) {
-                    recommendationList.add(Recommendation.textToRecommendation(recommendation));
-                }
-            }
-        }
+        sorter = new Sorter(SortMethod.LATEST);
+        this.reviewList = connoisseurData.getReviewList();
+        this.recommendationList = connoisseurData.getRecoList();
     }
 
     /**
@@ -80,7 +65,7 @@ public class CommandList {
     public CommandList(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.DATE_LATEST);
+        sorter = new Sorter(SortMethod.LATEST);
     }
 
     /**
@@ -115,8 +100,8 @@ public class CommandList {
         validSortMethods.add("rating");
         validSortMethods.add("category");
         validSortMethods.add("title");
-        validSortMethods.add("date earliest");
-        validSortMethods.add("date latest");
+        validSortMethods.add("earliest");
+        validSortMethods.add("latest");
         validSortMethods.add(null);
         return validSortMethods.contains(sortMethod);
     }
@@ -154,8 +139,8 @@ public class CommandList {
             ui.println(SORT_METHOD_PROMPT);
             return;
         }
-        if (sortType.equals("title") || sortType.equals("date earliest")
-                || sortType.equals("date latest") || sortType.equals("rating") || sortType.equals("category")) {
+        if (sortType.equals("title") || sortType.equals("earliest")
+                || sortType.equals("latest") || sortType.equals("rating") || sortType.equals("category")) {
             sorter.changeSortMethod(sortType);
             ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
         } else {
@@ -335,8 +320,7 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList, sorter.getSortMethod());
-        storage.saveRecommendationData(recommendationList);
+        storage.saveConnoisseurData(reviewList, recommendationList, sorter.getSortMethod());
         ui.printExitMessage();
     }
 

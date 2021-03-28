@@ -6,8 +6,6 @@ import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
-import java.util.ArrayList;
-
 import static seedu.connoisseur.messages.Messages.COMMAND_PROMPT;
 
 public class Connoisseur {
@@ -26,12 +24,8 @@ public class Connoisseur {
         Ui ui = new Ui();
         Storage storage = new Storage(ui);
         CommandList commandList;
-        if (storage.retrieveConnoisseurTextFile() & storage.retrieveRecommendationTextFile()) {
-            commandList = new CommandList(storage.loadConnoisseurData(), storage.loadRecommendationData(), ui, storage);
-        } else if (storage.retrieveConnoisseurTextFile() & !storage.retrieveRecommendationTextFile()) {
-            commandList = new CommandList(storage.loadConnoisseurData(), new ArrayList<>(), ui, storage);
-        } else if (!storage.retrieveConnoisseurTextFile() & storage.retrieveRecommendationTextFile()) {
-            commandList = new CommandList(new ArrayList<>(), storage.loadRecommendationData(), ui, storage);
+        if (storage.retrieveDataFile()) {
+            commandList = new CommandList(storage.loadConnoisseurData(), ui, storage);
         } else {
             commandList = new CommandList(ui, storage);
         }

@@ -33,11 +33,16 @@ public class CommandListTest {
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
-        int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
+        final int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
         String title = "superman";
         commandList.deleteReview(title);
-
-        assertFalse(commandList.reviewList.contains(title));
+        Boolean contains = false;
+        for (int i = 0; i < commandList.reviewList.size(); i++) {
+            if (commandList.reviewList.get(i).getTitle().equals(title)) {
+                contains = true;
+            }
+        }
+        assertFalse(contains);
 
         int numberOfReviewsAfterRemoval = commandList.reviewList.size();
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
@@ -66,8 +71,8 @@ public class CommandListTest {
 
     @Test
     void checkAndPrintDuplicate() {
-        CommandList commandList = new CommandList(new ArrayList<String>(),new ArrayList<String>(),
-                new Ui(), new Storage(new Ui()));
+        Ui ui = new Ui();
+        CommandList commandList = new CommandList(ui, new Storage(ui));
         commandList.reviewList = new ArrayList<Review>();
         assertFalse(commandList.checkAndPrintDuplicateReview("Avengers"));
     }
