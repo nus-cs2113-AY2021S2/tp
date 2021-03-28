@@ -315,6 +315,8 @@ public class CommandList {
             ui.printDeleteHelpMessage();
         } else if (arguments.equals("view")) {
             ui.printViewHelpMessage();
+        } else if (arguments.equals("reco")) {
+            ui.printRecommendationHelpMessage();
         } else if (arguments.equals("exit")) {
             ui.printExitHelpMessage();
         } else {
