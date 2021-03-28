@@ -7,6 +7,13 @@ public class FavouriteLocationsUi extends Ui {
     public FavouriteLocationsUi() {
     }
 
+    public static void addFavouriteLocations(FavouriteLocation favouriteLocation, String location, seedu.duke.Map nusMap) {
+        if (favouriteLocation.getFavouriteLocations().contains(location)) {
+            System.out.println("This location is already in favourites.");
+        } else {
+            favouriteLocation.addFavouriteLocation(location, nusMap);
+        }
+    }
 
     public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
         if (favouriteLocation.getFavouriteLocations().size() == 0) {
@@ -16,5 +23,9 @@ public class FavouriteLocationsUi extends Ui {
                 System.out.println((i + 1) + ". " + favouriteLocation.getFavouriteLocations().get(i));
             }
         }
+    }
+
+    public void deleteFavouriteLocation(FavouriteLocation favouriteLocation, int index) {
+        favouriteLocation.removeFavouriteLocation(index);
     }
 }

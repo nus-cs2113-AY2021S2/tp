@@ -1,15 +1,10 @@
 package seedu.duke.ui;
 
-import seedu.duke.Block;
-import seedu.duke.BlockAlias;
-import seedu.duke.DaySchedulePair;
-import seedu.duke.FavouriteLocation;
-import seedu.duke.History;
+import seedu.duke.*;
+import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
 import seedu.duke.exception.InvalidRepeatEntryException;
 import seedu.duke.exception.RepeatEntryOutOfBoundException;
-import seedu.duke.exception.InvalidAliasException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,6 +86,13 @@ public class UiManager extends Ui {
         favouriteLocationsUi.showFavouriteLocations(favouriteLocation);
     }
 
+    public void addFavoriteLocations(FavouriteLocation favouriteLocation, String location, Map nusMap) {
+        assert favouriteLocation != null : "favouriteLocation must be initialised";
+        assert location != null : "location must be provided";
+        assert nusMap != null : "nusMap must be initialised";
+        favouriteLocationsUi.addFavouriteLocations(favouriteLocation, location, nusMap);
+    }
+
     public static String getListOfLocations() {
         return "E1  E1A  E2  E2A  E3  E3A  E4  E4A  E5"
                 + System.lineSeparator()
@@ -99,5 +101,10 @@ public class UiManager extends Ui {
                 + "AS1 LT7  LT7A IT  T-LAB"
                 + System.lineSeparator()
                 + "TECHNO EDGE";
+    }
+
+    public void deleteFavouriteLocation(FavouriteLocation favouriteLocation, int index) {
+        assert favouriteLocation != null : "favouriteLocation must be initialised";
+        favouriteLocationsUi.deleteFavouriteLocation(favouriteLocation, index);
     }
 }

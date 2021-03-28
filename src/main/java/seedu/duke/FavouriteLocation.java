@@ -20,6 +20,7 @@ public class FavouriteLocation {
                 throw new NullPointerException();
             }
             favouriteLocations.add(venue);
+            System.out.println("Favourite location has been added!");
         } catch (NullPointerException e) {
             System.out.println("Invalid venue!");
         }
@@ -28,6 +29,7 @@ public class FavouriteLocation {
     public void removeFavouriteLocation(int index) {
         try {
             favouriteLocations.remove(index);
+            System.out.println("Favourite location has been removed.");
         } catch (IndexOutOfBoundsException e) {
             System.out.println("Invalid index!");
         }
