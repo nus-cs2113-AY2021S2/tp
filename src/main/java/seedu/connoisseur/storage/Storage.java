@@ -94,7 +94,7 @@ public class Storage {
 
     public ArrayList<Review> loadReviews(JSONArray reviews) {
         ArrayList<Review> reviewList = new ArrayList<Review>();
-        for (int i=0; i<reviews.length(); i++) {
+        for (int i = 0; i < reviews.length(); i++) {
             String title = reviews.getJSONObject(i).getString("title");
             String category = reviews.getJSONObject(i).getString("category");
             int rating = reviews.getJSONObject(i).getInt("rating");
@@ -108,7 +108,7 @@ public class Storage {
 
     public ArrayList<Recommendation> loadRecommendations(JSONArray recommendations) {
         ArrayList<Recommendation> recommendationList = new ArrayList<Recommendation>();
-        for (int i=0; i<recommendations.length(); i++) {
+        for (int i = 0; i < recommendations.length(); i++) {
             String title = recommendations.getJSONObject(i).getString("title");
             String category = recommendations.getJSONObject(i).getString("category");
             int price = recommendations.getJSONObject(i).getInt("price");
@@ -119,15 +119,16 @@ public class Storage {
         return recommendationList;
     }
 
-    public void saveConnoisseurData(ArrayList<Review> reviewList, ArrayList<Recommendation> recommendationList, String sortMethod) {
+    public void saveConnoisseurData(ArrayList<Review> reviewList, 
+            ArrayList<Recommendation> recommendationList, String sortMethod) {
+        JSONObject data = new JSONObject();
+        JSONArray reviews = saveReviews(reviewList);
+        JSONArray recommendations = saveRecommendations(recommendationList);
+        data.put("sortMethod", sortMethod);
+        data.put("reviews", reviews);
+        data.put("recommendations", recommendations);
         try {
             FileWriter connoisseurFileWriter = new FileWriter(dataFilePath);
-            JSONObject data = new JSONObject();
-            JSONArray reviews = saveReviews(reviewList);
-            JSONArray recommendations = saveRecommendations(recommendationList);
-            data.put("sortMethod", sortMethod);
-            data.put("reviews", reviews);
-            data.put("recommendations", recommendations);
             connoisseurFileWriter.append(data.toString());
             connoisseurFileWriter.close();
         } catch (IOException e) {
@@ -137,7 +138,7 @@ public class Storage {
 
     public JSONArray saveReviews(ArrayList<Review> reviewList) {
         JSONArray reviews = new JSONArray();
-        for (int i=0; i<reviewList.size(); i++) {
+        for (int i = 0; i < reviewList.size(); i++) {
             Review review = reviewList.get(i);
             JSONObject reviewToWrite = new JSONObject();
             reviewToWrite.put("title", review.getTitle());
@@ -152,7 +153,7 @@ public class Storage {
 
     public JSONArray saveRecommendations(ArrayList<Recommendation> recommendationList) {
         JSONArray recommendations = new JSONArray();
-        for (int i=0; i<recommendationList.size(); i++) {
+        for (int i = 0; i < recommendationList.size(); i++) {
             Recommendation recommendation = recommendationList.get(i);
             JSONObject recommendationToWrite = new JSONObject();
             recommendationToWrite.put("title", recommendation.getTitle());

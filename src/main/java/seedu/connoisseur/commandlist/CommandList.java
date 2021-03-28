@@ -46,9 +46,10 @@ public class CommandList {
     private final Storage storage;
 
     /**
-     * Creates tasks according to user data from files.
-     *
-     * @param dataReviews List of tasks from user connoisseur.txt file.
+     * Creates CommandList based on stored data. 
+     * @param connoisseurData locally stored data
+     * @param ui ui instance
+     * @param storage storage instance
      */
     public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
