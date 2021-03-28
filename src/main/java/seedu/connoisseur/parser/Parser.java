@@ -94,30 +94,42 @@ public class Parser {
         case "edit":
             if (isReviewMode) {
                 commandList.editReviews(arguments);
+            } else {
+                System.out.println("This command does not exist in recommendation mode");
             }
             break;
         case "sort":
             if (isReviewMode) {
                 commandList.sortReview(arguments);
+            } else {
+                System.out.println("This command does not exist in recommendation mode");
             }
             break;
         case "new":
             if (isReviewMode) {
                 commandList.addReview(arguments);
+            } else {
+                commandList.addRecommendation(arguments);
             }
             break;
         case "delete":
             if (isReviewMode) {
                 commandList.deleteReview(arguments);
+            } else {
+                System.out.println("This command does not exist in recommendation mode");
             }
             break;
         case "view":
             if (isReviewMode) {
                 commandList.viewReview(arguments);
+            } else {
+                System.out.println("This command does not exist in recommendation mode");
             }
             break;
         case "add":
             if (isReviewMode) {
+                commandList.addReview(arguments);
+            } else {
                 commandList.addRecommendation(arguments);
             }
             break;
