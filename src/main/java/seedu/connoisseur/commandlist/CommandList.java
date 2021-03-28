@@ -402,8 +402,8 @@ public class CommandList {
             ui.printWhiteSpace(currentRecommendation.getTitle().length());
             ui.print(currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print(Integer.toString(currentRecommendation.getPrice()));
-            ui.printWhiteSpace(Integer.toString(currentRecommendation.getPrice()).length());
+            ui.print(currentRecommendation.dollarRange());
+            ui.printWhiteSpace(currentRecommendation.dollarRange().length());
             ui.println(currentRecommendation.getRecommendedBy());
             return true;
         } else {
@@ -541,15 +541,21 @@ public class CommandList {
         ui.println(PRICE_PROMPT);
 
         try {
-            int pricing = Integer.parseInt(ui.readCommand());
-            if (pricing < 0 || pricing > 5) {
-                ui.printInvalidPricingMessage();
-                return;
+            String priceRange = ui.readCommand();
+            int priceLow;
+            int priceHigh;
+            int priceFirst = Integer.parseInt(priceRange.split("-",2)[0].trim());
+            int priceSecond = Integer.parseInt(priceRange.split("-",2)[1].trim());
+            if (priceFirst > priceSecond) {
+                priceLow = priceSecond;
+                priceHigh = priceFirst;
+            } else {
+                priceLow = priceFirst;
+                priceHigh = priceSecond;
             }
-            assert pricing >= 0 && pricing <= 5 : "rating should be between 0 and 5";
             ui.println(RECOBY_PROMPT);
             String recommendedBy = ui.readCommand();
-            Recommendation r = new Recommendation(title, category, pricing, recommendedBy);
+            Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy);
             recommendationList.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {

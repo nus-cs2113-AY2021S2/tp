@@ -3,22 +3,26 @@ package seedu.connoisseur.recommendation;
 public class Recommendation {
     protected String title;
     protected String category;
-    protected int price;
+    protected int priceLow;
+    protected int priceHigh;
     protected String recommendedBy;
     protected static int MAX_RANGE_OF_PRICE = 5;
 
     /**
      * Creates a recommendation.
      *
-     * @param inputTitle    title of the recommendation
-     * @param inputCategory category of the recommendation
-     * @param inputPrice    price of the recommendation
-     * @param inputBy       description of the recommended person
+     * @param inputTitle        title of the recommendation
+     * @param inputCategory     category of the recommendation
+     * @param inputPriceLow     price of the recommendation
+     * @param inputPriceHigh    price of the recommendation
+     * @param inputBy           description of the recommended person
      */
-    public Recommendation(String inputTitle, String inputCategory, int inputPrice, String inputBy) {
+    public Recommendation(String inputTitle, String inputCategory, 
+            int inputPriceLow, int inputPriceHigh, String inputBy) {
         this.title = inputTitle;
         this.category = inputCategory;
-        this.price = inputPrice;
+        this.priceLow = inputPriceLow;
+        this.priceHigh = inputPriceHigh;
         this.recommendedBy = inputBy;
     }
 
@@ -59,21 +63,21 @@ public class Recommendation {
     }
 
     /**
-     * Gets the price of the recommendation.
+     * Gets the lower bound price of the recommendation.
      *
-     * @return price of the recommendation as an double
+     * @return lower bound price of the recommendation as an double
      */
-    public int getPrice() {
-        return price;
+    public int getPriceLow() {
+        return priceLow;
     }
 
     /**
-     * Sets the price of the recommendation.
+     * Gets the higher bound price of the recommendation.
      *
-     * @param newPrice new price to be set
+     * @return higher bound price of the recommendation as an double
      */
-    public void setPrice(int newPrice) {
-        this.price = newPrice;
+    public int getPriceHigh() {
+        return priceHigh;
     }
 
     /**
@@ -100,49 +104,8 @@ public class Recommendation {
      * @return pricing range of the experience as a string
      */
     public String dollarRange() {
-        String dollarRange = "";
-        int dollar = this.price;
-        assert dollar >= 0 && dollar <= 5 : "rating should be between 0 and 5";
-        for (int i = 0; i < MAX_RANGE_OF_PRICE; i++) {
-            if (dollar > 0) {
-                dollarRange = dollarRange.concat("$ ");
-            } else {
-                dollarRange = dollarRange.concat("- ");
-            }
-            dollar--;
-        }
+        String dollarRange = Integer.toString(priceLow) + " - " + Integer.toString(priceHigh);
         return dollarRange;
-    }
-
-    /**
-     * Converts the recommendations to a string.
-     *
-     * @return recommendations as a string for display
-     */
-    public String toString() {
-        return title + "      " + price;
-    }
-
-    /**
-     * Converts a recommendations into text for storage.
-     *
-     * @return recommendations in a single string
-     */
-    public String recommendationToText() {
-        return getTitle() + "|" + getCategory() + "|" + getPrice() + "|" + getRecommendedBy();
-    }
-
-    /**
-     * Converts a single string into a recommendation.
-     *
-     * @param recommendation the review saves as a single string
-     * @return recommendations as a Review object
-     */
-    public static Recommendation textToRecommendation(String recommendation) {
-        String[] recommendationFields = recommendation.split("\\|", 4);
-        Recommendation dataRec = new Recommendation(recommendationFields[0], recommendationFields[1],
-                Integer.parseInt(recommendationFields[2]), recommendationFields[3]);
-        return dataRec;
     }
 }
 
