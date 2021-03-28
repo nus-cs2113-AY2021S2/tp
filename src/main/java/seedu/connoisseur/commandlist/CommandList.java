@@ -52,7 +52,7 @@ public class CommandList {
     public CommandList(ArrayList<String> dataReviews, ArrayList<String> dataRecommendations, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.DATE_LATEST);
+        sorter = new Sorter(SortMethod.LATEST);
         if (!dataReviews.isEmpty()) {
             for (String review : dataReviews) {
                 if (review.length() != 0) {
@@ -80,7 +80,7 @@ public class CommandList {
     public CommandList(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.DATE_LATEST);
+        sorter = new Sorter(SortMethod.LATEST);
     }
 
     /**
@@ -115,8 +115,8 @@ public class CommandList {
         validSortMethods.add("rating");
         validSortMethods.add("category");
         validSortMethods.add("title");
-        validSortMethods.add("date earliest");
-        validSortMethods.add("date latest");
+        validSortMethods.add("earliest");
+        validSortMethods.add("latest");
         validSortMethods.add(null);
         return validSortMethods.contains(sortMethod);
     }
@@ -154,8 +154,8 @@ public class CommandList {
             ui.println(SORT_METHOD_PROMPT);
             return;
         }
-        if (sortType.equals("title") || sortType.equals("date earliest")
-                || sortType.equals("date latest") || sortType.equals("rating") || sortType.equals("category")) {
+        if (sortType.equals("title") || sortType.equals("earliest")
+                || sortType.equals("latest") || sortType.equals("rating") || sortType.equals("category")) {
             sorter.changeSortMethod(sortType);
             ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
         } else {

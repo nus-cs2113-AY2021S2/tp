@@ -38,11 +38,11 @@ public class Sorter {
         case TITLE:
             sortMethodString = "title";
             break;
-        case DATE_EARLIEST:
-            sortMethodString = "date earliest";
+        case EARLIEST:
+            sortMethodString = "earliest";
             break;
-        case DATE_LATEST:
-            sortMethodString = "date latest";
+        case LATEST:
+            sortMethodString = "latest";
             break;
         default:
             sortMethodString = "";
@@ -66,11 +66,11 @@ public class Sorter {
         case "title":
             this.sortMethod = SortMethod.TITLE;
             break;
-        case "date earliest":
-            this.sortMethod = SortMethod.DATE_EARLIEST;
+        case "earliest":
+            this.sortMethod = SortMethod.EARLIEST;
             break;
-        case "date latest":
-            this.sortMethod = SortMethod.DATE_LATEST;
+        case "latest":
+            this.sortMethod = SortMethod.LATEST;
             break;
         default:
             break;
@@ -94,11 +94,11 @@ public class Sorter {
         case TITLE:
             sortByTitle(reviewList);
             break;
-        case DATE_EARLIEST:
-            sortByDateEarliest(reviewList);
+        case EARLIEST:
+            sortByEarliest(reviewList);
             break;
         default:
-            sortByDateLatest(reviewList);
+            sortByLatest(reviewList);
             break;
         }
         return reviewList;
@@ -122,11 +122,11 @@ public class Sorter {
         case "title":
             sortByTitle(reviewList);
             break;
-        case "date earliest":
-            sortByDateEarliest(reviewList);
+        case "earliest":
+            sortByEarliest(reviewList);
             break;
-        case "date latest":
-            sortByDateLatest(reviewList);
+        case "latest":
+            sortByLatest(reviewList);
             break;
         default:
             break;
@@ -149,13 +149,13 @@ public class Sorter {
         return reviewList;
     }
 
-    private static ArrayList<Review> sortByDateEarliest(ArrayList<Review> reviewList) {
-        Collections.sort(reviewList, new SortByDateEarliest());
+    private static ArrayList<Review> sortByEarliest(ArrayList<Review> reviewList) {
+        Collections.sort(reviewList, new SortByEarliest());
         return reviewList;
     }
 
-    private static ArrayList<Review> sortByDateLatest(ArrayList<Review> reviewList) {
-        Collections.sort(reviewList, new SortByDateLatest());
+    private static ArrayList<Review> sortByLatest(ArrayList<Review> reviewList) {
+        Collections.sort(reviewList, new SortByLatest());
         return reviewList;
     }
 }

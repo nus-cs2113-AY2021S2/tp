@@ -10,7 +10,7 @@ import seedu.connoisseur.review.Review;
 /**
  * Sort reviews by earlier date.
  */
-public class SortByDateEarliest implements Comparator<Review> {
+public class SortByEarliest implements Comparator<Review> {
     /**
      * Comparator function for comparing review dates, returns earliest first.
      */
