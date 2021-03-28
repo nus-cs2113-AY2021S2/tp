@@ -56,7 +56,6 @@ public class Ui {
     }
 
     public static void printLinksMessage() {
-        printHorizontalLine();
         System.out.println("Welcome to the links menu ^~^\n"
                 + "Please choose which action you would like to do and enter the number:\n"
                 + "[1] --- External links menu\n"
@@ -64,7 +63,6 @@ public class Ui {
                 + "[3] --- Delete Zoom links\n"
                 + "[4] --- View Zoom links\n"
                 + "[5] --- Exit to main menu");
-        printHorizontalLine();
     }
 
     public static void printLinkToDelete() {
@@ -312,14 +310,12 @@ public class Ui {
     }
 
     public static void printExternalLinksMessage() {
-        printHorizontalLine();
         System.out.println("Welcome to the external links menu!\n"
                 + "Please choose which action you would like to do and enter the number:\n"
                 + "[1] --- add link\n"
                 + "[2] --- remove link\n"
                 + "[3] --- view links\n"
                 + "[4] --- exit to links menu");
-        printHorizontalLine();
     }
 
     public static void printAddLinkMessage(String description) {
@@ -331,7 +327,6 @@ public class Ui {
                 + "<scheme>www.<domain name>.<TLD>/<path name>\n"
                 + "supported schemes: https, http for now... Sorry!\n"
                 + "supported TLD: .com, .org for now... we will work on it!");
-        printHorizontalLine();
     }
 
     public static void printInvalidLinkMessage() {
@@ -367,6 +362,11 @@ public class Ui {
         System.out.println();
     }
 
+    public static void printReturnToLinkMenuMessage() {
+        System.out.println("Returning to links menu...");
+        System.out.println();
+    }
+
     public static void printModuleDescriptionPrompt(String moduleName) {
         System.out.println("Key in the module description for " + moduleName + ":");
     }
@@ -398,7 +398,6 @@ public class Ui {
     public static void printEnterZoomLinkMessage() {
         System.out.println("Please enter the zoom link and the module it is for in this format:\n"
                 + "<zoom link> <module code>");
-        printHorizontalLine();
     }
 
     public static void printZoomLinks(ArrayList<ZoomLinkInfo> zoomLinksList) {
@@ -420,7 +419,6 @@ public class Ui {
         String[] words = instruction.split(" ");
         String zoomLink = words[0];
         String moduleCode = words[1];
-        printHorizontalLine();
         System.out.println("Woohoo~ Zoom link added:");
         System.out.println(zoomLink + " for " + moduleCode);
     }
