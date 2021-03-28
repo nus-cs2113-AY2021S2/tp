@@ -1,12 +1,9 @@
 package seedu.duke.ui;
 
-import seedu.duke.DaySchedulePair;
 import seedu.duke.Map;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DailyRouteUi extends Ui {
     public DailyRouteUi() {
