@@ -3,12 +3,9 @@ package seedu.duke.account;
 import seedu.duke.command.CommandRecordType;
 import seedu.duke.common.Messages;
 import seedu.duke.goal.ExerciseGoal;
-<<<<<<< HEAD
 import seedu.duke.goal.BodyWeightGoal;
 import seedu.duke.goal.SleepGoal;
 import seedu.duke.goal.DietGoal;
-=======
->>>>>>> 2931b81... H-9: Add classes Goal, GoalList, ExerciseGoal.
 import seedu.duke.goal.GoalList;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
