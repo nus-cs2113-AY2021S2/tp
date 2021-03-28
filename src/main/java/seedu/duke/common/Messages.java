@@ -7,7 +7,8 @@ public class Messages {
     public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
-    public static final String FORMAT_TASK_FIELDS = "%s - %s \n\t\t- %s - %s";
+    public static final String FORMAT_TASK_DEADLINE = "%s - %s";
+    public static final String FORMAT_FIELD = "\t\t%s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t";
@@ -119,7 +120,7 @@ public class Messages {
     public static final String MESSAGE_REMOVED_TASK = "Removed %s from the task list.";
     public static final String MESSAGE_MARKED_AS_DONE = "Marked %s as done.";
     public static final String MESSAGE_MARKED_AS_UNDONE = "Marked %s as undone.";
-    public static final String MESSAGE_EDITED_TASK = "Edited task successfully: %s";
+    public static final String MESSAGE_EDITED_FIELD = "Updated %s.";
 
     public static final String MESSAGE_TASKS_TO_DELETE = "Which tasks would you like to delete?";
     public static final String MESSAGE_TASKS_TO_LIST = "Tasks for %s:";
@@ -130,9 +131,9 @@ public class Messages {
     public static final String MESSAGE_TASK_FIELDS_TO_EDIT = "Which fields would you like to edit?";
     public static final String MESSAGE_TASK_FIELDS_SELECT_INFO = NEWLINE
             + "Separate indices with a blank space.";
-    public static final String MESSAGE_TASK_DESCRIPTION_TO_EDIT = "New task description:";
-    public static final String MESSAGE_TASK_DEADLINE_TO_EDIT = "New deadline:";
-    public static final String MESSAGE_TASK_REMARKS_TO_EDIT = "New remarks:";
+    public static final String MESSAGE_TASK_DESCRIPTION_TO_EDIT = NEWLINE + "New task description:";
+    public static final String MESSAGE_TASK_DEADLINE_TO_EDIT = NEWLINE + "New deadline:";
+    public static final String MESSAGE_TASK_REMARKS_TO_EDIT = NEWLINE + "New remarks:";
 
     public static final String MESSAGE_TASK_CHECK_GRADED = "Is this task graded? (Y / N)";
     public static final String MESSAGE_TASK_CHECK_GRADED_INFO = "Please enter \"Y\" or \"N\"";
