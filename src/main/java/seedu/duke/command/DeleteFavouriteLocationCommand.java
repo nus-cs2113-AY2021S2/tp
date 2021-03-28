@@ -16,8 +16,12 @@ public class DeleteFavouriteLocationCommand extends Command {
     public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
         System.out.println("Enter the index of the block which you wish to delete: ");
-        int index = Integer.parseInt(ui.getUserInput());
-        ui.deleteFavouriteLocation(favouriteLocation, index);
-        System.out.println(ui.divider);
+        try {
+            int index = Integer.parseInt(ui.getUserInput());
+            ui.deleteFavouriteLocation(favouriteLocation, index);
+            System.out.println(ui.divider);
+        } catch (NumberFormatException e) {
+            System.out.println("Please only input integers!");
+        }
     }
 }
