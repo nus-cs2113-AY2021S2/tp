@@ -43,7 +43,6 @@ public class Component {
             System.out.println("Component and weightage added!");
         } else {
             Ui.printModuleDoesNotExistMessage();
-            Ui.printReturnToModuleInfoMenuMessage();
         }
 
     }
@@ -71,7 +70,6 @@ public class Component {
             System.out.println("module index: " + moduleIndex);
         } else {
             Ui.printModuleDoesNotExistMessage();
-            Ui.printReturnToModuleInfoMenuMessage();
         }
     }
 

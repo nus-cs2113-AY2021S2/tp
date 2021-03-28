@@ -38,6 +38,10 @@ public class Ui {
         System.out.println("--------------------------------------------");
     }
 
+    public static void printShortHorizontalLine() {
+        System.out.println("----------------------");
+    }
+
     public static void printEmptyLine() {
         System.out.println();
     }
@@ -85,7 +89,7 @@ public class Ui {
                 + "[12] --- Delete Task\n"
                 + "[13] --- Delete Zoom Link\n"
                 + "[14] --- Delete Review\n"
-                + "[15] --- Exit to main menu\n");
+                + "[15] --- Exit to main menu");
     }
 
     public static void printTaskManagerMenu() {
@@ -287,6 +291,18 @@ public class Ui {
         return command;
     }
 
+    public static int readCommandToInt() {
+        int command;
+        Scanner input = new Scanner(System.in);
+        try {
+            command = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
+        printHorizontalLine();
+        return command;
+    }
+
     public static void printLinks(ArrayList<LinkInfo> linksList) {
         int sizeOfList = 1;
         System.out.println("These are the links you have added --->");
@@ -304,18 +320,6 @@ public class Ui {
                 + "[3] --- view links\n"
                 + "[4] --- exit to links menu");
         printHorizontalLine();
-    }
-
-    public static int readCommandToInt() {
-        int command;
-        Scanner input = new Scanner(System.in);
-        try {
-            command = Integer.parseInt(input.nextLine());
-        } catch (NumberFormatException e) {
-            return -1;
-        }
-        return command;
-
     }
 
     public static void printAddLinkMessage(String description) {
