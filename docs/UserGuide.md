@@ -309,14 +309,16 @@ Adds a review for the module of your choice.
 
 Lists out all the reviews for all modules added to UniTracker.
 <details>  
-  <summary> <span style="color:#717de3  ">
+  <summary> <span style="color:#717de3  ">  
       Click to see example for listing all the modules' reviews: </span>  
   </summary>  
-
-  Input:  ```<span style="color:#2b9948  "> 10 </span>```  
+  
+  Input:  <span style="color:#2b9948  "> 10 </span>  
+  
   
   
   Output:  
+  
   ```  
     
     <span style="color:#2b9948  "> 10 </span>  
@@ -335,7 +337,7 @@ Lists out all the reviews for all modules added to UniTracker.
     --------------------------------------------  
     Returning to module information menu...  
       
-  ```
+  ```  
 
 </details>  
 
