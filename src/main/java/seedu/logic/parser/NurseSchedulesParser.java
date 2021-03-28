@@ -3,12 +3,10 @@ package seedu.logic.parser;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.staffexceptions.AbortException;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.model.object.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -77,6 +75,31 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
+    public static boolean isValidDate(String datetime) {
+        /* Check if date is 'null' */
+        if (!datetime.trim().equals("")) {
+            /*
+             * Set preferred date format,
+             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
+            SimpleDateFormat sdfrmt = new SimpleDateFormat("ddMMyyyy");
+            sdfrmt.setLenient(false);
+            /* Create Date object
+             * parse the string into date
+             */
+            try {
+                Date javaDate = sdfrmt.parse(datetime);
+                //System.out.println(datetime + " is valid date format");
+            }
+            /* Date format is invalid */
+            catch (ParseException e) {
+                System.out.println(datetime + " is Invalid Date format");
+                return false;
+            }
+        }
+        /* Return true if date format is valid */
+        return true;
+    }
+
     public boolean commandHandler(List<NurseSchedule> nurseSchedules, String command, String line) {
         NurseScheduleActions actions = new NurseScheduleActions();
         NurseScheduleStorage storage = new NurseScheduleStorage();
@@ -87,7 +110,7 @@ public class NurseSchedulesParser {
             try {
                 actions.addSchedule(nurseSchedules, parser.getDetails(line));
                 storage.writeToFile(nurseSchedules);
-            } catch (WrongInputsException e) {
+            } catch (WrongInputsException | ParseException e) {
                 System.out.println(e.getMessage());
                 NurseScheduleUI.addHelpMessage();
             }
@@ -111,6 +134,8 @@ public class NurseSchedulesParser {
             } catch (WrongInputsException e) {
                 System.out.println(e.getMessage());
                 NurseScheduleUI.deleteHelpMessage();
+            } catch (NurseIdNotFound e) {
+                System.out.println(e.getMessage());
             }
             break;
         case "help":
