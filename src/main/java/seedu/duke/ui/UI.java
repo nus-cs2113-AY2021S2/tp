@@ -1,34 +1,25 @@
 package seedu.duke.ui;
 
 import seedu.duke.exception.DukeException;
-import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.parser.Parser;
 import seedu.duke.task.Task;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static seedu.duke.common.CommonMethods.getDaysRemaining;
-import static seedu.duke.common.Constants.EMPTY_STRING;
-import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
 import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.FORMAT_DAYS_REMAINING;
 import static seedu.duke.common.Messages.FORMAT_DUE_TODAY;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
-import static seedu.duke.common.Messages.FORMAT_ITEM_TIME;
 import static seedu.duke.common.Messages.FORMAT_OVERDUE;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
-import static seedu.duke.common.Messages.INDENTATION;
-import static seedu.duke.common.Messages.MESSAGE_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
-import static seedu.duke.common.Messages.NEWLINE;
 import static seedu.duke.common.Messages.TAG_GULIO;
 import static seedu.duke.common.Messages.TAG_MODULE;
 
@@ -92,20 +83,8 @@ public class UI {
         int tasksCount = 0;
         for (Task task : taskList) {
             tasksCount++;
-            String taskListItem = String.format(FORMAT_INDEX_ITEM, tasksCount, task.getDescription());
-            printMessage(taskListItem);
+            printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getDescription()));
         }
-    }
-
-    /**
-     * Prints all tasks in selected module's task list.
-     */
-    public void printAllTasks() {
-        Module module = ModuleList.getSelectedModule();
-        printMessage(String.format(MESSAGE_TASKS_TO_LIST, module.getModuleCode()) + NEWLINE);
-        printTasks(module.getTaskList(), false, false);
-        printMessage("");
-        printTasks(module.getTaskList(), true, false);
     }
 
     /**
@@ -126,7 +105,7 @@ public class UI {
         for (Task task : taskList) {
             if (task.getDone() == isDone) {
                 tasksCount++;
-                printTask(task, tasksCount, isDone);
+                printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getFullTaskString()));
             }
         }
         if (tasksCount == INDEX_FIRST) {
@@ -145,27 +124,7 @@ public class UI {
             printMessage(MESSAGE_TASKS_DONE);
         }
     }
-
-    /**
-     * Prints specified task.
-     *
-     * @param task Task to print.
-     * @param tasksCount Position of task in printed list.
-     */
-    private void printTask(Task task, int tasksCount, boolean isDone) {
-        String description = task.getDescription();
-        String gradedStatus = task.getGraded() ? MESSAGE_GRADED : "";
-        String deadline = task.getDeadline().format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
-        String listItem = String.format(FORMAT_INDEX_ITEM, tasksCount, description)
-                + String.format(FORMAT_ITEM_TIME, gradedStatus, deadline);
-        if (!isDone) {
-            listItem += getDaysRemainingMessage(task.getDeadline());
-        }
-        printMessage(listItem);
-        if (!task.getRemarks().equals(EMPTY_STRING)) {
-            System.out.print(INDENTATION + task.getRemarks() + NEWLINE);
-        }
-    }
+    
     //@@author 8kdesign
     /**
      * Returns message for days remaining.
@@ -183,7 +142,6 @@ public class UI {
             return String.format(FORMAT_DAYS_REMAINING, daysRemaining);
         }
     }
-    
 
     //@@author isaharon
     /**

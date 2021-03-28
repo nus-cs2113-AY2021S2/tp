@@ -8,6 +8,7 @@ public class Messages {
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
     public static final String FORMAT_INDEX_ITEM_DETAILS = "%d. %s - %s";
     public static final String FORMAT_ITEM_TIME = "%s - %s";
+    public static final String FORMAT_ITEM = "- %s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t";
@@ -93,7 +94,7 @@ public class Messages {
     public static final String HEADER_DONE = "[Done]";
     public static final String HEADER_UNDONE = "[Undone]";
     
-    public static final String MESSAGE_GRADED = " (graded)";
+    public static final String MESSAGE_GRADED = " (graded) ";
     public static final String MESSAGE_GRADED_STATUS = "Graded";
     public static final String MESSAGE_UNGRADED_STATUS = "Not graded";
 
