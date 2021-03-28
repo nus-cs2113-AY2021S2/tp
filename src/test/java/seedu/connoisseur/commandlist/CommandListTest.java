@@ -33,11 +33,16 @@ public class CommandListTest {
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
-        int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
+        final int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
         String title = "superman";
         commandList.deleteReview(title);
-
-        assertFalse(commandList.reviewList.contains(title));
+        Boolean contains = false;
+        for (int i = 0; i < commandList.reviewList.size(); i++) {
+            if (commandList.reviewList.get(i).getTitle().equals(title)) {
+                contains = true;
+            }
+        }
+        assertFalse(contains);
 
         int numberOfReviewsAfterRemoval = commandList.reviewList.size();
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
