@@ -102,7 +102,7 @@ public class ModuleInfo {
             moduleNumberInt--;
             System.out.println("Enter the number of MCs for this module: ");
             int moduleCredits = Ui.readCommandToInt();
-            modules.get(moduleNumberInt).setMCs(moduleCredits);
+            modules.get(moduleNumberInt).setMc(moduleCredits);
         } else {
             Ui.printInvalidIntegerMessage();
         }
