@@ -35,7 +35,7 @@ public class NurseScheduleUI extends UI {
     public static void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedules commands: ");
         System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add\" adds a schedule to the schedule list!");
+        System.out.println("\"add\" [NurseID] [Patient ID] [Date (DDMMYYYY)] adds a schedule to the schedule list!");
         System.out.println("\"list [NurseID/all]\" brings up the list of either all or specified nurse schedules!");
         System.out.println("\"delete [NurseID] [Date (DDMMYYYY)]\" deletes the schedule with the specified nurse ID!");
         System.out.println("\"return\" returns you to the Start Menu!");

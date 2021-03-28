@@ -18,6 +18,8 @@ public class NurseScheduleActions {
 
     public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
         nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+
+        NurseScheduleUI.printAddedSchedule(details[1], details[2]);
     }
 
     /**

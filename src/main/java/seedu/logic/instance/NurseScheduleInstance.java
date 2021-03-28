@@ -21,7 +21,6 @@ import java.util.List;
 public class NurseScheduleInstance {
 
     private NurseSchedulesParser parser;
-    private NurseScheduleActions actions;
     private NurseScheduleStorage storage;
 
     /** The list of nurse schedules. */
@@ -32,18 +31,19 @@ public class NurseScheduleInstance {
     }
 
     /** Runs the program until termination. */
-    public void run() {
+    private void run() {
+        initClasses();
         start();
         runCommandLoopUntilExit();
     }
 
-    private void start() {
+    public void initClasses() {
         this.parser = new NurseSchedulesParser();
-        this.actions = new NurseScheduleActions();
         this.storage = new NurseScheduleStorage();
+    }
 
+    private void start() {
         storage.load(nurseSchedules);
-
         NurseScheduleUI.printNurseScheduleWelcomeMessage();
     }
 
@@ -54,49 +54,7 @@ public class NurseScheduleInstance {
             NurseScheduleUI.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
             String command = parser.getFirstWord(line);
-
-            switch (command) {
-            case "add":
-                try {
-                    actions.addSchedule(nurseSchedules, NurseScheduleUI.inputToCreateSchedule());
-                    storage.writeToFile(nurseSchedules);
-                } catch (AbortException | ParseException e) {
-                    UI.abortInputErrorMessage();
-                }
-                break;
-            case "list":
-                try {
-                    actions.listSchedules(nurseSchedules, parser.getDetails(line));
-                } catch (WrongInputsException e) {
-                    NurseScheduleUI.invalidInputsMessage();
-                    NurseScheduleUI.listHelpMessage();
-                } catch (EmptyListException e) {
-                    System.out.println(e.getMessage());
-                } catch (NurseIdNotFound e) {
-                    System.out.println(e.getMessage());
-                }
-                break;
-            case "delete":
-                try {
-                    actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-                    storage.writeToFile(nurseSchedules);
-                } catch (WrongInputsException e) {
-                    NurseScheduleUI.invalidInputsMessage();
-                    NurseScheduleUI.deleteHelpMessage();
-                }
-                break;
-            case "help":
-                NurseScheduleUI.printNurseScheduleHelpList();
-                break;
-            case "return":
-                storage.writeToFile(nurseSchedules);
-                NurseScheduleUI.returningToStartMenuMessage();
-                isRun = false;
-                break;
-            default:
-                NurseScheduleUI.invalidCommandMessage();
-                break;
-            }
+            isRun = parser.commandHandler(nurseSchedules, command, line);
         }
     }
 }
