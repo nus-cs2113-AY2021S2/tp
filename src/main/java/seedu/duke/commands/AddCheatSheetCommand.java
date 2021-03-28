@@ -16,6 +16,7 @@ import static seedu.duke.common.Constants.FOLDER_PATH;
 import static seedu.duke.common.Constants.PATH_DELIMITER;
 import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_FILE_NAME;
 
 public class AddCheatSheetCommand extends Command {
     public static final String FILE_EXTENSION = ".txt";
@@ -29,6 +30,9 @@ public class AddCheatSheetCommand extends Command {
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
+        if (fileName.isEmpty()) {
+            throw new CommandException(MESSAGE_INVALID_FILE_NAME);
+        }
         String filePath = directoryPath + fileName + FILE_EXTENSION;
         Path path = Paths.get(filePath);
         openTextEditor(ui, path, filePath);
@@ -49,7 +53,7 @@ public class AddCheatSheetCommand extends Command {
     }
 
     public String getDirectoryPath(Module module) {
-        String directoryPath = FOLDER_PATH + PATH_DELIMITER + module.getModuleCode() + PATH_DELIMITER 
+        String directoryPath = FOLDER_PATH + PATH_DELIMITER + module.getModuleCode() + PATH_DELIMITER
                 + STRING_CHEATSHEET + PATH_DELIMITER;
         Path path = Paths.get(directoryPath);
         assert Files.isDirectory(path) : "Directory missing";
