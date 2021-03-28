@@ -12,7 +12,7 @@ import seedu.duke.ui.UiManager;
 
 import java.io.IOException;
 
-public class Duke {
+public class NusMaze {
 
     private Map nusMap;
     private UiManager ui;
@@ -27,7 +27,7 @@ public class Duke {
     private Storage dailyRouteStorage;
 
     public static void main(String[] args) {
-        new Duke().run();
+        new NusMaze().run();
     }
 
     private void run() {
