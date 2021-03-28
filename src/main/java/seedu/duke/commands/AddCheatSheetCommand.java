@@ -8,6 +8,7 @@ import seedu.duke.ui.UI;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -34,7 +35,12 @@ public class AddCheatSheetCommand extends Command {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
         String filePath = directoryPath + fileName + FILE_EXTENSION;
-        Path path = Paths.get(filePath);
+        Path path;
+        try {
+            path = Paths.get(filePath);
+        } catch (InvalidPathException e) {
+            throw new CommandException(MESSAGE_INVALID_FILE_NAME);
+        }
         openTextEditor(ui, path, filePath);
     }
 

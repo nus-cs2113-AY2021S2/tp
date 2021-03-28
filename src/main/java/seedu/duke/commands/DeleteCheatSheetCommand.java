@@ -27,8 +27,8 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
         Module module = ModuleList.getSelectedModule();
         String directoryPath = getDirectoryPath(module);
         filePath = directoryPath + fileName + FILE_EXTENSION;
-        Path path = Paths.get(filePath);
         try {
+            Path path = Paths.get(filePath);
             performFunction(ui, path);
         } catch (IOException e) {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
