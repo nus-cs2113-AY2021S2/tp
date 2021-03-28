@@ -22,7 +22,7 @@ public class AliasStorage extends Storage {
                 String[] blockAliasPair = s.nextLine().split("\\|");
                 String block = blockAliasPair[1].trim();
                 String alias = blockAliasPair[0].trim();
-                blockAlias.getAliasMap().put(alias, block);
+                blockAlias.getAliasHashMap().put(alias, block);
             }
         } catch (FileNotFoundException e) {
             //Split given filepath by "/":
@@ -41,7 +41,7 @@ public class AliasStorage extends Storage {
             PrintWriter writer = new PrintWriter(this.filepath);
             writer.print("");
             writer.close();
-            for (Map.Entry<String, String> aliasBlockPair: blockAlias.getAliasMap().entrySet()) {
+            for (Map.Entry<String, String> aliasBlockPair: blockAlias.getAliasHashMap().entrySet()) {
                 String currentAlias = aliasBlockPair.getKey();
                 String currentBlock = aliasBlockPair.getValue();
                 appendToAliasListFile(currentAlias + " | " + currentBlock);

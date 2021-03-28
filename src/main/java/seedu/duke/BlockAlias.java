@@ -1,15 +1,18 @@
 package seedu.duke;
 
+import seedu.duke.exception.InvalidAliasException;
+import seedu.duke.exception.InvalidBlockException;
+
 import java.util.HashMap;
 
 public class BlockAlias {
-    private final HashMap<String, String> aliasMap;
+    private final HashMap<String, String> aliases;
 
     public BlockAlias() {
-        this.aliasMap = new HashMap<>();
+        this.aliases = new HashMap<>();
     }
 
-    public HashMap<String, String> getAliasMap() {
-        return aliasMap;
+    public HashMap<String, String> getAliasHashMap() {
+        return aliases;
     }
 }

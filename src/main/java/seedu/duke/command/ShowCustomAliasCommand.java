@@ -1,7 +1,7 @@
 package seedu.duke.command;
 
 import seedu.duke.Map;
-import seedu.duke.UiManager;
+import seedu.duke.ui.UiManager;
 import seedu.duke.History;
 import seedu.duke.DailyRoute;
 import seedu.duke.BlockAlias;
@@ -15,6 +15,6 @@ public class ShowCustomAliasCommand extends Command {
     @Override
     public void execute(Map map, UiManager ui, History history, DailyRoute dailyRoute,
                         BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        ui.showCustomAliases(blockAlias.getAliasMap());
+        ui.showCustomAliases(blockAlias.getAliasHashMap());
     }
 }

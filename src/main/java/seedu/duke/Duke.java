@@ -8,6 +8,7 @@ import seedu.duke.storage.FavouriteLocationsStorage;
 import seedu.duke.storage.NotesStorage;
 import seedu.duke.storage.HistoryRouteStorage;
 import seedu.duke.storage.Storage;
+import seedu.duke.ui.UiManager;
 
 import java.io.IOException;
 
@@ -65,7 +66,7 @@ public class Duke {
         boolean isExit = false;
         while (!isExit) {
             try {
-                String input = ui.getUserInput();
+                String input = ui.getUserCommandInput();
                 Command command = Parser.prepareForCommandExecution(input);
                 command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
                 isExit = command.isExit();

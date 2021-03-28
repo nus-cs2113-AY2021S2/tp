@@ -47,7 +47,6 @@ public class History {
 
     public String getHistoryAsString() {
         StringBuilder fullHistory = new StringBuilder();
-        assert history.size() != 0 : "There are no past searches made.";
         if (history.size() == 0) {
             return "There are no past searches made.";
         }
