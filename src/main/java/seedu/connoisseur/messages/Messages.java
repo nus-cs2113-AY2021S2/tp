@@ -14,7 +14,8 @@ public class Messages {
             + "Connoisseur is in review mode by default!\n"
             + "Enter 'review' or 'reco' to change mode at any point:) ";
 
-    public static final String COMMAND_PROMPT = "____________________________________________________________________\n"
+    public static final String COMMAND_PROMPT = "_____________________________________________________________________" +
+            "______________________\n"
             + "Please enter a command: ";
 
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
@@ -68,6 +69,7 @@ public class Messages {
     public static final String PRICE_PROMPT = "Please enter price range of recommendation (separated by - ): ";
     public static final String DESCRIPTION_PROMPT = "Please enter description of the experience: ";
     public static final String RECOBY_PROMPT = "How did you know about this recommendation";
+    public static final String LOCATION_PROMPT = "Where is this located at? ( NA if not applicable)";
     public static final String ADD_SUCCESS = " has been saved to your list.";
     public static final String MISSING_RECO_TITLE = "Please specify title of recommendation";
 

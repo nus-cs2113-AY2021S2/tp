@@ -106,6 +106,7 @@ public class Parser {
             }
             break;
         case "new":
+        case "add":
             if (isReviewMode) {
                 commandList.addReview(arguments);
             } else {
@@ -124,13 +125,6 @@ public class Parser {
                 commandList.viewReview(arguments);
             } else {
                 System.out.println("This command does not exist in recommendation mode");
-            }
-            break;
-        case "add":
-            if (isReviewMode) {
-                commandList.addReview(arguments);
-            } else {
-                commandList.addRecommendation(arguments);
             }
             break;
         case "help":

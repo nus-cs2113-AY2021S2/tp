@@ -21,6 +21,7 @@ import static seedu.connoisseur.messages.Messages.RECOMMENDATION_HELP_MESSAGE;
 public class Ui {
     private static final PrintStream out = System.out;
     private static final int MAX_WHITE_SPACE = 15;
+    private static final int MAX_WHITE_SPACE_TITLE = 26;
     private final Scanner in;
 
     /**
@@ -51,7 +52,7 @@ public class Ui {
      */
     public void printReviewListHeading() {
         println("Here are your reviews: ");
-        println("    Title          Category       Rating         Date");
+        println("    Title                     Category       Rating         Date");
     }
 
     /**
@@ -59,7 +60,7 @@ public class Ui {
      */
     public void printRecommendationListHeading() {
         println("Here are your recommendations: ");
-        println("    Title          Category       Price range");
+        println("    Title                     Category       Price range       Location       RecBy");
     }
 
     /**
@@ -82,6 +83,19 @@ public class Ui {
      */
     public void printWhiteSpace(int wordLength) {
         int numOfSpaces = MAX_WHITE_SPACE - wordLength;
+        while (numOfSpaces > 0) {
+            out.print(" ");
+            numOfSpaces--;
+        }
+    }
+
+    /**
+     * Prints whitespace to align title to header.
+     *
+     * @param wordLength length of word to subtract
+     */
+    public void printWhiteSpaceTitle(int wordLength) {
+        int numOfSpaces = MAX_WHITE_SPACE_TITLE - wordLength;
         while (numOfSpaces > 0) {
             out.print(" ");
             numOfSpaces--;
