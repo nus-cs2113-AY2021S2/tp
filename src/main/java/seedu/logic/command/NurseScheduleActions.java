@@ -2,10 +2,12 @@ package seedu.logic.command;
 
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.object.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,10 +18,11 @@ public class NurseScheduleActions {
     List<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
 
-    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
-        nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-
-        NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
+        if (NurseSchedulesParser.isValidDate(details[2])) {
+            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+            NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+        }
     }
 
     /**
@@ -67,9 +70,12 @@ public class NurseScheduleActions {
      * @param nurseSchedules List of all schedules
      * @param details nurseID to delete
      */
-    public void deleteSchedule(List<NurseSchedule> nurseSchedules, String[] details) {
+    public void deleteSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws NurseIdNotFound {
         int i = 0;
         while (i < nurseSchedules.size()) {
+            if(!isValidNurseID(nurseSchedules, details[0])) {
+                break;
+            }
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
                     && nurseSchedules.get(i).getDatetime().equals(details[1])) {
                 NurseScheduleUI.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),

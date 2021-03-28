@@ -30,7 +30,8 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
             date = parser.parse(getDatetime());
             odate = parser.parse(o.getDatetime());
         } catch (ParseException e) {
-            e.printStackTrace();
+            e.getMessage();
+            return 1;
         }
         return date.compareTo(odate);
     }
@@ -63,7 +64,7 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
         try {
             date = formatDate(datetime);
         } catch (ParseException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return date;
     }

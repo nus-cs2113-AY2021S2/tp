@@ -11,20 +11,20 @@ public class NurseScheduleUI extends UI {
         System.out.print("NSchedule --> ");
     }
 
-    public static String[] inputToCreateSchedule() throws AbortException, ParseException {
-
-        String[] scheduleInput = new String[3];
-        System.out.print("Nurse ID: ");
-        scheduleInput[0] = abortEnabledScanInput();
-        System.out.print("Patient ID: ");
-        scheduleInput[1] = abortEnabledScanInput();
-        System.out.print("Date: ");
-        scheduleInput[2] = abortEnabledScanInput();
-
-        printAddedSchedule(scheduleInput[0], NurseSchedulesParser.formatDate(scheduleInput[2]));
-
-        return scheduleInput;
-    }
+//    public static String[] inputToCreateSchedule() throws AbortException, ParseException {
+//
+//        String[] scheduleInput = new String[3];
+//        System.out.print("Nurse ID: ");
+//        scheduleInput[0] = abortEnabledScanInput();
+//        System.out.print("Patient ID: ");
+//        scheduleInput[1] = abortEnabledScanInput();
+//        System.out.print("Date: ");
+//        scheduleInput[2] = abortEnabledScanInput();
+//
+//        printAddedSchedule(scheduleInput[0], NurseSchedulesParser.formatDate(scheduleInput[2]));
+//
+//        return scheduleInput;
+//    }
 
     public static void printNurseScheduleWelcomeMessage() {
         System.out.println("Welcome to Nurse Schedules!");
@@ -48,8 +48,8 @@ public class NurseScheduleUI extends UI {
         showLine();
     }
 
-    public static void printAddedSchedule(String id, String datetime) {
-        System.out.println("Trip to " + id + " on " + datetime + " added!");
+    public static void printAddedSchedule(String id, String datetime) throws ParseException {
+        System.out.println("Trip to " + id + " on " + NurseSchedulesParser.formatDate(datetime) + " added!");
         showLine();
     }
 
