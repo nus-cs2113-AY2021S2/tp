@@ -314,11 +314,11 @@ Lists out all the reviews for all modules added to UniTracker.
   </summary>  
 
   Input:  ```<span style="color:#2b9948  "> 10 </span>```  
-
-
+  
+  
   Output:  
   ```  
-
+    
     <span style="color:#2b9948  "> 10 </span>  
     --------------------------------------------  
     For CS3243:  
@@ -334,7 +334,7 @@ Lists out all the reviews for all modules added to UniTracker.
     
     --------------------------------------------  
     Returning to module information menu...  
-    
+      
   ```
 
 </details>  
