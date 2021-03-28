@@ -9,9 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 import static seedu.connoisseur.messages.Messages.CURRENT_DIRECTORY;
 import static seedu.connoisseur.messages.Messages.FILE_SUCCESS;
@@ -25,16 +29,14 @@ import static seedu.connoisseur.messages.Messages.FOLDER_ALREADY_EXISTS;
  */
 public class Storage {
     private static Logger logger = Logger.getLogger("ConnoisseurLogger");
-    private static String connoisseurFilePath;
-    private static String recommendationFilePath;
+    private static String dataFilePath;
     private Ui ui;
-    ArrayList<String> reviewList = new ArrayList<>();
-    ArrayList<String> recommendationsList = new ArrayList<>();
 
     /**
      * Constructor for Storage class.
      */
     public Storage(Ui ui) {
+        this.ui = ui;
         logger.setLevel(Level.OFF);
         logger.log(Level.INFO, CURRENT_DIRECTORY);
         String folderPath = System.getProperty("user.dir") + "/data";
@@ -45,11 +47,8 @@ public class Storage {
         } else {
             logger.log(Level.WARNING, FOLDER_ALREADY_EXISTS);
         }
-        connoisseurFilePath = System.getProperty("user.dir") + "/data/connoisseur.txt";
-        recommendationFilePath = System.getProperty("user.dir") + "/data/recommendation.txt";
-        this.ui = ui;
-        logger.log(Level.INFO, connoisseurFilePath);
-        logger.log(Level.INFO, recommendationFilePath);
+        dataFilePath = System.getProperty("user.dir") + "/data/connoisseur.json";
+        logger.log(Level.INFO, dataFilePath);
     }
 
     /**
@@ -57,120 +56,111 @@ public class Storage {
      *
      * @return True if file exists or text file is created.
      */
-    public boolean retrieveConnoisseurTextFile() {
-        boolean hasTextFile = false;
+    public boolean retrieveDataFile() {
+        boolean fileAlreadyExists = false;
         try {
-            File connoisseurData = new File(connoisseurFilePath);
+            File connoisseurData = new File(dataFilePath);
             if (connoisseurData.createNewFile()) {
                 logger.log(Level.INFO, FILE_SUCCESS);
             } else {
-                hasTextFile = true;
+                fileAlreadyExists = true;
                 logger.log(Level.WARNING, FILE_ALREADY_EXISTS);
             }
         } catch (IOException e) { //creating or retrieving data has errors
             ui.printErrorMessage(e);
         }
-        return hasTextFile;
+        return fileAlreadyExists;
     }
 
-    /**
-     * Checks if RecommendationTextFile exists, else create new file.
-     *
-     * @return True if file exists or text file is created.
-     */
-    public boolean retrieveRecommendationTextFile() {
-        boolean hasTextFile = false;
+    public ConnoisseurData loadConnoisseurData() {
+        ConnoisseurData connoisseurData;
         try {
-            File recommendationData = new File(recommendationFilePath);
-            if (recommendationData.createNewFile()) {
-                logger.log(Level.INFO, FILE_SUCCESS);
-            } else {
-                hasTextFile = true;
-                logger.log(Level.WARNING, FILE_ALREADY_EXISTS);
-            }
-        } catch (IOException e) { //creating or retrieving data has errors
-            ui.printErrorMessage(e);
-        }
-        return hasTextFile;
-    }
-
-    /**
-     * Loads information from data.txt into connoisseur's list without change.
-     *
-     * @return Loaded review into connoisseur's list unformatted.
-     */
-    public ArrayList<String> loadConnoisseurData() {
-        try {
-            File connoisseurData = new File(connoisseurFilePath);
-            Scanner connoisseurFileScanner = new Scanner(connoisseurData);
+            File dataFile = new File(dataFilePath);
+            Scanner connoisseurFileScanner = new Scanner(dataFile);
             String reviewsToLoad;
-            while (connoisseurFileScanner.hasNextLine()) {
-                reviewsToLoad = connoisseurFileScanner.nextLine();
-                reviewList.add(reviewsToLoad);
-            }
+            reviewsToLoad = connoisseurFileScanner.nextLine();
+            JSONObject data = new JSONObject(reviewsToLoad);
+            String sortMethod = data.getString("sortMethod");
+            ArrayList<Review> reviewList = loadReviews(data.getJSONArray("reviews"));
+            ArrayList<Recommendation> recommendationList = loadRecommendations(data.getJSONArray("recommendations"));
+            connoisseurData = new ConnoisseurData(sortMethod, reviewList, recommendationList);
             connoisseurFileScanner.close();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | NoSuchElementException e) {
             ui.printErrorMessage(e);
+            connoisseurData = new ConnoisseurData("latest", new ArrayList<Review>(), new ArrayList<Recommendation>());
+        }
+        return connoisseurData;
+    }
+
+    public ArrayList<Review> loadReviews(JSONArray reviews) {
+        ArrayList<Review> reviewList = new ArrayList<Review>();
+        for (int i=0; i<reviews.length(); i++) {
+            String title = reviews.getJSONObject(i).getString("title");
+            String category = reviews.getJSONObject(i).getString("category");
+            int rating = reviews.getJSONObject(i).getInt("rating");
+            String description = reviews.getJSONObject(i).getString("description");
+            String date = reviews.getJSONObject(i).getString("date");
+            Review review = new Review(title, category, rating, description, date);
+            reviewList.add(review);
         }
         return reviewList;
     }
 
-    /**
-     * Loads information from data.txt into recommendationsList without change.
-     *
-     * @return Loaded recommendations into recommendationsList unformatted.
-     */
-    public ArrayList<String> loadRecommendationData() {
-        try {
-            File recommendationData = new File(recommendationFilePath);
-            Scanner recommendationFileScanner = new Scanner(recommendationData);
-            String recommendationsToLoad;
-
-            while (recommendationFileScanner.hasNextLine()) {
-                recommendationsToLoad = recommendationFileScanner.nextLine();
-                recommendationsList.add(recommendationsToLoad);
-            }
-            recommendationFileScanner.close();
-        } catch (FileNotFoundException e) {
-            ui.printErrorMessage(e);
+    public ArrayList<Recommendation> loadRecommendations(JSONArray recommendations) {
+        ArrayList<Recommendation> recommendationList = new ArrayList<Recommendation>();
+        for (int i=0; i<recommendations.length(); i++) {
+            String title = recommendations.getJSONObject(i).getString("title");
+            String category = recommendations.getJSONObject(i).getString("category");
+            int price = recommendations.getJSONObject(i).getInt("price");
+            String referrer = recommendations.getJSONObject(i).getString("referrer");
+            Recommendation reco = new Recommendation(title, category, price, referrer);
+            recommendationList.add(reco);
         }
-        return recommendationsList;
+        return recommendationList;
     }
 
-    /**
-     * Updates and saves new reviews to connoisseur.txt.
-     *
-     * @param reviewList Reviews list to be updated.
-     */
-    public void saveConnoisseurData(ArrayList<Review> reviewList, String sortMethod) {
+    public void saveConnoisseurData(ArrayList<Review> reviewList, ArrayList<Recommendation> recommendationList, String sortMethod) {
         try {
-            FileWriter connoisseurFileWriter = new FileWriter(connoisseurFilePath);
-            connoisseurFileWriter.append("SortMethod: ").append(sortMethod).append("\n");
-            for (Review review : reviewList) {
-                String reviewToWrite = review.reviewToText() + "\n";
-                connoisseurFileWriter.append(reviewToWrite);
-            }
+            FileWriter connoisseurFileWriter = new FileWriter(dataFilePath);
+            JSONObject data = new JSONObject();
+            JSONArray reviews = saveReviews(reviewList);
+            JSONArray recommendations = saveRecommendations(recommendationList);
+            data.put("sortMethod", sortMethod);
+            data.put("reviews", reviews);
+            data.put("recommendations", recommendations);
+            connoisseurFileWriter.append(data.toString());
             connoisseurFileWriter.close();
         } catch (IOException e) {
             ui.printErrorMessage(e);
         }
     }
 
-    /**
-     * Updates and saves new Recommendation to recommendation.txt.
-     *
-     * @param recommendationList Recommendation list to be updated.
-     */
-    public void saveRecommendationData(ArrayList<Recommendation> recommendationList) {
-        try {
-            FileWriter recommendationFileWriter = new FileWriter(recommendationFilePath);
-            for (Recommendation recommendation : recommendationList) {
-                String recommendationToWrite = recommendation.recommendationToText() + "\n";
-                recommendationFileWriter.append(recommendationToWrite);
-            }
-            recommendationFileWriter.close();
-        } catch (IOException e) {
-            ui.printErrorMessage(e);
+    public JSONArray saveReviews(ArrayList<Review> reviewList) {
+        JSONArray reviews = new JSONArray();
+        for (int i=0; i<reviewList.size(); i++) {
+            Review review = reviewList.get(i);
+            JSONObject reviewToWrite = new JSONObject();
+            reviewToWrite.put("title", review.getTitle());
+            reviewToWrite.put("category", review.getCategory());
+            reviewToWrite.put("rating", review.getRating());
+            reviewToWrite.put("description", review.getDescription());
+            reviewToWrite.put("date", review.getDateTime());
+            reviews.put(i, reviewToWrite);
         }
+        return reviews;
+    }
+
+    public JSONArray saveRecommendations(ArrayList<Recommendation> recommendationList) {
+        JSONArray recommendations = new JSONArray();
+        for (int i=0; i<recommendationList.size(); i++) {
+            Recommendation recommendation = recommendationList.get(i);
+            JSONObject recommendationToWrite = new JSONObject();
+            recommendationToWrite.put("title", recommendation.getTitle());
+            recommendationToWrite.put("category", recommendation.getCategory());
+            recommendationToWrite.put("price", recommendation.getPrice());
+            recommendationToWrite.put("referrer", recommendation.getRecommendedBy());
+            recommendations.put(i, recommendationToWrite);
+        }
+        return recommendations;
     }
 }

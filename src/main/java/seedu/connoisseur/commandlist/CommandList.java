@@ -4,6 +4,7 @@ import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
@@ -49,29 +50,12 @@ public class CommandList {
      *
      * @param dataReviews List of tasks from user connoisseur.txt file.
      */
-    public CommandList(ArrayList<String> dataReviews, ArrayList<String> dataRecommendations, Ui ui, Storage storage) {
+    public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(SortMethod.LATEST);
-        if (!dataReviews.isEmpty()) {
-            for (String review : dataReviews) {
-                if (review.length() != 0) {
-                    if (review.startsWith("SortMethod: ")) {
-                        sorter.changeSortMethod(review.split(" ", 2)[1]);
-                    } else {
-                        reviewList.add(Review.textToReview(review));
-                    }
-                }
-            }
-        }
-
-        if (!dataRecommendations.isEmpty()) {
-            for (String recommendation : dataRecommendations) {
-                if (recommendation.length() != 0) {
-                    recommendationList.add(Recommendation.textToRecommendation(recommendation));
-                }
-            }
-        }
+        this.reviewList = connoisseurData.getReviewList();
+        this.recommendationList = connoisseurData.getRecoList();
     }
 
     /**
@@ -333,8 +317,7 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList, sorter.getSortMethod());
-        storage.saveRecommendationData(recommendationList);
+        storage.saveConnoisseurData(reviewList, recommendationList, sorter.getSortMethod());
         ui.printExitMessage();
     }
 

@@ -3,14 +3,11 @@ package seedu.connoisseur.sorter;
 import java.util.Collections;
 import java.util.ArrayList;
 
-import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
-import seedu.connoisseur.ui.Ui;
 
 public class Sorter {
 
     public SortMethod sortMethod;
-    private Ui ui;
 
     /**
      * Constructor for Sorter class.

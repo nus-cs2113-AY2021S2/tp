@@ -2,7 +2,6 @@ package seedu.connoisseur.ui;
 
 import seedu.connoisseur.review.Review;
 
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 
@@ -173,7 +172,7 @@ public class Ui {
      *
      * @param e error encountered
      */
-    public void printErrorMessage(IOException e) {
+    public void printErrorMessage(Exception e) {
         println(ERROR_MESSAGE);
         e.printStackTrace();
     }
