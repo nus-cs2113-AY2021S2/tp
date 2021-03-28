@@ -205,7 +205,7 @@ User can view module description added previously.
   ````
   Input:  
   `CS2113T`  
-  Output:
+  Output:  
   ````
   Please key in your component and percentage of the component.
   Leave space between component and percentage only.
