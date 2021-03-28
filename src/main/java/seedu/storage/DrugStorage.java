@@ -1,6 +1,6 @@
 package seedu.storage;
 
-import seedu.model.object.Drug;
+import seedu.model.Drug;
 
 import java.io.File;
 import java.io.FileNotFoundException;

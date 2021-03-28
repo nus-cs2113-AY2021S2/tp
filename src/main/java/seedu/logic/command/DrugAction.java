@@ -1,7 +1,7 @@
 package seedu.logic.command;
 
-import seedu.model.object.Drug;
-import seedu.exceptions.drugexceptions.WrongInputException;
+import seedu.model.Drug;
+import seedu.exceptions.inventory.WrongInputException;
 import seedu.ui.DrugUI;
 
 import java.util.ArrayList;

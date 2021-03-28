@@ -1,7 +1,7 @@
 package seedu.logic.command;
 
 
-import seedu.model.object.DoctorAppointment;
+import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;

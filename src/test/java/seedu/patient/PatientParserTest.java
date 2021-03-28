@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import seedu.exceptions.DukeException;
 import seedu.logic.parser.PatientParser;
-import seedu.model.objectList.PatientList;
+import seedu.logic.command.PatientActions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PatientParserTest {
 
     private PatientParser parser;
-    private PatientList patients;
+    private PatientActions patients;
 
     @Test
     public void testReturnCommand() throws DukeException {
