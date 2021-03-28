@@ -6,24 +6,44 @@ public class Recommendation {
     protected int priceLow;
     protected int priceHigh;
     protected String recommendedBy;
+    protected String location;
     protected static int MAX_RANGE_OF_PRICE = 5;
 
     /**
      * Creates a recommendation.
      *
-     * @param inputTitle        title of the recommendation
-     * @param inputCategory     category of the recommendation
-     * @param inputPriceLow     price of the recommendation
-     * @param inputPriceHigh    price of the recommendation
-     * @param inputBy           description of the recommended person
+     * @param inputTitle     title of the recommendation
+     * @param inputCategory  category of the recommendation
+     * @param inputPriceLow  price of the recommendation
+     * @param inputPriceHigh price of the recommendation
+     * @param inputBy        description of the recommended person
      */
-    public Recommendation(String inputTitle, String inputCategory, 
-            int inputPriceLow, int inputPriceHigh, String inputBy) {
+    public Recommendation(String inputTitle, String inputCategory,
+                          int inputPriceLow, int inputPriceHigh, String inputBy, String location) {
         this.title = inputTitle;
         this.category = inputCategory;
         this.priceLow = inputPriceLow;
         this.priceHigh = inputPriceHigh;
         this.recommendedBy = inputBy;
+        this.location = location;
+    }
+
+    /**
+     * Gets the location of the recommendation.
+     *
+     * @return location of recommendation
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * Sets the location of the recommendation.
+     *
+     * @param newLocation new location to be set
+     */
+    public void setLocation(String newLocation) {
+        this.location = newLocation;
     }
 
     /**

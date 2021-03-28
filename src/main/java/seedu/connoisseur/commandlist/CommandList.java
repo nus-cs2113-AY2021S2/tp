@@ -32,7 +32,7 @@ import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_RECO_TITLE;
-
+import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 
 /**
  * Class with methods for different commands.
@@ -46,10 +46,11 @@ public class CommandList {
     private final Storage storage;
 
     /**
-     * Creates CommandList based on stored data. 
+     * Creates CommandList based on stored data.
+     *
      * @param connoisseurData locally stored data
-     * @param ui ui instance
-     * @param storage storage instance
+     * @param ui              ui instance
+     * @param storage         storage instance
      */
     public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
@@ -118,11 +119,12 @@ public class CommandList {
                 ui.print(" ");
             }
             ui.print(currentReview.getTitle());
-            ui.printWhiteSpace(currentReview.getTitle().length());
+            ui.printWhiteSpaceTitle(currentReview.getTitle().length());
             ui.print(currentReview.getCategory());
             ui.printWhiteSpace(currentReview.getCategory().length());
             ui.print(currentReview.starRating());
             ui.printWhiteSpace(currentReview.starRating().length());
+            System.out.print("   ");
             ui.println(currentReview.getDateTime());
         }
     }
@@ -500,10 +502,14 @@ public class CommandList {
                 ui.print(" ");
             }
             ui.print(currentRecommendation.getTitle());
-            ui.printWhiteSpace(currentRecommendation.getTitle().length());
+            ui.printWhiteSpaceTitle(currentRecommendation.getTitle().length());
             ui.print(currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.println(currentRecommendation.dollarRange());
+            ui.print(currentRecommendation.dollarRange());
+            ui.printWhiteSpace(2);
+            ui.print(currentRecommendation.getLocation());
+            ui.printWhiteSpace(currentRecommendation.getLocation().length());
+            ui.println(currentRecommendation.getRecommendedBy());
         }
     }
 
@@ -544,8 +550,8 @@ public class CommandList {
             String priceRange = ui.readCommand();
             int priceLow;
             int priceHigh;
-            int priceFirst = Integer.parseInt(priceRange.split("-",2)[0].trim());
-            int priceSecond = Integer.parseInt(priceRange.split("-",2)[1].trim());
+            int priceFirst = Integer.parseInt(priceRange.split("-", 2)[0].trim());
+            int priceSecond = Integer.parseInt(priceRange.split("-", 2)[1].trim());
             if (priceFirst > priceSecond) {
                 priceLow = priceSecond;
                 priceHigh = priceFirst;
@@ -555,7 +561,9 @@ public class CommandList {
             }
             ui.println(RECOBY_PROMPT);
             String recommendedBy = ui.readCommand();
-            Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy);
+            ui.println(LOCATION_PROMPT);
+            String location = ui.readCommand();
+            Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
             recommendationList.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
