@@ -43,6 +43,7 @@ public class ModuleInfo {
                     break;
                 case 4:
                     //addModuleMC method;
+                    addModuleMC();
                     break;
                 case 5:
                     //addModuleGrade method;
@@ -89,6 +90,25 @@ public class ModuleInfo {
         }
     }
 
+    private static void addModuleMC() {
+        if (modules.isEmpty()) {
+            logger.log(Level.INFO, "You have not added any modules.");
+            return;
+        }
+        viewAllModules();
+        System.out.println("Please choose which module you would like to allocate modular credits (MCs)"
+                + " and enter the number:");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            System.out.println("Enter the number of MCs for this module: ");
+            int moduleCredits = Ui.readCommandToInt();
+            modules.get(moduleNumberInt).setMCs(moduleCredits);
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
+    }
+
     public static void addNewModule() {
         System.out.println("Enter name of the new module:");
         String moduleName = Ui.readCommand();
@@ -113,7 +133,7 @@ public class ModuleInfo {
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
-            System.out.println(module.toString()); //name, description, review are printed
+            System.out.println(module.toString()); //name, description, review, MCs are printed
             printModuleTaskList(module.getName());
             // add other methods to print other features of a module
 
