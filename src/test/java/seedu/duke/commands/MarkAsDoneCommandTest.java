@@ -13,9 +13,10 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.initialiseModuleList;
 import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
-import static seedu.duke.common.Messages.COMMAND_VERB_MARK;
+import static seedu.duke.common.Constants.MARK;
+import static seedu.duke.common.Constants.TYPE_TASK;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_MARK;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 import static seedu.duke.common.Messages.NEWLINE;
 
 class MarkAsDoneCommandTest {
@@ -42,7 +43,7 @@ class MarkAsDoneCommandTest {
                 + "1. weekly exercise" + NEWLINE
                 + "2. lecture quiz" + NEWLINE
                 + "3. read up notes" + NEWLINE
-                + String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_MARK) + NEWLINE
+                + String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, MARK) + NEWLINE
                 + "Marked weekly exercise as done." + NEWLINE
                 + "Marked lecture quiz as done." + NEWLINE;
 

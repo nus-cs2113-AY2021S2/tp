@@ -18,8 +18,8 @@ import static seedu.duke.common.Constants.INDEX_FIRST;
 import static seedu.duke.common.Messages.FORMAT_DAYS_REMAINING;
 import static seedu.duke.common.Messages.FORMAT_DUE_TODAY;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.FORMAT_ITEM_TIME;
 import static seedu.duke.common.Messages.FORMAT_OVERDUE;
-import static seedu.duke.common.Messages.FORMAT_PRINT_TASK;
 import static seedu.duke.common.Messages.HEADER_DONE;
 import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.INDENTATION;
@@ -156,7 +156,8 @@ public class UI {
         String description = task.getDescription();
         String gradedStatus = task.getGraded() ? MESSAGE_GRADED : "";
         String deadline = task.getDeadline().format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
-        String listItem = String.format(FORMAT_PRINT_TASK, tasksCount, description, gradedStatus, deadline);
+        String listItem = String.format(FORMAT_INDEX_ITEM, tasksCount, description)
+                + String.format(FORMAT_ITEM_TIME, gradedStatus, deadline);
         if (!isDone) {
             listItem += getDaysRemainingMessage(task.getDeadline());
         }
@@ -165,7 +166,6 @@ public class UI {
             System.out.print(INDENTATION + task.getRemarks() + NEWLINE);
         }
     }
-    
     //@@author 8kdesign
     /**
      * Returns message for days remaining.

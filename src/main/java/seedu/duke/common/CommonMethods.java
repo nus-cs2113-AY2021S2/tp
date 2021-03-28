@@ -20,7 +20,6 @@ import static seedu.duke.common.Constants.LOGGER_PATH;
 import static seedu.duke.common.Constants.NO_STRING;
 import static seedu.duke.common.Constants.TUTORIAL_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
-import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
 import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
 
 public class CommonMethods {
@@ -129,7 +128,6 @@ public class CommonMethods {
      * @return Boolean of whether new task is graded.
      */
     public static boolean getIsTaskGraded(UI ui) {
-        ui.printMessage(MESSAGE_TASK_CHECK_GRADED);
         String userInput = ui.readCommand();
         while (!userInput.equalsIgnoreCase(YES_STRING)
                 && !userInput.equalsIgnoreCase(NO_STRING)) {

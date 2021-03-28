@@ -8,12 +8,13 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
-import static seedu.duke.common.Messages.COMMAND_VERB_DELETE;
-import static seedu.duke.common.Messages.MESSAGE_REMOVED_TASK;
+import static seedu.duke.common.Constants.TYPE_TASK;
+import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_NO_TASK_MODIFIED;
+import static seedu.duke.common.Messages.MESSAGE_REMOVED_TASK;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 
 public class DeleteTaskCommand extends Command {
 
@@ -29,7 +30,7 @@ public class DeleteTaskCommand extends Command {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Task> taskList = module.getTaskList();
         if (taskList.isEmpty()) {
-            ui.printMessage(String.format(MESSAGE_TASK_LIST_EMPTY, COMMAND_VERB_DELETE));
+            ui.printMessage(String.format(MESSAGE_TASK_LIST_EMPTY, DELETE));
             return;
         }
         printPrompt(ui, taskList);
@@ -56,6 +57,6 @@ public class DeleteTaskCommand extends Command {
     private void printPrompt(UI ui, ArrayList<Task> taskList) {
         ui.printMessage(MESSAGE_TASKS_TO_DELETE);
         ui.printSummarisedTasks(taskList);
-        ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_DELETE));
+        ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, DELETE));
     }
 }

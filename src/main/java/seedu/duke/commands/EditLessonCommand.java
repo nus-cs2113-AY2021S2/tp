@@ -12,26 +12,22 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.Constants.EDIT_INDEX_DAY_TIME;
 import static seedu.duke.common.Constants.EDIT_INDEX_LINK;
-import static seedu.duke.common.Constants.EDIT_INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.EDIT_INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_1_TIME_DAY;
 import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
 import static seedu.duke.common.Constants.LESSON_FIELD_3_T_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_4_T_EMAIL;
 import static seedu.duke.common.Constants.MAX_EDITABLE_FIELDS;
+import static seedu.duke.common.Messages.MESSAGE_EDITED_FIELD;
+import static seedu.duke.common.Messages.MESSAGE_FIELDS_TO_EDIT;
+import static seedu.duke.common.Messages.MESSAGE_FIELD_BEING_EDITED;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_EMAIL;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_BEING_EDITED;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_FIELD_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_LESSON_TIME_UPDATED;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_LINK_UPDATED;
 import static seedu.duke.common.Messages.MESSAGE_NOT_UPDATED;
 import static seedu.duke.common.Messages.MESSAGE_NO_CHANGES;
 import static seedu.duke.common.Messages.MESSAGE_SEPARATE_INDICES;
-import static seedu.duke.common.Messages.MESSAGE_TEACHER_EMAIL_UPDATED;
-import static seedu.duke.common.Messages.MESSAGE_TEACHER_NAME_UPDATED;
 import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
 import static seedu.duke.common.Messages.WARNING_NO_VALID_INPUT;
 
@@ -53,7 +49,7 @@ public class EditLessonCommand extends Command {
         Lesson lessonToEdit = getLessonToEdit(lessonsList, ui);
 
         if (lessonToEdit != null) {
-            ui.printMessage(String.format(MESSAGE_LESSON_BEING_EDITED, lessonToEdit.getLessonType().toString()));
+            ui.printMessage(String.format(MESSAGE_FIELD_BEING_EDITED, lessonToEdit.getLessonType().toString()));
             editLessonFields(lessonToEdit, ui);
         }
         ModuleList.writeModule();
@@ -133,7 +129,7 @@ public class EditLessonCommand extends Command {
      */
     private ArrayList<Integer> getFieldIndicesFromUser(UI ui) {
 
-        ui.printMessage(MESSAGE_LESSON_FIELD_TO_EDIT);
+        ui.printMessage(MESSAGE_FIELDS_TO_EDIT);
         printFieldsAsList(ui);
         ui.printMessage(MESSAGE_SEPARATE_INDICES);
 
@@ -178,24 +174,24 @@ public class EditLessonCommand extends Command {
         switch (fieldIndex) {
         case EDIT_INDEX_DAY_TIME:
             lesson.setTime(newFieldValue);
-            ui.printMessage(MESSAGE_LESSON_TIME_UPDATED);
+            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
             break;
         case EDIT_INDEX_LINK:
             if (Lesson.isValidLink(newFieldValue)) {
                 lesson.setOnlineLink(newFieldValue);
-                ui.printMessage(MESSAGE_LINK_UPDATED);
+                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_LINK + MESSAGE_NOT_UPDATED);
             }
             break;
         case EDIT_INDEX_TEACHER_NAME:
             lesson.getTeachingStaff().setName(newFieldValue);
-            ui.printMessage(MESSAGE_TEACHER_NAME_UPDATED);
+            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
             break;
         default:
             if (TeachingStaff.isValidEmail(newFieldValue)) {
                 lesson.getTeachingStaff().setEmail(newFieldValue);
-                ui.printMessage(MESSAGE_TEACHER_EMAIL_UPDATED);
+                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_EMAIL + MESSAGE_NOT_UPDATED);
             }

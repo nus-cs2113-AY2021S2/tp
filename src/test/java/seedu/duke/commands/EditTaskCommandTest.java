@@ -12,13 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.initialiseModuleList;
 import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
 import static seedu.duke.common.Messages.MESSAGE_EDITED_FIELD;
-import static seedu.duke.common.Messages.MESSAGE_TASK_BEING_EDITED;
-import static seedu.duke.common.Messages.MESSAGE_TASK_DEADLINE_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_SELECT_INFO;
-import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_TO_EDIT;
-import static seedu.duke.common.Messages.MESSAGE_TASK_REMARKS_TO_EDIT;
+import static seedu.duke.common.Messages.MESSAGE_FIELDS_TO_EDIT;
+import static seedu.duke.common.Messages.MESSAGE_FIELD_BEING_EDITED;
+import static seedu.duke.common.Messages.MESSAGE_SEPARATE_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASK_TO_EDIT;
 import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.common.Messages.PROMPT_ENTER_FIELD_DETAILS;
 
 class EditTaskCommandTest {
     private final InputStream originalIn = System.in;
@@ -61,13 +60,13 @@ class EditTaskCommandTest {
                 + "5. iP submission - 3 Mar 2021" + NEWLINE
                 + "\t\tRemember to attach the jar file." + NEWLINE
                 + "\t\tGraded" + NEWLINE
-                + String.format(MESSAGE_TASK_BEING_EDITED, before)
-                + MESSAGE_TASK_FIELDS_TO_EDIT + NEWLINE
+                + String.format(MESSAGE_FIELD_BEING_EDITED, before)
+                + MESSAGE_FIELDS_TO_EDIT + NEWLINE
                 + fields + NEWLINE
-                + MESSAGE_TASK_FIELDS_SELECT_INFO + NEWLINE
-                + MESSAGE_TASK_DEADLINE_TO_EDIT + NEWLINE
+                + MESSAGE_SEPARATE_INDICES + NEWLINE
+                + String.format(PROMPT_ENTER_FIELD_DETAILS, "deadline") + NEWLINE
                 + String.format(MESSAGE_EDITED_FIELD, "deadline") + NEWLINE
-                + MESSAGE_TASK_REMARKS_TO_EDIT + NEWLINE
+                + String.format(PROMPT_ENTER_FIELD_DETAILS, "remarks") + NEWLINE
                 + String.format(MESSAGE_EDITED_FIELD, "remarks") + NEWLINE;
 
         // checks displayed output to user
