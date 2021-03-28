@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import static seedu.duke.common.Constants.FORMAT_DATE_NORMAL;
-import static seedu.duke.common.Messages.FORMAT_TASK_FIELDS;
 import static seedu.duke.common.Messages.MESSAGE_GRADED_STATUS;
 import static seedu.duke.common.Messages.MESSAGE_UNGRADED_STATUS;
 
@@ -74,40 +73,12 @@ public class Task {
         isGraded = graded;
     }
 
-    //@@author aliciatay-zls
-    @Override
-    public String toString() {
-        String formattedDeadline = this.deadline.format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
-        String gradedStatus = this.getGraded() ? MESSAGE_GRADED_STATUS : MESSAGE_UNGRADED_STATUS;
-        //to improve formatting when printing: when field(s) are empty, indentation
-        return String.format(FORMAT_TASK_FIELDS, this.getDescription(),
-                formattedDeadline, this.getRemarks(), gradedStatus);
+    //@@author aliciatay-zls    
+    public String getFormattedDeadline() {
+        return deadline.format(DateTimeFormatter.ofPattern(FORMAT_DATE_NORMAL));
     }
-
-    public void markDone() {
-        this.setDone(true);
-    }
-
-    public void markUndone() {
-        this.setDone(false);
-    }
-
-    public void editTaskDescription(String newDescription) {
-        this.setDescription(newDescription);
-    }
-
-    public void editTaskDeadline(LocalDate newDeadline) {
-        if (newDeadline == null) {
-            return;
-        }
-        this.setDeadline(newDeadline);
-    }
-
-    public void editTaskRemarks(String newRemarks) {
-        this.setRemarks(newRemarks);
-    }
-
-    public void editTaskGradedStatus(boolean isGraded) {
-        this.setGraded(isGraded);
+    
+    public String getGradedStatus() {
+        return getGraded() ? MESSAGE_GRADED_STATUS : MESSAGE_UNGRADED_STATUS;
     }
 }

@@ -7,7 +7,8 @@ public class Messages {
     public static final String FORMAT_LIST_HELP = "%s \n\t- %s";
     public static final String FORMAT_LIST_ITEMS = "%2s. %s";
     public static final String FORMAT_INDEX_ITEM = "%d. %s";
-    public static final String FORMAT_TASK_FIELDS = "%s - %s \n\t\t- %s - %s";
+    public static final String FORMAT_TASK_DEADLINE = "%s - %s";
+    public static final String FORMAT_FIELD = "\t\t%s";
     public static final String NEWLINE = System.lineSeparator();
     public static final String DIVIDER = "--------------------------------------------------------------------------";
     public static final String INDENTATION = "\t\t";

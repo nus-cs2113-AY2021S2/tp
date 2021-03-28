@@ -41,7 +41,7 @@ public class MarkAsUndoneCommand extends Command {
         for (Task task : selectedTasks) {
             String description = task.getDescription();
             ui.printMessage(String.format(MESSAGE_MARKED_AS_UNDONE,description));
-            task.markUndone();
+            task.setDone(false);
         }
         ModuleList.writeModule();
     }

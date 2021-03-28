@@ -13,14 +13,15 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getIsTaskGraded;
-import static seedu.duke.common.CommonMethods.getSpecifiedIndices;
 import static seedu.duke.common.Constants.FORMAT_DATE_IO;
 import static seedu.duke.common.Constants.TASK_FIELD_DEADLINE;
 import static seedu.duke.common.Constants.TASK_FIELD_DESCRIPTION;
 import static seedu.duke.common.Constants.TASK_FIELD_GRADED_STATUS;
 import static seedu.duke.common.Constants.TASK_FIELD_REMARKS;
 import static seedu.duke.common.Messages.COMMAND_VERB_EDIT;
+import static seedu.duke.common.Messages.FORMAT_FIELD;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.FORMAT_TASK_DEADLINE;
 import static seedu.duke.common.Messages.MESSAGE_EDITED_FIELD;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_TASK_DEADLINE;
 import static seedu.duke.common.Messages.MESSAGE_NOT_UPDATED;
@@ -33,8 +34,10 @@ import static seedu.duke.common.Messages.MESSAGE_TASK_FIELDS_TO_EDIT;
 import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASK_REMARKS_TO_EDIT;
 import static seedu.duke.common.Messages.MESSAGE_TASK_TO_EDIT;
+import static seedu.duke.common.Messages.NEWLINE;
 
 public class EditTaskCommand extends Command {
+    
     private final String[] fields = {TASK_FIELD_DESCRIPTION, TASK_FIELD_DEADLINE, 
         TASK_FIELD_REMARKS, TASK_FIELD_GRADED_STATUS};
     private Task selectedTask;
@@ -56,36 +59,37 @@ public class EditTaskCommand extends Command {
         }
         
         printPromptForFields(ui);
-        ArrayList<Integer> selectedIndices = getSpecifiedIndices(ui, fields.length);
+        ArrayList<Integer> selectedIndices = ui.getIndicesFromUser(fields.length);
         if (selectedIndices.isEmpty()) {
             ui.printMessage(MESSAGE_NO_TASK_MODIFIED);
             return;
         }
+        
         for (int index : selectedIndices) {
-            editTaskField(ui, index, selectedIndices);
+            editTaskField(ui, index);
         }
         ModuleList.writeModule();
         ModuleList.sortTasks();
     }
     
-    private void editTaskField(UI ui, int fieldIndex, ArrayList<Integer> selectedIndices) {
+    private void editTaskField(UI ui, int fieldIndex) {
         switch (fieldIndex) { 
         case 1:
-            selectedTask.editTaskDescription(getNewTaskDescription(ui));
+            selectedTask.setDescription(getNewTaskDescription(ui));
             break;
         case 2:
             LocalDate newDeadline = getNewTaskDeadline(ui);
             if (newDeadline == null) {
                 return;
             }
-            selectedTask.editTaskDeadline(newDeadline);
+            selectedTask.setDeadline(newDeadline);
             break;
         case 3:
-            selectedTask.editTaskRemarks(getNewTaskRemarks(ui));
+            selectedTask.setRemarks(getNewTaskRemarks(ui));
             break;
         case 4:
              ui.printMessage("");
-             selectedTask.editTaskGradedStatus(getIsTaskGraded(ui));
+             selectedTask.setGraded(getIsTaskGraded(ui));
              break;
         default:
         }
@@ -95,11 +99,24 @@ public class EditTaskCommand extends Command {
     private void printPromptForTask(UI ui, ArrayList<Task> taskList) {
         ui.printMessage(MESSAGE_TASK_TO_EDIT);
         for (int i = 0; i < taskList.size(); i++) {
-            ui.printMessage(String.format(FORMAT_INDEX_ITEM, i + 1, taskList.get(i).toString()));
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM, i + 1, getTaskToPrint(taskList.get(i))));
         }
     }
+    
+    private static StringBuilder getTaskToPrint(Task task) {
+        StringBuilder taskString = new StringBuilder();
+        taskString.append(String.format(FORMAT_TASK_DEADLINE, task.getDescription(),
+                task.getFormattedDeadline()));
+        taskString.append(NEWLINE);
+        if (!task.getRemarks().isEmpty()) {
+            taskString.append(String.format(FORMAT_FIELD, task.getRemarks()));
+            taskString.append(NEWLINE);
+        }
+        taskString.append(String.format(FORMAT_FIELD, task.getGradedStatus()));
+        return taskString;
+    }
 
-    public static Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
+    private Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
         String line = ui.readCommand();
         try {
             int index = Parser.checkIndex(line, taskList.size());
