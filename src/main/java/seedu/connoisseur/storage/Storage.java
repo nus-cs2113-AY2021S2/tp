@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -114,14 +115,15 @@ public class Storage {
             int priceLow = recommendations.getJSONObject(i).getInt("priceLow");
             int priceHigh = recommendations.getJSONObject(i).getInt("priceHigh");
             String referrer = recommendations.getJSONObject(i).getString("referrer");
-            Recommendation reco = new Recommendation(title, category, priceLow, priceHigh, referrer);
+            String location = recommendations.getJSONObject(i).getString("location");
+            Recommendation reco = new Recommendation(title, category, priceLow, priceHigh, referrer, location);
             recommendationList.add(reco);
         }
         return recommendationList;
     }
 
-    public void saveConnoisseurData(ArrayList<Review> reviewList, 
-            ArrayList<Recommendation> recommendationList, String sortMethod) {
+    public void saveConnoisseurData(ArrayList<Review> reviewList,
+                                    ArrayList<Recommendation> recommendationList, String sortMethod) {
         JSONObject data = new JSONObject();
         JSONArray reviews = saveReviews(reviewList);
         JSONArray recommendations = saveRecommendations(recommendationList);
@@ -162,6 +164,7 @@ public class Storage {
             recommendationToWrite.put("priceLow", recommendation.getPriceLow());
             recommendationToWrite.put("priceHigh", recommendation.getPriceHigh());
             recommendationToWrite.put("referrer", recommendation.getRecommendedBy());
+            recommendationToWrite.put("location", recommendation.getLocation());
             recommendations.put(i, recommendationToWrite);
         }
         return recommendations;
