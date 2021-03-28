@@ -317,7 +317,7 @@ Lists out all the reviews for all modules added to UniTracker.
 
 
   Output:  
-  
+  ```  
 
     <span style="color:#2b9948  "> 10 </span>  
     --------------------------------------------  
@@ -334,6 +334,8 @@ Lists out all the reviews for all modules added to UniTracker.
     
     --------------------------------------------  
     Returning to module information menu...  
+    
+  ```
 
 </details>  
 
