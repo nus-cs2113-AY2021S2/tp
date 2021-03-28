@@ -219,7 +219,7 @@ public class CommandList {
         String description = "No description entered. ";
         ui.println(TITLE_PROMPT);
         String title = ui.readCommand();
-        isDuplicate = checkAndPrintDuplicate(title);
+        isDuplicate = checkAndPrintDuplicateReview(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
@@ -248,7 +248,7 @@ public class CommandList {
         boolean isDuplicate;
         ui.println(TITLE_PROMPT);
         String title = ui.readCommand();
-        isDuplicate = checkAndPrintDuplicate(title);
+        isDuplicate = checkAndPrintDuplicateReview(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
@@ -368,7 +368,7 @@ public class CommandList {
         return reviewIndex;
     }
 
-    public boolean checkAndPrintDuplicate(String title) {
+    public boolean checkAndPrintDuplicateReview(String title) {
         int reviewIndex = -1;
         for (int i = 0; i < reviewList.size(); i++) {
             if ((reviewList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
@@ -395,6 +395,43 @@ public class CommandList {
         }
     }
 
+    /**
+     * Checks for duplicate recommendation.
+     *
+     * @param title title of recommendation.
+     */
+    public boolean checkAndPrintDuplicateRecommendation(String title) {
+        int recIndex = -1;
+        for (int i = 0; i < recommendationList.size(); i++) {
+            if ((recommendationList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+                recIndex = i;
+            }
+        }
+        if (recIndex != -1) {
+            System.out.println("There is a recommendation in your list with the same title: ");
+            Recommendation currentRecommendation = recommendationList.get(recIndex);
+            ui.print((recommendationList.indexOf(currentRecommendation) + 1) + ". ");
+            if (recommendationList.indexOf(currentRecommendation) < 9) {
+                ui.print(" ");
+            }
+            ui.print(currentRecommendation.getTitle());
+            ui.printWhiteSpace(currentRecommendation.getTitle().length());
+            ui.print(currentRecommendation.getCategory());
+            ui.printWhiteSpace(currentRecommendation.getCategory().length());
+            ui.print(Integer.toString(currentRecommendation.getPrice()));
+            ui.printWhiteSpace(Integer.toString(currentRecommendation.getPrice()).length());
+            ui.println(currentRecommendation.getRecommendedBy());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Edits a review.
+     *
+     * @param title title of review
+     */
     public void editReviews(String title) {
         if (title == null || title.isBlank()) {
             ui.println(MISSING_EDIT_TITLE);
@@ -486,20 +523,39 @@ public class CommandList {
         }
     }
 
-    public void addRecommendation(String title) throws DuplicateException {
-        boolean isDuplicate;
+    /**
+     * Adds a recommendation.
+     *
+     * @param title title of recommendation
+     */
+    public void addRecommendation(String title) {
+        try {
+            addRecommendationDetails(title);
+        } catch (DuplicateException de) {
+            System.out.println("Please try again with a unique title instead!");
+        }
+    }
 
+    /**
+     * Prompts for details of recommendation.
+     *
+     * @param title title of recommendation.
+     */
+    public void addRecommendationDetails(String title) throws DuplicateException {
         if (title == null || title.isBlank()) {
             ui.println(MISSING_RECO_TITLE);
             return;
         }
-        isDuplicate = checkAndPrintDuplicate(title);
+        boolean isDuplicate;
+        isDuplicate = checkAndPrintDuplicateRecommendation(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
+
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand().toLowerCase();
         ui.println(PRICE_PROMPT);
+
         try {
             int pricing = Integer.parseInt(ui.readCommand());
             if (pricing < 0 || pricing > 5) {
