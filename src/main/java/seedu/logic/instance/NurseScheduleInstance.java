@@ -1,17 +1,10 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.nurseschedules.EmptyListException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
-import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.staffexceptions.AbortException;
-import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
-import seedu.model.object.NurseSchedule;
+import seedu.model.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 

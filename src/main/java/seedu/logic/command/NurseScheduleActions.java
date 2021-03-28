@@ -3,7 +3,7 @@ package seedu.logic.command;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.parser.NurseSchedulesParser;
-import seedu.model.object.NurseSchedule;
+import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 

@@ -1,7 +1,7 @@
 package seedu.logic.parser;
 
 import seedu.logic.command.DrugAction;
-import seedu.exceptions.drugexceptions.WrongInputException;
+import seedu.exceptions.inventory.WrongInputException;
 import seedu.ui.DrugUI;
 
 import java.util.Scanner;

@@ -1,6 +1,6 @@
 package seedu.storage;
 
-import seedu.model.object.NurseSchedule;
+import seedu.model.NurseSchedule;
 
 import java.io.File;
 import java.io.FileInputStream;

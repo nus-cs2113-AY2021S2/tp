@@ -37,10 +37,6 @@ public class PatientUI extends UI{
         System.out.println("Now you have " + inputInt + " patients in the list");
     }
 
-    public static void patientMenuPrompt() {
-        System.out.print("Patient --> ");
-    }
-
     public static void patientCommandWelcome() {
         System.out.println("Welcome to the patient Commands section!");
         System.out.println("Here is a list of patient commands: ");
