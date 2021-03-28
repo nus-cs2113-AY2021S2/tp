@@ -4,7 +4,11 @@ import seedu.duke.Ui;
 
 public class Links {
 
-    private static final int EXIT_COMMAND = 4;
+    private static final int EXTERNAL_LINK_COMMAND = 1;
+    private static final int ADD_ZOOM_LINK_COMMAND = 2;
+    private static final int DELETE_ZOOM_LINK_COMMAND = 3;
+    private static final int VIEW_ZOOM_LINK_COMMAND = 4;
+    private static final int EXIT_COMMAND = 5;
     protected int linkIndex;
 
     public Links(int linkIndex) {
@@ -15,30 +19,28 @@ public class Links {
         int externalLinksCommandNumber = 0;
         while (true) {
             switch (linkIndex) {
-            case 1:
+            case EXTERNAL_LINK_COMMAND:
                 LinkInfo.initialiseList();
-                while (externalLinksCommandNumber != EXIT_COMMAND) {
-                    Ui.printExternalLinksMessage();
-                    externalLinksCommandNumber = Ui.readCommandToInt();
-                    ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
-                    externalLinks.execute();
-                }
-                externalLinksCommandNumber = -1;
-                continue;
-            case 2:
+                Ui.printExternalLinksMessage();
+                externalLinksCommandNumber = Ui.readCommandToInt();
+                ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
+                externalLinks.execute();
+                break;
+            case ADD_ZOOM_LINK_COMMAND:
                 // add zoom links
                 add();
                 break;
-            case 3:
+            case DELETE_ZOOM_LINK_COMMAND:
                 // delete zoom links
                 delete();
                 break;
-            case 4:
+            case VIEW_ZOOM_LINK_COMMAND:
                 // view zoom links
                 viewLinks();
                 break;
-            case 5:
+            case EXIT_COMMAND:
                 // exit
+                Ui.printReturnToMainMenuMessage();
                 return;
             default:
                 Ui.printInvalidIntegerMessage();
@@ -57,6 +59,9 @@ public class Links {
 
     public static void delete() {
         viewLinks();
+        if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
+            return;
+        }
         Ui.printLinkToDelete();
         int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
         try {
