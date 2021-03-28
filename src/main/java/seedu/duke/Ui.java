@@ -2,17 +2,12 @@ package seedu.duke;
 
 import seedu.duke.link.LinkInfo;
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
+import seedu.duke.task.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -470,16 +465,16 @@ public class Ui {
     public static void printSelectTaskNumberToMarkOrUnmark(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();
@@ -490,16 +485,16 @@ public class Ui {
     public static void printSelectTaskNumberToDelete(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();
@@ -510,16 +505,16 @@ public class Ui {
     public static void printSelectTaskNumberToPin(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();

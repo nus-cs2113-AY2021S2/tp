@@ -1,6 +1,5 @@
 package seedu.duke.task.command;
 
-import seedu.duke.Module;
 import seedu.duke.ModuleInfo;
 import seedu.duke.Ui;
 import seedu.duke.task.*;
@@ -30,7 +29,6 @@ public class AddTask {
         if (module.equals("")) {
             return;
         }
-        Ui.printHorizontalLine();
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
         if (taskTypeNumber != 1) {
@@ -101,32 +99,32 @@ public class AddTask {
 
     public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
-        TaskList.tasks.add(task);
-        assert TaskList.tasks.contains(task) : "Task was not added to task list";
+        TaskManager.tasks.add(task);
+        assert TaskManager.tasks.contains(task) : "Task was not added to task list";
         Ui.printAddedTaskMessage(task);
     }
 
     public static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
-        TaskList.assignments.add(assignment);
-        assert TaskList.assignments.contains(assignment) : "Assignment was not added to assignment list";
+        TaskManager.assignments.add(assignment);
+        assert TaskManager.assignments.contains(assignment) : "Assignment was not added to assignment list";
         Ui.printAddedTaskMessage(assignment);
     }
 
     public static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
-        TaskList.midterms.add(midterm);
-        assert TaskList.midterms.contains(midterm) : "Midterm was not added to midterm list";
+        TaskManager.midterms.add(midterm);
+        assert TaskManager.midterms.contains(midterm) : "Midterm was not added to midterm list";
         Ui.printAddedTaskMessage(midterm);
     }
 
     public static void addFinalExam(String module, String description,
                                     String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
-        TaskList.finalExams.add(finalExam);
-        assert TaskList.finalExams.contains(finalExam) : "Final exam was not added to final exam list";
+        TaskManager.finalExams.add(finalExam);
+        assert TaskManager.finalExams.contains(finalExam) : "Final exam was not added to final exam list";
         Ui.printAddedTaskMessage(finalExam);
     }
 
@@ -154,7 +152,6 @@ public class AddTask {
                 Ui.printAddTaskTimeMessage(taskNumber);
                 String time = validTime(Ui.readCommand());
                 assert !time.isBlank() : "Time field cannot be empty";
-                Ui.printHorizontalLine();
                 return time;
             } catch (DateTimeParseException e) {
                 Ui.printInvalidTimeFormat();
@@ -168,7 +165,6 @@ public class AddTask {
                 Ui.printAddTaskDateMessage(taskNumber);
                 String date = validDate(Ui.readCommand());
                 assert !date.isBlank() : "Time field cannot be empty";
-                Ui.printHorizontalLine();
                 return date;
             } catch (DateTimeParseException e) {
                 Ui.printInvalidDateFormat();

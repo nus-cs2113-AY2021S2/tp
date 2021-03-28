@@ -2,13 +2,13 @@ package seedu.duke.task.command;
 
 import seedu.duke.Ui;
 import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
+import seedu.duke.task.TaskManager;
 
 import java.util.ArrayList;
 
 public class MarkOrUnmarkTask {
     public static void markOrUnmarkTask(int taskTypeNumber) {
-        if (TaskList.taskListIsEmpty(taskTypeNumber)) {
+        if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
             return;
         }
@@ -74,13 +74,13 @@ public class MarkOrUnmarkTask {
     public static Task getTaskToMarkOrUnMark(String taskType, int taskNumber) {
         switch (taskType) {
         case "[Task]":
-            return TaskList.tasks.get(taskNumber - 1);
+            return TaskManager.tasks.get(taskNumber - 1);
         case "[Assignment]":
-            return TaskList.assignments.get(taskNumber - 1);
+            return TaskManager.assignments.get(taskNumber - 1);
         case "[Midterm]":
-            return TaskList.midterms.get(taskNumber - 1);
+            return TaskManager.midterms.get(taskNumber - 1);
         case "[Final Exam]":
-            return TaskList.finalExams.get(taskNumber - 1);
+            return TaskManager.finalExams.get(taskNumber - 1);
         default:
             System.out.println("Task type does not exist!");
             return null;
@@ -88,10 +88,10 @@ public class MarkOrUnmarkTask {
     }
 
     public static void markPinnedTaskAsDone(String tasktype, String module, String description) {
-        if (!TaskList.pinnedTasks.containsKey(tasktype)) {
+        if (!TaskManager.pinnedTasks.containsKey(tasktype)) {
             return;
         }
-        ArrayList<Task> tasks = TaskList.pinnedTasks.get(tasktype);
+        ArrayList<Task> tasks = TaskManager.pinnedTasks.get(tasktype);
         for (Task task : tasks) {
             boolean isSameModule = task.getModule().equals(module);
             boolean isSameDescription = task.getDescription().equals(description);
@@ -102,10 +102,10 @@ public class MarkOrUnmarkTask {
     }
 
     public static void markPinnedTaskAsUnDone(String tasktype, String module, String description) {
-        if (!TaskList.pinnedTasks.containsKey(tasktype)) {
+        if (!TaskManager.pinnedTasks.containsKey(tasktype)) {
             return;
         }
-        ArrayList<Task> tasks = TaskList.pinnedTasks.get(tasktype);
+        ArrayList<Task> tasks = TaskManager.pinnedTasks.get(tasktype);
         for (Task task : tasks) {
             boolean isSameModule = task.getModule().equals(module);
             boolean isSameDescription = task.getDescription().equals(description);

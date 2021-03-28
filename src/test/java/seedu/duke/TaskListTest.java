@@ -2,11 +2,7 @@ package seedu.duke;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
+import seedu.duke.task.*;
 import seedu.duke.task.command.AddTask;
 import seedu.duke.task.command.DeleteTask;
 import seedu.duke.task.command.PinTask;
@@ -20,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class TaskListTest {
 
-    private TaskList taskList;
+    private TaskManager taskManager;
 
     @BeforeEach
     public void setUp() {
-        taskList = new TaskList();
+        taskManager = new TaskManager();
     }
 
     @Test
@@ -109,10 +105,10 @@ class TaskListTest {
         String description = "week 10 topics";
         String message = "yay!";
 
-        assertTrue(TaskList.tasks.isEmpty());
+        assertTrue(TaskManager.tasks.isEmpty());
         AddTask.addTask(module, description, message);
-        assertEquals(module, TaskList.tasks.get(0).getModule());
-        assertFalse(TaskList.tasks.isEmpty());
+        assertEquals(module, TaskManager.tasks.get(0).getModule());
+        assertFalse(TaskManager.tasks.isEmpty());
     }
 
     @Test
@@ -122,10 +118,10 @@ class TaskListTest {
         String dateAndTime = "Mar 30 2021, 11:59 PM";
         String message = "yay!";
 
-        assertTrue(TaskList.assignments.isEmpty());
+        assertTrue(TaskManager.assignments.isEmpty());
         AddTask.addAssignment(module, description, message, dateAndTime);
-        assertEquals(module, TaskList.assignments.get(0).getModule());
-        assertFalse(TaskList.assignments.isEmpty());
+        assertEquals(module, TaskManager.assignments.get(0).getModule());
+        assertFalse(TaskManager.assignments.isEmpty());
     }
 
     @Test
@@ -135,10 +131,10 @@ class TaskListTest {
         String dateAndTime = "Mar 30 2021, 11:59 PM";
         String message = "yay!";
 
-        assertTrue(TaskList.midterms.isEmpty());
+        assertTrue(TaskManager.midterms.isEmpty());
         AddTask.addMidterm(module, description, message, dateAndTime);
-        assertEquals(module, TaskList.midterms.get(0).getModule());
-        assertFalse(TaskList.midterms.isEmpty());
+        assertEquals(module, TaskManager.midterms.get(0).getModule());
+        assertFalse(TaskManager.midterms.isEmpty());
     }
 
     @Test
@@ -148,22 +144,22 @@ class TaskListTest {
         String dateAndTime = "Mar 30 2021, 11:59 PM";
         String message = "yay!";
 
-        assertTrue(TaskList.finalExams.isEmpty());
+        assertTrue(TaskManager.finalExams.isEmpty());
         AddTask.addFinalExam(module, description, message, dateAndTime);
-        assertEquals(module, TaskList.finalExams.get(0).getModule());
-        assertFalse(TaskList.finalExams.isEmpty());
+        assertEquals(module, TaskManager.finalExams.get(0).getModule());
+        assertFalse(TaskManager.finalExams.isEmpty());
     }
 
     @Test
     public void isValidTaskType_validTasktype_success() {
         String invalidTaskType = "1";
-        assertTrue(TaskList.isValidTaskType(invalidTaskType));
+        assertTrue(TaskManager.isValidTaskType(invalidTaskType));
     }
 
     @Test
     public void isValidTaskType_invalidTasktype_printErrorMessage() {
         String invalidTaskType = "5";
-        assertFalse(TaskList.isValidTaskType(invalidTaskType));
+        assertFalse(TaskManager.isValidTaskType(invalidTaskType));
     }
 
     @Test
@@ -201,9 +197,9 @@ class TaskListTest {
         String message = "yay!";
 
         AddTask.addTask(module, description, message);
-        assertFalse(TaskList.tasks.isEmpty());
+        assertFalse(TaskManager.tasks.isEmpty());
         DeleteTask.findAndDeleteTask(1);
-        assertTrue(TaskList.tasks.isEmpty());
+        assertTrue(TaskManager.tasks.isEmpty());
     }
 
     @Test
@@ -214,9 +210,9 @@ class TaskListTest {
         String message = "yay!";
 
         AddTask.addAssignment(module, description, message, dateAndTime);
-        assertFalse(TaskList.assignments.isEmpty());
+        assertFalse(TaskManager.assignments.isEmpty());
         DeleteTask.findAndDeleteAssigment(1);
-        assertTrue(TaskList.assignments.isEmpty());
+        assertTrue(TaskManager.assignments.isEmpty());
     }
 
     @Test
@@ -227,9 +223,9 @@ class TaskListTest {
         String message = "yay!";
 
         AddTask.addMidterm(module, description, message, dateAndTime);
-        assertFalse(TaskList.midterms.isEmpty());
+        assertFalse(TaskManager.midterms.isEmpty());
         DeleteTask.findAndDeleteMidterm(1);
-        assertTrue(TaskList.midterms.isEmpty());
+        assertTrue(TaskManager.midterms.isEmpty());
     }
 
     @Test
@@ -240,9 +236,9 @@ class TaskListTest {
         String message = "yay!";
 
         AddTask.addFinalExam(module, description, message, dateAndTime);
-        assertFalse(TaskList.finalExams.isEmpty());
+        assertFalse(TaskManager.finalExams.isEmpty());
         DeleteTask.findAndDeleteFinalExam(1);
-        assertTrue(TaskList.finalExams.isEmpty());
+        assertTrue(TaskManager.finalExams.isEmpty());
     }
 
     @Test
@@ -252,10 +248,10 @@ class TaskListTest {
         String message = "yay!";
         String taskTypeName = "[Task]";
 
-        assertTrue(TaskList.pinnedTasks.isEmpty());
+        assertTrue(TaskManager.pinnedTasks.isEmpty());
         Task task = new Task(module, description, message);
         PinTask.addTaskToPinnedTasks(task, taskTypeName);
-        assertFalse(TaskList.pinnedTasks.isEmpty());
+        assertFalse(TaskManager.pinnedTasks.isEmpty());
     }
 
 }

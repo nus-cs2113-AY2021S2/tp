@@ -5,7 +5,6 @@ import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
 import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
 import java.io.IOException;
@@ -147,28 +146,28 @@ public class ModuleInfo {
     public static void printModuleTaskList(String module) {
         int taskNumber = 1;
         System.out.println("\nThese are your tasks: ");
-        for (Task task : TaskList.tasks) {
+        for (Task task : TaskManager.tasks) {
             if (!task.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + task.getTaskType() + task.toString());
             taskNumber++;
         }
-        for (Assignment assignment : TaskList.assignments) {
+        for (Assignment assignment : TaskManager.assignments) {
             if (!assignment.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
             taskNumber++;
         }
-        for (Midterm midterm : TaskList.midterms) {
+        for (Midterm midterm : TaskManager.midterms) {
             if (!midterm.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + midterm.getTaskType() + midterm.toString());
             taskNumber++;
         }
-        for (FinalExam finalExam : TaskList.finalExams) {
+        for (FinalExam finalExam : TaskManager.finalExams) {
             if (!finalExam.getModule().equals(module)) {
                 continue;
             }
