@@ -55,7 +55,7 @@ public class CommandList {
     public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.LATEST);
+        sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
         this.reviewList = connoisseurData.getReviewList();
         this.recommendationList = connoisseurData.getRecoList();
     }
