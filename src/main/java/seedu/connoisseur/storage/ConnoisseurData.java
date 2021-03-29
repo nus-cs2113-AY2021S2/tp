@@ -20,11 +20,11 @@ public class ConnoisseurData {
         return this.sortMethod;
     }
 
-    public ArrayList<Review> getReviewList() {
+    public ArrayList<Review> getReviews() {
         return this.reviewList;
     }
 
-    public ArrayList<Recommendation> getRecoList() {
+    public ArrayList<Recommendation> getRecommendations() {
         return this.recoList;
     }
 }

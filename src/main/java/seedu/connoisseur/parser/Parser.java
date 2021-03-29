@@ -1,21 +1,19 @@
 package seedu.connoisseur.parser;
 
-import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.commands.Commands;
 import seedu.connoisseur.exceptions.DuplicateException;
-import seedu.connoisseur.ui.Ui;
 
 /**
  * Handles Connoisseur's commands.
  */
 public class Parser {
-    private static CommandList commandList;
-    private boolean isReviewMode = true;
+    private static Commands commands;
 
     /**
      * Constructor for parser class.
      */
-    public Parser(CommandList commandList) {
-        Parser.commandList = commandList;
+    public Parser(Commands commands) {
+        Parser.commands = commands;
     }
 
     /**
@@ -24,7 +22,6 @@ public class Parser {
      * @return true if exit command, false otherwise
      */
     public boolean determineCommand(String input) throws DuplicateException {
-        Ui ui = new Ui();
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {
@@ -35,45 +32,39 @@ public class Parser {
 
         switch (command) {
         case "review":
-            isReviewMode = true;
-            System.out.println("You are now in review mode");
+            commands.reviewMode();
             break;
         case "reco":
-            isReviewMode = false;
-            System.out.println("You are now in recommendation mode");
+            commands.recommendationMode();
             break;
         case "list":
-            commandList.list(arguments, isReviewMode);
+            commands.list(arguments);
             break;
         case "edit":
-            commandList.edit(arguments, isReviewMode);
+            commands.edit(arguments);
             break;
         case "sort":
-            commandList.sort(arguments, isReviewMode);
+            commands.sort(arguments);
             break;
         case "new":
         case "add":
-            commandList.add(arguments, isReviewMode);
+            commands.add(arguments);
             break;
         case "delete":
-            commandList.delete(arguments, isReviewMode);
+            commands.delete(arguments);
             break;
         case "view":
-            if (isReviewMode) {
-                commandList.viewReview(arguments);
-            } else {
-                ui.printCommandDoesNotExistInRecommendationMode();
-            }
+            commands.view(arguments);
             break;
         case "help":
-            commandList.printHelp(arguments);
+            commands.printHelp(arguments);
             break;
         case "exit":
         case "bye":
-            commandList.exit();
+            commands.exit();
             return true;
         default:
-            commandList.invalidCommand();
+            commands.invalidCommand();
         }
         return false;
     }

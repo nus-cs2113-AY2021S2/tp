@@ -1,30 +1,24 @@
-package seedu.connoisseur.commandlist;
+package seedu.connoisseur.commands;
 
-import seedu.connoisseur.recommendation.Recommendation;
-import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 
-import java.util.ArrayList;
-
-
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 
 /**
  * Class with methods for different commands.
  */
-public class CommandList {
+public class Commands {
 
-    public ArrayList<Review> reviewList = new ArrayList<>();
-    public ArrayList<Recommendation> recommendationList = new ArrayList<>();
     private final Sorter sorter;
     private final Ui ui;
     private final Storage storage;
-    private ReviewCommandList reviewCommandList;
-    private RecommendationsCommandList recommendationsCommandList;
+    private boolean isReviewMode = true;
+    private ReviewList reviewList;
+    private RecommendationList recommendationList;
 
     /**
      * Creates CommandList based on stored data.
@@ -33,25 +27,34 @@ public class CommandList {
      * @param ui              ui instance
      * @param storage         storage instance
      */
-    public CommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
+    public Commands(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
-        this.reviewList = connoisseurData.getReviewList();
-        this.recommendationList = connoisseurData.getRecoList();
-        reviewCommandList = new ReviewCommandList(connoisseurData, ui, storage);
-        recommendationsCommandList = new RecommendationsCommandList(connoisseurData, ui, storage);
+        reviewList = new ReviewList(connoisseurData, ui);
+        recommendationList = new RecommendationList(connoisseurData, ui);
     }
 
     /**
      * Creates new tasks if no existing data in files.
      */
-    public CommandList(Ui ui, Storage storage) {
+    public Commands(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(SortMethod.LATEST);
-        reviewCommandList = new ReviewCommandList(ui, storage);
-        recommendationsCommandList = new RecommendationsCommandList(ui, storage);
+        reviewList = new ReviewList(ui);
+        recommendationList = new RecommendationList(ui);
+    }
+
+
+    public void reviewMode() {
+        isReviewMode = true;
+        ui.println("You are now in review mode");
+    }
+
+    public void recommendationMode() {
+        isReviewMode = false;
+        ui.println("You are now in recommendation mode");
     }
 
     /**
@@ -68,7 +71,7 @@ public class CommandList {
             ui.printListHelpMessage();
         } else if (arguments.equals("edit")) {
             ui.printEditHelpMessage();
-        } else if (arguments.equals("review") || arguments.equals("new")) {
+        } else if (arguments.equals("review") || arguments.equals("new") || arguments.equals("add")) {
             ui.printReviewHelpMessage();
         } else if (arguments.equals("delete")) {
             ui.printDeleteHelpMessage();
@@ -94,7 +97,7 @@ public class CommandList {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList, recommendationList, sorter.getSortMethod());
+        storage.saveConnoisseurData(reviewList.reviews, recommendationList.recommendations, sorter.getSortMethod());
         ui.printExitMessage();
     }
 
@@ -102,13 +105,12 @@ public class CommandList {
      * List reviews or recommendations depending on the mode.
      *
      * @param input        is the sorting preference used to list, only applicable in review mode.
-     * @param isReviewMode to check if user is in review or recommendation mode
      */
-    public void list(String input, Boolean isReviewMode) {
+    public void list(String input) {
         if (isReviewMode) {
-            reviewCommandList.listReviews(input, reviewList);
+            reviewList.listReviews(input);
         } else {
-            recommendationsCommandList.listRecommendations(recommendationList);
+            recommendationList.listRecommendations();
         }
     }
 
@@ -116,11 +118,10 @@ public class CommandList {
      * Sort reviews depending on the mode.
      *
      * @param sortType     is the sorting preference, only applicable in review mode.
-     * @param isReviewMode to check if user is in review or recommendation mode
      */
-    public void sort(String sortType, Boolean isReviewMode) {
+    public void sort(String sortType) {
         if (isReviewMode) {
-            reviewCommandList.sortReview(sortType);
+            reviewList.sortReview(sortType);
         } else {
             ui.printCommandDoesNotExistInRecommendationMode();
         }
@@ -130,11 +131,10 @@ public class CommandList {
      * Delete reviews or recommendations depending on the mode.
      *
      * @param title        is the title of review or recommendation to be deleted.
-     * @param isReviewMode to check if user is in review or recommendation mode.
      */
-    public void delete(String title, Boolean isReviewMode) {
+    public void delete(String title) {
         if (isReviewMode) {
-            reviewCommandList.deleteReview(title);
+            reviewList.deleteReview(title);
         } else {
             ui.printCommandDoesNotExistInRecommendationMode();
         }
@@ -145,8 +145,12 @@ public class CommandList {
      *
      * @param title title of the review to be viewed.
      */
-    public int viewReview(String title) {
-        return reviewCommandList.viewReviewCommand(title);
+    public void view(String title) {
+        if (isReviewMode) {
+            reviewList.viewReview(title);
+        } else {
+            ui.printCommandDoesNotExistInRecommendationMode();
+        }
     }
 
     /**
@@ -154,13 +158,12 @@ public class CommandList {
      *
      * @param input        will be quick or long in review mode.
      *                     will be the recommendation title in the recommendation mode.
-     * @param isReviewMode to check if user is in review or recommendation mode.
      */
-    public void add(String input, Boolean isReviewMode) {
+    public void add(String input) {
         if (isReviewMode) {
-            reviewCommandList.addReview(input);
+            reviewList.addReview(input);
         } else {
-            recommendationsCommandList.addRecommendation(input);
+            recommendationList.addRecommendation(input);
         }
     }
 
@@ -168,11 +171,10 @@ public class CommandList {
      * Edits a review.
      *
      * @param title        title of review
-     * @param isReviewMode to check if user is in review or recommendation mode.
      */
-    public void edit(String title, Boolean isReviewMode) {
+    public void edit(String title) {
         if (isReviewMode) {
-            reviewCommandList.editReview(title, reviewList);
+            reviewList.editReview(title);
         } else {
             ui.printCommandDoesNotExistInRecommendationMode();
         }

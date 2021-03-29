@@ -23,6 +23,7 @@ public class Ui {
     private static final int MAX_WHITE_SPACE = 15;
     private static final int MAX_WHITE_SPACE_TITLE = 26;
     private static final int MAX_WHITE_SPACE_VIEW = 68;
+    private static final int MAX_WHITE_SPACE_DATE = 23;
     private final Scanner in;
 
     /**
@@ -94,19 +95,19 @@ public class Ui {
     public void printView(Review currentReview) {
         println("+--------------------+---------------------------------------------------------------------+");
         print("|Title               : " + currentReview.getTitle());
-        printWhiteSpaceForView(currentReview.getTitle().length());
+        printWhiteSpaceView(currentReview.getTitle().length());
         println("|");
         print("|Category            : " + currentReview.getCategory());
-        printWhiteSpaceForView(currentReview.getCategory().length());
+        printWhiteSpaceView(currentReview.getCategory().length());
         println("|");
         print("|Date & Time of Entry: " + currentReview.getDateTime());
-        printWhiteSpaceForView(20);
+        printWhiteSpaceView(20);
         println("|");
         print("|Rating              : " + currentReview.starRating());
-        printWhiteSpaceForView(12);
+        printWhiteSpaceView(12);
         println("|");
         print("|Description         : " + currentReview.getDescription());
-        printWhiteSpaceForView(currentReview.getDescription().length());
+        printWhiteSpaceView(currentReview.getDescription().length());
         println("|");
         println("+--------------------+---------------------------------------------------------------------+");
     }
@@ -142,8 +143,21 @@ public class Ui {
      *
      * @param wordLength length of word to subtract
      */
-    public void printWhiteSpaceForView(int wordLength) {
+    public void printWhiteSpaceView(int wordLength) {
         int numOfSpaces = MAX_WHITE_SPACE_VIEW - wordLength;
+        while (numOfSpaces > 0) {
+            out.print(" ");
+            numOfSpaces--;
+        }
+    }
+
+    /**
+     * Prints whitespace to align border for date field.
+     *
+     * @param wordLength length of word to subtract
+     */
+    public void printWhiteSpaceDate(int wordLength) {
+        int numOfSpaces = MAX_WHITE_SPACE_DATE - wordLength;
         while (numOfSpaces > 0) {
             out.print(" ");
             numOfSpaces--;
