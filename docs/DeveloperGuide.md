@@ -183,7 +183,8 @@ The product should be targeting users who can type fast and prefer typing over o
 ### Portability and compatibility
 
 #### Constraint: Platform-Independent
-The software should work on the Windows, Linux, and OS-X platforms. Even if you are unable to manually test the app on all three platforms, deliberately avoid using OS-dependent libraries and OS-specific features.
+The software should work on the Windows, Linux, and OS-X platforms.
+
 **Reason**: Peer testers should be able to use any of these platforms.
 
 #### Constraint: Java-Version
@@ -193,10 +194,8 @@ The software should work on a computer that has version 11 of Java i.e., no othe
  As it is a locally-runned command line application, there will be no down time for users.
  It should be available anytime and anywhere.
 
-#### Constraint-No-Remote-Server
-The software should not depend on your own remote server.
-
-**Reason**: Anyone should be able to use/test your app any time, even after the semester is over.
+#### Constraint: No-Remote-Server
+The software should not depend on any remote servers.
 
 ### Security
 
@@ -207,7 +206,7 @@ Thus the data is not protected by nature.
 **Reason**: To allow advanced users to manipulate the data by editing the data file.
 
 ### Usability
- It is very easy for a user to use the system. There are detailed user guide provided as well as a help command.
+ It is very easy for a user to use the system. There is a detailed user guide provided as well as a help command.
 
 ## Glossary
 
