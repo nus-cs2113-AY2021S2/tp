@@ -31,8 +31,19 @@ Table of Contents
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-1. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
-
+2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
+3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
+4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
+   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a 
+   list of all current tasks. Some example commands you can try:
+   * `list`: Lists all Food
+   * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`, 
+     expiry date of `30-06-2021`, location of `lower_shelf`, and quantity of `100` to the Fridge.
+   * `search chicken`: Searches for the chicken in the fridge and returns its location (currently: `lower_shelf`).
+   * `remove 1`: Removes the 1st food shown in the current list (currently: `chicken`).
+   * `bye`: Exits the app.   
+6. Refer to the **Features** below for details of each command.   
 ## Features
 
 
