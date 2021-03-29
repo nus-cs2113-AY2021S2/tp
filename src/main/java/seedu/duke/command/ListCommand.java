@@ -21,7 +21,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() {
 
         SortedMap<String, Patient> patients = data.getPatients();
         int patientCount = 0;
@@ -32,7 +32,8 @@ public class ListCommand extends Command {
         }
 
         if (patientCount == 0) {
-            throw new Exception(Constants.EXCEPTION_LIST_EMPTY);
+            // There is no patient in the list. We just inform the user about it.
+            ui.printMessage(Constants.EMPTY_LIST_MESSAGE);
         } else {
             assert list != "" : "List should not be empty";
             ui.printMessage(list);

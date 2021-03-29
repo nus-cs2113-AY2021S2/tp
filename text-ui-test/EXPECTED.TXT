@@ -2,7 +2,10 @@ Welcome to the Patient Manager.
 
 Please input a command: 
 ----------------------------------------------------------------------
-java.lang.Exception: Invalid command is provided
+Input command and/or arguments are invalid:
+	Invalid command is provided!
+... and is caused by ...
+	java.lang.ClassNotFoundException: seedu.duke.command.Invalid_commandCommand
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been added!

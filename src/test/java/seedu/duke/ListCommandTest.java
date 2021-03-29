@@ -9,11 +9,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ListCommandTest {
     @Test
-    public void executeListCommand_listEmpty_exceptionThrown() {
+    public void executeListCommand_listEmpty_messagePrinted() {
         Data data = new Data();
         Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
@@ -21,10 +20,12 @@ public class ListCommandTest {
         
         ListCommand listCommand = new ListCommand(ui, data, arguments);
 
-        Exception exception = assertThrows(Exception.class, () -> {
-            listCommand.execute();
-        });
-        assertEquals("List is currently empty!", exception.getMessage());
+        final ByteArrayOutputStream myOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(myOut));
+        listCommand.execute();
+        final String standardOutput = myOut.toString();
+
+        assertEquals(Constants.EMPTY_LIST_MESSAGE + System.lineSeparator(), standardOutput);
     }
 
     @Test

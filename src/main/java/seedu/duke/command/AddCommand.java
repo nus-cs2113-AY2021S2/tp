@@ -3,6 +3,7 @@ package seedu.duke.command;
 import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute() throws Exception {
+    public void execute() throws InvalidInputException {
 
         String patientID = arguments.get("payload");
         patientID = patientID.toUpperCase();
@@ -53,9 +54,9 @@ public class AddCommand extends Command {
         }
 
         if (!validID) {
-            throw new Exception(Constants.EXCEPTION_ADD_INVALIDNRIC);
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
         } else if (data.getPatients().containsKey(patientID)) {
-            throw new Exception(Constants.EXCEPTION_ADD_PATIENTEXISTS);
+            throw new InvalidInputException(InvalidInputException.Type.PATIENT_EXISTED);
         }
 
         assert validID : "validID should be true";

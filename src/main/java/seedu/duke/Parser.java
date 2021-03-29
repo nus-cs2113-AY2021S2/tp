@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import seedu.duke.command.Command;
+import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.UnknownException;
 
 /* Adapted from https://github.com/fsgmhoward/ip/blob/master/src/main/java/duke/Parser.java */
 /**
@@ -17,10 +19,6 @@ public class Parser {
      * default value is a single whitespace (for string split, it is any number of whitespaces)
      */
     public static final String DELIMITER = " ";
-    /**
-     * This is the class prefix, which will be put in front of the class name when parsing the command.
-     */
-    public static final String CLASS_PREFIX = "seedu.duke.command.";
 
     protected Ui ui;
     protected Data data;
@@ -53,7 +51,7 @@ public class Parser {
      * @return A Command instance which is ready to be executed
      * @see Command
      */
-    public Command parse(String fullCommand) throws Exception {
+    public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
         HashMap<String, String> arguments = new HashMap<>();
         String[] tokens = fullCommand.split("\\s+");
         // If first token (command) is empty, there are empty spaces typed in at the front - so we remove it
@@ -61,8 +59,7 @@ public class Parser {
             tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
         }
         if (tokens.length == 0) {
-            // TODO: Exception handling using a custom exception
-            throw new Exception(Constants.EXCEPTION_PARSER_EMPTYSTRING);
+            throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
         }
         arguments.put("command", tokens[0]);
 
@@ -89,16 +86,18 @@ public class Parser {
         // Initialize a respective class from the command (by capitalize first character)
         String className = tokens[0] + "Command";
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
-        className = CLASS_PREFIX + className;
+        className = Constants.COMMAND_CLASS_PREFIX + className;
         try {
             Class<?> cls = Class.forName(className);
             Constructor<?> constructor = cls.getDeclaredConstructor(Ui.class, Data.class, HashMap.class);
             Object obj = constructor.newInstance(ui, data, arguments);
             return (Command) obj;
+        } catch (ClassNotFoundException e) {
+            // *Command class cannot be found!
+            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, e);
         } catch (Exception e) {
-            // If any exception thrown above, it means the command is not formatted properly
-            // TODO: Exception handling using a custom exception
-            throw new Exception(Constants.EXCEPTION_PARSER_INVALIDCOMMAND, e);
+            // Some other weird error occurred here
+            throw new UnknownException(e);
         }
     }
 }
