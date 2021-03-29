@@ -11,7 +11,6 @@ import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.commands.ModuleInfoCommand;
 import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
-import seedu.duke.common.CommonMethods;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.module.ModuleList;
@@ -101,7 +100,7 @@ class ParserTest {
     }
 
     @Test
-        // IN MODULE COMMAND
+    // IN MODULE COMMAND
     void parse_inValidCommands_exceptionIsThrown() throws CommandException, ParserException {
         Parser parser = new Parser();
         boolean isThrown = false;
