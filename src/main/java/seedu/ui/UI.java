@@ -29,11 +29,11 @@ public class UI {
     }
 
     public String getInput(String requestMenu) {
-        System.out.println(requestMenu + " -->");
+        System.out.print(requestMenu + " --> ");
         String input = scanner.nextLine();
 
         while (input.trim().isEmpty()) {
-            System.out.println(requestMenu + " -->");
+            System.out.print(requestMenu + " --> ");
             input = scanner.nextLine();
         }
 
@@ -151,19 +151,11 @@ public class UI {
     public static void printStartMenu() {
         System.out.println("Start Menu");
         System.out.println("Commands:");
-<<<<<<< HEAD
-        System.out.println("\"Staff\" to go to staff");
-        System.out.println("\"Patient\" to go to patients");
-        System.out.println("\"Appointment\" to go to doctors appointments");
-        System.out.println("\"Schedule\" to go to nurse schedules");
-        System.out.println("\"Inventory\" to go to drugs inventory");
-=======
         System.out.println("\"staff\" to go to staff");
         System.out.println("\"patient\" to go to patients");
         System.out.println("\"appointments\" to go to doctors appointments");
         System.out.println("\"schedules\" to go to nurse schedules");
         System.out.println("\"inventory\" to go to drugs inventory");
->>>>>>> 35921e71c8ccc2b9ebf07b6534a463ff94d35f94
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }

@@ -1,13 +1,9 @@
 package seedu.storage;
 
+import seedu.duke.Constants;
 import seedu.logic.command.AppointmentActions;
-<<<<<<< HEAD
-import seedu.model.object.DoctorAppointment;
-import seedu.model.object.staff.Staff;
-import seedu.model.objectList.StaffList;
-=======
 import seedu.model.DoctorAppointment;
->>>>>>> 35921e71c8ccc2b9ebf07b6534a463ff94d35f94
+import seedu.model.staff.Staff;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,7 +18,7 @@ import java.util.Scanner;
 public class DoctorAppointmentStorage {
     private final String filePath;
     private final File file;
-    private final static String STAFF_FILE_PATH = "data/Staff.txt";
+    private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
 
 
     public DoctorAppointmentStorage(String filePath) {

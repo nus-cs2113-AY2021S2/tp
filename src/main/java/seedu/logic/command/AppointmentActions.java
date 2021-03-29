@@ -3,14 +3,12 @@ package seedu.logic.command;
 
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
-import seedu.model.object.staff.Staff;
-import seedu.model.objectList.StaffList;
+import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.function.DoubleConsumer;
 
 public class AppointmentActions {
     public static ArrayList<DoctorAppointment> appointmentList;
@@ -22,8 +20,7 @@ public class AppointmentActions {
         appointmentList = loadAppointments;
     }
 
-    public static void addAppointment(String input) throws IOException {
-        String[] inputArray = input.split(" ");
+    public static void addAppointment(String[] inputArray) throws IOException {
 
         String doctorID = inputArray[1];
         String appointmentID = inputArray[2];
@@ -32,9 +29,14 @@ public class AppointmentActions {
         String date = inputArray[5];
 
         boolean isRegister = false;
-        doctorList = DoctorAppointmentStorage.loadDoctorFile();
+       //doctorList = DoctorAppointmentStorage.loadDoctorFile();
+        DoctorAppointment newAppointment = new DoctorAppointment(doctorID, appointmentID, patientName, gender, date);
 
-        for (Staff id : doctorList) {
+        DoctorAppointmentUI.printAddedAppointment();
+        appointmentList.add(newAppointment);
+        storage.writeToFile(appointmentList);
+
+        /*for (Staff id : doctorList) {
 
             if (id.getId().equals(doctorID)) {
                 isRegister = true;
@@ -48,11 +50,10 @@ public class AppointmentActions {
         }
         if (!isRegister) {
             DoctorAppointmentUI.printDoctorNotFound();
-        }
+        }*/
     }
 
-    public static void listAppointment(String input) throws Exception {
-        String[] inputArray = input.split(" ");
+    public static void listAppointment(String[] inputArray) throws Exception {
 
         String iD = inputArray[1];
         if (appointmentList.size() == 0) throw new EmptyListException();
@@ -68,8 +69,7 @@ public class AppointmentActions {
         }
     }
 
-    public static void deleteAppointment(String input) throws IOException {
-        String[] inputArray = input.split(" ");
+    public static void deleteAppointment(String[] inputArray) throws IOException {
         String iD = inputArray[1];
         int index = 999;
         int counter = 0;

@@ -1,8 +1,10 @@
 package seedu.logic.instance;
 
 
+import seedu.duke.Constants;
 import seedu.exceptions.DukeException;
 import seedu.exceptions.doctorappointment.FileCreatingErrorException;
+import seedu.logic.command.Command;
 import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.logic.command.AppointmentActions;
 import seedu.storage.DoctorAppointmentStorage;
@@ -20,13 +22,13 @@ import java.util.Scanner;
 
 public class DoctorAppointmentInstance {
 
-    private UI ui;
+    private DoctorAppointmentUI ui;
     private AppointmentActions details;
     private DoctorAppointmentStorage doctorAppointmentStorage;
-    static final String PATIENT_FILE_PATH = "data/DoctorAppointmentList.txt";
+    final String PATIENT_FILE_PATH = Constants.APPOINTMENT_FILE_PATH;
 
     public DoctorAppointmentInstance(String filepath) {
-        ui = new UI();
+        ui = new DoctorAppointmentUI();
         doctorAppointmentStorage = new DoctorAppointmentStorage(PATIENT_FILE_PATH);
         try {
             details = doctorAppointmentStorage.loadFile();
@@ -49,12 +51,14 @@ public class DoctorAppointmentInstance {
             try {
                 DoctorAppointmentUI.printAppointmentMenuPrompt();
                 String input = userInput.nextLine();
-                ui.showLine(); // show the divider line ("_______")
-                isReturnToStartMenu = DoctorAppointmentParser.parse(input);
+                UI.showLine(); // show the divider line ("_______")
+                Command c = DoctorAppointmentParser.parse(input, details);
+                c.execute(details, ui);
+                isReturnToStartMenu = c.isExit();
                 if (isReturnToStartMenu) {
-                    ui.returningToStartMenuMessage();
+                    UI.returningToStartMenuMessage();
                 }
-                ui.showLine();
+                UI.showLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
