@@ -24,10 +24,14 @@ public enum ModuleGradeEnum {
     }
 
     public static boolean checkGradeExist(String grade) {
-        if(grade == null)
+        if (grade == null) {
             return false;
-        for(ModuleGradeEnum g : values())
-            if(grade.equalsIgnoreCase(g.getGrade())) return true;
+        }
+        for (ModuleGradeEnum g : values()) {
+            if (grade.equalsIgnoreCase(g.getGrade())) {
+                return true;
+            }
+        }
         return false;
     }
 
