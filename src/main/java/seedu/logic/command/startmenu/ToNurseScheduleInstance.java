@@ -8,7 +8,7 @@ public class ToNurseScheduleInstance extends Command {
     @Override
     public void execute() {
         NurseScheduleInstance schedules = new NurseScheduleInstance();
-        schedules.run();
+        schedules.runCommandLoopUntilExit();
     }
 
     @Override

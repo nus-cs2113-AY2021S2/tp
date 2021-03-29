@@ -1,25 +1,19 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.nurseschedules.EmptyListException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logic.command.Command;
-import seedu.logic.command.NurseScheduleActions;
-import seedu.logic.command.nurseschedule.NurseScheduleAdd;
-import seedu.logic.command.nurseschedule.NurseScheduleDelete;
-import seedu.logic.command.nurseschedule.NurseScheduleList;
-import seedu.logic.command.nurseschedule.NurseScheduleReturn;
-import seedu.model.NurseSchedule;
-import seedu.storage.NurseScheduleStorage;
+import seedu.logic.command.nurseschedule.*;
 import seedu.ui.NurseScheduleUI;
+import static seedu.ui.UI.smartCommandRecognition;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class NurseSchedulesParser {
+
+    static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
 
     /**
      * Gets user input.
@@ -54,19 +48,24 @@ public class NurseSchedulesParser {
         String[] details = new String[3];
 
         String[] parts = text.split(" ", 0);
+        String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
 
-        if (parts.length == 1) {
+        if (parts.length <= 1) {
             throw new WrongInputsException();
-        } else if (getFirstWord(text).equals("add")) {
-            details[0] = parts[1];
-            details[1] = parts[2];
-            details[2] = parts[3];
-        } else if (getFirstWord(text).equals("delete")) {
-            details[0] = parts[1];
-            details[1] = parts[2];
-        } else if (getFirstWord(text).equals("list")) {
+        } else if (command.equals("add")) {
+            if (isValidDate(parts[3])) {
+                details[0] = parts[1];
+                details[1] = parts[2];
+                details[2] = parts[3];
+            }
+        } else if (command.equals("delete")) {
+            if (isValidDate(parts[2])) {
+                details[0] = parts[1];
+                details[1] = parts[2];
+            }
+        } else if (command.equals("list")) {
             details[0] = parts[1];
         }
         return details;
@@ -106,17 +105,20 @@ public class NurseSchedulesParser {
     }
 
     public Command nurseParse(String line, NurseScheduleUI ui) {
+        assert line != null : "user input should not be null";
+        assert !(line.isEmpty()) : "user input should not be empty";
+
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String command = parser.getFirstWord(line);
         Command c = null;
 
-        switch (command) {
+        switch (smartCommandRecognition(COMMANDS, command)) {
         case "add":
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleAdd(details);
-            } catch (WrongInputsException e) {
-                System.out.println(e.getMessage());
+            } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
+                ui.formatHelpMessage();
                 ui.addHelpMessage();
             }
             break;
@@ -124,8 +126,8 @@ public class NurseSchedulesParser {
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleList(details);
-            } catch (WrongInputsException e) {
-                System.out.println(e.getMessage());
+            } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
+                ui.formatHelpMessage();
                 ui.listHelpMessage();
             }
             break;
@@ -133,14 +135,19 @@ public class NurseSchedulesParser {
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleDelete(details);
-            } catch(WrongInputsException e) {
-                System.out.println(e.getMessage());
+            } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
+                ui.formatHelpMessage();
                 ui.deleteHelpMessage();
             }
+            break;
         case "help":
-
+            c = new NurseScheduleHelp();
+            break;
         case "return":
             c = new NurseScheduleReturn();
+            break;
+        default:
+            ui.invalidInputsMessage();
             break;
         }
         return c;
