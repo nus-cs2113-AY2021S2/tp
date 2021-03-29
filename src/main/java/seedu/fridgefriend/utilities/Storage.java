@@ -28,6 +28,7 @@ public class Storage {
     private static final String DIRECTORY = "data";
     private static Fridge fridge;
 
+    //@@author kwokyto
     /**
      * Entry point for loading of all data.
      * 
@@ -38,6 +39,7 @@ public class Storage {
         loadLimitsData();
     }
 
+    //@@author kwokyto
     /**
      * Entry point for saving of all data.
      * 
@@ -151,6 +153,7 @@ public class Storage {
         fileWriter.close();
     }
 
+    //@@author kwokyto
     /**
      * Loads the saved limits data into the FoodCategory class.
      */
@@ -163,6 +166,7 @@ public class Storage {
         }
     }
 
+    //@@author kwokyto
     /**
      * Creates a limits data textfile and the folder directory if it does not already exist.
      * 
@@ -181,6 +185,7 @@ public class Storage {
         }
     }
 
+    //@@author kwokyto
     /**
      * Reads the limits data from the textfile.
      * 
@@ -199,6 +204,7 @@ public class Storage {
         scanner.close();
     }
 
+    //@@author kwokyto
     /**
      * Sets minimum quantity of a FoodCategory based on saved limits data.
      * 
@@ -214,6 +220,7 @@ public class Storage {
         FoodCategory.setMinimumQuantity(foodCategory, quantity);
     }
 
+    //@@author kwokyto
     /**
      * Overwrites the current textfile with data from the current session.
      */
@@ -227,6 +234,7 @@ public class Storage {
         }
     }
 
+    //@@author kwokyto
     /**
      * Writes the minimum quantities in FoodCategory into the limits datafile.
      * 

@@ -90,6 +90,7 @@ public class RemoveCommand extends Command {
         return message;
     }
     
+    //@@author kwokyto
     /**
      * Checks if the amount of food left for that category is insufficient.
      * Appends a warning message to the user if true.

@@ -262,6 +262,7 @@ public class Parser {
         return searchCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns an ExpiringCommand object.
      */
@@ -270,6 +271,7 @@ public class Parser {
         return expiringCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a RunningLowCommand object.
      */
@@ -278,6 +280,7 @@ public class Parser {
         return runningLowCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a SetLimitCommand object.
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
@@ -291,6 +294,7 @@ public class Parser {
         return setLimitCommand;
     }
 
+    //@@author kwokyto
     private static Command parseSetLimitDescription(String description) throws EmptyDescriptionException,
             InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
         if (description.isEmpty()) {
@@ -304,11 +308,12 @@ public class Parser {
         if (!FoodCategory.isValidCategory(foodCategoryString)) {
             throw new InvalidFoodCategoryException(foodCategoryString);
         }
-        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);            
+        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);
         int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
         return new SetLimitCommand(foodCategory, quantity);
     }
 
+    //@@author kwokyto
     /**
      * Returns a HelpCommand object.
      *
@@ -330,6 +335,7 @@ public class Parser {
         return clearCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a ByeCommand object.
      *

@@ -1,5 +1,6 @@
 package seedu.fridgefriend.exception;
 
+//@@author kwokyto
 /**
  * Signals that the food category does not match any existing category.
  */
