@@ -31,6 +31,10 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 ## 3. How to use the guide
 
+### 3.1 Technical Terms
+
+**Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
+
 ## Quick Start
 
 {Give steps to get started quickly}
