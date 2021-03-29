@@ -17,6 +17,10 @@ public class TaskManager {
     private static final int VIEW_ALL_TASKS_COMMAND = 4;
     private static final int PIN_TASK_COMMAND = 5;
     private static final int EXIT_COMMAND = 6;
+    private static final String TASK_TYPE = "[Task]";
+    private static final String ASSIGNMENT_TYPE = "[Assignment]";
+    private static final String MIDTERM_TYPE = "[Midterm]";
+    private static final String FINAL_EXAM_TYPE = "[Final Exam]";
 
     public static ArrayList<Task> tasks;
     public static ArrayList<Assignment> assignments;
@@ -157,8 +161,8 @@ public class TaskManager {
         return isEmpty;
     }
 
-    public static boolean compareTasks(String taskType, String module, String description,
-                                       String status, String message) {
+    public static boolean findTaskInPinnedTasks(String taskType, String module, String description,
+                                                String status, String message) {
         if (!pinnedTasks.containsKey(taskType)) {
             return false;
         }
@@ -168,7 +172,61 @@ public class TaskManager {
             boolean isSameDescription = task.getDescription().equals(description);
             boolean isSameStatus = task.getStatus().equals(status);
             boolean isSameMessage = task.getMessage().equals(message);
-            if (isSameModule && isSameDescription && isSameStatus & isSameMessage) {
+            if (isSameModule && isSameDescription && isSameStatus && isSameMessage) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findIfTaskExists(String module, String description, String status) {
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            boolean isSameStatus = task.getStatus().equals(status);
+            if (isSameModule && isSameDescription && isSameStatus) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findIfAssignmentExists(String module, String description,
+                                                 String dateAndTime, String status) {
+        for (Assignment assignment : assignments) {
+            boolean isSameModule = assignment.getModule().equals(module);
+            boolean isSameDescription = assignment.getDescription().equals(description);
+            boolean isSameDateAndTime = assignment.getBy().equals(dateAndTime);
+            boolean isSameStatus = assignment.getStatus().equals(status);
+            if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findIfMidtermExists(String module, String description,
+                                                 String dateAndTime, String status) {
+        for (Midterm midterm : midterms) {
+            boolean isSameModule = midterm.getModule().equals(module);
+            boolean isSameDescription = midterm.getDescription().equals(description);
+            boolean isSameDateAndTime = midterm.getOn().equals(dateAndTime);
+            boolean isSameStatus = midterm.getStatus().equals(status);
+            if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean findIfFinalExamExists(String module, String description,
+                                              String dateAndTime, String status) {
+        for (FinalExam finalExam : finalExams) {
+            boolean isSameModule = finalExam.getModule().equals(module);
+            boolean isSameDescription = finalExam.getDescription().equals(description);
+            boolean isSameDateAndTime = finalExam.getOn().equals(dateAndTime);
+            boolean isSameStatus = finalExam.getStatus().equals(status);
+            if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
                 return true;
             }
         }
@@ -183,7 +241,7 @@ public class TaskManager {
             boolean isSameDescription = task.getDescription().equals(description);
             boolean isSameStatus = task.getStatus().equals(status);
             boolean isSameMessage = task.getMessage().equals(message);
-            if (isSameModule && isSameDescription && isSameStatus & isSameMessage) {
+            if (isSameModule && isSameDescription && isSameStatus && isSameMessage) {
                 return task;
             }
         }
@@ -192,13 +250,13 @@ public class TaskManager {
 
     public static Task getTask(String taskType, int taskNumber) {
         switch (taskType) {
-        case "[Task]":
+        case TASK_TYPE:
             return tasks.get(taskNumber - 1);
-        case "[Assignment]":
+        case ASSIGNMENT_TYPE:
             return assignments.get(taskNumber - 1);
-        case "[Midterm]":
+        case MIDTERM_TYPE:
             return midterms.get(taskNumber - 1);
-        case "[Final Exam]":
+        case FINAL_EXAM_TYPE:
             return finalExams.get(taskNumber - 1);
         default:
             System.out.println("Task type does not exist!");

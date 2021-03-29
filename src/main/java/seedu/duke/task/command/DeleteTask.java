@@ -83,7 +83,7 @@ public class DeleteTask {
 
 
     private static void findAndDeletePinnedTask(String taskType, Task task) {
-        boolean taskIsPinned = TaskManager.compareTasks(taskType, task.getModule(), task.getDescription(),
+        boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(), task.getDescription(),
                 task.getStatus(), task.getMessage());
         if (taskIsPinned) {
             assert !TaskManager.pinnedTasks.get(taskType).isEmpty() : "Pinned task list should not be empty";

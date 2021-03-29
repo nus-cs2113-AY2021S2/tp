@@ -198,6 +198,12 @@ public class Ui {
         printHorizontalLine();
     }
 
+    public static void printTaskAlreadyExistsMessage(Task task) {
+        System.out.println("This task has already been added: " + task.toString());
+        System.out.println("Returning back to the menu now!");
+        printHorizontalLine();
+    }
+
     public static void printTaskisDoneMessage() {
         System.out.println("This task is marked as done. Would you like to unmark it? [Y/N]");
     }
