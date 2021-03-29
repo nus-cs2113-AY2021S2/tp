@@ -185,8 +185,8 @@ public class EditLessonCommand extends Command {
             }
             break;
         case EDIT_INDEX_TEACHER_NAME:
-                lesson.setTeachingStaffName(newFieldValue);
-                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
+            lesson.setTeachingStaffName(newFieldValue);
+            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
             break;
         default:
             if (TeachingStaff.isValidEmail(newFieldValue)) {
