@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
     };
 
     protected static final String COMMAND_HELP = "help";
-    private static String HELP_TYPE;
+    private final String helpType;
 
     /**
      * Constructor to validate the format for help command.
@@ -31,7 +31,7 @@ public class HelpCommand extends Command {
      */
     public HelpCommand(ArrayList<String> arguments) throws CommandException {
         validateArguments(arguments, ARGUMENT_TYPE_ORDER, COMMAND_HELP);
-        HELP_TYPE = validateHelpType(arguments, COMMAND_HELP);
+        helpType = validateHelpType(arguments, COMMAND_HELP);
     }
 
     /**
@@ -43,6 +43,6 @@ public class HelpCommand extends Command {
      */
     @Override
     public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
-        HelpPage.printHelp(HELP_TYPE);
+        HelpPage.printHelp(helpType);
     }
 }
