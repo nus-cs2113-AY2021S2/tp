@@ -1,15 +1,9 @@
 package seedu.duke.commandparser;
 
-import seedu.duke.command.Command;
-import seedu.duke.command.CommandRecordType;
-import seedu.duke.command.AddCommand;
-import seedu.duke.command.ViewCommand;
-import seedu.duke.command.DeleteCommand;
-import seedu.duke.command.HelpCommand;
-import seedu.duke.command.InvalidCommand;
-import seedu.duke.command.ExitCommand;
+import seedu.duke.command.*;
 import seedu.duke.common.Messages;
 import seedu.duke.exception.TypeException;
+import seedu.duke.goal.PeriodType;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -22,6 +16,9 @@ import static seedu.duke.command.CommandRecordType.INVALID;
 import static seedu.duke.command.CommandType.DELETE;
 import static seedu.duke.command.CommandType.ADD;
 import static seedu.duke.command.CommandType.VIEW;
+import static seedu.duke.command.CommandType.SET;
+import static seedu.duke.command.CommandType.CHECK;
+import static seedu.duke.command.CommandType.CANCEL;
 import static seedu.duke.common.Messages.MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION;
 
 public class CommandParser {
@@ -43,6 +40,12 @@ public class CommandParser {
             return prepareView(inputParts);
         case "delete":
             return prepareDelete(inputParts);
+        case "set":
+            return prepareSet(inputParts);
+//        case "check":
+//            return prepareCheck(inputParts);
+//        case "cancel":
+//            return prepareCancel(inputParts);
         case "exit":
             return new ExitCommand();
         default:
@@ -92,6 +95,37 @@ public class CommandParser {
             return new InvalidCommand(e.toString());
         } catch (NumberFormatException e) {
             return new InvalidCommand(Messages.MESSAGE_INVALID_FOOD_AMOUNT);
+        }
+    }
+
+    private Command prepareSet(String[] inputParts) {
+        try {
+            if (inputParts.length < 2) {
+                return new InvalidCommand(SET);
+            }
+            if (inputParts[1].length() < 3) {
+                return new InvalidCommand(SET);
+            }
+            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            if (recordType == INVALID) {
+                return new InvalidCommand(SET);
+            }
+            String[] rawParams = inputParts[1].split("\\s+");
+            if (rawParams.length < 3) {
+                return new InvalidCommand(SET);
+            }
+
+            String rawPeriodType = rawParams[1].trim().substring(2);
+            String targetStr = rawParams[2].trim().substring(7);
+
+            double target = Double.parseDouble(targetStr);
+
+            PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
+            params.put("periodType", periodType.toString());
+            params.put("target", String.valueOf(target));
+            return new SetCommand(recordType, params);
+        } catch (NumberFormatException e) {
+            return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
         }
     }
 

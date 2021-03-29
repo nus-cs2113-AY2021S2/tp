@@ -62,7 +62,7 @@ public class ExerciseGoal extends Goal {
         return "Date Set: " + getDaySet().toString() + "\n"
                 + "Goal Type: " + getType().toString().toLowerCase() + "\n"
                 + "Target: " + getTargetEnergy() + "\n"
-                + "Progress: " + getProgress() + "\n";
+                + "Progress: " + getProgress();
     }
 
     /**
