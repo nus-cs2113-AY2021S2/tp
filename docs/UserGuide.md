@@ -84,6 +84,43 @@ Example of usage:
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+| Command             | Example                                                                                                    |
+|---------------------|------------------------------------------------------------------------------------------------------------|
+| Start Menu          |                                                                                                            |
+| staff               | staff                                                                                                      |
+| patient             | patient                                                                                                    |
+| appointments        | appointments                                                                                               |
+| schedules           | schedules                                                                                                  |
+| inventory           | inventory                                                                                                  |
+| help                | help                                                                                                       |
+| Staff               |                                                                                                            |
+| add                 | add/[Staff ID]/[Name] [Age]/[Specialisation] add/D12345/A12345/Alex/M 21012021                             |
+| delete              | delete/[Staff ID] delete/D12345                                                                            |
+| list                | list                                                                                                       |
+| help                | help                                                                                                       |
+| return              | return                                                                                                     |
+| Patient             |                                                                                                            |
+| add                 | add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed] add/P55555/Sam/40/Male Fever/Paracetamol   |
+| delete              | delete/[Patient ID] delete/P55555                                                                          |
+| find                | find/[Patient ID find/P55555                                                                               |
+| list                | list                                                                                                       |
+| help                | help                                                                                                       |
+| return              | return                                                                                                     |
+| Doctor Appointments |                                                                                                            |
+| add                 | add/[Doctor ID]/ [Appointment ID]/ [Patient’s Name]/ [Gender]/[DDMMYYYY] add/D12345/Mingshun/ Pediatrician |
+| delete              | delete/[Appointment ID] delete/A369                                                                        |
+| list                | list                                                                                                       |
+| help                | help                                                                                                       |
+| return              | return                                                                                                     |
+| Nurse Schedules     |                                                                                                            |
+| add                 | add/[Nurse ID]/[Patient ID]/[DDMMYYYY] add/N12345/P56789/ 30012020                                         |
+| delete              | delete/[Nurse ID]/[DDMMYYYY] delete/N12345/30012020                                                        |
+| list                | list/[Nurse ID/all] list/N12345 list/all                                                                   |
+| help                | help                                                                                                       |
+| return              | return                                                                                                     |
+| Drugs Inventory     |                                                                                                            |
+| add                 | add/[Name]/[Price]/ [Quantity] add/paracetamol/$3/90                                                       |
+| delete              | delete/[Name] delete/paracetamol                                                                           |
+| list                | list                                                                                                       |
+| help                | help                                                                                                       |
+| return              | return                                                                                                     |
