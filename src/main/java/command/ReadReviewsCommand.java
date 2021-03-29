@@ -22,7 +22,7 @@ public class ReadReviewsCommand extends Command {
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
-        averageRating =store.getAverageRating();
-        ui.showReviews(store.getStoreName(), reviews,averageRating);
+        averageRating = store.getAverageRating();
+        ui.showReviews(store.getStoreName(), reviews, averageRating);
     }
 }

@@ -38,10 +38,11 @@ public class Store {
         return menus;
     }
 
-    public int getRatingCount(){
-        return  ratingCount;
+    public int getRatingCount() {
+        return ratingCount;
     }
-    public double getAverageRating(){
+
+    public double getAverageRating() {
         for (Review rating : reviews) {
             ratingSum = ratingSum + rating.getRating();
             ratingCount++;
@@ -50,14 +51,16 @@ public class Store {
         return averageRating;
     }
 
-    public void setAverageRating(double averageRating){
+    public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
+
     public void addReview(Review newReview) {
         reviews.add(newReview);
     }
+
     public void deleteReview(int reviewCount) {
-        reviews.remove(reviewCount-1);
+        reviews.remove(reviewCount - 1);
     }
 
     public void addMenu(Menu newMenu) {

@@ -9,13 +9,14 @@ import ui.Ui;
 import java.util.ArrayList;
 
 
-public class DeleteReviewCommand extends Command{
+public class DeleteReviewCommand extends Command {
     private int storeIndex;
     private int review;
     private int canteenIndex;
-    public DeleteReviewCommand(int canteenIndex,int storeIndex, int review) {
+
+    public DeleteReviewCommand(int canteenIndex, int storeIndex, int review) {
         this.canteenIndex = canteenIndex;
-        this.storeIndex= storeIndex;
+        this.storeIndex = storeIndex;
         this.review = review;
     }
 

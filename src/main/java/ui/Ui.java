@@ -207,6 +207,7 @@ public class Ui {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
     }
+
     public static void showDeleteReview() {
         System.out.println(LINESPACING);
         System.out.println("Please enter review number to be deleted");

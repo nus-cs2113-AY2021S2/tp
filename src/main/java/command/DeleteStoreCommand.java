@@ -4,7 +4,7 @@ import canteens.Canteen;
 import ui.Ui;
 import java.util.ArrayList;
 
-public class DeleteStoreCommand extends Command{
+public class DeleteStoreCommand extends Command {
 
     private int canteenIndex;
     private int storeIndex;

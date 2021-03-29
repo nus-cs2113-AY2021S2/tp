@@ -24,6 +24,7 @@ public class Canteen {
         Store newStore = new Store(storeName);
         stores.add(newStore);
     }
+
     public void deleteStore(int storeIndex) {
         stores.remove(storeIndex);
     }

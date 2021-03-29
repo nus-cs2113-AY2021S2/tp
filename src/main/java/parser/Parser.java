@@ -1,7 +1,19 @@
 package parser;
 
 
-import command.*;
+import command.AddCanteenCommand;
+import command.AddReviewCommand;
+import command.AddStoreCommand;
+import command.Command;
+import command.DeleteCanteenCommand;
+import command.DeleteReviewCommand;
+import command.DeleteStoreCommand;
+import command.DisplayCanteensCommand;
+import command.DisplayMenusCommand;
+import command.ExitCommand;
+import command.HomeCommand;
+import command.ReadReviewsCommand;
+import command.ResetStoreCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import reviews.Review;
@@ -93,8 +105,8 @@ public class Parser {
             nusFoodReviews.setCanteenIndex();
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             Ui.showDisplaySelectStores(nusFoodReviews.getCanteens().get(currentCanteenIndex));
-            int storeIndex= parseInt(Ui.readCommand(),2,
-                    nusFoodReviews.getCanteens().get(currentCanteenIndex).getNumStores())-1;
+            int storeIndex = parseInt(Ui.readCommand(), 2,
+                    nusFoodReviews.getCanteens().get(currentCanteenIndex).getNumStores()) - 1;
             newCommand = new DeleteStoreCommand(currentCanteenIndex, storeIndex);
             break;
         case "6":
@@ -103,7 +115,8 @@ public class Parser {
             nusFoodReviews.setStoreIndex();
             int currentStoreIndex = nusFoodReviews.getStoreIndex();
             ArrayList<Store> stores = nusFoodReviews.getCanteens().get(currentCanteenIndex).getStores();
-            ArrayList<Review> reviews = nusFoodReviews.getCanteens().get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
+            ArrayList<Review> reviews = nusFoodReviews.getCanteens()
+                    .get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
             averageRating = stores.get(currentStoreIndex).getAverageRating();
             Ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
             Ui.showDeleteReview();
