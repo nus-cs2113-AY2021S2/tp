@@ -16,7 +16,7 @@ class RouterTest {
         NusMap nusMap = new NusMap();
         BlockAlias blockAlias = new BlockAlias();
         String out = new Router().execute(nusMap, blockAlias, "E2","E7");
-        assertEquals(out, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
+        assertEquals(out, "Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7");
     }
 
     @Test
@@ -33,9 +33,9 @@ class RouterTest {
         NusMap nusMap = new NusMap();
         BlockAlias blockAlias = new BlockAlias();
         String out1 = new Router().execute(nusMap, blockAlias, "E2","E7");
-        assertEquals(out1, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
+        assertEquals(out1, "Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7");
         nusMap.resetVisitedFlag();
         String out2 = new Router().execute(nusMap, blockAlias, "E2", "E7");
-        assertEquals(out2, "Route is :E2->E3->E4->E4A->EW2->E6->E7");
+        assertEquals(out2, "Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7");
     }
 }

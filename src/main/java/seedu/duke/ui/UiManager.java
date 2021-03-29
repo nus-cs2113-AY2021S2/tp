@@ -42,7 +42,7 @@ public class UiManager {
     }
 
     public void showLogo() {
-        showMessageWithDivider(CommonMessage.LOGO);
+        showMessageWithDivider(CommonMessage.DIVIDER, CommonMessage.LOGO);
     }
 
     public void showGreetMessage() {

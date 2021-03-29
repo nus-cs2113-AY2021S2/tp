@@ -33,7 +33,7 @@ class ParserTest {
 
     @Test
     void prepareForCommandExecution_repeat_expectRepeatCommand() throws InvalidCommandException {
-        Command command = Parser.prepareForCommandExecution("repeat");
+        Command command = Parser.prepareForCommandExecution("repeat history");
         assertTrue(command instanceof RepeatHistoryCommand);
     }
 
@@ -45,7 +45,7 @@ class ParserTest {
 
     @Test
     void prepareForCommandExecution_listnotes_expectListNoteCommand() throws InvalidCommandException {
-        Command command = Parser.prepareForCommandExecution("list notes");
+        Command command = Parser.prepareForCommandExecution("show notes");
         assertTrue(command instanceof ListNoteCommand);
     }
 
