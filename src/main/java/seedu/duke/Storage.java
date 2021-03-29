@@ -40,7 +40,7 @@ public class Storage {
     public void save(SortedMap<String, Patient> patientData) throws IOException {
         try {
             File inFile = new File(filePath);
-            if(!inFile.exists()) {
+            if (!inFile.exists()) {
                 inFile.createNewFile();
             }
             FileWriter fileWriter = new FileWriter(inFile.getAbsolutePath(), false);
