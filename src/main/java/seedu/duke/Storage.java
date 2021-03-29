@@ -85,19 +85,13 @@ public class Storage {
         return (stringBuilder.toString());
     }
 
-    /*public TreeMap<LocalDate, Record> convertStringToRecords(String recordString) {
-        String[] splitString = recordString.split(Constants.DATE_DELIMITER);
-        TreeMap<LocalDate, Record> records = new TreeMap<>();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
-        LocalDate dt = dateTimeFormatter.parseLocalDate(splitString[0]);
-
-        return records;
-    }
-
     public SortedMap<String, Patient> load() throws IOException {
         SortedMap<String, Patient> data = new TreeMap<>();
         try {
             File inFile = new File(filePath);
+            if (!inFile.exists()) {
+                return data;
+            }
             Scanner scanner = new Scanner(inFile);
             while (scanner.hasNextLine()) {
                 String[] retrievedPatientsData = scanner.nextLine().split(Constants.ID_DELIMITER);
@@ -112,5 +106,45 @@ public class Storage {
             ui.printException(e);
         }
         return data;
-    }*/
+    }
+
+    public TreeMap<LocalDate, Record> convertStringToRecords(String recordString) {
+        TreeMap<LocalDate, Record> records = new TreeMap<>();
+
+        String[] recordsPresent = recordString.split(Constants.RECORDS_DELIMITER);
+
+        for (String r : recordsPresent) {
+            String[] splitString = r.split(Constants.DATE_DELIMITER);
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
+            final LocalDate dt = LocalDate.parse(splitString[0], dateTimeFormatter);
+
+            String[] symptomSplitString = splitString[1].split(Constants.SYMPTOM_DELIMITER);
+            String[] symptomsArray = symptomSplitString[0].split("\t");
+            ArrayList<String> symptoms = new ArrayList<>();
+            for (String symptom : symptomsArray) {
+                symptoms.add(symptom);
+            }
+
+            String[] diagnosisSplitString = symptomSplitString[1].split(Constants.DIAGNOSIS_DELIMITER);
+            String[] diagnosesArray = diagnosisSplitString[0].split("\t");
+            ArrayList<String> diagnoses = new ArrayList<>();
+            for (String diagnosis : diagnosesArray) {
+                diagnoses.add(diagnosis);
+            }
+
+            String[] prescriptionSplitString = diagnosisSplitString[1].split(Constants.PRESCRIPTION_DELIMITER);
+            String[] prescriptionsArray = prescriptionSplitString[0].split("\t");
+            ArrayList<String> prescriptions = new ArrayList<>();
+            for (String prescription : prescriptionsArray) {
+                prescriptions.add(prescription);
+            }
+
+            Record record = new Record(symptoms, diagnoses, prescriptions);
+
+
+            records.put(dt, record);
+        }
+
+        return records;
+    }
 }

@@ -72,11 +72,13 @@ public class Constants {
     public static final String COMMAND_CLASS_PREFIX = "seedu.duke.command.";
 
     // Delimiters for storage class
-    public static final String ID_DELIMITER = "||";
+    public static final String ID_DELIMITER = "~~";
     public static final String DATE_DELIMITER = "``";
-    public static final String SYMPTOM_DELIMITER = "^^";
+    public static final String SYMPTOM_DELIMITER = "%%";
     public static final String DIAGNOSIS_DELIMITER = "##";
     public static final String PRESCRIPTION_DELIMITER = "@@";
-    public static final String RECORDS_DELIMITER = "[R]";
+    public static final String RECORDS_DELIMITER = "!R!";
 
+    // Data file path
+    public static final String FILE_PATH = "data.txt";
 }
