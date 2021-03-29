@@ -6,7 +6,7 @@ import java.text.ParseException;
 
 public class NurseScheduleUI extends UI {
 
-    public static void nurseSchedulePrompt() {
+    public void nurseSchedulePrompt() {
         System.out.print("NSchedule --> ");
     }
 
@@ -25,13 +25,13 @@ public class NurseScheduleUI extends UI {
 //        return scheduleInput;
 //    }
 
-    public static void printNurseScheduleWelcomeMessage() {
+    public void printNurseScheduleWelcomeMessage() {
         System.out.println("Welcome to Nurse Schedules!");
         System.out.println("Type \"help\" to for nurse schedules commands");
         showLine();
     }
 
-    public static void printNurseScheduleHelpList() {
+    public void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedules commands: ");
         System.out.println("\"help\" brings up this list of commands!");
         System.out.println("\"add\" [NurseID] [Patient ID] [Date (DDMMYYYY)] adds a schedule to the schedule list!");
@@ -61,17 +61,17 @@ public class NurseScheduleUI extends UI {
         System.out.println("Invalid inputs!");
     }
 
-    public static void addHelpMessage() {
+    public void addHelpMessage() {
         System.out.println("Format: add [NurseID] [Patient ID] [Date (DDMMYYYY)]");
         showLine();
     }
 
-    public static void listHelpMessage() {
+    public void listHelpMessage() {
         System.out.println("Format: list [NurseID/all]");
         showLine();
     }
 
-    public static void deleteHelpMessage() {
+    public void deleteHelpMessage() {
         System.out.println("Format: delete [NurseID] [Date (DDMMYYYY)]");
         showLine();
     }
