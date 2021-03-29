@@ -18,6 +18,7 @@ class AddCommandTest {
 
     private Fridge fridge;
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() {
         fridge = new Fridge();
@@ -75,6 +76,7 @@ class AddCommandTest {
         assertEquals("cooked chicken", fridge.getFood(0).getFoodName());
     }
 
+    //@@author SimJJ96
     @Test
     public void addCommand_invalidDate_InvalidDateException() {
         assertThrows(InvalidDateException.class, () -> {
@@ -104,6 +106,7 @@ class AddCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    //@@author SimJJ96
     @Test
     public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {

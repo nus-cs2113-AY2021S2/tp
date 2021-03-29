@@ -40,10 +40,6 @@ public class Fridge {
         return fridge.get(i);
     }
 
-    public void removeByIndex(int index) {
-        fridge.remove(index);
-    }
-
     private void editFoodQuantity(Food newFood, Food existingFood) {
         int deltaQuantity = newFood.getQuantity();
         int oriQuantity = existingFood.getQuantity();

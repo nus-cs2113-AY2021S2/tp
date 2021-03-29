@@ -21,6 +21,7 @@ class RemoveCommandTest {
     /*Solution below adapted from https://github.com/se-edu/addressbook-level2/blob/master
             /test/java/seedu/addressbook/commands/DeleteCommandTest.java*/
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();

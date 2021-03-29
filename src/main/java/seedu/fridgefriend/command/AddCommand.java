@@ -20,6 +20,7 @@ import seedu.fridgefriend.food.categories.Vegetable;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author SimJJ96
 /**
  * Represents a command to add a food item into the Fridge.
  * When calling constructor, foodName, category, expiryDate, location

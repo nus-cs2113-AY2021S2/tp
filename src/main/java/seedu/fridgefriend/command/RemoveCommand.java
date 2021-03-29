@@ -71,6 +71,7 @@ public class RemoveCommand extends Command {
     /**
      * Return the results after remove the item from the fridge.
      * If there is some quantity left, display new quantity.
+     *
      * @return the message shown to user
      */
     public String getMessagePrintedToUser() {

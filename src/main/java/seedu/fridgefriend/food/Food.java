@@ -84,6 +84,7 @@ public abstract class Food {
         return expiry.isBefore(cutOff);
     }
 
+    //@@author SimJJ96
     public int getQuantity() {
         return quantity;
     }
@@ -91,5 +92,5 @@ public abstract class Food {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
+    //@@author
 }

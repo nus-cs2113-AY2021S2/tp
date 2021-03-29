@@ -5,7 +5,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
-//@@author leeyp
+//@@author SimJJ96
 /**
  * Represents a command to search for a specific food item in the fridge.
  */
@@ -32,7 +32,9 @@ public class SearchCommand extends Command {
     }
 
     /**
-     * Returns the result of the command.
+     * Returns the results after searching for food items in the
+     * fridge that contains the specified food name.
+     * If unable to find, display unsuccessful message.
      *
      * @return the message shown to the user
      */
@@ -54,10 +56,10 @@ public class SearchCommand extends Command {
         if (!isContain) {
             LoggingHandler.logInfo("Search for food unsuccessful: No " + foodName + " found.");
             return "You do not have " + foodName + " in your fridge.";
+        } else {
+            LoggingHandler.logInfo("Search for food successful: " + foodName + " found.");
+            return message.toString();
         }
-
-        LoggingHandler.logInfo("Search for food successful: " + foodName + " found.");
-        return message.toString();
     }
-
+    //@author
 }

@@ -208,6 +208,7 @@ public class Parser {
         }
     }
 
+    //@@author SimJJ96
     /**
      * Returns a ListCommand object based on description.
      *
@@ -250,6 +251,7 @@ public class Parser {
         }
     }
 
+    //@@author SimJJ96
     /**
      * Returns a SearchCommand object based on description.
      *
@@ -340,6 +342,7 @@ public class Parser {
         return byeCommand;
     }
 
+    //@@author SimJJ96
     /**
      * Parses the description of quantity to integer.
      *

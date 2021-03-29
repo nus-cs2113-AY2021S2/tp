@@ -15,6 +15,7 @@ class ListCommandTest {
 
     private Fridge fridge;
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
