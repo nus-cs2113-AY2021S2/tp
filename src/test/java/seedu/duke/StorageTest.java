@@ -6,6 +6,7 @@ import seedu.duke.model.Record;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.SortedMap;
 
 public class StorageTest {
@@ -15,6 +16,7 @@ public class StorageTest {
         Patient patient = new Patient("S1234567D");
         LocalDate date = LocalDate.now();
         patient.addRecord(date, "head pain, dizziness", "heat stroke", "cooling packs, medicine");
+        patient.addRecord(date.plus(1, ChronoUnit.DAYS), "fainting", "severe heat stroke", "referral to hospital");
         data.setPatient(patient);
         patient = new Patient("S7654321B");
         patient.addRecord(date, "abdominal pain", "mild UTI", "antibiotics, referral to hospital");

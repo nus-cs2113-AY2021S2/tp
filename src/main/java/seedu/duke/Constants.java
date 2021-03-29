@@ -77,5 +77,6 @@ public class Constants {
     public static final String SYMPTOM_DELIMITER = "^^";
     public static final String DIAGNOSIS_DELIMITER = "##";
     public static final String PRESCRIPTION_DELIMITER = "@@";
+    public static final String RECORDS_DELIMITER = "[R]";
 
 }

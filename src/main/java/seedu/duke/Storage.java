@@ -40,7 +40,9 @@ public class Storage {
     public void save(SortedMap<String, Patient> patientData) throws IOException {
         try {
             File inFile = new File(filePath);
-            inFile.createNewFile();
+            if(!inFile.exists()) {
+                inFile.createNewFile();
+            }
             FileWriter fileWriter = new FileWriter(inFile.getAbsolutePath(), false);
             StringBuffer message = new StringBuffer();
             Set patientSet = patientData.entrySet();
@@ -77,6 +79,7 @@ public class Storage {
             Record patientRecord = record.getValue();
 
             stringBuilder.append(localDate + Constants.DATE_DELIMITER + patientRecord.printFileConsultationDetail());
+            stringBuilder.append(Constants.RECORDS_DELIMITER);
         }
 
         return (stringBuilder.toString());
