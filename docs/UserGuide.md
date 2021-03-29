@@ -6,7 +6,8 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
-Table of Contents
+## Table of Contents
+
 =================
 
 * [User Guide](#user-guide)
@@ -27,14 +28,12 @@ Table of Contents
   * [FAQ](#faq)
   * [Command Summary](#command-summary)
 
-  
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
 1. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
 
 ## Features
-
 
 **Notes about the command format:**
 
@@ -56,12 +55,12 @@ Additional info:
 
 * Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+* Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
 Example of usage:
 
-```
+```lang-none
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf
 Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
@@ -77,11 +76,11 @@ Format: `list`
 
 Example of usage:
 
-```
+```lang-none
 >> list
 Here are the items in your fridge:
-	1. Food name: chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
-	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+ 1. Food name: chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+ 2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -99,15 +98,15 @@ Example of usage:
 
 *Situation 1: There is one food called pork under MEAT category.*
 
-```
+```lang-none
 >> list MEAT
 These are the MEAT in your fridge:
-	1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+ 1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods under READY_TO_EAT category.*
 
-```
+```lang-none
 >> list ready_to_eat
 These are the READY_TO_EAT in your fridge:
 ```
@@ -127,15 +126,15 @@ Example of usage:
 
 *Situation 1: There is one food called pork stored in LOWER_SHELF.*
 
-```
+```lang-none
 >> list LOWER_SHELF
 These are the food stored in LOWER_SHELF:
-	1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+ 1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods stored in DRAWERS.*
 
-```
+```lang-none
 >> list DRAWERS
 These are the food stored in DRAWERS:
 ```
@@ -150,7 +149,8 @@ Format: `remove INDEX`
 * If the `INDEX` is out of bounds, `FridgeFriend` will give an error message.
 
 Example of usage:
-```
+
+```lang-none
 >> list
 Here are the items in your fridge:
         1. chicken [MEAT]
@@ -175,7 +175,7 @@ Format: `search FOOD_NAME`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
 * The command requires the user to input the exact name of the food item `FOOD_NAME` to be searched for.
-  The names of food items stored in the fridge can be determined with `list`. 
+  The names of food items stored in the fridge can be determined with `list`.
 * If there are multiple items with the same name in the fridge, only the first item added to the fridge
   in order of the output of `list` will be returned.
 
@@ -183,7 +183,7 @@ Example of usage:
 
 *In this example, Fridge contains only one item `grouper` stored in the `FREEZER` location.*
 
-```
+```lang-none
 >> search grouper
 You have grouper stored in FREEZER of your fridge.
 
@@ -199,7 +199,7 @@ Format: `expiring`
 
 Example of usage:
 
-```
+```lang-none
 >> expiring
 These are the food expiring in the next week:
 1. Food name: chicken wings, category: MEAT, expiry: 21-03-2021, stored in: MIDDLE_SHELF
@@ -213,7 +213,7 @@ Format: `runninglow`
 
 Example of usage:
 
-```
+```lang-none
 >> runninglow
 You are running low on food in these categories:
 1. VEGETABLE quantity: 0 out of 500
@@ -236,7 +236,8 @@ Changes the minimum quantity limit for a specific food category.
 Format: `setlimit FOOD_CATEGORY /qty QUANTITY`
 
 Example of usage:
-```
+
+```lang-none
 >> runninglow
 You are running low on food in these categories:
 1. MEAT quantity: 250 out of 500
@@ -263,7 +264,7 @@ Format: `help`
 
 Example of usage:
 
-```
+```lang-none
 >> help
 These are the list of available commands:
         add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
@@ -290,7 +291,7 @@ Format: `bye`
 
 Example of usage:
 
-```
+```lang-none
 >> bye
 Bye! Hope to see you again soon!
 ```
