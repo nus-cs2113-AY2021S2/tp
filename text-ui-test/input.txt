@@ -1,4 +1,1 @@
-list -l
-list -l -e
-list
 exit

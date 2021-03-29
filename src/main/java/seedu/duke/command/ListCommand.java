@@ -66,8 +66,7 @@ public class ListCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
         assert recordList != null : "recordList should not be null";
         assert ui != null : "ui should not be null";
         assert storage != null : "storage should not be null";

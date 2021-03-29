@@ -49,8 +49,8 @@ class ViewCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         ParserHandler parserHandler = new ParserHandler();
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
         CommandHandler commandHandler = new CommandHandler();
 

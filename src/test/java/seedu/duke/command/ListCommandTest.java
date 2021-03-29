@@ -55,8 +55,8 @@ class ListCommandTest {
         Storage storage = new Storage();
         ParserHandler parserHandler = new ParserHandler();
         RecordList records = getPopulatedRecordList(listCmdTypeToTest);
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         CommandHandler commandHandler = new CommandHandler();
 
         Command command = commandHandler.parseCommand(parserHandler.getParseInput(listCmdStr), records);

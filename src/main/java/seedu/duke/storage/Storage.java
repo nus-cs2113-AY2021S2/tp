@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.command.BorrowersCreditScoreForReturnedLoans;
+import seedu.duke.command.CreditScoreMap;
 import seedu.duke.exception.FileLoadingException;
 import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
@@ -17,7 +17,6 @@ import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -32,7 +31,7 @@ public class Storage {
     private static final String REGEX_PATTERN_LOAN =
             "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
-    private static final String REGEX_PATTERN_BORROWER_CREDIT_SCORE_FOR_RETURNED_LOANS = "[^|]+\\s\\|\\s\\d{1,3}";
+    private static final String REGEX_PATTERN_CREDIT_SCORE = "[^|]+\\s\\|\\s\\d{1,3}";
     private static final int INDEX_OF_DESCRIPTION = 1;
     private static final int INDEX_OF_AMOUNT = 2;
     private static final int INDEX_OF_DATE = 3;
@@ -40,7 +39,7 @@ public class Storage {
     private static final int INDEX_OF_NAME = 5;
     private static final int INDEX_OF_RETURN_DATE = 6;
     private ArrayList<Record> records;
-    private HashMap<String, Integer> borrowersCreditScoreForReturnedLoansMap;
+    private HashMap<String, Integer> creditScoreHashMapData;
 
     public Path dataFilePath;
 
@@ -57,11 +56,10 @@ public class Storage {
         return Files.exists(SAVED_FILE_PATH);
     }
 
-    public void saveData(RecordList records, BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) {
+    public void saveData(RecordList records, CreditScoreMap creditScoreMap) {
         try {
             writeRecordListToSaveFile(records);
-            writeBorrowersCreditScoreForReturnedLoansToSaveFile(borrowersCreditScoreForReturnedLoans);
+            writeCreditScoreMapToSaveFile(creditScoreMap);
         } catch (IOException e) {
             System.out.println("Error in saveData()");
         }
@@ -76,19 +74,17 @@ public class Storage {
         fw.close();
     }
 
-    private void writeBorrowersCreditScoreForReturnedLoansToSaveFile(BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) throws IOException {
+    private void writeCreditScoreMapToSaveFile(CreditScoreMap creditScoreMap) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), true);
-        for (String borrowerNameInLowerCase : borrowersCreditScoreForReturnedLoans.getBorrowersNamesInLowerCase()) {
-            int creditScore = getCreditScore(borrowersCreditScoreForReturnedLoans, borrowerNameInLowerCase);
-            fw.write(borrowerNameInLowerCase + " | " + creditScore + System.lineSeparator());
+        for (String borrowerName : creditScoreMap.getBorrowersNames()) {
+            int creditScore = getCreditScore(creditScoreMap, borrowerName);
+            fw.write(borrowerName + " | " + creditScore + System.lineSeparator());
         }
         fw.close();
     }
 
-    private int getCreditScore(BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans,
-                               String borrowerName) {
-        return borrowersCreditScoreForReturnedLoans.getCurrentBorrowerCreditScoreForReturnedLoans(borrowerName);
+    private int getCreditScore(CreditScoreMap creditScoreMap, String borrowerName) {
+        return creditScoreMap.getCreditScore(borrowerName);
     }
 
     /**
@@ -96,7 +92,7 @@ public class Storage {
      */
     public void loadFile() throws FileLoadingException {
         this.records = new ArrayList<>();
-        this.borrowersCreditScoreForReturnedLoansMap = new HashMap<>();
+        this.creditScoreHashMapData = new HashMap<>();
 
         try {
             if (!saveFileExists()) {
@@ -112,9 +108,8 @@ public class Storage {
                     records.add((Record) parsedObject);
                     assert !records.isEmpty() : "RecordList should have data!";
                 } else if (parsedObject != null) {
-                    String[] borrowerCreditScoreForReturnedLoansData = (String[]) parsedObject;
-                    borrowersCreditScoreForReturnedLoansMap.put(borrowerCreditScoreForReturnedLoansData[0],
-                            Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]));
+                    String[] creditScoreRawData = (String[]) parsedObject;
+                    creditScoreHashMapData.put(creditScoreRawData[0], Integer.parseInt(creditScoreRawData[1]));
                 }
             }
         } catch (InvalidFileInputException | IOException e) {
@@ -138,8 +133,8 @@ public class Storage {
             return loadLoan(rawData);
         } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
             return loadSaving(rawData);
-        } else if (Pattern.matches(REGEX_PATTERN_BORROWER_CREDIT_SCORE_FOR_RETURNED_LOANS, rawData)) {
-            return loadBorrowerCreditScoreForReturnedLoans(rawData);
+        } else if (Pattern.matches(REGEX_PATTERN_CREDIT_SCORE, rawData)) {
+            return loadCreditScoreRawData(rawData);
         } else {
             throw new InvalidFileInputException();
         }
@@ -212,30 +207,30 @@ public class Storage {
         return new Saving(amount, issueDate, description);
     }
 
-    private String[] loadBorrowerCreditScoreForReturnedLoans(String rawData) throws InvalidFileInputException {
-        String[] borrowerCreditScoreForReturnedLoansData = rawData.split(" \\| ");
-        String borrowerNameInLowerCase = borrowerCreditScoreForReturnedLoansData[0].toLowerCase();
-        if (!borrowerNameInLowerCase.equals(borrowerCreditScoreForReturnedLoansData[0])) {
+    private String[] loadCreditScoreRawData(String rawData) throws InvalidFileInputException {
+        String[] creditScoreRawData = rawData.split(" \\| ");
+        String borrowerName = creditScoreRawData[0].toLowerCase();
+        if (!borrowerName.equals(creditScoreRawData[0])) {
             throw new InvalidFileInputException();
         }
 
-        if (borrowersCreditScoreForReturnedLoansMap.containsKey(borrowerCreditScoreForReturnedLoansData[0])) {
+        if (creditScoreHashMapData.containsKey(creditScoreRawData[0])) {
             throw new InvalidFileInputException();
         }
 
-        int creditScore = Integer.parseInt(borrowerCreditScoreForReturnedLoansData[1]);
+        int creditScore = Integer.parseInt(creditScoreRawData[1]);
         if (creditScore < 0 || creditScore > 100) {
             throw new InvalidFileInputException();
         }
 
-        return borrowerCreditScoreForReturnedLoansData;
+        return creditScoreRawData;
     }
 
     public ArrayList<Record> getRecordListData() {
         return records;
     }
 
-    public HashMap<String, Integer> getBorrowersCreditScoreForReturnedLoansMapData() {
-        return borrowersCreditScoreForReturnedLoansMap;
+    public HashMap<String, Integer> getCreditScoreHashMapData() {
+        return creditScoreHashMapData;
     }
 }

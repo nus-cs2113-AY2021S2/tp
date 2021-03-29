@@ -1,11 +1,6 @@
-package seedu.duke;
+package seedu.duke.record;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.record.Expense;
-import seedu.duke.record.RecordList;
-import seedu.duke.record.Saving;
-import seedu.duke.record.Loan;
-
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
