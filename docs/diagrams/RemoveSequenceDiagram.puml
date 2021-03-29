@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant ":RemoveCommand" as RemoveCommand
+participant "fridge:Fridge" as Fridge
+participant ":Food" as Food
+
+-> RemoveCommand: execute()
+activate RemoveCommand
+
+RemoveCommand -> RemoveCommand: findFoodByName(foodNameToEdit: String)
+activate RemoveCommand
+
+loop food in fridge
+    RemoveCommand -> Fridge: getFridge()
+    activate Fridge
+    opt equals foodNameToEdit
+        Fridge -> Food: getFoodName()
+        activate Food
+        return food
+    end
+    return food
+end
+
+deactivate RemoveCommand
+
+RemoveCommand -> RemoveCommand: removePortion()
+activate RemoveCommand
+
+alt newQuantity > 0
+    RemoveCommand -> Fridge: getFridge()
+    activate Fridge
+    Fridge -> Food: setQuantity()
+    activate Food
+    deactivate Food
+else newQuantity == 0
+    RemoveCommand -> Fridge: removeFood
+    deactivate Fridge
+end
+
+deactivate RemoveCommand
+destroy Food
+destroy Fridge
+
+RemoveCommand -> RemoveCommand: showResults()
+activate RemoveCommand
+deactivate RemoveCommand
+return result
+@enduml
