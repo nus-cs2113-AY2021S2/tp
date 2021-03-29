@@ -94,7 +94,10 @@ It is also responsible for displaying the response from PatientManager to the sc
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command `add S1234567D`.
 
-{TO BE ADDED}
+![Sequence Diagram](./images/sequence_diagram.png)
+
+In general, execution of commands follows the same flow of events, see [Logic Component](#logic-component)
+for more details.
 
 The sections below give more details for each component.
 
