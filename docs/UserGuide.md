@@ -26,7 +26,7 @@ If you are having difficulties managing your schedule, lesson links and notes, G
         * [Deleting a module : **delete**](#deleting-a-module--delete)
         * [Listing all modules : **modules**](#listing-all-modules--modules)
     * [Module Commands](#module-commands)
-        * [Listing all module commands : **help**](#listing-all-modules--modules)
+        * [Listing all module commands : **help**](#listing-all-module-commands--help)
         * [Closing a module : **close**](#closing-a-module--close)
         * [Showing module information : **info**](#showing-module-information--info)
         * [Adding a lesson : **add lesson**](#adding-a-lesson--add-lesson)
