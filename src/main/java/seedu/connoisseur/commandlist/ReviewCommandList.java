@@ -54,19 +54,19 @@ public class ReviewCommandList {
         ui.printReviewListHeading();
         for (int i = 0; i < reviewList.size(); i++) {
             Review currentReview = reviewList.get(i);
-            ui.print((i + 1) + ". ");
+            ui.print("| " + (i + 1) + ". ");
             if (i < 9) {
                 ui.print(" ");
             }
             ui.print(currentReview.getTitle());
             ui.printWhiteSpaceTitle(currentReview.getTitle().length());
-            ui.print(currentReview.getCategory());
+            ui.print("| " + currentReview.getCategory());
             ui.printWhiteSpace(currentReview.getCategory().length());
-            ui.print(currentReview.starRating());
+            ui.print("| " + currentReview.starRating());
             ui.printWhiteSpace(currentReview.starRating().length());
-            System.out.print("   ");
-            ui.println(currentReview.getDateTime());
+            ui.println("| " + currentReview.getDateTime() + "   |");
         }
+        ui.printTableEndBorderForReview();
     }
 
     /**
