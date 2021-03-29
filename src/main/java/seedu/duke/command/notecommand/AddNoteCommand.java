@@ -1,39 +1,31 @@
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;
-import seedu.duke.data.NusMap;
+import seedu.duke.data.Block;
+import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.ui.NoteUi;
-import seedu.duke.ui.UiManager;
-import seedu.duke.data.History;
-import seedu.duke.data.DailyRoute;
-import seedu.duke.data.BlockAlias;
-import seedu.duke.data.Favourite;
-import seedu.duke.NotesCommandParser;
-
-import seedu.duke.exception.EmptyNoteException;
-import seedu.duke.exception.NoLocationForNotesCommandException;
-import seedu.duke.exception.NonExistentLocationForNotesCommandException;
-import seedu.duke.exception.WrongInputFormatException;
-
-import static seedu.duke.NotesCommandParser.location;
-import static seedu.duke.NotesCommandParser.note;
 
 public class AddNoteCommand extends Command {
 
     protected NoteUi ui;
+    private static final String MESSAGE_SUCCESS = "Got it! Successfully added and tagged note to %s";
+
     public AddNoteCommand() {
         this.ui = new NoteUi();
     }
 
     @Override
-    public void execute(NusMap nusMap, UiManager ui, History history, DailyRoute dailyRoute,
-                        BlockAlias blockAlias, Favourite favourite) {
+    public void execute() {
         try {
-            NotesCommandParser.parseAddNotesCommand(userInput, nusMap);
-            nusMap.map.get(location).addNotes(); //add notes to block given by user
-            ui.showMessageWithDivider("This note has been added and tagged to " + location + ":" + "\t" + note);
-        } catch (WrongInputFormatException | NoLocationForNotesCommandException
-                | NonExistentLocationForNotesCommandException | EmptyNoteException e) {
+            String[] noteInfo = ui.getNoteInfo();
+            if (nusMap.isValidBlock(noteInfo[0])) {
+                Block block = nusMap.getBlock(noteInfo[0]);
+                block.addNote(noteInfo[1]);
+                ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
+            } else {
+                throw new InvalidBlockException();
+            }
+        } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

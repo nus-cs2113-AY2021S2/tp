@@ -2,15 +2,16 @@ package seedu.duke.command.dailyroutecommand;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
 
+import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.ui.DailyRouteUi;
-import seedu.duke.Router;
+import seedu.duke.router.Router;
 
 import java.util.ArrayList;
 
 public class ShowDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
+
     public ShowDailyRouteCommand() {
         this.ui = new DailyRouteUi();
     }
@@ -28,7 +29,7 @@ public class ShowDailyRouteCommand extends Command {
                 routedSchedule.append(route);
             }
             ui.showMessageWithDivider(routedSchedule.toString());
-        } catch (InvalidBlockException | InvalidDayException e) {
+        } catch (InvalidBlockException | InvalidIndexException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

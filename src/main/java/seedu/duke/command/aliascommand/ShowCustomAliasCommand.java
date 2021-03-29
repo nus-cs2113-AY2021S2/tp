@@ -6,6 +6,7 @@ import seedu.duke.exception.EmptyAliasesException;
 
 public class ShowCustomAliasCommand extends Command {
     protected AliasUi ui;
+
     public ShowCustomAliasCommand() {
         this.ui = new AliasUi();
     }

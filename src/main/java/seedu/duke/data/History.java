@@ -1,6 +1,5 @@
 package seedu.duke.data;
 
-import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 
@@ -8,7 +7,7 @@ import java.util.LinkedList;
 
 public class History {
     private LinkedList<String[]> history;
-    private final int maximumNoOfHistory = 0;
+    private final int maximumNoOfHistory = 10;
 
     public History() {
         this.history = new LinkedList<>();
@@ -33,7 +32,7 @@ public class History {
         if (isFull()) {
             history.remove();
         }
-        history.add(new String[]{"start", "destination"});
+        history.add(new String[]{start, destination});
     }
 
     public boolean isValidBlock(String block) {

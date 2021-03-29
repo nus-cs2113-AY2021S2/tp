@@ -1,9 +1,10 @@
 package seedu.duke.data;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class NusMap {
-    public HashMap<String, Block> map;
+    private HashMap<String, Block> map;
 
     public NusMap() {
         this.map = new HashMap<>();
@@ -13,6 +14,10 @@ public class NusMap {
 
     public Block getBlock(String name) {
         return map.get(name);
+    }
+
+    public boolean isValidBlock(String name) {
+        return map.get(name) != null;
     }
 
     public void addBlock(String name) {
@@ -28,6 +33,10 @@ public class NusMap {
         for (Block block : map.values()) {
             block.setAsNotVisited();
         }
+    }
+
+    public Collection<Block> getValues() {
+        return map.values();
     }
 
     public void initValidBlocks() {

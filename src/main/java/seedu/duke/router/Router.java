@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.router;
 
 import seedu.duke.data.Block;
 import seedu.duke.data.BlockAlias;
@@ -23,7 +23,8 @@ public class Router {
         }
     }
 
-    public void findShortestRoute(NusMap nusMap, LinkedList<Block> route, BlockAlias blockAlias, String from, String to) {
+    public void findShortestRoute(NusMap nusMap, LinkedList<Block> route,
+                                  BlockAlias blockAlias, String from, String to) {
         nusMap.resetVisitedFlag();
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
@@ -50,10 +51,10 @@ public class Router {
 
     public String getRouteAsString(LinkedList<Block> route) {
         String routeAsString = "";
-        routeAsString += "Route is :";
+        routeAsString += "Route: ";
         for (int i = route.size() - 1; i >= 0; i--) {
             if (i > 0) {
-                routeAsString += route.get(i).getName() + "->";
+                routeAsString += route.get(i).getName() + " -> ";
             } else {
                 routeAsString += route.get(i).getName();
             }

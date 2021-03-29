@@ -7,6 +7,7 @@ import seedu.duke.ui.HistoryUi;
 
 public class ShowHistoryCommand extends Command {
     protected HistoryUi ui;
+
     public ShowHistoryCommand() {
         this.ui = new HistoryUi();
     }

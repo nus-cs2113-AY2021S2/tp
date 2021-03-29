@@ -1,12 +1,15 @@
 package seedu.duke.command.favouritecommand;
 
-import seedu.duke.Router;
+import seedu.duke.exception.EmptyFavouriteException;
+import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.router.Router;
 import seedu.duke.command.Command;
-import seedu.duke.exception.*;
 import seedu.duke.ui.FavouriteUi;
 
 public class RepeatFavouriteCommand extends Command {
     protected FavouriteUi ui;
+
     public RepeatFavouriteCommand() {
         this.ui = new FavouriteUi();
     }

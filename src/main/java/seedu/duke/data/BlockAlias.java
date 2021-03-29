@@ -1,11 +1,9 @@
 package seedu.duke.data;
 
-import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidBlockException;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class BlockAlias {
     private final HashMap<String, String> aliases;
@@ -43,16 +41,5 @@ public class BlockAlias {
         } else {
             throw new InvalidAliasException();
         }
-    }
-
-    public String getAliasesAsString() {
-        StringBuilder aliasesAsString = new StringBuilder();
-        int index = 1;
-        for (Map.Entry<String, String> pair : aliases.entrySet()) {
-            aliasesAsString.append(index + ". " + pair.getKey() + " - " + pair.getValue());
-            aliasesAsString.append(System.lineSeparator());
-            index++;
-        }
-        return aliasesAsString.deleteCharAt(aliasesAsString.lastIndexOf(System.lineSeparator())).toString();
     }
 }

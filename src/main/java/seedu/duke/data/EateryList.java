@@ -1,9 +1,7 @@
 package seedu.duke.data;
 
-import seedu.duke.Router;
-import seedu.duke.data.Block;
-import seedu.duke.data.BlockAlias;
-import seedu.duke.data.NusMap;
+import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.router.Router;
 
 import java.util.LinkedList;
 
@@ -20,8 +18,12 @@ public class EateryList {
         return eateries;
     }
 
-    public Block getSpecificEatery(int i) {
-        return eateries[i];
+    public Block getSpecificEatery(int index) throws InvalidIndexException {
+        if (index > 5 || index < 0) {
+            throw new InvalidIndexException();
+        } else {
+            return eateries[index];
+        }
     }
 
     public void setRouteLengths(NusMap nusMap, BlockAlias blockAlias, String from) {

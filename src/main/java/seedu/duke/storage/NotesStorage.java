@@ -1,5 +1,6 @@
 package seedu.duke.storage;
 
+import seedu.duke.data.Block;
 import seedu.duke.data.NusMap;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class NotesStorage extends Storage {
@@ -30,10 +32,8 @@ public class NotesStorage extends Storage {
             // add note for all locations:
             while (s.hasNext()) {
                 String[] prevListEntryWord = s.nextLine().split("/");
-                nusMap.map.get(prevListEntryWord[0]).notesList.add(prevListEntryWord[1]);
+                nusMap.getBlock(prevListEntryWord[0]).addNote(prevListEntryWord[1]);
                 //add note from previous list to new list
-                nusMap.map.get(prevListEntryWord[0]).addNotesCount();
-                //increment notes count for current location
             }
         } catch (FileNotFoundException e) {
             //Split given filepath by "/":
@@ -56,20 +56,12 @@ public class NotesStorage extends Storage {
             PrintWriter writer = new PrintWriter(this.filepath);
             writer.print("");
             writer.close();
-            String[] locationsList;
-            locationsList = new String[]{"E1", "E1A", "E2", "E2A", "E3", "E3A", "E4", "E4A", "E5",
-                                            "E6", "E7", "EA", "EW1", "EW1A", "EW2", "LT1", "LT2",
-                                            "LT5", "LT6", "LT7", "LT7A", "IT", "T-LAB", "TECHNO EDGE"};
-            for (int i = 0; i < locationsList.length; i++) {
-                String currentLocation = locationsList[i];
-                int notesCount = nusMap.map.get(currentLocation).getNotesCount(); //get notesCount for current Location
-                for (int j = 0; j < notesCount; j++) {
-                    String currentNote = nusMap.map.get(currentLocation).getNotesList().get(j);
-                    appendToNotesListFile(currentLocation + "/" + currentNote);
+            for (Block block : nusMap.getValues()) {
+                for (int i = 0; i < block.getNotes().size(); i++) {
+                    appendToNotesListFile(block.getName() + "/" + block.getNotes().get(i));
                     appendToNotesListFile(System.lineSeparator());
                 }
             }
-
         } catch (FileNotFoundException e) {
             System.out.println("Write: File not found");
         } catch (IOException e) {

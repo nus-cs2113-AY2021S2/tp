@@ -48,34 +48,4 @@ public class UiManager {
     public void showGreetMessage() {
         showMessageWithDivider(CommonMessage.GREETING_MESSAGE);
     }
-
-    /*
-
-    public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
-        assert favouriteLocation != null : "favouriteLocation must be initialised";
-        favouriteLocationsUi.showFavouriteLocations(favouriteLocation);
-    }
-
-    public void addFavoriteLocations(FavouriteLocation favouriteLocation, String location, NusMap nusMap) {
-        assert favouriteLocation != null : "favouriteLocation must be initialised";
-        assert location != null : "location must be provided";
-        assert nusMap != null : "nusMap must be initialised";
-        favouriteLocationsUi.addFavouriteLocations(favouriteLocation, location, nusMap);
-    }
-
-    public static String getListOfLocations() {
-        return "E1  E1A  E2  E2A  E3  E3A  E4  E4A  E5"
-                + System.lineSeparator()
-                + "E6  E7  EA  EW1  EW1A EW2  LT1  LT2  LT5  LT6"
-                + System.lineSeparator()
-                + "AS1 LT7  LT7A IT  T-LAB"
-                + System.lineSeparator()
-                + "TECHNO EDGE";
-    }
-
-    public void deleteFavouriteLocation(FavouriteLocation favouriteLocation, int index) {
-        assert favouriteLocation != null : "favouriteLocation must be initialised";
-        favouriteLocationsUi.deleteFavouriteLocation(favouriteLocation, index);
-    }
-     */
 }

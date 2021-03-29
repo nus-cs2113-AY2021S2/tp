@@ -1,6 +1,6 @@
 package seedu.duke.command.historycommand;
 
-import seedu.duke.Router;
+import seedu.duke.router.Router;
 import seedu.duke.command.Command;
 import seedu.duke.exception.EmptyHistoryException;
 import seedu.duke.exception.InvalidBlockException;
@@ -9,6 +9,7 @@ import seedu.duke.ui.HistoryUi;
 
 public class RepeatHistoryCommand extends Command {
     protected HistoryUi ui;
+
     public RepeatHistoryCommand() {
         this.ui = new HistoryUi();
     }

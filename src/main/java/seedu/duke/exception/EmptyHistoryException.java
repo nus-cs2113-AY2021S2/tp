@@ -3,6 +3,6 @@ package seedu.duke.exception;
 public class EmptyHistoryException extends NusMazeException {
     @Override
     public String getMessage() {
-        return "You have no past history!";
+        return "Oops! You have no past history!";
     }
 }

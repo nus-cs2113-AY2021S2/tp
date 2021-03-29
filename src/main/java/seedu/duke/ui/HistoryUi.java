@@ -16,7 +16,7 @@ public class HistoryUi extends UiManager {
                 String[] routeInfo = history.getSpecificEntry(i);
                 showMessage((i + 1) + ". " + routeInfo[0] + " -> " + routeInfo[1]);
             }
-            showMessageWithDivider(CommonMessage.DIVIDER);
+            showMessage(CommonMessage.DIVIDER);
         }
     }
 

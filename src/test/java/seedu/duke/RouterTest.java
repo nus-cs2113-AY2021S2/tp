@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.data.BlockAlias;
 import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.router.Router;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

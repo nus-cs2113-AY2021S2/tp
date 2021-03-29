@@ -1,32 +1,33 @@
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;
-import seedu.duke.data.NusMap;
-import seedu.duke.ui.UiManager;
-import seedu.duke.data.History;
-import seedu.duke.data.DailyRoute;
-import seedu.duke.data.BlockAlias;
-import seedu.duke.data.Favourite;
-import seedu.duke.NotesCommandParser;
+import seedu.duke.exception.EmptyNoteException;
+import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.ui.NoteUi;
 
-import seedu.duke.exception.NoLocationForNotesCommandException;
-import seedu.duke.exception.NonExistentLocationForNotesCommandException;
-
-import static seedu.duke.NotesCommandParser.location;
+import java.util.ArrayList;
 
 public class ListNoteCommand extends Command {
 
-    public ListNoteCommand(String userInput) {
-        super(userInput);
+    protected NoteUi ui;
+
+    public ListNoteCommand() {
+        this.ui = new NoteUi();
     }
 
     @Override
-    public void execute(NusMap nusMap, UiManager ui, History history, DailyRoute dailyRoute,
-                        BlockAlias blockAlias, Favourite favourite) {
+    public void execute() {
+        String listInfo = ui.getBlockInfo();
         try {
-            NotesCommandParser.parseListNotesCommand(userInput, nusMap);
-            nusMap.map.get(location).listNotes();
-        } catch (NoLocationForNotesCommandException | NonExistentLocationForNotesCommandException e) {
+            if (nusMap.isValidBlock(listInfo)) {
+                ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
+                ui.showNotes(notes);
+            } else {
+                throw new InvalidBlockException();
+            }
+        } catch (EmptyNoteException e) {
+            ui.showMessageWithDivider(String.format(e.getMessage(), listInfo));
+        } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

@@ -3,6 +3,8 @@ package seedu.duke.ui;
 import seedu.duke.data.BlockAlias;
 import seedu.duke.exception.EmptyAliasesException;
 
+import java.util.Map;
+
 public class AliasUi extends UiManager {
 
     public String[] getAliasInfo() {
@@ -12,6 +14,8 @@ public class AliasUi extends UiManager {
 
         showMessage("Enter the alias name: ");
         blockAndAlias[1] = getUserInput().toUpperCase();
+
+        showMessage(CommonMessage.DIVIDER);
         return blockAndAlias;
     }
 
@@ -19,10 +23,13 @@ public class AliasUi extends UiManager {
         if (aliases.getAliasHashMap().isEmpty()) {
             throw new EmptyAliasesException();
         } else {
-            showMessageWithDivider(
-                    "Here are your aliases:",
-                    aliases.getAliasesAsString()
-            );
+            showMessage("Here are your aliases:");
+            int index = 1;
+            for (Map.Entry<String, String> pair : aliases.getAliasHashMap().entrySet()) {
+                showMessage(index + ". " + pair.getKey() + " - " + pair.getValue());
+                index++;
+            }
+            showMessage(CommonMessage.DIVIDER);
         }
     }
 

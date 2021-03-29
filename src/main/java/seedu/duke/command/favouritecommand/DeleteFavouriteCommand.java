@@ -8,6 +8,7 @@ import seedu.duke.ui.FavouriteUi;
 public class DeleteFavouriteCommand extends Command {
 
     protected FavouriteUi ui;
+
     public DeleteFavouriteCommand() {
         this.ui = new FavouriteUi();
     }

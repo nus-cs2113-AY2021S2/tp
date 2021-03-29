@@ -2,7 +2,7 @@ package seedu.duke.ui;
 
 import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidDayException;
+import seedu.duke.exception.InvalidIndexException;
 
 import java.util.ArrayList;
 
@@ -17,6 +17,7 @@ public class DailyRouteUi extends UiManager {
             showMessage("Enter Location of the next activity of the day: ");
             schedule = getUserInput().toUpperCase();
         }
+        showMessage(CommonMessage.DIVIDER);
         return dailyBlocks;
     }
 
@@ -30,16 +31,20 @@ public class DailyRouteUi extends UiManager {
         return false;
     }
 
-    public int getDayEntryForAdd(ArrayList<String> validDays) throws InvalidDayException {
+    public int getDayEntryForAdd(ArrayList<String> validDays) throws InvalidIndexException {
         showListOfDays(validDays);
         showMessage("SELECT ENTRY TO ADD:");
-        return getEntryFromUser(validDays);
+        int dayIndex = getEntryFromUser(validDays);
+        showMessage(CommonMessage.DIVIDER);
+        return dayIndex;
     }
 
-    public int getDayEntryForShow(ArrayList<String> selectableDays) throws InvalidDayException {
+    public int getDayEntryForShow(ArrayList<String> selectableDays) throws InvalidIndexException {
         showListOfDays(selectableDays);
         showMessage("SELECT ENTRY TO VIEW:");
-        return getEntryFromUser(selectableDays);
+        int dayIndex =  getEntryFromUser(selectableDays);
+        showMessage(CommonMessage.DIVIDER);
+        return dayIndex;
     }
 
     public void showListOfDays(ArrayList<String> days) {
@@ -50,15 +55,15 @@ public class DailyRouteUi extends UiManager {
         showMessage(CommonMessage.DIVIDER);
     }
 
-    public int getEntryFromUser(ArrayList<String> days) throws InvalidDayException {
+    public int getEntryFromUser(ArrayList<String> days) throws InvalidIndexException {
         try {
             int dayEntry = Integer.parseInt(getUserInput()) - 1;
             if (dayEntry < 0 || dayEntry > days.size() - 1) {
-                throw new InvalidDayException();
+                throw new InvalidIndexException();
             }
             return dayEntry;
         } catch (NumberFormatException e) {
-            throw new InvalidDayException();
+            throw new InvalidIndexException();
         }
     }
 }

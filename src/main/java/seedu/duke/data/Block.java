@@ -1,18 +1,15 @@
 package seedu.duke.data;
 
-import java.util.ArrayList;
+import seedu.duke.exception.InvalidIndexException;
 
-import static seedu.duke.NotesCommandParser.location;
-import static seedu.duke.NotesCommandParser.note;
-import static seedu.duke.NotesCommandParser.noteIndexInList;
+import java.util.ArrayList;
 
 public class Block {
 
     private String name;
     private boolean isVisited;
     private ArrayList<Block> neighbours;
-    public ArrayList<String> notesList;
-    private int notesCount;
+    private ArrayList<String> notes;
     private int distanceFromStart;
 
 
@@ -20,25 +17,12 @@ public class Block {
         this.name = name;
         this.isVisited = false;
         this.neighbours = new ArrayList<>();
-        this.notesList = new ArrayList<>();
-        this.notesCount = 0;
+        this.notes = new ArrayList<>();
         this.distanceFromStart = 0;
     }
 
     public String getName() {
         return name;
-    }
-
-    public ArrayList<String> getNotesList() {
-        return this.notesList;
-    }
-
-    public int getNotesCount() {
-        return this.notesCount;
-    }
-
-    public void addNotesCount() {
-        this.notesCount++;
     }
 
     public boolean isVisited() {
@@ -65,6 +49,10 @@ public class Block {
         return neighbours;
     }
 
+    public ArrayList<String> getNotes() {
+        return notes;
+    }
+
     public int getDistanceFromStart() {
         return distanceFromStart;
     }
@@ -73,33 +61,15 @@ public class Block {
         this.distanceFromStart = distanceFromStart;
     }
 
-    public void addNotes() {
-        this.notesList.add(note); //add notes to list for that location
-        this.notesCount++; //add to count for number of notes made for that location
+    public void addNote(String note) {
+        this.notes.add(note); //add notes to list for that location
     }
 
-    public void deleteNotes() {
-        final String deletedNote = this.notesList.get(noteIndexInList); //record down deleted note
-
-        this.notesList.remove(noteIndexInList); //remove note using given Note Index from list
-        this.notesCount--; //reduce count for number of notes made for that location
-        System.out.println("This note tagged to " + location + " has been deleted:");
-        System.out.println("\t" + deletedNote);
-    }
-
-    public void listNotes() {
-        int currentNoteIndex = 0;
-        //Print all notes
-        for (String currentNote: notesList) {
-            System.out.print("\t");
-            currentNoteIndex++;
-            System.out.print(currentNoteIndex + ". ");
-            System.out.println(currentNote);
-        }
-        //If no notes for current location, tell user
-        if (currentNoteIndex == 0) {
-            System.out.println("No notes are tagged to this location.");
+    public void deleteNote(int index) throws InvalidIndexException {
+        try {
+            notes.remove(index);
+        } catch (IndexOutOfBoundsException e) {
+            throw new InvalidIndexException();
         }
     }
-
 }

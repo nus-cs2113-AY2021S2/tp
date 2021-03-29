@@ -1,6 +1,7 @@
 package seedu.duke.ui;
 
 import seedu.duke.data.Block;
+import seedu.duke.exception.InvalidIndexException;
 
 public class RouterUi extends UiManager {
 
@@ -13,23 +14,27 @@ public class RouterUi extends UiManager {
         showMessage("Destination Block:");
         startAndDestination[1] = getUserInput().toUpperCase();
 
+        showMessage(CommonMessage.DIVIDER);
         return startAndDestination;
     }
 
-    public int getEateryEntry(Block[] eateries) {
-        showMessage(
-                CommonMessage.DIVIDER,
-                "Here are the list of eateries(from closest to furthest):"
-        );
+    public int getEateryEntry(Block[] eateries) throws InvalidIndexException {
+        showMessage("Here are the list of eateries(from closest to furthest):");
 
         for (int i = 0; i < eateries.length; i++) {
             showMessage((i + 1) + ". " + eateries[i].getName());
         }
 
-        showMessageWithDivider(
+        showMessage(
                 CommonMessage.DIVIDER,
                 "SELECT ENTRY TO GO:"
         );
-        return Integer.parseInt(getUserInput());
+        try {
+            int eateryIndex = Integer.parseInt(getUserInput());
+            showMessage(CommonMessage.DIVIDER);
+            return eateryIndex;
+        } catch (NumberFormatException e) {
+            throw new InvalidIndexException();
+        }
     }
 }

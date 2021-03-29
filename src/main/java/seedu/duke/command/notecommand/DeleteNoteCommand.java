@@ -1,41 +1,36 @@
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;
-import seedu.duke.data.NusMap;
-import seedu.duke.ui.UiManager;
-import seedu.duke.data.History;
-import seedu.duke.data.DailyRoute;
-import seedu.duke.data.BlockAlias;
-import seedu.duke.data.Favourite;
-import seedu.duke.NotesCommandParser;
-
-import seedu.duke.exception.InvalidNoteIndexException;
-import seedu.duke.exception.NoLocationForNotesCommandException;
-import seedu.duke.exception.NoNoteIndexException;
-import seedu.duke.exception.NonExistentLocationForNotesCommandException;
-import seedu.duke.exception.WrongInputFormatException;
-
-import static seedu.duke.NotesCommandParser.location;
+import seedu.duke.data.Block;
+import seedu.duke.exception.EmptyNoteException;
+import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.ui.NoteUi;
 
 public class DeleteNoteCommand extends Command {
 
-    public DeleteNoteCommand(String userInput) {
-        super(userInput);
+    protected NoteUi ui;
+    private static final String MESSAGE_SUCCESS = "Got it! Successfully delete note tagged to %s";
+
+    public DeleteNoteCommand() {
+        this.ui = new NoteUi();
     }
 
     @Override
-    public void execute(NusMap nusMap, UiManager ui, History history, DailyRoute dailyRoute,
-                        BlockAlias blockAlias, Favourite favourite) {
+    public void execute() {
+        String deleteBlock = ui.getBlockInfo();
         try {
-            NotesCommandParser.parseDeleteNotesCommand(userInput, nusMap);
-            nusMap.map.get(location).deleteNotes();
-        } catch (WrongInputFormatException | NoLocationForNotesCommandException
-                | NonExistentLocationForNotesCommandException | NoNoteIndexException e) {
+            if (nusMap.isValidBlock(deleteBlock)) {
+                Block block = nusMap.getBlock(deleteBlock);
+                ui.showNotes(nusMap.getBlock(deleteBlock).getNotes());
+                int deleteIndex = ui.getDeleteIndex();
+                block.deleteNote(deleteIndex - 1);
+                ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
+            } else {
+                throw new InvalidBlockException();
+            }
+        } catch (EmptyNoteException | InvalidIndexException | InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
-        } catch (InvalidNoteIndexException e) {
-            ui.showMessageWithDivider(e.getMessage(nusMap));
-        } catch (NumberFormatException e) {
-            ui.showMessageWithDivider("Please enter a valid number for note index.");
         }
     }
 }

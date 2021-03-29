@@ -1,6 +1,10 @@
 package seedu.duke.command;
 
-import seedu.duke.data.*;
+import seedu.duke.data.BlockAlias;
+import seedu.duke.data.DailyRoute;
+import seedu.duke.data.Favourite;
+import seedu.duke.data.History;
+import seedu.duke.data.NusMap;
 
 public abstract class Command {
     protected NusMap nusMap;

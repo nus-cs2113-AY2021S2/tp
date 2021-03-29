@@ -1,8 +1,10 @@
 package seedu.duke.exception;
 
-public class EmptyNoteException extends NotesException {
+import java.io.IOException;
+
+public class EmptyNoteException extends NusMazeException {
     @Override
     public String getMessage() {
-        return "Please add a note behind. :))";
+        return "There are no notes tagged to %d";
     }
 }
