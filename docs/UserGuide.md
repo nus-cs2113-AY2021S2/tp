@@ -34,6 +34,7 @@ and share their recommendations easily.
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for connoisseur is saved in `connoisseur.json` in the _data folder_. 
 
 ## Review Mode
+Connoisseur has 2 modes, the first is the review mode, where you can add your own reviews of experiences. The review mode can be accessed from anywhere using the `review` command. 
 
 ### Viewing Help
 View help on commands recognised by Connoisseur. You can specify a command to get detailed help on it. 
@@ -66,11 +67,21 @@ Change the saved sorting method.
 
 Command: `sort <sorting_method>`
 
-`[sorting_method]` : sort method to be used. Default sorting method is `latest`. Refer above for a list of recognised sorting methods. 
+`<sorting_method>` : sort method to be used. Default sorting method is `latest`. Refer above for a list of recognised sorting methods. 
 
 ### Viewing a Review
+View details of a review. 
+
+Command: `view <title_of_review>`
+
+`<title_of_review>` : title of review that you want to view. 
 
 ### Deleting a Review
+Delete a review that you no longer need. 
+
+Command: `delete <title_of_review>`
+
+`<title_of_review>` : title of review that you want to delete. 
 
 ## Recommendation Mode
 
