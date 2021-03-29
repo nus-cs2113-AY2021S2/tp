@@ -68,7 +68,7 @@ public class Messages {
     public static final String FORMAT_PRINT_TEACHING_STAFF = "%d. %s - %s";
 
     public static final String MESSAGE_ADDED_LESSON = "Added %s to lesson list.";
-    public static final String MESSAGE_REMOVED_LESSON = "Removed %s from the lesson list.";
+    public static final String MESSAGE_REMOVED_LESSON = "Removed %s.";
     public static final String MESSAGE_OPENED_LESSON_LINK = "Opening %s link in browser.";
     public static final String MESSAGE_UNABLE_TO_OPEN_LINK = "Cannot open lesson link";
     public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
