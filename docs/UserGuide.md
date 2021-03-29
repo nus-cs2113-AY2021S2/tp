@@ -100,14 +100,14 @@ Example of usage:
 | help                | help                                                                                                       |
 | return              | return                                                                                                     |
 | Patient             |                                                                                                            |
-| add                 | add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed] add/P55555/Sam/40/Male Fever/Paracetamol   |
+| add                 | add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed] <br />add/P55555/Sam/40/Male Fever/Paracetamol   |
 | delete              | delete/[Patient ID] delete/P55555                                                                          |
 | find                | find/[Patient ID] find/P55555                                                                               |
 | list                | list                                                                                                       |
 | help                | help                                                                                                       |
 | return              | return                                                                                                     |
 | Doctor Appointments |                                                                                                            |
-| add                 | add/[Doctor ID]/ [Appointment ID]/ [Patient’s Name]/ [Gender]/[DDMMYYYY] add/D12345/Mingshun/ Pediatrician |
+| add                 | add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY] add/D12345/Mingshun/ Pediatrician |
 | delete              | delete/[Appointment ID] delete/A369                                                                        |
 | list                | list                                                                                                       |
 | help                | help                                                                                                       |
