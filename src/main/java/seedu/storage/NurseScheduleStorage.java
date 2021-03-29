@@ -1,17 +1,21 @@
 package seedu.storage;
 
+import seedu.logic.command.NurseScheduleActions;
 import seedu.model.NurseSchedule;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
 
 public class NurseScheduleStorage {
 
-    private static final String FILE_PATH = "NurseSchedules.txt";
+    private static final String FILE_PATH = SCHEDULES_FILE_PATH;
+    static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
     /**
      * Creates new file.
@@ -25,7 +29,7 @@ public class NurseScheduleStorage {
         }
     }
 
-    private static void readFile(List<NurseSchedule> nurseSchedules) {
+    private ArrayList<NurseSchedule> readFile() {
         try {
             FileInputStream file = new FileInputStream(FILE_PATH);
             Scanner sc = new Scanner(file);
@@ -34,19 +38,18 @@ public class NurseScheduleStorage {
                 String[] details = sc.nextLine().split("\\|", 0);
                 nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Error loading saved file!");
         }
+        return nurseSchedules;
     }
 
-    public void writeToFile(List<NurseSchedule> nurseSchedules) {
+    public void writeToFile(NurseScheduleActions nurseSchedules) {
         try {
             File file = new File(FILE_PATH);
             FileWriter writer = new FileWriter(file);
-            for (NurseSchedule n : nurseSchedules) {
-                writer.write(n.toSave());
+            for (int i = 0; i<nurseSchedules.getSize(); i++) {
+                writer.write(nurseSchedules.toSaveFile(i));
                 writer.write("\r\n");
             }
             writer.close();
@@ -55,8 +58,9 @@ public class NurseScheduleStorage {
         }
     }
 
-    public void load(List<NurseSchedule> nurseSchedules) {
+    public ArrayList<NurseSchedule> load() {
         createFile();
-        readFile(nurseSchedules);
+        nurseSchedules = readFile();
+        return nurseSchedules;
     }
 }

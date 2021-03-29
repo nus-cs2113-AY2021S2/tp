@@ -3,7 +3,12 @@ package seedu.logic.parser;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
+import seedu.logic.command.nurseschedule.NurseScheduleAdd;
+import seedu.logic.command.nurseschedule.NurseScheduleDelete;
+import seedu.logic.command.nurseschedule.NurseScheduleList;
+import seedu.logic.command.nurseschedule.NurseScheduleReturn;
 import seedu.model.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
@@ -100,55 +105,96 @@ public class NurseSchedulesParser {
         return true;
     }
 
-    public boolean commandHandler(List<NurseSchedule> nurseSchedules, String command, String line) {
-        NurseScheduleActions actions = new NurseScheduleActions();
-        NurseScheduleStorage storage = new NurseScheduleStorage();
+    public Command nurseParse(String line, NurseScheduleUI ui) {
         NurseSchedulesParser parser = new NurseSchedulesParser();
+        String command = parser.getFirstWord(line);
+        Command c = null;
 
         switch (command) {
         case "add":
             try {
-                actions.addSchedule(nurseSchedules, parser.getDetails(line));
-                storage.writeToFile(nurseSchedules);
-            } catch (WrongInputsException | ParseException e) {
+                String[] details = parser.getDetails(line);
+                c = new NurseScheduleAdd(details);
+            } catch (WrongInputsException e) {
                 System.out.println(e.getMessage());
-                NurseScheduleUI.addHelpMessage();
+                ui.addHelpMessage();
             }
             break;
         case "list":
             try {
-                actions.listSchedules(nurseSchedules, parser.getDetails(line));
+                String[] details = parser.getDetails(line);
+                c = new NurseScheduleList(details);
             } catch (WrongInputsException e) {
-                NurseScheduleUI.invalidInputsMessage();
-                NurseScheduleUI.listHelpMessage();
-            } catch (EmptyListException e) {
                 System.out.println(e.getMessage());
-            } catch (NurseIdNotFound e) {
-                System.out.println(e.getMessage());
+                ui.listHelpMessage();
             }
             break;
         case "delete":
             try {
-                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-                storage.writeToFile(nurseSchedules);
-            } catch (WrongInputsException e) {
+                String[] details = parser.getDetails(line);
+                c = new NurseScheduleDelete(details);
+            } catch(WrongInputsException e) {
                 System.out.println(e.getMessage());
-                NurseScheduleUI.deleteHelpMessage();
-            } catch (NurseIdNotFound e) {
-                System.out.println(e.getMessage());
+                ui.deleteHelpMessage();
             }
-            break;
         case "help":
-            NurseScheduleUI.printNurseScheduleHelpList();
-            break;
+
         case "return":
-            storage.writeToFile(nurseSchedules);
-            NurseScheduleUI.returningToStartMenuMessage();
-            return false;
-        default:
-            NurseScheduleUI.invalidCommandMessage();
+            c = new NurseScheduleReturn();
             break;
         }
-        return true;
+        return c;
     }
+
+//    public boolean commandHandler(List<NurseSchedule> nurseSchedules, String command, String line) {
+//        NurseScheduleActions actions = new NurseScheduleActions();
+//        NurseScheduleStorage storage = new NurseScheduleStorage();
+//        NurseSchedulesParser parser = new NurseSchedulesParser();
+//
+//        switch (command) {
+//        case "add":
+//            try {
+//                actions.addSchedule(nurseSchedules, parser.getDetails(line));
+//                storage.writeToFile(nurseSchedules);
+//            } catch (WrongInputsException | ParseException e) {
+//                System.out.println(e.getMessage());
+//                NurseScheduleUI.addHelpMessage();
+//            }
+//            break;
+//        case "list":
+//            try {
+//                actions.listSchedules(nurseSchedules, parser.getDetails(line));
+//            } catch (WrongInputsException e) {
+//                NurseScheduleUI.invalidInputsMessage();
+//                NurseScheduleUI.listHelpMessage();
+//            } catch (EmptyListException e) {
+//                System.out.println(e.getMessage());
+//            } catch (NurseIdNotFound e) {
+//                System.out.println(e.getMessage());
+//            }
+//            break;
+//        case "delete":
+//            try {
+//                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
+//                storage.writeToFile(nurseSchedules);
+//            } catch (WrongInputsException e) {
+//                System.out.println(e.getMessage());
+//                NurseScheduleUI.deleteHelpMessage();
+//            } catch (NurseIdNotFound e) {
+//                System.out.println(e.getMessage());
+//            }
+//            break;
+//        case "help":
+//            NurseScheduleUI.printNurseScheduleHelpList();
+//            break;
+//        case "return":
+//            storage.writeToFile(nurseSchedules);
+//            NurseScheduleUI.returningToStartMenuMessage();
+//            return false;
+//        default:
+//            NurseScheduleUI.invalidCommandMessage();
+//            break;
+//        }
+//        return true;
+//    }
 }

@@ -1,12 +1,10 @@
 package seedu.logic.instance;
 
+import seedu.logic.command.Command;
+import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
-import seedu.model.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Main entry-point for the NurseSchedules instance.
@@ -14,40 +12,35 @@ import java.util.List;
 public class NurseScheduleInstance {
 
     private NurseSchedulesParser parser;
+    private NurseScheduleActions nurseSchedules;
     private NurseScheduleStorage storage;
-
-    /** The list of nurse schedules. */
-    List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
-
-    public static void main() {
-        new NurseScheduleInstance().run();
-    }
+    private NurseScheduleUI ui;
 
     /** Runs the program until termination. */
-    private void run() {
-        initClasses();
-        start();
+    public void run() {
+        init();
         runCommandLoopUntilExit();
     }
 
-    public void initClasses() {
+    private void init() {
         this.parser = new NurseSchedulesParser();
+        this.nurseSchedules = new NurseScheduleActions(storage.load());
         this.storage = new NurseScheduleStorage();
-    }
+        this.ui = new NurseScheduleUI();
 
-    private void start() {
-        storage.load(nurseSchedules);
-        NurseScheduleUI.printNurseScheduleWelcomeMessage();
+        ui.printNurseScheduleWelcomeMessage();
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
     private void runCommandLoopUntilExit() {
-        boolean isRun = true;
-        while (isRun) {
-            NurseScheduleUI.nurseSchedulePrompt();
+        boolean isReturnToStartMenu = false;
+        while (!isReturnToStartMenu) {
+            ui.nurseSchedulePrompt();
             String line = parser.getUserInput().trim();
-            String command = parser.getFirstWord(line);
-            isRun = parser.commandHandler(nurseSchedules, command, line);
+            Command c = parser.nurseParse(line, ui);
+            c.execute(nurseSchedules, ui);
+            storage.writeToFile(nurseSchedules);
+            isReturnToStartMenu = c.isExit();
         }
     }
 }
