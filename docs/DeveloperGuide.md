@@ -256,7 +256,7 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 ### 3.6 Storage Component
 
 #### Description
-The Storage component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
+The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
 `records` from the `RecordList` into a text format in a text output file and vice versa.
 
 #### Design
@@ -346,12 +346,12 @@ To list savings:
 
 
 ### 4.3 View Feature
-The view feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
+The `view` feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
 category of *expense*, *loan*, and *saving* of the added records.  
 
 #### 4.3.1 Current Implementation
 
-The view feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
+The `view` feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
@@ -443,14 +443,14 @@ Loan marked as returned: [L][2021-03-16] Loan to Tom [v]
 
 ### 4.5 Remove Feature
 
-The remove feature aims to allow users to remove records after querying the record's
+The `remove` feature aims to allow users to remove records after querying the record's
 index number with the `list` command. The users will be able to then use the `remove`
 command to delete certain records that they deem obsolete or is incorrect. Hence, this feature
 allows them to amend their mistakes or edit their list with constraints.
 
 #### 4.5.1 Current Implementation
 
-The remove feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
+The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
 parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
 
@@ -532,7 +532,56 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-...
+The `storage` feature allows all `records` and `creditScoreMap` to be stored locally on the device and for `records` and 
+and `creditScoreMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+that does not have an explicit command to call it.
+
+#### 4.6.1 Current Implementation
+As the saving and loading methods have no explicit command calls, these methods are invoked by methods from the other
+classes. During the launch of the Finux application, in the `start` method, `getRecordListData` is called to load the
+data from the saved file: `finux.txt`. 
+
+Saving of `records` works differently, these `records` will be automatically saved into `finux.txt` only with a few 
+particular command calls, these calls are the commands that will alter the `records` in the `RecordList`.
+
+The following commands and scenarios where these `records` will be saved locally into the save file:
+* `add`
+* `remove`
+* `return`
+
+The sequence below will show you how the `Storage` class behaves at each step. As all three methods above generally
+behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
+for all the three methods above.
+
+***Step 1***
+
+***Step 2***
+
+#### 4.6.2 Design Consideration
+This section will walk you through the design considerations taken when implementing the remove feature.
+
+Aspect: **When should the data be saved into a local file**
+
+Since we do not have an explicit function call to save the files, the data should be automatically saved but there are
+multiple occasions that this can be invoked:
+* On exit
+* After each command call
+* After any command call that edits data in `RecordList`
+
+|Approach|Pros|Cons|
+|--------|----|----|
+|On Exit|Save just has to be called exactly once, minimal coupling|If program crashes before `exit` is called, all data will be lost|
+|After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
+|After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
+
+> 💡 Note that data in the HashMap `creditScoreMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `creditScoreMap` will also be reflected in the `Loan`
+> object which is a part of the `RecordList`.
+
+After considering the above approaches, we have decided to adopt the third approach even though there might be more
+coupling than the first method. By choosing the third approach, we can ensure that our data is stored safely and as 
+compared to the second approach, the third approach minimises the coupling within our methods.
+
 
 ### 4.7 Credit Score Feature
 The `creditscore` feature aims to provide users with a computation of borrowers' credibility via a point scoring system.

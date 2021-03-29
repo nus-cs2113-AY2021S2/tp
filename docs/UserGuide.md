@@ -231,13 +231,13 @@ Output:
 * FINUX will automatically load the data from "finux.txt" when it finds the text
 file in the same directory. <br><br>
 
-* Expected output for new file creation:
+* Expected output for new file creation: <br>
 ![new_file_creation_output](img/New_File_Creation_Example.jpg)
 
-* Expected output if successful load:
+* Expected output if successful load: <br>
 ![load success example output](img/Successful_Load_Example.jpg)
 
-* Expected output if not successfully loaded:
+* Expected output if not successfully loaded: <br>
 ![load fail example output](img/Failed_Load_Example_Output.jpg)
   
 #### 3.9.3 Editing the saved file directly
