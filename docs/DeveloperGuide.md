@@ -173,10 +173,48 @@ _Exceptions related to file storage:_
 
 * *glossary item* - Definition
 
-## Instructions for manual testing
+--------------------------------------------------------------------------------------------------------------------
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+## **Appendix: Instructions for manual testing**
 
-# Attribution
+Given below are instructions to test the app manually.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting
+point for testers to work on; testers are expected to do more *exploratory* testing.
+
+</div>
+
+### Launch and shutdown
+
+1. Ensure that you have Java 11 or above installed.
+2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
+3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
+4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
+   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
+   list of all current food.
+6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with 
+   `Ctrl+C` or closing the terminal.   
+
+### Adding food
+
+When adding food, the `FridgeFriend` application requires a very specific format, so that all attributes of 
+a given food can be added to the Fridge. This might be very troublesome for manual testing.
+
+Here are some inputs you can try:
+* `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
+  * Inputs a `chicken` of category `meat`, with expiry date of `30-06-2021`, location of `lower_shelf`, and 
+    quantity of `100`.
+* `add milk /cat dairy /exp 31-12-2021 /loc fridge_door /qty 2`
+  * Inputs a `milk` of category `dairy`, with expiry date of `31-12-2021`, location of `fridge_door`, and
+    quantity of `2`.
+* `add Coke /cat beverage /exp 30-07-2021 /loc upper_shelf /qty 5`
+  * Inputs a `Coke` of category `beverage`, with expiry date of `30-07-2021`, location of `upper_shelf`, and
+    quantity of `5`.    
+* `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
+  * Inputs a `squid` of category `seafood`, with expiry date of `15-08-2021`, location of `freezer`, and
+    quantity of `100`.
+    
+## Attribution
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).
