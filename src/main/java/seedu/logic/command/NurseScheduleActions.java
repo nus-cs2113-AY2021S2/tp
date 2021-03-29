@@ -5,7 +5,6 @@ import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class NurseScheduleActions {
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
     public NurseScheduleActions(ArrayList<NurseSchedule> load) {
-        this.nurseSchedules = load;
+        nurseSchedules = load;
     }
 
 //    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
@@ -56,7 +55,6 @@ public class NurseScheduleActions {
             getNurseSchedulesByID(nurseSchedules, details[0]);
             printSchedules(findSchedules);
         }
-        UI.showLine();
     }
 
     /**

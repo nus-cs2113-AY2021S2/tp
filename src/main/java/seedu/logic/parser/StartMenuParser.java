@@ -1,15 +1,16 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.DukeException;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
 import seedu.logic.command.startmenu.*;
+import static seedu.ui.UI.smartCommandRecognition;
 
 import java.util.Locale;
 
 import static seedu.duke.Constants.*;
 
 public class StartMenuParser {
+    static final String[] COMMANDS = {"staff", "patient", "appointments", "schedules", "inventory", "help", "bye"};
 
     public Command startMenuParse(String userInput) {
         assert userInput != null : "user input should not be null";
@@ -18,7 +19,7 @@ public class StartMenuParser {
         Command c = null;
         try {
             String formattedMessage = userInput.toLowerCase(Locale.ROOT).trim();
-            switch (formattedMessage) {
+            switch (smartCommandRecognition(COMMANDS, formattedMessage)) {
             case TO_STAFF_INSTANCE:
                 c = new ToStaffInstance();
                 break;

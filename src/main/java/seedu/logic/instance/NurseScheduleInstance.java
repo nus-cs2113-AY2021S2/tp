@@ -5,6 +5,7 @@ import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
+import seedu.ui.UI;
 
 /**
  * Main entry-point for the NurseSchedules instance.
@@ -16,31 +17,34 @@ public class NurseScheduleInstance {
     private NurseScheduleStorage storage;
     private NurseScheduleUI ui;
 
-    /** Runs the program until termination. */
-    public void run() {
-        init();
-        runCommandLoopUntilExit();
-    }
-
-    private void init() {
-        this.parser = new NurseSchedulesParser();
-        this.nurseSchedules = new NurseScheduleActions(storage.load());
-        this.storage = new NurseScheduleStorage();
-        this.ui = new NurseScheduleUI();
-
-        ui.printNurseScheduleWelcomeMessage();
+    public NurseScheduleInstance() {
+        parser = new NurseSchedulesParser();
+        nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
+        storage = new NurseScheduleStorage();
+        ui = new NurseScheduleUI();
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
-    private void runCommandLoopUntilExit() {
+    public void runCommandLoopUntilExit() {
+        ui.printNurseScheduleWelcomeMessage();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
-            ui.nurseSchedulePrompt();
-            String line = parser.getUserInput().trim();
-            Command c = parser.nurseParse(line, ui);
-            c.execute(nurseSchedules, ui);
-            storage.writeToFile(nurseSchedules);
-            isReturnToStartMenu = c.isExit();
+            try {
+                ui.nurseSchedulePrompt();
+                String line = parser.getUserInput().trim();
+                Command c = parser.nurseParse(line, ui);
+                c.execute(nurseSchedules, ui);
+                storage.writeToFile(nurseSchedules);
+                isReturnToStartMenu = c.isExit();
+                if (isReturnToStartMenu) {
+                    UI.returningToStartMenuMessage();
+                }
+                UI.showLine();
+            } catch (NullPointerException e) {
+                ui.invalidInputsMessage();
+                //Command C can return as null if an error is triggered in parser
+                //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+            }
         }
     }
 }
