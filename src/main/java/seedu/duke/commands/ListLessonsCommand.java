@@ -8,7 +8,7 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
+import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM_DETAILS;
 import static seedu.duke.common.Messages.INDENTATION;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 
@@ -42,7 +42,7 @@ public class ListLessonsCommand extends Command {
         for (Lesson lesson : lessonList) {
             String lessonType = lesson.getLessonTypeString();
             String lessonTime = lesson.getTime();
-            ui.printMessage(String.format(FORMAT_PRINT_LESSON, counter, lessonType, lessonTime));
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM_DETAILS, counter, lessonType, lessonTime));
             String lessonOnlineLink = lesson.getOnlineLink();
             if (!lessonOnlineLink.isEmpty()) {
                 ui.printMessage(INDENTATION + lessonOnlineLink);
