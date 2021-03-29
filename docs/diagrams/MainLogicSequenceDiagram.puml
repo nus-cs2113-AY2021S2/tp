@@ -41,13 +41,14 @@ loop isExit
         return
     else exception caught
         create exception
-        fridgefriend -> exception: constructor()
+        command -> exception: constructor()
         return e
+        command --> fridgefriend: e
         fridgefriend -> ui: printExceptionMessage()
         return
         destroy exception
         end
     end
-return
+fridgefriend --> fridgefriend
 
 @enduml
