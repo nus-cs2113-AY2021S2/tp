@@ -1,5 +1,6 @@
 package seedu.fridgefriend.exception;
 
+
 /**
  * Signals that the format of the input is incorrect.
  */
@@ -10,6 +11,7 @@ public class InvalidInputException extends Exception {
         super(errorMessage);
     }
 
+    //@@author Vinci-Hu
     public InvalidInputException(String message) {
         super(message);
     }

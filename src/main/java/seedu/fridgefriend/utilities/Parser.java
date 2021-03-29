@@ -34,6 +34,7 @@ public class Parser {
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
 
+    //@@author Vinci-Hu
     /**
      * Define arguments format for add food command.
      * A Pattern object which defines how the input string for food item
@@ -52,6 +53,7 @@ public class Parser {
     private static final Pattern REMOVE_ARGS_FORMAT =
             Pattern.compile("(?<name>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
+    //@@author
 
     /**
      * Define arguments format for remove food command with quantity.
@@ -60,6 +62,7 @@ public class Parser {
             Pattern.compile("(?<foodCategory>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
 
+    //@@author SimJJ96
     /**
      * Returns a Command object based on the user's raw input.
      *
@@ -171,12 +174,14 @@ public class Parser {
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
             InvalidDateException, InvalidQuantityException {
-        Command addCommand = parseFoodDescription(description);
+        Command addCommand = parseAddDescription(description);
         return addCommand;
     }
+    //@@author
 
+    //@@author Vinci-Hu
     /**
-     * Parses description into name, foodCategory, expiryDate and storageLocation.
+     * Parses description into name, foodCategory, expiryDate and storageLocation and quanity.
      * Matcher objects will try to parse a string according to the Pattern we define
      * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
      *
@@ -187,7 +192,7 @@ public class Parser {
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
-    private static Command parseFoodDescription(String foodDescription)
+    private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
             InvalidDateException, InvalidQuantityException {
         if (foodDescription.isEmpty()) {
@@ -207,8 +212,8 @@ public class Parser {
             throw new InvalidInputException();
         }
     }
+    //@@author
 
-    //@@author SimJJ96
     /**
      * Returns a ListCommand object based on description.
      *
@@ -235,9 +240,21 @@ public class Parser {
         return removeCommand;
     }
 
+    //@@author Vinci-Hu
+    /**
+     * Parses description into name and quantity.
+     * Matcher objects will try to parse a string according to the Pattern we define
+     * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
+     *
+     * @param removeDescription the string in the required format of food description
+     * @return a new RemoveCommand for Food
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parsed
+     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
+     */
     private static Command parseRemoveDescription(String removeDescription)
-            throws EmptyDescriptionException, InvalidQuantityException,
-            FoodNameNotFoundException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidQuantityException, InvalidInputException {
         if (removeDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -250,6 +267,7 @@ public class Parser {
             throw new InvalidInputException();
         }
     }
+    //@@author
 
     //@@author SimJJ96
     /**
@@ -263,6 +281,7 @@ public class Parser {
         Command searchCommand = new SearchCommand(description);
         return searchCommand;
     }
+    //@@author
 
     /**
      * Returns an ExpiringCommand object.
@@ -364,5 +383,5 @@ public class Parser {
             throw new InvalidQuantityException();
         }
     }
-
+    //@author
 }

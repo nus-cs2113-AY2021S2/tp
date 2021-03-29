@@ -178,7 +178,46 @@ The `RemoveCommand` implements the operation through removing the quantity of th
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+###Performance and scalability
+
+#### Constraint: Single-User
+The product should be for a single user i.e. (not a multi-user product).
+
+**Reason**: multi-user systems are hard to test, which is unfair for peer testers who will be graded based on the number of bugs they find.
+
+#### Constraint: Typing-Preferred
+The product should be targeting users who can type fast and prefer typing over other means of input.
+
+**Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
+
+
+### Portability and compatibility
+
+#### Constraint: Platform-Independent
+The software should work on the Windows, Linux, and OS-X platforms.
+
+**Reason**: Peer testers should be able to use any of these platforms.
+
+#### Constraint: Java-Version
+The software should work on a computer that has version 11 of Java i.e., no other Java version installed.
+
+### Reliability, availability, maintainability
+ As it is a locally-runned command line application, there will be no down time for users.
+ It should be available anytime and anywhere.
+
+#### Constraint: No-Remote-Server
+The software should not depend on any remote servers.
+
+### Security
+
+#### Constraint: Human-Editable-File
+The data should be stored locally and should be in a human editable text file.
+Thus the data is not protected by nature.
+
+**Reason**: To allow advanced users to manipulate the data by editing the data file.
+
+### Usability
+ It is very easy for a user to use the system. There is a detailed user guide provided as well as a help command.
 
 ## Glossary
 

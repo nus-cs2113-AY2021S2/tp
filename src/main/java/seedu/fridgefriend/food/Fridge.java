@@ -9,6 +9,7 @@ public class Fridge {
 
     private ArrayList<Food> fridge = new ArrayList<>();
 
+    //@@author Vinci-Hu
     /**
      * Call the UniqueFoodnameChecker methods before adding.
      * Checks if foodname already exists;
@@ -40,6 +41,11 @@ public class Fridge {
         return fridge.get(i);
     }
 
+    public void removeByIndex(int index) {
+        fridge.remove(index);
+    }
+
+    //@@author Vinci-Hu
     private void editFoodQuantity(Food newFood, Food existingFood) {
         int deltaQuantity = newFood.getQuantity();
         int oriQuantity = existingFood.getQuantity();
@@ -55,7 +61,8 @@ public class Fridge {
     public void clearFridge() {
         fridge.clear();
     }
-    
+
+    //@@author
     /**
      * Returns a boolean indicated if the food in a category is running out.
      * 

@@ -33,6 +33,7 @@ class ListCommandTest {
         fridge.add(pork);
     }
 
+    //@@author Vinci-Hu
     @Test
     public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() {
         ListCommand listCommand = new ListCommand("MEAT");
@@ -66,6 +67,7 @@ class ListCommandTest {
                 new ListCommand("abc123").execute());
     }
 
+    //@@author Vinci-Hu
     @Test
     public void listCommand_listAll_listAllFoodInFridge() {
         ListCommand listCommand = new ListCommand("");

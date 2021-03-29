@@ -41,6 +41,7 @@ class RemoveCommandTest {
         removeCommand.setData(fridge);
     }
 
+    //@@author Vinci-Hu
     @Test
     public void removeCommand_removePortionOfFood_successfullyRemovePortion()
             throws InvalidQuantityException, FoodNameNotFoundException {

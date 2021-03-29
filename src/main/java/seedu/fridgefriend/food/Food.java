@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author Vinci-Hu
 /**
  * Represents a portion of a specific food that is stored in the smart fridge.
  * When calling constructor, category, foodName, expiryString, storageLocation

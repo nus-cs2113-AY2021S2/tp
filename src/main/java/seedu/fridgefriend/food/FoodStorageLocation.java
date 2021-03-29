@@ -1,5 +1,6 @@
 package seedu.fridgefriend.food;
 
+//@@author Vinci-Hu
 /**
  * Assume the fridge has these storage locations
  * Reference: https://styledegree.sg/the-right-way-to-store-organize-food-in-fridge/
@@ -13,6 +14,7 @@ public enum FoodStorageLocation {
     FRIDGE_DOOR,
     OTHER;
 
+    //@@author
     public static boolean contains(String string) {
         for (FoodStorageLocation location : values()) {
             if (location.name().equals(string)) {

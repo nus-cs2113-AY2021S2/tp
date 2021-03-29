@@ -12,6 +12,7 @@ public class InvalidQuantityException extends Exception {
         super(errorMessage);
     }
 
+    //@@author Vinci-Hu
     public InvalidQuantityException(String msg) {
         super(msg);
     }

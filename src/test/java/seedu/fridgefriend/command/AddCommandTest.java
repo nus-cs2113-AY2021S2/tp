@@ -25,6 +25,24 @@ class AddCommandTest {
     }
 
     @Test
+    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            new AddCommand("chicken", FoodCategory.MEAT,
+                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
+        });
+    }
+
+    @Test
+    public void addCommand_invalidDate_InvalidDateException() {
+        assertThrows(InvalidDateException.class, () -> {
+            new AddCommand("chicken", FoodCategory.MEAT,
+                    "abcd", FoodStorageLocation.FREEZER, 200);
+        });
+    }
+    //@@author
+
+    //@@author Vinci-Hu
+    @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded()
             throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand = new AddCommand("Coke", FoodCategory.BEVERAGE,
@@ -76,15 +94,7 @@ class AddCommandTest {
         assertEquals("cooked chicken", fridge.getFood(0).getFoodName());
     }
 
-    //@@author SimJJ96
-    @Test
-    public void addCommand_invalidDate_InvalidDateException() {
-        assertThrows(InvalidDateException.class, () -> {
-            new AddCommand("chicken", FoodCategory.MEAT,
-                    "abcd", FoodStorageLocation.FREEZER, 200);
-        });
-    }
-
+    //@@author Vinci-Hu
     @Test
     public void addCommand_foodWithSameName_successfullyAdded()
             throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
@@ -104,15 +114,6 @@ class AddCommandTest {
                 + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 5";
         String actualMessage = addCommand2.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
-    }
-
-    //@@author SimJJ96
-    @Test
-    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
-        assertThrows(InvalidQuantityException.class, () -> {
-            new AddCommand("chicken", FoodCategory.MEAT,
-                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
-        });
     }
 
 }
