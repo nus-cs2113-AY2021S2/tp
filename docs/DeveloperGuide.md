@@ -288,7 +288,7 @@ object is created. Most of the input validation is done in the constructor of ea
    1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
    3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
-      E.g. ViewCommand implements `{-s | -l | -e}` options, `view -s -l` is considered a conflict of options.
+      E.g. ViewCommand implements `{-e | -l | -s}` options, `view -s -l` is considered a conflict of options.
 2. Secondly, option values are validated (if any):
    * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
      Each option value is validated based on the input validation methods for each data type.
@@ -312,7 +312,17 @@ This section introduces the specific implementation details and design thought p
 of some features in **Finux**.
 
 ### 4.1 Add Feature
-...
+The `add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
+When adding an expense `add -e bread loaf -a 2.50 -d today`, or\
+adding a savings `add -s week's savings -a 100 -d 28/03/2021`, or\
+adding a loan `add -l loan to gerard -a 200 -d 12012021 -p Gerard`,
+the `ParserHandler` will parse the input for `CommandHandler` to create the `AddCommand` object.
+By calling the `execute()` method, the respective `Expense`, `Saving` or `Loan` object is added 
+into the `RecordList`.
+
+#### 4.1.1 Current Implementation
+
+#### 4.3.2 Design Consideration
 
 ### 4.2 List Feature
 The `list` feature allows Finux users to list records that they have entered into the system.
