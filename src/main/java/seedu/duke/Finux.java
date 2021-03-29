@@ -12,6 +12,8 @@ import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constant.FINUX_LOGGER;
+
 public class Finux {
     private Ui ui;
     private RecordList records;
@@ -52,6 +54,7 @@ public class Finux {
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
+            FINUX_LOGGER.logWarning("Unable to load finux.txt!");
             System.exit(-1);
         }
     }
