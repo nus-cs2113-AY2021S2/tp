@@ -192,26 +192,46 @@ Through Patient Manager, general practitioners are able to manage patients faste
     1. Test case: `exit`\
         Expected: Application prints goodbye message and exits. All data will be saved to
        `./data/TODO_ADD_FILENAME_HERE.txt`
+<!--
 ### Adding and deleting patients
+-->
+### Adding and Loading Patients
 
 1. Adding a new patient
     1. Test case: `add S1234567D`\
        Expected: Application prints:
        ```
        ----------------------------------------------------------------------
-        Patient S1234567D has been added!
-        ----------------------------------------------------------------------
+       Patient S1234567D has been added!
+       ----------------------------------------------------------------------
        ```
    <!-- TODO: prevent adding duplicate patients
     1. Test case: `add S1234567D`\
        Expected: Application prints:
        ```
        ----------------------------------------------------------------------
-        Patient S1234567D has been added!
-        ----------------------------------------------------------------------
+       Patient S1234567D has been added!
+       ----------------------------------------------------------------------
        ```
     -->
+2. Loading a patient's records
+    1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
+    2. Test case: `load S1234567D`\
+       Expected: Application loads S1234567D's records and prints:
+       ```
+       ----------------------------------------------------------------------
+       Patient S1234567D's data has been found and loaded.
+       ----------------------------------------------------------------------
+       ```
+<!-- TODO: add this after implementing delete
 2. Deleting a patient
+    1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
+    2. Test case: `delete S1234567D`\
+        Expected: 
+-->
+### Adding and Viewing a Patient's Visit Records
+1. Adding visit records
+    1. Prerequisite: 
 <!--
 ### Automated Testing
 We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
