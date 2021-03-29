@@ -8,26 +8,21 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
+import static stores.Store.averageRating;
+
 
 public class ReadReviewsCommand extends Command {
-    private Store store;
-    private static double ratingSum = 0;
-    private static int ratingCount = 0;
-    private static double averageRating = 0;
+    public Store store;
+
 
     public ReadReviewsCommand(Store store) {
         this.store = store;
     }
 
-
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
-        for (Review rating : reviews) {
-            ratingSum = ratingSum + rating.getRating();
-            ratingCount++;
-        }
-        averageRating = ratingSum / ratingCount;
+        averageRating =store.getAverageRating();
         ui.showReviews(store.getStoreName(), reviews,averageRating);
     }
 }

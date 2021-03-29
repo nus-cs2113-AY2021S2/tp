@@ -10,9 +10,11 @@ import stores.Store;
 import ui.Ui;
 import checkuser.CheckUser;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NusFoodReviews {
+    private ArrayList<Store> stores;
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
     private Storage storage;

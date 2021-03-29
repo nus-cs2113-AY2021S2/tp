@@ -13,6 +13,7 @@ public class Canteen {
 
     public static int CanteenCount;
 
+
     public Canteen(String canteenName) {
         this.canteenName = canteenName;
         stores = new ArrayList<>();
@@ -22,6 +23,9 @@ public class Canteen {
     public void addStore(String storeName) {
         Store newStore = new Store(storeName);
         stores.add(newStore);
+    }
+    public void deleteStore(int storeIndex) {
+        stores.remove(storeIndex);
     }
 
     public int getNumStores() {
