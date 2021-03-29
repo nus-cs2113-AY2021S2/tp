@@ -309,6 +309,7 @@ public class Ui {
     public void printCommandDoesNotExistInReviewMode() {
         println("This command does not exist in review mode");
     }
+
     public void printCommandDoesNotExistInRecommendationMode() {
         println("This command does not exist in recommendation mode");
     }

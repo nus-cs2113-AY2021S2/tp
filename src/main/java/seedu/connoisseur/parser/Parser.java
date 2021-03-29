@@ -35,7 +35,8 @@ public class Parser {
 
         switch (command) {
         case "review":
-            commands.reviewMode();;
+            commands.reviewMode();
+            ;
             break;
         case "reco":
             commands.recommendationMode();
@@ -58,6 +59,7 @@ public class Parser {
             break;
         case "done":
             commands.done(arguments);
+            break;
         case "view":
             commands.view(arguments);
             break;

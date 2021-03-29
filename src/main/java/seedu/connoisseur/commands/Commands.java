@@ -156,7 +156,7 @@ public class Commands {
     }
 
     /**
-     * Removes selected recommended from list and converts it to a review
+     * Removes selected recommended from list and converts it to a review.
      *
      * @param title title of the review to be viewed.
      */
