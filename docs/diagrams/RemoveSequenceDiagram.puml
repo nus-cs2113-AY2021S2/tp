@@ -5,6 +5,7 @@
 participant ":RemoveCommand" as RemoveCommand
 participant "fridge:Fridge" as Fridge
 participant ":Food" as Food
+participant ":Exception" as Exception
 
 -> RemoveCommand: execute()
 activate RemoveCommand
@@ -12,8 +13,9 @@ activate RemoveCommand
 RemoveCommand -> RemoveCommand: findFoodByName(foodNameToEdit: String)
 activate RemoveCommand
 
+
 loop food in fridge
-    RemoveCommand -> Fridge: getFridge()
+    RemoveCommand -> Fridge: getFood()
     activate Fridge
     opt equals foodNameToEdit
         Fridge -> Food: getFoodName()
@@ -26,23 +28,29 @@ end
 deactivate RemoveCommand
 
 alt newQuantity > 0
-    RemoveCommand -> Fridge: getFridge()
+    RemoveCommand -> RemoveCommand: removePortion()
+    activate RemoveCommand
+    RemoveCommand -> Fridge: getFood()
     activate Fridge
     Fridge -> Food: setQuantity()
     activate Food
     return
     return
-    deactivate Food
     deactivate Fridge
-    destroy Food
 else newQuantity == 0
-    RemoveCommand -> Fridge: removeFood
+    RemoveCommand -> Fridge: remove()
     activate Fridge
     return
     deactivate Fridge
+else exception
+    RemoveCommand -> Exception: throw
+    activate Exception
+    return
 end
+deactivate RemoveCommand
+destroy Food
 destroy Fridge
-
+destroy Exception
 <-- RemoveCommand: result
 deactivate RemoveCommand
 
