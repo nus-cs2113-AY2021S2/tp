@@ -55,8 +55,8 @@ Graphical User Interface (GUI).
 
 - Operating system should be: Windows 7 and above, macOS or Linux.
 - Ensure that Java 11 is installed on your computer.
-  - You can download the latest version of Java 11
-    from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+    - You can download the latest version of Java 11
+      from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
 #### 2.1.1 Windows 7 and above
 
@@ -64,7 +64,9 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
@@ -73,7 +75,9 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
@@ -82,7 +86,9 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
@@ -123,6 +129,7 @@ Please choose which action you would like to do and enter the number:
 [6] --- Delete modules
 [7] --- Exit to main menu
 ```
+
 #### 3.1.1 Add/View Module Description
 
 Adds user-defined module description.  
@@ -183,9 +190,10 @@ User can view module description added previously.
   
   Returning to module information menu...
   ````
+
 #### 3.1.2 Add/View Components and Their Weightages
-* Example for adding components and weightage to a module
-  Input:  
+
+* Example for adding components and weightage to a module Input:  
   `2`  
   Output:
   ````
@@ -205,7 +213,7 @@ User can view module description added previously.
   ````
   Input:  
   `CS2113T`  
-  Output:  
+  Output:
   ````
   Please key in your component and percentage of the component.
   Leave space between component and percentage only.
@@ -217,8 +225,7 @@ User can view module description added previously.
   ````
   Component and weightage added!
   ````
-* Example for viewing the components and weightage of an existing module
-  Input:  
+* Example for viewing the components and weightage of an existing module Input:  
   `2`  
   Output:
     ````
@@ -314,6 +321,7 @@ Lists out all the reviews for all modules added to UniTracker.
   Input:   
   `5`  
   Output:
+
     ```  
     --------------------------------------------  
     For CS3243:  
@@ -513,22 +521,22 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
   Returning back to TaskManager menu now!
   ````
 * For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-  * Format for date: `yyyy-mm-dd`
-  * Format for time (24-h clock): `hh:mm`
-  * Example:  
-    Output:  
-    `What is the date of the assignment you want to add?`  
-    Input:  
-    `2021-03-14`
-    Output:  
-    `What is the time of the assignment you want to add?`  
-    Input:  
-    `23:59`  
-    Output:
-    ````
-    You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-    Returning back to TaskManager menu now!
-    ````
+    * Format for date: `yyyy-mm-dd`
+    * Format for time (24-h clock): `hh:mm`
+    * Example:  
+      Output:  
+      `What is the date of the assignment you want to add?`  
+      Input:  
+      `2021-03-14`
+      Output:  
+      `What is the time of the assignment you want to add?`  
+      Input:  
+      `23:59`  
+      Output:
+      ````
+      You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+      Returning back to TaskManager menu now!
+      ````
 
 #### 3.3.2 Delete a Task
 
@@ -615,8 +623,8 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
 
 ### 3.4 Links Menu
 
-The Links feature allows you to add and keep track of http and https links. It also allows users to
-keep their zoom links separately.
+The Links feature allows you to add and keep track of http and https links, and the meeting
+password.
 
 Links menu:
 
@@ -654,24 +662,17 @@ Supported Top Level Domain(TLD) include: .com, .org only
 
 Example for adding an external link:
 
-Input: `1`
-
-Output:
-
 ````
+[1]
+--------------------------------------------
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
 supported schemes: https, http for now... Sorry!
 supported TLD: .com, .org for now... we will work on it!
-````
 
-Input: `https://www.youtube.com/java`
-
-Output:
-
-````
-Alright! I have added the following link ---  https://www.youtube.com/java
-
+[https://www.instagram.com]
+--------------------------------------------
+Alright! I have added the following link ---  https://www.instagram.com
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
 [1] --- add link
@@ -684,24 +685,23 @@ Please choose which action you would like to do and enter the number:
 
 Removes an external link from the external links list.
 
-Input: `2`
-
-Output:
-
+Example for removing an external link:
 ````
+[2]
+--------------------------------------------
+These are the links you have added --->
+[1] --- https://www.reddit.com/r/nus
+[2] --- https://www.luminus.nus.edu.sg
+[3] --- https://www.myedurec.nus.edu.sg
+[4] --- https://www.youtube.com
+[5] --- https://www.facebook.com
+[6] --- https://www.youtube.com
+[7] --- https://www.instagram.com
 Please choose which link you would like to delete and enter the number
 
-These are the links you have added --->
-[1] --- https://www.youtube.com/java
-[2] --- https://www.facebook.com
-````
-
-Input: `2`
-
-Output:
-
-````
-You have deleted --- https://www.facebook.com
+[7]
+--------------------------------------------
+You have deleted --- https://www.instagram.com
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
 [1] --- add link
@@ -709,20 +709,21 @@ Please choose which action you would like to do and enter the number:
 [3] --- view links
 [4] --- exit to links menu
 ````
-
 #### 3.4.4 View External Links
 
-Allows the user to view all external links added.
+Allows you to view all external links stored in the application.
 
-Input: `3`
-
-Output:
-
+Example for viewing external links:
 ````
+[3]
+--------------------------------------------
 These are the links you have added --->
-[1] --- https://www.youtube.com/java
-[2] --- https://www.google.com
-[3] --- https://www.yahoo.com
+[1] --- https://www.reddit.com/r/nus
+[2] --- https://www.luminus.nus.edu.sg
+[3] --- https://www.myedurec.nus.edu.sg
+[4] --- https://www.youtube.com
+[5] --- https://www.facebook.com
+[6] --- https://www.youtube.com
 
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
@@ -730,6 +731,7 @@ Please choose which action you would like to do and enter the number:
 [2] --- remove link
 [3] --- view links
 [4] --- exit to links menu
+
 ````
 
 #### 3.4.5 Add Zoom Link
@@ -737,66 +739,61 @@ Please choose which action you would like to do and enter the number:
 Adds a zoom link, and tags it to a module of your choice together with the meeting password (if
 available).
 
-Input: `2`
-
-Output:
-
+Example for adding a zoom link:
 ````
-Please enter the zoom link and the module it is for in this format:
-<zoom link> <module code>
-````
+[2]
+--------------------------------------------
+Please enter the zoom link below
+PS: If the module you are finding is not available, please enter 8 if you would like to add a module for the link...
+OR if you would like the zoom link to be a standalone ^~^
 
-Input: `https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 cs2101`
+This is the list of modules:
+[1] CS2113T
+[2] CG1112
+[3] CS1010
+[4] CS1231
+[5] CS3243
+[6] EC1301
+[7] CG2028
 
-Output:
-
-````
+[4] 
+--------------------------------------------
+Please enter the zoom link below
+[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09]
+--------------------------------------------
 Does your meeting have password which you would like to add? [Y/N]
-````
-
-Input: `Y`
-
-Output:
-
-````
+[Y]
+--------------------------------------------
 Please enter your password below!
-````
-
-Input: `open sesame`
-
-Output:
-
-````
+[itsasecret]
+--------------------------------------------
 Woohoo~ Zoom link added:
-https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for cs2101
-Welcome to the links menu ^~^
-Please choose which action you would like to do and enter the number:
-[1] --- External links menu
-[2] --- Add Zoom links
-[3] --- View Zoom links
-[4] --- Exit to main menu
+https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
 ````
+
 
 #### 3.4.6 View Zoom Links
 
 View all zoom links stored in the application
 
-Input: `3`
-
-Output:
-
+Example for viewing all zoom links: 
 ````
-Here are your zoom links! Study hard :)
+[4]
+--------------------------------------------
+Here are your zoom links!
 
-[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09, cs2101, open sesame]
+[1] --- https://nus-sg.zoom.us/j/91969975928?pwd=UmlWVEhoYmxONFZjMmFjaG4rbzhTdz09 CS1010 itsasecret!
+[2] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 CS2113T no password entered
+
 Welcome to the links menu ^~^
 Please choose which action you would like to do and enter the number:
 [1] --- External links menu
 [2] --- Add Zoom links
-[3] --- View Zoom links
-[4] --- Exit to main menu
-````
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
 
+````
 ---
 
 ## 4. Command Summary

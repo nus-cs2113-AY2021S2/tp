@@ -182,33 +182,21 @@ Given below is the sequence diagram for the feature:
 
 A general 4-step explanation of how this feature works is shown below:
 
-Step 1. The Links#execute() method is calling the Ui#readCommand() method which in turn, returns the
-command containing the Zoom Link and Module Code.
+Step 1. The ZoomLinkInfo#addZoomLink() method calls AddTask#printAndGetModule() which asks the user
+to input the number corresponding to the module code they want, and returns the module code.
 
-Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine
-whether a password is required for the Zoom meeting.
+Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine the
+link, and whether a password is required for the Zoom meeting.
 
-Step 3. The ZoomLinkInfo#addZoomLink() method then calls ModuleInfo#getModule() in order to
-retrieve the module object which is stored in the ModuleInfo class. 
+*Note: If the user does not require the zoom link to be tagged to a module,
+AddTask#printAndGetModule() in Step 1 would return an empty string, and the module code would be
+initialised to "Zoom link has no module code".
 
-- If no object is found(i.e module
-does not exist), an exception is thrown, and a new module object is initialised. 
+Step 3. The ZoomLinkInfo#addZoomLink() method then calls ModuleInfo#getModule() in order to retrieve
+the module object which is stored in the ModuleInfo class.
 
-````
-try {
-    Module moduleInfo = ModuleInfo.getModule(linkDescription);
-    moduleInfo.setZoomLink(linkDescription);
-} catch (NullPointerException e) {
-    Module module = new Module(moduleCode, "no description");
-    ModuleInfo.modules.add(module);
-    module.setZoomLink(linkDescription);
-}
-````
-
-Code snippet to illustrate Step 3.
-
-
-Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link that was entered.
+Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
+that was entered.
 
 ### 3.06 Add Module Components
 

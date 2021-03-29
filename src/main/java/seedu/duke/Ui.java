@@ -140,11 +140,14 @@ public class Ui {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println("What is the module of the assignment you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println("What is the module of the midterm you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println("What is the module of the final exam you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the final exam you want to add? Enter the number:");
         }
         printEmptyLine();
     }
@@ -301,6 +304,7 @@ public class Ui {
         for (LinkInfo link : linksList) {
             System.out.println("[" + (sizeOfList++) + "] --- " + link.getLink());
         }
+        System.out.println();
     }
 
     public static void printExternalLinksMessage() {
@@ -390,8 +394,7 @@ public class Ui {
     }
 
     public static void printEnterZoomLinkMessage() {
-        System.out.println("Please enter the zoom link and the module it is for in this format:\n"
-                + "<zoom link> <module code>");
+        System.out.println("Please enter the zoom link below");
     }
 
     public static void printZoomLinks(ArrayList<ZoomLinkInfo> zoomLinksList) {
@@ -403,18 +406,16 @@ public class Ui {
                     "[" + (sizeOfList++) + "] --- " + zoomLink.getDescription() + " " + zoomLink
                             .getModuleCode() + " " + zoomLink.getPassword());
         }
+        System.out.println("");
     }
 
     public static void printNoInputDetected() {
         System.out.println("Sorry! I didn't catch that. Please try again");
     }
 
-    public static void printZoomLinksAdded(String instruction) {
-        String[] words = instruction.split(" ");
-        String zoomLink = words[0];
-        String moduleCode = words[1];
+    public static void printZoomLinksAdded(String zoomLink, String moduleCode) {
         System.out.println("Woohoo~ Zoom link added:");
-        System.out.println(zoomLink + " for " + moduleCode);
+        System.out.println(zoomLink + " for " + moduleCode + "\n");
     }
 
     public static void printTaskList(ArrayList<Task> tasks) {
@@ -608,5 +609,17 @@ public class Ui {
         for (int i = 1; i <= ModuleInfo.modules.size(); ++i) {
             System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
         }
+    }
+
+    public static void printPsMessage(int size) {
+        System.out.println(
+                "PS: If the module you are finding is not available, please enter " + (size + 1)
+                        + " if you would like to add a module for the link...\n"
+                        + "OR if you would like the zoom link to be a standalone ^~^\n");
+    }
+
+    public static void printDuplicateMessage() {
+        System.out.println("Duplicate detected! You have already entered this link before");
+        System.out.println("Please enter another link...");
     }
 }
