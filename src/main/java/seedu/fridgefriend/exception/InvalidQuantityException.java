@@ -5,12 +5,13 @@ package seedu.fridgefriend.exception;
  */
 public class InvalidQuantityException extends Exception {
     private static final String errorMessage = "Sorry my friend, the quantity "
-            + "must be a number.";
+            + "must be a positive number.";
 
     public InvalidQuantityException() {
         super(errorMessage);
     }
 
+    //@@author Vinci-Hu
     public InvalidQuantityException(String msg) {
         super(msg);
     }

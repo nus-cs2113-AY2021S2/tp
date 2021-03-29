@@ -1,5 +1,6 @@
 package seedu.fridgefriend.exception;
 
+//@@author Vinci-Hu
 /**
  * Signal that the input string of Food is not found in the collection.
  */

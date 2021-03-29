@@ -9,7 +9,6 @@ skinparam classAttributeIconSize 0
 
 package Exceptions <<Rectangle>> {
     class EmptyDescriptionException
-    class EmptyDescriptionException
     class FoodNameNotFoundException
     class InvalidDateException
     class InvalidFoodCategoryException
@@ -23,7 +22,14 @@ package Exceptions <<Rectangle>> {
 
 ' Basic Layout `
 Exceptions -down-|> Exception
+InvalidFoodCategoryException -up[hidden]-> EmptyDescriptionException
+InvalidIndexException -up[hidden]-> InvalidDateException
 
+InvalidQuantityException -up[hidden]-> InvalidInputException
+FoodNameNotFoundException -down[hidden]-> RepetitiveFoodIdentifierException
+StorageSavingException -down[hidden]->  StorageLoadingException
+StorageSavingException -left[hidden]-> FoodNameNotFoundException
 note top of Exception : All Exception Classes\nin the Exception component \ninherit from standard Java Exception.
+
 
 @enduml

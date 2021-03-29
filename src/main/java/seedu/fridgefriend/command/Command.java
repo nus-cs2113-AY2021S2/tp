@@ -27,6 +27,7 @@ public abstract class Command {
             InvalidIndexException, RepetitiveFoodIdentifierException,
             InvalidQuantityException, FoodNameNotFoundException;
 
+    //@@author Vinci-Hu
     public void setData(Fridge fridge) {
         this.fridge = fridge;
     }

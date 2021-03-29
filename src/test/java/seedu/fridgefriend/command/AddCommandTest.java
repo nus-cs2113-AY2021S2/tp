@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.ExpiryDate;
 import seedu.fridgefriend.food.FoodCategory;
@@ -22,9 +23,10 @@ class AddCommandTest {
         fridge = new Fridge();
     }
 
+    //@@author Vinci-Hu
     @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded()
-            throws InvalidDateException, RepetitiveFoodIdentifierException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand.setData(fridge);
@@ -47,7 +49,7 @@ class AddCommandTest {
     //@@author leeyp
     @Test
     public void addCommand_foodCorrectFormat_changeFoodParameters()
-            throws InvalidDateException, RepetitiveFoodIdentifierException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand = new AddCommand("chicken", FoodCategory.MEAT,
                 "30-06-2021", FoodStorageLocation.FREEZER, 200);
         addCommand.setData(fridge);
@@ -82,9 +84,10 @@ class AddCommandTest {
         });
     }
 
+    //@@author Vinci-Hu
     @Test
     public void addCommand_foodWithSameName_successfullyAdded()
-            throws InvalidDateException, RepetitiveFoodIdentifierException {
+            throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand1 = new AddCommand("Milk", FoodCategory.DAIRY,
                 "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 2);
         addCommand1.setData(fridge);
@@ -101,6 +104,15 @@ class AddCommandTest {
                 + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 5";
         String actualMessage = addCommand2.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
+    }
+
+    //@@author
+    @Test
+    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            new AddCommand("chicken", FoodCategory.MEAT,
+                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
+        });
     }
 
 }

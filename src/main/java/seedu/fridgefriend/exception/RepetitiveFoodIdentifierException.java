@@ -1,5 +1,6 @@
 package seedu.fridgefriend.exception;
 
+//@@author Vinci-Hu
 /**
  * Signal that the new foodname user wants to add cannot be used.
  */
