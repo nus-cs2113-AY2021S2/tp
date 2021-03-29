@@ -60,7 +60,7 @@ public class UI {
         if(list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8){
+        if (input.length() >= 8 || input.length() < 1){
             return UNKNOWN_COMMAND;
         }
 
@@ -118,11 +118,23 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
+    public String cleanseInput(String input) {
+        return input.replaceAll("[^A-Za-z0-9]","");
+    }
+
     public static void abortInputErrorMessage() {
         System.out.println("Input has been aborted");
     }
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
+    }
+
+    public static void tooManyInputErrorMessage() {
+        System.out.println("OOPS! There is too many input for this command");
+    }
+
+    public static void tooLittleInputErrorMessage() {
+        System.out.println("OOPS! There is too little input for this command");
     }
 
     public static void noInputErrorMessage() {
@@ -148,7 +160,7 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to \n" + LOGO + "What is your name?");
+        System.out.println("Welcome to \n" + LOGO);
         showLine();
     }
 
@@ -188,6 +200,10 @@ public class UI {
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
+    }
+
+    public void lineBreak() {
+        System.out.print(System.lineSeparator());
     }
 
     public void fileCreateErrorMessage() {

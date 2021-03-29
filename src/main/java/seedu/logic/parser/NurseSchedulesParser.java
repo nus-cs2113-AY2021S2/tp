@@ -47,7 +47,7 @@ public class NurseSchedulesParser {
     public String[] getDetails(String text) throws WrongInputsException {
         String[] details = new String[3];
 
-        String[] parts = text.split("/", 0);
+        String[] parts = text.toUpperCase().split("/", 0);
         String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
@@ -56,17 +56,17 @@ public class NurseSchedulesParser {
             throw new WrongInputsException();
         } else if (command.equals("add")) {
             if (isValidDate(parts[3])) {
-                details[0] = parts[1];
-                details[1] = parts[2];
-                details[2] = parts[3];
+                details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
+                details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
+                details[2] = parts[3].replaceAll("[^A-Za-z0-9]","");;
             }
         } else if (command.equals("delete")) {
             if (isValidDate(parts[2])) {
-                details[0] = parts[1];
-                details[1] = parts[2];
+                details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
+                details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
             }
         } else if (command.equals("list")) {
-            details[0] = parts[1];
+            details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
         }
         return details;
     }

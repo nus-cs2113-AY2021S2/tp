@@ -1,9 +1,7 @@
 package seedu.logic.parser;
 
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staff.AbortException;
-import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.staff.*;
 import seedu.ui.UI;
@@ -31,7 +29,7 @@ public class staffparser {
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
-        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N')) {
+        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N') || (id.length()) != 6) {
             throw new WrongStaffIdException();
         }
     }
@@ -39,6 +37,31 @@ public class staffparser {
     public static void checkEmptyInput(String line) throws NoInputException {
         if (line.split("/").length < 2) {
             throw new NoInputException();
+        }
+    }
+    public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException{
+        if (line.split("/").length < min) {
+            throw new InsufficientInputException();
+        }
+        if (line.split("/").length > max) {
+            throw new ExcessInputException();
+        }
+    }
+    public static void checkBlankInput(String line) throws BlankInputException {
+       String[] array = line.split("/");
+        for (String s : array) {
+            if (s.equals("")) {
+                throw new BlankInputException();
+            }
+        }
+    }
+
+    public static void checkNumericInput(String line) throws NumberFormatException {
+        String[] array = line.split("/");
+        try {
+            Integer.parseInt(array[3]);     // Check age is numeric
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
         }
     }
 
@@ -51,7 +74,9 @@ public class staffparser {
     }
 
     public Command commandHandler(String line) throws WrongStaffIdException,
-            WrongListInputException, NoInputException, AbortException {
+            WrongListInputException, NoInputException, AbortException, ExcessInputException,
+            InsufficientInputException, BlankInputException, NumberFormatException {
+
         Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
@@ -62,18 +87,23 @@ public class staffparser {
         case ("add"):
             checkEmptyInput(line);
             checkID(line.split("/")[1]);
+            checkNumericInput(line);
+            checkNumInput(line,5,5);
+            checkBlankInput(line);
             String [] p = Arrays.copyOfRange(line.split("/"), 1, 5);
             c = new StaffAdd(p);
             break;
 
         case ("list"):
             checkListCommand(line);
+            checkNumInput(line,2,1);
             c = new StaffList(line);
             break;
 
         case ("delete"):
             checkEmptyInput(line);
             checkID(line.split("/")[1]);
+            checkNumInput(line,2,1);
             c = new StaffDelete(line);
             break;
 
@@ -83,6 +113,7 @@ public class staffparser {
 
         case ("find"):
             checkEmptyInput(line);
+            checkNumInput(line,2,1);
             c = new StaffFind(line);
             break;
 

@@ -32,7 +32,6 @@ public class StaffAggregation {
         if (isValidID(array[0])) {
             Staff staff = new Staff(array);
             addStaff(staff);
-            System.out.println("pop");
             StaffUI.staffHiredOutput(array[0], array[1]);
         }
     }
@@ -52,7 +51,9 @@ public class StaffAggregation {
     }
 
     public void list(String... parameter) {
-
+        if (this.getNumStaff() == 0){
+            StaffUI.emptyListOutput();
+        }
         if (parameter[0] == (null)) {
             for (Staff staff : list) {
                 display(staff);
