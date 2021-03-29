@@ -32,7 +32,7 @@ public class NurseSchedulesParser {
      * @return First word of user input
      */
     public String getFirstWord(String text) {
-        int index = text.indexOf(' ');
+        int index = text.indexOf('/');
 
         if (index > -1) {
 
@@ -47,7 +47,7 @@ public class NurseSchedulesParser {
     public String[] getDetails(String text) throws WrongInputsException {
         String[] details = new String[3];
 
-        String[] parts = text.split(" ", 0);
+        String[] parts = text.split("/", 0);
         String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
