@@ -61,16 +61,16 @@ The ***Command Class Diagram*** given above shows how the Command interact with 
 
 The Command Component consist of 10 sub class which each command represents a features. 
 
-* **AddCommand**: Add a food object to the fridge when executed.
-* **RemoveCommand**: Remove a portion of food quantity from a particular food in the fridge when executed.
-* **ListCommand**: List details of food either by a category, storage location or all off it when executed.
-* **SearchCommand**: Search for the details of the food. 
-* **ExpiringCommand**: Provide the list of item that is expiring in a week when executed. 
-* **ClearCommand**: Clear the list of food objects in the fridge object.
-* **HelpCommand**: List the instruction on how to use all the commands in FridgeFriend.
-* **RunningLowCommand**: Provide the food category that are running low compare to the limit set in the Food Category.
-* **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
-* **ByeCommand**: Indicate to the main method to exit the program. 
+* **`AddCommand`**: Add a food object to the fridge when executed.
+* **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
+* **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
+* **`SearchCommand`**: Search for the details of the food. 
+* **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed. 
+* **`ClearCommand`**: Clear the list of food objects in the fridge object.
+* **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
+* **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
+* **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
+* **`ByeCommand`**: Indicate to the main method to exit the program. 
 
 ### Utilities Component
 
@@ -148,11 +148,22 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
+### RemoveCommand
+
+The `RemoveCommand` implements the operation through removing the quantity of the food.
+
+* 
+
+
 ## Product scope
 
 ### Target user profile
 
-{Describe the target user profile}
+* has a need to manage a significant number of foods in the fridge
+* has a tendency to forget expiry date and location of the food stored
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI apps
 
 ### Value proposition
 
@@ -171,7 +182,8 @@ _Exceptions related to file storage:_
 
 ## Glossary
 
-* *glossary item* - Definition
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
+* 
 
 ## Instructions for manual testing
 
