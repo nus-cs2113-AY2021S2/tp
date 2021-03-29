@@ -164,7 +164,7 @@ public class UI {
         System.out.println("\"patient\" to go to patients");
         System.out.println("\"appointments\" to go to doctors appointments");
         System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to drugs inventory");
+        System.out.println("\"inventory\" to go to inventories inventory");
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }
