@@ -1,16 +1,32 @@
-# Developer Guide
+# Parient Manager Developer Guide
 
 ## Table of Contents
-* [Introduction](#introduction)
-* [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
-* [Design and implementation](#design--implementation)
-* [Product scope](#product-scope)
-   * [Target user profile](#target-user-profile)
-   * [Value proposition](#value-proposition)
-* [User stories](#user-stories)
-* [Non-Functional Requirements](#non-functional-requirements)
-* [Glossary](#glossary)
-* [Testing](#testing)
+- [Parient Manager Developer Guide](#parient-manager-developer-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
+  - [Design & implementation](#design--implementation)
+    - [Help command](#help-command)
+      - [Alternatives considered](#alternatives-considered)
+    - [Architecture](#architecture)
+      - [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
+    - [UI Component](#ui-component)
+    - [Parser Component](#parser-component)
+    - [Logic Component](#logic-component)
+    - [Model Component](#model-component)
+    - [Storage Component](#storage-component)
+    - [Exception Component](#exception-component)
+    - [Common Classes](#common-classes)
+  - [Product scope](#product-scope)
+    - [Target user profile](#target-user-profile)
+    - [Value proposition](#value-proposition)
+  - [User Stories](#user-stories)
+  - [Non-Functional Requirements](#non-functional-requirements)
+  - [Glossary](#glossary)
+  - [Testing](#testing)
+    - [Automated Testing](#automated-testing)
+    - [Manual Testing](#manual-testing)
+<!-- ^ The above table of content is auto generated -->
 <!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
 ## Introduction
@@ -99,6 +115,66 @@ The Sequence Diagram below shows how the components interact with each other for
 The sections below give more details for each component.
 
 ### UI Component
+
+### Parser Component
+
+API: `Parser.java`
+
+The parser is one of the core components in charge of parsing all user input commands into program-understandable commands and
+arguments. For the ease of expansion of this program's functionality as well as for its testibility, reflection is used to invoke
+commands.
+
+First is the initialization of this parser. An `Ui` instance and an `Data` instance is passed and stored. This is important as
+these two will be passed to logic components (command classes) later.
+
+Then, we can parse an user-input string by passing it to `parse()`. We use an example of this:
+```
+record 01/05/2021 /s coughing, fever /p panadol Paracetamol 500mg*20
+```
+
+This is broken into a few steps:
+
+1. Initialize an empty hashmap, called `arguments`.
+1. Tokenize using **any number of consecutive white spaces**.
+1. Taken out the first token as command, i.e. `record`. Push it into the hashmap using **key** `command`.
+   Create a new empty **list** with default **key** `payload`.
+1. Check if next token starts with `/`. No, so we add it to the list: `list = ['payload']`.
+1. Check if next token starts with `/`. Yes, so we concatenate all tokens in the list to one string use delimer ` `
+   (empty whitespace). Put it into the hashmap using the key `payload`.
+   **Reset the list**, and set new key to `s` (the part after this `/`).
+1. Repeat same process, we have `list = ['coughing,']`
+1. Repeat same process, we have `list = ['coughing,', 'fever']`
+1. Same process, `coughing, fever` is pushed into arguments hashmap with key `s`. Reset the list, and new key set to `p`.
+1. ... 
+
+At the end, we have an argument hashmap like this:
+|Key|Value|
+|---|-----|
+|command|record|
+|payload|01/05/2021|
+|s|coughing, fever|
+|p|panadol Paracetamol 500mg*20|
+
+Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
+`RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with 'Command').
+Since this is a valid command, this class exists. If the class does not exist, it means the command is not yet
+implemented by this program.
+
+After finding the command class, it is initialized with `(ui, data, arguments)`. `ui` and `data` are the two references
+passed in when initializing the parser, and the `arguments` is the hashmap we just obtained by parsing the input. The result
+of the initialization (i.e. the instance of the command class) is returned.
+
+Since all command classes implements the abstract method `execute()`, the main loop just need to execute this method to call out
+the actual logic of this command.
+
+> ❗ Note: Since we are tokenizing the user input with **any number of white spaces** and concatenate all tokens belong to the
+> same key back using **single whitespace**, the number of whitespaces input has no effect on the actual arguments being parsed.
+> For example, the following two input has exactly the same result after being parsed.
+> ```
+> record 01/05/2021 /s coughing, fever
+> record 01/05/2021 /s coughing,                 fever
+> ```
+
 ### Logic Component
 ### Model Component
 
@@ -120,6 +196,60 @@ API: `Patient.java`, `Record.java` and `Data.java`
 - implements methods to load an existing patient's medical records
 
 ### Storage Component
+### Exception Component
+
+API: all classes in [src/main/java/seedu/exception](src/main/java/seedu/exception)
+
+All unexpected behaviour encountered by this patient manager is signalled and handled with exceptions. Since the generic
+`Exception` is too broad, we have created a few custom exception classes to relay exception information.
+
+`BaseException.java`:
+- inherits from the generic `Exception`
+- base class of all custom exceptions
+- overwrites the `toString()` method to make it output messages more meaningfully
+
+`InvalidInputException.java`
+- inherits from `BaseException`
+- is used to handle all unexpected user input, like invalid commands, wrong NRIC numbers, etc.
+- implies that user should re-enter correct command and arguments
+- has a member enum `Type` to give a fixed set of exception messages
+
+`StorageException.java`
+- inherits from `BaseException`
+- is used to handle unexpecred events occur during loading and saving data from/onto the hard disk
+- shows that usual saving/loading action cannot be done, and there might be the case of a data loss after closing the program
+
+`UnknownException.java`
+- inherits from `BaseException`
+- is used to handle unusual events that should not be trigger by user
+- signals a internal error of the program and should be fixed during next iteration or through hotfixes
+
+During invokation of a exception, there are two ways to invoke:
+```java
+throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
+// e is a Throwable, e.g. a captured exception in a try-catch block
+// for this UNKNOWN_COMMAND, the e should be of type ClassNotFoundException
+throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, e);
+```
+
+If a second argument is passed, it is called the **cause** of the exception. For example, the user's wrong input
+triggers **ClassNotFoundException**, and then this exception is captured in `Parser` which then **causes**
+`InvalidInputException`. If a **cause** is passed in, it will be printed out for the user as well. See the difference:
+
+```
+----------------------------------------------------------------------
+Input command and/or arguments are invalid:
+        Empty string is found when trying to parse command!
+----------------------------------------------------------------------
+wrongcommand
+----------------------------------------------------------------------
+Input command and/or arguments are invalid:
+        Invalid command is provided!
+... and is caused by ...
+        java.lang.ClassNotFoundException: seedu.duke.command.WrongcommandCommand
+----------------------------------------------------------------------
+```
+
 ### Common Classes
 
 ## Product scope
