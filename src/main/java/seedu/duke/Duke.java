@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.command.BorrowersCreditScoreForReturnedLoans;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
@@ -15,6 +16,9 @@ public class Duke {
     private Ui ui;
     private RecordList records;
     private Storage storage;
+    private CommandHandler commandHandler;
+    private ParserHandler parserHandler;
+    private BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans;
 
     /**
      * Main entry-point for the java.duke.Duke application.
@@ -33,21 +37,19 @@ public class Duke {
     }
 
     /**
-     * Exits the application.
-     */
-    private void end() {
-        ui.printGoodByeMessage();
-        System.exit(0);
-    }
-
-    /**
      * Starts the main application.
      */
     private void start() {
         try {
             ui = new Ui();
             storage = new Storage();
-            records = new RecordList(storage.loadFile());
+            records = new RecordList();
+            parserHandler = new ParserHandler();
+            commandHandler = new CommandHandler();
+            storage.loadFile();
+            records = new RecordList(storage.getRecordListData());
+            borrowersCreditScoreForReturnedLoans = new BorrowersCreditScoreForReturnedLoans(
+                    storage.getBorrowersCreditScoreForReturnedLoansMapData());
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
@@ -63,13 +65,20 @@ public class Duke {
         String rawInput;
         do {
             rawInput = ui.getUserInput();
-            ArrayList<String> parsedStringList = ParserHandler.getParseInput(rawInput);
+            ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
-            command = CommandHandler.parseCommand(parsedStringList, records);
+            command = commandHandler.parseCommand(parsedStringList, records);
             if (command != null) {
-                command.execute(records, ui, storage);
+                command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
             }
         } while (!ExitCommand.isExit(command));
     }
 
+    /**
+     * Exits the application.
+     */
+    private void end() {
+        ui.printGoodByeMessage();
+        System.exit(0);
+    }
 }

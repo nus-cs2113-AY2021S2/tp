@@ -59,7 +59,7 @@ public class RecordListTest {
     private RecordList getPopulatedRecordList() {
         RecordList records = new RecordList();
         records.addRecord(new Expense(new BigDecimal("220.50"), validateDate("2020/01/01"), "electric bills"));
-        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob"));
+        records.addRecord(new Loan(new BigDecimal("100"), validateDate("2020/01/01"), "loan to bob", "bob"));
         records.addRecord(new Saving(new BigDecimal("20"), validateDate("2020/01/01"), "red packet"));
         return records;
     }

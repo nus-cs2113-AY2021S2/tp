@@ -11,17 +11,16 @@ import static seedu.duke.command.ViewCommand.COMMAND_VIEW;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
 import static seedu.duke.command.ExitCommand.COMMAND_EXIT;
 import static seedu.duke.command.CreditScoreCommand.COMMAND_CREDIT_SCORE;
+import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
-import java.util.logging.Level;
 
 public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
+    private static final String LOGGER_OKAY_MESSAGE = "command object successfully created.";
     private static final int INDEX_OF_COMMAND = 0;
-    private static final Logger LOGGER = Logger.getLogger("CommandLogger");
 
-    public static Command createCommand(ArrayList<String> parsedArguments, RecordList recordList)
+    private Command createCommand(ArrayList<String> parsedArguments, RecordList recordList)
             throws CommandException {
         String commandWord = parsedArguments.get(INDEX_OF_COMMAND);
 
@@ -49,14 +48,14 @@ public class CommandHandler {
         }
     }
 
-    public static Command parseCommand(ArrayList<String> parsedString, RecordList records) {
+    public Command parseCommand(ArrayList<String> parsedString, RecordList recordList) {
         try {
-            Command command = CommandHandler.createCommand(parsedString, records);
-            LOGGER.log(Level.INFO, "command object successfully created.");
+            Command command = createCommand(parsedString, recordList);
+            FINUX_LOGGER.logInfo(LOGGER_OKAY_MESSAGE);
             return command;
         } catch (CommandException e) {
             System.out.println(e.getMessage());
-            LOGGER.log(Level.WARNING, e.getMessage());
+            FINUX_LOGGER.logWarning(e.getMessage());
             return null;
         }
     }

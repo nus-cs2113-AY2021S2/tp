@@ -18,7 +18,7 @@ public class Constant {
     public static final String SYMBOL_SAVING = "S";
     public static final String SYMBOL_EXPENSE = "E";
     public static final String SYMBOL_LOAN = "L";
-
+    public static final FinuxLogger FINUX_LOGGER = new FinuxLogger("Finux Logger");
 
     // Jason
 }

@@ -42,19 +42,43 @@ finance management rather than using the traditional management system.
 
 ## 3. Features
 > ❗ **CAUTION:** Insert any warning.
-> * _Finux_ supports multiple Date formats, for ease of use:
->   * `DDMMYYYY`
->   * `D.M.YYYY`
->   * `D-M-YYYY`
->   * `D/M/YYYY`
->   * `YYYY.M.D`
->   * `YYYY-M-D`
->   * `YYYY/M/D`
-> * `today` keyword specifies today's date, replacing the need to type in the actual date
-    for date inputs.
+
+> 💡 **Explanation for Command formats:**
+>> Commands in Finux follow these argument orders (depending on the command):
+>> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
+>> * `CMD -OPT`
+>> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
+>> * `CMD <FIELD>`
+>> * `CMD [<FIELD>]`
+>> * `CMD`
+>>
+>> Argument types and notation:\
+>> `CMD` - a valid command.\
+>> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
+>> `<FIELD>` - an area where data is required.\
+>> `[...]` - optional argument(s).\
+>> `{ ... | ... | ... }` - mutually exclusive arguments.
+>>
+> ❗ **Commands and options are case-sensitive:**\
+> E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
+> will not be recognised.\
+> E.g. `view -s` will work, but using `-S` will not be recognised as
+> a valid option.
+
+> 💡 **Date and Date formats:**
+>> Finux supports multiple Date formats, for ease of use:
+>> * `DDMMYYYY`
+>> * `D.M.YYYY`
+>> * `D-M-YYYY`
+>> * `D/M/YYYY`
+>> * `YYYY.M.D`
+>> * `YYYY-M-D`
+>> * `YYYY/M/D`
+>>
+>> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
+
 ### 3.1 Add a record: `add`
-> For the `add` command, there is no strict ordering for options.
-<br>
+> For the `add` command, there is no strict ordering for options.\
 > i.e. options `-a` can come before/after option `-d`.
 #### 3.1.1 Add an expense record
 
@@ -66,19 +90,19 @@ Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
-![add expense example output](https://via.placeholder.com/100.png?text=Photo)
+![add expense example output](img/Add_Expense_Example_Output.png)
 
 #### 3.1.2 Add a loan record
 
 This operation will add a loan record to the list.
 
-Format: `add -l <description> -a <amount> -d <date> -p <borrower>`
+Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
 Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
-![add loan example output]()
+![add loan example output](img/Add_Loan_Example_Output.png)
 
 #### 3.1.3 Add a saving record
 
@@ -90,7 +114,7 @@ Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
-![add saving example output]()
+![add saving example output](img/Add_Savings_Example_Output.png)
 
 ### 3.2 List the records details: `list`
 
@@ -119,7 +143,7 @@ Examples: `view -e`, `view -l`
 
 Output:
 
-![view example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/View%20Example%20Output.jpg?raw=true)
+![view example output](img/View_Example_Output.jpg)
 
 ### 3.4 Set a loan as return: `return`
 
@@ -146,7 +170,7 @@ Examples: `remove -i 1`, `remove -i 2`
 
 Output:
 
-![remove example output](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/docs/img/Remove%5FExample%5FOutput.jpg?raw=true)
+![remove example output](img/RemoveExampleOutput.png)
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -161,7 +185,7 @@ Examples: `creditscore jason`, `creditscore andy`
 
 Output:
 
-![creditscore example output]()
+![creditscore example output](img/CreditScoreExampleOutput.jpg)
 
 ### 3.7 Exit the program: `exit`
 
@@ -190,7 +214,7 @@ Examples: `help exit`, `help list`
 
 Output:
 
-![help example output]()
+![help example output](img/Help_Example_Output.jpg)
 
 ### 3.9 Records storage
 
@@ -240,13 +264,39 @@ file in the same directory. <br><br>
 
 ## 5. Command Summary
 
-Command | Format | Example |
-------- | ------- | ------- | 
-add | `insert format` | `insert example` |
-list | `insert format` | `insert example` |
-view | `view <OPTION>` | `view -e` |
-return | `insert format` | `insert example` |
-remove | `insert format` | `insert example` |
-creditscore | `insert format` | `insert example` |
-exit | `help <FEATURE>` | `help exit` |
-help | `insert format` | `insert example` |
+| Feature                                | Command                                                  |
+| -------------------------------------- | -------------------------------------------------------- |
+| Add an expense record                  | `add -e <description> -a <amount> -d <date>`             |
+| Add a savings record                   | `add -s <description> -a <amount> -d <date>`             |
+| Add a loan record                      | `add -l <description> -a <amount> -d <date> -p <person>` |
+| List all expense records               | `list -e`                                                |
+| List all savings records               | `list -s`                                                |
+| List all loan records                  | `list -l`                                                |
+| View total expenditure                 | `view -e`                                                |
+| View total savings amount              | `view -s`                                                |
+| View total amount of unreturned loans  | `view -l`                                                |
+| Mark a loan as returned                | `return -i <loan_index> -d <return_date>`                |
+| Remove a record (expense/savings/loan) | `remove -i <index>`                                      |
+| Print a person's credit score          | `creditscore <person>`                                   |
+| Help (selected command)                | `help <feature>`                                         |
+| Help (all commands)                    | `help`                                                   |
+| Exit the application                   | `exit`                                                   |
+
+#### _List of command formats_
+```
+list { -e | -s | -l }
+
+add { -e | -s | -l } <description> -a <amount> -d <date> [-p <person>]
+
+creditscore <person>
+
+return -i <loan_index> -d <return_date>
+
+remove -i <index>
+
+view { -e | -s | -l }
+
+help [<feature>]
+
+exit
+```

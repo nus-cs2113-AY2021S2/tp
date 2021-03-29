@@ -9,8 +9,8 @@ public class RecordList {
         this(new ArrayList<Record>());
     }
 
-    public RecordList(ArrayList<Record> recordList) {
-        this.recordList = recordList;
+    public RecordList(ArrayList<Record> recordListData) {
+        this.recordList = recordListData;
     }
 
     public void addRecord(Record recordToAdd) {

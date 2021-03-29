@@ -1,0 +1,58 @@
+@startuml
+!include style.puml
+
+Participant ":Finux" as Finux
+Participant ":UI" as UI
+Participant ":Storage" as Storage
+Participant ":RecordList" as RecordList
+Participant ":ParserHandler" as ParserHandler
+Participant ":CommandHandler" as CommandHandler
+
+activate Finux
+Finux -> Finux : start()
+activate Finux
+
+create UI
+Finux -> UI : Ui()
+activate UI
+UI --> Finux
+deactivate UI
+
+create Storage
+Finux -> Storage : Storage()
+activate Storage
+Storage --> Finux
+deactivate Storage
+
+create ParserHandler
+Finux -> ParserHandler : ParserHandler()
+activate ParserHandler
+ParserHandler --> Finux
+deactivate ParserHandler
+
+create CommandHandler
+Finux -> CommandHandler : CommandHandler()
+activate CommandHandler
+CommandHandler --> Finux
+deactivate CommandHandler
+
+Finux -> Storage : getRecordListData()
+activate Storage
+Storage --> Finux : records : ArrayList
+deactivate Storage
+
+create RecordList
+Finux -> RecordList : RecordList(records : ArrayList)
+activate RecordList
+RecordList --> Finux
+deactivate RecordList
+
+Finux -> UI : printWelcomeMessage()
+activate UI
+UI --> Finux
+deactivate UI
+
+Finux --> Finux
+deactivate Finux
+
+@enduml

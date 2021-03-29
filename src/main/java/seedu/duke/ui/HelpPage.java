@@ -25,14 +25,13 @@ public class HelpPage {
     private static final String MAN_OPTION_RECORD_TYPE = "-e, -l, -s";
     private static final String MAN_OPTION_RECORD_TYPE_DESCRIPTION = "[ARGUMENT] used as record description";
     private static final String MAN_OPTION_RECORD_TYPE_LISTING = "used to list the chosen record types";
-    private static final String MAN_OPTION_RECORD_TYPE_VIEWING = "used to view total amount of choose record type";
+    private static final String MAN_OPTION_RECORD_TYPE_VIEWING = "used to view total amount of chosen record type";
     private static final String MAN_OPTION_AMOUNT = "-a";
     private static final String MAN_OPTION_AMOUNT_DESCRIPTION = "[ARGUMENT] positive non zero numeric "
             + "amount associated with the record";
     private static final String MAN_OPTION_DATE = "-d";
     private static final String MAN_OPTION_DATE_DESCRIPTION = "[ARGUMENT] date associated with the record";
     private static final String MAN_OPTION_DATE_RETURN_DESCRIPTION = "[ARGUMENT] date of loan return";
-    private static final String MAN_NO_ARGUMENT = "arguments are not needed";
     private static final String MAN_OPTION_INDEX = "-i";
     private static final String MAN_OPTION_INDEX_DESCRIPTION = "[ARGUMENT] positive non zero integer "
             + "used to reference to index in program";
