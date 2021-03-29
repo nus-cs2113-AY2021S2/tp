@@ -41,10 +41,10 @@ If you plan to use Intellij IDEA (highly recommended):
 
 ### Architecture
 
+![Architecture Diagram](./images/architecture_diagram.png)
+
 The Architecture Diagram shown above gives a high-level explanation of PatientManager.
 Given below is a brief overview of each component.
-
-![Architecture Diagram](./images/architecture_diagram.png)
 
 The user starts the program from the main class `PatientManager`.
 
@@ -72,7 +72,9 @@ The Sequence Diagram below shows how the components interact with each other for
 The sections below give more details for each component.
 
 ### UI Component
+
 ### Logic Component
+
 ### Model Component
 
 API: `Patient.java`, `Record.java` and `Data.java` 
@@ -93,7 +95,8 @@ API: `Patient.java`, `Record.java` and `Data.java`
 - implements methods to load an existing patient's medical records
 
 ### Storage Component
-### Common Classes
+
+### Commons
 
 ## Appendix A: Product scope
 
