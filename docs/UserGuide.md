@@ -86,7 +86,7 @@ Example of usage:
 
 | Command             | Example                                                                                                    |
 |---------------------|------------------------------------------------------------------------------------------------------------|
-| Start Menu          |                                                                                                            |
+|           Start Menu|                                                                                                            |
 | staff               | staff                                                                                                      |
 | patient             | patient                                                                                                    |
 | appointments        | appointments                                                                                               |
