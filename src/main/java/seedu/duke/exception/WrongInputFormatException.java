@@ -1,4 +1,4 @@
-package seedu.duke.notecommandexceptions;
+package seedu.duke.exception;
 
 public class WrongInputFormatException extends NotesException {
     @Override

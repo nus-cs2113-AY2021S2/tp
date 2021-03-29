@@ -6,7 +6,7 @@ public class EateryList {
     private Block[] eateries;
 
     public EateryList(Map nusMap, BlockAlias blockAlias, String from) {
-        this.eateries = new Block[5];
+        this.eateries = new Block[6];
         setRouteLengths(nusMap, blockAlias, from);
         setEateries(nusMap);
     }
@@ -25,6 +25,7 @@ public class EateryList {
         new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "ARISE & SHINE");
         new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "PLATYPUS FOOD BAR");
         new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "SPINELLI COFFEE");
+        new Router().findShortestRoute(nusMap, new LinkedList<>(), blockAlias, from, "MAXX COFFEE");
     }
 
     public void setEateries(Map nusMap) {
@@ -33,6 +34,7 @@ public class EateryList {
         eateries[2] = nusMap.getBlock("ARISE & SHINE");
         eateries[3] = nusMap.getBlock("PLATYPUS FOOD BAR");
         eateries[4] = nusMap.getBlock("SPINELLI COFFEE");
+        eateries[5] = nusMap.getBlock("MAXX COFFEE");
     }
 
     public void sortEateriesByDistance() {
