@@ -1,9 +1,7 @@
 package seedu.logic.instance;
 
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staff.AbortException;
-import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.parser.staffparser;
@@ -56,6 +54,14 @@ public class StaffInstance {
                 UI.abortInputErrorMessage();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (ExcessInputException e) {
+                UI.tooManyInputErrorMessage();
+            } catch (InsufficientInputException e) {
+                UI.tooLittleInputErrorMessage();
+            } catch (BlankInputException e) {
+                StaffUI.blankInputErrorMessage();
+            } catch (NumberFormatException e) {
+                StaffUI.invalidNumericErrorMessage();
             }
         }
     }
