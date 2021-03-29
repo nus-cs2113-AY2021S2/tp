@@ -435,3 +435,136 @@ Lists all lessons for the module.
 | 2 | | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
 
 &nbsp;
+
+### Adding a task : _add task_
+
+Adds a new task with specified name and information to the current module.
+
+**Format:**<br>
+`add task <name> ;; <deadline>`<br>
+`add task <name> ;; <deadline> ;; <remarks>`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | add task iP submission ;; 3-3-2021 ;; Remember to attach the jar file. | |
+| 2 | | Is this task graded? (Y / N) |
+| 3 | Y | |
+| 4 | | Added iP submission to task list. | 
+
+**Result** - Adds “iP submission” to the module’s  list of tasks, with the specified details.
+
+> 💡 Deadline has to be in the DD-MM-YYYY format.
+
+&nbsp;
+
+### Deleting a task : _delete task_
+
+Lists all tasks for the module and asks the user for indices of tasks to delete. Then, deletes tasks corresponding to the indices specified.
+
+**Format:**<br>
+`delete task`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | delete task | |
+| 2 | | Which tasks would you like to delete?<br>1. weekly exercise<br>2. watch video snippets<br>3. lecture quiz<br>4. read up notes<br>5.  iP submission<br><br>Please enter the indices of the tasks you would like to delete.<br>Separate indices with a blank space. |
+| 3 | 1 5 | |
+| 4 | | Removed weekly exercise.<br>Removed iP submission. |
+
+**Result** - The tasks “weekly exercise” and “iP submission” are removed from the list of tasks.
+
+> 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
+
+### Editing a task : _edit task_
+
+Lists all tasks for the module and asks the user for the index of the task to edit. Then, lists all editable fields and asks the user for the indices of fields to edit. Lastly, for each selected field, the user inputs a new value.
+
+**Format:**<br>
+`edit task`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | edit task | |
+| 2 | | Which task would you like to edit?<br>1. weekly exercise - 23 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Do before 2359.<br>&nbsp;&nbsp;&nbsp;&nbsp;Graded<br>2. watch video snippets - 25 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Not graded<br>3. lecture quiz - 26 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Complete before next lecture.<br>&nbsp;&nbsp;&nbsp;&nbsp;Not graded |
+| 3 | 3 | |
+| 4 | | Editing: lecture quiz<br>Which fields?<br>1. Description<br>2. Deadline<br>3. Remarks<br>4. Graded/not graded<br><br>Separate indices with a blank space. |
+| 5 | 2 3 | |
+| 6 | | New deadline: |
+| 7 | 2-3-2021 | |
+| 8 | | Updated deadline.<br>New remarks: |
+| 9 | Both quizzes 1 and 2. | |
+| 10 | | Updated remarks. |
+
+**Result** - Edits the deadline and remarks fields for the task “lecture quiz”.
+
+> 💡 While only one task can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
+
+&nbsp;
+
+### Marking task as done : _mark_
+
+Lists undone tasks for the module and asks the user for the indices of tasks to mark as done. Then, marks all tasks corresponding to indices specified as done.
+
+**Format:**<br>
+`mark`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | mark | |
+| 2 | | Which undone tasks have you completed?<br>1. weekly exercise<br>2. lecture quiz<br>3. read up notes<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space.
+| 3 | 1 2 | |
+| 4 | | Marked weekly exercise as done.<br>Marked lecture quiz as done. |
+
+**Result** - The tasks “weekly exercise” and “lecture quiz” are marked as done.
+
+> 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
+
+### Marking task as undone : _unmark_
+
+Lists done tasks for the module and asks the user for the indices of tasks to mark as undone. Then, mark all tasks corresponding to indices specified as undone.
+
+**Format:**<br>
+`unmark`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | unmark | |
+| 2 | | Which done tasks have you completed?<br>1. watch video snippets<br>2. iP submission<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space.
+| 3 | 1 | |
+| 4 | | Marked watch video snippets as undone. |
+
+**Result** - The task “watch video snippets” is marked as undone.
+
+> 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
+
+### Listing all tasks : _tasks_
+
+Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
+
+**Format:**<br>
+`tasks`
+
+**Example:**
+
+| Step | Users Input | GULIOs Output |
+| --- | --- | --- |
+| 1 | tasks | |
+| 2 | | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021
+
+&nbsp;
