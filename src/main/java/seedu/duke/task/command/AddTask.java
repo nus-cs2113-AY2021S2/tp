@@ -20,6 +20,7 @@ public class AddTask {
     private static final int ADD_MIDTERM_COMMAND = 3;
     private static final int ADD_FINAL_EXAM_COMMAND = 4;
     private static final String EMPTY_STRING = "";
+    private static final String NOT_DONE_STATUS = "[    ] ";
 
     public static void execute(int taskTypeNumber) {
         String dateAndTime = EMPTY_STRING;
@@ -62,6 +63,10 @@ public class AddTask {
 
     public static void addTask(String module, String description, String message) {
         Task task = new Task(module, description, message);
+        if (TaskManager.findIfTaskExists(module, description, NOT_DONE_STATUS)) {
+            Ui.printTaskAlreadyExistsMessage(task);
+            return;
+        }
         TaskManager.tasks.add(task);
         assert TaskManager.tasks.contains(task) : "Task was not added to task list";
         Ui.printAddedTaskMessage(task);
@@ -70,6 +75,10 @@ public class AddTask {
     public static void addAssignment(String module, String description,
                                      String message, String dateAndTime) {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
+        if (TaskManager.findIfAssignmentExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
+            Ui.printTaskAlreadyExistsMessage(assignment);
+            return;
+        }
         TaskManager.assignments.add(assignment);
         assert TaskManager.assignments.contains(assignment) : "Assignment was not added to assignment list";
         Ui.printAddedTaskMessage(assignment);
@@ -78,6 +87,10 @@ public class AddTask {
     public static void addMidterm(String module, String description,
                                   String message, String dateAndTime) {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
+        if (TaskManager.findIfMidtermExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
+            Ui.printTaskAlreadyExistsMessage(midterm);
+            return;
+        }
         TaskManager.midterms.add(midterm);
         assert TaskManager.midterms.contains(midterm) : "Midterm was not added to midterm list";
         Ui.printAddedTaskMessage(midterm);
@@ -86,6 +99,10 @@ public class AddTask {
     public static void addFinalExam(String module, String description,
                                     String message, String dateAndTime) {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
+        if (TaskManager.findIfFinalExamExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
+            Ui.printTaskAlreadyExistsMessage(finalExam);
+            return;
+        }
         TaskManager.finalExams.add(finalExam);
         assert TaskManager.finalExams.contains(finalExam) : "Final exam was not added to final exam list";
         Ui.printAddedTaskMessage(finalExam);

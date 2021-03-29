@@ -1,7 +1,11 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
