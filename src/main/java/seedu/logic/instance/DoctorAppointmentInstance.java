@@ -43,14 +43,13 @@ public class DoctorAppointmentInstance {
     }
 
     public void run() {
-        DoctorAppointmentUI.doctorAppointmentsWelcome();
         UI.showLine();
+        DoctorAppointmentUI.doctorAppointmentsWelcome();
         boolean isReturnToStartMenu = false;
-        Scanner userInput = new Scanner(System.in);
         while (!isReturnToStartMenu) {
             try {
-                DoctorAppointmentUI.printAppointmentMenuPrompt();
-                String input = userInput.nextLine();
+                ui.printAppointmentMenuPrompt();
+                String input = ui.getInput("Appointment");
                 UI.showLine(); // show the divider line ("_______")
                 Command c = DoctorAppointmentParser.parse(input, details);
                 c.execute(details, ui);
@@ -63,7 +62,8 @@ public class DoctorAppointmentInstance {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             } catch (Exception e) {
-                System.out.println("OOPS something went wrong :0");
+                //System.out.println("OOPS something went wrong :0");
+                UI.showLine();
             }
         }
     }
