@@ -118,6 +118,10 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
+    public String cleanseInput(String input) {
+        return input.replaceAll("[^A-Za-z0-9]","");
+    }
+
     public static void abortInputErrorMessage() {
         System.out.println("Input has been aborted");
     }
