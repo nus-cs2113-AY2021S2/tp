@@ -6,26 +6,29 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
-Table of Contents
-=================
 
-* [User Guide](#user-guide)
-  * [Introduction](#introduction)
-  * [Quick Start](#quick-start)
-  * [Features](#features)
-    * [Adding a food item: add](#adding-a-food-item-add)
-    * [Display the list of all foods: list](#display-the-list-of-all-foods-list)
-    * [Display the list of foods by category: list &lt;CATEGORY&gt;](#display-the-list-of-foods-by-category-list-category)
-    * [Display the list of foods by storage location: list &lt;LOCATION&gt;](#display-the-list-of-foods-by-storage-location-list-location)
-    * [Remove a food item by quantity: remove](#remove-a-food-item-by-quantity-remove)
-    * [Search: search](#search-search)
-    * [List expiring foods: expiring](#list-expiring-foods-expiring)
-    * [List categories with food running low: runninglow](#list-categories-with-food-running-low-runninglow)
-    * [Modify the minimum quantity limits: setlimit](#modify-the-minimum-quantity-limits-setlimit)
-    * [Get help message: help](#get-help-message-help)
-    * [Exit the application: bye](#exit-the-application-bye)
-  * [FAQ](#faq)
-  * [Command Summary](#command-summary)
+## Contents
+
+
+* [Introduction](#introduction)
+* [Quick Start](#quick-start)
+* [Features](#features)
+  * [Add](#adding-a-food-item-add)
+  * [List](#display-the-list-of-all-foods-list)
+  * [List by Category](#display-the-list-of-foods-by-category-list-category)
+  * [List by Location](#display-the-list-of-foods-by-storage-location-list-location)
+  * [Remove](#remove-a-food-item-remove)
+  * [Search](#search-search)
+  * [Expiring](#list-expiring-foods-expiring)
+  * [Runninglow](#list-categories-with-food-running-low-runninglow)
+  * [Setlimit](#modify-the-minimum-quantity-limits-setlimit)
+  * [History](#list-history-of-items-added-history)
+  * [Clear history](#clear-list-history-of-items-added-history-clear)
+  * [Help](#get-help-message-help)
+  * [Bye](#exit-the-application-bye)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
+
 
   
 ## Quick Start
@@ -107,11 +110,7 @@ Example of usage:
 ```
 >> list
 Here are the items in your fridge:
-<<<<<<< HEAD
 	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
-=======
-	1. Food name: chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
->>>>>>> master
 	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
@@ -297,6 +296,55 @@ Okie dokie! The new minimum quantity for category 'MEAT' is 200
 Congrats! You are all stocked up on food! :D
 ```
 
+### List history of items added: `history`
+
+Displays a history of food items that have been added to the Fridge
+since it was last cleared.
+
+
+* The Fridge keeps track of all Food items added in its lifetime automatically.
+* Unlike adding Food to a Fridge, which merges the quantity of duplicate Foods together,
+  the history command will not merge the quantities of food.
+  * Thus, the user can use this command to keep track of all occurrences where Food 
+  has been added to the Fridge.
+    
+
+The data is saved to disk in a text file, with default location as `data/historyData.txt`.
+  * In the event that the data in the text file is corrupted or in an unreadable format, the
+  `history` command may fail to output the contents of the file. Users may have to manually
+   inspect the file to delete the invalid content, or wipe the contents of the file with
+   `history clear`, to resume normal function. 
+    * The execution of the FridgeFriend program, however, will not be interrupted.
+
+Format: `history`
+
+Example of usage:
+
+```
+>> history
+This is the full history of items you've added in the fridge:
+  1. Food name: Coke, category: BEVERAGE, expiry: 30-06-2021, stored in: FREEZER, quantity: 5
+  2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 200
+  3. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 300
+```
+
+### Clear list history of items added: `history clear`
+
+Wipes the data from the history text file.
+
+Format: `history clear`
+
+Example of usage:
+
+```
+>> history clear
+History successfully cleared!
+
+>> history 
+This is the full history of items you've added in the fridge:
+```
+
+
 ### Get help message: `help`
 
 Prints a list of available commands and formats.
@@ -341,7 +389,7 @@ Bye! Hope to see you again soon!
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Copy the `.jar` file along with `save` folder to the target computer and place them together into an empty folder.
+**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder.
 As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
 
 **Q**: What if I forget the correct format of a command?
@@ -364,5 +412,7 @@ Plus, you are always welcomed to use `help` command.
 * List expiring foods `expiring`
 * List categories with food running low: `runninglow`
 * Modify the minimum quantity limits: `setlimit FOOD_CATEGORY /qty QUANTITY`
+* List history of items added: `history`  
+* Clear list history of items added: `history clear`  
 * Get help message `help`
 * Exit application `bye`

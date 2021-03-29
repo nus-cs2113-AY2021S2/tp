@@ -31,6 +31,8 @@ This is the list of food categories:
 This is the list of storage locations:
 	[FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
 -----------------------------------------------------------------
+Fridge has been cleared!
+-----------------------------------------------------------------
 Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
