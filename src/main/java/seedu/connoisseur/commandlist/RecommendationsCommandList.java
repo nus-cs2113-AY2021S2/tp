@@ -49,20 +49,23 @@ public class RecommendationsCommandList {
         ui.printRecommendationListHeading();
         for (int i = 0; i < recommendationList.size(); i++) {
             Recommendation currentRecommendation = recommendationList.get(i);
-            ui.print((i + 1) + ". ");
+            ui.print("| " + (i + 1) + ". ");
             if (i < 9) {
                 ui.print(" ");
             }
             ui.print(currentRecommendation.getTitle());
             ui.printWhiteSpaceTitle(currentRecommendation.getTitle().length());
-            ui.print(currentRecommendation.getCategory());
+            ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print(currentRecommendation.dollarRange());
-            ui.printWhiteSpace(2);
-            ui.print(currentRecommendation.getLocation());
+            ui.print("| " + currentRecommendation.dollarRange());
+            ui.printWhiteSpace(currentRecommendation.dollarRange().length());
+            ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
-            ui.println(currentRecommendation.getRecommendedBy());
+            ui.print("| " + currentRecommendation.getRecommendedBy());
+            ui.printWhiteSpace(currentRecommendation.getRecommendedBy().length());
+            ui.println("|");
         }
+        ui.printTableEndBorderForReco();
     }
 
     /**
