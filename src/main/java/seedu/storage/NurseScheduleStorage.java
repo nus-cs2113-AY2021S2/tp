@@ -1,6 +1,6 @@
 package seedu.storage;
 
-import seedu.model.object.NurseSchedule;
+import seedu.model.NurseSchedule;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,6 +36,8 @@ public class NurseScheduleStorage {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error loading saved file!");
         }
     }
 

@@ -1,7 +1,7 @@
 package seedu.storage;
 
-import seedu.model.object.staff.Staff;
-import seedu.model.objectList.StaffList;
+import seedu.model.staff.Staff;
+import seedu.logic.command.StaffActions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,7 +25,7 @@ public class StaffStorage {
     public static void loadTask(String line) {
         String[] arr = line.split("\\|");
         Staff staff = new Staff(arr);
-        StaffList.addStaff(staff);
+        StaffActions.addStaff(staff);
     }
 
     public static void loadFile() throws FileNotFoundException {
@@ -39,8 +39,8 @@ public class StaffStorage {
     public static void writeToFile() throws IOException {
         createFile();
         FileWriter fw = new FileWriter(FILE_PATH);
-        for (int i = 0; i < StaffList.getNumStaff(); i++) {
-            ArrayList<Staff> buffer = StaffList.getList();
+        for (int i = 0; i < StaffActions.getNumStaff(); i++) {
+            ArrayList<Staff> buffer = StaffActions.getList();
             fw.write(formWriteData(buffer.get(i)));
         }
         fw.close();

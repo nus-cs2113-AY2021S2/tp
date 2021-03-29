@@ -1,6 +1,5 @@
 package seedu.ui;
 
-import seedu.exceptions.staffexceptions.AbortException;
 import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;
@@ -11,20 +10,20 @@ public class NurseScheduleUI extends UI {
         System.out.print("NSchedule --> ");
     }
 
-    public static String[] inputToCreateSchedule() throws AbortException, ParseException {
-
-        String[] scheduleInput = new String[3];
-        System.out.print("Nurse ID: ");
-        scheduleInput[0] = abortEnabledScanInput();
-        System.out.print("Patient ID: ");
-        scheduleInput[1] = abortEnabledScanInput();
-        System.out.print("Date: ");
-        scheduleInput[2] = abortEnabledScanInput();
-
-        printAddedSchedule(scheduleInput[0], NurseSchedulesParser.formatDate(scheduleInput[2]));
-
-        return scheduleInput;
-    }
+//    public static String[] inputToCreateSchedule() throws AbortException, ParseException {
+//
+//        String[] scheduleInput = new String[3];
+//        System.out.print("Nurse ID: ");
+//        scheduleInput[0] = abortEnabledScanInput();
+//        System.out.print("Patient ID: ");
+//        scheduleInput[1] = abortEnabledScanInput();
+//        System.out.print("Date: ");
+//        scheduleInput[2] = abortEnabledScanInput();
+//
+//        printAddedSchedule(scheduleInput[0], NurseSchedulesParser.formatDate(scheduleInput[2]));
+//
+//        return scheduleInput;
+//    }
 
     public static void printNurseScheduleWelcomeMessage() {
         System.out.println("Welcome to Nurse Schedules!");
@@ -35,7 +34,7 @@ public class NurseScheduleUI extends UI {
     public static void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedules commands: ");
         System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add\" adds a schedule to the schedule list!");
+        System.out.println("\"add\" [NurseID] [Patient ID] [Date (DDMMYYYY)] adds a schedule to the schedule list!");
         System.out.println("\"list [NurseID/all]\" brings up the list of either all or specified nurse schedules!");
         System.out.println("\"delete [NurseID] [Date (DDMMYYYY)]\" deletes the schedule with the specified nurse ID!");
         System.out.println("\"return\" returns you to the Start Menu!");
@@ -48,8 +47,8 @@ public class NurseScheduleUI extends UI {
         showLine();
     }
 
-    public static void printAddedSchedule(String id, String datetime) {
-        System.out.println("Trip to " + id + " on " + datetime + " added!");
+    public static void printAddedSchedule(String id, String datetime) throws ParseException {
+        System.out.println("Trip to " + id + " on " + NurseSchedulesParser.formatDate(datetime) + " added!");
         showLine();
     }
 

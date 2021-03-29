@@ -1,8 +1,8 @@
 package seedu.ui;
 
-import seedu.exceptions.staffexceptions.AbortException;
-import seedu.exceptions.staffexceptions.WrongStaffIdException;
-import seedu.model.object.staff.Staff;
+import seedu.exceptions.staff.AbortException;
+import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.model.staff.Staff;
 
 import static seedu.ui.UI.abortEnabledScanInput;
 import static seedu.logic.parser.staffparser.checkID;

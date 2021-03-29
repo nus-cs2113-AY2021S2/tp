@@ -1,6 +1,6 @@
 package seedu.ui;
 
-import seedu.exceptions.staffexceptions.AbortException;
+import seedu.exceptions.staff.AbortException;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -12,7 +12,8 @@ public class UI {
     static final String UNKNOWN_COMMAND = "unknown";
     static Scanner scanner = new Scanner(System.in);
     static String LINEBREAK = "____________________________________________________________";
-    static String LOGO = " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
+    static String LOGO =
+            " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
             + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
             + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
             + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
@@ -22,6 +23,23 @@ public class UI {
     public static String scanInput() {
         return scanner.nextLine().trim();
     }
+
+    public static void printError(String errorMessage) {
+        System.out.println(errorMessage);
+    }
+
+    public String getInput(String requestMenu) {
+        System.out.println(requestMenu + " -->");
+        String input = scanner.nextLine();
+
+        while (input.trim().isEmpty()) {
+            System.out.println(requestMenu + " -->");
+            input = scanner.nextLine();
+        }
+
+        return input.replaceAll("\\s+", " ").trim();
+    }
+
     public static String abortEnabledScanInput() throws AbortException {
         String input = scanner.nextLine().trim();
         if (input.equals("\\abort") ) {
@@ -33,6 +51,7 @@ public class UI {
             return input;
         }
     }
+
     public static String smartCommandRecognition(String[] commands, String input) {
         int diff = LARGE_NUMBER;
         int index = -1;
@@ -132,25 +151,17 @@ public class UI {
     public static void printStartMenu() {
         System.out.println("Start Menu");
         System.out.println("Commands:");
-        System.out.println("\"1\" to go to staff");
-        System.out.println("\"2\" to go to patients");
-        System.out.println("\"3\" to go to doctors appointments");
-        System.out.println("\"4\" to go to nurse schedules");
-        System.out.println("\"5\" to go to drugs inventory");
+        System.out.println("\"staff\" to go to staff");
+        System.out.println("\"patient\" to go to patients");
+        System.out.println("\"appointments\" to go to doctors appointments");
+        System.out.println("\"schedules\" to go to nurse schedules");
+        System.out.println("\"inventory\" to go to drugs inventory");
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }
 
     public static void printGoodbye() {
         System.out.println("Goodbye! Have a nice day!");
-    }
-
-    public static void startMenuPrompt() {
-        System.out.print("Start Menu --> ");
-    }
-
-    public static void userNamePrompt() {
-        System.out.print("User Name --> ");
     }
 
     public static void returningToStartMenuMessage() {
@@ -161,7 +172,6 @@ public class UI {
         System.out.println("OOPS! There was an error loading the file!");
     }
 
-
     public static String prettyPrint(String string, int length) {
         return String.format("%1$-" + length + "s", string);
     }
@@ -169,5 +179,8 @@ public class UI {
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
+    }
+
+    public void fileCreateErrorMessage() {
     }
 }

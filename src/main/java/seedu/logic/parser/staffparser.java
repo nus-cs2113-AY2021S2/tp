@@ -1,13 +1,13 @@
 package seedu.logic.parser;
 
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staffexceptions.AbortException;
-import seedu.exceptions.staffexceptions.WrongListInputException;
-import seedu.exceptions.staffexceptions.WrongStaffIdException;
+import seedu.exceptions.staff.AbortException;
+import seedu.exceptions.staff.WrongListInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
-import seedu.model.objectList.StaffList;
+import seedu.logic.command.StaffActions;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 import static seedu.ui.StaffUI.inputToCreateStaff;
 import static seedu.ui.UI.*;
-import static seedu.model.objectList.StaffList.addStaff;
+import static seedu.logic.command.StaffActions.addStaff;
 
 public class staffparser {
     static final String[] COMMANDS = {"add", "delete", "list", "addline", "find", "return", "help"};
@@ -86,7 +86,7 @@ public class staffparser {
         case ("addline"):
             checkEmptyInput(line);
             checkID(line.split(" ")[1]);
-            StaffList.add(line);
+            StaffActions.add(line);
             StaffStorage.writeToFile();
             break;
 
@@ -96,14 +96,14 @@ public class staffparser {
             StaffUI.staffListHeader();
             UI.showLine();
             String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
-            StaffList.list(string);
+            StaffActions.list(string);
             UI.printEmptyLine();
             break;
 
         case ("delete"):
             checkEmptyInput(line);
             checkID(line.split(" ")[1]);
-            StaffList.delete(line);
+            StaffActions.delete(line);
             StaffStorage.writeToFile();
             break;
 
@@ -116,13 +116,13 @@ public class staffparser {
             checkEmptyInput(line);
             StaffUI.staffListHeader();
             UI.showLine();
-            StaffList.find(line.split(" ")[1]);
+            StaffActions.find(line.split(" ")[1]);
             UI.printEmptyLine();
             break;
 
         case ("return"):
             StaffStorage.writeToFile();
-            StaffList.resetList();
+            StaffActions.resetList();
             return 0;
 
         default:

@@ -1,7 +1,7 @@
 package seedu.storage;
 
 import seedu.logic.command.AppointmentActions;
-import seedu.model.object.DoctorAppointment;
+import seedu.model.DoctorAppointment;
 
 import java.io.File;
 import java.io.FileNotFoundException;

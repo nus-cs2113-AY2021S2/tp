@@ -3,9 +3,9 @@ package seedu.staff;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staffexceptions.AbortException;
-import seedu.exceptions.staffexceptions.WrongListInputException;
-import seedu.exceptions.staffexceptions.WrongStaffIdException;
+import seedu.exceptions.staff.AbortException;
+import seedu.exceptions.staff.WrongListInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
 
 import java.io.IOException;
 
