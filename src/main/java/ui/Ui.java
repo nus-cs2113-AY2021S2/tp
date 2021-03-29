@@ -31,7 +31,7 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
-    public static String readCommand() {
+    public String readCommand() {
         try {
             line = userInputScanner.nextLine();
         } catch (NullPointerException e) {
@@ -83,7 +83,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public static void showAddStore() {
+    public void showAddStore() {
         System.out.println("Please enter the new store's name");
         System.out.println(LINESPACING);
     }
@@ -107,7 +107,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public static void showDisplaySelectStores(Canteen canteen) {
+    public void showDisplaySelectStores(Canteen canteen) {
         System.out.println(LINESPACING);
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
@@ -123,7 +123,7 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
-    public static void showDisplayStores(Canteen canteen) {
+    public void showDisplayStores(Canteen canteen) {
         System.out.println(LINESPACING);
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
@@ -149,8 +149,8 @@ public class Ui {
             System.out.println(menuItem.toString());
         }
     }
-    
-    public static void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
+
+    public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
         System.out.println("Select one of the following NUS canteens to " + action + ":");
         for (int i = 0; i < canteens.size(); i++) {
@@ -178,7 +178,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public static void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
+    public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
         System.out.println(LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
         System.out.println("Recommended: " + Math.round(averageRating * 100.0) / 100.0 + "/5.0");
@@ -204,37 +204,37 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public static void enterReview() {
+    public void enterReview() {
         System.out.println(LINESPACING);
         System.out.println("Please type your review:");
     }
 
-    public static void enterRating() {
+    public void enterRating() {
         System.out.println(LINESPACING);
         System.out.println("Please give your rating from 1 to 5");
     }
 
-    public static void reviewAdded() {
+    public void reviewAdded() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully added!");
     }
 
-    public static void reviewNotAdded() {
+    public void reviewNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
     }
 
-    public static void showDeleteReview() {
+    public void showDeleteReview() {
         System.out.println(LINESPACING);
         System.out.println("Please enter review number to be deleted");
     }
 
-    public static void reviewDeleted() {
+    public void reviewDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully deleted!");
     }
 
-    public static void showAddCanteen() {
+    public void showAddCanteen() {
         System.out.println(LINESPACING);
         System.out.println("Please type the name of the new canteen:");
     }

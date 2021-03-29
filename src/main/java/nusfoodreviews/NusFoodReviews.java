@@ -26,7 +26,7 @@ public class NusFoodReviews {
 
     public NusFoodReviews(String filePath) {
         ui = new Ui();
-        parser = new Parser(this);
+        parser = new Parser(this, ui);
         storage = new Storage(filePath);
         canteens = storage.load();
     }

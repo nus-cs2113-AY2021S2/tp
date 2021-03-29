@@ -29,10 +29,11 @@ import static stores.Store.averageRating;
 public class Parser {
 
     private NusFoodReviews nusFoodReviews;
+    private Ui ui;
 
-    public Parser(NusFoodReviews nusFoodReviews) {
-
+    public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
+        this.ui = ui;
     }
 
     public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws DukeExceptions {
@@ -86,29 +87,29 @@ public class Parser {
             newCommand = new DisplayCanteensCommand();
             break;
         case "2":
-            Ui.showAddCanteen();
-            String canteenName = Ui.readCommand();
+            ui.showAddCanteen();
+            String canteenName = ui.readCommand();
             newCommand = new AddCanteenCommand(canteenName);
             break;
         case "3":
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            Ui.showDisplayStores(canteens.get(currentCanteenIndex));
-            Ui.showAddStore();
-            String storeName = Ui.readCommand();
+            ui.showDisplayStores(canteens.get(currentCanteenIndex));
+            ui.showAddStore();
+            String storeName = ui.readCommand();
             newCommand = new AddStoreCommand(currentCanteenIndex, storeName);
             break;
         case "4":
-            Ui.showDisplaySelectCanteens(canteens, "delete");
+            ui.showDisplaySelectCanteens(canteens, "delete");
             int numCanteens = canteens.size();
-            int canteenIndex = parseInt(Ui.readCommand(), Math.min(1, numCanteens), numCanteens) - 1;
+            int canteenIndex = parseInt(ui.readCommand(), Math.min(1, numCanteens), numCanteens) - 1;
             newCommand = new DeleteCanteenCommand(canteenIndex);
             break;
         case "5":
             nusFoodReviews.setCanteenIndex();
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            Ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
-            int storeIndex = parseInt(Ui.readCommand(), 2,
+            ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+            int storeIndex = parseInt(ui.readCommand(), 2,
                     canteens.get(currentCanteenIndex).getNumStores()) - 1;
             newCommand = new DeleteStoreCommand(currentCanteenIndex, storeIndex);
             break;
@@ -122,9 +123,9 @@ public class Parser {
             ArrayList<Review> reviews = canteens
                     .get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
             averageRating = stores.get(currentStoreIndex).getAverageRating();
-            Ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
-            Ui.showDeleteReview();
-            int reviewNumber = parseInt(Ui.readCommand(),1,
+            ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
+            ui.showDeleteReview();
+            int reviewNumber = parseInt(ui.readCommand(),1,
                     canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount());
             newCommand = new DeleteReviewCommand(currentCanteenIndex,currentStoreIndex, reviewNumber);
             break;
