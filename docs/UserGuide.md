@@ -62,6 +62,8 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 ### Nurse Schedule
 
+The functions in the nurse schedule menu allows you, the head nurse, to add, view, and delete schedules of your nurses
+
 #### Adding a new schedule: `add`
 Adds a new schedule to the list of nurse schedules.
 
