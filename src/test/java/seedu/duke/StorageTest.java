@@ -5,7 +5,6 @@ import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.SortedMap;
 
 public class StorageTest {
@@ -13,11 +12,11 @@ public class StorageTest {
     public void storeData() {
         Data data = new Data();
         Patient patient = new Patient("S1234567D");
-        LocalDate date = LocalDate.now();
-        patient.addRecord(date, "head pain, dizziness", "heat stroke", "cooling packs, medicine");
+        patient.addRecord(new Record("fever, cough"));
+        patient.addRecord(new Record("headache & no appetite"));
         data.setPatient(patient);
         patient = new Patient("S7654321B");
-        patient.addRecord(date, "abdominal pain", "mild UTI", "antibiotics, referral to hospital");
+        patient.addRecord(new Record("acute stomach pain"));
         data.setPatient(patient);
 
 
@@ -29,7 +28,7 @@ public class StorageTest {
         }
     }
 
-    /*@Test
+    @Test
     public void loadData() {
         Storage storage = new Storage("testFile.txt");
         try {
@@ -40,6 +39,6 @@ public class StorageTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
 }

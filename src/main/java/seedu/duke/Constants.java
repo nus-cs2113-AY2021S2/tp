@@ -59,11 +59,8 @@ public class Constants {
     public static final int INDEX_OF_LAST_CHARACTER = 8;
     
     //Storage delimiter constants
-    public static final String ID_DELIMITER = "||";
-    public static final String DATE_DELIMITER = "``";
-    public static final String SYMPTOM_DELIMITER = "^^";
-    public static final String DIAGNOSIS_DELIMITER = "##";
-    public static final String PRESCRIPTION_DELIMITER = "@@";
+    public static final String KEY_VALUE_SEPARATOR = "||";
+    public static final String PATIENT_RECORDS_SEPARATOR = "|";
 
     // Keys for the argument HashMap
     public static final String PAYLOAD_KEY = "payload";
