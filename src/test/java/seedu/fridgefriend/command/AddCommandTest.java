@@ -23,6 +23,7 @@ class AddCommandTest {
         fridge = new Fridge();
     }
 
+    //@@author Vinci-Hu
     @Test
     public void addCommand_foodInCorrectFormat_successfullyAdded()
             throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
@@ -83,6 +84,7 @@ class AddCommandTest {
         });
     }
 
+    //@@author Vinci-Hu
     @Test
     public void addCommand_foodWithSameName_successfullyAdded()
             throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
@@ -104,6 +106,7 @@ class AddCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    //@@author
     @Test
     public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {
