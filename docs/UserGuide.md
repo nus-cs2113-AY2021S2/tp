@@ -47,7 +47,7 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 **<>** - Optional inputs.
 
-:information_source: All instances of commands and code will be highlighted in grey and will have a different font.
+:information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
 ## Quick Start
 
