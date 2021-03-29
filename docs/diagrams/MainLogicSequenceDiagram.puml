@@ -33,8 +33,6 @@ loop isExit
         destroy parser
 
         fridgefriend -> fridgefriend: executeCommand()
-        fridgefriend -> command: setData(fridge)
-        return
         fridgefriend -> command: execute()
         return
         destroy command
