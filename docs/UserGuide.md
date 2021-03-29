@@ -43,12 +43,20 @@ Command: `help [command_name]`
 
 `[command_name]`: optional argument specifying command on which help is needed. 
 
+![](Images/ug/help_general.png)
+
+![](Images/ug/help_new.png)
+
 ### Adding a Review
 Add a new review. Choice of quick review or long review. 
 
 Command: `add [quick | long]`, `new [quick | long]`
 
 `[quick | long]` : optional argument to specify quick or long review. 
+
+![](Images/ug/new_quick.png)
+
+![](Images/ug/new_long.png)
 
 ### Listing Reviews
 List your current reviews. You can specify a one-off sorting method by which to sort the reviews. 
@@ -62,12 +70,18 @@ Command: `list [sorting_method]`
 * `earliest`
 * `latest`
 
+![](Images/ug/list_review.png)
+
+![](Images/ug/list_review_rating.png)
+
 ### Sorting Reviews
 Change the saved sorting method. 
 
 Command: `sort <sorting_method>`
 
 `<sorting_method>` : sort method to be used. Default sorting method is `latest`. Refer above for a list of recognised sorting methods. 
+
+![](Images/ug/sort_review.png)
 
 ### Viewing a Review
 View details of a review. 
@@ -76,12 +90,16 @@ Command: `view <title_of_review>`
 
 `<title_of_review>` : title of review that you want to view. 
 
+![](Images/ug/view_review.png)
+
 ### Deleting a Review
 Delete a review that you no longer need. 
 
 Command: `delete <title_of_review>`
 
 `<title_of_review>` : title of review that you want to delete. 
+
+![](Images/ug/delete_review.png)
 
 ## Recommendation Mode
 
