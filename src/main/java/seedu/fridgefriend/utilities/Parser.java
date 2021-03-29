@@ -34,6 +34,7 @@ public class Parser {
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
 
+    //@@author Vinci-Hu
     /**
      * Define arguments format for add food command.
      * A Pattern object which defines how the input string for food item
@@ -53,6 +54,7 @@ public class Parser {
             Pattern.compile("(?<name>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
 
+    //@@author
     /**
      * Define arguments format for remove food command with quantity.
      */
@@ -175,8 +177,9 @@ public class Parser {
         return addCommand;
     }
 
+    //@@author Vinci-Hu
     /**
-     * Parses description into name, foodCategory, expiryDate and storageLocation.
+     * Parses description into name, foodCategory, expiryDate and storageLocation and quanity.
      * Matcher objects will try to parse a string according to the Pattern we define
      * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
      *
@@ -208,6 +211,7 @@ public class Parser {
         }
     }
 
+    //@@author
     /**
      * Returns a ListCommand object based on description.
      *
@@ -234,9 +238,21 @@ public class Parser {
         return removeCommand;
     }
 
+    //@@author Vinci-Hu
+    /**
+     * Parses description into name and quantity.
+     * Matcher objects will try to parse a string according to the Pattern we define
+     * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
+     *
+     * @param removeDescription the string in the required format of food description
+     * @return a new RemoveCommand for Food
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parsed
+     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
+     */
     private static Command parseRemoveDescription(String removeDescription)
-            throws EmptyDescriptionException, InvalidQuantityException,
-            FoodNameNotFoundException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidQuantityException, InvalidInputException {
         if (removeDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -250,6 +266,7 @@ public class Parser {
         }
     }
 
+    //@@author
     /**
      * Returns a SearchCommand object based on description.
      *
@@ -357,7 +374,7 @@ public class Parser {
         try {
             int quantity = Integer.parseInt(description);
             return quantity;
-        } catch (Exception e) {
+        } catch (NumberFormatException numberFormatException) {
             throw new InvalidQuantityException();
         }
     }

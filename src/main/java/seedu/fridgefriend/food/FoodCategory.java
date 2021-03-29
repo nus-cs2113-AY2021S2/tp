@@ -1,5 +1,6 @@
 package seedu.fridgefriend.food;
 
+//@@author Vinci-Hu
 /**
  * Subject to changes with discussion.
  */
@@ -16,6 +17,7 @@ public enum FoodCategory {
     FROZEN,    // e.g. frozen dumpling, ice cream
     OTHER;
 
+    //@@author
     private static int vegetableMinimumQuantity = 500;
     private static int fruitMinimumQuantity = 500;
     private static int meatMinimumQuantity = 500;
