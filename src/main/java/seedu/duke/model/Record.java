@@ -47,6 +47,12 @@ public class Record {
         return getConsultationDetail();
     }
 
+    /**
+     * This adds 3 different type of details into this record.
+     * @param symptom symptoms of the patient
+     * @param diagnosis diagnosis based on patient's symptoms and other tests
+     * @param prescription prescription given for this visit
+     */
     public void addDetails(String symptom, String diagnosis, String prescription) {
         if (symptom != null) {
             symptoms.add(symptom);
