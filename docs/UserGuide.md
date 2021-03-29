@@ -1,8 +1,37 @@
-# User Guide
+# HealthVault User Guide
 
-## Introduction
+## Opening Words
+
+## Content Page
+
+## 1. Introduction
 
 HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
+
+## 2. Installation Guide
+
+1. Ensure system has Java 11
+
+2. Download the latest JAR file from this [website](https://github.com/AY2021S2-CS2113T-F08-2/tp/releases)
+
+3. Open the command window 
+   - Click the search icon in the bottom left side of the screen 
+   - Type ‘command prompt’ in the search bar
+   - Select the application called ‘Command Prompt’
+
+4. Cd into the folder containing the JAR file
+   - Locate the file path of the JAR file that you have downloaded
+   - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
+
+   - Then, run the following command
+   - `cd [File Path]`
+   
+   - Example:
+   - `cd C:\Users\JohnDoe\Downloads`
+	
+Run the following command
+java -jar jar [JAR file name]
+
 
 ## Quick Start
 
