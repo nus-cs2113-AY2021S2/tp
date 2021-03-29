@@ -8,8 +8,6 @@ It is written in Java, and has more than 3.2kLoC.
 
 ## Table of Contents
 
-=================
-
 * [User Guide](#user-guide)
   * [Introduction](#introduction)
   * [Quick Start](#quick-start)
