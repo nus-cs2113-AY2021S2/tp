@@ -35,6 +35,20 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
 
+**Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
+
+**Case Sensitive** - Differentiating between capital and lower-case letters.
+
+**User Input** - Any information or data sent to a computer by the user using the application.
+
+### 3.2 Symbols & Icons
+
+**[]** - Square brackets for compulsory user inputs.
+
+**<>** - Optional inputs.
+
+All instances of commands and code will be highlighted in blue and will have a different font.
+
 ## Quick Start
 
 {Give steps to get started quickly}
