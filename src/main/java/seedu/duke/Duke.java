@@ -38,7 +38,9 @@ public class Duke {
                 /*switch (c) {
                 case "staff":
                     UI.showLine();
-                    staffparser.run();
+                    System.out.println("Staff Instance!");
+                    StaffInstance staff = new StaffInstance(STAFF_FILE_PATH);
+                    staff.run();
                     break;
                 case "patient":
                     UI.showLine();
@@ -72,6 +74,8 @@ public class Duke {
                     isExit = true;
                     UI.printGoodbye();
                     break;
+
+
                 default:
                     UI.showLine();
                     System.out.println("OOPS! That is not a registered command! Please type \"help\" to see the list of commands");

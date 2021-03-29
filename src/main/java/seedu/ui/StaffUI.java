@@ -45,11 +45,11 @@ public class StaffUI {
     }
 
     public static void staffFiredOutput(String line) {
-        System.out.println(line.split(" ")[1] + " has been fired.");
+        System.out.println(line.split("/")[1] + " has been fired.");
     }
 
     public static void staffDoesNotExist(String line) {
-        System.out.println("Staff with ID: " + line.split(" ")[1] + " does not exist");
+        System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
     }
 
     public static void staffListHeader() {
