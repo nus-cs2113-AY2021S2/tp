@@ -35,7 +35,7 @@ Table of Contents
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
    `FridgeFriend` with `java -jar FridgeFriend.jar`.
-5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a 
+5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a 
    list of all current food. Some example commands you can try:
    * `list`: Lists all food.
    * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`, 
