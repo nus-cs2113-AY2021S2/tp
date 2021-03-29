@@ -7,8 +7,6 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -44,56 +42,53 @@ public class Storage {
                 Patient patient = (Patient)m.getValue();
                 String records = convertRecordToString(patient);
 
-                message.append(id + Constants.ID_DELIMITER + records + "\n");
+                message.append(id + Constants.KEY_VALUE_SEPARATOR + records + "\n");
             }
+            System.out.println(message);
             fileWriter.write(message.toString());
             fileWriter.close();
 
         } catch (FileNotFoundException e) {
-            Ui ui = new Ui();
-            ui.printException(e);
+            e.printStackTrace();
         }
     }
 
     public String convertRecordToString(Patient patient) {
         StringBuilder stringBuilder = new StringBuilder();
-        TreeMap<LocalDate, Record> records = patient.getRecords();
-        for (Map.Entry<LocalDate, Record> record : records.entrySet()) {
-            String localDate = record.getKey().format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
-            Record patientRecord = record.getValue();
-
-            stringBuilder.append(localDate + Constants.DATE_DELIMITER + patientRecord.printFileConsultationDetail());
+        for (Record record : patient.getRecords()) {
+            stringBuilder.append(record.getConsultationDetail());
+            stringBuilder.append(Constants.PATIENT_RECORDS_SEPARATOR);
         }
 
         return (stringBuilder.toString());
     }
 
-    /*public TreeMap<LocalDate, Record> convertStringToRecords(String recordString) {
-        String[] splitString = recordString.split(Constants.DATE_DELIMITER);
-        TreeMap<LocalDate, Record> records = new TreeMap<>();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
-        LocalDate dt = dateTimeFormatter.parseLocalDate(splitString[0]);
-
+    public ArrayList<Record> convertStringToRecord(String recordString) {
+        String[] splitString = recordString.split(Constants.PATIENT_RECORDS_SEPARATOR);
+        ArrayList<Record> records = new ArrayList<Record>();
+        for (String str : splitString){
+            records.add(new Record(str));
+        }
         return records;
     }
 
+    //TODO: Fix load function
     public SortedMap<String, Patient> load() throws IOException {
         SortedMap<String, Patient> data = new TreeMap<>();
         try {
             File inFile = new File(filePath);
             Scanner scanner = new Scanner(inFile);
             while (scanner.hasNextLine()) {
-                String[] retrievedPatientsData = scanner.nextLine().split(Constants.ID_DELIMITER);
+                String[] retrievedPatientsData = scanner.nextLine().split(Constants.KEY_VALUE_SEPARATOR);
                 String id = retrievedPatientsData[0];
-                TreeMap<LocalDate, Record> records = convertStringToRecords(retrievedPatientsData[1]);
+                ArrayList<Record> records = convertStringToRecord(retrievedPatientsData[1]);
                 Patient patient = new Patient(id, records);
                 data.put(id, patient);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            Ui ui = new Ui();
-            ui.printException(e);
+            e.printStackTrace();
         }
         return data;
-    }*/
+    }
 }
