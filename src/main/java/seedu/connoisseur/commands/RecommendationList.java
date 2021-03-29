@@ -1,9 +1,8 @@
-package seedu.connoisseur.commandlist;
+package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.storage.ConnoisseurData;
-import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
@@ -18,34 +17,34 @@ import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 /**
  * Class with methods for different commands in recommendation mode.
  */
-public class RecommendationsCommandList {
+public class RecommendationList {
     private final Ui ui;
-    public ArrayList<Recommendation> recommendationList = new ArrayList<>();
+    public ArrayList<Recommendation> recommendations = new ArrayList<>();
 
-    public RecommendationsCommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
+    public RecommendationList(ConnoisseurData connoisseurData, Ui ui) {
         this.ui = ui;
-        this.recommendationList = connoisseurData.getRecoList();
+        this.recommendations = connoisseurData.getRecommendations();
     }
 
-    public RecommendationsCommandList(Ui ui, Storage storage) {
+    public RecommendationList(Ui ui) {
         this.ui = ui;
     }
 
     /**
      * List reviews according to different types of input.
      */
-    public void listRecommendations(ArrayList<Recommendation> recommendationList) {
-        if (recommendationList.size() == 0) {
+    public void listRecommendations() {
+        if (recommendations.size() == 0) {
             ui.printEmptyRecommendationListMessage();
         } else {
-            printRecommendation(recommendationList);
+            printRecommendations(recommendations);
         }
     }
 
     /**
      * Prints the sorted recommendation.
      */
-    public void printRecommendation(ArrayList<Recommendation> recommendationList) {
+    public void printRecommendations(ArrayList<Recommendation> recommendationList) {
         ui.printRecommendationListHeading();
         for (int i = 0; i < recommendationList.size(); i++) {
             Recommendation currentRecommendation = recommendationList.get(i);
@@ -75,16 +74,16 @@ public class RecommendationsCommandList {
      */
     public boolean checkAndPrintDuplicateRecommendation(String title) {
         int recIndex = -1;
-        for (int i = 0; i < recommendationList.size(); i++) {
-            if ((recommendationList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+        for (int i = 0; i < recommendations.size(); i++) {
+            if ((recommendations.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
                 recIndex = i;
             }
         }
         if (recIndex != -1) {
             System.out.println("There is a recommendation in your list with the same title: ");
-            Recommendation currentRecommendation = recommendationList.get(recIndex);
-            ui.print((recommendationList.indexOf(currentRecommendation) + 1) + ". ");
-            if (recommendationList.indexOf(currentRecommendation) < 9) {
+            Recommendation currentRecommendation = recommendations.get(recIndex);
+            ui.print((recommendations.indexOf(currentRecommendation) + 1) + ". ");
+            if (recommendations.indexOf(currentRecommendation) < 9) {
                 ui.print(" ");
             }
             ui.print(currentRecommendation.getTitle());
@@ -151,7 +150,7 @@ public class RecommendationsCommandList {
             ui.println(LOCATION_PROMPT);
             String location = ui.readCommand();
             Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
-            recommendationList.add(r);
+            recommendations.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
