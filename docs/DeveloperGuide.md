@@ -4,14 +4,13 @@
 * [Introduction](#introduction)
 * [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
 * [Design and implementation](#design--implementation)
-* [Product scope](#product-scope)
+* [Appendix A: Product scope](#appendix-a-product-scope)
    * [Target user profile](#target-user-profile)
    * [Value proposition](#value-proposition)
-* [User stories](#user-stories)
-* [Non-Functional Requirements](#non-functional-requirements)
-* [Glossary](#glossary)
-* [Testing](#testing)
-<!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
+* [Appendix B: User stories](#appendix-b-user-stories)
+* [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
+* [Appendix D: Glossary](#appendix-d-glossary)
+* [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
 
 ## Introduction
 
@@ -122,7 +121,7 @@ API: `Patient.java`, `Record.java` and `Data.java`
 ### Storage Component
 ### Common Classes
 
-## Product scope
+## Appendix A: Product scope
 
 ### Target user profile
 
@@ -136,7 +135,7 @@ Through Patient Manager, general practitioners are able to manage patients faste
 
 {more to be added}
 
-## User Stories
+## Appendix B: User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -151,21 +150,37 @@ Through Patient Manager, general practitioners are able to manage patients faste
 |v2.0|GP in a polyclinic|know if I entered a invalid Patient ID|make sure no mistake is made recording the patient's ID|
 |v2.0|GP in a polyclinic|load and save existing data|work on the data on another device|
 
-## Non-Functional Requirements
+## Appendix C: Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java 11 or above installed. 
 2. Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
-   be able to accomplish most of the tasks faster using commands than using the mouse. 
-   
-{more to be added}
+   be able to accomplish most of the tasks faster using commands than using the mouse.
+4. The data should be stored locally and should be in a human editable text file.
+5. The application should work without requiring an installer.
+6. The application should be at most 100 MB in size.
+7. The application should not rely on any remote server, or database management system.
 
-## Glossary
+<!-- NFRs taken from: https://nus-cs2113-ay2021s2.github.io/website/admin/tp-constraints.html -->
 
-* *glossary item* - Definition
+## Appendix D: Glossary
 
-## Testing
+- *Mainstream OS* - Windows, Linux, and OS-X platforms.
+- *General Practitioner* - A doctor based in the community who treats patients with minor or chronic illnesses and
+  refers those with serious conditions to a hospital. Their duties are not confined to specific organs of the body,
+  and they have particular skills in treating people with multiple health issues.
 
+## Appendix E: Instructions for Manual Testing
+
+### Launch and Shutdown
+
+1. Initial launch
+   1. Download `tp.jar` and copy into an empty folder.
+   2. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
+      ![PowerShell](./images/WindowsPowerShell.png)
+   3. Execute `java -jar tp.jar` to start the Patient Manager.
+   4. Expected: Shows the welcome message as shown below
+<!--
 ### Automated Testing
 We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
 ```
@@ -185,3 +200,4 @@ runtest.bat
 
 ### Manual Testing
 The current version does not support storing the data on the local drive. To start with the manual testing process, you may refer to the "QuickStart" section of the [User Guide](UserGuide.md).
+-->
