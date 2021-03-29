@@ -19,6 +19,7 @@ public class CommandHandler {
     private static final String ERROR_INVALID_COMMAND = "Invalid command: ";
     private static final String LOGGER_OKAY_MESSAGE = "command object successfully created.";
     private static final int INDEX_OF_COMMAND = 0;
+    private boolean isExit;
 
     private Command createCommand(ArrayList<String> parsedArguments, RecordList recordList)
             throws CommandException {
@@ -38,6 +39,7 @@ public class CommandHandler {
         case COMMAND_HELP:
             return new HelpCommand(parsedArguments);
         case COMMAND_EXIT:
+            setExit(true);
             return new ExitCommand(parsedArguments);
         case COMMAND_CREDIT_SCORE:
             return new CreditScoreCommand(parsedArguments);
@@ -58,5 +60,13 @@ public class CommandHandler {
             FINUX_LOGGER.logWarning(e.getMessage());
             return null;
         }
+    }
+
+    public boolean isExit() {
+        return isExit;
+    }
+
+    public void setExit(boolean isExit) {
+        this.isExit = isExit;
     }
 }
