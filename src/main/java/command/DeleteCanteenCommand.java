@@ -15,6 +15,8 @@ public class DeleteCanteenCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-        canteens.remove(canteenIndex);
+        assert canteenIndex >= 0 && canteenIndex < canteens.size() : "DeleteCanteenCommand canteenIndex invalid";
+        Canteen removedCanteen = canteens.remove(canteenIndex);
+        ui.showCanteenDeleted(removedCanteen, canteens.size());
     }
 }

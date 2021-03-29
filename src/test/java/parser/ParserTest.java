@@ -29,21 +29,21 @@ class ParserTest {
 
     @Test
     public void parse_list_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("list",store, maxStores);
         assertTrue(c instanceof ResetStoreCommand);
     }
 
     @Test
     public void parse_menu_success() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("menu",store, maxStores);
         assertTrue(c instanceof DisplayMenusCommand);
     }
 
     @Test
     public void parse_ExceedStoreIndex_exceptionThrown() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         try {
             parser.parseInt("0",1, 1);
         } catch (Exception e) {
@@ -53,24 +53,23 @@ class ParserTest {
 
     @Test
     public void parse_exit_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("exit",store, maxStores);
         assertTrue(c instanceof ExitCommand);
     }
 
     @Test
     public void parse_home_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("home",store, maxStores);
         assertTrue(c instanceof HomeCommand);
     }
 
     @Test
     public void parse_reviews_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser(nusFoodReviews);
+        Parser parser = new Parser(nusFoodReviews, ui);
         Command c = parser.parse("reviews",store, maxStores);
         assertTrue(c instanceof ReadReviewsCommand);
     }
-
 
 }

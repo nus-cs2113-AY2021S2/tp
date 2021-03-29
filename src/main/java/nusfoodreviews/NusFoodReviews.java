@@ -26,7 +26,7 @@ public class NusFoodReviews {
 
     public NusFoodReviews(String filePath) {
         ui = new Ui();
-        parser = new Parser(this);
+        parser = new Parser(this, ui);
         storage = new Storage(filePath);
         canteens = storage.load();
     }
@@ -107,7 +107,7 @@ public class NusFoodReviews {
     }
 
     public void setCanteenIndex() throws DukeExceptions {
-        ui.showDisplaySelectCanteens(canteens);
+        ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
         if (line.equals("exit")) {
             ui.showGoodbye();

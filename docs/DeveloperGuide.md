@@ -15,8 +15,6 @@ that allows the saving and loading of data. This allows all parameters of the da
 ##Implementation
 Below is the list of commands available.
 
-Below is the list of commands available.
-
 * Display selected store sample menu: `menu`
 * Display all reviews of the selected store : `reviews`
 * Add a new review of the selected store: `add`
@@ -36,6 +34,27 @@ Step 1. The admin launches the application for the first time. Admin must enter 
 Step 2. The user selects to delete a canteen from the list of tasks admin can do.
 
 Step 3. The user selects a canteen from the canteen list and canteen is deleted.
+
+###[Admin] Add Canteen
+####Implementation
+
+When the application is launched, a Ui object and Parser object is instantiated.
+To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
+
+Once admin is verified in NusFoodReviews, Parser#parseAdminCommand() is called.
+A switch class is then used to determine the command to instantiate. 
+To add a new canteen, the user must enter '2'. 
+
+Ui#showAddCanteen() is called to display the add canteen prompt.
+User input for canteen name will then be read using Ui#readCommand().
+A new AddCanteenCommand object is instantiated, with the canteen name passed into the constructor.
+Parser#parseAdminCommand() returns the AddCanteenCommand object.
+
+AddCanteenCommand#execute() is then called, passing in 
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+A new Canteen object is instantiated, and added to the ArrayList of canteens.
+Ui#showAddCanteenSuccess() is called to display canteen added confirmation.
+
 
 ## Product scope
 ### Target user profile
@@ -59,7 +78,9 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|user|view menu and price of items|know the type of food sold|
 |v1.0|user|add reviews and rating|provide feedback on store|
 |v1.0|admin|login|verify myself|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list
+|v2.0|admin|add a new canteen
+|v2.0|admin|delete an existing canteen
+
 
 
 
