@@ -172,14 +172,43 @@ Through Patient Manager, general practitioners are able to manage patients faste
 
 ## Appendix E: Instructions for Manual Testing
 
-### Launch and Shutdown
+### Launch, Help and Shutdown
 
 1. Initial launch
    1. Download `tp.jar` and copy into an empty folder.
    2. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
       ![PowerShell](./images/WindowsPowerShell.png)
-   3. Execute `java -jar tp.jar` to start the Patient Manager.
-   4. Expected: Shows the welcome message as shown below
+   3. Execute `java -jar tp.jar` to start the Patient Manager.\
+      Expected: Shows the welcome message as shown below
+      ![Program Startup](./images/start_program.png)
+      <!-- TODO: Standardize program screenshots-->
+2. View help
+    1. Test case: `help`\
+        Expected: Application prints out a help message containing a list of valid commands
+       and how to use them.
+    2. Test case: `help add`\
+        Expected: Application prints out a help message explaining only the `add` command.
+
+### Adding and deleting patients
+
+1. Adding a new patient
+    1. Test case: `add S1234567D`\
+       Expected: Application prints:
+       ```
+       ----------------------------------------------------------------------
+        Patient S1234567D has been added!
+        ----------------------------------------------------------------------
+       ```
+   <!-- TODO: prevent adding duplicate patients
+    1. Test case: `add S1234567D`\
+       Expected: Application prints:
+       ```
+       ----------------------------------------------------------------------
+        Patient S1234567D has been added!
+        ----------------------------------------------------------------------
+       ```
+    -->
+2. Deleting a patient
 <!--
 ### Automated Testing
 We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
