@@ -198,6 +198,10 @@ public class UI {
         return scanInput().equals("y");
     }
 
+    public void lineBreak() {
+        System.out.print(System.lineSeparator());
+    }
+
     public void fileCreateErrorMessage() {
     }
 }
