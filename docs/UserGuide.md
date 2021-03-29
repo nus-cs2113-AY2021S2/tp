@@ -9,18 +9,18 @@ and share their recommendations easily.
 
 ## Table of Contents
 
-1. [Quick start](#Quick_Start)
-2. [Review Mode](#Review_Mode)
-    * [Viewing Help](#Viewing_help)
-    * [Adding a Review](#Adding_a_review)
-    * [Listing Reviews](#Listing_reviews)
-    * [Sorting Reviews](#Sorting_reviews)
-    * [Viewing a Review](#Viewing_a_review)
-    * [Deleting a Review](#Deleting_a_review)
-3. [Recommendation Mode](#Recommendation_Mode)
+1. [Quick start](#Quick-Start)
+2. [Review Mode](#Review-Mode)
+    * [Viewing Help](#Viewing-help)
+    * [Adding a Review](#Adding-a-review)
+    * [Listing Reviews](#Listing-reviews)
+    * [Sorting Reviews](#Sorting-reviews)
+    * [Viewing a Review](#Viewing-a-review)
+    * [Deleting a Review](#Deleting-a-review)
+3. [Recommendation Mode](#Recommendation-Mode)
     * []()
 4. [FAQ](#FAQ)
-5. [Command Summary](#Command_Summary)
+5. [Command Summary](#Command-Summary)
 
 ## Quick Start
 
@@ -30,7 +30,7 @@ and share their recommendations easily.
 4. Open a new terminal and navigate to the folder you just copied into. 
 5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur. 
 6. Type in commands and press Enter to execute it. 
-    Refer to the [Command summary](#command_summary) for a list of recognised commands. 
+    Refer to the [Command summary](#command-summary) for a list of recognised commands. 
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for connoisseur is saved in `connoisseur.json` in the _data folder_. 
 
 ## Review Mode
@@ -43,9 +43,9 @@ Command: `help [command_name]`
 
 `[command_name]`: optional argument specifying command on which help is needed. 
 
-![](Images/ug/help_general.png)
+![](images/ug/help_general.png)
 
-![](Images/ug/help_new.png)
+![](images/ug/help_new.png)
 
 ### Adding a Review
 Add a new review. Choice of quick review or long review. 
@@ -54,9 +54,9 @@ Command: `add [quick | long]`, `new [quick | long]`
 
 `[quick | long]` : optional argument to specify quick or long review. 
 
-![](Images/ug/new_quick.png)
+![](images/ug/new_quick.png)
 
-![](Images/ug/new_long.png)
+![](images/ug/new_long.png)
 
 ### Listing Reviews
 List your current reviews. You can specify a one-off sorting method by which to sort the reviews. 
@@ -70,9 +70,9 @@ Command: `list [sorting_method]`
 * `earliest`
 * `latest`
 
-![](Images/ug/list_review.png)
+![](images/ug/list_review.png)
 
-![](Images/ug/list_review_rating.png)
+![](images/ug/list_review_rating.png)
 
 ### Sorting Reviews
 Change the saved sorting method. 
@@ -81,7 +81,7 @@ Command: `sort <sorting_method>`
 
 `<sorting_method>` : sort method to be used. Default sorting method is `latest`. Refer above for a list of recognised sorting methods. 
 
-![](Images/ug/sort_review.png)
+![](images/ug/sort_review.png)
 
 ### Viewing a Review
 View details of a review. 
@@ -90,7 +90,7 @@ Command: `view <title_of_review>`
 
 `<title_of_review>` : title of review that you want to view. 
 
-![](Images/ug/view_review.png)
+![](images/ug/view_review.png)
 
 ### Deleting a Review
 Delete a review that you no longer need. 
@@ -99,7 +99,7 @@ Command: `delete <title_of_review>`
 
 `<title_of_review>` : title of review that you want to delete. 
 
-![](Images/ug/delete_review.png)
+![](images/ug/delete_review.png)
 
 ## Recommendation Mode
 
