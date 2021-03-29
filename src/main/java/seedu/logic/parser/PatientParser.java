@@ -2,9 +2,11 @@ package seedu.logic.parser;
 
 import seedu.exceptions.DukeException;
 import seedu.exceptions.patient.*;
+import seedu.logic.command.Command;
+import seedu.logic.command.patient.*;
 import seedu.ui.PatientUI;
 import seedu.ui.UI;
-import seedu.model.objectList.PatientList;
+import seedu.logic.command.PatientActions;
 
 public class PatientParser {
 
@@ -15,7 +17,7 @@ public class PatientParser {
      * @param command        interpreted command from the user to be used in error finding
      * @throws DukeException exception based on command
      */
-    public static void lengthCheck(int numberOfTokens, String command) throws DukeException {
+    public void lengthCheck(int numberOfTokens, String command) throws DukeException {
         if (command.equals("add") && numberOfTokens != 7) {
             throw new DukeException(command);
         } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
@@ -25,7 +27,7 @@ public class PatientParser {
         }
     }
 
-    private static int numberOfIntegersInString(String userInput) {
+    private int numberOfIntegersInString(String userInput) {
         int numberOfIntegers = 0;
         for (int i = 0; i < userInput.length(); i++) {
             if (Character.isDigit(userInput.charAt(i))) {
@@ -35,7 +37,7 @@ public class PatientParser {
         return numberOfIntegers;
     }
 
-    private static void isValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException, InvalidIDValueException {
+    private void isValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException, InvalidIDValueException {
         if (userID.length() != 6) {
             throw new InvalidIDLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
@@ -45,7 +47,7 @@ public class PatientParser {
         }
     }
 
-    private static void isIDExist(String userID, PatientList patients, String command) throws NonExistentIDException, DuplicateIDException {
+    private void isIDExist(String userID, PatientActions patients, String command) throws NonExistentIDException, DuplicateIDException {
         if (patients.isIDTaken(userID)) {
             if (command.equals("add")) {
                 throw new DuplicateIDException("IDTaken");
@@ -57,43 +59,44 @@ public class PatientParser {
         }
     }
 
-    public static boolean patientParse(String fullCommand, PatientList patients) {
-        String[] stringTokens = fullCommand.trim().split(" ");
+    public Command patientParse(String fullCommand, PatientActions patients) {
+        String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
         String command = stringTokens[0];
+        Command c = null;
         try {
             switch (command) {
             case "list":
                 lengthCheck(numberOfTokens, command);
-                PatientList.listPatients();
+                c = new PatientList();
                 break;
             case "add":
                 lengthCheck(numberOfTokens, command);
                 if (iDParser(patients, stringTokens, command)) {
-                    PatientList.addPatient(stringTokens[1], stringTokens[2], Integer.parseInt(stringTokens[3]),
-                            stringTokens[4], stringTokens[5], stringTokens[6]);
+                    String[] addFormat = parseToAddFormat(stringTokens);
+                    c = new PatientAdd(addFormat);
                 }
                 break;
             case "delete":
                 lengthCheck(numberOfTokens, command);
                 if (iDParser(patients, stringTokens, command)) {
-                    PatientList.deletePatient(stringTokens[1]);
+                    c = new PatientDelete(stringTokens[1]);
                 }
                 break;
             case "find":
                 lengthCheck(numberOfTokens, command);
                 if (iDParser(patients, stringTokens, command)) {
-                    PatientList.findPatient(stringTokens[1]);
+                    c = new PatientFind(stringTokens[1]);
                 }
                 break;
             case "help":
                 lengthCheck(numberOfTokens, command);
-                PatientUI.printPatientHelpList();
+                c = new PatientHelp();
                 break;
             case "return":
                 lengthCheck(numberOfTokens, command);
-                UI.returningToStartMenuMessage();
-                return true;
+                c = new PatientReturn();
+                break;
             default:
                 UI.invalidCommandErrorMessage();
                 break;
@@ -103,10 +106,17 @@ public class PatientParser {
         } catch (DukeException e) {
             e.getError(command);
         }
-        return false;
+        return c;
     }
 
-    private static boolean iDParser(PatientList patients, String[] stringTokens, String command) {
+    private String[] parseToAddFormat(String[] stringTokens) {
+        String[] addFormat;
+        addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3],
+        stringTokens[4], stringTokens[5], stringTokens[6]};
+        return addFormat;
+    }
+
+    private boolean iDParser(PatientActions patients, String[] stringTokens, String command) {
         try {
             isValidID(stringTokens[1]);
             isIDExist(stringTokens[1], patients, command);

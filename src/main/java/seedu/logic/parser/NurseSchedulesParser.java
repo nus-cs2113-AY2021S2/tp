@@ -4,7 +4,7 @@ import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logic.command.NurseScheduleActions;
-import seedu.model.object.NurseSchedule;
+import seedu.model.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
 

@@ -1,6 +1,5 @@
 package seedu.ui;
 
-import seedu.exceptions.staffexceptions.AbortException;
 import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;

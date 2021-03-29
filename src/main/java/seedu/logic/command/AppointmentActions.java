@@ -1,7 +1,7 @@
 package seedu.logic.command;
 
 
-import seedu.model.object.DoctorAppointment;
+import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.model.object.staff.Staff;
 import seedu.model.objectList.StaffList;

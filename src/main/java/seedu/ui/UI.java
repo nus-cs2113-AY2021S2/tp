@@ -1,6 +1,6 @@
 package seedu.ui;
 
-import seedu.exceptions.staffexceptions.AbortException;
+import seedu.exceptions.staff.AbortException;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,12 +19,27 @@ public class UI {
             + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
             + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
             + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
-    public void fileCreatedMessage() {
-    };
 
     public static String scanInput() {
         return scanner.nextLine().trim();
     }
+
+    public static void printError(String errorMessage) {
+        System.out.println(errorMessage);
+    }
+
+    public String getInput(String requestMenu) {
+        System.out.println(requestMenu + " -->");
+        String input = scanner.nextLine();
+
+        while (input.trim().isEmpty()) {
+            System.out.println(requestMenu + " -->");
+            input = scanner.nextLine();
+        }
+
+        return input.replaceAll("\\s+", " ").trim();
+    }
+
     public static String abortEnabledScanInput() throws AbortException {
         String input = scanner.nextLine().trim();
         if (input.equals("\\abort") ) {
@@ -36,6 +51,7 @@ public class UI {
             return input;
         }
     }
+
     public static String smartCommandRecognition(String[] commands, String input) {
         int diff = LARGE_NUMBER;
         int index = -1;
@@ -135,25 +151,25 @@ public class UI {
     public static void printStartMenu() {
         System.out.println("Start Menu");
         System.out.println("Commands:");
+<<<<<<< HEAD
         System.out.println("\"Staff\" to go to staff");
         System.out.println("\"Patient\" to go to patients");
         System.out.println("\"Appointment\" to go to doctors appointments");
         System.out.println("\"Schedule\" to go to nurse schedules");
         System.out.println("\"Inventory\" to go to drugs inventory");
+=======
+        System.out.println("\"staff\" to go to staff");
+        System.out.println("\"patient\" to go to patients");
+        System.out.println("\"appointments\" to go to doctors appointments");
+        System.out.println("\"schedules\" to go to nurse schedules");
+        System.out.println("\"inventory\" to go to drugs inventory");
+>>>>>>> 35921e71c8ccc2b9ebf07b6534a463ff94d35f94
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }
 
     public static void printGoodbye() {
         System.out.println("Goodbye! Have a nice day!");
-    }
-
-    public static void startMenuPrompt() {
-        System.out.print("Start Menu --> ");
-    }
-
-    public static void userNamePrompt() {
-        System.out.print("User Name --> ");
     }
 
     public static void returningToStartMenuMessage() {
@@ -163,7 +179,6 @@ public class UI {
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");
     }
-
 
     public static String prettyPrint(String string, int length) {
         return String.format("%1$-" + length + "s", string);

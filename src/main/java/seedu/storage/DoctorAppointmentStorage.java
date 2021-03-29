@@ -1,9 +1,13 @@
 package seedu.storage;
 
 import seedu.logic.command.AppointmentActions;
+<<<<<<< HEAD
 import seedu.model.object.DoctorAppointment;
 import seedu.model.object.staff.Staff;
 import seedu.model.objectList.StaffList;
+=======
+import seedu.model.DoctorAppointment;
+>>>>>>> 35921e71c8ccc2b9ebf07b6534a463ff94d35f94
 
 import java.io.File;
 import java.io.FileNotFoundException;

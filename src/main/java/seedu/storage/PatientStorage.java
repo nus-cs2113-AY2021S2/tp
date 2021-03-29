@@ -1,8 +1,8 @@
 package seedu.storage;
 
 import seedu.exceptions.DukeException;
-import seedu.model.object.Patient;
-import seedu.model.objectList.PatientList;
+import seedu.model.Patient;
+import seedu.logic.command.PatientActions;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -79,10 +79,11 @@ public class PatientStorage {
      *
      * @param saveInput current files to be stored
      */
-    public void storePatients(PatientList saveInput) {
+    public void storePatients(PatientActions saveInput) {
         fileInit();
         try {
             //creates a new file writer to write to text file
+
             FileWriter fileWriter = new FileWriter(filePath);
             for (int i = 0; i < saveInput.getSize(); i++) {
                 fileWriter.write(saveInput.toSaveFile(i) + "\n");
