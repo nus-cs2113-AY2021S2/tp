@@ -2,11 +2,16 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)
+[1. Introduction to UniTracker](#1-introduction-to-unitracker)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1 About UniTracker](#11-about-unitracker)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.2 About This User Guide](#12-about-this-user-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.3 How to Use This User Guide](#13-how-to-use-this-user-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)
+
 
 [2. Quick Start](#2-quick-start)  
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 System Requirements](#21-system-requirements)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and above](#211-windows-7-and-above)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and Above](#211-windows-7-and-above)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.2 Mac OS](#212-mac-os)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)
 
@@ -39,13 +44,32 @@
 
 ---
 
-## 1. Introduction
+## 1. Introduction to Unitracker
 
-UniTracker is a one-stop application for NUS students to keep track of their work in school. It
-comprises 4 key features [Refer to Section 3. Features] that helps to organise all information they
-need in one place. Users are allowed to add and edit module information, tasks, zoom links to suit
-their needs. This product is optimal for students who prefer Command Line Interface (CLI) over
+UniTracker is a one-stop application for NUS students to keep track of their work in school. This product is optimal for students who prefer Command Line Interface (CLI) over
 Graphical User Interface (GUI).
+
+### 1.1 About UniTracker
+
+UniTracker comprises of 4 key features (refer to [Section 3. Features](#3-features)) that helps to organise all the information they
+need in one place. You can add and edit module information, tasks, zoom links to suit
+their needs.
+
+### 1.2 About This User Guide
+
+This user guide was made to help you set up UniTracker on your computer and also provide you with all the information you need to use UniTracker.
+It clearly documents the features UniTracker offers with examples to aid you in familiarising yourself with UniTracker.
+
+### 1.3 How to User This User Guide
+
+Firstly, refer to [Section 2. Quick Start](#2-quick-start) for instructions on setting up UniTracker on your local computer. 
+
+Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to navigate to 
+specific sections to explore, learn and use UniTracker.
+
+### 1.4 Conventions in This User Guide
+
+1. In the example code for each feature, all user inputs will be enclosed in square brackets. E.g. `[user input]` 
 
 ---
 
@@ -58,7 +82,7 @@ Graphical User Interface (GUI).
     - You can download the latest version of Java 11
       from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
-#### 2.1.1 Windows 7 and above
+#### 2.1.1 Windows 7 and Above
 
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
@@ -474,7 +498,7 @@ The simulated cumulative average point you have is:
 
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, delete, pin or view your tasks.
+The task manager feature allows you to add, mark or unmark as done, delete, pin or view your tasks.
 
 Task Manager menu:
 
