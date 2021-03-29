@@ -43,8 +43,8 @@ public class AddCommand extends Command {
         int stringLength = id.length();
         int checksum = 0;
         char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
-        char st[] = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
-        char fg[] = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
+        char[] st = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+        char[] fg = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
 
         // Checks if ID has 9 characters
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
