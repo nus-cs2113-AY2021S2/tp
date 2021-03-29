@@ -1,6 +1,5 @@
 package seedu.duke.command;
 
-import seedu.duke.common.ArgumentType;
 import seedu.duke.exception.CommandException;
 import seedu.duke.record.Loan;
 import seedu.duke.record.Record;
@@ -44,7 +43,7 @@ public class ReturnCommand extends Command {
         validateOptions(arguments, COMMAND_RETURN, VALID_OPTIONS, CONFLICT_OPTIONS);
         recordNumberStr = getIndexInString(arguments);
         recordNumberInt = getIndexInInteger(arguments, recordList);
-        returnDate = getDate(arguments);
+        returnDate = getDate(arguments, recordList.getRecordAt(recordNumberInt));
     }
 
     /**
@@ -71,7 +70,12 @@ public class ReturnCommand extends Command {
      */
     private int getIndexInInteger(ArrayList<String> arguments, RecordList recordList) throws CommandException {
         try {
-            return validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
+            int index = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
+            Record currentRecord = recordList.getRecordAt(index);
+            if (currentRecord instanceof Loan) {
+                return index;
+            }
+            throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!", COMMAND_RETURN);
         } catch (NumberFormatException e) {
             throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
@@ -86,9 +90,13 @@ public class ReturnCommand extends Command {
      * @return a LocalDate object containing the date of the record.
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
-    private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
+    private LocalDate getDate(ArrayList<String> arguments, Record currentRecord) throws CommandException {
         try {
-            return validateDate(getOptionValue(arguments, COMMAND_RETURN, OPTION_DATE));
+            LocalDate returnDate = validateDate(getOptionValue(arguments, COMMAND_RETURN, OPTION_DATE));
+            if (currentRecord.getIssueDate().compareTo(returnDate) > 0) {
+                throw new CommandException("Return date cannot be before Loan's issue date!", COMMAND_RETURN);
+            }
+            return returnDate;
         } catch (DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_RETURN);
         }
@@ -103,25 +111,18 @@ public class ReturnCommand extends Command {
      * @param storage    is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
-        if (currentRecord instanceof Loan) {
-            Loan currentLoan = (Loan) currentRecord;
-            if (!currentLoan.isReturn()) {
-                currentLoan.markAsReturned(returnDate);
-                String borrowerNameInLowerCase = currentLoan.getBorrowerName().toLowerCase();
-                int creditScore = borrowersCreditScoreForReturnedLoans.getCurrentBorrowerCreditScoreForReturnedLoans(
-                        borrowerNameInLowerCase);
-                long daysDifference = getDaysDifference(currentLoan.getIssueDate(), currentLoan.getReturnDate());
-                creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
-                borrowersCreditScoreForReturnedLoans.insertCurrentBorrowerCreditScoreForReturnedLoans(
-                        borrowerNameInLowerCase, creditScore);
-            }
-            ui.printMessage("Loan marked as returned: " + currentLoan);
-            storage.saveData(recordList, borrowersCreditScoreForReturnedLoans);
-            return;
+        Loan currentLoan = (Loan) currentRecord;
+        if (!currentLoan.isReturn()) {
+            currentLoan.markAsReturned(returnDate);
+            String borrowerNameInLowerCase = currentLoan.getBorrowerName().toLowerCase();
+            int creditScore = creditScoreMap.getCreditScore(borrowerNameInLowerCase);
+            long daysDifference = getDaysDifference(currentLoan.getIssueDate(), currentLoan.getReturnDate());
+            creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
+            creditScoreMap.updateCreditScoreMap(borrowerNameInLowerCase, creditScore);
         }
-        ui.printMessage("Specified record number is not a loan!");
+        ui.printMessage("Loan marked as returned: " + currentLoan);
+        storage.saveData(recordList, creditScoreMap);
     }
 }

@@ -1,5 +1,5 @@
 # Finux User Guide
-By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern` 
+By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
 
 Since: `March 2021`
 
@@ -12,10 +12,10 @@ Since: `March 2021`
         + [3.3 View category total amount: `view`](#33-view-category-total-amount-view)
         + [3.4 Set a loan as return: `return`](#34-set-a-loan-as-return-return)
         + [3.5 Remove a record: `remove`](#35-remove-a-record-remove)
-        + [3.6 Check a person credit score: `creditscore`](#36-check-a-person-credit-score-creditscore)
+        + [3.6 Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)
         + [3.7 Exit the program: `exit`](#37-exit-the-program-exit)
         + [3.8 Help function: `help`](#38-help-function-help)
-        + [3.9 Task Storage](#39-task-storage)
+        + [3.9 Records Storage](#39-records-storage)
     * [4. Frequently Asked Question (FAQ)](#4-faq)
     * [5. Command Summary](#5-command-summary)
 
@@ -90,7 +90,7 @@ Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
-![add expense example output](img/Add_Expense_Example_Output.png)
+![add expense example output](img/AddExpenseExampleOutput.jpg)
 
 #### 3.1.2 Add a loan record
 
@@ -102,7 +102,7 @@ Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
-![add loan example output](img/Add_Loan_Example_Output.png)
+![add loan example output](img/AddLoanExampleOutput.jpg)
 
 #### 3.1.3 Add a saving record
 
@@ -114,7 +114,7 @@ Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
-![add saving example output](img/Add_Savings_Example_Output.png)
+![add saving example output](img/AddSavingExampleOutput.jpg)
 
 ### 3.2 List the records details: `list`
 
@@ -126,7 +126,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![list example output]()
+![list example output](img/ListExampleOutput.jpg)
 
 ### 3.3 View category total amount: `view`
 
@@ -143,7 +143,7 @@ Examples: `view -e`, `view -l`
 
 Output:
 
-![view example output](img/View_Example_Output.jpg)
+![view example output](img/ViewExampleOutput.jpg)
 
 ### 3.4 Set a loan as return: `return`
 
@@ -155,7 +155,7 @@ Examples: `insert example`, `insert example`
 
 Output:
 
-![return example output]()
+![return example output](img/ReturnExampleOutput.jpg)
 
 ### 3.5 Remove a record: `remove`
 
@@ -170,7 +170,7 @@ Examples: `remove -i 1`, `remove -i 2`
 
 Output:
 
-![remove example output](img/RemoveExampleOutput.png)
+![remove example output](img/RemoveExampleOutput.jpg)
 
 ### 3.6 Check a person's credit score: `creditscore`
 
@@ -181,7 +181,7 @@ Format: `creditscore <person>`
 > - `<person>` refers to existing loanees in the loan list
 > - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
-Examples: `creditscore jason`, `creditscore andy`
+Examples: `creditscore jason`, `creditscore mark`
 
 Output:
 
@@ -214,7 +214,7 @@ Examples: `help exit`, `help list`
 
 Output:
 
-![help example output](img/Help_Example_Output.jpg)
+![help example output](img/HelpExampleOutput.jpg)
 
 ### 3.9 Records storage
 
@@ -229,27 +229,27 @@ Output:
 #### 3.9.2 Automatically loading data from an existing file into FINUX.
 
 * FINUX will automatically load the data from "finux.txt" when it finds the text
-file in the same directory. <br><br>
+  file in the same directory. <br><br>
 
 * Expected output for new file creation:
-![new_file_creation_output](img/New_File_Creation_Example.jpg)
+  ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
 
 * Expected output if successful load:
-![load success example output](img/Successful_Load_Example.jpg)
+  ![load success example output](img/SuccessfulLoadExampleOutput.jpg)
 
 * Expected output if not successfully loaded:
-![load fail example output](img/Failed_Load_Example_Output.jpg)
-  
+  ![load fail example output](img/FailedLoadExampleOutput.jpg)
+
 #### 3.9.3 Editing the saved file directly
 * The FINUX team encourages higher leveled users to edit the save directly.
 
-> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX. 
+> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX.
 > The team highly suggests that users only make minor changes like
 > spelling errors instead of inserting new Records into the save file.
 
 ## 4. FAQ
 
-**Q**: {Insert question}? 
+**Q**: {Insert question}?
 
 **A**: {your answer here}
 
