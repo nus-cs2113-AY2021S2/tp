@@ -96,9 +96,6 @@ The Sequence Diagram below shows how the components interact with each other for
 
 ![Sequence Diagram](./images/sequence_diagram.png)
 
-In general, execution of commands follows the same flow of events, see [Logic Component](#logic-component)
-for more details.
-
 The sections below give more details for each component.
 
 ### UI Component
