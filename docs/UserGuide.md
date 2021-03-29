@@ -93,32 +93,32 @@ Example of usage:
 | schedules           | `schedules`                                                                                                |
 | inventory           | `inventory`                                                                                                |
 | help                | `help`                                                                                                     |
-| Staff               |                                                                                                            |
+| **Staff**           |                                                                                                            |
 | add                 | `add/[Staff ID]/[Name]/[Age]/[Specialisation]`<br/><br/>`add/D12345/A12345/Alex/M 21012021`                |
 | delete              | `delete/[Staff ID]`<br/><br/>`delete/D12345`                                                               |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
-| Patient             |                                                                                                            |
+| **Patient**         |                                                                                                            |
 | add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
 | delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                                          |
 | find                | `find/[Patient ID]`<br/><br/>`find/P55555`                                                                              |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
-| Doctor Appointments |                                                                                                            |
+| **Doctor Appointments** |                                                                                                        |
 | add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/Mingshun/ Pediatrician`    |
 | delete              | `delete/[Appointment ID]`<br/><br/>`delete/A369`                                                                        |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
-| Nurse Schedules     |                                                                                                            |
+| **Nurse Schedules** |                                                                                                            |
 | add                 | `add/[Nurse ID]/[Patient ID]/[DDMMYYYY]`<br/><br/>`add/N12345/P56789/30012020`                             |
 | delete              | `delete/[Nurse ID]/[DDMMYYYY]`<br/><br/>`delete/N12345/30012020`                                           |
 | list                | `list/[Nurse ID/all]`<br/><br/>`list/N12345/list/all`                                                      |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
-| Drugs Inventory     |                                                                                                            |
+| **Drugs Inventory** |                                                                                                            |
 | add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/$3/90`                                           |
 | delete              | `delete/[Name]`<br/><br/>`delete/paracetamol`                                                              |
 | list                | `list`                                                                                                     |
