@@ -75,8 +75,6 @@ public class Messages {
     public static final String MESSAGE_UNABLE_TO_OPEN_LINK = "Cannot open lesson link";
 
     public static final String MESSAGE_LESSONS_TO_DELETE = "Which lessons would you like to delete?";
-    public static final String MESSAGE_DELETE_INDICES = "Please enter the indices of the lessons you would like to "
-            + "delete." + NEWLINE + "Separate indices with a blank space." + NEWLINE;
     public static final String MESSAGE_LESSONS_TO_LIST = "Lessons for %s:";
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson's link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";

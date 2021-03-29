@@ -9,8 +9,10 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Constants.TYPE_LESSON;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
-import static seedu.duke.common.Messages.MESSAGE_DELETE_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
@@ -47,7 +49,7 @@ public class DeleteLessonCommand extends Command {
         } else {
             ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
             printLessons(lessonList, ui);
-            ui.printMessage(MESSAGE_DELETE_INDICES);
+            ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_LESSON, DELETE));
             String line = ui.readCommand();
             ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
 
