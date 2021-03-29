@@ -1,11 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.task.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,6 +42,7 @@ public class ModuleInfo {
                     break;
                 case 5:
                     //addModuleGrade method;
+                    addModuleGrade();
                     break;
                 case 6:
                     viewAllModules();
@@ -86,6 +83,29 @@ public class ModuleInfo {
                 System.out.println("modules.txt file could not be auto-saved:(");
             }
             Ui.printReturnToModuleInfoMenuMessage();
+        }
+    }
+
+    private static void addModuleGrade() {
+        if (modules.isEmpty()) {
+            logger.log(Level.INFO, "You have not added any modules.");
+            return;
+        }
+        viewAllModules();
+        System.out.println("Please choose which module you would like to assign a grade"
+                + " and enter the number:");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            System.out.println("Enter the grade for this module: ");
+            String moduleGrade = Ui.readCommand();
+            if(ModuleGradeEnum.checkGradeExist(moduleGrade)) {
+                modules.get(moduleNumberInt).setGrade(moduleGrade.toUpperCase());
+            } else {
+                System.out.println("Module grade does not exist. ");
+            }
+        } else {
+            Ui.printInvalidIntegerMessage();
         }
     }
 
