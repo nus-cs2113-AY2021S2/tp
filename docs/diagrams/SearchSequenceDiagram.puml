@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+
+participant ":SearchCommand" as SearchCommand
+participant "fridge:Fridge" as Fridge
+participant "food:Food" as Food
+
+-> SearchCommand: execute()
+activate SearchCommand
+
+SearchCommand-> SearchCommand: getMessagePrinterToUser
+activate SearchCommand
+
+
+loop food in fridge
+    SearchCommand -> Fridge: getFood()
+    activate Fridge
+    opt contains(foodName)
+        Fridge -> Food: getFoodName()
+        activate Food
+        return food
+    end
+    return food
+end
+destroy Food
+destroy Fridge
+
+alt isContain
+    return
+else !isContain
+    SearchCommand -> SearchCommand: getMessagePrinterToUser
+    activate SearchCommand
+    return
+end
+
+return
+@enduml
