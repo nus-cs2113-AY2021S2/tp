@@ -99,7 +99,7 @@ public class ModuleInfo {
             moduleNumberInt--;
             System.out.println("Enter the grade for this module: ");
             String moduleGrade = Ui.readCommand();
-            if(ModuleGradeEnum.checkGradeExist(moduleGrade)) {
+            if (ModuleGradeEnum.checkGradeExist(moduleGrade)) {
                 modules.get(moduleNumberInt).setGrade(moduleGrade.toUpperCase());
             } else {
                 System.out.println("Module grade does not exist. ");
