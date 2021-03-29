@@ -10,6 +10,7 @@ import seedu.hdbuy.command.FilterCommand;
 import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
 import seedu.hdbuy.command.ListCommand;
+import seedu.hdbuy.command.ShortlistCommand;
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
@@ -23,6 +24,7 @@ public class Parser {
     private static final String EXIT = "exit";
     private static final String CLEAR = "clear";
     private static final String LIST = "list";
+    private static final String SHORTLIST = "shortlist";
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
@@ -50,14 +52,16 @@ public class Parser {
             case LIST:
                 command = new ListCommand();
                 break;
+            case SHORTLIST:
+                command = new ShortlistCommand();
+                break;
             default:
                 break;
             }
         } catch (InvalidParameterException e) {
             TextUi.showInvalidParameter(e);
-        } finally {
-            return command;
         }
+        return command;
     }
 
     public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
@@ -74,16 +78,14 @@ public class Parser {
                 return new CommandKey(criteria, value, keyCommand);
             }
         case FIND:
+        case SHORTLIST:
             if (lineParts.length != 1) {
                 throw new InvalidParameterException();
             }
             break;
         case EXIT:
-            // Fallthrough
         case HELP:
-            // Fallthrough
         case CLEAR:
-            // Fallthrough
         case LIST:
             // Fallthrough
         default:

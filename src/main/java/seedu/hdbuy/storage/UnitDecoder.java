@@ -7,6 +7,9 @@ import seedu.hdbuy.common.Unit;
 public class UnitDecoder {
 
     public static Unit textToUnit(String text) {
+        if (text.isEmpty()) {
+            return null;
+        }
         try {
             String[] parameters = text.split(":");
             int id = Integer.parseInt(parameters[0]);
