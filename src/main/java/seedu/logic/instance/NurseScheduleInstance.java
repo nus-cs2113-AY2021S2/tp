@@ -1,12 +1,11 @@
 package seedu.logic.instance;
 
+import seedu.logic.command.Command;
+import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
-import seedu.model.NurseSchedule;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
-
-import java.util.ArrayList;
-import java.util.List;
+import seedu.ui.UI;
 
 /**
  * Main entry-point for the NurseSchedules instance.
@@ -14,40 +13,38 @@ import java.util.List;
 public class NurseScheduleInstance {
 
     private NurseSchedulesParser parser;
+    private NurseScheduleActions nurseSchedules;
     private NurseScheduleStorage storage;
+    private NurseScheduleUI ui;
 
-    /** The list of nurse schedules. */
-    List<NurseSchedule> nurseSchedules = new ArrayList<NurseSchedule>();
-
-    public static void main() {
-        new NurseScheduleInstance().run();
-    }
-
-    /** Runs the program until termination. */
-    private void run() {
-        initClasses();
-        start();
-        runCommandLoopUntilExit();
-    }
-
-    public void initClasses() {
-        this.parser = new NurseSchedulesParser();
-        this.storage = new NurseScheduleStorage();
-    }
-
-    private void start() {
-        storage.load(nurseSchedules);
-        NurseScheduleUI.printNurseScheduleWelcomeMessage();
+    public NurseScheduleInstance() {
+        parser = new NurseSchedulesParser();
+        nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
+        storage = new NurseScheduleStorage();
+        ui = new NurseScheduleUI();
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
-    private void runCommandLoopUntilExit() {
-        boolean isRun = true;
-        while (isRun) {
-            NurseScheduleUI.nurseSchedulePrompt();
-            String line = parser.getUserInput().trim();
-            String command = parser.getFirstWord(line);
-            isRun = parser.commandHandler(nurseSchedules, command, line);
+    public void runCommandLoopUntilExit() {
+        ui.printNurseScheduleWelcomeMessage();
+        boolean isReturnToStartMenu = false;
+        while (!isReturnToStartMenu) {
+            try {
+                ui.nurseSchedulePrompt();
+                String line = parser.getUserInput().trim();
+                Command c = parser.nurseParse(line, ui);
+                c.execute(nurseSchedules, ui);
+                storage.writeToFile(nurseSchedules);
+                isReturnToStartMenu = c.isExit();
+                if (isReturnToStartMenu) {
+                    UI.returningToStartMenuMessage();
+                }
+                UI.showLine();
+            } catch (NullPointerException e) {
+                ui.invalidInputsMessage();
+                //Command C can return as null if an error is triggered in parser
+                //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+            }
         }
     }
 }

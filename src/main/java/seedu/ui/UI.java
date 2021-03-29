@@ -31,11 +31,11 @@ public class UI {
     }
 
     public String getInput(String requestMenu) {
-        System.out.println(requestMenu + " -->");
+        System.out.print(requestMenu + " --> ");
         String input = scanner.nextLine();
 
         while (input.trim().isEmpty()) {
-            System.out.println(requestMenu + " -->");
+            System.out.print(requestMenu + " --> ");
             input = scanner.nextLine();
         }
 

@@ -1,11 +1,12 @@
 package seedu.logic.command;
 
-import seedu.storage.DoctorAppointmentStorage;
 import seedu.storage.StaffStorage;
 import seedu.ui.PatientUI;
 import seedu.ui.StaffUI;
 
 import java.io.IOException;
+import seedu.ui.DoctorAppointmentUI;
+import seedu.ui.NurseScheduleUI;
 
 public abstract class Command {
 
@@ -24,11 +25,12 @@ public abstract class Command {
     public void execute (DrugAction inventory) {
     }
 
-    public void execute (AppointmentActions appointment, DoctorAppointmentStorage storage) {
+    public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws Exception {
     }
 
-    public void execute (NurseScheduleActions nurseSchedule) {
+    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) {
     }
 
     public abstract boolean isExit();
+
 }

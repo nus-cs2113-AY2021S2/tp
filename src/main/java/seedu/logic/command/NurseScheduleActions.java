@@ -5,7 +5,6 @@ import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -18,38 +17,52 @@ public class NurseScheduleActions {
     List<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
 
-    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
-        if (NurseSchedulesParser.isValidDate(details[2])) {
-            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-            NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+    private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
+
+    public NurseScheduleActions(ArrayList<NurseSchedule> load) {
+        nurseSchedules = load;
+    }
+
+//    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
+//        if (NurseSchedulesParser.isValidDate(details[2])) {
+//            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+//            NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+//        }
+//    }
+
+    public void addSchedule(String[] details) {
+        try {
+            if (NurseSchedulesParser.isValidDate(details[2])) {
+                nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+                NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+            }
+        } catch (ParseException e) {
+            System.out.println(e.getMessage());
         }
     }
 
     /**
      * Handler when list command is issued.
      *
-     * @param nurseSchedules List of all schedules
      * @param details Contains either NurseID or 'all'
      */
-    public void listSchedules(List<NurseSchedule> nurseSchedules, String[] details)
+    public void listSchedules(String[] details)
             throws EmptyListException, NurseIdNotFound {
         if (details[0].equals("all")) {
-            listAllSchedules(nurseSchedules);
+            listAllSchedules();
         } else if (isValidNurseID(nurseSchedules, details[0])) {
             findSchedules.clear();
             getNurseSchedulesByID(nurseSchedules, details[0]);
             printSchedules(findSchedules);
         }
-        UI.showLine();
     }
 
     /**
      * Handler for 'list all' schedules.
      *
-     * @param nurseSchedules List of all schedules
      * @throws EmptyListException when nurse schedule list is empty
      */
-    public void listAllSchedules(List<NurseSchedule> nurseSchedules) throws EmptyListException {
+    public void listAllSchedules() throws EmptyListException {
         nursesFound.clear();
         if (nurseSchedules.size() == 0) {
             throw new EmptyListException();
@@ -67,10 +80,9 @@ public class NurseScheduleActions {
     /**
      * Deletes schedule with given nurseID and datetime.
      *
-     * @param nurseSchedules List of all schedules
      * @param details nurseID to delete
      */
-    public void deleteSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws NurseIdNotFound {
+    public void deleteSchedule(String[] details) throws NurseIdNotFound {
         int i = 0;
         while (i < nurseSchedules.size()) {
             if(!isValidNurseID(nurseSchedules, details[0])) {
@@ -139,5 +151,13 @@ public class NurseScheduleActions {
             i++;
         }
         throw new NurseIdNotFound();
+    }
+
+    public int getSize() {
+        return nurseSchedules.size();
+    }
+
+    public String toSaveFile(int i) {
+        return nurseSchedules.get(i).toSave();
     }
 }
