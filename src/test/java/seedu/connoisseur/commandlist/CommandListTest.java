@@ -22,29 +22,30 @@ public class CommandListTest {
     Ui ui = new Ui();
     Storage storage = new Storage(ui);
     CommandList commandList = new CommandList(ui, storage);
+    ReviewCommandList reviewCommandList = new ReviewCommandList(ui, storage);
 
     @BeforeEach
     public void setUp() {
         Review reviewa = new Review("superman", "category", 5, "description");
         Review reviewb = new Review("avengers", "category", 5, "description");
-        commandList.reviewList.add(reviewa);
-        commandList.reviewList.add(reviewb);
+        reviewCommandList.reviewList.add(reviewa);
+        reviewCommandList.reviewList.add(reviewb);
     }
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
-        final int numberOfReviewsBeforeRemoval = commandList.reviewList.size();
+        final int numberOfReviewsBeforeRemoval = reviewCommandList.reviewList.size();
         String title = "superman";
-        commandList.deleteReview(title);
+        reviewCommandList.deleteReview(title);
         Boolean contains = false;
-        for (int i = 0; i < commandList.reviewList.size(); i++) {
-            if (commandList.reviewList.get(i).getTitle().equals(title)) {
+        for (int i = 0; i < reviewCommandList.reviewList.size(); i++) {
+            if (reviewCommandList.reviewList.get(i).getTitle().equals(title)) {
                 contains = true;
             }
         }
         assertFalse(contains);
 
-        int numberOfReviewsAfterRemoval = commandList.reviewList.size();
+        int numberOfReviewsAfterRemoval = reviewCommandList.reviewList.size();
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
     }
 
@@ -72,8 +73,7 @@ public class CommandListTest {
     @Test
     void checkAndPrintDuplicate() {
         Ui ui = new Ui();
-        CommandList commandList = new CommandList(ui, new Storage(ui));
-        commandList.reviewList = new ArrayList<Review>();
-        assertFalse(commandList.checkAndPrintDuplicateReview("Avengers"));
+        reviewCommandList.reviewList = new ArrayList<Review>();
+        assertFalse(reviewCommandList.checkAndPrintDuplicateReview("Avengers"));
     }
 }

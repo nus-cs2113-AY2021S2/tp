@@ -1,7 +1,5 @@
 package seedu.connoisseur.commandlist;
 
-import seedu.connoisseur.exceptions.DuplicateException;
-import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
@@ -12,27 +10,8 @@ import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
-import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
+
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
-import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
-import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
-import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
-import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
-import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
-import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
-import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
-import static seedu.connoisseur.messages.Messages.MISSING_RECO_TITLE;
-import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 
 /**
  * Class with methods for different commands.
@@ -44,6 +23,8 @@ public class CommandList {
     private final Sorter sorter;
     private final Ui ui;
     private final Storage storage;
+    private ReviewCommandList reviewCommandList;
+    private RecommendationsCommandList recommendationsCommandList;
 
     /**
      * Creates CommandList based on stored data.
@@ -58,6 +39,8 @@ public class CommandList {
         sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
         this.reviewList = connoisseurData.getReviewList();
         this.recommendationList = connoisseurData.getRecoList();
+        reviewCommandList = new ReviewCommandList(connoisseurData, ui, storage);
+        recommendationsCommandList = new RecommendationsCommandList(connoisseurData, ui, storage);
     }
 
     /**
@@ -67,220 +50,8 @@ public class CommandList {
         this.ui = ui;
         this.storage = storage;
         sorter = new Sorter(SortMethod.LATEST);
-    }
-
-    /**
-     * List reviews according to different types of input.
-     *
-     * @param input is either to show recommendations list
-     *              or the listing method preferred by user. If there is no
-     *              preferred listing method, default listing will be used.
-     */
-    public void listReviews(String input) {
-        if (reviewList.size() == 0) {
-            ui.printEmptyReviewListMessage();
-        } else if (!validSortMethod(input)) {
-            ui.printInvalidSortMethodMessage();
-        } else {
-            if (input == null) {
-                sorter.sortReview(reviewList);
-                printReviews(reviewList);
-            } else {
-                try {
-                    sorter.sortReview(reviewList, input);
-                    printReviews(reviewList);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    ui.printInvalidSortMethodMessage();
-                }
-            }
-        }
-    }
-
-    private boolean validSortMethod(String sortMethod) {
-        ArrayList<String> validSortMethods = new ArrayList<String>();
-        validSortMethods.add("rating");
-        validSortMethods.add("category");
-        validSortMethods.add("title");
-        validSortMethods.add("earliest");
-        validSortMethods.add("latest");
-        validSortMethods.add(null);
-        return validSortMethods.contains(sortMethod);
-    }
-
-    /**
-     * Prints the sorted reviews.
-     */
-    public void printReviews(ArrayList<Review> reviewList) {
-        ui.printReviewListHeading();
-        for (int i = 0; i < reviewList.size(); i++) {
-            Review currentReview = reviewList.get(i);
-            ui.print("| " + (i + 1) + ". ");
-            if (i < 9) {
-                ui.print(" ");
-            }
-            ui.print(currentReview.getTitle());
-            ui.printWhiteSpaceTitle(currentReview.getTitle().length());
-            ui.print("| " + currentReview.getCategory());
-            ui.printWhiteSpace(currentReview.getCategory().length());
-            ui.print("| " + currentReview.starRating());
-            ui.printWhiteSpace(currentReview.starRating().length());
-            System.out.print("   ");
-            ui.println("| " + currentReview.getDateTime() + "   |");
-        }
-        ui.printTableEndBorderForReview();
-    }
-
-    /**
-     * Sort a review based on input sort type.
-     *
-     * @param sortType sorting method to be used
-     */
-    public void sortReview(String sortType) {
-        if (sortType == null || sortType.isBlank()) {
-            String sortMethod = sorter.getSortMethod();
-            ui.println(CURRENT_SORT_METHOD + sortMethod.toUpperCase());
-            ui.println(SORT_METHOD_PROMPT);
-            return;
-        }
-        if (sortType.equals("title") || sortType.equals("earliest")
-                || sortType.equals("latest") || sortType.equals("rating") || sortType.equals("category")) {
-            sorter.changeSortMethod(sortType);
-            ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
-        } else {
-            ui.println(sortType + INVALID_SORT_METHOD);
-        }
-    }
-
-    /**
-     * Add a review.
-     *
-     * @param input quick or long review
-     */
-    public void addReview(String input) {
-        if (input == null || input.isBlank()) {
-            ui.println(QUICK_PROMPT);
-            switch (ui.readCommand().toLowerCase()) {
-            case "y":
-                try {
-                    addQuickReview();
-                } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
-                }
-                break;
-            case "n":
-                try {
-                    addLongReview();
-                } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
-                }
-                break;
-            default:
-                ui.println(INVALID_COMMAND);
-            }
-        } else {
-            switch (input) {
-            case "quick":
-                try {
-                    addQuickReview();
-                } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
-                }
-                break;
-            case "long":
-                try {
-                    addLongReview();
-                } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
-                }
-                break;
-            default:
-                ui.println(INVALID_COMMAND);
-            }
-        }
-    }
-
-    /**
-     * Add a quick review.
-     */
-    public void addQuickReview() throws DuplicateException {
-        boolean isDuplicate;
-        String description = "No description entered. ";
-        ui.println(TITLE_PROMPT);
-        String title = ui.readCommand();
-        isDuplicate = checkAndPrintDuplicateReview(title);
-        if (isDuplicate) {
-            throw new DuplicateException();
-        }
-        ui.println(CATEGORY_PROMPT);
-        String category = ui.readCommand().toLowerCase();
-        ui.println(RATING_PROMPT);
-        try {
-            int rating = Integer.parseInt(ui.readCommand());
-            if (rating < 0 || rating > 5) {
-                ui.printInvalidRatingMessage();
-                return;
-            }
-            assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
-            Review r = new Review(title, category, rating, description);
-            reviewList.add(r);
-            ui.println(title + ADD_SUCCESS);
-        } catch (NumberFormatException e) {
-            ui.printInvalidRatingMessage();
-        }
-    }
-
-    /**
-     * Add a long review.
-     */
-    public void addLongReview() throws DuplicateException {
-        boolean isDuplicate;
-        ui.println(TITLE_PROMPT);
-        String title = ui.readCommand();
-        isDuplicate = checkAndPrintDuplicateReview(title);
-        if (isDuplicate) {
-            throw new DuplicateException();
-        }
-        ui.println(CATEGORY_PROMPT);
-        String category = ui.readCommand().toLowerCase();
-        ui.println(RATING_PROMPT);
-        try {
-            int rating = Integer.parseInt(ui.readCommand());
-            if (rating < 0 || rating > 5) {
-                ui.printInvalidRatingMessage();
-                return;
-            }
-            assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
-            ui.println(DESCRIPTION_PROMPT);
-            String description = ui.readCommand();
-            Review r = new Review(title, category, rating, description);
-            reviewList.add(r);
-            ui.println(title + ADD_SUCCESS);
-        } catch (NumberFormatException e) {
-            ui.printInvalidRatingMessage();
-        }
-    }
-
-    /**
-     * Delete review.
-     */
-    public void deleteReview(String title) {
-        if (title == null || title.isBlank()) {
-            ui.println(MISSING_DELETE_TITLE);
-            return;
-        }
-        int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
-                reviewIndex = i;
-                break;
-            }
-        }
-        if (reviewIndex == -1) {
-            ui.println(INVALID_DELETE_TITLE);
-        } else {
-            reviewList.remove(reviewIndex);
-            ui.println(title + DELETE_SUCCESS);
-        }
+        reviewCommandList = new ReviewCommandList(ui, storage);
+        recommendationsCommandList = new RecommendationsCommandList(ui, storage);
     }
 
     /**
@@ -328,248 +99,82 @@ public class CommandList {
     }
 
     /**
-     * View a selected review.
+     * List reviews or recommendations depending on the mode.
      *
-     * @param title title of the review to be viewed
+     * @param input        is the sorting preference used to list, only applicable in review mode.
+     * @param isReviewMode to check if user is in review or recommendation mode
      */
-    public int viewReview(String title) {
-        if (title == null || title.isBlank()) {
-            ui.println(MISSING_VIEW_TITLE);
-            return -1;
-        }
-        assert title != null : "title should not be empty";
-        int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
-                reviewIndex = i;
-                break;
-            }
-        }
-        if (reviewIndex == -1) {
-            ui.println(INVALID_VIEW_TITLE);
+    public void list(String input, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.listReviews(input, reviewList);
         } else {
-            ui.println("Found a matching title: ");
-            Review currentReview = reviewList.get(reviewIndex);
-            ui.printView(currentReview);
-        }
-        return reviewIndex;
-    }
-
-    public boolean checkAndPrintDuplicateReview(String title) {
-        int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if ((reviewList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
-                reviewIndex = i;
-            }
-        }
-        if (reviewIndex != -1) {
-            System.out.println("There is a review in your list with the same title: ");
-            Review currentReview = reviewList.get(reviewIndex);
-            ui.print((reviewList.indexOf(currentReview) + 1) + ". ");
-            if (reviewList.indexOf(currentReview) < 9) {
-                ui.print(" ");
-            }
-            ui.print(currentReview.getTitle());
-            ui.printWhiteSpace(currentReview.getTitle().length());
-            ui.print(currentReview.getCategory());
-            ui.printWhiteSpace(currentReview.getCategory().length());
-            ui.print(currentReview.starRating());
-            ui.printWhiteSpace(currentReview.starRating().length());
-            ui.println(currentReview.getDateTime());
-            return true;
-        } else {
-            return false;
+            recommendationsCommandList.listRecommendations(recommendationList);
         }
     }
 
     /**
-     * Checks for duplicate recommendation.
+     * Sort reviews depending on the mode.
      *
-     * @param title title of recommendation.
+     * @param sortType     is the sorting preference, only applicable in review mode.
+     * @param isReviewMode to check if user is in review or recommendation mode
      */
-    public boolean checkAndPrintDuplicateRecommendation(String title) {
-        int recIndex = -1;
-        for (int i = 0; i < recommendationList.size(); i++) {
-            if ((recommendationList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
-                recIndex = i;
-            }
-        }
-        if (recIndex != -1) {
-            System.out.println("There is a recommendation in your list with the same title: ");
-            Recommendation currentRecommendation = recommendationList.get(recIndex);
-            ui.print((recommendationList.indexOf(currentRecommendation) + 1) + ". ");
-            if (recommendationList.indexOf(currentRecommendation) < 9) {
-                ui.print(" ");
-            }
-            ui.print(currentRecommendation.getTitle());
-            ui.printWhiteSpace(currentRecommendation.getTitle().length());
-            ui.print(currentRecommendation.getCategory());
-            ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print(currentRecommendation.dollarRange());
-            ui.printWhiteSpace(currentRecommendation.dollarRange().length());
-            ui.println(currentRecommendation.getRecommendedBy());
-            return true;
+    public void sort(String sortType, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.sortReview(sortType);
         } else {
-            return false;
+            ui.printCommandDoesNotExistInRecommendationMode();
+        }
+    }
+
+    /**
+     * Delete reviews or recommendations depending on the mode.
+     *
+     * @param title        is the title of review or recommendation to be deleted.
+     * @param isReviewMode to check if user is in review or recommendation mode.
+     */
+    public void delete(String title, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.deleteReview(title);
+        } else {
+            ui.printCommandDoesNotExistInRecommendationMode();
+        }
+    }
+
+    /**
+     * View a selected review.
+     *
+     * @param title title of the review to be viewed.
+     */
+    public int viewReview(String title) {
+        return reviewCommandList.viewReviewCommand(title);
+    }
+
+    /**
+     * Add a selected review or recommendation.
+     *
+     * @param input        will be quick or long in review mode.
+     *                     will be the recommendation title in the recommendation mode.
+     * @param isReviewMode to check if user is in review or recommendation mode.
+     */
+    public void add(String input, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.addReview(input);
+        } else {
+            recommendationsCommandList.addRecommendation(input);
         }
     }
 
     /**
      * Edits a review.
      *
-     * @param title title of review
+     * @param title        title of review
+     * @param isReviewMode to check if user is in review or recommendation mode.
      */
-    public void editReviews(String title) {
-        if (title == null || title.isBlank()) {
-            ui.println(MISSING_EDIT_TITLE);
+    public void edit(String title, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.editReview(title, reviewList);
         } else {
-            int index = viewReview(title);
-            if (index == -1) {
-                return;
-            }
-            boolean isDoneEditing = false;
-            do {
-                ui.println("What would you like to edit (Title / Category / Rating / Description)?");
-                Parser.determineEditCommand(index);
-                ui.println("Would you like to edit anything else (y/n)?");
-                String answer = ui.readCommand();
-                switch (answer.toLowerCase()) {
-                case "y":
-                    break;
-                case "n":
-                    isDoneEditing = true;
-                    break;
-                default:
-                    ui.println(INVALID_COMMAND);
-                    isDoneEditing = true;
-                }
-            } while (!isDoneEditing);
-            ui.println("Would You like to update the date of entry for the changes made(y/n)?");
-            String answer = ui.readCommand();
-            switch (answer) {
-            case "y":
-                Review currentReview = reviewList.get(index);
-                currentReview.setDateAndTimeOfEntry();
-                break;
-            case "n":
-                break;
-            default:
-                ui.println(INVALID_COMMAND);
-                break;
-            }
-        }
-    }
-
-    public void editReviewTitle(String newTitle, int index) {
-        Review currentReview = reviewList.get(index);
-        currentReview.setTitle(newTitle);
-    }
-
-    public void editReviewRating(String newRating, int index) {
-        Review currentReview = reviewList.get(index);
-        currentReview.setRating(Integer.parseInt(newRating));
-    }
-
-    public void editReviewDescription(String newDescription, int index) {
-        Review currentReview = reviewList.get(index);
-        currentReview.setDescription(newDescription);
-    }
-
-    public void editReviewCategory(String newCategory, int index) {
-        Review currentReview = reviewList.get(index);
-        currentReview.setCategory(newCategory);
-    }
-
-    /**
-     * List reviews according to different types of input.
-     */
-    public void listRecommendations() {
-        if (recommendationList.size() == 0) {
-            ui.printEmptyRecommendationListMessage();
-        } else {
-            printRecommendation(recommendationList);
-        }
-    }
-
-    /**
-     * Prints the sorted recommendation.
-     */
-    public void printRecommendation(ArrayList<Recommendation> recommendationList) {
-        ui.printRecommendationListHeading();
-        for (int i = 0; i < recommendationList.size(); i++) {
-            Recommendation currentRecommendation = recommendationList.get(i);
-            ui.print("| " + (i + 1) + ". ");
-            if (i < 9) {
-                ui.print(" ");
-            }
-            ui.print(currentRecommendation.getTitle());
-            ui.printWhiteSpaceTitle(currentRecommendation.getTitle().length());
-            ui.print("| " + currentRecommendation.getCategory());
-            ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print("| " + currentRecommendation.dollarRange());
-            ui.printWhiteSpace(5);
-            ui.print("| " + currentRecommendation.getLocation());
-            ui.printWhiteSpace(currentRecommendation.getLocation().length());
-            ui.println("| " + currentRecommendation.getRecommendedBy() + "    |");
-        }
-        ui.printTableEndBorderForReco();
-    }
-
-    /**
-     * Adds a recommendation.
-     *
-     * @param title title of recommendation
-     */
-    public void addRecommendation(String title) {
-        try {
-            addRecommendationDetails(title);
-        } catch (DuplicateException de) {
-            System.out.println("Please try again with a unique title instead!");
-        }
-    }
-
-    /**
-     * Prompts for details of recommendation.
-     *
-     * @param title title of recommendation.
-     */
-    public void addRecommendationDetails(String title) throws DuplicateException {
-        if (title == null || title.isBlank()) {
-            ui.println(MISSING_RECO_TITLE);
-            return;
-        }
-        boolean isDuplicate;
-        isDuplicate = checkAndPrintDuplicateRecommendation(title);
-        if (isDuplicate) {
-            throw new DuplicateException();
-        }
-
-        ui.println(CATEGORY_PROMPT);
-        String category = ui.readCommand().toLowerCase();
-        ui.println(PRICE_PROMPT);
-
-        try {
-            String priceRange = ui.readCommand();
-            int priceLow;
-            int priceHigh;
-            int priceFirst = Integer.parseInt(priceRange.split("-", 2)[0].trim());
-            int priceSecond = Integer.parseInt(priceRange.split("-", 2)[1].trim());
-            if (priceFirst > priceSecond) {
-                priceLow = priceSecond;
-                priceHigh = priceFirst;
-            } else {
-                priceLow = priceFirst;
-                priceHigh = priceSecond;
-            }
-            ui.println(RECOBY_PROMPT);
-            String recommendedBy = ui.readCommand();
-            ui.println(LOCATION_PROMPT);
-            String location = ui.readCommand();
-            Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
-            recommendationList.add(r);
-            ui.println(title + ADD_SUCCESS);
-        } catch (NumberFormatException e) {
-            ui.printInvalidRatingMessage();
+            ui.printCommandDoesNotExistInRecommendationMode();
         }
     }
 }

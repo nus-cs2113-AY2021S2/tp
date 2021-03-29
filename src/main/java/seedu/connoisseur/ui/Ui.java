@@ -288,4 +288,8 @@ public class Ui {
         println("You have no recommendations, type 'add' followed by a title to start!");
     }
 
+    public void printCommandDoesNotExistInRecommendationMode() {
+        println("This command does not exist in recommendation mode");
+    }
+
 }

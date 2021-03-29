@@ -18,55 +18,13 @@ public class Parser {
         Parser.commandList = commandList;
     }
 
-    public static void determineEditCommand(int index) {
-        Ui ui = new Ui();
-        String input = ui.readCommand();
-        try {
-            input = input.trim().toLowerCase();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            input = null;
-        }
-        switch (input) {
-        case "title":
-            System.out.println("What would you like to change the title to?");
-            String newTitle = ui.readCommand();
-            commandList.editReviewTitle(newTitle, index);
-            break;
-        case "rating":
-            System.out.println("What would you like to change the rating to out of 5 stars?");
-            String newRating = ui.readCommand();
-            try {
-                if (Integer.parseInt(newRating) <= 5 && Integer.parseInt(newRating) >= 0) {
-                    commandList.editReviewRating(newRating, index);
-                } else {
-                    System.out.println("Invalid rating, failed to edit rating ");
-                }
-            } catch (NumberFormatException ne) {
-                System.out.println("Invalid rating, failed to edit rating ");
-            }
-            break;
-        case "description":
-            System.out.println("Enter your new description of the review: ");
-            String newDescription = ui.readCommand();
-            commandList.editReviewDescription(newDescription, index);
-            break;
-        case "category":
-            System.out.println("What would you like to change the category to?");
-            String newCategory = ui.readCommand();
-            commandList.editReviewCategory(newCategory, index);
-            break;
-        default:
-            commandList.invalidCommand();
-            break;
-        }
-    }
-
     /**
      * Processes user input and executes the relevant commands.
      *
      * @return true if exit command, false otherwise
      */
     public boolean determineCommand(String input) throws DuplicateException {
+        Ui ui = new Ui();
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {
@@ -85,46 +43,26 @@ public class Parser {
             System.out.println("You are now in recommendation mode");
             break;
         case "list":
-            if (isReviewMode) {
-                commandList.listReviews(arguments);
-            } else {
-                commandList.listRecommendations();
-            }
+            commandList.list(arguments, isReviewMode);
             break;
         case "edit":
-            if (isReviewMode) {
-                commandList.editReviews(arguments);
-            } else {
-                System.out.println("This command does not exist in recommendation mode");
-            }
+            commandList.edit(arguments, isReviewMode);
             break;
         case "sort":
-            if (isReviewMode) {
-                commandList.sortReview(arguments);
-            } else {
-                System.out.println("This command does not exist in recommendation mode");
-            }
+            commandList.sort(arguments, isReviewMode);
             break;
         case "new":
         case "add":
-            if (isReviewMode) {
-                commandList.addReview(arguments);
-            } else {
-                commandList.addRecommendation(arguments);
-            }
+            commandList.add(arguments, isReviewMode);
             break;
         case "delete":
-            if (isReviewMode) {
-                commandList.deleteReview(arguments);
-            } else {
-                System.out.println("This command does not exist in recommendation mode");
-            }
+            commandList.delete(arguments, isReviewMode);
             break;
         case "view":
             if (isReviewMode) {
                 commandList.viewReview(arguments);
             } else {
-                System.out.println("This command does not exist in recommendation mode");
+                ui.printCommandDoesNotExistInRecommendationMode();
             }
             break;
         case "help":
