@@ -24,8 +24,8 @@ public class TestUtilAndConstants {
 
     public static final String EXPECTED_ADD_LESSON = "Added tutorial to lesson list." + NEWLINE;
     public static final String EXPECTED_ADD_TASK = "Added iP submission to task list.";
-    public static final String EXPECTED_DELETE_LESSON = "Removed lab from the lesson list." + NEWLINE
-            + "Removed tutorial from the lesson list." + NEWLINE;
+    public static final String EXPECTED_DELETE_LESSON = "Removed lab." + NEWLINE
+            + "Removed tutorial." + NEWLINE;
     public static final String EXPECTED_OPEN_LINK = "Opening lab link in browser." + NEWLINE
             + "Opening tutorial link in browser." + NEWLINE;
     public static final String EXPECTED_MODULE_OVERVIEW = "<Overview for CS3235>" + NEWLINE
