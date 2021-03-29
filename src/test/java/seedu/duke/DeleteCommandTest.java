@@ -18,13 +18,13 @@ public class DeleteCommandTest {
     @Test
     public void executeDeleteCommand_patientDeleted() {
         Data data = new Data();
-        Ui ui = new Ui();
         Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "delete");
         arguments.put("p", "S1234567D");
+        Ui ui = new Ui();
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
         final PrintStream originalOut = System.out;
@@ -44,7 +44,6 @@ public class DeleteCommandTest {
     @Test
     public void executeDeleteCommand_recordDeleted() {
         Data data = new Data();
-        Ui ui = new Ui();
         Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         data.loadCurrentPatient(patient.getID());
@@ -54,6 +53,7 @@ public class DeleteCommandTest {
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "delete");
         arguments.put("r", "29/03/2021");
+        Ui ui = new Ui();
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
         final PrintStream originalOut = System.out;
@@ -88,8 +88,8 @@ public class DeleteCommandTest {
             System.out.println("An error occurred while running tests");
         }
 
-        assertEquals("Please indicate whether to delete patient or record using /p or /r respectively!" +
-                System.lineSeparator(), bos.toString());
+        assertEquals("Please indicate whether to delete patient or record using /p or /r respectively!"
+                + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -119,13 +119,13 @@ public class DeleteCommandTest {
     @Test
     public void executeDeleteCommand_recordDoesNotExist() {
         Data data = new Data();
-        Ui ui = new Ui();
         Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
         data.loadCurrentPatient(patient.getID());
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "delete");
         arguments.put("r", "29/03/2021");
+        Ui ui = new Ui();
         DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
 
         final PrintStream originalOut = System.out;
