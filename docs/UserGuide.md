@@ -100,7 +100,7 @@ Example of usage:
 | help                | help                                                                                                       |
 | return              | return                                                                                                     |
 | Patient             |                                                                                                            |
-| add                 | add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed] <br /> <br/>add/P55555/Sam/40/Male Fever/Paracetamol   |
+| add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed]<br/><br/>add/P55555/Sam/40/Male Fever/Paracetamol`   |
 | delete              | delete/[Patient ID] delete/P55555                                                                          |
 | find                | find/[Patient ID] find/P55555                                                                               |
 | list                | list                                                                                                       |
