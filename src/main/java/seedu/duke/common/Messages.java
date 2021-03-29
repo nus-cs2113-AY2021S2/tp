@@ -74,6 +74,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_LINK_ENTERED = "Invalid link entered.";
 
     public static final String MESSAGE_LESSONS_TO_DELETE = "Which lessons would you like to delete?";
+    public static final String MESSAGE_DELETE_INDICES = "Please enter the indices of the lessons you would like to "
+            + "delete." + NEWLINE + "Separate indices with a blank space." + NEWLINE;
     public static final String MESSAGE_LESSONS_TO_LIST = "Lessons for %s:";
     public static final String MESSAGE_LESSON_TO_OPEN_LINK = "Which lesson's link would you like to open?";
     public static final String MESSAGE_TEACHING_STAFF_TO_LIST = "Teaching staff for %s:";
@@ -87,10 +89,10 @@ public class Messages {
     public static final String MESSAGE_TEACHER_EMAIL_UPDATED = "Updated teaching staff email.\n";
     public static final String MESSAGE_LINK_UPDATED = "Updated lesson link.\n";
     public static final String MESSAGE_LESSON_TIME_UPDATED = "Updated time and day.\n";
-    
+
     public static final String WARNING_NO_VALID_INPUT = "No valid inputs received, lesson unchanged.";
-    public static final String  MESSAGE_NOT_UPDATED = "Field not updated.\n";
-    public static final String  MESSAGE_NO_CHANGES = "No changes to lesson list.";
+    public static final String MESSAGE_NOT_UPDATED = "Field not updated.\n";
+    public static final String MESSAGE_NO_CHANGES = "No changes to lesson list.";
 
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
     public static final String MESSAGE_SORT_LESSON_LIST = "Sorting list of lessons based on lesson type...";
