@@ -257,50 +257,66 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
-`records` from the `RecordList` into a text format in a text output file and vice versa.
+`records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+vice versa.
 
 #### Design
 In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
-is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, the
-`saveRecordListData` method will be called and all `record` up to that point will be converted into a text output
-and saved into the `finux.txt` file. The `loadFile` method will do the exact opposite, and load the data from the
-`finux.txt` file back into the FINUX application.
+is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
+the `saveData` method will be called and all `record` up to that point will be converted into a text output
+and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
+and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from 
+the `finux.txt` file back into the Finux application.
 
-1. `saveRecordListData` is the method that is called after any `records` are added, deleted, or marked as returned. It 
+1. `saveData` is the method that is called after any `records` are added, deleted, or marked as returned. It 
    will then call the `writeToSaveFile` method.
 
-2. `writeToSaveFile` will add the currently addressed `recordList` and all its stored `records` into the `finux.txt` file 
-   after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile` method will also output each 
-   individual records in separate lines.
-   
-3. `loadFile` method does the opposite of the `writeToSaveFile` method. In the `loadFile` method, a new ArrayList of
-   `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, `initSaveFile`
-   method will be called and a new `finux.txt` will be created in the same directory of the FINUX application. The
-   `loadFile` method will then return a new and empty ArrayList of `record` back to the `start` method in the `Duke` 
-   class. Should the `saveFileExist` returns true, for each line of text in the `finux.txt` file will be parsed into
-   the `parseRecord` method which will call the individual load methods `loadExpense`, `loadLoan`, `loadSaving` based on
-   a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is unable to be read, an 
-   exception will be thrown to the `start` method and FINUX will terminate. If all the text data is properly loaded, 
-   the `loadFile` method will return the ArrayList of `record` to the `RecordList` object in the `start` method.
+2. `writeRecordListToSaveFile` will add the currently addressed `recordList` and all its stored `records` into the 
+   `finux.txt` file after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile` method 
+   will also output each individual records in separate lines.
 
-4. `parseRecord` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
-   `loadExpense`, `loadLoan`, `loadSaving` based on the pattern that matches the `Expense`, `Loan`, or `Saving` in the
-   saved file. This method will throw an exception back to the `loadFile` method if any of the REGEX pattern does not 
-   match. (Add stuff here!)
+3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
+   in the `creditScoreHashMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
+  
+4. `loadFile` method does the opposite of the `writeRecordListToSaveFile` method. In the `loadFile` method, a new 
+   ArrayList of `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, 
+   `initSaveFile` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
+   application. The `loadFile` method will then return a new and empty ArrayList of `record` back to the `start` method 
+   in the `Duke` class. Should the `saveFileExist` returns true, for each line of text in the `finux.txt` file will be 
+   parsed into the `parseRecord` method which will call the individual load methods `loadExpense`, `loadLoan`, 
+   `loadSaving` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
+   unable to be read, an exception will be thrown to the `start` method and FINUX will terminate. If all the text data 
+   is properly loaded, the `loadFile` method will return the ArrayList of `record` to the `RecordList` object in the 
+   `start` method.
    
-5. `loadExpense` will extract the individual components from the raw data parsed into it. This method will call the
+5. `initSaveFile` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
+   `Ui#printSuccessfulFileCreation` on a successful creation of the file, but will throw an `IOExcpetion` if there was
+   an error in creating the file.
+
+6. `parseRawData` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
+   `loadExpense`, `loadLoan`, `loadSaving`, `loadCreditScoreRawData` based on the pattern that matches the `Expense`, 
+   `Loan`, `Saving`, or the `creditScore` pattern in the saved file. This method will throw an exception back to 
+   the `loadFile` method if any of the REGEX pattern does not match. (Add stuff here!)
+   
+7. `extractArg` is a "micro" parser component of the `Storage` class. This method simply splits the raw data from the 
+   `finux.txt` file into an array and returns the argument that is referenced by the index to its caller method with 
+   their leading and trailing white spaces removed.
+
+8. `loadExpense` will extract the individual components from the raw data parsed into it. This method will call the
    `extractArg` method which returns the components that are addressed by the index after splitting up the raw save
    file. The `amount` object in this method will be converted into a `BigInteger` type and the `issueDate` will be 
    parsed in the `localDate` type. An exception will be thrown if either `amount` or `issueDate` is not in the right 
    format which prevents them from being parsed into their respective types. It will then return a new `Expense` object
    to the `parseRecord` method.
    
-6. `loadSaving` works similar to `loadExpense` method, where the only difference is that it returns a new `Saving`
+9. `loadSaving` works similar to `loadExpense` method, where the only difference is that it returns a new `Saving`
    object to the `parseRecord` method.
    
-7. `loadLoan` also works similar to both `loadExpense` and `loadSaving` method, but in the `loadLoan` method, 
-   it has an extra boolean parameter, `isReturn`. Where `1` signifies returned and `0` not returned. This method then
-   returns a new `Loan` object to the `parseRecord` method.
+10. `loadLoan` also works similar to both `loadExpense` and `loadSaving` method, but in the `loadLoan` method, 
+   it has a few extra parameters. The first being a boolean `isReturn`, where `1` signifies returned and `0` not 
+    returned. The `borrowerName` is the next variable in the `Loan` object. And lastly, the `returnDate`, the 
+    `returnDate` will only return not null if the `isReturn` boolean has a value of `true`. This method then returns a 
+    new `Loan` object to the `parseRecord` method.
    
 #### Storage Component Design Consideration
 
@@ -532,8 +548,8 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-The `storage` feature allows all `records` and `creditScoreMap` to be stored locally on the device and for `records` and 
-and `creditScoreMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+The `storage` feature allows all `records` and `creditScoreHashMap` to be stored locally on the device and for `records` and 
+and `creditScoreHashMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
 that does not have an explicit command to call it.
 
 #### 4.6.1 Current Implementation
@@ -574,8 +590,8 @@ multiple occasions that this can be invoked:
 |After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
 |After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
 
-> 💡 Note that data in the HashMap `creditScoreMap` is related directly to the `Loan` object in the `RecordList`, thus
-> we have omitted the mention of it here as any changes to the `creditScoreMap` will also be reflected in the `Loan`
+> 💡 Note that data in the HashMap `creditScoreHashMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `creditScoreHashMap` will also be reflected in the `Loan`
 > object which is a part of the `RecordList`.
 
 After considering the above approaches, we have decided to adopt the third approach even though there might be more
