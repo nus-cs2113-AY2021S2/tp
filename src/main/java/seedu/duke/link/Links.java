@@ -52,9 +52,7 @@ public class Links {
 
     public static void add() {
         Ui.printEnterZoomLinkMessage();
-        String instruction = Ui.readCommand();
-        ZoomLinkInfo.addZoomLink(instruction);
-        Ui.printZoomLinksAdded(instruction);
+        ZoomLinkInfo.addZoomLink();
     }
 
     public static void delete() {
@@ -77,5 +75,14 @@ public class Links {
             return;
         }
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);
+    }
+
+    public boolean isDuplicate(String linkToCheck) {
+        for (LinkInfo link : LinkInfo.linksList) {
+            if (linkToCheck.equals(link.getLink())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

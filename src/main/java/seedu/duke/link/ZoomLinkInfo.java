@@ -5,6 +5,7 @@ import seedu.duke.ModuleInfo;
 import seedu.duke.Ui;
 
 import java.util.ArrayList;
+import seedu.duke.task.command.AddTask;
 
 public class ZoomLinkInfo {
 
@@ -26,12 +27,15 @@ public class ZoomLinkInfo {
         password = "no password entered";
     }
 
-    public static void addZoomLink(String instruction) {
-        String[] words = checkWordValidity(instruction.split(" "));
-        String linkDescription = words[0];
-        String moduleCode = words[1];
+    public static void addZoomLink() {
+        Ui.printPsMessage(ModuleInfo.modules.size());
+        String moduleCode = AddTask.printAndGetModule();
+        Ui.printEnterZoomLinkMessage();
+        String linkDescription = Ui.readCommand();
         String passwordCommand = Ui.printEnterRequirePassword();
-
+        if (moduleCode.equals("")) {
+            moduleCode = "Zoom link has no module code";
+        }
         if (passwordCommand.equals("y")) {
             String password = Ui.printEnterPassword();
             assert !password.isEmpty() : "password cannot be empty";
@@ -42,23 +46,13 @@ public class ZoomLinkInfo {
             ZoomLinkInfo zoomLink = new ZoomLinkInfo(linkDescription, moduleCode);
             zoomLinksList.add(zoomLink);
         }
-        try {
-            Module moduleInfo = ModuleInfo.getModule(linkDescription);
-            moduleInfo.setZoomLink(linkDescription);
-        } catch (NullPointerException e) {
-            Module module = new Module(moduleCode, "no description");
-            ModuleInfo.modules.add(module);
-            module.setZoomLink(linkDescription);
+        if (moduleCode.equals("Zoom link has no module code")) {
+            Ui.printZoomLinksAdded(linkDescription, moduleCode);
+            return;
         }
-    }
-
-    public static String[] checkWordValidity(String[] words) {
-        while (words.length != 2) {
-            System.out.println("Please enter only your link and module code!");
-            String instruction = Ui.readCommand();
-            words = instruction.split(" ");
-        }
-        return words;
+        Module moduleInfo = ModuleInfo.getModule(moduleCode);
+        moduleInfo.setZoomLink(linkDescription);
+        Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
 
     public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {

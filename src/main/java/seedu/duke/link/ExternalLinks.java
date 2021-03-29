@@ -26,6 +26,10 @@ public class ExternalLinks extends Links {
                     Ui.printInvalidLinkMessage();
                     continue;
                 }
+                if (isDuplicate(linkDescription)) {
+                    Ui.printDuplicateMessage();
+                    continue;
+                }
                 LinkInfo.addLink(linkDescription);
                 Ui.printAddLinkMessage(linkDescription);
                 break;

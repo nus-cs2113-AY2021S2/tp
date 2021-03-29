@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ModuleInfo {
+
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
     private static final String EMPTY_REVIEW_MESSAGE = "You have not reviewed this module yet.";
@@ -96,8 +97,9 @@ public class ModuleInfo {
             return;
         }
         viewAllModules();
-        System.out.println("Please choose which module you would like to allocate modular credits (MCs)"
-                + " and enter the number:");
+        System.out.println(
+                "Please choose which module you would like to allocate modular credits (MCs)"
+                        + " and enter the number:");
         int moduleNumberInt = Ui.readCommandToInt();
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;
@@ -137,7 +139,6 @@ public class ModuleInfo {
             printModuleTaskList(module.getName());
             // add other methods to print other features of a module
 
-
             Ui.printHorizontalLine();
         } else {
             Ui.printInvalidIntegerMessage();
@@ -158,7 +159,8 @@ public class ModuleInfo {
             if (!assignment.getModule().equals(module)) {
                 continue;
             }
-            System.out.println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
+            System.out
+                    .println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
             taskNumber++;
         }
         for (Midterm midterm : TaskList.midterms) {
@@ -338,10 +340,9 @@ public class ModuleInfo {
     }
 
     /**
-     * This method read in module name and decipher if module exists.
-     * If module exists, module description previously added is printed.
-     * Else, method prompts user to enter module description and creates a new Module object.
-     * This method returns to module information menu.
+     * This method read in module name and decipher if module exists. If module exists, module
+     * description previously added is printed. Else, method prompts user to enter module
+     * description and creates a new Module object. This method returns to module information menu.
      */
     private static void getModuleDescriptions() {
         Ui.printModuleNameToModifyPrompt();

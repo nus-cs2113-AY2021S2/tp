@@ -1,37 +1,50 @@
 @startuml
-participant Duke
-Duke -> Links : execute()
-activate Links
-Links -> Ui : readCommand()
-activate Ui
-Ui --> Links : command
-deactivate Ui
-Links -> ZoomLinkInfo : addZoomLink()
+participant Links
+Links -> ZoomLinkInfo : addZoomLink
 activate ZoomLinkInfo
+ZoomLinkInfo -> AddTask : printAndGetModule
+activate AddTask
+AddTask --> ZoomLinkInfo
+deactivate AddTask
+ZoomLinkInfo -> Ui : printEnterZoomLinkMessage
+activate Ui
+Ui --> ZoomLinkInfo
+deactivate Ui
+ZoomLinkInfo -> Ui : readCommand
+activate Ui
+Ui --> ZoomLinkInfo
+deactivate Ui
 ZoomLinkInfo -> Ui : printEnterRequirePassword
 activate Ui
 Ui -> Ui : readCommand
 activate Ui
+Ui --> Ui
 deactivate Ui
-Ui --> ZoomLinkInfo :  passwordCommand
+Ui --> ZoomLinkInfo
 deactivate Ui
-ZoomLinkInfo -> Ui : printEnterPassword()
+
+opt passwordCommand.equals('y')
+ZoomLinkInfo -> Ui : printEnterPassword
 activate Ui
 Ui -> Ui : readCommand
 activate Ui
+Ui --> Ui
 deactivate Ui
-Ui --> ZoomLinkInfo : password
+Ui --> ZoomLinkInfo
 deactivate Ui
-ZoomLinkInfo -> ModuleInfo : getModule()
+end
+
+ZoomLinkInfo -> ZoomLinkInfo : add
+activate ZoomLinkInfo
+ZoomLinkInfo --> ZoomLinkInfo
+deactivate ZoomLinkInfo
+ZoomLinkInfo -> ModuleInfo : getModule
 activate ModuleInfo
-ModuleInfo --> ZoomLinkInfo : module
+ModuleInfo --> ZoomLinkInfo
 deactivate ModuleInfo
-ZoomLinkInfo --> Module : setZoomLink()
+ZoomLinkInfo -> Module : setZoomLink
 activate Module
 Module --> ZoomLinkInfo
-deactivate Module
-ZoomLinkInfo --> Links
-deactivate ZoomLinkInfo
-
+deactivate
 return
 @enduml
