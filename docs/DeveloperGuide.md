@@ -169,8 +169,8 @@ Through Patient Manager, general practitioners are able to manage patients faste
 - *General Practitioner* - A doctor based in the community who treats patients with minor or chronic illnesses and
   refers those with serious conditions to a hospital. Their duties are not confined to specific organs of the body,
   and they have particular skills in treating people with multiple health issues.
-- *Visit Record* - Details taken down by the doctor during one's visit. In this case, we take note of the patient's
-  symptoms, the diagnosis made by the doctor, and any prescriptions or referals given.
+- *Visit Record* - Details taken down by the doctor during one's visit. In this case, Patient Manager can record
+  the patient's symptoms, the diagnosis made by the doctor, and any prescriptions or referals given.
 
 ## Appendix E: Instructions for Manual Testing
 
@@ -215,11 +215,11 @@ Through Patient Manager, general practitioners are able to manage patients faste
 ### Adding and Viewing a Patient's Visit Records
 1. Adding visit records
     1. Prerequisite: Patient's records have already been loaded.
-    2. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`
+    2. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
        Expected: Details added to patient's visit record. Newly-added details shown in status message.
 2. Viewing visit records
     1. Prerequisite: Patient's records have already been loaded.
-    2. Test case: `retrieve`
+    2. Test case: `retrieve`\
        Expected: Details of all of the patient's past visits shown.
 
 ### Saving Data
