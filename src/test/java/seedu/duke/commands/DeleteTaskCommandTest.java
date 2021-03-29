@@ -13,10 +13,11 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.initialiseTaskList;
 import static seedu.duke.TestUtilAndConstants.initialiseModuleList;
-import static seedu.duke.common.Messages.COMMAND_VERB_DELETE;
+import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Constants.TYPE_TASK;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
 import static seedu.duke.common.Messages.NEWLINE;
 
 class DeleteTaskCommandTest {
@@ -45,7 +46,7 @@ class DeleteTaskCommandTest {
                 + "3. lecture quiz" + NEWLINE
                 + "4. read up notes" + NEWLINE
                 + "5. iP submission" + NEWLINE
-                + String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_DELETE) + NEWLINE
+                + String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, DELETE) + NEWLINE
                 + "Removed weekly exercise from the task list." + NEWLINE
                 + "Removed iP submission from the task list." + NEWLINE;
 
@@ -77,7 +78,7 @@ class DeleteTaskCommandTest {
         DeleteTaskCommand deleteTaskCommand = new DeleteTaskCommand();
         deleteTaskCommand.execute(new UI());
 
-        String output = String.format(MESSAGE_TASK_LIST_EMPTY, COMMAND_VERB_DELETE) + NEWLINE;
+        String output = String.format(MESSAGE_TASK_LIST_EMPTY, DELETE) + NEWLINE;
 
         // checks displayed output to user
         assertEquals(output, bos.toString());

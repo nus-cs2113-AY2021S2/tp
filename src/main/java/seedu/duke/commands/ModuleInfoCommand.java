@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.EMPTY_STRING;
-import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
+import static seedu.duke.common.Messages.FORMAT_ITEM_TIME;
 import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
 
 /**
@@ -47,7 +47,7 @@ public class ModuleInfoCommand extends Command {
         for (Lesson lesson : lessonList) {
             String lessonName = getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
-            ui.printMessage(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
+            ui.printMessage(String.format(FORMAT_ITEM_TIME, lessonName, lessonTime));
         }
     }
 }
