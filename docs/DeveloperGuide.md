@@ -126,13 +126,27 @@ Given below is a sequence diagram of the Assign Employee feature.
 
 ### Saving of Data
 #### Implementation
+The ArrayList of Employee objects is first formatted by adding the '#' symbol as a delimiter between the objects and their attributes.
+<br>For example, `cactus#23/03/2021`, which saves the employee name `cactus` and the employee schedule `23/03/2021`.
+<br>This allows data of objects to be easily written into text files and then loaded.
+<br>The ArrayList of Shift objects is saved using the same method.
+<br>For example, `28/03/2021#5#1#cactus#mario`, which saves a shift on `28/03/2021`, with a vacancy of `5`, and shift index of `1`.
+The employees on that shift are`cactus` and `mario`.
+
 Employee and shift details are saved on separate text files "employees.text" and "shifts.text".
 A FileWriter is used to write formatted data from the Employee and Shift classes, with "#" as the delimiter.
+<br>The text files are overwritten with the most recent data whenever the user exits the program by inputting the command `quit`.
 
 ### Loading of Data
 #### Implementation
-![loadEmployees](loadEmployees.puml)<br>
-![loadShifts](loadShifts.puml)
+The FileManager Object is first initialized at the start of the program, and loads both
+the "employees.txt" and "shifts.txt" files.
+<br>The FileManager then parses the data from the text files into the Data Parser object.
+<br>The Data Parser then initializes the employee and shift objects, returning an ArrayList of Employees
+and ArrayList of Shifts into the program.
+<br><br>The Sequence Diagram for both `loadEmployees()` and `loadShifts()` is as shown below:
+![loadEmployees](loadEmployees.png)<br>
+![loadShifts](loadShifts.png)
 
 ## Product scope
 ### Target user profile
