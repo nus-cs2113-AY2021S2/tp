@@ -1,6 +1,5 @@
 package seedu.duke.common;
 
-import seedu.duke.lesson.LessonType;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
@@ -13,60 +12,14 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.common.Constants.LAB_STRING;
-import static seedu.duke.common.Constants.LECTURE_STRING;
 import static seedu.duke.common.Constants.LOGGER_NAME;
 import static seedu.duke.common.Constants.LOGGER_PATH;
 import static seedu.duke.common.Constants.NO_STRING;
-import static seedu.duke.common.Constants.TUTORIAL_STRING;
 import static seedu.duke.common.Constants.YES_STRING;
 import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED_INFO;
 
 public class CommonMethods {
-    
-    /**
-     * Returns string of lesson type.
-     *
-     * @param lessonType Lesson type to convert.
-     * @return String of lesson type.
-     */
-    public static String getLessonTypeString(LessonType lessonType) {
-        switch (lessonType) {
-        case LECTURE: {
-            return LECTURE_STRING;
-        }
-        case TUTORIAL: {
-            return TUTORIAL_STRING;
-        }
-        default: {
-            return LAB_STRING;
-        }
-        }
-    }
 
-    //@@author 8kdesign
-    /**
-     * Returns lesson type if valid, null if invalid.
-     *
-     * @param input String of type.
-     * @return Lesson type specified.
-     */
-    public static LessonType getLessonType(String input) {
-        switch (input.toLowerCase()) {
-        case LECTURE_STRING: {
-            return LessonType.LECTURE;
-        }
-        case TUTORIAL_STRING: {
-            return LessonType.TUTORIAL;
-        }
-        case LAB_STRING: {
-            return LessonType.LAB;
-        }
-        default: {
-            return null;
-        }
-        }
-    }
     
     /**
      * Writes specified message to log.
@@ -128,11 +81,11 @@ public class CommonMethods {
      * @return Boolean of whether new task is graded.
      */
     public static boolean getIsTaskGraded(UI ui) {
-        String userInput = ui.readCommand();
+        String userInput = ui.readUserInput();
         while (!userInput.equalsIgnoreCase(YES_STRING)
                 && !userInput.equalsIgnoreCase(NO_STRING)) {
             ui.printMessage(MESSAGE_TASK_CHECK_GRADED_INFO);
-            userInput = ui.readCommand();
+            userInput = ui.readUserInput();
         }
         return userInput.equalsIgnoreCase(YES_STRING);
     }

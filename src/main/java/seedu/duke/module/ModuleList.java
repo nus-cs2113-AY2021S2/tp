@@ -21,6 +21,27 @@ public class ModuleList {
         return modules;
     }
 
+    public static String getModuleByIndex(int index) {
+        return getModules().get(index);
+    }
+
+    public static int getModuleIndex(String moduleCode) {
+        return getModules().indexOf(moduleCode);
+    }
+
+    public static int getSize() {
+        return getModules().size();
+    }
+
+    public static String getSelectedModuleCode() {
+        return selectedModule.getModuleCode();
+    }
+
+    //@@author ivanchongzhien
+    public static boolean hasSelectedModule() {
+        return selectedModule != null;
+    }
+
     //@@author 8kdesign
     /**
      * Searches directory for module files.

@@ -24,6 +24,10 @@ public class Lesson {
         return lessonType;
     }
 
+    public String getLessonTypeString() {
+        return LessonType.getLessonTypeString(lessonType);
+    }
+
     public TeachingStaff getTeachingStaff() {
         return teachingStaff;
     }
@@ -42,6 +46,22 @@ public class Lesson {
 
     public void setTeachingStaff(TeachingStaff teachingStaff) {
         this.teachingStaff = teachingStaff;
+    }
+
+    public String getTeachingStaffName() {
+        return teachingStaff.getName();
+    }
+
+    public String getTeachingStaffEmail() {
+        return teachingStaff.getEmail();
+    }
+
+    public void setTeachingStaffName(String name) {
+        teachingStaff.setName(name);
+    }
+
+    public void setTeachingStaffEmail(String email) {
+        teachingStaff.setEmail(email);
     }
 
     //@@author ivanchongzhien

@@ -2,6 +2,7 @@ package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
@@ -26,14 +27,15 @@ public class DeleteModuleCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        if (ModuleList.getModules().size() == 0) {
+        if (ModuleList.getModules().isEmpty()) {
             ui.printMessage(MESSAGE_NO_MODULES_TO_DELETE);
             return;
         }
         ui.printMessage(getDeleteInfo());
 
-        ArrayList<Integer> indices = ui.getIndicesFromUser(ModuleList.getModules().size());
-        if (indices.size() == 0) {
+        String userInput = ui.readUserInput();
+        ArrayList<Integer> indices = ParserUtil.checkIndices(userInput, ModuleList.getSize());
+        if (indices.isEmpty()) {
             return;
         }
 
