@@ -39,34 +39,6 @@ If you plan to use Intellij IDEA (highly recommended):
 
 ## Design & implementation
 
-### Help command
-
-When invoked by the user via the `help` command, information about the available commands is printed.
-If arguments are provided, the arguments are parsed into the separate commands, and the information about each
-command present in the arguments is printed in order. If the user provides an invalid command, an invalid command
-message is shown, and the messages for the following commands are printed.
-
-#### Alternatives considered
-
-The original version of this command simply printed out the information messages of all commands. 
-However, with a growing list of commands, we were worried that the help message would be too long and would
-require scrolling.
-
-The current version reads the arguments that are provided by the user, and prints out information messages for each
-of the commands indicated. Unknown/invalid commands will not be skipped with a message indicating that the command is 
-invalid, and the subsequent commands will continue to be processed. 
-
-A future consideration would be to convert the message printed out when no arguments are provided to only print a list
-of available commands for easier reference:
-```
-> help
------------------------------------------------------------------
-List of available commands:
-...
-...
-Enter help <command> for more details of each command
------------------------------------------------------------------
-```
 ### Architecture
 
 The Architecture Diagram shown above gives a high-level explanation of PatientManager.
