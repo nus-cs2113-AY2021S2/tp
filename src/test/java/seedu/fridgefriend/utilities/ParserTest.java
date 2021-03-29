@@ -54,33 +54,13 @@ public class ParserTest {
         });
     }
 
+    //@@author Vinci-Hu
     @Test
     public void parse_removeCommandNoArgs_EmptyDescriptionException() {
         assertThrows(EmptyDescriptionException.class, () -> {
             Parser.getCommand("remove");
         });
     }
-
-    /*
-    @Test
-    public void parse_removeCommandAlphabeticalArgs_InvalidIndexException() {
-        assertThrows(InvalidIndexException.class, () -> {
-            Parser.getCommand("remove abc");
-        });
-    }
-
-    @Test
-    public void parse_removeCommandArgOutOfBounds_InvalidIndexException() {
-        assertThrows(InvalidIndexException.class, () -> {
-            Command command = Parser.getCommand("remove -1");
-            command.execute();
-        });
-        assertThrows(InvalidIndexException.class, () -> {
-            Command command = Parser.getCommand("remove 10000");
-            command.execute();
-        });
-    }
-   */
 
     @Test
     public void parse_searchCommandNoArg_EmptyDescriptionException() {

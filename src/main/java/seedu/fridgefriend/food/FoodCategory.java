@@ -1,5 +1,6 @@
 package seedu.fridgefriend.food;
 
+//@@author Vinci-Hu
 /**
  * Subject to changes with discussion.
  */

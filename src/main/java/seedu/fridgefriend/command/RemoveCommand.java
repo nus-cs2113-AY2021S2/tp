@@ -21,6 +21,7 @@ public class RemoveCommand extends Command {
     private boolean isRemoveObject = false;
     private String runningOutMessage = "";
 
+    //@@author Vinci-Hu
     /**
      * Constructor which takes in foodname and quantity to remove.
      * @param foodnameToEdit food name is identifier
@@ -62,12 +63,14 @@ public class RemoveCommand extends Command {
         }
     }
 
+    //@@author
     private void showResults() {
         String message = getMessagePrintedToUser();
         message += this.runningOutMessage;
         Ui.printMessage(message);
     }
 
+    //@@author Vinci-Hu
     /**
      * Return the results after remove the item from the fridge.
      * If there is some quantity left, display new quantity.
@@ -89,7 +92,7 @@ public class RemoveCommand extends Command {
 
         return message;
     }
-    
+
     //@@author kwokyto
     /**
      * Checks if the amount of food left for that category is insufficient.

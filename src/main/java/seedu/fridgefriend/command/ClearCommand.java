@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author Vinci-Hu
 /**
  * Clear the fridge.
  * For the purpose of text-ui-text.

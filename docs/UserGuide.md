@@ -16,7 +16,7 @@ It is written in Java, and has more than 3.2kLoC.
     * [Display the list of all foods: list](#display-the-list-of-all-foods-list)
     * [Display the list of foods by category: list &lt;CATEGORY&gt;](#display-the-list-of-foods-by-category-list-category)
     * [Display the list of foods by storage location: list &lt;LOCATION&gt;](#display-the-list-of-foods-by-storage-location-list-location)
-    * [Remove a food item: remove](#remove-a-food-item-remove)
+    * [Remove a food item by quantity: remove](#remove-a-food-item-by-quantity-remove)
     * [Search: search](#search-search)
     * [List expiring foods: expiring](#list-expiring-foods-expiring)
     * [List categories with food running low: runninglow](#list-categories-with-food-running-low-runninglow)
@@ -42,12 +42,18 @@ It is written in Java, and has more than 3.2kLoC.
 
 Adds a food item into the fridge.
 
-Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE` /qty QUANTITY
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+* The `QUANTITY` should be an integer.
+* If you want to add more to the same batch of food (same category, same location and same 
+expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`, 
+`LOCATION_IN_THE_FRIDGE` and the new quantity in `QUANTITY` field.
+* The food names should not repeat unless it is the same batch as described above. 
+Otherwise, you will be prompted to retry the `add` command.
 
 Additional info:
 
@@ -59,9 +65,17 @@ Additional info:
 Example of usage:
 
 ```lang-none
->> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf
-Great! I have added chicken into your fridge.
-Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 500
+   Great! I have added chicken into your fridge.
+   Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 500
+
+>> add chicken /cat meat /exp 07-10-2021 /loc upper_shelf /qty 500
+   Sorry my friend, you have added this food before but in a different location or have different expiry dates. Please specify another foodname.
+
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
+   Great! I have added chicken into your fridge.
+   Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 700
+
 ```
 
 ### Display the list of all foods: `list`
@@ -137,32 +151,41 @@ These are the food stored in LOWER_SHELF:
 These are the food stored in DRAWERS:
 ```
 
-### Remove a food item: `remove`
+### Remove a food item by quantity: `remove`
 
 Removes a food item based on its index.
 
-Format: `remove INDEX`
+Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 
-* The `INDEX` must be a valid index.
-* If the `INDEX` is out of bounds, `FridgeFriend` will give an error message.
+* The `FOODNAME` must be an existing food name (same with the first parameter during `add`) in the fridge.
+* If the `FOODNAME` is not found, `FridgeFriend` will give an error message.
+* The `QUANTITY_TO_REMOVE` must be lower to equal to the current quantity of the food.
+* If the `QUANTITY_TO_REMOVE` is larger than current quantity of the food, `FridgeFriend` will give an error message.
+* If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole 
+food item will be deleted by `FridgeFriend` (it will not appear on list either).
+* If the `QUANTITY_TO_REMOVE` is lower than current quantity of the food, it means there is still some food left 
+of this item. The quantity of food will be updated.
 
 Example of usage:
 
 ```lang-none
 >> list
-Here are the items in your fridge:
-        1. chicken [MEAT]
-        2. mango [OTHER]
-        3. milk [OTHER]
+   Here are the items in your fridge:
+   	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 1000
+   	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 800
+   	3. Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 700
+   	4. Food name: oyster, category: SEAFOOD, expiry: 03-04-2022, stored in: FREEZER, quantity: 100
 
->> remove 2
-Noted! I've removed mango from your fridge.
-Now you have 2 food in the fridge.
+>> remove chicken /qty 1500
+   Not enough in fridge to remove!
 
->> list
-Here are the items in your fridge:
-        1. chicken [MEAT]
-        2. milk [OTHER]
+>> remove chicken /qty 200
+   Noted! I've removed 200 of the food chicken from your fridge.
+   New quantity: 1300
+
+>> remove pork /qty 800
+   Noted! I've removed pork from your fridge.
+   Now you have 3 food in the fridge.
 ```
 
 ### Search: `search`
@@ -316,7 +339,7 @@ Plus, you are always welcomed to use `help` command.
 * List food `list`
 * List food by category `list CATEGORY_NAME`
 * List food by storage location `list STORAGE_LOCATION_NAME`  
-* Remove food `remove INDEX`
+* Remove food `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 * Search for food `search FOOD_NAME`
 * List expiring foods `expiring`
 * List categories with food running low: `runninglow`
