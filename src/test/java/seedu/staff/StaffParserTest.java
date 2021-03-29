@@ -25,7 +25,7 @@ public class StaffParserTest {
     void testValidCommandHandlerReturnValue(){
         Assertions.assertAll(
                 () -> assertEquals(1, commandHandler("list")),
-                () -> assertEquals(1, commandHandler("add N12345")),
+                () -> assertEquals(1, commandHandler("addline N12345")),
                 () -> assertEquals(1, commandHandler("delete N12345")),
                 () -> assertEquals(1, commandHandler("find N12345"))
         );
