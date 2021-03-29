@@ -17,7 +17,7 @@ class AddCommandTest {
         Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "add");
-        arguments.put("payload", "S9841974H");
+        arguments.put("payload", "S1234567D");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
         final PrintStream originalOut = System.out;
@@ -30,7 +30,7 @@ class AddCommandTest {
             System.out.println("An error occurred while running tests");
         }
 
-        assertEquals("Patient S9841974H has been added!" + System.lineSeparator(), bos.toString());
+        assertEquals("Patient S1234567D has been added!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -55,7 +55,7 @@ class AddCommandTest {
         Ui ui = new Ui();
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "add");
-        arguments.put("payload", "S9841974H");
+        arguments.put("payload", "S1234567D");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
         try {

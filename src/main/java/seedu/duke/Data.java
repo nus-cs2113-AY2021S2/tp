@@ -71,6 +71,14 @@ public class Data {
     }
 
     /**
+     * This removes a patient from the hashmap of this database.
+     * @param id unique identifier of the patient to be loaded
+     */
+    public void deletePatient(String id) {
+        patients.remove(id);
+    }
+
+    /**
      * This saves the patient in currentPatient attribute back to the hashmap.
      */
     public void saveCurrentPatient() {
