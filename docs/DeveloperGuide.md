@@ -153,11 +153,11 @@ _Exceptions related to file storage:_
 
 When the user specify to remove a portion of a food item in the fridge, the `remove` command
 will execute the remove operation by:
-* Searching of the food item in the fridge by looping through each food item.  
-* If the food item exist, check if removing the quantity will reduce the quantity to zero.
-* If it does not reduce to zero, then proceed to remove the required quantity.
-* If it does reduce to zero, then remove the food item completely. 
-* Otherwise, throw an exception to FridgeFriend.
+1. Searching of the food item in the fridge by looping through each food item.  
+2. If the food item exist, check if removing the quantity will reduce the quantity to zero.
+3. If it does not reduce to zero, then proceed to remove the required quantity.
+4. If it does reduce to zero, then remove the food item completely. 
+5. Otherwise, throw an exception to FridgeFriend.
 
 The sequence diagram below shows how the `remove` operation works: 
 
@@ -167,9 +167,9 @@ The sequence diagram below shows how the `remove` operation works:
 
 When the user specify to search a food item in the fridge, the `search` command will execute
 search operation by:
-* Searching the list of foods in the fridge by that contain the food name entered by the user 
+1. Searching the list of foods in the fridge by that contain the food name entered by the user 
   through a loop.
-* Afterwards, pass the message success or failure message to the UI. 
+2. Afterwards, pass the message success or failure message to the UI. 
 
 The sequence diagram shows how the `search` operation works:
 
@@ -207,18 +207,18 @@ The sequence diagram shows how the `expiring` operation works:
 
 ### Target user profile
 
-* has a need to manage a significant number of foods in the fridge
+* has a needs to manage a significant number of foods in the fridge
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* is reasonably comfortable using CLI app
 
 ### Value proposition
 
-* Provide ease of monitoring of food in the fridge which allow user to know which food is expiring 
+* Provides ease of monitoring of food in the fridge which allows user to know which food is expiring 
   soon and what requires topping up
-* Allow for easier search of food in fridge
-* Allow tracking of past food items in the fridge
+* Allows for easier search of food in fridge
+* Allows tracking of past food items in the fridge
 
 ## User Stories
 
