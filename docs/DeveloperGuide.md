@@ -2,11 +2,15 @@
 
 ## Introduction
 
+---
+
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
 ## Contents
+
+---
 
 * [Introduction](#introduction)
 * [Design](#design)
@@ -32,6 +36,8 @@ It is written in Java, and has more than 3.2kLoC.
 * [Attribution](#attribution)
 
 ## Design
+
+---
 
 This section focuses on the general architecture of the application as well as the relationships between the classes involved. The overall architecture would be covered first, before the four individual components.
 
@@ -172,6 +178,8 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
+---
+
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
 ### Main Application Logic
@@ -194,8 +202,11 @@ Given below is the sequence diagram for the interactions within the main applica
 
 * The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
+Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
 
 ## Product Scope
+
+---
 
 ### Target User Profile
 
@@ -206,6 +217,8 @@ Given below is the sequence diagram for the interactions within the main applica
 {Describe the value proposition: what problem does it solve?}
 
 ## User Stories
+
+---
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -231,16 +244,24 @@ Given below is the sequence diagram for the interactions within the main applica
 
 ## Non-Functional Requirements
 
+---
+
 {Give non-functional requirements}
 
 ## Glossary
+
+---
 
 * *glossary item* - Definition
 
 ## Instructions for Manual Testing
 
+---
+
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 ## Attribution
+
+---
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).
