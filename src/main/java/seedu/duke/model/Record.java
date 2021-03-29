@@ -1,33 +1,61 @@
 package seedu.duke.model;
 
+import java.util.ArrayList;
+
 /**
  * Each instance of this class represent a visit record. It can contain
  * medical diagnosis, prescription, test results, etc.
- * TODO: For v1.0 iteration, we will just implement a single string field to store everything
  */
 public class Record {
-    protected String consultationDetail;
+    protected ArrayList<String> symptoms;
+    protected ArrayList<String> diagnoses;
+    protected ArrayList<String> prescriptions;
 
     /**
-     * Create a new visit record with details as a single string.
-     *
-     * @param consultationDetail detail of the visit record (diagnosis, prescription, etc.)
+     * Initialize a new visit record.
      */
-    public Record(String consultationDetail) {
-        this.consultationDetail = consultationDetail;
+    public Record() {
+        this.symptoms = new ArrayList<>();
+        this.diagnoses = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
     }
 
     /**
      * Obtain the consultation detail of this record.
      *
-     * @return Consultation detail related to this record
+     * @return A String containing the consultation details contained in this record
      */
     public String getConsultationDetail() {
+        String consultationDetail = "";
+        consultationDetail += "Symptoms:" + System.lineSeparator();
+        for (String symptom : symptoms) {
+            consultationDetail += "\t" + symptom + System.lineSeparator();
+        }
+        consultationDetail += "Diagnoses:" + System.lineSeparator();
+        for (String diagnosis : diagnoses) {
+            consultationDetail += "\t" + diagnosis + System.lineSeparator();
+        }
+        consultationDetail += "Prescriptions:" + System.lineSeparator();
+        for (String prescription : prescriptions) {
+            consultationDetail += "\t" + prescription + System.lineSeparator();
+        }
         return consultationDetail;
     }
 
     @Override
     public String toString() {
-        return consultationDetail;
+        return getConsultationDetail();
+    }
+
+    public void addDetails(String symptom, String diagnosis, String prescription) {
+        if (symptom != null) {
+            symptoms.add(symptom);
+        }
+        if (diagnosis != null) {
+            diagnoses.add(diagnosis);
+        }
+        if (prescription != null) {
+            prescriptions.add(prescription);
+        }
     }
 }
