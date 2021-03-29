@@ -43,6 +43,10 @@ public class StaffUI {
             }
         }
     }
+    public static void emptyListOutput() {
+        System.out.println("OOPS! It seems like you have no staff in the list now!");
+    }
+
 
     public static void staffFiredOutput(String line) {
         System.out.println(line.split("/")[1] + " has been fired.");
@@ -74,6 +78,14 @@ public class StaffUI {
 
     public static void wrongStaffListInputErrorMessage() {
         System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
+    }
+
+    public static void blankInputErrorMessage() {
+        System.out.println("OOPS! Input field cannot be blank. Please change your input!");
+    }
+
+    public static void invalidNumericErrorMessage() {
+        System.out.println("OOPS! Input field expects a numeric. Please change your input!");
     }
 
     public static void staffMenuPrompt() {

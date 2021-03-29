@@ -60,7 +60,7 @@ public class UI {
         if(list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8){
+        if (input.length() >= 8 || input.length() < 1){
             return UNKNOWN_COMMAND;
         }
 

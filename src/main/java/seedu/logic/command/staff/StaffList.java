@@ -17,6 +17,11 @@ public class StaffList extends Command {
 
     public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
         UI.printEmptyLine();
+        if (StaffAggregation.getNumStaff() == 0) {
+            StaffUI.emptyListOutput();
+            UI.printEmptyLine();
+            return;
+        }
         StaffUI.staffListHeader();
         UI.showLine();
         String[] string = Arrays.copyOfRange(this.input.split("/"), 1, 2);

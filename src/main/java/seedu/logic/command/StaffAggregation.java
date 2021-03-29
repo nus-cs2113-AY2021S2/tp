@@ -51,7 +51,9 @@ public class StaffAggregation {
     }
 
     public void list(String... parameter) {
-
+        if (this.getNumStaff() == 0){
+            StaffUI.emptyListOutput();
+        }
         if (parameter[0] == (null)) {
             for (Staff staff : list) {
                 display(staff);

@@ -58,6 +58,10 @@ public class StaffInstance {
                 UI.tooManyInputErrorMessage();
             } catch (InsufficientInputException e) {
                 UI.tooLittleInputErrorMessage();
+            } catch (BlankInputException e) {
+                StaffUI.blankInputErrorMessage();
+            } catch (NumberFormatException e) {
+                StaffUI.invalidNumericErrorMessage();
             }
         }
     }

@@ -47,6 +47,23 @@ public class staffparser {
             throw new ExcessInputException();
         }
     }
+    public static void checkBlankInput(String line) throws BlankInputException {
+       String[] array = line.split("/");
+        for (String s : array) {
+            if (s.equals("")) {
+                throw new BlankInputException();
+            }
+        }
+    }
+
+    public static void checkNumericInput(String line) throws NumberFormatException {
+        String[] array = line.split("/");
+        try {
+            Integer.parseInt(array[3]);     // Check age is numeric
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException();
+        }
+    }
 
     public static void checkListCommand(String line) throws WrongListInputException {
 
@@ -58,7 +75,7 @@ public class staffparser {
 
     public Command commandHandler(String line) throws WrongStaffIdException,
             WrongListInputException, NoInputException, AbortException, ExcessInputException,
-            InsufficientInputException {
+            InsufficientInputException, BlankInputException, NumberFormatException {
 
         Command c = null;
         if (line.equals(" ")) {
@@ -70,19 +87,23 @@ public class staffparser {
         case ("add"):
             checkEmptyInput(line);
             checkID(line.split("/")[1]);
+            checkNumericInput(line);
             checkNumInput(line,5,5);
+            checkBlankInput(line);
             String [] p = Arrays.copyOfRange(line.split("/"), 1, 5);
             c = new StaffAdd(p);
             break;
 
         case ("list"):
             checkListCommand(line);
+            checkNumInput(line,2,1);
             c = new StaffList(line);
             break;
 
         case ("delete"):
             checkEmptyInput(line);
             checkID(line.split("/")[1]);
+            checkNumInput(line,2,1);
             c = new StaffDelete(line);
             break;
 
@@ -92,6 +113,7 @@ public class staffparser {
 
         case ("find"):
             checkEmptyInput(line);
+            checkNumInput(line,2,1);
             c = new StaffFind(line);
             break;
 
