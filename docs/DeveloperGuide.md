@@ -72,6 +72,10 @@ The sections below give more details for each component.
 
 ### UI Component
 
+`Ui.java` enables:
+- reading of user input
+- printing of string messages, exceptions, a welcome message and a standardized long line
+
 ### Logic Component
 
 ### Model Component
@@ -95,21 +99,26 @@ API: `Patient.java`, `Record.java` and `Data.java`
 
 ### Storage Component
 
+`Storage.java`:
+- facilitates the saving of application data into a text file
+- facilitates the loading of application data from the aforementioned text file
+- convert records to string
+- converts string to records
+
 ### Commons
 
 ## Appendix A: Product scope
 
 ### Target user profile
 
-{Describe the target user profile}
+The target users for this application are _general practitioners_ (GP) who work in clinics.
+They are keen to reduce the paperwork that is required of them during consultation sessions, so that they may focus more on the consultation itself.
+Also, they would like to have a more efficient way to organize the records of their patients.
 
 ### Value proposition
 
 Through Patient Manager, general practitioners are able to manage patients faster than a typical mouse/GUI driven app.
-
-{Describe the value proposition: what problem does it solve?}
-
-{more to be added}
+The typical paperwork, such as recording of symptoms, diagnoses and prescriptions, are greatly reduced through digital input.
 
 ## Appendix B: User Stories
 
