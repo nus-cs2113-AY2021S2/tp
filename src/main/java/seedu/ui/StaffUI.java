@@ -81,6 +81,7 @@ public class StaffUI {
     }
 
     public static void staffMenuHeader() {
+        UI.showLine();
         System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
     }
 }

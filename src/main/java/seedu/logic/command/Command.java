@@ -1,12 +1,12 @@
 package seedu.logic.command;
 
 import seedu.storage.StaffStorage;
+import seedu.ui.DoctorAppointmentUI;
+import seedu.ui.NurseScheduleUI;
 import seedu.ui.PatientUI;
 import seedu.ui.StaffUI;
 
 import java.io.IOException;
-import seedu.ui.DoctorAppointmentUI;
-import seedu.ui.NurseScheduleUI;
 
 public abstract class Command {
 
