@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
     };
 
     protected static final String COMMAND_HELP = "help";
-    private static String helpType;
+    private final String helpType;
 
     /**
      * Constructor to validate the format for help command.
