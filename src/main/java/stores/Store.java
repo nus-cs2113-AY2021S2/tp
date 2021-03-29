@@ -9,7 +9,6 @@ public class Store {
     private String storeName;
     private ArrayList<Review> reviews;
     private ArrayList<Menu> menus;
-    public static int storeCount;
     public static double ratingSum = 0;
     public static int ratingCount = 0;
     public static double averageRating;
@@ -18,7 +17,6 @@ public class Store {
         this.storeName = storeName;
         menus = new ArrayList<>();
         reviews = new ArrayList<>();
-        storeCount++;
     }
 
     public void displayStore() {

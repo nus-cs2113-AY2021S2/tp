@@ -138,6 +138,10 @@ public class Ui {
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println(LINESPACING);
+        if (menus.size() == 0) {
+            System.out.println("This store has no menus yet!");
+            return;
+        }
         System.out.println("Here are the menus of the " + storeName + ":");
         for (Menu menuItem: menus) {
             System.out.println(menuItem.toString());

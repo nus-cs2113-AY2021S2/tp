@@ -72,5 +72,4 @@ class ParserTest {
         assertTrue(c instanceof ReadReviewsCommand);
     }
 
-
 }
