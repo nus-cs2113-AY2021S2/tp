@@ -50,9 +50,9 @@ public class CommandHandler {
         }
     }
 
-    public Command parseCommand(ArrayList<String> parsedString, RecordList recordList) {
+    public Command parseCommand(ArrayList<String> parsedArguments, RecordList recordList) {
         try {
-            Command command = createCommand(parsedString, recordList);
+            Command command = createCommand(parsedArguments, recordList);
             FINUX_LOGGER.logInfo(LOGGER_OKAY_MESSAGE);
             return command;
         } catch (CommandException e) {
