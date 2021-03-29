@@ -5,14 +5,14 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
+import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
+    private static final String LOGGER_OKAY_MESSAGE = "index validation success";
 
     // @@author marklowsk-reused
     // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
@@ -74,12 +74,10 @@ public class Validators {
      */
     public static int validateIndex(String inputToCheck, RecordList records) throws NumberFormatException,
             IndexOutOfBoundsException {
-        Logger logger = Logger.getLogger("validateIndex_Log");
-        logger.log(Level.INFO, "going to start validating index");
         int recordNumberInList = Integer.parseInt(inputToCheck) - 1;
         records.getRecordAt(recordNumberInList);
         assert recordNumberInList > -1 : "recordNumberInList should be greater than 0 and non-negative";
-        logger.log(Level.INFO, "done validating index");
+        FINUX_LOGGER.logInfo(LOGGER_OKAY_MESSAGE);
         return recordNumberInList;
     }
 
