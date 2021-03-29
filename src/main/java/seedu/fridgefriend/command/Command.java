@@ -23,6 +23,7 @@ public abstract class Command {
         return isExit;
     }
 
+    //@@author SimJJ96
     public abstract void execute() throws InvalidInputException,
             InvalidIndexException, RepetitiveFoodIdentifierException,
             InvalidQuantityException, FoodNameNotFoundException;

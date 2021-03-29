@@ -75,6 +75,7 @@ public class AddCommand extends Command {
                 + foodToAdd.toString();
         return message;
     }
+    //@@author
 
     //@@author leeyp
     public static Food categoriseAndGenerateFood(String foodName, FoodCategory category,

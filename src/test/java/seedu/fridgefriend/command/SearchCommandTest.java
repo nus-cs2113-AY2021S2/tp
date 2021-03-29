@@ -63,5 +63,6 @@ class SearchCommandTest {
         assertThrows(EmptyDescriptionException.class, () ->
                 searchCommand(""));
     }
+    //@author
 
 }

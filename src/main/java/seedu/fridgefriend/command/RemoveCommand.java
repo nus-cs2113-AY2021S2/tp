@@ -62,13 +62,15 @@ public class RemoveCommand extends Command {
             foodToBeEditted.setQuantity(newQty);
         }
     }
-
     //@@author
+
+    //@@author SimJJ96
     private void showResults() {
         String message = getMessagePrintedToUser();
         message += this.runningOutMessage;
         Ui.printMessage(message);
     }
+    //@@author
 
     //@@author Vinci-Hu
     /**
