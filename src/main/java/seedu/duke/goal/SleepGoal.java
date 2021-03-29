@@ -9,7 +9,7 @@ public class SleepGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param periodType     the period type of the goal which can be daily or weekly.
      * @param targetDuration the target sleeping duration.
      */
     public SleepGoal(PeriodType periodType, double targetDuration) {
@@ -72,7 +72,7 @@ public class SleepGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return getDaySet().toString() + "\t"
+        return "\t" + getDaySet().toString() + "\t"
                 + getType().toString().toLowerCase() + "\t"
                 + getTargetDuration() + "\t"
                 + getProgress() + "\n";

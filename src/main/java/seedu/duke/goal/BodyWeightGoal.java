@@ -9,7 +9,7 @@ public class BodyWeightGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param periodType       the period type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
@@ -72,7 +72,7 @@ public class BodyWeightGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return getDaySet().toString() + "\t"
+        return "\t" + getDaySet().toString() + "\t"
                 + getType().toString().toLowerCase() + "\t"
                 + getTargetBodyWeight() + "\t"
                 + getProgress() + "\n";

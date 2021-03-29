@@ -18,6 +18,8 @@ public class Messages {
             + "The current version of this application is: " + MESSAGE_VERSION + "\n"
             + MESSAGE_FEATURES + "\n";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
+    public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
+    public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\tProgress\n";
     public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index\t\tDate\t\tActivity\t\tDuration\t\tCalories\n";
     public static final String MESSAGE_VIEW_HEADER_DIET = "Index\t\tDate\t\tFood Category\t\tWeight\t\tCalories\n";
     public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index\t\tDate\t\t\tDuration\n";
@@ -30,11 +32,15 @@ public class Messages {
             + "Please try again.";
     public static final String MESSAGE_CANT_ADD_RECORD = "Sorry, you cannot add record of an unrecognized type.";
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
-    public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view record list "
+    public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
+    public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "
+            + "of an incorrect goal type.";
     public static final String MESSAGE_SYSTEM_ERROR = "There is something wrong within the system.";
     public static final String MESSAGE_DOUBLE_FORMAT_ERROR = "A double value is expected for the number field. "
             + "Please verify your input and try again.";
+    public static final String MESSAGE_INVALID_PERIOD_TYPE = "The period type you entered is invalid.\n"
+            + "The period type can only be 'D' or 'W'. Please try again.";
     public static final String MESSAGE_INVALID_DATE_FORMAT = "The date format is incorrect or the date is invalid. "
             + "Please try again.\n";
     public static final String MESSAGE_INVALID_SLEEP_HOUR = "The duration you entered is invalid.\n"

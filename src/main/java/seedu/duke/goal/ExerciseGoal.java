@@ -72,7 +72,7 @@ public class ExerciseGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return getDaySet().toString() + "\t"
+        return "\t" + getDaySet().toString() + "\t"
                 + getType().toString().toLowerCase() + "\t"
                 + getTargetEnergy() + "\t"
                 + getProgress() + "\n";

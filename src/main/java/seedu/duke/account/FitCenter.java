@@ -2,7 +2,9 @@ package seedu.duke.account;
 
 import seedu.duke.command.CommandRecordType;
 import seedu.duke.common.Messages;
-import seedu.duke.goal.*;
+import seedu.duke.goal.GoalList;
+import seedu.duke.goal.Goal;
+import seedu.duke.goal.PeriodType;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.RecordType;
@@ -18,10 +20,10 @@ public class FitCenter {
     private final RecordList exerciseRecordList = new RecordList(RecordType.EXERCISE);
     private final RecordList dietRecordList = new RecordList(RecordType.DIET);
     private final RecordList bodyRecordList = new RecordList(RecordType.BODYWEIGHT);
-    private final GoalList exerciseGoalList = new GoalList(RecordType.EXERCISE);
-    private final GoalList dietGoalList = new GoalList(RecordType.DIET);
-    private final GoalList sleepGoalList = new GoalList(RecordType.SLEEP);
-    private final GoalList bodyWeightGoalList = new GoalList(RecordType.BODYWEIGHT);
+    private final GoalList exerciseGoalList = new GoalList();
+    private final GoalList dietGoalList = new GoalList();
+    private final GoalList sleepGoalList = new GoalList();
+    private final GoalList bodyWeightGoalList = new GoalList();
 
     private RecordList getRecordListByType(CommandRecordType type) {
         switch (type) {
@@ -139,10 +141,18 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
+    public String getGoalListString(CommandRecordType type, PeriodType optionalPeriodType) {
+        GoalList list = getGoalListByType(type);
+        if (list != null) {
+            return list.getGoalsToPrint(optionalPeriodType);
+        }
+        return Messages.MESSAGE_CANT_CHECK_GOAL;
+    }
+
     public String getRecordListForStore() {
-        return exerciseRecordList.getRecordToStore() +
-                dietRecordList.getRecordToStore() +
-                sleepRecordList.getRecordToStore() +
-                bodyRecordList.getRecordToStore();
+        return exerciseRecordList.getRecordToStore()
+                + dietRecordList.getRecordToStore()
+                + sleepRecordList.getRecordToStore()
+                + bodyRecordList.getRecordToStore();
     }
 }

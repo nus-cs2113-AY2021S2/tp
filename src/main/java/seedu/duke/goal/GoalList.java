@@ -8,11 +8,6 @@ import java.util.ArrayList;
 
 public class GoalList {
     private final ArrayList<Goal> goals = new ArrayList<>();
-    private final RecordType goalType;
-
-    public GoalList(RecordType type) {
-        this.goalType = type;
-    }
 
     public void addGoal(Goal newGoal) {
         goals.add(newGoal);
@@ -26,9 +21,19 @@ public class GoalList {
         return goalSummary;
     }
 
-    public String getGoalsToPrint() {
+    public String getGoalsToPrint(PeriodType optionalPeriodType) {
         if (goals.isEmpty()) {
             return Messages.MESSAGE_NO_GOAL;
+        } else if (optionalPeriodType != null) {
+            StringBuilder goalStringBuilder = new StringBuilder();
+            int i = 1;
+            for (Goal goal : goals) {
+                if (goal.getPeriodType() == optionalPeriodType) {
+                    goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
+                    i++;
+                }
+            }
+            return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         } else {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
@@ -36,7 +41,7 @@ public class GoalList {
                 goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
                 i++;
             }
-            return goalStringBuilder.toString();
+            return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         }
     }
 }

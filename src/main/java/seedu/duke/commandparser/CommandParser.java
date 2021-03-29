@@ -1,6 +1,16 @@
 package seedu.duke.commandparser;
 
-import seedu.duke.command.*;
+import seedu.duke.command.Command;
+import seedu.duke.command.AddCommand;
+import seedu.duke.command.ViewCommand;
+import seedu.duke.command.DeleteCommand;
+import seedu.duke.command.SetCommand;
+import seedu.duke.command.CheckCommand;
+import seedu.duke.command.CancelCommand;
+import seedu.duke.command.CommandRecordType;
+import seedu.duke.command.HelpCommand;
+import seedu.duke.command.InvalidCommand;
+import seedu.duke.command.ExitCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.PeriodType;
@@ -13,13 +23,12 @@ import static seedu.duke.command.CommandRecordType.DIET;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.command.CommandRecordType.INVALID;
-import static seedu.duke.command.CommandType.DELETE;
 import static seedu.duke.command.CommandType.ADD;
 import static seedu.duke.command.CommandType.VIEW;
+import static seedu.duke.command.CommandType.DELETE;
 import static seedu.duke.command.CommandType.SET;
 import static seedu.duke.command.CommandType.CHECK;
 import static seedu.duke.command.CommandType.CANCEL;
-import static seedu.duke.common.Messages.MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION;
 
 public class CommandParser {
     private final HashMap<String, String> params;
@@ -42,10 +51,10 @@ public class CommandParser {
             return prepareDelete(inputParts);
         case "set":
             return prepareSet(inputParts);
-//        case "check":
-//            return prepareCheck(inputParts);
-//        case "cancel":
-//            return prepareCancel(inputParts);
+        case "check":
+            return prepareCheck(inputParts);
+        case "cancel":
+            return prepareCancel(inputParts);
         case "exit":
             return new ExitCommand();
         default:
@@ -57,12 +66,17 @@ public class CommandParser {
         params.clear();
     }
 
+    private boolean isCommandSyntaxInvalid(String[] inputParts) {
+        if (inputParts.length < 2) {
+            return true;
+        }
+        return inputParts[1].length() < 3;
+    }
+
+
     private Command prepareAdd(String[] inputParts) {
         try {
-            if (inputParts.length < 2) {
-                return new InvalidCommand(ADD);
-            }
-            if (inputParts[1].length() < 3) {
+            if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(ADD);
             }
             CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
@@ -100,10 +114,7 @@ public class CommandParser {
 
     private Command prepareSet(String[] inputParts) {
         try {
-            if (inputParts.length < 2) {
-                return new InvalidCommand(SET);
-            }
-            if (inputParts[1].length() < 3) {
+            if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(SET);
             }
             CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
@@ -121,6 +132,9 @@ public class CommandParser {
             double target = Double.parseDouble(targetStr);
 
             PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
+            if (periodType == PeriodType.INVALID) {
+                return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+            }
             params.put("periodType", periodType.toString());
             params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
@@ -129,12 +143,63 @@ public class CommandParser {
         }
     }
 
+    private Command prepareCheck(String[] inputParts) {
+        try {
+            if (isCommandSyntaxInvalid(inputParts)) {
+                return new InvalidCommand(CHECK);
+            }
+            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            if (recordType == INVALID) {
+                return new InvalidCommand(CHECK);
+            }
+            String[] rawParams = inputParts[1].split("\\s+");
+            if (rawParams.length < 1) {
+                return new InvalidCommand(CHECK);
+            }
+
+            if (rawParams.length == 2) {
+                String rawPeriodType = rawParams[1].trim().substring(2);
+                PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
+                if (periodType == PeriodType.INVALID) {
+                    return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+                }
+                params.put("periodType", periodType.toString());
+            }
+
+            params.put("periodType", null);
+            return new CheckCommand(recordType, params);
+        } catch (Exception e) {
+            return new InvalidCommand("Something went wrong when preparing to check goals.");
+        }
+    }
+
+    private Command prepareCancel(String[] inputParts) {
+        try {
+            if (isCommandSyntaxInvalid(inputParts)) {
+                return new InvalidCommand(CANCEL);
+            }
+            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            if (recordType == INVALID) {
+                return new InvalidCommand(CANCEL);
+            }
+            String[] rawParams = inputParts[1].split("\\s+");
+            if (rawParams.length < 3) {
+                return new InvalidCommand(CANCEL);
+            }
+
+            String rawPeriodType = rawParams[1].trim().substring(2);
+
+            PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
+            params.put("periodType", periodType.toString());
+            return new SetCommand(recordType, params);
+        } catch (NumberFormatException e) {
+            return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+        }
+    }
+
     private Command prepareView(String[] inputParts) {
         try {
-            if (inputParts.length < 2) {
-                return new InvalidCommand(VIEW);
-            }
-            if (inputParts[1].length() < 3) {
+            if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(VIEW);
             }
             CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
@@ -165,10 +230,7 @@ public class CommandParser {
 
     private Command prepareDelete(String[] inputParts) {
         try {
-            if (inputParts.length < 2) {
-                return new InvalidCommand(DELETE);
-            }
-            if (inputParts[1].length() < 3) {
+            if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(DELETE);
             }
             CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
@@ -188,7 +250,7 @@ public class CommandParser {
             params.put("index", index);
             return new DeleteCommand(recordType, params);
         } catch (NumberFormatException e) {
-            return new InvalidCommand(MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION);
+            return new InvalidCommand(Messages.MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION);
         }
     }
 
@@ -199,7 +261,7 @@ public class CommandParser {
         }
 
         String activityRawInput = activityDuration[0].trim();
-        String activity = parseExerciseActivityString(activityRawInput, false);
+        String activity = parseExerciseActivityString(activityRawInput);
         if (activity.equals("")) {
             return new InvalidCommand(ADD);
         }
@@ -243,7 +305,7 @@ public class CommandParser {
         }
         String foodRawInput = foodWeight[0].trim();
         String weightRawInput = foodWeight[1].trim();
-        String food = parseDietString(foodRawInput, false);
+        String food = parseDietString(foodRawInput);
         if (food.equals("")) {
             return new InvalidCommand(ADD);
         }
@@ -335,7 +397,7 @@ public class CommandParser {
             return new InvalidCommand(VIEW);
         }
         if (hasActivity) {
-            activity = parseExerciseActivityString(optionalParams, false);
+            activity = parseExerciseActivityString(optionalParams);
             if (activity.equals("")) {
                 return new InvalidCommand(VIEW);
             }
@@ -370,7 +432,7 @@ public class CommandParser {
             return new InvalidCommand(VIEW);
         }
         if (hasFood) {
-            food = parseDietString(optionalParams, false);
+            food = parseDietString(optionalParams);
             if (food.equals("")) {
                 return new InvalidCommand(VIEW);
             }
@@ -489,21 +551,13 @@ public class CommandParser {
         }
     }
 
-    private String parseExerciseActivityString(String activityRawInput, boolean isPrefixChecked) {
+    private String parseExerciseActivityString(String activityRawInput) {
         boolean isActivityValid;
-        if (isPrefixChecked) {
-            isActivityValid = activityRawInput.length() > 0;
-            if (!isActivityValid) {
-                return "";
-            }
-            return activityRawInput;
-        } else {
-            isActivityValid = activityRawInput.length() >= 3 && activityRawInput.startsWith("a/");
-            if (!isActivityValid) {
-                return "";
-            }
-            return activityRawInput.substring(2);
+        isActivityValid = activityRawInput.length() >= 3 && activityRawInput.startsWith("a/");
+        if (!isActivityValid) {
+            return "";
         }
+        return activityRawInput.substring(2);
     }
 
     private String parseWeightString(String bodyWeightRawInput, boolean prefixChecked) {
@@ -540,20 +594,12 @@ public class CommandParser {
         }
     }
 
-    private String parseDietString(String dietRawInput, boolean prefixChecked) {
+    private String parseDietString(String dietRawInput) {
         boolean isDietValid;
-        if (prefixChecked) {
-            isDietValid = dietRawInput.length() > 0;
-            if (!isDietValid) {
-                return "";
-            }
-            return dietRawInput;
-        } else {
-            isDietValid = dietRawInput.length() >= 3 && dietRawInput.startsWith("f/");
-            if (!isDietValid) {
-                return "";
-            }
-            return dietRawInput.substring(2);
+        isDietValid = dietRawInput.length() >= 3 && dietRawInput.startsWith("f/");
+        if (!isDietValid) {
+            return "";
         }
+        return dietRawInput.substring(2);
     }
 }

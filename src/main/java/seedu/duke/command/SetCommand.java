@@ -2,7 +2,12 @@ package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
-import seedu.duke.goal.*;
+import seedu.duke.goal.Goal;
+import seedu.duke.goal.ExerciseGoal;
+import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.SleepGoal;
+import seedu.duke.goal.BodyWeightGoal;
+import seedu.duke.goal.DietGoal;
 
 import java.util.HashMap;
 

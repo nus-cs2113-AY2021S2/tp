@@ -15,7 +15,7 @@ public enum PeriodType {
     }
 
     public static PeriodType parsePeriodType(String rawPeriodType) {
-        switch (rawPeriodType){
+        switch (rawPeriodType) {
         case "D":
             return DAILY;
         case "W":
