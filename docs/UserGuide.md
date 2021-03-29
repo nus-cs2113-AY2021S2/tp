@@ -106,7 +106,7 @@ Example of usage:
 | list                | list                                                                                                       |
 | help                | help                                                                                                       |
 | return              | return                                                                                                     |
-| Doctor Appointments |                                                                                                            |
+| Doctor Appointments.                                                                                                             |
 | add                 | add/[Doctor ID]/ [Appointment ID]/ [Patient’s Name]/ [Gender]/[DDMMYYYY] add/D12345/Mingshun/ Pediatrician |
 | delete              | delete/[Appointment ID] delete/A369                                                                        |
 | list                | list                                                                                                       |
