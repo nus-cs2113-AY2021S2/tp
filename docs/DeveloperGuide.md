@@ -6,6 +6,31 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
+## Contents
+
+* [Introduction](#introduction)
+* [Design](#design)
+  * [Architecture](#architecture)
+  * [Utilities Component](#utilities-component)
+  * [Command Component](#command-component)
+  * [Food Component](#food-component)
+  * [Exception Component](#exception-component)
+* [Implementation](#implementation)
+  * [Main Logic](#main-logic)
+  * [Add Command](#add-command)
+  * [List Command](#list-command)
+  * [Remove Command](#remove-command)
+  * [Search Command](#search-command)
+  * [Storage](#storage-command)
+* [Product Scope](#product-scope)
+  * [Target User Profile](#target-user-profile)
+  * [Value Proposition](#value-proposition)
+* [User Stories](#user-stories)
+* [Non-Functional Requirements](#non-functional-requirements)
+* [Glossary](#glossary)
+* [Instructions for Manual Testing](#instructions-for-manual-testing)
+* [Attribution](#attribution)
+
 ## Design
 
 ### Architecture
@@ -40,6 +65,21 @@ The rest of the App consists of four components.
   facilitates the return of exceptions to the `UI` class in `Utilities`, which will display
   the error message to the user.
 
+### Utilities Component
+
+The Utilities component contains the main classes that run the main functions of FridgeFriend.
+
+![Utilities Class Diagram](diagrams/diagram_images/UtilitiesClassDiagram.png)
+
+The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
+
+The Utilities Component consists for 4 classes.
+
+* **`LoggingHandler`**: Logs information during execution to the console.
+* **`Parser`**: Breaks down user input into relevant objects.
+* **`Storage`**: Reads data from, and writes data to, the local disk.
+* **`Ui`**: Handles the input and output of the application.
+
 ### Command Component
 
 The Command component contains the sub classes of the features that will be executed.
@@ -65,21 +105,6 @@ The Command Component consist of 10 sub class which each command represents a fe
 * **RunningLowCommand**: Provide the food category that are running low compare to the limit set in the Food Category.
 * **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
 * **ByeCommand**: Indicate to the main method to exit the program.
-
-### Utilities Component
-
-The Utilities component contains the main classes that run the main functions of FridgeFriend.
-
-![Utilities Class Diagram](diagrams/diagram_images/UtilitiesClassDiagram.png)
-
-The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
-
-The Utilities Component consists for 4 classes.
-
-* **`LoggingHandler`**: Logs information during execution to the console.
-* **`Parser`**: Breaks down user input into relevant objects.
-* **`Storage`**: Reads data from, and writes data to, the local disk.
-* **`Ui`**: Handles the input and output of the application.
 
 ### Exception Component
 
@@ -145,13 +170,13 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
-## Product scope
+## Product Scope
 
-### Target user profile
+### Target User Profile
 
 {Describe the target user profile}
 
-### Value proposition
+### Value Proposition
 
 {Describe the value proposition: what problem does it solve?}
 
@@ -187,7 +212,7 @@ _Exceptions related to file storage:_
 
 * *glossary item* - Definition
 
-## Instructions for manual testing
+## Instructions for Manual Testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
