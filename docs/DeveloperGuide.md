@@ -72,6 +72,8 @@ Enter help <command> for more details of each command
 The Architecture Diagram shown above gives a high-level explanation of PatientManager.
 Given below is a brief overview of each component.
 
+![Architecture Diagram](./images/architecture_diagram.png)
+
 The user starts the program from the main class `PatientManager`.
 
 This class is responsible for:
