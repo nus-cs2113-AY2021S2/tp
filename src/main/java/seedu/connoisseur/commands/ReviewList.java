@@ -1,11 +1,10 @@
-package seedu.connoisseur.commandlist;
+package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 import seedu.connoisseur.storage.ConnoisseurData;
-import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
@@ -15,18 +14,18 @@ import static seedu.connoisseur.messages.Messages.*;
 /**
  * Class with methods for different commands in review mode.
  */
-public class ReviewCommandList {
-    public ArrayList<Review> reviewList = new ArrayList<>();
+public class ReviewList {
+    public ArrayList<Review> reviews = new ArrayList<>();
     private final Sorter sorter;
     private final Ui ui;
 
-    public ReviewCommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
+    public ReviewList(ConnoisseurData connoisseurData, Ui ui) {
         this.ui = ui;
-        this.reviewList = connoisseurData.getReviewList();
-        sorter = new Sorter(SortMethod.LATEST);
+        this.reviews = connoisseurData.getReviews();
+        sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
     }
 
-    public ReviewCommandList(Ui ui, Storage storage) {
+    public ReviewList(Ui ui) {
         this.ui = ui;
         sorter = new Sorter(SortMethod.LATEST);
     }
@@ -34,10 +33,10 @@ public class ReviewCommandList {
     /**
      * Prints the sorted reviews.
      */
-    public void printReviews(ArrayList<Review> reviewList) {
+    public void printReviews(ArrayList<Review> reviews) {
         ui.printReviewListHeading();
-        for (int i = 0; i < reviewList.size(); i++) {
-            Review currentReview = reviewList.get(i);
+        for (int i = 0; i < reviews.size(); i++) {
+            Review currentReview = reviews.get(i);
             ui.print("| " + (i + 1) + ". ");
             if (i < 9) {
                 ui.print(" ");
@@ -48,7 +47,9 @@ public class ReviewCommandList {
             ui.printWhiteSpace(currentReview.getCategory().length());
             ui.print("| " + currentReview.starRating());
             ui.printWhiteSpace(currentReview.starRating().length());
-            ui.println("| " + currentReview.getDateTime() + "   |");
+            ui.print("| " + currentReview.getDateTime());
+            ui.printWhiteSpaceDate(currentReview.getDateTime().length());
+            ui.println("|");
         }
         ui.printTableEndBorderForReview();
     }
@@ -58,15 +59,15 @@ public class ReviewCommandList {
      *
      * @param title title of the review to be viewed
      */
-    public int viewReviewCommand(String title) {
+    public int viewReview(String title) {
         if (title == null || title.isBlank()) {
             ui.println(MISSING_VIEW_TITLE);
             return -1;
         }
         assert title != null : "title should not be empty";
         int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+        for (int i = 0; i < reviews.size(); i++) {
+            if (reviews.get(i).getTitle().compareTo(title) == 0) {
                 reviewIndex = i;
                 break;
             }
@@ -75,7 +76,7 @@ public class ReviewCommandList {
             ui.println(INVALID_VIEW_TITLE);
         } else {
             ui.println("Found a matching title: ");
-            Review currentReview = reviewList.get(reviewIndex);
+            Review currentReview = reviews.get(reviewIndex);
             ui.printView(currentReview);
         }
         return reviewIndex;
@@ -85,21 +86,21 @@ public class ReviewCommandList {
      * List reviews according to different types of input.
      *
      * @param sortMethod is listing method preferred by user. If there is no
-     *              preferred listing method, default listing will be used.
+     *                   preferred listing method, default listing will be used.
      */
-    public void listReviews(String sortMethod, ArrayList<Review> reviewList) {
-        if (reviewList.size() == 0) {
+    public void listReviews(String sortMethod) {
+        if (reviews.size() == 0) {
             ui.printEmptyReviewListMessage();
         } else if (!validSortMethod(sortMethod)) {
             ui.printInvalidSortMethodMessage();
         } else {
             if (sortMethod == null) {
-                sorter.sortReview(reviewList);
-                printReviews(reviewList);
+                sorter.sortReview(reviews);
+                printReviews(reviews);
             } else {
                 try {
-                    sorter.sortReview(reviewList, sortMethod);
-                    printReviews(reviewList);
+                    sorter.sortReview(reviews, sortMethod);
+                    printReviews(reviews);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidSortMethodMessage();
                 }
@@ -133,10 +134,7 @@ public class ReviewCommandList {
             String sortMethod = sorter.getSortMethod();
             ui.println(CURRENT_SORT_METHOD + sortMethod.toUpperCase());
             ui.println(SORT_METHOD_PROMPT);
-            return;
-        }
-        if (sortType.equals("title") || sortType.equals("earliest")
-                || sortType.equals("latest") || sortType.equals("rating") || sortType.equals("category")) {
+        } else if (validSortMethod(sortType)) {
             sorter.changeSortMethod(sortType);
             ui.println(SORT_METHOD_SUCCESS + sortType.toUpperCase());
         } else {
@@ -144,11 +142,11 @@ public class ReviewCommandList {
         }
     }
 
-    public void editReview(String title, ArrayList<Review> reviewList) {
+    public void editReview(String title) {
         if (title == null || title.isBlank()) {
             ui.println(MISSING_EDIT_TITLE);
         } else {
-            int index = viewReviewCommand(title);
+            int index = viewReview(title);
             if (index == -1) {
                 return;
             }
@@ -173,7 +171,7 @@ public class ReviewCommandList {
             String answer = ui.readCommand();
             switch (answer) {
             case "y":
-                Review currentReview = reviewList.get(index);
+                Review currentReview = reviews.get(index);
                 currentReview.setDateAndTimeOfEntry();
                 break;
             case "n":
@@ -229,22 +227,22 @@ public class ReviewCommandList {
     }
 
     public void editReviewTitle(String newTitle, int index) {
-        Review currentReview = reviewList.get(index);
+        Review currentReview = reviews.get(index);
         currentReview.setTitle(newTitle);
     }
 
     public void editReviewRating(String newRating, int index) {
-        Review currentReview = reviewList.get(index);
+        Review currentReview = reviews.get(index);
         currentReview.setRating(Integer.parseInt(newRating));
     }
 
     public void editReviewDescription(String newDescription, int index) {
-        Review currentReview = reviewList.get(index);
+        Review currentReview = reviews.get(index);
         currentReview.setDescription(newDescription);
     }
 
     public void editReviewCategory(String newCategory, int index) {
-        Review currentReview = reviewList.get(index);
+        Review currentReview = reviews.get(index);
         currentReview.setCategory(newCategory);
     }
 
@@ -257,8 +255,8 @@ public class ReviewCommandList {
             return;
         }
         int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if (reviewList.get(i).getTitle().compareTo(title) == 0) {
+        for (int i = 0; i < reviews.size(); i++) {
+            if (reviews.get(i).getTitle().compareTo(title) == 0) {
                 reviewIndex = i;
                 break;
             }
@@ -266,7 +264,7 @@ public class ReviewCommandList {
         if (reviewIndex == -1) {
             ui.println(INVALID_DELETE_REVIEW_TITLE);
         } else {
-            reviewList.remove(reviewIndex);
+            reviews.remove(reviewIndex);
             ui.println(title + DELETE_SUCCESS);
         }
     }
@@ -342,7 +340,7 @@ public class ReviewCommandList {
             }
             assert rating >= 0 && rating <= 5 : "rating should be between 0 and 5";
             Review r = new Review(title, category, rating, description);
-            reviewList.add(r);
+            reviews.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
@@ -373,7 +371,7 @@ public class ReviewCommandList {
             ui.println(DESCRIPTION_PROMPT);
             String description = ui.readCommand();
             Review r = new Review(title, category, rating, description);
-            reviewList.add(r);
+            reviews.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
@@ -388,16 +386,16 @@ public class ReviewCommandList {
      */
     public boolean checkAndPrintDuplicateReview(String title) {
         int reviewIndex = -1;
-        for (int i = 0; i < reviewList.size(); i++) {
-            if ((reviewList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+        for (int i = 0; i < reviews.size(); i++) {
+            if ((reviews.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
                 reviewIndex = i;
             }
         }
         if (reviewIndex != -1) {
             System.out.println("There is a review in your list with the same title: ");
-            Review currentReview = reviewList.get(reviewIndex);
-            ui.print((reviewList.indexOf(currentReview) + 1) + ". ");
-            if (reviewList.indexOf(currentReview) < 9) {
+            Review currentReview = reviews.get(reviewIndex);
+            ui.print((reviews.indexOf(currentReview) + 1) + ". ");
+            if (reviews.indexOf(currentReview) < 9) {
                 ui.print(" ");
             }
             ui.print(currentReview.getTitle());

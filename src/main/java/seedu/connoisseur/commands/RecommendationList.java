@@ -1,10 +1,9 @@
-package seedu.connoisseur.commandlist;
+package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
-import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
@@ -14,38 +13,38 @@ import static seedu.connoisseur.messages.Messages.*;
 /**
  * Class with methods for different commands in recommendation mode.
  */
-public class RecommendationsCommandList {
+public class RecommendationList {
     private final Ui ui;
-    public ArrayList<Recommendation> recommendationList = new ArrayList<>();
-    public ArrayList<Review> reviewList = new ArrayList<>();
-    private ReviewCommandList reviewCommandList;
+    public ArrayList<Recommendation> recommendations = new ArrayList<>();
+    public ArrayList<Review> reviews = new ArrayList<>();
+    private ReviewList reviewList;
 
-    public RecommendationsCommandList(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
+    public RecommendationList(ConnoisseurData connoisseurData, Ui ui) {
         this.ui = ui;
-        this.recommendationList = connoisseurData.getRecoList();
-        this.reviewList = connoisseurData.getReviewList();
-        reviewCommandList = new ReviewCommandList(connoisseurData, ui, storage);
+        this.recommendations = connoisseurData.getRecommendations();
+        this.reviews = connoisseurData.getReviews();
+        reviewList = new ReviewList(connoisseurData, ui);
     }
 
-    public RecommendationsCommandList(Ui ui, Storage storage) {
+    public RecommendationList(Ui ui) {
         this.ui = ui;
     }
 
     /**
      * List reviews according to different types of input.
      */
-    public void listRecommendations(ArrayList<Recommendation> recommendationList) {
-        if (recommendationList.size() == 0) {
+    public void listRecommendations() {
+        if (recommendations.size() == 0) {
             ui.printEmptyRecommendationListMessage();
         } else {
-            printRecommendation(recommendationList);
+            printRecommendations(recommendations);
         }
     }
 
     /**
      * Prints the sorted recommendation.
      */
-    public void printRecommendation(ArrayList<Recommendation> recommendationList) {
+    public void printRecommendations(ArrayList<Recommendation> recommendationList) {
         ui.printRecommendationListHeading();
         for (int i = 0; i < recommendationList.size(); i++) {
             Recommendation currentRecommendation = recommendationList.get(i);
@@ -75,16 +74,16 @@ public class RecommendationsCommandList {
      */
     public boolean checkAndPrintDuplicateRecommendation(String title) {
         int recIndex = -1;
-        for (int i = 0; i < recommendationList.size(); i++) {
-            if ((recommendationList.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+        for (int i = 0; i < recommendations.size(); i++) {
+            if ((recommendations.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
                 recIndex = i;
             }
         }
         if (recIndex != -1) {
             System.out.println("There is a recommendation in your list with the same title: ");
-            Recommendation currentRecommendation = recommendationList.get(recIndex);
-            ui.print((recommendationList.indexOf(currentRecommendation) + 1) + ". ");
-            if (recommendationList.indexOf(currentRecommendation) < 9) {
+            Recommendation currentRecommendation = recommendations.get(recIndex);
+            ui.print((recommendations.indexOf(currentRecommendation) + 1) + ". ");
+            if (recommendations.indexOf(currentRecommendation) < 9) {
                 ui.print(" ");
             }
             ui.print(currentRecommendation.getTitle());
@@ -153,7 +152,7 @@ public class RecommendationsCommandList {
             ui.println(LOCATION_PROMPT);
             String location = ui.readCommand();
             Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
-            recommendationList.add(r);
+            recommendations.add(r);
             ui.println(title + ADD_SUCCESS);
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
@@ -169,8 +168,8 @@ public class RecommendationsCommandList {
             return;
         }
         int reviewIndex = -1;
-        for (int i = 0; i < recommendationList.size(); i++) {
-            if (recommendationList.get(i).getTitle().compareTo(title) == 0) {
+        for (int i = 0; i < recommendations.size(); i++) {
+            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
                 reviewIndex = i;
                 break;
             }
@@ -178,7 +177,7 @@ public class RecommendationsCommandList {
         if (reviewIndex == -1) {
             ui.println(INVALID_DELETE_RECO_TITLE);
         } else {
-            recommendationList.remove(reviewIndex);
+            recommendations.remove(reviewIndex);
             ui.println(title + DELETE_SUCCESS);
         }
     }
@@ -192,8 +191,8 @@ public class RecommendationsCommandList {
             return;
         }
         int recommendationIndex = -1;
-        for (int i = 0; i < recommendationList.size(); i++) {
-            if (recommendationList.get(i).getTitle().compareTo(title) == 0) {
+        for (int i = 0; i < recommendations.size(); i++) {
+            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
                 recommendationIndex = i;
                 break;
             }
@@ -201,17 +200,17 @@ public class RecommendationsCommandList {
         if (recommendationIndex == -1) {
             ui.println(INVALID_DELETE_RECO_TITLE);
         } else {
-            category = recommendationList.get(recommendationIndex).getCategory();
-            description = "Price range: " + recommendationList.get(recommendationIndex).priceRange()
-                    + "| Location: " + recommendationList.get(recommendationIndex).getLocation()
-                    + "| RecBy: " + recommendationList.get(recommendationIndex).getRecommendedBy();
+            category = recommendations.get(recommendationIndex).getCategory();
+            description = "Price range: " + recommendations.get(recommendationIndex).priceRange()
+                    + "| Location: " + recommendations.get(recommendationIndex).getLocation()
+                    + "| RecBy: " + recommendations.get(recommendationIndex).getRecommendedBy();
             Review r = new Review(title, category, 0, description);
-            reviewList.add(r);
-            System.out.println("Done! How would you rate your experience?");
+            reviews.add(r);
+            System.out.println("Done! How would you rate your experience out of 5 stars?");
             rating = ui.readCommand();
             try {
                 if (Integer.parseInt(rating) <= 5 && Integer.parseInt(rating) >= 0) {
-                    reviewCommandList.editReviewRating(rating, reviewList.size() - 1);
+                    reviewList.editReviewRating(rating, reviews.size() - 1);
                 } else {
                     System.out.println("Invalid rating, failed to edit rating ");
                 }
@@ -224,14 +223,14 @@ public class RecommendationsCommandList {
             case "y":
                 System.out.println("Enter your new description of the review: ");
                 String newDescription = ui.readCommand();
-                    reviewCommandList.editReviewDescription(newDescription, reviewList.size() - 1);
+                reviewList.editReviewDescription(newDescription, reviews.size() - 1);
                 break;
             case "n":
                 break;
             default:
                 ui.println(INVALID_COMMAND);
             }
-            recommendationList.remove(recommendationIndex);
+            recommendations.remove(recommendationIndex);
             ui.println(title + CONVERT_SUCCESS);
         }
 

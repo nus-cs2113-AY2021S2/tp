@@ -1,6 +1,6 @@
 package seedu.connoisseur;
 
-import seedu.connoisseur.commandlist.CommandList;
+import seedu.connoisseur.commands.Commands;
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
@@ -23,14 +23,14 @@ public class Connoisseur {
     public Connoisseur() throws DuplicateException {
         Ui ui = new Ui();
         Storage storage = new Storage(ui);
-        CommandList commandList;
+        Commands commands;
         if (storage.retrieveDataFile()) {
-            commandList = new CommandList(storage.loadConnoisseurData(), ui, storage);
+            commands = new Commands(storage.loadConnoisseurData(), ui, storage);
         } else {
-            commandList = new CommandList(ui, storage);
+            commands = new Commands(ui, storage);
         }
         ui.printGreeting();
-        Parser parser = new Parser(commandList);
+        Parser parser = new Parser(commands);
         boolean isExitCommand = false;
 
         while (!isExitCommand) {

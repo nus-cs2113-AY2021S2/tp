@@ -1,9 +1,12 @@
-package seedu.connoisseur.commandlist;
+package seedu.connoisseur.commands;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.Before;
 import org.junit.After;
+
+import seedu.connoisseur.commands.Commands;
+import seedu.connoisseur.commands.ReviewList;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -15,37 +18,37 @@ import java.io.PrintStream;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-public class CommandListTest {
+public class CommandsTest {
 
     private final PrintStream originalOut = System.out;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     Ui ui = new Ui();
     Storage storage = new Storage(ui);
-    CommandList commandList = new CommandList(ui, storage);
-    ReviewCommandList reviewCommandList = new ReviewCommandList(ui, storage);
+    Commands commands = new Commands(ui, storage);
+    ReviewList reviewList = new ReviewList(ui);
 
     @BeforeEach
     public void setUp() {
         Review reviewa = new Review("superman", "category", 5, "description");
         Review reviewb = new Review("avengers", "category", 5, "description");
-        reviewCommandList.reviewList.add(reviewa);
-        reviewCommandList.reviewList.add(reviewb);
+        reviewList.reviews.add(reviewa);
+        reviewList.reviews.add(reviewb);
     }
 
     @Test
     public void deleteReview_reviewExists_removesNormally() {
-        final int numberOfReviewsBeforeRemoval = reviewCommandList.reviewList.size();
+        final int numberOfReviewsBeforeRemoval = reviewList.reviews.size();
         String title = "superman";
-        reviewCommandList.deleteReview(title);
+        reviewList.deleteReview(title);
         Boolean contains = false;
-        for (int i = 0; i < reviewCommandList.reviewList.size(); i++) {
-            if (reviewCommandList.reviewList.get(i).getTitle().equals(title)) {
+        for (int i = 0; i < reviewList.reviews.size(); i++) {
+            if (reviewList.reviews.get(i).getTitle().equals(title)) {
                 contains = true;
             }
         }
         assertFalse(contains);
 
-        int numberOfReviewsAfterRemoval = reviewCommandList.reviewList.size();
+        int numberOfReviewsAfterRemoval = reviewList.reviews.size();
         assertEquals(numberOfReviewsBeforeRemoval - 1, numberOfReviewsAfterRemoval);
     }
 
@@ -72,8 +75,7 @@ public class CommandListTest {
 
     @Test
     void checkAndPrintDuplicate() {
-        Ui ui = new Ui();
-        reviewCommandList.reviewList = new ArrayList<Review>();
-        assertFalse(reviewCommandList.checkAndPrintDuplicateReview("Avengers"));
+        reviewList.reviews = new ArrayList<Review>();
+        assertFalse(reviewList.checkAndPrintDuplicateReview("Avengers"));
     }
 }
