@@ -38,10 +38,8 @@ public class CreditScoreCommand extends Command {
     }
 
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) {
-        int creditScore = borrowersCreditScoreForReturnedLoans.getCurrentBorrowerCreditScoreForReturnedLoans(
-                borrowerName.toLowerCase());
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+        int creditScore = creditScoreMap.getCreditScore(borrowerName.toLowerCase());
 
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);

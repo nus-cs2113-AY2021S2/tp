@@ -40,8 +40,8 @@ public class ReturnCommandTest {
     private void runReturnCmdTest(String expectedOutput, String returnCmdInput, String testName) {
         Ui ui = new Ui();
         Storage storage = new Storage();
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         RecordList loans = getLoanList();
         CommandHandler commandHandler = new CommandHandler();
         ByteArrayOutputStream returnCmdBos = new ByteArrayOutputStream();

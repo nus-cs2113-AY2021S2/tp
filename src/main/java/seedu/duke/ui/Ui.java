@@ -9,6 +9,7 @@ import seedu.duke.record.Loan;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -110,7 +111,11 @@ public class Ui {
      */
     public String getUserInput() {
         System.out.print(FINUX_PREFIX + " ");
-        return input.nextLine().strip();
+        try {
+            return input.nextLine().strip();
+        } catch (NoSuchElementException e) {
+            return "exit";
+        }
     }
 
     /**

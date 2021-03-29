@@ -9,16 +9,11 @@ import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.duke.command.Utils.checkInvalidOptions;
-import static seedu.duke.command.Utils.checkOptionConflict;
 import static seedu.duke.command.Utils.getOptionValue;
 import static seedu.duke.command.Utils.hasOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateOptions;
-import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_INDEX;
-import static seedu.duke.common.Constant.OPTION_LOAN;
-import static seedu.duke.common.Constant.OPTION_SAVING;
 import static seedu.duke.common.Validators.validateIndex;
 
 /**
@@ -90,11 +85,10 @@ public class RemoveCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, BorrowersCreditScoreForReturnedLoans
-            borrowersCreditScoreForReturnedLoans) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
         ui.printMessage("This record will be removed: " + currentRecord);
         recordList.deleteRecordAt(recordNumberInt);
-        storage.saveData(recordList, borrowersCreditScoreForReturnedLoans);
+        storage.saveData(recordList, creditScoreMap);
     }
 }
