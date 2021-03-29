@@ -1,26 +1,52 @@
 # Connoisseur User Guide
 
-## Introduction
-
-Connoisseur is a desktop app for managing and storing personal reviews that students would like to keep. It is a
-revolutionary app that not only provides an organised user friendly database for its users, but provides customisable
-categories to enhance the user experience. Through its intuitive command line interface, students would be able to store
-and share their recommendations easily.
-
 ## Table of Contents
 
-1. [Quick start](#Quick-Start)
-2. [Review Mode](#Review-Mode)
-    * [Viewing Help](#Viewing-help)
-    * [Adding a Review](#Adding-a-review)
-    * [Listing Reviews](#Listing-reviews)
-    * [Sorting Reviews](#Sorting-reviews)
-    * [Viewing a Review](#Viewing-a-review)
-    * [Deleting a Review](#Deleting-a-review)
-3. [Recommendation Mode](#Recommendation-Mode)
-    * []()
-4. [FAQ](#FAQ)
-5. [Command Summary](#Command-Summary)
+* [Introduction](#Introduction)
+* [About this Guide](#About-this-Guide)   
+   * [What's in Connoisseur](#What-is-in-Connoisseur)
+   * [Formatting in the Guide](#Formatting-in-the-Guide)
+* [Quick start](#Quick-Start)
+* [Features](#Features)
+    * [Command Format](#Command-Format)
+    * [Review Mode](#Review-Mode)
+      * [Viewing Help](#Viewing-help)
+      * [Adding a Review](#Adding-a-review)
+      * [Listing Reviews](#Listing-reviews)
+      * [Sorting Reviews](#Sorting-reviews)
+      * [Viewing a Review](#Viewing-a-review)
+      * [Deleting a Review](#Deleting-a-review)
+    * [Recommendation Mode](#Recommendation-Mode)
+   * [View Help](#View-Help)
+   * [Exit & Save Connoisseur](#Exit-&-Save-Connoisseur)
+* [Command Summary](#Command-Summary)
+* [FAQ](#FAQ)
+##1. Introduction
+
+Welcome to the user guide for our application, Connoisseur! 
+With over 4.6 thousand restaurants in Singapore, endless number of entertainment options and never-ending list of
+streaming shows and movies, to watch many of us are left deciding for a long time on what is worthwhile spending our 
+limited leisure time on. Fret-not!
+
+Connoisseur is a desktop application for managing and storing personal reviews on experiences and recommendations to 
+try next, that you would like to keep. It is a revolutionary app that not only provides an organised user-friendly 
+database, but provides customisable categories to enhance your experience. Through its intuitive command line interface, 
+you will be able to store and access your reviews & recommendation easily.
+
+##2. About this Guide
+This guide gives you an overview of the features in Connoisseur and shows you how to get started using Connoisseur. 
+Choose a link in the [Feature](#Table-of-Contents) section to get a step-by-step instruction, and understand how to use Connoisseur.
+
+###2.1 What is in Connoisseur
+In our Review mode, you can add a review about an experience, rate it out of 5 stars, delete or edit a review, 
+view the entire list of your reviews or one particular review. You can also sort the list from the highest to lowest 
+rating, by category, title and date of entry.
+
+For our Recommendation mode, you can have a list of things you would like to try, the location and the price range 
+of the experience! Already tried out the experience? Nice! You can now move it to your review list in the review mode 
+and record your thoughts on how good or bad the experience was!
+
+###2.2 Formatting in the guide
 
 ## Quick Start
 
@@ -32,11 +58,12 @@ and share their recommendations easily.
 6. Type in commands and press Enter to execute it. 
     Refer to the [Command summary](#command-summary) for a list of recognised commands. 
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for connoisseur is saved in `connoisseur.json` in the _data folder_. 
-
-## Review Mode
+## Features
+### Command Format
+### Review Mode
 Connoisseur has 2 modes, the first is the review mode, where you can add your own reviews of experiences. The review mode can be accessed from anywhere using the `review` command. 
 
-### Viewing Help
+#### Viewing Help
 View help on commands recognised by Connoisseur. You can specify a command to get detailed help on it. 
 
 Command: `help [command_name]`
@@ -47,7 +74,7 @@ Command: `help [command_name]`
 
 ![](images/ug/help_new.png)
 
-### Adding a Review
+#### Adding a Review
 Add a new review. Choice of quick review or long review. 
 
 Command: `add [quick | long]`, `new [quick | long]`
@@ -58,7 +85,7 @@ Command: `add [quick | long]`, `new [quick | long]`
 
 ![](images/ug/new_long.png)
 
-### Listing Reviews
+#### Listing Reviews
 List your current reviews. You can specify a one-off sorting method by which to sort the reviews. 
 
 Command: `list [sorting_method]`
@@ -74,7 +101,7 @@ Command: `list [sorting_method]`
 
 ![](images/ug/list_review_rating.png)
 
-### Sorting Reviews
+#### Sorting Reviews
 Change the saved sorting method. 
 
 Command: `sort <sorting_method>`
@@ -83,7 +110,7 @@ Command: `sort <sorting_method>`
 
 ![](images/ug/sort_review.png)
 
-### Viewing a Review
+#### Viewing a Review
 View details of a review. 
 
 Command: `view <title_of_review>`
@@ -92,7 +119,7 @@ Command: `view <title_of_review>`
 
 ![](images/ug/view_review.png)
 
-### Deleting a Review
+#### Deleting a Review
 Delete a review that you no longer need. 
 
 Command: `delete <title_of_review>`
@@ -101,11 +128,6 @@ Command: `delete <title_of_review>`
 
 ![](images/ug/delete_review.png)
 
-## Recommendation Mode
-
-#### Adding a Review
-
-#### Listing reviews
 ### Recommendation Mode
 
 #### Adding a todo: `todo`
