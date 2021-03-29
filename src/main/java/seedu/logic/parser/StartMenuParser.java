@@ -10,7 +10,7 @@ import java.util.Locale;
 import static seedu.duke.Constants.*;
 
 public class StartMenuParser {
-    static final String[] COMMANDS = {"staff", "patient", "appointments", "schedules", "inventory", "help", "bye"};
+    static final String[] COMMANDS = {"staff", "patient", "appointments", "schedules", "inventory", "help", "exit"};
 
     public Command startMenuParse(String userInput) {
         assert userInput != null : "user input should not be null";

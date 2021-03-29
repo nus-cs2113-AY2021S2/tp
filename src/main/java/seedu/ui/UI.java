@@ -148,7 +148,7 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to \n" + LOGO + "What is your name?");
+        System.out.println("Welcome to \n" + LOGO);
         showLine();
     }
 
