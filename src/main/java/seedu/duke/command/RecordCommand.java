@@ -1,14 +1,18 @@
 package seedu.duke.command;
 
+import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
+
     /**
      * This is the constructor of the command. Arguments are passed to parent class.
      *
@@ -28,12 +32,42 @@ public class RecordCommand extends Command {
         if (patient == null) {
             throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
         }
-        if (arguments.get("payload").length() == 0) {
-            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
+        String dateString = arguments.get(Constants.PAYLOAD_KEY);
+        LocalDate date = null;
+        try {
+            date = parseDate(dateString);
+        } catch (DateTimeParseException dateTimeParseException) {
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE);
         }
-        String consultationDetail = arguments.get("payload");
-        Record record = new Record(consultationDetail);
-        patient.addRecord(record);
-        ui.printMessage("Added new record: " + record.toString());
+        addRecord(patient, date);
+        printNewRecord(patient);
+    }
+
+    private LocalDate parseDate(String dateString) throws DateTimeParseException {
+        if (!dateString.isEmpty()) {
+            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
+        }
+        return LocalDate.now();
+    }
+
+    private void addRecord(Patient patient, LocalDate date) {
+        String symptom = null;
+        String diagnosis = null;
+        String prescription = null;
+        if (arguments.containsKey(Constants.SYMPTOM_KEY)) {
+            symptom = arguments.get(Constants.SYMPTOM_KEY);
+        }
+        if (arguments.containsKey(Constants.DIAGNOSIS_KEY)) {
+            diagnosis = arguments.get(Constants.DIAGNOSIS_KEY);
+        }
+        if (arguments.containsKey(Constants.PRESCRIPTION_KEY)) {
+            prescription = arguments.get(Constants.PRESCRIPTION_KEY);
+        }
+        patient.addRecord(date, symptom, diagnosis, prescription);
+    }
+
+    private void printNewRecord(Patient patient) {
+        ui.printMessage("Added new record to patient " + patient.getID() + ":");
+        ui.printMessage(patient.recentlyAdded());
     }
 }
