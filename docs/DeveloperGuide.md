@@ -29,12 +29,12 @@ If you plan to use Intellij IDEA (highly recommended):
    [Intellij IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) \
    IDEA: Configuring the JDK to ensure Intellij is configured 
    to use JDK 11.
-2. Import the project as a Gradle project: Follow the guide 
+1. Import the project as a Gradle project: Follow the guide 
    [Intellij IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) \
    IDEA: Importing a Gradle project to import 
    the project into IDEA.
    > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
-3. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
+1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
    Run the tests to ensure they all pass.
 
 ## Design & implementation
@@ -129,13 +129,13 @@ Through Patient Manager, general practitioners are able to manage patients faste
 ## Appendix C: Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java 11 or above installed. 
-2. Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
+1. Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
    be able to accomplish most of the tasks faster using commands than using the mouse.
-4. The data should be stored locally and should be in a human editable text file.
-5. The application should work without requiring an installer.
-6. The application should be at most 100 MB in size.
-7. The application should not rely on any remote server, or database management system.
+1. The data should be stored locally and should be in a human editable text file.
+1. The application should work without requiring an installer.
+1. The application should be at most 100 MB in size.
+1. The application should not rely on any remote server, or database management system.
 
 <!-- NFRs taken from: https://nus-cs2113-ay2021s2.github.io/website/admin/tp-constraints.html -->
 
@@ -154,18 +154,18 @@ Through Patient Manager, general practitioners are able to manage patients faste
 
 1. Initial launch
    1. Download `tp.jar` and copy into an empty folder.
-   2. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
+   1. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
       <img src="./images/WindowsPowerShell.png" width="600">
-   3. Execute `java -jar tp.jar` to start the Patient Manager.\
+   1. Execute `java -jar tp.jar` to start the Patient Manager.\
       Expected: Shows the welcome message as shown below
       <img src="./images/start_program.png" width="600">
-2. View help
+1. View help
     1. Test case: `help`\
        Expected: Application prints out a help message containing a list of valid commands
        and how to use them.
-    2. Test case: `help add`\
+    1. Test case: `help add`\
        Expected: Application prints out a help message explaining only the `add` command.
-3. Exiting
+1. Exiting
     1. Test case: `exit`\
        Expected: Application prints goodbye message and exits. All data will be saved to
        `./data/TODO_ADD_FILENAME_HERE.txt`
@@ -179,9 +179,9 @@ Through Patient Manager, general practitioners are able to manage patients faste
        Patient S1234567D has been added!
        ----------------------------------------------------------------------
        ```
-2. Loading a patient's records
+1. Loading a patient's records
     1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
-    2. Test case: `load S1234567D`\
+    1. Test case: `load S1234567D`\
        Expected: Application loads S1234567D's records and shows:
        ```
        ----------------------------------------------------------------------
@@ -191,15 +191,15 @@ Through Patient Manager, general practitioners are able to manage patients faste
 ### Adding and Viewing a Patient's Visit Records
 1. Adding visit records
     1. Prerequisite: Patient's records have already been loaded.
-    2. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
+    1. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
        Expected: Details added to patient's visit record. Newly-added details shown in status message.
-2. Viewing visit records
+1. Viewing visit records
     1. Prerequisite: Patient's records have already been loaded.
-    2. Test case: `retrieve`\
+    1. Test case: `retrieve`\
        Expected: Details of all of the patient's past visits shown.
 
 ### Saving Data
 1. Missing data files
     1. Delete the file `./data/TODO_ADD_FILENAME_HERE.txt`.
-    2. Launch the app with `java -jar tp.jar`.
-    3. Expected: Application should start up without any data.
+    1. Launch the app with `java -jar tp.jar`.
+    1. Expected: Application should start up without any data.
