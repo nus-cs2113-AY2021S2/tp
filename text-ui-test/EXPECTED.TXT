@@ -49,9 +49,11 @@ Here are the items in your fridge:
 Great! I have added pork into your fridge.
 Details: Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
-Sorry my friend, the quantity must be a number.
+Sorry my friend, the quantity must be a positive number.
 -----------------------------------------------------------------
-You have chicken stored in LOWER_SHELF of your fridge.
+These are the chicken in your fridge:
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 -----------------------------------------------------------------
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
@@ -61,7 +63,7 @@ Details: Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: F
 Sorry my friend, the date must be in the form 'dd-mm-yy'.
 Text '32-46-9876' could not be parsed: Invalid value for MonthOfYear (valid values 1 - 12): 46
 -----------------------------------------------------------------
-Sorry my friend, the quantity must be a number.
+Sorry my friend, the quantity must be a positive number.
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
