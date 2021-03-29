@@ -72,7 +72,8 @@ public class Ui {
         System.out.println("3. Add store in canteen");
         System.out.println("4. Delete canteen");
         System.out.println("5. Delete store in canteen");
-        System.out.println("6. Exit");
+        System.out.println("6. Delete reviews");
+        System.out.println("7. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -86,7 +87,6 @@ public class Ui {
         System.out.println("Please enter the new store's name");
         System.out.println(LINESPACING);
     }
-
 
     public void showLoginPage() {
         System.out.println(LINESPACING);
@@ -107,7 +107,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showDisplaySelectStores(Canteen canteen) {
+    public static void showDisplaySelectStores(Canteen canteen) {
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
         }
@@ -162,14 +162,14 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
+    public static void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
         System.out.println(LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
         System.out.println("Recommended: " + Math.round(averageRating * 100.0) / 100.0 + "/5.0");
         System.out.println(LINESPACING);
         int count = 1;
         for (Review review: reviews) {
-            System.out.println(count++ + ")" + review.toString());
+            System.out.println(count++ + ") " + review.toString());
             System.out.println("Customer rating: " + review.getRating());
             System.out.println(LINESPACING);
         }
@@ -206,6 +206,16 @@ public class Ui {
     public static void reviewNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
+    }
+
+    public static void showDeleteReview() {
+        System.out.println(LINESPACING);
+        System.out.println("Please enter review number to be deleted");
+    }
+
+    public static void reviewDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Review successfully deleted!");
     }
 
     public static void showAddCanteen() {
