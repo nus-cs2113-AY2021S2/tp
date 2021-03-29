@@ -20,7 +20,6 @@ loop while not exit
     UI --> Finux : rawInput
     deactivate UI
 
-
     Finux -> ParserHandler : getParseInput(rawInput)
     activate ParserHandler
     ParserHandler --> Finux : parsedArguments : ArrayList
@@ -45,6 +44,7 @@ loop while not exit
     ref over Command, RecordList, Storage : Command execute logic
     Command --> Finux
     deactivate Command
+    Command --[#white]> Finux
     destroy Command
 end
 Finux --> Finux
@@ -64,6 +64,8 @@ deactivate UI
 Finux --> Finux
 deactivate Finux
 
-destroy Finux
 destroy UI
+Finux --[#white]> Finux
+destroy Finux
+
 @enduml
