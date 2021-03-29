@@ -1,31 +1,31 @@
 package seedu.duke.ui;
 
-import seedu.duke.History;
-import seedu.duke.exception.InvalidRepeatEntryException;
+import seedu.duke.data.History;
+import seedu.duke.exception.EmptyHistoryException;
+import seedu.duke.exception.InvalidIndexException;
 
-public class HistoryUi extends Ui {
+public class HistoryUi extends UiManager {
 
-    public HistoryUi() {
-    }
-
-    public void showHistory(History history) {
+    public void showHistory(History history) throws InvalidIndexException, EmptyHistoryException {
         assert history != null : "History must be initialized before, cannot be null";
-        showToUser(
-                "Number of records in your history: " + history.getTotalNoOfHistory() + lineSeparator
-                + history.getHistoryAsString()
-        );
+        if (history.isEmpty()) {
+            throw new EmptyHistoryException();
+        } else {
+            showMessage("There are " + history.getHistorySize() + " records in your history: ");
+            for (int i = 0; i < history.getHistorySize(); i++) {
+                String[] routeInfo = history.getSpecificEntry(i);
+                showMessage((i + 1) + ". " + routeInfo[0] + " -> " + routeInfo[1]);
+            }
+            showMessageWithDivider(CommonMessage.DIVIDER);
+        }
     }
 
-    public void showClearHistoryResponse() {
-        showToUser("Your history has been cleared.", divider);
-    }
-
-    public int getRepeatEntry() throws InvalidRepeatEntryException {
+    public int getRepeatEntry() throws InvalidIndexException {
         try {
-            showToUser("SELECT ENTRY TO REPEAT:");
+            showMessage("Select Entry to Repeat:");
             return Integer.parseInt(getUserInput());
         } catch (NumberFormatException e) {
-            throw new InvalidRepeatEntryException();
+            throw new InvalidIndexException();
         }
     }
 }

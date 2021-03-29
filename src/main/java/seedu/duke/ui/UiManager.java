@@ -1,96 +1,62 @@
 package seedu.duke.ui;
 
-import seedu.duke.Block;
-import seedu.duke.BlockAlias;
-import seedu.duke.FavouriteLocation;
-import seedu.duke.History;
-import seedu.duke.Map;
-import seedu.duke.exception.InvalidAliasException;
-import seedu.duke.exception.InvalidBlockException;
-import seedu.duke.exception.InvalidRepeatEntryException;
-import seedu.duke.exception.RepeatEntryOutOfBoundException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Scanner;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class UiManager extends Ui {
-    MessagesUi messagesUi = new MessagesUi();
-    HistoryUi historyUi = new HistoryUi();
-    RouterUi routerUi = new RouterUi();
-    EateryUi eateryUi = new EateryUi();
-    DailyRouteUi dailyRouteUi = new DailyRouteUi();
-    AliasUi aliasUi = new AliasUi();
-    FavouriteLocationsUi favouriteLocationsUi = new FavouriteLocationsUi();
+public class UiManager {
+    private final Scanner in;
+    private final PrintStream out;
 
     public UiManager() {
-        super();
+        this(System.in, System.out);
     }
 
-    // Messages
+    public UiManager(InputStream in, PrintStream out) {
+        this.in = new Scanner(in);
+        this.out = out;
+    }
+
+    public String getUserCommandInput() {
+        out.print(CommonMessage.COMMAND_INPUT_HEADER);
+        String userInput = in.nextLine();
+        out.println(CommonMessage.DIVIDER);
+        return userInput;
+    }
+
+    public String getUserInput() {
+        out.print(CommonMessage.INFO_INPUT_HEADER);
+        return in.nextLine().trim();
+    }
+
+
+    public void showMessage(String... message) {
+        for (String m : message) {
+            out.println(m);
+        }
+    }
+
+    public void showMessageWithDivider(String... message) {
+        showMessage(message);
+        out.println(CommonMessage.DIVIDER);
+    }
+
     public void showLogo() {
-        messagesUi.showLogo();
+        showMessageWithDivider(CommonMessage.LOGO);
     }
 
     public void showGreetMessage() {
-        messagesUi.showGreetMessage();
+        showMessageWithDivider(CommonMessage.GREETING_MESSAGE);
     }
 
-    public void showByeMessage() {
-        messagesUi.showByeMessage();
-    }
-
-    public void showHelpMessage() {
-        messagesUi.showHelpMessage();
-    }
-
-    // History
-    public void showHistory(History history) {
-        historyUi.showHistory(history);
-    }
-
-    public void showClearHistoryResponse() {
-        historyUi.showClearHistoryResponse();
-    }
-
-    public int getRepeatEntry() throws RepeatEntryOutOfBoundException, InvalidRepeatEntryException {
-        return historyUi.getRepeatEntry();
-    }
-
-    // Router
-    public String[] getRoutingInfo() {
-        return routerUi.getRoutingInfo();
-    }
-
-    // Eatery
-    public int getEateryEntry(Block[] eateries) {
-        return eateryUi.getEateryEntry(eateries);
-    }
-
-    // Daily Route
-    public ArrayList<String> getSchedule() throws InvalidBlockException {
-        return dailyRouteUi.getSchedule();
-    }
-
-    // Alias
-    public HashMap<String, String> getAliasInfo(HashMap<String, String> aliasMap)
-            throws InvalidAliasException, InvalidBlockException {
-        return aliasUi.getAliasInfo(aliasMap);
-    }
-
-    public void showCustomAliases(HashMap<String, String> aliasMap) {
-        aliasUi.showCustomAliases(aliasMap);
-    }
-
-    public String getDeleteAliasInfo(BlockAlias blockAlias) throws InvalidAliasException {
-        return aliasUi.getDeleteAliasInfo(blockAlias);
-    }
+    /*
 
     public void showFavouriteLocations(FavouriteLocation favouriteLocation) {
         assert favouriteLocation != null : "favouriteLocation must be initialised";
         favouriteLocationsUi.showFavouriteLocations(favouriteLocation);
     }
 
-    public void addFavoriteLocations(FavouriteLocation favouriteLocation, String location, Map nusMap) {
+    public void addFavoriteLocations(FavouriteLocation favouriteLocation, String location, NusMap nusMap) {
         assert favouriteLocation != null : "favouriteLocation must be initialised";
         assert location != null : "location must be provided";
         assert nusMap != null : "nusMap must be initialised";
@@ -111,4 +77,5 @@ public class UiManager extends Ui {
         assert favouriteLocation != null : "favouriteLocation must be initialised";
         favouriteLocationsUi.deleteFavouriteLocation(favouriteLocation, index);
     }
+     */
 }

@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.Map;
+import seedu.duke.data.NusMap;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -24,7 +24,7 @@ public class NotesStorage extends Storage {
      *
      * @throws IOException if the creation of new non-existent file was not successful.
      */
-    public void loadNotes(Map nusMap) throws IOException {
+    public void loadNotes(NusMap nusMap) throws IOException {
         try {
             Scanner s = new Scanner(new File(this.filepath)); // create a Scanner using the File as the source
             // add note for all locations:
@@ -50,7 +50,7 @@ public class NotesStorage extends Storage {
      * Clears the file in the given filepath and
      * re-assigns all the tasks in the updated 'tasks' list to the given filepath.
      */
-    public void overwriteNotesListFile(Map nusMap) {
+    public void overwriteNotesListFile(NusMap nusMap) {
         //write to file:
         try {
             PrintWriter writer = new PrintWriter(this.filepath);

@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.data.NusMap;
 import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidNoteIndexException;
 import seedu.duke.exception.NoLocationForNotesCommandException;
@@ -21,7 +22,7 @@ public class NotesCommandParser {
 
     }
 
-    public static int getLocation(String input, Map nusMap) throws WrongInputFormatException,
+    public static int getLocation(String input, NusMap nusMap) throws WrongInputFormatException,
             NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException {
         //1. Filter out location (UPPERCASE) from input:
@@ -71,7 +72,7 @@ public class NotesCommandParser {
         note = input.substring(notesIndexForOriginalInput).trim();
     }
 
-    public static void getNoteIndex(String input, int beforeNoteNumberIndex, Map nusMap)
+    public static void getNoteIndex(String input, int beforeNoteNumberIndex, NusMap nusMap)
             throws NoNoteIndexException, InvalidNoteIndexException {
         //2. Filter out Note Index added by user:
         int noteNumberIndex = beforeNoteNumberIndex + 1;
@@ -91,7 +92,7 @@ public class NotesCommandParser {
         noteIndexInList = noteIndex - 1;
     }
 
-    public static void parseAddNotesCommand(String input, Map nusMap)
+    public static void parseAddNotesCommand(String input, NusMap nusMap)
             throws WrongInputFormatException, NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException, EmptyNoteException {
 
@@ -101,7 +102,7 @@ public class NotesCommandParser {
         getNotes(input);
     }
 
-    public static void parseDeleteNotesCommand(String input, Map nusMap)
+    public static void parseDeleteNotesCommand(String input, NusMap nusMap)
             throws WrongInputFormatException, NoLocationForNotesCommandException,
             NonExistentLocationForNotesCommandException, NoNoteIndexException, InvalidNoteIndexException {
 
@@ -112,7 +113,7 @@ public class NotesCommandParser {
 
     }
 
-    public static void parseListNotesCommand(String input, Map nusMap)
+    public static void parseListNotesCommand(String input, NusMap nusMap)
             throws NoLocationForNotesCommandException, NonExistentLocationForNotesCommandException  {
         //1. Filter out location (UPPERCASE) from input:
         String lowerCaseInputWithNoSpaces = input.toLowerCase().replaceAll("\\s","");

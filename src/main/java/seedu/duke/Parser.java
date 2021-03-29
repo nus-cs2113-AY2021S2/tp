@@ -1,65 +1,63 @@
 package seedu.duke;
 
-import seedu.duke.command.Command;
-import seedu.duke.command.GoCommand;
-import seedu.duke.command.RepeatCommand;
-import seedu.duke.command.ShowHistoryCommand;
-import seedu.duke.command.ClearHistoryCommand;
-import seedu.duke.command.ListNoteCommand;
-import seedu.duke.command.AddNoteCommand;
-import seedu.duke.command.DeleteNoteCommand;
-import seedu.duke.command.ByeCommand;
-import seedu.duke.command.HelpCommand;
-import seedu.duke.command.AddDailyRouteCommand;
-import seedu.duke.command.ShowDailyRouteCommand;
-import seedu.duke.command.ShowFavouriteLocationsCommand;
-import seedu.duke.command.AddFavouriteLocationCommand;
-import seedu.duke.command.DeleteFavouriteLocationCommand;
-import seedu.duke.command.AddCustomAliasCommand;
-import seedu.duke.command.DeleteCustomAliasCommand;
-import seedu.duke.command.ShowCustomAliasCommand;
+import seedu.duke.command.*;
+import seedu.duke.command.aliascommand.AddCustomAliasCommand;
+import seedu.duke.command.aliascommand.DeleteCustomAliasCommand;
+import seedu.duke.command.aliascommand.ShowCustomAliasCommand;
+import seedu.duke.command.favouritecommand.AddFavouriteCommand;
+import seedu.duke.command.favouritecommand.DeleteFavouriteCommand;
+import seedu.duke.command.favouritecommand.RepeatFavouriteCommand;
+import seedu.duke.command.favouritecommand.ShowFavouriteCommand;
+import seedu.duke.command.historycommand.ClearHistoryCommand;
+import seedu.duke.command.historycommand.RepeatHistoryCommand;
+import seedu.duke.command.historycommand.ShowHistoryCommand;
+import seedu.duke.command.notecommand.AddNoteCommand;
+import seedu.duke.command.notecommand.DeleteNoteCommand;
+import seedu.duke.command.notecommand.ListNoteCommand;
+import seedu.duke.command.routecommand.GoCommand;
 import seedu.duke.exception.InvalidCommandException;
 
 public class Parser {
     public static Command prepareForCommandExecution(String userInput) throws InvalidCommandException {
         assert userInput != null : "User input cannot be null";
-
         Command command;
         String filteredUserInput = userInput.trim().toLowerCase();
         if (filteredUserInput.equals("go")) {
-            command = new GoCommand(filteredUserInput);
+            command = new GoCommand();
         } else if (filteredUserInput.equals("history")) {
-            command = new ShowHistoryCommand(filteredUserInput);
-        } else if (filteredUserInput.equals("repeat")) {
-            command = new RepeatCommand(filteredUserInput);
+            command = new ShowHistoryCommand();
+        } else if (filteredUserInput.equals("repeat history")) {
+            command = new RepeatHistoryCommand();
+        } else if (filteredUserInput.equals("repeat favourite")) {
+            command = new RepeatFavouriteCommand();
         } else if (filteredUserInput.equals("clear history")) {
-            command = new ClearHistoryCommand(filteredUserInput);
+            command = new ClearHistoryCommand();
         } else if (filteredUserInput.startsWith("list notes")) {
             command = new ListNoteCommand(userInput);
         } else if (filteredUserInput.startsWith("add note")) {
-            command = new AddNoteCommand(userInput);
+            command = new AddNoteCommand();
         } else if (filteredUserInput.startsWith("delete note")) {
             command = new DeleteNoteCommand(userInput);
         } else if (filteredUserInput.equals("bye")) {
-            command = new ByeCommand(filteredUserInput);
+            command = new ByeCommand();
         }  else if (filteredUserInput.equals("help")) {
-            command = new HelpCommand(filteredUserInput);
+            command = new HelpCommand();
         }  else if (filteredUserInput.startsWith("add day")) {
-            command = new AddDailyRouteCommand(filteredUserInput);
+            command = new AddDailyRouteCommand();
         }  else if (filteredUserInput.equals("day")) {
-            command = new ShowDailyRouteCommand(filteredUserInput);
+            command = new ShowDailyRouteCommand();
         } else if (filteredUserInput.startsWith("show favourite")) {
-            command = new ShowFavouriteLocationsCommand(filteredUserInput);
+            command = new ShowFavouriteCommand();
         } else if (filteredUserInput.startsWith("add favourite")) {
-            command = new AddFavouriteLocationCommand(filteredUserInput);
+            command = new AddFavouriteCommand();
         } else if (filteredUserInput.startsWith("delete favourite")) {
-            command = new DeleteFavouriteLocationCommand(filteredUserInput);
+            command = new DeleteFavouriteCommand();
         } else if (filteredUserInput.equals("add alias")) {
-            command = new AddCustomAliasCommand(filteredUserInput);
+            command = new AddCustomAliasCommand();
         } else if (filteredUserInput.equals("show alias")) {
-            command = new ShowCustomAliasCommand(filteredUserInput);
+            command = new ShowCustomAliasCommand();
         } else if (filteredUserInput.equals("delete alias")) {
-            command = new DeleteCustomAliasCommand(filteredUserInput);
+            command = new DeleteCustomAliasCommand();
         } else {
             throw new InvalidCommandException();
         }

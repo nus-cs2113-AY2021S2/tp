@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.History;
+import seedu.duke.data.History;
 
 import java.io.File;
 import java.io.FileNotFoundException;

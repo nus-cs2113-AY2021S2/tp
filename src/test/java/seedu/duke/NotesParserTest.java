@@ -3,6 +3,7 @@ package seedu.duke;
 import org.junit.jupiter.api.Test;
 
 import seedu.duke.command.Command;
+import seedu.duke.data.*;
 import seedu.duke.exception.InvalidCommandException;
 import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidNoteIndexException;
@@ -17,20 +18,20 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class NotesParserTest {
 
-    private Map nusMap;
+    private NusMap nusMap;
     private UiManager ui;
     private History history;
     private DailyRoute dailyroute;
-    private FavouriteLocation favouriteLocation;
+    private Favourite favourite;
     private BlockAlias blockAlias;
 
     private void initializeDuke() {
-        this.nusMap = new Map();
+        this.nusMap = new NusMap();
         this.ui = new UiManager();
         this.history = new History();
         this.dailyroute = new DailyRoute();
         this.blockAlias = new BlockAlias();
-        this.favouriteLocation = new FavouriteLocation();
+        this.favourite = new Favourite();
     }
 
     @Test
@@ -63,9 +64,9 @@ public class NotesParserTest {
         try {
             initializeDuke();
             Command command = Parser.prepareForCommandExecution(input);
-            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favourite);
         } catch (InvalidCommandException e) {
-            ui.showToUser(e.getMessage());
+            ui.showMessageWithDivider(e.getMessage());
         } finally {
             assertEquals(NotesCommandParser.location, location);
             assertEquals(NotesCommandParser.note, notes);
@@ -90,9 +91,9 @@ public class NotesParserTest {
         try {
             initializeDuke();
             Command command = Parser.prepareForCommandExecution(input);
-            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favourite);
         } catch (InvalidCommandException e) {
-            ui.showToUser(e.getMessage());
+            ui.showMessageWithDivider(e.getMessage());
         } finally {
             assertEquals(NotesCommandParser.location, location);
             assertEquals(NotesCommandParser.noteIndexInList, index);
@@ -119,9 +120,9 @@ public class NotesParserTest {
         try {
             initializeDuke();
             Command command = Parser.prepareForCommandExecution(input);
-            command.execute(nusMap, ui, history, dailyroute, blockAlias, favouriteLocation);
+            command.execute(nusMap, ui, history, dailyroute, blockAlias, favourite);
         } catch (InvalidCommandException e) {
-            ui.showToUser(e.getMessage());
+            ui.showMessageWithDivider(e.getMessage());
         } finally {
             assertEquals(NotesCommandParser.location, location);
         }

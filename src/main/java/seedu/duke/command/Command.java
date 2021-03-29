@@ -1,24 +1,31 @@
 package seedu.duke.command;
 
-import seedu.duke.Map;
-import seedu.duke.ui.UiManager;
-import seedu.duke.History;
-import seedu.duke.DailyRoute;
-import seedu.duke.BlockAlias;
-import seedu.duke.FavouriteLocation;
+import seedu.duke.data.*;
 
 public abstract class Command {
-    protected String userInput;
+    protected NusMap nusMap;
+    protected BlockAlias blockAlias;
+    protected History history;
+    protected Favourite favourite;
+    protected DailyRoute dailyRoute;
+    protected boolean isExit;
 
-    public Command(String userInput) {
-        this.userInput = userInput;
+    public Command() {
+    }
+
+    public void setData(NusMap nusMap, BlockAlias blockAlias, History history,
+                        Favourite favourite, DailyRoute dailyRoute) {
+        this.nusMap = nusMap;
+        this.blockAlias = blockAlias;
+        this.history = history;
+        this.favourite = favourite;
+        this.dailyRoute = dailyRoute;
     }
 
     public boolean isExit() {
-        return false;
+        return isExit;
     }
 
-    public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
-                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
+    public void execute() {
     }
 }

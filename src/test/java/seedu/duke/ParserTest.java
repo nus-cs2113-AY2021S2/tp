@@ -2,13 +2,13 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.Command;
-import seedu.duke.command.GoCommand;
-import seedu.duke.command.RepeatCommand;
-import seedu.duke.command.ShowHistoryCommand;
-import seedu.duke.command.ClearHistoryCommand;
-import seedu.duke.command.ListNoteCommand;
-import seedu.duke.command.AddNoteCommand;
-import seedu.duke.command.DeleteNoteCommand;
+import seedu.duke.command.routecommand.GoCommand;
+import seedu.duke.command.historycommand.RepeatHistoryCommand;
+import seedu.duke.command.historycommand.ShowHistoryCommand;
+import seedu.duke.command.historycommand.ClearHistoryCommand;
+import seedu.duke.command.notecommand.ListNoteCommand;
+import seedu.duke.command.notecommand.AddNoteCommand;
+import seedu.duke.command.notecommand.DeleteNoteCommand;
 import seedu.duke.command.ByeCommand;
 import seedu.duke.command.HelpCommand;
 import seedu.duke.exception.InvalidCommandException;
@@ -33,7 +33,7 @@ class ParserTest {
     @Test
     void prepareForCommandExecution_repeat_expectRepeatCommand() throws InvalidCommandException {
         Command command = Parser.prepareForCommandExecution("repeat");
-        assertTrue(command instanceof RepeatCommand);
+        assertTrue(command instanceof RepeatHistoryCommand);
     }
 
     @Test

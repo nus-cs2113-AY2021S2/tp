@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.duke.data.Block;
+import seedu.duke.data.BlockAlias;
+import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
 
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ import java.util.LinkedList;
 
 public class Router {
 
-    public String execute(Map nusMap, BlockAlias blockAlias, String from, String to) throws InvalidBlockException {
+    public String execute(NusMap nusMap, BlockAlias blockAlias, String from, String to) throws InvalidBlockException {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
         try {
@@ -20,7 +23,7 @@ public class Router {
         }
     }
 
-    public void findShortestRoute(Map nusMap, LinkedList<Block> route, BlockAlias blockAlias, String from, String to) {
+    public void findShortestRoute(NusMap nusMap, LinkedList<Block> route, BlockAlias blockAlias, String from, String to) {
         nusMap.resetVisitedFlag();
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
@@ -58,7 +61,7 @@ public class Router {
         return routeAsString;
     }
 
-    public static void bfs(Map nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
+    public static void bfs(NusMap nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
         LinkedList<Block> queue = new LinkedList<>();
         queue.add(start);
         start.setAsVisited();

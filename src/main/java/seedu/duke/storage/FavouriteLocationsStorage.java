@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.FavouriteLocation;
+import seedu.duke.data.Favourite;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,12 +15,12 @@ public class FavouriteLocationsStorage extends Storage {
         super(path);
     }
 
-    public void loadFavourites(FavouriteLocation favLocation) throws IOException {
+    public void loadFavourites(Favourite favLocation) throws IOException {
         try {
             Scanner s = new Scanner(new File(this.filepath)); // create a Scanner using the File as the source
             // add note for all locations:
             while (s.hasNext()) {
-                favLocation.favouriteLocations.add(s.nextLine());
+                favLocation.favourites.add(s.nextLine());
                 //add favourite location from previous list to new list
             }
         } catch (FileNotFoundException e) {
@@ -34,14 +34,14 @@ public class FavouriteLocationsStorage extends Storage {
         }
     }
 
-    public void overwriteFavouritesListFile(FavouriteLocation favLocation) {
+    public void overwriteFavouritesListFile(Favourite favLocation) {
         //write to file:
         try {
             PrintWriter writer = new PrintWriter(this.filepath);
             writer.print("");
             writer.close();
-            for (int i = 0; i < favLocation.favouriteLocations.size(); i++) {
-                String currentLocation = favLocation.favouriteLocations.get(i);
+            for (int i = 0; i < favLocation.favourites.size(); i++) {
+                String currentLocation = favLocation.favourites.get(i);
                 appendToNotesListFile(currentLocation);
                 appendToNotesListFile(System.lineSeparator());
             }
