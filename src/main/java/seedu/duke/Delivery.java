@@ -2,7 +2,7 @@ package seedu.duke;
 
 import java.util.ArrayList;
 
-public class Delivery {
+public class Delivery implements Comparable<Delivery>{
     
     private final String deliveryID;
     private final String address; // todo implement enums?
@@ -11,6 +11,7 @@ public class Delivery {
     private final double deliveryFee;
     private final int distance;
     private final ArrayList<Item> items;
+
     private boolean isComplete;
 
     /**
@@ -57,6 +58,10 @@ public class Delivery {
         return items;
     }
 
+    public boolean getIsComplete() {
+        return isComplete;
+    }
+
     public void setDeliveryAsComplete() {
         this.isComplete = true;
     }
@@ -100,6 +105,12 @@ public class Delivery {
                 + this.getRecipient();
     }
 
+    @Override
+    public int compareTo(Delivery compareDelivery) {
 
+        int compareDistance = compareDelivery.getDistance();
 
+        return this.distance-compareDistance;
+
+    }
 }

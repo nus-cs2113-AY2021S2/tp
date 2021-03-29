@@ -116,7 +116,10 @@ public class DataManager {
 			while (fileReader.hasNext()) {
 				String line = fileReader.nextLine();
 				String[] routeInfo = line.split(" \\| ");
-				routes.add(new Route(routeInfo[0], Double.parseDouble(routeInfo[1]), Integer.parseInt(routeInfo[2])));
+				String destination = routeInfo[0];
+				double deliveryFee = Double.parseDouble(routeInfo[1]);
+				int distance = Integer.parseInt(routeInfo[2]);
+				routes.add(new Route(destination, deliveryFee, distance));
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Cannot load file...you are clapped! Please load a file.");

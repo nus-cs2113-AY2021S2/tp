@@ -130,6 +130,16 @@ public class Ui {
     }
 
     /**
+     * Prints shortest path for the driver
+     * @param sortedDeliveries list of deliveries sorted by distance
+     */
+    public void printMap(ArrayList<Delivery> sortedDeliveries){
+        for (int i = 0; i < sortedDeliveries.size(); i++){
+            System.out.println(sortedDeliveries.get(i));
+        }
+    }
+
+    /**
      * @param deliveryman deliveryman to show details about
      */
     public void showProfile(Deliveryman deliveryman) {
@@ -186,6 +196,15 @@ public class Ui {
                     break;
                 case "record":
                     showRecords(deliveryman.getRecords());
+                    break;
+                case "route":
+                case "deliveryroute":
+                    Filter deliveryFilter = new Filter();
+                    Map deliveryMap = new Map();
+                    ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
+                    ArrayList<Delivery> sortedDeliveries = deliveryMap.shortestPathGenerator(uncompletedDeliveries);
+                    printMap(sortedDeliveries);
+                    break;
                 case "bye":
                     break;
                 default:
