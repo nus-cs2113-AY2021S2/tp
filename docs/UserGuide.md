@@ -23,15 +23,13 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
    - Locate the file path of the JAR file that you have downloaded
    - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
 
-   - Then, run the following command
-   - `cd [File Path]`
+   - Then, run the following command: `cd [File Path]`
    
-   - Example:
-   - `cd C:\Users\JohnDoe\Downloads`
+   - Example: `cd C:\Users\JohnDoe\Downloads`
 	
-Run the following command
-java -jar jar [JAR file name]
+   - Run the following command: `java -jar jar [JAR file name]`
 
+## 3. How to use the guide
 
 ## Quick Start
 
