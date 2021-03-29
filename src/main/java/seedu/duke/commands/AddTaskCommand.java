@@ -6,6 +6,7 @@ import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
 import static seedu.duke.common.Messages.MESSAGE_ADDED_TASK;
+import static seedu.duke.common.Messages.MESSAGE_TASK_CHECK_GRADED;
 import static seedu.duke.common.CommonMethods.getIsTaskGraded;
 
 public class AddTaskCommand extends Command {
@@ -29,6 +30,7 @@ public class AddTaskCommand extends Command {
         if (!isAddTaskAllowed) {
             return;
         }
+        ui.printMessage(MESSAGE_TASK_CHECK_GRADED);
         boolean isGraded = getIsTaskGraded(ui);
         task.setGraded(isGraded);
         module.addTask(task);

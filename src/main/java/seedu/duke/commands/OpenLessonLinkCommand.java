@@ -23,7 +23,7 @@ import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_LINK_ENTERED;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
 import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
@@ -105,7 +105,7 @@ public class OpenLessonLinkCommand extends Command {
             assert statusCode >= -1 : MESSAGE_UNABLE_TO_OPEN_LINK;
             openLessonLink(lessonLink, ui);
         } catch (IOException e) {
-            ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
+            ui.printMessage(MESSAGE_INVALID_LESSON_LINK);
             logger.info(lessonLink);
         }
     }
