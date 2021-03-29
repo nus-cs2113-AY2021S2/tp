@@ -240,25 +240,62 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 ### 3.4 CommandHandler Component
 ![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
 _Figure X. CommandHandler Class Diagram_
+![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)
+_Figure X. CommandHandler Sequence Diagram_
 
 #### Description
 The `CommandHandler` component is the object class itself.
-The role of the `CommandHandler` is to convert parsed arguments from the `ParserHandler`
+The role of the `CommandHandler` is to convert `parsedArguments` from the `ParserHandler`
 into subsequent `Command` objects which will be executed thereafter.
+The `XYZCommand` in Figure X represents a valid command word (e.g. `"xyz"`) from the input
+parsed earlier from the `ParserHandler`. More on the actual valid commands, please refer to
+the Command Component below.
 
 #### Design
 It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
-(the actual commands of the Application).
+(the actual commands of the Application).\
+With reference to the above Figure X, 
+In the case of `"xyz"` being mapped to `XYZCommand`, depending on the other data in the 
+`parsedArguments`,
+* arguments are valid: the `XYZCommand` object is successfully returned.
+* arguments are erroneous/invalid: `CommandException` is thrown.
+
+If `parsedArguments[0]` maps to an empty String `""`, a `null` is returned, allowing the 
+`Finux` to continue prompting for user input.
+
+Finally, if `parsedArguments[0]` cannot be mapped to any command, a `CommandException` is 
+thrown to `Finux` to handle.
+
+Not stated explicitly in the diagrams, when the `exit` command is entered, the `CommandHandler`
+sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)
 _Figure X. Command Class Diagram_
 
-#### Description
+All Commands contain a command word constant named as `COMMAND_*` (as underlined in Figure X),\
+e.g. `protected static final String COMMAND_XYZ = "xyz";`\
+These constants are used by the `CommandHandler` to map to each `Command`.
 
+#### Description
+The `Command` component contains the `abstract Command` class and its extensions. The extensions 
+of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
 
 #### Design
+The only `abstract` method of `Command` is `execute(...)` where it is called everytime a `Command`
+object is created. Most of the input validation is done in the constructor of each Command object. 
+1. Firstly, arguments are checked for validity (if any):
+   1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
+   2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
+   3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
+      E.g. ViewCommand implements `{-s | -l | -e}` options, `view -s -l` is considered a conflict of options.
+2. Secondly, option values are validated (if any):
+   * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
+     Each option value is validated based on the input validation methods for each data type.
 
+If no violations are present in the arguments, then the subsequent `Command` object is returned.\
+If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
+is thrown back to the `CommandHandler`.
 
 ### 3.6 RecordList Component
 The `recordlist` class maintains an internal arraylist of record objects used throughout Finux's execution.
