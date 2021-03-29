@@ -1,11 +1,11 @@
-package seedu.duke.notecommandexceptions;
+package seedu.duke.exception;
 
 import static seedu.duke.ui.UiManager.getListOfLocations;
 
-public class NoLocationForNotesCommandException extends NotesException {
+public class NonExistentLocationForNotesCommandException extends NotesException {
     @Override
     public String getMessage() {
-        return "Please add a location to the command before the notes. :))"
+        return "Location does not exists. :(( Please key in a valid location."
                 + System.lineSeparator()
                 + "\"List of locations: \""
                 + System.lineSeparator()

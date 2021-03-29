@@ -8,7 +8,7 @@ public class Map {
     public Map() {
         this.map = new HashMap<>();
         initValidBlocks();
-        initNeighbouringBlocks();
+        initRelationships();
     }
 
     public Block getBlock(String name) {
@@ -60,9 +60,21 @@ public class Map {
         addBlock("ARISE & SHINE");
         addBlock("PLATYPUS FOOD BAR");
         addBlock("SPINELLI COFFEE");
+        addBlock("LT3");
+        addBlock("LT4");
+        addBlock("CHINESE LIBRARY");
+        addBlock("CENTRAL LIBRARY");
+        addBlock("AS6");
+        addBlock("COM1");
+        addBlock("COM2");
+        addBlock("COM3");
+        addBlock("LT16");
+        addBlock("LT17");
+        addBlock("MAXX COFFEE");
+        addBlock("STARBUCKS");
     }
 
-    public void initNeighbouringBlocks() {
+    public void initRelationships() {
         addRelationship("EW1", "E1");
         addRelationship("E1", "LT5");
         addRelationship("E1", "E1A");
@@ -94,5 +106,18 @@ public class Map {
         addRelationship("E4", "ARISE & SHINE");
         addRelationship("E2A", "PLATYPUS FOOD BAR");
         addRelationship("EA","SPINELLI COFFEE");
+        addRelationship("TECHNO EDGE","STARBUCKS");
+        addRelationship("LT3","E5");
+        addRelationship("LT3","IT");
+        addRelationship("LT3","LT4");
+        addRelationship("LT3","CHINESE LIBRARY");
+        addRelationship("CHINESE LIBRARY","CENTRAL LIBRARY");
+        addRelationship("CENTRAL LIBRARY","AS6");
+        addRelationship("CENTRAL LIBRARY","MAXX COFFEE");
+        addRelationship("AS6","COM1");
+        addRelationship("COM1","COM3");
+        addRelationship("COM1","LT16");
+        addRelationship("COM1","LT17");
+        addRelationship("COM1","COM2");
     }
 }

@@ -4,12 +4,12 @@ import org.junit.jupiter.api.Test;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidCommandException;
-import seedu.duke.notecommandexceptions.EmptyNoteException;
-import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
-import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
-import seedu.duke.notecommandexceptions.NoNoteIndexException;
-import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
-import seedu.duke.notecommandexceptions.WrongInputFormatException;
+import seedu.duke.exception.EmptyNoteException;
+import seedu.duke.exception.InvalidNoteIndexException;
+import seedu.duke.exception.NoLocationForNotesCommandException;
+import seedu.duke.exception.NoNoteIndexException;
+import seedu.duke.exception.NonExistentLocationForNotesCommandException;
+import seedu.duke.exception.WrongInputFormatException;
 import seedu.duke.ui.UiManager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

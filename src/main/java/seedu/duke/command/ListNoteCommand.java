@@ -8,8 +8,8 @@ import seedu.duke.BlockAlias;
 import seedu.duke.FavouriteLocation;
 import seedu.duke.NotesCommandParser;
 
-import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
-import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
+import seedu.duke.exception.NoLocationForNotesCommandException;
+import seedu.duke.exception.NonExistentLocationForNotesCommandException;
 
 import static seedu.duke.NotesCommandParser.location;
 

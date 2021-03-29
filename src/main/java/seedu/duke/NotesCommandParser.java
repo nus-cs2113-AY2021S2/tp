@@ -1,11 +1,11 @@
 package seedu.duke;
 
-import seedu.duke.notecommandexceptions.EmptyNoteException;
-import seedu.duke.notecommandexceptions.InvalidNoteIndexException;
-import seedu.duke.notecommandexceptions.NoLocationForNotesCommandException;
-import seedu.duke.notecommandexceptions.NoNoteIndexException;
-import seedu.duke.notecommandexceptions.NonExistentLocationForNotesCommandException;
-import seedu.duke.notecommandexceptions.WrongInputFormatException;
+import seedu.duke.exception.EmptyNoteException;
+import seedu.duke.exception.InvalidNoteIndexException;
+import seedu.duke.exception.NoLocationForNotesCommandException;
+import seedu.duke.exception.NoNoteIndexException;
+import seedu.duke.exception.NonExistentLocationForNotesCommandException;
+import seedu.duke.exception.WrongInputFormatException;
 
 public class NotesCommandParser {
 
