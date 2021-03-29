@@ -44,6 +44,10 @@ public class Record {
         return consultationDetail;
     }
 
+    /**
+     * Obtain a print-friendly consultation detail of this record for the storage file.
+     * @return A String containing the consultation details contained in this record, separated by delimiters.
+     */
     public String printFileConsultationDetail() {
         String consultationDetail = "";
         for (String symptom : symptoms) {

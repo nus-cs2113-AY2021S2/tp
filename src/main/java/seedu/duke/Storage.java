@@ -24,10 +24,19 @@ import java.util.TreeMap;
 public class Storage {
     protected String filePath;
 
+    /**
+     * This is the constructor of the Storage class.
+     * @param filePath A String of the path to the file that is used for saving/loading
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+    /**
+     * Saves a SortedMap of data into the file specified by filePath.
+     * @param patientData The data to be written to file
+     * @throws IOException When file is not found etc
+     */
     public void save(SortedMap<String, Patient> patientData) throws IOException {
         try {
             File inFile = new File(filePath);
@@ -55,6 +64,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Convert records in a patient object into a string, separated by delimiters.
+     * @param patient Patient object whose records will be converted
+     * @return A string to be used by the save() method
+     */
     public String convertRecordToString(Patient patient) {
         StringBuilder stringBuilder = new StringBuilder();
         TreeMap<LocalDate, Record> records = patient.getRecords();
