@@ -1,47 +1,25 @@
 package seedu.logic.parser;
 
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staff.AbortException;
-import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.storage.StaffStorage;
-import seedu.ui.StaffUI;
+import seedu.exceptions.staff.*;
+import seedu.logic.command.Command;
+import seedu.logic.command.staff.*;
 import seedu.ui.UI;
-import seedu.logic.command.StaffActions;
 
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.Scanner;
 
-import static seedu.ui.StaffUI.inputToCreateStaff;
-import static seedu.ui.UI.*;
-import static seedu.logic.command.StaffActions.addStaff;
+import static seedu.ui.UI.smartCommandRecognition;
 
 public class staffparser {
     static final String[] COMMANDS = {"add", "delete", "list", "addline", "find", "return", "help"};
 
-    public static void run() throws IOException {
-        StaffStorage.fileHandling();
-        StaffUI.staffMenuHeader();
-        Scanner in = new Scanner(System.in);
-        while (true) {
-            StaffUI.staffMenuPrompt();
-            String line;
-            line = in.nextLine();
-            try {
-                if (commandHandler(line) == 0) {
-                    System.out.println("Returning to start Menu!\n");
-                    break;
-                }
-            } catch (WrongStaffIdException e) {
-                StaffUI.wrongStaffIDErrorMessage();
-            } catch (WrongListInputException e) {
-                StaffUI.wrongStaffListInputErrorMessage();
-            } catch (NoInputException e) {
-                UI.noInputErrorMessage();
-            } catch (AbortException e) {
-                UI.abortInputErrorMessage();
-            }
+
+    public static boolean compareInt(int a, String b) {
+        try {
+            int temp = Integer.parseInt(b);
+            return a==temp;
+        } catch (NumberFormatException e){
+            return false;
         }
     }
 
@@ -51,86 +29,83 @@ public class staffparser {
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
-        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N')) {
+        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N') || (id.length()) != 6) {
             throw new WrongStaffIdException();
         }
     }
 
     public static void checkEmptyInput(String line) throws NoInputException {
-        if (line.split(" ").length < 2) {
+        if (line.split("/").length < 2) {
             throw new NoInputException();
+        }
+    }
+    public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException{
+        if (line.split("/").length < min) {
+            throw new InsufficientInputException();
+        }
+        if (line.split("/").length > max) {
+            throw new ExcessInputException();
         }
     }
 
     public static void checkListCommand(String line) throws WrongListInputException {
 
-        if ((line.split(" ").length > 1) &&
-                !((line.split(" ")[1].equals("nurses") || line.split(" ")[1].equals("doctors")))) {
+        if ((line.split("/").length > 1) &&
+                !((line.split("/")[1].equals("nurses") || line.split("/")[1].equals("doctors")))) {
             throw new WrongListInputException();
         }
     }
 
-    public static int commandHandler(String line) throws IOException, WrongStaffIdException,
-            WrongListInputException, NoInputException, AbortException {
+    public Command commandHandler(String line) throws WrongStaffIdException,
+            WrongListInputException, NoInputException, AbortException, ExcessInputException,
+            InsufficientInputException {
+
+        Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
-            return 1;
+            return new StaffReturn();
         }
+        switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
-        switch (smartCommandRecognition(COMMANDS, line.split(" ")[0])) {
         case ("add"):
-            addStaff(inputToCreateStaff());
-            StaffStorage.writeToFile();
-            break;
-
-        case ("addline"):
             checkEmptyInput(line);
-            checkID(line.split(" ")[1]);
-            StaffActions.add(line);
-            StaffStorage.writeToFile();
+            checkID(line.split("/")[1]);
+            checkNumInput(line,5,5);
+            String [] p = Arrays.copyOfRange(line.split("/"), 1, 5);
+            c = new StaffAdd(p);
             break;
 
         case ("list"):
-            UI.printEmptyLine();
             checkListCommand(line);
-            StaffUI.staffListHeader();
-            UI.showLine();
-            String[] string = Arrays.copyOfRange(line.split(" "), 1, 2);
-            StaffActions.list(string);
-            UI.printEmptyLine();
+            c = new StaffList(line);
             break;
 
         case ("delete"):
             checkEmptyInput(line);
-            checkID(line.split(" ")[1]);
-            StaffActions.delete(line);
-            StaffStorage.writeToFile();
+            checkID(line.split("/")[1]);
+            c = new StaffDelete(line);
             break;
 
         case ("help"):
-            StaffUI.printStaffHelpList();
+            c = new StaffHelp();
             break;
 
         case ("find"):
-            UI.printEmptyLine();
             checkEmptyInput(line);
-            StaffUI.staffListHeader();
-            UI.showLine();
-            StaffActions.find(line.split(" ")[1]);
-            UI.printEmptyLine();
+            c = new StaffFind(line);
             break;
 
         case ("return"):
-            StaffStorage.writeToFile();
-            StaffActions.resetList();
-            return 0;
+            return new StaffReturn();
 
         default:
             UI.invalidCommandErrorMessage();
         }
-        return 1;
+        return c;
     }
 
+
+/* to be deleted
     public static String[] addFunctionParser(String line) {
         int length = line.split(" ").length;
         String[] input = new String[4];
@@ -147,6 +122,8 @@ public class staffparser {
                 input[i - 1] = " ";
             }
         }
-        return input;
+        return input;add/D55555/pop/12/asd
     }
+    */
+
 }

@@ -3,9 +3,11 @@ package seedu.ui;
 import seedu.exceptions.staff.AbortException;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
 
 public class UI {
     static final int LARGE_NUMBER = 100;
@@ -43,8 +45,6 @@ public class UI {
     public static String abortEnabledScanInput() throws AbortException {
         String input = scanner.nextLine().trim();
         if (input.equals("\\abort") ) {
-            System.out.println(input.equals(""));
-            System.out.println("qwer");
             throw new AbortException();
         }
         else {
@@ -55,6 +55,15 @@ public class UI {
     public static String smartCommandRecognition(String[] commands, String input) {
         int diff = LARGE_NUMBER;
         int index = -1;
+        List<String> list = Arrays.asList(commands);
+
+        if(list.contains(input)) {
+            return input;
+        }
+        if (input.length() >= 8){
+            return UNKNOWN_COMMAND;
+        }
+
         for (int i = 0; i<commands.length; i++) {
             int temp = checkCommandDifference(commands[i], input);
             if (temp < diff) {
@@ -62,7 +71,7 @@ public class UI {
                 index = i;
             }
         }
-        if (diff == 0 || isTypo(commands[index])) {
+        if (isTypo(commands[index])) {
             return commands[index];
         }
         return UNKNOWN_COMMAND;
@@ -114,6 +123,14 @@ public class UI {
     }
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
+    }
+
+    public static void tooManyInputErrorMessage() {
+        System.out.println("OOPS! There is too many input for this command");
+    }
+
+    public static void tooLittleInputErrorMessage() {
+        System.out.println("OOPS! There is too little input for this command");
     }
 
     public static void noInputErrorMessage() {
@@ -179,6 +196,10 @@ public class UI {
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
+    }
+
+    public void lineBreak() {
+        System.out.print(System.lineSeparator());
     }
 
     public void fileCreateErrorMessage() {

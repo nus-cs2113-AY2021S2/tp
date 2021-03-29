@@ -6,27 +6,29 @@ import seedu.model.staff.Staff;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static seedu.logic.parser.staffparser.compareInt;
 import static seedu.ui.UI.*;
-import static seedu.logic.parser.staffparser.addFunctionParser;
 
-public class StaffActions {
+public class StaffAggregation {
     private static final String DOCTOR_TYPE = "D";
     private static final String NURSE_TYPE = "N";
-    private static final ArrayList<Staff> list = new ArrayList<>();
+    private ArrayList<Staff> list = new ArrayList<>();
     protected static int numStaff = 0;
 
-    public static void resetList() {
-        list.clear();
+    public StaffAggregation() {
+    }
+
+    public void resetList() {
+        this.list.clear();
         numStaff=0;
     }
 
-    public static void addStaff(Staff staff) {
+    public void addStaff(Staff staff) {
         list.add(staff);
         numStaff++;
     }
 
-    public static void add(String line) {
-        String[] array = addFunctionParser(line);
+    public void add(String[] array) {
         if (isValidID(array[0])) {
             Staff staff = new Staff(array);
             addStaff(staff);
@@ -34,7 +36,7 @@ public class StaffActions {
         }
     }
 
-    public static boolean isValidID(String id) {
+    public boolean isValidID(String id) {
         for (Staff staff : list) {
             if (staff.getId().equals(id)) {
                 System.out.println("Error that staff ID has been taken\n");
@@ -44,11 +46,12 @@ public class StaffActions {
         return true;
     }
 
-    public static ArrayList getList() {
-        return list;
+    public ArrayList<Staff> getList() {
+        return this.list;
     }
 
-    public static void list(String... parameter) {
+    public void list(String... parameter) {
+
         if (parameter[0] == (null)) {
             for (Staff staff : list) {
                 display(staff);
@@ -68,7 +71,7 @@ public class StaffActions {
         }
     }
 
-    public static void find(String keyword) {
+    public void find(String keyword) {
         for (Staff staff : list) {
             if (search(keyword, staff)) {
                 display(staff);
@@ -76,17 +79,19 @@ public class StaffActions {
         }
     }
 
-    public static boolean search(String keyword, Staff staff) {
-        return staff.getAge().contains(keyword) || staff.getName().contains(keyword)
+    public boolean search(String keyword, Staff staff) {
+        return compareInt(staff.getAge(),keyword) || staff.getName().contains(keyword)
                     || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
     }
 
 
-    public static void delete(String line) {
+
+
+    public void delete(String line) {
         boolean isExistingID = false;
         for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext(); ) {
             Staff staff = iterator.next();
-            if (staff.getId().equals(line.split(" ")[1])) {
+            if (staff.getId().equals(line.split("/")[1])) {
                 iterator.remove();
                 numStaff--;
                 isExistingID = true;
@@ -102,7 +107,7 @@ public class StaffActions {
     public static void display(Staff staff) {
         System.out.println(
                 prettyPrint(staff.getId(), 10) + " | " + prettyPrint(staff.getName(), 10) + " | "
-                        + prettyPrint(staff.getAge(), 5) + " | " + prettyPrint(staff.getSpecialisation(), 20));
+                        + prettyPrint(Integer.toString(staff.getAge()), 5) + " | " + prettyPrint(staff.getSpecialisation(), 20));
     }
 
     public static int getNumStaff() {
