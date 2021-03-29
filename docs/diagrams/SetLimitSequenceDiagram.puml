@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+
+participant ":SetLimitCommand" as SetLimitCommand
+participant ":FoodCategory" as FoodCategory
+
+-> SetLimitCommand: execute()
+activate SetLimitCommand
+
+SetLimitCommand-> FoodCategory: setMinimumQuantity(foodCategory: FoodCategory, quantity: int)
+activate FoodCategory
+return
+<--SetLimitCommand:
+destroy FoodCategory
+@enduml
