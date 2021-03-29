@@ -17,8 +17,9 @@
    3.2 [UI Component](#32-ui-component)\
    3.3 [Parser Component](#33-parser-component)\
    3.4 [CommandHandler Component](#34-commandhandler-component)\
-   3.5 [RecordList Component](#35-recordlist-component)\
-   3.6 [Storage Component](#36-storage-component)
+   3.5 [Command Component](#35-command-component)\
+   3.6 [RecordList Component](#36-recordlist-component)\
+   3.7 [Storage Component](#37-storage-component)
 4. [Implementation](#4-implementation)\
    4.1 [Add Feature](#41-add-feature)\
    4.2 [List Feature](#42-list-feature)\
@@ -249,11 +250,21 @@ into subsequent `Command` objects which will be executed thereafter.
 It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
 (the actual commands of the Application).
 
-### 3.5 RecordList Component
+### 3.5 Command Component
+![CommandClassDiagram](img/CommandClassDiagram.png)
+_Figure X. Command Class Diagram_
+
+#### Description
+
+
+#### Design
+
+
+### 3.6 RecordList Component
 The `recordlist` class maintains an internal arraylist of record objects used throughout Finux's execution.
 
 
-### 3.6 Storage Component
+### 3.7 Storage Component
 ...
 
 ## 4. Implementation
