@@ -148,12 +148,12 @@ This is broken into a few steps:
 1. ... 
 
 At the end, we have an argument hashmap like this:
-|Key|Value|
-|---|-----|
-|command|record|
-|payload|01/05/2021|
-|s|coughing, fever|
-|p|panadol Paracetamol 500mg*20|
+| Key     | Value                        |
+| ------- | ---------------------------- |
+| command | record                       |
+| payload | 01/05/2021                   |
+| s       | coughing, fever              |
+| p       | panadol Paracetamol 500mg*20 |
 
 Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
 `RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with 'Command').
@@ -268,18 +268,18 @@ Through Patient Manager, general practitioners are able to manage patients faste
 
 ## User Stories
 
-|Version| As a ... | I want to ... | So that I can ...|
-|--------|----------|---------------|------------------|
-|v1.0|GP in a polyclinic|add a new patient|record a patient|
-|v1.0|GP in a polyclinic|view the list of patients|track the list of patients|
-|v1.0|GP in a polyclinic|select a specific patient's records|access the patient's records|
-|v1.0|GP in a polyclinic|add new record for a patient|refer to them during future consultations|
-|v1.0|GP in a polyclinic|retrieve the patient's past records|refer to them during the current consultation|
-|v1.0|new User|view list of available commands|refer to them if I have any problems|
-|v2.0|GP in a polyclinic|delete a patient|remove patients are no longer required to be tracked|
-|v2.0|GP in a polyclinic|delete a patient's records|remove records that I no longer need|
-|v2.0|GP in a polyclinic|know if I entered a invalid Patient ID|make sure no mistake is made recording the patient's ID|
-|v2.0|GP in a polyclinic|load and save existing data|work on the data on another device|
+| Version | As a ...           | I want to ...                          | So that I can ...                                       |
+| ------- | ------------------ | -------------------------------------- | ------------------------------------------------------- |
+| v1.0    | GP in a polyclinic | add a new patient                      | record a patient                                        |
+| v1.0    | GP in a polyclinic | view the list of patients              | track the list of patients                              |
+| v1.0    | GP in a polyclinic | select a specific patient's records    | access the patient's records                            |
+| v1.0    | GP in a polyclinic | add new record for a patient           | refer to them during future consultations               |
+| v1.0    | GP in a polyclinic | retrieve the patient's past records    | refer to them during the current consultation           |
+| v1.0    | new User           | view list of available commands        | refer to them if I have any problems                    |
+| v2.0    | GP in a polyclinic | delete a patient                       | remove patients are no longer required to be tracked    |
+| v2.0    | GP in a polyclinic | delete a patient's records             | remove records that I no longer need                    |
+| v2.0    | GP in a polyclinic | know if I entered a invalid Patient ID | make sure no mistake is made recording the patient's ID |
+| v2.0    | GP in a polyclinic | load and save existing data            | work on the data on another device                      |
 
 ## Non-Functional Requirements
 
