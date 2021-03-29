@@ -48,7 +48,7 @@ public class NurseScheduleActions {
      */
     public void listSchedules(String[] details)
             throws EmptyListException, NurseIdNotFound {
-        if (details[0].equals("all")) {
+        if (details[0].equals("ALL")) {
             listAllSchedules();
         } else if (isValidNurseID(nurseSchedules, details[0])) {
             findSchedules.clear();
