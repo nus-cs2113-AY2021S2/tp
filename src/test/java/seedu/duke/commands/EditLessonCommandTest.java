@@ -46,6 +46,7 @@ class EditLessonCommandTest extends LessonCommandTest {
 
         removeOutputStream();
         ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
         
         // Expected lesson after edit
         Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL1, 
@@ -72,7 +73,7 @@ class EditLessonCommandTest extends LessonCommandTest {
 
         // Prepare user input
         String lessonIndex = "1" + System.lineSeparator();
-        String lessonFields = "1 10 -1 3 0 abc" + System.lineSeparator(); // 1 and 3 are valid
+        String lessonFields = "1 10 -1 3 0 abc" + System.lineSeparator(); // Only 1 and 3 are valid
         String newTime = TIME1 + System.lineSeparator();
         String newTeacherName = TEACHER_NAME1 + System.lineSeparator();
 
@@ -87,6 +88,7 @@ class EditLessonCommandTest extends LessonCommandTest {
 
         removeOutputStream();
         ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
 
         // Expected lesson after edit
         Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL,

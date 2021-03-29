@@ -1,5 +1,6 @@
 package seedu.duke.parser;
 
+import seedu.duke.TestUtilAndConstants;
 import seedu.duke.commands.AddModuleCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.DeleteModuleCommand;
@@ -10,6 +11,7 @@ import seedu.duke.commands.ListTasksCommand;
 import seedu.duke.commands.ModuleInfoCommand;
 import seedu.duke.commands.OpenLessonLinkCommand;
 import seedu.duke.commands.PrintHelpCommand;
+import seedu.duke.common.CommonMethods;
 import seedu.duke.exception.CommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.module.ModuleList;
@@ -34,9 +36,13 @@ class ParserTest {
     public static final String OPEN_MODULE = "open cs1234";
     public static final String DELETE_MODULE = "delete";
     public static final String ARBITRARY_STRING = "AakjhdLKLlkjlLJAAasldkj 12801 =123-=-';";
-    
-    
+    public static final String INCORRECT_DASHBOARD1 = "help me!!";
+    public static final String INCORRECT_DASHBOARD2 = "modules abc 123";
+    public static final String INCORRECT_DASHBOARD3 = "delete something";
+
+        
     //@@author ivanchongzhien
+    
     @Test
     // DASHBOARD COMMANDS
     void parse_dashboardCommands_correctCommandObject() throws CommandException,
@@ -91,6 +97,62 @@ class ParserTest {
         assertTrue(isThrown);
 
         ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
+    }
+
+    @Test
+        // IN MODULE COMMAND
+    void parse_inValidCommands_exceptionIsThrown() throws CommandException, ParserException {
+        Parser parser = new Parser();
+        boolean isThrown = false;
+        
+        // Dashboard
+        try {
+            parser.parse(ARBITRARY_STRING);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+        isThrown = false;
+
+        // Command with unnecessary arguments
+        try {
+            parser.parse(INCORRECT_DASHBOARD1);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+        isThrown = false;
+
+        try {
+            parser.parse(INCORRECT_DASHBOARD2);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+        isThrown = false;
+
+        try {
+            parser.parse(INCORRECT_DASHBOARD3);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+        isThrown = false;
+        
+        // In module
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
+
+        try {
+            parser.parse(ARBITRARY_STRING);
+        } catch (ParserException e) {
+            isThrown = true;
+        }
+        assertTrue(isThrown);
+
+        ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
     }
 
 
