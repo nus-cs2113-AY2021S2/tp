@@ -87,9 +87,9 @@ Example of usage:
 | Command             | Example                                                                                                    |
 |---------------------|------------------------------------------------------------------------------------------------------------|
 |          Start Menu |                                                                                                            |
-| staff               | staff                                                                                                      |
-| patient             | patient                                                                                                    |
-| appointments        | appointments                                                                                               |
+| staff               | `staff`                                                                                                    |
+| patient             | `patient`                                                                                                  |
+| appointments        | `appointments`                                                                                             |
 | schedules           | schedules                                                                                                  |
 | inventory           | inventory                                                                                                  |
 | help                | help                                                                                                       |
