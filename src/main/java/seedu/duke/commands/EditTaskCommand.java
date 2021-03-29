@@ -3,7 +3,7 @@ package seedu.duke.commands;
 import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
@@ -93,9 +93,9 @@ public class EditTaskCommand extends Command {
     }
 
     private Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
-        String line = ui.readCommand();
+        String line = ui.readUserInput();
         try {
-            int index = Parser.checkIndex(line, taskList.size());
+            int index = ParserUtil.checkIndex(line, taskList.size());
             return taskList.get(index - 1);
         } catch (DukeException e) {
             ui.printError(e);
@@ -142,12 +142,12 @@ public class EditTaskCommand extends Command {
     
     private String getNewTaskDescription(UI ui) {
         ui.printMessage(MESSAGE_TASK_DESCRIPTION_TO_EDIT);
-        return ui.readCommand();
+        return ui.readUserInput();
     }
     
     private LocalDate getNewTaskDeadline(UI ui) {
         ui.printMessage(MESSAGE_TASK_DEADLINE_TO_EDIT);
-        String input = ui.readCommand();
+        String input = ui.readUserInput();
         DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
         try {
             return LocalDate.parse(input, parseFormat);
@@ -160,6 +160,6 @@ public class EditTaskCommand extends Command {
 
     private String getNewTaskRemarks(UI ui) {
         ui.printMessage(MESSAGE_TASK_REMARKS_TO_EDIT);
-        return ui.readCommand();
+        return ui.readUserInput();
     }
 }

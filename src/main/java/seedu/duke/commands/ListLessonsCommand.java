@@ -1,13 +1,13 @@
 package seedu.duke.commands;
 
 import seedu.duke.lesson.Lesson;
+import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
 import static seedu.duke.common.Messages.INDENTATION;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
@@ -40,18 +40,18 @@ public class ListLessonsCommand extends Command {
     public static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             String lessonTime = lesson.getTime();
             ui.printMessage(String.format(FORMAT_PRINT_LESSON, counter, lessonType, lessonTime));
             String lessonOnlineLink = lesson.getOnlineLink();
             if (!lessonOnlineLink.isEmpty()) {
                 ui.printMessage(INDENTATION + lessonOnlineLink);
             }
-            String teacherName = lesson.getTeachingStaff().getName();
+            String teacherName = lesson.getTeachingStaffName();
             if (!teacherName.isEmpty()) {
                 ui.printMessage(INDENTATION + teacherName);
             }
-            String teacherEmail = lesson.getTeachingStaff().getEmail();
+            String teacherEmail = lesson.getTeachingStaffEmail();
             if (!teacherEmail.isEmpty()) {
                 ui.printMessage(INDENTATION + teacherEmail);
             }

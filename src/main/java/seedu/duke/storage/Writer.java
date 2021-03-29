@@ -6,7 +6,6 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.DIVIDER_WRITE;
 import static seedu.duke.common.Constants.FALSE_STRING;
 import static seedu.duke.common.Constants.FOLDER_PATH;
@@ -163,7 +162,7 @@ public class Writer {
     private void writeLessons(FileWriter fileWriter, Module module) throws IOException {
         for (Lesson lesson : module.getLessonList()) {
             String entry = KEYWORD_LESSON;
-            entry += getLessonTypeString(lesson.getLessonType()) + DIVIDER_WRITE;
+            entry += lesson.getLessonTypeString() + DIVIDER_WRITE;
             entry += lesson.getTime() + DIVIDER_WRITE;
             entry += lesson.getOnlineLink() + DIVIDER_WRITE;
             entry += lesson.getTeachingStaff().getName() + DIVIDER_WRITE;

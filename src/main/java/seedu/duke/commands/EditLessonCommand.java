@@ -5,14 +5,13 @@ import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
 import static seedu.duke.common.Constants.EDIT_INDEX_DAY_TIME;
 import static seedu.duke.common.Constants.EDIT_INDEX_LINK;
-import static seedu.duke.common.Constants.EDIT_INDEX_TEACHER_EMAIL;
 import static seedu.duke.common.Constants.EDIT_INDEX_TEACHER_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_1_TIME_DAY;
 import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
@@ -115,10 +114,10 @@ public class EditLessonCommand extends Command {
         ui.printMessage(MESSAGE_LESSON_TO_EDIT);
         ListLessonsCommand.printLessons(lessonList, ui);
 
-        String line = ui.readCommand();
+        String line = ui.readUserInput();
 
         try {
-            index = Parser.checkIndex(line, lessonList.size());
+            index = ParserUtil.checkIndex(line, lessonList.size());
         } catch (ParserException e) {
             ui.printError(e);
         }
@@ -137,10 +136,10 @@ public class EditLessonCommand extends Command {
         printFieldsAsList(ui);
         ui.printMessage(MESSAGE_SEPARATE_INDICES);
 
-        String input = ui.readCommand();
+        String input = ui.readUserInput();
 
         ArrayList<Integer> indices;
-        indices = Parser.checkIndices(input, MAX_EDITABLE_FIELDS);
+        indices = ParserUtil.checkIndices(input, MAX_EDITABLE_FIELDS);
 
         if (indices.size() == 0) {
             ui.printMessage(WARNING_NO_VALID_INPUT);
@@ -159,7 +158,7 @@ public class EditLessonCommand extends Command {
         int fieldIndex = userIndex - 1;
 
         ui.printMessage(String.format(PROMPT_ENTER_FIELD_DETAILS, fields[fieldIndex].toLowerCase()));
-        String input = ui.readCommand();
+        String input = ui.readUserInput();
 
         return input.trim();
     }
@@ -189,12 +188,12 @@ public class EditLessonCommand extends Command {
             }
             break;
         case EDIT_INDEX_TEACHER_NAME:
-            lesson.getTeachingStaff().setName(newFieldValue);
+            lesson.setTeachingStaffName(newFieldValue);
             ui.printMessage(MESSAGE_TEACHER_NAME_UPDATED);
             break;
         default:
             if (TeachingStaff.isValidEmail(newFieldValue)) {
-                lesson.getTeachingStaff().setEmail(newFieldValue);
+                lesson.setTeachingStaffEmail(newFieldValue);
                 ui.printMessage(MESSAGE_TEACHER_EMAIL_UPDATED);
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_EMAIL + MESSAGE_NOT_UPDATED);

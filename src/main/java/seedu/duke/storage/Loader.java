@@ -14,7 +14,6 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static seedu.duke.common.CommonMethods.getLessonType;
 import static seedu.duke.common.CommonMethods.writeLog;
 import static seedu.duke.common.Constants.DIVIDER_READ;
 import static seedu.duke.common.Constants.EMPTY_STRING;
@@ -132,7 +131,7 @@ public class Loader {
             //Invalid format
             return;
         }
-        LessonType lessonType = getLessonType(fields[INDEX_TYPE].trim());
+        LessonType lessonType = LessonType.getLessonTypeFromString(fields[INDEX_TYPE].trim());
         if (lessonType == null) {
             //Invalid lesson type
             return;

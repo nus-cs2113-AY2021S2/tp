@@ -3,7 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.task.Task;
 
 import java.time.LocalDate;
@@ -63,7 +63,7 @@ public class UI {
      *
      * @return String of input.
      */
-    public String readCommand() {
+    public String readUserInput() {
         // assert that user is entering input with "\n" and not signals like Ctrl+D
         assert scanner.hasNextLine();
         return scanner.nextLine();
@@ -74,10 +74,10 @@ public class UI {
      * Prints module indicator for user input.
      */
     public void printModuleIndicator() {
-        if (ModuleList.getSelectedModule() == null) {
+        if (!ModuleList.hasSelectedModule()) {
             System.out.print(TAG_GULIO);
         } else {
-            String moduleCode = ModuleList.getSelectedModule().getModuleCode();
+            String moduleCode = ModuleList.getSelectedModuleCode();
             System.out.printf(TAG_MODULE, moduleCode);
         }
     }
@@ -192,7 +192,7 @@ public class UI {
      * @return an integer arraylist with valid indices
      */
     public ArrayList<Integer> getIndicesFromUser(int max) {
-        String userInput = readCommand();
-        return Parser.checkIndices(userInput, max);
+        String userInput = readUserInput();
+        return ParserUtil.checkIndices(userInput, max);
     }
 }

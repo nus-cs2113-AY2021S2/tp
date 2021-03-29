@@ -3,12 +3,11 @@ package seedu.duke.commands;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_DELETE;
@@ -46,8 +45,8 @@ public class DeleteLessonCommand extends Command {
             ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
         } else {
             ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
-            String line = ui.readCommand();
-            ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
+            String line = ui.readUserInput();
+            ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
 
             deleteLessonsFromList(lessonList, indices, ui);
             ModuleList.writeModule();
@@ -63,7 +62,7 @@ public class DeleteLessonCommand extends Command {
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
             counter++;
         }
@@ -81,7 +80,7 @@ public class DeleteLessonCommand extends Command {
         for (int index : indices) {
             int modifiedIndex = index - pointer;
             Lesson lesson = lessonList.get(modifiedIndex);
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(MESSAGE_REMOVED_LESSON, lessonType));
             ModuleList.getSelectedModule().removeLesson(modifiedIndex);
             pointer++;

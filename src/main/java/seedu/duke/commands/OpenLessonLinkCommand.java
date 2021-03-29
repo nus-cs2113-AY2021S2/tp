@@ -3,9 +3,8 @@ package seedu.duke.commands;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
-
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -19,7 +18,6 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
@@ -47,7 +45,6 @@ public class OpenLessonLinkCommand extends Command {
             fileHandler = new FileHandler(logger.getName());
             fileHandler.setLevel(Level.FINE);
             logger.addHandler(fileHandler);
-
         } catch (IOException e) {
             logger.log(Level.SEVERE, FILE_LOGGER_NOT_WORKING, e);
         }
@@ -65,8 +62,8 @@ public class OpenLessonLinkCommand extends Command {
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessons(lessonList, ui);
 
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
+        String line = ui.readUserInput();
+        ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
         printLessonsLink(lessonList, indices, ui);
     }
 
@@ -80,12 +77,10 @@ public class OpenLessonLinkCommand extends Command {
     public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indices, UI ui) {
         for (int index : indices) {
             Lesson lesson = lessonList.get(index - 1);
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
             String lessonLink = lesson.getOnlineLink();
             validateLessonLink(ui, lessonLink);
-
-
         }
     }
 
@@ -143,7 +138,7 @@ public class OpenLessonLinkCommand extends Command {
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
             counter++;
         }

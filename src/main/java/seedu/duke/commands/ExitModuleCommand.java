@@ -16,7 +16,7 @@ public class ExitModuleCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        String moduleCode = ModuleList.getSelectedModule().getModuleCode();
+        String moduleCode = ModuleList.getSelectedModuleCode();
         ModuleList.reset();
         ui.printMessage(String.format(MESSAGE_CLOSED_MODULE, moduleCode));
     }

@@ -2,13 +2,9 @@ package seedu.duke.common;
 
 public interface CommandList {
 
-    default String getWord() {
-        return null;
-    }
+    String getWord();
 
-    default String getDescription() {
-        return null;
-    }
+    String getDescription();
 
     String getArgumentsFormat();
 }
