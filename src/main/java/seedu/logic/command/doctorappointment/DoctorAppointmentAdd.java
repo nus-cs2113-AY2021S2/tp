@@ -17,8 +17,6 @@ public class DoctorAppointmentAdd extends Command {
 
     @Override
     public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException {
-        System.out.println("IN ADD EXECUTE");
-
         AppointmentActions.addAppointment(input);
     }
 
