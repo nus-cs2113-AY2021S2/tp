@@ -1,12 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
-import seedu.duke.task.TaskManager;
+import seedu.duke.task.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,6 +43,7 @@ public class ModuleInfo {
                     break;
                 case 5:
                     //addModuleGrade method;
+                    addModuleGrade();
                     break;
                 case 6:
                     viewAllModules();
@@ -91,6 +87,29 @@ public class ModuleInfo {
         }
     }
 
+    private static void addModuleGrade() {
+        if (modules.isEmpty()) {
+            logger.log(Level.INFO, "You have not added any modules.");
+            return;
+        }
+        viewAllModules();
+        System.out.println("Please choose which module you would like to assign a grade"
+                + " and enter the number:");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            System.out.println("Enter the grade for this module: ");
+            String moduleGrade = Ui.readCommand();
+            if (ModuleGradeEnum.checkGradeExist(moduleGrade)) {
+                modules.get(moduleNumberInt).setGrade(moduleGrade.toUpperCase());
+            } else {
+                System.out.println("Module grade does not exist. ");
+            }
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
+    }
+
     private static void addModuleMC() {
         if (modules.isEmpty()) {
             logger.log(Level.INFO, "You have not added any modules.");
@@ -105,7 +124,7 @@ public class ModuleInfo {
             moduleNumberInt--;
             System.out.println("Enter the number of MCs for this module: ");
             int moduleCredits = Ui.readCommandToInt();
-            modules.get(moduleNumberInt).setMCs(moduleCredits);
+            modules.get(moduleNumberInt).setMc(moduleCredits);
         } else {
             Ui.printInvalidIntegerMessage();
         }
@@ -148,14 +167,14 @@ public class ModuleInfo {
     public static void printModuleTaskList(String module) {
         int taskNumber = 1;
         System.out.println("\nThese are your tasks: ");
-        for (Task task : TaskList.tasks) {
+        for (Task task : TaskManager.tasks) {
             if (!task.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + task.getTaskType() + task.toString());
             taskNumber++;
         }
-        for (Assignment assignment : TaskList.assignments) {
+        for (Assignment assignment : TaskManager.assignments) {
             if (!assignment.getModule().equals(module)) {
                 continue;
             }
@@ -163,14 +182,14 @@ public class ModuleInfo {
                     .println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
             taskNumber++;
         }
-        for (Midterm midterm : TaskList.midterms) {
+        for (Midterm midterm : TaskManager.midterms) {
             if (!midterm.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + midterm.getTaskType() + midterm.toString());
             taskNumber++;
         }
-        for (FinalExam finalExam : TaskList.finalExams) {
+        for (FinalExam finalExam : TaskManager.finalExams) {
             if (!finalExam.getModule().equals(module)) {
                 continue;
             }
