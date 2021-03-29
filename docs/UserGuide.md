@@ -254,7 +254,7 @@ Output:
 **A**: {your answer here}
 
 >**Q**: Does the `view -l` shows the total loan amount? <br>
->**A**: No. `view -l` only shows the total unreturned loans amount.
+>**A**: No. `view -l` only shows the total amount of unreturned loans.
 
 >**Q**: What happens if FINUX crashes unexpectedly? <br>
 >**A**: All records are saved upon addition or deletion or returned, no worries!
