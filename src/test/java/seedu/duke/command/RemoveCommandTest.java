@@ -37,8 +37,8 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
@@ -69,8 +69,8 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
@@ -101,8 +101,8 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        BorrowersCreditScoreForReturnedLoans borrowersCreditScoreForReturnedLoans =
-                new BorrowersCreditScoreForReturnedLoans(new HashMap<>());
+        CreditScoreMap borrowersCreditScoreForReturnedLoans =
+                new CreditScoreMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;

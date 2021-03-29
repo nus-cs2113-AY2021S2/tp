@@ -12,10 +12,10 @@ Since: `March 2021`
         + [3.3 View category total amount: `view`](#33-view-category-total-amount-view)
         + [3.4 Set a loan as return: `return`](#34-set-a-loan-as-return-return)
         + [3.5 Remove a record: `remove`](#35-remove-a-record-remove)
-        + [3.6 Check a person credit score: `creditscore`](#36-check-a-person-credit-score-creditscore)
+        + [3.6 Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)
         + [3.7 Exit the program: `exit`](#37-exit-the-program-exit)
         + [3.8 Help function: `help`](#38-help-function-help)
-        + [3.9 Task Storage](#39-task-storage)
+        + [3.9 Records Storage](#39-records-storage)
     * [4. Frequently Asked Question (FAQ)](#4-faq)
     * [5. Command Summary](#5-command-summary)
 
