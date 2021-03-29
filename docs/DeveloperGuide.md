@@ -33,6 +33,8 @@ It is written in Java, and has more than 3.2kLoC.
 
 ## Design
 
+This section focuses on the general architecture of the application as well as the relationships between the classes involved. The overall architecture would be covered first, before the four individual components.
+
 ### Architecture
 
 ![Architecture Diagram](diagrams/diagram_images/ArchitectureDiagram.png)
@@ -169,6 +171,29 @@ _Exceptions related to file storage:_
   * Error Message: `"There was an error saving the data for FridgeFriend!"`
 
 ## Implementation
+
+This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
+
+### Main Application Logic
+
+The main application logic underlines the main executable conditions that make up the bulk of the application. Below is the outline of the logic:
+
+1. `FridgeFriend` uses the `Ui` class to obtain the user input.
+2. `FridgeFriend` then uses the `Parser` class to parse the user input.
+3. This results in the construction of a `Command` object that is returned to `FridgeFriend`.
+4. Following that, `FridgeFriend` then self-invokes a method that executes the `Command` object.
+5. In this method, the `Command` object is first updated with the existing fridge contents.
+6. The command then executes its specified action.
+7. From steps 2 to 6, should there be an error thrown, `FridgeFriend` will use the `Ui` class to display an error message to the user.
+
+Given below is the sequence diagram for the interactions within the main application logic.
+
+![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
+
+:information_source: Information:
+
+* The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
+* Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
 
 ## Product Scope
 
