@@ -22,6 +22,7 @@ public class Ui {
     private static final PrintStream out = System.out;
     private static final int MAX_WHITE_SPACE = 15;
     private static final int MAX_WHITE_SPACE_TITLE = 26;
+    private static final int MAX_WHITE_SPACE_VIEW = 68;
     private final Scanner in;
 
     /**
@@ -52,7 +53,16 @@ public class Ui {
      */
     public void printReviewListHeading() {
         println("Here are your reviews: ");
-        println("    Title                     Category       Rating         Date");
+        println("+-------------------------------+----------------+----------------+------------------------+");
+        println("|   Title                       | Category       | Rating         | Date                   |");
+        println("+-------------------------------+----------------+----------------+------------------------+");
+    }
+
+    /**
+     * Prints border of end of table for list command.
+     */
+    public void printTableEndBorderForReview() {
+        println("+-------------------------------+----------------+----------------+------------------------+");
     }
 
     /**
@@ -60,7 +70,16 @@ public class Ui {
      */
     public void printRecommendationListHeading() {
         println("Here are your recommendations: ");
-        println("    Title                     Category       Price range       Location       RecBy");
+        println("+-------------------------------+----------------+----------------+----------------+-----------+");
+        println("|   Title                       | Category       | Price range    | Location       | RecBy     |");
+        println("+-------------------------------+----------------+----------------+----------------+-----------+");
+    }
+
+    /**
+     * Prints border of end of table for list command.
+     */
+    public void printTableEndBorderForReco() {
+        println("+-------------------------------+----------------+----------------+----------------+-----------+");
     }
 
     /**
@@ -69,11 +88,23 @@ public class Ui {
      * @param currentReview review to be viewed
      */
     public void printView(Review currentReview) {
-        println("Title               : " + currentReview.getTitle());
-        println("Category            : " + currentReview.getCategory());
-        println("Date & Time of Entry: " + currentReview.getDateTime());
-        println("Rating              : " + currentReview.starRating());
-        println("Description         : " + currentReview.getDescription());
+        println("+--------------------+---------------------------------------------------------------------+");
+        print("|Title               : " + currentReview.getTitle());
+        printWhiteSpaceForView(currentReview.getTitle().length());
+        println("|");
+        print("|Category            : " + currentReview.getCategory());
+        printWhiteSpaceForView(currentReview.getCategory().length());
+        println("|");
+        print("|Date & Time of Entry: " + currentReview.getDateTime());
+        printWhiteSpaceForView(20);
+        println("|");
+        print("|Rating              : " + currentReview.starRating());
+        printWhiteSpaceForView(12);
+        println("|");
+        print("|Description         : " + currentReview.getDescription());
+        printWhiteSpaceForView(currentReview.getDescription().length());
+        println("|");
+        println("+--------------------+---------------------------------------------------------------------+");
     }
 
     /**
@@ -96,6 +127,19 @@ public class Ui {
      */
     public void printWhiteSpaceTitle(int wordLength) {
         int numOfSpaces = MAX_WHITE_SPACE_TITLE - wordLength;
+        while (numOfSpaces > 0) {
+            out.print(" ");
+            numOfSpaces--;
+        }
+    }
+
+    /**
+     * Prints whitespace to align border in view command.
+     *
+     * @param wordLength length of word to subtract
+     */
+    public void printWhiteSpaceForView(int wordLength) {
+        int numOfSpaces = MAX_WHITE_SPACE_VIEW - wordLength;
         while (numOfSpaces > 0) {
             out.print(" ");
             numOfSpaces--;
