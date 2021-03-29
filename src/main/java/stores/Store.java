@@ -4,6 +4,8 @@ import menus.Menu;
 import reviews.Review;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Store {
     private String storeName;
@@ -13,10 +15,13 @@ public class Store {
     public static int ratingCount = 0;
     public static double averageRating;
 
+    private static Logger logger = Logger.getLogger(Store.class.getName());
+
     public Store(String storeName) {
         this.storeName = storeName;
         menus = new ArrayList<>();
         reviews = new ArrayList<>();
+        logger.log(Level.INFO, "New Store object " + storeName + " created");
     }
 
     public void displayStore() {

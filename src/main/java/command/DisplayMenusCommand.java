@@ -14,6 +14,7 @@ public class DisplayMenusCommand extends Command {
 
     public DisplayMenusCommand(Store store) {
         this.store = store;
+        assert store != null: "store must be defined";
     }
 
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
