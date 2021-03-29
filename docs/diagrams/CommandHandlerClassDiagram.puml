@@ -11,10 +11,10 @@ class CommandHandler {
     -createCommand(parsedArguments: ArrayList<String>, recordList: RecordList) : Command
 }
 
-class Duke {
+class Finux {
 
 }
 
-CommandHandler"1" <-- Duke
+CommandHandler"1" <-- Finux
 
 @enduml
