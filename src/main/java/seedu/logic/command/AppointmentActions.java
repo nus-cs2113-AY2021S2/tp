@@ -3,6 +3,7 @@ package seedu.logic.command;
 
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
+import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
 
@@ -11,30 +12,48 @@ import java.util.ArrayList;
 
 public class AppointmentActions {
     public static ArrayList<DoctorAppointment> appointmentList;
+    public static ArrayList<Staff> doctorList;
+
     protected static DoctorAppointmentStorage storage = new DoctorAppointmentStorage("data/DoctorAppointmentList.txt");
 
     public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
         appointmentList = loadAppointments;
     }
 
-    public static void addAppointment(String input) throws IOException {
-        String[] inputArray = input.split(" ");
+    public static void addAppointment(String[] inputArray) throws IOException {
 
-        String iD = inputArray[1];
-        String patientName = inputArray[2];
-        String gender = inputArray[3];
-        String date = inputArray[4];
+        String doctorID = inputArray[1];
+        String appointmentID = inputArray[2];
+        String patientName = inputArray[3];
+        String gender = inputArray[4];
+        String date = inputArray[5];
 
+        boolean isRegister = false;
+       //doctorList = DoctorAppointmentStorage.loadDoctorFile();
+        DoctorAppointment newAppointment = new DoctorAppointment(doctorID, appointmentID, patientName, gender, date);
 
-        DoctorAppointment newAppointment = new DoctorAppointment(iD, patientName, gender, date);
-
-        System.out.println("Appointment Added");
+        DoctorAppointmentUI.printAddedAppointment();
         appointmentList.add(newAppointment);
         storage.writeToFile(appointmentList);
+
+        /*for (Staff id : doctorList) {
+
+            if (id.getId().equals(doctorID)) {
+                isRegister = true;
+                DoctorAppointment newAppointment = new DoctorAppointment(doctorID, appointmentID, patientName, gender, date);
+
+                DoctorAppointmentUI.printAddedAppointment();
+                appointmentList.add(newAppointment);
+                storage.writeToFile(appointmentList);
+            }
+            System.out.println(id.getId());
+        }
+        if (!isRegister) {
+            DoctorAppointmentUI.printDoctorNotFound();
+        }*/
     }
 
-    public static void listAppointment(String input) throws Exception {
-        String[] inputArray = input.split(" ");
+    public static void listAppointment(String[] inputArray) throws Exception {
 
         String iD = inputArray[1];
         if (appointmentList.size() == 0) throw new EmptyListException();
@@ -50,8 +69,7 @@ public class AppointmentActions {
         }
     }
 
-    public static void deleteAppointment(String input) throws IOException {
-        String[] inputArray = input.split(" ");
+    public static void deleteAppointment(String[] inputArray) throws IOException {
         String iD = inputArray[1];
         int index = 999;
         int counter = 0;
