@@ -73,7 +73,7 @@ public class Ui {
         System.out.println("4. Delete canteen");
         System.out.println("5. Delete store in canteen");
         System.out.println("6. Delete reviews");
-        System.out.println("6. Exit");
+        System.out.println("7. Exit");
         System.out.println(LINESPACING);
     }
 
