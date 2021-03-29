@@ -3,11 +3,10 @@ package seedu.connoisseur.recommendation;
 public class Recommendation {
     protected String title;
     protected String category;
-    protected int priceLow;
-    protected int priceHigh;
+    protected double priceLow;
+    protected double priceHigh;
     protected String recommendedBy;
     protected String location;
-    protected static int MAX_RANGE_OF_PRICE = 5;
 
     /**
      * Creates a recommendation.
@@ -19,7 +18,7 @@ public class Recommendation {
      * @param inputBy        description of the recommended person
      */
     public Recommendation(String inputTitle, String inputCategory,
-                          int inputPriceLow, int inputPriceHigh, String inputBy, String location) {
+                          double inputPriceLow, double inputPriceHigh, String inputBy, String location) {
         this.title = inputTitle;
         this.category = inputCategory;
         this.priceLow = inputPriceLow;
@@ -87,7 +86,7 @@ public class Recommendation {
      *
      * @return lower bound price of the recommendation as an double
      */
-    public int getPriceLow() {
+    public double getPriceLow() {
         return priceLow;
     }
 
@@ -96,8 +95,26 @@ public class Recommendation {
      *
      * @return higher bound price of the recommendation as an double
      */
-    public int getPriceHigh() {
+    public double getPriceHigh() {
         return priceHigh;
+    }
+
+    /**
+     * Sets the low price of the recommendation.
+     *
+     * @param newPriceLow new low price of recommendation
+     */
+    public void setPriceLow(double newPriceLow) {
+        this.priceLow = newPriceLow;
+    }
+
+    /**
+     * Sets the high price of the recommendation.
+     *
+     * @param newPriceHigh new high price of recommendation
+     */
+    public void setPriceHigh(double newPriceHigh) {
+        this.priceHigh = newPriceHigh;
     }
 
     /**
@@ -123,9 +140,9 @@ public class Recommendation {
      *
      * @return pricing range of the experience as a string
      */
-    public String dollarRange() {
-        String dollarRange = Integer.toString(priceLow) + " - " + Integer.toString(priceHigh);
-        return dollarRange;
+    public String priceRange() {
+        String priceRange = priceLow + " - " + priceHigh;
+        return priceRange;
     }
 }
 

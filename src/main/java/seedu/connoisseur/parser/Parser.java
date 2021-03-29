@@ -58,12 +58,10 @@ public class Parser {
         case "delete":
             commandList.delete(arguments, isReviewMode);
             break;
+        case "done":
+            commandList.done(arguments, isReviewMode);
         case "view":
-            if (isReviewMode) {
-                commandList.viewReview(arguments);
-            } else {
-                ui.printCommandDoesNotExistInRecommendationMode();
-            }
+            commandList.view(arguments, isReviewMode);
             break;
         case "help":
             commandList.printHelp(arguments);

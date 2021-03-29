@@ -2,31 +2,15 @@ package seedu.connoisseur.commandlist;
 
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.review.Review;
+import seedu.connoisseur.sorter.SortMethod;
+import seedu.connoisseur.sorter.Sorter;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
-import seedu.connoisseur.sorter.SortMethod;
-import seedu.connoisseur.sorter.Sorter;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
-import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
-import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
-import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
-import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
-import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
-import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.DESCRIPTION_PROMPT;
-import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
+import static seedu.connoisseur.messages.Messages.*;
 
 /**
  * Class with methods for different commands in review mode.
@@ -100,22 +84,21 @@ public class ReviewCommandList {
     /**
      * List reviews according to different types of input.
      *
-     * @param input is either to show recommendations list
-     *              or the listing method preferred by user. If there is no
+     * @param sortMethod is listing method preferred by user. If there is no
      *              preferred listing method, default listing will be used.
      */
-    public void listReviews(String input, ArrayList<Review> reviewList) {
+    public void listReviews(String sortMethod, ArrayList<Review> reviewList) {
         if (reviewList.size() == 0) {
             ui.printEmptyReviewListMessage();
-        } else if (!validSortMethod(input)) {
+        } else if (!validSortMethod(sortMethod)) {
             ui.printInvalidSortMethodMessage();
         } else {
-            if (input == null) {
+            if (sortMethod == null) {
                 sorter.sortReview(reviewList);
                 printReviews(reviewList);
             } else {
                 try {
-                    sorter.sortReview(reviewList, input);
+                    sorter.sortReview(reviewList, sortMethod);
                     printReviews(reviewList);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidSortMethodMessage();
@@ -281,7 +264,7 @@ public class ReviewCommandList {
             }
         }
         if (reviewIndex == -1) {
-            ui.println(INVALID_DELETE_TITLE);
+            ui.println(INVALID_DELETE_REVIEW_TITLE);
         } else {
             reviewList.remove(reviewIndex);
             ui.println(title + DELETE_SUCCESS);

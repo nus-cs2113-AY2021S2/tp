@@ -82,7 +82,8 @@ public class Messages {
 
     // Delete
     public static final String MISSING_DELETE_TITLE = "Please specify title of review to be deleted";
-    public static final String INVALID_DELETE_TITLE = "Specified review does not exist!";
+    public static final String INVALID_DELETE_REVIEW_TITLE = "Specified review does not exist!";
+    public static final String INVALID_DELETE_RECO_TITLE = "Specified recommendation does not exist!";
     public static final String DELETE_SUCCESS = " has been deleted.";
 
     // View
@@ -91,4 +92,7 @@ public class Messages {
 
     //Edit
     public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
+
+    //Convert
+    public static final String CONVERT_SUCCESS = " has been made a review!";
 }

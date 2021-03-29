@@ -136,18 +136,40 @@ public class CommandList {
         if (isReviewMode) {
             reviewCommandList.deleteReview(title);
         } else {
-            ui.printCommandDoesNotExistInRecommendationMode();
+            recommendationsCommandList.deleteRecommendation(title);
         }
     }
+
+
 
     /**
      * View a selected review.
      *
      * @param title title of the review to be viewed.
+    * @param isReviewMode to check if user is in review or recommendation mode.
      */
-    public int viewReview(String title) {
-        return reviewCommandList.viewReviewCommand(title);
+    public void view(String title, Boolean isReviewMode) {
+        if (isReviewMode) {
+            reviewCommandList.viewReviewCommand(title);
+        } else {
+            ui.printCommandDoesNotExistInRecommendationMode();
+        }
     }
+
+    /**
+     * Removes selected recommended from list and converts it to a review
+     *
+     * @param title title of the review to be viewed.
+     * @param isReviewMode to check if user is in review or recommendation mode.
+     */
+    public void done(String title, Boolean isReviewMode) {
+        if (isReviewMode) {
+            ui.printCommandDoesNotExistInReviewMode();
+        } else {
+            recommendationsCommandList.convertRecommendation(title);
+        }
+    }
+
 
     /**
      * Add a selected review or recommendation.
