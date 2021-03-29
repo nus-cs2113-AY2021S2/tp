@@ -1,5 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+!include style.puml
 
 participant ":RemoveCommand" as RemoveCommand
 participant "fridge:Fridge" as Fridge
@@ -24,26 +25,25 @@ end
 
 deactivate RemoveCommand
 
-RemoveCommand -> RemoveCommand: removePortion()
-activate RemoveCommand
-
 alt newQuantity > 0
     RemoveCommand -> Fridge: getFridge()
     activate Fridge
     Fridge -> Food: setQuantity()
     activate Food
+    return
+    return
     deactivate Food
+    deactivate Fridge
+    destroy Food
 else newQuantity == 0
     RemoveCommand -> Fridge: removeFood
+    activate Fridge
+    return
     deactivate Fridge
 end
-
-deactivate RemoveCommand
-destroy Food
 destroy Fridge
 
-RemoveCommand -> RemoveCommand: showResults()
-activate RemoveCommand
+<-- RemoveCommand: result
 deactivate RemoveCommand
-return result
+
 @enduml
