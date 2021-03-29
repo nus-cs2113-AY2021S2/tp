@@ -24,12 +24,12 @@ public class NurseScheduleStorage {
         try {
             File file = new File(FILE_PATH);
             file.createNewFile();
-        } catch (IOException e) {
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    private ArrayList<NurseSchedule> readFile() {
+    private static ArrayList<NurseSchedule> readFile() {
         try {
             FileInputStream file = new FileInputStream(FILE_PATH);
             Scanner sc = new Scanner(file);
@@ -38,7 +38,7 @@ public class NurseScheduleStorage {
                 String[] details = sc.nextLine().split("\\|", 0);
                 nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             }
-        } catch (IOException | ArrayIndexOutOfBoundsException e) {
+        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException e) {
             System.out.println("Error loading saved file!");
         }
         return nurseSchedules;
@@ -58,7 +58,7 @@ public class NurseScheduleStorage {
         }
     }
 
-    public ArrayList<NurseSchedule> load() {
+    public static ArrayList<NurseSchedule> load() {
         createFile();
         nurseSchedules = readFile();
         return nurseSchedules;
