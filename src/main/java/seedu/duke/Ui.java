@@ -6,13 +6,12 @@ import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
 import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
+import seedu.duke.task.TaskManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -141,18 +140,13 @@ public class Ui {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out
-                    .println(
-                            "What is the module of the assignment you want to add? Enter the number:");
+            System.out.println("What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out
-                    .println(
-                            "What is the module of the midterm you want to add? Enter the number:");
+            System.out.println("What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out
-                    .println(
-                            "What is the module of the final exam you want to add? Enter the number:");
+            System.out.println("What is the module of the final exam you want to add? Enter the number:");
         }
+        printEmptyLine();
     }
 
     public static void printNoModulesMessage() {
@@ -475,16 +469,16 @@ public class Ui {
     public static void printSelectTaskNumberToMarkOrUnmark(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();
@@ -495,16 +489,16 @@ public class Ui {
     public static void printSelectTaskNumberToDelete(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();
@@ -515,16 +509,16 @@ public class Ui {
     public static void printSelectTaskNumberToPin(int taskNumber) {
         switch (taskNumber) {
         case 1:
-            printTaskList(TaskList.tasks);
+            printTaskList(TaskManager.tasks);
             break;
         case 2:
-            printAssignmentList(TaskList.assignments);
+            printAssignmentList(TaskManager.assignments);
             break;
         case 3:
-            printMidtermList(TaskList.midterms);
+            printMidtermList(TaskManager.midterms);
             break;
         case 4:
-            printFinalExamList(TaskList.finalExams);
+            printFinalExamList(TaskManager.finalExams);
             break;
         default:
             printInvalidIntegerMessage();
@@ -606,7 +600,13 @@ public class Ui {
 
     public static void printModuleNumberDoesNotExistMessage() {
         System.out.println("A module for that number does not exist. "
-                + "You can add modules through the ModuleInfo menu!");
-        printHorizontalLine();
+                + "Would you like to add this module? [Y/N]");
+    }
+
+    public static void printModuleList() {
+        System.out.println("This is the list of modules:");
+        for (int i = 1; i <= ModuleInfo.modules.size(); ++i) {
+            System.out.println("[" + i + "] " + ModuleInfo.modules.get(i - 1).getName());
+        }
     }
 }

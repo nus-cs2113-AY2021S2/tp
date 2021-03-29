@@ -1,7 +1,6 @@
 package seedu.duke;
 
 import seedu.duke.link.Links;
-import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
 import java.io.IOException;
@@ -19,10 +18,10 @@ public class Duke {
     }
 
     public static void runMainMenu() {
-        TaskList taskList = new TaskList();
+        TaskManager taskManager = new TaskManager();
         loadAllFiles();
         while (true) {
-            Ui.printPinnedTaskList(TaskList.pinnedTasks);
+            Ui.printPinnedTaskList(TaskManager.pinnedTasks);
             Ui.printMainMenu();
             String command = Ui.readCommand();
             try {

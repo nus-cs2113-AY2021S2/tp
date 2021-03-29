@@ -13,7 +13,7 @@ public class Module {
     protected Hashtable<String, Integer> components;
     protected String zoomLink;
     protected ArrayList<Task> tasks;
-    protected int MCs;
+    protected int mc;
 
     public Module(String name, String description) {
         this.name = name;
@@ -63,7 +63,7 @@ public class Module {
     public String toString() {
         return "Name: " + getName() + "\n\nDescription:\n"
                 + getDescription() + "\n\nReview:\n" + getReview()
-                + "\n\nModular Credit:\n" + getMCs();
+                + "\n\nModular Credit:\n" + getMc();
     }
 
     public void removeZoomLink() {
@@ -74,11 +74,11 @@ public class Module {
         this.review = "You have not reviewed this module yet.";
     }
 
-    public void setMCs(int MCs) {
-        this.MCs = MCs;
+    public void setMc(int mc) {
+        this.mc = mc;
     }
 
-    public int getMCs() {
-        return MCs;
+    public int getMc() {
+        return mc;
     }
 }
