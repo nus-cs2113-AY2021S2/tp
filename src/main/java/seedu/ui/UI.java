@@ -125,6 +125,14 @@ public class UI {
         System.out.println("OOPS! I cant recognize that command! ");
     }
 
+    public static void tooManyInputErrorMessage() {
+        System.out.println("OOPS! There is too many input for this command");
+    }
+
+    public static void tooLittleInputErrorMessage() {
+        System.out.println("OOPS! There is too little input for this command");
+    }
+
     public static void noInputErrorMessage() {
         System.out.println("Command is missing input parameter");
     }

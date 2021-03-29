@@ -1,2 +1,5 @@
 D22222|Owen|13|owen
-
+D1111|Owen|20|iowf
+D111|Owen|40|qwe
+N12345|we123443|30|wasd
+N12349|owen|1232|null
