@@ -214,7 +214,80 @@ Here are some inputs you can try:
 * `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
   * Inputs a `squid` of category `seafood`, with expiry date of `15-08-2021`, location of `freezer`, and
     quantity of `100`.
-    
+
+For subsequent examples below, this guide assumes that these four foods `chicken`, `milk`, `Coke`, and `squid`
+have been added to the Fridge. 
+
+### Listing food
+
+The `list` command in `FridgeFriend` has three (3) variations:
+* List all food in the fridge.
+* List all food of a certain category in the fridge.
+* List all food of a certain storage location in the fridge.
+
+The latter two commands will return an output that is a subset of the first command (_List all food_).
+
+No items will be listed if no food in the fridge match the conditions specified in the command.
+
+1. Test case: `list`
+* Expected:
+  ```
+  Here are the items in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+  ```
+
+2. Test case: `list meat`
+* Expected:
+  ```
+  These are the MEAT in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```    
+
+3. Test case: `list freezer`
+* Expected:
+  ```
+  These are the food stored in FREEZER:
+	  1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+  ```    
+
+### Searching for a food
+Checks if a food is in the fridge, and if it is found, outputs the location of the food.
+If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
+
+1. Test case: `search chicken`
+    * Expected: `You have chicken stored in LOWER_SHELF of your fridge.`
+2. Test case: `search pear`
+    * Expected: `You do not have pear in your fridge.`
+3. Test case: `search chick`
+    * Expected: `You do not have chick in your fridge.`
+
+### Expiring food
+This feature might be slightly more challenging to test, since the user tester has to input a food
+that has an expiry date within 7 days of their local system time, as of the date of testing.
+
+1. Prerequisites: Add a food with an expiry date within 7 days of the user's system date.
+    * Modify the input in the above [add command](adding-food) in order to fulfil this requirement.
+    * Example: The current date on my system time is `29-03-2021`. 
+      * Prior to testing, I perform the command `add duck /cat meat /exp 30-03-2021 /loc lower_shelf /qty 100`
+2. Test case: `expiring`
+    * Expected:
+  ```
+  These are the food expiring in the next week:
+      1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
+  ```  
+### Removing a food
+Removing a food while all foods are being shown.
+
+
+//TBD   
+1. Prerequisites: List all foods using the `list` command. Multiple food in the list.
+2. Test case: `remove 4`
+  * Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. 
+    Timestamp in the status bar is updated.
+
 ## Attribution
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).
