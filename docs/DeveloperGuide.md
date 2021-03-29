@@ -188,7 +188,10 @@ Through Patient Manager, general practitioners are able to manage patients faste
        and how to use them.
     2. Test case: `help add`\
         Expected: Application prints out a help message explaining only the `add` command.
-
+3. Exiting
+    1. Test case: `exit`\
+        Expected: Application prints goodbye message and exits. All data will be saved to
+       `./data/TODO_ADD_FILENAME_HERE.txt`
 ### Adding and deleting patients
 
 1. Adding a new patient
