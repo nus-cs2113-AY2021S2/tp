@@ -40,8 +40,7 @@ If you plan to use Intellij IDEA (highly recommended):
 ## Design & implementation
 
 ### Architecture
-
-![Architecture Diagram](./images/architecture_diagram.png)
+<img src="./images/architecture_diagram.png" width="600">
 
 The Architecture Diagram shown above gives a high-level explanation of PatientManager.
 Given below is a brief overview of each component.
@@ -67,7 +66,7 @@ It is also responsible for displaying the response from PatientManager to the sc
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command `add S1234567D`.
 
-![Sequence Diagram](./images/sequence_diagram.png)
+<img src="./images/sequence_diagram.png" width="600">
 
 The sections below give more details for each component.
 
@@ -156,10 +155,10 @@ Through Patient Manager, general practitioners are able to manage patients faste
 1. Initial launch
    1. Download `tp.jar` and copy into an empty folder.
    2. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
-      ![PowerShell](./images/WindowsPowerShell.png)
+      <img src="./images/WindowsPowerShell.png" width="600">
    3. Execute `java -jar tp.jar` to start the Patient Manager.\
       Expected: Shows the welcome message as shown below
-      ![Program Startup](./images/start_program.png)
+      <img src="./images/start_program.png" width="600">
 2. View help
     1. Test case: `help`\
        Expected: Application prints out a help message containing a list of valid commands
