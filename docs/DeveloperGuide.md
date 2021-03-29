@@ -169,6 +169,8 @@ Through Patient Manager, general practitioners are able to manage patients faste
 - *General Practitioner* - A doctor based in the community who treats patients with minor or chronic illnesses and
   refers those with serious conditions to a hospital. Their duties are not confined to specific organs of the body,
   and they have particular skills in treating people with multiple health issues.
+- *Visit Record* - Details taken down by the doctor during one's visit. In this case, we take note of the patient's
+  symptoms, the diagnosis made by the doctor, and any prescriptions or referals given.
 
 ## Appendix E: Instructions for Manual Testing
 
@@ -181,75 +183,47 @@ Through Patient Manager, general practitioners are able to manage patients faste
    3. Execute `java -jar tp.jar` to start the Patient Manager.\
       Expected: Shows the welcome message as shown below
       ![Program Startup](./images/start_program.png)
-      <!-- TODO: Standardize program screenshots-->
 2. View help
     1. Test case: `help`\
-        Expected: Application prints out a help message containing a list of valid commands
+       Expected: Application prints out a help message containing a list of valid commands
        and how to use them.
     2. Test case: `help add`\
-        Expected: Application prints out a help message explaining only the `add` command.
+       Expected: Application prints out a help message explaining only the `add` command.
 3. Exiting
     1. Test case: `exit`\
-        Expected: Application prints goodbye message and exits. All data will be saved to
+       Expected: Application prints goodbye message and exits. All data will be saved to
        `./data/TODO_ADD_FILENAME_HERE.txt`
-<!--
-### Adding and deleting patients
--->
 ### Adding and Loading Patients
 
 1. Adding a new patient
     1. Test case: `add S1234567D`\
-       Expected: Application prints:
+       Expected: Application shows:
        ```
        ----------------------------------------------------------------------
        Patient S1234567D has been added!
        ----------------------------------------------------------------------
        ```
-   <!-- TODO: prevent adding duplicate patients
-    1. Test case: `add S1234567D`\
-       Expected: Application prints:
-       ```
-       ----------------------------------------------------------------------
-       Patient S1234567D has been added!
-       ----------------------------------------------------------------------
-       ```
-    -->
 2. Loading a patient's records
     1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
     2. Test case: `load S1234567D`\
-       Expected: Application loads S1234567D's records and prints:
+       Expected: Application loads S1234567D's records and shows:
        ```
        ----------------------------------------------------------------------
        Patient S1234567D's data has been found and loaded.
        ----------------------------------------------------------------------
        ```
-<!-- TODO: add this after implementing delete
-2. Deleting a patient
-    1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
-    2. Test case: `delete S1234567D`\
-        Expected: 
--->
 ### Adding and Viewing a Patient's Visit Records
 1. Adding visit records
-    1. Prerequisite: 
-<!--
-### Automated Testing
-We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
-```
-### For JUnit tests
-# *nix OS and MacOSX bash
-./gradlew check
-# Windows CMD
-gradlew.bat check
+    1. Prerequisite: Patient's records have already been loaded.
+    2. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`
+       Expected: Details added to patient's visit record. Newly-added details shown in status message.
+2. Viewing visit records
+    1. Prerequisite: Patient's records have already been loaded.
+    2. Test case: `retrieve`
+       Expected: Details of all of the patient's past visits shown.
 
-### For I/O redirection tests
-cd text-ui-test
-# *nix OS and MacOSX bash
-./runtest.sh
-# Windows CMD
-runtest.bat
-```
-
-### Manual Testing
-The current version does not support storing the data on the local drive. To start with the manual testing process, you may refer to the "QuickStart" section of the [User Guide](UserGuide.md).
--->
+### Saving Data
+1. Missing data files
+    1. Delete the file `./data/TODO_ADD_FILENAME_HERE.txt`.
+    2. Launch the app with `java -jar tp.jar`.
+    3. Expected: Application should start up without any data.
