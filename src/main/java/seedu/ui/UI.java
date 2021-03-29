@@ -135,11 +135,11 @@ public class UI {
     public static void printStartMenu() {
         System.out.println("Start Menu");
         System.out.println("Commands:");
-        System.out.println("\"1\" to go to staff");
-        System.out.println("\"2\" to go to patients");
-        System.out.println("\"3\" to go to doctors appointments");
-        System.out.println("\"4\" to go to nurse schedules");
-        System.out.println("\"5\" to go to drugs inventory");
+        System.out.println("\"Staff\" to go to staff");
+        System.out.println("\"Patient\" to go to patients");
+        System.out.println("\"Appointment\" to go to doctors appointments");
+        System.out.println("\"Schedule\" to go to nurse schedules");
+        System.out.println("\"Inventory\" to go to drugs inventory");
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }

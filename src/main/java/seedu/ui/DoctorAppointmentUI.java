@@ -18,4 +18,16 @@ public class DoctorAppointmentUI {
     public static void printAppointmentMenuPrompt(){
         System.out.print("Appointments --> ");
     }
+
+    public static void invalidCommandPrompt(){
+        System.out.println("Sorry, I don't know what that means :(");
+    }
+
+    public static void printAddedAppointment(){
+        System.out.println("Appointment Added");
+    }
+
+    public static void printDoctorNotFound(){
+        System.out.println("Sorry your appointment is not added because the DoctorID does not exist :(");
+    }
 }

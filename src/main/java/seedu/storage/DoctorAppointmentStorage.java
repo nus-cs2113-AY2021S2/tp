@@ -2,6 +2,8 @@ package seedu.storage;
 
 import seedu.logic.command.AppointmentActions;
 import seedu.model.object.DoctorAppointment;
+import seedu.model.object.staff.Staff;
+import seedu.model.objectList.StaffList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +18,8 @@ import java.util.Scanner;
 public class DoctorAppointmentStorage {
     private final String filePath;
     private final File file;
+    private final static String STAFF_FILE_PATH = "data/Staff.txt";
+
 
     public DoctorAppointmentStorage(String filePath) {
         this.filePath = filePath;
@@ -35,8 +39,8 @@ public class DoctorAppointmentStorage {
         Scanner fileReader = new Scanner(fileName);
         while (fileReader.hasNextLine()) {
             String input = fileReader.nextLine();
-            String[] data = input.split("\\s\\|\\s", 4);
-            loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3]));
+            String[] data = input.split("\\s\\|\\s", 5);
+            loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
         }
         fileReader.close();
         return new AppointmentActions(loadAppointments);
@@ -49,6 +53,20 @@ public class DoctorAppointmentStorage {
             fileWriter.write(task.saveTask() + "\n");
         }
         fileWriter.close();
+    }
+
+    public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException {
+        ArrayList<Staff> loadDoctorList = new ArrayList<>();
+
+        File fileName = new File(STAFF_FILE_PATH);
+        Scanner fileReader = new Scanner(fileName);
+        while (fileReader.hasNextLine()) {
+            String input = fileReader.nextLine();
+            String[] data = input.split("\\s\\|\\s", 4);
+            loadDoctorList.add(new Staff(data));
+        }
+        fileReader.close();
+        return loadDoctorList;
     }
 
 }

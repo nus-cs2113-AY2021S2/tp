@@ -2,6 +2,8 @@ package seedu.logic.parser;
 
 
 import seedu.logic.command.AppointmentActions;
+import seedu.ui.DoctorAppointmentUI;
+import seedu.ui.UI;
 
 public class DoctorAppointmentParser {
 
@@ -24,7 +26,7 @@ public class DoctorAppointmentParser {
             AppointmentActions.helpAppointment();
             break;
         default:
-            System.out.println("Sorry, I don't know what that means :(");
+            DoctorAppointmentUI.invalidCommandPrompt();
         }
         return false;
     }

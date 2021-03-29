@@ -35,8 +35,7 @@ public class DoctorAppointmentInstance {
                 doctorAppointmentStorage.createFile();
                 details = doctorAppointmentStorage.loadFile();
             } catch (IOException e1) {
-                e1.getMessage();
-
+                System.out.println("File cannot be created");
             }
         }
     }
