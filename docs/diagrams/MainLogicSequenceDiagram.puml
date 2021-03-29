@@ -24,22 +24,22 @@ loop isExit
     fridgefriend -> ui: getNextLine()
     return userInput
 
-    fridgefriend -> parser: getCommand(userInput)
-    create command
-    parser -> command: constructor()
-    return command
-    return command
-    destroy parser
+    alt successful execution
+        fridgefriend -> parser: getCommand(userInput)
+        create command
+        parser -> command: constructor()
+        return command
+        return command
+        destroy parser
 
-    fridgefriend -> fridgefriend: executeCommand()
+        fridgefriend -> fridgefriend: executeCommand()
         fridgefriend -> command: setData(fridge)
         return
         fridgefriend -> command: execute()
         return
         destroy command
         return
-
-    opt exception caught
+    else exception caught
         create exception
         fridgefriend -> exception: constructor()
         return e
