@@ -1,6 +1,5 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
 !include style.puml
 
 participant ":SearchCommand" as SearchCommand
@@ -12,7 +11,6 @@ activate SearchCommand
 
 SearchCommand-> SearchCommand: getMessagePrinterToUser
 activate SearchCommand
-
 
 loop food in fridge
     SearchCommand -> Fridge: getFood()
@@ -27,6 +25,7 @@ end
 destroy Food
 destroy Fridge
 
+
 alt isContain
     return
 else !isContain
@@ -35,5 +34,5 @@ else !isContain
     return
 end
 
-return
+return result
 @enduml

@@ -148,11 +148,59 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
+
 ### RemoveCommand
 
-The `RemoveCommand` implements the operation through removing the quantity of the food.
+When the user specify to remove a portion of a food item in the fridge, the `remove` command
+will execute the remove operation by:
+* Searching of the food item in the fridge by looping through each food item.  
+* If the food item exist, check if removing the quantity will reduce the quantity to zero.
+* If it does not reduce to zero, then proceed to remove the required quantity.
+* If it does reduce to zero, then remove the food item completely. 
+* Otherwise, throw an exception to FridgeFriend.
 
-* 
+The sequence diagram below shows how the `remove` operation works: 
+
+![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
+
+### SearchCommand
+
+When the user specify to search a food item in the fridge, the `search` command will execute
+search operation by:
+* Searching the list of foods in the fridge by that contain the food name entered by the user 
+  through a loop.
+* Afterwards, pass the message success or failure message to the UI. 
+
+The sequence diagram shows how the `search` operation works:
+
+![SearchSequenceDiagram](diagrams/diagram_images/SearchSequenceDiagram.png)
+
+### RunningLowCommand
+
+The `runningLow` command is implemented through checking the total quantity of each foodCategory
+in the fridge with the default minimum number of quantity. Then return all the foodCategory that
+has quantity lower than the default minimum number of quantity in each food category. 
+
+The sequence diagram shows how the `runninglow` operation works:
+
+![RunningLowSequenceDiagram](diagrams/diagram_images/RunningLowSequenceDiagram.png)
+
+### SetLimitCommand
+
+The default minimum number of quantity in each food category can be changed through the `setlimit`
+command. The `setlimit` command call the setter method in the FoodCategory to change the limit. 
+
+The sequence diagram shows how the `setlimit` operation works:
+
+![SetLimitSequenceDiagram](diagrams/diagram_images/SetLimitSequenceDiagram.png)
+
+### ExpiringCommand
+
+The `expiring` command is implemented through looping of the food items in the fridge and 
+return the food item if the expiry date is within one week of calling the command. 
+
+The sequence diagram shows how the `expiring` operation works:
+![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
 
 
 ## Product scope
@@ -167,7 +215,10 @@ The `RemoveCommand` implements the operation through removing the quantity of th
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+* Provide ease of monitoring of food in the fridge which allow user to know which food is expiring 
+  soon and what requires topping up
+* Allow for easier search of food in fridge
+* Allow tracking of past food items in the fridge
 
 ## User Stories
 
@@ -221,8 +272,8 @@ Thus the data is not protected by nature.
 
 ## Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* 
+* **Human-Editable-File**: files with .txt
+* **Single-User-Product**:
 
 ## Instructions for manual testing
 

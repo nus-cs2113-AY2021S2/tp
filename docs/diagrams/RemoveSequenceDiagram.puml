@@ -13,7 +13,6 @@ activate RemoveCommand
 RemoveCommand -> RemoveCommand: findFoodByName(foodNameToEdit: String)
 activate RemoveCommand
 
-
 loop food in fridge
     RemoveCommand -> Fridge: getFood()
     activate Fridge
@@ -47,10 +46,12 @@ else exception
     activate Exception
     return
 end
+
 deactivate RemoveCommand
 destroy Food
 destroy Fridge
 destroy Exception
+
 <-- RemoveCommand: result
 deactivate RemoveCommand
 
