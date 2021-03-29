@@ -1,6 +1,7 @@
 # Patient Manager Developer Guide
 
 ## Table of Contents
+
 - [Patient Manager Developer Guide](#patient-manager-developer-guide)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
@@ -42,6 +43,7 @@ to organize the records of their patients.
 First, fork this repo, and clone the fork into your computer.
 
 If you plan to use Intellij IDEA (highly recommended):
+
 1. Configure the JDK: Follow the guide 
    [Intellij IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) \
    IDEA: Configuring the JDK to ensure Intellij is configured 
@@ -116,6 +118,11 @@ The sections below give more details for each component.
 
 ### UI Component
 
+`Ui.java` enables:
+
+- reading of user input
+- printing of string messages, exceptions, a welcome message and a standardized long line
+
 ### Parser Component
 
 API: `Parser.java`
@@ -181,21 +188,32 @@ the actual logic of this command.
 API: `Patient.java`, `Record.java` and `Data.java` 
 
 `Record.java` contains:
+
 - all the symptoms recorded by a GP during the consultation
 - all the diagnoses made by a GP during the consultation
 - all the prescriptions made by a GP during the consultation
 - the most recently added symptom/diagnosis/prescription, which corresponds to the most recently executed `record` command
 
 `Patient.java` contains:
+
 - the patient's NRIC/FIN number, which uniquely identifies the patient
 - a `TreeMap<LocalDate, Record>` which maps the patient's consultation dates to the visit records for that date
 
-`Data.java`,
+`Data.java`
+
 - stores a `SortedMap<String, Patient>`, which maps the patient's NRIC/FIN number to their corresponding `Patient` instance
 - implements methods to add new patients and delete existing patients
 - implements methods to load an existing patient's medical records
 
 ### Storage Component
+
+`Storage.java`:
+
+- facilitates the saving of application data into a text file
+- facilitates the loading of application data from the aforementioned text file
+- convert records to string
+- converts string to records
+
 ### Exception Component
 
 API: all classes in [src/main/java/seedu/exception](src/main/java/seedu/exception)
@@ -204,11 +222,13 @@ All unexpected behaviour encountered by Patient Manager is signalled and handled
 `Exception` is too broad, we have created a few custom exception classes to relay exception information.
 
 `BaseException.java`:
+
 - inherits from the generic `Exception`
 - base class of all custom exceptions
 - overwrites the `toString()` method to make it output messages more meaningfully
 
 `InvalidInputException.java`
+
 - inherits from `BaseException`
 - is used to handle all unexpected user input, like invalid commands, wrong NRIC numbers, etc.
 - implies that user should re-enter correct command and arguments
@@ -216,11 +236,13 @@ All unexpected behaviour encountered by Patient Manager is signalled and handled
   for exception initialization (see example below)
 
 `StorageException.java`
+
 - inherits from `BaseException`
 - is used to handle expected events occur during loading and saving data from/onto the hard disk
 - shows that usual saving/loading action cannot be done, and there might be the case of a data loss after closing the program
 
 `UnknownException.java`
+
 - inherits from `BaseException`
 - is used to handle unusual events that should not be trigger by user
 - signals an internal error of the program and should be fixed during next iteration or through hotfixes
@@ -257,15 +279,14 @@ Input command and/or arguments are invalid:
 
 ### Target user profile
 
-{Describe the target user profile}
+The target users for this application are _general practitioners_ (GP) who work in clinics.
+They are keen to reduce the paperwork that is required of them during consultation sessions, so that they may focus more on the consultation itself.
+Also, they would like to have a more efficient way to organize the records of their patients.
 
 ### Value proposition
 
 Through Patient Manager, general practitioners are able to manage patients faster than a typical mouse/GUI driven app.
-
-{Describe the value proposition: what problem does it solve?}
-
-{more to be added}
+The typical paperwork, such as recording of symptoms, diagnoses and prescriptions, are greatly reduced through digital input.
 
 ## User Stories
 
