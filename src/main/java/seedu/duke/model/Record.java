@@ -23,14 +23,14 @@ public class Record {
     }
 
     /**
-     * Generates a record with existing data..
+     * Generates a record with existing data.
      */
     public Record(ArrayList<String> symptoms, ArrayList<String> diagnoses, ArrayList<String> prescriptions) {
         this.symptoms = symptoms;
         this.diagnoses = diagnoses;
         this.prescriptions = prescriptions;
     }
-    
+
     /**
      * Obtain the consultation detail of this record.
      *
