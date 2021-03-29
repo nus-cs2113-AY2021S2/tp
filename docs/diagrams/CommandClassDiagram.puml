@@ -24,7 +24,7 @@ package Command <<Rectangle>> {
 package Fridge <<Rectangle>>  {
 }
 
-package Main <<Rectangle>> {
+package FridgeFriend <<Rectangle>> {
 }
 
 package UI <<Rectangle>> {
@@ -112,7 +112,7 @@ class ExpiringCommand {
 
 Command ---.down> Fridge: uses
 Command ---.down> UI: prints with
-Main ---.down> Command: execute >
+FridgeFriend ---.down> Command: execute >
 AddCommand --right|> Command
 RemoveCommand --down|> Command
 ListCommand ---down|> Command
