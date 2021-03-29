@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+hide circle
 skinparam classAttributeIconSize 0
+skinparam monochrome false
 
 class ParserHandler {
     -startOptionArray: String[]
@@ -17,10 +19,21 @@ class ParserHandler {
     -getNextOptionIndex(leftOverString: String): int
 }
 
-class Duke {
+class Finux {
+    -ui:Ui
+    -records: RecordList
+    -storage: Storage
+    -commandHandler: CommandHandler
+    -parserHandler: ParserHandler
+    -creditScoreMap: CreditScoreMap
 
+    +main()
+    -run()
+    -start()
+    -commandLooper()
+    -end()
 }
 
-ParserHandler"1" <-- Duke
+ParserHandler"1" <-- Finux
 
 @enduml
