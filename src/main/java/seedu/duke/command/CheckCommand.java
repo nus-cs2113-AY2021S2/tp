@@ -12,8 +12,8 @@ public class CheckCommand extends Command {
 
     public CheckCommand(CommandRecordType recordType, HashMap<String, String> params) {
         this.recordType = recordType;
-        this.optionalPeriodType = params.get("periodType") == null ?
-                null : PeriodType.valueOf(params.get("periodType"));
+        this.optionalPeriodType = params.get("periodType") == null
+                ? null : PeriodType.valueOf(params.get("periodType"));
     }
 
     @Override
