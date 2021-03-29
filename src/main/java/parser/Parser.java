@@ -114,7 +114,8 @@ public class Parser {
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             nusFoodReviews.setStoreIndex();
             int currentStoreIndex = nusFoodReviews.getStoreIndex();
-            ArrayList<Store> stores = nusFoodReviews.getCanteens().get(currentCanteenIndex).getStores();
+            ArrayList<Store> stores = nusFoodReviews.getCanteens()
+                    .get(currentCanteenIndex).getStores();
             ArrayList<Review> reviews = nusFoodReviews.getCanteens()
                     .get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
             averageRating = stores.get(currentStoreIndex).getAverageRating();
