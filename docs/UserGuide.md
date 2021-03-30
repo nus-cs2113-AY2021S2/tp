@@ -224,7 +224,7 @@ Format : `day → DAY_NUMBER`
 
 ### 4.6 Notes
 #### 4.6.1 Adding notes
-Tags a note to a particular existing location of your choice.<br>
+Tags a note to a particular existing location of your choice.<br/>
 Format : `add note  → LOCATION -> NOTE`
 - When the 'add note' command is given, NUSMaze will prompt you for a `LOCATION`.
 - The `LOCATION` must be one of the Engineering or Computing buildings.
@@ -238,7 +238,7 @@ Format : `list notes → LOCATION`
 - The `LOCATION` must be one of the Engineering or Computing buildings.
 
 #### 4.6.3 Delete note
-Delete the specified note based on index number tagged to the given existing location.<br>
+Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note → LOCATION → NOTE INDEX`
 - When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`. 
   
