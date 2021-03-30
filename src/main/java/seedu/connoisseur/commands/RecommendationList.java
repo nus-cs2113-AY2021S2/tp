@@ -26,13 +26,11 @@ import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
 public class RecommendationList {
     private final Ui ui;
     public ArrayList<Recommendation> recommendations = new ArrayList<>();
-    public ArrayList<Review> reviews = new ArrayList<>();
     private ReviewList reviewList;
 
     public RecommendationList(ConnoisseurData connoisseurData, Ui ui) {
         this.ui = ui;
         this.recommendations = connoisseurData.getRecommendations();
-        this.reviews = connoisseurData.getReviews();
         reviewList = new ReviewList(connoisseurData, ui);
     }
 
@@ -213,30 +211,33 @@ public class RecommendationList {
                     + "| Location: " + recommendations.get(recommendationIndex).getLocation()
                     + "| RecBy: " + recommendations.get(recommendationIndex).getRecommendedBy();
             Review r = new Review(title, category, 0, description);
-            reviews.add(r);
+
             System.out.println("Done! How would you rate your experience out of 5 stars?");
             rating = ui.readCommand();
+
             try {
                 if (Integer.parseInt(rating) <= 5 && Integer.parseInt(rating) >= 0) {
-                    reviewList.editReviewRating(rating, reviews.size() - 1);
+                    r.setRating(Integer.parseInt(rating));
                 } else {
                     System.out.println("Invalid rating, failed to edit rating ");
                 }
+                System.out.println("Add in details of your experience? (y/n)");
+                switch (ui.readCommand().toLowerCase()) {
+                case "y":
+                    System.out.println("Enter your new description of the review: ");
+                    String newDescription = ui.readCommand();
+                    r.setDescription(newDescription);
+                    break;
+                case "n":
+                    break;
+                default:
+                    ui.println(INVALID_COMMAND);
+                }
+                reviewList.receiveConvert(r);
             } catch (NumberFormatException ne) {
                 System.out.println("Invalid rating, failed to edit rating ");
             }
-            System.out.println("Add in details of your experience? (y/n)");
-            switch (ui.readCommand().toLowerCase()) {
-            case "y":
-                System.out.println("Enter your new description of the review: ");
-                String newDescription = ui.readCommand();
-                reviewList.editReviewDescription(newDescription, reviews.size() - 1);
-                break;
-            case "n":
-                break;
-            default:
-                ui.println(INVALID_COMMAND);
-            }
+
             recommendations.remove(recommendationIndex);
             ui.println(title + CONVERT_SUCCESS);
         }

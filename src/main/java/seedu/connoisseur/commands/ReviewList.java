@@ -426,4 +426,8 @@ public class ReviewList {
             return false;
         }
     }
+
+    public void receiveConvert(Review r){
+        reviews.add(r);
+    }
 }
