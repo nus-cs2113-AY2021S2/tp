@@ -22,7 +22,6 @@ import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
-import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.FoodCategory;

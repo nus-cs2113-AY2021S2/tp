@@ -1,7 +1,7 @@
 @startuml MainLogicSequenceDiagram
 !include style.puml
 
-box "FridgeFriend\n" FRIDGEFRIEND_COLOR
+box "FridgeFriend\n" FRIDGEFRIEND_COLOR_T1
 Participant ":FridgeFriend" as fridgefriend FRIDGEFRIEND_COLOR
 end box
 

@@ -3,8 +3,8 @@
 !include style.puml
 
 skinparam arrowThickness 1.1
-skinparam arrowColor DarkGreen
-skinparam classBackgroundColor Green
+skinparam arrowColor COMMAND_COLOR_T4
+skinparam classBackgroundColor COMMAND_COLOR_T2
 skinparam classAttributeIconSize 0
 
 package Command <<Rectangle>> {
@@ -22,13 +22,13 @@ package Command <<Rectangle>> {
     Class HistoryCommand
 }
 
-package Fridge <<Rectangle>>  {
+package Fridge <<Rectangle>> FOOD_COLOR {
 }
 
-package FridgeFriend <<Rectangle>> {
+package FridgeFriend <<Rectangle>> FRIDGEFRIEND_COLOR {
 }
 
-package UI <<Rectangle>> {
+package UI <<Rectangle>> UTILITIES_COLOR {
 }
 
 class Command {
