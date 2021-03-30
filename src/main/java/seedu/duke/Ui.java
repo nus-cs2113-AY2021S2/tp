@@ -19,6 +19,7 @@ import java.util.Scanner;
 public class Ui {
     private static final String longHorizontalLine = "--------------------------------------------";
     private static final String shortHorizontalLine = "----------------------";
+
     public static void printWelcomeMessage() {
         System.out.println("Welcome to\n"
                 + "  _   _               _      _____                                _\n"
