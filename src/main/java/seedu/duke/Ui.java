@@ -22,7 +22,8 @@ public class Ui {
                     "'start': Loads up an allocated delivery assignment into the delivery list\n" +
                     "'list': Displays the list of deliveries in your assignment\n" +
                     "'viewdelivery <number>': Displays details of the selected delivery\n" +
-                    "'complete <number>': Marks the selected delivery as completed";
+                    "'complete <number>': Marks the selected delivery as completed\n" +
+                    "'route': Displays optimised delivery path";
 
     /**
      * Empty constructor for the Ui object
@@ -78,6 +79,7 @@ public class Ui {
      * Prints list of deliveries present in delivery list
      */
     public void showDeliveryList() {
+
         System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
@@ -127,6 +129,24 @@ public class Ui {
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         System.out.println("The following delivery has been marked as completed:");
         System.out.println(delivery);
+    }
+
+    /**
+     * Prints shortest path for the driver
+     * @param sortedDeliveries list of deliveries sorted by distance
+     */
+    public void printMap(ArrayList<Delivery> sortedDeliveries){
+        for (int i = 0; i < sortedDeliveries.size(); i++){
+            System.out.println(sortedDeliveries.get(i).getAddress());
+            System.out.println("\t|");
+            System.out.println("\tV");
+            if (i + 1 >= sortedDeliveries.size()){
+                System.out.println("END OF JOB!!");
+            }
+        }
+        if (sortedDeliveries.size() < 1){
+            System.out.println("No deliveries loaded!!");
+        }
     }
 
     /**
@@ -186,6 +206,15 @@ public class Ui {
                     break;
                 case "record":
                     showRecords(deliveryman.getRecords());
+                    break;
+                case "route":
+                case "deliveryroute":
+                    Filter deliveryFilter = new Filter();
+                    Map deliveryMap = new Map();
+                    ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
+                    ArrayList<Delivery> sortedDeliveries = deliveryMap.shortestPathGenerator(uncompletedDeliveries);
+                    printMap(sortedDeliveries);
+                    break;
                 case "bye":
                     break;
                 default:
