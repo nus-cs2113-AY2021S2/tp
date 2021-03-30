@@ -10,12 +10,15 @@ import seedu.hdbuy.command.FilterCommand;
 import seedu.hdbuy.command.FindCommand;
 import seedu.hdbuy.command.HelpCommand;
 import seedu.hdbuy.command.ListCommand;
+import seedu.hdbuy.command.RemoveCommand;
+import seedu.hdbuy.command.SaveCommand;
 import seedu.hdbuy.command.ShortlistCommand;
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class Parser {
     private static final String HELP = "help";
@@ -25,6 +28,8 @@ public class Parser {
     private static final String CLEAR = "clear";
     private static final String LIST = "list";
     private static final String SHORTLIST = "shortlist";
+    private static final String SAVE = "save";
+    private static final String REMOVE = "remove";
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
@@ -55,11 +60,21 @@ public class Parser {
             case SHORTLIST:
                 command = new ShortlistCommand();
                 break;
+            case SAVE:
+                int addIndex = Integer.parseInt(keyCommand.getValue());
+                command = new SaveCommand(addIndex);
+                break;
+            case REMOVE:
+                int removeIndex = Integer.parseInt(keyCommand.getValue());
+                command = new RemoveCommand(removeIndex);
+                break;
             default:
                 break;
             }
         } catch (InvalidParameterException e) {
             TextUi.showInvalidParameter(e);
+        } catch (NumberFormatException e) {
+            Logger.getLogger("Parser").severe(e.getMessage());
         }
         return command;
     }
@@ -67,6 +82,7 @@ public class Parser {
     public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
         String[] lineParts;
         lineParts = fullLine.split(" ");
+        Logger.getLogger("Parser").info(Arrays.toString(lineParts));
         String keyCommand = lineParts[0];
         switch (keyCommand) {
         case FILTER:
@@ -77,12 +93,16 @@ public class Parser {
                 String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
                 return new CommandKey(criteria, value, keyCommand);
             }
+        case REMOVE:
+        case SAVE:
+            if (lineParts.length != 2) {
+                throw new InvalidParameterException();
+            } else {
+                String value = lineParts[1];
+                return new CommandKey(keyCommand, value);
+            }
         case FIND:
         case SHORTLIST:
-            if (lineParts.length != 1) {
-                throw new InvalidParameterException();
-            }
-            break;
         case EXIT:
         case HELP:
         case CLEAR:

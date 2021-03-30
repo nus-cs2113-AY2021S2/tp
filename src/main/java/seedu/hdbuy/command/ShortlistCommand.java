@@ -1,6 +1,6 @@
 package seedu.hdbuy.command;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.common.Unit;
@@ -14,11 +14,11 @@ public class ShortlistCommand extends Command {
     @Override
     public void execute(UserInput userInput) {
         try {
-            HashMap<Integer, Unit> units = ShortList.getShortListedUnits();
+            ArrayList<Unit> units = ShortList.getShortListedUnits();
             if (units.isEmpty()) {
                 throw new NoFlatsException();
             } else {
-                TextUi.showUnits(units);
+                TextUi.showShortListUnits(units);
             }
         } catch (NoFlatsException e) {
             TextUi.showNoFlats(e);

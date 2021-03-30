@@ -7,6 +7,7 @@ import seedu.hdbuy.common.exception.InvalidFilterException;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.common.exception.NoFlatsException;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -73,6 +74,17 @@ public class TextUi {
         for (HashMap.Entry<Integer, Unit> mapElement : units.entrySet()) {
             Object[] unitData = {++i, (mapElement.getValue()).getAddress(), (mapElement.getValue()).getType(),
                     (mapElement.getValue()).getLease(), "$" + (mapElement.getValue()).getPrice()};
+            System.out.format("%5s%24s%12s%24s%12s\n", unitData);
+        }
+    }
+
+    public static void showShortListUnits(ArrayList<Unit> units) {
+        Object[] columnNames = {"Index", "Address", "Type", "Lease", "Price"};
+        System.out.format("%5s%24s%12s%24s%12s\n", columnNames);
+        int i = 0;
+        for (Unit unit : units) {
+            Object[] unitData = {++i, unit.getAddress(), unit.getType(),
+                    unit.getLease(), "$" + unit.getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
         }
     }

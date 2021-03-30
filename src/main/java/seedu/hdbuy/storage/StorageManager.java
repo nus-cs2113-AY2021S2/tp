@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -39,11 +36,10 @@ public class StorageManager {
     }
 
     public static void write() {
-        HashMap<Integer, Unit> units = ShortList.getShortListedUnits();
+        ArrayList<Unit> units = ShortList.getShortListedUnits();
         try {
             FileWriter fw = new FileWriter(filePath);
-            for (Map.Entry<Integer,Unit> unitEntry : units.entrySet()) {
-                Unit unit = unitEntry.getValue();
+            for (Unit unit : units) {
                 String unitText = unit.encodeToText();
                 if (unitText != null && !unitText.isEmpty()) {
                     fw.write(unitText + "\n");

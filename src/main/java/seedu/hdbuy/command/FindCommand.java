@@ -5,6 +5,7 @@ import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.EmptyParameterException;
 import seedu.hdbuy.common.exception.NoFlatsException;
+import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
 
@@ -23,6 +24,7 @@ public class FindCommand extends Command {
                 throw new EmptyParameterException();
             } else {
                 TextUi.showParameters(inputs);
+                SearchedUnits.clearSearchedUnits();
                 HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputs);
                 if (units.isEmpty()) {
                     throw new NoFlatsException();

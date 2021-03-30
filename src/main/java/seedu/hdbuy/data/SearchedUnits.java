@@ -1,7 +1,6 @@
 package seedu.hdbuy.data;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 import seedu.hdbuy.common.Unit;
@@ -28,5 +27,12 @@ public class SearchedUnits {
             Logger.getLogger("SearchedUnits").severe("Invalid index");
             return null;
         }
+    }
+
+    public static void clearSearchedUnits() {
+        if (units == null) {
+            units = new ArrayList<>();
+        }
+        units.clear();
     }
 }
