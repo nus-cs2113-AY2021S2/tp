@@ -1,5 +1,9 @@
 package seedu.logic.instance;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.NoInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
@@ -40,7 +44,9 @@ public class NurseScheduleInstance {
                     nurseSchedules.clearSchedules();
                     UI.returningToStartMenuMessage();
                 }
-                UI.showLine();
+                ui.lineBreak();
+            } catch (HealthVaultException e) {
+                System.out.println(e.getMessage());
             } catch (NullPointerException e) {
                 //ui.invalidInputsMessage();
                 //Command C can return as null if an error is triggered in parser
