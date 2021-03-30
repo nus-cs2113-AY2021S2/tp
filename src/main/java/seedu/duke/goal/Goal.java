@@ -1,5 +1,6 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ public abstract class Goal {
     protected LocalDate daySet;
     protected RecordType type;
     protected PeriodType periodType;
-
+    public static final String SEPARATOR = " | ";
     /**
      * Initializes the instance with goal type and period type.
      *
@@ -68,4 +69,8 @@ public abstract class Goal {
     public abstract String getGoalData();
 
     public abstract String getProgressUnit();
+
+    public abstract String getGoalDataToStore();
+
+    public abstract void setProgressAtLoadingTime(User user);
 }

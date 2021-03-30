@@ -105,3 +105,36 @@ Displaying current EXERCISE records:
 1			25-03-2021	DANCE           40 minute(s)	400.0 cal
 
 --------------------------------------------------------------------
+--------------------------------------------------------------------
+The index you entered is out of bound.
+Here are the records of type exercise:
+1			25-03-2021	DANCE           40 minute(s)	400.0 cal
+
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+You have successfully deleted the DIET record of index 1!
+Record summary: 500.0g fruit on 26-03-2021
+Displaying current DIET records:
+Sorry, no records found.
+You can try adding records by using command 'add'.
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+You have successfully deleted the SLEEP record of index 1!
+Record summary: 5 hours of sleep on 28-01-2021
+Displaying current SLEEP records:
+Sorry, no records found.
+You can try adding records by using command 'add'.
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+You have successfully deleted the BODY_WEIGHT record of index 1!
+Record summary: Body weight 60.0Kg on 19-03-2021
+Displaying current BODY_WEIGHT records:
+Sorry, no records found.
+You can try adding records by using command 'add'.
+--------------------------------------------------------------------
+--------------------------------------------------------------------
+The index you entered is out of bound.
+Here are the records of type body_weight:
+Sorry, no records found.
+You can try adding records by using command 'add'.
+--------------------------------------------------------------------

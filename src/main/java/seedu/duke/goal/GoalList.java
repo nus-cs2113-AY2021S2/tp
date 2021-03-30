@@ -2,6 +2,7 @@ package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
 import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
+import seedu.duke.record.Record;
 import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
@@ -46,5 +47,13 @@ public class GoalList {
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         }
+    }
+
+    public String getGoalToStore() {
+        StringBuilder goalStringBuilder = new StringBuilder();
+        for (Goal goal : goals) {
+            goalStringBuilder.append(goal.getGoalDataToStore()).append("\n");
+        }
+        return goalStringBuilder.toString();
     }
 }

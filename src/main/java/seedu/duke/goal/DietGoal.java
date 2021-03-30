@@ -1,6 +1,15 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.FitCenter;
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
+
+import static seedu.duke.command.CommandRecordType.DIET;
 
 public class DietGoal extends Goal {
     private final double targetEnergy;
@@ -16,6 +25,12 @@ public class DietGoal extends Goal {
         super(RecordType.DIET, periodType);
         this.targetEnergy = targetEnergy;
         initializeProgress();
+    }
+
+    public DietGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
+        super(RecordType.DIET, periodType);
+        this.targetEnergy = targetEnergy;
+        this.daySet = daySet;
     }
 
     /**
@@ -34,6 +49,13 @@ public class DietGoal extends Goal {
      */
     public double getProgress() {
         return progress;
+    }
+
+    @Override
+    public void setProgressAtLoadingTime(User user) {
+        LocalDate currentDate = LocalDate.now();
+        FitCenter fitCenter = user.getFitCenter();
+        progress = fitCenter.getProgress(DIET, currentDate);
     }
 
     /**
@@ -81,5 +103,10 @@ public class DietGoal extends Goal {
                 + getPeriodType().toString().toLowerCase() + "\t"
                 + getTargetEnergy() + getProgressUnit() + "\t"
                 + getProgress() + getProgressUnit() + "\n";
+    }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "D" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetEnergy;
     }
 }

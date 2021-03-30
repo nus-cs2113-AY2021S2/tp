@@ -1,6 +1,9 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
+
+import java.time.LocalDate;
 
 public class SleepGoal extends Goal {
     private final double targetDuration;
@@ -15,6 +18,13 @@ public class SleepGoal extends Goal {
     public SleepGoal(PeriodType periodType, double targetDuration) {
         super(RecordType.SLEEP, periodType);
         this.targetDuration = targetDuration;
+        initializeProgress();
+    }
+
+    public SleepGoal(PeriodType periodType, double targetDuration, LocalDate daySet) {
+        super(RecordType.SLEEP, periodType);
+        this.targetDuration = targetDuration;
+        this.daySet = daySet;
         initializeProgress();
     }
 
@@ -81,5 +91,15 @@ public class SleepGoal extends Goal {
                 + getPeriodType().toString().toLowerCase() + "\t"
                 + getTargetDuration() + getProgressUnit() + "\t"
                 + getProgress() + getProgressUnit() + "\n";
+    }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "S" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetDuration;
+    }
+
+    @Override
+    public void setProgressAtLoadingTime(User user){
+
     }
 }

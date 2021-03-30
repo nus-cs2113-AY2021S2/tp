@@ -1,6 +1,10 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
+
+import java.security.SecurityPermission;
+import java.time.LocalDate;
 
 public class BodyWeightGoal extends Goal {
     private final double targetBodyWeight;
@@ -15,6 +19,13 @@ public class BodyWeightGoal extends Goal {
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
         super(RecordType.BODYWEIGHT, periodType);
         this.targetBodyWeight = targetBodyWeight;
+        initializeProgress();
+    }
+
+    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
+        super(RecordType.BODYWEIGHT, periodType);
+        this.targetBodyWeight = targetBodyWeight;
+        this.daySet = daySet;
         initializeProgress();
     }
 
@@ -81,5 +92,15 @@ public class BodyWeightGoal extends Goal {
                 + getPeriodType().toString().toLowerCase() + "\t"
                 + getTargetBodyWeight() + getProgressUnit() + "\t"
                 + getProgress() + getProgressUnit() + "\n";
+    }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "W" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetBodyWeight;
+    }
+
+    @Override
+    public void setProgressAtLoadingTime(User user){
+
     }
 }

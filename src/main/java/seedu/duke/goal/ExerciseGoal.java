@@ -1,6 +1,9 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
+
+import java.time.LocalDate;
 
 public class ExerciseGoal extends Goal {
     private final double targetEnergy;
@@ -18,6 +21,12 @@ public class ExerciseGoal extends Goal {
         initializeProgress();
     }
 
+    public ExerciseGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
+        super(RecordType.EXERCISE, periodType);
+        this.targetEnergy = targetEnergy;
+        this.daySet = daySet;
+        initializeProgress();
+    }
     /**
      * Gets the the target energy to be burnt.
      *
@@ -82,5 +91,15 @@ public class ExerciseGoal extends Goal {
                 + getPeriodType().toString().toLowerCase() + "\t"
                 + getTargetEnergy() + getProgressUnit() + "\t"
                 + getProgress() + getProgressUnit() + "\n";
+    }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "E" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetEnergy;
+    }
+
+    @Override
+    public void setProgressAtLoadingTime(User user){
+
     }
 }

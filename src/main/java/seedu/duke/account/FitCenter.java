@@ -163,4 +163,24 @@ public class FitCenter {
                 + sleepRecordList.getRecordToStore()
                 + bodyRecordList.getRecordToStore();
     }
+
+    public String getGoalListForStore() {
+        return exerciseGoalList.getGoalToStore()
+                + dietGoalList.getGoalToStore()
+                + sleepGoalList.getGoalToStore()
+                + bodyWeightGoalList.getGoalToStore();
+    }
+
+    public double getProgress(CommandRecordType type, LocalDate currentDate) {
+        switch (type) {
+        case EXERCISE:
+            return exerciseRecordList.getProgress(currentDate);
+        case DIET:
+            return dietRecordList.getProgress(currentDate);
+        case SLEEP:
+            return sleepRecordList.getProgress(currentDate);
+        default:
+            return 0;
+        }
+    }
 }

@@ -1,51 +1,197 @@
 package seedu.duke.storage;
-/*
 import seedu.duke.account.FitCenter;
+import seedu.duke.account.User;
+import seedu.duke.exception.TypeException;
+import seedu.duke.goal.*;
+import seedu.duke.record.BodyWeight;
+import seedu.duke.record.Diet;
+import seedu.duke.record.Exercise;
+import seedu.duke.record.Record;
 
+import javax.imageio.event.IIOWriteWarningListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
-public class FileReader {
-    private File source;
-    public final static String SEPERATOR = " \\| ";
+import static seedu.duke.command.CommandRecordType.EXERCISE;
+import static seedu.duke.command.CommandRecordType.DIET;
+import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
+import static seedu.duke.command.CommandRecordType.SLEEP;
+import static seedu.duke.goal.PeriodType.*;
 
-    public FileReader(File file) {
-        source = file;
+public class FileReader {
+    private File recordSource;
+    private File goalSource;
+    public final static String SEPERATOR = " \\| ";
+    public final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+
+    /*
+    public FileReader(File recordFile, File goalFile) {
+        recordSource = recordFile;
+        goalSource = goalFile;
     }
 
-    /**
-     * Converts the content of the file into a task list.
-     *
-     * @return the task list
-     * @throws FileNotFoundException if the file doesn't exist
+     */
+    public FileReader(File recordFile, File goalFile) {
+        recordSource = recordFile;
+        goalSource = goalFile;
+    }
 
-    public FitCenter parseToArraylist() throws FileNotFoundException {
-        FitCenter fitCenter = new FitCenter();
-        Scanner sc = new Scanner(source);
+    public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException, ParseException {
+        Scanner sc = new Scanner(recordSource);
         while(sc.hasNext()) {
             String currentLine = sc.nextLine();
-            String[] taskParts = currentLine.split(SEPERATOR);
-            switch (taskParts[0]) {
-            case "T":
-                tasks.add(new ToDo(taskParts[2], false));
+            String[] typeContent = currentLine.split(SEPERATOR,2);
+            String content = typeContent[1];
+            Record record;
+            switch (typeContent[0]) {
+            case "E":
+                record = getExerciseRecord(content);
+                user.getFitCenter().addRecordToList(EXERCISE, record);
                 break;
             case "D":
-                tasks.add(new Deadline(taskParts[2], false, taskParts[3]));
+                record = getDietRecord(content);
+                user.getFitCenter().addRecordToList(DIET, record);
                 break;
-            case "E":
-                tasks.add(new Event(taskParts[2], false, taskParts[3]));
+            case "W":
+                record = getBodyWeightRecord(content);
+                user.getFitCenter().addRecordToList(BODY_WEIGHT, record);
+                break;
+            case "S":
+                record = getSleepRecord(content);
+                user.getFitCenter().addRecordToList(SLEEP, record);
                 break;
             default:
                 System.out.println("Unable to recognize input format: " + currentLine);
                 break;
             }
-            if(taskParts[1].equals("1")) {
-                tasks.get(tasks.size()-1).setDone(true);
+        }
+    }
+
+    public void parseToGoal(User user) throws FileNotFoundException, ParseException, TypeException, NumberFormatException {
+        FitCenter fitCenter = user.getFitCenter();
+        Scanner sc = new Scanner(goalSource);
+        while(sc.hasNext()) {
+            String currentLine = sc.nextLine();
+            String[] typeContent = currentLine.split(SEPERATOR,2);
+            String content = typeContent[1];
+            Goal goal;
+            String[] contentParts = content.split(SEPERATOR);
+            LocalDate setDay = getDate(contentParts[0].trim());
+            PeriodType periodType = getPeriodType(contentParts[1].trim());
+            double target = Double.parseDouble(contentParts[2].trim());
+            switch (typeContent[0]) {
+            case "E":
+                goal = new ExerciseGoal(periodType, target, setDay);
+                goal.setProgressAtLoadingTime(user);
+                fitCenter.addGoalToList(EXERCISE, goal);
+                break;
+            case "D":
+                goal = new DietGoal(periodType, target, setDay);
+                goal.setProgressAtLoadingTime(user);
+                fitCenter.addGoalToList(DIET, goal);
+                break;
+            case "W":
+                goal = new BodyWeightGoal(periodType, target, setDay);
+                goal.setProgressAtLoadingTime(user);
+                fitCenter.addGoalToList(BODY_WEIGHT, goal);
+                break;
+            case "S":
+                goal = new SleepGoal(periodType, target, setDay);
+                goal.setProgressAtLoadingTime(user);
+                fitCenter.addGoalToList(SLEEP, goal);
+                break;
+            default:
+                System.out.println("Unable to recognize input format: " + currentLine);
+                break;
             }
         }
-        return tasks;
     }
+
+    private Record getExerciseRecord(String content) throws ParseException, TypeException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        String activity = contentParts[0].trim();
+        String durationString = contentParts[1].trim();
+        int duration = Integer.parseInt(durationString);
+        LocalDate recordDate = getDate(contentParts[2]);
+        return new Exercise(activity, duration, recordDate);
+    }
+
+    private Record getDietRecord(String content) throws ParseException, TypeException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        String food = contentParts[0].trim();
+        String amountString = contentParts[1].trim();
+        double amount = Double.parseDouble(amountString);
+        LocalDate recordDate = getDate(contentParts[2]);
+        return new Diet(food, amount, recordDate);
+    }
+
+    private Record getBodyWeightRecord(String content) throws ParseException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        String weightString = contentParts[0].trim();
+        double weight = Double.parseDouble(weightString);
+        LocalDate recordDate = getDate(contentParts[1]);
+        return new BodyWeight(weight, recordDate);
+    }
+
+    private Record getSleepRecord(String content) throws ParseException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        for(int i=0; i<contentParts.length; i++){
+            System.out.println(contentParts[i]);
+        }
+        String durationString = contentParts[0].trim();
+        double duration = Double.parseDouble(durationString);
+        LocalDate recordDate = getDate(contentParts[1]);
+        return new BodyWeight(duration, recordDate);
+    }
+
+    private LocalDate getDate(String dateString) throws ParseException{
+        Date date = DATE_FORMAT.parse(dateString);
+        LocalDate recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return recordDate;
+    }
+
+
+    private Goal getDietGoal(String content) throws ParseException, TypeException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        LocalDate setDay = getDate(contentParts[0].trim());
+        PeriodType periodType = getPeriodType(contentParts[1].trim());
+        double target = Double.parseDouble(contentParts[2].trim());
+        return new DietGoal(periodType, target, setDay);
+    }
+
+    private Goal getSleepGoal(String content) throws ParseException, TypeException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        LocalDate setDay = getDate(contentParts[0].trim());
+        PeriodType periodType = getPeriodType(contentParts[1].trim());
+        double target = Double.parseDouble(contentParts[2].trim());
+        return new SleepGoal(periodType, target, setDay);
+    }
+
+    private Goal getBodyWeightGoal(String content) throws ParseException, TypeException, NumberFormatException {
+        String[] contentParts = content.split(SEPERATOR);
+        LocalDate setDay = getDate(contentParts[0].trim());
+        PeriodType periodType = getPeriodType(contentParts[1].trim());
+        double target = Double.parseDouble(contentParts[2].trim());
+        return new BodyWeightGoal(periodType, target, setDay);
+    }
+
+    private PeriodType getPeriodType(String type) throws TypeException {
+        switch (type) {
+        case "DAILY":
+            return DAILY;
+        case "WEEKLY":
+            return WEEKLY;
+        default:
+            throw new TypeException("period type");
+        }
+    }
+
+
 }
-*/

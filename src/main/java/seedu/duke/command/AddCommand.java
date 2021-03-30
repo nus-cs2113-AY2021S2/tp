@@ -39,7 +39,7 @@ public class AddCommand extends Command {
             record = new Exercise(params.get("activity"), Integer.parseInt(params.get("duration")), recordDate);
             break;
         case DIET:
-            record = new Diet(params.get("food"), params.get("weight"), recordDate);
+            record = new Diet(params.get("food"), Double.parseDouble(params.get("weight")), recordDate);
             break;
         case SLEEP:
             record = new Sleep(Integer.parseInt(params.get("duration")), recordDate);
