@@ -71,7 +71,7 @@ Format: `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]`
 
 
 Example of usage:  
-`add t/E a/running d/40 add one exercise record of running for 40 minutes. `
+`add t/E a/running d/40`
 
 Output:
 ```
@@ -80,7 +80,7 @@ Record summary: 40 minutes running exercise on XX-XX-XXXX(Today).
 ```
 
 Examples:
-`add t/E a/football d/60 date/05-01-2020 add the exercise record of football for 60 mins at the date of 05-01-2020.`
+`add t/E a/football d/60 date/05-01-2020`
 
 Output:
 ```
@@ -124,7 +124,7 @@ Index    Date         Activity   Duration
 ```
 
 Examples:
-`view t/E view all exercises`
+`view t/E`
 
 Output:
 ```
@@ -244,14 +244,14 @@ Index    Date         Diet    Weight
 1        05-01-2020   egg     60 g
 ```
 
-### Set a goal for exercise for a given time period: `set`
-Set one exercise goal with a target energy (in calories) to burn within a given time period.
+### Set a daily or weekly goal for exercise: `set`
+Set a daily/weekly exercise goal with a target energy (in calories) to burn.
 
 Format: `set  t/E p/PERIOD_TYPE target/ENERGY`
  
-* The tag value should be `E` in the upper case, which specifies that the current record is for **exercise data**.
-* The period type can be `D`, and `W`corresponding to **daily and weekly**. 
-* The default unit of energy is in **kcal**. A **float number** is expected for the duration, other formats are **not acceptable**.
+* The tag value should be `E` in the upper case, which specifies that the current goal is for **exercise data**.
+* The period type can be `D`, and `W` corresponding to **daily and weekly**. 
+* The default unit of energy is in **kcal**. A **float number** is expected for the energy to burn, other formats are **not acceptable**.
 
 Example of usage:  
 `set t/E p/D target/0.5`
@@ -272,9 +272,108 @@ Output:
 ```
 A new exercise goal is set successfully!
 Date Set: 27-03-2021
-Goal Type: Weekly exercise.
-Target: 10kcal.
-Progress: 0kcal.
+Goal Type: Weekly exercise
+Target: 10kcal
+Progress: 0kcal
+```
+
+### Set a daily or weekly goal for sleep: `set`
+Set a daily/weekly sleep goal with a target duration (in hours).
+
+Format: `set  t/S p/PERIOD_TYPE target/DURATION`
+ 
+* The tag value should be `S` in the upper case, which specifies that the current goal is for **sleep data**.
+* The period type can be `D`, and `W` corresponding to **daily and weekly**. 
+* The default unit of duration is in **hours**. The format of the durtaion should be either `X` or `X.5`, where `X` is an integer between `0` and `23` and `0.5` means half an hour. Other formats are **not acceptable**.
+
+Example of usage:  
+`set t/S p/D target/8.5`
+
+Output:
+```
+A new sleep goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Daily sleep
+Target: 8.5hours
+Progress: 0hours
+```
+
+Example of usage:  
+`set t/S p/W target/50`
+
+Output:
+```
+A new sleep goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Weekly sleep
+Target: 50hours
+Progress: 0hours
+```
+
+### Set a daily or weekly goal for diet: `set`
+Set a daily/weekly diet goal with a target energy (in calories) to take in.
+
+Format: `set  t/D p/PERIOD_TYPE target/ENERGY`
+ 
+* The tag value should be `D` in the upper case, which specifies that the current goal is for **diet data**.
+* The period type can be `D`, and `W` corresponding to **daily and weekly**. 
+* The default unit of energy is in **kcal**. A **float number** is expected for the energy take in, other formats are **not acceptable**.
+
+Example of usage:  
+`set t/D p/D target/0.2`
+
+Output:
+```
+A new diet goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Daily diet
+Target: 0.2kcal
+Progress: 0kcal
+```
+
+Example of usage:  
+`set t/D p/W target/5`
+
+Output:
+```
+A new diet goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Weekly diet
+Target: 5kcal
+Progress: 0kcal
+```
+
+### Set a daily or weekly goal for body weight: `set`
+Set a daily/weekly body weight goal with a target weight (in kg).
+
+Format: `set  t/W p/PERIOD_TYPE target/WEIGHT`
+ 
+* The tag value should be `W` in the upper case, which specifies that the current goal is for **body weight data**.
+* The period type can be `D`, and `W` corresponding to **daily and weekly**. 
+* The default unit of weight is in **kg**. A **float number** is expected for the weight, other formats are **not acceptable**.
+
+Example of usage:  
+`set t/W p/D target/50`
+
+Output:
+```
+A new bodyweight goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Daily bodyweight
+Target: 50kg
+Progress: 61kg
+```
+
+Example of usage:  
+`set t/W p/W target/50`
+
+Output:
+```
+A new exercise goal is set successfully!
+Date Set: 27-03-2021
+Goal Type: Weekly exercise
+Target: 50kg
+Progress: 61kg
 ```
 
 ### Check the progress of goals: `check`
@@ -310,15 +409,14 @@ Index    Date Set     Goal Type    Target       Progress
 ### Cancel a goal: `cancel`
 Cancel a goal set by the user.
 
-Format: `cancel  t/TAG p/PERIOD_TYPE i/INDEX`
+Format: `cancel  t/TAG i/INDEX`
  
 * The tag value should only be `E`, `S`, `D`, `W`. It specifies the kind of goal (exercise, sleep, diet and body weight) to check.
-* * The period type can be `D`, and `W`corresponding to **daily and weekly**. It **must** be specified.
 * The index of the record **must** be specified. 
 * The index must be an `integer` within the range of the total number of records, index out of range or other formats are not acceptable.
 
 Example of usage:  
-`cancel t/E p/D i/1`
+`cancel t/E i/1`
 
 Output:
 ```
@@ -330,7 +428,7 @@ Index    Date Set     Goal Type    Target       Progress
 ```
 
 Example of usage:  
-`cancel t/E p/W i/1`
+`cancel t/E i/1`
 
 Output:
 ```
