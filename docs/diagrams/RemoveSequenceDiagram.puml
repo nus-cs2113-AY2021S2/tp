@@ -29,10 +29,10 @@ loop food in fridge
 end
 
 deactivate RemoveCommand
+RemoveCommand -> RemoveCommand: removePortion()
+    activate RemoveCommand
 
 alt newQuantity > 0
-    RemoveCommand -> RemoveCommand: removePortion()
-    activate RemoveCommand
     RemoveCommand -> Fridge: getFood()
     activate Fridge
     Fridge -> Food: setQuantity()
@@ -45,11 +45,16 @@ else newQuantity == 0
     activate Fridge
     return
     deactivate Fridge
-
+    note right
+    if newQuantity is <0
+    InvalidQuantityExpcetion
+    will be thrown
+    end note
 end
 
 deactivate RemoveCommand
 destroy Food
+
 
 
 <-- RemoveCommand:
