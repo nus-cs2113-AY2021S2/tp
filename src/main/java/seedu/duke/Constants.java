@@ -6,11 +6,19 @@ public class Constants {
             + "Argument(s): IC number\n"
             + "Usage: add IC_NUMBER\n"
             + "Example: add S1234567D\n";
+    public static final String DELETE_INFO_MESSAGE = "Delete a patient from the list or delete a patient's "
+            + "consultation details for a specific date\n"
+            + "Command prefix: delete\n"
+            + "Argument(s): IC number or date\n"
+            + "Usage: delete [/p IC_NUMBER]\n"
+            + "Example: delete /p S1234567D\n"
+            + "Usage: delete [/r DATE]\n"
+            + "Example: delete /r 26/03/2021\n";
     public static final String LIST_INFO_MESSAGE = "Show the list of all patients\n"
             + "Usage: list\n";
     public static final String LOAD_INFO_MESSAGE = "Select a specified patient to add and retrieve records\n"
             + "Command prefix: load\n"
-            + "Arguments(s): IC number\n"
+            + "Argument(s): IC number\n"
             + "Usage: load IC_NUMBER\n"
             + "Example: load S1234567D\n";
     public static final String RECORD_CONSULTATION_INFO_MESSAGE = "Add a consultation record to the selected patient\n"

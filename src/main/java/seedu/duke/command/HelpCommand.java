@@ -22,6 +22,7 @@ public class HelpCommand extends Command {
         String[] commands = arguments.get("payload").toLowerCase().split(" ");
         if (commands[0].isEmpty()) {
             ui.printMessage(Constants.ADD_INFO_MESSAGE + System.lineSeparator()
+                    + Constants.DELETE_INFO_MESSAGE + System.lineSeparator()
                     + Constants.LIST_INFO_MESSAGE + System.lineSeparator()
                     + Constants.LOAD_INFO_MESSAGE + System.lineSeparator()
                     + Constants.RECORD_CONSULTATION_INFO_MESSAGE + System.lineSeparator()
@@ -35,6 +36,9 @@ public class HelpCommand extends Command {
                 switch (command) {
                 case "add":
                     ui.printMessage(Constants.ADD_INFO_MESSAGE);
+                    break;
+                case "delete":
+                    ui.printMessage(Constants.DELETE_INFO_MESSAGE);
                     break;
                 case "list":
                     ui.printMessage(Constants.LIST_INFO_MESSAGE);
