@@ -130,7 +130,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 This section contains all the information about the features of **NUSMaze**.
 You may enter a command into the _CLI_ to use each feature.
 
-##4.1 Viewing Help
+## 4.1 Viewing Help
 
 Lists all commands and functions of each feature.<br>
 Format: `help`
