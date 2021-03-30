@@ -4,11 +4,6 @@ import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-<<<<<<< HEAD
-=======
-import seedu.exceptions.staff.BlankInputException;
-
->>>>>>> c4330f9184f2e4edabe7a52ab14246137fa9b62e
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;
