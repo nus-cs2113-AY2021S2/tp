@@ -130,7 +130,7 @@ GULIO is a local application that stores its application data using readable tex
 The way GULIO runs and handles user input can be described as follows:
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="Sequence Diagram"><br>
+    <img width="973" src="developerGuideImages/main-loop-sequence-diagram.png" alt="Sequence Diagram"><br>
     Figure 3 - GULIO Sequence Diagram
 </p>
 
@@ -169,7 +169,7 @@ Upon start, the main class calls run() which enters a while loop and reads in us
 ### Command component
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="Dual Layer Command System"><br>
+    <img width="973" src="developerGuideImages/command-component-level.png" alt="Dual Layer Command System"><br>
     Figure 4 - Visualisation of Dual Layer Command System
 </p>
 
