@@ -22,6 +22,7 @@ import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
 import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
@@ -57,14 +58,18 @@ public class OpenLessonLinkCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessons(lessonList, ui);
 
-        String line = ui.readUserInput();
-        ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
-        printLessonsLink(lessonList, indices, ui);
+        if (lessonList.size() > 0) {
+            ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
+            printLessons(lessonList, ui);
+            String line = ui.readUserInput();
+            ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
+            printLessonsLink(lessonList, indices, ui);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        }
     }
 
     /**
