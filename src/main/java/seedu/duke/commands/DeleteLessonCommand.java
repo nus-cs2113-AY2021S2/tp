@@ -3,13 +3,16 @@ package seedu.duke.commands;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
+import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Constants.TYPE_LESSON;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
 
@@ -19,6 +22,7 @@ import static seedu.duke.common.Messages.MESSAGE_REMOVED_LESSON;
 public class DeleteLessonCommand extends Command {
 
     //@@author H-horizon
+
     /**
      * Deletes all lessons corresponding to specified indices.
      *
@@ -26,21 +30,30 @@ public class DeleteLessonCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessons(lessonList, ui);
-
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
-
-        deleteLessonsFromList(lessonList, indices, ui);
-        ModuleList.writeModule();
+        verifyLessonsToDelete(lessonList, ui);
+        ModuleList.sortLessons();
     }
 
-    @Override
-    public boolean isExit() {
-        return false;
+    /**
+     * Validates lessons to delete from list.
+     *
+     * @param ui         Instance of UI.
+     * @param lessonList ArrayList of lessons in specified module.
+     */
+    private void verifyLessonsToDelete(ArrayList<Lesson> lessonList, UI ui) {
+        if (lessonList.size() == 0) {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_TO_DELETE);
+            printLessons(lessonList, ui);
+            ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_LESSON, DELETE));
+            String line = ui.readUserInput();
+            ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
+            deleteLessonsFromList(lessonList, indices, ui);
+            ModuleList.writeModule();
+        }
     }
 
     /**
@@ -52,7 +65,7 @@ public class DeleteLessonCommand extends Command {
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
             counter++;
         }
@@ -70,12 +83,10 @@ public class DeleteLessonCommand extends Command {
         for (int index : indices) {
             int modifiedIndex = index - pointer;
             Lesson lesson = lessonList.get(modifiedIndex);
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(MESSAGE_REMOVED_LESSON, lessonType));
             ModuleList.getSelectedModule().removeLesson(modifiedIndex);
             pointer++;
         }
     }
-
-
 }

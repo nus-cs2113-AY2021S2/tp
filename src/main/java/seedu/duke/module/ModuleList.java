@@ -1,11 +1,12 @@
 package seedu.duke.module;
 
-
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import static seedu.duke.common.CommonMethods.getDaysRemaining;
 
 public class ModuleList {
 
@@ -16,27 +17,42 @@ public class ModuleList {
         return selectedModule;
     }
 
-    /**
-     * For testing purposes only.
-     */
-    public static void hardSetSelectedModule(String moduleCode) {
-        ModuleList.selectedModule = new Module(moduleCode);
-    }
-
     public static ArrayList<String> getModules() {
         return modules;
     }
 
+    public static String getModuleByIndex(int index) {
+        return getModules().get(index);
+    }
+
+    public static int getModuleIndex(String moduleCode) {
+        return getModules().indexOf(moduleCode);
+    }
+
+    public static int getSize() {
+        return getModules().size();
+    }
+
+    public static String getSelectedModuleCode() {
+        return selectedModule.getModuleCode();
+    }
+
+    //@@author ivanchongzhien
+    public static boolean hasSelectedModule() {
+        return selectedModule != null;
+    }
+
     //@@author 8kdesign
+
     /**
      * Searches directory for module files.
      * Adds their name (excluding ".txt") to the module list.
      */
-    public static void loadModuleNames() {
+    public static void loadModuleCodes() {
         modules.clear();
         Loader loader = new Loader();
-        for (String name : loader.getModules()) {
-            insertModule(name);
+        for (String moduleCode : loader.getModules()) {
+            insertModule(moduleCode);
         }
     }
 
@@ -69,6 +85,7 @@ public class ModuleList {
     }
 
     //@@author isaharon
+
     /**
      * Deletes modules specified.
      *
@@ -89,6 +106,7 @@ public class ModuleList {
     }
 
     //@@author 8kdesign
+
     /**
      * Removes selected module and deletes module file.
      *
@@ -99,7 +117,7 @@ public class ModuleList {
             return null;
         }
         Writer writer = new Writer();
-        if (writer.deleteFile(modules.get(index))) {
+        if (writer.deleteDirectory(modules.get(index))) {
             String moduleName = modules.get(index);
             modules.remove(index);
             return moduleName;
@@ -123,6 +141,9 @@ public class ModuleList {
         }
         selectedModule = loader.loadModule(moduleCode);
         if (selectedModule != null) {
+            //Sort data
+            sortLessons();
+            sortTasks();
             //Remove invalid inputs
             Writer writer = new Writer();
             writer.writeModule();
@@ -143,5 +164,33 @@ public class ModuleList {
     public static void writeModule() {
         Writer writer = new Writer();
         writer.writeModule();
+    }
+
+    /**
+     * Sorts tasks by deadline.
+     */
+    public static void sortTasks() {
+        selectedModule.getTaskList().sort((task1, task2) -> {
+            long daysRemaining1 = getDaysRemaining(task1.getDeadline());
+            long daysRemaining2 = getDaysRemaining(task2.getDeadline());
+            if (daysRemaining1 != daysRemaining2) {
+                return (int) (daysRemaining1 - daysRemaining2);
+            }
+            return task1.getDescription().compareTo(task2.getDescription());
+        });
+    }
+
+    //@@author H-horizon
+
+    /**
+     * Sorts lesson list by lesson type.
+     */
+    public static void sortLessons() {
+        selectedModule.getLessonList().sort((lesson1, lesson2) -> {
+            if (lesson1.getLessonType() != lesson2.getLessonType()) {
+                return lesson1.getLessonType().compareTo(lesson2.getLessonType());
+            }
+            return lesson1.getTime().compareTo(lesson2.getTime());
+        });
     }
 }

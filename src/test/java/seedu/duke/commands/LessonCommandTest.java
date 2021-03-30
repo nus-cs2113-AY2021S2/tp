@@ -6,6 +6,7 @@ import seedu.duke.lesson.LessonType;
 import seedu.duke.lesson.TeachingStaff;
 import seedu.duke.ui.UI;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -42,12 +43,7 @@ public class LessonCommandTest {
     public static Lesson initialiseLesson(String teacherName, String teacherEmail, LessonType lessonType, String time,
                                           String onlineLink) {
         TeachingStaff teachingStaff = new TeachingStaff(teacherName, teacherEmail);
-        teachingStaff.setName(teacherName);
-        teachingStaff.setEmail(teacherEmail);
         Lesson newLesson = new Lesson(lessonType, time, onlineLink, teachingStaff);
-        newLesson.setTime(time);
-        newLesson.setTeachingStaff(teachingStaff);
-        newLesson.setOnlineLink(onlineLink);
         return newLesson;
     }
 
@@ -71,6 +67,12 @@ public class LessonCommandTest {
 
     public static void printFailedToExecuteCommand() {
         System.out.println(COMMAND_FAILED);
+    }
+
+    protected void initialiseUserInput(String entireInput) {
+        ByteArrayInputStream inContent = new ByteArrayInputStream(entireInput.getBytes());
+        System.setIn(inContent);
+        getOutputStream();
     }
 
     public static void initialisedIndexes(ArrayList<Integer> indexes) {

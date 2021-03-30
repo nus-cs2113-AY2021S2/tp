@@ -16,7 +16,9 @@ import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_2;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_3;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
-import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Constants.TYPE_MODULE;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
 import static seedu.duke.common.Messages.NEWLINE;
@@ -34,7 +36,7 @@ class DeleteModuleCommandTest {
         System.setIn(inContent);
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
 
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.addModule(MODULE_CODE_4);
@@ -50,8 +52,7 @@ class DeleteModuleCommandTest {
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 2, MODULE_CODE_4)).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 3, MODULE_CODE_3)).append(NEWLINE);
         sb.append(String.format(Messages.FORMAT_LIST_ITEMS, 4, MODULE_CODE_2)).append(NEWLINE);
-        sb.append(NEWLINE);
-        sb.append(MESSAGE_DELETE_MODULE_INFO);
+        sb.append(String.format(MESSAGE_ENTER_INDICES, TYPE_MODULE, DELETE));
         sb.append(System.lineSeparator());
         sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_1)).append(NEWLINE);
         sb.append(String.format(MESSAGE_REMOVED_MODULE, MODULE_CODE_3)).append(NEWLINE);

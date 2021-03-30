@@ -2,16 +2,15 @@ package seedu.duke.commands;
 
 import seedu.duke.exception.CommandException;
 import seedu.duke.lesson.Lesson;
+import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.EMPTY_STRING;
-import static seedu.duke.common.Messages.FORMAT_LESSONS_INFO;
+import static seedu.duke.common.Messages.FORMAT_ITEM_TIME;
 import static seedu.duke.common.Messages.FORMAT_MODULE_INFO;
 
 /**
@@ -34,8 +33,7 @@ public class ModuleInfoCommand extends Command {
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessonsFromList(lessonList, ui);
         ui.printMessage(EMPTY_STRING);
-        ArrayList<Task> tasksList = module.getTaskList();
-        ui.printTasks(tasksList, false, true);
+        ListTasksCommand.printFilteredTasks(ui, module, false, true);
     }
 
     /**
@@ -45,14 +43,9 @@ public class ModuleInfoCommand extends Command {
      */
     public static void printLessonsFromList(ArrayList<Lesson> lessonList, UI ui) {
         for (Lesson lesson : lessonList) {
-            String lessonName = getLessonTypeString(lesson.getLessonType());
+            String lessonName = LessonType.getLessonTypeString(lesson.getLessonType());
             String lessonTime = lesson.getTime();
-            ui.printMessage(String.format(FORMAT_LESSONS_INFO, lessonName, lessonTime));
+            ui.printMessage(String.format(FORMAT_ITEM_TIME, lessonName, lessonTime));
         }
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

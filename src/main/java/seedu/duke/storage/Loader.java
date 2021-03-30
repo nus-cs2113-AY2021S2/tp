@@ -14,7 +14,6 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static seedu.duke.common.CommonMethods.getLessonType;
 import static seedu.duke.common.CommonMethods.writeLog;
 import static seedu.duke.common.Constants.DIVIDER_READ;
 import static seedu.duke.common.Constants.EMPTY_STRING;
@@ -51,19 +50,18 @@ public class Loader {
      * Returns ArrayList of names (excluding ".txt").
      */
     public ArrayList<String> getModules() {
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> moduleCodes = new ArrayList<>();
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
         if (files == null) {
-            return names;
+            return moduleCodes;
         }
         for (File file : files) {
-            String name = file.getName();
-            if (name.endsWith(TXT_FORMAT)) {
-                names.add(name.replace(TXT_FORMAT, EMPTY_STRING));
+            if (file.isDirectory()) {
+                moduleCodes.add(file.getName());
             }
         }
-        return names;
+        return moduleCodes;
     }
 
     /**
@@ -75,7 +73,7 @@ public class Loader {
     public Module loadModule(String moduleCode) {
         String fileName = moduleCode + TXT_FORMAT;
         Module module = new Module(moduleCode);
-        File path = new File(FOLDER_PATH + "/" + fileName);
+        File path = new File(FOLDER_PATH + "/" + moduleCode + "/" + fileName);
         try {
             Scanner scanner = new Scanner(path);
             readTillLine(scanner);
@@ -133,7 +131,7 @@ public class Loader {
             //Invalid format
             return;
         }
-        LessonType lessonType = getLessonType(fields[INDEX_TYPE].trim());
+        LessonType lessonType = LessonType.getLessonTypeFromString(fields[INDEX_TYPE].trim());
         if (lessonType == null) {
             //Invalid lesson type
             return;
@@ -182,7 +180,7 @@ public class Loader {
         if (fields.length == ENTRY_TASK_LONG) {
             remarks = fields[INDEX_REMARKS_LOADER].trim();
         }
-        Task task = new Task(description, remarks, deadline, isDone, isGraded);
+        Task task = new Task(description, deadline, remarks, isDone, isGraded);
         module.addTask(task);
     }
 

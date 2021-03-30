@@ -3,9 +3,8 @@ package seedu.duke.commands;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
-
 
 import java.awt.Desktop;
 import java.io.IOException;
@@ -14,12 +13,16 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
-import static seedu.duke.common.Messages.MESSAGE_INVALID_LINK_ENTERED;
+import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSON_TO_OPEN_LINK;
 import static seedu.duke.common.Messages.MESSAGE_OPENED_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
@@ -29,7 +32,24 @@ import static seedu.duke.common.Messages.MESSAGE_UNABLE_TO_OPEN_LINK;
  */
 public class OpenLessonLinkCommand extends Command {
 
+    public static final String FILE_LOGGER_NOT_WORKING = "File logger not working.";
+    private static Logger logger = Logger.getLogger(OpenLessonLinkCommand.class.getName());
+    private static FileHandler fileHandler;
     //@@author H-horizon
+
+    /**
+     * Sets up logger when command is created.
+     */
+    public OpenLessonLinkCommand() {
+        LogManager.getLogManager().reset();
+        try {
+            fileHandler = new FileHandler(logger.getName());
+            fileHandler.setLevel(Level.FINE);
+            logger.addHandler(fileHandler);
+        } catch (IOException e) {
+            logger.log(Level.SEVERE, FILE_LOGGER_NOT_WORKING, e);
+        }
+    }
 
     /**
      * Opens links corresponding to specified indices.
@@ -38,19 +58,18 @@ public class OpenLessonLinkCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
         Module module = ModuleList.getSelectedModule();
         ArrayList<Lesson> lessonList = module.getLessonList();
-        printLessons(lessonList, ui);
 
-        String line = ui.readCommand();
-        ArrayList<Integer> indices = Parser.checkIndices(line, lessonList.size());
-        printLessonsLink(lessonList, indices, ui);
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
+        if (lessonList.size() > 0) {
+            ui.printMessage(MESSAGE_LESSON_TO_OPEN_LINK);
+            printLessons(lessonList, ui);
+            String line = ui.readUserInput();
+            ArrayList<Integer> indices = ParserUtil.checkIndices(line, lessonList.size());
+            printLessonsLink(lessonList, indices, ui);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        }
     }
 
     /**
@@ -63,12 +82,10 @@ public class OpenLessonLinkCommand extends Command {
     public static void printLessonsLink(ArrayList<Lesson> lessonList, ArrayList<Integer> indices, UI ui) {
         for (int index : indices) {
             Lesson lesson = lessonList.get(index - 1);
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
             String lessonLink = lesson.getOnlineLink();
             validateLessonLink(ui, lessonLink);
-
-
         }
     }
 
@@ -85,9 +102,11 @@ public class OpenLessonLinkCommand extends Command {
             connection = (HttpURLConnection) lessonUrl.openConnection();
             connection.setRequestMethod(HEAD);
             int statusCode = connection.getResponseCode();
+            assert statusCode >= -1 : MESSAGE_UNABLE_TO_OPEN_LINK;
             openLessonLink(lessonLink, ui);
         } catch (IOException e) {
-            ui.printMessage(MESSAGE_INVALID_LINK_ENTERED);
+            ui.printMessage(MESSAGE_INVALID_LESSON_LINK);
+            logger.info(lessonLink);
         }
     }
 
@@ -124,7 +143,7 @@ public class OpenLessonLinkCommand extends Command {
     private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             ui.printMessage(String.format(FORMAT_INDEX_ITEM, counter, lessonType));
             counter++;
         }

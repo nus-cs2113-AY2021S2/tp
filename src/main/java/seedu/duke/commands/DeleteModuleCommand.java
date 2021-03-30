@@ -2,12 +2,15 @@ package seedu.duke.commands;
 
 import seedu.duke.common.Messages;
 import seedu.duke.module.ModuleList;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constants.DELETE;
 import static seedu.duke.common.Constants.INDEX_FIRST;
-import static seedu.duke.common.Messages.MESSAGE_DELETE_MODULE_INFO;
+import static seedu.duke.common.Constants.TYPE_MODULE;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_MODULE_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_NO_MODULES_TO_DELETE;
 import static seedu.duke.common.Messages.MESSAGE_REMOVED_MODULE;
@@ -24,25 +27,21 @@ public class DeleteModuleCommand extends Command {
      */
     @Override
     public void execute(UI ui) {
-        if (ModuleList.getModules().size() == 0) {
+        if (ModuleList.getModules().isEmpty()) {
             ui.printMessage(MESSAGE_NO_MODULES_TO_DELETE);
             return;
         }
         ui.printMessage(getDeleteInfo());
 
-        ArrayList<Integer> indices = ui.getIndicesFromUser(ModuleList.getModules().size());
-        if (indices.size() == 0) {
+        String userInput = ui.readUserInput();
+        ArrayList<Integer> indices = ParserUtil.checkIndices(userInput, ModuleList.getSize());
+        if (indices.isEmpty()) {
             return;
         }
 
         ArrayList<String> deletedModulesCodes = ModuleList.deleteModules(indices);
         String deletedMessage = getDeletedModuleCodes(deletedModulesCodes);
         ui.printMessage(deletedMessage);
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 
     /**
@@ -58,7 +57,7 @@ public class DeleteModuleCommand extends Command {
             stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, counter, moduleCode));
             stringBuilder.append(NEWLINE);
         }
-        stringBuilder.append(NEWLINE).append(MESSAGE_DELETE_MODULE_INFO);
+        stringBuilder.append(String.format(MESSAGE_ENTER_INDICES, TYPE_MODULE, DELETE));
         return stringBuilder.toString();
     }
 

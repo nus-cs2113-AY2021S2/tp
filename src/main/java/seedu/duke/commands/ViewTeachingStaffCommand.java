@@ -7,7 +7,7 @@ import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.Messages.FORMAT_PRINT_TEACHING_STAFF;
+import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM_DETAILS;
 import static seedu.duke.common.Messages.MESSAGE_TEACHING_STAFF_TO_LIST;
 
 /**
@@ -34,13 +34,8 @@ public class ViewTeachingStaffCommand extends Command {
                 continue;
             }
             String teacherEmail = lesson.getTeachingStaff().getEmail();
-            ui.printMessage(String.format(FORMAT_PRINT_TEACHING_STAFF, counter, teacherName, teacherEmail));
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM_DETAILS, counter, teacherName, teacherEmail));
             counter++;
         }
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 }

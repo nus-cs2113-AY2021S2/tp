@@ -16,7 +16,6 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.TestUtilAndConstants.MODULE_CODE_1;
-import static seedu.duke.TestUtilAndConstants.MODULE_CODE_4;
 
 class WriterTest {
 
@@ -24,39 +23,39 @@ class WriterTest {
     @Test
     void writeModule_noContentNoDirectory_instructionOnly() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/empty_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
     @Test
     void writeModule_twoTask_instructionAndTask() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
-        Task task1 = new Task("Task1", "Task1Remarks",
-                LocalDate.of(2020,2,20),false,false);
-        Task task2 = new Task("Task2", "",
-                LocalDate.of(2021,12,12),true,true);
+        Task task1 = new Task("Task1", LocalDate.of(2020,2,20), "Task1Remarks",
+                false,false);
+        Task task2 = new Task("Task2", LocalDate.of(2021,12,12),
+                "", true,true);
         ModuleList.getSelectedModule().addTask(task1);
         ModuleList.getSelectedModule().addTask(task2);
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/task_only_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
     @Test
     void writeModule_twoLesson_instructionAndLesson() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",
@@ -68,14 +67,14 @@ class WriterTest {
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/lesson_only_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 
     @Test
     void writeModule_twoLessonTwoTask_allContent() throws IOException {
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
         Lesson lesson1 = new Lesson(LessonType.LECTURE, "Friday 2pm", "test.com",
@@ -84,16 +83,16 @@ class WriterTest {
                 new TeachingStaff("Name2","Email2"));
         ModuleList.getSelectedModule().addLesson(lesson1);
         ModuleList.getSelectedModule().addLesson(lesson2);
-        Task task1 = new Task("Task1", "Task1Remarks",
-                LocalDate.of(2020,2,20),false,false);
-        Task task2 = new Task("Task2", "",
-                LocalDate.of(2021,12,12),true,true);
+        Task task1 = new Task("Task1", LocalDate.of(2020,2,20), 
+                "Task1Remarks", false,false);
+        Task task2 = new Task("Task2", LocalDate.of(2021,12,12), 
+                "", true,true);
         ModuleList.getSelectedModule().addTask(task1);
         ModuleList.getSelectedModule().addTask(task2);
         Writer writer = new Writer();
         writer.writeModule();
         Path reference = Paths.get("src/test/java/seedu/duke/storage/reference/all_content_reference.txt");
-        Path actual = Paths.get("Data/CS2113T.txt");
+        Path actual = Paths.get("Data/CS2113T/CS2113T.txt");
         assertEquals(Files.readAllLines(reference), Files.readAllLines(actual));
     }
 }

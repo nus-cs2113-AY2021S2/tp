@@ -7,6 +7,8 @@ public abstract class Command {
 
     public abstract void execute(UI ui) throws CommandException;
 
-    public abstract boolean isExit();
+    public boolean isExit() {
+        return false;
+    }
 
 }

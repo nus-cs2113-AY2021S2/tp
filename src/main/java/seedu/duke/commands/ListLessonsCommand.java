@@ -1,15 +1,16 @@
 package seedu.duke.commands;
 
 import seedu.duke.lesson.Lesson;
+import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
 
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
-import static seedu.duke.common.Messages.FORMAT_PRINT_LESSON;
+import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM_DETAILS;
 import static seedu.duke.common.Messages.INDENTATION;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 
 /**
@@ -18,6 +19,7 @@ import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 public class ListLessonsCommand extends Command {
 
     //@@author H-horizon
+
     /**
      * Prints list of lessons in selected module.
      *
@@ -27,13 +29,13 @@ public class ListLessonsCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
-        ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
-        printLessons(module.getLessonList(), ui);
-    }
 
-    @Override
-    public boolean isExit() {
-        return false;
+        if (module.getLessonList().size() > 0) {
+            ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
+            printLessons(module.getLessonList(), ui);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        }
     }
 
     /**
@@ -42,20 +44,22 @@ public class ListLessonsCommand extends Command {
      * @param lessonList ArrayList of lessons.
      * @param ui         Instance of lessons.
      */
-    private static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
+    public static void printLessons(ArrayList<Lesson> lessonList, UI ui) {
         int counter = 1;
         for (Lesson lesson : lessonList) {
-            String lessonType = getLessonTypeString(lesson.getLessonType());
+            String lessonType = lesson.getLessonTypeString();
             String lessonTime = lesson.getTime();
-            ui.printMessage(String.format(FORMAT_PRINT_LESSON, counter, lessonType, lessonTime));
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM_DETAILS, counter, lessonType, lessonTime));
             String lessonOnlineLink = lesson.getOnlineLink();
-            if (lessonOnlineLink.length() > 0) {
+            if (!lessonOnlineLink.isEmpty()) {
                 ui.printMessage(INDENTATION + lessonOnlineLink);
             }
-            String teacherName = lesson.getTeachingStaff().getName();
-            if (teacherName.length() > 0) {
+            String teacherName = lesson.getTeachingStaffName();
+            if (!teacherName.isEmpty()) {
                 ui.printMessage(INDENTATION + teacherName);
-                String teacherEmail = lesson.getTeachingStaff().getEmail();
+            }
+            String teacherEmail = lesson.getTeachingStaffEmail();
+            if (!teacherEmail.isEmpty()) {
                 ui.printMessage(INDENTATION + teacherEmail);
             }
             counter++;

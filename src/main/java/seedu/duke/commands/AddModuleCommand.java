@@ -30,9 +30,4 @@ public class AddModuleCommand extends Command {
             throw new CommandException(String.format(MESSAGE_DUPLICATE_MODULE, moduleCode));
         }
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

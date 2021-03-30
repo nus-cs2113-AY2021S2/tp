@@ -8,10 +8,13 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.CommonMethods.getSpecifiedTasks;
-import static seedu.duke.common.Messages.COMMAND_VERB_MARK;
+import static seedu.duke.common.Constants.MARK;
+import static seedu.duke.common.Constants.TYPE_TASK;
+import static seedu.duke.common.Messages.MESSAGE_ENTER_INDICES;
 import static seedu.duke.common.Messages.MESSAGE_MARKED_AS_DONE;
+import static seedu.duke.common.Messages.MESSAGE_NO_TASK_MODIFIED;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_MARK;
-import static seedu.duke.common.Messages.MESSAGE_TASK_SELECT_INFO;
+import static seedu.duke.common.Messages.MESSAGE_TASK_LIST_EMPTY;
 
 public class MarkAsDoneCommand extends Command {
 
@@ -26,19 +29,22 @@ public class MarkAsDoneCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         ArrayList<Task> undoneTasks = module.getDoneOrUndoneTasks(false);
+        if (undoneTasks.isEmpty()) {
+            ui.printMessage(String.format(MESSAGE_TASK_LIST_EMPTY, MARK));
+            return;
+        }
         printPrompt(ui, undoneTasks);
         ArrayList<Task> selectedTasks = getSpecifiedTasks(ui, undoneTasks);
+        if (selectedTasks.isEmpty()) {
+            ui.printMessage(MESSAGE_NO_TASK_MODIFIED);
+            return;
+        }
         for (Task task : selectedTasks) {
             String description = task.getDescription();
             ui.printMessage(String.format(MESSAGE_MARKED_AS_DONE, description));
-            module.markTask(task);
+            task.setDone(true);
         }
         ModuleList.writeModule();
-    }
-
-    @Override
-    public boolean isExit() {
-        return false;
     }
 
     /**
@@ -49,7 +55,7 @@ public class MarkAsDoneCommand extends Command {
      */
     private void printPrompt(UI ui, ArrayList<Task> undoneTasks) {
         ui.printMessage(MESSAGE_TASKS_TO_MARK);
-        ui.printSummarisedTasks(undoneTasks);
-        ui.printMessage(String.format(MESSAGE_TASK_SELECT_INFO, COMMAND_VERB_MARK));
+        ui.printTasks(undoneTasks, true);
+        ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, MARK));
     }
 }

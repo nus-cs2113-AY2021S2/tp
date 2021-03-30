@@ -18,7 +18,7 @@ class DeleteLessonCommandTest extends LessonCommandTest {
     void deleteLessonsFromList_moduleLessonListIndexes_expectPrintsCorrectOutput() {
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
 
         UI ui = new UI();
 

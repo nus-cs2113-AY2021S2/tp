@@ -1,5 +1,7 @@
 package seedu.duke.lesson;
 
+import static seedu.duke.common.Constants.FORMAT_LINK;
+
 public class Lesson {
 
     private final LessonType lessonType;
@@ -22,6 +24,10 @@ public class Lesson {
         return lessonType;
     }
 
+    public String getLessonTypeString() {
+        return LessonType.getLessonTypeString(lessonType);
+    }
+
     public TeachingStaff getTeachingStaff() {
         return teachingStaff;
     }
@@ -34,11 +40,38 @@ public class Lesson {
         this.time = time;
     }
 
+    public void setOnlineLink(String onlineLink) {
+        this.onlineLink = onlineLink;
+    }
+
     public void setTeachingStaff(TeachingStaff teachingStaff) {
         this.teachingStaff = teachingStaff;
     }
 
-    public void setOnlineLink(String onlineLink) {
-        this.onlineLink = onlineLink;
+    public String getTeachingStaffName() {
+        return teachingStaff.getName();
+    }
+
+    public String getTeachingStaffEmail() {
+        return teachingStaff.getEmail();
+    }
+
+    public void setTeachingStaffName(String name) {
+        teachingStaff.setName(name);
+    }
+
+    public void setTeachingStaffEmail(String email) {
+        teachingStaff.setEmail(email);
+    }
+
+    //@@author ivanchongzhien
+    /**
+     * Check if given string is a valid link.
+     *
+     * @param link string to be checked
+     * @return true if string follows the format of a valid email
+     */
+    public static boolean isValidLink(String link) {
+        return link.matches(FORMAT_LINK);
     }
 }

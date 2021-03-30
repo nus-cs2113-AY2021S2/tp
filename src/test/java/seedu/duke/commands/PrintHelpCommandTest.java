@@ -28,7 +28,7 @@ class PrintHelpCommandTest {
         System.setOut(new PrintStream(outContent));
 
         TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleNames();
+        ModuleList.loadModuleCodes();
         ModuleList.addModule(MODULE_CODE_3);
         ModuleList.addModule(MODULE_CODE_2);
 
@@ -47,9 +47,6 @@ class PrintHelpCommandTest {
             stringBuilder.append(MESSAGE_MODULE_HELP).append(NEWLINE);
         }
         for (DashboardCommands command : DashboardCommands.values()) {
-            if (command.equals(DashboardCommands.INVALID)) {
-                continue;
-            }
             String commandWordAndArgs = command.getWord() + " " + command.getArgumentsFormat();
             String commandAndDescription = String.format(Messages.FORMAT_LIST_HELP,
                     commandWordAndArgs, command.getDescription());
