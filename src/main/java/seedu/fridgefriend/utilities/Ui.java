@@ -1,5 +1,6 @@
 package seedu.fridgefriend.utilities;
 
+//@@author kwokyto
 import java.util.Scanner;
 
 /**

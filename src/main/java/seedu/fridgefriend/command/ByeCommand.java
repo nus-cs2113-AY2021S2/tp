@@ -1,5 +1,6 @@
 package seedu.fridgefriend.command;
 
+//@@author kwokyto
 /**
  * Represents a command to exit the application.
  */

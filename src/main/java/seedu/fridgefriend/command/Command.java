@@ -15,10 +15,12 @@ public abstract class Command {
     protected Fridge fridge;
     protected boolean isExit;
 
+    //@@author kwokyto
     public Command() {
         isExit = false;
     }
     
+    //@@author kwokyto
     public boolean isExit() {
         return isExit;
     }

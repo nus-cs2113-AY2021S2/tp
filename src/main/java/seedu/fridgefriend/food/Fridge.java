@@ -33,14 +33,17 @@ public class Fridge {
         }
     }
 
+    //@@author kwokyto
     public int getSize() {
         return fridge.size();
     }
 
+    //@@author kwokyto
     public Food getFood(int i) {
         return fridge.get(i);
     }
 
+    //@@author kwokyto
     public void removeByIndex(int index) {
         fridge.remove(index);
     }
@@ -61,8 +64,8 @@ public class Fridge {
     public void clearFridge() {
         fridge.clear();
     }
-
-    //@@author
+  
+    //@@author kwokyto
     /**
      * Returns a boolean indicated if the food in a category is running out.
      * 
@@ -74,6 +77,7 @@ public class Fridge {
         return totalQuantity < FoodCategory.getMinimumQuantity(foodCategory);
     }
 
+    //@@author kwokyto
     public int getTotalQuantity(FoodCategory foodCategory) {
         int totalQuantity = 0;
         for (Food food : this.fridge) {
