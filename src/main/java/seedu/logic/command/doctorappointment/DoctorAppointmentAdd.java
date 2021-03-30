@@ -36,9 +36,10 @@ public class DoctorAppointmentAdd extends Command {
             throw new InvalidAppIDException();
         }if (!DoctorAppointmentParser.isValidGender(gender)){
             throw new InvalidGenderException();
-        }if (!NurseSchedulesParser.isValidDate(date)){
-            throw new InvalidDateException();
         }
+//        if (!NurseSchedulesParser.isValidDate(date)){
+//            throw new InvalidDateException();
+//        }
         AppointmentActions.addAppointment(input);
     }
 

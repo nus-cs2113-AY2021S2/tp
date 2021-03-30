@@ -1,7 +1,10 @@
 package seedu.logic.command;
 
 import seedu.exceptions.nurseschedules.EmptyListException;
+import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.logic.errorchecker.MainChecker;
+import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
@@ -34,8 +37,11 @@ public class NurseScheduleActions {
 //        }
 //    }
 
-    public void addSchedule(String[] details) {
+    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException {
         try {
+            NurseScheduleChecker.isValidNurseID(details[0]);
+            NurseScheduleChecker.isNurseIDExist(details[0]);
+            NurseScheduleChecker.isValidPatientID(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
         }
