@@ -3,26 +3,71 @@
 
 !include style.puml
 
-participant ":AddCommand" as AddCommand
-participant "food:Food" as Food
-participant "fridge:Fridge" as Fridge
-participant "checker:UniqueFoodnameChecker" as UniqueFoodnameChecker
+participant ":AddCommand" as AddCommand COMMAND_COLOR
+participant "foodToAdd:Food" as NewFood FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR_T3
+participant "checker:UniqueFoodnameChecker" as Checker FOOD_COLOR_T2
+participant ":Food" as Food FOOD_COLOR_T4
+participant ":Exception" as Exception EXCEPTION_COLOR
+
+'autoactivate on
+
+-> AddCommand: create
+activate AddCommand
+AddCommand -> AddCommand: categoriseAndGenerateFood(params)
+AddCommand -> NewFood **: create
+activate NewFood
+return foodToAdd
+return command
 
 -> AddCommand: execute()
 activate AddCommand
+AddCommand -> AddCommand: addFood()
+activate AddCommand
+AddCommand-> Fridge: add(foodToAdd)
+activate Fridge
 
+Fridge -> Checker **: create
+activate Checker
+return checker
+Fridge -> Checker: checker.isFoodnameUnique()
+activate Checker
+Checker -> Fridge: getFridge()
+activate Fridge
+return
 loop food in fridge
-    AddCommand-> Fridge: addFood()
-    activate Fridge
-    opt isExpiring
-        Fridge -> Food: isExpiring()
-        activate Food
-        return
+    Checker -> Food: getFoodName()
+    activate Food
+    return existingFoodName
+    opt equals newFoodName
+        Checker --> Fridge: true
     end
-    return food
+    return false
 end
-destroy Food
-destroy Fridge
+
+alt Foodname is unique (add new food))
+    Fridge --> AddCommand: food added to fridge
+
+else add to existing
+    Fridge -> Checker: checker.isParamIdentical()
+    activate Checker
+    return boolean
+    alt all parameters except quantity consists with record
+        Fridge -> Fridge: editFoodQuantity()
+        activate Fridge
+        return
+        Fridge --> AddCommand: more quantity added to existing food in fridge
+    else RepetitiveFoodName
+        Fridge -> Exception: throw
+        activate Exception
+        return
+        deactivate Exception
+    end
+end
+return
+
+destroy NewFood
+
 <--AddCommand: result
 deactivate AddCommand
 
