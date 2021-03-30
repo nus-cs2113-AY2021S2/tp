@@ -77,7 +77,7 @@ If you are having difficulties managing your schedule, lesson links and notes, G
 ----
 # Quick Start
 
-Download the latest version of GULIO from here:
+Download the latest version of GULIO from here:<br>
 https://github.com/AY2021S2-CS2113T-W09-3/tp/releases
 
 ### Requirements:
