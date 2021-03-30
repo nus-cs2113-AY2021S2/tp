@@ -201,68 +201,121 @@ Please choose which action you would like to do and enter the number:
 ----------------------
 ```
 #### 3.1.1 Add a Module  
+Adds a new module to the modules list.  
+
+Example for adding a new module:  
+```
+--------------------------------------------  
+Enter name of the new module:  
+> CS2113T  
+--------------------------------------------    
+Enter module description:  
+> Software Engineering and OOP    
+--------------------------------------------  
+New module added:  
+CS2113T:  
+Software Engineering and OOP  
+--------------------------------------------  
+Returning to module information menu...  
+```  
 
 #### 3.1.2 View a Module  
+Select a module to view its details: `module name`, `description`, `review`, `modular credits`, `grade`, `tasks`  
+Example of viewing a module:
+>**Note!**  
+> In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.   
+> Tasks have been added through the [add new task](#331-add-new-task) feature.
 
-#### 3.1.3 View all Modules  
+```   
+--------------------------------------------  
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS2113T  
+--------------------------------------------  
+Which module would you like to view?  
+> 1  
+--------------------------------------------  
+Name: CS2113T  
+  
+Description:  
+Software Engineering and OOP  
+  
+Review:  
+You have not reviewed this module yet.  
+  
+Modular Credit:  
+0  
+  
+Grade:  
+null  
+  
+These are your tasks:   
+1. [Task][CS2113T][    ] study week 10 topics  
+2. [Assignment][CS2113T][DONE] nice (by: Mar 27 2021, 11:59 PM)  
+--------------------------------------------  
+Returning to module information menu...  
+```  
 
+#### 3.1.3 View all Modules   
 
-Lists out all the modules added to UniTracker.
+Lists out all the modules added to UniTracker.  
+  
+Example for listing all the modules:  
+>**Note!**    
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.
+```
+Here are the modules in your Modules List:    
+--------------------------------------------    
+[1] --- CS3243    
+[2] --- CS2113T   
+--------------------------------------------  
+```  
+#### 3.1.4 Delete a Module  
 
-* Example for listing all the modules:  
-  Input:   
-  `3`  
-  Output:
-  ```
-  Here are the modules in your Modules List:  
-  --------------------------------------------  
-  [1] --- CS3243  
-  [2] --- CS2113T  
-  --------------------------------------------
-  ```
-#### 3.1.4 Delete a Module
+Deletes a module from the list of modules.  
 
-Deletes a module from the list of modules.
+* Format: enter the index (integer) of the module that you want to delete.      
 
-* Format: enter the index (integer) of the module that you want to delete.
-* Example for deleting a module:  
-  Input:  
-  `6`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Enter the module number to be deleted:`  
-  Input:  
-  `1`  
-  Output:
-  ```
-  You've deleted this: CS3243  
-  NOTE: You are deleting your review
-  The lectures were very entertaining. I have learnt a lot of important algorithms.
-  Assignments and quizzes helped me learn concepts faster.
-  Overall: 5/5
-  NOTE: You are deleting your module description
-  Intro to AI
-  --------------------------------------------
-  Returning to module information menu...
-  ```
+Example for deleting a module:    
+>**Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+```
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------  
+Enter the module number to be deleted:  
+> 1  
+Are you sure you want to delete CS3243? [Y/N]  
+Mar 31, 2021 3:04:34 AM seedu.duke.ModuleInfo deleteModule  
+WARNING: You are making a change that cannot be undone.  
+> Y  
+You've deleted this: CS3243   
+NOTE: You are deleting your module description  
+Intro to AI  
+NOTE: You are deleting your review  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+--------------------------------------------  
+Returning to module information menu...  
+```
 
-#### 3.1.5 Add/View Components and Their Weightages
+#### 3.1.5 Add/View Components and Their Weightages  
 
 * Example for adding components and weightage to a module Input:  
-  `2`  
-  Output:
+  `2`   
+  Output:  
   ````
-  Would you like to add/view component(s) to a module? [Y/N]
+  Would you like to add/view component(s) to a module? [Y/N]  
   ````
   Input:  
   `Y`  
-  Output:
-  ````
-  Key in 1 to add component and 2 to view component
+  Output:  
+  ````  
+  Key in 1 to add component and 2 to view component  
   ````
   Input:  
   `1`  
@@ -308,92 +361,118 @@ Deletes a module from the list of modules.
     ````
   {FinalExam=20}
     ````  
-#### 3.1.6 Add Module's Modular Credits (MC)
+#### 3.1.6 Add Module's Modular Credits (MC)  
+*[This section will be completed in the future.]* <br>  
 #### 3.1.7 Add Module Grade  
+*[This section will be completed in the future.]* <br>  
 
 #### 3.1.8 Add a review
 
 Adds a review for the module of your choice.
 
-* Format: Once you have finished typing your review, type `/end` and hit `Enter`
-* Example for adding a review:  
-  Input:   
-  `4`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Please choose which module you would like to review and enter the number:`
-
-  Input:  
-  `1`  
-  Output:
-
-  `You have already added a review:`  
-  `Very very very difficult for me:( But, very important to know!`  
-  `5/5`
-
-  `Would you like to replace this with another review? [Y/N]`  
-  Input:  
-  `Y`  
-  Output:  
-  `After you finish your review, type '/end' to finish reviewing.`  
-  `Enter your review for CS3243 below:`
-
-  Input:  
-  `The lectures were very entertaining. I have learnt a lot of`   
-  `important algorithms.`  
-  `Assignments and quizzes helped me learn concepts faster.`  
-  `Overall: 5/5`  `/end`  
-  Output:  
-  ```
-  Woohoo~ Review added:  
-  The lectures were very entertaining. I have learnt a lot of important algorithms.  
-  Assignments and quizzes helped me learn concepts faster.  
-  Overall: 5/5
+* Format: Once you have finished typing your review, type `/end` and hit `Enter`  
   
-  Returning to module information menu...
-  ```
+Example for adding a review:  
+``` 
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------    
+Please choose which module you would like to review and enter the number:  
+> 1  
+You have already added a review:  
+Very very very difficult for me:( But, very important to know!  
+5/5  
 
-#### 3.1.9 View all reviews
+Would you like to replace this with another review? [Y/N]  
+Mar 31, 2021 3:08:31 AM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage  
+WARNING: You will delete your old review. This cannot be undone.  
+> Y  
+  
+After you finish your review, type '/end' to finish reviewing.  
+Enter your review for CS3243 below:  
+> The lectures were very entertaining. I have learnt a lot of   
+> important algorithms.  
+> Assignments and quizzes helped me learn concepts faster.  
+> Overall: 5/5  /end  
 
-Lists out all the reviews for all modules added to UniTracker.
+Woohoo~ Review added:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+  
+Returning to module information menu...  
+```
 
-* Example for listing all the modules' reviews:  
-  Input:   
-  `5`  
-  Output:
+#### 3.1.9 View all reviews  
 
-    ```  
-    --------------------------------------------  
-    For CS3243:  
-    The lectures were very entertaining. I have learnt a lot of important algorithms.  
-    Assignments and quizzes helped me learn concepts faster.  
-    Overall: 5/5  
-    --------------------------------------------  
-    For CS2113T:  
-    Very fun! We learnt a lot of important programming concepts.  
-    Java is also a fun language:)  
-    GitHub is difficult but very important to know about it.  
-    Overall: 5/5   
-    
-    --------------------------------------------  
-    Returning to module information menu...
+Lists out all the reviews for all modules added to UniTracker.  
 
-    ```
+Example for listing all the modules' reviews:  
+>**Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+```
+--------------------------------------------  
+For CS3243:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+--------------------------------------------  
+For CS2113T:  
+Very fun! We learnt a lot of important programming concepts.  
+Java is also a fun language:)  
+GitHub is difficult but very important to know about it.  
+Overall: 5/5   
+--------------------------------------------  
+Returning to module information menu...  
+```
 #### 3.1.10 Delete a Review
 
-#### 3.1.11 Add New Task
+Deletes any existing reviews of existing modules.  
+Example of deleting a review of an existing module:  
+>**Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.  
 
-#### 3.1.12 Delete Task
+``` 
+--------------------------------------------  
+Here are the modules in your Modules List:    
+--------------------------------------------    
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------  
+Enter the module number to delete review:  
+> 1  
+--------------------------------------------  
+Mar 31, 2021 3:15:51 AM seedu.duke.ModuleInfo deleteReview  
+WARNING: You are making a change that cannot be undone.  
+Are you sure you want to delete this review? [Y/N]  
+For CS2113T:  
+Review:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.    
+Assignments and quizzes helped me learn concepts faster.   
+Overall: 5/5    
+> Y  
+--------------------------------------------  
+You've deleted this review:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.   
+Assignments and quizzes helped me learn concepts faster.   
+Overall: 5/5  
+--------------------------------------------  
+Returning to module information menu...  
+```
 
-#### 3.1.13 Add Zoom Link
-
-#### 3.1.14 Delete Zoom Link
-
-#### 3.1.15 Add/View Module Description
+#### 3.1.11 Add New Task  
+Refer to [this section](#331-add-new-task).  
+#### 3.1.12 Delete Task  
+Refer to [this section](#333-delete-a-task).  
+#### 3.1.13 Add Zoom Link  
+Refer to [this section](#345-add-zoom-link).  
+#### 3.1.14 Delete Zoom Link  
+*[This section will be completed in the future.]* <br>
+#### 3.1.15 Add/View Module Description  
 
 Adds user-defined module description.  
 User can view module description added previously.
@@ -655,7 +734,7 @@ Returning back to TaskManager menu now!
 > ````
   
 #### 3.3.2 Mark/Unmark a Task as Done
-
+*[This section will be completed in the future.]* <br>  
 
 #### 3.3.3 Delete a Task
 
@@ -681,12 +760,13 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
   ```` 
   Input:    
   `1`  
-  Output:
-  ````
-  You've deleted this: [CS2113T] Work on User Guide
-  NOTE: Wow yay~
-  Returning back to TaskManager menu now!
-  ````
+  Output:  
+  
+  ````  
+  You've deleted this: [CS2113T] Work on User Guide  
+  NOTE: Wow yay~  
+  Returning back to TaskManager menu now!  
+  ````  
 
 #### 3.3.4 View All Tasks
 
@@ -732,11 +812,12 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
   ```` 
   Input:    
   `1`  
-  Output:
-  ````
-  You've pinned this: [CS2113T] Work on User Guide
-  Returning back to TaskManager menu now!
-  ````
+  Output:  
+  
+  ````  
+  You've pinned this: [CS2113T] Work on User Guide  
+  Returning back to TaskManager menu now!  
+  ````  
 
 ---
 
