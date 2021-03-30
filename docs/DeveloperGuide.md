@@ -447,3 +447,146 @@ Efficiently view and update regularly-needed information on modules and deadline
 1. Every command should respond within 10s of input on a typical modern computer.
 
 &nbsp;
+
+### Glossary
+
+* Mainstream OS: Windows, Linux, Unix, OS-X
+* CLI: Command-Line Interface
+* GUI: Graphical User Interface
+* Module: A university module
+
+&nbsp;
+
+----
+
+## Appendix: Instruction for Manual Testing
+
+Due to the 2-layer command system, you will need to identify which layer you are on in order to run the tests correctly.To identify which layer you are on, simply check the tag beside your input, known as the **input label**.
+
+* “GULIO” indicates that you are at the dashboard layer.
+* A module code (e.g. “CS2113T”) indicates that you are within that module.
+
+<table>
+    <tr>
+        <td>
+            <p align="center">
+                <img width="400" src="userGuideImages/Dashboard.png" alt="Dashboard Label"><br>
+                Figure 3a - Dashboard Layer
+            </p>
+        </td>
+        <td>
+            <p align="center">
+                <img width="400" src="userGuideImages/Module.png" alt="Module Label"><br>
+                Figure 3b - Module Layer
+            </p>
+        </td>
+    </tr>
+</table>
+
+### Launching GULIO
+
+1. Shift the file GULIO.jar to your desired directory.
+1. Open command prompt and navigate to the directory.
+1. Enter “Java -jar GULIO.jar” into the command prompt.<br>
+   _Expected outcome: Prints welcome message._
+
+
+### Exiting GULIO
+
+1. Ensure that no module is selected. Input label should show “GULIO”.
+  1. If you see a module code instead, enter “close” to close the module.<br>
+     _Expected outcome: Input label changes to “GULIO”._
+1. Enter “exit”.<br>
+   _Expected outcome: Prints exit message and program closes._
+
+
+### Adding a Module
+
+1. Ensure that no module is selected. Input label should show “GULIO”.
+  1. If you see a module code instead, enter “close” to close the module.<br>
+     _Expected outcome: Input label changes to “GULIO”._
+1. Enter “module”.<br>
+   _Expected outcome: Lists all existing modules._
+1. Enter “add \<module>” where “\<module>” is a module code that is not in the list.<br>
+   _Expected outcome: Prints success message._
+1. Enter “module” again to list all existing modules.<br>
+   _Expected outcome: New module is added to list._
+
+
+### Deleting a Module
+
+1. Ensure that no module is selected. Input label should show “GULIO”.
+  1. If you see a module code instead, enter “close” to close the module.<br>
+     _Expected outcome: Input label changes to “GULIO”._
+1. Enter “delete”.<br>
+   _Expected outcome: Lists all existing modules and asks for indices to delete._
+1. Enter indices of modules to delete, separated by space.<br>
+   _Expected outcome: Prints success message._
+1. Enter “module”.<br>
+   _Expected outcome: Specified modules deleted._
+
+### Opening a Module
+
+1. Ensure that no module is selected. Input label should show “GULIO”.
+  1. If you see a module code instead, enter “close” to close the module.<br>
+     _Expected outcome: Input label changes to “GULIO”._
+1. Enter “modules”.<br>
+   _Expected outcome: Lists all existing modules._
+1. Enter “open <module>” where “<module>” is a module code in the list.<br>
+   _Expected outcome: Prints overview of module and input label changes to module code._
+
+### Closing a Module
+
+1. Check if a module is selected via the input label.
+  1. If the input label shows “GULIO”, enter “modules”.<br>
+     _Expected outcome: Lists all existing modules._
+  1. Add a new module if the list is empty.
+  1. Open one of the modules.<br>
+     _Expected outcome: Prints overview of module._
+1. Enter “close”.<br>
+   _Expected outcome: Input label changes back to “GULIO”._
+
+### Adding a Lesson
+
+1. Check if a module is selected via the input label.
+  1. If the input label shows “GULIO”, enter “modules”.<br>
+     _Expected outcome: Lists all existing modules._
+  1. Add a new module if the list is empty.
+  1. Open one of the modules.<br>
+     _Expected outcome: Prints overview of module._
+1. Enter “lessons”.<br>
+   _Expected outcome: Lists all lessons for that module._
+1. Add a new lesson. E.g. “add lesson lecture ;; Friday 6pm”.<br>
+   _Expected outcome: Prints success message._
+1. Enter “lessons”.<br>
+   _Expected outcome: New lesson added to list._
+
+### Deleting a Lesson
+
+1. Check if a module is selected via the input label.
+  1. If the input label shows “GULIO”, enter “modules”.<br>
+     _Expected outcome: Lists all existing modules._
+  1. Add a new module if the list is empty.
+  1. Open one of the modules.<br>
+     _Expected outcome: Prints overview of module._
+1. Enter “delete lesson”.<br>
+   _Expected outcome: Lists all existing lessons and asks for indices to delete._
+1. Enter indices of lessons to delete, separated by space.<br>
+   _Expected outcome: Prints success message._
+1. Enter “lessons”.<br>
+   _Expected outcome: Specified lessons removed from list._
+
+### Opening a Link
+
+1. Check if a module is selected via the input label.
+1. If the input label shows “GULIO”, enter “modules”.<br>
+   _Expected outcome: Lists all existing modules._
+1. Add a new module if the list is empty.
+1. Open one of the modules.<br>
+   _Expected outcome: Prints overview of module._
+1. Add a new lesson with a link. E.g. “add lesson lecture ;; Friday 4pm ;; https://nus-sg.zoom.us/”. <br>
+   _Expected outcome: Prints success message._
+1. Enter “link”.<br>
+   _Expected outcome: Lists all existing lessons._
+1. Enter indices of lessons with links to open.<br>
+   _Expected outcome: Opens link for lessons selected._
