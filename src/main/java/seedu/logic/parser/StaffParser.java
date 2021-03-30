@@ -10,6 +10,7 @@ import seedu.logic.command.Command;
 import seedu.logic.command.staff.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.StaffChecker;
+import seedu.ui.StaffUI;
 import seedu.ui.UI;
 
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class StaffParser {
 
 
     public Command  commandHandler(String line) throws WrongStaffIdException,
-            WrongListInputException, NoInputException, ExcessInputException,
+            WrongListInputException, ExcessInputException,
             InsufficientInputException, NoInputException, NumberFormatException, InvalidIntegerException {
         Command c = null;
         if (line.equals(" ")) {
@@ -36,6 +37,7 @@ public class StaffParser {
             for (int i=0; i< cleanArray.length; i++) {
                 cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             }
+            StaffUI.staffHiredOutput(cleanArray[1], cleanArray[2]);
             c = new StaffAdd(cleanArray);
             break;
 
