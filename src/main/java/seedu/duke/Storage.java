@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
@@ -43,9 +44,9 @@ public class Storage {
      * Saves a SortedMap of data into the file specified by filePath.
      *
      * @param patientData The data to be written to file
-     * @throws IOException When file is not found etc
+     * @throws StorageException when unusual events happen during file saving
      */
-    public void save(SortedMap<String, Patient> patientData) throws IOException {
+    public void save(SortedMap<String, Patient> patientData) throws StorageException {
         try {
             File inFile = new File(filePath);
             if (!inFile.exists()) {
@@ -67,10 +68,10 @@ public class Storage {
             }
             fileWriter.write(message.toString());
             fileWriter.close();
-
         } catch (FileNotFoundException e) {
-            Ui ui = new Ui();
-            ui.printException(e);
+            throw new StorageException(StorageException.Type.FILE_CREATION_FAIL, e);
+        } catch (IOException e) {
+            throw new StorageException(StorageException.Type.FILE_WRITE_FAIL, e);
         }
     }
 
@@ -99,9 +100,9 @@ public class Storage {
      * Reads from the data file and converts the data into a format usable by Patient Manager.
      *
      * @return data used by Patient Manager
-     * @throws IOException errors when reading file
+     * @throws StorageException when unusual events happen during file loading
      */
-    public SortedMap<String, Patient> load() throws IOException {
+    public SortedMap<String, Patient> load() throws StorageException {
         SortedMap<String, Patient> data = new TreeMap<>();
         try {
             File inFile = new File(filePath);
@@ -118,8 +119,7 @@ public class Storage {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            Ui ui = new Ui();
-            ui.printException(e);
+            throw new StorageException(StorageException.Type.FILE_NOT_FOUND, e);
         }
         return data;
     }

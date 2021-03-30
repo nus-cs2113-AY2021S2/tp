@@ -5,8 +5,9 @@ import seedu.duke.Constants;
 @SuppressWarnings("serial")
 public class StorageException extends BaseException {
     public enum Type {
-        // TODO
-        SAMPLE_TYPE("Dummy type");
+        FILE_CREATION_FAIL(Constants.STORAGE_FILE_CREATION_FAIL),
+        FILE_WRITE_FAIL(Constants.STORAGE_FILE_WRITE_FAIL),
+        FILE_NOT_FOUND(Constants.STORAGE_FILE_NOT_FOUND);
         
         public final String message;
 
