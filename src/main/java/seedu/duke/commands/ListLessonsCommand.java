@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM_DETAILS;
 import static seedu.duke.common.Messages.INDENTATION;
+import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 
 /**
@@ -18,6 +19,7 @@ import static seedu.duke.common.Messages.MESSAGE_LESSONS_TO_LIST;
 public class ListLessonsCommand extends Command {
 
     //@@author H-horizon
+
     /**
      * Prints list of lessons in selected module.
      *
@@ -27,8 +29,13 @@ public class ListLessonsCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
-        ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
-        printLessons(module.getLessonList(), ui);
+
+        if (module.getLessonList().size() > 0) {
+            ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
+            printLessons(module.getLessonList(), ui);
+        } else {
+            ui.printMessage(MESSAGE_LESSONS_LIST_EMPTY);
+        }
     }
 
     /**
