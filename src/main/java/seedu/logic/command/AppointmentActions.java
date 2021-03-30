@@ -1,11 +1,8 @@
 package seedu.logic.command;
 
 
-import seedu.duke.Constants;
-import seedu.exceptions.doctorappointment.InvalidAppIDException;
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
-import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
 
@@ -14,7 +11,6 @@ import java.util.ArrayList;
 
 public class AppointmentActions {
     public static ArrayList<DoctorAppointment> appointmentList;
-    public static ArrayList<Staff> doctorList;
 
     public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
         appointmentList = loadAppointments;
@@ -59,34 +55,26 @@ public class AppointmentActions {
         }
     }
 
-    public static void deleteAppointment(String[] inputArray) throws IOException {
-        String iD = inputArray[1];
-        int index = 999;
-        int counter = 0;
-        boolean isAorD = false;
+    public static void deleteAppointment(String inputID) throws IOException {
+        String[] iD = inputID.split("");
 
-        for (DoctorAppointment doc : appointmentList) {
-            if (iD.equals("A")) {
-                isAorD = true;
-                if (doc.getAppointmentId().equals(iD)) {
-                    index = counter;
+        if (iD[0].equals("A")) {
+            for (int i = 0; i < appointmentList.size(); i++) {
+                if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
+                    DoctorAppointmentUI.deletedAptID(appointmentList.get(i).getAppointmentId());
+                    appointmentList.remove(i);
+                    DoctorAppointmentStorage.writeToFile(appointmentList);
                 }
             }
-            if (iD.equals("D")) {
-                if (doc.getDoctorId().equals(iD)) {
-                    index = counter;
+        } else if (iD[0].equals("D")) {
+            for (int i = appointmentList.size()-1; i >=0; i--) {
+                if (appointmentList.get(i).getDoctorId().equals(inputID)) {
+                    DoctorAppointmentUI.deletedDocID(appointmentList.get(i).getDoctorId(), appointmentList.get(i).getAppointmentId());
+                    appointmentList.remove(i);
+                    DoctorAppointmentStorage.writeToFile(appointmentList);
                 }
             }
         }
-        if (index == 999) DoctorAppointmentUI.printIDNotFound();
-        else {
-            if (isAorD) DoctorAppointmentUI.deletedID(appointmentList.get(index).getAppointmentId());
-            else DoctorAppointmentUI.deletedID(appointmentList.get(index).getDoctorId());
-
-            appointmentList.remove(index);
-            DoctorAppointmentStorage.writeToFile(appointmentList);
-        }
-
     }
 
     public static void helpAppointment() {

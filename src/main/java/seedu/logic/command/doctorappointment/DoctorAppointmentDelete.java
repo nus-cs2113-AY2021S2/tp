@@ -18,16 +18,13 @@ public class DoctorAppointmentDelete extends Command {
 
 
     public DoctorAppointmentDelete(String[] parsedInput) {
-        ID = parsedInput[0];
+        ID = parsedInput[1];
         input = parsedInput;
     }
 
     @Override
-    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException, InvalidIDException, AppointmentIDTakenException {
-        if (!DoctorAppointmentParser.isValidDocID(ID) && !DoctorAppointmentParser.isValidAppointmentID(ID)) {
-            throw new InvalidIDException();
-        }
-        AppointmentActions.deleteAppointment(input);
+    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException {
+        AppointmentActions.deleteAppointment(ID);
     }
 
     @Override
