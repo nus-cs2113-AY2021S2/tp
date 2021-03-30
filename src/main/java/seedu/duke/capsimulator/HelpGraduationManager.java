@@ -1,4 +1,6 @@
-package seedu.duke;
+package seedu.duke.capsimulator;
+
+import seedu.duke.Ui;
 
 public class HelpGraduationManager {
 

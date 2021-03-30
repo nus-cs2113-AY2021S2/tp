@@ -1,6 +1,12 @@
-package seedu.duke;
+package seedu.duke.capsimulator;
+
+import seedu.duke.Module;
+import seedu.duke.ModuleInfo;
+import seedu.duke.Ui;
 
 import java.util.ArrayList;
+
+import static seedu.duke.capsimulator.ModuleGradeEnum.checkScoreAgainstGrade;
 
 public class HelpGraduation {
 
@@ -9,6 +15,7 @@ public class HelpGraduation {
     public int totalMCs;
     public ArrayList<Double> listOfGrades;
     public ArrayList<Integer> listOfMCs;
+
 
     public HelpGraduation() {
         this.totalMCs = 0;
@@ -37,7 +44,25 @@ public class HelpGraduation {
     //System.out.println("[ " + formattedCurrentCAPString + numberOfGradedMCsTaken + " ]");
     //}
 
+
     public void capSimulator() {
+        Ui.printCapSimulatorSetting();
+        int capSimulatorSetting = Ui.readCommandToInt();
+        if (capSimulatorSetting == 1) {
+            for (Module module : ModuleInfo.modules) {
+                    String grade = module.getGrade();
+                    int modularCredits = module.getMc();
+                    String moduleName = module.getName();
+                    listOfGrades.add(checkScoreAgainstGrade(grade, moduleName));
+                    listOfMCs.add(modularCredits);
+            }
+        } else if (capSimulatorSetting == 2) {
+            for (ModuleGradeEnum g : ModuleGradeEnum.values()) {
+                System.out.println(g.getEnumGrade());
+            }
+        }
+
+
         Ui.printCapSimulatorPrompt();
         while (true) {
             Ui.printGradePerModulePrompt();

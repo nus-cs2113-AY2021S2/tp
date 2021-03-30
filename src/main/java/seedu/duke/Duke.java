@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.HelpGraduationManager;
 import seedu.duke.link.Links;
 import seedu.duke.task.TaskManager;
 
