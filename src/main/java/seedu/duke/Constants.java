@@ -78,7 +78,7 @@ public class Constants {
     public static final String DIAGNOSIS_DELIMITER = "##";
     public static final String PRESCRIPTION_DELIMITER = "@@";
     public static final String RECORDS_DELIMITER = "!R!";
-    public static final String DETAILS_DELIMITER = "\t";
+    public static final String DETAILS_DELIMITER = "!D!";
 
     // Data file path
     public static final String FILE_PATH = "data.txt";

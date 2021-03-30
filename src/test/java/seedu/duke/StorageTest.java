@@ -56,5 +56,5 @@ public class StorageTest {
                 + "S7654321B" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
-
+    //TODO: better tests
 }

@@ -60,15 +60,15 @@ public class Record {
     public String printFileConsultationDetail() {
         String consultationDetail = "";
         for (String symptom : symptoms) {
-            consultationDetail += symptom + "\t";
+            consultationDetail += symptom + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.SYMPTOM_DELIMITER;
         for (String diagnosis : diagnoses) {
-            consultationDetail += diagnosis + "\t";
+            consultationDetail += diagnosis + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.DIAGNOSIS_DELIMITER;
         for (String prescription : prescriptions) {
-            consultationDetail += prescription + "\t";
+            consultationDetail += prescription + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.PRESCRIPTION_DELIMITER;
         return consultationDetail;
