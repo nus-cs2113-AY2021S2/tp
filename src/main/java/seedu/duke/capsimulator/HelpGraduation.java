@@ -50,11 +50,11 @@ public class HelpGraduation {
         int capSimulatorSetting = Ui.readCommandToInt();
         if (capSimulatorSetting == 1) {
             for (Module module : ModuleInfo.modules) {
-                    String grade = module.getGrade();
-                    int modularCredits = module.getMc();
-                    String moduleName = module.getName();
-                    listOfGrades.add(checkScoreAgainstGrade(grade, moduleName));
-                    listOfMCs.add(modularCredits);
+                String grade = module.getGrade();
+                int modularCredits = module.getMc();
+                String moduleName = module.getName();
+                listOfGrades.add(checkScoreAgainstGrade(grade, moduleName));
+                listOfMCs.add(modularCredits);
             }
         } else if (capSimulatorSetting == 2) {
             for (ModuleGradeEnum g : ModuleGradeEnum.values()) {

@@ -642,8 +642,8 @@ public class Ui {
      * Second choice calculates CAP score base on user input.
      */
     public static void printCapSimulatorSetting() {
-        System.out.println("Key in 1 to simulate your cap base on the grades you have" +
-                " entered before for each module." +
-                "\nKey in 2 to simulate cap base on your own input.");
+        System.out.println("Key in 1 to simulate your cap base on the grades you have"
+                + " entered before for each module."
+                + "\nKey in 2 to simulate cap base on your own input.");
     }
 }
