@@ -144,7 +144,7 @@ public class RecordList {
 
     private double getDietProgress(LocalDate currentDate) {
         double totalCalories = 0;
-        for(Record record : records) {
+        for (Record record : records) {
             Diet diet = (Diet) record;
             if (diet.getDate().isEqual(currentDate)) {
                 totalCalories += diet.getCalorie();
@@ -155,7 +155,7 @@ public class RecordList {
 
     private double getExerciseProgress(LocalDate currentDate) {
         double totalCalories = 0;
-        for(Record record : records) {
+        for (Record record : records) {
             Exercise exercise = (Exercise) record;
             if (exercise.getDate().isEqual(currentDate)) {
                 totalCalories += exercise.getCalories();
@@ -166,7 +166,7 @@ public class RecordList {
 
     private double getSleepProgress(LocalDate currentDate) {
         double totalhours = 0;
-        for(Record record : records) {
+        for (Record record : records) {
             Sleep sleep = (Sleep) record;
             if (sleep.getDate().isEqual(currentDate)) {
                 totalhours += sleep.getDuration();

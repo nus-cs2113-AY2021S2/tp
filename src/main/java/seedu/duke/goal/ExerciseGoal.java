@@ -27,6 +27,7 @@ public class ExerciseGoal extends Goal {
         this.daySet = daySet;
         initializeProgress();
     }
+
     /**
      * Gets the the target energy to be burnt.
      *

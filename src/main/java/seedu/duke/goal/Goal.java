@@ -15,6 +15,7 @@ public abstract class Goal {
     protected RecordType type;
     protected PeriodType periodType;
     public static final String SEPARATOR = " | ";
+
     /**
      * Initializes the instance with goal type and period type.
      *
