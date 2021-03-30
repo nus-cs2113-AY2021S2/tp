@@ -20,7 +20,6 @@ public class StaffParser {
     static final String[] COMMANDS = {"add", "delete", "list", "addline", "find", "return", "help"};
 
 
-<<<<<<< HEAD
     public static boolean isSameInt(int a, String b) {
         try {
             int temp = Integer.parseInt(b);
@@ -96,8 +95,6 @@ public class StaffParser {
         }
     }
 
-=======
->>>>>>> d83be872d7d8a19e81368246e937eecb890102c8
     public Command  commandHandler(String line) throws WrongStaffIdException,
             WrongListInputException, NoInputException, ExcessInputException,
             InsufficientInputException, NoInputException, NumberFormatException, InvalidIntegerException {
