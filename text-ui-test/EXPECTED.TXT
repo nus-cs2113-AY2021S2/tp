@@ -38,7 +38,7 @@ Record summary:
 --------------------------------------------------------------------
 A new SLEEP record is added successfully!
 Record summary:
-5 hours of sleep on 29-03-2021
+5 hours of sleep on 28-01-2021
 --------------------------------------------------------------------
 --------------------------------------------------------------------
 The date format is incorrect or the date is invalid. Please try again.
