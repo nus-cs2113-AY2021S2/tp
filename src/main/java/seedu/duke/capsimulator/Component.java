@@ -1,4 +1,7 @@
-package seedu.duke;
+package seedu.duke.capsimulator;
+
+import seedu.duke.Module;
+import seedu.duke.Ui;
 
 import java.util.ArrayList;
 import java.util.Hashtable;

@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
 import seedu.duke.link.ZoomLinkInfo;
 import seedu.duke.task.Assignment;
@@ -633,5 +634,16 @@ public class Ui {
     public static void printDuplicateMessage() {
         System.out.println("Duplicate detected! You have already entered this link before");
         System.out.println("Please enter another link...");
+    }
+
+    /**
+     * Prints message containing two choices of simulating CAP score.
+     * First choice calculates CAP score base on the MCs and Grades from existing module.
+     * Second choice calculates CAP score base on user input.
+     */
+    public static void printCapSimulatorSetting() {
+        System.out.println("Key in 1 to simulate your cap base on the grades you have"
+                + " entered before for each module."
+                + "\nKey in 2 to simulate cap base on your own input.");
     }
 }
