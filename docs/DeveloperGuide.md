@@ -175,14 +175,17 @@ _Exceptions related to file storage:_
 
 --------------------------------------------------------------------------------------------------------------------
 
+
+
+
 ## **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting
+**Note:** These instructions only provide a starting
 point for testers to work on; testers are expected to do more *exploratory* testing.
 
-</div>
+
 
 ### Launch and shutdown
 
@@ -428,7 +431,8 @@ These text files are used to store data in the disk for various commands during 
          even if there is valid content in some parts of the file.
             * The contents of the file will not be affected. If necessary,
               users can manually inspect the file and remove corrupted data, in order to salvage any valid data.
-              
+        
+      
 ## Attribution
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).
