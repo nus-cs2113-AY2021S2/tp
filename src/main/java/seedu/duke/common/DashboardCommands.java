@@ -7,7 +7,7 @@ public enum DashboardCommands implements CommandList {
     EXIT("exit", "Exits the program."),
     OPEN("open", "MODULE_CODE", "Opens the specified module."),
     ADD("add", "MODULE_CODE", "Adds a new module with specified module code."),
-    DELETE("delete", "MODULE_CODE", "Deletes the specified module."),
+    DELETE("delete", "Deletes the specified module."),
     MODULES("modules", "Lists all modules.");
 
     private final String word;

@@ -1,13 +1,10 @@
 package seedu.duke.commands;
 
 import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
-
-import static seedu.duke.common.CommonMethods.getLessonTypeString;
 import static seedu.duke.common.Messages.MESSAGE_ADDED_LESSON;
 
 /**
@@ -31,8 +28,7 @@ public class AddLessonCommand extends Command {
     public void execute(UI ui) {
         Module module = ModuleList.getSelectedModule();
         module.addLesson(lesson);
-        LessonType lessonType = lesson.getLessonType();
-        String lessonTypeString = getLessonTypeString(lessonType);
+        String lessonTypeString = lesson.getLessonTypeString();
         ui.printMessage(String.format(MESSAGE_ADDED_LESSON, lessonTypeString));
         ModuleList.writeModule();
         ModuleList.sortLessons();

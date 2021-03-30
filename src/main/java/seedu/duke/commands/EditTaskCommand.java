@@ -3,7 +3,7 @@ package seedu.duke.commands;
 import seedu.duke.exception.DukeException;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.parser.Parser;
+import seedu.duke.parser.ParserUtil;
 import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
@@ -83,9 +83,9 @@ public class EditTaskCommand extends Command {
     }
     
     private Task getTaskToEdit(UI ui, ArrayList<Task> taskList) {
-        String line = ui.readCommand();
+        String line = ui.readUserInput();
         try {
-            int index = Parser.checkIndex(line, taskList.size());
+            int index = ParserUtil.checkIndex(line, taskList.size());
             return taskList.get(index - 1);
         } catch (DukeException e) {
             ui.printError(e);
@@ -110,17 +110,17 @@ public class EditTaskCommand extends Command {
         ui.printMessage(String.format(PROMPT_ENTER_FIELD_DETAILS, fields[fieldIndex - 1].toLowerCase()));
         switch (fieldIndex) {
         case 1:
-            selectedTask.setDescription(ui.readCommand());
+            selectedTask.setDescription(ui.readUserInput());
             break;
         case 2:
-            LocalDate newDeadline = getNewTaskDeadline(ui, ui.readCommand());
+            LocalDate newDeadline = getNewTaskDeadline(ui, ui.readUserInput());
             if (newDeadline == null) {
                 return;
             }
             selectedTask.setDeadline(newDeadline);
             break;
         case 3:
-            selectedTask.setRemarks(ui.readCommand());
+            selectedTask.setRemarks(ui.readUserInput());
             break;
         case 4:
             selectedTask.setGraded(getIsTaskGraded(ui));
@@ -129,7 +129,7 @@ public class EditTaskCommand extends Command {
         }
         ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex - 1].toLowerCase()));
     }
-    
+
     private LocalDate getNewTaskDeadline(UI ui, String newValue) {
         DateTimeFormatter parseFormat = DateTimeFormatter.ofPattern(FORMAT_DATE_IO);
         try {

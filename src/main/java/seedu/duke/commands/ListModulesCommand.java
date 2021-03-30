@@ -24,8 +24,8 @@ public class ListModulesCommand extends Command {
             if (i != INDEX_FIRST) {
                 stringBuilder.append(NEWLINE);
             }
-            String moduleCode = ModuleList.getModules().get(i);
-            int counter = ModuleList.getModules().indexOf(moduleCode) + 1;
+            String moduleCode = ModuleList.getModuleByIndex(i);
+            int counter = ModuleList.getModuleIndex(moduleCode) + 1;
             stringBuilder.append(String.format(Messages.FORMAT_LIST_ITEMS, counter, moduleCode));
         }
         String listMessage = stringBuilder.toString();
