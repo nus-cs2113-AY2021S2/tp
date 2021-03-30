@@ -1,12 +1,49 @@
-# Developer Guide
+# Developer Guide for NUSMAze
 
-## Design & implementation
+## Table Of Contents
+<!-- TOC -->
+1. [Introduction](#1-introduction)  
+    1.1. [Overview](#11-overview)  
+    1.2. [Setting up and getting started](#12-setting-up-and-getting-started)  
+2. [Design](#2-design)  
+    2.1. [Architecture](#21-architecture)     
+    2.2. [UI Component](#22-ui-component)  
+    2.3. [Parser Component](#23-parser-component)  
+    2.4. [Command Classes](#24-command-classes)  
+    2.5. [Storage Component](#25-storage-component)  
+3. [Implementation](#3-implementation)  
+    3.1. [Save Feature](#31-save-feature)  
+    3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
+    3.3. [Finding The Shortest Route Feature](#33-finding-the-shortest-route-feature)  
+    3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
+    3.5. [History Feature](#35-history-feature)  
+4. [Appendix: Requirements](#4-appendix-requirements)  
+    4.1. [Product Scope](#41-product-scope)  
+    4.2. [User Stories](#42-user-stories)  
+    4.3. [Use Cases](#43-use-cases)  
+    4.4. [Non-functional Requirements](#44-non-functional-requirements)  
+    4.5. [Glossary](#45-glossary)
+5. [Appendix: Instructions for manual testing](#5-appendix-instructions-for-manual-testing)
+<!-- /TOC -->
+
+## 1. Introduction  
+### 1.1. Overview 
+### 1.2. Setting up and getting started 
+
+## 2. Design 
+### 2.1. Architecture 
+### 2.2. UI Component 
+### 2.3. Parser Component 
+### 2.4. Command Classes 
+### 2.5. Storage Component 
+
+## 3. Implementation
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.} 
 
-### [Proposed] Save feature for location aliases, visited routes, tagged notes, daily routes & favourite locations 
-#### Proposed Implementation
-The proposed save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
+### 3.1. Save feature
+#### Current Implementation
+The save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
 They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
 Additionally, they implement the following operations: <br/>
 - `AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
@@ -48,7 +85,7 @@ Alternative 1 (current choice): Saves the entire list of block aliases, visited 
 Pros: Easy to implement. <br/>
 Cons: Only highly effective when limited to use of one user. <br/>
 
-### Daily route planning when daily schedule is input
+### 3.2. Daily route planning feature
 #### Current Implementation
 The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
 `AddDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
@@ -68,7 +105,7 @@ Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> Th
 Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
 
 
-### Finding the Shortest Route
+### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
 
 The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map`, `Block`, and `BlockAlias` class to return the shortest path.
@@ -82,16 +119,15 @@ Step 2. The Router will then run the `findShortestRoute()` method which is a rou
 Step 3. The `UiManager` will then show the shortest route to the user through `showToUser()` method.<br />
 
 
-### [Proposed] Custom aliases feature
-#### Proposed Implementation
-The proposed custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
+### 3.4. Custom aliases feature
+#### Current Implementation
+The custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
 
 The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` classes extends the `Command` class. These command classes contain the respective `execute` functions for adding, viewing and deleting the user's custom aliases.
 
 The `Storage` class has the feature to save the custom aliases into a local file so that users can load back their custom alias names when restarting the app.
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
->>>>>>> 0cdea5e12cd6ca39621c809264486a14d423191e
 
 Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
 
@@ -105,9 +141,9 @@ Step 5. The user executes `delete alias` command. The user input will be parsed 
 
 Step 6. The user executes `bye` and exits the app. This will invoke the instance of the `Storage` class which will convert the hashmap into the text file format and append to the text file to save the alias data locally.    
 
-### History feature
+### 3.5. History feature
 
-#### Implementation
+#### Current Implementation
 Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
 The contents of the `historyList` will be stored into a text file named `historyList.txt` when NUSMaze terminates.
 
@@ -139,15 +175,15 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
-### Target user profile
+## 4. Appendix: Requirements
+
+### 4.1. Product Scope
 
 NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
 
-### Value proposition
-
 The engineering block is extremely huge, and the layout of the blocks may be confusing for new students. To reduce the time wasted on navigating the numerous blocks in Engineering, NUSMaze will provide the shortest route available for students to take.
 
-## User Stories
+### 4.2. User Stories
 
 |Version| As a ... | I want to ... | So that I ...|
 |--------|----------|---------------|------------------|
@@ -162,14 +198,16 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 |v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|
 |v2.0|user|be able to store my routing for my daily activities|can access it easily|
 
-## Non-Functional Requirements
+### 4.3. Use Cases
+
+### 4.4. Non-Functional Requirements
 
 {Give non-functional requirements}
 
-## Glossary
+### 4.5. Glossary
 
 * *glossary item* - Definition
 
-## Instructions for manual testing
+## 5. Appendix: Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
