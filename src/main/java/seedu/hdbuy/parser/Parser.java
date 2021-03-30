@@ -105,7 +105,6 @@ public class Parser {
             if (lineParts.length != 1) {
                 throw new InvalidParameterException(keyCommand);
             }
-            break;
         case SHORTLIST:
         case EXIT:
         case HELP:
