@@ -12,7 +12,7 @@ The rest of the App consists of:
 * [**`Command`**](#command-component): The command executor.
 * [**`Parser`**](#parser-component): Translate user input to valid commands to be executed.
 * [**`Ui`**](#ui-component): Communicates with user via messages.
-* [**`Data`**](#data-component): Contains user input history and temporary memory.
+* [**`Data`**](#data-component): Contains user input history and temporarily tracks search history.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
 * [**`Common`**](#common-component): Models of objects used internally.
 
@@ -26,7 +26,7 @@ The `Api`,
 * creates a connection to remote server containing data on resale flats.
 * formats raw query into valid query to be sent as a GET request.
 * returns all flats matching filter conditions and is parsed back to Command to be shown to user via Ui.
-* does not depend on other components apart from being called by Command.
+* Called by FindCommand, stores each unit from response into Data.
 
 **How classes within Api component interact with each other**
 
