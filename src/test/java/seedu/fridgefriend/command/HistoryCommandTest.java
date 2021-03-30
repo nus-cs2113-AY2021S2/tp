@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -23,7 +24,7 @@ class HistoryCommandTest {
 
     @Test
     public void historyCommand_SuccessfullyReadHistory() throws InvalidDateException,
-            RepetitiveFoodIdentifierException {
+            RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand1 = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand1.setData(fridge);
