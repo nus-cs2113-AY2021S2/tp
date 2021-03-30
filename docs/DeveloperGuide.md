@@ -319,7 +319,7 @@ The AddLessonCommand class is responsible for the creation and addition of a new
 The creation process is facilitated by the Parser class, which parses the appropriate arguments from the user input and initialises the Lesson object attributes with the parsed values.
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="AddLessonCommand Constructor Sequence Diagram"><br>
+    <img width="973" src="developerGuideImages/addLessonCommand.png" alt="AddLessonCommand Constructor Sequence Diagram"><br>
     Figure 8 - AddLessonCommand Constructor Sequence Diagram
 </p>
 
