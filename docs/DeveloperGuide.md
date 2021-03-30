@@ -128,6 +128,7 @@ This is broken into a few steps:
 1. ... 
 
 At the end, we have an argument hashmap like this:
+
 | Key     | Value                        |
 | ------- | ---------------------------- |
 | command | record                       |
@@ -157,7 +158,8 @@ the actual logic of this command.
 
 ### Logic Component
 
-<img src="./images/class_diagram_logic.png" width="600">
+<img src="./images/class_diagram_logic.png" width="750">
+
 API: `Parser.java`, `Command.java` and its subclasses
 
 1. `Logic` uses the `Parser` class to tokenize and parse the user command
@@ -173,6 +175,7 @@ as an input, and the `execute()` API call is made.
 ### Model Component
 
 <img src="./images/class_diagram_model.png" width="200">
+
 API: `Patient.java`, `Record.java` and `Data.java` 
 
 `Record.java` contains:
