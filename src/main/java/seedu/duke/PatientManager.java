@@ -1,8 +1,7 @@
 package seedu.duke;
 
 import seedu.duke.command.Command;
-
-import java.io.IOException;
+import seedu.duke.exception.StorageException;
 
 /**
  * Main class of the application, where the entry point is.
@@ -17,11 +16,12 @@ public class PatientManager {
      */
     private PatientManager() {
         ui = new Ui();
-        Storage storage = new Storage(Constants.STORAGE_DEFAULT_PATH);
+        Storage storage = new Storage();
         try {
             data = new Data(storage, storage.load());
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (StorageException e) {
+            // This only happens when the storage file is not found - print a friendly message to inform user
+            ui.printMessage(e.getMessage());
             data = new Data(storage);
         }
         parser = new Parser(ui, data);
