@@ -157,8 +157,21 @@ the actual logic of this command.
 
 ### Logic Component
 
+<img src="./images/class_diagram_logic.png" width="600">
+API: `Parser.java`, `Command.java` and its subclasses
+
+1. `Logic` uses the `Parser` class to tokenize and parse the user command
+1. This creates a `Command` object which is then executed by the `PatientManager` class
+1. The command execution can affect the `Model` (e.g. adding a patient)
+1. 
+
+Given below is the Sequence Diagram for interactions within the `Logic` component after Patient Manager recieves `add S1234567D`
+as an input, and the `execute()` API call is made.
+{TODO: Add sequence diagram here}
+
 ### Model Component
 
+<img src="./images/class_diagram_model.png" width="200">
 API: `Patient.java`, `Record.java` and `Data.java` 
 
 `Record.java` contains:
