@@ -1,6 +1,7 @@
 package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.utilities.LoggingHandler;
+import seedu.fridgefriend.utilities.Ui;
 
 //@@author Vinci-Hu
 /**
@@ -12,5 +13,6 @@ public class ClearCommand extends Command {
     public void execute() {
         LoggingHandler.logInfo("Re-initializing the fridge...");
         fridge.clearFridge();
+        Ui.printMessage("Fridge has been cleared!");
     }
 }

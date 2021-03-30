@@ -2,49 +2,91 @@
 
 ## Introduction
 
+---
+
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
+## Contents
+
+---
+
+* [Introduction](#introduction)
+* [Design](#design)
+  * [Architecture](#architecture)
+  * [Utilities Component](#utilities-component)
+  * [Command Component](#command-component)
+  * [Food Component](#food-component)
+  * [Exception Component](#exception-component)
+* [Implementation](#implementation)
+  * [Main Logic](#main-logic)
+  * [Add Command](#add-command)
+  * [List Command](#list-command)
+  * [Remove Command](#remove-command)
+  * [Search Command](#search-command)
+  * [Storage](#storage-command)
+* [Product Scope](#product-scope)
+  * [Target User Profile](#target-user-profile)
+  * [Value Proposition](#value-proposition)
+* [User Stories](#user-stories)
+* [Non-Functional Requirements](#non-functional-requirements)
+* [Glossary](#glossary)
+* [Instructions for Manual Testing](#instructions-for-manual-testing)
+* [Attribution](#attribution)
+
 ## Design
+
+---
+
+This section focuses on the general architecture of the application as well as the relationships between the classes involved. The overall architecture would be covered first, before the four individual components.
 
 ### Architecture
 
 ![Architecture Diagram](diagrams/diagram_images/ArchitectureDiagram.png)
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. 
+The ***Architecture Diagram*** given above explains the high-level design of the App.
 Given below is a quick overview of each component.
-
 
 The Main driver class for the FridgeFriend app is
 named **[`FridgeFriend`](https://github.com/AY2021S2-CS2113-T10-1/tp/blob/master/src/main/java/seedu/fridgefriend/FridgeFriend.java)**.
 It is responsible for,
+
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
-
-
 
 The rest of the App consists of four components.
 
 * [**`Utilities`**](#utilities-component): The main component containing the key driver classes in
   FridgeFriend, such as `Parser`, `UI`, and `Storage`.
 
-
 * [**`Command`**](#command-component): Executes commands based on the input obtained
   and processed from `Parser` in `Utilities`. The list of executable commands can be found in our
   [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
 
-
 * [**`Food`**](#food-component) represents a collection of classes used by the FridgeFriend application.
   Food objects are instantiated by the `Command` Component. Once a `Food` object is created,
   it may be stored to disk using the `Storage` function in `Utilities`.
-
 
 * [**`Exception`**](#exception-component) represents a collection of classes that represent potential
   exception events that may occur during the usage of `FridgeFriend`. The `Exception` component
   facilitates the return of exceptions to the `UI` class in `Utilities`, which will display
   the error message to the user.
 
+### Utilities Component
+
+The Utilities component contains the main classes that run the main functions of FridgeFriend.
+
+![Utilities Class Diagram](diagrams/diagram_images/UtilitiesClassDiagram.png)
+
+The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
+
+The Utilities Component consists for 4 classes.
+
+* **`LoggingHandler`**: Logs information during execution to the console.
+* **`Parser`**: Breaks down user input into relevant objects.
+* **`Storage`**: Reads data from, and writes data to, the local disk.
+* **`Ui`**: Handles the input and output of the application.
 
 ### Command Component
 
@@ -57,9 +99,9 @@ The results of the command instruct the Ui to display the message return to the 
 
 ![Command Class Diagram](diagrams/diagram_images/CommandClass.png)
 
-The ***Command Class Diagram*** given above shows how the Command interact with Fridge. 
+The ***Command Class Diagram*** given above shows how the Command interact with Fridge.
 
-The Command Component consist of 10 sub class which each command represents a features. 
+The Command Component consist of 10 sub class which each command represents a features.
 
 * **`AddCommand`**: Add a food object to the fridge when executed.
 * **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
@@ -72,83 +114,94 @@ The Command Component consist of 10 sub class which each command represents a fe
 * **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
 * **`ByeCommand`**: Indicate to the main method to exit the program. 
 
-### Utilities Component
-
-The Utilities component contains the main classes that run the main functions of FridgeFriend.
-
-![Utilities Class Diagram](diagrams/diagram_images/UtilitiesClassDiagram.png)
-
-The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
-
-The Utilities Component consists for 4 classes.
-
-- **`LoggingHandler`**: Logs information during execution to the console.
-- **`Parser`**: Breaks down user input into relevant objects.
-- **`Storage`**: Reads data from, and writes data to, the local disk.
-- **`Ui`**: Handles the input and output of the application.
-
 ### Exception Component
 
 The Exception component represents a collection of classes that represent potential
-exception events that may occur during the usage of `FridgeFriend`. 
+exception events that may occur during the usage of `FridgeFriend`.
 
-The `Exception` component facilitates the return of exceptions to the `UI` class 
+The `Exception` component facilitates the return of exceptions to the `UI` class
 in `Utilities`, which will display the corresponding error message to the user.
 ![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
 
 The ***Exception Class Diagram*** given above shows the custom `Exceptions`
-created for the FridgeFriend project, and stored inside the `Exceptions` component. 
+created for the FridgeFriend project, and stored inside the `Exceptions` component.
 
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
 
 The `Exceptions` component currently consists of ten (10) custom Exceptions, as of v2.0:
 
-Among these ten custom exceptions, the `Exceptions` component can generally be 
+Among these ten custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
 
 _Exceptions related to invalid user input:_
-- **`EmptyDescriptionException`**: Is thrown when an empty input string is detected by `Parser`, where
+
+* **`EmptyDescriptionException`**: Is thrown when an empty input string is detected by `Parser`, where
   an input is expected.
-  - Error Message: `"Sorry my friend, the description cannot be empty."`
-- **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`,
+  * Error Message: `"Sorry my friend, the description cannot be empty."`
+* **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`,
   where a valid `FoodCategory` is expected. Users can check `help` or the
   [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
-  - Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
-- **`InvalidDateException`**: Is thrown when user input, where a date is expected, does not
+  * Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
+* **`InvalidDateException`**: Is thrown when user input, where a date is expected, does not
   match the `dd-mm-yy` format.
-    - Error Message: `"Sorry my friend, the date must be in the form 'dd-mm-yy'."`
-- **`InvalidIndexException`**: Is thrown when user input does not translate into a valid integer index that represents
+  * Error Message: `"Sorry my friend, the date must be in the form 'dd-mm-yy'."`
+* **`InvalidIndexException`**: Is thrown when user input does not translate into a valid integer index that represents
   an existing Food in the Fridge, where
   a valid input index that represents Food that exists in the Fridge is expected.
-    - Error Message: `"Please enter a valid index to remove food."`
-- **`InvalidInputException`**: Is thrown when an unrecognised command is input into FridgeFriend,
+  * Error Message: `"Please enter a valid index to remove food."`
+* **`InvalidInputException`**: Is thrown when an unrecognised command is input into FridgeFriend,
   or when the List Command does not recognise the secondary input string.
-    - Error Message: `"Sorry my friend, please give a valid input."`
-- **`InvalidQuantityException`**: Is thrown when user input is not an integer where an integer is expected for
+  * Error Message: `"Sorry my friend, please give a valid input."`
+* **`InvalidQuantityException`**: Is thrown when user input is not an integer where an integer is expected for
   `Quantity` related functions, or when excess quantity of food is removed from the Fridge, where the quantity
   of food in the fridge remaining would be negative.
-    - Error Message: `"Sorry my friend, the quantity QUANTITY_INPUT must be a number."`
-    - Error Message: `"Not enough in fridge to remove!"`
+  * Error Message: `"Sorry my friend, the quantity QUANTITY_INPUT must be a number."`
+  * Error Message: `"Not enough in fridge to remove!"`
 
 _Exceptions related to Food:_
-- **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is
+
+* **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is
   not found in the Fridge, where the name of a food existing in the Fridge is expected.
-  - Error Message: `"Food specified not found."`
-- **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a 
+  * Error Message: `"Food specified not found."`
+* **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a
   different location or with a different expiry date. This is not allowed as of v2.0.
-    - Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
+  * Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
       Please specify another foodname."`
 
 _Exceptions related to file storage:_
-- **`StorageLoadingException`**: Is thrown when an error occurred during loading of the saved data.
-    - Error Message: `"There was an error loading the data for FridgeFriend!"`
-- **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
-    - Error Message: `"There was an error saving the data for FridgeFriend!"`
+
+* **`StorageLoadingException`**: Is thrown when an error occurred during loading of the saved data.
+  * Error Message: `"There was an error loading the data for FridgeFriend!"`
+* **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
+  * Error Message: `"There was an error saving the data for FridgeFriend!"`
 
 ## Implementation
 
+This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
+### Main Application Logic
+
+The main application logic underlines the main executable conditions that make up the bulk of the application. Below is the outline of the logic:
+
+1. `FridgeFriend` uses the `Ui` class to obtain the user input.
+2. `FridgeFriend` then uses the `Parser` class to parse the user input.
+3. This results in the construction of a `Command` object that is returned to `FridgeFriend`.
+4. Following that, `FridgeFriend` then self-invokes a method that executes the `Command` object.
+5. In this method, the `Command` object  executes its specified action.
+6. From steps 2 to 5, should there be an error thrown, the `Command` class would construct an `Exception` object.
+7. Lastly, the `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
+
+Given below is the sequence diagram for the interactions within the main application logic.
+
+![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
+
+:information_source: Information:
+
+* The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
+* Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
+  Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+  
 ### RemoveCommand
 
 When the user specify to remove a portion of a food item in the fridge, the `remove` command
@@ -177,9 +230,11 @@ The sequence diagram shows how the `search` operation works:
 
 ### RunningLowCommand
 
-The `runningLow` command is implemented through checking the total quantity of each foodCategory
-in the fridge with the default minimum number of quantity. Then return all the foodCategory that
-has quantity lower than the default minimum number of quantity in each food category. 
+The `runningLow` command is implemented by:
+1. Checking the total quantity of each FoodCategory in the fridge.
+2. Follow by comparing with the default minimum number of quantity in each FoodCategory.
+3. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message 
+4. Otherwise, return isStockUp message.
 
 The sequence diagram shows how the `runninglow` operation works:
 
@@ -187,8 +242,8 @@ The sequence diagram shows how the `runninglow` operation works:
 
 ### SetLimitCommand
 
-The default minimum number of quantity in each food category can be changed through the `setlimit`
-command. The `setlimit` command call the setter method in the FoodCategory to change the limit. 
+The `setlimit` command allows the user to change the minimum number of quantity in each FoodCategory by 
+calling the setter method in the FoodCategory to change the limit.
 
 The sequence diagram shows how the `setlimit` operation works:
 
@@ -203,9 +258,11 @@ The sequence diagram shows how the `expiring` operation works:
 ![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
 
 
-## Product scope
+## Product Scope
 
-### Target user profile
+---
+
+### Target User Profile
 
 * has a needs to manage a significant number of foods in the fridge
 * has a tendency to forget expiry date and location of the food stored
@@ -213,7 +270,7 @@ The sequence diagram shows how the `expiring` operation works:
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI app
 
-### Value proposition
+### Value Proposition
 
 * Provides ease of monitoring of food in the fridge which allows user to know which food is expiring 
   soon and what requires topping up
@@ -222,10 +279,29 @@ The sequence diagram shows how the `expiring` operation works:
 
 ## User Stories
 
+---
+
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|v1.0|user|add items into the fridge|keep track of what is in the fridge|
+|v1.0|user|remove items from the fridge|keep track of what is in the fridge|
+|v1.0|user|list all food items in the fridge|know inside the fridge without having to open the fridge itself|
+|v1.0|forgetful user|search for a specific food item|recall if I have that food item inside the fridge|
+|v1.0|organised user|tag the food’s category when I add into fridge(e.g. veggies, meat, dairy)|track what kinds of food I have in the fridge|
+|v1.0|organised user|list food items by category|check specific categories of food|
+|v1.0|organised user|add a storage location for a specific food item|know which part of the fridge is stored in|
+|v1.0|organised user|add the expiry date to each food item I put into the fridge|keep track of what is going to expire|
+|v1.0|lazy user|search for items that are expiring|see what items are about to expire without having to open the fridge|
+|v1.0|lazy user|automatically save information to a data file|safely exit the system without losing information|
+|v1.0|lazy user|automatically retrieve previously saved information from a data file|know the list of items I already have in my fridge|
+|v2.0|lazy user|list all food stored in a part of the fridge|track how full each location is without having to open the fridge|
+|v2.0|meticulous user|specify the weight or quantity of each food item I add into the fridge|know the exact amount of the food item I have left|
+|v2.0|meticulous user|remove a certain weight of each food package item that I am going to use|know how much weight of the item it has left|
+|v2.0|forgetful user|define the lower limits of each food category that the fridge should contain|receive reminders that the food is depleted|
+|v2.0|forgetful user|receive warnings when certain food items are running low after I remove a food item|not personally check for food quantity|
+|v2.0|lazy user|request for a list of food items running low or expiring|easily create a shopping list|
+|v2.0|health conscious user|view the history of food items that I have bought in the past|better track my food habits|
 
 ## Non-Functional Requirements
 
@@ -240,7 +316,6 @@ The product should be for a single user i.e. (not a multi-user product).
 The product should be targeting users who can type fast and prefer typing over other means of input.
 
 **Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
-
 
 ### Portability and compatibility
 
@@ -273,12 +348,17 @@ Thus the data is not protected by nature.
 ## Glossary
 
 * **Human-Editable-File**: files with .txt
-* **Single-User-Product**:
 
-## Instructions for manual testing
+* *glossary item* - Definition
+
+## Instructions for Manual Testing
+
+---
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
-# Attribution
+## Attribution
+
+---
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).

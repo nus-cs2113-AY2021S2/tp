@@ -17,7 +17,7 @@ public enum FoodCategory {
     FROZEN,    // e.g. frozen dumpling, ice cream
     OTHER;
 
-    //@@author
+    //@@author kwokyto
     private static int vegetableMinimumQuantity = 500;
     private static int fruitMinimumQuantity = 500;
     private static int meatMinimumQuantity = 500;
@@ -50,10 +50,12 @@ public enum FoodCategory {
         }
     }
 
+    //@@author kwokyto
     public static boolean isValidCategory(String line) {
         return FoodCategory.contains(line.toUpperCase());
     }
 
+    //@@author kwokyto
     public static int getMinimumQuantity(FoodCategory foodCategory) {
         assert foodCategory != null : "foodCategory cannot be null";
         switch (foodCategory) {
@@ -84,6 +86,7 @@ public enum FoodCategory {
         }
     }
 
+    //@@author kwokyto
     public static void setMinimumQuantity(FoodCategory foodCategory, int quantity) {
         assert foodCategory != null : "foodCategory cannot be null";
         switch (foodCategory) {

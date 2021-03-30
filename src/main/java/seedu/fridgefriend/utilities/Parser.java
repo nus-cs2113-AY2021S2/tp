@@ -12,6 +12,7 @@ import seedu.fridgefriend.command.ClearCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
+import seedu.fridgefriend.command.HistoryCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.RunningLowCommand;
@@ -151,6 +152,9 @@ public class Parser {
         case "clear":
             command = Parser.getClearCommand();
             break;
+        case "history":
+            command = Parser.getHistoryCommand(description);
+            break;
         case "bye":
             command = Parser.getByeCommand();
             break;
@@ -283,6 +287,7 @@ public class Parser {
     }
     //@@author
 
+    //@@author kwokyto
     /**
      * Returns an ExpiringCommand object.
      */
@@ -291,6 +296,7 @@ public class Parser {
         return expiringCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a RunningLowCommand object.
      */
@@ -299,6 +305,7 @@ public class Parser {
         return runningLowCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a SetLimitCommand object.
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
@@ -312,6 +319,7 @@ public class Parser {
         return setLimitCommand;
     }
 
+    //@@author kwokyto
     private static Command parseSetLimitDescription(String description) throws EmptyDescriptionException,
             InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
         if (description.isEmpty()) {
@@ -325,11 +333,12 @@ public class Parser {
         if (!FoodCategory.isValidCategory(foodCategoryString)) {
             throw new InvalidFoodCategoryException(foodCategoryString);
         }
-        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);            
+        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);
         int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
         return new SetLimitCommand(foodCategory, quantity);
     }
 
+    //@@author kwokyto
     /**
      * Returns a HelpCommand object.
      *
@@ -349,6 +358,17 @@ public class Parser {
     private static Command getClearCommand() {
         Command clearCommand = new ClearCommand();
         return clearCommand;
+    }
+
+    //@@author kwokyto
+    /**
+     * Returns a HistoryCommand object.
+     *
+     * @return ClearCommand object
+     */
+    private static Command getHistoryCommand(String description) {
+        Command historyCommand = new HistoryCommand(description);
+        return historyCommand;
     }
 
     /**
