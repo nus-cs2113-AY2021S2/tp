@@ -1,35 +1,51 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
 !include style.puml
 
 participant ":RunningLowCommand" as RunningLowCommand
-participant "foodCategory :FoodCategory" as FoodCategory
 participant "fridge:Fridge" as Fridge
+participant "foodCategory :FoodCategory" as FoodCategory
+
 participant "food :Food" as Food
 
 -> RunningLowCommand: execute()
 activate RunningLowCommand
 
 loop foodCategory in FoodCategory
-    RunningLowCommand -> FoodCategory: updateMessage()
+    RunningLowCommand -> FoodCategory: getFoodCategory()
     activate FoodCategory
-    FoodCategory -> FoodCategory: getMinimumQuantity()
-    opt totalQuantity < minimumQuantity
-        FoodCategory -> Fridge: isRunningOut()
-        activate Fridge
-        loop food in fridge
+    return foodCategory
+
+    RunningLowCommand -> Fridge: isRunningOut(foodCategory)
+    activate Fridge
+    Fridge -> Fridge: getTotalQuantity()
+    activate Fridge
+    loop food in Fridge
+        Fridge -> Food: getFoodCategory()
+        activate Food
+        return foodCategory1
+        opt foodCategory1 equals foodCategory
             Fridge -> Food: getQuantity()
             activate Food
             return
         end
-        return totalQuantity
     end
+    destroy Food
+    return totalQuantity
+    Fridge -> FoodCategory: getMinimumQuantity()
+    activate FoodCategory
     return
+    destroy FoodCategory
+    alt totalQuantity < MinimumQuantity
+        return runningLowResults
+        destroy Fridge
+    else isStockUp
+        RunningLowCommand -> RunningLowCommand: message
+        activate RunningLowCommand
+        return stockUpResuts
+    end
 end
-destroy Food
-destroy Fridge
-destroy FoodCategory
-<--RunningLowCommand:
+return results
+
 deactivate RunningLowCommand
 @enduml
