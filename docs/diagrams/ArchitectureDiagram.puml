@@ -1,32 +1,28 @@
-@startuml
-!include <office/Concepts/globe_internet>
+@startuml ArchitectureDiagram
 !include <office/Concepts/documents>
 !include <office/Users/user>
 !include style.puml
 
 Package " "<<Rectangle>>{
-    Class FridgeFriend UI_COLOR
-    Class Utilities LOGIC_COLOR
-    Class Exception STORAGE_COLOR
-    Class Command MODEL_COLOR
-    Class Food LOGIC_COLOR_T2
+    Class FridgeFriend FRIDGEFRIEND_COLOR
+    Class Utilities UTILITIES_COLOR
+    Class Exception EXCEPTION_COLOR
+    Class Command COMMAND_COLOR
+    Class Food FOOD_COLOR
 }
 
-Class "<$user>" as User MODEL_COLOR_T2
-Class "<$documents>" as File UI_COLOR_T2
+Class "<$user>" as User FOOD_COLOR_T2
+Class "<$documents>" as File UTILITIES_COLOR_T1
 
 
-FridgeFriend -[#green]> Utilities
-Utilities -[#blue]--> Command
-Food -[#grey]-> Utilities
-Command --> Food
-Command --> FridgeFriend
-Command -> Exception
-Exception -> Utilities
-
-
-Utilities .right[STORAGE_COLOR].>File
+FridgeFriend -> Utilities
+Utilities -[UTILITIES_COLOR_T3]--> Command
+Food -[FOOD_COLOR_T3]-> Utilities
+Command -[COMMAND_COLOR_T3]-> Food  
+Command -[COMMAND_COLOR_T3]-> FridgeFriend
+Command -[COMMAND_COLOR_T3]> Exception
+Exception -[EXCEPTION_COLOR_T3]> Utilities
+Utilities .right[UTILITIES_COLOR_T3].>File
 User ..> Utilities
-@enduml
 
 @enduml

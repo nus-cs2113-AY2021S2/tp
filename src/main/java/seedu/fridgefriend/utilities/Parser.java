@@ -22,7 +22,6 @@ import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
-import seedu.fridgefriend.exception.InvalidIndexException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.FoodCategory;
@@ -71,7 +70,6 @@ public class Parser {
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
@@ -112,7 +110,6 @@ public class Parser {
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed

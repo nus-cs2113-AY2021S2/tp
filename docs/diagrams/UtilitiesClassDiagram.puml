@@ -1,9 +1,9 @@
-UtilitiesClassDiagram.puml@startuml UtilitiesClassDiagram
+@startuml UtilitiesClassDiagram
 allow_mixing
 !include style.puml
 skinparam arrowThickness 1.1
-skinparam arrowColor UI_COLOR_T4
-skinparam classBackgroundColor UI_COLOR
+skinparam arrowColor UTILITIES_COLOR_T4
+skinparam classBackgroundColor UTILITIES_COLOR
 skinparam classAttributeIconSize 0
 
 actor User
@@ -16,17 +16,17 @@ package Utilities <<Rectangle>> {
 }
 
 package "/data" <<folder>> {
-    file limitsData
-    file fridgeData
+    file limitsData UTILITIES_COLOR_T1
+    file fridgeData UTILITIES_COLOR_T1
 }
 
-package Food <<Rectangle>> {
+package Food <<Rectangle>> FOOD_COLOR {
 }
 
-package Exception <<Rectangle>> {
+package Exception <<Rectangle>> EXCEPTION_COLOR {
 }
 
-package Command <<Rectangle>>{
+package Command <<Rectangle>> COMMAND_COLOR {
 }
 
 class Ui {

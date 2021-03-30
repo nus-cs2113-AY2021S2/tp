@@ -4,7 +4,7 @@
 
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 3.2kLoC.
+It is written in Java, and has more than 4.3kLoC.
 
 ## Contents
 
@@ -34,17 +34,15 @@ It is written in Java, and has more than 3.2kLoC.
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
    `FridgeFriend` with `java -jar FridgeFriend.jar`.
-5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a 
+5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a
    list of all current food. Some example commands you can try:
    * `list`: Lists all food.
-   * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`, 
+   * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`,
      expiry date of `30-06-2021`, location of `lower_shelf`, and quantity of `100` to the Fridge.
    * `search chicken`: Searches for the chicken in the fridge and returns its location (currently: `lower_shelf`).
    * `remove chicken /qty 50`: Removes a quantity of `50` from the `chicken` stored in the fridge.
-   * `bye`: Exits the app.   
-6. Refer to the **Features** below for details of each command.   
-
-
+   * `bye`: Exits the app.
+6. Refer to the **Features** below for details of each command.
 
 ## Features
 
@@ -57,9 +55,9 @@ It is written in Java, and has more than 3.2kLoC.
 
 Adds a food item into the fridge.
 
-If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to 
+If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to
 add the quantity. Otherwise, a unique FOOD_NAME has to be used to add the food into the FridgeFriend.
-=======
+
 Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
@@ -69,23 +67,24 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 * The `FOOD_QUANTITY` must be a positive integer.
   
 **Tip:**
-* If you want to add more to the same batch of food (same category, same location and same 
-expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`, 
-`LOCATION_IN_THE_FRIDGE` and the new quantity in `QUANTITY` field.
-* The food names should not repeat unless it is the same batch as described above. 
-Otherwise, you will be prompted to retry the `add` command.
 
+* If you want to add more to the same batch of food (same category, same location and same
+expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`,
+`LOCATION_IN_THE_FRIDGE` and the new quantity in `QUANTITY` field.
+* The food names should not repeat unless it is the same batch as described above.
+Otherwise, you will be prompted to retry the `add` command.
 
 Additional info:
 
 * Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
+* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
 Example of usage:
 
 *Situation 1: Adding a new food items into the fridge.*
+
 ```lang-none
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
 Great! I have added chicken into your fridge.
@@ -121,8 +120,8 @@ Example of usage:
 ```lang-none
 >> list
 Here are the items in your fridge:
-	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
-	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+ 1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+ 2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -143,8 +142,8 @@ Example of usage:
 ```lang-none
 >> list MEAT
 These are the MEAT in your fridge:
-	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
-	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+ 1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+ 2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods under READY_TO_EAT category.*
@@ -172,8 +171,8 @@ Example of usage:
 ```lang-none
 >> list LOWER_SHELF
 These are the food stored in LOWER_SHELF:
-	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
-	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+ 1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+ 2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods stored in DRAWERS.*
@@ -193,9 +192,9 @@ Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 * If the `FOODNAME` is not found, `FridgeFriend` will give an error message.
 * The `QUANTITY_TO_REMOVE` must be lower to equal to the current quantity of the food.
 * If the `QUANTITY_TO_REMOVE` is larger than current quantity of the food, `FridgeFriend` will give an error message.
-* If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole 
+* If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole
 food item will be deleted by `FridgeFriend` (it will not appear on list either).
-* If the `QUANTITY_TO_REMOVE` is lower than current quantity of the food, it means there is still some food left 
+* If the `QUANTITY_TO_REMOVE` is lower than current quantity of the food, it means there is still some food left
 of this item. The quantity of food will be updated.
 
 Example of usage:
@@ -203,10 +202,10 @@ Example of usage:
 ```lang-none
 >> list
    Here are the items in your fridge:
-   	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 1000
-   	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 800
-   	3. Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 700
-   	4. Food name: oyster, category: SEAFOOD, expiry: 03-04-2022, stored in: FREEZER, quantity: 100
+    1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 1000
+    2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 800
+    3. Food name: grouper, category: SEAFOOD, expiry: 04-05-2021, stored in: FREEZER, quantity: 700
+    4. Food name: oyster, category: SEAFOOD, expiry: 03-04-2022, stored in: FREEZER, quantity: 100
 
 >> remove chicken /qty 1500
    Not enough in fridge to remove!
@@ -315,26 +314,25 @@ Congrats! You are all stocked up on food! :D
 Displays a history of food items that have been added to the Fridge
 since it was last cleared.
 
-
 * The Fridge keeps track of all Food items added in its lifetime automatically.
 * Unlike adding Food to a Fridge, which merges the quantity of duplicate Foods together,
   the history command will not merge the quantities of food.
-  * Thus, the user can use this command to keep track of all occurrences where Food 
+  * Thus, the user can use this command to keep track of all occurrences where Food
   has been added to the Fridge.
-    
 
 The data is saved to disk in a text file, with default location as `data/historyData.txt`.
-  * In the event that the data in the text file is corrupted or in an unreadable format, the
+
+* In the event that the data in the text file is corrupted or in an unreadable format, the
   `history` command may fail to output the contents of the file. Users may have to manually
    inspect the file to delete the invalid content, or wipe the contents of the file with
-   `history clear`, to resume normal function. 
-    * The execution of the FridgeFriend program, however, will not be interrupted.
+   `history clear`, to resume normal function.
+  * The execution of the FridgeFriend program, however, will not be interrupted.
 
 Format: `history`
 
 Example of usage:
 
-```
+```lang-none
 >> history
 This is the full history of items you've added in the fridge:
   1. Food name: Coke, category: BEVERAGE, expiry: 30-06-2021, stored in: FREEZER, quantity: 5
@@ -350,14 +348,13 @@ Format: `history clear`
 
 Example of usage:
 
-```
+```lang-none
 >> history clear
 History successfully cleared!
 
 >> history 
 This is the full history of items you've added in the fridge:
 ```
-
 
 ### Get help message: `help`
 

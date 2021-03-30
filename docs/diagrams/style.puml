@@ -1,3 +1,5 @@
+@startuml style
+
 /'
  ' @@kwokyto-reused
  'Reused from https://github.com/nus-cs2113-AY2021S2/addressbook-level3/blob/master/docs/diagrams/style.puml
@@ -9,7 +11,8 @@
 
 'T1 through T4 are shades of the original color from lightest to darkest
 
-!define FRIDGEFRIEND_COLOR #d3d3d3
+!define FRIDGEFRIEND_COLOR #696969
+!define FRIDGEFRIEND_COLOR_T1 #808080
 
 !define UTILITIES_COLOR #1D8900
 !define UTILITIES_COLOR_T1 #83E769
@@ -34,7 +37,7 @@
 !define EXCEPTION_COLOR_T1 #FFE374
 !define EXCEPTION_COLOR_T2 #EDC520
 !define EXCEPTION_COLOR_T3 #806600
-!define EXCEPTION_COLOR_T2 #544400
+!define EXCEPTION_COLOR_T4 #544400
 
 !define USER_COLOR #000000
 
@@ -89,3 +92,4 @@ hide footbox
 hide empty members
 hide circle
 
+@enduml
