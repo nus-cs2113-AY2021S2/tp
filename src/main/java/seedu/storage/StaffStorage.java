@@ -7,7 +7,6 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.StaffChecker;
-import seedu.model.staff.Staff;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +26,7 @@ public class StaffStorage {
 
 
     public void fileHandling(StaffAggregation staffAggregation) throws ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException {
         try {
             loadFile(staffAggregation);
@@ -37,16 +36,16 @@ public class StaffStorage {
     }
 
     public void loadTask(StaffAggregation staffAggregation, String line) throws ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException {
 
         StaffChecker.checkValidDataForStorage(line);
         String[] arr = line.split("\\|");
-        staffAggregation.addStaff(new Staff(arr));
+        staffAggregation.add(arr);
     }
 
     public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException, ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException {
         File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
