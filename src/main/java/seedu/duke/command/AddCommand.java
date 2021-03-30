@@ -41,7 +41,7 @@ public class AddCommand extends Command {
     }
 
     /**
-     * Checks whether the patient's ID is valid
+     * Checks whether the patient's ID is valid.
      * @param id Unique identifier of the patient to be retrieved
      * @return Flag on whether the patient's ID is valid
      */

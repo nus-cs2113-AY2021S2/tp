@@ -46,7 +46,7 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Deletes a patient from the list
+     * Deletes a patient from the list.
      * @param id Unique identifier of the patient to be retrieved
      */
     private void deletePatient(String id) {
@@ -59,10 +59,10 @@ public class DeleteCommand extends Command {
     }
 
     /**
-     * Deletes a record a patient's consultation details
+     * Deletes a record a patient's consultation details.
      * @param patient    Patient of record that is being deleted
      * @param dateString Date of record that is being deleted
-     * @throws InvalidInputException
+     * @throws InvalidInputException when an invalid date is given
      */
     private void deleteRecord(Patient patient, String dateString) throws InvalidInputException {
         LocalDate date = null;
