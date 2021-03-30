@@ -5,7 +5,7 @@ import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.model.staff.Staff;
 
 import static seedu.ui.UI.abortEnabledScanInput;
-import static seedu.logic.parser.staffparser.checkID;
+import static seedu.logic.parser.StaffParser.checkID;
 
 public class StaffUI {
 
@@ -71,7 +71,9 @@ public class StaffUI {
         System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding staff!");
         System.out.println("\"return\" returns you to the Start Menu!");
     }
-
+    public static void corruptedFileErrorMessage() {
+        System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
+    }
     public static void wrongStaffIDErrorMessage() {
         System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
@@ -85,7 +87,7 @@ public class StaffUI {
     }
 
     public static void invalidNumericErrorMessage() {
-        System.out.println("OOPS! Input field expects a numeric. Please change your input!");
+        System.out.println("OOPS! Input field expects a positive numeric. Please change your input!");
     }
 
     public static void staffMenuPrompt() {

@@ -118,7 +118,7 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
-    public String cleanseInput(String input) {
+    public static String cleanseInput(String input) {
         return input.replaceAll("[^A-Za-z0-9]","");
     }
 
@@ -160,7 +160,7 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to \n" + LOGO + "What is your name?");
+        System.out.println("Welcome to \n" + LOGO);
         showLine();
     }
 
@@ -176,7 +176,7 @@ public class UI {
         System.out.println("\"patient\" to go to patients");
         System.out.println("\"appointments\" to go to doctors appointments");
         System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to drugs inventory");
+        System.out.println("\"inventory\" to go to inventories inventory");
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }
