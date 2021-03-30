@@ -782,14 +782,14 @@ Supported Top Level Domain(TLD) include: .com, .org only
 Example for adding an external link:
 
 ````
-[1]
+> 1
 --------------------------------------------
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
 supported schemes: https, http for now... Sorry!
 supported TLD: .com, .org for now... we will work on it!
 
-[https://www.instagram.com]
+> https://www.instagram.com
 --------------------------------------------
 Alright! I have added the following link ---  https://www.instagram.com
 Welcome to the external links menu!
@@ -806,7 +806,7 @@ Removes an external link from the external links list.
 
 Example for removing an external link:
 ````
-[2]
+> 2
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
@@ -818,7 +818,7 @@ These are the links you have added --->
 [7] --- https://www.instagram.com
 Please choose which link you would like to delete and enter the number
 
-[7]
+> 7
 --------------------------------------------
 You have deleted --- https://www.instagram.com
 Welcome to the external links menu!
@@ -834,7 +834,7 @@ Allows you to view all external links stored in the application.
 
 Example for viewing external links:
 ````
-[3]
+> 3
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
@@ -860,7 +860,7 @@ available).
 
 Example for adding a zoom link:
 ````
-[2]
+> 2
 --------------------------------------------
 Please enter the zoom link below
 PS: If the module you are finding is not available, please enter 8 if you would like to add a module for the link...
@@ -875,16 +875,16 @@ This is the list of modules:
 [6] EC1301
 [7] CG2028
 
-[4] 
+> 4
 --------------------------------------------
 Please enter the zoom link below
-[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09]
+> https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09
 --------------------------------------------
 Does your meeting have password which you would like to add? [Y/N]
-[Y]
+> Y
 --------------------------------------------
 Please enter your password below!
-[itsasecret]
+> itsasecret
 --------------------------------------------
 Woohoo~ Zoom link added:
 https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
@@ -897,7 +897,7 @@ View all zoom links stored in the application
 
 Example for viewing all zoom links: 
 ````
-[4]
+> 4
 --------------------------------------------
 Here are your zoom links!
 
