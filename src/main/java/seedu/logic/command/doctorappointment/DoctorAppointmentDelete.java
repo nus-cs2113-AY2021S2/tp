@@ -1,5 +1,6 @@
 package seedu.logic.command.doctorappointment;
 
+import seedu.exceptions.doctorappointment.AppointmentIDTakenException;
 import seedu.exceptions.doctorappointment.InvalidDocIDException;
 import seedu.exceptions.doctorappointment.InvalidIDException;
 import seedu.logic.command.AppointmentActions;
@@ -22,7 +23,7 @@ public class DoctorAppointmentDelete extends Command {
     }
 
     @Override
-    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException, InvalidIDException {
+    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException, InvalidIDException, AppointmentIDTakenException {
         if (!DoctorAppointmentParser.isValidDocID(ID) && !DoctorAppointmentParser.isValidAppointmentID(ID)) {
             throw new InvalidIDException();
         }

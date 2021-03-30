@@ -1,9 +1,6 @@
 package seedu.logic.command.doctorappointment;
 
-import seedu.exceptions.doctorappointment.InvalidAppIDException;
-import seedu.exceptions.doctorappointment.InvalidDateException;
-import seedu.exceptions.doctorappointment.InvalidDocIDException;
-import seedu.exceptions.doctorappointment.InvalidGenderException;
+import seedu.exceptions.doctorappointment.*;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.command.Command;
 import seedu.logic.parser.DoctorAppointmentParser;
@@ -30,11 +27,12 @@ public class DoctorAppointmentAdd extends Command {
     }
 
     @Override
-    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException, InvalidDocIDException, InvalidAppIDException, InvalidGenderException, InvalidDateException {
+    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException, InvalidDocIDException, InvalidAppIDException, InvalidGenderException, InvalidDateException, AppointmentIDTakenException {
 
         if (!DoctorAppointmentParser.isValidDocID(doctorID)) {
             throw new InvalidDocIDException();
-        }if (!DoctorAppointmentParser.isValidAppointmentID(appointmentID)){
+        }
+        if (!DoctorAppointmentParser.isValidAppointmentID(appointmentID)){
             throw new InvalidAppIDException();
         }if (!DoctorAppointmentParser.isValidGender(gender)){
             throw new InvalidGenderException();

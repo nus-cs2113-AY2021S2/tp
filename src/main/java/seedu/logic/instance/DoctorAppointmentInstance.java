@@ -25,11 +25,10 @@ public class DoctorAppointmentInstance {
     private DoctorAppointmentUI ui;
     private AppointmentActions details;
     private DoctorAppointmentStorage doctorAppointmentStorage;
-    final String PATIENT_FILE_PATH = Constants.APPOINTMENT_FILE_PATH;
 
     public DoctorAppointmentInstance(String filepath) {
         ui = new DoctorAppointmentUI();
-        doctorAppointmentStorage = new DoctorAppointmentStorage(PATIENT_FILE_PATH);
+        doctorAppointmentStorage = new DoctorAppointmentStorage(filepath);
         try {
             details = doctorAppointmentStorage.loadFile();
         } catch (FileNotFoundException e) {
@@ -63,6 +62,7 @@ public class DoctorAppointmentInstance {
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             } catch (Exception e) {
                 //System.out.println("OOPS something went wrong :0");
+                System.out.println(e.getMessage());
                 UI.showLine();
             }
         }

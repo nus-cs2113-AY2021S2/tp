@@ -50,12 +50,14 @@ public class DoctorAppointmentUI extends UI {
             System.out.println("Patient's Name: " + doc.getPatientsName());
             System.out.println("Gender: " + doc.getGender());
             System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+            System.out.print("\n");
         } else {
             System.out.println("Doctor ID: " + doc.getDoctorId());
             System.out.println("Appointment ID: " + doc.getAppointmentId());
             System.out.println("Patient's Name: " + doc.getPatientsName());
             System.out.println("Gender: " + doc.getGender());
             System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+            System.out.print("\n");
         }
     }
 

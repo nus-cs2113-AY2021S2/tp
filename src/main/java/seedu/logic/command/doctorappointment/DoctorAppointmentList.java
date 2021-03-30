@@ -13,16 +13,16 @@ public class DoctorAppointmentList extends Command {
     private String ID;
 
     public DoctorAppointmentList(String[] parsedInput) {
-        ID = parsedInput[0];
+        ID = parsedInput[1];
         input = parsedInput;
     }
 
     @Override
     public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws Exception {
-        if (!DoctorAppointmentParser.isValidDocID(ID) && !DoctorAppointmentParser.isValidAppointmentID(ID)) {
+        if (!DoctorAppointmentParser.isValidDocID(ID) && !DoctorAppointmentParser.isValidListAppointmentID(ID) ) {
             throw new InvalidIDException();
         }
-        AppointmentActions.listAppointment(input);
+        AppointmentActions.listAppointment(ID);
     }
 
     @Override

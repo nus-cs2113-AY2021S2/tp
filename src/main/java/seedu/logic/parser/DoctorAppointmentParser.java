@@ -1,6 +1,7 @@
 package seedu.logic.parser;
 
 
+import seedu.exceptions.doctorappointment.AppointmentIDTakenException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.command.Command;
 import seedu.logic.command.doctorappointment.*;
@@ -43,18 +44,17 @@ public class DoctorAppointmentParser {
 
     public static boolean isValidDocID(String doctorID) {
         try {
-            if (doctorID.equals("D")) {
+            String[] character = doctorID.split("");
+
+            if (character[0].equals("D")) {
                 ArrayList<Staff> doctorList;
                 doctorList = DoctorAppointmentStorage.loadDoctorFile();
+
                 for (Staff id : doctorList) {
                     if (id.getId().equals(doctorID)) {
                         return true;
                     }
-                    System.out.println(id.getId());
                 }
-                DoctorAppointmentUI.printDoctorNotFound();
-            } else {
-                DoctorAppointmentUI.invalidDoctorID();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -62,8 +62,32 @@ public class DoctorAppointmentParser {
         return false;
     }
 
-    public static boolean isValidAppointmentID(String appointmentID) {
-        return appointmentID.equals("A");
+    public static boolean isValidAppointmentID(String appointmentID) throws AppointmentIDTakenException {
+        String[] character = appointmentID.split("");
+
+        if (character[0].equals("A")) {
+
+            for (DoctorAppointment id : AppointmentActions.appointmentList) {
+                if (id.getAppointmentId().equals(appointmentID)) {
+                    throw new AppointmentIDTakenException();
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean isValidListAppointmentID(String appointmentID) throws AppointmentIDTakenException {
+        String[] character = appointmentID.split("");
+
+        if (character[0].equals("A")) {
+            for (DoctorAppointment id : AppointmentActions.appointmentList) {
+                if (id.getAppointmentId().equals(appointmentID)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public static boolean isValidGender(String gender) {

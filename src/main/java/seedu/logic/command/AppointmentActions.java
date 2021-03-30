@@ -1,6 +1,8 @@
 package seedu.logic.command;
 
 
+import seedu.duke.Constants;
+import seedu.exceptions.doctorappointment.InvalidAppIDException;
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.model.staff.Staff;
@@ -13,8 +15,6 @@ import java.util.ArrayList;
 public class AppointmentActions {
     public static ArrayList<DoctorAppointment> appointmentList;
     public static ArrayList<Staff> doctorList;
-
-    protected static DoctorAppointmentStorage storage = new DoctorAppointmentStorage("data/DoctorAppointmentList.txt");
 
     public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
         appointmentList = loadAppointments;
@@ -32,26 +32,27 @@ public class AppointmentActions {
 
         DoctorAppointmentUI.printAddedAppointment();
         appointmentList.add(newAppointment);
-        storage.writeToFile(appointmentList);
+        DoctorAppointmentStorage.writeToFile(appointmentList);
     }
 
-    public static void listAppointment(String[] inputArray) throws Exception {
+    public static void listAppointment(String input) throws Exception {
 
-        String indicator = "A"; //if doesnt work can change to boolean
-        String iD = inputArray[1];
+        String indicator = "A";
+        String[] inputArray = input.split("");
+        String iD = inputArray[0];
         if (appointmentList.size() == 0) throw new EmptyListException();
         else {
             if (iD.equals("A")) {
                 for (DoctorAppointment doc : appointmentList) {
-                    if (doc.getAppointmentId().equals(iD)) {
+                    if (doc.getAppointmentId().equals(input)) {
                         DoctorAppointmentUI.printList(doc, indicator);
                     }
                 }
             } else {
                 indicator = "D";
                 for (DoctorAppointment doc : appointmentList) {
-                    if (doc.getDoctorId().equals(iD)) {
-                        DoctorAppointmentUI.printList(doc,indicator);
+                    if (doc.getDoctorId().equals(input)) {
+                        DoctorAppointmentUI.printList(doc, indicator);
                     }
                 }
             }
@@ -71,7 +72,7 @@ public class AppointmentActions {
                     index = counter;
                 }
             }
-            if (iD.equals("D")){
+            if (iD.equals("D")) {
                 if (doc.getDoctorId().equals(iD)) {
                     index = counter;
                 }
@@ -83,7 +84,7 @@ public class AppointmentActions {
             else DoctorAppointmentUI.deletedID(appointmentList.get(index).getDoctorId());
 
             appointmentList.remove(index);
-            storage.writeToFile(appointmentList);
+            DoctorAppointmentStorage.writeToFile(appointmentList);
         }
 
     }

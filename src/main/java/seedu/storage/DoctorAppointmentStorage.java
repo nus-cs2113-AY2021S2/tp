@@ -16,9 +16,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DoctorAppointmentStorage {
+    private static String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
     private final String filePath;
     private final File file;
     private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
+    private final String PATIENT_FILE_PATH = Constants.APPOINTMENT_FILE_PATH;
 
 
     public DoctorAppointmentStorage(String filePath) {
@@ -46,8 +48,8 @@ public class DoctorAppointmentStorage {
         return new AppointmentActions(loadAppointments);
     }
 
-    public void writeToFile(ArrayList<DoctorAppointment> taskList) throws IOException {
-        FileWriter fileWriter = new FileWriter(filePath, false);
+    public static void writeToFile(ArrayList<DoctorAppointment> taskList) throws IOException {
+        FileWriter fileWriter = new FileWriter(staticFilePath, false);
         fileWriter.write("");
         for (DoctorAppointment task : taskList) {
             fileWriter.write(task.saveTask() + "\n");
@@ -60,9 +62,10 @@ public class DoctorAppointmentStorage {
 
         File fileName = new File(STAFF_FILE_PATH);
         Scanner fileReader = new Scanner(fileName);
+
         while (fileReader.hasNextLine()) {
             String input = fileReader.nextLine();
-            String[] data = input.split("\\s\\|\\s", 4);
+            String[] data = input.split("\\|");
             loadDoctorList.add(new Staff(data));
         }
         fileReader.close();
