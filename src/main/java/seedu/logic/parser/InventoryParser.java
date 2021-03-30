@@ -1,30 +1,31 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.DukeException;
 
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.exceptions.inventory.NonExistentDrugException;
-//import seedu.exceptions.inventory.WrongInputException;
+import seedu.exceptions.inventory.WrongInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.command.inventory.*;
 import seedu.ui.UI;
 
-public class InventoryParser {
+import static seedu.ui.UI.smartCommandRecognition;
 
+public class InventoryParser {
+    static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
     //protected InventoryActions inventoryActions;
 
    /* public InventoryParser(InventoryActions inventoryActions) {
         this.inventoryActions = inventoryActions;
     }*/
-   public void lengthCheck(int numberOfTokens, String command) throws DukeException {
-       if (command.equals("add") && numberOfTokens != 7) {
-           throw new DukeException(command);
+   public void lengthCheck(int numberOfTokens, String command) throws WrongInputException {
+       if (command.equals("add") && numberOfTokens != 4) {
+           throw new WrongInputException(command);
        } else if (command.equals("delete") && numberOfTokens != 2) {
-           throw new DukeException(command);
+           throw new WrongInputException(command);
        } else if ((command.equals("list") || command.equals("return") || command.equals("help")) && numberOfTokens != 1) {
-           throw new DukeException(command);
+           throw new WrongInputException(command);
        }
    }
     private void isValidPrice(String price) throws InvalidPriceException {
@@ -49,7 +50,8 @@ public class InventoryParser {
     public Command inventoryParse(String fullCommand, InventoryActions drugs) {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-        String command = stringTokens[0];
+        String firstWord = stringTokens[0];
+        String command = smartCommandRecognition(COMMANDS, firstWord);
         Command c = null;
         try {
             switch (command) {
@@ -84,7 +86,7 @@ public class InventoryParser {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             UI.invalidFormatErrorMessage();
-        } catch (DukeException e) {
+        } catch (WrongInputException e) {
             e.getError(command);
         }
         return c;
@@ -96,12 +98,12 @@ public class InventoryParser {
     }
     private boolean nameParser(InventoryActions drugs, String[] stringTokens, String command) {
        try {
-           isValidPrice(stringTokens[1]);
+           //isValidPrice(stringTokens[1]);
            isNameExist(stringTokens[0], drugs, command);
-       } catch (InvalidPriceException e) {
+       } /*catch (InvalidPriceException e) {
            e.getError("price");
            return false;
-       } catch (NonExistentDrugException e) {
+       }*/ catch (NonExistentDrugException e) {
            e.getError("NameDoesNotExist");
            return false;
        } catch (DuplicateDrugException e) {

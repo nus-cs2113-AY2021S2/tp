@@ -63,7 +63,7 @@ public class StaffParser {
     public static void checkBlankInput(String line) throws BlankInputException {
        String[] array = line.split("/");
         for (String s : array) {
-            if (s.strip().equals("")) {
+            if (s.trim().equals("")) {
                 throw new BlankInputException();
             }
         }
