@@ -14,7 +14,6 @@ import seedu.ui.UI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -23,16 +22,6 @@ public class NurseSchedulesParser {
     static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
-
-    /**
-     * Gets user input.
-     *
-     * @return User input
-     */
-    public String getUserInput() {
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
-    }
 
     /**
      * Returns the command of user.
@@ -59,7 +48,6 @@ public class NurseSchedulesParser {
         String[] details = new String[3];
 
         String[] parts = text.split("/", 0);
-        //String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
 

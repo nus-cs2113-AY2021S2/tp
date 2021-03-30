@@ -8,10 +8,6 @@ import static seedu.duke.Constants.*;
 
 public class NurseScheduleUI extends UI {
 
-    public void nurseSchedulePrompt() {
-        System.out.print("NSchedule --> ");
-    }
-
     public void printNurseScheduleWelcomeMessage() {
         showLine();
         System.out.println("Welcome to Nurse Schedules!");
@@ -46,22 +42,18 @@ public class NurseScheduleUI extends UI {
         showLine();
         System.out.println("Invalid inputs!");
         System.out.println("Type \"help\" to for nurse schedules commands");
-        //lineBreak();
     }
 
     public void addHelpMessage() {
         System.out.println("Please input with the following format: add/[NurseID]/[Patient ID]/[Date (DDMMYYYY)]");
-        //lineBreak();
     }
 
     public void listHelpMessage() {
         System.out.println("Please input with the following format: list/[NurseID/all]");
-        //lineBreak();
     }
 
     public void deleteHelpMessage() {
         System.out.println("Please input with the following format: delete/[NurseID]/[Date (DDMMYYYY)]");
-        //lineBreak();
     }
 
     public void formatHelpMessage() {
