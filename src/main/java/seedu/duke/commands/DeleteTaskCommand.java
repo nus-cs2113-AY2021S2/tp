@@ -56,7 +56,7 @@ public class DeleteTaskCommand extends Command {
      */
     private void printPrompt(UI ui, ArrayList<Task> taskList) {
         ui.printMessage(MESSAGE_TASKS_TO_DELETE);
-        ui.printSummarisedTasks(taskList);
+        ui.printTasks(taskList, true);
         ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, DELETE));
     }
 }

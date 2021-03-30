@@ -14,6 +14,9 @@ import static seedu.duke.common.Messages.FORMAT_DAYS_REMAINING;
 import static seedu.duke.common.Messages.FORMAT_DUE_TODAY;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.FORMAT_OVERDUE;
+import static seedu.duke.common.Messages.HEADER_DONE;
+import static seedu.duke.common.Messages.HEADER_UNDONE;
+import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.TAG_GULIO;
 import static seedu.duke.common.Messages.TAG_MODULE;
 
@@ -69,15 +72,32 @@ public class UI {
 
     //@@author aliciatay-zls
     /**
-     * Prints the description of each task in the task list.
+     * Prints the heading seen before a task list is displayed.
+     */
+    public void printTaskListHeader(boolean isDone, boolean isOverview) {
+        if (isDone) {
+            printMessage(HEADER_DONE);
+        } else if (isOverview) {
+            printMessage(MESSAGE_TASKS_TO_LIST_UNDONE);
+        } else {
+            printMessage(HEADER_UNDONE);
+        }
+    }
+
+    /**
+     * Prints either only the description or the overview of each task in the task list.
      *
      * @param taskList Array list of tasks to print.
      */
-    public void printSummarisedTasks(ArrayList<Task> taskList) {
+    public void printTasks(ArrayList<Task> taskList, boolean isDescriptionOnly) {
         int tasksCount = 0;
         for (Task task : taskList) {
             tasksCount++;
-            printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getDescription()));
+            if (isDescriptionOnly) {
+                printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getDescription()));
+                continue;
+            }
+            printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getTaskString()));
         }
     }
     
