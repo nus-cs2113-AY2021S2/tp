@@ -97,22 +97,23 @@ The execution of the command can affect the fridge.
 After the execution, the results of the command object is pass to the UI.
 The results of the command instruct the Ui to display the message return to the user.
 
-![Command Class Diagram](diagrams/diagram_images/CommandClass.png)
+![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
-The ***Command Class Diagram*** given above shows how the Command interact with Fridge.
+The ***Command Class Diagram*** given above shows how the Command interacts with Fridge class.
 
-The Command Component consist of 10 sub class which each command represents a features.
+The Command Component consist of 11 sub class which each command represents a features.
 
-* **AddCommand**: Add a food object to the fridge when executed.
-* **RemoveCommand**: Remove a portion of food quantity from a particular food in the fridge when executed.
-* **ListCommand**: List details of food either by a category, storage location or all off it when executed.
-* **SearchCommand**: Search for the details of the food.
-* **ExpiringCommand**: Provide the list of item that is expiring in a week when executed.
-* **ClearCommand**: Clear the list of food objects in the fridge object.
-* **HelpCommand**: List the instruction on how to use all the commands in FridgeFriend.
-* **RunningLowCommand**: Provide the food category that are running low compare to the limit set in the Food Category.
-* **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
-* **ByeCommand**: Indicate to the main method to exit the program.
+* **`AddCommand`**: Add a new food object to the fridge or add the quantity of existing food item with same parameters when executed.
+* **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
+* **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
+* **`SearchCommand`**: Search for the food that contains a particular food name. 
+* **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed. 
+* **`ClearCommand`**: Clear the list of food objects in the fridge object.
+* **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
+* **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
+* **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
+* **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
+* **`ByeCommand`**: Indicate to the main method to exit the program. 
 
 ### Exception Component
 
@@ -178,8 +179,6 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
----
-
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
 ### Main Application Logic
@@ -202,7 +201,65 @@ Given below is the sequence diagram for the interactions within the main applica
 
 * The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
-Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+  Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+  
+### RemoveCommand
+
+When the user specify to remove a portion of a food item in the fridge, the `remove` command
+will execute the remove operation by:
+1. Searching of the food item in the fridge by looping through each food item.  
+2. If the food item exist, check if removing the quantity will reduce the quantity to zero.
+3. If it does not reduce to zero, then proceed to remove the required quantity.
+4. If it does reduce to zero, then remove the food item completely. 
+5. Otherwise, throw an exception to FridgeFriend.
+
+The sequence diagram below shows how the `remove` operation works: 
+
+![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
+
+### SearchCommand
+
+When the user specify to search a food item in the fridge, the `search` command will execute
+search operation by:
+1. Searching the list of foods in the fridge by that contain the food name entered by the user 
+  through a loop.
+2. Afterwards, pass the success message or failure message to the UI. 
+
+The sequence diagram shows how the `search` operation works:
+
+![SearchSequenceDiagram](diagrams/diagram_images/SearchSequenceDiagram.png)
+
+### RunningLowCommand
+
+The `runningLow` command is implemented by:
+1. Checking the total quantity of each FoodCategory in the fridge.
+2. Follow by comparing with the default minimum number of quantity in each FoodCategory.
+3. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message 
+4. Otherwise, return isStockUp message.
+
+The sequence diagram shows how the `runninglow` operation works:
+
+![RunningLowSequenceDiagram](diagrams/diagram_images/RunningLowSequenceDiagram.png)
+
+### SetLimitCommand
+
+The `setlimit` command is implemented by:
+1. Calling a setter method in FoodCategory.
+2. The setter method will change the FoodCategory predefined minimum number of quantity.
+3. The FoodCategory and new minimum number of quantity is specified by the user.
+
+The sequence diagram shows how the `setlimit` operation works:
+
+![SetLimitSequenceDiagram](diagrams/diagram_images/SetLimitSequenceDiagram.png)
+
+### ExpiringCommand
+
+The `expiring` command is implemented through looping of the food items in the fridge and 
+return the food item if the expiry date is within one week of calling the command. 
+
+The sequence diagram shows how the `expiring` operation works:
+![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
+
 
 ## Product Scope
 
@@ -210,11 +267,18 @@ Additionally, while the diagram shows the `Exception` object being initialised b
 
 ### Target User Profile
 
-{Describe the target user profile}
+* has a needs to manage a significant number of foods in the fridge
+* has a tendency to forget expiry date and location of the food stored
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI app
 
 ### Value Proposition
 
-{Describe the value proposition: what problem does it solve?}
+* Provides ease of monitoring of food in the fridge which allows user to know which food is expiring 
+  soon and what requires topping up
+* Allows for easier search of food in fridge
+* Allows tracking of past food items in the fridge
 
 ## User Stories
 
@@ -256,7 +320,6 @@ The product should be targeting users who can type fast and prefer typing over o
 
 **Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
 
-
 ### Portability and compatibility
 
 #### Constraint: Platform-Independent
@@ -287,9 +350,7 @@ Thus the data is not protected by nature.
 
 ## Glossary
 
----
-
-* *glossary item* - Definition
+* **Human-Editable-File**: files with .txt
 
 
 

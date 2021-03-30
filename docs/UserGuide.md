@@ -227,18 +227,19 @@ Checks if a certain food item is inside the fridge, and if the item is found, in
 Format: `search FOOD_NAME`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
-* The command requires the user to input the exact name of the food item `FOOD_NAME` to be searched for.
+* The command requires the user to input the name of the food item `FOOD_NAME` to be searched for.
   The names of food items stored in the fridge can be determined with `list`.
-* If there are multiple items with the same name in the fridge, only the first item added to the fridge
-  in order of the output of `list` will be returned.
+* If there are multiple items that contain the food name, the search function will display all of those food items.
 
 Example of usage:
 
-*In this example, Fridge contains only one item `grouper` stored in the `FREEZER` location.*
+*In this example, Fridge contains two `chicken` stored in different location.*
 
 ```lang-none
->> search grouper
-You have grouper stored in FREEZER of your fridge.
+>> search chicken
+These are the chicken in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+    2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 
 >> search oyster
 You do not have oyster in your fridge.
