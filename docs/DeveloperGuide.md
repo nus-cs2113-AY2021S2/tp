@@ -189,6 +189,9 @@ creation:
 4) `Time` <br> Example: `23:59`
 5) `Message` <br> Example: `Good job!`
 
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/addNewTask.png)
+
 A general explanation of how this feature works:
 
 When the user calls this feature, the application will prompt them to input the arguments required

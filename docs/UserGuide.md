@@ -580,7 +580,7 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
 Example for adding a task of type `task` with the task description of `Work on user guide` and message being `Wow yay~`:
   
 >**Note!**  
-> In this example, module `CS2113T` has already been added through the [add module](#311-addview-module-description) feature.
+> In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
   
   ````
   Please choose which type of task you would like to add and enter the number:
@@ -616,7 +616,7 @@ The format for the date and time input is as follows:
  
 Example for adding a task of type `assignment` with the task description of `Work on user guide` and message being `Wow yay~`:
 
-NOTE: In this example, module `CS2113T` has already been added through the [add module](#311-addview-module-description) feature.
+NOTE: In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
   ````
 Please choose which type of task you would like to add and enter the number:
 [1] --- Task
@@ -919,22 +919,27 @@ Please choose which action you would like to do and enter the number:
 
 Features|Menu | Command to enter from the Main Menu
 ----|-----|-------
-[Add/View Module Description](#311-addview-module-description) | Module Information | 1, 1
-[Add/View Components and Their Weightages](#312-addview-components-and-their-weightages) | Module Information| 1, 2
+[Add a Module](#311-add-a-module) | Module Information | 1, 1
+[View a Module](#312-view-a-module) | Module Information | 1, 2
 [View All Modules](#313-view-all-modules) | Module Information | 1, 3
-[Add a Review](#314-add-a-review) | Module Information | 1, 4
-[View All Reviews](#315-view-all-reviews) | Module Information | 1, 5
-[Delete a Module](#316-delete-a-module) | Module Information | 1, 6
+[Delete a Module](#314-delete-a-module) | Module Information | 1, 4
+[Add/View Components and Their Weightages](#315-addview-components-and-their-weightages) | Module Information| 1, 5
+[Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc) | Module Information| 1, 6
+[Add Module Grade](#317-add-module-grade) | Module Information| 1, 7
+[Add a Review](#318-add-a-review) | Module Information | 1, 8
+[View All Reviews](#319-view-all-reviews) | Module Information | 1, 9
+[Delete a Review](#3110-delete-a-review) | Module Information | 1, 10
 [Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,1
 [View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,2
 [Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
-[Add a new Task](#331-add-new-task) | Task Manager | 3, 1
-[Delete a new Task](#332-delete-a-task) | Task Manager | 3, 2
-[View all Tasks](#333-view-all-tasks) | Task Manager | 3, 3
-[Pin a Task](#334-pin-a-task) | Task Manager | 3, 4
+[Add a new Task](#331-add-new-task) | Task Manager | 3, 1 or 1, 11
+[Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done) | Task Manager | 3, 2
+[Delete a new Task](#333-delete-a-task) | Task Manager | 3, 3 or 1, 12
+[View all Tasks](#334-view-all-tasks) | Task Manager | 3, 4
+[Pin a Task](#335-pin-a-task) | Task Manager | 3, 5
 [Add an External Link](#342-add-external-link) | External Links | 4, 1, 1
 [Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
 [View all Links](#344-view-external-links) | External Links | 4, 1 , 3
-[Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2
+[Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
 [View Zoom Links](#346-view-zoom-links) | Links | 4, 3
-
+[Delete Zoom Link](#3114-delete-zoom-link) | Links | 1, 14
