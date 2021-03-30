@@ -3,11 +3,12 @@ package seedu.logic.command;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
-import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
-import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
+import seedu.ui.UI;
+
+import static seedu.ui.UI.prettyPrint;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -30,18 +31,11 @@ public class NurseScheduleActions {
         nurseSchedules.clear();
     }
 
-//    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
-//        if (NurseSchedulesParser.isValidDate(details[2])) {
-//            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-//            NurseScheduleUI.printAddedSchedule(details[1], details[2]);
-//        }
-//    }
-
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException {
         try {
-            NurseScheduleChecker.isValidNurseID(details[0]);
-            NurseScheduleChecker.isNurseIDExist(details[0]);
-            NurseScheduleChecker.isValidPatientID(details[1]);
+            NurseScheduleChecker.checkValidNurseID(details[0]);
+            NurseScheduleChecker.checkNurseIDExist(details[0]);
+            NurseScheduleChecker.checkValidPatientID(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
         }
@@ -61,7 +55,10 @@ public class NurseScheduleActions {
             listAllSchedules();
         } else if (isValidNurseID(nurseSchedules, details[0])) {
             findSchedules.clear();
+            NurseScheduleUI.nurseListHeader();
+            UI.showLine();
             getNurseSchedulesByID(nurseSchedules, details[0]);
+            //NurseScheduleUI.printEmptyCell();
             printSchedules(findSchedules);
         }
     }
@@ -76,6 +73,8 @@ public class NurseScheduleActions {
         if (nurseSchedules.size() == 0) {
             throw new EmptyListException();
         } else {
+            NurseScheduleUI.nurseListHeader();
+            UI.showLine();
             for (int i = 0; i < nurseSchedules.size(); i++) {
                 findSchedules.clear();
                 if (!isNurseDone(nurseSchedules, i)) {
@@ -118,7 +117,8 @@ public class NurseScheduleActions {
         }
         Collections.sort(findSchedules);
         //System.out.println(UI.prettyPrint(id, 10));
-        System.out.println(id);
+        System.out.println(prettyPrint(id, 10) + " | " + nurseSchedules.get(0).toFind());
+
     }
 
     /**
@@ -127,9 +127,10 @@ public class NurseScheduleActions {
      * @param list List of schedules to be printed
      */
     private void printSchedules(List<NurseSchedule> list) {
-        int i = 0;
+        int i = 1;
         while (i < list.size()) {
-            System.out.println("\t" + list.get(i).toFind());
+            NurseScheduleUI.printEmptyCell();
+            System.out.println(list.get(i).toFind());
             i++;
         }
     }
