@@ -1,6 +1,10 @@
 package seedu.ui;
 
-public class DoctorAppointmentUI {
+import seedu.model.DoctorAppointment;
+
+import java.text.ParseException;
+
+public class DoctorAppointmentUI extends UI {
     public static void doctorAppointmentsWelcome() {
         System.out.println("Welcome to the Appointments' Menu!");
     }
@@ -15,19 +19,36 @@ public class DoctorAppointmentUI {
         System.out.println("\"return\" returns you to the Start Menu!");
     }
 
-    public static void printAppointmentMenuPrompt(){
-        System.out.print("Appointments --> ");
+    public void printAppointmentMenuPrompt() {
+        System.out.println("Type 'help' for appointment menu commands\n");
     }
 
-    public static void invalidCommandPrompt(){
+    public static void invalidCommandPrompt() {
         System.out.println("Sorry, I don't know what that means :(");
+        UI.showLine();
     }
 
-    public static void printAddedAppointment(){
+    public static void printAddedAppointment() {
         System.out.println("Appointment Added");
     }
 
-    public static void printDoctorNotFound(){
-        System.out.println("Sorry your appointment is not added because the DoctorID does not exist :(");
+    public static void deletedDocID(String DocID, String AptID) {
+        System.out.println("DoctorID / Appointment ID: " + DocID + "/" + AptID + " has been deleted!");
     }
+    public static void deletedAptID(String AptID) {
+        System.out.println("Appointment ID: " + AptID + " has been deleted!");
+    }
+
+    public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
+        if (indicator.equals("D")) {
+            System.out.println("Doctor ID: " + doc.getDoctorId());
+        }
+        System.out.println("Appointment ID: " + doc.getAppointmentId());
+        System.out.println("Patient's Name: " + doc.getPatientsName());
+        System.out.println("Gender: " + doc.getGender());
+        System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+        System.out.print("\n");
+
+    }
+
 }

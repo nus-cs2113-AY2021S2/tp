@@ -1,5 +1,7 @@
 package seedu.logic.command.nurseschedule;
 
+import seedu.exceptions.nurseschedules.InvalidIDTypeException;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.model.NurseSchedule;
@@ -16,7 +18,7 @@ public class NurseScheduleAdd extends Command {
     }
 
     @Override
-    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) {
+    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException {
         nurseSchedules.addSchedule(argArr);
     }
 

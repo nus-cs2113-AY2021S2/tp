@@ -14,7 +14,7 @@ public class PatientAdd extends Command {
 
     public void execute(PatientActions patients, PatientUI ui) {
         patients.addPatient(argArr);
-        ui.patientAddedMessage(argArr[2]);
+        ui.patientAddedMessage(argArr[1]);
     }
 
     @Override

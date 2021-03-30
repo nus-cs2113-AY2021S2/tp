@@ -1,26 +1,39 @@
 package seedu.exceptions.inventory;
 
-import seedu.ui.DrugUI;
-
 public class WrongInputException extends Exception{
     protected String error;
     public WrongInputException(String error) {
         this.error = error;
     }
-    public void getError(String input) {
+    public void getError(String error) {
         switch (error) {
-            case "price":
-                System.out.println("Please enter valid price e.g 3.50 or 3");
+            case "add":
+                System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
+                        "There should not be any space in the name! \n" +
+                        "There should only be 4 inputted terms including \"add\" \n" +
+                        "Please type \"help\" to see the right command format!");
                 break;
-            case "empty":
-                System.out.println("The description of " + input + " cannot be empty");
+            case "delete":
+                System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
+                        "There should only be 2 inputted terms including \"delete\" \n" +
+                        "Please type \"help\" to see the right command format!");
                 break;
-            case "doesNotExist":
-                DrugUI.drugNotFoundMessage();
+            case "return":
+                System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
+                        "There should only be 1 inputted term which is \"return\" \n" +
+                        "Please type \"help\" to see the right command format!");
+                break;
+            case "list":
+                System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
+                        "There should only be 1 inputted term which is \"list\" \n" +
+                        "Please type \"help\" to see the right command format!");
+                break;
+            /*case "doesNotExist":
+                InventoryUI.drugNotFoundMessage();
                 break;
             case "emptyList":
-                DrugUI.emptyDrugListMessage();
-                break;
+                InventoryUI.emptyInventoryListMessage();
+                break;*/
         }
     }
 }

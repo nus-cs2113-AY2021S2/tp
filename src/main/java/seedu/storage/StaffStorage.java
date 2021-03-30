@@ -1,54 +1,72 @@
 package seedu.storage;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.NoInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.logic.command.StaffAggregation;
+import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.Staff;
-import seedu.logic.command.StaffActions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class StaffStorage {
-    private static final String FILE_PATH = "data/Staff.txt";
+    static File saveFile;
+    static String filePath;
 
-    public static void fileHandling() {
+    public StaffStorage(String filepath) {
+        filePath = filepath;
+        saveFile = new File(filepath);
+    }
+
+
+    public void fileHandling(StaffAggregation staffAggregation) throws ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
         try {
-            loadFile();
+            loadFile(staffAggregation);
         } catch (FileNotFoundException e) {
             createFile();
         }
     }
 
-    public static void loadTask(String line) {
+    public void loadTask(StaffAggregation staffAggregation, String line) throws ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
+
+        StaffChecker.checkValidDataForStorage(line);
         String[] arr = line.split("\\|");
-        Staff staff = new Staff(arr);
-        StaffActions.addStaff(staff);
+        staffAggregation.addStaff(new Staff(arr));
     }
 
-    public static void loadFile() throws FileNotFoundException {
-        File f = new File(FILE_PATH);           // create a File for the given file path
+    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException, ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
+        File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
         while (s.hasNext()) {
-            loadTask(s.nextLine());
+            loadTask(staffAggregation, s.nextLine());
         }
     }
 
-    public static void writeToFile() throws IOException {
+    public void writeToFile(StaffAggregation staffAggregation) throws IOException {
         createFile();
-        FileWriter fw = new FileWriter(FILE_PATH);
-        for (int i = 0; i < StaffActions.getNumStaff(); i++) {
-            ArrayList<Staff> buffer = StaffActions.getList();
-            fw.write(formWriteData(buffer.get(i)));
+        FileWriter fw = new FileWriter(filePath);
+        for (int i = 0; i < StaffAggregation.getNumStaff(); i++) {
+            fw.write(staffAggregation.getList().get(i).formWriteData());
         }
         fw.close();
     }
 
     public static void createFile() {
         try {
-            File myObj = new File(FILE_PATH);
+            File myObj = new File(filePath);
             if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
             }
@@ -58,7 +76,4 @@ public class StaffStorage {
         }
     }
 
-    public static String formWriteData(Staff staff) {
-        return (staff.getId() + " | " + staff.getName() + " | " + staff.getAge() + " | " + staff.getSpecialisation() + "\n");
-    }
 }

@@ -1,14 +1,2 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-N12345      |            |            |       
-N12345      |            |            |      
-N12345     |          |          |     
-N12345    |    -    |    -    |    -
-D12345    |    Owen    |    19    |    -
-D12345  |  Mingshun  |  30  |  Pediatrician
-N12345 | A12345 | Alex | M 21012021
-D12345 | Alex | 20 | Apple
-=======
->>>>>>> 6b58be6ee2fee5d27fe6a507fd0bae80f6f02263
-=======
->>>>>>> 6b58be6ee2fee5d27fe6a507fd0bae80f6f02263
+D12345|MingShun|30|Pediatrician
+D12346|Mingshun|30|Pediatrician

@@ -1,32 +1,8 @@
 package seedu.ui;
 
-import seedu.exceptions.staff.AbortException;
-import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.model.staff.Staff;
+import static seedu.duke.Constants.*;
 
-import static seedu.ui.UI.abortEnabledScanInput;
-import static seedu.logic.parser.staffparser.checkID;
-
-public class StaffUI {
-
-
-    public static Staff inputToCreateStaff() throws WrongStaffIdException, AbortException {
-
-        String[] staffInput = new String[4];
-        System.out.print("Staff ID: ");
-        staffInput[0] = abortEnabledScanInput();
-        checkID(staffInput[0]);
-        System.out.print("Name: ");
-        staffInput[1] = abortEnabledScanInput();
-        System.out.print("Age: ");
-        staffInput[2] = abortEnabledScanInput();
-        System.out.print("Specialisation: ");
-        staffInput[3] = abortEnabledScanInput();
-
-        staffHiredOutput(staffInput[0], staffInput[1]);
-        return new Staff(staffInput);
-    }
-
+public class StaffUI extends UI{
 
     public static void staffHiredOutput(String id, String name) {
         if (id.charAt(0) == 'D') {
@@ -45,11 +21,17 @@ public class StaffUI {
     }
 
     public static void staffFiredOutput(String line) {
-        System.out.println(line.split(" ")[1] + " has been fired.");
+        System.out.println(line.split("/")[1] + " has been fired.");
     }
 
+    public static void emptyListOutput() {
+        System.out.println("OOPS! It seems like you have no staff in the list now!");
+    }
+
+
+
     public static void staffDoesNotExist(String line) {
-        System.out.println("Staff with ID: " + line.split(" ")[1] + " does not exist");
+        System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
     }
 
     public static void staffListHeader() {
@@ -58,22 +40,31 @@ public class StaffUI {
                         + UI.prettyPrint("Age", 5) + " | " + UI.prettyPrint("Specialisation", 20));
     }
 
-    public static void printStaffHelpList() {
+    public static void printStaffHelpMessage() {
+
+        UI.printEmptyLine();
         System.out.println("Here is a list of Staff commands: ");
-        System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add [Staff ID] [Name] [Age] [Specialisation]\" adds a Staff to the staff list!");
-        System.out.println("\"list\" brings up the list of all current staff!");
-        System.out.println("\"delete [Staff ID]\" deletes the staff with the specified ID from the list!");
-        System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding staff!");
-        System.out.println("\"return\" returns you to the Start Menu!");
+
+        UI.printEmptyLine();
+        int[] lengthpara = {10,60,50};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthpara);
+        UI.showLongLine();
+        printer(new String[]{HELP_COMMAND, STAFF_HELP_DESCRIPTION, BLANK}, lengthpara);
+        printer(new String[]{ADD_COMMAND, STAFF_ADD_DESCRIPTION, STAFF_ADD_FORMAT}, lengthpara);
+        printer(new String[]{LIST_COMMAND, STAFF_LIST_DESCRIPTION, STAFF_LIST_FORMAT}, lengthpara);
+        printer(new String[]{DELETE_COMMAND, STAFF_DELETE_DESCRIPTION, STAFF_DELETE_FORMAT}, lengthpara);
+        printer(new String[]{FIND_COMMAND, STAFF_FIND_DESCRIPTION, STAFF_FIND_FORMAT}, lengthpara);
+        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, BLANK}, lengthpara);
+        UI.printEmptyLine();
+
     }
 
-    public static void wrongStaffIDErrorMessage() {
-        System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
+    public static void corruptedFileErrorMessage() {
+        System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
     }
 
-    public static void wrongStaffListInputErrorMessage() {
-        System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
+    public static void invalidNumericErrorMessage() {
+        System.out.println("The numeric input is invalid!");
     }
 
     public static void staffMenuPrompt() {
@@ -81,6 +72,7 @@ public class StaffUI {
     }
 
     public static void staffMenuHeader() {
+        UI.showLine();
         System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
     }
 }

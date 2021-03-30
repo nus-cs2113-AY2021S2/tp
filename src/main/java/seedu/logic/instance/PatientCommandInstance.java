@@ -1,6 +1,6 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.parser.PatientParser;
 import seedu.logic.command.PatientActions;
@@ -21,7 +21,7 @@ public class PatientCommandInstance {
         parser = new PatientParser();
         try {
             patients = new PatientActions(patientStorage.loadPatients());
-        } catch (DukeException e) {
+        } catch (HealthVaultException e) {
             ui.showLoadingError();
             //creates new task list if failure to load from folder.
             patients = new PatientActions();

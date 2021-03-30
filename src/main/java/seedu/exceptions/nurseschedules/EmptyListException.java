@@ -1,9 +1,9 @@
 package seedu.exceptions.nurseschedules;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class EmptyListException extends DukeException {
+public class EmptyListException extends HealthVaultException {
     public String getMessage() {
-        return "No schedules are found in the system!";
+        return "OOPS! 2No schedules are found in the system!";
     }
 }

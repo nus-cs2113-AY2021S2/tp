@@ -1,15 +1,17 @@
 package seedu.logic.command;
 
-import seedu.exceptions.nurseschedules.EmptyListException;
+import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
-import seedu.storage.DoctorAppointmentStorage;
+import seedu.storage.StaffStorage;
+
+import seedu.ui.InventoryUI;
 import seedu.ui.DoctorAppointmentUI;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.PatientUI;
-import seedu.ui.UI;
+import seedu.ui.StaffUI;
+
 
 import java.io.IOException;
-import java.text.ParseException;
 
 public abstract class Command {
 
@@ -22,16 +24,16 @@ public abstract class Command {
     public void execute (PatientActions patients, PatientUI ui){
     }
 
-    public void execute (StaffActions staff){
+    public void execute(StaffAggregation staff, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
     }
 
-    public void execute (DrugAction inventory) {
+    public void execute (InventoryActions drugs, InventoryUI ui) {
     }
 
     public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws Exception {
     }
 
-    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) {
+    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException {
     }
 
     public abstract boolean isExit();

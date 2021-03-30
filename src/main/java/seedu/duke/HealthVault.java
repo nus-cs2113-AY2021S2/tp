@@ -4,11 +4,11 @@ import seedu.logic.command.Command;
 import seedu.logic.parser.StartMenuParser;
 import seedu.ui.UI;
 
-public class Duke {
+public class HealthVault {
     private UI ui;
     private StartMenuParser parser;
 
-    private Duke() {
+    private HealthVault() {
         ui = new UI();
         parser = new StartMenuParser();
     }
@@ -19,7 +19,7 @@ public class Duke {
      * @param args Runtime arguments are unused
      */
     public static void main(String[] args) {
-        new Duke().run();
+        new HealthVault().run();
     }
 
     public void run() {
@@ -29,6 +29,7 @@ public class Duke {
         while (!isExit) {
             try {
                 String userInput = ui.getInput("Start Menu");
+                UI.printEmptyLine();
                 Command c = parser.startMenuParse(userInput);
                 c.execute();
                 isExit = c.isExit();
@@ -38,7 +39,9 @@ public class Duke {
                 /*switch (c) {
                 case "staff":
                     UI.showLine();
-                    staffparser.run();
+                    System.out.println("Staff Instance!");
+                    StaffInstance staff = new StaffInstance(STAFF_FILE_PATH);
+                    staff.run();
                     break;
                 case "patient":
                     UI.showLine();
@@ -58,7 +61,7 @@ public class Duke {
                     break;
                 case "inventory":
                     UI.showLine();
-                    System.out.println("Drug Viewer Instance!");
+                    System.out.println("Inventory Viewer Instance!");
                     DrugInstance addict = new DrugInstance(INVENTORY_FILE_PATH);
                     addict.run();
                     break;
@@ -72,6 +75,8 @@ public class Duke {
                     isExit = true;
                     UI.printGoodbye();
                     break;
+
+
                 default:
                     UI.showLine();
                     System.out.println("OOPS! That is not a registered command! Please type \"help\" to see the list of commands");

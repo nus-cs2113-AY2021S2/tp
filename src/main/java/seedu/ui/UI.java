@@ -1,31 +1,20 @@
 package seedu.ui;
 
-import seedu.exceptions.staff.AbortException;
-
+import seedu.duke.Constants;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-import static java.lang.Math.*;
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
 
 public class UI {
     static final int LARGE_NUMBER = 100;
     static final String UNKNOWN_COMMAND = "unknown";
     static Scanner scanner = new Scanner(System.in);
-    static String LINEBREAK = "____________________________________________________________";
-    static String LOGO =
-            " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
-            + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
-            + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
-            + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
-            + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
-            + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
 
     public static String scanInput() {
         return scanner.nextLine().trim();
-    }
-
-    public static void printError(String errorMessage) {
-        System.out.println(errorMessage);
     }
 
     public String getInput(String requestMenu) {
@@ -40,21 +29,18 @@ public class UI {
         return input.replaceAll("\\s+", " ").trim();
     }
 
-    public static String abortEnabledScanInput() throws AbortException {
-        String input = scanner.nextLine().trim();
-        if (input.equals("\\abort") ) {
-            System.out.println(input.equals(""));
-            System.out.println("qwer");
-            throw new AbortException();
-        }
-        else {
-            return input;
-        }
-    }
-
     public static String smartCommandRecognition(String[] commands, String input) {
         int diff = LARGE_NUMBER;
         int index = -1;
+        List<String> list = Arrays.asList(commands);
+
+        if(list.contains(input)) {
+            return input;
+        }
+        if (input.length() >= 8 || input.length() < 1){
+            return UNKNOWN_COMMAND;
+        }
+
         for (int i = 0; i<commands.length; i++) {
             int temp = checkCommandDifference(commands[i], input);
             if (temp < diff) {
@@ -62,7 +48,7 @@ public class UI {
                 index = i;
             }
         }
-        if (diff == 0 || isTypo(commands[index])) {
+        if (isTypo(commands[index])) {
             return commands[index];
         }
         return UNKNOWN_COMMAND;
@@ -109,15 +95,12 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
-    public static void abortInputErrorMessage() {
-        System.out.println("Input has been aborted");
-    }
-    public static void invalidCommandErrorMessage() {
-        System.out.println("OOPS! I cant recognize that command! ");
+    public static String cleanseInput(String input) {
+        return input.replaceAll("[^A-Za-z0-9]","");
     }
 
-    public static void noInputErrorMessage() {
-        System.out.println("Command is missing input parameter");
+    public static void invalidCommandErrorMessage() {
+        System.out.println("OOPS! I cant recognize that command! ");
     }
 
     public static void noCommandErrorMessage() {
@@ -131,7 +114,10 @@ public class UI {
 
 
     public static void showLine() {
-        System.out.println(LINEBREAK);
+        System.out.println(Constants.LINEBREAK);
+    }
+    public static void showLongLine() {
+        System.out.println(Constants.LONGLINEBREAK);
     }
 
     public static void printEmptyLine() {
@@ -139,12 +125,7 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to \n" + LOGO + "What is your name?");
-        showLine();
-    }
-
-    public static void printUserName(String userName) {
-        System.out.println("Hello " + userName + "!");
+        System.out.println("Welcome to \n" + Constants.LOGO);
         showLine();
     }
 
@@ -155,7 +136,7 @@ public class UI {
         System.out.println("\"patient\" to go to patients");
         System.out.println("\"appointments\" to go to doctors appointments");
         System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to drugs inventory");
+        System.out.println("\"inventory\" to go to inventories inventory");
         System.out.println("\"help\" to see what each of the sections contain");
         System.out.println("\"bye\" to exit the application");
     }
@@ -176,11 +157,21 @@ public class UI {
         return String.format("%1$-" + length + "s", string);
     }
 
+    public static void printer(String[] string, int[] length) {
+        for (int i=0; i<length.length; i++) {
+            System.out.print(prettyPrint(string[i], length[i]));
+        }
+        System.out.print("\n");
+    }
+
+
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
     }
 
-    public void fileCreateErrorMessage() {
+    public void lineBreak() {
+        System.out.print(System.lineSeparator());
     }
+
 }

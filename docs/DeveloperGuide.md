@@ -990,7 +990,7 @@ Getting User Input
 Creating Drug object with User Input
 
 > DrugAction.addDrug() creates a new NurseSchedule object and is stored
-> into an existing ArrayList\<Drug\> drug which contains all the drug
+> into an existing ArrayList\<Drug\> inventory which contains all the inventory
 > objects.
 
 Saving Drug objects into .txt file
@@ -1013,7 +1013,7 @@ delete \[Drug name\]:
 > Parser.java, which will call the DrugActions.deleteDrug() method in
 > the DrugActions.java.
 >
-> Everything related to that specific drug will be removed.
+> Everything related to that specific inventory will be removed.
 
 help:
 
@@ -1064,7 +1064,7 @@ minimal compared to a typical GUI application
   \* \* \*       user           add a new staff/patient                                 
   \* \* \*       user           delete staff/patients                                   remove entries i no longer need
   \* \* \*       user           quickly look up schedules for both nurses and doctors   plan my schedule better
-  \* \* \*       user           quickly look up drug inventories                        plan what and when to restock our drug supplies
+  \* \* \*       user           quickly look up inventory inventories                        plan what and when to restock our inventory supplies
   \*             user           have the program recognize slight errors in typing      have leeway working in a high-stress environment
 
 ### 
