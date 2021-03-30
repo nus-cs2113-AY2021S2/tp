@@ -100,6 +100,7 @@ public class Parser {
                 throw new InvalidParameterException(keyCommand);
             }
         case REMOVE:
+            // Fallthrough
         case SAVE:
             if (lineParts.length != 2) {
                 throw new InvalidParameterException(keyCommand);
