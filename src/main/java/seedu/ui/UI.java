@@ -118,7 +118,7 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
-    public String cleanseInput(String input) {
+    public static String cleanseInput(String input) {
         return input.replaceAll("[^A-Za-z0-9]","");
     }
 

@@ -6,7 +6,7 @@ import seedu.logic.parser.DoctorAppointmentParser;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DoctorAppointmentParserTest {
+public class DoctorAppointmentCheckerParserTest {
     private DoctorAppointmentParser parser;
     private AppointmentActions actions;
 

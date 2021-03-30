@@ -10,17 +10,28 @@ import java.util.Arrays;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
-public class staffparser {
+public class StaffParser {
     static final String[] COMMANDS = {"add", "delete", "list", "addline", "find", "return", "help"};
 
 
-    public static boolean compareInt(int a, String b) {
+    public static boolean isSameInt(int a, String b) {
         try {
             int temp = Integer.parseInt(b);
             return a==temp;
         } catch (NumberFormatException e){
             return false;
         }
+    }
+
+    public static void checkValidDataForAdd(String line) throws NoInputException,
+            WrongStaffIdException, PositiveNumberOnlyException,
+            ExcessInputException, InsufficientInputException, BlankInputException {
+
+        checkEmptyInput(line);
+        checkID(line.split("/")[1]);
+        checkNumericInput(line);
+        checkNumInput(line,5,5);
+        checkBlankInput(line);
     }
 
     public static void checkID(String id) throws WrongStaffIdException {
@@ -39,6 +50,7 @@ public class staffparser {
             throw new NoInputException();
         }
     }
+
     public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException{
         if (line.split("/").length < min) {
             throw new InsufficientInputException();
@@ -47,21 +59,25 @@ public class staffparser {
             throw new ExcessInputException();
         }
     }
+
     public static void checkBlankInput(String line) throws BlankInputException {
        String[] array = line.split("/");
         for (String s : array) {
-            if (s.equals("")) {
+            if (s.strip().equals("")) {
                 throw new BlankInputException();
             }
         }
     }
 
-    public static void checkNumericInput(String line) throws NumberFormatException {
+    public static void checkNumericInput(String line) throws NumberFormatException, PositiveNumberOnlyException {
         String[] array = line.split("/");
         try {
             Integer.parseInt(array[3]);     // Check age is numeric
         } catch (NumberFormatException e) {
             throw new NumberFormatException();
+        }
+        if (Integer.parseInt(array[3]) < 0) {
+            throw new PositiveNumberOnlyException();
         }
     }
 
@@ -73,9 +89,9 @@ public class staffparser {
         }
     }
 
-    public Command commandHandler(String line) throws WrongStaffIdException,
+    public Command  commandHandler(String line) throws WrongStaffIdException,
             WrongListInputException, NoInputException, AbortException, ExcessInputException,
-            InsufficientInputException, BlankInputException, NumberFormatException {
+            InsufficientInputException, BlankInputException, NumberFormatException, PositiveNumberOnlyException {
 
         Command c = null;
         if (line.equals(" ")) {
@@ -85,13 +101,12 @@ public class staffparser {
         switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
         case ("add"):
-            checkEmptyInput(line);
-            checkID(line.split("/")[1]);
-            checkNumericInput(line);
-            checkNumInput(line,5,5);
-            checkBlankInput(line);
-            String [] p = Arrays.copyOfRange(line.split("/"), 1, 5);
-            c = new StaffAdd(p);
+            checkValidDataForAdd(line);
+            String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
+            for (int i=0; i< cleanArray.length; i++) {
+                cleanArray[i] = UI.cleanseInput(cleanArray[i]);
+            }
+            c = new StaffAdd(cleanArray);
             break;
 
         case ("list"):
