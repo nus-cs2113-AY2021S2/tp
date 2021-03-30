@@ -88,6 +88,22 @@ public class Task {
     public void setGraded(Boolean graded) {
         isGraded = graded;
     }
+    
+    public void editDescription(String newDescription) {
+        setDescription(newDescription);
+    }
+
+    public void editDeadline(LocalDate newDeadine) {
+        setDeadline(newDeadine);
+    }
+
+    public void editRemarks(String newRemarks) {
+        setRemarks(newRemarks);
+    }
+
+    public void editGraded(boolean newGraded) {
+        setGraded(newGraded);
+    }
 
     //@@author aliciatay-zls
     /**
