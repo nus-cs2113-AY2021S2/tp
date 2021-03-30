@@ -1,3 +1,5 @@
+Currently using save file: ./pm.save
+Save file does not exist so we use an empty patient list!
 Welcome to the Patient Manager.
 
 Please input a command: 

@@ -7,8 +7,7 @@ public class StorageException extends BaseException {
     public enum Type {
         FILE_CREATION_FAIL(Constants.STORAGE_FILE_CREATION_FAIL),
         FILE_WRITE_FAIL(Constants.STORAGE_FILE_WRITE_FAIL),
-        FILE_NOT_FOUND(Constants.STORAGE_FILE_NOT_FOUND),
-        NULL_INSTANCE(Constants.STORAGE_NULL_INSTANCE);
+        FILE_NOT_FOUND(Constants.STORAGE_FILE_NOT_FOUND);
         
         public final String message;
 
