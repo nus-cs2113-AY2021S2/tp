@@ -99,19 +99,20 @@ The results of the command instruct the Ui to display the message return to the 
 
 ![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
-The ***Command Class Diagram*** given above shows how the Command interact with Fridge.
+The ***Command Class Diagram*** given above shows how the Command interacts with Fridge class.
 
-The Command Component consist of 10 sub class which each command represents a features.
+The Command Component consist of 11 sub class which each command represents a features.
 
-* **`AddCommand`**: Add a food object to the fridge when executed.
+* **`AddCommand`**: Add a new food object to the fridge or add the quantity of existing food item with same parameters when executed.
 * **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
 * **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
-* **`SearchCommand`**: Search for the details of the food. 
+* **`SearchCommand`**: Search for the food that contains a particular food name. 
 * **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed. 
 * **`ClearCommand`**: Clear the list of food objects in the fridge object.
 * **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
 * **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
 * **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
+* **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
 * **`ByeCommand`**: Indicate to the main method to exit the program. 
 
 ### Exception Component
@@ -222,7 +223,7 @@ When the user specify to search a food item in the fridge, the `search` command 
 search operation by:
 1. Searching the list of foods in the fridge by that contain the food name entered by the user 
   through a loop.
-2. Afterwards, pass the message success or failure message to the UI. 
+2. Afterwards, pass the success message or failure message to the UI. 
 
 The sequence diagram shows how the `search` operation works:
 
