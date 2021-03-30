@@ -1,0 +1,58 @@
+@startuml
+!include style.puml
+
+Participant ":Finux" as Finux
+Participant ":CommandHandler" as CommandHandler
+Participant ":XYZCommand" as XYZCommand
+
+Finux -> CommandHandler : parseCommand(parsedArguments)
+activate CommandHandler
+CommandHandler -> CommandHandler :createCommand(parsedArguments)
+activate CommandHandler
+alt parsedArguments[0] is "xyz"
+    create XYZCommand
+    CommandHandler -> XYZCommand : XYZCommand(parsedArguments)
+    activate XYZCommand
+    alt no error
+    XYZCommand --> CommandHandler
+    deactivate XYZCommand
+    CommandHandler --> CommandHandler
+    deactivate CommandHandler
+    CommandHandler --> Finux : command : Command
+    deactivate CommandHandler
+    else exception
+        Finux --[#white]> CommandHandler
+        activate CommandHandler
+        CommandHandler -[#white]> CommandHandler
+        activate CommandHandler
+        CommandHandler --[#white]> XYZCommand
+        activate XYZCommand
+        XYZCommand --> CommandHandler : CommandException
+        deactivate XYZCommand
+        destroy XYZCommand
+        CommandHandler --> CommandHandler
+        deactivate CommandHandler
+        CommandHandler --> Finux : CommandException
+        deactivate CommandHandler
+    end
+else parsedArguments[0] is empty
+    Finux --[#white]> CommandHandler
+    activate CommandHandler
+    CommandHandler -[#white]> CommandHandler
+    activate CommandHandler
+    CommandHandler --> CommandHandler
+    deactivate CommandHandler
+    CommandHandler --> Finux : null
+    deactivate CommandHandler
+else parsedArguments[0] is not valid command
+    Finux --[#white]> CommandHandler
+    activate CommandHandler
+    CommandHandler -[#white]> CommandHandler
+    activate CommandHandler
+    CommandHandler --> CommandHandler
+    deactivate CommandHandler
+    CommandHandler --> Finux : CommandException
+    deactivate CommandHandler
+end
+
+@enduml

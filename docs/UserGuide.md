@@ -140,7 +140,7 @@ and to include his _name_ as to keep track of Mark's `loan`.
 
 Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
-Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
+Example: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
@@ -153,7 +153,7 @@ on the 5th of April.
 
 Format: `add -s <description> -a <amount> -d <date>`
 
-Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
+Example: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
@@ -243,8 +243,14 @@ Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` r
 Then the _index_ to be included is `3` and the `date` is the date of return which is `28/03/21`.
 
 Format: `return -i <index_of_loan> -d <date>`
+* `<index_of_loan>` refers to the index number shown on the displayed list of records.
+* `<index_of_loan>` must be a **positive integer** 1, 2, 3,...
+* `<index_of_loan>` must be referring to an existing loan in the list.
+* `<date>` refers to the date that the borrower has returned the money.
 
-Examples: `return -i 3 -d 28/03/2021`
+Example: `return -i 2 -d 28/03/2021`\
+This example shows that you have entered a command that translates to the following:\
+"The second entry(presumably a loan) on the record list is returned on 28/03/2021."
 
 Output:
 
@@ -259,11 +265,13 @@ you can `remove` the record by entering the `remove` command with the _index_ of
 be the first record in the list.
 
 Format: `remove -i <index>`
-> - The `<index>` refers to the index number shown on the record list
-> - `<index>` must be a **positive integer** 1,2,3...
-> - `<index>` must be referring to an existing record
+* `<index>` refers to the index number shown on the record list.
+* `<index>` must be a **positive integer** 1,2,3...
+* `<index>` must be referring to an existing record.
 
-Examples: `remove -i 1`, `remove -i 2`
+Example: `remove -i 1`\
+This example shows that you have entered a command that translates to the following:\
+"Remove the first record on the list."
 
 Output:
 
@@ -276,6 +284,7 @@ Output:
 
 ---
 
+
 Let's say that Mark wants to borrow money from you again, but you will want to know his "credit-worthiness" 
 (`creditScore`) before lending him money again, you can simply enter his _name_ after the `creditScore` command.
 
@@ -284,7 +293,15 @@ Format: `creditscore <person>`
 > - `<person>` refers to existing borrower in the loan list
 > - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
-Examples: `creditscore jason`, `creditscore mark`
+
+Format: `creditscore <person>`
+
+* `<person>` refers to any person including those in the list and not in the list.
+* `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+
+Example: `creditscore mark`\
+This example shows that you have entered a command that translates to the following:\
+"Show Mark's credit score."
 
 Output:
 
@@ -330,7 +347,7 @@ Each help section is divided into three parts:
 
 Format: `help <FEATURE>`
 
-Examples: `help remove`
+Example: `help remove`
 
 Output:
 
