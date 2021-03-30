@@ -1,6 +1,6 @@
 package seedu.exceptions.inventory;
-import seedu.exceptions.DukeException;
-public class DuplicateDrugException extends DukeException{
+import seedu.exceptions.HealthVaultException;
+public class DuplicateDrugException extends HealthVaultException {
     public DuplicateDrugException(String error) {
         this.error = error;
     }

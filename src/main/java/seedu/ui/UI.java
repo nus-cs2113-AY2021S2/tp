@@ -1,7 +1,6 @@
 package seedu.ui;
 
-import seedu.exceptions.staff.AbortException;
-
+import seedu.duke.Constants;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -13,21 +12,9 @@ public class UI {
     static final int LARGE_NUMBER = 100;
     static final String UNKNOWN_COMMAND = "unknown";
     static Scanner scanner = new Scanner(System.in);
-    static String LINEBREAK = "____________________________________________________________";
-    static String LOGO =
-            " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
-            + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
-            + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
-            + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
-            + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
-            + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
 
     public static String scanInput() {
         return scanner.nextLine().trim();
-    }
-
-    public static void printError(String errorMessage) {
-        System.out.println(errorMessage);
     }
 
     public String getInput(String requestMenu) {
@@ -40,16 +27,6 @@ public class UI {
         }
 
         return input.replaceAll("\\s+", " ").trim();
-    }
-
-    public static String abortEnabledScanInput() throws AbortException {
-        String input = scanner.nextLine().trim();
-        if (input.equals("\\abort") ) {
-            throw new AbortException();
-        }
-        else {
-            return input;
-        }
     }
 
     public static String smartCommandRecognition(String[] commands, String input) {
@@ -118,27 +95,12 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
-    public String cleanseInput(String input) {
+    public static String cleanseInput(String input) {
         return input.replaceAll("[^A-Za-z0-9]","");
     }
 
-    public static void abortInputErrorMessage() {
-        System.out.println("Input has been aborted");
-    }
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
-    }
-
-    public static void tooManyInputErrorMessage() {
-        System.out.println("OOPS! There is too many input for this command");
-    }
-
-    public static void tooLittleInputErrorMessage() {
-        System.out.println("OOPS! There is too little input for this command");
-    }
-
-    public static void noInputErrorMessage() {
-        System.out.println("Command is missing input parameter");
     }
 
     public static void noCommandErrorMessage() {
@@ -152,7 +114,10 @@ public class UI {
 
 
     public static void showLine() {
-        System.out.println(LINEBREAK);
+        System.out.println(Constants.LINEBREAK);
+    }
+    public static void showLongLine() {
+        System.out.println(Constants.LONGLINEBREAK);
     }
 
     public static void printEmptyLine() {
@@ -160,12 +125,7 @@ public class UI {
     }
 
     public static void printWelcome() {
-        System.out.println("Welcome to \n" + LOGO);
-        showLine();
-    }
-
-    public static void printUserName(String userName) {
-        System.out.println("Hello " + userName + "!");
+        System.out.println("Welcome to \n" + Constants.LOGO);
         showLine();
     }
 
@@ -197,6 +157,14 @@ public class UI {
         return String.format("%1$-" + length + "s", string);
     }
 
+    public static void printer(String[] string, int[] length) {
+        for (int i=0; i<length.length; i++) {
+            System.out.print(prettyPrint(string[i], length[i]));
+        }
+        System.out.print("\n");
+    }
+
+
     public static boolean isTypo(String command) {
         System.out.println("Do you mean \"" + command +"\" (y/n)");
         return scanInput().equals("y");
@@ -206,6 +174,4 @@ public class UI {
         System.out.print(System.lineSeparator());
     }
 
-    public void fileCreateErrorMessage() {
-    }
 }

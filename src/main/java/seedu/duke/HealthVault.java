@@ -4,11 +4,11 @@ import seedu.logic.command.Command;
 import seedu.logic.parser.StartMenuParser;
 import seedu.ui.UI;
 
-public class Duke {
+public class HealthVault {
     private UI ui;
     private StartMenuParser parser;
 
-    private Duke() {
+    private HealthVault() {
         ui = new UI();
         parser = new StartMenuParser();
     }
@@ -19,7 +19,7 @@ public class Duke {
      * @param args Runtime arguments are unused
      */
     public static void main(String[] args) {
-        new Duke().run();
+        new HealthVault().run();
     }
 
     public void run() {
@@ -29,6 +29,7 @@ public class Duke {
         while (!isExit) {
             try {
                 String userInput = ui.getInput("Start Menu");
+                UI.printEmptyLine();
                 Command c = parser.startMenuParse(userInput);
                 c.execute();
                 isExit = c.isExit();

@@ -1,7 +1,13 @@
 package seedu.storage;
 
-import seedu.model.staff.Staff;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.NoInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.StaffAggregation;
+import seedu.logic.errorchecker.StaffChecker;
+import seedu.model.staff.Staff;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +26,9 @@ public class StaffStorage {
     }
 
 
-    public void fileHandling(StaffAggregation staffAggregation) {
+    public void fileHandling(StaffAggregation staffAggregation) throws ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
         try {
             loadFile(staffAggregation);
         } catch (FileNotFoundException e) {
@@ -28,12 +36,18 @@ public class StaffStorage {
         }
     }
 
-    public void loadTask(StaffAggregation staffAggregation, String line) {
+    public void loadTask(StaffAggregation staffAggregation, String line) throws ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
+
+        StaffChecker.checkValidDataForStorage(line);
         String[] arr = line.split("\\|");
         staffAggregation.addStaff(new Staff(arr));
     }
 
-    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException {
+    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException, ExcessInputException,
+            InvalidIntegerException, NoInputException, WrongStaffIdException,
+            InsufficientInputException, NoInputException {
         File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
         while (s.hasNext()) {

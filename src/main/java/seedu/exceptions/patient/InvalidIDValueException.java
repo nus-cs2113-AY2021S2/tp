@@ -1,8 +1,8 @@
 package seedu.exceptions.patient;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class InvalidIDValueException extends DukeException {
+public class InvalidIDValueException extends HealthVaultException {
 
     public InvalidIDValueException(String error) {
         this.error = error;

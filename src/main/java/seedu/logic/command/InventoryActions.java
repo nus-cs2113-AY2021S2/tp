@@ -65,7 +65,7 @@ public class InventoryActions {
         if (numberOfDrugs != 0) {
             InventoryUI.notEmptyInventoryListMessage();
             for (int i = 1; i <= numberOfDrugs; ++i) {
-                System.out.println(i + ". " + inventories.get(i - 1).getDrugDetails());
+                System.out.println(i + ".\n" + inventories.get(i - 1).getDrugDetails());
             }
         } else {
             InventoryUI.emptyInventoryListMessage();

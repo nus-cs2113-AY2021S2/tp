@@ -1,8 +1,8 @@
 package seedu.exceptions.inventory;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class NonExistentDrugException extends DukeException {
+public class NonExistentDrugException extends HealthVaultException {
     public NonExistentDrugException(String error) {
         this.error = error;
     }
