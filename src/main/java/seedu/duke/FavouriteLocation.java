@@ -34,4 +34,5 @@ public class FavouriteLocation {
             System.out.println("Invalid index!");
         }
     }
+
 }
