@@ -204,6 +204,30 @@ Given below is the sequence diagram for the interactions within the main applica
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
 Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
 
+  
+### ListCommand
+
+There are three variations of the `list` command. 
+1. List all food
+2. List by category
+3. List by storage location
+
+The first command, list all food, is implemented by iterating through the collection
+of food in the fridge. The names of all the food is concatenated using a Java StringBuilder,
+and the final result, containing the list of all food, is returned to the main program.
+
+The second and third commands, list by category or storage location, is also implemented by iterating through 
+the collection of food in the fridge. However, there is an additional check to verify if the given
+food contains the correct category/storage location attribute as requested by the user.
+
+If the category/storage location is as requested, the name of the food will be concatenated to the 
+result using a Java StringBuilder. Otherwise, the name of the food would not be part of the result.
+The final result, containing the list of all food belonging to the category/storage location, 
+is returned to the main program.
+
+The sequence diagram shows how the `list` operation works:
+
+![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
 ## Product Scope
 
 ---
