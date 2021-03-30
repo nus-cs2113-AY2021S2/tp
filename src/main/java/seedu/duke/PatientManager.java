@@ -2,6 +2,8 @@ package seedu.duke;
 
 import seedu.duke.command.Command;
 
+import java.io.IOException;
+
 /**
  * Main class of the application, where the entry point is.
  */
@@ -9,13 +11,20 @@ public class PatientManager {
     private Data data;
     private Ui ui;
     private Parser parser;
+    private Storage storage;
 
     /**
      * This initializes all resources for the program.
      */
     private PatientManager() {
         ui = new Ui();
-        data = new Data();
+        storage = new Storage(Constants.FILE_PATH);
+        try {
+            data = new Data(storage.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            data = new Data();
+        }
         parser = new Parser(ui, data);
     }
 

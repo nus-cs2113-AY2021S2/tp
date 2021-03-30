@@ -21,7 +21,7 @@ public class Data {
     public Patient currentPatient;
 
     /**
-     * This initilizes a empty data instance.
+     * This initializes a empty data instance.
      */
     public Data() {
         this(new TreeMap<>());
