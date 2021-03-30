@@ -8,6 +8,7 @@ import static seedu.ui.UI.smartCommandRecognition;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -44,7 +45,38 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String text) throws WrongInputsException {
+    public String removeDuplicate(char str[], int n)
+    {
+        // Used as index in the modified string
+        int index = 0;
+
+        // Traverse through all characters
+        for (int i = 0; i < n; i++)
+        {
+            // Check if str[i] is present before it
+            int j;
+            for (j = 0; j < i; j++)
+            {
+                if (str[i] == '/')
+                {
+                    if (str[j] == '/') {
+                        break;
+                    }
+                }
+            }
+
+            // If not present, then add it to
+            // result.
+            if (j == i)
+            {
+                str[index++] = str[i];
+            }
+        }
+        return String.valueOf(Arrays.copyOf(str, index));
+    }
+
+    public String[] getDetails(String input) throws WrongInputsException {
+        String text = removeDuplicate(input.toCharArray(), input.length());
         String[] details = new String[3];
 
         String[] parts = text.toUpperCase().split("/", 0);

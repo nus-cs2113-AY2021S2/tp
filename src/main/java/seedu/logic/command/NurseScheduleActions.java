@@ -108,6 +108,7 @@ public class NurseScheduleActions {
             i++;
         }
         Collections.sort(findSchedules);
+        //System.out.println(UI.prettyPrint(id, 10));
         System.out.println(id);
     }
 
