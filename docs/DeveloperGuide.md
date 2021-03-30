@@ -1,40 +1,42 @@
-# GULIO Developer Guide
-
-## Introduction
-
-**Purpose**
-
-This document describes the architecture and implementation details of the command line application, GULIO.
-
-**Overview**
-
-GULIO is a command line application for NUS students to organize their modules. The application separates commands into 2 categories: those allowed on the dashboard and those allowed only when a module has been selected (the user is in a module). As such, the commands are similarly structured to command-line shell commands. For example, the command `open cs2113t` mimics `cd` into the folder named “CS2113T”, and the commands `modules`, `lessons`, `tasks` or `cheat-sheets` are similar to `ls` in power shell.
 
 ## Design
 
 ### Architecture
 
-[Placeholder class diagram]
+<p align="center">
+    <img width="973" src="developerGuideImages/architecture.png" alt="Architecture Diagram"><br>
+    Figure 2 - GULIO Architecture Diagram
+</p>
 
-The application consists of the following components:
+`Duke` contains the main method which is required by Java to run the application. It is responsible for instantiating and calling methods from the `UI`, `Parser` and `Command` components.
+
+Apart from `Duke`, the application consists of the following components:
+
 * `UI`: Handles reading and printing
 * `Parser`: Validates and checks user input
 * `Command`: Executes commands
 * `Model`: Consists of data related to the application
 * `Storage`: Handles loading and storing of data into text files
+* `Editor`: Graphical interface for users to type
+* `Common`: collection of classes used by multiple components.
 
-GULIO requires input from the user which is handled by the `UI` component, the `UI` then interacts with the `Parser` component to validate user input before returning a `Command` object which executes the appropriate command. The `Command` component interacts with the `Model` and `Storage` component to reflect the state of the application data.
 
-The interaction of the components can be visualized in a sequence diagram as follows:
+GULIO is a local application that stores its application data using readable text files, allowing users the flexibility of viewing and editing data locally.
 
-[Placeholder for sequence diagram]
+The way GULIO runs and handles user input can be described as follows:
 
-By design, the user is greeted with a dashboard upon launching GULIO. The commands, available in the dashboard, differ from those within a module. Consequently, there is a different help page for the dashboard and when the user has entered a module. Once the user has added modules, the user can issue a command to enter that specific module and have access to commands relating to tasks, lessons, etc. for a module. Each time a user invokes a command that modifies the data, GULIO will auto-save by writing to the .txt file for that module.
+<p align="center">
+    <img width="973" src="developerGuideImages/file.png" alt="Sequence Diagram"><br>
+    Figure 3 - GULIO Sequence Diagram
+</p>
 
-[Class diagram for DashboardCommands, ModuleCommands]
+Upon start, the main class calls run() which enters a while loop and reads in user input. In the loop, the Parser component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
+
+&nbsp;
 
 ### UI component
-**API**: UI.java
+
+**API**: `UI.java`
 
 * Facilitates the CLI interface
 * Methods to display general messages, prompt messages and error messages
@@ -42,9 +44,10 @@ By design, the user is greeted with a dashboard upon launching GULIO. The comman
 * The UI object created as an attribute in Duke is passed into each command to be executed
 * Instances of UI are used by tests in general
 
-&nbsp;&nbsp;
+&nbsp;
 
-## Parser component
+### Parser component
+
 **API**: `Parser.java`
 
 * Determines the command entered by the user
@@ -57,102 +60,52 @@ By design, the user is greeted with a dashboard upon launching GULIO. The comman
 
 * Returns a new `Command` object with all the necessary attributes filled
 
-&nbsp;&nbsp;
+&nbsp;
+
+### Command component
+
+<p align="center">
+    <img width="973" src="developerGuideImages/file.png" alt="Dual Layer Command System"><br>
+    Figure 4 - Visualisation of Dual Layer Command System
+</p>
+
+**API**: `Command.java`
+
+The `Command` component is an abstract class with methods that all commands inherit from. They can be further distinguished by commands that are used when the user is at the dashboard or when the user is within a module specified.
+
+Steps for command execution:
+
+1. The `Parser` after validating user input returns a `Command` object
+1. Each `Command` object has an execute method and gets executed by `Duke`
+1. Depending on the command, it may make changes to the objects within `Model`
+1. If there are changes, `Model` then updates application data via the `Storage` component
+1. The `UI` prints user information related to the command executed
+
+
+&nbsp;
 
 ### Model component
 
-[Class diagram for all these objects - include attributes for each of them]
+<p align="center">
+    <img width="973" src="developerGuideImages/file.png" alt="Class Diagram of Model"><br>
+    Figure 5 - Class Diagram of Model
+</p>
 
-**ModuleList:**
+The Model component consists of classes that represent real-world objects related to the program. `ModuleList` represents the various modules that a typical SOC student may be taking within the semester. Each of these modules is encapsulated in the `Module` class which contains an ArrayList of `Lesson` and `Task` objects representing the lessons that would be conducted for the module and tasks that students have to complete for the modules they are taking.
 
-* The ModuleList class keeps an ArrayList of module code strings, 
-  and if a user is in a module, the selected module’s code
-* Mainly handles operations related to Module objects such as loading
-* Also contains methods to sort the other data types in this component
-* Acts as a facade between storage and the other components
+#### ModuleList:
 
-**Module:**
+`ModuleList` is responsible for managing loaded modules in the program and keeping track if a user is at the dashboard or within a selected module. `ModuleList` interacts with the `Loader` and `Writer` components to load and write data respectively to the storage files. It also contains methods to sort data that after loading and before writing.
 
-* The Module class contains attributes related to a course module in NUS
-* It also holds an ArrayList for the Lesson and Task model
+The `ModuleList` class contains the attributes:
 
-**Lesson:**
+* ArrayList of module code strings
+* Class-level member storing `Module`
 
-The `Lesson` class contains attributes related to a typical course lesson
+#### Module:
 
-* Lesson type, e.g. Lab, Tutorial or Lecture
-* Time and day of the lesson
-* Link to the lesson session
-* Teaching staff information
+The `Module` class contains the attributes:
 
-**Teaching staff:**
-
-The `TeachingStaff` class contains attributes related to the teacher(s) of a particular lesson
-
-* Name of the teacher
-* Email address of the teacher
-
-**Task:**
-
-The Task class contains attributes related to an assignment, deadline or task in a university setting
-
-* Description of task
-* Deadline of task
-* Remarks
-* Done status
-* Graded status
-
-&nbsp;&nbsp;
-### Storage component
-The storage component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components:
-
-**Loader:**
-
-* Loads the list of modules from the “Data” directory
-* Loads lesson and task data from the selected module’s “.txt” file
-
-**Writer:**
-
-* Creates all the directories required 
-* Deletes files and directories
-* Creates the “.txt” file that saves the module’s lessons and tasks
-* Writes changes to the “.txt” file that saves the module’s lessons and tasks
-
-**Structure of storage:**
-
-* Data directory
-    * Module directory
-        * Module data text file
-        * Cheat-sheet directory
-            * Cheat-sheet text file
-    
-&nbsp; &nbsp;
-
-### Editor component
-API: TextEditor.java
-&nbsp;
-
-The editor component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
-
-**The Text Editor**
-* Sets up the editor
-* Loads existing file from Cheatsheet directory within a module for the edit cheat-sheet command
-* Flushes out the text from the editor when a different or new file is opened.
-* Adjusts the font size of the text within the editor
-* Detects mouse input to change font style and save the text
-* Saves the text from the text editor into a file 
-  
-&nbsp; 
-**The ShortcutListener**
-
-* Detects keyboard input for shortcuts
-
-&nbsp; &nbsp; 
-
-### Common classes
-Classes that are used by multiple components:
-* CommonMethods: Stores methods that are used by multiple components
-* Constants: Stores constants
-* Messages: Stores strings that are printed by the UI
-* DashboardCommands: Enum of commands that can be used outside a module
-* ModuleCommands: Enum of commands that can be used inside a module
+* Module code string
+* ArrayList of `Lesson`
+* ArrayList of `Task`
