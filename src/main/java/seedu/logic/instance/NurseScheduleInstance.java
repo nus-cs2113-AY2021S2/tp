@@ -37,6 +37,7 @@ public class NurseScheduleInstance {
                 storage.writeToFile(nurseSchedules);
                 isReturnToStartMenu = c.isExit();
                 if (isReturnToStartMenu) {
+                    nurseSchedules.clearSchedules();
                     UI.returningToStartMenuMessage();
                 }
                 UI.showLine();
