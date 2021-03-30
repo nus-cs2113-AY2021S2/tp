@@ -2,7 +2,8 @@
 
 ## Introduction
 
-{Give a product intro}
+Welcome to Diliveri. The ultimate smart assistant for deliverymen.
+Not just the men, but the women and children too!
 
 ## Quick Start
 
@@ -10,24 +11,10 @@
 
 1. Ensure that you have Java 11 or above installed.
 1. Down the latest version of `Diliveri` from [here](http://link.to/duke).
+3. Download the latest version of required .txt files from [here](http://link.to)
 
 ## Features 
 
-{Give detailed description of each feature}
-
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
-
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
-
-Example of usage: 
-
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
 ### Help: `help`
 Returns a help message containing a list of accepted commands accepted by Diliveri 
@@ -55,14 +42,62 @@ Example of usage:
 
 `edit n/General Kenobi v/Jedi Interceptor l/SKJ9856H w/60`
 
+### Load Delivery Assignment: `start`
+Loads a delivery assignment into the deliverylist.
+
+Format: `start`
+
+### Display list of Deliveries: `list`
+Shows consolidated list of deliveries present in assignment
+
+Format: `list`
+
+### Display Recommended Travel Route: `route`
+Displays a recommended travel route, determined by distance
+
+Format: `route`
+
+### View Delivery Details: `view`
+Returns a detailed view of a specified delivery - containing
+details about the items present in the delivery
+
+Format: `view <delivery number>`
+
+Example of usage:
+
+`view 2`
+
+### Mark Delivery as Completed: `complete`
+Marks a selected delivery as completed. This will remove the delivery
+from future route calculations and adds the delivery to the 'record'
+
+Format: `complete <delivery number>`
+
+Example of usage:
+
+`complete 2`
+
+### Display Record of Completed Deliveries: `record`
+Displays the list of completed deliveries, together with
+the amount earned thus far.
+
+Format: `record`
+
 ## FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: How do I get started? 
 
-**A**: {your answer here}
+**A**: Please head on over to our GitHub to first download the
+routes.txt , profile.txt , delivery.txt 
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+* Show help menu `help`
+* Show profile `profile`
+* Edit profile `editprofile n/NAME v/VEHICLE_MODEL l/LICENSE_PLATE w/WEIGHT`
+* Load deliveries `start`
+* Display list of deliveries `list`
+* Display optimal route `route`
+* View delivery details `view <delivery number>`
+* Mark delivery as complete `complete <delivery number>`
+* Display completed deliveries `record`
