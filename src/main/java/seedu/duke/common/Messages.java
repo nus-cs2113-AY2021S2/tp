@@ -18,6 +18,8 @@ public class Messages {
             + "The current version of this application is: " + MESSAGE_VERSION + "\n"
             + MESSAGE_FEATURES + "\n";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
+    public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
+    public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\tProgress\n";
     public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index\t\tDate\t\tActivity\t\tDuration\t\tCalories\n";
     public static final String MESSAGE_VIEW_HEADER_DIET = "Index\t\tDate\t\tFood Category\t\tWeight\t\tCalories\n";
     public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index\t\tDate\t\t\tDuration\n";
@@ -26,13 +28,25 @@ public class Messages {
             + "You can try adding records by using command 'add'.";
     public static final String MESSAGE_NO_GOAL = "Sorry, no goals found.\n"
             + "You can try setting a goal by using command 'set'.";
-    public static final String MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION = "The index field is not a valid number.\n"
+    public static final String MESSAGE_NO_ELIGIBLE_GOAL = "Sorry, there are currently no eligible goals\n"
+            + "You can try setting a goal by using command 'set'.";
+    public static final String MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION = "The index field is not a valid integer "
+            + "number.\nPlease try again.";
+    public static final String MESSAGE_INDEX_OUT_OF_RANGE_EXCEPTION = "The index entered is out of range.\n"
             + "Please try again.";
     public static final String MESSAGE_CANT_ADD_RECORD = "Sorry, you cannot add record of an unrecognized type.";
-    public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view record list "
+    public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
+    public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
+    public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "
+            + "of an incorrect goal type.";
+    public static final String MESSAGE_CANT_CANCEL_GOAL = "Sorry, you cannot cancel a goal from a goal list "
+            + "of an incorrect goal type.";
     public static final String MESSAGE_SYSTEM_ERROR = "There is something wrong within the system.";
-    //public static final String MESSAGE_NUMBER_FORMAT_ERROR = "Please check the value for the number field.";
+    public static final String MESSAGE_DOUBLE_FORMAT_ERROR = "A double value is expected for the number field. "
+            + "Please verify your input and try again.";
+    public static final String MESSAGE_INVALID_PERIOD_TYPE = "The period type you entered is invalid.\n"
+            + "The period type can only be 'D' or 'W'. Please try again.";
     public static final String MESSAGE_INVALID_DATE_FORMAT = "The date format is incorrect or the date is invalid. "
             + "Please try again.\n";
     public static final String MESSAGE_INVALID_SLEEP_HOUR = "The duration you entered is invalid.\n"
@@ -73,4 +87,19 @@ public class Messages {
             + "2. Delete diet records\n\tdelete t/D i/index\n"
             + "3. Delete sleep records\n\tdelete t/S i/index\n"
             + "4. Delete body weight records\n\tdelete t/W i/index";
+    public static final String MESSAGE_SYNTAX_SET_COMMAND = "The syntax for set command is:\n"
+            + "1. Set exercise goals\n\tset t/E p/PERIOD_TYPE target/TARGET_ENERGY\n"
+            + "2. Set diet goals\n\tset t/D p/PERIOD_TYPE target/TARGET_ENERGY\n"
+            + "3. Set sleep goals\n\tset t/S p/PERIOD_TYPE target/TARGET_DURATION\n"
+            + "4. Set body weight goals\n\tset t/W p/PERIOD_TYPE target/TARGET_WEIGHT";
+    public static final String MESSAGE_SYNTAX_CHECK_COMMAND = "The syntax for check command is:\n"
+            + "1. check exercise goals\n\tcheck t/E [p/PERIOD_TYPE]\n"
+            + "2. check diet goals\n\tcheck t/D [p/PERIOD_TYPE]\n"
+            + "3. check sleep goals\n\tcheck t/S [p/PERIOD_TYPE]\n"
+            + "4. check body weight goals\n\tcheck t/W [p/PERIOD_TYPE]";
+    public static final String MESSAGE_SYNTAX_CANCEL_COMMAND = "The syntax for cancel command is:\n"
+            + "1. cancel exercise goals\n\tcancel t/E i/INDEX\n"
+            + "2. cancel diet goals\n\tcancel t/D i/INDEX\n"
+            + "3. cancel sleep goals\n\tcancel t/S i/INDEX\n"
+            + "4. cancel body weight goals\n\tcancel t/W i/INDEX";
 }

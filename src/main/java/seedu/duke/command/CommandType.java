@@ -1,5 +1,5 @@
 package seedu.duke.command;
 
 public enum CommandType {
-    ADD, VIEW, DELETE;
+    ADD, VIEW, DELETE, SET, CHECK, CANCEL
 }

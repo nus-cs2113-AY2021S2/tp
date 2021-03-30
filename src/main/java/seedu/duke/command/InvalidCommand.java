@@ -20,6 +20,15 @@ public class InvalidCommand extends Command {
         case DELETE:
             feedback = Messages.MESSAGE_INVALID_COMMAND_SYNTAX + Messages.MESSAGE_SYNTAX_DELETE_COMMAND;
             break;
+        case SET:
+            feedback = Messages.MESSAGE_INVALID_COMMAND_SYNTAX + Messages.MESSAGE_SYNTAX_SET_COMMAND;
+            break;
+        case CHECK:
+            feedback = Messages.MESSAGE_INVALID_COMMAND_SYNTAX + Messages.MESSAGE_SYNTAX_CHECK_COMMAND;
+            break;
+        case CANCEL:
+            feedback = Messages.MESSAGE_INVALID_COMMAND_SYNTAX + Messages.MESSAGE_SYNTAX_CANCEL_COMMAND;
+            break;
         default:
             feedback = Messages.MESSAGE_SYSTEM_ERROR;
         }

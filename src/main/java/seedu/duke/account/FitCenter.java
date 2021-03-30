@@ -2,11 +2,9 @@ package seedu.duke.account;
 
 import seedu.duke.command.CommandRecordType;
 import seedu.duke.common.Messages;
-import seedu.duke.goal.ExerciseGoal;
-import seedu.duke.goal.BodyWeightGoal;
-import seedu.duke.goal.SleepGoal;
-import seedu.duke.goal.DietGoal;
 import seedu.duke.goal.GoalList;
+import seedu.duke.goal.Goal;
+import seedu.duke.goal.PeriodType;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.RecordType;
@@ -22,8 +20,10 @@ public class FitCenter {
     private final RecordList exerciseRecordList = new RecordList(RecordType.EXERCISE);
     private final RecordList dietRecordList = new RecordList(RecordType.DIET);
     private final RecordList bodyRecordList = new RecordList(RecordType.BODYWEIGHT);
-    private final GoalList exerciseGoalList = new GoalList(RecordType.EXERCISE);
-    private final GoalList dietGoalList = new GoalList(RecordType.DIET);
+    private final GoalList exerciseGoalList = new GoalList();
+    private final GoalList dietGoalList = new GoalList();
+    private final GoalList sleepGoalList = new GoalList();
+    private final GoalList bodyWeightGoalList = new GoalList();
 
     private RecordList getRecordListByType(CommandRecordType type) {
         switch (type) {
@@ -35,6 +35,21 @@ public class FitCenter {
             return dietRecordList;
         case BODY_WEIGHT:
             return bodyRecordList;
+        default:
+            return null;
+        }
+    }
+
+    private GoalList getGoalListByType(CommandRecordType type) {
+        switch (type) {
+        case SLEEP:
+            return sleepGoalList;
+        case EXERCISE:
+            return exerciseGoalList;
+        case DIET:
+            return dietGoalList;
+        case BODY_WEIGHT:
+            return bodyWeightGoalList;
         default:
             return null;
         }
@@ -53,6 +68,27 @@ public class FitCenter {
         }
     }
 
+    /**
+     * Adds a given goal to a list that stores the same type of goals.
+     *
+     * @param type the type of the goal.
+     * @param goal the goal to add.
+     */
+    public void addGoalToList(CommandRecordType type, Goal goal) {
+        GoalList list = getGoalListByType(type);
+        if (list != null) {
+            list.addGoal(goal);
+        }
+    }
+
+    /**
+     * Removes a record from a record list by index.
+     *
+     * @param type  the type of the record.
+     * @param index the index of the record in the list.
+     * @return a summary of the record removed.
+     * @throws IndexOutOfBoundsException when the index input is out of range.
+     */
     public String removeRecordFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
         RecordList list = getRecordListByType(type);
         if (list != null) {
@@ -60,6 +96,14 @@ public class FitCenter {
         } else {
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    public String cancelGoalFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
+        GoalList list = getGoalListByType(type);
+        if (list != null) {
+            return list.removeGoal(index);
+        }
+        return Messages.MESSAGE_CANT_CANCEL_GOAL;
     }
 
     /**
@@ -105,12 +149,18 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
+    public String getGoalListString(CommandRecordType type, PeriodType optionalPeriodType) {
+        GoalList list = getGoalListByType(type);
+        if (list != null) {
+            return list.getGoalsToPrint(optionalPeriodType);
+        }
+        return Messages.MESSAGE_CANT_CHECK_GOAL;
+    }
+
     public String getRecordListForStore() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(exerciseRecordList.getRecordToStore());
-        stringBuilder.append(dietRecordList.getRecordToStore());
-        stringBuilder.append(sleepRecordList.getRecordToStore());
-        stringBuilder.append(bodyRecordList.getRecordToStore());
-        return stringBuilder.toString();
+        return exerciseRecordList.getRecordToStore()
+                + dietRecordList.getRecordToStore()
+                + sleepRecordList.getRecordToStore()
+                + bodyRecordList.getRecordToStore();
     }
 }

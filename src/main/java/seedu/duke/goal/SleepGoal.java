@@ -9,7 +9,7 @@ public class SleepGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param periodType     the period type of the goal which can be daily or weekly.
      * @param targetDuration the target sleeping duration.
      */
     public SleepGoal(PeriodType periodType, double targetDuration) {
@@ -52,6 +52,11 @@ public class SleepGoal extends Goal {
         this.progress = progress;
     }
 
+    @Override
+    public String getProgressUnit() {
+        return "hour(s)";
+    }
+
     /**
      * Gets a string summary of all info of this goal instance.
      *
@@ -59,10 +64,10 @@ public class SleepGoal extends Goal {
      */
     @Override
     public String getGoalSummary() {
-        return "Date Set: " + getDaySet().toString() + "\n"
-                + "Goal Type: " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetDuration() + "\n"
-                + "Progress: " + getProgress() + "\n";
+        return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
+                + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                + "Target: " + getTargetDuration() + getProgressUnit() + "\n"
+                + "Progress: " + getProgress() + getProgressUnit();
     }
 
     /**
@@ -72,9 +77,9 @@ public class SleepGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return getDaySet().toString() + "\t"
-                + getType().toString().toLowerCase() + "\t"
-                + getTargetDuration() + "\t"
-                + getProgress() + "\n";
+        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
+                + getPeriodType().toString().toLowerCase() + "\t"
+                + getTargetDuration() + getProgressUnit() + "\t"
+                + getProgress() + getProgressUnit() + "\n";
     }
 }

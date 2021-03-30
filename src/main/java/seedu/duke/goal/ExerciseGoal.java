@@ -52,6 +52,12 @@ public class ExerciseGoal extends Goal {
         this.progress = progress;
     }
 
+
+    @Override
+    public String getProgressUnit() {
+        return "Kcal";
+    }
+
     /**
      * Gets a string summary of all info of this goal instance.
      *
@@ -59,10 +65,10 @@ public class ExerciseGoal extends Goal {
      */
     @Override
     public String getGoalSummary() {
-        return "Date Set: " + getDaySet().toString() + "\n"
-                + "Goal Type: " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetEnergy() + "\n"
-                + "Progress: " + getProgress() + "\n";
+        return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
+                + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                + "Target: " + getTargetEnergy() + getProgressUnit() + "\n"
+                + "Progress: " + getProgress() + getProgressUnit();
     }
 
     /**
@@ -72,9 +78,9 @@ public class ExerciseGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return getDaySet().toString() + "\t"
-                + getType().toString().toLowerCase() + "\t"
-                + getTargetEnergy() + "\t"
-                + getProgress() + "\n";
+        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
+                + getPeriodType().toString().toLowerCase() + "\t"
+                + getTargetEnergy() + getProgressUnit() + "\t"
+                + getProgress() + getProgressUnit() + "\n";
     }
 }
