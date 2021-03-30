@@ -4,29 +4,31 @@
 
 [1. Introduction](#1-introduction)
 
-[2. Design](#2-design)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#21-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#22-ui-class)
+[2. Setting Up](#2-setting-up)  
 
-[3. Implementation](#3-implementation)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.01 Add New Review](#301-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.02 Delete a Review](#302-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.03 Add New Task](#303-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.04 Delete a Task](#304-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.05 Add Zoom Link](#305-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.06 Add Module Components](#306-add-module-components)
+[3. Design](#3-design)  
+&nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#31-architecture)  
+&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#32-ui-class)
 
-[4. Product scope](#4-product-scope)    
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Target user profile](#41-target-user-profile)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Value proposition](#42-value-proposition)
+[4. Implementation](#4-implementation)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.01 Add New Review](#401-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.02 Delete a Review](#402-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.03 Add New Task](#403-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.04 Delete a Task](#404-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.05 Add Zoom Link](#405-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.06 Add Module Components](#406-add-module-components)
 
-[5. User Stories](#5-user-stories)
+[5. Product scope](#5-product-scope)    
+&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Target user profile](#51-target-user-profile)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Value proposition](#52-value-proposition)
 
-[6. Non-Functional Requirements](#6-non-functional-requirements)
+[6. User Stories](#6-user-stories)
 
-[7. Glossary](#7-glossary)
+[7. Non-Functional Requirements](#7-non-functional-requirements)
 
-[8. Instructions for manual testing](#8-instructions-for-manual-testing)
+[8. Glossary](#8-glossary)
+
+[9. Instructions for manual testing](#9-instructions-for-manual-testing)
 
 ---
 
@@ -39,14 +41,51 @@
 
 - Users are allowed to add and edit module information, tasks, zoom links to suit their needs.
 
-- This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User
+- This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical User
   Interface (GUI).
 
 ---
 
-## 2. Design
+# 2. Setting Up
 
-### 2.1 Architecture
+1. Ensure you have version 11 of Java. You can install it from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+2. Fork the UniTracker repo from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp).
+3. Clone the fork on to your computer. We recommend using Sourcetree for this. You can download Sourcetree from [here](https://www.sourcetreeapp.com/).
+4. Download and open Intellij. You can download Intellij from [here](https://www.jetbrains.com/idea/)
+5. If you are not in the welcome screen, click `File` -> 'Close project'
+   to close the existing project dialog.
+6. Set up the correct JDK version for Gradle.
+    1. Click `Configure` -> `Project Defaults` -> `Project Structure`
+    2. Click `New...` and set it to the directory of the JDK.
+7. Click `Open or Import` in Intellij.
+8. Locate the `build.gradle` file, select it and click `OK`.
+9. If asked, choose to `Open as Project`.
+10. Click `OK` to accept the default settings.
+11. Right click on the `Duke.java` file and select `Run Duke.main()`.
+12. If the set up was done right, you should see this welcome message:
+    ````  
+     Welcome to 
+       _   _               _      _____                                _
+      | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _
+      | |_| |  | ' \      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|
+       \___/   |_||_|    _|_|_    _|_|_    _|_|_   \__,_|    \__|_    |_\_\    \___|    _|_|_
+     _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
+     "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
+  
+    This is the list of your pinned tasks:
+  
+    Main Menu:
+    [1] Module Information
+    [2] CAP Simulator/Calculator
+    [3] Task Manager
+    [4] External Links
+    [5] Exit Program
+    ````
+---
+
+## 3. Design
+
+### 3.1 Architecture
 
 The `Duke` class contains the main method of our application.
 
@@ -62,15 +101,15 @@ We have 5 main classes for our key features.
 
 ![Diagram](diagrams/MainArchitecture.png)
 
-### 2.2 UI Class
+### 3.2 UI Class
 
 This class handles the interactions with the user and contains the methods for system output.
 
 ---
 
-## 3. Implementation
+## 4. Implementation
 
-### 3.01 Add New Review
+### 4.01 Add New Review
 
 This feature allows user to `add a review` for any of the modules they have taken.
 
@@ -122,7 +161,7 @@ Mar 23, 2021 9:52:21 PM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage
 WARNING: You will delete your old review. This cannot be undone.
 ```
 
-### 3.02 Delete a Review
+### 4.02 Delete a Review
 
 This feature allows user to delete a review from the `module`.
 
@@ -132,7 +171,7 @@ Deleting a review would __reset__ the `Review` *String* attribute of a `module` 
 of:  
 `"You have not reviewed this module yet."`
 
-### 3.03 Add New Task
+### 4.03 Add New Task
 
 This feature allows the user to add tasks of type `task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -160,7 +199,7 @@ user. Using the example above,
 The user input for `Message` (argument 5 above) will be printed out when the user deleted the task,
 signalling completion.
 
-### 3.04 Delete a Task
+### 4.04 Delete a Task
 
 This feature allows the user to delete a task of type `task`, `assignment`, `midterm`, `final exam`
 from a task list.
@@ -175,7 +214,7 @@ the `ArrayList`.
 
 The `Message` that the user inputted upon creation of this particular task will then be printed out.
 
-### 3.05 Add Zoom Link
+### 4.05 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/addZoomLink.png)
@@ -198,7 +237,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 3.06 Add Module Components
+### 4.06 Add Module Components
 
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
@@ -221,7 +260,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-#### View Module Components
+#### 4.07 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.
@@ -233,19 +272,15 @@ Improvement: the total weightage (in whole numbers) of the module should not exc
 
 ---
 
-## 4. Product scope
+## 5. Product scope
 
----
-
-### 4.1 Target user profile
+### 5.1 Target user profile
 
 This product is for NUS students to help them to keep track/add/edit module information, and
 deadlines. This product is for users who prefer CLI over GUI.
 
 
----
-
-### 4.2 Value proposition
+### 5.2 Value proposition
 
 Our product is user-specific as it allows users to customize and personalize their own module
 information and deadlines to suit their needs. Our product allows users to organize their own daily
@@ -261,7 +296,7 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 5. User Stories
+## 6. User Stories
 
 *[This section will be completed in the future.]* <br>
 
@@ -272,14 +307,14 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 6. Non-Functional Requirements
+## 7. Non-Functional Requirements
 
 *[This section will be completed in the future.]* <br>
 {Give non-functional requirements}
 
 ---
 
-## 7. Glossary
+## 8. Glossary
 
 *[This section will be completed in the future.]* <br>
 
@@ -287,7 +322,7 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 8. Instructions for manual testing
+## 9. Instructions for manual testing
 
 *[This section will be completed in the future.]* <br>
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used
