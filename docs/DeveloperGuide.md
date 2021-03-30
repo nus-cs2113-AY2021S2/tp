@@ -97,7 +97,7 @@ The execution of the command can affect the fridge.
 After the execution, the results of the command object is pass to the UI.
 The results of the command instruct the Ui to display the message return to the user.
 
-![Command Class Diagram](diagrams/diagram_images/CommandClass.png)
+![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
 The ***Command Class Diagram*** given above shows how the Command interact with Fridge.
 
@@ -255,7 +255,7 @@ The `expiring` command is implemented through looping of the food items in the f
 return the food item if the expiry date is within one week of calling the command. 
 
 The sequence diagram shows how the `expiring` operation works:
-![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
+![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
 
 
 ## Product Scope
