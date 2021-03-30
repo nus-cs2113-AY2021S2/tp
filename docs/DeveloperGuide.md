@@ -64,7 +64,7 @@ If you plan to use Intellij IDEA (highly recommended):
 The Architecture Diagram shown above gives a high-level explanation of Patient Manager.
 Given below is a brief overview of each component.
 
-The user starts the program from the main class `PatientManager`.
+`Main` contains the class `PatientManager`.
 
 This class is responsible for:
 - When the app is launched: Initializing the other components in the correct sequence and connecting them with each other
