@@ -33,7 +33,7 @@ public class Commands {
         this.storage = storage;
         sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
         reviewList = new ReviewList(connoisseurData, ui);
-        recommendationList = new RecommendationList(connoisseurData, ui);
+        recommendationList = new RecommendationList(connoisseurData, ui, reviewList);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Commands {
         this.storage = storage;
         sorter = new Sorter(SortMethod.LATEST);
         reviewList = new ReviewList(ui);
-        recommendationList = new RecommendationList(ui);
+        recommendationList = new RecommendationList(ui, reviewList);
     }
 
     public void reviewMode() {

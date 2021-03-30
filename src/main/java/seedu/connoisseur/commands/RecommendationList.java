@@ -28,13 +28,14 @@ public class RecommendationList {
     public ArrayList<Recommendation> recommendations = new ArrayList<>();
     private ReviewList reviewList;
 
-    public RecommendationList(ConnoisseurData connoisseurData, Ui ui) {
+    public RecommendationList(ConnoisseurData connoisseurData, Ui ui, ReviewList reviewList) {
         this.ui = ui;
         this.recommendations = connoisseurData.getRecommendations();
-        reviewList = new ReviewList(connoisseurData, ui);
+        this.reviewList = reviewList;
     }
 
-    public RecommendationList(Ui ui) {
+    public RecommendationList(Ui ui, ReviewList reviewList) {
+        this.reviewList = reviewList;
         this.ui = ui;
     }
 
