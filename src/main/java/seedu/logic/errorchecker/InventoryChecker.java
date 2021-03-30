@@ -1,4 +1,4 @@
 package seedu.logic.errorchecker;
 
-public class InventoryChecker {
+public class InventoryChecker extends MainChecker{
 }
