@@ -1,5 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.Component;
+import seedu.duke.capsimulator.ModuleGradeEnum;
 import seedu.duke.link.Links;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
