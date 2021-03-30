@@ -348,7 +348,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 1. Exiting
     1. Test case: `exit`\
        Expected: Application prints goodbye message and exits. All data will be saved to
-       `./data/TODO_ADD_FILENAME_HERE.txt`
+       `pm.save` in the same folder as `tp.jar`
 
 ### Adding and Loading Patients
 
@@ -384,6 +384,6 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 ### Saving Data
 
 1. Missing data files
-    1. Delete the file `./data/TODO_ADD_FILENAME_HERE.txt`.
+    1. Delete the file `pm.save`, which should be in the same folder as `tp.jar`.
     1. Launch the app with `java -jar tp.jar`.
     1. Expected: Application should start up without any data.
