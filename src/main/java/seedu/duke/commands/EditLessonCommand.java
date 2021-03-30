@@ -18,6 +18,7 @@ import static seedu.duke.common.Constants.LESSON_FIELD_2_LINK;
 import static seedu.duke.common.Constants.LESSON_FIELD_3_T_NAME;
 import static seedu.duke.common.Constants.LESSON_FIELD_4_T_EMAIL;
 import static seedu.duke.common.Constants.MAX_EDITABLE_FIELDS;
+import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_EDITED_FIELD;
 import static seedu.duke.common.Messages.MESSAGE_FIELDS_TO_EDIT;
 import static seedu.duke.common.Messages.MESSAGE_FIELD_BEING_EDITED;
@@ -174,24 +175,24 @@ public class EditLessonCommand extends Command {
         switch (fieldIndex) {
         case EDIT_INDEX_DAY_TIME:
             lesson.setTime(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
+            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex].toLowerCase()));
             break;
         case EDIT_INDEX_LINK:
             if (Lesson.isValidLink(newFieldValue)) {
                 lesson.setOnlineLink(newFieldValue);
-                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
+                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex].toLowerCase()));
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_LINK + MESSAGE_NOT_UPDATED);
             }
             break;
         case EDIT_INDEX_TEACHER_NAME:
             lesson.setTeachingStaffName(newFieldValue);
-            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
+            ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex].toLowerCase()));
             break;
         default:
             if (TeachingStaff.isValidEmail(newFieldValue)) {
                 lesson.setTeachingStaffEmail(newFieldValue);
-                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex]));
+                ui.printMessage(String.format(MESSAGE_EDITED_FIELD, fields[fieldIndex].toLowerCase()));
             } else {
                 ui.printMessage(MESSAGE_INVALID_LESSON_EMAIL + MESSAGE_NOT_UPDATED);
             }
@@ -207,8 +208,7 @@ public class EditLessonCommand extends Command {
     private void printFieldsAsList(UI ui) {
         int numbering = 1;
         for (String field : this.fields) {
-            String line = numbering + ". " + field;
-            ui.printMessage(line);
+            ui.printMessage(String.format(FORMAT_INDEX_ITEM, numbering, field));
             numbering++;
         }
     }

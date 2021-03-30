@@ -5,7 +5,6 @@ import seedu.duke.lesson.Lesson;
 import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
-import seedu.duke.task.Task;
 import seedu.duke.ui.UI;
 
 import java.util.ArrayList;
@@ -34,8 +33,7 @@ public class ModuleInfoCommand extends Command {
         ArrayList<Lesson> lessonList = module.getLessonList();
         printLessonsFromList(lessonList, ui);
         ui.printMessage(EMPTY_STRING);
-        ArrayList<Task> tasksList = module.getTaskList();
-        ui.printTasks(tasksList, false, true);
+        ListTasksCommand.printFilteredTasks(ui, module, false, true);
     }
 
     /**
