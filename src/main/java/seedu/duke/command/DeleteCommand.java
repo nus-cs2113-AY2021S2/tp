@@ -6,14 +6,11 @@ import seedu.duke.Ui;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
-import java.util.Locale;
-import java.util.TreeMap;
 
 public class DeleteCommand extends Command {
 
@@ -28,6 +25,7 @@ public class DeleteCommand extends Command {
         super(ui, data, arguments);
     }
 
+    @Override
     public void execute() throws InvalidInputException, StorageException {
 
         if (arguments.containsKey(Constants.PATIENT_KEY)) {

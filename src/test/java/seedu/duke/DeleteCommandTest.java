@@ -1,7 +1,6 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.command.AddCommand;
 import seedu.duke.command.DeleteCommand;
 import seedu.duke.model.Patient;
 
@@ -12,7 +11,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DeleteCommandTest {
     @Test
