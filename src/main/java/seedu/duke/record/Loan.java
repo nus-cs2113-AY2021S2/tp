@@ -56,6 +56,11 @@ public class Loan extends Record {
         this.returnDate = returnDate;
     }
 
+    /**
+     * Method to check if the loan have been returned.
+     *
+     * @return true if loan is returned, false if loan is not return.
+     */
     public boolean isReturn() {
         return isReturn;
     }
@@ -83,14 +88,5 @@ public class Loan extends Record {
         String formattedRecordType = "[" + TYPE_LOAN + "]";
         String formattedLoanStatus = "[" + (isReturn ? "v" : " ") + "]";
         return formattedRecordType + super.toString() + formattedLoanStatus;
-    }
-
-    /**
-     * Method to check if the loan is returned.
-     *
-     * @return true if loan is returned, false if loan is not return.
-     */
-    public boolean checkIsReturn() {
-        return isReturn;
     }
 }
