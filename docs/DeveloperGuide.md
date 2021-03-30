@@ -1,4 +1,4 @@
-# GULIO Developer Guide
+# Developer Guide
 
 **GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
 
@@ -341,7 +341,7 @@ The AddCheatSheetCommand class enables the creation, addition and saving of a .t
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
+    <img width="973" src="developerGuideImages/addCheatSheetCommand.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
     Figure 10 - AddCheatSheetCommand Invocation Sequence Diagram
 </p>
 
