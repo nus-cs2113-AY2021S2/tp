@@ -378,6 +378,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
        Patient S9841974H has been deleted!
        ----------------------------------------------------------------------
        ```
+
 ### Adding, Viewing and Deleting a Patient's Visit Records
 
 1. Adding visit records
