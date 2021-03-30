@@ -3,11 +3,11 @@ Welcome to HDBuy!
 How may I help you today?
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-Parameters:
+Filter conditions:
 {LOCATION=jurong}
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
-Parameters:
+Filter conditions:
 {LOCATION=jurong}
 Index                 Address        Type                   Lease       Price
     1   844 JURONG WEST ST 81      4 ROOM      78 years 03 months     $346500
