@@ -56,7 +56,7 @@ If you plan to use Intellij IDEA (highly recommended):
 1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
    Run the tests to ensure they all pass.
 
-## Design & implementation
+## Design & Implementation
 
 ### Architecture
 <img src="./images/architecture_diagram.png" width="600">
@@ -209,6 +209,18 @@ API: `Patient.java`, `Record.java` and `Data.java`
 
 API: all classes in [src/main/java/seedu/exception](src/main/java/seedu/exception)
 
+### Commons
+
+Constants used by multiple classes are stored in the `seedu.duke.Constants` class.
+
+## Implementation
+
+This section describes some noteworthy details on how certain details are implemented.
+
+### Tokenizing User Input
+
+### Exception Handling
+
 All unexpected behaviour encountered by Patient Manager is signalled and handled with exceptions. Since the generic
 `Exception` is too broad, we have created a few custom exception classes to relay exception information.
 
@@ -263,8 +275,6 @@ Input command and/or arguments are invalid:
         java.lang.ClassNotFoundException: seedu.duke.command.WrongcommandCommand
 ----------------------------------------------------------------------
 ```
-
-### Commons
 
 ## Appendix A: Product scope
 
