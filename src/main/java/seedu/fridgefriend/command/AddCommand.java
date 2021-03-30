@@ -1,6 +1,7 @@
 package seedu.fridgefriend.command;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -16,6 +17,7 @@ import seedu.fridgefriend.food.categories.Other;
 import seedu.fridgefriend.food.categories.ReadyToEat;
 import seedu.fridgefriend.food.categories.Seafood;
 import seedu.fridgefriend.food.categories.Vegetable;
+import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
@@ -30,13 +32,17 @@ public class AddCommand extends Command {
 
     public AddCommand(String foodName, FoodCategory category, String expiryString,
                       FoodStorageLocation location, int quantity)
-            throws InvalidDateException {
+            throws InvalidDateException, InvalidQuantityException {
 
+        if (quantity <= 0) {
+            throw new InvalidQuantityException();
+        }
         assert category != null : "category should not be null";
         LoggingHandler.logInfo("Adding food: " + foodName + " with parameters: ");
         LoggingHandler.logInfo("Category: " + category);
         LoggingHandler.logInfo("Expiry: " + expiryString);
         LoggingHandler.logInfo("Storage Location: " + location);
+        LoggingHandler.logInfo("Quantity " + quantity);
         foodToAdd = categoriseAndGenerateFood(foodName, category, expiryString, location, quantity);
         LoggingHandler.logInfo("Food " + foodName + " successfully added!");
     }
@@ -49,6 +55,7 @@ public class AddCommand extends Command {
 
     private void addFood() throws RepetitiveFoodIdentifierException {
         assert foodToAdd != null : "Unable to add a null food";
+        Storage.saveHistoryData(foodToAdd);
         fridge.add(foodToAdd);
     }
 

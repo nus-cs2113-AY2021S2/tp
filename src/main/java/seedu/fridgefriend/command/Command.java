@@ -15,10 +15,12 @@ public abstract class Command {
     protected Fridge fridge;
     protected boolean isExit;
 
+    //@@author kwokyto
     public Command() {
         isExit = false;
     }
     
+    //@@author kwokyto
     public boolean isExit() {
         return isExit;
     }
@@ -27,6 +29,7 @@ public abstract class Command {
             InvalidIndexException, RepetitiveFoodIdentifierException,
             InvalidQuantityException, FoodNameNotFoundException;
 
+    //@@author Vinci-Hu
     public void setData(Fridge fridge) {
         this.fridge = fridge;
     }

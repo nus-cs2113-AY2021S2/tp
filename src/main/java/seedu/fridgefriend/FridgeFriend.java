@@ -29,6 +29,7 @@ public class FridgeFriend {
     private static boolean isExit = false;
     public static Fridge fridge = new Fridge();
 
+    //@@author kwokyto
     public FridgeFriend() {
         new Ui();
         new LoggingHandler();

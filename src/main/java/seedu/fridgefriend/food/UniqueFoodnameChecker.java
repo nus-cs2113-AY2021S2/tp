@@ -2,6 +2,13 @@ package seedu.fridgefriend.food;
 
 import java.util.ArrayList;
 
+//@@author Vinci-Hu
+
+/**
+ * The checker is used to detect if a new food added is unique.
+ * Unique means it is not exactly the same as an existing food
+ * except quantity field.
+ */
 public class UniqueFoodnameChecker {
     private ArrayList<Food> fridge = new ArrayList<>();
     private Food foodToCheck;
