@@ -92,40 +92,77 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file. Expected: Greeting message "Welcome to HDBuy! How may I help you today?".
 
-1. Saving window preferences
+2. Shutdown and relaunch
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+   1. Input: exit. Expected: Terminating message "HDBuy Bye Bye!".
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   2. Re-launch the app by double-clicking the jar file.<br>
+       Expected: Greeting message. If there is a shortlist, text file 'shortlist.txt' will be seen in folder.
 
-1. _{ more test cases …​ }_
+### Filter conditions
 
-### Deleting a person
+3. Setting filter condition(s) before searching for units (type of conditions: location, type, lease_remaining)
 
-1. Deleting a person while all persons are being shown
+   1. Test case: `filter location jurong`<br>
+      Expected: Filter condition is temporarily saved. Message: "Filter conditions:{LOCATION=jurong}"
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   2. Test case: `filter type 4 room`<br>
+      Expected: Another condition will be saved. Message: "Filter conditions:{TYPE=4 room, LOCATION=jurong}"
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   3. Incorrect inputs to try: `filter`, `filter 0`, `filter location` (filter condition missing type and parameter)<br>
+      Expected: Help message to guide user to fill in with correct inputs. Invalid input is not saved.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+4. List all filter condition(s)
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+   1. Test case: `list`<br>
+      Expected: Shows all filter condition(s). Similar to test 3. If no conditions set previously, shows message: "Currently there are no filter conditions set."
+
+   2. Incorrect inputs to try: `list x` (where x can be input string)<br>
+      Expected: Notify user with message: "You must enter the correct number of parameters."
+      
+5. Clear all filter condition(s)
+
+   1. Test case: `clear`<br>
+      Expected: Clear all conditions. Shows message: "Cleared filter conditions."
+
+   2. Incorrect inputs to try: `clear x` (where x can be input string)<br>
+      Expected: Notify user with message: "You must enter the correct number of parameters."
+
+### Find units matching filter conditions
+
+6. Deleting a person while all persons are being shown
+
+   1. Test case: `find` with at least one filter condition set using `filter`<br>
+      Expected: Up to 100 units matching filter condition(s) will be shown.
+
+   2. Test case: `find` without any filter conditions set <br>
+      Expected: Error message: ""FIND" has no parameters currently.", followed by help message.
+
+   3. Incorrect delete commands to try: `find x` (where x can be input string)<br>
+      Expected: Similar to previous. But with added message: "FIND command does not need any parameters. However, you need to provide filter before you execute the FIND command."
+
+### Shortlisting or bookmarking units from search results
+
+7. Saving a unit from search result to shortlist, requires at least 1 `find` to be executed prior.
+
+   1. Test case: After `find`, input `save 1` to save first unit from result to shortlist.
+   
+   2. Incorrect inputs to try: `save`, `save x` (where x is not any of the indexes shown in search result)<br>
+      Expected: Notify user with error message. Unit is not saved.
+
+8. Removing a unit from shortlist, requires user to have at least 1 unit in shortlist
+
+   1. Test case: `remove 1` to remove the first unit in shortlist.
+   
+   2. Incorrect inputs to try: `remove`, `remove x` (where x is not any of the indexes shown in shortlist)<br>
+      Expected: Notify user with error message. Unit is not removed from shortlist.
+
+9. Retrieving shortlist
+
+   1. Test case: `shortlist` to display unit(s) in shortlist. If shortlist is empty, user will be notified.
+   
+   2. Incorrect inputs to try: `shortlist x` (where x is any string input)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
-
 
