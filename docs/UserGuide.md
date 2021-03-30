@@ -14,7 +14,6 @@ to organize the records of their patients.
 
 <!-- TODO: Description -->
 
-* [Table of Contents](#table-of-contents)
 * [Quick Start](#quick-start)
 * [About Command Input](#about-command-input)
   * [Spacing](#spacing)
@@ -27,6 +26,7 @@ to organize the records of their patients.
   * [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
   * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
   * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+  * [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
   * [Exiting the program: `exit`](#exiting-the-program-exit)
 * [Frequently Asked Questions](#frequently-asked-questions)
 * [Command Summary](#command-summary)
@@ -265,6 +265,25 @@ error message.
 
 Usage: `retrieve`
 
+### Deleting a patient or a patient's consultation details: `delete`
+
+Deletes a patient from the list or deletes a patient's consultation details for a specific date.
+The command to delete a record requires that a patient has been loaded with the
+[`load`](#loading-a-patients-medical-records-load) command.
+If no patient has been loaded, Patient Manager will print an error message.
+
+Usage: `delete [/p IC_NUMBER]`
+
+Usage: `delete [/r DATE]`
+
+Example of usage:
+
+```
+delete /p S1234567D
+```
+```
+delete /r 26/03/2021
+=======
 Example output:
 
 ```
@@ -287,7 +306,6 @@ Prescriptions:
 	referral to hospital
 
 ----------------------------------------------------------------------
-```
 
 ### Exiting the program: `exit`
 
@@ -317,16 +335,14 @@ recommended to do so as invalid formats in the data file will result in errors.
 Listed below are all currently implemented commands in alphabetical order.\
 Click on the commands to navigate to specific feature details.
 
-| Command                                                          | Usage                         |
-|------------------------------------------------------------------|-------------------------------|
-| [add](#adding-a-patient-add)                                     | `add IC_NUMBER`               |
-| [current](#displaying-the-current-loaded-patient-current)        | `current`                     |
-| [exit](#exiting-the-program-exit)                                | `exit`                        |
-| [help](#print-a-help-message-help)                               | `help [OPTIONAL_ARGUMENTS]...`|
-| [list](#listing-all-patients-list)                               | `list`                        |
-| [load](#loading-a-patients-medical-records-load)                 | `load IC_NUMBER`              |
-| [record](#recording-a-patients-consultation-details-record)      | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`            |
-| [retrieve](#retrieving-a-patients-consultation-details-retrieve) | `retrieve`                    |
-
-
-
+| Command                                                                 | Usage                              |
+|-------------------------------------------------------------------------|------------------------------------|
+| [add](#adding-a-patient-add)                                            | `add IC_NUMBER`                    |
+| [current](#displaying-the-current-loaded-patient-current)               | `current`                          |
+| [exit](#exiting-the-program-exit)                                       | `exit`                             |
+| [help](#print-a-help-message-help)                                      | `help [OPTIONAL_ARGUMENTS]...`     |
+| [list](#listing-all-patients-list)                                      | `list`                             |
+| [load](#loading-a-patients-medical-records-load)                        | `load IC_NUMBER`                   |
+| [record](#recording-a-patients-consultation-details-record)             | `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`|
+| [retrieve](#retrieving-a-patients-consultation-details-retrieve)        | `retrieve`                         |
+| [delete](#deleting-a-patient-or-a-patients-consultation-details-delete) | `delete [/p IC_NUMBER]  [/r DATE]` |
