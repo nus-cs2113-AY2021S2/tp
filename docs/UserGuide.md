@@ -28,7 +28,9 @@ to organize the records of their patients.
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, `Java 11` can be downloaded from
-   [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+   [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
+   You can check the version of Java installed on your local computer by entering `java -version` into
+   your console of choice.
 
 1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
@@ -94,6 +96,24 @@ Example of usage:
 help list load exit
 ```
 
+Expected output:
+
+```
+----------------------------------------------------------------------
+Show the list of all patients
+Usage: list
+
+Select a specified patient to add and retrieve records
+Command prefix: load
+Arguments(s): IC number
+Usage: load IC_NUMBER
+Example: load S1234567D
+
+Exit the program
+Usage: exit
+----------------------------------------------------------------------
+```
+
 ### Adding a patient: `add`
 
 Adds a patient to the list by entering their IC number.
@@ -104,6 +124,13 @@ Example of usage:
 
 ```
 add S1234567D
+```
+
+Expected output:
+```
+----------------------------------------------------------------------
+Patient S1234567D has been added!
+----------------------------------------------------------------------
 ```
 
 ### Listing all patients: `list`
@@ -123,6 +150,14 @@ Example of usage:
 
 ```
 load S1234567D
+```
+
+Expected output:
+
+```
+----------------------------------------------------------------------
+Patient S1234567D's data has been found and loaded.
+----------------------------------------------------------------------
 ```
 
 ### Displaying the current loaded patient: `current`
@@ -149,6 +184,15 @@ Example of usage:
 
 ```
 record 26/03/2021 /s fever and slight cough
+```
+
+Expected output:
+
+```
+----------------------------------------------------------------------
+Added new record to patient S1234567D:
+Symptom: fever and slight cough
+----------------------------------------------------------------------
 ```
 
 ### Retrieving a patient's consultation details: `retrieve`
