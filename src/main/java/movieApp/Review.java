@@ -1,6 +1,5 @@
 package movieApp;
 
-
 import java.io.Serializable;
 
 public class Review implements  Serializable{

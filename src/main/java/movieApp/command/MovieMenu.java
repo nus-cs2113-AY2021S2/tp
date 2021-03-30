@@ -1,11 +1,13 @@
 package movieApp.command;
 
-import movieApp.Cineplex;
-import movieApp.Movie;
-import movieApp.Showtimes;
+import movieApp.*;
 import movieApp.storage.Database;
+import movieApp.user.Customer;
+import movieApp.user.User;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Scanner;
 
 public class MovieMenu {
 
@@ -14,7 +16,13 @@ public class MovieMenu {
 		Scanner sc = new Scanner(System.in);
 		while ((action < 1) || (action > 4)) {
 			System.out.println("\n\n======== Menu Choice =======");
-			System.out.println(" 1 Buy ticket\n 2 View movie details\n 3 Add review\n 4 Go back\n============================\nPlease indicate your choice:");
+			System.out.println(" 1 Buy ticket");
+			System.out.println(" 2 View movie details");
+			System.out.println(" 3 Add review");
+			System.out.println(" 4 Go back");
+			System.out.println(" ============================");
+			System.out.println(" Please indicate your choice:");
+
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
 				sc.next();
@@ -29,7 +37,8 @@ public class MovieMenu {
 	}
 
 
-	public static void bookTicket(ArrayList<Movie> MovieDatabase , ArrayList<Showtimes> ShowtimeDatabase, ArrayList<Cineplex> CineplexDatabase, int movieID) {
+	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Showtimes> ShowtimeDatabase,
+								  ArrayList<Cineplex> CineplexDatabase, int movieID, User user) {
 		String ms = "NOT FOUND";
 		for (Movie movie : MovieDatabase) {
 			if (movie.getMovieID() == movieID) {
@@ -41,10 +50,9 @@ public class MovieMenu {
 			System.out.println("The movie is not available for sale. COMING SOON");
 			return; 
 		}
-		
 			
 		int n = 0;
-		ArrayList<Integer> showtime_index = new ArrayList(); 
+		ArrayList<Integer> showtime_index = new ArrayList<>();
 		for(int i=0; i<ShowtimeDatabase.size(); i++) {
 			if(ShowtimeDatabase.get(i).getMovieID() == movieID) {
 				System.out.println("\nEnter "+ n + " for the timing below: ");
@@ -58,7 +66,6 @@ public class MovieMenu {
 			}
 			
 		}
-		
 		
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
@@ -74,8 +81,6 @@ public class MovieMenu {
 				System.out.println("Please input an integer within the range.\n");
 			}
 		}
-		
-
 		
 		int index_st = showtime_index.get(choice);
 		int cinemaID = ShowtimeDatabase.get(index_st).getCinemaID(); 
@@ -103,8 +108,8 @@ public class MovieMenu {
 			}
 		}
 		
-		int maxrow = ShowtimeDatabase.get(index_st).getMaxRow(); 
-		int maxcolumn = ShowtimeDatabase.get(index_st).getMaxColumn(); 
+		int max_row = ShowtimeDatabase.get(index_st).getMaxRow();
+		int max_column = ShowtimeDatabase.get(index_st).getMaxColumn();
 
 		int[][] seatChoice = new int[num_tic][2];
 		for (int i=0;i<num_tic;i++) {
@@ -112,13 +117,14 @@ public class MovieMenu {
 			seatChoice[i][1] = -1 ;
 		}
 
+		ArrayList<Seat> seatsBooked = new ArrayList<>();
 		ShowtimeDatabase.get(index_st).printSeats();
 		for(int b = 0; b<num_tic; b++) {
 			
 			System.out.println("\nPlease select the seat for buyer No. " + (b+1));
 			
 			int row = -1;
-			while ((row <1) || (row > maxrow)) {
+			while ((row <1) || (row > max_row)) {
 				System.out.println("Please enter the row number:  " );
 				if (!sc.hasNextInt()) {
 					System.out.println("Please input an integer.\n");
@@ -126,14 +132,14 @@ public class MovieMenu {
 					continue;
 				} 
 				row = sc.nextInt();
-				if ((row <1) || (row > maxrow)) {
+				if ((row <1) || (row > max_row)) {
 					System.out.println("Please input a row number that is within the range.\n");
 				}
 			}
 
 			
 			int col = -1;
-			while ((col <1) || (col > maxcolumn)) {
+			while ((col <1) || (col > max_column)) {
 				System.out.println("Please enter the column number: ");
 				if (!sc.hasNextInt()) {
 					System.out.println("Please input an integer.\n");
@@ -141,7 +147,7 @@ public class MovieMenu {
 					continue;
 				} 
 				col = sc.nextInt();
-				if ((col <1) || (col > maxcolumn)) {
+				if ((col <1) || (col > max_column)) {
 					System.out.println("Please input a column number that is within the range.\n");
 				}
 			}
@@ -152,14 +158,16 @@ public class MovieMenu {
 			System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 			boolean selectAgain = false;
 			for (int i = 0; i < num_tic; i++) {
-				if(seatChoice[i][0]==RC[0]&&seatChoice[i][1]==RC[1]) {selectAgain=true;}
+				if(seatChoice[i][0]==RC[0] && seatChoice[i][1]==RC[1]) {
+					selectAgain=true;
+				}
 			}
 			
 			while(ShowtimeDatabase.get(index_st).checkSeatTaken(RC) || selectAgain) {
 				System.out.println("Sorry, the seat has been taken, Please choose another seat. ");
 				
 				row = -1;
-				while ((row <1) || (row > maxrow)) {
+				while ((row <1) || (row > max_row)) {
 					System.out.println("Please enter the row number:  " );
 					if (!sc.hasNextInt()) {
 						System.out.println("Please input an integer.\n");
@@ -167,13 +175,13 @@ public class MovieMenu {
 						continue;
 					} 
 					row = sc.nextInt();
-					if ((row <1) || (row > maxrow)) {
+					if ((row <1) || (row > max_row)) {
 						System.out.println("Please input a row number that is within the range.\n");
 					}
 				}
 				
 				col = -1;
-				while ((col <1) || (col > maxcolumn)) {
+				while ((col <1) || (col > max_column)) {
 					System.out.println("Please enter the column number: ");
 					if (!sc.hasNextInt()) {
 						System.out.println("Please input an integer.\n");
@@ -181,7 +189,7 @@ public class MovieMenu {
 						continue;
 					} 
 					col = sc.nextInt();
-					if ((col <1) || (col > maxcolumn)) {
+					if ((col <1) || (col > max_column)) {
 						System.out.println("Please input a column number that is within the range.\n");
 					}
 				}
@@ -190,16 +198,22 @@ public class MovieMenu {
 				RC[1] = col;
 				System.out.println("Buyer no " + (b+1) + "'s seat = [" + row + ", " + col + "]");
 				selectAgain = false;
-				for (int i = 0;i<b;i++) {
-					if(seatChoice[i]==RC) {selectAgain=true;}
+				for (int i = 0; i<b; i++) {
+					if(seatChoice[i] == RC) {
+						selectAgain=true;
+					}
 				}
 			}
-
-			seatChoice[b]=RC;
-			
+			seatChoice[b] = RC;
+			ShowtimeDatabase.get(index_st).setSeatStatus(row-1, col-1, true);
+			ShowtimeDatabase.get(index_st).printSeats();
+			seatsBooked.add(ShowtimeDatabase.get(index_st).getSeat(row-1, col-1));
 		}
 
 		System.out.println("\nThe Transaction is made, total ticket number: "+ num_tic+" ");
+		((Customer)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
+
+
 
 // TODO: print seats
  
@@ -211,7 +225,10 @@ public class MovieMenu {
 		String comment = sc.nextLine();
 		int rating = ratingVerification();
 		movie.addReview(comment, rating);
-		System.out.println("The comment ' " + comment + " ' and the rating " + rating + " have been successfully added to the movie " + movie.getMovieTitle() + ".\nThank you for your review!\n");
+		System.out.println("The comment ' " + comment + " ' and the rating " + rating +
+				" have been successfully added to the movie " + movie.getMovieTitle() + ".");
+		System.out.println("Thank you for your review!");
+		System.out.println();
 	}
 	
 	public static int ratingVerification() {
@@ -236,10 +253,8 @@ public class MovieMenu {
 	public static void viewMovieDetails(Movie movie) {
 		movie.displayMovie();
 	}
-	
 
-
-	public static void movieAction(Movie movie) {
+	public static void movieAction(Movie movie, User user) {
 		int action;
 		do {
 			action = getAction();
@@ -248,8 +263,8 @@ public class MovieMenu {
 			case 1:
 				action = -1;
 					System.out.println("\n======== Book Ticket ========");
-					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase, Database.CineplexDatabase, movie.getMovieID());
-
+					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase,
+							Database.CineplexDatabase, movie.getMovieID(), user);
 				break;	
 			case 2:
 				action = -1;
@@ -259,6 +274,8 @@ public class MovieMenu {
 				action = -1;
 				addReview(movie);
 				break;
+			default:
+				System.out.println("Please input a integer between 1 and 4.\n");
 			}			
 		} while (action != 4);
 		//TODO: Is this supposed to quit the app when action 4 is chosen?

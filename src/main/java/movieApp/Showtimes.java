@@ -1,6 +1,5 @@
 package movieApp;
 
-
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -16,17 +15,17 @@ public class Showtimes implements Serializable{
 	
 	protected Movie mv;
 
-	
 	Showtimes(int id, Calendar date, Cinema cinema, Movie movie){
 		int r = cinema.getR();
 		int c = cinema.getC();
 		this.seatPlan = new Seat[r][c];
-		
+
+		//seatplan for each showtime
 		for (int row = 0; row<r; row++) {
 			for (int col = 0; col < c; col++) {
 				seatPlan[row][col]=new Seat(row, col, false);
 			}
-		}//seatplan for each showtime
+		}
 		
 		this.showtimeID = id;
 		this.dateTime = date; 
@@ -50,7 +49,9 @@ public class Showtimes implements Serializable{
 		return movieID;
 	}
 	
-	public String getMovieTitle() {return movieTitle;}
+	public String getMovieTitle() {
+		return movieTitle;
+	}
 	
 	public Calendar getDateTime() {
 		return dateTime;
@@ -78,6 +79,13 @@ public class Showtimes implements Serializable{
 		return seatPlan[RC[0] - 1][RC[1] - 1].getStatus();
 	}
 
+	public void setSeatStatus(int row, int col, boolean status){
+		seatPlan[row][col].setStatus(status);
+	}
+
+	public Seat getSeat(int row, int col) {
+		return seatPlan[row][col];
+	}
 	
 	public int getCinemaID() {
 		return cinemaID; 
