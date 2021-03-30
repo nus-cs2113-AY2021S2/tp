@@ -11,19 +11,18 @@ public class PatientManager {
     private Data data;
     private Ui ui;
     private Parser parser;
-    private Storage storage;
 
     /**
      * This initializes all resources for the program.
      */
     private PatientManager() {
         ui = new Ui();
-        storage = new Storage(Constants.FILE_PATH);
+        Storage storage = new Storage(Constants.STORAGE_DEFAULT_PATH);
         try {
-            data = new Data(storage.load());
+            data = new Data(storage, storage.load());
         } catch (IOException e) {
             e.printStackTrace();
-            data = new Data();
+            data = new Data(storage);
         }
         parser = new Parser(ui, data);
     }

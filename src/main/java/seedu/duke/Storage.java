@@ -25,6 +25,13 @@ public class Storage {
     protected String filePath;
 
     /**
+     * This is the constructor without a parameter. Default path will be used.
+     */
+    public Storage() {
+        this(Constants.STORAGE_DEFAULT_PATH);
+    }
+
+    /**
      * This is the constructor of the Storage class.
      * @param filePath A String of the path to the file that is used for saving/loading
      */
@@ -46,11 +53,11 @@ public class Storage {
             }
             FileWriter fileWriter = new FileWriter(inFile.getAbsolutePath(), false);
             StringBuffer message = new StringBuffer();
-            Set patientSet = patientData.entrySet();
-            Iterator patientIterator = patientSet.iterator();
+            Set<Map.Entry<String, Patient>> patientSet = patientData.entrySet();
+            Iterator<Map.Entry<String, Patient>> patientIterator = patientSet.iterator();
 
             while (patientIterator.hasNext()) {
-                Map.Entry m = (Map.Entry)patientIterator.next();
+                Map.Entry<String, Patient> m = patientIterator.next();
 
                 String id = (String)m.getKey();
                 Patient patient = (Patient)m.getValue();
