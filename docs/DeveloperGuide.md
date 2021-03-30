@@ -1,4 +1,4 @@
-# Developer Guide for NUSMAze
+# Developer Guide for NUSMaze
 
 ## Table Of Contents
 <!-- TOC -->
@@ -28,7 +28,23 @@
 
 ## 1. Introduction  
 ### 1.1. Overview 
+NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more.
+
+The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
+
 ### 1.2. Setting up and getting started 
+Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
+Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
+Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
+Step 4. Import the project as a Gradle project.  
+Step 5. If you had previously disabled the Gradle plugin, go to File → Settings → Plugins to re-enable them.  
+Step 6. Click on Import Project and select the build.gradle file.  
+Step 7. Navigate to the NUSMaze class via the path src → main → java → seedu.duke → NUSMaze and right click on it.  
+Step 8. Press run on the Main() method of NUSMaze.  
+
+If the set up process had been completed successfully, you should see the following message:
+![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
+
 
 ## 2. Design 
 ### 2.1. Architecture 
