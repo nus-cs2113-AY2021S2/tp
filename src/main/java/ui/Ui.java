@@ -195,12 +195,8 @@ public class Ui {
     public void showStoreOptions(String canteenName, String storeName) {
         System.out.println(LINESPACING);
         System.out.println("You are now viewing: " + canteenName + ", " + storeName);
-        System.out.println("Enter 'menu' to view sample menu");
-        System.out.println("Enter 'reviews' to show reviews of " + storeName);
-        System.out.println("Enter 'add' to add a new review");
-        System.out.println("Enter 'home' to select a new canteen");
-        System.out.println("Enter 'list' to select a new store");
-        System.out.println("Enter 'exit' to exit the application");
+        System.out.println("Please Enter your command:");
+        System.out.println("If you need help then Enter 'help' to view all the commands");
         System.out.println(LINESPACING);
     }
 

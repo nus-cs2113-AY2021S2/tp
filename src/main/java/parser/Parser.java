@@ -12,6 +12,7 @@ import command.DeleteStoreCommand;
 import command.DisplayCanteensCommand;
 import command.DisplayMenusCommand;
 import command.ExitCommand;
+import command.HelpCommand;
 import command.HomeCommand;
 import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
@@ -71,6 +72,8 @@ public class Parser {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
             newCommand = new ReadReviewsCommand(store);
+        } else if (line.equals("help")) {
+            newCommand = new HelpCommand();
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }
