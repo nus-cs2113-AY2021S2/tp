@@ -57,10 +57,10 @@ public class AppController {
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
-                ShiftController.viewAllShifts(employees, shifts);
+                ShiftController.viewAllShifts(shifts);
                 break;
             case "view one shift":
-                ShiftController.viewOneShift(employees, shifts);
+                ShiftController.viewOneShift(shifts);
                 break;
             case "list":
                 listAllEmployees();
