@@ -48,9 +48,6 @@ financial management with Finux rather than using the traditional management sys
    i.e. `cd FILEPATH`, `FILEPATH` is the absolute address to the home folder of Finux.
 5. Run the `finux.jar` file by executing the command `java -jar finux.jar`.
 
-
-## 3. Features
-
 ---
 
 > 💡 **Explanation for Command formats:**
@@ -67,7 +64,8 @@ financial management with Finux rather than using the traditional management sys
 >> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
 >> `<FIELD>` - an area where data is required.\
 >> `[...]` - optional argument(s).\
->> `{ ... | ... | ... }` - mutually exclusive arguments.
+>> `{ ... | ... | ... }` - mutually exclusive arguments,
+>> * e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
 >
 > ❗ **Commands and options are case-sensitive:**\
 > E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
@@ -76,6 +74,8 @@ financial management with Finux rather than using the traditional management sys
 > a valid option.
 
 > 💡 **Date and Date formats:**
+>> Date input is required when you specify the option `-d`.\
+>> You are required enter a date that follows a valid Date format.\
 >> Finux supports multiple Date formats, for ease of use:
 >> * `DDMMYYYY`
 >> * `D.M.YYYY`
@@ -85,22 +85,29 @@ financial management with Finux rather than using the traditional management sys
 >> * `YYYY-M-D`
 >> * `YYYY/M/D`
 >>
->> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
+>> 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
+
+## 3. Features
+
+---
 
 ### 3.1 Add a record: `add`
 
 ---
 
-> For the `add` command, there is no strict ordering for options.\
+> 📝 For the `add` command, there is no strict ordering for options.\
 > i.e. options `-a` can come before/after option `-d`.
 
 #### 3.1.1 Add an expense record
 
-This operation will add an expense record to the list.
+You can add an expense record to the list.
 
 Format: `add -e <description> -a <amount> -d <date>`
 
-Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
+Example: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
+
+This example shows that you have entered _"Plain bread loaf"_ as an expense of amount
+_$2.90_ on the _3rd March 2021_.
 
 Output:
 
@@ -114,6 +121,10 @@ Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
 Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
+This example shows that you have entered _"1st loan to Mark"_ as a loan of amount
+_$200_ on the _3rd March 2021_ and setting the person receiving the loan (borrower) 
+as _"Mark"_.
+
 Output:
 
 ![add loan example output](img/AddLoanExampleOutput.jpg)
@@ -125,6 +136,9 @@ This operation will add a saving record to the list.
 Format: `add -s <description> -a <amount> -d <date>`
 
 Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
+
+This example shows that you have entered _"Savings from March"_ as savings of amount
+_$1000_ on the _4th April 2021_.
 
 Output:
 
