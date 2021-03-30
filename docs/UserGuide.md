@@ -1,4 +1,4 @@
-# User Guide
+# Movie Booking System User Guide
 
 ## Introduction
 
@@ -18,7 +18,9 @@ Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find
     * `delete 3` : Deletes the 3rd contact shown in the current list.
     * `clear` : Deletes all contacts.
     * `exit` : Exits the app.
-
+    * `exit` : Exits the app.
+    * `exit` : Exits the app.
+    * `exit` : Exits the app.
    
 
 ## Features 
