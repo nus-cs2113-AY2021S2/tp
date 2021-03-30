@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 public class PatientParser {
 
-    private final String illegalCharacters = "[~#@*+%{}<>\\[\\]|\"\\_^]";
+    private final String illegalCharacters = "^.*[~#@*+%{}<>\\[]|\"_\\^.$";
     private final String[] validGenderInput = {"M", "F", "Others"};
 
     public Command patientParse(String fullCommand, PatientActions patients) {
@@ -78,11 +78,15 @@ public class PatientParser {
             illegalCharacterChecker(stringTokens[5]);
             illegalCharacterChecker(stringTokens[6]);
             genderChecker(stringTokens[4]);
+            emptySpaceCheck(stringTokens);
         } catch (IllegalCharacterException e) {
             e.getError("character");
             return false;
         } catch (InvalidGenderException e) {
             e.getError("gender");
+            return false;
+        } catch (EmptyInputException e) {
+            e.getError("emptyfield");
             return false;
         }
         if(correctAge && correctID) {
@@ -104,8 +108,18 @@ public class PatientParser {
             throw new DukeException(command);
         } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
             throw new DukeException(command);
-        } else if ((command.equals("list") || command.equals("return") || command.equals("help")) && numberOfTokens != 1) {
+        } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
+                && numberOfTokens != 1) {
             throw new DukeException(command);
+        }
+    }
+
+    private void emptySpaceCheck(String[] stringTokens) throws EmptyInputException{
+        int stringLength = stringTokens.length;
+        for (int i = 0; i < stringLength; i++) {
+            if (stringTokens[i].trim().equals("")) {
+                throw new EmptyInputException();
+            }
         }
     }
 
