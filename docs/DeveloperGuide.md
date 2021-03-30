@@ -131,6 +131,7 @@ exception events that may occur during the usage of `FridgeFriend`.
 
 The `Exception` component facilitates the return of exceptions to the `UI` class
 in `Utilities`, which will display the corresponding error message to the user.
+
 ![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
 
 The ***Exception Class Diagram*** given above shows the custom `Exceptions`
