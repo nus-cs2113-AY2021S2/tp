@@ -5,7 +5,7 @@ import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.InvalidParameterException;
-import seedu.hdbuy.parser.Parser;
+import seedu.hdbuy.parser.CommandEvaluator;
 
 import java.util.HashMap;
 
@@ -33,12 +33,12 @@ class HdBuyTest {
 
     @Test public void parserTest() {
         try {
-            assertEquals(0, Parser.extractInfo("filter"));
+            assertEquals(0, CommandEvaluator.extractInfo("filter"));
         } catch (InvalidParameterException e) {
             assertEquals("You must enter the correct number of parameters.", e.getMessage());
         }
         try {
-            assertEquals(0, Parser.extractInfo("filter location"));
+            assertEquals(0, CommandEvaluator.extractInfo("filter location"));
         } catch (InvalidParameterException e) {
             assertEquals("You must enter the correct number of parameters.", e.getMessage());
         }

@@ -8,7 +8,6 @@ public class UserInput {
 
     private final HashMap<QueryKey, String> inputs;
 
-
     public UserInput() {
         this.inputs = new HashMap<>();
     }
