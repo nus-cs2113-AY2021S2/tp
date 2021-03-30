@@ -23,46 +23,88 @@ public class AddCommand extends Command {
     @Override
     public void execute() throws InvalidInputException {
 
-        String patientID = arguments.get("payload");
-        patientID = patientID.toUpperCase();
-        int stringLength = patientID.length();
-        boolean validID = true;
+        String id = arguments.get("payload");
+        id = id.toUpperCase();
+
+        if (!checkID(id)) {
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
+        } else if (data.getPatients().containsKey(id)) {
+            throw new InvalidInputException(InvalidInputException.Type.PATIENT_EXISTED);
+        }
+
+        assert checkID(id) : "validID should be true";
+        Patient patient = new Patient(id);
+        data.setPatient(patient);
+
+        ui.printMessage("Patient " + id + " has been added!");
+    }
+
+    private boolean checkID(String id) {
+        int stringLength = id.length();
+        int checksum = 0;
+        char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
+        char[] st = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
+        char[] fg = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
 
         // Checks if ID has 9 characters
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
-            validID = false;
+            return false;
         }
         // Checks if ID is valid
         for (int i = 0; i < stringLength; i++) {
-            char c = patientID.charAt(i);
+            char c = id.charAt(i);
             if (i == Constants.INDEX_OF_FIRST_CHARACTER) {
                 // Checks if first index of ID is S,T,F or G
                 if (c != 'S' && c != 'T' && c != 'F' && c != 'G') {
-                    validID = false;
+                    return false;
                 }
             } else if (i == Constants.INDEX_OF_LAST_CHARACTER) {
                 // Checks if last index of ID is a letter
                 if (!Character.isLetter(c)) {
-                    validID = false;
+                    return false;
+                }
+                checksum = checksum % Constants.CHECKSUM_MOD;
+                if (firstLetter == 'S' || firstLetter == 'T') {
+                    if (c != st[checksum]) {
+                        return false;
+                    }
+                } else {
+                    if (c != fg[checksum]) {
+                        return false;
+                    }
                 }
             } else {
                 // Checks if the rest of the indexes are digits
                 if (!Character.isDigit(c)) {
-                    validID = false;
+                    return false;
+                }
+                // Calculates the checksum of digits
+                switch (i) {
+                case Constants.FIRST_DIGIT:
+                case Constants.LAST_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 2;
+                    break;
+                case Constants.SECOND_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 7;
+                    break;
+                case Constants.THIRD_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 6;
+                    break;
+                case Constants.FOURTH_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 5;
+                    break;
+                case Constants.FIFTH_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 4;
+                    break;
+                case Constants.SIXTH_DIGIT:
+                    checksum += Integer.parseInt(String.valueOf(c)) * 3;
+                    break;
+                default:
                 }
             }
         }
-
-        if (!validID) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
-        } else if (data.getPatients().containsKey(patientID)) {
-            throw new InvalidInputException(InvalidInputException.Type.PATIENT_EXISTED);
-        }
-
-        assert validID : "validID should be true";
-        Patient patient = new Patient(patientID);
-        data.setPatient(patient);
-
-        ui.printMessage("Patient " + patientID + " has been added!");
+        return true;
     }
+
 }
+
