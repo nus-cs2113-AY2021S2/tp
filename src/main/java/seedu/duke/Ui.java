@@ -12,15 +12,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
 /**
  * Deals with all interactions with the user.
  */
 public class Ui {
-
-    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-
+    private static final String longHorizontalLine = "--------------------------------------------";
+    private static final String shortHorizontalLine = "----------------------";
     public static void printWelcomeMessage() {
         System.out.println("Welcome to\n"
                 + "  _   _               _      _____                                _\n"
@@ -34,11 +32,11 @@ public class Ui {
     }
 
     public static void printHorizontalLine() {
-        System.out.println("--------------------------------------------");
+        System.out.println(longHorizontalLine);
     }
 
     public static void printShortHorizontalLine() {
-        System.out.println("----------------------");
+        System.out.println(shortHorizontalLine);
     }
 
     public static void printEmptyLine() {
@@ -72,21 +70,28 @@ public class Ui {
     public static void printModuleInfoMessage() {
         System.out.println("Welcome to the module information menu ^~^\n"
                 + "Please choose which action you would like to do and enter the number:\n"
+                + shortHorizontalLine + "\n"
                 + "[1]  --- Add New Module\n"
                 + "[2]  --- View a Module\n"
-                + "[3]  --- Add/View Components and Their Weightages\n"
-                + "[4]  --- Add Module's Modular Credits (MC)\n"
-                + "[5]  --- Add Module Grade\n"
-                + "[6]  --- View All Modules\n"
-                + "[7]  --- Add New Task\n"
-                + "[8]  --- Add Zoom Link\n"
-                + "[9]  --- Add a Review\n"
-                + "[10] --- View All Reviews\n"
-                + "[11] --- Delete Module\n"
+                + "[3]  --- View All Modules\n"
+                + "[4]  --- Delete Module\n"
+                + shortHorizontalLine + "\n"
+                + "[5]  --- Add/View Components and Their Weightages\n"
+                + "[6]  --- Add Module's Modular Credits (MC)\n"
+                + "[7]  --- Add Module Grade\n"
+                + shortHorizontalLine + "\n"
+                + "[8]  --- Add a Review\n"
+                + "[9]  --- View All Reviews\n"
+                + "[10] --- Delete Review\n"
+                + shortHorizontalLine + "\n"
+                + "[11] --- Add New Task\n"
                 + "[12] --- Delete Task\n"
-                + "[13] --- Delete Zoom Link\n"
-                + "[14] --- Delete Review\n"
-                + "[15] --- Exit to main menu");
+                + shortHorizontalLine + "\n"
+                + "[13] --- Add Zoom Link\n"
+                + "[14] --- Delete Zoom Link\n"
+                + shortHorizontalLine + "\n"
+                + "[15] --- Exit to main menu\n"
+                + shortHorizontalLine);
     }
 
     public static void printTaskManagerMenu() {
