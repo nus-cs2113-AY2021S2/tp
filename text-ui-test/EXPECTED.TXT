@@ -101,7 +101,7 @@ Please try again.
 --------------------------------------------------------------------
 You have successfully deleted the EXERCISE record of index 1!
 Record summary: 50 minutes of SWIMMING exercise on 25-03-2021
-Displaying current exercise records:
+Displaying current EXERCISE records:
 1			25-03-2021	DANCE           40 minute(s)	400.0 cal
 
 --------------------------------------------------------------------
