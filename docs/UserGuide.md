@@ -7,7 +7,6 @@ With the Patient Manager, GPs will be able to reduce paperwork and have a more e
 to organize the records of their patients.
 
 <!-- TODO: Explain How to use this guide -->
-<!-- Missing FAQ -->
 
 ---
 
@@ -29,6 +28,7 @@ to organize the records of their patients.
   * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
   * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
   * [Exiting the program: `exit`](#exiting-the-program-exit)
+* [Frequently Asked Questions](#frequently-asked-questions)
 * [Command Summary](#command-summary)
 
 ---
@@ -124,10 +124,9 @@ according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki
 <!-- TODO: Order | explain why help command is the 1st -->
 ### Print a help message: `help`
 
-Prints out the help message with a brief explanation of the available commands. If one or more
+If you need help at any point in time, you may use the `help` command. \
+This prints out the help message with a brief explanation of the available commands. If one or more
 commands are provided as arguments, the info messages for the indicated commands will be printed.
-If invalid commands are given as arguments, Patient Manager will print an error message to inform the user
-that the command does not exist.
 
 Usage: `help [OPTIONAL_COMMAND]...`
 
@@ -136,7 +135,6 @@ Example of usage:
 ```
 help list load exit
 ```
-<!-- It might be helpful for output being added in -->
 
 Expected output:
 
@@ -158,7 +156,7 @@ Usage: exit
 
 ### Adding a patient: `add`
 
-Adds a patient to the list by entering their IC number.
+Adds a patient to the list by entering their IC number so that consultation details for the patient can be recorded.
 <!-- So that ..., This means that ... -->
 
 Usage: `add IC_NUMBER`
@@ -170,6 +168,7 @@ add S1234567D
 ```
 
 Expected output:
+
 ```
 ----------------------------------------------------------------------
 Patient S1234567D has been added!
@@ -181,6 +180,16 @@ Patient S1234567D has been added!
 Shows a list of all patients.
 
 Usage: `list`
+
+Example output:
+
+```
+----------------------------------------------------------------------
+List of patients (in alphanumeric order):
+1. S1234567D
+2. S7654321B
+----------------------------------------------------------------------
+```
 
 ### Loading a patient's medical records: `load`
 
@@ -209,6 +218,14 @@ Displays the patient that has been loaded through the [`load`](#loading-a-patien
 If no patient has been loaded, it will inform the user that there is no loaded patient.
 
 Usage: `current`
+
+Example output:
+
+```
+----------------------------------------------------------------------
+The currently loaded patient's ID is S1234567D.
+----------------------------------------------------------------------
+```
 
 ### Recording a patient's consultation details: `record`
 
@@ -248,11 +265,50 @@ error message.
 
 Usage: `retrieve`
 
+Example output:
+
+```
+----------------------------------------------------------------------
+Here are S1234567D's records:
+30/03/2021:
+Symptoms:
+	head pain, dizziness
+Diagnoses:
+	heat stroke
+Prescriptions:
+	cooling packs, medicine
+
+31/03/2021:
+Symptoms:
+	fainting
+Diagnoses:
+	severe heat stroke
+Prescriptions:
+	referral to hospital
+
+----------------------------------------------------------------------
+```
+
 ### Exiting the program: `exit`
 
 Exits the program
 
 Usage: `exit`
+
+---
+
+## Frequently Asked Questions
+
+**Q**: Can I transfer the data to a different device? \
+**A**: Yes, simply copy the `pm` folder that is found in the same folder as `tp.jar` from the original device
+and place it in the folder `tp.jar` is found in on the new device.
+
+**Q**: Will I have to manually save? \
+**A**: No, the data is saved automatically after every command that modifies the data.
+
+**Q**: Can I edit the data file? \
+**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is not
+recommended to do so as invalid formats in the data file will result in errors.
 
 ---
 
