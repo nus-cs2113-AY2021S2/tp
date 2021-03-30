@@ -2,17 +2,15 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.SortedMap;
 
 public class StorageTest {
     @Test
     public void storeData() {
-        Data data = new Data();
+        Storage storage = new Storage("testFile.txt");
+        Data data = new Data(storage);
         Patient patient = new Patient("S1234567D");
         LocalDate date = LocalDate.now();
         patient.addRecord(date, "head pain, dizziness", "heat stroke", "cooling packs, medicine");
@@ -22,11 +20,9 @@ public class StorageTest {
         patient.addRecord(date, "abdominal pain", "mild UTI", "antibiotics, referral to hospital");
         data.setPatient(patient);
 
-
-        Storage storage = new Storage("testFile.txt");
         try {
-            storage.save(data.patients);
-        } catch (IOException e) {
+            data.saveFile();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

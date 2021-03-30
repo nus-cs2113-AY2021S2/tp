@@ -15,7 +15,7 @@ public class PatientManager {
      */
     private PatientManager() {
         ui = new Ui();
-        data = new Data();
+        data = new Data(new Storage());
         parser = new Parser(ui, data);
     }
 

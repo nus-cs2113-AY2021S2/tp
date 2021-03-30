@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.duke.command.Command;
 import seedu.duke.command.EchoCommand;
+import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
 public class ParserTest {
@@ -35,7 +36,7 @@ public class ParserTest {
     @Test
     public void parse_emptyString_exceptionThrown() {
         String fullCommand = "";
-        Exception e = assertThrows(Exception.class, () -> {
+        Exception e = assertThrows(InvalidInputException.class, () -> {
             defaultParser.parse(fullCommand);
         });
 
@@ -45,7 +46,7 @@ public class ParserTest {
     @Test
     public void parse_invalidCommand_exceptionThrown() {
         String fullCommand = "invalid_command a b c /p x";
-        Exception e = assertThrows(Exception.class, () -> {
+        Exception e = assertThrows(InvalidInputException.class, () -> {
             defaultParser.parse(fullCommand);
         });
 
@@ -112,7 +113,7 @@ public class ParserTest {
 
         String nric = "S1234567D";
         patients.put(nric, new Patient(nric));
-        Data data = new Data(patients);
+        Data data = new Data(null, patients);
         Parser parser = new Parser(new Ui(), data);
 
         assertDoesNotThrow(() -> {
