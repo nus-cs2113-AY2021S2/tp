@@ -1,0 +1,47 @@
+@startuml
+participant Actor
+Actor -> ShowDailyRouteCommand : execute
+activate ShowDailyRouteCommand
+ShowDailyRouteCommand -> DailyRoute : getSelectableDays
+activate DailyRoute
+return
+deactivate DailyRoute
+ShowDailyRouteCommand -> DailyRouteUi : getDayEntryForShow
+activate DailyRouteUi
+return
+deactivate DailyRouteUi
+ShowDailyRouteCommand -> DailyRoute : getDailyRoute
+activate DailyRoute
+return
+deactivate DailyRoute
+
+create Router
+ShowDailyRouteCommand -> Router : execute
+activate Router
+Router -> Router : findShortestRoute
+activate Router
+return
+return
+
+create Router
+ShowDailyRouteCommand -> Router : execute
+activate Router
+Router -> Router : findShortestRoute
+activate Router
+return
+return
+create Router
+ShowDailyRouteCommand -> Router : execute
+activate Router
+Router -> Router : findShortestRoute
+activate Router
+return
+return
+
+ShowDailyRouteCommand -> DailyRouteUi: showMessageWithDivider
+activate DailyRouteUi
+return
+deactivate DailyRouteUi
+ShowDailyRouteCommand --> Actor
+deactivate ShowDailyRouteCommand
+@enduml

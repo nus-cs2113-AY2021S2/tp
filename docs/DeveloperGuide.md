@@ -98,26 +98,47 @@ Additionally, they implement the following operations:
 These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()` and `DailyRoute#getDailyRoute(String)`. <br />
 Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
 Step 1. The user launches the application.<br />
-Step 2. The user executes `add day` command. UI will then prompt the user `Enter the day:`  to input a day. <br /> The UI parser will then check if the inputted day is valid and throw an exception if it is not. <br />
+Step 2. The user executes `add daily route` command. UI will then prompt the user `SELECT ENTRY TO ADD:`  to input a day index. <br />
 Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
-Step 4. Step 3 is looped until the word `END` is input. <br /> 
-Step 5. The inputted day is mapped to the filled Arraylist from step 3 <br /> This is done the `DaySchedulePair` which pairs the Day string and Schedule ArrayList together. <br />
-Step 6. This `DaySchedulePair` object is passed into the `DailyRoute` object to be saved in a hashmap. <br /> 
+Step 4. Repeat step 3 until the word `END` is input by the user. <br /> 
+Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class <br />
+Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
+The following image shows the sequence diagram in which the add day command is implemented
+![img.png](addday.png)
+
+Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
+
+Step 1. The user launches the application.<br />
+Step 2. The user executes `show daily route` command. UI will then prompt the user `SELECT ENTRY TO VIEW:`  to input a day index. This returns an arraylist of the day's schedule <br />
+Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the previous one. <br />
+Step 4. The String is output through Daily Route Ui <br />
+
+The following image shows the sequence diagram in which the add day command is implemented
+![img.png](showday.png)
 
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
 
-The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `Map`, `Block`, and `BlockAlias` class to return the shortest path.
+The current implementation of finding the shortest route is facilitated by the `Router` class which uses data stored in `NusMap`, `Block`, and `BlockAlias` class to return the shortest path.
 
 The `GoCommand` class extends the `Command` class and overrides the `execute` method to run the routing algorithm.
 
+The image below depicts how the `GoCommand` is implemented.
+
+![img.png](router.png)
+
 Given below is an example scenario of how the routing algorithm functions.
 
-Step 1. User executes `Gocommand` and the `UiManager` reads in the starting location and destination.<br />
-Step 2. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search.<br />
-Step 3. The `UiManager` will then show the shortest route to the user through `showToUser()` method.<br />
+Step 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
+Step 2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
+Step 3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
+Step 4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
+Step 5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
+Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
+Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
+![img.png](routersequencediagram.png)
 
 ### 3.4. Custom aliases feature
 #### Current Implementation
@@ -202,7 +223,12 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.4. Non-Functional Requirements
 
-{Give non-functional requirements}
+
+1. Should work on any mainstream OS as long as it has Java 11 or above installed.
+
+2. Should be able to hold up to 1000 history, notes, favourites and block alias entries without a noticeable sluggishness in performance for typical usage.
+
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
 ### 4.5. Glossary
 

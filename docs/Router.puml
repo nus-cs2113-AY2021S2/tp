@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class seedu.duke.command.routecommand.GoCommand {
+# RouterUi ui
++ void execute()
+}
+
+class seedu.duke.data.NusMap {
+- HashMap<String,Block> map
++ Block getBlock(String)
++ boolean isValidBlock(String)
++ void addBlock(String)
++ void addRelationship(String,String)
++ void resetVisitedFlag()
++ Collection<Block> getValues()
++ void initValidBlocks()
++ void initRelationships()
+}
+
+class seedu.duke.data.BlockAlias {
+- HashMap<String,String> aliases
++ HashMap<String,String> getAliasHashMap()
++ void addAlias(String,String)
++ boolean isValidBlock(String)
++ boolean isValidAlias(String)
++ void deleteAlias(String)
+}
+
+class seedu.duke.router.Router {
++ String execute(NusMap,BlockAlias,String,String)
++ void findShortestRoute(NusMap,LinkedList<Block>,BlockAlias,String,String)
++ String getRouteAsString(LinkedList<Block>)
++ {static} void bfs(NusMap,HashMap<Block,Block>,Block,Block)
+}
+
+
+abstract class seedu.duke.command.Command {
+# NusMap nusMap
+# BlockAlias blockAlias
+# History history
+# Favourite favourite
+# DailyRoute dailyRoute
+# boolean isExit
++ void setData(NusMap,BlockAlias,History,Favourite,DailyRoute)
++ boolean isExit()
++ void execute()
+}
+
+class seedu.duke.ui.RouterUi {
++ String[] getRoutingInfo()
++ int getEateryEntry(Block[])
+}
+
+class seedu.duke.data.EateryList {
+- Block[] eateries
++ Block[] getEateries()
++ Block getSpecificEatery(int)
++ void setRouteLengths(NusMap,BlockAlias,String)
++ void setEateries(NusMap)
++ void sortEateriesByDistance()
+}
+
+seedu.duke.command.Command <|-- seedu.duke.command.routecommand.GoCommand
+seedu.duke.router.Router "**1**" <.. seedu.duke.command.routecommand.GoCommand : creates <
+seedu.duke.data.EateryList "**1**" <.. seedu.duke.command.routecommand.GoCommand : creates <
+seedu.duke.data.NusMap <.. seedu.duke.router.Router
+seedu.duke.data.BlockAlias <.. seedu.duke.router.Router
+seedu.duke.ui.RouterUi "**1**" <---seedu.duke.command.routecommand.GoCommand
+
+
+@enduml
