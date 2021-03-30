@@ -137,6 +137,8 @@ API: `Patient.java`, `Record.java` and `Data.java`
 
 ### Storage Component
 
+API: `Storage.java`
+
 `Storage.java`:
 
 - facilitates the saving of application data into a text file
@@ -146,7 +148,12 @@ API: `Patient.java`, `Record.java` and `Data.java`
 
 ### Exception Component
 
-API: all classes in [src/main/java/seedu/exception](src/main/java/seedu/exception)
+API: `BaseException.java` and its subclasses
+
+`BaseException.java`:
+- handles all exceptions that occur during the execution of PatientManager
+- can report an error message, prompting the user to provide a syntatically correct command
+- may also report the cause of error for debugging purposes
 
 ### Commons
 
