@@ -72,10 +72,11 @@ public class Parser {
                 break;
             }
         } catch (InvalidParameterException e) {
-            TextUi.showInvalidParameter(e);
+            Logger.getLogger("Parser").severe(e.getMessage());
+            //TextUi.showInvalidParameter(e);
         } catch (NumberFormatException e) {
             Logger.getLogger("Parser").severe(e.getMessage());
-            TextUi.showInvalidParameter(e.keyCommand, e);
+            //TextUi.showInvalidParameter(e.keyCommand, e);
         }
         return command;
     }
@@ -97,7 +98,7 @@ public class Parser {
         case REMOVE:
         case SAVE:
             if (lineParts.length != 2) {
-                throw new InvalidParameterException();
+                throw new InvalidParameterException(keyCommand);
             } else {
                 String value = lineParts[1];
                 return new CommandKey(keyCommand, value);
