@@ -49,16 +49,17 @@ public class Constants {
 
     // Exception messages
     public static final String EXCEPTION_INDENT = "\t";
-    
+
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter something for me to process!";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided!";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number!";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists!";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
-    public static final String INVALID_INPUT_EMPTY_DESCRIPTION = "Please provide more details about the patient's visit!"
-            + System.lineSeparator() + EXCEPTION_INDENT
-            + "(At least one symptom, diagnosis or prescription must be specified)";
+    public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
+            "Please provide more details about the patient's visit!"
+                    + System.lineSeparator() + EXCEPTION_INDENT
+                    + "(At least one symptom, diagnosis or prescription must be specified)";
     public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy).";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
