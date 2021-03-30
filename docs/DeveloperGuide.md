@@ -97,22 +97,23 @@ The execution of the command can affect the fridge.
 After the execution, the results of the command object is pass to the UI.
 The results of the command instruct the Ui to display the message return to the user.
 
-![Command Class Diagram](diagrams/diagram_images/CommandClass.png)
+![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
-The ***Command Class Diagram*** given above shows how the Command interact with Fridge.
+The ***Command Class Diagram*** given above shows how the Command interacts with Fridge class.
 
-The Command Component consist of 10 sub class which each command represents a features.
+The Command Component consist of 11 sub class which each command represents a features.
 
-* **AddCommand**: Add a food object to the fridge when executed.
-* **RemoveCommand**: Remove a portion of food quantity from a particular food in the fridge when executed.
-* **ListCommand**: List details of food either by a category, storage location or all off it when executed.
-* **SearchCommand**: Search for the details of the food.
-* **ExpiringCommand**: Provide the list of item that is expiring in a week when executed.
-* **ClearCommand**: Clear the list of food objects in the fridge object.
-* **HelpCommand**: List the instruction on how to use all the commands in FridgeFriend.
-* **RunningLowCommand**: Provide the food category that are running low compare to the limit set in the Food Category.
-* **SetLimitCommand**: Change the default quantity limit in that particular Food Category.
-* **ByeCommand**: Indicate to the main method to exit the program.
+* **`AddCommand`**: Add a new food object to the fridge or add the quantity of existing food item with same parameters when executed.
+* **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
+* **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
+* **`SearchCommand`**: Search for the food that contains a particular food name. 
+* **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed. 
+* **`ClearCommand`**: Clear the list of food objects in the fridge object.
+* **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
+* **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
+* **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
+* **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
+* **`ByeCommand`**: Indicate to the main method to exit the program. 
 
 ### Exception Component
 
@@ -178,8 +179,6 @@ _Exceptions related to file storage:_
 
 ## Implementation
 
----
-
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
 ### Main Logic
@@ -202,7 +201,65 @@ Given below is the sequence diagram for the interactions within the main applica
 
 * The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
-Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+  Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+  
+### RemoveCommand
+
+When the user specify to remove a portion of a food item in the fridge, the `remove` command
+will execute the remove operation by:
+1. Searching of the food item in the fridge by looping through each food item.  
+2. If the food item exist, check if removing the quantity will reduce the quantity to zero.
+3. If it does not reduce to zero, then proceed to remove the required quantity.
+4. If it does reduce to zero, then remove the food item completely. 
+5. Otherwise, throw an exception to FridgeFriend.
+
+The sequence diagram below shows how the `remove` operation works: 
+
+![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
+
+### SearchCommand
+
+When the user specify to search a food item in the fridge, the `search` command will execute
+search operation by:
+1. Searching the list of foods in the fridge by that contain the food name entered by the user 
+  through a loop.
+2. Afterwards, pass the success message or failure message to the UI. 
+
+The sequence diagram shows how the `search` operation works:
+
+![SearchSequenceDiagram](diagrams/diagram_images/SearchSequenceDiagram.png)
+
+### RunningLowCommand
+
+The `runningLow` command is implemented by:
+1. Checking the total quantity of each FoodCategory in the fridge.
+2. Follow by comparing with the default minimum number of quantity in each FoodCategory.
+3. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message 
+4. Otherwise, return isStockUp message.
+
+The sequence diagram shows how the `runninglow` operation works:
+
+![RunningLowSequenceDiagram](diagrams/diagram_images/RunningLowSequenceDiagram.png)
+
+### SetLimitCommand
+
+The `setlimit` command is implemented by:
+1. Calling a setter method in FoodCategory.
+2. The setter method will change the FoodCategory predefined minimum number of quantity.
+3. The FoodCategory and new minimum number of quantity is specified by the user.
+
+The sequence diagram shows how the `setlimit` operation works:
+
+![SetLimitSequenceDiagram](diagrams/diagram_images/SetLimitSequenceDiagram.png)
+
+### ExpiringCommand
+
+The `expiring` command is implemented through looping of the food items in the fridge and 
+return the food item if the expiry date is within one week of calling the command. 
+
+The sequence diagram shows how the `expiring` operation works:
+![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
+
 
 ### Add Command
 AddCommand class is initialized whenever the parser recognize the `add` keyword.
@@ -224,11 +281,18 @@ Notes:
 
 ### Target User Profile
 
-{Describe the target user profile}
+* has a needs to manage a significant number of foods in the fridge
+* has a tendency to forget expiry date and location of the food stored
+* can type fast
+* prefers typing to mouse interactions
+* is reasonably comfortable using CLI app
 
 ### Value Proposition
 
-{Describe the value proposition: what problem does it solve?}
+* Provides ease of monitoring of food in the fridge which allows user to know which food is expiring 
+  soon and what requires topping up
+* Allows for easier search of food in fridge
+* Allows tracking of past food items in the fridge
 
 ## User Stories
 
@@ -270,7 +334,6 @@ The product should be targeting users who can type fast and prefer typing over o
 
 **Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
 
-
 ### Portability and compatibility
 
 #### Constraint: Platform-Independent
@@ -301,18 +364,272 @@ Thus the data is not protected by nature.
 
 ## Glossary
 
----
+* **Human-Editable-File**: files with .txt
 
-* *glossary item* - Definition
 
-## Instructions for Manual Testing
 
----
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
+## **Appendix: Instructions for manual testing**
+
+Given below are instructions to test the app manually.
+
+**Note:** These instructions only provide a starting
+point for testers to work on; testers are expected to do more *exploratory* testing.
+
+
+
+### Launch and shutdown
+
+1. Ensure that you have Java 11 or above installed.
+2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
+3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
+4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
+   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
+   list of all current food.
+6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with 
+   `Ctrl+C` or closing the terminal.   
+
+### Adding food
+
+When adding food, the `FridgeFriend` application requires a very specific format, so that all attributes of 
+a given food can be added to the Fridge. This might be very troublesome for manual testing.
+
+Here are some inputs you can try:
+* `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
+  * Inputs a `chicken` of category `meat`, with expiry date of `30-06-2021`, location of `lower_shelf`, and 
+    quantity of `100`.
+* `add milk /cat dairy /exp 31-12-2021 /loc fridge_door /qty 2`
+  * Inputs a `milk` of category `dairy`, with expiry date of `31-12-2021`, location of `fridge_door`, and
+    quantity of `2`.
+* `add Coke /cat beverage /exp 30-07-2021 /loc upper_shelf /qty 5`
+  * Inputs a `Coke` of category `beverage`, with expiry date of `30-07-2021`, location of `upper_shelf`, and
+    quantity of `5`.    
+* `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
+  * Inputs a `squid` of category `seafood`, with expiry date of `15-08-2021`, location of `freezer`, and
+    quantity of `100`.
+
+For subsequent examples below, this guide assumes that these four foods `chicken`, `milk`, `Coke`, and `squid`
+have been added to the Fridge. 
+
+### Listing food
+
+The `list` command in `FridgeFriend` has three (3) variations:
+* List all food in the fridge.
+* List all food of a certain category in the fridge.
+* List all food of a certain storage location in the fridge.
+
+The latter two commands will return an output that is a subset of the first command (_List all food_).
+
+No items will be listed if no food in the fridge match the conditions specified in the command.
+
+1. Test case: `list`
+* Expected:
+  ```lang-none
+  Here are the items in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+  ```
+  
+2. Test case: `list meat`
+* Expected:
+  ```lang-none
+  These are the MEAT in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```
+
+3. Test case: `list freezer`
+* Expected:
+  ```lang-none
+  These are the food stored in FREEZER:
+	  1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+  ```
+
+### Removing a food
+Removing a food while all foods are being shown.
+
+1. Prerequisites: List all foods using the `list` command. Multiple food in the list.
+2. Test case: `remove squid /qty 100`
+    * Expected: `squid` is deleted from the list. Details of the deleted food shown in the status message. Additional
+      warning that `seafood` is running low may appear.
+3. Test case: `remove chicken /qty 50`
+    * Expected: Quantity of `chicken` is reduced by 50. Details of the removed food shown in the status message.
+      Additional warning that `meat` is running low may appear.
+4. Test case: `remove coke /qty 1`
+    * Expected: `Food specified not found.` Note that the search for food name in this command is case sensitive;
+      note that when `Coke` was added, it was with a capital 'C'. No food is removed.
+5. Test case: `remove Coke /qty 69`
+    * Expected: `Not enough in fridge to remove!` User attempted to remove a greater quantity than what was
+      available in the fridge. Error message was thrown. No food is removed.
+6. Test case: `remove chicken`
+    * Expected: `Sorry my friend, please give a valid input.` It is required to specify the quantity to be removed with
+      `/qty`.
+
+### Searching for a food
+Checks if a food is in the fridge, and if it is found, outputs the location of the food.
+If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
+
+1. Test case: `search chicken`
+    * Expected: `You have chicken stored in LOWER_SHELF of your fridge.`
+2. Test case: `search pear`
+    * Expected: `You do not have pear in your fridge.`
+3. Test case: `search chick`
+    * Expected: `You do not have chick in your fridge.`
+
+### Expiring food
+This feature might be slightly more challenging to test, since the user tester has to input a food
+that has an expiry date within 7 days of their **local system time**, as of the date of testing.
+
+1. Prerequisites: Add a food with an expiry date within 7 days of the user's system date.
+    * Modify the input in the above [add command](adding-food) in order to fulfil this requirement.
+    * Example: The current date on my system time is `29-03-2021`. 
+      * Prior to testing, I perform the command `add duck /cat meat /exp 30-03-2021 /loc lower_shelf /qty 100`.
+      * Thus, this food should expire in 1 day, within the 7 days required to trigger the `expiring` command.
+2. Test case: `expiring`
+    * Expected:
+   ```lang-none
+   These are the food expiring in the next week:
+        1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
+   ```
+
+
+### Runninglow and Setlimit
+
+By default, the `limits` for all food is set at `500`. Use `setlimit` to modify this number for a certain food category.
+
+1. Preparation: Change the limits for `meat`, `dairy`, `beverage`, `seafood`, since they are the categories of food
+   we have added to the fridge so far.
+    * `setlimit meat /qty 200`
+    * `setlimit dairy /qty 5`
+    * `setlimit beverage /qty 3`
+    * `setlimit seafood /qty 50`
+2. Test case: `runninglow`
+    * Expected:
+   ```lang-none
+   You are running low on food in these categories:
+   1. VEGETABLE quantity: 0 out of 500
+   2. FRUIT quantity: 0 out of 500
+   3. MEAT quantity: 100 out of 200
+   4. EGG quantity: 0 out of 500
+   5. DAIRY quantity: 2 out of 5
+   6. COOKED_DISH quantity: 0 out of 500
+   7. READY_TO_EAT quantity: 0 out of 500
+   8. FROZEN quantity: 0 out of 500
+   9. OTHER quantity: 0 out of 500
+    ```
+   
+Note that `SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+as they are not "running low". There is sufficient food from the given category in the
+fridge, because it is above the quantity we have specified by `setlimit`.
+
+### History
+While the history command may be simple to test, the expected output may vary depending on the food added by 
+the user during testing. 
+
+Therefore, user testers should manually compare the results of the `history` command with their actual input
+during testing, and see if they correspond. 
+
+1. Prerequisites: Only the input in the above [add command](adding-food) was added to the list. 
+   No other food was added to the list.
+    * Note: To reset the history, use `history clear`.
+    * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
+    * `add milk /cat dairy /exp 31-12-2021 /loc fridge_door /qty 2`
+    * `add Coke /cat beverage /exp 30-07-2021 /loc upper_shelf /qty 5`
+    * `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
+2. Test case: `history`
+    * Expected:
+    ```lang-none
+    This is the full history of items you've added in the fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+	       2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+	       3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+	       4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+    ```    
+   
+
+
+
+### Saving data
+_Dealing with missing/corrupted data files._
+
+All data is stored in the `/data` folder in the same folder as `FridgeFriend.jar`.
+
+Three (3) text files will be generated in the folder during usual execution of `FridgeFriend`.
+These text files are used to store data in the disk for various commands during the usual operation of `FridgeFriend`.
+
+1. `fridgeData.txt`
+    * Contains the food stored in the fridge. 
+    * Is automatically loaded when `FridgeFriend` starts. Food in the text file will be stored in the fridge.
+    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
+    using the `bye` command.
+    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
+    such as when the runtime is interrupted with `Ctrl+C`.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
+    The fridge at program launch will be empty. No further action needed.
+    * _Corrupted data file:_ Upon program launch, `FridgeFriend` will throw an exception with 
+      an accompanying error message:
+        ```lang-none
+        There was an error loading the data for FridgeFriend!
+        Index 1 out of bounds for length 1
+        ```
+      * `FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid
+        data is encountered.
+      * User can recover the contents of the file by manually inspecting the text file and removing invalid content.  
+2. `limitsData.txt`
+    * Contains the food quantities used to determine which food is running low in `setlimit` and `runninglow`.
+    * Is automatically loaded when `FridgeFriend` starts. The loaded content can be viewed with `runninglow`.
+    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
+     using the `bye` command.
+    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
+     such as when the runtime is interrupted with `Ctrl+C`.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
+          The limits of all food categories will be reset to the default of 500. No further action needed.  
+    * _Corrupted data file:_ 
+        * Test case: Corrupted categories. 
+           * If the corrupted category is readable: No error message will be shown. User can only identify that data 
+             has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to 
+             corruption will be reset to `500`.
+          * If the corrupted category is unreadable: 
+            ```lang-none
+            There was an error loading the data for FridgeFriend!
+            Index 1 out of bounds for length 1
+            ```
+              * The quantity limits will be parsed up until the corrupted unreadable category. 
+                Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.
+        * Test case: Corrupted quantities.
+          * If the corrupted quantity is an integer: No error message will be shown. User can only identify that 
+            data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted 
+            value.
+          * If the corrupted quantity is **not** an integer: Error message will be shown. 
+            ```lang-none
+            There was an error loading the data for FridgeFriend!
+            Sorry my friend, the quantity must be a number.
+            ```
+            * The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits
+                in the file would not be parsed, and will be reset to the default of `500`.
+3. `historyData.txt`
+    * Contains the logs of food added to the fridge using `add` command.
+    * Is automatically updated whenever a successful `add` command is invoked.  
+    * Content is loaded from disk only when `history` command is invoked.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon executing the `history`
+      command. No further action needed.
+   * _Corrupted data file:_
+       * Test case: If corrupted data is readable. No error message will be shown. User can only identify that data
+             has been corrupted when using the `history` command. The `history` command will continue to print out
+            the contents of the file, including the corrupted data.
+            * While this corrupted data would not affect program flow, it may create unexpected output. If necessary, 
+              users can manually inspect the file and remove unwanted data at their own discretion.
+       * Test case: If corrupted data is unreadable. No error message will be shown. User can only identify that
+         data has been corrupted when using the `history` command. The contents of the entire file will not be parsed, 
+         even if there is valid content in some parts of the file.
+            * The contents of the file will not be affected. If necessary,
+              users can manually inspect the file and remove corrupted data, in order to salvage any valid data.
+        
+      
 ## Attribution
 
----
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).

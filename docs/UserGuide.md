@@ -30,7 +30,21 @@ It is written in Java, and has more than 3.2kLoC.
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-1. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
+2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
+3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
+4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
+   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a 
+   list of all current food. Some example commands you can try:
+   * `list`: Lists all food.
+   * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`, 
+     expiry date of `30-06-2021`, location of `lower_shelf`, and quantity of `100` to the Fridge.
+   * `search chicken`: Searches for the chicken in the fridge and returns its location (currently: `lower_shelf`).
+   * `remove chicken /qty 50`: Removes a quantity of `50` from the `chicken` stored in the fridge.
+   * `bye`: Exits the app.   
+6. Refer to the **Features** below for details of each command.   
+
+
 
 ## Features
 
@@ -213,18 +227,19 @@ Checks if a certain food item is inside the fridge, and if the item is found, in
 Format: `search FOOD_NAME`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
-* The command requires the user to input the exact name of the food item `FOOD_NAME` to be searched for.
+* The command requires the user to input the name of the food item `FOOD_NAME` to be searched for.
   The names of food items stored in the fridge can be determined with `list`.
-* If there are multiple items with the same name in the fridge, only the first item added to the fridge
-  in order of the output of `list` will be returned.
+* If there are multiple items that contain the food name, the search function will display all of those food items.
 
 Example of usage:
 
-*In this example, Fridge contains only one item `grouper` stored in the `FREEZER` location.*
+*In this example, Fridge contains two `chicken` stored in different location.*
 
 ```lang-none
->> search grouper
-You have grouper stored in FREEZER of your fridge.
+>> search chicken
+These are the chicken in your fridge:
+    1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+    2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 
 >> search oyster
 You do not have oyster in your fridge.

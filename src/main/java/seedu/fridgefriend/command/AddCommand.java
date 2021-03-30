@@ -21,6 +21,7 @@ import seedu.fridgefriend.utilities.Storage;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author SimJJ96
 /**
  * Represents a command to add a food item into the Fridge.
  * When calling constructor, foodName, category, expiryDate, location
@@ -76,6 +77,7 @@ public class AddCommand extends Command {
                 + foodToAdd.toString();
         return message;
     }
+    //@@author
 
     //@@author leeyp
     public static Food categoriseAndGenerateFood(String foodName, FoodCategory category,

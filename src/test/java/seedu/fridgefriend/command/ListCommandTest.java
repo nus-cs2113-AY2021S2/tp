@@ -15,6 +15,7 @@ class ListCommandTest {
 
     private Fridge fridge;
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
@@ -32,6 +33,13 @@ class ListCommandTest {
         fridge.add(pork);
     }
 
+    @Test
+    public void listCommand_listAnInvalidCategory_invalidInputException() {
+        assertThrows(InvalidInputException.class, () ->
+                new ListCommand("abc123").execute());
+    }
+    //@author
+
     //@@author Vinci-Hu
     @Test
     public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() {
@@ -46,27 +54,6 @@ class ListCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
-    //@@author leeyp
-    @Test
-    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
-        ListCommand listCommand = new ListCommand("LOWER_SHELF");
-        listCommand.setData(fridge);
-        String expectedMessage = "These are the food stored in LOWER_SHELF:\n"
-                + "\t1. Food name: chicken, category: MEAT, expiry: "
-                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
-                + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
-                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100";
-        String actualMessage = listCommand.getListByStorageLocationMessage();
-        assertEquals(expectedMessage, actualMessage);
-    }
-
-    @Test
-    public void listCommand_listAnInvalidCategory_invalidInputException() {
-        assertThrows(InvalidInputException.class, () ->
-                new ListCommand("abc123").execute());
-    }
-
-    //@@author Vinci-Hu
     @Test
     public void listCommand_listAll_listAllFoodInFridge() {
         ListCommand listCommand = new ListCommand("");
@@ -81,5 +68,21 @@ class ListCommandTest {
         String actualMessage = listCommand.getListAllMessage();
         assertEquals(expectedMessage, actualMessage);
     }
+    //@@author
+
+    //@@author leeyp
+    @Test
+    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
+        ListCommand listCommand = new ListCommand("LOWER_SHELF");
+        listCommand.setData(fridge);
+        String expectedMessage = "These are the food stored in LOWER_SHELF:\n"
+                + "\t1. Food name: chicken, category: MEAT, expiry: "
+                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
+                + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
+                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100";
+        String actualMessage = listCommand.getListByStorageLocationMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
+    //@@author
 
 }
