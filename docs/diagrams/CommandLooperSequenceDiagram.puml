@@ -2,9 +2,9 @@
 !include style.puml
 
 Participant ":Finux" as Finux
-Participant ":UI" as UI
 Participant ":Parser" as ParserHandler
 Participant ":CommandHandler" as CommandHandler
+Participant ":UI" as UI
 Participant ":Command" as Command
 Participant ":RecordList" as RecordList
 Participant ":Storage" as Storage
@@ -41,7 +41,7 @@ loop while not exit
 
     Finux -> Command : execute()
     activate Command
-    ref over Command, RecordList, Storage : Command execute logic
+    ref over Command, RecordList, Storage, UI : Command execute logic
     Command --> Finux
     deactivate Command
     Command --[#white]> Finux

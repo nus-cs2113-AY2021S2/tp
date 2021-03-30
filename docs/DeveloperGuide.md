@@ -127,8 +127,8 @@ Before starting to write any code, we recommend that you have a look at Finux's 
 
 ### 3.1 Architecture
 
-![ArchitectureDiagram](img/ArchitectureDiagram.png)
-_Figure 1. **Finux** Architecture Diagram_
+![ArchitectureDiagram](img/ArchitectureDiagram.png)\
+_Figure 1: **Finux** Architecture Diagram_
 
 > 💡 The diagrams are built with [PlantUML](https://plantuml.com/).
 > The `.puml` files can be found in the [diagrams](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/diagrams) folder and
@@ -142,7 +142,7 @@ The `Finux` component contains only one class `Finux`, It is responsible for,
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
 The rest of the Application consists of six components.
-* `UI`: The user interface (UI) of the App which handles all user input and Application output.
+* `Ui`: The user interface (Ui) of the App which handles all user input and Application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
 * `Command`: The appropriate command to be executed.
@@ -152,14 +152,14 @@ The rest of the Application consists of six components.
 Given below are sequence diagrams describing the general Application flow and how the different objects
 interact with each other.
 
-![Initialization](img/InitializationSequenceDiagram.png)
-_Figure 2. Initialization_
+![Initialization](img/InitializationSequenceDiagram.png)\
+_Figure 2: Initialization_
 
 The initialization sequence diagram above shows the systematic flow of object creation and record
 retrieval from storage file for creation of the `RecordList` object.
 
-![Main program flow](img/CommandLooperSequenceDiagram.png)
-_Figure 3. Main Application loop and exit sequence_
+![Main program flow](img/CommandLooperSequenceDiagram.png)\
+_Figure 3: Main Application Loop & Exit Sequence_
 
 > 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML,
 > the lifeline reaches the end of diagram.
@@ -172,7 +172,7 @@ The following sections below will provide more details of each component.
 ### 3.2 UI Component
 
 ![UIComponentDiagram](img/UIComponentDiagram.png)\
-*Figure 1: Ui Class Diagram*
+*Figure 4: **Ui** Class Diagram*
 
 The Ui Component consists of a `Ui` class which handles all user input and system output.
 The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
@@ -183,7 +183,7 @@ The `Ui` component actively listens for:
 
 ### 3.3 Parser Component
 ![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png) <br>
-_Figure X: **ParserHandler** Class Diagram_
+_Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
 The Parser component consist of 1 class called `ParserHandler`.
@@ -238,24 +238,23 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 
 
 ### 3.4 CommandHandler Component
-![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
-
-_Figure X. CommandHandler Class Diagram_
-![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)
-_Figure X. CommandHandler Sequence Diagram_
+![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)\
+_Figure 6: CommandHandler Class Diagram_\
+![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)\
+_Figure 7: CommandHandler Sequence Diagram_
 
 #### Description
 The `CommandHandler` component is the object class itself.
 The role of the `CommandHandler` is to convert `parsedArguments` from the `ParserHandler`
 into subsequent `Command` objects which will be executed thereafter.
-The `XYZCommand` in Figure X represents a valid command word (e.g. `"xyz"`) from the input
+The `XYZCommand` in _Figure 7_ represents a valid command word (e.g. `"xyz"`) from the input
 parsed earlier from the `ParserHandler`. More on the actual valid commands, please refer to
-the Command Component below.
+the [Command Component](#35-command-component) below.
 
 #### Design
 It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
 (the actual commands of the Application).\
-With reference to the above Figure X, 
+With reference to the above _Figure 7_, 
 In the case of `"xyz"` being mapped to `XYZCommand`, depending on the other data in the 
 `parsedArguments`,
 * arguments are valid: the `XYZCommand` object is successfully returned.
@@ -272,9 +271,9 @@ sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exi
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)
-_Figure X. Command Class Diagram_
+_Figure 8: Command Class Diagram_
 
-All Commands contain a command word constant named as `COMMAND_*` (as underlined in Figure X),\
+All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.
 
@@ -322,8 +321,10 @@ By calling the `execute()` method, the respective `Expense`, `Saving` or `Loan` 
 into the `RecordList`.
 
 #### 4.1.1 Current Implementation
+...
 
 #### 4.3.2 Design Consideration
+...
 
 ### 4.2 List Feature
 The `list` feature allows Finux users to list records that they have entered into the system.
