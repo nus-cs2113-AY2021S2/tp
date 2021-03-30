@@ -423,13 +423,12 @@ These text files are used to store data in the disk for various commands during 
             the contents of the file, including the corrupted data.
             * While this corrupted data would not affect program flow, it may create unexpected output. If necessary, 
               users can manually inspect the file and remove unwanted data at their own discretion.
-       * Test case: If corrupted data is unreadable.
-             ```
-             There was an error loading the data for FridgeFriend!
-             Index 1 out of bounds for length 1
-             ```
-
-
+       * Test case: If corrupted data is unreadable. No error message will be shown. User can only identify that
+         data has been corrupted when using the `history` command. The contents of the entire file will not be parsed, 
+         even if there is valid content in some parts of the file.
+            * The contents of the file will not be affected. If necessary,
+              users can manually inspect the file and remove corrupted data, in order to salvage any valid data.
+              
 ## Attribution
 
 The format of this User Guide was adapted from [AddressBook Level 3(AB3) Developer Guide](https://github.com/se-edu/addressbook-level3/blob/master/docs/DeveloperGuide.md).
