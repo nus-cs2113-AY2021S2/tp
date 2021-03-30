@@ -1,0 +1,14 @@
+@startuml
+!include ../Style.puml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Ui -> Ui : showDeliveryList()
+
+loop
+Ui -> Delivery: delivery.toString()
+
+Delivery --> Ui
+end
+@enduml
