@@ -20,50 +20,41 @@ import java.util.Arrays;
 import java.util.logging.Logger;
 
 public class Parser {
-    private static final String HELP = "help";
-    private static final String FILTER = "filter";
-    private static final String FIND = "find";
-    private static final String EXIT = "exit";
-    private static final String CLEAR = "clear";
-    private static final String LIST = "list";
-    private static final String SHORTLIST = "shortlist";
-    private static final String SAVE = "save";
-    private static final String REMOVE = "remove";
 
     public static Command parse(String fullLine) {
         Command command = new DefaultCommand(fullLine);
         Assert.assertNotNull(command);
         try {
-            CommandKey keyCommand = extractInfo(fullLine);
+            CommandKey keyCommand = CommandEvaluator.extractInfo(fullLine);
             switch (keyCommand.getCommand()) {
-            case HELP:
+            case CommandType.HELP:
                 command = new HelpCommand();
                 break;
-            case FILTER:
+            case CommandType.FILTER:
                 String criteria = keyCommand.getCriteria();
                 String value = keyCommand.getValue();
                 command = new FilterCommand(criteria, value);
                 break;
-            case FIND:
+            case CommandType.FIND:
                 command = new FindCommand();
                 break;
-            case EXIT:
+            case CommandType.EXIT:
                 command = new CloseCommand();
                 break;
-            case CLEAR:
+            case CommandType.CLEAR:
                 command = new ClearCommand();
                 break;
-            case LIST:
+            case CommandType.LIST:
                 command = new ListCommand();
                 break;
-            case SHORTLIST:
+            case CommandType.SHORTLIST:
                 command = new ShortlistCommand();
                 break;
-            case SAVE:
+            case CommandType.SAVE:
                 int addIndex = Integer.parseInt(keyCommand.getValue());
                 command = new SaveCommand(addIndex);
                 break;
-            case REMOVE:
+            case CommandType.REMOVE:
                 int removeIndex = Integer.parseInt(keyCommand.getValue());
                 command = new RemoveCommand(removeIndex);
                 break;
@@ -73,42 +64,11 @@ public class Parser {
             }
         } catch (InvalidParameterException e) {
             Logger.getLogger("Parser").severe(e.getMessage());
-            //TextUi.showInvalidParameter(e);
+            TextUi.showInvalidParameter(e.getKeyCommand(), e);
         } catch (NumberFormatException e) {
             Logger.getLogger("Parser").severe(e.getMessage());
-            //TextUi.showInvalidParameter(e.keyCommand, e);
+            TextUi.showInvalidIndex();
         }
         return command;
-    }
-
-    public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
-        String[] lineParts;
-        lineParts = fullLine.split(" ");
-        Logger.getLogger("Parser").info(Arrays.toString(lineParts));
-        String keyCommand = lineParts[0];
-        switch (keyCommand) {
-        case FILTER:
-            if (lineParts.length < 3) {
-                throw new InvalidParameterException(keyCommand);
-            } else {
-                String criteria = lineParts[1];
-                String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
-                return new CommandKey(criteria, value, keyCommand);
-            }
-        case REMOVE:
-            // Fallthrough
-        case SAVE:
-            if (lineParts.length != 2) {
-                throw new InvalidParameterException(keyCommand);
-            } else {
-                String value = lineParts[1];
-                return new CommandKey(keyCommand, value);
-            }
-        default:
-            if (lineParts.length != 1) {
-                throw new InvalidParameterException(keyCommand);
-            }
-        }
-        return new CommandKey(keyCommand);
     }
 }

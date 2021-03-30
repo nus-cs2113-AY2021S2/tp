@@ -64,6 +64,10 @@ public class TextUi {
         System.out.println("Please use these filters: " + Arrays.asList(QueryKey.values()));
     }
 
+    public static void showInvalidIndex() {
+        System.out.println("Index is invalid");
+    }
+
     public static void showInvalidParameter(String key, InvalidParameterException e) {
         System.out.println(e.getMessage());
         switch (key) {
