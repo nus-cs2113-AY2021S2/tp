@@ -12,6 +12,7 @@ import seedu.hdbuy.command.ListCommand;
 import seedu.hdbuy.command.RemoveCommand;
 import seedu.hdbuy.command.SaveCommand;
 import seedu.hdbuy.command.ShortlistCommand;
+import seedu.hdbuy.command.SortCommand;
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
@@ -57,6 +58,10 @@ public class Parser {
             case CommandType.REMOVE:
                 int removeIndex = Integer.parseInt(keyCommand.getValue());
                 command = new RemoveCommand(removeIndex);
+                break;
+            case CommandType.SORT:
+                String sortCriteria = keyCommand.getValue();
+                command = new SortCommand(sortCriteria);
                 break;
             default:
                 TextUi.showInvalidInput(keyCommand.getCommand());

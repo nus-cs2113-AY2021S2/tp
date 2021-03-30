@@ -3,6 +3,7 @@ package seedu.hdbuy.api;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.data.SearchedUnits;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UnitsGenerator {
@@ -11,10 +12,9 @@ public class UnitsGenerator {
      * Sifts through response string to get details on units and generate each of them.
      *
      * @param response Response from database containing raw information on units.
-     * @return Units mapped to their unique IDs.
      */
-    public static HashMap<Integer, Unit> getUnits(String response) {
-        HashMap<Integer, Unit> map = new HashMap<>();
+    public static void getUnits(String response) {
+        ArrayList<Unit> units = new ArrayList<>();
         String records = response.substring(response.indexOf("records") - 1);
         String trimmed = records.substring(records.indexOf("[") + 1, records.indexOf("]"));
         String[] unitContents = trimmed.split("},");
@@ -25,10 +25,7 @@ public class UnitsGenerator {
             String[] unitDetails = unitContent.split(",");
             Unit unit = getUnit(unitDetails);
             SearchedUnits.addToResult(unit);
-            map.put(unit.getId(), unit);
-            //System.out.println(unit.toString());
         }
-        return map;
     }
 
     private static Unit getUnit(String[] details) {
