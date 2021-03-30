@@ -57,9 +57,7 @@ public abstract class Record {
      *
      * @return the formatted string of a record.
      */
-    public String convertFileFormat() {
-        return String.format(FILE_OUTPUT_STRING_FORMAT, description, amount, issueDate);
-    }
+    public abstract String convertFileFormat();
 
     /**
      * Rearrange record information to be printed when the object is printed.
