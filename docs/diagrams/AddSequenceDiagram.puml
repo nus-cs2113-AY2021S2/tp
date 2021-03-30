@@ -2,13 +2,15 @@
 'https://plantuml.com/sequence-diagram
 
 !include style.puml
-
+box Command COMMAND_COLOR_T1
 participant ":AddCommand" as AddCommand COMMAND_COLOR
-participant "foodToAdd:Food" as NewFood FOOD_COLOR_T1
+end box
+box Food FOOD_COLOR_T1
+participant "foodToAdd:Food" as NewFood FOOD_COLOR
 participant "fridge:Fridge" as Fridge FOOD_COLOR_T3
 participant "checker:UniqueFoodnameChecker" as Checker FOOD_COLOR_T2
-participant ":Food" as Food FOOD_COLOR_T4
-participant ":Exception" as Exception EXCEPTION_COLOR
+participant ":Food" as Food FOOD_COLOR
+end box
 
 'autoactivate on
 
@@ -48,27 +50,25 @@ end
 alt Foodname is unique (add new food))
     Fridge --> AddCommand: food added to fridge
 
-else add to existing
+else all parameters except quantity consists with record (add to existing)
     Fridge -> Checker: checker.isParamIdentical()
     activate Checker
     return boolean
-    alt all parameters except quantity consists with record
-        Fridge -> Fridge: editFoodQuantity()
-        activate Fridge
-        return
-        Fridge --> AddCommand: more quantity added to existing food in fridge
-    else RepetitiveFoodName
-        Fridge -> Exception: throw
-        activate Exception
-        return
-        deactivate Exception
-    end
+    note right
+    If params do not consist,
+    a RepetitiveFoodName exception will be thrown
+    end note
+    Fridge -> Fridge: editFoodQuantity()
+    activate Fridge
+    return
+    Fridge --> AddCommand: more quantity added to existing food in fridge
+    deactivate Fridge
+    deactivate AddCommand
 end
-return
 
-destroy NewFood
+destroy Checker
 
-<--AddCommand: result
+<--AddCommand:
 deactivate AddCommand
 
 @enduml
