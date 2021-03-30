@@ -1,8 +1,8 @@
 package seedu.exceptions.inventory;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class InvalidPriceException extends DukeException {
+public class InvalidPriceException extends HealthVaultException {
     public InvalidPriceException(String error) {
         this.error = error;
     }

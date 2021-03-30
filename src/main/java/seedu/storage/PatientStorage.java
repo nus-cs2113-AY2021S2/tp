@@ -1,6 +1,6 @@
 package seedu.storage;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 import seedu.model.Patient;
 import seedu.logic.command.PatientActions;
 
@@ -47,9 +47,9 @@ public class PatientStorage {
      * Loads the saved list of patients from save location
      *
      * @return Populated patients arraylist
-     * @throws DukeException if there is an error in loading
+     * @throws HealthVaultException if there is an error in loading
      */
-    public ArrayList<Patient> loadPatients() throws DukeException {
+    public ArrayList<Patient> loadPatients() throws HealthVaultException {
         fileInit();
         try {
             // initializing file scanner to scan the file
@@ -60,15 +60,15 @@ public class PatientStorage {
                 //splits the string into sections for storing in the ArrayList
                 String[] taskSave = currentScan.trim().split(" \\| ");
                 if (taskSave.length != 6) {
-                    throw new DukeException("loadFile");
+                    throw new HealthVaultException("loadFile");
                 }
                 Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
                         taskSave[3], taskSave[4], taskSave[5]);
                 patients.add(tempPatient);
             }
         } catch (FileNotFoundException e) {
-            throw new DukeException("OOPS! I can't read the save file!");
-        } catch (DukeException e) {
+            throw new HealthVaultException("OOPS! I can't read the save file!");
+        } catch (HealthVaultException e) {
             e.getError("loadFile");
         }
         return patients;

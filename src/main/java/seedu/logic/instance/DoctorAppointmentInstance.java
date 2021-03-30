@@ -1,9 +1,6 @@
 package seedu.logic.instance;
 
 
-import seedu.duke.Constants;
-import seedu.exceptions.DukeException;
-import seedu.exceptions.doctorappointment.FileCreatingErrorException;
 import seedu.logic.command.Command;
 import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.logic.command.AppointmentActions;
@@ -13,7 +10,6 @@ import seedu.ui.UI;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 
 /**
  * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running

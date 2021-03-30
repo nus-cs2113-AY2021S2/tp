@@ -1,8 +1,6 @@
-package seedu.exceptions.patient;
+package seedu.exceptions;
 
-import seedu.exceptions.DukeException;
-
-public class DuplicateIDException extends DukeException {
+public class DuplicateIDException extends HealthVaultException {
 
     public DuplicateIDException(String error) {
         this.error = error;

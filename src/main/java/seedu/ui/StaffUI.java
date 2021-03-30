@@ -5,7 +5,7 @@ import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.model.staff.Staff;
 
 import static seedu.duke.Constants.*;
-import static seedu.logic.errorchecker.StaffChecker.checkID;
+import static seedu.logic.errorchecker.StaffChecker.checkStaffID;
 
 public class StaffUI extends UI{
 
@@ -15,7 +15,7 @@ public class StaffUI extends UI{
         String[] staffInput = new String[4];
         System.out.print("Staff ID: ");
         staffInput[0] = abortEnabledScanInput();
-        checkID(staffInput[0]);
+        checkStaffID(staffInput[0]);
         System.out.print("Name: ");
         staffInput[1] = abortEnabledScanInput();
         System.out.print("Age: ");

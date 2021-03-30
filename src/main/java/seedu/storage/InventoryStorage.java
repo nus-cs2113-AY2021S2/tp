@@ -1,6 +1,6 @@
 package seedu.storage;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.InventoryActions;
 import seedu.model.Inventory;
 
@@ -52,7 +52,7 @@ public class InventoryStorage {
     public String getFilepath() {
         return this.filepath;
     }*/
-    public ArrayList<Inventory> loadInventory() throws DukeException {
+    public ArrayList<Inventory> loadInventory() throws HealthVaultException {
         fileInit();
         try {
             // initializing file scanner to scan the file
@@ -63,14 +63,14 @@ public class InventoryStorage {
                 //splits the string into sections for storing in the ArrayList
                 String[] taskSave = currentScan.trim().split(" \\| ");
                 if (taskSave.length != 3) {
-                    throw new DukeException("loadFile");
+                    throw new HealthVaultException("loadFile");
                 }
                 Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
                 inventories.add(tempInventory);
             }
         } catch (FileNotFoundException e) {
-            throw new DukeException("OOPS! I can't read the save file!");
-        } catch (DukeException e) {
+            throw new HealthVaultException("OOPS! I can't read the save file!");
+        } catch (HealthVaultException e) {
             e.getError("loadFile");
         }
         return inventories;
