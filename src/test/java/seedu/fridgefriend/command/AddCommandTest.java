@@ -18,10 +18,28 @@ class AddCommandTest {
 
     private Fridge fridge;
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() {
         fridge = new Fridge();
     }
+
+    @Test
+    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            new AddCommand("chicken", FoodCategory.MEAT,
+                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
+        });
+    }
+
+    @Test
+    public void addCommand_invalidDate_InvalidDateException() {
+        assertThrows(InvalidDateException.class, () -> {
+            new AddCommand("chicken", FoodCategory.MEAT,
+                    "abcd", FoodStorageLocation.FREEZER, 200);
+        });
+    }
+    //@@author
 
     //@@author Vinci-Hu
     @Test
@@ -76,14 +94,6 @@ class AddCommandTest {
         assertEquals("cooked chicken", fridge.getFood(0).getFoodName());
     }
 
-    @Test
-    public void addCommand_invalidDate_InvalidDateException() {
-        assertThrows(InvalidDateException.class, () -> {
-            new AddCommand("chicken", FoodCategory.MEAT,
-                    "abcd", FoodStorageLocation.FREEZER, 200);
-        });
-    }
-
     //@@author Vinci-Hu
     @Test
     public void addCommand_foodWithSameName_successfullyAdded()
@@ -104,15 +114,6 @@ class AddCommandTest {
                 + "expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 5";
         String actualMessage = addCommand2.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
-    }
-
-    //@@author
-    @Test
-    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
-        assertThrows(InvalidQuantityException.class, () -> {
-            new AddCommand("chicken", FoodCategory.MEAT,
-                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
-        });
     }
 
 }

@@ -15,6 +15,7 @@ class SearchCommandTest {
 
     private Fridge fridge;
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
@@ -62,5 +63,6 @@ class SearchCommandTest {
         assertThrows(EmptyDescriptionException.class, () ->
                 searchCommand(""));
     }
+    //@author
 
 }

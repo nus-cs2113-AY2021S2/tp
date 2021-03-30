@@ -21,6 +21,7 @@ class RemoveCommandTest {
     /*Solution below adapted from https://github.com/se-edu/addressbook-level2/blob/master
             /test/java/seedu/addressbook/commands/DeleteCommandTest.java*/
 
+    //@@author SimJJ96
     @BeforeEach
     public void setUp() throws Exception {
         fridge = new Fridge();
@@ -72,24 +73,4 @@ class RemoveCommandTest {
                 removeCommand.execute());
     }
 
-    /*
-    @Test
-    public void removeCommand_validIndex_successfullyRemove() throws InvalidIndexException {
-        RemoveCommand removeCommand = new RemoveCommand(1);
-        removeCommand.setData(fridge);
-        removeCommand.execute();
-        String actualMessage = removeCommand.getMessagePrintedToUser();
-        String expectedMessage = "Noted! I've removed chicken"
-                + " from your fridge.\n"
-                + "Now you have 2"
-                + " food in the fridge.";
-        assertEquals(expectedMessage,actualMessage);
-    }
-
-    @Test
-    public void removeCommand_invalidIndex_invalidIndexException() {
-        assertThrows(InvalidIndexException.class, () ->
-                new RemoveCommand(10).execute());
-    }
-    */
 }

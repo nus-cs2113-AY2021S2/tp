@@ -30,6 +30,7 @@ public enum FoodCategory {
     private static int frozenMinimumQuantity = 500;
     private static int otherMinimumQuantity = 500;
 
+    //@@author SimJJ96
     public static boolean contains(String string) {
         for (FoodCategory foodCategory : values()) {
             if (foodCategory.name().equals(string)) {
@@ -38,6 +39,7 @@ public enum FoodCategory {
         }
         return false;
     }
+    //@author
 
     public static FoodCategory convertStringToFoodCategory(String rawCategoryStr) {
         String processedCategoryStr = rawCategoryStr.toUpperCase();

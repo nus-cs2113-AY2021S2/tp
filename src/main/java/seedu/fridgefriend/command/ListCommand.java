@@ -7,6 +7,7 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
+//@@author SimJJ96
 /**
  * Represents a command to list the items in the fridge to the user.
  * When calling constructor, description is a necessary field
@@ -111,6 +112,7 @@ public class ListCommand extends Command {
         }
         return foodDescription;
     }
+    //@author
 
     //@@author leeyp
     private void listByStorageLocation() {

@@ -54,8 +54,8 @@ public class Parser {
     private static final Pattern REMOVE_ARGS_FORMAT =
             Pattern.compile("(?<name>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
-
     //@@author
+
     /**
      * Define arguments format for remove food command with quantity.
      */
@@ -63,6 +63,7 @@ public class Parser {
             Pattern.compile("(?<foodCategory>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
 
+    //@@author SimJJ96
     /**
      * Returns a Command object based on the user's raw input.
      *
@@ -177,9 +178,10 @@ public class Parser {
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
             InvalidDateException, InvalidQuantityException {
-        Command addCommand = parseFoodDescription(description);
+        Command addCommand = parseAddDescription(description);
         return addCommand;
     }
+    //@@author
 
     //@@author Vinci-Hu
     /**
@@ -194,7 +196,7 @@ public class Parser {
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
-    private static Command parseFoodDescription(String foodDescription)
+    private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
             InvalidDateException, InvalidQuantityException {
         if (foodDescription.isEmpty()) {
@@ -214,8 +216,8 @@ public class Parser {
             throw new InvalidInputException();
         }
     }
-
     //@@author
+
     /**
      * Returns a ListCommand object based on description.
      *
@@ -269,8 +271,9 @@ public class Parser {
             throw new InvalidInputException();
         }
     }
-
     //@@author
+
+    //@@author SimJJ96
     /**
      * Returns a SearchCommand object based on description.
      *
@@ -282,6 +285,7 @@ public class Parser {
         Command searchCommand = new SearchCommand(description);
         return searchCommand;
     }
+    //@@author
 
     //@@author kwokyto
     /**
@@ -377,6 +381,7 @@ public class Parser {
         return byeCommand;
     }
 
+    //@@author SimJJ96
     /**
      * Parses the description of quantity to integer.
      *
@@ -398,5 +403,5 @@ public class Parser {
             throw new InvalidQuantityException();
         }
     }
-
+    //@author
 }

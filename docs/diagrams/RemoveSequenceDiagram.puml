@@ -1,0 +1,72 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+box "Command\n" COMMAND_COLOR_T1
+participant ":RemoveCommand" as RemoveCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant ":Food" as Food FOOD_COLOR_T3
+end box
+
+-> RemoveCommand: execute()
+activate RemoveCommand
+
+RemoveCommand -> RemoveCommand: findFoodByName(foodNameToEdit: String)
+activate RemoveCommand
+
+loop food in fridge
+    RemoveCommand -> Fridge: getFood()
+    activate Fridge
+    opt equals foodNameToEdit
+        Fridge -> Food: getFoodName()
+        activate Food
+        return food
+    end
+    return food
+end
+
+deactivate RemoveCommand
+RemoveCommand -> RemoveCommand: removePortion()
+    activate RemoveCommand
+
+alt newQuantity > 0
+    RemoveCommand -> Fridge: getFood()
+    activate Fridge
+    Fridge -> Food: setQuantity()
+    activate Food
+    return
+    return
+    deactivate Fridge
+else newQuantity == 0
+    RemoveCommand -> Fridge: remove()
+    activate Fridge
+    return
+    deactivate Fridge
+    note right
+    if newQuantity is <0
+    InvalidQuantityExpcetion
+    will be thrown
+    end note
+end
+
+deactivate RemoveCommand
+destroy Food
+
+
+
+<-- RemoveCommand:
+deactivate RemoveCommand
+
+@enduml
+
+box Exception EXCEPTION_COLOUR
+participant ":Exception" as Exception
+end box
+
+else exception
+    RemoveCommand -> Exception: throw
+    activate Exception
+    return
