@@ -71,14 +71,18 @@ public class Commands {
             ui.printListHelpMessage();
         } else if (arguments.equals("edit")) {
             ui.printEditHelpMessage();
-        } else if (arguments.equals("review") || arguments.equals("new") || arguments.equals("add")) {
-            ui.printReviewHelpMessage();
+        } else if (arguments.equals("new") || arguments.equals("add")) {
+            ui.printNewHelpMessage();
         } else if (arguments.equals("delete")) {
             ui.printDeleteHelpMessage();
         } else if (arguments.equals("view")) {
             ui.printViewHelpMessage();
+        } else if (arguments.equals("review")) {
+            ui.printReviewModeHelpMessage();
         } else if (arguments.equals("reco")) {
-            ui.printRecommendationHelpMessage();
+            ui.printRecommendationModeHelpMessage();
+        } else if (arguments.equals("done")) {
+            ui.printRecoDoneHelpMessage();
         } else if (arguments.equals("exit")) {
             ui.printExitHelpMessage();
         } else {

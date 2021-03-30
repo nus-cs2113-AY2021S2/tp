@@ -14,9 +14,11 @@ import static seedu.connoisseur.messages.Messages.ERROR_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EXIT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
-import static seedu.connoisseur.messages.Messages.REVIEW_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.NEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
-import static seedu.connoisseur.messages.Messages.RECOMMENDATION_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.RECO_MODE_MESSAGE;
+import static seedu.connoisseur.messages.Messages.RECODONE_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.REVIEW_MODE_MESSAGE;
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -234,17 +236,31 @@ public class Ui {
     }
 
     /**
-     * Prints recommendation help message.
+     * Prints recommendation mode help message.
      */
-    public void printRecommendationHelpMessage() {
-        println(RECOMMENDATION_HELP_MESSAGE);
+    public void printRecommendationModeHelpMessage() {
+        println(RECO_MODE_MESSAGE);
     }
 
     /**
      * Prints review help message.
      */
-    public void printReviewHelpMessage() {
-        println(REVIEW_HELP_MESSAGE);
+    public void printReviewModeHelpMessage() {
+        println(REVIEW_MODE_MESSAGE);
+    }
+
+    /**
+     * Prints done help message in recommendations mode.
+     */
+    public void printRecoDoneHelpMessage() {
+        println(RECODONE_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints review help message.
+     */
+    public void printNewHelpMessage() {
+        println(NEW_HELP_MESSAGE);
     }
 
     /**
