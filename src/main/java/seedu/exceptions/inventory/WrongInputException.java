@@ -1,6 +1,6 @@
-package seedu.exceptions.inventory;
+/*package seedu.exceptions.inventory;
 
-import seedu.ui.DrugUI;
+import seedu.ui.InventoryUI;
 
 public class WrongInputException extends Exception{
     protected String error;
@@ -16,11 +16,12 @@ public class WrongInputException extends Exception{
                 System.out.println("The description of " + input + " cannot be empty");
                 break;
             case "doesNotExist":
-                DrugUI.drugNotFoundMessage();
+                InventoryUI.drugNotFoundMessage();
                 break;
             case "emptyList":
-                DrugUI.emptyDrugListMessage();
+                InventoryUI.emptyInventoryListMessage();
                 break;
         }
     }
 }
+*/
