@@ -3,24 +3,31 @@ By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
 
 Since: `March 2021`
 
-- [Finux User Guide](#finux-user-guide)
-    * [1. Introduction](#1-introduction)
-    * [2. Quick Start](#2-quick-start)
-    * [3. Features](#3-features)
-        + [3.1 Add a record: `add`](#31-add-a-record-add)
-        + [3.2 List the records details: `list`](#32-list-the-records-details-list)
-        + [3.3 View category total amount: `view`](#33-view-category-total-amount-view)
-        + [3.4 Set a loan as return: `return`](#34-mark-a-loan-as-returned-return)
-        + [3.5 Remove a record: `remove`](#35-remove-a-record-remove)
-        + [3.6 Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)
-        + [3.7 Exit the program: `exit`](#37-exit-the-program-exit)
-        + [3.8 Help function: `help`](#38-help-function-help)
-        + [3.9 Records Storage](#39-records-storage)
-    * [4. Frequently Asked Question (FAQ)](#4-faq)
-    * [5. Command Summary](#5-command-summary)
+---
+
+# Table of Contents
+
+---
+
+1. [Introduction](#1-introduction)
+1. [Quick Start](#2-quick-start)
+1. [Features](#3-features)\
+    3.1 [Add a record: `add`](#31-add-a-record-add)\
+    3.2 [List the records details: `list`](#32-list-the-records-details-list)\
+    3.3 [View category total amount: `view`](#33-view-category-total-amount-view)\
+    3.4 [Set a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
+    3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
+    3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
+    3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
+    3.8 [Help function: `help`](#38-help-function-help)\
+    3.9 [Records Storage](#39-records-storage)
+1. [Frequently Asked Questions](#4-frequently-asked-questions)
+1. [Command Summary](#5-command-summary)
 
 
 ## 1. Introduction
+
+---
 
 Finux is a CLI Style application that allows the user to make better financial
 decisions based on the information recorded in the application. If you are familiar
@@ -29,6 +36,8 @@ financial management with Finux rather than using the traditional management sys
 
 
 ## 2. Quick Start
+
+---
 
 1. Ensure you have Java `11` or above installed in your Computer.
 2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v1.0).
@@ -41,7 +50,8 @@ financial management with Finux rather than using the traditional management sys
 
 
 ## 3. Features
-> ❗ **CAUTION:** Insert any warning.
+
+---
 
 > 💡 **Explanation for Command formats:**
 >> Commands in Finux follow these argument orders (depending on the command):
@@ -51,14 +61,14 @@ financial management with Finux rather than using the traditional management sys
 >> * `CMD <FIELD>`
 >> * `CMD [<FIELD>]`
 >> * `CMD`
->>
+>
 >> Argument types and notation:\
 >> `CMD` - a valid command.\
 >> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
 >> `<FIELD>` - an area where data is required.\
 >> `[...]` - optional argument(s).\
 >> `{ ... | ... | ... }` - mutually exclusive arguments.
->>
+>
 > ❗ **Commands and options are case-sensitive:**\
 > E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
 > will not be recognised.\
@@ -78,8 +88,12 @@ financial management with Finux rather than using the traditional management sys
 >> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
 
 ### 3.1 Add a record: `add`
+
+---
+
 > For the `add` command, there is no strict ordering for options.\
 > i.e. options `-a` can come before/after option `-d`.
+
 #### 3.1.1 Add an expense record
 
 This operation will add an expense record to the list.
@@ -118,6 +132,8 @@ Output:
 
 ### 3.2 List the records details: `list`
 
+---
+
 #### 3.2.1 List all expense records
 
 This operation will list all expense records in the list.
@@ -150,22 +166,43 @@ Output:
 
 ### 3.3 View category total amount: `view`
 
-This operation will view the total amount of chosen record type.
+---
 
-Format: `view <OPTION>`
+#### 3.3.1 View total expenses
 
-> Available Options:
->* `-e`: view the total amount of expenditure.
->* `-l`: view the total amount of unreturned loans.
->* `-s`: view the total amount of saving.
+You can view the total expenses using `view` and the option `-e`. 
 
-Examples: `view -e`, `view -l`
+Format: `view -e`
 
 Output:
 
-![view example output](img/ViewExampleOutput.jpg)
+![view expense example output](img/ViewExpenseExampleOutput.jpg)
+
+#### 3.3.2 View total unreturned loans
+
+You can view the total unreturned loan using `view` and the option `-l`.
+
+> 📝 The total amount shown only includes the unreturned loans
+
+Format: `view -l`
+
+Output:
+
+![view loan example output](img/ViewLoanExampleOutput.jpg)
+
+#### 3.3.3 View total savings
+
+You can view the total savings using `view` and the option `-s`.
+
+Format: `view -s`
+
+Output:
+
+![view saving example output](img/ViewSavingExampleOutput.jpg)
 
 ### 3.4 Mark a loan as returned: `return`
+
+---
 
 This operation will mark a loan record as returned by the loanee.
 
@@ -178,6 +215,8 @@ Output:
 ![return example output](img/ReturnExampleOutput.jpg)
 
 ### 3.5 Remove a record: `remove`
+
+---
 
 This operation will remove a record from the record list.
 
@@ -194,6 +233,8 @@ Output:
 
 ### 3.6 Check a person's credit score: `creditscore`
 
+---
+
 This operation will check the credit score of a person.
 
 Format: `creditscore <person>`
@@ -209,28 +250,44 @@ Output:
 
 ### 3.7 Exit the program: `exit`
 
-This operation exit the program.
+---
+
+You can exit the application by typing the `exit` command.
 
 Format: `exit`
 
+Output:
+
+![exit example output](img/ExitExampleOutput.jpg)
+
 ### 3.8 Help function: `help`
 
-This operation lists the help page for the application.
+---
+
+To know how to use each features and their specifications, you can type `help` followed by
+the available features listed below.
+
+> Available Features:
+>* `add`: view the help section for `add` command.
+>* `list`: view the help section for `list` command.
+>* `view`: view the help section for `view` command.
+>* `return`: view the help section for `return` command.
+>* `remove`: view the help section for `remove` command.
+>* `creditscore`: view the help section for `creditscore` command.
+>* `exit`: view the help section for `exit` command.
+>* `all`: view entire help section.
+>* 💡 Just type `help` and you can view the entire help section.
+ 
+Each section is divided into three parts:
+> 1. `NAME` will show you the feature name and its brief description. <br>
+> 2. `SYNOPSIS` will show you the format to follow. <br>
+> 3. `DESCRIPTION` will explain the usage of any arguments or options. <br>
+
+> 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
 
 Format: `help <FEATURE>`
 
-> Available Features:
->* `add`: view the help page for `add` command.
->* `list`: view the help page for `list` command.
->* `view`: view the help page for `view` command.
->* `return`: view the help page for `return` command.
->* `remove`: view the help page for `remove` command.
->* `creditscore`: view the help page for `creditscore` command.
->* `exit`: view the help page for `exit` command.
->* `all`: view entire help page.
->* 💡 **Tip**: Just type `help` and you can view the entire help page.
-
-Examples: `help exit`, `help list`
+Examples: `help remove`
 
 Output:
 
@@ -238,15 +295,17 @@ Output:
 
 ### 3.9 Records storage
 
-#### 3.9.1 Automatically saving all records into a file.
+---
+
+#### 3.9.1 Automatically saving all records into a file
 
 * All records are automatically saved after the following commands: `add`, `remove`, `return`.
 * Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`.
 
-> ❗ **WARNING:** Do ensure that permissions are given for FINUX to write into the folder it is in,
+> ❗ Do ensure that permissions are given for FINUX to write into the folder it is in,
 > FINUX will exit upon unsuccessful file creation.
 
-#### 3.9.2 Automatically loading data from an existing file into FINUX.
+#### 3.9.2 Automatically loading data from an existing file into FINUX
 
 * FINUX will automatically load the data from "finux.txt" when it finds the text
   file in the same directory. <br><br>
@@ -261,13 +320,16 @@ Output:
   ![load fail example output](img/FailedLoadExampleOutput.jpg)
 
 #### 3.9.3 Editing the saved file directly
+
 * The FINUX team encourages more tech-proficient users to edit the save directly.
 
-> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX.
+> 💡 Any minor mistakes in the syntax will lead to the termination of FINUX.
 > The team highly suggests that users only make minor changes like
 > spelling errors instead of inserting new Records into the save file.
 
-## 4. FAQ
+## 4. Frequently Asked Questions
+
+---
 
 **Q1**: How can I transfer my saved tasks information to another computer?
 > Run Finux on the other computer and overwrite the empty `finux.txt` created, with the `finux.txt` that
@@ -283,6 +345,8 @@ Output:
 > Do check and ensure that FINUX has the proper write permissions in the directory.
 
 ## 5. Command Summary
+
+---
 
 | Feature                                | Command                                                  | Example                                              |
 | -------------------------------------- | -------------------------------------------------------- |------------------------------------------------------|
@@ -302,21 +366,3 @@ Output:
 | Help (selected command)                | `help <feature>`                                         | `help exit`, `help list`                             |
 | Help (all commands)                    | `help`                                                   | -                                                    |
 
-#### _List of command formats_
-```
-list { -e | -s | -l }
-
-add { -e | -s | -l } <description> -a <amount> -d <date> [-p <person>]
-
-creditscore <person>
-
-return -i <loan_index> -d <return_date>
-
-remove -i <index>
-
-view { -e | -s | -l }
-
-help [<feature>]
-
-exit
-```
