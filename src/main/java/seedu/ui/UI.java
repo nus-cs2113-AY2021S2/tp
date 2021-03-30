@@ -96,7 +96,7 @@ public class UI {
     }
 
     public static String cleanseInput(String input) {
-        return input.replaceAll("[^A-Za-z0-9]","");
+        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
     }
 
     public static void invalidCommandErrorMessage() {

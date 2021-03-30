@@ -5,7 +5,6 @@ import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.staff.BlankInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;

@@ -2,12 +2,13 @@ package seedu.exceptions;
 
 public class DuplicateIDException extends HealthVaultException {
 
-    public DuplicateIDException(String error) {
-        this.error = error;
+    private String IDType;
+
+    public DuplicateIDException(String IDType) {
+        this.IDType = IDType;
     }
 
-    @Override
-    public void getError(String input) {
-        super.getError(input);
+    public String getMessage() {
+        return "The " + IDType + " has already been taken! Use a different ID!";
     }
 }
