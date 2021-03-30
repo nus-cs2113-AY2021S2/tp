@@ -2,41 +2,41 @@
 
 ## Table of Contents
 
-* [Patient Manager Developer Guide](#patient-manager-developer-guide)
-  * [Table of Contents](#table-of-contents)
-  * [Introduction](#introduction)
-  * [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
-  * [Design & implementation](#design--implementation)
-    * [Architecture](#architecture)
-      * [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
-    * [UI Component](#ui-component)
-    * [Parser Component](#parser-component)
-    * [Logic Component](#logic-component)
-    * [Model Component](#model-component)
-    * [Storage Component](#storage-component)
-    * [Exception Component](#exception-component)
-    * [Commons](#commons)
-  * [Appendix A: Product scope](#appendix-a-product-scope)
-    * [Target user profile](#target-user-profile)
-    * [Value proposition](#value-proposition)
-  * [Appendix B: User Stories](#appendix-b-user-stories)
-  * [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
-  * [Appendix D: Glossary](#appendix-d-glossary)
-  * [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
-    * [Launch, Help and Shutdown](#launch-help-and-shutdown)
-    * [Adding and Loading Patients](#adding-and-loading-patients)
-    * [Adding and Viewing a Patient's Visit Records](#adding-and-viewing-a-patients-visit-records)
-    * [Saving Data](#saving-data)
+* [Introduction](#introduction)
+* [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
+* [Design & implementation](#design--implementation)
+  * [Architecture](#architecture)
+    * [How the architecture components interact with each other](#how-the-architecture-components-interact-with-each-other)
+  * [UI Component](#ui-component)
+  * [Parser Component](#parser-component)
+  * [Logic Component](#logic-component)
+  * [Model Component](#model-component)
+  * [Storage Component](#storage-component)
+  * [Exception Component](#exception-component)
+  * [Commons](#commons)
+* [Appendix A: Product scope](#appendix-a-product-scope)
+  * [Target user profile](#target-user-profile)
+  * [Value proposition](#value-proposition)
+* [Appendix B: User Stories](#appendix-b-user-stories)
+* [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
+* [Appendix D: Glossary](#appendix-d-glossary)
+* [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
+  * [Launch, Help and Shutdown](#launch-help-and-shutdown)
+  * [Adding and Loading Patients](#adding-and-loading-patients)
+  * [Adding and Viewing a Patient's Visit Records](#adding-and-viewing-a-patients-visit-records)
+  * [Saving Data](#saving-data)
 <!-- ^ The above table of content is auto generated -->
 <!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
 
 ## Introduction
 
-Patient Manager is a _Command Line Interface_ (CLI) application for _general practitioners_ (GP)
+Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
 who work in clinics to manage their patient list. This includes a recording/retrieval of
 past record of visit, scheduling of the next appointment, and some other features listed below.
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
 to organize the records of their patients.
+
+<!-- TODO: add a description on this DG -->
 
 ## Setting up the project in your computer
 
