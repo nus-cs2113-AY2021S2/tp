@@ -6,7 +6,7 @@ public class Constants {
             + "Argument(s): IC number\n"
             + "Usage: add IC_NUMBER\n"
             + "Example: add S1234567D\n";
-    public static final String DELETE_INFO_MESSAGE = "Delete a patient from the list or delete a patient's"
+    public static final String DELETE_INFO_MESSAGE = "Delete a patient from the list or delete a patient's "
             + "consultation details for a specific date\n"
             + "Command prefix: delete\n"
             + "Argument(s): IC number or date\n"

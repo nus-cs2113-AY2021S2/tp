@@ -58,7 +58,7 @@ Argument(s): IC number
 Usage: add IC_NUMBER
 Example: add S1234567D
 
-Delete a patient from the list or delete a patient'sconsultation details for a specific date
+Delete a patient from the list or delete a patient's consultation details for a specific date
 Command prefix: delete
 Argument(s): IC number or date
 Usage: delete [/p IC_NUMBER]
