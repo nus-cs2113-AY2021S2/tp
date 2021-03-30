@@ -41,7 +41,7 @@ The `delete note` command also calls `NotesStorage#overwriteNotesListFile()`, ca
 Step 5. The user executes `like E4` command to add a location to favourites. <br /> The `like` command calls `FavouriteLocationsStorage#save()`, causing the modified state of the `favouritesList` to be saved into the `favouritesList.txt`. <br />
 Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`, `DailyRouteStorage#overwriteDailyRouteFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
 but not all files will be modified. The above steps explains which lists will be modified after the commands listed above are called.
-For all other commands, they also call the overwrite functions but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
+For all other commands, they also call the overwrite functions, but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
 Thus, the `aliasList.txt`, `routesHistoryList.txt`, `notesList.txt`, `dailyRouteList.txt`  and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
 #### Design Consideration
 Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
@@ -93,17 +93,42 @@ The `Storage` class has the feature to save the custom aliases into a local file
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 >>>>>>> 0cdea5e12cd6ca39621c809264486a14d423191e
 
-Step 1. The user launches the application for the first time. If there is a storage file with pre-exisiting alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data and an empty hashmap if it does not exist.  
+Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
 
 Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. The new command will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
 Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
 
-Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
+Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
 Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and `Got it! Successfully deleted ALIASTOREMOVE from the aliases` will be displayed to the user.  
 
 Step 6. The user executes `bye` and exits the app. This will invoke the instance of the `Storage` class which will convert the hashmap into the text file format and append to the text file to save the alias data locally.    
+
+### History feature
+
+#### Implementation
+Whenever the user inputs the `go` command, and enters a valid start and destination address, a String consisting the start and end block is created and stored in `historyList`. 
+The contents of the `historyList` will be stored into a text file named `historyList.txt` when NUSMaze terminates.
+
+#### Loading of saved history
+When NUSMaze starts running, any contents from `historyList.txt` file would be loaded and stored into `historyList`.
+Refer to the section on **Storage** for more information.
+
+#### Showing past searches
+The user can enter the command `history`, and a numbered list of past searches will be shown to the user.
+If there were no past searches, a line of text `"Oops! You have no past history!"` will be shown to the user.
+
+#### Repeat past searches
+The user can enter the command `repeat history` to request for a repeat of past searches.
+If there are no past searches, a line of text `"Oops! You have no past history!"` will be shown to the user.
+If there is at least one entry in `historyList`, then all past searches would be shown to the user, in a numbered list format. 
+(Only the starting location and destination location will be shown.)
+The user is then prompted to enter the index of the past search to repeat.
+
+#### Clear past searches
+The user can enter the command `clear history` to delete all the contents of `historyList`.
+A message: `"Your history has been successfully cleared"` will be shown to the user upon successful deletion of the contents of `historyList`.
 
 #### Design Consideration
 Alternative 1 (current choice): Each command to add, view and delete are implemented using separate classes.  
@@ -111,7 +136,7 @@ Pros: Easy to understand and each command is standalone.
 Cons: Might have to repeat some code fragments.  
 
 Alternative 2: Place all commands (add, view, delete) as functions in 1 command class.  
-Pros: Lesser code to be written and hashmap can be shared by the 3 commands in 1 class.  
+Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
 ### Target user profile
