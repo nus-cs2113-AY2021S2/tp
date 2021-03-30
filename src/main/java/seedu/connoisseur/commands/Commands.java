@@ -104,7 +104,7 @@ public class Commands {
     /**
      * List reviews or recommendations depending on the mode.
      *
-     * @param input        is the sorting preference used to list, only applicable in review mode.
+     * @param input is the sorting preference used to list, only applicable in review mode.
      */
     public void list(String input) {
         if (isReviewMode) {
@@ -117,7 +117,7 @@ public class Commands {
     /**
      * Sort reviews depending on the mode.
      *
-     * @param sortType     is the sorting preference, only applicable in review mode.
+     * @param sortType is the sorting preference, only applicable in review mode.
      */
     public void sort(String sortType) {
         if (isReviewMode) {
@@ -130,7 +130,7 @@ public class Commands {
     /**
      * Delete reviews or recommendations depending on the mode.
      *
-     * @param title        is the title of review or recommendation to be deleted.
+     * @param title is the title of review or recommendation to be deleted.
      */
     public void delete(String title) {
         if (isReviewMode) {
@@ -156,8 +156,8 @@ public class Commands {
     /**
      * Add a selected review or recommendation.
      *
-     * @param input        will be quick or long in review mode.
-     *                     will be the recommendation title in the recommendation mode.
+     * @param input will be quick or long in review mode.
+     *              will be the recommendation title in the recommendation mode.
      */
     public void add(String input) {
         if (isReviewMode) {
@@ -170,7 +170,7 @@ public class Commands {
     /**
      * Edits a review.
      *
-     * @param title        title of review
+     * @param title title of review
      */
     public void edit(String title) {
         if (isReviewMode) {

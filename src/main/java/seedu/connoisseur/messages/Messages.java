@@ -72,8 +72,6 @@ public class Messages {
     public static final String RECOBY_PROMPT = "How did you know about this recommendation";
     public static final String LOCATION_PROMPT = "Where is this located at? (NA if not applicable)";
     public static final String ADD_SUCCESS = " has been saved to your list.";
-    public static final String MISSING_RECO_TITLE = "Please specify title of recommendation";
-
 
     // Sort
     public static final String CURRENT_SORT_METHOD = "Your current sort method is: ";
