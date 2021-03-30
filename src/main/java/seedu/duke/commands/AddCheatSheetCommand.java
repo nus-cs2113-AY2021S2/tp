@@ -30,18 +30,18 @@ public class AddCheatSheetCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        String directoryPath = getDirectoryPath(module);
         if (fileName.isEmpty()) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
-        String filePath = directoryPath + fileName + TXT_FORMAT;
-        Path path;
         try {
+            String directoryPath = getDirectoryPath(module);
+            String filePath = directoryPath + fileName + TXT_FORMAT;
+            Path path;
             path = Paths.get(filePath);
+            openTextEditor(ui, path, filePath);
         } catch (InvalidPathException e) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
-        openTextEditor(ui, path, filePath);
     }
 
     public void openTextEditor(UI ui, Path path, String filePath) {
