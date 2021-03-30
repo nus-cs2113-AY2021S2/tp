@@ -190,10 +190,9 @@ The main application logic underlines the main executable conditions that make u
 2. `FridgeFriend` then uses the `Parser` class to parse the user input.
 3. This results in the construction of a `Command` object that is returned to `FridgeFriend`.
 4. Following that, `FridgeFriend` then self-invokes a method that executes the `Command` object.
-5. In this method, the `Command` object is first updated with the existing fridge contents.
-6. The command then executes its specified action.
-7. From steps 2 to 6, should there be an error thrown, the `Command` class would construct an `Exception` object.
-8. Lastly, the `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
+5. In this method, the `Command` object  executes its specified action.
+6. From steps 2 to 5, should there be an error thrown, the `Command` class would construct an `Exception` object.
+7. Lastly, the `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
 
 Given below is the sequence diagram for the interactions within the main application logic.
 
