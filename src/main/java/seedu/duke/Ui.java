@@ -18,11 +18,12 @@ public class Ui {
             "The following are several accepted commands by Diliveri:\n\n" +
                     "'help': Displays this help message\n" +
                     "'profile': Displays your profile\n" +
-                    "'editprofile': Allows you to edit your profile details\n" +
+                    "'edit': Allows you to edit your profile details\n" +
                     "'start': Loads up an allocated delivery assignment into the delivery list\n" +
                     "'list': Displays the list of deliveries in your assignment\n" +
-                    "'viewdelivery <number>': Displays details of the selected delivery\n" +
+                    "'view <number>': Displays details of the selected delivery\n" +
                     "'complete <number>': Marks the selected delivery as completed\n" +
+                    "'record': Displays the list of completed deliveries and the respective income earned\n" +
                     "'route': Displays optimised delivery path";
 
     /**

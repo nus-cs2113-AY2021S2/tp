@@ -29,10 +29,37 @@ the `Delivery` class is not especially involved in the `Deliveryman`'s `records`
 `records` is present only in the `Deliveryman` class.
 
 The general interaction between the abovementioned classes are briefly illustrated in the sequence diagram
-shown below. Note the two different completeDelivery() methods that are called here. Despite having
+shown below. Note the two different `completeDelivery()` methods that are called here. Despite having
 similar names, their impacts are felt by different classes and maintains the abstraction between classes
 
 ![Retrieve Records](diagrams/RetrieveRecords.png "Retrieving Records Sequence Diagram")
+
+### [Implementation] : Feature [2]
+
+### [Implementation] : List Assigned Deliveries
+
+All deliverymen would want have a list of deliveries that are assigned to them so that they would be able to get an 
+overview delivery jobs that have on that day.
+
+The primary class involved executing this function is `Delivery`.
+
+Whenever the user request for the delivery list, the `Ui` class will call the `showDeliveryList()` method. 
+
+The `showDeliveryList()` in Delivery then subsequently retrieve the list of deliveries from the static variable 
+`DeliveryList.deliveries`. This static variable contains the list of completed and uncompleted deliveries. 
+
+Having obtained the list of deliveries, the program will iterate through this list of `Delivery` objects and calls the 
+`toString()` method that has been overridden in the `Delivery` class. The `toString()` method has been overridden 
+specifically to return a formatted string that includes `deliveryID`,  `DeliveryStatusSymbol`, `Address` and `Recipient`
+information for each delivery job. 
+
+The sequence of program flow was chosen as it allows for proper abstraction of the classes. The `Ui` class will only 
+handle the User Interface aspect of the code execution. 
+
+The general interaction between the abovementioned classes are briefly illustrated in the sequence diagram
+shown below. 
+
+![Retrieve Records](diagrams/List.png "Retrieving Records Sequence Diagram")
 
 ## Product scope
 ### Target user profile
