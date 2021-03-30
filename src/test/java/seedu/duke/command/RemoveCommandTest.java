@@ -37,15 +37,15 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [E][2020-01-01] electric bills " + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveExpense_removeExpenseCmd_success', wrong output.");
         System.setOut(originalOut);
@@ -69,15 +69,15 @@ class RemoveCommandTest {
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [L][2020-01-01] loan to bob [ ]" + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveLoan_removeLoanCmd_success', wrong output.");
         System.setOut(originalOut);
@@ -95,21 +95,20 @@ class RemoveCommandTest {
         String removeSavingCmd = "remove -i 4";
         ParserHandler parserHandler = new ParserHandler();
         Command command = commandHandler.parseCommand(parserHandler.getParseInput(removeSavingCmd), records);
-
         assertTrue(command instanceof RemoveCommand, "Failed test 'executeRemoveSaving_removeSavingCmd_success', "
                 + "command object returned by parseCommand() is not an instance of RemoveCommand");
 
         Ui ui = new Ui();
         Storage storage = new Storage();
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
         String expectedOutput = "=========================================================" + System.lineSeparator()
                 + "This record will be removed: [S][2020-01-01] red packet " + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
-        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveSaving_removeSavingCmd_success', wrong output.");
         System.setOut(originalOut);

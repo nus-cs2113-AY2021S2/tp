@@ -152,18 +152,19 @@ public class AddCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         switch (recordType) {
         case EXPENSE:
             Expense expenseObj = new Expense(amount, issueDate, description);
             recordList.addRecord(expenseObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description, borrowerName);
             recordList.addRecord(loanObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
             break;
         case SAVING:
@@ -171,7 +172,7 @@ public class AddCommand extends Command {
         default:
             Saving savingObj = new Saving(amount, issueDate, description);
             recordList.addRecord(savingObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(savingObj, recordList.getRecordCount());
         }
     }

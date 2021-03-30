@@ -72,10 +72,10 @@ public class ReturnCommand extends Command {
         try {
             int index = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
             Record currentRecord = recordList.getRecordAt(index);
-            if (currentRecord instanceof Loan) {
-                return index;
+            if (!(currentRecord instanceof Loan)) {
+                throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!", COMMAND_RETURN);
             }
-            throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!", COMMAND_RETURN);
+            return index;
         } catch (NumberFormatException e) {
             throw new CommandException("Index \"" + recordNumberStr + "\" is not an integer!", COMMAND_RETURN);
         } catch (IndexOutOfBoundsException e) {
@@ -111,18 +111,19 @@ public class ReturnCommand extends Command {
      * @param storage    is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
         Loan currentLoan = (Loan) currentRecord;
         if (!currentLoan.isReturn()) {
             currentLoan.markAsReturned(returnDate);
             String borrowerNameInLowerCase = currentLoan.getBorrowerName().toLowerCase();
-            int creditScore = creditScoreMap.getCreditScore(borrowerNameInLowerCase);
+            int creditScore = creditScoreReturnedLoansMap.getCreditScoreOf(borrowerNameInLowerCase);
             long daysDifference = getDaysDifference(currentLoan.getIssueDate(), currentLoan.getReturnDate());
             creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
-            creditScoreMap.updateCreditScoreMap(borrowerNameInLowerCase, creditScore);
+            creditScoreReturnedLoansMap.insertCreditScoreOf(borrowerNameInLowerCase, creditScore);
         }
         ui.printMessage("Loan marked as returned: " + currentLoan);
-        storage.saveData(recordList, creditScoreMap);
+        storage.saveData(recordList, creditScoreReturnedLoansMap);
     }
 }

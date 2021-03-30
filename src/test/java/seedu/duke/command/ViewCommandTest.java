@@ -49,8 +49,8 @@ class ViewCommandTest {
         Ui ui = new Ui();
         Storage storage = new Storage();
         ParserHandler parserHandler = new ParserHandler();
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         RecordList records = getPopulatedRecordList(viewCmdTypeToTest);
         CommandHandler commandHandler = new CommandHandler();
 
@@ -62,7 +62,7 @@ class ViewCommandTest {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream viewCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(viewCmdBos));
-        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         System.setOut(originalOut);
         assertTrue(viewCmdBos.toString().equals(expectedOutput), String.format("Failed test '%s', wrong output.",
                 viewCmdTestName));

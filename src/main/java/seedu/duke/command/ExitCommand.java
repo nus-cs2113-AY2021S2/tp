@@ -35,7 +35,8 @@ public class ExitCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         System.out.println(MESSAGE_EXITING);
     }
 

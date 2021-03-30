@@ -85,10 +85,11 @@ public class RemoveCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
         ui.printMessage("This record will be removed: " + currentRecord);
         recordList.deleteRecordAt(recordNumberInt);
-        storage.saveData(recordList, creditScoreMap);
+        storage.saveData(recordList, creditScoreReturnedLoansMap);
     }
 }
