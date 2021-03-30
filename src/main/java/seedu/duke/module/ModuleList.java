@@ -43,6 +43,7 @@ public class ModuleList {
     }
 
     //@@author 8kdesign
+
     /**
      * Searches directory for module files.
      * Adds their name (excluding ".txt") to the module list.
@@ -84,6 +85,7 @@ public class ModuleList {
     }
 
     //@@author isaharon
+
     /**
      * Deletes modules specified.
      *
@@ -104,6 +106,7 @@ public class ModuleList {
     }
 
     //@@author 8kdesign
+
     /**
      * Removes selected module and deletes module file.
      *
@@ -162,7 +165,7 @@ public class ModuleList {
         Writer writer = new Writer();
         writer.writeModule();
     }
-    
+
     /**
      * Sorts tasks by deadline.
      */
@@ -178,6 +181,7 @@ public class ModuleList {
     }
 
     //@@author H-horizon
+
     /**
      * Sorts lesson list by lesson type.
      */
