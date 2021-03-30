@@ -228,6 +228,22 @@ is returned to the main program.
 The sequence diagram shows how the `list` operation works:
 
 ![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
+
+
+### HistoryCommand
+
+The code related to persistent storage for the `history` command is implemented under the `Storage` class
+under the `Utilities` component.
+
+The implementation of the `history` command is as follows:
+1. After every `add` command, a copy of the added food will be appended to `historyData.txt`
+2. When the user invokes the `history` command, `historyData.txt` will be read, line by line.
+3. The line-by-line contents of `historyData.txt` are concatenated into a single output string  
+4. The output string that contains the history data will be output to the user.
+
+Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
+
+
 ## Product Scope
 
 ---
