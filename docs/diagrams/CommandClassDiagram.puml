@@ -19,6 +19,7 @@ package Command <<Rectangle>> {
     class ByeCommand
     class RunningLowCommand
     class ExpiringCommand
+    Class HistoryCommand
 }
 
 package Fridge <<Rectangle>>  {
@@ -65,10 +66,14 @@ class ListCommand {
 
 class SearchCommand {
   -foodName: String
+  -isFound: boolean
+  -index: int
   +execute(): void
   -showResults(): void
   +getMessagePrintedToUser(): String
-  -getIndexOfFoodStored(): int
+  -getSearchByNameMessage(): String
+  -isContain(message: StringBuilder, food:Food): void
+  -updateMessage(message: StringBuilder, food:Food): void
 }
 
 class SetLimitCommand {
@@ -110,18 +115,28 @@ class ExpiringCommand {
   +addToMessage(food: Food): void
 }
 
+class HistoryCommand {
+  -description: String
+  +execute(): void
+  -isClearHistory(): boolean
+  -clearHistory(): void {static}
+  +getHistoryMessage(): String {static}
+  -printHistory(): void
+}
+
 Command ---.down> Fridge: uses
 Command ---.down> UI: prints with
 FridgeFriend ---.down> Command: execute >
 AddCommand --right|> Command
 RemoveCommand --down|> Command
 ListCommand ---down|> Command
-SearchCommand ---down|> Command
-SetLimitCommand ---up|> Command
+SearchCommand ---up|> Command
+SetLimitCommand ---down|> Command
 HelpCommand --up|> Command
 ClearCommand --up|> Command
 ByeCommand --down|> Command
 RunningLowCommand --left|> Command
 ExpiringCommand ---up|> Command
+HistoryCommand ---down|> Command
 
 @enduml
