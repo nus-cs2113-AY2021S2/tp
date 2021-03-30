@@ -614,7 +614,7 @@ public class Ui {
 
     public static void printModuleNumberDoesNotExistMessage() {
         System.out.println("A module for that number does not exist. "
-                + "Would you like to add this module? [Y/N]");
+                + "Would you like to add a module? [Y/N]");
     }
 
     public static void printModuleList() {

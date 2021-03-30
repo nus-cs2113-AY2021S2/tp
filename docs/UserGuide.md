@@ -6,14 +6,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[1.1 About UniTracker](#11-about-unitracker)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.2 About This User Guide](#12-about-this-user-guide)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.3 How to Use This User Guide](#13-how-to-use-this-user-guide)  
-&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)
-
+&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)  
 
 [2. Quick Start](#2-quick-start)  
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 System Requirements](#21-system-requirements)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and Above](#211-windows-7-and-above)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.2 Mac OS](#212-mac-os)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)  
+&nbsp;&nbsp;&nbsp;&nbsp;[2.2 Start Up](#22-start-up)  
 
 [3. Features](#3-features)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
@@ -60,14 +60,14 @@
 
 ---
 
-## 1. Introduction to Unitracker
+## 1. Introduction to UniTracker
 
 UniTracker is a one-stop application for NUS students to keep track of their work in school. This product is optimal for students who prefer Command Line Interface (CLI) over
 Graphical User Interface (GUI).
 
 ### 1.1 About UniTracker
 
-UniTracker comprises of 4 key features (refer to [Section 3. Features](#3-features)) that helps to organise all the information they
+UniTracker consists of 4 key features (refer to [Section 3. Features](#3-features)) that helps to organise all the information they
 need in one place. You can add and edit module information, tasks, zoom links to suit
 their needs.
 
@@ -85,7 +85,12 @@ specific sections to explore, learn and use UniTracker.
 
 ### 1.4 Conventions in This User Guide
 
-1. In the example code for each feature, all user inputs will be enclosed in square brackets. E.g. `[user input]` 
+In the example code for each feature, all user inputs will start with an angle bracket. E.g. `> user input` 
+>**Note!**  
+> This is a note section. Additional useful information will be written in sections such as this one.
+
+>**WARNING!**  
+> This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
 ---
 
@@ -93,10 +98,10 @@ specific sections to explore, learn and use UniTracker.
 
 ### 2.1 System Requirements
 
-- Operating system should be: Windows 7 and above, macOS or Linux.
-- Ensure that Java 11 is installed on your computer.
-    - You can download the latest version of Java 11
-      from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+Your operating system should be: Windows 7 and above, macOS or Linux.
+
+Next, ensure that Java 11 is installed on your computer. You can download the latest version of Java 11
+from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
 #### 2.1.1 Windows 7 and Above
 
@@ -133,23 +138,34 @@ specific sections to explore, learn and use UniTracker.
 
 ### 2.2 Start Up
 
-- Upon successful installation of your Jar file, you should see this welcome message after running
+Upon successful installation of your Jar file, you should see this welcome message after running
   the Jar file:
   ````  
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+   Welcome to 
+     _   _               _      _____                                _
+    | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _
+    | |_| |  | ' \      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|
+     \___/   |_||_|    _|_|_    _|_|_    _|_|_   \__,_|    \__|_    |_\_\    \___|    _|_|_
+   _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
+   "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
 
+  This is the list of your pinned tasks:
+
+  Main Menu:
+  [1] Module Information
+  [2] CAP Simulator/Calculator
+  [3] Task Manager
+  [4] External Links
+  [5] Exit Program
   ````
+In order to start using our features, navigate to your desired menu by inputting the respective index. 
+E.g. `1` would bring you to the Module Information Menu.
 
 ---
 
 ## 3. Features
 
-This section gives a detailed description of each feature.
+This section gives a detailed description of each feature, including examples to aid your understanding.
 
 ### 3.1 Module Information
 
@@ -542,7 +558,7 @@ The simulated cumulative average point you have is:
 
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, mark or unmark as done, delete, pin or view your tasks.
+The task manager feature allows you to add, mark or unmark as done, delete, pin and view your tasks.
 
 Task Manager menu:
 
@@ -550,63 +566,96 @@ Task Manager menu:
 Welcome to the Task Manager menu ^o^
 Please choose which action you would like to do and enter the number:\n"
 [1] --- Add New Task
-[2] --- Delete a Task
-[3] --- View All Tasks
-[4] --- Pin a Task
-[5] --- Exit
+[2] --- Mark/Unmark a Task as Done
+[3] --- Delete a Task
+[4] --- View All Tasks
+[5] --- Pin a Task
+[6] --- Exit
 ````
 
 #### 3.3.1 Add New Task
 
 Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the task list.
 
-* `Add New Task` menu:
+Example for adding a task of type `task` with the task description of `Work on user guide` and message being `Wow yay~`:
+  
+>**Note!**  
+> In this example, module `CS2113T` has already been added through the [add module](#311-addview-module-description) feature.
+  
   ````
   Please choose which type of task you would like to add and enter the number:
   [1] --- Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
-  ````
-* Example for adding a `task`:  
-  Input:  
-  `1`  
-  Output:  
-  `What is the module of the task you want to add?`  
-  Input:  
-  `CS2113T`  
-  Output:  
-  `What is the description of the task you want to add?`  
-  Input:  
-  `Work on user guide`  
-  Output:  
-  `What is the message you would like to see after completing this?`  
-  Input:  
-  `Wow yay~`  
-  Output:
-  ````
+  > 1
+  --------------------------------------------
+  What is the module of the task you want to add? Enter the number:
+  
+  This is the list of modules:
+  [1] CS2113T
+  > 1
+  --------------------------------------------
+  What is the description of the task you want to add?
+  > Work on user guide
+  --------------------------------------------
+  What is the message you would like to see after completing this?
+  > Wow yay~
+  --------------------------------------------
   You've added this: [CS2113T] Work on User Guide
   Returning back to TaskManager menu now!
   ````
-* For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-    * Format for date: `yyyy-mm-dd`
-    * Format for time (24-h clock): `hh:mm`
-    * Example:  
-      Output:  
-      `What is the date of the assignment you want to add?`  
-      Input:  
-      `2021-03-14`
-      Output:  
-      `What is the time of the assignment you want to add?`  
-      Input:  
-      `23:59`  
-      Output:
-      ````
-      You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-      Returning back to TaskManager menu now!
-      ````  
+
+For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
+The format for the date and time input is as follows:  
+
+- Time: YYYY-MM-DD   
+  (Y stands for the year, M stands for the month and D stands for the day)  
+- Date: HH:MM  
+  (H stands for hour in 24H standard and M stands for minute)
+ 
+Example for adding a task of type `assignment` with the task description of `Work on user guide` and message being `Wow yay~`:
+
+NOTE: In this example, module `CS2113T` has already been added through the [add module](#311-addview-module-description) feature.
+  ````
+Please choose which type of task you would like to add and enter the number:
+[1] --- Task
+[2] --- Assignment
+[3] --- Midterm
+[4] --- Final Exam
+> 1
+--------------------------------------------
+What is the module of the task you want to add? Enter the number:
+
+This is the list of modules:
+[1] CS2113T
+> 1
+--------------------------------------------
+What is the description of the task you want to add?
+> Work on user guide
+--------------------------------------------
+What is the date of the assignment you want to add?
+> 2021-03-14
+--------------------------------------------
+What is the time of the assignment you want to add?
+> 23:59
+--------------------------------------------
+What is the message you would like to see after completing this?
+> Wow yay~
+--------------------------------------------
+You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+Returning back to TaskManager menu now!
+````
+>**Note!**  
+> If you were to input an invalid module index when choosing the module of the task,
+> you will be asked if you want to add a new module. Example:
+> ````
+> A module for that number does not exist.
+> Would you like to add a module? [Y/N]
+> ````
   
 #### 3.3.2 Mark/Unmark a Task as Done
+
 
 #### 3.3.3 Delete a Task
 
