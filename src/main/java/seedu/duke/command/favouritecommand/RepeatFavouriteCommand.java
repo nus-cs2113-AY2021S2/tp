@@ -20,7 +20,7 @@ public class RepeatFavouriteCommand extends Command {
             ui.showFavourites(favourite);
             int repeatIndex = ui.getRepeatIndex();
             String[] routeInfo = favourite.getSpecificEntry(repeatIndex - 1);
-            String route = new Router().execute(nusMap, blockAlias, routeInfo[0], routeInfo[1]);
+            String route = new Router().execute(nusMap, routeInfo[0], routeInfo[1]);
             history.addHistory(routeInfo[0], routeInfo[1]);
             ui.showMessageWithDivider(route);
         } catch (InvalidBlockException | EmptyFavouriteException | InvalidIndexException e) {
