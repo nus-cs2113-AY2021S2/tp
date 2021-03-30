@@ -15,10 +15,10 @@ public class MainChecker {
         }
     }
     public static void checkDataNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
-        if (line.split("|").length < min) {
+        if (line.split("\\|").length < min) {
             throw new InsufficientInputException();
         }
-        if (line.split("}").length > max) {
+        if (line.split("\\|").length > max) {
             throw new ExcessInputException();
         }
     }
@@ -44,7 +44,7 @@ public class MainChecker {
         }
     }
     public static void checkBlankInputForStorage(String line) throws NoInputException {
-        String[] array = line.split("|");
+        String[] array = line.split("\\|");
         for (String s : array) {
             if (s.trim().equals("")) {
                 throw new NoInputException();
