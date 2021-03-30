@@ -4,7 +4,7 @@
 
 `FridgeFriend` is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 3.2kLoC.
+It is written in Java, and has more than 4.3kLoC.
 
 ## Contents
 
@@ -638,7 +638,7 @@ These text files are used to store data in the disk for various commands during 
            * If the corrupted category is readable: No error message will be shown. User can only identify that data
              has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to
              corruption will be reset to `500`.
-          * If the corrupted category is unreadable:
+           * If the corrupted category is unreadable:
 
             ```lang-none
             There was an error loading the data for FridgeFriend!
@@ -666,7 +666,7 @@ These text files are used to store data in the disk for various commands during 
     * Content is loaded from disk only when `history` command is invoked.
     * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon executing the `history`
       command. No further action needed.
-   * _Corrupted data file:_
+    * _Corrupted data file:_
        * Test case: If corrupted data is readable. No error message will be shown. User can only identify that data
              has been corrupted when using the `history` command. The `history` command will continue to print out
             the contents of the file, including the corrupted data.

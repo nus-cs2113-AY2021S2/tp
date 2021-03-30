@@ -70,7 +70,6 @@ public class Parser {
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
@@ -111,7 +110,6 @@ public class Parser {
      * @return Command object
      * @throws EmptyDescriptionException if the required description field is empty
      * @throws InvalidInputException if the command is not recognised
-     * @throws InvalidIndexException if the index given in description is out of bounds
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
