@@ -92,7 +92,7 @@ public class Storage {
      * Reads from the data file and converts the data into a format usable by Patient Manager.
      *
      * @return data used by Patient Manager
-     * @throws IOException
+     * @throws IOException errors when reading file
      */
     public SortedMap<String, Patient> load() throws IOException {
         SortedMap<String, Patient> data = new TreeMap<>();
@@ -119,7 +119,7 @@ public class Storage {
 
     //@@author Emkay16
     /**
-     * Converts lines read from the data file into records used by Patient Manager
+     * Converts lines read from the data file into records used by Patient Manager.
      *
      * @param recordString line of text read from data file
      * @return TreeMap of records converted from recordString
@@ -151,7 +151,7 @@ public class Storage {
         return records;
     }
 
-    private ArrayList<String> splitStringIntoArrayList (String stringToSplit) {
+    private ArrayList<String> splitStringIntoArrayList(String stringToSplit) {
         String[] stringArray = stringToSplit.split(Constants.DETAILS_DELIMITER);
         ArrayList<String> arrayList = new ArrayList<>();
         for (String string : stringArray) {
