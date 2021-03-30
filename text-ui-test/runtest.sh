@@ -8,7 +8,7 @@ cd ..
 
 cd text-ui-test
 
-rm /f pm.save
+rm -f pm.save
 
 java  -jar $(find ../build/libs/ -mindepth 1 -print -quit) < input.txt > ACTUAL.TXT
 
