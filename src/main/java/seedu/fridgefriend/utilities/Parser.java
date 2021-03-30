@@ -12,6 +12,7 @@ import seedu.fridgefriend.command.ClearCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
+import seedu.fridgefriend.command.HistoryCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.RunningLowCommand;
@@ -34,6 +35,7 @@ public class Parser {
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
 
+    //@@author Vinci-Hu
     /**
      * Define arguments format for add food command.
      * A Pattern object which defines how the input string for food item
@@ -53,6 +55,7 @@ public class Parser {
             Pattern.compile("(?<name>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
 
+    //@@author
     /**
      * Define arguments format for remove food command with quantity.
      */
@@ -148,6 +151,9 @@ public class Parser {
         case "clear":
             command = Parser.getClearCommand();
             break;
+        case "history":
+            command = Parser.getHistoryCommand(description);
+            break;
         case "bye":
             command = Parser.getByeCommand();
             break;
@@ -175,8 +181,9 @@ public class Parser {
         return addCommand;
     }
 
+    //@@author Vinci-Hu
     /**
-     * Parses description into name, foodCategory, expiryDate and storageLocation.
+     * Parses description into name, foodCategory, expiryDate and storageLocation and quanity.
      * Matcher objects will try to parse a string according to the Pattern we define
      * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
      *
@@ -208,6 +215,7 @@ public class Parser {
         }
     }
 
+    //@@author
     /**
      * Returns a ListCommand object based on description.
      *
@@ -234,9 +242,21 @@ public class Parser {
         return removeCommand;
     }
 
+    //@@author Vinci-Hu
+    /**
+     * Parses description into name and quantity.
+     * Matcher objects will try to parse a string according to the Pattern we define
+     * like above FOOD_DATA_ARGS_FORMAT. For other future parsers can copy the usage here.
+     *
+     * @param removeDescription the string in the required format of food description
+     * @return a new RemoveCommand for Food
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parsed
+     * @throws InvalidDateException if the date input cannot be parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
+     */
     private static Command parseRemoveDescription(String removeDescription)
-            throws EmptyDescriptionException, InvalidQuantityException,
-            FoodNameNotFoundException, InvalidInputException {
+            throws EmptyDescriptionException, InvalidQuantityException, InvalidInputException {
         if (removeDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -250,6 +270,7 @@ public class Parser {
         }
     }
 
+    //@@author
     /**
      * Returns a SearchCommand object based on description.
      *
@@ -262,6 +283,7 @@ public class Parser {
         return searchCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns an ExpiringCommand object.
      */
@@ -270,6 +292,7 @@ public class Parser {
         return expiringCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a RunningLowCommand object.
      */
@@ -278,6 +301,7 @@ public class Parser {
         return runningLowCommand;
     }
 
+    //@@author kwokyto
     /**
      * Returns a SetLimitCommand object.
      * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
@@ -291,6 +315,7 @@ public class Parser {
         return setLimitCommand;
     }
 
+    //@@author kwokyto
     private static Command parseSetLimitDescription(String description) throws EmptyDescriptionException,
             InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
         if (description.isEmpty()) {
@@ -304,11 +329,12 @@ public class Parser {
         if (!FoodCategory.isValidCategory(foodCategoryString)) {
             throw new InvalidFoodCategoryException(foodCategoryString);
         }
-        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);            
+        FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);
         int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
         return new SetLimitCommand(foodCategory, quantity);
     }
 
+    //@@author kwokyto
     /**
      * Returns a HelpCommand object.
      *
@@ -328,6 +354,17 @@ public class Parser {
     private static Command getClearCommand() {
         Command clearCommand = new ClearCommand();
         return clearCommand;
+    }
+
+    //@@author kwokyto
+    /**
+     * Returns a HistoryCommand object.
+     *
+     * @return ClearCommand object
+     */
+    private static Command getHistoryCommand(String description) {
+        Command historyCommand = new HistoryCommand(description);
+        return historyCommand;
     }
 
     /**
@@ -357,7 +394,7 @@ public class Parser {
         try {
             int quantity = Integer.parseInt(description);
             return quantity;
-        } catch (Exception e) {
+        } catch (NumberFormatException numberFormatException) {
             throw new InvalidQuantityException();
         }
     }

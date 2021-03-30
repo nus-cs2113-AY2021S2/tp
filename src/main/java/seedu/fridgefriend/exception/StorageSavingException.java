@@ -1,5 +1,6 @@
 package seedu.fridgefriend.exception;
 
+//@@author kwokyto
 /**
  * Indicates that an error occurred while saving the data.
  */
