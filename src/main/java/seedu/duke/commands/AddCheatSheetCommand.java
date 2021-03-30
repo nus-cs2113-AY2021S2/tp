@@ -7,6 +7,7 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -30,18 +31,18 @@ public class AddCheatSheetCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        String directoryPath = getDirectoryPath(module);
         if (fileName.isEmpty()) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
-        String filePath = directoryPath + fileName + TXT_FORMAT;
-        Path path;
         try {
+            String directoryPath = getDirectoryPath(module, ui);
+            String filePath = directoryPath + fileName + TXT_FORMAT;
+            Path path;
             path = Paths.get(filePath);
+            openTextEditor(ui, path, filePath);
         } catch (InvalidPathException e) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
-        openTextEditor(ui, path, filePath);
     }
 
     public void openTextEditor(UI ui, Path path, String filePath) {
@@ -49,20 +50,30 @@ public class AddCheatSheetCommand extends Command {
         if (Files.exists(path)) {
             ui.printMessage(MESSAGE_CHEAT_SHEET_ALREADY_EXISTS);
         } else {
-            File file = new File(filePath);
+            try {
+                File file = new File(filePath);
+            } catch (NullPointerException e) {
+                ui.printMessage(MESSAGE_INVALID_FILE_NAME);
+            }
+
             ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
             TextEditor textEditor = new TextEditor(filePath);
             textEditor.setTextAreaToVoid();
             textEditor.saveTextToFile();
-            textEditor.loadFile(filePath);
         }
     }
 
-    public String getDirectoryPath(Module module) {
+    public String getDirectoryPath(Module module, UI ui) {
         String directoryPath = FOLDER_PATH + PATH_DELIMITER + module.getModuleCode() + PATH_DELIMITER
                 + STRING_CHEATSHEET + PATH_DELIMITER;
-        Path path = Paths.get(directoryPath);
-        assert Files.isDirectory(path) : "Directory missing";
+        try {
+            Path path = Paths.get(directoryPath);
+            assert Files.isDirectory(path) : "Directory missing";
+        } catch (InvalidPathException e) {
+            ui.printMessage(MESSAGE_INVALID_FILE_NAME);
+        }
+
+
         return directoryPath;
     }
 }

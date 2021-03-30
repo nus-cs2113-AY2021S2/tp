@@ -110,20 +110,20 @@ public class EditTaskCommand extends Command {
         ui.printMessage(String.format(PROMPT_ENTER_FIELD_DETAILS, fields[fieldIndex - 1].toLowerCase()));
         switch (fieldIndex) {
         case 1:
-            selectedTask.setDescription(ui.readUserInput());
+            selectedTask.editDescription(ui.readUserInput());
             break;
         case 2:
             LocalDate newDeadline = getNewTaskDeadline(ui, ui.readUserInput());
             if (newDeadline == null) {
                 return;
             }
-            selectedTask.setDeadline(newDeadline);
+            selectedTask.editDeadline(newDeadline);
             break;
         case 3:
-            selectedTask.setRemarks(ui.readUserInput());
+            selectedTask.editRemarks(ui.readUserInput());
             break;
         case 4:
-            selectedTask.setGraded(getIsTaskGraded(ui));
+            selectedTask.editGraded(getIsTaskGraded(ui));
             break;
         default:
         }

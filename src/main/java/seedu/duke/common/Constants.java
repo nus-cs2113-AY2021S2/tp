@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Constants {
-
+    //@@author
     //General
     public static final String FORMAT_DATE_IO = "d-M-yyyy";
     public static final String FORMAT_DATE_NORMAL = "d MMM yyyy";
+    
     public static final String LINUX_OPEN_COMMAND = "xdg-open ";
     public static final int INDEX_FIRST = 0;
-    public static final String EMPTY_STRING = "";
+    
     public static final String TYPE_MODULE = "module";
+    public static final String TYPE_LESSON = "lesson";
     public static final String TYPE_TASK = "task";
+    
+    public static final String DELIM = ";;";
+    public static final String WHITESPACE = " ";
+    public static final String EMPTY_STRING = "";
+
+    public static final String ADD = "add";
+    public static final String DELETE = "delete";
+    public static final String EDIT = "edit";
 
     //Lecture type
     public static final String LECTURE_STRING = "lecture";
@@ -68,6 +78,9 @@ public class Constants {
     public static final String YES_STRING = "Y";
     public static final String NO_STRING = "N";
 
+    public static final String MARK = "mark as done";
+    public static final String UNMARK = "mark as undone";
+
     //Parser
     public static final String FORMAT_MODULE_CODE = "([A-z]{2,3}[\\d]{4}[A-z]?)";
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
@@ -76,15 +89,6 @@ public class Constants {
 
     public static final String FORMAT_COMMAND_WORD_AND_ARGS = "(^\\S+)(.*)";
     public static final String FORMAT_TWO_COMMAND_WORD_AND_ARGS = "(^\\S+\\s+\\S+)(.*)";
-
-    public static final String DELIM = ";;";
-    public static final String WHITESPACE = " ";
-
-    public static final String ADD = "add";
-    public static final String DELETE = "delete";
-    public static final String EDIT = "edit";
-    public static final String MARK = "mark as done";
-    public static final String UNMARK = "mark as undone";
 
     public static final int INDEX_COMMAND_WORD = 0;
     public static final int INDEX_COMMAND_ARGS = 1;
