@@ -116,11 +116,6 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note:**<br>
-
-* Since Homerce is optimized for CLI-based usage, it is recommended to rely purely on CLI commands rather than using a
-  mouse to navigate between the different managers of Homerce. For example, it is better to do `listapt` rather than clicking
-  on the appointments tab as `listapt` will sort appointments by chronological order if there are changes made by previous commands.
 
 </div>
 
