@@ -63,7 +63,7 @@ public class ReviewList {
             ui.print("| " + currentReview.getCategory());
             ui.printWhiteSpace(currentReview.getCategory().length());
             ui.print("| " + currentReview.starRating());
-            ui.printWhiteSpace(currentReview.starRating().length());
+            ui.printWhiteSpaceRating(currentReview.starRating().length());
             ui.print("| " + currentReview.getDateTime());
             ui.printWhiteSpaceDate(currentReview.getDateTime().length());
             ui.println("|");
