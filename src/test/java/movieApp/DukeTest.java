@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class DukeTest {
     @Test
     public void sampleTest() {
+
         assertTrue(true);
     }
 }

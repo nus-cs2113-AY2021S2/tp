@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find movie recommendation to watch!
+Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and read movie reviews to watch!
 
 ## Quick Start
 
@@ -11,13 +11,19 @@ Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find
 3. Copy the file to the folder you want to use as the home folder for your AddressBook.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
 {insert photo}
-5. Type the command in the command box and press Enter to execute it. e.g. typing help and pressing Enter will open the help window.
-   Some example commands you can try:
-    * `list` : Lists all contacts.
-    * `addn /John Do` : Adds a contact named John Doe to the Address Book.
-    * `delete 3` : Deletes the 3rd contact shown in the current list.
-    * `clear` : Deletes all contacts.
-    * `exit` : Exits the app.
+5. Type the command in the command box and press Enter to execute it based on the command menu. e.g
+     
+      ======== Menu Choice =======
+     
+      1 View Movies
+      
+      2 Exit
+
+The following will execute if you type:
+    
+* `1` : View all movies and choose a search filter.
+    
+* `2` : Exit from the application.
 
    
 
