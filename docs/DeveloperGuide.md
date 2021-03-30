@@ -190,7 +190,7 @@ point for testers to work on; testers are expected to do more *exploratory* test
 ### Launch and shutdown
 
 1. Ensure that you have Java 11 or above installed.
-2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/tag/v1.0).
+2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
    `FridgeFriend` with `java -jar FridgeFriend.jar`.
