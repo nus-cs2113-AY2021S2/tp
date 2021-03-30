@@ -92,10 +92,5 @@ public class Constants {
     public static final String RECORDS_DELIMITER = "!R!";
     public static final String DETAILS_DELIMITER = "!D!";
 
-<<<<<<< HEAD
     public static final String STORAGE_DEFAULT_PATH = "./pm.save";
-=======
-    // Data file path
-    public static final String FILE_PATH = "data.txt";
->>>>>>> origin/master
 }
