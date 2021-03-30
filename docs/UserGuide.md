@@ -33,7 +33,7 @@
 6. [Glossary](#6-glossary)  
 7. [Command summary](#7-command-summary)  
 
-# 1. Introduction
+## 1. Introduction
 
 Welcome to the User Guide of **NUSMaze**!
 
@@ -54,7 +54,7 @@ If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to lear
 
 --------------------------------------------------------------------------------------------------------------------
 
-# 2. Quick start
+## 2. Quick start
 
 This section gives you step-by-step instructions on how to download and open the application.
 
@@ -76,16 +76,16 @@ This section gives you step-by-step instructions on how to download and open the
 
 
 --------------------------------------------------------------------------------------------------------------------
-# 3. About
+## 3. About
 
-## 3.1. Structure of this document
+### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly.
 In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
 The following section, [Section 4 - Features](#4-features), documents the seven main features in **NUSMaze**, namely:
 
 
-## 3.2. Reading this document
+### 3.2. Reading this document
 
 This section introduces you to some technical terms, symbols and syntax that are used throughout the guide. You may want to
 familiarize yourself with them before moving to the next section.
@@ -118,19 +118,19 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 </div>
 
 
-# 4. Features
+## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
 You may enter a command into the _CLI_ to use each feature.
 
-## 4.1 Viewing Help
+### 4.1 Viewing Help
 
 Lists all commands and functions of each feature.<br>
 Format: `help`
 
-## 4.2 Routing
+### 4.2 Routing
 
-### 4.2.1 Routing between blocks
+#### 4.2.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
 Format: `go → STARTING_BLOCK → DESTINATION BLOCK`
@@ -138,7 +138,7 @@ Format: `go → STARTING_BLOCK → DESTINATION BLOCK`
   followed by the `DESTINATION BLOCK`.
 - Both parameters must be one of the Engineering or Computing buildings.
 
-### 4.2.2 Routing to the closest eatery
+#### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
 Format 1: `go → STARTING_BLOCK → EATERY_NAME`
 - By entering the name of the eatery that you wish to go in the EATERY_NAME parameter,
@@ -155,18 +155,18 @@ Format 2: `go → STARTING_BLOCK → eatery → EATERY_NAME`
 - `EATERY_ENTRY` must be an integer from 1 to 5.
 
 
-## 4.3 History
-### 4.3.1 Viewing History
+### 4.3 History
+#### 4.3.1 Viewing History
 
 Lists the past 10 route searches.<br>
 Format : `history`
 
-### 4.3.2 Clearing History
+#### 4.3.2 Clearing History
 
 Deletes all histories (past route searches).<br>
 Format : `clear history`
 
-### 4.3.3 Repeating History
+#### 4.3.3 Repeating History
 
 Repeats past route search history.<br>
 Format : `repeat → REPEAT_ENTRY`
@@ -176,8 +176,8 @@ Format : `repeat → REPEAT_ENTRY`
 
 - `REPEAT_ENTRY` must be an integer number within the numbered list.
 
-## 4.4 Alias
-### 4.4.1 Adding an alias for block name
+#### 4.4 Alias
+#### 4.4.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
 Format : `add alias → BLOCK → ALIAS_NAME`
 - When add alias command is called, NUSMaze will prompt for the `BLOCK` that you
@@ -187,18 +187,18 @@ Format : `add alias → BLOCK → ALIAS_NAME`
 
 - Note that there cannot be more than multiple blocks sharing the same alias.
 
-### 4.4.2 Viewing all aliases
+####4.4.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
 Format : `show aliase`
 
-### 4.4.3 Deleting aliases
+#### 4.4.3 Deleting aliases
 Deletes an alias that was previously created.<br>
 Format : `delete alias → ALIAS_NAME`
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
 
-## 4.5 Daily Routes
-### 4.5.1 Adding a daily route
+### 4.5 Daily Routes
+#### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
 Format : `add day → DAY_ENTRY → BLOCK/END`
 - You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
@@ -211,7 +211,7 @@ Format : `add day → DAY_ENTRY → BLOCK/END`
 
 - NUSMaze will continuously ask for locations until you input ``.
 
-### 4.5.2 Viewing daily route
+#### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `day → DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
@@ -222,38 +222,39 @@ Format : `day → DAY_NUMBER`
 - The `DAY_NUMBER` must be the index of one of the available days which has been
   displayed.
 
-## 4.6 Notes
-### 4.6.1 Adding notes
-Adds a note about a particular location.<br>
-Format : `add note LOCATION/DESCRIPTION`
-- When the add note command is given, the application will expect `LOCATION` followed
-  by the `/`,and then the `DESCRIPTION` of the note that is to be added.
+### 4.6 Notes
+#### 4.6.1 Adding notes
+Tags a note to a particular existing location of your choice.<br/>
+Format : `add note  → LOCATION -> NOTE`
+- When the 'add note' command is given, NUSMaze will prompt you for a `LOCATION`.
+- The `LOCATION` must be one of the Engineering or Computing buildings.
+- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location.
+
+#### 4.6.2 Viewing notes
+Lists all notes which had been tagged to the given existing location, if applicable.<br/>
+Format : `list notes → LOCATION`
+- When the 'list notes' command is entered, NUSMaze will prompt you for a `LOCATION`.
 
 - The `LOCATION` must be one of the Engineering or Computing buildings.
 
-### 4.6.2 Viewing notes
-Lists all notes which had been tagged to the given location, if applicable.<br>
-Format : `list notes LOCATION`
+#### 4.6.3 Delete note
+Delete the specified note based on index number tagged to the given existing location.<br/>
+Format : `delete note → LOCATION → NOTE INDEX`
+- When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`. 
+  
 - The `LOCATION` must be one of the Engineering or Computing buildings.
+  
+- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE INDEX` of the note to be deleted,
+which is the index of the note in the location's notes list.
+  
+- The `NOTE INDEX` must be an integer within the total number of notes that the location has.
 
-### 4.6.3 Delete note
-Deletes notes based on index number tagged to the given location.<br>
-Format : `delete note LOCATION/NOTE_INDEX`
-- When the delete note command is entered, the application will expect `LOCATION`
-  followed by the / and then the `NOTE_INDEX` of the note that is to be deleted.
-
-- The `LOCATION` must be one of the Engineering or Computing buildings.
-
-- The `NOTE_INDEX` must be an integer within the bounds of the existing note’s indexes for
-  that location.
-
-
-## 4.7 Exiting the application
+### 4.7 Exiting the application
 
 Exits the application.<br>
 Format: `bye`
 
-## 4.8 Saving the Data
+### 4.8 Saving the Data
 
 NUSMaze data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
@@ -294,8 +295,8 @@ can be found on the second computer.
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add day → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `day → DAY_NUMBER` |
-|[**Adding notes**](#461-adding-notes)       | `add note LOCATION/DESCRIPTION` |
-|[**Viewing notes**](#462-viewing-notes)      | `list notes LOCATION`| 
-|[**Deleting notes**](#463-delete-note)       | `delete note LOCATION/NOTE INDEX` |
+|[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
+|[**Viewing notes**](#462-viewing-notes)      | `list notes → LOCATION`| 
+|[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
 |[**Exiting the application**](#47-exiting-the-application)       | `bye` |
 
