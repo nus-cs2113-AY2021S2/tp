@@ -1,35 +1,36 @@
 package seedu.logic.parser;
 
 
-import seedu.exceptions.doctorappointment.AppointmentIDTakenException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.command.Command;
 import seedu.logic.command.doctorappointment.*;
-import seedu.model.DoctorAppointment;
-import seedu.model.staff.Staff;
-import seedu.storage.DoctorAppointmentStorage;
+import seedu.logic.errorchecker.DoctorAppointmentChecker;
 import seedu.ui.DoctorAppointmentUI;
-import seedu.ui.UI;
-
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 
 public class DoctorAppointmentParser {
 
     public static Command parse(String input, AppointmentActions details) throws Exception {
         String[] inputArray = input.split("/");
+        assert inputArray.length > 0;
+        assert inputArray.length < 7;
         Command c = null;
 
         switch (inputArray[0]) {
-        case "add":
+        case "add": {
+            DoctorAppointmentChecker.checkValidDataForAdd(inputArray);
             c = new DoctorAppointmentAdd(inputArray);
             break;
-        case "list":
+        }
+        case "list": {
+            DoctorAppointmentChecker.checkValidDataForList(inputArray);
             c = new DoctorAppointmentList(inputArray);
             break;
-        case "delete":
+        }
+        case "delete": {
+            DoctorAppointmentChecker.checkValidDataForDelete(inputArray);
             c = new DoctorAppointmentDelete(inputArray);
             break;
+        }
         case "return":
             c = new DoctorAppointmentReturn();
             break;
@@ -40,58 +41,6 @@ public class DoctorAppointmentParser {
             DoctorAppointmentUI.invalidCommandPrompt();
         }
         return c;
-    }
-
-    public static boolean isValidDocID(String doctorID) {
-        try {
-            String[] character = doctorID.split("");
-
-            if (character[0].equals("D")) {
-                ArrayList<Staff> doctorList;
-                doctorList = DoctorAppointmentStorage.loadDoctorFile();
-
-                for (Staff id : doctorList) {
-                    if (id.getId().equals(doctorID)) {
-                        return true;
-                    }
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public static boolean isValidAppointmentID(String appointmentID) throws AppointmentIDTakenException {
-        String[] character = appointmentID.split("");
-
-        if (character[0].equals("A")) {
-
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
-                if (id.getAppointmentId().equals(appointmentID)) {
-                    throw new AppointmentIDTakenException();
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isValidListAppointmentID(String appointmentID) throws AppointmentIDTakenException {
-        String[] character = appointmentID.split("");
-
-        if (character[0].equals("A")) {
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
-                if (id.getAppointmentId().equals(appointmentID)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public static boolean isValidGender(String gender) {
-        return gender.equals("M") || gender.equals("F");
     }
 
 
