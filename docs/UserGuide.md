@@ -10,22 +10,22 @@ to organize the records of their patients.
 
 ## Table of Contents
 
-- [Patient Manager User Guide](#patient-manager-user-guide)
-  - [Table of Contents](#table-of-contents)
-  - [Quickstart](#quickstart)
-  - [About Command Input](#about-command-input)
-    - [Whitespaces](#whitespaces)
-    - [Order of Arguments](#order-of-arguments)
-  - [Features](#features)
-    - [Print a help message: `help`](#print-a-help-message-help)
-    - [Adding a patient: `add`](#adding-a-patient-add)
-    - [Listing all patients: `list`](#listing-all-patients-list)
-    - [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
-    - [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
-    - [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
-    - [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
-    - [Exiting the program: `exit`](#exiting-the-program-exit)
-  - [Command Summary](#command-summary)
+* [Patient Manager User Guide](#patient-manager-user-guide)
+  * [Table of Contents](#table-of-contents)
+  * [Quickstart](#quickstart)
+  * [About Command Input](#about-command-input)
+    * [Whitespaces](#whitespaces)
+    * [Order of Arguments](#order-of-arguments)
+  * [Features](#features)
+    * [Print a help message: `help`](#print-a-help-message-help)
+    * [Adding a patient: `add`](#adding-a-patient-add)
+    * [Listing all patients: `list`](#listing-all-patients-list)
+    * [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
+    * [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
+    * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
+    * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+    * [Exiting the program: `exit`](#exiting-the-program-exit)
+  * [Command Summary](#command-summary)
 
 ---
 
@@ -69,7 +69,7 @@ it will go into the database as `coughing, fever` - same as every other lines do
 
 ### Order of Arguments
 
-A word starts with `/` marks the beginning of an argument. An argument block continues until the other one is found.
+Words or characters starts with `/` mark the beginning of an argument. An argument block continues until the other one is found.
 For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
 The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
 ```
