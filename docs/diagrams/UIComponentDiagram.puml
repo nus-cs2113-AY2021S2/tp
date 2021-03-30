@@ -1,6 +1,13 @@
 @startuml
-!include style.puml
+hide circle
+skinparam monochrome false
 
-Duke -> [UI]
+class Finux {
+}
+
+class Ui {
+}
+
+Finux -> Ui
 
 @enduml
