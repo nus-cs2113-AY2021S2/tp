@@ -163,7 +163,8 @@ API: `Parser.java`, `Command.java` and its subclasses
 1. `Logic` uses the `Parser` class to tokenize and parse the user command
 1. This creates a `Command` object which is then executed by the `PatientManager` class
 1. The command execution can affect the `Model` (e.g. adding a patient)
-1. 
+1. Within the `execute()` method, the `Command` object can instruct the `Ui` to perform certain actions,
+   such as displaying the command output to the screen
 
 Given below is the Sequence Diagram for interactions within the `Logic` component after Patient Manager recieves `add S1234567D`
 as an input, and the `execute()` API call is made.
