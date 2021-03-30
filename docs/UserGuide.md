@@ -10,7 +10,7 @@ to organize the records of their patients.
 
 ## Table of Contents
 
-* [Quickstart](#quickstart)
+* [Quick start](#quick-start)
 * [Features](#features)
     * [Print a help message: `help`](#print-a-help-message-help)
     * [Adding a patient: `add`](#adding-a-patient-add)
@@ -24,7 +24,7 @@ to organize the records of their patients.
 
 ---
 
-## Quickstart
+## Quick start
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, `Java 11` can be downloaded from
