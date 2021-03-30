@@ -62,6 +62,7 @@ public class Constants {
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
+
     public static final int CHECKSUM_MOD = 11;
     public static final int FIRST_DIGIT = 1;
     public static final int SECOND_DIGIT = 2;
