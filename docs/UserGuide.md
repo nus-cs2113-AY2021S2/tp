@@ -17,6 +17,7 @@ HdBuy allows you to easily find and bookmark resale flats available matching you
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `remove INDEX`, `INDEX` is a parameter which can be used as `remove 1`.
+  e.g. in `filter ATTRIBUTE VALUE`, `ATTRIBUTE` is the attribute of a unit to filter. `VALUE` is the value of the attribute.
 
 </div>
 
@@ -75,10 +76,15 @@ Format: `clear`
 ## Command Summary
 
 Action | Format
---------|------------------
+--------|----------------------------------------
 **View Shortlist** | `shortlist`
-**Save Shortlist** | `save INDEX`
-**Remove Shortlist** | `remove INDEX`
-**List** | `list`
-**Clear** | `clear`
+**Save Shortlist** | `save INDEX` eg: `save 1`
+**Remove Shortlist** | `remove INDEX` eg: `remove 1`
+**Add a filter condition** | `filter ATTRIBUTE VALUE` eg: `filter location woodlands`
+**Show filter conditions** | `list`
+**Clear filter conditions** | `clear`
+**Search for units** | `find`
+**Displays help guide** | `help`
+**Sort search results by ascending price** | `sort asc`
+**Sort search results by descending price** | `sort desc`
 
