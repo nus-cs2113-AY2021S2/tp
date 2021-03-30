@@ -1,6 +1,6 @@
 package seedu.exceptions;
 
-public class CorruptedFileException extends HealthVaultException{
+public class CorruptedFileException extends HealthVaultException {
 
     private String file;
 

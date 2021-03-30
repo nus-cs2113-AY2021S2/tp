@@ -24,29 +24,29 @@ public class HealthVaultException extends Exception {
     public void getError(String input) {
         switch (error) {
         case "loadFile":
-            System.out.println("OOPS! The file format is wrong! It may have been corrupted! \n" +
-                    "Please delete the file \"data/PatientList.txt\" so we can make a new file for you! ");
+            System.out.println("OOPS! The file format is wrong! It may have been corrupted! \n"
+                    + "Please delete the file \"data/PatientList.txt\" so we can make a new file for you! ");
             break;
         case "add":
-            System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
-                    "There should not be any space in the name! \n" +
-                    "There should only be 7 inputted terms including \"add\" \n" +
-                    "Please type \"help\" to see the right command format!");
+            System.out.println("OOPS! You have inputted the wrong number of parameters! \n"
+                    + "There should not be any space in the name! \n"
+                    + "There should only be 7 inputted terms including \"add\" \n"
+                    + "Please type \"help\" to see the right command format!");
             break;
         case "find":
-            System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
-                    "There should only be 2 inputted terms including \"find\" \n" +
-                    "Please type \"help\" to see the right command format!");
+            System.out.println("OOPS! You have inputted the wrong number of parameters! \n"
+                    + "There should only be 2 inputted terms including \"find\" \n"
+                    + "Please type \"help\" to see the right command format!");
             break;
         case "delete":
-            System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
-                    "There should only be 2 inputted terms including \"delete\" \n" +
-                    "Please type \"help\" to see the right command format!");
+            System.out.println("OOPS! You have inputted the wrong number of parameters! \n"
+                    + "There should only be 2 inputted terms including \"delete\" \n"
+                    + "Please type \"help\" to see the right command format!");
             break;
         case "return":
-            System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
-                    "There should only be 1 inputted term which is \"return\" \n" +
-                    "Please type \"help\" to see the right command format!");
+            System.out.println("OOPS! You have inputted the wrong number of parameters! \n"
+                    + "There should only be 1 inputted term which is \"return\" \n"
+                    + "Please type \"help\" to see the right command format!");
             break;
         case "help":
             System.out.println("OOPS! You have inputted the wrong number of parameters! \n" +
