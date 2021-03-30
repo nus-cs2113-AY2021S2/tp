@@ -50,18 +50,21 @@ public class staffparser {
     public static void checkBlankInput(String line) throws BlankInputException {
        String[] array = line.split("/");
         for (String s : array) {
-            if (s.equals("")) {
+            if (s.strip().equals("")) {
                 throw new BlankInputException();
             }
         }
     }
 
-    public static void checkNumericInput(String line) throws NumberFormatException {
+    public static void checkNumericInput(String line) throws NumberFormatException, PositiveNumberOnlyException {
         String[] array = line.split("/");
         try {
             Integer.parseInt(array[3]);     // Check age is numeric
         } catch (NumberFormatException e) {
             throw new NumberFormatException();
+        }
+        if (Integer.parseInt(array[3]) < 0) {
+            throw new PositiveNumberOnlyException();
         }
     }
 
@@ -73,9 +76,9 @@ public class staffparser {
         }
     }
 
-    public Command commandHandler(String line) throws WrongStaffIdException,
+    public Command  commandHandler(String line) throws WrongStaffIdException,
             WrongListInputException, NoInputException, AbortException, ExcessInputException,
-            InsufficientInputException, BlankInputException, NumberFormatException {
+            InsufficientInputException, BlankInputException, NumberFormatException, PositiveNumberOnlyException {
 
         Command c = null;
         if (line.equals(" ")) {
@@ -90,8 +93,11 @@ public class staffparser {
             checkNumericInput(line);
             checkNumInput(line,5,5);
             checkBlankInput(line);
-            String [] p = Arrays.copyOfRange(line.split("/"), 1, 5);
-            c = new StaffAdd(p);
+            String [] cleanArrray = Arrays.copyOfRange(line.split("/"), 1, 5);
+            for (int i=0; i< cleanArrray.length; i++) {
+                UI.cleansin
+            }
+            c = new StaffAdd(cleanArray);
             break;
 
         case ("list"):

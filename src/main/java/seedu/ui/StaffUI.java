@@ -85,7 +85,7 @@ public class StaffUI {
     }
 
     public static void invalidNumericErrorMessage() {
-        System.out.println("OOPS! Input field expects a numeric. Please change your input!");
+        System.out.println("OOPS! Input field expects a positive numeric. Please change your input!");
     }
 
     public static void staffMenuPrompt() {

@@ -60,7 +60,7 @@ public class StaffInstance {
                 UI.tooLittleInputErrorMessage();
             } catch (BlankInputException e) {
                 StaffUI.blankInputErrorMessage();
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | PositiveNumberOnlyException e) {
                 StaffUI.invalidNumericErrorMessage();
             }
         }
