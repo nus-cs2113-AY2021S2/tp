@@ -84,7 +84,7 @@ public class Module {
         for (Task task : taskList) {
             if (targetDescription.equals(task.getDescription().toUpperCase())) {
                 if (targetDeadline.equals(task.getDeadline())) {
-                    ui.printMessage(String.format(MESSAGE_DUPLICATE_TASK, task.getDescription()));
+                    ui.printMessage(MESSAGE_DUPLICATE_TASK);
                     return false;
                 }
                 ui.printMessage(MESSAGE_SAME_DESCRIPTION_TASK);
