@@ -1,6 +1,7 @@
 package controller;
 
 import employee.Employee;
+import employee.EmployeeController;
 import io.FileManager;
 import shift.Shift;
 import shift.ShiftController;
@@ -23,8 +24,8 @@ public class AppController {
             System.out.println("Save data loaded!");
             for (Shift shift : shifts) {
                 if (shift.getEmployeeList() != null) {
-                    for (String employee : shift.getEmployeeList()) {
-                        shift.assignEmployee(getEmployeeObjectByName(employee));
+                    for (String name : shift.getEmployeeList()) {
+                        shift.assignEmployee(EmployeeController.getEmployeeObjectByName(name, employees));
                     }
                 }
             }
@@ -34,20 +35,17 @@ public class AppController {
 
         String input;
         while (true) {
-            System.out.println("Enter command: ");
+            System.out.println("Enter command:      (type 'help' for all command options)");
             input = sc.nextLine();
             switch (input.toLowerCase()) {
             case "add employee":
-                addEmployee();
+                EmployeeController.addEmployee(employees);
                 break;
-            /*case "drop employee":
-                dropEmployee();
-                break;*/
             case "add schedule":
-                addSchedule();
+                EmployeeController.addSchedule(employees);
                 break;
             case "drop schedule":
-                dropSchedule();
+                EmployeeController.dropSchedule(employees);
                 break;
             case "add shift":
                 ShiftController.addShift(employees, shifts);
@@ -59,7 +57,7 @@ public class AppController {
                 ShiftController.unassignEmployee(employees, shifts);
                 break;
             case "view employee schedule":
-                viewEmployeeSchedule();
+                EmployeeController.viewEmployeeSchedule(employees);
                 break;
             case "view shift status":
                 ShiftController.viewAllShifts(shifts);
@@ -68,7 +66,7 @@ public class AppController {
                 ShiftController.viewOneShift(shifts);
                 break;
             case "list":
-                listAllEmployees();
+                EmployeeController.listAllEmployees(employees);
                 break;
             case "help":
                 ui.printHelpMessage();
@@ -82,103 +80,6 @@ public class AppController {
                 System.out.println("invalid command");
             }
         }
-    }
-
-    private void addEmployee() {
-        System.out.println("enter Employee name");
-        String name = sc.nextLine();
-        Employee newEmployee = new Employee(name);
-        employees.add(newEmployee);
-        System.out.println("Employee added");
-    }
-
-    private void dropEmployee(){
-        System.out.println("enter Employee name");
-        String name = sc.nextLine();
-        for (Employee person : employees)
-            if (person.getName().equals(name)) {
-                employees.remove(person);
-                System.out.print(person.getName() + " removed\n");
-                return;
-            }
-        System.out.println("The name is not found");
-    }
-
-    private void listAllEmployees() {
-        int i;
-
-        System.out.println("Here is the employee list:");
-        for (i = 0; i < employees.size(); i++) {
-            System.out.println(i+1 + ") " + employees.get(i).getName());
-        }
-    }
-
-    private void addSchedule() {
-        System.out.println("enter Employee name");
-        String name = sc.nextLine();
-        for (Employee person : employees)
-            if (person.getName().equals(name)) {
-                System.out.println("enter Employee schedule");
-                String schedule = sc.nextLine();
-                boolean isScheduleValid = person.addSchedule(schedule);
-                if(isScheduleValid) {
-                    System.out.println("schedule added");
-                }else{
-                    System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
-                }
-                return;
-            }
-        System.out.println("Employee not found");
-    }
-
-    private void dropSchedule() {
-        System.out.println("enter Employee name");
-        String name = sc.nextLine();
-        for (Employee person : employees)
-            if (person.getName().equals(name)) {
-                System.out.println("enter Employee schedule");
-                String scheduleToDrop = sc.nextLine();
-                ArrayList<String> schedules = person.getSchedules();
-                for (String schedule : schedules) {
-                    if (schedule.equals(scheduleToDrop)) {
-                        person.dropSchedule(scheduleToDrop);
-                        System.out.println("schedule dropped");
-                        return;
-                    }
-                }
-                System.out.println("schedule not found");
-                return;
-            }
-        System.out.println("Employee not found");
-    }
-
-    private void viewEmployeeSchedule() {
-        System.out.println("enter Employee name");
-        String name = sc.nextLine();
-        for (Employee person : employees)
-            if (person.getName().equals(name)) {
-                System.out.println(person.getSchedules());
-                return;
-            }
-        System.out.println("Employee not found");
-    }
-
-    public boolean isEmployeeFound(String name) {
-        for (Employee person : employees) {
-            if (person.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Employee getEmployeeObjectByName(String name) {
-        for (Employee person: employees) {
-            if (person.getName().equals(name)) {
-                return person;
-            }
-        }
-        return null;
     }
 }
 
