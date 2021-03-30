@@ -13,7 +13,7 @@ public class UiTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final ArrayList<Item> items = new ArrayList<>();
-    private Ui ui = new Ui();
+    private final Ui ui = new Ui();
     Delivery delivery;
 
     @BeforeEach
@@ -33,8 +33,8 @@ public class UiTest {
     @Test
     public void printDeliveries_message() {
         ui.showDeliveryDetails(0);
-        assertEquals("1001 [N] NTU Hall 1 Manika\r\n1: \r\nItem Number: 1\r\nItem Weight: 5", outputStream.toString()
-                .trim());
+        assertEquals("1001 [N] NTU Hall 1 Manika\n1: \nItem Number: 1\nItem Weight: 5",
+                outputStream.toString().trim().replace("\r",""));
     }
 
     @AfterEach
