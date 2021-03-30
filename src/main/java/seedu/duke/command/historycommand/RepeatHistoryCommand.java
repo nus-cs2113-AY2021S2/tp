@@ -19,8 +19,7 @@ public class RepeatHistoryCommand extends Command {
         try {
             ui.showHistory(history);
             int entry = ui.getRepeatEntry();
-            entry--;
-            String[] routeInfo = history.getSpecificEntry(entry);
+            String[] routeInfo = history.getSpecificEntry(entry - 1);
             String route = new Router().execute(nusMap, blockAlias, routeInfo[0], routeInfo[1]);
             ui.showMessageWithDivider(route);
             history.addHistory(routeInfo[0], routeInfo[1]);
