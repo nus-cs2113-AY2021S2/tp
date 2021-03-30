@@ -17,9 +17,11 @@ end box
 -> AddCommand: create
 activate AddCommand
 AddCommand -> AddCommand: categoriseAndGenerateFood(params)
+activate AddCommand
 AddCommand -> NewFood **: create
 activate NewFood
 return foodToAdd
+deactivate AddCommand
 return command
 
 -> AddCommand: execute()
@@ -50,18 +52,19 @@ end
 alt Foodname is unique (add new food))
     Fridge --> AddCommand: food added to fridge
 
-else all parameters except quantity consists with record (add to existing)
+else add to existing food, update quantity
     Fridge -> Checker: checker.isParamIdentical()
     activate Checker
     return boolean
     note right
-    If params do not consist,
+    If foodname already exist but
+    different location or expiry are specified,
     a RepetitiveFoodName exception will be thrown
     end note
     Fridge -> Fridge: editFoodQuantity()
     activate Fridge
     return
-    Fridge --> AddCommand: more quantity added to existing food in fridge
+    Fridge --> AddCommand: update quantity on existing food in fridge
     deactivate Fridge
     deactivate AddCommand
 end

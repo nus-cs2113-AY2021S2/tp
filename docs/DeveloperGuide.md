@@ -182,7 +182,7 @@ _Exceptions related to file storage:_
 
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
-### Main Application Logic
+### Main Logic
 
 The main application logic underlines the main executable conditions that make up the bulk of the application. Below is the outline of the logic:
 
@@ -203,6 +203,20 @@ Given below is the sequence diagram for the interactions within the main applica
 * The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
 Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+
+### Add Command
+AddCommand class is initialized whenever the parser recognize the `add` keyword.
+
+1. The constructor should create a new Food object according to the parsed user input.
+2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+
+Given below is the sequence diagram for the AddCommand workflow.
+
+![AddCommandSequenceDiagram](diagrams/diagram_images/AddSequenceDiagram.png)
+
+Notes:
+* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
 ## Product Scope
 
