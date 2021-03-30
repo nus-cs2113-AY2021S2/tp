@@ -295,7 +295,7 @@ can be found on the second computer.
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add day → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `day → DAY_NUMBER` |
-|[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE_INDEX` |
+|[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
 |[**Viewing notes**](#462-viewing-notes)      | `list notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE_INDEX` |
 |[**Exiting the application**](#47-exiting-the-application)       | `bye` |
