@@ -20,33 +20,34 @@ end box
 
 autoactivate on
 fridgefriend->fridgefriend: run()
-loop isExit
+
+loop !isExit
     fridgefriend -> ui: getNextLine()
     return userInput
 
-    alt successful execution
-        fridgefriend -> parser: getCommand(userInput)
-        create command
-        parser -> command: constructor()
-        return command
-        return command
-        destroy parser
+    fridgefriend -> parser: getCommand(userInput)
+    create command
+    parser -> command: constructor()
+    return command
+    return command
+    destroy parser
 
-        fridgefriend -> fridgefriend: executeCommand()
-        fridgefriend -> command: execute()
-        return
-        destroy command
-        return
-    else exception caught
-        create exception
-        command -> exception: constructor()
-        return e
-        command --> fridgefriend: e
-        fridgefriend -> ui: printExceptionMessage()
-        return
-        destroy exception
-        end
+    note right of command
+    Both //contructor()// and //execute()//
+    of the //Command// object can
+    throw an //Exception// object
+    up to //FridgeFriend//.
+    end note
+
+    fridgefriend -> fridgefriend: executeCommand()
+    fridgefriend -> command: execute()
+    return
+    destroy command
+    return
+
     end
+
 fridgefriend --> fridgefriend
+
 
 @enduml
