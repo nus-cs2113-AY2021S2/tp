@@ -181,8 +181,8 @@ The `Ui` component actively listens for:
 * the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
-![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)
-*Figure X: ParserHandler Class Diagram*
+![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png) <br>
+_Figure X: **ParserHandler** Class Diagram_
 
 #### Description
 The Parser component consist of 1 class called `ParserHandler`.
@@ -238,6 +238,7 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 
 ### 3.4 CommandHandler Component
 ![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
+
 _Figure X. CommandHandler Class Diagram_
 
 #### Description
@@ -292,8 +293,8 @@ The view feature is facilitated by `ViewCommand`. By typing in `view` and follow
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
-![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)
-*Figure x: Sequence Diagram for `view -e`*
+![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png) <br>
+_Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 >
