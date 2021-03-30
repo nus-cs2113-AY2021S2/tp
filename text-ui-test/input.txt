@@ -1,6 +1,6 @@
 filter location jurong
-filter type 4 room
 list
 clear
+filter type 4 room
 list
 exit
