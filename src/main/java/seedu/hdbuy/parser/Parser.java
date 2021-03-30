@@ -95,6 +95,10 @@ public class Parser {
                 String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
                 return new CommandKey(criteria, value, keyCommand);
             }
+        case FIND:
+            if (lineParts.length != 1) {
+                throw new InvalidParameterException(keyCommand);
+            }
         case REMOVE:
         case SAVE:
             if (lineParts.length != 2) {
@@ -103,16 +107,6 @@ public class Parser {
                 String value = lineParts[1];
                 return new CommandKey(keyCommand, value);
             }
-        case FIND:
-            if (lineParts.length != 1) {
-                throw new InvalidParameterException(keyCommand);
-            }
-        case SHORTLIST:
-        case EXIT:
-        case HELP:
-        case CLEAR:
-        case LIST:
-            // Fallthrough
         default:
             break;
         }
