@@ -23,36 +23,55 @@ public class Messages {
     public static final String INVALID_COMMAND = "Invalid command, please try again.";
 
     // Help
-    public static final String HELP_MESSAGE = "Connoisseur is a review app to keep track of all your experiences!\n"
-            + "\nCommands:\nhelp\tdisplays commands recognised by connoisseur\n"
-            + "new\t\tadds a new review\nadd\t\tadds a new recommendation"
+    public static final String HELP_MESSAGE = "Connoisseur is an application to keep track of all your reviews and"
+            + " recommendations!\nThere are two modes, which are review mode and recommendations mode.\n"
+            + "This application is in review mode by default.\n\n"
+            + "Commands:\nhelp\tdisplays commands recognised by connoisseur\n"
+            + "new\t\tadds a new review or recommendation\nadd\t\tadds a new review or recommendation"
             + "\nsort\tsets your preferred sorting method for your reviews"
-            + "\nlist\tlists your stored reviews ro recommendations\nedit\tedits an existing review in your list\n"
-            + "delete\tdeletes a review\nexit\texits connoisseur\n"
+            + "\nlist\tlists your stored reviews or recommendations\nedit\tedits an existing review or recommendation"
+            + " in your list\n"
+            + "delete\tdeletes a review or recommendation\nexit\texits connoisseur\n"
+            + "review\tswitch over to review mode\nreco\tswitch over to recommendation mode"
+            + "done\tmark a recommendation as done and add a review for it\n"
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
+            + "This command is not available in the recommendation mode."
             + "Currently recognised methods are:\nstars\nearliest\nlatest\ntitle\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews or recommendations.\n"
-            + "\nCommand syntax to list reviews: list review\nCommand syntax to list recommendations: list reco\n";
-    public static final String EDIT_HELP_MESSAGE = "Edit will allow you to edit an existing review in your list.\n\n"
-            + "Command syntax: edit <title of review you would like to edit>";
+            + "You would list the reviews if you are in review mode and recommendations if you are in recommendations"
+            + " mode.\n\nCommand syntax: list";
+    public static final String EDIT_HELP_MESSAGE = "Edit will allow you to edit an existing review or recommendation"
+            + " in your list.\n\n"
+            + "Command syntax: edit <title of review or recommendation you would like to edit>";
     public static final String EXIT_HELP_MESSAGE = "Exit will allow you to exit the application.\n\n"
-            + "Command syntax: bye";
-    public static final String REVIEW_HELP_MESSAGE = "New will allow you to add a review.\n"
+            + "Command syntax: bye\n\t\t\t\texit";
+    public static final String NEW_HELP_MESSAGE = "New or Add will allow you to add a review or recommendation, "
+            + "depending on whether you are in review mode or recommendation mode.\n"
+            + "Review Mode:"
             + "\nDetails to include in the review:\n\tTitle of Review\n\tQuick Review: y/n\n\tCategory of Experience"
             + "\n\tRating\n\tIf it is not a quick review, you can also enter a description of the experience."
-            + "\n\nCommand syntax for review: new\nAlternatively, you can also type:\n\tFor quick review: new quick"
-            + "\n\tFor full review: new long ";
+            + "\n\nCommand syntax for review: new\n\t\t\t\t\t\t   add"
+            + "\nAlternatively, you can also type:\n\tFor quick review: new quick"
+            + "\n\tFor full review: new long"
+            + "\n\nRecommendation Mode:"
+            + "\nDetails to include in the recommendation:\n\tTitle of recommendation\n\tCategory of experience"
+            + "\n\tPrice range of recommendation\n\tHow did you know about this recommendation\n\n"
+            + "Command syntax for recommendation: new\n\t\t\t\t\t\t\t\t   add";
     public static final String DELETE_HELP_MESSAGE = "Delete will allow you to remove an entry you input previously\n\n"
-            + "Command syntax: delete <title of review>";
+            + "Command syntax in review mode: delete <title of review>\n"
+            + "Command syntax in recommendation mode: delete <title of recommendation>";
     public static final String VIEW_HELP_MESSAGE = "View will allow you to view the details of a review entry you"
             + " made.\nYou can view the title, ratings, date and the full description of your experience.\n\n"
             + "Command Syntax: view <title of review>";
-    public static final String RECOMMENDATION_HELP_MESSAGE = "Add will allow you to add a new recommendation.\n"
-            + "\nDetails to include in the recommendation:\n\tTitle of recommendation\n\tCategory of experience"
-            + "\n\tPrice range of recommendation\n\tHow did you know about this recommendation\n"
-            + "\nCommand syntax for recommendation: add <title of recommendation>";
+    public static final String RECODONE_HELP_MESSAGE = "Done will allow you to mark a recommendation as done and switch"
+            + " it over as a review.\nAdditional details to include:\n\tRating of experience\n\tDescription"
+            + "of experience (optional)\n\nCommand syntax: done <title of recommendation>";
+    public static final String REVIEW_MODE_MESSAGE = "Review will allow you to switch over to review mode. The default"
+            + " mode of this application is review mode.\n\nCommand syntax: review";
+    public static final String RECO_MODE_MESSAGE = "Reco will allow you to switch over to recommendations mode. The"
+            + " default mode of this application is review mode.\n\nCommand syntax: reco";
 
     // Storage
     public static final String FILE_ALREADY_EXISTS = "Data file already exists";

@@ -36,7 +36,6 @@ public class Parser {
         switch (command) {
         case "review":
             commands.reviewMode();
-            ;
             break;
         case "reco":
             commands.recommendationMode();
