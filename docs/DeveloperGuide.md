@@ -93,68 +93,7 @@ The sections below give more details for each component.
 
 `Ui.java` enables:
 
-- reading of user input
 - printing of string messages, exceptions, a welcome message and a standardized long line
-
-### Parser Component
-
-API: `Parser.java`
-
-The parser is one of the core components in charge of parsing all user input commands into program-understandable commands and
-arguments. For the ease of expansion of this program's functionality as well as for its testability, reflection is used to invoke
-commands.
-
-First is the initialization of this parser. A `Ui` instance and a `Data` instance is passed and stored. This is important as
-these two will be passed to logic components (command classes) later.
-
-Then, we can parse a user-input string by passing it to `parse()`. We use an example of this:
-```
-record 01/05/2021 /s coughing, fever /p panadol Paracetamol 500mg*20
-```
-
-This is broken into a few steps:
-
-1. Initialize an empty hashmap, called `arguments`.
-1. Tokenize using **any number of consecutive white spaces**.
-1. Taken out the first token as command, i.e. `record`. Push it into the hash map using **key** `command`.
-   Create a new empty **list** with default **key** `payload`.
-1. Check if next token starts with `/`. No, so we add it to the list: `list = ['payload']`.
-1. Check if next token starts with `/`. Yes, so we concatenate all tokens in the list to one string use delimiter ` `
-   (empty whitespace). Put it into the hash map using the key `payload`.
-   **Reset the list**, and set new key to `s` (the part after this `/`).
-1. Repeat same process, we have `list = ['coughing,']`
-1. Repeat same process, we have `list = ['coughing,', 'fever']`
-1. Same process, `coughing, fever` is pushed into arguments hash map with key `s`. Reset the list, and new key set to `p`.
-1. ... 
-
-At the end, we have an argument hashmap like this:
-
-| Key     | Value                        |
-| ------- | ---------------------------- |
-| command | record                       |
-| payload | 01/05/2021                   |
-| s       | coughing, fever              |
-| p       | panadol Paracetamol 500mg*20 |
-
-Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
-`RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with 'Command').
-Since this is a valid command, this class exists. If the class does not exist, it means the command is not yet
-implemented by this program.
-
-After finding the command class, it is initialized with `(ui, data, arguments)`. `ui` and `data` are the two references
-passed in when initializing the parser, and the `arguments` is the hash map we just obtained by parsing the input. The result
-of the initialization (i.e. the instance of the command class) is returned.
-
-Since all command classes implements the abstract method `execute()`, the main loop just need to execute this method to call out
-the actual logic of this command.
-
-> ❗ Note: Since we are tokenizing the user input with **any number of white spaces** and concatenate all tokens belong to the
-> same key back using **single whitespace**, the number of white spaces input has no effect on the actual arguments being parsed.
-> For example, the following two input has exactly the same result after being parsed.
-> ```
-> record 01/05/2021 /s coughing, fever
-> record 01/05/2021 /s coughing,                 fever
-> ```
 
 ### Logic Component
 
@@ -218,6 +157,62 @@ Constants used by multiple classes are stored in the `seedu.duke.Constants` clas
 This section describes some noteworthy details on how certain details are implemented.
 
 ### Tokenizing User Input
+
+The parser is one of the core components in charge of parsing all user input commands into program-understandable commands and
+arguments. For the ease of expansion of this program's functionality as well as for its testability, reflection is used to invoke
+commands.
+
+First is the initialization of this parser. A `Ui` instance and a `Data` instance is passed and stored. This is important as
+these two will be passed to logic components (command classes) later.
+
+Then, we can parse a user-input string by passing it to `parse()`. We use an example of this:
+```
+record 01/05/2021 /s coughing, fever /p panadol Paracetamol 500mg*20
+```
+
+This is broken into a few steps:
+
+1. Initialize an empty hashmap, called `arguments`.
+1. Tokenize using **any number of consecutive white spaces**.
+1. Taken out the first token as command, i.e. `record`. Push it into the hash map using **key** `command`.
+   Create a new empty **list** with default **key** `payload`.
+1. Check if next token starts with `/`. No, so we add it to the list: `list = ['payload']`.
+1. Check if next token starts with `/`. Yes, so we concatenate all tokens in the list to one string use delimiter ` `
+   (empty whitespace). Put it into the hash map using the key `payload`.
+   **Reset the list**, and set new key to `s` (the part after this `/`).
+1. Repeat same process, we have `list = ['coughing,']`
+1. Repeat same process, we have `list = ['coughing,', 'fever']`
+1. Same process, `coughing, fever` is pushed into arguments hash map with key `s`. Reset the list, and new key set to `p`.
+1. ... 
+
+At the end, we have an argument hashmap like this:
+
+| Key     | Value                        |
+| ------- | ---------------------------- |
+| command | record                       |
+| payload | 01/05/2021                   |
+| s       | coughing, fever              |
+| p       | panadol Paracetamol 500mg*20 |
+
+Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
+`RecordCommand` under the module `seedu.duke.command` (first character being capitalized, then concatenated with 'Command').
+Since this is a valid command, this class exists. If the class does not exist, it means the command is not yet
+implemented by this program.
+
+After finding the command class, it is initialized with `(ui, data, arguments)`. `ui` and `data` are the two references
+passed in when initializing the parser, and the `arguments` is the hash map we just obtained by parsing the input. The result
+of the initialization (i.e. the instance of the command class) is returned.
+
+Since all command classes implements the abstract method `execute()`, the main loop just need to execute this method to call out
+the actual logic of this command.
+
+> ❗ Note: Since we are tokenizing the user input with **any number of white spaces** and concatenate all tokens belong to the
+> same key back using **single whitespace**, the number of white spaces input has no effect on the actual arguments being parsed.
+> For example, the following two input has exactly the same result after being parsed.
+> ```
+> record 01/05/2021 /s coughing, fever
+> record 01/05/2021 /s coughing,                 fever
+> ```
 
 ### Exception Handling
 
