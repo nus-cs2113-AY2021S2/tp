@@ -30,7 +30,7 @@ public class Messages {
     public static final String PROMPT_ENTER_FIELD_DETAILS = NEWLINE + "Enter new %s:";
     public static final String MESSAGE_FIELD_BEING_EDITED = NEWLINE + "Editing: %s";
     public static final String MESSAGE_EDITED_FIELD = "Updated %s.";
-    public static final String MESSAGE_NOT_UPDATED = "Field not updated." + NEWLINE;
+    public static final String MESSAGE_NOT_UPDATED = "Field not updated.";
     public static final String MESSAGE_FIELDS_TO_EDIT = "Which fields would you like to edit?";
     
     //Parser messages
