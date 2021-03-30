@@ -119,7 +119,7 @@ This operation will add a loan record to the list.
 
 Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
-Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
+Example: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 This example shows that you have entered _"1st loan to Mark"_ as a loan of amount
 _$200_ on the _3rd March 2021_ and setting the person receiving the loan (borrower) 
@@ -135,7 +135,7 @@ This operation will add a saving record to the list.
 
 Format: `add -s <description> -a <amount> -d <date>`
 
-Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
+Example: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 This example shows that you have entered _"Savings from March"_ as savings of amount
 _$1000_ on the _4th April 2021_.
@@ -218,11 +218,17 @@ Output:
 
 ---
 
-This operation will mark a loan record as returned by the loanee.
+You can mark a loan record as returned using `return` and the options `-i`, `-d`.
 
 Format: `return -i <index_of_loan> -d <date>`
+* `<index_of_loan>` refers to the index number shown on the displayed list of records.
+* `<index_of_loan>` must be a **positive integer** 1, 2, 3,...
+* `<index_of_loan>` must be referring to an existing loan in the list.
+* `<date>` refers to the date that the borrower has returned the money.
 
-Examples: `return -i 3 -d 28/03/2021`
+Example: `return -i 2 -d 28/03/2021`\
+This example shows that you have entered a command that translates to the following:\
+"The second entry(presumably a loan) on the record list is returned on 28/03/2021."
 
 Output:
 
@@ -232,14 +238,16 @@ Output:
 
 ---
 
-This operation will remove a record from the record list.
+You can remove a record from the record list using `remove` and the option `-i`.
 
 Format: `remove -i <index>`
-> - The `<index>` refers to the index number shown on the record list
-> - `<index>` must be a **positive integer** 1,2,3...
-> - `<index>` must be referring to an existing record
+* `<index>` refers to the index number shown on the record list.
+* `<index>` must be a **positive integer** 1,2,3...
+* `<index>` must be referring to an existing record.
 
-Examples: `remove -i 1`, `remove -i 2`
+Example: `remove -i 1`\
+This example shows that you have entered a command that translates to the following:\
+"Remove the first record on the list."
 
 Output:
 
@@ -249,14 +257,16 @@ Output:
 
 ---
 
-This operation will check the credit score of a person.
+You can check the credit score of a person using `creditscore`.
 
 Format: `creditscore <person>`
 
-> - `<person>` refers to existing loanees in the loan list
-> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+* `<person>` refers to any person including those in the list and not in the list.
+* `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
-Examples: `creditscore jason`, `creditscore mark`
+Example: `creditscore mark`\
+This example shows that you have entered a command that translates to the following:\
+"Show Mark's credit score."
 
 Output:
 
@@ -301,7 +311,7 @@ Each section is divided into three parts:
 
 Format: `help <FEATURE>`
 
-Examples: `help remove`
+Example: `help remove`
 
 Output:
 
