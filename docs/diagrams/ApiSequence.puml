@@ -37,14 +37,12 @@ loop unitContents
     UnitsGenerator -> UnitsGenerator: getUnit(details)
     activate UnitsGenerator
     UnitsGenerator -> SearchedUnits: addToResult(unit)
+    activate SearchedUnits
+    deactivate SearchedUnits
     deactivate UnitsGenerator
 end
-ResponseDecoder <-- UnitsGenerator: generated units
 deactivate UnitsGenerator
-GetRequest <-- ResponseDecoder: units from response
 deactivate ResponseDecoder
-ApiRepository <-- GetRequest: units matching query
 deactivate GetRequest
-[<-- ApiRepository: units for user
 deactivate ApiRepository
 @enduml
