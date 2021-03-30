@@ -350,8 +350,6 @@ Thus the data is not protected by nature.
 
 * **Human-Editable-File**: files with .txt
 
-* *glossary item* - Definition
-
 ## Instructions for Manual Testing
 
 ---
