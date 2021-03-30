@@ -20,8 +20,6 @@ public class DoctorAppointmentStorage {
     private final String filePath;
     private final File file;
     private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
-    private final String PATIENT_FILE_PATH = Constants.APPOINTMENT_FILE_PATH;
-
 
     public DoctorAppointmentStorage(String filePath) {
         this.filePath = filePath;

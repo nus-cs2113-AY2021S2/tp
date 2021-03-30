@@ -1,26 +1,24 @@
 package seedu.logic.parser;
 
-import com.sun.tools.javac.Main;
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+<<<<<<< HEAD
+=======
+import seedu.exceptions.staff.BlankInputException;
+
+>>>>>>> c4330f9184f2e4edabe7a52ab14246137fa9b62e
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;
-import seedu.model.staff.Nurse;
-import seedu.ui.NurseScheduleUI;
 import seedu.logic.errorchecker.NurseScheduleChecker;
+import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
-
-import static seedu.ui.UI.smartCommandRecognition;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -29,20 +27,6 @@ public class NurseSchedulesParser {
     static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
-
-    public static boolean isValidDate(String date) {
-        return true;
-    }
-
-    /**
-     * Gets user input.
-     *
-     * @return User input
-     */
-    public String getUserInput() {
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
-    }
 
     /**
      * Returns the command of user.
@@ -63,13 +47,12 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String input) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException {
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException {
         NurseScheduleChecker.checkEmptyInput(input);
         String text = input.toUpperCase();
         String[] details = new String[3];
 
         String[] parts = text.split("/", 0);
-        String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
 
@@ -109,13 +92,13 @@ public class NurseSchedulesParser {
         assert !(line.isEmpty()) : "user input should not be empty";
 
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String command = parser.getFirstWord(line).toUpperCase();
+        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line).toUpperCase());
         Command c = null;
 
-        switch (smartCommandRecognition(COMMANDS, command)) {
+        switch (command) {
         case "ADD":
             try {
-                String[] details = parser.getDetails(line);
+                String[] details = parser.getDetails(line, command);
                 c = new NurseScheduleAdd(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
@@ -124,7 +107,7 @@ public class NurseSchedulesParser {
             break;
         case "LIST":
             try {
-                String[] details = parser.getDetails(line);
+                String[] details = parser.getDetails(line, command);
                 c = new NurseScheduleList(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
@@ -133,7 +116,7 @@ public class NurseSchedulesParser {
             break;
         case "DELETE":
             try {
-                String[] details = parser.getDetails(line);
+                String[] details = parser.getDetails(line, command);
                 c = new NurseScheduleDelete(details);
             } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();

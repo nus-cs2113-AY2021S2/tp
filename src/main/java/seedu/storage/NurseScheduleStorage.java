@@ -1,6 +1,9 @@
 package seedu.storage;
 
+import seedu.exceptions.nurseschedules.InvalidIDTypeException;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.NurseScheduleActions;
+import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.model.NurseSchedule;
 
 import java.io.File;
@@ -36,10 +39,13 @@ public class NurseScheduleStorage {
 
             while (sc.hasNextLine()) {
                 String[] details = sc.nextLine().split("\\|", 0);
+                NurseScheduleChecker.checkNurseIDExist(details[0]);
+                NurseScheduleChecker.checkValidNurseID(details[0]);
+                NurseScheduleChecker.checkValidPatientID(details[1]);
                 nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             }
-        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException e) {
-            System.out.println("Error loading saved file!");
+        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException | NurseIdNotFound | InvalidIDTypeException e) {
+            System.out.println("The file \"NurseSchedule.txt\" is corrupted.");
         }
         return nurseSchedules;
     }

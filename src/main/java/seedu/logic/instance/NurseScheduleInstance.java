@@ -34,9 +34,11 @@ public class NurseScheduleInstance {
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
-                ui.nurseSchedulePrompt();
-                String line = parser.getUserInput().trim();
+                //ui.nurseSchedulePrompt();
+                //String line = parser.getUserInput().trim();
+                String line = ui.getInput("NSchedule");
                 Command c = parser.nurseParse(line, ui);
+                ui.lineBreak();
                 c.execute(nurseSchedules, ui);
                 storage.writeToFile(nurseSchedules);
                 isReturnToStartMenu = c.isExit();
@@ -47,6 +49,7 @@ public class NurseScheduleInstance {
                 ui.lineBreak();
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
+                ui.lineBreak();
             } catch (NullPointerException e) {
                 //ui.invalidInputsMessage();
                 //Command C can return as null if an error is triggered in parser

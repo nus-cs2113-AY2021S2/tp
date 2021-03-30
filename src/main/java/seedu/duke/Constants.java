@@ -4,15 +4,15 @@ public class Constants {
 
 
     public static final String LINEBREAK = "____________________________________________________________";
-    public static final String LONGLINEBREAK = "____________________________________________________" +
-            "____________________________________________________________________";
+    public static final String LONGLINEBREAK = "____________________________________________________"
+            +"____________________________________________________________________";
     public static final String LOGO =
             " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
-                    + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
-                    + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
-                    + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
-                    + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
-                    + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
+             + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
+             + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
+             + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
+             + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
+             + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
 
 
     public static final String PATIENT_FILE_PATH = "data/Patients.txt";
@@ -51,7 +51,8 @@ public class Constants {
     // HELP FUNCTION DESCRIPTION
     public static final String STAFF_HELP_DESCRIPTION = "Brings up the list of commands for Staff!";
     public static final String PATIENT_HELP_DESCRIPTION = "Brings up the list of commands for Patient!";
-    public static final String APPOINTMENTS_HELP_DESCRIPTION = "Brings up the list of commands for Doctor Appointments!";
+    public static final String APPOINTMENTS_HELP_DESCRIPTION =
+            "Brings up the list of commands for Doctor Appointments!";
     public static final String SCHEDULES_HELP_DESCRIPTION = "Brings up the list of commands for Nurse Schedule!";
     public static final String INVENTORY_HELP_DESCRIPTION = "Brings up the list of commands for Inventory!";
 
@@ -74,7 +75,8 @@ public class Constants {
     // LIST FUNCTION DESCRIPTION
     public static final String STAFF_LIST_DESCRIPTION = "Brings up the list of all current Staff in database!";
     public static final String PATIENT_LIST_DESCRIPTION = "Brings up the list of all current Patient in database!";
-    public static final String APPOINTMENTS_LIST_DESCRIPTION = "Brings up the list of all current Doctor Appointments in database!";
+    public static final String APPOINTMENTS_LIST_DESCRIPTION =
+            "Brings up the list of all current Doctor Appointments in database!";
     public static final String SCHEDULES_LIST_DESCRIPTION = "Brings up the list of all current Nurse Schedules in database!";
     public static final String INVENTORY_LIST_DESCRIPTION = "Brings up the list of all current Inventory in database!";
 
@@ -87,8 +89,10 @@ public class Constants {
 
     // DELETE FUNCTION DESCRIPTION
     public static final String STAFF_DELETE_DESCRIPTION = "Deletes the Staff with the specified ID from the list!";
-    public static final String PATIENT_DELETE_DESCRIPTION = "Deletes the Patient with the specified ID from the list!";
-    public static final String APPOINTMENTS_DELETE_DESCRIPTION = "Deletes the Appointment with the specified ID from the list!";
+    public static final String PATIENT_DELETE_DESCRIPTION =
+            "Deletes the Patient with the specified ID from the list!";
+    public static final String APPOINTMENTS_DELETE_DESCRIPTION =
+            "Deletes the Appointment with the specified ID from the list!";
     public static final String SCHEDULES_DELETE_DESCRIPTION = "Deletes the Schedule with the specified ID from the list!";
     public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory Item with the specified ID from the list!";
     // DELETE FUNCTION FORMATTING

@@ -32,38 +32,23 @@ public class DoctorAppointmentUI extends UI {
         System.out.println("Appointment Added");
     }
 
-    public static void printDoctorNotFound() {
-        System.out.println("Sorry your appointment is not added because the DoctorID does not exist :(");
+    public static void deletedDocID(String DocID, String AptID) {
+        System.out.println("DoctorID / Appointment ID: " + DocID + "/" + AptID + " has been deleted!");
     }
-
-    public static void invalidDoctorID() {
-        System.out.println("Sorry invalid Doctor ID.");
-    }
-
-    public static void deletedID(String id) {
-        System.out.println("iD: " + id + " has been deleted!");
+    public static void deletedAptID(String AptID) {
+        System.out.println("Appointment ID: " + AptID + " has been deleted!");
     }
 
     public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
-        if (indicator.equals("A")) {
-            System.out.println("Appointment ID: " + doc.getAppointmentId());
-            System.out.println("Patient's Name: " + doc.getPatientsName());
-            System.out.println("Gender: " + doc.getGender());
-            System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
-            System.out.print("\n");
-        } else {
+        if (indicator.equals("D")) {
             System.out.println("Doctor ID: " + doc.getDoctorId());
-            System.out.println("Appointment ID: " + doc.getAppointmentId());
-            System.out.println("Patient's Name: " + doc.getPatientsName());
-            System.out.println("Gender: " + doc.getGender());
-            System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
-            System.out.print("\n");
         }
-    }
+        System.out.println("Appointment ID: " + doc.getAppointmentId());
+        System.out.println("Patient's Name: " + doc.getPatientsName());
+        System.out.println("Gender: " + doc.getGender());
+        System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+        System.out.print("\n");
 
-    public static void printIDNotFound() {
-        System.out.println("ID number not found");
     }
-
 
 }
