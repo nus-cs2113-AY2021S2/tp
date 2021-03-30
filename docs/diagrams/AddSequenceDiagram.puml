@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+
+participant ":AddCommand" as AddCommand
+participant "food:Food" as Food
+participant "fridge:Fridge" as Fridge
+participant "checker:UniqueFoodnameChecker" as UniqueFoodnameChecker
+
+-> AddCommand: execute()
+activate AddCommand
+
+loop food in fridge
+    AddCommand-> Fridge: addFood()
+    activate Fridge
+    opt isExpiring
+        Fridge -> Food: isExpiring()
+        activate Food
+        return
+    end
+    return food
+end
+destroy Food
+destroy Fridge
+<--AddCommand: result
+deactivate AddCommand
+
+@enduml
