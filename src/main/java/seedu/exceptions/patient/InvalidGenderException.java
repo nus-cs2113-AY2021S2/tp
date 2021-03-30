@@ -1,8 +1,8 @@
 package seedu.exceptions.patient;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class InvalidGenderException extends DukeException {
+public class InvalidGenderException extends HealthVaultException {
 
     @Override
     public void getError(String input) {

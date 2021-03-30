@@ -1,14 +1,12 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.parser.InventoryParser;
 import seedu.storage.InventoryStorage;
 import seedu.logic.command.Command;
 import seedu.ui.InventoryUI;
 import seedu.ui.UI;
-
-import java.io.FileNotFoundException;
 
 public class InventoryInstance {
 
@@ -29,7 +27,7 @@ public class InventoryInstance {
         try {
             //inventories = inventoryStorage.uploadDrugs();
             drugs = new InventoryActions(inventoryStorage.loadInventory());
-        } catch (DukeException e) {
+        } catch (HealthVaultException e) {
             ui.showLoadingError();
             drugs = new InventoryActions();
             //inventories = inventoryStorage.createNewFile();

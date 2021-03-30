@@ -2,7 +2,7 @@ package seedu.exceptions;
 
 import seedu.ui.UI;
 
-public class UnrecognizedCommandException extends DukeException{
+public class UnrecognizedCommandException extends HealthVaultException {
 
     public void getError() {
         UI.printError("OOPS! Your command may not be valid! \n" +
