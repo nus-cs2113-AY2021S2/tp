@@ -1,9 +1,9 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 !include style.puml
+skinparam monochrome true
 
-":Finux" -> ":ViewCommand": execute()
-activate ":Finux"
+[-> ":ViewCommand": execute()
 activate ":ViewCommand"
 
 alt EXPENSE
@@ -29,8 +29,7 @@ else SAVING
 
 end
 
-":ViewCommand" --> ":Finux"
+[<-- ":ViewCommand"
 deactivate ":ViewCommand"
-deactivate ":Finux"
 
 @enduml
