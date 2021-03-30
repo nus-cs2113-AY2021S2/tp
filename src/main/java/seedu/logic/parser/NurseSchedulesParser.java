@@ -6,15 +6,16 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
-import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
+import java.util.logging.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class NurseSchedulesParser {
@@ -56,19 +57,19 @@ public class NurseSchedulesParser {
         }
         if (command.equals("ADD")) {
             if (checker.isValidDate(parts[3])) {
-                MainChecker.checkNumInput(text, 4, 4);
+                checker.checkNumInput(text, 4, 4);
                 details[0] = UI.cleanseInput(parts[1]);
                 details[1] = UI.cleanseInput(parts[2]);
                 details[2] = UI.cleanseInput(parts[3]);
             }
         } else if (command.equals("DELETE")) {
             if (checker.isValidDate(parts[2])) {
-                MainChecker.checkNumInput(text, 3, 3);
+                checker.checkNumInput(text, 3, 3);
                 details[0] = UI.cleanseInput(parts[1]);
                 details[1] = UI.cleanseInput(parts[2]);
             }
         } else if (command.equals("LIST")) {
-            MainChecker.checkNumInput(text, 2, 2);
+            checker.checkNumInput(text, 2, 2);
             details[0] = UI.cleanseInput(parts[1]);
         }
         return details;
@@ -90,6 +91,8 @@ public class NurseSchedulesParser {
         String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line).toUpperCase());
         Command c = null;
 
+        logger.info("Parsing command...");
+
         switch (command) {
         case "ADD":
             try {
@@ -98,6 +101,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in add command!");
             }
             break;
         case "LIST":
@@ -107,6 +111,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in list command!");
             }
             break;
         case "DELETE":
@@ -116,6 +121,7 @@ public class NurseSchedulesParser {
             } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in delete command!");
             }
             break;
         case "HELP":
@@ -125,6 +131,7 @@ public class NurseSchedulesParser {
             c = new NurseScheduleReturn();
             break;
         default:
+            logger.log(Level.WARNING, "Command not successfully parsed!");
             ui.invalidInputsMessage();
             break;
         }
