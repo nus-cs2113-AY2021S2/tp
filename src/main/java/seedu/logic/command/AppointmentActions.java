@@ -1,6 +1,8 @@
 package seedu.logic.command;
 
 
+import seedu.duke.Constants;
+import seedu.exceptions.doctorappointment.InvalidAppIDException;
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.model.staff.Staff;
@@ -14,8 +16,6 @@ public class AppointmentActions {
     public static ArrayList<DoctorAppointment> appointmentList;
     public static ArrayList<Staff> doctorList;
 
-    protected static DoctorAppointmentStorage storage = new DoctorAppointmentStorage("data/DoctorAppointmentList.txt");
-
     public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
         appointmentList = loadAppointments;
     }
@@ -28,42 +28,32 @@ public class AppointmentActions {
         String gender = inputArray[4];
         String date = inputArray[5];
 
-        boolean isRegister = false;
-       //doctorList = DoctorAppointmentStorage.loadDoctorFile();
         DoctorAppointment newAppointment = new DoctorAppointment(doctorID, appointmentID, patientName, gender, date);
 
         DoctorAppointmentUI.printAddedAppointment();
         appointmentList.add(newAppointment);
-        storage.writeToFile(appointmentList);
-
-        /*for (Staff id : doctorList) {
-
-            if (id.getId().equals(doctorID)) {
-                isRegister = true;
-                DoctorAppointment newAppointment = new DoctorAppointment(doctorID, appointmentID, patientName, gender, date);
-
-                DoctorAppointmentUI.printAddedAppointment();
-                appointmentList.add(newAppointment);
-                storage.writeToFile(appointmentList);
-            }
-            System.out.println(id.getId());
-        }
-        if (!isRegister) {
-            DoctorAppointmentUI.printDoctorNotFound();
-        }*/
+        DoctorAppointmentStorage.writeToFile(appointmentList);
     }
 
-    public static void listAppointment(String[] inputArray) throws Exception {
+    public static void listAppointment(String input) throws Exception {
 
-        String iD = inputArray[1];
+        String indicator = "A";
+        String[] inputArray = input.split("");
+        String iD = inputArray[0];
         if (appointmentList.size() == 0) throw new EmptyListException();
         else {
-            for (DoctorAppointment doc : appointmentList) {
-                if (doc.getDoctorId().equals(iD)) {
-                    System.out.println("ID: " + doc.getDoctorId());
-                    System.out.println("Patient's Name: " + doc.getPatientsName());
-                    System.out.println("Gender: " + doc.getGender());
-                    System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+            if (iD.equals("A")) {
+                for (DoctorAppointment doc : appointmentList) {
+                    if (doc.getAppointmentId().equals(input)) {
+                        DoctorAppointmentUI.printList(doc, indicator);
+                    }
+                }
+            } else {
+                indicator = "D";
+                for (DoctorAppointment doc : appointmentList) {
+                    if (doc.getDoctorId().equals(input)) {
+                        DoctorAppointmentUI.printList(doc, indicator);
+                    }
                 }
             }
         }
@@ -73,19 +63,28 @@ public class AppointmentActions {
         String iD = inputArray[1];
         int index = 999;
         int counter = 0;
+        boolean isAorD = false;
 
         for (DoctorAppointment doc : appointmentList) {
-            if (doc.getDoctorId().equals(iD)) {
-                index = counter;
+            if (iD.equals("A")) {
+                isAorD = true;
+                if (doc.getAppointmentId().equals(iD)) {
+                    index = counter;
+                }
+            }
+            if (iD.equals("D")) {
+                if (doc.getDoctorId().equals(iD)) {
+                    index = counter;
+                }
             }
         }
-        storage.writeToFile(appointmentList);
-
-        if (index == 999) System.out.println("ID number not found");
+        if (index == 999) DoctorAppointmentUI.printIDNotFound();
         else {
-            System.out.println("iD: " + appointmentList.get(index).getDoctorId() + " has been deleted!");
+            if (isAorD) DoctorAppointmentUI.deletedID(appointmentList.get(index).getAppointmentId());
+            else DoctorAppointmentUI.deletedID(appointmentList.get(index).getDoctorId());
+
             appointmentList.remove(index);
-            storage.writeToFile(appointmentList);
+            DoctorAppointmentStorage.writeToFile(appointmentList);
         }
 
     }
