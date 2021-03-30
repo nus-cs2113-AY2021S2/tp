@@ -5,7 +5,7 @@ import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.model.staff.Staff;
 
 import static seedu.ui.UI.abortEnabledScanInput;
-import static seedu.logic.parser.staffparser.checkID;
+import static seedu.logic.parser.StaffParser.checkID;
 
 public class StaffUI {
 
@@ -43,6 +43,10 @@ public class StaffUI {
             }
         }
     }
+    public static void emptyListOutput() {
+        System.out.println("OOPS! It seems like you have no staff in the list now!");
+    }
+
 
     public static void staffFiredOutput(String line) {
         System.out.println(line.split("/")[1] + " has been fired.");
@@ -67,13 +71,23 @@ public class StaffUI {
         System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding staff!");
         System.out.println("\"return\" returns you to the Start Menu!");
     }
-
+    public static void corruptedFileErrorMessage() {
+        System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
+    }
     public static void wrongStaffIDErrorMessage() {
         System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
 
     public static void wrongStaffListInputErrorMessage() {
         System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
+    }
+
+    public static void blankInputErrorMessage() {
+        System.out.println("OOPS! Input field cannot be blank. Please change your input!");
+    }
+
+    public static void invalidNumericErrorMessage() {
+        System.out.println("OOPS! Input field expects a positive numeric. Please change your input!");
     }
 
     public static void staffMenuPrompt() {

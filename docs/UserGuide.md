@@ -3,6 +3,11 @@
 ## Opening Words
 
 ## Content Page
+* [Introduction](#1-introduction)
+* [Installation Guide](#2-installation-guide)
+* [How to use this guide](#3-how-to-use-the-guide)
+  * [Technical terms](#31-technical-terms)
+  * [Symbols & Icons](#32-symbols--icons)
 
 ## 1. Introduction
 

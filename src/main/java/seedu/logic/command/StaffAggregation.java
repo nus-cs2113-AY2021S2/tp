@@ -6,7 +6,7 @@ import seedu.model.staff.Staff;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static seedu.logic.parser.staffparser.compareInt;
+import static seedu.logic.parser.StaffParser.isSameInt;
 import static seedu.ui.UI.*;
 
 public class StaffAggregation {
@@ -51,7 +51,9 @@ public class StaffAggregation {
     }
 
     public void list(String... parameter) {
-
+        if (this.getNumStaff() == 0){
+            StaffUI.emptyListOutput();
+        }
         if (parameter[0] == (null)) {
             for (Staff staff : list) {
                 display(staff);
@@ -80,7 +82,7 @@ public class StaffAggregation {
     }
 
     public boolean search(String keyword, Staff staff) {
-        return compareInt(staff.getAge(),keyword) || staff.getName().contains(keyword)
+        return isSameInt(staff.getAge(),keyword) || staff.getName().contains(keyword)
                     || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
     }
 

@@ -4,7 +4,7 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.StaffAggregation;
-import seedu.logic.parser.staffparser;
+import seedu.logic.parser.StaffParser;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
@@ -16,18 +16,24 @@ public class StaffInstance {
     private StaffUI staffUI;
     private StaffAggregation staffAggregation;
     private StaffStorage staffStorage;
-    private staffparser staffParser;
+    private StaffParser staffParser;
 
     public StaffInstance(String filepath){
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
-        staffParser = new staffparser();
+        staffParser = new StaffParser();
         staffAggregation = new StaffAggregation();
     }
 
 
     public void run(){
-        staffStorage.fileHandling(staffAggregation);
+        try {
+            staffStorage.fileHandling(staffAggregation);
+        } catch (ExcessInputException | PositiveNumberOnlyException |
+                BlankInputException | WrongStaffIdException |
+                InsufficientInputException | NoInputException e) {
+            StaffUI.corruptedFileErrorMessage();;
+        }
         StaffUI.staffMenuHeader();
         Scanner in = new Scanner(System.in);
         while (true) {
@@ -58,6 +64,10 @@ public class StaffInstance {
                 UI.tooManyInputErrorMessage();
             } catch (InsufficientInputException e) {
                 UI.tooLittleInputErrorMessage();
+            } catch (BlankInputException e) {
+                StaffUI.blankInputErrorMessage();
+            } catch (NumberFormatException | PositiveNumberOnlyException e) {
+                StaffUI.invalidNumericErrorMessage();
             }
         }
     }
