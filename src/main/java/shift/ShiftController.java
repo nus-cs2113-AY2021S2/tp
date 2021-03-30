@@ -91,13 +91,13 @@ public class ShiftController {
         System.out.println("Employee not found");
     }
 
-    public static void viewAllShifts(ArrayList<Employee> employees, ArrayList<Shift> shifts){
+    public static void viewAllShifts(ArrayList<Shift> shifts){
         for (Shift item : shifts){
             System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
         }
     }
 
-    public static void viewOneShift(ArrayList<Employee> employees, ArrayList<Shift> shifts) {
+    public static void viewOneShift(ArrayList<Shift> shifts) {
         System.out.println("Enter Shift date (in dd/MM/yyyy):");
         Scanner sc = new Scanner(System.in);
         String date = sc.nextLine();
