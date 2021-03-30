@@ -10,8 +10,13 @@ to organize the records of their patients.
 
 ## Table of Contents
 
-* [Quickstart](#quickstart)
-* [Features](#features)
+* [Patient Manager User Guide](#patient-manager-user-guide)
+  * [Table of Contents](#table-of-contents)
+  * [Quickstart](#quickstart)
+  * [About Command Input](#about-command-input)
+    * [Whitespaces](#whitespaces)
+    * [Order of Arguments](#order-of-arguments)
+  * [Features](#features)
     * [Print a help message: `help`](#print-a-help-message-help)
     * [Adding a patient: `add`](#adding-a-patient-add)
     * [Listing all patients: `list`](#listing-all-patients-list)
@@ -20,7 +25,7 @@ to organize the records of their patients.
     * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
     * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
     * [Exiting the program: `exit`](#exiting-the-program-exit)
-* [Command summary](#command-summary)
+  * [Command Summary](#command-summary)
 
 ---
 
@@ -44,6 +49,36 @@ to organize the records of their patients.
 1. Refer to the Features section below for more detailed explanations and usage of the available commands.
 
 ---
+
+## About Command Input
+
+### Whitespaces
+
+Due to the design of our command parser, we are able to understand your input for any number of spaces between words (even before
+the command itself). So all these commands are actually understandable and will be treated the same:
+```
+record 01/05/2021 /s coughing, fever
+record   01/05/2021  /s       coughing, fever
+record 01/05/2021  /s   coughing,       fever
+      record 01/05/2021 /s coughing, fever
+```
+
+❗ This is important: treating all these four the same means any number of spaces in between words will only be
+considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and `fever`,
+it will go into the database as `coughing, fever` - same as every other lines do.
+
+### Order of Arguments
+
+Words or characters starts with `/` mark the beginning of an argument. An argument block continues until the other one is found.
+For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
+The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
+```
+record 01/05/2021 /s coughing, fever /d flu
+record 01/05/2021 /d flu /s coughing, fever
+```
+
+However, we would still suggest you to input it using the sequence given in the following section. This can prevent you from
+getting confused about the meaning of each argument.
 
 ## Features
 
