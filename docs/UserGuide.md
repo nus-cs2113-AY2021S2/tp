@@ -17,21 +17,37 @@
 
 [3. Features](#3-features)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add/View Module Description](#311-addview-module-description)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Add/View Components and Their Weightages](#312-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add a Module](#311-add-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. View a Module](#312-view-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. View All Modules](#313-view-all-modules)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Add a Review](#314-add-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. View All Reviews](#315-view-all-reviews)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Delete a Module](#316-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. Add/View Components and Their Weightages](#315-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.8. Add a Review](#318-add-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.9. View All Reviews](#319-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.11. Add New Task](#3111-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.13. Add Zoom Link](#3113-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)   
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Add New Task](#331-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Delete a Task](#332-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 View All Tasks](#333-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Pin a Task](#334-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Delete a Task](#333-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 View All Tasks](#334-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Pin a Task](#335-pin-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
@@ -60,7 +76,7 @@ their needs.
 This user guide was made to help you set up UniTracker on your computer and also provide you with all the information you need to use UniTracker.
 It clearly documents the features UniTracker offers with examples to aid you in familiarising yourself with UniTracker.
 
-### 1.3 How to User This User Guide
+### 1.3 How to Use This User Guide
 
 Firstly, refer to [Section 2. Quick Start](#2-quick-start) for instructions on setting up UniTracker on your local computer. 
 
@@ -145,16 +161,223 @@ Module Information menu:
 ```
 Welcome to the module information menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- Add/View Module Description
-[2] --- Add/View Components and Their Weightages
-[3] --- View All Modules
-[4] --- Add a Review
-[5] --- View All Reviews
-[6] --- Delete modules
-[7] --- Exit to main menu
+----------------------
+[1]  --- Add New Module
+[2]  --- View a Module
+[3]  --- View All Modules
+[4]  --- Delete Module
+----------------------
+[5]  --- Add/View Components and Their Weightages
+[6]  --- Add Module's Modular Credits (MC)
+[7]  --- Add Module Grade
+----------------------
+[8]  --- Add a Review
+[9]  --- View All Reviews
+[10] --- Delete Review
+----------------------
+[11] --- Add New Task
+[12] --- Delete Task
+----------------------
+[13] --- Add Zoom Link
+[14] --- Delete Zoom Link
+----------------------
+[15] --- Exit to main menu
+----------------------
 ```
+#### 3.1.1 Add a Module  
 
-#### 3.1.1 Add/View Module Description
+#### 3.1.2 View a Module  
+
+#### 3.1.3 View all Modules  
+
+
+Lists out all the modules added to UniTracker.
+
+* Example for listing all the modules:  
+  Input:   
+  `3`  
+  Output:
+  ```
+  Here are the modules in your Modules List:  
+  --------------------------------------------  
+  [1] --- CS3243  
+  [2] --- CS2113T  
+  --------------------------------------------
+  ```
+#### 3.1.4 Delete a Module
+
+Deletes a module from the list of modules.
+
+* Format: enter the index (integer) of the module that you want to delete.
+* Example for deleting a module:  
+  Input:  
+  `6`  
+  Output:  
+  `Here are the modules in your Modules List:`  
+  `--------------------------------------------`  
+  `[1] --- CS3243`  
+  `[2] --- CS2113T`  
+  `--------------------------------------------`  
+  `Enter the module number to be deleted:`  
+  Input:  
+  `1`  
+  Output:
+  ```
+  You've deleted this: CS3243  
+  NOTE: You are deleting your review
+  The lectures were very entertaining. I have learnt a lot of important algorithms.
+  Assignments and quizzes helped me learn concepts faster.
+  Overall: 5/5
+  NOTE: You are deleting your module description
+  Intro to AI
+  --------------------------------------------
+  Returning to module information menu...
+  ```
+
+#### 3.1.5 Add/View Components and Their Weightages
+
+* Example for adding components and weightage to a module Input:  
+  `2`  
+  Output:
+  ````
+  Would you like to add/view component(s) to a module? [Y/N]
+  ````
+  Input:  
+  `Y`  
+  Output:
+  ````
+  Key in 1 to add component and 2 to view component
+  ````
+  Input:  
+  `1`  
+  Output:
+  ````
+  Module Name?
+  ````
+  Input:  
+  `CS2113T`  
+  Output:
+  ````
+  Please key in your component and percentage of the component.
+  Leave space between component and percentage only.
+  Example: FinalExam 20
+  ````
+  Input:  
+  `FinalExam 20`  
+  Output:
+  ````
+  Component and weightage added!
+  ````
+* Example for viewing the components and weightage of an existing module Input:  
+  `2`  
+  Output:
+    ````
+    Would you like to add/view component(s) to a module? [Y/N]
+    ````
+  Input:  
+  `Y`  
+  Output:
+    ````
+    Key in 1 to add component and 2 to view component
+    ````
+  Input:  
+  `2`  
+  Output:
+    ````
+    Module Name?
+    ````
+  Input:  
+  `CS2113T`  
+  Output:
+    ````
+  {FinalExam=20}
+    ````  
+#### 3.1.6 Add Module's Modular Credits (MC)
+#### 3.1.7 Add Module Grade  
+
+#### 3.1.8 Add a review
+
+Adds a review for the module of your choice.
+
+* Format: Once you have finished typing your review, type `/end` and hit `Enter`
+* Example for adding a review:  
+  Input:   
+  `4`  
+  Output:  
+  `Here are the modules in your Modules List:`  
+  `--------------------------------------------`  
+  `[1] --- CS3243`  
+  `[2] --- CS2113T`  
+  `--------------------------------------------`  
+  `Please choose which module you would like to review and enter the number:`
+
+  Input:  
+  `1`  
+  Output:
+
+  `You have already added a review:`  
+  `Very very very difficult for me:( But, very important to know!`  
+  `5/5`
+
+  `Would you like to replace this with another review? [Y/N]`  
+  Input:  
+  `Y`  
+  Output:  
+  `After you finish your review, type '/end' to finish reviewing.`  
+  `Enter your review for CS3243 below:`
+
+  Input:  
+  `The lectures were very entertaining. I have learnt a lot of`   
+  `important algorithms.`  
+  `Assignments and quizzes helped me learn concepts faster.`  
+  `Overall: 5/5`  `/end`  
+  Output:  
+  ```
+  Woohoo~ Review added:  
+  The lectures were very entertaining. I have learnt a lot of important algorithms.  
+  Assignments and quizzes helped me learn concepts faster.  
+  Overall: 5/5
+  
+  Returning to module information menu...
+  ```
+
+#### 3.1.9 View all reviews
+
+Lists out all the reviews for all modules added to UniTracker.
+
+* Example for listing all the modules' reviews:  
+  Input:   
+  `5`  
+  Output:
+
+    ```  
+    --------------------------------------------  
+    For CS3243:  
+    The lectures were very entertaining. I have learnt a lot of important algorithms.  
+    Assignments and quizzes helped me learn concepts faster.  
+    Overall: 5/5  
+    --------------------------------------------  
+    For CS2113T:  
+    Very fun! We learnt a lot of important programming concepts.  
+    Java is also a fun language:)  
+    GitHub is difficult but very important to know about it.  
+    Overall: 5/5   
+    
+    --------------------------------------------  
+    Returning to module information menu...
+
+    ```
+#### 3.1.10 Delete a Review
+
+#### 3.1.11 Add New Task
+
+#### 3.1.12 Delete Task
+
+#### 3.1.13 Add Zoom Link
+
+#### 3.1.14 Delete Zoom Link
+
+#### 3.1.15 Add/View Module Description
 
 Adds user-defined module description.  
 User can view module description added previously.
@@ -214,185 +437,6 @@ User can view module description added previously.
   
   Returning to module information menu...
   ````
-
-#### 3.1.2 Add/View Components and Their Weightages
-
-* Example for adding components and weightage to a module Input:  
-  `2`  
-  Output:
-  ````
-  Would you like to add/view component(s) to a module? [Y/N]
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in 1 to add component and 2 to view component
-  ````
-  Input:  
-  `1`  
-  Output:
-  ````
-  Module Name?
-  ````
-  Input:  
-  `CS2113T`  
-  Output:
-  ````
-  Please key in your component and percentage of the component.
-  Leave space between component and percentage only.
-  Example: FinalExam 20
-  ````
-  Input:  
-  `FinalExam 20`  
-  Output:
-  ````
-  Component and weightage added!
-  ````
-* Example for viewing the components and weightage of an existing module Input:  
-  `2`  
-  Output:
-    ````
-    Would you like to add/view component(s) to a module? [Y/N]
-    ````
-  Input:  
-  `Y`  
-  Output:
-    ````
-    Key in 1 to add component and 2 to view component
-    ````
-  Input:  
-  `2`  
-  Output:
-    ````
-    Module Name?
-    ````
-  Input:  
-  `CS2113T`  
-  Output:
-    ````
-  {FinalExam=20}
-    ````
-
-#### 3.1.3 View all modules
-
-Lists out all the modules added to UniTracker.
-
-* Example for listing all the modules:  
-  Input:   
-  `3`  
-  Output:
-  ```
-  Here are the modules in your Modules List:  
-  --------------------------------------------  
-  [1] --- CS3243  
-  [2] --- CS2113T  
-  --------------------------------------------
-  ```
-
-#### 3.1.4 Add a review
-
-Adds a review for the module of your choice.
-
-* Format: Once you have finished typing your review, type `/end` and hit `Enter`
-* Example for adding a review:  
-  Input:   
-  `4`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Please choose which module you would like to review and enter the number:`
-
-  Input:  
-  `1`  
-  Output:
-
-  `You have already added a review:`  
-  `Very very very difficult for me:( But, very important to know!`  
-  `5/5`
-
-  `Would you like to replace this with another review? [Y/N]`  
-  Input:  
-  `Y`  
-  Output:  
-  `After you finish your review, type '/end' to finish reviewing.`  
-  `Enter your review for CS3243 below:`
-
-  Input:  
-  `The lectures were very entertaining. I have learnt a lot of`   
-  `important algorithms.`  
-  `Assignments and quizzes helped me learn concepts faster.`  
-  `Overall: 5/5`  `/end`  
-  Output:  
-  ```
-  Woohoo~ Review added:  
-  The lectures were very entertaining. I have learnt a lot of important algorithms.  
-  Assignments and quizzes helped me learn concepts faster.  
-  Overall: 5/5
-  
-  Returning to module information menu...
-  ```
-
-
-#### 3.1.5 View all reviews
-
-Lists out all the reviews for all modules added to UniTracker.
-
-* Example for listing all the modules' reviews:  
-  Input:   
-  `5`  
-  Output:
-
-    ```  
-    --------------------------------------------  
-    For CS3243:  
-    The lectures were very entertaining. I have learnt a lot of important algorithms.  
-    Assignments and quizzes helped me learn concepts faster.  
-    Overall: 5/5  
-    --------------------------------------------  
-    For CS2113T:  
-    Very fun! We learnt a lot of important programming concepts.  
-    Java is also a fun language:)  
-    GitHub is difficult but very important to know about it.  
-    Overall: 5/5   
-    
-    --------------------------------------------  
-    Returning to module information menu...
-
-    ```
-
-#### 3.1.6 Delete a module
-
-Deletes a module from the list of modules.
-
-* Format: enter the index (integer) of the module that you want to delete.
-* Example for deleting a module:  
-  Input:  
-  `6`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Enter the module number to be deleted:`  
-  Input:  
-  `1`  
-  Output:
-  ```
-  You've deleted this: CS3243  
-  NOTE: You are deleting your review
-  The lectures were very entertaining. I have learnt a lot of important algorithms.
-  Assignments and quizzes helped me learn concepts faster.
-  Overall: 5/5
-  NOTE: You are deleting your module description
-  Intro to AI
-  --------------------------------------------
-  Returning to module information menu...
-  ```
 
 ---
 
@@ -560,9 +604,11 @@ Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the tas
       ````
       You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
       Returning back to TaskManager menu now!
-      ````
+      ````  
+  
+#### 3.3.2 Mark/Unmark a Task as Done
 
-#### 3.3.2 Delete a Task
+#### 3.3.3 Delete a Task
 
 Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
@@ -593,7 +639,7 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
   Returning back to TaskManager menu now!
   ````
 
-#### 3.3.3 View All Tasks
+#### 3.3.4 View All Tasks
 
 Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task
 list.
@@ -613,7 +659,7 @@ list.
   This is the list of your final exams:
   ````
 
-#### 3.3.4 Pin a Task
+#### 3.3.5 Pin a Task
 
 Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
