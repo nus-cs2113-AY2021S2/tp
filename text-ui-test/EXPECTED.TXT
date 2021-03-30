@@ -58,12 +58,20 @@ Argument(s): IC number
 Usage: add IC_NUMBER
 Example: add S1234567D
 
+Delete a patient from the list or delete a patient'sconsultation details for a specific date
+Command prefix: delete
+Argument(s): IC number or date
+Usage: delete [/p IC_NUMBER]
+Example: delete /p S1234567D
+Usage: delete [/r DATE]
+Example: delete /r 26/03/2021
+
 Show the list of all patients
 Usage: list
 
 Select a specified patient to add and retrieve records
 Command prefix: load
-Arguments(s): IC number
+Argument(s): IC number
 Usage: load IC_NUMBER
 Example: load S1234567D
 
