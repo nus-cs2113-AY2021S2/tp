@@ -29,13 +29,15 @@ public class AppController {
                     }
                 }
             }
+            System.out.println("----------------------------------------------------------------------------\n");
         } catch (Exception e) {
             System.out.println("No save files found.");
+            System.out.println("----------------------------------------------------------------------------\n");
         }
 
         String input;
         while (true) {
-            System.out.println("Enter command:      (type 'help' for all command options)");
+            System.out.println("Enter command:\t\t\t(type 'help' for all command options)");
             input = sc.nextLine();
             switch (input.toLowerCase()) {
             case "add employee":

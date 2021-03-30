@@ -86,20 +86,15 @@ public class Shift {
     }
 
     public String formatData() {
-        System.out.println("formatting!!!!!");
         StringBuilder formattedString = new StringBuilder(getShiftDateToString());
-        System.out.println(formattedString);
         formattedString.append("#");
         formattedString.append(vacancy);
-        System.out.println(formattedString);
         formattedString.append("#");
         formattedString.append(shiftIndex);
-        System.out.println(formattedString);
 
         for (Employee employee : employees) {
             formattedString.append("#");
             formattedString.append(employee.getName());
-            System.out.println(formattedString);
         }
         return formattedString +"\n";
     }
