@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CustomerMainMenu implements MainMenu{
-	public static void displayMenu(int currentUserIndex, ArrayList<User> user){
+
+	public static int displayMenu(int currentUserIndex, ArrayList<User> user){
 		final String LOGO = "\n" +
 				"___  ___           _       ___                    \n" +
 				"|  \\/  |          (_)     / _ \\                 \n" +
@@ -24,20 +25,21 @@ public class CustomerMainMenu implements MainMenu{
 		System.out.println(LOGO);
 		System.out.println("Welcome, " + user.get(currentUserIndex).getName());
 		getOption(user.get(currentUserIndex));
+		return -1;
 	}
 
 	public static void doOption(int option, User user) {
-		ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 
 		switch(option){
 		case 1:
-			Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
+			Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase);
 			if (movie != null) {
 				MovieMenu.movieAction(movie, user);
 			}
 			break;
 		case 2:
 			exit();
+			break;
 		default:
 			System.out.println("Invalid input. Please try again.");
 			getOption(user);
@@ -49,8 +51,7 @@ public class CustomerMainMenu implements MainMenu{
 		System.out.println("\nThank you for your time.");
 		System.out.println("Have a good day!");
 		System.out.println();
-		System.out.println("System Exiting...");
-		System.exit(0);
+		System.out.println("Logging out...");
 	}
 
 	public static void getOption(User user) {
@@ -75,6 +76,5 @@ public class CustomerMainMenu implements MainMenu{
 				doOption(menu_choice, user);
 			}
 		}
-		//return menu_choice;
 	}
 }

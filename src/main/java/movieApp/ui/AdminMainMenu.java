@@ -16,7 +16,7 @@ public class AdminMainMenu implements MainMenu{
 	private static int functionSelection;
 	private static Scanner sc = new Scanner(System.in);
 
-	public static void displayMenu(int currentUserIndex, ArrayList<User> user) {
+	public static int displayMenu(int currentUserIndex, ArrayList<User> user) {
 		System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
 
 		do
@@ -37,10 +37,9 @@ public class AdminMainMenu implements MainMenu{
 				continue;
 			}
 
-			ArrayList<Movie> MovieList = new ArrayList<>(Database.MovieDatabase);
 			switch(functionSelection) {
 			case 1:
-				Movie movie = MovieFilter.filter(MovieList, Database.CineplexDatabase);
+				Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase);
 				if (movie != null) {
 					MovieMenu.movieAction(movie, user.get(currentUserIndex));
 				}
@@ -57,11 +56,12 @@ public class AdminMainMenu implements MainMenu{
 			case 5:
 				System.out.println("Logging out..");
 				System.out.println();
-				return;
+				return 5;
 			default:
 				System.out.println("Invalid selection, please select again!");
 			}
 		}while(functionSelection != 8);
+		return -1;
 	}
 
 }
