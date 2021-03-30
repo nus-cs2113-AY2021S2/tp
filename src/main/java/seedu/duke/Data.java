@@ -3,6 +3,7 @@ package seedu.duke;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 /**
@@ -102,9 +103,9 @@ public class Data {
     /**
      * This saves current patient list into the file using the storage instance.
      */
-    public void saveFile() throws Exception {
+    public void saveFile() throws StorageException {
         if (storage == null) {
-            throw new Exception("We cannot save as the storage instance is null!");
+            throw new StorageException(StorageException.Type.NULL_INSTANCE);
         }
         storage.save(patients);
     }

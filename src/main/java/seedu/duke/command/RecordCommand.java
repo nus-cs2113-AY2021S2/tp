@@ -4,6 +4,7 @@ import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
@@ -25,7 +26,7 @@ public class RecordCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, StorageException {
         assert ui != null : "Ui must not be null";
         assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
         Patient patient = data.currentPatient;
@@ -40,6 +41,7 @@ public class RecordCommand extends Command {
             throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE);
         }
         addRecord(patient, date);
+        data.saveFile();
         printNewRecord(patient);
     }
 
