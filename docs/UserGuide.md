@@ -74,6 +74,8 @@ financial management with Finux rather than using the traditional management sys
 > a valid option.
 
 > 💡 **Date and Date formats:**
+>> Date input is required when you specify the option `-d`.\
+>> You are required enter a date that follows a valid Date format.\
 >> Finux supports multiple Date formats, for ease of use:
 >> * `DDMMYYYY`
 >> * `D.M.YYYY`
@@ -83,7 +85,7 @@ financial management with Finux rather than using the traditional management sys
 >> * `YYYY-M-D`
 >> * `YYYY/M/D`
 >>
->> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
+>> 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
 
 ## 3. Features
 
