@@ -1,6 +1,16 @@
 package seedu.hdbuy.command;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.Unit;
+import seedu.hdbuy.common.exception.InvalidSortException;
+import seedu.hdbuy.common.exception.NoFlatsException;
+import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.UserInput;
+import seedu.hdbuy.parser.CommandType;
+import seedu.hdbuy.ui.TextUi;
 
 public class SortCommand extends Command {
     protected String criteria;
@@ -10,21 +20,26 @@ public class SortCommand extends Command {
     }
 
     @Override public void execute(UserInput userInput) {
-        System.out.println("SortCommand not implemented");
-        //        try {
-        //            switch (criteria) {
-        //            case "asc":
-        //
-        //                break;
-        //            case "desc":
-        //
-        //                break;
-        //            default:
-        //                throw new InvalidSortException();
-        //            }
-        //            TextUi.showParameters(inputs);
-        //        } catch (InvalidSortException e) {
-        //            TextUi.showInvalidSort(criteria, e);
-        //        }
+        try {
+            switch (criteria) {
+            case CommandType.SORT_ASC:
+                SearchedUnits.sortMapByPrice(true);
+                break;
+            case CommandType.SORT_DESC:
+                SearchedUnits.sortMapByPrice(false);
+                break;
+            default:
+                throw new InvalidSortException();
+            }
+            ArrayList<Unit> sortedUnits = SearchedUnits.getSearchedUnits();
+            if (sortedUnits.isEmpty()) {
+                throw new NoFlatsException();
+            }
+            TextUi.showUnits(sortedUnits);
+        } catch (InvalidSortException e) {
+            TextUi.showInvalidSort(criteria, e);
+        } catch (NoFlatsException e) {
+            TextUi.showNoFlats(e);
+        }
     }
 }

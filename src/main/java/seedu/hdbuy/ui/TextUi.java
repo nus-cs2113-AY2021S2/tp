@@ -5,6 +5,7 @@ import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.EmptyParameterException;
 import seedu.hdbuy.common.exception.InvalidFilterException;
 import seedu.hdbuy.common.exception.InvalidParameterException;
+import seedu.hdbuy.common.exception.InvalidSortException;
 import seedu.hdbuy.common.exception.NoFlatsException;
 
 import java.util.ArrayList;
@@ -93,13 +94,13 @@ public class TextUi {
         }
     }
 
-    public static void showUnits(HashMap<Integer, Unit> units) {
+    public static void showUnits(ArrayList<Unit> units) {
         Object[] columnNames = {"Index", "Address", "Type", "Lease", "Price"};
         System.out.format("%5s%24s%12s%24s%12s\n", columnNames);
         int i = 0;
-        for (HashMap.Entry<Integer, Unit> mapElement : units.entrySet()) {
-            Object[] unitData = {++i, (mapElement.getValue()).getAddress(), (mapElement.getValue()).getType(),
-                    (mapElement.getValue()).getLease(), "$" + (mapElement.getValue()).getPrice()};
+        for (Unit unit : units) {
+            Object[] unitData = {++i, unit.getAddress(), unit.getType(),
+                    unit.getLease(), "$" + unit.getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
         }
     }
@@ -128,5 +129,9 @@ public class TextUi {
 
     public static void showClearedFilterConditions() {
         System.out.print("Cleared filter conditions.\n");
+    }
+
+    public static void showInvalidSort(String criteria, InvalidSortException e) {
+        System.out.println(criteria + e.getMessage());
     }
 }

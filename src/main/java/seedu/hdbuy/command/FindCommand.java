@@ -9,6 +9,7 @@ import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -25,12 +26,12 @@ public class FindCommand extends Command {
             } else {
                 TextUi.showParameters(inputs);
                 SearchedUnits.clearSearchedUnits();
-                HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputs);
+                ApiRepository.fetchUnits(inputs);
+                ArrayList<Unit> units = SearchedUnits.getSearchedUnits();
                 if (units.isEmpty()) {
                     throw new NoFlatsException();
-                } else {
-                    TextUi.showUnits(units);
                 }
+                TextUi.showUnits(units);
                 userInput.clearInputs();
             }
         } catch (EmptyParameterException e) {

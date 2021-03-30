@@ -25,8 +25,7 @@ The `Api`,
 * receives a raw query from Find Command, query will contain filter conditions.
 * creates a connection to remote server containing data on resale flats.
 * formats raw query into valid query to be sent as a GET request.
-* returns all flats matching filter conditions and is parsed back to Command to be shown to user via Ui.
-* called by FindCommand, stores each unit from response into Data.
+* updates all flats matching filter conditions in SearchedUnits class of Data component.
 
 **How classes within Api component interact with each other**
 

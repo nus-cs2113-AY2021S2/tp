@@ -1,8 +1,15 @@
 package seedu.hdbuy.data;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 
 public class SearchedUnits {
@@ -18,7 +25,7 @@ public class SearchedUnits {
 
     public static Unit getUnit(int index) {
         if (units == null) {
-            Logger.getLogger("SearchedUnits").severe("No search results");
+            Logger.getLogger("SearchedUnits").severe("Did not perform search before");
             return null;
         }
         try {
@@ -34,5 +41,26 @@ public class SearchedUnits {
             units = new ArrayList<>();
         }
         units.clear();
+    }
+
+    public static ArrayList<Unit> getSearchedUnits() {
+        if (units == null) {
+            units = new ArrayList<>();
+        }
+        return units;
+    }
+
+    public static void sortMapByPrice(boolean isAscending) {
+        if (units == null) {
+            Logger.getLogger("SearchedUnits").severe("Did not perform search before");
+            return;
+        }
+        units.sort((unit1, unit2) -> {
+            if (isAscending) {
+                return unit1.getPrice() - unit2.getPrice();
+            } else {
+                return unit2.getPrice() - unit1.getPrice();
+            }
+        });
     }
 }
