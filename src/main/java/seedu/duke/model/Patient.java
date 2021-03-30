@@ -1,7 +1,6 @@
 package seedu.duke.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.TreeMap;
 
 /**
@@ -102,6 +101,10 @@ public class Patient {
         records.remove(date);
     }
 
+    /**
+     * This returns a printable string with recently added information.
+     * @return a printable string for information about recently added symptoms, diagnosis and prescription
+     */
     public String recentlyAdded() {
         String recentDetails = System.lineSeparator();
         if (symptom != null) {

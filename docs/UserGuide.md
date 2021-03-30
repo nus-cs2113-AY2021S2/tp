@@ -1,30 +1,39 @@
 # Patient Manager User Guide
 
-Patient Manager is a _Command Line Interface_ (CLI) application for _general practitioners_ (GP)
+Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
 who work in government polyclinics to manage their patient list. This includes a recording/retrieval of
 past record of visit, scheduling of the next appointment, and some other features listed below.
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
 to organize the records of their patients.
 
+<!-- TODO: Explain How to use this guide -->
+<!-- Missing FAQ -->
+
 ---
 
 ## Table of Contents
 
-* [Quickstart](#quickstart)
+<!-- TODO: Description -->
+
+* [Table of Contents](#table-of-contents)
+* [Quick Start](#quick-start)
+* [About Command Input](#about-command-input)
+  * [Spacing](#spacing)
+  * [Order of Arguments](#order-of-arguments)
 * [Features](#features)
-    * [Print a help message: `help`](#print-a-help-message-help)
-    * [Adding a patient: `add`](#adding-a-patient-add)
-    * [Listing all patients: `list`](#listing-all-patients-list)
-    * [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
-    * [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
-    * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
-    * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
-    * [Exiting the program: `exit`](#exiting-the-program-exit)
-* [Command summary](#command-summary)
+  * [Print a help message: `help`](#print-a-help-message-help)
+  * [Adding a patient: `add`](#adding-a-patient-add)
+  * [Listing all patients: `list`](#listing-all-patients-list)
+  * [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
+  * [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
+  * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
+  * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+  * [Exiting the program: `exit`](#exiting-the-program-exit)
+* [Command Summary](#command-summary)
 
 ---
 
-## Quickstart
+## Quick Start
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, `Java 11` can be downloaded from
@@ -41,9 +50,40 @@ to organize the records of their patients.
 
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit `ENTER` at the end.
 
-1. Refer to the Features section below for more detailed explanations and usage of the available commands.
+1. Refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
 
 ---
+
+## About Command Input
+
+<!-- TODO: Too Technical -->
+### Spacing
+
+Due to the design of our command parser, we are able to understand your input for any number of spaces between words (even before
+the command itself). So all these commands are actually understandable and will be treated the same:
+```
+record 01/05/2021 /s coughing, fever
+record   01/05/2021  /s       coughing, fever
+record 01/05/2021  /s   coughing,       fever
+      record 01/05/2021 /s coughing, fever
+```
+
+❗ This is important: treating all these four the same means any number of spaces in between words will only be
+considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and `fever`,
+it will go into the database as `coughing, fever` - same as every other lines do.
+
+### Order of Arguments
+
+Words or characters starts with `/` mark the beginning of an argument. An argument block continues until the other one is found.
+For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
+The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
+```
+record 01/05/2021 /s coughing, fever /d flu
+record 01/05/2021 /d flu /s coughing, fever
+```
+
+However, we would still suggest you to input it using the sequence given in the following section. This can prevent you from
+getting confused about the meaning of each argument.
 
 ## Features
 
@@ -79,6 +119,7 @@ e.g. if the command given is `list 123`, it will be interpreted as `list`.
 > - Dates must be specified in the format `dd/MM/yyyy`, for example, `05/03/2021`. All dates given must be valid,
 according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
+<!-- TODO: Order | explain why help command is the 1st -->
 ### Print a help message: `help`
 
 Prints out the help message with a brief explanation of the available commands. If one or more
@@ -93,10 +134,12 @@ Example of usage:
 ```
 help list load exit
 ```
+<!-- It might be helpful for output being added in -->
 
 ### Adding a patient: `add`
 
 Adds a patient to the list by entering their IC number.
+<!-- So that ..., This means that ... -->
 
 Usage: `add IC_NUMBER`
 
