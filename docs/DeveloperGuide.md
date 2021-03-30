@@ -358,20 +358,20 @@ No items will be listed if no food in the fridge match the conditions specified 
     3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
     4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
   ```
-
+  
 2. Test case: `list meat`
 * Expected:
   ```
   These are the MEAT in your fridge:
     1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-  ```    
+  ```
 
 3. Test case: `list freezer`
 * Expected:
   ```
   These are the food stored in FREEZER:
 	  1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
-  ```    
+  ```
 
 ### Removing a food
 Removing a food while all foods are being shown.
@@ -415,10 +415,10 @@ that has an expiry date within 7 days of their **local system time**, as of the 
       * Thus, this food should expire in 1 day, within the 7 days required to trigger the `expiring` command.
 2. Test case: `expiring`
     * Expected:
-  ```
-  These are the food expiring in the next week:
+   ```
+    These are the food expiring in the next week:
       1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
-  ```  
+   ```  
 
 ### Runninglow and Setlimit
 
@@ -465,13 +465,13 @@ during testing, and see if they correspond.
     * `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
 2. Test case: `history`
     * Expected: 
-   ```
-   This is the full history of items you've added in the fridge:
-     1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
-	    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
-	    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
-	    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
-   ```
+    ```
+    This is the full history of items you've added in the fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+	       2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+	       3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+	       4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+    ```
 
 ### Saving data
 _Dealing with missing/corrupted data files._
