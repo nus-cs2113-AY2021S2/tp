@@ -39,42 +39,40 @@ public class ModuleInfo {
                     viewAModule();
                     break;
                 case 3:
-                    getComponents();
-                    break;
-                case 4:
-                    //addModuleMC method;
-                    addModuleMC();
-                    break;
-                case 5:
-                    //addModuleGrade method;
-                    addModuleGrade();
-                    break;
-                case 6:
                     viewAllModules();
                     break;
+                case 4:
+                    deleteModule();
+                    break;
+                case 5:
+                    getComponents();
+                    break;
+                case 6:
+                    addModuleMC();
+                    break;
                 case 7:
-                    TaskManager.addNewTask();
+                    addModuleGrade();
                     break;
                 case 8:
-                    Links.add();
-                    break;
-                case 9:
                     addReview();
                     break;
-                case 10:
+                case 9:
                     viewAllReviews();
                     break;
+                case 10:
+                    deleteReview();
+                    break;
                 case 11:
-                    deleteModule();
+                    TaskManager.addNewTask();
                     break;
                 case 12:
                     TaskManager.deleteTask();
                     break;
                 case 13:
-                    Links.delete();
+                    Links.add();
                     break;
                 case 14:
-                    deleteReview();
+                    Links.delete();
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
