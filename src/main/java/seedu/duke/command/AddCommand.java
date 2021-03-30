@@ -71,6 +71,9 @@ public class AddCommand extends Command {
                 if (!Character.isLetter(c)) {
                     return false;
                 }
+                if (firstLetter == 'T' || firstLetter == 'G') {
+                    checksum += Constants.CHECKSUM_DIGIT;
+                }
                 checksum = checksum % Constants.CHECKSUM_MOD;
                 if (firstLetter == 'S' || firstLetter == 'T') {
                     if (c != st[checksum]) {
