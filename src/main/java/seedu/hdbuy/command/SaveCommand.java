@@ -6,6 +6,7 @@ import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.ShortList;
 import seedu.hdbuy.data.UserInput;
+import seedu.hdbuy.ui.TextUi;
 
 public class SaveCommand extends Command {
 
@@ -23,5 +24,6 @@ public class SaveCommand extends Command {
         }
         ShortList.addToShortList(targetUnit);
         Logger.getLogger("SaveCommand").info("Saved unit to shortlist: " + targetUnit.toString());
+        TextUi.showSavedShortlistUnit(targetUnit.toString());
     }
 }
