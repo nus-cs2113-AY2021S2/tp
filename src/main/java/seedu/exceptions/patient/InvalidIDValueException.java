@@ -8,8 +8,9 @@ public class InvalidIDValueException extends HealthVaultException {
         this.error = error;
     }
 
-    @Override
-    public void getError(String input) {
-        super.getError(input);
+    public String getMessage() {
+        return "Looks like your ID value is incorrect! \n" +
+                "Please ensure that the ID includes 5 numbers after \"P\"! \n" +
+                "eg. P12345 or P67891";
     }
 }

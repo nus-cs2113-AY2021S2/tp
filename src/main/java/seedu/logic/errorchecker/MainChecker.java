@@ -4,7 +4,7 @@ import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.patient.InvalidGenderException;
+import seedu.exceptions.InvalidGenderException;
 
 import java.util.Arrays;
 
