@@ -1,5 +1,7 @@
 package seedu.logic.command;
 
+import seedu.exceptions.nurseschedules.InvalidIDTypeException;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.storage.StaffStorage;
 
 import seedu.ui.InventoryUI;
@@ -31,7 +33,7 @@ public abstract class Command {
     public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws Exception {
     }
 
-    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) {
+    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException {
     }
 
     public abstract boolean isExit();

@@ -64,7 +64,7 @@ public class Constants {
     public static final String STAFF_ADD_FORMAT = "add/[Staff ID]/[Name]/[Age]/[Specialisation]";
     public static final String PATIENT_ADD_FORMAT = "";
     public static final String APPOINTMENTS_ADD_FORMAT = "";
-    public static final String SCHEDULES_ADD_FORMAT = "";
+    public static final String SCHEDULES_ADD_FORMAT = "add/[NurseID]/[Patient ID]/[Date (DDMMYYYY)]";
     public static final String INVENTORY_ADD_FORMAT = "";
 
 
@@ -79,7 +79,7 @@ public class Constants {
     public static final String STAFF_LIST_FORMAT = "list/<input>, where input == doctor or nurse";
     public static final String PATIENT_LIST_FORMAT = "";
     public static final String APPOINTMENTS_LIST_FORMAT = "";
-    public static final String SCHEDULES_LIST_FORMAT = "";
+    public static final String SCHEDULES_LIST_FORMAT = "list/[NurseID/all]";
     public static final String INVENTORY_LIST_FORMAT = "";
 
 

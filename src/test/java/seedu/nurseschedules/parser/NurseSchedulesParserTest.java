@@ -2,7 +2,12 @@ package seedu.nurseschedules.parser;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.exceptions.staff.BlankInputException;
 import seedu.logic.parser.NurseSchedulesParser;
 
 
@@ -19,7 +24,7 @@ class NurseSchedulesParserTest {
     }
 
     @Test
-    void testGetDetails() throws WrongInputsException {
+    void testGetDetails() throws WrongInputsException, NoInputException, InsufficientInputException, ExcessInputException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String[] details;
         details = parser.getDetails("add test details padding");

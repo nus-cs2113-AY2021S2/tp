@@ -1,21 +1,31 @@
 package seedu.logic.parser;
 
+import com.sun.tools.javac.Main;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.exceptions.staff.BlankInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
+import seedu.logic.errorchecker.MainChecker;
+import seedu.model.staff.Nurse;
 import seedu.ui.NurseScheduleUI;
 import seedu.logic.errorchecker.NurseScheduleChecker;
+import seedu.ui.UI;
+
 import static seedu.ui.UI.smartCommandRecognition;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class NurseSchedulesParser {
 
-    static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
+    static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
 
@@ -48,60 +58,35 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String removeDuplicate(char[] str, int n)
-    {
-        // Used as index in the modified string
-        int index = 0;
-
-        // Traverse through all characters
-        for (int i = 0; i < n; i++)
-        {
-            // Check if str[i] is present before it
-            int j;
-            for (j = 0; j < i; j++)
-            {
-                if (str[i] == '/')
-                {
-                    if (str[j] == '/') {
-                        break;
-                    }
-                }
-            }
-
-            // If not present, then add it to
-            // result.
-            if (j == i)
-            {
-                str[index++] = str[i];
-            }
-        }
-        return String.valueOf(Arrays.copyOf(str, index));
-    }
-
-    public String[] getDetails(String text) throws WrongInputsException {
-        //String text = removeDuplicate(input.toCharArray(), input.length());
+    public String[] getDetails(String input) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException {
+        NurseScheduleChecker.checkEmptyInput(input);
+        String text = input.toUpperCase();
         String[] details = new String[3];
 
-        String[] parts = text.toUpperCase().split("/", 0);
+        String[] parts = text.split("/", 0);
         String command = smartCommandRecognition(COMMANDS, getFirstWord(text));
 
         assert parts.length > 0;
 
         if (parts.length <= 1) {
             throw new WrongInputsException();
-        } else if (command.equals("add")) {
+        }
+        if (command.equals("ADD")) {
             if (checker.isValidDate(parts[3])) {
-                details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
-                details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
-                details[2] = parts[3].replaceAll("[^A-Za-z0-9]","");;
+                MainChecker.checkNumInput(text, 4, 4);
+                details[0] = UI.cleanseInput(parts[1]);
+                details[1] = UI.cleanseInput(parts[2]);
+                details[2] = UI.cleanseInput(parts[3]);
             }
-        } else if (command.equals("delete")) {
+        } else if (command.equals("DELETE")) {
             if (checker.isValidDate(parts[2])) {
-                details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
-                details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
+                MainChecker.checkNumInput(text, 3, 3);
+                details[0] = UI.cleanseInput(parts[1]);
+                details[1] = UI.cleanseInput(parts[2]);
             }
-        } else if (command.equals("list")) {
-            details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
+        } else if (command.equals("LIST")) {
+            MainChecker.checkNumInput(text, 2, 2);
+            details[0] = UI.cleanseInput(parts[1]);
         }
         return details;
     }
@@ -114,16 +99,16 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String line, NurseScheduleUI ui) {
+    public Command nurseParse(String line, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException {
         assert line != null : "user input should not be null";
         assert !(line.isEmpty()) : "user input should not be empty";
 
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String command = parser.getFirstWord(line);
+        String command = parser.getFirstWord(line).toUpperCase();
         Command c = null;
 
         switch (smartCommandRecognition(COMMANDS, command)) {
-        case "add":
+        case "ADD":
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleAdd(details);
@@ -132,7 +117,7 @@ public class NurseSchedulesParser {
                 ui.addHelpMessage();
             }
             break;
-        case "list":
+        case "LIST":
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleList(details);
@@ -141,7 +126,7 @@ public class NurseSchedulesParser {
                 ui.listHelpMessage();
             }
             break;
-        case "delete":
+        case "DELETE":
             try {
                 String[] details = parser.getDetails(line);
                 c = new NurseScheduleDelete(details);
@@ -150,10 +135,10 @@ public class NurseSchedulesParser {
                 ui.deleteHelpMessage();
             }
             break;
-        case "help":
+        case "HELP":
             c = new NurseScheduleHelp();
             break;
-        case "return":
+        case "RETURN":
             c = new NurseScheduleReturn();
             break;
         default:
