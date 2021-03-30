@@ -4,17 +4,13 @@
 
 If you are having difficulties managing your schedule, lesson links and notes, GULIO is the app for you. With the ability to store lesson details, tasks, notes and more, GULIO is a one-stop solution for all your university scheduling needs.
 
-> Icons used in this guide:<br>
-> <br>
-> 💡 - Indicates a tip that may be useful to you.<br>
-> ⚠ - indicates a warning that you should take note of.
-
 &nbsp;
 
 ----
 
-## Table of Contents
+# Table of Contents
 
+* [How to Use This Guide](#how-to-use-this-guide)
 * [Quick Start](#quick-start)
 * [Features](#features)
     * [Overview](#overview)
@@ -55,12 +51,36 @@ If you are having difficulties managing your schedule, lesson links and notes, G
 
 ----
 
-## Quick Start
+# How to Use This Guide
+
+> Icons used in this guide:<br>
+> <br>
+> 💡 - Indicates a tip that may be useful to you.<br>
+> ⚠ - indicates a warning that you should take note of.
+>
+> Commands will be presented in the following format:
+>
+>> ### Command function : *keyword*
+>>
+>> Summary of actions involved.
+>>
+>> **Format:**<br>
+>> `command format`
+>>
+>> **Example:** (if any)<br>
+>> _table of interaction_
+>>
+>> **Result** - _outcome of command_ (if any)
+
+&nbsp;
+
+----
+# Quick Start
 
 Download the latest version of GULIO from here:
 https://github.com/AY2021S2-CS2113T-W09-3/tp/releases
 
-### Requirements
+### Requirements:
 
 java 11 and above<br>
 
@@ -86,11 +106,16 @@ java 11 and above<br>
 
 ----
 
-## Features
+# Features
 
-### Overview
+## Overview
 
 GULIO has a 2-layer system, consisting of the dashboard layer and the module layer. In both layers, you have access to a different set of commands. 
+
+<p align="center">
+    <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
+    Figure 2 - Visualisation of GULIO’s 2-layer system
+</p>
 
 On start up, you will be on the dashboard layer where you have an overview of all your modules. You have access to module management commands like adding, deleting or opening a particular module.
 
@@ -110,13 +135,13 @@ To identify which layer you are on, simply check the tag beside your input.
         <td>
             <p align="center">
                 <img width="400" src="userGuideImages/Dashboard.png" alt="Dashboard Label"><br>
-                Figure 2a - Dashboard Layer
+                Figure 3a - Dashboard Layer
             </p>
         </td>
         <td>
             <p align="center">
                 <img width="400" src="userGuideImages/Module.png" alt="Module Label"><br>
-                Figure 2b - Module Layer
+                Figure 3b - Module Layer
             </p>
         </td>
     </tr>
@@ -124,7 +149,7 @@ To identify which layer you are on, simply check the tag beside your input.
 
 Each module can store two types of data: lesson and task. Lessons refer to your lectures, labs and tutorials, which are all recurring events. Meanwhile, tasks are used to store one-time events, like your homework, quizzes and any other activities with a deadline.
 
-#### Fields in a lesson:
+### Fields in a lesson:
 
 | Field | Description |
 | --- | --- |
@@ -134,7 +159,7 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 | Teaching staff name | Name of the lesson's teacher. |
 | Teaching staff email | Email of the lesson's teacher. |
 
-#### Fields in a task:
+### Fields in a task:
 
 | Field | Description |
 | --- | --- |
@@ -146,26 +171,11 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 
 Additionally, you can store your lecture notes in GULIO using the cheat-sheet feature. Cheat-sheets are stored as text files and GULIO has a built-in text editor that can be used to edit them. Cheat-sheets are unformatted so that users can focus on writing the content.<br>
 
-
-> 💡 Commands will be presented in the following format:
->
->> ### Command function : *keyword*
->>
->> Summary of actions involved.
->>
->> **Format:**<br>
->> `command format`
->>
->> **Example:** (if any)<br>
->> _table of interaction_
->>
->> **Result** - _outcome of command_ (if any)
-
 &nbsp;
 
 ----
 
-### Dashboard Commands
+## Dashboard Commands
 These are commands used on the dashboard layer, when no modules have been selected. Commands here deal with the creation of modules, as well as accessing modules.
 
 &nbsp;
@@ -268,7 +278,7 @@ Lists all modules.
 
 ----
 
-### Module Commands
+## Module Commands
 
 These are commands used on the module layer, when a module has been selected. Commands here deal with modifying the data corresponding to the specified module.
 
@@ -649,7 +659,7 @@ Lists all cheat-sheets for the module.
 
 ----
 
-## Data & Storage
+# Data & Storage
 
 ### Automatic Saving
 
@@ -679,7 +689,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 ----
 
-## Text Editor
+# Text Editor
 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
 
@@ -698,7 +708,7 @@ In the text editor, you can type in your notes in the text field. When done, rem
 
 ----
 
-## Command Summary
+# Command Summary
 
 > 💡 Fields surrounded by "[]" are optional.
 
