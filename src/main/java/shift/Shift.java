@@ -29,6 +29,8 @@ public class Shift {
         return employees;
     }
 
+    public ArrayList<String> getEmployeeList() { return employeeList; }
+
     public void setEmployees(ArrayList<String> employees) {
         this.employeeList = employees;
     }
@@ -84,15 +86,20 @@ public class Shift {
     }
 
     public String formatData() {
+        System.out.println("formatting!!!!!");
         StringBuilder formattedString = new StringBuilder(getShiftDateToString());
+        System.out.println(formattedString);
         formattedString.append("#");
         formattedString.append(vacancy);
+        System.out.println(formattedString);
         formattedString.append("#");
         formattedString.append(shiftIndex);
+        System.out.println(formattedString);
 
-        for (String employee : employeeList) {
+        for (Employee employee : employees) {
             formattedString.append("#");
-            formattedString.append(employee);
+            formattedString.append(employee.getName());
+            System.out.println(formattedString);
         }
         return formattedString +"\n";
     }

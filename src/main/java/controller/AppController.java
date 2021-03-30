@@ -7,22 +7,27 @@ import shift.ShiftController;
 import ui.ui;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AppController {
     private static ArrayList<Employee> employees = new ArrayList<>();
+    private static ArrayList<Shift> shifts = new ArrayList<>();
     private static final Scanner sc = new Scanner(System.in);
     FileManager fileManager = new FileManager();
-    private static ArrayList<Shift> shifts = new ArrayList<>();
 
     public void run() throws IOException {
         try {
             employees = fileManager.loadEmployees();
             shifts = fileManager.loadShifts();
             System.out.println("Save data loaded!");
+            for (Shift shift : shifts) {
+                if (shift.getEmployeeList() != null) {
+                    for (String employee : shift.getEmployeeList()) {
+                        shift.assignEmployee(getEmployeeObjectByName(employee));
+                    }
+                }
+            }
         } catch (Exception e) {
             System.out.println("No save files found.");
         }
@@ -35,9 +40,9 @@ public class AppController {
             case "add employee":
                 addEmployee();
                 break;
-            /**case "drop employee":
+            /*case "drop employee":
                 dropEmployee();
-                break;**/
+                break;*/
             case "add schedule":
                 addSchedule();
                 break;
@@ -93,7 +98,7 @@ public class AppController {
         for (Employee person : employees)
             if (person.getName().equals(name)) {
                 employees.remove(person);
-                System.out.printf(person.getName() + " removed\n");
+                System.out.print(person.getName() + " removed\n");
                 return;
             }
         System.out.println("The name is not found");
@@ -115,8 +120,8 @@ public class AppController {
             if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
-                Boolean isScheduleValid = person.addSchedule(schedule);
-                if(isScheduleValid == true){
+                boolean isScheduleValid = person.addSchedule(schedule);
+                if(isScheduleValid) {
                     System.out.println("schedule added");
                 }else{
                     System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
@@ -167,14 +172,13 @@ public class AppController {
         return false;
     }
 
-    public Employee getEmployeeObjectByName(String name){
-        for (Employee person: employees){
-            if(person.getName().equals(name)){
+    public Employee getEmployeeObjectByName(String name) {
+        for (Employee person: employees) {
+            if (person.getName().equals(name)) {
                 return person;
             }
         }
         return null;
     }
-
 }
 
