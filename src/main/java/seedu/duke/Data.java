@@ -10,7 +10,8 @@ import seedu.duke.model.Patient;
  * includes patient list and miscellaneous config.
  */
 public class Data {
-    protected SortedMap<String, Patient> patients;
+    private Storage storage;
+    private SortedMap<String, Patient> patients;
 
     /**
      * This is the patient that is currently being selected. Command sub-classes can read/write
@@ -21,17 +22,30 @@ public class Data {
     public Patient currentPatient;
 
     /**
-     * This initilizes a empty data instance.
+     * This initializes an empty data instance with no storage instance.
+     * This can be used for testing purposes.
      */
     public Data() {
-        this(new TreeMap<>());
+        this(null);
+    }
+
+    /**
+     * This initializes an empty data instance with a storage instance.
+     * @param storage an instance of the storage class
+     */
+    public Data(Storage storage) {
+        this(storage, new TreeMap<>());
     }
 
     /**
      * This initializes a data instance with an existing patient list.
-     * @param patients The patient list
+     * Storage instance must be specified if want to use an existing list of patients. However it can be set
+     * to null (i.e. new Data(null, existingPatients)) for testing purposes.
+     * @param storage an instance of the storage class
+     * @param patients the patient list
      */
-    public Data(SortedMap<String, Patient> patients) {
+    public Data(Storage storage, SortedMap<String, Patient> patients) {
+        this.storage = storage;
         this.patients = patients;
         currentPatient = null;
     }
@@ -71,9 +85,27 @@ public class Data {
     }
 
     /**
+     * This removes a patient from the hashmap of this database.
+     * @param id unique identifier of the patient to be loaded
+     */
+    public void deletePatient(String id) {
+        patients.remove(id);
+    }
+
+    /**
      * This saves the patient in currentPatient attribute back to the hashmap.
      */
     public void saveCurrentPatient() {
         setPatient(currentPatient);
+    }
+
+    /**
+     * This saves current patient list into the file using the storage instance.
+     */
+    public void saveFile() throws Exception {
+        if (storage == null) {
+            throw new Exception("We cannot save as the storage instance is null!");
+        }
+        storage.save(patients);
     }
 }

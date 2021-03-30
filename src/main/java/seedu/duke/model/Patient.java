@@ -81,6 +81,27 @@ public class Patient {
     }
 
     /**
+     * Checks if a record exists from the patient's record list.
+     * @param date Appointment date of record to check
+     * @return     Boolean for whether the record exists
+     */
+    public boolean recordExist(LocalDate date) {
+        if (records.containsKey(date)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Deletes a record from the patient's record list.
+     * @param date Appointment date of record to delete
+     */
+    public void deleteRecord(LocalDate date) {
+        records.remove(date);
+    }
+
+    /**
      * This returns a printable string with recently added information.
      * @return a printable string for information about recently added symptoms, diagnosis and prescription
      */
