@@ -2,8 +2,10 @@ package seedu.logic.parser;
 
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staff.*;
+import seedu.exceptions.staff.WrongListInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.Command;
 import seedu.logic.command.staff.*;
 import seedu.logic.errorchecker.MainChecker;
@@ -19,8 +21,8 @@ public class StaffParser {
 
 
     public Command  commandHandler(String line) throws WrongStaffIdException,
-            WrongListInputException, NoInputException, AbortException, ExcessInputException,
-            InsufficientInputException, BlankInputException, NumberFormatException, PositiveNumberOnlyException {
+            WrongListInputException, NoInputException, ExcessInputException,
+            InsufficientInputException, NoInputException, NumberFormatException, InvalidIntegerException {
         Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
@@ -44,7 +46,7 @@ public class StaffParser {
             break;
 
         case ("delete"):
-            MainChecker.checkNumInput(line,2,1);
+            MainChecker.checkNumInput(line,2,2);
             StaffChecker.checkStaffID(line.split("/")[1]);
 
             c = new StaffDelete(line);
@@ -55,7 +57,7 @@ public class StaffParser {
             break;
 
         case ("find"):
-            MainChecker.checkNumInput(line,2,1);
+            MainChecker.checkNumInput(line,2,2);
             c = new StaffFind(line);
             break;
 

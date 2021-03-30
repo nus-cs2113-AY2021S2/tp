@@ -11,7 +11,7 @@ public class StaffHelp extends Command {
     }
 
     public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
-        StaffUI.printStaffHelpList();
+        StaffUI.printStaffHelpMessage();
     }
 
     @Override
