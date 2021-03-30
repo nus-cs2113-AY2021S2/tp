@@ -11,7 +11,7 @@ public abstract class Record {
     protected RecordType type;
     protected LocalDate date;
     protected static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    public static final String SEPERATOR = " | ";
+    public static final String SEPARATOR = " | ";
 
     /**
      * Initializes the object with given record type and date.

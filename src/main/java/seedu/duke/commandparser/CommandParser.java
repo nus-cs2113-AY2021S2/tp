@@ -79,7 +79,7 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(ADD);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(ADD);
             }
@@ -117,7 +117,7 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(SET);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(SET);
             }
@@ -148,7 +148,7 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(CHECK);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(CHECK);
             }
@@ -164,9 +164,9 @@ public class CommandParser {
                     return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
                 }
                 params.put("periodType", periodType.toString());
+            } else {
+                params.put("periodType", null);
             }
-
-            params.put("periodType", null);
             return new CheckCommand(recordType, params);
         } catch (Exception e) {
             return new InvalidCommand("Something went wrong when preparing to check goals.");
@@ -178,23 +178,27 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(CANCEL);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(CANCEL);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 3) {
+            if (rawParams.length < 2) {
                 return new InvalidCommand(CANCEL);
             }
 
-            String rawPeriodType = rawParams[1].trim().substring(2);
+            String rawIndex = rawParams[1].trim().substring(2);
 
-            PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
-            params.put("periodType", periodType.toString());
-            return new SetCommand(recordType, params);
+            int index = Integer.parseInt(rawIndex);
+            params.put("index", String.valueOf(index));
+            return new CancelCommand(recordType, params);
         } catch (NumberFormatException e) {
-            return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+            return new InvalidCommand(Messages.MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION);
         }
+    }
+
+    private CommandRecordType getCommandRecordType(String inputPart) {
+        return CommandRecordType.getType("" + inputPart.trim().charAt(2));
     }
 
     private Command prepareView(String[] inputParts) {
@@ -202,7 +206,7 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(VIEW);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(VIEW);
             }
@@ -233,7 +237,7 @@ public class CommandParser {
             if (isCommandSyntaxInvalid(inputParts)) {
                 return new InvalidCommand(DELETE);
             }
-            CommandRecordType recordType = CommandRecordType.getType("" + inputParts[1].trim().charAt(2));
+            CommandRecordType recordType = getCommandRecordType(inputParts[1]);
             if (recordType == INVALID) {
                 return new InvalidCommand(DELETE);
             }

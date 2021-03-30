@@ -98,6 +98,14 @@ public class FitCenter {
         }
     }
 
+    public String cancelGoalFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
+        GoalList list = getGoalListByType(type);
+        if (list != null) {
+            return list.removeGoal(index);
+        }
+        return Messages.MESSAGE_CANT_CANCEL_GOAL;
+    }
+
     /**
      * Prints the list of record of a selected type.
      *

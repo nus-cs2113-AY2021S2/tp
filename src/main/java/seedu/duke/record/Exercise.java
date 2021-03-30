@@ -11,7 +11,7 @@ public class Exercise extends Record {
     private final WorkoutCategory workoutCategory;
     private final int duration;
     private int spaceCount;
-    private String seperator = "";
+    private String separator = "";
 
     public Exercise(String activityStr, int duration, LocalDate date) throws TypeException {
         super(RecordType.EXERCISE, date);
@@ -25,7 +25,7 @@ public class Exercise extends Record {
         }
         spaceCount = 16 - workoutCategory.toString().length();
         for (int i = 0; i < spaceCount; i++) {
-            seperator += " ";
+            separator += " ";
         }
         this.duration = duration;
         this.calories = calculateCalories();
@@ -61,12 +61,12 @@ public class Exercise extends Record {
     public String getRecordData() {
         return "\t\t\t" + getDate().format(DATE_FORMATTER)
                 + "\t" + getWorkoutCategory()
-                + seperator + getDuration() + " minute(s)"
+                + separator + getDuration() + " minute(s)"
                 + "\t" + getCalories() + " cal";
     }
 
     @Override
     public String getRecordDataToStore() {
-        return "E" + SEPERATOR + workoutCategory + SEPERATOR + duration + SEPERATOR + getDate().format(DATE_FORMATTER);
+        return "E" + SEPARATOR + workoutCategory + SEPARATOR + duration + SEPARATOR + getDate().format(DATE_FORMATTER);
     }
 }

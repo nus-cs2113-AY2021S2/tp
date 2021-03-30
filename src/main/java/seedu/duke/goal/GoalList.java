@@ -14,7 +14,7 @@ public class GoalList {
         goals.sort(new GoalPeriodTypeComparator());
     }
 
-    public String removeGoal(int index) {
+    public String removeGoal(int index) throws IndexOutOfBoundsException {
         Goal goalToRemove = goals.get(index);
         String goalSummary = goalToRemove.getGoalSummary();
         goals.remove(goalToRemove);
@@ -32,6 +32,9 @@ public class GoalList {
                     goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
                     i++;
                 }
+            }
+            if (i == 1) {
+                return Messages.MESSAGE_NO_ELIGIBLE_GOAL;
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         } else {

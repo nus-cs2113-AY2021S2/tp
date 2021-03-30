@@ -28,13 +28,19 @@ public class Messages {
             + "You can try adding records by using command 'add'.";
     public static final String MESSAGE_NO_GOAL = "Sorry, no goals found.\n"
             + "You can try setting a goal by using command 'set'.";
-    public static final String MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION = "The index field is not a valid number.\n"
+    public static final String MESSAGE_NO_ELIGIBLE_GOAL = "Sorry, there are currently no eligible goals\n"
+            + "You can try setting a goal by using command 'set'.";
+    public static final String MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION = "The index field is not a valid integer "
+            + "number.\nPlease try again.";
+    public static final String MESSAGE_INDEX_OUT_OF_RANGE_EXCEPTION = "The index entered is out of range.\n"
             + "Please try again.";
     public static final String MESSAGE_CANT_ADD_RECORD = "Sorry, you cannot add record of an unrecognized type.";
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
     public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "
+            + "of an incorrect goal type.";
+    public static final String MESSAGE_CANT_CANCEL_GOAL = "Sorry, you cannot cancel a goal from a goal list "
             + "of an incorrect goal type.";
     public static final String MESSAGE_SYSTEM_ERROR = "There is something wrong within the system.";
     public static final String MESSAGE_DOUBLE_FORMAT_ERROR = "A double value is expected for the number field. "
@@ -92,8 +98,8 @@ public class Messages {
             + "3. check sleep goals\n\tcheck t/S [p/PERIOD_TYPE]\n"
             + "4. check body weight goals\n\tcheck t/W [p/PERIOD_TYPE]";
     public static final String MESSAGE_SYNTAX_CANCEL_COMMAND = "The syntax for cancel command is:\n"
-            + "1. cancel exercise goals\n\tcancel t/E p/PERIOD_TYPE i/INDEX\n"
-            + "2. cancel diet goals\n\tcancel t/D p/PERIOD_TYPE i/INDEX\n"
-            + "3. cancel sleep goals\n\tcancel t/S p/PERIOD_TYPE i/INDEX\n"
-            + "4. cancel body weight goals\n\tcancel t/W p/PERIOD_TYPE i/INDEX";
+            + "1. cancel exercise goals\n\tcancel t/E i/INDEX\n"
+            + "2. cancel diet goals\n\tcancel t/D i/INDEX\n"
+            + "3. cancel sleep goals\n\tcancel t/S i/INDEX\n"
+            + "4. cancel body weight goals\n\tcancel t/W i/INDEX";
 }

@@ -37,6 +37,6 @@ public class BodyWeight extends Record {
 
     @Override
     public String getRecordDataToStore() {
-        return "W"  + SEPERATOR + weight + SEPERATOR + getDate().format(DATE_FORMATTER);
+        return "W"  + SEPARATOR + weight + SEPARATOR + getDate().format(DATE_FORMATTER);
     }
 }

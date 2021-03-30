@@ -3,11 +3,13 @@ package seedu.duke.goal;
 import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents the abstraction of a goal to be achieved.
  */
 public abstract class Goal {
+    protected static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
     protected LocalDate daySet;
     protected RecordType type;
     protected PeriodType periodType;
@@ -64,4 +66,6 @@ public abstract class Goal {
      * @return a string of all data of the goal in a table row.
      */
     public abstract String getGoalData();
+
+    public abstract String getProgressUnit();
 }

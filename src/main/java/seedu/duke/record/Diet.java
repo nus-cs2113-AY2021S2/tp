@@ -91,6 +91,6 @@ public class Diet extends Record {
 
     @Override
     public String getRecordDataToStore() {
-        return "D" + SEPERATOR + foodCategory + SEPERATOR + amount + SEPERATOR + getDate().format(DATE_FORMATTER);
+        return "D" + SEPARATOR + foodCategory + SEPARATOR + amount + SEPARATOR + getDate().format(DATE_FORMATTER);
     }
 }
