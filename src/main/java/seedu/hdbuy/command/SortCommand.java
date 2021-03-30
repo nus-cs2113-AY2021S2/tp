@@ -22,14 +22,14 @@ public class SortCommand extends Command {
     @Override public void execute(UserInput userInput) {
         try {
             switch (criteria) {
-                case CommandType.SORT_ASC:
-                    SearchedUnits.sortMapByPrice(true);
-                    break;
-                case CommandType.SORT_DESC:
-                    SearchedUnits.sortMapByPrice(false);
-                    break;
-                default:
-                    throw new InvalidSortException();
+            case CommandType.SORT_ASC:
+                SearchedUnits.sortMapByPrice(true);
+                break;
+            case CommandType.SORT_DESC:
+                SearchedUnits.sortMapByPrice(false);
+                break;
+            default:
+                throw new InvalidSortException();
             }
             ArrayList<Unit> sortedUnits = SearchedUnits.getSearchedUnits();
             if (sortedUnits.isEmpty()) {

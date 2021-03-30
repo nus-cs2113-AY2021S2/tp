@@ -23,13 +23,13 @@ public class CommandEvaluator {
                 Arrays.asList(lineParts).subList(2, lineParts.length));
             return new CommandKey(filterCriteria, filterValue, keyCommand);
         case CommandType.SORT:
-            if (lineParts.length != 2) {
-                throw new InvalidParameterException(keyCommand);
+            if (lineParts.length == 2) {
+                String sortValue = lineParts[1];
+                if (sortValue.equals(CommandType.SORT_ASC) || sortValue.equals(CommandType.SORT_DESC)) {
+                    return new CommandKey(keyCommand, sortValue);
+                }
             }
-            String sortValue = lineParts[1];
-            if (sortValue.equals(CommandType.SORT_ASC) || sortValue.equals(CommandType.SORT_DESC)) {
-                return new CommandKey(keyCommand, sortValue);
-            }
+            throw new InvalidParameterException(keyCommand);
         case CommandType.REMOVE:
         case CommandType.SAVE:
             if (lineParts.length != 2) {
