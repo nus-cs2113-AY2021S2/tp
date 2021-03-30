@@ -1,7 +1,6 @@
 package seedu.hdbuy.parser;
 
 import org.junit.Assert;
-
 import seedu.hdbuy.command.ClearCommand;
 import seedu.hdbuy.command.CloseCommand;
 import seedu.hdbuy.command.Command;
@@ -51,10 +50,11 @@ public class Parser {
                 command = new ListCommand();
                 break;
             default:
+                TextUi.showInvalidInput(keyCommand.getCommand());
                 break;
             }
         } catch (InvalidParameterException e) {
-            TextUi.showInvalidParameter(e);
+            TextUi.showInvalidParameter(e.keyCommand, e);
         } finally {
             return command;
         }
@@ -67,7 +67,7 @@ public class Parser {
         switch (keyCommand) {
         case FILTER:
             if (lineParts.length < 3) {
-                throw new InvalidParameterException();
+                throw new InvalidParameterException(keyCommand);
             } else {
                 String criteria = lineParts[1];
                 String value = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
@@ -75,7 +75,7 @@ public class Parser {
             }
         case FIND:
             if (lineParts.length != 1) {
-                throw new InvalidParameterException();
+                throw new InvalidParameterException(keyCommand);
             }
             break;
         case EXIT:
