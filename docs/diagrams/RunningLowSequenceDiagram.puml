@@ -2,11 +2,16 @@
 'https://plantuml.com/sequence-diagram
 !include style.puml
 
-participant ":RunningLowCommand" as RunningLowCommand
-participant "fridge:Fridge" as Fridge
-participant "foodCategory :FoodCategory" as FoodCategory
 
-participant "food :Food" as Food
+box "Command\n" COMMAND_COLOR_T1
+participant ":RunningLowCommand" as RunningLowCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant "foodCategory :FoodCategory" as FoodCategory FOOD_COLOR_T3
+participant "food :Food" as Food FOOD_COLOR_T4
+end box
 
 -> RunningLowCommand: execute()
 activate RunningLowCommand
@@ -35,17 +40,15 @@ loop foodCategory in FoodCategory
     Fridge -> FoodCategory: getMinimumQuantity()
     activate FoodCategory
     return
-    destroy FoodCategory
     alt totalQuantity < MinimumQuantity
-        return runningLowResults
-        destroy Fridge
+        return
     else isStockUp
         RunningLowCommand -> RunningLowCommand: message
         activate RunningLowCommand
-        return stockUpResuts
+        return
     end
 end
-return results
+return
 
 deactivate RunningLowCommand
 @enduml

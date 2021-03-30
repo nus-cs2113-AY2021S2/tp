@@ -3,8 +3,8 @@
 !include style.puml
 
 skinparam arrowThickness 1.1
-skinparam arrowColor UI_COLOR_T4
-skinparam classBackgroundColor UI_COLOR
+skinparam arrowColor DarkGreen
+skinparam classBackgroundColor Green
 skinparam classAttributeIconSize 0
 
 package Command <<Rectangle>> {

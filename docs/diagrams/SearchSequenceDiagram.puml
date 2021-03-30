@@ -2,37 +2,43 @@
 'https://plantuml.com/sequence-diagram
 !include style.puml
 
-participant ":SearchCommand" as SearchCommand
-participant "fridge:Fridge" as Fridge
-participant "food:Food" as Food
+box "Command\n" COMMAND_COLOR_T1
+participant ":SearchCommand" as SearchCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant "food:Food" as Food FOOD_COLOR_T3
+end box
 
 -> SearchCommand: execute()
 activate SearchCommand
-
-SearchCommand-> SearchCommand: getMessagePrinterToUser
+SearchCommand-> SearchCommand: showResults()
 activate SearchCommand
 
+SearchCommand-> SearchCommand: getMessagePrintedToUser()
+activate SearchCommand
 loop food in fridge
     SearchCommand -> Fridge: getFood()
     activate Fridge
-    opt contains(foodName)
+    opt contains foodName
         Fridge -> Food: getFoodName()
         activate Food
         return food
+
     end
     return food
 end
+
 destroy Food
-destroy Fridge
-
-
-alt isContain
+alt isFound
     return
-else !isContain
+else !isFound
     SearchCommand -> SearchCommand: getMessagePrintedToUser
     activate SearchCommand
     return
 end
-
-return result
+return
+return
+deactivate SearchCommand
 @enduml

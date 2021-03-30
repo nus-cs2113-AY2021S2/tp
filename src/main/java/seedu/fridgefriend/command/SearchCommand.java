@@ -61,7 +61,7 @@ public class SearchCommand extends Command {
                 + foodName + " in your fridge:");
         for (int i = 0; i < fridge.getSize(); i += 1) {
             Food food = fridge.getFood(i);
-            isFound(message, food);
+            isContain(message, food);
         }
         return message;
     }
@@ -72,7 +72,7 @@ public class SearchCommand extends Command {
      * @param message that is shown to user
      * @param food item in the fridge
      */
-    private void isFound(StringBuilder message, Food food) {
+    private void isContain(StringBuilder message, Food food) {
         if (food.getFoodName().contains(foodName)) {
             updateMessage(message, food);
         }
