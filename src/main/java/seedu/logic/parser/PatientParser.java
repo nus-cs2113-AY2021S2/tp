@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 public class PatientParser {
 
-    private final String illegalCharacters = "^.*[~#@*+%{}<>\\[]|\"_\\^.$";
+    private final String illegalCharacters = "^.*[~#@*+%{}<>\\[]|\"_\\^.$\\.*";
     private final String[] validGenderInput = {"M", "F", "Others"};
 
     public Command patientParse(String fullCommand, PatientActions patients) {
