@@ -22,8 +22,8 @@
 * [Appendix D: Glossary](#appendix-d-glossary)
 * [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
   * [Launch, Help and Shutdown](#launch-help-and-shutdown)
-  * [Adding and Loading Patients](#adding-and-loading-patients)
-  * [Adding and Viewing a Patient's Visit Records](#adding-and-viewing-a-patients-visit-records)
+  * [Adding and Loading Patients](#adding-loading-and-deleting-patients)
+  * [Adding and Viewing a Patient's Visit Records](#adding-viewing-and-deleting-a-patients-visit-records)
   * [Saving Data](#saving-data)
 <!-- ^ The above table of content is auto generated -->
 <!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
@@ -194,11 +194,11 @@ This is broken into a few steps:
 
 At the end, we have an argument hashmap like this:
 
-| Key     | Value                        |
-| ------- | ---------------------------- |
-| command | record                       |
-| payload | 01/05/2021                   |
-| s       | coughing, fever              |
+| Key     | Value                         |
+| ------- | ----------------------------- |
+| command | record                        |
+| payload | 01/05/2021                    |
+| s       | coughing, fever               |
 | p       | panadol Paracetamol 500mg\*20 |
 
 Next step is the initialization of a command class. Since we have command `record`, the program finds a class called
@@ -354,7 +354,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 
 1. Adding a new patient
     1. Test case: `add S1234567D`\
-       Expected: Application shows:
+       Expected: Application adds patient to the list and shows:
        ```
        ----------------------------------------------------------------------
        Patient S1234567D has been added!
@@ -369,18 +369,58 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
        Patient S1234567D's data has been found and loaded.
        ----------------------------------------------------------------------
        ```
-
-### Adding and Viewing a Patient's Visit Records
+1. Deleting a patient
+    1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
+    1. Test case: `delete /p S1234567D`\
+       Expected: Application deletes patient S1234567D and shows:
+       ```
+       ----------------------------------------------------------------------
+       Patient S9841974H has been deleted!
+       ----------------------------------------------------------------------
+       ```
+### Adding, Viewing and Deleting a Patient's Visit Records
 
 1. Adding visit records
     1. Prerequisite: Patient's records have already been loaded.
-    1. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
-       Expected: Details added to patient's visit record. Newly-added details shown in status message.
+    1. Test case: `record 30/03/2021 /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
+       Expected: Application adds details to patient's visit record and shows:
+       ```
+       ----------------------------------------------------------------------
+       Added new record to patient S1234567D:
+       
+       Symptom: coughing, runny, fever
+       Diagnosis: flu
+       Prescription: panadol, cetirizine
+
+       ----------------------------------------------------------------------
+       ```
 1. Viewing visit records
     1. Prerequisite: Patient's records have already been loaded.
     1. Test case: `retrieve`\
-       Expected: Details of all of the patient's past visits shown.
+       Expected: Application shows details of all the patient's past visits:
+        ```
+       ----------------------------------------------------------------------
+       Here are S1234567D's records:
+       30/03/2021:
+       Symptoms:
+           coughing, runny, fever
+       Diagnoses:
+           flu
+       Prescriptions:
+           panadol, cetirizine
 
+       ----------------------------------------------------------------------
+       ```
+1. Deleting visit records
+    1. Prerequisite: Patient's records have already been loaded.
+    1. Test case: `delete /r 30/03/2021`\
+       Expected: Application deletes record dates 30/03/2021 and shows:
+       ```
+       ----------------------------------------------------------------------
+       Record for 2021-03-30 has been deleted!
+       ----------------------------------------------------------------------
+       ```
+       
 ### Saving Data
 
 1. Missing data files
