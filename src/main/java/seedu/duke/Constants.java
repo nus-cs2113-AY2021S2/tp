@@ -59,9 +59,19 @@ public class Constants {
     public static final int ID_NUMBER_OF_CHARACTERS = 9;
     public static final int INDEX_OF_FIRST_CHARACTER = 0;
     public static final int INDEX_OF_LAST_CHARACTER = 8;
+    public static final int CHECKSUM_MOD = 11;
+    public static final int FIRST_DIGIT = 1;
+    public static final int SECOND_DIGIT = 2;
+    public static final int THIRD_DIGIT = 3;
+    public static final int FOURTH_DIGIT = 4;
+    public static final int FIFTH_DIGIT = 5;
+    public static final int SIXTH_DIGIT = 6;
+    public static final int LAST_DIGIT = 7;
 
     // Keys for the argument HashMap
     public static final String PAYLOAD_KEY = "payload";
+    public static final String PATIENT_KEY = "p";
+    public static final String RECORD_KEY = "r";
     public static final String SYMPTOM_KEY = "s";
     public static final String DIAGNOSIS_KEY = "d";
     public static final String PRESCRIPTION_KEY = "p";
@@ -74,12 +84,18 @@ public class Constants {
     public static final String COMMAND_CLASS_PREFIX = "seedu.duke.command.";
 
     // Delimiters for storage class
-    public static final String ID_DELIMITER = "||";
+    public static final String ID_DELIMITER = "~~";
     public static final String DATE_DELIMITER = "``";
-    public static final String SYMPTOM_DELIMITER = "^^";
+    public static final String SYMPTOM_DELIMITER = "%%";
     public static final String DIAGNOSIS_DELIMITER = "##";
     public static final String PRESCRIPTION_DELIMITER = "@@";
-    public static final String RECORDS_DELIMITER = "[R]";
+    public static final String RECORDS_DELIMITER = "!R!";
+    public static final String DETAILS_DELIMITER = "!D!";
 
+<<<<<<< HEAD
     public static final String STORAGE_DEFAULT_PATH = "./pm.save";
+=======
+    // Data file path
+    public static final String FILE_PATH = "data.txt";
+>>>>>>> origin/master
 }

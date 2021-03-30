@@ -5,10 +5,16 @@ add G1234567X
 list
 add S1234567D
 list
+delete S7654321F
+delete /p S9999999T
+delete /p S7654321F
+list
 help
 current
 load S1234567D
 record 31/03/2021 /s coughing
+retrieve
+delete /r 31/03/2021
 retrieve
 current
 exit
