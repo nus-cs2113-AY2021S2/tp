@@ -7,6 +7,7 @@ import seedu.duke.ui.UI;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -25,12 +26,12 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        String directoryPath = getDirectoryPath(module);
-        filePath = directoryPath + fileName + TXT_FORMAT;
         try {
+            String directoryPath = getDirectoryPath(module);
+            filePath = directoryPath + fileName + TXT_FORMAT;
             Path path = Paths.get(filePath);
             performFunction(ui, path);
-        } catch (IOException e) {
+        } catch (InvalidPathException | IOException e) {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
             Command command = new ListCheatSheetCommand();
             command.execute(ui);
