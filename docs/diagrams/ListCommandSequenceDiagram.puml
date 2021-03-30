@@ -30,10 +30,12 @@ alt list all
 
             deactivate fridge
         end
-        deactivate list
+
 <--list: list of all Food
+deactivate list
 
 else list by category
+
         list -> list: getListByCategoryMessage()
         activate list
         loop food in fridge
@@ -50,8 +52,9 @@ else list by category
 
             deactivate fridge
         end
-        deactivate list
+
 <--list: list of Food in Category
+deactivate list
 
 else list by location
         list -> list: getListByStorageLocationMessage()
@@ -70,8 +73,10 @@ else list by location
 
             deactivate fridge
         end
-        deactivate list
+
 <--list: list of Food in Storage Location
+deactivate list
+
 end
 
 
