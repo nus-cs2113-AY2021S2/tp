@@ -24,17 +24,24 @@ public class AddTask {
 
     public static void execute(int taskTypeNumber) {
         String dateAndTime = EMPTY_STRING;
+        String module;
 
         if (ModuleInfo.modules.isEmpty()) {
             Ui.printNoModulesMessage();
-            return;
+            String input = Ui.readCommand().trim();
+            if (input.equalsIgnoreCase("N")) {
+                return;
+            }
+            ModuleInfo.addNewModule();
+            module = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();
+        } else {
+            Ui.printAddTaskModuleMessage(taskTypeNumber);
+            module = printAndGetModule();
+            if (module.equals("")) {
+                return;
+            }
         }
 
-        Ui.printAddTaskModuleMessage(taskTypeNumber);
-        String module = printAndGetModule();
-        if (module.equals("")) {
-            return;
-        }
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = Ui.readCommand();
         if (taskTypeNumber != 1) {

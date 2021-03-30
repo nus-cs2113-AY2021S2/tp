@@ -160,7 +160,7 @@ public class Ui {
     }
 
     public static void printNoModulesMessage() {
-        System.out.println("There are no modules! Please head to the ModuleInfo menu to add them!");
+        System.out.println("There are no modules! Would you like to add a module? [Y/N]");
     }
 
     public static void printAddTaskDescriptionMessage(int taskType) {
