@@ -30,10 +30,11 @@ alt list all
 
             deactivate fridge
         end
+        list --> list: list of all Food
 
-<--list: list of all Food
+
 deactivate list
-
+<--list
 else list by category
 
         list -> list: getListByCategoryMessage()
@@ -52,9 +53,10 @@ else list by category
 
             deactivate fridge
         end
+        list --> list: list of Food in Category
 
-<--list: list of Food in Category
 deactivate list
+<--list
 
 else list by location
         list -> list: getListByStorageLocationMessage()
@@ -73,12 +75,12 @@ else list by location
 
             deactivate fridge
         end
+        list --> list: list of Food in Storage Location
 
-<--list: list of Food in Storage Location
 deactivate list
+<--list
 
 end
-
 
 deactivate list
 
