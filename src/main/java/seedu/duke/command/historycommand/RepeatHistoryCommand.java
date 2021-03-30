@@ -19,8 +19,13 @@ public class RepeatHistoryCommand extends Command {
         try {
             ui.showHistory(history);
             int entry = ui.getRepeatEntry();
+<<<<<<< HEAD
             String[] routeInfo = history.getSpecificEntry(entry);
             String route = new Router().execute(nusMap, routeInfo[0], routeInfo[1]);
+=======
+            String[] routeInfo = history.getSpecificEntry(entry - 1);
+            String route = new Router().execute(nusMap, blockAlias, routeInfo[0], routeInfo[1]);
+>>>>>>> 0faaf041e53faa5b1a80b6a24cd82251e4b630c9
             ui.showMessageWithDivider(route);
             history.addHistory(routeInfo[0], routeInfo[1]);
         } catch (InvalidBlockException | InvalidIndexException | EmptyHistoryException e) {
