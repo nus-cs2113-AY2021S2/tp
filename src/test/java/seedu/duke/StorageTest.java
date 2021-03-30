@@ -2,7 +2,6 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -54,7 +53,7 @@ public class StorageTest {
         }
 
         assertEquals("S1234567D" + System.lineSeparator()
-                + "S7654321B" + System.lineSeparator() , bos.toString());
+                + "S7654321B" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
