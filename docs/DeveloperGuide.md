@@ -139,10 +139,22 @@ A `Record` contains:
 
 API: `Storage.java`
 
+The storage component is in charge of printing all patients' data into a file, and loading from it when the application restarts. 
+This would ensure that patient data is not lost after exiting the application.
+
+To initialise this component, the `SortedMap<String, Patient>` from the Data class is passed during object creation.
+This SortedMap<String, Patient> is the entire list of patients and their records.
+
+Then, we can call the `save(SortedMap<String, Patient> patientData)` method to save the SortedMap into a file whenever changes are made.
+The file is specified by the variable FILE_PATH in Constants class.
+
+The reverse process would be the `load()` method. The file from the specified FILE_PATH is loaded into a String, which is 
+converted to a SortedMap<String, Patient> afterwards.
+
 `Storage.java`:
 
 - facilitates the saving of application data into a text file
-- facilitates the loading of application data from a text file
+- facilitates the loading of application data from the aforementioned text file
 - convert records to string
 - converts string to records
 
