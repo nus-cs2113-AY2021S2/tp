@@ -63,17 +63,16 @@ public class Finux {
      * Loops the application until an EXIT command is parsed.
      */
     private void commandLooper() {
-        Command command;
-        String rawInput;
-        do {
-            rawInput = ui.getUserInput();
+        while (!commandHandler.isExit()) {
+            String rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
-            command = commandHandler.parseCommand(parsedStringList, records);
-            if (command != null) {
-                command.execute(records, ui, storage, creditScoreMap);
+            Command command = commandHandler.parseCommand(parsedStringList, records);
+            if (command == null) {
+                continue;
             }
-        } while (!ExitCommand.isExit(command));
+            command.execute(records, ui, storage, creditScoreMap);
+        }
     }
 
     /**
