@@ -252,30 +252,42 @@ Output:
 
 ---
 
-This operation exit the program.
+You can exit the application by typing the `exit` command.
 
 Format: `exit`
+
+Output:
+
+![exit example output](img/ExitExampleOutput.jpg)
 
 ### 3.8 Help function: `help`
 
 ---
 
-This operation lists the help page for the application.
+To know how to use each features and their specifications, you can type `help` followed by
+the available features listed below.
+
+> Available Features:
+>* `add`: view the help section for `add` command.
+>* `list`: view the help section for `list` command.
+>* `view`: view the help section for `view` command.
+>* `return`: view the help section for `return` command.
+>* `remove`: view the help section for `remove` command.
+>* `creditscore`: view the help section for `creditscore` command.
+>* `exit`: view the help section for `exit` command.
+>* `all`: view entire help section.
+>* 💡 Just type `help` and you can view the entire help section.
+ 
+Each section is divided into three parts:
+> 1. `NAME` will show you the feature name and its brief description. <br>
+> 2. `SYNOPSIS` will show you the format to follow. <br>
+> 3. `DESCRIPTION` will explain the usage of any arguments or options. <br>
+
+> 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
 
 Format: `help <FEATURE>`
 
-> Available Features:
->* `add`: view the help page for `add` command.
->* `list`: view the help page for `list` command.
->* `view`: view the help page for `view` command.
->* `return`: view the help page for `return` command.
->* `remove`: view the help page for `remove` command.
->* `creditscore`: view the help page for `creditscore` command.
->* `exit`: view the help page for `exit` command.
->* `all`: view entire help page.
->* 💡 **Tip**: Just type `help` and you can view the entire help page.
-
-Examples: `help exit`, `help list`
+Examples: `help remove`
 
 Output:
 
