@@ -8,13 +8,9 @@ import seedu.duke.ui.UI;
 import java.util.ArrayList;
 
 import static seedu.duke.common.Constants.EMPTY_STRING;
-import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
-import static seedu.duke.common.Messages.HEADER_DONE;
-import static seedu.duke.common.Messages.HEADER_UNDONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_DONE;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_EMPTY;
 import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST;
-import static seedu.duke.common.Messages.MESSAGE_TASKS_TO_LIST_UNDONE;
 import static seedu.duke.common.Messages.NEWLINE;
 
 public class ListTasksCommand extends Command {
@@ -38,23 +34,13 @@ public class ListTasksCommand extends Command {
      * Prints either all done or all undone tasks.
      */
     public static void printFilteredTasks(UI ui, Module module, boolean isDone, boolean isOverview) {
-        if (isDone) {
-            ui.printMessage(HEADER_DONE);
-        } else if (isOverview) {
-            ui.printMessage(MESSAGE_TASKS_TO_LIST_UNDONE);
-        } else {
-            ui.printMessage(HEADER_UNDONE);
-        }
+        ui.printTaskListHeader(isDone, isOverview);
         ArrayList<Task> filteredTasks = module.getDoneOrUndoneTasks(isDone);
         if (filteredTasks.isEmpty()) {
             printEmpty(ui, isDone);
             return;
         }
-        int tasksCount = 0;
-        for (Task task : filteredTasks) {
-            tasksCount++;
-            ui.printMessage(String.format(FORMAT_INDEX_ITEM, tasksCount, task.getTaskString()));
-        }
+        ui.printTasks(filteredTasks, false);
     }
 
     /**

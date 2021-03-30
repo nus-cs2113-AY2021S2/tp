@@ -55,7 +55,7 @@ public class MarkAsDoneCommand extends Command {
      */
     private void printPrompt(UI ui, ArrayList<Task> undoneTasks) {
         ui.printMessage(MESSAGE_TASKS_TO_MARK);
-        ui.printSummarisedTasks(undoneTasks);
+        ui.printTasks(undoneTasks, true);
         ui.printMessage(String.format(MESSAGE_ENTER_INDICES, TYPE_TASK, MARK));
     }
 }
