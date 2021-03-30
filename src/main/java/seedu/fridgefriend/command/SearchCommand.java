@@ -7,19 +7,20 @@ import seedu.fridgefriend.utilities.LoggingHandler;
 
 //@@author SimJJ96
 /**
- * Represents a command to search for a specific food item in the fridge.
+ * Represents a command to search for specific food items in the fridge.
  */
 public class SearchCommand extends Command {
 
     private final String foodName;
-    private boolean isContain;
+    private boolean isFound;
+    private int index = 1;
 
     public SearchCommand(String foodName) throws EmptyDescriptionException {
         if (foodName.isEmpty()) {
             throw new EmptyDescriptionException();
         }
         this.foodName = foodName;
-        this.isContain = false;
+        this.isFound = false;
     }
 
     @Override
@@ -40,26 +41,54 @@ public class SearchCommand extends Command {
      */
     public String getMessagePrintedToUser() {
         assert !foodName.equals(null) : "Unable to search a null food name";
-        StringBuilder message = new StringBuilder("These are the "
-                + foodName + " in your fridge:");
-        int indexShownToUser = 1;
-        for (int i = 0; i < fridge.getSize(); i += 1) {
-            Food food = fridge.getFood(i);
-            if (food.getFoodName().contains(foodName)) {
-                isContain = true;
-                message.append("\n\t").append(indexShownToUser)
-                        .append(". ").append(food.toString());
-                ++indexShownToUser;
-            }
-        }
-
-        if (!isContain) {
-            LoggingHandler.logInfo("Search for food unsuccessful: No " + foodName + " found.");
-            return "You do not have " + foodName + " in your fridge.";
-        } else {
+        StringBuilder message = getSearchByNameMessage();
+        if (isFound) {
             LoggingHandler.logInfo("Search for food successful: " + foodName + " found.");
             return message.toString();
+        } else {
+            LoggingHandler.logInfo("Search for food unsuccessful: No " + foodName + " found.");
+            return "You do not have " + foodName + " in your fridge.";
         }
+    }
+
+    /**
+     * Returns the list of foods that contain the foodName.
+     *
+     * @return the string of food that contains the foodName in the fridge
+     */
+    private StringBuilder getSearchByNameMessage() {
+        StringBuilder message = new StringBuilder("These are the "
+                + foodName + " in your fridge:");
+        for (int i = 0; i < fridge.getSize(); i += 1) {
+            Food food = fridge.getFood(i);
+            isFound(message, food);
+        }
+        return message;
+    }
+
+    /**
+     * Check if the food contain the foodName entered by the user.
+     *
+     * @param message that is shown to user
+     * @param food item in the fridge
+     */
+    private void isFound(StringBuilder message, Food food) {
+        if (food.getFoodName().contains(foodName)) {
+            updateMessage(message, food);
+        }
+    }
+
+    /**
+     * Updates the message to be shown to the user based on food containing the foodName.
+     *
+     * @param message that is shown to user
+     * @param food item in fridge that contain the foodName
+     */
+    private void updateMessage(StringBuilder message, Food food) {
+        isFound = true;
+        message.append("\n\t").append(index)
+                .append(". ").append(food.toString());
+        ++index;
     }
     //@author
 }

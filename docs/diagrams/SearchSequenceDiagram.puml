@@ -29,7 +29,7 @@ destroy Fridge
 alt isContain
     return
 else !isContain
-    SearchCommand -> SearchCommand: getMessagePrinterToUser
+    SearchCommand -> SearchCommand: getMessagePrintedToUser
     activate SearchCommand
     return
 end
