@@ -70,7 +70,7 @@ public class Parser {
             //note
         } else if (filteredUserInput.startsWith("add note")) {
             command = new AddNoteCommand();
-        } else if (filteredUserInput.startsWith("show notes")) {
+        } else if (filteredUserInput.startsWith("list notes")) {
             command = new ListNoteCommand();
         } else if (filteredUserInput.startsWith("delete note")) {
             command = new DeleteNoteCommand();
