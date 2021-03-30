@@ -349,6 +349,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
     1. Test case: `exit`\
        Expected: Application prints goodbye message and exits. All data will be saved to
        `./data/TODO_ADD_FILENAME_HERE.txt`
+
 ### Adding and Loading Patients
 
 1. Adding a new patient
@@ -369,6 +370,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
        ----------------------------------------------------------------------
        ```
 ### Adding and Viewing a Patient's Visit Records
+
 1. Adding visit records
     1. Prerequisite: Patient's records have already been loaded.
     1. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
@@ -379,6 +381,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
        Expected: Details of all of the patient's past visits shown.
 
 ### Saving Data
+
 1. Missing data files
     1. Delete the file `./data/TODO_ADD_FILENAME_HERE.txt`.
     1. Launch the app with `java -jar tp.jar`.
