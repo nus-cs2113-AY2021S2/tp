@@ -10,19 +10,15 @@ import java.util.ArrayList;
 
 public class DisplayMenusCommand extends Command {
 
-    private int storeIndex;
+    private Store store;
 
-    public DisplayMenusCommand(int storeIndex) {
-        this.storeIndex = storeIndex;
+    public DisplayMenusCommand(Store store) {
+        this.store = store;
+        assert store != null : "store must be defined";
     }
 
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-        Store currentStore = canteens.get(0).getStore(storeIndex);
-        ArrayList<Menu> menus = currentStore.getMenus();
-        ui.showDisplayMenu(currentStore.getStoreName(), menus);
-    }
-
-    public boolean isExit() {
-        return exit;
+        ArrayList<Menu> menus = store.getMenus();
+        ui.showDisplayMenu(store.getStoreName(), menus);
     }
 }

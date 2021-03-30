@@ -9,25 +9,42 @@ import ui.Ui;
 import java.util.ArrayList;
 
 public class AddReviewCommand extends Command {
-    protected int storeIndex;
-    protected String description;
-    protected double rating;
+    private Store store;
 
-    public AddReviewCommand(int storeIndex, String description, double rating) {
-        this.storeIndex = storeIndex;
-        this.description = description;
-        this.rating = rating;
+    public AddReviewCommand(Store store) {
+        this.store = store;
     }
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
-        Store currentStore = canteens.get(0).getStore(storeIndex);
-        Review currentStoreReview = new Review(description,rating);
-        currentStore.addReview(currentStoreReview);
+        try {
+            getReviewFromUser(ui);
+        } catch (NumberFormatException e) {
+            throw new DukeExceptions("Review not added. Please input your review in proper format!");
+        }
     }
 
-    @Override
-    public boolean isExit() {
-        return exit;
+    public void getReviewFromUser(Ui ui) throws NumberFormatException {
+        String description;
+        double rating;
+        String line;
+        ui.enterReview();
+        line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.reviewNotAdded();
+            return;
+        } else {
+            description = line;
+        }
+        ui.enterRating();
+        line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.reviewNotAdded();
+            return;
+        } else {
+            rating = Double.parseDouble(line);
+        }
+        store.addReview(new Review(description, rating));
+        ui.reviewAdded();
     }
 }

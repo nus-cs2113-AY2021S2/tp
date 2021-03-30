@@ -15,41 +15,57 @@
 
 {Give detailed description of each feature}
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
-
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
-
-Example of usage: 
-
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
 ### Reading reviews of a store: `read`
-Reads review of a store by selecting its index from the list
+Display reviews of the current store the user is viewing.
 
-Format: `read INDEX`
+Format: `read`
 
-* The `INDEX` is the index of the store in the displayed store list.
+* There should be no arguments after `read`
 
 Example of usage:
 
-`review 1`
+`review`
 
 ### Viewing the highlight menu of a store: `menu`
-View the highlight menu items of the store, along with their prices.
+View the highlight menu items of current store that the user is viewing, along with their prices.
 
-Format: `menu INDEX`
+Format: `menu`
 
-* The `INDEX` is the index of the store in the displayed store list.
+* There should be no arguments after `menu`
 
 Example of usage:
 
-`menu 2`
+`menu`
+
+### Select a new canteen to view: `home`
+Allows the user to re-enter which canteen and store they wish to look at.
+The application will prompt the user for the canteen and store by
+1. Displaying a list of canteens
+2. Wait for user canteen selection by index
+3. Displaying a list of stores in the chosen canteen
+4. Wait for user store selection by index
+
+Format: `home`
+
+* There should be no arguments after `home`
+
+Example of usage:
+
+`home`
+
+### Select new store to view: `list`
+Allows the user to re-enter which store they wish to look at in their current canteen.
+The application will prompt the user for the store by
+1. Displaying a list of stores in the current canteen
+2. Wait for user store selection by index
+
+Format: `list`
+
+* There should be no arguments after `list`
+
+Example of usage:
+
+`list`
 
 
 ## FAQ

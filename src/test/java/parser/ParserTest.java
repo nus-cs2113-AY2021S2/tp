@@ -2,96 +2,74 @@ package parser;
 
 import command.Command;
 import command.DisplayMenusCommand;
-import command.DisplayStoresCommand;
 import command.ExitCommand;
-import command.ReadCommand;
+import command.HomeCommand;
+import command.ReadReviewsCommand;
+import command.ResetStoreCommand;
+import nusfoodreviews.NusFoodReviews;
+import stores.Store;
 import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
+import canteens.Canteen;
+import ui.Ui;
+
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class ParserTest {
 
     private int maxStores = 1;
+    Canteen canteen = new Canteen("The Deck");
+    Store store = new Store("Techno Edge");
+    NusFoodReviews nusFoodReviews = new NusFoodReviews("\"data/storage.txt\"");
+    Ui ui = new Ui();
 
     @Test
     public void parse_list_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser();
-        Command c = parser.parse("list", maxStores);
-        assertTrue(c instanceof DisplayStoresCommand);
+        Parser parser = new Parser(nusFoodReviews, ui);
+        Command c = parser.parse("list",store, maxStores);
+        assertTrue(c instanceof ResetStoreCommand);
     }
 
     @Test
     public void parse_menu_success() throws DukeExceptions {
-        Parser parser = new Parser();
-        Command c = parser.parse("menu 1", maxStores);
+        Parser parser = new Parser(nusFoodReviews, ui);
+        Command c = parser.parse("menu",store, maxStores);
         assertTrue(c instanceof DisplayMenusCommand);
     }
 
     @Test
-    public void parse_menuExceedStoreIndex_exceptionThrown() {
-        Parser parser = new Parser();
+    public void parse_ExceedStoreIndex_exceptionThrown() throws DukeExceptions {
+        Parser parser = new Parser(nusFoodReviews, ui);
         try {
-            Command c = parser.parse("menu 5", maxStores);
+            parser.parseInt("0",1, 1);
         } catch (Exception e) {
-            assertEquals("Invalid index! Please enter a valid index for your 'menu' command.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void parse_menuNoNumbers_exceptionThrown() {
-        Parser parser = new Parser();
-        try {
-            Command c = parser.parse("menu abc", maxStores);
-        } catch (Exception e) {
-            assertEquals("Invalid index! Please enter a valid index for your 'menu' command.", e.getMessage());
+            assertEquals("Please enter a valid index!", e.getMessage());
         }
     }
 
     @Test
     public void parse_exit_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser();
-        Command c = parser.parse("exit", maxStores);
+        Parser parser = new Parser(nusFoodReviews, ui);
+        Command c = parser.parse("exit",store, maxStores);
         assertTrue(c instanceof ExitCommand);
     }
 
     @Test
-    public void parse_faultyCommand_throwException() {
-        Parser parser = new Parser();
-        assertThrows(DukeExceptions.class, () -> {
-            Command c = parser.parse("RandomInput", maxStores);
-        });
+    public void parse_home_displayCommand() throws DukeExceptions {
+        Parser parser = new Parser(nusFoodReviews, ui);
+        Command c = parser.parse("home",store, maxStores);
+        assertTrue(c instanceof HomeCommand);
     }
 
     @Test
-    public void parse_read_displayCommand() throws DukeExceptions {
-        Parser parser = new Parser();
-        Command c = parser.parse("read 1", maxStores);
-        assertTrue(c instanceof ReadCommand);
+    public void parse_reviews_displayCommand() throws DukeExceptions {
+        Parser parser = new Parser(nusFoodReviews, ui);
+        Command c = parser.parse("reviews",store, maxStores);
+        assertTrue(c instanceof ReadReviewsCommand);
     }
-
-    @Test
-    public void parse_readIndexExceedReviewNo_exceptionThrown() {
-        Parser parser = new Parser();
-        try {
-            Command c = parser.parse("read 5", maxStores);
-        } catch (Exception e) {
-            assertEquals("Invalid index! Please enter a valid index for your 'read' command.", e.getMessage());
-        }
-    }
-
-    @Test
-    public void parse_readIndexNoNumbers_exceptionThrown() {
-        Parser parser = new Parser();
-        try {
-            Command c = parser.parse("read hi", maxStores);
-        } catch (Exception e) {
-            assertEquals("Invalid index! Please enter a valid index for your 'read' command.", e.getMessage());
-        }
-    }
-
 
 }

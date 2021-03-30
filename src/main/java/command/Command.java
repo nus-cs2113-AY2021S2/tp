@@ -17,5 +17,4 @@ public abstract class Command {
 
     public abstract void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions;
 
-    public abstract boolean isExit();
 }
