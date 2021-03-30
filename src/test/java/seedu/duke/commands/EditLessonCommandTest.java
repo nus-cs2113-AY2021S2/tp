@@ -42,19 +42,20 @@ class EditLessonCommandTest extends LessonCommandTest {
         UI ui = new UI();
         Command command = new EditLessonCommand();
         command.execute(ui);
-        Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
 
-        removeOutputStream();
-        ModuleList.reset();
-        
         // Expected lesson after edit
         Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL1, 
                 LessonType.TUTORIAL, TIME1, ONLINE_LINK1);
+        Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
 
         assertEquals(editedLesson.getTime(), actualLessonAfterEdit.getTime());
         assertEquals(editedLesson.getOnlineLink(), actualLessonAfterEdit.getOnlineLink());
         assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
         assertEquals(editedLesson.getTeachingStaff().getEmail(), actualLessonAfterEdit.getTeachingStaff().getEmail());
+
+        removeOutputStream();
+        ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
     }
 
     @Test
@@ -72,7 +73,7 @@ class EditLessonCommandTest extends LessonCommandTest {
 
         // Prepare user input
         String lessonIndex = "1" + System.lineSeparator();
-        String lessonFields = "1 10 -1 3 0 abc" + System.lineSeparator(); // 1 and 3 are valid
+        String lessonFields = "1 10 -1 3 0 abc" + System.lineSeparator(); // Only 1 and 3 are valid
         String newTime = TIME1 + System.lineSeparator();
         String newTeacherName = TEACHER_NAME1 + System.lineSeparator();
 
@@ -83,18 +84,20 @@ class EditLessonCommandTest extends LessonCommandTest {
         UI ui = new UI();
         Command command = new EditLessonCommand();
         command.execute(ui);
-        Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
 
-        removeOutputStream();
-        ModuleList.reset();
 
         // Expected lesson after edit
         Lesson editedLesson = initialiseLesson(TEACHER_NAME1, TEACHER_EMAIL,
                 LessonType.TUTORIAL, TIME1, ONLINE_LINK);
-
+        Lesson actualLessonAfterEdit = ModuleList.getSelectedModule().getLessonList().get(0);
+        
         assertEquals(editedLesson.getTime(), actualLessonAfterEdit.getTime());
         assertEquals(editedLesson.getOnlineLink(), actualLessonAfterEdit.getOnlineLink());
         assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
         assertEquals(editedLesson.getTeachingStaff().getEmail(), actualLessonAfterEdit.getTeachingStaff().getEmail());
+        
+        ModuleList.reset();
+        TestUtilAndConstants.emptyModuleList();
+        removeOutputStream();
     }
 }

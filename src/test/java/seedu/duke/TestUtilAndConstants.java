@@ -95,4 +95,17 @@ public class TestUtilAndConstants {
         ModuleList.addModule(MODULE_CODE_1);
         ModuleList.setSelectedModule(MODULE_CODE_1);
     }
+
+    //@@author ivanchongzhien
+
+    /**
+     * Empties the modules in the list that were used for testing.
+     */
+    public static void emptyModuleList() {
+        ArrayList<Integer> indices = new ArrayList<>();
+        for (int i = 1; i <= ModuleList.getModules().size(); i++) {
+            indices.add(i);
+        }
+        ModuleList.deleteModules(indices);
+    }
 }
