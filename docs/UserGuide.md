@@ -132,7 +132,7 @@ Format: `help`
 
 ## 4.2 Routing
 
-### 4.2.1 Routing between blocks:
+### 4.2.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
 Format: `go → STARTING_BLOCK → DESTINATION BLOCK`
