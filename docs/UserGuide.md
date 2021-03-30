@@ -79,6 +79,6 @@ Action | Format
 **View Shortlist** | `shortlist`
 **Save Shortlist** | `save INDEX`
 **Remove Shortlist** | `remove INDEX`
-**List** | `list…​`
+**List** | `list`
 **Clear** | `clear`
 
