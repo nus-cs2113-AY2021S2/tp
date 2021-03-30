@@ -3,9 +3,8 @@ package seedu.logic.parser;
 import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
-import seedu.ui.NurseScheduleUI;
 import seedu.logic.errorchecker.NurseScheduleChecker;
-import static seedu.ui.UI.smartCommandRecognition;
+import seedu.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,11 +12,17 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Scanner;
 
+import static seedu.ui.UI.smartCommandRecognition;
+
 public class NurseSchedulesParser {
 
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
+
+    public static boolean isValidDate(String date) {
+        return true;
+    }
 
     /**
      * Gets user input.

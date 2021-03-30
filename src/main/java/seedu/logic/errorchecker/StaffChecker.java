@@ -2,8 +2,10 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.staff.*;
+import seedu.exceptions.staff.WrongListInputException;
+import seedu.exceptions.staff.WrongStaffIdException;
 
 public class StaffChecker extends MainChecker {
     public static boolean isSameInt(int a, String b) {
@@ -16,13 +18,25 @@ public class StaffChecker extends MainChecker {
     }
 
     public static void checkValidDataForAdd(String line) throws NoInputException,
-            WrongStaffIdException, PositiveNumberOnlyException,
-            ExcessInputException, InsufficientInputException, BlankInputException {
-
+            WrongStaffIdException, InvalidIntegerException,
+            ExcessInputException, InsufficientInputException {
+        System.out.println("owen0");
         checkNumInput(line,5,5);
+        System.out.println("owen1");
         checkStaffID(line.split("/")[1]);
+        System.out.println("owen2");
         checkNumericInput(line.split("/")[3]);
+        System.out.println("owen3");
         checkBlankInput(line);
+        System.out.println("owen4");
+    }
+    public static void checkValidDataForStorage(String line) throws NoInputException,
+            WrongStaffIdException, InvalidIntegerException,
+            ExcessInputException, InsufficientInputException {
+        checkDataNumInput(line,4,4);
+        checkStaffID(line.split("\\|")[0]);
+        checkNumericInput(line.split("\\|")[2]);
+        checkBlankInputForStorage(line);
     }
 
     public static void checkStaffID(String id) throws WrongStaffIdException {

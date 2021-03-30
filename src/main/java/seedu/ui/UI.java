@@ -1,8 +1,6 @@
 package seedu.ui;
 
 import seedu.duke.Constants;
-import seedu.exceptions.staff.AbortException;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -19,10 +17,6 @@ public class UI {
         return scanner.nextLine().trim();
     }
 
-    public static void printError(String errorMessage) {
-        System.out.println(errorMessage);
-    }
-
     public String getInput(String requestMenu) {
         System.out.print(requestMenu + " --> ");
         String input = scanner.nextLine();
@@ -33,16 +27,6 @@ public class UI {
         }
 
         return input.replaceAll("\\s+", " ").trim();
-    }
-
-    public static String abortEnabledScanInput() throws AbortException {
-        String input = scanner.nextLine().trim();
-        if (input.equals("\\abort") ) {
-            throw new AbortException();
-        }
-        else {
-            return input;
-        }
     }
 
     public static String smartCommandRecognition(String[] commands, String input) {
@@ -115,23 +99,8 @@ public class UI {
         return input.replaceAll("[^A-Za-z0-9]","");
     }
 
-    public static void abortInputErrorMessage() {
-        System.out.println("Input has been aborted");
-    }
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
-    }
-
-    public static void tooManyInputErrorMessage() {
-        System.out.println("OOPS! There is too many input for this command");
-    }
-
-    public static void tooLittleInputErrorMessage() {
-        System.out.println("OOPS! There is too little input for this command");
-    }
-
-    public static void noInputErrorMessage() {
-        System.out.println("Command is missing input parameter");
     }
 
     public static void noCommandErrorMessage() {
@@ -157,11 +126,6 @@ public class UI {
 
     public static void printWelcome() {
         System.out.println("Welcome to \n" + Constants.LOGO);
-        showLine();
-    }
-
-    public static void printUserName(String userName) {
-        System.out.println("Hello " + userName + "!");
         showLine();
     }
 
@@ -210,6 +174,4 @@ public class UI {
         System.out.print(System.lineSeparator());
     }
 
-    public void fileCreateErrorMessage() {
-    }
 }

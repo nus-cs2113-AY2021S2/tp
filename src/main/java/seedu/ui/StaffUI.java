@@ -1,32 +1,8 @@
 package seedu.ui;
 
-import seedu.exceptions.staff.AbortException;
-import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.model.staff.Staff;
-
 import static seedu.duke.Constants.*;
-import static seedu.logic.errorchecker.StaffChecker.checkStaffID;
 
 public class StaffUI extends UI{
-
-
-    public static Staff inputToCreateStaff() throws WrongStaffIdException, AbortException {
-
-        String[] staffInput = new String[4];
-        System.out.print("Staff ID: ");
-        staffInput[0] = abortEnabledScanInput();
-        checkStaffID(staffInput[0]);
-        System.out.print("Name: ");
-        staffInput[1] = abortEnabledScanInput();
-        System.out.print("Age: ");
-        staffInput[2] = abortEnabledScanInput();
-        System.out.print("Specialisation: ");
-        staffInput[3] = abortEnabledScanInput();
-
-        staffHiredOutput(staffInput[0], staffInput[1]);
-        return new Staff(staffInput);
-    }
-
 
     public static void staffHiredOutput(String id, String name) {
         if (id.charAt(0) == 'D') {
@@ -64,7 +40,7 @@ public class StaffUI extends UI{
                         + UI.prettyPrint("Age", 5) + " | " + UI.prettyPrint("Specialisation", 20));
     }
 
-    public static void printStaffHelpList() {
+    public static void printStaffHelpMessage() {
 
         UI.printEmptyLine();
         System.out.println("Here is a list of Staff commands: ");
@@ -86,20 +62,9 @@ public class StaffUI extends UI{
     public static void corruptedFileErrorMessage() {
         System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
     }
-    public static void wrongStaffIDErrorMessage() {
-        System.out.println("Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
-    }
-
-    public static void wrongStaffListInputErrorMessage() {
-        System.out.println("Invalid List command parameter\nPlease input with the following format:\n\tlist\n\tlist nurses\n\tlist doctors");
-    }
-
-    public static void blankInputErrorMessage() {
-        System.out.println("OOPS! Input field cannot be blank. Please change your input!");
-    }
 
     public static void invalidNumericErrorMessage() {
-        System.out.println("OOPS! Input field expects a positive numeric. Please change your input!");
+        System.out.println("The numeric input is invalid!");
     }
 
     public static void staffMenuPrompt() {
