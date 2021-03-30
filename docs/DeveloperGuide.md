@@ -369,6 +369,7 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
        Patient S1234567D's data has been found and loaded.
        ----------------------------------------------------------------------
        ```
+
 ### Adding and Viewing a Patient's Visit Records
 
 1. Adding visit records
