@@ -27,7 +27,9 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
         try {
-            String directoryPath = getDirectoryPath(module);
+            String directoryPath = getDirectoryPath(module, ui);
+
+
             filePath = directoryPath + fileName + TXT_FORMAT;
             Path path = Paths.get(filePath);
             performFunction(ui, path);
