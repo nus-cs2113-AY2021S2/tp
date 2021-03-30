@@ -15,11 +15,12 @@ public class AppController {
     private static ArrayList<Employee> employees = new ArrayList<>();
     private static final Scanner sc = new Scanner(System.in);
     FileManager fileManager = new FileManager();
-    private static final ArrayList<Shift> shifts = new ArrayList<>();
+    private static ArrayList<Shift> shifts = new ArrayList<>();
 
     public void run() throws IOException {
         try {
-            employees = fileManager.loadFile();
+            employees = fileManager.loadEmployees();
+            shifts = fileManager.loadShifts();
             System.out.println("Save data loaded!");
         } catch (Exception e) {
             System.out.println("No save files found.");
@@ -33,9 +34,9 @@ public class AppController {
             case "add employee":
                 addEmployee();
                 break;
-            case "drop employee":
+            /**case "drop employee":
                 dropEmployee();
-                break;
+                break;**/
             case "add schedule":
                 addSchedule();
                 break;
@@ -68,7 +69,8 @@ public class AppController {
                 break;
             case "quit":
                 System.out.println("bye");
-                fileManager.saveFile(employees);
+                fileManager.saveEmployees(employees);
+                fileManager.saveShifts(shifts);
                 return;
             default:
                 System.out.println("invalid command");
@@ -204,6 +206,8 @@ public class AppController {
                         return;
                     }
                 }
+                System.out.println("Shift not found");
+                return;
             }
         }
         System.out.println("Employee not found");
@@ -225,6 +229,8 @@ public class AppController {
                         return;
                     }
                 }
+                System.out.println("Shift not found");
+                return;
             }
         }
         System.out.println("Employee not found");
