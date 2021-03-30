@@ -202,7 +202,21 @@ Given below is the sequence diagram for the interactions within the main applica
 * The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 * Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
   Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
-  
+
+### Add Command
+AddCommand class is initialized whenever the parser recognize the `add` keyword.
+
+1. The constructor should create a new Food object according to the parsed user input.
+2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+
+Given below is the sequence diagram for the AddCommand workflow.
+
+![AddCommandSequenceDiagram](diagrams/diagram_images/AddSequenceDiagram.png)
+
+Notes:
+* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
+
 ### RemoveCommand
 
 When the user specify to remove a portion of a food item in the fridge, the `remove` command
@@ -260,20 +274,45 @@ return the food item if the expiry date is within one week of calling the comman
 The sequence diagram shows how the `expiring` operation works:
 ![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
 
+### ListCommand
 
-### Add Command
-AddCommand class is initialized whenever the parser recognize the `add` keyword.
+There are three variations of the `list` command. 
+1. List all food
+2. List by category
+3. List by storage location
 
-1. The constructor should create a new Food object according to the parsed user input.
-2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+The first command, list all food, is implemented by iterating through the collection
+of food in the fridge. The names of all the food is concatenated using a Java StringBuilder,
+and the final result, containing the list of all food, is returned to the main program.
 
-Given below is the sequence diagram for the AddCommand workflow.
+The second and third commands, list by category or storage location, is also implemented by iterating through 
+the collection of food in the fridge. However, there is an additional check to verify if the given
+food contains the correct category/storage location attribute as requested by the user.
 
-![AddCommandSequenceDiagram](diagrams/diagram_images/AddSequenceDiagram.png)
+If the category/storage location is as requested, the name of the food will be concatenated to the 
+result using a Java StringBuilder. Otherwise, the name of the food would not be part of the result.
+The final result, containing the list of all food belonging to the category/storage location, 
+is returned to the main program.
 
-Notes:
-* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
-* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
+The sequence diagram shows how the `list` operation works:
+
+![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
+
+### HistoryCommand
+
+The code related to persistent storage for the `history` command is implemented under the `Storage` class
+under the `Utilities` component.
+
+The implementation of the `history` command is as follows:
+1. After every `add` command, a copy of the added food will be appended to `historyData.txt`
+2. When the user invokes the `history` command, `historyData.txt` will be read, line by line.
+3. The line-by-line contents of `historyData.txt` are concatenated into a single output string  
+4. The output string that contains the history data will be output to the user.
+
+Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
+
+=======
+
 
 ## Product Scope
 
