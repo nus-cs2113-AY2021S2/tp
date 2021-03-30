@@ -52,17 +52,23 @@ public class RecordCommand extends Command {
         return LocalDate.now();
     }
 
-    private void addRecord(Patient patient, LocalDate date) {
+    private void addRecord(Patient patient, LocalDate date) throws InvalidInputException {
         String symptom = null;
         String diagnosis = null;
         String prescription = null;
-        if (arguments.containsKey(Constants.SYMPTOM_KEY)) {
+        boolean containsSymptom = arguments.containsKey(Constants.SYMPTOM_KEY);
+        boolean containsDiagnosis = arguments.containsKey(Constants.DIAGNOSIS_KEY);
+        boolean containsPrescription = arguments.containsKey(Constants.PRESCRIPTION_KEY);
+        if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
+            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
+        }
+        if (containsSymptom) {
             symptom = arguments.get(Constants.SYMPTOM_KEY);
         }
-        if (arguments.containsKey(Constants.DIAGNOSIS_KEY)) {
+        if (containsDiagnosis) {
             diagnosis = arguments.get(Constants.DIAGNOSIS_KEY);
         }
-        if (arguments.containsKey(Constants.PRESCRIPTION_KEY)) {
+        if (containsPrescription) {
             prescription = arguments.get(Constants.PRESCRIPTION_KEY);
         }
         patient.addRecord(date, symptom, diagnosis, prescription);
