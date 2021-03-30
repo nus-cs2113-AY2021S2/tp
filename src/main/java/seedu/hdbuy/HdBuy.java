@@ -3,6 +3,7 @@ package seedu.hdbuy;
 import seedu.hdbuy.command.Command;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.Parser;
+import seedu.hdbuy.storage.StorageManager;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.logging.Logger;

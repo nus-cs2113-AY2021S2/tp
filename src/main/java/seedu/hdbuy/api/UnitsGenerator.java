@@ -1,6 +1,7 @@
 package seedu.hdbuy.api;
 
 import seedu.hdbuy.common.Unit;
+import seedu.hdbuy.data.SearchedUnits;
 
 import java.util.HashMap;
 
@@ -23,6 +24,7 @@ public class UnitsGenerator {
             unitContent = unitContent.replaceAll("\"", "");
             String[] unitDetails = unitContent.split(",");
             Unit unit = getUnit(unitDetails);
+            SearchedUnits.addToResult(unit);
             map.put(unit.getId(), unit);
             //System.out.println(unit.toString());
         }
