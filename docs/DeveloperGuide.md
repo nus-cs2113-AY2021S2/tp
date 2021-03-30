@@ -236,7 +236,7 @@ The `TeachingStaff` class contains the attributes related to the teacher(s) of a
 
 #### Task:
 
-The Task class contains attributes related to an assignment, deadline or task in a university setting
+The `Task` class contains attributes related to an assignment, deadline or task in a university setting
 
 * Description of task
 * Deadline of task
@@ -336,7 +336,7 @@ AddLessonCommand then adds the Lesson object to the lesson list of a module. The
 
 ### Adding of Cheat-Sheet
 
-The AddCheatSheetCommand class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 6). Upon creating a new AddCheatSheetCommand object and calling the “execute” method on it, the GULIO Text Editor application will also be automatically started.
+The AddCheatSheetCommand class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new AddCheatSheetCommand object and calling the “execute” method on it, the GULIO Text Editor application will also be automatically started.
 
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
