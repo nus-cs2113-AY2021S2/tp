@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import java.util.ArrayList;
+import seedu.duke.data.NusMap;
 
 public class FavouriteLocation {
 
@@ -14,7 +15,7 @@ public class FavouriteLocation {
         return favouriteLocations;
     }
 
-    public void addFavouriteLocation(String venue, seedu.duke.Map nusMap) {
+    public void addFavouriteLocation(String venue, seedu.duke.data.NusMap nusMap) {
         try {
             if (nusMap.getBlock(venue) == null) {
                 throw new NullPointerException();

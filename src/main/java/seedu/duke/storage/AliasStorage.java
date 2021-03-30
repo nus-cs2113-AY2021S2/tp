@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.BlockAlias;
+import seedu.duke.data.BlockAlias;
 
 import java.io.File;
 import java.io.FileNotFoundException;
