@@ -31,8 +31,8 @@ public class StaffParser {
     }
 
     public static void checkValidDataForAdd(String line) throws NoInputException,
-            WrongStaffIdException, PositiveNumberOnlyException,
-            ExcessInputException, InsufficientInputException, BlankInputException {
+            WrongStaffIdException, InvalidIntegerException,
+            ExcessInputException, InsufficientInputException, NoInputException {
 
         checkEmptyInput(line);
         checkID(line.split("/")[1]);
@@ -67,16 +67,16 @@ public class StaffParser {
         }
     }
 
-    public static void checkBlankInput(String line) throws BlankInputException {
+    public static void checkBlankInput(String line) throws NoInputException {
        String[] array = line.split("/");
         for (String s : array) {
             if (s.trim().equals("")) {
-                throw new BlankInputException();
+                throw new NoInputException();
             }
         }
     }
 
-    public static void checkNumericInput(String line) throws NumberFormatException, PositiveNumberOnlyException {
+    public static void checkNumericInput(String line) throws NumberFormatException, InvalidIntegerException {
         String[] array = line.split("/");
         try {
             Integer.parseInt(array[3]);     // Check age is numeric
@@ -84,7 +84,7 @@ public class StaffParser {
             throw new NumberFormatException();
         }
         if (Integer.parseInt(array[3]) < 0) {
-            throw new PositiveNumberOnlyException();
+            throw new InvalidIntegerException();
         }
     }
 
