@@ -63,13 +63,14 @@ public class Messages {
 
     // Add
     public static final String QUICK_PROMPT = "Do you want to add a quick review? (y/n)";
-    public static final String TITLE_PROMPT = "Please enter title of review: ";
+    public static final String REVIEW_TITLE_PROMPT = "Please enter title of review: ";
+    public static final String RECO_TITLE_PROMPT = "Please enter title of recommendation: ";
     public static final String CATEGORY_PROMPT = "Please enter category of experience: ";
     public static final String RATING_PROMPT = "Please enter rating of experience (out of 5): ";
     public static final String PRICE_PROMPT = "Please enter price range of recommendation (separated by - ): ";
     public static final String DESCRIPTION_PROMPT = "Please enter description of the experience: ";
     public static final String RECOBY_PROMPT = "How did you know about this recommendation";
-    public static final String LOCATION_PROMPT = "Where is this located at? ( NA if not applicable)";
+    public static final String LOCATION_PROMPT = "Where is this located at? (NA if not applicable)";
     public static final String ADD_SUCCESS = " has been saved to your list.";
     public static final String MISSING_RECO_TITLE = "Please specify title of recommendation";
 

@@ -1,6 +1,7 @@
 package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
+import seedu.connoisseur.exceptions.EmptyInputException;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.ui.Ui;
@@ -18,7 +19,7 @@ import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
 import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
 import static seedu.connoisseur.messages.Messages.SORT_METHOD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.QUICK_PROMPT;
-import static seedu.connoisseur.messages.Messages.TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.REVIEW_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
@@ -299,14 +300,18 @@ public class ReviewList {
                 try {
                     addQuickReview();
                 } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
+                    ui.printNoUniqueTitleMessage();
+                } catch (EmptyInputException ee) {
+                    ui.printEmptyInputMessage();
                 }
                 break;
             case "n":
                 try {
                     addLongReview();
                 } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
+                    ui.printNoUniqueTitleMessage();
+                } catch (EmptyInputException ee) {
+                    ui.printEmptyInputMessage();
                 }
                 break;
             default:
@@ -318,14 +323,18 @@ public class ReviewList {
                 try {
                     addQuickReview();
                 } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
+                    ui.printNoUniqueTitleMessage();
+                } catch (EmptyInputException ee) {
+                    ui.printEmptyInputMessage();
                 }
                 break;
             case "long":
                 try {
                     addLongReview();
                 } catch (DuplicateException de) {
-                    System.out.println("Please try again with a unique title instead!");
+                    ui.printNoUniqueTitleMessage();
+                } catch (EmptyInputException ee) {
+                    ui.printEmptyInputMessage();
                 }
                 break;
             default:
@@ -337,17 +346,23 @@ public class ReviewList {
     /**
      * Add a quick review.
      */
-    public void addQuickReview() throws DuplicateException {
+    public void addQuickReview() throws DuplicateException, EmptyInputException {
         boolean isDuplicate;
         String description = "No description entered. ";
-        ui.println(TITLE_PROMPT);
+        ui.println(REVIEW_TITLE_PROMPT);
         String title = ui.readCommand();
         isDuplicate = checkAndPrintDuplicateReview(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
+        if (title.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand().toLowerCase();
+        if (category.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(RATING_PROMPT);
         try {
             int rating = Integer.parseInt(ui.readCommand());
@@ -367,16 +382,22 @@ public class ReviewList {
     /**
      * Add a long review.
      */
-    public void addLongReview() throws DuplicateException {
+    public void addLongReview() throws DuplicateException, EmptyInputException {
         boolean isDuplicate;
-        ui.println(TITLE_PROMPT);
+        ui.println(REVIEW_TITLE_PROMPT);
         String title = ui.readCommand();
         isDuplicate = checkAndPrintDuplicateReview(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
+        if (title.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand().toLowerCase();
+        if (category.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(RATING_PROMPT);
         try {
             int rating = Integer.parseInt(ui.readCommand());
