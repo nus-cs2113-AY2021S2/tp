@@ -22,7 +22,8 @@ public class Ui {
                     "'start': Loads up an allocated delivery assignment into the delivery list\n" +
                     "'list': Displays the list of deliveries in your assignment\n" +
                     "'viewdelivery <number>': Displays details of the selected delivery\n" +
-                    "'complete <number>': Marks the selected delivery as completed";
+                    "'complete <number>': Marks the selected delivery as completed\n" +
+                    "'route': Displays optimised delivery path";
 
     /**
      * Empty constructor for the Ui object
@@ -78,6 +79,7 @@ public class Ui {
      * Prints list of deliveries present in delivery list
      */
     public void showDeliveryList() {
+
         System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
@@ -135,7 +137,15 @@ public class Ui {
      */
     public void printMap(ArrayList<Delivery> sortedDeliveries){
         for (int i = 0; i < sortedDeliveries.size(); i++){
-            System.out.println(sortedDeliveries.get(i));
+            System.out.println(sortedDeliveries.get(i).getAddress());
+            System.out.println("\t|");
+            System.out.println("\tV");
+            if (i + 1 >= sortedDeliveries.size()){
+                System.out.println("END OF JOB!!");
+            }
+        }
+        if (sortedDeliveries.size() < 1){
+            System.out.println("No deliveries loaded!!");
         }
     }
 

@@ -16,6 +16,7 @@ public class Duke {
         Route.loadRoutes();
         ui.showWelcomeScreen();
         ui.showLoopingMenuUntilExit(deliveryman);
+        ui.showFarewellScreen();
     }
 
     public static void main(String[] args) {

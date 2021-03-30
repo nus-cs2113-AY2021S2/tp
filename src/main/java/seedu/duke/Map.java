@@ -8,7 +8,8 @@ import java.util.Collections;
  */
 public class Map {
 	public ArrayList<Delivery> shortestPathGenerator(ArrayList<Delivery> uncompletedDeliveries){
-		ArrayList<Delivery> sortedDeliveryList = (ArrayList<Delivery>) uncompletedDeliveries.clone();
+		ArrayList<Delivery> sortedDeliveryList;
+		sortedDeliveryList = (ArrayList<Delivery>) uncompletedDeliveries.clone();
 		Collections.sort(sortedDeliveryList);
 		return sortedDeliveryList;
 	}
