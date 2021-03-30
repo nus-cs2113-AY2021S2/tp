@@ -29,6 +29,7 @@ public class HealthVault {
         while (!isExit) {
             try {
                 String userInput = ui.getInput("Start Menu");
+                UI.printEmptyLine();
                 Command c = parser.startMenuParse(userInput);
                 c.execute();
                 isExit = c.isExit();

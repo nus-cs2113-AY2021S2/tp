@@ -29,5 +29,4 @@ public class NurseScheduleChecker extends MainChecker {
         /* Return true if date format is valid */
         return true;
     }
-
 }

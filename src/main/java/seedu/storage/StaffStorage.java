@@ -1,9 +1,11 @@
 package seedu.storage;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 import seedu.logic.command.StaffAggregation;
-import seedu.logic.parser.StaffParser;
+import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.Staff;
 
 import java.io.File;
@@ -37,7 +39,7 @@ public class StaffStorage {
             PositiveNumberOnlyException, BlankInputException, WrongStaffIdException,
             InsufficientInputException, NoInputException {
 
-        StaffParser.checkValidDataForAdd(line);
+        StaffChecker.checkValidDataForAdd(line);
         String[] arr = line.split("\\|");
         staffAggregation.addStaff(new Staff(arr));
     }

@@ -1,5 +1,6 @@
 package seedu.logic.parser;
 
+import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.patient.*;
 import seedu.logic.command.Command;

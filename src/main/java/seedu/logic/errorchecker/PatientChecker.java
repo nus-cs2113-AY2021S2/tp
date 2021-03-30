@@ -1,4 +1,4 @@
 package seedu.logic.errorchecker;
 
-public class PatientChecker {
+public class PatientChecker extends MainChecker{
 }

@@ -1,5 +1,7 @@
 package seedu.logic.instance;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;
@@ -10,7 +12,6 @@ import seedu.ui.StaffUI;
 import seedu.ui.UI;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class StaffInstance {
     private StaffUI staffUI;
@@ -35,11 +36,9 @@ public class StaffInstance {
             StaffUI.corruptedFileErrorMessage();;
         }
         StaffUI.staffMenuHeader();
-        Scanner in = new Scanner(System.in);
         while (true) {
-            StaffUI.staffMenuPrompt();
             String line;
-            line = in.nextLine();
+            line = staffUI.getInput("Staff");
             try {
                 Command c = staffParser.commandHandler(line);
                 if (c==null){
