@@ -41,7 +41,7 @@ Table of Contents
    * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`, 
      expiry date of `30-06-2021`, location of `lower_shelf`, and quantity of `100` to the Fridge.
    * `search chicken`: Searches for the chicken in the fridge and returns its location (currently: `lower_shelf`).
-   * `remove 1`: Removes the 1st food shown in the current list (currently: `chicken`).
+   * `remove chicken /qty 50`: Removes a quantity of `50` from the `chicken` stored in the fridge.
    * `bye`: Exits the app.   
 6. Refer to the **Features** below for details of each command.   
 

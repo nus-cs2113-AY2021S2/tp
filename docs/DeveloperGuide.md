@@ -253,6 +253,26 @@ No items will be listed if no food in the fridge match the conditions specified 
 	  1. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
   ```    
 
+### Removing a food
+Removing a food while all foods are being shown.
+
+1. Prerequisites: List all foods using the `list` command. Multiple food in the list.
+2. Test case: `remove squid /qty 100`
+    * Expected: `squid` is deleted from the list. Details of the deleted food shown in the status message. Additional
+      warning that `seafood` is running low may appear.
+3. Test case: `remove chicken /qty 50`
+    * Expected: Quantity of `chicken` is reduced by 50. Details of the removed food shown in the status message.
+      Additional warning that `meat` is running low may appear.
+4. Test case: `remove coke /qty 1`
+    * Expected: `Food specified not found.` Note that the search for food name in this command is case sensitive;
+      note that when `Coke` was added, it was with a capital 'C'. No food is removed.
+5. Test case: `remove Coke /qty 69`
+    * Expected: `Not enough in fridge to remove!` User attempted to remove a greater quantity than what was
+      available in the fridge. Error message was thrown. No food is removed.
+6. Test case: `remove chicken`
+    * Expected: `Sorry my friend, please give a valid input.` It is required to specify the quantity to be removed with
+      `/qty`.
+
 ### Searching for a food
 Checks if a food is in the fridge, and if it is found, outputs the location of the food.
 If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
@@ -266,27 +286,149 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
 ### Expiring food
 This feature might be slightly more challenging to test, since the user tester has to input a food
-that has an expiry date within 7 days of their local system time, as of the date of testing.
+that has an expiry date within 7 days of their **local system time**, as of the date of testing.
 
 1. Prerequisites: Add a food with an expiry date within 7 days of the user's system date.
     * Modify the input in the above [add command](adding-food) in order to fulfil this requirement.
     * Example: The current date on my system time is `29-03-2021`. 
-      * Prior to testing, I perform the command `add duck /cat meat /exp 30-03-2021 /loc lower_shelf /qty 100`
+      * Prior to testing, I perform the command `add duck /cat meat /exp 30-03-2021 /loc lower_shelf /qty 100`.
+      * Thus, this food should expire in 1 day, within the 7 days required to trigger the `expiring` command.
 2. Test case: `expiring`
     * Expected:
   ```
   These are the food expiring in the next week:
       1. Food name: duck, category: MEAT, expiry: 30-03-2021, stored in: LOWER_SHELF, quantity: 100
   ```  
-### Removing a food
-Removing a food while all foods are being shown.
 
+### Runninglow and Setlimit
 
-//TBD   
-1. Prerequisites: List all foods using the `list` command. Multiple food in the list.
-2. Test case: `remove 4`
-  * Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. 
-    Timestamp in the status bar is updated.
+By default, the `limits` for all food is set at `500`. Use `setlimit` to modify this number for a certain food category.
+
+1. Preparation: Change the limits for `meat`, `dairy`, `beverage`, `seafood`, since they are the categories of food
+   we have added to the fridge so far.
+    * `setlimit meat /qty 200`
+    * `setlimit dairy /qty 5`
+    * `setlimit beverage /qty 3`
+    * `setlimit seafood /qty 50`
+2. Test case: `runninglow`
+    * Expected:
+   ```
+   You are running low on food in these categories:
+   1. VEGETABLE quantity: 0 out of 500
+   2. FRUIT quantity: 0 out of 500
+   3. MEAT quantity: 100 out of 200
+   4. EGG quantity: 0 out of 500
+   5. DAIRY quantity: 2 out of 5
+   6. COOKED_DISH quantity: 0 out of 500
+   7. READY_TO_EAT quantity: 0 out of 500
+   8. FROZEN quantity: 0 out of 500
+   9. OTHER quantity: 0 out of 500
+    ```
+   
+Note that `SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+as they are not "running low". There is sufficient food from the given category in the
+fridge, because it is above the quantity we have specified by `setlimit`.
+
+### History
+While the history command may be simple to test, the expected output may vary depending on the food added by 
+the user during testing. 
+
+Therefore, user testers should manually compare the results of the `history` command with their actual input
+during testing, and see if they correspond. 
+
+1. Prerequisites: Only the input in the above [add command](adding-food) was added to the list. 
+   No other food was added to the list.
+    * Note: To reset the history, use `history clear`.
+    * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`
+    * `add milk /cat dairy /exp 31-12-2021 /loc fridge_door /qty 2`
+    * `add Coke /cat beverage /exp 30-07-2021 /loc upper_shelf /qty 5`
+    * `add squid /cat seafood /exp 15-08-2021 /loc freezer /qty 100`
+2. Test case: `history`
+    * Expected: 
+   ```
+   This is the full history of items you've added in the fridge:
+     1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+	    2. Food name: milk, category: DAIRY, expiry: 31-12-2021, stored in: FRIDGE_DOOR, quantity: 2
+	    3. Food name: Coke, category: BEVERAGE, expiry: 30-07-2021, stored in: UPPER_SHELF, quantity: 5
+	    4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
+   ```
+
+### Saving data
+_Dealing with missing/corrupted data files._
+
+All data is stored in the `/data` folder in the same folder as `FridgeFriend.jar`.
+
+Three (3) text files will be generated in the folder during usual execution of `FridgeFriend`.
+These text files are used to store data in the disk for various commands during the usual operation of `FridgeFriend`.
+
+1. `fridgeData.txt`
+    * Contains the food stored in the fridge. 
+    * Is automatically loaded when `FridgeFriend` starts. Food in the text file will be stored in the fridge.
+    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
+    using the `bye` command.
+    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
+    such as when the runtime is interrupted with `Ctrl+C`.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
+    The fridge at program launch will be empty. No further action needed.
+    * _Corrupted data file:_ Upon program launch, `FridgeFriend` will throw an exception with 
+      an accompanying error message:
+        ```
+        There was an error loading the data for FridgeFriend!
+        Index 1 out of bounds for length 1
+        ```
+      * `FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid
+        data is encountered.
+      * User can recover the contents of the file by manually inspecting the text file and removing invalid content.  
+2. `limitsData.txt`
+    * Contains the food quantities used to determine which food is running low in `setlimit` and `runninglow`.
+    * Is automatically loaded when `FridgeFriend` starts. The loaded content can be viewed with `runninglow`.
+    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
+     using the `bye` command.
+    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
+     such as when the runtime is interrupted with `Ctrl+C`.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
+          The limits of all food categories will be reset to the default of 500. No further action needed.  
+    * _Corrupted data file:_ 
+        * Test case: Corrupted categories. 
+           * If the corrupted category is readable: No error message will be shown. User can only identify that data 
+             has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to 
+             corruption will be reset to `500`.
+          * If the corrupted category is unreadable: 
+            ```
+            There was an error loading the data for FridgeFriend!
+            Index 1 out of bounds for length 1
+            ```
+              * The quantity limits will be parsed up until the corrupted unreadable category. 
+                Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.
+        * Test case: Corrupted quantities.
+          * If the corrupted quantity is an integer: No error message will be shown. User can only identify that 
+            data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted 
+            value.
+          * If the corrupted quantity is **not** an integer: Error message will be shown. 
+            ```
+            There was an error loading the data for FridgeFriend!
+            Sorry my friend, the quantity must be a number.
+            ```
+            * The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits
+                in the file would not be parsed, and will be reset to the default of `500`.
+3. `historyData.txt`
+    * Contains the logs of food added to the fridge using `add` command.
+    * Is automatically updated whenever a successful `add` command is invoked.  
+    * Content is loaded from disk only when `history` command is invoked.
+    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon executing the `history`
+      command. No further action needed.
+   * _Corrupted data file:_
+       * Test case: If corrupted data is readable. No error message will be shown. User can only identify that data
+             has been corrupted when using the `history` command. The `history` command will continue to print out
+            the contents of the file, including the corrupted data.
+            * While this corrupted data would not affect program flow, it may create unexpected output. If necessary, 
+              users can manually inspect the file and remove unwanted data at their own discretion.
+       * Test case: If corrupted data is unreadable.
+             ```
+             There was an error loading the data for FridgeFriend!
+             Index 1 out of bounds for length 1
+             ```
+
 
 ## Attribution
 
