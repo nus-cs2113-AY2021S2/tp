@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.DailyRoute;
+import seedu.duke.data.DailyRoute;
 
 import java.io.File;
 import java.io.FileNotFoundException;

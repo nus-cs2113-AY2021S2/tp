@@ -1,10 +1,10 @@
 package seedu.duke.storage;
 
-import seedu.duke.BlockAlias;
-import seedu.duke.DailyRoute;
-import seedu.duke.FavouriteLocation;
-import seedu.duke.History;
-import seedu.duke.Map;
+import seedu.duke.data.BlockAlias;
+import seedu.duke.data.DailyRoute;
+import seedu.duke.data.Favourite;
+import seedu.duke.data.History;
+import seedu.duke.data.NusMap;
 
 import java.io.IOException;
 
@@ -16,18 +16,18 @@ public abstract class Storage {
         this.filepath = filepath;
     }
 
-    public void loadNotes(Map nusMap) throws IOException {
+    public void loadNotes(NusMap nusMap) throws IOException {
     }
 
-    public void overwriteNotesListFile(Map nusMap) {
-
-    }
-
-    public void loadFavourites(FavouriteLocation favouriteLocation) throws IOException  {
+    public void overwriteNotesListFile(NusMap nusMap) {
 
     }
 
-    public void overwriteFavouritesListFile(FavouriteLocation favouriteLocation) {
+    public void loadFavourites(Favourite favourite) throws IOException  {
+
+    }
+
+    public void overwriteFavouritesListFile(Favourite favourite) {
 
     }
 

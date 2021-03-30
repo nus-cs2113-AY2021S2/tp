@@ -1,15 +1,14 @@
 package seedu.duke.command;
 
-import seedu.duke.Map;
 import seedu.duke.ui.UiManager;
-import seedu.duke.History;
-import seedu.duke.DailyRoute;
-import seedu.duke.BlockAlias;
-import seedu.duke.FavouriteLocation;
 
 public class ByeCommand extends Command {
-    public ByeCommand(String userInput) {
-        super(userInput);
+
+    protected UiManager ui;
+    private static final String MESSAGE_SUCCESS = "Bye. Hope to see you again soon!";
+
+    public ByeCommand() {
+        this.ui = new UiManager();
     }
 
     @Override
@@ -18,8 +17,7 @@ public class ByeCommand extends Command {
     }
 
     @Override
-    public void execute(Map nusMap, UiManager ui, History history, DailyRoute dailyRoute,
-                        BlockAlias blockAlias, FavouriteLocation favouriteLocation) {
-        ui.showByeMessage();
+    public void execute() {
+        ui.showMessageWithDivider(MESSAGE_SUCCESS);
     }
 }
