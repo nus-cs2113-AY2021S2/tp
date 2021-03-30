@@ -12,8 +12,8 @@ The rest of the App consists of:
 * [**`Command`**](#command-component): The command executor.
 * [**`Parser`**](#parser-component): Translate user input to valid commands to be executed.
 * [**`Ui`**](#ui-component): Communicates with user via messages.
-* [**`Data`**](#data-component): Contains user input history and temporarily tracks search history.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`Data`**](#data-component): Contains shortlist, user input history and temporarily tracks search history.
+* [**`Storage`**](#storage-component): Reads shortlisted units from, and writes shortlisted units to, the text file.
 * [**`Common`**](#common-component): Models of objects used internally.
 
 ### Api component
@@ -26,13 +26,28 @@ The `Api`,
 * creates a connection to remote server containing data on resale flats.
 * formats raw query into valid query to be sent as a GET request.
 * returns all flats matching filter conditions and is parsed back to Command to be shown to user via Ui.
-* Called by FindCommand, stores each unit from response into Data.
+* called by FindCommand, stores each unit from response into Data.
 
 **How classes within Api component interact with each other**
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where a Find command is executed.
 
 <img src="diagrams/ApiSequence.png" />
+
+### Storage component
+
+![Structure of the Storage Component](diagrams/StorageClass.png)
+
+The `Storage`,
+
+* handles read and write of units into a local text file.
+* manages data in ShortList.
+
+**How classes within Storage component interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where a Save command is executed.
+
+<img src="diagrams/StorageSequence.png" />
 
 ## Product scope
 ### Target user profile
