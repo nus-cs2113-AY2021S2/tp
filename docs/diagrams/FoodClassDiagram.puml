@@ -2,8 +2,9 @@
 !include style.puml
 allow_mixing
 skinparam arrowThickness 1.1
-skinparam arrowColor UI_COLOR_T4
-skinparam classBackgroundColor UI_COLOR
+skinparam arrowColor FOOD_COLOR_T4
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor FOOD_COLOR_T1
 skinparam classAttributeIconSize 0
 skinparam groupInheritance 3
 
@@ -85,7 +86,7 @@ class Fridge {
     + int getTotalQuantity(FoodCategory)
 }
 
-Fridge -down-> "*" Food
+Fridge -down-> "*" Food : maintains
 
 class UniqueFoodnameChecker {
     - ArrayList<Food> fridge
@@ -151,6 +152,6 @@ package Exception <<Rectangle>> {
 
 food ..> Exception
 
-show circle
+'show circle
 
 @enduml

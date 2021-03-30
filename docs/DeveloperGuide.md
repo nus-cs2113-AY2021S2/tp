@@ -109,6 +109,21 @@ The Command Component consist of 11 sub class which each command represents a fe
 * **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
 * **`ByeCommand`**: Indicate to the main method to exit the program.
 
+### Food Component
+
+The Food component represents the basic `Food` object and related class in FridgeFriend.
+
+* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
+This is to facilitate different manipulations on different food categories.
+* `Fridge` maintains the list of `Food`s and have methods to add, remove or modify the foods.
+* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
+* Whenever a `Food` object is created or called, exceptions may be thrown.
+
+![Food Class Diagram](diagrams/diagram_images/FoodClassDiagram.png)
+
+The ***Food Class Diagram*** given above shows all the classes derived from Food or 
+used in Food operations.
+
 ### Exception Component
 
 The Exception component represents a collection of classes that represent potential
