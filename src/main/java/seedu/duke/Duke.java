@@ -60,7 +60,7 @@ public class Duke {
                     break;
                 case "inventory":
                     UI.showLine();
-                    System.out.println("Drug Viewer Instance!");
+                    System.out.println("Inventory Viewer Instance!");
                     DrugInstance addict = new DrugInstance(INVENTORY_FILE_PATH);
                     addict.run();
                     break;
