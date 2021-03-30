@@ -51,11 +51,11 @@ public class RemoveCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
-        if (hasOption(arguments, OPTION_INDEX)) {
-            return getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
-        } else {
+        if (!hasOption(arguments, OPTION_INDEX)) {
             throw new CommandException("missing option: -i", COMMAND_REMOVE);
+
         }
+        return getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
     }
 
     /**

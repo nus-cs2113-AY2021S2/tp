@@ -54,10 +54,10 @@ public class ReturnCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
-        if (hasOption(arguments, OPTION_INDEX)) {
-            return getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
+        if (!hasOption(arguments, OPTION_INDEX)) {
+            throw new CommandException("missing option: -i", COMMAND_RETURN);
         }
-        throw new CommandException("missing option: -i", COMMAND_RETURN);
+        return getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX);
     }
 
     /**

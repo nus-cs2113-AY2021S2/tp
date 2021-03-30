@@ -2,9 +2,7 @@
 'https://plantuml.com/sequence-diagram
 !include style.puml
 
-[-> ":Finux": commandLooper()
-activate ":Finux"
-":Finux" -> ":RemoveCommand": execute()
+[-> ":RemoveCommand": execute()
 activate ":RemoveCommand"
 
 ":RemoveCommand" -> ":RecordList" : getRecordAt(recordNumberInt)
@@ -28,9 +26,8 @@ activate ":Storage"
 ":Storage" --> ":RemoveCommand"
 deactivate ":Storage"
 
-":RemoveCommand" --> ":Finux"
+[<-- ":RemoveCommand"
 deactivate ":RemoveCommand"
 destroy ":RemoveCommand"
-[<-- ":Finux"
-deactivate ":Finux"
+
 @enduml
