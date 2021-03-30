@@ -94,9 +94,9 @@ The image below depicts how the `GoCommand` is implemented.
 Given below is an example scenario of how the routing algorithm functions.
 
 Step 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-Step 2. `GoCommand` will then check if the second entry is eatery. If it is not eatery, step 3 and 4 are skipped for step 5.<br />
+Step 2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
 Step 3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
-Step 4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.
+Step 4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
 Step 5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
 Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
