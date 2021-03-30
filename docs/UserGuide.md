@@ -304,5 +304,5 @@ can be found on the second computer.
 |[**Adding notes**](#461-adding-notes)       | `add note LOCATION/DESCRIPTION` |
 |[**Viewing notes**](#462-viewing-notes)      | `list notes LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note LOCATION/NOTE INDEX` |
-|[**Exiting the application**](#46-exiting-the-application)       | `bye` |
+|[**Exiting the application**](#47-exiting-the-application)       | `bye` |
 
