@@ -326,7 +326,7 @@ The creation process is facilitated by the Parser class, which parses the approp
 The newly created Lesson object is then passed to a new AddLessonCommand object as an argument.
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="execute() AddLessonCommand Sequence Diagram"><br>
+    <img width="973" src="developerGuideImages/add_lesson_to_lesson_list.png" alt="execute() AddLessonCommand Sequence Diagram"><br>
     Figure 9 - execute() AddLessonCommand Sequence Diagram
 </p>
 
