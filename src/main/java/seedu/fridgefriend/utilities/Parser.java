@@ -12,6 +12,7 @@ import seedu.fridgefriend.command.ClearCommand;
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.command.ExpiringCommand;
 import seedu.fridgefriend.command.HelpCommand;
+import seedu.fridgefriend.command.HistoryCommand;
 import seedu.fridgefriend.command.ListCommand;
 import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.RunningLowCommand;
@@ -149,6 +150,9 @@ public class Parser {
             break;
         case "clear":
             command = Parser.getClearCommand();
+            break;
+        case "history":
+            command = Parser.getHistoryCommand(description);
             break;
         case "bye":
             command = Parser.getByeCommand();
@@ -353,6 +357,16 @@ public class Parser {
     }
 
     //@@author kwokyto
+    /**
+     * Returns a HistoryCommand object.
+     *
+     * @return ClearCommand object
+     */
+    private static Command getHistoryCommand(String description) {
+        Command historyCommand = new HistoryCommand(description);
+        return historyCommand;
+    }
+
     /**
      * Returns a ByeCommand object.
      *

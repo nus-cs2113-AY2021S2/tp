@@ -6,25 +6,26 @@
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 3.2kLoC.
 
-## Table of Contents
+## Contents
 
-* [User Guide](#user-guide)
-  * [Introduction](#introduction)
-  * [Quick Start](#quick-start)
-  * [Features](#features)
-    * [Adding a food item: add](#adding-a-food-item-add)
-    * [Display the list of all foods: list](#display-the-list-of-all-foods-list)
-    * [Display the list of foods by category: list &lt;CATEGORY&gt;](#display-the-list-of-foods-by-category-list-category)
-    * [Display the list of foods by storage location: list &lt;LOCATION&gt;](#display-the-list-of-foods-by-storage-location-list-location)
-    * [Remove a food item by quantity: remove](#remove-a-food-item-by-quantity-remove)
-    * [Search: search](#search-search)
-    * [List expiring foods: expiring](#list-expiring-foods-expiring)
-    * [List categories with food running low: runninglow](#list-categories-with-food-running-low-runninglow)
-    * [Modify the minimum quantity limits: setlimit](#modify-the-minimum-quantity-limits-setlimit)
-    * [Get help message: help](#get-help-message-help)
-    * [Exit the application: bye](#exit-the-application-bye)
-  * [FAQ](#faq)
-  * [Command Summary](#command-summary)
+* [Introduction](#introduction)
+* [Quick Start](#quick-start)
+* [Features](#features)
+  * [Add](#adding-a-food-item-add)
+  * [List](#display-the-list-of-all-foods-list)
+  * [List by Category](#display-the-list-of-foods-by-category-list-category)
+  * [List by Location](#display-the-list-of-foods-by-storage-location-list-location)
+  * [Remove](#remove-a-food-item-remove)
+  * [Search](#search-search)
+  * [Expiring](#list-expiring-foods-expiring)
+  * [Runninglow](#list-categories-with-food-running-low-runninglow)
+  * [Setlimit](#modify-the-minimum-quantity-limits-setlimit)
+  * [History](#list-history-of-items-added-history)
+  * [Clear history](#clear-list-history-of-items-added-history-clear)
+  * [Help](#get-help-message-help)
+  * [Bye](#exit-the-application-bye)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 
 ## Quick Start
 
@@ -42,27 +43,42 @@ It is written in Java, and has more than 3.2kLoC.
 
 Adds a food item into the fridge.
 
-Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE` /qty QUANTITY
+If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to 
+add the quantity. Otherwise, a unique FOOD_NAME has to be used to add the food into the FridgeFriend.
+=======
+Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 
 * The `FOOD_NAME` can be the name of a food but not an empty description.
 * The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
-* The `QUANTITY` should be an integer.
+* The `FOOD_QUANTITY` must be a positive integer.
+  
+**Tip:**
 * If you want to add more to the same batch of food (same category, same location and same 
 expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`, 
 `LOCATION_IN_THE_FRIDGE` and the new quantity in `QUANTITY` field.
 * The food names should not repeat unless it is the same batch as described above. 
 Otherwise, you will be prompted to retry the `add` command.
 
+
 Additional info:
 
 * Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic fridge location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
+* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`, 
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
 
 Example of usage:
+
+*Situation 1: Adding a new food items into the fridge.*
+```lang-none
+>> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
+Great! I have added chicken into your fridge.
+Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 200
+```
+
+*Situation 2: Adding food item with the same food name and details in the fridge.*
 
 ```lang-none
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 500
@@ -91,8 +107,8 @@ Example of usage:
 ```lang-none
 >> list
 Here are the items in your fridge:
- 1. Food name: chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
- 2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: roast chicken, category: READY_TO_EAT, expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -108,12 +124,13 @@ Format: `list CATEGORY_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called pork under MEAT category.*
+*Situation 1: There are two food chicken and pork under MEAT category.*
 
 ```lang-none
 >> list MEAT
 These are the MEAT in your fridge:
- 1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods under READY_TO_EAT category.*
@@ -136,12 +153,13 @@ Format: `list STORAGE_LOCATION_NAME`
 
 Example of usage:
 
-*Situation 1: There is one food called pork stored in LOWER_SHELF.*
+*Situation 1: There are two food chicken and pork stored in LOWER_SHELF.*
 
 ```lang-none
 >> list LOWER_SHELF
 These are the food stored in LOWER_SHELF:
- 1. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
+	1. Food name: chicken, category: MEAT, expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300
+	2. Food name: pork, category: MEAT, expiry: 28-03-2021, stored in: LOWER_SHELF, quantity: 200
 ```
 
 *Situation 2: There are no foods stored in DRAWERS.*
@@ -277,6 +295,55 @@ Okie dokie! The new minimum quantity for category 'MEAT' is 200
 Congrats! You are all stocked up on food! :D
 ```
 
+### List history of items added: `history`
+
+Displays a history of food items that have been added to the Fridge
+since it was last cleared.
+
+
+* The Fridge keeps track of all Food items added in its lifetime automatically.
+* Unlike adding Food to a Fridge, which merges the quantity of duplicate Foods together,
+  the history command will not merge the quantities of food.
+  * Thus, the user can use this command to keep track of all occurrences where Food 
+  has been added to the Fridge.
+    
+
+The data is saved to disk in a text file, with default location as `data/historyData.txt`.
+  * In the event that the data in the text file is corrupted or in an unreadable format, the
+  `history` command may fail to output the contents of the file. Users may have to manually
+   inspect the file to delete the invalid content, or wipe the contents of the file with
+   `history clear`, to resume normal function. 
+    * The execution of the FridgeFriend program, however, will not be interrupted.
+
+Format: `history`
+
+Example of usage:
+
+```
+>> history
+This is the full history of items you've added in the fridge:
+  1. Food name: Coke, category: BEVERAGE, expiry: 30-06-2021, stored in: FREEZER, quantity: 5
+  2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 200
+  3. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: FREEZER, quantity: 300
+```
+
+### Clear list history of items added: `history clear`
+
+Wipes the data from the history text file.
+
+Format: `history clear`
+
+Example of usage:
+
+```
+>> history clear
+History successfully cleared!
+
+>> history 
+This is the full history of items you've added in the fridge:
+```
+
+
 ### Get help message: `help`
 
 Prints a list of available commands and formats.
@@ -288,7 +355,7 @@ Example of usage:
 ```lang-none
 >> help
 These are the list of available commands:
-        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation
+        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
         list
         list categoryName
         remove index
@@ -321,7 +388,7 @@ Bye! Hope to see you again soon!
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Copy the `.jar` file along with `save` folder to the target computer and place them together into an empty folder.
+**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder.
 As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
 
 **Q**: What if I forget the correct format of a command?
@@ -335,7 +402,7 @@ Plus, you are always welcomed to use `help` command.
 
 ## Command Summary
 
-* Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE`
+* Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 * List food `list`
 * List food by category `list CATEGORY_NAME`
 * List food by storage location `list STORAGE_LOCATION_NAME`  
@@ -344,5 +411,7 @@ Plus, you are always welcomed to use `help` command.
 * List expiring foods `expiring`
 * List categories with food running low: `runninglow`
 * Modify the minimum quantity limits: `setlimit FOOD_CATEGORY /qty QUANTITY`
+* List history of items added: `history`  
+* Clear list history of items added: `history clear`  
 * Get help message `help`
 * Exit application `bye`
