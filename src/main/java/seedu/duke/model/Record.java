@@ -23,6 +23,15 @@ public class Record {
     }
 
     /**
+     * Generates a record with existing data.
+     */
+    public Record(ArrayList<String> symptoms, ArrayList<String> diagnoses, ArrayList<String> prescriptions) {
+        this.symptoms = symptoms;
+        this.diagnoses = diagnoses;
+        this.prescriptions = prescriptions;
+    }
+
+    /**
      * Obtain the consultation detail of this record.
      *
      * @return A String containing the consultation details contained in this record
@@ -51,15 +60,15 @@ public class Record {
     public String printFileConsultationDetail() {
         String consultationDetail = "";
         for (String symptom : symptoms) {
-            consultationDetail += symptom + "\t";
+            consultationDetail += symptom + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.SYMPTOM_DELIMITER;
         for (String diagnosis : diagnoses) {
-            consultationDetail += diagnosis + "\t";
+            consultationDetail += diagnosis + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.DIAGNOSIS_DELIMITER;
         for (String prescription : prescriptions) {
-            consultationDetail += prescription + "\t";
+            consultationDetail += prescription + Constants.DETAILS_DELIMITER;
         }
         consultationDetail += Constants.PRESCRIPTION_DELIMITER;
         return consultationDetail;

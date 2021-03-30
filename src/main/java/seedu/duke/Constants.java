@@ -43,13 +43,19 @@ public class Constants {
     public static final String EXCEPTION_INDENT = "\t";
     
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
-    public static final String INVALID_INPUT_EMPTY_STRING = "Empty string is found when trying to parse command!";
+    public static final String INVALID_INPUT_EMPTY_STRING = "Please enter something for me to process!";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided!";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number!";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists!";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
     public static final String INVALID_INPUT_EMPTY_DESCRIPTION = "Please provide details about the patient's visit!";
-    public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy)";
+    public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy).";
+
+    public static final String STORAGE = "Something wrong happen when trying to save/load data";
+    public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
+    public static final String STORAGE_FILE_WRITE_FAIL = "Failed to write content to the save file.";
+
+    public static final String STORAGE_FILE_NOT_FOUND = "Save file does not exist so we use an empty patient list!";
 
     public static final String UNKNOWN = "We have encountered an unknown error";
 
@@ -82,11 +88,13 @@ public class Constants {
     public static final String COMMAND_CLASS_PREFIX = "seedu.duke.command.";
 
     // Delimiters for storage class
-    public static final String ID_DELIMITER = "||";
+    public static final String ID_DELIMITER = "~~";
     public static final String DATE_DELIMITER = "``";
-    public static final String SYMPTOM_DELIMITER = "^^";
+    public static final String SYMPTOM_DELIMITER = "%%";
     public static final String DIAGNOSIS_DELIMITER = "##";
     public static final String PRESCRIPTION_DELIMITER = "@@";
-    public static final String RECORDS_DELIMITER = "[R]";
+    public static final String RECORDS_DELIMITER = "!R!";
+    public static final String DETAILS_DELIMITER = "!D!";
 
+    public static final String STORAGE_DEFAULT_PATH = "./pm.save";
 }
