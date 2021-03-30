@@ -3,9 +3,10 @@ package seedu.duke.command;
 import java.util.HashMap;
 import java.util.Set;
 
+import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
+
 public class CreditScoreReturnedLoansMap {
     private HashMap<String,Integer> creditScoreReturnedLoansMap;
-    private static final long MAX_CREDIT_SCORE = 100;
 
     public CreditScoreReturnedLoansMap(HashMap<String, Integer> mapData) {
         this.creditScoreReturnedLoansMap = mapData;

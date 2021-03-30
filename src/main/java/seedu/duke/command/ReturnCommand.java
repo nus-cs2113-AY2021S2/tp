@@ -73,7 +73,8 @@ public class ReturnCommand extends Command {
             int index = validateIndex(getOptionValue(arguments, COMMAND_RETURN, OPTION_INDEX), recordList);
             Record currentRecord = recordList.getRecordAt(index);
             if (!(currentRecord instanceof Loan)) {
-                throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!", COMMAND_RETURN);
+                throw new CommandException("Index \"" + recordNumberStr + "\" is not an index of Loan!",
+                        COMMAND_RETURN);
             }
             return index;
         } catch (NumberFormatException e) {

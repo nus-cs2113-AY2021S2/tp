@@ -13,6 +13,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
+import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
+
 /**
  * Provides common validation methods for {@code Command} validation.
  */
@@ -31,8 +34,6 @@ public class Utils {
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
     private static final String ERROR_WRONG_HELP_TYPE = "invalid help type: ";
     private static final int VALUE_INDEX = 1;
-    private static final long MAX_CREDIT_SCORE = 100;
-    private static final long MIN_CREDIT_SCORE = 0;
     private static final long RETURN_REWARD_FIRST_WEEK = 5;
     private static final long RETURN_PENALTY_SECOND_WEEK = -10;
     private static final long RETURN_PENALTY_FORTH_WEEK = -20;

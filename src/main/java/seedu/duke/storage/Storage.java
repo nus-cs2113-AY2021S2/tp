@@ -1,6 +1,6 @@
 package seedu.duke.storage;
 
-import seedu.duke.command.CreditScoreMap;
+import seedu.duke.command.CreditScoreReturnedLoansMap;
 import seedu.duke.exception.FileLoadingException;
 import seedu.duke.exception.InvalidFileInputException;
 import seedu.duke.record.Expense;
@@ -25,24 +25,29 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
+import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
+import static seedu.duke.common.Constant.FILE_DELIMITER;
+
 public class Storage {
     private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
     private static final String REGEX_PATTERN_EXPENSE = "[E]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_LOAN =
             "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
-    private static final String REGEX_PATTERN_CREDIT_SCORE = "[^|]+\\s\\|\\s\\d{1,3}";
+    private static final String REGEX_PATTERN_MAP_ENTRY_RAW_DATA = "[^|]+\\s\\|\\s\\d{1,3}";
+    private static final String FILE_DELIMITER_REGEX = "\\|";
+    private static final int BORROWER_NAME_INDEX = 0;
+    private static final int CREDIT_SCORE_RETURNED_LOANS_INDEX = 1;
     private static final int INDEX_OF_DESCRIPTION = 1;
     private static final int INDEX_OF_AMOUNT = 2;
     private static final int INDEX_OF_DATE = 3;
     private static final int INDEX_OF_ISRETURN = 4;
     private static final int INDEX_OF_NAME = 5;
     private static final int INDEX_OF_RETURN_DATE = 6;
-    private ArrayList<Record> records;
-    private HashMap<String, Integer> creditScoreHashMapData;
-
-    public Path dataFilePath;
-
+    private ArrayList<Record> recordList;
+    private HashMap<String, Integer> creditScoreReturnedLoansMap;
+    private Path dataFilePath;
 
     public Storage() {
         this(SAVED_FILE_PATH);
@@ -56,43 +61,39 @@ public class Storage {
         return Files.exists(SAVED_FILE_PATH);
     }
 
-    public void saveData(RecordList records, CreditScoreMap creditScoreMap) {
+    public void saveData(RecordList recordList, CreditScoreReturnedLoansMap creditScoreReturnedLoansMap) {
         try {
-            writeRecordListToSaveFile(records);
-            writeCreditScoreMapToSaveFile(creditScoreMap);
+            writeRecordListToSaveFile(recordList);
+            writeMapToSaveFile(creditScoreReturnedLoansMap);
         } catch (IOException e) {
             System.out.println("Error in saveData()");
         }
     }
 
-    private void writeRecordListToSaveFile(RecordList records) throws IOException {
+    private void writeRecordListToSaveFile(RecordList recordList) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), false);
-        for (int i = 0; i < records.getRecordCount(); i++) {
-            Record currentRecord = records.getRecordAt(i);
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
             fw.write(currentRecord.convertFileFormat() + System.lineSeparator());
         }
         fw.close();
     }
 
-    private void writeCreditScoreMapToSaveFile(CreditScoreMap creditScoreMap) throws IOException {
+    private void writeMapToSaveFile(CreditScoreReturnedLoansMap creditScoreReturnedLoansMap) throws IOException {
         FileWriter fw = new FileWriter(dataFilePath.toString(), true);
-        for (String borrowerName : creditScoreMap.getBorrowersNames()) {
-            int creditScore = getCreditScore(creditScoreMap, borrowerName);
-            fw.write(borrowerName + " | " + creditScore + System.lineSeparator());
+        for (String borrowerName : creditScoreReturnedLoansMap.getBorrowersNames()) {
+            int creditScore = creditScoreReturnedLoansMap.getCreditScoreOf(borrowerName);
+            fw.write(borrowerName + FILE_DELIMITER + creditScore + System.lineSeparator());
         }
         fw.close();
-    }
-
-    private int getCreditScore(CreditScoreMap creditScoreMap, String borrowerName) {
-        return creditScoreMap.getCreditScore(borrowerName);
     }
 
     /**
      * Loads the RecordList from the file into FINUX.
      */
     public void loadFile() throws FileLoadingException {
-        this.records = new ArrayList<>();
-        this.creditScoreHashMapData = new HashMap<>();
+        recordList = new ArrayList<>();
+        creditScoreReturnedLoansMap = new HashMap<>();
 
         try {
             if (!saveFileExists()) {
@@ -105,11 +106,12 @@ public class Storage {
                 String rawData = sc.nextLine();
                 Object parsedObject = parseRawData(rawData);
                 if (parsedObject instanceof Record) {
-                    records.add((Record) parsedObject);
-                    assert !records.isEmpty() : "RecordList should have data!";
+                    recordList.add((Record) parsedObject);
+                    assert !recordList.isEmpty() : "RecordList should have data!";
                 } else if (parsedObject != null) {
-                    String[] creditScoreRawData = (String[]) parsedObject;
-                    creditScoreHashMapData.put(creditScoreRawData[0], Integer.parseInt(creditScoreRawData[1]));
+                    String[] mapEntryRawData = (String[]) parsedObject;
+                    creditScoreReturnedLoansMap.put(mapEntryRawData[BORROWER_NAME_INDEX],
+                            Integer.parseInt(mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX]));
                 }
             }
         } catch (InvalidFileInputException | IOException e) {
@@ -133,8 +135,8 @@ public class Storage {
             return loadLoan(rawData);
         } else if (Pattern.matches(REGEX_PATTERN_SAVING, rawData)) {
             return loadSaving(rawData);
-        } else if (Pattern.matches(REGEX_PATTERN_CREDIT_SCORE, rawData)) {
-            return loadCreditScoreRawData(rawData);
+        } else if (Pattern.matches(REGEX_PATTERN_MAP_ENTRY_RAW_DATA, rawData)) {
+            return loadMapEntryRawData(rawData);
         } else {
             throw new InvalidFileInputException();
         }
@@ -206,30 +208,32 @@ public class Storage {
         return new Saving(amount, issueDate, description);
     }
 
-    private String[] loadCreditScoreRawData(String rawData) throws InvalidFileInputException {
-        String[] creditScoreRawData = rawData.split(" \\| ");
-        String borrowerName = creditScoreRawData[0].toLowerCase();
-        if (!borrowerName.equals(creditScoreRawData[0])) {
+    private String[] loadMapEntryRawData(String rawData) throws InvalidFileInputException {
+        String[] mapEntryRawData = rawData.split(FILE_DELIMITER_REGEX);
+        mapEntryRawData[BORROWER_NAME_INDEX] = mapEntryRawData[BORROWER_NAME_INDEX].strip();
+        mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX] = mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX].strip();
+        String borrowerNameInLowerCase = mapEntryRawData[BORROWER_NAME_INDEX].toLowerCase();
+        if (!borrowerNameInLowerCase.equals(mapEntryRawData[BORROWER_NAME_INDEX])) {
             throw new InvalidFileInputException();
         }
 
-        if (creditScoreHashMapData.containsKey(creditScoreRawData[0])) {
+        if (creditScoreReturnedLoansMap.containsKey(mapEntryRawData[BORROWER_NAME_INDEX])) {
             throw new InvalidFileInputException();
         }
 
-        int creditScore = Integer.parseInt(creditScoreRawData[1]);
-        if (creditScore < 0 || creditScore > 100) {
+        int creditScore = Integer.parseInt(mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX]);
+        if (creditScore < ((int) MIN_CREDIT_SCORE) || creditScore > ((int) MAX_CREDIT_SCORE)) {
             throw new InvalidFileInputException();
         }
 
-        return creditScoreRawData;
+        return mapEntryRawData;
     }
 
     public ArrayList<Record> getRecordListData() {
-        return records;
+        return recordList;
     }
 
-    public HashMap<String, Integer> getCreditScoreHashMapData() {
-        return creditScoreHashMapData;
+    public HashMap<String, Integer> getMapData() {
+        return creditScoreReturnedLoansMap;
     }
 }
