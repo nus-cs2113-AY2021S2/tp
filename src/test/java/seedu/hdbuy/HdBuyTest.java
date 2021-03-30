@@ -5,6 +5,7 @@ import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.InvalidParameterException;
+import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.parser.CommandEvaluator;
 
 import java.util.HashMap;
@@ -21,14 +22,16 @@ class HdBuyTest {
     @Test public void testConnection() {
         HashMap<QueryKey, String> inputs = new HashMap<>();
         inputs.put(QueryKey.LOCATION, "jurong");
-        assertNotNull(ApiRepository.fetchUnits(inputs));
+        ApiRepository.fetchUnits(inputs);
+        assertNotNull(SearchedUnits.getSearchedUnits());
     }
 
     @Test public void testEmptyResponseException() {
         HashMap<QueryKey, String> inputs = new HashMap<>();
         inputs.put(QueryKey.LEASE_REMAINING, "101");
-        HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputs);
-        assertTrue(units.isEmpty());
+        SearchedUnits.clearSearchedUnits();
+        ApiRepository.fetchUnits(inputs);
+        assertTrue(SearchedUnits.getSearchedUnits().isEmpty());
     }
 
     @Test public void parserTest() {
