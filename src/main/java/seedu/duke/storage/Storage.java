@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
 import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
 import static seedu.duke.common.Constant.FILE_DELIMITER;
+import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 public class Storage {
     private static final Path SAVED_FILE_PATH = Paths.get("finux.txt");
@@ -124,6 +125,7 @@ public class Storage {
         if (newSaveFile.createNewFile()) {
             Ui.printSuccessfulFileCreation();
         } else {
+            FINUX_LOGGER.logWarning("File creation unsuccessful!");
             throw new IOException("File creation unsuccessful!");
         }
     }
@@ -138,6 +140,7 @@ public class Storage {
         } else if (Pattern.matches(REGEX_PATTERN_MAP_ENTRY_RAW_DATA, rawData)) {
             return loadMapEntryRawData(rawData);
         } else {
+            FINUX_LOGGER.logWarning("Invalid File Inputs!");
             throw new InvalidFileInputException();
         }
     }
@@ -161,6 +164,7 @@ public class Storage {
             issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
                     DateTimeFormatter.ofPattern("yyyy-M-d"));
         } catch (NumberFormatException | DateTimeParseException e) {
+            FINUX_LOGGER.logWarning("[E] Invalid data format!");
             throw new InvalidFileInputException();
         }
 
@@ -187,6 +191,7 @@ public class Storage {
                         DateTimeFormatter.ofPattern("yyyy-M-d"));
             }
         } catch (NumberFormatException | DateTimeParseException e) {
+            FINUX_LOGGER.logWarning("[L] Invalid data format!");
             throw new InvalidFileInputException();
         }
 
@@ -202,6 +207,7 @@ public class Storage {
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
         } catch (NumberFormatException | DateTimeParseException e) {
+            FINUX_LOGGER.logWarning("[S] Invalid data format!");
             throw new InvalidFileInputException();
         }
 

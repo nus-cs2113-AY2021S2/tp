@@ -12,6 +12,8 @@ import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constant.FINUX_LOGGER;
+
 public class Finux {
     private Ui ui;
     private Storage storage;
@@ -51,6 +53,7 @@ public class Finux {
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
+            FINUX_LOGGER.logWarning("Unable to load finux.txt!");
             System.exit(-1);
         }
     }
@@ -59,17 +62,16 @@ public class Finux {
      * Loops the application until an EXIT command is parsed.
      */
     private void commandLooper() {
-        Command command;
-        String rawInput;
-        do {
-            rawInput = ui.getUserInput();
+        while (!commandHandler.isExit()) {
+            String rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
-            command = commandHandler.parseCommand(parsedStringList, recordList);
-            if (command != null) {
-                command.execute(recordList, ui, storage, creditScoreReturnedLoansMap);
+            Command command = commandHandler.parseCommand(parsedStringList, recordList);
+            if (command == null) {
+                continue;
             }
-        } while (!ExitCommand.isExit(command));
+            command.execute(recordList, ui, storage, creditScoreReturnedLoansMap);
+        }
     }
 
     /**
