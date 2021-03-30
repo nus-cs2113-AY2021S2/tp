@@ -181,7 +181,7 @@ _Exceptions related to file storage:_
 
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
-### Main Application Logic
+### Main Logic
 
 The main application logic underlines the main executable conditions that make up the bulk of the application. Below is the outline of the logic:
 
@@ -260,6 +260,20 @@ return the food item if the expiry date is within one week of calling the comman
 The sequence diagram shows how the `expiring` operation works:
 ![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
 
+
+### Add Command
+AddCommand class is initialized whenever the parser recognize the `add` keyword.
+
+1. The constructor should create a new Food object according to the parsed user input.
+2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+
+Given below is the sequence diagram for the AddCommand workflow.
+
+![AddCommandSequenceDiagram](diagrams/diagram_images/AddSequenceDiagram.png)
+
+Notes:
+* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
 ## Product Scope
 
