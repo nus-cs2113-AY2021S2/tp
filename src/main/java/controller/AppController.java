@@ -3,6 +3,7 @@ package controller;
 import employee.Employee;
 import io.FileManager;
 import shift.Shift;
+import shift.ShiftController;
 import ui.ui;
 
 import java.io.IOException;
@@ -44,22 +45,22 @@ public class AppController {
                 dropSchedule();
                 break;
             case "add shift":
-                addShift();
+                ShiftController.addShift(employees, shifts);
                 break;
             case "assign employee":
-                assignEmployee();
+                ShiftController.assignEmployee(employees, shifts);
                 break;
             case "unassign employee":
-                unassignEmployee();
+                ShiftController.unassignEmployee(employees, shifts);
                 break;
             case "view employee schedule":
                 viewEmployeeSchedule();
                 break;
             case "view shift status":
-                viewAllShifts();
+                ShiftController.viewAllShifts(employees, shifts);
                 break;
             case "view one shift":
-                viewOneShift();
+                ShiftController.viewOneShift(employees, shifts);
                 break;
             case "list":
                 listAllEmployees();
@@ -155,112 +156,6 @@ public class AppController {
                 return;
             }
         System.out.println("Employee not found");
-    }
-
-    private void addShift() {
-        System.out.println("Enter Shift date (in dd/MM/yyyy):");
-        String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        System.out.println("Enter Shift index:");
-        int shiftIndex = Integer.parseInt(sc.nextLine());
-        System.out.println("Enter vacancy for this shift:");
-        int vacancy = Integer.parseInt(sc.nextLine());
-        ArrayList<Employee> employeesOnShift = new ArrayList<>();
-        boolean runLoop = true;
-        do {
-            System.out.println("Enter employees on this shift (Q to quit):");
-            String name = sc.nextLine();
-            if (name.equalsIgnoreCase("Q")) {
-                runLoop = false;
-            } else {
-                boolean employeeFound = false;
-                for (Employee person : employees) {
-                    if (person.getName().equals(name)) {
-                        employeesOnShift.add(person);
-                        System.out.println("Employee " + name + " added to shift.");
-                        employeeFound = true;
-                    }
-                }
-                if (!employeeFound) {
-                    System.out.println("Employee not found.");
-                }
-            }
-        } while (runLoop);
-        Shift shift = new Shift(employeesOnShift, shiftDate, shiftIndex, vacancy);
-        shifts.add(shift);
-    }
-
-    private void assignEmployee() {
-        System.out.println("Enter Employee name to assign:");
-        String name = sc.nextLine();
-        for (Employee person : employees) {
-            if (person.getName().equals(name)) {
-                System.out.println("Enter Shift date (in dd/MM/yyyy)");
-                String date = sc.nextLine();
-                LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                System.out.println("Enter Shift index:");
-                int shiftIndex = Integer.parseInt(sc.nextLine());
-                for (Shift shift : shifts) {
-                    if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
-                        shift.assignEmployee(person);
-                        return;
-                    }
-                }
-                System.out.println("Shift not found");
-                return;
-            }
-        }
-        System.out.println("Employee not found");
-    }
-
-    private void unassignEmployee() {
-        System.out.println("Enter Employee name to unassign:");
-        String name = sc.nextLine();
-        for (Employee person : employees) {
-            if (person.getName().equals(name)) {
-                System.out.println("Enter Shift date (in dd/MM/yyyy)");
-                String date = sc.nextLine();
-                LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                System.out.println("Enter Shift index:");
-                int shiftIndex = Integer.parseInt(sc.nextLine());
-                for (Shift shift : shifts) {
-                    if (shift.getShiftDate().equals(shiftDate) && shift.getShiftIndex() == shiftIndex) {
-                        shift.unassignEmployee(person);
-                        return;
-                    }
-                }
-                System.out.println("Shift not found");
-                return;
-            }
-        }
-        System.out.println("Employee not found");
-    }
-
-    private void viewAllShifts(){
-        for (Shift item : shifts){
-            System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
-        }
-    }
-
-    private void viewOneShift() {
-        System.out.println("Enter Shift date (in dd/MM/yyyy):");
-        String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        boolean dateFound = false;
-        for (Shift item : shifts) {
-            if (item.getShiftDate().equals(shiftDate)) {
-                System.out.println("Enter Shift index:");
-                int shiftIndex = Integer.parseInt(sc.nextLine());
-                if (item.getShiftIndex() == shiftIndex) {
-                    System.out.println("The people assigned to the shift are:" + item.getEmployees());
-                }
-                else {System.out.println("Shift Index selected is not available");}
-                dateFound = true;
-            }
-        }
-        if (!dateFound){
-            System.out.println("Date chosen has no shifts");
-        }
     }
 
     public boolean isEmployeeFound(String name) {
