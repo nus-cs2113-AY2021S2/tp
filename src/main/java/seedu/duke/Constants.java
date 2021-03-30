@@ -64,6 +64,7 @@ public class Constants {
     public static final int INDEX_OF_LAST_CHARACTER = 8;
 
     public static final int CHECKSUM_MOD = 11;
+    public static final int CHECKSUM_DIGIT = 4;
     public static final int FIRST_DIGIT = 1;
     public static final int SECOND_DIGIT = 2;
     public static final int THIRD_DIGIT = 3;
