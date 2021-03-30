@@ -16,6 +16,13 @@ import java.util.TreeMap;
 
 public class DeleteCommand extends Command {
 
+    /**
+     * This is the constructor of the command. Arguments are passed to parent class.
+     *
+     * @param ui        Instance of Ui class, for UI input/output
+     * @param data      Instance of Data class, for manipulating patient list and read/write miscellaneous config
+     * @param arguments Arguments decomposed from the full command given by the user
+     */
     public DeleteCommand(Ui ui, Data data, HashMap<String, String> arguments) {
         super(ui, data, arguments);
     }
@@ -38,6 +45,10 @@ public class DeleteCommand extends Command {
         }
     }
 
+    /**
+     * Deletes a patient from the list
+     * @param id Unique identifier of the patient to be retrieved
+     */
     private void deletePatient(String id) {
         if (data.getPatient(id) == null) {
             ui.printMessage("Patient does not exist!");
@@ -47,6 +58,12 @@ public class DeleteCommand extends Command {
         ui.printMessage("Patient " + id + " has been deleted!");
     }
 
+    /**
+     * Deletes a record a patient's consultation details
+     * @param patient    Patient of record that is being deleted
+     * @param dateString Date of record that is being deleted
+     * @throws InvalidInputException
+     */
     private void deleteRecord(Patient patient, String dateString) throws InvalidInputException {
         LocalDate date = null;
         try {

@@ -9,6 +9,7 @@ import seedu.duke.model.Patient;
 import java.util.HashMap;
 
 public class AddCommand extends Command {
+
     /**
      * This is the constructor of the command. Arguments are passed to parent class.
      *
@@ -39,6 +40,11 @@ public class AddCommand extends Command {
         ui.printMessage("Patient " + id + " has been added!");
     }
 
+    /**
+     * Checks whether the patient's ID is valid
+     * @param id Unique identifier of the patient to be retrieved
+     * @return Flag on whether the patient's ID is valid
+     */
     private boolean checkID(String id) {
         int stringLength = id.length();
         int checksum = 0;
