@@ -313,4 +313,12 @@ public class Ui {
     public void printCommandDoesNotExistInRecommendationMode() {
         println("This command does not exist in recommendation mode");
     }
+
+    public void printEmptyInputMessage() {
+        System.out.println("Please enter an input!");
+    }
+
+    public void printNoUniqueTitleMessage() {
+        System.out.println("Please try again with a unique title!");
+    }
 }

@@ -179,7 +179,7 @@ public class Commands {
         if (isReviewMode) {
             reviewList.addReview(input);
         } else {
-            recommendationList.addRecommendation(input);
+            recommendationList.addRecommendation();
         }
     }
 

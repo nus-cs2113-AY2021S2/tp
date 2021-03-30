@@ -1,6 +1,7 @@
 package seedu.connoisseur.commands;
 
 import seedu.connoisseur.exceptions.DuplicateException;
+import seedu.connoisseur.exceptions.EmptyInputException;
 import seedu.connoisseur.recommendation.Recommendation;
 import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
@@ -8,17 +9,17 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
 import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
-import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
-import static seedu.connoisseur.messages.Messages.MISSING_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
+import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -110,34 +111,37 @@ public class RecommendationList {
 
     /**
      * Adds a recommendation.
-     *
-     * @param title title of recommendation
      */
-    public void addRecommendation(String title) {
+    public void addRecommendation() {
         try {
-            addRecommendationDetails(title);
+            addRecommendationDetails();
         } catch (DuplicateException de) {
-            System.out.println("Please try again with a unique title instead!");
+            ui.printNoUniqueTitleMessage();
+        } catch (EmptyInputException ee) {
+            ui.printEmptyInputMessage();
         }
     }
 
     /**
      * Prompts for details of recommendation.
-     *
-     * @param title title of recommendation.
      */
-    public void addRecommendationDetails(String title) throws DuplicateException {
-        if (title == null || title.isBlank()) {
-            ui.println(MISSING_RECO_TITLE);
-            return;
-        }
+    public void addRecommendationDetails() throws DuplicateException, EmptyInputException {
+
+        ui.println(RECO_TITLE_PROMPT);
+        String title = ui.readCommand();
         boolean isDuplicate;
         isDuplicate = checkAndPrintDuplicateRecommendation(title);
         if (isDuplicate) {
             throw new DuplicateException();
         }
+        if (title.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(CATEGORY_PROMPT);
         String category = ui.readCommand().toLowerCase();
+        if (category.isBlank()) {
+            throw new EmptyInputException();
+        }
         ui.println(PRICE_PROMPT);
         try {
             String priceRange = ui.readCommand();
@@ -208,9 +212,7 @@ public class RecommendationList {
             ui.println(INVALID_DELETE_RECO_TITLE);
         } else {
             category = recommendations.get(recommendationIndex).getCategory();
-            description = "Price range: " + recommendations.get(recommendationIndex).priceRange()
-                    + "| Location: " + recommendations.get(recommendationIndex).getLocation()
-                    + "| RecBy: " + recommendations.get(recommendationIndex).getRecommendedBy();
+            description = "No description entered. ";
             Review r = new Review(title, category, 0, description);
 
             System.out.println("Done! How would you rate your experience out of 5 stars?");
