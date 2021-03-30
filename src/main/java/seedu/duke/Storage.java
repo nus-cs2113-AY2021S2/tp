@@ -23,7 +23,7 @@ import java.util.TreeMap;
  * the hard drive.
  */
 public class Storage {
-    protected String filePath;
+    private String filePath;
 
     /**
      * This is the constructor without a parameter. Default path will be used.
@@ -106,15 +106,17 @@ public class Storage {
         SortedMap<String, Patient> data = new TreeMap<>();
         try {
             File inFile = new File(filePath);
-            if (!inFile.exists()) {
-                return data;
-            }
+            // If inFile does not exist, FNF Exception will be triggered and captured below
             Scanner scanner = new Scanner(inFile);
             while (scanner.hasNextLine()) {
                 String[] retrievedPatientsData = scanner.nextLine().split(Constants.ID_DELIMITER);
                 String id = retrievedPatientsData[0];
-                TreeMap<LocalDate, Record> records = convertStringToRecords(retrievedPatientsData[1]);
-                Patient patient = new Patient(id, records);
+                Patient patient;
+                if (retrievedPatientsData.length > 1) {
+                    patient = new Patient(id, convertStringToRecords(retrievedPatientsData[1]));
+                } else {
+                    patient = new Patient(id);
+                }
                 data.put(id, patient);
             }
             scanner.close();
@@ -166,5 +168,13 @@ public class Storage {
         }
 
         return arrayList;
+    }
+
+    /**
+     * This is the getter for filePath.
+     * @return the file path of save file used by this storage instance
+     */
+    public String getFilePath() {
+        return filePath;
     }
 }

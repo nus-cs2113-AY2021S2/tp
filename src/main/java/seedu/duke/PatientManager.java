@@ -14,9 +14,15 @@ public class PatientManager {
     /**
      * This initializes all resources for the program.
      */
-    private PatientManager() {
+    private PatientManager(String filePath) {
         ui = new Ui();
-        Storage storage = new Storage();
+        Storage storage;
+        if (filePath == null) {
+            storage = new Storage();
+        } else {
+            storage = new Storage(filePath);
+        }
+        ui.printMessage("Currently using save file: " + storage.getFilePath());
         try {
             data = new Data(storage, storage.load());
         } catch (StorageException e) {
@@ -61,7 +67,7 @@ public class PatientManager {
      * Main entry-point for the PatientManager application.
      */
     public static void main(String[] args) {
-        PatientManager pm = new PatientManager();
+        PatientManager pm = new PatientManager(args.length > 0 ? args[0] : null);
         pm.run();
     }
 }
