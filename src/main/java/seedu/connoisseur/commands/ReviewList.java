@@ -427,7 +427,7 @@ public class ReviewList {
         }
     }
 
-    public void receiveConvert(Review r){
+    public void receiveConvert(Review r) {
         reviews.add(r);
     }
 }
