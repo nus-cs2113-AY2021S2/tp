@@ -54,7 +54,6 @@ public class Constants {
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
     public static final String STORAGE_FILE_WRITE_FAIL = "Failed to write content to the save file.";
-
     public static final String STORAGE_FILE_NOT_FOUND = "Save file does not exist so we use an empty patient list!";
 
     public static final String UNKNOWN = "We have encountered an unknown error";

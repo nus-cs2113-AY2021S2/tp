@@ -15,4 +15,10 @@ bin/
 
 /text-ui-test/ACTUAL.txt
 text-ui-test/EXPECTED-UNIX.TXT
+
+# Ignore save files
+*.save
+
+# Ignore generated jar file
+tp.jar
 MANIFEST.MF

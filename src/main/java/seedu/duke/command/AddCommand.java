@@ -4,6 +4,7 @@ import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 import java.util.HashMap;
@@ -22,7 +23,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, StorageException {
 
         String id = arguments.get("payload");
         id = id.toUpperCase();
@@ -36,6 +37,7 @@ public class AddCommand extends Command {
         assert checkID(id) : "validID should be true";
         Patient patient = new Patient(id);
         data.setPatient(patient);
+        data.saveFile();
 
         ui.printMessage("Patient " + id + " has been added!");
     }

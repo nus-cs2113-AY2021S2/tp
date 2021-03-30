@@ -4,6 +4,7 @@ import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
@@ -27,12 +28,13 @@ public class DeleteCommand extends Command {
         super(ui, data, arguments);
     }
 
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, StorageException {
 
         if (arguments.containsKey(Constants.PATIENT_KEY)) {
             String id = arguments.get(Constants.PATIENT_KEY);
             id = id.toUpperCase();
             deletePatient(id);
+            data.saveFile();
         }  else if (arguments.containsKey(Constants.RECORD_KEY)) {
             Patient patient = data.currentPatient;
             if (patient == null) {
@@ -40,6 +42,7 @@ public class DeleteCommand extends Command {
             }
             String date = arguments.get(Constants.RECORD_KEY);
             deleteRecord(patient, date);
+            data.saveFile();
         } else {
             ui.printMessage("Please indicate whether to delete patient or record using /p or /r respectively!");
         }
