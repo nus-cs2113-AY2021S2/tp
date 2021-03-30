@@ -30,7 +30,7 @@ public class ListLessonsCommand extends Command {
         Module module = ModuleList.getSelectedModule();
         String moduleCode = module.getModuleCode();
 
-        if (module.getLessonList().size() == 0) {
+        if (module.getLessonList().size() > 0) {
             ui.printMessage(String.format(MESSAGE_LESSONS_TO_LIST, moduleCode));
             printLessons(module.getLessonList(), ui);
         } else {
