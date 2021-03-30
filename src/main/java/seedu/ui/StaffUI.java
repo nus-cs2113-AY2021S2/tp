@@ -5,7 +5,7 @@ import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.model.staff.Staff;
 
 import static seedu.ui.UI.abortEnabledScanInput;
-import static seedu.logic.parser.StaffParser.checkID;
+import static seedu.logic.errorchecker.StaffChecker.checkID;
 
 public class StaffUI {
 
