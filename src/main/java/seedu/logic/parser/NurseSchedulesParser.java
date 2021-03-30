@@ -23,11 +23,17 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
+import static seedu.ui.UI.smartCommandRecognition;
+
 public class NurseSchedulesParser {
 
     static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
+
+    public static boolean isValidDate(String date) {
+        return true;
+    }
 
     /**
      * Gets user input.

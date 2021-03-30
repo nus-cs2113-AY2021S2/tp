@@ -3,11 +3,11 @@ package seedu.logic.parser;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
 import seedu.logic.command.startmenu.*;
-import static seedu.ui.UI.smartCommandRecognition;
 
 import java.util.Locale;
 
 import static seedu.duke.Constants.*;
+import static seedu.ui.UI.smartCommandRecognition;
 
 public class StartMenuParser {
     static final String[] COMMANDS = {"staff", "patient", "appointments", "schedules", "inventory", "help", "exit"};
@@ -45,7 +45,7 @@ public class StartMenuParser {
                 throw new UnrecognizedCommandException();
             }
         } catch (UnrecognizedCommandException e) {
-//            e.getError();
+            e.getMessage();
         }
         return c;
     }
