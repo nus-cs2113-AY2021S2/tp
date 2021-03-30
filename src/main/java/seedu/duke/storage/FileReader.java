@@ -1,14 +1,19 @@
 package seedu.duke.storage;
+
 import seedu.duke.account.FitCenter;
 import seedu.duke.account.User;
 import seedu.duke.exception.TypeException;
-import seedu.duke.goal.*;
+
 import seedu.duke.record.BodyWeight;
 import seedu.duke.record.Diet;
 import seedu.duke.record.Exercise;
 import seedu.duke.record.Record;
-
-import javax.imageio.event.IIOWriteWarningListener;
+import seedu.duke.goal.DietGoal;
+import seedu.duke.goal.ExerciseGoal;
+import seedu.duke.goal.BodyWeightGoal;
+import seedu.duke.goal.SleepGoal;
+import seedu.duke.goal.Goal;
+import seedu.duke.goal.PeriodType;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -23,13 +28,15 @@ import static seedu.duke.command.CommandRecordType.EXERCISE;
 import static seedu.duke.command.CommandRecordType.DIET;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.command.CommandRecordType.SLEEP;
-import static seedu.duke.goal.PeriodType.*;
+import static seedu.duke.goal.PeriodType.WEEKLY;
+import static seedu.duke.goal.PeriodType.DAILY;
+import static seedu.duke.goal.PeriodType.INVALID;
 
 public class FileReader {
     private File recordSource;
     private File goalSource;
-    public final static String SEPERATOR = " \\| ";
-    public final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+    public static final String SEPERATOR = " \\| ";
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
     /*
     public FileReader(File recordFile, File goalFile) {
@@ -43,9 +50,10 @@ public class FileReader {
         goalSource = goalFile;
     }
 
-    public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException, ParseException {
+    public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException,
+            ParseException {
         Scanner sc = new Scanner(recordSource);
-        while(sc.hasNext()) {
+        while (sc.hasNext()) {
             String currentLine = sc.nextLine();
             String[] typeContent = currentLine.split(SEPERATOR,2);
             String content = typeContent[1];
@@ -74,10 +82,11 @@ public class FileReader {
         }
     }
 
-    public void parseToGoal(User user) throws FileNotFoundException, ParseException, TypeException, NumberFormatException {
+    public void parseToGoal(User user) throws FileNotFoundException, ParseException,
+            TypeException, NumberFormatException {
         FitCenter fitCenter = user.getFitCenter();
         Scanner sc = new Scanner(goalSource);
-        while(sc.hasNext()) {
+        while (sc.hasNext()) {
             String currentLine = sc.nextLine();
             String[] typeContent = currentLine.split(SEPERATOR,2);
             String content = typeContent[1];
@@ -142,16 +151,13 @@ public class FileReader {
 
     private Record getSleepRecord(String content) throws ParseException, NumberFormatException {
         String[] contentParts = content.split(SEPERATOR);
-        for(int i=0; i<contentParts.length; i++){
-            System.out.println(contentParts[i]);
-        }
         String durationString = contentParts[0].trim();
         double duration = Double.parseDouble(durationString);
         LocalDate recordDate = getDate(contentParts[1]);
         return new BodyWeight(duration, recordDate);
     }
 
-    private LocalDate getDate(String dateString) throws ParseException{
+    private LocalDate getDate(String dateString) throws ParseException {
         Date date = DATE_FORMAT.parse(dateString);
         LocalDate recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return recordDate;

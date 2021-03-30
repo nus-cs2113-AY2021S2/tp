@@ -43,11 +43,13 @@ public class Storage {
         fileWriter.storeGoalsToFile(user);
     }
 
-    public void readRecords(User user) throws TypeException, NumberFormatException, ParseException, FileNotFoundException {
+    public void readRecords(User user) throws TypeException, NumberFormatException, ParseException,
+            FileNotFoundException {
         fileReader.parseToRecordList(user);
     }
 
-    public void readGoals(User user) throws TypeException, NumberFormatException, ParseException, FileNotFoundException {
+    public void readGoals(User user) throws TypeException, NumberFormatException, ParseException,
+            FileNotFoundException {
         fileReader.parseToGoal(user);
     }
 }
