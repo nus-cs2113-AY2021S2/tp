@@ -3,6 +3,7 @@ package seedu.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import static seedu.ui.UI.prettyPrint;
 
 public class NurseSchedule implements Comparable<NurseSchedule> {
     protected String nurseID;
@@ -74,7 +75,8 @@ public class NurseSchedule implements Comparable<NurseSchedule> {
     }
 
     public String toFind() {
-        return getFormattedDatetime() + " " + patientID;
+        //return getFormattedDatetime() + " " + patientID;
+        return prettyPrint(patientID, 10) + " | " + prettyPrint(getFormattedDatetime(), 10);
     }
 
     public String toString() {

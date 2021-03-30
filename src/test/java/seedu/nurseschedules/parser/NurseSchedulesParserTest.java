@@ -1,19 +1,15 @@
 package seedu.nurseschedules.parser;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.staff.BlankInputException;
 import seedu.logic.parser.NurseSchedulesParser;
-
 
 import java.text.ParseException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class NurseSchedulesParserTest {
 
@@ -27,7 +23,7 @@ class NurseSchedulesParserTest {
     void testGetDetails() throws WrongInputsException, NoInputException, InsufficientInputException, ExcessInputException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String[] details;
-        details = parser.getDetails("add test details padding");
+        details = parser.getDetails("add test details padding", "add");
         assertEquals("test", details[0]);
     }
 
@@ -36,7 +32,7 @@ class NurseSchedulesParserTest {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String[] details;
         try {
-            details = parser.getDetails("wrong");
+            details = parser.getDetails("wrong", "wrong");
             assertEquals("wrong", details[0]);
             fail();
         } catch (Exception e) {
@@ -48,7 +44,7 @@ class NurseSchedulesParserTest {
     void testFormatDate() throws ParseException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String input = "20032021";
-        assertEquals("20/03/2021", parser.formatDate(input));
+        assertEquals("20/03/2021", NurseSchedulesParser.formatDate(input));
     }
 
     @Test
@@ -57,7 +53,7 @@ class NurseSchedulesParserTest {
         try {
             String datetime = NurseSchedulesParser.formatDate(input);
         } catch (ParseException e) {
-            assertEquals(null, e.getMessage());
+            assertNull(e.getMessage());
         }
     }
 }

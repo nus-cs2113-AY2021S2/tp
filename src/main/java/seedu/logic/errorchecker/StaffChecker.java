@@ -20,15 +20,10 @@ public class StaffChecker extends MainChecker {
     public static void checkValidDataForAdd(String line) throws NoInputException,
             WrongStaffIdException, InvalidIntegerException,
             ExcessInputException, InsufficientInputException {
-        System.out.println("owen0");
         checkNumInput(line,5,5);
-        System.out.println("owen1");
         checkStaffID(line.split("/")[1]);
-        System.out.println("owen2");
         checkNumericInput(line.split("/")[3]);
-        System.out.println("owen3");
         checkBlankInput(line);
-        System.out.println("owen4");
     }
     public static void checkValidDataForStorage(String line) throws NoInputException,
             WrongStaffIdException, InvalidIntegerException,

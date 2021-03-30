@@ -14,14 +14,6 @@ public class Staff {
         this.specialisation = array[3];
     }
 
-    public String getStaffDetails() {
-        return ("ID: " + staffID + " \n" +
-                "name: " + name + " \n" +
-                "age: " + age + " \n" +
-                "specialisation: " + specialisation);
-    }
-
-
     public String getName() {
         if (this.name == null){
             return "-";
