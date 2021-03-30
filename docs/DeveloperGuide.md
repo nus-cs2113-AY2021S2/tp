@@ -84,7 +84,7 @@ This class is responsible for:
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command `add S1234567D`.
 
-<img src="./images/sequence_diagram_overview.png" width="600">
+<img src="./images/sequence_diagram_overview.png" width="750">
 
 The sections below give more details for each component.
 
