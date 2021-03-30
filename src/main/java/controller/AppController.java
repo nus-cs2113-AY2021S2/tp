@@ -31,7 +31,7 @@ public class AppController {
         while (true) {
             System.out.println("Enter command: ");
             input = sc.nextLine();
-            switch (input) {
+            switch (input.toLowerCase()) {
             case "add employee":
                 addEmployee();
                 break;
