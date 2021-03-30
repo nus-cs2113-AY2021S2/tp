@@ -1,7 +1,6 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.data.BlockAlias;
 import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.router.Router;
@@ -29,7 +28,6 @@ class RouterTest {
     @Test
     void printShortestDistance_linkedBlocks_expectRouteAfterRepeatedCall() throws InvalidBlockException {
         NusMap nusMap = new NusMap();
-        BlockAlias blockAlias = new BlockAlias();
         String out1 = new Router().execute(nusMap, "E2","E7");
         assertEquals(out1, "Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7");
         nusMap.resetVisitedFlag();
