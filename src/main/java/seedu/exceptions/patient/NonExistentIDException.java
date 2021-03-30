@@ -1,8 +1,8 @@
 package seedu.exceptions.patient;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class NonExistentIDException extends DukeException {
+public class NonExistentIDException extends HealthVaultException {
 
     public NonExistentIDException(String error) {
         this.error = error;

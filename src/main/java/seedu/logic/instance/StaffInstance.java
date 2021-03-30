@@ -1,5 +1,7 @@
 package seedu.logic.instance;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;

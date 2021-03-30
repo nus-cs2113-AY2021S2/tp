@@ -1,15 +1,14 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.patient.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.patient.*;
-import seedu.ui.PatientUI;
 import seedu.ui.UI;
 import seedu.logic.command.PatientActions;
 
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,7 +61,7 @@ public class PatientParser {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             UI.invalidFormatErrorMessage();
-        } catch (DukeException e) {
+        } catch (HealthVaultException e) {
             e.getError(command);
         }
         return c;
@@ -101,16 +100,16 @@ public class PatientParser {
      *
      * @param numberOfTokens number of tokens in the string
      * @param command        interpreted command from the user to be used in error finding
-     * @throws DukeException exception based on command
+     * @throws HealthVaultException exception based on command
      */
-    private void lengthCheck(int numberOfTokens, String command) throws DukeException {
+    private void lengthCheck(int numberOfTokens, String command) throws HealthVaultException {
         if (command.equals("add") && numberOfTokens != 7) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         } else if ((command.equals("delete") || command.equals("find")) && numberOfTokens != 2) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         } else if ((command.equals("list") || command.equals("return") || command.equals("help"))
                 && numberOfTokens != 1) {
-            throw new DukeException(command);
+            throw new HealthVaultException(command);
         }
     }
 

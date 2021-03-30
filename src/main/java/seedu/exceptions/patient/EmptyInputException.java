@@ -1,8 +1,8 @@
 package seedu.exceptions.patient;
 
-import seedu.exceptions.DukeException;
+import seedu.exceptions.HealthVaultException;
 
-public class EmptyInputException extends DukeException {
+public class EmptyInputException extends HealthVaultException {
 
     @Override
     public void getError(String input) {

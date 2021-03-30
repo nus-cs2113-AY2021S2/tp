@@ -1,9 +1,12 @@
 package seedu.logic.parser;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.staff.*;
+import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.StaffChecker;
 import seedu.ui.UI;
 
@@ -36,13 +39,13 @@ public class StaffParser {
 
         case ("list"):
             StaffChecker.checkListCommand(line);
-            StaffChecker.checkNumInput(line,2,1);
+            MainChecker.checkNumInput(line,2,1);
             c = new StaffList(line);
             break;
 
         case ("delete"):
-            StaffChecker.checkNumInput(line,2,1);
-            StaffChecker.checkID(line.split("/")[1]);
+            MainChecker.checkNumInput(line,2,1);
+            StaffChecker.checkStaffID(line.split("/")[1]);
 
             c = new StaffDelete(line);
             break;
@@ -52,7 +55,7 @@ public class StaffParser {
             break;
 
         case ("find"):
-            StaffChecker.checkNumInput(line,2,1);
+            MainChecker.checkNumInput(line,2,1);
             c = new StaffFind(line);
             break;
 

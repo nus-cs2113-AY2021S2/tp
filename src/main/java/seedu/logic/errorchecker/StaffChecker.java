@@ -1,5 +1,7 @@
 package seedu.logic.errorchecker;
 
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.staff.*;
 
@@ -18,12 +20,12 @@ public class StaffChecker extends MainChecker {
             ExcessInputException, InsufficientInputException, BlankInputException {
 
         checkNumInput(line,5,5);
-        checkID(line.split("/")[1]);
-        checkNumericInput(line);
+        checkStaffID(line.split("/")[1]);
+        checkNumericInput(line.split("/")[3]);
         checkBlankInput(line);
     }
 
-    public static void checkID(String id) throws WrongStaffIdException {
+    public static void checkStaffID(String id) throws WrongStaffIdException {
         try {
             Integer.parseInt(id.substring(1));
         } catch (NumberFormatException e) {
@@ -37,36 +39,6 @@ public class StaffChecker extends MainChecker {
     public static void checkEmptyInput(String line) throws NoInputException {
         if (line.split("/").length < 2) {
             throw new NoInputException();
-        }
-    }
-
-    public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException{
-        if (line.split("/").length < min) {
-            throw new InsufficientInputException();
-        }
-        if (line.split("/").length > max) {
-            throw new ExcessInputException();
-        }
-    }
-
-    public static void checkBlankInput(String line) throws BlankInputException {
-       String[] array = line.split("/");
-        for (String s : array) {
-            if (s.trim().equals("")) {
-                throw new BlankInputException();
-            }
-        }
-    }
-
-    public static void checkNumericInput(String line) throws NumberFormatException, PositiveNumberOnlyException {
-        String[] array = line.split("/");
-        try {
-            Integer.parseInt(array[3]);     // Check age is numeric
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException();
-        }
-        if (Integer.parseInt(array[3]) < 0) {
-            throw new PositiveNumberOnlyException();
         }
     }
 
