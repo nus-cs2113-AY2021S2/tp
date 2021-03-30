@@ -33,9 +33,9 @@ public class NurseScheduleActions {
 
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException {
         try {
-            NurseScheduleChecker.isValidNurseID(details[0]);
-            NurseScheduleChecker.isNurseIDExist(details[0]);
-            NurseScheduleChecker.isValidPatientID(details[1]);
+            NurseScheduleChecker.checkValidNurseID(details[0]);
+            NurseScheduleChecker.checkNurseIDExist(details[0]);
+            NurseScheduleChecker.checkValidPatientID(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
         }

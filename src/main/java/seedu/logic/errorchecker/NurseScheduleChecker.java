@@ -47,7 +47,7 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static boolean isNurseIDExist(String nurseID) throws NurseIdNotFound {
+    public static boolean checkNurseIDExist(String nurseID) throws NurseIdNotFound {
         try {
             String[] character = nurseID.split("");
 
@@ -67,7 +67,7 @@ public class NurseScheduleChecker extends MainChecker {
         throw new NurseIdNotFound();
     }
 
-    public static void isValidNurseID(String userID) throws InvalidIDTypeException {
+    public static void checkValidNurseID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
@@ -75,7 +75,7 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static void isValidPatientID(String userID) throws InvalidIDTypeException {
+    public static void checkValidPatientID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
