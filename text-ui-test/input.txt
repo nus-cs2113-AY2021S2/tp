@@ -1,3 +1,6 @@
 filter location jurong
-find
+filter type 4 room
+list
+clear
+list
 exit
