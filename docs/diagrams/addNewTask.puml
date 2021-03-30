@@ -1,0 +1,74 @@
+@startuml
+
+participant TaskManager
+activate TaskManager
+TaskManager -> TaskManager++ : addNewTask
+TaskManager -> TaskManager++ : getTaskNumber
+return
+TaskManager -> AddTask++ : execute
+
+alt ModuleInfo.modules.isEmpty()
+AddTask -> Ui++ : printNoModuleMessage
+return
+AddTask -> Ui++ : readCommand
+return
+    opt input.equalsIgnoreCase("N")
+    AddTask --> TaskManager
+    end
+AddTask -> ModuleInfo++ : addNewModule
+return
+AddTask -> ModuleInfo++ : modules
+ModuleInfo -> Module++ : getName
+return
+destroy Module
+return
+destroy ModuleInfo
+
+else !ModuleInfo.modules.isEmpty()
+AddTask -> Ui++ : printAddTaskModuleMessage
+return
+AddTask -> AddTask++ : printAndGetModule
+return
+    opt module.equals("")
+    AddTask --> TaskManager
+    end
+end
+
+AddTask -> Ui++ : printAddTaskDescriptionMessage
+return
+AddTask -> Ui++ : readCommand
+return
+
+opt taskNumber != 1
+AddTask -> AddTask++ : getDate
+return
+AddTask -> AddTask++ : getTime
+return
+end
+
+AddTask -> Ui++ : printAddMessageAfterCompletedTask
+return
+AddTask -> Ui++ : readCommand
+return
+
+alt ADD_TASK_COMMAND
+AddTask -> AddTask++ : addTask
+return
+else ADD_ASSIGNMENT_COMMAND
+AddTask -> AddTask++ : addAssignment
+return
+else ADD_MIDTERM_COMMAND
+AddTask -> AddTask++ : addMidterm
+return
+else ADD_FINAL_EXAM_COMMAND
+AddTask -> AddTask++ : addFinalExam
+return
+else
+AddTask -> Ui++ : printInvalidIntegerMessage
+return
+end
+
+return
+return
+
+@enduml

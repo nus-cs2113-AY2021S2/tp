@@ -1,0 +1,25 @@
+@startuml
+
+participant TaskManager
+activate TaskManager
+TaskManager -> TaskManager++ : deleteTask
+TaskManager -> TaskManager++ : getTaskNumber
+return
+TaskManager -> deleteTask++ : execute
+
+opt TaskManager.taskListIsEmpty
+deleteTask -> TaskManager++ : taskListIsEmpty
+return
+deleteTask -> Ui++ : printTaskListIsEmptyMessage
+return
+deleteTask --> TaskManager
+end
+
+deleteTask -> Ui++ : printSelectTaskNumberToDelete
+return
+
+loop
+
+end
+
+@enduml
