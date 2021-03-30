@@ -9,7 +9,18 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.*;
+import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 
 /**
  * Class with methods for different commands in recommendation mode.
