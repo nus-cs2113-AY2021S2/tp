@@ -4,6 +4,7 @@ import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.ui.NurseScheduleUI;
+import seedu.logic.errorchecker.NurseScheduleChecker;
 import static seedu.ui.UI.smartCommandRecognition;
 
 import java.text.ParseException;
@@ -15,6 +16,8 @@ import java.util.Scanner;
 public class NurseSchedulesParser {
 
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
+
+    NurseScheduleChecker checker = new NurseScheduleChecker();
 
     /**
      * Gets user input.
@@ -45,7 +48,7 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String removeDuplicate(char str[], int n)
+    public String removeDuplicate(char[] str, int n)
     {
         // Used as index in the modified string
         int index = 0;
@@ -75,8 +78,8 @@ public class NurseSchedulesParser {
         return String.valueOf(Arrays.copyOf(str, index));
     }
 
-    public String[] getDetails(String input) throws WrongInputsException {
-        String text = removeDuplicate(input.toCharArray(), input.length());
+    public String[] getDetails(String text) throws WrongInputsException {
+        //String text = removeDuplicate(input.toCharArray(), input.length());
         String[] details = new String[3];
 
         String[] parts = text.toUpperCase().split("/", 0);
@@ -87,13 +90,13 @@ public class NurseSchedulesParser {
         if (parts.length <= 1) {
             throw new WrongInputsException();
         } else if (command.equals("add")) {
-            if (isValidDate(parts[3])) {
+            if (checker.isValidDate(parts[3])) {
                 details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
                 details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
                 details[2] = parts[3].replaceAll("[^A-Za-z0-9]","");;
             }
         } else if (command.equals("delete")) {
-            if (isValidDate(parts[2])) {
+            if (checker.isValidDate(parts[2])) {
                 details[0] = parts[1].replaceAll("[^A-Za-z0-9]","");;
                 details[1] = parts[2].replaceAll("[^A-Za-z0-9]","");;
             }
@@ -109,31 +112,6 @@ public class NurseSchedulesParser {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
         return formatter.format(date);
-    }
-
-    public static boolean isValidDate(String datetime) {
-        /* Check if date is 'null' */
-        if (!datetime.trim().equals("")) {
-            /*
-             * Set preferred date format,
-             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
-            SimpleDateFormat sdfrmt = new SimpleDateFormat("ddMMyyyy");
-            sdfrmt.setLenient(false);
-            /* Create Date object
-             * parse the string into date
-             */
-            try {
-                Date javaDate = sdfrmt.parse(datetime);
-                //System.out.println(datetime + " is valid date format");
-            }
-            /* Date format is invalid */
-            catch (ParseException e) {
-                System.out.println(datetime + " is Invalid Date format");
-                return false;
-            }
-        }
-        /* Return true if date format is valid */
-        return true;
     }
 
     public Command nurseParse(String line, NurseScheduleUI ui) {
@@ -184,56 +162,4 @@ public class NurseSchedulesParser {
         }
         return c;
     }
-
-//    public boolean commandHandler(List<NurseSchedule> nurseSchedules, String command, String line) {
-//        NurseScheduleActions actions = new NurseScheduleActions();
-//        NurseScheduleStorage storage = new NurseScheduleStorage();
-//        NurseSchedulesParser parser = new NurseSchedulesParser();
-//
-//        switch (command) {
-//        case "add":
-//            try {
-//                actions.addSchedule(nurseSchedules, parser.getDetails(line));
-//                storage.writeToFile(nurseSchedules);
-//            } catch (WrongInputsException | ParseException e) {
-//                System.out.println(e.getMessage());
-//                NurseScheduleUI.addHelpMessage();
-//            }
-//            break;
-//        case "list":
-//            try {
-//                actions.listSchedules(nurseSchedules, parser.getDetails(line));
-//            } catch (WrongInputsException e) {
-//                NurseScheduleUI.invalidInputsMessage();
-//                NurseScheduleUI.listHelpMessage();
-//            } catch (EmptyListException e) {
-//                System.out.println(e.getMessage());
-//            } catch (NurseIdNotFound e) {
-//                System.out.println(e.getMessage());
-//            }
-//            break;
-//        case "delete":
-//            try {
-//                actions.deleteSchedule(nurseSchedules, parser.getDetails(line));
-//                storage.writeToFile(nurseSchedules);
-//            } catch (WrongInputsException e) {
-//                System.out.println(e.getMessage());
-//                NurseScheduleUI.deleteHelpMessage();
-//            } catch (NurseIdNotFound e) {
-//                System.out.println(e.getMessage());
-//            }
-//            break;
-//        case "help":
-//            NurseScheduleUI.printNurseScheduleHelpList();
-//            break;
-//        case "return":
-//            storage.writeToFile(nurseSchedules);
-//            NurseScheduleUI.returningToStartMenuMessage();
-//            return false;
-//        default:
-//            NurseScheduleUI.invalidCommandMessage();
-//            break;
-//        }
-//        return true;
-//    }
 }

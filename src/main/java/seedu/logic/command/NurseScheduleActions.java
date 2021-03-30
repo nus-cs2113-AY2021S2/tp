@@ -23,6 +23,10 @@ public class NurseScheduleActions {
         nurseSchedules = load;
     }
 
+    public void clearSchedules() {
+        nurseSchedules.clear();
+    }
+
 //    public void addSchedule(List<NurseSchedule> nurseSchedules, String[] details) throws ParseException {
 //        if (NurseSchedulesParser.isValidDate(details[2])) {
 //            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
@@ -32,11 +36,10 @@ public class NurseScheduleActions {
 
     public void addSchedule(String[] details) {
         try {
-            if (NurseSchedulesParser.isValidDate(details[2])) {
-                nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-                NurseScheduleUI.printAddedSchedule(details[1], details[2]);
-            }
-        } catch (ParseException e) {
+            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+            NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+        }
+        catch (ParseException e) {
             System.out.println(e.getMessage());
         }
     }
