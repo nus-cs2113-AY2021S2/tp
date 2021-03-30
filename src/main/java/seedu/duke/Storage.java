@@ -143,14 +143,24 @@ public class Storage {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
             final LocalDate dt = LocalDate.parse(splitString[0], dateTimeFormatter);
 
+            ArrayList<String> prescriptions = new ArrayList<>();
+            ArrayList<String> symptoms = new ArrayList<>();
+            ArrayList<String> diagnoses = new ArrayList<>();
+
             String[] symptomSplitString = splitString[1].split(Constants.SYMPTOM_DELIMITER);
-            ArrayList<String> symptoms = splitStringIntoArrayList(symptomSplitString[0]);
+            if (!symptomSplitString[0].isEmpty()) {
+                symptoms = splitStringIntoArrayList(symptomSplitString[0]);
+            }
 
             String[] diagnosisSplitString = symptomSplitString[1].split(Constants.DIAGNOSIS_DELIMITER);
-            ArrayList<String> diagnoses = splitStringIntoArrayList(diagnosisSplitString[0]);
+            if (!diagnosisSplitString[0].isEmpty()) {
+                diagnoses = splitStringIntoArrayList(diagnosisSplitString[0]);
+            }
 
             String[] prescriptionSplitString = diagnosisSplitString[1].split(Constants.PRESCRIPTION_DELIMITER);
-            ArrayList<String> prescriptions = splitStringIntoArrayList(prescriptionSplitString[0]);
+            if (prescriptionSplitString.length > 0) {
+                prescriptions = splitStringIntoArrayList(prescriptionSplitString[0]);
+            }
 
             Record record = new Record(symptoms, diagnoses, prescriptions);
 
