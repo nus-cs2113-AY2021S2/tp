@@ -91,7 +91,7 @@ public class Parser {
             // Fallthrough
         }
         
-        // commands which do not require arguments
+        // Commands which do not require arguments
         if (!commandArgs.isEmpty()) {
             throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
         }
@@ -130,6 +130,28 @@ public class Parser {
         }
 
         switch (command) {
+        case ADD_LESSON:
+            Lesson lesson = ParserUtil.parseLesson(commandArgs);
+            return new AddLessonCommand(lesson);
+        case ADD_TASK:
+            Task task = ParserUtil.parseTask(commandArgs);
+            return new AddTaskCommand(task);
+        case ADD_CHEAT_SHEET:
+            return new AddCheatSheetCommand(commandArgs);
+        case DELETE_CHEAT_SHEET:
+            return new DeleteCheatSheetCommand(commandArgs);
+        case EDIT_CHEAT_SHEET:
+            return new EditCheatSheetCommand(commandArgs);
+        default:
+            // Fallthrough
+        }
+
+        // Commands which do not require arguments
+        if (!commandArgs.isEmpty()) {
+            throw new ParserException(MESSAGE_UNKNOWN_COMMAND);
+        }
+
+        switch (command) {
         case HELP:
             return new PrintHelpCommand();
         case CLOSE:
@@ -148,22 +170,10 @@ public class Parser {
             return new MarkAsUndoneCommand();
         case TEACHER:
             return new ViewTeachingStaffCommand();
-        case ADD_LESSON:
-            Lesson lesson = ParserUtil.parseLesson(commandArgs);
-            return new AddLessonCommand(lesson);
         case DELETE_LESSON:
             return new DeleteLessonCommand();
-        case ADD_TASK:
-            Task task = ParserUtil.parseTask(commandArgs);
-            return new AddTaskCommand(task);
         case DELETE_TASK:
             return new DeleteTaskCommand();
-        case ADD_CHEAT_SHEET:
-            return new AddCheatSheetCommand(commandArgs);
-        case DELETE_CHEAT_SHEET:
-            return new DeleteCheatSheetCommand(commandArgs);
-        case EDIT_CHEAT_SHEET:
-            return new EditCheatSheetCommand(commandArgs);
         case LIST_CHEAT_SHEET:
             return new ListCheatSheetCommand();
         case EDIT_TASK:

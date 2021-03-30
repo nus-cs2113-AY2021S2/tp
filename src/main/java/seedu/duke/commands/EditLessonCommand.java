@@ -49,10 +49,12 @@ public class EditLessonCommand extends Command {
 
         Lesson lessonToEdit = getLessonToEdit(lessonsList, ui);
 
-        if (lessonToEdit != null) {
-            ui.printMessage(String.format(MESSAGE_FIELD_BEING_EDITED, lessonToEdit.getLessonType().toString()));
-            editLessonFields(lessonToEdit, ui);
+        if (lessonToEdit == null) {
+            return;
         }
+        
+        ui.printMessage(String.format(MESSAGE_FIELD_BEING_EDITED, lessonToEdit.getLessonType().toString()));
+        editLessonFields(lessonToEdit, ui);
         ModuleList.writeModule();
         ModuleList.sortLessons();
     }

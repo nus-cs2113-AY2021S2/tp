@@ -16,11 +16,7 @@ class EditLessonCommandTest extends LessonCommandTest {
     //@@author ivanchongzhien
     @Test
     void execute_validIndexAllFields_lessonFieldsEdited() throws CommandException {
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleCodes();
-        
-        ModuleList.addModule(MODULE_CODE);
-        ModuleList.setSelectedModule(MODULE_CODE);
+        editLessonTestSetup();
         Module module = ModuleList.getSelectedModule();
         
         Lesson oriLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL, 
@@ -53,18 +49,12 @@ class EditLessonCommandTest extends LessonCommandTest {
         assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
         assertEquals(editedLesson.getTeachingStaff().getEmail(), actualLessonAfterEdit.getTeachingStaff().getEmail());
 
-        removeOutputStream();
-        ModuleList.reset();
-        TestUtilAndConstants.emptyModuleList();
+        editLessonTestCleanup();
     }
 
     @Test
     void execute_validAndInvalidIndexPartialFields_lessonFieldsEdited() throws CommandException {
-        TestUtilAndConstants.removeFiles();
-        ModuleList.loadModuleCodes();
-
-        ModuleList.addModule(MODULE_CODE);
-        ModuleList.setSelectedModule(MODULE_CODE);
+        editLessonTestSetup();
         Module module = ModuleList.getSelectedModule();
 
         Lesson oriLesson = initialiseLesson(TEACHER_NAME, TEACHER_EMAIL,
@@ -96,6 +86,18 @@ class EditLessonCommandTest extends LessonCommandTest {
         assertEquals(editedLesson.getTeachingStaff().getName(), actualLessonAfterEdit.getTeachingStaff().getName());
         assertEquals(editedLesson.getTeachingStaff().getEmail(), actualLessonAfterEdit.getTeachingStaff().getEmail());
         
+        editLessonTestCleanup();
+    }
+    
+    private void editLessonTestSetup() {
+        TestUtilAndConstants.removeFiles();
+        ModuleList.loadModuleCodes();
+
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
+    }
+
+    private void editLessonTestCleanup() {
         ModuleList.reset();
         TestUtilAndConstants.emptyModuleList();
         removeOutputStream();

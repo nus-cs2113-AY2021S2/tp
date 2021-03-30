@@ -98,7 +98,7 @@ class ParserTest {
 
     @Test
     // IN MODULE COMMAND
-    void parse_inValidCommands_exceptionIsThrown() throws CommandException, ParserException {
+    void parse_invalidCommands_exceptionIsThrown() throws CommandException, ParserException {
         Parser parser = new Parser();
         boolean isThrown = false;
         
