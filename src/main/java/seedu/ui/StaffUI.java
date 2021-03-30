@@ -4,10 +4,10 @@ import seedu.exceptions.staff.AbortException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.model.staff.Staff;
 
-import static seedu.ui.UI.abortEnabledScanInput;
-import static seedu.logic.parser.StaffParser.checkID;
+import static seedu.duke.Constants.*;
+import static seedu.logic.errorchecker.StaffChecker.checkID;
 
-public class StaffUI {
+public class StaffUI extends UI{
 
 
     public static Staff inputToCreateStaff() throws WrongStaffIdException, AbortException {
@@ -43,14 +43,16 @@ public class StaffUI {
             }
         }
     }
+
+    public static void staffFiredOutput(String line) {
+        System.out.println(line.split("/")[1] + " has been fired.");
+    }
+
     public static void emptyListOutput() {
         System.out.println("OOPS! It seems like you have no staff in the list now!");
     }
 
 
-    public static void staffFiredOutput(String line) {
-        System.out.println(line.split("/")[1] + " has been fired.");
-    }
 
     public static void staffDoesNotExist(String line) {
         System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
@@ -63,14 +65,24 @@ public class StaffUI {
     }
 
     public static void printStaffHelpList() {
+
+        UI.printEmptyLine();
         System.out.println("Here is a list of Staff commands: ");
-        System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add [Staff ID] [Name] [Age] [Specialisation]\" adds a Staff to the staff list!");
-        System.out.println("\"list\" brings up the list of all current staff!");
-        System.out.println("\"delete [Staff ID]\" deletes the staff with the specified ID from the list!");
-        System.out.println("\"find [keyword or phrase]\" finds a keyword or phrase and shows its corresponding staff!");
-        System.out.println("\"return\" returns you to the Start Menu!");
+
+        UI.printEmptyLine();
+        int[] lengthpara = {10,60,50};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthpara);
+        UI.showLongLine();
+        printer(new String[]{HELP_COMMAND, STAFF_HELP_DESCRIPTION, BLANK}, lengthpara);
+        printer(new String[]{ADD_COMMAND, STAFF_ADD_DESCRIPTION, STAFF_ADD_FORMAT}, lengthpara);
+        printer(new String[]{LIST_COMMAND, STAFF_LIST_DESCRIPTION, STAFF_LIST_FORMAT}, lengthpara);
+        printer(new String[]{DELETE_COMMAND, STAFF_DELETE_DESCRIPTION, STAFF_DELETE_FORMAT}, lengthpara);
+        printer(new String[]{FIND_COMMAND, STAFF_FIND_DESCRIPTION, STAFF_FIND_FORMAT}, lengthpara);
+        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, BLANK}, lengthpara);
+        UI.printEmptyLine();
+
     }
+
     public static void corruptedFileErrorMessage() {
         System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
     }

@@ -6,7 +6,7 @@ import seedu.model.staff.Staff;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static seedu.logic.parser.StaffParser.isSameInt;
+import static seedu.logic.errorchecker.StaffChecker.isSameInt;
 import static seedu.ui.UI.*;
 
 public class StaffAggregation {
