@@ -8,7 +8,12 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.*;
+import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
+import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
+import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 
 /**
  * Class with methods for different commands in recommendation mode.
