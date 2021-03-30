@@ -101,6 +101,7 @@ public class Parser {
             } else {
                 String value = lineParts[1];
                 return new CommandKey(keyCommand, value);
+            }
         case FIND:
             if (lineParts.length != 1) {
                 throw new InvalidParameterException(keyCommand);
