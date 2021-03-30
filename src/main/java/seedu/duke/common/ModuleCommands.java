@@ -13,7 +13,7 @@ public enum ModuleCommands implements CommandList {
     LINK("link", "Opens link to the lesson in a browser."),
     TEACHER("teacher", "Lists all teaching staff."),
     LESSONS("lessons", "Lists all lessons."),
-    ADD_TASK("add task", "NAME ;; DD-MM-YY ;; [REMARKS]", "Adds new task."),
+    ADD_TASK("add task", "NAME ;; DD-MM-YYYY ;; [REMARKS]", "Adds new task."),
     DELETE_TASK("delete task", "Deletes specified tasks."),
     EDIT_TASK("edit task", "Edits specified fields of a chosen task."),
     MARK("mark", "Marks specified tasks as done."),
