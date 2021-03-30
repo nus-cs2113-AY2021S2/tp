@@ -7,6 +7,10 @@ import java.io.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.io.FileNotFoundException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,14 +26,27 @@ import java.util.TreeMap;
 public class Storage {
     protected String filePath;
 
+
+    /**
+     * This is the constructor of the Storage class.
+     * @param filePath A String of the path to the file that is used for saving/loading
+     */
     public Storage(String filePath) {
         this.filePath = filePath;
     }
 
+
+    /**
+     * Saves a SortedMap of data into the file specified by filePath.
+     * @param patientData The data to be written to file
+     * @throws IOException When file is not found etc
+     */
     public void save(SortedMap<String, Patient> patientData) throws IOException {
         try {
             File inFile = new File(filePath);
-            inFile.createNewFile();
+            if (!inFile.exists()) {
+                inFile.createNewFile();
+            }
             FileWriter fileWriter = new FileWriter(inFile.getAbsolutePath(), false);
             StringBuffer message = new StringBuffer();
             Set patientSet = patientData.entrySet();
@@ -42,37 +59,47 @@ public class Storage {
                 Patient patient = (Patient)m.getValue();
                 String records = convertRecordToString(patient);
 
-                message.append(id + Constants.KEY_VALUE_SEPARATOR + records + "\n");
+
+                message.append(id + Constants.ID_DELIMITER + records + "\n");
             }
-            System.out.println(message);
             fileWriter.write(message.toString());
             fileWriter.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Ui ui = new Ui();
+            ui.printException(e);
         }
     }
 
+    /**
+     * Convert records in a patient object into a string, separated by delimiters.
+     * @param patient Patient object whose records will be converted
+     * @return A string to be used by the save() method
+     */
     public String convertRecordToString(Patient patient) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Record record : patient.getRecords()) {
-            stringBuilder.append(record.getConsultationDetail());
-            stringBuilder.append(Constants.PATIENT_RECORDS_SEPARATOR);
-        }
+        TreeMap<LocalDate, Record> records = patient.getRecords();
+        for (Map.Entry<LocalDate, Record> record : records.entrySet()) {
+            String localDate = record.getKey().format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
+            Record patientRecord = record.getValue();
 
+            stringBuilder.append(localDate + Constants.DATE_DELIMITER + patientRecord.printFileConsultationDetail());
+            stringBuilder.append(Constants.RECORDS_DELIMITER);
+        }
         return (stringBuilder.toString());
     }
 
-    public ArrayList<Record> convertStringToRecord(String recordString) {
-        String[] splitString = recordString.split(Constants.PATIENT_RECORDS_SEPARATOR);
-        ArrayList<Record> records = new ArrayList<Record>();
-        for (String str : splitString){
-            records.add(new Record(str));
-        }
+
+    /*public TreeMap<LocalDate, Record> convertStringToRecords(String recordString) {
+        String[] splitString = recordString.split(Constants.DATE_DELIMITER);
+        TreeMap<LocalDate, Record> records = new TreeMap<>();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
+        LocalDate dt = dateTimeFormatter.parseLocalDate(splitString[0]);
+
         return records;
     }
 
-    //TODO: Fix load function
+
     public SortedMap<String, Patient> load() throws IOException {
         SortedMap<String, Patient> data = new TreeMap<>();
         try {
@@ -82,13 +109,18 @@ public class Storage {
                 String[] retrievedPatientsData = scanner.nextLine().split(Constants.KEY_VALUE_SEPARATOR);
                 String id = retrievedPatientsData[0];
                 ArrayList<Record> records = convertStringToRecord(retrievedPatientsData[1]);
+
+                String[] retrievedPatientsData = scanner.nextLine().split(Constants.ID_DELIMITER);
+                String id = retrievedPatientsData[0];
+                TreeMap<LocalDate, Record> records = convertStringToRecords(retrievedPatientsData[1]);
                 Patient patient = new Patient(id, records);
                 data.put(id, patient);
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Ui ui = new Ui();
+            ui.printException(e);
         }
         return data;
-    }
+    }*/
 }
