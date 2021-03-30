@@ -18,7 +18,7 @@ deactivate DailyRoute
 create Router
 ShowDailyRouteCommand -> Router : execute
 activate Router
-Router -> Router : execute
+Router -> Router : findShortestRoute
 activate Router
 return
 return
@@ -26,14 +26,14 @@ return
 create Router
 ShowDailyRouteCommand -> Router : execute
 activate Router
-Router -> Router : execute
+Router -> Router : findShortestRoute
 activate Router
 return
 return
 create Router
 ShowDailyRouteCommand -> Router : execute
 activate Router
-Router -> Router : execute
+Router -> Router : findShortestRoute
 activate Router
 return
 return

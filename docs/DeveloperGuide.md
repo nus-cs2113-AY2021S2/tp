@@ -71,6 +71,7 @@ The following image shows the sequence diagram in which the add day command is i
 ![img.png](addday.png)
 
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
+
 Step 1. The user launches the application.<br />
 Step 2. The user executes `show daily route` command. UI will then prompt the user `SELECT ENTRY TO VIEW:`  to input a day index. This returns an arraylist of the day's schedule <br />
 Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the previous one. <br />
