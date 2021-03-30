@@ -72,13 +72,18 @@ public class NurseScheduleChecker extends MainChecker {
             throw new InvalidIDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidIDTypeException();
+        } else if (!(userID.charAt(0) == 'N')) {
+            throw new InvalidIDTypeException();
         }
+
     }
 
     public static void checkValidPatientID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
+            throw new InvalidIDTypeException();
+        } else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException();
         }
     }
