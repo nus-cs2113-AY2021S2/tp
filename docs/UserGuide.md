@@ -61,7 +61,7 @@ and record your thoughts on how good or bad the experience was!
 ## Features
 ### Command Format
 ### Review Mode
-Connoisseur has 2 modes, the first is the review mode, where you can add your own reviews of experiences. The review mode can be accessed from anywhere using the `review` command. 
+Connoisseur has 2 modes. The first is the review mode, where you can add your own reviews of experiences. The review mode can be accessed from anywhere using the `review` command. 
 
 #### Viewing Help
 View help on commands recognised by Connoisseur. You can specify a command to get detailed help on it. 

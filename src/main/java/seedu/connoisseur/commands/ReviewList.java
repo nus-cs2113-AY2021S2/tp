@@ -3,17 +3,17 @@ package seedu.connoisseur.commands;
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.exceptions.EmptyInputException;
 import seedu.connoisseur.review.Review;
-import seedu.connoisseur.storage.ConnoisseurData;
-import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
+import seedu.connoisseur.storage.ConnoisseurData;
+import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
 import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_REVIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
 import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
 import static seedu.connoisseur.messages.Messages.SORT_METHOD_PROMPT;
@@ -102,22 +102,21 @@ public class ReviewList {
     /**
      * List reviews according to different types of input.
      *
-     * @param input is either to show recommendations list
-     *              or the listing method preferred by user. If there is no
-     *              preferred listing method, default listing will be used.
+     * @param sortMethod is listing method preferred by user. If there is no
+     *                   preferred listing method, default listing will be used.
      */
-    public void listReviews(String input) {
+    public void listReviews(String sortMethod) {
         if (reviews.size() == 0) {
             ui.printEmptyReviewListMessage();
-        } else if (!validSortMethod(input)) {
+        } else if (!validSortMethod(sortMethod)) {
             ui.printInvalidSortMethodMessage();
         } else {
-            if (input == null) {
+            if (sortMethod == null) {
                 sorter.sortReview(reviews);
                 printReviews(reviews);
             } else {
                 try {
-                    sorter.sortReview(reviews, input);
+                    sorter.sortReview(reviews, sortMethod);
                     printReviews(reviews);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidSortMethodMessage();
@@ -280,7 +279,7 @@ public class ReviewList {
             }
         }
         if (reviewIndex == -1) {
-            ui.println(INVALID_DELETE_TITLE);
+            ui.println(INVALID_DELETE_REVIEW_TITLE);
         } else {
             reviews.remove(reviewIndex);
             ui.println(title + DELETE_SUCCESS);
@@ -447,5 +446,9 @@ public class ReviewList {
         } else {
             return false;
         }
+    }
+
+    public void receiveConvert(Review r) {
+        reviews.add(r);
     }
 }

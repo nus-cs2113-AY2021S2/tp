@@ -1,13 +1,12 @@
 package seedu.connoisseur;
 
+import seedu.connoisseur.commands.Commands;
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 import static seedu.connoisseur.messages.Messages.COMMAND_PROMPT;
-
-import seedu.connoisseur.commands.Commands;
 
 public class Connoisseur {
 

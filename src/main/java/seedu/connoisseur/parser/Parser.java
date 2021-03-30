@@ -2,12 +2,14 @@ package seedu.connoisseur.parser;
 
 import seedu.connoisseur.commands.Commands;
 import seedu.connoisseur.exceptions.DuplicateException;
+import seedu.connoisseur.ui.Ui;
 
 /**
  * Handles Connoisseur's commands.
  */
 public class Parser {
     private static Commands commands;
+    private boolean isReviewMode = true;
 
     /**
      * Constructor for parser class.
@@ -22,6 +24,7 @@ public class Parser {
      * @return true if exit command, false otherwise
      */
     public boolean determineCommand(String input) throws DuplicateException {
+        Ui ui = new Ui();
         String command = input.split(" ", 2)[0].toLowerCase().trim();
         String arguments;
         try {
@@ -33,6 +36,7 @@ public class Parser {
         switch (command) {
         case "review":
             commands.reviewMode();
+            ;
             break;
         case "reco":
             commands.recommendationMode();
@@ -52,6 +56,9 @@ public class Parser {
             break;
         case "delete":
             commands.delete(arguments);
+            break;
+        case "done":
+            commands.done(arguments);
             break;
         case "view":
             commands.view(arguments);

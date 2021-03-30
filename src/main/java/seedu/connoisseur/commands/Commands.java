@@ -6,6 +6,7 @@ import seedu.connoisseur.ui.Ui;
 import seedu.connoisseur.sorter.SortMethod;
 import seedu.connoisseur.sorter.Sorter;
 
+
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 
 /**
@@ -21,7 +22,7 @@ public class Commands {
     private RecommendationList recommendationList;
 
     /**
-     * Creates CommandList based on stored data.
+     * Creates Commands based on stored data.
      *
      * @param connoisseurData locally stored data
      * @param ui              ui instance
@@ -32,7 +33,7 @@ public class Commands {
         this.storage = storage;
         sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
         reviewList = new ReviewList(connoisseurData, ui);
-        recommendationList = new RecommendationList(connoisseurData, ui);
+        recommendationList = new RecommendationList(connoisseurData, ui, reviewList);
     }
 
     /**
@@ -43,9 +44,8 @@ public class Commands {
         this.storage = storage;
         sorter = new Sorter(SortMethod.LATEST);
         reviewList = new ReviewList(ui);
-        recommendationList = new RecommendationList(ui);
+        recommendationList = new RecommendationList(ui, reviewList);
     }
-
 
     public void reviewMode() {
         isReviewMode = true;
@@ -97,7 +97,8 @@ public class Commands {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList.reviews, recommendationList.recommendations, sorter.getSortMethod());
+        storage.saveConnoisseurData(reviewList.reviews, recommendationList.recommendations,
+                sorter.getSortMethod());
         ui.printExitMessage();
     }
 
@@ -136,9 +137,10 @@ public class Commands {
         if (isReviewMode) {
             reviewList.deleteReview(title);
         } else {
-            ui.printCommandDoesNotExistInRecommendationMode();
+            recommendationList.deleteRecommendation(title);
         }
     }
+
 
     /**
      * View a selected review.
@@ -152,6 +154,20 @@ public class Commands {
             ui.printCommandDoesNotExistInRecommendationMode();
         }
     }
+
+    /**
+     * Removes selected recommended from list and converts it to a review.
+     *
+     * @param title title of the review to be viewed.
+     */
+    public void done(String title) {
+        if (isReviewMode) {
+            ui.printCommandDoesNotExistInReviewMode();
+        } else {
+            recommendationList.convertRecommendation(title);
+        }
+    }
+
 
     /**
      * Add a selected review or recommendation.

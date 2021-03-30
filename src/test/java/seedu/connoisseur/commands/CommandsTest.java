@@ -75,7 +75,6 @@ public class CommandsTest {
 
     @Test
     void checkAndPrintDuplicate() {
-        Ui ui = new Ui();
         reviewList.reviews = new ArrayList<Review>();
         assertFalse(reviewList.checkAndPrintDuplicateReview("Avengers"));
     }

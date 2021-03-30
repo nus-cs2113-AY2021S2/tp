@@ -3,6 +3,7 @@ package seedu.connoisseur.commands;
 import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.exceptions.EmptyInputException;
 import seedu.connoisseur.recommendation.Recommendation;
+import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.ui.Ui;
 
@@ -10,6 +11,11 @@ import java.util.ArrayList;
 
 import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
 import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
@@ -21,13 +27,16 @@ import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 public class RecommendationList {
     private final Ui ui;
     public ArrayList<Recommendation> recommendations = new ArrayList<>();
+    private ReviewList reviewList;
 
-    public RecommendationList(ConnoisseurData connoisseurData, Ui ui) {
+    public RecommendationList(ConnoisseurData connoisseurData, Ui ui, ReviewList reviewList) {
         this.ui = ui;
         this.recommendations = connoisseurData.getRecommendations();
+        this.reviewList = reviewList;
     }
 
-    public RecommendationList(Ui ui) {
+    public RecommendationList(Ui ui, ReviewList reviewList) {
+        this.reviewList = reviewList;
         this.ui = ui;
     }
 
@@ -57,8 +66,8 @@ public class RecommendationList {
             ui.printWhiteSpaceTitle(currentRecommendation.getTitle().length());
             ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print("| " + currentRecommendation.dollarRange());
-            ui.printWhiteSpace(currentRecommendation.dollarRange().length());
+            ui.print("| " + currentRecommendation.priceRange());
+            ui.printWhiteSpace(currentRecommendation.priceRange().length());
             ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
             ui.print("| " + currentRecommendation.getRecommendedBy());
@@ -91,8 +100,8 @@ public class RecommendationList {
             ui.printWhiteSpace(currentRecommendation.getTitle().length());
             ui.print(currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
-            ui.print(currentRecommendation.dollarRange());
-            ui.printWhiteSpace(currentRecommendation.dollarRange().length());
+            ui.print(currentRecommendation.priceRange());
+            ui.printWhiteSpace(currentRecommendation.priceRange().length());
             ui.println(currentRecommendation.getRecommendedBy());
             return true;
         } else {
@@ -136,10 +145,10 @@ public class RecommendationList {
         ui.println(PRICE_PROMPT);
         try {
             String priceRange = ui.readCommand();
-            int priceLow;
-            int priceHigh;
-            int priceFirst = Integer.parseInt(priceRange.split("-", 2)[0].trim());
-            int priceSecond = Integer.parseInt(priceRange.split("-", 2)[1].trim());
+            double priceLow;
+            double priceHigh;
+            double priceFirst = Double.parseDouble(priceRange.split("-", 2)[0].trim());
+            double priceSecond = Double.parseDouble(priceRange.split("-", 2)[1].trim());
             if (priceFirst > priceSecond) {
                 priceLow = priceSecond;
                 priceHigh = priceFirst;
@@ -147,6 +156,8 @@ public class RecommendationList {
                 priceLow = priceFirst;
                 priceHigh = priceSecond;
             }
+            priceLow = Math.round(priceLow * 100.0) / 100.0;
+            priceHigh = Math.round(priceHigh * 100.0) / 100.0;
             ui.println(RECOBY_PROMPT);
             String recommendedBy = ui.readCommand();
             ui.println(LOCATION_PROMPT);
@@ -157,5 +168,82 @@ public class RecommendationList {
         } catch (NumberFormatException e) {
             ui.printInvalidRatingMessage();
         }
+    }
+
+    /**
+     * Delete review.
+     */
+    public void deleteRecommendation(String title) {
+        if (title == null || title.isBlank()) {
+            ui.println(MISSING_DELETE_TITLE);
+            return;
+        }
+        int reviewIndex = -1;
+        for (int i = 0; i < recommendations.size(); i++) {
+            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
+                reviewIndex = i;
+                break;
+            }
+        }
+        if (reviewIndex == -1) {
+            ui.println(INVALID_DELETE_RECO_TITLE);
+        } else {
+            recommendations.remove(reviewIndex);
+            ui.println(title + DELETE_SUCCESS);
+        }
+    }
+
+    public void convertRecommendation(String title) {
+        String category;
+        String rating;
+        String description;
+        if (title == null || title.isBlank()) {
+            ui.println(MISSING_DELETE_TITLE);
+            return;
+        }
+        int recommendationIndex = -1;
+        for (int i = 0; i < recommendations.size(); i++) {
+            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
+                recommendationIndex = i;
+                break;
+            }
+        }
+        if (recommendationIndex == -1) {
+            ui.println(INVALID_DELETE_RECO_TITLE);
+        } else {
+            category = recommendations.get(recommendationIndex).getCategory();
+            description = "No description entered. ";
+            Review r = new Review(title, category, 0, description);
+
+            System.out.println("Done! How would you rate your experience out of 5 stars?");
+            rating = ui.readCommand();
+
+            try {
+                if (Integer.parseInt(rating) <= 5 && Integer.parseInt(rating) >= 0) {
+                    r.setRating(Integer.parseInt(rating));
+                } else {
+                    System.out.println("Invalid rating, failed to edit rating ");
+                }
+                System.out.println("Add in details of your experience? (y/n)");
+                switch (ui.readCommand().toLowerCase()) {
+                case "y":
+                    System.out.println("Enter your new description of the review: ");
+                    String newDescription = ui.readCommand();
+                    r.setDescription(newDescription);
+                    break;
+                case "n":
+                    break;
+                default:
+                    ui.println(INVALID_COMMAND);
+                }
+                reviewList.receiveConvert(r);
+            } catch (NumberFormatException ne) {
+                System.out.println("Invalid rating, failed to edit rating ");
+            }
+
+            recommendations.remove(recommendationIndex);
+            ui.println(title + CONVERT_SUCCESS);
+        }
+
     }
 }

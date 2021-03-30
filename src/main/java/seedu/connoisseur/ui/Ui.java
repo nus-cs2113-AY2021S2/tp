@@ -101,7 +101,7 @@ public class Ui {
         printWhiteSpaceView(currentReview.getCategory().length());
         println("|");
         print("|Date & Time of Entry: " + currentReview.getDateTime());
-        printWhiteSpaceView(20);
+        printWhiteSpaceView(19);
         println("|");
         print("|Rating              : " + currentReview.starRating());
         printWhiteSpaceView(12);
@@ -304,6 +304,10 @@ public class Ui {
      */
     public void printEmptyRecommendationListMessage() {
         println("You have no recommendations, type 'add' followed by a title to start!");
+    }
+
+    public void printCommandDoesNotExistInReviewMode() {
+        println("This command does not exist in review mode");
     }
 
     public void printCommandDoesNotExistInRecommendationMode() {
