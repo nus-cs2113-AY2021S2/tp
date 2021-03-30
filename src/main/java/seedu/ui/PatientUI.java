@@ -1,19 +1,24 @@
 package seedu.ui;
 
+import static seedu.duke.Constants.*;
+
 public class PatientUI extends UI{
+
     public static void printPatientHelpList() {
-        System.out.println("Here is a list of patient commands: ");
-        System.out.println("\"help\" brings up this list of commands!");
-        System.out.println("\"add [Patient ID] [Name] [Age] [Gender] [Illness] [Drugs Needed]\" " +
-                "adds a patient to the patient list!");
-        System.out.println("*The name must not have a space included!");
-        System.out.println("*The patient ID must start with a \"P\" and have a 5 digit number after! eg. P12345");
-        System.out.println("*The age must be an integer!");
-        System.out.println("\"list\" brings up the list of all current patients!");
-        System.out.println("\"delete [Patient ID]\" deletes the patient with the ID from the list!");
-        System.out.println("\"find [Patient ID]\" finds the corresponding patient that matches the ID!");
-        System.out.println("\"return\" returns you to the Start Menu!");
-        System.out.println("Please take note the follow the number of parameters in each command strictly!");
+        UI.printEmptyLine();
+        System.out.println("Here is a list of Patient commands: ");
+
+        UI.printEmptyLine();
+        int[] lengthPara = {10,60,70};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
+        UI.showLongLine();
+        printer(new String[]{HELP_COMMAND, PATIENT_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{ADD_COMMAND, PATIENT_ADD_DESCRIPTION, PATIENT_ADD_FORMAT}, lengthPara);
+        printer(new String[]{LIST_COMMAND, PATIENT_LIST_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{DELETE_COMMAND, PATIENT_DELETE_DESCRIPTION, PATIENT_DELETE_FORMAT}, lengthPara);
+        printer(new String[]{FIND_COMMAND, PATIENT_FIND_DESCRIPTION, PATIENT_FIND_FORMAT}, lengthPara);
+        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
+        UI.printEmptyLine();
     }
 
     public static void patientAddedMessage(String name) {

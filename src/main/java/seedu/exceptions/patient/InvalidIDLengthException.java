@@ -8,9 +8,9 @@ public class InvalidIDLengthException extends HealthVaultException {
         this.error = error;
     }
 
-    @Override
-    public void getError(String input) {
-        super.getError(input);
+    public String getMessage() {
+        return "Looks like your ID length is incorrect! \n" +
+                "Please ensure that the ID has 6 characters!";
     }
 
 }

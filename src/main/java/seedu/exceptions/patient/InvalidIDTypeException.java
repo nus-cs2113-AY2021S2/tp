@@ -8,8 +8,8 @@ public class InvalidIDTypeException extends HealthVaultException {
         this.error = error;
     }
 
-    @Override
-    public void getError(String input) {
-        super.getError(input);
+    public String getMessage() {
+        return "Looks like your ID type is incorrect! \n" +
+                "Please ensure that the ID starts with \"P\"!";
     }
 }

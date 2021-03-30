@@ -1,8 +1,11 @@
 package seedu.storage;
 
 import seedu.exceptions.HealthVaultException;
+import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.Patient;
 import seedu.logic.command.PatientActions;
+import seedu.ui.PatientUI;
+import seedu.ui.UI;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -16,10 +19,13 @@ public class PatientStorage {
     static File saveFile;
     static ArrayList<Patient> patients = new ArrayList<>();
     static String filePath;
+    static PatientUI ui;
+    static PatientChecker checker;
 
     public PatientStorage(String filepath) {
         filePath = filepath;
         saveFile = new File(filepath);
+        ui = new PatientUI();
     }
 
     /**
@@ -59,17 +65,21 @@ public class PatientStorage {
                 String currentScan = fileScanner.nextLine();
                 //splits the string into sections for storing in the ArrayList
                 String[] taskSave = currentScan.trim().split(" \\| ");
-                if (taskSave.length != 6) {
-                    throw new HealthVaultException("loadFile");
+                int numberOfTokens = taskSave.length;
+                ArrayList<String> cleanString = new ArrayList<>();
+                for (int i = 0; i < numberOfTokens; i++) {
+                    cleanString.add(ui.cleanseInput(taskSave[i]));
                 }
+                checker = new PatientChecker(patients, cleanString, numberOfTokens);
+                checker.checkStorage();
                 Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
                         taskSave[3], taskSave[4], taskSave[5]);
                 patients.add(tempPatient);
             }
         } catch (FileNotFoundException e) {
-            throw new HealthVaultException("OOPS! I can't read the save file!");
+            throw new HealthVaultException();
         } catch (HealthVaultException e) {
-            e.getError("loadFile");
+            System.out.println(e.getMessage());
         }
         return patients;
     }

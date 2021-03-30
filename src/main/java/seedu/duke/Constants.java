@@ -35,9 +35,12 @@ public class Constants {
     public static final String LIST_COMMAND = "list";
     public static final String RETURN_COMMAND = "return";
 
+    //field Checking
+    public static final String[] VALID_GENDER_INPUT = {"M", "F", "Others"};
 
     // Miscellaneous
-    public static final String BLANK = "-";
+    public static final String BLANK = "";
+    public static final String MARK_BLANK = "-";
     public static final String RETURN_DESCRIPTION = "Returns you to the Start Menu!";
 
     // HELP HEADER
@@ -63,9 +66,9 @@ public class Constants {
 
     // ADD FUNCTION FORMATTING
     public static final String STAFF_ADD_FORMAT = "add/[Staff ID]/[Name]/[Age]/[Specialisation]";
-    public static final String PATIENT_ADD_FORMAT = "";
+    public static final String PATIENT_ADD_FORMAT = "add/[Patient ID]/[Name]/[Age]/[Gender][Illness][Medication Needed]";
     public static final String APPOINTMENTS_ADD_FORMAT = "";
-    public static final String SCHEDULES_ADD_FORMAT = "add/[NurseID]/[Patient ID]/[Date (DDMMYYYY)]";
+    public static final String SCHEDULES_ADD_FORMAT = "add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]";
     public static final String INVENTORY_ADD_FORMAT = "";
 
 
@@ -79,7 +82,6 @@ public class Constants {
 
     // LIST FUNCTION FORMATTING
     public static final String STAFF_LIST_FORMAT = "list/<input>, where input == doctor or nurse";
-    public static final String PATIENT_LIST_FORMAT = "";
     public static final String APPOINTMENTS_LIST_FORMAT = "";
     public static final String SCHEDULES_LIST_FORMAT = "list/[NurseID/all]";
     public static final String INVENTORY_LIST_FORMAT = "";
