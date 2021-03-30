@@ -4,14 +4,13 @@
 * [Introduction](#introduction)
 * [Setting up the project in your computer](#setting-up-the-project-in-your-computer)
 * [Design and implementation](#design--implementation)
-* [Product scope](#product-scope)
+* [Appendix A: Product scope](#appendix-a-product-scope)
    * [Target user profile](#target-user-profile)
    * [Value proposition](#value-proposition)
-* [User stories](#user-stories)
-* [Non-Functional Requirements](#non-functional-requirements)
-* [Glossary](#glossary)
-* [Testing](#testing)
-<!-- * [Instructions for manual testing](#instructions-for-manual-testing) -->
+* [Appendix B: User stories](#appendix-b-user-stories)
+* [Appendix C: Non-Functional Requirements](#appendix-c-non-functional-requirements)
+* [Appendix D: Glossary](#appendix-d-glossary)
+* [Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing)
 
 ## Introduction
 
@@ -30,45 +29,18 @@ If you plan to use Intellij IDEA (highly recommended):
    [Intellij IDEA: Configuring the JDK @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijJdk.html) \
    IDEA: Configuring the JDK to ensure Intellij is configured 
    to use JDK 11.
-2. Import the project as a Gradle project: Follow the guide 
+1. Import the project as a Gradle project: Follow the guide 
    [Intellij IDEA: Importing a Gradle project @SE-EDU/guides](https://se-education.org/guides/tutorials/intellijImportGradleProject.html) \
    IDEA: Importing a Gradle project to import 
    the project into IDEA.
    > ❗ Note: Importing a Gradle project is slightly different from importing a normal Java project.
-3. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
+1. Verify the setup: Run `seedu.duke.PatientManager` and try a few commands. 
    Run the tests to ensure they all pass.
 
 ## Design & implementation
 
-### Help command
-
-When invoked by the user via the `help` command, information about the available commands is printed.
-If arguments are provided, the arguments are parsed into the separate commands, and the information about each
-command present in the arguments is printed in order. If the user provides an invalid command, an invalid command
-message is shown, and the messages for the following commands are printed.
-
-#### Alternatives considered
-
-The original version of this command simply printed out the information messages of all commands. 
-However, with a growing list of commands, we were worried that the help message would be too long and would
-require scrolling.
-
-The current version reads the arguments that are provided by the user, and prints out information messages for each
-of the commands indicated. Unknown/invalid commands will not be skipped with a message indicating that the command is 
-invalid, and the subsequent commands will continue to be processed. 
-
-A future consideration would be to convert the message printed out when no arguments are provided to only print a list
-of available commands for easier reference:
-```
-> help
------------------------------------------------------------------
-List of available commands:
-...
-...
-Enter help <command> for more details of each command
------------------------------------------------------------------
-```
 ### Architecture
+<img src="./images/architecture_diagram.png" width="600">
 
 The Architecture Diagram shown above gives a high-level explanation of PatientManager.
 Given below is a brief overview of each component.
@@ -94,7 +66,7 @@ It is also responsible for displaying the response from PatientManager to the sc
 
 The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command `add S1234567D`.
 
-{TO BE ADDED}
+<img src="./images/sequence_diagram.png" width="600">
 
 The sections below give more details for each component.
 
@@ -105,6 +77,7 @@ The sections below give more details for each component.
 - printing of string messages, exceptions, a welcome message and a standardized long line
 
 ### Logic Component
+
 ### Model Component
 
 API: `Patient.java`, `Record.java` and `Data.java` 
@@ -132,9 +105,9 @@ API: `Patient.java`, `Record.java` and `Data.java`
 - convert records to string
 - converts string to records
 
-### Common Classes
+### Commons
 
-## Product scope
+## Appendix A: Product scope
 
 ### Target user profile
 
@@ -147,7 +120,7 @@ Also, they would like to have a more efficient way to organize the records of th
 Through Patient Manager, general practitioners are able to manage patients faster than a typical mouse/GUI driven app.
 The typical paperwork, such as recording of symptoms, diagnoses and prescriptions, are greatly reduced through digital input.
 
-## User Stories
+## Appendix B: User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -162,37 +135,80 @@ The typical paperwork, such as recording of symptoms, diagnoses and prescription
 |v2.0|GP in a polyclinic|know if I entered a invalid Patient ID|make sure no mistake is made recording the patient's ID|
 |v2.0|GP in a polyclinic|load and save existing data|work on the data on another device|
 
-## Non-Functional Requirements
+## Appendix C: Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java 11 or above installed. 
-2. Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
-   be able to accomplish most of the tasks faster using commands than using the mouse. 
-   
-{more to be added}
+1. Should be able to hold up to 1000 patients without a noticeable sluggishness in performance for typical usage.
+1. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should 
+   be able to accomplish most of the tasks faster using commands than using the mouse.
+1. The data should be stored locally and should be in a human editable text file.
+1. The application should work without requiring an installer.
+1. The application should be at most 100 MB in size.
+1. The application should not rely on any remote server, or database management system.
 
-## Glossary
+<!-- NFRs taken from: https://nus-cs2113-ay2021s2.github.io/website/admin/tp-constraints.html -->
 
-* *glossary item* - Definition
+## Appendix D: Glossary
 
-## Testing
+- *Mainstream OS* - Windows, Linux, and OS-X platforms.
+- *General Practitioner* - A doctor based in the community who treats patients with minor or chronic illnesses and
+  refers those with serious conditions to a hospital. Their duties are not confined to specific organs of the body,
+  and they have particular skills in treating people with multiple health issues.
+- *Visit Record* - Details taken down by the doctor during one's visit. In this case, Patient Manager can record
+  the patient's symptoms, the diagnosis made by the doctor, and any prescriptions or referals given.
 
-### Automated Testing
-We have both JUnit Test and IO Redirection Test. To run these tests, execute these commands in a shell or CMD:
-```
-### For JUnit tests
-# *nix OS and MacOSX bash
-./gradlew check
-# Windows CMD
-gradlew.bat check
+## Appendix E: Instructions for Manual Testing
 
-### For I/O redirection tests
-cd text-ui-test
-# *nix OS and MacOSX bash
-./runtest.sh
-# Windows CMD
-runtest.bat
-```
+### Launch, Help and Shutdown
 
-### Manual Testing
-The current version does not support storing the data on the local drive. To start with the manual testing process, you may refer to the "QuickStart" section of the [User Guide](UserGuide.md).
+1. Initial launch
+   1. Download `tp.jar` and copy into an empty folder.
+   1. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:
+      <img src="./images/WindowsPowerShell.png" width="600">
+   1. Execute `java -jar tp.jar` to start the Patient Manager.\
+      Expected: Shows the welcome message as shown below
+      <img src="./images/start_program.png" width="600">
+1. View help
+    1. Test case: `help`\
+       Expected: Application prints out a help message containing a list of valid commands
+       and how to use them.
+    1. Test case: `help add`\
+       Expected: Application prints out a help message explaining only the `add` command.
+1. Exiting
+    1. Test case: `exit`\
+       Expected: Application prints goodbye message and exits. All data will be saved to
+       `./data/TODO_ADD_FILENAME_HERE.txt`
+### Adding and Loading Patients
+
+1. Adding a new patient
+    1. Test case: `add S1234567D`\
+       Expected: Application shows:
+       ```
+       ----------------------------------------------------------------------
+       Patient S1234567D has been added!
+       ----------------------------------------------------------------------
+       ```
+1. Loading a patient's records
+    1. Prerequisite: Patients have already been added (in this case, S1234567D has already been added).
+    1. Test case: `load S1234567D`\
+       Expected: Application loads S1234567D's records and shows:
+       ```
+       ----------------------------------------------------------------------
+       Patient S1234567D's data has been found and loaded.
+       ----------------------------------------------------------------------
+       ```
+### Adding and Viewing a Patient's Visit Records
+1. Adding visit records
+    1. Prerequisite: Patient's records have already been loaded.
+    1. Test case: `record /s coughing, runny nose, fever /d flu /p panadol, cetirizine`\
+       Expected: Details added to patient's visit record. Newly-added details shown in status message.
+1. Viewing visit records
+    1. Prerequisite: Patient's records have already been loaded.
+    1. Test case: `retrieve`\
+       Expected: Details of all of the patient's past visits shown.
+
+### Saving Data
+1. Missing data files
+    1. Delete the file `./data/TODO_ADD_FILENAME_HERE.txt`.
+    1. Launch the app with `java -jar tp.jar`.
+    1. Expected: Application should start up without any data.
