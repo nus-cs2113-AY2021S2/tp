@@ -5,26 +5,26 @@ import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
 import seedu.logic.command.patient.*;
 import seedu.logic.errorchecker.PatientChecker;
-import seedu.ui.UI;
 import seedu.logic.command.PatientActions;
 
-import java.util.ArrayList;
+import static seedu.ui.UI.smartCommandRecognition;
 
 public class PatientParser {
 
+    protected static final String[] COMMANDS = {"add", "delete", "list", "find", "return", "help"};
     private PatientChecker checker;
 
     public Command patientParse(String fullCommand, PatientActions patients) throws ArrayIndexOutOfBoundsException,
             HealthVaultException, NumberFormatException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-        ArrayList<String> cleanString = new ArrayList<>();
+        /*ArrayList<String> cleanString = new ArrayList<>();
         for (int i = 0; i < numberOfTokens; i++) {
             cleanString.add(UI.cleanseInput(stringTokens[i]));
-        }
-        String command = stringTokens[0];
+        }*/
+        String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
-        checker = new PatientChecker(patients, cleanString, command, numberOfTokens);
+        checker = new PatientChecker(patients, stringTokens, command, numberOfTokens);
         switch (command) {
         case "list":
             checker.checkLength();
@@ -32,7 +32,7 @@ public class PatientParser {
             break;
         case "add":
             checker.checkAdd();
-            String[] addFormat = parseToAddFormat(cleanString);
+            String[] addFormat = parseToAddFormat(stringTokens);
             c = new PatientAdd(addFormat);
             break;
         case "delete":
@@ -58,10 +58,10 @@ public class PatientParser {
         return c;
     }
 
-    private String[] parseToAddFormat(ArrayList<String> cleanString) {
+    private String[] parseToAddFormat(String[] input) {
         String[] addFormat;
-        addFormat = new String[] {cleanString.get(1), cleanString.get(2), cleanString.get(3),
-                cleanString.get(4), cleanString.get(5), cleanString.get(6)};
+        addFormat = new String[] {input[1], input[2], input[3],
+                input[4], input[5], input[6]};
         return addFormat;
     }
 
