@@ -19,6 +19,7 @@ import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_PERSON;
 import static seedu.duke.common.Constant.OPTION_SAVING;
+import static seedu.duke.common.Constant.FILE_DELIMITER;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
@@ -40,7 +41,6 @@ public class AddCommand extends Command {
     private final LocalDate issueDate;
     private final String description;
     private final String borrowerName;
-
     private RecordType recordType;
 
     /**
@@ -112,8 +112,9 @@ public class AddCommand extends Command {
     private String getPerson(ArrayList<String> arguments) throws CommandException {
         if (recordType == RecordType.LOAN) {
             String borrowerName = getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
-            if (borrowerName.contains("|")) {
-                throw new CommandException("Borrower name cannot contain '|' as input.", COMMAND_ADD);
+            if (borrowerName.contains(FILE_DELIMITER)) {
+                throw new CommandException("Borrower name cannot contain '" + FILE_DELIMITER + "' as input.",
+                        COMMAND_ADD);
             }
             return borrowerName;
         } else if (hasOption(arguments, OPTION_PERSON)) {
@@ -152,18 +153,19 @@ public class AddCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         switch (recordType) {
         case EXPENSE:
             Expense expenseObj = new Expense(amount, issueDate, description);
             recordList.addRecord(expenseObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(expenseObj, recordList.getRecordCount());
             break;
         case LOAN:
             Loan loanObj = new Loan(amount, issueDate, description, borrowerName);
             recordList.addRecord(loanObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(loanObj, recordList.getRecordCount());
             break;
         case SAVING:
@@ -171,7 +173,7 @@ public class AddCommand extends Command {
         default:
             Saving savingObj = new Saving(amount, issueDate, description);
             recordList.addRecord(savingObj);
-            storage.saveData(recordList, creditScoreMap);
+            storage.saveData(recordList, creditScoreReturnedLoansMap);
             ui.printSuccessfulAdd(savingObj, recordList.getRecordCount());
         }
     }

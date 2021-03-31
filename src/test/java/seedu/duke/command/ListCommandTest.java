@@ -55,8 +55,8 @@ class ListCommandTest {
         Storage storage = new Storage();
         ParserHandler parserHandler = new ParserHandler();
         RecordList records = getPopulatedRecordList(listCmdTypeToTest);
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         CommandHandler commandHandler = new CommandHandler();
 
         Command command = commandHandler.parseCommand(parserHandler.getParseInput(listCmdStr), records);
@@ -66,7 +66,7 @@ class ListCommandTest {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream listCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(listCmdBos));
-        command.execute(records, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         System.setOut(originalOut);
         assertTrue(listCmdBos.toString().equals(expectedOutput), String.format("Failed test '%s', wrong output.",
                 listCmdTestName));
