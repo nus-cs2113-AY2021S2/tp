@@ -200,7 +200,7 @@ Format : `delete alias → ALIAS_NAME`
 ### 4.5 Daily Routes
 #### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
-Format : `add day → DAY_ENTRY → BLOCK/END`
+Format : `add daily route → DAY_ENTRY → BLOCK/END`
 - You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
 
 - `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
@@ -215,7 +215,7 @@ Format : `add day → DAY_ENTRY → BLOCK/END`
 
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
-Format : `day → DAY_NUMBER`
+Format : `show daily route → DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
