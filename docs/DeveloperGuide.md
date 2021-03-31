@@ -2,17 +2,6 @@
 
 ## Design 
 
-### Project overview
-
-NUSFOODREVIEW is built using java. It has cross platform ability that allows it to run on Windows, MAC-OS and Linux. 
-When the application is running it has to ability to display a number of canteens around NUS and all their stores available.
-The application allow users to read/enter reviews and ratings on the chosen store. User is also able to view some sample 
-menus of the stores. The application will record the timestamp whenever a new review is entered and print it out together 
-with the review when requested. Admin must verify themselves using password given by the application developer and change 
-it once they logged in as admin. Admin has the ability to add/delete canteen, store and review. NUSFOODREVIEW has a storage file
-that allows the saving and loading of data. This allows all parameters of the data to be stored and read whenever is needed.
-
-
 ##Implementation
 For public users, the list of commands is shown below:
 
@@ -185,6 +174,8 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|admin|login|verify myself|
 |v2.0|admin|add a new canteen
 |v2.0|admin|delete an existing canteen
+|v2.0|admin|delete a store
+|v2.0|admin|delete a review
 
 
 

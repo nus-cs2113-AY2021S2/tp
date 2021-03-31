@@ -67,7 +67,7 @@ public class Parser {
             newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
             newCommand = new AddReviewCommand(store);
-        } else if (line.startsWith("exit")) {
+        } else if (line.equals("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
             newCommand = new ReadReviewsCommand(store);
