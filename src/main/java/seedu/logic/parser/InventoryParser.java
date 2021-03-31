@@ -1,6 +1,8 @@
 package seedu.logic.parser;
 
-
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.exceptions.inventory.NonExistentDrugException;
@@ -8,18 +10,16 @@ import seedu.exceptions.inventory.WrongInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.command.inventory.*;
+import seedu.logic.errorchecker.InventoryChecker;
+import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.UI;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
-    //protected InventoryActions inventoryActions;
 
-   /* public InventoryParser(InventoryActions inventoryActions) {
-        this.inventoryActions = inventoryActions;
-    }*/
-   public void lengthCheck(int numberOfTokens, String command) throws WrongInputException {
+   /*public void lengthCheck(int numberOfTokens, String command) throws WrongInputException {
        if (command.equals("add") && numberOfTokens != 4) {
            throw new WrongInputException(command);
        } else if (command.equals("delete") && numberOfTokens != 2) {
@@ -27,18 +27,12 @@ public class InventoryParser {
        } else if ((command.equals("list") || command.equals("return") || command.equals("help")) && numberOfTokens != 1) {
            throw new WrongInputException(command);
        }
-   }
-    private void isValidPrice(String price) throws InvalidPriceException {
-        try {
-            double priceDouble = Double.parseDouble(price); //check if price is a double
-        } catch (NumberFormatException e) {
-            throw new InvalidPriceException("price");
-        }
-    }
+   }*/
+
     private void isNameExist(String userInput, InventoryActions drugs, String command) throws NonExistentDrugException, DuplicateDrugException {
        if (drugs.isDrugStored(userInput)) {
            if (command.equals("add")) {
-               throw new DuplicateDrugException("DrugStored");
+               throw new DuplicateDrugException();
            }
        } else {
            if(command.equals("delete")) {
@@ -51,43 +45,57 @@ public class InventoryParser {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
         String firstWord = stringTokens[0];
+        String price = stringTokens[2];
+        String quantity = stringTokens[3];
         String command = smartCommandRecognition(COMMANDS, firstWord);
         Command c = null;
         try {
             switch (command) {
                 case "list":
-                    lengthCheck(numberOfTokens, command);
+                    int numberOfInputs = 1;
+                    MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     c = new InventoryList();
                     break;
                 case "add":
-                    lengthCheck(numberOfTokens, command);
+                    numberOfInputs = 4;
+                    InventoryChecker.duplicateChecker(command);
+                    InventoryChecker.isValidPrice(price);
+                    MainChecker.checkNumericInput(quantity);
+                    MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     if (nameParser(drugs, stringTokens, command)) {
                         String[] addFormat = parseToAddFormat(stringTokens);
                         c = new InventoryAdd(addFormat);
                     }
                     break;
                 case "delete":
-                    lengthCheck(numberOfTokens, command);
+                    numberOfInputs = 2;
+                    MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     if (nameParser(drugs, stringTokens, command)) {
                         c = new InventoryDelete(stringTokens[0]);
                     }
                     break;
                 case "help":
-                    lengthCheck(numberOfTokens, command);
+                    numberOfInputs = 1;
+                    MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     c = new InventoryHelp();
                     break;
                 case "return":
-                    lengthCheck(numberOfTokens, command);
+                    numberOfInputs = 1;
+                    MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     c = new InventoryReturn();
                     break;
                 default:
                     UI.invalidCommandErrorMessage();
                     break;
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            UI.invalidFormatErrorMessage();
-        } catch (WrongInputException e) {
-            e.getError(command);
+        } catch (DuplicateDrugException e) {
+            e.getError("DrugStored");
+        } catch (InvalidPriceException e) {
+            e.getError("InvalidPrice");
+        } catch (InvalidIntegerException | NumberFormatException e) {
+            e.getMessage();
+        } catch (InsufficientInputException | ExcessInputException e) {
+            e.getMessage();
         }
         return c;
     }
@@ -98,12 +106,8 @@ public class InventoryParser {
     }
     private boolean nameParser(InventoryActions drugs, String[] stringTokens, String command) {
        try {
-           //isValidPrice(stringTokens[1]);
-           isNameExist(stringTokens[0], drugs, command);
-       } /*catch (InvalidPriceException e) {
-           e.getError("price");
-           return false;
-       }*/ catch (NonExistentDrugException e) {
+           isNameExist(stringTokens[1], drugs, command);
+       } catch (NonExistentDrugException e) {
            e.getError("NameDoesNotExist");
            return false;
        } catch (DuplicateDrugException e) {
