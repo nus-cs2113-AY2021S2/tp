@@ -51,18 +51,15 @@ public class NurseScheduleChecker extends MainChecker {
 
     public static void checkNurseIDExist(String nurseID) throws NurseIdNotFound, CrossValidationError {
         try {
-            String[] character = nurseID.split("");
+            ArrayList<Staff> doctorList;
+            doctorList = DoctorAppointmentStorage.loadDoctorFile();
 
-            if (character[0].equals("N")) {
-                ArrayList<Staff> doctorList;
-                doctorList = DoctorAppointmentStorage.loadDoctorFile();
-
-                for (Staff id : doctorList) {
-                    if (id.getId().equals(nurseID)) {
-                        return;
-                    }
+            for (Staff id : doctorList) {
+                if (id.getId().equals(nurseID)) {
+                    return;
                 }
             }
+            throw new NurseIdNotFound();
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new CrossValidationError();
         } catch (FileNotFoundException e) {
