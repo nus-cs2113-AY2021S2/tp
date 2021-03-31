@@ -170,21 +170,34 @@ Figure 9. Viewing a Review <br />
 prompt you saying that no such review exits.
 
 ####4.2.5 Edit a Review
-This feature allows you to edit reviews in your list. <br />
+This feature allows you to make edits to the Title / Category / Rating / Description of the review in your list. <br />
 
 Command : `edit [TITLE_OF_REVIEW] `
 
 `[TITLE_OF_REVIEW]` : title of review that you want to edit.
-Ensure the title of the review you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
+
+<p>&#10071Ensure the title of the review you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
 prompt you saying that no such review exits.
 
+As shown in Figure 10 below, Connoisseur will prompt you asking whether you would like to make changes to Title / Category / Rating / Description.
+Input either `Title`,`Category`, `Rating` or `Description`. <br />If you would like to continue to make edits to the review, input `y`. Otherwise, input `n`. <br />
+Before exiting the _edit_ feature, you have the option to update the date of entry to reflect the date and timing in which the edit was made. Input `y` if you would like to do so. Otherwise, input`n`.
+
+![img.png](images/ug/img.png)
+Figure 10. Editing a Review <br />
+
+<p>&#10071 If at any point an invalid command is typed, the edit will fail and you will have to try again.
+
 ####4.2.6 Delete a Review
-This feature allows you to delete a review from your list.
+This feature allows you to delete a review from your list as shown in Figure 11.
 
 Command: `delete [TITLE_OF_REVIEW]`
 
 `[TITLE_OF_REVIEW]` : title of review that you want to delete.
-Ensure the title of the review you want to delete already exists in your lists of reviews. Otherwise, Connoisseur will
+![img_1.png](images/ug/delete_review.png)
+Figure 11. Deleting a Review <br />
+
+<p>&#10071 Ensure the title of the review you want to delete already exists in your lists of reviews. Otherwise, Connoisseur will
 prompt you saying that no such review exits.
 
 ###4.3 Recommendation Mode
