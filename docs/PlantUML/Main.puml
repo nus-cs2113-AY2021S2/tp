@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box NusFoodReviews
+
+-> ":NusFoodReviews" : run()
+activate ":NusFoodReviews"
+":NusFoodReviews" -> "ui:Ui" : showLogo()
+activate "ui:Ui"
+"ui:Ui" --> ":NusFoodReviews"
+deactivate "ui:Ui"
+
+":NusFoodReviews" -> "ui:Ui" : showLoginPage()
+activate "ui:Ui"
+"ui:Ui" --> ":NusFoodReviews"
+deactivate "ui:Ui"
+
+":NusFoodReviews" -> ":CheckUser" : checkUserType()
+activate ":CheckUser"
+":CheckUser" --> ":NusFoodReviews" : isPublicUser
+deactivate ":CheckUser"
+
+alt isPublicUser
+ref over ":NusFoodReviews", "ui:Ui"
+runPublicUser
+end ref
+else
+ref over ":NusFoodReviews"
+runAdmin
+end ref
+end
+
+<-- ":NusFoodReviews"
+deactivate ":NusFoodReviews"
+
+@enduml

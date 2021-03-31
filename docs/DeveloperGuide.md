@@ -12,6 +12,7 @@ with the review when requested. Admin must verify themselves using password give
 it once they logged in as admin. Admin has the ability to add/delete canteen, store and review. NUSFOODREVIEW has a storage file
 that allows the saving and loading of data. This allows all parameters of the data to be stored and read whenever is needed.
 
+
 ##Implementation
 For public users, the list of commands is shown below:
 
@@ -21,6 +22,7 @@ For public users, the list of commands is shown below:
 * Goes back to home page to select canteen: `home`
 * Display all the stores of the selected canteen: `list`
 * Exiting the application: `exit`
+
 
 For admin, the list of commands is shown below:
 
@@ -32,71 +34,108 @@ For admin, the list of commands is shown below:
  6. Delete reviews
  7. Exit
 
-###[Proposed] `reviews` feature for public users
-####Proposed Implementation
-Step 1. The user launches the application for the first time and selects `1` to indicate public user
 
-Step 2. The user selects the canteen and store it wishes to read reviews from
-
-Step 3. The user types `reviews` to view reviews of the store
-### Sequence Diagram for `reviews`
-![ReadReviews](img/ReadReviews.png)
+<!-- NOT TOO SURE HOW THIS PART FITS IN
 
 #### Sequence Diagram for `admin`
 When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
 the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
 `exit` to exit the application.
+--> 
 
-###[Proposed] `delete stores` feature for admin
-####Proposed Implementation
-Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
-
-Step 2. The user selects to delete a store from the list of tasks admin can do.
-
-Step 3. The user selects a canteen from the canteen list and store from the store list to delete the store.
-
-### Sequence Diagram for `delete stores`
-![DeleteStores](img/DeleteStores.png) 
-
-###[Proposed] `delete reviews` feature for admin
-####Proposed Implementation
-Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
-
-Step 2. The user selects to delete a review from the list of tasks admin can do.
-
-Step 3. The user selects a canteen from the canteen list and store from the store list to delete the review.
-
-### Sequence Diagram for `delete stores`
-![DeleteReviews](img/DeleteReviews.png)
-
-###[Proposed] delete canteen feature 
-####Proposed Implementation
-Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
-
-Step 2. The user selects to delete a canteen from the list of tasks admin can do.
-
-Step 3. The user selects a canteen from the canteen list and canteen is deleted.
-
-###[Admin] Add Canteen
-####Implementation
+### Main 
+#### Implementation
+![Main Sequence Diagram](./img/Main.png)
 
 When the application is launched, a Ui object and Parser object is instantiated.
 To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
 
-Once admin is verified in NusFoodReviews, Parser#parseAdminCommand() is called.
-A switch class is then used to determine the command to instantiate. 
-To add a new canteen, the user must enter '2'. 
+### [Public user] Display Menus Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
 
-Ui#showAddCanteen() is called to display the add canteen prompt.
-User input for canteen name will then be read using Ui#readCommand().
-A new AddCanteenCommand object is instantiated, with the canteen name passed into the constructor.
-Parser#parseAdminCommand() returns the AddCanteenCommand object.
-
-AddCanteenCommand#execute() is then called, passing in 
+To display menus, `DisplayMenusCommand.execute()` is called, passing in
 an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
-A new Canteen object is instantiated, and added to the ArrayList of canteens.
-Ui#showAddCanteenSuccess() is called to display canteen added confirmation.
 
+When DisplayMenusCommand was first instantiated, the relevant Store object was passed 
+into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()` on the 
+store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
+to be displayed by calling `Ui#showDisplayMenu()`
+
+###[Public user] Read reviews feature
+#### Implementation
+
+![ReadReviews](./img/ReadReviews.png)
+
+To read reviews, `ReadReviewsCommand.execute()` is called passing in an ArrayList of
+canteens and the Ui object instantiated in nusFoodReviews.
+
+When ReadReviewsCommand was first instantiated, the relevant Store object was passed
+into the constructor. `ReadReviewsCommand.execute()` will then call `getReviews()` on the
+store object to get an ArrayList of reviews, then calling `getAverageRating()` to get the 
+average rating of the store. After that, `getStoreName()` is also called to get the store
+name of the store. These parameters are then passed to the ui object to be displayed by calling 
+`Ui.showReviews()`
+
+### Admin Capabilities
+#### Implementation
+![Admin Sequence Diagram](./img/Admin.png)
+
+Once admin is verified in NusFoodReviews, `Parser#parseAdminCommand()` is called.
+A switch class is then used to determine the command to instantiate.
+To add a new canteen, the user must enter '2'.
+
+<!--can someone add switch case and separate refs for each switch case maybe-->
+
+### [Admin] Add Canteen
+#### Implementation
+![AddCanteen Sequence Diagram](./img/AddCanteen.png)
+
+<!--this part should be in the switchcase ref-->
+`Ui#showAddCanteen()` is called to display the add canteen prompt.
+User input for canteen name will then be read using `Ui#readCommand()`.
+A new AddCanteenCommand object is instantiated, with the canteen name passed into the constructor.
+`Parser#parseAdminCommand()` returns the AddCanteenCommand object.
+<!--this part should be in the switchcase ref-->
+
+To add a canteen, `AddCanteenCommand#execute()` is called, passing in 
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+A new Canteen object is then instantiated, and added to the ArrayList of canteens.
+`Ui#showAddCanteenSuccess()` is called to display canteen added confirmation.
+
+### [Admin] Delete Canteen
+#### Implementation
+![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
+
+To delete a canteen, `DeleteCanteenCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+The canteen object is removed from the canteens ArrayList. 
+`Ui#showCanteenDeleted()` is called to display the canteen deleted message.
+
+### [Admin] Delete Stores
+#### Implementation
+
+![DeleteStores](./img/DeleteStores.png)
+
+When DeleteStoreCommand was first instantiated, the relevant canteen index 
+and store index was passed into the constructor. To delete a store, `DeleteStoreCommand.execute()` 
+is called, passing in an ArrayList of canteens and the Ui object instantiated in 
+NusFoodReviews.`DeleteStoreCommand.execute()`will then call `get(canteenIndex)` on the canteen object 
+to get the current Canteen before calling deleteStore(storeIndex) to delete the store.
+
+### [Admin] Delete Reviews
+#### Implementation
+
+![DeleteReviews](img/DeleteReviews.png)
+
+When DeleteReviewCommand was first instantiated, the relevant canteen index, review,
+and store index was passed into the constructor. To delete a review, `DeleteReviewCommand.execute()`
+is called, passing in an ArrayList of canteens and the Ui object instantiated in
+NusFoodReviews.`DeleteReviewCommand.execute()`will then call `get(canteenIndex)` on the canteen object
+to get the current Canteen before calling getStore(storeIndex) to get current Store. After that, deleteReview(review)
+is called on the store object. Ui.reviewDeleted() displays a message to show that the review was deleted.
 
 ## Product scope
 ### Target user profile
