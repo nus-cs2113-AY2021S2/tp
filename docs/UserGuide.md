@@ -4,6 +4,8 @@
 
 If you are having difficulties managing your schedule, lesson links and notes, GULIO is the app for you. With the ability to store lesson details, tasks, notes and more, GULIO is a one-stop solution for all your university scheduling needs.
 
+This guide is written for users like you, for reference when there is a particular feature that you are unsure of how to use. It provides all the necessary information required for you to fully utilize GULIO's capabilities.
+
 &nbsp;
 
 ----
@@ -45,6 +47,7 @@ If you are having difficulties managing your schedule, lesson links and notes, G
         * [Automatic Saving](#automatic-saving)
         * [Manual Editing Outside GULIO](#manual-editing-outside-of-gulio)
     * [Text Editor](#text-editor)
+    * [FAQ](#faq)
     * [Command Summary](#command-summary)
 
 &nbsp;
@@ -666,6 +669,26 @@ In the text editor, you can type in your notes in the text field. When done, rem
 | esc | Exit test editor |
 
 > ⚠ Do not include file extension (e.g. .”.txt”) when creating or editing the cheat-sheet.
+
+&nbsp;
+
+----
+
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
+
+----
+
+# FAQ
+
+Here are some frequently asked questions that you may have regarding GULIO.
+
+**Q:** Why am I unable to open cheat-sheet in Windows Subsystem for Linux (WSL)?<br>
+**A:** GULIO's cheat-sheet feature requires the usage of GUI, which is not available on WSL.
 
 &nbsp;
 
