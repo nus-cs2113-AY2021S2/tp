@@ -4,6 +4,14 @@
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+### Sequence Diagrams
+1. Admin Main Menu
+   ![Admin Main Menu](AdminMainMenu.png)
+   
+
+2. Customer Main Menu
+   ![Customer Main Menu](CustomerMainMenu.png)
+
 
 ## Product scope
 ### Target user profile
