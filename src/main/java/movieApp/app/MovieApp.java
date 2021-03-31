@@ -19,7 +19,7 @@ public class MovieApp {
         user = new ArrayList<>(Database.users);
 
         while (true) {
-            currentUserIndex = Login.login(user, SALT);
+            currentUserIndex = Login.login(user);
 
             if(currentUserIndex < 0) {
                 System.out.println("Exiting...");

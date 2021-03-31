@@ -8,23 +8,19 @@ import java.io.Console;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Login {
 
 	private static String name;
-	private static String password;
+	private static char[] password;
 	private static Scanner sc = new Scanner(System.in);
-	private static final String ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	private static final int SALT_LENGTH = 30;
-	private static final int ITERATIONS = 10000;
-	private static final int KEY_LENGTH = 256;
 	
 
-	public static int login(ArrayList<User> user, String SALT) {
+	public static int login(ArrayList<User> user) throws Exception {
 		int currentUserIndex;
 		
 		do {			
@@ -36,13 +32,13 @@ public class Login {
 				System.exit(0);
 			}
 			
-			password = readPasswordSecure();
+			password = readPasswordSecure().toCharArray();
 			
 			if(password == null){
 				return -1;
 			}
 			
-			currentUserIndex = Login.authenticate(name, password, user, SALT);
+			currentUserIndex = Login.authenticate(name, password, user);
 		
 			if(currentUserIndex < 0) {
 				System.out.println("\nLogin failed, user of selected user type failed to authenticate, " +
@@ -51,7 +47,6 @@ public class Login {
 		}while(currentUserIndex < 0);
 		return currentUserIndex;
 	}
-	
 
 	public static String readPasswordSecure() {
 		String password;
@@ -68,46 +63,47 @@ public class Login {
 		return password;
 	}
 
-	static String generateSALT(int length) {
-		String saltString = "";
-		Random RANDOM = new SecureRandom();
-		for(int i = 0; i < length; i++) {
-			saltString += ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length()));
-		}
-		return saltString;
-	}
-
-	public static String encryptPassword(String password, String SALT) {
-		byte[] encryptedPasswordByte = null;
-		String encryptedPassword = "";
-		PBEKeySpec spec = new PBEKeySpec(password.toCharArray(), SALT.getBytes(), ITERATIONS, KEY_LENGTH);
+	private static byte[] generatePBKDF2(char[] password, byte[] salt, int bytes) throws Exception {
+		KeySpec spec = new PBEKeySpec(password, salt, 32768, bytes * 8);
 		try {
-			SecretKeyFactory secretKeyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-			encryptedPasswordByte = secretKeyFactory.generateSecret(spec).getEncoded();
+			SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+			return factory.generateSecret(spec).getEncoded();
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-			throw new AssertionError("Error while hashing a password: " + e.getMessage(), e);
-		} finally {
-			spec.clearPassword();
-		}
-		encryptedPassword = Base64.getEncoder().encodeToString(encryptedPasswordByte);
-		return encryptedPassword;
-	}
-
-	private static boolean authenticatePassword(String password, String encryptedPassword, String SALT) {
-		if(password.equalsIgnoreCase(encryptedPassword)){
-			return true;
-		} else {
-			return false;
+			throw new Exception("Hashing error!");
 		}
 	}
 
-	public static int authenticate(String name, String password, ArrayList<User> user, String SALT) {
+	public static String generatePBKDF2String(char[] password) throws Exception {
+		SecureRandom random = new SecureRandom();
+		byte[] salt = new byte[16];
+		random.nextBytes(salt);
+		byte[] hash = generatePBKDF2(password, salt, 16);
+		return Base64.getEncoder().encodeToString(salt) + "~"
+				+ Base64.getEncoder().encodeToString(hash);
+	}
+
+	private static boolean slowEquals(byte[] hash1, byte[] hash2) {
+		int diff = hash1.length ^ hash2.length;
+		for (int i = 0; i < hash1.length && i < hash2.length; i++) {
+			diff |= hash1[i] ^ hash2[i];
+		}
+
+		return diff == 0;
+	}
+
+	private static boolean validatePassword(char[] password, char[] goodHash) throws Exception {
+		String[] params = String.valueOf(goodHash).split("~");
+		byte[] salt = Base64.getDecoder().decode(params[0]);
+		byte[] hash = Base64.getDecoder().decode(params[1]);
+		byte[] testHash = generatePBKDF2(password, salt, hash.length);
+		return slowEquals(hash, testHash);
+	}
+
+	public static int authenticate(String name, char[] password, ArrayList<User> user) throws Exception {
 		for (int index = 0; index < user.size(); index++)
 		{
 			if (name.equals(user.get(index).getName())) {
-				System.out.println(user.get(index).getPassword());
-				System.out.println(user.get(index).getName());
-				if(authenticatePassword(password, user.get(index).getPassword(), SALT)) {
+				if(validatePassword(password, user.get(index).getPassword().toCharArray())) {
 						return index;
 				}
 			}

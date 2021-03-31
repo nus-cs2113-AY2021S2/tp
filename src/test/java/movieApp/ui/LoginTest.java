@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LoginTest {
 
     @Test
-    void TestLogin() {
+    void TestLogin() throws Exception {
         ArrayList<User> users = new ArrayList<>();
         users.add(new Admin("zul", "hello"));
         users.add(new Customer("alex", "12345"));
@@ -23,7 +23,7 @@ class LoginTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertEquals(0, Login.login(users,"sLUm7IkYrQhKrNQNIYcyMaCero3bk5"));
+        assertEquals(0, Login.login(users));
     }
 
 }
