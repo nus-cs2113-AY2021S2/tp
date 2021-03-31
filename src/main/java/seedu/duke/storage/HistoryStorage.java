@@ -31,8 +31,6 @@ public class HistoryStorage extends Storage {
             dataDirectory.mkdir();
             File dukeFile = new File(storagePathArray[0], storagePathArray[1]); //File(parent, child)
             dukeFile.createNewFile();
-        } catch (InvalidBlockException e) {
-            System.out.println("An Error occurred while loading history!");
         }
     }
 
