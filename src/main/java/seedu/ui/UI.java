@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
+import static seedu.duke.Constants.*;
 
 public class UI {
     static final int LARGE_NUMBER = 100;
@@ -103,11 +104,10 @@ public class UI {
         return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
     }
 
-    public static void checkBackSlash(String line) {
-        if (line.contains("\\")) {
-            System.out.println(line.replace("\\",""));
-        }
+    public static String cleanseInput2(String input) {
+        return  input.replaceAll("[^a-zA-Z0-9]", "");
     }
+
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
     }
@@ -139,15 +139,24 @@ public class UI {
     }
 
     public static void printStartMenu() {
+
+        UI.printEmptyLine();
         System.out.println("Start Menu");
         System.out.println("Commands:");
-        System.out.println("\"staff\" to go to staff");
-        System.out.println("\"patient\" to go to patients");
-        System.out.println("\"appointments\" to go to doctors appointments");
-        System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to inventories inventory");
-        System.out.println("\"help\" to see what each of the sections contain");
-        System.out.println("\"bye\" to exit the application");
+
+        UI.printEmptyLine();
+        int[] lengthPara = {15,40,10};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
+        UI.showLongLine();
+        printer(new String[]{TO_STAFF_INSTANCE, TO_STAFF_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_PATIENT_INSTANCE, TO_PATIENT_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_APPOINTMENTS_INSTANCE, TO_APPOINTMENTS_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_SCHEDULES_INSTANCE, TO_SCHEDULES_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_INVENTORY_INSTANCE, TO_INVENTORY_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{HELP_COMMAND, HELP_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{EXIT_COMMAND, EXIT_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        UI.printEmptyLine();
+
     }
 
     public static void printGoodbye() {
