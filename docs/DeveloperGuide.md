@@ -489,7 +489,7 @@ No items will be listed if no food in the fridge match the conditions specified 
 
 * Test case: `list`
 
-* Expected:
+  * Expected:
 
   ```lang-none
   Here are the items in your fridge:
@@ -501,7 +501,7 @@ No items will be listed if no food in the fridge match the conditions specified 
   
 * Test case: `list meat`
 
-* Expected:
+  * Expected:
 
   ```lang-none
   These are the MEAT in your fridge:
@@ -545,7 +545,7 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
 * Test case: `search chicken`
 
-* Expected: 
+  * Expected: 
  
   ```lang-none
   These are the chicken in your fridge:
@@ -557,7 +557,7 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
     
 * Test case: `search chick`
 
-* Expected:
+  * Expected:
      
   ```lang-none
   These are the chick in your fridge:
