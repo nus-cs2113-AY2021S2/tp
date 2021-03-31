@@ -388,7 +388,24 @@ Returning to module information menu...
 
 #### 3.1.7 Add Module Grade
 
-*[This section will be completed in the future.]* <br>
+Example for adding grade to a module:  
+
+> **Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+
+````
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CS3243
+--------------------------------------------
+Please choose which module you would like to assign a grade and enter the number:
+> 1
+--------------------------------------------
+Enter the grade for this module:
+> A
+````
 
 #### 3.1.8 Add a review
 
