@@ -1,1 +1,6 @@
-James Gosling
+filter location jurong
+list
+clear
+filter type 4 room
+list
+exit
