@@ -49,26 +49,38 @@ public class DoctorAppointmentUI extends UI {
 
     public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
         if (indicator.equals("D")) {
-            System.out.println("Doctor ID: " + doc.getDoctorId());
+           // System.out.print(doc.getDoctorId());
+           printEmptyCell(doc.getDoctorId());
         }
-        System.out.println("Appointment ID: " + doc.getAppointmentId());
-        System.out.println("Patient's Name: " + doc.getPatientsName());
-        System.out.println("Gender: " + doc.getGender());
-        System.out.println("Date: " + doc.getDateFormat(doc.getDate()));
+        //System.out.print(doc.getAppointmentId());
+        printEmptyCell(doc.getAppointmentId());
+       // System.out.print(doc.getPatientsName());
+        printEmptyCell(doc.getPatientsName());
+       // System.out.print(doc.getGender());
+        printEmptyCell(doc.getGender());
+        System.out.print(doc.getDateFormat(doc.getDate()));
         System.out.print("\n");
 
     }
 
-    public static void AptPrintList(DoctorAppointment doc, String indicator) {
+    public static void AptPrintList(String indicator) {
         if (indicator.equals("D")) {
             System.out.println(
-                    UI.prettyPrint("Doctor ID", 10) + " | " + UI.prettyPrint("Appointment ID", 10) + " | " + UI.prettyPrint("Name", 10) + " | "
-                            + UI.prettyPrint("Gender", 10) + UI.prettyPrint("Date", 10));
+                    UI.prettyPrint("Doctor ID", 14) + " | " + UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name", 14) + " | "
+                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date", 14));
         } else {
             System.out.println(
-                    UI.prettyPrint("Appointment ID", 10) + " | " + UI.prettyPrint("Name", 10) + " | "
-                            + UI.prettyPrint("Gender", 10) + UI.prettyPrint("Date", 10));
+                    UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name", 14) + " | "
+                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date", 14));
         }
     }
+    public static void printEmptyCell(String s) {
+        System.out.print(UI.prettyPrint(s, 14) + " | ");
+    }
+
+    public static void corruptedFileErrorMessage() {
+        System.out.println("File (data/DoctorAppointment.txt) is corrupted. Please delete the file before running the Doctor Appointment Menu.");
+    }
+
 
 }

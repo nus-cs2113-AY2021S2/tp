@@ -86,7 +86,6 @@ public class HealthVaultException extends Exception {
             break;
         }
     }
-  
     public String getMessage() {
         return "There seems to be an error!";
     }
