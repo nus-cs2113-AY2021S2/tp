@@ -54,7 +54,7 @@ public class AddCommand extends Command {
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
             return false;
         }
-        
+
         int checksum = 0;
         char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
         char[] st = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
