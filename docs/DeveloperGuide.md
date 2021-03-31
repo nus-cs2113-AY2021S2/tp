@@ -487,9 +487,9 @@ The latter two commands will return an output that is a subset of the first comm
 
 No items will be listed if no food in the fridge match the conditions specified in the command.
 
-1. Test case: `list`
+* Test case: `list`
 
-  * Expected:
+* Expected:
 
   ```lang-none
   Here are the items in your fridge:
@@ -499,16 +499,16 @@ No items will be listed if no food in the fridge match the conditions specified 
     4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
   ```
   
-2. Test case: `list meat`
+* Test case: `list meat`
 
-  * Expected:
+* Expected:
 
   ```lang-none
   These are the MEAT in your fridge:
     1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
   ```
 
-3 Test case: `list freezer`
+* Test case: `list freezer`
 
   * Expected:
 
