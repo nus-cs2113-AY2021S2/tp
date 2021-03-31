@@ -328,60 +328,117 @@ P55555, Sam, 40, Male, Fever, Paracetamol
 
 The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
 
+This is an example of the welcome screen for Doctors' Appointments Menu.
+
+<img src="images/DoctorAppointmentWelcome.jpg" width = "700">
+
+
 #### Adding an appointment: `add`
 Adds a new doctor's appointment to the list of appointments.
-(Note: The Appointment ID is auto-generated at the point of adding)
+(Note: The Appointment ID is represented by AXXXXX)
+
 
 Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
 Example of usage:
 ```
-Appointments --> add/D12345/A12345/Alex/M/21012021
+Appointments --> add/D12345/A12347/Alex/M/21012021
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Appointments --> add/D12345/A12345/Alex/M/21012021
-Alex scheduled for an appointment on 21/01/2021!
+------------------------------------------------------------------------------
+Appointment Added
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src="images/DoctorAppointmentAdd.jpg" width = "700" >
+
 
 #### Deleting an appointment: `delete`
-Deletes an appointment from the list of appointments.
+Deletes an appointment from the list of appointments or deletes all appointments belonging to a doctor.
 
-Format: `delete/[Appointment ID]`
+Format: `delete/[DoctorID/ Appointment ID]`
 
-Example of usage:
+Example of usage (Doctor ID):
 ```
-Appointments --> delete/A369
+Appointments --> delete/D12345
 ```
-Expected Outcome:
+Expected Outcome (Doctor ID):
+```
+------------------------------------------------------------------------------
+Appointments --> delete/D12345
+------------------------------------------------------------------------------
+DoctorID / Appointment ID : D12345/A12346 has been deleted!
+DoctorID / Appointment ID : D12345/A12347 has been deleted!
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
+
+Example of usage (Appointment ID):
+```
+Appointments --> delete/A12346
+```
+Expected Outcome (Appointment ID):
 ```
 ------------------------------------------------------------------------------
 Appointments --> delete/A369
-Alex has attended the appointment!
+------------------------------------------------------------------------------
+Appointmenet ID: A12346 has been deleted!
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
 
 #### Listing appointments: `list`
-Lists all of the appointments of a specific doctor.
+Lists all of the appointments of a specific doctor or list an individual appointment.
 
-Format: `list/[Doctor ID]`
+Format: `list/[Doctor ID/ Appointment ID]`
 
-Example of usage:
+Example of usage (Doctor ID):
 ```
 Appointments --> list/D12345
 ```
 
-Expected Outcome:
+Expected Outcome (Doctor ID):
 ```
 ------------------------------------------------------------------------------
-Appointments --> list/D12345
-21/01/2021
-Alex
-ID: A369
+Doctor ID  |Appointment ID | Name	| Gender   | Date     
+____________________________________________________________
+D12345     |A12345 	   | MingShun	| M        | 19/08/2021    
+           |A11111         | Alex	| M        | 21/01/2021    
+
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
+
+
+Example of usage (Appointment ID):
+```
+Appointments --> list/A12345
+```
+
+Expected Outcome (Appointment ID):
+```
+------------------------------------------------------------------------------
+Appointment ID | Name	  | Gender   | Date     
+____________________________________________________________
+A12345 	       | MingShun | M        | 19/08/2021    
+
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
+
 
 #### Returning to Start Menu: `return`
 #### Help: `help`
@@ -572,9 +629,9 @@ Current Inventory:
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Doctor Appointments** |                                                                                                        |
-| add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/Mingshun/ Pediatrician`    |
-| delete              | `delete/[Appointment ID]`<br/><br/>`delete/A369`                                                                        |
-| list                | `list`                                                                                                     |
+| add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/A12345/Mingshun/M/19082021`    |
+| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
+| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |
