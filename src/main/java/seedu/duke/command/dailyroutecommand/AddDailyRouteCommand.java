@@ -24,7 +24,7 @@ public class AddDailyRouteCommand extends Command {
             String day = validDays.get(index);
             ArrayList<String> schedule = ui.getScheduleInfo();
             dailyRoute.addDailyRoute(day, schedule);
-            if(schedule.size() == 0){
+            if (schedule.size() == 0) {
                 MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
             }
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, day));

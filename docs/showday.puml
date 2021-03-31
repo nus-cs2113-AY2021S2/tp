@@ -1,4 +1,6 @@
 @startuml
+hide footbox
+title Footer removed
 actor User
 User -> "command:ShowDailyRouteCommand" : execute
 activate "command:ShowDailyRouteCommand"
@@ -10,7 +12,7 @@ deactivate "dailyRoute:DailyRoute"
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
-"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : get"dailyRoute:DailyRoute"
+"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : getdailyRoute
 activate "dailyRoute:DailyRoute"
 return
 deactivate "dailyRoute:DailyRoute"

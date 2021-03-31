@@ -211,7 +211,9 @@ Format : `add day → DAY_ENTRY → BLOCK/END`
 - You will then be prompted to enter the location of the activities(`BLOCK`) of the day one at
   a time.
 
-- NUSMaze will continuously ask for locations until you input ``.
+- NUSMaze will continuously ask for locations until you input `END`.
+
+- If `END` is input as the first block,the schedule of the day selected will be cleared.
 
 ### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>

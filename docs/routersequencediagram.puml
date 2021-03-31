@@ -1,4 +1,6 @@
 @startuml
+hide footbox
+title Footer removed
 actor "User"
 participant "command:GoCommand"
 participant "ui:RouterUi"
@@ -21,11 +23,11 @@ activate ":Block"
 deactivate ":Block"
 "nusMap:NusMap" --> ":Router"
 deactivate "nusMap:NusMap"
-":Router" -> "nusMap:NusMap" : get":Block"
+":Router" -> "nusMap:NusMap" : getBlock
 activate "nusMap:NusMap"
 "nusMap:NusMap" --> ":Router"
 deactivate "nusMap:NusMap"
-":Router" -> "nusMap:NusMap" : get":Block"
+":Router" -> "nusMap:NusMap" : getBlock
 activate "nusMap:NusMap"
 "nusMap:NusMap" --> ":Router"
 deactivate "nusMap:NusMap"
@@ -35,7 +37,7 @@ activate ":Router"
 activate ":Block"
 ":Block" --> ":Router"
 deactivate ":Block"
-":Router" -> "nusMap:NusMap" : get":Block"
+":Router" -> "nusMap:NusMap" : getBlock
 activate "nusMap:NusMap"
 "nusMap:NusMap" --> ":Router"
 deactivate "nusMap:NusMap"
@@ -43,13 +45,13 @@ deactivate "nusMap:NusMap"
 activate ":Block"
 ":Block" --> ":Router"
 deactivate ":Block"
-":Router" -> ":Block" : isSame":Block"
+":Router" -> ":Block" : isSameBlock
 activate ":Block"
 ":Block" --> ":Router"
 deactivate ":Block"
 ":Router" --> ":Router"
 deactivate ":Router"
-":Router" -> "nusMap:NusMap" : get":Block"
+":Router" -> "nusMap:NusMap" : getBlock
 activate "nusMap:NusMap"
 "nusMap:NusMap" --> ":Router"
 deactivate "nusMap:NusMap"
