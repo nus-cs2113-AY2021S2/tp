@@ -1,0 +1,23 @@
+@startuml
+!include Style.puml
+
+actor User as user #red
+participant ":UiManager" as ui UIMANAGER_COLOR
+participant ":NusMaze" as nusMaze NUSMAZE_COLOR
+participant ":Parser" as parser PARSER_COLOR
+
+create ui
+nusMaze -> ui : new
+nusMaze -> ui ++ : getUserCommandInput()
+user -> ui : "invalid input"
+return "invalid input"
+
+create parser
+nusMaze -> parser : new
+nusMaze -> parser ++ : prepareForCommandExecution("invald input")
+return InvalidInputException
+
+nusMaze --> ui
+ui --> user
+
+@enduml

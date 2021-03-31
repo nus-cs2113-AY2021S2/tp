@@ -1,0 +1,27 @@
+@startuml
+!include Style.puml
+
+package Router <<Rectangle>> {
+    class Router ROUTER_COLOR {
+        + execute(): String
+        + findShortestRoute(NusMap, LinkedList<Block, String, String): void
+        + getRouteAsString(LinkedList<Block): String
+        {static} + bfs(NusMap, LinkedList<Block, String, String): void
+    }
+}
+package Command <<Rectangle>> {
+    class GoCommand COMMAND_COLOR
+    class RepeatHistoryCommand COMMAND_COLOR
+    class RepeatFavouriteCommand COMMAND_COLOR
+    class ShowDailyRouteCommand COMMAND_COLOR
+}
+
+GoCommand -d-> Router : uses
+RepeatHistoryCommand -d-> Router : uses
+RepeatFavouriteCommand -d-> Router : uses
+ShowDailyRouteCommand -d-> Router : uses
+
+hide members
+show Router methods
+
+@enduml
