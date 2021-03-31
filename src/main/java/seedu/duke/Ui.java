@@ -579,8 +579,8 @@ public class Ui {
     }
 
     public static void printCapSimulatorPrompt() {
-        System.out.println("Welcome to CAP Simulator Version 2!\n" +
-                " You have chosen to simulate CAP base on your input.");
+        System.out.println("Welcome to CAP Simulator Version 2!\n"
+                + " You have chosen to simulate CAP base on your input.");
         System.out.println("THINGS TO NOTE: ");
         System.out.println("You may key in 'q' to quit and 'ok' after finishing your inputs.");
         System.out.println("You may key in your letter grades "
@@ -660,8 +660,8 @@ public class Ui {
      */
     public static void printCapSimulatorSetting() {
         System.out.println("Welcome to CAP Simulator!");
-        System.out.println("Note: CAP Simulated takes your current CAP " +
-                "and total number of MCs taken into account.");
+        System.out.println("Note: CAP Simulated takes your current CAP "
+                + "and total number of MCs taken into account.");
         System.out.println("If you intend to calculate your CAP solely on new entries, \n"
                 + "please go back to the HelpGraduation menu"
                 + " and set existing CAP and MCs taken to be 0.\n");
