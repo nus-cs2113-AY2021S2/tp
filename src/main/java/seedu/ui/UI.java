@@ -113,8 +113,6 @@ public class UI {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
     }
 
-
-
     public static void showLine() {
         System.out.println(Constants.LINEBREAK);
     }

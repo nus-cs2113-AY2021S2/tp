@@ -11,15 +11,15 @@ The purpose of this User Guide is to assist you in the usage of the application.
 1. [How to use this guide](#3-how-to-use-the-guide)
 	1. [Technical terms](#31-technical-terms)
 	1. [Symbols & Icons](#32-symbols--icons)
-1. Start Menu
-1. Features 
-	1. Staff
-	2. Patient
-	3. Doctor's Appointment
-	4. Nurse Schedule
-	5. Inventory
-1. FAQ
-1. Command Summary
+1. [Start Menu](#4-start-menu)
+1. [Features](#5-features)
+	1. [Staff](#51-staff)
+	2. [Patient](#52-patient)
+	3. [Doctor's Appointment](#53-doctor-appointment)
+	4. [Nurse Schedule](#54-nurse-schedule)
+	5. [Inventory](#55-inventory)
+1. [FAQ](#6-faq)
+1. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
@@ -27,7 +27,10 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
 
-## 2. Installation Guide
+
+<br/><br/>
+<a name="section2">
+## 2. Installation Guide</a>
 
 1. Ensure system has Java 11
 
@@ -38,15 +41,14 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-4. Cd into the folder containing the JAR file
+4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
-   - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
-
+   - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
-   
    - Example: `cd C:\Users\JohnDoe\Downloads`
-	
    - Run the following command: `java -jar jar [JAR file name]`
+  
+<br/><br/>
 
 ## 3. How to use the guide
 
@@ -60,20 +62,52 @@ In this application there are 5 main features that are provided for the user. Ea
 
 **User Input** - Any information or data sent to a computer by the user using the application.
 
+
 ### 3.2 Symbols & Icons
 
 **[]** - Square brackets for compulsory user inputs.
 
 **<>** - Optional inputs.
 
+
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
-## 4. Quick Start
+### 3.3 Interpreting help commands
 
-{Give steps to get started quickly}
 
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/drugsDuke).
+This is an example of a typical help command in the application.
+<img src="images/StaffHelp.PNG" >
+
+The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
+For example, the `add` command allows you to add a new staff and their relevant details into the database.
+
+The **Description** column gives you an explaination on the usage and purpose of the command.
+
+The **Format** column gives the appropriate format for you to use the command.
+For example, the `add` format requires specific details regarding the staff that will be added into the database.
+The '-' in the format column specifies that the command can be used alone without any additional details.
+
+The detailed explaination of each command will be explained in the subsequent sections.
+
+
+<br/><br/>
+
+## 4. Start Menu
+
+The Start Menu is the first menu you will encounter after you run the application as stated in [section 2](#section2). 
+
+Here is an example of how the welcome screen of HealthVault will look like.
+<img src="images/Start Menu.PNG" >
+
+The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
+
+For example, the Staff Menu allows you to access the Staff feature within the database. 
+
+The welcome screen of HealthVault presents you with the basic commands as well as its description of its functionalities. 
+
+Input any command to access the respective features and input the `exit` command to quit the application.
+
+<br/><br/>
 
 ## 5. Features 
 
@@ -81,6 +115,11 @@ In this application there are 5 main features that are provided for the user. Ea
 
 The functions in Staff menu allow you, the head nurse, to access and modify the details of each staff in the hospital. 
 (Note for Staff ID: D/N = Doctor/Nurse)
+
+This is an example of the welcome screen for Staff Menu.
+<img src="images/StaffWelcome.PNG" width = "850">
+
+<br/><br/>
 
 #### Adding a new staff: `add`
 Adds a new doctor or nurse to the respective staff lists.
@@ -96,9 +135,15 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> add/D12345/MingShun/30/Pediatrician
-Mingshun has been hired:)
+Mingshun has been hired :)
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src="images/StaffAdd.PNG" width = "850" >
+
+<br/><br/>
  
 #### Deleting a staff: `delete`
 Deletes a staff from the staff list.
@@ -113,14 +158,21 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> delete/D12345
-D12345 has been fired:(
+D12345 has been fired :(
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/StaffDelete.PNG" width = "850" >
+<br/><br/>
 
 #### Listing all doctors or nurses: `list`
 Lists either all doctors or all nurses.
 
-Format: `list/[Doctors/Nurses]`
+Format: `list/<doctors/nurses>`
+
+**Note: <> implies that the inputs are optional**
+
 
 Example of usage(doctors):
 ```
@@ -129,21 +181,71 @@ Staff --> list/doctors
 Expected Outcome(doctors):
 ```
 ------------------------------------------------------------------------------
-Staff --> list/doctors
-D12345 Mingshun 30 Pediatrician
-D67890 Alexander 31 Heart Surgeon
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon   
 ------------------------------------------------------------------------------
 ```
-Example of usage(nurses):
-```
 
+Example Screenshot:
+
+<img src="images/StaffListDoc.PNG" width = "850">
+
+
+Example of usage (nurses):
+```
+Staff --> list/nurses
 ```
 Expected Outcome(nurses):
 ```
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management  
+```
+Example Screenshot:
+
+<img src="images/StaffListNurse.PNG" width = "850">
+
+
+Example of usage (no input):
+```
+Staff --> list
+```
+Expected Outcome (doctors):
+```
+------------------------------------------------------------------------------
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon       
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management    
+------------------------------------------------------------------------------
 ```
 
+Example Screenshot:
+
+<img src="images/StaffList.PNG" width = "850" >
+
+<br/><br/>
+
 #### Returning to Start Menu: `return`
+
+Return you to the Start Menu.
+
+Example Screenshot:
+
+<img src="images/StaffReturn.PNG" width = "850" >
+
 #### Help: `help`
+
+Display the commands for the Staff Menu.
+
+Example Screenshot:
+
+<img src="images/StaffHelp.PNG" width = "850" >
 
 ### 5.2 Patient
 
@@ -435,11 +537,15 @@ Current Inventory:
 #### Returning to Start Menu: `return`
 #### Help: `help`
 
+<br/><br/>
+
 ## 6. FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
+
+<br/><br/>
 
 ## 7. Command Summary
 

@@ -10,8 +10,6 @@ import static seedu.duke.Constants.VALID_GENDER_INPUT;
 
 public class MainChecker {
 
-    private static final String ILLEGAL_CHARACTERS = "[~#@*+%{}<>\\[\\]|\"_^\\\\]";
-
     public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
 
         if (line.split("/").length < min) {
@@ -73,11 +71,5 @@ public class MainChecker {
         if (!stringToken.equals(cleanedInput)){
             throw new IllegalCharacterException(fieldInput);
         }
-        /*String nameString = stringToken.toLowerCase();
-        Pattern pattern = Pattern.compile(ILLEGAL_CHARACTERS);
-        Matcher matcher = pattern.matcher(nameString);
-        if (matcher.find()) {
-            throw new IllegalCharacterException(fieldInput);
-        }*/
     }
 }

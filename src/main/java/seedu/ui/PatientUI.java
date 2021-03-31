@@ -27,8 +27,9 @@ public class PatientUI extends UI{
                         UI.prettyPrint("Name", 40) + " | " +
                         UI.prettyPrint("Age", 6) + " | " +
                         UI.prettyPrint("Gender", 8) + " | " +
-                        UI.prettyPrint("Illness", 30) + " | " +
+                        UI.prettyPrint("Illness", 40) + " | " +
                         UI.prettyPrint("Medication Required", 40));
+        System.out.println(LONGLONGLINEBREAK);
     }
 
     public static void patientAddedMessage(String name) {
@@ -41,7 +42,7 @@ public class PatientUI extends UI{
                         UI.prettyPrint(patientDetails[1], 40) + " | " +
                         UI.prettyPrint(patientDetails[2], 6) + " | " +
                         UI.prettyPrint(patientDetails[3], 8) + " | " +
-                        UI.prettyPrint(patientDetails[4], 30) + " | " +
+                        UI.prettyPrint(patientDetails[4], 40) + " | " +
                         UI.prettyPrint(patientDetails[5], 40));
     }
 

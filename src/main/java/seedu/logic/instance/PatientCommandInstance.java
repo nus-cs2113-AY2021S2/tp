@@ -24,13 +24,7 @@ public class PatientCommandInstance {
     public void run() {
         try {
             patients = new PatientActions(patientStorage.loadPatients());
-        } catch (HealthVaultException e) {
-            System.out.println(e.getMessage());
-            ui.corruptedFileErrorMessage();
-            patients = new PatientActions();
-            return;
-        } catch (NumberFormatException e) {
-            System.out.println("It seems like your age input is invalid!");
+        } catch (HealthVaultException | NumberFormatException e) {
             ui.corruptedFileErrorMessage();
             patients = new PatientActions();
             return;
@@ -48,7 +42,6 @@ public class PatientCommandInstance {
                 if (isReturnToStartMenu) {
                     UI.returningToStartMenuMessage();
                 }
-                UI.showLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
@@ -58,7 +51,5 @@ public class PatientCommandInstance {
                 System.out.println("Your age input is not an accepted integer!");
             }
         }
-
     }
-
 }

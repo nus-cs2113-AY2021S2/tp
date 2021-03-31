@@ -43,10 +43,7 @@ public class InventoryParser {
 
     public Command inventoryParse(String fullCommand, InventoryActions drugs) {
         String[] stringTokens = fullCommand.trim().split("/");
-        int numberOfTokens = stringTokens.length;
         String firstWord = stringTokens[0];
-        String price = stringTokens[2];
-        String quantity = stringTokens[3];
         String command = smartCommandRecognition(COMMANDS, firstWord);
         Command c = null;
         try {
@@ -57,6 +54,8 @@ public class InventoryParser {
                     c = new InventoryList();
                     break;
                 case "add":
+                    String price = stringTokens[2];
+                    String quantity = stringTokens[3];
                     numberOfInputs = 4;
                     InventoryChecker.duplicateChecker(command);
                     InventoryChecker.isValidPrice(price);
@@ -92,9 +91,7 @@ public class InventoryParser {
             e.getError("DrugStored");
         } catch (InvalidPriceException e) {
             e.getError("InvalidPrice");
-        } catch (InvalidIntegerException | NumberFormatException e) {
-            e.getMessage();
-        } catch (InsufficientInputException | ExcessInputException e) {
+        } catch (InvalidIntegerException | NumberFormatException | InsufficientInputException | ExcessInputException e) {
             e.getMessage();
         }
         return c;
@@ -104,9 +101,9 @@ public class InventoryParser {
        addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3]};
        return addFormat;
     }
-    private boolean nameParser(InventoryActions drugs, String[] stringTokens, String command) {
+    private boolean nameParser(InventoryActions inventory, String[] stringTokens, String command) {
        try {
-           isNameExist(stringTokens[1], drugs, command);
+           isNameExist(stringTokens[1], inventory, command);
        } catch (NonExistentDrugException e) {
            e.getError("NameDoesNotExist");
            return false;
@@ -116,46 +113,4 @@ public class InventoryParser {
        }
        return true;
     }
-   /* public void parseMethod() {
-        InventoryUI.drugMenuPrompt();
-        Scanner myObj = new Scanner(System.in);
-        String command = myObj.nextLine();
-        while (!command.equals("return")) {
-            try {
-                switch (command) {
-                    case "list":
-                        inventoryActions.listDrugs();
-                        break;
-                    case "add":
-                        Scanner addIn = new Scanner(System.in);
-                        InventoryUI.drugNamePrompt();
-                        String name = addIn.nextLine();
-                        InventoryUI.drugPricePrompt();
-                        String price = addIn.nextLine();
-                        InventoryUI.drugQuantityPrompt();
-                        String quantity = addIn.nextLine();
-                        inventoryActions.addDrugs(name, price, quantity);
-                        break;
-                    case "delete":
-                        Scanner deleteIn = new Scanner(System.in);
-                        inventoryActions.checkDrugsSize();
-                        InventoryUI.drugNamePrompt();
-                        name = deleteIn.nextLine();
-                        inventoryActions.deleteDrugs(name);
-                        break;
-                    case "help":
-                        InventoryUI.printDrugHelpList();
-                        break;
-                    default:
-                        InventoryUI.invalidCommandMessage();
-                }
-                InventoryUI.drugMenuPrompt();
-                command = myObj.nextLine();
-            } catch (WrongInputException w) {
-                w.getError(command);
-                InventoryUI.drugMenuPrompt();
-                command = myObj.nextLine();
-            }
-        }
-    }*/
 }
