@@ -29,7 +29,8 @@ In this application there are 5 main features that are provided for the user. Ea
 
 
 <br/><br/>
-## 2. Installation Guide
+<a name="section2">
+## 2. Installation Guide</a>
 
 1. Ensure system has Java 11
 
@@ -40,7 +41,7 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-<a name="section2.4">4.</a> `cd` into the folder containing the JAR file
+4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
@@ -93,7 +94,7 @@ The detailed explaination of each command will be explained in the subsequent se
 
 ## 4. Start Menu
 
-The Start Menu is the first menu you will encounter after you run the application as stated in [section 2.4](#section2.4). 
+The Start Menu is the first menu you will encounter after you run the application as stated in [section 2](#section2). 
 
 Here is an example of how the welcome screen of HealthVault will look like.
 <img src="images/Start Menu.PNG" >
