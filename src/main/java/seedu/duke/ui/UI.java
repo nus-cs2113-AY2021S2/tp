@@ -53,7 +53,8 @@ public class UI {
                 + message
                 + "\n"
                 + DIVIDER_LINE_ONLY);
-      
+    }
+
     public void showFileParserErrorMessage() {
         System.out.println("The file contains invalid content that can't be recognized, please fix it\n"
                 + "You can try to delete everything in the file but you will lose the information you had.");
