@@ -3,51 +3,52 @@
 ## Table of Contents
 
 [1. Introduction to UniTracker](#1-introduction-to-unitracker)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[1.1 About UniTracker](#11-about-unitracker)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.2 About This User Guide](#12-about-this-user-guide)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.3 How to Use This User Guide](#13-how-to-use-this-user-guide)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)
 
 [2. Quick Start](#2-quick-start)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 System Requirements](#21-system-requirements)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and Above](#211-windows-7-and-above)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.2 Mac OS](#212-mac-os)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[2.2 Start Up](#22-start-up)
 
 [3. Features](#3-features)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add a Module](#311-add-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. View a Module](#312-view-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. View All Modules](#313-view-all-modules)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. Add/View Components and Their Weightages](#315-addview-components-and-their-weightages)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.8. Add a Review](#318-add-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.9. View All Reviews](#319-view-all-reviews)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.11. Add New Task](#3111-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.13. Add Zoom Link](#3113-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Add New Task](#331-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Delete a Task](#333-delete-a-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 View All Tasks](#334-view-all-tasks)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Pin a Task](#335-pin-a-task)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
@@ -94,7 +95,7 @@ E.g. `> user input`
 > **Note!**  
 > This is a note section. Additional useful information will be written in sections such as this one.
 
-> **WARNING!**  
+> **<span style="color: red"> WARNING! </span>**   
 > This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
 ---
@@ -175,7 +176,7 @@ index. E.g. `1` would bring you to the Module Information Menu.
 This section gives a detailed description of each feature, including examples to aid your
 understanding.
 
-**<span style="color: red"> WARNING! </span>**
+>**<span style="color: red"> WARNING! </span>**  
 > Ending the application abruptly may cause changes to be discarded!
 >
 
@@ -734,7 +735,7 @@ message being `Wow yay~`:
   What is the message you would like to see after completing this?
   > Wow yay~
   --------------------------------------------
-  You've added this: [CS2113T] Work on User Guide
+  You've added this: [CS2113T][    ] Work on User Guide
   Returning back to TaskManager menu now!
   ````
 
@@ -749,8 +750,9 @@ The format for the date and time input is as follows:
 Example for adding a task of type `assignment` with the task description of `Work on user guide` and
 message being `Wow yay~`:
 
-NOTE: In this example, module `CS2113T` has already been added through
-the [add module](#311-add-a-module) feature.
+> **Note!**  
+> In this example, module `CS2113T` has already been added through
+> the [add module](#311-add-a-module) feature.
 
   ````
 Please choose which type of task you would like to add and enter the number:
@@ -778,68 +780,160 @@ What is the time of the assignment you want to add?
 What is the message you would like to see after completing this?
 > Wow yay~
 --------------------------------------------
-You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+You've added this: [CS2113T][    ] Work on User Guide (by: Mar 14 2021, 11:59 PM)
 Returning back to TaskManager menu now!
 ````
 
 > **Note!**  
 > If you were to input an invalid module index when choosing the module of the task,
-> you will be asked if you want to add a new module. Example:
+> you will be asked if you want to add a new module:
 > ````
 > A module for that number does not exist.
 > Would you like to add a module? [Y/N]
 > ````
+> 
+> Additionally, if you were to input an invalid date format, you will see the following error message to prompt you to try again:
+> ````
+> Please enter a valid date format.
+> ````
+> If you were to input an invalid time format, you will see the following error message to prompt you to try again:
+> ````
+> Please enter a valid time format.
+> ````
 
 #### 3.3.2 Mark/Unmark a Task as Done
 
-*[This section will be completed in the future.]* <br>
+Marks a task of type `task`, `assignment`, `midterm` or `final exam` from the task list as done or undone, depending on its current status.
+When a task is first added, its status will be undone by default.
+
+Upon marking a task is done, the message that you inputted when [adding a new task](#331-add-new-task) will be displayed. 
+
+> **Note!**  
+> In the following two examples, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+
+Example for marking a task type `task` with a task description of `Work on user guide` as done and
+message being `Wow yay~`:
+
+````
+  Please choose which type of task you would like to mark/unmark as done and enter the number:
+  [1] --- Task
+  [2] --- Assignment
+  [3] --- Midterm
+  [4] --- Final Exam
+  > 1
+  --------------------------------------------
+  This is the list of your tasks:  
+  1. [CS2113T][    ] Work on User Guide  
+  
+  What is the number of the task you want to mark/unmark?
+  > 1
+  --------------------------------------------
+  This task is not marked as done. Would you like to mark it? [Y/N]
+  Y
+  --------------------------------------------
+  You've marked this as done: [CS2113T][DONE] Work on User Guide
+  NOTE: Wow yay~
+  Returning back to TaskManager menu now!
+````
+
+Example for unmarking a task type `task` with a task description of `Work on user guide` as done and
+message being `Wow yay~`:
+````
+Please choose which type of task you would like to mark/unmark as done and enter the number:
+[1] --- Task
+[2] --- Assignment
+[3] --- Midterm
+[4] --- Final Exam
+> 1
+--------------------------------------------
+This is the list of your tasks:  
+1. [CS2113T][DONE] Work on User Guide  
+
+What is the number of the task you want to mark/unmark?
+> 1
+--------------------------------------------
+This task is marked as done. Would you like to unmark it? [Y/N]
+Y
+--------------------------------------------
+You've marked this as not done: [CS2113T][    ] Work on User Guide
+Returning back to TaskManager menu now!
+````
+
+> **Note!**  
+> Your input to the confirmation of marking/unmarking the task is NOT case-sensitive. Both  `y` and `Y` are accepted as valid inputs. 
+> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu.
+> 
+> Additionally, if you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
 
 #### 3.3.3 Delete a Task
 
 Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
-* `Delete a Task` menu:
+Example for deleting a task of type `task` with the task description of `Work on user guide`:
+
+> **Note!**  
+> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+
   ````
   Please choose which type of task you would like to delete and enter the number:
   [1] --- Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
-  ````
-* Example for deleting a `task`:  
-  Input:  
-  `1`    
-  Output:  
-   ````  
+  > 1
+  --------------------------------------------
   This is the list of your tasks:  
-  1. [CS2113T] Work on User Guide  
+  1. [CS2113T][DONE] Work on User Guide  
   
-  What is the number of the task you want to delete?  
-  ````  
-  Input:    
-  `1`  
-  Output:  
+  What is the number of the task you want to delete?
+  > 1
+  --------------------------------------------
+  You've deleted this: [CS2113T][DONE] Work on User Guide  
+  Returning back to the menu now!
+  ````
+> **Note!**  
+> If you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
 
-  ````  
-  You've deleted this: [CS2113T] Work on User Guide  
-  NOTE: Wow yay~  
-  Returning back to TaskManager menu now!  
-  ````  
 
 #### 3.3.4 View All Tasks
 
 Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task
 list.
 
-* Example Output:
+Example:
+
+> **Note!**  
+> In this example, the tasks `[CS2113T][DONE] Work on User Guide` and `[CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)`
+> have already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+
   ````  
   This is the list of your pinned tasks:  
 
   This is the list of your tasks:  
-  1. [CS2113T] Work on User Guide  
+  1. [CS2113T][DONE] Work on User Guide  
 
   This is the list of your assignments:  
-  1. [CS2113T] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
+  1. [CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
 
   This is the list of your midterms:  
 
@@ -850,32 +944,57 @@ list.
 
 Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
-* `Pin a Task` menu:  
+Example of pinning a task of type `task` with the task description of `Work on user guide`:
+
+> **Note!**  
+> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+
   ````
   Please choose which type of task you would like to pin and enter the number:  
   [1] --- Task  
   [2] --- Assignment  
   [3] --- Midterm  
   [4] --- Final Exam  
-  ````  
-* Example for pinning a `task`:    
-  Input:    
-  `1`    
-  Output:  
-  ````  
+  > 1
+  --------------------------------------------
   This is the list of your tasks:  
-  1. [CS2113T] Work on User Guide  
+  1. [CS2113T][DONE] Work on User Guide  
   
-  What is the number of the task you want to pin?  
-  ````  
-  Input:    
-  `1`  
-  Output:  
+  What is the number of the task you want to pin? 
+  > 1
+  --------------------------------------------
+  You've pinned this: [CS2113T][DONE] Work on User Guide  
+  Returning back to the menu now!
+  ````
+> **Note!**  
+> If you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
 
-  ````   
-  You've pinned this: [CS2113T] Work on User Guide  
-  Returning back to TaskManager menu now!  
+Following this, if you were to [view all your tasks](#334-view-all-tasks), it will be updated accordingly:
+
   ````  
+  This is the list of your pinned tasks:  
+  1. [CS2113T][DONE] Work on User Guide
+  
+  This is the list of your tasks:  
+  1. [CS2113T][DONE] Work on User Guide  
+  
+  This is the list of your assignments:  
+  1. [CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
+  
+  This is the list of your midterms:  
+  
+  This is the list of your final exams:  
+  ````
 
 ---
 
@@ -925,7 +1044,7 @@ Supported schemes include: https, http only
 
 Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
 
-**Note!**
+> **Note!**  
 > While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 
 Example for adding an external link:
@@ -949,7 +1068,7 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit to links menu
 ````
 
-**Note!**
+> **Note!**  
 > The application checks for duplicate links, so any duplicates that you add will be automatically removed!
 
 #### 3.4.3 Remove External Link
@@ -1053,7 +1172,7 @@ Please choose which action you would like to do and enter the number:
 [5] --- Exit to main menu
 ````
 
-**Note!**
+> **Note!**  
 > If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
 #### 3.4.6 Delete Zoom Link
