@@ -1,47 +1,47 @@
 @startuml
-participant Actor
-Actor -> ShowDailyRouteCommand : execute
-activate ShowDailyRouteCommand
-ShowDailyRouteCommand -> DailyRoute : getSelectableDays
-activate DailyRoute
+actor User
+User -> "command:ShowDailyRouteCommand" : execute
+activate "command:ShowDailyRouteCommand"
+"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : getSelectableDays
+activate "dailyRoute:DailyRoute"
 return
-deactivate DailyRoute
-ShowDailyRouteCommand -> DailyRouteUi : getDayEntryForShow
-activate DailyRouteUi
+deactivate "dailyRoute:DailyRoute"
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForShow
+activate "ui:DailyRouteUi"
 return
-deactivate DailyRouteUi
-ShowDailyRouteCommand -> DailyRoute : getDailyRoute
-activate DailyRoute
+deactivate "ui:DailyRouteUi"
+"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : get"dailyRoute:DailyRoute"
+activate "dailyRoute:DailyRoute"
 return
-deactivate DailyRoute
+deactivate "dailyRoute:DailyRoute"
 
-create Router
-ShowDailyRouteCommand -> Router : execute
-activate Router
-Router -> Router : findShortestRoute
-activate Router
-return
-return
-
-create Router
-ShowDailyRouteCommand -> Router : execute
-activate Router
-Router -> Router : findShortestRoute
-activate Router
-return
-return
-create Router
-ShowDailyRouteCommand -> Router : execute
-activate Router
-Router -> Router : findShortestRoute
-activate Router
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
 return
 return
 
-ShowDailyRouteCommand -> DailyRouteUi: showMessageWithDivider
-activate DailyRouteUi
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
 return
-deactivate DailyRouteUi
-ShowDailyRouteCommand --> Actor
-deactivate ShowDailyRouteCommand
+return
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
+return
+return
+
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider
+activate "ui:DailyRouteUi"
+return
+deactivate "ui:DailyRouteUi"
+"command:ShowDailyRouteCommand" --> User
+deactivate "command:ShowDailyRouteCommand"
 @enduml

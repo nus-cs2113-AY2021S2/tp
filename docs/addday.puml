@@ -1,30 +1,31 @@
 @startuml
-participant Actor
-Actor -> AddDailyRouteCommand : execute
-activate AddDailyRouteCommand
-AddDailyRouteCommand -> DailyRoute : getValidDays
-activate DailyRoute
+actor User
+User -> "command:AddDailyRouteCommand" : execute
+activate "command:AddDailyRouteCommand"
+"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : getValidDays
+activate "dailyRoute:DailyRoute"
 return
-deactivate DailyRoute
-AddDailyRouteCommand -> DailyRouteUi : getDayEntryForAdd
-activate DailyRouteUi
+deactivate "dailyRoute:DailyRoute"
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForAdd
+activate "ui:DailyRouteUi"
 return
-deactivate DailyRouteUi
+deactivate "ui:DailyRouteUi"
 
-AddDailyRouteCommand -> DailyRouteUi : getScheduleInfo
-activate DailyRouteUi
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getScheduleInfo
+activate "ui:DailyRouteUi"
 return
-deactivate DailyRouteUi
+deactivate "ui:DailyRouteUi"
 
-AddDailyRouteCommand -> DailyRoute : addDailyRoute
-activate DailyRoute
-DailyRoute --> AddDailyRouteCommand
-deactivate DailyRoute
+"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : addDailyRoute
+activate "dailyRoute:DailyRoute"
+"dailyRoute:DailyRoute" --> "command:AddDailyRouteCommand"
+deactivate "dailyRoute:DailyRoute"
 
-AddDailyRouteCommand -> DailyRouteUi: showMessageWithDivider
-activate DailyRouteUi
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider
+activate "ui:DailyRouteUi"
 return
-deactivate DailyRouteUi
-AddDailyRouteCommand --> Actor
-deactivate AddDailyRouteCommand
+deactivate "ui:DailyRouteUi"
+"command:AddDailyRouteCommand" --> User
+deactivate "command:AddDailyRouteCommand"
+
 @enduml
