@@ -328,8 +328,9 @@ P55555, Sam, 40, Male, Fever, Paracetamol
 
 The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
 
-This is an example of the welcome screen for Staff Menu.
-<img src="images/DoctorAppointmentWelcome.jpg" width = "850">
+This is an example of the welcome screen for Doctors' Appointments Menu.
+
+<img src="images/DoctorAppointmentWelcome.jpg" width = "700">
 
 
 #### Adding an appointment: `add`
@@ -354,7 +355,7 @@ Appointment Added
 
 Example Screenshot:
 
-<img src="images/DoctorAppointmentAdd.jpg" width = "800" >
+<img src="images/DoctorAppointmentAdd.jpg" width = "700" >
 
 
 #### Deleting an appointment: `delete`
@@ -377,7 +378,7 @@ DoctorID / Appointment ID : D12345/A12347 has been deleted!
 ```
 Example Screenshot:
 
-<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "800" >
+<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
 
 Example of usage (Appointment ID):
 ```
@@ -393,7 +394,7 @@ Appointmenet ID: A12346 has been deleted!
 ```
 Example Screenshot:
 
-<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "800" >
+<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
 
 #### Listing appointments: `list`
 Lists all of the appointments of a specific doctor.
@@ -417,7 +418,7 @@ D12345     |A12345 	   | MingShun	| M        | 19/08/2021
 ```
 Example Screenshot:
 
-<img src="images/DoctorAppointmentListDocID.jpg" width = "800" >
+<img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
 
 
 Example of usage (Appointment ID):
@@ -436,7 +437,7 @@ A12345 	       | MingShun | M        | 19/08/2021
 ```
 Example Screenshot:
 
-<img src="images/DoctorAppointmentListAptID.jpg" width = "800" >
+<img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
 
 
 #### Returning to Start Menu: `return`
