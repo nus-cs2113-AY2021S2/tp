@@ -435,7 +435,7 @@ It is very easy for a user to use the system. There is a detailed user guide pro
 
 Given below are instructions to test the app manually.
 
-**Note:** These instructions only provide a starting point for testers to work on, testers are expected to do more *exploratory* testing.
+:information_source: **Note:** These instructions only provide a starting point for testers to work on, testers are expected to do more *exploratory* testing.
 
 ### Launch and shutdown
 
