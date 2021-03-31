@@ -21,7 +21,6 @@ Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find
    
 
 ## Features 
-
 {Give detailed description of each feature}
 
 
