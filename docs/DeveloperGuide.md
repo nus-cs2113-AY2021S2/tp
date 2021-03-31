@@ -69,15 +69,15 @@ The app will help cinema administrators to update the movie information regularl
 | Word | Definition |
 |------|------------|
 |Admin|Authorized users of the movie application that have the ability to modify the movie details|
-|User|Regular users of the movie application that have the ability to view, review, and buy tickets to available movies|
+|Customer|Regular users of the movie application that have the ability to view, review, and buy tickets to available movies|
 |Movie|Details on a movie, including name, dates, casts, etc.|
-|Cineplex|Movie theatre where users may create bookings|
-|Cinema|Individual room of the cineplex where users sit and watch the movies at|
-|Seat|Individual space inside the cinema where each user sits at|
+|Cineplex|Movie theatre where customers may create bookings|
+|Cinema|Individual room of the cineplex where customers sit and watch the movies at|
+|Seat|Individual space inside the cinema where each customer sits at|
 |Review|Comments and ratings of each movie|
 |Showtimes|Individual entity of a particular movie, showing at a particular time|
 |Booking|Individual appointment where one seat of one showtime is assigned to one user|
-|Database|Offline text files that store information on cineplex, movie, showtime, and user entities|
+|Database|Offline text files that store information on cineplex, movie, showtime, and customer entities|
 
 ## Instructions for manual testing
 
