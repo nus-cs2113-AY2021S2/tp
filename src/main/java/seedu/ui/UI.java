@@ -96,9 +96,13 @@ public class UI {
     }
 
     public static String cleanseInput(String input) {
-        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
+        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
     }
-
+    public static void checkBackSlash(String line) {
+        if (line.contains("\\")) {
+            System.out.println(line.replace("\\",""));
+        }
+    }
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
     }

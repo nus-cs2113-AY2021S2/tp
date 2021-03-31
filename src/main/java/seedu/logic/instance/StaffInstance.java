@@ -1,7 +1,6 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.*;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.parser.StaffParser;
@@ -27,9 +26,7 @@ public class StaffInstance {
     public void run(){
         try {
             staffStorage.fileHandling(staffAggregation);
-        } catch (ExcessInputException | InvalidIntegerException |
-                WrongStaffIdException | InsufficientInputException |
-                NoInputException | DuplicateIDException e) {
+        } catch (HealthVaultException e) {
             StaffUI.corruptedFileErrorMessage();
             return;
         }
