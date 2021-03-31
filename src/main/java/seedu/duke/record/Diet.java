@@ -14,7 +14,7 @@ public class Diet extends Record {
     private final double amount;
     private final String formattedDate;
     private static final String SUMMARY_FORMAT = "%sg %s on %s";
-    private int spaceCount;
+    private final int spaceCount;
     private String seperator = "";
 
     /**

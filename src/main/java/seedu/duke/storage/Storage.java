@@ -10,31 +10,35 @@ import java.text.ParseException;
 import java.util.Objects;
 
 public class Storage {
-    private FileInfoReader fileInfoReader;
-    private FileInfoWriter fileInfoWriter;
-    private String recordPath;
-    private String goalPath;
-    private String timePath;
-    private File recordSource;
-    private File goalSource;
-    private File timeSource;
+    private final FileInfoReader fileInfoReader;
+    private final FileInfoWriter fileInfoWriter;
 
     public Storage(String recordPath, String goalPath) throws IOException {
-        this.recordPath = recordPath;
-        this.goalPath = goalPath;
-        recordSource = new File(recordPath);
-        goalSource = new File(goalPath);
+        File recordSource = new File(recordPath);
+        File goalSource = new File(goalPath);
         if (!recordSource.exists()) {
             if (!recordSource.getParentFile().exists()) {
-                recordSource.getParentFile().mkdirs();
+                boolean isPathSuccessfullyCreated = recordSource.getParentFile().mkdirs();
+                if (!isPathSuccessfullyCreated) {
+                    throw new IOException();
+                }
             }
-            recordSource.createNewFile();
+            boolean isFileSuccessfullyCreated = recordSource.createNewFile();
+            if (!isFileSuccessfullyCreated) {
+                throw new IOException();
+            }
         }
         if (!goalSource.exists()) {
             if (!goalSource.getParentFile().exists()) {
-                goalSource.getParentFile().mkdirs();
+                boolean isPathSuccessfullyCreated = goalSource.getParentFile().mkdirs();
+                if (!isPathSuccessfullyCreated) {
+                    throw new IOException();
+                }
             }
-            goalSource.createNewFile();
+            boolean isFileSuccessfullyCreated = goalSource.createNewFile();
+            if (!isFileSuccessfullyCreated) {
+                throw new IOException();
+            }
         }
         fileInfoWriter = new FileInfoWriter(recordPath, goalPath);
         fileInfoReader = new FileInfoReader(recordSource, goalSource);
