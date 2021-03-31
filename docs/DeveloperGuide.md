@@ -1,4 +1,4 @@
-# GULIO Developer Guide
+# Developer Guide
 
 **GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
 
@@ -145,8 +145,8 @@ Upon start, the main class calls run() which enters a while loop and reads in us
 * Facilitates the CLI interface
 * Methods to display general messages, prompt messages and error messages
 * Reads in user’s input, and used by Command classes to react to user’s inputs
-* The UI object created as an attribute in Duke is passed into each command to be executed
-* Instances of UI are used by tests in general
+* The `UI` object created as an attribute in Duke is passed into each command to be executed
+* Instances of `UI` are used by tests in general
 
 &nbsp;
 
@@ -199,7 +199,7 @@ The Model component consists of classes that represent real-world objects relate
 
 #### ModuleList:
 
-`ModuleList` is responsible for managing loaded modules in the program and keeping track if a user is at the dashboard or within a selected module. `ModuleList` interacts with the `Loader` and `Writer` components to load and write data respectively to the storage files. It also contains methods to sort data that after loading and before writing.
+`ModuleList` is responsible for managing loaded modules in the program and keeping track if a user is at the dashboard or within a selected module. `ModuleList` interacts with the `Loader` and `Writer` components to load and write data respectively to the storage files. It also contains methods to sort data.
 
 The `ModuleList` class contains the attributes:
 
@@ -236,7 +236,7 @@ The `TeachingStaff` class contains the attributes related to the teacher(s) of a
 
 #### Task:
 
-The Task class contains attributes related to an assignment, deadline or task in a university setting
+The `Task` class contains attributes related to an assignment, deadline or task in a university setting
 
 * Description of task
 * Deadline of task
@@ -253,7 +253,7 @@ The Task class contains attributes related to an assignment, deadline or task in
     Figure 6 - Illustration of Storage Structure
 </p>
 
-The storage component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components: Loader and Writer. At every moment, the loader only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
+The `Storage` component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components: `Loader` and `Writer`. At every moment, `Loader` only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
 
 #### Loader:
 
@@ -273,11 +273,11 @@ The storage component is responsible for creating and loading modules and their 
 
 **API**: `TextEditor.java`
 
-The editor component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
+The `Editor` component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
 
 #### Text Editor
 
-* Sets up the editor
+* Sets up the text editor
 * Loads existing file from Cheatsheet directory within a module for the edit cheat-sheet command
 * Flushes out the text from the editor when a different or new file is opened.
 * Adjusts the font size of the text within the editor
@@ -293,11 +293,11 @@ The editor component is responsible for opening the text editor to add or edit c
 ### Common classes
 
 Classes that are used by multiple components:
-* CommonMethods: Stores methods that are used by multiple components
-* Constants: Stores constants
-* Messages: Stores strings that are printed by the UI
-* DashboardCommands: Enum of commands that can be used outside a module
-* ModuleCommands: Enum of commands that can be used inside a module
+* `CommonMethods`: Stores methods that are used by multiple components
+* `Constants`: Stores constants
+* `Messages`: Stores strings that are printed by the `UI`
+* `DashboardCommands`: Enum of commands that can be used outside a module
+* `ModuleCommands`: Enum of commands that can be used inside a module
 
 &nbsp;
 
@@ -336,16 +336,21 @@ AddLessonCommand then adds the Lesson object to the lesson list of a module. The
 
 ### Adding of Cheat-Sheet
 
-The AddCheatSheetCommand class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 6). Upon creating a new AddCheatSheetCommand object and calling the “execute” method on it, the GULIO Text Editor application will also be automatically started.
+The AddCheatSheetCommand class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new AddCheatSheetCommand object and calling the “execute” method on it, the GULIO Text Editor application will also be automatically started.
 
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
 <p align="center">
-    <img width="973" src="developerGuideImages/file.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
-    Figure 10 - AddCheatSheetCommand Invocation Sequence Diagram
+    <img width="973" src="developerGuideImages/addCheatSheetCommand-part1.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
+    Figure 10a - AddCheatSheetCommand Invocation Sequence Diagram
 </p>
 
-When the AddCheatSheet command is executed, it gets the current selected module by calling the “getSelectedModule” method in ModuleList. It then calls the “getDirectoryPath” method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the “openTextEditor” method in itself.
+When the AddCheatSheet command is executed, it gets the current selected module by calling the “getSelectedModule” method in ModuleList. It then calls the “getDirectoryPath” method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the “openTextEditor” method in itself, which subsequently sets up and opens the GULIO Text Editor as seen below:
+
+<p align="center">
+    <img width="973" src="developerGuideImages/addCheatSheetCommand-part2.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
+    Figure 10b - Opening the Text Editor
+</p>
 
 &nbsp;
 
@@ -463,8 +468,8 @@ Efficiently view and update regularly-needed information on modules and deadline
 
 Due to the 2-layer command system, you will need to identify which layer you are on in order to run the tests correctly.To identify which layer you are on, simply check the tag beside your input, known as the **input label**.
 
-* “GULIO” indicates that you are at the dashboard layer.
-* A module code (e.g. “CS2113T”) indicates that you are within that module.
+* `GULIO` indicates that you are at the dashboard layer.
+* A module code (e.g. `CS2113T`) indicates that you are within that module.
 
 <table>
     <tr>
@@ -487,106 +492,106 @@ Due to the 2-layer command system, you will need to identify which layer you are
 
 1. Shift the file GULIO.jar to your desired directory.
 1. Open command prompt and navigate to the directory.
-1. Enter “Java -jar GULIO.jar” into the command prompt.<br>
-   _Expected outcome: Prints welcome message._
+1. Enter `Java -jar GULIO.jar` into the command prompt.<br>
+   >Expected outcome: Prints welcome message.
 
 
 ### Exiting GULIO
 
-1. Ensure that no module is selected. Input label should show “GULIO”.
-  1. If you see a module code instead, enter “close” to close the module.<br>
-     _Expected outcome: Input label changes to “GULIO”._
-1. Enter “exit”.<br>
-   _Expected outcome: Prints exit message and program closes._
+1. Ensure that no module is selected. Input label should show `GULIO`.
+  1. If you see a module code instead, enter `close` to close the module.<br>
+     >Expected outcome: Input label changes to `GULIO`.
+1. Enter `exit`.<br>
+   >Expected outcome: Prints exit message and program closes.
 
 
 ### Adding a Module
 
-1. Ensure that no module is selected. Input label should show “GULIO”.
-  1. If you see a module code instead, enter “close” to close the module.<br>
-     _Expected outcome: Input label changes to “GULIO”._
-1. Enter “module”.<br>
-   _Expected outcome: Lists all existing modules._
-1. Enter “add \<module>” where “\<module>” is a module code that is not in the list.<br>
-   _Expected outcome: Prints success message._
-1. Enter “module” again to list all existing modules.<br>
-   _Expected outcome: New module is added to list._
+1. Ensure that no module is selected. Input label should show `GULIO`.
+  1. If you see a module code instead, enter `close` to close the module.<br>
+     >Expected outcome: Input label changes to `GULIO`.
+1. Enter `module`.<br>
+   >Expected outcome: Lists all existing modules.
+1. Enter `add <module>` where \<module> is a module code that is not in the list.<br>
+   >Expected outcome: Prints success message.
+1. Enter `module` again to list all existing modules.<br>
+   >Expected outcome: New module is added to list.
 
 
 ### Deleting a Module
 
-1. Ensure that no module is selected. Input label should show “GULIO”.
-  1. If you see a module code instead, enter “close” to close the module.<br>
-     _Expected outcome: Input label changes to “GULIO”._
-1. Enter “delete”.<br>
-   _Expected outcome: Lists all existing modules and asks for indices to delete._
+1. Ensure that no module is selected. Input label should show `GULIO`.
+  1. If you see a module code instead, enter `close` to close the module.<br>
+     >Expected outcome: Input label changes to `GULIO`.
+1. Enter `delete`.<br>
+   >Expected outcome: Lists all existing modules and asks for indices to delete.
 1. Enter indices of modules to delete, separated by space.<br>
-   _Expected outcome: Prints success message._
-1. Enter “module”.<br>
-   _Expected outcome: Specified modules deleted._
+   >Expected outcome: Prints success message.
+1. Enter `module`.<br>
+   >Expected outcome: Specified modules deleted.
 
 ### Opening a Module
 
-1. Ensure that no module is selected. Input label should show “GULIO”.
-  1. If you see a module code instead, enter “close” to close the module.<br>
-     _Expected outcome: Input label changes to “GULIO”._
-1. Enter “modules”.<br>
-   _Expected outcome: Lists all existing modules._
-1. Enter “open <module>” where “<module>” is a module code in the list.<br>
-   _Expected outcome: Prints overview of module and input label changes to module code._
+1. Ensure that no module is selected. Input label should show `GULIO`.
+  1. If you see a module code instead, enter `close` to close the module.<br>
+     >Expected outcome: Input label changes to `GULIO`.
+1. Enter `modules`.<br>
+   >Expected outcome: Lists all existing modules.
+1. Enter `open <module>` where \<module> is a module code in the list.<br>
+   >Expected outcome: Prints overview of module and input label changes to module code.
 
 ### Closing a Module
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows “GULIO”, enter “modules”.<br>
-     _Expected outcome: Lists all existing modules._
-  1. Add a new module if the list is empty.
-  1. Open one of the modules.<br>
-     _Expected outcome: Prints overview of module._
-1. Enter “close”.<br>
-   _Expected outcome: Input label changes back to “GULIO”._
+  1. If the input label shows `GULIO`, enter `modules`.<br>
+     >Expected outcome: Lists all existing modules.
+  1. Add a new module if the list is empty. E.g. `add CS2113T`
+  1. Open one of the modules. E.g. `open CS2113T`<br><br>
+     >Expected outcome: Prints overview of module.
+1. Enter `close`.<br>
+   >Expected outcome: Input label changes back to `GULIO`.
 
 ### Adding a Lesson
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows “GULIO”, enter “modules”.<br>
-     _Expected outcome: Lists all existing modules._
-  1. Add a new module if the list is empty.
-  1. Open one of the modules.<br>
-     _Expected outcome: Prints overview of module._
-1. Enter “lessons”.<br>
-   _Expected outcome: Lists all lessons for that module._
-1. Add a new lesson. E.g. “add lesson lecture ;; Friday 6pm”.<br>
-   _Expected outcome: Prints success message._
-1. Enter “lessons”.<br>
-   _Expected outcome: New lesson added to list._
+  1. If the input label shows `GULIO`, enter `modules`.<br>
+     >Expected outcome: Lists all existing modules.
+  1. Add a new module if the list is empty. E.g. `add CS2113T`
+  1. Open one of the modules. E.g. `open CS2113T`<br>
+     >Expected outcome: Prints overview of module.
+1. Enter `lessons`.<br>
+   >Expected outcome: Lists all lessons for that module.
+1. Add a new lesson. E.g. `add lesson lecture ;; Friday 6pm`.<br>
+   >Expected outcome: Prints success message.
+1. Enter `lessons`.<br>
+   >Expected outcome: New lesson added to list.
 
 ### Deleting a Lesson
 
 1. Check if a module is selected via the input label.
-  1. If the input label shows “GULIO”, enter “modules”.<br>
-     _Expected outcome: Lists all existing modules._
-  1. Add a new module if the list is empty.
-  1. Open one of the modules.<br>
-     _Expected outcome: Prints overview of module._
-1. Enter “delete lesson”.<br>
-   _Expected outcome: Lists all existing lessons and asks for indices to delete._
+  1. If the input label shows `GULIO`, enter `modules`.<br>
+     >Expected outcome: Lists all existing modules.
+  1. Add a new module if the list is empty. E.g. `add CS2113T`
+  1. Open one of the modules. E.g. `open CS2113T`<br>
+     >Expected outcome: Prints overview of module.
+1. Enter `delete lesson`.<br>
+   >Expected outcome: Lists all existing lessons and asks for indices to delete.
 1. Enter indices of lessons to delete, separated by space.<br>
-   _Expected outcome: Prints success message._
-1. Enter “lessons”.<br>
-   _Expected outcome: Specified lessons removed from list._
+   >Expected outcome: Prints success message.
+1. Enter `lessons`.<br>
+   >Expected outcome: Specified lessons removed from list.
 
 ### Opening a Link
 
 1. Check if a module is selected via the input label.
-1. If the input label shows “GULIO”, enter “modules”.<br>
-   _Expected outcome: Lists all existing modules._
-1. Add a new module if the list is empty.
-1. Open one of the modules.<br>
-   _Expected outcome: Prints overview of module._
-1. Add a new lesson with a link. E.g. “add lesson lecture ;; Friday 4pm ;; https://nus-sg.zoom.us/”. <br>
-   _Expected outcome: Prints success message._
-1. Enter “link”.<br>
-   _Expected outcome: Lists all existing lessons._
+1. If the input label shows `GULIO`, enter `modules`.<br>
+   >Expected outcome: Lists all existing modules.
+1. Add a new module if the list is empty. E.g. `add CS2113T`
+1. Open one of the modules. E.g. `open CS2113T`<br>
+   >Expected outcome: Prints overview of module.
+1. Add a new lesson with a link. E.g. `add lesson lecture ;; Friday 4pm ;; https://nus-sg.zoom.us/`. <br>
+   >Expected outcome: Prints success message.
+1. Enter `link`.<br>
+   >Expected outcome: Lists all existing lessons.
 1. Enter indices of lessons with links to open.<br>
-   _Expected outcome: Opens link for lessons selected._
+   >Expected outcome: Opens link for lessons selected.
