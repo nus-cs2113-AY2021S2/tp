@@ -347,6 +347,11 @@ Appointment Added
 ------------------------------------------------------------------------------
 ```
 
+Example Screenshot:
+
+<img src="images/DoctorAppointmentAdd.jpg" width = "800" >
+
+
 #### Deleting an appointment: `delete`
 Deletes an appointment from the list of appointments.
 
@@ -365,6 +370,10 @@ DoctorID / Appointment ID : D12345/A12346 has been deleted!
 DoctorID / Appointment ID : D12345/A12347 has been deleted!
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "800" >
+
 Example of usage (Appointment ID):
 ```
 Appointments --> delete/A12346
@@ -377,6 +386,10 @@ Appointments --> delete/A369
 Appointmenet ID: A12346 has been deleted!
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "800" >
+
 #### Listing appointments: `list`
 Lists all of the appointments of a specific doctor.
 
@@ -397,6 +410,11 @@ D12345     |A12345 	   | MingShun	| M        | 19/08/2021
 
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListDocID.jpg" width = "800" >
+
+
 Example of usage (Appointment ID):
 ```
 Appointments --> list/A12345
@@ -411,6 +429,10 @@ A12345 	       | MingShun | M        | 19/08/2021
 
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListAptID.jpg" width = "800" >
+
 
 #### Returning to Start Menu: `return`
 #### Help: `help`
