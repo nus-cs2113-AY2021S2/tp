@@ -7,11 +7,13 @@ import seedu.duke.command.CommandResult;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
 import seedu.duke.goal.timemanager.TimeController;
+import seedu.duke.exception.TypeException;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Healthier {
     private UI ui;
@@ -24,15 +26,31 @@ public class Healthier {
         ui = new UI();
         timeController = new TimeController();
         timeController.checkForTime(currentFitCenter);
-        String sourceFilePath = "data" + File.separator + "records.txt";
+        String recordFilePath = "data" + File.separator + "records.txt";
+        String goalFilePath = "data" + File.separator + "goals.txt";
         try {
-            storage = new Storage(sourceFilePath);
-            // = storage.getTaskList();
+            storage = new Storage(recordFilePath, goalFilePath);
+            storage.readRecords(currentUser);
+            storage.readGoals(currentUser);
         } catch (IOException e) {
             ui.showFileErrorMessage();
+            e.printStackTrace();
+            System.exit(0);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            ui.showFileParserErrorMessage();
+            System.exit(0);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            ui.showFileParserErrorMessage();
+            System.exit(0);
+        } catch (TypeException e) {
+            e.printStackTrace();
+            ui.showFileParserErrorMessage();
             System.exit(0);
         }
         ui.printGreetings();
+        ui.showProgress(currentUser);
     }
 
     private void loopCommand() throws IOException {
@@ -43,7 +61,7 @@ public class Healthier {
             command = commandParser.parseCommand(userInput);
             CommandResult result = command.execute(currentFitCenter);
             ui.printCommandResult(result);
-            storage.store(currentFitCenter);
+            storage.store(currentUser);
             commandParser.clearParserParams();
         } while (!ExitCommand.isExitCommand(command));
     }
