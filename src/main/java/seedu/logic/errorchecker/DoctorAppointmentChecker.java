@@ -69,18 +69,32 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
     }
 
-    public static void checkDataFromStorage(String id) throws CorruptedFileException {
-        String[] input = id.split("\\s\\|\\s", 5);
-        System.out.println(doctorID + appointmentID + gender + date);
-        doctorID = input[0];
-        appointmentID = input[1];
-        gender = input[3];
-        date = input[4];
-        if (!isValidDocID(doctorID) || !isValidStorageAppointmentID(appointmentID) || !isValidGender(gender) || !isValidDate(date)) {
+    public static void checkDataFromStorage(String input) throws HealthVaultException {
+        String[] inputArray = input.split("\\s\\|\\s", 5);
+        doctorID = inputArray[0];
+        appointmentID = inputArray[1];
+        gender = inputArray[3];
+        date = inputArray[4];
+        checkID(doctorID, appointmentID);
+        if (!isValidGender(gender) || !isValidDate(date)) {
             throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
         }
     }
 
+    public static void checkID(String doctorID, String appointmentID) throws HealthVaultException {
+        try {
+            Integer.parseInt(doctorID.substring(1));
+            Integer.parseInt(appointmentID.substring(1));
+        } catch (NumberFormatException e) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+        if (!(doctorID.charAt(0) == 'D') || (doctorID.length()) != 6) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+        if (!(appointmentID.charAt(0) == 'A') || (doctorID.length()) != 6) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+    }
 
     public static boolean isValidDocID(String doctorID) {
         try {
@@ -97,7 +111,7 @@ public class DoctorAppointmentChecker extends MainChecker {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
         }
         return false;
     }

@@ -47,14 +47,11 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-4. Cd into the folder containing the JAR file
+4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
-   - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
-
+   - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
-   
    - Example: `cd C:\Users\JohnDoe\Downloads`
-	
    - Run the following command: `java -jar jar [JAR file name]`
 
 ## 3. How to use the guide
@@ -68,6 +65,7 @@ In this application there are 5 main features that are provided for the user. Ea
 **Case Sensitive** - Differentiating between capital and lower-case letters.
 
 **User Input** - Any information or data sent to a computer by the user using the application.
+
 
 ### 3.2 Symbols & Icons
 
