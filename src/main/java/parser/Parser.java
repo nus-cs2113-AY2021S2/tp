@@ -1,30 +1,40 @@
 package parser;
 
 
-import command.Command;
-import command.HomeCommand;
-import command.ResetStoreCommand;
-import command.DisplayMenusCommand;
-import command.AddReviewCommand;
-import command.ExitCommand;
-import command.ReadReviewsCommand;
-import command.DisplayCanteensCommand;
+import canteens.Canteen;
 import command.AddCanteenCommand;
+import command.AddReviewCommand;
 import command.AddStoreCommand;
+import command.Command;
 import command.DeleteCanteenCommand;
+import command.DeleteReviewCommand;
+import command.DeleteStoreCommand;
+import command.DisplayCanteensCommand;
+import command.DisplayMenusCommand;
+import command.ExitCommand;
+import command.HelpCommand;
+import command.HomeCommand;
+import command.ReadReviewsCommand;
+import command.ResetStoreCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
+import reviews.Review;
 import stores.Store;
 import ui.Ui;
+
+import java.util.ArrayList;
+
+import static stores.Store.averageRating;
 
 
 public class Parser {
 
     private NusFoodReviews nusFoodReviews;
+    private Ui ui;
 
-    public Parser(NusFoodReviews nusFoodReviews) {
-
+    public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
+        this.ui = ui;
     }
 
     public int parseInt(String line, int inclusiveMin, int inclusiveMax) throws DukeExceptions {
@@ -62,6 +72,8 @@ public class Parser {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
             newCommand = new ReadReviewsCommand(store);
+        } else if (line.equals("help")) {
+            newCommand = new HelpCommand();
         } else {
             throw new DukeExceptions("Please enter a valid command!");
         }
@@ -71,34 +83,56 @@ public class Parser {
     //parse admin commands only
     public Command parseAdminCommand(String line) throws DukeExceptions {
         Command newCommand;
+        ArrayList<Canteen> canteens = nusFoodReviews.getCanteens();
 
         switch (line) {
         case "1":
             newCommand = new DisplayCanteensCommand();
             break;
         case "2":
-            Ui.showAddCanteen();
-            String canteenName = Ui.readCommand();
+            ui.showAddCanteen();
+            String canteenName = ui.readCommand();
             newCommand = new AddCanteenCommand(canteenName);
             break;
         case "3":
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            Ui.showDisplayStores(nusFoodReviews.getCanteens().get(currentCanteenIndex));
-            Ui.showAddStore();
-            String storeName = Ui.readCommand();
+            ui.showDisplayStores(canteens.get(currentCanteenIndex));
+            ui.showAddStore();
+            String storeName = ui.readCommand();
             newCommand = new AddStoreCommand(currentCanteenIndex, storeName);
             break;
         case "4":
-            Ui.showDisplaySelectCanteens(nusFoodReviews.getCanteens());
-            int canteenIndex = parseInt(Ui.readCommand(), 1, nusFoodReviews.getCanteens().size()) - 1;
+            ui.showDisplaySelectCanteens(canteens, "delete");
+            int numCanteens = canteens.size();
+            int canteenIndex = parseInt(ui.readCommand(), Math.min(1, numCanteens), numCanteens) - 1;
             newCommand = new DeleteCanteenCommand(canteenIndex);
             break;
         case "5":
-            //delete store (refer to 3)
-            newCommand = new ExitCommand();
+            nusFoodReviews.setCanteenIndex();
+            currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+            int storeIndex = parseInt(ui.readCommand(), 2,
+                    canteens.get(currentCanteenIndex).getNumStores()) - 1;
+            newCommand = new DeleteStoreCommand(currentCanteenIndex, storeIndex);
             break;
         case "6":
+            nusFoodReviews.setCanteenIndex();
+            currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            nusFoodReviews.setStoreIndex();
+            int currentStoreIndex = nusFoodReviews.getStoreIndex();
+            ArrayList<Store> stores = canteens
+                    .get(currentCanteenIndex).getStores();
+            ArrayList<Review> reviews = canteens
+                    .get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
+            averageRating = stores.get(currentStoreIndex).getAverageRating();
+            ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
+            ui.showDeleteReview();
+            int reviewNumber = parseInt(ui.readCommand(),1,
+                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount());
+            newCommand = new DeleteReviewCommand(currentCanteenIndex,currentStoreIndex, reviewNumber);
+            break;
+        case "7":
             newCommand = new ExitCommand();
             break;
         default:

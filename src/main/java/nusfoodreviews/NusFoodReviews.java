@@ -10,9 +10,11 @@ import stores.Store;
 import ui.Ui;
 import checkuser.CheckUser;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class NusFoodReviews {
+    private ArrayList<Store> stores;
     private ArrayList<Canteen> canteens; // todo: add a canteen manager
     private Ui ui;
     private Storage storage;
@@ -24,7 +26,7 @@ public class NusFoodReviews {
 
     public NusFoodReviews(String filePath) {
         ui = new Ui();
-        parser = new Parser(this);
+        parser = new Parser(this, ui);
         storage = new Storage(filePath);
         canteens = storage.load();
     }
@@ -105,7 +107,7 @@ public class NusFoodReviews {
     }
 
     public void setCanteenIndex() throws DukeExceptions {
-        ui.showDisplaySelectCanteens(canteens);
+        ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
         if (line.equals("exit")) {
             ui.showGoodbye();

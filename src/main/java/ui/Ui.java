@@ -31,7 +31,7 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
-    public static String readCommand() {
+    public String readCommand() {
         try {
             line = userInputScanner.nextLine();
         } catch (NullPointerException e) {
@@ -72,7 +72,8 @@ public class Ui {
         System.out.println("3. Add store in canteen");
         System.out.println("4. Delete canteen");
         System.out.println("5. Delete store in canteen");
-        System.out.println("6. Exit");
+        System.out.println("6. Delete reviews");
+        System.out.println("7. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -82,11 +83,10 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public static void showAddStore() {
+    public void showAddStore() {
         System.out.println("Please enter the new store's name");
         System.out.println(LINESPACING);
     }
-
 
     public void showLoginPage() {
         System.out.println(LINESPACING);
@@ -108,45 +108,51 @@ public class Ui {
     }
 
     public void showDisplaySelectStores(Canteen canteen) {
+        System.out.println(LINESPACING);
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
-        }
-        System.out.println(LINESPACING);
-        ArrayList<Store> stores = canteen.getStores();
-        System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
-        System.out.println("Please select one of the following stores:");
-        for (int i = 0; i < stores.size(); i++) {
-            System.out.print((i + 1) + ". ");
-            stores.get(i).displayStore();
+        } else {
+            ArrayList<Store> stores = canteen.getStores();
+            System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
+            System.out.println("Please select one of the following stores:");
+            for (int i = 0; i < stores.size(); i++) {
+                System.out.print((i + 1) + ". ");
+                stores.get(i).displayStore();
+            }
         }
         System.out.println(Ui.LINESPACING);
     }
 
-    public static void showDisplayStores(Canteen canteen) {
+    public void showDisplayStores(Canteen canteen) {
+        System.out.println(LINESPACING);
         if (canteen.getNumStores() <= 0) {
             System.out.println("There are currently no stores in " + canteen.getCanteenName() + "!");
-        }
-        System.out.println(LINESPACING);
-        ArrayList<Store> stores = canteen.getStores();
-        System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
-        for (int i = 0; i < stores.size(); i++) {
-            System.out.print((i + 1) + ". ");
-            stores.get(i).displayStore();
+        } else {
+            ArrayList<Store> stores = canteen.getStores();
+            System.out.println("Here's a list of the stores in the canteen: " + canteen.getCanteenName());
+            for (int i = 0; i < stores.size(); i++) {
+                System.out.print((i + 1) + ". ");
+                stores.get(i).displayStore();
+            }
         }
         System.out.println(Ui.LINESPACING);
     }
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println(LINESPACING);
+        if (menus.size() == 0) {
+            System.out.println("This store has no menus yet!");
+            return;
+        }
         System.out.println("Here are the menus of the " + storeName + ":");
         for (Menu menuItem: menus) {
             System.out.println(menuItem.toString());
         }
     }
-    
-    public static void showDisplaySelectCanteens(ArrayList<Canteen> canteens) {
+
+    public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
-        System.out.println("Select one of the following NUS canteens:");
+        System.out.println("Select one of the following NUS canteens to " + action + ":");
         for (int i = 0; i < canteens.size(); i++) {
             System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
         }
@@ -155,10 +161,20 @@ public class Ui {
 
     public void showDisplayCanteens(ArrayList<Canteen> canteens) {
         System.out.println(LINESPACING);
-        System.out.println("Here is a list of NUS canteens:");
-        for (int i = 0; i < canteens.size(); i++) {
-            System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+        if (canteens.size() == 0) {
+            System.out.println("There are no canteens yet!");
+        } else {
+            System.out.println("Here is a list of NUS canteens:");
+            for (int i = 0; i < canteens.size(); i++) {
+                System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+            }
         }
+        System.out.println(LINESPACING);
+    }
+
+    public void showCanteenDeleted(Canteen canteen, int numRemainingCanteens) {
+        System.out.println("The canteen '" + canteen.getCanteenName() + "' has been deleted.");
+        System.out.println("You now have " + numRemainingCanteens + " canteens left.");
         System.out.println(LINESPACING);
     }
 
@@ -169,7 +185,7 @@ public class Ui {
         System.out.println(LINESPACING);
         int count = 1;
         for (Review review: reviews) {
-            System.out.println(count++ + ")" + review.toString());
+            System.out.println(count++ + ") " + review.toString());
             System.out.println("Customer rating: " + review.getRating());
             System.out.println(LINESPACING);
         }
@@ -179,36 +195,42 @@ public class Ui {
     public void showStoreOptions(String canteenName, String storeName) {
         System.out.println(LINESPACING);
         System.out.println("You are now viewing: " + canteenName + ", " + storeName);
-        System.out.println("Enter 'menu' to view sample menu");
-        System.out.println("Enter 'reviews' to show reviews of " + storeName);
-        System.out.println("Enter 'add' to add a new review");
-        System.out.println("Enter 'home' to select a new canteen");
-        System.out.println("Enter 'list' to select a new store");
-        System.out.println("Enter 'exit' to exit the application");
+        System.out.println("Please Enter your command:");
+        System.out.println("If you need help then Enter 'help' to view all the commands");
         System.out.println(LINESPACING);
     }
 
-    public static void enterReview() {
+    public void enterReview() {
         System.out.println(LINESPACING);
         System.out.println("Please type your review:");
     }
 
-    public static void enterRating() {
+    public void enterRating() {
         System.out.println(LINESPACING);
         System.out.println("Please give your rating from 1 to 5");
     }
 
-    public static void reviewAdded() {
+    public void reviewAdded() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully added!");
     }
 
-    public static void reviewNotAdded() {
+    public void reviewNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
     }
 
-    public static void showAddCanteen() {
+    public void showDeleteReview() {
+        System.out.println(LINESPACING);
+        System.out.println("Please enter review number to be deleted");
+    }
+
+    public void reviewDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Review successfully deleted!");
+    }
+
+    public void showAddCanteen() {
         System.out.println(LINESPACING);
         System.out.println("Please type the name of the new canteen:");
     }

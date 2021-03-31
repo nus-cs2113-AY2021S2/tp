@@ -19,4 +19,5 @@ public class ReviewsCommandTest {
         assertEquals(reviews, store.getReviews());
         assertEquals("Fish rice stall",store.getStoreName());
     }
+
 }

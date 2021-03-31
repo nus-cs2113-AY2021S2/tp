@@ -6,7 +6,7 @@ public class CheckUser {
 
     public static boolean checkUserType(Ui ui) {
         while (true) {
-            String input = Ui.readCommand();
+            String input = ui.readCommand();
             if (input.equals("1")) {
                 return true;
             } else if (input.equals("2")) {
