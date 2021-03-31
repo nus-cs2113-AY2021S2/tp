@@ -46,4 +46,9 @@ public class PatientUI extends UI{
         System.out.println("Welcome to the patient Commands section!");
         System.out.println("Type \"help\" for patient menu command");
     }
+
+    public void corruptedFileErrorMessage() {
+        System.out.println("The file (" + PATIENT_FILE_PATH + ") is corrupted!\n" +
+                "Please exit the program and delete the corrupted file before trying to access Patient Menu!");
+    }
 }

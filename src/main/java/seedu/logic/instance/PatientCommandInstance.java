@@ -19,16 +19,16 @@ public class PatientCommandInstance {
         ui = new PatientUI();
         patientStorage = new PatientStorage(filepath);
         parser = new PatientParser();
-        try {
-            patients = new PatientActions(patientStorage.loadPatients());
-        } catch (HealthVaultException e) {
-            ui.showLoadingError();
-            //creates new task list if failure to load from folder.
-            patients = new PatientActions();
-        }
     }
 
     public void run() {
+        try {
+            patients = new PatientActions(patientStorage.loadPatients());
+        } catch (HealthVaultException e) {
+            ui.corruptedFileErrorMessage();
+            patients = new PatientActions();
+            return;
+        }
         PatientUI.patientCommandWelcome();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
@@ -49,7 +49,7 @@ public class PatientCommandInstance {
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
-
+                System.out.println("Your age input is not an accepted integer!");
             }
         }
 

@@ -1,6 +1,8 @@
 package seedu.storage;
 
-import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.*;
+import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.Patient;
 import seedu.logic.command.PatientActions;
@@ -13,6 +15,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.regex.PatternSyntaxException;
 
 public class PatientStorage {
 
@@ -76,10 +79,9 @@ public class PatientStorage {
                         taskSave[3], taskSave[4], taskSave[5]);
                 patients.add(tempPatient);
             }
+            fileScanner.close();
         } catch (FileNotFoundException e) {
             throw new HealthVaultException();
-        } catch (HealthVaultException e) {
-            System.out.println(e.getMessage());
         }
         return patients;
     }
