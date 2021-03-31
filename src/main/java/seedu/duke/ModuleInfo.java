@@ -242,8 +242,9 @@ public class ModuleInfo {
         System.out.println("Please choose which module you would like to review"
                 + " and enter the number:\n");
         int moduleNumberInt = Ui.readCommandToInt();
-        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
-            moduleNumberInt--;
+        moduleNumberInt--;
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
             modules.get(moduleNumberInt).setReview(review);
         } else {
@@ -317,7 +318,8 @@ public class ModuleInfo {
         }
         viewAllModules();
         int moduleNumberInt = readModuleNumberToBeDeleted("module");
-        if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             logger.log(Level.WARNING, "You are making a change that cannot be undone.");
             System.out.println("Are you sure you want to delete "
                     + modules.get(moduleNumberInt).getName()
@@ -326,7 +328,7 @@ public class ModuleInfo {
             if (readYN(command) == 1) {
                 printDeletedModuleMessage(modules.get(moduleNumberInt));
                 deleteTasksforModule(modules.get(moduleNumberInt).getName());
-                modules.remove(modules.get(moduleNumberInt));
+                testDeleteModule(moduleNumberInt);
             } else if (readYN(command) == 0) {
                 System.out.println("Ok. I did not delete "
                         + modules.get(moduleNumberInt).getName());
@@ -335,6 +337,15 @@ public class ModuleInfo {
             logger.log(Level.INFO, "You did not enter a valid integer.");
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    public static boolean checkIfIndexIsWithinBounds(int index) {
+        return index >= 0 && index < modules.size();
+    }
+
+    public static boolean testDeleteModule(int index) {
+        modules.remove(index);
+        return true;
     }
 
     public static int readModuleNumberToBeDeleted(String moduleOrReview) {

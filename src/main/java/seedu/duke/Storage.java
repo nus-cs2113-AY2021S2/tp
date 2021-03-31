@@ -21,7 +21,7 @@ import java.util.Set;
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
 public class Storage {
 
-    public static String filePath = new File("").getAbsolutePath();
+    public static String filePathForModules = new File("").getAbsolutePath();
     public static String filePathForTasks = new File("").getAbsolutePath();
     public static String filePathForAssignments = new File("").getAbsolutePath();
     public static String filePathForMidterms = new File("").getAbsolutePath();
@@ -60,8 +60,8 @@ public class Storage {
      * variable within storage
      */
     public static void loadModuleInfoFile() {
-        filePath += "/UniTracker Data";
-        File data = new File(filePath);
+        filePathForModules += "/UniTracker Data";
+        File data = new File(filePathForModules);
         if (!data.exists()) {
             boolean isCreated = data.mkdir();
             if (!isCreated) {
@@ -69,8 +69,8 @@ public class Storage {
             }
         }
         try {
-            filePath += "/modules.txt";
-            data = new File(filePath);
+            filePathForModules += "/modules.txt";
+            data = new File(filePathForModules);
             if (data.createNewFile()) {
                 // System.out.println("New file created at:\n" + data.getAbsolutePath());
                 return;
@@ -88,11 +88,13 @@ public class Storage {
      * @throws FileNotFoundException if modules.txt file cannot be accessed.
      */
     public static void downloadModules() throws FileNotFoundException {
-        File f = new File(filePath); // create a File for the given file path
+        File f = new File(filePathForModules); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" ~~ ");
             Module module = new Module(part[0], part[1]);
+            int modularCredit = Integer.parseInt(part[2]);
+            String grade = part[3];
             StringBuilder review = new StringBuilder();
             while (true) {
                 String line = s.nextLine();
@@ -101,7 +103,10 @@ public class Storage {
                     break;
                 }
                 review.append(line).append("\n");
+
             }
+            module.setGrade(grade);
+            module.setMc(modularCredit);
             module.setReview(review.toString());
             ModuleInfo.modules.add(module);
         }
@@ -113,10 +118,12 @@ public class Storage {
      * @throws IOException if modules.txt file cannot be accessed.
      */
     public static void modulesFileSaver() throws IOException {
-        FileWriter fw = new FileWriter(filePath);
+        FileWriter fw = new FileWriter(filePathForModules);
         for (Module module : ModuleInfo.modules) {
             fw.write(module.getName() + " ~~ "
-                    + module.getDescription() + "\n"
+                    + module.getDescription() + " ~~ "
+                    + module.getMc() + " ~~ "
+                    + module.getGrade() + "\n"
                     + module.getReview());
             fw.write(" -- end of module -- ");
             fw.write(System.lineSeparator());
