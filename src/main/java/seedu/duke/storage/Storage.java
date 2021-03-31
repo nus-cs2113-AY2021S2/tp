@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Objects;
 
 public class Storage {
     private final FileInfoReader fileInfoReader;
@@ -41,6 +42,33 @@ public class Storage {
         }
         fileInfoWriter = new FileInfoWriter(recordPath, goalPath);
         fileInfoReader = new FileInfoReader(recordSource, goalSource);
+    }
+
+    public Storage(String timePath) throws IOException {
+        File timeSource = new File(timePath);
+        if (!timeSource.exists()) {
+            if (!timeSource.getParentFile().exists()) {
+                boolean isPathSuccessfullyCreated = timeSource.getParentFile().mkdirs();
+                if (!isPathSuccessfullyCreated) {
+                    throw new IOException();
+                }
+            }
+            boolean isFileSuccessfullyCreated = timeSource.createNewFile();
+            if (!isFileSuccessfullyCreated) {
+                throw new IOException();
+            }
+        }
+        fileInfoWriter = new FileInfoWriter(timePath);
+        fileInfoReader = new FileInfoReader(timeSource);
+    }
+
+    public void storeTime(String[] timeStrParams) throws IOException {
+        fileInfoWriter.storeTimeToFile(timeStrParams);
+    }
+
+    public String[] getTimeStrParams() throws FileNotFoundException {
+        String[] timeStrParams = fileInfoReader.parseTimeStrParams();
+        return Objects.requireNonNullElseGet(timeStrParams, () -> new String[]{"Init"});
     }
 
     public void store(User user) throws IOException {

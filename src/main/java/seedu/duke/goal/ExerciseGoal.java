@@ -37,7 +37,7 @@ public class ExerciseGoal extends Goal {
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                 + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTarget()  + " " + getProgressUnit() + "\n"
+                + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                 + "Progress: " + getProgress() + " " + getProgressUnit();
     }
 

@@ -48,6 +48,13 @@ public class UI {
         System.out.println("The source file can't be accessed, please check your access settings.");
     }
 
+    public static void printMessage(String message) {
+        System.out.println(DIVIDER
+                + message
+                + "\n"
+                + DIVIDER_LINE_ONLY);
+    }
+
     public void showFileParserErrorMessage() {
         System.out.println("The file contains invalid content that can't be recognized, please fix it\n"
                 + "You can try to delete everything in the file but you will lose the information you had.");

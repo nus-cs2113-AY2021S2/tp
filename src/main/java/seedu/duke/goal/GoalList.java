@@ -49,6 +49,19 @@ public class GoalList {
         }
     }
 
+    public void initializeGoalProgress(PeriodType periodType) {
+        assert periodType == PeriodType.INVALID || periodType == null : "A period type is expected but not received!";
+        if (goals.isEmpty()) {
+            return;
+        }
+
+        for (Goal goal : goals) {
+            if (goal.getPeriodType().equals(periodType)) {
+                goal.initializeProgress();
+            }
+        }
+    }
+
     public String getGoalToStore() {
         StringBuilder goalStringBuilder = new StringBuilder();
         for (Goal goal : goals) {
@@ -57,7 +70,7 @@ public class GoalList {
         return goalStringBuilder.toString();
     }
 
-    public void updateDailyProgess(double progress) {
+    public void updateDailyProgress(double progress) {
         for (Goal goal : goals) {
             if (goal.getPeriodType() == DAILY) {
                 goal.setProgress(progress);
@@ -65,11 +78,7 @@ public class GoalList {
         }
     }
 
-    public boolean isEmpty() {
-        if (goals.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean isNotEmpty() {
+        return goals.size() != 0;
     }
 }

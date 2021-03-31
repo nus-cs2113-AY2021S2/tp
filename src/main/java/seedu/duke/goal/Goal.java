@@ -1,6 +1,5 @@
 package seedu.duke.goal;
 
-import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
