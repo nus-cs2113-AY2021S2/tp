@@ -2,7 +2,8 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+### Class Diagram
+![Class Diagram](CD.png)
 
 ### Sequence Diagrams
 1. Database Sequence Diagram
