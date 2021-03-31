@@ -9,7 +9,6 @@ import seedu.connoisseur.ui.Ui;
  */
 public class Parser {
     private static Commands commands;
-    private boolean isReviewMode = true;
 
     /**
      * Constructor for parser class.

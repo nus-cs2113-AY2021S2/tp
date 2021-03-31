@@ -26,6 +26,7 @@ public class Ui {
     private static final int MAX_WHITE_SPACE_TITLE = 26;
     private static final int MAX_WHITE_SPACE_VIEW = 68;
     private static final int MAX_WHITE_SPACE_DATE = 23;
+    private static final int MAX_WHITE_SPACE_RATING = 23;
     private final Scanner in;
 
     /**
@@ -160,6 +161,19 @@ public class Ui {
      */
     public void printWhiteSpaceDate(int wordLength) {
         int numOfSpaces = MAX_WHITE_SPACE_DATE - wordLength;
+        while (numOfSpaces > 0) {
+            out.print(" ");
+            numOfSpaces--;
+        }
+    }
+
+    /**
+     * Prints whitespace to align border for date field.
+     *
+     * @param wordLength length of word to subtract
+     */
+    public void printWhiteSpaceRating(int wordLength) {
+        int numOfSpaces = MAX_WHITE_SPACE_RATING - wordLength;
         while (numOfSpaces > 0) {
             out.print(" ");
             numOfSpaces--;

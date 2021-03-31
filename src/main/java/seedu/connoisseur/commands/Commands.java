@@ -18,8 +18,8 @@ public class Commands {
     private final Ui ui;
     private final Storage storage;
     private boolean isReviewMode = true;
-    private ReviewList reviewList;
-    private RecommendationList recommendationList;
+    private final ReviewList reviewList;
+    private final RecommendationList recommendationList;
 
     /**
      * Creates Commands based on stored data.
@@ -196,7 +196,7 @@ public class Commands {
         if (isReviewMode) {
             reviewList.editReview(title);
         } else {
-            ui.printCommandDoesNotExistInRecommendationMode();
+            recommendationList.editRecommendation(title);
         }
     }
 }

@@ -9,17 +9,18 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
-import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
-import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
-import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
-import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
+import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
+import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -245,5 +246,122 @@ public class RecommendationList {
             ui.println(title + CONVERT_SUCCESS);
         }
 
+    }
+
+    public void editRecommendation(String title) {
+        int index = -1;
+        if (title == null || title.isBlank()) {
+            ui.println(MISSING_EDIT_TITLE);
+        } else {
+            for (int i = 0; i < recommendations.size(); i++) {
+                if (recommendations.get(i).getTitle().compareTo(title) == 0) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index == -1) {
+                return;
+            }
+        }
+        boolean isDoneEditing = false;
+        do {
+            ui.println("What would you like to edit (Title / Category / Price range / Location/ RecBy)?");
+            determineEditCommand(index);
+            ui.println("Would you like to edit anything else (y/n)?");
+            String answer = ui.readCommand();
+            switch (answer.toLowerCase()) {
+            case "y":
+                break;
+            case "n":
+                isDoneEditing = true;
+                break;
+            default:
+                ui.println(INVALID_COMMAND);
+                isDoneEditing = true;
+            }
+        } while (!isDoneEditing);
+    }
+
+    public void determineEditCommand(int index) {
+        String input = ui.readCommand();
+        try {
+            input = input.trim().toLowerCase();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            input = null;
+        }
+        switch (input) {
+        case "title":
+            System.out.println("What would you like to change the title to?");
+            String newTitle = ui.readCommand();
+            editRecoTitle(newTitle, index);
+            break;
+        case "price range":
+            System.out.println("What would you like to change the price range to (separated by - ) ?");
+            String newPriceRange = ui.readCommand();
+            try {
+                double priceLow;
+                double priceHigh;
+                double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
+                double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
+                if (priceFirst > priceSecond) {
+                    priceLow = priceSecond;
+                    priceHigh = priceFirst;
+                } else {
+                    priceLow = priceFirst;
+                    priceHigh = priceSecond;
+                }
+                priceLow = Math.round(priceLow * 100.0) / 100.0;
+                priceHigh = Math.round(priceHigh * 100.0) / 100.0;
+                editRecoPriceRange(priceLow, priceHigh, index);
+            } catch (NumberFormatException ne) {
+                System.out.println("Invalid price range, failed to edit recommendation ");
+            }
+            break;
+        case "location":
+            System.out.println("What would you like to change the location to?");
+            String newLocation = ui.readCommand();
+            editRecoLocation(newLocation, index);
+            break;
+        case "category":
+            System.out.println("What would you like to change the category to?");
+            String newCategory = ui.readCommand();
+            editRecoCategory(newCategory, index);
+            break;
+        case "recby":
+            System.out.println("What would you like to change the recommended by to?");
+            String newRecBy = ui.readCommand();
+            editRecoRecby(newRecBy, index);
+            break;
+        default:
+            ui.println(INVALID_COMMAND);
+            break;
+        }
+        System.out.println("All edits have been updated!");
+    }
+
+    public void editRecoTitle(String newTitle, int index) {
+        Recommendation currentReco = recommendations.get(index);
+        currentReco.setTitle(newTitle);
+    }
+
+    public void editRecoPriceRange(double newPriceLow, double newPriceHigh, int index) {
+        Recommendation currentReco = recommendations.get(index);
+        currentReco.setPriceHigh(newPriceHigh);
+        currentReco.setPriceLow(newPriceLow);
+    }
+
+    public void editRecoLocation(String newLocation, int index) {
+        Recommendation currentReco = recommendations.get(index);
+        currentReco.setLocation(newLocation);
+    }
+
+    public void editRecoCategory(String newCategory, int index) {
+        Recommendation currentReco = recommendations.get(index);
+        currentReco.setLocation(newCategory);
+    }
+
+    public void editRecoRecby(String newRecBy, int index) {
+        Recommendation currentReco = recommendations.get(index);
+        currentReco.setRecommendedBy(newRecBy);
     }
 }

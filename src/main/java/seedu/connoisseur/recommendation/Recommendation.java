@@ -27,6 +27,10 @@ public class Recommendation {
         this.location = location;
     }
 
+    public void setRecommendedBy(String recommendedBy) {
+        this.recommendedBy = recommendedBy;
+    }
+
     /**
      * Gets the location of the recommendation.
      *
