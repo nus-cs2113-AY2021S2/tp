@@ -1,16 +1,21 @@
 @startuml
 hide footbox
-actor "User"
+participant ":NUSMaze"
 participant "command:GoCommand"
 participant "ui:RouterUi"
-"User" -> "command:GoCommand" : execute
+participant "blockAlias:BlockAlias"
+":NUSMaze"-> "command:GoCommand" : execute()
 activate "command:GoCommand"
-"command:GoCommand" -> "ui:RouterUi": getUserCommandInput
+"command:GoCommand" -> "ui:RouterUi": getUserCommandInput()
 activate "ui:RouterUi"
 "ui:RouterUi" --> "command:GoCommand":
 deactivate "ui:RouterUi"
+"command:GoCommand" -> "blockAlias:BlockAlias": changeAliasToBlock(String, String)
+activate "blockAlias:BlockAlias"
+return
+deactivate "blockAlias:BlockAlias"
 create ":Router"
-"command:GoCommand" -> ":Router" : execute
+"command:GoCommand" -> ":Router" : execute()
 activate ":Router"
 ":Router" -> ":Router" : findShortestRoute
 activate ":Router"
@@ -62,8 +67,8 @@ activate ":Router"
 deactivate ":Router"
 ":Router" --> "command:GoCommand"
 deactivate ":Router"
-"command:GoCommand" -> "ui:RouterUi": showMessageWithDivider
+"command:GoCommand" -> "ui:RouterUi": showMessageWithDivider(String)
 activate "ui:RouterUi"
 return
-return
+ "command:GoCommand" --> ":NUSMaze"
 @enduml

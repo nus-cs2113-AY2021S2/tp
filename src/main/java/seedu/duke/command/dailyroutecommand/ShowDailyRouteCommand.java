@@ -30,7 +30,11 @@ public class ShowDailyRouteCommand extends Command {
             StringBuilder routedSchedule = new StringBuilder();
             for (int i = 0; i < schedules.size() - 1; i++) {
                 String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
-                routedSchedule.append(route);
+                if (i < schedules.size() - 2) {
+                    routedSchedule.append(route).append("\n");
+                } else {
+                    routedSchedule.append(route);
+                }
             }
             ui.showMessageWithDivider(routedSchedule.toString());
         } catch (InvalidBlockException | InvalidIndexException e) {
