@@ -1,7 +1,6 @@
 package seedu.duke.data;
 
 import seedu.duke.exception.InvalidAliasException;
-import seedu.duke.exception.InvalidBlockException;
 
 import java.util.HashMap;
 
