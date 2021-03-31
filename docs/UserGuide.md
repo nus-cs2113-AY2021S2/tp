@@ -359,7 +359,7 @@ Example Screenshot:
 
 
 #### Deleting an appointment: `delete`
-Deletes an appointment from the list of appointments.
+Deletes an appointment from the list of appointments or deletes all appointments belonging to a doctor.
 
 Format: `delete/[DoctorID/ Appointment ID]`
 
@@ -397,7 +397,7 @@ Example Screenshot:
 <img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
 
 #### Listing appointments: `list`
-Lists all of the appointments of a specific doctor.
+Lists all of the appointments of a specific doctor or list an individual appointment.
 
 Format: `list/[Doctor ID/ Appointment ID]`
 
