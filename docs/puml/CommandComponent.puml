@@ -2,7 +2,7 @@
 !include Style.puml
 
 package Command <<Rectangle>> {
-    abstract class Command COMMAND_COLOR {
+    abstract class "{abstract}\nCommand" COMMAND_COLOR {
         # blockAlias: BlockAlias
         # history: History
         # favourite: Favourite
@@ -96,28 +96,28 @@ dailyroutecommand -[hidden]up- routecommand
 notecommand -[hidden]- favouritecommand
 historycommand -[hidden]down- aliascommand
 
-Command <|-up- GoCommand
-Command <|-down- ByeCommand
-Command <|-down- HelpCommand
-Command <|-up- AddCustomAliasCommand
-Command <|-up- DeleteCustomAliasCommand
-Command <|-up- ShowCustomAliasCommand
-Command <|-up- AddDailyRouteCommand
-Command <|-up- ShowDailyRouteCommand
-Command <|-down- AddFavouriteCommand
-Command <|-down- DeleteFavouriteCommand
-Command <|-down- RepeatFavouriteCommand
-Command <|-down- ShowFavouriteCommand
-Command <|-up- ClearHistoryCommand
-Command <|-up- RepeatHistoryCommand
-Command <|-up- ShowHistoryCommand
-Command <|-down- AddNoteCommand
-Command <|-down- DeleteNoteCommand
-Command <|-down- ListNoteCommand
+"{abstract}\nCommand" <|-up- GoCommand
+"{abstract}\nCommand" <|-down- ByeCommand
+"{abstract}\nCommand" <|-down- HelpCommand
+"{abstract}\nCommand" <|-up- AddCustomAliasCommand
+"{abstract}\nCommand" <|-up- DeleteCustomAliasCommand
+"{abstract}\nCommand" <|-up- ShowCustomAliasCommand
+"{abstract}\nCommand" <|-up- AddDailyRouteCommand
+"{abstract}\nCommand" <|-up- ShowDailyRouteCommand
+"{abstract}\nCommand" <|-down- AddFavouriteCommand
+"{abstract}\nCommand" <|-down- DeleteFavouriteCommand
+"{abstract}\nCommand" <|-down- RepeatFavouriteCommand
+"{abstract}\nCommand" <|-down- ShowFavouriteCommand
+"{abstract}\nCommand" <|-up- ClearHistoryCommand
+"{abstract}\nCommand" <|-up- RepeatHistoryCommand
+"{abstract}\nCommand" <|-up- ShowHistoryCommand
+"{abstract}\nCommand" <|-down- AddNoteCommand
+"{abstract}\nCommand" <|-down- DeleteNoteCommand
+"{abstract}\nCommand" <|-down- ListNoteCommand
 
 hide methods
-show Command members
-show Command methods
-
+show "{abstract}\nCommand" members
+hide circle
+skinparam classAttributeIconSize 0
 
 @enduml

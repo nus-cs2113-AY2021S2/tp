@@ -2,7 +2,6 @@ package seedu.duke.router;
 
 import seedu.duke.data.Block;
 import seedu.duke.data.NusMap;
-import seedu.duke.exception.InvalidBlockException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,7 +9,7 @@ import java.util.LinkedList;
 
 public class Router {
 
-    public String execute(NusMap nusMap, String from, String to) throws InvalidBlockException {
+    public String execute(NusMap nusMap, String from, String to) {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
         LinkedList<Block> route = new LinkedList<>();
@@ -33,19 +32,6 @@ public class Router {
         nusMap.getBlock(to).setDistanceFromStart(route.size());
     }
 
-    public String getRouteAsString(LinkedList<Block> route) {
-        String routeAsString = "";
-        routeAsString += "Route: ";
-        for (int i = route.size() - 1; i >= 0; i--) {
-            if (i > 0) {
-                routeAsString += route.get(i).getName() + " -> ";
-            } else {
-                routeAsString += route.get(i).getName();
-            }
-        }
-        return routeAsString;
-    }
-
     public static void bfs(NusMap nusMap, HashMap<Block, Block> predecessor, Block start, Block destination) {
         LinkedList<Block> queue = new LinkedList<>();
         queue.add(start);
@@ -64,5 +50,18 @@ public class Router {
                 }
             }
         }
+    }
+
+    public String getRouteAsString(LinkedList<Block> route) {
+        StringBuilder routeAsString = new StringBuilder();
+        routeAsString.append("Route: ");
+        for (int i = route.size() - 1; i >= 0; i--) {
+            if (i > 0) {
+                routeAsString.append(route.get(i).getName()).append(" -> ");
+            } else {
+                routeAsString.append(route.get(i).getName());
+            }
+        }
+        return routeAsString.toString();
     }
 }

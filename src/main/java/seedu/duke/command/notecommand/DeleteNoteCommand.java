@@ -22,12 +22,12 @@ public class DeleteNoteCommand extends Command {
         try {
             nusMap.checkIfValidBlock(deleteBlock);
             Block block = nusMap.getBlock(deleteBlock);
-            ui.showNotes(nusMap.getBlock(deleteBlock).getNotes());
+            ui.showNotes(block.getNotes());
             int deleteIndex = ui.getDeleteIndex();
             block.deleteNote(deleteIndex - 1);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
         } catch (EmptyNoteException e) {
-            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
+            ui.showMessageWithDivider(String.format(e.getMessage(), deleteBlock));
         } catch (InvalidIndexException | InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }

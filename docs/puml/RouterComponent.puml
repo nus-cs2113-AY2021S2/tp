@@ -23,5 +23,7 @@ ShowDailyRouteCommand -d-> Router : uses
 
 hide members
 show Router methods
+hide circle
+skinparam classAttributeIconSize 0
 
 @enduml

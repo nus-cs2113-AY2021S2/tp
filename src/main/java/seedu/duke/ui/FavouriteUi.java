@@ -19,20 +19,15 @@ public class FavouriteUi extends UiManager {
                 String[] routeInfo = favourite.getSpecificEntry(i);
                 showMessage((i + 1) + ". " + routeInfo[0] + " -> " + routeInfo[1]);
             }
-            showMessageWithDivider(CommonMessage.DIVIDER);
+            showMessage(CommonMessage.DIVIDER);
         }
     }
 
     public int getDeleteIndex() throws InvalidIndexException {
-        try {
-            showMessage("Select Entry to Delete:");
-            return Integer.parseInt(getUserInput());
-        } catch (NumberFormatException e) {
-            throw new InvalidIndexException();
-        }
+        return new NoteUi().getDeleteIndex();
     }
 
     public int getRepeatIndex() throws InvalidIndexException {
-        return new HistoryUi().getRepeatEntry();
+        return new HistoryUi().getRepeatIndex();
     }
 }

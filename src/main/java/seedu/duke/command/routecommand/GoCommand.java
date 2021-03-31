@@ -23,12 +23,12 @@ public class GoCommand extends Command {
             if (startAndDestination[1].equals("EATERY")) {
                 EateryList eateryList = new EateryList(nusMap, startAndDestination[0]);
                 eateryList.sortEateriesByDistance();
-                int eateryEntry = ui.getEateryEntry(eateryList.getEateries());
-                startAndDestination[1] = eateryList.getSpecificEatery(eateryEntry - 1).getName();
-                assert (eateryEntry > 0 & eateryEntry < 6) : "Entry must be within bound";
+                int eateryIndex = ui.getEateryIndex(eateryList.getEateries());
+                startAndDestination[1] = eateryList.getSpecificEatery(eateryIndex - 1).getName();
             } else {
                 nusMap.checkIfValidBlock(startAndDestination[1]);
             }
+            assert startAndDestination[0] != null && startAndDestination[1] != null;
             String route = new Router().execute(nusMap, startAndDestination[0], startAndDestination[1]);
             history.addHistory(startAndDestination[0], startAndDestination[1]);
             ui.showMessageWithDivider(route);

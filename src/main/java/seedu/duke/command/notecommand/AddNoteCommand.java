@@ -19,8 +19,7 @@ public class AddNoteCommand extends Command {
         try {
             String[] noteInfo = ui.getNoteInfo();
             nusMap.checkIfValidBlock(noteInfo[0]);
-            Block block = nusMap.getBlock(noteInfo[0]);
-            block.addNote(noteInfo[1]);
+            nusMap.getBlock(noteInfo[0]).addNote(noteInfo[1]);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
         } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());

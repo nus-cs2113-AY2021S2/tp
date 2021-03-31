@@ -25,20 +25,10 @@ public class DailyRoute {
         dailyRoutes.replace(day, blocks);
         int index = days.indexOf(day);
         selectableDays[index] = blocks.size() != 0;
-
     }
 
     public ArrayList<String> getDailyRoute(String day) {
         return dailyRoutes.get(day);
-    }
-
-    public String saveDaySchedule(String day) {
-        StringBuilder saveLine = new StringBuilder(day + "+");
-        ArrayList<String> blocks = dailyRoutes.get(day);
-        for (String block: blocks) {
-            saveLine.append(block).append("|");
-        }
-        return saveLine.toString();
     }
 
     public ArrayList<String> getSelectableDays() {
