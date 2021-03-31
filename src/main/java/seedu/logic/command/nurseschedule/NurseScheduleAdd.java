@@ -1,8 +1,7 @@
 package seedu.logic.command.nurseschedule;
 
-import seedu.exceptions.nurseschedules.CrossValidationError;
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.ui.NurseScheduleUI;
@@ -16,7 +15,8 @@ public class NurseScheduleAdd extends Command {
     }
 
     @Override
-    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException, CrossValidationError {
+    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException,
+            NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
         nurseSchedules.addSchedule(argArr);
     }
 
