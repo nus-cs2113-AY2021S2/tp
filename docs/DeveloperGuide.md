@@ -15,8 +15,6 @@ that allows the saving and loading of data. This allows all parameters of the da
 ##Implementation
 Below is the list of commands available.
 
-Below is the list of commands available.
-
 * Display selected store sample menu: `menu`
 * Display all reviews of the selected store : `reviews`
 * Add a new review of the selected store: `add`
