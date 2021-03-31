@@ -35,7 +35,13 @@ Last update on `31 Mar 2021`
 
 ## Implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+This section describes some details on how certain features are implemented.
+
+### [Proposed] Add record feature
+
+#### Proposed implementation
+
+
 
 ## Appendix: Requirements
 

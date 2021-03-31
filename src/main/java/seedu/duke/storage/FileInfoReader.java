@@ -22,7 +22,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
 import static seedu.duke.command.CommandRecordType.EXERCISE;
@@ -31,11 +30,10 @@ import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.goal.PeriodType.WEEKLY;
 import static seedu.duke.goal.PeriodType.DAILY;
-import static seedu.duke.goal.PeriodType.INVALID;
 
 public class FileInfoReader {
-    private File recordSource;
-    private File goalSource;
+    private final File recordSource;
+    private final File goalSource;
     public static final String SEPERATOR = " \\| ";
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -159,8 +157,7 @@ public class FileInfoReader {
 
     private LocalDate getDate(String dateString) throws ParseException {
         Date date = DATE_FORMAT.parse(dateString);
-        LocalDate recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return recordDate;
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     private PeriodType getPeriodType(String type) throws TypeException {
