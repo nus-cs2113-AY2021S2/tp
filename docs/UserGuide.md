@@ -101,14 +101,29 @@ category. The review mode can be accessed using the `review` command.
 This feature allows you to add a new review. There is a choice of quick review or long review.
 
 Command: `add [quick | long]`, `new [quick | long]`<br />
-`[quick | long]` : optional argument to specify quick or long review.
+`[quick | long]` : optional arguments to specify quick or long review.
 
-Connoisseur will then prompt you to enter the title, category  and rating of the review.<br /> 
+If quick review is specified, Connoisseur will then prompt you to enter the title, category and rating of the review, as shows in _Figure 4_.<br /> 
 
-Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display error message and 
+
+![img_4.png](images/ug/img_4.png)
+Figure 4. Adding a quick review <br />
+
+If long review is specified, there is an additional prompt to input description of the experience as shown in _Figure 5_
+![img_5.png](images/ug/img_5.png)
+Figure 5. Adding a long review <br />
+
+If you do not specify `[quick | long ]` and simply input the command: `add` or `new`, Connoisseur will ask you to specify
+if you would like to input a quick review. Input the command: `y` for quick review or `n` for long review instead, 
+as shown in _Figure 6_.<br />
+![img_6.png](images/ug/img_6.png)
+Figure 6. Adding a quick or long review <br />
+
+
+<p>&#10071 Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display error message and 
 adding the review will fail. You can try again.<br /> 
 
-Ensure the title of the review added is unique and does not already exist in the list. If you attempt to add a 
+<p>&#10071 Ensure the title of the review added is unique and does not already exist in the list. If you attempt to add a 
 pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list. Adding the review will 
 fail. You can try again.
 
@@ -117,29 +132,41 @@ This feature allows you to view a list of all your reviews. You can specify a on
 
 Command: `list [SORTING METHOD]`
 
-`[SORTING METHOD]` : temporary sort method by which to sort the reviews. Leaving this blank would allow Connoisseur to 
-use the saved _sort method_. Currently, supported methods are:
+`[SORTING METHOD]` : (optional argument) temporary sort method by which to sort the reviews. 
+Leaving this blank would allow Connoisseur to use the saved _sort method_ as shown in Figure 7. Currently, supported 
+methods are:
 * `title`
 * `category`
 * `rating`
 * `earliest`
 * `latest`
 
+![img_1.png](images/ug/img_1.png)
+Figure 7. Listing Reviews <br />
+
 ####4.2.3 Sort Reviews
-This feature allows you to change the saved sorting method.
+This feature allows you to change the saved sorting method as shows in Figure 8.
 
 Command: `sort [SORTING METHOD]`
 
 `[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#List-Reviews) for a list 
 of recognised sorting methods.
 
+![img_2.png](images/ug/img_2.png)
+Figure 8. Changing Sorting method to be used when listing reviews <br />
+
+<p>&#10071 Ensure you do not enter a sorting method that does not exist. Otherwise Connoisseur will warn you that with 
+an invalid sorting method message. 
+
 ####4.2.4 View a Review
-This feature allows you to view all the details of the specified review.
+This feature allows you to view all the details of the specified review as shown in Figure 9.
 
 Command: `view [TITLE_OF_REVIEW]`
 
-`[TITLE_OF_REVIEW]` : title of review that you want to view.
-Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
+`[TITLE_OF_REVIEW]` : title of review that you want to view. <br />
+![img_3.png](images/ug/img_3.png)
+Figure 9. Viewing a Review <br />
+<p>&#10071 Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
 prompt you saying that no such review exits.
 
 ####4.2.5 Edit a Review
