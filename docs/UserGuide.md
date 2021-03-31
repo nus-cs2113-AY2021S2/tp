@@ -630,8 +630,8 @@ Current Inventory:
 | return              | `return`                                                                                                   |
 | **Doctor Appointments** |                                                                                                        |
 | add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/Mingshun/ Pediatrician`    |
-| delete              | `delete/[Appointment ID]`<br/><br/>`delete/A369`                                                                        |
-| list                | `list`                                                                                                     |
+| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
+| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |
