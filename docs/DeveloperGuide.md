@@ -7,11 +7,13 @@
 ### Sequence Diagrams
 1. Database Sequence Diagram
    ![Database](Database.png)
-   
-1. Login Sequence Diagram
+ 
+ 
+2. Login Sequence Diagram
    ![Login](Login.png)
-   
-2. Admin Main Menu Sequence Diagram
+ 
+ 
+3. Admin Main Menu Sequence Diagram
    ![Admin Main Menu](AdminMainMenu.png)
    
 
