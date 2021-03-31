@@ -1,5 +1,6 @@
 package seedu.logic.command.staff;
 
+import seedu.exceptions.DuplicateIDException;
 import seedu.logic.command.Command;
 import seedu.logic.command.StaffAggregation;
 import seedu.storage.StaffStorage;
