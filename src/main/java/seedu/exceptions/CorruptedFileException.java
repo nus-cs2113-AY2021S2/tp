@@ -11,5 +11,4 @@ public class CorruptedFileException extends HealthVaultException {
     public String getMessage() {
         return "The file " + this.file + " is corrupted";
     }
-
 }

@@ -4,18 +4,12 @@ public class HealthVaultException extends Exception {
 
     protected String error;
 
-    /**
-     * Instantiates this exception
-     *
-     * @param error error type
-     */
     public HealthVaultException(String error) {
         this.error = error;
     }
 
     public HealthVaultException() {
     }
-
     /**
      * Shows the error encountered by the user
      *
@@ -90,5 +84,7 @@ public class HealthVaultException extends Exception {
                     "Please check the list of available commands using \"help\"");
             break;
         }
+    public String getMessage() {
+        return "There seems to be an error!";
     }
 }

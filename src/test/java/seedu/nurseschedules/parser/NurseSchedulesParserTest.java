@@ -5,6 +5,7 @@ import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;
@@ -20,7 +21,7 @@ class NurseSchedulesParserTest {
     }
 
     @Test
-    void testGetDetails() throws WrongInputsException, NoInputException, InsufficientInputException, ExcessInputException {
+    void testGetDetails() throws WrongInputsException, NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException {
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String[] details;
         details = parser.getDetails("add test details padding", "add");

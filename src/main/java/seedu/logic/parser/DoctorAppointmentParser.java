@@ -1,35 +1,47 @@
 package seedu.logic.parser;
 
 
-import seedu.exceptions.doctorappointment.AppointmentIDTakenException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.command.Command;
 import seedu.logic.command.doctorappointment.*;
-import seedu.model.DoctorAppointment;
-import seedu.model.staff.Staff;
-import seedu.storage.DoctorAppointmentStorage;
+import seedu.logic.errorchecker.DoctorAppointmentChecker;
+import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.DoctorAppointmentUI;
-import seedu.ui.UI;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
+import static seedu.ui.UI.smartCommandRecognition;
 
 public class DoctorAppointmentParser {
 
-    public static Command parse(String input, AppointmentActions details) throws Exception {
-        String[] inputArray = input.split("/");
-        Command c = null;
+    public static Command parse(String input, AppointmentActions details) throws HealthVaultException {
+        final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
 
-        switch (inputArray[0]) {
-        case "add":
+        String[] inputArray = input.split("/");
+        assert inputArray.length > 0;
+        assert inputArray.length < 7;
+        Command c = null;
+        MainChecker.checkBlankInput(input);
+
+        switch (smartCommandRecognition(COMMANDS, input.split("/")[0])) {
+        case "add": {
+            MainChecker.checkNumInput(input, 6, 6);
+            DoctorAppointmentChecker.checkValidDataForAdd(inputArray);
             c = new DoctorAppointmentAdd(inputArray);
             break;
-        case "list":
+        }
+        case "list": {
+            MainChecker.checkNumInput(input, 2, 2);
+            DoctorAppointmentChecker.checkValidDataForList(inputArray);
             c = new DoctorAppointmentList(inputArray);
             break;
-        case "delete":
+        }
+        case "delete": {
+            MainChecker.checkNumInput(input, 2, 2);
+            DoctorAppointmentChecker.checkValidDataForDelete(inputArray);
             c = new DoctorAppointmentDelete(inputArray);
             break;
+        }
         case "return":
             c = new DoctorAppointmentReturn();
             break;
@@ -37,61 +49,9 @@ public class DoctorAppointmentParser {
             c = new DoctorAppointmentHelp();
             break;
         default:
-            DoctorAppointmentUI.invalidCommandPrompt();
+            throw new UnrecognizedCommandException();
         }
         return c;
-    }
-
-    public static boolean isValidDocID(String doctorID) {
-        try {
-            String[] character = doctorID.split("");
-
-            if (character[0].equals("D")) {
-                ArrayList<Staff> doctorList;
-                doctorList = DoctorAppointmentStorage.loadDoctorFile();
-
-                for (Staff id : doctorList) {
-                    if (id.getId().equals(doctorID)) {
-                        return true;
-                    }
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public static boolean isValidAppointmentID(String appointmentID) throws AppointmentIDTakenException {
-        String[] character = appointmentID.split("");
-
-        if (character[0].equals("A")) {
-
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
-                if (id.getAppointmentId().equals(appointmentID)) {
-                    throw new AppointmentIDTakenException();
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isValidListAppointmentID(String appointmentID) throws AppointmentIDTakenException {
-        String[] character = appointmentID.split("");
-
-        if (character[0].equals("A")) {
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
-                if (id.getAppointmentId().equals(appointmentID)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public static boolean isValidGender(String gender) {
-        return gender.equals("M") || gender.equals("F");
     }
 
 

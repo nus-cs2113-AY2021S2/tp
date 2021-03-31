@@ -18,15 +18,15 @@ public class NurseScheduleUI extends UI {
     public void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedule commands: ");
 
-        lineBreak();
-        int[] lengthpara = {10,60,50};
-        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthpara);
+        int[] lengthPara = {10,60,50};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
-        printer(new String[]{HELP_COMMAND, SCHEDULES_HELP_DESCRIPTION, BLANK}, lengthpara);
-        printer(new String[]{ADD_COMMAND, SCHEDULES_ADD_DESCRIPTION, SCHEDULES_ADD_FORMAT}, lengthpara);
-        printer(new String[]{LIST_COMMAND, SCHEDULES_LIST_DESCRIPTION, SCHEDULES_LIST_FORMAT}, lengthpara);
-        printer(new String[]{DELETE_COMMAND, SCHEDULES_DELETE_DESCRIPTION, SCHEDULES_DELETE_FORMAT}, lengthpara);
-        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, BLANK}, lengthpara);
+        printer(new String[]{HELP_COMMAND, SCHEDULES_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{ADD_COMMAND, SCHEDULES_ADD_DESCRIPTION, SCHEDULES_ADD_FORMAT}, lengthPara);
+        printer(new String[]{LIST_COMMAND, SCHEDULES_LIST_DESCRIPTION, SCHEDULES_LIST_FORMAT}, lengthPara);
+        printer(new String[]{DELETE_COMMAND, SCHEDULES_DELETE_DESCRIPTION, SCHEDULES_DELETE_FORMAT}, lengthPara);
+        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
+        UI.printEmptyLine();
     }
 
     public static void printDeletedSchedule(String id, String datetime) {
@@ -69,5 +69,13 @@ public class NurseScheduleUI extends UI {
 
     public static void printEmptyCell() {
         System.out.print(UI.prettyPrint(" ", 10) + " | ");
+    }
+
+    public void corruptedFileErrorMessage() {
+        System.out.println("File (data/NurseSchedule.txt) is corrupted. Please delete the file before running the Staff Menu.");
+    }
+
+    public static void corruptedStaffFile() {
+        System.out.println("Staff file is not loaded, Nurse ID cannot be validated.");
     }
 }

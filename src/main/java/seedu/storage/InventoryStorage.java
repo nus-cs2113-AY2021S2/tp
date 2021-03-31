@@ -71,7 +71,7 @@ public class InventoryStorage {
         } catch (FileNotFoundException e) {
             throw new HealthVaultException("OOPS! I can't read the save file!");
         } catch (HealthVaultException e) {
-            e.getError("loadFile");
+            e.getMessage();
         }
         return inventories;
     }

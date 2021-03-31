@@ -1,10 +1,12 @@
 package seedu.logic.errorchecker;
 
 import seedu.exceptions.NoInputException;
+import seedu.exceptions.nurseschedules.CrossValidationError;
 import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
+import seedu.ui.NurseScheduleUI;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -47,7 +49,7 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static boolean checkNurseIDExist(String nurseID) throws NurseIdNotFound {
+    public static void checkNurseIDExist(String nurseID) throws NurseIdNotFound, CrossValidationError {
         try {
             String[] character = nurseID.split("");
 
@@ -57,22 +59,23 @@ public class NurseScheduleChecker extends MainChecker {
 
                 for (Staff id : doctorList) {
                     if (id.getId().equals(nurseID)) {
-                        return true;
+                        return;
                     }
                 }
             }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new CrossValidationError();
         } catch (FileNotFoundException e) {
-
+            throw new NurseIdNotFound();
         }
-        throw new NurseIdNotFound();
     }
 
     public static void checkValidNurseID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
-        } else if (numberOfIntegersInString(userID) != 5) {
-            throw new InvalidIDTypeException();
         } else if (!(userID.charAt(0) == 'N')) {
+            throw new InvalidIDTypeException();
+        } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidIDTypeException();
         }
 
@@ -81,9 +84,9 @@ public class NurseScheduleChecker extends MainChecker {
     public static void checkValidPatientID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
-        } else if (numberOfIntegersInString(userID) != 5) {
+        }  else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException();
-        } else if (!(userID.charAt(0) == 'P')) {
+        } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidIDTypeException();
         }
     }

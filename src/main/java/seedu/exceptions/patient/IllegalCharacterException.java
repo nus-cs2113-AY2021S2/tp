@@ -4,9 +4,12 @@ import seedu.exceptions.HealthVaultException;
 
 public class IllegalCharacterException extends HealthVaultException {
 
-    @Override
-    public void getError(String input) {
-        System.out.println("OOPS! You have an illegal character in your: " +
-                "name or illness or medication required fields");
+    private String errorField;
+
+    public IllegalCharacterException(String errorField) {
+        this.errorField = errorField;
+    }
+    public String getMessage() {
+        return "You have an illegal character in your: " + errorField;
     }
 }
