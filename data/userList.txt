@@ -1,0 +1,2 @@
+admin|IRVIN|password1
+user|ADMIN|password2

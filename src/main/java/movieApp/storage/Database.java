@@ -27,9 +27,31 @@ public class Database {
     }
 
     private static ArrayList<User> importUserDatabase() throws Exception {
+        File f_user = new File("data/userList.txt");
+        FileReader r_user = new FileReader(f_user);
+        BufferedReader br_user = new BufferedReader(r_user);
+        String line;
+
         ArrayList<User> users = new ArrayList<>();
-        users.add(new Admin("zul", "hello"));
-        users.add(new Customer("alex", "12345"));
+
+        while((line=br_user.readLine())!=null)
+        {
+            String[] userSplit = line.split("\\|");
+            String username = userSplit[1].trim();
+            String password = userSplit[2].trim();
+            String type = userSplit[0].trim().toUpperCase();
+            switch (type) {
+                case "USER":
+                    users.add(new Customer(username, password));
+                    break;
+                case "ADMIN":
+                    users.add(new Admin(username, password));
+                    break;
+                default:
+                    throw new Exception(type);
+            }
+        }
+        r_user.close();
         return users;
     }
 

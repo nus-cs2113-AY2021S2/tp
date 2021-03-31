@@ -29,8 +29,12 @@ public class Login {
 		
 		do {			
 			System.out.println("-------------------Login----------------");
-			System.out.print("Enter Name: ");
-			name = sc.nextLine();
+			System.out.print("Enter Name: (input \"out\" to quit the application)\n");
+			name = sc.nextLine().toUpperCase();
+
+			if(name.equals("OUT")){
+				System.exit(0);
+			}
 			
 			password = readPasswordSecure();
 			
@@ -55,7 +59,7 @@ public class Login {
 		
 		if(console == null) {
 			System.out.println("Due to a bug in some IDEs, password masking is disabled. Please only run this program on the console!");
-			System.out.print("Enter Password : ");
+			System.out.print("Enter Password :\n");
 			password = sc.nextLine();
 			//return null;
 		} else {
