@@ -221,7 +221,7 @@ Example of usage:
 
 ### Search: `search`
 
-Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food's storage location.
+Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food that matches the search query.
 
 Format: `search FOOD_NAME`
 
