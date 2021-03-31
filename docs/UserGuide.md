@@ -176,7 +176,7 @@ This section gives a detailed description of each feature, including examples to
 understanding.
 
 **<span style="color: red"> WARNING! </span>**
-> Ending the application abruptly will cause changes to be discarded!
+> Ending the application abruptly may cause changes to be discarded!
 >
 
 ### 3.1 Module Information
