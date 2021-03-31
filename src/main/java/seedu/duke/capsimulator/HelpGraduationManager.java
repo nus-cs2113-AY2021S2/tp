@@ -17,8 +17,8 @@ public class HelpGraduationManager {
                     Ui.getCurrentCapPrompt();
                     //missing exception to catch <0 >5 CAP user input
                     double cap = Double.parseDouble(Ui.readCommand());
-                    boolean validCAP = (cap >= 0.0 && cap <= 5.0);
-                    if (validCAP) {
+                    boolean validCap = (cap >= 0.0 && cap <= 5.0);
+                    if (validCap) {
                         assert cap >= 0.0 : "Not Valid";
                         assert cap <= 5.0 : "Not Valid";
                     } else {

@@ -53,8 +53,9 @@ public class HelpGraduation {
             for (Module module : ModuleInfo.modules) {
                 String grade = module.getGrade();
                 int modularCredits = module.getMc();
-                if(!checkPassFailGrade(grade)) {
-                    totalMCs += module.getMc();
+
+                if (!checkPassFailGrade(grade)) {
+                    totalMCs += modularCredits;
                 }
                 gradesInString.add(grade);
                 String moduleName = module.getName();
@@ -114,7 +115,8 @@ public class HelpGraduation {
                     receivingMCs();
                     break;
                 case "SU":
-                    receivingMCs(); // work in progress here
+                    // work in progress here
+                    break;
                 case "OK":
                     capCalculator(listOfGrades, listOfMCs, totalMCs);
                     break;
