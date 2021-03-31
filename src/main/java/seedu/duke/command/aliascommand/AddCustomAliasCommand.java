@@ -19,6 +19,7 @@ public class AddCustomAliasCommand extends Command {
     public void execute() {
         try {
             String[] blockAndAlias = ui.getAliasInfo();
+            nusMap.checkIfValidBlock(blockAndAlias[0]);
             blockAlias.addAlias(blockAndAlias[0], blockAndAlias[1]);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, blockAndAlias[1], blockAndAlias[0]));
         } catch (InvalidAliasException | InvalidBlockException e) {
