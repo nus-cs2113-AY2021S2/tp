@@ -28,7 +28,7 @@ It is written in Java, and has more than 4.3kLoC.
 * [User Stories](#user-stories)
 * [Non-Functional Requirements](#non-functional-requirements)
 * [Glossary](#glossary)
-* [Instructions for Manual Testing](#instructions-for-manual-testing)
+* [Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 * [Attribution](#attribution)
 
 ## Design
