@@ -43,11 +43,9 @@ the password. Then it will check the input against the set password. If fails th
 `exit` to exit the application.
 --> 
 
-<<<<<<< HEAD
-### Main 
-=======
+
 ### Main NusFoodReviews
->>>>>>> 97904394eadf1db05d1ff0488e763e1d0426fb2e
+
 #### Implementation
 ![Main Sequence Diagram](./img/Main.png)
 
@@ -64,7 +62,7 @@ an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 When DisplayMenusCommand was first instantiated, the relevant Store object was passed 
 into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()` on the 
 store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
-to be displayed by calling `Ui#showDisplayMenu()`
+to be displayed by calling `Ui#showDisplayMenu()`.
 
 
 ###[Public user] Read reviews feature
