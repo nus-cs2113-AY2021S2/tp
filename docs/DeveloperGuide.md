@@ -548,8 +548,10 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
   These are the chicken in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
   ```
+  
 2. Test case: `search pear`
     * Expected: `You do not have pear in your fridge.`
+    
 3. Test case: `search chick`
 
 * Expected:
