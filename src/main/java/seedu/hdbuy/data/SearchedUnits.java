@@ -1,15 +1,8 @@
 package seedu.hdbuy.data;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.logging.Logger;
 
-import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 
 public class SearchedUnits {

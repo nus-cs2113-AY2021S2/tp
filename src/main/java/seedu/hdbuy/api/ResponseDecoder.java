@@ -1,16 +1,13 @@
 package seedu.hdbuy.api;
 
-import seedu.hdbuy.common.Unit;
-import seedu.hdbuy.common.exception.EmptyResponseException;
-import seedu.hdbuy.common.exception.GatewayException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
+
+import seedu.hdbuy.common.exception.EmptyResponseException;
+import seedu.hdbuy.common.exception.GatewayException;
 
 public class ResponseDecoder {
 

@@ -1,5 +1,10 @@
 package seedu.hdbuy.ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
+
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.EmptyParameterException;
@@ -7,11 +12,6 @@ import seedu.hdbuy.common.exception.InvalidFilterException;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.common.exception.InvalidSortException;
 import seedu.hdbuy.common.exception.NoFlatsException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class TextUi {
 
@@ -52,7 +52,7 @@ public class TextUi {
         System.out.print("*HELP PLACEHOLDER*\n");
     }
 
-    public static void showParameters(HashMap<QueryKey, String> inputs) {
+    public static void showParameters(LinkedHashMap<QueryKey, String> inputs) {
         if (inputs.isEmpty()) {
             System.out.println("Currently there are no filter conditions set.");
             return;

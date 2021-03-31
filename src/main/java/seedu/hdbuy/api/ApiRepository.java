@@ -1,12 +1,10 @@
 package seedu.hdbuy.api;
 
-import seedu.hdbuy.common.QueryKey;
-import seedu.hdbuy.common.Unit;
-import seedu.hdbuy.common.exception.EmptyResponseException;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Logger;
+
+import seedu.hdbuy.common.QueryKey;
+import seedu.hdbuy.common.exception.EmptyResponseException;
 
 public class ApiRepository {
 
