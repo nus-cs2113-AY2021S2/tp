@@ -7,6 +7,7 @@ import seedu.ui.UI;
 import java.util.ArrayList;
 
 public class PatientActions {
+
     private static ArrayList<Patient> patients = new ArrayList<Patient>();
 
     public PatientActions() {
@@ -23,11 +24,22 @@ public class PatientActions {
 
     public void findPatient(String inputString) {
         int numberOfPatients = patients.size();
+        boolean isFound = false;
+        boolean isHeaderPrinted = false;
         for (int i = 0; i < numberOfPatients; i++) {
-            String patientDetails = patients.get(i).getPatientDetails();
+            String patientDetails = patients.get(i).getPatientDetailsString();
+            String[] patientDetailsArr = patients.get(i).getPatientDetailsArray();
             if (patientDetails.contains(inputString)) {
-                PatientUI.printPatientList(i+1, patientDetails);
+                isFound = true;
+                if (!isHeaderPrinted) {
+                    PatientUI.patientListHeader();
+                    isHeaderPrinted = true;
+                }
+                PatientUI.printPatientList(patientDetailsArr);
             }
+        }
+        if (!isFound) {
+            PatientUI.patientNotFoundMessage();
         }
     }
 
@@ -47,9 +59,9 @@ public class PatientActions {
             PatientUI.emptyPatientListMessage();
         } else {
             PatientUI.notEmptyPatientListMessage();
+            PatientUI.patientListHeader();
             for (int i = 0; i < numberOfPatients; i++) {
-                UI.showLine();
-                PatientUI.printPatientList(i + 1, patients.get(i).getPatientDetails());
+                PatientUI.printPatientList(patients.get(i).getPatientDetailsArray());
             }
         }
     }

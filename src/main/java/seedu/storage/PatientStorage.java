@@ -1,6 +1,8 @@
 package seedu.storage;
 
-import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.*;
+import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.Patient;
 import seedu.logic.command.PatientActions;
@@ -13,6 +15,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.regex.PatternSyntaxException;
 
 public class PatientStorage {
 
@@ -57,30 +60,30 @@ public class PatientStorage {
      */
     public ArrayList<Patient> loadPatients() throws HealthVaultException {
         fileInit();
+        // initializing file scanner to scan the file
+        Scanner fileScanner = null;
         try {
-            // initializing file scanner to scan the file
-            Scanner fileScanner = new Scanner(saveFile);
-
-            while (fileScanner.hasNext()) {
-                String currentScan = fileScanner.nextLine();
-                //splits the string into sections for storing in the ArrayList
-                String[] taskSave = currentScan.trim().split(" \\| ");
-                int numberOfTokens = taskSave.length;
-                ArrayList<String> cleanString = new ArrayList<>();
-                for (int i = 0; i < numberOfTokens; i++) {
-                    cleanString.add(ui.cleanseInput(taskSave[i]));
-                }
-                checker = new PatientChecker(patients, cleanString, numberOfTokens);
-                checker.checkStorage();
-                Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
-                        taskSave[3], taskSave[4], taskSave[5]);
-                patients.add(tempPatient);
-            }
+            fileScanner = new Scanner(saveFile);
         } catch (FileNotFoundException e) {
-            throw new HealthVaultException();
-        } catch (HealthVaultException e) {
-            System.out.println(e.getMessage());
+            ui.showLoadingError();
         }
+
+        while (fileScanner.hasNext()) {
+            String currentScan = fileScanner.nextLine();
+            //splits the string into sections for storing in the ArrayList
+            String[] taskSave = currentScan.trim().split(" \\| ");
+            int numberOfTokens = taskSave.length;
+            ArrayList<String> cleanString = new ArrayList<>();
+            for (int i = 0; i < numberOfTokens; i++) {
+                cleanString.add(ui.cleanseInput(taskSave[i]).trim());
+            }
+            checker = new PatientChecker(patients, cleanString, numberOfTokens);
+            checker.checkStorage();
+            Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
+                    taskSave[3], taskSave[4], taskSave[5]);
+            patients.add(tempPatient);
+        }
+        fileScanner.close();
         return patients;
     }
 
@@ -98,6 +101,7 @@ public class PatientStorage {
             for (int i = 0; i < saveInput.getSize(); i++) {
                 fileWriter.write(saveInput.toSaveFile(i) + "\n");
             }
+            fileWriter.flush();
             fileWriter.close();
         } catch (java.io.IOException e) {
             System.out.println("☹ OOPS!!! The file can't be saved :-(");
