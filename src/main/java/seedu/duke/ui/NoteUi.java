@@ -25,10 +25,10 @@ public class NoteUi extends UiManager {
     }
 
     public void showNotes(ArrayList<String> notes) throws EmptyNoteException {
-        showMessage(CommonMessage.DIVIDER, "Here is the list of notes:");
         if (notes.isEmpty()) {
             throw new EmptyNoteException();
         }
+        showMessage(CommonMessage.DIVIDER, "Here is the list of notes:");
         for (int i = 0; i < notes.size(); i++) {
             showMessage((i + 1) + ". " + notes.get(i));
         }
