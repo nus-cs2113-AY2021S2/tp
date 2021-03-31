@@ -43,7 +43,11 @@ the password. Then it will check the input against the set password. If fails th
 `exit` to exit the application.
 --> 
 
+<<<<<<< HEAD
 ### Main 
+=======
+### Main NusFoodReviews
+>>>>>>> 97904394eadf1db05d1ff0488e763e1d0426fb2e
 #### Implementation
 ![Main Sequence Diagram](./img/Main.png)
 
@@ -62,6 +66,7 @@ into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()
 store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
 to be displayed by calling `Ui#showDisplayMenu()`
 
+
 ###[Public user] Read reviews feature
 #### Implementation
 
@@ -76,6 +81,27 @@ store object to get an ArrayList of reviews, then calling `getAverageRating()` t
 average rating of the store. After that, `getStoreName()` is also called to get the store
 name of the store. These parameters are then passed to the ui object to be displayed by calling 
 `Ui.showReviews()`
+
+### Reset Store Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/ResetStore.png)
+
+To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is called, 
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
+
+### Home Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/HomeCommand.png)
+
+To reset the store and canteen index in nusFoodReviews, `HomeCommand#execute()` is called,
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `HomeCommand` is first called, we pass the main NusFoodReviews object to the
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
+
 
 ### Admin Capabilities
 #### Implementation
