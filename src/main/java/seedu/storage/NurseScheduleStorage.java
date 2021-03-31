@@ -9,6 +9,7 @@ import seedu.model.NurseSchedule;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static seedu.duke.Constants.SCHEDULES_FILE_PATH;

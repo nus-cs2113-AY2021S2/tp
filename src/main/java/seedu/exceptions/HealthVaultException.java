@@ -85,9 +85,8 @@ public class HealthVaultException extends Exception {
                     "Please check the list of available commands using \"help\"");
             break;
         }
-
     }
-
+  
     public String getMessage() {
         return "There seems to be an error!";
     }
