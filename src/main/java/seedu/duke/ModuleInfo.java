@@ -158,7 +158,7 @@ public class ModuleInfo {
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
-            System.out.println(module.toString()); //name, description, review, MCs are printed
+            System.out.println(module.toString()); //name, description, review, MCs, grade are printed
             printModuleTaskList(module.getName());
             // add other methods to print other features of a module
 
