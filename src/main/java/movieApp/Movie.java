@@ -123,7 +123,6 @@ public class Movie implements Serializable{
 	public void addReview(String comment, int rating) {		
 		Review r = new Review(comment, rating);
 		reviews.add(r);
-
 	}
 	
 	private float calculateOverallRating() {
