@@ -48,10 +48,13 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 
 ## How to Use This Guide
 
-> Icons used in this guide:<br>
+> Icons & labels used in this guide:<br>
 > <br>
 > 💡 - Indicates a tip that may be useful to you.<br>
 > ⚠ - indicates a warning that you should take note of.
+> 
+> _Italic_ - Indicates that the content is a component.<br>
+> `Inline code` - Indicates that the content is a class, method or input by the user.
 
 &nbsp;
 
@@ -89,7 +92,7 @@ On start up, the user will be on the dashboard layer and has an overview of all 
     Figure 1 - Visualisation of GULIO’s 2-layer system
 </p>
 
-Currently, GULIO is a basic university module manager intended to provide students with an overview and consolidated workspace for all of their modules, lessons, tasks and cheat-sheets. Going forward, we feel that GULIO has the potential for many more features to be added, some of which are proposed in the “Implementation” section.
+Currently, GULIO is a basic university module manager intended to provide students with an overview and consolidated workspace for all of their modules, lessons, tasks and cheat-sheets. Going forward, we feel that GULIO has the potential for many more features to be added, some of which are proposed in the [Implementation section](#implementation).
 
 ### Purpose
 
@@ -112,17 +115,17 @@ This describes the software architecture and software design decisions for the i
     Figure 2 - GULIO Architecture Diagram
 </p>
 
-`Duke` contains the main method which is required by Java to run the application. It is responsible for instantiating and calling methods from the `UI`, `Parser` and `Command` components.
+_Duke_ contains the main method which is required by Java to run the application. It is responsible for instantiating and calling methods from the _UI_, _Parser_ and _Command_ components.
 
-Apart from `Duke`, the application consists of the following components:
+Apart from _Duke_, the application consists of the following components:
 
-* `UI`: Handles reading and printing
-* `Parser`: Validates and checks user input
-* `Command`: Executes commands
-* `Model`: Consists of data related to the application
-* `Storage`: Handles loading and storing of data into text files
-* `Editor`: Graphical interface for users to type
-* `Common`: collection of classes used by multiple components.
+* _UI_: Handles reading and printing
+* _Parser_: Validates and checks user input
+* _Command_: Executes commands
+* _Model_: Consists of data related to the application
+* _Storage_: Handles loading and storing of data into text files
+* _Editor_: Graphical interface for users to type
+* _Common_: collection of classes used by multiple components.
 
 
 GULIO is a local application that stores its application data using readable text files, allowing users the flexibility of viewing and editing data locally.
@@ -134,7 +137,7 @@ The way GULIO runs and handles user input can be described as follows:
     Figure 3 - GULIO Sequence Diagram
 </p>
 
-Upon start, the main class calls run() which enters a while loop and reads in user input. In the loop, the Parser component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
+Upon start, the `Duke` (main) class calls `run()` which enters a while loop and reads in user input. In the loop, the _Parser_ component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
 
 &nbsp;
 
@@ -156,7 +159,7 @@ Upon start, the main class calls run() which enters a while loop and reads in us
 
 * Determines the command entered by the user
 
-* Parses the parameters needed by the `Command` object (for commands which require additional details)
+* Parses the parameters needed by subclasses of the `Command` object (for commands which require additional details)
 
 * Checks the validity of parsed parameters, in some instances calling methods from other relevant classes, e.g. calling a method from the `Lessons` class to verify parsed lesson links.
 
@@ -175,14 +178,14 @@ Upon start, the main class calls run() which enters a while loop and reads in us
 
 **API**: `Command.java`
 
-The `Command` component is an abstract class with methods that all commands inherit from. They can be further distinguished by commands that are used when the user is at the dashboard or when the user is within a module specified.
+The _Command_ component consist of an abstract `Command` class, as well as its subclasses. Each subclass handles a specifc command in GULIO. The abstract `Command` class contains methods that these commands inherit from. They can be further distinguished by commands that are used when the user is at the dashboard or when the user is within a module specified.
 
 Steps for command execution:
 
-1. The `Parser` after validating user input returns a `Command` object
-1. Each `Command` object has an execute method and gets executed by `Duke`
-1. Depending on the command, it may make changes to the objects within `Model`
-1. If there are changes, `Model` then updates application data via the `Storage` component
+1. The `Parser` validates user input and returns a `Command` object to `Duke`
+1. `Duke` calls the execute method in the `Command` object
+1. Depending on the command, it may make changes to the objects within the _Model_ component
+1. If there are changes, the _Model_ component then updates application data via the _Storage_ component
 1. The `UI` prints user information related to the command executed
 
 
@@ -199,7 +202,7 @@ The Model component consists of classes that represent real-world objects relate
 
 #### ModuleList:
 
-`ModuleList` is responsible for managing loaded modules in the program and keeping track if a user is at the dashboard or within a selected module. `ModuleList` interacts with the `Loader` and `Writer` components to load and write data respectively to the storage files. It also contains methods to sort data.
+`ModuleList` is responsible for managing loaded modules in the program and keeping track if a user is at the dashboard or within a selected module. `ModuleList` interacts with instances of the `Loader` and `Writer` class to load and write data respectively to the storage files. It also contains methods to sort data.
 
 The `ModuleList` class contains the attributes:
 
@@ -253,7 +256,7 @@ The `Task` class contains attributes related to an assignment, deadline or task 
     Figure 6 - Illustration of Storage Structure
 </p>
 
-The `Storage` component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components: `Loader` and `Writer`. At every moment, `Loader` only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
+The _Storage_ component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two classes: `Loader` and `Writer`. At every moment, `Loader` only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
 
 #### Loader:
 
@@ -273,7 +276,7 @@ The `Storage` component is responsible for creating and loading modules and thei
 
 **API**: `TextEditor.java`
 
-The `Editor` component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
+The _Editor_ component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two classes:
 
 #### Text Editor
 
@@ -309,34 +312,34 @@ In this section, we highlight a few of the key features whose implementations ar
 
 ### Add Lesson
 
-The AddLessonCommand class is responsible for the creation and addition of a new Lesson object to the lesson list of a given module. The following sequence diagrams shows how a new Lesson is created and added to the lesson list.
+The `AddLessonCommand` class is responsible for the creation and addition of a new `Lesson` object to the lesson list of a given module. The following sequence diagrams shows how a new `Lesson` is created and added to the lesson list.
 
 <p align="center">
     <img width="973" src="developerGuideImages/addLesson1.png" alt="parse() Sequence Diagram"><br>
     Figure 7 - parse() Sequence Diagram
 </p>
 
-The creation process is facilitated by the Parser class, which parses the appropriate arguments from the user input and initialises the Lesson object attributes with the parsed values.
+The creation process is facilitated by the `Parser` class, which parses the appropriate arguments from the user input and initialises the `Lesson` object attributes with the parsed values.
 
 <p align="center">
     <img width="973" src="developerGuideImages/addLessonCommand.png" alt="AddLessonCommand Constructor Sequence Diagram"><br>
     Figure 8 - AddLessonCommand Constructor Sequence Diagram
 </p>
 
-The newly created Lesson object is then passed to a new AddLessonCommand object as an argument.
+The newly created `Lesson` object is then passed to a new `AddLessonCommand` object as an argument.
 
 <p align="center">
     <img width="973" src="developerGuideImages/add_lesson_to_lesson_list.png" alt="execute() AddLessonCommand Sequence Diagram"><br>
     Figure 9 - execute() AddLessonCommand Sequence Diagram
 </p>
 
-AddLessonCommand then adds the Lesson object to the lesson list of a module. The lessons in the list are sorted by their lesson types each time a new lesson is added. AddLessonCommand also calls the writeLesson method of ModuleList to update the change locally.
+`AddLessonCommand` then adds the `Lesson` object to the lesson list of a module. The lessons in the list are sorted by their lesson types each time a new lesson is added. `AddLessonCommand` also calls the `writeLesson()` method of `ModuleList` to update the change locally.
 
 &nbsp;
 
 ### Adding of Cheat-Sheet
 
-The AddCheatSheetCommand class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new AddCheatSheetCommand object and calling the “execute” method on it, the GULIO Text Editor application will also be automatically started.
+The `AddCheatSheetCommand` class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new instance of it and calling the `execute()` method on it, the GULIO Text Editor application will also be automatically started.
 
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
@@ -345,46 +348,46 @@ An invocation of the `add cheat-sheet` command involves the following interactio
     Figure 10 - AddCheatSheetCommand Invocation Sequence Diagram
 </p>
 
-When the AddCheatSheet command is executed, it gets the current selected module by calling the “getSelectedModule” method in ModuleList. It then calls the “getDirectoryPath” method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the “openTextEditor” method in itself.
+When `AddCheatSheetCommand` is executed, it gets the current selected module by calling the `getSelectedModule()` method in ModuleList. It then calls the `getDirectoryPath()` method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the `openTextEditor()` method in itself.
 
 &nbsp;
 
 ### Loading & Storing of Data
 
-This section covers how the storage component works, from the loading of all module codes to the loading of individual module and creation of data files.
+This section covers how the _Storage_ component works, from the loading of all module codes to the loading of individual module and creation of data files.
 
 #### Saving of Data
 
-The Writer class is responsible for writing any changes to the module’s data file, as well as creating the file itself. Interaction with this writer class is done through the ModuleList class, whose methods are called by the other components of the app.
+The `Writer` class is responsible for writing any changes to the module’s data file, as well as creating the file itself. Interaction with the `Writer` class is done through the `ModuleList` class, whose methods are called by the other components of the app.
 
 <p align="center">
     <img width="973" src="developerGuideImages/writeModule.png" alt="writeModule() Sequence Diagram"><br>
     Figure 11 - writeModule() Sequence Diagram
 </p>
 
-Whenever some data in a module changes, the command that made those changes would call the method “writeModule” in ModuleList to update the change in the data file. This method would then call a method of the same name in the Writer class, which overwrites the existing data in the file with the new data.
+Whenever some data in a module changes, the command that made those changes would call the method `writeModule()` in `ModuleList` to update the change in the data file. This method would then call a method of the same name in the `Writer` class, which overwrites the existing data in the file with the new data.
 
 Due to how much data needs to be written each time, we decided to split the data file by module. That way, we only need to overwrite the module's data when changes are made.
 
 #### Loading of Data
 
-The Loader class is responsible for identifying all the modules currently added, as well as loading the data file of the selected class. Like the Writer class, methods in the Loader class are accessed by the other components via the ModuleList class.
+The `Loader` class is responsible for identifying all the modules currently added, as well as loading the data file of the selected class. Methods in the `Loader` class are accessed by the other components via the `ModuleList` class.
 
 <p align="center">
     <img width="973" src="developerGuideImages/loadModuleCode.png" alt="loadModuleCodes() Sequence Diagram"><br>
     Figure 12 - loadModuleCodes() Sequence Diagram
 </p>
 
-To identify modules in the “Data” directory, Duke would call “loadModuleCodes” method in the ModuleList. This method would then call the “getModules” method in Loader, which returns a list of module codes. For each of the identified module code, ModuleList would call its own “insertModule” method to add it to the module list.
+To identify modules in the “Data” directory, Duke would call `loadModuleCodes()` method in the `ModuleList`. This method would then call the `getModules()` method in `Loader`, which returns a list of module codes. For each of the identified module code, `ModuleList` would call its own `insertModule()` method to add it to the module list.
 
 <p align="center">
     <img width="973" src="developerGuideImages/setSelectedModule.png" alt="setSelectedModule() Sequence Diagram"><br>
     Figure 13 - setSelectedModule() Sequence Diagram
 </p>
 
-When a module is selected via the “setSelectedModule” method, the specified module code would be searched for in the module list. If it is inside, “loadModule” method in the Loader would be called. This method reads the module’s data file for data and adds them into a new instance of Module class. This Module is then returned to ModuleList and set as the selected module.
+When a module is selected via the `setSelectedModule()` method, the specified module code would be searched for in the module list. If it is inside, `loadModule()` method in the `Loader` would be called. This method reads the module’s data file for data and adds them into a new instance of `Module` class. This `Module` is then returned to `ModuleList` and set as the selected module.
 
-If the Loader failed to load the file, null would be returned. If null is not returned, ModuleList would sort the data and then use Writer to override the existing file. This is done to remove invalid entries that were initially in the file.
+If the `Loader` failed to load the file, null would be returned. If null is not returned, `ModuleList` would sort the data and then use `Writer` to override the existing file. This is done to remove invalid entries that were initially in the file.
 
 &nbsp;
 
@@ -405,11 +408,11 @@ If the Loader failed to load the file, null would be returned. If null is not re
 
 #### Target user profile:
 
-1. needs a consolidated and personalisable workspace to organize their university modules
-1. prefers desktop apps over other types
-1. can type fast
-1. is comfortable using CLI apps
-1. is familiar with command-line shell environment
+1. Needs a consolidated and personalisable workspace to organize their university modules
+1. Prefers desktop apps over other types
+1. Can type fast
+1. Is comfortable using CLI apps
+1. Is familiar with command-line shell environment
 
 #### Value proposition:
 
