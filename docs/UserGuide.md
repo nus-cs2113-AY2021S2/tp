@@ -88,102 +88,103 @@ first time that you are using the command, we recommend that you refer to Comman
 to find out how to interpret the format of the commands.
 
 ###4.1 Command Format used in this guide
-* Words in [user input] are the fields to be supplied by the user. <br /> e.g. in `list [sorting_method]` sorting_method 
-is the field input by the user.
+* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user. <br /> e.g. in `list [SORTING METHOD]` 
+  SORTING METHOD is the field input by the user and examples of valid commands are `list rating`,`list title` etc.
+* Word in lower case are given commands. <br /> e.g. in `new [quick | long]` the user can input either the command
+  `new quick`or `new long`
+  
 ###4.2 Review Mode
-Connoisseur has 2 modes. The first is the review mode, where you can add your own reviews of experiences. 
-The review mode can be accessed  using the `review` command. 
+Connoisseur is in Review mode by default. In this mode you can maintain a list of reviews of experiences of any 
+category. The review mode can be accessed using the `review` command. 
 
-#### Viewing Help
-View help on commands recognised by Connoisseur. You can specify a command to get detailed help on it. 
+####4.2.1 Adding a Review
+This feature allows you to add a new review. There is a choice of quick review or long review.
 
-Command: `help [command_name]`
+Command: `add [quick | long]`, `new [quick | long]`<br />
+`[quick | long]` : optional argument to specify quick or long review.
 
-`[command_name]`: optional argument specifying command on which help is needed. 
+Connoisseur will then prompt you to enter the title, category  and rating of the review.<br /> 
 
-![](images/ug/help_general.png)
+Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display error message and 
+adding the review will fail. You can try again.<br /> 
 
-![](images/ug/help_new.png)
+Ensure the title of the review added is unique and does not already exist in the list. If you attempt to add a 
+pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list. Adding the review will 
+fail. You can try again.
 
-#### Adding a Review
-Add a new review. Choice of quick review or long review. 
+####4.2.2 List Reviews
+This feature allows you to view a list of all your reviews. You can specify a one-off sorting method by which to sort the reviews.
 
-Command: `add [quick | long]`, `new [quick | long]`
+Command: `list [SORTING METHOD]`
 
-`[quick | long]` : optional argument to specify quick or long review. 
-
-![](images/ug/new_quick.png)
-
-![](images/ug/new_long.png)
-
-#### Listing Reviews
-List your current reviews. You can specify a one-off sorting method by which to sort the reviews. 
-
-Command: `list [sorting_method]`
-
-`[sorting_method]` : temporary sort method by which to sort the reviews. Leaving this blank would allow Connoisseur to use the saved sort method. Currently supported methods are: 
+`[SORTING METHOD]` : temporary sort method by which to sort the reviews. Leaving this blank would allow Connoisseur to 
+use the saved _sort method_. Currently, supported methods are:
 * `title`
 * `category`
 * `rating`
 * `earliest`
 * `latest`
 
-![](images/ug/list_review.png)
+####4.2.3 Sort Reviews
+This feature allows you to change the saved sorting method.
 
-![](images/ug/list_review_rating.png)
+Command: `sort [SORTING METHOD]`
 
-#### Sorting Reviews
-Change the saved sorting method. 
+`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#List-Reviews) for a list 
+of recognised sorting methods.
 
-Command: `sort <sorting_method>`
+####4.2.4 View a Review
+This feature allows you to view all the details of the specified review.
 
-`<sorting_method>` : sort method to be used. Default sorting method is `latest`. Refer above for a list of recognised sorting methods. 
+Command: `view [TITLE_OF_REVIEW]`
 
-![](images/ug/sort_review.png)
+`[TITLE_OF_REVIEW]` : title of review that you want to view.
+Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
+prompt you saying that no such review exits.
 
-#### Viewing a Review
-View details of a review. 
+####4.2.5 Edit a Review
+This feature allows you to edit reviews in your list. <br />
 
-Command: `view <title_of_review>`
+Command : `edit [TITLE_OF_REVIEW] `
 
-`<title_of_review>` : title of review that you want to view. 
+`[TITLE_OF_REVIEW]` : title of review that you want to edit.
+Ensure the title of the review you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
+prompt you saying that no such review exits.
 
-![](images/ug/view_review.png)
+####4.2.6 Delete a Review
+This feature allows you to delete a review from your list.
 
-#### Deleting a Review
-Delete a review that you no longer need. 
+Command: `delete [TITLE_OF_REVIEW]`
 
-Command: `delete <title_of_review>`
+`[TITLE_OF_REVIEW]` : title of review that you want to delete.
+Ensure the title of the review you want to delete already exists in your lists of reviews. Otherwise, Connoisseur will
+prompt you saying that no such review exits.
 
-`<title_of_review>` : title of review that you want to delete. 
+###4.3 Recommendation Mode
+Connoisseur is in Review mode by default. The Recommendation mode can be accessed using the `reco` command when 
+Connoisseur prompts - `Please enter a command:` In this mode you can maintain a list of recommendation of experiences 
+you would like to try in the future. To go back to Review mode, you can use the `review` command.
 
-![](images/ug/delete_review.png)
+####4.3.1 Adding a Recommendation
+This feature allows you to add a new recommendation. 
+####4.3.2 Edit a Recommendation
+####4.3.3 Review a Recommendation
 
-### Recommendation Mode
+###4.4 View Help
 
-#### Adding a todo: `todo`
 
-Adds a new item to the list of todo items.
+###4.5 Exit & Save Connoisseur
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+##5. Command Summary
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.
+{Give a 'cheat sheet' of commands here}
 
-Example of usage:
-
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
-## FAQ
+##6. FAQ
 
 **Q**: How do I transfer my data to another computer?
 
 **A**: {your answer here}
 
-## Command Summary
 
-{Give a 'cheat sheet' of commands here}
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+
