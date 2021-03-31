@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AddDailyRouteCommand extends Command {
 
     protected DailyRouteUi ui;
-    private static final String MESSAGE_SUCCESS = "Got it! Successfully add %s's schedule!";
+    private static String MESSAGE_SUCCESS = "Got it! Successfully add %s's schedule!";
 
     public AddDailyRouteCommand() {
         this.ui = new DailyRouteUi();
@@ -24,6 +24,9 @@ public class AddDailyRouteCommand extends Command {
             String day = validDays.get(index);
             ArrayList<String> schedule = ui.getScheduleInfo();
             dailyRoute.addDailyRoute(day, schedule);
+            if (schedule.size() == 0) {
+                MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
+            }
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, day));
         } catch (InvalidBlockException | InvalidIndexException e) {
             ui.showMessageWithDivider(e.getMessage());

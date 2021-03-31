@@ -173,7 +173,7 @@ Step 1. The user launches the application for the first time.
 will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
 The lists will be initialized by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](Storage%20Feature%20Sequence%20.png)
+![img.png](images/Storage%20Feature%20Sequence%20.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
@@ -311,10 +311,56 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
+### 3.6. Favourite Routes feature
+
+#### Current Implementation
+
+The favourite routes feature acts as an independent storage of the user's favourites routes, 
+allowing the user to call of the route without going through the hassle of the `go` command.
+The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
+The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
+
+#### Loading of saved favourite routes
+
+When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
+and stored into `favourites`.
+Refer to the section on **Storage** for more information.
+
+#### Adding of favourite route
+
+The command to add a favourite route is `add favourite`. 
+Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
+followed by the destination block. If valid blocks are given,
+the route from the starting block to destination block will be added into `favourites`.
+If any invalid block is given, `InvalidBlockException` will be thrown.
+
+#### Reviewing saved favourite routes
+
+The command to display all the saved favourite routes is `show favourite`.
+If there are no saved routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+
+#### Repeating favourite route
+
+The command to repeat a favourite route is `repeat favourite`.
+Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
+Otherwise, `EmptyFavouriteException` will be thrown.
+After the numbered list of saved favourite routes is shown, the user would be prompted to enter the index of the favourite
+route to be executed. Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
+#### Deleting favourite route
+
+The command to delete a favourite route is `delete favourite`.
+If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+The user is then prompted to enter the index of the route to be deleted.
+Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
 ---------------------------------------------------------------------------------------------
 
 ## *4. Appendix: Requirements*
-
 ### 4.1. Product Scope
 
 NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
