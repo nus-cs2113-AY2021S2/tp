@@ -186,7 +186,7 @@ The `Ui` component actively listens for:
 _Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
-The Parser component consist of 1 class called `ParserHandler`.
+The Parser component consist of one class called `ParserHandler`.
 The role of `ParserHandler` can be interpreted as a "manager" or "middle man" to parse
 the user input from the console into an `ArrayList<String>` format.
 
@@ -202,12 +202,11 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
    trimmed input to the start of the next option index. This is the argument tagged after the option. 
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored an empty string.
-
-   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling
-   `extractFinalPart`.
-   * Valid next option format: `' <option> '` with 1 leading and trailing whitespace. e.g. `' -e '`
+   
+   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
+   
 4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and 
-   add an empty string as the argument, else just add the last trimmed input to the ArrayList. 
+   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>. 
 5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will 
    call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
    
@@ -223,13 +222,13 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
      e.g. `'-e '`
    * Ending option should be in the form of `' <option>'` with 1 leading whitespace and no trailing whitespace.
      e.g. `' -e'`
-   * During processing, next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
+   * During the extraction, the next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
      e.g. `' -e '`
 3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
-   Apache Commons Lang, 3.11, providing the StringUtils class is used to cater to consideration 2.
-   * StringUtils.startsWithAny() - detection of start option with non-fixed order.
-   * StringUtils.endsWithAny()   - detection of end option with non-fixed order.
-   * StringUtils.indexOfAny()    - detection of during processing option with non-fixed order.
+   Apache Commons Lang, 3.11, providing the `StringUtils` class is used to cater to consideration 2.
+   * `StringUtils.startsWithAny()` - detection of start option with non-fixed order.
+   * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
+   * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
 5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
    the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
@@ -356,9 +355,6 @@ By calling the `execute()` method, the total amount will be printed onto the con
 _Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
->
-> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
-> are given.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
