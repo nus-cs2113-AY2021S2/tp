@@ -6,7 +6,8 @@ public class Patient {
     protected int age;
     protected String gender;
     protected String illness;
-    protected String drugsNeeded;
+    protected String medicationNeeded;
+    protected String[] patientDetails;
 
     public Patient(String patientID, String name, int age, String gender, String illness, String drugsNeeded) {
         this.patientID = patientID;
@@ -14,16 +15,16 @@ public class Patient {
         this.age = age;
         this.gender = gender;
         this.illness = illness;
-        this.drugsNeeded = drugsNeeded;
+        this.medicationNeeded = drugsNeeded;
+        this.patientDetails = new String[] {patientID, name, String.valueOf(age), gender, illness, medicationNeeded};
     }
 
-    public String getPatientDetails() {
-        return ("ID: " + patientID + " \n" +
-                "name: " + name + " \n" +
-                "age: " + age + " \n" +
-                "gender: " + gender + " \n" +
-                "illness: " + illness + " \n" +
-                "drugsNeeded: " + drugsNeeded);
+    public String[] getPatientDetailsArray() {
+        return (patientDetails) ;
+    }
+
+    public String getPatientDetailsString() {
+        return(patientID + " | " + name + " | " + age + " | " + gender + " | " + illness + " | " + medicationNeeded);
     }
 
     public String getPatientID() {
@@ -36,6 +37,6 @@ public class Patient {
 
     public String toSaveFormat() {
         return (patientID + " | " + name + " | " + age + " | " +
-                gender + " | " + illness + " | " + drugsNeeded);
+                gender + " | " + illness + " | " + medicationNeeded);
     }
 }

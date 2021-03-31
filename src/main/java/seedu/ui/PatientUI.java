@@ -21,12 +21,28 @@ public class PatientUI extends UI{
         UI.printEmptyLine();
     }
 
+    public static void patientListHeader() {
+        System.out.println(
+                UI.prettyPrint("ID", 8) + " | " +
+                        UI.prettyPrint("Name", 40) + " | " +
+                        UI.prettyPrint("Age", 6) + " | " +
+                        UI.prettyPrint("Gender", 8) + " | " +
+                        UI.prettyPrint("Illness", 30) + " | " +
+                        UI.prettyPrint("Medication Required", 40));
+    }
+
     public static void patientAddedMessage(String name) {
         System.out.println(name + " is now a patient here!");
     }
 
-    public static void printPatientList(int i, String patientDetails) {
-        System.out.println(i + "." + patientDetails);
+    public static void printPatientList(String[] patientDetails) {
+        System.out.println(
+                UI.prettyPrint(patientDetails[0], 8) + " | " +
+                        UI.prettyPrint(patientDetails[1], 40) + " | " +
+                        UI.prettyPrint(patientDetails[2], 6) + " | " +
+                        UI.prettyPrint(patientDetails[3], 8) + " | " +
+                        UI.prettyPrint(patientDetails[4], 30) + " | " +
+                        UI.prettyPrint(patientDetails[5], 40));
     }
 
     public static void emptyPatientListMessage() {
@@ -50,5 +66,9 @@ public class PatientUI extends UI{
     public void corruptedFileErrorMessage() {
         System.out.println("The file (" + PATIENT_FILE_PATH + ") is corrupted!\n" +
                 "Please exit the program and delete the corrupted file before trying to access Patient Menu!");
+    }
+
+    public static void patientNotFoundMessage() {
+        System.out.println("There is no patient in the list that matches your keywords!");
     }
 }

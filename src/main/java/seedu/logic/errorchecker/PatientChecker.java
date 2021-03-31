@@ -6,8 +6,6 @@ import seedu.logic.command.PatientActions;
 import seedu.model.Patient;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class PatientChecker extends MainChecker{
 
@@ -41,7 +39,7 @@ public class PatientChecker extends MainChecker{
         checkGender(stringTokens.get(3));
     }
 
-    public void checkAddCommand() throws HealthVaultException, NumberFormatException {
+    public void checkAdd() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
         checkLength();
         checkID();
@@ -50,6 +48,12 @@ public class PatientChecker extends MainChecker{
         illegalCharacterChecker(stringTokens.get(5), "Illness");
         illegalCharacterChecker(stringTokens.get(6), "medication required");
         checkGender(stringTokens.get(4));
+    }
+
+    public void checkFind() throws HealthVaultException {
+        emptySpaceCheck();
+        checkLength();
+        illegalCharacterChecker(stringTokens.get(1), "keyword");
     }
 
     public void checkStorageLength() throws HealthVaultException {
