@@ -49,7 +49,7 @@ class DeleteLessonCommandTest extends LessonCommandTest {
 
         UI ui = new UI();
         OutputStream os = getOutputStream();
-        String entireInput = "delete lesson";
+
         Command command = new DeleteLessonCommand();
 
         try {
@@ -57,14 +57,35 @@ class DeleteLessonCommandTest extends LessonCommandTest {
         } catch (CommandException e) {
             printFailedToExecuteCommand();
         }
-        initialiseUserInput(entireInput);
-        entireInput = "1 2";
+
+        String entireInput = "1 2";
         initialiseUserInput(entireInput);
         boolean isEqual = false;
-        if (os.toString().equals("Your list of lessons is empty.\n") ||
-                os.toString().equals("Your list of lessons is empty.\r\n")) {
+        if (os.toString().equals("Your list of lessons is empty.\n")
+                || os.toString().equals("Your list of lessons is empty.\r\n")) {
             isEqual = true;
         }
+        removeOutputStream();
         assertTrue(isEqual);
+    }
+
+    @Test
+    void execute_ui_expectPrintsCorrectOutput() {
+        TestUtilAndConstants.removeFiles();
+        ModuleList.loadModuleCodes();
+        ModuleList.addModule(MODULE_CODE);
+        ModuleList.setSelectedModule(MODULE_CODE);
+
+        UI ui = new UI();
+        addLessonsToList(ui);
+        Command command = new DeleteLessonCommand();
+        try {
+            command.execute(ui);
+        } catch (CommandException e) {
+            printFailedToExecuteCommand();
+        }
+        String entireInput = "1 2";
+        initialiseUserInput(entireInput);
+        assertEquals(ModuleList.getSelectedModule().getLessonList().size(), 0);
     }
 }
