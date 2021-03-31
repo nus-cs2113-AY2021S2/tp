@@ -1,6 +1,7 @@
 package seedu.logic.command;
 
 
+import seedu.exceptions.HealthVaultException;
 import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.storage.DoctorAppointmentStorage;
@@ -8,6 +9,7 @@ import seedu.ui.DoctorAppointmentUI;
 import seedu.ui.UI;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class AppointmentActions {
@@ -32,7 +34,7 @@ public class AppointmentActions {
         DoctorAppointmentStorage.writeToFile(appointmentList);
     }
 
-    public static void listAppointment(String input) throws Exception {
+    public static void listAppointment(String input) throws HealthVaultException, EmptyListException, ParseException {
 
         String indicator = "A";
         String[] inputArray = input.split("");
@@ -51,9 +53,11 @@ public class AppointmentActions {
                 indicator = "D";
                 DoctorAppointmentUI.AptPrintList(indicator);
                 UI.showLine();
-                for (DoctorAppointment doc : appointmentList) {
-                    if (doc.getDoctorId().equals(input)) {
-                        DoctorAppointmentUI.printList(doc, indicator);
+                DoctorAppointmentUI.printEmptyCell(input);
+                for (int i =0; i<appointmentList.size();i++) {
+                    if (appointmentList.get(i).getDoctorId().equals(input)) {
+                        DoctorAppointmentUI.printList(appointmentList.get(i), indicator);
+                        if(i != appointmentList.size()-1)DoctorAppointmentUI.printEmptyCell("");
                     }
                 }
             }
