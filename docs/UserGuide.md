@@ -167,6 +167,9 @@ E.g. `1` would bring you to the Module Information Menu.
 
 This section gives a detailed description of each feature, including examples to aid your understanding.
 
+**<span style="color: red"> Warning! </span>** 
+>Ending the application abruptly will cause changes to be discarded!
+> 
 ### 3.1 Module Information
 
 The Module Information feature allows you to add/edit/delete modules,  
@@ -800,6 +803,9 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+**Note!**
+> The application checks for duplicate links, so any duplicates that you add will be automatically removed!
+
 #### 3.4.3 Remove External Link
 
 Removes an external link from the external links list.
@@ -890,6 +896,8 @@ Woohoo~ Zoom link added:
 https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
 ````
 
+**Note!** 
+> If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
 #### 3.4.6 View Zoom Links
 
