@@ -29,7 +29,7 @@ In this application there are 5 main features that are provided for the user. Ea
 
 |     Feature Type    |                                                                                      Description                                                                                      |
 |:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|        Staff        | Details of each Staff working in the hospital. Both Doctors and Nurses details can be found here. Each Staff consist of the following details: Staff ID Staff Name Age Specialisation |
+|        Staff        | Details of each Staff working in the hospital. Both Doctors and Nurses details can be found here.<br/>Each Staff consist of the following details:<br/><ul><li>Staff ID</li><li>Staff Name</li><li>Age</li><li>Specialisation</li> |
 |       Patient       | Details of each patient that visited the hospital can be found here. Each Patient consist of the following details: Patient ID Patient Name Age Gender Medication Required Illness    |
 | Doctor Appointments | Details of each doctor’s appointment can be found here. Each Doctor Appointment consist of the following details: Doctor ID Appointment ID Patient Name Gender Date                   |
 |   Nurse Schedules   | Details for the schedule of nurse rounds to visit each patient. Each Nurse Schedule consist of the following details: Nurse ID Patient ID Date Time                                   |
