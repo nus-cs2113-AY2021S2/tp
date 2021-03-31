@@ -19,6 +19,7 @@
 4. Customer Main Menu Sequence Diagram
    ![Customer Main Menu](CustomerMainMenu.png)
 
+Our team is going to use breadth-first iterative approach as it allows us to focus on all features in parallel throughout the version 1.0, 2.0 and 2.1.
 
 ## Product scope
 ### Target user profile
@@ -82,4 +83,3 @@ The app will help cinema administrators to update the movie information regularl
 ## Instructions for manual testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
-
