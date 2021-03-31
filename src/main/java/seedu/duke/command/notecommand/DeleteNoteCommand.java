@@ -10,7 +10,7 @@ import seedu.duke.ui.NoteUi;
 public class DeleteNoteCommand extends Command {
 
     protected NoteUi ui;
-    private static final String MESSAGE_SUCCESS = "Got it! Successfully delete note tagged to %s";
+    private static final String MESSAGE_SUCCESS = "Got it! Successfully deleted note tagged to %s";
 
     public DeleteNoteCommand() {
         this.ui = new NoteUi();
@@ -26,7 +26,9 @@ public class DeleteNoteCommand extends Command {
             int deleteIndex = ui.getDeleteIndex();
             block.deleteNote(deleteIndex - 1);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
-        } catch (EmptyNoteException | InvalidIndexException | InvalidBlockException e) {
+        } catch (EmptyNoteException e) {
+            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
+        } catch (InvalidIndexException | InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

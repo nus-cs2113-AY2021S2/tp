@@ -21,7 +21,9 @@ public class NoteUi extends UiManager {
 
     public String getBlockInfo() {
         showMessage("Enter Location:");
-        return getUserInput().toUpperCase();
+        String block = getUserInput().toUpperCase();
+        showMessage(CommonMessage.DIVIDER);
+        return block;
     }
 
     public void showNotes(ArrayList<String> notes) throws EmptyNoteException {
