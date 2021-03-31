@@ -104,4 +104,4 @@ displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase), and the database us
 
 ## Instructions for manual testing
 
-To run the JAR file, run java -cp tp_original_v2.jar movieApp.app.MovieApp
+To run the JAR file, run `java -cp tp_original_v2.jar movieApp.app.MovieApp`
