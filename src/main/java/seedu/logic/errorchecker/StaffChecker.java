@@ -49,9 +49,11 @@ public class StaffChecker extends MainChecker {
         }
     }
 
-    public void checkStaffID(String id) throws WrongStaffIdException {
+    public void checkStaffID(String id) throws WrongStaffIdException, InvalidIntegerException {
         try {
-            Integer.parseInt(id.substring(1));
+            if (Integer.parseInt(id.substring(1)) < 0) {
+                throw new InvalidIntegerException();
+            }
         } catch (NumberFormatException e) {
             throw new WrongStaffIdException();
         }
@@ -64,6 +66,7 @@ public class StaffChecker extends MainChecker {
         String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
         String[] field = {"ID", "name", "age", "specialisation"};
         for (int i = 0; i < cleanArray.length; i++) {
+            //cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;
@@ -73,6 +76,7 @@ public class StaffChecker extends MainChecker {
         String [] cleanArray = line.split("\\|");
         String[] field = {"ID", "name", "age", "specialisation"};
         for (int i = 0; i < (cleanArray.length); i++) {
+            //cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;

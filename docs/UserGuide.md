@@ -1,17 +1,31 @@
 # HealthVault User Guide
-
+	
 ## Opening Words
+Welcome to HealthVault User Guide!						 
+
+The purpose of this User Guide is to assist you in the usage of the application. You will be able to utilize all the features of the HealthVault application to create the most efficient healthcare environment!
 
 ## Content Page
-* [Introduction](#1-introduction)
-* [Installation Guide](#2-installation-guide)
-* [How to use this guide](#3-how-to-use-the-guide)
-  * [Technical terms](#31-technical-terms)
-  * [Symbols & Icons](#32-symbols--icons)
+1. [Introduction](#1-introduction)
+1. [Installation Guide](#2-installation-guide)
+1. [How to use this guide](#3-how-to-use-the-guide)
+	1. [Technical terms](#31-technical-terms)
+	1. [Symbols & Icons](#32-symbols--icons)
+1. Start Menu
+1. Features 
+	1. Staff
+	2. Patient
+	3. Doctor's Appointment
+	4. Nurse Schedule
+	5. Inventory
+1. FAQ
+1. Command Summary
 
 ## 1. Introduction
 
 HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
+
+In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
 
 ## 2. Installation Guide
 
@@ -54,67 +68,298 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
-## Quick Start
+## 4. Quick Start
 
 {Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed.
 1. Down the latest version of `Duke` from [here](http://link.to/drugsDuke).
 
-## Features 
+## 5. Features 
 
-{Give detailed description of each feature}
+### 5.1 Staff
 
-### Nurse Schedule
+The functions in Staff menu allow you, the head nurse, to access and modify the details of each staff in the hospital. 
+(Note for Staff ID: D/N = Doctor/Nurse)
 
-The functions in the nurse schedule menu allows you, the head nurse, to add, view, and delete schedules of your nurses
+#### Adding a new staff: `add`
+Adds a new doctor or nurse to the respective staff lists.
+
+Format: `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
+
+Example of usage:<br/>
+Adding a Pediatrician MingShun with Staff ID of D12345 of age 30
+```
+Staff --> add/D12345/MingShun/30/Pediatrician
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Staff --> add/D12345/MingShun/30/Pediatrician
+Mingshun has been hired:)
+------------------------------------------------------------------------------
+```
+ 
+#### Deleting a staff: `delete`
+Deletes a staff from the staff list.
+
+Format: `delete/[Staff ID]`
+
+Example of usage:
+```
+Staff --> delete/D12345
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Staff --> delete/D12345
+D12345 has been fired:(
+------------------------------------------------------------------------------
+```
+
+#### Listing all doctors or nurses: `list`
+Lists either all doctors or all nurses.
+
+Format: `list/[Doctors/Nurses]`
+
+Example of usage(doctors):
+```
+Staff --> list/doctors
+```
+Expected Outcome(doctors):
+```
+------------------------------------------------------------------------------
+Staff --> list/doctors
+D12345 Mingshun 30 Pediatrician
+D67890 Alexander 31 Heart Surgeon
+------------------------------------------------------------------------------
+```
+Example of usage(nurses):
+```
+
+```
+Expected Outcome(nurses):
+```
+```
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+### 5.2 Patient
+
+The functions in the Patient menu allow you, the head nurse, to add, view, find, and delete patients in the patient list.
+(Note: Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Eg. P12345, P54321)
+
+#### Adding a new patient: `add`
+Adds a patient to the patient list.
+
+Format: `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
+
+Example of usage:
+```
+Patient --> add/P55555/Sam/40/Male/Fever/Paracetamol
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> add/P55555/Sam/40/Male/Fever/Paracetamol
+Sam is a patient here!
+------------------------------------------------------------------------------
+```
+
+#### Deleting a patient: `delete`
+Deletes a patient from the patient list.
+
+Format: `delete/[Patient ID]`
+
+Example of usage:
+```
+Patient --> delete/P55555
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> delete/P55555
+Sam is cured:)
+------------------------------------------------------------------------------
+```
+
+#### Listing all patients: `list`
+Lists all patients in the patient list.
+
+Format: `list`
+
+Example of usage:
+```
+Staff --> list
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Staff --> list
+1. P55555, Sam, 40, Male, Fever, Paracetamol
+2. P11111, James, 20, Male, Flu, Penicillin 
+------------------------------------------------------------------------------
+```
+
+#### Finding a patient: `find`
+Finds for a patient from the patient list.
+
+Format: `find/[Patient ID]`
+
+Example of usage:
+```
+Patient --> find/P55555
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> find/P55555
+P55555, Sam, 40, Male, Fever, Paracetamol
+------------------------------------------------------------------------------
+```
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+### 5.3 Doctor's Appointment
+
+The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
+
+#### Adding an appointment: `add`
+Adds a new doctor's appointment to the list of appointments.
+(Note: The Appointment ID is auto-generated at the point of adding)
+
+Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
+
+Example of usage:
+```
+Appointments --> add/D12345/A12345/Alex/M/21012021
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Appointments --> add/D12345/A12345/Alex/M/21012021
+Alex scheduled for an appointment on 21/01/2021!
+------------------------------------------------------------------------------
+```
+
+#### Deleting an appointment: `delete`
+Deletes an appointment from the list of appointments.
+
+Format: `delete/[Appointment ID]`
+
+Example of usage:
+```
+Appointments --> delete/A369
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Appointments --> delete/A369
+Alex has attended the appointment!
+------------------------------------------------------------------------------
+```
+
+#### Listing appointments: `list`
+Lists all of the appointments of a specific doctor.
+
+Format: `list/[Doctor ID]`
+
+Example of usage:
+```
+Appointments --> list/D12345
+```
+
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Appointments --> list/D12345
+21/01/2021
+Alex
+ID: A369
+------------------------------------------------------------------------------
+```
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+### 5.4 Nurse Schedule
+
+The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
 #### Adding a new schedule: `add`
 Adds a new schedule to the list of nurse schedules.
+(Note for ID: N/P = Nurse/Patient)
 
-Format: `add [Nurse ID] [Patiend ID] [Date (DDMMYYYY)]`
+Format: `add/[Nurse ID]/[Patiend ID]/[Date (DDMMYYYY)]`
 
 Example of usage:
-
 ```
 NSchedule --> add N1 P1 30012020
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+NSchedule --> add N1 P1 30012020
 Trip to P1 on 30012020 added!
+------------------------------------------------------------------------------
 ```
 
-#### Delete a schedule: `delete`
+#### Deleting a schedule: `delete`
 Deletes a schedule from the list of nurse schedules.
 
-Format: `delete [Nurse ID] [Date (DDMMYYYY)]`
+Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 Example of usage:
-
 ```
 NSchedule --> delete N1 30012020
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+NSchedule --> delete N1 30012020
 Trip to P1 on 30/01/2020 has been cancelled!
+------------------------------------------------------------------------------
 ```
 
 #### Listing schedules: `list`
 List either all schedules or specified Nurse ID's schedule.
 
-Format: `list [Nurse ID/all]`
+Format: `list/[Nurse ID/all]`
 
-Example of usage:
+Example of usage(Nurse ID):
+```
+NSchedule --> list/N2
+```
+Expected Outcome(Nurse ID):
+```
+------------------------------------------------------------------------------
+NSchedule --> list/N2
+N2
+	31/01/2020 P2
+------------------------------------------------------------------------------
+```
+Example of usage(all):
 
 ```
-NSchedule --> list all
+NSchedule --> list/all
+```
+Expected Outcome(all):
+```
+------------------------------------------------------------------------------
+NSchedule --> list/all
 N1
 	30/01/2020 P1
 N2
 	31/01/2020 P2
+------------------------------------------------------------------------------
 ```
 
-```
-NSchedule --> list N2
-N2
-	31/01/2020 P2
-```
+#### Returning to Start Menu: `return`
+#### Help: `help'
 
-### Adding a todo: `todo`
+### ??Adding a todo: `todo`??
 Adds a new item to the list of todo items.
 
 Format: `todo n/TODO_NAME d/DEADLINE`
@@ -128,13 +373,75 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
-## FAQ
+### 5.5 Inventory
+
+The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
+(Note for price: Make sure that the inputted price is valid! Eg. 3.00, 3)
+
+#### Adding a drug: `add`
+Adds a drug to the drug inventory.
+
+Format: `add/[Name]/[Price]/[Quantity]`
+
+Example of usage:
+```
+Inventory --> add/paracetamol/$3/90
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> add/paracetamol/3/90
+Added 90 paracetamol to inventory!
+------------------------------------------------------------------------------
+```
+
+#### Deleting a drug: `delete`
+Deletes a drug from the inventory list.
+
+Format: `delete/[Name]`
+
+Example of usage:
+```
+Inventory --> delete/paracetamol
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> delete/paracetamol
+Deleted paracetamol to inventory!
+------------------------------------------------------------------------------
+```
+
+#### Listing drugs: `list`
+Lists all the drugs in the inventory.
+
+Format: `list`
+
+Example of usage:
+```
+Inventory --> list
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> list
+Current Inventory:
+90 $3 Paracetamol
+30 $4 Ibuprofen
+10 $100 Marijuana
+------------------------------------------------------------------------------
+```
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+## 6. FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
 
-## Command Summary
+## 7. Command Summary
 
 | Command             | Example                                                                                                    |
 |---------------------|------------------------------------------------------------------------------------------------------------|
