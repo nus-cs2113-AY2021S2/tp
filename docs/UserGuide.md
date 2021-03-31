@@ -11,15 +11,15 @@ The purpose of this User Guide is to assist you in the usage of the application.
 1. [How to use this guide](#3-how-to-use-the-guide)
 	1. [Technical terms](#31-technical-terms)
 	1. [Symbols & Icons](#32-symbols--icons)
-1. Start Menu
-1. Features 
-	1. Staff
-	2. Patient
-	3. Doctor's Appointment
-	4. Nurse Schedule
-	5. Inventory
-1. FAQ
-1. Command Summary
+1. [Start Menu](#4-start-menu)
+1. [Features](#5-features)
+	1. [Staff](#51-staff)
+	2. [Patient](#52-patient)
+	3. [Doctor's Appointment](#53-doctor-appointment)
+	4. [Nurse Schedule](#54-nurse-schedule)
+	5. [Inventory](#55-inventory)
+1. [FAQ](#6-faq)
+1. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
@@ -38,14 +38,11 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-4. Cd into the folder containing the JAR file
+4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
-   - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
-
+   - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
-   
    - Example: `cd C:\Users\JohnDoe\Downloads`
-	
    - Run the following command: `java -jar jar [JAR file name]`
 
 ## 3. How to use the guide
@@ -59,6 +56,7 @@ In this application there are 5 main features that are provided for the user. Ea
 **Case Sensitive** - Differentiating between capital and lower-case letters.
 
 **User Input** - Any information or data sent to a computer by the user using the application.
+
 
 ### 3.2 Symbols & Icons
 
