@@ -13,7 +13,7 @@ it once they logged in as admin. Admin has the ability to add/delete canteen, st
 that allows the saving and loading of data. This allows all parameters of the data to be stored and read whenever is needed.
 
 ##Implementation
-Below is the list of commands available.
+For public users, the list of commands is shown below:
 
 * Display selected store sample menu: `menu`
 * Display all reviews of the selected store : `reviews`
@@ -22,14 +22,56 @@ Below is the list of commands available.
 * Display all the stores of the selected canteen: `list`
 * Exiting the application: `exit`
 
+For admin, the list of commands is shown below:
+
+ 1. View canteens
+ 2. Add canteen
+ 3. Add store in canteen
+ 4. Delete canteen
+ 5. Delete store in canteen
+ 6. Delete reviews
+ 7. Exit
+
+###[Proposed] `reviews` feature for public users
+####Proposed Implementation
+Step 1. The user launches the application for the first time and selects `1` to indicate public user
+
+Step 2. The user selects the canteen and store it wishes to read reviews from
+
+Step 3. The user types `reviews` to view reviews of the store
+### Sequence Diagram for `reviews`
+![ReadReviews](img/ReadReviews.png)
+
 #### Sequence Diagram for `admin`
 When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
 the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
 `exit` to exit the application.
 
-###[Proposed] delete feature 
+###[Proposed] `delete stores` feature for admin
 ####Proposed Implementation
-Step 1. The admin launches the application for the first time. Admin must enter a password to verify identity.
+Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
+
+Step 2. The user selects to delete a store from the list of tasks admin can do.
+
+Step 3. The user selects a canteen from the canteen list and store from the store list to delete the store.
+
+### Sequence Diagram for `delete stores`
+![DeleteStores](img/DeleteStores.png) 
+
+###[Proposed] `delete reviews` feature for admin
+####Proposed Implementation
+Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
+
+Step 2. The user selects to delete a review from the list of tasks admin can do.
+
+Step 3. The user selects a canteen from the canteen list and store from the store list to delete the review.
+
+### Sequence Diagram for `delete stores`
+![DeleteReviews](img/DeleteReviews.png)
+
+###[Proposed] delete canteen feature 
+####Proposed Implementation
+Step 1. The admin launches the application for the first time and selects `2` to indicate admin user. Admin must enter a password to verify identity.
 
 Step 2. The user selects to delete a canteen from the list of tasks admin can do.
 
