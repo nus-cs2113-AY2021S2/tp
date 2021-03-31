@@ -65,6 +65,8 @@ public class Storage {
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" ~~ ");
             Module module = new Module(part[0], part[1]);
+            int modularCredit = Integer.parseInt(part[2]);
+            String grade = part[3];
             StringBuilder review = new StringBuilder();
             while (true) {
                 String line = s.nextLine();
@@ -73,7 +75,10 @@ public class Storage {
                     break;
                 }
                 review.append(line).append("\n");
+
             }
+            module.setGrade(grade);
+            module.setMc(modularCredit);
             module.setReview(review.toString());
             ModuleInfo.modules.add(module);
         }
@@ -88,7 +93,9 @@ public class Storage {
         FileWriter fw = new FileWriter(filePath);
         for (Module module : ModuleInfo.modules) {
             fw.write(module.getName() + " ~~ "
-                    + module.getDescription() + "\n"
+                    + module.getDescription() + " ~~ "
+                    + module.getMc() + " ~~ "
+                    + module.getGrade() + "\n"
                     + module.getReview());
             fw.write(" -- end of module -- ");
             fw.write(System.lineSeparator());
