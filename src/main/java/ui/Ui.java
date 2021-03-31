@@ -6,6 +6,7 @@ import reviews.Review;
 import stores.Store;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Ui {
