@@ -15,6 +15,7 @@ public abstract class Command {
     protected boolean isExit;
 
     public Command() {
+
     }
 
     public void setData(NusMap nusMap, BlockAlias blockAlias, History history,

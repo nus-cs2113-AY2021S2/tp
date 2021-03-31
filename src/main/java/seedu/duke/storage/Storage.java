@@ -66,4 +66,5 @@ public abstract class Storage {
 
     public void loadData() throws LoadDataException {
     }
+
 }

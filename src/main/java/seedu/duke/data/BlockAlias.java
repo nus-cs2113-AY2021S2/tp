@@ -1,3 +1,5 @@
+//@@author Rizavur
+
 package seedu.duke.data;
 
 import seedu.duke.exception.InvalidAliasException;
