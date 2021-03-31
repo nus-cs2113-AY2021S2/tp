@@ -8,6 +8,7 @@ import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
 import seedu.duke.task.Task;
 import seedu.duke.task.TaskManager;
+import seedu.duke.task.command.DeleteTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,11 @@ public class ModuleInfo {
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
     private static final String EMPTY_REVIEW_MESSAGE = "You have not reviewed this module yet.";
+
+    private static final String TASK_TYPE = "[Task]";
+    private static final String ASSIGNMENT_TYPE = "[Assignment]";
+    private static final String MIDTERM_TYPE = "[Midterm]";
+    private static final String FINAL_EXAM_TYPE = "[Final Exam]";
 
     public ModuleInfo() {
     }
@@ -83,7 +89,7 @@ public class ModuleInfo {
                 Ui.printInvalidIntegerMessage();
             }
             try {
-                Storage.modulesFileSaver();
+                Storage.saveAllFiles();
             } catch (IOException e) {
                 System.out.println("modules.txt file could not be auto-saved:(");
             }
@@ -319,6 +325,7 @@ public class ModuleInfo {
             String command = Ui.readCommand();
             if (readYN(command) == 1) {
                 printDeletedModuleMessage(modules.get(moduleNumberInt));
+                deleteTasksforModule(modules.get(moduleNumberInt).getName());
                 modules.remove(modules.get(moduleNumberInt));
             } else if (readYN(command) == 0) {
                 System.out.println("Ok. I did not delete "
@@ -350,6 +357,45 @@ public class ModuleInfo {
                     + module.getReview());
         }
         Ui.printHorizontalLine();
+    }
+
+    private static void deleteTasksforModule(String module) {
+        for (int i = 0; i < TaskManager.tasks.size(); i++) {
+            Task task = TaskManager.tasks.get(i);
+            if (task.getModule().equals(module)) {
+                Task pinnedTask = task;
+                DeleteTask.deleteTask(TASK_TYPE, task);
+                DeleteTask.findAndDeletePinnedTask(TASK_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.assignments.size(); i++) {
+            Assignment assignment = TaskManager.assignments.get(i);
+            if (assignment.getModule().equals(module)) {
+                Assignment pinnedTask = assignment;
+                DeleteTask.deleteTask(ASSIGNMENT_TYPE, assignment);
+                DeleteTask.findAndDeletePinnedTask(ASSIGNMENT_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.midterms.size(); i++) {
+            Midterm midterm = TaskManager.midterms.get(i);
+            if (midterm.getModule().equals(module)) {
+                Midterm pinnedTask = midterm;
+                DeleteTask.deleteTask(MIDTERM_TYPE, midterm);
+                DeleteTask.findAndDeletePinnedTask(MIDTERM_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.finalExams.size(); i++) {
+            FinalExam finalExam = TaskManager.finalExams.get(i);
+            if (finalExam.getModule().equals(module)) {
+                FinalExam pinnedTask = finalExam;
+                DeleteTask.deleteTask(FINAL_EXAM_TYPE, finalExam);
+                DeleteTask.findAndDeletePinnedTask(FINAL_EXAM_TYPE, pinnedTask);
+                i--;
+            }
+        }
     }
 
     private static void getComponents() {

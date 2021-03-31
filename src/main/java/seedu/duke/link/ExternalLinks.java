@@ -1,6 +1,9 @@
 package seedu.duke.link;
 
+import seedu.duke.Storage;
 import seedu.duke.Ui;
+
+import java.io.IOException;
 
 public class ExternalLinks extends Links {
 
@@ -47,6 +50,11 @@ public class ExternalLinks extends Links {
                 return;
             default:
                 Ui.printInvalidIntegerMessage();
+            }
+            try {
+                Storage.saveAllFiles();
+            } catch (IOException e) {
+                System.out.println("modules.txt file could not be auto-saved:(");
             }
             Ui.printExternalLinksMessage();
             linkIndex = Ui.readCommandToInt();

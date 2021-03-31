@@ -26,7 +26,6 @@ public class PinTask {
         while (true) {
             try {
                 int taskNumber = Integer.parseInt(Ui.readCommand());
-                Ui.printHorizontalLine();
                 switch (taskTypeNumber) {
                 case ADD_TASK_COMMAND:
                     addTaskToPinnedTasks(TaskManager.tasks.get(taskNumber - 1), TASK_TYPE);

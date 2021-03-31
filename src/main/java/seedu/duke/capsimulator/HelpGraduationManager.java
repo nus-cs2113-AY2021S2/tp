@@ -1,6 +1,9 @@
 package seedu.duke.capsimulator;
 
+import seedu.duke.Storage;
 import seedu.duke.Ui;
+
+import java.io.IOException;
 
 public class HelpGraduationManager {
 
@@ -47,6 +50,12 @@ public class HelpGraduationManager {
                 Ui.printInvalidIntegerMessage();
                 Ui.printHorizontalLine();
             }
+            try {
+                Storage.saveAllFiles();
+            } catch (IOException e) {
+                System.out.println("modules.txt file could not be auto-saved:(");
+            }
+            Ui.printReturnToHelpGraduationMenuMessage();
         }
     }
 }

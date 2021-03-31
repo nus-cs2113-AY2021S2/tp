@@ -3,7 +3,11 @@ package seedu.duke;
 import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,6 +30,30 @@ public class Storage {
     public static String filePathForLinks = new File("").getAbsolutePath();
     public static String filePathForZoom = new File("").getAbsolutePath();
     public static String filePathForMcs = new File("").getAbsolutePath();
+
+    public static void saveAllFiles() throws IOException {
+        modulesFileSaver();
+        tasksFileSaver();
+        assignmentsFileSaver();
+        midtermsFileSaver();
+        finalExamsFileSaver();
+        pinnedTasksFileSaver();
+        linksFileSaver();
+        zoomLinksFileSaver();
+        modularCreditSaver();
+    }
+
+    public static void loadAllFiles() {
+        loadModuleInfoFile();
+        loadTasksFile();
+        loadAssignmentsFile();
+        loadMidtermsFile();
+        loadFinalExamsFile();
+        loadPinnedTasksFile();
+        loadLinkInfoFile();
+        loadZoomLinkInfoFile();
+        loadMcsInfoFile();
+    }
 
     /**
      * Checks if file exists, or creates new file if it doesn't already exist. Edits filepath
@@ -531,5 +559,4 @@ public class Storage {
                 + HelpGraduation.getCurrentCap());
         fw.close();
     }
-
 }

@@ -373,6 +373,16 @@ public class Ui {
         System.out.println();
     }
 
+    public static void printReturnToHelpGraduationMenuMessage() {
+        System.out.println("Returning to CAP simulator/calculator menu...");
+        System.out.println();
+    }
+
+    public static void printReturnToTaskManagerMenuMessage() {
+        System.out.println("Returning to task manager menu...");
+        System.out.println();
+    }
+
     public static void printReturnToLinkMenuMessage() {
         System.out.println("Returning to links menu...");
         System.out.println();
