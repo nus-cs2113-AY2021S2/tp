@@ -42,12 +42,12 @@ public class BodyWeightGoal extends Goal {
         if (progress == -1) {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                    + "Target: " + getTarget() + getProgressUnit() + "\n"
+                    + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                     + "Progress: " + "You haven't add any body weight record.";
         } else {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                    + "Target: " + getTarget() + getProgressUnit() + "\n"
+                    + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                     + "Progress: " + getProgress() + getProgressUnit();
         }
     }
@@ -60,20 +60,20 @@ public class BodyWeightGoal extends Goal {
     @Override
     public String getGoalData() {
         if (progress == -1) {
-            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                    + getPeriodType().toString().toLowerCase() + "\t"
-                    + getTarget() + getProgressUnit() + "\t"
+            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + "\t\t"
+                    + getTarget() + " " + getProgressUnit() + "\t\t"
                     + "None Proress" + "\n";
         } else {
-            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                    + getPeriodType().toString().toLowerCase() + "\t"
-                    + getTarget() + getProgressUnit() + "\t"
-                    + getProgress() + getProgressUnit() + "\n";
+            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + "\t\t"
+                    + getTarget() + " " + getProgressUnit() + "\t\t"
+                    + getProgress() + " " + getProgressUnit() + "\n";
         }
     }
 
     @Override
     public String getGoalDataToStore() {
-        return "W" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + target;
+        return "W" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
     }
 }

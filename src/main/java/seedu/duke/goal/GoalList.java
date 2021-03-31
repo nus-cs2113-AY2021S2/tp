@@ -32,7 +32,7 @@ public class GoalList {
             int i = 1;
             for (Goal goal : goals) {
                 if (goal.getPeriodType() == optionalPeriodType) {
-                    goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
+                    goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
                     i++;
                 }
             }
@@ -44,7 +44,7 @@ public class GoalList {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
-                goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
+                goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
                 i++;
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();

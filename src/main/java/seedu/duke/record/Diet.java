@@ -86,7 +86,7 @@ public class Diet extends Record {
         return "\t\t\t" + getDate().format(DATE_FORMATTER)
                 + "\t" + getFoodCategory()
                 + seperator + getAmount() + " g"
-                + "\t\t" + getCalorie() + " cal";
+                + "\t\t" + getCalorie() + " Kcal";
     }
 
     @Override

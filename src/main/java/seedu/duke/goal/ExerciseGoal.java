@@ -38,8 +38,8 @@ public class ExerciseGoal extends Goal {
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                 + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTarget() + getProgressUnit() + "\n"
-                + "Progress: " + getProgress() + getProgressUnit();
+                + "Target: " + getTarget()  + " " + getProgressUnit() + "\n"
+                + "Progress: " + getProgress() + " " + getProgressUnit();
     }
 
     /**
@@ -49,15 +49,15 @@ public class ExerciseGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                + getPeriodType().toString().toLowerCase() + "\t"
-                + getTarget() + getProgressUnit() + "\t"
-                + getProgress() + getProgressUnit() + "\n";
+        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+                + getPeriodType().toString().toLowerCase() + "\t\t   "
+                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getProgress() + " " + getProgressUnit() + "\n";
     }
 
     @Override
     public String getGoalDataToStore() {
-        return "E" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + target;
+        return "E" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
     }
 
 }
