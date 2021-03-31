@@ -61,7 +61,7 @@ public class FitCenter {
         }
     }
 
-    public void initializeGoalProgress(PeriodType periodType) {
+    public void resetGoalProgress(PeriodType periodType) {
         exerciseGoalList.initializeGoalProgress(periodType);
         dietGoalList.initializeGoalProgress(periodType);
         sleepGoalList.initializeGoalProgress(periodType);
@@ -191,19 +191,19 @@ public class FitCenter {
 
     public String getAllGoalListStringAtLoading() {
         StringBuilder stringBuilder = new StringBuilder();
-        if (!dietGoalList.isEmpty()) {
+        if (dietGoalList.isNotEmpty()) {
             stringBuilder.append("Diet Goals\n");
             stringBuilder.append(getGoalListString(DIET, DAILY));
         }
-        if (!exerciseGoalList.isEmpty()) {
+        if (exerciseGoalList.isNotEmpty()) {
             stringBuilder.append("Exercise Goals\n");
             stringBuilder.append(getGoalListString(EXERCISE, DAILY));
         }
-        if (!sleepGoalList.isEmpty()) {
+        if (sleepGoalList.isNotEmpty()) {
             stringBuilder.append("Sleep Goals\n");
             stringBuilder.append(getGoalListString(SLEEP, DAILY));
         }
-        if (!bodyWeightGoalList.isEmpty()) {
+        if (bodyWeightGoalList.isNotEmpty()) {
             stringBuilder.append("Body Weight Goals\n");
             stringBuilder.append(getGoalListString(BODY_WEIGHT, DAILY));
         }
@@ -225,10 +225,10 @@ public class FitCenter {
     }
 
     public void initializeDailyProgressAtLoading(LocalDate currentDate) {
-        dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
-        exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
-        sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
-        bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+        dietGoalList.updateDailyProgress(dietRecordList.getDailyProgress(currentDate));
+        exerciseGoalList.updateDailyProgress(exerciseRecordList.getDailyProgress(currentDate));
+        sleepGoalList.updateDailyProgress(sleepRecordList.getDailyProgress(currentDate));
+        bodyWeightGoalList.updateDailyProgress(bodyRecordList.getDailyProgress(currentDate));
     }
 
     public void updateDailyProgressAtAdding(Record record, LocalDate currentDate) {
@@ -238,19 +238,18 @@ public class FitCenter {
         RecordType type = record.getType();
         switch (type) {
         case EXERCISE:
-            exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
+            exerciseGoalList.updateDailyProgress(exerciseRecordList.getDailyProgress(currentDate));
             break;
         case DIET:
-            dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
+            dietGoalList.updateDailyProgress(dietRecordList.getDailyProgress(currentDate));
             break;
         case SLEEP:
-            sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
+            sleepGoalList.updateDailyProgress(sleepRecordList.getDailyProgress(currentDate));
             break;
         case BODYWEIGHT:
-            bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+            bodyWeightGoalList.updateDailyProgress(bodyRecordList.getDailyProgress(currentDate));
             break;
         default:
-            return;
         }
     }
 }

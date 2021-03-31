@@ -2,8 +2,6 @@ package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
 import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
-import seedu.duke.record.Record;
-import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
 
@@ -50,7 +48,7 @@ public class GoalList {
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         }
     }
-  
+
     public void initializeGoalProgress(PeriodType periodType) {
         assert periodType == PeriodType.INVALID || periodType == null : "A period type is expected but not received!";
         if (goals.isEmpty()) {
@@ -59,11 +57,11 @@ public class GoalList {
 
         for (Goal goal : goals) {
             if (goal.getPeriodType().equals(periodType)) {
-                //goal.initializeProgress();
+                goal.initializeProgress();
             }
         }
     }
-  
+
     public String getGoalToStore() {
         StringBuilder goalStringBuilder = new StringBuilder();
         for (Goal goal : goals) {
@@ -72,7 +70,7 @@ public class GoalList {
         return goalStringBuilder.toString();
     }
 
-    public void updateDailyProgess(double progress) {
+    public void updateDailyProgress(double progress) {
         for (Goal goal : goals) {
             if (goal.getPeriodType() == DAILY) {
                 goal.setProgress(progress);
@@ -80,11 +78,7 @@ public class GoalList {
         }
     }
 
-    public boolean isEmpty() {
-        if (goals.size() == 0) {
-            return true;
-        } else {
-            return false;
-        }
+    public boolean isNotEmpty() {
+        return goals.size() != 0;
     }
 }

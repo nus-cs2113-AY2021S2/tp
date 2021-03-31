@@ -17,14 +17,13 @@ import java.text.ParseException;
 
 public class Healthier {
     private UI ui;
-    private TimeController timeController;
     private Storage storage;
     private final User currentUser = new User();
     private final FitCenter currentFitCenter = currentUser.getFitCenter();
 
     private void start() {
         ui = new UI();
-        timeController = new TimeController();
+        TimeController timeController = new TimeController();
         timeController.checkForTime(currentFitCenter);
         String recordFilePath = "data" + File.separator + "records.txt";
         String goalFilePath = "data" + File.separator + "goals.txt";
@@ -36,15 +35,7 @@ public class Healthier {
             ui.showFileErrorMessage();
             e.printStackTrace();
             System.exit(0);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            ui.showFileParserErrorMessage();
-            System.exit(0);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            ui.showFileParserErrorMessage();
-            System.exit(0);
-        } catch (TypeException e) {
+        } catch (ParseException | NumberFormatException | TypeException e) {
             e.printStackTrace();
             ui.showFileParserErrorMessage();
             System.exit(0);

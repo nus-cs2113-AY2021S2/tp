@@ -18,7 +18,7 @@ public class Messages {
             + "The current version of this application is: " + MESSAGE_VERSION + "\n"
             + MESSAGE_FEATURES + "\n";
     public static final String MESSAGE_CHECK_GOALS_PROMPT = "Check out your current goals with command 'check'.\n";
-    public static final String MESSAGE_SAME_DAY = "Welcome back to Healthier today.\n";
+    public static final String MESSAGE_SAME_DAY = "Welcome back to Healthier today.";
     public static final String MESSAGE_NEW_DAY = "Nice to see you on a brand new day!\n"
             + "All progress of daily goals have been reset for you.\n";
     public static final String MESSAGE_NEW_WEEK = "Today marks a new week.\nThis week is week %s.\n"
@@ -44,6 +44,12 @@ public class Messages {
             + "number.\nPlease try again.";
     public static final String MESSAGE_INDEX_OUT_OF_RANGE_EXCEPTION = "The index entered is out of range.\n"
             + "Please try again.";
+    public static final String MESSAGE_CANT_INIT_STORAGE = "Sorry, the system is unable to initialize storage "
+            + "due to IO exception.";
+    public static final String MESSAGE_CANT_STORE_TIME = "Sorry, the system is unable to store the time "
+            + "due to IO exception.";
+    public static final String MESSAGE_CANT_READ_TIME = "Sorry, the system is unable to read local time "
+            + "due to IO exception.";
     public static final String MESSAGE_CANT_ADD_RECORD = "Sorry, you cannot add record of an unrecognized type.";
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
