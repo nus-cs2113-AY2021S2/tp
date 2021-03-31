@@ -11,7 +11,8 @@ public enum ModuleGradeEnum {
     C("C", 2.0),
     D_PLUS("D+", 1.5),
     D("D", 1.0),
-    F("F", 0.0);
+    F("F", 0.0),
+    PASS_FAIL("SU", 0.0);
 
     private String grade;
     private double score;
@@ -60,4 +61,14 @@ public enum ModuleGradeEnum {
         return score;
     }
 
+    public static boolean checkPassFailGrade(String grade) {
+        if (grade == null) {
+            return false;
+        }
+
+        if (grade.equalsIgnoreCase("SU")) {
+            return true;
+        }
+        return false;
+    }
 }
