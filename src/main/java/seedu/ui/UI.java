@@ -95,9 +95,14 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
+//    public static String cleanseInput(String input) {
+//        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
+//    }
+
     public static String cleanseInput(String input) {
-        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
+        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
     }
+
     public static void checkBackSlash(String line) {
         if (line.contains("\\")) {
             System.out.println(line.replace("\\",""));
