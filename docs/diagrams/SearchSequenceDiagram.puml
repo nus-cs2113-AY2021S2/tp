@@ -30,7 +30,6 @@ loop food in fridge
     return food
 end
 
-destroy Food
 alt isFound
     return
 else !isFound
