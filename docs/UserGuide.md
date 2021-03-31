@@ -65,8 +65,8 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
 * The `FOOD_QUANTITY` must be a positive integer.
-  
-**Tip:**
+
+:bulb: **Tip:**
 
 * If you want to add more to the same batch of food (same category, same location and same
 expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`,
@@ -74,7 +74,7 @@ expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`E
 * The food names should not repeat unless it is the same batch as described above.
 Otherwise, you will be prompted to retry the `add` command.
 
-Additional info:
+:information_source: Additional info:
 
 * Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`

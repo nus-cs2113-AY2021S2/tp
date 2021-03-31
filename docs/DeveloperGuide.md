@@ -225,6 +225,10 @@ Notes:
 * The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
 * Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
+:information_source: Information:
+
+* The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
+
 ### Remove Command
 
 When the user specify to remove a portion of a food item in the fridge, the `remove` command
@@ -239,6 +243,10 @@ will execute the remove operation by:
 The sequence diagram below shows how the `remove` operation works:
 
 ![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
+
+:information_source: Information:
+
+The lifeline for `Food` should end at the destroy marker. However, due to a limitation of PlantUML, the lifeline reach the end of the diagram.
 
 ### Search Command
 
@@ -330,6 +338,7 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 
 ### Target User Profile
 
+* is a new homeowner who cooks
 * has a needs to manage a significant number of foods in the fridge
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
@@ -338,10 +347,11 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 
 ### Value Proposition
 
-* Provides ease of monitoring of food in the fridge which allows user to know which food is expiring
-  soon and what requires topping up
-* Allows for easier search of food in fridge
-* Allows tracking of past food items in the fridge
+This app allows user to monitor their food in a fridge faster than a typical mouse/GUI driven app.
+It includes features such as ability to check for the foods that are expiring in a week, and the food item
+that requires to top up. It will help new homeowners to keep track of their food into different food 
+categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to 
+keep track of past food items that has been added to the fridge. 
 
 ## User Stories
 
