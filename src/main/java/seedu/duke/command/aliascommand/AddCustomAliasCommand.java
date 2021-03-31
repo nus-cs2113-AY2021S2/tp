@@ -1,4 +1,5 @@
 //@@author Rizavur
+
 package seedu.duke.command.aliascommand;
 
 import seedu.duke.command.Command;

@@ -1,4 +1,5 @@
 //@@author Rizavur
+
 package seedu.duke.ui;
 
 import java.io.InputStream;

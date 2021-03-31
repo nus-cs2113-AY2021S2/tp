@@ -1,4 +1,5 @@
 //@@author Rye98
+
 package seedu.duke.command.historycommand;
 
 import seedu.duke.command.Command;

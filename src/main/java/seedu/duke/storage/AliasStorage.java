@@ -1,4 +1,5 @@
 //@@author Rizavur
+
 package seedu.duke.storage;
 
 import seedu.duke.data.BlockAlias;
