@@ -1,12 +1,7 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.NoInputException;
-import seedu.exceptions.nurseschedules.CrossValidationError;
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
@@ -36,11 +31,14 @@ public class NurseScheduleInstance {
     public void runCommandLoopUntilExit() {
         try {
             nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
-        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException |
-                NurseIdNotFound | InvalidIDTypeException e) {
+        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
+                | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound e) {
             ui.corruptedFileErrorMessage();
             return;
-        } catch (CrossValidationError e) {
+        } catch (NurseCrossValidationError e) {
+            System.out.println(e.getMessage());
+            return;
+        } catch (PatientCrossValidationError e) {
             System.out.println(e.getMessage());
             return;
         }

@@ -15,7 +15,6 @@ import java.io.IOException;
 
 /**
  * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running
- *
  */
 
 public class DoctorAppointmentInstance {
@@ -27,19 +26,26 @@ public class DoctorAppointmentInstance {
     public DoctorAppointmentInstance(String filepath) {
         ui = new DoctorAppointmentUI();
         doctorAppointmentStorage = new DoctorAppointmentStorage(filepath);
+    }
+
+    public void run() {
         try {
             details = doctorAppointmentStorage.loadFile();
-        } catch (FileNotFoundException | CorruptedFileException e) {
+        } catch (FileNotFoundException e) {
             try {
                 doctorAppointmentStorage.createFile();
                 details = doctorAppointmentStorage.loadFile();
             } catch (IOException | CorruptedFileException e1) {
                 System.out.println(e1.getMessage());
+            } catch (HealthVaultException e2) {
+                e2.getMessage();
             }
+        } catch (CorruptedFileException e) {
+            DoctorAppointmentUI.corruptedFileErrorMessage();
+            return;
+        } catch (HealthVaultException e) {
+            e.getMessage();
         }
-    }
-
-    public void run() {
         UI.showLine();
         DoctorAppointmentUI.doctorAppointmentsWelcome();
         boolean isReturnToStartMenu = false;
@@ -62,8 +68,9 @@ public class DoctorAppointmentInstance {
                 //System.out.println("OOPS something went wrong :0");
                 System.out.println(e.getMessage());
                 UI.showLine();
-            }catch(Exception e){
-                System.out.println("OOPS! Something went wrong!");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                UI.showLine();
             }
         }
     }

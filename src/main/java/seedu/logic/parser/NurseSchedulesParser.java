@@ -46,7 +46,7 @@ public class NurseSchedulesParser {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
-        String[] parts = input.split("/", 0);
+        String[] parts = input.split("/");
 
         assert parts.length > 0;
 
@@ -88,12 +88,13 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String line, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException {
-        assert line != null : "user input should not be null";
-        assert !(line.isEmpty()) : "user input should not be empty";
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException {
+        assert input != null : "user input should not be null";
+        assert !(input.isEmpty()) : "user input should not be empty";
 
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line).toUpperCase());
+        String line = input.toUpperCase();
+        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line));
         Command c = null;
 
         switch (command) {

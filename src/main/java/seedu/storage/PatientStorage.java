@@ -1,13 +1,10 @@
 package seedu.storage;
 
 import seedu.exceptions.*;
-import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.Patient;
 import seedu.logic.command.PatientActions;
 import seedu.ui.PatientUI;
-import seedu.ui.UI;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -15,7 +12,6 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.regex.PatternSyntaxException;
 
 public class PatientStorage {
 
@@ -73,11 +69,11 @@ public class PatientStorage {
             //splits the string into sections for storing in the ArrayList
             String[] taskSave = currentScan.trim().split(" \\| ");
             int numberOfTokens = taskSave.length;
-            ArrayList<String> cleanString = new ArrayList<>();
+            /*ArrayList<String> cleanString = new ArrayList<>();*/
             for (int i = 0; i < numberOfTokens; i++) {
-                cleanString.add(ui.cleanseInput(taskSave[i]).trim());
+                taskSave[i] = taskSave[i].trim().replaceAll("\\s{2,}", " ");
             }
-            checker = new PatientChecker(patients, cleanString, numberOfTokens);
+            checker = new PatientChecker(patients, taskSave, numberOfTokens);
             checker.checkStorage();
             Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
                     taskSave[3], taskSave[4], taskSave[5]);

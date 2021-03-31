@@ -11,18 +11,18 @@ public class PatientChecker extends MainChecker{
 
     private PatientActions patients;
     private ArrayList<Patient> patientArrayList;
-    private ArrayList<String> stringTokens;
+    private String[] stringTokens;
     private String command;
     private int numberOfTokens;
 
-    public PatientChecker(PatientActions patients, ArrayList<String> stringTokens, String command, int numberOfTokens) {
+    public PatientChecker(PatientActions patients, String[] stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
         this.stringTokens = stringTokens;
         this.command = command;
         this.numberOfTokens = numberOfTokens;
     }
 
-    public PatientChecker(ArrayList<Patient> patients, ArrayList<String> stringTokens, int numberOfTokens) {
+    public PatientChecker(ArrayList<Patient> patients, String[] stringTokens, int numberOfTokens) {
         patientArrayList = patients;
         this.stringTokens = stringTokens;
         this.numberOfTokens = numberOfTokens;
@@ -32,28 +32,28 @@ public class PatientChecker extends MainChecker{
         emptySpaceCheck();
         checkStorageLength();
         checkIDStorage();
-        checkAge(stringTokens.get(2));
-        illegalCharacterChecker(stringTokens.get(1), "name");
-        illegalCharacterChecker(stringTokens.get(4), "Illness");
-        illegalCharacterChecker(stringTokens.get(5), "medication required");
-        checkGender(stringTokens.get(3));
+        checkAge(stringTokens[2]);
+        illegalCharacterChecker(stringTokens[1], "name");
+        illegalCharacterChecker(stringTokens[4], "Illness");
+        illegalCharacterChecker(stringTokens[5], "medication required");
+        checkGender(stringTokens[3]);
     }
 
     public void checkAdd() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
         checkLength();
         checkID();
-        checkAge(stringTokens.get(3));
-        illegalCharacterChecker(stringTokens.get(2), "name");
-        illegalCharacterChecker(stringTokens.get(5), "Illness");
-        illegalCharacterChecker(stringTokens.get(6), "medication required");
-        checkGender(stringTokens.get(4));
+        checkAge(stringTokens[3]);
+        illegalCharacterChecker(stringTokens[2], "name");
+        illegalCharacterChecker(stringTokens[5], "Illness");
+        illegalCharacterChecker(stringTokens[6], "medication required");
+        checkGender(stringTokens[4]);
     }
 
     public void checkFind() throws HealthVaultException {
         emptySpaceCheck();
         checkLength();
-        illegalCharacterChecker(stringTokens.get(1), "keyword");
+        illegalCharacterChecker(stringTokens[1], "keyword");
     }
 
     public void checkStorageLength() throws HealthVaultException {
@@ -75,7 +75,7 @@ public class PatientChecker extends MainChecker{
 
     private void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
-            if (stringTokens.get(i).trim().equals("")) {
+            if (stringTokens[i].trim().equals("")) {
                 throw new NoInputException();
             }
         }
@@ -94,13 +94,13 @@ public class PatientChecker extends MainChecker{
     }
 
     public void checkID() throws HealthVaultException {
-        checkValidID(stringTokens.get(1));
-        checkIDExist(stringTokens.get(1), patients, command);
+        checkValidID(stringTokens[1]);
+        checkIDExist(stringTokens[1], patients, command);
     }
 
     public void checkIDStorage() throws HealthVaultException {
-        checkValidID(stringTokens.get(0));
-        checkIDExistStorage(stringTokens.get(0));
+        checkValidID(stringTokens[0]);
+        checkIDExistStorage(stringTokens[0]);
     }
 
     private int numberOfIntegersInString(String userInput) {
@@ -116,8 +116,6 @@ public class PatientChecker extends MainChecker{
     private void checkValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException,
             InvalidIDValueException {
         if (userID.length() != 6) {
-            System.out.println(userID);
-            System.out.println(userID.length());
             throw new InvalidIDLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException("IDType");

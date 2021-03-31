@@ -1,19 +1,36 @@
 # HealthVault User Guide
-
+	
 ## Opening Words
+Welcome to HealthVault User Guide!						 
+
+The purpose of this User Guide is to assist you in the usage of the application. You will be able to utilize all the features of the HealthVault application to create the most efficient healthcare environment!
 
 ## Content Page
-* [Introduction](#1-introduction)
-* [Installation Guide](#2-installation-guide)
-* [How to use this guide](#3-how-to-use-the-guide)
-  * [Technical terms](#31-technical-terms)
-  * [Symbols & Icons](#32-symbols--icons)
+1. [Introduction](#1-introduction)
+1. [Installation Guide](#2-installation-guide)
+1. [How to use this guide](#3-how-to-use-the-guide)
+	1. [Technical terms](#31-technical-terms)
+	1. [Symbols & Icons](#32-symbols--icons)
+1. [Start Menu](#4-start-menu)
+1. [Features](#5-features)
+	1. [Staff](#51-staff)
+	2. [Patient](#52-patient)
+	3. [Doctor's Appointment](#53-doctor-appointment)
+	4. [Nurse Schedule](#54-nurse-schedule)
+	5. [Inventory](#55-inventory)
+1. [FAQ](#6-faq)
+1. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
 HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
 
-## 2. Installation Guide
+In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
+
+
+<br/><br/>
+<a name="section2">
+## 2. Installation Guide</a>
 
 1. Ensure system has Java 11
 
@@ -24,15 +41,14 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-4. Cd into the folder containing the JAR file
+4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
-   - For example, (C:\Users\JohnDoe\Downloads, where JohnDoe is the user’s name)
-
+   - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
-   
    - Example: `cd C:\Users\JohnDoe\Downloads`
-	
    - Run the following command: `java -jar jar [JAR file name]`
+  
+<br/><br/>
 
 ## 3. How to use the guide
 
@@ -46,75 +62,547 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 **User Input** - Any information or data sent to a computer by the user using the application.
 
+
 ### 3.2 Symbols & Icons
 
 **[]** - Square brackets for compulsory user inputs.
 
 **<>** - Optional inputs.
 
+
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
-## Quick Start
+### 3.3 Interpreting help commands
 
-{Give steps to get started quickly}
 
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/drugsDuke).
+This is an example of a typical help command in the application.
+<img src="images/StaffHelp.PNG" >
 
-## Features 
+The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
+For example, the `add` command allows you to add a new staff and their relevant details into the database.
 
-{Give detailed description of each feature}
+The **Description** column gives you an explaination on the usage and purpose of the command.
 
-### Nurse Schedule
+The **Format** column gives the appropriate format for you to use the command.
+For example, the `add` format requires specific details regarding the staff that will be added into the database.
+The '-' in the format column specifies that the command can be used alone without any additional details.
 
-The functions in the nurse schedule menu allows you, the head nurse, to add, view, and delete schedules of your nurses
+The detailed explaination of each command will be explained in the subsequent sections.
+
+
+<br/><br/>
+
+## 4. Start Menu
+
+The Start Menu is the first menu you will encounter after you run the application as stated in [section 2](#section2). 
+
+Here is an example of how the welcome screen of HealthVault will look like.
+<img src="images/Start Menu.PNG" >
+
+The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
+
+For example, the Staff Menu allows you to access the Staff feature within the database. 
+
+The welcome screen of HealthVault presents you with the basic commands as well as its description of its functionalities. 
+
+Input any command to access the respective features and input the `exit` command to quit the application.
+
+<br/><br/>
+
+## 5. Features 
+
+### 5.1 Staff
+
+The functions in Staff menu allow you, the head nurse, to access and modify the details of each staff in the hospital. 
+(Note for Staff ID: D/N = Doctor/Nurse)
+
+This is an example of the welcome screen for Staff Menu.
+<img src="images/StaffWelcome.PNG" width = "850">
+
+<br/><br/>
+
+#### Adding a new staff: `add`
+Adds a new doctor or nurse to the respective staff lists.
+
+Format: `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
+
+Example of usage:<br/>
+Adding a Pediatrician MingShun with Staff ID of D12345 of age 30
+```
+Staff --> add/D12345/MingShun/30/Pediatrician
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Staff --> add/D12345/MingShun/30/Pediatrician
+Mingshun has been hired :)
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src="images/StaffAdd.PNG" width = "850" >
+
+<br/><br/>
+ 
+#### Deleting a staff: `delete`
+Deletes a staff from the staff list.
+
+Format: `delete/[Staff ID]`
+
+Example of usage:
+```
+Staff --> delete/D12345
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Staff --> delete/D12345
+D12345 has been fired :(
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/StaffDelete.PNG" width = "850" >
+<br/><br/>
+
+#### Listing all doctors or nurses: `list`
+Lists either all doctors or all nurses.
+
+Format: `list/<doctors/nurses>`
+
+**Note: <> implies that the inputs are optional**
+
+
+Example of usage(doctors):
+```
+Staff --> list/doctors
+```
+Expected Outcome(doctors):
+```
+------------------------------------------------------------------------------
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon   
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src="images/StaffListDoc.PNG" width = "850">
+
+
+Example of usage (nurses):
+```
+Staff --> list/nurses
+```
+Expected Outcome(nurses):
+```
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management  
+```
+Example Screenshot:
+
+<img src="images/StaffListNurse.PNG" width = "850">
+
+
+Example of usage (no input):
+```
+Staff --> list
+```
+Expected Outcome (doctors):
+```
+------------------------------------------------------------------------------
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon       
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management    
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src="images/StaffList.PNG" width = "850" >
+
+<br/><br/>
+
+#### Returning to Start Menu: `return`
+
+Return you to the Start Menu.
+
+Example Screenshot:
+
+<img src="images/StaffReturn.PNG" width = "850" >
+
+#### Help: `help`
+
+Display the commands for the Staff Menu.
+
+Example Screenshot:
+
+<img src="images/StaffHelp.PNG" width = "850" >
+
+### 5.2 Patient
+
+The functions in the Patient menu allow you, the head nurse, to add, view, find, and delete patients in the patient list.
+
+When you first enter the Patient menu, you will be greeted with the following welcome message.
+
+<img src = "images/PatientWelcome.PNG" width = "850" >
+
+<br/><br/>
+
+#### Adding a new patient: `add`
+Adds a new patient to the patient list.
+
+Format: `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
+>3. The gender field input should only be "M", "F" or "Others"
+>4. The age field input should be a positive integer not more than 150
+
+Example of usage:<br/>
+Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555.
+```
+Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
+Sam is now a patient here!
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src = "images/PatientAdd.png" width = "850" >
+
+<br/><br/>
+
+#### Deleting a patient: `delete`
+Deletes a patient from the patient list.
+
+Format: `delete/[Patient ID]`
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+
+Example of usage:
+```
+Patient --> delete/P55555
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> delete/P55555
+Noted. I've removed this patient:
+Sam
+Now you have 0 patients in the list
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src = "images/PatientDelete.PNG" width = "850" >
+
+<br/><br/>
+
+#### Listing all patients: `list`
+Lists all patients in the patient list.
+
+Format: `list`
+
+Example of usage:
+```
+Staff --> list
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> list
+Here are the patients currently in the list!
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol                             
+P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol         
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src = "images/PatientList.PNG" width = "850" >
+
+<br/><br/>
+
+#### Finding a patient: `find`
+Finds a patient currently in the patient list.
+
+Format: `find/[Keyword/Phrase]`
+
+>:information_source: Important notes about the input format
+>
+>1. Other than inputting known values like the ID or Name, the inputted field can be an arbitrary input.
+    >   HealthVault will search through the list of patients for any patient that matches the keyword or phrase.
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters.
+
+Example of usage:
+Finding through inputting the ID
+```
+Patient --> find/P54321
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> find/P54321
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol           
+------------------------------------------------------------------------------
+```
+
+Example of usage:
+Finding through inputting the name
+```
+Patient --> find/Sam
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> find/Sam
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol        
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src = "images/PatientFind.PNG" width = "850" >
+
+<br/><br/>
+
+#### Help: `help`
+
+Display the commands for the Patient Menu.
+
+Example Screenshot:
+
+<img src="images/PatientHelp.PNG" width = "850" >
+
+#### Returning to Start Menu: `return`
+
+Returns you to the Start Menu.
+
+Example Screenshot:
+
+<img src="images/PatientReturn.PNG" width = "850" >
+
+
+### 5.3 Doctor's Appointment
+
+The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
+
+This is an example of the welcome screen for Doctors' Appointments Menu.
+
+<img src="images/DoctorAppointmentWelcome.jpg" width = "700">
+
+
+#### Adding an appointment: `add`
+Adds a new doctor's appointment to the list of appointments.
+(Note: The Appointment ID is represented by AXXXXX)
+
+
+Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
+
+Example of usage:
+```
+Appointments --> add/D12345/A12347/Alex/M/21012021
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Appointments --> add/D12345/A12345/Alex/M/21012021
+------------------------------------------------------------------------------
+Appointment Added
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src="images/DoctorAppointmentAdd.jpg" width = "700" >
+
+
+#### Deleting an appointment: `delete`
+Deletes an appointment from the list of appointments or deletes all appointments belonging to a doctor.
+
+Format: `delete/[DoctorID/ Appointment ID]`
+
+Example of usage (Doctor ID):
+```
+Appointments --> delete/D12345
+```
+Expected Outcome (Doctor ID):
+```
+------------------------------------------------------------------------------
+Appointments --> delete/D12345
+------------------------------------------------------------------------------
+DoctorID / Appointment ID : D12345/A12346 has been deleted!
+DoctorID / Appointment ID : D12345/A12347 has been deleted!
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
+
+Example of usage (Appointment ID):
+```
+Appointments --> delete/A12346
+```
+Expected Outcome (Appointment ID):
+```
+------------------------------------------------------------------------------
+Appointments --> delete/A369
+------------------------------------------------------------------------------
+Appointmenet ID: A12346 has been deleted!
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
+
+#### Listing appointments: `list`
+Lists all of the appointments of a specific doctor or list an individual appointment.
+
+Format: `list/[Doctor ID/ Appointment ID]`
+
+Example of usage (Doctor ID):
+```
+Appointments --> list/D12345
+```
+
+Expected Outcome (Doctor ID):
+```
+------------------------------------------------------------------------------
+Doctor ID  |Appointment ID | Name	| Gender   | Date     
+____________________________________________________________
+D12345     |A12345 	   | MingShun	| M        | 19/08/2021    
+           |A11111         | Alex	| M        | 21/01/2021    
+
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
+
+
+Example of usage (Appointment ID):
+```
+Appointments --> list/A12345
+```
+
+Expected Outcome (Appointment ID):
+```
+------------------------------------------------------------------------------
+Appointment ID | Name	  | Gender   | Date     
+____________________________________________________________
+A12345 	       | MingShun | M        | 19/08/2021    
+
+------------------------------------------------------------------------------
+```
+Example Screenshot:
+
+<img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
+
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+### 5.4 Nurse Schedule
+
+The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
 #### Adding a new schedule: `add`
 Adds a new schedule to the list of nurse schedules.
+(Note for ID: N/P = Nurse/Patient)
 
-Format: `add [Nurse ID] [Patiend ID] [Date (DDMMYYYY)]`
+Format: `add/[Nurse ID]/[Patiend ID]/[Date (DDMMYYYY)]`
 
 Example of usage:
-
 ```
 NSchedule --> add N1 P1 30012020
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+NSchedule --> add N1 P1 30012020
 Trip to P1 on 30012020 added!
+------------------------------------------------------------------------------
 ```
 
-#### Delete a schedule: `delete`
+#### Deleting a schedule: `delete`
 Deletes a schedule from the list of nurse schedules.
 
-Format: `delete [Nurse ID] [Date (DDMMYYYY)]`
+Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 Example of usage:
-
 ```
 NSchedule --> delete N1 30012020
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+NSchedule --> delete N1 30012020
 Trip to P1 on 30/01/2020 has been cancelled!
+------------------------------------------------------------------------------
 ```
 
 #### Listing schedules: `list`
 List either all schedules or specified Nurse ID's schedule.
 
-Format: `list [Nurse ID/all]`
+Format: `list/[Nurse ID/all]`
 
-Example of usage:
+Example of usage(Nurse ID):
+```
+NSchedule --> list/N2
+```
+Expected Outcome(Nurse ID):
+```
+------------------------------------------------------------------------------
+NSchedule --> list/N2
+N2
+	31/01/2020 P2
+------------------------------------------------------------------------------
+```
+Example of usage(all):
 
 ```
-NSchedule --> list all
+NSchedule --> list/all
+```
+Expected Outcome(all):
+```
+------------------------------------------------------------------------------
+NSchedule --> list/all
 N1
 	30/01/2020 P1
 N2
 	31/01/2020 P2
+------------------------------------------------------------------------------
 ```
 
-```
-NSchedule --> list N2
-N2
-	31/01/2020 P2
-```
+#### Returning to Start Menu: `return`
+#### Help: `help'
 
-### Adding a todo: `todo`
+### ??Adding a todo: `todo`??
 Adds a new item to the list of todo items.
 
 Format: `todo n/TODO_NAME d/DEADLINE`
@@ -128,13 +616,79 @@ Example of usage:
 
 `todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
-## FAQ
+### 5.5 Inventory
+
+The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
+(Note for price: Make sure that the inputted price is valid! Eg. 3.00, 3)
+
+#### Adding a drug: `add`
+Adds a drug to the drug inventory.
+
+Format: `add/[Name]/[Price]/[Quantity]`
+
+Example of usage:
+```
+Inventory --> add/paracetamol/$3/90
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> add/paracetamol/3/90
+Added 90 paracetamol to inventory!
+------------------------------------------------------------------------------
+```
+
+#### Deleting a drug: `delete`
+Deletes a drug from the inventory list.
+
+Format: `delete/[Name]`
+
+Example of usage:
+```
+Inventory --> delete/paracetamol
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> delete/paracetamol
+Deleted paracetamol to inventory!
+------------------------------------------------------------------------------
+```
+
+#### Listing drugs: `list`
+Lists all the drugs in the inventory.
+
+Format: `list`
+
+Example of usage:
+```
+Inventory --> list
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> list
+Current Inventory:
+90 $3 Paracetamol
+30 $4 Ibuprofen
+10 $100 Marijuana
+------------------------------------------------------------------------------
+```
+
+#### Returning to Start Menu: `return`
+#### Help: `help`
+
+<br/><br/>
+
+## 6. FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
 
-## Command Summary
+<br/><br/>
+
+## 7. Command Summary
 
 | Command             | Example                                                                                                    |
 |---------------------|------------------------------------------------------------------------------------------------------------|
@@ -159,9 +713,9 @@ Example of usage:
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Doctor Appointments** |                                                                                                        |
-| add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/Mingshun/ Pediatrician`    |
-| delete              | `delete/[Appointment ID]`<br/><br/>`delete/A369`                                                                        |
-| list                | `list`                                                                                                     |
+| add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/A12345/Mingshun/M/19082021`    |
+| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
+| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |

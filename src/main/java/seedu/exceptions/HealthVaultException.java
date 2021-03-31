@@ -10,6 +10,7 @@ public class HealthVaultException extends Exception {
 
     public HealthVaultException() {
     }
+
     /**
      * Shows the error encountered by the user
      *

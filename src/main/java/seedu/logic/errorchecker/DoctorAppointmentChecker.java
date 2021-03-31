@@ -4,12 +4,14 @@ import seedu.duke.Constants;
 import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.*;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.model.DoctorAppointment;
 import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
+import seedu.ui.UI;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -18,9 +20,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class DoctorAppointmentChecker extends MainChecker {
-    //private String[] input;
     private static String doctorID;
     private static String appointmentID;
+    private static String name;
     private static String ID;
     private static String gender;
     private static String date;
@@ -28,14 +30,16 @@ public class DoctorAppointmentChecker extends MainChecker {
     public static void checkValidDataForAdd(String[] input) throws HealthVaultException {
         doctorID = input[1];
         appointmentID = input[2];
+        name = input[3];
         gender = input[4];
         date = input[5];
         if (!isValidDocID(doctorID)) {
-            throw new IDNotFoundException(doctorID);
+            throw new DocIDNotFoundException(doctorID);
         }
         if (!isValidAppointmentID(appointmentID)) {
             throw new IDNotFoundException(appointmentID);
         }
+        illegalCharacterChecker(name, "name");
         if (!isValidGender(gender)) {
             throw new InvalidGenderException();
         }
@@ -69,18 +73,52 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
     }
 
-    public static void checkDataFromStorage(String id) throws CorruptedFileException {
-        String[] input = id.split("\\s\\|\\s", 5);
-        System.out.println(doctorID + appointmentID + gender + date);
-        doctorID = input[0];
-        appointmentID = input[1];
-        gender = input[3];
-        date = input[4];
-        if (!isValidDocID(doctorID) || !isValidStorageAppointmentID(appointmentID) || !isValidGender(gender) || !isValidDate(date)) {
+    public static void illegalCharacterChecker(String name, String path) throws IllegalCharacterException {
+        String cleanedInput = UI.cleanseInput(name);
+        if (!name.equals(cleanedInput)) {
+            throw new IllegalCharacterException(path);
+        }
+    }
+
+    public static void illegalCharacterNameCheckerForStorage(String name) throws CorruptedFileException {
+        String cleanedInput = UI.cleanseInput(name);
+        if (!name.equals(cleanedInput)) {
             throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
         }
     }
 
+    public static void checkDataFromStorage(String input, ArrayList<String> storageList) throws HealthVaultException {
+        String[] inputArray = input.split("\\s\\|\\s", 5);
+        checkID(inputArray[0], inputArray[1]);
+        illegalCharacterNameCheckerForStorage(inputArray[2]);
+        illegalCharacterNameCheckerForStorage(inputArray[1]);
+        checkDuplicateAptIDFromStorage(inputArray[1], storageList);
+        if (!isValidGender(inputArray[3]) || !isValidDate(inputArray[4])) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+    }
+
+    public static void checkDuplicateAptIDFromStorage(String appointmentID, ArrayList<String> storageList) throws HealthVaultException {
+        for (String storageID : storageList){
+            if (storageID.equals(appointmentID))
+                throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+    }
+
+    public static void checkID(String doctorID, String appointmentID) throws HealthVaultException {
+        try {
+            Integer.parseInt(doctorID.substring(1));
+            Integer.parseInt(appointmentID.substring(1));
+        } catch (NumberFormatException e) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+        if (!(doctorID.charAt(0) == 'D') || (doctorID.length()) != 6) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+        if (!(appointmentID.charAt(0) == 'A') || (doctorID.length()) != 6) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+    }
 
     public static boolean isValidDocID(String doctorID) {
         try {
@@ -97,15 +135,16 @@ public class DoctorAppointmentChecker extends MainChecker {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
         }
         return false;
     }
 
-    public static boolean isValidAppointmentID(String appointmentID) throws DuplicateIDException, WrongAptIDFormatException {
+    public static boolean isValidAppointmentID(String appointmentID) throws HealthVaultException{
         String[] character = appointmentID.split("");
 
         checkAptID(appointmentID);
+        illegalCharacterChecker(appointmentID, "Appointment ID");
         if (character[0].equals("A")) {
             for (DoctorAppointment id : AppointmentActions.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
@@ -130,13 +169,6 @@ public class DoctorAppointmentChecker extends MainChecker {
         return false;
     }
 
-    public static boolean isValidStorageAppointmentID(String appointmentID) {
-
-        if (!(appointmentID.charAt(0) == 'A') || (appointmentID.length()) != 6) {
-            return true;
-        }
-        return false;
-    }
 
     public static boolean isValidGender(String gender) {
         return gender.equals("M") || gender.equals("F");

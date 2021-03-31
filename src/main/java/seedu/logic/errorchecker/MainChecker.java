@@ -1,21 +1,14 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.ExcessInputException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.InvalidIntegerException;
-import seedu.exceptions.NoInputException;
-import seedu.exceptions.InvalidGenderException;
+import seedu.exceptions.*;
 import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.ui.UI;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static seedu.duke.Constants.VALID_GENDER_INPUT;
 
 public class MainChecker {
-
-    private static final String ILLEGAL_CHARACTERS = "[~#@*+%{}<>\\[\\]|\"_^\\\\]";
 
     public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
 
@@ -67,16 +60,15 @@ public class MainChecker {
 
     public void checkGender(String stringToken) throws InvalidGenderException {
         String gender = stringToken;
-        if (!Arrays.stream(VALID_GENDER_INPUT).anyMatch(gender::contains)) {
+        if (!Arrays.stream(VALID_GENDER_INPUT).anyMatch(gender::equals)) {
             throw new InvalidGenderException();
         }
     }
 
-    public void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
-        String nameString = stringToken.toLowerCase();
-        Pattern pattern = Pattern.compile(ILLEGAL_CHARACTERS);
-        Matcher matcher = pattern.matcher(nameString);
-        if (matcher.find()) {
+    public static void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
+
+        String cleanedInput = UI.cleanseInput(stringToken);
+        if (!stringToken.equals(cleanedInput)){
             throw new IllegalCharacterException(fieldInput);
         }
     }
