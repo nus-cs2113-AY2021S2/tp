@@ -6,37 +6,37 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[1.1 About UniTracker](#11-about-unitracker)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.2 About This User Guide](#12-about-this-user-guide)  
 &nbsp;&nbsp;&nbsp;&nbsp;[1.3 How to Use This User Guide](#13-how-to-use-this-user-guide)  
-&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)
 
 [2. Quick Start](#2-quick-start)  
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 System Requirements](#21-system-requirements)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and Above](#211-windows-7-and-above)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.2 Mac OS](#212-mac-os)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.2 Start Up](#22-start-up)  
+&nbsp;&nbsp;&nbsp;&nbsp;[2.2 Start Up](#22-start-up)
 
 [3. Features](#3-features)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add a Module](#311-add-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. View a Module](#312-view-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. View All Modules](#313-view-all-modules)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. Add/View Components and Their Weightages](#315-addview-components-and-their-weightages)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.8. Add a Review](#318-add-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.9. View All Reviews](#319-view-all-reviews)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.11. Add New Task](#3111-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.13. Add Zoom Link](#3113-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)   
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
@@ -63,34 +63,38 @@
 
 ## 1. Introduction to UniTracker
 
-UniTracker is a one-stop application for NUS students to keep track of their work in school. This product is optimal for students who prefer Command Line Interface (CLI) over
-Graphical User Interface (GUI).
+UniTracker is a one-stop application for NUS students to keep track of their work in school. This
+product is optimal for students who prefer Command Line Interface (CLI) over Graphical User
+Interface (GUI).
 
 ### 1.1 About UniTracker
 
-UniTracker consists of 4 key features (refer to [Section 3. Features](#3-features)) that helps to organise all the information they
-need in one place. You can add and edit module information, tasks, zoom links to suit
-their needs.
+UniTracker consists of 4 key features (refer to [Section 3. Features](#3-features)) that helps to
+organise all the information they need in one place. You can add and edit module information, tasks,
+zoom links to suit their needs.
 
 ### 1.2 About This User Guide
 
-This user guide was made to help you set up UniTracker on your computer and also provide you with all the information you need to use UniTracker.
-It clearly documents the features UniTracker offers with examples to aid you in familiarising yourself with UniTracker.
+This user guide was made to help you set up UniTracker on your computer and also provide you with
+all the information you need to use UniTracker. It clearly documents the features UniTracker offers
+with examples to aid you in familiarising yourself with UniTracker.
 
 ### 1.3 How to Use This User Guide
 
-Firstly, refer to [Section 2. Quick Start](#2-quick-start) for instructions on setting up UniTracker on your local computer. 
+Firstly, refer to [Section 2. Quick Start](#2-quick-start) for instructions on setting up UniTracker
+on your local computer.
 
-Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to navigate to 
-specific sections to explore, learn and use UniTracker.
+Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
+navigate to specific sections to explore, learn and use UniTracker.
 
 ### 1.4 Conventions in This User Guide
 
-In the example code for each feature, all user inputs will start with an angle bracket. E.g. `> user input` 
->**Note!**  
+In the example code for each feature, all user inputs will start with an angle bracket.
+E.g. `> user input`
+> **Note!**  
 > This is a note section. Additional useful information will be written in sections such as this one.
 
->**WARNING!**  
+> **WARNING!**  
 > This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
 ---
@@ -101,8 +105,8 @@ In the example code for each feature, all user inputs will start with an angle b
 
 Your operating system should be: Windows 7 and above, macOS or Linux.
 
-Next, ensure that Java 11 is installed on your computer. You can download the latest version of Java 11
-from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+Next, ensure that Java 11 is installed on your computer. You can download the latest version of Java
+11 from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 
 #### 2.1.1 Windows 7 and Above
 
@@ -139,8 +143,9 @@ from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads
 
 ### 2.2 Start Up
 
-Upon successful installation of your Jar file, you should see this welcome message after running
-  the Jar file:
+Upon successful installation of your Jar file, you should see this welcome message after running the
+Jar file:
+
   ````  
    Welcome to 
      _   _               _      _____                                _
@@ -159,18 +164,21 @@ Upon successful installation of your Jar file, you should see this welcome messa
   [4] External Links
   [5] Exit Program
   ````
-In order to start using our features, navigate to your desired menu by inputting the respective index. 
-E.g. `1` would bring you to the Module Information Menu.
+
+In order to start using our features, navigate to your desired menu by inputting the respective
+index. E.g. `1` would bring you to the Module Information Menu.
 
 ---
 
 ## 3. Features
 
-This section gives a detailed description of each feature, including examples to aid your understanding.
+This section gives a detailed description of each feature, including examples to aid your
+understanding.
 
-**<span style="color: red"> Warning! </span>** 
->Ending the application abruptly will cause changes to be discarded!
-> 
+**<span style="color: red"> WARNING! </span>**
+> Ending the application abruptly will cause changes to be discarded!
+>
+
 ### 3.1 Module Information
 
 The Module Information feature allows you to add/edit/delete modules,  
@@ -204,10 +212,13 @@ Please choose which action you would like to do and enter the number:
 [15] --- Exit to main menu
 ----------------------
 ```
-#### 3.1.1 Add a Module  
-Adds a new module to the modules list.  
 
-Example for adding a new module:  
+#### 3.1.1 Add a Module
+
+Adds a new module to the modules list.
+
+Example for adding a new module:
+
 ```
 --------------------------------------------  
 Enter name of the new module:  
@@ -223,10 +234,12 @@ Software Engineering and OOP
 Returning to module information menu...  
 ```  
 
-#### 3.1.2 View a Module  
-Select a module to view its details: `module name`, `description`, `review`, `modular credits`, `grade`, `tasks`  
+#### 3.1.2 View a Module
+
+Select a module to view its details: `module name`, `description`, `review`, `modular credits`
+, `grade`, `tasks`  
 Example of viewing a module:
->**Note!**  
+> **Note!**  
 > In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.   
 > Tasks have been added through the [add new task](#331-add-new-task) feature.
 
@@ -260,13 +273,14 @@ These are your tasks:
 Returning to module information menu...  
 ```  
 
-#### 3.1.3 View all Modules   
+#### 3.1.3 View all Modules
 
-Lists out all the modules added to UniTracker.  
-  
-Example for listing all the modules:  
->**Note!**    
+Lists out all the modules added to UniTracker.
+
+Example for listing all the modules:
+> **Note!**    
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.
+
 ```
 Here are the modules in your Modules List:    
 --------------------------------------------    
@@ -274,16 +288,18 @@ Here are the modules in your Modules List:
 [2] --- CS2113T   
 --------------------------------------------  
 ```  
-#### 3.1.4 Delete a Module  
 
-Deletes a module from the list of modules.  
+#### 3.1.4 Delete a Module
 
-* Format: enter the index (integer) of the module that you want to delete.      
+Deletes a module from the list of modules.
 
-Example for deleting a module:    
->**Note!**  
+* Format: enter the index (integer) of the module that you want to delete.
+
+Example for deleting a module:
+> **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
 > Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+
 ```
 Here are the modules in your Modules List:  
 --------------------------------------------  
@@ -307,17 +323,17 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
-#### 3.1.5 Add/View Components and Their Weightages  
+#### 3.1.5 Add/View Components and Their Weightages
 
 * Example for adding components and weightage to a module Input:  
   `2`   
-  Output:  
+  Output:
   ````
   Would you like to add/view component(s) to a module? [Y/N]  
   ````
   Input:  
   `Y`  
-  Output:  
+  Output:
   ````  
   Key in 1 to add component and 2 to view component  
   ````
@@ -365,18 +381,23 @@ Returning to module information menu...
     ````
   {FinalExam=20}
     ````  
-#### 3.1.6 Add Module's Modular Credits (MC)  
-*[This section will be completed in the future.]* <br>  
-#### 3.1.7 Add Module Grade  
-*[This section will be completed in the future.]* <br>  
+
+#### 3.1.6 Add Module's Modular Credits (MC)
+
+*[This section will be completed in the future.]* <br>
+
+#### 3.1.7 Add Module Grade
+
+*[This section will be completed in the future.]* <br>
 
 #### 3.1.8 Add a review
 
 Adds a review for the module of your choice.
 
-* Format: Once you have finished typing your review, type `/end` and hit `Enter`  
-  
-Example for adding a review:  
+* Format: Once you have finished typing your review, type `/end` and hit `Enter`
+
+Example for adding a review:
+
 ``` 
 Here are the modules in your Modules List:  
 --------------------------------------------  
@@ -409,14 +430,15 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
-#### 3.1.9 View all reviews  
+#### 3.1.9 View all reviews
 
-Lists out all the reviews for all modules added to UniTracker.  
+Lists out all the reviews for all modules added to UniTracker.
 
-Example for listing all the modules' reviews:  
->**Note!**  
+Example for listing all the modules' reviews:
+> **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
 > Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+
 ```
 --------------------------------------------  
 For CS3243:  
@@ -432,13 +454,14 @@ Overall: 5/5
 --------------------------------------------  
 Returning to module information menu...  
 ```
+
 #### 3.1.10 Delete a Review
 
 Deletes any existing reviews of existing modules.  
-Example of deleting a review of an existing module:  
->**Note!**  
+Example of deleting a review of an existing module:
+> **Note!**  
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
-> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
 
 ``` 
 --------------------------------------------  
@@ -468,15 +491,23 @@ Overall: 5/5
 Returning to module information menu...  
 ```
 
-#### 3.1.11 Add New Task  
-Refer to [this section](#331-add-new-task).  
-#### 3.1.12 Delete Task  
-Refer to [this section](#333-delete-a-task).  
-#### 3.1.13 Add Zoom Link  
-Refer to [this section](#345-add-zoom-link).  
-#### 3.1.14 Delete Zoom Link  
+#### 3.1.11 Add New Task
+
+Refer to [this section](#331-add-new-task).
+
+#### 3.1.12 Delete Task
+
+Refer to [this section](#333-delete-a-task).
+
+#### 3.1.13 Add Zoom Link
+
+Refer to [this section](#345-add-zoom-link).
+
+#### 3.1.14 Delete Zoom Link
+
 Refer to [this section](#346-delete-zoom-link).
-#### 3.1.15 Add/View Module Description  
+
+#### 3.1.15 Add/View Module Description
 
 Adds user-defined module description.  
 User can view module description added previously.
@@ -660,11 +691,12 @@ Please choose which action you would like to do and enter the number:\n"
 
 Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the task list.
 
-Example for adding a task of type `task` with the task description of `Work on user guide` and message being `Wow yay~`:
-  
->**Note!**  
+Example for adding a task of type `task` with the task description of `Work on user guide` and
+message being `Wow yay~`:
+
+> **Note!**  
 > In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
-  
+
   ````
   Please choose which type of task you would like to add and enter the number:
   [1] --- Task
@@ -690,16 +722,19 @@ Example for adding a task of type `task` with the task description of `Work on u
   ````
 
 For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-The format for the date and time input is as follows:  
+The format for the date and time input is as follows:
 
 - Time: YYYY-MM-DD   
-  (Y stands for the year, M stands for the month and D stands for the day)  
+  (Y stands for the year, M stands for the month and D stands for the day)
 - Date: HH:MM  
   (H stands for hour in 24H standard and M stands for minute)
- 
-Example for adding a task of type `assignment` with the task description of `Work on user guide` and message being `Wow yay~`:
 
-NOTE: In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+Example for adding a task of type `assignment` with the task description of `Work on user guide` and
+message being `Wow yay~`:
+
+NOTE: In this example, module `CS2113T` has already been added through
+the [add module](#311-add-a-module) feature.
+
   ````
 Please choose which type of task you would like to add and enter the number:
 [1] --- Task
@@ -729,16 +764,18 @@ What is the message you would like to see after completing this?
 You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
 Returning back to TaskManager menu now!
 ````
->**Note!**  
+
+> **Note!**  
 > If you were to input an invalid module index when choosing the module of the task,
 > you will be asked if you want to add a new module. Example:
 > ````
 > A module for that number does not exist.
 > Would you like to add a module? [Y/N]
 > ````
-  
+
 #### 3.3.2 Mark/Unmark a Task as Done
-*[This section will be completed in the future.]* <br>  
+
+*[This section will be completed in the future.]* <br>
 
 #### 3.3.3 Delete a Task
 
@@ -764,8 +801,8 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
   ```` 
   Input:    
   `1`  
-  Output:  
-  
+  Output:
+
   ````  
   You've deleted this: [CS2113T] Work on User Guide  
   NOTE: Wow yay~  
@@ -816,8 +853,8 @@ Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the tas
   ```` 
   Input:    
   `1`  
-  Output:  
-  
+  Output:
+
   ````  
   You've pinned this: [CS2113T] Work on User Guide  
   Returning back to TaskManager menu now!  
@@ -845,6 +882,12 @@ Please choose which action you would like to do and enter the number:
 
 Add, remove or view all your links (except zoom links) here.
 
+By default, the External Links list has been populated with 
+- https://www.reddit.com/r/nus
+- https://www.luminus.nus.edu.sg
+- https://www.myedu.rec.nus.edu.sg
+
+External links menu:
 ````
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
@@ -853,6 +896,7 @@ Please choose which action you would like to do and enter the number:
 [3] --- view links
 [4] --- exit to links menu
 ````
+
 
 #### 3.4.2 Add External Link
 
@@ -862,7 +906,10 @@ Format: `<scheme>www.<domain name>.<TLD>/<path name>`
 
 Supported schemes include: https, http only
 
-Supported Top Level Domain(TLD) include: .com, .org only
+Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
+
+**Note!**
+> While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 
 Example for adding an external link:
 
@@ -871,18 +918,18 @@ Example for adding an external link:
 --------------------------------------------
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
-supported schemes: https, http for now... Sorry!
-supported TLD: .com, .org for now... we will work on it!
+Supported schemes: https, http only
+Supported TLD: .com, .org, .sg, .edu, .gov
 
-> https://www.instagram.com
+> https://www.youtube.com/java
 --------------------------------------------
-Alright! I have added the following link ---  https://www.instagram.com
+Alright! I have added the following link ---  https://www.youtube.com/java
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
-[1] --- add link
-[2] --- remove link
-[3] --- view links
-[4] --- exit to links menu
+[1] --- Add link
+[2] --- Remove link
+[3] --- View links
+[4] --- Exit to links menu
 ````
 
 **Note!**
@@ -893,6 +940,7 @@ Please choose which action you would like to do and enter the number:
 Removes an external link from the external links list.
 
 Example for removing an external link:
+
 ````
 > 2
 --------------------------------------------
@@ -916,11 +964,13 @@ Please choose which action you would like to do and enter the number:
 [3] --- view links
 [4] --- exit to links menu
 ````
+
 #### 3.4.4 View External Links
 
 Allows you to view all external links stored in the application.
 
 Example for viewing external links:
+
 ````
 > 3
 --------------------------------------------
@@ -947,6 +997,7 @@ Adds a zoom link, and tags it to a module of your choice together with the meeti
 available).
 
 Example for adding a zoom link:
+
 ````
 > 2
 --------------------------------------------
@@ -962,7 +1013,6 @@ This is the list of modules:
 [5] CS3243
 [6] EC1301
 [7] CG2028
-
 > 4
 --------------------------------------------
 Please enter the zoom link below
@@ -976,9 +1026,17 @@ Please enter your password below!
 --------------------------------------------
 Woohoo~ Zoom link added:
 https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
+
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
 ````
 
-**Note!** 
+**Note!**
 > If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
 #### 3.4.6 Delete Zoom Link
@@ -986,6 +1044,7 @@ https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS
 Deletes a zoom link of your choice
 
 Example for deleting the zoom link:
+
 ````
 > 3
 --------------------------------------------
@@ -1010,7 +1069,8 @@ Please choose which action you would like to do and enter the number:
 
 View all zoom links stored in the application
 
-Example for viewing all zoom links: 
+Example for viewing all zoom links:
+
 ````
 > 4
 --------------------------------------------
@@ -1026,8 +1086,8 @@ Please choose which action you would like to do and enter the number:
 [3] --- Delete Zoom links
 [4] --- View Zoom links
 [5] --- Exit to main menu
-
 ````
+
 ---
 
 ## 4. Command Summary
