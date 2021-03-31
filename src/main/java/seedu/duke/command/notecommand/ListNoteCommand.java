@@ -19,12 +19,9 @@ public class ListNoteCommand extends Command {
     public void execute() {
         String listInfo = ui.getBlockInfo();
         try {
-            if (nusMap.isValidBlock(listInfo)) {
-                ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
-                ui.showNotes(notes);
-            } else {
-                throw new InvalidBlockException();
-            }
+            nusMap.checkIfValidBlock(listInfo);
+            ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
+            ui.showNotes(notes);
         } catch (EmptyNoteException e) {
             ui.showMessageWithDivider(String.format(e.getMessage(), listInfo));
         } catch (InvalidBlockException e) {
