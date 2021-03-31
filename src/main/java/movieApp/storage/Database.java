@@ -6,6 +6,8 @@ import movieApp.user.Customer;
 import movieApp.user.User;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,8 +17,34 @@ public class Database {
     public static ArrayList<Showtimes> ShowtimesDatabase;
     public static ArrayList<User> users;
 
+    private static Path dataDirectory = Path.of(System.getProperty("user.dir") + "\\data");
+    private static Path movieFileDirectory = Path.of(System.getProperty("user.dir") + "\\data" + "\\movielist.txt");
+    private static Path cineplexFileDirectory = Path.of(System.getProperty("user.dir") + "\\data" + "\\cineplexlist.txt");
+    private static Path showtimeFileDirectory = Path.of(System.getProperty("user.dir") + "\\data" + "\\showtimelist.txt");
+
     public Database() throws Exception {
+        checkForDatabases();
         importDatabase();
+    }
+
+    private static void checkForDatabases() throws IOException {
+        checkForDirectory(dataDirectory);
+        checkForFile(movieFileDirectory);
+        checkForFile(cineplexFileDirectory);
+        checkForFile(showtimeFileDirectory);
+    }
+
+    private static void checkForDirectory(Path dataDirectory) throws IOException {
+        if(!Files.exists(dataDirectory)){
+            Files.createDirectory(dataDirectory);
+        }
+    }
+
+    private static void checkForFile(Path fileDirectory) throws IOException {
+        if(!Files.exists(fileDirectory)){
+            File newFile = new File(String.valueOf(fileDirectory));
+            newFile.createNewFile();
+        }
     }
 
     private static void importDatabase() throws Exception {
@@ -34,35 +62,54 @@ public class Database {
     }
 
     private static ArrayList<Movie> importMovieDatabase() throws Exception {
+        ArrayList<Movie> MList = null;
+
         File f_movie = new File("data/movieList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
-        ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
+        try {
+            ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
+            MList = (ArrayList<Movie>) ois_movie.readObject();
+            ois_movie.close();
+        } catch (EOFException e) {
 
-        ArrayList<Movie> MList = (ArrayList<Movie>) ois_movie.readObject();
+        }
         // System.out.println(MList);
-        ois_movie.close();
+
         return MList;
     }
 
     private static ArrayList<Cineplex> importCineplexDatabase() throws Exception {
+        ArrayList<Cineplex> CPList = null;
+
         File f_cineplex = new File("data/cineplexList.txt");
         FileInputStream fis_cineplex = new FileInputStream(f_cineplex);
-        ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
 
-        ArrayList<Cineplex> CPList = (ArrayList<Cineplex>) ois_cineplex.readObject();
+        try {
+            ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
+            CPList = (ArrayList<Cineplex>) ois_cineplex.readObject();
+            ois_cineplex.close();
+        } catch (EOFException e) {
+
+        }
         // System.out.println(CPList);
-        ois_cineplex.close();
+
         return CPList;
     }
 
     private static ArrayList<Showtimes> importShowtimesDatabase() throws Exception {
+        ArrayList<Showtimes> STList = null;
+
         File f_showtime = new File("data/showtimeList.txt");
         FileInputStream fis_showtime = new FileInputStream(f_showtime);
-        ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
+        try {
+            ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
+            STList = (ArrayList<Showtimes>) ois_showtime.readObject();
+            ois_showtime.close();
+        } catch(EOFException e) {
 
-        ArrayList<Showtimes> STList = (ArrayList<Showtimes>) ois_showtime.readObject();
+        }
         // System.out.println(STList);
-        ois_showtime.close();
+
         return STList;
     }
 
