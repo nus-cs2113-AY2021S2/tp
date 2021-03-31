@@ -443,7 +443,7 @@ Given below are instructions to test the app manually.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+   `FridgeFriend` with `java -jar FridgeFriend_v2.0.jar` (or the latest version).
 5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
    list of all current food.
 6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with
