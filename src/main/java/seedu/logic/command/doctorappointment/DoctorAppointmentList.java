@@ -1,5 +1,6 @@
 package seedu.logic.command.doctorappointment;
 
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
