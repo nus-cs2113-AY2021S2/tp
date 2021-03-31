@@ -18,32 +18,36 @@ public class EmployeeController {
     public static void addSchedule(ArrayList<Employee> employees){
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
                 boolean isScheduleValid = person.addSchedule(schedule);
-                if(isScheduleValid) {
+                if (isScheduleValid) {
                     System.out.println("schedule added");
-                }else{
+                } else {
                     System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
                 }
                 return;
             }
+        }
         System.out.println("Employee not found");
     }
 
     public static void dropSchedule(ArrayList<Employee> employees) {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String scheduleToDrop = sc.nextLine();
                 ArrayList<String> schedules = person.getSchedules();
+                int originalScheduleLength = schedules.size();
                 for (String schedule : schedules) {
                     if (schedule.equals(scheduleToDrop)) {
                         person.dropSchedule(scheduleToDrop);
+                        assert originalScheduleLength == person.getSchedules().size() + 1: "1 schedule " +
+                                "is supposed to be dropped.";
                         System.out.println("schedule dropped");
                         return;
                     }
@@ -51,6 +55,7 @@ public class EmployeeController {
                 System.out.println("schedule not found");
                 return;
             }
+        }
         System.out.println("Employee not found");
     }
 
