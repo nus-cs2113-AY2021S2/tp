@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class AddDailyRouteCommand extends Command {
 
     protected DailyRouteUi ui;
-    private static String MESSAGE_SUCCESS = "Got it! Successfully add %s's schedule!";
+    private static String MESSAGE_SUCCESS = "Got it! Successfully added %s's schedule!";
 
     public AddDailyRouteCommand() {
         this.ui = new DailyRouteUi();

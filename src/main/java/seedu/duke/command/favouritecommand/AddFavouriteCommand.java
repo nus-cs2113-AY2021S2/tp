@@ -7,7 +7,7 @@ import seedu.duke.ui.FavouriteUi;
 public class AddFavouriteCommand extends Command {
 
     protected FavouriteUi ui;
-    private static final String MESSAGE_SUCCESS = "Got it! Successfully added favourite route!";
+    private static final String MESSAGE_SUCCESS = "Got it! Successfully added new favourite route!";
 
     public AddFavouriteCommand() {
         this.ui = new FavouriteUi();

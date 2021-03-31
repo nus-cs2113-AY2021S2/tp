@@ -1,6 +1,5 @@
 package seedu.duke.data;
 
-import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 
 import java.util.LinkedList;

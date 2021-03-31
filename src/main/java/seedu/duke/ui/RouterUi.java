@@ -18,7 +18,7 @@ public class RouterUi extends UiManager {
         return startAndDestination;
     }
 
-    public int getEateryEntry(Block[] eateries) throws InvalidIndexException {
+    public int getEateryIndex(Block[] eateries) throws InvalidIndexException {
         showMessage("Here are the list of eateries(from closest to furthest):");
 
         for (int i = 0; i < eateries.length; i++) {

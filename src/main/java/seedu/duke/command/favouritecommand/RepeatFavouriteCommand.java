@@ -23,7 +23,7 @@ public class RepeatFavouriteCommand extends Command {
             String route = new Router().execute(nusMap, routeInfo[0], routeInfo[1]);
             history.addHistory(routeInfo[0], routeInfo[1]);
             ui.showMessageWithDivider(route);
-        } catch (InvalidBlockException | EmptyFavouriteException | InvalidIndexException e) {
+        } catch (EmptyFavouriteException | InvalidIndexException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

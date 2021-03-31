@@ -20,10 +20,12 @@ public class HistoryUi extends UiManager {
         }
     }
 
-    public int getRepeatEntry() throws InvalidIndexException {
+    public int getRepeatIndex() throws InvalidIndexException {
         try {
             showMessage("Select Entry to Repeat:");
-            return Integer.parseInt(getUserInput());
+            int repeatIndex = Integer.parseInt(getUserInput());
+            showMessage(CommonMessage.DIVIDER);
+            return repeatIndex;
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }

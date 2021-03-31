@@ -15,15 +15,8 @@ public class BlockAlias {
         return aliases;
     }
 
-    public String[] changeAliasToBlock(String from, String to) {
-        String[] blockNames = {from, to};
-        if (aliases.containsKey(from)) {
-            blockNames[0] = aliases.get(from);
-        }
-        if (aliases.containsKey(to)) {
-            blockNames[1] = aliases.get(to);
-        }
-        return blockNames;
+    public boolean isEmpty() {
+        return aliases.isEmpty();
     }
 
     public void addAlias(String block, String alias) throws InvalidAliasException {
@@ -36,6 +29,17 @@ public class BlockAlias {
     public boolean isValidAlias(String alias) {
         NusMap nusMap = new NusMap();
         return (!aliases.containsKey(alias) && nusMap.getBlock(alias) == null && !alias.equalsIgnoreCase("eatery"));
+    }
+
+    public String[] changeAliasToBlock(String from, String to) {
+        String[] blockNames = {from, to};
+        if (aliases.containsKey(from)) {
+            blockNames[0] = aliases.get(from);
+        }
+        if (aliases.containsKey(to)) {
+            blockNames[1] = aliases.get(to);
+        }
+        return blockNames;
     }
 
     public void deleteAlias(String alias) throws InvalidAliasException {

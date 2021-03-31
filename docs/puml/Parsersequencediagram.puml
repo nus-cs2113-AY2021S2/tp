@@ -20,4 +20,5 @@ return InvalidInputException
 nusMaze --> ui
 ui --> user
 
+Hide footbox
 @enduml
