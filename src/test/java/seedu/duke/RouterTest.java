@@ -20,7 +20,7 @@ class RouterTest {
     @Test
     void printShortestDistance_unknownBlock_expectException() {
         NusMap nusMap = new NusMap();
-        assertThrows(InvalidBlockException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             new Router().execute(nusMap, "AS2","E7");
         });
     }
