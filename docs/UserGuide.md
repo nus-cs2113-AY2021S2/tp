@@ -110,12 +110,7 @@ java 11 and above<br>
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -188,12 +183,7 @@ Additionally, you can store your lecture notes in GULIO using the cheat-sheet fe
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -284,12 +274,7 @@ Lists all modules.
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -607,12 +592,7 @@ Lists all cheat-sheets for the module.
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -646,12 +626,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -674,12 +649,7 @@ In the text editor, you can type in your notes in the text field. When done, rem
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -694,12 +664,7 @@ Here are some frequently asked questions that you may have regarding GULIO.
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
 
@@ -746,11 +711,6 @@ Here are some frequently asked questions that you may have regarding GULIO.
 
 ----
 
-<p align="center">
-    <a href="UserGuide.md#table-of-contents">
-        Click to get back to <b>Table of Contents</b>
-    </a>
-</p>
-
+[Click to get back to **Table of Contents**](#table-of-contents)
 
 ----
