@@ -15,7 +15,7 @@ public class StaffInstance {
     private StaffStorage staffStorage;
     private StaffParser staffParser;
 
-    public StaffInstance(String filepath){
+    public StaffInstance(String filepath) {
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
         staffParser = new StaffParser();
@@ -23,7 +23,7 @@ public class StaffInstance {
     }
 
 
-    public void run(){
+    public void run() {
         try {
             staffStorage.fileHandling(staffAggregation);
         } catch (HealthVaultException e) {
@@ -36,7 +36,7 @@ public class StaffInstance {
             line = staffUI.getInput("Staff");
             try {
                 Command c = staffParser.commandHandler(line, staffAggregation);
-                if (c==null){
+                if (c == null){
                     continue;
                 }
                 c.execute(staffAggregation, staffUI, staffStorage);

@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
+import static seedu.duke.Constants.*;
 
 public class UI {
     static final int LARGE_NUMBER = 100;
@@ -34,14 +35,14 @@ public class UI {
         int index = -1;
         List<String> list = Arrays.asList(commands);
 
-        if(list.contains(input)) {
+        if( list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8 || input.length() < 1){
+        if (input.length() >= 8 || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
-        for (int i = 0; i<commands.length; i++) {
+        for (int i = 0; i < commands.length; i++) {
             int temp = checkCommandDifference(commands[i], input);
             if (temp < diff) {
                 diff = temp;
@@ -69,7 +70,7 @@ public class UI {
         Arrays.sort(first);
         Arrays.sort(second);
         int numDiff = 0;
-        int lengthDiff = abs(first.length-second.length);
+        int lengthDiff = abs(first.length -second.length);
         if (lengthDiff > 2) {
             return LARGE_NUMBER;
         }
@@ -82,9 +83,10 @@ public class UI {
                 i++;
             }
         } else {
-            while (i<second.length-1) {
+            while (i < second.length - 1) {
                 if (first[i] != (second[i]) && lengthDiff > 0) {
-                    i++; numDiff++; lengthDiff--;
+                    i++; numDiff++;
+                    lengthDiff--;
                     continue;
                 } else if (first[i] != second[i]) {
                     numDiff++;
@@ -95,19 +97,14 @@ public class UI {
         return max(lengthDiff, numDiff);
     }
 
-//    public static String cleanseInput(String input) {
-//        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
-//    }
-
     public static String cleanseInput(String input) {
         return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
     }
 
-    public static void checkBackSlash(String line) {
-        if (line.contains("\\")) {
-            System.out.println(line.replace("\\",""));
-        }
+    public static String cleanseInput2(String input) {
+        return  input.replaceAll("[^a-zA-Z0-9]", "");
     }
+
     public static void invalidCommandErrorMessage() {
         System.out.println("OOPS! I cant recognize that command! ");
     }
@@ -139,15 +136,24 @@ public class UI {
     }
 
     public static void printStartMenu() {
+
+        UI.printEmptyLine();
         System.out.println("Start Menu");
         System.out.println("Commands:");
-        System.out.println("\"staff\" to go to staff");
-        System.out.println("\"patient\" to go to patients");
-        System.out.println("\"appointments\" to go to doctors appointments");
-        System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to inventories inventory");
-        System.out.println("\"help\" to see what each of the sections contain");
-        System.out.println("\"bye\" to exit the application");
+
+        UI.printEmptyLine();
+        int[] lengthPara = {15,40,10};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
+        UI.showLongLine();
+        printer(new String[]{TO_STAFF_INSTANCE, TO_STAFF_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_PATIENT_INSTANCE, TO_PATIENT_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_APPOINTMENTS_INSTANCE, TO_APPOINTMENTS_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_SCHEDULES_INSTANCE, TO_SCHEDULES_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_INVENTORY_INSTANCE, TO_INVENTORY_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{HELP_COMMAND, HELP_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{EXIT_COMMAND, EXIT_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        UI.printEmptyLine();
+
     }
 
     public static void printGoodbye() {
