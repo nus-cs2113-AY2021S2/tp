@@ -1,15 +1,13 @@
 package seedu.storage;
 
+import seedu.exceptions.nurseschedules.CrossValidationError;
 import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.model.NurseSchedule;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -32,21 +30,17 @@ public class NurseScheduleStorage {
         }
     }
 
-    private static ArrayList<NurseSchedule> readFile() {
-        try {
-            FileInputStream file = new FileInputStream(FILE_PATH);
-            Scanner sc = new Scanner(file);
+    private static ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidIDTypeException, FileNotFoundException, CrossValidationError {
+        FileInputStream file = new FileInputStream(FILE_PATH);
+        Scanner sc = new Scanner(file);
 
-            while (sc.hasNextLine()) {
-                String[] details = sc.nextLine().split("\\|", 0);
-                NurseScheduleChecker.checkNurseIDExist(details[0]);
-                NurseScheduleChecker.checkValidNurseID(details[0]);
-                NurseScheduleChecker.checkValidPatientID(details[1]);
-                nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
+        while (sc.hasNextLine()) {
+            String[] details = sc.nextLine().split("\\|", 0);
+            NurseScheduleChecker.checkNurseIDExist(details[0]);
+            NurseScheduleChecker.checkValidNurseID(details[0]);
+            NurseScheduleChecker.checkValidPatientID(details[1]);
+            nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             }
-        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException | NurseIdNotFound | InvalidIDTypeException e) {
-            System.out.println("The file \"NurseSchedule.txt\" is corrupted.");
-        }
         return nurseSchedules;
     }
 
@@ -64,7 +58,7 @@ public class NurseScheduleStorage {
         }
     }
 
-    public static ArrayList<NurseSchedule> load() {
+    public static ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidIDTypeException, NurseIdNotFound, CrossValidationError {
         createFile();
         nurseSchedules = readFile();
         return nurseSchedules;
