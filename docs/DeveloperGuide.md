@@ -145,8 +145,8 @@ Upon start, the main class calls run() which enters a while loop and reads in us
 * Facilitates the CLI interface
 * Methods to display general messages, prompt messages and error messages
 * Reads in user’s input, and used by Command classes to react to user’s inputs
-* The UI object created as an attribute in Duke is passed into each command to be executed
-* Instances of UI are used by tests in general
+* The `UI` object created as an attribute in Duke is passed into each command to be executed
+* Instances of `UI` are used by tests in general
 
 &nbsp;
 
@@ -253,7 +253,7 @@ The `Task` class contains attributes related to an assignment, deadline or task 
     Figure 6 - Illustration of Storage Structure
 </p>
 
-The storage component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components: Loader and Writer. At every moment, the loader only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
+The `Storage` component is responsible for creating and loading modules and their respective data, as well as saving the data each time a change is made. It consists of two components: `Loader` and `Writer`. At every moment, `Loader` only loads up to 1 module at a time and data for each module is stored separately. This is done to ensure fast loading and writing of files.
 
 #### Loader:
 
@@ -273,11 +273,11 @@ The storage component is responsible for creating and loading modules and their 
 
 **API**: `TextEditor.java`
 
-The editor component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
+The `Editor` component is responsible for opening the text editor to add or edit cheat-sheets/notes. It consists of two components:
 
 #### Text Editor
 
-* Sets up the editor
+* Sets up the text editor
 * Loads existing file from Cheatsheet directory within a module for the edit cheat-sheet command
 * Flushes out the text from the editor when a different or new file is opened.
 * Adjusts the font size of the text within the editor
@@ -293,11 +293,11 @@ The editor component is responsible for opening the text editor to add or edit c
 ### Common classes
 
 Classes that are used by multiple components:
-* CommonMethods: Stores methods that are used by multiple components
-* Constants: Stores constants
-* Messages: Stores strings that are printed by the UI
-* DashboardCommands: Enum of commands that can be used outside a module
-* ModuleCommands: Enum of commands that can be used inside a module
+* `CommonMethods`: Stores methods that are used by multiple components
+* `Constants`: Stores constants
+* `Messages`: Stores strings that are printed by the `UI`
+* `DashboardCommands`: Enum of commands that can be used outside a module
+* `ModuleCommands`: Enum of commands that can be used inside a module
 
 &nbsp;
 
