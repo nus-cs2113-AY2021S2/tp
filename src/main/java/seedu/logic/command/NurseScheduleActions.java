@@ -1,5 +1,6 @@
 package seedu.logic.command;
 
+import seedu.exceptions.nurseschedules.CrossValidationError;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.InvalidIDTypeException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
@@ -31,7 +32,7 @@ public class NurseScheduleActions {
         nurseSchedules.clear();
     }
 
-    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException {
+    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException, CrossValidationError {
         try {
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkNurseIDExist(details[0]);

@@ -70,4 +70,12 @@ public class NurseScheduleUI extends UI {
     public static void printEmptyCell() {
         System.out.print(UI.prettyPrint(" ", 10) + " | ");
     }
+
+    public void corruptedFileErrorMessage() {
+        System.out.println("File (data/NurseSchedule.txt) is corrupted. Please delete the file before running the Staff Menu.");
+    }
+
+    public static void corruptedStaffFile() {
+        System.out.println("Staff file is not loaded, Nurse ID cannot be validated.");
+    }
 }
