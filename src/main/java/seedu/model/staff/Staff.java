@@ -15,7 +15,7 @@ public class Staff {
     }
 
     public String getName() {
-        if (this.name == null){
+        if (this.name == null) {
             return "-";
         }
         return this.name;
@@ -26,14 +26,14 @@ public class Staff {
     }
 
     public String getSpecialisation() {
-        if (this.specialisation == null){
+        if (this.specialisation == null) {
             return "-";
         }
         return this.specialisation;
     }
 
     public String getId() {
-        if (this.staffID == null){
+        if (this.staffID == null) {
             return "-";
         }
         return this.staffID;
@@ -44,8 +44,8 @@ public class Staff {
     }
 
     public String formWriteData() {
-        return ( this.staffID + "|" + this.name + "|"
-                + this.age + "|" + this.specialisation + "\n" );
+        return (this.staffID + "|" + this.name + "|"
+                + this.age + "|" + this.specialisation + "\n");
     }
 
 }

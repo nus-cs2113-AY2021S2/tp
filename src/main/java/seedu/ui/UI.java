@@ -35,14 +35,14 @@ public class UI {
         int index = -1;
         List<String> list = Arrays.asList(commands);
 
-        if(list.contains(input)) {
+        if( list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8 || input.length() < 1){
+        if (input.length() >= 8 || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
-        for (int i = 0; i<commands.length; i++) {
+        for (int i = 0; i < commands.length; i++) {
             int temp = checkCommandDifference(commands[i], input);
             if (temp < diff) {
                 diff = temp;
@@ -70,7 +70,7 @@ public class UI {
         Arrays.sort(first);
         Arrays.sort(second);
         int numDiff = 0;
-        int lengthDiff = abs(first.length-second.length);
+        int lengthDiff = abs(first.length -second.length);
         if (lengthDiff > 2) {
             return LARGE_NUMBER;
         }
@@ -83,9 +83,10 @@ public class UI {
                 i++;
             }
         } else {
-            while (i<second.length-1) {
+            while (i < second.length - 1) {
                 if (first[i] != (second[i]) && lengthDiff > 0) {
-                    i++; numDiff++; lengthDiff--;
+                    i++; numDiff++;
+                    lengthDiff--;
                     continue;
                 } else if (first[i] != second[i]) {
                     numDiff++;
@@ -95,10 +96,6 @@ public class UI {
         }
         return max(lengthDiff, numDiff);
     }
-
-//    public static String cleanseInput(String input) {
-//        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
-//    }
 
     public static String cleanseInput(String input) {
         return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
