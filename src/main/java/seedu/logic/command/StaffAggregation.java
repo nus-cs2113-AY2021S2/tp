@@ -38,7 +38,6 @@ public class StaffAggregation {
     public boolean isValidID(String id) {
         for (Staff staff : list) {
             if (staff.getId().equals(id)) {
-                System.out.println("Error that staff ID has been taken\n");
                 return false;
             }
         }

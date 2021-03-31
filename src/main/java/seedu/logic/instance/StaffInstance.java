@@ -28,16 +28,17 @@ public class StaffInstance {
         try {
             staffStorage.fileHandling(staffAggregation);
         } catch (ExcessInputException | InvalidIntegerException |
-                WrongStaffIdException |
-                InsufficientInputException | NoInputException e) {
+                WrongStaffIdException | InsufficientInputException |
+                NoInputException | DuplicateIDException e) {
             StaffUI.corruptedFileErrorMessage();
+            return;
         }
         StaffUI.staffMenuHeader();
         while (true) {
             String line;
             line = staffUI.getInput("Staff");
             try {
-                Command c = staffParser.commandHandler(line);
+                Command c = staffParser.commandHandler(line, staffAggregation);
                 if (c==null){
                     continue;
                 }

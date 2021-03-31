@@ -9,6 +9,6 @@ public class DuplicateIDException extends HealthVaultException {
     }
 
     public String getMessage() {
-        return "The " + IDType + " has already been taken! Use a different ID!";
+        return "The " + IDType + " ID has already been taken! Use a different ID!";
     }
 }

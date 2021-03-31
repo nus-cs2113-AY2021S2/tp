@@ -34,8 +34,6 @@ public class NurseScheduleInstance {
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
-                //ui.nurseSchedulePrompt();
-                //String line = parser.getUserInput().trim();
                 String line = ui.getInput("NSchedule");
                 Command c = parser.nurseParse(line, ui);
                 ui.lineBreak();
