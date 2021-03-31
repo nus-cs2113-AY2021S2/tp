@@ -43,7 +43,7 @@ public class Storage {
     private static final int INDEX_OF_DESCRIPTION = 1;
     private static final int INDEX_OF_AMOUNT = 2;
     private static final int INDEX_OF_DATE = 3;
-    private static final int INDEX_OF_ISRETURN = 4;
+    private static final int INDEX_OF_IS_RETURN = 4;
     private static final int INDEX_OF_NAME = 5;
     private static final int INDEX_OF_RETURN_DATE = 6;
     private ArrayList<Record> recordList;
@@ -62,6 +62,12 @@ public class Storage {
         return Files.exists(SAVED_FILE_PATH);
     }
 
+    /**
+     * Saves the data in the recordList and creditScoreRetrunedLoansMap into a local text file.
+     *
+     * @param recordList is the recordList.
+     * @param creditScoreReturnedLoansMap is the creditScoreReturnedLoansMap.
+     */
     public void saveData(RecordList recordList, CreditScoreReturnedLoansMap creditScoreReturnedLoansMap) {
         try {
             writeRecordListToSaveFile(recordList);
@@ -106,28 +112,31 @@ public class Storage {
             while (sc.hasNextLine()) {
                 String rawData = sc.nextLine();
                 Object parsedObject = parseRawData(rawData);
-                if (parsedObject instanceof Record) {
-                    recordList.add((Record) parsedObject);
-                    assert !recordList.isEmpty() : "RecordList should have data!";
-                } else if (parsedObject != null) {
-                    String[] mapEntryRawData = (String[]) parsedObject;
-                    creditScoreReturnedLoansMap.put(mapEntryRawData[BORROWER_NAME_INDEX],
-                            Integer.parseInt(mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX]));
-                }
+                processParsedObject(parsedObject);
             }
         } catch (InvalidFileInputException | IOException e) {
             throw new FileLoadingException();
         }
     }
 
+    private void processParsedObject(Object parsedObject) {
+        if (parsedObject instanceof Record) {
+            recordList.add((Record) parsedObject);
+            assert !recordList.isEmpty() : "RecordList should have data!";
+        } else if (parsedObject != null) {
+            String[] mapEntryRawData = (String[]) parsedObject;
+            creditScoreReturnedLoansMap.put(mapEntryRawData[BORROWER_NAME_INDEX],
+                    Integer.parseInt(mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX]));
+        }
+    }
+
     private void initSaveFile() throws IOException {
         File newSaveFile = new File(String.valueOf(SAVED_FILE_PATH));
-        if (newSaveFile.createNewFile()) {
-            Ui.printSuccessfulFileCreation();
-        } else {
+        if (!newSaveFile.createNewFile()) {
             FINUX_LOGGER.logWarning("File creation unsuccessful!");
             throw new IOException("File creation unsuccessful!");
         }
+        Ui.printSuccessfulFileCreation();
     }
 
     private Object parseRawData(String rawData) throws InvalidFileInputException {
@@ -146,7 +155,7 @@ public class Storage {
     }
 
     private String extractArg(String rawData, int index) throws InvalidFileInputException {
-        String[] args = rawData.split("\\|");
+        String[] args = rawData.split(FILE_DELIMITER_REGEX);
         if (index < 0 || index > args.length) {
             throw new InvalidFileInputException();
         }
@@ -161,8 +170,7 @@ public class Storage {
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
-            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                    DateTimeFormatter.ofPattern("yyyy-M-d"));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
         } catch (NumberFormatException | DateTimeParseException e) {
             FINUX_LOGGER.logWarning("[E] Invalid data format!");
             throw new InvalidFileInputException();
@@ -181,9 +189,8 @@ public class Storage {
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
-            isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_ISRETURN)) == 1;
-            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                    DateTimeFormatter.ofPattern("yyyy-M-d"));
+            isReturn = Integer.parseInt(extractArg(rawData, INDEX_OF_IS_RETURN)) == 1;
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
             if (extractArg(rawData, INDEX_OF_RETURN_DATE).equals("null")) {
                 returnDate = null;
             } else {
@@ -201,11 +208,11 @@ public class Storage {
     private Record loadSaving(String rawData) throws InvalidFileInputException {
         BigDecimal amount;
         String description = extractArg(rawData, INDEX_OF_DESCRIPTION);
-        LocalDate issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE),
-                DateTimeFormatter.ofPattern("yyyy-M-d"));
+        LocalDate issueDate;
 
         try {
             amount = new BigDecimal(extractArg(rawData, INDEX_OF_AMOUNT));
+            issueDate = LocalDate.parse(extractArg(rawData, INDEX_OF_DATE), DateTimeFormatter.ofPattern("yyyy-M-d"));
         } catch (NumberFormatException | DateTimeParseException e) {
             FINUX_LOGGER.logWarning("[S] Invalid data format!");
             throw new InvalidFileInputException();

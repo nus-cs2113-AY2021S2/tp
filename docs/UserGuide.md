@@ -29,24 +29,42 @@ Since: `March 2021`
 
 ---
 
-Finux is a CLI Style application that allows the user to make better financial
-decisions based on the information recorded in the application. If you are familiar
-with the CLI command interface, you will enjoy the benefits of speeding up your
-financial management with Finux rather than using the traditional management system.
+Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all in
+one consolidated platform. With these information made readily available at your fingertips, it will allow you to 
+better adjust your expenditure or work harder towards your savings goal. Finux also includes a way for you to keep
+track of the loans you have made to your friends, or the tabs for the dinners you have paid for first. 
 
+As the Finux application is inspired entirely by the *Nix operating systems, and if you are familiar with the CLI
+command interface, you will definitely enjoy the benefits of the application. You will also be able to speed up your
+financial management and planning with the Finux application as compared to the traditional finance management 
+applications in the market.
 
 ## 2. Quick Start
 
 ---
 
 1. Ensure you have Java `11` or above installed in your Computer.
-2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v1.0).
-3. Copy the file to the folder you want to use as the *home folder* of Finux.
+2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
+3. Copy the `finux.jar` file to the folder you want to use as the *home folder* of Finux.
 4. For Windows users, pull up your **Command Prompt**.\
    For Mac users, pull up your **Terminal**.\
    Navigate to the directory containing the `finux.jar` file.\
    i.e. `cd FILEPATH`, `FILEPATH` is the absolute address to the home folder of Finux.
 5. Run the `finux.jar` file by executing the command `java -jar finux.jar`.
+
+---
+
+### 2.1 Understanding the guide
+If you are here, congratulations on embarking on your money management journey. But before you proceed, there are a
+few tips and tricks to better understanding our guide. 
+
+Throughout the guide, you will come across various symbols, each has a different meaning:
+
+> 💡: The light bulb will precede information that may be important when using the app.
+
+> ❗: The exclamation will precede warnings for commands and inputs that may hinder your use of the app.
+
+> 📝: The notepad will precede information that may improve the flexibility of using the app. 
 
 ---
 
@@ -100,30 +118,29 @@ financial management with Finux rather than using the traditional management sys
 
 #### 3.1.1 Add an expense record
 
-You can add an expense record to the list.
+Suppose you bought a plain loaf of bread for $2.90 on 3rd March 2021, you would want to enter
+your `expense` as the example shown below.
 
 Format: `add -e <description> -a <amount> -d <date>`
 
 Example: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
-This example shows that you have entered _"Plain bread loaf"_ as an expense of amount
-_$2.90_ on the _3rd March 2021_.
-
 Output:
 
 ![add expense example output](img/AddExpenseExampleOutput.jpg)
 
+
 #### 3.1.2 Add a loan record
 
-This operation will add a loan record to the list.
+It is the 20th of March 2021, and your friend Mark borrows a large sum of $200 from you . You will
+have to enter the following into Finux to record this `loan`.
+
+You may want to add a _description_ of the `loan`, in this scenario, it will be `1st loan to Mark`
+and to include his _name_ as to keep track of Mark's `loan`.
 
 Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
 Example: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
-
-This example shows that you have entered _"1st loan to Mark"_ as a loan of amount
-_$200_ on the _3rd March 2021_ and setting the person receiving the loan (borrower) 
-as _"Mark"_.
 
 Output:
 
@@ -131,18 +148,19 @@ Output:
 
 #### 3.1.3 Add a saving record
 
-This operation will add a saving record to the list.
+Lastly, you may have saved a sum of money over the past month of March and you recorded your `saving`
+on the 5th of April.
 
 Format: `add -s <description> -a <amount> -d <date>`
 
 Example: `add -s Savings from March -a 1000 -d 05/04/2021`
 
-This example shows that you have entered _"Savings from March"_ as savings of amount
-_$1000_ on the _4th April 2021_.
-
 Output:
 
 ![add saving example output](img/AddSavingExampleOutput.jpg)
+
+> 💡 Do note that for an `expense`, you will have to use `-e` as the option. This follows for `loan` with `-l` and
+> `saving` with `-s`.
 
 ### 3.2 List the records details: `list`
 
@@ -150,7 +168,8 @@ Output:
 
 #### 3.2.1 List all expense records
 
-This operation will list all expense records in the list.
+You may want to list all your expense records in Finux. By entering the `list` command
+with the `expense` option `-e`, Finux will display all your expenses.
 
 Format: `list -e`
 
@@ -160,7 +179,8 @@ Output:
 
 #### 3.2.2 List all loan records
 
-This operation will list all loan records in the list.
+Similarly, with listing your expenses, Finux is also able to list all loans. You will have
+to use the `loan` option `-l` in this scenario.
 
 Format: `list -l`
 
@@ -170,7 +190,7 @@ Output:
 
 #### 3.2.3 List all saving records
 
-This operation will list all saving records in the list.
+Lastly, all your savings can also be listed with the `saving` option `-s`. 
 
 Format: `list -s`
 
@@ -184,7 +204,8 @@ Output:
 
 #### 3.3.1 View total expenses
 
-You can view the total expenses using `view` and the option `-e`. 
+At this point, you may also want to `view` your total expenses incurred till now. 
+So instead of listing as explained above, you would have to use the `view` command instead.
 
 Format: `view -e`
 
@@ -194,7 +215,7 @@ Output:
 
 #### 3.3.2 View total unreturned loans
 
-You can view the total unreturned loan using `view` and the option `-l`.
+You can also view your total **unreturned** loan using `view` and the option `-l`.
 
 > 📝 The total amount shown only includes the unreturned loans
 
@@ -206,7 +227,7 @@ Output:
 
 #### 3.3.3 View total savings
 
-You can view the total savings using `view` and the option `-s`.
+Your total savings can also be calculated using `view` and the option `-s`.
 
 Format: `view -s`
 
@@ -218,7 +239,8 @@ Output:
 
 ---
 
-You can mark a loan record as returned using `return` and the options `-i`, `-d`.
+Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` record is the third record in the list.
+Then the _index_ to be included is `3` and the `date` is the date of return which is `28/03/21`.
 
 Format: `return -i <index_of_loan> -d <date>`
 * `<index_of_loan>` refers to the index number shown on the displayed list of records.
@@ -238,7 +260,9 @@ Output:
 
 ---
 
-You can remove a record from the record list using `remove` and the option `-i`.
+In a scenario that you realised that the `expense` record of Plain bread loaf added on 20th March 2021 was wrong,
+you can `remove` the record by entering the `remove` command with the _index_ of the `expense`, this is case, it would
+be the first record in the list.
 
 Format: `remove -i <index>`
 * `<index>` refers to the index number shown on the record list.
@@ -253,11 +277,22 @@ Output:
 
 ![remove example output](img/RemoveExampleOutput.jpg)
 
+> 💡 To find the index of a record, you can simply `list` the record type (`-e`, `-l`, `-s`) and the number that
+> precedes the record is the index.
+
 ### 3.6 Check a person's credit score: `creditscore`
 
 ---
 
-You can check the credit score of a person using `creditscore`.
+
+Let's say that Mark wants to borrow money from you again, but you will want to know his "credit-worthiness" 
+(`creditScore`) before lending him money again, you can simply enter his _name_ after the `creditScore` command.
+
+Format: `creditscore <person>`
+
+> - `<person>` refers to existing borrower in the loan list
+> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+
 
 Format: `creditscore <person>`
 
@@ -288,8 +323,8 @@ Output:
 
 ---
 
-To know how to use each features and their specifications, you can type `help` followed by
-the available features listed below.
+If you do not know how to use any of the features in Finux, and would like to know their specifications, simply type
+`help` followed by the command name of the available features.
 
 > Available Features:
 >* `add`: view the help section for `add` command.
@@ -300,9 +335,10 @@ the available features listed below.
 >* `creditscore`: view the help section for `creditscore` command.
 >* `exit`: view the help section for `exit` command.
 >* `all`: view entire help section.
->* 💡 Just type `help` and you can view the entire help section.
+
+> 💡 Just typing `help` will allow you to view the entire help section.
  
-Each section is divided into three parts:
+Each help section is divided into three parts:
 > 1. `NAME` will show you the feature name and its brief description. <br>
 > 2. `SYNOPSIS` will show you the format to follow. <br>
 > 3. `DESCRIPTION` will explain the usage of any arguments or options. <br>
@@ -323,33 +359,27 @@ Output:
 
 #### 3.9.1 Automatically saving all records into a file
 
-* All records are automatically saved after the following commands: `add`, `remove`, `return`.
-* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`.
+* All your records are automatically saved after the following commands: `add`, `remove`, `return`.
+* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`, `exit`.
 
-> ❗ Do ensure that permissions are given for FINUX to write into the folder it is in,
-> FINUX will exit upon unsuccessful file creation.
+> ❗ Do ensure that permissions are given for Finux to write into the folder it is in,
+> Finux will exit upon unsuccessful file creation.
 
-#### 3.9.2 Automatically loading data from an existing file into FINUX
+#### 3.9.2 Automatically loading data from an existing file into Finux
 
-* FINUX will automatically load the data from "finux.txt" when it finds the text
-  file in the same directory. <br><br>
+* Finux will automatically load your data from "finux.txt" when it finds the text
+  file in the same home folder as mentioned in the [Quick Start](#2-quick-start). <br><br>
 
-* Expected output for new file creation:
+* Expected output for new file creation: <br>
   ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
 
-* Expected output if successful load:
+* Expected output if successful load: <br>
   ![load success example output](img/SuccessfulLoadExampleOutput.jpg)
 
-* Expected output if not successfully loaded:
+* Expected output if not successfully loaded: <br>
   ![load fail example output](img/FailedLoadExampleOutput.jpg)
-
-#### 3.9.3 Editing the saved file directly
-
-* The FINUX team encourages more tech-proficient users to edit the save directly.
-
-> 💡 Any minor mistakes in the syntax will lead to the termination of FINUX.
-> The team highly suggests that users only make minor changes like
-> spelling errors instead of inserting new Records into the save file.
+  
+> ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 
 ## 4. Frequently Asked Questions
 
@@ -362,11 +392,11 @@ Output:
 **Q2**: Does the `view -l` shows the total loan amount? <br>
 > No. `view -l` only shows the total amount of unreturned loans.
 
-**Q3**: What happens if FINUX crashes unexpectedly? <br>
+**Q3**: What happens if Finux crashes unexpectedly? <br>
 > All records are saved upon addition, deletion or returned, so no worries!
 
-**Q4**: FINUX keeps having a `bad init` error message, but it is my first time launching FINUX. <br>
-> Do check and ensure that FINUX has the proper write permissions in the directory.
+**Q4**: Finux keeps having a `bad init` error message, but it is my first time launching Finux. <br>
+> Do check and ensure that Finux has the proper write permissions in the directory.
 
 ## 5. Command Summary
 
