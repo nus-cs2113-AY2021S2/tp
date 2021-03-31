@@ -323,10 +323,10 @@ public class Ui {
     public static void printExternalLinksMessage() {
         System.out.println("Welcome to the external links menu!\n"
                 + "Please choose which action you would like to do and enter the number:\n"
-                + "[1] --- add link\n"
-                + "[2] --- remove link\n"
-                + "[3] --- view links\n"
-                + "[4] --- exit to links menu");
+                + "[1] --- Add link\n"
+                + "[2] --- Remove link\n"
+                + "[3] --- View links\n"
+                + "[4] --- Exit to links menu");
     }
 
     public static void printAddLinkMessage(String description) {
@@ -336,8 +336,8 @@ public class Ui {
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
                 + "<scheme>www.<domain name>.<TLD>/<path name>\n"
-                + "supported schemes: https, http for now... Sorry!\n"
-                + "supported TLD: .com, .org for now... we will work on it!");
+                + "Supported schemes: https, http only\n"
+                + "Supported TLD: .com, .org, .sg, .edu, .gov\n");
     }
 
     public static void printInvalidLinkMessage() {
