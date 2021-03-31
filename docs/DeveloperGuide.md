@@ -185,6 +185,8 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|admin|login|verify myself|
 |v2.0|admin|add a new canteen
 |v2.0|admin|delete an existing canteen
+|v2.0|admin|delete a store
+|v2.0|admin|delete a review
 
 
 
