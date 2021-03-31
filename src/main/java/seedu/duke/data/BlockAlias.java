@@ -27,18 +27,11 @@ public class BlockAlias {
         return blockNames;
     }
 
-    public void addAlias(String block, String alias) throws InvalidBlockException, InvalidAliasException {
-        if (!isValidBlock(block)) {
-            throw new InvalidBlockException();
-        } else if (!isValidAlias(alias)) {
+    public void addAlias(String block, String alias) throws InvalidAliasException {
+        if (!isValidAlias(alias)) {
             throw new InvalidAliasException();
         }
         aliases.put(alias, block);
-    }
-
-    public boolean isValidBlock(String block) {
-        NusMap nusMap = new NusMap();
-        return nusMap.getBlock(block) != null;
     }
 
     public boolean isValidAlias(String alias) {

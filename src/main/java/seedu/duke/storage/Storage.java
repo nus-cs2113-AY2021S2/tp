@@ -52,6 +52,5 @@ public abstract class Storage {
     }
 
     public void overwriteDailyRouteFile(DailyRoute dailyRoute) {
-
     }
 }

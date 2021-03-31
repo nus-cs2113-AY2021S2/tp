@@ -70,5 +70,6 @@ deactivate ":Router"
 "command:GoCommand" -> "ui:RouterUi": showMessageWithDivider(String)
 activate "ui:RouterUi"
 return
+
  "command:GoCommand" --> ":NUSMaze"
 @enduml
