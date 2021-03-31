@@ -55,6 +55,13 @@ public class FitCenter {
         }
     }
 
+    public void initializeGoalProgress(PeriodType periodType) {
+        exerciseGoalList.initializeGoalProgress(periodType);
+        dietGoalList.initializeGoalProgress(periodType);
+        sleepGoalList.initializeGoalProgress(periodType);
+        bodyWeightGoalList.initializeGoalProgress(periodType);
+    }
+
     /**
      * Adds a given record to a list that stores the same type of records.
      *

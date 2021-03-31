@@ -4,7 +4,7 @@ package seedu.duke.common;
  * Container for commonly used messages.
  */
 public class Messages {
-    public static final String MESSAGE_VERSION = "V1.0";
+    public static final String MESSAGE_VERSION = "V2.0";
     public static final String MESSAGE_FEATURES = "You can use the app by using command ADD, VIEW, and DELETE.";
     public static final String MESSAGE_WELCOME = "Welcome to your personal fitness app - Healthier\n"
             + "What's in your mind today?\n";
@@ -17,6 +17,16 @@ public class Messages {
     public static final String MESSAGE_HELP_GREETINGS = "Thank you for choosing to be healthier with us.\n"
             + "The current version of this application is: " + MESSAGE_VERSION + "\n"
             + MESSAGE_FEATURES + "\n";
+    public static final String MESSAGE_CHECK_GOALS_PROMPT = "Check out your current goals with command 'check'.\n";
+    public static final String MESSAGE_SAME_DAY = "Welcome back to Healthier today.\n";
+    public static final String MESSAGE_NEW_DAY = "Nice to see you on a brand new day!\n"
+            + "All progress of daily goals have been reset for you.";
+    public static final String MESSAGE_NEW_WEEK = "Today marks a new week.\nThis week is week %s.\n"
+            + "All progress of weekly goals have been reset for you.";
+    public static final String MESSAGE_UNACHIEVED_GOALS = "You have unachieved goals.\n";
+    public static final String MESSAGE_GOALS_DONE_TODAY = "Congratulations!\nYou have achieved all goals for today!";
+    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "Congratulations!\n"
+            + "You have achieved all goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
     public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\tProgress\n";

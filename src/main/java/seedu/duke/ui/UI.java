@@ -42,4 +42,11 @@ public class UI {
     public void showFileErrorMessage() {
         System.out.println("The source file can't be accessed, please check your access settings.");
     }
+
+    public static void printMessage(String message) {
+        System.out.println(DIVIDER
+                + message
+                + "\n"
+                + DIVIDER_LINE_ONLY);
+    }
 }

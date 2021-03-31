@@ -47,4 +47,16 @@ public class GoalList {
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
         }
     }
+
+    public void initializeGoalProgress(PeriodType periodType) {
+        if (goals.isEmpty()) {
+            return;
+        }
+        
+        for (Goal goal : goals) {
+            if (goal.getPeriodType().equals(periodType)) {
+                //goal.initializeProgress();
+            }
+        }
+    }
 }

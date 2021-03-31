@@ -6,6 +6,7 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandResult;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
+import seedu.duke.goal.timeManager.TimeController;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 
@@ -14,12 +15,15 @@ import java.io.IOException;
 
 public class Healthier {
     private UI ui;
+    private TimeController timeController;
     private Storage storage;
     private final User currentUser = new User();
     private final FitCenter currentFitCenter = currentUser.getFitCenter();
 
     private void start() {
         ui = new UI();
+        timeController = new TimeController();
+        timeController.checkForTime(currentFitCenter);
         String sourceFilePath = "data" + File.separator + "records.txt";
         try {
             storage = new Storage(sourceFilePath);
