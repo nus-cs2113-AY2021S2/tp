@@ -140,6 +140,7 @@ Mingshun has been hired :)
 ```
 
 Example Screenshot:
+
 <img src="images/StaffAdd.PNG" width = "850" >
 
 <br/><br/>
@@ -161,6 +162,7 @@ D12345 has been fired :(
 ------------------------------------------------------------------------------
 ```
 Example Screenshot:
+
 <img src="images/StaffDelete.PNG" width = "850" >
 <br/><br/>
 
@@ -187,6 +189,7 @@ D67890     | Alexander  | 31    | Heart Surgeon
 ```
 
 Example Screenshot:
+
 <img src="images/StaffListDoc.PNG" width = "850">
 
 
@@ -202,6 +205,7 @@ N13579     | Sarrah     | 29    | Oncology
 N24680     | JiaEn      | 28    | Pain Management  
 ```
 Example Screenshot:
+
 <img src="images/StaffListNurse.PNG" width = "850">
 
 
@@ -222,6 +226,7 @@ N24680     | JiaEn      | 28    | Pain Management
 ```
 
 Example Screenshot:
+
 <img src="images/StaffList.PNG" width = "850" >
 
 <br/><br/>
