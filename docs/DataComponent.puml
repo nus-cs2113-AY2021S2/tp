@@ -1,0 +1,38 @@
+@startuml
+!include Style.puml
+
+package Data <<Rectangle>> {
+    class NusMap DATA_COLOR
+    class Block DATA_COLOR
+    class BlockAlias DATA_COLOR
+    class DailyRoute DATA_COLOR
+    class EateryList DATA_COLOR
+    class Favourite DATA_COLOR
+    class History DATA_COLOR
+}
+
+package Storage <<Rectangle>> STORAGE_COLOR {
+}
+
+package Command <<Rectangle>> COMMAND_COLOR {
+}
+
+NusMap --> Block : contains
+EateryList --> Block : contains
+
+Storage -up-> NusMap
+Storage -up-> DailyRoute
+Storage -up-> BlockAlias
+Storage -up-> EateryList
+Storage --up-> Favourite
+Storage -up-> History
+
+Command -down-> NusMap
+Command -down-> DailyRoute
+Command -down-> BlockAlias
+Command -down-> EateryList
+Command -down-> Favourite
+Command -down-> History
+
+hide members
+@enduml

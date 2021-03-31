@@ -1,8 +1,8 @@
 package seedu.duke.parser;
 
-import seedu.duke.command.ByeCommand;
+import seedu.duke.command.generalcommand.ByeCommand;
 import seedu.duke.command.Command;
-import seedu.duke.command.HelpCommand;
+import seedu.duke.command.generalcommand.HelpCommand;
 import seedu.duke.command.aliascommand.AddCustomAliasCommand;
 import seedu.duke.command.aliascommand.DeleteCustomAliasCommand;
 import seedu.duke.command.aliascommand.ShowCustomAliasCommand;
