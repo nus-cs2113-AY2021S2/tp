@@ -1,5 +1,7 @@
 package seedu.model;
 
+import java.text.DecimalFormat;
+
 public class Inventory {
     protected String name;
     protected Double price;
@@ -16,14 +18,16 @@ public class Inventory {
         return this.name;
     }
 
-    /*public Double getPrice() {
-        return this.price;
-    }*/
+    public String getPrice() {
+        DecimalFormat df = new DecimalFormat("0.00");
+        //price = Math.round(price*100.0)/100.0;
+        //return String.valueOf(price);
+        return df.format(price);
+    }
 
-    /*public int getQuantity() {
+    public int getQuantity() {
         return this.quantity;
-    }*/
-
+    }
     public String getDrugDetails() {
         return ("Name: " + name + "\n" +
                 "Price: $" + price + "\n" +

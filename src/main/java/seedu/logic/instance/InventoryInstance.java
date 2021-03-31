@@ -3,10 +3,13 @@ package seedu.logic.instance;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.parser.InventoryParser;
+import seedu.model.Inventory;
 import seedu.storage.InventoryStorage;
 import seedu.logic.command.Command;
 import seedu.ui.InventoryUI;
 import seedu.ui.UI;
+
+import java.util.ArrayList;
 
 public class InventoryInstance {
 
@@ -14,7 +17,7 @@ public class InventoryInstance {
      * Main entry-point for the java.duke.DrugInstance application.
      */
     private InventoryUI ui;
-    private InventoryActions drugs;
+    private InventoryActions inventory;
     private InventoryStorage inventoryStorage;
     private InventoryParser parser;
 
@@ -24,26 +27,36 @@ public class InventoryInstance {
         ui = new InventoryUI();
         inventoryStorage = new InventoryStorage(filePath);
         parser = new InventoryParser();
+        /*
         try {
             //inventories = inventoryStorage.uploadDrugs();
-            drugs = new InventoryActions(inventoryStorage.loadInventory());
+            inventory = new InventoryActions(inventoryStorage.loadInventory());
         } catch (HealthVaultException e) {
             ui.showLoadingError();
-            drugs = new InventoryActions();
+            inventory = new InventoryActions();
             //inventories = inventoryStorage.createNewFile();
-        }
+        }*/
     }
 
     public void run() {
-        InventoryUI.DrugCommandWelcome();
+        try {
+            //inventories = inventoryStorage.uploadDrugs();
+            ArrayList<Inventory> list = inventoryStorage.loadInventory();
+            inventory = new InventoryActions(list);
+        } catch (HealthVaultException e) {
+            ui.showLoadingError();
+            inventory = new InventoryActions();
+            //inventories = inventoryStorage.createNewFile();
+        }
+        InventoryUI.inventoryMenuHeader();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
                 UI.showLine(); // show the divider line ("_______")
                 String fullCommand = ui.getInput("Inventory");
-                Command c = parser.inventoryParse(fullCommand, drugs);
-                c.execute(drugs, ui);
-                inventoryStorage.storeInventory(drugs);
+                Command c = parser.inventoryParse(fullCommand, inventory);
+                c.execute(inventory, ui);
+                inventoryStorage.storeInventory(inventory);
                 isReturnToStartMenu = c.isExit();
                 if (isReturnToStartMenu) {
                     UI.returningToStartMenuMessage();
