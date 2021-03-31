@@ -2,9 +2,11 @@ package seedu.duke.goal;
 
 import seedu.duke.record.RecordType;
 
+import java.time.LocalDate;
+
+
 public class DietGoal extends Goal {
-    private final double targetEnergy;
-    private double progress;
+
 
     /**
      * Initialize an instance of an diet goal.
@@ -13,44 +15,15 @@ public class DietGoal extends Goal {
      * @param targetEnergy the target energy to be consumed.
      */
     public DietGoal(PeriodType periodType, double targetEnergy) {
-        super(RecordType.DIET, periodType);
-        this.targetEnergy = targetEnergy;
+        super(RecordType.DIET, periodType, targetEnergy);
         initializeProgress();
     }
 
-    /**
-     * Gets the the target energy to be consumed.
-     *
-     * @return the target energy to be consumed in kcal.
-     */
-    public double getTargetEnergy() {
-        return targetEnergy;
+    public DietGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
+        super(RecordType.DIET, periodType, targetEnergy, daySet);
+        initializeProgress();;
     }
 
-    /**
-     * Gets the progress of the diet goal (energy consumed).
-     *
-     * @return the energy consumed in kcal.
-     */
-    public double getProgress() {
-        return progress;
-    }
-
-    /**
-     * Initializes the progress of the diet goal (energy consumed) to 0 kcal.
-     */
-    public void initializeProgress() {
-        this.progress = 0;
-    }
-
-    /**
-     * Updates the progress of the diet goal (energy consumed).
-     *
-     * @param progress the energy consumed in kcal.
-     */
-    public void updateProgress(double progress) {
-        this.progress = progress;
-    }
 
     @Override
     public String getProgressUnit() {
@@ -66,8 +39,8 @@ public class DietGoal extends Goal {
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                 + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetEnergy() + getProgressUnit() + "\n"
-                + "Progress: " + getProgress() + getProgressUnit();
+                + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
+                + "Progress: " + getProgress() + " " + getProgressUnit();
     }
 
     /**
@@ -77,9 +50,14 @@ public class DietGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                + getPeriodType().toString().toLowerCase() + "\t"
-                + getTargetEnergy() + getProgressUnit() + "\t"
-                + getProgress() + getProgressUnit() + "\n";
+        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+                + getPeriodType().toString().toLowerCase() + "\t\t"
+                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getProgress() + " " + getProgressUnit() + "\n";
+    }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "D" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
     }
 }

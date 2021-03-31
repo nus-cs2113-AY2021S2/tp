@@ -1,10 +1,11 @@
 package seedu.duke.goal;
 
+import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
 
+import java.time.LocalDate;
+
 public class SleepGoal extends Goal {
-    private final double targetDuration;
-    private double progress;
 
     /**
      * Initialize an instance of an exercise goal.
@@ -13,43 +14,13 @@ public class SleepGoal extends Goal {
      * @param targetDuration the target sleeping duration.
      */
     public SleepGoal(PeriodType periodType, double targetDuration) {
-        super(RecordType.SLEEP, periodType);
-        this.targetDuration = targetDuration;
+        super(RecordType.SLEEP, periodType, targetDuration);
         initializeProgress();
     }
 
-    /**
-     * Gets the the target sleeping duration.
-     *
-     * @return the target sleeping duration in hour(s).
-     */
-    public double getTargetDuration() {
-        return targetDuration;
-    }
-
-    /**
-     * Gets the progress of the sleeping duration goal.
-     *
-     * @return the sleeping duration in hour(s).
-     */
-    public double getProgress() {
-        return progress;
-    }
-
-    /**
-     * Initializes the progress of the sleeping duration to 0hour.
-     */
-    public void initializeProgress() {
-        this.progress = 0;
-    }
-
-    /**
-     * Updates the progress of the sleeping duration goal.
-     *
-     * @param progress the sleeping duration in hour(s).
-     */
-    public void updateProgress(double progress) {
-        this.progress = progress;
+    public SleepGoal(PeriodType periodType, double targetDuration, LocalDate daySet) {
+        super(RecordType.SLEEP, periodType, targetDuration, daySet);
+        initializeProgress();
     }
 
     @Override
@@ -66,8 +37,8 @@ public class SleepGoal extends Goal {
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                 + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetDuration() + getProgressUnit() + "\n"
-                + "Progress: " + getProgress() + getProgressUnit();
+                + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
+                + "Progress: " + getProgress() + " " + getProgressUnit();
     }
 
     /**
@@ -77,9 +48,15 @@ public class SleepGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                + getPeriodType().toString().toLowerCase() + "\t"
-                + getTargetDuration() + getProgressUnit() + "\t"
-                + getProgress() + getProgressUnit() + "\n";
+        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+                + getPeriodType().toString().toLowerCase() + "\t\t   "
+                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getProgress() + " " + getProgressUnit() + "\n";
     }
+
+    @Override
+    public String getGoalDataToStore() {
+        return "S" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+    }
+
 }

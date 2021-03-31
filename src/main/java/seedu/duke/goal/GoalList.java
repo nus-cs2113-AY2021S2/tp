@@ -2,9 +2,12 @@ package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
 import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
+import seedu.duke.record.Record;
 import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
+
+import static seedu.duke.goal.PeriodType.DAILY;
 
 public class GoalList {
     private final ArrayList<Goal> goals = new ArrayList<>();
@@ -29,7 +32,7 @@ public class GoalList {
             int i = 1;
             for (Goal goal : goals) {
                 if (goal.getPeriodType() == optionalPeriodType) {
-                    goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
+                    goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
                     i++;
                 }
             }
@@ -41,10 +44,34 @@ public class GoalList {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
-                goalStringBuilder.append(i).append(goal.getGoalData()).append("\n");
+                goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
                 i++;
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
+        }
+    }
+
+    public String getGoalToStore() {
+        StringBuilder goalStringBuilder = new StringBuilder();
+        for (Goal goal : goals) {
+            goalStringBuilder.append(goal.getGoalDataToStore()).append("\n");
+        }
+        return goalStringBuilder.toString();
+    }
+
+    public void updateDailyProgess(double progress) {
+        for (Goal goal : goals) {
+            if (goal.getPeriodType() == DAILY) {
+                goal.setProgress(progress);
+            }
+        }
+    }
+
+    public boolean isEmpty() {
+        if (goals.size() == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 }
