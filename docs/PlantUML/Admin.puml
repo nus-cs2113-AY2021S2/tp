@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box runAdmin
+
+activate ":NusFoodReviews"
+":NusFoodReviews" -> ":NusFoodReviews" : runAdmin()
+":NusFoodReviews" -> "ui:Ui" : adminShowWelcome()
+activate "ui:Ui"
+"ui:Ui" --> ":NusFoodReviews"
+deactivate "ui:Ui"
+
+
+":NusFoodReviews" -> "<<class>> \n :AdminVerification" : verifyInputPassword()
+activate "<<class>> \n :AdminVerification"
+"<<class>> \n :AdminVerification" --> ":NusFoodReviews"
+deactivate "<<class>> \n :AdminVerification"
+
+
+":NusFoodReviews" -> "ui:Ui" : showAdminVerified()
+activate "ui:Ui"
+"ui:Ui" --> ":NusFoodReviews"
+deactivate "ui:Ui"
+
+loop
+":NusFoodReviews" -> "ui:Ui" : readCommand()
+activate "ui:Ui"
+"ui:Ui" --> ":NusFoodReviews" : line
+deactivate "ui:Ui"
+
+":NusFoodReviews" -> "parser:Parser" : parseAdminCommand(line)
+activate "parser:Parser"
+"parser:Parser" --> ":NusFoodReviews" : command
+deactivate "parser:Parser"
+
+":NusFoodReviews" -> "c:Command" : execute(canteens, ui)
+activate "c:Command"
+"c:Command" --> ":NusFoodReviews"
+deactivate "c:Command"
+
+end
+
+<-- ":NusFoodReviews"
+deactivate ":NusFoodReviews"
+
+@enduml
