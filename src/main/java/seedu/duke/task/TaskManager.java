@@ -1,11 +1,13 @@
 package seedu.duke.task;
 
+import seedu.duke.Storage;
 import seedu.duke.Ui;
 import seedu.duke.task.command.AddTask;
 import seedu.duke.task.command.DeleteTask;
 import seedu.duke.task.command.MarkOrUnmarkTask;
 import seedu.duke.task.command.PinTask;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -65,8 +67,13 @@ public class TaskManager {
                 }
             } catch (NumberFormatException e) {
                 Ui.printInvalidIntegerMessage();
-                Ui.printHorizontalLine();
             }
+            try {
+                Storage.saveAllFiles();
+            } catch (IOException e) {
+                System.out.println("modules.txt file could not be auto-saved:(");
+            }
+            Ui.printReturnToTaskManagerMenuMessage();
         }
     }
 
@@ -161,24 +168,6 @@ public class TaskManager {
         return isEmpty;
     }
 
-    public static boolean findTaskInPinnedTasks(String taskType, String module, String description,
-                                                String status, String message) {
-        if (!pinnedTasks.containsKey(taskType)) {
-            return false;
-        }
-        ArrayList<Task> tasks = pinnedTasks.get(taskType);
-        for (Task task : tasks) {
-            boolean isSameModule = task.getModule().equals(module);
-            boolean isSameDescription = task.getDescription().equals(description);
-            boolean isSameStatus = task.getStatus().equals(status);
-            boolean isSameMessage = task.getMessage().equals(message);
-            if (isSameModule && isSameDescription && isSameStatus && isSameMessage) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static boolean findIfTaskExists(String module, String description, String status) {
         for (Task task : tasks) {
             boolean isSameModule = task.getModule().equals(module);
@@ -233,6 +222,22 @@ public class TaskManager {
         return false;
     }
 
+    public static Task getTask(String taskType, int taskNumber) {
+        switch (taskType) {
+        case TASK_TYPE:
+            return tasks.get(taskNumber - 1);
+        case ASSIGNMENT_TYPE:
+            return assignments.get(taskNumber - 1);
+        case MIDTERM_TYPE:
+            return midterms.get(taskNumber - 1);
+        case FINAL_EXAM_TYPE:
+            return finalExams.get(taskNumber - 1);
+        default:
+            System.out.println("Task type does not exist!");
+            return null;
+        }
+    }
+
     public static Task getPinnedTask(String taskType, String module, String description,
                                        String status, String message) {
         ArrayList<Task> tasks = pinnedTasks.get(taskType);
@@ -248,19 +253,21 @@ public class TaskManager {
         return null;
     }
 
-    public static Task getTask(String taskType, int taskNumber) {
-        switch (taskType) {
-        case TASK_TYPE:
-            return tasks.get(taskNumber - 1);
-        case ASSIGNMENT_TYPE:
-            return assignments.get(taskNumber - 1);
-        case MIDTERM_TYPE:
-            return midterms.get(taskNumber - 1);
-        case FINAL_EXAM_TYPE:
-            return finalExams.get(taskNumber - 1);
-        default:
-            System.out.println("Task type does not exist!");
-            return null;
+    public static boolean findTaskInPinnedTasks(String taskType, String module, String description,
+                                                String status, String message) {
+        if (!pinnedTasks.containsKey(taskType)) {
+            return false;
         }
+        ArrayList<Task> tasks = pinnedTasks.get(taskType);
+        for (Task task : tasks) {
+            boolean isSameModule = task.getModule().equals(module);
+            boolean isSameDescription = task.getDescription().equals(description);
+            boolean isSameStatus = task.getStatus().equals(status);
+            boolean isSameMessage = task.getMessage().equals(message);
+            if (isSameModule && isSameDescription && isSameStatus && isSameMessage) {
+                return true;
+            }
+        }
+        return false;
     }
 }

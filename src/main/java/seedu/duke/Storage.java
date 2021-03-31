@@ -31,6 +31,30 @@ public class Storage {
     public static String filePathForZoom = new File("").getAbsolutePath();
     public static String filePathForMcs = new File("").getAbsolutePath();
 
+    public static void saveAllFiles() throws IOException {
+        modulesFileSaver();
+        tasksFileSaver();
+        assignmentsFileSaver();
+        midtermsFileSaver();
+        finalExamsFileSaver();
+        pinnedTasksFileSaver();
+        linksFileSaver();
+        zoomLinksFileSaver();
+        modularCreditSaver();
+    }
+
+    public static void loadAllFiles() {
+        loadModuleInfoFile();
+        loadTasksFile();
+        loadAssignmentsFile();
+        loadMidtermsFile();
+        loadFinalExamsFile();
+        loadPinnedTasksFile();
+        loadLinkInfoFile();
+        loadZoomLinkInfoFile();
+        loadMcsInfoFile();
+    }
+
     /**
      * Checks if file exists, or creates new file if it doesn't already exist. Edits filepath
      * variable within storage
@@ -542,5 +566,4 @@ public class Storage {
                 + HelpGraduation.getCurrentCap());
         fw.close();
     }
-
 }
