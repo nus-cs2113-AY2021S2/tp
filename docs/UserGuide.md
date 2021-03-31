@@ -251,12 +251,29 @@ which is the index of the note in the location's notes list.
   
 - The `NOTE INDEX` must be an integer within the total number of notes that the location has.
 
-### 4.7 Exiting the application
+### 4.7 Favourite Routes
+#### 4.7.1 Adding Favourite Route
+You can add a route to favourites to easily access it in the future.
+Format: `add favourite → STARTING BLOCK → DESTINATION BLOCK`
+
+#### 4.7.2 Show stored favourites
+You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.
+Format: `show favourite`
+
+#### 4.7.3 Repeating favourite route
+You can execute and obtain the route to take for your favourite routes.
+Format: `repeat favourite → INDEX OF ROUTE`
+
+#### 4.7.4 Deleting favourite route
+You can delete a favourite route if it is not frequently used anymore.
+Format: `delete favourite → INDEX OF ROUTE`
+
+### 4.8 Exiting the application
 
 Exits the application.<br>
 Format: `bye`
 
-### 4.8 Saving the Data
+### 4.9 Saving the Data
 
 NUSMaze data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
