@@ -3,8 +3,6 @@
 Group `F10-2`  
 Last update on `31 Mar 2021`
 
----
-
 ## Table of Content
 
 - [Getting Started](#getting-started)
@@ -25,19 +23,18 @@ Last update on `31 Mar 2021`
 - [Glossary](#glossary)
 - [Instructions for manual testing](#instructions-for-manual-testing)
 
----
+
 
 ## Getting Started
 
----
+
 
 ## Design
 
----
+
 
 ## Implementation
 
----
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 ## Appendix: Requirements
