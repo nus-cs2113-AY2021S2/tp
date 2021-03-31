@@ -116,7 +116,7 @@ The functions in Staff menu allow you, the head nurse, to access and modify the 
 (Note for Staff ID: D/N = Doctor/Nurse)
 
 This is an example of the welcome screen for Staff Menu.
-<img src="images/HelpCommand.PNG" >
+<img src="images/StaffWelcome.PNG" >
 
 #### Adding a new staff: `add`
 Adds a new doctor or nurse to the respective staff lists.
@@ -132,12 +132,12 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> add/D12345/MingShun/30/Pediatrician
-Mingshun has been hired:)
+Mingshun has been hired :)
 ------------------------------------------------------------------------------
 ```
 
 Example Screenshot:
-<img src="images/HelpCommand.PNG" >
+<img src="images/StaffAdd.PNG" >
  
 #### Deleting a staff: `delete`
 Deletes a staff from the staff list.
@@ -152,7 +152,7 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> delete/D12345
-D12345 has been fired:(
+D12345 has been fired :(
 ------------------------------------------------------------------------------
 ```
 
