@@ -1,5 +1,7 @@
 package employee;
 
+import asserts.Asserter;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,8 +48,7 @@ public class EmployeeController {
                 for (String schedule : schedules) {
                     if (schedule.equals(scheduleToDrop)) {
                         person.dropSchedule(scheduleToDrop);
-                        assert originalScheduleLength == person.getSchedules().size() + 1: "1 schedule " +
-                                "is supposed to be dropped.";
+                        Asserter.assertIncrementScheduleSize(originalScheduleLength, person);
                         System.out.println("schedule dropped");
                         return;
                     }

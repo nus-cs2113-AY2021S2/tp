@@ -1,5 +1,6 @@
 package shift;
 
+import asserts.Asserter;
 import employee.Employee;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class Shift {
     private int shiftIndex = 1;
 
     public Shift(ArrayList<Employee> employees, LocalDate shiftDate, int shiftIndex, int vacancy) {
+        Asserter.assertNonNullEmployees(employees);
         this.employees = employees;
         this.shiftDate = shiftDate;
         this.vacancy = vacancy;
@@ -39,6 +41,7 @@ public class Shift {
         if (this.vacancy > 0) {
             employees.add(e);
             this.vacancy--;
+            Asserter.assertPositiveVacancies(this.vacancy);
             System.out.println("Employee " + e.getName() + " assigned.");
         }
         else {
