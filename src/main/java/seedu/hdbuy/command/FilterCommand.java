@@ -6,6 +6,7 @@ import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class FilterCommand extends Command {
 
@@ -19,7 +20,7 @@ public class FilterCommand extends Command {
 
     @Override public void execute(UserInput userInput) {
         try {
-            HashMap<QueryKey, String> inputs = userInput.getInputs();
+            LinkedHashMap<QueryKey, String> inputs = userInput.getInputs();
             switch (criteria) {
             case "location":
                 inputs.put(QueryKey.LOCATION, value);

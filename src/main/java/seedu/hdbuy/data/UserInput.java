@@ -3,16 +3,17 @@ package seedu.hdbuy.data;
 import seedu.hdbuy.common.QueryKey;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class UserInput {
 
-    private final HashMap<QueryKey, String> inputs;
+    private final LinkedHashMap<QueryKey, String> inputs;
 
     public UserInput() {
-        this.inputs = new HashMap<>();
+        this.inputs = new LinkedHashMap<>();
     }
 
-    public HashMap<QueryKey, String> getInputs() {
+    public LinkedHashMap<QueryKey, String> getInputs() {
         return inputs;
     }
 

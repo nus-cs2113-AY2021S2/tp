@@ -11,6 +11,7 @@ import seedu.hdbuy.common.exception.NoFlatsException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class TextUi {
@@ -52,7 +53,7 @@ public class TextUi {
         System.out.print("*HELP PLACEHOLDER*\n");
     }
 
-    public static void showParameters(HashMap<QueryKey, String> inputs) {
+    public static void showParameters(LinkedHashMap<QueryKey, String> inputs) {
         if (inputs.isEmpty()) {
             System.out.println("Currently there are no filter conditions set.");
             return;

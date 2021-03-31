@@ -11,6 +11,7 @@ import seedu.hdbuy.ui.TextUi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.logging.Logger;
 
 public class FindCommand extends Command {
@@ -19,7 +20,7 @@ public class FindCommand extends Command {
 
     @Override public void execute(UserInput userInput) {
         try {
-            HashMap<QueryKey, String> inputs = userInput.getInputs();
+            LinkedHashMap<QueryKey, String> inputs = userInput.getInputs();
             if (inputs.isEmpty()) {
                 logger.warning("Unable to execute find command due to an empty filter");
                 throw new EmptyParameterException();
