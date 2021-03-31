@@ -58,6 +58,8 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 
 &nbsp;
 
+[🡅 Back to Table of Contents](#table-of-contents)
+
 ----
 
 ## Setting up GULIO on Your Computer
@@ -76,6 +78,8 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 >   1. Run the tests to ensure they all pass.
 
 &nbsp;
+
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -103,6 +107,8 @@ This document describes the architecture and implementation details of the comma
 This describes the software architecture and software design decisions for the implementation of GULIO. The intended audience of this document is the developers, designers, and software testers of GULIO.
 
 &nbsp;
+
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -304,6 +310,8 @@ Classes that are used by multiple components:
 
 &nbsp;
 
+[🡅 Back to Table of Contents](#table-of-contents)
+
 ----
 
 ## Implementation
@@ -405,6 +413,8 @@ If the `Loader` failed to load the file, null would be returned. If null is not 
 
 &nbsp;
 
+[🡅 Back to Table of Contents](#table-of-contents)
+
 ----
 
 ## Appendix: Requirements
@@ -464,6 +474,8 @@ Efficiently view and update regularly-needed information on modules and deadline
 * Module: A university module
 
 &nbsp;
+
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -598,3 +610,8 @@ Due to the 2-layer command system, you will need to identify which layer you are
    >Expected outcome: Lists all existing lessons.
 1. Enter indices of lessons with links to open.<br>
    >Expected outcome: Opens link for lessons selected.
+
+
+&nbsp;
+
+[🡅 Back to Table of Contents](#table-of-contents)
