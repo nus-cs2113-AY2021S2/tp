@@ -17,7 +17,7 @@ public class PatientChecker extends MainChecker{
     private String command;
     private int numberOfTokens;
 
-    private static final String ILLEGAL_CHARACTERS = "^.*[~#@*+%{}<>\\[]|\"_\\^.$\\.*";
+    private static final String ILLEGAL_CHARACTERS = "[~#@*+%{}<>\\[\\]|\"_^\\\\]";
 
     public PatientChecker(PatientActions patients, ArrayList<String> stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
@@ -36,11 +36,11 @@ public class PatientChecker extends MainChecker{
         emptySpaceCheck();
         checkStorageLength();
         checkIDStorage();
-        checkAge(stringTokens.get(3));
-        illegalCharacterChecker(stringTokens.get(2));
-        illegalCharacterChecker(stringTokens.get(5));
-        illegalCharacterChecker(stringTokens.get(6));
-        checkGender(stringTokens.get(4));
+        checkAge(stringTokens.get(2));
+        illegalCharacterChecker(stringTokens.get(1), "name");
+        illegalCharacterChecker(stringTokens.get(4), "Illness");
+        illegalCharacterChecker(stringTokens.get(5), "medication required");
+        checkGender(stringTokens.get(3));
     }
 
     public void checkAddCommand() throws HealthVaultException, NumberFormatException {
@@ -48,9 +48,9 @@ public class PatientChecker extends MainChecker{
         checkLength();
         checkID();
         checkAge(stringTokens.get(3));
-        illegalCharacterChecker(stringTokens.get(2));
-        illegalCharacterChecker(stringTokens.get(5));
-        illegalCharacterChecker(stringTokens.get(6));
+        illegalCharacterChecker(stringTokens.get(2), "name");
+        illegalCharacterChecker(stringTokens.get(5), "Illness");
+        illegalCharacterChecker(stringTokens.get(6), "medication required");
         checkGender(stringTokens.get(4));
     }
 
@@ -79,12 +79,12 @@ public class PatientChecker extends MainChecker{
         }
     }
 
-    private void illegalCharacterChecker(String stringToken) throws IllegalCharacterException {
+    private void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
         String nameString = stringToken.toLowerCase();
         Pattern pattern = Pattern.compile(ILLEGAL_CHARACTERS);
         Matcher matcher = pattern.matcher(nameString);
         if (matcher.find()) {
-            throw new IllegalCharacterException();
+            throw new IllegalCharacterException(fieldInput);
         }
     }
 
@@ -106,8 +106,8 @@ public class PatientChecker extends MainChecker{
     }
 
     public void checkIDStorage() throws HealthVaultException {
-        checkValidID(stringTokens.get(1));
-        checkIDExistStorage(stringTokens.get(1));
+        checkValidID(stringTokens.get(0));
+        checkIDExistStorage(stringTokens.get(0));
     }
 
     private int numberOfIntegersInString(String userInput) {
@@ -123,6 +123,8 @@ public class PatientChecker extends MainChecker{
     private void checkValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException,
             InvalidIDValueException {
         if (userID.length() != 6) {
+            System.out.println(userID);
+            System.out.println(userID.length());
             throw new InvalidIDLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException("IDType");
