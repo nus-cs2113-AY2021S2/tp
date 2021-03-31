@@ -336,50 +336,79 @@ Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]
 
 Example of usage:
 ```
-Appointments --> add/D12345/A12345/Alex/M/21012021
+Appointments --> add/D12345/A12347/Alex/M/21012021
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Appointments --> add/D12345/A12345/Alex/M/21012021
-Alex scheduled for an appointment on 21/01/2021!
+------------------------------------------------------------------------------
+Appointment Added
 ------------------------------------------------------------------------------
 ```
 
 #### Deleting an appointment: `delete`
 Deletes an appointment from the list of appointments.
 
-Format: `delete/[Appointment ID]`
+Format: `delete/[DoctorID/ Appointment ID]`
 
-Example of usage:
+Example of usage (Doctor ID):
 ```
-Appointments --> delete/A369
+Appointments --> delete/D12345
 ```
-Expected Outcome:
+Expected Outcome (Doctor ID):
+```
+------------------------------------------------------------------------------
+Appointments --> delete/D12345
+------------------------------------------------------------------------------
+DoctorID / Appointment ID : D12345/A12346 has been deleted!
+DoctorID / Appointment ID : D12345/A12347 has been deleted!
+------------------------------------------------------------------------------
+```
+Example of usage (Appointment ID):
+```
+Appointments --> delete/A12346
+```
+Expected Outcome (Appointment ID):
 ```
 ------------------------------------------------------------------------------
 Appointments --> delete/A369
-Alex has attended the appointment!
+------------------------------------------------------------------------------
+Appointmenet ID: A12346 has been deleted!
 ------------------------------------------------------------------------------
 ```
-
 #### Listing appointments: `list`
 Lists all of the appointments of a specific doctor.
 
-Format: `list/[Doctor ID]`
+Format: `list/[Doctor ID/ Appointment ID]`
 
-Example of usage:
+Example of usage (Doctor ID):
 ```
 Appointments --> list/D12345
 ```
 
-Expected Outcome:
+Expected Outcome (Doctor ID):
 ```
 ------------------------------------------------------------------------------
-Appointments --> list/D12345
-21/01/2021
-Alex
-ID: A369
+Doctor ID  |Appointment ID | Name	| Gender   | Date     
+____________________________________________________________
+D12345     |A12345 	   | MingShun	| M        | 19/08/2021    
+           |A11111         | Alex	| M        | 21/01/2021    
+
+------------------------------------------------------------------------------
+```
+Example of usage (Appointment ID):
+```
+Appointments --> list/A12345
+```
+
+Expected Outcome (Appointment ID):
+```
+------------------------------------------------------------------------------
+Appointment ID | Name	  | Gender   | Date     
+____________________________________________________________
+A12345 	       | MingShun | M        | 19/08/2021    
+
 ------------------------------------------------------------------------------
 ```
 
