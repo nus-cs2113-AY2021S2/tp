@@ -283,7 +283,6 @@ public class RecommendationList {
     }
 
     public void determineEditCommand(int index) {
-        Ui ui = new Ui();
         String input = ui.readCommand();
         try {
             input = input.trim().toLowerCase();
