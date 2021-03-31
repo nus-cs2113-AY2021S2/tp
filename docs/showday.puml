@@ -1,8 +1,8 @@
 @startuml
 hide footbox
 
-actor User
-User -> "command:ShowDailyRouteCommand" : execute
+participant ":NUSMaze"
+":NUSMaze" -> "command:ShowDailyRouteCommand" : execute
 activate "command:ShowDailyRouteCommand"
 "command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : getSelectableDays
 activate "dailyRoute:DailyRoute"
@@ -44,6 +44,6 @@ return
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
-"command:ShowDailyRouteCommand" --> User
+"command:ShowDailyRouteCommand" --> ":NUSMaze"
 deactivate "command:ShowDailyRouteCommand"
 @enduml
