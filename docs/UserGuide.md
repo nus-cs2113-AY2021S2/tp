@@ -75,6 +75,7 @@ If you are having difficulties managing your schedule, lesson links and notes, G
 &nbsp;
 
 ----
+
 # Quick Start
 
 Download the latest version of GULIO from here:<br>
@@ -108,7 +109,7 @@ java 11 and above<br>
 
 <p align="center">
     <a href="UserGuide.md#table-of-contents">
-        Back to Table of Contents
+        Click to get back to <b>Table of Contents</b>
     </a>
 </p>
 
@@ -181,6 +182,15 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 Additionally, you can store your lecture notes in GULIO using the cheat-sheet feature. Cheat-sheets are stored as text files and GULIO has a built-in text editor that can be used to edit them. Cheat-sheets are unformatted so that users can focus on writing the content.<br>
 
 &nbsp;
+
+----
+
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
 
 ----
 
@@ -268,6 +278,15 @@ Lists all modules.
 | 1 | modules | Modules in your list:<br>1. CS2101<br>2. CS2113T |
 
 &nbsp;
+
+----
+
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
 
 ----
 
@@ -585,6 +604,15 @@ Lists all cheat-sheets for the module.
 
 ----
 
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
+
+----
+
 # Data & Storage
 
 ### Automatic Saving
@@ -615,6 +643,15 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 ----
 
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
+
+----
+
 # Text Editor
 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
@@ -631,6 +668,15 @@ In the text editor, you can type in your notes in the text field. When done, rem
 > ⚠ Do not include file extension (e.g. .”.txt”) when creating or editing the cheat-sheet.
 
 &nbsp;
+
+----
+
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
 
 ----
 
@@ -674,5 +720,14 @@ In the text editor, you can type in your notes in the text field. When done, rem
 | cheat-sheets | `cheat-sheets` |
 
 &nbsp;
+
+----
+
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Click to get back to <b>Table of Contents</b>
+    </a>
+</p>
+
 
 ----
