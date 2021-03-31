@@ -61,6 +61,7 @@ public class Constants {
                     + System.lineSeparator() + EXCEPTION_INDENT
                     + "(At least one symptom, diagnosis or prescription must be specified)";
     public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy).";
+    public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
