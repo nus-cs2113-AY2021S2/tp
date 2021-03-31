@@ -48,13 +48,13 @@ Given below is a sequence diagram of the View One Shift feature
 ### add schedule to employee feature
 #### Implementation
 
-The add schedule feature uses of the `Employee` object in the `employee` package to store the schedules of each employee. 
+The add schedule feature uses of the `Employee` class in the `employee` package to store the schedules of each employee. 
 
 The class diagram for the `Employee` class is as follows:
 
-![employee class diagram.png](employee%20class%20diagram.PNG)
+![employee class diagram v2.PNG](employee%20class%20diagram%20v2.PNG)
 
-Each `Employee` object has an employee name, and an arrayList of schedules, together with the functionality to set/get the employee name, add or drop a schedule from the employee object.
+Each `Employee` object has an employee name, and an arrayList of schedules, together with the functionality to set/get the employee name, get all of the employee's schedules, add or drop a schedule from the employee object.
 
 The arraylist of schedules contains all of the employee's schedules. Each schedule is a String which follows certain constraints as described below:
 
@@ -68,13 +68,13 @@ yyyy must be an integer between 2021-2099
 
 The validation for a schedule is done internally in the `Employee` Class through a method called `isScheduleValid`, which is used in the `addSchedule` method in the `employee` class. Only when `isScheduleValid` returns true, the `addSchedule` method will add the schedule to the employee.
 
-The logic for allowing the user to add a new schedule is in the `AppController` class in the `controller` package and the `Employee` class in the `employee` package. The sequence diagram for the interaction is shown below:
+The logic for allowing the user to add a new schedule is in the `EmployeeController` class in the `employee` package and the `Employee` class in the `employee` package. The sequence diagram for the interaction is shown below:
 
-![add schedule sequence diagram1.PNG](add%20schedule%20sequence%20diagram1.PNG)
+![add schedule sequence diagram v2.PNG](add%20schedule%20sequence%20diagram%20v2.PNG)
 
-When the user enters “add schedule”, the `addSchedule` method in the `AppController` is called. 
+When the user enters “add schedule” in `AppController`, `AppController` calls the `addSchedule` method in `EmployeeController`. 
 
-In the `addSchedule` method, the user is first asked to enter the employee’s name that the user wants to add a schedule to. 
+In the `addSchedule` method in `EmployeeController`, the user is first asked to enter the employee’s name that the user wants to add a schedule to. 
 
 The method will then check if there is a matching employee from the arraylist of employees in the system (from the `employees` variable in `AppController`). 
 
@@ -84,9 +84,9 @@ If there is a matching employee, the system proceeds to ask the user to enter a 
 
 After the user enters a schedule, control is passed to the `Employee` object, where the schedule is added to the employee if the schedule is verified to be valid. 
 
-Control is then passed back to the `addSchedule` method in `AppController`, with feedback from the `Employee` object on whether the schedule is valid or not. 
+Control is then passed back to the `addSchedule` method in `EmployeeController`, with feedback from the `Employee` object on whether the schedule is valid or not. 
 
-`addSchedule` in `AppController` will provide feedback to the user on if the schedule is added successfully, and end the method call by passing control back to the `run` method in `AppController`.
+`addSchedule` in `EmployeeController` will provide feedback to the user on if the schedule is added successfully, and end the method call by passing control back to the `run` method in `AppController`.
 
 ### Assign Employee feature
 #### Implementation

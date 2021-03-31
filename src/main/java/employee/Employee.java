@@ -77,7 +77,7 @@ public class Employee {
         return formattedString +"\n";
     }
 
-    public static boolean isInteger(String input) {
+    private static boolean isInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch(NumberFormatException | NullPointerException e) {
