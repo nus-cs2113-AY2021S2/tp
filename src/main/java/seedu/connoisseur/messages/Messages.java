@@ -12,7 +12,7 @@ public class Messages {
             + LOGO
             + "\n"
             + "Connoisseur is in review mode by default!\n"
-            + "Enter 'review' or 'reco' to change mode at any point:) ";
+            + "Enter 'review' or 'reco' to change mode when prompted:) ";
 
     public static final String COMMAND_PROMPT = "_____________________________________________________________________"
             + "______________________\n"
