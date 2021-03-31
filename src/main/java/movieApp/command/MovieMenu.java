@@ -2,6 +2,7 @@ package movieApp.command;
 
 import movieApp.*;
 import movieApp.storage.Database;
+import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
 
@@ -211,7 +212,12 @@ public class MovieMenu {
 		}
 
 		System.out.println("\nThe Transaction is made, total ticket number: "+ num_tic+" ");
-		((Customer)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
+		if(user.getUserType().equals("Customer")){
+			((Customer)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
+		} else{
+			((Admin)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
+		}
+
 
 
 
