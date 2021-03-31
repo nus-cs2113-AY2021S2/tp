@@ -8,3 +8,4 @@ Hi. My name is Muhammad Zufiqqar bin Jamal. You can call me Zul. Our group is T1
 * Implemented milestones and issues for v2.0
 * Implemented Booking function
 * Implemented View Movie Details function
+* Implemented Sequence Diagrams for Login and Database
