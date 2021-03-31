@@ -279,7 +279,7 @@ public class MovieFilter {
 		int movie_choice = -1;
 		Scanner sc = new Scanner(System.in);
 		
-		while ((movie_choice < 0) || (movie_choice > size)) {
+		while ((movie_choice < 1) || (movie_choice > size)) {
 			System.out.println("Please indicate your choice:");
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
@@ -287,17 +287,17 @@ public class MovieFilter {
 				continue;
 			} 
 			movie_choice = sc.nextInt();
-			if ((movie_choice < 0) ||(movie_choice > size)) {
-				System.out.println("Please input an integer between 0 and "+size+".\n");
+			if ((movie_choice < 1) ||(movie_choice > size)) {
+				System.out.println("Please input an integer between 1 and "+size+".\n");
 			}
 		}
-		return movie_choice;
+		return movie_choice-1;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
 	public static ArrayList<Movie> selectMovie(ArrayList<Movie> movieList){
 		ArrayList<Movie> result = new ArrayList<>();
-		result.add(movieList.get(getMovieChoice(movieList.size()-1)));
+		result.add(movieList.get(getMovieChoice(movieList.size())));
 		return result;
 		
 	}
