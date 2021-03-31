@@ -27,6 +27,15 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
 
+|     Feature Type    |                                                                                      Description                                                                                      |
+|:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|        Staff        | Details of each Staff working in the hospital. Both Doctors and Nurses details can be found here. Each Staff consist of the following details: Staff ID Staff Name Age Specialisation |
+|       Patient       | Details of each patient that visited the hospital can be found here. Each Patient consist of the following details: Patient ID Patient Name Age Gender Medication Required Illness    |
+| Doctor Appointments | Details of each doctor’s appointment can be found here. Each Doctor Appointment consist of the following details: Doctor ID Appointment ID Patient Name Gender Date                   |
+|   Nurse Schedules   | Details for the schedule of nurse rounds to visit each patient. Each Nurse Schedule consist of the following details: Nurse ID Patient ID Date Time                                   |
+|      Inventory      | Details of the inventory of the hospital. Each Drug consist of the following details: Drug Name Price Quantity                         
+                                                                                                                                   
+
 ## 2. Installation Guide
 
 1. Ensure system has Java 11
