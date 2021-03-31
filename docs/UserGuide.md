@@ -40,7 +40,7 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-<a name="section2.4"></a>4. `cd` into the folder containing the JAR file
+<a name="section2.4">4.</a> `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
@@ -75,6 +75,7 @@ In this application there are 5 main features that are provided for the user. Ea
 
 
 This is an example of a typical help command in the application.
+<img src="images/StaffHelp.PNG" >
 
 The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
 For example, the `add` command allows you to add a new staff and their relevant details into the database.
@@ -188,7 +189,7 @@ Example Screenshot:
 <img src="images/StaffListDoc.PNG" width = "850">
 
 
-Example of usage(nurses):
+Example of usage (nurses):
 ```
 Staff --> list/nurses
 ```
@@ -203,11 +204,11 @@ Example Screenshot:
 <img src="images/StaffListNurse.PNG" width = "850">
 
 
-Example of usage(no input):
+Example of usage (no input):
 ```
 Staff --> list
 ```
-Expected Outcome(doctors):
+Expected Outcome (doctors):
 ```
 ------------------------------------------------------------------------------
 ID         | Name       | Age   | Specialisation      
@@ -220,6 +221,7 @@ N24680     | JiaEn      | 28    | Pain Management
 ```
 
 Example Screenshot:
+<img src="images/StaffList.PNG" width = "850" >
 
 <br/><br/>
 
