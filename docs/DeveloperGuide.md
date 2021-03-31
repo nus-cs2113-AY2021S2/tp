@@ -82,7 +82,7 @@ Step 1. The user launches the application for the first time.
 will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
 The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](SaveStep1.png)
+![img.png](Storage%20Feature%20Sequence%20.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
