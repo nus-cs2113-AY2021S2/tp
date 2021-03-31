@@ -2,25 +2,28 @@
 
 ## Table of Contents
 
-* [Introduction](#Introduction)
-* [About this Guide](#About-this-Guide)   
-   * [What's in Connoisseur](#What-is-in-Connoisseur)
-   * [Formatting in the Guide](#Formatting-in-the-Guide)
-* [Quick start](#Quick-Start)
-* [Features](#Features)
-    * [Command Format](#Command-Format)
-    * [Review Mode](#Review-Mode)
-      * [Viewing Help](#Viewing-help)
-      * [Adding a Review](#Adding-a-review)
-      * [Listing Reviews](#Listing-reviews)
-      * [Sorting Reviews](#Sorting-reviews)
-      * [Viewing a Review](#Viewing-a-review)
-      * [Deleting a Review](#Deleting-a-review)
-    * [Recommendation Mode](#Recommendation-Mode)
-   * [View Help](#View-Help)
-   * [Exit & Save Connoisseur](#Exit-&-Save-Connoisseur)
-* [Command Summary](#Command-Summary)
-* [FAQ](#FAQ)
+1. [Introduction](#Introduction)
+1. [About this Guide](#About-this-Guide)<br />
+   2.1 [What's in Connoisseur](#What-is-in-Connoisseur)<br />
+   2.2 [Formatting in the Guide](#Formatting-in-the-Guide)
+1. [Quick start](#Quick-Start)
+1. [Features](#Features) <br />
+    4.1 [Command Format](#Command-Format)<br />
+    4.2 [Review Mode](#Review-Mode) <br />
+        4.2.1 [Add a Review](#Add-a-review)<br />
+        4.2.2 [List Reviews](#List-reviews)<br />
+        4.2.3 [Sort Reviews](#Sort-reviews)<br />
+        4.2.4 [View a Review](#View-a-review)<br />
+        4.2.5 [Edit a Review](#Edit-a-review)<br />
+        4.2.6 [Delete a Review](#Delete-a-review)<br />
+    4.3 [Recommendation Mode](#Recommendation-Mode)<br />
+        4.3.1 [Add a Recommendation](#Add-a-Recommendation)<br />
+        4.3.2 [Edit a Recommendation](#Edit-a-Recommendation)<br />
+        4.3.3 [Review a Recommendation](#Review-a-Recommendation)<br />
+   4.4 [View Help](#View-Help)<br />
+   4.5 [Exit & Save Connoisseur](#Exit-&-Save-Connoisseur)
+1. [Command Summary](#Command-Summary)
+1. [FAQ](#FAQ)
 ##1. Introduction
 
 Welcome to the user guide for our application, Connoisseur! 
@@ -47,21 +50,49 @@ of the experience! Already tried out the experience? Nice! You can now move it t
 and record your thoughts on how good or bad the experience was!
 
 ###2.2 Formatting in the guide
+Note the following formatting used in this document:
 
-## Quick Start
 
-1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `Connoisseur` from [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/releases).
+
+##3. Quick Start
+If you are tired of lengthy and problematic installation processes, Connoisseur is perfect for you. 
+The setup is minimal and can be completed in a few simple steps. Follow the instructions below to try it out!
+
+1. Ensure that you have Java 11 or above installed. The latest version of Java can be found 
+   [here](https://java.com/en/download/)
+2. Download the latest version of Connoisseur from [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/releases).
+   To do so, look for the file connoisseur.jar and click on it. Please refer to Figure 1 if you require assistance with 
+   locating the file. Figure 1 shows how to download version 2.1 of Connoisseur. Connoisseur.jar has been highlighted in 
+   red for your convenience.   
+   ![Figure 1 - How to download Connoisseur](./images/ug/jarfile.png)
+   Figure 1. How to download Connoisseur
+   
 3. Copy the file to the folder you want to use as the _home folder_ for Connoisseur
-4. Open a new terminal and navigate to the folder you just copied into. 
-5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur. 
-6. Type in commands and press Enter to execute it. 
+   ![Figure 2 - Copying connoisseur.jar into a folder](./images/ug/downloading1.PNG)
+   Figure 2. Copying connoisseur.jar into a folder
+4. Open terminal and navigate to the directory of the folder you just copied into. 
+5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur.
+   ![Figure 3 - Starting Connoisseur](./images/ug/downloading2.png)
+   Figure 3. Starting Connoisseur
+6. You may now use Connoisseur by typing in commands and pressing Enter to execute it. 
     Refer to the [Command summary](#command-summary) for a list of recognised commands. 
-7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for connoisseur is saved in `connoisseur.json` in the _data folder_. 
-## Features
-### Command Format
-### Review Mode
-Connoisseur has 2 modes. The first is the review mode, where you can add your own reviews of experiences. The review mode can be accessed from anywhere using the `review` command. 
+7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for 
+   Connoisseur is saved in `connoisseur.json` in the _data folder_. 
+   
+##4. Features
+This section covers all the commands that you can type into the Command Box of Connoisseur when it prompts you -
+`Please enter a command: ` 
+
+The commands are categorised into the two modes offered by Connoisseur, Review and Recommendation mode. If it is the 
+first time that you are using the command, we recommend that you refer to Command Format used in this guide
+to find out how to interpret the format of the commands.
+
+###4.1 Command Format used in this guide
+* Words in [user input] are the fields to be supplied by the user. <br /> e.g. in `list [sorting_method]` sorting_method 
+is the field input by the user.
+###4.2 Review Mode
+Connoisseur has 2 modes. The first is the review mode, where you can add your own reviews of experiences. 
+The review mode can be accessed  using the `review` command. 
 
 #### Viewing Help
 View help on commands recognised by Connoisseur. You can specify a command to get detailed help on it. 
