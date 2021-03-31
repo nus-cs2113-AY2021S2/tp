@@ -15,32 +15,32 @@ If you are having difficulties managing your schedule, lesson links and notes, G
 * [Features](#features)
     * [Overview](#overview)
     * [Dashboard Commands](#dashboard-commands)
-        * [Listing all dashboard commands : **help**](#listing-all-dashboard-commands--help)
-        * [Exiting the program : **exit**](#exiting-the-program--exit)
-        * [Opening a module : **open**](#opening-a-module--open)
-        * [Adding a module : **add**](#adding-a-module--add)
-        * [Deleting a module : **delete**](#deleting-a-module--delete)
-        * [Listing all modules : **modules**](#listing-all-modules--modules)
+        * [Listing all dashboard commands : `help`](#listing-all-dashboard-commands--help)
+        * [Exiting the program : `exit`](#exiting-the-program--exit)
+        * [Opening a module : `open`](#opening-a-module--open)
+        * [Adding a module : `add`](#adding-a-module--add)
+        * [Deleting a module : `delete`](#deleting-a-module--delete)
+        * [Listing all modules : `modules`](#listing-all-modules--modules)
     * [Module Commands](#module-commands)
-        * [Listing all module commands : **help**](#listing-all-module-commands--help)
-        * [Closing a module : **close**](#closing-a-module--close)
-        * [Showing module information : **info**](#showing-module-information--info)
-        * [Adding a lesson : **add lesson**](#adding-a-lesson--add-lesson)
-        * [Deleting a lesson : **delete lesson**](#deleting-a-lesson--delete-lesson)
-        * [Editing a lesson : **edit lesson**](#editing-a-lesson--edit-lesson)
-        * [Opening lesson link : **link**](#opening-lesson-link--link)
-        * [Listing all teaching staff : **teacher**](#listing-all-teaching-staff--teacher)
-        * [Listing all lessons : **lessons**](#listing-all-lessons--lessons)
-        * [Adding a task : **add task**](#adding-a-task--add-task)
-        * [Deleting a task : **delete task**](#deleting-a-task--delete-task)
-        * [Editing a task : **edit task**](#editing-a-task--edit-task)
-        * [Marking task as done : **mark**](#marking-task-as-done--mark)
-        * [Marking task as undone : **unmark**](#marking-task-as-undone--unmark)
-        * [Listing all tasks : **tasks**](#listing-all-tasks--tasks)
-        * [Adding a cheat-sheet : **add cheat-sheet**](#adding-a-cheat-sheet--add-cheat-sheet)
-        * [Deleting a cheat-sheet : **delete cheat-sheet**](#deleting-a-cheat-sheet--delete-cheat-sheet)
-        * [Editing a cheat-sheet : **edit cheat-sheet**](#editing-a-cheat-sheet--edit-cheat-sheet)
-        * [Listing all cheat-sheets : **cheat-sheets**](#listing-all-cheat-sheets--cheat-sheets)
+        * [Listing all module commands : `help`](#listing-all-module-commands--help)
+        * [Closing a module : `close`](#closing-a-module--close)
+        * [Showing module information : `info`](#showing-module-information--info)
+        * [Adding a lesson : `add lesson`](#adding-a-lesson--add-lesson)
+        * [Deleting a lesson : `delete lesson`](#deleting-a-lesson--delete-lesson)
+        * [Editing a lesson : `edit lesson`](#editing-a-lesson--edit-lesson)
+        * [Opening lesson link : `link`](#opening-lesson-link--link)
+        * [Listing all teaching staff : `teacher`](#listing-all-teaching-staff--teacher)
+        * [Listing all lessons : `lessons`](#listing-all-lessons--lessons)
+        * [Adding a task : `add task`](#adding-a-task--add-task)
+        * [Deleting a task : `delete task`](#deleting-a-task--delete-task)
+        * [Editing a task : `edit task`](#editing-a-task--edit-task)
+        * [Marking task as done : `mark`](#marking-task-as-done--mark)
+        * [Marking task as undone : `unmark`](#marking-task-as-undone--unmark)
+        * [Listing all tasks : `tasks`](#listing-all-tasks--tasks)
+        * [Adding a cheat-sheet : `add cheat-sheet`](#adding-a-cheat-sheet--add-cheat-sheet)
+        * [Deleting a cheat-sheet : `delete cheat-sheet`](#deleting-a-cheat-sheet--delete-cheat-sheet)
+        * [Editing a cheat-sheet : `edit cheat-sheet`](#editing-a-cheat-sheet--edit-cheat-sheet)
+        * [Listing all cheat-sheets : `cheat-sheets`](#listing-all-cheat-sheets--cheat-sheets)
     * [Data & Storage](#data--storage)
         * [Automatic Saving](#automatic-saving)
         * [Manual Editing Outside GULIO](#manual-editing-outside-of-gulio)
@@ -119,7 +119,7 @@ GULIO has a 2-layer system, consisting of the dashboard layer and the module lay
 
 On start up, you will be on the dashboard layer where you have an overview of all your modules. You have access to module management commands like adding, deleting or opening a particular module.
 
-Opening a module will put you on the module layer, where you can interact with the data within the module.
+Opening a module will put you on the module layer where you can interact with the data within the module.
 
 > 💡 Please refer to the section [Dashboard Commands](#dashboard-commands) for information regarding commands at the dashboard layer.<br>
 
@@ -207,10 +207,9 @@ Opens the specified module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | open CS2113T | |
-|2| | Opening CS2113T.<br><br>\<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises |
+| 1 | open CS2113T | Opening CS2113T.<br><br>\<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises |
 
 **Result** - GULIO moves from dashboard to module layer and the module CS2113T is loaded.
 
@@ -227,10 +226,9 @@ Adds a module with the specified module name.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add CS2113T | |
-| 2 | | Added CS2113T to the module list. |
+| 1 | add CS2113T | Added CS2113T to the module list. |
 
 **Result** - A new module called CS2113T is added.
 
@@ -247,12 +245,10 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete | |
-| 2 | | Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.
-| 3 | 1 3 | |
-| 4 | | Removed CS2107 from the module list.<br>Removed CS2101 from the module list. |
+| 1 | delete | Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space. |
+| 2 | 1 3 | Removed CS2107 from the module list.<br>Removed CS2101 from the module list. |
 
 **Result** - Modules CS2107 and CS2101 are removed from the module list.
 
@@ -269,10 +265,9 @@ Lists all modules.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | modules | |
-| 2 | | Modules in your list:<br>1. CS2101<br>2. CS2113T |
+| 1 | modules | Modules in your list:<br>1. CS2101<br>2. CS2113T |
 
 &nbsp;
 
@@ -312,10 +307,11 @@ Displays a summary of lessons and undone tasks for the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | info | |
-| 2 | | \<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days)
+| 1 | info | \<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days) |
+
+**Result** - Prints overview of module, including lesson and undone tasks.
 
 &nbsp;
 
@@ -331,10 +327,9 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add lesson tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc | |
-| 2 | | Added tutorial to lesson list. |
+| 1 | add lesson tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc | Added tutorial to lesson list. |
 
 **Result** - Adds “tutorial” to the module's list of lessons, with specified details.
 
@@ -351,12 +346,10 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete lesson | |
-| 2 | | Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.
-| 3 | 1 2 | |
-| 4 | | Removed lecture.<br>Removed tutorial. |
+| 1 | delete lesson |  Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space. |
+| 2 | 1 2 | Removed lecture.<br>Removed tutorial. |
 
 
 **Result** - The lessons “lecture” and “tutorial” are removed from the list of lessons.
@@ -374,18 +367,13 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | edit lesson | |
-| 2 | | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com<br>2. Tutorial - Thursday 9am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom2.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Hemrish Bundhoo<br>&nbsp;&nbsp;&nbsp;&nbsp;hemrish@nus.com |
-| 3 | 1 | |
-| 4 | | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
-| 5 | 1 2 | |
-| 6 | | Enter new time and day: | 
-| 7 | Thursday 9am | |
-| 8 | | Updated time and day.<br>Enter new lesson link |
-| 9 | www.googleclassroom.com | |
-| 10 | | Updated lesson link. |
+| 1 | edit lesson | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
+| 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
+| 3 | 1 2 | Enter new time and day: |
+| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link |
+| 5 | www.googleclassroom.com | Updated lesson link. |
 
 **Result** - Edits time and day, as well as lesson link of "lecture".
 
@@ -403,12 +391,10 @@ Then, opens the links of the lessons specified.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | link | |
-| 2 | | Which lesson’s link would you like to open?<br>1. lecture<br>2. tutorial |
-| 3 | 1 | |
-| 4 | | Opening lecture link in browser. |
+| 1 | link | Which lesson’s link would you like to open?<br>1. lecture<br>2. tutorial |
+| 2 | 1 | Opening lecture link in browser. |
 
 **Result** - Opens the Zoom link used for lectures in a browser.
 
@@ -425,10 +411,9 @@ Lists all teaching staff for the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | teacher | |
-| 2 | | Teaching staff for CS2113T:<br>1. Prof Akshay - profakshay@email.com<br>2. Cheng Xianhao - cxh@email.com |
+| 1 | teacher | Teaching staff for CS2113T:<br>1. Prof Akshay - profakshay@email.com<br>2. Cheng Xianhao - cxh@email.com |
 
 &nbsp;
 
@@ -441,10 +426,9 @@ Lists all lessons for the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | lessons | |
-| 2 | | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
+| 1 | lessons | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
 
 &nbsp;
 
@@ -458,12 +442,10 @@ Adds a new task with specified name and information to the current module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add task iP submission ;; 3-3-2021 ;; Remember to attach the jar file. | |
-| 2 | | Is this task graded? (Y / N) |
-| 3 | Y | |
-| 4 | | Added iP submission to task list. | 
+| 1 | add task iP submission ;; 3-3-2021 ;; Remember to attach the jar file. | Is this task graded? (Y / N) |
+| 2 | Y | Added iP submission to task list. |
 
 **Result** - Adds “iP submission” to the module’s  list of tasks, with the specified details.
 
@@ -480,12 +462,10 @@ Lists all tasks for the module and asks the user for indices of tasks to delete.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete task | |
-| 2 | | Which tasks would you like to delete?<br>1. weekly exercise<br>2. watch video snippets<br>3. lecture quiz<br>4. read up notes<br>5.  iP submission<br><br>Please enter the indices of the tasks you would like to delete.<br>Separate indices with a blank space. |
-| 3 | 1 5 | |
-| 4 | | Removed weekly exercise.<br>Removed iP submission. |
+| 1 | delete task | Which tasks would you like to delete?<br>1. weekly exercise<br>2. watch video snippets<br>3. iP submission<br><br>Please enter the indices of the tasks you would like to delete.<br>Separate indices with a blank space. |
+| 2 | 1 3 | Removed weekly exercise.<br>Removed iP submission. |
 
 **Result** - The tasks “weekly exercise” and “iP submission” are removed from the list of tasks.
 
@@ -502,18 +482,13 @@ Lists all tasks for the module and asks the user for the index of the task to ed
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | edit task | |
-| 2 | | Which task would you like to edit?<br>1. weekly exercise - 23 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Do before 2359.<br>&nbsp;&nbsp;&nbsp;&nbsp;Graded<br>2. watch video snippets - 25 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Not graded<br>3. lecture quiz - 26 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Complete before next lecture.<br>&nbsp;&nbsp;&nbsp;&nbsp;Not graded |
-| 3 | 3 | |
-| 4 | | Editing: lecture quiz<br>Which fields?<br>1. Description<br>2. Deadline<br>3. Remarks<br>4. Graded/not graded<br><br>Separate indices with a blank space. |
-| 5 | 2 3 | |
-| 6 | | New deadline: |
-| 7 | 2-3-2021 | |
-| 8 | | Updated deadline.<br>New remarks: |
-| 9 | Both quizzes 1 and 2. | |
-| 10 | | Updated remarks. |
+| 1 | edit task | Which task would you like to edit?<br>1. weekly exercise - 23 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Do before 2359.<br>&nbsp;&nbsp;&nbsp;&nbsp;Graded<br>2. lecture quiz - 26 Feb 2021<br>&nbsp;&nbsp;&nbsp;&nbsp;Complete before next lecture.<br>&nbsp;&nbsp;&nbsp;&nbsp;Not graded |
+| 2 | 2 | Editing: lecture quiz<br>Which fields?<br>1. Description<br>2. Deadline<br>3. Remarks<br>4. Graded/not graded<br><br>Separate indices with a blank space. |
+| 3 | 2 3 | New deadline: |
+| 4 | 2-3-2021 | Updated deadline.<br>New remarks: |
+| 5 | Both quizzes 1 and 2. | Updated remarks. |
 
 **Result** - Edits the deadline and remarks fields for the task “lecture quiz”.
 
@@ -530,12 +505,10 @@ Lists undone tasks for the module and asks the user for the indices of tasks to 
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | mark | |
-| 2 | | Which undone tasks have you completed?<br>1. weekly exercise<br>2. lecture quiz<br>3. read up notes<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space.
-| 3 | 1 2 | |
-| 4 | | Marked weekly exercise as done.<br>Marked lecture quiz as done. |
+| 1 | mark | Which undone tasks have you completed?<br>1. weekly exercise<br>2. lecture quiz<br>3. read up notes<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space. |
+| 2 | 1 2 | Marked weekly exercise as done.<br>Marked lecture quiz as done. |
 
 **Result** - The tasks “weekly exercise” and “lecture quiz” are marked as done.
 
@@ -552,12 +525,10 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | unmark | |
-| 2 | | Which done tasks have you completed?<br>1. watch video snippets<br>2. iP submission<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space.
-| 3 | 1 | |
-| 4 | | Marked watch video snippets as undone. |
+| 1 | unmark | Which done tasks have you completed?<br>1. watch video snippets<br>2. iP submission<br><br>Please enter the indices of the tasks you would like to mark as done.<br>Separate indices with a blank space. |
+| 2 | 1 | Marked watch video snippets as undone. |
 
 **Result** - The task “watch video snippets” is marked as undone.
 
@@ -574,10 +545,9 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | tasks | |
-| 2 | | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021
+| 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021 |
 
 &nbsp;
 
@@ -590,10 +560,9 @@ Adds a new cheat-sheet with specified name to the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add cheat-sheet lecture notes | |
-| 2 | | lecture notes has been added to your Cheatsheet folder. |
+| 1 | add cheat-sheet lecture notes | lecture notes has been added to your Cheatsheet folder. |
 
 **Result** - Adds new cheat-sheet “lecture notes” and opens it in the text editor.
 
@@ -610,10 +579,9 @@ Deletes the specified cheat-sheet from the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete cheat-sheet lecture notes | |
-| 2 | | lecture notes has been deleted! |
+| 1 | delete cheat-sheet lecture notes | lecture notes has been deleted! |
 
 **Result** - Deletes cheat-sheet “lecture notes”.
 
@@ -630,10 +598,9 @@ Opens the specified cheat-sheet in the text editor.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | edit cheat-sheet lecture notes | |
-| 2 | | Opened lecture notes. |
+| 1 | edit cheat-sheet lecture notes | Opened lecture notes. |
 
 **Result** - Opens cheat-sheet “lecture notes” in text editor.
 
@@ -650,10 +617,9 @@ Lists all cheat-sheets for the module.
 
 **Example:**
 
-| Step | User's Input | GULIO's Output |
+| Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | cheat-sheets | |
-| 2 | | Here is your list of cheat-sheets:<br><br>1. lecture notes |
+| 1 | cheat-sheets | Here is your list of cheat-sheets:<br><br>1. lecture notes |
 
 &nbsp;
 
