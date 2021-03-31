@@ -6,7 +6,7 @@ import seedu.duke.command.routecommand.GoCommand;
 import seedu.duke.command.historycommand.RepeatHistoryCommand;
 import seedu.duke.command.historycommand.ShowHistoryCommand;
 import seedu.duke.command.historycommand.ClearHistoryCommand;
-import seedu.duke.command.notecommand.ListNoteCommand;
+import seedu.duke.command.notecommand.ShowNoteCommand;
 import seedu.duke.command.notecommand.AddNoteCommand;
 import seedu.duke.command.notecommand.DeleteNoteCommand;
 import seedu.duke.command.generalcommand.ByeCommand;
@@ -46,7 +46,7 @@ class ParserTest {
     @Test
     void prepareForCommandExecution_listnotes_expectListNoteCommand() throws InvalidCommandException {
         Command command = Parser.prepareForCommandExecution("list notes");
-        assertTrue(command instanceof ListNoteCommand);
+        assertTrue(command instanceof ShowNoteCommand);
     }
 
     @Test

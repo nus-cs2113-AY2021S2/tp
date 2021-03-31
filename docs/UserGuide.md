@@ -169,7 +169,7 @@ Format : `clear history`
 #### 4.3.3 Repeating History
 
 Repeats past route search history.<br>
-Format : `repeat → REPEAT_ENTRY`
+Format : `repeat history → REPEAT_ENTRY`
 - When the repeat command is entered, NUSMaze will show a list of past route searches.
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
@@ -185,11 +185,11 @@ Format : `add alias → BLOCK → ALIAS_NAME`
 
 - NUSMaze then prompts you to input a desired `ALIAS_NAME`.
 
-- Note that there cannot be more than multiple blocks sharing the same alias.
+- Note that there cannot be multiple blocks sharing the same alias.
 
 #### 4.4.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
-Format : `show aliase`
+Format : `show alias`
 
 #### 4.4.3 Deleting aliases
 Deletes an alias that was previously created.<br>
@@ -234,7 +234,7 @@ Format : `add note  → LOCATION -> NOTE`
 
 #### 4.6.2 Viewing notes
 Lists all notes which had been tagged to the given existing location, if applicable.<br/>
-Format : `list notes → LOCATION`
+Format : `show notes → LOCATION`
 - When the 'list notes' command is entered, NUSMaze will prompt you for a `LOCATION`.
 
 - The `LOCATION` must be one of the Engineering or Computing buildings.
@@ -308,14 +308,14 @@ can be found on the second computer.
 |[**Finding the route**](#42-routing)       | `go → START → DESTINATION` or `go → START → eatery → EATERY_ENTRY` |
 |[**Viewing history**](#431-viewing-history)     | `history` | 
 |[**Clearing history**](#432-clearing-history)       | `clear history` |
-|[**Repeating history**](#433-repeating-history)       | `repeat → REPEAT_ENTRY` |
+|[**Repeating history**](#433-repeating-history)       | `repeat history → REPEAT_ENTRY` |
 |[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS`| 
 |[**Showing all aliases**](#442-viewing-all-aliases)  | `show alias` | 
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add day → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `day → DAY_NUMBER` |
 |[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
-|[**Viewing notes**](#462-viewing-notes)      | `list notes → LOCATION`| 
+|[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
 |[**Exiting the application**](#47-exiting-the-application)       | `bye` |
 
