@@ -55,12 +55,6 @@ public class StaffChecker extends MainChecker {
         }
     }
 
-    public static void checkEmptyInput(String line) throws NoInputException {
-        if (line.split("/").length < 2) {
-            throw new NoInputException();
-        }
-    }
-
     public static void checkListCommand(String line) throws WrongListInputException {
 
         if ((line.split("/").length > 1) &&
