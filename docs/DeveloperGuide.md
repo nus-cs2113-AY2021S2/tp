@@ -339,7 +339,7 @@ The newly created `Lesson` object is then passed to a new `AddLessonCommand` obj
 
 ### Adding of Cheat-Sheet
 
-The `AddCheatSheetCommand` class enables the creation, addition and saving of a .txt file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new instance of it and calling the `execute()` method on it, the GULIO Text Editor application will also be automatically started.
+The `AddCheatSheetCommand` class enables the creation, addition and saving of a ".txt" file to the current module’s “Cheatsheet” directory (see Figure 5). Upon creating a new instance of it and calling the `execute()` method on it, the GULIO Text Editor application will also be automatically started.
 
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
