@@ -232,7 +232,20 @@ Example Screenshot:
 <br/><br/>
 
 #### Returning to Start Menu: `return`
+
+Return you to the Start Menu.
+
+Example Screenshot:
+
+<img src="images/StaffReturn.PNG" width = "850" >
+
 #### Help: `help`
+
+Display the commands for the Staff Menu.
+
+Example Screenshot:
+
+<img src="images/StaffHelp.PNG" width = "850" >
 
 ### 5.2 Patient
 
