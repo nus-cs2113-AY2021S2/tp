@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box HomeCommand
+
+-> ":HomeCommand" : execute(canteens, ui)
+activate ":HomeCommand"
+
+":HomeCommand" -> ":NusFoodReviews" : resetAllIndexes()
+activate ":NusFoodReviews"
+":NusFoodReviews" -> ":HomeCommand"
+deactivate ":NusFoodReviews"
+
+<- ":HomeCommand"
+deactivate ":HomeCommand"
+@enduml
