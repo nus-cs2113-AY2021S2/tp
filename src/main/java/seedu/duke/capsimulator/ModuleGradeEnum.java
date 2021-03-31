@@ -60,5 +60,4 @@ public enum ModuleGradeEnum {
         return score;
     }
 
-
 }
