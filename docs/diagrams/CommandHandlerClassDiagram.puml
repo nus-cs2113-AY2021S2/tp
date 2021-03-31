@@ -1,0 +1,20 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide circle
+
+class CommandHandler {
+    -isExit : boolean
+    +CommandHandler()
+    +isExit() : boolean
+    +setExit(isExit: boolean)
+    +parseCommand(parsedArguments: ArrayList<String>, recordList: RecordList): Command
+    -createCommand(parsedArguments: ArrayList<String>, recordList: RecordList) : Command
+}
+
+class Finux {
+
+}
+
+CommandHandler"1" <-- Finux
+
+@enduml

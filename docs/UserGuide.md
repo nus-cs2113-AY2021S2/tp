@@ -3,45 +3,70 @@ By: `Jonah Tham`, `Gerard Tan`, `Lee Han Yong Andy`, `Mark Low`, `Tan Tze Xern`
 
 Since: `March 2021`
 
-- [Finux User Guide](#finux-user-guide)
-    * [1. Introduction](#1-introduction)
-    * [2. Quick Start](#2-quick-start)
-    * [3. Features](#3-features)
-        + [3.1 Add a record: `add`](#31-add-a-record-add)
-        + [3.2 List the records details: `list`](#32-list-the-records-details-list)
-        + [3.3 View category total amount: `view`](#33-view-category-total-amount-view)
-        + [3.4 Set a loan as return: `return`](#34-set-a-loan-as-return-return)
-        + [3.5 Remove a record: `remove`](#35-remove-a-record-remove)
-        + [3.6 Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)
-        + [3.7 Exit the program: `exit`](#37-exit-the-program-exit)
-        + [3.8 Help function: `help`](#38-help-function-help)
-        + [3.9 Records Storage](#39-records-storage)
-    * [4. Frequently Asked Question (FAQ)](#4-faq)
-    * [5. Command Summary](#5-command-summary)
+---
+
+# Table of Contents
+
+---
+
+1. [Introduction](#1-introduction)
+1. [Quick Start](#2-quick-start)
+1. [Features](#3-features)\
+    3.1 [Add a record: `add`](#31-add-a-record-add)\
+    3.2 [List the records details: `list`](#32-list-the-records-details-list)\
+    3.3 [View category total amount: `view`](#33-view-category-total-amount-view)\
+    3.4 [Set a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
+    3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
+    3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
+    3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
+    3.8 [Help function: `help`](#38-help-function-help)\
+    3.9 [Records Storage](#39-records-storage)
+1. [Frequently Asked Questions](#4-frequently-asked-questions)
+1. [Command Summary](#5-command-summary)
 
 
 ## 1. Introduction
 
-Finux is a CLI Style application that allows the user to make better financial
-decisions based on the information recorded in the application. If you’re familiar
-with the CLI command interface, you will enjoy the benefit of speeding up your
-finance management rather than using the traditional management system.
+---
 
+Finux is a Command-Line Interface (CLI) application that allows you to record your expenses, savings and loans all in
+one consolidated platform. With these information made readily available at your fingertips, it will allow you to 
+better adjust your expenditure or work harder towards your savings goal. Finux also includes a way for you to keep
+track of the loans you have made to your friends, or the tabs for the dinners you have paid for first. 
+
+As the Finux application is inspired entirely by the *Nix operating systems, and if you are familiar with the CLI
+command interface, you will definitely enjoy the benefits of the application. You will also be able to speed up your
+financial management and planning with the Finux application as compared to the traditional finance management 
+applications in the market.
 
 ## 2. Quick Start
 
+---
+
 1. Ensure you have Java `11` or above installed in your Computer.
-2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v1.0).
-3. Copy the file to the folder you want to use as the *home folder* for your Duke.
+2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
+3. Copy the `finux.jar` file to the folder you want to use as the *home folder* of Finux.
 4. For Windows users, pull up your **Command Prompt**.\
    For Mac users, pull up your **Terminal**.\
    Navigate to the directory containing the `finux.jar` file.\
-   i.e. `cd FILEPATH`, `FILEPATH` is the address of your file.
-5. Run the Duke.jar file by using the `java -jar finux.jar` command.
+   i.e. `cd FILEPATH`, `FILEPATH` is the absolute address to the home folder of Finux.
+5. Run the `finux.jar` file by executing the command `java -jar finux.jar`.
 
+---
 
-## 3. Features
-> ❗ **CAUTION:** Insert any warning.
+### 2.1 Understanding the guide
+If you are here, congratulations on embarking on your money management journey. But before you proceed, there are a
+few tips and tricks to better understanding our guide. 
+
+Throughout the guide, you will come across various symbols, each has a different meaning:
+
+> 💡: The light bulb will precede information that may be important when using the app.
+
+> ❗: The exclamation will precede warnings for commands and inputs that may hinder your use of the app.
+
+> 📝: The notepad will precede information that may improve the flexibility of using the app. 
+
+---
 
 > 💡 **Explanation for Command formats:**
 >> Commands in Finux follow these argument orders (depending on the command):
@@ -51,14 +76,15 @@ finance management rather than using the traditional management system.
 >> * `CMD <FIELD>`
 >> * `CMD [<FIELD>]`
 >> * `CMD`
->>
+>
 >> Argument types and notation:\
 >> `CMD` - a valid command.\
 >> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
 >> `<FIELD>` - an area where data is required.\
 >> `[...]` - optional argument(s).\
->> `{ ... | ... | ... }` - mutually exclusive arguments.
->>
+>> `{ ... | ... | ... }` - mutually exclusive arguments,
+>> * e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+>
 > ❗ **Commands and options are case-sensitive:**\
 > E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
 > will not be recognised.\
@@ -66,6 +92,8 @@ finance management rather than using the traditional management system.
 > a valid option.
 
 > 💡 **Date and Date formats:**
+>> Date input is required when you specify the option `-d`.\
+>> You are required enter a date that follows a valid Date format.\
 >> Finux supports multiple Date formats, for ease of use:
 >> * `DDMMYYYY`
 >> * `D.M.YYYY`
@@ -75,30 +103,44 @@ finance management rather than using the traditional management system.
 >> * `YYYY-M-D`
 >> * `YYYY/M/D`
 >>
->> 📝 `today` keyword specifies today's date, replacing the need to type in the actual date for date inputs.
+>> 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
+
+## 3. Features
+
+---
 
 ### 3.1 Add a record: `add`
-> For the `add` command, there is no strict ordering for options.\
+
+---
+
+> 📝 For the `add` command, there is no strict ordering for options.\
 > i.e. options `-a` can come before/after option `-d`.
+
 #### 3.1.1 Add an expense record
 
-This operation will add an expense record to the list.
+Suppose you bought a plain loaf of bread for $2.90 on 3rd March 2021, you would want to enter
+your `expense` as the example shown below.
 
 Format: `add -e <description> -a <amount> -d <date>`
 
-Examples: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
+Example: `add -e Plain bread loaf -a 2.90 -d 20.3.2021`
 
 Output:
 
 ![add expense example output](img/AddExpenseExampleOutput.jpg)
 
+
 #### 3.1.2 Add a loan record
 
-This operation will add a loan record to the list.
+It is the 20th of March 2021, and your friend Mark borrows a large sum of $200 from you . You will
+have to enter the following into Finux to record this `loan`.
+
+You may want to add a _description_ of the `loan`, in this scenario, it will be `1st loan to Mark`
+and to include his _name_ as to keep track of Mark's `loan`.
 
 Format: `add -l <description> -a <amount> -d <date> -p <person>`
 
-Examples: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
+Example: `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`
 
 Output:
 
@@ -106,52 +148,109 @@ Output:
 
 #### 3.1.3 Add a saving record
 
-This operation will add a saving record to the list.
+Lastly, you may have saved a sum of money over the past month of March and you recorded your `saving`
+on the 5th of April.
 
 Format: `add -s <description> -a <amount> -d <date>`
 
-Examples: `add -s Savings from March -a 1000 -d 05/04/2021`
+Example: `add -s Savings from March -a 1000 -d 05/04/2021`
 
 Output:
 
 ![add saving example output](img/AddSavingExampleOutput.jpg)
 
+> 💡 Do note that for an `expense`, you will have to use `-e` as the option. This follows for `loan` with `-l` and
+> `saving` with `-s`.
+
 ### 3.2 List the records details: `list`
 
-This operation will list the details of chosen record type.
+---
 
-Format: `insert format`
+#### 3.2.1 List all expense records
 
-Examples: `insert example`, `insert example`
+You may want to list all your expense records in Finux. By entering the `list` command
+with the `expense` option `-e`, Finux will display all your expenses.
+
+Format: `list -e`
 
 Output:
 
-![list example output](img/ListExampleOutput.jpg)
+![list example output](img/ListExpenseExampleOutput.jpg)
+
+#### 3.2.2 List all loan records
+
+Similarly, with listing your expenses, Finux is also able to list all loans. You will have
+to use the `loan` option `-l` in this scenario.
+
+Format: `list -l`
+
+Output:
+
+![add loan example output](img/ListLoanExampleOutput.jpg)
+
+#### 3.2.3 List all saving records
+
+Lastly, all your savings can also be listed with the `saving` option `-s`. 
+
+Format: `list -s`
+
+Output:
+
+![add saving example output](img/ListSavingExampleOutput.jpg)
 
 ### 3.3 View category total amount: `view`
 
-This operation will view the total amount of chosen record type.
+---
 
-Format: `view <OPTION>`
+#### 3.3.1 View total expenses
 
-> Available Options:
->* `-e`: view the total amount of expenditure.
->* `-l`: view the total amount of unreturned loans.
->* `-s`: view the total amount of saving.
+At this point, you may also want to `view` your total expenses incurred till now. 
+So instead of listing as explained above, you would have to use the `view` command instead.
 
-Examples: `view -e`, `view -l`
+Format: `view -e`
 
 Output:
 
-![view example output](img/ViewExampleOutput.jpg)
+![view expense example output](img/ViewExpenseExampleOutput.jpg)
 
-### 3.4 Set a loan as return: `return`
+#### 3.3.2 View total unreturned loans
 
-This operation will set a loan record as returned by the loanee.
+You can also view your total **unreturned** loan using `view` and the option `-l`.
 
-Format: `insert format`
+> 📝 The total amount shown only includes the unreturned loans
 
-Examples: `insert example`, `insert example`
+Format: `view -l`
+
+Output:
+
+![view loan example output](img/ViewLoanExampleOutput.jpg)
+
+#### 3.3.3 View total savings
+
+Your total savings can also be calculated using `view` and the option `-s`.
+
+Format: `view -s`
+
+Output:
+
+![view saving example output](img/ViewSavingExampleOutput.jpg)
+
+### 3.4 Mark a loan as returned: `return`
+
+---
+
+Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` record is the third record in the list.
+Then the _index_ to be included is `3` and the `date` is the date of return which is `28/03/21`.
+
+Format: `return -i <index_of_loan> -d <date>`
+* `<index_of_loan>` refers to the index number shown on the displayed list of records.
+* `<index_of_loan>` must be a **positive integer** 1, 2, 3,...
+* `<index_of_loan>` must be referring to an existing loan in the list.
+* `<date>` refers to the date that the borrower has returned the money.
+
+Example: `return -i 2 -d 28/03/2021`\
+This example shows that you have entered a command that translates to the following:\
+"The second entry(presumably a loan) on the record list is returned on 28/03/2021."
 
 Output:
 
@@ -159,29 +258,50 @@ Output:
 
 ### 3.5 Remove a record: `remove`
 
-This operation will remove a record from the record list.
+---
+
+In a scenario that you realised that the `expense` record of Plain bread loaf added on 20th March 2021 was wrong,
+you can `remove` the record by entering the `remove` command with the _index_ of the `expense`, this is case, it would
+be the first record in the list.
 
 Format: `remove -i <index>`
-> - The `<index>` refers to the index number shown on the record list
-> - `<index>` must be a **positive integer** 1,2,3...
-> - `<index>` must be referring to an existing record
+* `<index>` refers to the index number shown on the record list.
+* `<index>` must be a **positive integer** 1,2,3...
+* `<index>` must be referring to an existing record.
 
-Examples: `remove -i 1`, `remove -i 2`
+Example: `remove -i 1`\
+This example shows that you have entered a command that translates to the following:\
+"Remove the first record on the list."
 
 Output:
 
 ![remove example output](img/RemoveExampleOutput.jpg)
 
+> 💡 To find the index of a record, you can simply `list` the record type (`-e`, `-l`, `-s`) and the number that
+> precedes the record is the index.
+
 ### 3.6 Check a person's credit score: `creditscore`
 
-This operation will check the credit score of a person.
+---
+
+
+Let's say that Mark wants to borrow money from you again, but you will want to know his "credit-worthiness" 
+(`creditScore`) before lending him money again, you can simply enter his _name_ after the `creditScore` command.
 
 Format: `creditscore <person>`
 
-> - `<person>` refers to existing loanees in the loan list
+> - `<person>` refers to existing borrower in the loan list
 > - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
-Examples: `creditscore jason`, `creditscore mark`
+
+Format: `creditscore <person>`
+
+* `<person>` refers to any person including those in the list and not in the list.
+* `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
+
+Example: `creditscore mark`\
+This example shows that you have entered a command that translates to the following:\
+"Show Mark's credit score."
 
 Output:
 
@@ -189,28 +309,45 @@ Output:
 
 ### 3.7 Exit the program: `exit`
 
-This operation exit the program.
+---
+
+You can exit the application by typing the `exit` command.
 
 Format: `exit`
 
+Output:
+
+![exit example output](img/ExitExampleOutput.jpg)
+
 ### 3.8 Help function: `help`
 
-This operation lists the help page for the application.
+---
+
+If you do not know how to use any of the features in Finux, and would like to know their specifications, simply type
+`help` followed by the command name of the available features.
+
+> Available Features:
+>* `add`: view the help section for `add` command.
+>* `list`: view the help section for `list` command.
+>* `view`: view the help section for `view` command.
+>* `return`: view the help section for `return` command.
+>* `remove`: view the help section for `remove` command.
+>* `creditscore`: view the help section for `creditscore` command.
+>* `exit`: view the help section for `exit` command.
+>* `all`: view entire help section.
+
+> 💡 Just typing `help` will allow you to view the entire help section.
+ 
+Each help section is divided into three parts:
+> 1. `NAME` will show you the feature name and its brief description. <br>
+> 2. `SYNOPSIS` will show you the format to follow. <br>
+> 3. `DESCRIPTION` will explain the usage of any arguments or options. <br>
+
+> 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
 
 Format: `help <FEATURE>`
 
-> Available Features:
->* `add`: view the help page for `add` command.
->* `list`: view the help page for `list` command.
->* `view`: view the help page for `view` command.
->* `return`: view the help page for `return` command.
->* `remove`: view the help page for `remove` command.
->* `creditscore`: view the help page for `creditscore` command.
->* `exit`: view the help page for `exit` command.
->* `all`: view entire help page.
->* 💡 **Tip**: Just type `help` and you can view the entire help page.
-
-Examples: `help exit`, `help list`
+Example: `help remove`
 
 Output:
 
@@ -218,85 +355,69 @@ Output:
 
 ### 3.9 Records storage
 
-#### 3.9.1 Automatically saving all records into a file.
+---
 
-* All records are automatically saved after the following commands: `add`, `remove`, `return`.
-* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`.
+#### 3.9.1 Automatically saving all records into a file
 
-> ❗ **WARNING:** Do ensure that permissions are given for FINUX to write into the folder it is in,
-> FINUX will exit upon unsuccessful file creation.
+* All your records are automatically saved after the following commands: `add`, `remove`, `return`.
+* Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`, `exit`.
 
-#### 3.9.2 Automatically loading data from an existing file into FINUX.
+> ❗ Do ensure that permissions are given for Finux to write into the folder it is in,
+> Finux will exit upon unsuccessful file creation.
 
-* FINUX will automatically load the data from "finux.txt" when it finds the text
-  file in the same directory. <br><br>
-  
-* Expected output for new file creation:
+#### 3.9.2 Automatically loading data from an existing file into Finux
+
+* Finux will automatically load your data from "finux.txt" when it finds the text
+  file in the same home folder as mentioned in the [Quick Start](#2-quick-start). <br><br>
+
+* Expected output for new file creation: <br>
+
   ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
 
-* Expected output if successful load:
+* Expected output if successful load: <br>
   ![load success example output](img/SuccessfulLoadExampleOutput.jpg)
 
-* Expected output if not successfully loaded:
+* Expected output if not successfully loaded: <br>
   ![load fail example output](img/FailedLoadExampleOutput.jpg)
   
-#### 3.9.3 Editing the saved file directly
-* The FINUX team encourages higher leveled users to edit the save directly.
+> ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 
-> 💡 **NOTE:** Any minor mistakes in the syntax will lead to the termination of FINUX.
-> The team highly suggests that users only make minor changes like
-> spelling errors instead of inserting new Records into the save file.
+## 4. Frequently Asked Questions
 
-## 4. FAQ
+---
 
-**Q**: {Insert question}?
+**Q1**: How can I transfer my saved tasks information to another computer?
+> Run Finux on the other computer and overwrite the empty `finux.txt` created, with the `finux.txt` that
+> contains the data of your previous Finux usage.
 
-**A**: {your answer here}
+**Q2**: Does the `view -l` shows the total loan amount? <br>
+> No. `view -l` only shows the total amount of unreturned loans.
 
->**Q**: Does the `view -l` shows the total loan amount? <br>
->**A**: No. `view -l` only shows the total unreturned loans amount.
+**Q3**: What happens if Finux crashes unexpectedly? <br>
+> All records are saved upon addition, deletion or returned, so no worries!
 
->**Q**: What happens if FINUX crashes unexpectedly? <br>
->**A**: All records are saved upon addition or deletion or returned, no worries!
-
->**Q**: FINUX keeps having a `bad init` error message, but it is my first time launching FINUX. <br>
->**A**: Do check and ensure that FINUX has the proper write permissions in the directory.
+**Q4**: Finux keeps having a `bad init` error message, but it is my first time launching Finux. <br>
+> Do check and ensure that Finux has the proper write permissions in the directory.
 
 ## 5. Command Summary
 
-| Feature                                | Command                                                  |
-| -------------------------------------- | -------------------------------------------------------- |
-| Add an expense record                  | `add -e <description> -a <amount> -d <date>`             |
-| Add a savings record                   | `add -s <description> -a <amount> -d <date>`             |
-| Add a loan record                      | `add -l <description> -a <amount> -d <date> -p <person>` |
-| List all expense records               | `list -e`                                                |
-| List all savings records               | `list -s`                                                |
-| List all loan records                  | `list -l`                                                |
-| View total expenditure                 | `view -e`                                                |
-| View total savings amount              | `view -s`                                                |
-| View total amount of unreturned loans  | `view -l`                                                |
-| Mark a loan as returned                | `return -i <loan_index> -d <return_date>`                |
-| Remove a record (expense/savings/loan) | `remove -i <index>`                                      |
-| Print a person's credit score          | `creditscore <person>`                                   |
-| Help (selected command)                | `help <feature>`                                         |
-| Help (all commands)                    | `help`                                                   |
-| Exit the application                   | `exit`                                                   |
+---
 
-#### _List of command formats_
-```
-list { -e | -s | -l }
+| Feature                                | Command                                                  | Example                                              |
+| -------------------------------------- | -------------------------------------------------------- |------------------------------------------------------|
+| Add an expense record                  | `add -e <description> -a <amount> -d <date>`             | `add -e Plain bread loaf -a 2.90 -d 20.3.2021`       |
+| Add a loan record                      | `add -l <description> -a <amount> -d <date> -p <person>` | `add -l 1st loan to Mark -a 200 -d 20.3.2021 -p Mark`|
+| Add a saving record                    | `add -s <description> -a <amount> -d <date>`             | `add -s Savings from March -a 1000 -d 05/04/2021`    |
+| List all expense records               | `list -e`                                                | -                                                    |
+| List all loan records                  | `list -l`                                                | -                                                    |
+| List all saving records                | `list -s`                                                | -                                                    |
+| View total expenditure                 | `view -e`                                                | -                                                    |
+| View total amount of unreturned loans  | `view -l`                                                | -                                                    |
+| View total savings amount              | `view -s`                                                | -                                                    |
+| Mark a loan as returned                | `return -i <loan_index> -d <return_date>`                | `return -i 3 -d 28/03/2021`                          |
+| Remove a record (expense/savings/loan) | `remove -i <index>`                                      | `remove -i 1`, `remove -i 2`                         |
+| Check a person's credit score          | `creditscore <person>`                                   | `creditscore jason`, `creditscore mark`              |
+| Exit the application                   | `exit`                                                   | -                                                    |
+| Help (selected command)                | `help <feature>`                                         | `help exit`, `help list`                             |
+| Help (all commands)                    | `help`                                                   | -                                                    |
 
-add { -e | -s | -l } <description> -a <amount> -d <date> [-p <person>]
-
-creditscore <person>
-
-return -i <loan_index> -d <return_date>
-
-remove -i <index>
-
-view { -e | -s | -l }
-
-help [<feature>]
-
-exit
-```

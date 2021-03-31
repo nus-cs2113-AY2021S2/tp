@@ -35,16 +35,8 @@ public class ExitCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         System.out.println(MESSAGE_EXITING);
-    }
-
-    /**
-     * Check if command is a instance of ExitCommand type.
-     * @param command is the Command object containing the type of command.
-     * @return true if command is exit command type, false if command is not exit command type.
-     */
-    public static boolean isExit(Command command) {
-        return command instanceof ExitCommand;
     }
 }

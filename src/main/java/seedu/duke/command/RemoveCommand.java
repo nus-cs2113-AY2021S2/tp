@@ -51,11 +51,11 @@ public class RemoveCommand extends Command {
      * @throws CommandException contains the error messages when a incorrect format is detected.
      */
     private String getIndexInString(ArrayList<String> arguments) throws CommandException {
-        if (hasOption(arguments, OPTION_INDEX)) {
-            return getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
-        } else {
+        if (!hasOption(arguments, OPTION_INDEX)) {
             throw new CommandException("missing option: -i", COMMAND_REMOVE);
+
         }
+        return getOptionValue(arguments, COMMAND_REMOVE, OPTION_INDEX);
     }
 
     /**
@@ -85,10 +85,11 @@ public class RemoveCommand extends Command {
      * @param storage is the Storage object that reads and writes to the save file.
      */
     @Override
-    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap) {
+    public void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap) {
         Record currentRecord = recordList.getRecordAt(recordNumberInt);
         ui.printMessage("This record will be removed: " + currentRecord);
         recordList.deleteRecordAt(recordNumberInt);
-        storage.saveData(recordList, creditScoreMap);
+        storage.saveData(recordList, creditScoreReturnedLoansMap);
     }
 }

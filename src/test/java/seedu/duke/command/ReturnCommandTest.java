@@ -40,8 +40,8 @@ public class ReturnCommandTest {
     private void runReturnCmdTest(String expectedOutput, String returnCmdInput, String testName) {
         Ui ui = new Ui();
         Storage storage = new Storage();
-        CreditScoreMap borrowersCreditScoreForReturnedLoans =
-                new CreditScoreMap(new HashMap<>());
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
+                new CreditScoreReturnedLoansMap(new HashMap<>());
         RecordList loans = getLoanList();
         CommandHandler commandHandler = new CommandHandler();
         ByteArrayOutputStream returnCmdBos = new ByteArrayOutputStream();
@@ -54,7 +54,7 @@ public class ReturnCommandTest {
                 String.format("Failed test '%s' command object "
                         + "returned by parseCommand() is not an instance of ReturnCommand", testName));
 
-        command.execute(loans, ui, storage, borrowersCreditScoreForReturnedLoans);
+        command.execute(loans, ui, storage, creditScoreReturnedLoansMap);
         System.setOut(System.out);
         assertTrue(returnCmdBos.toString().equals(expectedOutput), String.format("Failed test "
             + "'%s', wrong output.", testName));

@@ -17,8 +17,9 @@
    3.2 [UI Component](#32-ui-component)\
    3.3 [Parser Component](#33-parser-component)\
    3.4 [CommandHandler Component](#34-commandhandler-component)\
-   3.5 [RecordList Component](#35-recordlist-component)\
-   3.6 [Storage Component](#36-storage-component)
+   3.5 [Command Component](#35-command-component)\
+   3.6 [RecordList Component](#36-recordlist-component)\
+   3.7 [Storage Component](#37-storage-component)
 4. [Implementation](#4-implementation)\
    4.1 [Add Feature](#41-add-feature)\
    4.2 [List Feature](#42-list-feature)\
@@ -126,8 +127,8 @@ Before starting to write any code, we recommend that you have a look at Finux's 
 
 ### 3.1 Architecture
 
-![ArchitectureDiagram](img/ArchitectureDiagram.png)
-_Figure 1. **Finux** Architecture Diagram_
+![ArchitectureDiagram](img/ArchitectureDiagram.png)\
+_Figure 1: **Finux** Architecture Diagram_
 
 > 💡 The diagrams are built with [PlantUML](https://plantuml.com/).
 > The `.puml` files can be found in the [diagrams](https://github.com/AY2021S2-CS2113T-W09-1/tp/tree/master/docs/diagrams) folder and
@@ -141,7 +142,7 @@ The `Finux` component contains only one class `Finux`, It is responsible for,
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
 The rest of the Application consists of six components.
-* `UI`: The user interface (UI) of the App which handles all user input and Application output.
+* `Ui`: The user interface (Ui) of the App which handles all user input and Application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
 * `Command`: The appropriate command to be executed.
@@ -151,14 +152,14 @@ The rest of the Application consists of six components.
 Given below are sequence diagrams describing the general Application flow and how the different objects
 interact with each other.
 
-![Initialization](img/InitializationSequenceDiagram.png)
-_Figure 2. Initialization_
+![Initialization](img/InitializationSequenceDiagram.png)\
+_Figure 2: Initialization_
 
 The initialization sequence diagram above shows the systematic flow of object creation and record
 retrieval from storage file for creation of the `RecordList` object.
 
-![Main program flow](img/CommandLooperSequenceDiagram.png)
-_Figure 3. Main Application loop and exit sequence_
+![Main program flow](img/CommandLooperSequenceDiagram.png)\
+_Figure 3: Main Application Loop & Exit Sequence_
 
 > 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML,
 > the lifeline reaches the end of diagram.
@@ -171,7 +172,7 @@ The following sections below will provide more details of each component.
 ### 3.2 UI Component
 
 ![UIComponentDiagram](img/UIComponentDiagram.png)\
-*Figure 1: Ui Class Diagram*
+*Figure 4: **Ui** Class Diagram*
 
 The Ui Component consists of a `Ui` class which handles all user input and system output.
 The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
@@ -181,8 +182,8 @@ The `Ui` component actively listens for:
 * the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
-![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)
-*Figure X: ParserHandler Class Diagram*
+![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png) <br>
+_Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
 The Parser component consist of 1 class called `ParserHandler`.
@@ -237,23 +238,70 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 
 
 ### 3.4 CommandHandler Component
-![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)
-_Figure X. CommandHandler Class Diagram_
+![CommandHandlerClassDiagram](img/CommandHandlerClassDiagram.png)\
+_Figure 6: CommandHandler Class Diagram_\
+![CommandHandlerSequenceDiagram](img/CommandHandlerSequenceDiagram.png)\
+_Figure 7: CommandHandler Sequence Diagram_
 
 #### Description
 The `CommandHandler` component is the object class itself.
-The role of the `CommandHandler` is to convert parsed arguments from the `ParserHandler`
+The role of the `CommandHandler` is to convert `parsedArguments` from the `ParserHandler`
 into subsequent `Command` objects which will be executed thereafter.
+The `XYZCommand` in _Figure 7_ represents a valid command word (e.g. `"xyz"`) from the input
+parsed earlier from the `ParserHandler`. More on the actual valid commands, please refer to
+the [Command Component](#35-command-component) below.
 
 #### Design
 It functions as a mapping from `parsedArguments[0]` to a set of predefined command words 
-(the actual commands of the Application).
+(the actual commands of the Application).\
+With reference to the above _Figure 7_, 
+In the case of `"xyz"` being mapped to `XYZCommand`, depending on the other data in the 
+`parsedArguments`,
+* arguments are valid: the `XYZCommand` object is successfully returned.
+* arguments are erroneous/invalid: `CommandException` is thrown.
 
-### 3.5 RecordList Component
+If `parsedArguments[0]` maps to an empty String `""`, a `null` is returned, allowing the 
+`Finux` to continue prompting for user input.
+
+Finally, if `parsedArguments[0]` cannot be mapped to any command, a `CommandException` is 
+thrown to `Finux` to handle.
+
+Not stated explicitly in the diagrams, when the `exit` command is entered, the `CommandHandler`
+sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exit the Application.
+
+### 3.5 Command Component
+![CommandClassDiagram](img/CommandClassDiagram.png)
+_Figure 8: Command Class Diagram_
+
+All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
+e.g. `protected static final String COMMAND_XYZ = "xyz";`\
+These constants are used by the `CommandHandler` to map to each `Command`.
+
+#### Description
+The `Command` component contains the `abstract Command` class and its extensions. The extensions 
+of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
+
+#### Design
+The only `abstract` method of `Command` is `execute(...)` where it is called everytime a `Command`
+object is created. Most of the input validation is done in the constructor of each Command object. 
+1. Firstly, arguments are checked for validity (if any):
+   1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
+   2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
+   3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
+      E.g. ViewCommand implements `{-e | -l | -s}` options, `view -s -l` is considered a conflict of options.
+2. Secondly, option values are validated (if any):
+   * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
+     Each option value is validated based on the input validation methods for each data type.
+
+If no violations are present in the arguments, then the subsequent `Command` object is returned.\
+If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
+is thrown back to the `CommandHandler`.
+
+### 3.6 RecordList Component
 The `recordlist` class maintains an internal arraylist of record objects used throughout Finux's execution.
 
 
-### 3.6 Storage Component
+### 3.7 Storage Component
 
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
@@ -343,6 +391,18 @@ This section introduces the specific implementation details and design thought p
 of some features in **Finux**.
 
 ### 4.1 Add Feature
+The `add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
+When adding an expense `add -e bread loaf -a 2.50 -d today`, or\
+adding a savings `add -s week's savings -a 100 -d 28/03/2021`, or\
+adding a loan `add -l loan to gerard -a 200 -d 12012021 -p Gerard`,
+the `ParserHandler` will parse the input for `CommandHandler` to create the `AddCommand` object.
+By calling the `execute()` method, the respective `Expense`, `Saving` or `Loan` object is added 
+into the `RecordList`.
+
+#### 4.1.1 Current Implementation
+...
+
+#### 4.3.2 Design Consideration
 ...
 
 ### 4.2 List Feature
@@ -371,8 +431,8 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
-![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)
-*Figure x: Sequence Diagram for `view -e`*
+![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png) <br>
+_Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
 >

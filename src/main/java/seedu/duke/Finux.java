@@ -1,6 +1,6 @@
 package seedu.duke;
 
-import seedu.duke.command.CreditScoreMap;
+import seedu.duke.command.CreditScoreReturnedLoansMap;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
 import seedu.duke.command.ExitCommand;
@@ -12,13 +12,15 @@ import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 
+import static seedu.duke.common.Constant.FINUX_LOGGER;
+
 public class Finux {
     private Ui ui;
-    private RecordList records;
     private Storage storage;
-    private CommandHandler commandHandler;
     private ParserHandler parserHandler;
-    private CreditScoreMap creditScoreMap;
+    private CommandHandler commandHandler;
+    private RecordList recordList;
+    private CreditScoreReturnedLoansMap creditScoreReturnedLoansMap;
 
     /**
      * Main entry-point for Finux application.
@@ -46,12 +48,12 @@ public class Finux {
             parserHandler = new ParserHandler();
             commandHandler = new CommandHandler();
             storage.loadFile();
-            records = new RecordList(storage.getRecordListData());
-            creditScoreMap = new CreditScoreMap(
-                    storage.getCreditScoreHashMapData());
+            recordList = new RecordList(storage.getRecordListData());
+            creditScoreReturnedLoansMap = new CreditScoreReturnedLoansMap(storage.getMapData());
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
             Ui.printInitError();
+            FINUX_LOGGER.logWarning("Unable to load finux.txt!");
             System.exit(-1);
         }
     }
@@ -60,17 +62,16 @@ public class Finux {
      * Loops the application until an EXIT command is parsed.
      */
     private void commandLooper() {
-        Command command;
-        String rawInput;
-        do {
-            rawInput = ui.getUserInput();
+        while (!commandHandler.isExit()) {
+            String rawInput = ui.getUserInput();
             ArrayList<String> parsedStringList = parserHandler.getParseInput(rawInput);
             assert parsedStringList.size() != 0 : "Empty Parser Error";
-            command = commandHandler.parseCommand(parsedStringList, records);
-            if (command != null) {
-                command.execute(records, ui, storage, creditScoreMap);
+            Command command = commandHandler.parseCommand(parsedStringList, recordList);
+            if (command == null) {
+                continue;
             }
-        } while (!ExitCommand.isExit(command));
+            command.execute(recordList, ui, storage, creditScoreReturnedLoansMap);
+        }
     }
 
     /**
