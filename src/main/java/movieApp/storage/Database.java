@@ -117,30 +117,7 @@ public class Database {
     // TODO: Need edit Ui class, constructor and getOption, to use this function.
     // TODO: Create a more generic function that can be used to update any of the databases so don't keep repeating code
     // TODO: Something like public static void updateDatabase()
-    public static void deleteMovie() throws Exception {
-        System.out.println("Select a movie to be deleted from the list (enter the number)");
-        int i = 1;
-        for(Movie movie : MovieDatabase){
-            System.out.println(i + ". " + movie.getMovieTitle());
-            i++;
-        }
-
-        Scanner sc = new Scanner(System.in);
-        int choice = -1;
-        while ((choice < 1) || (choice > MovieDatabase.size())) {
-            System.out.println("Please enter your choice: ");
-            if (!sc.hasNextInt()) {
-                System.out.println("Please input an integer.\n");
-                sc.next();
-                continue;
-            }
-            choice = sc.nextInt();
-            if ((choice <= 0) ||(choice > MovieDatabase.size())) {
-                System.out.println("Please input an integer within the range.\n");
-            }
-        }
-        sc.close();
-
+    public static void deleteMovie(int choice) throws Exception {
         MovieDatabase.remove(choice - 1);
         try {
             File f_movie = new File("data/movieList.txt");
