@@ -1,68 +1,70 @@
 @startuml
-participant Actor
-participant GoCommand
-participant RouterUi
-Actor -> GoCommand : execute
-activate GoCommand
-GoCommand -> RouterUi: getUserCommandInput
-activate RouterUi
-RouterUi --> GoCommand:
-deactivate RouterUi
-create Router
-GoCommand -> Router : execute
-activate Router
-Router -> Router : findShortestRoute
-activate Router
-Router -> NusMap : resetVisitedFlag
-activate NusMap
-NusMap -> Block : setAsNotVisited
-activate Block
-Block --> NusMap
-deactivate Block
-NusMap --> Router
-deactivate NusMap
-Router -> NusMap : getBlock
-activate NusMap
-NusMap --> Router
-deactivate NusMap
-Router -> NusMap : getBlock
-activate NusMap
-NusMap --> Router
-deactivate NusMap
-Router -> Router : bfs
-activate Router
-Router -> Block : setAsVisited
-activate Block
-Block --> Router
-deactivate Block
-Router -> NusMap : getBlock
-activate NusMap
-NusMap --> Router
-deactivate NusMap
-Router -> Block : setAsVisited
-activate Block
-Block --> Router
-deactivate Block
-Router -> Block : isSameBlock
-activate Block
-Block --> Router
-deactivate Block
-Router --> Router
-deactivate Router
-Router -> NusMap : getBlock
-activate NusMap
-NusMap --> Router
-deactivate NusMap
-Router --> Router
-deactivate Router
-Router -> Router : getRouteAsString
-activate Router
-Router --> Router
-deactivate Router
-Router --> GoCommand
-deactivate Router
-GoCommand -> RouterUi: showMessageWithDivider
-activate RouterUi
+hide footbox
+title Footer removed
+actor "User"
+participant "command:GoCommand"
+participant "ui:RouterUi"
+"User" -> "command:GoCommand" : execute
+activate "command:GoCommand"
+"command:GoCommand" -> "ui:RouterUi": getUserCommandInput
+activate "ui:RouterUi"
+"ui:RouterUi" --> "command:GoCommand":
+deactivate "ui:RouterUi"
+create ":Router"
+"command:GoCommand" -> ":Router" : execute
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
+":Router" -> "nusMap:NusMap" : resetVisitedFlag
+activate "nusMap:NusMap"
+"nusMap:NusMap" -> ":Block" : setAsNotVisited
+activate ":Block"
+":Block" --> "nusMap:NusMap"
+deactivate ":Block"
+"nusMap:NusMap" --> ":Router"
+deactivate "nusMap:NusMap"
+":Router" -> "nusMap:NusMap" : getBlock
+activate "nusMap:NusMap"
+"nusMap:NusMap" --> ":Router"
+deactivate "nusMap:NusMap"
+":Router" -> "nusMap:NusMap" : getBlock
+activate "nusMap:NusMap"
+"nusMap:NusMap" --> ":Router"
+deactivate "nusMap:NusMap"
+":Router" -> ":Router" : bfs
+activate ":Router"
+":Router" -> ":Block" : setAsVisited
+activate ":Block"
+":Block" --> ":Router"
+deactivate ":Block"
+":Router" -> "nusMap:NusMap" : getBlock
+activate "nusMap:NusMap"
+"nusMap:NusMap" --> ":Router"
+deactivate "nusMap:NusMap"
+":Router" -> ":Block" : setAsVisited
+activate ":Block"
+":Block" --> ":Router"
+deactivate ":Block"
+":Router" -> ":Block" : isSameBlock
+activate ":Block"
+":Block" --> ":Router"
+deactivate ":Block"
+":Router" --> ":Router"
+deactivate ":Router"
+":Router" -> "nusMap:NusMap" : getBlock
+activate "nusMap:NusMap"
+"nusMap:NusMap" --> ":Router"
+deactivate "nusMap:NusMap"
+":Router" --> ":Router"
+deactivate ":Router"
+":Router" -> ":Router" : getRouteAsString
+activate ":Router"
+":Router" --> ":Router"
+deactivate ":Router"
+":Router" --> "command:GoCommand"
+deactivate ":Router"
+"command:GoCommand" -> "ui:RouterUi": showMessageWithDivider
+activate "ui:RouterUi"
 return
 return
 @enduml
