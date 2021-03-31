@@ -69,7 +69,8 @@ public class DoctorAppointmentInstance {
                 System.out.println(e.getMessage());
                 UI.showLine();
             } catch (Exception e) {
-                System.out.println("OOPS! Something went wrong!");
+                System.out.println(e.getMessage());
+                UI.showLine();
             }
         }
     }

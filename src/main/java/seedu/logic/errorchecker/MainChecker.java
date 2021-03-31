@@ -65,7 +65,7 @@ public class MainChecker {
         }
     }
 
-    public void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
+    public static void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
 
         String cleanedInput = UI.cleanseInput(stringToken);
         if (!stringToken.equals(cleanedInput)){

@@ -50,7 +50,7 @@ public class DoctorAppointmentUI extends UI {
     public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
         if (indicator.equals("D")) {
            // System.out.print(doc.getDoctorId());
-           printEmptyCell(doc.getDoctorId());
+           //printEmptyCell(doc.getDoctorId());
         }
         //System.out.print(doc.getAppointmentId());
         printEmptyCell(doc.getAppointmentId());
