@@ -6,15 +6,15 @@ import ui.Ui;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ResetStoreCommandTest {
-
+class HomeCommandTest {
     @Test
     public void execute_resetIndexes_success() {
         NusFoodReviews nusFoodReviews = new NusFoodReviews("data/storage.txt");
-        ResetStoreCommand c = new ResetStoreCommand(nusFoodReviews);
+        HomeCommand c = new HomeCommand(nusFoodReviews);
         c.execute(new ArrayList<>(), new Ui());
+        assertEquals(-1, nusFoodReviews.getCanteenIndex());
         assertEquals(-1, nusFoodReviews.getStoreIndex());
     }
 }
