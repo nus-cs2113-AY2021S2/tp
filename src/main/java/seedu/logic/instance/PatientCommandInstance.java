@@ -25,6 +25,12 @@ public class PatientCommandInstance {
         try {
             patients = new PatientActions(patientStorage.loadPatients());
         } catch (HealthVaultException e) {
+            System.out.println(e.getMessage());
+            ui.corruptedFileErrorMessage();
+            patients = new PatientActions();
+            return;
+        } catch (NumberFormatException e) {
+            System.out.println("It seems like your age input is invalid!");
             ui.corruptedFileErrorMessage();
             patients = new PatientActions();
             return;
