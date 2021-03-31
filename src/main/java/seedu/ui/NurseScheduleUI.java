@@ -18,7 +18,7 @@ public class NurseScheduleUI extends UI {
     public void printNurseScheduleHelpList() {
         System.out.println("Here is a list of Nurse Schedule commands: ");
 
-        int[] lengthPara = {10,60,50};
+        int[] lengthPara = {10,65,50};
         printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
         printer(new String[]{HELP_COMMAND, SCHEDULES_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
@@ -64,7 +64,7 @@ public class NurseScheduleUI extends UI {
     public static void nurseListHeader() {
         System.out.println(
                 UI.prettyPrint("Nurse ID", 10) + " | " + UI.prettyPrint("Patient ID", 10) + " | "
-                        + UI.prettyPrint("Time", 10));
+                        + UI.prettyPrint("Date", 10));
     }
 
     public static void printEmptyCell() {
