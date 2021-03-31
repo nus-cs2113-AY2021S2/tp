@@ -386,7 +386,6 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.4. Non-Functional Requirements
 
-
 1. Should work on any mainstream OS as long as it has Java 11 or above installed.
 
 2. Should be able to hold up to 1000 history, notes, favourites and block alias entries without a noticeable sluggishness in performance for typical usage.
@@ -401,4 +400,13 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ## *5. Appendix: Instructions for manual testing*
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### 5.1 Launch and shutdown
+1. Initial launch  
+    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases/tag/v1.0)
+   and copy it into an empty folder.  
+    1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.  
+   Expected: Greeting message of NUSMaze  to be shown
+2. Exiting the application
+    2.1 Type 'bye' and press enter  
+   Expected: The application shows thank you message and exits successfully.
+   
