@@ -1,6 +1,5 @@
 @startuml
 hide footbox
-title Footer removed
 actor "User"
 participant "command:GoCommand"
 participant "ui:RouterUi"

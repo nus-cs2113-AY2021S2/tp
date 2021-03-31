@@ -65,7 +65,7 @@ class EateryList {
 + sortEateriesByDistance():void
 }
 
-Command <|-- GoCommand
+"{abstract}\nCommand" <|-- GoCommand
 Router "**1**" <.. GoCommand : creates <
 EateryList "**1**" <.. GoCommand : creates <
 NusMap <.. Router
