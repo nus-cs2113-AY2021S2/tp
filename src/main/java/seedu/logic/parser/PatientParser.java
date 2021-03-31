@@ -31,8 +31,7 @@ public class PatientParser {
             c = new PatientList();
             break;
         case "add":
-            checker.checkLength();
-            checker.checkAddCommand();
+            checker.checkAdd();
             String[] addFormat = parseToAddFormat(cleanString);
             c = new PatientAdd(addFormat);
             break;
@@ -42,8 +41,7 @@ public class PatientParser {
             c = new PatientDelete(stringTokens[1]);
             break;
         case "find":
-            checker.checkLength();
-            checker.checkID();
+            checker.checkFind();
             c = new PatientFind(stringTokens[1]);
             break;
         case "help":
