@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DisplayMenus
+
+->":DisplayMenusCommand" : execute(canteens, ui)
+activate ":DisplayMenusCommand"
+
+":DisplayMenusCommand" -> ":Store" : getMenus()
+activate ":Store"
+":Store" --> ":DisplayMenusCommand" : menus
+deactivate ":Store"
+
+":DisplayMenusCommand" -> "ui:Ui" : showDisplayMenu()
+activate "ui:Ui"
+"ui:Ui" --> ":DisplayMenusCommand"
+deactivate "ui:Ui"
+
+<-- ":DisplayMenusCommand"
+deactivate ":DisplayMenusCommand"
+@enduml
