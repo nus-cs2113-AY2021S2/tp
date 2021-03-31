@@ -46,6 +46,7 @@ public class Module {
     public String getZoomLink() {
         return this.zoomLink;
     }
+
     public void setZoomLink(String zoomLink) {
         this.zoomLink = zoomLink;
     }
