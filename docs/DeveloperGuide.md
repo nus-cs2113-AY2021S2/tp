@@ -1,5 +1,7 @@
 # Developer Guide for NUSMaze
 
+---------------------------------------------------------------------------------------------
+
 ## Table Of Contents
 <!-- TOC -->
 1. [Introduction](#1-introduction)  
@@ -28,7 +30,9 @@
 5. [Appendix: Instructions for manual testing](#5-appendix-instructions-for-manual-testing)
 <!-- TOC -->
 
-## 1. Introduction  
+---------------------------------------------------------------------------------------------
+
+## *1. Introduction*  
 ### 1.1. Overview
 
 NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more.
@@ -48,10 +52,11 @@ Step 8. Press run on the `Main()` method of NUSMaze.
 If the set up process had been completed successfully, you should see the following message:  
 ![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
 
+---------------------------------------------------------------------------------------------
 
-## 2. Design 
+## *2. Design* 
 ### 2.1. Architecture
-![img.png](architecture.png)
+![img.png](images/architecture.png)
 
 The **Architecture Diagram** above depicts the high-level design of the NUSMaze. You can always refer to this diagram
 to understand how the different components of NUSMaze interact with each other.
@@ -76,24 +81,23 @@ chapters of the developer guide.
 ![img.png](images/ui_design.png)  
 **API**: [UiManager.java](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java)
 
-The UI of the application is managed by the `UiManager` class as shown by the class diagram above. The individual Ui classes for each feature such as `AliasUi`, `DailyRouteUi`,
-`FavouriteUi`, `HistoryUi`, `NoteUi` and `RouterUi` extend the `UiManager` class. The UiManager class consists of the methods
-that are used to display recurrent messages on the *CLI* and also the utilitarian methods to get the user's inputs.
+The UI of the application is managed by the `UiManager` class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
+`FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs.
 
-The `UiManager` requires the static messages from the `CommonMessages` class to obtain the commonly used messages that
+The `UiManager` requires the static string variables from the `CommonMessages` class to obtain the commonly used messages that
 such as the divider and input headers.
 
-The individual UiClasses contain the methods that are used to get user inputs specific to the needs of the specific feature that
+The individual UI classes contain the methods that are used to get user inputs specific to the needs of the specific feature that
 it is responsible for. For example, when the routing feature is to be executed, the UI will need to prompt the user to obtain 2
 inputs, namely the `from block` and the `to block`. Hence, the `RouterUi` contains the `getRoutingInfo()` method which will prompt
-the user for these two inputs. Methods to get user input are called upon directly from the command classes of the specific feature.
+the user for these two inputs using the utility methods from the UiManager. Methods to get user input are called upon directly from the command classes of the specific feature command.
 
 The `UiManager` component,
 * displays messages in the *CLI*.
 * provides the individual Ui classes with the utilities to obtain user input specific to their needs.
 
 ### 2.3. Parser Component 
-![img.png](ParserComponent.png)
+![img.png](images/ParserComponent.png)
 
 As shown above in the class diagram, **Parser component** is made out of the `Parser` class.
 After the `UiManager` reads in the user command, `NusMaze` makes use of the `Parser` to interpret 
@@ -102,10 +106,10 @@ the user command and it will instantiate a new Command object to execute the com
 The Sequence diagram shown below is of a scenario where the user inputs an `"invalid input"`. It will allow you to 
 get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`.
 
-![img.png](Parsersequencediagram.png)
+![img.png](images/Parsersequencediagram.png)
 
 ### 2.4. Command Component
-![img.png](CommandComponent.png)
+![img.png](images/CommandComponent.png)
 
 The class diagram above may seem complicated at first glance but it actually isn't.
 The **Command Component** of NUSMaze is made out of `Command` class, which is the parent class of
@@ -117,7 +121,7 @@ Each `Command` class has :
 * An `ui` specifically for taking in further user input in order to carry out the command.
 
 ### 2.5. Router Component
-![img.png](RouterComponent.png)
+![img.png](images/RouterComponent.png)
 
 The **Router Component** consist of the `Router` class which is reponsible for finding the shortest route to get from
 one location to another. In finding the shortest route, it utilises the breath-first-search algorithm, which will be 
@@ -130,7 +134,7 @@ As shown in the diagram above, `Router` is used by the following classes:
 * `ShowDailyRouteCommand`
 
 ### 2.6. Data Component
-![img.png](DataComponent.png)
+![img.png](images/DataComponent.png)
 
 The **Data Component** is where all the data that are needed to execute a command is stored. For example when `"go"`
 command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
@@ -139,12 +143,11 @@ the shortest route.
 On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
 further elaborated in the following section.
 
-### 2.7. Storage Component 
+### 2.7. Storage Component  
 
-## 3. Implementation
+---------------------------------------------------------------------------------------------
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.} 
-
+## *3. Implementation*
 ### 3.1. Save feature
 #### Current Implementation
 The save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
@@ -246,26 +249,34 @@ Shown below is the sequence diagram when a valid block is entered for the starti
 
 ### 3.4. Custom aliases feature
 #### Current Implementation
-The custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
+The following diagram illustrates the class diagram for implementation of the alias feature:
+![img.png](images/AliasFeature.png)
+The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
+if applicable, was the command that the user wanted to execute. 
 
-The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` classes extends the `Command` class. These command classes contain the respective `execute` functions for adding, viewing and deleting the user's custom aliases.
+The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class and they all depend on the `AliasUi` class to obtain inputs and display outputs.
 
-The `Storage` class has the feature to save the custom aliases into a local file so that users can load back their custom alias names when restarting the app.
+Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases
+so that the user can access their aliases even after they close and reopen the application. 
+
+The data model for this feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. 
+The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
+`BlockAlias` class also depends on the `NusMap` class to ensure that valid blocks are input by the user.
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
 Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
 
-Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. The new command will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
+Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
 Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
 
 Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
-Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and `Got it! Successfully deleted ALIASTOREMOVE from the aliases` will be displayed to the user.  
+Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
 
-Step 6. The user executes `bye` and exits the app. This will invoke the instance of the `Storage` class which will convert the hashmap into the text file format and append to the text file to save the alias data locally.    
-
+Shown below is the sequence diagram when a valid block name and alias are added:
+![img.png](images/AliasFeatureSequence.png)
 ### 3.5. History feature
 
 #### Current Implementation
@@ -300,7 +311,9 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
-## 4. Appendix: Requirements
+---------------------------------------------------------------------------------------------
+
+## *4. Appendix: Requirements*
 
 ### 4.1. Product Scope
 
@@ -338,6 +351,8 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 * *CLI* - Command Line Interface
 
-## 5. Appendix: Instructions for manual testing
+---------------------------------------------------------------------------------------------
+
+## *5. Appendix: Instructions for manual testing*
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
