@@ -96,7 +96,7 @@ public class UI {
     }
 
     public static String cleanseInput(String input) {
-        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","");
+        return input.replaceAll("/^[a-z\\d\\-_\\s]+$/i","").replace("\\", "");
     }
     public static void checkBackSlash(String line) {
         if (line.contains("\\")) {
