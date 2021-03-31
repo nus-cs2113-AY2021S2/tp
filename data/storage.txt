@@ -1,6 +1,8 @@
-The deck<>chicken rice<>very nice//4
-The deck<>chicken rice<>not nice like shit//1
+The deck<>chicken rice stall<>very nice//4
+The deck<>chicken rice stall<>not nice too salty//1
 TechnoEdge<>western town<>not bad but very ex//2.5
-TechnoEdge<>mala
-Fragrant<>mixed rice stall
-Fragrant<>fishball noodle
+TechnoEdge<>mala<>Food is delicious but always very long queue//4
+Fragrant<>mixed rice stall<>very cheap and many choices//3.5
+Fragrant<>fishball noodle<>soso only not very tasty//2.5
+Fragrant<>Power nasi lemak
+

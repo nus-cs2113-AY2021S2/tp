@@ -1,0 +1,8 @@
+The deck<>chicken rice stall<>drumlet rice//4.50
+The deck<>chicken rice stall<>wanton noodles//3.0
+Fragrant<>fishball noodle<>bar chor mee//3.0
+Fragrant<>fishball noodle<>mee tai bak//3.0
+TechnoEdge<>western town<>chicken chop//5.50
+TechnoEdge<>western town<>fish and chip//4.50
+Fragrant<>Power nasi lemak<>Chicken wing set//3.50
+Fragrant<>Power nasi lemak<>mee rebus//3.0
