@@ -312,8 +312,8 @@ can be found on the second computer.
 |[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS`| 
 |[**Showing all aliases**](#442-viewing-all-aliases)  | `show alias` | 
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
-|[**Adding a daily route**](#451-adding-a-daily-route)     | `add day → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
-|[**Showing a daily route**](#452-viewing-daily-route)       | `day → DAY_NUMBER` |
+|[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
+|[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
 |[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
 |[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
