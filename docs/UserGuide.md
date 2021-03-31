@@ -7,19 +7,19 @@ The purpose of this User Guide is to assist you in the usage of the application.
 
 ## Content Page
 1. [Introduction](#1-introduction)
-1. [Installation Guide](#2-installation-guide)
-1. [How to use this guide](#3-how-to-use-the-guide)
+2. [Installation Guide](#2-installation-guide)
+3. [How to use this guide](#3-how-to-use-the-guide)
 	1. [Technical terms](#31-technical-terms)
-	1. [Symbols & Icons](#32-symbols--icons)
-1. Start Menu
-1. Features 
-	1. Staff
-	2. Patient
-	3. Doctor's Appointment
-	4. Nurse Schedule
-	5. Inventory
-1. FAQ
-1. Command Summary
+	2. [Symbols & Icons](#32-symbols--icons)
+4. [Start Menu](#4-start-menu)
+5. [Features ](#5-features)
+	1. [Staff](#51-staff)
+	2. [Patient](#52-patient)
+	3. [Doctor's Appointment](#53-doctors-appointment)
+	4. [Nurse Schedule](#54-nurse-schedule)
+	5. [Inventory](#55-inventory)
+6. [FAQ](#6-faq)
+7. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
@@ -68,12 +68,18 @@ In this application there are 5 main features that are provided for the user. Ea
 
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
-## 4. Quick Start
+## 4. Start Menu
 
-{Give steps to get started quickly}
+### Commands:
 
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/drugsDuke).
+ 1. `Staff` to go to staff.
+ 2. `patient` to go to patients.
+ 3. `appointments` to go to doctor's appointments.
+ 4. `schedules` to go to nurse schedules.
+ 5. `inventory` to go to drugs inventory.
+ 6. `help` to see what each of the sections contain.
+ 7. `exit` to quit and terminate the program.
+ 8. `*Anything else*` will be an invalid command.
 
 ## 5. Features 
 
@@ -143,7 +149,12 @@ Expected Outcome(nurses):
 ```
 
 #### Returning to Start Menu: `return`
+
+Returns to start menu.
+
 #### Help: `help`
+
+Prints Staff help message.
 
 ### 5.2 Patient
 
@@ -220,7 +231,12 @@ P55555, Sam, 40, Male, Fever, Paracetamol
 ```
 
 #### Returning to Start Menu: `return`
+
+Returns to start menu.
+
 #### Help: `help`
+
+Prints Patient help message.
 
 ### 5.3 Doctor's Appointment
 
@@ -282,7 +298,12 @@ ID: A369
 ```
 
 #### Returning to Start Menu: `return`
+
+Returns to start menu.
+
 #### Help: `help`
+
+Prints Doctor Appointments help message.
 
 ### 5.4 Nurse Schedule
 
@@ -357,7 +378,12 @@ N2
 ```
 
 #### Returning to Start Menu: `return`
+
+Returns to start menu.
+
 #### Help: `help'
+
+Prints Nurse Schedule help message.
 
 ### ??Adding a todo: `todo`??
 Adds a new item to the list of todo items.
@@ -433,7 +459,12 @@ Current Inventory:
 ```
 
 #### Returning to Start Menu: `return`
+
+Returns to start menu.
+
 #### Help: `help`
+
+Prints Inventory help message.
 
 ## 6. FAQ
 
