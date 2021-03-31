@@ -7,7 +7,7 @@ Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and find
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `MovieApp` from [here](http://link.to/duke).
+2. Down the latest version of `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v1.0).
 3. Copy the file to the folder you want to use as the home folder for your AddressBook.
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.
 {insert photo}
