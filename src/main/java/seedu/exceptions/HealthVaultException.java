@@ -10,6 +10,7 @@ public class HealthVaultException extends Exception {
 
     public HealthVaultException() {
     }
+
     /**
      * Shows the error encountered by the user
      *
@@ -85,6 +86,7 @@ public class HealthVaultException extends Exception {
             break;
         }
     }
+  
     public String getMessage() {
         return "There seems to be an error!";
     }
