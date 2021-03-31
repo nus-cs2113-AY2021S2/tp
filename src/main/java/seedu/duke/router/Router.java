@@ -13,10 +13,13 @@ public class Router {
     public String execute(NusMap nusMap, String from, String to) throws InvalidBlockException {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
-        LinkedList<Block> route = new LinkedList<>();
-        findShortestRoute(nusMap, route, from, to);
-        return getRouteAsString(route);
-
+        try {
+            LinkedList<Block> route = new LinkedList<>();
+            findShortestRoute(nusMap, route, from, to);
+            return getRouteAsString(route);
+        } catch (NullPointerException e) {
+            throw new InvalidBlockException();
+        }
     }
 
     public void findShortestRoute(NusMap nusMap, LinkedList<Block> route, String from, String to) {
