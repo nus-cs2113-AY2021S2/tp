@@ -11,7 +11,9 @@ Since: `March 2021`
 
 1. [Introduction](#1-introduction)
 1. [Quick Start](#2-quick-start)\
-   2.1 [Understanding the guide](#21-understanding-the-guide)
+   2.1 [Understanding the guide](#21-understanding-the-guide)\
+   2.2 [Explanation for Command formats](#22-explanation-for-command-formats)\
+   2.3 [Explanation for Date and Date formats](#23-explanation-for-date-and-date-formats)
 1. [Features](#3-features)\
    3.1 [Add a record: `add`](#31-add-a-record-add)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.1 [Add an expense record](#311-add-an-expense-record)\
@@ -103,7 +105,7 @@ Argument types and notation:
 
 ---
 
-### 2.3 Date and Date formats
+### 2.3 Explanation for Date and Date formats
 
 Date input is required when you specify the option `-d`.
 You are required enter a date that follows a valid Date format.
