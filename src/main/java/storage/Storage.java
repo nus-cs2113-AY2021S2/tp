@@ -86,7 +86,7 @@ public class Storage {
 
 
             //create new store under canteen and make sure there is a store
-            if(storedLine.length >= 2) {
+            if (storedLine.length >= 2) {
                 store = new Store(storedLine[1]);
                 canteen.getStores().add(store);
             }
@@ -129,7 +129,7 @@ public class Storage {
 
 
 
-        public static void save(ArrayList<Canteen> canteens) {
+    public static void save(ArrayList<Canteen> canteens) {
         try {
             FileWriter fw = new FileWriter(filePath);
             saveCanteens(fw, canteens);
