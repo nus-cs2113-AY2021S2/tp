@@ -43,13 +43,12 @@ public class DoctorAppointmentStorage {
         Scanner fileReader = new Scanner(fileName);
         while (fileReader.hasNextLine()) {
             String input = fileReader.nextLine();
-            DoctorAppointmentChecker.checkDataFromStorage(input);
             String[] data = input.split("\\s\\|\\s", 5);
-            checkStorage.add(input);
+            checkStorage.add(data[1]);
+            DoctorAppointmentChecker.checkDataFromStorage(input,checkStorage);
             loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
         }
         fileReader.close();
-        //DoctorAppointmentChecker.checkDataFromStorage(checkStorage);
         return new AppointmentActions(loadAppointments);
     }
 
