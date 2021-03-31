@@ -27,6 +27,14 @@ public class Constants {
     public static final String TO_SCHEDULES_INSTANCE = "schedules";
     public static final String TO_INVENTORY_INSTANCE = "inventory";
 
+    public static final String TO_STAFF_INSTANCE_DESCRIPTION = "To go to staff";
+    public static final String TO_PATIENT_INSTANCE_DESCRIPTION = "To go to patients";
+    public static final String TO_APPOINTMENTS_INSTANCE_DESCRIPTION = "To go to doctors appointments";
+    public static final String TO_SCHEDULES_INSTANCE_DESCRIPTION = "To go to nurse schedules";
+    public static final String TO_INVENTORY_INSTANCE_DESCRIPTION = "To go to inventory";
+    public static final String EXIT_COMMAND_DESCRIPTION = "To exit the application";
+    public static final String HELP_COMMAND_DESCRIPTION = "To see what commands for Start Menu";
+
     public static final String EXIT_COMMAND = "exit";
     public static final String HELP_COMMAND = "help";
     public static final String ADD_COMMAND = "add";

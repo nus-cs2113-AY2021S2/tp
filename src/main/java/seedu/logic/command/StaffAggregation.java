@@ -1,19 +1,20 @@
 package seedu.logic.command;
 
-import seedu.ui.StaffUI;
+import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.Staff;
+import seedu.ui.StaffUI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static seedu.logic.errorchecker.StaffChecker.isSameInt;
-import static seedu.ui.UI.*;
+import static seedu.ui.UI.prettyPrint;
 
 public class StaffAggregation {
     private static final String DOCTOR_TYPE = "D";
     private static final String NURSE_TYPE = "N";
     private ArrayList<Staff> list = new ArrayList<>();
     protected static int numStaff = 0;
+    private StaffChecker staffChecker = new StaffChecker();
 
     public StaffAggregation() {
     }
@@ -80,7 +81,7 @@ public class StaffAggregation {
     }
 
     public boolean search(String keyword, Staff staff) {
-        return isSameInt(staff.getAge(),keyword) || staff.getName().contains(keyword)
+        return staffChecker.isSameInt(staff.getAge(), keyword) || staff.getName().contains(keyword)
                     || staff.getId().contains(keyword) || staff.getSpecialisation().contains(keyword);
     }
 
