@@ -84,7 +84,7 @@ Ensure that you have the following installed:
 * JDK 11
 * Intellij IDEA (Highly Recommended)
 
-Firstly, **fork** this repo and **clone** a copy into your computer.
+Firstly, **fork** this [repo](https://github.com/AY2021S2-CS2113T-W09-1/tp) and **clone** a copy into your computer.
 
 If you plan to use IntelliJ IDEA:
 1. **Ensure IntelliJ is configured to develop in JDK 11.**
@@ -175,7 +175,7 @@ The following sections below will provide more details of each component.
 *Figure 4: **Ui** Class Diagram*
 
 The Ui Component consists of a `Ui` class which handles all user input and system output.
-The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
+The Ui is only dependent on the `Finux` class and does not interact directly with other classes,
 ensuring a high level of cohesiveness, low level of coupling and separation of roles.
 
 The `Ui` component actively listens for:
@@ -186,7 +186,7 @@ The `Ui` component actively listens for:
 _Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
-The Parser component consist of 1 class called `ParserHandler`.
+The Parser component consist of one class called `ParserHandler`.
 The role of `ParserHandler` can be interpreted as a "manager" or "middle man" to parse
 the user input from the console into an `ArrayList<String>` format.
 
@@ -227,9 +227,9 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
      e.g. `' -e '`
 3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
    Apache Commons Lang, 3.11, providing the StringUtils class is used to cater to consideration 2.
-   * StringUtils.startsWithAny() - detection of start option with non-fixed order.
-   * StringUtils.endsWithAny()   - detection of end option with non-fixed order.
-   * StringUtils.indexOfAny()    - detection of during processing option with non-fixed order.
+   * `StringUtils.startsWithAny()` - detection of start option with non-fixed order.
+   * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
+   * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
 5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
    the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
