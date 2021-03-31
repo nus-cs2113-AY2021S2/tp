@@ -54,7 +54,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Add a Zoom Link](#345-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#346-view-zoom-links)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Delete a Zoom Link](#346-delete-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#347-view-zoom-links)
 
 [4. Command Summary](#4-command-summary)
 
@@ -980,7 +981,32 @@ https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS
 **Note!** 
 > If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
-#### 3.4.6 View Zoom Links
+#### 3.4.6 Delete Zoom Link
+
+Deletes a zoom link of your choice
+
+Example for deleting the zoom link:
+````
+> 3
+--------------------------------------------
+Here are your zoom links!
+
+[1] --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09 CS1010 password'
+
+Please choose which link you would like to delete and enter the number
+> 1
+--------------------------------------------
+You have deleted --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
+````
+
+#### 3.4.7 View Zoom Links
 
 View all zoom links stored in the application
 
@@ -1030,5 +1056,5 @@ Features|Menu | Command to enter from the Main Menu
 [Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
 [View all Links](#344-view-external-links) | External Links | 4, 1 , 3
 [Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
-[View Zoom Links](#346-view-zoom-links) | Links | 4, 3
-[Delete Zoom Link](#3114-delete-zoom-link) | Links | 1, 14
+[Delete Zoom Link](#346-delete-zoom-link) | Links | 4,3 or 1, 14
+[View Zoom Links](#347-view-zoom-links) | Links | 4, 3
