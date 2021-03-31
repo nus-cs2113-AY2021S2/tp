@@ -116,8 +116,6 @@ public class PatientChecker extends MainChecker{
     private void checkValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException,
             InvalidIDValueException {
         if (userID.length() != 6) {
-            System.out.println(userID);
-            System.out.println(userID.length());
             throw new InvalidIDLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException("IDType");
