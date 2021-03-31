@@ -117,26 +117,24 @@ This class handles the interactions with the user and contains the methods for s
 
 This feature allows user to `add a review` for any of the modules they have taken.
 
-**NOTE**: This action will **overwrite** the existing review with the new review.
+**NOTE**: This action will **overwrite** any existing reviews with the new review.
 
 E.g. Input:  
 `CS2113T is very fun:) I have learnt so many important concepts.`  
-`Though it was difficult at first, the Java exercises helped me`  
-`catch up with the rest of my peers. Overall 10/10 :)`  
+`Overall 10/10 :)`  
 `/end`
 
 Output:
 
 ```
 Woohoo~ Review added:  
-CS2113T is very fun:) I have learnt so many important concepts.
-Though it was difficult at first, the Java exercises helped me 
-catch up with the rest of my peers.
+CS2113T is very fun:) I have learnt so many important concepts.  
 Overall 10/10 :) 
 
 Returning to module information menu...
   ```
-
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/addNewReview.png)  
 A general explanation of how this feature works:
 
 **Problem**: When the user wants to review a module, he/she should be able to type ___multiple lines
@@ -149,21 +147,6 @@ the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 reference. The user will also be alerted that this action will delete his/her old review via a log.
 The log is printed out as a warning.
 
-E.g.
-
-```
-You already have added a review:
-
-CS2113T is very fun:) I have learnt so many important concepts.
-Though it was difficult at first, the Java exercises helped me 
-catch up with the rest of my peers.
-Overall 10/10 :)
- 
-Would you like to replace this with another review? [Y/N]
-
-Mar 23, 2021 9:52:21 PM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage
-WARNING: You will delete your old review. This cannot be undone.
-```
 
 ### 4.02 Delete a Review
 
@@ -265,7 +248,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-#### 4.07 View Module Components
+### 4.07 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.
