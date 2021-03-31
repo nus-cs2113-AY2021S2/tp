@@ -537,15 +537,27 @@ Removing a food while all foods are being shown.
 
 ### Searching for a food
 
-Checks if a food is in the fridge, and if it is found, outputs the location of the food.
+Checks if a food is in the fridge, and if it is found, outputs all the food in a list that match the search query.
 If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
 1. Test case: `search chicken`
-    * Expected: `You have chicken stored in LOWER_SHELF of your fridge.`
+
+* Expected: 
+ 
+  ```lang-none
+  These are the chicken in your fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```
 2. Test case: `search pear`
     * Expected: `You do not have pear in your fridge.`
 3. Test case: `search chick`
-    * Expected: `You do not have chick in your fridge.`
+
+* Expected:
+     
+  ```lang-none
+  These are the chick in your fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```
 
 ### Expiring food
 
