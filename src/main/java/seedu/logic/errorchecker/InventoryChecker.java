@@ -1,15 +1,66 @@
 package seedu.logic.errorchecker;
 
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.logic.command.InventoryActions;
+import seedu.logic.command.PatientActions;
 import seedu.model.Inventory;
+import seedu.model.Patient;
+
+import java.util.ArrayList;
 
 public class InventoryChecker extends MainChecker {
-    public InventoryChecker() {
-        super();
+    private InventoryActions inventory;
+    private ArrayList<Inventory> inventoryArrayList;
+    private ArrayList<String> stringTokens;
+    private String command;
+    private int numberOfTokens;
+
+    public InventoryChecker(InventoryActions inventory, ArrayList<String> stringTokens, String command, int numberOfTokens) {
+        this.inventory = inventory;
+        this.stringTokens = stringTokens;
+        this.command = command;
+        this.numberOfTokens = numberOfTokens;
     }
 
+    public InventoryChecker(ArrayList<Inventory> inventory, ArrayList<String> stringTokens, int numberOfTokens) {
+        inventoryArrayList = inventory;
+        this.stringTokens = stringTokens;
+        this.numberOfTokens = numberOfTokens;
+    }
+
+    public void checkStorage() throws HealthVaultException {
+        emptySpaceCheck();
+        checkStorageLength();
+        illegalCharacterChecker(stringTokens.get(1), "name");
+        illegalCharacterChecker(stringTokens.get(2), "price");
+        illegalCharacterChecker(stringTokens.get(3), "quantity");
+        checkGender(stringTokens.get(3));
+    }
+    public void checkAdd() throws HealthVaultException, NumberFormatException {
+        emptySpaceCheck();
+        isValidPrice(stringTokens.get(2));
+        duplicateChecker(stringTokens.get(1));
+        checkNumericInput(stringTokens.get(3));
+        illegalCharacterChecker(stringTokens.get(1), "name");
+        illegalCharacterChecker(stringTokens.get(2), "price");
+        illegalCharacterChecker(stringTokens.get(3), "quantity");
+    }
+    public void checkStorageLength() throws HealthVaultException {
+        if (numberOfTokens != 6) {
+            throw new CorruptedFileException("Patient");
+        }
+    }
+    private void emptySpaceCheck() throws NoInputException {
+        for (int i = 0; i < numberOfTokens; i++) {
+            if (stringTokens.get(i).trim().equals("")) {
+                throw new NoInputException();
+            }
+        }
+    }
     public static void duplicateChecker(String inputString) throws DuplicateDrugException {
         for (Inventory inventory : InventoryActions.inventories) {
             String drugName = inventory.getDrugName();
