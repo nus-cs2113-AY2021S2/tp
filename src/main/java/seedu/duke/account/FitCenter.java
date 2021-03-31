@@ -243,7 +243,6 @@ public class FitCenter {
             bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
             break;
         default:
-            return;
         }
     }
 }

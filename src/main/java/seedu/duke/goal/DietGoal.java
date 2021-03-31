@@ -21,7 +21,7 @@ public class DietGoal extends Goal {
 
     public DietGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
         super(RecordType.DIET, periodType, targetEnergy, daySet);
-        initializeProgress();;
+        initializeProgress();
     }
 
 

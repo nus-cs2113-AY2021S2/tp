@@ -2,8 +2,6 @@ package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
 import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
-import seedu.duke.record.Record;
-import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
 
@@ -68,7 +66,7 @@ public class GoalList {
     }
 
     public boolean isEmpty() {
-        if (goals.size() == 0) {
+        if (goals.isEmpty()) {
             return true;
         } else {
             return false;
