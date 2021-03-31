@@ -1,6 +1,8 @@
 package seedu.logic.instance;
 
 
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.logic.command.AppointmentActions;
@@ -27,12 +29,12 @@ public class DoctorAppointmentInstance {
         doctorAppointmentStorage = new DoctorAppointmentStorage(filepath);
         try {
             details = doctorAppointmentStorage.loadFile();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | CorruptedFileException e) {
             try {
                 doctorAppointmentStorage.createFile();
                 details = doctorAppointmentStorage.loadFile();
-            } catch (IOException e1) {
-                System.out.println("File cannot be created");
+            } catch (IOException | CorruptedFileException e1) {
+                System.out.println(e1.getMessage());
             }
         }
     }
@@ -56,10 +58,12 @@ public class DoctorAppointmentInstance {
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
-            } catch (Exception e) {
+            } catch (HealthVaultException e) {
                 //System.out.println("OOPS something went wrong :0");
                 System.out.println(e.getMessage());
                 UI.showLine();
+            }catch(Exception e){
+                System.out.println("OOPS! Something went wrong!");
             }
         }
     }

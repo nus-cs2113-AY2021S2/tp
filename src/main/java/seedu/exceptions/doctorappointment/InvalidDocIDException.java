@@ -1,6 +1,8 @@
 package seedu.exceptions.doctorappointment;
 
-public class InvalidDocIDException extends Exception {
+import seedu.exceptions.HealthVaultException;
+
+public class InvalidDocIDException extends HealthVaultException {
     public String getMessage(){
         return "Sorry this Doctor ID is invalid" ;
     }
