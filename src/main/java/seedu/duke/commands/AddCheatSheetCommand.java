@@ -7,7 +7,6 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -20,10 +19,12 @@ import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_FILE_NAME;
+import static seedu.duke.common.SanitiseInput.sanitiseInput;
 
 public class AddCheatSheetCommand extends Command {
     public static String fileName;
 
+    //@@author H-horizon
     public AddCheatSheetCommand(String nameOfFile) {
         fileName = nameOfFile;
     }
@@ -31,7 +32,7 @@ public class AddCheatSheetCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        if (fileName.isEmpty()) {
+        if (fileName.isEmpty() || sanitiseInput(fileName)) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
         try {
@@ -72,8 +73,6 @@ public class AddCheatSheetCommand extends Command {
         } catch (InvalidPathException e) {
             ui.printMessage(MESSAGE_INVALID_FILE_NAME);
         }
-
-
         return directoryPath;
     }
 }

@@ -19,6 +19,7 @@ public class DeleteCheatSheetCommand extends AddCheatSheetCommand {
 
     public static String filePath;
 
+    //@@author H-horizon
     public DeleteCheatSheetCommand(String nameOfFile) {
         super(nameOfFile);
     }

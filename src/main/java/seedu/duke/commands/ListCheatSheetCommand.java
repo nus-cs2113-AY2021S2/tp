@@ -24,6 +24,7 @@ public class ListCheatSheetCommand extends Command {
     protected static String directoryPath;
     protected static Path directoryAbsolutePath;
 
+    //@@author H-horizon
     public ListCheatSheetCommand() {
         directoryPath = FOLDER_PATH + PATH_DELIMITER + ModuleList.getSelectedModuleCode() + PATH_DELIMITER
                 + STRING_CHEATSHEET + PATH_DELIMITER;

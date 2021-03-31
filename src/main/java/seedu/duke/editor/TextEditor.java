@@ -41,6 +41,7 @@ public class TextEditor extends JFrame implements ActionListener {
     public static JButton saveButton = new JButton(SAVE_ICON);
     public static String pathName;
 
+    //@@author H-horizon
     public TextEditor(String path) {
         setPathName(path);
         setTextEditorTitle();

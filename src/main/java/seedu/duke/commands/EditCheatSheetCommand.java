@@ -13,6 +13,7 @@ import static seedu.duke.common.Messages.MESSAGE_OPEN_FILE;
 
 public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
 
+    //@@author H-horizon
     public EditCheatSheetCommand(String nameOfFile) {
         super(nameOfFile);
     }
