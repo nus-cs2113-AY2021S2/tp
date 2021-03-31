@@ -176,7 +176,7 @@ This section gives a detailed description of each feature, including examples to
 understanding.
 
 **<span style="color: red"> WARNING! </span>**
-> Ending the application abruptly will cause changes to be discarded!
+> Ending the application abruptly may cause changes to be discarded!
 >
 
 ### 3.1 Module Information
@@ -809,16 +809,16 @@ Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the 
 * Example for deleting a `task`:  
   Input:  
   `1`    
-  Output:
-  ````
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+  Output:  
+   ````  
+  This is the list of your tasks:  
+  1. [CS2113T] Work on User Guide  
   
-  What is the number of the task you want to delete?
-  ```` 
+  What is the number of the task you want to delete?  
+  ````  
   Input:    
   `1`  
-  Output:
+  Output:  
 
   ````  
   You've deleted this: [CS2113T] Work on User Guide  
@@ -832,47 +832,47 @@ Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exa
 list.
 
 * Example Output:
-  ````
-  This is the list of your pinned tasks:
+  ````  
+  This is the list of your pinned tasks:  
 
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+  This is the list of your tasks:  
+  1. [CS2113T] Work on User Guide  
 
-  This is the list of your assignments:
-  1. [CS2113T] Work on User Guide (by: Mar 14 2021, 11:49 PM)
+  This is the list of your assignments:  
+  1. [CS2113T] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
 
-  This is the list of your midterms:
+  This is the list of your midterms:  
 
-  This is the list of your final exams:
-  ````
+  This is the list of your final exams:  
+  ````  
 
 #### 3.3.5 Pin a Task
 
 Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
-* `Pin a Task` menu:
+* `Pin a Task` menu:  
   ````
-  Please choose which type of task you would like to pin and enter the number:
-  [1] --- Task
-  [2] --- Assignment
-  [3] --- Midterm
-  [4] --- Final Exam
-  ````
-* Example for pinning a `task`:  
-  Input:  
+  Please choose which type of task you would like to pin and enter the number:  
+  [1] --- Task  
+  [2] --- Assignment  
+  [3] --- Midterm  
+  [4] --- Final Exam  
+  ````  
+* Example for pinning a `task`:    
+  Input:    
   `1`    
-  Output:
-  ````
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+  Output:  
+  ````  
+  This is the list of your tasks:  
+  1. [CS2113T] Work on User Guide  
   
-  What is the number of the task you want to pin?
-  ```` 
+  What is the number of the task you want to pin?  
+  ````  
   Input:    
   `1`  
-  Output:
+  Output:  
 
-  ````  
+  ````   
   You've pinned this: [CS2113T] Work on User Guide  
   Returning back to TaskManager menu now!  
   ````  
