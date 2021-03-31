@@ -1,6 +1,9 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
+import seedu.duke.link.ZoomLinkInfo;
+import seedu.duke.task.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,13 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
-
-import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
@@ -29,6 +25,7 @@ public class Storage {
     public static String filePathForPinnedTasks = new File("").getAbsolutePath();
     public static String filePathForLinks = new File("").getAbsolutePath();
     public static String filePathForZoom = new File("").getAbsolutePath();
+    public static String filePathForMcs = new File("").getAbsolutePath();
 
     /**
      * Checks if file exists, or creates new file if it doesn't already exist. Edits filepath
@@ -493,4 +490,46 @@ public class Storage {
         }
         fw.close();
     }
+
+    public static void loadMcsInfoFile() {
+        filePathForMcs += "/UniTracker Data";
+        File data = new File(filePathForMcs);
+        if (!data.exists()) {
+            boolean isCreated = data.mkdir();
+            if (!isCreated) {
+                System.out.println("New directory could not be created:(");
+            }
+        }
+
+        try {
+            filePathForMcs += "/mcs.txt";
+            data = new File(filePathForMcs);
+            if (data.createNewFile()) {
+                return;
+            }
+            downloadMcs();
+        } catch (IOException e) {
+            System.out.println("There was an I/O error:(");
+        }
+    }
+
+    public static void downloadMcs() throws FileNotFoundException {
+        File f = new File(filePathForMcs);
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNext()) {
+            String[] part = scanner.nextLine().split("~~");
+            int modularCredit = Integer.parseInt(part[0]);
+            double cap = Double.parseDouble(part[1]);
+            HelpGraduation.setNumberOfGradedMCsTaken(modularCredit);
+            HelpGraduation.setCurrentCap(cap);
+        }
+    }
+
+    public static void modularCreditSaver() throws IOException {
+        FileWriter fw = new FileWriter(filePathForMcs);
+        fw.write(HelpGraduation.getNumberOfGradedMCsTaken() + "~~"
+                + HelpGraduation.getCurrentCap());
+        fw.close();
+    }
+
 }

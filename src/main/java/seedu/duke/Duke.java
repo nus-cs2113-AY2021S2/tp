@@ -77,6 +77,7 @@ public class Duke {
         Storage.pinnedTasksFileSaver();
         Storage.linksFileSaver();
         Storage.zoomLinksFileSaver();
+        Storage.modularCreditSaver();
     }
 
     public static void loadAllFiles() {
@@ -88,5 +89,6 @@ public class Duke {
         Storage.loadPinnedTasksFile();
         Storage.loadLinkInfoFile();
         Storage.loadZoomLinkInfoFile();
+        Storage.loadMcsInfoFile();
     }
 }
