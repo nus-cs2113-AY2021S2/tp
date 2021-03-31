@@ -55,7 +55,6 @@ public class Parser {
      * @see Command
      */
     public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
-        HashMap<String, String> arguments = new HashMap<>();
         String[] tokens = fullCommand.split("\\s+");
 
         // If tokenized command returns an empty array, raise an exception
@@ -69,6 +68,8 @@ public class Parser {
         if (tokens.length == 0) {
             throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
         }
+
+        HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", tokens[0]);
 
         // Default key is "payload"
