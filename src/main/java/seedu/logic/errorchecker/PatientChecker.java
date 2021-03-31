@@ -17,8 +17,6 @@ public class PatientChecker extends MainChecker{
     private String command;
     private int numberOfTokens;
 
-    private static final String ILLEGAL_CHARACTERS = "[~#@*+%{}<>\\[\\]|\"_^\\\\]";
-
     public PatientChecker(PatientActions patients, ArrayList<String> stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
         this.stringTokens = stringTokens;
@@ -76,15 +74,6 @@ public class PatientChecker extends MainChecker{
             if (stringTokens.get(i).trim().equals("")) {
                 throw new NoInputException();
             }
-        }
-    }
-
-    private void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
-        String nameString = stringToken.toLowerCase();
-        Pattern pattern = Pattern.compile(ILLEGAL_CHARACTERS);
-        Matcher matcher = pattern.matcher(nameString);
-        if (matcher.find()) {
-            throw new IllegalCharacterException(fieldInput);
         }
     }
 
