@@ -62,17 +62,17 @@ public class Parser {
             command = new RepeatFavouriteCommand();
 
             //daily route
-        }  else if (filteredUserInput.startsWith("add daily route")) {
+        }  else if (filteredUserInput.equals("add daily route")) {
             command = new AddDailyRouteCommand();
         }  else if (filteredUserInput.equals("show daily route")) {
             command = new ShowDailyRouteCommand();
 
             //note
-        } else if (filteredUserInput.startsWith("add note")) {
+        } else if (filteredUserInput.equals("add note")) {
             command = new AddNoteCommand();
-        } else if (filteredUserInput.startsWith("list notes")) {
+        } else if (filteredUserInput.equals("list notes")) {
             command = new ListNoteCommand();
-        } else if (filteredUserInput.startsWith("delete note")) {
+        } else if (filteredUserInput.equals("delete note")) {
             command = new DeleteNoteCommand();
 
         } else {

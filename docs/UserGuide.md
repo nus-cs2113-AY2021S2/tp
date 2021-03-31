@@ -176,7 +176,7 @@ Format : `repeat → REPEAT_ENTRY`
 
 - `REPEAT_ENTRY` must be an integer number within the numbered list.
 
-#### 4.4 Alias
+### 4.4 Alias
 #### 4.4.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
 Format : `add alias → BLOCK → ALIAS_NAME`
@@ -187,7 +187,7 @@ Format : `add alias → BLOCK → ALIAS_NAME`
 
 - Note that there cannot be more than multiple blocks sharing the same alias.
 
-####4.4.2 Viewing all aliases
+#### 4.4.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
 Format : `show aliase`
 

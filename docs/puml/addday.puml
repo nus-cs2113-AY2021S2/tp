@@ -1,33 +1,33 @@
 @startuml
 hide footbox
 
-actor User
-User -> "command:AddDailyRouteCommand" : execute
+participant ":NUSMaze"
+":NUSMaze" -> "command:AddDailyRouteCommand" : execute
 activate "command:AddDailyRouteCommand"
-"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : getValidDays
+"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : getValidDays()
 activate "dailyRoute:DailyRoute"
 return
 deactivate "dailyRoute:DailyRoute"
-"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForAdd
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForAdd(ArrayList<String>)
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
 
-"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getScheduleInfo
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi" : getScheduleInfo()
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
 
-"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : addDailyRoute
+"command:AddDailyRouteCommand" -> "dailyRoute:DailyRoute" : addDailyRoute(String, ArrayList<String>)
 activate "dailyRoute:DailyRoute"
 "dailyRoute:DailyRoute" --> "command:AddDailyRouteCommand"
 deactivate "dailyRoute:DailyRoute"
 
-"command:AddDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider
+"command:AddDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider(String)
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
-"command:AddDailyRouteCommand" --> User
+"command:AddDailyRouteCommand" --> ":NUSMaze"
 deactivate "command:AddDailyRouteCommand"
 
 @enduml

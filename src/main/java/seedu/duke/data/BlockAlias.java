@@ -43,7 +43,7 @@ public class BlockAlias {
 
     public boolean isValidAlias(String alias) {
         NusMap nusMap = new NusMap();
-        return (!aliases.containsKey(alias) | nusMap.getBlock(alias) == null);
+        return (!aliases.containsKey(alias) && nusMap.getBlock(alias) == null);
     }
 
     public void deleteAlias(String alias) throws InvalidAliasException {
