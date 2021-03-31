@@ -23,15 +23,6 @@ public class HdBuy {
         TextUi.showWelcome();
         receiveCommand(false);
         cleanUp();
-        /*
-          Example IO
-        System.out.println("Parameters: location = jurong, type = 4 room, lease = 95 years\n");
-        HashMap<QueryKey,String> inputsExample = new HashMap<>();
-        inputs.put(QueryKey.LOCATION, "jurong");
-        inputs.put(QueryKey.TYPE, "4 room");
-        inputs.put(QueryKey.LEASE_REMAINING, "95");
-        HashMap<Integer, Unit> units = ApiRepository.fetchUnits(inputsExample);
-         */
     }
 
     private static void receiveCommand(boolean isExit) {

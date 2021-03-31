@@ -15,24 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HdBuyTest {
-    @Test public void sampleTest() {
-        assertTrue(true);
-    }
-
-    @Test public void testConnection() {
-        HashMap<QueryKey, String> inputs = new HashMap<>();
-        inputs.put(QueryKey.LOCATION, "jurong");
-        ApiRepository.fetchUnits(inputs);
-        assertNotNull(SearchedUnits.getSearchedUnits());
-    }
-
-    @Test public void testEmptyResponseException() {
-        HashMap<QueryKey, String> inputs = new HashMap<>();
-        inputs.put(QueryKey.LEASE_REMAINING, "101");
-        SearchedUnits.clearSearchedUnits();
-        ApiRepository.fetchUnits(inputs);
-        assertTrue(SearchedUnits.getSearchedUnits().isEmpty());
-    }
 
     @Test public void parserTest() {
         try {
