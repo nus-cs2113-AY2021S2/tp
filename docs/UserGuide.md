@@ -328,9 +328,14 @@ P55555, Sam, 40, Male, Fever, Paracetamol
 
 The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
 
+This is an example of the welcome screen for Staff Menu.
+<img src="images/DoctorAppointmentWelcome.jpg" width = "850">
+
+
 #### Adding an appointment: `add`
 Adds a new doctor's appointment to the list of appointments.
-(Note: The Appointment ID is auto-generated at the point of adding)
+(Note: The Appointment ID is represented by AXXXXX)
+
 
 Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
 
