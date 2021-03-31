@@ -1,0 +1,97 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+class seedu.duke.command.aliascommand.ShowCustomAliasCommand {
+# AliasUi ui
++ void execute()
+}
+class seedu.duke.command.aliascommand.AddCustomAliasCommand {
+# AliasUi ui
+- {static} String MESSAGE_SUCCESS
++ void execute()
+}
+class seedu.duke.data.BlockAlias {
+- HashMap<String,String> aliases
++ HashMap<String,String> getAliasHashMap()
++ String[] changeAliasToBlock(String,String)
++ void addAlias(String,String)
++ boolean isValidBlock(String)
++ boolean isValidAlias(String)
++ void deleteAlias(String)
+}
+class seedu.duke.data.NusMap {
+- HashMap<String,Block> map
++ Block getBlock(String)
++ boolean isValidBlock(String)
++ void addBlock(String)
++ void addRelationship(String,String)
++ void resetVisitedFlag()
++ Collection<Block> getValues()
++ void initValidBlocks()
++ void initRelationships()
+}
+class seedu.duke.NusMaze {
+- NusMap nusMap
+- UiManager ui
+- BlockAlias blockAlias
+- History history
+- Favourite favourite
+- DailyRoute dailyroute
+- Storage aliasStorage
+- Storage historyStorage
+- Storage favouriteStorage
+- Storage dailyRouteStorage
+- Storage notesStorage
++ {static} void main(String[])
+- void run()
+- void initializeNusMaze()
+- void runCommandLoopUntilByeCommand()
+- void initializeData()
+- void initializeStorage()
+- void loadPreviousData()
+- void saveCurrentData()
+}
+class seedu.duke.command.aliascommand.DeleteCustomAliasCommand {
+# AliasUi ui
+- {static} String MESSAGE_SUCCESS
++ void execute()
+}
+class seedu.duke.parser.Parser {
++ {static} Command prepareForCommandExecution(String)
+}
+class seedu.duke.storage.AliasStorage {
++ void loadAlias(BlockAlias)
++ void overwriteAliasListFile(BlockAlias)
++ void appendToAliasListFile(String)
+}
+class seedu.duke.ui.AliasUi {
++ String[] getAliasInfo()
++ void showCustomAliases(BlockAlias)
++ String getDeleteAliasInfo()
+}
+
+
+seedu.duke.command.Command <|-- seedu.duke.command.aliascommand.ShowCustomAliasCommand
+seedu.duke.command.Command <|-- seedu.duke.command.aliascommand.AddCustomAliasCommand
+seedu.duke.command.Command <|-- seedu.duke.command.aliascommand.DeleteCustomAliasCommand
+seedu.duke.storage.Storage <|-- seedu.duke.storage.AliasStorage
+seedu.duke.ui.UiManager <|-- seedu.duke.ui.AliasUi
+
+seedu.duke.NusMaze --> "**1, ..**" seedu.duke.command.Command
+
+seedu.duke.parser.Parser --> "**0, 1**" seedu.duke.command.aliascommand.DeleteCustomAliasCommand
+seedu.duke.parser.Parser --> "**0, 1**" seedu.duke.command.aliascommand.AddCustomAliasCommand
+seedu.duke.parser.Parser --> "**0, 1**" seedu.duke.command.aliascommand.ShowCustomAliasCommand
+
+seedu.duke.command.aliascommand.DeleteCustomAliasCommand ..> seedu.duke.ui.AliasUi
+seedu.duke.command.aliascommand.AddCustomAliasCommand ..> seedu.duke.ui.AliasUi
+seedu.duke.command.aliascommand.ShowCustomAliasCommand ..> seedu.duke.ui.AliasUi
+
+seedu.duke.NusMaze --> "**1**" seedu.duke.data.BlockAlias
+seedu.duke.NusMaze ..> seedu.duke.parser.Parser
+seedu.duke.NusMaze --> "**1**" seedu.duke.storage.AliasStorage
+
+seedu.duke.data.BlockAlias ..> seedu.duke.data.NusMap
+
+@enduml

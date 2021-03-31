@@ -1,0 +1,58 @@
+@startuml
+participant User
+User -> AddCustomAliasCommand : execute
+activate AddCustomAliasCommand
+AddCustomAliasCommand -> BlockAlias : addAlias
+activate BlockAlias
+BlockAlias -> BlockAlias : isValidBlock
+activate BlockAlias
+BlockAlias -> NusMap : new
+activate NusMap
+NusMap -> NusMap : initValidBlocks
+activate NusMap
+NusMap --> NusMap
+deactivate NusMap
+NusMap --> BlockAlias
+deactivate NusMap
+BlockAlias -> NusMap : getBlock
+activate NusMap
+NusMap --> BlockAlias
+deactivate NusMap
+BlockAlias --> BlockAlias
+deactivate BlockAlias
+BlockAlias -> BlockAlias : isValidAlias
+activate BlockAlias
+BlockAlias -> NusMap : new
+activate NusMap
+NusMap -> NusMap : initValidBlocks
+activate NusMap
+NusMap --> NusMap
+deactivate NusMap
+NusMap --> BlockAlias
+deactivate NusMap
+BlockAlias -> NusMap : getBlock
+activate NusMap
+NusMap --> BlockAlias
+deactivate NusMap
+BlockAlias --> BlockAlias
+deactivate BlockAlias
+BlockAlias --> AddCustomAliasCommand
+deactivate BlockAlias
+AddCustomAliasCommand -> UiManager : showMessageWithDivider
+activate UiManager
+UiManager -> UiManager : showMessage
+activate UiManager
+UiManager --> UiManager
+deactivate UiManager
+UiManager --> AddCustomAliasCommand
+deactivate UiManager
+AddCustomAliasCommand -> UiManager : showMessageWithDivider
+activate UiManager
+UiManager -> UiManager : showMessage
+activate UiManager
+UiManager --> UiManager
+deactivate UiManager
+UiManager --> AddCustomAliasCommand
+deactivate UiManager
+return
+@enduml
