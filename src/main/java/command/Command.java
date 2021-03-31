@@ -5,11 +5,9 @@ import exceptions.DukeExceptions;
 import ui.Ui;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public abstract class Command {
     protected boolean exit;
-    protected String commandArg;
     private int targetIndex = -1;
 
     public Command() {

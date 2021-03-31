@@ -11,6 +11,7 @@ public class AddCanteenCommand extends Command {
     private String canteenName;
 
     public AddCanteenCommand(String canteenName) {
+
         this.canteenName = canteenName;
     }
 
