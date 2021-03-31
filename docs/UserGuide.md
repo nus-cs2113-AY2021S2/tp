@@ -15,16 +15,16 @@
 
 {Give detailed description of each feature}
 
-### Reading reviews of a store: `read`
+### Reading reviews of a store: `reviews`
 Display reviews of the current store the user is viewing.
 
-Format: `read`
+Format: `reviews`
 
-* There should be no arguments after `read`
+* There should be no arguments after `reviews`
 
 Example of usage:
 
-`review`
+`reviews`
 
 ### Viewing the highlight menu of a store: `menu`
 View the highlight menu items of current store that the user is viewing, along with their prices.
