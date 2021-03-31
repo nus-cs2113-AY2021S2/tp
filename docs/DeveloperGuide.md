@@ -1,27 +1,62 @@
-# Developer Guide
+# Healthier Developer Guide
 
-## Design & implementation
+Group `F10-2`  
+Last update on `31 Mar 2021`
+
+## Table of Content
+
+- [Getting Started](#getting-started)
+- [Design](#design)
+    - []()
+    - []()
+    - []()
+- [Implementation](#implementation)
+    - []()
+    - []()
+    - []()
+- [Appendix: Requirements](#appendix-requirements)
+    - [Product Scope](#product-scope)
+        - [Target User Profile](#target-user-profile)
+        - [Value Proposition](#value-proposition)
+    - [User Stories](#user-stories)
+    - [Non-Functional Requirements](#non-functional-requirements)
+- [Glossary](#glossary)
+- [Instructions for manual testing](#instructions-for-manual-testing)
+
+
+
+## Getting Started
+
+
+
+## Design
+
+
+
+## Implementation
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+## Appendix: Requirements
 
-## Product scope
-### Target user profile
+### Product Scope
+
+#### Target User Profile
 
 {Describe the target user profile}
 
-### Value proposition
+#### Value proposition
 
 {Describe the value proposition: what problem does it solve?}
 
-## User Stories
+### User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
-## Non-Functional Requirements
+### Non-Functional Requirements
 
 {Give non-functional requirements}
 

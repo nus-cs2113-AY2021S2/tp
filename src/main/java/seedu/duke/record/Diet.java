@@ -22,7 +22,7 @@ public class Diet extends Record {
      *
      * @param date the date of the record.
      */
-    public Diet(String foodString, String amountString, LocalDate date) throws TypeException, NumberFormatException {
+    public Diet(String foodString, double amount, LocalDate date) throws TypeException, NumberFormatException {
         super(DIET, date);
         foodCategory = FoodCategory.getFoodCategory(foodString);
         if (foodCategory == INVALID) {
@@ -32,7 +32,7 @@ public class Diet extends Record {
         for (int i = 0; i < spaceCount; i++) {
             seperator += " ";
         }
-        amount = Double.parseDouble(amountString);
+        this.amount = amount;
         calorie = amount * foodCategory.getCaloriePer100g();
         this.date = date;
         formattedDate = date.format(DATE_FORMATTER);
@@ -86,7 +86,7 @@ public class Diet extends Record {
         return "\t\t\t" + getDate().format(DATE_FORMATTER)
                 + "\t" + getFoodCategory()
                 + seperator + getAmount() + " g"
-                + "\t\t" + getCalorie() + " cal";
+                + "\t\t" + getCalorie() + " Kcal";
     }
 
     @Override

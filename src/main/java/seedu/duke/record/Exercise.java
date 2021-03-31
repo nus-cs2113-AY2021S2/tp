@@ -28,16 +28,9 @@ public class Exercise extends Record {
             separator += " ";
         }
         this.duration = duration;
-        this.calories = calculateCalories();
+        this.calories = duration * workoutCategory.getCaloriePerMin();
     }
 
-    private double calculateCalories() {
-        double bodyWeight = 50.0;
-        double durationInHour = duration / 60d;
-        int metValue = 12;
-        calories = bodyWeight * metValue * durationInHour;
-        return calories;
-    }
 
     public double getCalories() {
         return calories;

@@ -3,6 +3,7 @@ package seedu.duke.record;
 import seedu.duke.common.Messages;
 import seedu.duke.record.comparator.RecordDateComparator;
 
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -128,6 +129,62 @@ public class RecordList {
         }
     }
 
+    public double getDailyProgress(LocalDate currentDate) {
+        switch (type) {
+        case EXERCISE:
+            return getExerciseProgress(currentDate);
+        case DIET:
+            return getDietProgress(currentDate);
+        case SLEEP:
+            return getSleepProgress(currentDate);
+        case BODYWEIGHT:
+            return  getBodyWeightProgress();
+        default:
+            return 0;
+        }
+    }
+
+    private double getDietProgress(LocalDate currentDate) {
+        double totalCalories = 0;
+        for (Record record : records) {
+            Diet diet = (Diet) record;
+            if (diet.getDate().isEqual(currentDate)) {
+                totalCalories += diet.getCalorie();
+            }
+        }
+        return totalCalories;
+    }
+
+    private double getExerciseProgress(LocalDate currentDate) {
+        double totalCalories = 0;
+        for (Record record : records) {
+            Exercise exercise = (Exercise) record;
+            if (exercise.getDate().isEqual(currentDate)) {
+                totalCalories += exercise.getCalories();
+            }
+        }
+        return totalCalories;
+    }
+
+    private double getSleepProgress(LocalDate currentDate) {
+        double totalhours = 0;
+        for (Record record : records) {
+            Sleep sleep = (Sleep) record;
+            if (sleep.getDate().isEqual(currentDate)) {
+                totalhours += sleep.getDuration();
+            }
+        }
+        return totalhours;
+    }
+
+    private double getBodyWeightProgress() {
+        if (records.size() == 0) {
+            return -1;
+        }
+        BodyWeight latestBodyWeightRecord = (BodyWeight) records.get(records.size() - 1);
+        return latestBodyWeightRecord.getWeight();
+    }
+
     private FoodCategory parseStringToFoodCategory(String optionalParam) throws IllegalArgumentException {
         return FoodCategory.valueOf(optionalParam.toUpperCase());
     }
@@ -169,7 +226,6 @@ public class RecordList {
         }
         return recordStringBuilder.toString();
     }
-
 
     private String getExerciseRecordString(String optionalParam, StringBuilder recordStringBuilder) {
         int i = 1;
