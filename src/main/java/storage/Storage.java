@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Storage {
@@ -18,7 +19,7 @@ public class Storage {
 
     public Storage(String filePath) {
         this.filePath = filePath;
-        this.canteens = new ArrayList<>();
+        this.canteens = new ArrayList<Canteen>();
     }
 
     public static ArrayList<Canteen> load() {
@@ -33,27 +34,66 @@ public class Storage {
     }
 
     private static void readFiles(Scanner fileReader) {
-        Canteen canteen = null;
-        Store store = null;
+        Canteen canteen=null;
+        Store store=null;
+
+
         while (fileReader.hasNextLine()) {
             String line = fileReader.nextLine();
             String[] storedLine = line.split("<>");
-            if (storedLine[0].equals("canteen")) {
-                canteen = new Canteen(storedLine[1]);
+            boolean hasCanteen = false;
+            boolean hasStore = false;
+
+                //check for duplicate canteens
+                for(Canteen canteenName : canteens){
+                    //meaning canteen already exist
+                    if(canteenName.getCanteenName().equals(storedLine[0])){
+                        canteen = canteenName;
+
+                        //check for duplicate store
+                        for(Store storeName :canteenName.getStores()){
+                            //if have store then assign it
+                            if(storeName.getStoreName().equals(storedLine[1])){
+                                store =  storeName;
+                                hasStore = true;
+                            }
+                        }
+                        //if dont have store then add store
+                        if(!hasStore) {
+                            store = new Store(storedLine[1]);
+                            canteen.getStores().add(store);
+                        }
+                        //to make sure there is a review
+                        if(storedLine.length==3) {
+                            //create review under store
+                            String[] reviewDetails = storedLine[2].split("//");
+                            store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
+                        }
+                        hasCanteen = true;
+                    }
+
+                }
+
+                if(hasCanteen){
+                    continue;
+                }
+
+                //create new canteen
+                canteen = new Canteen(storedLine[0]);
                 canteens.add(canteen);
-            } else if (storedLine[0].equals("store")) {
+
+                //create new store under canteen
                 store = new Store(storedLine[1]);
                 canteen.getStores().add(store);
-            } else if (storedLine[0].equals("menu")) {
-                String[] menuDetails = storedLine[1].split("//");
-                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
-            } else if (storedLine[0].equals("review")) {
-                String[] reviewDetails = storedLine[1].split("//");
-                store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
-            } else {
-                continue;
-            }
+
+                //to make sure theres a review
+                if(storedLine.length==3) {
+                    //create review under store
+                    String[] reviewDetails = storedLine[2].split("//");
+                    store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
+                }
         }
+
     }
 
     public static void save(ArrayList<Canteen> canteens) {
@@ -96,3 +136,10 @@ public class Storage {
         }
     }
 }
+
+/*
+ else if (storedLine[0].equals("menu")) {
+                String[] menuDetails = storedLine[1].split("//");
+                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
+            }
+ */

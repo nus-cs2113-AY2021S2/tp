@@ -12,6 +12,7 @@ import checkuser.CheckUser;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class NusFoodReviews {
     private ArrayList<Store> stores;
