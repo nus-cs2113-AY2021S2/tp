@@ -79,6 +79,12 @@ public class HealthVaultException extends Exception {
                     "Check that you have inputted the right ID! \n" +
                     "You can use the \"list\" command to see which IDs exist!");
             break;
+        case "DrugStored":
+            System.out.println("OOPS! Looks like this drug has already been stored!");
+            break;
+        case "InvalidPrice":
+            System.out.println("OOPS! You have indicated an invalid price! \n" +
+                    "Try e.g 3.00 or 3");
         default:
             System.out.println("OOPS! Your command may not be valid! \n" +
                     "Please check the list of available commands using \"help\"");
