@@ -14,6 +14,7 @@ public class AdminMainMenu implements MainMenu{
 	private static int currentUserIndex;
 	private static ArrayList<User> user;
 	private static int functionSelection;
+	private static int choice;
 	private static Scanner sc = new Scanner(System.in);
 
 	public static int displayMenu(int currentUserIndex, ArrayList<User> user) throws Exception {
@@ -48,11 +49,13 @@ public class AdminMainMenu implements MainMenu{
 				System.out.println("case 2");
                 break;
 			case 3:
-				int choice = AdminMainMenu.displayDeleteMovieMenu(Database.MovieDatabase);
+				choice = AdminMainMenu.displayDeleteMovieMenu(Database.MovieDatabase);
 				Database.deleteMovie(choice);
 				break;
 			case 4:
-				System.out.println("case 4");
+				choice = displayEditMovieMenu(Database.MovieDatabase);
+				int type = displayEditMovieSectionMenu(Database.MovieDatabase);
+				Database.editMovie(choice, type);
 				break;
 			case 5:
 				System.out.println("Logging out..");
@@ -88,5 +91,52 @@ public class AdminMainMenu implements MainMenu{
 			}
 		}
 		return choice;
+	}
+
+	public static int displayEditMovieMenu(ArrayList<Movie> movieDatabase){
+		System.out.println("Select a movie to be edited from the list (enter the number)");
+		int i = 1;
+		for(Movie movie : movieDatabase){
+			System.out.println(i + ". " + movie.getMovieTitle());
+			i++;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		int choice = -1;
+		while ((choice < 1) || (choice > movieDatabase.size())) {
+			System.out.println("Please enter your choice: ");
+			if (!sc.hasNextInt()) {
+				System.out.println("Please input an integer.\n");
+				sc.next();
+				continue;
+			}
+			choice = sc.nextInt();
+			if ((choice <= 0) ||(choice > movieDatabase.size())) {
+				System.out.println("Please input an integer within the range.\n");
+			}
+		}
+		return choice;
+	}
+
+	public static int displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase){
+		Movie selectedMovie = movieDatabase.get(choice - 1);
+		System.out.println("You have selected " + selectedMovie.getMovieTitle() + "\n");
+		Scanner select = new Scanner(System.in);
+		int type = -1;
+		while ((type < 1) || (type > 4)) {
+			System.out.println("======= Edit Movie =======");
+			System.out.println(" 1 Edit title\n 2 Edit director\n 3 Edit synopsis\n ============================\nPlease indicate your choice:");
+			if (!select.hasNextInt()) {
+				System.out.println("Please input an integer.\n");
+				select.next();
+				continue;
+			}
+			type = select.nextInt();
+			if ((type < 1) || (type > 4)) {
+				System.out.println("Please input a integer between 1 and 3.\n");
+				continue;
+			}
+		}
+		return type;
 	}
 }
