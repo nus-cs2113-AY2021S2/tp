@@ -1,9 +1,6 @@
 package seedu.storage;
 
-import seedu.exceptions.ExcessInputException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.InvalidIntegerException;
-import seedu.exceptions.NoInputException;
+import seedu.exceptions.*;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.StaffChecker;
@@ -25,9 +22,9 @@ public class StaffStorage {
     }
 
 
-    public void fileHandling(StaffAggregation staffAggregation) throws ExcessInputException,
-            InvalidIntegerException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
+    public void fileHandling(StaffAggregation staffAggregation) throws
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException {
         try {
             loadFile(staffAggregation);
         } catch (FileNotFoundException e) {
@@ -35,18 +32,18 @@ public class StaffStorage {
         }
     }
 
-    public void loadTask(StaffAggregation staffAggregation, String line) throws ExcessInputException,
-            InvalidIntegerException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
+    public void loadTask(StaffAggregation staffAggregation, String line) throws
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException {
 
-        StaffChecker.checkValidDataForStorage(line);
+        StaffChecker.checkValidDataFromStorage(line, staffAggregation.getList());
         String[] arr = line.split("\\|");
         staffAggregation.add(arr);
     }
 
-    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException, ExcessInputException,
-            InvalidIntegerException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
+    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException,
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException {
         File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
         while (s.hasNext()) {

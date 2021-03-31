@@ -1,12 +1,10 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.ExcessInputException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.InvalidIntegerException;
-import seedu.exceptions.NoInputException;
+import seedu.exceptions.*;
 import seedu.exceptions.staff.WrongListInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.Command;
+import seedu.logic.command.StaffAggregation;
 import seedu.logic.command.staff.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.StaffChecker;
@@ -96,9 +94,9 @@ public class StaffParser {
         }
     }
 
-    public Command  commandHandler(String line) throws WrongStaffIdException,
+    public Command commandHandler(String line, StaffAggregation staffAggregation) throws WrongStaffIdException,
             WrongListInputException, ExcessInputException,
-            InsufficientInputException, NoInputException, NumberFormatException, InvalidIntegerException {
+            InsufficientInputException, NoInputException, NumberFormatException, InvalidIntegerException, DuplicateIDException {
         Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
@@ -107,12 +105,12 @@ public class StaffParser {
         switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
         case ("add"):
-            StaffChecker.checkValidDataForAdd(line);
+            StaffChecker.checkValidDataForAdd(line, staffAggregation);
             String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
             for (int i=0; i< cleanArray.length; i++) {
                 cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             }
-            StaffUI.staffHiredOutput(cleanArray[1], cleanArray[2]);
+            StaffUI.staffHiredOutput(cleanArray[0], cleanArray[1]);
             c = new StaffAdd(cleanArray);
             break;
 
