@@ -1,0 +1,8 @@
+!define NUSMAZE_COLOR #a5a9b5
+!define UIMANAGER_COLOR #7cc963
+!define ROUTER_COLOR #f57d95
+!define COMMAND_COLOR #91d5ff
+!define DATA_COLOR #c391ff
+!define STORAGE_COLOR #fff691
+!define PARSER_COLOR #ffc391
+!define USER_COLOR #000000

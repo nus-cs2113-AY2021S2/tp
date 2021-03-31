@@ -1,4 +1,4 @@
-# Developer Guide for NUSMAze
+# Developer Guide for NUSMaze
 
 ## Table Of Contents
 <!-- TOC -->
@@ -7,10 +7,12 @@
     1.2. [Setting up and getting started](#12-setting-up-and-getting-started)  
 2. [Design](#2-design)  
     2.1. [Architecture](#21-architecture)     
-    2.2. [UI Component](#22-ui-component)  
+    2.2. [UIManager Component](#22-uimanager-component)  
     2.3. [Parser Component](#23-parser-component)  
-    2.4. [Command Classes](#24-command-classes)  
-    2.5. [Storage Component](#25-storage-component)  
+    2.4. [Command Component](#24-command-component)  
+    2.5. [Router Component](#25-router-component)  
+    2.6. [Data Component](#26-data-component)  
+    2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
     3.1. [Save Feature](#31-save-feature)  
     3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
@@ -24,18 +26,102 @@
     4.4. [Non-functional Requirements](#44-non-functional-requirements)  
     4.5. [Glossary](#45-glossary)
 5. [Appendix: Instructions for manual testing](#5-appendix-instructions-for-manual-testing)
-<!-- /TOC -->
+<!-- TOC -->
 
 ## 1. Introduction  
-### 1.1. Overview 
+### 1.1. Overview
+
+NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more.
+
+The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
+
 ### 1.2. Setting up and getting started 
+Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
+Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
+Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
+Step 4. Import the project as a Gradle project.  
+Step 5. If you had previously disabled the Gradle plugin, go to **File → Settings → Plugins** to re-enable them.  
+Step 6. Click on Import Project and select the build.gradle file.  
+Step 7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
+Step 8. Press run on the `Main()` method of NUSMaze.  
+
+If the set up process had been completed successfully, you should see the following message:
+![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
+
 
 ## 2. Design 
 ### 2.1. Architecture 
-### 2.2. UI Component 
+![img.png](architecture.png)
+
+The **Architecture Diagram** above depicts the high-level design of the NUSMaze. You can always refer to this diagram
+to understand how the different components of NUSMaze interact with each other.
+
+The class [`NusMaze`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/NusMaze.java) is where the `main()` 
+method belongs and is reponsible for:
+* When the app launches, initialise and connect different components of the NUSMaze in correct sequence.
+* When the app terminates, shut down all the components.
+
+Architecture Components of NUSMaze:
+* [**`UIManager`**](#22-uimanager-component): The user interface of the app
+* [**`Parser`**](#23-parser-component): Processes commands inputted by the user
+* [**`Command`**](#24-command-component): Executes the user command 
+* [**`Router`**](#25-router-component): Searches shortest router
+* [**`Data`**](#26-data-component): Holds the data of the app in memory
+* [**`Storage`**](#27-storage-component): Reads data from and write data to external text files
+
+Explanations on how each component is designed and how it functions are further elaborated in the following 
+chapters of the developer guide.
+
+### 2.2. UIManager Component 
+
 ### 2.3. Parser Component 
-### 2.4. Command Classes 
-### 2.5. Storage Component 
+![img.png](ParserComponent.png)
+
+As shown above in the class diagram, **Parser component** is made out of the `Parser` class.
+After the `UiManager` reads in the user command, `NusMaze` makes use of the `Parser` to interpret 
+the user command and it will instantiate a new Command object to execute the command. 
+
+The Sequence diagram shown below is of a scenario where the user inputs an `"invalid input"`. It will allow you to 
+get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`.
+
+![img.png](Parsersequencediagram.png)
+
+### 2.4. Command Component
+![img.png](CommandComponent.png)
+
+The class diagram above may seem complicated at first glance but it actually isn't.
+The **Command Component** of NUSMaze is made out of `Command` class, which is the parent class of
+all the other classes in the component (eg. `GoCommand`, `ByeCommand`). Depending on which command the user inputs, the
+`Parser` creates different `Command` class to execute the task. 
+
+Each `Command` class has :
+* An distinct `execute()` method which is overrides the parent class, therefore tailored to execute the given command.
+* An `ui` specifically for taking in further user input in order to carry out the command.
+
+### 2.5. Router Component
+![img.png](RouterComponent.png)
+
+The **Router Component** consist of the `Router` class which is reponsible for finding the shortest route to get from
+one location to another. In finding the shortest route, it utilises the breath-first-search algorithm, which will be 
+further elaborated in the implementation section.
+
+As shown in the diagram above, `Router` is used by the following classes:
+* `GoCommand`
+* `RepeatHistoryCommand`
+* `RepeatFavouriteCommand`
+* `ShowDailyRouteCommand`
+
+### 2.6. Data Component
+![img.png](DataComponent.png)
+
+The **Data Component** is where all the data that are needed to execute a command is stored. For example when `"go"`
+command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
+the shortest route.
+
+On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
+further elaborated in the following section.
+
+### 2.7. Storage Component 
 
 ## 3. Implementation
 
@@ -66,7 +152,7 @@ Step 1. The user launches the application for the first time.
 will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
 The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](SaveStep1.png)
+![img.png](Storage%20Feature%20Sequence%20.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
@@ -195,6 +281,53 @@ Cons: Might have to repeat some code fragments.
 Alternative 2: Place all commands (add, view, delete) as functions in 1 command class.  
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
+
+### 3.6. Favourite Routes feature
+
+#### Current Implementation
+
+The favourite routes feature acts as an independent storage of the user's favourites routes, 
+allowing the user to call of the route without going through the hassle of the `go` command.
+The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
+The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
+
+#### Loading of saved favourite routes
+
+When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
+and stored into `favourites`.
+Refer to the section on **Storage** for more information.
+
+#### Adding of favourite route
+
+The command to add a favourite route is `add favourite`. 
+Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
+followed by the destination block. If valid blocks are given,
+the route from the starting block to destination block will be added into `favourites`.
+If any invalid block is given, `InvalidBlockException` will be thrown.
+
+#### Reviewing saved favourite routes
+
+The command to display all the saved favourite routes is `show favourite`.
+If there are no saved routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+
+#### Repeating favourite route
+
+The command to repeat a favourite route is `repeat favourite`.
+Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
+Otherwise, `EmptyFavouriteException` will be thrown.
+After the numbered list of saved favourite routes is shown, the user would be prompted to enter the index of the favourite
+route to be executed. Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
+#### Deleting favourite route
+
+The command to delete a favourite route is `delete favourite`.
+If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+The user is then prompted to enter the index of the route to be deleted.
+Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
 
 ## 4. Appendix: Requirements
 
