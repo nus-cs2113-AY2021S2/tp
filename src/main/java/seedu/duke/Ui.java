@@ -220,14 +220,14 @@ public class Ui {
     }
 
     public static void printMarkedTaskMessage(Task task) {
-        System.out.println("You've mark this as done: " + task.toString());
+        System.out.println("You've marked this as done: " + task.toString());
         System.out.println("NOTE: " + task.getMessage());
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printUnmarkedTaskMessage(Task task) {
-        System.out.println("You've mark this as not done: " + task.toString());
+        System.out.println("You've marked this as not done: " + task.toString());
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
