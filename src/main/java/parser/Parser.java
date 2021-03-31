@@ -1,6 +1,5 @@
 package parser;
 
-
 import canteens.Canteen;
 import command.AddCanteenCommand;
 import command.AddReviewCommand;
@@ -23,7 +22,6 @@ import stores.Store;
 import ui.Ui;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static stores.Store.averageRating;
 

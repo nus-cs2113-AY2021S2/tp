@@ -38,7 +38,7 @@ Step 3. The user selects a canteen from the canteen list and canteen is deleted.
 
 --> 
 
-### Main ???????
+### Main NusFoodReviews
 #### Implementation
 ![Main Sequence Diagram](./img/Main.png)
 
@@ -56,6 +56,26 @@ When DisplayMenusCommand was first instantiated, the relevant Store object was p
 into the constructor. `DisplayMenusCommand#execute()` will then call `getMenus()` on the 
 store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
 to be displayed by calling `Ui#showDisplayMenu()`
+
+### Reset Store Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/ResetStore.png)
+
+To reset the store index in nusFoodReviews, `ResetStoreCommand#execute()` is called, 
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `ResetStoreCommand` is first called, we pass the main NusFoodReviews object to the 
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
+
+### Home Feature
+#### Implementation
+![DisplayMenus Sequence Diagram](./img/HomeCommand.png)
+
+To reset the store and canteen index in nusFoodReviews, `HomeCommand#execute()` is called,
+passing in an ArrayList of canteens, and the ui object instantiated in NusFoodReviews.
+
+When `HomeCommand` is first called, we pass the main NusFoodReviews object to the
+constructor. This allows the `Command` to interact with the main object when `execute` is called.
 
 
 ### Admin Capabilities
