@@ -44,7 +44,7 @@ applications in the market.
 ---
 
 1. Ensure you have Java `11` or above installed in your Computer.
-2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v1.0).
+2. Download the latest `finux.jar` from [here](https://github.com/AY2021S2-CS2113T-W09-1/tp/releases/tag/v2.0).
 3. Copy the `finux.jar` file to the folder you want to use as the *home folder* of Finux.
 4. For Windows users, pull up your **Command Prompt**.\
    For Mac users, pull up your **Terminal**.\
@@ -378,12 +378,8 @@ Output:
 
 * Expected output if not successfully loaded: <br>
   ![load fail example output](img/FailedLoadExampleOutput.jpg)
-
-#### 3.9.3 Editing the saved file directly
-
-* The Finux team encourages more tech-proficient users to edit the save directly.
-
-> ❗ Any minor mistakes in the syntax will lead to the termination of Finux.
+  
+> ❗ Do **NOT** modify the contents of the `finux.txt` save file.
 
 ## 4. Frequently Asked Questions
 
