@@ -36,22 +36,22 @@ The app will help cinema administrators to update the movie information regularl
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|follow through with the steps provided|make a booking.|
-|v1.0|indecisive user|display summaries of several movies|decide which I want to book for.|
-|v1.0|user|I can have a “quit” command|close the application easily.|
-|v1.0|user|load the application without any errors|use the other functions.|
-|v1.0|user|see the location of the cinemas of the particular movie|go to the nearest cinema.|
-|v1.0|user|see the list of the movie and timing|make plans ahead.|
-|v1.0|user|book as many seats as it can hold|help my friends book too.|
-|v1.0|user|book as many movies available|make plans ahead without being restricted.|
-|v2.0|user|cancel any of my bookings|don't waste my money for being unable to attend.|
+|v1.0|new customer|follow through with the steps provided|make a booking.|
+|v1.0|indecisive customer|display summaries of several movies|decide which I want to book for.|
+|v1.0|customer|I can have a “quit” command|close the application easily.|
+|v1.0|customer|load the application without any errors|use the other functions.|
+|v1.0|customer|see the location of the cinemas of the particular movie|go to the nearest cinema.|
+|v1.0|customer|see the list of the movie and timing|make plans ahead.|
+|v1.0|customer|book as many seats as it can hold|help my friends book too.|
+|v1.0|customer|book as many movies available|make plans ahead without being restricted.|
+|v2.0|customer|cancel any of my bookings|don't waste my money for being unable to attend.|
 |v2.0|admin|add new movies|make the application is continuously updated.|
 |v2.0|admin|edit new movies|make the application is continuously updated.|
 |v2.0|admin|delete new movies|make the application is continuously updated.|
-|v2.0|user|filter movies by their rating.|make my decision to either watch them or not.|
-|v2.0|user|add a few reviews of the movies|convey my opinions about the movie to other watchers.|
-|v2.0|user|view the reviews of the movies|make my decision to either watch them or not.|
-|v2.0|user|filter the movies by type, director, actors...|quickly find the movie I like.|
+|v2.0|customer|filter movies by their rating.|make my decision to either watch them or not.|
+|v2.0|customer|add a few reviews of the movies|convey my opinions about the movie to other watchers.|
+|v2.0|customer|view the reviews of the movies|make my decision to either watch them or not.|
+|v2.0|customer|filter the movies by type, director, actors...|quickly find the movie I like.|
 
 ## Non-Functional Requirements
 
