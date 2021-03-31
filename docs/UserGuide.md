@@ -75,7 +75,6 @@ In this application there are 5 main features that are provided for the user. Ea
 
 
 This is an example of a typical help command in the application.
-<img src="images/HelpCommand.PNG" >
 
 The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
 For example, the `add` command allows you to add a new staff and their relevant details into the database.
@@ -116,7 +115,9 @@ The functions in Staff menu allow you, the head nurse, to access and modify the 
 (Note for Staff ID: D/N = Doctor/Nurse)
 
 This is an example of the welcome screen for Staff Menu.
-<img src="images/StaffWelcome.PNG" >
+<img src="images/StaffWelcome.PNG" width = "850">
+
+<br/><br/>
 
 #### Adding a new staff: `add`
 Adds a new doctor or nurse to the respective staff lists.
@@ -137,7 +138,9 @@ Mingshun has been hired :)
 ```
 
 Example Screenshot:
-<img src="images/StaffAdd.PNG" >
+<img src="images/StaffAdd.PNG" width = "850" >
+
+<br/><br/>
  
 #### Deleting a staff: `delete`
 Deletes a staff from the staff list.
@@ -155,11 +158,17 @@ Staff --> delete/D12345
 D12345 has been fired :(
 ------------------------------------------------------------------------------
 ```
+Example Screenshot:
+<img src="images/StaffDelete.PNG" width = "850" >
+<br/><br/>
 
 #### Listing all doctors or nurses: `list`
 Lists either all doctors or all nurses.
 
-Format: `list/[Doctors/Nurses]`
+Format: `list/<doctors/nurses>`
+
+**Note: <> implies that the inputs are optional**
+
 
 Example of usage(doctors):
 ```
@@ -168,18 +177,51 @@ Staff --> list/doctors
 Expected Outcome(doctors):
 ```
 ------------------------------------------------------------------------------
-Staff --> list/doctors
-D12345 Mingshun 30 Pediatrician
-D67890 Alexander 31 Heart Surgeon
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon   
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+<img src="images/StaffListDoc.PNG" width = "850">
+
+
 Example of usage(nurses):
 ```
-
+Staff --> list/nurses
 ```
 Expected Outcome(nurses):
 ```
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management  
 ```
+Example Screenshot:
+<img src="images/StaffListNurse.PNG" width = "850">
+
+
+Example of usage(no input):
+```
+Staff --> list
+```
+Expected Outcome(doctors):
+```
+------------------------------------------------------------------------------
+ID         | Name       | Age   | Specialisation      
+____________________________________________________________
+D12345     | MingShun   | 30    | Pediatrician        
+D67890     | Alexander  | 31    | Heart Surgeon       
+N13579     | Sarrah     | 29    | Oncology            
+N24680     | JiaEn      | 28    | Pain Management    
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<br/><br/>
 
 #### Returning to Start Menu: `return`
 #### Help: `help`
