@@ -45,11 +45,13 @@ public class Storage {
     }
 
     public Storage(String timePath) throws IOException {
-        this.timePath = timePath;
-        timeSource = new File(timePath);
+        File timeSource = new File(timePath);
         if (!timeSource.exists()) {
             if (!timeSource.getParentFile().exists()) {
-                timeSource.getParentFile().mkdirs();
+                boolean isPathSuccessfullyCreated = timeSource.getParentFile().mkdirs();
+                if (!isPathSuccessfullyCreated) {
+                    throw new IOException();
+                }
             }
             boolean isFileSuccessfullyCreated = timeSource.createNewFile();
             if (!isFileSuccessfullyCreated) {
