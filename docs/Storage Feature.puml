@@ -1,0 +1,90 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+participant NusMaze
+
+participant AliasStorage
+participant HistoryStorage
+participant FavouriteStorage
+participant DailyRouteStorage
+participant NotesStorage
+
+activate NusMaze #blue
+
+NusMaze --> NusMaze: initialiseStorage()
+activate NusMaze #DarkSalmon
+NusMaze --> AliasStorage: AliasStorage()
+activate AliasStorage
+AliasStorage --> NusMaze
+deactivate AliasStorage
+NusMaze --> HistoryStorage: HistoryStorage()
+activate HistoryStorage
+HistoryStorage --> NusMaze
+deactivate HistoryStorage
+NusMaze --> FavouriteStorage: FavouriteStorage()
+activate FavouriteStorage
+FavouriteStorage --> NusMaze
+deactivate FavouriteStorage
+NusMaze --> DailyRouteStorage: DailyRouteStorage()
+activate DailyRouteStorage
+DailyRouteStorage --> NusMaze
+deactivate DailyRouteStorage
+NusMaze --> NotesStorage: NotesStorage()
+activate NotesStorage
+NotesStorage --> NusMaze
+deactivate NotesStorage
+deactivate NusMaze #DarkSalmon
+
+NusMaze --> NusMaze: loadPreviousData()
+activate NusMaze #DarkSalmon
+NusMaze --> AliasStorage: loadAlias()
+activate AliasStorage
+AliasStorage --> NusMaze
+deactivate AliasStorage
+NusMaze --> HistoryStorage: loadHistory()
+activate HistoryStorage
+HistoryStorage --> NusMaze
+deactivate HistoryStorage
+NusMaze --> FavouriteStorage: loadFavourites()
+activate FavouriteStorage
+FavouriteStorage --> NusMaze
+deactivate FavouriteStorage
+NusMaze --> DailyRouteStorage: loadDailyRoute()
+activate DailyRouteStorage
+DailyRouteStorage --> NusMaze
+deactivate DailyRouteStorage
+NusMaze --> NotesStorage: loadNotes()
+activate NotesStorage
+NotesStorage --> NusMaze
+deactivate NotesStorage
+deactivate NusMaze #DarkSalmon
+
+loop till bye command
+NusMaze --> NusMaze: saveCurrentData()
+activate NusMaze #DarkSalmon
+NusMaze --> AliasStorage: overwriteAliasListFile()
+activate AliasStorage
+AliasStorage --> NusMaze
+deactivate AliasStorage
+NusMaze --> HistoryStorage: overwriteHistoryListFile()
+activate HistoryStorage
+HistoryStorage --> NusMaze
+deactivate HistoryStorage
+NusMaze --> FavouriteStorage: overwriteFavouritesListFile()
+activate FavouriteStorage
+FavouriteStorage --> NusMaze
+deactivate FavouriteStorage
+NusMaze --> DailyRouteStorage: overwriteDailyRouteFile()
+activate DailyRouteStorage
+DailyRouteStorage --> NusMaze
+deactivate DailyRouteStorage
+NusMaze --> NotesStorage: overwriteNotesListFile()
+activate NotesStorage
+NotesStorage --> NusMaze
+deactivate NotesStorage
+deactivate NusMaze #DarkSalmon
+end
+
+deactivate NusMaze #blue
+@enduml
