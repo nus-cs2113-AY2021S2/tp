@@ -29,11 +29,10 @@ public class ShowDailyRouteCommand extends Command {
             ArrayList<String> schedules = dailyRoute.getDailyRoute(selectedDay);
             StringBuilder routedSchedule = new StringBuilder();
             for (int i = 0; i < schedules.size() - 1; i++) {
+                String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
                 if (i < schedules.size() - 2) {
-                    String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
                     routedSchedule.append(route).append("\n");
                 } else {
-                    String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
                     routedSchedule.append(route);
                 }
             }
