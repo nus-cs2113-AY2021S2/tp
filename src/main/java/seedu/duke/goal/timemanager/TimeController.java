@@ -8,8 +8,11 @@ import seedu.duke.ui.UI;
 import java.time.LocalDate;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TimeController {
+    private static final Logger logger = Logger.getLogger("Time Control logger");
     private LocalDate appToday;
     private int appWeekOfYear;
 
@@ -50,10 +53,14 @@ public class TimeController {
     }
 
     private LocalDate getTodayFromTextFile() {
-        return null;
+        LocalDate storedToday = LocalDate.now();
+        logger.log(Level.INFO, storedToday.toString() + " is read from file as stored today!");
+        return storedToday;
     }
 
     private int getWeekOfYearFromTextFile() {
-        return 0;
+        int storedWeekOfYear = 0;
+        logger.log(Level.INFO, storedWeekOfYear + " is read from file as stored today!");
+        return storedWeekOfYear;
     }
 }

@@ -49,10 +49,11 @@ public class GoalList {
     }
 
     public void initializeGoalProgress(PeriodType periodType) {
+        assert periodType == PeriodType.INVALID || periodType == null : "A period type is expected but not received!";
         if (goals.isEmpty()) {
             return;
         }
-        
+
         for (Goal goal : goals) {
             if (goal.getPeriodType().equals(periodType)) {
                 //goal.initializeProgress();
