@@ -1,3 +1,4 @@
+check t/E
 add t/E a/swimming d/50 date/25-03-2021
 add t/E a/dance
 add t/E a/dance d/40 date/25-03-2021
@@ -18,3 +19,4 @@ delete t/D i/1
 delete t/S i/1
 delete t/W i/1
 delete t/W i/2
+exit

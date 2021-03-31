@@ -5,11 +5,11 @@ import seedu.duke.account.User;
 
 import java.io.IOException;
 
-public class FileWriter {
+public class FileInfoWriter {
     private String recordFilePath;
     private String goalFilePath;
 
-    public FileWriter(String recordPath, String goalPath) {
+    public FileInfoWriter(String recordPath, String goalPath) {
         recordFilePath = recordPath;
         goalFilePath = goalPath;
     }

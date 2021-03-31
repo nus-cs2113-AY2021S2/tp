@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.text.ParseException;
 
 public class Storage {
-    private FileReader fileReader;
-    private FileWriter fileWriter;
+    private FileInfoReader fileInfoReader;
+    private FileInfoWriter fileInfoWriter;
     private String recordPath;
     private String goalPath;
     private File recordSource;
@@ -21,35 +21,34 @@ public class Storage {
         this.goalPath = goalPath;
         recordSource = new File(recordPath);
         goalSource = new File(goalPath);
-
         if (!recordSource.exists()) {
             if (!recordSource.getParentFile().exists()) {
                 recordSource.getParentFile().mkdirs();
-                recordSource.createNewFile();
             }
+            recordSource.createNewFile();
         }
         if (!goalSource.exists()) {
             if (!goalSource.getParentFile().exists()) {
                 goalSource.getParentFile().mkdirs();
-                goalSource.createNewFile();
             }
+            goalSource.createNewFile();
         }
-        fileWriter = new FileWriter(recordPath, goalPath);
-        fileReader = new FileReader(recordSource, goalSource);
+        fileInfoWriter = new FileInfoWriter(recordPath, goalPath);
+        fileInfoReader = new FileInfoReader(recordSource, goalSource);
     }
 
     public void store(User user) throws IOException {
-        fileWriter.storeRecordsToFile(user);
-        fileWriter.storeGoalsToFile(user);
+        fileInfoWriter.storeRecordsToFile(user);
+        fileInfoWriter.storeGoalsToFile(user);
     }
 
     public void readRecords(User user) throws TypeException, NumberFormatException, ParseException,
             FileNotFoundException {
-        fileReader.parseToRecordList(user);
+        fileInfoReader.parseToRecordList(user);
     }
 
     public void readGoals(User user) throws TypeException, NumberFormatException, ParseException,
             FileNotFoundException {
-        fileReader.parseToGoal(user);
+        fileInfoReader.parseToGoal(user);
     }
 }

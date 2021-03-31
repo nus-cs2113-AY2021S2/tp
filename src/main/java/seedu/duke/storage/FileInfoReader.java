@@ -33,13 +33,13 @@ import static seedu.duke.goal.PeriodType.WEEKLY;
 import static seedu.duke.goal.PeriodType.DAILY;
 import static seedu.duke.goal.PeriodType.INVALID;
 
-public class FileReader {
+public class FileInfoReader {
     private File recordSource;
     private File goalSource;
     public static final String SEPERATOR = " \\| ";
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
-    public FileReader(File recordFile, File goalFile) {
+    public FileInfoReader(File recordFile, File goalFile) {
         recordSource = recordFile;
         goalSource = goalFile;
     }
