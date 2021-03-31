@@ -3,7 +3,7 @@ package seedu.duke.record;
 import java.time.LocalDate;
 
 public class Sleep extends Record {
-    private final int duration;
+    private final double duration;
 
     /**
      * Represents a record of sleeping data.
@@ -11,7 +11,7 @@ public class Sleep extends Record {
      * @param duration the duration of the sleep.
      * @param date     the date of the sleep.
      */
-    public Sleep(int duration, LocalDate date) {
+    public Sleep(double duration, LocalDate date) {
         super(RecordType.SLEEP, date);
         this.duration = duration;
     }
@@ -21,7 +21,7 @@ public class Sleep extends Record {
      *
      * @return the duration of the sleep record.
      */
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 

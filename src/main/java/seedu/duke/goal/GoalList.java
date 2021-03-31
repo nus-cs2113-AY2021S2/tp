@@ -7,6 +7,8 @@ import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
 
+import static seedu.duke.goal.PeriodType.DAILY;
+
 public class GoalList {
     private final ArrayList<Goal> goals = new ArrayList<>();
 
@@ -55,5 +57,21 @@ public class GoalList {
             goalStringBuilder.append(goal.getGoalDataToStore()).append("\n");
         }
         return goalStringBuilder.toString();
+    }
+
+    public void updateDailyProgess(double progress) {
+        for (Goal goal : goals) {
+            if (goal.getPeriodType() == DAILY) {
+                goal.setProgress(progress);
+            }
+        }
+    }
+
+    public boolean isEmpty() {
+        if (goals.size() == 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

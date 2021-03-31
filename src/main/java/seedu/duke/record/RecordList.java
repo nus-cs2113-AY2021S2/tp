@@ -129,7 +129,7 @@ public class RecordList {
         }
     }
 
-    public double getProgress(LocalDate currentDate) {
+    public double getDailyProgress(LocalDate currentDate) {
         switch (type) {
         case EXERCISE:
             return getExerciseProgress(currentDate);
@@ -137,6 +137,8 @@ public class RecordList {
             return getDietProgress(currentDate);
         case SLEEP:
             return getSleepProgress(currentDate);
+        case BODYWEIGHT:
+            return  getBodyWeightProgress();
         default:
             return 0;
         }
@@ -173,6 +175,14 @@ public class RecordList {
             }
         }
         return totalhours;
+    }
+
+    private double getBodyWeightProgress() {
+        if (records.size() == 0) {
+            return -1;
+        }
+        BodyWeight latestBodyWeightRecord = (BodyWeight) records.get(records.size() - 1);
+        return latestBodyWeightRecord.getWeight();
     }
 
     private FoodCategory parseStringToFoodCategory(String optionalParam) throws IllegalArgumentException {

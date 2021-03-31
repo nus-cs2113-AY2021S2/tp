@@ -12,6 +12,12 @@ import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
 
+import static seedu.duke.command.CommandRecordType.EXERCISE;
+import static seedu.duke.command.CommandRecordType.DIET;
+import static seedu.duke.command.CommandRecordType.SLEEP;
+import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
+import static seedu.duke.goal.PeriodType.DAILY;
+
 /**
  * Manages the fitness of a user through list of records.
  */
@@ -75,10 +81,29 @@ public class FitCenter {
      * @param goal the goal to add.
      */
     public void addGoalToList(CommandRecordType type, Goal goal) {
+        double progress;
+        LocalDate currentDate = goal.getDaySet();
         GoalList list = getGoalListByType(type);
         if (list != null) {
             list.addGoal(goal);
         }
+        switch (type) {
+        case EXERCISE:
+            progress = exerciseRecordList.getDailyProgress(currentDate);
+            break;
+        case DIET:
+            progress = dietRecordList.getDailyProgress(currentDate);
+            break;
+        case BODY_WEIGHT:
+            progress = bodyRecordList.getDailyProgress(currentDate);
+            break;
+        case SLEEP:
+            progress = sleepRecordList.getDailyProgress(currentDate);
+            break;
+        default:
+            return;
+        }
+        goal.setProgress(progress);
     }
 
     /**
@@ -157,6 +182,27 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_CHECK_GOAL;
     }
 
+    public String getAllGoalListStringAtLoading() {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (!dietGoalList.isEmpty()) {
+            stringBuilder.append("Diet Goals\n");
+            stringBuilder.append(getGoalListString(DIET, DAILY));
+        }
+        if (!exerciseGoalList.isEmpty()) {
+            stringBuilder.append("Exercise Goals\n");
+            stringBuilder.append(getGoalListString(EXERCISE, DAILY));
+        }
+        if (!sleepGoalList.isEmpty()) {
+            stringBuilder.append("Sleep Goals\n");
+            stringBuilder.append(getGoalListString(SLEEP, DAILY));
+        }
+        if (!bodyWeightGoalList.isEmpty()) {
+            stringBuilder.append("Body Weight Goals\n");
+            stringBuilder.append(getGoalListString(BODY_WEIGHT, DAILY));
+        }
+        return stringBuilder.toString();
+    }
+
     public String getRecordListForStore() {
         return exerciseRecordList.getRecordToStore()
                 + dietRecordList.getRecordToStore()
@@ -171,16 +217,32 @@ public class FitCenter {
                 + bodyWeightGoalList.getGoalToStore();
     }
 
-    public double getProgress(CommandRecordType type, LocalDate currentDate) {
+    public void initializeDailyProgressAtLoading(LocalDate currentDate) {
+        dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
+        exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
+        sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
+        bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+    }
+
+    public void updateDailyProgressAtAdding(Record record, LocalDate currentDate) {
+        if (!record.getDate().isEqual(currentDate)) {
+            return;
+        }
+        RecordType type = record.getType();
         switch (type) {
         case EXERCISE:
-            return exerciseRecordList.getProgress(currentDate);
+            exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
+            break;
         case DIET:
-            return dietRecordList.getProgress(currentDate);
+            dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
+            break;
         case SLEEP:
-            return sleepRecordList.getProgress(currentDate);
+            sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
+            break;
+        case BODYWEIGHT:
+            bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
         default:
-            return 0;
+            return;
         }
     }
 }

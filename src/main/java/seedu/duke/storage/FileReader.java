@@ -4,10 +4,11 @@ import seedu.duke.account.FitCenter;
 import seedu.duke.account.User;
 import seedu.duke.exception.TypeException;
 
-import seedu.duke.record.BodyWeight;
 import seedu.duke.record.Diet;
-import seedu.duke.record.Exercise;
 import seedu.duke.record.Record;
+import seedu.duke.record.Exercise;
+import seedu.duke.record.Sleep;
+import seedu.duke.record.BodyWeight;
 import seedu.duke.goal.DietGoal;
 import seedu.duke.goal.ExerciseGoal;
 import seedu.duke.goal.BodyWeightGoal;
@@ -38,13 +39,6 @@ public class FileReader {
     public static final String SEPERATOR = " \\| ";
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
-    /*
-    public FileReader(File recordFile, File goalFile) {
-        recordSource = recordFile;
-        goalSource = goalFile;
-    }
-
-     */
     public FileReader(File recordFile, File goalFile) {
         recordSource = recordFile;
         goalSource = goalFile;
@@ -91,29 +85,25 @@ public class FileReader {
             String[] typeContent = currentLine.split(SEPERATOR,2);
             String content = typeContent[1];
             Goal goal;
-            String[] contentParts = content.split(SEPERATOR);
-            LocalDate setDay = getDate(contentParts[0].trim());
-            PeriodType periodType = getPeriodType(contentParts[1].trim());
-            double target = Double.parseDouble(contentParts[2].trim());
+            String[] params = getGoalParams(content);
+            LocalDate setDay = getDate(params[0]);
+            PeriodType periodType = getPeriodType(params[1]);
+            double target = Double.parseDouble(params[2]);
             switch (typeContent[0]) {
             case "E":
                 goal = new ExerciseGoal(periodType, target, setDay);
-                goal.setProgressAtLoadingTime(user);
                 fitCenter.addGoalToList(EXERCISE, goal);
                 break;
             case "D":
                 goal = new DietGoal(periodType, target, setDay);
-                goal.setProgressAtLoadingTime(user);
                 fitCenter.addGoalToList(DIET, goal);
                 break;
             case "W":
                 goal = new BodyWeightGoal(periodType, target, setDay);
-                goal.setProgressAtLoadingTime(user);
                 fitCenter.addGoalToList(BODY_WEIGHT, goal);
                 break;
             case "S":
                 goal = new SleepGoal(periodType, target, setDay);
-                goal.setProgressAtLoadingTime(user);
                 fitCenter.addGoalToList(SLEEP, goal);
                 break;
             default:
@@ -121,6 +111,8 @@ public class FileReader {
                 break;
             }
         }
+        LocalDate currentDate = LocalDate.now();
+        fitCenter.initializeDailyProgressAtLoading(currentDate);
     }
 
     private Record getExerciseRecord(String content) throws ParseException, TypeException, NumberFormatException {
@@ -154,38 +146,21 @@ public class FileReader {
         String durationString = contentParts[0].trim();
         double duration = Double.parseDouble(durationString);
         LocalDate recordDate = getDate(contentParts[1]);
-        return new BodyWeight(duration, recordDate);
+        return new Sleep(duration, recordDate);
+    }
+
+    private String[] getGoalParams(String content) {
+        String[] params = content.split(SEPERATOR);
+        for (String param : params) {
+            param = param.trim();
+        }
+        return params;
     }
 
     private LocalDate getDate(String dateString) throws ParseException {
         Date date = DATE_FORMAT.parse(dateString);
         LocalDate recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         return recordDate;
-    }
-
-
-    private Goal getDietGoal(String content) throws ParseException, TypeException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
-        LocalDate setDay = getDate(contentParts[0].trim());
-        PeriodType periodType = getPeriodType(contentParts[1].trim());
-        double target = Double.parseDouble(contentParts[2].trim());
-        return new DietGoal(periodType, target, setDay);
-    }
-
-    private Goal getSleepGoal(String content) throws ParseException, TypeException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
-        LocalDate setDay = getDate(contentParts[0].trim());
-        PeriodType periodType = getPeriodType(contentParts[1].trim());
-        double target = Double.parseDouble(contentParts[2].trim());
-        return new SleepGoal(periodType, target, setDay);
-    }
-
-    private Goal getBodyWeightGoal(String content) throws ParseException, TypeException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
-        LocalDate setDay = getDate(contentParts[0].trim());
-        PeriodType periodType = getPeriodType(contentParts[1].trim());
-        double target = Double.parseDouble(contentParts[2].trim());
-        return new BodyWeightGoal(periodType, target, setDay);
     }
 
     private PeriodType getPeriodType(String type) throws TypeException {

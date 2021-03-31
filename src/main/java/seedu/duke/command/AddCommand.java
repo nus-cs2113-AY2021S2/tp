@@ -42,7 +42,7 @@ public class AddCommand extends Command {
             record = new Diet(params.get("food"), Double.parseDouble(params.get("weight")), recordDate);
             break;
         case SLEEP:
-            record = new Sleep(Integer.parseInt(params.get("duration")), recordDate);
+            record = new Sleep(Double.parseDouble(params.get("duration")), recordDate);
             break;
         case BODY_WEIGHT:
             record = new BodyWeight(Double.parseDouble(params.get("weight")), recordDate);
@@ -53,8 +53,10 @@ public class AddCommand extends Command {
     }
 
     public CommandResult execute(FitCenter fitCenter) {
+        LocalDate currentDate = LocalDate.now();
         if (record != null) {
             fitCenter.addRecordToList(recordType, record);
+            fitCenter.updateDailyProgressAtAdding(record, currentDate);
             feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
         } else {
             feedback = Messages.MESSAGE_CANT_ADD_RECORD;

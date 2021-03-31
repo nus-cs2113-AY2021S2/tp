@@ -55,6 +55,6 @@ public class UI {
 
     public void showProgress(User user) {
         FitCenter fitCenter = user.getFitCenter();
-        System.out.println(fitCenter.getGoalListString(DIET, null));
+        System.out.println(fitCenter.getAllGoalListStringAtLoading() + DIVIDER_LINE_ONLY);
     }
 }

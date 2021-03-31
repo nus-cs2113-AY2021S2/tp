@@ -6,8 +6,6 @@ import seedu.duke.record.RecordType;
 import java.time.LocalDate;
 
 public class ExerciseGoal extends Goal {
-    private final double targetEnergy;
-    private double progress;
 
     /**
      * Initialize an instance of an exercise goal.
@@ -16,50 +14,13 @@ public class ExerciseGoal extends Goal {
      * @param targetEnergy the target energy to be burnt.
      */
     public ExerciseGoal(PeriodType periodType, double targetEnergy) {
-        super(RecordType.EXERCISE, periodType);
-        this.targetEnergy = targetEnergy;
+        super(RecordType.EXERCISE, periodType, targetEnergy);
         initializeProgress();
     }
 
     public ExerciseGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
-        super(RecordType.EXERCISE, periodType);
-        this.targetEnergy = targetEnergy;
-        this.daySet = daySet;
+        super(RecordType.EXERCISE, periodType, targetEnergy, daySet);
         initializeProgress();
-    }
-
-    /**
-     * Gets the the target energy to be burnt.
-     *
-     * @return the target energy to be burnt in kcal.
-     */
-    public double getTargetEnergy() {
-        return targetEnergy;
-    }
-
-    /**
-     * Gets the progress of the exercise goal (energy burnt).
-     *
-     * @return the energy burnt in kcal.
-     */
-    public double getProgress() {
-        return progress;
-    }
-
-    /**
-     * Initializes the progress of the exercise goal (energy burnt) to 0 kcal.
-     */
-    public void initializeProgress() {
-        this.progress = 0;
-    }
-
-    /**
-     * Updates the progress of the exercise goal (energy burnt).
-     *
-     * @param progress the energy burnt in kcal.
-     */
-    public void updateProgress(double progress) {
-        this.progress = progress;
     }
 
 
@@ -77,7 +38,7 @@ public class ExerciseGoal extends Goal {
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                 + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetEnergy() + getProgressUnit() + "\n"
+                + "Target: " + getTarget() + getProgressUnit() + "\n"
                 + "Progress: " + getProgress() + getProgressUnit();
     }
 
@@ -90,17 +51,13 @@ public class ExerciseGoal extends Goal {
     public String getGoalData() {
         return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
                 + getPeriodType().toString().toLowerCase() + "\t"
-                + getTargetEnergy() + getProgressUnit() + "\t"
+                + getTarget() + getProgressUnit() + "\t"
                 + getProgress() + getProgressUnit() + "\n";
     }
 
     @Override
     public String getGoalDataToStore() {
-        return "E" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetEnergy;
+        return "E" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + target;
     }
 
-    @Override
-    public void setProgressAtLoadingTime(User user){
-
-    }
 }

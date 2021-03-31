@@ -3,12 +3,9 @@ package seedu.duke.goal;
 import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
 
-import java.security.SecurityPermission;
 import java.time.LocalDate;
 
 public class BodyWeightGoal extends Goal {
-    private final double targetBodyWeight;
-    private double progress;
 
     /**
      * Initialize an instance of an exercise goal.
@@ -17,50 +14,17 @@ public class BodyWeightGoal extends Goal {
      * @param targetBodyWeight the target body weight.
      */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
-        super(RecordType.BODYWEIGHT, periodType);
-        this.targetBodyWeight = targetBodyWeight;
+        super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
         initializeProgress();
     }
 
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
-        super(RecordType.BODYWEIGHT, periodType);
-        this.targetBodyWeight = targetBodyWeight;
-        this.daySet = daySet;
+        super(RecordType.BODYWEIGHT, periodType, targetBodyWeight, daySet);
         initializeProgress();
     }
 
-    /**
-     * Gets the the target body weight.
-     *
-     * @return the target body weight to be burnt in kg.
-     */
-    public double getTargetBodyWeight() {
-        return targetBodyWeight;
-    }
-
-    /**
-     * Gets the progress of the body weight goal.
-     *
-     * @return the body weight in kg.
-     */
-    public double getProgress() {
-        return progress;
-    }
-
-    /**
-     * Initializes the progress of the body weight goal to 0 kg.
-     */
-    public void initializeProgress() {
-        this.progress = 0;
-    }
-
-    /**
-     * Updates the progress of the body weight goal.
-     *
-     * @param progress the body weight in kg.
-     */
-    public void updateProgress(double progress) {
-        this.progress = progress;
+    protected void initializeProgress() {
+        progress = -1;
     }
 
     @Override
@@ -75,10 +39,17 @@ public class BodyWeightGoal extends Goal {
      */
     @Override
     public String getGoalSummary() {
-        return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
-                + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
-                + "Target: " + getTargetBodyWeight() + getProgressUnit() + "\n"
-                + "Progress: " + getProgress() + getProgressUnit();
+        if (progress == -1) {
+            return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
+                    + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                    + "Target: " + getTarget() + getProgressUnit() + "\n"
+                    + "Progress: " + "You haven't add any body weight record.";
+        } else {
+            return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
+                    + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                    + "Target: " + getTarget() + getProgressUnit() + "\n"
+                    + "Progress: " + getProgress() + getProgressUnit();
+        }
     }
 
     /**
@@ -88,19 +59,21 @@ public class BodyWeightGoal extends Goal {
      */
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
-                + getPeriodType().toString().toLowerCase() + "\t"
-                + getTargetBodyWeight() + getProgressUnit() + "\t"
-                + getProgress() + getProgressUnit() + "\n";
+        if (progress == -1) {
+            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
+                    + getPeriodType().toString().toLowerCase() + "\t"
+                    + getTarget() + getProgressUnit() + "\t"
+                    + "None Proress" + "\n";
+        } else {
+            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t"
+                    + getPeriodType().toString().toLowerCase() + "\t"
+                    + getTarget() + getProgressUnit() + "\t"
+                    + getProgress() + getProgressUnit() + "\n";
+        }
     }
 
     @Override
     public String getGoalDataToStore() {
-        return "W" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + targetBodyWeight;
-    }
-
-    @Override
-    public void setProgressAtLoadingTime(User user){
-
+        return "W" + SEPARATOR + daySet + SEPARATOR + periodType + SEPARATOR + target;
     }
 }

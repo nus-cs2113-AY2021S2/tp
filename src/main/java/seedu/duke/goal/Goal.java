@@ -14,6 +14,8 @@ public abstract class Goal {
     protected LocalDate daySet;
     protected RecordType type;
     protected PeriodType periodType;
+    protected double target;
+    protected double progress;
     public static final String SEPARATOR = " | ";
 
     /**
@@ -26,6 +28,36 @@ public abstract class Goal {
         this.type = type;
         this.periodType = periodType;
         daySet = LocalDate.now();
+    }
+
+    public Goal(RecordType type, PeriodType periodType, double target) {
+        this.type = type;
+        this.periodType = periodType;
+        daySet = LocalDate.now();
+        this.target = target;
+    }
+
+    public Goal(RecordType type, PeriodType periodType, double target, LocalDate date) {
+        this.type = type;
+        this.periodType = periodType;
+        daySet = date;
+        this.target = target;
+    }
+
+    public double getProgress() {
+        return progress;
+    }
+
+    public void setProgress(double progress) {
+        this.progress = progress;
+    }
+
+    protected void initializeProgress() {
+        progress = 0;
+    }
+
+    public double getTarget() {
+        return target;
     }
 
     /**
@@ -73,5 +105,4 @@ public abstract class Goal {
 
     public abstract String getGoalDataToStore();
 
-    public abstract void setProgressAtLoadingTime(User user);
 }
