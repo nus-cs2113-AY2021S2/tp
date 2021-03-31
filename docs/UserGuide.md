@@ -250,30 +250,53 @@ Example Screenshot:
 ### 5.2 Patient
 
 The functions in the Patient menu allow you, the head nurse, to add, view, find, and delete patients in the patient list.
-(Note: Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Eg. P12345, P54321)
+
+When you first enter the Patient menu, you will be greeted with the following welcome message.
+
+<img src = "images/PatientWelcome.PNG" width = "850" >
+
+<br/><br/>
 
 #### Adding a new patient: `add`
-Adds a patient to the patient list.
+Adds a new patient to the patient list.
 
 Format: `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
 
-Example of usage:
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
+>3. The gender field input should only be "M", "F" or "Others"
+>4. The age field input should be a positive integer not more than 150
+
+Example of usage:<br/>
+Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555.
 ```
-Patient --> add/P55555/Sam/40/Male/Fever/Paracetamol
+Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
-Patient --> add/P55555/Sam/40/Male/Fever/Paracetamol
-Sam is a patient here!
+Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
+Sam is now a patient here!
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src = "images/PatientAdd.png" width = "850" >
+
+<br/><br/>
 
 #### Deleting a patient: `delete`
 Deletes a patient from the patient list.
 
 Format: `delete/[Patient ID]`
 
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+
 Example of usage:
 ```
 Patient --> delete/P55555
@@ -282,9 +305,17 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Patient --> delete/P55555
-Sam is cured:)
+Noted. I've removed this patient:
+Sam
+Now you have 0 patients in the list
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src = "images/PatientDelete.PNG" width = "850" >
+
+<br/><br/>
 
 #### Listing all patients: `list`
 Lists all patients in the patient list.
@@ -298,31 +329,84 @@ Staff --> list
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
-Staff --> list
-1. P55555, Sam, 40, Male, Fever, Paracetamol
-2. P11111, James, 20, Male, Flu, Penicillin 
+Patient --> list
+Here are the patients currently in the list!
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol                             
+P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol         
 ------------------------------------------------------------------------------
 ```
 
-#### Finding a patient: `find`
-Finds for a patient from the patient list.
+Example Screenshot:
 
-Format: `find/[Patient ID]`
+<img src = "images/PatientList.PNG" width = "850" >
+
+<br/><br/>
+
+#### Finding a patient: `find`
+Finds a patient currently in the patient list.
+
+Format: `find/[Keyword/Phrase]`
+
+>:information_source: Important notes about the input format
+>
+>1. Other than inputting known values like the ID or Name, the inputted field can be an arbitrary input.
+    >   HealthVault will search through the list of patients for any patient that matches the keyword or phrase.
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters.
 
 Example of usage:
+Finding through inputting the ID
 ```
-Patient --> find/P55555
+Patient --> find/P54321
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
-Patient --> find/P55555
-P55555, Sam, 40, Male, Fever, Paracetamol
+Patient --> find/P54321
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol           
 ------------------------------------------------------------------------------
 ```
 
-#### Returning to Start Menu: `return`
+Example of usage:
+Finding through inputting the name
+```
+Patient --> find/Sam
+```
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Patient --> find/Sam
+ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
+________________________________________________________________________________________________________________________________________________________________________________
+P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol        
+------------------------------------------------------------------------------
+```
+
+Example Screenshot:
+
+<img src = "images/PatientFind.PNG" width = "850" >
+
+<br/><br/>
+
 #### Help: `help`
+
+Display the commands for the Patient Menu.
+
+Example Screenshot:
+
+<img src="images/PatientHelp.PNG" width = "850" >
+
+#### Returning to Start Menu: `return`
+
+Returns you to the Start Menu.
+
+Example Screenshot:
+
+<img src="images/PatientReturn.PNG" width = "850" >
+
 
 ### 5.3 Doctor's Appointment
 
