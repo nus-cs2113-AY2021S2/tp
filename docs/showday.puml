@@ -1,6 +1,6 @@
 @startuml
 hide footbox
-title Footer removed
+
 actor User
 User -> "command:ShowDailyRouteCommand" : execute
 activate "command:ShowDailyRouteCommand"
