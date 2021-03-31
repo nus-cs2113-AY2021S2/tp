@@ -24,7 +24,12 @@ public class DailyRoute {
     public void addDailyRoute(String day, ArrayList<String> blocks) {
         dailyRoutes.replace(day, blocks);
         int index = days.indexOf(day);
-        selectableDays[index] = true;
+        if(blocks.size() != 0){
+            selectableDays[index] = true;
+        }else{
+            selectableDays[index] = false;
+        }
+
     }
 
     public ArrayList<String> getDailyRoute(String day) {

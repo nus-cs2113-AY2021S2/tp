@@ -19,6 +19,10 @@ public class ShowDailyRouteCommand extends Command {
     @Override
     public void execute() {
         ArrayList<String> selectableDays = dailyRoute.getSelectableDays();
+        if(selectableDays.size() == 0){
+            ui.showMessageWithDivider("There are no daily routes planned!");
+            return;
+        }
         try {
             int dayEntry = ui.getDayEntryForShow(selectableDays);
             String selectedDay = selectableDays.get(dayEntry);
