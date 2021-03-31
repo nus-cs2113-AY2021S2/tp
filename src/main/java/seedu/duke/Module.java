@@ -43,6 +43,10 @@ public class Module {
         this.components = components;
     }
 
+    public String getZoomLink() {
+        return this.zoomLink;
+    }
+
     public void setZoomLink(String zoomLink) {
         this.zoomLink = zoomLink;
     }
@@ -66,7 +70,8 @@ public class Module {
     public String toString() {
         return "Name: " + getName() + "\n\nDescription:\n"
                 + getDescription() + "\n\nReview:\n" + getReview()
-                + "\n\nModular Credit:\n" + getMc() + "\n\nGrade:\n" + getGrade();
+                + "\n\nModular Credit:\n" + getMc() + "\n\nGrade:\n" + getGrade()
+                + "\n\nZoom Link:\n" + getZoomLink();
     }
 
     public void removeZoomLink() {

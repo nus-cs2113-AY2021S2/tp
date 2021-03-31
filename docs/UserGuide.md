@@ -54,7 +54,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Add a Zoom Link](#345-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#346-view-zoom-links)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Delete a Zoom Link](#346-delete-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#347-view-zoom-links)
 
 [4. Command Summary](#4-command-summary)
 
@@ -167,6 +168,9 @@ E.g. `1` would bring you to the Module Information Menu.
 
 This section gives a detailed description of each feature, including examples to aid your understanding.
 
+**<span style="color: red"> Warning! </span>** 
+>Ending the application abruptly will cause changes to be discarded!
+> 
 ### 3.1 Module Information
 
 The Module Information feature allows you to add/edit/delete modules,  
@@ -863,14 +867,14 @@ Supported Top Level Domain(TLD) include: .com, .org only
 Example for adding an external link:
 
 ````
-[1]
+> 1
 --------------------------------------------
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
 supported schemes: https, http for now... Sorry!
 supported TLD: .com, .org for now... we will work on it!
 
-[https://www.instagram.com]
+> https://www.instagram.com
 --------------------------------------------
 Alright! I have added the following link ---  https://www.instagram.com
 Welcome to the external links menu!
@@ -881,13 +885,16 @@ Please choose which action you would like to do and enter the number:
 [4] --- exit to links menu
 ````
 
+**Note!**
+> The application checks for duplicate links, so any duplicates that you add will be automatically removed!
+
 #### 3.4.3 Remove External Link
 
 Removes an external link from the external links list.
 
 Example for removing an external link:
 ````
-[2]
+> 2
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
@@ -899,7 +906,7 @@ These are the links you have added --->
 [7] --- https://www.instagram.com
 Please choose which link you would like to delete and enter the number
 
-[7]
+> 7
 --------------------------------------------
 You have deleted --- https://www.instagram.com
 Welcome to the external links menu!
@@ -915,7 +922,7 @@ Allows you to view all external links stored in the application.
 
 Example for viewing external links:
 ````
-[3]
+> 3
 --------------------------------------------
 These are the links you have added --->
 [1] --- https://www.reddit.com/r/nus
@@ -941,7 +948,7 @@ available).
 
 Example for adding a zoom link:
 ````
-[2]
+> 2
 --------------------------------------------
 Please enter the zoom link below
 PS: If the module you are finding is not available, please enter 8 if you would like to add a module for the link...
@@ -956,29 +963,56 @@ This is the list of modules:
 [6] EC1301
 [7] CG2028
 
-[4] 
+> 4
 --------------------------------------------
 Please enter the zoom link below
-[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09]
+> https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09
 --------------------------------------------
 Does your meeting have password which you would like to add? [Y/N]
-[Y]
+> Y
 --------------------------------------------
 Please enter your password below!
-[itsasecret]
+> itsasecret
 --------------------------------------------
 Woohoo~ Zoom link added:
 https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
 ````
 
+**Note!** 
+> If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
-#### 3.4.6 View Zoom Links
+#### 3.4.6 Delete Zoom Link
+
+Deletes a zoom link of your choice
+
+Example for deleting the zoom link:
+````
+> 3
+--------------------------------------------
+Here are your zoom links!
+
+[1] --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09 CS1010 password'
+
+Please choose which link you would like to delete and enter the number
+> 1
+--------------------------------------------
+You have deleted --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
+````
+
+#### 3.4.7 View Zoom Links
 
 View all zoom links stored in the application
 
 Example for viewing all zoom links: 
 ````
-[4]
+> 4
 --------------------------------------------
 Here are your zoom links!
 
@@ -1022,5 +1056,5 @@ Features|Menu | Command to enter from the Main Menu
 [Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
 [View all Links](#344-view-external-links) | External Links | 4, 1 , 3
 [Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
-[View Zoom Links](#346-view-zoom-links) | Links | 4, 3
-[Delete Zoom Link](#3114-delete-zoom-link) | Links | 1, 14
+[Delete Zoom Link](#346-delete-zoom-link) | Links | 4,3 or 1, 14
+[View Zoom Links](#347-view-zoom-links) | Links | 4, 3

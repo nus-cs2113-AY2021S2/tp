@@ -4,7 +4,7 @@
 
 [1. Introduction](#1-introduction)
 
-[2. Setting Up](#2-setting-up)  
+[2. Setting Up](#2-setting-up)
 
 [3. Design](#3-design)  
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#31-architecture)  
@@ -41,19 +41,22 @@
 
 - Users are allowed to add and edit module information, tasks, zoom links to suit their needs.
 
-- This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical User
-  Interface (GUI).
+- This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical
+  User Interface (GUI).
 
 ---
 
 # 2. Setting Up
 
-1. Ensure you have version 11 of Java. You can install it from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+1. Ensure you have version 11 of Java. You can install it
+   from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
 2. Fork the UniTracker repo from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp).
-3. Clone the fork on to your computer. We recommend using Sourcetree for this. You can download Sourcetree from [here](https://www.sourcetreeapp.com/).
-4. Download and open Intellij. You can download Intellij from [here](https://www.jetbrains.com/idea/)
-5. If you are not in the welcome screen, click `File` -> 'Close project'
-   to close the existing project dialog.
+3. Clone the fork on to your computer. We recommend using Sourcetree for this. You can download
+   Sourcetree from [here](https://www.sourcetreeapp.com/).
+4. Download and open Intellij. You can download Intellij
+   from [here](https://www.jetbrains.com/idea/)
+5. If you are not in the welcome screen, click `File` -> 'Close project' to close the existing
+   project dialog.
 6. Set up the correct JDK version for Gradle.
     1. Click `Configure` -> `Project Defaults` -> `Project Structure`
     2. Click `New...` and set it to the directory of the JDK.
@@ -81,6 +84,7 @@
     [4] External Links
     [5] Exit Program
     ````
+
 ---
 
 ## 3. Design
@@ -213,7 +217,7 @@ to input the number corresponding to the module code they want, and returns the 
 Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine the
 link, and whether a password is required for the Zoom meeting.
 
-*Note: If the user does not require the zoom link to be tagged to a module,
+📝 If the user does not require the zoom link to be tagged to a module,
 AddTask#printAndGetModule() in Step 1 would return an empty string, and the module code would be
 initialised to "Zoom link has no module code".
 
@@ -222,8 +226,6 @@ the module object which is stored in the ModuleInfo class.
 
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
-
-### 4.06 Add Module Components
 
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
@@ -265,7 +267,6 @@ Improvement: the total weightage (in whole numbers) of the module should not exc
 This product is for NUS students to help them to keep track/add/edit module information, and
 deadlines. This product is for users who prefer CLI over GUI.
 
-
 ### 5.2 Value proposition
 
 Our product is user-specific as it allows users to customize and personalize their own module
@@ -284,19 +285,18 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ## 6. User Stories
 
-*[This section will be completed in the future.]* <br>
-
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
 ---
 
 ## 7. Non-Functional Requirements
 
-*[This section will be completed in the future.]* <br>
-{Give non-functional requirements}
+1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.
+
 
 ---
 
