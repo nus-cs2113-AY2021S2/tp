@@ -5,5 +5,6 @@ import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 public abstract class Command {
-    public abstract void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreMap creditScoreMap);
+    public abstract void execute(RecordList recordList, Ui ui, Storage storage, CreditScoreReturnedLoansMap
+            creditScoreReturnedLoansMap);
 }
