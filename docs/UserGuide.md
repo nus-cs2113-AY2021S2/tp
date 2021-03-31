@@ -106,6 +106,15 @@ java 11 and above<br>
 
 ----
 
+<p align="center">
+    <a href="UserGuide.md#table-of-contents">
+        Back to Table of Contents
+    </a>
+</p>
+
+
+----
+
 # Features
 
 ## Overview
@@ -178,7 +187,6 @@ Additionally, you can store your lecture notes in GULIO using the cheat-sheet fe
 ## Dashboard Commands
 These are commands used on the dashboard layer, when no modules have been selected. Commands here deal with the creation of modules, as well as accessing modules.
 
-&nbsp;
 
 ### Listing all dashboard commands : _help_
 
@@ -187,16 +195,12 @@ Lists out all commands that are available from the dashboard layer. Includes for
 **Format:**<br>
 `help`
 
-&nbsp;
-
 ### Exiting the program : _exit_
 
 Exits the program.
 
 **Format:**<br>
 `exit`
-
-&nbsp;
 
 ### Opening a module : _open_
 
@@ -215,8 +219,6 @@ Opens the specified module.
 
 > 💡 Module name is auto-converted to uppercase, hence is not case-sensitive.
 
-&nbsp;
-
 ### Adding a module : _add_
 
 Adds a module with the specified module name.
@@ -233,8 +235,6 @@ Adds a module with the specified module name.
 **Result** - A new module called CS2113T is added.
 
 > 💡 Module name is auto-converted to uppercase, hence is not case-sensitive.
-
-&nbsp;
 
 ### Deleting a module : _delete_
 
@@ -253,8 +253,6 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 **Result** - Modules CS2107 and CS2101 are removed from the module list.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
-
-&nbsp;
 
 ### Listing all modules : _modules_
 
@@ -277,8 +275,6 @@ Lists all modules.
 
 These are commands used on the module layer, when a module has been selected. Commands here deal with modifying the data corresponding to the specified module.
 
-&nbsp;
-
 ### Listing all module commands : _help_
 
 Lists out all commands that are available from the module layer.
@@ -287,16 +283,12 @@ Includes format and description for each command.
 **Format:**<br>
 `help`
 
-&nbsp;
-
 ### Closing a module : _close_
 
 Closes the current module and returns the user to the dashboard layer.
 
 **Format:**<br>
 `close`
-
-&nbsp;
 
 ### Showing module information : _info_
 
@@ -312,8 +304,6 @@ Displays a summary of lessons and undone tasks for the module.
 | 1 | info | \<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days) |
 
 **Result** - Prints overview of module, including lesson and undone tasks.
-
-&nbsp;
 
 ### Adding a lesson : _add lesson_
 
@@ -335,8 +325,6 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 > ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
 
-&nbsp;
-
 ### Deleting a lesson : _delete lesson_
 
 Lists all lessons for the module and asks the user for indices of lessons to delete. Then, deletes lessons corresponding to the indices specified.
@@ -355,8 +343,6 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 **Result** - The lessons “lecture” and “tutorial” are removed from the list of lessons.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
-
-&nbsp;
 
 ### Editing a lesson : _edit lesson_
 
@@ -379,8 +365,6 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 
 > 💡 While only one lesson can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
 
-&nbsp;
-
 ### Opening lesson link : _link_
 
 Lists all lessons in the module and asks the user for the indices of lesson links to open.
@@ -400,8 +384,6 @@ Then, opens the links of the lessons specified.
 
 > 💡 Multiple links can be opened at once. As such, separate indices with a space. Invalid indices will be ignored.
 
-&nbsp;
-
 ### Listing all teaching staff : _teacher_
 
 Lists all teaching staff for the module.
@@ -415,8 +397,6 @@ Lists all teaching staff for the module.
 | --- | --- | --- |
 | 1 | teacher | Teaching staff for CS2113T:<br>1. Prof Akshay - profakshay@email.com<br>2. Cheng Xianhao - cxh@email.com |
 
-&nbsp;
-
 ### Listing all lessons : _lessons_
 
 Lists all lessons for the module.
@@ -429,8 +409,6 @@ Lists all lessons for the module.
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
 | 1 | lessons | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
-
-&nbsp;
 
 ### Adding a task : _add task_
 
@@ -451,8 +429,6 @@ Adds a new task with specified name and information to the current module.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
 
-&nbsp;
-
 ### Deleting a task : _delete task_
 
 Lists all tasks for the module and asks the user for indices of tasks to delete. Then, deletes tasks corresponding to the indices specified.
@@ -470,8 +446,6 @@ Lists all tasks for the module and asks the user for indices of tasks to delete.
 **Result** - The tasks “weekly exercise” and “iP submission” are removed from the list of tasks.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
-
-&nbsp;
 
 ### Editing a task : _edit task_
 
@@ -494,8 +468,6 @@ Lists all tasks for the module and asks the user for the index of the task to ed
 
 > 💡 While only one task can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
 
-&nbsp;
-
 ### Marking task as done : _mark_
 
 Lists undone tasks for the module and asks the user for the indices of tasks to mark as done. Then, marks all tasks corresponding to indices specified as done.
@@ -513,8 +485,6 @@ Lists undone tasks for the module and asks the user for the indices of tasks to 
 **Result** - The tasks “weekly exercise” and “lecture quiz” are marked as done.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
-
-&nbsp;
 
 ### Marking task as undone : _unmark_
 
@@ -534,8 +504,6 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
-&nbsp;
-
 ### Listing all tasks : _tasks_
 
 Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
@@ -548,8 +516,6 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
 | 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021 |
-
-&nbsp;
 
 ### Adding a cheat-sheet : _add cheat-sheet_
 
@@ -568,8 +534,6 @@ Adds a new cheat-sheet with specified name to the module.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
-&nbsp;
-
 ### Deleting a cheat-sheet : _delete cheat-sheet_
 
 Deletes the specified cheat-sheet from the module.
@@ -587,8 +551,6 @@ Deletes the specified cheat-sheet from the module.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
-&nbsp;
-
 ### Editing a cheat-sheet : _edit cheat-sheet_
 
 Opens the specified cheat-sheet in the text editor.
@@ -605,8 +567,6 @@ Opens the specified cheat-sheet in the text editor.
 **Result** - Opens cheat-sheet “lecture notes” in text editor.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
-
-&nbsp;
 
 ### Listing all cheat-sheets : _cheat-sheets_
 
