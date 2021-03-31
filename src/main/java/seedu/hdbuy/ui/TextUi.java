@@ -45,11 +45,25 @@ public class TextUi {
 
     public static void showInvalidInput(String input) {
         System.out.print("I'm sorry. \"" + input + "\" is not a valid command.\n");
-        System.out.println("You can type \"help\" for more information.");
+        System.out.println("Type \"help\" for more information.");
     }
 
     public static void showHelp() {
-        System.out.print("*HELP PLACEHOLDER*\n");
+        System.out.print("HdBuy is a way to easily find and bookmark resale flats of your liking.\n\n" +
+                "Report bugs to: hdbuy@gmail.com\n" +
+                "GitHub page: <https://github.com/AY2021S2-CS2113-F10-1/tp>\n" +
+                "User Guide: <https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/docs/UserGuide.md>\n\n" +
+                "Available commands:\n" +
+                "\tfilter <attribute> <value>\t\tAdd a filter condition. eg: filter location woodlands\n" +
+                "\tlist\t\t\t\t\t\t\tShow all currently set filter condition to filter units matching preferences.\n" +
+                "\tclear\t\t\t\t\t\t\tRemove all currently set filter conditions.\n" +
+                "\tfind\t\t\t\t\t\t\tSearch for units with the current filter conditions.\n" +
+                "\tsort <direction>\t\t\t\tSort search results in ascending(asc) or descending(desc) order.\n" +
+                "\tsave <index>\t\t\t\t\tAdd the unit at the inputted index to the shortlist.\n" +
+                "\tremove <index>\t\t\t\t\tRemove the unit at the inpuuted index from the shortlist.\n" +
+                "\tshortlist\t\t\t\t\t\tShow all units in the shortlist.\n" +
+                "\tbye\t\t\t\t\t\t\t\tExit the application\n"
+        );
     }
 
     public static void showParameters(HashMap<QueryKey, String> inputs) {
