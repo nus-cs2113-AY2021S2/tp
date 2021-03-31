@@ -409,7 +409,7 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 2. Exiting the application
     2.1 Type 'bye' and press enter  
     Expected: The application shows thank you message and exits successfully.
-### 5.2 Routing from one block to another
+### 5.2 Routing
 1. Routing with valid blocks  
     1.1 Launch the application and type 'Go' followed by the enter key.    
     1.2 Test case: Starting block → `E1`, Destination block → `E7`  
@@ -421,4 +421,9 @@ The engineering block is extremely huge, and the layout of the blocks may be con
     Expected:  `Invalid block! Please enter the command again to retry!` should be displayed  
     2.2 Test case: Starting block → `Invalid block`, Destination block → `Invalid block`  
     Expected:  Similar to previous  
+3. Routing to an eatery
+    3.1 Test case: Starting block → `e3`, Destination block → `eatery`, Select entry to go → `5`  
+    Expected: `Route: E3 -> E2 -> EA -> SPINELLI COFFEE` should be displayed  
+    3.2 Test case: Starting block → `e3`, Destination block → `spinelli coffee`
+    Expected: Similar to previous  
    
