@@ -56,12 +56,34 @@ The app will help cinema administrators to update the movie information regularl
 
 1. Usability Requirements
     1. All text in the system must be consistently written in English.
-    2. The layout of the application must be consistent throughout all the pages.
+    2. The wording used in system text must be intuitive for user to understand easily.   
+    3. The layout of the application must be consistent throughout all the pages.
+    4. The system will provide a list of options for the user to choose.
 2. Performance Requirements
     1. Database must be regularly updated according to user inputs.
     2. Exceptions must be performed in cases of undesirable incidents.
 3. Security Requirements
     1. All passwords must be hashed before it is stored.
+
+## Implementation
+This section describes some noteworthy details on how certain features are implemented.
+
+### On startup
+Upon launching the application, the application will first initialize an empty Database object. The constructor will
+call importDatabase for movies, cineplex and showtimes, to read in all saved objects into an ArrayList.
+
+### Login feature
+
+### Delete/ Edit movie feature
+This feature is implemented by methods from the ui component, and database component.
+
+For Delete movie, the ui uses displayDeleteMovieMenu(ArrayList<Movie> movieDatabase) to print out a list of movies,
+and prompts the user to enter the index they would like to delete. The database then uses
+deleteMovie(int choice) to delete that movie. It updates the database by wiping it clean and write remaining objects
+to the .txt file.
+
+Like wise for Edit movie, except the ui uses displayEditMovieMenu(ArrayList<Movie> movieDatabase) and 
+displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase), and the database uses editMovie(int choice, int type).
 
 
 ## Glossary
@@ -81,5 +103,5 @@ The app will help cinema administrators to update the movie information regularl
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+To run the JAR file, run java -cp tp_original_v2.jar movieApp.app.MovieApp
 
