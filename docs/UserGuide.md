@@ -18,8 +18,10 @@
         4.2.6 [Delete a Review](#Delete-a-review)<br />
     4.3 [Recommendation Mode](#Recommendation-Mode)<br />
         4.3.1 [Add a Recommendation](#Add-a-Recommendation)<br />
-        4.3.2 [Edit a Recommendation](#Edit-a-Recommendation)<br />
-        4.3.3 [Review a Recommendation](#Review-a-Recommendation)<br />
+        4.3.2 [List Recommendation](#List-recommendation)<br />
+        4.3.3 [Edit a Recommendation](#Edit-a-Recommendation)<br />
+        4.3.4 [Delete a Recommendation](#Delete-a-Recommendation)<br />
+        4.3.5 [Review a Recommendation](#Review-a-Recommendation)<br />
    4.4 [View Help](#View-Help)<br />
    4.5 [Exit & Save Connoisseur](#Exit-&-Save-Connoisseur)
 1. [Command Summary](#Command-Summary)
@@ -95,7 +97,8 @@ to find out how to interpret the format of the commands.
   
 ###4.2 Review Mode
 Connoisseur is in Review mode by default. In this mode you can maintain a list of reviews of experiences of any 
-category. The review mode can be accessed using the `review` command. 
+category. The review mode can be accessed using the `review` command as shown in the figure below.
+![img.png](img.png)
 
 ####4.2.1 Adding a Review
 This feature allows you to add a new review. There is a choice of quick review or long review.
@@ -202,16 +205,73 @@ prompt you saying that no such review exits.
 
 ###4.3 Recommendation Mode
 Connoisseur is in Review mode by default. The Recommendation mode can be accessed using the `reco` command when 
-Connoisseur prompts - `Please enter a command:` In this mode you can maintain a list of recommendation of experiences 
+Connoisseur prompts - `Please enter a command:` as shown in Figure 12. In this mode you can maintain a list of recommendation of experiences 
 you would like to try in the future. To go back to Review mode, you can use the `review` command.
 
+![img_1.png](img_1.png)
+Figure 12. Recommendation Mode
+
 ####4.3.1 Adding a Recommendation
-This feature allows you to add a new recommendation. 
-####4.3.2 Edit a Recommendation
-####4.3.3 Review a Recommendation
+This feature allows you to add a new recommendation.<br />
+
+Command: `add ` or `new `<br />
+
+Connoisseur will then prompt you to enter the title, category, price range of recommendation, recommended by and where 
+it is located at as shown in Figure 13.
+
+![img_2.png](img_2.png)
+Figure 13. Adding a Recommendation
+
+<p>&#10071 Price range should be entered separated by -. Otherwise, adding a recommendation will fail and you need to try again.
+
+####4.3.2 List Recommendation
+This feature allows you to view a list of all your recommendations as shown in Figure 14.
+
+Command: `list`
+
+![img_3.png](img_3.png)
+Figure 14. Viewing Recommendations
+
+####4.3.3 Edit a Recommendation
+This feature allows you to make edits to the Title/ Category/ Price range/ Location/ RecBy of the recommendation in your list. <br />
+
+Command : `edit [TITLE_OF_RECOMMENDATION] `
+
+`[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to edit.
+
+<p>&#10071Ensure the title of the recommendation you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
+prompt you saying that no such recommendation exits.
+
+As shown in Figure 15 below, Connoisseur will prompt you asking whether you would like to make changes to Title/ Category/ Price range/ Location/ RecBy.
+Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` . <br />If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`. <br />
+
+![img_4.png](img_4.png)
+Figure 15. Editing Recommendations
+
+####4.3.4 Delete a Recommendation
+This feature allows you to delete a recommendation from your list as shown in Figure 16.
+
+Command: `delete [TITLE_OF_RECOMMENDATION]`
+
+`[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to delete.
+![img_1.png](images/ug/delete_review.png)
+Figure 11. Deleting a Recommendation <br />
+
+<p>&#10071 Ensure the title of the review you want to delete already exists in your lists of recommendations. Otherwise, Connoisseur will
+prompt you saying that no such recommendation exits.
+
+####4.3.5 Review a Recommendation
+This feature allows you to review an item in the recommendation list once you have tried it and transfer it to the review list.
+
+Command: `done [TITLE_OF_RECOMMENDATION]`
+
+As shown in Figure 17, Connoisseur will prompt you to rate the experience out of 5. You can also add in a description by inputting `y` or `n` otherwise. 
+Figure 17 shows that the title 'Universal Studio' has been successfully transferred from recommendation to review list.
+
+![img_5.png](img_5.png)
+Figure 17. Reviewing a Recommendation
 
 ###4.4 View Help
-
 
 ###4.5 Exit & Save Connoisseur
 
