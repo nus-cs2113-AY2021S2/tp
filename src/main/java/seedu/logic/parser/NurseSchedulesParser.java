@@ -46,7 +46,7 @@ public class NurseSchedulesParser {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
-        String[] parts = input.split("/", 0);
+        String[] parts = input.split("/");
 
         assert parts.length > 0;
 
