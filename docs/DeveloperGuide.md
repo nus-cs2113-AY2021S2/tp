@@ -2,8 +2,6 @@
 
 ## Design & implementation
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
-
 ### Sequence Diagrams
 1. Database Sequence Diagram
    ![Database](Database.png)
@@ -18,7 +16,7 @@
    ![Admin Main Menu](AdminMainMenu.png)
    
 
-3. Customer Main Menu Sequence Diagram
+4. Customer Main Menu Sequence Diagram
    ![Customer Main Menu](CustomerMainMenu.png)
 
 
