@@ -6,7 +6,7 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandResult;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
-import seedu.duke.goal.timeManager.TimeController;
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 

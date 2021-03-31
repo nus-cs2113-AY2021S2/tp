@@ -1,4 +1,4 @@
-package seedu.duke.goal.timeManager;
+package seedu.duke.goal.timemanager;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
