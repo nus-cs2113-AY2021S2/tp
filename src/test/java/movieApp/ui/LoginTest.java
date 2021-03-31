@@ -16,10 +16,10 @@ class LoginTest {
     @Test
     void TestLogin() throws Exception {
         ArrayList<User> users = new ArrayList<>();
-        users.add(new Admin("zul", "hello"));
-        users.add(new Customer("alex", "12345"));
+        users.add(new Admin("zul", "LgTVP/ep+g6U0Bx9DDSQvw==~3vlnbgaXMv92c9PNMY5iUA=="));
+        users.add(new Customer("HELLO", "bTf+0p5Kownivvj2Q9ffeA==~liBWY/KKtUmUT9w5NYOyww=="));
 
-        String input = "zul\nhello";
+        String input = "zul\nLgTVP/ep+g6U0Bx9DDSQvw==~3vlnbgaXMv92c9PNMY5iUA==";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
