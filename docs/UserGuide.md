@@ -7,19 +7,19 @@ The purpose of this User Guide is to assist you in the usage of the application.
 
 ## Content Page
 1. [Introduction](#1-introduction)
-2. [Installation Guide](#2-installation-guide)
-3. [How to use this guide](#3-how-to-use-the-guide)
+1. [Installation Guide](#2-installation-guide)
+1. [How to use this guide](#3-how-to-use-the-guide)
 	1. [Technical terms](#31-technical-terms)
-	2. [Symbols & Icons](#32-symbols--icons)
-4. [Start Menu](#4-start-menu)
-5. [Features ](#5-features)
+	1. [Symbols & Icons](#32-symbols--icons)
+1. [Start Menu](#4-start-menu)
+1. [Features](#5-features)
 	1. [Staff](#51-staff)
 	2. [Patient](#52-patient)
-	3. [Doctor's Appointment](#53-doctors-appointment)
+	3. [Doctor's Appointment](#53-doctor-appointment)
 	4. [Nurse Schedule](#54-nurse-schedule)
 	5. [Inventory](#55-inventory)
-6. [FAQ](#6-faq)
-7. [Command Summary](#7-command-summary)
+1. [FAQ](#6-faq)
+1. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
@@ -27,15 +27,8 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 
 In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
 
-|     Feature Type    |                                                                                      Description                                                                                      |
-|:-------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|        Staff        | Details of each Staff working in the hospital. Both Doctors and Nurses details can be found here.<br/>Each Staff consist of the following details:<br/><ul><li>Staff ID</li><li>Staff Name</li><li>Age</li><li>Specialisation</li> |
-|       Patient       | Details of each patient that visited the hospital can be found here. Each Patient consist of the following details: Patient ID Patient Name Age Gender Medication Required Illness    |
-| Doctor Appointments | Details of each doctor’s appointment can be found here. Each Doctor Appointment consist of the following details: Doctor ID Appointment ID Patient Name Gender Date                   |
-|   Nurse Schedules   | Details for the schedule of nurse rounds to visit each patient. Each Nurse Schedule consist of the following details: Nurse ID Patient ID Date Time                                   |
-|      Inventory      | Details of the inventory of the hospital. Each Drug consist of the following details: Drug Name Price Quantity                         
-                                                                                                                                   
 
+<br/><br/>
 ## 2. Installation Guide
 
 1. Ensure system has Java 11
@@ -47,12 +40,14 @@ In this application there are 5 main features that are provided for the user. Ea
    - Type ‘command prompt’ in the search bar
    - Select the application called ‘Command Prompt’
 
-4. `cd` into the folder containing the JAR file
+<a name="section2.4"></a>4. `cd` into the folder containing the JAR file
    - Locate the file path of the JAR file that you have downloaded
    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar jar [JAR file name]`
+  
+<br/><br/>
 
 ## 3. How to use the guide
 
@@ -73,20 +68,45 @@ In this application there are 5 main features that are provided for the user. Ea
 
 **<>** - Optional inputs.
 
+
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
+
+### 3.3 Interpreting help commands
+
+
+This is an example of a typical help command in the application.
+<img src="images/HelpCommand.PNG" >
+
+The **Commands** column gives the command that allows you to accomplish a certain action with the relevant features. 
+For example, the `add` command allows you to add a new staff and their relevant details into the database.
+
+The **Description** column gives you an explaination on the usage and purpose of the command.
+
+The **Format** column gives the appropriate format for you to use the command.
+For example, the `add` format requires specific details regarding the staff that will be added into the database.
+The '-' in the format column specifies that the command can be used alone without any additional details.
+
+The detailed explaination of each command will be explained in the subsequent sections.
+
+
+<br/><br/>
 
 ## 4. Start Menu
 
-### Commands:
+The Start Menu is the first menu you will encounter after you run the application as stated in [section 2.4](#section2.4). 
 
- 1. `Staff` to go to staff.
- 2. `patient` to go to patients.
- 3. `appointments` to go to doctor's appointments.
- 4. `schedules` to go to nurse schedules.
- 5. `inventory` to go to drugs inventory.
- 6. `help` to see what each of the sections contain.
- 7. `exit` to quit and terminate the program.
- 8. `*Anything else*` will be an invalid command.
+Here is an example of how the welcome screen of HealthVault will look like.
+<img src="images/Start Menu.PNG" >
+
+The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
+
+For example, the Staff Menu allows you to access the Staff feature within the database. 
+
+The welcome screen of HealthVault presents you with the basic commands as well as its description of its functionalities. 
+
+Input any command to access the respective features and input the `exit` command to quit the application.
+
+<br/><br/>
 
 ## 5. Features 
 
@@ -94,6 +114,9 @@ In this application there are 5 main features that are provided for the user. Ea
 
 The functions in Staff menu allow you, the head nurse, to access and modify the details of each staff in the hospital. 
 (Note for Staff ID: D/N = Doctor/Nurse)
+
+This is an example of the welcome screen for Staff Menu.
+<img src="images/StaffWelcome.PNG" >
 
 #### Adding a new staff: `add`
 Adds a new doctor or nurse to the respective staff lists.
@@ -109,9 +132,12 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> add/D12345/MingShun/30/Pediatrician
-Mingshun has been hired:)
+Mingshun has been hired :)
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+<img src="images/StaffAdd.PNG" >
  
 #### Deleting a staff: `delete`
 Deletes a staff from the staff list.
@@ -126,7 +152,7 @@ Expected Outcome:
 ```
 ------------------------------------------------------------------------------
 Staff --> delete/D12345
-D12345 has been fired:(
+D12345 has been fired :(
 ------------------------------------------------------------------------------
 ```
 
@@ -156,12 +182,7 @@ Expected Outcome(nurses):
 ```
 
 #### Returning to Start Menu: `return`
-
-Returns to start menu.
-
 #### Help: `help`
-
-Prints Staff help message.
 
 ### 5.2 Patient
 
@@ -238,12 +259,7 @@ P55555, Sam, 40, Male, Fever, Paracetamol
 ```
 
 #### Returning to Start Menu: `return`
-
-Returns to start menu.
-
 #### Help: `help`
-
-Prints Patient help message.
 
 ### 5.3 Doctor's Appointment
 
@@ -305,12 +321,7 @@ ID: A369
 ```
 
 #### Returning to Start Menu: `return`
-
-Returns to start menu.
-
 #### Help: `help`
-
-Prints Doctor Appointments help message.
 
 ### 5.4 Nurse Schedule
 
@@ -385,12 +396,7 @@ N2
 ```
 
 #### Returning to Start Menu: `return`
-
-Returns to start menu.
-
 #### Help: `help'
-
-Prints Nurse Schedule help message.
 
 ### ??Adding a todo: `todo`??
 Adds a new item to the list of todo items.
@@ -466,18 +472,17 @@ Current Inventory:
 ```
 
 #### Returning to Start Menu: `return`
-
-Returns to start menu.
-
 #### Help: `help`
 
-Prints Inventory help message.
+<br/><br/>
 
 ## 6. FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
+
+<br/><br/>
 
 ## 7. Command Summary
 
