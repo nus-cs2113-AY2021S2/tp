@@ -241,6 +241,7 @@ public class FitCenter {
             break;
         case BODYWEIGHT:
             bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+            break;
         default:
             return;
         }
