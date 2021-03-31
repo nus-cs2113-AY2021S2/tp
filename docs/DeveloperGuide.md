@@ -303,6 +303,9 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 
 ### 3.7 Storage Component
 
+![StorageClassDiagram](img/StorageClassDiagram.png)
+_Figure X: Storage Class Diagram_
+
 #### Description
 The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
 `records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
@@ -617,6 +620,9 @@ As the saving and loading methods have no explicit command calls, these methods 
 classes. During the launch of the Finux application, in the `start` method, `getRecordListData` is called to load the
 data from the saved file: `finux.txt`. 
 
+![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
+*Figure x: Sequence Diagram for Storage's save function*
+
 Saving of `records` works differently, these `records` will be automatically saved into `finux.txt` only with a few 
 particular command calls, these calls are the commands that will alter the `records` in the `RecordList`.
 
@@ -632,6 +638,9 @@ for all the three methods above.
 ***Step 1***
 
 ***Step 2***
+
+![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
+*Figure x: Sequence Diagram for Storage's load function*
 
 #### 4.6.2 Design Consideration
 This section will walk you through the design considerations taken when implementing the remove feature.
