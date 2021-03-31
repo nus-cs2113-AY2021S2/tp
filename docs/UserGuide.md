@@ -475,7 +475,7 @@ Refer to [this section](#333-delete-a-task).
 #### 3.1.13 Add Zoom Link  
 Refer to [this section](#345-add-zoom-link).  
 #### 3.1.14 Delete Zoom Link  
-*[This section will be completed in the future.]* <br>
+Refer to [this section](#346-delete-zoom-link).
 #### 3.1.15 Add/View Module Description  
 
 Adds user-defined module description.  
