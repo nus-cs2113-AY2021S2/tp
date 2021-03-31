@@ -36,7 +36,6 @@ public class MovieMenu {
 		return action;
 	}
 
-
 	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Showtimes> ShowtimeDatabase,
 								  ArrayList<Cineplex> CineplexDatabase, int movieID, User user) {
 		String ms = "NOT FOUND";
@@ -248,8 +247,7 @@ public class MovieMenu {
 		}		
 		return value;
 	}
-	
-	
+
 	public static void viewMovieDetails(Movie movie) {
 		movie.displayMovie();
 	}
