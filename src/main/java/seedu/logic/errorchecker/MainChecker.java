@@ -60,7 +60,7 @@ public class MainChecker {
 
     public void checkGender(String stringToken) throws InvalidGenderException {
         String gender = stringToken;
-        if (!Arrays.stream(VALID_GENDER_INPUT).anyMatch(gender::contains)) {
+        if (!Arrays.stream(VALID_GENDER_INPUT).anyMatch(gender::equals)) {
             throw new InvalidGenderException();
         }
     }
