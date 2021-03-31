@@ -1,6 +1,10 @@
 package seedu.logic.errorchecker;
 
+import seedu.duke.Constants;
+import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.*;
+import seedu.exceptions.doctorappointment.InvalidGenderException;
+import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.parser.DoctorAppointmentParser;
 import seedu.model.DoctorAppointment;
@@ -21,38 +25,62 @@ public class DoctorAppointmentChecker extends MainChecker {
     private static String gender;
     private static String date;
 
-    public static void checkValidDataForAdd(String[] input) throws InvalidDocIDException, AppointmentIDTakenException, InvalidAppIDException, InvalidGenderException, InvalidDateException {
+    public static void checkValidDataForAdd(String[] input) throws HealthVaultException {
         doctorID = input[1];
         appointmentID = input[2];
         gender = input[4];
         date = input[5];
         if (!isValidDocID(doctorID)) {
-            throw new InvalidDocIDException();
+            throw new IDNotFoundException(doctorID);
         }
         if (!isValidAppointmentID(appointmentID)) {
-            throw new InvalidAppIDException();
+            throw new IDNotFoundException(appointmentID);
         }
         if (!isValidGender(gender)) {
             throw new InvalidGenderException();
         }
         if (!isValidDate(date)) {
-            throw new InvalidDateException();
+            throw new seedu.exceptions.InvalidDateException();
         }
     }
 
-    public static void checkValidDataForList(String[] input) throws InvalidIDException {
+    public static void checkValidDataForList(String[] input) throws seedu.exceptions.InvalidIDException {
         ID = input[1];
         if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
-            throw new InvalidIDException();
+            throw new seedu.exceptions.InvalidIDException();
         }
     }
 
-    public static void checkValidDataForDelete(String[] input) throws InvalidIDException {
+    public static void checkValidDataForDelete(String[] input) throws seedu.exceptions.InvalidIDException {
         ID = input[1];
         if (!isValidIDToDelete(ID)) {
-            throw new InvalidIDException();
+            throw new seedu.exceptions.InvalidIDException();
         }
     }
+
+    public static void checkAptID(String id) throws WrongAptIDFormatException {
+        try {
+            Integer.parseInt(id.substring(1));
+        } catch (NumberFormatException e) {
+            throw new WrongAptIDFormatException();
+        }
+        if (!(id.charAt(0) == 'A') || (id.length()) != 6) {
+            throw new WrongAptIDFormatException();
+        }
+    }
+
+    public static void checkDataFromStorage(String id) throws CorruptedFileException {
+        String[] input = id.split("\\s\\|\\s", 5);
+        System.out.println(doctorID + appointmentID + gender + date);
+        doctorID = input[0];
+        appointmentID = input[1];
+        gender = input[3];
+        date = input[4];
+        if (!isValidDocID(doctorID) || !isValidStorageAppointmentID(appointmentID) || !isValidGender(gender) || !isValidDate(date)) {
+            throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+        }
+    }
+
 
     public static boolean isValidDocID(String doctorID) {
         try {
@@ -74,13 +102,14 @@ public class DoctorAppointmentChecker extends MainChecker {
         return false;
     }
 
-    public static boolean isValidAppointmentID(String appointmentID) throws AppointmentIDTakenException {
+    public static boolean isValidAppointmentID(String appointmentID) throws DuplicateIDException, WrongAptIDFormatException {
         String[] character = appointmentID.split("");
 
+        checkAptID(appointmentID);
         if (character[0].equals("A")) {
             for (DoctorAppointment id : AppointmentActions.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
-                    throw new AppointmentIDTakenException();
+                    throw new DuplicateIDException(appointmentID);
                 }
             }
             return true;
@@ -97,6 +126,14 @@ public class DoctorAppointmentChecker extends MainChecker {
                     return true;
                 }
             }
+        }
+        return false;
+    }
+
+    public static boolean isValidStorageAppointmentID(String appointmentID) {
+
+        if (!(appointmentID.charAt(0) == 'A') || (appointmentID.length()) != 6) {
+            return true;
         }
         return false;
     }
