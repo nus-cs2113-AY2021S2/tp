@@ -20,9 +20,9 @@ public class Messages {
     public static final String MESSAGE_CHECK_GOALS_PROMPT = "Check out your current goals with command 'check'.\n";
     public static final String MESSAGE_SAME_DAY = "Welcome back to Healthier today.\n";
     public static final String MESSAGE_NEW_DAY = "Nice to see you on a brand new day!\n"
-            + "All progress of daily goals have been reset for you.";
+            + "All progress of daily goals have been reset for you.\n";
     public static final String MESSAGE_NEW_WEEK = "Today marks a new week.\nThis week is week %s.\n"
-            + "All progress of weekly goals have been reset for you.";
+            + "All progress of weekly goals have been reset for you.\n";
     public static final String MESSAGE_UNACHIEVED_GOALS = "You have unachieved goals.\n";
     public static final String MESSAGE_GOALS_DONE_TODAY = "Congratulations!\nYou have achieved all goals for today!";
     public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "Congratulations!\n"
