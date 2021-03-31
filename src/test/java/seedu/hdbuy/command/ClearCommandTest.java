@@ -2,13 +2,13 @@ package seedu.hdbuy.command;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.data.UserInput;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ClearCommandTest {
 

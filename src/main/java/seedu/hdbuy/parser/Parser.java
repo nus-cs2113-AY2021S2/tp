@@ -1,6 +1,9 @@
 package seedu.hdbuy.parser;
 
 import org.junit.Assert;
+
+import java.util.logging.Logger;
+
 import seedu.hdbuy.command.ClearCommand;
 import seedu.hdbuy.command.CloseCommand;
 import seedu.hdbuy.command.Command;
@@ -16,9 +19,6 @@ import seedu.hdbuy.command.SortCommand;
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
-
-import java.util.Arrays;
-import java.util.logging.Logger;
 
 public class Parser {
 

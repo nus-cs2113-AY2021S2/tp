@@ -2,13 +2,12 @@ package seedu.hdbuy.api;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import seedu.hdbuy.common.QueryKey;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class QueryFormatterTest {
 
@@ -31,20 +30,20 @@ class QueryFormatterTest {
             assert !key.equals(QueryKey.TYPE) || value.equals("4%20room");
 
             switch (key) {
-                case TYPE:
-                    String type = String.format("\"flat_type\":\"%s\"", value);
-                    queryBody.append(type);
-                    break;
-                case LOCATION:
-                    String location = String.format("\"town\":\"%s\"", value);
-                    queryBody.append(location);
-                    break;
-                case LEASE_REMAINING:
-                    String lease = String.format("\"remaining_lease\":\"%s\"", value);
-                    queryBody.append(lease);
-                    break;
-                default:
-                    continue;
+            case TYPE:
+                String type = String.format("\"flat_type\":\"%s\"", value);
+                queryBody.append(type);
+                break;
+            case LOCATION:
+                String location = String.format("\"town\":\"%s\"", value);
+                queryBody.append(location);
+                break;
+            case LEASE_REMAINING:
+                String lease = String.format("\"remaining_lease\":\"%s\"", value);
+                queryBody.append(lease);
+                break;
+            default:
+                continue;
             }
             queryBody.append(",");
         }

@@ -2,7 +2,6 @@ package seedu.hdbuy.command;
 
 import java.util.ArrayList;
 
-import seedu.hdbuy.api.ApiRepository;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.NoFlatsException;
 import seedu.hdbuy.data.ShortList;

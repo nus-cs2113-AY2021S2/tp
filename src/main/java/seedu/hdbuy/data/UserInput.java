@@ -1,9 +1,8 @@
 package seedu.hdbuy.data;
 
-import seedu.hdbuy.common.QueryKey;
-
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+
+import seedu.hdbuy.common.QueryKey;
 
 public class UserInput {
 

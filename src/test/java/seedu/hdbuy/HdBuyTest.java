@@ -1,18 +1,11 @@
 package seedu.hdbuy;
 
 import org.junit.jupiter.api.Test;
-import seedu.hdbuy.api.ApiRepository;
-import seedu.hdbuy.common.QueryKey;
-import seedu.hdbuy.common.Unit;
+
 import seedu.hdbuy.common.exception.InvalidParameterException;
-import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.parser.CommandEvaluator;
 
-import java.util.HashMap;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HdBuyTest {
 
