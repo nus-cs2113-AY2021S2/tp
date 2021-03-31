@@ -1,3 +1,4 @@
+//@@author KimIdeas8
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;

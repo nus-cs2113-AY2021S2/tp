@@ -1,3 +1,4 @@
+//@@author Rye98
 package seedu.duke.data;
 
 import seedu.duke.exception.InvalidIndexException;

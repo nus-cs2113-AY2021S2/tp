@@ -1,3 +1,4 @@
+//@@author Rizavur
 package seedu.duke.exception;
 
 public class EmptyAliasesException extends NusMazeException {

@@ -1,3 +1,4 @@
+//@@author KimIdeas8
 package seedu.duke.exception;
 
 public class EmptyNoteException extends NusMazeException {

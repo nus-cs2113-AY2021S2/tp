@@ -1,3 +1,4 @@
+//@@author Rye98
 package seedu.duke.exception;
 
 public class EmptyFavouriteException extends NusMazeException {
