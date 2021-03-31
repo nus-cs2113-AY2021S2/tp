@@ -15,4 +15,5 @@ activate ":Store"
 ":DeleteStoresCommand"->":Ui":reviewDeleted()
 activate ":Ui"
 ":Ui"-->":Ui"
+<--":DeleteStoresCommand"
 @enduml

@@ -16,5 +16,6 @@ activate ":Store"
 return storeName
 ":ReadReviewsCommand"->":Ui":showReviews(storeName,reviews,averageRating)
 ":Ui"-->":ReadReviewsCommand"
+<--":ReadReviewsCommand"
 
 @enduml

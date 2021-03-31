@@ -12,8 +12,9 @@ with the review when requested. Admin must verify themselves using password give
 it once they logged in as admin. Admin has the ability to add/delete canteen, store and review. NUSFOODREVIEW has a storage file
 that allows the saving and loading of data. This allows all parameters of the data to be stored and read whenever is needed.
 
-## Implementation
-Below is the list of commands available.
+
+##Implementation
+For public users, the list of commands is shown below:
 
 * Display selected store sample menu: `menu`
 * Display all reviews of the selected store : `reviews`
@@ -22,40 +23,64 @@ Below is the list of commands available.
 * Display all the stores of the selected canteen: `list`
 * Exiting the application: `exit`
 
+
+For admin, the list of commands is shown below:
+
+ 1. View canteens
+ 2. Add canteen
+ 3. Add store in canteen
+ 4. Delete canteen
+ 5. Delete store in canteen
+ 6. Delete reviews
+ 7. Exit
+
+
 <!-- NOT TOO SURE HOW THIS PART FITS IN
+
 #### Sequence Diagram for `admin`
 When the user enters `2` to go into the admin page, the AdminVerification() is called. It will ask the user to input 
 the password. Then it will check the input against the set password. If fails then the user have to enter again or enter
 `exit` to exit the application.
-
-### [Proposed] delete feature 
-#### Proposed Implementation
-Step 1. The admin launches the application for the first time. Admin must enter a password to verify identity.
-
-Step 2. The user selects to delete a canteen from the list of tasks admin can do.
-
-Step 3. The user selects a canteen from the canteen list and canteen is deleted.
-
 --> 
 
+<<<<<<< HEAD
+### Main 
+=======
 ### Main NusFoodReviews
+>>>>>>> 97904394eadf1db05d1ff0488e763e1d0426fb2e
 #### Implementation
 ![Main Sequence Diagram](./img/Main.png)
 
 When the application is launched, a Ui object and Parser object is instantiated.
 To instantiate the Parser object, the main NusFoodReviews and Ui object is passed.
 
-### Display Menus Feature
+### [Public user] Display Menus Feature
 #### Implementation
 ![DisplayMenus Sequence Diagram](./img/DisplayMenus.png)
 
-To display menus, `DisplayMenusCommand#execute()` is called, passing in
+To display menus, `DisplayMenusCommand.execute()` is called, passing in
 an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
 When DisplayMenusCommand was first instantiated, the relevant Store object was passed 
-into the constructor. `DisplayMenusCommand#execute()` will then call `getMenus()` on the 
+into the constructor. `DisplayMenusCommand.execute()` will then call `getMenus()` on the 
 store object to get an ArrayList of menus, before passing the ArrayList to the ui object 
 to be displayed by calling `Ui#showDisplayMenu()`
+
+
+###[Public user] Read reviews feature
+#### Implementation
+
+![ReadReviews](./img/ReadReviews.png)
+
+To read reviews, `ReadReviewsCommand.execute()` is called passing in an ArrayList of
+canteens and the Ui object instantiated in nusFoodReviews.
+
+When ReadReviewsCommand was first instantiated, the relevant Store object was passed
+into the constructor. `ReadReviewsCommand.execute()` will then call `getReviews()` on the
+store object to get an ArrayList of reviews, then calling `getAverageRating()` to get the 
+average rating of the store. After that, `getStoreName()` is also called to get the store
+name of the store. These parameters are then passed to the ui object to be displayed by calling 
+`Ui.showReviews()`
 
 ### Reset Store Feature
 #### Implementation
@@ -114,6 +139,29 @@ an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 
 The canteen object is removed from the canteens ArrayList. 
 `Ui#showCanteenDeleted()` is called to display the canteen deleted message.
+
+### [Admin] Delete Stores
+#### Implementation
+
+![DeleteStores](./img/DeleteStores.png)
+
+When DeleteStoreCommand was first instantiated, the relevant canteen index 
+and store index was passed into the constructor. To delete a store, `DeleteStoreCommand.execute()` 
+is called, passing in an ArrayList of canteens and the Ui object instantiated in 
+NusFoodReviews.`DeleteStoreCommand.execute()`will then call `get(canteenIndex)` on the canteen object 
+to get the current Canteen before calling deleteStore(storeIndex) to delete the store.
+
+### [Admin] Delete Reviews
+#### Implementation
+
+![DeleteReviews](img/DeleteReviews.png)
+
+When DeleteReviewCommand was first instantiated, the relevant canteen index, review,
+and store index was passed into the constructor. To delete a review, `DeleteReviewCommand.execute()`
+is called, passing in an ArrayList of canteens and the Ui object instantiated in
+NusFoodReviews.`DeleteReviewCommand.execute()`will then call `get(canteenIndex)` on the canteen object
+to get the current Canteen before calling getStore(storeIndex) to get current Store. After that, deleteReview(review)
+is called on the store object. Ui.reviewDeleted() displays a message to show that the review was deleted.
 
 ## Product scope
 ### Target user profile

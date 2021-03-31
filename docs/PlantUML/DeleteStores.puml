@@ -12,5 +12,5 @@ activate ":Canteen"
 ":Canteen"-->":DeleteStoresCommand":currentCanteen
 ":DeleteStoresCommand"->":Canteen":deleteStore(storeIndex)
 ":Canteen"-->":DeleteStoresCommand"
-
+<--":DeleteStoresCommand"
 @enduml
