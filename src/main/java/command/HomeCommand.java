@@ -5,11 +5,17 @@ import nusfoodreviews.NusFoodReviews;
 import ui.Ui;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class HomeCommand extends Command {
+
+    NusFoodReviews nusFoodReviews;
+
+    public HomeCommand(NusFoodReviews nusFoodReviews) {
+        this.nusFoodReviews = nusFoodReviews;
+    }
+
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-        NusFoodReviews.resetAllIndexes();
+        nusFoodReviews.resetAllIndexes();
     }
 }
