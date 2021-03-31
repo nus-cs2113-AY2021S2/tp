@@ -341,11 +341,16 @@ The AddCheatSheetCommand class enables the creation, addition and saving of a .t
 An invocation of the `add cheat-sheet` command involves the following interactions:
 
 <p align="center">
-    <img width="973" src="developerGuideImages/addCheatSheetCommand.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
-    Figure 10 - AddCheatSheetCommand Invocation Sequence Diagram
+    <img width="973" src="developerGuideImages/addCheatSheetCommand-part1.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
+    Figure 10a - AddCheatSheetCommand Invocation Sequence Diagram
 </p>
 
-When the AddCheatSheet command is executed, it gets the current selected module by calling the “getSelectedModule” method in ModuleList. It then calls the “getDirectoryPath” method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the “openTextEditor” method in itself.
+When the AddCheatSheet command is executed, it gets the current selected module by calling the “getSelectedModule” method in ModuleList. It then calls the “getDirectoryPath” method to obtain the directory where the cheat-sheet would be saved in. Then, it calls the “openTextEditor” method in itself, which subsequently sets up and opens the GULIO Text Editor as seen below:
+
+<p align="center">
+    <img width="973" src="developerGuideImages/addCheatSheetCommand-part2.png" alt="AddCheatSheetCommand Invocation Sequence Diagram"><br>
+    Figure 10b - Opening the Text Editor
+</p>
 
 &nbsp;
 
