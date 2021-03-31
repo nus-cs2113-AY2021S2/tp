@@ -7,7 +7,7 @@ import seedu.ui.InventoryUI;
 import java.util.ArrayList;
 
 public class InventoryActions {
-    public ArrayList<Inventory> inventories = new ArrayList<>();
+    public static ArrayList<Inventory> inventories = new ArrayList<>();
 
     public InventoryActions() {
     }

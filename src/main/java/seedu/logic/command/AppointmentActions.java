@@ -5,6 +5,7 @@ import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
+import seedu.ui.UI;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class AppointmentActions {
         if (appointmentList.size() == 0) throw new EmptyListException();
         else {
             if (iD.equals("A")) {
+                DoctorAppointmentUI.AptPrintList(indicator);
+                UI.showLine();
                 for (DoctorAppointment doc : appointmentList) {
                     if (doc.getAppointmentId().equals(input)) {
                         DoctorAppointmentUI.printList(doc, indicator);
@@ -46,6 +49,8 @@ public class AppointmentActions {
                 }
             } else {
                 indicator = "D";
+                DoctorAppointmentUI.AptPrintList(indicator);
+                UI.showLine();
                 for (DoctorAppointment doc : appointmentList) {
                     if (doc.getDoctorId().equals(input)) {
                         DoctorAppointmentUI.printList(doc, indicator);
