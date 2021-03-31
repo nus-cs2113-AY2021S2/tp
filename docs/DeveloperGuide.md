@@ -37,18 +37,36 @@ Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are i
 Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
 Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
 Step 4. Import the project as a Gradle project.  
-Step 5. If you had previously disabled the Gradle plugin, go to File → Settings → Plugins to re-enable them.  
+Step 5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
 Step 6. Click on Import Project and select the build.gradle file.  
-Step 7. Navigate to the NUSMaze class via the path src → main → java → seedu.duke → NUSMaze and right click on it.  
+Step 7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
 Step 8. Press run on the Main() method of NUSMaze.  
 
-If the set up process had been completed successfully, you should see the following message:
+If the set up process had been completed successfully, you should see the following message:  
 ![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
 
 
 ## 2. Design 
 ### 2.1. Architecture 
-### 2.2. UI Component 
+### 2.2. UI Component  
+![img.png](images/ui_design.png)  
+**API**: [UiManager.java](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java)
+
+The UI of the application is managed by the `UiManager` class. The individual Ui classes for each feature such as `AliasUi`, `DailyRouteUi`,
+`FavouriteUi`, `HistoryUi`, `NoteUi` and `RouterUi` extend the `UiManager` class. The UiManager class consists of the methods
+that are used to display recurrent messages on the *CLI* and also the utilitarian methods to get the user's inputs.  
+
+The `UiManager` requires the static messages from the `CommonMessages` class to obtain the commonly used messages that 
+such as the divider and input headers.  
+
+The individual UiClasses contain the methods that are used to get user inputs specific to the needs of the specific feature that 
+it is responsible for. For example, when the routing feature is to be executed, the UI will need to prompt the user to obtain 2 
+inputs, namely the `from block` and the `to block`. Hence, the `RouterUi` contains the `getRoutingInfo()` method which will prompt
+the user for these two inputs. Methods to get user input are called upon directly from the command classes of the specific feature.
+
+The `UiManager` component,  
+* displays messages in the *CLI*.
+* provides the individual Ui classes with the utilities to obtain user input specific to their needs. 
 ### 2.3. Parser Component 
 ### 2.4. Command Classes 
 ### 2.5. Storage Component 
@@ -75,14 +93,14 @@ Additionally, they implement the following operations: <br/>
 
 These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile()`. <br />
 The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
-![img.png](Overview%20for%20Safe%20Feature.png)
+![img.png](images/Overview%20for%20Safe%20Feature.png)
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
 Step 1. The user launches the application for the first time. 
 `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage` and `FavouriteLocationsStorage` 
 will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
-The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
+The lists will be initialized by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](SaveStep1.png)
+![img.png](images/SaveStep1.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
@@ -121,7 +139,7 @@ Step 5. The inputted day, and the filled Arraylist from step 3 is then passed in
 Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
 The following image shows the sequence diagram in which the add day command is implemented
-![img.png](addday.png)
+![img.png](images/addday.png)
 
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
@@ -131,7 +149,7 @@ Step 3. The routing algorithm is now performed for each of the blocks in the arr
 Step 4. The String is output through Daily Route Ui <br />
 
 The following image shows the sequence diagram in which the add day command is implemented
-![img.png](showday.png)
+![img.png](images/showday.png)
 
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
@@ -142,7 +160,7 @@ The `GoCommand` class extends the `Command` class and overrides the `execute` me
 
 The image below depicts how the `GoCommand` is implemented.
 
-![img.png](router.png)
+![img.png](images/router.png)
 
 Given below is an example scenario of how the routing algorithm functions.
 
@@ -154,7 +172,7 @@ Step 5. The Router will then run the `findShortestRoute()` method which is a rou
 Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
 Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
-![img.png](routersequencediagram.png)
+![img.png](images/routersequencediagram.png)
 
 ### 3.4. Custom aliases feature
 #### Current Implementation
@@ -248,7 +266,7 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.5. Glossary
 
-* *glossary item* - Definition
+* *CLI* - Command Line Interface
 
 ## 5. Appendix: Instructions for manual testing
 
