@@ -2,7 +2,7 @@ package seedu.ui;
 
 import static seedu.duke.Constants.*;
 
-public class StaffUI extends UI{
+public class StaffUI extends UI {
 
     public static void staffHiredOutput(String id, String name) {
         if (id.charAt(0) == 'D') {

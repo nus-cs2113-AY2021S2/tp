@@ -15,8 +15,8 @@ public class StaffChecker extends MainChecker {
     public boolean isSameInt(int a, String b) {
         try {
             int temp = Integer.parseInt(b);
-            return a==temp;
-        } catch (NumberFormatException e){
+            return a == temp;
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -30,6 +30,7 @@ public class StaffChecker extends MainChecker {
         checkNumericInput(line.split("/")[3]);
         checkBlankInput(line);
     }
+
     public void checkValidDataFromStorage(String line, ArrayList<Staff> list) throws NoInputException,
             WrongStaffIdException, InvalidIntegerException,
             ExcessInputException, InsufficientInputException, DuplicateIDException {
@@ -39,6 +40,7 @@ public class StaffChecker extends MainChecker {
         checkNumericInput(line.split("\\|")[2]);
         checkBlankInputForStorage(line);
     }
+
     public void checkDuplicateStaffID(String id, ArrayList<Staff> list) throws DuplicateIDException {
         for (Staff staff : list) {
             if (staff.getId().equals(id)) {
@@ -57,10 +59,11 @@ public class StaffChecker extends MainChecker {
             throw new WrongStaffIdException();
         }
     }
+
     public String[] invalidCharactersStaffChecker(String line) throws IllegalCharacterException {
         String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
         String[] field = {"ID", "name", "age", "specialisation"};
-        for (int i=0; i< cleanArray.length; i++) {
+        for (int i = 0; i < cleanArray.length; i++) {
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;
@@ -69,7 +72,7 @@ public class StaffChecker extends MainChecker {
     public String[] invalidCharactersStaffCheckerForStorage(String line) throws IllegalCharacterException {
         String [] cleanArray = line.split("\\|");
         String[] field = {"ID", "name", "age", "specialisation"};
-        for (int i=0; i < (cleanArray.length); i++) {
+        for (int i = 0; i < (cleanArray.length); i++) {
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;
