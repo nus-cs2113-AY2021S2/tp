@@ -49,6 +49,7 @@ class QueryFormatterTest {
         }
         queryBody.deleteCharAt(queryBody.length() - 1);
         String output = String.format("{%s}", queryBody.toString());
-        assertEquals(output, "{\"town\":\"ang%20mo%20kio\",\"flat_type\":\"4%20room\",\"remaining_lease\":\"80\"}");
+        assertEquals("{\"town\":\"ang%20mo%20kio\",\"flat_type\":\"4%20room\",\"remaining_lease\":\"80\"}",
+                output);
     }
 }

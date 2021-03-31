@@ -15,7 +15,7 @@ class UnitDecoderTest {
         Unit textUnit = new Unit("JURONG WEST","4 ROOM",429000,990,
                 " 82 years 06 months","664A JURONG WEST ST 64",1026083864);
         assert unit != null;
-        assertEquals(unit.toString(), textUnit.toString());
+        assertEquals(textUnit.toString(), unit.toString());
     }
 
     @Test void textToUnitIsNull() {
