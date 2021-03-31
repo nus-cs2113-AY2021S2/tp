@@ -3,10 +3,10 @@ package seedu.logic.parser;
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.exceptions.inventory.NonExistentDrugException;
-import seedu.exceptions.inventory.WrongInputException;
 import seedu.logic.command.Command;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.command.inventory.*;
@@ -18,7 +18,7 @@ import static seedu.ui.UI.smartCommandRecognition;
 
 public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
-
+    private InventoryChecker checker;
    /*public void lengthCheck(int numberOfTokens, String command) throws WrongInputException {
        if (command.equals("add") && numberOfTokens != 4) {
            throw new WrongInputException(command);
@@ -54,19 +54,21 @@ public class InventoryParser {
                     c = new InventoryList();
                     break;
                 case "add":
-                    String price = stringTokens[2];
-                    String quantity = stringTokens[3];
                     numberOfInputs = 4;
-                    InventoryChecker.duplicateChecker(command);
-                    InventoryChecker.isValidPrice(price);
-                    MainChecker.checkNumericInput(quantity);
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                    String quantity = stringTokens[3];
+                    MainChecker.checkNumericInput(quantity);
+                    MainChecker.checkBlankInput(fullCommand);
+                    checker.duplicateChecker(command);
+                    String price = stringTokens[2];
+                    checker.isValidPrice(price);
                     if (nameParser(drugs, stringTokens, command)) {
                         String[] addFormat = parseToAddFormat(stringTokens);
                         c = new InventoryAdd(addFormat);
                     }
                     break;
                 case "delete":
+                    MainChecker.checkBlankInput(fullCommand);
                     numberOfInputs = 2;
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     if (nameParser(drugs, stringTokens, command)) {
@@ -91,8 +93,8 @@ public class InventoryParser {
             e.getError("DrugStored");
         } catch (InvalidPriceException e) {
             e.getError("InvalidPrice");
-        } catch (InvalidIntegerException | NumberFormatException | InsufficientInputException | ExcessInputException e) {
-            e.getMessage();
+        } catch (InvalidIntegerException | NumberFormatException | InsufficientInputException | ExcessInputException | NoInputException e) {
+            System.out.println(e.getMessage());
         }
         return c;
     }

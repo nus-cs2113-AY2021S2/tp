@@ -6,9 +6,7 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.logic.command.InventoryActions;
-import seedu.logic.command.PatientActions;
 import seedu.model.Inventory;
-import seedu.model.Patient;
 
 import java.util.ArrayList;
 
@@ -35,10 +33,9 @@ public class InventoryChecker extends MainChecker {
     public void checkStorage() throws HealthVaultException {
         emptySpaceCheck();
         checkStorageLength();
-        illegalCharacterChecker(stringTokens.get(1), "name");
-        illegalCharacterChecker(stringTokens.get(2), "price");
-        illegalCharacterChecker(stringTokens.get(3), "quantity");
-        checkGender(stringTokens.get(3));
+        illegalCharacterChecker(stringTokens.get(0), "name");
+        illegalCharacterChecker(stringTokens.get(1), "price");
+        illegalCharacterChecker(stringTokens.get(2), "quantity");
     }
     public void checkAdd() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
@@ -50,11 +47,11 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens.get(3), "quantity");
     }
     public void checkStorageLength() throws HealthVaultException {
-        if (numberOfTokens != 6) {
-            throw new CorruptedFileException("Patient");
+        if (numberOfTokens != 3) {
+            throw new CorruptedFileException("Inventory");
         }
     }
-    private void emptySpaceCheck() throws NoInputException {
+    public void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
             if (stringTokens.get(i).trim().equals("")) {
                 throw new NoInputException();
@@ -62,7 +59,7 @@ public class InventoryChecker extends MainChecker {
         }
     }
     public static void duplicateChecker(String inputString) throws DuplicateDrugException {
-        for (Inventory inventory : InventoryActions.inventories) {
+        for (Inventory inventory : InventoryActions.list) {
             String drugName = inventory.getDrugName();
             if (drugName.equals(inputString)) {
                 throw new DuplicateDrugException();

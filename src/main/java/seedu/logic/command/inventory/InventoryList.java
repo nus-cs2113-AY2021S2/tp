@@ -7,8 +7,8 @@ import seedu.ui.InventoryUI;
 public class InventoryList extends Command {
 
     @Override
-    public void execute(InventoryActions drugs, InventoryUI ui) {
-        drugs.listDrugs();
+    public void execute(InventoryActions inventory, InventoryUI ui) {
+        inventory.listDrugs();
     }
     @Override
     public boolean isExit() {
