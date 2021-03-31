@@ -384,6 +384,7 @@ Output:
   file in the same home folder as mentioned in the [Quick Start](#2-quick-start). <br><br>
 
 * Expected output for new file creation: <br>
+
   ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
 
 * Expected output if successful load: <br>
