@@ -1,6 +1,5 @@
 package parser;
 
-
 import canteens.Canteen;
 import command.AddCanteenCommand;
 import command.AddReviewCommand;
@@ -23,7 +22,6 @@ import stores.Store;
 import ui.Ui;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static stores.Store.averageRating;
 
@@ -62,14 +60,14 @@ public class Parser {
     public Command parse(String line, Store store, int maxStores) throws DukeExceptions {
         Command newCommand;
         if (line.equals("home")) {
-            newCommand = new HomeCommand();
+            newCommand = new HomeCommand(nusFoodReviews);
         } else if (line.equals("list")) {
-            newCommand = new ResetStoreCommand();
+            newCommand = new ResetStoreCommand(nusFoodReviews);
         } else if (line.equals("menu")) {
             newCommand = new DisplayMenusCommand(store);
         } else if (line.equals("add")) {
             newCommand = new AddReviewCommand(store);
-        } else if (line.startsWith("exit")) {
+        } else if (line.equals("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
             newCommand = new ReadReviewsCommand(store);

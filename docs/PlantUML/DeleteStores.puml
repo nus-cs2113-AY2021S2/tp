@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DeleteStores
+
+
+->":DeleteStoresCommand": execute(canteens,ui)
+activate ":DeleteStoresCommand"
+":DeleteStoresCommand"->":Canteen":get(canteenIndex)
+activate ":Canteen"
+":Canteen"-->":DeleteStoresCommand":currentCanteen
+":DeleteStoresCommand"->":Canteen":deleteStore(storeIndex)
+":Canteen"-->":DeleteStoresCommand"
+<--":DeleteStoresCommand"
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box ResetStore
+
+-> ":ResetStoreCommand" : execute(canteens, ui)
+activate ":ResetStoreCommand"
+
+":ResetStoreCommand" -> ":NusFoodReviews" : resetStoreIndex()
+activate ":NusFoodReviews"
+":NusFoodReviews" -> ":ResetStoreCommand"
+deactivate ":NusFoodReviews"
+
+<- ":ResetStoreCommand"
+deactivate ":ResetStoreCommand"
+@enduml

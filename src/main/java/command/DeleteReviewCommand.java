@@ -22,7 +22,9 @@ public class DeleteReviewCommand extends Command {
     }
 
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
-        canteens.get(canteenIndex).getStore(storeIndex).deleteReview(review);
+        Canteen currentCanteen = canteens.get(canteenIndex);
+        Store store = currentCanteen.getStore(storeIndex);
+        store.deleteReview(review);
         ui.reviewDeleted();
 
     }

@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DeleteReviews
+
+->":DeleteStoresCommand": execute(canteens,ui)
+activate ":DeleteStoresCommand"
+":DeleteStoresCommand"->":Canteen":get(canteenIndex)
+activate ":Canteen"
+":Canteen"-->":DeleteStoresCommand":currentCanteen
+":Canteen"->":Store":getStore(storeIndex)
+activate ":Store"
+":Store"-->":Store":deleteReview(review)
+":DeleteStoresCommand"->":Ui":reviewDeleted()
+activate ":Ui"
+":Ui"-->":Ui"
+<--":DeleteStoresCommand"
+@enduml

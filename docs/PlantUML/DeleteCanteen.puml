@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box DeleteCanteen
+
+->":DeleteCanteenCommand" : execute(canteens, ui)
+activate ":DeleteCanteenCommand"
+
+":DeleteCanteenCommand" -> "ui:Ui" : showCanteenDeleted()
+activate "ui:Ui"
+"ui:Ui" --> ":DeleteCanteenCommand"
+deactivate "ui:Ui"
+
+<-- ":DeleteCanteenCommand"
+deactivate ":DeleteCanteenCommand"
+@enduml

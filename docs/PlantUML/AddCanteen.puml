@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box AddCanteen
+
+->":AddCanteenCommand" : execute(canteens, ui)
+activate ":AddCanteenCommand"
+
+create ":Canteen"
+":AddCanteenCommand" -> ":Canteen" : Canteen()
+activate ":Canteen"
+":Canteen" --> ":AddCanteenCommand"
+deactivate ":Canteen"
+
+":AddCanteenCommand" -> "ui:Ui" : showAddCanteenSuccess()
+activate "ui:Ui"
+"ui:Ui" --> ":AddCanteenCommand"
+deactivate "ui:Ui"
+
+<-- ":AddCanteenCommand"
+deactivate ":AddCanteenCommand"
+@enduml
