@@ -1,8 +1,13 @@
 # Developer Guide
 
-## Design & implementation
+ ## Introduction 
+ ### What is Diliveri
+Diliveri is desktop application built on Java and has cross platform abilities across different operating systems. 
+With the rise of demand for deliveryman due to the pandemic, this app optimises the delivery route for each delivery 
+man taking into account the number of deliveries per location and distances between locations, we improve the time and 
+efficiency of deliveries. This app aims to be a one stop solution and more for to meet all the needs of a deliverymen.  
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+## Design & implementation
 ### [Implementation] : Feature [1]
 
 ### [Implementation] : Recording Completed Deliveries
