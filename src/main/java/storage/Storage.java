@@ -93,7 +93,6 @@ public class Storage {
                 store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
             }
         }
-
     }
 
     public static void save(ArrayList<Canteen> canteens) {
