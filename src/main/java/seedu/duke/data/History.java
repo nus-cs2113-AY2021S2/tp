@@ -25,19 +25,11 @@ public class History {
         return history.size();
     }
 
-    public void addHistory(String start, String destination) throws InvalidBlockException {
-        if (!isValidBlock(start) | !isValidBlock(destination)) {
-            throw new InvalidBlockException();
-        }
+    public void addHistory(String start, String destination) {
         if (isFull()) {
             history.remove();
         }
         history.add(new String[]{start, destination});
-    }
-
-    public boolean isValidBlock(String block) {
-        NusMap nusMap = new NusMap();
-        return nusMap.getBlock(block) != null;
     }
 
     public String[] getSpecificEntry(int index) throws InvalidIndexException {

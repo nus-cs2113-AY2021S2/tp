@@ -1,7 +1,6 @@
 package seedu.duke.storage;
 
 import seedu.duke.data.Favourite;
-import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 
 import java.io.File;
