@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AdminMainMenuTest {
 
     @Test
-    void testDisplayMenu() {
+    void testDisplayMenu() throws Exception {
         ArrayList<User> users = new ArrayList<>();
         users.add(new Admin("zul", "hello"));
         users.add(new Customer("alex", "12345"));
