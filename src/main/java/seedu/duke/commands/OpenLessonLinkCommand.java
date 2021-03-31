@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 
 import static seedu.duke.common.Constants.HEAD;
 import static seedu.duke.common.Constants.LINUX_OPEN_COMMAND;
+import static seedu.duke.common.Constants.LOGGER_PATH;
 import static seedu.duke.common.Messages.FORMAT_INDEX_ITEM;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_LESSON_LINK;
 import static seedu.duke.common.Messages.MESSAGE_LESSONS_LIST_EMPTY;
@@ -43,7 +44,7 @@ public class OpenLessonLinkCommand extends Command {
     public OpenLessonLinkCommand() {
         LogManager.getLogManager().reset();
         try {
-            fileHandler = new FileHandler(logger.getName());
+            fileHandler = new FileHandler(LOGGER_PATH);
             fileHandler.setLevel(Level.FINE);
             logger.addHandler(fileHandler);
         } catch (IOException e) {
