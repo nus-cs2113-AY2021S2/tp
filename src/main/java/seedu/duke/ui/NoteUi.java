@@ -12,7 +12,7 @@ public class NoteUi extends UiManager {
         showMessage("Enter Location:");
         noteInfo[0] = getUserInput().toUpperCase();
 
-        showMessage("Enter Description:");
+        showMessage("Enter the Note:");
         noteInfo[1] = getUserInput();
 
         showMessage(CommonMessage.DIVIDER);

@@ -1,8 +1,8 @@
 package seedu.duke.parser;
 
-import seedu.duke.command.ByeCommand;
+import seedu.duke.command.generalcommand.ByeCommand;
 import seedu.duke.command.Command;
-import seedu.duke.command.HelpCommand;
+import seedu.duke.command.generalcommand.HelpCommand;
 import seedu.duke.command.aliascommand.AddCustomAliasCommand;
 import seedu.duke.command.aliascommand.DeleteCustomAliasCommand;
 import seedu.duke.command.aliascommand.ShowCustomAliasCommand;
@@ -70,7 +70,7 @@ public class Parser {
             //note
         } else if (filteredUserInput.startsWith("add note")) {
             command = new AddNoteCommand();
-        } else if (filteredUserInput.startsWith("show notes")) {
+        } else if (filteredUserInput.startsWith("list notes")) {
             command = new ListNoteCommand();
         } else if (filteredUserInput.startsWith("delete note")) {
             command = new DeleteNoteCommand();

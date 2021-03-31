@@ -16,6 +16,17 @@ public class BlockAlias {
         return aliases;
     }
 
+    public String[] changeAliasToBlock(String from, String to) {
+        String[] blockNames = {from, to};
+        if (aliases.containsKey(from)) {
+            blockNames[0] = aliases.get(from);
+        }
+        if (aliases.containsKey(to)) {
+            blockNames[1] = aliases.get(to);
+        }
+        return blockNames;
+    }
+
     public void addAlias(String block, String alias) throws InvalidBlockException, InvalidAliasException {
         if (!isValidBlock(block)) {
             throw new InvalidBlockException();

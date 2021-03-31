@@ -1,5 +1,6 @@
-package seedu.duke.command;
+package seedu.duke.command.generalcommand;
 
+import seedu.duke.command.Command;
 import seedu.duke.ui.UiManager;
 
 public class ByeCommand extends Command {
