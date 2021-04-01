@@ -15,11 +15,15 @@ public class SleepGoal extends Goal {
     public SleepGoal(PeriodType periodType, double targetDuration) {
         super(RecordType.SLEEP, periodType, targetDuration);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     public SleepGoal(PeriodType periodType, double targetDuration, LocalDate daySet) {
         super(RecordType.SLEEP, periodType, targetDuration, daySet);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     @Override
@@ -48,8 +52,8 @@ public class SleepGoal extends Goal {
     @Override
     public String getGoalData() {
         return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                + getPeriodType().toString().toLowerCase() + "\t\t   "
-                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + "\n";
     }
 
@@ -58,4 +62,7 @@ public class SleepGoal extends Goal {
         return "S" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
     }
 
+    private int getLengthOfTarget() {
+        return ("" + target).length() + getProgressUnit().length() + 1;
+    }
 }

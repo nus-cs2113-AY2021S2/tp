@@ -15,11 +15,15 @@ public class ExerciseGoal extends Goal {
     public ExerciseGoal(PeriodType periodType, double targetEnergy) {
         super(RecordType.EXERCISE, periodType, targetEnergy);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     public ExerciseGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
         super(RecordType.EXERCISE, periodType, targetEnergy, daySet);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
 
@@ -49,8 +53,8 @@ public class ExerciseGoal extends Goal {
     @Override
     public String getGoalData() {
         return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                + getPeriodType().toString().toLowerCase() + "\t\t   "
-                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + "\n";
     }
 
@@ -59,4 +63,7 @@ public class ExerciseGoal extends Goal {
         return "E" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
     }
 
+    private int getLengthOfTarget() {
+        return ("" + target).length() + getProgressUnit().length() + 1;
+    }
 }
