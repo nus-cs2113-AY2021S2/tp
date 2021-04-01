@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract Command {
++ {abstract} -abstract- execute(UserInput) : void
++ isExit() : boolean
+}
+class ClearCommand {
++ execute(UserInput) : void
+}
+class CloseCommand {
++ execute(UserInput) : void
+}
+class DefaultCommand {
+# input : String
++ execute(UserInput) : void
+}
+class FilterCommand {
+# criteria : String
+# value : String
++ execute(UserInput) : void
+}
+class FindCommand {
++ execute(UserInput) : void
+}
+class HelpCommand {
++ execute(UserInput) : void
+}
+class ListCommand {
++ execute(UserInput) : void
+}
+class RemoveCommand {
+# index : int
++ execute(UserInput) : void
+}
+class SaveCommand {
+# index : int
++ execute(UserInput) : void
+}
+class ShortlistCommand {
++ execute(UserInput) : void
+}
+class SortCommand {
+# criteria : String
++ execute(UserInput) : void
+}
+
+Command <|-- ClearCommand
+Command <|-- CloseCommand
+Command <|-- DefaultCommand
+Command <|-- FilterCommand
+Command <|-- FindCommand
+Command <|-- HelpCommand
+Command <|-- ListCommand
+Command <|-- RemoveCommand
+Command <|-- SaveCommand
+Command <|-- ShortlistCommand
+Command <|-- SortCommand
+@enduml
