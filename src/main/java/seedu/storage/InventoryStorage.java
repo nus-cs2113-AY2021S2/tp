@@ -77,15 +77,21 @@ public class InventoryStorage {
                 for (int i = 0; i < numberOfTokens; i++) {
                     cleanString.add(ui.cleanseInput(taskSave[i]).trim());
                 }
-                checker = new InventoryChecker(inventories, cleanString, numberOfTokens);
-                checker.checkStorage();
-                Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
-                inventories.add(tempInventory);
+                try {
+                    checker = new InventoryChecker(inventories, cleanString, numberOfTokens);
+                    checker.checkStorage();
+                    Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
+                    inventories.add(tempInventory);
+                } catch (NumberFormatException e) {
+                    System.out.println("File has been tampered with!\nWrong data has been removed!");
+                }
             }
         } catch (FileNotFoundException e) {
             throw new HealthVaultException("loadFile");
         } catch (HealthVaultException e) {
             System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("File has been tampered with!\nWrong data has been removed!");
         }
         fileScanner.close();
         return inventories;

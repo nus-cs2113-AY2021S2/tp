@@ -51,9 +51,9 @@ public class InventoryParser {
                 case "add":
                     numberOfInputs = 4;
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-                    //checker.checkAdd();
+                    checker.checkAdd();
                     String quantity = stringTokens[3];
-                    MainChecker.checkNumericInput(quantity);
+                    checker.isValidQuantity(quantity);
                     MainChecker.checkBlankInput(fullCommand);
                     checker.duplicateChecker(command);
                     String price = stringTokens[2];
@@ -93,7 +93,9 @@ public class InventoryParser {
             System.out.println(e.getMessage());
         }  /*catch (HealthVaultException e) {
             System.out.println(e.getMessage());
-        }*/
+        }*/ catch (HealthVaultException e) {
+            System.out.println(e.getMessage());
+        }
         return c;
     }
     private String[] parseToAddFormat(String[] stringTokens) {

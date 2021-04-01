@@ -1,15 +1,15 @@
 package seedu.logic.errorchecker;
 
-import seedu.duke.Constants;
+
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
-import seedu.exceptions.inventory.IllegalCharacterException;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.InventoryActions;
 import seedu.model.Inventory;
-import seedu.logic.errorchecker.MainChecker;
 
 import java.util.ArrayList;
 
@@ -43,10 +43,14 @@ public class InventoryChecker extends MainChecker {
             throw new CorruptedFileException(Constants.INVENTORY_FILE_PATH);
         }*/
     }
-    public void checkAdd() throws HealthVaultException {
-        illegalCharacterChecker(stringTokens.get(1), "name");
-        illegalCharacterChecker(stringTokens.get(2), "price");
-        illegalCharacterChecker(stringTokens.get(3), "quantity");
+    public void checkAdd() {
+        try {
+            illegalCharacterChecker(stringTokens.get(1), "name");
+            illegalCharacterChecker(stringTokens.get(2), "price");
+            illegalCharacterChecker(stringTokens.get(3), "quantity");
+        } catch (IllegalCharacterException e) {
+            System.out.println(e.getMessage());
+        }
     }
     public void checkStorageLength() throws HealthVaultException {
         if (numberOfTokens != 3) {
@@ -66,6 +70,16 @@ public class InventoryChecker extends MainChecker {
             if (drugName.equals(inputString)) {
                 throw new DuplicateDrugException();
             }
+        }
+    }
+    public static void isValidQuantity(String number) throws InvalidIntegerException {
+        try {
+            Integer.parseInt(number);     // Check age is numeric
+        } catch (NumberFormatException e) {
+            throw new InvalidIntegerException();
+        }
+        if (Integer.parseInt(number) < 0) {
+            throw new InvalidIntegerException();
         }
     }
 
