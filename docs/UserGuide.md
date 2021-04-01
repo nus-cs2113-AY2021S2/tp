@@ -599,7 +599,7 @@ Expected Outcome:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
-<img src="images/NurseScheduleReturn.png" width = "500">
+<img src="images/NurseScheduleReturn.png" width = "250">
 
 #### Help: `help`
 
@@ -607,7 +607,7 @@ Expected Outcome:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
-<img src="images/NurseScheduleHelp.png" width = "500">
+<img src="images/NurseScheduleHelp.png" width = "850">
 
 <br/><br/>
 
