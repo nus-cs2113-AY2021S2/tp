@@ -1,10 +1,5 @@
 package seedu.hdbuy.ui;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.Scanner;
-
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.EmptyParameterException;
@@ -12,6 +7,11 @@ import seedu.hdbuy.common.exception.InvalidFilterException;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.common.exception.InvalidSortException;
 import seedu.hdbuy.common.exception.NoFlatsException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.Scanner;
 
 public class TextUi {
 
@@ -50,8 +50,7 @@ public class TextUi {
 
     public static void showHelp() {
         System.out.print("HdBuy is a way to easily find and bookmark resale flats of your liking.\n\n"
-                + "Report bugs to: hdbuy@gmail.com\n"
-                + "GitHub page: <https://github.com/AY2021S2-CS2113-F10-1/tp>\n"
+                + "Report bugs to: hdbuy@gmail.com\n" + "GitHub page: <https://github.com/AY2021S2-CS2113-F10-1/tp>\n"
                 + "User Guide: <https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/docs/UserGuide.md>\n\n"
                 + "Available commands:\n"
                 + "\tfilter <attribute> <value>\t\tAdd a filter condition. eg: filter location woodlands\n"
@@ -62,8 +61,7 @@ public class TextUi {
                 + "\tsave <index>\t\t\t\t\tAdd the unit at the inputted index to the shortlist.\n"
                 + "\tremove <index>\t\t\t\t\tRemove the unit at the inpuuted index from the shortlist.\n"
                 + "\tshortlist\t\t\t\t\t\tShow all units in the shortlist.\n"
-                + "\tbye\t\t\t\t\t\t\t\tExit the application\n"
-        );
+                + "\tbye\t\t\t\t\t\t\t\tExit the application\n");
     }
 
     public static void showParameters(LinkedHashMap<QueryKey, String> inputs) {
@@ -103,6 +101,35 @@ public class TextUi {
             System.out.println("FIND command does not need any parameters.");
             System.out.println("However, you need to provide filter before you execute the FIND command.");
             break;
+        case "close":
+            System.out.println("CLOSE command does not need any parameters.");
+            System.out.println("You are closing the app after all.");
+            break;
+        case "help":
+            System.out.println("HELP command does not need any parameters.");
+            System.out.println("It's to help you understand all of our commands.");
+            break;
+        case "list":
+            System.out.println("LIST command does not need any parameters.");
+            System.out.println("The app will list out the parameters you have set.");
+            break;
+        case "remove":
+            System.out.println("REMOVE command needs a parameter to work.");
+            System.out.println("Example: \"remove 1\"");
+            break;
+        case "save":
+            System.out.println("SAVE command needs a parameter to work.");
+            System.out.println("Example: \"save 1\"");
+            break;
+        case "shortlist":
+            System.out.println("SHORTLIST command does not need any parameters.");
+            System.out.println("If you want to modify the short list, use SAVE command or REMOVE command instead.");
+            break;
+        case "sort":
+            System.out.println("SORT command needs a parameter to work.");
+            System.out.println("Sort types: {asc, desc}");
+            System.out.println("Example: \"sort asc\"");
+            break;
         default:
             break;
         }
@@ -113,8 +140,7 @@ public class TextUi {
         System.out.format("%5s%24s%12s%24s%12s\n", columnNames);
         int i = 0;
         for (Unit unit : units) {
-            Object[] unitData = {++i, unit.getAddress(), unit.getType(),
-                    unit.getLease(), "$" + unit.getPrice()};
+            Object[] unitData = {++i, unit.getAddress(), unit.getType(), unit.getLease(), "$" + unit.getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
         }
     }
@@ -124,8 +150,7 @@ public class TextUi {
         System.out.format("%5s%24s%12s%24s%12s\n", columnNames);
         int i = 0;
         for (Unit unit : units) {
-            Object[] unitData = {++i, unit.getAddress(), unit.getType(),
-                    unit.getLease(), "$" + unit.getPrice()};
+            Object[] unitData = {++i, unit.getAddress(), unit.getType(), unit.getLease(), "$" + unit.getPrice()};
             System.out.format("%5s%24s%12s%24s%12s\n", unitData);
         }
     }
@@ -136,9 +161,18 @@ public class TextUi {
 
     public static void showEmptyParameter(String key, EmptyParameterException e) {
         System.out.println("\"" + key + "\"" + e.getMessage());
-        System.out.println("Please specified a filter to use before executing this command.");
-        System.out.println("Filters included: " + Arrays.asList(QueryKey.values()));
-        System.out.println("An example will be \"filter location clementi\"");
+        switch (key) {
+        case "FIND":
+            System.out.println("Please specified a filter to use before executing this command.");
+            System.out.println("Filters included: " + Arrays.asList(QueryKey.values()));
+            System.out.println("An example will be \"filter location clementi\"");
+            break;
+        case "CLEAR":
+            System.out.println("There is no data to clear!");
+            break;
+        default:
+            break;
+        }
     }
 
     public static void showClearedFilterConditions() {

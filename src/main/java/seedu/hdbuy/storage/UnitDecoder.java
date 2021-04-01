@@ -1,8 +1,8 @@
 package seedu.hdbuy.storage;
 
-import java.util.logging.Logger;
-
 import seedu.hdbuy.common.Unit;
+
+import java.util.logging.Logger;
 
 public class UnitDecoder {
 

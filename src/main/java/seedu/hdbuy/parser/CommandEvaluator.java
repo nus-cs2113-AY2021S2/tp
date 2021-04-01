@@ -1,10 +1,10 @@
 package seedu.hdbuy.parser;
 
-import java.util.Arrays;
-import java.util.logging.Logger;
-
 import seedu.hdbuy.common.CommandKey;
 import seedu.hdbuy.common.exception.InvalidParameterException;
+
+import java.util.Arrays;
+import java.util.logging.Logger;
 
 public class CommandEvaluator {
 
@@ -19,8 +19,7 @@ public class CommandEvaluator {
                 throw new InvalidParameterException(keyCommand);
             }
             String filterCriteria = lineParts[1];
-            String filterValue = String.join(" ",
-                Arrays.asList(lineParts).subList(2, lineParts.length));
+            String filterValue = String.join(" ", Arrays.asList(lineParts).subList(2, lineParts.length));
             return new CommandKey(filterCriteria, filterValue, keyCommand);
         case CommandType.SORT:
             if (lineParts.length == 2) {
