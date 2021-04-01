@@ -2,10 +2,6 @@
 
 ## Design & implementation
 
-**[`HdBuy`](https://https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/src/main/java/seedu/hdbuy/HdBuy.java)**. It is responsible for,
-* At app launch: Loads previously shortlisted resale flats, if any, and starts receiving user commands.
-* At shut down: Clears search history and closes the app.
-
 ### Architecture
 ![ApplicationArchitecture](diagrams/Architecture.jpg)
 
