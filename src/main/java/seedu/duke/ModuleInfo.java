@@ -1,6 +1,5 @@
 package seedu.duke;
 
-import seedu.duke.capsimulator.Component;
 import seedu.duke.capsimulator.ModuleGradeEnum;
 import seedu.duke.link.Links;
 import seedu.duke.task.Assignment;
@@ -410,13 +409,18 @@ public class ModuleInfo {
     }
 
     private static void getComponents() {
-        Ui.printModulePrompt(); // prompts user for view or add instruction
-        String addView = Ui.readCommand().trim();
-        if (Integer.parseInt(addView) == 1) {
-            Component.addComponent(modules);
-        } else if (Integer.parseInt(addView) == 2) {
-            Component.viewComponent(modules);
+        // prompts user for view or add instruction
+        if (Ui.printModulePrompt()) {
+            int addView = Ui.readCommandToInt();
+            if (addView == 1) {
+                Component.addComponent(modules);
+            } else if (addView == 2) {
+                Component.viewComponent(modules);
+            } else {
+                Ui.printInvalidIntegerMessage();
+            }
         }
+
     }
 
     /**

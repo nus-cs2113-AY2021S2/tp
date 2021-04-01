@@ -98,8 +98,8 @@ public class Storage {
             StringBuilder review = new StringBuilder();
             while (true) {
                 String line = s.nextLine();
-                if (line.contains(" -- end of module -- ")) {
-                    review.append(line.split(" -- end of module -- ")[0]);
+                if (line.contains(" -- end of module --")) {
+                    review.append(line.split(" -- end of module --")[0]);
                     break;
                 }
                 review.append(line).append("\n");
@@ -125,7 +125,7 @@ public class Storage {
                     + module.getMc() + " ~~ "
                     + module.getGrade() + "\n"
                     + module.getReview());
-            fw.write(" -- end of module -- ");
+            fw.write(" -- end of module --");
             fw.write(System.lineSeparator());
         }
         fw.close();
