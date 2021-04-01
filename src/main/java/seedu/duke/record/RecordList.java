@@ -1,9 +1,9 @@
 package seedu.duke.record;
 
 import seedu.duke.common.Messages;
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.comparator.RecordDateComparator;
 
-import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -129,6 +129,7 @@ public class RecordList {
         }
     }
 
+
     public double getDailyProgress(LocalDate currentDate) {
         switch (type) {
         case EXERCISE:
@@ -138,7 +139,22 @@ public class RecordList {
         case SLEEP:
             return getSleepProgress(currentDate);
         case BODYWEIGHT:
-            return  getBodyWeightProgress();
+            return getBodyWeightProgress();
+        default:
+            return 0;
+        }
+    }
+
+    public double getWeeklyProgress(int currentWeekOfYear) {
+        switch (type) {
+        case EXERCISE:
+            return getExerciseProgress(currentWeekOfYear);
+        case DIET:
+            return getDietProgress(currentWeekOfYear);
+        case SLEEP:
+            return getSleepProgress(currentWeekOfYear);
+        case BODYWEIGHT:
+            return getBodyWeightProgress();
         default:
             return 0;
         }
@@ -149,6 +165,17 @@ public class RecordList {
         for (Record record : records) {
             Diet diet = (Diet) record;
             if (diet.getDate().isEqual(currentDate)) {
+                totalCalories += diet.getCalorie();
+            }
+        }
+        return totalCalories;
+    }
+
+    private double getDietProgress(int weekOfYear) {
+        double totalCalories = 0;
+        for (Record record : records) {
+            Diet diet = (Diet) record;
+            if (TimeController.isDateInWeek(diet.getDate(), weekOfYear)) {
                 totalCalories += diet.getCalorie();
             }
         }
@@ -166,15 +193,37 @@ public class RecordList {
         return totalCalories;
     }
 
+    private double getExerciseProgress(int weekOfYear) {
+        double totalCalories = 0;
+        for (Record record : records) {
+            Exercise exercise = (Exercise) record;
+            if (TimeController.isDateInWeek(exercise.getDate(), weekOfYear)) {
+                totalCalories += exercise.getCalories();
+            }
+        }
+        return totalCalories;
+    }
+
     private double getSleepProgress(LocalDate currentDate) {
-        double totalhours = 0;
+        double totalHours = 0;
         for (Record record : records) {
             Sleep sleep = (Sleep) record;
             if (sleep.getDate().isEqual(currentDate)) {
-                totalhours += sleep.getDuration();
+                totalHours += sleep.getDuration();
             }
         }
-        return totalhours;
+        return totalHours;
+    }
+
+    private double getSleepProgress(int weekOfYear) {
+        double totalHours = 0;
+        for (Record record : records) {
+            Sleep sleep = (Sleep) record;
+            if (TimeController.isDateInWeek(sleep.getDate(), weekOfYear)) {
+                totalHours += sleep.getDuration();
+            }
+        }
+        return totalHours;
     }
 
     private double getBodyWeightProgress() {

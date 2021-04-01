@@ -4,6 +4,7 @@ import seedu.duke.account.FitCenter;
 import seedu.duke.account.User;
 import seedu.duke.exception.TypeException;
 
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Diet;
 import seedu.duke.record.Record;
 import seedu.duke.record.Exercise;
@@ -128,7 +129,8 @@ public class FileInfoReader {
             }
         }
         LocalDate currentDate = LocalDate.now();
-        fitCenter.initializeDailyProgressAtLoading(currentDate);
+        int currentWeekOfYear = TimeController.getSystemWeekOfYear();
+        fitCenter.initProgressAtLoading(currentDate, currentWeekOfYear);
     }
 
     private Record getExerciseRecord(String content) throws ParseException, TypeException, NumberFormatException {

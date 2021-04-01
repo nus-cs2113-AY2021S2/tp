@@ -86,6 +86,14 @@ public abstract class Goal {
         return periodType;
     }
 
+    public boolean isAchieved() {
+        return progress >= target;
+    }
+
+    public String getAchieved() {
+        return isAchieved() ? "(achieved)" : "(not achieved)";
+    }
+
     /**
      * Gets a string summary of all info of this goal instance.
      *

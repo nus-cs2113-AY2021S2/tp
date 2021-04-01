@@ -41,7 +41,7 @@ public class Healthier {
             System.exit(0);
         }
         ui.printGreetings();
-        ui.showProgress(currentUser);
+        currentFitCenter.showGoalProgress();
     }
 
     private void loopCommand() throws IOException {
