@@ -22,17 +22,18 @@ public class DataParser {
 
     public Shift parseShift(String line) {
         String[] splitByHex = line.split("#");
-        Shift parsedShift = new Shift(null, null, 1, 0);
+        ArrayList<Employee> employees = new ArrayList<>();
+        Shift parsedShift = new Shift(employees, null, 1, 0);
 
         parsedShift.setShiftDate(LocalDate.parse(splitByHex[0], DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         parsedShift.setVacancy(Integer.parseInt(splitByHex[1]));
         parsedShift.setShiftIndex(Integer.parseInt(splitByHex[2]));
 
-        ArrayList<String> employees = new ArrayList<>();
+        ArrayList<String> employeeNames = new ArrayList<>();
         for (int shiftIndex=3; shiftIndex< splitByHex.length; shiftIndex++) {
-            employees.add(splitByHex[shiftIndex]);
+            employeeNames.add(splitByHex[shiftIndex]);
         }
-        parsedShift.setEmployees(employees);
+        parsedShift.setEmployees(employeeNames);
 
         return parsedShift;
     }
