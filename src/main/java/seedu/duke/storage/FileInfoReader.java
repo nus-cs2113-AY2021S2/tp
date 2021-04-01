@@ -33,22 +33,48 @@ import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.goal.PeriodType.WEEKLY;
 import static seedu.duke.goal.PeriodType.DAILY;
 
+/**
+ * Reads information from text file and converts to usable objects.
+ */
 public class FileInfoReader {
     private File recordSource;
     private File goalSource;
     private File timeSource;
+    /**
+     * A separator symbol.
+     */
     public static final String SEPARATOR = " \\| ";
+    /**
+     * Date format for Singapore region.
+     */
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
+    /**
+     * Initializes the file reader for goals & records.
+     *
+     * @param recordFile the file that stores user records.
+     * @param goalFile   the file that stores user goals.
+     */
     public FileInfoReader(File recordFile, File goalFile) {
         recordSource = recordFile;
         goalSource = goalFile;
     }
 
+    /**
+     * Initializes the file reader for app time info.
+     *
+     * @param timeFile the file that stores app time info.
+     */
     public FileInfoReader(File timeFile) {
         timeSource = timeFile;
     }
 
+    /**
+     * Parses the time info into usable format from text file.
+     *
+     * @return a String array that contains time info of date and week of year.
+     * @throws FileNotFoundException when the file path or file cannot be found.
+     */
     public String[] parseTimeStrParams() throws FileNotFoundException {
         Scanner sc = new Scanner(timeSource);
         String timeStr = null;
@@ -61,6 +87,15 @@ public class FileInfoReader {
         return timeStr.split(SEPARATOR);
     }
 
+    /**
+     * Parses the records in text into a list of records in a usable format.
+     *
+     * @param user the current user.
+     * @throws FileNotFoundException when the file path or file cannot be found.
+     * @throws TypeException         when the type of food/workout is invalid for diet/exercise records.
+     * @throws NumberFormatException when the number format is not consistent with the format expected.
+     * @throws ParseException        when the file path or file cannot be found.
+     */
     public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException,
             ParseException {
         Scanner sc = new Scanner(recordSource);
@@ -93,6 +128,15 @@ public class FileInfoReader {
         }
     }
 
+    /**
+     * Parses the goals in text into a list of goals in a usable format.
+     *
+     * @param user the current user.
+     * @throws FileNotFoundException when the file path or file cannot be found.
+     * @throws TypeException         when the type of food/workout is invalid for diet/exercise records.
+     * @throws NumberFormatException when the number format is not consistent with the format expected.
+     * @throws ParseException        when the file path or file cannot be found.
+     */
     public void parseToGoal(User user) throws FileNotFoundException, ParseException,
             TypeException, NumberFormatException {
         FitCenter fitCenter = user.getFitCenter();
