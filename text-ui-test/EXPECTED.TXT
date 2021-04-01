@@ -1,7 +1,6 @@
 --------------------------------------------------------------------
-Welcome to your personal fitness app - Healthier
-What's in your mind today?
---------------------------------------------------------------------
+Healthier - your powerful personal fitness app.
+What's in your mind?
 --------------------------------------------------------------------
 --------------------------------------------------------------------
 Thank you for using this app. The app is exiting...
