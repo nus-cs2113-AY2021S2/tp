@@ -113,6 +113,10 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+            if (title.length() > 20) {
+                ui.printInputTooLongMessage_20Char();
+                continue;
+            }
             break;
         }
         while (true) {
@@ -120,6 +124,10 @@ public class ReviewList {
             category = ui.readCommand().toLowerCase();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
+                continue;
+            }
+            if (category.length() > 15) {
+                ui.printInputTooLongMessage_15Char();
                 continue;
             }
             break;
@@ -164,6 +172,10 @@ public class ReviewList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+            if (title.length() > 20) {
+                ui.printInputTooLongMessage_20Char();
+                continue;
+            }
             break;
         }
         while (true) {
@@ -171,6 +183,10 @@ public class ReviewList {
             category = ui.readCommand().toLowerCase();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
+                continue;
+            }
+            if (category.length() > 15) {
+                ui.printInputTooLongMessage_15Char();
                 continue;
             }
             break;
@@ -416,6 +432,10 @@ public class ReviewList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+                if (newTitle.length() > 20) {
+                    ui.printInputTooLongMessage_20Char();
+                    continue;
+                }
                 break;
             }
             reviews.get(index).setTitle(newTitle);
@@ -458,6 +478,10 @@ public class ReviewList {
                 newCategory = ui.readCommand();
                 if (newCategory.isBlank()) {
                     ui.printEmptyInputMessage();
+                    continue;
+                }
+                if (newCategory.length() > 15) {
+                    ui.printInputTooLongMessage_15Char();
                     continue;
                 }
                 break;

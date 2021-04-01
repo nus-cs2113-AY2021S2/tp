@@ -19,6 +19,9 @@ import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.RECO_MODE_MESSAGE;
 import static seedu.connoisseur.messages.Messages.RECODONE_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.REVIEW_MODE_MESSAGE;
+import static seedu.connoisseur.messages.Messages.INPUT_TOO_LONG_MESSAGE_20CHAR;
+import static seedu.connoisseur.messages.Messages.INPUT_TOO_LONG_MESSAGE_15CHAR;
+
 
 public class Ui {
     private static final PrintStream out = System.out;
@@ -311,5 +314,13 @@ public class Ui {
 
     public void printNoUniqueTitleMessage() {
         println("Please try again with a unique title!");
+    }
+
+    public void printInputTooLongMessage_20Char() {
+        println(INPUT_TOO_LONG_MESSAGE_20CHAR);
+    }
+
+    public void printInputTooLongMessage_15Char() {
+        println(INPUT_TOO_LONG_MESSAGE_15CHAR);
     }
 }

@@ -165,6 +165,10 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+            if (title.length() > 20) {
+                ui.printInputTooLongMessage_20Char();
+                continue;
+            }
             break;
         }
         while (true) {
@@ -172,6 +176,10 @@ public class RecommendationList {
             category = ui.readCommand().toLowerCase();
             if (category.isBlank()) {
                 ui.printEmptyInputMessage();
+                continue;
+            }
+            if (category.length() > 15) {
+                ui.printInputTooLongMessage_15Char();
                 continue;
             }
             break;
@@ -202,6 +210,10 @@ public class RecommendationList {
                 ui.printEmptyInputMessage();
                 continue;
             }
+            if (recommendedBy.length() > 15) {
+                ui.printInputTooLongMessage_15Char();
+                continue;
+            }
             break;
         }
         while (true) {
@@ -209,6 +221,10 @@ public class RecommendationList {
             location = ui.readCommand();
             if (location.isBlank()) {
                 ui.printEmptyInputMessage();
+                continue;
+            }
+            if (location.length() > 15) {
+                ui.printInputTooLongMessage_15Char();
                 continue;
             }
             break;
@@ -375,6 +391,10 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+                if (newTitle.length() > 20) {
+                    ui.printInputTooLongMessage_20Char();
+                    continue;
+                }
                 break;
             }
             recommendations.get(index).setTitle(newTitle);
@@ -413,6 +433,10 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+                if (newLocation.length() > 15) {
+                    ui.printInputTooLongMessage_15Char();
+                    continue;
+                }
                 break;
             }
             recommendations.get(index).setLocation(newLocation);
@@ -426,6 +450,10 @@ public class RecommendationList {
                     ui.printEmptyInputMessage();
                     continue;
                 }
+                if (newCategory.length() > 15) {
+                    ui.printInputTooLongMessage_15Char();
+                    continue;
+                }
                 break;
             }
             recommendations.get(index).setCategory(newCategory);
@@ -437,6 +465,10 @@ public class RecommendationList {
                 newRecBy = ui.readCommand();
                 if (newRecBy.isBlank()) {
                     ui.printEmptyInputMessage();
+                    continue;
+                }
+                if (newRecBy.length() > 15) {
+                    ui.printInputTooLongMessage_15Char();
                     continue;
                 }
                 break;
