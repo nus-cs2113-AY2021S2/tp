@@ -532,7 +532,7 @@ Example Screenshot:
 The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
 This is an example of the welcome screen for the Nurse Schedule Menu.
-<img src="images/NurseScheduleStartScreen.png" width = "700">
+<img src="images/NurseScheduleStartScreen.png" width = "600">
 
 #### Adding a new schedule: `add`
 Adds a new schedule to the list of nurse schedules.
@@ -557,7 +557,7 @@ Trip to P1 on 30012020 added!
 
 Example Screenshot:
 
-<img src="images/NurseScheduleAdd.png" width = "600">
+<img src="images/NurseScheduleAdd.png" width = "500">
 
 
 #### Deleting a schedule: `delete`
@@ -582,7 +582,7 @@ Trip to P12345 on 30/01/2020 has been cancelled!
 
 Example Screenshot:
 
-<img src="images/NurseScheduleDelete.png" width = "650">
+<img src="images/NurseScheduleDelete.png" width = "550">
 
 #### Listing schedules: `list`
 List either all schedules or specified Nurse ID's schedule.
@@ -604,7 +604,7 @@ N12345     | P12345     | 30/01/2020
 ```
 Example Screenshot:
 
-<img src="images/NurseScheduleListNurseID.png" width = "650">
+<img src="images/NurseScheduleListNurseID.png" width = "550">
 
 Example of usage(all):
 
@@ -623,7 +623,7 @@ N00000     | P11111     | 15/02/2020
 
 Example Screenshot:
 
-<img src="images/NurseScheduleListAll.png" width = "650">
+<img src="images/NurseScheduleListAll.png" width = "550">
 
 
 #### Returning to Start Menu: `return`
