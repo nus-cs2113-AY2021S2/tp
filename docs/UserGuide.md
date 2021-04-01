@@ -1,6 +1,8 @@
 # HealthVault User Guide
 
+<p align="center"
 <img src="images/HealthVaultLogo.png">
+</p>
 	
 ## Opening Words
 
