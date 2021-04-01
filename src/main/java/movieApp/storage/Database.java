@@ -112,19 +112,19 @@ public class Database {
         Scanner select = new Scanner(System.in);
         switch(type){
             case 1:
-                System.out.println("Current title: " + selectedMovie.getMovieTitle() + ".\nInsert new title:");
+                System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
                 String newTitle = select.nextLine();
                 selectedMovie.setMovieTitle(newTitle);
                 break;
             case 2:
-                System.out.println("Current director: " + selectedMovie.getDirector() + ".\nInsert new director:");
-                String newDirector = select.next();
-                selectedMovie.setMovieTitle(newDirector);
+                System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
+                String newDirector = select.nextLine();
+                selectedMovie.setDirector(newDirector);
                 break;
             case 3:
-                System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + ".\nInsert new synopsis:");
-                String newSynopsis = select.next();
-                selectedMovie.setMovieTitle(newSynopsis);
+                System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
+                String newSynopsis = select.nextLine();
+                selectedMovie.setSynopsis(newSynopsis);
                 break;
         }
 
