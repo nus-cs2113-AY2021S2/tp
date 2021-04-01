@@ -134,8 +134,6 @@ public class UI {
     public static void printStartMenu() {
 
         UI.printEmptyLine();
-        System.out.println("Start Menu");
-        System.out.println("Commands:");
 
         UI.printEmptyLine();
         int[] lengthPara = {15,40,10};

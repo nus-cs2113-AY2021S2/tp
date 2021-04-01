@@ -7,13 +7,13 @@ public class StaffUI extends UI {
     public static void staffHiredOutput(String id, String name) {
         if (id.charAt(0) == 'D') {
             try {
-                System.out.println("Doctor " + name + " hired!");
+                System.out.println("Doctor " + name + " hired :)");
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Unknown Doctor hired!");
             }
         } else if (id.charAt(0) == 'N') {
             try {
-                System.out.println("Nurse " + name + " hired!");
+                System.out.println("Nurse " + name + " hired :)");
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Unknown Doctor hired!");
             }
@@ -21,7 +21,7 @@ public class StaffUI extends UI {
     }
 
     public static void staffFiredOutput(String line) {
-        System.out.println(line.split("/")[1] + " has been fired.");
+        System.out.println(line.split("/")[1] + " has been fired :(");
     }
 
     public static void emptyListOutput() {

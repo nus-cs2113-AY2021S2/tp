@@ -73,11 +73,5 @@ public class MainChecker {
         if (!stringToken.equals(cleanedInput)){
             throw new IllegalCharacterException(fieldInput);
         }
-        /*String nameString = stringToken.toLowerCase();
-        Pattern pattern = Pattern.compile(ILLEGAL_CHARACTERS);
-        Matcher matcher = pattern.matcher(nameString);
-        if (matcher.find()) {
-            throw new IllegalCharacterException(fieldInput);
-        }*/
     }
 }
