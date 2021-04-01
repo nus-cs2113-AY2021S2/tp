@@ -585,8 +585,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 #### Adding a new schedule: `add`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
-&nbsp;&nbsp;&nbsp;&nbsp; (Note for ID: N/P = Nurse/Patient)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Note for ID: N/P = Nurse/Patient)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 
@@ -614,7 +614,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 
 #### Deleting a schedule: `delete`
-&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 
@@ -641,9 +641,9 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 <br/><br/>
 
 #### Listing schedules: `list`
-&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[Nurse ID/all]`
 
 >:information_source: Important notes about the input format
@@ -678,7 +678,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 #### Returning to Start Menu: `return`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
@@ -686,7 +686,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 #### Help: `help`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
