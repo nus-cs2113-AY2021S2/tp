@@ -20,6 +20,8 @@ public class AddNoteCommand extends Command {
     public void execute() {
         try {
             String[] noteInfo = ui.getNoteInfo();
+            assert noteInfo[0] != null : "Block is not supposed to be null";
+            assert noteInfo[1] != null : "Added note is not supposed to be null";
             nusMap.checkIfValidBlock(noteInfo[0]);
             Block block = nusMap.getBlock(noteInfo[0]);
             block.addNote(noteInfo[1]);
