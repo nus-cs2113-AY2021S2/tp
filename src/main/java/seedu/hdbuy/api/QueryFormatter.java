@@ -1,9 +1,9 @@
 package seedu.hdbuy.api;
 
+import seedu.hdbuy.common.QueryKey;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import seedu.hdbuy.common.QueryKey;
 
 public class QueryFormatter {
 

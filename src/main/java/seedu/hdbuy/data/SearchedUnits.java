@@ -1,9 +1,9 @@
 package seedu.hdbuy.data;
 
+import seedu.hdbuy.common.Unit;
+
 import java.util.ArrayList;
 import java.util.logging.Logger;
-
-import seedu.hdbuy.common.Unit;
 
 public class SearchedUnits {
 

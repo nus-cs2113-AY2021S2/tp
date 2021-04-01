@@ -1,10 +1,10 @@
 package seedu.hdbuy.data;
 
-import java.util.ArrayList;
-import java.util.logging.Logger;
-
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.storage.StorageManager;
+
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class ShortList {
 

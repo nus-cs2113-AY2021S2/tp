@@ -1,7 +1,5 @@
 package seedu.hdbuy.command;
 
-import java.util.ArrayList;
-
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.InvalidSortException;
 import seedu.hdbuy.common.exception.NoFlatsException;
@@ -9,6 +7,8 @@ import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.CommandType;
 import seedu.hdbuy.ui.TextUi;
+
+import java.util.ArrayList;
 
 public class SortCommand extends Command {
     protected String criteria;
