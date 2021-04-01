@@ -666,62 +666,64 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
 (Note for price: Make sure that the inputted price is valid! Eg. 3.00, 3)
 
+This is an example of the welcome screen for Inventory Menu.
+
+<img src="images/InventoryWelcomeHeader.PNG" width = "850">
+
 #### Adding a drug: `add`
-Adds a drug to the drug inventory.
+&nbsp;&nbsp;&nbsp;&nbsp; Adds a drug to the drug inventory.
 
 Format: `add/[Name]/[Price]/[Quantity]`
 
-Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 ```
 Inventory --> add/paracetamol/$3/90
 ```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Inventory --> add/paracetamol/3/90
-Added 90 paracetamol to inventory!
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/InventoryAdd.PNG" width = "850">
 
 #### Deleting a drug: `delete`
-Deletes a drug from the inventory list.
+&nbsp;&nbsp;&nbsp;&nbsp; Deletes a drug from the inventory list.
 
 Format: `delete/[Name]`
 
-Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 ```
 Inventory --> delete/paracetamol
 ```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Inventory --> delete/paracetamol
-Deleted paracetamol to inventory!
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/InventoryDelete.PNG" width = "850">
 
 #### Listing drugs: `list`
-Lists all the drugs in the inventory.
+&nbsp;&nbsp;&nbsp;&nbsp; Lists all the drugs in the inventory.
 
 Format: `list`
 
-Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 ```
 Inventory --> list
 ```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Inventory --> list
-Current Inventory:
-90 $3 Paracetamol
-30 $4 Ibuprofen
-10 $100 Marijuana
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/InventoryList.PNG" width = "850">
 
 #### Returning to Start Menu: `return`
+
+&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/InventoryReturn.PNG" width = "250">
+
 #### Help: `help`
+
+&nbsp;&nbsp;&nbsp;&nbsp; Prints Inventory help message.
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/InventoryHelp.PNG" width = "850">
 
 <br/><br/>
 
