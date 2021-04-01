@@ -1,10 +1,12 @@
 package command;
 
 import canteens.Canteen;
+import storage.Storage;
 import ui.Ui;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class AddCanteenCommand extends Command {
 
@@ -16,9 +18,10 @@ public class AddCanteenCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
         canteens.add(new Canteen(canteenName));
         ui.showAddCanteenSuccess(canteenName);
+        Storage.saveCanteen(new FileWriter("data/storage.txt",true),canteenName);
     }
 
 }

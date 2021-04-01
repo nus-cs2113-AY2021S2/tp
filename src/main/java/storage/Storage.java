@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Storage {
     private static String filePath;
     private static ArrayList<Canteen> canteens;
+    public static final String seperator = "<>";
 
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -57,14 +58,14 @@ public class Storage {
                 //check if canteen exist
                 canteen = findCanteen(storedLine[0]);
                 //check if store exist
-                store = findStore(canteen,storedLine[1]);
+                store = findStore(canteen, storedLine[1]);
                 store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
                 break;
             case 4:
                 //check if canteen exist
                 canteen = findCanteen(storedLine[0]);
                 //check if store exist
-                store = findStore(canteen,storedLine[1]);
+                store = findStore(canteen, storedLine[1]);
                 store.addMenu(new Menu(storedLine[2], Double.parseDouble(storedLine[3])));
                 break;
             default:
@@ -73,14 +74,14 @@ public class Storage {
         }
     }
 
-    private static Store findStore(Canteen canteen,String storeName) {
+    private static Store findStore(Canteen canteen, String storeName) {
         Store store = null;
         boolean hasStore = false;
 
-        for (Store storeIndex :canteen.getStores()) {
+        for (Store storeIndex : canteen.getStores()) {
             //if have store then assign it
             if (storeIndex.getStoreName().equals(storeName)) {
-                store =  storeIndex;
+                store = storeIndex;
                 hasStore = true;
             }
         }
@@ -115,40 +116,37 @@ public class Storage {
     public static void save(ArrayList<Canteen> canteens) {
         try {
             FileWriter fw = new FileWriter(filePath);
-            saveCanteens(fw, canteens);
+            //saveCanteens(fw, canteens);
             fw.close();
         } catch (IOException e) {
             System.out.println("File Path was not found!");
         }
     }
 
-    public static void saveCanteens(FileWriter fw, ArrayList<Canteen> canteens) throws IOException {
-        for (Canteen canteen: canteens) {
-            fw.write("canteen<>" + canteen.getCanteenName() + "\n");
-            ArrayList<Store> stores = canteen.getStores();
-            saveStores(fw, stores);
-        }
+    public static void saveCanteen(FileWriter fw, String canteenName) throws IOException {
+        fw.write(canteenName + "\n");
+        fw.close();
     }
 
-    public static void saveStores(FileWriter fw, ArrayList<Store> stores) throws IOException {
-        for (Store store: stores) {
-            fw.write("store<>" + store.getStoreName() + "\n");
-            ArrayList<Menu> menus = store.getMenus();
-            ArrayList<Review> reviews = store.getReviews();
-            saveMenus(fw, menus);
-            saveReviews(fw, reviews);
-        }
+    public static void saveStore(FileWriter fw, String canteenName, String storeName) throws IOException {
+        fw.write(canteenName + seperator + storeName + "\n");
+        fw.close();
     }
 
-    public static void saveMenus(FileWriter fw, ArrayList<Menu> menus) throws IOException {
-        for (Menu menu: menus) {
-            fw.write("menu<>" + menu.getItemName() + "//" + menu.getPrice() + "\n");
-        }
+    public static void saveMenu(FileWriter fw, String canteenName, String storeName,
+                                String menuName,String menuPrice) throws IOException {
+        fw.write(canteenName + seperator + storeName + seperator + menuName
+                    + seperator + menuPrice + "\n");
+        fw.close();
     }
 
-    public static void saveReviews(FileWriter fw, ArrayList<Review> reviews) throws IOException {
-        for (Review review: reviews) {
-            fw.write("menu<>" + review.getDescription() + "//" + review.getRating() + "\n");
-        }
+    public static void saveReview(FileWriter fw, Canteen canteen, Store store,
+                                  String description, String rating) throws IOException {
+
+        fw.write(canteen.getCanteenName() + seperator
+                + store.getStoreName() + seperator + description + "//" + rating + "\n");
+        fw.close();
     }
+
 }
+
