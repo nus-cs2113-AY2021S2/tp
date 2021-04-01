@@ -3,7 +3,6 @@ package seedu.duke.goal;
 import seedu.duke.common.Messages;
 import seedu.duke.record.RecordType;
 
-import java.lang.reflect.Member;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
