@@ -166,5 +166,9 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 ### Sorting results by price in ascending or descending order
-
+10. Sorting results in ascending order 
+    1. Test case: `sort asc` to display unit(s) in ascending order of price.
+       
+11. Sorting results in descending order 
+      1. Test case: `sort desc` to display unit(s) in descending order of price.
 
