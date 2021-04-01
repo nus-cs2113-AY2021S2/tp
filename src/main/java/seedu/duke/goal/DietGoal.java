@@ -52,7 +52,7 @@ public class DietGoal extends Goal {
 
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+        return SPACING + getDaySet().format(DATE_FORMATTER) + SPACING
                 + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                 + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
