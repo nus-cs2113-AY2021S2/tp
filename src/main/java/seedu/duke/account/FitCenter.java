@@ -5,9 +5,11 @@ import seedu.duke.common.Messages;
 import seedu.duke.goal.GoalList;
 import seedu.duke.goal.Goal;
 import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
 import seedu.duke.record.RecordType;
+import seedu.duke.ui.UI;
 
 
 import java.time.LocalDate;
@@ -17,6 +19,7 @@ import static seedu.duke.command.CommandRecordType.DIET;
 import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.goal.PeriodType.DAILY;
+import static seedu.duke.goal.PeriodType.WEEKLY;
 
 /**
  * Manages the fitness of a user through list of records.
@@ -59,6 +62,13 @@ public class FitCenter {
         default:
             return null;
         }
+    }
+
+    public void resetGoalProgress(PeriodType periodType) {
+        exerciseGoalList.initializeGoalProgress(periodType);
+        dietGoalList.initializeGoalProgress(periodType);
+        sleepGoalList.initializeGoalProgress(periodType);
+        bodyWeightGoalList.initializeGoalProgress(periodType);
     }
 
     /**
@@ -182,25 +192,76 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_CHECK_GOAL;
     }
 
+    private boolean isGoalAchieved(PeriodType periodType) {
+        boolean isAchieved = true;
+        if (dietGoalList.isNotEmpty()) {
+            isAchieved = dietGoalList.isGoalAchieved(periodType);
+        }
+        if (exerciseGoalList.isNotEmpty()) {
+            isAchieved = exerciseGoalList.isGoalAchieved(periodType);
+        }
+        if (sleepGoalList.isNotEmpty()) {
+            isAchieved = sleepGoalList.isGoalAchieved(periodType);
+        }
+        if (bodyWeightGoalList.isNotEmpty()) {
+            isAchieved = bodyWeightGoalList.isGoalAchieved(periodType);
+        }
+        return isAchieved;
+    }
+
+    private boolean hasGoals() {
+        return dietGoalList.isNotEmpty() || exerciseGoalList.isNotEmpty()
+                || sleepGoalList.isNotEmpty() || bodyWeightGoalList.isNotEmpty();
+    }
+
+    private boolean hasGoals(PeriodType periodType) {
+        return dietGoalList.isNotEmpty(periodType);
+    }
+
     public String getAllGoalListStringAtLoading() {
-        StringBuilder stringBuilder = new StringBuilder();
-        if (!dietGoalList.isEmpty()) {
+        if (hasGoals()) {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (!isGoalAchieved(DAILY) || !isGoalAchieved(WEEKLY)) {
+                stringBuilder.append(Messages.MESSAGE_UNACHIEVED_GOALS);
+            }
+            if (hasGoals(DAILY)) {
+                if (isGoalAchieved(DAILY)) {
+                    stringBuilder.append(Messages.MESSAGE_GOALS_DONE_TODAY);
+                } else {
+                    stringBuilder.append("Here are the unachieved daily goals:\n");
+                    getUnachievedGoalsString(stringBuilder, DAILY);
+                }
+            }
+            if (hasGoals(WEEKLY)) {
+                if (isGoalAchieved(WEEKLY)) {
+                    stringBuilder.append(Messages.MESSAGE_GOALS_DONE_THIS_WEEK);
+                } else {
+                    stringBuilder.append("Here are the unachieved weekly goals:\n");
+                    getUnachievedGoalsString(stringBuilder, WEEKLY);
+                }
+            }
+            return stringBuilder.toString();
+        }
+        return null;
+    }
+
+    private void getUnachievedGoalsString(StringBuilder stringBuilder, PeriodType periodType) {
+        if (dietGoalList.isNotEmpty() && !dietGoalList.isGoalAchieved(periodType)) {
             stringBuilder.append("Diet Goals\n");
-            stringBuilder.append(getGoalListString(DIET, DAILY));
+            stringBuilder.append(getGoalListString(DIET, periodType));
         }
-        if (!exerciseGoalList.isEmpty()) {
+        if (exerciseGoalList.isNotEmpty() && !exerciseGoalList.isGoalAchieved(periodType)) {
             stringBuilder.append("Exercise Goals\n");
-            stringBuilder.append(getGoalListString(EXERCISE, DAILY));
+            stringBuilder.append(getGoalListString(EXERCISE, periodType));
         }
-        if (!sleepGoalList.isEmpty()) {
+        if (sleepGoalList.isNotEmpty() && !sleepGoalList.isGoalAchieved(periodType)) {
             stringBuilder.append("Sleep Goals\n");
-            stringBuilder.append(getGoalListString(SLEEP, DAILY));
+            stringBuilder.append(getGoalListString(SLEEP, periodType));
         }
-        if (!bodyWeightGoalList.isEmpty()) {
+        if (bodyWeightGoalList.isNotEmpty() && !bodyWeightGoalList.isGoalAchieved(periodType)) {
             stringBuilder.append("Body Weight Goals\n");
-            stringBuilder.append(getGoalListString(BODY_WEIGHT, DAILY));
+            stringBuilder.append(getGoalListString(BODY_WEIGHT, periodType));
         }
-        return stringBuilder.toString();
     }
 
     public String getRecordListForStore() {
@@ -217,32 +278,78 @@ public class FitCenter {
                 + bodyWeightGoalList.getGoalToStore();
     }
 
-    public void initializeDailyProgressAtLoading(LocalDate currentDate) {
-        dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
-        exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
-        sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
-        bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+    private void initDailyProgressAtLoading(LocalDate currentDate) {
+        dietGoalList.updateProgress(DAILY, dietRecordList.getDailyProgress(currentDate));
+        exerciseGoalList.updateProgress(DAILY, exerciseRecordList.getDailyProgress(currentDate));
+        sleepGoalList.updateProgress(DAILY, sleepRecordList.getDailyProgress(currentDate));
+        bodyWeightGoalList.updateProgress(DAILY, bodyRecordList.getDailyProgress(currentDate));
     }
 
-    public void updateDailyProgressAtAdding(Record record, LocalDate currentDate) {
+    private void initWeeklyProgressAtLoading(int weekOfYear) {
+        dietGoalList.updateProgress(WEEKLY, dietRecordList.getWeeklyProgress(weekOfYear));
+        exerciseGoalList.updateProgress(WEEKLY, exerciseRecordList.getWeeklyProgress(weekOfYear));
+        sleepGoalList.updateProgress(WEEKLY, sleepRecordList.getWeeklyProgress(weekOfYear));
+        bodyWeightGoalList.updateProgress(WEEKLY, bodyRecordList.getWeeklyProgress(weekOfYear));
+    }
+
+    public void initProgressAtLoading(LocalDate currentDate, int weekOfYear) {
+        initDailyProgressAtLoading(currentDate);
+        initWeeklyProgressAtLoading(weekOfYear);
+    }
+
+    private void updateDailyProgressAtAdding(Record record, LocalDate currentDate) {
         if (!record.getDate().isEqual(currentDate)) {
             return;
         }
         RecordType type = record.getType();
         switch (type) {
         case EXERCISE:
-            exerciseGoalList.updateDailyProgess(exerciseRecordList.getDailyProgress(currentDate));
+            exerciseGoalList.updateProgress(DAILY, exerciseRecordList.getDailyProgress(currentDate));
             break;
         case DIET:
-            dietGoalList.updateDailyProgess(dietRecordList.getDailyProgress(currentDate));
+            dietGoalList.updateProgress(DAILY, dietRecordList.getDailyProgress(currentDate));
             break;
         case SLEEP:
-            sleepGoalList.updateDailyProgess(sleepRecordList.getDailyProgress(currentDate));
+            sleepGoalList.updateProgress(DAILY, sleepRecordList.getDailyProgress(currentDate));
             break;
         case BODYWEIGHT:
-            bodyWeightGoalList.updateDailyProgess(bodyRecordList.getDailyProgress(currentDate));
+            bodyWeightGoalList.updateProgress(DAILY, bodyRecordList.getDailyProgress(currentDate));
             break;
         default:
+        }
+    }
+
+    private void updateWeeklyProgressAtAdding(Record record, int currentWeekOfYear) {
+        if (!TimeController.isDateInWeek(record.getDate(), currentWeekOfYear)) {
+            return;
+        }
+        RecordType type = record.getType();
+        switch (type) {
+        case EXERCISE:
+            exerciseGoalList.updateProgress(WEEKLY, exerciseRecordList.getWeeklyProgress(currentWeekOfYear));
+            break;
+        case DIET:
+            dietGoalList.updateProgress(WEEKLY, dietRecordList.getWeeklyProgress(currentWeekOfYear));
+            break;
+        case SLEEP:
+            sleepGoalList.updateProgress(WEEKLY, sleepRecordList.getWeeklyProgress(currentWeekOfYear));
+            break;
+        case BODYWEIGHT:
+            bodyWeightGoalList.updateProgress(WEEKLY, bodyRecordList.getWeeklyProgress(currentWeekOfYear));
+            break;
+        default:
+        }
+    }
+
+    public void updateProgressAtAdding(Record record, LocalDate currentDate, int currentWeekOfYear) {
+        updateDailyProgressAtAdding(record, currentDate);
+        updateWeeklyProgressAtAdding(record, currentWeekOfYear);
+    }
+
+    public void showGoalProgress() {
+        String progressMessage = getAllGoalListStringAtLoading();
+        if (progressMessage != null) {
+            UI.printMessage(getAllGoalListStringAtLoading());
         }
     }
 }

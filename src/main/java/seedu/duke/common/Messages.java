@@ -4,10 +4,10 @@ package seedu.duke.common;
  * Container for commonly used messages.
  */
 public class Messages {
-    public static final String MESSAGE_VERSION = "V1.0";
+    public static final String MESSAGE_VERSION = "V2.0";
     public static final String MESSAGE_FEATURES = "You can use the app by using command ADD, VIEW, and DELETE.";
-    public static final String MESSAGE_WELCOME = "Welcome to your personal fitness app - Healthier\n"
-            + "What's in your mind today?\n";
+    public static final String MESSAGE_WELCOME = "Healthier - your powerful personal fitness app.\n"
+            + "What's in your mind?\n";
     public static final String MESSAGE_BYE = "Nice work today!\n"
             + "You are one step closer to ultimate fitness!\n"
             + "See you again soon :)\n";
@@ -17,6 +17,17 @@ public class Messages {
     public static final String MESSAGE_HELP_GREETINGS = "Thank you for choosing to be healthier with us.\n"
             + "The current version of this application is: " + MESSAGE_VERSION + "\n"
             + MESSAGE_FEATURES + "\n";
+    public static final String MESSAGE_CHECK_GOALS_PROMPT = "Check out your current goals with command 'check'.\n";
+    public static final String MESSAGE_SAME_DAY = "Welcome back to Healthier today.";
+    public static final String MESSAGE_NEW_DAY = "Nice to see you on a brand new day!\n"
+            + "All progress of daily goals have been reset for you.\n";
+    public static final String MESSAGE_NEW_WEEK = "Today marks a new week.\nThis week is week %s.\n"
+            + "All progress of weekly goals have been reset for you.\n";
+    public static final String MESSAGE_UNACHIEVED_GOALS = "You have unachieved goals.\n";
+    public static final String MESSAGE_GOALS_DONE_TODAY = "Congratulations!\n"
+            + "You have achieved all daily goals for today!";
+    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "Congratulations!\n"
+            + "You have achieved all weekly goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
     public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\t\tProgress\n";
@@ -34,6 +45,10 @@ public class Messages {
             + "number.\nPlease try again.";
     public static final String MESSAGE_INDEX_OUT_OF_RANGE_EXCEPTION = "The index entered is out of range.\n"
             + "Please try again.";
+    public static final String MESSAGE_CANT_INIT_STORAGE = "Sorry, the system is unable to initialize storage "
+            + "due to IO exception.";
+    public static final String MESSAGE_CANT_STORE_TIME = "Sorry, the system is unable to store the time "
+            + "due to IO exception.";
     public static final String MESSAGE_CANT_ADD_RECORD = "Sorry, you cannot add record of an unrecognized type.";
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "

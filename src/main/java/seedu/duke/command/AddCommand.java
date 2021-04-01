@@ -3,6 +3,7 @@ package seedu.duke.command;
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
 import seedu.duke.exception.TypeException;
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Record;
 import seedu.duke.record.BodyWeight;
 import seedu.duke.record.Diet;
@@ -54,9 +55,10 @@ public class AddCommand extends Command {
 
     public CommandResult execute(FitCenter fitCenter) {
         LocalDate currentDate = LocalDate.now();
+        int currentWeekOfYear = TimeController.getSystemWeekOfYear();
         if (record != null) {
             fitCenter.addRecordToList(recordType, record);
-            fitCenter.updateDailyProgressAtAdding(record, currentDate);
+            fitCenter.updateProgressAtAdding(record, currentDate, currentWeekOfYear);
             feedback = String.format(FEEDBACK_FORMAT, record.getType(), record.getRecordSummary());
         } else {
             feedback = Messages.MESSAGE_CANT_ADD_RECORD;
