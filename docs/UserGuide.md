@@ -515,7 +515,12 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 Adds a new schedule to the list of nurse schedules.
 (Note for ID: N/P = Nurse/Patient)
 
-Format: `add/[Nurse ID]/[Patiend ID]/[Date (DDMMYYYY)]`
+Format: `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
 Example of usage:
 
@@ -542,6 +547,11 @@ Deletes a schedule from the list of nurse schedules.
 
 Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>2. HealthVault only accepts valid Date inputs.
+
 Deletes a schedule with the specified Nurse ID and Date.
 
 Example of usage:
@@ -565,6 +575,10 @@ Example Screenshot:
 List either all schedules or specified Nurse ID's schedule.
 
 Format: `list/[Nurse ID/all]`
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 
 Example of usage(Nurse ID):
 
