@@ -2,7 +2,7 @@
 !include style.puml
 
 Participant ":Finux" as Finux
-Participant ":UI" as UI
+Participant ":Ui" as UI
 Participant ":Storage" as Storage
 Participant ":RecordList" as RecordList
 Participant ":ParserHandler" as ParserHandler

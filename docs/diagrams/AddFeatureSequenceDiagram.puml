@@ -1,0 +1,54 @@
+@startuml
+!include style.puml
+
+Participant ":AddCommand" as AddCommand
+Participant ":Expense" as Expense
+Participant ":Loan" as Loan
+Participant ":Saving" as Saving
+Participant ":RecordList" as RecordList
+Participant ":Storage" as Storage
+Participant ":Ui" as UI
+
+
+[-> AddCommand : execute()
+activate AddCommand
+
+alt EXPENSE
+    create Expense
+    AddCommand -> Expense : Expense(amount, issueDate, description)
+    activate Expense
+    Expense --> AddCommand : record : Record
+    deactivate Expense
+else LOAN
+    create Loan
+    AddCommand -> Loan : Loan(amount, issueDate, description, borrowerName)
+    activate Loan
+    Loan --> AddCommand : record : Record
+    deactivate Loan
+else SAVING
+    create Saving
+    AddCommand -> Saving : Saving(amount, issueDate, description)
+    activate Saving
+    Saving --> AddCommand : record : Record
+    deactivate Saving
+end
+
+AddCommand -> RecordList : addRecord(record)
+activate RecordList
+RecordList --> AddCommand
+deactivate RecordList
+
+AddCommand -> Storage : saveData(recordList, ...)
+activate Storage
+Storage --> AddCommand
+deactivate Storage
+
+AddCommand -> UI : printSuccessfulAdd(record)
+activate UI
+UI --> AddCommand
+deactivate UI
+
+[<-- AddCommand
+deactivate AddCommand
+
+@enduml

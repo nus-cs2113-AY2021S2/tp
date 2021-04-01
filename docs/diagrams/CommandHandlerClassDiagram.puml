@@ -2,7 +2,7 @@
 skinparam classAttributeIconSize 0
 hide circle
 
-note "Private methods are omitted." as N1
+note "Private attributes and methods are omitted." as N1
 
 class CommandHandler {
     -isExit : boolean

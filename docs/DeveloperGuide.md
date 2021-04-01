@@ -137,11 +137,11 @@ _Figure 1: **Finux** Architecture Diagram_
 The _**Architecture Diagram**_ above details the high-level design of the **Finux** Application.
 Brief explanations of the components involved are given below.
 
-The `Finux` component contains only one class `Finux`, It is responsible for,
+The `Finux` component is the object class itself, It is responsible for,
 * At launch: Initializes the components in the correct sequence and attempts to load data from file.  
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
-The rest of the Application consists of six components.
+The rest of the Application consists of six main components.
 * `Ui`: The user interface (Ui) of the App which handles all user input and Application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
@@ -161,8 +161,9 @@ retrieval from storage file for creation of the `RecordList` object.
 ![Main program flow](img/CommandLooperSequenceDiagram.png)\
 _Figure 3: Main Application Loop & Exit Sequence_
 
-> 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML,
-> the lifeline reaches the end of diagram.
+> 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML, 
+> the lifeline reaches the end of diagram. This limitation persists throughout all sequence diagram in 
+> this guide.
 
 This sequence diagram follows suit after initialization in _Figure 2_.\
 This shows the main flow until the `exit` command is input by the user.
@@ -231,7 +232,7 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
 5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
    the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
    pairwise logic.
-6. getParseInput should always return a new ArrayList<String> per new input.
+6. `getParseInput(String)` should always return a new ArrayList<String> per new input.
 
 
 ### 3.4 CommandHandler Component
@@ -264,7 +265,7 @@ Finally, if `parsedArguments[0]` cannot be mapped to any command, a `CommandExce
 thrown to `Finux` to handle.
 
 Not stated explicitly in the diagrams, when the `exit` command is entered, the `CommandHandler`
-sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exit the Application.
+sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
@@ -272,15 +273,18 @@ _Figure 8: Command Class Diagram_
 
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
-These constants are used by the `CommandHandler` to map to each `Command`.
+These constants are used by the `CommandHandler` to map to each `Command`.\
+In the case of `AddCommand` in _Figure 8_, the resultant constant is `...final String COMMAND_ADD = "add";`.\
+More on the different types of commands and usages, please refer to our [User Guide](UserGuide.md).
 
 #### Description
-The `Command` component contains the `abstract Command` class and its extensions. The extensions 
-of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
+The `Command` component contains the `abstract Command` class and its extensions (child classes).
+Each child class inherits the `Command` class.
+The child classes of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
 
 #### Design
-The only `abstract` method of `Command` is `execute(...)` where it is called everytime a `Command`
-object is created. Most of the input validation is done in the constructor of each Command object. 
+The only `abstract` method of `Command` is `execute(...)`, where it is called by `Finux` everytime a `Command`
+object is successfully created. Most of the input validation is done in the constructor of each Command object. 
 1. Firstly, arguments are checked for validity (if any):
    1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
@@ -392,18 +396,26 @@ of some features in **Finux**.
 
 ### 4.1 Add Feature
 The `add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
+
+#### 4.1.1 Current Implementation
+The `add` feature is facilitated by `AddCommand`.\
 When adding an expense `add -e bread loaf -a 2.50 -d today`, or\
 adding a savings `add -s week's savings -a 100 -d 28/03/2021`, or\
 adding a loan `add -l loan to gerard -a 200 -d 12012021 -p Gerard`,
 the `ParserHandler` will parse the input for `CommandHandler` to create the `AddCommand` object.
-By calling the `execute()` method, the respective `Expense`, `Saving` or `Loan` object is added 
-into the `RecordList`.
 
-#### 4.1.1 Current Implementation
-...
+By calling the `execute()` method,
+* the respective `Expense`, `Saving` or `Loan` object is added into the `RecordList` by invoking
+  `addRecord(Record)`.
+* Next, the `saveData(...)` from the `Storage` object is invoked to store the records to file.
+* Finally, a notification is printed onto the console with the help of `Ui`.
 
-#### 4.3.2 Design Consideration
-...
+![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
+_Figure x: Sequence Diagram for `add {-e | -l | -s}`_
+
+#### 4.1.2 Design Consideration
+This section shows the design considerations taken when implementing the add feature.
+
 
 ### 4.2 List Feature
 The `list` feature allows Finux users to list records that they have entered into the system.

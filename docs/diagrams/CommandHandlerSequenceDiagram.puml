@@ -22,11 +22,11 @@ alt parsedArguments[0] is "xyz"
     CommandHandler --> Finux : command : Command
     deactivate CommandHandler
     else exception - argument error
-        Finux --[#white]> CommandHandler
+        Finux --[hidden]> CommandHandler
         activate CommandHandler
-        CommandHandler -[#white]> CommandHandler
+        CommandHandler -[hidden]> CommandHandler
         activate CommandHandler
-        CommandHandler --[#white]> XYZCommand
+        CommandHandler --[hidden]> XYZCommand
         activate XYZCommand
         XYZCommand --> CommandHandler : CommandException
         deactivate XYZCommand
@@ -37,18 +37,18 @@ alt parsedArguments[0] is "xyz"
         deactivate CommandHandler
     end
 else parsedArguments[0] is empty string
-    Finux --[#white]> CommandHandler
+    Finux --[hidden]> CommandHandler
     activate CommandHandler
-    CommandHandler -[#white]> CommandHandler
+    CommandHandler -[hidden]> CommandHandler
     activate CommandHandler
     CommandHandler --> CommandHandler
     deactivate CommandHandler
     CommandHandler --> Finux : null
     deactivate CommandHandler
 else exception - parsedArguments[0] invalid command
-    Finux --[#white]> CommandHandler
+    Finux --[hidden]> CommandHandler
     activate CommandHandler
-    CommandHandler -[#white]> CommandHandler
+    CommandHandler -[hidden]> CommandHandler
     activate CommandHandler
     CommandHandler --> CommandHandler
     deactivate CommandHandler

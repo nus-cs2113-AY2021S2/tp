@@ -2,8 +2,6 @@
 skinparam classAttributeIconSize 0
 hide circle
 
-note "Other child Command objects omitted for brevity.\nPrivate methods are omitted." as N1
-
 abstract class "{abstract}\nCommand" as Command {
     {abstract} +execute()
 }
@@ -25,11 +23,15 @@ class AddCommand {
     +execute()
 }
 
-skinparam linetype polyline
+note right of Command::execute
+    Parameters omitted for brevity.
+end note
 
 Command <|-- AddCommand
 
 hide RecordType empty members
 Command -left[hidden] RecordType
+
+note "Other child Command objects omitted for brevity.\nPrivate methods are omitted." as N1
 
 @enduml
