@@ -17,6 +17,13 @@ public class ExerciseGoal extends Goal {
         initializeProgress();
     }
 
+    /**
+     * Initialize an instance of an exercise goal.
+     *
+     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param targetEnergy the target energy to be burnt.
+     * @param daySet       the date when the goal is set.
+     */
     public ExerciseGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
         super(RecordType.EXERCISE, periodType, targetEnergy, daySet);
         initializeProgress();
@@ -28,11 +35,6 @@ public class ExerciseGoal extends Goal {
         return "Kcal";
     }
 
-    /**
-     * Gets a string summary of all info of this goal instance.
-     *
-     * @return a summary of all info of this goal instance in String.
-     */
     @Override
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
@@ -41,11 +43,6 @@ public class ExerciseGoal extends Goal {
                 + "Progress: " + getProgress() + " " + getProgressUnit();
     }
 
-    /**
-     * Gets all data of the goal in a table row.
-     *
-     * @return a string of all data of the goal in a table row.
-     */
     @Override
     public String getGoalData() {
         return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"

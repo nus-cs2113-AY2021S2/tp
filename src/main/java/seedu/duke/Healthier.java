@@ -62,6 +62,9 @@ public class Healthier {
         System.exit(0);
     }
 
+    /**
+     * Executes the application.
+     */
     public void run() {
         try {
             start();
@@ -72,6 +75,11 @@ public class Healthier {
         }
     }
 
+    /**
+     * The main method of this application.
+     *
+     * @param args commandLine arguments.
+     */
     public static void main(String[] args) {
         new Healthier().run();
     }

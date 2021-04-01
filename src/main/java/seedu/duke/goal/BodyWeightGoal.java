@@ -17,12 +17,20 @@ public class BodyWeightGoal extends Goal {
         initializeProgress();
     }
 
+    /**
+     * Initialize an instance of an exercise goal.
+     *
+     * @param periodType       the period type of the goal which can be daily or weekly.
+     * @param targetBodyWeight the target body weight.
+     * @param daySet           the date when the goal is set.
+     */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight, daySet);
         initializeProgress();
     }
 
-    protected void initializeProgress() {
+    @Override
+    public void initializeProgress() {
         progress = -1;
     }
 
@@ -36,11 +44,6 @@ public class BodyWeightGoal extends Goal {
         return "Kg";
     }
 
-    /**
-     * Gets a string summary of all info of this goal instance.
-     *
-     * @return a summary of all info of this goal instance in String.
-     */
     @Override
     public String getGoalSummary() {
         if (progress == -1) {
@@ -56,11 +59,6 @@ public class BodyWeightGoal extends Goal {
         }
     }
 
-    /**
-     * Gets all data of the goal in a table row.
-     *
-     * @return a string of all data of the goal in a table row.
-     */
     @Override
     public String getGoalData() {
         if (progress == -1) {
