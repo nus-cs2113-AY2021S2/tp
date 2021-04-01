@@ -50,12 +50,24 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 ### Parser component
 
-* Receives the full command line from receiveCommand().
-* Depends on the key command, Parser will activate specific commands.
+The `Parser`,
 
-The diagram below shows how parser determines which command to activate based on the key command.
+* handles read and write of units into a local text file. -- edit
+* manages data in ShortList. -- edit
 
-![Structure of the Parser Component](diagrams/ParserSequence.png)
+**How classes within Parser component interact with each other**
+
+The *Sequence Diagram* below shows how the components ........ - edit
+
+<img src="diagrams/ParserSequence.png" />
+
+### Command component
+
+![Structure of the Command Component](diagrams/CommandClass.png)
+
+most already covered in previous diagram. here we describe sort command as an example - edit
+
+![Structure of the Storage Component](diagrams/sortCommand_Sequence_Diagram.jpg)
 
 ## Product scope
 ### Target user profile
@@ -173,6 +185,16 @@ testers are expected to do more *exploratory* testing.
    
    2. Incorrect inputs to try: `shortlist x` (where x is any string input)<br>
       Expected: Similar to previous.
+      
+### Sorting results by price in ascending or descending order
+
+10. Sorting results in ascending order 
+
+    1. Test case: `sort asc` to display unit(s) in ascending order of price.
+       
+11. Sorting results in descending order 
+
+    1. Test case: `sort desc` to display unit(s) in descending order of price.
 
 ## Error Handling
 
@@ -201,14 +223,3 @@ to use.
 
 When user initiates a `filter` command with an invalid filter, the app will return an exception `InvalidFilterException`
 and will list out all the possible filters.
-
-### Sorting results by price in ascending or descending order
-10. Sorting results in ascending order 
-    1. Test case: `sort asc` to display unit(s) in ascending order of price.
-       
-11. Sorting results in descending order 
-      1. Test case: `sort desc` to display unit(s) in descending order of price.
-
-### sortCommand Sequence Diagram
-
-![Structure of the Storage Component](diagrams/sortCommand_Sequence_Diagram.jpg)
