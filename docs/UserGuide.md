@@ -588,20 +588,25 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 &nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
 &nbsp;&nbsp;&nbsp;&nbsp; (Note for ID: N/P = Nurse/Patient)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
+>
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
 &nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
