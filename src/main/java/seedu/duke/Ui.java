@@ -398,17 +398,11 @@ public class Ui {
         System.out.println(moduleDescription);
     }
 
-    public static boolean printModulePrompt() {
-        System.out.println("Would you like to add/view component(s) to a module? [Y/N]");
-        String yesNo = Ui.readCommand();
-        if (yesNo.trim().equalsIgnoreCase("Y")) {
-            System.out.println("Which action would you like to proceed with? Key in 1 or 2.");
-            System.out.println("[" + 1 + "] --- Add Component");
-            System.out.println("[" + 1 + "] --- View Component");
-            return true;
-        } else {
-            return false;
-        }
+    public static void printModulePrompt() {
+        System.out.println("Which action would you like to proceed with? Key in 1 or 2.");
+        System.out.println("[" + 1 + "] --- Add Component");
+        System.out.println("[" + 2 + "] --- View Component");
+
         //for (Module module : ModuleInfo.modules) {
         //System.out.println(module.getName());
         //}
@@ -585,7 +579,7 @@ public class Ui {
 
     public static void printCapSimulatorPrompt() {
         System.out.println("Welcome to CAP Simulator Version 2!\n"
-                + " You have chosen to simulate CAP base on your input.");
+                + "You have chosen to simulate CAP base on your input.");
         System.out.println("THINGS TO NOTE: ");
         System.out.println("You may key in 'q' to quit and 'ok' after finishing your inputs.");
         System.out.println("You may key in your letter grades "
@@ -609,7 +603,7 @@ public class Ui {
                 + "[1] --- Add CAP and Number of MCs graded taken\n"
                 + "[2] --- View CAP and Number of MCs graded taken\n"
                 + "[3] --- Simulate future CAP\n"
-                + "[4] --- Exit\n");
+                + "[4] --- Exit");
     }
 
     public static void getCurrentCapPrompt() {

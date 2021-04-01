@@ -49,7 +49,7 @@ public class Component {
 
         boolean isModuleExist = false;
         viewAllModules();
-        System.out.println("Which module would you like to add a component?");
+        System.out.println("Which module would you like to view components?");
         int moduleNumberInt = Ui.readCommandToInt();
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;

@@ -325,62 +325,55 @@ Returning to module information menu...
 
 #### 3.1.5 Add/View Components and Their Weightages
 
+> **Note!**  
+> This feature has no storage functionality! Components added will be erase after end of program. [Work in progress]
+
 * Example for adding components and weightage to a module Input:  
-  `2`   
-  Output:
-  ````
-  Would you like to add/view component(s) to a module? [Y/N]  
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````  
-  Key in 1 to add component and 2 to view component  
-  ````
-  Input:  
-  `1`  
-  Output:
-  ````
-  Module Name?
-  ````
-  Input:  
-  `CS2113T`  
-  Output:
-  ````
-  Please key in your component and percentage of the component.
-  Leave space between component and percentage only.
-  Example: FinalExam 20
-  ````
-  Input:  
-  `FinalExam 20`  
-  Output:
-  ````
-  Component and weightage added!
-  ````
+````
+Which action would you like to proceed with? Key in 1 or 2.
+[1] --- Add Component
+[2] --- View Component
+> 1
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CG1112
+[3] --- CS1010
+--------------------------------------------
+Which module would you like to add a component?
+> 1
+--------------------------------------------
+Please key in your component and percentage of the component. 
+Leave space between component and percentage only.
+Example: FinalExam 20
+> FinalExam 40
+--------------------------------------------
+Component and weightage added!
+```` 
+ 
+
+
 * Example for viewing the components and weightage of an existing module Input:  
-  `2`  
-  Output:
-    ````
-    Would you like to add/view component(s) to a module? [Y/N]
-    ````
-  Input:  
-  `Y`  
-  Output:
-    ````
-    Key in 1 to add component and 2 to view component
-    ````
-  Input:  
-  `2`  
-  Output:
-    ````
-    Module Name?
-    ````
-  Input:  
-  `CS2113T`  
-  Output:
-    ````
-  {FinalExam=20}
-    ````  
+  
+````
+Which action would you like to proceed with? Key in 1 or 2.
+[1] --- Add Component
+[2] --- View Component
+> 2
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CG1112
+[3] --- CS1010
+--------------------------------------------
+Which module would you like to view components?
+> 1
+--------------------------------------------
+From Module object: CS2113T
+{FinalExam=40}
+````
 
 #### 3.1.6 Add Module's Modular Credits (MC)
 
@@ -543,85 +536,114 @@ Please choose which action you would like to do and enter the number:
 
 #### 3.2.1 Add CAP and Number of MCs graded taken
 
-Adds current CAP and MCs counted into the CAP.  
-Exits program if CAP is invalid (to be rectified later).  
-[i.e. negative CAP or CAP > 5.0]
+This feature allows you to add current CAP and MCs counted into the CAP.  
+The program exits program if CAP is invalid.  
+[i.e. negative CAP or CAP > 5.0]  
+There is no strict restriction to number of MCs user can add and its up to user's discretion.
 
-Input:  
-`1`  
-Output:
 
 ````
+Please choose which action you would like to do and enter the number:
+[1] --- Add CAP and Number of MCs graded taken
+[2] --- View CAP and Number of MCs graded taken
+[3] --- Simulate future CAP
+[4] --- Exit
+> 1
+--------------------------------------------
 Please key in your current CAP: [e.g. 4.33]
-````  
-
-Input:  
-`5`  
-Output:
-
-````
+> 4.5
+--------------------------------------------
 Please key in the number of MCs graded you have taken so far: 
-````  
-
-Input:  
-`20`  
-Output:
-
-````
-Current CAP: 5.0  
+> 20
+--------------------------------------------
+Current CAP: 4.5
 Number of Graded MCs Taken: 20
-````  
-
+Returning to CAP simulator/calculator menu...
+````
 #### 3.2.2 View CAP and Number of MCs graded taken
 
-Views current CAP and MCs counted into the CAP.
-
-Input:  
-`2`  
-Output:
+This feature allows you to view current CAP and MCs counted into the CAP.
 
 ````
-Current CAP: 5.0  
+Please choose which action you would like to do and enter the number:
+[1] --- Add CAP and Number of MCs graded taken
+[2] --- View CAP and Number of MCs graded taken
+[3] --- Simulate future CAP
+[4] --- Exit
+> 2
+--------------------------------------------
+Current CAP: 4.5
 Number of Graded MCs Taken: 20
+Returning to CAP simulator/calculator menu...
 ````
 
 #### 3.2.3 Simulate future CAP
 
-Simulates future CAP base on the current CAP and MCs counted into the CAP.  
+This feature simulates future CAP base on the current CAP and MCs counted into the CAP.  
 Once done, enter `ok` when prompt with entering a new grade again.
 
-Input:  
-`3`  
-Output:
+There are two versions of CAP Simulator:
+ - v1.0: This version allows you to simulate CAP base on the grades you have entered before in each module.
+ - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+
+When you enter CAP Simulator, it will welcome you with the following interface!
 
 ````
-You may key in your letter grades and MCs associated with the letter grade.
+Welcome to CAP Simulator!
+Note: CAP Simulated takes your current CAP and total number of MCs taken into account.
+If you intend to calculate your CAP solely on new entries, 
+please go back to the HelpGraduation menu and set existing CAP and MCs taken to be 0.
+
+Key in 1 to simulate your cap base on the grades you have entered before for each module.
+Key in 2 to simulate cap base on your own input.
+````
+###### Version 1  
+
+````
+> 1
+--------------------------------------------
+Calculating on the following entries entered: 
+Grades entered: [A, A, SU]
+MCs entered: [4, 6, 4]
+Current CAP: 4.5
+Current Graded MCs taken: 20
+The simulated cumulative average point you have is: 
+4.666666666666667
+Returning to CAP simulator/calculator menu...
+````  
+
+###### Version 2
+
+````
+Welcome to CAP Simulator Version 2!
+You have chosen to simulate CAP base on your input.
+THINGS TO NOTE: 
+You may key in 'q' to quit and 'ok' after finishing your inputs.
+You may key in your letter grades follow by MCs associated with the letter grade after each prompt. 
+
 Key in a grade: [e.g. A+, B, B-]
-````  
-
-Input:  
-`C`  
-Output:
-
-````
+A+
+--------------------------------------------
 Key in MCs for the associated module: 
-````  
-
-Input:  
-`4`  
-Output:
-
-````
-Key in a grade: [e.g. A+, B, B-] 
-````  
-
-Input:  
-`ok`  
-Output:
-
-````
-The simulated cumulative average point you have is:  
-4.5
+6
+--------------------------------------------
+Key in a grade: [e.g. A+, B, B-]
+B+
+--------------------------------------------
+Key in MCs for the associated module: 
+4
+--------------------------------------------
+Key in a grade: [e.g. A+, B, B-]
+ok
+--------------------------------------------
+Calculating on the following entries entered: 
+Grades entered: [A+, B+]
+MCs entered: [6, 4]
+Current CAP: 4.5
+Current Graded MCs taken: 20
+The simulated cumulative average point you have is: 
+4.533333333333333
+Key in a grade: [e.g. A+, B, B-]
 ````  
 
 ---
