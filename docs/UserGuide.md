@@ -2,7 +2,10 @@
 
 ## Introduction
 
-{Give a product intro}
+FastScheduler is a scheduler for restaurant managers to keep track of staffs' shifts.
+
+Our target user profile are shift managers for fast food restaurants such as McDonald’s, where they have to manage and plan the working schedules for different types of staff. The shift managers are expert users who prefer typing and are proficient in using command line interface.
+
 
 ## Quick Start
 
