@@ -109,7 +109,6 @@ CLI takes in a user input from the input marker as shown in the image included b
 
 After keying in their input, the most common way to enter the response into the system is to press the <kbd>Enter</kbd> key for the command to be registered.
 
-<br/><br/>
 
 
 ### <a name="section2"> 3.2 Installation Guide</a>
@@ -130,8 +129,7 @@ After keying in their input, the most common way to enter the response into the 
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar jar [JAR file name]`
   
-
-
+<br/><br/>
 
 ## 4. Start Menu
 
@@ -219,13 +217,10 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Staff ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has at least 5 digits in the number following! 
 >
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
->2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
->3. The gender field input should only be "M", "F" or "Others"
->4. The age field input should be a positive integer not more than 150
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -397,7 +392,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> list```
 
@@ -415,9 +410,9 @@ When you first enter the Patient menu, you will be greeted with the following we
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `find/[Keyword/Phrase]`
 
 >:information_source: Important notes about the input format
+>1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 >
->1. Other than inputting known values like the ID or Name, the inputted field can be an arbitrary input. HealthVault will search through the list of patients for any patient that matches the keyword or phrase.
->2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters.
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -466,6 +461,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 <img src="images/DoctorAppointmentWelcome.jpg" width = "800">
 
+<br/><br/>
 
 #### Adding an appointment: `add`
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new doctor's appointment to the list of appointments.
@@ -593,7 +589,6 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 #### Adding a new schedule: `add`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Note for ID: N/P = Nurse/Patient)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 
