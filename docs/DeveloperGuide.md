@@ -28,7 +28,7 @@
    4.5 [Remove Feature](#45-remove-feature)\
    4.6 [Storage Feature](#46-storage-feature)\
    4.7 [Credit Score Feature](#47-credit-score-feature)
-5. [Documentation, Logging, Testing, and DevOps](#5-documentation-logging-testing-and-devops)\
+5. [Documentation, Logging, Testing, and DevOps](#5-documentation-logging-testing-and-devops)
 
 [Appendix A: Product Scope](#appendix-a-product-scope)\
 \
@@ -182,7 +182,7 @@ The `Ui` component actively listens for:
 * the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
-![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png) <br>
+![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)\
 _Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
@@ -196,18 +196,16 @@ finalizing the startOptionArray, endOptionArray, and middleOptionArray. Whenever
 to parse a user input, the ParserHandler calls the method `getParseInput` and returns an `ArrayList<String>`.
 
 1. `getParseInput` will trim the leading white space before calling `startExtraction`.
-2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and 
+2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and
    remove the option from the trimmed input before calling `extractSubsequencePart`.
-3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the 
-   trimmed input to the start of the next option index. This is the argument tagged after the option. 
+3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the
+   trimmed input to the start of the next option index. This is the argument tagged after the option.Afterward, 
+   the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored an empty string.
-   
-   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
-   
-4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and 
-   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>. 
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will 
+4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and
+   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>.
+5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will
    call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
@@ -269,7 +267,7 @@ Not stated explicitly in the diagrams, when the `exit` command is entered, the `
 sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
-![CommandClassDiagram](img/CommandClassDiagram.png)
+![CommandClassDiagram](img/CommandClassDiagram.png)\
 _Figure 8: Command Class Diagram_
 
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
@@ -302,7 +300,7 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 
 ### 3.7 Storage Component
 
-![StorageClassDiagram](img/StorageClassDiagram.png)
+![StorageClassDiagram](img/StorageClassDiagram.png)\
 _Figure X: Storage Class Diagram_
 
 #### Description
@@ -433,7 +431,7 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
-![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png) <br>
+![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
 _Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
