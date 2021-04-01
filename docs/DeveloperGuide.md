@@ -52,20 +52,33 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The `Parser`,
 
-* handles read and write of units into a local text file. -- edit
-* manages data in ShortList. -- edit
+* Receives the full command line from receiveCommand().
+* Depends on the key command, Parser will activate specific commands.
+
+The diagram below shows how parser determines which command to activate based on the key command.
 
 **How classes within Parser component interact with each other**
 
-The *Sequence Diagram* below shows how the components ........ - edit
+The *Sequence Diagram* below shows how the components interact with each other after the full user input is passed into the `Parser`.
 
-<img src="diagrams/ParserSequence.png" />
+![Structure of the Parser Component](diagrams/ParserSequence.png)
+
+The CommandEvaluator class extracts the information from the full input and thereafter passes a keyCommand to the Parser class for it to return the appropriate Command to the main method.
 
 ### Command component
 
+The `Command`,
+
+* Handles the appropriate actions to perform for each Command.
+* Uses the information from the UserInput object passed into it for certain Commands.
+
+The *Class Diagram* below shows the different Commands and the respective information they use from the UserInput object.
+
 ![Structure of the Command Component](diagrams/CommandClass.png)
 
-most already covered in previous diagram. here we describe sort command as an example - edit
+**How classes within Command component interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other when the Sort Command is executed.
 
 ![Structure of the Storage Component](diagrams/sortCommand_Sequence_Diagram.jpg)
 
