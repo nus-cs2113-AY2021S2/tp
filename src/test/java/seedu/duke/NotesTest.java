@@ -60,7 +60,7 @@ public class NotesTest {
         NusMap nusMap = new NusMap();
         nusMap.getBlock("E4").addNote("Hi");
         nusMap.getBlock("E4").addNote("Party");
-        nusMap.getBlock("E4").deleteNote(1);
+        nusMap.getBlock("E4").deleteNote(0); //1
         ArrayList<String> notes = new ArrayList<>();
         notes.add("Party");
         assertEquals(nusMap.getBlock("E4").getNotes(), notes);
