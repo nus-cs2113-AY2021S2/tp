@@ -679,4 +679,8 @@ public class Ui {
     public static void printEraseSimulationEntriesMessage() {
         System.out.println("Erasing current simulation entries...\n");
     }
+
+    public static void printFilesCouldNotBeSavedMessage() {
+        System.out.println("files could not be auto-saved:(");
+    }
 }

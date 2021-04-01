@@ -6,8 +6,6 @@ import seedu.duke.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.duke.capsimulator.ModuleGradeEnum.*;
-
 public class HelpGraduation {
 
     private static Double currentCap = 0.0;
@@ -54,12 +52,12 @@ public class HelpGraduation {
                 String grade = module.getGrade();
                 int modularCredits = module.getMc();
 
-                if (!checkPassFailGrade(grade)) {
+                if (!ModuleGradeEnum.checkPassFailGrade(grade)) {
                     totalMCs += modularCredits;
                 }
                 gradesInString.add(grade);
                 String moduleName = module.getName();
-                listOfGrades.add(checkScoreAgainstGrade(grade, moduleName));
+                listOfGrades.add(ModuleGradeEnum.checkScoreAgainstGrade(grade, moduleName));
                 listOfMCs.add(modularCredits);
             }
             capCalculator(listOfGrades, listOfMCs, totalMCs);
@@ -69,7 +67,7 @@ public class HelpGraduation {
             while (true) {
                 Ui.printGradePerModulePrompt();
                 String grades = Ui.readCommand().toUpperCase();
-                if (checkGradeExist(grades)) {
+                if (ModuleGradeEnum.checkGradeExist(grades)) {
                     gradesInString.add(grades);
                 }
                 switch (grades) {

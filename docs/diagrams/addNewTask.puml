@@ -1,74 +1,105 @@
 @startuml
 
-participant TaskManager
-activate TaskManager
-TaskManager -> TaskManager++ : addNewTask
-TaskManager -> TaskManager++ : getTaskNumber
-return
-TaskManager -> AddTask++ : execute
+activate ":Duke"
+":Duke" -> ":TaskManager"++ : execute
 
-alt ModuleInfo.modules.isEmpty()
-AddTask -> Ui++ : printNoModuleMessage
+loop true
+
+":TaskManager" -> ":Ui"++ : printTaskManagerMenu
 return
-AddTask -> Ui++ : readCommand
+":TaskManager" -> ":Ui"++ : readCommand
 return
-    opt input.equalsIgnoreCase("N")
-    AddTask --> TaskManager
+
+alt Integer.parseInt(command)
+    opt command.equals(EXIT_COMMAND)
+    ":TaskManager" --> ":Duke"
     end
-AddTask -> ModuleInfo++ : addNewModule
-return
-AddTask -> ModuleInfo++ : modules
-ModuleInfo -> Module++ : getName
-return
-destroy Module
-return
-destroy ModuleInfo
 
-else !ModuleInfo.modules.isEmpty()
-AddTask -> Ui++ : printAddTaskModuleMessage
+":TaskManager" -> ":TaskManager"++ : addNewTask
+":TaskManager" -> ":Ui"++ : printAddTaskMenu
 return
-AddTask -> AddTask++ : printAndGetModule
+":TaskManager" -> ":TaskManager"++ : getTaskNumber
 return
-    opt module.equals("")
-    AddTask --> TaskManager
+":TaskManager" -> ":AddTask"++ : execute
+
+    alt ModuleInfo.modules.isEmpty()
+    ":AddTask" -> ":Ui"++ : printNoModuleMessage
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+        opt input.equalsIgnoreCase("N")
+        ":AddTask" --> ":TaskManager"
+        end
+    ":AddTask" -> ":ModuleInfo"++ : addNewModule
+    return
+    ":AddTask" -> ":ModuleInfo"++ : modules
+    ":ModuleInfo" -> ":Module"++ : getName
+    return
+    destroy ":Module"
+    return
+    destroy ":ModuleInfo"
+
+    else !ModuleInfo.modules.isEmpty()
+    ":AddTask" -> ":Ui"++ : printAddTaskModuleMessage
+    return
+    ":AddTask" -> ":AddTask"++ : printAndGetModule
+    return
+        opt module.equals("")
+        ":AddTask" --> ":TaskManager"
+        end
     end
+
+    ":AddTask" -> ":Ui"++ : printAddTaskDescriptionMessage
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+
+    opt taskNumber != 1
+    ":AddTask" -> ":AddTask"++ : getDate
+    return
+    ":AddTask" -> ":AddTask"++ : getTime
+    return
+    end
+
+    ":AddTask" -> ":Ui"++ : printAddMessageAfterCompletedTask
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+
+    alt ADD_TASK_COMMAND
+    ":AddTask" -> ":AddTask"++ : addTask
+    return
+    else ADD_ASSIGNMENT_COMMAND
+    ":AddTask" -> ":AddTask"++ : addAssignment
+    return
+    else ADD_MIDTERM_COMMAND
+    ":AddTask" -> ":AddTask"++ : addMidterm
+    return
+    else ADD_FINAL_EXAM_COMMAND
+    ":AddTask" -> ":AddTask"++ : addFinalExam
+    return
+    else
+    ":AddTask" -> ":Ui"++ : printInvalidIntegerMessage
+    return
+    end
+
+    return
+    return
+
+else NumberFormatException
+":TaskManager" -> ":Ui"++ : printInvalidIntegerMessage
+return
 end
 
-AddTask -> Ui++ : printAddTaskDescriptionMessage
+alt
+":TaskManager" -> ":Storage"++ : saveAllFiles
 return
-AddTask -> Ui++ : readCommand
-return
-
-opt taskNumber != 1
-AddTask -> AddTask++ : getDate
-return
-AddTask -> AddTask++ : getTime
+else IOException
+":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
 return
 end
 
-AddTask -> Ui++ : printAddMessageAfterCompletedTask
-return
-AddTask -> Ui++ : readCommand
-return
-
-alt ADD_TASK_COMMAND
-AddTask -> AddTask++ : addTask
-return
-else ADD_ASSIGNMENT_COMMAND
-AddTask -> AddTask++ : addAssignment
-return
-else ADD_MIDTERM_COMMAND
-AddTask -> AddTask++ : addMidterm
-return
-else ADD_FINAL_EXAM_COMMAND
-AddTask -> AddTask++ : addFinalExam
-return
-else
-AddTask -> Ui++ : printInvalidIntegerMessage
-return
 end
-
-return
 return
 
 @enduml
