@@ -7,6 +7,6 @@ public class NonExistentDrugException extends HealthVaultException {
         this.error = error;
     }
     public void getError(String input) {
-        System.out.println("NonExistentDrugException!");;
+        System.out.println("OOPS! This drug does not exist in the Inventory!");;
     }
 }

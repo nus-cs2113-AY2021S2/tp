@@ -79,7 +79,7 @@ public class Constants {
     public static final String PATIENT_ADD_FORMAT = "add/[Patient ID]/[Name]/[Age]/[Gender][Illness][Medication Needed]";
     public static final String APPOINTMENTS_ADD_FORMAT = "add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]";
     public static final String SCHEDULES_ADD_FORMAT = "add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_ADD_FORMAT = "";
+    public static final String INVENTORY_ADD_FORMAT = "add/[Drug name]/[Price]/[Quantity]";
 
 
     // LIST FUNCTION DESCRIPTION
@@ -93,7 +93,7 @@ public class Constants {
     public static final String STAFF_LIST_FORMAT = "list/<input>, where input == doctor or nurse";
     public static final String APPOINTMENTS_LIST_FORMAT = "list/[DoctorID/AppointmentID]";
     public static final String SCHEDULES_LIST_FORMAT = "list/[NurseID/all]";
-    public static final String INVENTORY_LIST_FORMAT = "";
+    public static final String INVENTORY_LIST_FORMAT = "list";
 
 
     // DELETE FUNCTION DESCRIPTION
@@ -102,7 +102,7 @@ public class Constants {
             "Deletes the Patient with the specified ID from the list!";
     public static final String APPOINTMENTS_DELETE_DESCRIPTION = "Deletes the Appointment with the specified ID from the list!";
     public static final String SCHEDULES_DELETE_DESCRIPTION = "Deletes the Schedule with the specified ID from the list!";
-    public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory Item with the specified ID from the list!";
+    public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory item from the list!";
     // DELETE FUNCTION FORMATTING
     public static final String STAFF_DELETE_FORMAT = "delete/[Staff ID]";
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
