@@ -39,9 +39,9 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens.get(0), "name");
         illegalCharacterChecker(stringTokens.get(1), "price");
         illegalCharacterChecker(stringTokens.get(2), "quantity");
-        if (!isValidPrice(stringTokens.get(2)))  {
+        /*if (!isValidPrice(stringTokens.get(2)))  {
             throw new CorruptedFileException(Constants.INVENTORY_FILE_PATH);
-        }
+        }*/
     }
     public void checkAdd() throws HealthVaultException {
         illegalCharacterChecker(stringTokens.get(1), "name");

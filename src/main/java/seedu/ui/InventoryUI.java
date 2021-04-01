@@ -19,7 +19,7 @@ public class InventoryUI extends UI{
     public static void printInventoryHelpMessage() {
 
         UI.printEmptyLine();
-        System.out.println("Here is a list of Staff commands: ");
+        System.out.println("Here is a list of Inventory commands: ");
 
         UI.printEmptyLine();
         int[] lengthPara = {10,60,50};
@@ -42,7 +42,7 @@ public class InventoryUI extends UI{
     }
 
     public static void inventoryMenuHeader() {
-        System.out.print("Welcome to Inventory Menu!\nType \"help\" for staff menu commands\n\n");
+        System.out.print("Welcome to Inventory Menu!\nType \"help\" for Inventory menu commands\n\n");
     }
 
     public void showLoadingError() {

@@ -708,7 +708,7 @@ The functions in the Inventory menu allow you, the head nurse, to add, view, and
 
 This is an example of the welcome screen for the Nurse Schedule Menu.
 
-<img src="images/InventoryWelcomeHeader.PNG" width = "600">
+<img src="images/InventoryHeaderWelcome.PNG" width = "600">
 
 #### Adding a drug: `add`
 
@@ -766,7 +766,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/InventoryList.PNG" width = "600">
+<img src="images/InventoryListFinal.PNG" width = "600">
 
 <br/><br/>
 
