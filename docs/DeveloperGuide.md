@@ -62,7 +62,7 @@ The diagram below shows how parser determines which command to activate based on
 
 The *Sequence Diagram* below shows how the components interact with each other after the full user input is passed into the `Parser`.
 
-![Structure of the Parser Component](diagrams/ParserSequence.png)
+<img src="diagrams/ParserSequence.png" />
 
 The CommandEvaluator class extracts the information from the full input and thereafter passes a keyCommand to the Parser class for it to return the appropriate Command to the main method.
 
@@ -75,13 +75,14 @@ The `Command`,
 
 The *Class Diagram* below shows the different Commands and the respective information they use from the UserInput object.
 
-![Structure of the Command Component](diagrams/CommandClass.png)
+<img src="diagrams/CommandClass.png" />
 
 **How classes within Command component interact with each other**
 
 The *Sequence Diagram* below shows how the components interact with each other when the Sort Command is executed.
 
-![Structure of the Storage Component](diagrams/sortCommand_Sequence_Diagram.jpg)
+<img src="diagrams/sortCommand_Sequence_Diagram.jpg" />
+
 
 ## Product scope
 ### Target user profile
