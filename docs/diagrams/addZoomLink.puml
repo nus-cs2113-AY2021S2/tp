@@ -1,50 +1,51 @@
 @startuml
-participant Links
-Links -> ZoomLinkInfo : addZoomLink
-activate ZoomLinkInfo
-ZoomLinkInfo -> AddTask : printAndGetModule
-activate AddTask
-AddTask --> ZoomLinkInfo
-deactivate AddTask
-ZoomLinkInfo -> Ui : printEnterZoomLinkMessage
-activate Ui
-Ui --> ZoomLinkInfo
-deactivate Ui
-ZoomLinkInfo -> Ui : readCommand
-activate Ui
-Ui --> ZoomLinkInfo
-deactivate Ui
-ZoomLinkInfo -> Ui : printEnterRequirePassword
-activate Ui
-Ui -> Ui : readCommand
-activate Ui
-Ui --> Ui
-deactivate Ui
-Ui --> ZoomLinkInfo
-deactivate Ui
+hide footbox
+
+":Links" -> ":ZoomLinkInfo" : addZoomLink()
+activate ":ZoomLinkInfo"
+":ZoomLinkInfo" -> ":AddTask" : printAndGetModule()
+activate ":AddTask"
+":AddTask" --> ":ZoomLinkInfo"
+deactivate ":AddTask"
+":ZoomLinkInfo" -> ":Ui" : printEnterZoomLinkMessage()
+activate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+":ZoomLinkInfo" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
+":ZoomLinkInfo" -> ":Ui" : printEnterRequirePassword()
+activate ":Ui"
+":Ui" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":Ui"
+deactivate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
 
 opt passwordCommand.equals('y')
-ZoomLinkInfo -> Ui : printEnterPassword
-activate Ui
-Ui -> Ui : readCommand
-activate Ui
-Ui --> Ui
-deactivate Ui
-Ui --> ZoomLinkInfo
-deactivate Ui
+":ZoomLinkInfo" -> ":Ui" : printEnterPassword()
+activate ":Ui"
+":Ui" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":Ui"
+deactivate ":Ui"
+":Ui" --> ":ZoomLinkInfo"
+deactivate ":Ui"
 end
 
-ZoomLinkInfo -> ZoomLinkInfo : add
-activate ZoomLinkInfo
-ZoomLinkInfo --> ZoomLinkInfo
-deactivate ZoomLinkInfo
-ZoomLinkInfo -> ModuleInfo : getModule
-activate ModuleInfo
-ModuleInfo --> ZoomLinkInfo
-deactivate ModuleInfo
-ZoomLinkInfo -> Module : setZoomLink
-activate Module
-Module --> ZoomLinkInfo
+":ZoomLinkInfo" -> ":ZoomLinkInfo" : add()
+activate ":ZoomLinkInfo"
+":ZoomLinkInfo" --> ":ZoomLinkInfo"
+deactivate ":ZoomLinkInfo"
+":ZoomLinkInfo" -> ":ModuleInfo" : getModule(moduleCode)
+activate ":ModuleInfo"
+":ModuleInfo" --> ":ZoomLinkInfo"
+deactivate ":ModuleInfo"
+":ZoomLinkInfo" -> ":Module" : setZoomLink(link)
+activate ":Module"
+":Module" --> ":ZoomLinkInfo"
 deactivate
 return
 @enduml

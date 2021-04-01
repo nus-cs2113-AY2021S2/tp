@@ -7,20 +7,20 @@
 [2. Setting Up](#2-setting-up)
 
 [3. Design](#3-design)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#31-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#32-ui-class)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Class](#32-ui-class)
 
 [4. Implementation](#4-implementation)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.01 Add New Review](#401-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.02 Delete a Review](#402-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.03 Add New Task](#403-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.04 Delete a Task](#404-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.05 Add Zoom Link](#405-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.06 Add Module Components](#406-add-module-components)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Review](#401-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.02 Delete a Review](#402-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.03 Add New Task](#403-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Delete a Task](#404-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add Zoom Link](#405-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 Add Module Components](#406-add-module-components)
 
 [5. Product scope](#5-product-scope)    
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Target user profile](#51-target-user-profile)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Value proposition](#52-value-proposition)
+&nbsp;&nbsp;&nbsp;&nbsp;[5.1 Target user profile](#51-target-user-profile)   
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2 Value proposition](#52-value-proposition)
 
 [6. User Stories](#6-user-stories)
 
