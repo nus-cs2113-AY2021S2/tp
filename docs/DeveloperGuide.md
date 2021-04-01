@@ -165,3 +165,6 @@ testers are expected to do more *exploratory* testing.
    2. Incorrect inputs to try: `shortlist x` (where x is any string input)<br>
       Expected: Similar to previous.
 
+### Sorting results by price in ascending or descending order
+
+
