@@ -21,6 +21,18 @@ HdBuy allows you to easily find and bookmark resale flats available matching you
 
 </div>
 
+### Add a Filter : `filter`
+
+Add a filter condition. 
+
+Format: `filter ATTRIBUTE VALUE`
+
+### Add a Filter : `find`
+
+Search for units with the current filter conditions.
+
+Format: `find`
+
 ### View Shortlist : `shortlist`
 
 Shows all units in the shortlist.
@@ -66,6 +78,12 @@ Format: `list`
 Removes all currently set filter conditions.
 
 Format: `clear`
+
+### Display help guide: `help`
+
+Shows the available commands and directs the user to the appropriate links.
+
+Format: `help`
 
 ## Error Handling
 
