@@ -4,7 +4,7 @@ package seedu.duke.common;
  * Container for commonly used messages.
  */
 public class Messages {
-    public static final String SPACING = "        ";
+    //public static final String SPACING = "        ";
     public static final String MESSAGE_VERSION = "V2.0";
     public static final String MESSAGE_FEATURES = "You can use the app by using command ADD, VIEW, and DELETE.";
     public static final String MESSAGE_WELCOME = "Healthier - your powerful personal fitness app.\n"
@@ -31,8 +31,8 @@ public class Messages {
             + "You have achieved all weekly goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
-    public static final String MESSAGE_CHECK_HEADER = "Index" + SPACING + "Date Set" + SPACING + "Goal Type" + SPACING
-            + "Target" + SPACING + "Progress\n";
+    public static final String MESSAGE_CHECK_HEADER = "Index    Date Set          Goal Type       "
+            + "Target          Progress\n";
     public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
             + "Duration        Calories\n";
     public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category       Weight"

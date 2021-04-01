@@ -24,7 +24,7 @@ public abstract class Goal {
     protected String separatorBetweenTypeAndTarget;
     protected String separatorBetweenTargetAndProgress;
     public static final String SEPARATOR = " | ";
-    protected static final String SPACING = Messages.SPACING;
+    protected static final String SEPATATOR_TAB = "    ";
 
     /**
      * Initializes the instance with goal type and period type.
