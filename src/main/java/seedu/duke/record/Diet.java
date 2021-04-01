@@ -14,8 +14,7 @@ public class Diet extends Record {
     private final double amount;
     private final String formattedDate;
     private static final String SUMMARY_FORMAT = "%sg %s on %s";
-    private int spaceCount;
-    private String seperator = "";
+    private String separator = "";
 
     /**
      * Initializes the object with given record type and date.
@@ -28,9 +27,9 @@ public class Diet extends Record {
         if (foodCategory == INVALID) {
             throw new TypeException("food type exception");
         }
-        spaceCount = 20 - foodCategory.toString().length();
+        int spaceCount = 20 - foodCategory.toString().length();
         for (int i = 0; i < spaceCount; i++) {
-            seperator += " ";
+            separator += " ";
         }
         this.amount = amount;
         calorie = amount * foodCategory.getCaloriePer100g();
@@ -85,7 +84,7 @@ public class Diet extends Record {
     public String getRecordData() {
         return "\t\t\t" + getDate().format(DATE_FORMATTER)
                 + "\t" + getFoodCategory()
-                + seperator + getAmount() + " g"
+                + separator + getAmount() + " g"
                 + "\t\t" + getCalorie() + " Kcal";
     }
 

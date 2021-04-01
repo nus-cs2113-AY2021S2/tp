@@ -6,6 +6,7 @@ import seedu.duke.command.Command;
 import seedu.duke.command.CommandResult;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.commandparser.CommandParser;
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.exception.TypeException;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
@@ -22,6 +23,8 @@ public class Healthier {
 
     private void start() {
         ui = new UI();
+        TimeController timeController = new TimeController();
+        timeController.checkForTime(currentFitCenter);
         String recordFilePath = "data" + File.separator + "records.txt";
         String goalFilePath = "data" + File.separator + "goals.txt";
         try {
@@ -32,21 +35,13 @@ public class Healthier {
             ui.showFileErrorMessage();
             e.printStackTrace();
             System.exit(0);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            ui.showFileParserErrorMessage();
-            System.exit(0);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            ui.showFileParserErrorMessage();
-            System.exit(0);
-        } catch (TypeException e) {
+        } catch (ParseException | NumberFormatException | TypeException e) {
             e.printStackTrace();
             ui.showFileParserErrorMessage();
             System.exit(0);
         }
         ui.printGreetings();
-        ui.showProgress(currentUser);
+        currentFitCenter.showGoalProgress();
     }
 
     private void loopCommand() throws IOException {

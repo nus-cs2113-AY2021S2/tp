@@ -1,6 +1,5 @@
 package seedu.duke.goal;
 
-import seedu.duke.account.User;
 import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
@@ -85,6 +84,14 @@ public abstract class Goal {
      */
     public PeriodType getPeriodType() {
         return periodType;
+    }
+
+    public boolean isAchieved() {
+        return progress >= target;
+    }
+
+    public String getAchieved() {
+        return isAchieved() ? "(achieved)" : "(not achieved)";
     }
 
     /**

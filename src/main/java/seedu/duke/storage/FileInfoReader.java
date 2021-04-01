@@ -4,6 +4,7 @@ import seedu.duke.account.FitCenter;
 import seedu.duke.account.User;
 import seedu.duke.exception.TypeException;
 
+import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Diet;
 import seedu.duke.record.Record;
 import seedu.duke.record.Exercise;
@@ -15,6 +16,7 @@ import seedu.duke.goal.BodyWeightGoal;
 import seedu.duke.goal.SleepGoal;
 import seedu.duke.goal.Goal;
 import seedu.duke.goal.PeriodType;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -22,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 import java.util.Scanner;
 
 import static seedu.duke.command.CommandRecordType.EXERCISE;
@@ -31,12 +32,12 @@ import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.goal.PeriodType.WEEKLY;
 import static seedu.duke.goal.PeriodType.DAILY;
-import static seedu.duke.goal.PeriodType.INVALID;
 
 public class FileInfoReader {
     private File recordSource;
     private File goalSource;
-    public static final String SEPERATOR = " \\| ";
+    private File timeSource;
+    public static final String SEPARATOR = " \\| ";
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
 
     public FileInfoReader(File recordFile, File goalFile) {
@@ -44,12 +45,28 @@ public class FileInfoReader {
         goalSource = goalFile;
     }
 
+    public FileInfoReader(File timeFile) {
+        timeSource = timeFile;
+    }
+
+    public String[] parseTimeStrParams() throws FileNotFoundException {
+        Scanner sc = new Scanner(timeSource);
+        String timeStr = null;
+        while (sc.hasNext()) {
+            timeStr = sc.nextLine();
+        }
+        if (timeStr == null) {
+            return null;
+        }
+        return timeStr.split(SEPARATOR);
+    }
+
     public void parseToRecordList(User user) throws FileNotFoundException, TypeException, NumberFormatException,
             ParseException {
         Scanner sc = new Scanner(recordSource);
         while (sc.hasNext()) {
             String currentLine = sc.nextLine();
-            String[] typeContent = currentLine.split(SEPERATOR,2);
+            String[] typeContent = currentLine.split(SEPARATOR, 2);
             String content = typeContent[1];
             Record record;
             switch (typeContent[0]) {
@@ -82,7 +99,7 @@ public class FileInfoReader {
         Scanner sc = new Scanner(goalSource);
         while (sc.hasNext()) {
             String currentLine = sc.nextLine();
-            String[] typeContent = currentLine.split(SEPERATOR,2);
+            String[] typeContent = currentLine.split(SEPARATOR, 2);
             String content = typeContent[1];
             Goal goal;
             String[] params = getGoalParams(content);
@@ -112,11 +129,12 @@ public class FileInfoReader {
             }
         }
         LocalDate currentDate = LocalDate.now();
-        fitCenter.initializeDailyProgressAtLoading(currentDate);
+        int currentWeekOfYear = TimeController.getSystemWeekOfYear();
+        fitCenter.initProgressAtLoading(currentDate, currentWeekOfYear);
     }
 
     private Record getExerciseRecord(String content) throws ParseException, TypeException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
+        String[] contentParts = content.split(SEPARATOR);
         String activity = contentParts[0].trim();
         String durationString = contentParts[1].trim();
         int duration = Integer.parseInt(durationString);
@@ -125,7 +143,7 @@ public class FileInfoReader {
     }
 
     private Record getDietRecord(String content) throws ParseException, TypeException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
+        String[] contentParts = content.split(SEPARATOR);
         String food = contentParts[0].trim();
         String amountString = contentParts[1].trim();
         double amount = Double.parseDouble(amountString);
@@ -134,7 +152,7 @@ public class FileInfoReader {
     }
 
     private Record getBodyWeightRecord(String content) throws ParseException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
+        String[] contentParts = content.split(SEPARATOR);
         String weightString = contentParts[0].trim();
         double weight = Double.parseDouble(weightString);
         LocalDate recordDate = getDate(contentParts[1]);
@@ -142,7 +160,7 @@ public class FileInfoReader {
     }
 
     private Record getSleepRecord(String content) throws ParseException, NumberFormatException {
-        String[] contentParts = content.split(SEPERATOR);
+        String[] contentParts = content.split(SEPARATOR);
         String durationString = contentParts[0].trim();
         double duration = Double.parseDouble(durationString);
         LocalDate recordDate = getDate(contentParts[1]);
@@ -150,17 +168,16 @@ public class FileInfoReader {
     }
 
     private String[] getGoalParams(String content) {
-        String[] params = content.split(SEPERATOR);
-        for (String param : params) {
-            param = param.trim();
+        String[] params = content.split(SEPARATOR);
+        for (int i = 0; i < params.length; i++) {
+            params[i] = params[i].trim();
         }
         return params;
     }
 
     private LocalDate getDate(String dateString) throws ParseException {
         Date date = DATE_FORMAT.parse(dateString);
-        LocalDate recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        return recordDate;
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     private PeriodType getPeriodType(String type) throws TypeException {
@@ -173,6 +190,4 @@ public class FileInfoReader {
             throw new TypeException("period type");
         }
     }
-
-
 }

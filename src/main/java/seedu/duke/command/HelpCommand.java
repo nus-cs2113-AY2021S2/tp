@@ -8,7 +8,10 @@ public class HelpCommand extends Command {
         feedback = Messages.MESSAGE_HELP_GREETINGS + "\n"
                 + Messages.MESSAGE_SYNTAX_ADD_COMMAND + "\n\n"
                 + Messages.MESSAGE_SYNTAX_VIEW_COMMAND + "\n\n"
-                + Messages.MESSAGE_SYNTAX_DELETE_COMMAND;
+                + Messages.MESSAGE_SYNTAX_DELETE_COMMAND + "\n\n"
+                + Messages.MESSAGE_SYNTAX_SET_COMMAND + "\n\n"
+                + Messages.MESSAGE_SYNTAX_CHECK_COMMAND + "\n\n"
+                + Messages.MESSAGE_SYNTAX_CANCEL_COMMAND;
     }
 
     @Override
