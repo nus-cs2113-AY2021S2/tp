@@ -40,8 +40,8 @@ public class Sleep extends Record {
 
     @Override
     public String getRecordData() {
-        return "\t\t\t" + getDate().format(DATE_FORMATTER)
-                + "\t\t" + getDuration() + " " + getUnit();
+        return SEPARATOR_TAB + SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
+                + SEPARATOR_TAB + SEPARATOR_TAB + getDuration() + " " + getUnit();
     }
 
     @Override

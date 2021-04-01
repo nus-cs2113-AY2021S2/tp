@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Record;
@@ -26,7 +27,7 @@ public class AddCommand extends Command {
     private final CommandRecordType recordType;
 
     public AddCommand(CommandRecordType recordType, HashMap<String, String> params)
-            throws ParseException, TypeException, NumberFormatException {
+            throws ParseException, TypeException, NumberFormatException, FutureDateException {
         SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
         this.recordType = recordType;
         spf.setLenient(false);
@@ -35,6 +36,9 @@ public class AddCommand extends Command {
         if (dateString != null) {
             Date date = spf.parse(dateString);
             recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (recordDate.isAfter(LocalDate.now())) {
+                throw new FutureDateException();
+            }
         } else {
             recordDate = LocalDate.now();
         }

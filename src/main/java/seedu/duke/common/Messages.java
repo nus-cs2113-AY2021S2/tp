@@ -31,10 +31,12 @@ public class Messages {
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
     public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\t\tProgress\n";
-    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index\t\tDate\t\tActivity\t\tDuration\t\tCalories\n";
-    public static final String MESSAGE_VIEW_HEADER_DIET = "Index\t\tDate\t\tFood Category\t\tWeight\t\tCalories\n";
-    public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index\t\tDate\t\t\tDuration\n";
-    public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index\t\tDate\t\t\tBody Weight\n";
+    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
+            + "Duration        Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category        Weight"
+            + "        Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index        Date              Duration\n";
+    public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index        Date              Body Weight\n";
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
             + "You can try adding records by using command 'add'.";
     public static final String MESSAGE_NO_GOAL = "Sorry, no goals found.\n"
@@ -78,6 +80,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
             + "The acceptable amount of food should be a floating point number, with the unit of gram(g).\n"
             + "Please try again.";
+    public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current "
+            + "or previous days.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
             + "The acceptable target energy should be a floating point number, with the unit of K cal within"
             + "range 0 - 10000.\nPlease try again.";
