@@ -529,101 +529,87 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
+<br/><br/>
+
 
 #### Deleting a schedule: `delete`
-Deletes a schedule from the list of nurse schedules.
+&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
 
-Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
 >
 >1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 >2. HealthVault only accepts valid Date inputs.
 
-Deletes a schedule with the specified Nurse ID and Date.
 
-Example of usage:
-```
-NSchedule --> delete N12345 30012020
-```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+
+&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
+
 Expected Outcome:
-```
-------------------------------------------------------------------------------
-NSchedule --> delete N12345 30012020
-
-Trip to P12345 on 30/01/2020 has been cancelled!
-------------------------------------------------------------------------------
-```
-
-Example Screenshot:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
-#### Listing schedules: `list`
-List either all schedules or specified Nurse ID's schedule.
+<br/><br/>
 
-Format: `list/[Nurse ID/all]`
+#### Listing schedules: `list`
+&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `list/[Nurse ID/all]`
 
 >:information_source: Important notes about the input format
 >
 >1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 
-Example of usage(Nurse ID):
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
 
-Listing all schedules of specified Nurse ID.
+&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
-```
-NSchedule --> list/N12345
-```
-Expected Outcome(Nurse ID):
-```
-Nurse ID   | Patient ID | Date      
-____________________________________________________________
-N12345     | P12345     | 30/01/2020
-```
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/N12345 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(Nurse ID):
 
 <img src="images/NurseScheduleListNurseID.png" width = "550">
 
-Example of usage(all):
+<br/>
 
-Listing all schedules.
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(all):
 
-```
-NSchedule --> list/all
-```
-Expected Outcome(all):
-```
-Nurse ID   | Patient ID | Date      
-____________________________________________________________
-N12345     | P12345     | 30/01/2020
-N00000     | P11111     | 15/02/2020
-```
+&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(all):
 
 <img src="images/NurseScheduleListAll.png" width = "550">
 
+<br/><br/>
 
 #### Returning to Start Menu: `return`
 
-Returns to Start Menu.
+&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleReturn.png" width = "500">
 
 #### Help: `help`
 
-Prints Nurse Schedule help message.
+&nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleHelp.png" width = "500">
+
+<br/><br/>
 
 ### 5.5 Inventory
 
