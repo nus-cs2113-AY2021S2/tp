@@ -80,11 +80,11 @@ This user guide will cover the following:
 
 ### 2.2 Symbols & Icons
 
-**[]** - Square brackets for compulsory user inputs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[]** - Square brackets for compulsory user inputs.
 
-**<>** - Optional inputs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Optional inputs.
 
-:information_source: This icon denotes a important information to note.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
 
 <br/><br/>
 
@@ -101,9 +101,6 @@ CLI takes in a user input from the input marker as shown in the image included b
 <img src="images/CLIimage.jpg" >
 
 After keying in their input, the most common way to enter the response into the system is to press the <kbd>Enter</kbd> key for the command to be recorded.
-
-<br/><br/>
-
 
 ### <a name="section2"> 3.2 Installation Guide</a>
 
