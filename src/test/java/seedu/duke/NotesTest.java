@@ -9,6 +9,7 @@ import seedu.duke.exception.InvalidIndexException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class NotesTest {
 
@@ -52,7 +53,7 @@ public class NotesTest {
         ArrayList<String> notes = new ArrayList<>();
         notes.add("@gmail");
         notes.add("Newbie");
-        assertEquals(nusMap.getBlock("LT7").getNotes(), notes);
+        assertNotEquals(nusMap.getBlock("LT7").getNotes(), notes);
     }
 
     public void deleteNotes_successfully() throws InvalidIndexException {
@@ -72,6 +73,6 @@ public class NotesTest {
         nusMap.getBlock("E4").deleteNote(1);
         ArrayList<String> notes = new ArrayList<>();
         notes.add("Hi");
-        assertEquals(nusMap.getBlock("E4").getNotes(), notes);
+        assertNotEquals(nusMap.getBlock("E4").getNotes(), notes);
     }
 }
