@@ -37,7 +37,7 @@ In such a precarious situation, every second matters and a Head Nurse cannot aff
 Introducting HealthVault, a Head Nurse's personal information recording system. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for a Head Nurse to view and store critical information.
 
 In this application there are 5 main features that are provided for the user. 
-* **Staff:** Keepts record of and allows you to access staff information and modify them if needed.
+* **Staff:** Keeps record of and allows you to access staff information and modify them if needed.
 * **Patient:** Keeps record of and allows you to access patient information and modify them if needed.
 * **Doctor Appointments:** Keeps record of and allows you to create and view Doctor Appointments.
 * **Nurse Schedules:** Keeps record of and allows you to create and view Nurse Schedules.
@@ -84,8 +84,9 @@ This user guide will cover the following:
 
 **<>** - Optional inputs.
 
-
 :information_source: This icon denotes a important information to note.
+
+<br/><br/>
 
 ## 3. Getting Started</a>
 
@@ -122,8 +123,7 @@ After keying in their input, the most common way to enter the response into the 
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar jar [JAR file name]`
   
-
-
+<br/><br/>
 
 ## 4. Start Menu
 
@@ -157,9 +157,6 @@ For example, the `add` format requires specific details regarding the staff that
 The '-' in the format column specifies that the command can be used alone without any additional details.
 
 The detailed explaination of each command will be explained in the subsequent sections.
-
-
-<br/><br/>
 
 <br/><br/>
 
@@ -743,7 +740,7 @@ Current Inventory:
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Navigate to where the TP jar file is located and identify the data folder. Simply copy this data folder and transfer it via thumbdrive or other means to your other computer. When setting up the jar file in a new folder in your other computer, paste the data folder into the new folder and you're good to go to using your data on your new computer!
 
 <br/><br/>
 
@@ -766,15 +763,15 @@ Current Inventory:
 | return              | `return`                                                                                                   |
 | **Patient**         |                                                                                                            |
 | add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
-| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                                          |
-| find                | `find/[Patient ID]`<br/><br/>`find/P55555`                                                                              |
+| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                             |
+| find                | `find/[Keyword/Phrase]`<br/><br/>`find/P55555`                                                             |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Doctor Appointments** |                                                                                                        |
 | add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/A12345/Mingshun/M/19082021`    |
-| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
-| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
+| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                     |
+| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |
