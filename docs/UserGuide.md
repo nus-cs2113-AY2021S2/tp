@@ -10,13 +10,14 @@ The purpose of this User Guide is to assist you in the usage of the application.
 1. [Introduction](#1-introduction)
 	1. [What is HealthVault?](#11-what-is-healthvault)
 	2. [About the User Guide](#12-about-the-user-guide)
-	3. [Introduction to Command Line Interface (CLI)](#13-introduction-to-command-line-interface-(cli))
-2. [Installation Guide](#2-installation-guide)
-3. [How to use this guide](#3-how-to-use-the-guide)
-	1. [Technical terms](#31-technical-terms)
-	2. [Symbols & Icons](#32-symbols--icons)
-	3. [Interpreting help commands](#32-interpreting-help-commands)
+2. [How to use this guide](#2-how-to-use-the-guide)
+	1. [Technical terms](#21-technical-terms)
+	2. [Symbols & Icons](#22-symbols--icons)
+3. [Getting Started](#3-getting-started)
+	1. [Introduction to Command Line Interface (CLI)](#32-introduction-to-command-line-interface-(cli))
+	2. [Installation Guide](#32-installation-guide)
 4. [Start Menu](#4-start-menu)
+ 	1. [Interpreting help commands](#41-interpreting-help-commands)
 5. [Features](#5-features)
 	1. [Staff](#51-staff)
 	2. [Patient](#52-patient)
@@ -56,7 +57,39 @@ This user guide will cover the following:
 * How to use each of the features
 * Frequently asked questions
 
-### 1.3 Introduction to Command Line Interface (CLI)
+
+<br/><br/>
+
+## 2. How to use the guide
+
+### 2.1 Technical Terms
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Case Sensitive** - Differentiating between capital and lower-case letters.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alphanumeric** - Consisting of only alphabets and numerals.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input
+
+### 2.2 Symbols & Icons
+
+**[]** - Square brackets for compulsory user inputs.
+
+**<>** - Optional inputs.
+
+
+:information_source: This icon denotes a important information to note.
+
+## 3. Getting Started</a>
+
+### 3.1 Introduction to Command Line Interface (CLI)
 
 HealthVault uses the Command Line Interface (CLI) to run. And CLI is primary input method for interacting with HealthVault.
 
@@ -69,8 +102,9 @@ CLI takes in a user input from the input marker as shown in the image included b
 After keying in their input, the most common way to enter the response into the system is to press the <kbd>Enter</kbd> key for the command to be recorded.
 
 <br/><br/>
-<a name="section2">
-## 2. Installation Guide</a>
+
+
+### <a name="section2"> 3.2 Installation Guide</a>
 
 1. Ensure system has Java 11
 
@@ -88,36 +122,27 @@ After keying in their input, the most common way to enter the response into the 
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar jar [JAR file name]`
   
-<br/><br/>
-
-## 3. How to use the guide
-
-### 3.1 Technical Terms
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Case Sensitive** - Differentiating between capital and lower-case letters.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alphanumeric** - Consisting of only alphabets and numerals.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input
-
-### 3.2 Symbols & Icons
-
-**[]** - Square brackets for compulsory user inputs.
-
-**<>** - Optional inputs.
 
 
-:information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
-### 3.3 Interpreting help commands
+## 4. Start Menu
+
+The Start Menu is the first menu you will encounter after you run the application as stated in [section 3](#section3). 
+
+Here is an example of how the welcome screen of HealthVault will look like.
+<img src="images/Start Menu.PNG" >
+
+The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
+
+For example, the Staff Menu allows you to access the Staff feature within the database. 
+
+The welcome screen of HealthVault presents you with the basic commands as well as its description of its functionalities. 
+
+Input any command to access the respective features and input the `exit` command to quit the application.
+
+### 4.1 Interpreting help commands
+
+:information_source: All instances of commands and code will be highlighted in grey and will have a different font.
 
 This is an example of a typical help command in the application.
 <img src="images/StaffHelp.PNG" >
@@ -135,21 +160,6 @@ The detailed explaination of each command will be explained in the subsequent se
 
 
 <br/><br/>
-
-## 4. Start Menu
-
-The Start Menu is the first menu you will encounter after you run the application as stated in [section 2](#section2). 
-
-Here is an example of how the welcome screen of HealthVault will look like.
-<img src="images/Start Menu.PNG" >
-
-The Start Menu allows you to access various Menus in the application based on the feature that you would like to access.
-
-For example, the Staff Menu allows you to access the Staff feature within the database. 
-
-The welcome screen of HealthVault presents you with the basic commands as well as its description of its functionalities. 
-
-Input any command to access the respective features and input the `exit` command to quit the application.
 
 <br/><br/>
 
@@ -582,19 +592,16 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
->
->**Example**: N12345, P54321
->
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
@@ -613,13 +620,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
@@ -632,11 +639,9 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
->
->**Example**: N12345, P54321
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
