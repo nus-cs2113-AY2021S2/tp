@@ -1,11 +1,11 @@
-modules
+mods
 add CS2113T
-modules
+mods
 open CS2113T
 add task tP Submission ;; 16-3-2021
 Y
 close
-delete
+del
 1
-modules
+mods
 exit
