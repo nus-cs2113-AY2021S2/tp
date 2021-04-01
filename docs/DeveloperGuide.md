@@ -202,12 +202,11 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
    trimmed input to the start of the next option index. This is the argument tagged after the option. 
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored an empty string.
-
-   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling
-   `extractFinalPart`.
-   * Valid next option format: `' <option> '` with 1 leading and trailing whitespace. e.g. `' -e '`
+   
+   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
+   
 4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and 
-   add an empty string as the argument, else just add the last trimmed input to the ArrayList. 
+   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>. 
 5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will 
    call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
    
@@ -223,10 +222,10 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
      e.g. `'-e '`
    * Ending option should be in the form of `' <option>'` with 1 leading whitespace and no trailing whitespace.
      e.g. `' -e'`
-   * During processing, next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
+   * During the extraction, the next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
      e.g. `' -e '`
-3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
-   Apache Commons Lang, 3.11, providing the StringUtils class is used to cater to consideration 2.
+3. As rearrangement of options is allowed, option detection should cater to non-fixed option order.
+   Apache Commons Lang, 3.11, providing the `StringUtils` class is used to cater to consideration 2.
    * `StringUtils.startsWithAny()` - detection of start option with non-fixed order.
    * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
    * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
@@ -302,7 +301,89 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 
 
 ### 3.7 Storage Component
-...
+
+![StorageClassDiagram](img/StorageClassDiagram.png)
+_Figure X: Storage Class Diagram_
+
+#### Description
+The `storage` component consists of only 1 class called `Storage`. The role of the `Storage` is to translate all
+`records` from the `RecordList` and `creditScoreHashMap` (a `HashMap`) into a text format in a text output file and 
+vice versa.
+
+#### Design
+In the application, `Storage` is instantiated in classes that requires the use of the save or load function, this
+is done through the constructor `new Storage()`. Whenever a new `record` gets added, removed, or marked as returned, 
+the `saveData` method will be called and all `record` up to that point will be converted into a text output
+and saved into the `finux.txt` file. The `creditScoreHashMap` will also be translated into a user readable text format 
+and stored in the same file as the `records`. The `loadFile` method will do the exact opposite, and load the data from 
+the `finux.txt` file back into the Finux application.
+
+1. `saveData` is the method that is called after any `records` are added, deleted, or marked as returned. It 
+   will then call the `writeToSaveFile` method.
+
+2. `writeRecordListToSaveFile` will add the currently addressed `recordList` and all its stored `records` into the 
+   `finux.txt` file after calling the `convertFileFormat` method from the Record class. The `writeToSaveFile` method 
+   will also output each individual records in separate lines.
+
+3. `writeCreditScoreMapToSaveFile` will convert all key:value pairs, in this case, `borrowerName`:`creditScore` pairs
+   in the `creditScoreHashMap` into a user readable format and store them in the same `finux.txt` file as the `records`. 
+  
+4. `loadFile` method does the opposite of the `writeRecordListToSaveFile` method. In the `loadFile` method, a new 
+   ArrayList of `record` is instantiated. It will then call the `saveFileExist` method. If the method returns false, 
+   `initSaveFile` method will be called and a new `finux.txt` will be created in the same directory of the FINUX 
+   application. The `loadFile` method will then return a new and empty ArrayList of `record` back to the `start` method 
+   in the `Duke` class. Should the `saveFileExist` returns true, for each line of text in the `finux.txt` file will be 
+   parsed into the `parseRecord` method which will call the individual load methods `loadExpense`, `loadLoan`, 
+   `loadSaving` based on a REGEX expression of the text data. Should the pattern be unrecognisable, or the file is 
+   unable to be read, an exception will be thrown to the `start` method and FINUX will terminate. If all the text data 
+   is properly loaded, the `loadFile` method will return the ArrayList of `record` to the `RecordList` object in the 
+   `start` method.
+   
+5. `initSaveFile` method will create a new `finux.txt` specified by the constant `SAVED_FILE_PATH`. It will call 
+   `Ui#printSuccessfulFileCreation` on a successful creation of the file, but will throw an `IOExcpetion` if there was
+   an error in creating the file.
+
+6. `parseRawData` method will compare the pattern of the text in the `finux.txt` and call the respective methods 
+   `loadExpense`, `loadLoan`, `loadSaving`, `loadCreditScoreRawData` based on the pattern that matches the `Expense`, 
+   `Loan`, `Saving`, or the `creditScore` pattern in the saved file. This method will throw an exception back to 
+   the `loadFile` method if any of the REGEX pattern does not match. (Add stuff here!)
+   
+7. `extractArg` is a "micro" parser component of the `Storage` class. This method simply splits the raw data from the 
+   `finux.txt` file into an array and returns the argument that is referenced by the index to its caller method with 
+   their leading and trailing white spaces removed.
+
+8. `loadExpense` will extract the individual components from the raw data parsed into it. This method will call the
+   `extractArg` method which returns the components that are addressed by the index after splitting up the raw save
+   file. The `amount` object in this method will be converted into a `BigInteger` type and the `issueDate` will be 
+   parsed in the `localDate` type. An exception will be thrown if either `amount` or `issueDate` is not in the right 
+   format which prevents them from being parsed into their respective types. It will then return a new `Expense` object
+   to the `parseRecord` method.
+   
+9. `loadSaving` works similar to `loadExpense` method, where the only difference is that it returns a new `Saving`
+   object to the `parseRecord` method.
+   
+10. `loadLoan` also works similar to both `loadExpense` and `loadSaving` method, but in the `loadLoan` method, 
+   it has a few extra parameters. The first being a boolean `isReturn`, where `1` signifies returned and `0` not 
+    returned. The `borrowerName` is the next variable in the `Loan` object. And lastly, the `returnDate`, the 
+    `returnDate` will only return not null if the `isReturn` boolean has a value of `true`. This method then returns a 
+    new `Loan` object to the `parseRecord` method.
+   
+#### Storage Component Design Consideration
+
+1. Regex pattern has to be strictly adhered to.
+   * Spacings between the `|` and components have to be separated clearly.
+   * Components in the `finux.txt` file should not contain any extraneous `|`.
+   * Each component's index must be the same regardless of the instance of the object.
+   
+2. Save file has to exist.
+   * `finux.txt` has to be created upon the first time start of the application .
+   * `finux.txt` is to be checked if exist before loading or creating a new file.
+
+3. Variable components of each `record` object has to be parsed properly.
+   * As the save function saves these `record` in a particular regex pattern and type, users who edit the save file
+   directly may enter ambiguous characters like the `|`, thus each variable has to be parsed without any error thrown. 
+   * Error has to be thrown if the saved text is unable to be parsed, as by allowing ambiguous values to be parsed into
+   the application may cause unknown and unwanted outputs.
 
 ## 4. Implementation
 
@@ -343,12 +424,12 @@ To list savings:
 
 
 ### 4.3 View Feature
-The view feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
+The `view` feature aims to allow the users to view the total expenditures, loans, and savings for the respective 
 category of *expense*, *loan*, and *saving* of the added records.  
 
 #### 4.3.1 Current Implementation
 
-The view feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
+The `view` feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
@@ -356,9 +437,6 @@ By calling the `execute()` method, the total amount will be printed onto the con
 _Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
->
-> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
-> are given.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
@@ -440,14 +518,14 @@ Loan marked as returned: [L][2021-03-16] Loan to Tom [v]
 
 ### 4.5 Remove Feature
 
-The remove feature aims to allow users to remove records after querying the record's
+The `remove` feature aims to allow users to remove records after querying the record's
 index number with the `list` command. The users will be able to then use the `remove`
 command to delete certain records that they deem obsolete or is incorrect. Hence, this feature
 allows them to amend their mistakes or edit their list with constraints.
 
 #### 4.5.1 Current Implementation
 
-The remove feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
+The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
 parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
 
@@ -529,7 +607,62 @@ user experience, and it will not cause any confusion. The time wasted is negligi
 long-term benefit.
 
 ### 4.6 Storage Feature
-...
+The `storage` feature allows all `records` and `creditScoreHashMap` to be stored locally on the device and for `records` and 
+and `creditScoreHashMap` to be loaded from a saved file into the Finux application. This is the only feature implemented 
+that does not have an explicit command to call it.
+
+#### 4.6.1 Current Implementation
+As the saving and loading methods have no explicit command calls, these methods are invoked by methods from the other
+classes. During the launch of the Finux application, in the `start` method, `getRecordListData` is called to load the
+data from the saved file: `finux.txt`. 
+
+![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
+*Figure x: Sequence Diagram for Storage's save function*
+
+Saving of `records` works differently, these `records` will be automatically saved into `finux.txt` only with a few 
+particular command calls, these calls are the commands that will alter the `records` in the `RecordList`.
+
+The following commands and scenarios where these `records` will be saved locally into the save file:
+* `add`
+* `remove`
+* `return`
+
+The sequence below will show you how the `Storage` class behaves at each step. As all three methods above generally
+behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
+for all the three methods above.
+
+***Step 1***
+
+***Step 2***
+
+![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
+*Figure x: Sequence Diagram for Storage's load function*
+
+#### 4.6.2 Design Consideration
+This section will walk you through the design considerations taken when implementing the remove feature.
+
+Aspect: **When should the data be saved into a local file**
+
+Since we do not have an explicit function call to save the files, the data should be automatically saved but there are
+multiple occasions that this can be invoked:
+* On exit
+* After each command call
+* After any command call that edits data in `RecordList`
+
+|Approach|Pros|Cons|
+|--------|----|----|
+|On Exit|Save just has to be called exactly once, minimal coupling|If program crashes before `exit` is called, all data will be lost|
+|After each command call|Guaranteed save after every successful command call, users can "save" the data by simply entering any legal commands|Extraneous calls of save, high coupling, a lot of passing of data around|
+|After any command call that edits data in `RecordList`|Allows data to be saved after every update to the `RecordList`|Some coupling between the methods that updates the `records` and calling the save method.|
+
+> 💡 Note that data in the HashMap `creditScoreHashMap` is related directly to the `Loan` object in the `RecordList`, thus
+> we have omitted the mention of it here as any changes to the `creditScoreHashMap` will also be reflected in the `Loan`
+> object which is a part of the `RecordList`.
+
+After considering the above approaches, we have decided to adopt the third approach even though there might be more
+coupling than the first method. By choosing the third approach, we can ensure that our data is stored safely and as 
+compared to the second approach, the third approach minimises the coupling within our methods.
+
 
 ### 4.7 Credit Score Feature
 The `creditscore` feature aims to provide users with a computation of borrowers' credibility via a point scoring system.

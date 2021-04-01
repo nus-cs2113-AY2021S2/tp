@@ -10,17 +10,29 @@ Since: `March 2021`
 ---
 
 1. [Introduction](#1-introduction)
-1. [Quick Start](#2-quick-start)
+1. [Quick Start](#2-quick-start)\
+   2.1 [Understanding the guide](#21-understanding-the-guide)\
+   2.2 [Explanation for Command formats](#22-explanation-for-command-formats)\
+   2.3 [Explanation for Date and Date formats](#23-explanation-for-date-and-date-formats)
 1. [Features](#3-features)\
-    3.1 [Add a record: `add`](#31-add-a-record-add)\
-    3.2 [List the records details: `list`](#32-list-the-records-details-list)\
-    3.3 [View category total amount: `view`](#33-view-category-total-amount-view)\
-    3.4 [Set a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
-    3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
-    3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
-    3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
-    3.8 [Help function: `help`](#38-help-function-help)\
-    3.9 [Records Storage](#39-records-storage)
+   3.1 [Add a record: `add`](#31-add-a-record-add)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.1 [Add an expense record](#311-add-an-expense-record)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.2 [Add an loan record](#312-add-a-loan-record)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1.3 [Add an saving record](#313-add-a-saving-record)\
+   3.2 [List the records details: `list`](#32-list-the-records-details-list)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.1 [List all expense records](#321-list-all-expense-records)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.2 [List all loan records](#322-list-all-loan-records)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.3 [List all saving records](#323-list-all-saving-records)\
+   3.3 [View category total amount: `view`](#33-view-category-total-amount-view)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.1 [View total expenses](#331-view-total-expenses)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2 [View total unreturned loans](#332-view-total-unreturned-loans)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.3 [View total savings](#333-view-total-savings)\
+   3.4 [Set a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
+   3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
+   3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
+   3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
+   3.8 [Help function: `help`](#38-help-function-help)\
+   3.9 [Records Storage](#39-records-storage)
 1. [Frequently Asked Questions](#4-frequently-asked-questions)
 1. [Command Summary](#5-command-summary)
 
@@ -68,42 +80,45 @@ Throughout the guide, you will come across various symbols, each has a different
 
 ---
 
-> 💡 **Explanation for Command formats:**
->> Commands in Finux follow these argument orders (depending on the command):
->> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
->> * `CMD -OPT`
->> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
->> * `CMD <FIELD>`
->> * `CMD [<FIELD>]`
->> * `CMD`
->
->> Argument types and notation:\
->> `CMD` - a valid command.\
->> `-OPT` - an option, a letter preceded by a dash. E.g. "-i".\
->> `<FIELD>` - an area where data is required.\
->> `[...]` - optional argument(s).\
->> `{ ... | ... | ... }` - mutually exclusive arguments,
->> * e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
->
-> ❗ **Commands and options are case-sensitive:**\
-> E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations
-> will not be recognised.\
-> E.g. `view -s` will work, but using `-S` will not be recognised as
-> a valid option.
+### 2.2 Explanation for Command formats
 
-> 💡 **Date and Date formats:**
->> Date input is required when you specify the option `-d`.\
->> You are required enter a date that follows a valid Date format.\
->> Finux supports multiple Date formats, for ease of use:
->> * `DDMMYYYY`
->> * `D.M.YYYY`
->> * `D-M-YYYY`
->> * `D/M/YYYY`
->> * `YYYY.M.D`
->> * `YYYY-M-D`
->> * `YYYY/M/D`
->>
->> 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
+Commands in Finux follow these argument orders (depending on the command):
+> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
+> * `CMD -OPT`
+> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
+> * `CMD <FIELD>`
+> * `CMD [<FIELD>]`
+> * `CMD`
+
+Argument types and notation:
+> * `CMD` - a valid command.
+> * `-OPT` - an option, a letter preceded by a dash. E.g. "-i".
+> * `<FIELD>` - an area where data is required.
+> * `[...]` - optional argument(s).
+> * `{ ... | ... | ... }` - mutually exclusive arguments, e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+
+---
+
+❗ **Commands and options are case-sensitive**
+> * E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations will not be recognised.
+> * E.g. `view -s` will work, but using `-S` will not be recognised as a valid option.
+
+---
+
+### 2.3 Explanation for Date and Date formats
+
+Date input is required when you specify the option `-d`.
+You are required enter a date that follows a valid Date format.
+Finux supports multiple Date formats, for ease of use:
+> * `DDMMYYYY`
+> * `D.M.YYYY`
+> * `D-M-YYYY`
+> * `D/M/YYYY`
+> * `YYYY.M.D`
+> * `YYYY-M-D`
+> * `YYYY/M/D`
+>
+> 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
 
 ## 3. Features
 
@@ -324,26 +339,24 @@ Output:
 ---
 
 If you do not know how to use any of the features in Finux, and would like to know their specifications, simply type
-`help` followed by the command name of the available features.
+`help` followed by the command name of the available features listed below:
 
-> Available Features:
->* `add`: view the help section for `add` command.
->* `list`: view the help section for `list` command.
->* `view`: view the help section for `view` command.
->* `return`: view the help section for `return` command.
->* `remove`: view the help section for `remove` command.
->* `creditscore`: view the help section for `creditscore` command.
->* `exit`: view the help section for `exit` command.
->* `all`: view entire help section.
+* `add`: view the help section for `add` command.
+* `list`: view the help section for `list` command.
+* `view`: view the help section for `view` command.
+* `return`: view the help section for `return` command.
+* `remove`: view the help section for `remove` command.
+* `creditscore`: view the help section for `creditscore` command.
+* `exit`: view the help section for `exit` command.
+* `all`: view entire help section.
 
-> 💡 Just typing `help` will allow you to view the entire help section.
+💡 Just typing `help` will allow you to view the entire help section.
  
 Each help section is divided into three parts:
-> 1. `NAME` will show you the feature name and its brief description. <br>
-> 2. `SYNOPSIS` will show you the format to follow. <br>
-> 3. `DESCRIPTION` will explain the usage of any arguments or options. <br>
-
-> 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
+* `NAME` will show you the feature name and its brief description.
+* `SYNOPSIS` will show you the format to follow. <br>
+* `DESCRIPTION` will explain the usage of any arguments or options.
+* 📝 The `exit` section will only show the `NAME` and `SYNOPSIS` as no argument is needed.
 
 Format: `help <FEATURE>`
 
@@ -371,6 +384,7 @@ Output:
   file in the same home folder as mentioned in the [Quick Start](#2-quick-start). <br><br>
 
 * Expected output for new file creation: <br>
+
   ![new_file_creation_output](img/NewFileCreationExampleOutput.jpg)
 
 * Expected output if successful load: <br>

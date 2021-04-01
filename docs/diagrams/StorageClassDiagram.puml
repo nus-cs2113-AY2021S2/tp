@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam classAttributeIconSize 0
+hide circle
+
+
+class Storage {
+- recordList: ArrayList
+- creditScoreReturnedLoansMap: HashMap
+- dataFilePath: Path
++ saveData(recordList, creditScoreReturnedLoansMap)
++ loadFile()
++ getRecordListData()
++ getMapData()
+}
+
+note "Private methods are omitted." as N1
+
+class AddCommand {
+}
+
+class ReturnCommand {
+}
+
+class RemoveCommand {
+}
+
+Storage"1" <-- Finux
+Storage"1" <-- AddCommand
+Storage"1" <-- ReturnCommand
+Storage"1" <-- RemoveCommand
+@enduml

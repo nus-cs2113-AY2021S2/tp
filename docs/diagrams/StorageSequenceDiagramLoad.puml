@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+
+Participant ":Storage" as Storage
+Participant ":Finux" as Finux
+
+Finux -> Storage : loadFile()
+activate Storage
+Storage -> Storage : parseRawData(rawData)
+activate Storage
+Storage -> Storage : processParsedObject(parsedObject)
+deactivate Storage
+Storage --> Finux
+destroy Storage
+
+@enduml
