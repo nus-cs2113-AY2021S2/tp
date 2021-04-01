@@ -172,3 +172,6 @@ testers are expected to do more *exploratory* testing.
 11. Sorting results in descending order 
       1. Test case: `sort desc` to display unit(s) in descending order of price.
 
+### sortCommand Sequence Diagram
+
+![Structure of the Storage Component](diagrams/sortCommand_Sequence_Diagram.jpg)
