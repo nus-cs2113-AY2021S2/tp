@@ -48,7 +48,7 @@ public class SetCommand extends Command {
             feedback = "A new " + goal.getType().toString().toLowerCase()
                     + " goal is set successfully!\n" + goal.getGoalSummary();
             if (recordType == BODY_WEIGHT && goal.getProgress() == -1) {
-                feedback += MESSAGE_NO_BODY_WEIGHT_RECORD;
+                feedback = feedback + "\n" + MESSAGE_NO_BODY_WEIGHT_RECORD;
             }
         } else {
             feedback = Messages.MESSAGE_CANT_SET_GOAL;

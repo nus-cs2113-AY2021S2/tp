@@ -9,12 +9,17 @@ import static seedu.duke.record.FoodCategory.INVALID;
 import static seedu.duke.record.RecordType.DIET;
 
 public class Diet extends Record {
+    private static final int SPACES_FOR_FOOD = 20;
+    private static final int SPACES_FOR_WEIGHT = 12;
     private final double calorie;
     private final FoodCategory foodCategory;
     private final double amount;
     private final String formattedDate;
     private static final String SUMMARY_FORMAT = "%sg %s on %s";
-    private String separator = "";
+    private String separatorBetweenFoodAndWeight;
+    private String separatorBetweenWeightAndCalorie;
+    private int lengthOfFood;
+    private int lengthOfAmount;
 
     /**
      * Initializes the object with given record type and date.
@@ -27,14 +32,13 @@ public class Diet extends Record {
         if (foodCategory == INVALID) {
             throw new TypeException("food type exception");
         }
-        int spaceCount = 20 - foodCategory.toString().length();
-        for (int i = 0; i < spaceCount; i++) {
-            separator += " ";
-        }
         this.amount = amount;
         calorie = amount * foodCategory.getCaloriePer100g();
         this.date = date;
         formattedDate = date.format(DATE_FORMATTER);
+        lengthOfFood = foodCategory.toString().length();
+        lengthOfAmount = getWeightLength();
+        setSeparators();
     }
 
     /**
@@ -84,12 +88,43 @@ public class Diet extends Record {
     public String getRecordData() {
         return "\t\t\t" + getDate().format(DATE_FORMATTER)
                 + "\t" + getFoodCategory()
-                + separator + getAmount() + " g"
-                + "\t\t" + getCalorie() + " Kcal";
+                + separatorBetweenFoodAndWeight + getAmount() + " " + getUnit()
+                + separatorBetweenWeightAndCalorie + getCalorie() + " " + getCaloriesUnit();
     }
 
     @Override
     public String getRecordDataToStore() {
         return "D" + SEPARATOR + foodCategory + SEPARATOR + amount + SEPARATOR + getDate().format(DATE_FORMATTER);
+    }
+
+    private String getUnit() {
+        return "g";
+    }
+
+    private String getCaloriesUnit() {
+        return "K cal";
+    }
+
+    private int getWeightLength() {
+        return ("" + amount).length() + getUnit().length() + 1;
+    }
+
+    private void setSeparators() {
+        setSeparatorBetweenFoodAndWeight();
+        setSeparatorBetweenWeightAndCalorie();
+    }
+
+    private void setSeparatorBetweenFoodAndWeight() {
+        separatorBetweenFoodAndWeight = "";
+        for (int i = 0; i < SPACES_FOR_FOOD - lengthOfFood; i++) {
+            separatorBetweenFoodAndWeight += " ";
+        }
+    }
+
+    private void setSeparatorBetweenWeightAndCalorie() {
+        separatorBetweenWeightAndCalorie = "";
+        for (int i = 0; i < SPACES_FOR_WEIGHT - lengthOfAmount; i++) {
+            separatorBetweenWeightAndCalorie += " ";
+        }
     }
 }

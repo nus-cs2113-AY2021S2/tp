@@ -3,6 +3,9 @@ package seedu.duke.command;
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
 
+/**
+ * Represents a command of displaying help message.
+ */
 public class HelpCommand extends Command {
     public HelpCommand() {
         feedback = Messages.MESSAGE_HELP_GREETINGS + "\n"
@@ -14,6 +17,12 @@ public class HelpCommand extends Command {
                 + Messages.MESSAGE_SYNTAX_CANCEL_COMMAND;
     }
 
+    /**
+     * Gets help messages.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the help messages.
+     */
     @Override
     public CommandResult execute(FitCenter fitCenter) {
         return new CommandResult(feedback);

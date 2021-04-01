@@ -17,6 +17,9 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Represents a command of adding a new record to current record list.
+ */
 public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:\n%s";
     private final Record record;
@@ -53,6 +56,12 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Adds the new record to record list.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the feedback message of execution.
+     */
     public CommandResult execute(FitCenter fitCenter) {
         LocalDate currentDate = LocalDate.now();
         int currentWeekOfYear = TimeController.getSystemWeekOfYear();

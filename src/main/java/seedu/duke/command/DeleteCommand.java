@@ -7,6 +7,9 @@ import seedu.duke.account.FitCenter;
 import java.util.HashMap;
 import java.util.Locale;
 
+/**
+ * Represents a command of deleting a record from current record list.
+ */
 public class DeleteCommand extends Command {
     private static final String FEEDBACK_FORMAT = "You have successfully deleted the %s record of "
             + "index %s!\nRecord summary: %s\nDisplaying current %s records:";
@@ -18,6 +21,12 @@ public class DeleteCommand extends Command {
         indexToDelete = Integer.parseInt(params.get("index")) - 1;
     }
 
+    /**
+     * Deletes a record from current record list.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the feedback message of execution.
+     */
     @Override
     public CommandResult execute(FitCenter fitCenter) {
         try {

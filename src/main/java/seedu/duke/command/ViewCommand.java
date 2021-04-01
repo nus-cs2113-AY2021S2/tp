@@ -10,6 +10,9 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Represents a command of viewing selected records in current record list.
+ */
 public class ViewCommand extends Command {
     private final CommandRecordType recordType;
     private HashMap<String, String> specifiedParams = null;
@@ -32,6 +35,12 @@ public class ViewCommand extends Command {
         }
     }
 
+    /**
+     * Gets the records that satisfy the conditions specified in current record list.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the feedback message of execution.
+     */
     public CommandResult execute(FitCenter fitCenter) {
         switch (recordType) {
         case SLEEP:
