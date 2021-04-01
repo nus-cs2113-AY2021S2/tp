@@ -111,8 +111,8 @@ public class TextUi {
             System.out.println("FIND command does not need any parameters.");
             System.out.println("However, you need to provide filter before you execute the FIND command.");
             break;
-        case "close":
-            System.out.println("CLOSE command does not need any parameters.");
+        case "exit":
+            System.out.println("EXIT command does not need any parameters.");
             System.out.println("You are closing the app after all.");
             break;
         case "help":
@@ -143,6 +143,7 @@ public class TextUi {
         case "clear":
             System.out.println("CLEAR command does not need any parameters.");
             System.out.println("The purpose is to clear the filters inside the query!");
+            break;
         default:
             break;
         }
