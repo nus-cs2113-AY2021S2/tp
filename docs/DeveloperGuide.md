@@ -117,6 +117,18 @@ an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
 A new Canteen object is then instantiated, and added to the ArrayList of canteens.
 `Ui#showAddCanteenSuccess()` is called to display canteen added confirmation.
 
+### [Admin] Add Store
+#### Implementation
+![AddCanteen Sequence Diagram](./img/AddStore.png)
+
+
+To add a store, `AddStoreCommand#execute()` is called, passing in
+an ArrayList of canteens and the Ui object instantiated in NusFoodReviews.
+
+A new Store object is then instantiated, and added to the Canteen's ArrayList of stores.
+`Ui#printStoreAdded()` is called to display store added confirmation.
+
+
 ### [Admin] Delete Canteen
 #### Implementation
 ![DeleteCanteen Sequence Diagram](./img/DeleteCanteen.png)
