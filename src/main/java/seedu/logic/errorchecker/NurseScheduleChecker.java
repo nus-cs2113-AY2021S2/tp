@@ -1,6 +1,7 @@
 package seedu.logic.errorchecker;
 
 import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.model.NurseSchedule;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class NurseScheduleChecker extends MainChecker {
-    public boolean isValidDate(String datetime) {
+    public boolean isValidDate(String datetime) throws InvalidDateException {
         /* Check if date is 'null' */
         if (!datetime.trim().equals("")) {
             /*
@@ -33,8 +34,7 @@ public class NurseScheduleChecker extends MainChecker {
             }
             /* Date format is invalid */
             catch (ParseException e) {
-                System.out.println(datetime + " is Invalid Date format");
-                return false;
+                throw new InvalidDateException();
             }
         }
         /* Return true if date format is valid */
