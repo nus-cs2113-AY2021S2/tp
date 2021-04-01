@@ -1,0 +1,15 @@
+@startuml
+!include Style.puml
+
+class NusMaze NUSMAZE_COLOR {
+    - ui: UiManager
+}
+
+package Parser <<Rectangle>> {
+class Parser PARSER_COLOR {
+    + {static} prepareForCommandExecution(String): Command
+}
+}
+
+NusMaze -> Parser : uses
+@enduml

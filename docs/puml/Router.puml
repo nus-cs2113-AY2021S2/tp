@@ -1,0 +1,76 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+skinparam classAttributeIconSize 0
+
+
+class GoCommand {
+# RouterUi ui
++ execute():void
+}
+
+class NusMap {
+- map:HashMap<String,Block>
++ getBlock(String):Block
++ isValidBlock(String):boolean
++ addBlock(String):void
++ addRelationship(String,String):void
++ resetVisitedFlag():void
++ getValues():Collection<Block>
++ initValidBlocks():void
++ initRelationships():void
+}
+
+class BlockAlias {
+- aliases:HashMap<String,String>
++ getAliasHashMap():HashMap<String,String>
++ addAlias(String,String):void
++ isValidBlock(String):boolean
++ isValidAlias(String):boolean
++ deleteAlias(String):void
+}
+
+class Router {
++ String execute(NusMap,BlockAlias,String,String)
++ void findShortestRoute(NusMap,LinkedList<Block>,BlockAlias,String,String)
++ String getRouteAsString(LinkedList<Block>)
++ {static} void bfs(NusMap,HashMap<Block,Block>,Block,Block)
+}
+
+
+abstract class "{abstract}\nCommand" {
+# nusMap:NusMap
+# blockAlias:BlockAlias
+# history:History
+# favourite:Favourite
+# dailyRoute:DailyRoute
+# isExit:boolean
++ setData(NusMap,BlockAlias,History,Favourite,DailyRoute):void
++ isExit():boolean
++ execute():void
+}
+
+class RouterUi {
++ getRoutingInfo():String[]
++ getEateryEntry(Block[]):int
+}
+
+class EateryList {
+- eateries:Block[]
++ getEateries():Block[]
++ getSpecificEatery(int):Block
++ setRouteLengths(NusMap,BlockAlias,String):void
++ setEateries(NusMap):void
++ sortEateriesByDistance():void
+}
+
+"{abstract}\nCommand" <|-- GoCommand
+Router "**1**" <.. GoCommand : creates <
+EateryList "**1**" <.. GoCommand : creates <
+NusMap <.. Router
+BlockAlias <.. Router
+RouterUi "**1**" <---GoCommand
+
+
+@enduml

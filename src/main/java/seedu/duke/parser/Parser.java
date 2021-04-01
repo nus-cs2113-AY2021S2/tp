@@ -1,8 +1,8 @@
 package seedu.duke.parser;
 
-import seedu.duke.command.ByeCommand;
+import seedu.duke.command.generalcommand.ByeCommand;
 import seedu.duke.command.Command;
-import seedu.duke.command.HelpCommand;
+import seedu.duke.command.generalcommand.HelpCommand;
 import seedu.duke.command.aliascommand.AddCustomAliasCommand;
 import seedu.duke.command.aliascommand.DeleteCustomAliasCommand;
 import seedu.duke.command.aliascommand.ShowCustomAliasCommand;
@@ -17,7 +17,7 @@ import seedu.duke.command.historycommand.RepeatHistoryCommand;
 import seedu.duke.command.historycommand.ShowHistoryCommand;
 import seedu.duke.command.notecommand.AddNoteCommand;
 import seedu.duke.command.notecommand.DeleteNoteCommand;
-import seedu.duke.command.notecommand.ListNoteCommand;
+import seedu.duke.command.notecommand.ShowNoteCommand;
 import seedu.duke.command.routecommand.GoCommand;
 import seedu.duke.exception.InvalidCommandException;
 
@@ -62,17 +62,17 @@ public class Parser {
             command = new RepeatFavouriteCommand();
 
             //daily route
-        }  else if (filteredUserInput.startsWith("add daily route")) {
+        }  else if (filteredUserInput.equals("add daily route")) {
             command = new AddDailyRouteCommand();
         }  else if (filteredUserInput.equals("show daily route")) {
             command = new ShowDailyRouteCommand();
 
             //note
-        } else if (filteredUserInput.startsWith("add note")) {
+        } else if (filteredUserInput.equals("add note")) {
             command = new AddNoteCommand();
-        } else if (filteredUserInput.startsWith("show notes")) {
-            command = new ListNoteCommand();
-        } else if (filteredUserInput.startsWith("delete note")) {
+        } else if (filteredUserInput.equals("show notes")) {
+            command = new ShowNoteCommand();
+        } else if (filteredUserInput.equals("delete note")) {
             command = new DeleteNoteCommand();
 
         } else {

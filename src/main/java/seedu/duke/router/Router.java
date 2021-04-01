@@ -1,7 +1,6 @@
 package seedu.duke.router;
 
 import seedu.duke.data.Block;
-import seedu.duke.data.BlockAlias;
 import seedu.duke.data.NusMap;
 import seedu.duke.exception.InvalidBlockException;
 
@@ -11,31 +10,16 @@ import java.util.LinkedList;
 
 public class Router {
 
-    public String execute(NusMap nusMap, BlockAlias blockAlias, String from, String to) throws InvalidBlockException {
+    public String execute(NusMap nusMap, String from, String to) throws InvalidBlockException {
         assert from != null : "From block cannot be null";
         assert to != null : "Destination block cannot be null";
-        try {
-            LinkedList<Block> route = new LinkedList<>();
-            findShortestRoute(nusMap, route, blockAlias, from, to);
-            return getRouteAsString(route);
-        } catch (NullPointerException e) {
-            throw new InvalidBlockException();
-        }
+        LinkedList<Block> route = new LinkedList<>();
+        findShortestRoute(nusMap, route, from, to);
+        return getRouteAsString(route);
     }
 
-    public void findShortestRoute(NusMap nusMap, LinkedList<Block> route,
-                                  BlockAlias blockAlias, String from, String to) {
+    public void findShortestRoute(NusMap nusMap, LinkedList<Block> route, String from, String to) {
         nusMap.resetVisitedFlag();
-        assert from != null : "From block cannot be null";
-        assert to != null : "Destination block cannot be null";
-
-        if (blockAlias.getAliasHashMap().containsKey(from)) {
-            from = blockAlias.getAliasHashMap().get(from);
-        }
-        if (blockAlias.getAliasHashMap().containsKey(to)) {
-            to = blockAlias.getAliasHashMap().get(to);
-        }
-
         Block start = nusMap.getBlock(from);
         Block destination = nusMap.getBlock(to);
         HashMap<Block, Block> predecessor = new HashMap<>();

@@ -1,3 +1,5 @@
+//@@author Rye98
+
 package seedu.duke.command.favouritecommand;
 
 import seedu.duke.command.Command;
@@ -17,6 +19,8 @@ public class AddFavouriteCommand extends Command {
     public void execute() {
         try {
             String[] startAndDestination = ui.getFavouriteInfo();
+            nusMap.checkIfValidBlock(startAndDestination[0]);
+            nusMap.checkIfValidBlock(startAndDestination[1]);
             favourite.addFavourite(startAndDestination[0], startAndDestination[1]);
             ui.showMessageWithDivider(MESSAGE_SUCCESS);
         } catch (InvalidBlockException e) {

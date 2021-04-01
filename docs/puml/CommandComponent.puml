@@ -1,0 +1,123 @@
+@startuml
+!include Style.puml
+
+package Command <<Rectangle>> {
+    abstract class Command COMMAND_COLOR {
+        # blockAlias: BlockAlias
+        # history: History
+        # favourite: Favourite
+        # dailyRoute: DailyRoute
+        # isExit: boolean
+
+        + setData(NusMap, BlockAlias, History, Favourite, DailyRoute): void
+        + isExit(): boolean
+        + execute(): void
+    }
+
+    package routecommand {
+        class GoCommand COMMAND_COLOR {
+            # ui: RouterUi
+        }
+    }
+
+    package generalcommand {
+        class ByeCommand COMMAND_COLOR {
+            # ui: UiManager
+        }
+        class HelpCommand COMMAND_COLOR {
+            # ui: UiManager
+        }
+    }
+
+    package aliascommand {
+        class AddCustomAliasCommand COMMAND_COLOR {
+            # ui: AliasUi
+        }
+        class DeleteCustomAliasCommand COMMAND_COLOR {
+            # ui: AliasUi
+        }
+        class ShowCustomAliasCommand COMMAND_COLOR {
+            # ui: AliasUi
+        }
+    }
+
+    package dailyroutecommand {
+        class AddDailyRouteCommand COMMAND_COLOR {
+            # ui: DailyRouteUi
+        }
+        class ShowDailyRouteCommand COMMAND_COLOR {
+            # ui: DailyRouteUi
+        }
+    }
+
+    package favouritecommand {
+        class AddFavouriteCommand COMMAND_COLOR {
+            # ui: FavouriteUi
+        }
+        class ShowFavouriteCommand COMMAND_COLOR {
+            # ui: FavouriteUi
+        }
+        class DeleteFavouriteCommand COMMAND_COLOR {
+            # ui: FavouriteUi
+        }
+        class RepeatFavouriteCommand COMMAND_COLOR {
+            # ui: FavouriteUi
+        }
+    }
+
+    package historycommand {
+        class ClearHistoryCommand COMMAND_COLOR {
+            # ui: HistoryUi
+        }
+        class RepeatHistoryCommand COMMAND_COLOR {
+            # ui: HistoryUi
+        }
+        class ShowHistoryCommand COMMAND_COLOR {
+            # ui: HistoryUi
+        }
+    }
+
+    package notecommand {
+        class AddNoteCommand COMMAND_COLOR {
+            # ui: NoteUi
+        }
+        class DeleteNoteCommand COMMAND_COLOR {
+            # ui: NoteUi
+        }
+        class ListNoteCommand COMMAND_COLOR {
+            # ui: NoteUi
+        }
+    }
+}
+
+'ByeCommand -[hidden]down- HelpCommand
+'AddDailyRouteCommand -[hidden]down- ShowDailyRouteCommand
+dailyroutecommand -[hidden]up- routecommand
+notecommand -[hidden]- favouritecommand
+historycommand -[hidden]down- aliascommand
+
+Command <|-up- GoCommand
+Command <|-down- ByeCommand
+Command <|-down- HelpCommand
+Command <|-up- AddCustomAliasCommand
+Command <|-up- DeleteCustomAliasCommand
+Command <|-up- ShowCustomAliasCommand
+Command <|-up- AddDailyRouteCommand
+Command <|-up- ShowDailyRouteCommand
+Command <|-down- AddFavouriteCommand
+Command <|-down- DeleteFavouriteCommand
+Command <|-down- RepeatFavouriteCommand
+Command <|-down- ShowFavouriteCommand
+Command <|-up- ClearHistoryCommand
+Command <|-up- RepeatHistoryCommand
+Command <|-up- ShowHistoryCommand
+Command <|-down- AddNoteCommand
+Command <|-down- DeleteNoteCommand
+Command <|-down- ListNoteCommand
+
+hide methods
+show Command members
+show Command methods
+
+
+@enduml

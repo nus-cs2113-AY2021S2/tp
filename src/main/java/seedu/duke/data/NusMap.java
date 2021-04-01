@@ -1,5 +1,7 @@
 package seedu.duke.data;
 
+import seedu.duke.exception.InvalidBlockException;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -16,8 +18,10 @@ public class NusMap {
         return map.get(name);
     }
 
-    public boolean isValidBlock(String name) {
-        return map.get(name) != null;
+    public void checkIfValidBlock(String name) throws InvalidBlockException {
+        if (map.get(name) == null) {
+            throw new InvalidBlockException();
+        }
     }
 
     public void addBlock(String name) {

@@ -12,7 +12,7 @@ public class NoteUi extends UiManager {
         showMessage("Enter Location:");
         noteInfo[0] = getUserInput().toUpperCase();
 
-        showMessage("Enter Description:");
+        showMessage("Enter the Note:");
         noteInfo[1] = getUserInput();
 
         showMessage(CommonMessage.DIVIDER);
@@ -21,14 +21,16 @@ public class NoteUi extends UiManager {
 
     public String getBlockInfo() {
         showMessage("Enter Location:");
-        return getUserInput().toUpperCase();
+        String block = getUserInput().toUpperCase();
+        showMessage(CommonMessage.DIVIDER);
+        return block;
     }
 
     public void showNotes(ArrayList<String> notes) throws EmptyNoteException {
-        showMessage(CommonMessage.DIVIDER, "Here is the list of notes:");
         if (notes.isEmpty()) {
             throw new EmptyNoteException();
         }
+        showMessage(CommonMessage.DIVIDER, "Here is the list of notes:");
         for (int i = 0; i < notes.size(); i++) {
             showMessage((i + 1) + ". " + notes.get(i));
         }

@@ -1,0 +1,48 @@
+@startuml
+hide footbox
+
+participant ":NUSMaze"
+":NUSMaze" -> "command:ShowDailyRouteCommand" : execute()
+activate "command:ShowDailyRouteCommand"
+"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : getSelectableDays()
+activate "dailyRoute:DailyRoute"
+return
+deactivate "dailyRoute:DailyRoute"
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForShow(ArrayList<String>)
+activate "ui:DailyRouteUi"
+return
+deactivate "ui:DailyRouteUi"
+"command:ShowDailyRouteCommand" -> "dailyRoute:DailyRoute" : getdailyRoute(String)
+activate "dailyRoute:DailyRoute"
+return
+deactivate "dailyRoute:DailyRoute"
+
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute(NusMap, String, String)
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
+return
+return
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute(NusMap, String, String)
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
+return
+return
+create ":Router"
+"command:ShowDailyRouteCommand" -> ":Router" : execute(NusMap, String, String)
+activate ":Router"
+":Router" -> ":Router" : findShortestRoute
+activate ":Router"
+return
+return
+
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider(String)
+activate "ui:DailyRouteUi"
+return
+deactivate "ui:DailyRouteUi"
+"command:ShowDailyRouteCommand" --> ":NUSMaze"
+deactivate "command:ShowDailyRouteCommand"
+@enduml
