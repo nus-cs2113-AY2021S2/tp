@@ -554,7 +554,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
