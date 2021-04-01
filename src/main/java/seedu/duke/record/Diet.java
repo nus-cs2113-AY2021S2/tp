@@ -33,6 +33,9 @@ public class Diet extends Record {
             throw new TypeException("food type exception");
         }
         this.amount = amount;
+        if (amount < 0 || amount > 2000) {
+            throw new NumberFormatException("Food amount invalid");
+        }
         calorie = amount * foodCategory.getCaloriePer100g();
         this.date = date;
         formattedDate = date.format(DATE_FORMATTER);

@@ -14,8 +14,11 @@ public class BodyWeightGoal extends Goal {
      * @param periodType       the period type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      */
-    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
+    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
+        if (targetBodyWeight < 0 || targetBodyWeight > 400) {
+            throw new NumberFormatException("Target weight invalid");
+        }
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();

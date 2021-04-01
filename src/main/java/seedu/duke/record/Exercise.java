@@ -17,7 +17,7 @@ public class Exercise extends Record {
     private int lengthOfActivity;
     private int lengthOfDuration;
 
-    public Exercise(String activityStr, int duration, LocalDate date) throws TypeException {
+    public Exercise(String activityStr, int duration, LocalDate date) throws TypeException, NumberFormatException {
         super(RecordType.EXERCISE, date);
         try {
             workoutCategory = WorkoutCategory.valueOf(activityStr.toUpperCase());
@@ -28,6 +28,9 @@ public class Exercise extends Record {
             throw new TypeException("workout type exception");
         }
         this.duration = duration;
+        if (duration < 0 || duration > 1440) {
+            throw new NumberFormatException("Exercise time invalid");
+        }
         this.calories = duration * workoutCategory.getCaloriePerMin();
         lengthOfActivity = workoutCategory.toString().length();
         lengthOfDuration = getDurationLength();
