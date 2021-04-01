@@ -78,8 +78,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
             + "The acceptable amount of food should be a floating point number, with the unit of gram(g).\n"
             + "Please try again.";
-    public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current or previous"
-            + " days.\nPlease try again.";
+    public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current or "
+            + "previous days.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
             + "The acceptable target energy should be a floating point number, with the unit of K cal within"
             + "range 0 - 10000.\nPlease try again.";
