@@ -33,8 +33,8 @@ public class Messages {
     public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\t\tProgress\n";
     public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
             + "Duration        Calories\n";
-    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category        Weight"
-            + "        Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category       Weight"
+            + "      Calories\n";
     public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index        Date              Duration\n";
     public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index        Date              Body Weight\n";
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
