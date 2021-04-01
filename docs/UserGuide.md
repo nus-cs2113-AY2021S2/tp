@@ -67,6 +67,17 @@ Removes all currently set filter conditions.
 
 Format: `clear`
 
+
+### Sort: `sort`
+
+Sorts listings either in ascending or descending order with respect to price.
+
+Format: `sort TYPE`
+
+Example:
+* `sort asc` to sort listings in ascending order with respect to price.
+
+
 ## Error Handling
 
 Listed in the table below are all possible errors.
@@ -76,6 +87,7 @@ Listed in the table below are all possible errors.
 |EmptyParameterException|There are no parameters for the app's `find` function to search on.|
 |InvalidFilterException|The filter type input by the user does not exist in the database.|
 |InvalidParameterException|The number of parameters input by the user is incorrect for the specific command.|
+
 
 ## FAQ
 
