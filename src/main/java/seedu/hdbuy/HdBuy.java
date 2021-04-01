@@ -5,11 +5,12 @@ import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HdBuy {
 
-    private static Logger logger = Logger.getLogger("HDBuy");
+    private static Logger logger = Logger.getGlobal();
     private static UserInput userInput;
 
     /**
@@ -17,6 +18,7 @@ public class HdBuy {
      */
 
     public static void main(String[] args) {
+        Logger.getGlobal().setLevel(Level.OFF);
         logger.info("Starting process");
         userInput = new UserInput();
         TextUi.showWelcome();
