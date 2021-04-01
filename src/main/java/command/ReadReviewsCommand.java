@@ -7,6 +7,7 @@ import ui.Ui;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import static stores.Store.averageRating;
 
@@ -23,6 +24,7 @@ public class ReadReviewsCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
         averageRating = store.getAverageRating();
-        ui.showReviews(store.getStoreName(), reviews, averageRating);
+        String storeName = store.getStoreName();
+        ui.showReviews(storeName, reviews, averageRating);
     }
 }

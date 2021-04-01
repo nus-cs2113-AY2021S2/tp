@@ -1,12 +1,8 @@
-canteen<>The deck
-store<>chicken rice stall
-menu<>chicken rice//2.50
-menu<>spicy chicken rice//3.00
-menu<>chicken bones//0.9
-review<>Best Chicken Rice ever!//5.0
-store<>Fish rice stall
-menu<>fish rice//4.0
-menu<>spicy fish rice//4.50
-menu<>fish bones//0.6
-review<>Best Fish Soup Ever!//5.0
-review<>Fish doesn't taste very fresh...//0.2
+The deck<>chicken rice stall<>very nice//4
+The deck<>chicken rice stall<>not nice too salty//1
+TechnoEdge<>western town<>not bad but very ex//2.5
+TechnoEdge<>mala<>Food is delicious but always very long queue//4
+Fragrant<>mixed rice stall<>very cheap and many choices//3.5
+Fragrant<>fishball noodle<>soso only not very tasty//2.5
+Fragrant<>Power nasi lemak
+

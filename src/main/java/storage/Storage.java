@@ -18,14 +18,17 @@ public class Storage {
 
     public Storage(String filePath) {
         this.filePath = filePath;
-        this.canteens = new ArrayList<>();
+        this.canteens = new ArrayList<Canteen>();
     }
 
     public static ArrayList<Canteen> load() {
         try {
             File canteenFile = new File(filePath);
+            File storeMenu = new File("data/menu.txt");
             Scanner fileReader = new Scanner(canteenFile);
+            Scanner fileReader2 = new Scanner(storeMenu);
             readFiles(fileReader);
+            readMenu(fileReader2);
         } catch (FileNotFoundException e) {
             System.out.println("File Path was not found!");
         }
@@ -35,26 +38,96 @@ public class Storage {
     private static void readFiles(Scanner fileReader) {
         Canteen canteen = null;
         Store store = null;
+
         while (fileReader.hasNextLine()) {
             String line = fileReader.nextLine();
             String[] storedLine = line.split("<>");
-            if (storedLine[0].equals("canteen")) {
-                canteen = new Canteen(storedLine[1]);
-                canteens.add(canteen);
-            } else if (storedLine[0].equals("store")) {
+            boolean hasCanteen = false;
+            boolean hasStore = false;
+
+            //check for duplicate canteens
+            for (Canteen canteenName : canteens) {
+                //meaning canteen already exist
+                if (canteenName.getCanteenName().equals(storedLine[0])) {
+                    canteen = canteenName;
+
+                    //check for duplicate store
+                    for (Store storeName :canteen.getStores()) {
+                        //if have store then assign it
+                        if (storeName.getStoreName().equals(storedLine[1])) {
+                            store =  storeName;
+                            hasStore = true;
+                        }
+                    }
+                    //if dont have store then add store
+                    if (!hasStore) {
+                        store = new Store(storedLine[1]);
+                        canteen.getStores().add(store);
+                    }
+                    //to make sure there is a review
+                    if (storedLine.length == 3) {
+                        //create review under store
+                        String[] reviewDetails = storedLine[2].split("//");
+                        store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
+                    }
+                    hasCanteen = true;
+                }
+
+            }
+
+            //if canteen exist, skip
+            if (hasCanteen) {
+                continue;
+            }
+
+            //create new canteen
+            canteen = new Canteen(storedLine[0]);
+            canteens.add(canteen);
+
+
+            //create new store under canteen and make sure there is a store
+            if (storedLine.length >= 2) {
                 store = new Store(storedLine[1]);
                 canteen.getStores().add(store);
-            } else if (storedLine[0].equals("menu")) {
-                String[] menuDetails = storedLine[1].split("//");
-                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
-            } else if (storedLine[0].equals("review")) {
-                String[] reviewDetails = storedLine[1].split("//");
+            }
+
+            //to make sure theres a review
+            if (storedLine.length == 3) {
+                //create review under store
+                String[] reviewDetails = storedLine[2].split("//");
                 store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
-            } else {
-                continue;
             }
         }
     }
+
+    private static void readMenu(Scanner fileReader) {
+        Canteen canteen = null;
+        Store store = null;
+
+        while (fileReader.hasNextLine()) {
+            String line = fileReader.nextLine();
+            String[] storedLine = line.split("<>");
+            String[] menuDetails = storedLine[2].split("//");
+
+            //find canteen
+            for (Canteen canteenName : canteens) {
+                if (canteenName.getCanteenName().equals(storedLine[0])) {
+                    canteen = canteenName;
+                }
+            }
+
+            //find store given canteen
+            for (Store storeName : canteen.getStores()) {
+                if (storeName.getStoreName().equals(storedLine[1])) {
+                    store = storeName;
+                }
+            }
+            store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
+        }
+
+    }
+
+
 
     public static void save(ArrayList<Canteen> canteens) {
         try {
@@ -96,3 +169,26 @@ public class Storage {
         }
     }
 }
+
+/*
+ else if (storedLine[0].equals("menu")) {
+                String[] menuDetails = storedLine[1].split("//");
+                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
+            }
+
+                       //find canteen
+            for (Canteen canteenName : canteens) {
+                if (canteenName.getCanteenName().equals(storedLine[0])) {
+                    canteen = canteenName;
+                }
+
+            }
+            //find store given canteen
+            for (Store storeName : canteen.getStores()) {
+                if (storeName.getStoreName().equals(storedLine[1])) {
+                    store = storeName;
+                }
+            }
+            store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
+        }
+ */

@@ -6,6 +6,7 @@ import reviews.Review;
 import stores.Store;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Ui {
@@ -43,7 +44,6 @@ public class Ui {
     public void userShowWelcome() {
         System.out.println(LINESPACING);
         System.out.println("Welcome to our amazing canteen review application!!");
-        System.out.println("You are now viewing canteen: The Deck");
         System.out.println(LINESPACING);
     }
 
@@ -194,7 +194,7 @@ public class Ui {
 
     public void showStoreOptions(String canteenName, String storeName) {
         System.out.println(LINESPACING);
-        System.out.println("You are now viewing: " + canteenName + ", " + storeName);
+        System.out.println("You are now viewing: " + canteenName + ": " + storeName);
         System.out.println("Please Enter your command:");
         System.out.println("If you need help then Enter 'help' to view all the commands");
         System.out.println(LINESPACING);

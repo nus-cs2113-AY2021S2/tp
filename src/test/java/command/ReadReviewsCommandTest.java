@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ReviewsCommandTest {
+public class ReadReviewsCommandTest {
     @Test
     public void testReadCommand() {
         Store store = new Store("Fish rice stall");

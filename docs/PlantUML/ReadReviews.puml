@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box ReadReviews
+
+
+->":ReadReviewsCommand": execute(canteens,ui)
+activate ":ReadReviewsCommand"
+":ReadReviewsCommand"->":Store":getReviews()
+activate ":Store"
+":Store"-->":ReadReviewsCommand":reviews
+":Store"->":Store":getAverageRating()
+":Store"-->":ReadReviewsCommand":averageRating
+":Store"->":Store":getStoreName()
+return storeName
+":ReadReviewsCommand"->":Ui":showReviews(storeName,reviews,averageRating)
+":Ui"-->":ReadReviewsCommand"
+<--":ReadReviewsCommand"
+
+@enduml

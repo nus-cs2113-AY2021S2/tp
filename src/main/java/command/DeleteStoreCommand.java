@@ -3,6 +3,7 @@ package command;
 import canteens.Canteen;
 import ui.Ui;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class DeleteStoreCommand extends Command {
 
@@ -16,6 +17,7 @@ public class DeleteStoreCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
-        canteens.get(canteenIndex).deleteStore(storeIndex);
+        Canteen currentCanteen = canteens.get(canteenIndex);
+        currentCanteen.deleteStore(storeIndex);
     }
 }
