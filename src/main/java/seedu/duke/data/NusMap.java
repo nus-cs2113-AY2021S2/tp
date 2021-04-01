@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class NusMap {
+
     private HashMap<String, Block> map;
 
     public NusMap() {
