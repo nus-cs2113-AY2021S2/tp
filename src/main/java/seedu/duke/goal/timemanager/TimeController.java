@@ -74,7 +74,12 @@ public class TimeController {
         return appWeekOfYear < currentWeekOfYear;
     }
 
-    private int getSystemWeekOfYear() {
+    public static boolean isDateInWeek(LocalDate dateOfRecord, int weekOfYear) {
+        int weekOfRecord = dateOfRecord.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+        return weekOfYear == weekOfRecord;
+    }
+
+    public static int getSystemWeekOfYear() {
         LocalDate today = LocalDate.now();
         return today.get(WeekFields.of(Locale.getDefault()).weekOfYear());
     }

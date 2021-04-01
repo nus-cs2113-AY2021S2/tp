@@ -2,6 +2,7 @@ package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
 import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
+import seedu.duke.record.RecordType;
 
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class GoalList {
             int i = 1;
             for (Goal goal : goals) {
                 if (goal.getPeriodType() == optionalPeriodType) {
-                    goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
+                    goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData());
                     i++;
                 }
             }
@@ -42,7 +43,7 @@ public class GoalList {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
-                goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData()).append("\n");
+                goalStringBuilder.append(i).append("\t\t").append(goal.getGoalData());
                 i++;
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();
@@ -70,9 +71,9 @@ public class GoalList {
         return goalStringBuilder.toString();
     }
 
-    public void updateDailyProgress(double progress) {
+    public void updateProgress(PeriodType periodType, double progress) {
         for (Goal goal : goals) {
-            if (goal.getPeriodType() == DAILY) {
+            if (goal.getPeriodType().equals(periodType)) {
                 goal.setProgress(progress);
             }
         }
@@ -80,5 +81,28 @@ public class GoalList {
 
     public boolean isNotEmpty() {
         return goals.size() != 0;
+    }
+
+    public boolean isNotEmpty(PeriodType periodType) {
+        if (goals.size() == 0) {
+            return false;
+        } else {
+            int num = 0;
+            for (Goal goal : goals) {
+                if (goal.getPeriodType().equals(periodType)) {
+                    num++;
+                }
+            }
+            return num != 0;
+        }
+    }
+
+    public boolean isGoalAchieved(PeriodType periodType) {
+        for (Goal goal : goals) {
+            if (goal.getPeriodType().equals(periodType) && !goal.isAchieved()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

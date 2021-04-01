@@ -60,8 +60,4 @@ public class UI {
                 + "You can try to delete everything in the file but you will lose the information you had.");
     }
 
-    public void showProgress(User user) {
-        FitCenter fitCenter = user.getFitCenter();
-        System.out.println(fitCenter.getAllGoalListStringAtLoading() + DIVIDER_LINE_ONLY);
-    }
 }

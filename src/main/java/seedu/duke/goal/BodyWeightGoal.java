@@ -27,6 +27,11 @@ public class BodyWeightGoal extends Goal {
     }
 
     @Override
+    public boolean isAchieved() {
+        return progress == target;
+    }
+
+    @Override
     public String getProgressUnit() {
         return "Kg";
     }
@@ -60,14 +65,14 @@ public class BodyWeightGoal extends Goal {
     public String getGoalData() {
         if (progress == -1) {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                    + getPeriodType().toString().toLowerCase() + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + getAchieved() + "\t\t"
                     + getTarget() + " " + getProgressUnit() + "\t\t"
-                    + "None Proress" + "\n";
+                    + "None Progress" + getAchieved() + "\n";
         } else {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
                     + getPeriodType().toString().toLowerCase() + "\t\t"
                     + getTarget() + " " + getProgressUnit() + "\t\t"
-                    + getProgress() + " " + getProgressUnit() + "\n";
+                    + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
         }
     }
 
