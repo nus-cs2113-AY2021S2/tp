@@ -465,7 +465,7 @@ The functions in the Doctor's Appointment menu allow you, the head nurse, to add
 
 This is an example of the welcome screen for Doctors' Appointments Menu.
 
-<img src="images/DoctorAppointmentWelcome.jpg" width = "700">
+<img src="images/DoctorAppointmentWelcome.jpg" width = "800">
 
 
 #### Adding an appointment: `add`
@@ -514,7 +514,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteDocID.jpg" width = "800" >
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Appointment ID)**:<br/>
 
@@ -524,7 +524,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteAptID.jpg" width = "800" >
 
 <br/><br/>
 
@@ -547,7 +547,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListDocID.jpg" width = "800" >
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Appointment ID)**:<br/>
 
@@ -557,7 +557,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListAptID.jpg" width = "800" >
 
 <br/><br/>
 
