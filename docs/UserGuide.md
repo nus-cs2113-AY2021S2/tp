@@ -62,6 +62,9 @@ In this application there are 5 main features that are provided for the user. Ea
 
 **User Input** - Any information or data sent to a computer by the user using the application.
 
+**Alphanumeric** - Consisting of only alphabets and numerals.
+
+**Delimiter** - A character that seperates different sections of a text or input
 
 ### 3.2 Symbols & Icons
 
