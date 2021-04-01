@@ -184,10 +184,10 @@ it aims to allow new students/staffs to have a better experience at these food s
 |v1.0|user|view menu and price of items|know the type of food sold|
 |v1.0|user|add reviews and rating|provide feedback on store|
 |v1.0|admin|login|verify myself|
-|v2.0|admin|add a new canteen
+|v2.0|admin|add a new canteen 
 |v2.0|admin|delete an existing canteen
-|v2.0|admin|delete a store
-|v2.0|admin|delete a review
+|v2.0|admin|delete a store|update availability of stores
+|v2.0|admin|delete a review|restrict inappropriate reviews
 
 
 
