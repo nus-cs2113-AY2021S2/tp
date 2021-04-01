@@ -1,7 +1,6 @@
 package seedu.storage;
 
 import seedu.duke.Constants;
-import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.AppointmentActions;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
