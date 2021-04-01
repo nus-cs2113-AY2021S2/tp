@@ -398,11 +398,16 @@ public class Ui {
         System.out.println(moduleDescription);
     }
 
-    public static void printModulePrompt() {
+    public static boolean printModulePrompt() {
         System.out.println("Would you like to add/view component(s) to a module? [Y/N]");
         String yesNo = Ui.readCommand();
         if (yesNo.trim().equalsIgnoreCase("Y")) {
-            System.out.println("Key in 1 to add component and 2 to view component");
+            System.out.println("Which action would you like to proceed with? Key in 1 or 2.");
+            System.out.println("[" + 1 + "] --- Add Component");
+            System.out.println("[" + 1 + "] --- View Component");
+            return true;
+        } else {
+            return false;
         }
         //for (Module module : ModuleInfo.modules) {
         //System.out.println(module.getName());
