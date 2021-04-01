@@ -50,7 +50,12 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 ### Parser component
 
-![Structure of the Parser Component](diagrams/ParserClass.png)
+* Receives the full command line from receiveCommand().
+* Depends on the key command, Parser will activate specific commands.
+
+The diagram below shows how parser determines which command to activate based on the key command.
+
+![Structure of the Parser Component](diagrams/ParserSequence.png)
 
 ## Product scope
 ### Target user profile

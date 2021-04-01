@@ -1,5 +1,26 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-
+[-> Parser: parse(fullCommand)
+activate Parser
+    alt keyCommand = "exit":
+        Parser -> CloseCommand: closeCommand()
+    else keyCommand = "filter":
+        Parser -> FilterCommand: filterCommand()
+    else keyCommand = "help":
+        Parser -> HelpCommand: helpCommand()
+    else keyCommand = "find":
+        Parser -> FindCommand: findCommand()
+    else keyCommand = "list":
+        Parser -> ListCommand: listCommand()
+    else keyCommand = "remove":
+        Parser -> RemoveCommand: removeCommand()
+    else keyCommand = "shortlist":
+        Parser -> ShortlistCommand: shortlistCommand()
+    else keyCommand = "sortCommand":
+        Parser -> SortCommand: sortCommand()
+    else
+        Parser -> TextUi: showInvalidInput()
+    end
+[<-- Parser: command
 @enduml
