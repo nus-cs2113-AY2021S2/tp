@@ -469,110 +469,97 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 
 
 #### Adding an appointment: `add`
-Adds a new doctor's appointment to the list of appointments.
-(Note: The Appointment ID is represented by AXXXXX)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new doctor's appointment to the list of appointments.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]` 
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
+>   
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
+>3. The gender field input should only be "M", "F".
+>4. The name field input should not have any non-Alphanumeric Characters.
 
 
-Format: `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
-Example of usage:
-```
-Appointments --> add/D12345/A12347/Alex/M/21012021
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Appointments --> add/D12345/A12345/Alex/M/21012021
-------------------------------------------------------------------------------
-Appointment Added
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding an appointment for Alex, a male, with Doctor ID D12345 on 21/01/2021.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> add/D12345/A12345/Alex/M/21012021```
 
-<img src="images/DoctorAppointmentAdd.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentAdd.jpg" width = "700" >
 
-#### Deleting an appointment: `delete`
-Deletes an appointment from the list of appointments or deletes all appointments belonging to a doctor.
+<br/><br/>
 
-Format: `delete/[DoctorID/ Appointment ID]`
+#### Adding an appointment: `delete`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes an appointment from the list of appointments or deletes all appointments belonging to a doctor.
 
-Example of usage (Doctor ID):
-```
-Appointments --> delete/D12345
-```
-Expected Outcome (Doctor ID):
-```
-------------------------------------------------------------------------------
-Appointments --> delete/D12345
-------------------------------------------------------------------------------
-DoctorID / Appointment ID : D12345/A12346 has been deleted!
-DoctorID / Appointment ID : D12345/A12347 has been deleted!
-------------------------------------------------------------------------------
-```
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]` 
 
-<img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
+> 
 
-Example of usage (Appointment ID):
-```
-Appointments --> delete/A12346
-```
-Expected Outcome (Appointment ID):
-```
-------------------------------------------------------------------------------
-Appointments --> delete/A369
-------------------------------------------------------------------------------
-Appointmenet ID: A12346 has been deleted!
-------------------------------------------------------------------------------
-```
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Doctor ID)**:<br/>
 
-<img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deleting all Appointments for Doctor with ID D12345.
 
-#### Listing appointments: `list`
-Lists all of the appointments of a specific doctor or list an individual appointment.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> delete/D12345```
 
-Format: `list/[Doctor ID/ Appointment ID]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-Example of usage (Doctor ID):
-```
-Appointments --> list/D12345
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteDocID.jpg" width = "700" >
 
-Expected Outcome (Doctor ID):
-```
-------------------------------------------------------------------------------
-Doctor ID  |Appointment ID | Name	| Gender   | Date     
-____________________________________________________________
-D12345     |A12345 	   | MingShun	| M        | 19/08/2021    
-           |A11111         | Alex	| M        | 21/01/2021    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Appointment ID)**:<br/>
 
-------------------------------------------------------------------------------
-```
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deleting the Appointment with ID A12346
 
-<img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> delete/A12346```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-Example of usage (Appointment ID):
-```
-Appointments --> list/A12345
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentDeleteAptID.jpg" width = "700" >
 
-Expected Outcome (Appointment ID):
-```
-------------------------------------------------------------------------------
-Appointment ID | Name	  | Gender   | Date     
-____________________________________________________________
-A12345 	       | MingShun | M        | 19/08/2021    
+<br/><br/>
 
-------------------------------------------------------------------------------
-```
-Example Screenshot:
+#### Adding an appointment: `list`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all of the appointments of a specific doctor or list an individual appointment.
 
-<img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[DoctorID/ Appointment ID]` 
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
+> 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Doctor ID)**:<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Listing all Appointments for Doctor with ID D12345.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> list/D12345```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListDocID.jpg" width = "700" >
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage (Appointment ID)**:<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List the Appointment with ID A12345
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Appointments --> list/A12345```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentListAptID.jpg" width = "700" >
+
+<br/><br/>
 
 
 #### Returning to Start Menu: `return`
