@@ -616,22 +616,25 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 #### Deleting a schedule: `delete`
 &nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
+>
 >2. HealthVault only accepts valid Date inputs.
 
-
-
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
@@ -640,31 +643,34 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 #### Listing schedules: `list`
 &nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `list/[Nurse ID/all]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[Nurse ID/all]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/N12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(Nurse ID):
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(Nurse ID)**:
 
 <img src="images/NurseScheduleListNurseID.png" width = "550">
 
 <br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(all):
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(all)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(all):
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(all)**:
 
 <img src="images/NurseScheduleListAll.png" width = "550">
 
@@ -674,7 +680,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleReturn.png" width = "250">
 
@@ -682,7 +688,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleHelp.png" width = "850">
 
