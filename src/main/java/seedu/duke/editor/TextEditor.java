@@ -3,6 +3,7 @@ package seedu.duke.editor;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
@@ -30,6 +31,7 @@ import static seedu.duke.common.Constants.TEXT_EDITOR_HEIGHT;
 import static seedu.duke.common.Constants.TEXT_EDITOR_TITLE;
 import static seedu.duke.common.Constants.TEXT_EDITOR_WIDTH;
 import static seedu.duke.common.Messages.NEWLINE;
+import static seedu.duke.common.Messages.TEXT_EDITOR_INSTRUCTION;
 
 public class TextEditor extends JFrame implements ActionListener {
 
@@ -43,9 +45,9 @@ public class TextEditor extends JFrame implements ActionListener {
     private static TextEditor textEditor;
 
     //@@author H-horizon
-    private TextEditor(String path) {
+    private TextEditor(String path, String fileName) {
         setPathName(path);
-        setTextEditorTitle();
+        setTextEditorTitle(fileName);
         setCloseIcon();
         setTextEditorDimension();
         setFontStyleIcon();
@@ -53,15 +55,16 @@ public class TextEditor extends JFrame implements ActionListener {
         setTextArea();
         setTextAreaToVoid();
         setScrollPane();
+        setInstructionText();
         setLayout();
         setShortcutListener();
         loadFile(path);
     }
 
     //@@author 8kdesign
-    public static boolean createNew(String path) {
+    public static boolean createNew(String path, String fileName) {
         if (textEditor == null) {
-            textEditor = new TextEditor(path);
+            textEditor = new TextEditor(path, fileName);
             textEditor.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -75,9 +78,12 @@ public class TextEditor extends JFrame implements ActionListener {
         }
     }
 
+    private void setInstructionText() {
+        this.add(new JLabel(TEXT_EDITOR_INSTRUCTION));
+    }
 
     //@@author H-horizon
-    public void loadFile(String filePath) {
+    private void loadFile(String filePath) {
         File file = new File(filePath);
         Scanner fileReader = null;
         try {
@@ -94,7 +100,7 @@ public class TextEditor extends JFrame implements ActionListener {
         }
     }
 
-    public void setTextAreaToVoid() {
+    private void setTextAreaToVoid() {
         textArea.setText(null);
     }
 
@@ -160,8 +166,8 @@ public class TextEditor extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
-    private void setTextEditorTitle() {
-        this.setTitle(TEXT_EDITOR_TITLE);
+    private void setTextEditorTitle(String fileName) {
+        this.setTitle(String.format(TEXT_EDITOR_TITLE, fileName));
     }
 
     @Override
