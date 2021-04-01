@@ -557,7 +557,7 @@ Trip to P1 on 30012020 added!
 
 Example Screenshot:
 
-<img src="images/NurseScheduleAdd.png" width = "700">
+<img src="images/NurseScheduleAdd.png" width = "600">
 
 
 #### Deleting a schedule: `delete`
@@ -582,7 +582,7 @@ Trip to P12345 on 30/01/2020 has been cancelled!
 
 Example Screenshot:
 
-<img src="images/NurseScheduleDelete.png" width = "700">
+<img src="images/NurseScheduleDelete.png" width = "650">
 
 #### Listing schedules: `list`
 List either all schedules or specified Nurse ID's schedule.
@@ -604,7 +604,7 @@ N12345     | P12345     | 30/01/2020
 ```
 Example Screenshot:
 
-<img src="images/NurseScheduleListNurseID.png" width = "700">
+<img src="images/NurseScheduleListNurseID.png" width = "650">
 
 Example of usage(all):
 
@@ -623,7 +623,7 @@ N00000     | P11111     | 15/02/2020
 
 Example Screenshot:
 
-<img src="images/NurseScheduleListAll.png" width = "700">
+<img src="images/NurseScheduleListAll.png" width = "650">
 
 
 #### Returning to Start Menu: `return`
@@ -633,20 +633,6 @@ Returns to Start Menu.
 #### Help: `help`
 
 Prints Nurse Schedule help message.
-
-### ??Adding a todo: `todo`??
-Adds a new item to the list of todo items.
-
-Format: `todo n/TODO_NAME d/DEADLINE`
-
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
-
-Example of usage: 
-
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
 
 ### 5.5 Inventory
 
