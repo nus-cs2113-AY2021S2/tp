@@ -42,8 +42,7 @@ public class InventoryUI extends UI{
     }
 
     public static void inventoryMenuHeader() {
-        UI.showLine();
-        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
+        System.out.print("Welcome to Inventory Menu!\nType \"help\" for staff menu commands\n\n");
     }
 
     public void showLoadingError() {
