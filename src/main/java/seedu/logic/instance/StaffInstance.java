@@ -7,8 +7,6 @@ import seedu.logic.parser.StaffParser;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 
-import java.io.IOException;
-
 public class StaffInstance {
     private StaffUI staffUI;
     private StaffAggregation staffAggregation;
@@ -48,8 +46,8 @@ public class StaffInstance {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 StaffUI.invalidNumericErrorMessage();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                System.out.println("Something went wrong!\n");
             }
         }
     }

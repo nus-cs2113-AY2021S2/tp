@@ -64,6 +64,7 @@ public class StaffStorage {
     public static void createFile() {
         try {
             File myObj = new File(filePath);
+            saveFile.getParentFile().mkdirs();
             if (myObj.createNewFile()) {
             }
         } catch (IOException e) {
