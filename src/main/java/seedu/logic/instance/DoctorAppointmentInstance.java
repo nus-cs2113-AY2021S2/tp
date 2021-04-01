@@ -48,10 +48,10 @@ public class DoctorAppointmentInstance {
         }
         UI.showLine();
         DoctorAppointmentUI.doctorAppointmentsWelcome();
+        ui.printAppointmentMenuPrompt();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
             try {
-                ui.printAppointmentMenuPrompt();
                 String input = ui.getInput("Appointment");
                 UI.showLine(); // show the divider line ("_______")
                 Command c = DoctorAppointmentParser.parse(input, details);
@@ -60,17 +60,17 @@ public class DoctorAppointmentInstance {
                 if (isReturnToStartMenu) {
                     UI.returningToStartMenuMessage();
                 }
-                UI.showLine();
+                DoctorAppointmentUI.printNewLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             } catch (HealthVaultException e) {
                 //System.out.println("OOPS something went wrong :0");
                 System.out.println(e.getMessage());
-                UI.showLine();
+                DoctorAppointmentUI.printNewLine();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                UI.showLine();
+                DoctorAppointmentUI.printNewLine();
             }
         }
     }

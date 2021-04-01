@@ -52,11 +52,8 @@ public class DoctorAppointmentUI extends UI {
            // System.out.print(doc.getDoctorId());
            //printEmptyCell(doc.getDoctorId());
         }
-        //System.out.print(doc.getAppointmentId());
         printEmptyCell(doc.getAppointmentId());
-       // System.out.print(doc.getPatientsName());
         printEmptyCell(doc.getPatientsName());
-       // System.out.print(doc.getGender());
         printEmptyCell(doc.getGender());
         System.out.print(doc.getDateFormat(doc.getDate()));
         System.out.print("\n");
@@ -80,6 +77,10 @@ public class DoctorAppointmentUI extends UI {
 
     public static void corruptedFileErrorMessage() {
         System.out.println("File (data/DoctorAppointment.txt) is corrupted. Please delete the file before running the Doctor Appointment Menu.");
+    }
+
+    public static void printNewLine() {
+        System.out.print("\n");
     }
 
 
