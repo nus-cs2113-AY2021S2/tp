@@ -42,11 +42,16 @@ public class DoctorAppointmentStorage {
         File fileName = new File(filePath);
         Scanner fileReader = new Scanner(fileName);
         while (fileReader.hasNextLine()) {
-            String input = fileReader.nextLine();
-            String[] data = input.split("\\s\\|\\s", 5);
-            checkStorage.add(data[1]);
-            DoctorAppointmentChecker.checkDataFromStorage(input,checkStorage);
-            loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
+            try {
+                String input = fileReader.nextLine();
+                if (input.isBlank()) throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+                String[] data = input.split("\\s\\|\\s", 5);
+                DoctorAppointmentChecker.checkDataFromStorage(input, checkStorage);
+                checkStorage.add(data[1]);
+                loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
+            }catch (Exception e){
+                throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+            }
         }
         fileReader.close();
         return new AppointmentActions(loadAppointments);
