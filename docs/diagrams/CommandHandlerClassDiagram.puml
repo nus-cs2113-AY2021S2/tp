@@ -2,6 +2,8 @@
 skinparam classAttributeIconSize 0
 hide circle
 
+note "Private methods are omitted." as N1
+
 class CommandHandler {
     -isExit : boolean
     +CommandHandler()
@@ -12,9 +14,9 @@ class CommandHandler {
 }
 
 class Finux {
-
+    +main()
 }
 
 CommandHandler"1" <-- Finux
-
+Finux -right> N1
 @enduml

@@ -30,6 +30,6 @@ skinparam linetype polyline
 Command <|-- AddCommand
 
 hide RecordType empty members
-Command -right[hidden] RecordType
+Command -left[hidden] RecordType
 
 @enduml
