@@ -64,6 +64,11 @@ public class FitCenter {
         }
     }
 
+    /**
+     * Resets the progress for goals of a given period type (daily/weekly).
+     *
+     * @param periodType the period type of the goals (daily/weekly).
+     */
     public void resetGoalProgress(PeriodType periodType) {
         exerciseGoalList.initializeGoalProgress(periodType);
         dietGoalList.initializeGoalProgress(periodType);
@@ -133,6 +138,14 @@ public class FitCenter {
         }
     }
 
+    /**
+     * Cancels a goal and remove it from a goal list by index.
+     *
+     * @param type  the type of the goal.
+     * @param index the index of the goal in the goal list.
+     * @return a summary of the goal canceled.
+     * @throws IndexOutOfBoundsException when the index input is out of range.
+     */
     public String cancelGoalFromList(CommandRecordType type, int index) throws IndexOutOfBoundsException {
         GoalList list = getGoalListByType(type);
         if (list != null) {
@@ -142,9 +155,10 @@ public class FitCenter {
     }
 
     /**
-     * Prints the list of record of a selected type.
+     * Gets a printable string of the list of record of a selected type.
      *
      * @param type the type of the record that the list stores.
+     * @return a printable string of the list of record of a selected type.
      */
     public String getRecordListString(CommandRecordType type) {
         RecordList list = getRecordListByType(type);
@@ -155,10 +169,11 @@ public class FitCenter {
     }
 
     /**
-     * Prints the list of record of a selected type on a specific date.
+     * Gets a printable string of the list of record of a selected type on a specific date.
      *
      * @param type the type of the record that the list stores.
      * @param date the date of records.
+     * @return a printable string of the list of record of a selected type on a specific date.
      */
     public String getRecordListString(CommandRecordType type, LocalDate date) {
         RecordList list = getRecordListByType(type);
@@ -168,6 +183,13 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
+    /**
+     * Gets a printable string of the list of record of a selected type filtered by optional parameters.
+     *
+     * @param type          the type of the record that the list stores.
+     * @param optionalParam optional parameters that can filter the list of record.
+     * @return a printable string of the list of record of a selected type filtered by optional parameters.
+     */
     public String getRecordListString(CommandRecordType type, String optionalParam) {
         RecordList list = getRecordListByType(type);
         if (list != null) {
@@ -176,6 +198,16 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
+    /**
+     * Gets a printable string of the list of record of a selected type on a specific date and
+     * filtered by optional parameters.
+     *
+     * @param type          the type of the record that the list stores.
+     * @param date          the date of records.
+     * @param optionalParam optional parameters that can filter the list of record.
+     * @return a printable string of the list of record of a selected type on a specific date and
+     *     filtered by optional parameters.
+     */
     public String getRecordListString(CommandRecordType type, LocalDate date, String optionalParam) {
         RecordList list = getRecordListByType(type);
         if (list != null) {
@@ -184,6 +216,14 @@ public class FitCenter {
         return Messages.MESSAGE_CANT_VIEW_LIST;
     }
 
+    /**
+     * Gets a printable string of the list of goals of a selected type and can be filtered by a optional period type.
+     *
+     * @param type               the type of the goals.
+     * @param optionalPeriodType an optional period type that filter the list of goals.
+     * @return a printable string of the list of goals of a selected type and can be filtered
+     *     by a optional period type.
+     */
     public String getGoalListString(CommandRecordType type, PeriodType optionalPeriodType) {
         GoalList list = getGoalListByType(type);
         if (list != null) {
@@ -218,7 +258,12 @@ public class FitCenter {
         return dietGoalList.isNotEmpty(periodType);
     }
 
-    public String getAllGoalListStringAtLoading() {
+    /**
+     * Gets a printable string of unachieved list of goals when the app starts.
+     *
+     * @return a printable string of unachieved list of goals when the app starts.
+     */
+    public String getUnachievedGoalListStringAtLoading() {
         if (hasGoals()) {
             StringBuilder stringBuilder = new StringBuilder();
             if (!isGoalAchieved(DAILY) || !isGoalAchieved(WEEKLY)) {
@@ -264,6 +309,11 @@ public class FitCenter {
         }
     }
 
+    /**
+     * Gets a string of record lists in a format that can be stored into a text file.
+     *
+     * @return a string of record lists in a format that can be stored into a text file.
+     */
     public String getRecordListForStore() {
         return exerciseRecordList.getRecordToStore()
                 + dietRecordList.getRecordToStore()
@@ -271,6 +321,11 @@ public class FitCenter {
                 + bodyRecordList.getRecordToStore();
     }
 
+    /**
+     * Gets a string of goal lists in a format that can be stored into a text file.
+     *
+     * @return a string of goal lists in a format that can be stored into a text file.
+     */
     public String getGoalListForStore() {
         return exerciseGoalList.getGoalToStore()
                 + dietGoalList.getGoalToStore()
@@ -292,6 +347,12 @@ public class FitCenter {
         bodyWeightGoalList.updateProgress(WEEKLY, bodyRecordList.getWeeklyProgress(weekOfYear));
     }
 
+    /**
+     * Initialize the progress of goals read from files when the app starts.
+     *
+     * @param currentDate the date when the app runs.
+     * @param weekOfYear  the week of year when the app runs.
+     */
     public void initProgressAtLoading(LocalDate currentDate, int weekOfYear) {
         initDailyProgressAtLoading(currentDate);
         initWeeklyProgressAtLoading(weekOfYear);
@@ -341,15 +402,25 @@ public class FitCenter {
         }
     }
 
+    /**
+     * Updates corresponding progress of goals when new records are added.
+     *
+     * @param record            the records to be added.
+     * @param currentDate       the date when the app runs.
+     * @param currentWeekOfYear the week of year when the app runs.
+     */
     public void updateProgressAtAdding(Record record, LocalDate currentDate, int currentWeekOfYear) {
         updateDailyProgressAtAdding(record, currentDate);
         updateWeeklyProgressAtAdding(record, currentWeekOfYear);
     }
 
+    /**
+     * Prints the progress of goals when the app starts.
+     */
     public void showGoalProgress() {
-        String progressMessage = getAllGoalListStringAtLoading();
+        String progressMessage = getUnachievedGoalListStringAtLoading();
         if (progressMessage != null) {
-            UI.printMessage(getAllGoalListStringAtLoading());
+            UI.printMessage(getUnachievedGoalListStringAtLoading());
         }
     }
 }

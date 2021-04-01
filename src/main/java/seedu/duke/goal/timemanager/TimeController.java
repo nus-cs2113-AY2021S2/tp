@@ -15,6 +15,9 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controls & manages the time of the application.
+ */
 public class TimeController {
     private static final Logger logger = Logger.getLogger("Time Control logger");
     private LocalDate appToday;
@@ -22,6 +25,9 @@ public class TimeController {
     private Storage storage;
     private boolean isInitialStart = false;
 
+    /**
+     * Initialize the time controller and update the app time.
+     */
     public TimeController() {
         try {
             String timePath = "data" + File.separator + "appTime.txt";
@@ -39,6 +45,12 @@ public class TimeController {
         }
     }
 
+
+    /**
+     * Checks if today is a new day/new week. If so, the progress of goals will be reset accordingly.
+     *
+     * @param fitCenter the fit center of the current user.
+     */
     public void checkForTime(FitCenter fitCenter) {
         boolean toUpdateFile = false;
         if (isTodayANewDay()) {
@@ -74,11 +86,23 @@ public class TimeController {
         return appWeekOfYear < currentWeekOfYear;
     }
 
-    public static boolean isDateInWeek(LocalDate dateOfRecord, int weekOfYear) {
-        int weekOfRecord = dateOfRecord.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+    /**
+     * Checks if a date is in a week of the year.
+     *
+     * @param date       the date to be checked.
+     * @param weekOfYear the week of the year.
+     * @return true if the date is within the week of the year given.
+     */
+    public static boolean isDateInWeek(LocalDate date, int weekOfYear) {
+        int weekOfRecord = date.get(WeekFields.of(Locale.getDefault()).weekOfYear());
         return weekOfYear == weekOfRecord;
     }
 
+    /**
+     * Gets the week of year of the date today.
+     *
+     * @return the week of year of the date today.
+     */
     public static int getSystemWeekOfYear() {
         LocalDate today = LocalDate.now();
         return today.get(WeekFields.of(Locale.getDefault()).weekOfYear());
@@ -90,6 +114,7 @@ public class TimeController {
             if (timeStrParams.length == 1) {
                 isInitialStart = true;
             } else {
+                logger.setLevel(Level.OFF);
                 logger.log(Level.INFO, "Param 0: " + timeStrParams[0] + " Param 1: " + timeStrParams[1]);
             }
             return timeStrParams;
