@@ -24,11 +24,8 @@ public class Storage {
     public static ArrayList<Canteen> load() {
         try {
             File canteenFile = new File(filePath);
-            File storeMenu = new File("data/menu.txt");
             Scanner fileReader = new Scanner(canteenFile);
-            Scanner fileReader2 = new Scanner(storeMenu);
             readFiles(fileReader);
-            readMenu(fileReader2);
         } catch (FileNotFoundException e) {
             System.out.println("File Path was not found!");
         }
@@ -36,98 +33,84 @@ public class Storage {
     }
 
     private static void readFiles(Scanner fileReader) {
-        Canteen canteen = null;
-        Store store = null;
+        Canteen canteen;
+        Store store;
 
         while (fileReader.hasNextLine()) {
             String line = fileReader.nextLine();
             String[] storedLine = line.split("<>");
-            boolean hasCanteen = false;
-            boolean hasStore = false;
 
-            //check for duplicate canteens
-            for (Canteen canteenName : canteens) {
-                //meaning canteen already exist
-                if (canteenName.getCanteenName().equals(storedLine[0])) {
-                    canteen = canteenName;
-
-                    //check for duplicate store
-                    for (Store storeName :canteen.getStores()) {
-                        //if have store then assign it
-                        if (storeName.getStoreName().equals(storedLine[1])) {
-                            store =  storeName;
-                            hasStore = true;
-                        }
-                    }
-                    //if dont have store then add store
-                    if (!hasStore) {
-                        store = new Store(storedLine[1]);
-                        canteen.getStores().add(store);
-                    }
-                    //to make sure there is a review
-                    if (storedLine.length == 3) {
-                        //create review under store
-                        String[] reviewDetails = storedLine[2].split("//");
-                        store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
-                    }
-                    hasCanteen = true;
-                }
-
-            }
-
-            //if canteen exist, skip
-            if (hasCanteen) {
-                continue;
-            }
-
-            //create new canteen
-            canteen = new Canteen(storedLine[0]);
-            canteens.add(canteen);
-
-
-            //create new store under canteen and make sure there is a store
-            if (storedLine.length >= 2) {
+            switch (storedLine.length) {
+            case 1:
+                canteen = new Canteen(storedLine[0]);
+                canteens.add(canteen);
+                break;
+            case 2:
+                //check if canteen exist
+                canteen = findCanteen(storedLine[0]);
+                //add new store to canteen
                 store = new Store(storedLine[1]);
                 canteen.getStores().add(store);
-            }
-
-            //to make sure theres a review
-            if (storedLine.length == 3) {
-                //create review under store
+                break;
+            case 3:
                 String[] reviewDetails = storedLine[2].split("//");
+                //check if canteen exist
+                canteen = findCanteen(storedLine[0]);
+                //check if store exist
+                store = findStore(canteen,storedLine[1]);
                 store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
+                break;
+            case 4:
+                //check if canteen exist
+                canteen = findCanteen(storedLine[0]);
+                //check if store exist
+                store = findStore(canteen,storedLine[1]);
+                store.addMenu(new Menu(storedLine[2], Double.parseDouble(storedLine[3])));
+                break;
+            default:
+                System.out.println("file corrupted!");
             }
         }
     }
 
-    private static void readMenu(Scanner fileReader) {
-        Canteen canteen = null;
+    private static Store findStore(Canteen canteen,String storeName) {
         Store store = null;
+        boolean hasStore = false;
 
-        while (fileReader.hasNextLine()) {
-            String line = fileReader.nextLine();
-            String[] storedLine = line.split("<>");
-            String[] menuDetails = storedLine[2].split("//");
-
-            //find canteen
-            for (Canteen canteenName : canteens) {
-                if (canteenName.getCanteenName().equals(storedLine[0])) {
-                    canteen = canteenName;
-                }
+        for (Store storeIndex :canteen.getStores()) {
+            //if have store then assign it
+            if (storeIndex.getStoreName().equals(storeName)) {
+                store =  storeIndex;
+                hasStore = true;
             }
-
-            //find store given canteen
-            for (Store storeName : canteen.getStores()) {
-                if (storeName.getStoreName().equals(storedLine[1])) {
-                    store = storeName;
-                }
-            }
-            store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
         }
-
+        //if dont have store then add store
+        if (!hasStore) {
+            store = new Store(storeName);
+            canteen.getStores().add(store);
+        }
+        return store;
     }
 
+    private static Canteen findCanteen(String canteenName) {
+        Canteen canteen = null;
+        boolean hasCanteen = false;
 
+        //check for duplicate canteens
+        for (Canteen canteenIndex : canteens) {
+            //meaning canteen already exist
+            if (canteenIndex.getCanteenName().equals(canteenName)) {
+                canteen = canteenIndex;
+                hasCanteen = true;
+            }
+        }
+        //its a new canteen
+        if (!hasCanteen) {
+            canteen = new Canteen(canteenName);
+            canteens.add(canteen);
+        }
+        return canteen;
+    }
 
     public static void save(ArrayList<Canteen> canteens) {
         try {
@@ -169,26 +152,3 @@ public class Storage {
         }
     }
 }
-
-/*
- else if (storedLine[0].equals("menu")) {
-                String[] menuDetails = storedLine[1].split("//");
-                store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
-            }
-
-                       //find canteen
-            for (Canteen canteenName : canteens) {
-                if (canteenName.getCanteenName().equals(storedLine[0])) {
-                    canteen = canteenName;
-                }
-
-            }
-            //find store given canteen
-            for (Store storeName : canteen.getStores()) {
-                if (storeName.getStoreName().equals(storedLine[1])) {
-                    store = storeName;
-                }
-            }
-            store.addMenu(new Menu(menuDetails[0], Double.parseDouble(menuDetails[1])));
-        }
- */
