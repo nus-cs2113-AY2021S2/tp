@@ -44,11 +44,9 @@ public class HelpGraduationManager {
                     }
 
                     Ui.printRegisteredCapAndMCsTakenMessage();
-                    Ui.printHorizontalLine();
                     break;
                 case 2:
                     Ui.printRegisteredCapAndMCsTakenMessage();
-                    Ui.printHorizontalLine();
                     break;
                 case 3:
                     HelpGraduation helpGraduation = new HelpGraduation();

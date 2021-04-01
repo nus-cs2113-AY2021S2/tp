@@ -410,16 +410,16 @@ public class ModuleInfo {
 
     private static void getComponents() {
         // prompts user for view or add instruction
-        if (Ui.printModulePrompt()) {
-            int addView = Ui.readCommandToInt();
-            if (addView == 1) {
-                Component.addComponent(modules);
-            } else if (addView == 2) {
-                Component.viewComponent(modules);
-            } else {
-                Ui.printInvalidIntegerMessage();
-            }
+        Ui.printModulePrompt();
+        int addView = Ui.readCommandToInt();
+        if (addView == 1) {
+            Component.addComponent(modules);
+        } else if (addView == 2) {
+            Component.viewComponent(modules);
+        } else {
+            Ui.printInvalidIntegerMessage();
         }
+
 
     }
 
