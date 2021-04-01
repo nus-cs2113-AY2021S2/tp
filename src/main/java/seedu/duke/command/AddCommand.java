@@ -2,6 +2,7 @@ package seedu.duke.command;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Record;
@@ -17,13 +18,16 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 
+/**
+ * Represents a command of adding a new record to current record list.
+ */
 public class AddCommand extends Command {
     private static final String FEEDBACK_FORMAT = "A new %s record is added successfully!\nRecord summary:\n%s";
     private final Record record;
     private final CommandRecordType recordType;
 
     public AddCommand(CommandRecordType recordType, HashMap<String, String> params)
-            throws ParseException, TypeException, NumberFormatException {
+            throws ParseException, TypeException, NumberFormatException, FutureDateException {
         SimpleDateFormat spf = new SimpleDateFormat("dd-MM-yyyy");
         this.recordType = recordType;
         spf.setLenient(false);
@@ -32,6 +36,9 @@ public class AddCommand extends Command {
         if (dateString != null) {
             Date date = spf.parse(dateString);
             recordDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            if (recordDate.isAfter(LocalDate.now())) {
+                throw new FutureDateException();
+            }
         } else {
             recordDate = LocalDate.now();
         }
@@ -53,6 +60,12 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Adds the new record to record list.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the feedback message of execution.
+     */
     public CommandResult execute(FitCenter fitCenter) {
         LocalDate currentDate = LocalDate.now();
         int currentWeekOfYear = TimeController.getSystemWeekOfYear();

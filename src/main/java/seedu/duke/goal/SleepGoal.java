@@ -12,8 +12,11 @@ public class SleepGoal extends Goal {
      * @param periodType     the period type of the goal which can be daily or weekly.
      * @param targetDuration the target sleeping duration.
      */
-    public SleepGoal(PeriodType periodType, double targetDuration) {
+    public SleepGoal(PeriodType periodType, double targetDuration) throws NumberFormatException {
         super(RecordType.SLEEP, periodType, targetDuration);
+        if (targetDuration < 0 || targetDuration > 24) {
+            throw new NumberFormatException("Target duration invalid");
+        }
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
@@ -48,7 +51,7 @@ public class SleepGoal extends Goal {
 
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+        return SPACING + getDaySet().format(DATE_FORMATTER) + SPACING
                 + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                 + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";

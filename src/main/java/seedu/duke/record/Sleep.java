@@ -11,9 +11,12 @@ public class Sleep extends Record {
      * @param duration the duration of the sleep.
      * @param date     the date of the sleep.
      */
-    public Sleep(double duration, LocalDate date) {
+    public Sleep(double duration, LocalDate date) throws NumberFormatException {
         super(RecordType.SLEEP, date);
         this.duration = duration;
+        if (duration < 0 || duration > 1440) {
+            throw new NumberFormatException("Sleep duration invalid");
+        }
     }
 
     /**
@@ -32,17 +35,21 @@ public class Sleep extends Record {
      */
     @Override
     public String getRecordSummary() {
-        return getDuration() + " hours of sleep on " + getDate().format(DATE_FORMATTER);
+        return getDuration() + " " + getUnit() + " of sleep on " + getDate().format(DATE_FORMATTER);
     }
 
     @Override
     public String getRecordData() {
-        return "\t\t\t" + getDate().format(DATE_FORMATTER)
-                + "\t\t" + getDuration() + " hour(s)";
+        return SEPARATOR_TAB + SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
+                + SEPARATOR_TAB + SEPARATOR_TAB + getDuration() + " " + getUnit();
     }
 
     @Override
     public String getRecordDataToStore() {
         return "S" + SEPARATOR + duration + SEPARATOR + getDate().format(DATE_FORMATTER);
+    }
+
+    private String getUnit() {
+        return "hour(s)";
     }
 }

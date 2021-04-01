@@ -18,7 +18,7 @@ public class SetCommand extends Command {
     private final Goal goal;
     private final CommandRecordType recordType;
 
-    public SetCommand(CommandRecordType recordType, HashMap<String, String> params) {
+    public SetCommand(CommandRecordType recordType, HashMap<String, String> params) throws NumberFormatException {
         this.recordType = recordType;
         PeriodType periodType = PeriodType.valueOf(params.get("periodType"));
         double target = Double.parseDouble(params.get("target"));
@@ -48,7 +48,7 @@ public class SetCommand extends Command {
             feedback = "A new " + goal.getType().toString().toLowerCase()
                     + " goal is set successfully!\n" + goal.getGoalSummary();
             if (recordType == BODY_WEIGHT && goal.getProgress() == -1) {
-                feedback += MESSAGE_NO_BODY_WEIGHT_RECORD;
+                feedback = feedback + "\n" + MESSAGE_NO_BODY_WEIGHT_RECORD;
             }
         } else {
             feedback = Messages.MESSAGE_CANT_SET_GOAL;

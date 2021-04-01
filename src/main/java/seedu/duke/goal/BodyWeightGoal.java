@@ -4,6 +4,8 @@ import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
 
+import static seedu.duke.common.Messages.MESSAGE_NO_BODY_WEIGHT_PROGRESS;
+
 public class BodyWeightGoal extends Goal {
 
     /**
@@ -12,8 +14,11 @@ public class BodyWeightGoal extends Goal {
      * @param periodType       the period type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      */
-    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
+    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
+        if (targetBodyWeight < 0 || targetBodyWeight > 400) {
+            throw new NumberFormatException("Target weight invalid");
+        }
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
@@ -54,7 +59,7 @@ public class BodyWeightGoal extends Goal {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
                     + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
-                    + "Progress: " + "You haven't add any body weight record.";
+                    + "Progress: " + MESSAGE_NO_BODY_WEIGHT_PROGRESS;
         } else {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
@@ -66,12 +71,12 @@ public class BodyWeightGoal extends Goal {
     @Override
     public String getGoalData() {
         if (progress == -1) {
-            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+            return SPACING + getDaySet().format(DATE_FORMATTER) + SPACING
                     + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
-                    + "None Progress" + getAchieved() + "\n";
+                    + MESSAGE_NO_BODY_WEIGHT_PROGRESS + getAchieved() + "\n";
         } else {
-            return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+            return SPACING + getDaySet().format(DATE_FORMATTER) + SPACING
                     + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";

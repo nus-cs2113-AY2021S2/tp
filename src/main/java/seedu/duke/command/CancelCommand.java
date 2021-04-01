@@ -5,6 +5,9 @@ import seedu.duke.common.Messages;
 
 import java.util.HashMap;
 
+/**
+ * Represents a command of cancelling a goal in current goal list.
+ */
 public class CancelCommand extends Command {
     private final CommandRecordType recordType;
     private final int indexToDelete;
@@ -14,6 +17,12 @@ public class CancelCommand extends Command {
         this.indexToDelete = Integer.parseInt(params.get("index")) - 1;
     }
 
+    /**
+     * Cancels a goal in current goal list.
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the feedback message of execution.
+     */
     @Override
     public CommandResult execute(FitCenter fitCenter) {
         String goalTypeString = recordType.toString().toLowerCase().replace("_", " ");

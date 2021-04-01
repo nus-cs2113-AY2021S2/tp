@@ -12,8 +12,11 @@ public class ExerciseGoal extends Goal {
      * @param periodType   the period type of the goal which can be daily or weekly.
      * @param targetEnergy the target energy to be burnt.
      */
-    public ExerciseGoal(PeriodType periodType, double targetEnergy) {
+    public ExerciseGoal(PeriodType periodType, double targetEnergy) throws NumberFormatException {
         super(RecordType.EXERCISE, periodType, targetEnergy);
+        if (targetEnergy < 0 || targetEnergy > 10000) {
+            throw new NumberFormatException("Target calorie invalid");
+        }
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
@@ -49,7 +52,7 @@ public class ExerciseGoal extends Goal {
 
     @Override
     public String getGoalData() {
-        return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
+        return SPACING + getDaySet().format(DATE_FORMATTER) + SPACING
                 + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                 + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";

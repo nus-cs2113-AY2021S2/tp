@@ -129,7 +129,12 @@ public class RecordList {
         }
     }
 
-
+    /**
+     * Calculates progress based on all records on a specified date.
+     *
+     * @param currentDate the specified date.
+     * @return the cumulative value or latest value.
+     */
     public double getDailyProgress(LocalDate currentDate) {
         switch (type) {
         case EXERCISE:
@@ -145,6 +150,12 @@ public class RecordList {
         }
     }
 
+    /**
+     * Calculates progress based on all records in a specified week.
+     *
+     * @param currentWeekOfYear the specified week.
+     * @return the cumulative value or latest value.
+     */
     public double getWeeklyProgress(int currentWeekOfYear) {
         switch (type) {
         case EXERCISE:

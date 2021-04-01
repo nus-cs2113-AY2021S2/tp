@@ -12,6 +12,7 @@ import seedu.duke.command.HelpCommand;
 import seedu.duke.command.InvalidCommand;
 import seedu.duke.command.ExitCommand;
 import seedu.duke.common.Messages;
+import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
 import seedu.duke.goal.PeriodType;
 
@@ -108,7 +109,20 @@ public class CommandParser {
         } catch (TypeException e) {
             return new InvalidCommand(e.toString());
         } catch (NumberFormatException e) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_FOOD_AMOUNT);
+            switch (e.getMessage()) {
+            case "Food amount invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_FOOD_AMOUNT);
+            case "Exercise time invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
+            case "Body weight invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
+            case "Sleep duration invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_SLEEP_HOUR);
+            default:
+                return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND);
+            }
+        } catch (FutureDateException e) {
+            return new InvalidCommand(Messages.MESSAGE_FUTURE_DATE_RECORD);
         }
     }
 
@@ -126,20 +140,39 @@ public class CommandParser {
                 return new InvalidCommand(SET);
             }
 
-            String rawPeriodType = rawParams[1].trim().substring(2);
-            String targetStr = rawParams[2].trim().substring(7);
+            String rawPeriodType = rawParams[1];
+            if (!rawPeriodType.contains("p/")) {
+                return new InvalidCommand(SET);
+            }
+            rawPeriodType = rawPeriodType.trim().substring(2);
+            String targetStr = rawParams[2];
+            if (!targetStr.contains("target/")) {
+                return new InvalidCommand(SET);
+            }
+            targetStr = targetStr.trim().substring(7);
 
             double target = Double.parseDouble(targetStr);
 
             PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
             if (periodType == PeriodType.INVALID) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+                return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
             params.put("periodType", periodType.toString());
             params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
-            return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+            switch (e.getMessage()) {
+            case "Target calorie invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_ENERGY);
+            case "Target weight invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_BODY_WEIGHT);
+            case "Target duration invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_SLEEP_DURATION);
+            default:
+                return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+            }
+        } catch (Exception e) {
+            return new InvalidCommand(SET);
         }
     }
 
@@ -158,10 +191,14 @@ public class CommandParser {
             }
 
             if (rawParams.length == 2) {
-                String rawPeriodType = rawParams[1].trim().substring(2);
+                String rawPeriodType = rawParams[1];
+                if (!rawPeriodType.contains("p/")) {
+                    return new InvalidCommand(CHECK);
+                }
+                rawPeriodType = rawPeriodType.trim().substring(2);
                 PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
                 if (periodType == PeriodType.INVALID) {
-                    return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+                    return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
                 }
                 params.put("periodType", periodType.toString());
             } else {
@@ -187,13 +224,20 @@ public class CommandParser {
                 return new InvalidCommand(CANCEL);
             }
 
-            String rawIndex = rawParams[1].trim().substring(2);
+            String rawIndex = rawParams[1];
+            if (!rawIndex.contains("i/")) {
+                return new InvalidCommand(CANCEL);
+            }
+
+            rawIndex = rawIndex.trim().substring(2);
 
             int index = Integer.parseInt(rawIndex);
             params.put("index", String.valueOf(index));
             return new CancelCommand(recordType, params);
         } catch (NumberFormatException e) {
             return new InvalidCommand(Messages.MESSAGE_INDEX_NUMBER_FORMAT_EXCEPTION);
+        } catch (Exception e) {
+            return new InvalidCommand(CANCEL);
         }
     }
 
@@ -258,7 +302,8 @@ public class CommandParser {
         }
     }
 
-    private Command prepareAddExercise(String content) throws ParseException, TypeException, NumberFormatException {
+    private Command prepareAddExercise(String content) throws ParseException, TypeException,
+            NumberFormatException, FutureDateException {
         String[] activityDuration = getActivityAndDuration(content);
         if (activityDuration.length < 2) {
             return new InvalidCommand(ADD);
@@ -293,16 +338,13 @@ public class CommandParser {
             params.put("date", date);
             return new AddCommand(EXERCISE, params);
         }
-
-        if (isWorkoutMinutesInvalid(duration)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
-        }
         params.put("activity", activity);
         params.put("duration", duration);
         return new AddCommand(EXERCISE, params);
     }
 
-    private Command prepareAddDiet(String content) throws ParseException, TypeException, NumberFormatException {
+    private Command prepareAddDiet(String content) throws ParseException, TypeException,
+            NumberFormatException, FutureDateException {
         String[] foodWeight = getFoodAndFoodWeight(content);
         if (foodWeight.length < 2) {
             return new InvalidCommand(ADD);
@@ -336,7 +378,8 @@ public class CommandParser {
         return new AddCommand(DIET, params);
     }
 
-    private Command prepareAddBodyWeight(String content) throws ParseException, TypeException, NumberFormatException {
+    private Command prepareAddBodyWeight(String content) throws ParseException, TypeException,
+            NumberFormatException, FutureDateException {
         String weight = parseWeightString(content, false);
         if (weight.equals("")) {
             return new InvalidCommand(ADD);
@@ -357,14 +400,12 @@ public class CommandParser {
             params.put("date", date);
             return new AddCommand(BODY_WEIGHT, params);
         }
-        if (isWeightInvalid(weight)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
-        }
         params.put("weight", weight);
         return new AddCommand(BODY_WEIGHT, params);
     }
 
-    private Command prepareAddSleep(String content) throws ParseException, TypeException, NumberFormatException {
+    private Command prepareAddSleep(String content) throws ParseException, TypeException,
+            NumberFormatException, FutureDateException {
         String duration = parseDurationString(content, false);
         if (duration.equals("")) {
             return new InvalidCommand(ADD);
@@ -384,9 +425,6 @@ public class CommandParser {
             params.put("duration", duration);
             params.put("date", date);
             return new AddCommand(SLEEP, params);
-        }
-        if (isSleepHoursInvalid(duration)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_SLEEP_HOUR);
         }
         params.put("duration", duration);
         return new AddCommand(SLEEP, params);
