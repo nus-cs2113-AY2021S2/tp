@@ -4,9 +4,11 @@ import movieApp.*;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
+import movieApp.parser.MovieFilter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Database {
@@ -139,5 +141,89 @@ public class Database {
             ioe.printStackTrace();
         }
         System.out.println("The changes have been saved to the database.");
+    }
+
+
+    public static int getIntegerInput(String prompt, int maxValue) {
+        int integer_input = -1;
+        Scanner sc = new Scanner(System.in);
+
+
+        while ((integer_input < 1) || (integer_input > maxValue)) {
+            System.out.println(prompt);
+
+            if (!sc.hasNextInt()) {
+                System.out.println("Please input an integer.\n");
+                sc.next();
+                continue;
+            }
+            integer_input = sc.nextInt();
+            if ((integer_input < 1) || (integer_input > maxValue))  {
+                System.out.println("Please input an integer in range 1 to " + maxValue + "\n");
+            }
+        }
+
+        return integer_input;
+    }
+
+    public static void addMovie() throws Exception {
+
+        Scanner select = new Scanner(System.in);
+
+        System.out.println("Movie title: ");
+        String newTitle = select.nextLine();
+        System.out.println(newTitle);
+
+        int newID = MovieDatabase.size() + 1;
+        System.out.println(newID);
+
+
+        System.out.println("Enter movie start date ");
+        int newStartDate = getIntegerInput("Date (DD): ", 31);
+        int newStartMonth = getIntegerInput("Month (MM): ", 12);
+        int newStartYear = getIntegerInput("Year (YYYY): ", 2100);
+
+
+        System.out.println("Enter movie end date ");
+        int newEndDate = getIntegerInput("Date (DD): ", 31);
+        int newEndMonth = getIntegerInput("Month (MM): ", 12);
+        int newEndYear = getIntegerInput("Year (YYYY): ", 2100);
+
+
+        System.out.println("Movie director: ");
+        String newDirector = select.nextLine();
+        System.out.println("Movie casts (separated with comma) : ");
+        String casts = select.nextLine();
+
+        String[] castList = casts.split(",");
+        String newGenre = MovieFilter.getGenre();
+        System.out.println("Movie synopsis: ");
+        String newSynopsis = select.nextLine();
+        int newStatus = MovieFilter.getShowingStatusChoice();
+        ArrayList<Review> newReview = new ArrayList<>();
+
+        Movie newMovie = new Movie(
+                newTitle, newID,
+                newStartYear, newStartMonth, newStartDate,
+                newEndYear, newEndMonth, newEndDate,
+                newDirector, castList, newGenre,
+                newSynopsis, newStatus, newReview);
+
+        MovieDatabase.add(newMovie);
+
+        try {
+            File f_movie = new File("data/movieList.txt");
+            FileOutputStream fos_movie = new FileOutputStream(f_movie);
+            ObjectOutputStream oos_movie = new ObjectOutputStream(fos_movie);
+            oos_movie.writeObject(MovieDatabase);
+            oos_movie.close();
+            fos_movie.close();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
+        System.out.println("The new movie \"" + newMovie.getMovieTitle() + "\" have been saved to the database.");
+
     }
 }
