@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.duke.data.Block;
 import seedu.duke.data.NusMap;
+import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.ui.NoteUi;
 import seedu.duke.exception.InvalidIndexException;
@@ -25,31 +26,37 @@ public class NotesTest {
 
         //delete notes:
         deleteNotes_indexWithinRange_success();
-        deleteNotesCommandExecution_indexOutOfRange_exceptionThrown(); //throws exception
+        deleteNotesCommandExecution_indexOutOfRange_exceptionThrown();
 
+        //show notes:
+        showNotesCommand_nonEmptyList_success();
+        showNotesCommand_emptyList_exceptionThrown();
     }
 
     @Test
     public void addNoteCommandExecute_validLocation_success() {
-        NusMap nusMap = new NusMap();
-        nusMap.getBlock("COM1").addNote("@gmail");
-        nusMap.getBlock("COM1").addNote("password: Newbie");
-        ArrayList<String> notes = new ArrayList<>();
-        notes.add("@gmail");
-        notes.add("password: Newbie");
-        assertEquals(nusMap.getBlock("COM1").getNotes(), notes);
+        try {
+            NusMap nusMap = new NusMap();
+            nusMap.checkIfValidBlock("COM1");
+            Block block = nusMap.getBlock("COM1");
+            block.addNote("@gmail");
+            block.addNote("password: Newbie");
+            ArrayList<String> notes = new ArrayList<>();
+            notes.add("@gmail");
+            notes.add("password: Newbie");
+            assertEquals(nusMap.getBlock("COM1").getNotes(), notes);
+        } catch (InvalidBlockException e) {
+            assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
+        }
     }
 
     @Test
     public void addNoteCommandExecute_invalidLocation_exceptionThrown() {
-        NusMap nusMap = new NusMap();
         try {
-            if (nusMap.isValidBlock("TESCO SUPER-MART")) {
-                Block block = nusMap.getBlock("TESCO SUPER-MART"); //should not reach here
-                block.addNote("1. buy 2 packs of cereal");
-            } else {
-                throw new InvalidBlockException(); //throws the exception here
-            }
+            NusMap nusMap = new NusMap();
+            nusMap.checkIfValidBlock("TESCO SUPER-MART"); //throws exception
+            Block block = nusMap.getBlock("TESCO SUPER-MART"); //should not reach here
+            block.addNote("1. buy 2 packs of cereal");
         } catch (InvalidBlockException e) {
             assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
         }
@@ -86,4 +93,41 @@ public class NotesTest {
         }
     }
 
+    public void showNotesCommand_nonEmptyList_success() {
+        try {
+            NusMap nusMap = new NusMap();
+            nusMap.checkIfValidBlock("CENTRAL LIBRARY");
+            nusMap.getBlock("CENTRAL LIBRARY").addNote("Orbital project meeting at 2 :))");
+            ArrayList<String> notes = nusMap.getBlock("CENTRAL LIBRARY").getNotes();
+            if (notes.isEmpty()) {
+                throw new EmptyNoteException();
+            }
+            ArrayList<String> notesDuplicate = new ArrayList<>();
+            notesDuplicate.add("Orbital project meeting at 2 :))");
+            assertEquals(notes, notesDuplicate);
+        } catch (EmptyNoteException e) {
+            assertEquals("Oops! There are no notes tagged to CENTRAL LIBRARY",
+                    String.format(e.getMessage(), "CENTRAL LIBRARY")); //should not reach here
+        } catch (InvalidBlockException e) {
+            assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
+        }
+    }
+
+    public void showNotesCommand_emptyList_exceptionThrown() {
+        try {
+            NusMap nusMap = new NusMap();
+            nusMap.checkIfValidBlock("CENTRAL LIBRARY");
+            ArrayList<String> notes = nusMap.getBlock("CENTRAL LIBRARY").getNotes();
+            if (notes.isEmpty()) {
+                throw new EmptyNoteException(); //EmptyNoteException thrown
+            }
+            ArrayList<String> notesDuplicate = new ArrayList<>(); //should not reach here
+            assertEquals(notes, notesDuplicate);
+        } catch (EmptyNoteException e) {
+            assertEquals("Oops! There are no notes tagged to CENTRAL LIBRARY",
+                    String.format(e.getMessage(), "CENTRAL LIBRARY"));
+        } catch (InvalidBlockException e) {
+            assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
+        }
+    }
 }
