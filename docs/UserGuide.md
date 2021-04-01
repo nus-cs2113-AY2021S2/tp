@@ -34,8 +34,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.11. Add New Task](#3111-add-new-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.13. Add Zoom Link](#3113-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.15. Add/View Module Description](#3115-addview-module-description)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)   
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
@@ -524,67 +523,6 @@ Refer to [this section](#345-add-zoom-link).
 #### 3.1.14 Delete Zoom Link
 
 Refer to [this section](#346-delete-zoom-link).
-
-#### 3.1.15 Add/View Module Description
-
-Adds user-defined module description.  
-User can view module description added previously.
-
-* Example for adding a module description:  
-  Input:  
-  `1`  
-  Output:
-  ````
-  What module would you like to modify? [moduleName e.g. CS2113T]
-  ````
-  Input:  
-  `CS2113T`   
-  Output:
-  ````
-  This module does not exist, would you like to add it? [Y/N]
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in the module description for CS2113T:
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in the module description for CS2113T:
-  ````
-  Input: [Retrieved from NUSMods]  
-  `This module introduces the necessary skills for systematic and rigorous development of software systems. It covers requirements, design, implementation, quality assurance, and project management aspects of small-to-medium size multi-person software projects`  
-  Output:
-  ````
-  Module description for CS2113T added:
-  This module introduces the necessary skills for systematic and rigorous development of software systems. 
-  It covers requirements, design, implementation, quality assurance,  
-  and project management aspects of small-to-medium size multi-person software projects.
-  Returning to module information menu...
-  ````
-* Example for viewing module description  
-  Input:
-  `1`  
-  Output:
-  ````
-  What module would you like to modify? [moduleName e.g. CS2113T]
-  ````
-  Input:  
-  `CS2113T`  
-  Output:
-  ````
-  Module exist!
-  Here is a description of the module you have added previously
-  
-  This module introduces the necessary skills for systematic and rigorous development of software systems. 
-  It covers requirements, design, implementation, quality assurance, 
-  and project management aspects of small-to-medium size multi-person software projects.
-  
-  Returning to module information menu...
-  ````
 
 ---
 
