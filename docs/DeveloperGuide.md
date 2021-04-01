@@ -4,9 +4,14 @@
 
 **`HdBuy`** has [`HdBuy`](https://https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/src/main/java/seedu/hdbuy/HdBuy.java). It is responsible for,
 * At app launch: Loads previously shortlisted resale flats, if any, and starts receiving user commands.
-* At shut down: Clears search history and saves shortlisted resale flats to local file.
+* At shut down: Clears search history and closes the app.
 
-The rest of the App consists of:
+### Architecture
+![ApplicationArchitecture](diagrams/Architecture.jpg)
+
+The Architecture Diagram given above explains the high-level design of the App.
+
+The App consists of:
 
 * [**`Api`**](#api-component): Retrieves data on resale flats from server.
 * [**`Command`**](#command-component): The command executor.
