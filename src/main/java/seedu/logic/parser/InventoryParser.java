@@ -19,15 +19,6 @@ import static seedu.ui.UI.smartCommandRecognition;
 public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
     private InventoryChecker checker;
-   /*public void lengthCheck(int numberOfTokens, String command) throws WrongInputException {
-       if (command.equals("add") && numberOfTokens != 4) {
-           throw new WrongInputException(command);
-       } else if (command.equals("delete") && numberOfTokens != 2) {
-           throw new WrongInputException(command);
-       } else if ((command.equals("list") || command.equals("return") || command.equals("help")) && numberOfTokens != 1) {
-           throw new WrongInputException(command);
-       }
-   }*/
 
     private void isNameExist(String userInput, InventoryActions drugs, String command) throws NonExistentDrugException, DuplicateDrugException {
        if (drugs.isDrugStored(userInput)) {
@@ -72,7 +63,7 @@ public class InventoryParser {
                     numberOfInputs = 2;
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
                     if (nameParser(drugs, stringTokens, command)) {
-                        c = new InventoryDelete(stringTokens[0]);
+                        c = new InventoryDelete(stringTokens[1]);
                     }
                     break;
                 case "help":

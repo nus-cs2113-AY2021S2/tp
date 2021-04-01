@@ -1,32 +1,72 @@
 # HealthVault User Guide
 	
 ## Opening Words
+
 Welcome to HealthVault User Guide!						 
 
 The purpose of this User Guide is to assist you in the usage of the application. You will be able to utilize all the features of the HealthVault application to create the most efficient healthcare environment!
 
 ## Content Page
 1. [Introduction](#1-introduction)
-1. [Installation Guide](#2-installation-guide)
-1. [How to use this guide](#3-how-to-use-the-guide)
+	1. [What is HealthVault?](#11-what-is-healthvault)
+	2. [About the User Guide](#12-about-the-user-guide)
+	3. [Introduction to Command Line Interface (CLI)](#13-introduction-to-command-line-interface-(cli))
+2. [Installation Guide](#2-installation-guide)
+3. [How to use this guide](#3-how-to-use-the-guide)
 	1. [Technical terms](#31-technical-terms)
-	1. [Symbols & Icons](#32-symbols--icons)
-1. [Start Menu](#4-start-menu)
-1. [Features](#5-features)
+	2. [Symbols & Icons](#32-symbols--icons)
+	3. [Interpreting help commands](#32-interpreting-help-commands)
+4. [Start Menu](#4-start-menu)
+5. [Features](#5-features)
 	1. [Staff](#51-staff)
 	2. [Patient](#52-patient)
 	3. [Doctor's Appointment](#53-doctor-appointment)
 	4. [Nurse Schedule](#54-nurse-schedule)
 	5. [Inventory](#55-inventory)
-1. [FAQ](#6-faq)
-1. [Command Summary](#7-command-summary)
+6. [FAQ](#6-faq)
+7. [Command Summary](#7-command-summary)
 
 ## 1. Introduction
 
-HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
+### 1.1 What is HealthVault?
 
-In this application there are 5 main features that are provided for the user. Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient menu. Table 1 describes the details in each of the features.
+To save a life is the top priority of any healthcare worker. 
+In such a precarious situation, every second matters and a Head Nurse cannot afford to waste time when they need to store or view critical information.
 
+Introducting HealthVault, a Head Nurse's personal information recording system. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for a Head Nurse to view and store critical information.
+
+In this application there are 5 main features that are provided for the user. 
+* **Staff:** Keepts record of and allows you to access staff information and modify them if needed.
+* **Patient:** Keeps record of and allows you to access patient information and modify them if needed.
+* **Doctor Appointments:** Keeps record of and allows you to create and view Doctor Appointments.
+* **Nurse Schedules:** Keeps record of and allows you to create and view Nurse Schedules.
+* **Inventory:** Keeps record of and allows you to view your current hospital inventory of supplies
+
+Each feature can be accessed by accessing its specific menu. For example, the Patient details can be accessed by accessing the Patient Menu from the Start Menu.
+
+### 1.2 About the User Guide
+
+This user guide helps you to understand how to use the HealthVault application by introducing the various commands and interfaces to you.
+Various helpful screenshots from the application also help to guide you through the application.
+
+This user guide will cover the following:
+* How to set up the application
+* How to use Command Line Interface - CLI
+* Helpful tips on how to use the guide
+* How to use each of the features
+* Frequently asked questions
+
+### 1.3 Introduction to Command Line Interface (CLI)
+
+HealthVault uses the Command Line Interface (CLI) to run. And CLI is primary input method for interacting with HealthVault.
+
+As CLI is not commonly used, this section hopes to orientate you with the CLI environment if you are new and acts as a refresher for returning users.
+
+CLI takes in a user input from the input marker as shown in the image included below. The red arrow points to where the users input will appear.
+
+<img src="images/CLIimage.jpg" >
+
+After keying in their input, the most common way to enter the response into the system is to press the <kbd>Enter</kbd> key for the command to be recorded.
 
 <br/><br/>
 <a name="section2">
@@ -62,6 +102,9 @@ In this application there are 5 main features that are provided for the user. Ea
 
 **User Input** - Any information or data sent to a computer by the user using the application.
 
+**Alphanumeric** - Consisting of only alphabets and numerals.
+
+**Delimiter** - A character that seperates different sections of a text or input
 
 ### 3.2 Symbols & Icons
 
@@ -73,7 +116,6 @@ In this application there are 5 main features that are provided for the user. Ea
 :information_source:  All instances of commands and code will be highlighted in grey and will have a different font.
 
 ### 3.3 Interpreting help commands
-
 
 This is an example of a typical help command in the application.
 <img src="images/StaffHelp.PNG" >
