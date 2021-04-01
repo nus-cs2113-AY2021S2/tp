@@ -132,14 +132,6 @@ Adding a Pediatrician MingShun with Staff ID of D12345 of age 30
 Staff --> add/D12345/MingShun/30/Pediatrician
 ```
 Expected Outcome:
-```
-------------------------------------------------------------------------------
-Staff --> add/D12345/MingShun/30/Pediatrician
-Mingshun has been hired :)
-------------------------------------------------------------------------------
-```
-
-Example Screenshot:
 
 <img src="images/StaffAdd.PNG" width = "850" >
 
@@ -155,15 +147,9 @@ Example of usage:
 Staff --> delete/D12345
 ```
 Expected Outcome:
-```
-------------------------------------------------------------------------------
-Staff --> delete/D12345
-D12345 has been fired :(
-------------------------------------------------------------------------------
-```
-Example Screenshot:
 
 <img src="images/StaffDelete.PNG" width = "850" >
+
 <br/><br/>
 
 #### Listing all doctors or nurses: `list`
@@ -179,16 +165,6 @@ Example of usage(doctors):
 Staff --> list/doctors
 ```
 Expected Outcome(doctors):
-```
-------------------------------------------------------------------------------
-ID         | Name       | Age   | Specialisation      
-____________________________________________________________
-D12345     | MingShun   | 30    | Pediatrician        
-D67890     | Alexander  | 31    | Heart Surgeon   
-------------------------------------------------------------------------------
-```
-
-Example Screenshot:
 
 <img src="images/StaffListDoc.PNG" width = "850">
 
@@ -198,13 +174,6 @@ Example of usage (nurses):
 Staff --> list/nurses
 ```
 Expected Outcome(nurses):
-```
-ID         | Name       | Age   | Specialisation      
-____________________________________________________________
-N13579     | Sarrah     | 29    | Oncology            
-N24680     | JiaEn      | 28    | Pain Management  
-```
-Example Screenshot:
 
 <img src="images/StaffListNurse.PNG" width = "850">
 
@@ -213,17 +182,6 @@ Example of usage (no input):
 ```
 Staff --> list
 ```
-Expected Outcome (doctors):
-```
-------------------------------------------------------------------------------
-ID         | Name       | Age   | Specialisation      
-____________________________________________________________
-D12345     | MingShun   | 30    | Pediatrician        
-D67890     | Alexander  | 31    | Heart Surgeon       
-N13579     | Sarrah     | 29    | Oncology            
-N24680     | JiaEn      | 28    | Pain Management    
-------------------------------------------------------------------------------
-```
 
 Example Screenshot:
 
@@ -231,11 +189,27 @@ Example Screenshot:
 
 <br/><br/>
 
+
+#### Fidnding a staff: `find`
+Find a staff from the staff list with a keyword.
+
+Format: `find/[keyword]`
+
+Example of usage:
+```
+Find all Staff with Oncology specialisation.
+Staff --> find/Oncology
+```
+Expected Outcome:
+
+<img src="images/StaffFind.PNG" width = "850" >
+<br/><br/>
+
 #### Returning to Start Menu: `return`
 
 Return you to the Start Menu.
 
-Example Screenshot:
+Expected Outcome:
 
 <img src="images/StaffReturn.PNG" width = "850" >
 
@@ -243,9 +217,11 @@ Example Screenshot:
 
 Display the commands for the Staff Menu.
 
-Example Screenshot:
+Expected Outcome:
 
 <img src="images/StaffHelp.PNG" width = "850" >
+
+<br/><br/>
 
 ### 5.2 Patient
 
