@@ -580,7 +580,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
+>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Example: N12345, P54321
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
 &nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
@@ -603,7 +604,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>Example: N12345, P54321
 >2. HealthVault only accepts valid Date inputs.
 
 
