@@ -600,13 +600,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
 &nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
