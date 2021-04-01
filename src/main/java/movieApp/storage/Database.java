@@ -199,7 +199,7 @@ public class Database {
         String newGenre = MovieFilter.getGenre();
         System.out.println("Movie synopsis: ");
         String newSynopsis = select.nextLine();
-        int newStatus = MovieFilter.getShowingStatusChoice();
+        int newStatus = 1;
         ArrayList<Review> newReview = new ArrayList<>();
 
         Movie newMovie = new Movie(
