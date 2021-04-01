@@ -1,6 +1,6 @@
 # HealthVault User Guide
 
-<p align="center"
+<p align="center">
 <img src="images/HealthVaultLogo.png">
 </p>
 	
