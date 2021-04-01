@@ -49,19 +49,29 @@ public class TextUi {
     }
 
     public static void showHelp() {
-        System.out.print("HdBuy is a way to easily find and bookmark resale flats of your liking.\n\n"
+        System.out.print(
+                "HdBuy is a way to easily find and bookmark resale flats of your liking.\n\n"
                 + "Report bugs to: hdbuy@gmail.com\n" + "GitHub page: <https://github.com/AY2021S2-CS2113-F10-1/tp>\n"
                 + "User Guide: <https://github.com/AY2021S2-CS2113-F10-1/tp/blob/master/docs/UserGuide.md>\n\n"
-                + "Available commands:\n"
-                + "\tfilter <attribute> <value>\t\tAdd a filter condition. eg: filter location woodlands\n"
-                + "\tlist\t\t\t\t\t\t\tShow all currently set filter condition to filter units matching preferences.\n"
-                + "\tclear\t\t\t\t\t\t\tRemove all currently set filter conditions.\n"
-                + "\tfind\t\t\t\t\t\t\tSearch for units with the current filter conditions.\n"
-                + "\tsort <direction>\t\t\t\tSort search results in ascending(asc) or descending(desc) order.\n"
-                + "\tsave <index>\t\t\t\t\tAdd the unit at the inputted index to the shortlist.\n"
-                + "\tremove <index>\t\t\t\t\tRemove the unit at the inpuuted index from the shortlist.\n"
-                + "\tshortlist\t\t\t\t\t\tShow all units in the shortlist.\n"
-                + "\tbye\t\t\t\t\t\t\t\tExit the application\n");
+                + "Available commands:\n===============================================\n");
+        Object[] summary = {"filter <attribute> <value>", "Add a filter condition. eg: filter location woodlands"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"list", "Show all currently set filter condition to filter units matching preferences"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"clear", "Remove all currently set filter conditions"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"find", "Search for units with the current filter conditions"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"sort <direction>", "Sort search results in ascending(asc) or descending(desc) order"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"save <index>", "Add the unit at the inputted index to the shortlist"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"remove <index>", "Remove the unit at the inpuuted index from the shortlist"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"shortlist", "Show all units in the shortlist"};
+        System.out.format("%30s%80s\n", summary);
+        summary = new Object[]{"exit", "Exit the application"};
+        System.out.format("%30s%80s\n", summary);
     }
 
     public static void showParameters(LinkedHashMap<QueryKey, String> inputs) {
