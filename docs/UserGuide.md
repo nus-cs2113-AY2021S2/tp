@@ -1,7 +1,7 @@
 # HealthVault User Guide
 
 <p align="center">
-<img src="images/HealthVaultLogo.png">
+<img src="images/HealthVaultLogo.png" width = "850">
 </p>
 	
 ## Opening Words
