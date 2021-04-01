@@ -133,7 +133,7 @@ public class CommandParser {
 
             PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
             if (periodType == PeriodType.INVALID) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+                return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
             params.put("periodType", periodType.toString());
             params.put("target", String.valueOf(target));
@@ -161,7 +161,7 @@ public class CommandParser {
                 String rawPeriodType = rawParams[1].trim().substring(2);
                 PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
                 if (periodType == PeriodType.INVALID) {
-                    return new InvalidCommand(Messages.MESSAGE_INVALID_PERIOD_TYPE);
+                    return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
                 }
                 params.put("periodType", periodType.toString());
             } else {
