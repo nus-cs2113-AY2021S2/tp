@@ -12,8 +12,11 @@ public class ExerciseGoal extends Goal {
      * @param periodType   the period type of the goal which can be daily or weekly.
      * @param targetEnergy the target energy to be burnt.
      */
-    public ExerciseGoal(PeriodType periodType, double targetEnergy) {
+    public ExerciseGoal(PeriodType periodType, double targetEnergy) throws NumberFormatException{
         super(RecordType.EXERCISE, periodType, targetEnergy);
+        if (targetEnergy < 0 || targetEnergy > 10000) {
+            throw new NumberFormatException("Target calorie invalid");
+        }
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();

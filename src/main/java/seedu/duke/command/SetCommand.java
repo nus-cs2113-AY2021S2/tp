@@ -18,7 +18,7 @@ public class SetCommand extends Command {
     private final Goal goal;
     private final CommandRecordType recordType;
 
-    public SetCommand(CommandRecordType recordType, HashMap<String, String> params) {
+    public SetCommand(CommandRecordType recordType, HashMap<String, String> params) throws NumberFormatException{
         this.recordType = recordType;
         PeriodType periodType = PeriodType.valueOf(params.get("periodType"));
         double target = Double.parseDouble(params.get("target"));

@@ -78,6 +78,15 @@ public class Messages {
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
             + "The acceptable amount of food should be a floating point number, with the unit of gram(g).\n"
             + "Please try again.";
+    public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
+            + "The acceptable target energy should be a floating point number, with the unit of K cal within"
+            + "range 0 - 10000.\nPlease try again.";
+    public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid\n"
+            + "The acceptable target duration should be a floating point number, with the unit of hour within"
+            + "range 0 - 24.\nPlease try again.";
+    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is invalid\n"
+            + "The acceptable target weight should be a floating point number, with the unit of kilogram (kg) within"
+            + "range 0 - 400.\nPlease try again.";
     public static final String MESSAGE_INVALID_WORKOUT_CATEGORY = "The workout category you entered is invalid.\n"
             + "The acceptable workout category list is:\n";
     public static final String MESSAGE_INVALID_COMMAND = "Sorry, the command you entered cannot be recognized.\n\n";

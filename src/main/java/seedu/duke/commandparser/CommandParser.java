@@ -108,7 +108,18 @@ public class CommandParser {
         } catch (TypeException e) {
             return new InvalidCommand(e.toString());
         } catch (NumberFormatException e) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_FOOD_AMOUNT);
+            switch (e.getMessage()) {
+            case "Food amount invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_FOOD_AMOUNT);
+            case "Exercise time invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
+            case "Body weight invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
+            case "Sleep duration invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_SLEEP_HOUR);
+            default:
+                return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND);
+            }
         }
     }
 
@@ -139,7 +150,16 @@ public class CommandParser {
             params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
-            return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+            switch (e.getMessage()) {
+            case "Target calorie invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_ENERGY);
+            case "Target weight invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_BODY_WEIGHT);
+            case "Target duration invalid":
+                return new InvalidCommand(Messages.MESSAGE_INVALID_TARGET_SLEEP_DURATION);
+            default:
+                return new InvalidCommand(Messages.MESSAGE_DOUBLE_FORMAT_ERROR);
+            }
         }
     }
 
@@ -293,10 +313,6 @@ public class CommandParser {
             params.put("date", date);
             return new AddCommand(EXERCISE, params);
         }
-
-        if (isWorkoutMinutesInvalid(duration)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
-        }
         params.put("activity", activity);
         params.put("duration", duration);
         return new AddCommand(EXERCISE, params);
@@ -357,9 +373,6 @@ public class CommandParser {
             params.put("date", date);
             return new AddCommand(BODY_WEIGHT, params);
         }
-        if (isWeightInvalid(weight)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
-        }
         params.put("weight", weight);
         return new AddCommand(BODY_WEIGHT, params);
     }
@@ -384,9 +397,6 @@ public class CommandParser {
             params.put("duration", duration);
             params.put("date", date);
             return new AddCommand(SLEEP, params);
-        }
-        if (isSleepHoursInvalid(duration)) {
-            return new InvalidCommand(Messages.MESSAGE_INVALID_SLEEP_HOUR);
         }
         params.put("duration", duration);
         return new AddCommand(SLEEP, params);
