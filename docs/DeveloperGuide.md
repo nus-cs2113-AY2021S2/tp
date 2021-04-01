@@ -84,7 +84,7 @@ Ensure that you have the following installed:
 * JDK 11
 * Intellij IDEA (Highly Recommended)
 
-Firstly, **fork** this repo and **clone** a copy into your computer.
+Firstly, **fork** this [repo](https://github.com/AY2021S2-CS2113T-W09-1/tp) and **clone** a copy into your computer.
 
 If you plan to use IntelliJ IDEA:
 1. **Ensure IntelliJ is configured to develop in JDK 11.**
@@ -175,7 +175,7 @@ The following sections below will provide more details of each component.
 *Figure 4: **Ui** Class Diagram*
 
 The Ui Component consists of a `Ui` class which handles all user input and system output.
-The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
+The Ui is only dependent on the `Finux` class and does not interact directly with other classes,
 ensuring a high level of cohesiveness, low level of coupling and separation of roles.
 
 The `Ui` component actively listens for:
@@ -222,7 +222,7 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
      e.g. `' -e'`
    * During the extraction, the next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
      e.g. `' -e '`
-3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
+3. As rearrangement of options is allowed, option detection should cater to non-fixed option order.
    Apache Commons Lang, 3.11, providing the `StringUtils` class is used to cater to consideration 2.
    * `StringUtils.startsWithAny()` - detection of start option with non-fixed order.
    * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
@@ -524,8 +524,11 @@ allows them to amend their mistakes or edit their list with constraints.
 #### 4.5.1 Current Implementation
 
 The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
-parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
+parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
+
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+*Figure x: Sequence Diagram for `remove -i 1`*
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
 
@@ -562,9 +565,6 @@ The sequence diagram presented below depicts the interaction between the compone
 > 
 > 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
 > are given.
-
-![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
-*Figure x: Sequence Diagram for `remove -i 1`*
 
 #### 4.5.2 Design Consideration
 
