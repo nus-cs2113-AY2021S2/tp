@@ -115,14 +115,14 @@ public abstract class Goal {
 
     protected void setSeparatorBetweenTypeAndTarget() {
         separatorBetweenTypeAndTarget = "";
-        for(int i = 0; i < SPACES_FOR_TYPE - lengthOfPeriodType; i++) {
+        for (int i = 0; i < SPACES_FOR_TYPE - lengthOfPeriodType; i++) {
             separatorBetweenTypeAndTarget += " ";
         }
     }
 
     protected void setSeparatorBetweenTargetAndProgress() {
         separatorBetweenTargetAndProgress = "";
-        for(int i = 0; i < SPACES_FOR_TARGET - lengthOfTarget; i++) {
+        for (int i = 0; i < SPACES_FOR_TARGET - lengthOfTarget; i++) {
             separatorBetweenTargetAndProgress += " ";
         }
     }
