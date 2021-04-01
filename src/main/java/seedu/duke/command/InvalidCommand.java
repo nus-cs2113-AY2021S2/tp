@@ -3,6 +3,9 @@ package seedu.duke.command;
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
 
+/**
+ * Represents an invalid command whose format is invalid.
+ */
 public class InvalidCommand extends Command {
 
     public InvalidCommand(String errorMessage) {
@@ -34,6 +37,12 @@ public class InvalidCommand extends Command {
         }
     }
 
+    /**
+     * Gets the error message for the command
+     *
+     * @param fitCenter the fitCenter interface for current user.
+     * @return the error messages.
+     */
     @Override
     public CommandResult execute(FitCenter fitCenter) {
         return new CommandResult(feedback);

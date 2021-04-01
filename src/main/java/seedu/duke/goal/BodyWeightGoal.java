@@ -4,6 +4,8 @@ import seedu.duke.record.RecordType;
 
 import java.time.LocalDate;
 
+import static seedu.duke.common.Messages.MESSAGE_NO_BODY_WEIGHT_PROGRESS;
+
 public class BodyWeightGoal extends Goal {
 
     /**
@@ -51,7 +53,7 @@ public class BodyWeightGoal extends Goal {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
                     + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
-                    + "Progress: " + "You haven't add any body weight record.";
+                    + "Progress: " + MESSAGE_NO_BODY_WEIGHT_PROGRESS;
         } else {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
                     + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
@@ -71,7 +73,7 @@ public class BodyWeightGoal extends Goal {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
                     + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
-                    + "None Progress" + getAchieved() + "\n";
+                    + MESSAGE_NO_BODY_WEIGHT_PROGRESS + getAchieved() + "\n";
         } else {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
                     + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
