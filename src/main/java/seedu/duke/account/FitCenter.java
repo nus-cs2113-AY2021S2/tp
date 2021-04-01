@@ -206,7 +206,7 @@ public class FitCenter {
      * @param date          the date of records.
      * @param optionalParam optional parameters that can filter the list of record.
      * @return a printable string of the list of record of a selected type on a specific date and
-     * filtered by optional parameters.
+     *     filtered by optional parameters.
      */
     public String getRecordListString(CommandRecordType type, LocalDate date, String optionalParam) {
         RecordList list = getRecordListByType(type);
@@ -222,7 +222,7 @@ public class FitCenter {
      * @param type               the type of the goals.
      * @param optionalPeriodType an optional period type that filter the list of goals.
      * @return a printable string of the list of goals of a selected type and can be filtered
-     * by a optional period type.
+     *     by a optional period type.
      */
     public String getGoalListString(CommandRecordType type, PeriodType optionalPeriodType) {
         GoalList list = getGoalListByType(type);
