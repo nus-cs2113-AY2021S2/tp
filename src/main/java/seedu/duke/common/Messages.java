@@ -31,10 +31,12 @@ public class Messages {
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
     public static final String MESSAGE_CHECK_HEADER = "Index\t\tDate Set\t\tGoal Type\t\tTarget\t\t\tProgress\n";
-    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index\t\tDate\t\tActivity\t\tDuration\t\tCalories\n";
-    public static final String MESSAGE_VIEW_HEADER_DIET = "Index\t\tDate\t\tFood Category\t\tWeight\t\tCalories\n";
-    public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index\t\tDate\t\t\tDuration\n";
-    public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index\t\tDate\t\t\tBody Weight\n";
+    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
+            + "Duration        Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category        Weight"
+            + "        Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index        Date              Duration\n";
+    public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index        Date              Body Weight\n";
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
             + "You can try adding records by using command 'add'.";
     public static final String MESSAGE_NO_GOAL = "Sorry, no goals found.\n"
