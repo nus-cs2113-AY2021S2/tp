@@ -1,18 +1,18 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.ExcessInputException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.InvalidIntegerException;
-import seedu.exceptions.NoInputException;
+import seedu.exceptions.*;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
 import seedu.exceptions.inventory.NonExistentDrugException;
+import seedu.exceptions.inventory.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.command.inventory.*;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.UI;
+
+import java.util.ArrayList;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -34,8 +34,12 @@ public class InventoryParser {
 
     public Command inventoryParse(String fullCommand, InventoryActions drugs) {
         String[] stringTokens = fullCommand.trim().split("/");
-        String firstWord = stringTokens[0];
-        String command = smartCommandRecognition(COMMANDS, firstWord);
+       /*int numberOfTokens = stringTokens.length;
+        ArrayList<String> cleanString = new ArrayList<>();
+        for (int i = 0; i < numberOfTokens; i++) {
+            cleanString.add(UI.cleanseInput(stringTokens[i]).trim());
+        }*/
+        String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
         try {
             switch (command) {
@@ -47,6 +51,7 @@ public class InventoryParser {
                 case "add":
                     numberOfInputs = 4;
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                    //checker.checkAdd();
                     String quantity = stringTokens[3];
                     MainChecker.checkNumericInput(quantity);
                     MainChecker.checkBlankInput(fullCommand);
@@ -59,9 +64,9 @@ public class InventoryParser {
                     }
                     break;
                 case "delete":
-                    MainChecker.checkBlankInput(fullCommand);
                     numberOfInputs = 2;
                     MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                    MainChecker.checkBlankInput(fullCommand);
                     if (nameParser(drugs, stringTokens, command)) {
                         c = new InventoryDelete(stringTokens[1]);
                     }
@@ -86,7 +91,9 @@ public class InventoryParser {
             e.getError("InvalidPrice");
         } catch (InvalidIntegerException | NumberFormatException | InsufficientInputException | ExcessInputException | NoInputException e) {
             System.out.println(e.getMessage());
-        }
+        }  /*catch (HealthVaultException e) {
+            System.out.println(e.getMessage());
+        }*/
         return c;
     }
     private String[] parseToAddFormat(String[] stringTokens) {
