@@ -38,7 +38,7 @@ public class InvalidCommand extends Command {
     }
 
     /**
-     * Gets the error message for the command
+     * Gets the error message for the command.
      *
      * @param fitCenter the fitCenter interface for current user.
      * @return the error messages.

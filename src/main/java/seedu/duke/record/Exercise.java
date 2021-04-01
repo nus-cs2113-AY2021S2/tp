@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import static seedu.duke.record.WorkoutCategory.INVALID;
 
 public class Exercise extends Record {
-    private final static int SPACES_FOR_ACTIVITY = 16;
-    private final static int SPACES_FOR_DURATION = 16;
+    private static final int SPACES_FOR_ACTIVITY = 16;
+    private static final int SPACES_FOR_DURATION = 16;
     private double calories;
     private final WorkoutCategory workoutCategory;
     private final int duration;

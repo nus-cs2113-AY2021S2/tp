@@ -9,8 +9,8 @@ import static seedu.duke.record.FoodCategory.INVALID;
 import static seedu.duke.record.RecordType.DIET;
 
 public class Diet extends Record {
-    private final static int SPACES_FOR_FOOD = 20;
-    private final static int SPACES_FOR_WEIGHT = 12;
+    private static final int SPACES_FOR_FOOD = 20;
+    private static final int SPACES_FOR_WEIGHT = 12;
     private final double calorie;
     private final FoodCategory foodCategory;
     private final double amount;

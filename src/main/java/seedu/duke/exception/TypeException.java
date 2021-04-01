@@ -16,9 +16,9 @@ public class TypeException extends Exception {
     }
 
     /**
-     * Gets the error message for a TypeException
+     * Gets the error message for a TypeException.
      *
-     * @return a string of a list of valid types
+     * @return a string of a list of valid types.
      */
     public String toString() {
         if (invalidType.equals("food type exception")) {
