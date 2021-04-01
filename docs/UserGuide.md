@@ -582,16 +582,19 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
+>
+>**Example**: N12345, P54321
+>
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
@@ -610,13 +613,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
@@ -629,9 +632,11 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>
+>**Example**: N12345, P54321
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
+&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
