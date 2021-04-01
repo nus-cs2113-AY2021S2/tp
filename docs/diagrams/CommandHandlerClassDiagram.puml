@@ -6,9 +6,9 @@ class CommandHandler {
     -isExit : boolean
     +CommandHandler()
     +isExit() : boolean
-    +setExit(isExit: boolean)
-    +parseCommand(parsedArguments: ArrayList<String>, recordList: RecordList): Command
-    -createCommand(parsedArguments: ArrayList<String>, recordList: RecordList) : Command
+    +setExit(:boolean)
+    +parseCommand(:ArrayList<String>, :RecordList): Command
+    -createCommand(:ArrayList<String>, :RecordList): Command
 }
 
 class Finux {

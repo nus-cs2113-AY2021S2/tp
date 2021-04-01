@@ -17,12 +17,12 @@ activate Finux
 loop while not exit
     Finux -> UI : getUserInput()
     activate UI
-    UI --> Finux : rawInput
+    UI --> Finux : rawInput : String
     deactivate UI
 
     Finux -> ParserHandler : getParseInput(rawInput)
     activate ParserHandler
-    ParserHandler --> Finux : parsedArguments : ArrayList
+    ParserHandler --> Finux : parsedArguments : ArrayList<String>
     deactivate ParserHandler
 
     Finux -> CommandHandler : parseCommand(parsedArguments)

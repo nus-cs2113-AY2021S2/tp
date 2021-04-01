@@ -21,6 +21,7 @@ deactivate UI
 create Storage
 Finux -> Storage : Storage()
 activate Storage
+
 Storage --> Finux
 deactivate Storage
 
@@ -36,13 +37,18 @@ activate CommandHandler
 CommandHandler --> Finux
 deactivate CommandHandler
 
+Finux -> Storage : loadFile()
+activate Storage
+Storage --> Finux
+deactivate Storage
+
 Finux -> Storage : getRecordListData()
 activate Storage
-Storage --> Finux : records : ArrayList
+Storage --> Finux : records : ArrayList<Record>
 deactivate Storage
 
 create RecordList
-Finux -> RecordList : RecordList(records : ArrayList)
+Finux -> RecordList : RecordList(records : ArrayList<Record>)
 activate RecordList
 RecordList --> Finux
 deactivate RecordList
@@ -54,5 +60,6 @@ deactivate UI
 
 Finux --> Finux
 deactivate Finux
+
 
 @enduml
