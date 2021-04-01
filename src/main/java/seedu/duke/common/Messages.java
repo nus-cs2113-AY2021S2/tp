@@ -53,6 +53,8 @@ public class Messages {
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
+    public static final String MESSAGE_NO_BODY_WEIGHT_RECORD = "You haven't input any body weight record. "
+            + "Use add command to track the change of your body weight.";
     public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "
             + "of an incorrect goal type.";
     public static final String MESSAGE_CANT_CANCEL_GOAL = "Sorry, you cannot cancel a goal from a goal list "

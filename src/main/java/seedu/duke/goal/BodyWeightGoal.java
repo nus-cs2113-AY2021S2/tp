@@ -15,11 +15,15 @@ public class BodyWeightGoal extends Goal {
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight, daySet);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     protected void initializeProgress() {
@@ -65,13 +69,13 @@ public class BodyWeightGoal extends Goal {
     public String getGoalData() {
         if (progress == -1) {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                    + getPeriodType().toString().toLowerCase() + getAchieved() + "\t\t"
-                    + getTarget() + " " + getProgressUnit() + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
+                    + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + "None Progress" + getAchieved() + "\n";
         } else {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                    + getPeriodType().toString().toLowerCase() + "\t\t"
-                    + getTarget() + " " + getProgressUnit() + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                    + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
         }
     }
@@ -79,5 +83,9 @@ public class BodyWeightGoal extends Goal {
     @Override
     public String getGoalDataToStore() {
         return "W" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+    }
+
+    private int getLengthOfTarget() {
+        return ("" + target).length() + getProgressUnit().length() + 1;
     }
 }

@@ -10,11 +10,17 @@ import java.time.format.DateTimeFormatter;
  */
 public abstract class Goal {
     protected static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    protected static final int SPACES_FOR_TYPE = 16;
+    protected static final int SPACES_FOR_TARGET = 16;
     protected LocalDate daySet;
     protected RecordType type;
     protected PeriodType periodType;
     protected double target;
     protected double progress;
+    protected int lengthOfPeriodType;
+    protected int lengthOfTarget;
+    protected String separatorBetweenTypeAndTarget;
+    protected String separatorBetweenTargetAndProgress;
     public static final String SEPARATOR = " | ";
 
     /**
@@ -27,6 +33,7 @@ public abstract class Goal {
         this.type = type;
         this.periodType = periodType;
         daySet = LocalDate.now();
+        lengthOfPeriodType = getLengthOfPeriodType();
     }
 
     public Goal(RecordType type, PeriodType periodType, double target) {
@@ -34,6 +41,7 @@ public abstract class Goal {
         this.periodType = periodType;
         daySet = LocalDate.now();
         this.target = target;
+        lengthOfPeriodType = getLengthOfPeriodType();
     }
 
     public Goal(RecordType type, PeriodType periodType, double target, LocalDate date) {
@@ -41,6 +49,7 @@ public abstract class Goal {
         this.periodType = periodType;
         daySet = date;
         this.target = target;
+        lengthOfPeriodType = getLengthOfPeriodType();
     }
 
     public double getProgress() {
@@ -112,4 +121,26 @@ public abstract class Goal {
 
     public abstract String getGoalDataToStore();
 
+    protected void setSeparatorBetweenTypeAndTarget() {
+        separatorBetweenTypeAndTarget = "";
+        for (int i = 0; i < SPACES_FOR_TYPE - lengthOfPeriodType; i++) {
+            separatorBetweenTypeAndTarget += " ";
+        }
+    }
+
+    protected void setSeparatorBetweenTargetAndProgress() {
+        separatorBetweenTargetAndProgress = "";
+        for (int i = 0; i < SPACES_FOR_TARGET - lengthOfTarget; i++) {
+            separatorBetweenTargetAndProgress += " ";
+        }
+    }
+
+    private int getLengthOfPeriodType() {
+        return periodType.toString().length();
+    }
+
+    protected void setSeparator() {
+        setSeparatorBetweenTargetAndProgress();
+        setSeparatorBetweenTypeAndTarget();
+    }
 }

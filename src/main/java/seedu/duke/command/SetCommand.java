@@ -11,6 +11,9 @@ import seedu.duke.goal.DietGoal;
 
 import java.util.HashMap;
 
+import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
+import static seedu.duke.common.Messages.MESSAGE_NO_BODY_WEIGHT_RECORD;
+
 public class SetCommand extends Command {
     private final Goal goal;
     private final CommandRecordType recordType;
@@ -44,6 +47,9 @@ public class SetCommand extends Command {
             fitCenter.addGoalToList(recordType, goal);
             feedback = "A new " + goal.getType().toString().toLowerCase()
                     + " goal is set successfully!\n" + goal.getGoalSummary();
+            if (recordType == BODY_WEIGHT && goal.getProgress() == -1) {
+                feedback += MESSAGE_NO_BODY_WEIGHT_RECORD;
+            }
         } else {
             feedback = Messages.MESSAGE_CANT_SET_GOAL;
         }

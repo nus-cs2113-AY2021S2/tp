@@ -1,0 +1,17 @@
+@startuml
+
+box AddRecord
+participant ":CommandParser" as CommandParser
+participant ":AddCommand" as AddCommand
+participant ":Record" as Record
+participant ":FitCenter" as FitCenter
+participant ":RecordList" as RecordList
+end box
+
+
+Al -> Bob: Authentication Request
+Bob --> Alice: Authentication Response
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+@enduml

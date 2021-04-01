@@ -7,7 +7,6 @@ import java.time.LocalDate;
 
 public class DietGoal extends Goal {
 
-
     /**
      * Initialize an instance of an diet goal.
      *
@@ -17,13 +16,16 @@ public class DietGoal extends Goal {
     public DietGoal(PeriodType periodType, double targetEnergy) {
         super(RecordType.DIET, periodType, targetEnergy);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
     public DietGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
         super(RecordType.DIET, periodType, targetEnergy, daySet);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
-
 
     @Override
     public String getProgressUnit() {
@@ -51,13 +53,17 @@ public class DietGoal extends Goal {
     @Override
     public String getGoalData() {
         return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                + getPeriodType().toString().toLowerCase() + "\t\t"
-                + getTarget() + " " + getProgressUnit() + "\t\t"
+                + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
     }
 
     @Override
     public String getGoalDataToStore() {
         return "D" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+    }
+
+    private int getLengthOfTarget() {
+        return ("" + target).length() + getProgressUnit().length() + 1;
     }
 }
