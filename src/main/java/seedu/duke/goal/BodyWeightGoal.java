@@ -15,14 +15,26 @@ public class BodyWeightGoal extends Goal {
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
+    /**
+     * Initialize an instance of an exercise goal.
+     *
+     * @param periodType       the period type of the goal which can be daily or weekly.
+     * @param targetBodyWeight the target body weight.
+     * @param daySet           the date when the goal is set.
+     */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight, daySet);
         initializeProgress();
+        lengthOfTarget = getLengthOfTarget();
+        setSeparator();
     }
 
-    protected void initializeProgress() {
+    @Override
+    public void initializeProgress() {
         progress = -1;
     }
 
@@ -36,11 +48,6 @@ public class BodyWeightGoal extends Goal {
         return "Kg";
     }
 
-    /**
-     * Gets a string summary of all info of this goal instance.
-     *
-     * @return a summary of all info of this goal instance in String.
-     */
     @Override
     public String getGoalSummary() {
         if (progress == -1) {
@@ -56,22 +63,17 @@ public class BodyWeightGoal extends Goal {
         }
     }
 
-    /**
-     * Gets all data of the goal in a table row.
-     *
-     * @return a string of all data of the goal in a table row.
-     */
     @Override
     public String getGoalData() {
         if (progress == -1) {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                    + getPeriodType().toString().toLowerCase() + getAchieved() + "\t\t"
-                    + getTarget() + " " + getProgressUnit() + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
+                    + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + "None Progress" + getAchieved() + "\n";
         } else {
             return "\t" + getDaySet().format(DATE_FORMATTER) + "\t\t"
-                    + getPeriodType().toString().toLowerCase() + "\t\t"
-                    + getTarget() + " " + getProgressUnit() + "\t\t"
+                    + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                    + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
         }
     }
@@ -79,5 +81,9 @@ public class BodyWeightGoal extends Goal {
     @Override
     public String getGoalDataToStore() {
         return "W" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+    }
+
+    private int getLengthOfTarget() {
+        return ("" + target).length() + getProgressUnit().length() + 1;
     }
 }
