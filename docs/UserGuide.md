@@ -50,11 +50,11 @@ This user guide helps you to understand how to use the HealthVault application b
 Various helpful screenshots from the application also help to guide you through the application.
 
 This user guide will cover the following:
-*How to set up the application
-*How to use Command Line Interface - CLI
-*Helpful tips on how to use the guide
-*How to use each of the features
-*Frequently asked questions
+* How to set up the application
+* How to use Command Line Interface - CLI
+* Helpful tips on how to use the guide
+* How to use each of the features
+* Frequently asked questions
 
 ### 1.3 Introduction to Command Line Interface (CLI)
 
