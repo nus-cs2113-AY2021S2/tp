@@ -120,6 +120,8 @@ Finux supports multiple Date formats, for ease of use:
 >
 > 📝 `today` keyword specifies today's date, replacing the need for you to type in the actual date for date inputs.
 
+---
+
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
 In general, the output format used by Finux in displaying an expense, loan and saving record is as follows:
