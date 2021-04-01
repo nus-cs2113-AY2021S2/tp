@@ -1,3 +1,5 @@
+//@@author KimIdeas8
+
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;
@@ -18,13 +20,10 @@ public class AddNoteCommand extends Command {
     public void execute() {
         try {
             String[] noteInfo = ui.getNoteInfo();
-            if (nusMap.isValidBlock(noteInfo[0])) {
-                Block block = nusMap.getBlock(noteInfo[0]);
-                block.addNote(noteInfo[1]);
-                ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
-            } else {
-                throw new InvalidBlockException();
-            }
+            nusMap.checkIfValidBlock(noteInfo[0]);
+            Block block = nusMap.getBlock(noteInfo[0]);
+            block.addNote(noteInfo[1]);
+            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
         } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }

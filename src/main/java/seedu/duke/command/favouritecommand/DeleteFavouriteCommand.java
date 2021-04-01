@@ -1,3 +1,5 @@
+//@@author Rye98
+
 package seedu.duke.command.favouritecommand;
 
 import seedu.duke.command.Command;

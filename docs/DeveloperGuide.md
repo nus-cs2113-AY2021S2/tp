@@ -1,5 +1,7 @@
 # Developer Guide for NUSMaze
 
+---------------------------------------------------------------------------------------------
+
 ## Table Of Contents
 <!-- TOC -->
 1. [Introduction](#1-introduction)  
@@ -7,10 +9,12 @@
     1.2. [Setting up and getting started](#12-setting-up-and-getting-started)  
 2. [Design](#2-design)  
     2.1. [Architecture](#21-architecture)     
-    2.2. [UI Component](#22-ui-component)  
+    2.2. [UIManager Component](#22-uimanager-component)  
     2.3. [Parser Component](#23-parser-component)  
-    2.4. [Command Classes](#24-command-classes)  
-    2.5. [Storage Component](#25-storage-component)  
+    2.4. [Command Component](#24-command-component)  
+    2.5. [Router Component](#25-router-component)  
+    2.6. [Data Component](#26-data-component)  
+    2.7. [Storage Component](#27-storage-component)  
 3. [Implementation](#3-implementation)  
     3.1. [Save Feature](#31-save-feature)  
     3.2. [Daily Route Planning Feature](#32-daily-route-planning-feature)  
@@ -24,10 +28,13 @@
     4.4. [Non-functional Requirements](#44-non-functional-requirements)  
     4.5. [Glossary](#45-glossary)
 5. [Appendix: Instructions for manual testing](#5-appendix-instructions-for-manual-testing)
-<!-- /TOC -->
+<!-- TOC -->
 
-## 1. Introduction  
-### 1.1. Overview 
+---------------------------------------------------------------------------------------------
+
+## *1. Introduction*  
+### 1.1. Overview
+
 NUSMaze is a Command Line Interface (CLI) based application that aims to simplify NUS Engineering students’ journey from one point to another within the Engineering and Computing faculties of NUS. The application allows users to find the best route from one block to another, add favourite locations, locate the nearest eatery and much more.
 
 The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
@@ -36,27 +43,111 @@ The purpose of this developer guide is to aid any curious or interested contribu
 Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
 Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
 Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
-Step 4. Import the project as a Gradle project.  
-Step 5. If you had previously disabled the Gradle plugin, go to File → Settings → Plugins to re-enable them.  
+Step 4. Import the project as a Gradle project.
+Step 5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
 Step 6. Click on Import Project and select the build.gradle file.  
-Step 7. Navigate to the NUSMaze class via the path src → main → java → seedu.duke → NUSMaze and right click on it.  
-Step 8. Press run on the Main() method of NUSMaze.  
+Step 7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
+Step 8. Press run on the `Main()` method of NUSMaze.
 
-If the set up process had been completed successfully, you should see the following message:
+If the set up process had been completed successfully, you should see the following message:  
 ![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
 
+---------------------------------------------------------------------------------------------
 
-## 2. Design 
-### 2.1. Architecture 
-### 2.2. UI Component 
+## *2. Design* 
+### 2.1. Architecture
+![img.png](images/architecture.png)
+
+The **Architecture Diagram** above depicts the high-level design of the NUSMaze. You can always refer to this diagram
+to understand how the different components of NUSMaze interact with each other.
+
+The class [`NusMaze`](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/NusMaze.java) is where the `main()` 
+method belongs and is reponsible for:
+* When the app launches, initialise and connect different components of the NUSMaze in correct sequence.
+* When the app terminates, shut down all the components.
+
+Architecture Components of NUSMaze:
+* [**`UIManager`**](#22-uimanager-component): The user interface of the app
+* [**`Parser`**](#23-parser-component): Processes commands inputted by the user
+* [**`Command`**](#24-command-component): Executes the user command 
+* [**`Router`**](#25-router-component): Searches shortest router
+* [**`Data`**](#26-data-component): Holds the data of the app in memory
+* [**`Storage`**](#27-storage-component): Reads data from and write data to external text files
+
+Explanations on how each component is designed and how it functions are further elaborated in the following 
+chapters of the developer guide.
+
+### 2.2. UIManager Component 
+![img.png](images/ui_design.png)  
+**API**: [UiManager.java](https://github.com/AY2021S2-CS2113T-T09-2/tp/blob/master/src/main/java/seedu/duke/ui/UiManager.java)
+
+The UI of the application is managed by the `UiManager` class as shown by the class diagram above. The individual UI classes for each feature such as `AliasUi`, `DailyRouteUi` and
+`FavouriteUi` extend the `UiManager` class. The UiManager class consists of the methods that are used to display recurrent messages on the *CLI* and also the utilities to get the user's inputs.
+
+The `UiManager` requires the static string variables from the `CommonMessages` class to obtain the commonly used messages that
+such as the divider and input headers.
+
+The individual UI classes contain the methods that are used to get user inputs specific to the needs of the specific feature that
+it is responsible for. For example, when the routing feature is to be executed, the UI will need to prompt the user to obtain 2
+inputs, namely the `from block` and the `to block`. Hence, the `RouterUi` contains the `getRoutingInfo()` method which will prompt
+the user for these two inputs using the utility methods from the UiManager. Methods to get user input are called upon directly from the command classes of the specific feature command.
+
+The `UiManager` component,
+* displays messages in the *CLI*.
+* provides the individual Ui classes with the utilities to obtain user input specific to their needs.
+
 ### 2.3. Parser Component 
-### 2.4. Command Classes 
-### 2.5. Storage Component 
+![img.png](images/ParserComponent.png)
 
-## 3. Implementation
+As shown above in the class diagram, **Parser component** is made out of the `Parser` class.
+After the `UiManager` reads in the user command, `NusMaze` makes use of the `Parser` to interpret 
+the user command and it will instantiate a new Command object to execute the command. 
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.} 
+The Sequence diagram shown below is of a scenario where the user inputs an `"invalid input"`. It will allow you to 
+get a better understanding of how the `Parser` class interacts with `NusMaze` and `UiManager`.
 
+![img.png](images/Parsersequencediagram.png)
+
+### 2.4. Command Component
+![img.png](images/CommandComponent.png)
+
+The class diagram above may seem complicated at first glance but it actually isn't.
+The **Command Component** of NUSMaze is made out of `Command` class, which is the parent class of
+all the other classes in the component (eg. `GoCommand`, `ByeCommand`). Depending on which command the user inputs, the
+`Parser` creates different `Command` class to execute the task. 
+
+Each `Command` class has :
+* An distinct `execute()` method which is overrides the parent class, therefore tailored to execute the given command.
+* An `ui` specifically for taking in further user input in order to carry out the command.
+
+### 2.5. Router Component
+![img.png](images/RouterComponent.png)
+
+The **Router Component** consist of the `Router` class which is reponsible for finding the shortest route to get from
+one location to another. In finding the shortest route, it utilises the breath-first-search algorithm, which will be 
+further elaborated in the implementation section.
+
+As shown in the diagram above, `Router` is used by the following classes:
+* `GoCommand`
+* `RepeatHistoryCommand`
+* `RepeatFavouriteCommand`
+* `ShowDailyRouteCommand`
+
+### 2.6. Data Component
+![img.png](images/DataComponent.png)
+
+The **Data Component** is where all the data that are needed to execute a command is stored. For example when `"go"`
+command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
+the shortest route.
+
+On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
+further elaborated in the following section.
+
+### 2.7. Storage Component  
+
+---------------------------------------------------------------------------------------------
+
+## *3. Implementation*
 ### 3.1. Save feature
 #### Current Implementation
 The save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
@@ -75,14 +166,14 @@ Additionally, they implement the following operations: <br/>
 
 These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile()`. <br />
 The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
-![img.png](Overview%20for%20Safe%20Feature.png)
+![img.png](images/Overview%20for%20Safe%20Feature.png)
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
 Step 1. The user launches the application for the first time. 
 `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage` and `FavouriteLocationsStorage` 
 will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
-The lists will be initialised by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
+The lists will be initialized by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
 This is done only once for each time the application is launched. <br />
-![img.png](SaveStep1.png)
+![img.png](images/Storage%20Feature%20Sequence%20.png)
 <br />
 Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
 The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
@@ -121,7 +212,7 @@ Step 5. The inputted day, and the filled Arraylist from step 3 is then passed in
 Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
 The following image shows the sequence diagram in which the add day command is implemented
-![img.png](addday.png)
+![img.png](images/addday.png)
 
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
@@ -131,7 +222,7 @@ Step 3. The routing algorithm is now performed for each of the blocks in the arr
 Step 4. The String is output through Daily Route Ui <br />
 
 The following image shows the sequence diagram in which the add day command is implemented
-![img.png](showday.png)
+![img.png](images/showday.png)
 
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
@@ -142,7 +233,7 @@ The `GoCommand` class extends the `Command` class and overrides the `execute` me
 
 The image below depicts how the `GoCommand` is implemented.
 
-![img.png](router.png)
+![img.png](images/router.png)
 
 Given below is an example scenario of how the routing algorithm functions.
 
@@ -154,30 +245,38 @@ Step 5. The Router will then run the `findShortestRoute()` method which is a rou
 Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
 Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
-![img.png](routersequencediagram.png)
+![img.png](images/routersequencediagram.png)
 
 ### 3.4. Custom aliases feature
 #### Current Implementation
-The custom aliases for block names feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair.
+The following diagram illustrates the class diagram for implementation of the alias feature:
+![img.png](images/AliasFeature.png)
+The command entered by the user in the `Main()` function of NUSMaze will be parsed in the `Parser` class. Thereafter, the parser will decide which of the 3 alias commands,
+if applicable, was the command that the user wanted to execute. 
 
-The `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` classes extends the `Command` class. These command classes contain the respective `execute` functions for adding, viewing and deleting the user's custom aliases.
+The three command classes, namely `AddCustomAliasCommand`, `ShowCustomAliasCommand` and `DeleteCustomAliasCommand` extend the `Command` class and they all depend on the `AliasUi` class to obtain inputs and display outputs.
 
-The `Storage` class has the feature to save the custom aliases into a local file so that users can load back their custom alias names when restarting the app.
+Another thing to note is that the `NUSMaze` class has an `AliasStorage` class that facilitates the storage of the aliases
+so that the user can access their aliases even after they close and reopen the application. 
+
+The data model for this feature is facilitated by the `BlockAlias` class which contains the hashmap of custom aliases and block pairs. 
+The hashmap will have the `custom alias name` as the `key` and the `block name` as the `value` for each key-value pair. The
+`BlockAlias` class also depends on the `NusMap` class to ensure that valid blocks are input by the user.
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
 Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
 
-Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. The new command will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
+Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
 Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
 
 Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
-Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and `Got it! Successfully deleted ALIASTOREMOVE from the aliases` will be displayed to the user.  
+Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
 
-Step 6. The user executes `bye` and exits the app. This will invoke the instance of the `Storage` class which will convert the hashmap into the text file format and append to the text file to save the alias data locally.    
-
+Shown below is the sequence diagram when a valid block name and alias are added:
+![img.png](images/AliasFeatureSequence.png)
 ### 3.5. History feature
 
 #### Current Implementation
@@ -212,8 +311,56 @@ Alternative 2: Place all commands (add, view, delete) as functions in 1 command 
 Pros: Less code to be written and hashmap can be shared by the 3 commands in 1 class.  
 Cons: Might be confusing since there is less distinction between each command.
 
-## 4. Appendix: Requirements
+### 3.6. Favourite Routes feature
 
+#### Current Implementation
+
+The favourite routes feature acts as an independent storage of the user's favourites routes, 
+allowing the user to call of the route without going through the hassle of the `go` command.
+The start and destination of the favourite routes are saved within an ArrayList named `favourites`.
+The contents of `favourites` will be stored into a text file named `favouritesList.txt` when NUSMaze terminates.
+
+#### Loading of saved favourite routes
+
+When NUSMaze launches, the contents of the text file `favouritesList.txt` will be read,
+and stored into `favourites`.
+Refer to the section on **Storage** for more information.
+
+#### Adding of favourite route
+
+The command to add a favourite route is `add favourite`. 
+Upon calling the `add favourite` command, the user will be prompted to enter the starting block,
+followed by the destination block. If valid blocks are given,
+the route from the starting block to destination block will be added into `favourites`.
+If any invalid block is given, `InvalidBlockException` will be thrown.
+
+#### Reviewing saved favourite routes
+
+The command to display all the saved favourite routes is `show favourite`.
+If there are no saved routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+
+#### Repeating favourite route
+
+The command to repeat a favourite route is `repeat favourite`.
+Upon calling the `repeat favourite` command, the user would be shown a numbered list of saved favourite routes.
+Otherwise, `EmptyFavouriteException` will be thrown.
+After the numbered list of saved favourite routes is shown, the user would be prompted to enter the index of the favourite
+route to be executed. Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
+#### Deleting favourite route
+
+The command to delete a favourite route is `delete favourite`.
+If there are no saved favourite routes, `EmptyFavouriteException` will be thrown.
+If there are any saved favourite routes, a numbered list of the saved routes will be shown to the user.
+The user is then prompted to enter the index of the route to be deleted.
+Any invalid input such as decimals or alphabets will result in
+`InvalidIndexException` to be thrown.
+
+---------------------------------------------------------------------------------------------
+
+## *4. Appendix: Requirements*
 ### 4.1. Product Scope
 
 NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
@@ -239,7 +386,6 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.4. Non-Functional Requirements
 
-
 1. Should work on any mainstream OS as long as it has Java 11 or above installed.
 
 2. Should be able to hold up to 1000 history, notes, favourites and block alias entries without a noticeable sluggishness in performance for typical usage.
@@ -248,8 +394,36 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.5. Glossary
 
-* *glossary item* - Definition
+* *CLI* - Command Line Interface
 
-## 5. Appendix: Instructions for manual testing
+---------------------------------------------------------------------------------------------
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+## *5. Appendix: Instructions for manual testing*
+
+### 5.1 Launch and shutdown
+1. Initial launch  
+    1.1. Download the latest jar file from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases/tag/v1.0)
+   and copy it into an empty folder.  
+    1.2. Open the terminal/powershell console and navigate to the folder in which the `.jar` file was saved.  
+   Expected: Greeting message of NUSMaze  to be shown
+2. Exiting the application
+    2.1 Type 'bye' and press enter  
+    Expected: The application shows thank you message and exits successfully.
+### 5.2 Routing
+1. Routing with valid blocks  
+    1.1 Launch the application and type 'Go' followed by the enter key.    
+    1.2 Test case: Starting block → `E1`, Destination block → `E7`  
+    Expected:  `Route: E1 -> LT5 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7` should be displayed   
+    1.3 Test case: Starting block → `e4`, Destination block → `techno edge`  
+    Expected:  `Route: E4 -> E3 -> LT5 -> TECHNO EDGE` should be displayed
+2. Routing with invalid blocks  
+    2.1 Test case: Starting block → `E10`, Destination block → `E7`  
+    Expected:  `Invalid block! Please enter the command again to retry!` should be displayed  
+    2.2 Test case: Starting block → `Invalid block`, Destination block → `Invalid block`  
+    Expected:  Similar to previous  
+3. Routing to an eatery
+    3.1 Test case: Starting block → `e3`, Destination block → `eatery`, Select entry to go → `5`  
+    Expected: `Route: E3 -> E2 -> EA -> SPINELLI COFFEE` should be displayed  
+    3.2 Test case: Starting block → `e3`, Destination block → `spinelli coffee`
+    Expected: Similar to previous  
+   

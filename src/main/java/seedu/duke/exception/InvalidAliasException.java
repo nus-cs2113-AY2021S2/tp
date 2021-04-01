@@ -1,3 +1,5 @@
+//@@author Rizavur
+
 package seedu.duke.exception;
 
 public class InvalidAliasException extends NusMazeException {

@@ -1,3 +1,5 @@
+//@@author KimIdeas8
+
 package seedu.duke.command.notecommand;
 
 import seedu.duke.command.Command;
@@ -7,11 +9,11 @@ import seedu.duke.ui.NoteUi;
 
 import java.util.ArrayList;
 
-public class ListNoteCommand extends Command {
+public class ShowNoteCommand extends Command {
 
     protected NoteUi ui;
 
-    public ListNoteCommand() {
+    public ShowNoteCommand() {
         this.ui = new NoteUi();
     }
 
@@ -19,12 +21,9 @@ public class ListNoteCommand extends Command {
     public void execute() {
         String listInfo = ui.getBlockInfo();
         try {
-            if (nusMap.isValidBlock(listInfo)) {
-                ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
-                ui.showNotes(notes);
-            } else {
-                throw new InvalidBlockException();
-            }
+            nusMap.checkIfValidBlock(listInfo);
+            ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
+            ui.showNotes(notes);
         } catch (EmptyNoteException e) {
             ui.showMessageWithDivider(String.format(e.getMessage(), listInfo));
         } catch (InvalidBlockException e) {

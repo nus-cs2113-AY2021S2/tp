@@ -1,3 +1,5 @@
+//@@author Rye98
+
 package seedu.duke.command.historycommand;
 
 import seedu.duke.router.Router;
@@ -20,7 +22,7 @@ public class RepeatHistoryCommand extends Command {
             ui.showHistory(history);
             int entry = ui.getRepeatEntry();
             String[] routeInfo = history.getSpecificEntry(entry - 1);
-            String route = new Router().execute(nusMap, blockAlias, routeInfo[0], routeInfo[1]);
+            String route = new Router().execute(nusMap, routeInfo[0], routeInfo[1]);
             ui.showMessageWithDivider(route);
             history.addHistory(routeInfo[0], routeInfo[1]);
         } catch (InvalidBlockException | InvalidIndexException | EmptyHistoryException e) {

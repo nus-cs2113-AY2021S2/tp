@@ -1,7 +1,8 @@
+//@@author Rizavur
+
 package seedu.duke.data;
 
 import seedu.duke.exception.InvalidAliasException;
-import seedu.duke.exception.InvalidBlockException;
 
 import java.util.HashMap;
 
@@ -16,23 +17,27 @@ public class BlockAlias {
         return aliases;
     }
 
-    public void addAlias(String block, String alias) throws InvalidBlockException, InvalidAliasException {
-        if (!isValidBlock(block)) {
-            throw new InvalidBlockException();
-        } else if (!isValidAlias(alias)) {
+    public String[] changeAliasToBlock(String from, String to) {
+        String[] blockNames = {from, to};
+        if (aliases.containsKey(from)) {
+            blockNames[0] = aliases.get(from);
+        }
+        if (aliases.containsKey(to)) {
+            blockNames[1] = aliases.get(to);
+        }
+        return blockNames;
+    }
+
+    public void addAlias(String block, String alias) throws InvalidAliasException {
+        if (!isValidAlias(alias)) {
             throw new InvalidAliasException();
         }
         aliases.put(alias, block);
     }
 
-    public boolean isValidBlock(String block) {
-        NusMap nusMap = new NusMap();
-        return nusMap.getBlock(block) != null;
-    }
-
     public boolean isValidAlias(String alias) {
         NusMap nusMap = new NusMap();
-        return (!aliases.containsKey(alias) | nusMap.getBlock(alias) == null);
+        return (!aliases.containsKey(alias) && nusMap.getBlock(alias) == null && !alias.equalsIgnoreCase("eatery"));
     }
 
     public void deleteAlias(String alias) throws InvalidAliasException {
