@@ -27,7 +27,7 @@ public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
     @Override
     public void openTextEditor(UI ui, Path path, String filePath) {
         if (Files.exists(path)) {
-            if (TextEditor.createNew(filePath)) {
+            if (TextEditor.createNew(filePath, fileName)) {
                 ui.printMessage(String.format(MESSAGE_OPEN_FILE, fileName));
             } else {
                 ui.printMessage(String.format(MESSAGE_CLOSE_CHEATSHEET_FIRST, fileName));

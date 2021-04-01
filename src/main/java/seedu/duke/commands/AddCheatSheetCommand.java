@@ -58,7 +58,7 @@ public class AddCheatSheetCommand extends Command {
             }
 
             ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
-            TextEditor.createNew(filePath);
+            TextEditor.createNew(filePath, fileName);
         }
     }
 
