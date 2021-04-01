@@ -1,12 +1,12 @@
 package seedu.hdbuy.command;
 
-import java.util.logging.Logger;
-
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.data.SearchedUnits;
 import seedu.hdbuy.data.ShortList;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
+
+import java.util.logging.Logger;
 
 public class SaveCommand extends Command {
 
@@ -16,8 +16,7 @@ public class SaveCommand extends Command {
         this.index = index;
     }
 
-    @Override
-    public void execute(UserInput userInput) {
+    @Override public void execute(UserInput userInput) {
         Unit targetUnit = SearchedUnits.getUnit(index);
         if (targetUnit == null) {
             return;
