@@ -516,90 +516,108 @@ Example Screenshot:
 
 The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
+This is an example of the welcome screen for the Nurse Schedule Menu.
+<img src="images/NurseScheduleStartScreen.png" width = "600">
+
 #### Adding a new schedule: `add`
-Adds a new schedule to the list of nurse schedules.
-(Note for ID: N/P = Nurse/Patient)
 
-Format: `add/[Nurse ID]/[Patiend ID]/[Date (DDMMYYYY)]`
+&nbsp;&nbsp;&nbsp;&nbsp; Adds a new schedule to the list of nurse schedules.
+&nbsp;&nbsp;&nbsp;&nbsp; (Note for ID: N/P = Nurse/Patient)
 
-Example of usage:
-```
-NSchedule --> add N1 P1 30012020
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-NSchedule --> add N1 P1 30012020
-Trip to P1 on 30012020 added!
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
+>2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
+
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+
+&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/NurseScheduleAdd.png" width = "500">
+
+<br/><br/>
+
 
 #### Deleting a schedule: `delete`
-Deletes a schedule from the list of nurse schedules.
+&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule from the list of nurse schedules.
 
-Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
-Example of usage:
-```
-NSchedule --> delete N1 30012020
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-NSchedule --> delete N1 30012020
-Trip to P1 on 30/01/2020 has been cancelled!
-------------------------------------------------------------------------------
-```
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
+>2. HealthVault only accepts valid Date inputs.
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+
+&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/NurseScheduleDelete.png" width = "550">
+
+<br/><br/>
 
 #### Listing schedules: `list`
-List either all schedules or specified Nurse ID's schedule.
+&nbsp;&nbsp;&nbsp;&nbsp; List either all schedules or specified Nurse ID's schedule.
 
-Format: `list/[Nurse ID/all]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `list/[Nurse ID/all]`
 
-Example of usage(Nurse ID):
-```
-NSchedule --> list/N2
-```
-Expected Outcome(Nurse ID):
-```
-------------------------------------------------------------------------------
-NSchedule --> list/N2
-N2
-	31/01/2020 P2
-------------------------------------------------------------------------------
-```
-Example of usage(all):
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 
-```
-NSchedule --> list/all
-```
-Expected Outcome(all):
-```
-------------------------------------------------------------------------------
-NSchedule --> list/all
-N1
-	30/01/2020 P1
-N2
-	31/01/2020 P2
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
+
+&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/N12345 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(Nurse ID):
+
+<img src="images/NurseScheduleListNurseID.png" width = "550">
+
+<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(all):
+
+&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(all):
+
+<img src="images/NurseScheduleListAll.png" width = "550">
+
+<br/><br/>
 
 #### Returning to Start Menu: `return`
-#### Help: `help'
 
-### ??Adding a todo: `todo`??
-Adds a new item to the list of todo items.
+&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+<img src="images/NurseScheduleReturn.png" width = "250">
 
-Example of usage: 
+#### Help: `help`
 
-`todo n/Write the rest of the User Guide d/next week`
+&nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
+
+<img src="images/NurseScheduleHelp.png" width = "850">
+
+<br/><br/>
 
 ### 5.5 Inventory
 
