@@ -80,6 +80,8 @@ public class HealthVaultException extends Exception {
             case "InvalidPrice":
                 System.out.println("OOPS! You have indicated an invalid price! \n" +
                         "Try e.g 3.00 or 3");
+            case "IllegalCharacter":
+                System.out.println("OOPS! You have an illegal character in your input!");
             default:
                 System.out.println("OOPS! Your command may not be valid! \n" +
                         "Please check the list of available commands using \"help\"");

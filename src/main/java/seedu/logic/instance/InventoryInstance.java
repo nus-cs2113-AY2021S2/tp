@@ -68,9 +68,7 @@ public class InventoryInstance {
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
             }
         }
-        //InventoryParser InventoryParser = new InventoryParser(inventories);
-        //InventoryParser.parseMethod();
-        //inventoryStorage.exitProgram();
+
     }
 
 }

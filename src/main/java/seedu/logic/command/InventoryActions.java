@@ -36,8 +36,10 @@ public class InventoryActions {
     public void listDrugs() {
         int numberOfDrugs = list.size();
         if (numberOfDrugs != 0) {
-            ui.notEmptyInventoryListMessage();
+            //ui.notEmptyInventoryListMessage();
+            System.out.print(System.lineSeparator());
             ui.inventoryListHeader();
+            System.out.println(("-").repeat(50));
             for (Inventory inventory : list) {
                 display(inventory);
             }
@@ -58,7 +60,7 @@ public class InventoryActions {
 
     public static void display(Inventory inventory) {
         System.out.println(
-                prettyPrint(inventory.getDrugName(), 10) + " | " + prettyPrint(inventory.getPrice(), 10) + " | "
+                prettyPrint(inventory.getDrugName(), 15) + " | " + prettyPrint(inventory.getPrice(), 10) + " | "
                         + prettyPrint(Integer.toString(inventory.getQuantity()), 5));
     }
 
