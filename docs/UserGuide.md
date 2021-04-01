@@ -602,13 +602,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
-&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/NurseScheduleAdd.png" width = "500">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/NurseScheduleAdd.png" width = "500">
 
 <br/><br/>
 
@@ -628,15 +628,15 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >
 >2. HealthVault only accepts valid Date inputs.
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/NurseScheduleDelete.png" width = "550">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/NurseScheduleDelete.png" width = "550">
 
 <br/><br/>
 
@@ -652,27 +652,27 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/N12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(Nurse ID)**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(Nurse ID)**:
 
 <img src="images/NurseScheduleListNurseID.png" width = "550">
 
 <br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(all)**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(all)**:
 
-&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(all)**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(all)**:
 
-<img src="images/NurseScheduleListAll.png" width = "550">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/NurseScheduleListAll.png" width = "550">
 
 <br/><br/>
 
@@ -680,17 +680,17 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/NurseScheduleReturn.png" width = "250">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/NurseScheduleReturn.png" width = "250">
 
 #### Help: `help`
 
 &nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/NurseScheduleHelp.png" width = "850">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/NurseScheduleHelp.png" width = "850">
 
 <br/><br/>
 
