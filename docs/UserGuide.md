@@ -67,6 +67,20 @@ Removes all currently set filter conditions.
 
 Format: `clear`
 
+### Sort: `sort`
+
+Sorts listings either in ascending or descending order with respect to price.
+
+Format: `sort TYPE`
+
+Example:
+* `sort asc` to sort listings in ascending order with respect to price.
+
+
+
+
+
+
 ## FAQ
 
 **Q**: How do I transfer my data (shortlisted units) to another computer? 
