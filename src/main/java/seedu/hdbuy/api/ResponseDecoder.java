@@ -1,13 +1,13 @@
 package seedu.hdbuy.api;
 
-import seedu.hdbuy.common.exception.EmptyResponseException;
-import seedu.hdbuy.common.exception.GatewayException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.logging.Logger;
+
+import seedu.hdbuy.common.HdBuyLogger;
+import seedu.hdbuy.common.exception.EmptyResponseException;
+import seedu.hdbuy.common.exception.GatewayException;
 
 public class ResponseDecoder {
 
@@ -25,10 +25,10 @@ public class ResponseDecoder {
             in.close();
             UnitsGenerator.getUnits(response);
         } catch (IOException ioException) {
-            Logger.getLogger("ResponseDecoder").severe("Failed to read response");
+            HdBuyLogger.error("Failed to read response");
             throw new GatewayException();
         } catch (ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-            Logger.getLogger("ResponseDecoder").severe(arrayIndexOutOfBoundsException.getMessage());
+            HdBuyLogger.error(arrayIndexOutOfBoundsException.getMessage());
             throw new EmptyResponseException();
         }
     }

@@ -1,17 +1,17 @@
 package seedu.hdbuy.parser;
 
-import seedu.hdbuy.common.CommandKey;
-import seedu.hdbuy.common.exception.InvalidParameterException;
-
 import java.util.Arrays;
-import java.util.logging.Logger;
+
+import seedu.hdbuy.common.CommandKey;
+import seedu.hdbuy.common.HdBuyLogger;
+import seedu.hdbuy.common.exception.InvalidParameterException;
 
 public class CommandEvaluator {
 
     public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
         String[] lineParts;
         lineParts = fullLine.split(" ");
-        Logger.getLogger("Parser").info(Arrays.toString(lineParts));
+        HdBuyLogger.info(Arrays.toString(lineParts));
         String keyCommand = lineParts[0];
         switch (keyCommand) {
         case CommandType.FILTER:
