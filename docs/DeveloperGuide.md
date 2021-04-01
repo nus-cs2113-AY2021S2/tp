@@ -526,8 +526,11 @@ allows them to amend their mistakes or edit their list with constraints.
 #### 4.5.1 Current Implementation
 
 The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
-parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
+parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
+
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+*Figure x: Sequence Diagram for `remove -i 1`*
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
 
@@ -564,9 +567,6 @@ The sequence diagram presented below depicts the interaction between the compone
 > 
 > 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
 > are given.
-
-![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
-*Figure x: Sequence Diagram for `remove -i 1`*
 
 #### 4.5.2 Design Consideration
 
