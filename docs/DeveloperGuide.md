@@ -2,15 +2,21 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)
+[1. Introduction](#1-introduction)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1 About This Developer Guide](#11-about-this-developer-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.2 How to Use This Developer Guide](#12-how-to-use-this-developer-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.3 Conventions in This Developer Guide](#13-conventions-in-this-developer-guide)
 
 [2. Setting Up](#2-setting-up)
 
 [3. Design](#3-design)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)  
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Class](#32-ui-class)
 
 [4. Implementation](#4-implementation)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Review](#401-add-new-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.02 Delete a Review](#402-delete-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.03 Add New Task](#403-add-new-task)  
@@ -19,6 +25,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.06 Add Module Components](#406-add-module-components)
 
 [5. Product scope](#5-product-scope)    
+
 &nbsp;&nbsp;&nbsp;&nbsp;[5.1 Target user profile](#51-target-user-profile)   
 &nbsp;&nbsp;&nbsp;&nbsp;[5.2 Value proposition](#52-value-proposition)
 
@@ -43,6 +50,28 @@
 
 - This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical
   User Interface (GUI).
+
+### 1.1 About This Developer Guide
+
+This developer guide was made to help you set up UniTracker on your computer for usage, testing and further implementations. It also provides you with
+all the information you need to use UniTracker alongside detailed diagrams on the implementation of our different features and how they integrate together.
+
+### 1.2 How to Use This Developer Guide
+
+Firstly, refer to [Section 2. Setting Up](#2-setting-up) for instructions on setting up UniTracker
+on and IDE on your local computer.
+
+Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
+navigate to specific sections to explore and learn about our different features and how they were implemented.
+
+### 1.3 Conventions in This Developer Guide
+
+> 📝 **Note!**  
+> This is a note section. Additional useful information will be written in sections such as this one.
+
+> ⚠️ **<span style="color: red"> WARNING! </span>**  
+> This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
+
 
 ---
 
@@ -117,7 +146,9 @@ This class handles the interactions with the user and contains the methods for s
 
 This feature allows user to `add a review` for any of the modules they have taken.
 
-**NOTE**: This action will **overwrite** any existing reviews with the new review.
+> 📝 **Note!**  
+> This action will **overwrite** any existing reviews with the new review.
+
 
 E.g. Input:  
 `CS2113T is very fun:) I have learnt so many important concepts.`  
@@ -217,9 +248,10 @@ to input the number corresponding to the module code they want, and returns the 
 Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine the
 link, and whether a password is required for the Zoom meeting.
 
-📝 If the user does not require the zoom link to be tagged to a module,
-AddTask#printAndGetModule() in Step 1 would return an empty string, and the module code would be
-initialised to "Zoom link has no module code".
+> 📝 **Note!**  
+> If the user does not require the zoom link to be tagged to a module,
+> AddTask#printAndGetModule() in Step 1 would return an empty string, and the module code would be
+> initialised to "Zoom link has no module code".
 
 Step 3. The ZoomLinkInfo#addZoomLink() method then calls ModuleInfo#getModule() in order to retrieve
 the module object which is stored in the ModuleInfo class.
@@ -227,6 +259,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
+### 4.06 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
