@@ -193,3 +193,6 @@ to use.
 When user initiates a `filter` command with an invalid filter, the app will return an exception `InvalidFilterException`
 and will list out all the possible filters.
 
+### Sorting results by price in ascending or descending order
+
+
