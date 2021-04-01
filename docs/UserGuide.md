@@ -725,7 +725,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/InventoryAdd.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryAdd.PNG" width = "600">
 
 <br/><br/>
 
@@ -742,7 +742,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/InventoryDelete.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryDelete.PNG" width = "600">
 
 <br/><br/>
 
@@ -758,7 +758,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/InventoryList.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryList.PNG" width = "600">
 
 <br/><br/>
 
@@ -778,7 +778,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelp.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelpFinal.PNG" width = "600">
 
 <br/><br/>
 
