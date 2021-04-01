@@ -96,6 +96,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         if (!isValidGender(inputArray[3]) || !isValidDate(inputArray[4])) {
             throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
         }
+
     }
 
     public static void checkDuplicateAptIDFromStorage(String appointmentID, ArrayList<String> storageList) throws HealthVaultException {

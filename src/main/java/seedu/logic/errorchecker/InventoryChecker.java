@@ -1,12 +1,15 @@
 package seedu.logic.errorchecker;
 
+import seedu.duke.Constants;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.InvalidPriceException;
+import seedu.exceptions.inventory.IllegalCharacterException;
 import seedu.logic.command.InventoryActions;
 import seedu.model.Inventory;
+import seedu.logic.errorchecker.MainChecker;
 
 import java.util.ArrayList;
 
@@ -36,12 +39,11 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens.get(0), "name");
         illegalCharacterChecker(stringTokens.get(1), "price");
         illegalCharacterChecker(stringTokens.get(2), "quantity");
+        /*if (!isValidPrice(stringTokens.get(2)))  {
+            throw new CorruptedFileException(Constants.INVENTORY_FILE_PATH);
+        }*/
     }
-    public void checkAdd() throws HealthVaultException, NumberFormatException {
-        emptySpaceCheck();
-        isValidPrice(stringTokens.get(2));
-        duplicateChecker(stringTokens.get(1));
-        checkNumericInput(stringTokens.get(3));
+    public void checkAdd() throws HealthVaultException {
         illegalCharacterChecker(stringTokens.get(1), "name");
         illegalCharacterChecker(stringTokens.get(2), "price");
         illegalCharacterChecker(stringTokens.get(3), "quantity");
@@ -66,12 +68,14 @@ public class InventoryChecker extends MainChecker {
             }
         }
     }
-    public static void isValidPrice(String price) throws InvalidPriceException {
+
+    public static boolean isValidPrice(String price) throws InvalidPriceException {
         try {
             Double.parseDouble(price);
         } catch (NumberFormatException e) { //check if price is a double
             throw new InvalidPriceException();
         }
+        return false;
     }
 }
 

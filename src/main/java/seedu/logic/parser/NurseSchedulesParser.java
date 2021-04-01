@@ -2,6 +2,7 @@ package seedu.logic.parser;
 
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.exceptions.patient.IllegalCharacterException;
@@ -42,7 +43,7 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException {
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
@@ -88,7 +89,7 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException {
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
         assert input != null : "user input should not be null";
         assert !(input.isEmpty()) : "user input should not be empty";
 
