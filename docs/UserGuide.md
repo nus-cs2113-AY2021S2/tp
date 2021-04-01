@@ -94,17 +94,19 @@ After keying in their input, the most common way to enter the response into the 
 
 ### 3.1 Technical Terms
 
-**Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
 
-**Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Graphical User Interface** - Allows users to interact with the functionalities of a computer program through graphical icons 
 
-**Case Sensitive** - Differentiating between capital and lower-case letters.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and audio indicators, instead of text-based user interfaces, typed command labels or text navigation.
 
-**User Input** - Any information or data sent to a computer by the user using the application.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Case Sensitive** - Differentiating between capital and lower-case letters.
 
-**Alphanumeric** - Consisting of only alphabets and numerals.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
 
-**Delimiter** - A character that seperates different sections of a text or input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Alphanumeric** - Consisting of only alphabets and numerals.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Delimiter** - A character that seperates different sections of a text or input
 
 ### 3.2 Symbols & Icons
 
@@ -580,19 +582,16 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
->
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: N12345, P54321
->
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! Example: N12345, P54321
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleAdd.png" width = "500">
 
@@ -606,21 +605,18 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
->
->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: N12345, P54321
->
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 >2. HealthVault only accepts valid Date inputs.
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
 
 &nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleDelete.png" width = "550">
 
@@ -635,25 +631,25 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >
 >1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! Example: N12345, P54321
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(Nurse ID)**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(Nurse ID):
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules of specified Nurse ID.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/N12345 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(Nurse ID)**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(Nurse ID):
 
 <img src="images/NurseScheduleListNurseID.png" width = "550">
 
 <br/>
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage(all)**:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(all):
 
 &nbsp;&nbsp;&nbsp;&nbsp; Listing all schedules.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> list/all ```
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome(all)**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(all):
 
 <img src="images/NurseScheduleListAll.png" width = "550">
 
@@ -663,7 +659,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleReturn.png" width = "250">
 
@@ -671,7 +667,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp; Prints Nurse Schedule help message.
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/NurseScheduleHelp.png" width = "850">
 
@@ -682,64 +678,62 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
 (Note for price: Make sure that the inputted price is valid! Eg. 3.00, 3)
 
-This is an example of the welcome screen for Inventory Menu.
-
-<img src="images/InventoryWelcomeHeader.PNG" width = "850">
-
 #### Adding a drug: `add`
-&nbsp;&nbsp;&nbsp;&nbsp; Adds a drug to the drug inventory.
+Adds a drug to the drug inventory.
 
 Format: `add/[Name]/[Price]/[Quantity]`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+Example of usage:
 ```
 Inventory --> add/paracetamol/$3/90
 ```
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
-
-<img src="images/InventoryAdd.PNG" width = "850">
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> add/paracetamol/3/90
+Added 90 paracetamol to inventory!
+------------------------------------------------------------------------------
+```
 
 #### Deleting a drug: `delete`
-&nbsp;&nbsp;&nbsp;&nbsp; Deletes a drug from the inventory list.
+Deletes a drug from the inventory list.
 
 Format: `delete/[Name]`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+Example of usage:
 ```
 Inventory --> delete/paracetamol
 ```
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
-
-<img src="images/InventoryDelete.PNG" width = "850">
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> delete/paracetamol
+Deleted paracetamol to inventory!
+------------------------------------------------------------------------------
+```
 
 #### Listing drugs: `list`
-&nbsp;&nbsp;&nbsp;&nbsp; Lists all the drugs in the inventory.
+Lists all the drugs in the inventory.
 
 Format: `list`
 
-&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+Example of usage:
 ```
 Inventory --> list
 ```
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
-
-<img src="images/InventoryList.PNG" width = "850">
+Expected Outcome:
+```
+------------------------------------------------------------------------------
+Inventory --> list
+Current Inventory:
+90 $3 Paracetamol
+30 $4 Ibuprofen
+10 $100 Marijuana
+------------------------------------------------------------------------------
+```
 
 #### Returning to Start Menu: `return`
-
-&nbsp;&nbsp;&nbsp;&nbsp; Returns to Start Menu.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
-
-<img src="images/InventoryReturn.PNG" width = "250">
-
 #### Help: `help`
-
-&nbsp;&nbsp;&nbsp;&nbsp; Prints Inventory help message.
-
-&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
-
-<img src="images/InventoryHelp.PNG" width = "850">
 
 <br/><br/>
 
