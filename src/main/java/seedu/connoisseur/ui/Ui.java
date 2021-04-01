@@ -1,7 +1,5 @@
 package seedu.connoisseur.ui;
 
-import seedu.connoisseur.review.Review;
-
 import java.io.PrintStream;
 import java.util.Scanner;
 

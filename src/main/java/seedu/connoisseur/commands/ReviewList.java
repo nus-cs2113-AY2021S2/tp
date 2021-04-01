@@ -40,7 +40,7 @@ import static seedu.connoisseur.messages.Messages.DUPLICATE_REVIEW;
  */
 public class ReviewList {
     public ArrayList<Review> reviews = new ArrayList<>();
-    private final Sorter sorter;
+    protected final Sorter sorter;
     private final Ui ui;
 
     /**

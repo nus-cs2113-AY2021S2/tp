@@ -14,7 +14,6 @@ import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
  */
 public class Commands {
 
-    private final Sorter sorter;
     private final Ui ui;
     private final Storage storage;
     private boolean isReviewMode = true;
@@ -31,7 +30,6 @@ public class Commands {
     public Commands(ConnoisseurData connoisseurData, Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
         reviewList = new ReviewList(connoisseurData, ui);
         recommendationList = new RecommendationList(connoisseurData, ui, reviewList);
     }
@@ -42,7 +40,6 @@ public class Commands {
     public Commands(Ui ui, Storage storage) {
         this.ui = ui;
         this.storage = storage;
-        sorter = new Sorter(SortMethod.LATEST);
         reviewList = new ReviewList(ui);
         recommendationList = new RecommendationList(ui, reviewList);
     }
@@ -108,7 +105,7 @@ public class Commands {
      */
     public void exit() {
         storage.saveConnoisseurData(reviewList.reviews, recommendationList.recommendations,
-                sorter.getSortMethod());
+                reviewList.sorter.getSortMethod());
         ui.printExitMessage();
     }
 
