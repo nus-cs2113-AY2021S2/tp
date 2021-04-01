@@ -1,11 +1,11 @@
 package seedu.hdbuy.command;
 
+import java.util.LinkedHashMap;
+
 import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.exception.EmptyParameterException;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
-
-import java.util.LinkedHashMap;
 
 public class ClearCommand extends Command {
 

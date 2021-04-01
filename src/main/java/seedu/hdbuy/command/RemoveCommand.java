@@ -1,11 +1,10 @@
 package seedu.hdbuy.command;
 
+import seedu.hdbuy.common.HdBuyLogger;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.data.ShortList;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.ui.TextUi;
-
-import java.util.logging.Logger;
 
 public class RemoveCommand extends Command {
 
@@ -18,10 +17,10 @@ public class RemoveCommand extends Command {
     @Override public void execute(UserInput userInput) {
         Unit removedUnit = ShortList.removeFromShortList(index);
         if (removedUnit != null) {
-            Logger.getLogger("RemoveCommand").info("Removed: " + removedUnit.toString());
+            HdBuyLogger.info("Removed: " + removedUnit.toString());
             TextUi.showRemovedShortlistUnit(removedUnit.toString());
         } else {
-            Logger.getLogger("RemoveCommand").severe("Unable to remove at index");
+            HdBuyLogger.error("Unable to remove at index");
             TextUi.showInvalidIndex();
         }
     }

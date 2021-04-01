@@ -13,15 +13,15 @@ public class HdBuyLogger {
         }
     }
 
-    public static void infoLog(String message) {
+    public static void info(String message) {
         logger.info(message);
     }
 
-    public static void warningLog(String message) {
+    public static void warning(String message) {
         logger.warning(message);
     }
 
-    public static void errorLog(String message) {
+    public static void error(String message) {
         logger.severe(message);
     }
 }

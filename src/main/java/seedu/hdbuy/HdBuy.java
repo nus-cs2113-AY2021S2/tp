@@ -1,16 +1,13 @@
 package seedu.hdbuy;
 
 import seedu.hdbuy.command.Command;
+import seedu.hdbuy.common.HdBuyLogger;
 import seedu.hdbuy.data.UserInput;
 import seedu.hdbuy.parser.Parser;
 import seedu.hdbuy.ui.TextUi;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class HdBuy {
 
-    private static Logger logger = Logger.getGlobal();
     private static UserInput userInput;
 
     /**
@@ -18,8 +15,8 @@ public class HdBuy {
      */
 
     public static void main(String[] args) {
-        Logger.getGlobal().setLevel(Level.OFF);
-        logger.info("Starting process");
+        HdBuyLogger.enableLogger(false);
+        HdBuyLogger.info("Starting process");
         userInput = new UserInput();
         TextUi.showWelcome();
         receiveCommand(false);
@@ -40,6 +37,5 @@ public class HdBuy {
 
     private static void cleanUp() {
         userInput = null;
-        logger = null;
     }
 }

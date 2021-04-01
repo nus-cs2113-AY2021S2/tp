@@ -1,8 +1,7 @@
 package seedu.hdbuy.storage;
 
+import seedu.hdbuy.common.HdBuyLogger;
 import seedu.hdbuy.common.Unit;
-
-import java.util.logging.Logger;
 
 public class UnitDecoder {
 
@@ -21,7 +20,7 @@ public class UnitDecoder {
             String location = parameters[6];
             return new Unit(location, type, price, leaseValue, lease, address, id);
         } catch (Exception exception) {
-            Logger.getLogger("UnitDecoder").severe("Unable to decode text file");
+            HdBuyLogger.error("Unable to decode text file");
             return null;
         }
     }
