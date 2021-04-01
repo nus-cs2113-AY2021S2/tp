@@ -46,7 +46,7 @@ public class AdminMainMenu implements MainMenu{
 				}
 				break;
 			case 2:
-				System.out.println("case 2");
+				Database.addMovie();
                 break;
 			case 3:
 				choice = AdminMainMenu.displayDeleteMovieMenu(Database.MovieDatabase);

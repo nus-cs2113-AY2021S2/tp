@@ -191,6 +191,36 @@ public class MovieFilter {
 		}
 	}
 
+
+	////////////////////////////////////////////////////////////////////////////
+	public static int getShowingStatusChoice() {
+		int showing_status_choice = -1;
+		Scanner sc = new Scanner(System.in);
+
+		while ((showing_status_choice < 1) || (showing_status_choice > 4)) {
+			System.out.println("======= Select Genre =======");
+			System.out.println("== Select Showing Status ===");
+			System.out.println(" 1 Coming Soon");
+			System.out.println(" 2 Pre-Order");
+			System.out.println(" 3 Now Showing");
+			System.out.println(" 4 End of Showing");
+			System.out.println("============================");
+			System.out.println("Please indicate your choice:");
+
+			if (!sc.hasNextInt()) {
+				System.out.println("Please input an integer.\n");
+				sc.next();
+				continue;
+			}
+			showing_status_choice = sc.nextInt();
+			if ((showing_status_choice < 1) ||(showing_status_choice > 4)) {
+				System.out.println("Please input an integer between 1 and 4.\n");
+			}
+		}
+
+		return showing_status_choice;
+	}
+
 	////////////////////////////////////////////////////////////////////////////
 	public static ArrayList<Movie> filterByShowingStatus(ArrayList<Movie> movieList){
 		int i=0;
