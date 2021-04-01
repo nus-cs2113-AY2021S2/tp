@@ -1,4 +1,8 @@
 # HealthVault User Guide
+
+<p align="center">
+<img src="images/HealthVaultLogo.png" width = "300">
+</p>
 	
 ## Opening Words
 
@@ -37,7 +41,7 @@ In such a precarious situation, every second matters and a Head Nurse cannot aff
 Introducting HealthVault, a Head Nurse's personal information recording system. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. If the user can type fast, HealthVault brings both convenience and speed for a Head Nurse to view and store critical information.
 
 In this application there are 5 main features that are provided for the user. 
-* **Staff:** Keepts record of and allows you to access staff information and modify them if needed.
+* **Staff:** Keeps record of and allows you to access staff information and modify them if needed.
 * **Patient:** Keeps record of and allows you to access patient information and modify them if needed.
 * **Doctor Appointments:** Keeps record of and allows you to create and view Doctor Appointments.
 * **Nurse Schedules:** Keeps record of and allows you to create and view Nurse Schedules.
@@ -80,12 +84,13 @@ This user guide will cover the following:
 
 ### 2.2 Symbols & Icons
 
-**[]** - Square brackets for compulsory user inputs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[]** - Square brackets for compulsory user inputs.
 
-**<>** - Optional inputs.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Optional inputs.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
 
-:information_source: This icon denotes a important information to note.
+<br/><br/>
 
 ## 3. Getting Started</a>
 
@@ -100,9 +105,6 @@ CLI takes in a user input from the input marker as shown in the image included b
 <img src="images/CLIimage.jpg" >
 
 After keying in their input, the most common way to enter the response into the system is to press the <kbd>Enter</kbd> key for the command to be recorded.
-
-<br/><br/>
-
 
 ### <a name="section2"> 3.2 Installation Guide</a>
 
@@ -122,8 +124,7 @@ After keying in their input, the most common way to enter the response into the 
    - Example: `cd C:\Users\JohnDoe\Downloads`
    - Run the following command: `java -jar jar [JAR file name]`
   
-
-
+<br/><br/>
 
 ## 4. Start Menu
 
@@ -157,9 +158,6 @@ For example, the `add` format requires specific details regarding the staff that
 The '-' in the format column specifies that the command can be used alone without any additional details.
 
 The detailed explaination of each command will be explained in the subsequent sections.
-
-
-<br/><br/>
 
 <br/><br/>
 
@@ -309,154 +307,127 @@ When you first enter the Patient menu, you will be greeted with the following we
 <br/><br/>
 
 #### Adding a new patient: `add`
-Adds a new patient to the patient list.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new patient to the patient list.
 
-Format: `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Drugs needed]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following!
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
+>
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F" or "Others"
 >4. The age field input should be a positive integer not more than 150
 
-Example of usage:<br/>
-Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555.
-```
-Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Patient --> add/P55555/Sam/40/M/Fever/Paracetamol
-Sam is now a patient here!
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a Patient Sam (Age 40, Male who is having a fever and needs Paracetamol) with the Patient ID of P55555.
 
-<img src = "images/PatientAdd.png" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> add/P55555/Sam/40/M/Fever/Paracetamol```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "images/PatientAdd.jpg" width = "850" >
 
 <br/><br/>
 
 #### Deleting a patient: `delete`
-Deletes a patient from the patient list.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a patient from the patient list.
 
-Format: `delete/[Patient ID]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Patient ID]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! Example: P12345, P54321
+>1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following!
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
+>
 
-Example of usage:
-```
-Patient --> delete/P55555
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Patient --> delete/P55555
-Noted. I've removed this patient:
-Sam
-Now you have 0 patients in the list
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Patient --> delete/P55555```
 
-<img src = "images/PatientDelete.PNG" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "images/PatientDelete.PNG" width = "850" >
 
 <br/><br/>
 
 #### Listing all patients: `list`
-Lists all patients in the patient list.
 
-Format: `list`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lists all patients in the patient list.
 
-Example of usage:
-```
-Staff --> list
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Patient --> list
-Here are the patients currently in the list!
-ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
-________________________________________________________________________________________________________________________________________________________________________________
-P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol                             
-P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol         
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list`
 
-<img src = "images/PatientList.PNG" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> list```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "images/PatientList.jpg" width = "850" >
 
 <br/><br/>
 
 #### Finding a patient: `find`
-Finds a patient currently in the patient list.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finds a patient currently in the patient list.
 
-Format: `find/[Keyword/Phrase]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `find/[Keyword/Phrase]`
 
 >:information_source: Important notes about the input format
 >
->1. Other than inputting known values like the ID or Name, the inputted field can be an arbitrary input.
-    >   HealthVault will search through the list of patients for any patient that matches the keyword or phrase.
+>1. Other than inputting known values like the ID or Name, the inputted field can be an arbitrary input. HealthVault will search through the list of patients for any patient that matches the keyword or phrase.
 >2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters.
 
-Example of usage:
-Finding through inputting the ID
-```
-Patient --> find/P54321
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Patient --> find/P54321
-ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
-________________________________________________________________________________________________________________________________________________________________________________
-P54321   | Jill                                     | 30     | F        | Covid19                                  | Panadol           
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-Example of usage:
-Finding through inputting the name
-```
-Patient --> find/Sam
-```
-Expected Outcome:
-```
-------------------------------------------------------------------------------
-Patient --> find/Sam
-ID       | Name                                     | Age    | Gender   | Illness                                  | Medication Required                     
-________________________________________________________________________________________________________________________________________________________________________________
-P55555   | Sam                                      | 40     | M        | Fever                                    | Paracetamol        
-------------------------------------------------------------------------------
-```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the ID
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> find/P54321```
 
-<img src = "images/PatientFind.PNG" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "images/PatientFindID.jpg" width = "850" >
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Finding through inputting the name
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Patient --> find/Sam```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src = "images/PatientFindName.jpg" width = "850" >
 
 <br/><br/>
 
 #### Help: `help`
 
-Display the commands for the Patient Menu.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Display the commands for the Staff Menu.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/PatientHelp.PNG" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/PatientHelp.jpg" width = "850" >
 
 #### Returning to Start Menu: `return`
 
-Returns you to the Start Menu.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Return you to the Start Menu.
 
-Example Screenshot:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-<img src="images/PatientReturn.PNG" width = "850" >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/PatientReturn.PNG" width = "850" >
+
+<br/><br/>
 
 
 ### 5.3 Doctor's Appointment
@@ -770,7 +741,7 @@ Current Inventory:
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Navigate to where the TP jar file is located and identify the data folder. Simply copy this data folder and transfer it via thumbdrive or other means to your other computer. When setting up the jar file in a new folder in your other computer, paste the data folder into the new folder and you're good to go to using your data on your new computer!
 
 <br/><br/>
 
@@ -793,15 +764,15 @@ Current Inventory:
 | return              | `return`                                                                                                   |
 | **Patient**         |                                                                                                            |
 | add                 | `add/[Patient ID]/[Name] [Age]/[Gender]/[Illness]/[Drugs needed]`<br/><br/>`add/P55555/Sam/40/Male Fever/Paracetamol`   |
-| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                                          |
-| find                | `find/[Patient ID]`<br/><br/>`find/P55555`                                                                              |
+| delete              | `delete/[Patient ID]`<br/><br/>`delete/P55555`                                                             |
+| find                | `find/[Keyword/Phrase]`<br/><br/>`find/P55555`                                                             |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Doctor Appointments** |                                                                                                        |
 | add                 | `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]`<br/><br/>`add/D12345/A12345/Mingshun/M/19082021`    |
-| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                      |
-| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			     	   |
+| delete              | `delete/[Doctor ID/Appointment ID]` <br/><br/>`delete/D12345`<br/><br/>`delete/A12345`                     |
+| list                | `list/[Doctor ID/Appointment ID]` <br/><br/>`list/D12345`<br/><br/>`list/A12345`			   |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Nurse Schedules** |                                                                                                            |
