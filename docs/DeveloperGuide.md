@@ -48,6 +48,10 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 <img src="diagrams/StorageSequence.png" />
 
+### Parser component
+
+![Structure of the Parser Component](diagrams/ParserClass.png)
+
 ## Product scope
 ### Target user profile
 
