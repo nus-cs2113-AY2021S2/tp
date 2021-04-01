@@ -1,12 +1,13 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.ModuleGradeEnum;
 import seedu.duke.link.Links;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
 import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
+import seedu.duke.task.command.DeleteTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,9 +15,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ModuleInfo {
+
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
     private static final String EMPTY_REVIEW_MESSAGE = "You have not reviewed this module yet.";
+
+    private static final String TASK_TYPE = "[Task]";
+    private static final String ASSIGNMENT_TYPE = "[Assignment]";
+    private static final String MIDTERM_TYPE = "[Midterm]";
+    private static final String FINAL_EXAM_TYPE = "[Final Exam]";
 
     public ModuleInfo() {
     }
@@ -39,40 +46,40 @@ public class ModuleInfo {
                     viewAModule();
                     break;
                 case 3:
-                    getComponents();
-                    break;
-                case 4:
-                    //addModuleMC method;
-                    break;
-                case 5:
-                    //addModuleGrade method;
-                    break;
-                case 6:
                     viewAllModules();
                     break;
+                case 4:
+                    deleteModule();
+                    break;
+                case 5:
+                    getComponents();
+                    break;
+                case 6:
+                    addModuleMC();
+                    break;
                 case 7:
-                    TaskManager.addNewTask();
+                    addModuleGrade();
                     break;
                 case 8:
-                    Links.add();
-                    break;
-                case 9:
                     addReview();
                     break;
-                case 10:
+                case 9:
                     viewAllReviews();
                     break;
+                case 10:
+                    deleteReview();
+                    break;
                 case 11:
-                    deleteModule();
+                    TaskManager.addNewTask();
                     break;
                 case 12:
                     TaskManager.deleteTask();
                     break;
                 case 13:
-                    Links.delete();
+                    Links.add();
                     break;
                 case 14:
-                    deleteReview();
+                    Links.delete();
                     break;
                 default:
                     Ui.printInvalidIntegerMessage();
@@ -81,11 +88,54 @@ public class ModuleInfo {
                 Ui.printInvalidIntegerMessage();
             }
             try {
-                Storage.modulesFileSaver();
+                Storage.saveAllFiles();
             } catch (IOException e) {
                 System.out.println("modules.txt file could not be auto-saved:(");
             }
             Ui.printReturnToModuleInfoMenuMessage();
+        }
+    }
+
+    private static void addModuleGrade() {
+        if (modules.isEmpty()) {
+            logger.log(Level.INFO, "You have not added any modules.");
+            return;
+        }
+        viewAllModules();
+        System.out.println("Please choose which module you would like to assign a grade"
+                + " and enter the number:");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            System.out.println("Enter the grade for this module: ");
+            String moduleGrade = Ui.readCommand();
+            if (ModuleGradeEnum.checkGradeExist(moduleGrade)) {
+                modules.get(moduleNumberInt).setGrade(moduleGrade.toUpperCase());
+            } else {
+                System.out.println("Module grade does not exist. ");
+            }
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
+    }
+
+    private static void addModuleMC() {
+        if (modules.isEmpty()) {
+            logger.log(Level.INFO, "You have not added any modules.");
+            return;
+        }
+        viewAllModules();
+        System.out.println(
+                "Please choose which module you would like to allocate modular credits (MCs)"
+                        + " and enter the number:");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            System.out.println("Enter the number of MCs for this module: ");
+            int moduleCredits = Ui.readCommandToInt();
+            modules.get(moduleNumberInt).setMc(moduleCredits);
+        } else {
+            Ui.printInvalidIntegerMessage();
         }
     }
 
@@ -113,10 +163,9 @@ public class ModuleInfo {
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
-            System.out.println(module.toString()); //name, description, review are printed
+            System.out.println(module.toString()); //name, description, review, MCs, grade are printed
             printModuleTaskList(module.getName());
             // add other methods to print other features of a module
-
 
             Ui.printHorizontalLine();
         } else {
@@ -127,28 +176,29 @@ public class ModuleInfo {
     public static void printModuleTaskList(String module) {
         int taskNumber = 1;
         System.out.println("\nThese are your tasks: ");
-        for (Task task : TaskList.tasks) {
+        for (Task task : TaskManager.tasks) {
             if (!task.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + task.getTaskType() + task.toString());
             taskNumber++;
         }
-        for (Assignment assignment : TaskList.assignments) {
+        for (Assignment assignment : TaskManager.assignments) {
             if (!assignment.getModule().equals(module)) {
                 continue;
             }
-            System.out.println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
+            System.out
+                    .println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
             taskNumber++;
         }
-        for (Midterm midterm : TaskList.midterms) {
+        for (Midterm midterm : TaskManager.midterms) {
             if (!midterm.getModule().equals(module)) {
                 continue;
             }
             System.out.println(taskNumber + ". " + midterm.getTaskType() + midterm.toString());
             taskNumber++;
         }
-        for (FinalExam finalExam : TaskList.finalExams) {
+        for (FinalExam finalExam : TaskManager.finalExams) {
             if (!finalExam.getModule().equals(module)) {
                 continue;
             }
@@ -191,8 +241,9 @@ public class ModuleInfo {
         System.out.println("Please choose which module you would like to review"
                 + " and enter the number:\n");
         int moduleNumberInt = Ui.readCommandToInt();
-        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
-            moduleNumberInt--;
+        moduleNumberInt--;
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
             modules.get(moduleNumberInt).setReview(review);
         } else {
@@ -266,7 +317,8 @@ public class ModuleInfo {
         }
         viewAllModules();
         int moduleNumberInt = readModuleNumberToBeDeleted("module");
-        if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             logger.log(Level.WARNING, "You are making a change that cannot be undone.");
             System.out.println("Are you sure you want to delete "
                     + modules.get(moduleNumberInt).getName()
@@ -274,7 +326,8 @@ public class ModuleInfo {
             String command = Ui.readCommand();
             if (readYN(command) == 1) {
                 printDeletedModuleMessage(modules.get(moduleNumberInt));
-                modules.remove(modules.get(moduleNumberInt));
+                deleteTasksforModule(modules.get(moduleNumberInt).getName());
+                testDeleteModule(moduleNumberInt);
             } else if (readYN(command) == 0) {
                 System.out.println("Ok. I did not delete "
                         + modules.get(moduleNumberInt).getName());
@@ -283,6 +336,15 @@ public class ModuleInfo {
             logger.log(Level.INFO, "You did not enter a valid integer.");
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    public static boolean checkIfIndexIsWithinBounds(int index) {
+        return index >= 0 && index < modules.size();
+    }
+
+    public static boolean testDeleteModule(int index) {
+        modules.remove(index);
+        return true;
     }
 
     public static int readModuleNumberToBeDeleted(String moduleOrReview) {
@@ -307,21 +369,64 @@ public class ModuleInfo {
         Ui.printHorizontalLine();
     }
 
-    private static void getComponents() {
-        Ui.printModulePrompt(); // prompts user for view or add instruction
-        String addView = Ui.readCommand().trim();
-        if (Integer.parseInt(addView) == 1) {
-            Component.addComponent(modules);
-        } else if (Integer.parseInt(addView) == 2) {
-            Component.viewComponent(modules);
+    private static void deleteTasksforModule(String module) {
+        for (int i = 0; i < TaskManager.tasks.size(); i++) {
+            Task task = TaskManager.tasks.get(i);
+            if (task.getModule().equals(module)) {
+                Task pinnedTask = task;
+                DeleteTask.deleteTask(TASK_TYPE, task);
+                DeleteTask.findAndDeletePinnedTask(TASK_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.assignments.size(); i++) {
+            Assignment assignment = TaskManager.assignments.get(i);
+            if (assignment.getModule().equals(module)) {
+                Assignment pinnedTask = assignment;
+                DeleteTask.deleteTask(ASSIGNMENT_TYPE, assignment);
+                DeleteTask.findAndDeletePinnedTask(ASSIGNMENT_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.midterms.size(); i++) {
+            Midterm midterm = TaskManager.midterms.get(i);
+            if (midterm.getModule().equals(module)) {
+                Midterm pinnedTask = midterm;
+                DeleteTask.deleteTask(MIDTERM_TYPE, midterm);
+                DeleteTask.findAndDeletePinnedTask(MIDTERM_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.finalExams.size(); i++) {
+            FinalExam finalExam = TaskManager.finalExams.get(i);
+            if (finalExam.getModule().equals(module)) {
+                FinalExam pinnedTask = finalExam;
+                DeleteTask.deleteTask(FINAL_EXAM_TYPE, finalExam);
+                DeleteTask.findAndDeletePinnedTask(FINAL_EXAM_TYPE, pinnedTask);
+                i--;
+            }
         }
     }
 
+    private static void getComponents() {
+        // prompts user for view or add instruction
+        Ui.printModulePrompt();
+        int addView = Ui.readCommandToInt();
+        if (addView == 1) {
+            Component.addComponent(modules);
+        } else if (addView == 2) {
+            Component.viewComponent(modules);
+        } else {
+            Ui.printInvalidIntegerMessage();
+        }
+
+
+    }
+
     /**
-     * This method read in module name and decipher if module exists.
-     * If module exists, module description previously added is printed.
-     * Else, method prompts user to enter module description and creates a new Module object.
-     * This method returns to module information menu.
+     * This method read in module name and decipher if module exists. If module exists, module
+     * description previously added is printed. Else, method prompts user to enter module
+     * description and creates a new Module object. This method returns to module information menu.
      */
     private static void getModuleDescriptions() {
         Ui.printModuleNameToModifyPrompt();

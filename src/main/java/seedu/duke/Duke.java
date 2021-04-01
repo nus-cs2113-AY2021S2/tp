@@ -1,7 +1,7 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.HelpGraduationManager;
 import seedu.duke.link.Links;
-import seedu.duke.task.TaskList;
 import seedu.duke.task.TaskManager;
 
 import java.io.IOException;
@@ -19,10 +19,10 @@ public class Duke {
     }
 
     public static void runMainMenu() {
-        TaskList taskList = new TaskList();
-        loadAllFiles();
+        TaskManager taskManager = new TaskManager();
+        Storage.loadAllFiles();
         while (true) {
-            Ui.printPinnedTaskList(TaskList.pinnedTasks);
+            Ui.printPinnedTaskList(TaskManager.pinnedTasks);
             Ui.printMainMenu();
             String command = Ui.readCommand();
             try {
@@ -30,7 +30,7 @@ public class Duke {
 
                 if (commandInt == 5) {
                     try {
-                        saveAllFiles();
+                        Storage.saveAllFiles();
                     } catch (IOException e) {
                         System.out.println("Files could not be saved:(");
                     }
@@ -68,25 +68,4 @@ public class Duke {
         }
     }
 
-    public static void saveAllFiles() throws IOException {
-        Storage.modulesFileSaver();
-        Storage.tasksFileSaver();
-        Storage.assignmentsFileSaver();
-        Storage.midtermsFileSaver();
-        Storage.finalExamsFileSaver();
-        Storage.pinnedTasksFileSaver();
-        Storage.linksFileSaver();
-        Storage.zoomLinksFileSaver();
-    }
-
-    public static void loadAllFiles() {
-        Storage.loadModuleInfoFile();
-        Storage.loadTasksFile();
-        Storage.loadAssignmentsFile();
-        Storage.loadMidtermsFile();
-        Storage.loadFinalExamsFile();
-        Storage.loadPinnedTasksFile();
-        Storage.loadLinkInfoFile();
-        Storage.loadZoomLinkInfoFile();
-    }
 }

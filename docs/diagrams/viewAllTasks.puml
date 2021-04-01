@@ -1,0 +1,57 @@
+@startuml
+
+activate ":Duke"
+":Duke" -> ":TaskManager"++ : execute
+
+loop true
+
+":TaskManager" -> ":Ui"++ : printTaskManagerMenu
+return
+":TaskManager" -> ":Ui"++ : readCommand
+return
+
+alt Integer.parseInt(command)
+    opt command.equals(EXIT_COMMAND)
+    ":TaskManager" --> ":Duke"
+    end
+":TaskManager" -> ":TaskManager"++ : viewAllTasks
+":TaskManager" -> ":Ui"++ : printPinnedTaskList
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine
+return
+":TaskManager" -> ":Ui"++ : printTaskList
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine
+return
+":TaskManager" -> ":Ui"++ : printAssignmentList
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine
+return
+":TaskManager" -> ":Ui"++ : printMidtermList
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine
+return
+":TaskManager" -> ":Ui"++ : printFinalExamList
+return
+":TaskManager" -> ":Ui"++ : printEmptyLine
+return
+
+else NumberFormatException
+":TaskManager" -> ":Ui"++ : printInvalidIntegerMessage
+return
+end
+return
+
+alt
+":TaskManager" -> ":Storage"++ : saveAllFiles
+return
+else IOException
+":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
+return
+end
+
+return
+
+end
+
+@enduml

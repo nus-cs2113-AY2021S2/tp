@@ -7,12 +7,16 @@ import java.util.Hashtable;
 
 public class Module {
 
+    protected String name;
     protected String description;
     protected String review;
-    protected String name;
     protected Hashtable<String, Integer> components;
-    protected String zoomLink;
+    protected int mc;
+    protected String grade;
     protected ArrayList<Task> tasks;
+    protected String zoomLink;
+
+
 
     public Module(String name, String description) {
         this.name = name;
@@ -39,6 +43,10 @@ public class Module {
         this.components = components;
     }
 
+    public String getZoomLink() {
+        return this.zoomLink;
+    }
+
     public void setZoomLink(String zoomLink) {
         this.zoomLink = zoomLink;
     }
@@ -60,7 +68,10 @@ public class Module {
     }
 
     public String toString() {
-        return "Name: " + getName() + "\n\nDescription:\n" + getDescription() + "\n\nReview:\n" + getReview();
+        return "Name: " + getName() + "\n\nDescription:\n"
+                + getDescription() + "\n\nReview:\n" + getReview()
+                + "\n\nModular Credit:\n" + getMc() + "\n\nGrade:\n" + getGrade()
+                + "\n\nZoom Link:\n" + getZoomLink();
     }
 
     public void removeZoomLink() {
@@ -69,5 +80,21 @@ public class Module {
 
     public void removeReview() {
         this.review = "You have not reviewed this module yet.";
+    }
+
+    public void setMc(int mc) {
+        this.mc = mc;
+    }
+
+    public int getMc() {
+        return mc;
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

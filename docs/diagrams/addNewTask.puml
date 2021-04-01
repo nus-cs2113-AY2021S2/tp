@@ -1,0 +1,105 @@
+@startuml
+
+activate ":Duke"
+":Duke" -> ":TaskManager"++ : execute
+
+loop true
+
+":TaskManager" -> ":Ui"++ : printTaskManagerMenu
+return
+":TaskManager" -> ":Ui"++ : readCommand
+return
+
+alt Integer.parseInt(command)
+    opt command.equals(EXIT_COMMAND)
+    ":TaskManager" --> ":Duke"
+    end
+
+":TaskManager" -> ":TaskManager"++ : addNewTask
+":TaskManager" -> ":Ui"++ : printAddTaskMenu
+return
+":TaskManager" -> ":TaskManager"++ : getTaskNumber
+return
+":TaskManager" -> ":AddTask"++ : execute
+
+    alt ModuleInfo.modules.isEmpty()
+    ":AddTask" -> ":Ui"++ : printNoModuleMessage
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+        opt input.equalsIgnoreCase("N")
+        ":AddTask" --> ":TaskManager"
+        end
+    ":AddTask" -> ":ModuleInfo"++ : addNewModule
+    return
+    ":AddTask" -> ":ModuleInfo"++ : modules
+    ":ModuleInfo" -> ":Module"++ : getName
+    return
+    destroy ":Module"
+    return
+    destroy ":ModuleInfo"
+
+    else !ModuleInfo.modules.isEmpty()
+    ":AddTask" -> ":Ui"++ : printAddTaskModuleMessage
+    return
+    ":AddTask" -> ":AddTask"++ : printAndGetModule
+    return
+        opt module.equals("")
+        ":AddTask" --> ":TaskManager"
+        end
+    end
+
+    ":AddTask" -> ":Ui"++ : printAddTaskDescriptionMessage
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+
+    opt taskNumber != 1
+    ":AddTask" -> ":AddTask"++ : getDate
+    return
+    ":AddTask" -> ":AddTask"++ : getTime
+    return
+    end
+
+    ":AddTask" -> ":Ui"++ : printAddMessageAfterCompletedTask
+    return
+    ":AddTask" -> ":Ui"++ : readCommand
+    return
+
+    alt ADD_TASK_COMMAND
+    ":AddTask" -> ":AddTask"++ : addTask
+    return
+    else ADD_ASSIGNMENT_COMMAND
+    ":AddTask" -> ":AddTask"++ : addAssignment
+    return
+    else ADD_MIDTERM_COMMAND
+    ":AddTask" -> ":AddTask"++ : addMidterm
+    return
+    else ADD_FINAL_EXAM_COMMAND
+    ":AddTask" -> ":AddTask"++ : addFinalExam
+    return
+    else
+    ":AddTask" -> ":Ui"++ : printInvalidIntegerMessage
+    return
+    end
+
+    return
+    return
+
+else NumberFormatException
+":TaskManager" -> ":Ui"++ : printInvalidIntegerMessage
+return
+end
+
+alt
+":TaskManager" -> ":Storage"++ : saveAllFiles
+return
+else IOException
+":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
+return
+end
+
+end
+return
+
+@enduml

@@ -1,6 +1,7 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.capsimulator.HelpGraduation;
 
 import java.util.ArrayList;
 

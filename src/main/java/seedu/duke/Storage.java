@@ -1,28 +1,27 @@
 package seedu.duke;
 
+import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
+import seedu.duke.link.ZoomLinkInfo;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.Task;
+import seedu.duke.task.TaskManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.Scanner;
 import java.util.Set;
-
-import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskList;
 
 //@@author nivikcivik-reused
 //Reused from https://github.com/nivikcivik/ip/blob/master/src/main/java/dukehandler/FileManager.java with minor modifications
 public class Storage {
 
-    public static String filePath = new File("").getAbsolutePath();
+    public static String filePathForModules = new File("").getAbsolutePath();
     public static String filePathForTasks = new File("").getAbsolutePath();
     public static String filePathForAssignments = new File("").getAbsolutePath();
     public static String filePathForMidterms = new File("").getAbsolutePath();
@@ -30,14 +29,39 @@ public class Storage {
     public static String filePathForPinnedTasks = new File("").getAbsolutePath();
     public static String filePathForLinks = new File("").getAbsolutePath();
     public static String filePathForZoom = new File("").getAbsolutePath();
+    public static String filePathForMcs = new File("").getAbsolutePath();
+
+    public static void saveAllFiles() throws IOException {
+        modulesFileSaver();
+        tasksFileSaver();
+        assignmentsFileSaver();
+        midtermsFileSaver();
+        finalExamsFileSaver();
+        pinnedTasksFileSaver();
+        linksFileSaver();
+        zoomLinksFileSaver();
+        modularCreditSaver();
+    }
+
+    public static void loadAllFiles() {
+        loadModuleInfoFile();
+        loadTasksFile();
+        loadAssignmentsFile();
+        loadMidtermsFile();
+        loadFinalExamsFile();
+        loadPinnedTasksFile();
+        loadLinkInfoFile();
+        loadZoomLinkInfoFile();
+        loadMcsInfoFile();
+    }
 
     /**
      * Checks if file exists, or creates new file if it doesn't already exist. Edits filepath
      * variable within storage
      */
     public static void loadModuleInfoFile() {
-        filePath += "/UniTracker Data";
-        File data = new File(filePath);
+        filePathForModules += "/UniTracker Data";
+        File data = new File(filePathForModules);
         if (!data.exists()) {
             boolean isCreated = data.mkdir();
             if (!isCreated) {
@@ -45,8 +69,8 @@ public class Storage {
             }
         }
         try {
-            filePath += "/modules.txt";
-            data = new File(filePath);
+            filePathForModules += "/modules.txt";
+            data = new File(filePathForModules);
             if (data.createNewFile()) {
                 // System.out.println("New file created at:\n" + data.getAbsolutePath());
                 return;
@@ -64,20 +88,25 @@ public class Storage {
      * @throws FileNotFoundException if modules.txt file cannot be accessed.
      */
     public static void downloadModules() throws FileNotFoundException {
-        File f = new File(filePath); // create a File for the given file path
+        File f = new File(filePathForModules); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" ~~ ");
             Module module = new Module(part[0], part[1]);
+            int modularCredit = Integer.parseInt(part[2]);
+            String grade = part[3];
             StringBuilder review = new StringBuilder();
             while (true) {
                 String line = s.nextLine();
-                if (line.contains(" -- end of module -- ")) {
-                    review.append(line.split(" -- end of module -- ")[0]);
+                if (line.contains(" -- end of module --")) {
+                    review.append(line.split(" -- end of module --")[0]);
                     break;
                 }
                 review.append(line).append("\n");
+
             }
+            module.setGrade(grade);
+            module.setMc(modularCredit);
             module.setReview(review.toString());
             ModuleInfo.modules.add(module);
         }
@@ -89,12 +118,14 @@ public class Storage {
      * @throws IOException if modules.txt file cannot be accessed.
      */
     public static void modulesFileSaver() throws IOException {
-        FileWriter fw = new FileWriter(filePath);
+        FileWriter fw = new FileWriter(filePathForModules);
         for (Module module : ModuleInfo.modules) {
             fw.write(module.getName() + " ~~ "
-                    + module.getDescription() + "\n"
+                    + module.getDescription() + " ~~ "
+                    + module.getMc() + " ~~ "
+                    + module.getGrade() + "\n"
                     + module.getReview());
-            fw.write(" -- end of module -- ");
+            fw.write(" -- end of module --");
             fw.write(System.lineSeparator());
         }
         fw.close();
@@ -131,13 +162,13 @@ public class Storage {
             if (part[1].equals("[DONE] ")) {
                 task.markAsDone();
             }
-            TaskList.tasks.add(task);
+            TaskManager.tasks.add(task);
         }
     }
 
     public static void tasksFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForTasks);
-        for (Task task : TaskList.tasks) {
+        for (Task task : TaskManager.tasks) {
             fw.write(task.getModule() + " ~~ "
                     + task.getStatus() + " ~~ "
                     + task.getDescription() + " ~~ "
@@ -178,13 +209,13 @@ public class Storage {
             if (part[1].equals("[DONE] ")) {
                 assignment.markAsDone();
             }
-            TaskList.assignments.add(assignment);
+            TaskManager.assignments.add(assignment);
         }
     }
 
     public static void assignmentsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForAssignments);
-        for (Assignment assignment : TaskList.assignments) {
+        for (Assignment assignment : TaskManager.assignments) {
             fw.write(assignment.getModule() + " ~~ "
                     + assignment.getStatus() + " ~~ "
                     + assignment.getDescription() + " ~~ "
@@ -226,13 +257,13 @@ public class Storage {
             if (part[1].equals("[DONE] ")) {
                 midterm.markAsDone();
             }
-            TaskList.midterms.add(midterm);
+            TaskManager.midterms.add(midterm);
         }
     }
 
     public static void midtermsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForMidterms);
-        for (Midterm midterm : TaskList.midterms) {
+        for (Midterm midterm : TaskManager.midterms) {
             fw.write(midterm.getModule() + " ~~ "
                     + midterm.getStatus() + " ~~ "
                     + midterm.getDescription() + " ~~ "
@@ -274,13 +305,13 @@ public class Storage {
             if (part[1].equals("[DONE] ")) {
                 finalExam.markAsDone();
             }
-            TaskList.finalExams.add(finalExam);
+            TaskManager.finalExams.add(finalExam);
         }
     }
 
     public static void finalExamsFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForFinalExams);
-        for (FinalExam finalExam : TaskList.finalExams) {
+        for (FinalExam finalExam : TaskManager.finalExams) {
             fw.write(finalExam.getModule() + " ~~ "
                     + finalExam.getStatus() + " ~~ "
                     + finalExam.getDescription() + " ~~ "
@@ -318,32 +349,32 @@ public class Storage {
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" ~~ ");
-            TaskList.pinnedTasks.computeIfAbsent(part[0], k -> new ArrayList<>());
+            TaskManager.pinnedTasks.computeIfAbsent(part[0], k -> new ArrayList<>());
             switch (part[0]) {
             case "[Assignment]":
                 Assignment assignment = new Assignment(part[1], part[3], part[4], part[5]);
-                TaskList.pinnedTasks.get(part[0]).add(assignment);
+                TaskManager.pinnedTasks.get(part[0]).add(assignment);
                 if (part[2].equals("[DONE] ")) {
                     assignment.markAsDone();
                 }
                 break;
             case "[Midterm]":
                 Midterm midterm = new Midterm(part[1], part[3], part[4], part[5]);
-                TaskList.pinnedTasks.get(part[0]).add(midterm);
+                TaskManager.pinnedTasks.get(part[0]).add(midterm);
                 if (part[2].equals("[DONE] ")) {
                     midterm.markAsDone();
                 }
                 break;
             case "[Final Exam]":
                 FinalExam finalExam = new FinalExam(part[1], part[3], part[4], part[5]);
-                TaskList.pinnedTasks.get(part[0]).add(finalExam);
+                TaskManager.pinnedTasks.get(part[0]).add(finalExam);
                 if (part[2].equals("[DONE] ")) {
                     finalExam.markAsDone();
                 }
                 break;
             default:
                 Task task = new Task(part[1], part[3], part[4]);
-                TaskList.pinnedTasks.get(part[0]).add(task);
+                TaskManager.pinnedTasks.get(part[0]).add(task);
                 if (part[2].equals("[DONE] ")) {
                     task.markAsDone();
                 }
@@ -354,11 +385,11 @@ public class Storage {
 
     public static void pinnedTasksFileSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForPinnedTasks);
-        Set<String> taskTypes = TaskList.pinnedTasks.keySet();
+        Set<String> taskTypes = TaskManager.pinnedTasks.keySet();
         for (String taskType : taskTypes) {
             switch (taskType) {
             case "[Assignment]":
-                ArrayList<Task> assignments = TaskList.pinnedTasks.get(taskType);
+                ArrayList<Task> assignments = TaskManager.pinnedTasks.get(taskType);
                 for (Task task : assignments) {
                     Assignment assignment = (Assignment) task;
                     fw.write("[Assignment] ~~ "
@@ -371,7 +402,7 @@ public class Storage {
                 }
                 break;
             case "[Midterm]":
-                ArrayList<Task> midterms = TaskList.pinnedTasks.get(taskType);
+                ArrayList<Task> midterms = TaskManager.pinnedTasks.get(taskType);
                 for (Task task : midterms) {
                     Midterm midterm = (Midterm) task;
                     fw.write("[Midterm] ~~ "
@@ -384,7 +415,7 @@ public class Storage {
                 }
                 break;
             case "[Final Exam]":
-                ArrayList<Task> finalExams = TaskList.pinnedTasks.get(taskType);
+                ArrayList<Task> finalExams = TaskManager.pinnedTasks.get(taskType);
                 for (Task task : finalExams) {
                     FinalExam finalExam = (FinalExam) task;
                     fw.write("[Final Exam] ~~ "
@@ -397,7 +428,7 @@ public class Storage {
                 }
                 break;
             default:
-                ArrayList<Task> tasks = TaskList.pinnedTasks.get(taskType);
+                ArrayList<Task> tasks = TaskManager.pinnedTasks.get(taskType);
                 for (Task task : tasks) {
                     fw.write("[Task] ~~ "
                             + task.getModule() + " ~~ "
@@ -492,6 +523,47 @@ public class Storage {
                     + link.getPassword());
             fw.write(System.lineSeparator());
         }
+        fw.close();
+    }
+
+    public static void loadMcsInfoFile() {
+        filePathForMcs += "/UniTracker Data";
+        File data = new File(filePathForMcs);
+        if (!data.exists()) {
+            boolean isCreated = data.mkdir();
+            if (!isCreated) {
+                System.out.println("New directory could not be created:(");
+            }
+        }
+
+        try {
+            filePathForMcs += "/mcs.txt";
+            data = new File(filePathForMcs);
+            if (data.createNewFile()) {
+                return;
+            }
+            downloadMcs();
+        } catch (IOException e) {
+            System.out.println("There was an I/O error:(");
+        }
+    }
+
+    public static void downloadMcs() throws FileNotFoundException {
+        File f = new File(filePathForMcs);
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNext()) {
+            String[] part = scanner.nextLine().split("~~");
+            int modularCredit = Integer.parseInt(part[0]);
+            double cap = Double.parseDouble(part[1]);
+            HelpGraduation.setNumberOfGradedMCsTaken(modularCredit);
+            HelpGraduation.setCurrentCap(cap);
+        }
+    }
+
+    public static void modularCreditSaver() throws IOException {
+        FileWriter fw = new FileWriter(filePathForMcs);
+        fw.write(HelpGraduation.getNumberOfGradedMCsTaken() + "~~"
+                + HelpGraduation.getCurrentCap());
         fw.close();
     }
 }

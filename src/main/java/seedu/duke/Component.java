@@ -3,6 +3,8 @@ package seedu.duke;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import static seedu.duke.ModuleInfo.viewAllModules;
+
 public class Component {
     //String moduleName;
     public static Hashtable<String, Integer> components = new Hashtable<>();
@@ -13,31 +15,27 @@ public class Component {
 
     public static void addComponent(ArrayList<Module> modules) {
 
-        int moduleIndex = 0;
+
         boolean isModuleExist = false;
-        System.out.println("Module Name?");
-        String moduleName = Ui.readCommand();
-        for (int i = 0; i < modules.size(); i++) {
-            if (modules.get(i).getName().contains(moduleName)) {
-                isModuleExist = true;
-                moduleIndex = i;
-                break; // safety break
-            }
+        viewAllModules();
+        System.out.println("Which module would you like to add a component?");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            isModuleExist = true;
         }
+
 
         if (isModuleExist) {
             // prompts user for component and its weightage
             Ui.printModuleComponentPrompt();
             String[] userInput = Ui.readCommand().split(" ");
 
-
             //Test2 stores the old components and adds in the new component.
             Hashtable<String, Integer> component = new Hashtable<>();
-            component = modules.get(moduleIndex).getComponents();
+            component = modules.get(moduleNumberInt).getComponents();
             component.put(userInput[0], Integer.parseInt(userInput[1]));
-            modules.get(moduleIndex).setComponents(component);
-
-
+            modules.get(moduleNumberInt).setComponents(component);
 
 
             System.out.println("Component and weightage added!");
@@ -49,25 +47,20 @@ public class Component {
 
     public static void viewComponent(ArrayList<Module> modules) {
 
-        int moduleIndex = 0;
         boolean isModuleExist = false;
-        System.out.println("Module Name?");
-        String moduleName = Ui.readCommand();
-        for (int i = 0; i < modules.size(); i++) {
-            if (modules.get(i).getName().contains(moduleName)) {
-                isModuleExist = true;
-                moduleIndex = i;
-                System.out.println("module index: " + i);
-                break; // safety break
-            }
+        viewAllModules();
+        System.out.println("Which module would you like to view components?");
+        int moduleNumberInt = Ui.readCommandToInt();
+        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+            moduleNumberInt--;
+            isModuleExist = true;
         }
 
         if (isModuleExist) {
             //System.out.println(Component.components);
+            System.out.println("From Module object: " + modules.get(moduleNumberInt).getName());
+            System.out.println(modules.get(moduleNumberInt).getComponents());
 
-            System.out.println("From Module object: ");
-            System.out.println(modules.get(moduleIndex).getComponents());
-            System.out.println("module index: " + moduleIndex);
         } else {
             Ui.printModuleDoesNotExistMessage();
         }

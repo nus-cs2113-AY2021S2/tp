@@ -2,31 +2,44 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)
+[1. Introduction](#1-introduction)  
 
-[2. Design](#2-design)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.1 Architecture](#21-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[2.2 UI Class](#22-ui-class)
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1 About This Developer Guide](#11-about-this-developer-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.2 How to Use This Developer Guide](#12-how-to-use-this-developer-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.3 Conventions in This Developer Guide](#13-conventions-in-this-developer-guide)
 
-[3. Implementation](#3-implementation)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.01 Add New Review](#301-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.02 Delete a Review](#302-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.03 Add New Task](#303-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.04 Delete a Task](#304-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.05 Add Zoom Link](#305-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.06 Add Module Components](#306-add-module-components)
+[2. Setting Up](#2-setting-up)
 
-[4. Product scope](#4-product-scope)    
-&nbsp;&nbsp;&nbsp;&nbsp;[4.1 Target user profile](#41-target-user-profile)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2 Value proposition](#42-value-proposition)
+[3. Design](#3-design)  
 
-[5. User Stories](#5-user-stories)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Class](#32-ui-class)
 
-[6. Non-Functional Requirements](#6-non-functional-requirements)
+[4. Implementation](#4-implementation)  
 
-[7. Glossary](#7-glossary)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Review](#401-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.02 Delete a Review](#402-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.03 Add New Task](#403-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Mark/Unmark a Task as Done](#404-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Delete a Task](#405-delete-a-task)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 View All Tasks](#406-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Pin A Task](#407-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Add Zoom Link](#408-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Add Module Components](#409-add-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View Module Components](#410-view-module-components)  
 
-[8. Instructions for manual testing](#8-instructions-for-manual-testing)
+[5. Product scope](#5-product-scope)    
+
+&nbsp;&nbsp;&nbsp;&nbsp;[5.1 Target user profile](#51-target-user-profile)   
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2 Value proposition](#52-value-proposition)
+
+[6. User Stories](#6-user-stories)
+
+[7. Non-Functional Requirements](#7-non-functional-requirements)
+
+[8. Glossary](#8-glossary)
+
+[9. Instructions for manual testing](#9-instructions-for-manual-testing)
 
 ---
 
@@ -39,14 +52,77 @@
 
 - Users are allowed to add and edit module information, tasks, zoom links to suit their needs.
 
-- This product is optimal for students who prefer Command Line Interface (CLI) over Graphical User
-  Interface (GUI).
+- This product is optimal for NUS students who prefer Command Line Interface (CLI) over Graphical
+  User Interface (GUI).
+
+### 1.1 About This Developer Guide
+
+This developer guide was made to help you set up UniTracker on your computer for usage, testing and further implementations. It also provides you with
+all the information you need to use UniTracker alongside detailed diagrams on the implementation of our different features and how they integrate together.
+
+### 1.2 How to Use This Developer Guide
+
+Firstly, refer to [Section 2. Setting Up](#2-setting-up) for instructions on setting up UniTracker
+on and IDE on your local computer.
+
+Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
+navigate to specific sections to explore and learn about our different features and how they were implemented.
+
+### 1.3 Conventions in This Developer Guide
+
+> 📝 **Note!**  
+> This is a note section. Additional useful information will be written in sections such as this one.
+
+> ⚠️ **<span style="color: red"> WARNING! </span>**  
+> This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
+
 
 ---
 
-## 2. Design
+# 2. Setting Up
 
-### 2.1 Architecture
+1. Ensure you have version 11 of Java. You can install it
+   from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+2. Fork the UniTracker repo from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp).
+3. Clone the fork on to your computer. We recommend using Sourcetree for this. You can download
+   Sourcetree from [here](https://www.sourcetreeapp.com/).
+4. Download and open Intellij. You can download Intellij
+   from [here](https://www.jetbrains.com/idea/)
+5. If you are not in the welcome screen, click `File` -> 'Close project' to close the existing
+   project dialog.
+6. Set up the correct JDK version for Gradle.
+    1. Click `Configure` -> `Project Defaults` -> `Project Structure`
+    2. Click `New...` and set it to the directory of the JDK.
+7. Click `Open or Import` in Intellij.
+8. Locate the `build.gradle` file, select it and click `OK`.
+9. If asked, choose to `Open as Project`.
+10. Click `OK` to accept the default settings.
+11. Right click on the `Duke.java` file and select `Run Duke.main()`.
+12. If the set up was done right, you should see this welcome message:
+    ````  
+     Welcome to 
+       _   _               _      _____                                _
+      | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _
+      | |_| |  | ' \      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|
+       \___/   |_||_|    _|_|_    _|_|_    _|_|_   \__,_|    \__|_    |_\_\    \___|    _|_|_
+     _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
+     "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
+  
+    This is the list of your pinned tasks:
+  
+    Main Menu:
+    [1] Module Information
+    [2] CAP Simulator/Calculator
+    [3] Task Manager
+    [4] External Links
+    [5] Exit Program
+    ````
+
+---
+
+## 3. Design
+
+### 3.1 Architecture
 
 The `Duke` class contains the main method of our application.
 
@@ -62,38 +138,38 @@ We have 5 main classes for our key features.
 
 ![Diagram](diagrams/MainArchitecture.png)
 
-### 2.2 UI Class
+### 3.2 UI Class
 
 This class handles the interactions with the user and contains the methods for system output.
 
 ---
 
-## 3. Implementation
+## 4. Implementation
 
-### 3.01 Add New Review
+### 4.01 Add New Review
 
 This feature allows user to `add a review` for any of the modules they have taken.
 
-**NOTE**: This action will **overwrite** the existing review with the new review.
+> 📝 **Note!**  
+> This action will **overwrite** any existing reviews with the new review.
+
 
 E.g. Input:  
 `CS2113T is very fun:) I have learnt so many important concepts.`  
-`Though it was difficult at first, the Java exercises helped me`  
-`catch up with the rest of my peers. Overall 10/10 :)`  
+`Overall 10/10 :)`  
 `/end`
 
 Output:
 
 ```
 Woohoo~ Review added:  
-CS2113T is very fun:) I have learnt so many important concepts.
-Though it was difficult at first, the Java exercises helped me 
-catch up with the rest of my peers.
+CS2113T is very fun:) I have learnt so many important concepts.  
 Overall 10/10 :) 
 
 Returning to module information menu...
   ```
-
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/addNewReview.png)  
 A general explanation of how this feature works:
 
 **Problem**: When the user wants to review a module, he/she should be able to type ___multiple lines
@@ -106,23 +182,8 @@ the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 reference. The user will also be alerted that this action will delete his/her old review via a log.
 The log is printed out as a warning.
 
-E.g.
 
-```
-You already have added a review:
-
-CS2113T is very fun:) I have learnt so many important concepts.
-Though it was difficult at first, the Java exercises helped me 
-catch up with the rest of my peers.
-Overall 10/10 :)
- 
-Would you like to replace this with another review? [Y/N]
-
-Mar 23, 2021 9:52:21 PM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage
-WARNING: You will delete your old review. This cannot be undone.
-```
-
-### 3.02 Delete a Review
+### 4.02 Delete a Review
 
 This feature allows user to delete a review from the `module`.
 
@@ -132,7 +193,7 @@ Deleting a review would __reset__ the `Review` *String* attribute of a `module` 
 of:  
 `"You have not reviewed this module yet."`
 
-### 3.03 Add New Task
+### 4.03 Add New Task
 
 This feature allows the user to add tasks of type `task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -145,6 +206,9 @@ creation:
 3) `Date` <br> Example: `2021-03-21`
 4) `Time` <br> Example: `23:59`
 5) `Message` <br> Example: `Good job!`
+
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/addNewTask.png)
 
 A general explanation of how this feature works:
 
@@ -160,10 +224,32 @@ user. Using the example above,
 The user input for `Message` (argument 5 above) will be printed out when the user deleted the task,
 signalling completion.
 
-### 3.04 Delete a Task
+### 4.04 Mark/Unmark a Task as Done
+
+This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/markUnmarkTask.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will prompt them to choose the __task
+type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to mark/unmark. All existing
+tasks in the ArrayList for the task type they chose will then be printed out, and the user has to
+input the index of the task they want to mark/unmark. 
+
+Depending on the current status of the task, the user will be informed of the current status of the task and be asked if they want to change it.
+
+Upon marking a task as done, the `Message` that the user inputted upon creation of this particular task will then be printed out.
+
+
+### 4.05 Delete a Task
 
 This feature allows the user to delete a task of type `task`, `assignment`, `midterm`, `final exam`
 from a task list.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/deleteATask.png)
 
 A general explanation of how this feature works:
 
@@ -173,45 +259,62 @@ tasks in the `ArrayList` for the task type they chose will then be printed out, 
 input the index of the task they want to delete. The task they select will then be deleted from
 the `ArrayList`.
 
-The `Message` that the user inputted upon creation of this particular task will then be printed out.
+### 4.06 View All Tasks
 
-### 3.05 Add Zoom Link
+This feature allows the user to view all their existing tasks for all task types.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/viewAllTasks.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will first iterate through and print out the pinned task list.
+This is then followed by the `task` list, `assignment` list, `midterm` list and `final exam` list.
+
+### 4.07 Pin a Task
+
+This feature allows the user to pin a task of type `task`, `assignment`, `midterm`, `final exam`
+from a task list.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/pinTask.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will prompt them to choose the __task
+type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to pin. All existing
+tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
+input the index of the task they want to pin. 
+
+The pinned task list is stored using a HashMap, with the key being the __task type__ and value being an ArrayList.
+The task the user selected will then be added to the respective pinned task
+ArrayList corresponding to the __task type__ they chose.
+
+### 4.08 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/addZoomLink.png)
 
 A general 4-step explanation of how this feature works is shown below:
 
-Step 1. The Links#execute() method is calling the Ui#readCommand() method which in turn, returns the
-command containing the Zoom Link and Module Code.
+Step 1. The ZoomLinkInfo#addZoomLink() method calls AddTask#printAndGetModule() which asks the user
+to input the number corresponding to the module code they want, and returns the module code.
 
-Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine
-whether a password is required for the Zoom meeting.
+Step 2. The ZoomLinkInfo#addZoomLink() method calls other methods in the Ui class to determine the
+link, and whether a password is required for the Zoom meeting.
 
-Step 3. The ZoomLinkInfo#addZoomLink() method then calls ModuleInfo#getModule() in order to
-retrieve the module object which is stored in the ModuleInfo class. 
+> 📝 **Note!**  
+> If the user does not require the zoom link to be tagged to a module,
+> AddTask#printAndGetModule() in Step 1 would return an empty string, and the module code would be
+> initialised to "Zoom link has no module code".
 
-- If no object is found(i.e module
-does not exist), an exception is thrown, and a new module object is initialised. 
+Step 3. The ZoomLinkInfo#addZoomLink() method then calls ModuleInfo#getModule() in order to retrieve
+the module object which is stored in the ModuleInfo class.
 
-````
-try {
-    Module moduleInfo = ModuleInfo.getModule(linkDescription);
-    moduleInfo.setZoomLink(linkDescription);
-} catch (NullPointerException e) {
-    Module module = new Module(moduleCode, "no description");
-    ModuleInfo.modules.add(module);
-    module.setZoomLink(linkDescription);
-}
-````
+Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
+that was entered.
 
-Code snippet to illustrate Step 3.
-
-
-Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link that was entered.
-
-### 3.06 Add Module Components
-
+### 4.09 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
@@ -233,7 +336,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-#### View Module Components
+### 4.10 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.
@@ -245,19 +348,14 @@ Improvement: the total weightage (in whole numbers) of the module should not exc
 
 ---
 
-## 4. Product scope
+## 5. Product scope
 
----
-
-### 4.1 Target user profile
+### 5.1 Target user profile
 
 This product is for NUS students to help them to keep track/add/edit module information, and
 deadlines. This product is for users who prefer CLI over GUI.
 
-
----
-
-### 4.2 Value proposition
+### 5.2 Value proposition
 
 Our product is user-specific as it allows users to customize and personalize their own module
 information and deadlines to suit their needs. Our product allows users to organize their own daily
@@ -273,25 +371,24 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 5. User Stories
-
-*[This section will be completed in the future.]* <br>
+## 6. User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
 ---
 
-## 6. Non-Functional Requirements
+## 7. Non-Functional Requirements
 
-*[This section will be completed in the future.]* <br>
-{Give non-functional requirements}
+1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.
+
 
 ---
 
-## 7. Glossary
+## 8. Glossary
 
 *[This section will be completed in the future.]* <br>
 
@@ -299,7 +396,7 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 8. Instructions for manual testing
+## 9. Instructions for manual testing
 
 *[This section will be completed in the future.]* <br>
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used

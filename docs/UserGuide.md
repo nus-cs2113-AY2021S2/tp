@@ -2,50 +2,100 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)
+[1. Introduction to UniTracker](#1-introduction-to-unitracker)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;[1.1 About UniTracker](#11-about-unitracker)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.2 About This User Guide](#12-about-this-user-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.3 How to Use This User Guide](#13-how-to-use-this-user-guide)  
+&nbsp;&nbsp;&nbsp;&nbsp;[1.4 Conventions in This User Guide](#14-conventions-in-this-user-guide)
 
 [2. Quick Start](#2-quick-start)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[2.1 System Requirements](#21-system-requirements)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and above](#211-windows-7-and-above)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.1 Windows 7 and Above](#211-windows-7-and-above)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.2 Mac OS](#212-mac-os)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[2.1.3 Linux](#213-linux)  
+
+&nbsp;&nbsp;&nbsp;&nbsp;[2.2 Start Up](#22-start-up)
 
 [3. Features](#3-features)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Module Information](#31-module-information)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add/View Module Description](#311-addview-module-description)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. Add/View Components and Their Weightages](#312-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.1. Add a Module](#311-add-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.2. View a Module](#312-view-a-module)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.3. View All Modules](#313-view-all-modules)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Add a Review](#314-add-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. View All Reviews](#315-view-all-reviews)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Delete a Module](#316-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.4. Delete a Module](#314-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.5. Add/View Components and Their Weightages](#315-addview-components-and-their-weightages)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.6. Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.7. Add Module Grade](#317-add-module-grade)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.8. Add a Review](#318-add-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.9. View All Reviews](#319-view-all-reviews)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.10. Delete a Review](#3110-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.11. Add New Task](#3111-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.12. Delete Task](#3112-delete-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.13. Add Zoom Link](#3113-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.1.14. Delete Zoom Link](#3114-delete-zoom-link)   
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.2 CAP Simulator/Calculator](#32-cap-simulatorcalculator)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.1 Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.2 View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.2.3 Simulate future CAP](#323-simulate-future-cap)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.3 Task Manager](#33-task-manager)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.1 Add New Task](#331-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Delete a Task](#332-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 View All Tasks](#333-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 Pin a Task](#334-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.2 Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.3 Delete a Task](#333-delete-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.4 View All Tasks](#334-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.3.5 Pin a Task](#335-pin-a-task)  
+
 &nbsp;&nbsp;&nbsp;&nbsp;[3.4 Links](#34-links-menu)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.1. External Links](#341-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.2. Add an External Link](#342-add-external-link)    
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.3. Remove an External Link](#343-remove-external-link)   
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.4. View all Links](#344-view-external-links)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.5. Add a Zoom Link](#345-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#346-view-zoom-links)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Delete a Zoom Link](#346-delete-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#347-view-zoom-links)
 
 [4. Command Summary](#4-command-summary)
 
 ---
 
-## 1. Introduction
+## 1. Introduction to UniTracker
 
-UniTracker is a one-stop application for NUS students to keep track of their work in school. It
-comprises 4 key features [Refer to Section 3. Features] that helps to organise all information they
-need in one place. Users are allowed to add and edit module information, tasks, zoom links to suit
-their needs. This product is optimal for students who prefer Command Line Interface (CLI) over
-Graphical User Interface (GUI).
+UniTracker is a one-stop application for NUS students to keep track of their work in school. This
+product is optimal for students who prefer Command Line Interface (CLI) over Graphical User
+Interface (GUI).
+
+### 1.1 About UniTracker
+
+UniTracker consists of 4 key features (refer to [Section 3. Features](#3-features)) that helps to
+organise all the information they need in one place. You can add and edit module information, tasks,
+zoom links to suit their needs.
+
+### 1.2 About This User Guide
+
+This user guide was made to help you set up UniTracker on your computer and also provide you with
+all the information you need to use UniTracker. It clearly documents the features UniTracker offers
+with examples to aid you in familiarising yourself with UniTracker.
+
+### 1.3 How to Use This User Guide
+
+Firstly, refer to [Section 2. Quick Start](#2-quick-start) for instructions on setting up UniTracker
+on your local computer.
+
+Once UniTracker is up and running, you can refer to the [table of contents](#table-of-contents) to
+navigate to specific sections to explore, learn and use UniTracker.
+
+### 1.4 Conventions in This User Guide
+
+In the example code for each feature, all user inputs will start with an angle bracket.
+E.g. `> user input`
+> **Note!**  
+> This is a note section. Additional useful information will be written in sections such as this one.
+
+> **<span style="color: red"> WARNING! </span>**   
+> This is a warning section. Any user interaction with UniTracker that may result in issues or unintended results will be written in sections such as this one.
 
 ---
 
@@ -53,18 +103,20 @@ Graphical User Interface (GUI).
 
 ### 2.1 System Requirements
 
-- Operating system should be: Windows 7 and above, macOS or Linux.
-- Ensure that Java 11 is installed on your computer.
-  - You can download the latest version of Java 11
-    from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+Your operating system should be: Windows 7 and above, macOS or Linux.
 
-#### 2.1.1 Windows 7 and above
+Next, ensure that Java 11 is installed on your computer. You can download the latest version of Java
+11 from [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html).
+
+#### 2.1.1 Windows 7 and Above
 
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
@@ -73,7 +125,9 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
@@ -82,28 +136,48 @@ Graphical User Interface (GUI).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
 4. Navigate to the folder you stored your Jar file in.
-  - You can open a folder by typing `cd` followed by space then the name of your folder.
+
+- You can open a folder by typing `cd` followed by space then the name of your folder.
+
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
 
-- Upon successful installation of your Jar file, you should see this welcome message after running
-  the Jar file:
-  ````  
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+Upon successful installation of your Jar file, you should see this welcome message after running the
+Jar file:
 
+  ````  
+   Welcome to 
+     _   _               _      _____                                _
+    | | | |   _ _       (_)    |_   _|     _ _    __ _      __      | |__     ___       _ _
+    | |_| |  | ' \      | |      | |      | '_|  / _` |    / _|     | / /    / -_)     | '_|
+     \___/   |_||_|    _|_|_    _|_|_    _|_|_   \__,_|    \__|_    |_\_\    \___|    _|_|_
+   _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""| _|"""""|
+   "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-' "`-0-0-'
+
+  This is the list of your pinned tasks:
+
+  Main Menu:
+  [1] Module Information
+  [2] CAP Simulator/Calculator
+  [3] Task Manager
+  [4] External Links
+  [5] Exit Program
   ````
+
+In order to start using our features, navigate to your desired menu by inputting the respective
+index. E.g. `1` would bring you to the Module Information Menu.
 
 ---
 
 ## 3. Features
 
-This section gives a detailed description of each feature.
+This section gives a detailed description of each feature, including examples to aid your
+understanding.
+
+>**<span style="color: red"> WARNING! </span>**  
+> Ending the application abruptly may cause changes to be discarded!
+>
 
 ### 3.1 Module Information
 
@@ -115,251 +189,333 @@ Module Information menu:
 ```
 Welcome to the module information menu ^~^
 Please choose which action you would like to do and enter the number:
-[1] --- Add/View Module Description
-[2] --- Add/View Components and Their Weightages
-[3] --- View All Modules
-[4] --- Add a Review
-[5] --- View All Reviews
-[6] --- Delete modules
-[7] --- Exit to main menu
+----------------------
+[1]  --- Add New Module
+[2]  --- View a Module
+[3]  --- View All Modules
+[4]  --- Delete Module
+----------------------
+[5]  --- Add/View Components and Their Weightages
+[6]  --- Add Module's Modular Credits (MC)
+[7]  --- Add Module Grade
+----------------------
+[8]  --- Add a Review
+[9]  --- View All Reviews
+[10] --- Delete Review
+----------------------
+[11] --- Add New Task
+[12] --- Delete Task
+----------------------
+[13] --- Add Zoom Link
+[14] --- Delete Zoom Link
+----------------------
+[15] --- Exit to main menu
+----------------------
 ```
-#### 3.1.1 Add/View Module Description
 
-Adds user-defined module description.  
-User can view module description added previously.
+#### 3.1.1 Add a Module
 
-* Example for adding a module description:  
-  Input:  
-  `1`  
-  Output:
-  ````
-  What module would you like to modify? [moduleName e.g. CS2113T]
-  ````
-  Input:  
-  `CS2113T`   
-  Output:
-  ````
-  This module does not exist, would you like to add it? [Y/N]
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in the module description for CS2113T:
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in the module description for CS2113T:
-  ````
-  Input: [Retrieved from NUSMods]  
-  `This module introduces the necessary skills for systematic and rigorous development of software systems. It covers requirements, design, implementation, quality assurance, and project management aspects of small-to-medium size multi-person software projects`  
-  Output:
-  ````
-  Module description for CS2113T added:
-  This module introduces the necessary skills for systematic and rigorous development of software systems. 
-  It covers requirements, design, implementation, quality assurance,  
-  and project management aspects of small-to-medium size multi-person software projects.
-  Returning to module information menu...
-  ````
-* Example for viewing module description  
-  Input:
-  `1`  
-  Output:
-  ````
-  What module would you like to modify? [moduleName e.g. CS2113T]
-  ````
-  Input:  
-  `CS2113T`  
-  Output:
-  ````
-  Module exist!
-  Here is a description of the module you have added previously
+Adds a new module to the modules list.
+
+Example for adding a new module:
+
+```
+--------------------------------------------  
+Enter name of the new module:  
+> CS2113T  
+--------------------------------------------    
+Enter module description:  
+> Software Engineering and OOP    
+--------------------------------------------  
+New module added:  
+CS2113T:  
+Software Engineering and OOP  
+--------------------------------------------  
+Returning to module information menu...  
+```  
+
+#### 3.1.2 View a Module
+
+Select a module to view its details: `module name`, `description`, `review`, `modular credits`
+, `grade`, `tasks`  
+Example of viewing a module:
+> **Note!**  
+> In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.   
+> Tasks have been added through the [add new task](#331-add-new-task) feature.
+
+```   
+--------------------------------------------  
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS2113T  
+--------------------------------------------  
+Which module would you like to view?  
+> 1  
+--------------------------------------------  
+Name: CS2113T  
   
-  This module introduces the necessary skills for systematic and rigorous development of software systems. 
-  It covers requirements, design, implementation, quality assurance, 
-  and project management aspects of small-to-medium size multi-person software projects.
+Description:  
+Software Engineering and OOP  
   
-  Returning to module information menu...
-  ````
-#### 3.1.2 Add/View Components and Their Weightages
-* Example for adding components and weightage to a module
-  Input:  
-  `2`  
-  Output:
-  ````
-  Would you like to add/view component(s) to a module? [Y/N]
-  ````
-  Input:  
-  `Y`  
-  Output:
-  ````
-  Key in 1 to add component and 2 to view component
-  ````
-  Input:  
-  `1`  
-  Output:
-  ````
-  Module Name?
-  ````
-  Input:  
-  `CS2113T`  
-  Output:
-  ````
-  Please key in your component and percentage of the component.
-  Leave space between component and percentage only.
-  Example: FinalExam 20
-  ````
-  Input:  
-  `FinalExam 20`  
-  Output:
-  ````
-  Component and weightage added!
-  ````
-* Example for viewing the components and weightage of an existing module
-  Input:  
-  `2`  
-  Output:
-    ````
-    Would you like to add/view component(s) to a module? [Y/N]
-    ````
-  Input:  
-  `Y`  
-  Output:
-    ````
-    Key in 1 to add component and 2 to view component
-    ````
-  Input:  
-  `2`  
-  Output:
-    ````
-    Module Name?
-    ````
-  Input:  
-  `CS2113T`  
-  Output:
-    ````
-  {FinalExam=20}
-    ````
+Review:  
+You have not reviewed this module yet.  
+  
+Modular Credit:  
+0  
+  
+Grade:  
+null  
+  
+These are your tasks:   
+1. [Task][CS2113T][    ] study week 10 topics  
+2. [Assignment][CS2113T][DONE] nice (by: Mar 27 2021, 11:59 PM)  
+--------------------------------------------  
+Returning to module information menu...  
+```  
 
-#### 3.1.3 View all modules
+#### 3.1.3 View all Modules
 
 Lists out all the modules added to UniTracker.
 
-* Example for listing all the modules:  
-  Input:   
-  `3`  
-  Output:
-  ```
-  Here are the modules in your Modules List:  
-  --------------------------------------------  
-  [1] --- CS3243  
-  [2] --- CS2113T  
-  --------------------------------------------
-  ```
+Example for listing all the modules:
+> **Note!**    
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.
 
-#### 3.1.4 Add a review
+```
+Here are the modules in your Modules List:    
+--------------------------------------------    
+[1] --- CS3243    
+[2] --- CS2113T   
+--------------------------------------------  
+```  
 
-Adds a review for the module of your choice.
-
-* Format: Once you have finished typing your review, type `/end` and hit `Enter`
-* Example for adding a review:  
-  Input:   
-  `4`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Please choose which module you would like to review and enter the number:`
-
-  Input:  
-  `1`  
-  Output:
-
-  `You have already added a review:`  
-  `Very very very difficult for me:( But, very important to know!`  
-  `5/5`
-
-  `Would you like to replace this with another review? [Y/N]`  
-  Input:  
-  `Y`  
-  Output:  
-  `After you finish your review, type '/end' to finish reviewing.`  
-  `Enter your review for CS3243 below:`
-
-  Input:  
-  `The lectures were very entertaining. I have learnt a lot of`   
-  `important algorithms.`  
-  `Assignments and quizzes helped me learn concepts faster.`  
-  `Overall: 5/5`  `/end`  
-  Output:
-    ```
-  Woohoo~ Review added:  
-  The lectures were very entertaining. I have learnt a lot of important algorithms.  
-  Assignments and quizzes helped me learn concepts faster.  
-  Overall: 5/5
-  
-  Returning to module information menu...
-  ```
-
-#### 3.1.5 View all reviews
-
-Lists out all the reviews for all modules added to UniTracker.
-
-* Example for listing all the modules' reviews:  
-  Input:   
-  `5`  
-  Output:  
-  ```  
-  --------------------------------------------  
-  For CS3243:  
-  The lectures were very entertaining. I have learnt a lot of important algorithms.  
-  Assignments and quizzes helped me learn concepts faster.  
-  Overall: 5/5  
-  --------------------------------------------  
-  For CS2113T:  
-  Very fun! We learnt a lot of important programming concepts.  
-  Java is also a fun language:)  
-  GitHub is difficult but very important to know about it.  
-  Overall: 5/5   
-  
-  --------------------------------------------  
-  Returning to module information menu...
-
-  ```
-
-#### 3.1.6 Delete a module
+#### 3.1.4 Delete a Module
 
 Deletes a module from the list of modules.
 
 * Format: enter the index (integer) of the module that you want to delete.
-* Example for deleting a module:  
-  Input:  
-  `6`  
-  Output:  
-  `Here are the modules in your Modules List:`  
-  `--------------------------------------------`  
-  `[1] --- CS3243`  
-  `[2] --- CS2113T`  
-  `--------------------------------------------`  
-  `Enter the module number to be deleted:`  
-  Input:  
-  `1`  
-  Output:
-  ```
-  You've deleted this: CS3243  
-  NOTE: You are deleting your review
-  The lectures were very entertaining. I have learnt a lot of important algorithms.
-  Assignments and quizzes helped me learn concepts faster.
-  Overall: 5/5
-  NOTE: You are deleting your module description
-  Intro to AI
-  --------------------------------------------
-  Returning to module information menu...
-  ```
+
+Example for deleting a module:
+> **Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+
+```
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------  
+Enter the module number to be deleted:  
+> 1  
+Are you sure you want to delete CS3243? [Y/N]  
+Mar 31, 2021 3:04:34 AM seedu.duke.ModuleInfo deleteModule  
+WARNING: You are making a change that cannot be undone.  
+> Y  
+You've deleted this: CS3243   
+NOTE: You are deleting your module description  
+Intro to AI  
+NOTE: You are deleting your review  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+--------------------------------------------  
+Returning to module information menu...  
+```
+
+#### 3.1.5 Add/View Components and Their Weightages
+
+> **Note!**  
+> This feature has no storage functionality! Components added will be erase after end of program. [Work in progress]
+
+* Example for adding components and weightage to a module Input:  
+````
+Which action would you like to proceed with? Key in 1 or 2.
+[1] --- Add Component
+[2] --- View Component
+> 1
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CG1112
+[3] --- CS1010
+--------------------------------------------
+Which module would you like to add a component?
+> 1
+--------------------------------------------
+Please key in your component and percentage of the component. 
+Leave space between component and percentage only.
+Example: FinalExam 20
+> FinalExam 40
+--------------------------------------------
+Component and weightage added!
+```` 
+ 
+
+
+* Example for viewing the components and weightage of an existing module Input:  
+  
+````
+Which action would you like to proceed with? Key in 1 or 2.
+[1] --- Add Component
+[2] --- View Component
+> 2
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CG1112
+[3] --- CS1010
+--------------------------------------------
+Which module would you like to view components?
+> 1
+--------------------------------------------
+From Module object: CS2113T
+{FinalExam=40}
+````
+
+#### 3.1.6 Add Module's Modular Credits (MC)
+
+*[This section will be completed in the future.]* <br>
+
+#### 3.1.7 Add Module Grade
+
+Example for adding grade to a module:  
+
+> **Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+
+````
+--------------------------------------------
+Here are the modules in your Modules List:
+--------------------------------------------
+[1] --- CS2113T
+[2] --- CS3243
+--------------------------------------------
+Please choose which module you would like to assign a grade and enter the number:
+> 1
+--------------------------------------------
+Enter the grade for this module:
+> A
+````
+
+#### 3.1.8 Add a review
+
+Adds a review for the module of your choice.
+
+* Format: Once you have finished typing your review, type `/end` and hit `Enter`
+
+Example for adding a review:
+
+``` 
+Here are the modules in your Modules List:  
+--------------------------------------------  
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------    
+Please choose which module you would like to review and enter the number:  
+> 1  
+You have already added a review:  
+Very very very difficult for me:( But, very important to know!  
+5/5  
+
+Would you like to replace this with another review? [Y/N]  
+Mar 31, 2021 3:08:31 AM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage  
+WARNING: You will delete your old review. This cannot be undone.  
+> Y  
+  
+After you finish your review, type '/end' to finish reviewing.  
+Enter your review for CS3243 below:  
+> The lectures were very entertaining. I have learnt a lot of   
+> important algorithms.  
+> Assignments and quizzes helped me learn concepts faster.  
+> Overall: 5/5  /end  
+
+Woohoo~ Review added:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+  
+Returning to module information menu...  
+```
+
+#### 3.1.9 View all reviews
+
+Lists out all the reviews for all modules added to UniTracker.
+
+Example for listing all the modules' reviews:
+> **Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+
+```
+--------------------------------------------  
+For CS3243:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.  
+Assignments and quizzes helped me learn concepts faster.  
+Overall: 5/5  
+--------------------------------------------  
+For CS2113T:  
+Very fun! We learnt a lot of important programming concepts.  
+Java is also a fun language:)  
+GitHub is difficult but very important to know about it.  
+Overall: 5/5   
+--------------------------------------------  
+Returning to module information menu...  
+```
+
+#### 3.1.10 Delete a Review
+
+Deletes any existing reviews of existing modules.  
+Example of deleting a review of an existing module:
+> **Note!**  
+> In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
+> Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
+
+``` 
+--------------------------------------------  
+Here are the modules in your Modules List:    
+--------------------------------------------    
+[1] --- CS3243  
+[2] --- CS2113T  
+--------------------------------------------  
+Enter the module number to delete review:  
+> 1  
+--------------------------------------------  
+Mar 31, 2021 3:15:51 AM seedu.duke.ModuleInfo deleteReview  
+WARNING: You are making a change that cannot be undone.  
+Are you sure you want to delete this review? [Y/N]  
+For CS2113T:  
+Review:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.    
+Assignments and quizzes helped me learn concepts faster.   
+Overall: 5/5    
+> Y  
+--------------------------------------------  
+You've deleted this review:  
+The lectures were very entertaining. I have learnt a lot of important algorithms.   
+Assignments and quizzes helped me learn concepts faster.   
+Overall: 5/5  
+--------------------------------------------  
+Returning to module information menu...  
+```
+
+#### 3.1.11 Add New Task
+
+Refer to [this section](#331-add-new-task).
+
+#### 3.1.12 Delete Task
+
+Refer to [this section](#333-delete-a-task).
+
+#### 3.1.13 Add Zoom Link
+
+Refer to [this section](#345-add-zoom-link).
+
+#### 3.1.14 Delete Zoom Link
+
+Refer to [this section](#346-delete-zoom-link).
 
 ---
 
@@ -380,92 +536,121 @@ Please choose which action you would like to do and enter the number:
 
 #### 3.2.1 Add CAP and Number of MCs graded taken
 
-Adds current CAP and MCs counted into the CAP.  
-Exits program if CAP is invalid (to be rectified later).  
-[i.e. negative CAP or CAP > 5.0]
+This feature allows you to add current CAP and MCs counted into the CAP.  
+The program exits program if CAP is invalid.  
+[i.e. negative CAP or CAP > 5.0]  
+There is no strict restriction to number of MCs user can add and its up to user's discretion.
 
-Input:  
-`1`  
-Output:
 
 ````
+Please choose which action you would like to do and enter the number:
+[1] --- Add CAP and Number of MCs graded taken
+[2] --- View CAP and Number of MCs graded taken
+[3] --- Simulate future CAP
+[4] --- Exit
+> 1
+--------------------------------------------
 Please key in your current CAP: [e.g. 4.33]
-````  
-
-Input:  
-`5`  
-Output:
-
-````
+> 4.5
+--------------------------------------------
 Please key in the number of MCs graded you have taken so far: 
-````  
-
-Input:  
-`20`  
-Output:
-
-````
-Current CAP: 5.0  
+> 20
+--------------------------------------------
+Current CAP: 4.5
 Number of Graded MCs Taken: 20
-````  
-
+Returning to CAP simulator/calculator menu...
+````
 #### 3.2.2 View CAP and Number of MCs graded taken
 
-Views current CAP and MCs counted into the CAP.
-
-Input:  
-`2`  
-Output:
+This feature allows you to view current CAP and MCs counted into the CAP.
 
 ````
-Current CAP: 5.0  
+Please choose which action you would like to do and enter the number:
+[1] --- Add CAP and Number of MCs graded taken
+[2] --- View CAP and Number of MCs graded taken
+[3] --- Simulate future CAP
+[4] --- Exit
+> 2
+--------------------------------------------
+Current CAP: 4.5
 Number of Graded MCs Taken: 20
+Returning to CAP simulator/calculator menu...
 ````
 
 #### 3.2.3 Simulate future CAP
 
-Simulates future CAP base on the current CAP and MCs counted into the CAP.  
+This feature simulates future CAP base on the current CAP and MCs counted into the CAP.  
 Once done, enter `ok` when prompt with entering a new grade again.
 
-Input:  
-`3`  
-Output:
+There are two versions of CAP Simulator:
+ - v1.0: This version allows you to simulate CAP base on the grades you have entered before in each module.
+ - v2.0: This version allows you to simulate CAP from a fresh set of inputs from you.
+
+When you enter CAP Simulator, it will welcome you with the following interface!
 
 ````
-You may key in your letter grades and MCs associated with the letter grade.
+Welcome to CAP Simulator!
+Note: CAP Simulated takes your current CAP and total number of MCs taken into account.
+If you intend to calculate your CAP solely on new entries, 
+please go back to the HelpGraduation menu and set existing CAP and MCs taken to be 0.
+
+Key in 1 to simulate your cap base on the grades you have entered before for each module.
+Key in 2 to simulate cap base on your own input.
+````
+###### Version 1  
+
+````
+> 1
+--------------------------------------------
+Calculating on the following entries entered: 
+Grades entered: [A, A, SU]
+MCs entered: [4, 6, 4]
+Current CAP: 4.5
+Current Graded MCs taken: 20
+The simulated cumulative average point you have is: 
+4.666666666666667
+Returning to CAP simulator/calculator menu...
+````  
+
+###### Version 2
+
+````
+Welcome to CAP Simulator Version 2!
+You have chosen to simulate CAP base on your input.
+THINGS TO NOTE: 
+You may key in 'q' to quit and 'ok' after finishing your inputs.
+You may key in your letter grades follow by MCs associated with the letter grade after each prompt. 
+
 Key in a grade: [e.g. A+, B, B-]
-````  
-
-Input:  
-`C`  
-Output:
-
-````
+A+
+--------------------------------------------
 Key in MCs for the associated module: 
-````  
-
-Input:  
-`4`  
-Output:
-
-````
-Key in a grade: [e.g. A+, B, B-] 
-````  
-
-Input:  
-`ok`  
-Output:
-
-````
-The simulated cumulative average point you have is:  
-4.5
+6
+--------------------------------------------
+Key in a grade: [e.g. A+, B, B-]
+B+
+--------------------------------------------
+Key in MCs for the associated module: 
+4
+--------------------------------------------
+Key in a grade: [e.g. A+, B, B-]
+ok
+--------------------------------------------
+Calculating on the following entries entered: 
+Grades entered: [A+, B+]
+MCs entered: [6, 4]
+Current CAP: 4.5
+Current Graded MCs taken: 20
+The simulated cumulative average point you have is: 
+4.533333333333333
+Key in a grade: [e.g. A+, B, B-]
 ````  
 
 ---
 
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, delete, pin or view your tasks.
+The task manager feature allows you to add, mark or unmark as done, delete, pin and view your tasks.
 
 Task Manager menu:
 
@@ -473,149 +658,310 @@ Task Manager menu:
 Welcome to the Task Manager menu ^o^
 Please choose which action you would like to do and enter the number:\n"
 [1] --- Add New Task
-[2] --- Delete a Task
-[3] --- View All Tasks
-[4] --- Pin a Task
-[5] --- Exit
+[2] --- Mark/Unmark a Task as Done
+[3] --- Delete a Task
+[4] --- View All Tasks
+[5] --- Pin a Task
+[6] --- Exit
 ````
 
 #### 3.3.1 Add New Task
 
 Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the task list.
 
-* `Add New Task` menu:
+Example for adding a task of type `task` with the task description of `Work on user guide` and
+message being `Wow yay~`:
+
+> **Note!**  
+> In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+
   ````
   Please choose which type of task you would like to add and enter the number:
   [1] --- Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
-  ````
-* Example for adding a `task`:  
-  Input:  
-  `1`  
-  Output:  
-  `What is the module of the task you want to add?`  
-  Input:  
-  `CS2113T`  
-  Output:  
-  `What is the description of the task you want to add?`  
-  Input:  
-  `Work on user guide`  
-  Output:  
-  `What is the message you would like to see after completing this?`  
-  Input:  
-  `Wow yay~`  
-  Output:
-  ````
-  You've added this: [CS2113T] Work on User Guide
+  > 1
+  --------------------------------------------
+  What is the module of the task you want to add? Enter the number:
+  
+  This is the list of modules:
+  [1] CS2113T
+  > 1
+  --------------------------------------------
+  What is the description of the task you want to add?
+  > Work on user guide
+  --------------------------------------------
+  What is the message you would like to see after completing this?
+  > Wow yay~
+  --------------------------------------------
+  You've added this: [CS2113T][    ] Work on User Guide
   Returning back to TaskManager menu now!
   ````
-* For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-  * Format for date: `yyyy-mm-dd`
-  * Format for time (24-h clock): `hh:mm`
-  * Example:  
-    Output:  
-    `What is the date of the assignment you want to add?`  
-    Input:  
-    `2021-03-14`
-    Output:  
-    `What is the time of the assignment you want to add?`  
-    Input:  
-    `23:59`  
-    Output:
-    ````
-    You've added this: [CS2113T] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-    Returning back to TaskManager menu now!
-    ````
 
-#### 3.3.2 Delete a Task
+For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
+The format for the date and time input is as follows:
+
+- Time: YYYY-MM-DD   
+  (Y stands for the year, M stands for the month and D stands for the day)
+- Date: HH:MM  
+  (H stands for hour in 24H standard and M stands for minute)
+
+Example for adding a task of type `assignment` with the task description of `Work on user guide` and
+message being `Wow yay~`:
+
+> **Note!**  
+> In this example, module `CS2113T` has already been added through
+> the [add module](#311-add-a-module) feature.
+
+  ````
+Please choose which type of task you would like to add and enter the number:
+[1] --- Task
+[2] --- Assignment
+[3] --- Midterm
+[4] --- Final Exam
+> 1
+--------------------------------------------
+What is the module of the task you want to add? Enter the number:
+
+This is the list of modules:
+[1] CS2113T
+> 1
+--------------------------------------------
+What is the description of the task you want to add?
+> Work on user guide
+--------------------------------------------
+What is the date of the assignment you want to add?
+> 2021-03-14
+--------------------------------------------
+What is the time of the assignment you want to add?
+> 23:59
+--------------------------------------------
+What is the message you would like to see after completing this?
+> Wow yay~
+--------------------------------------------
+You've added this: [CS2113T][    ] Work on User Guide (by: Mar 14 2021, 11:59 PM)
+Returning back to TaskManager menu now!
+````
+
+> **Note!**  
+> If you were to input an invalid module index when choosing the module of the task,
+> you will be asked if you want to add a new module:
+> ````
+> A module for that number does not exist.
+> Would you like to add a module? [Y/N]
+> ````
+> 
+> Additionally, if you were to input an invalid date format, you will see the following error message to prompt you to try again:
+> ````
+> Please enter a valid date format.
+> ````
+> If you were to input an invalid time format, you will see the following error message to prompt you to try again:
+> ````
+> Please enter a valid time format.
+> ````
+
+#### 3.3.2 Mark/Unmark a Task as Done
+
+Marks a task of type `task`, `assignment`, `midterm` or `final exam` from the task list as done or undone, depending on its current status.
+When a task is first added, its status will be undone by default.
+
+Upon marking a task is done, the message that you inputted when [adding a new task](#331-add-new-task) will be displayed. 
+
+> **Note!**  
+> In the following two examples, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+
+Example for marking a task type `task` with a task description of `Work on user guide` as done and
+message being `Wow yay~`:
+
+````
+  Please choose which type of task you would like to mark/unmark as done and enter the number:
+  [1] --- Task
+  [2] --- Assignment
+  [3] --- Midterm
+  [4] --- Final Exam
+  > 1
+  --------------------------------------------
+  This is the list of your tasks:  
+  1. [CS2113T][    ] Work on User Guide  
+  
+  What is the number of the task you want to mark/unmark?
+  > 1
+  --------------------------------------------
+  This task is not marked as done. Would you like to mark it? [Y/N]
+  Y
+  --------------------------------------------
+  You've marked this as done: [CS2113T][DONE] Work on User Guide
+  NOTE: Wow yay~
+  Returning back to TaskManager menu now!
+````
+
+Example for unmarking a task type `task` with a task description of `Work on user guide` as done and
+message being `Wow yay~`:
+````
+Please choose which type of task you would like to mark/unmark as done and enter the number:
+[1] --- Task
+[2] --- Assignment
+[3] --- Midterm
+[4] --- Final Exam
+> 1
+--------------------------------------------
+This is the list of your tasks:  
+1. [CS2113T][DONE] Work on User Guide  
+
+What is the number of the task you want to mark/unmark?
+> 1
+--------------------------------------------
+This task is marked as done. Would you like to unmark it? [Y/N]
+Y
+--------------------------------------------
+You've marked this as not done: [CS2113T][    ] Work on User Guide
+Returning back to TaskManager menu now!
+````
+
+> **Note!**  
+> Your input to the confirmation of marking/unmarking the task is NOT case-sensitive. Both  `y` and `Y` are accepted as valid inputs. 
+> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu.
+> 
+> Additionally, if you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
+
+#### 3.3.3 Delete a Task
 
 Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
-* `Delete a Task` menu:
+Example for deleting a task of type `task` with the task description of `Work on user guide`:
+
+> **Note!**  
+> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+
   ````
   Please choose which type of task you would like to delete and enter the number:
   [1] --- Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
-  ````
-* Example for deleting a `task`:  
-  Input:  
-  `1`    
-  Output:
-  ````
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+  > 1
+  --------------------------------------------
+  This is the list of your tasks:  
+  1. [CS2113T][DONE] Work on User Guide  
   
   What is the number of the task you want to delete?
-  ```` 
-  Input:    
-  `1`  
-  Output:
+  > 1
+  --------------------------------------------
+  You've deleted this: [CS2113T][DONE] Work on User Guide  
+  Returning back to the menu now!
   ````
-  You've deleted this: [CS2113T] Work on User Guide
-  NOTE: Wow yay~
-  Returning back to TaskManager menu now!
-  ````
+> **Note!**  
+> If you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
 
-#### 3.3.3 View All Tasks
+
+#### 3.3.4 View All Tasks
 
 Prints all existing tasks of type `task`, `assignment`, `midterm` and `final exam` from the task
 list.
 
-* Example Output:
-  ````
-  This is the list of your pinned tasks:
+Example:
 
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+> **Note!**  
+> In this example, the tasks `[CS2113T][DONE] Work on User Guide` and `[CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)`
+> have already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
 
-  This is the list of your assignments:
-  1. [CS2113T] Work on User Guide (by: Mar 14 2021, 11:49 PM)
+  ````  
+  This is the list of your pinned tasks:  
 
-  This is the list of your midterms:
+  This is the list of your tasks:  
+  1. [CS2113T][DONE] Work on User Guide  
 
-  This is the list of your final exams:
-  ````
+  This is the list of your assignments:  
+  1. [CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
 
-#### 3.3.4 Pin a Task
+  This is the list of your midterms:  
+
+  This is the list of your final exams:  
+  ````  
+
+#### 3.3.5 Pin a Task
 
 Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
 
-* `Pin a Task` menu:
+Example of pinning a task of type `task` with the task description of `Work on user guide`:
+
+> **Note!**  
+> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+
   ````
-  Please choose which type of task you would like to pin and enter the number:
-  [1] --- Task
-  [2] --- Assignment
-  [3] --- Midterm
-  [4] --- Final Exam
-  ````
-* Example for pinning a `task`:  
-  Input:  
-  `1`    
-  Output:
-  ````
-  This is the list of your tasks:
-  1. [CS2113T] Work on User Guide
+  Please choose which type of task you would like to pin and enter the number:  
+  [1] --- Task  
+  [2] --- Assignment  
+  [3] --- Midterm  
+  [4] --- Final Exam  
+  > 1
+  --------------------------------------------
+  This is the list of your tasks:  
+  1. [CS2113T][DONE] Work on User Guide  
   
-  What is the number of the task you want to pin?
-  ```` 
-  Input:    
-  `1`  
-  Output:
+  What is the number of the task you want to pin? 
+  > 1
+  --------------------------------------------
+  You've pinned this: [CS2113T][DONE] Work on User Guide  
+  Returning back to the menu now!
   ````
-  You've pinned this: [CS2113T] Work on User Guide
-  Returning back to TaskManager menu now!
+> **Note!**  
+> If you were to input an invalid task index when choosing the task,
+> you will see the following error message:
+> ````
+> Please input a valid task number.
+> ````
+> If your input is not a number when choosing the task,
+> you will see the following error message:
+> ````
+> Please enter a valid integer from the menu.
+> ````
+
+Following this, if you were to [view all your tasks](#334-view-all-tasks), it will be updated accordingly:
+
+  ````  
+  This is the list of your pinned tasks:  
+  1. [CS2113T][DONE] Work on User Guide
+  
+  This is the list of your tasks:  
+  1. [CS2113T][DONE] Work on User Guide  
+  
+  This is the list of your assignments:  
+  1. [CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)  
+  
+  This is the list of your midterms:  
+  
+  This is the list of your final exams:  
   ````
 
 ---
 
 ### 3.4 Links Menu
 
-The Links feature allows you to add and keep track of http and https links. It also allows users to
-keep their zoom links separately.
+The Links feature allows you to add and keep track of http and https links, and the meeting
+password.
 
 Links menu:
 
@@ -632,6 +978,12 @@ Please choose which action you would like to do and enter the number:
 
 Add, remove or view all your links (except zoom links) here.
 
+By default, the External Links list has been populated with 
+- https://www.reddit.com/r/nus
+- https://www.luminus.nus.edu.sg
+- https://www.myedu.rec.nus.edu.sg
+
+External links menu:
 ````
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
@@ -640,6 +992,7 @@ Please choose which action you would like to do and enter the number:
 [3] --- view links
 [4] --- exit to links menu
 ````
+
 
 #### 3.4.2 Add External Link
 
@@ -649,58 +1002,57 @@ Format: `<scheme>www.<domain name>.<TLD>/<path name>`
 
 Supported schemes include: https, http only
 
-Supported Top Level Domain(TLD) include: .com, .org only
+Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
+
+> **Note!**  
+> While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 
 Example for adding an external link:
 
-Input: `1`
-
-Output:
-
 ````
+> 1
+--------------------------------------------
 Please enter the link in this format:
 <scheme>www.<domain name>.<TLD>/<path name>
-supported schemes: https, http for now... Sorry!
-supported TLD: .com, .org for now... we will work on it!
-````
+Supported schemes: https, http only
+Supported TLD: .com, .org, .sg, .edu, .gov
 
-Input: `https://www.youtube.com/java`
-
-Output:
-
-````
+> https://www.youtube.com/java
+--------------------------------------------
 Alright! I have added the following link ---  https://www.youtube.com/java
-
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
-[1] --- add link
-[2] --- remove link
-[3] --- view links
-[4] --- exit to links menu
+[1] --- Add link
+[2] --- Remove link
+[3] --- View links
+[4] --- Exit to links menu
 ````
+
+> **Note!**  
+> The application checks for duplicate links, so any duplicates that you add will be automatically removed!
 
 #### 3.4.3 Remove External Link
 
 Removes an external link from the external links list.
 
-Input: `2`
-
-Output:
+Example for removing an external link:
 
 ````
+> 2
+--------------------------------------------
+These are the links you have added --->
+[1] --- https://www.reddit.com/r/nus
+[2] --- https://www.luminus.nus.edu.sg
+[3] --- https://www.myedurec.nus.edu.sg
+[4] --- https://www.youtube.com
+[5] --- https://www.facebook.com
+[6] --- https://www.youtube.com
+[7] --- https://www.instagram.com
 Please choose which link you would like to delete and enter the number
 
-These are the links you have added --->
-[1] --- https://www.youtube.com/java
-[2] --- https://www.facebook.com
-````
-
-Input: `2`
-
-Output:
-
-````
-You have deleted --- https://www.facebook.com
+> 7
+--------------------------------------------
+You have deleted --- https://www.instagram.com
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
 [1] --- add link
@@ -711,17 +1063,20 @@ Please choose which action you would like to do and enter the number:
 
 #### 3.4.4 View External Links
 
-Allows the user to view all external links added.
+Allows you to view all external links stored in the application.
 
-Input: `3`
-
-Output:
+Example for viewing external links:
 
 ````
+> 3
+--------------------------------------------
 These are the links you have added --->
-[1] --- https://www.youtube.com/java
-[2] --- https://www.google.com
-[3] --- https://www.yahoo.com
+[1] --- https://www.reddit.com/r/nus
+[2] --- https://www.luminus.nus.edu.sg
+[3] --- https://www.myedurec.nus.edu.sg
+[4] --- https://www.youtube.com
+[5] --- https://www.facebook.com
+[6] --- https://www.youtube.com
 
 Welcome to the external links menu!
 Please choose which action you would like to do and enter the number:
@@ -729,6 +1084,7 @@ Please choose which action you would like to do and enter the number:
 [2] --- remove link
 [3] --- view links
 [4] --- exit to links menu
+
 ````
 
 #### 3.4.5 Add Zoom Link
@@ -736,64 +1092,96 @@ Please choose which action you would like to do and enter the number:
 Adds a zoom link, and tags it to a module of your choice together with the meeting password (if
 available).
 
-Input: `2`
-
-Output:
+Example for adding a zoom link:
 
 ````
-Please enter the zoom link and the module it is for in this format:
-<zoom link> <module code>
-````
+> 2
+--------------------------------------------
+Please enter the zoom link below
+PS: If the module you are finding is not available, please enter 8 if you would like to add a module for the link...
+OR if you would like the zoom link to be a standalone ^~^
 
-Input: `https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 cs2101`
-
-Output:
-
-````
+This is the list of modules:
+[1] CS2113T
+[2] CG1112
+[3] CS1010
+[4] CS1231
+[5] CS3243
+[6] EC1301
+[7] CG2028
+> 4
+--------------------------------------------
+Please enter the zoom link below
+> https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09
+--------------------------------------------
 Does your meeting have password which you would like to add? [Y/N]
-````
-
-Input: `Y`
-
-Output:
-
-````
+> Y
+--------------------------------------------
 Please enter your password below!
-````
-
-Input: `open sesame`
-
-Output:
-
-````
+> itsasecret
+--------------------------------------------
 Woohoo~ Zoom link added:
-https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for cs2101
+https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
+
 Welcome to the links menu ^~^
 Please choose which action you would like to do and enter the number:
 [1] --- External links menu
 [2] --- Add Zoom links
-[3] --- View Zoom links
-[4] --- Exit to main menu
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
 ````
 
-#### 3.4.6 View Zoom Links
+> **Note!**  
+> If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
+
+#### 3.4.6 Delete Zoom Link
+
+Deletes a zoom link of your choice
+
+Example for deleting the zoom link:
+
+````
+> 3
+--------------------------------------------
+Here are your zoom links!
+
+[1] --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09 CS1010 password'
+
+Please choose which link you would like to delete and enter the number
+> 1
+--------------------------------------------
+You have deleted --- https://nus-sg.zoom.us/j/82544240707?pwd=QUdnWWowTlNTZ0tiakxDNmVJd0s2QT09
+Welcome to the links menu ^~^
+Please choose which action you would like to do and enter the number:
+[1] --- External links menu
+[2] --- Add Zoom links
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
+````
+
+#### 3.4.7 View Zoom Links
 
 View all zoom links stored in the application
 
-Input: `3`
-
-Output:
+Example for viewing all zoom links:
 
 ````
-Here are your zoom links! Study hard :)
+> 4
+--------------------------------------------
+Here are your zoom links!
 
-[https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09, cs2101, open sesame]
+[1] --- https://nus-sg.zoom.us/j/91969975928?pwd=UmlWVEhoYmxONFZjMmFjaG4rbzhTdz09 CS1010 itsasecret!
+[2] --- https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 CS2113T no password entered
+
 Welcome to the links menu ^~^
 Please choose which action you would like to do and enter the number:
 [1] --- External links menu
 [2] --- Add Zoom links
-[3] --- View Zoom links
-[4] --- Exit to main menu
+[3] --- Delete Zoom links
+[4] --- View Zoom links
+[5] --- Exit to main menu
 ````
 
 ---
@@ -802,22 +1190,27 @@ Please choose which action you would like to do and enter the number:
 
 Features|Menu | Command to enter from the Main Menu
 ----|-----|-------
-[Add/View Module Description](#311-addview-module-description) | Module Information | 1, 1
-[Add/View Components and Their Weightages](#312-addview-components-and-their-weightages) | Module Information| 1, 2
+[Add a Module](#311-add-a-module) | Module Information | 1, 1
+[View a Module](#312-view-a-module) | Module Information | 1, 2
 [View All Modules](#313-view-all-modules) | Module Information | 1, 3
-[Add a Review](#314-add-a-review) | Module Information | 1, 4
-[View All Reviews](#315-view-all-reviews) | Module Information | 1, 5
-[Delete a Module](#316-delete-a-module) | Module Information | 1, 6
+[Delete a Module](#314-delete-a-module) | Module Information | 1, 4
+[Add/View Components and Their Weightages](#315-addview-components-and-their-weightages) | Module Information| 1, 5
+[Add Module's Modular Credits (MC)](#316-add-modules-modular-credits-mc) | Module Information| 1, 6
+[Add Module Grade](#317-add-module-grade) | Module Information| 1, 7
+[Add a Review](#318-add-a-review) | Module Information | 1, 8
+[View All Reviews](#319-view-all-reviews) | Module Information | 1, 9
+[Delete a Review](#3110-delete-a-review) | Module Information | 1, 10
 [Add CAP and Number of MCs graded taken](#321-add-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,1
 [View CAP and Number of MCs graded taken](#322-view-cap-and-number-of-mcs-graded-taken) | Cap Simulator / Calculator | 2,2
 [Simulate future CAP](#323-simulate-future-cap) | Cap Simulator / Calculator | 2.3
-[Add a new Task](#331-add-new-task) | Task Manager | 3, 1
-[Delete a new Task](#332-delete-a-task) | Task Manager | 3, 2
-[View all Tasks](#333-view-all-tasks) | Task Manager | 3, 3
-[Pin a Task](#334-pin-a-task) | Task Manager | 3, 4
+[Add a new Task](#331-add-new-task) | Task Manager | 3, 1 or 1, 11
+[Mark/Unmark a Task as Done](#332-markunmark-a-task-as-done) | Task Manager | 3, 2
+[Delete a new Task](#333-delete-a-task) | Task Manager | 3, 3 or 1, 12
+[View all Tasks](#334-view-all-tasks) | Task Manager | 3, 4
+[Pin a Task](#335-pin-a-task) | Task Manager | 3, 5
 [Add an External Link](#342-add-external-link) | External Links | 4, 1, 1
 [Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
 [View all Links](#344-view-external-links) | External Links | 4, 1 , 3
-[Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2
-[View Zoom Links](#346-view-zoom-links) | Links | 4, 3
-
+[Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
+[Delete Zoom Link](#346-delete-zoom-link) | Links | 4,3 or 1, 14
+[View Zoom Links](#347-view-zoom-links) | Links | 4, 3

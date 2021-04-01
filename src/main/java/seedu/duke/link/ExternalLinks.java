@@ -1,9 +1,16 @@
 package seedu.duke.link;
 
+import seedu.duke.Storage;
 import seedu.duke.Ui;
+
+import java.io.IOException;
 
 public class ExternalLinks extends Links {
 
+    private static final int ADD_LINK_COMMAND = 1;
+    private static final int DELETE_LINK_COMMAND = 2;
+    private static final int VIEW_LINK_COMMAND = 3;
+    private static final int EXIT_COMMAND = 4;
     protected int linkIndex;
 
     public ExternalLinks(int linkIndex) {
@@ -13,31 +20,44 @@ public class ExternalLinks extends Links {
 
     @Override
     public void execute() {
-
-        switch (linkIndex) {
-        case 1:
-            Ui.printEnterLinkMessage();
-            String linkDescription = Ui.readCommand();
-            if (!LinkInfo.isValidLink(linkDescription)) {
-                Ui.printInvalidLinkMessage();
+        while (true) {
+            switch (linkIndex) {
+            case ADD_LINK_COMMAND:
+                Ui.printEnterLinkMessage();
+                String linkDescription = Ui.readCommand();
+                if (!LinkInfo.isValidLink(linkDescription)) {
+                    Ui.printInvalidLinkMessage();
+                    continue;
+                }
+                if (isDuplicate(linkDescription)) {
+                    Ui.printDuplicateMessage();
+                    continue;
+                }
+                LinkInfo.addLink(linkDescription);
+                Ui.printAddLinkMessage(linkDescription);
                 break;
+            case DELETE_LINK_COMMAND:
+                viewLinks();
+                Ui.printLinkToDelete();
+                int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+                LinkInfo.deleteLink(deleteIndex);
+                break;
+            case VIEW_LINK_COMMAND:
+                viewLinks();
+                break;
+            case EXIT_COMMAND:
+                Ui.printReturnToLinkMenuMessage();
+                return;
+            default:
+                Ui.printInvalidIntegerMessage();
             }
-            LinkInfo.addLink(linkDescription);
-            Ui.printAddLinkMessage(linkDescription);
-            break;
-        case 2:
-            viewLinks();
-            Ui.printLinkToDelete();
-            int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
-            LinkInfo.deleteLink(deleteIndex);
-            break;
-        case 3:
-            viewLinks();
-            break;
-        case 4:
-            return;
-        default:
-            Ui.printInvalidIntegerMessage();
+            try {
+                Storage.saveAllFiles();
+            } catch (IOException e) {
+                System.out.println("modules.txt file could not be auto-saved:(");
+            }
+            Ui.printExternalLinksMessage();
+            linkIndex = Ui.readCommandToInt();
         }
     }
 
