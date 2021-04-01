@@ -101,6 +101,35 @@ public class TextUi {
             System.out.println("FIND command does not need any parameters.");
             System.out.println("However, you need to provide filter before you execute the FIND command.");
             break;
+        case "close":
+            System.out.println("CLOSE command does not need any parameters.");
+            System.out.println("You are closing the app after all.");
+            break;
+        case "help":
+            System.out.println("HELP command does not need any parameters.");
+            System.out.println("It's to help you understand all of our commands.");
+            break;
+        case "list":
+            System.out.println("LIST command does not need any parameters.");
+            System.out.println("The app will list out the parameters you have set.");
+            break;
+        case "remove":
+            System.out.println("REMOVE command needs a parameter to work.");
+            System.out.println("Example: \"remove 1\"");
+            break;
+        case "save":
+            System.out.println("SAVE command needs a parameter to work.");
+            System.out.println("Example: \"save 1\"");
+            break;
+        case "shortlist":
+            System.out.println("SHORTLIST command does not need any parameters.");
+            System.out.println("If you want to modify the short list, use SAVE command or REMOVE command instead.");
+            break;
+        case "sort":
+            System.out.println("SORT command needs a parameter to work.");
+            System.out.println("Sort types: {asc, desc}");
+            System.out.println("Example: \"sort asc\"");
+            break;
         default:
             break;
         }
