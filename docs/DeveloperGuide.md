@@ -61,6 +61,8 @@ style you should adopt when contributing code to the project.
 
 ##2. How to use this document
 
+//TODO//
+
 ##3. Setting up
 The following section describes how to set up the coding environment on your own computer, in order to start writing 
 code to improve Connoisseur.
@@ -102,5 +104,31 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 **How the architecture components interact with each other**
 
-The following diagram provides a rough overview of how **Connoisseur** is built.
-Given below is a quick overview of each component.
+The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
+
+![img.png](img.png)
+Figure 1. Architecture Diagram of Connoisseur <br>
+//TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
+
+As shown in Figure 1, the user interacts with the`UI` component and types in input. Messages displayed to the user by the `UI` component comes from the `Messages` component.
+Input from user is passed to the `parser` component, which is interpreted as a command and passed to the `Commands` component.
+Either `Storage`, `ReviewList` or `RecommendationList` component executes the command input by the user. These components 
+may produce outputs which are passed to the `UI` component and seen by the user. This is explained in more detail in the following sections.
+
+###4.2 UI & Messages component
+
+The user interface of Connoisseur is provided by the classes UI & Messages.
+It is instantiated once in the connoisseur() method.<br>
+//can add code snippet here// 
+* The ui.printGreeting() method is called to display the welcome message to the user.
+* The ui.println(COMMAND_PROMPT) method is called to prompt the user for input, where COMMAND_PROMPT is a message from 
+  the `Messages` component
+* The ui.readCommand() method reads the input which is then passed on to the `parser` component
+
+###4.3. Parser component
+
+###4.4. Review component
+###4.5. Recommendation component
+###4.6. Commands component
+###4.7. Sorter component
+###4.8. Storage component
