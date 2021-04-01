@@ -13,3 +13,15 @@ TechnoEdge<>western town<>chicken chop<>5.50
 TechnoEdge<>western town<>fish and chip<>4.50
 Fragrant<>Power nasi lemak<>Chicken wing set<>3.50
 Fragrant<>Power nasi lemak<>mee rebus<>3.0
+Fragrant<>Power nasi lemak<>Tasty and cheap, auntie very friendly//4.5
+Fragrant<>Power nasi lemak<>one of the best chicken wing i've ever ate//5
+Koufu
+kopitiam
+The deck<>yong tau fu
+The deck<>yong tau fu<>super salty//2
+Koufu<>drinkheaven
+Koufu<>drinkheaven<>a lot of ice added//3
+TechnoEdge<>mala<>very long queue but very nice//3.4
+TechnoEdge<>western town<>carbonara<>5.50
+Valid Canteen Name
+Valid Canteen Name
