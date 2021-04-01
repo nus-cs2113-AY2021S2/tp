@@ -111,7 +111,7 @@ public class Database {
         switch(type){
             case 1:
                 System.out.println("Current title: " + selectedMovie.getMovieTitle() + ".\nInsert new title:");
-                String newTitle = select.next();
+                String newTitle = select.nextLine();
                 selectedMovie.setMovieTitle(newTitle);
                 break;
             case 2:
