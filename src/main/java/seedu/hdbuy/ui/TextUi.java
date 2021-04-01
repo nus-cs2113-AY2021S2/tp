@@ -130,6 +130,9 @@ public class TextUi {
             System.out.println("Sort types: {asc, desc}");
             System.out.println("Example: \"sort asc\"");
             break;
+        case "clear":
+            System.out.println("CLEAR command does not need any parameters.");
+            System.out.println("The purpose is to clear the filters inside the query!");
         default:
             break;
         }
