@@ -12,15 +12,15 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static seedu.duke.common.Constants.DEFAULT_FONT_SIZE;
-import static seedu.duke.common.Constants.DEFAULT_FONT_STYLE;
-import static seedu.duke.common.Constants.FONT_COLOUR_ICON;
+
 import static seedu.duke.common.Constants.FONT_SIZE_MAX;
 import static seedu.duke.common.Constants.FONT_SIZE_MIN;
 import static seedu.duke.common.Constants.SAVE_ICON;
@@ -36,13 +36,14 @@ public class TextEditor extends JFrame implements ActionListener {
     public static String[] fontStyles = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
     public static JTextArea textArea = new JTextArea();
     public static JScrollPane scrollPane = new JScrollPane(textArea);
-    public static JButton fontColourButton = new JButton(FONT_COLOUR_ICON);
     public static JComboBox<String> fontStyleBox = new JComboBox<>(fontStyles);
     public static JButton saveButton = new JButton(SAVE_ICON);
     public static String pathName;
+    
+    private static TextEditor textEditor;
 
     //@@author H-horizon
-    public TextEditor(String path) {
+    private TextEditor(String path) {
         setPathName(path);
         setTextEditorTitle();
         setCloseIcon();
@@ -50,11 +51,32 @@ public class TextEditor extends JFrame implements ActionListener {
         setFontStyleIcon();
         setSaveIcon();
         setTextArea();
+        setTextAreaToVoid();
         setScrollPane();
         setLayout();
         setShortcutListener();
+        loadFile(path);
     }
 
+    //@@author 8kdesign
+    public static boolean createNew(String path) {
+        if (textEditor == null) {
+            textEditor = new TextEditor(path);
+            textEditor.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    super.windowClosed(e);
+                    textEditor = null;
+                }
+            });
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+    //@@author H-horizon
     public void loadFile(String filePath) {
         File file = new File(filePath);
         Scanner fileReader = null;

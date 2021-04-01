@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static seedu.duke.common.Messages.MESSAGE_CLOSE_CHEATSHEET_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_FILE_DOES_NOT_EXIST;
 import static seedu.duke.common.Messages.MESSAGE_OPEN_FILE;
 
@@ -26,10 +27,11 @@ public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
     @Override
     public void openTextEditor(UI ui, Path path, String filePath) {
         if (Files.exists(path)) {
-            TextEditor textEditor = new TextEditor(filePath);
-            textEditor.setTextAreaToVoid();
-            textEditor.loadFile(filePath);
-            ui.printMessage(String.format(MESSAGE_OPEN_FILE, fileName));
+            if (TextEditor.createNew(filePath)) {
+                ui.printMessage(String.format(MESSAGE_OPEN_FILE, fileName));
+            } else {
+                ui.printMessage(String.format(MESSAGE_CLOSE_CHEATSHEET_FIRST, fileName));
+            }
         } else {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
             Command command = new ListCheatSheetCommand();
