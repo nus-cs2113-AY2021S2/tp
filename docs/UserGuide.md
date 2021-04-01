@@ -531,6 +531,9 @@ Example Screenshot:
 
 The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
+This is an example of the welcome screen for the Nurse Schedule Menu.
+<img src="NurseScheduleStartScreen.png" width = "850">
+
 #### Adding a new schedule: `add`
 Adds a new schedule to the list of nurse schedules.
 (Note for ID: N/P = Nurse/Patient)
@@ -538,33 +541,48 @@ Adds a new schedule to the list of nurse schedules.
 Format: `add/[Nurse ID]/[Patiend ID]/[Date (DDMMYYYY)]`
 
 Example of usage:
+
+Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 ```
-NSchedule --> add N1 P1 30012020
+NSchedule --> add N12345 P12345 30012020
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
-NSchedule --> add N1 P1 30012020
+NSchedule --> add N112345 P12345 30012020
+
 Trip to P1 on 30012020 added!
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src="NurseScheduleAdd.png" width = "850">
+
 
 #### Deleting a schedule: `delete`
 Deletes a schedule from the list of nurse schedules.
 
 Format: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
+Deletes a schedule with the specified Nurse ID and Date.
+
 Example of usage:
 ```
-NSchedule --> delete N1 30012020
+NSchedule --> delete N12345 30012020
 ```
 Expected Outcome:
 ```
 ------------------------------------------------------------------------------
-NSchedule --> delete N1 30012020
-Trip to P1 on 30/01/2020 has been cancelled!
+NSchedule --> delete N12345 30012020
+
+Trip to P12345 on 30/01/2020 has been cancelled!
 ------------------------------------------------------------------------------
 ```
+
+Example Screenshot:
+
+<img src="NurseScheduleDelete.png" width = "850">
 
 #### Listing schedules: `list`
 List either all schedules or specified Nurse ID's schedule.
@@ -572,35 +590,49 @@ List either all schedules or specified Nurse ID's schedule.
 Format: `list/[Nurse ID/all]`
 
 Example of usage(Nurse ID):
+
+Listing all schedules of specified Nurse ID.
+
 ```
-NSchedule --> list/N2
+NSchedule --> list/N12345
 ```
 Expected Outcome(Nurse ID):
 ```
-------------------------------------------------------------------------------
-NSchedule --> list/N2
-N2
-	31/01/2020 P2
-------------------------------------------------------------------------------
+Nurse ID   | Patient ID | Date      
+____________________________________________________________
+N12345     | P12345     | 30/01/2020
 ```
+Example Screenshot:
+
+<img src="NurseScheduleListNurseID.png" width = "850">
+
 Example of usage(all):
+
+Listing all schedules.
 
 ```
 NSchedule --> list/all
 ```
 Expected Outcome(all):
 ```
-------------------------------------------------------------------------------
-NSchedule --> list/all
-N1
-	30/01/2020 P1
-N2
-	31/01/2020 P2
-------------------------------------------------------------------------------
+Nurse ID   | Patient ID | Date      
+____________________________________________________________
+N12345     | P12345     | 30/01/2020
+N00000     | P11111     | 15/02/2020
 ```
 
+Example Screenshot:
+
+<img src="NurseScheduleListAll.png" width = "850">
+
+
 #### Returning to Start Menu: `return`
-#### Help: `help'
+
+Returns to Start Menu.
+
+#### Help: `help`
+
+Prints Nurse Schedule help message.
 
 ### ??Adding a todo: `todo`??
 Adds a new item to the list of todo items.
