@@ -8,6 +8,7 @@ import seedu.duke.task.FinalExam;
 import seedu.duke.task.Midterm;
 import seedu.duke.task.Task;
 import seedu.duke.task.TaskManager;
+import seedu.duke.task.command.DeleteTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,6 +20,11 @@ public class ModuleInfo {
     private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public static ArrayList<Module> modules = new ArrayList<>();
     private static final String EMPTY_REVIEW_MESSAGE = "You have not reviewed this module yet.";
+
+    private static final String TASK_TYPE = "[Task]";
+    private static final String ASSIGNMENT_TYPE = "[Assignment]";
+    private static final String MIDTERM_TYPE = "[Midterm]";
+    private static final String FINAL_EXAM_TYPE = "[Final Exam]";
 
     public ModuleInfo() {
     }
@@ -83,7 +89,7 @@ public class ModuleInfo {
                 Ui.printInvalidIntegerMessage();
             }
             try {
-                Storage.modulesFileSaver();
+                Storage.saveAllFiles();
             } catch (IOException e) {
                 System.out.println("modules.txt file could not be auto-saved:(");
             }
@@ -158,7 +164,7 @@ public class ModuleInfo {
         if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
-            System.out.println(module.toString()); //name, description, review, MCs are printed
+            System.out.println(module.toString()); //name, description, review, MCs, grade are printed
             printModuleTaskList(module.getName());
             // add other methods to print other features of a module
 
@@ -236,8 +242,9 @@ public class ModuleInfo {
         System.out.println("Please choose which module you would like to review"
                 + " and enter the number:\n");
         int moduleNumberInt = Ui.readCommandToInt();
-        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
-            moduleNumberInt--;
+        moduleNumberInt--;
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
             modules.get(moduleNumberInt).setReview(review);
         } else {
@@ -311,7 +318,8 @@ public class ModuleInfo {
         }
         viewAllModules();
         int moduleNumberInt = readModuleNumberToBeDeleted("module");
-        if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
+        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+        if (isValidInt) {
             logger.log(Level.WARNING, "You are making a change that cannot be undone.");
             System.out.println("Are you sure you want to delete "
                     + modules.get(moduleNumberInt).getName()
@@ -319,7 +327,8 @@ public class ModuleInfo {
             String command = Ui.readCommand();
             if (readYN(command) == 1) {
                 printDeletedModuleMessage(modules.get(moduleNumberInt));
-                modules.remove(modules.get(moduleNumberInt));
+                deleteTasksforModule(modules.get(moduleNumberInt).getName());
+                testDeleteModule(moduleNumberInt);
             } else if (readYN(command) == 0) {
                 System.out.println("Ok. I did not delete "
                         + modules.get(moduleNumberInt).getName());
@@ -328,6 +337,15 @@ public class ModuleInfo {
             logger.log(Level.INFO, "You did not enter a valid integer.");
             Ui.printInvalidIntegerMessage();
         }
+    }
+
+    public static boolean checkIfIndexIsWithinBounds(int index) {
+        return index >= 0 && index < modules.size();
+    }
+
+    public static boolean testDeleteModule(int index) {
+        modules.remove(index);
+        return true;
     }
 
     public static int readModuleNumberToBeDeleted(String moduleOrReview) {
@@ -350,6 +368,45 @@ public class ModuleInfo {
                     + module.getReview());
         }
         Ui.printHorizontalLine();
+    }
+
+    private static void deleteTasksforModule(String module) {
+        for (int i = 0; i < TaskManager.tasks.size(); i++) {
+            Task task = TaskManager.tasks.get(i);
+            if (task.getModule().equals(module)) {
+                Task pinnedTask = task;
+                DeleteTask.deleteTask(TASK_TYPE, task);
+                DeleteTask.findAndDeletePinnedTask(TASK_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.assignments.size(); i++) {
+            Assignment assignment = TaskManager.assignments.get(i);
+            if (assignment.getModule().equals(module)) {
+                Assignment pinnedTask = assignment;
+                DeleteTask.deleteTask(ASSIGNMENT_TYPE, assignment);
+                DeleteTask.findAndDeletePinnedTask(ASSIGNMENT_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.midterms.size(); i++) {
+            Midterm midterm = TaskManager.midterms.get(i);
+            if (midterm.getModule().equals(module)) {
+                Midterm pinnedTask = midterm;
+                DeleteTask.deleteTask(MIDTERM_TYPE, midterm);
+                DeleteTask.findAndDeletePinnedTask(MIDTERM_TYPE, pinnedTask);
+                i--;
+            }
+        }
+        for (int i = 0; i < TaskManager.finalExams.size(); i++) {
+            FinalExam finalExam = TaskManager.finalExams.get(i);
+            if (finalExam.getModule().equals(module)) {
+                FinalExam pinnedTask = finalExam;
+                DeleteTask.deleteTask(FINAL_EXAM_TYPE, finalExam);
+                DeleteTask.findAndDeletePinnedTask(FINAL_EXAM_TYPE, pinnedTask);
+                i--;
+            }
+        }
     }
 
     private static void getComponents() {

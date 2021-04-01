@@ -20,7 +20,7 @@ public class Duke {
 
     public static void runMainMenu() {
         TaskManager taskManager = new TaskManager();
-        loadAllFiles();
+        Storage.loadAllFiles();
         while (true) {
             Ui.printPinnedTaskList(TaskManager.pinnedTasks);
             Ui.printMainMenu();
@@ -30,7 +30,7 @@ public class Duke {
 
                 if (commandInt == 5) {
                     try {
-                        saveAllFiles();
+                        Storage.saveAllFiles();
                     } catch (IOException e) {
                         System.out.println("Files could not be saved:(");
                     }
@@ -68,25 +68,4 @@ public class Duke {
         }
     }
 
-    public static void saveAllFiles() throws IOException {
-        Storage.modulesFileSaver();
-        Storage.tasksFileSaver();
-        Storage.assignmentsFileSaver();
-        Storage.midtermsFileSaver();
-        Storage.finalExamsFileSaver();
-        Storage.pinnedTasksFileSaver();
-        Storage.linksFileSaver();
-        Storage.zoomLinksFileSaver();
-    }
-
-    public static void loadAllFiles() {
-        Storage.loadModuleInfoFile();
-        Storage.loadTasksFile();
-        Storage.loadAssignmentsFile();
-        Storage.loadMidtermsFile();
-        Storage.loadFinalExamsFile();
-        Storage.loadPinnedTasksFile();
-        Storage.loadLinkInfoFile();
-        Storage.loadZoomLinkInfoFile();
-    }
 }

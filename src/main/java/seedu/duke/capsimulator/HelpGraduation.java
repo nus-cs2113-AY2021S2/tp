@@ -6,21 +6,22 @@ import seedu.duke.Ui;
 
 import java.util.ArrayList;
 
-import static seedu.duke.capsimulator.ModuleGradeEnum.checkScoreAgainstGrade;
+import static seedu.duke.capsimulator.ModuleGradeEnum.*;
 
 public class HelpGraduation {
 
     private static Double currentCap = 0.0;
     private static int numberOfGradedMCsTaken = 0;
-    public int totalMCs;
+    private int totalMCs = 0;
     public ArrayList<Double> listOfGrades;
     public ArrayList<Integer> listOfMCs;
+    public ArrayList<String> gradesInString;
 
 
     public HelpGraduation() {
-        this.totalMCs = 0;
         this.listOfGrades = new ArrayList<>();
         this.listOfMCs = new ArrayList<>();
+        this.gradesInString = new ArrayList<>();
     }
 
     public static void setCurrentCap(Double currentCap) {
@@ -52,76 +53,79 @@ public class HelpGraduation {
             for (Module module : ModuleInfo.modules) {
                 String grade = module.getGrade();
                 int modularCredits = module.getMc();
+
+                if (!checkPassFailGrade(grade)) {
+                    totalMCs += modularCredits;
+                }
+                gradesInString.add(grade);
                 String moduleName = module.getName();
                 listOfGrades.add(checkScoreAgainstGrade(grade, moduleName));
                 listOfMCs.add(modularCredits);
             }
+            capCalculator(listOfGrades, listOfMCs, totalMCs);
         } else if (capSimulatorSetting == 2) {
-            for (ModuleGradeEnum g : ModuleGradeEnum.values()) {
-                System.out.println(g.getEnumGrade());
-            }
-        }
 
-
-        Ui.printCapSimulatorPrompt();
-        while (true) {
-            Ui.printGradePerModulePrompt();
-            String grades = Ui.readCommand();
-            switch (grades) {
-            case "A+":
-            case "A":
-                listOfGrades.add(5.0);
-                receivingMCs();
-                break;
-            case "A-":
-                listOfGrades.add(4.5);
-                receivingMCs();
-                break;
-            case "B+":
-                listOfGrades.add(4.0);
-                receivingMCs();
-                break;
-            case "B":
-                listOfGrades.add(3.5);
-                receivingMCs();
-                break;
-            case "B-":
-                listOfGrades.add(3.0);
-                receivingMCs();
-                break;
-            case "C+":
-                listOfGrades.add(2.5);
-                receivingMCs();
-                break;
-            case "C":
-                listOfGrades.add(2.0);
-                receivingMCs();
-                break;
-            case "D+":
-                listOfGrades.add(1.5);
-                receivingMCs();
-                break;
-            case "D":
-                listOfGrades.add(1.0);
-                receivingMCs();
-                break;
-            case "F":
-                listOfGrades.add(0.0);
-                receivingMCs();
-                break;
-            case "ok":
-                capCalculator(listOfGrades, listOfMCs, totalMCs);
-                break;
-            case "q":
-                // to remove last grade keyed in by user due to exit of program.
-                // Acts as a safety net
-                // since new Object HelpGraduation is always created before
-                // this method is called.
-                int gradeIndex = listOfGrades.size() - 1;
-                listOfGrades.remove(gradeIndex);
-                return;
-            default:
-                Ui.printInvalidGradeMessage();
+            Ui.printCapSimulatorPrompt();
+            while (true) {
+                Ui.printGradePerModulePrompt();
+                String grades = Ui.readCommand().toUpperCase();
+                if (checkGradeExist(grades)) {
+                    gradesInString.add(grades);
+                }
+                switch (grades) {
+                case "A+":
+                case "A":
+                    listOfGrades.add(5.0);
+                    receivingMCs();
+                    break;
+                case "A-":
+                    listOfGrades.add(4.5);
+                    receivingMCs();
+                    break;
+                case "B+":
+                    listOfGrades.add(4.0);
+                    receivingMCs();
+                    break;
+                case "B":
+                    listOfGrades.add(3.5);
+                    receivingMCs();
+                    break;
+                case "B-":
+                    listOfGrades.add(3.0);
+                    receivingMCs();
+                    break;
+                case "C+":
+                    listOfGrades.add(2.5);
+                    receivingMCs();
+                    break;
+                case "C":
+                    listOfGrades.add(2.0);
+                    receivingMCs();
+                    break;
+                case "D+":
+                    listOfGrades.add(1.5);
+                    receivingMCs();
+                    break;
+                case "D":
+                    listOfGrades.add(1.0);
+                    receivingMCs();
+                    break;
+                case "F":
+                    listOfGrades.add(0.0);
+                    receivingMCs();
+                    break;
+                case "SU":
+                    // work in progress here
+                    break;
+                case "OK":
+                    capCalculator(listOfGrades, listOfMCs, totalMCs);
+                    break;
+                case "Q":
+                    Ui.printEraseSimulationEntriesMessage();
+                    return;
+                default:
+                    Ui.printInvalidGradeMessage();
+                }
             }
         }
 
@@ -164,19 +168,30 @@ public class HelpGraduation {
             // unexpected input for MCs associated with the last grade.
             int gradeIndex = listOfGrades.size() - 1;
             listOfGrades.remove(gradeIndex);
+            Ui.printEraseSimulationEntriesMessage();
             return;
         default:
             // to remove last grade keyed in by user due to
             // unexpected input for MCs associated with the last grade.
             gradeIndex = listOfGrades.size() - 1;
             listOfGrades.remove(gradeIndex);
-            Ui.printInvalidIntegerMessage();
+            gradesInString.remove(gradeIndex);
+            Ui.printInvalidModularCreditMessage();
         }
     }
 
 
     public Double capCalculator(ArrayList<Double> listOfGrades,
                                         ArrayList<Integer> listOfMCs, Integer totalMCs) {
+
+
+        System.out.println("Calculating on the following entries entered: ");
+        System.out.println("Grades entered: " + gradesInString);
+        System.out.println("MCs entered: " + listOfMCs);
+
+        System.out.println("Current CAP: " + currentCap);
+        System.out.println("Current Graded MCs taken: " + numberOfGradedMCsTaken);
+
         Double calculatedCap = 0.0;
         for (int i = 0; i < listOfGrades.size(); i++) {
             calculatedCap += listOfGrades.get(i) * listOfMCs.get(i);

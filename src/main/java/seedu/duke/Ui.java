@@ -220,14 +220,14 @@ public class Ui {
     }
 
     public static void printMarkedTaskMessage(Task task) {
-        System.out.println("You've mark this as done: " + task.toString());
+        System.out.println("You've marked this as done: " + task.toString());
         System.out.println("NOTE: " + task.getMessage());
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
 
     public static void printUnmarkedTaskMessage(Task task) {
-        System.out.println("You've mark this as not done: " + task.toString());
+        System.out.println("You've marked this as not done: " + task.toString());
         System.out.println("Returning back to TaskManager menu now!");
         printHorizontalLine();
     }
@@ -370,6 +370,16 @@ public class Ui {
 
     public static void printReturnToModuleInfoMenuMessage() {
         System.out.println("Returning to module information menu...");
+        System.out.println();
+    }
+
+    public static void printReturnToHelpGraduationMenuMessage() {
+        System.out.println("Returning to CAP simulator/calculator menu...");
+        System.out.println();
+    }
+
+    public static void printReturnToTaskManagerMenuMessage() {
+        System.out.println("Returning to task manager menu...");
         System.out.println();
     }
 
@@ -569,8 +579,15 @@ public class Ui {
     }
 
     public static void printCapSimulatorPrompt() {
+        System.out.println("Welcome to CAP Simulator Version 2!\n"
+                + " You have chosen to simulate CAP base on your input.");
+        System.out.println("THINGS TO NOTE: ");
+        System.out.println("You may key in 'q' to quit and 'ok' after finishing your inputs.");
         System.out.println("You may key in your letter grades "
-                + "and MCs associated with the letter grade.");
+                + "follow by MCs associated with the letter grade "
+                + "after each prompt. \n");
+
+
     }
 
     public static void printMCsPerModulePrompt() {
@@ -642,8 +659,24 @@ public class Ui {
      * Second choice calculates CAP score base on user input.
      */
     public static void printCapSimulatorSetting() {
+        System.out.println("Welcome to CAP Simulator!");
+        System.out.println("Note: CAP Simulated takes your current CAP "
+                + "and total number of MCs taken into account.");
+        System.out.println("If you intend to calculate your CAP solely on new entries, \n"
+                + "please go back to the HelpGraduation menu"
+                + " and set existing CAP and MCs taken to be 0.\n");
         System.out.println("Key in 1 to simulate your cap base on the grades you have"
                 + " entered before for each module."
                 + "\nKey in 2 to simulate cap base on your own input.");
+    }
+
+    public static void printInvalidModularCreditMessage() {
+        System.out.println("Invalid modular credit. "
+                + "Please key in module grade for this module again, \n"
+                + "follow by a VALID modular credit.");
+    }
+
+    public static void printEraseSimulationEntriesMessage() {
+        System.out.println("Erasing current simulation entries...\n");
     }
 }

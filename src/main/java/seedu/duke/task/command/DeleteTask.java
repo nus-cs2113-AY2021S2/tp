@@ -4,6 +4,8 @@ import seedu.duke.Ui;
 import seedu.duke.task.Task;
 import seedu.duke.task.TaskManager;
 
+import java.util.ArrayList;
+
 public class DeleteTask {
 
     private static final int DELETE_TASK = 1;
@@ -82,7 +84,7 @@ public class DeleteTask {
     }
 
 
-    private static void findAndDeletePinnedTask(String taskType, Task task) {
+    public static void findAndDeletePinnedTask(String taskType, Task task) {
         boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(), task.getDescription(),
                 task.getStatus(), task.getMessage());
         if (taskIsPinned) {
