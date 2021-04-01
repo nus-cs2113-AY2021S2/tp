@@ -20,9 +20,13 @@
 &nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Review](#401-add-new-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.02 Delete a Review](#402-delete-a-review)  
 &nbsp;&nbsp;&nbsp;&nbsp;[4.03 Add New Task](#403-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Delete a Task](#404-delete-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add Zoom Link](#405-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.06 Add Module Components](#406-add-module-components)
+&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Mark/Unmark a Task as Done](#404-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Delete a Task](#405-delete-a-task)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 View All Tasks](#406-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Pin A Task](#407-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Add Zoom Link](#408-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Add Module Components](#409-add-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View Module Components](#410-view-module-components)  
 
 [5. Product scope](#5-product-scope)    
 
@@ -220,10 +224,32 @@ user. Using the example above,
 The user input for `Message` (argument 5 above) will be printed out when the user deleted the task,
 signalling completion.
 
-### 4.04 Delete a Task
+### 4.04 Mark/Unmark a Task as Done
+
+This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/markUnmarkTask.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will prompt them to choose the __task
+type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to mark/unmark. All existing
+tasks in the ArrayList for the task type they chose will then be printed out, and the user has to
+input the index of the task they want to mark/unmark. 
+
+Depending on the current status of the task, the user will be informed of the current status of the task and be asked if they want to change it.
+
+Upon marking a task as done, the `Message` that the user inputted upon creation of this particular task will then be printed out.
+
+
+### 4.05 Delete a Task
 
 This feature allows the user to delete a task of type `task`, `assignment`, `midterm`, `final exam`
 from a task list.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/deleteATask.png)
 
 A general explanation of how this feature works:
 
@@ -233,9 +259,38 @@ tasks in the `ArrayList` for the task type they chose will then be printed out, 
 input the index of the task they want to delete. The task they select will then be deleted from
 the `ArrayList`.
 
-The `Message` that the user inputted upon creation of this particular task will then be printed out.
+### 4.06 View All Tasks
 
-### 4.05 Add Zoom Link
+This feature allows the user to view all their existing tasks for all task types.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/viewAllTasks.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will first iterate through and print out the pinned task list.
+This is then followed by the `task` list, `assignment` list, `midterm` list and `final exam` list.
+
+### 4.07 Pin a Task
+
+This feature allows the user to pin a task of type `task`, `assignment`, `midterm`, `final exam`
+from a task list.
+
+Given below is the sequence diagram for this feature:
+![Diagram](diagrams/pinTask.png)
+
+A general explanation of how this feature works:
+
+When the user calls this feature, the application will prompt them to choose the __task
+type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to pin. All existing
+tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
+input the index of the task they want to pin. 
+
+The pinned task list is stored using a HashMap, with the key being the __task type__ and value being an ArrayList.
+The task the user selected will then be added to the respective pinned task
+ArrayList corresponding to the __task type__ they chose.
+
+### 4.08 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/addZoomLink.png)
@@ -259,7 +314,7 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 4.06 Add Module Components
+### 4.09 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
@@ -281,7 +336,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-### 4.07 View Module Components
+### 4.10 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.

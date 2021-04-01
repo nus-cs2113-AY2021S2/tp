@@ -6,10 +6,10 @@ import seedu.duke.task.TaskManager;
 
 public class MarkOrUnmarkTask {
 
-    private static final int ADD_TASK_COMMAND = 1;
-    private static final int ADD_ASSIGNMENT_COMMAND = 2;
-    private static final int ADD_MIDTERM_COMMAND = 3;
-    private static final int ADD_FINAL_EXAM_COMMAND = 4;
+    private static final int TOGGLE_TASK_COMMAND = 1;
+    private static final int TOGGLE_ASSIGNMENT_COMMAND = 2;
+    private static final int TOGGLE_MIDTERM_COMMAND = 3;
+    private static final int TOGGLE_FINAL_EXAM_COMMAND = 4;
     private static final String TASK_TYPE = "[Task]";
     private static final String ASSIGNMENT_TYPE = "[Assignment]";
     private static final String MIDTERM_TYPE = "[Midterm]";
@@ -27,16 +27,16 @@ public class MarkOrUnmarkTask {
             try {
                 int taskNumber = Integer.parseInt(Ui.readCommand());
                 switch (taskTypeNumber) {
-                case ADD_TASK_COMMAND:
+                case TOGGLE_TASK_COMMAND:
                     toggleTaskStatus(taskNumber, TASK_TYPE);
                     break;
-                case ADD_ASSIGNMENT_COMMAND:
+                case TOGGLE_ASSIGNMENT_COMMAND:
                     toggleTaskStatus(taskNumber, ASSIGNMENT_TYPE);
                     break;
-                case ADD_MIDTERM_COMMAND:
+                case TOGGLE_MIDTERM_COMMAND:
                     toggleTaskStatus(taskNumber, MIDTERM_TYPE);
                     break;
-                case ADD_FINAL_EXAM_COMMAND:
+                case TOGGLE_FINAL_EXAM_COMMAND:
                     toggleTaskStatus(taskNumber, FINAL_EXAM_TYPE);
                     break;
                 default:

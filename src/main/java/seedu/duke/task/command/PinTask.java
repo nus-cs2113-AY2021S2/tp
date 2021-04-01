@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class PinTask {
 
-    private static final int ADD_TASK_COMMAND = 1;
-    private static final int ADD_ASSIGNMENT_COMMAND = 2;
-    private static final int ADD_MIDTERM_COMMAND = 3;
-    private static final int ADD_FINAL_EXAM_COMMAND = 4;
+    private static final int PIN_TASK_COMMAND = 1;
+    private static final int PIN_ASSIGNMENT_COMMAND = 2;
+    private static final int PIN_MIDTERM_COMMAND = 3;
+    private static final int PIN_FINAL_EXAM_COMMAND = 4;
     private static final String TASK_TYPE = "[Task]";
     private static final String ASSIGNMENT_TYPE = "[Assignment]";
     private static final String MIDTERM_TYPE = "[Midterm]";
@@ -27,16 +27,16 @@ public class PinTask {
             try {
                 int taskNumber = Integer.parseInt(Ui.readCommand());
                 switch (taskTypeNumber) {
-                case ADD_TASK_COMMAND:
+                case PIN_TASK_COMMAND:
                     addTaskToPinnedTasks(TaskManager.tasks.get(taskNumber - 1), TASK_TYPE);
                     break;
-                case ADD_ASSIGNMENT_COMMAND:
+                case PIN_ASSIGNMENT_COMMAND:
                     addTaskToPinnedTasks(TaskManager.assignments.get(taskNumber - 1), ASSIGNMENT_TYPE);
                     break;
-                case ADD_MIDTERM_COMMAND:
+                case PIN_MIDTERM_COMMAND:
                     addTaskToPinnedTasks(TaskManager.midterms.get(taskNumber - 1), MIDTERM_TYPE);
                     break;
-                case ADD_FINAL_EXAM_COMMAND:
+                case PIN_FINAL_EXAM_COMMAND:
                     addTaskToPinnedTasks(TaskManager.finalExams.get(taskNumber - 1), FINAL_EXAM_TYPE);
                     break;
                 default:

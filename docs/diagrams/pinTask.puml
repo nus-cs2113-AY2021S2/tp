@@ -1,0 +1,74 @@
+@startuml
+
+activate ":Duke"
+":Duke" -> ":TaskManager"++ : execute
+
+loop true
+
+":TaskManager" -> ":Ui"++ : printTaskManagerMenu
+return
+":TaskManager" -> ":Ui"++ : readCommand
+return
+
+alt Integer.parseInt(command)
+    opt command.equals(EXIT_COMMAND)
+    ":TaskManager" --> ":Duke"
+    end
+
+":TaskManager" -> ":TaskManager"++ : pinTask
+":TaskManager" -> ":Ui"++ : rintPinTaskMenu
+return
+":TaskManager" -> ":TaskManager"++ : getTaskNumber
+return
+":TaskManager" -> ":PinTask"++ : execute
+    opt TaskManager.taskListIsEmpty(taskTypeNumber)
+    ":PinTask" -> ":Ui"++ : printTaskListIsEmptyMessage
+    return
+    ":PinTask" --> ":TaskManager"
+    end
+    ":PinTask" -> ":Ui"++ : printSelectTaskNumberToPin
+    return
+    alt PIN_TASK_COMMAND
+    ":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks
+    return
+    else PIN_ASSIGNMENT_COMMAND
+    ":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks
+    return
+    else PIN_MIDTERM_COMMAND
+    ":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks
+    return
+    else PIN_FINAL_EXAM_COMMAND
+    ":PinTask" -> ":PinTask"++ : addTaskToPinnedTasks
+    return
+    else default
+    ":PinTask" -> ":Ui"++ : printInvalidIntegerMessage
+    return
+    end
+
+else NumberFormatException
+":PinTask" -> ":Ui"++ : printInvalidIntegerMessage
+return
+
+else IndexOutOfBoundsException
+":PinTask" -> ":Ui"++ : printInvalidTaskNumberMessage
+return
+end
+destroy ":PinTask"
+
+return
+return
+
+alt
+":TaskManager" -> ":Storage"++ : saveAllFiles
+return
+else IOException
+":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
+return
+end
+destroy ":TaskManager"
+
+return
+
+end
+
+@enduml
