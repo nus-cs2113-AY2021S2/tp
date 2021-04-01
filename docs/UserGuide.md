@@ -122,58 +122,59 @@ This is an example of the welcome screen for Staff Menu.
 <br/><br/>
 
 #### Adding a new staff: `add`
-Adds a new doctor or nurse to the respective staff lists.
+&nbsp;&nbsp;&nbsp;&nbsp; Adds a new doctor or nurse to the respective staff lists. 
 
-Format: `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
 
-Example of usage:<br/>
-Adding a Pediatrician MingShun with Staff ID of D12345 of age 30
-```
-Staff --> add/D12345/MingShun/30/Pediatrician
-```
-Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage:<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp; Adding a Pediatrician MingShun with Staff ID of D12345 of age 30
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` Staff --> add/D12345/MingShun/30/Pediatrician```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/StaffAdd.PNG" width = "850" >
 
 <br/><br/>
  
 #### Deleting a staff: `delete`
-Deletes a staff from the staff list.
+&nbsp;&nbsp;&nbsp;&nbsp;Deletes a staff from the staff list.
 
-Format: `delete/[Staff ID]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Format: `delete/[Staff ID]`
 
-Example of usage:
-```
-Staff --> delete/D12345
-```
-Expected Outcome:
+&nbsp;&nbsp;&nbsp;&nbsp;Example of usage:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Staff --> delete/D12345 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome:
 
 <img src="images/StaffDelete.PNG" width = "850" >
 
 <br/><br/>
 
 #### Listing all doctors or nurses: `list`
-Lists either all doctors or all nurses.
+&nbsp;&nbsp;&nbsp;&nbsp; Lists either all doctors or all nurses.
 
-Format: `list/<doctors/nurses>`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Format: `list/<doctors/nurses>`
 
-**Note: <> implies that the inputs are optional**
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Note: <> implies that the inputs are optional**
 
 
-Example of usage(doctors):
-```
-Staff --> list/doctors
-```
-Expected Outcome(doctors):
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage(doctors):
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Staff --> list/doctors ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(doctors):
 
 <img src="images/StaffListDoc.PNG" width = "850">
 
 
-Example of usage (nurses):
-```
-Staff --> list/nurses
-```
-Expected Outcome(nurses):
+&nbsp;&nbsp;&nbsp;&nbsp; Example of usage (nurses):
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Staff --> list/nurses ```
+
+&nbsp;&nbsp;&nbsp;&nbsp; Expected Outcome(nurses):
 
 <img src="images/StaffListNurse.PNG" width = "850">
 
