@@ -32,7 +32,9 @@ Since: `March 2021`
    3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
    3.7 [Exit the program: `exit`](#37-exit-the-program-exit)\
    3.8 [Help function: `help`](#38-help-function-help)\
-   3.9 [Records Storage](#39-records-storage)
+   3.9 [Records Storage](#39-records-storage)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.1 [Saving Data](#391-saving-data)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.9.2 [Loading Data](#392-loading-data)
 1. [Frequently Asked Questions](#4-frequently-asked-questions)
 1. [Command Summary](#5-command-summary)
 
@@ -299,7 +301,6 @@ Output:
 
 ---
 
-
 Let's say that Mark wants to borrow money from you again, but you will want to know his "credit-worthiness" 
 (`creditScore`) before lending him money again, you can simply enter his _name_ after the `creditScore` command.
 
@@ -307,7 +308,6 @@ Format: `creditscore <person>`
 
 > - `<person>` refers to existing borrower in the loan list
 > - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
-
 
 Format: `creditscore <person>`
 
@@ -370,17 +370,17 @@ Output:
 
 ---
 
-#### 3.9.1 Automatically saving all records into a file
+#### 3.9.1 Saving Data
 
-* All your records are automatically saved after the following commands: `add`, `remove`, `return`.
+* All your records are automatically saved into `finux.txt` after the following commands: `add`, `remove`, `return`.
 * Records will **NOT** be saved after the following commands: `help`, `list`, `view`, `creditscore`, `exit`.
 
 > ❗ Do ensure that permissions are given for Finux to write into the folder it is in,
 > Finux will exit upon unsuccessful file creation.
 
-#### 3.9.2 Automatically loading data from an existing file into Finux
+#### 3.9.2 Loading Data
 
-* Finux will automatically load your data from "finux.txt" when it finds the text
+* Finux will automatically load your data from `finux.txt` when it finds the text
   file in the same home folder as mentioned in the [Quick Start](#2-quick-start). <br><br>
 
 * Expected output for new file creation: <br>
@@ -424,9 +424,9 @@ Output:
 | List all expense records               | `list -e`                                                | -                                                    |
 | List all loan records                  | `list -l`                                                | -                                                    |
 | List all saving records                | `list -s`                                                | -                                                    |
-| View total expenditure                 | `view -e`                                                | -                                                    |
-| View total amount of unreturned loans  | `view -l`                                                | -                                                    |
-| View total savings amount              | `view -s`                                                | -                                                    |
+| View total expense                     | `view -e`                                                | -                                                    |
+| View total unreturned loans            | `view -l`                                                | -                                                    |
+| View total savings                     | `view -s`                                                | -                                                    |
 | Mark a loan as returned                | `return -i <loan_index> -d <return_date>`                | `return -i 3 -d 28/03/2021`                          |
 | Remove a record (expense/savings/loan) | `remove -i <index>`                                      | `remove -i 1`, `remove -i 2`                         |
 | Check a person's credit score          | `creditscore <person>`                                   | `creditscore jason`, `creditscore mark`              |
