@@ -9,7 +9,10 @@ import ui.Ui;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class AddReviewCommand extends Command {
@@ -54,6 +57,9 @@ public class AddReviewCommand extends Command {
         }
         store.addReview(new Review(description, rating));
         ui.reviewAdded();
-        Storage.saveReview(new FileWriter("data/storage.txt",true),canteen,store,description,line);
+        Date dateTime = new Date();
+        Format formatter = new SimpleDateFormat("yyy-MM-dd");
+        Storage.saveReview(new FileWriter("data/storage.txt",true),canteen,store,description,line,
+                formatter.format(dateTime));
     }
 }
