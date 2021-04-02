@@ -38,7 +38,7 @@ activate RecordList
 RecordList --> AddCommand
 deactivate RecordList
 
-AddCommand -> Storage : saveData(recordList, ...)
+AddCommand -> Storage : saveData(recordList, creditScoreReturnedLoansMap)
 activate Storage
 Storage --> AddCommand
 deactivate Storage

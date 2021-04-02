@@ -294,6 +294,12 @@ object is successfully created. Most of the input validation is done in the cons
    * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
      Each option value is validated based on the input validation methods for each data type.
 
+In the case of `AddCommand`, which supports options of `{-e | -l | -s}`, the constructor will check which option
+was given, and sets the `RecordType` enumeration, `recordType` to the following:
+* `-e` sets `recordType` to `EXPENSE`.
+* `-l` sets `recordType` to `LOAN`.
+* `-s` sets `recordType` to `SAVING`.
+
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
 is thrown back to the `CommandHandler`.
@@ -413,9 +419,63 @@ By calling the `execute()` method,
 ![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
 _Figure x: Sequence Diagram for `add {-e | -l | -s}`_
 
+> 📝 The sequence diagram starts from Step 2 onward.
+
+Given below is an example usage scenario of how `AddCommand` behaves at each step.
+
+***Step 1:***\
+User executes the command `add -e Company lunch -a 20.00 -d 02-04-2021`.\
+The application invokes `ParserHandler#getParseInput()` to provide the parsed
+input to `CommandHandler#createCommand()`. This checks for the command type, `add`, and proceeds to validate the
+parsed input in the `new AddCommand()` constructor before returning the constructed `AddCommand` object to `Finux`.
+
+***Step 2:***\
+The application next invokes the `AddCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+Inside the `AddCommand#execute()`, the method conducts a check on the `RecordType` enumeration before creating
+the `Record` object.
+> ✔️ `EXPENSE` type creates a `new Expense(String,LocalDate,String)`
+
+> ✔️ `LOAN` type creates a `new Loan(String,LocalDate,String,String)`
+
+> ✔️ `SAVING` type creates a `new Saving(String,LocalDate,String)`
+
+***Step 4:***\
+The `Record` object is added to into the `RecordList` object by invoking `RecordList#addRecord(Record)`.
+
+***Step 5:***\
+The `RecordList` object is written to file by invoking `Storage#saveData(RecordList, CreditScoreReturnedLoansMap)`.
+
+***Step 6:***\
+Lastly, a successful add message is printed by invoking `Ui#printSuccessfulAdd(Record,int)`.
+
+
 #### 4.1.2 Design Consideration
 This section shows the design considerations taken when implementing the add feature.
 
+Aspect: **How to manage so many different options**
+
+For record types such as `Expense` and `Saving`, they do not require additional options.
+But for `Loan` record type, it requires an extra option `-p` for the borrower name. Since the `add` command
+supports many different options and option ordering is not strict, this will complicate validation.
+
+The two choices to consider would be:
+* Use regular expressions (regex)
+* Use systematic validation
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|Regular expressions|Less complicated validation procedure.|May need a very complicated regex String or multiple ones, for each Command|
+|Systematic validation|Option validation methods can be shared with other Commands|Many option violations to check|
+
+Having considered two of the approaches, we have decided to adopt the second approach.
+Systematic validation is better in the long run. It allows for code re-usability and addition for more
+modular changes,
+* i.e. addition of new options, tweaking validation procedures, etc...
+
+Other than increased complexity of regex Strings, any changes to command and option structure requires a completely
+new regex String. Therefore, systematic validation is the preferred approach, for the current and future developers.
 
 ### 4.2 List Feature
 The `list` feature allows Finux users to list records that they have entered into the system.
@@ -459,13 +519,13 @@ parsed input in the `new ViewCommand()` constructor before returning the constru
 The application next invokes the `ViewCommand#execute()` to execute the user's instruction.
 
 ***Step 3:***\
-Inside the `ViewCommand#execute()`, the method conducts a check on the object record type before executing the 
+Inside the `ViewCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the 
 respective method.
-> ✔️ `Expense` type invokes `Ui#printTotalAmountExpense()`
+> ✔️ `EXPENSE` type invokes `Ui#printTotalAmountExpense()`
 
-> ✔️ `Loan` type invokes `Ui#printTotalAmountLoan()`
+> ✔️ `LOAN` type invokes `Ui#printTotalAmountLoan()`
 
-> ✔️ `Saving` type invokes `Ui#printTotalAmountSaving()`
+> ✔️ `SAVING` type invokes `Ui#printTotalAmountSaving()`
 
 ***Step 4:***\
 The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
@@ -523,7 +583,7 @@ Example:
 `return -i 2 -d 2021-03-16`
 
 Output:
-Loan marked as returned: [L][2021-03-16] Loan to Tom [v]
+Loan marked as returned: `[L][2021-03-16] Loan to Tom [v]`
 
 
 ### 4.5 Remove Feature
@@ -575,8 +635,8 @@ The sequence diagram presented below depicts the interaction between the compone
 `remove -i 1`.
 > 📝 The sequence diagram starts from Step 2 onward.
 > 
-> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
-> are given.
+> 📝 The `commandLooper()` only serves as a user input reader here and takes certain actions when certain allowed 
+> commands are given.
 
 #### 4.5.2 Design Consideration
 
