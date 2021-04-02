@@ -1,45 +1,45 @@
 # Connoisseur User Guide
 
 ## Table of Contents
-1. [Introduction](#1.-Introduction)
-2. [About this Guide](#2.-About-this-Guide)
-   
-   2.1 [What is in Connoisseur](#2.1-What-is-in-Connoisseur)
-   
-   2.2 [How to use this Guide](#2.2-How-to-use-this-Guide)
-   
-3. [Quick start](#3.-Quick-Start)
-4. [Features](#4.-Features)
-   
-   4.1 [Review Mode](#4.1-Review-Mode)
+1. [Introduction](#1-introduction)
+2. [About this Guide](#2-about-this-guide)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.1 [Add a Review](#4.1.1-Adding-a-Review)
+   2.1 [What is in Connoisseur](#21-what-is-in-connoisseur)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.2 [List Reviews](#4.1.2-List-Reviews)
+   2.2 [How to use this Guide](#22-how-to-use-this-guide)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.3 [Sort Reviews](#4.1.3-Sort-Reviews)
+3. [Quick start](#3-quick-start)
+4. [Features](#4-features)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.4 [View a Review](#4.1.4-View-a-Review)
+   4.1 [Review Mode](#41-review-mode)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.5 [Edit a Review](#4.1.5-Edit-a-Review)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.1 [Add a Review](#411-adding-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#4.1.6-Delete-a-Review)
-   
-   4.2 [Recommendation Mode](#4.2-Recommendation-Mode)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.2 [List Reviews](#412-list-reviews)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 [Add a Recommendation](#4.2.1-Adding-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.3 [Sort Reviews](#413-sort-reviews)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.2 [List Recommendation](#4.2.2-List-recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.4 [View a Review](#414-view-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.3 [Edit a Recommendation](#4.2.3-Edit-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.5 [Edit a Review](#415-edit-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.4 [Delete a Recommendation](#4.2.4-Delete-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#416-delete-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.5 [Review a Recommendation](#4.2.5-Review-a-Recommendation)
-   
-   4.3 [View Help](#4.3-View-Help)
-   
-   4.4 [Exit & Save Connoisseur](#4.4-Exit-&-Save-Connoisseur)
+   4.2 [Recommendation Mode](#52-recommendation-mode)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 [Add a Recommendation](#421-adding-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.2 [List Recommendation](#422-list-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.3 [Edit a Recommendation](#423-edit-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.4 [Delete a Recommendation](#424-delete-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.5 [Review a Recommendation](#425-review-a-recommendation)
+
+   4.3 [View Help](#43-view-help)
+
+   4.4 [Exit & Save Connoisseur](#44-exit-&-save-connoisseur)
 5. [Command Summary](#5.-Command-Summary)
 6. [FAQ](#6.-FAQ)
 
@@ -282,9 +282,9 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 prompt you saying that no such recommendation exits.
 
 As shown in Figure 16 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
-Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` . 
+Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .
 
-If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`. 
+If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`.
 
 ![img_16.png](./images/ug/edit_reco.png)
 <p align="center">Figure 16. Editing Recommendations</p>
@@ -368,8 +368,4 @@ command: `exit` or `bye`
 //TODO
 **Q**: How do I transfer my data to another computer?
 
-**A**: {your answer here}
-
-
-
-
+**A**: Simply move the jar file and data/connoisseur.json into the same directory.
