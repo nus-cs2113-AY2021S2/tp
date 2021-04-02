@@ -3,9 +3,7 @@ package seedu.storage;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.errorchecker.InventoryChecker;
-import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.Inventory;
-import seedu.model.Patient;
 import seedu.ui.InventoryUI;
 
 import java.io.File;
@@ -70,15 +68,11 @@ public class InventoryStorage {
                 //splits the string into sections for storing in the ArrayList
                 String[] taskSave = currentScan.trim().split("\\|");
                 int numberOfTokens = taskSave.length;
-                ArrayList<String> cleanString = new ArrayList<>();
                 if (taskSave.length != 3) {
                     throw new HealthVaultException("loadFile");
                 }
-                for (int i = 0; i < numberOfTokens; i++) {
-                    cleanString.add(ui.cleanseInput(taskSave[i]).trim());
-                }
                 try {
-                    checker = new InventoryChecker(inventories, cleanString, numberOfTokens);
+                    checker = new InventoryChecker(inventories, taskSave, numberOfTokens);
                     checker.checkStorage();
                     Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
                     inventories.add(tempInventory);

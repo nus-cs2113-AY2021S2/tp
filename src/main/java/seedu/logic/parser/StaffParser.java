@@ -28,6 +28,7 @@ public class StaffParser {
             UI.noCommandErrorMessage();
             return new StaffReturn();
         }
+        staffChecker.checkNumInput(line, 5,1);
         switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
         case ("add"):

@@ -16,38 +16,34 @@ import java.util.ArrayList;
 public class InventoryChecker extends MainChecker {
     private InventoryActions inventory;
     private ArrayList<Inventory> inventoryArrayList;
-    private ArrayList<String> stringTokens;
+    private String[] stringTokens;
     private String command;
     private int numberOfTokens;
 
-    public InventoryChecker(InventoryActions inventory, ArrayList<String> stringTokens, String command, int numberOfTokens) {
+    public InventoryChecker(InventoryActions inventory, String[] stringTokens, String command, int numberOfTokens) {
         this.inventory = inventory;
         this.stringTokens = stringTokens;
         this.command = command;
         this.numberOfTokens = numberOfTokens;
     }
 
-    public InventoryChecker(ArrayList<Inventory> inventory, ArrayList<String> stringTokens, int numberOfTokens) {
+    public InventoryChecker(ArrayList<Inventory> inventory, String[] stringTokens, int numberOfTokens) {
         inventoryArrayList = inventory;
         this.stringTokens = stringTokens;
         this.numberOfTokens = numberOfTokens;
     }
 
+
     public void checkStorage() throws HealthVaultException {
         emptySpaceCheck();
         checkStorageLength();
-        illegalCharacterChecker(stringTokens.get(0), "name");
-        illegalCharacterChecker(stringTokens.get(1), "price");
-        illegalCharacterChecker(stringTokens.get(2), "quantity");
-        /*if (!isValidPrice(stringTokens.get(2)))  {
-            throw new CorruptedFileException(Constants.INVENTORY_FILE_PATH);
-        }*/
+        illegalCharacterChecker(stringTokens[0], "name");
+        illegalCharacterChecker(stringTokens[2], "quantity");
     }
     public void checkAdd() {
         try {
-            illegalCharacterChecker(stringTokens.get(1), "name");
-            illegalCharacterChecker(stringTokens.get(2), "price");
-            illegalCharacterChecker(stringTokens.get(3), "quantity");
+            illegalCharacterChecker(stringTokens[1], "name");
+            illegalCharacterChecker(stringTokens[3], "quantity");
         } catch (IllegalCharacterException e) {
             System.out.println(e.getMessage());
         }
@@ -59,7 +55,7 @@ public class InventoryChecker extends MainChecker {
     }
     public void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
-            if (stringTokens.get(i).trim().equals("")) {
+            if (stringTokens[i].trim().equals("")) {
                 throw new NoInputException();
             }
         }

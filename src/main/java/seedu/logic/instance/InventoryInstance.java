@@ -27,15 +27,6 @@ public class InventoryInstance {
         ui = new InventoryUI();
         inventoryStorage = new InventoryStorage(filePath);
         parser = new InventoryParser();
-        /*
-        try {
-            //inventories = inventoryStorage.uploadDrugs();
-            inventory = new InventoryActions(inventoryStorage.loadInventory());
-        } catch (HealthVaultException e) {
-            ui.showLoadingError();
-            inventory = new InventoryActions();
-            //inventories = inventoryStorage.createNewFile();
-        }*/
     }
 
     public void run() {
@@ -66,6 +57,8 @@ public class InventoryInstance {
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+            } catch (Exception e) {
+                System.out.println("Something went wrong");
             }
         }
 
