@@ -16,4 +16,8 @@ public class Customer extends User{
 	public void addNewBooking(Booking booking){
 		bookings.add(booking);
 	}
+
+	public ArrayList<Booking> getBookings(){
+		return bookings;
+	}
 }

@@ -2,7 +2,9 @@ package movieApp.parser;
 
 import movieApp.Cineplex;
 import movieApp.Movie;
+import movieApp.command.ViewBooking;
 import movieApp.storage.Database;
+import movieApp.user.User;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -33,7 +35,8 @@ public class MovieFilter {
 			System.out.println(" 5 Filter by title");
 			System.out.println(" 6 Select movie");
 			System.out.println(" 7 Clear all filters");
-			System.out.println(" 8 Back to Main Menu");
+			System.out.println(" 8 View Bookings");
+			System.out.println(" 9 Back to Main Menu");
 			System.out.println("============================");
 			System.out.println("Please indicate your choice:");
 
@@ -43,8 +46,8 @@ public class MovieFilter {
 				continue;
 			} 
 			filter = sc.nextInt();
-			if ((filter < 1) ||(filter > 8)) {
-				System.out.println("Please input an integer between 1 and 8.\n");
+			if ((filter < 1) ||(filter > 9)) {
+				System.out.println("Please input an integer between 1 and 9.\n");
 			}
 		}
 		return filter;
@@ -148,7 +151,6 @@ public class MovieFilter {
 			i++;
 		}
 		return movieList;
-		
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -190,9 +192,6 @@ public class MovieFilter {
 			return "No such showing status.";
 		}
 	}
-
-
-
 
 	////////////////////////////////////////////////////////////////////////////
 	public static ArrayList<Movie> filterByShowingStatus(ArrayList<Movie> movieList){
@@ -306,13 +305,13 @@ public class MovieFilter {
 	}
 
 	////////////////////////////////////////////////////////////////////////////
-	public static Movie filter(ArrayList<Movie> movieList,ArrayList<Cineplex> CineplexDatabase) {
+	public static Movie filter(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase, User user) {
 		int Filter;
 		while (movieList.size() != 1) {
 			ArrayList<Movie> movieListCopy = new ArrayList<>(movieList);
 
 				Filter = getFilter();
-				if(Filter==8) {
+				if(Filter==9) {
 					return null;
 				}
 				printMovieList(movieList);
@@ -346,6 +345,10 @@ public class MovieFilter {
 					movieList = new ArrayList<>(Database.MovieDatabase);
 					break;
 				case 8:
+					ViewBooking currentUserBookings = new ViewBooking(user);
+					currentUserBookings.printBookings();
+					break;
+				case 9:
 					return null;
 				default:
 					System.out.println("Invalid input. Please try again.");

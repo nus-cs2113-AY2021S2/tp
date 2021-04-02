@@ -17,4 +17,7 @@ public class Admin extends User{
 		bookings.add(booking);
 	}
 
+	public ArrayList<Booking> getBookings(){
+		return bookings;
+	}
 }

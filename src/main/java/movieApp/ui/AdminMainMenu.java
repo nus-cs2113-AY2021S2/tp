@@ -40,7 +40,7 @@ public class AdminMainMenu implements MainMenu{
 
 			switch(functionSelection) {
 			case 1:
-				Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase);
+				Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase, user.get(currentUserIndex));
 				if (movie != null) {
 					MovieMenu.movieAction(movie, user.get(currentUserIndex));
 				}
