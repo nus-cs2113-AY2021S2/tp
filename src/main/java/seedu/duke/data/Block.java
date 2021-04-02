@@ -1,5 +1,6 @@
 package seedu.duke.data;
 
+import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidIndexException;
 
 import java.util.ArrayList;
@@ -68,6 +69,7 @@ public class Block {
     public void deleteNote(int index) throws InvalidIndexException {
         try {
             notes.remove(index);
+            assert (index >= 0 & index <= notes.size()) : "Index is out of bounds";
         } catch (IndexOutOfBoundsException e) {
             throw new InvalidIndexException();
         }

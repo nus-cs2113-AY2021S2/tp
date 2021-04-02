@@ -20,14 +20,16 @@ public class DeleteNoteCommand extends Command {
 
     @Override
     public void execute() {
-        String deleteBlock = ui.getBlockInfo();
+        String deleteBlockInfo = ui.getBlockInfo();
         try {
-            nusMap.checkIfValidBlock(deleteBlock);
-            Block block = nusMap.getBlock(deleteBlock);
+            nusMap.checkIfValidBlock(deleteBlockInfo);
+            Block block = nusMap.getBlock(deleteBlockInfo);
             ui.showNotes(block.getNotes());
             int deleteIndex = ui.getDeleteIndex();
             block.deleteNote(deleteIndex - 1);
-            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlock));
+            assert (deleteIndex > 0 & deleteIndex <= nusMap.getBlock(deleteBlockInfo).getNotes().size()) :
+                    "Index is out of bounds";
+            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlockInfo));
         } catch (EmptyNoteException e) {
             ui.showMessageWithDivider(String.format(e.getMessage(), deleteBlock));
         } catch (InvalidIndexException | InvalidBlockException e) {

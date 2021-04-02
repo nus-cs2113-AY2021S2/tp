@@ -19,13 +19,13 @@ public class ShowNoteCommand extends Command {
 
     @Override
     public void execute() {
-        String listInfo = ui.getBlockInfo();
+        String showBlockInfo = ui.getBlockInfo();
         try {
-            nusMap.checkIfValidBlock(listInfo);
-            ArrayList<String> notes = nusMap.getBlock(listInfo).getNotes();
+            nusMap.checkIfValidBlock(showBlockInfo);
+            ArrayList<String> notes = nusMap.getBlock(showBlockInfo).getNotes();
             ui.showNotes(notes);
         } catch (EmptyNoteException e) {
-            ui.showMessageWithDivider(String.format(e.getMessage(), listInfo));
+            ui.showMessageWithDivider(String.format(e.getMessage(), showBlockInfo));
         } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
