@@ -18,12 +18,13 @@ public class AddCanteenCommandTest {
     @Test
     public void execute_validCanteenName_success() throws IOException {
         String canteenName = "Valid Canteen Name";
-        ArrayList<Canteen> canteens = new ArrayList<>();
-        Ui ui = new Ui();
 
         InputStream sysInBackup = System.in;
         ByteArrayInputStream in = new ByteArrayInputStream(canteenName.getBytes());
         System.setIn(in);
+
+        ArrayList<Canteen> canteens = new ArrayList<>();
+        Ui ui = new Ui();
 
         AddCanteenCommand c = new AddCanteenCommand("data/storage.txt");
         c.execute(canteens, ui);
