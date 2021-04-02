@@ -5,6 +5,7 @@ import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AddCanteenCommandTest {
 
     @Test
-    public void execute_validCanteenName_success() {
+    public void execute_validCanteenName_success() throws IOException {
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
         String canteenName = "Valid Canteen Name";

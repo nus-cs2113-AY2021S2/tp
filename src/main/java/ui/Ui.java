@@ -70,10 +70,11 @@ public class Ui {
         System.out.println("1. View canteens");
         System.out.println("2. Add canteen");
         System.out.println("3. Add store in canteen");
-        System.out.println("4. Delete canteen");
-        System.out.println("5. Delete store in canteen");
-        System.out.println("6. Delete reviews");
-        System.out.println("7. Exit");
+        System.out.println("4. Add Menu");
+        System.out.println("5. Delete canteen");
+        System.out.println("6. Delete store in canteen");
+        System.out.println("7. Delete reviews");
+        System.out.println("8. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -85,6 +86,21 @@ public class Ui {
 
     public void showAddStore() {
         System.out.println("Please enter the new store's name");
+        System.out.println(LINESPACING);
+    }
+
+    public void chooseStore() {
+        System.out.println("Please select store to add menu to.");
+        System.out.println(LINESPACING);
+    }
+
+    public void enterMenuName() {
+        System.out.println("Please enter name of menu.");
+        System.out.println(LINESPACING);
+    }
+
+    public void enterMenuPrice() {
+        System.out.println("Please enter price of menu.");
         System.out.println(LINESPACING);
     }
 
@@ -215,9 +231,20 @@ public class Ui {
         System.out.println("Review successfully added!");
     }
 
+    public void menuAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Menu successfully added!");
+        System.out.println(LINESPACING);
+    }
+
     public void reviewNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
+    }
+
+    public void menuNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Menu not added");
     }
 
     public void showDeleteReview() {
@@ -228,6 +255,7 @@ public class Ui {
     public void reviewDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully deleted!");
+        System.out.println(LINESPACING);
     }
 
     public void showAddCanteen() {

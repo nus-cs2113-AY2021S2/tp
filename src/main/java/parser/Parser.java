@@ -2,6 +2,7 @@ package parser;
 
 import canteens.Canteen;
 import command.AddCanteenCommand;
+import command.AddMenu;
 import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
@@ -57,7 +58,7 @@ public class Parser {
         return parsedInt;
     }
 
-    public Command parse(String line, Store store, int maxStores) throws DukeExceptions {
+    public Command parse(String line, Store store, Canteen canteen) throws DukeExceptions {
         Command newCommand;
         if (line.equals("home")) {
             newCommand = new HomeCommand(nusFoodReviews);
@@ -65,8 +66,8 @@ public class Parser {
             newCommand = new ResetStoreCommand(nusFoodReviews);
         } else if (line.equals("menu")) {
             newCommand = new DisplayMenusCommand(store);
-        } else if (line.equals("add")) {
-            newCommand = new AddReviewCommand(store);
+        } else if (line.equals("add")) { //add review
+            newCommand = new AddReviewCommand(store,canteen);
         } else if (line.equals("exit")) {
             newCommand = new ExitCommand();
         } else if (line.equals("reviews")) {
@@ -82,7 +83,11 @@ public class Parser {
     //parse admin commands only
     public Command parseAdminCommand(String line) throws DukeExceptions {
         Command newCommand;
+        int currentCanteenIndex;
+        int currentStoreIndex;
+
         ArrayList<Canteen> canteens = nusFoodReviews.getCanteens();
+
 
         switch (line) {
         case "1":
@@ -95,19 +100,28 @@ public class Parser {
             break;
         case "3":
             nusFoodReviews.setCanteenIndex();
-            int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             ui.showDisplayStores(canteens.get(currentCanteenIndex));
             ui.showAddStore();
             String storeName = ui.readCommand();
             newCommand = new AddStoreCommand(currentCanteenIndex, storeName);
             break;
         case "4":
+            nusFoodReviews.setCanteenIndex(); //show UI to get canteen
+            currentCanteenIndex = nusFoodReviews.getCanteenIndex(); //get canteen index
+            ui.showDisplayStores(canteens.get(currentCanteenIndex)); //display stores
+            ui.chooseStore();
+            currentStoreIndex = Integer.parseInt(ui.readCommand());
+            newCommand = new AddMenu(currentCanteenIndex,currentStoreIndex,
+                    canteens.get(currentCanteenIndex));
+            break;
+        case "5":
             ui.showDisplaySelectCanteens(canteens, "delete");
             int numCanteens = canteens.size();
             int canteenIndex = parseInt(ui.readCommand(), Math.min(1, numCanteens), numCanteens) - 1;
             newCommand = new DeleteCanteenCommand(canteenIndex);
             break;
-        case "5":
+        case "6":
             nusFoodReviews.setCanteenIndex();
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
@@ -115,11 +129,11 @@ public class Parser {
                     canteens.get(currentCanteenIndex).getNumStores()) - 1;
             newCommand = new DeleteStoreCommand(currentCanteenIndex, storeIndex);
             break;
-        case "6":
+        case "7":
             nusFoodReviews.setCanteenIndex();
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             nusFoodReviews.setStoreIndex();
-            int currentStoreIndex = nusFoodReviews.getStoreIndex();
+            currentStoreIndex = nusFoodReviews.getStoreIndex();
             ArrayList<Store> stores = canteens
                     .get(currentCanteenIndex).getStores();
             ArrayList<Review> reviews = canteens
@@ -131,7 +145,7 @@ public class Parser {
                     canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount());
             newCommand = new DeleteReviewCommand(currentCanteenIndex,currentStoreIndex, reviewNumber);
             break;
-        case "7":
+        case "8":
             newCommand = new ExitCommand();
             break;
         default:
