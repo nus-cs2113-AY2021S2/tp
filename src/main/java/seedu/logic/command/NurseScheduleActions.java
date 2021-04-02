@@ -7,12 +7,14 @@ import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 
+import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.prettyPrint;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
 
 public class NurseScheduleActions {
 
@@ -24,6 +26,7 @@ public class NurseScheduleActions {
 
     public NurseScheduleActions(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
+        logger.info("Creating a NurseSchedule list");
     }
 
     public NurseScheduleActions() { }
@@ -42,9 +45,11 @@ public class NurseScheduleActions {
             NurseScheduleChecker.checkPatientDExist(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
+            logger.info("Schedule successfully added");
         }
         catch (ParseException e) {
             System.out.println(e.getMessage());
+            logger.log(Level.WARNING, "Failed to add schedule");
         }
     }
 
@@ -105,6 +110,7 @@ public class NurseScheduleActions {
                 NurseScheduleUI.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),
                         nurseSchedules.get(i).getFormattedDatetime());
                 nurseSchedules.remove(i);
+                logger.info("Schedule successfully removed");
                 break;
             }
             i++;
