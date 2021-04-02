@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 
-import static seedu.duke.Constants.PATIENT_FILE_PATH;
-import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
+import static seedu.duke.Constants.*;
 
 public class NurseScheduleStorage {
 
@@ -70,7 +69,7 @@ public class NurseScheduleStorage {
 
     public FileHandler initLogger() {
         try {
-            FileHandler fileHandler = new FileHandler("nurseschedules.log");
+            FileHandler fileHandler = new FileHandler(SCHEDULES_LOGS_FILE_PATH);
             return fileHandler;
         } catch (IOException e) {
             System.out.println("Error with logging file!");
