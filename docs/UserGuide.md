@@ -1,6 +1,7 @@
 # Connoisseur User Guide
 
 ## Table of Contents
+
 1. [Introduction](#1-introduction)
 2. [About this Guide](#2-about-this-guide)
 
@@ -74,8 +75,9 @@ record your thoughts on how good or bad the experience was!
 ### 2.2 How to use this Guide
 
 The following formats are used in this document:
-* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user.
-  e.g.  in `list [SORTING METHOD]`
+
+* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user. e.g.
+  in `list [SORTING METHOD]`
   SORTING METHOD is the field input by the user and examples of valid commands are:`list rating`,`list title` etc.
 * Word in lower case are given commands. <br /> e.g. in `new [quick | long]` the user can input either the command
   `new quick`or `new long`
@@ -112,7 +114,8 @@ This section covers all the commands that you can type into the Command Box of C
 `Please enter a command: `
 
 The commands are categorised into the two modes offered by Connoisseur, Review and Recommendation mode. If it is the
-first time that you are using the command, we recommend that you refer to [How to use the Guide]((#2.2-How-to-use-the-Guide)) to better interpret the format of the commands.
+first time that you are using the command, we recommend that you refer
+to [How to use the Guide]((#2.2-How-to-use-the-Guide)) to better interpret the format of the commands.
 
 ### 4.1 Review Mode
 
@@ -177,8 +180,8 @@ This feature allows you to change the saved sorting method as shows in Figure 8.
 
 Command: `sort [SORTING METHOD]`
 
-`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-List-Reviews) for a list
-of recognised sorting methods.
+`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-List-Reviews) for
+a list of recognised sorting methods.
 
 ![img_9.png](./images/ug/save_sorting_method.png)
 <p align="center">Figure 9. Changing Sorting method to title</p>
@@ -341,7 +344,6 @@ command: `exit` or `bye`
 
 ## 5. Command Summary
 
-
 |Action| Command | Examples | 
 |-----|--------|---------|
 |Enter Review Mode|`review`|`review`|
@@ -362,9 +364,8 @@ command: `exit` or `bye`
 |Help for a Specific function|`help [COMMAND_NAME]`|`help reco`<br />`help list`|
 |Exit & Save|`exit`<br />`bye`|`exit`<br />`bye`|
 
-
-
 ## 6. FAQ
+
 //TODO
 **Q**: How do I transfer my data to another computer?
 
