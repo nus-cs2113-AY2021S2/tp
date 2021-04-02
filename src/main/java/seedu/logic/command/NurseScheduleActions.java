@@ -1,8 +1,7 @@
 package seedu.logic.command;
 
-import seedu.exceptions.nurseschedules.EmptyListException;
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.nurseschedules.*;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
@@ -17,8 +16,8 @@ import java.util.List;
 
 public class NurseScheduleActions {
 
-    List<NurseSchedule> findSchedules = new ArrayList<NurseSchedule>();
-    List<String> nursesFound = new ArrayList<String>();
+    private static ArrayList<NurseSchedule> findSchedules = new ArrayList<>();
+    private static ArrayList<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
 
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
@@ -31,11 +30,14 @@ public class NurseScheduleActions {
         nurseSchedules.clear();
     }
 
-    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException {
+    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException,
+            NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
         try {
+            NurseScheduleChecker.checkDuplicatePatientID(details[1], nurseSchedules);
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkNurseIDExist(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
+            NurseScheduleChecker.checkPatientDExist(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
         }
@@ -77,6 +79,7 @@ public class NurseScheduleActions {
             UI.showLine();
             for (int i = 0; i < nurseSchedules.size(); i++) {
                 findSchedules.clear();
+                nurseID = nurseSchedules.get(i).getNurseID();
                 if (!isNurseDone(nurseSchedules, i)) {
                     getNurseSchedulesByID(nurseSchedules, nurseID);
                     printSchedules(findSchedules);
@@ -115,10 +118,10 @@ public class NurseScheduleActions {
             }
             i++;
         }
-        Collections.sort(findSchedules);
-        //System.out.println(UI.prettyPrint(id, 10));
-        System.out.println(prettyPrint(id, 10) + " | " + nurseSchedules.get(0).toFind());
-
+        try {
+            Collections.sort(findSchedules);
+            System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
+        } catch (Exception e) {}
     }
 
     /**
@@ -140,7 +143,6 @@ public class NurseScheduleActions {
             return true;
         } else {
             nursesFound.add(nurseSchedules.get(i).getNurseID());
-            nurseID = nurseSchedules.get(i).getNurseID();
             return false;
         }
     }

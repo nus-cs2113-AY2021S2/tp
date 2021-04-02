@@ -2,7 +2,9 @@ package seedu.storage;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.InventoryActions;
+import seedu.logic.errorchecker.InventoryChecker;
 import seedu.model.Inventory;
+import seedu.ui.InventoryUI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +19,8 @@ public class InventoryStorage {
     protected File saveFile;
     protected String filePath;
     protected ArrayList<Inventory> inventories = new ArrayList<>();
+    protected InventoryUI ui;
+    protected InventoryChecker checker;
 
     public InventoryStorage(String filePath) {
         this.filePath = filePath;
@@ -54,25 +58,36 @@ public class InventoryStorage {
     }*/
     public ArrayList<Inventory> loadInventory() throws HealthVaultException {
         fileInit();
+        Scanner fileScanner = null;
         try {
             // initializing file scanner to scan the file
-            Scanner fileScanner = new Scanner(saveFile);
+            fileScanner = new Scanner(saveFile);
 
             while (fileScanner.hasNext()) {
                 String currentScan = fileScanner.nextLine();
                 //splits the string into sections for storing in the ArrayList
-                String[] taskSave = currentScan.trim().split(" \\| ");
+                String[] taskSave = currentScan.trim().split("\\|");
+                int numberOfTokens = taskSave.length;
                 if (taskSave.length != 3) {
                     throw new HealthVaultException("loadFile");
                 }
-                Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
-                inventories.add(tempInventory);
+                try {
+                    checker = new InventoryChecker(inventories, taskSave, numberOfTokens);
+                    checker.checkStorage();
+                    Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
+                    inventories.add(tempInventory);
+                } catch (NumberFormatException e) {
+                    System.out.println("File has been tampered with!\nWrong data has been removed!");
+                }
             }
         } catch (FileNotFoundException e) {
-            throw new HealthVaultException("OOPS! I can't read the save file!");
+            throw new HealthVaultException("loadFile");
         } catch (HealthVaultException e) {
-            e.getError("loadFile");
+            System.out.println(e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("File has been tampered with!\nWrong data has been removed!");
         }
+        fileScanner.close();
         return inventories;
     }
     public void storeInventory(InventoryActions saveInput) {

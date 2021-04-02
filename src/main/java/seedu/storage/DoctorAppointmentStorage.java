@@ -1,7 +1,10 @@
 package seedu.storage;
 
 import seedu.duke.Constants;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.AppointmentActions;
+import seedu.logic.errorchecker.DoctorAppointmentChecker;
 import seedu.model.DoctorAppointment;
 import seedu.model.staff.Staff;
 
@@ -20,8 +23,6 @@ public class DoctorAppointmentStorage {
     private final String filePath;
     private final File file;
     private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
-    private final String PATIENT_FILE_PATH = Constants.APPOINTMENT_FILE_PATH;
-
 
     public DoctorAppointmentStorage(String filePath) {
         this.filePath = filePath;
@@ -34,15 +35,25 @@ public class DoctorAppointmentStorage {
         file.createNewFile();
     }
 
-    public AppointmentActions loadFile() throws FileNotFoundException {
+    public AppointmentActions loadFile() throws FileNotFoundException, HealthVaultException {
         ArrayList<DoctorAppointment> loadAppointments = new ArrayList<>();
+        ArrayList<String> checkStorage = new ArrayList<>();
 
         File fileName = new File(filePath);
         Scanner fileReader = new Scanner(fileName);
         while (fileReader.hasNextLine()) {
-            String input = fileReader.nextLine();
-            String[] data = input.split("\\s\\|\\s", 5);
-            loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
+            try {
+                String input = fileReader.nextLine();
+                if (input.isBlank()) {
+                    throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+                }
+                String[] data = input.split("\\s\\|\\s", 5);
+                DoctorAppointmentChecker.checkDataFromStorage(input, checkStorage);
+                checkStorage.add(data[1]);
+                loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
+            }catch (Exception e){
+                throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+            }
         }
         fileReader.close();
         return new AppointmentActions(loadAppointments);

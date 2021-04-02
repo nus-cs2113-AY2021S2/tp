@@ -1,6 +1,7 @@
 package seedu.logic.instance;
 
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.parser.NurseSchedulesParser;
@@ -8,6 +9,8 @@ import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 import java.util.logging.*;
+
+import java.io.IOException;
 
 /**
  * Main entry-point for the NurseSchedules instance.
@@ -26,7 +29,6 @@ public class NurseScheduleInstance {
 
     public NurseScheduleInstance() {
         parser = new NurseSchedulesParser();
-        nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
         storage = new NurseScheduleStorage();
         ui = new NurseScheduleUI();
 
@@ -37,6 +39,19 @@ public class NurseScheduleInstance {
 
     /** Reads the user command and executes it, until the user issues the exit command. */
     public void runCommandLoopUntilExit() {
+        try {
+            nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
+        } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
+                | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound e) {
+            ui.corruptedFileErrorMessage();
+            return;
+        } catch (NurseCrossValidationError e) {
+            System.out.println(e.getMessage());
+            return;
+        } catch (PatientCrossValidationError e) {
+            System.out.println(e.getMessage());
+            return;
+        }
         ui.printNurseScheduleWelcomeMessage();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {

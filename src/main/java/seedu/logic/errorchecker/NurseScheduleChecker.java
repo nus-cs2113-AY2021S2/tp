@@ -1,10 +1,14 @@
 package seedu.logic.errorchecker;
 
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.*;
+import seedu.model.NurseSchedule;
+import seedu.model.Patient;
 import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
+import seedu.storage.NurseScheduleStorage;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
@@ -13,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class NurseScheduleChecker extends MainChecker {
-    public boolean isValidDate(String datetime) {
+    public boolean isValidDate(String datetime) throws InvalidDateException {
         /* Check if date is 'null' */
         if (!datetime.trim().equals("")) {
             /*
@@ -30,8 +34,7 @@ public class NurseScheduleChecker extends MainChecker {
             }
             /* Date format is invalid */
             catch (ParseException e) {
-                System.out.println(datetime + " is Invalid Date format");
-                return false;
+                throw new InvalidDateException();
             }
         }
         /* Return true if date format is valid */
@@ -47,32 +50,48 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static boolean checkNurseIDExist(String nurseID) throws NurseIdNotFound {
+    public static void checkNurseIDExist(String nurseID) throws NurseIdNotFound, NurseCrossValidationError {
         try {
-            String[] character = nurseID.split("");
+            ArrayList<Staff> doctorList;
+            doctorList = DoctorAppointmentStorage.loadDoctorFile();
 
-            if (character[0].equals("N")) {
-                ArrayList<Staff> doctorList;
-                doctorList = DoctorAppointmentStorage.loadDoctorFile();
-
-                for (Staff id : doctorList) {
-                    if (id.getId().equals(nurseID)) {
-                        return true;
-                    }
+            for (Staff id : doctorList) {
+                if (id.getId().equals(nurseID)) {
+                    return;
                 }
             }
+            throw new NurseIdNotFound();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new NurseCrossValidationError();
         } catch (FileNotFoundException e) {
-
+            throw new NurseIdNotFound();
         }
-        throw new NurseIdNotFound();
+    }
+
+    public static void checkPatientDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
+        try {
+            ArrayList<Patient> patientList;
+            patientList = NurseScheduleStorage.loadPatientFile();
+
+            for (Patient id : patientList) {
+                if (id.getPatientID().equals(patientID)) {
+                    return;
+                }
+            }
+            throw new PatientIdNotFound();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new PatientCrossValidationError();
+        } catch (FileNotFoundException e) {
+            throw new PatientIdNotFound();
+        }
     }
 
     public static void checkValidNurseID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
-        } else if (numberOfIntegersInString(userID) != 5) {
-            throw new InvalidIDTypeException();
         } else if (!(userID.charAt(0) == 'N')) {
+            throw new InvalidIDTypeException();
+        } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidIDTypeException();
         }
 
@@ -81,9 +100,9 @@ public class NurseScheduleChecker extends MainChecker {
     public static void checkValidPatientID(String userID) throws InvalidIDTypeException {
         if (userID.length() != 6) {
             throw new InvalidIDTypeException();
-        } else if (numberOfIntegersInString(userID) != 5) {
+        }  else if (!(userID.charAt(0) == 'P')) {
             throw new InvalidIDTypeException();
-        } else if (!(userID.charAt(0) == 'P')) {
+        } else if (numberOfIntegersInString(userID) != 5) {
             throw new InvalidIDTypeException();
         }
     }
@@ -96,5 +115,13 @@ public class NurseScheduleChecker extends MainChecker {
             }
         }
         return numberOfIntegers;
+    }
+
+    public static void checkDuplicatePatientID(String id, ArrayList<NurseSchedule> list) throws DuplicateIDException {
+        for (NurseSchedule patient : list) {
+            if (patient.getPatientID().equals(id)) {
+                throw new DuplicateIDException("Patient");
+            }
+        }
     }
 }

@@ -1,7 +1,8 @@
 package seedu.logic.command;
 
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.nurseschedules.*;
+import seedu.exceptions.HealthVaultException;
 import seedu.storage.StaffStorage;
 
 import seedu.ui.InventoryUI;
@@ -30,10 +31,10 @@ public abstract class Command {
     public void execute (InventoryActions drugs, InventoryUI ui) {
     }
 
-    public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws Exception {
+    public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws HealthVaultException, IOException, Exception {
     }
 
-    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException {
+    public void execute (NurseScheduleActions nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException, NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
     }
 
     public abstract boolean isExit();

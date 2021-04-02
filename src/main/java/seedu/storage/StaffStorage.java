@@ -1,13 +1,10 @@
 package seedu.storage;
 
-import seedu.exceptions.ExcessInputException;
-import seedu.exceptions.InsufficientInputException;
-import seedu.exceptions.InvalidIntegerException;
-import seedu.exceptions.NoInputException;
+import seedu.exceptions.*;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.errorchecker.StaffChecker;
-import seedu.model.staff.Staff;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +16,7 @@ import java.util.Scanner;
 public class StaffStorage {
     static File saveFile;
     static String filePath;
+    private StaffChecker staffChecker = new StaffChecker();
 
     public StaffStorage(String filepath) {
         filePath = filepath;
@@ -26,9 +24,9 @@ public class StaffStorage {
     }
 
 
-    public void fileHandling(StaffAggregation staffAggregation) throws ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
+    public void fileHandling(StaffAggregation staffAggregation) throws
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException, IllegalCharacterException {
         try {
             loadFile(staffAggregation);
         } catch (FileNotFoundException e) {
@@ -36,18 +34,17 @@ public class StaffStorage {
         }
     }
 
-    public void loadTask(StaffAggregation staffAggregation, String line) throws ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
-
-        StaffChecker.checkValidDataForStorage(line);
-        String[] arr = line.split("\\|");
-        staffAggregation.addStaff(new Staff(arr));
+    public void loadTask(StaffAggregation staffAggregation, String line) throws
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException, IllegalCharacterException {
+        staffChecker.checkValidDataFromStorage(line, staffAggregation.getList());
+        String[] arr = staffChecker.invalidCharactersStaffCheckerForStorage(line);
+        staffAggregation.add(arr);
     }
 
-    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException, ExcessInputException,
-            InvalidIntegerException, NoInputException, WrongStaffIdException,
-            InsufficientInputException, NoInputException {
+    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException,
+            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            InsufficientInputException, NoInputException, DuplicateIDException, IllegalCharacterException {
         File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
         while (s.hasNext()) {
@@ -67,8 +64,8 @@ public class StaffStorage {
     public static void createFile() {
         try {
             File myObj = new File(filePath);
+            saveFile.getParentFile().mkdirs();
             if (myObj.createNewFile()) {
-                System.out.println("File created: " + myObj.getName());
             }
         } catch (IOException e) {
             System.out.println("An error occurred.");

@@ -1,14 +1,12 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.*;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.command.StaffAggregation;
 import seedu.logic.parser.StaffParser;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
-
-import java.io.IOException;
+import seedu.ui.UI;
 
 public class StaffInstance {
     private StaffUI staffUI;
@@ -16,7 +14,7 @@ public class StaffInstance {
     private StaffStorage staffStorage;
     private StaffParser staffParser;
 
-    public StaffInstance(String filepath){
+    public StaffInstance(String filepath) {
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
         staffParser = new StaffParser();
@@ -24,21 +22,20 @@ public class StaffInstance {
     }
 
 
-    public void run(){
+    public void run() {
         try {
             staffStorage.fileHandling(staffAggregation);
-        } catch (ExcessInputException | InvalidIntegerException |
-                WrongStaffIdException |
-                InsufficientInputException | NoInputException e) {
+        } catch (HealthVaultException e) {
             StaffUI.corruptedFileErrorMessage();
+            return;
         }
         StaffUI.staffMenuHeader();
         while (true) {
             String line;
             line = staffUI.getInput("Staff");
             try {
-                Command c = staffParser.commandHandler(line);
-                if (c==null){
+                Command c = staffParser.commandHandler(line, staffAggregation);
+                if (c == null){
                     continue;
                 }
                 c.execute(staffAggregation, staffUI, staffStorage);
@@ -50,8 +47,8 @@ public class StaffInstance {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
                 StaffUI.invalidNumericErrorMessage();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                UI.unidentifiedErrorMessage();
             }
         }
     }

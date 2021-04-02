@@ -2,8 +2,10 @@ package seedu.logic.parser;
 
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.NurseScheduleChecker;
@@ -43,34 +45,40 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException {
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
-        String text = input.toUpperCase();
         String[] details = new String[3];
 
-        String[] parts = text.split("/", 0);
+        String[] parts = input.split("/");
 
         assert parts.length > 0;
 
         if (parts.length <= 1) {
             throw new WrongInputsException();
         }
-        if (command.equals("ADD")) {
+        switch (command) {
+        case "ADD":
             if (checker.isValidDate(parts[3])) {
-                checker.checkNumInput(text, 4, 4);
-                details[0] = UI.cleanseInput(parts[1]);
-                details[1] = UI.cleanseInput(parts[2]);
-                details[2] = UI.cleanseInput(parts[3]);
+                MainChecker.checkNumInput(input, 4, 4);
+                details[0] = parts[1];
+                details[1] = parts[2];
+                details[2] = parts[3];
+                checker.illegalCharacterChecker(details[0], "Nurse ID");
+                checker.illegalCharacterChecker(details[1], "Patient ID");
             }
-        } else if (command.equals("DELETE")) {
+            break;
+        case "DELETE":
             if (checker.isValidDate(parts[2])) {
-                checker.checkNumInput(text, 3, 3);
-                details[0] = UI.cleanseInput(parts[1]);
-                details[1] = UI.cleanseInput(parts[2]);
+                MainChecker.checkNumInput(input, 3, 3);
+                details[0] = parts[1];
+                details[1] = parts[2];
+                checker.illegalCharacterChecker(details[0], "Nurse ID");
             }
-        } else if (command.equals("LIST")) {
-            checker.checkNumInput(text, 2, 2);
-            details[0] = UI.cleanseInput(parts[1]);
+            break;
+        case "LIST":
+            MainChecker.checkNumInput(input, 2, 2);
+            details[0] = parts[1];
+            break;
         }
         return details;
     }
@@ -83,12 +91,13 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String line, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException {
-        assert line != null : "user input should not be null";
-        assert !(line.isEmpty()) : "user input should not be empty";
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
+        assert input != null : "user input should not be null";
+        assert !(input.isEmpty()) : "user input should not be empty";
 
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line).toUpperCase());
+        String line = input.toUpperCase();
+        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line));
         Command c = null;
 
         logger.info("Parsing command...");

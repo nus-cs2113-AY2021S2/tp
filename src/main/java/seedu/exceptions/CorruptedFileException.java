@@ -1,6 +1,6 @@
 package seedu.exceptions;
 
-public class CorruptedFileException extends HealthVaultException{
+public class CorruptedFileException extends HealthVaultException {
 
     private String file;
 
@@ -11,5 +11,4 @@ public class CorruptedFileException extends HealthVaultException{
     public String getMessage() {
         return "The file " + this.file + " is corrupted";
     }
-
 }

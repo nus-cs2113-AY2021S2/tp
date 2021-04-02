@@ -4,15 +4,18 @@ public class Constants {
 
 
     public static final String LINEBREAK = "____________________________________________________________";
-    public static final String LONGLINEBREAK = "____________________________________________________" +
-            "____________________________________________________________________";
+    public static final String LONGLINEBREAK = "________________________________________________________"
+            +"__________________________________________________________________________________________";
+    public static final String LONGLONGLINEBREAK = "____________________________________________________"
+            +"__________________________________________________________________________________________"
+            +"__________________________________";
     public static final String LOGO =
             " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
-                    + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
-                    + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
-                    + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
-                    + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
-                    + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
+             + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
+             + "|  |_|  ||  |___ |  |_|  || |    |  |  |  |_|  ||  ||  ||  |_|  ||  | |  || || |_| |___/ / \\\\ \n"
+             + "|   _   ||   ___||   _   || |    ||=|  |   _   |\\  \\/  /|   _   ||  | |  || ||_________  | | |\n"
+             + "|  | |  ||  |___ |  | |  || |___ ||=|  |  | |  | \\    / |  | |  ||  |_|  || |_____     \\ \\ // \n"
+             + "|__| |__||______||__| |__||_____||__|  |__| |__|  \\__/  |__| |__||_______||_______|     \\__/  \n";
 
 
     public static final String PATIENT_FILE_PATH = "data/Patients.txt";
@@ -27,6 +30,14 @@ public class Constants {
     public static final String TO_SCHEDULES_INSTANCE = "schedules";
     public static final String TO_INVENTORY_INSTANCE = "inventory";
 
+    public static final String TO_STAFF_INSTANCE_DESCRIPTION = "To go to staff";
+    public static final String TO_PATIENT_INSTANCE_DESCRIPTION = "To go to patients";
+    public static final String TO_APPOINTMENTS_INSTANCE_DESCRIPTION = "To go to doctors appointments";
+    public static final String TO_SCHEDULES_INSTANCE_DESCRIPTION = "To go to nurse schedules";
+    public static final String TO_INVENTORY_INSTANCE_DESCRIPTION = "To go to inventory";
+    public static final String EXIT_COMMAND_DESCRIPTION = "To exit the application";
+    public static final String HELP_COMMAND_DESCRIPTION = "To see what commands for Start Menu";
+
     public static final String EXIT_COMMAND = "exit";
     public static final String HELP_COMMAND = "help";
     public static final String ADD_COMMAND = "add";
@@ -35,9 +46,12 @@ public class Constants {
     public static final String LIST_COMMAND = "list";
     public static final String RETURN_COMMAND = "return";
 
+    //field Checking
+    public static final String[] VALID_GENDER_INPUT = {"M", "F", "Others"};
 
     // Miscellaneous
-    public static final String BLANK = "-";
+    public static final String BLANK = "";
+    public static final String MARK_BLANK = "-";
     public static final String RETURN_DESCRIPTION = "Returns you to the Start Menu!";
 
     // HELP HEADER
@@ -62,37 +76,37 @@ public class Constants {
 
     // ADD FUNCTION FORMATTING
     public static final String STAFF_ADD_FORMAT = "add/[Staff ID]/[Name]/[Age]/[Specialisation]";
-    public static final String PATIENT_ADD_FORMAT = "";
-    public static final String APPOINTMENTS_ADD_FORMAT = "";
-    public static final String SCHEDULES_ADD_FORMAT = "add/[NurseID]/[Patient ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_ADD_FORMAT = "";
+    public static final String PATIENT_ADD_FORMAT = "add/[Patient ID]/[Name]/[Age]/[Gender][Illness][Medication Needed]";
+    public static final String APPOINTMENTS_ADD_FORMAT = "add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]";
+    public static final String SCHEDULES_ADD_FORMAT = "add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]";
+    public static final String INVENTORY_ADD_FORMAT = "add/[Drug name]/[Price]/[Quantity]";
 
 
     // LIST FUNCTION DESCRIPTION
     public static final String STAFF_LIST_DESCRIPTION = "Brings up the list of all current Staff in database!";
     public static final String PATIENT_LIST_DESCRIPTION = "Brings up the list of all current Patient in database!";
-    public static final String APPOINTMENTS_LIST_DESCRIPTION = "Brings up the list of all current Doctor Appointments in database!";
+    public static final String APPOINTMENTS_LIST_DESCRIPTION = "Brings up the list of all current Doctors' Appointments in database!";
     public static final String SCHEDULES_LIST_DESCRIPTION = "Brings up the list of all current Nurse Schedules in database!";
     public static final String INVENTORY_LIST_DESCRIPTION = "Brings up the list of all current Inventory in database!";
 
     // LIST FUNCTION FORMATTING
     public static final String STAFF_LIST_FORMAT = "list/<input>, where input == doctor or nurse";
-    public static final String PATIENT_LIST_FORMAT = "";
-    public static final String APPOINTMENTS_LIST_FORMAT = "";
+    public static final String APPOINTMENTS_LIST_FORMAT = "list/[DoctorID/AppointmentID]";
     public static final String SCHEDULES_LIST_FORMAT = "list/[NurseID/all]";
-    public static final String INVENTORY_LIST_FORMAT = "";
+    public static final String INVENTORY_LIST_FORMAT = "list";
 
 
     // DELETE FUNCTION DESCRIPTION
     public static final String STAFF_DELETE_DESCRIPTION = "Deletes the Staff with the specified ID from the list!";
-    public static final String PATIENT_DELETE_DESCRIPTION = "Deletes the Patient with the specified ID from the list!";
+    public static final String PATIENT_DELETE_DESCRIPTION =
+            "Deletes the Patient with the specified ID from the list!";
     public static final String APPOINTMENTS_DELETE_DESCRIPTION = "Deletes the Appointment with the specified ID from the list!";
     public static final String SCHEDULES_DELETE_DESCRIPTION = "Deletes the Schedule with the specified ID from the list!";
-    public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory Item with the specified ID from the list!";
+    public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory item from the list!";
     // DELETE FUNCTION FORMATTING
     public static final String STAFF_DELETE_FORMAT = "delete/[Staff ID]";
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
-    public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[Appointment ID]";
+    public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[DoctorID/Appointment ID]";
     public static final String SCHEDULES_DELETE_FORMAT = "delete/[Nurse ID]/[Date (DDMMYYYY)]";
     public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]";
 

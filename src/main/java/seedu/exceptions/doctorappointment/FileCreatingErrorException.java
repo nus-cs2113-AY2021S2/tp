@@ -1,5 +1,7 @@
 package seedu.exceptions.doctorappointment;
 
-public class FileCreatingErrorException extends Exception {
+import seedu.exceptions.HealthVaultException;
+
+public class FileCreatingErrorException extends HealthVaultException {
     public String getMessage(){return "File cannot be created";};
 }

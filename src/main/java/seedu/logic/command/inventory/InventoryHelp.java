@@ -8,7 +8,7 @@ public class InventoryHelp extends Command {
 
     @Override
     public void execute(InventoryActions drugs, InventoryUI ui) {
-        ui.printDrugHelpList();
+        ui.printInventoryHelpMessage();
     }
     @Override
     public boolean isExit() {
