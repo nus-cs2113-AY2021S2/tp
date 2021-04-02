@@ -247,17 +247,27 @@ Format: `list -l`
 
 Output:
 
-![add loan example output](img/ListLoanExampleOutput.jpg)
+![list loan example output](img/ListLoanExampleOutput.jpg)
 
 #### 3.2.3 List all saving records
 
-Lastly, all your saved savings can also be listed with the `saving` option `-s`. 
+Furthermore, all your saved savings can also be listed with the `saving` option `-s`. 
 
 Format: `list -s`
 
 Output:
 
-![add saving example output](img/ListSavingExampleOutput.jpg)
+![list saving example output](img/ListSavingExampleOutput.jpg)
+
+#### 3.2.4 List all records
+
+Lastly, you can list all of your records with the `all` option `-a`.
+
+Format: `list -a`
+
+Output:
+
+![list all example output](img/ListAllExampleOutput.jpg)
 
 ### 3.3 View category total amount: `view`
 
@@ -468,6 +478,7 @@ Output:
 | List all expense records               | `list -e`                                                | -                                                    |
 | List all loan records                  | `list -l`                                                | -                                                    |
 | List all saving records                | `list -s`                                                | -                                                    |
+| List all records                       | `list -a`                                                | -                                                    |
 | View total expense                     | `view -e`                                                | -                                                    |
 | View total unreturned loans            | `view -l`                                                | -                                                    |
 | View total savings                     | `view -s`                                                | -                                                    |
