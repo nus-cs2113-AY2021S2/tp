@@ -20,8 +20,6 @@ public class Inventory {
 
     public String getPrice() {
         DecimalFormat df = new DecimalFormat("0.00");
-        //price = Math.round(price*100.0)/100.0;
-        //return String.valueOf(price);
         return df.format(price);
     }
 
