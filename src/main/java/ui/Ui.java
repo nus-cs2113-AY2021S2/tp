@@ -306,4 +306,16 @@ public class Ui {
         System.out.println("Cancelling.... Canteen not Deleted");
         System.out.println(LINESPACING);
     }
+
+    public void showStoreNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Store not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public void showReviewNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Review not Deleted");
+        System.out.println(LINESPACING);
+    }
 }
