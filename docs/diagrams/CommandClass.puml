@@ -3,9 +3,10 @@
 
 hide circle
 skinparam classAttributeIconSize 0
+!define ABSTRACT &#123;abstract&#125;
 
-abstract Command {
-+ {abstract} -abstract- execute(UserInput) : void
+abstract "{abstract} \n Command" {
++ execute(UserInput) : void \t\t ABSTRACT
 + isExit() : boolean
 }
 class ClearCommand {
@@ -48,15 +49,15 @@ class SortCommand {
 + execute(UserInput) : void
 }
 
-Command <|-- ClearCommand
-Command <|-- CloseCommand
-Command <|-- DefaultCommand
-Command <|-- FilterCommand
-Command <|-- FindCommand
-Command <|-- HelpCommand
-Command <|-- ListCommand
-Command <|-- RemoveCommand
-Command <|-- SaveCommand
-Command <|-- ShortlistCommand
-Command <|-- SortCommand
+"{abstract} \n Command" <|-- ClearCommand
+"{abstract} \n Command" <|-- CloseCommand
+"{abstract} \n Command" <|-- DefaultCommand
+"{abstract} \n Command" <|-- FilterCommand
+"{abstract} \n Command" <|-- FindCommand
+"{abstract} \n Command" <|-- HelpCommand
+"{abstract} \n Command" <|-- ListCommand
+"{abstract} \n Command" <|-- RemoveCommand
+"{abstract} \n Command" <|-- SaveCommand
+"{abstract} \n Command" <|-- ShortlistCommand
+"{abstract} \n Command" <|-- SortCommand
 @enduml
