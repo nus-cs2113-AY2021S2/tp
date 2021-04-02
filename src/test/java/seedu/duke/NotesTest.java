@@ -80,7 +80,7 @@ public class NotesTest {
             deleteNotesTest(1);
             deleteNotesTest(2);
         } catch (InvalidIndexException e) {
-            assertEquals("Oops! You must enter an Integer that is within the bounds!", e.getMessage());
+            assertEquals("Oops! You must enter an Integer that is within the bounds :(", e.getMessage());
         }
     }
 
@@ -90,7 +90,7 @@ public class NotesTest {
             deleteNotesTest(-1);
             deleteNotesTest(7);
         } catch (InvalidIndexException e) {
-            assertEquals("Oops! You must enter an Integer that is within the bounds!", e.getMessage());
+            assertEquals("Oops! You must enter an Integer that is within the bounds :(", e.getMessage());
         }
     }
 
