@@ -49,18 +49,22 @@ public class Constants {
 
     // Exception messages
     public static final String EXCEPTION_INDENT = "\t";
-    
+
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter something for me to process!";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided!";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number!";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists!";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
-    public static final String INVALID_INPUT_EMPTY_DESCRIPTION = "Please provide details about the patient's visit!";
+    public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
+            "Please provide more details about the patient's visit!"
+                    + System.lineSeparator() + EXCEPTION_INDENT
+                    + "(At least one symptom, diagnosis or prescription must be specified)";
     public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy).";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT = "Kindly use /p or /r to indicate patient or "
             + "record, refer to help for more clarification!";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient does not exist!";
+    public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
@@ -91,7 +95,6 @@ public class Constants {
     public static final String SYMPTOM_KEY = "s";
     public static final String DIAGNOSIS_KEY = "d";
     public static final String PRESCRIPTION_KEY = "p";
-    public static final String EXCEPTION_RECORD_RETRIEVE_INVALID_DATE = "That's not a valid date";
 
     // Date format
     public static final String DATE_PATTERN = "dd/MM/yyyy";
