@@ -121,6 +121,45 @@ Example of usage:
 
 `exit`
 
+## Admin Functions: `admin`
+
+Password for admin is "Password".
+
+Admin has the following functions:
+1. View canteens
+2. Add canteen
+3. Add store in canteen
+4. Add Menu
+5. Delete canteen
+6. Delete store in canteen
+7. Delete reviews
+8. Delete menu
+9. Exit
+
+### View canteens: `view canteens`
+This function displays all the canteens in the system.
+
+### Add canteens: `add canteen`
+This function allows admin to add a new canteen to the application.
+
+### Add store in canteen: `add store`
+This function allows admin to add a new store to the chosen canteen.
+
+### Add menu in store: `add menu`
+This function allows admin to add a new menu to the chosen store.
+
+### Delete Canteen: `delete canteen`
+This function allows admin to delete a chosen canteen.
+
+### Delete store in canteen: `delete store`
+This function allows admin to delete a store in the chosen canteen.
+
+### Delete review: `delete review`
+This function allows admin to delete a review in a chosen store.
+
+### Delete menu: `delete menu`
+This function allows admin to delete a menu in a chosen store.
+
 ## FAQ
 
 **Q**: There are red words that appear right after I opened the application,
