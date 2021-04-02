@@ -95,47 +95,47 @@ The *Class Diagram* below shows the different Commands that can be mapped and re
 
 The *Sequence Diagram* below shows how the components interact with each other when:
 
-1. `Filter Command` is executed.
+1. `FilterCommand` is executed.
 
 <img src="diagrams/FilterCommand.png" />
 
-2. `Find Command` is executed.
+2. `FindCommand` is executed.
 
 <img src="diagrams/FindCommand.png" />
 
-3. `Remove Command` is executed.
+3. `RemoveCommand` is executed.
 
 <img src="diagrams/RemoveCommand.png" />
 
-4. `Save Command` is executed.
+4. `SaveCommand` is executed.
 
 <img src="diagrams/SaveCommand.png" />
 
-5. `Shortlist Command` is executed.
+5. `ShortlistCommand` is executed.
 
 <img src="diagrams/ShortlistCommand.png" />
  
-6. `Sort Command` is executed.
+6. `SortCommand` is executed.
 
 <img src="diagrams/SortCommand.png" />
 
-7. `Clear Command` is executed.
+7. `ClearCommand` is executed.
 
 <img src="diagrams/ClearCommand.png" />
 
-8. `Close Command` is executed.
+8. `CloseCommand` is executed.
 
 <img src="diagrams/CloseCommand.png" />
 
-9. `Help Command` is executed.
+9. `HelpCommand` is executed.
 
 <img src="diagrams/HelpCommand.png" />
 
-10. `List Command` is executed.
+10. `ListCommand` is executed.
 
 <img src="diagrams/ListCommand.png" />
 
-11. `Default Command` is a placeholder command, it will not be executed.
+11. `DefaultCommand` is a placeholder command, it will not be executed.
 
 ### Common component
 
