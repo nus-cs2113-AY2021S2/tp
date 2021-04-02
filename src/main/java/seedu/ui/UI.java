@@ -155,6 +155,10 @@ public class UI {
     public static void returningToStartMenuMessage() {
         System.out.println("Returning to start menu!");
     }
+    public static void unidentifiedErrorMessage() {
+        System.out.println("Something went wrong!\n");
+    }
+
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");

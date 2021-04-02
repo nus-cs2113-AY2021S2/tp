@@ -6,6 +6,7 @@ import seedu.logic.command.StaffAggregation;
 import seedu.logic.parser.StaffParser;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
+import seedu.ui.UI;
 
 public class StaffInstance {
     private StaffUI staffUI;
@@ -47,7 +48,7 @@ public class StaffInstance {
             } catch (NumberFormatException e) {
                 StaffUI.invalidNumericErrorMessage();
             } catch (Exception e) {
-                System.out.println("Something went wrong!\n");
+                UI.unidentifiedErrorMessage();
             }
         }
     }
