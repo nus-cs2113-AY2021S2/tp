@@ -63,7 +63,7 @@ public class Block {
     }
 
     public void addNote(String note) {
-        this.notes.add(note); //add notes to list for that location
+        this.notes.add(note);
     }
 
     public void deleteNote(int index) throws InvalidIndexException {

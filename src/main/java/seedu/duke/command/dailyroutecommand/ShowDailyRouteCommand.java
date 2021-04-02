@@ -37,7 +37,7 @@ public class ShowDailyRouteCommand extends Command {
                 }
             }
             ui.showMessageWithDivider(routedSchedule.toString());
-        } catch (InvalidBlockException | InvalidIndexException e) {
+        } catch (InvalidIndexException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

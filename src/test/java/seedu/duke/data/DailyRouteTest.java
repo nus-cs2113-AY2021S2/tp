@@ -28,16 +28,6 @@ class DailyRouteTest {
     }
 
     @Test
-    void saveDaySchedule_validRoutePresent_expectSaveFormat() {
-        DailyRoute dailyRoute = new DailyRoute();
-        ArrayList<String> blocks = new ArrayList<>(List.of("E1", "E2", "E3"));
-        String day = "MONDAY";
-        dailyRoute.addDailyRoute(day, blocks);
-        String toSave = dailyRoute.saveDaySchedule(day);
-        assertEquals(toSave, "MONDAY+E1|E2|E3|");
-    }
-
-    @Test
     void getSelectableDays_dayAdded_expectMonday() {
         DailyRoute dailyRoute = new DailyRoute();
         ArrayList<String> blocks = new ArrayList<>(List.of("E1", "E2", "E3"));

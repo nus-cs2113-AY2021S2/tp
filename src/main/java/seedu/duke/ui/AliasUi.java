@@ -22,7 +22,7 @@ public class AliasUi extends UiManager {
     }
 
     public void showCustomAliases(BlockAlias aliases) throws EmptyAliasesException {
-        if (aliases.getAliasHashMap().isEmpty()) {
+        if (aliases.isEmpty()) {
             throw new EmptyAliasesException();
         } else {
             showMessage("Here are your aliases:");

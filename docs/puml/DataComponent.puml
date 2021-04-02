@@ -35,4 +35,6 @@ Command -down-> Favourite
 Command -down-> History
 
 hide members
+hide circle
+skinparam classAttributeIconSize 0
 @enduml

@@ -23,8 +23,7 @@ public class AddNoteCommand extends Command {
             assert noteInfo[0] != null : "Block is not supposed to be null";
             assert noteInfo[1] != null : "Added note is not supposed to be null";
             nusMap.checkIfValidBlock(noteInfo[0]);
-            Block block = nusMap.getBlock(noteInfo[0]);
-            block.addNote(noteInfo[1]);
+            nusMap.getBlock(noteInfo[0]).addNote(noteInfo[1]);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
         } catch (InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
