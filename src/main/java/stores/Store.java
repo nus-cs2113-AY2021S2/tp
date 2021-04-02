@@ -13,6 +13,7 @@ public class Store {
     private ArrayList<Menu> menus;
     public static double ratingSum = 0;
     public static int ratingCount = 0;
+    public static int menuCount = 0;
     public static double averageRating;
 
     private static Logger logger = Logger.getLogger(Store.class.getName());
@@ -68,5 +69,16 @@ public class Store {
 
     public void addMenu(Menu newMenu) {
         menus.add(newMenu);
+        menuCount++;
+    }
+
+
+    public void deleteMenu(int menuIndex) {
+        menus.remove(menuIndex);
+    }
+
+    public int getMenuCount() {
+        return menuCount;
     }
 }
+

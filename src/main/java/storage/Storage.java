@@ -113,14 +113,27 @@ public class Storage {
         return canteen;
     }
 
-    public static void save(ArrayList<Canteen> canteens) {
-        try {
-            FileWriter fw = new FileWriter(filePath);
-            //saveCanteens(fw, canteens);
-            fw.close();
-        } catch (IOException e) {
-            System.out.println("File Path was not found!");
+    public static void save(FileWriter fw, ArrayList<Canteen> canteens) throws IOException {
+
+        for (Canteen canteen :canteens) {
+            //print canteen
+            fw.write(canteen.getCanteenName() + "\n");
+            for (Store store : canteen.getStores()) {
+                //print canteen  + store
+                fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + "\n");
+                for (Review review: store.getReviews()) {
+                    //print canteen + store + review
+                    fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + seperator
+                            + review.getDescription() + "//" + review.getRating() + "//" + review.getDate() + "\n");
+                }
+                for (Menu menus : store.getMenus()) {
+                    //print canteen + store + menuName + menuPrice
+                    fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + seperator
+                            + menus.getItemName() + seperator + menus.getPrice() + "\n");
+                }
+            }
         }
+        fw.close();
     }
 
     public static void saveCanteen(FileWriter fw, String canteenName) throws IOException {
