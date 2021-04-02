@@ -1,6 +1,7 @@
 package seedu.hdbuy.parser;
 
 import org.junit.Assert;
+
 import seedu.hdbuy.command.ClearCommand;
 import seedu.hdbuy.command.CloseCommand;
 import seedu.hdbuy.command.Command;
@@ -14,11 +15,9 @@ import seedu.hdbuy.command.SaveCommand;
 import seedu.hdbuy.command.ShortlistCommand;
 import seedu.hdbuy.command.SortCommand;
 import seedu.hdbuy.common.CommandKey;
+import seedu.hdbuy.common.HdBuyLogger;
 import seedu.hdbuy.common.exception.InvalidParameterException;
 import seedu.hdbuy.ui.TextUi;
-
-import java.util.Arrays;
-import java.util.logging.Logger;
 
 public class Parser {
 
@@ -68,10 +67,10 @@ public class Parser {
                 break;
             }
         } catch (InvalidParameterException e) {
-            Logger.getLogger("Parser").severe(e.getMessage());
+            HdBuyLogger.error(e.getMessage());
             TextUi.showInvalidParameter(e.getKeyCommand(), e);
         } catch (NumberFormatException e) {
-            Logger.getLogger("Parser").severe(e.getMessage());
+            HdBuyLogger.error(e.getMessage());
             TextUi.showInvalidIndex();
         }
         return command;

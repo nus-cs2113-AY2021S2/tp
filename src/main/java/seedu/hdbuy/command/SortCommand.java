@@ -1,9 +1,7 @@
 package seedu.hdbuy.command;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import seedu.hdbuy.common.QueryKey;
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.common.exception.InvalidSortException;
 import seedu.hdbuy.common.exception.NoFlatsException;
@@ -19,7 +17,7 @@ public class SortCommand extends Command {
         this.criteria = criteria;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         try {
             switch (criteria) {
             case CommandType.SORT_ASC:

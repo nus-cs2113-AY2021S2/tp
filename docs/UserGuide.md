@@ -7,7 +7,11 @@ HdBuy allows you to easily find and bookmark resale flats available matching you
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Down the latest version of `HdBuy` from [here](https://github.com/AY2021S2-CS2113-F10-1/tp/releases/tag/v0.1).
+2. Down the latest version of `HdBuy` from [here](https://github.com/AY2021S2-CS2113-F10-1/tp/releases/tag/v2.0).
+3. Execute the jar file by going to the directory and running 'java -jar hdbuy.java' in command line.
+4. Execute your first command, 'help', to view all other available commands.
+
+![Your first launch](images/landing.png)
 
 ## Features 
 
@@ -20,6 +24,18 @@ HdBuy allows you to easily find and bookmark resale flats available matching you
   e.g. in `filter ATTRIBUTE VALUE`, `ATTRIBUTE` is the attribute of a unit to filter. `VALUE` is the value of the attribute.
 
 </div>
+
+### Add a Filter : `filter`
+
+Add a filter condition. 
+
+Format: `filter ATTRIBUTE VALUE`
+
+### Add a Filter : `find`
+
+Search for units with the current filter conditions.
+
+Format: `find`
 
 ### View Shortlist : `shortlist`
 
@@ -65,7 +81,31 @@ Format: `list`
 
 Removes all currently set filter conditions.
 
-Format: `clear`
+### Display help guide: `help`
+
+Shows the available commands and directs the user to the appropriate links.
+
+Format: `help`
+
+### Sort: `sort`
+
+Sorts listings either in ascending or descending order with respect to price.
+
+Format: `sort TYPE`
+
+Example:
+* `sort asc` to sort listings in ascending order with respect to price.
+
+## Error Handling
+
+Listed in the table below are all possible errors.
+
+|Exception|Description|
+|---------|-----------|
+|EmptyParameterException|There are no parameters for the app's `find` function to search on.|
+|InvalidFilterException|The filter type input by the user does not exist in the database.|
+|InvalidParameterException|The number of parameters input by the user is incorrect for the specific command.|
+
 
 ## FAQ
 

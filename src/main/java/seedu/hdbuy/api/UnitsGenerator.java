@@ -1,10 +1,9 @@
 package seedu.hdbuy.api;
 
+import java.util.ArrayList;
+
 import seedu.hdbuy.common.Unit;
 import seedu.hdbuy.data.SearchedUnits;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class UnitsGenerator {
 
