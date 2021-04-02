@@ -10,6 +10,7 @@ import seedu.ui.NurseScheduleUI;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 
 import static seedu.duke.Constants.PATIENT_FILE_PATH;
 import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
@@ -65,6 +66,16 @@ public class NurseScheduleStorage {
         createFile();
         nurseSchedules = readFile();
         return nurseSchedules;
+    }
+
+    public FileHandler initLogger() {
+        try {
+            FileHandler fileHandler = new FileHandler("nurseschedules.log");
+            return fileHandler;
+        } catch (IOException e) {
+            System.out.println("Error with logging file!");
+        }
+        return null;
     }
 
     public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException {

@@ -8,14 +8,16 @@ import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
-import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
+import seedu.ui.UI;
+import java.util.logging.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class NurseSchedulesParser {
@@ -98,6 +100,8 @@ public class NurseSchedulesParser {
         String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line));
         Command c = null;
 
+        logger.info("Parsing command...");
+
         switch (command) {
         case "ADD":
             try {
@@ -106,6 +110,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in add command!");
             }
             break;
         case "LIST":
@@ -115,6 +120,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in list command!");
             }
             break;
         case "DELETE":
@@ -124,6 +130,7 @@ public class NurseSchedulesParser {
             } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in delete command!");
             }
             break;
         case "HELP":
@@ -133,6 +140,7 @@ public class NurseSchedulesParser {
             c = new NurseScheduleReturn();
             break;
         default:
+            logger.log(Level.WARNING, "Command not successfully parsed!");
             ui.invalidInputsMessage();
             break;
         }

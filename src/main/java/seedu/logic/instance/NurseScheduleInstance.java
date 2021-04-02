@@ -8,6 +8,7 @@ import seedu.logic.parser.NurseSchedulesParser;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
+import java.util.logging.*;
 
 import java.io.IOException;
 
@@ -16,15 +17,24 @@ import java.io.IOException;
  */
 public class NurseScheduleInstance {
 
+
+
     private NurseSchedulesParser parser;
     private NurseScheduleActions nurseSchedules;
     private NurseScheduleStorage storage;
     private NurseScheduleUI ui;
+    public static Logger logger;
+
+
 
     public NurseScheduleInstance() {
         parser = new NurseSchedulesParser();
         storage = new NurseScheduleStorage();
         ui = new NurseScheduleUI();
+
+        logger = Logger.getLogger(this.getClass().getName());
+        LogManager.getLogManager().reset();
+        logger.addHandler(storage.initLogger());
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
@@ -45,6 +55,8 @@ public class NurseScheduleInstance {
         ui.printNurseScheduleWelcomeMessage();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
+            //logger.log(Level.INFO, "loop!");
+            logger.info("loop!");
             try {
                 String line = ui.getInput("NSchedule");
                 Command c = parser.nurseParse(line, ui);
@@ -57,6 +69,7 @@ public class NurseScheduleInstance {
                     UI.returningToStartMenuMessage();
                 }
                 ui.lineBreak();
+                logger.info("end loop!");
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
                 ui.lineBreak();
