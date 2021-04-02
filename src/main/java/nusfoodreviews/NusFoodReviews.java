@@ -20,7 +20,7 @@ public class NusFoodReviews {
     private Storage storage;
     private Parser parser;
     private boolean isExit = false;
-    private boolean isPublicUser;
+    private static int userIndex = -1;   // userIndex=0 for Public, userIndex=1 for admin
     private static int canteenIndex = -1;
     private static int storeIndex = -1;
 
@@ -41,59 +41,73 @@ public class NusFoodReviews {
 
     public void run() throws DukeExceptions {
         ui.showLogo();
-        ui.showLoginPage();
-        assert (!isPublicUser);
-        isPublicUser = CheckUser.checkUserType(ui);
-        if (isPublicUser) {
-            runPublicUser();
-        } else {
-            runAdmin();
+        while (true) {
+            if (userIndex == -1) {
+                assert(canteenIndex==-1);
+                assert(storeIndex==-1);
+                userIndex = chooseUser();
+            } else if (userIndex == 1) {
+                runAdmin();
+            } else if (userIndex == 0) {
+                runPublicUser();
+            } else {
+                System.exit(1);
+            }
         }
-        System.exit(0);
     }
 
-    public void runPublicUser() throws DukeExceptions {
-        ui.userShowWelcome();
+    public int chooseUser() {
+        ui.showLoginPage();
+        boolean isPublicUser = CheckUser.checkUserType(ui);
+        if (isPublicUser) {
+            ui.userShowWelcome();
+            return 0;
+        } else {
+            ui.adminShowWelcome();
+            AdminVerification.verifyInputPassword();
+            ui.showAdminVerified();
+            return 1;
+        }
+    }
 
-        while (true) {
-            try {
-                if (canteenIndex < 0) {
-                    setCanteenIndex();
-                } else if (storeIndex < 0) {
-                    setStoreIndex();
-                } else {
-                    Canteen canteen = canteens.get(canteenIndex);
-                    Store store = canteen.getStore(storeIndex);
-                    ui.showStoreOptions(canteen.getCanteenName(),
-                            store.getStoreName());
-                    String line = ui.readCommand();
-                    Command c = parser.parse(line, store, canteen);
-                    c.execute(canteens, ui);
-                }
-            } catch (DukeExceptions | IOException e) {
-                ui.showError(e.getMessage());
+    public void runPublicUser() {
+        try {
+            if (canteenIndex < 0) {
+                setCanteenIndex();
+            } else if (storeIndex < 0) {
+                setStoreIndex();
+            } else {
+                Canteen canteen = canteens.get(canteenIndex);
+                Store store = canteen.getStore(storeIndex);
+                ui.showStoreOptions(canteen.getCanteenName(),
+                        store.getStoreName());
+                String line = ui.readCommand();
+                Command c = parser.parse(line, store, canteen);
+                c.execute(canteens, ui);
             }
+        } catch (DukeExceptions | IOException e) {
+            ui.showError(e.getMessage());
         }
     }
 
     public void runAdmin() {
-        ui.adminShowWelcome();
-        AdminVerification.verifyInputPassword();
-        ui.showAdminVerified();
-
-        while (true) {
-            ui.showAdminOptions();
-            try {
-                String line = ui.readCommand();
-                Command c = parser.parseAdminCommand(line);
-                c.execute(canteens, ui);
-            } catch (DukeExceptions | IOException e) {
-                ui.showError(e.getMessage());
-            }
+        ui.showAdminOptions();
+        try {
+            String line = ui.readCommand();
+            Command c = parser.parseAdminCommand(line);
+            c.execute(canteens, ui);
+        } catch (DukeExceptions | IOException e) {
+            ui.showError(e.getMessage());
         }
     }
 
-    public static void resetAllIndexes() {
+    public static void resetAllIndex() {
+        userIndex = -1;
+        canteenIndex = -1;
+        storeIndex = -1;
+    }
+
+    public static void resetCanteenStoreIndex() {
         canteenIndex = -1;
         storeIndex = -1;
     }
