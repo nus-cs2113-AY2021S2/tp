@@ -12,10 +12,10 @@ The App consists of:
 * [**`Api`**](#api-component): Retrieves data on resale flats from server.
 * [**`Command`**](#command-component): The command executor.
 * [**`Parser`**](#parser-component): Translate user input to valid commands to be executed.
-* [**`Ui`**](#ui-component): Communicates with user via messages.
-* [**`Data`**](#data-component): Contains shortlist, user input history and temporarily tracks search history.
+* [**`Ui`**](#ui-component): Communicates with user via messages. Contains a sole TextUi class.
+* [**`Data`**](#data-component): Contains shortlist, user input history and temporarily tracks search history. Contains SearchedUnits, ShortList, and UserInput. All of which do not interact with each other.
 * [**`Storage`**](#storage-component): Reads shortlisted units from, and writes shortlisted units to, the text file.
-* [**`Common`**](#common-component): Models of objects used internally.
+* [**`Common`**](#common-component): Models of objects used internally. Includes keys, exceptions, logger and the Unit class.
 
 ### Api component
 
@@ -118,7 +118,7 @@ Easily find and bookmark resale flats available matching user's preference.
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+<div markdown="span" class="alert alert-info">**Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
 
 </div>
