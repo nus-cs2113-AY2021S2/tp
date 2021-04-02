@@ -89,13 +89,6 @@ public class Parser {
     //parse admin commands only
     public Command parseAdminCommand(String line) throws DukeExceptions {
         Command newCommand;
-        int currentCanteenIndex;
-        int currentStoreIndex;
-
-        ArrayList<Canteen> canteens = nusFoodReviews.getCanteens();
-        ArrayList<Store> stores;
-        ArrayList<Review> reviews;
-        ArrayList<Menu> menus = null;
 
         switch (line) {
         case "1":
@@ -117,32 +110,10 @@ public class Parser {
             newCommand = new DeleteStoreCommand(nusFoodReviews, this);
             break;
         case "7":
-            nusFoodReviews.setCanteenIndex();
-            currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            nusFoodReviews.setStoreIndex();
-            currentStoreIndex = nusFoodReviews.getStoreIndex();
-            stores = canteens.get(currentCanteenIndex).getStores();
-            reviews = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
-            averageRating = stores.get(currentStoreIndex).getAverageRating();
-            ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
-            ui.showDeleteReview();
-            int reviewNumber = parseInt(ui.readCommand(),1,
-                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
-            newCommand = new DeleteReviewCommand(currentCanteenIndex, currentStoreIndex, reviewNumber);
+            newCommand = new DeleteReviewCommand(nusFoodReviews, this);
             break;
         case "8":
-            nusFoodReviews.setCanteenIndex(); //show UI to get canteen
-            currentCanteenIndex = nusFoodReviews.getCanteenIndex(); //get canteen index
-            ui.showDisplayStores(canteens.get(currentCanteenIndex)); //display stores
-            ui.chooseStore();
-            currentStoreIndex = Integer.parseInt(ui.readCommand()) - 1; //get store index
-            menus = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenus(); //get menus
-            ui.showDisplayMenu(canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getStoreName(),
-                    menus); //displaymenu to delete
-            ui.chooseMenu();
-            int menuNumber = parseInt(ui.readCommand(),1,
-                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenuCount()) - 1;
-            newCommand = new DeleteMenuCommand(currentCanteenIndex, currentStoreIndex, menuNumber);
+            newCommand = new DeleteMenuCommand(nusFoodReviews, this);
             break;
         case "9":
             newCommand = new ExitCommand();

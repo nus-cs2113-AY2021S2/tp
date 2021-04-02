@@ -318,4 +318,10 @@ public class Ui {
         System.out.println("Cancelling.... Review not Deleted");
         System.out.println(LINESPACING);
     }
+
+    public void showMenuNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Menu not Deleted");
+        System.out.println(LINESPACING);
+    }
 }

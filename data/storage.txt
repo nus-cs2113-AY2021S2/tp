@@ -29,3 +29,5 @@ The deck<>chicken rice stall<>lovely food //5//2021-04-02
 The deck<>yong tau fu<>very cheap but soup a little too salty//3//2021-04-02Valid Canteen Name
 Valid Canteen Name
 Valid Canteen Name
+Valid Canteen Name
+Valid Canteen Name
