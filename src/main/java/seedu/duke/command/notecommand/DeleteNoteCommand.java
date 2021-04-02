@@ -31,7 +31,7 @@ public class DeleteNoteCommand extends Command {
                     "Index is out of bounds";
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlockInfo));
         } catch (EmptyNoteException e) {
-            ui.showMessageWithDivider(String.format(e.getMessage(), deleteBlock));
+            ui.showMessageWithDivider(String.format(e.getMessage(), deleteBlockInfo));
         } catch (InvalidIndexException | InvalidBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
