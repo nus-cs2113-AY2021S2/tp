@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+hide footbox
+
 [-> ":ApiRepository": fetchUnits(inputs)
 activate ":ApiRepository"
 ":ApiRepository" -> ":QueryFormatter": formQuery(inputs)

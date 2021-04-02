@@ -1,5 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
+hide footbox
 activate ":HdBuy"
         ":HdBuy" -> ":ShortListCommand": execute()
         activate  ":ShortListCommand"
@@ -15,5 +16,4 @@ activate ":HdBuy"
         end
         ":HdBuy" <--  ":ShortListCommand"
         destroy  ":ShortListCommand"
-deactivate ":HdBuy"
 @enduml

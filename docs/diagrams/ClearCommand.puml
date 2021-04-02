@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+hide footbox
+
 activate ":HdBuy"
 ":HdBuy" -> ":ClearCommand": execute()
         activate ":ClearCommand"
