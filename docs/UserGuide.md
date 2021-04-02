@@ -680,7 +680,7 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | exit | `exit` |
 | open | `open <module code>`|
 | add | `add <module code>` |
-| delete | `add  <module name>` |
+| delete | `delete  <module name>` |
 | modules | `modules` |
 
 ### Module Commands Summary
