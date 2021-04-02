@@ -42,7 +42,7 @@ public class DeleteCommand extends Command {
             deleteRecord(patient, date);
             data.saveFile();
         } else {
-            ui.printMessage("Please indicate whether to delete patient or record using /p or /r respectively!");
+            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_DELETE_ARGUMENT);
         }
     }
 
@@ -50,10 +50,9 @@ public class DeleteCommand extends Command {
      * Deletes a patient from the list.
      * @param id Unique identifier of the patient to be retrieved
      */
-    private void deletePatient(String id) {
+    private void deletePatient(String id) throws InvalidInputException {
         if (data.getPatient(id) == null) {
-            ui.printMessage("Patient does not exist!");
-            return;
+            throw new InvalidInputException(InvalidInputException.Type.PATIENT_NOT_FOUND);
         }
         data.deletePatient(id);
         ui.printMessage("Patient " + id + " has been deleted!");
