@@ -2,8 +2,6 @@
 skinparam classAttributeIconSize 0
 hide circle
 
-note "Private methods are omitted." as N1
-
 abstract class "{abstract}\nCommand" as Command {
     {abstract} +execute()
 }
@@ -21,73 +19,19 @@ class AddCommand {
     -description: String
     -borrowerName: String
     -recordType: RecordType
-    +AddCommand(arguments: ArrayList<String>)
+    +AddCommand(:ArrayList<String>)
     +execute()
 }
 
-class CreditScoreCommand {
-    {static} #COMMAND_CREDIT_SCORE: String
-    -borrowerName: String
-    +CreditScoreCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class ExitCommand {
-    {static} #COMMAND_EXIT: String
-    +ExitCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class HelpCommand {
-    {static} #COMMAND_HELP: String
-    -helpType: String
-    +HelpCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class ListCommand {
-    {static} #COMMAND_LIST: String
-    -recordType: RecordType
-    +ListCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class RemoveCommand {
-    {static} #COMMAND_REMOVE: String
-    -recordNumberStr: String
-    -recordNumberInt: int
-    +RemoveCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class ReturnCommand {
-    {static} #COMMAND_RETURN: String
-    -recordNumberStr: String
-    -recordNumberInt: int
-    -returnDate: LocalDate
-    +ReturnCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-class ViewCommand {
-    {static} #COMMAND_VIEW: String
-    -recordType: RecordType
-    +ViewCommand(arguments: ArrayList<String>)
-    +execute()
-}
-
-skinparam linetype polyline
-skinparam groupInheritance 3
+note right of Command::execute
+    Parameters omitted for brevity.
+end note
 
 Command <|-- AddCommand
-Command <|-- CreditScoreCommand
-Command <|-- ExitCommand
-Command <|-- HelpCommand
-Command <|-- ListCommand
-Command <|-- RemoveCommand
-Command <|-- ReturnCommand
-Command <|-- ViewCommand
 
 hide RecordType empty members
+Command -left[hidden] RecordType
+
+note "Other child Command objects omitted for brevity.\nPrivate methods are omitted." as N1
 
 @enduml
