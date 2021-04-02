@@ -239,36 +239,36 @@ Adds a module with the specified module name.
 
 > 💡 Module name is auto-converted to uppercase, hence is not case-sensitive.
 
-### Deleting a module : _delete_
+### Deleting a module : _del_
 
 Lists all modules and asks the user for indices of modules to delete. Then, deletes modules corresponding to indices specified.
 
 **Format:**<br>
-`delete`
+`del`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete | Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space. |
+| 1 | del | Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space. |
 | 2 | 1 3 | Removed CS2107 from the module list.<br>Removed CS2101 from the module list. |
 
 **Result** - Modules CS2107 and CS2101 are removed from the module list.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
-### Listing all modules : _modules_
+### Listing all modules : _mods_
 
 Lists all modules.
 
 **Format:**<br>
-`modules`
+`mods`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | modules | Modules in your list:<br>1. CS2101<br>2. CS2113T |
+| 1 | mods | Modules in your list:<br>1. CS2101<br>2. CS2113T |
 
 &nbsp;
 
@@ -312,38 +312,38 @@ Displays a summary of lessons and undone tasks for the module.
 
 **Result** - Prints overview of module, including lesson and undone tasks.
 
-### Adding a lesson : _add lesson_
+### Adding a lesson : _add lsn_
 
 Adds a new lesson with specified lesson type and information to the current module.
 
 **Format:**<br>
-`add lesson <lesson type> ;; <day & time>`<br>
-`add lesson <lesson type> ;; <day & time> ;; <link>`<br>
-`add lesson <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name>`<br>
-`add lesson <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>`
+`add lsn <lesson type> ;; <day & time>`<br>
+`add lsn <lesson type> ;; <day & time> ;; <link>`<br>
+`add lsn <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name>`<br>
+`add lsn <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add lesson tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc | Added tutorial to lesson list. |
+| 1 | add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc | Added tutorial to lesson list. |
 
 **Result** - Adds “tutorial” to the module's list of lessons, with specified details.
 
 > ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
 
-### Deleting a lesson : _delete lesson_
+### Deleting a lesson : _del lsn_
 
 Lists all lessons for the module and asks the user for indices of lessons to delete. Then, deletes lessons corresponding to the indices specified.
 
 **Format:**<br>
-`delete lesson`
+`del lsn`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete lesson |  Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space. |
+| 1 | del lsn |  Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space. |
 | 2 | 1 2 | Removed lecture.<br>Removed tutorial. |
 
 
@@ -351,18 +351,18 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
-### Editing a lesson : _edit lesson_
+### Editing a lesson : _edit lsn_
 
 Lists all lessons for the module and asks the user for the index of the lesson to edit. Then, lists all editable fields and asks the user for the indices of the fields to edit. Lastly, for each selected field, the user inputs a new value.
 
 **Format:**<br>
-`edit lesson`
+`edit lsn`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | edit lesson | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
+| 1 | edit lsn | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
 | 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
 | 3 | 1 2 | Enter new time and day: |
 | 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link |
@@ -391,31 +391,31 @@ Then, opens the links of the lessons specified.
 
 > 💡 Multiple links can be opened at once. As such, separate indices with a space. Invalid indices will be ignored.
 
-### Listing all teaching staff : _teacher_
+### Listing all teaching staff : _tch_
 
 Lists all teaching staff for the module.
 
 **Format:**<br>
-`teacher`
+`tch`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | teacher | Teaching staff for CS2113T:<br>1. Prof Akshay - profakshay@email.com<br>2. Cheng Xianhao - cxh@email.com |
+| 1 | tch | Teaching staff for CS2113T:<br>1. Prof Akshay - profakshay@email.com<br>2. Cheng Xianhao - cxh@email.com |
 
-### Listing all lessons : _lessons_
+### Listing all lessons : _lsn_
 
 Lists all lessons for the module.
 
 **Format:**<br>
-`lessons`
+`lsn`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | lessons | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
+| 1 | lsn | Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm |
 
 ### Adding a task : _add task_
 
@@ -436,18 +436,18 @@ Adds a new task with specified name and information to the current module.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
 
-### Deleting a task : _delete task_
+### Deleting a task : _del task_
 
 Lists all tasks for the module and asks the user for indices of tasks to delete. Then, deletes tasks corresponding to the indices specified.
 
 **Format:**<br>
-`delete task`
+`del task`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete task | Which tasks would you like to delete?<br>1. weekly exercise<br>2. watch video snippets<br>3. iP submission<br><br>Please enter the indices of the tasks you would like to delete.<br>Separate indices with a blank space. |
+| 1 | del task | Which tasks would you like to delete?<br>1. weekly exercise<br>2. watch video snippets<br>3. iP submission<br><br>Please enter the indices of the tasks you would like to delete.<br>Separate indices with a blank space. |
 | 2 | 1 3 | Removed weekly exercise.<br>Removed iP submission. |
 
 **Result** - The tasks “weekly exercise” and “iP submission” are removed from the list of tasks.
@@ -524,52 +524,52 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
 | --- | --- | --- |
 | 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021 |
 
-### Adding a cheat-sheet : _add cheat-sheet_
+### Adding a cheat-sheet : _add cs_
 
 Adds a new cheat-sheet with specified name to the module.
 
 **Format:**<br>
-`add cheat-sheet <cheat-sheet name>`
+`add cs <cheat-sheet name>`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | add cheat-sheet lecture notes | lecture notes has been added to your Cheatsheet folder. |
+| 1 | add cs lecture notes | lecture notes has been added to your Cheatsheet folder. |
 
 **Result** - Adds new cheat-sheet “lecture notes” and opens it in the text editor.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
-### Deleting a cheat-sheet : _delete cheat-sheet_
+### Deleting a cheat-sheet : _del cs_
 
 Deletes the specified cheat-sheet from the module.
 
 **Format:**<br>
-`delete cheat-sheet <cheat-sheet name>`
+`del cs <cheat-sheet name>`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | delete cheat-sheet lecture notes | lecture notes has been deleted! |
+| 1 | del cs lecture notes | lecture notes has been deleted! |
 
 **Result** - Deletes cheat-sheet “lecture notes”.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
-### Editing a cheat-sheet : _edit cheat-sheet_
+### Editing a cheat-sheet : _edit cs_
 
 Opens the specified cheat-sheet in the text editor.
 
 **Format:**<br>
-`edit cheat-sheet <cheat-sheet name>`
+`edit cs <cheat-sheet name>`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | edit cheat-sheet lecture notes | Opened lecture notes. |
+| 1 | edit cs lecture notes | Opened lecture notes. |
 
 **Result** - Opens cheat-sheet “lecture notes” in text editor.
 
@@ -580,13 +580,13 @@ Opens the specified cheat-sheet in the text editor.
 Lists all cheat-sheets for the module.
 
 **Format:**<br>
-`cheat-sheets`
+`cs`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | cheat-sheets | Here is your list of cheat-sheets:<br><br>1. lecture notes |
+| 1 | cs | Here is your list of cheat-sheets:<br><br>1. lecture notes |
 
 &nbsp;
 
@@ -680,8 +680,8 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | exit | `exit` |
 | open | `open <module code>`|
 | add | `add <module code>` |
-| delete | `add  <module name>` |
-| modules | `modules` |
+| delete | `del` |
+| modules | `mods` |
 
 ### Module Commands Summary
 
@@ -690,22 +690,22 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | help | `help` |
 | close | `close` |
 | info | `info` | 
-| add lesson | `add lesson <lesson type> ;; <day & time> ;; [link] ;; [teaching staff name] ;; [email]` |
-| delete lesson | `delete lesson` |
-| edit lesson | `edit lesson` |
+| add lesson | `add lsn <lesson type> ;; <day & time> ;; [link] ;; [teaching staff name] ;; [email]` |
+| delete lesson | `del lsn` |
+| edit lesson | `edit lsn` |
 | link | `link` |
-| teacher | `teacher` |
-| lessons | `lessons` |
+| teacher | `tch` |
+| lessons | `lsn` |
 | add task | `add task <name> ;; <deadline> ;; [remarks]` |
-| delete task | `delete task` |
+| delete task | `del task` |
 | edit task | `edit task` |
 | mark | `mark` |
 | unmark | `unmark` |
 | tasks | `tasks` |
-| add cheat-sheet | `add cheat-sheet <cheat-sheet name>` |
-| delete cheat-sheet | `delete cheat-sheet <cheat-sheet name>` |
-| edit cheat-sheet | `edit cheat-sheet <cheat-sheet name>` |
-| cheat-sheets | `cheat-sheets` |
+| add cheat-sheet | `add cs <cheat-sheet name>` |
+| delete cheat-sheet | `del cs <cheat-sheet name>` |
+| edit cheat-sheet | `edit cs <cheat-sheet name>` |
+| cheat-sheets | `cs` |
 
 &nbsp;
 
