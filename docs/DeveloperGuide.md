@@ -7,7 +7,7 @@
 &nbsp;&nbsp;[3.2. Setting up the project in your computer](#Setting-up-the-project-in-your-computer) <br>
 &nbsp;&nbsp;[3.3. Verifying the setup](#Verifying-the-setup) <br>
 &nbsp;&nbsp;[3.4. Configure coding style](#Configure-the-coding-style) <br>
-[4. Design](#Design) <br>
+[4. Design](#Design) <br> 
 &nbsp;&nbsp;[4.1. Architecture: High Level View](#Architecture:-High-Level-View)<br />
 &nbsp;&nbsp;[4.2. UI & Messages component](#UI-component)<br />
 &nbsp;&nbsp;[4.3. Parser component](#Parser-component)<br />
@@ -16,34 +16,34 @@
 &nbsp;&nbsp;[4.6. Commands component](#Commands-component)<br />
 &nbsp;&nbsp;[4.7. Sorter component](#Sorter-component)<br />
 &nbsp;&nbsp;[4.8. Storage component](#Storage-component)<br />
-[4. Implementation](#Implementation) <br>
-&nbsp;&nbsp;[4.1. Mode Switch Feature](#Mode-switch-feature) <br>
-&nbsp;&nbsp;[4.2. Review Mode](#Review-Mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.1. Add a Review Feature](#Add-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.2. List Reviews Feature](#List-Reviews-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.3. Sort Reviews Feature](#Sort-Reviews-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.4. View a Review Feature](#View-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5. Edit a Review Feature](#Edit-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.6. Delete a Review Feature](#Delete-a-Review-feature) <br>
-&nbsp;&nbsp;[4.3. Recommendation Mode](#43-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.1. Add a Recommendation Feature](#Add-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.2. List Recommendation Feature](#List-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.3.3. Edit a Recommendation Feature](#Edit-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.5. Delete a Recommendation Feature](#Delete-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.2.6. Review a Recommendation Feature](#Review-a-Recommendation-feature) <br>
-&nbsp;&nbsp;[4.4. Storage](#44-storage) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.1. Storage Format](#441-storage-format) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[4.4.2. Implementation](#442-implementation) <br>
-&nbsp;&nbsp;[4.5. Error handling](#45-error-handling) <br>
-&nbsp;&nbsp;[4.6. Personalised Messages](#46-personalised-messages) <br>
+[5. Implementation](#Implementation) <br>
+&nbsp;&nbsp;[5.1. Mode Switch Feature](#Mode-switch-feature) <br>
+&nbsp;&nbsp;[5.2. Review Mode](#Review-Mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.1. Add a Review Feature](#Add-a-Review-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.2. List Reviews Feature](#List-Reviews-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.3. Sort Reviews Feature](#Sort-Reviews-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.4. View a Review Feature](#View-a-Review-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.5. Edit a Review Feature](#Edit-a-Review-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.6. Delete a Review Feature](#Delete-a-Review-feature) <br>
+&nbsp;&nbsp;[5.3. Recommendation Mode](#43-notebook-mode) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.3.1. Add a Recommendation Feature](#Add-a-Recommendation-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.3.2. List Recommendation Feature](#List-Recommendation-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.3.3. Edit a Recommendation Feature](#Edit-a-Recommendation-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.5. Delete a Recommendation Feature](#Delete-a-Recommendation-feature) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.2.6. Review a Recommendation Feature](#Review-a-Recommendation-feature) <br>
+&nbsp;&nbsp;[5.4. Storage](#44-storage) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.4.1. Storage Format](#441-storage-format) <br>
+&nbsp;&nbsp;&nbsp;&nbsp;[5.4.2. Implementation](#442-implementation) <br>
+&nbsp;&nbsp;[5.5. Error handling](#45-error-handling) <br>
+&nbsp;&nbsp;[5.6. Personalised Messages](#46-personalised-messages) <br>
 [6. Planned Features](#Planned-Features) <br>
-[5. Documentation](#5-documentation) <br>
-&nbsp;&nbsp;[5.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
-&nbsp;&nbsp;[5.2. Style guidance](#52-style-guidance) <br>
-&nbsp;&nbsp;[5.3. Diagrams](#53-diagrams) <br>
-[6. Testing](#6-testing) <br>
-&nbsp;&nbsp;[6.1. Running tests](#61-running-tests) <br>
-&nbsp;&nbsp;[6.2. Types of tests](#62-types-of-tests) <br>
+[7. Documentation](#5-documentation) <br>
+&nbsp;&nbsp;[7.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
+&nbsp;&nbsp;[7.2. Style guidance](#52-style-guidance) <br>
+&nbsp;&nbsp;[7.3. Diagrams](#53-diagrams) <br>
+[8. Testing](#6-testing) <br>
+&nbsp;&nbsp;[8.1. Running tests](#61-running-tests) <br>
+&nbsp;&nbsp;[8.2. Types of tests](#62-types-of-tests) <br>
 [Appendix A: Product Scope](#appendix-a-product-scope) <br>
 [Appendix B: User Stores](#appendix-b-user-stories) <br>
 [Appendix C: Use Cases](#appendix-c-use-cases) <br>
@@ -106,7 +106,7 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
-![img.png](img.png)
+
 Figure 1. Architecture Diagram of Connoisseur <br>
 //TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
 
