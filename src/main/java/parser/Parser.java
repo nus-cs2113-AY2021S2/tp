@@ -142,7 +142,7 @@ public class Parser {
             ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
             ui.showDeleteReview();
             int reviewNumber = parseInt(ui.readCommand(),1,
-                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount());
+                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount())-1;
             newCommand = new DeleteReviewCommand(currentCanteenIndex,currentStoreIndex, reviewNumber);
             break;
         case "8":
