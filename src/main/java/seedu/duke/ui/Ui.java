@@ -201,6 +201,22 @@ public class Ui {
     }
 
     /**
+     * Prints the entire list of all Records from the RecordList.
+     *
+     * @param recordList is the RecordList of all Records.
+     */
+    public void printAllRecords(RecordList recordList) {
+        System.out.println(DIVIDER);
+        System.out.println("Here is you Records list:");
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            printIndex(i);
+            System.out.println(currentRecord);
+        }
+        System.out.println(DIVIDER);
+    }
+
+    /**
      * Prints the total expenses in 2 decimal place.
      *
      * @param recordList contains the full list of records.
