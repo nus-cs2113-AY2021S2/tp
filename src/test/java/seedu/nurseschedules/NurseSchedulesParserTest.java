@@ -1,4 +1,4 @@
-package seedu.nurseschedules.parser;
+package seedu.nurseschedules;
 
 import org.junit.jupiter.api.Test;
 import seedu.exceptions.ExcessInputException;

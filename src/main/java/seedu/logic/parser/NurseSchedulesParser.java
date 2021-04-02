@@ -11,12 +11,11 @@ import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
-import java.util.logging.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
 
 import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.smartCommandRecognition;

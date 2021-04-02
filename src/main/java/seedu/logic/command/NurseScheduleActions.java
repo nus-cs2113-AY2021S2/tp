@@ -26,6 +26,8 @@ public class NurseScheduleActions {
         nurseSchedules = load;
     }
 
+    public NurseScheduleActions() { }
+
     public void clearSchedules() {
         nurseSchedules.clear();
     }
@@ -33,8 +35,8 @@ public class NurseScheduleActions {
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException,
             NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
         try {
-            NurseScheduleChecker.checkDuplicatePatientID(details[1], nurseSchedules);
             NurseScheduleChecker.checkValidNurseID(details[0]);
+            NurseScheduleChecker.checkDuplicatePatientID(details[1], nurseSchedules);
             NurseScheduleChecker.checkNurseIDExist(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
             NurseScheduleChecker.checkPatientDExist(details[1]);
@@ -60,7 +62,6 @@ public class NurseScheduleActions {
             NurseScheduleUI.nurseListHeader();
             UI.showLine();
             getNurseSchedulesByID(nurseSchedules, details[0]);
-            //NurseScheduleUI.printEmptyCell();
             printSchedules(findSchedules);
         }
     }
