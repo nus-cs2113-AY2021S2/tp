@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static seedu.duke.common.Constants.ADD;
-import static seedu.duke.common.Constants.DELETE;
+import static seedu.duke.common.Constants.DELETE_COMMAND;
 import static seedu.duke.common.Constants.DELIM;
 import static seedu.duke.common.Constants.EDIT;
 import static seedu.duke.common.Constants.EMPTY_STRING;
@@ -204,7 +204,7 @@ public class ParserUtil {
         String[] commandWordAndArgs = getCommandWordAndArgs(input);
         // command is more than 1 word
         if (commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(ADD)
-                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE)
+                || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(DELETE_COMMAND)
                 || commandWordAndArgs[INDEX_COMMAND_WORD].equalsIgnoreCase(EDIT)) {
             commandWordAndArgs = getTwoCommandWordAndArgs(input);
         }
