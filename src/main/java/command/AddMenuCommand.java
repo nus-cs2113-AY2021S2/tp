@@ -11,14 +11,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AddMenu extends Command {
+public class AddMenuCommand extends Command {
 
     private int canteenIndex;
     private int storeIndex;
     private Menu menu;
     private Canteen canteen;
 
-    public AddMenu(int canteenIndex, int storeIndex,Canteen canteen) {
+    public AddMenuCommand(int canteenIndex, int storeIndex, Canteen canteen) {
         this.canteenIndex = canteenIndex;
         this.storeIndex = storeIndex;
         this.canteen = canteen;

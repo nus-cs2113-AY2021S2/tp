@@ -1,9 +1,12 @@
 package command;
 
 import canteens.Canteen;
+import storage.Storage;
 import ui.Ui;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class DeleteStoreCommand extends Command {
 
@@ -16,8 +19,11 @@ public class DeleteStoreCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
         Canteen currentCanteen = canteens.get(canteenIndex);
+        String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
+        ui.showDeleteStore(storeName);
+        Storage.save(new FileWriter("data/storage.txt"),canteens);
     }
 }

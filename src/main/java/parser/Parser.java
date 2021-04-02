@@ -2,12 +2,12 @@ package parser;
 
 import canteens.Canteen;
 import command.AddCanteenCommand;
-import command.AddMenu;
+import command.AddMenuCommand;
 import command.AddReviewCommand;
 import command.AddStoreCommand;
 import command.Command;
 import command.DeleteCanteenCommand;
-import command.DeleteMenu;
+import command.DeleteMenuCommand;
 import command.DeleteReviewCommand;
 import command.DeleteStoreCommand;
 import command.DisplayCanteensCommand;
@@ -116,7 +116,7 @@ public class Parser {
             ui.showDisplayStores(canteens.get(currentCanteenIndex)); //display stores
             ui.chooseStore();
             currentStoreIndex = Integer.parseInt(ui.readCommand()) - 1;
-            newCommand = new AddMenu(currentCanteenIndex,currentStoreIndex,
+            newCommand = new AddMenuCommand(currentCanteenIndex,currentStoreIndex,
                     canteens.get(currentCanteenIndex));
             break;
         case "5":
@@ -129,7 +129,7 @@ public class Parser {
             nusFoodReviews.setCanteenIndex();
             currentCanteenIndex = nusFoodReviews.getCanteenIndex();
             ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
-            int storeIndex = parseInt(ui.readCommand(), 2,
+            int storeIndex = parseInt(ui.readCommand(), 1,
                     canteens.get(currentCanteenIndex).getNumStores()) - 1;
             newCommand = new DeleteStoreCommand(currentCanteenIndex, storeIndex);
             break;
@@ -159,7 +159,7 @@ public class Parser {
             ui.chooseMenu();
             int menuNumber = parseInt(ui.readCommand(),1,
                     canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenuCount()) - 1;
-            newCommand = new DeleteMenu(currentCanteenIndex, currentStoreIndex, menuNumber);
+            newCommand = new DeleteMenuCommand(currentCanteenIndex, currentStoreIndex, menuNumber);
             break;
         case "9":
             newCommand = new ExitCommand();

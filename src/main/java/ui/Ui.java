@@ -196,6 +196,12 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
+    public void showDeleteStore(String storeName) {
+        System.out.println(LINESPACING);
+        System.out.println("Store, " + "(" + storeName + ")" + " has been deleted.");
+        System.out.println(LINESPACING);
+    }
+
     public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
         System.out.println(LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
@@ -261,9 +267,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void menuDeleted() {
+    public void menuDeleted(String menuName) {
         System.out.println(LINESPACING);
-        System.out.println("Menu successfully deleted!");
+        System.out.println("Menu, " + "(" + menuName + ")" + " has been deleted.");
         System.out.println(LINESPACING);
     }
 
