@@ -8,9 +8,9 @@ import seedu.hdbuy.common.exception.InvalidParameterException;
 
 public class CommandEvaluator {
 
-    public static CommandKey extractInfo(String fullLine) throws InvalidParameterException {
+    public static CommandKey extractInfo(String fullCommand) throws InvalidParameterException {
         String[] lineParts;
-        lineParts = fullLine.split(" ");
+        lineParts = fullCommand.split(" ");
         HdBuyLogger.info(Arrays.toString(lineParts));
         String keyCommand = lineParts[0];
         switch (keyCommand) {

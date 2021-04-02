@@ -14,7 +14,7 @@ public class DefaultCommand extends Command {
         this.input = input;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         // TextUi.showInvalidInput(input);
     }
 }

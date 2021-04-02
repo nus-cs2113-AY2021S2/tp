@@ -19,7 +19,7 @@ public class FilterCommand extends Command {
 
     @Override public void execute(UserInput userInput) {
         try {
-            LinkedHashMap<QueryKey, String> inputs = userInput.getInputs();
+            LinkedHashMap<QueryKey, String> inputs = UserInput.getInputs();
             switch (criteria) {
             case "location":
                 inputs.put(QueryKey.LOCATION, value);

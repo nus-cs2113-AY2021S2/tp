@@ -9,13 +9,13 @@ import seedu.hdbuy.ui.TextUi;
 
 public class ClearCommand extends Command {
 
-    @Override public void execute(UserInput userInputs) {
+    @Override public void execute() {
         try {
-            LinkedHashMap<QueryKey, String> inputs = userInputs.getInputs();
+            LinkedHashMap<QueryKey, String> inputs = UserInput.getInputs();
             if (inputs.isEmpty()) {
                 throw new EmptyParameterException();
             } else {
-                userInputs.clearInputs();
+                UserInput.clearInputs();
                 TextUi.showClearedFilterConditions();
             }
         } catch (EmptyParameterException e) {

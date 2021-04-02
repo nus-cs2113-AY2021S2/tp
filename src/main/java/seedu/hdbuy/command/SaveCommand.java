@@ -15,7 +15,7 @@ public class SaveCommand extends Command {
         this.index = index;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         Unit targetUnit = SearchedUnits.getUnit(index);
         if (targetUnit == null) {
             return;

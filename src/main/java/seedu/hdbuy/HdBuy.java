@@ -8,8 +8,6 @@ import seedu.hdbuy.ui.TextUi;
 
 public class HdBuy {
 
-    private static UserInput userInput;
-
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -17,10 +15,9 @@ public class HdBuy {
     public static void main(String[] args) {
         HdBuyLogger.enableLogger(false);
         HdBuyLogger.info("Starting process");
-        userInput = new UserInput();
+        UserInput userInput = UserInput.getInstance();
         TextUi.showWelcome();
         receiveCommand(false);
-        cleanUp();
     }
 
     private static void receiveCommand(boolean isExit) {
@@ -28,14 +25,10 @@ public class HdBuy {
             String fullCommand = TextUi.readCommand();
             TextUi.showSeparator();
             Command command = Parser.parse(fullCommand);
-            assert userInput != null : "Input is not initiated";
-            command.execute(userInput);
+            assert UserInput.getInputs() != null : "Input is not initiated";
+            command.execute();
             TextUi.showSeparator();
             receiveCommand(command.isExit());
         }
-    }
-
-    private static void cleanUp() {
-        userInput = null;
     }
 }

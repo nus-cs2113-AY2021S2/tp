@@ -53,37 +53,95 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 <img src="diagrams/StorageSequence.png" />
 
-### Command component
+### Ui component
 
-The `Command`,
+The `Ui`,
 
-* Handles the appropriate actions to perform for each Command.
-* Uses the information from the UserInput object passed into it for certain Commands.
+* Retrieves user input from CLI.
+* Display results to user in CLI.
 
-The *Class Diagram* below shows the different Commands and the respective information they use from the UserInput object.
+### Data component
 
-<img src="diagrams/CommandClass.png" />
+The `Data`,
 
-**How classes within Command component interact with each other**
-
-The *Sequence Diagram* below shows how the components interact with each other when the Sort Command is executed.
-
-<img src="diagrams/sortCommand_Sequence_Diagram.jpg" />
+* Static classes that can be referred by other components to retrieve/modify/store data.
 
 ### Parser component
 
 The `Parser`,
 
-* Receives the full command line from receiveCommand().
-* Depends on the key command, Parser will activate specific commands.
+* Receives the full user input from receiveCommand().
+* Calls for creation of a Command type object and returns to HdBuy.
 
-**How classes within Parser component interact with each other**
+**How other classes interact with Parser component**
 
-The *Sequence Diagram* below shows how the components interact with each other after the full user input is passed into the `Parser`.
+The *Sequence Diagram* below shows how the components interact with each other when user enters a command from CLI.
 
 <img src="diagrams/ParserSequence.png" />
 
-The CommandEvaluator class extracts the information from the full input and thereafter passes a keyCommand to the Parser class for it to return the appropriate Command to the main method.
+The CommandEvaluator class extracts the information from the input and thereafter passes a keyCommand to the Parser class for it to map and retrieve the appropriate Command to the HdBuy.
+
+### Command component
+
+The `Command`,
+
+* Can be executed to carry out tasks.
+
+The *Class Diagram* below shows the different Commands that can be mapped and retrieved by Parser.
+
+<img src="diagrams/CommandClass.png" />
+
+**How classes interact with a Command object during execution**
+
+The *Sequence Diagram* below shows how the components interact with each other when:
+
+1. `Filter Command` is executed.
+
+<img src="diagrams/FilterCommand.png" />
+
+2. `Find Command` is executed.
+
+<img src="diagrams/FindCommand.png" />
+
+3. `Remove Command` is executed.
+
+<img src="diagrams/RemoveCommand.png" />
+
+4. `Save Command` is executed.
+
+<img src="diagrams/SaveCommand.png" />
+
+5. `Shortlist Command` is executed.
+
+<img src="diagrams/ShortlistCommand.png" />
+ 
+6. `Sort Command` is executed.
+
+<img src="diagrams/SortCommand.png" />
+
+7. `Clear Command` is executed.
+
+<img src="diagrams/ClearCommand.png" />
+
+8. `Close Command` is executed.
+
+<img src="diagrams/CloseCommand.png" />
+
+9. `Help Command` is executed.
+
+<img src="diagrams/HelpCommand.png" />
+
+10. `List Command` is executed.
+
+<img src="diagrams/ListCommand.png" />
+
+11. `Default Command` is a placeholder command, it will not be executed.
+
+### Common component
+
+The `Common`,
+
+* Utility classes such as keys and exceptions.
 
 
 

@@ -5,7 +5,7 @@ import seedu.hdbuy.ui.TextUi;
 
 public class CloseCommand extends Command {
 
-    @Override public void execute(UserInput inputs) {
+    @Override public void execute() {
         TextUi.showExit();
     }
 }
