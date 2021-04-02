@@ -8,6 +8,7 @@ import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
+import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
