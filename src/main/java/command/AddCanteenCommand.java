@@ -10,18 +10,23 @@ import java.util.ArrayList;
 
 public class AddCanteenCommand extends Command {
 
-    private String canteenName;
-
-    public AddCanteenCommand(String canteenName) {
-
-        this.canteenName = canteenName;
+    private String savePath;
+    public AddCanteenCommand(String savePath) {
+        this.savePath = savePath;
     }
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
+        String canteenName;
+        ui.showAddCanteen();
+        String line = ui.readCommand();
+        if (line.equals("cancel")) {
+            return;
+        } else {
+            canteenName = line;
+        }
         canteens.add(new Canteen(canteenName));
         ui.showAddCanteenSuccess(canteenName);
-        Storage.saveCanteen(new FileWriter("data/storage.txt",true),canteenName);
+        Storage.saveCanteen(new FileWriter(savePath,true),canteenName);
     }
-
 }

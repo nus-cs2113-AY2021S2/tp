@@ -34,6 +34,7 @@ public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
+    private String savePath = "data/storage.txt";
 
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;
@@ -101,9 +102,7 @@ public class Parser {
             newCommand = new DisplayCanteensCommand();
             break;
         case "2":
-            ui.showAddCanteen();
-            String canteenName = ui.readCommand();
-            newCommand = new AddCanteenCommand(canteenName);
+            newCommand = new AddCanteenCommand(savePath);
             break;
         case "3":
             nusFoodReviews.setCanteenIndex();
