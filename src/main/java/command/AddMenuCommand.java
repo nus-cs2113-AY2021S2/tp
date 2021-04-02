@@ -46,8 +46,6 @@ public class AddMenuCommand extends Command {
             ui.menuNotAdded();
             return;
         }
-        Integer currentStoreIndex = Integer.parseInt(line) - 1;
-        Canteen canteen = canteens.get(currentCanteenIndex);
 
         ui.enterMenuName();
         line = ui.readCommand();
@@ -65,6 +63,10 @@ public class AddMenuCommand extends Command {
         } else {
             menuPrice = Double.parseDouble(line);
         }
+
+        Integer currentStoreIndex = Integer.parseInt(line) - 1;
+        Canteen canteen = canteens.get(currentCanteenIndex);
+
         Menu menu = new Menu(menuName,menuPrice);
         canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded();
