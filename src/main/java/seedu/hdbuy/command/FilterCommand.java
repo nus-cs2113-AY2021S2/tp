@@ -17,7 +17,7 @@ public class FilterCommand extends Command {
         this.value = value;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         try {
             LinkedHashMap<QueryKey, String> inputs = UserInput.getInputs();
             switch (criteria) {
