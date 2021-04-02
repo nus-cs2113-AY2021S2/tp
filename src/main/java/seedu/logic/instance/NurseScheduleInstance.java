@@ -17,15 +17,11 @@ import java.io.IOException;
  */
 public class NurseScheduleInstance {
 
-
-
     private NurseSchedulesParser parser;
     private NurseScheduleActions nurseSchedules;
     private NurseScheduleStorage storage;
     private NurseScheduleUI ui;
     public static Logger logger;
-
-
 
     public NurseScheduleInstance() {
         parser = new NurseSchedulesParser();
@@ -35,6 +31,7 @@ public class NurseScheduleInstance {
         logger = Logger.getLogger(this.getClass().getName());
         LogManager.getLogManager().reset();
         logger.addHandler(storage.initLogger());
+        logger.info("NurseSchedule instantiated");
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
@@ -44,19 +41,21 @@ public class NurseScheduleInstance {
         } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
                 | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound e) {
             ui.corruptedFileErrorMessage();
+            logger.log(Level.SEVERE, "Error loading NurseSchedule.txt");
             return;
         } catch (NurseCrossValidationError e) {
             System.out.println(e.getMessage());
+            logger.log(Level.SEVERE,"Error loading Staff.txt");
             return;
         } catch (PatientCrossValidationError e) {
             System.out.println(e.getMessage());
+            logger.log(Level.SEVERE,"Error loading Patients.txt");
             return;
         }
         ui.printNurseScheduleWelcomeMessage();
         boolean isReturnToStartMenu = false;
         while (!isReturnToStartMenu) {
-            //logger.log(Level.INFO, "loop!");
-            logger.info("loop!");
+            logger.info("Nurse Schedule super loop started");
             try {
                 String line = ui.getInput("NSchedule");
                 Command c = parser.nurseParse(line, ui);
@@ -67,9 +66,9 @@ public class NurseScheduleInstance {
                 if (isReturnToStartMenu) {
                     nurseSchedules.clearSchedules();
                     UI.returningToStartMenuMessage();
+                    logger.info("Exiting nurse schedule instance");
                 }
                 ui.lineBreak();
-                logger.info("end loop!");
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
                 ui.lineBreak();
@@ -77,6 +76,7 @@ public class NurseScheduleInstance {
                 //ui.invalidInputsMessage();
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+                logger.log(Level.WARNING, "null command returned");
             }
         }
     }
