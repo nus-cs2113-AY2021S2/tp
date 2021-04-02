@@ -14,7 +14,7 @@ public class RemoveCommand extends Command {
         this.index = index;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         Unit removedUnit = ShortList.removeFromShortList(index);
         if (removedUnit != null) {
             HdBuyLogger.info("Removed: " + removedUnit.toString());

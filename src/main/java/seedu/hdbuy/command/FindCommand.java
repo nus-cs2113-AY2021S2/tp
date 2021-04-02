@@ -15,9 +15,9 @@ import seedu.hdbuy.ui.TextUi;
 
 public class FindCommand extends Command {
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         try {
-            LinkedHashMap<QueryKey, String> inputs = userInput.getInputs();
+            LinkedHashMap<QueryKey, String> inputs = UserInput.getInputs();
             if (inputs.isEmpty()) {
                 HdBuyLogger.warning("Unable to execute find command due to an empty filter");
                 throw new EmptyParameterException();
@@ -30,7 +30,7 @@ public class FindCommand extends Command {
                     throw new NoFlatsException();
                 }
                 TextUi.showUnits(units);
-                userInput.clearInputs();
+                UserInput.clearInputs();
             }
         } catch (EmptyParameterException e) {
             TextUi.showEmptyParameter("FIND", e);

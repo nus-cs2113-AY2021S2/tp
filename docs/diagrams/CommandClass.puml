@@ -6,47 +6,47 @@ skinparam classAttributeIconSize 0
 !define ABSTRACT &#123;abstract&#125;
 
 abstract "{abstract} \n Command" {
-+ execute(UserInput) : void \t\t ABSTRACT
++ execute() : void \t\t ABSTRACT
 + isExit() : boolean
 }
 class ClearCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class CloseCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class DefaultCommand {
 # input : String
-+ execute(UserInput) : void
++ execute() : void
 }
 class FilterCommand {
 # criteria : String
 # value : String
-+ execute(UserInput) : void
++ execute() : void
 }
 class FindCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class HelpCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class ListCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class RemoveCommand {
 # index : int
-+ execute(UserInput) : void
++ execute() : void
 }
 class SaveCommand {
 # index : int
-+ execute(UserInput) : void
++ execute() : void
 }
 class ShortlistCommand {
-+ execute(UserInput) : void
++ execute() : void
 }
 class SortCommand {
 # criteria : String
-+ execute(UserInput) : void
++ execute() : void
 }
 
 "{abstract} \n Command" <|-- ClearCommand

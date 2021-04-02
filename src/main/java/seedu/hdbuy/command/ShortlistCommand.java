@@ -10,7 +10,7 @@ import seedu.hdbuy.ui.TextUi;
 
 public class ShortlistCommand extends Command {
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         try {
             ArrayList<Unit> units = ShortList.getShortListedUnits();
             if (units.isEmpty()) {

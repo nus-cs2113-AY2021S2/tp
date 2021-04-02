@@ -17,7 +17,7 @@ public class SortCommand extends Command {
         this.criteria = criteria;
     }
 
-    @Override public void execute(UserInput userInput) {
+    @Override public void execute() {
         try {
             switch (criteria) {
             case CommandType.SORT_ASC:
