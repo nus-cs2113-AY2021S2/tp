@@ -12,6 +12,8 @@ public class InvalidInputException extends BaseException {
         NO_PATIENT_LOADED(Constants.INVALID_INPUT_NO_PATIENT_LOADED),
         EMPTY_DESCRIPTION(Constants.INVALID_INPUT_EMPTY_DESCRIPTION),
         INVALID_DATE(Constants.INVALID_INPUT_INVALID_DATE),
+        UNKNOWN_DELETE_ARGUMENT(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT),
+        PATIENT_NOT_FOUND(Constants.INVALID_INPUT_PATIENT_NOT_FOUND),
         END_OF_FILE(Constants.INVALID_INPUT_END_OF_FILE);
 
         public final String message;
