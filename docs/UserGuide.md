@@ -1,45 +1,46 @@
 # Connoisseur User Guide
 
 ## Table of Contents
-1. [Introduction](#1.-Introduction)
-2. [About this Guide](#2.-About-this-Guide)
-   
-   2.1 [What is in Connoisseur](#2.1-What-is-in-Connoisseur)
-   
-   2.2 [How to use this Guide](#2.2-How-to-use-this-Guide)
-   
-3. [Quick start](#3.-Quick-Start)
-4. [Features](#4.-Features)
-   
-   4.1 [Review Mode](#4.1-Review-Mode)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.1 [Add a Review](#4.1.1-Adding-a-Review)
+1. [Introduction](#1-introduction)
+2. [About this Guide](#2-about-this-guide)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.2 [List Reviews](#4.1.2-List-Reviews)
+   2.1 [What is in Connoisseur](#21-what-is-in-connoisseur)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.3 [Sort Reviews](#4.1.3-Sort-Reviews)
+   2.2 [How to use this Guide](#22-how-to-use-this-guide)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.4 [View a Review](#4.1.4-View-a-Review)
+3. [Quick start](#3-quick-start)
+4. [Features](#4-features)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.5 [Edit a Review](#4.1.5-Edit-a-Review)
+   4.1 [Review Mode](#41-review-mode)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#4.1.6-Delete-a-Review)
-   
-   4.2 [Recommendation Mode](#4.2-Recommendation-Mode)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.1 [Add a Review](#411-adding-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 [Add a Recommendation](#4.2.1-Adding-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.2 [List Reviews](#412-list-reviews)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.2 [List Recommendation](#4.2.2-List-recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.3 [Sort Reviews](#413-sort-reviews)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.3 [Edit a Recommendation](#4.2.3-Edit-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.4 [View a Review](#414-view-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.4 [Delete a Recommendation](#4.2.4-Delete-a-Recommendation)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.5 [Edit a Review](#415-edit-a-review)
 
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.5 [Review a Recommendation](#4.2.5-Review-a-Recommendation)
-   
-   4.3 [View Help](#4.3-View-Help)
-   
-   4.4 [Exit & Save Connoisseur](#4.4-Exit-&-Save-Connoisseur)
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#416-delete-a-review)
+
+   4.2 [Recommendation Mode](#52-recommendation-mode)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 [Add a Recommendation](#421-adding-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.2 [List Recommendation](#422-list-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.3 [Edit a Recommendation](#423-edit-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.4 [Delete a Recommendation](#424-delete-a-recommendation)
+
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.5 [Review a Recommendation](#425-review-a-recommendation)
+
+   4.3 [View Help](#43-view-help)
+
+   4.4 [Exit & Save Connoisseur](#44-exit-&-save-connoisseur)
 5. [Command Summary](#5.-Command-Summary)
 6. [FAQ](#6.-FAQ)
 
@@ -74,8 +75,9 @@ record your thoughts on how good or bad the experience was!
 ### 2.2 How to use this Guide
 
 The following formats are used in this document:
-* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user.
-  e.g.  in `list [SORTING METHOD]`
+
+* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user. e.g.
+  in `list [SORTING METHOD]`
   SORTING METHOD is the field input by the user and examples of valid commands are:`list rating`,`list title` etc.
 * Word in lower case are given commands. <br /> e.g. in `new [quick | long]` the user can input either the command
   `new quick`or `new long`
@@ -112,7 +114,8 @@ This section covers all the commands that you can type into the Command Box of C
 `Please enter a command: `
 
 The commands are categorised into the two modes offered by Connoisseur, Review and Recommendation mode. If it is the
-first time that you are using the command, we recommend that you refer to [How to use the Guide]((#2.2-How-to-use-the-Guide)) to better interpret the format of the commands.
+first time that you are using the command, we recommend that you refer
+to [How to use the Guide]((#2.2-How-to-use-the-Guide)) to better interpret the format of the commands.
 
 ### 4.1 Review Mode
 
@@ -177,8 +180,8 @@ This feature allows you to change the saved sorting method as shows in Figure 8.
 
 Command: `sort [SORTING METHOD]`
 
-`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-List-Reviews) for a list
-of recognised sorting methods.
+`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-List-Reviews) for
+a list of recognised sorting methods.
 
 ![img_9.png](./images/ug/save_sorting_method.png)
 <p align="center">Figure 9. Changing Sorting method to title</p>
@@ -282,9 +285,9 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 prompt you saying that no such recommendation exits.
 
 As shown in Figure 16 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
-Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` . 
+Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .
 
-If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`. 
+If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`.
 
 ![img_16.png](./images/ug/edit_reco.png)
 <p align="center">Figure 16. Editing Recommendations</p>
@@ -341,7 +344,6 @@ command: `exit` or `bye`
 
 ## 5. Command Summary
 
-
 |Action| Command | Examples | 
 |-----|--------|---------|
 |Enter Review Mode|`review`|`review`|
@@ -362,14 +364,9 @@ command: `exit` or `bye`
 |Help for a Specific function|`help [COMMAND_NAME]`|`help reco`<br />`help list`|
 |Exit & Save|`exit`<br />`bye`|`exit`<br />`bye`|
 
-
-
 ## 6. FAQ
+
 //TODO
 **Q**: How do I transfer my data to another computer?
 
-**A**: {your answer here}
-
-
-
-
+**A**: Simply move the jar file and data/connoisseur.json into the same directory.
