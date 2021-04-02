@@ -22,6 +22,7 @@ public class AddCanteenCommand extends Command {
         ui.showAddCanteen();
         String line = ui.readCommand();
         if (line.equals("cancel")) {
+            ui.showCanteenNotAdded();
             return;
         } else {
             canteenName = line;

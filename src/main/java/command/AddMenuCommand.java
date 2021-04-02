@@ -3,6 +3,7 @@ package command;
 import canteens.Canteen;
 import exceptions.DukeExceptions;
 import menus.Menu;
+import nusfoodreviews.NusFoodReviews;
 import stores.Store;
 import storage.Storage;
 import ui.Ui;
@@ -13,30 +14,41 @@ import java.util.ArrayList;
 
 public class AddMenuCommand extends Command {
 
-    private int canteenIndex;
-    private int storeIndex;
-    private Menu menu;
-    private Canteen canteen;
+    private NusFoodReviews nusFoodReviews;
 
-    public AddMenuCommand(int canteenIndex, int storeIndex, Canteen canteen) {
-        this.canteenIndex = canteenIndex;
-        this.storeIndex = storeIndex;
-        this.canteen = canteen;
+    public AddMenuCommand(NusFoodReviews nusFoodReviews) {
+        this.nusFoodReviews = nusFoodReviews;
     }
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws DukeExceptions {
         try {
-            getMenu(ui);
-        } catch (NumberFormatException | IOException e) {
+            getMenu(canteens, ui);
+        } catch (NumberFormatException | IOException | DukeExceptions e) {
             throw new DukeExceptions("Menu not added. Please input your Menu in proper format!");
         }
     }
 
-    public void getMenu(Ui ui) throws NumberFormatException, IOException {
+    public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, DukeExceptions {
         String menuName;
         double menuPrice;
-        String line;
+
+        nusFoodReviews.setCanteenIndex();
+        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+        if (currentCanteenIndex == -1) {
+            ui.menuNotAdded();
+            return;
+        }
+        ui.showDisplayStores(canteens.get(currentCanteenIndex));
+        ui.chooseStore();
+        String line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.menuNotAdded();
+            return;
+        }
+        Integer currentStoreIndex = Integer.parseInt(line) - 1;
+        Canteen canteen = canteens.get(currentCanteenIndex);
+
         ui.enterMenuName();
         line = ui.readCommand();
         if (line.equals("cancel")) {
@@ -53,13 +65,13 @@ public class AddMenuCommand extends Command {
         } else {
             menuPrice = Double.parseDouble(line);
         }
-        menu = new Menu(menuName,menuPrice);
-        canteen.getStore(storeIndex).addMenu(menu);
+        Menu menu = new Menu(menuName,menuPrice);
+        canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded();
 
         System.out.println(menuName + " " + line);
         Storage.saveMenu(new FileWriter("data/storage.txt",true),
-                canteen.getCanteenName(),canteen.getStore(storeIndex).getStoreName(),menuName,line);
+                canteen.getCanteenName(),canteen.getStore(currentStoreIndex).getStoreName(),menuName,line);
     }
 
 
