@@ -43,8 +43,8 @@ public class NusFoodReviews {
         ui.showLogo();
         while (true) {
             if (userIndex == -1) {
-                assert(canteenIndex==-1);
-                assert(storeIndex==-1);
+                assert (canteenIndex == -1);
+                assert (storeIndex == -1);
                 userIndex = chooseUser();
             } else if (userIndex == 1) {
                 runAdmin();
