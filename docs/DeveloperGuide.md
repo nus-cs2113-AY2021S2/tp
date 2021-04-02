@@ -19,14 +19,16 @@ The App consists of:
 
 ### Api component
 
-![Structure of the Api Component](diagrams/ApiClass.png)
-
 The `Api`,
 
 * receives a raw query from Find Command, query will contain filter conditions.
 * creates a connection to remote server containing data on resale flats.
 * formats raw query into valid query to be sent as a GET request.
 * updates all flats matching filter conditions in SearchedUnits class of Data component.
+
+The *Class Diagram* below shows the different classes within Api. The entry point will be ApiRepository, accessed by Command.
+
+<img src="diagrams/ApiClass.png" />
 
 **How classes within Api component interact with each other**
 
@@ -36,35 +38,20 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 ### Storage component
 
-![Structure of the Storage Component](diagrams/StorageClass.png)
-
 The `Storage`,
 
 * handles read and write of units into a local text file.
 * manages data in ShortList.
+
+The *Class Diagram* below shows the different classes within Storage. The entry point will be StorageManager, accessed by Data.
+
+<img src="diagrams/StorageClass.png" />
 
 **How classes within Storage component interact with each other**
 
 The *Sequence Diagram* below shows how the components interact with each other for the scenario where a Save command is executed.
 
 <img src="diagrams/StorageSequence.png" />
-
-### Parser component
-
-The `Parser`,
-
-* Receives the full command line from receiveCommand().
-* Depends on the key command, Parser will activate specific commands.
-
-The diagram below shows how parser determines which command to activate based on the key command.
-
-**How classes within Parser component interact with each other**
-
-The *Sequence Diagram* below shows how the components interact with each other after the full user input is passed into the `Parser`.
-
-<img src="diagrams/ParserSequence.png" />
-
-The CommandEvaluator class extracts the information from the full input and thereafter passes a keyCommand to the Parser class for it to return the appropriate Command to the main method.
 
 ### Command component
 
@@ -82,6 +69,22 @@ The *Class Diagram* below shows the different Commands and the respective inform
 The *Sequence Diagram* below shows how the components interact with each other when the Sort Command is executed.
 
 <img src="diagrams/sortCommand_Sequence_Diagram.jpg" />
+
+### Parser component
+
+The `Parser`,
+
+* Receives the full command line from receiveCommand().
+* Depends on the key command, Parser will activate specific commands.
+
+**How classes within Parser component interact with each other**
+
+The *Sequence Diagram* below shows how the components interact with each other after the full user input is passed into the `Parser`.
+
+<img src="diagrams/ParserSequence.png" />
+
+The CommandEvaluator class extracts the information from the full input and thereafter passes a keyCommand to the Parser class for it to return the appropriate Command to the main method.
+
 
 
 ## Product scope
@@ -110,18 +113,11 @@ Easily find and bookmark resale flats available matching user's preference.
 2.  Requires internet connection.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 
-## Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 ## Instructions for manual testing
 
 Given below are instructions to test the app manually.
-
-<div markdown="span" class="alert alert-info">**Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
-
-</div>
 
 ### Launch and shutdown
 
@@ -240,3 +236,8 @@ to use.
 
 When user initiates a `filter` command with an invalid filter, the app will return an exception `InvalidFilterException`
 and will list out all the possible filters.
+
+
+## Glossary
+
+* **Mainstream OS**: Windows, Linux, Unix, OS-X
