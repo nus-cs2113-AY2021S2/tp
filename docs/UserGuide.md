@@ -11,10 +11,22 @@ that allows the saving and loading of data. This allows all parameters of the da
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+2. Download the latest version of `nusfoodreviews.jar` from [here](http://link.to/duke).
+3. Copy the `nusfoodreviews.jar` file to a folder
+4. For Windows users, open up **Command Prompt**.
+   
+   For Mac users, open up **Terminal**.
+   
+   Navigate to the directory containing the `nusfoodreviews.jar` file.
+
+## Brief Explanation
+Our application is quite easy to use, mostly navigating to canteens, stores
+and menus through numbers with some commands needed when accessing certain 
+features as shown below.
+
+## ! Very important
+Password for Admin is `Password`. With that, have fun!
 
 ## Features
 
@@ -67,6 +79,7 @@ Format: `add`
 Example of usage:
 
 `reviews`
+
 ### Select a new canteen to view: `home`
 Allows the user to re-enter which canteen and store they wish to look at.
 The application will prompt the user for the canteen and store by
@@ -110,12 +123,18 @@ Example of usage:
 
 ## FAQ
 
-**Q**: How do I transfer my data to another computer? 
+**Q**: There are red words that appear right after I opened the application,
+why is that so?
 
-**A**: {your answer here}
+**A**: Those are just for logging purposes, no worries!
 
 ## Command Summary
 
 {Give a 'cheat sheet' of commands here}
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+* Add review `add`
+* Read reviews `reviews`
+* View list of stores in canteen `list`
+* Goes back to main selection `home`
+* Exit from application `exit`
+* View menu of store `menu`

@@ -10,6 +10,7 @@ import stores.Store;
 import ui.Ui;
 import checkuser.CheckUser;
 
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
@@ -68,10 +69,10 @@ public class NusFoodReviews {
                     ui.showStoreOptions(canteen.getCanteenName(),
                             store.getStoreName());
                     String line = ui.readCommand();
-                    Command c = parser.parse(line, store, canteens.get(canteenIndex).getNumStores());
+                    Command c = parser.parse(line, store, canteen);
                     c.execute(canteens, ui);
                 }
-            } catch (DukeExceptions e) {
+            } catch (DukeExceptions | IOException e) {
                 ui.showError(e.getMessage());
             }
         }
@@ -88,7 +89,7 @@ public class NusFoodReviews {
                 String line = ui.readCommand();
                 Command c = parser.parseAdminCommand(line);
                 c.execute(canteens, ui);
-            } catch (DukeExceptions e) {
+            } catch (DukeExceptions | IOException e) {
                 ui.showError(e.getMessage());
             }
         }

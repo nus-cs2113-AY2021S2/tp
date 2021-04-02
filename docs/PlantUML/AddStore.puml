@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+box AddStore
+
+->":AddStoreCommand" : execute(canteens, ui)
+activate ":AddStoreCommand"
+
+create ":Canteen"
+":AddStoreCommand" -> ":Canteen" : Canteen.add()
+
+
+":AddStoreCommand" -> "ui:Ui" : printStoreAdded()
+
+deactivate ":AddStoreCommand"
+@enduml

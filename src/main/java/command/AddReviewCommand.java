@@ -10,13 +10,16 @@ import ui.Ui;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Map;
+
 
 public class AddReviewCommand extends Command {
     private Store store;
+    private Canteen canteen;
 
-    public AddReviewCommand(Store store) {
+    public AddReviewCommand(Store store, Canteen canteen) {
+
         this.store = store;
+        this.canteen = canteen;
     }
 
     @Override
@@ -27,6 +30,7 @@ public class AddReviewCommand extends Command {
             throw new DukeExceptions("Review not added. Please input your review in proper format!");
         }
     }
+
 
     public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException {
         String description;
@@ -50,6 +54,6 @@ public class AddReviewCommand extends Command {
         }
         store.addReview(new Review(description, rating));
         ui.reviewAdded();
-        Storage.saveReviews(new FileWriter("data/storage.txt"),store.getReviews());
+        Storage.saveReview(new FileWriter("data/storage.txt",true),canteen,store,description,line);
     }
 }
