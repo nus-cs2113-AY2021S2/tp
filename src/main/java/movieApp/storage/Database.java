@@ -29,6 +29,7 @@ public class Database {
     }
 
     private static ArrayList<User> importUserDatabase() throws Exception {
+        /*
         File f_user = new File("data/userList.txt");
         FileReader r_user = new FileReader(f_user);
         BufferedReader br_user = new BufferedReader(r_user);
@@ -55,6 +56,15 @@ public class Database {
         }
         r_user.close();
         return users;
+
+         */
+        File f_movie = new File("data/userList.txt");
+        FileInputStream fis_movie = new FileInputStream(f_movie);
+        ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
+
+        ArrayList<User> MList = (ArrayList<User>) ois_movie.readObject();
+        ois_movie.close();
+        return MList;
     }
 
     private static ArrayList<Movie> importMovieDatabase() throws Exception {
@@ -225,5 +235,24 @@ public class Database {
         }
         System.out.println("The new movie \"" + newMovie.getMovieTitle() + "\" have been saved to the database.");
 
+    }
+
+    public static void updateBookings(){
+        writeToFile("data/showtimeList.txt", ShowtimesDatabase);
+        writeToFile("data/userList.txt", users);
+    }
+
+    private static void writeToFile(String fileName, Object object){
+        try {
+            File f_movie = new File(fileName);
+            FileOutputStream fos_movie = new FileOutputStream(f_movie);
+            ObjectOutputStream oos_movie = new ObjectOutputStream(fos_movie);
+            oos_movie.writeObject(object);
+            oos_movie.close();
+            fos_movie.close();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+        //System.out.println("The changes have been saved to the database.");
     }
 }

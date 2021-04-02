@@ -218,11 +218,7 @@ public class MovieMenu {
 			((Admin)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
 		}
 
-
-
-
-// TODO: print seats
- 
+		Database.updateBookings();
 	}
 	
 	public static void addReview(Movie movie) {
