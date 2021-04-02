@@ -8,7 +8,6 @@ import seedu.logic.command.Command;
 import seedu.logic.command.doctorappointment.*;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
 import seedu.logic.errorchecker.MainChecker;
-import seedu.ui.DoctorAppointmentUI;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -22,7 +21,7 @@ public class DoctorAppointmentParser {
         assert inputArray.length < 7;
         Command c = null;
         MainChecker.checkBlankInput(input);
-
+        MainChecker.checkNumInput(input, 6,1);
         switch (smartCommandRecognition(COMMANDS, input.split("/")[0])) {
         case "add": {
             MainChecker.checkNumInput(input, 6, 6);
