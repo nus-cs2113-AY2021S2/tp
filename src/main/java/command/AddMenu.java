@@ -20,7 +20,7 @@ public class AddMenu extends Command {
 
     public AddMenu(int canteenIndex, int storeIndex,Canteen canteen) {
         this.canteenIndex = canteenIndex;
-        this.storeIndex = storeIndex - 1;
+        this.storeIndex = storeIndex;
         this.canteen = canteen;
     }
 

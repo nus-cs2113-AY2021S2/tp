@@ -74,7 +74,8 @@ public class Ui {
         System.out.println("5. Delete canteen");
         System.out.println("6. Delete store in canteen");
         System.out.println("7. Delete reviews");
-        System.out.println("8. Exit");
+        System.out.println("8. Delete menu");
+        System.out.println("9. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -156,13 +157,14 @@ public class Ui {
 
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println(LINESPACING);
+        int count = 1;
         if (menus.size() == 0) {
             System.out.println("This store has no menus yet!");
             return;
         }
         System.out.println("Here are the menus of the " + storeName + ":");
         for (Menu menuItem: menus) {
-            System.out.println(menuItem.toString());
+            System.out.println(count++ + ")" + menuItem.toString());
         }
     }
 
@@ -258,6 +260,19 @@ public class Ui {
         System.out.println("Review successfully deleted!");
         System.out.println(LINESPACING);
     }
+
+    public void menuDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Menu successfully deleted!");
+        System.out.println(LINESPACING);
+    }
+
+    public void chooseMenu() {
+        System.out.println(LINESPACING);
+        System.out.println("Enter menu to be deleted.");
+        System.out.println(LINESPACING);
+    }
+
 
     public void showAddCanteen() {
         System.out.println(LINESPACING);
