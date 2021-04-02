@@ -203,6 +203,7 @@ public class Ui {
         for (Review review: reviews) {
             System.out.println(count++ + ") " + review.toString());
             System.out.println("Customer rating: " + review.getRating());
+            System.out.println(review.getDate());
             System.out.println(LINESPACING);
         }
 
@@ -255,6 +256,7 @@ public class Ui {
     public void reviewDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully deleted!");
+        System.out.println(LINESPACING);
     }
 
     public void showAddCanteen() {

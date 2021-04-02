@@ -59,7 +59,7 @@ public class Storage {
                 canteen = findCanteen(storedLine[0]);
                 //check if store exist
                 store = findStore(canteen, storedLine[1]);
-                store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1])));
+                store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1]),reviewDetails[2]));
                 break;
             case 4:
                 //check if canteen exist
@@ -141,10 +141,10 @@ public class Storage {
     }
 
     public static void saveReview(FileWriter fw, Canteen canteen, Store store,
-                                  String description, String rating) throws IOException {
+                                  String description, String rating, String date) throws IOException {
 
         fw.write(canteen.getCanteenName() + seperator
-                + store.getStoreName() + seperator + description + "//" + rating + "\n");
+                + store.getStoreName() + seperator + description + "//" + rating + "//" + date + "\n");
         fw.close();
     }
 
