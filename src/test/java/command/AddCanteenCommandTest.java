@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import ui.Ui;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -26,9 +27,10 @@ public class AddCanteenCommandTest {
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
 
-        AddCanteenCommand c = new AddCanteenCommand("data/storage.txt");
+        AddCanteenCommand c = new AddCanteenCommand("dataTest/addTest.txt");
         c.execute(canteens, ui);
         assertEquals(canteens.get(0).getCanteenName(), canteenName);
+        FileWriter fw = new FileWriter("dataTest/addTest.txt"); // clears all entries
     }
 
 }
