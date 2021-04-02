@@ -105,12 +105,7 @@ public class Parser {
             newCommand = new AddCanteenCommand(savePath);
             break;
         case "3":
-            nusFoodReviews.setCanteenIndex();
-            currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            ui.showDisplayStores(canteens.get(currentCanteenIndex));
-            ui.showAddStore();
-            String storeName = ui.readCommand();
-            newCommand = new AddStoreCommand(currentCanteenIndex, storeName);
+            newCommand = new AddStoreCommand(nusFoodReviews);
             break;
         case "4":
             nusFoodReviews.setCanteenIndex(); //show UI to get canteen

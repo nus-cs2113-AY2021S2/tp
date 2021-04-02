@@ -288,4 +288,16 @@ public class Ui {
     public void showAddCanteenSuccess(String canteenName) {
         System.out.println("The canteen '" + canteenName + "' has been added!");
     }
+
+    public void showCanteenNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Canteen not added");
+        System.out.println(LINESPACING);
+    }
+
+    public void showStoreNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Store not added");
+        System.out.println(LINESPACING);
+    }
 }

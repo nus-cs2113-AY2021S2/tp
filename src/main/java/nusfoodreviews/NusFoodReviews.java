@@ -126,6 +126,9 @@ public class NusFoodReviews {
         if (line.equals("exit")) {
             ui.showGoodbye();
             System.exit(0);
+        } else if (line.equals("cancel")) {
+            canteenIndex = -1;
+            return;
         }
         canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
     }
@@ -141,6 +144,9 @@ public class NusFoodReviews {
         if (line.equals("exit")) {
             ui.showGoodbye();
             System.exit(0);
+        } else if (line.equals("cancel")) {
+            storeIndex = -1;
+            return;
         }
         storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
     }

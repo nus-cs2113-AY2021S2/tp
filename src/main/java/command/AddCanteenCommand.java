@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class AddCanteenCommand extends Command {
 
     private String savePath;
+
     public AddCanteenCommand(String savePath) {
         this.savePath = savePath;
     }
