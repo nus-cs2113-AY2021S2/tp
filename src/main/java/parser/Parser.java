@@ -111,10 +111,7 @@ public class Parser {
             newCommand = new AddMenuCommand(nusFoodReviews);
             break;
         case "5":
-            ui.showDisplaySelectCanteens(canteens, "delete");
-            int numCanteens = canteens.size();
-            int canteenIndex = parseInt(ui.readCommand(), Math.min(1, numCanteens), numCanteens) - 1;
-            newCommand = new DeleteCanteenCommand(canteenIndex);
+            newCommand = new DeleteCanteenCommand(this);
             break;
         case "6":
             nusFoodReviews.setCanteenIndex();

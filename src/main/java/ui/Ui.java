@@ -300,4 +300,10 @@ public class Ui {
         System.out.println("Cancelling.... Store not added");
         System.out.println(LINESPACING);
     }
+
+    public void showCanteenNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Canteen not Deleted");
+        System.out.println(LINESPACING);
+    }
 }
