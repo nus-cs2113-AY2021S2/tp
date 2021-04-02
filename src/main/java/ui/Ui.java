@@ -256,6 +256,7 @@ public class Ui {
     public void reviewDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully deleted!");
+        System.out.println(LINESPACING);
     }
 
     public void showAddCanteen() {
