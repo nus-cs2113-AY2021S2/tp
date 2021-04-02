@@ -111,7 +111,7 @@ public class Parser {
             newCommand = new AddMenuCommand(nusFoodReviews);
             break;
         case "5":
-            newCommand = new DeleteCanteenCommand(this);
+            newCommand = new DeleteCanteenCommand(this, savePath);
             break;
         case "6":
             nusFoodReviews.setCanteenIndex();

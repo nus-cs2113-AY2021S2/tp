@@ -14,9 +14,11 @@ import java.util.Map;
 public class DeleteCanteenCommand extends Command {
 
     private Parser parser;
+    private String savePath;
 
-    public DeleteCanteenCommand(Parser parser) {
+    public DeleteCanteenCommand(Parser parser, String savePath) {
         this.parser = parser;
+        this.savePath = savePath;
     }
 
     @Override
@@ -33,6 +35,6 @@ public class DeleteCanteenCommand extends Command {
         assert canteenIndex >= 0 && canteenIndex < canteens.size() : "DeleteCanteenCommand canteenIndex invalid";
         Canteen removedCanteen = canteens.remove(canteenIndex);
         ui.showCanteenDeleted(removedCanteen, canteens.size());
-        Storage.save(new FileWriter("data/storage.txt"),canteens);
+        Storage.save(new FileWriter(savePath),canteens);
     }
 }
