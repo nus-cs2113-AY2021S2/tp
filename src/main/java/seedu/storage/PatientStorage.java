@@ -16,7 +16,7 @@ import java.io.IOException;
 public class PatientStorage {
 
     static File saveFile;
-    static ArrayList<Patient> patients = new ArrayList<>();
+    static ArrayList<Patient> patients;
     static String filePath;
     static PatientUI ui;
     static PatientChecker checker;
@@ -25,6 +25,7 @@ public class PatientStorage {
         filePath = filepath;
         saveFile = new File(filepath);
         ui = new PatientUI();
+        patients = new ArrayList<>();
     }
 
     /**
@@ -63,12 +64,14 @@ public class PatientStorage {
         } catch (FileNotFoundException e) {
             ui.showLoadingError();
         }
-
         while (fileScanner.hasNext()) {
             String currentScan = fileScanner.nextLine();
             //splits the string into sections for storing in the ArrayList
             String[] taskSave = currentScan.trim().split(" \\| ");
             int numberOfTokens = taskSave.length;
+            if (numberOfTokens == 0) {
+                throw new CorruptedFileException("Patient");
+            }
             /*ArrayList<String> cleanString = new ArrayList<>();*/
             for (int i = 0; i < numberOfTokens; i++) {
                 taskSave[i] = taskSave[i].trim().replaceAll("\\s{2,}", " ");

@@ -25,7 +25,6 @@ public class PatientCommandInstance {
         try {
             patients = new PatientActions(patientStorage.loadPatients());
         } catch (HealthVaultException | NumberFormatException e) {
-            System.out.println(e.getMessage());
             ui.corruptedFileErrorMessage();
             patients = new PatientActions();
             return;
