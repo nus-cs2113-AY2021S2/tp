@@ -258,19 +258,19 @@ Format : `delete note → LOCATION → NOTE INDEX`
 
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding Favourite Route
-You can add a route to favourites to easily access it in the future.
+You can add a route to favourites to easily access it in the future.<br>
 Format: `add favourite → STARTING BLOCK → DESTINATION BLOCK`
 
 #### 4.7.2 Show stored favourites
-You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.
+You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
 Format: `show favourite`
 
 #### 4.7.3 Repeating favourite route
-You can execute and obtain the route to take for your favourite routes.
+You can execute and obtain the route to take for your favourite routes.<br>
 Format: `repeat favourite → INDEX OF ROUTE`
 
 #### 4.7.4 Deleting favourite route
-You can delete a favourite route if it is not frequently used anymore.
+You can delete a favourite route if it is not frequently used anymore.<br>
 Format: `delete favourite → INDEX OF ROUTE`
 
 ### 4.8 Exiting the application
