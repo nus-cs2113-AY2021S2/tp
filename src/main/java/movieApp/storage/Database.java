@@ -8,7 +8,6 @@ import movieApp.parser.MovieFilter;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Scanner;
 
 public class Database {
@@ -25,11 +24,10 @@ public class Database {
         MovieDatabase = importMovieDatabase();
         CineplexDatabase = importCineplexDatabase();
         ShowtimesDatabase = importShowtimesDatabase();
-        users = importUserDatabase();
+        users = importUserDatabaseUsingSerialization();
     }
 
-    private static ArrayList<User> importUserDatabase() throws Exception {
-        /*
+    private static ArrayList<User> importUserDatabaseUsingFileReader() throws Exception {
         File f_user = new File("data/userList.txt");
         FileReader r_user = new FileReader(f_user);
         BufferedReader br_user = new BufferedReader(r_user);
@@ -56,9 +54,10 @@ public class Database {
         }
         r_user.close();
         return users;
+    }
 
-         */
-        File f_movie = new File("data/userList.txt");
+    private static ArrayList<User> importUserDatabaseUsingSerialization() throws Exception {
+        File f_movie = new File("data/userSerialList.txt");
         FileInputStream fis_movie = new FileInputStream(f_movie);
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
 
@@ -239,7 +238,9 @@ public class Database {
 
     public static void updateBookings(){
         writeToFile("data/showtimeList.txt", ShowtimesDatabase);
-        writeToFile("data/userList.txt", users);
+        writeToFile("data/userSerialList.txt", users);
+        writeToFile("data/cineplexList.txt", CineplexDatabase);
+        writeToFile("data/movieList.txt", MovieDatabase);
     }
 
     private static void writeToFile(String fileName, Object object){
@@ -253,6 +254,5 @@ public class Database {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
-        //System.out.println("The changes have been saved to the database.");
     }
 }

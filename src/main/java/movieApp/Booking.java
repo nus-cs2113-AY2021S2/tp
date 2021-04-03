@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Booking implements Serializable {
+    private static final long serialVersionUID = 7709150072267421383L;
     private Showtimes showtimes;
     private ArrayList<Seat> seats;
     private Status status;
@@ -22,11 +23,10 @@ public class Booking implements Serializable {
     public void printBookingDetails(){
         System.out.println("==========================================");
         System.out.println("Showtimes No:     " + showtimes.getMovieTitle());
-        showtimes.printSeats();
         System.out.println("Seats Booked:");
         for(int i = 0; i<seats.size(); i++){
-            System.out.println("[" + seats.get(i).getRow()
-                    + "," + seats.get(i).getColumn()+"]");
+            System.out.println("[" + (seats.get(i).getRow()+1)
+                    + "," + (seats.get(i).getColumn()+1)+"]");
         }
         System.out.println("Status:          "+ status);
         System.out.println("Date:          "+ date);

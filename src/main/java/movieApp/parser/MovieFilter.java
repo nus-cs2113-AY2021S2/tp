@@ -301,7 +301,6 @@ public class MovieFilter {
 		ArrayList<Movie> result = new ArrayList<>();
 		result.add(movieList.get(getMovieChoice(movieList.size())));
 		return result;
-		
 	}
 
 	////////////////////////////////////////////////////////////////////////////
@@ -352,7 +351,7 @@ public class MovieFilter {
 					return null;
 				default:
 					System.out.println("Invalid input. Please try again.");
-					return null;
+					continue;
 				}
 
 				if (movieList.size() == 0) {

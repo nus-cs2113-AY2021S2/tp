@@ -62,14 +62,19 @@ public class Showtimes implements Serializable{
 		int colnum = seatPlan[0].length;
 		 System.out.println("---------------- <THE SCREEN>-----------------");
 		 System.out.println();
-		 	System.out.print("columns  ");
-		 	for (int i = 0; i < colnum; i++ )  System.out.print(i + 1+"     ");
-		 	 System.out.println();
+		 System.out.print("columns  ");
+		 for (int i = 0; i < colnum; i++ ) {
+		 	System.out.print(i + 1+"     ");
+		 }
+		 System.out.println();
 		for (int row = 0; row < rownum; row++) {
-			 System.out.print("row "+ (row + 1) + " ");
+			System.out.print("row "+ (row + 1) + " ");
 			for (int col = 0; col < colnum; col++) {
-				if(seatPlan[row][col].getStatus()) System.out.print("  XX  ");
-				else  System.out.print("  --  ");
+				if(checkSeatTaken(row,col)){
+					System.out.print("  XX  ");
+				}else{
+					System.out.print("  --  ");
+				}
 			}
 			System.out.println();
 		}
@@ -77,6 +82,10 @@ public class Showtimes implements Serializable{
 	
 	public boolean checkSeatTaken(int[]RC) {
 		return seatPlan[RC[0] - 1][RC[1] - 1].getStatus();
+	}
+
+	public boolean checkSeatTaken(int row, int col) {
+		return seatPlan[row][col].getStatus();
 	}
 
 	public void setSeatStatus(int row, int col, boolean status){

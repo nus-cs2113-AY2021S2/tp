@@ -6,6 +6,7 @@ import movieApp.Showtimes;
 import movieApp.storage.Database;
 import movieApp.user.User;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,11 +30,27 @@ public class CancelBooking {
     }
 
     private void resetSeatStatus(Booking booking) {
+        /*
         Showtimes showtimes = booking.getShowtimes();
         ArrayList<Seat> seats = booking.getSeats();
         for(int i=0;i<seats.size();i++){
             showtimes.setSeatStatus(seats.get(i).getRow()-1, seats.get(i).getRow()-1, false);
+            seats.get(i).setStatus(false);
             System.out.println((seats.get(i).getRow()-1) + " , " + (seats.get(i).getRow()-1));
+            System.out.println(showtimes.getShowtimeID());
+        }
+         */
+        Showtimes showtimes = booking.getShowtimes();
+        ArrayList<Seat> seats = booking.getSeats();
+        for(int i=0;i<Database.ShowtimesDatabase.size();i++){
+            if(Database.ShowtimesDatabase.get(i).getShowtimeID()==showtimes.getShowtimeID()){
+                for(int j=0;j<seats.size();j++){
+                    showtimes.setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
+                    Database.ShowtimesDatabase.get(i).setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
+                    System.out.println("Seat: "+(seats.get(j).getRow()) + " , " + (seats.get(j).getRow()) + " status: "
+                            + Database.ShowtimesDatabase.get(i).getSeat(seats.get(j).getRow(), seats.get(j).getRow()).getStatus());
+                }
+            }
         }
     }
 

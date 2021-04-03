@@ -24,10 +24,10 @@ public class Seat implements Serializable{
 	}
 
 	public int getRow() {
-		return this.row+1;
+		return this.row;
 	}
 
 	public int getColumn(){
-		return this.number+1;
+		return this.number;
 	}
 }
