@@ -14,7 +14,7 @@ that allows the saving and loading of data. This allows all parameters of the da
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `nusfoodreviews.jar` from [here](https://github.com/AY2021S2-CS2113-T10-4/tp/releases).
 3. Download the data folder from [here](https://github.com/AY2021S2-CS2113-T10-4/tp).
-4. Copy the `nusfoodreviews.jar` file and data folder to the same folder
+4. Copy the `nusfoodreviews.jar` file and data folder to the same folder.
 5. For Windows users, open up **Command Prompt**.
    
    For Mac users, open up **Terminal**.
@@ -36,7 +36,7 @@ Display commands that users can enter
 
 Format: `help`
 
-*There should be no arguments after `help`
+* There should be no arguments after `help`
 
 Expected outcome:
 ```text
