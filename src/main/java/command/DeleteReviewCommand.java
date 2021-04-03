@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static stores.Store.averageRating;
+import static ui.Ui.LINESPACING;
 
 
 public class DeleteReviewCommand extends Command {
@@ -42,22 +43,27 @@ public class DeleteReviewCommand extends Command {
         ArrayList<Store> stores = canteens.get(currentCanteenIndex).getStores();
         ArrayList<Review> reviews = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
         averageRating = stores.get(currentStoreIndex).getAverageRating();
-        ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
-        ui.showDeleteReview();
+        if (reviews.size() > 0) {
+            ui.showReviews(stores.get(currentStoreIndex).getStoreName(), reviews, averageRating);
+            ui.showDeleteReview();
 
-        String line = ui.readCommand();
-        if (line.equals("cancel")) {
-            ui.showReviewNotDeleted();
-            return;
+            String line = ui.readCommand();
+            if (line.equals("cancel")) {
+                ui.showReviewNotDeleted();
+                return;
+            }
+            int reviewNumber = parser.parseInt(line, 1,
+                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
+
+            Canteen currentCanteen = canteens.get(currentCanteenIndex);
+            Store store = currentCanteen.getStore(currentStoreIndex);
+            store.deleteReview(reviewNumber);
+            ui.reviewDeleted();
+            Storage.save(new FileWriter("data/storage.txt"), canteens);
+        } else {
+            System.out.println("There are no reviews in this store!");
+            System.out.println(LINESPACING);
         }
-        int reviewNumber = parser.parseInt(line,1,
-                canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
-
-        Canteen currentCanteen = canteens.get(currentCanteenIndex);
-        Store store = currentCanteen.getStore(currentStoreIndex);
-        store.deleteReview(reviewNumber);
-        ui.reviewDeleted();
-        Storage.save(new FileWriter("data/storage.txt"),canteens);
     }
 
 }

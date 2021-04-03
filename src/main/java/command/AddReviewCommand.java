@@ -38,6 +38,7 @@ public class AddReviewCommand extends Command {
     public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException {
         String description;
         String line;
+        double rating = 0.0;
         ui.enterReview();
         line = ui.readCommand();
         if (line.equals("cancel")) {
@@ -46,18 +47,17 @@ public class AddReviewCommand extends Command {
         } else {
             description = line;
         }
-        double rating = 0.0;
         ui.enterRating();
         line = ui.readCommand();
-        if (rating < 1.0 || rating > 5.0) {
-            System.out.println("Please enter valid rating");
-            return;
-        }
         if (line.equals("cancel")) {
             ui.reviewNotAdded();
             return;
         } else {
             rating = Double.parseDouble(line);
+            if (rating < 1.0 || rating > 5.0) {
+                System.out.println("Please enter valid rating");
+                return;
+            }
         }
         store.addReview(new Review(description, rating));
         ui.reviewAdded();

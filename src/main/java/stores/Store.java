@@ -65,6 +65,7 @@ public class Store {
 
     public void deleteReview(int reviewCount) {
         reviews.remove(reviewCount);
+        ratingCount--;
     }
 
     public void addMenu(Menu newMenu) {
