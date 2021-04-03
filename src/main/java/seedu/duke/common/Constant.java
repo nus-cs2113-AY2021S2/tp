@@ -1,6 +1,7 @@
 package seedu.duke.common;
 
 public class Constant {
+    public static final String OPTION_ALL = "-a";
     public static final String OPTION_EXPENSE = "-e";
     public static final String OPTION_LOAN = "-l";
     public static final String OPTION_SAVING = "-s";

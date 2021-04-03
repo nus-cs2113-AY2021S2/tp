@@ -13,6 +13,7 @@ import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
+import static seedu.duke.common.Constant.OPTION_ALL;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  * Handles all operations related to the list command.
  */
 public class ListCommand extends Command {
-    private static final String[] VALID_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
+    private static final String[] VALID_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_ALL};
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
@@ -53,8 +54,10 @@ public class ListCommand extends Command {
             recordType = RecordType.LOAN;
         } else if (hasOption(arguments, OPTION_SAVING)) {
             recordType = RecordType.SAVING;
+        } else if (hasOption(arguments, OPTION_ALL)) {
+            recordType = RecordType.ALL;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_LIST);
+            throw new CommandException("missing option: [-e | -l | -s | -a]", COMMAND_LIST);
         }
     }
 
@@ -80,9 +83,12 @@ public class ListCommand extends Command {
             ui.printLoans(recordList);
             break;
         case SAVING:
+            ui.printSavings(recordList);
+            break;
+        case ALL:
             // Fallthrough
         default:
-            ui.printSavings(recordList);
+            ui.printAllRecords(recordList);
         }
     }
 }

@@ -825,9 +825,3 @@ coding and typing can speed up the process of their finance management through f
 ---
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
-
-## Glossary
-
----
-
-* *glossary item* - Definition
