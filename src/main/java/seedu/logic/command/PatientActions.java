@@ -5,6 +5,7 @@ import seedu.ui.PatientUI;
 import seedu.ui.UI;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PatientActions {
 
@@ -27,9 +28,9 @@ public class PatientActions {
         boolean isFound = false;
         boolean isHeaderPrinted = false;
         for (int i = 0; i < numberOfPatients; i++) {
-            String patientDetails = patients.get(i).getPatientDetailsString();
+            String patientDetails = patients.get(i).getPatientDetailsString().toLowerCase();
             String[] patientDetailsArr = patients.get(i).getPatientDetailsArray();
-            if (patientDetails.contains(inputString)) {
+            if (patientDetails.contains(inputString.toLowerCase())) {
                 isFound = true;
                 if (!isHeaderPrinted) {
                     PatientUI.patientListHeader();

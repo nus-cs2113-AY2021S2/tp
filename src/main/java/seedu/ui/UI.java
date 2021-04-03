@@ -117,7 +117,7 @@ public class UI {
         System.out.println(Constants.LINEBREAK);
     }
     public static void showLongLine() {
-        System.out.println(Constants.LONGLINEBREAK);
+        System.out.println(Constants.LISTLINEBREAK);
     }
 
     public static void printEmptyLine() {

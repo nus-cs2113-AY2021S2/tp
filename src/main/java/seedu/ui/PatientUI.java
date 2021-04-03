@@ -11,7 +11,7 @@ public class PatientUI extends UI{
         UI.printEmptyLine();
         int[] lengthPara = {10,60,70};
         printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
-        UI.showLongLine();
+        System.out.println(HELPLINEBREAK);
         printer(new String[]{HELP_COMMAND, PATIENT_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
         printer(new String[]{ADD_COMMAND, PATIENT_ADD_DESCRIPTION, PATIENT_ADD_FORMAT}, lengthPara);
         printer(new String[]{LIST_COMMAND, PATIENT_LIST_DESCRIPTION, MARK_BLANK}, lengthPara);
@@ -24,12 +24,12 @@ public class PatientUI extends UI{
     public static void patientListHeader() {
         System.out.println(
                 UI.prettyPrint("ID", 8) + " | " +
-                        UI.prettyPrint("Name", 40) + " | " +
+                        UI.prettyPrint("Name", 20) + " | " +
                         UI.prettyPrint("Age", 6) + " | " +
                         UI.prettyPrint("Gender", 8) + " | " +
-                        UI.prettyPrint("Illness", 40) + " | " +
-                        UI.prettyPrint("Medication Required", 40));
-        System.out.println(LONGLONGLINEBREAK);
+                        UI.prettyPrint("Illness", 20) + " | " +
+                        UI.prettyPrint("Medication Required", 20));
+        System.out.println(LISTLINEBREAK);
     }
 
     public static void patientAddedMessage(String name) {
@@ -39,11 +39,11 @@ public class PatientUI extends UI{
     public static void printPatientList(String[] patientDetails) {
         System.out.println(
                 UI.prettyPrint(patientDetails[0], 8) + " | " +
-                        UI.prettyPrint(patientDetails[1], 40) + " | " +
+                        UI.prettyPrint(patientDetails[1], 20) + " | " +
                         UI.prettyPrint(patientDetails[2], 6) + " | " +
                         UI.prettyPrint(patientDetails[3], 8) + " | " +
-                        UI.prettyPrint(patientDetails[4], 40) + " | " +
-                        UI.prettyPrint(patientDetails[5], 40));
+                        UI.prettyPrint(patientDetails[4], 20) + " | " +
+                        UI.prettyPrint(patientDetails[5], 20));
     }
 
     public static void emptyPatientListMessage() {
