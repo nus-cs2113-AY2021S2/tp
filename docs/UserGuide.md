@@ -148,10 +148,10 @@ instead, as shown in _Figure 7_.<br />
 <p align="center">Figure 7. Adding a quick or long review </p>
 
 
-<p>&#10071 Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display error message and 
+<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display error message and 
 adding the review will fail. You can try again.<br /> 
 
-<p>&#10071 Ensure the title of the review added is unique and does not already exist in the list. If you attempt to add a 
+<span>&#10071;</span> Ensure the title of the review added is unique and does not already exist in the list. If you attempt to add a 
 pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list. Adding the review will 
 fail. You can try again.
 
@@ -186,7 +186,7 @@ a list of recognised sorting methods.
 ![img_9.png](./images/ug/save_sorting_method.png)
 <p align="center">Figure 9. Changing Sorting method to title</p>
 
-<p>&#10071 Ensure you do not enter a sorting method that does not exist. Otherwise Connoisseur will warn you that with 
+<span>&#10071;</span> Ensure you do not enter a sorting method that does not exist. Otherwise Connoisseur will warn you that with 
 an invalid sorting method message. 
 
 #### 4.1.4 View a Review
@@ -199,7 +199,7 @@ Command: `view [TITLE_OF_REVIEW]`
 
 ![img_10.png](./images/ug/view_review.png)
 <p align="center">Figure 10. Viewing a Review </p>
-<p>&#10071 Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
+<span>&#10071;</span> Ensure the title of the review you want to view already exists in your lists of reviews. Otherwise, Connoisseur will 
 prompt you saying that no such review exits.
 
 #### 4.1.5 Edit a Review
@@ -210,7 +210,7 @@ Command : `edit [TITLE_OF_REVIEW] `
 
 `[TITLE_OF_REVIEW]` : title of review that you want to edit.
 
-<p>&#10071Ensure the title of the review you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
+<span>&#10071;</span> Ensure the title of the review you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
 prompt you saying that no such review exits.
 
 As shown in Figure 11 below, Connoisseur will prompt you asking whether you would like to make changes to Title /
@@ -224,7 +224,7 @@ which the edit was made. Input `y` if you would like to do so. Otherwise, input`
 ![img_11.png](./images/ug/edit_review.png)
 <p align="center">Figure 11. Editing a Review </p>
 
-<p>&#10071 If at any point an invalid command is typed, the edit will fail and you will have to try again.
+<span>&#10071;</span> If at any point an invalid command is typed, the edit will fail and you will have to try again.
 
 #### 4.1.6 Delete a Review
 
@@ -236,7 +236,7 @@ Command: `delete [TITLE_OF_REVIEW]`
 ![img_12.png](./images/ug/delete_review.png)
 <p align="center">Figure 12. Deleting a Review </p>
 
-<p>&#10071 Ensure the title of the review you want to delete already exists in your lists of reviews. Otherwise, Connoisseur will
+<span>&#10071;</span> Ensure the title of the review you want to delete already exists in your lists of reviews. Otherwise, Connoisseur will
 prompt you saying that no such review exits.
 
 ### 4.2 Recommendation Mode
@@ -261,7 +261,7 @@ it is located at as shown in Figure 14.
 ![img_2.png](./images/ug/add_reco.png)
 <p align="center">Figure 14. Adding a Recommendation</p>
 
-<p>&#10071 Price range should be entered separated by -. Otherwise, adding a recommendation will fail and you need to try again.
+<span>&#10071;</span>Price range should be entered separated by -. Otherwise, adding a recommendation will fail and you need to try again.
 
 #### 4.2.2 List Recommendation
 
@@ -281,7 +281,7 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to edit.
 
-<p>&#10071Ensure the title of the recommendation you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
+<span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of reviews. Otherwise, Connoisseur will
 prompt you saying that no such recommendation exits.
 
 As shown in Figure 16 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
@@ -302,7 +302,7 @@ Command: `delete [TITLE_OF_RECOMMENDATION]`
 ![img_17.png](./images/ug/delete_review.png)
 <p align="center">Figure 17. Deleting a Recommendation</p>
 
-<p>&#10071 Ensure the title of the review you want to delete already exists in your lists of recommendations. Otherwise, Connoisseur will
+<span>&#10071;</span>Ensure the title of the review you want to delete already exists in your lists of recommendations. Otherwise, Connoisseur will
 prompt you saying that no such recommendation exits.
 
 #### 4.2.5 Review a Recommendation
