@@ -1,3 +1,5 @@
+//@@author SimBowen
+
 package seedu.duke.ui;
 
 import seedu.duke.data.NusMap;
@@ -39,9 +41,9 @@ public class DailyRouteUi extends UiManager {
         return dayIndex;
     }
 
-    public int getDayEntryForShow(ArrayList<String> selectableDays) throws InvalidIndexException {
+    public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException {
         showListOfDays(selectableDays);
-        showMessage("SELECT ENTRY TO VIEW:");
+        showMessage("SELECT ENTRY:");
         int dayIndex =  getEntryFromUser(selectableDays);
         showMessage(CommonMessage.DIVIDER);
         return dayIndex;
