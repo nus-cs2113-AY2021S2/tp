@@ -33,6 +33,7 @@ public class CancelBooking {
         ArrayList<Seat> seats = booking.getSeats();
         for(int i=0;i<seats.size();i++){
             showtimes.setSeatStatus(seats.get(i).getRow()-1, seats.get(i).getRow()-1, false);
+            System.out.println((seats.get(i).getRow()-1) + " , " + (seats.get(i).getRow()-1));
         }
     }
 
