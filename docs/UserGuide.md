@@ -24,10 +24,12 @@ Since: `March 2021`
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.1 [List all expense records](#321-list-all-expense-records)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.2 [List all loan records](#322-list-all-loan-records)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.3 [List all saving records](#323-list-all-saving-records)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2.4 [List all records](#324-list-all-records)\
    3.3 [View category total amount: `view`](#33-view-category-total-amount-view)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.1 [View total expenses](#331-view-total-expenses)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.2 [View total unreturned loans](#332-view-total-unreturned-loans)\
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.3 [View total savings](#333-view-total-savings)\
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.3.4 [View total amount in every category](#334-view-total-amount-in-every-category)\
    3.4 [Mark a loan as return: `return`](#34-mark-a-loan-as-returned-return)\
    3.5 [Remove a record: `remove`](#35-remove-a-record-remove)\
    3.6 [Check a person credit score: `creditscore`](#36-check-a-persons-credit-score-creditscore)\
@@ -104,6 +106,11 @@ Argument types and notation:
 ❗ **Commands and options are case-sensitive**
 > * E.g. `exit` will work, whereas `Exit`, `EXIT` or other variations will not be recognised.
 > * E.g. `view -s` will work, but using `-S` will not be recognised as a valid option.
+
+❗ **All options are single letter and followed by 1 space at the front and back**
+> * E.g. `_-a_` would be a valid option format after replacing `_` with space at the front and back.  
+> * E.g. `add -e Plain bread loaf -a 10` will work, whereas `add -e Plain bread loaf -a10` will not be
+    recognized as valid option due to missing space in between ` -a` and `10`.
 
 ---
 
@@ -305,6 +312,17 @@ Format: `view -s`
 Output:
 
 ![view saving example output](img/ViewSavingExampleOutput.jpg)
+
+#### 3.3.4 View total amount in every category
+
+To see the amount of each category (`expense`, `loan` and `saving`) in a summarized format,
+you can use `view` and the option `-a`.
+
+Format: `view -a`
+
+Output:
+
+![view all example output](img/ViewAllExampleOutput.jpg)
 
 ### 3.4 Mark a loan as returned: `return`
 
