@@ -117,11 +117,8 @@ public class Constants {
     public static final int TEXT_EDITOR_HEIGHT = 800;
     public static final int TEXT_AREA_WIDTH = 700;
     public static final int TEXT_AREA_HEIGHT = 700;
-    public static final String DEFAULT_FONT_STYLE = "Times New Roman";
-    public static final int DEFAULT_FONT_SIZE = 16;
-    public static final String FONT_COLOUR_ICON = "Font colour";
     public static final String SAVE_ICON = "Save";
-    public static final String TEXT_EDITOR_TITLE = "Gulio Text Editor";
+    public static final String TEXT_EDITOR_TITLE = "%s - Gulio Text Editor";
 
     //Cheat sheet
     public static final String STRING_CHEATSHEET = "Cheatsheet";

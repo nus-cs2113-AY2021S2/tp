@@ -8,6 +8,7 @@ import static seedu.duke.common.Constants.KEYCODE_DOWN;
 import static seedu.duke.common.Constants.KEYCODE_UP;
 import static seedu.duke.common.Constants.KEYCODE_S;
 
+//@@author 8kdesign
 public class ShortcutListener implements KeyListener {
 
     JFrame frame;

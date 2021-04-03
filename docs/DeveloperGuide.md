@@ -21,7 +21,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
     * [Common Classes](#common-classes)
-* [implementation](#implementation)
+* [Implementation](#implementation)
     * [Add Lesson](#add-lesson)
     * [Adding of Cheat-Sheet](#adding-of-cheat-sheet)
     * [Loading & Storing of Data](#loading--storing-of-data)
@@ -41,6 +41,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Adding a Lesson](#adding-a-lesson)
     * [Deleting a Lesson](#deleting-a-lesson)
     * [Opening a Link](#opening-a-link)
+* Appendix: Command Summary
 
 &nbsp;
 
@@ -615,3 +616,48 @@ Due to the 2-layer command system, you will need to identify which layer you are
 &nbsp;
 
 [🡅 Back to Table of Contents](#table-of-contents)
+
+----
+
+# Command Summary
+
+### Dashboard Commands Summary
+
+| Keyword | Format |
+| --- | --- |
+| help | `help` |
+| exit | `exit` |
+| open | `open <module code>`|
+| add | `add <module code>` |
+| delete | `delete  <module name>` |
+| modules | `modules` |
+
+### Module Commands Summary
+
+| Keyword | Format |
+| --- | --- |
+| help | `help` |
+| close | `close` |
+| info | `info` | 
+| add lesson | `add lesson <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>` |
+| delete lesson | `delete lesson` |
+| edit lesson | `edit lesson` |
+| link | `link` |
+| teacher | `teacher` |
+| lessons | `lessons` |
+| add task | `add task <task name> ;; <deadline> ;; <remarks>` |
+| delete task | `delete task` |
+| edit task | `edit task` |
+| mark | `mark` |
+| unmark | `unmark` |
+| tasks | `tasks` |
+| add cheat-sheet | `add cheat-sheet <cheat-sheet name>` |
+| delete cheat-sheet | `delete cheat-sheet <cheat-sheet name>` |
+| edit cheat-sheet | `edit cheat-sheet <cheat-sheet name>` |
+| cheat-sheets | `cheat-sheets` |
+
+&nbsp;
+
+[🡅 Back to Table of Contents](#table-of-contents)
+
+----

@@ -7,6 +7,7 @@ import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -53,14 +54,13 @@ public class AddCheatSheetCommand extends Command {
         } else {
             try {
                 File file = new File(filePath);
-            } catch (NullPointerException e) {
+                file.createNewFile();
+            } catch (NullPointerException | IOException e) {
                 ui.printMessage(MESSAGE_INVALID_FILE_NAME);
             }
 
             ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
-            TextEditor textEditor = new TextEditor(filePath);
-            textEditor.setTextAreaToVoid();
-            textEditor.saveTextToFile();
+            TextEditor.createNew(filePath, fileName);
         }
     }
 
