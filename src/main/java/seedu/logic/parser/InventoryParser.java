@@ -23,7 +23,7 @@ public class InventoryParser {
             HealthVaultException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-
+        MainChecker.checkNumInput(fullCommand, 4, 1);
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
         checker = new InventoryChecker(inventories, stringTokens, numberOfTokens);
