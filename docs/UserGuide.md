@@ -38,7 +38,6 @@
 6. [Glossary](#6-glossary) <br>
 7. [Command summary](#7-command-summary) <br>
 
-
 ## 1. Introduction
 
 Welcome to the User Guide of **NUSMaze**!
@@ -147,8 +146,8 @@ Format: `go → STARTING_BLOCK → DESTINATION BLOCK`
 #### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
 Format 1: `go → STARTING_BLOCK → EATERY_NAME`
-- By entering the name of the eatery that you wish to go in the `EATERY_NAME` parameter,
-  NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
+- By entering the name of the eatery that you wish to go in the EATERY_NAME parameter,
+  NUSMaze will display the shortest route to go from the STARTING_BLOCK to the
   desired eatery.
 
 Format 2: `go → STARTING_BLOCK → eatery → EATERY_NAME`
@@ -222,17 +221,6 @@ Format : `add daily route → DAY_ENTRY → BLOCK/END`
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route → DAY_NUMBER`
-- When the day command is entered, the application will display the list of available days
-  for which daily routes have been saved.
-
-- NUSMaze will then prompt you for a `DAY_NUMBER`.
-
-- The `DAY_NUMBER` must be the index of one of the available days which has been
-  displayed.
-
-#### 4.5.3 Clearing daily route
-Clears the schedule of the selected day, if applicable.<br>
-Format : `clear daily route → DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
@@ -330,7 +318,6 @@ can be found on the second computer.
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
-|[**Clearing a daily route**](#453-clearing-daily-route)       | `clear daily route → DAY_NUMBER` |
 |[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
 |[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |

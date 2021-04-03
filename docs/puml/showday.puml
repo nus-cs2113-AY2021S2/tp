@@ -8,7 +8,7 @@ activate "command:ShowDailyRouteCommand"
 activate "dailyRoute:DailyRoute"
 return
 deactivate "dailyRoute:DailyRoute"
-"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntry(ArrayList<String>)
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi" : getDayEntryForShow(ArrayList<String>)
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"
