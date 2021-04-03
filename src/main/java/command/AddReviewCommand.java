@@ -49,7 +49,7 @@ public class AddReviewCommand extends Command {
         double rating = 0.0;
         ui.enterRating();
         line = ui.readCommand();
-        if (rating < 1.0 || rating > 5.9) {
+        if (rating < 1.0 || rating > 5.0) {
             System.out.println("Please enter valid rating");
             return;
         }
