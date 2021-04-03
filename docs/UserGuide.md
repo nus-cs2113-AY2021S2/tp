@@ -3,7 +3,9 @@
 
 ## Introduction
 
-Welcome to MovieApp! Here, you can book a movie, see the upcoming shows and read movie reviews to watch!
+MovieApp is a desktop app for users to see the upcoming shows, book a movie and read movie reviews.\
+The app is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).\
+If you can type fast, MovieApp can help you view and book movies conveniently.
 
 ## Quick Start
 
@@ -95,26 +97,24 @@ Exit the app from login page
 
 **Display:**
 
-
+```
 >  Thank you for your time.
 >  Have a good day!
 >
 >  System Exiting…
+```
 
  ___________  
 
 ###  Customer Main Menu
 
-
-
-
 > ======== Menu Choice =======   
 > 1 View Movies   
 > 2 Exit  
-============================
+============================\
+>Please indicate your choice:
 
-Please indicate your choice:
-
+\
 **1. View all movies and all movie filter: `1`**  
 View all movies and movie filters.
 
@@ -141,10 +141,12 @@ Exit and terminate the app.
 **Format**: `2`  
 **Display**:
 
+```
 > Thank you for your time.   
 > Have a good day!
 >
 > Logging out...
+```
 
 
   ___________  
@@ -443,18 +445,7 @@ Go back to access the main menu.
 Please indicate your choice:
 ```
 
-[Admin]
-
-```
-> ======== Menu Choice =======   
-> 1 View Movies   
-> 2 Add Movie   
-> 3 Delete Movie   
-> 4 Update Movie   
-> 5 Logout  
-> ============================   
-> Please indicate your choice:
-```
+ ___________  
 
 ### Selected Movie Menu
 
@@ -462,8 +453,8 @@ Please indicate your choice:
 > ======== Menu Choice =======   
 > 1 Buy ticket   
 > 2 View movie details  
->  3 Add review   
->  4 Go back  
+> 3 Add review   
+> 4 Go back  
 ============================
 ```
 
@@ -513,10 +504,10 @@ Add new review for the selected movie
 **Format**: 3  
 **Display:**
 
-
+```
 > Comment:   
 > Rating:
-
+```
 
 Example:
 
@@ -546,4 +537,157 @@ Go back to access the main menu
 > 2 Exit  
 > ============================   
 Please indicate your choice:
+```
+
+ ___________  
+
+###  Admin Main Menu
+
+
+> ======== Menu Choice =======   
+> 1 View Movies   
+> 2 Add Movie   
+> 3 Delete Movie   
+> 4 Update Movie   
+> 5 Logout  
+> ============================   
+> Please indicate your choice:
+
+\
+**1. View all movies and all movie filter: 1**  
+Same as Customer Main Menu.
+
+\
+**2. Add Movie: 2**  
+Add a new movie to the movie list.
+
+**Format**: `2` \
+**Example**:
+
+    Hi, Mom
+    12
+    2
+    2021
+    1
+    2
+    2021
+    Jia Ling
+    Jia Ling, Shen Teng, Zhang Xiaofei, Chen He, Liu Jia, He He, Ding Jiali, Bao Wenjing, Han Yunyun, Wang Lin, Xu Juncong, Qiao Shan
+    3
+    After her mother Li Huanying is fatally injured in a car accident in 2001, grief-stricken Jia Xiaoling finds herself transported back in time to the year 1981, where she becomes her mother's close friend.
+
+**Display:**
+
+```
+> Movie title: 
+> Hi, Mom
+> Hi, Mom
+> 16
+> Enter movie start date 
+> Date (DD): 
+> 12
+> Month (MM): 
+> 2
+> Year (YYYY): 
+> 2021
+> Enter movie end date 
+> Date (DD): 
+> 1
+> Month (MM): 
+> 5
+> Year (YYYY): 
+> 2021
+> Movie director: 
+> Jia Ling
+> Movie casts (separated with comma) : 
+> Jia Ling, Shen Teng, Zhang Xiaofei, Chen He, Liu Jia, He He, Ding Jiali, Bao Wenjing, Han Yunyun, Wang Lin, Xu Juncong, Qiao Shan 
+> ======= Select Genre =======
+>  1 Sci-fi
+>  2 Action
+>  3 Comedy
+>  4 Family
+>  5 Horror
+>  6 Romance
+>  7 Drama
+> ============================
+> Please indicate your choice:
+> 3
+> Movie synopsis: 
+> After her mother Li Huanying is fatally injured in a car accident in 2001, grief-stricken Jia Xiaoling finds herself transported back in time to the year 1981, where she becomes her mother's close friend.
+> The new movie "Hi, Mom" have been saved to the database.
+```
+
+\
+**3. Delete Movie: 3**  
+Delete a movie in the movie list.
+
+**Format**: `3` \
+**Display**:
+
+```
+> Select a movie to be deleted from the list (enter the number)
+> 1. Alita: Battle Angel
+> 2. Avengers: Endgame
+> 3. Toy Story 4
+> 4. Joker
+> 5. Frozen 2
+> 6. Hi, Mom
+> Please enter your choice: 
+```
+**Example**:
+
+    6
+
+**Display:**
+```
+> The movie has been removed from the database. 
+```
+
+\
+**4. Update Movie: 4**  
+Update the movie details of a movie in the movie list.
+
+**Format**: `4` \
+**Display**:
+
+```
+> Select a movie to be edited from the list (enter the number)
+> 1. Alita: Battle Angel
+> 2. Avengers: Endgame
+> 3. Toy Story 4
+> 4. Joker
+> 5. Frozen 2
+> Please enter your choice: 
+```
+**Example**:
+
+    1
+    3
+    Set several centuries in the future, the abandoned Alita is found in the scrapyard of Iron City by Ido, a compassionate cyber-doctor who takes the unconscious cyborg Alita to his clinic. As Alita learns to navigate her new life and the treacherous streets of Iron City, Ido tries to shield her from her mysterious past.
+
+**Display:**
+```
+> You have selected Alita: Battle Angel
+
+> ======= Edit Movie =======
+>  1 Edit title
+>  2 Edit director
+>  3 Edit synopsis
+>  ============================
+> Please indicate your choice:
+> 3
+> Current synopsis: Set several centuries in the future, the abandoned Alita is found in the scrapyard of Iron City by Ido, a compassionate cyber-doctor who takes the unconscious cyborg Alita to his clinic. When Alita awakens, she has no memory of who she is, nor does she have any recognition of the world she finds herself in. As Alita learns to navigate her new life and the treacherous streets of Iron City, Ido tries to shield her from her mysterious past.
+> Insert new synopsis:
+> Set several centuries in the future, the abandoned Alita is found in the scrapyard of Iron City by Ido, a compassionate cyber-doctor who takes the unconscious cyborg Alita to his clinic. As Alita learns to navigate her new life and the treacherous streets of Iron City, Ido tries to shield her from her mysterious past.
+> The changes have been saved to the database.
+```
+
+\
+**5. Logout: 5**  
+Logout current admin user.
+
+**Format**: `5` \
+**Display**:
+```
+> Logging out..
 ```
