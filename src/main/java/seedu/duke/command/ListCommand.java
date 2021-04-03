@@ -57,7 +57,7 @@ public class ListCommand extends Command {
         } else if (hasOption(arguments, OPTION_ALL)) {
             recordType = RecordType.ALL;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_LIST);
+            throw new CommandException("missing option: [-e | -l | -s | -a]", COMMAND_LIST);
         }
     }
 
