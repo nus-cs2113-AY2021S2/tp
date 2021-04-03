@@ -103,7 +103,7 @@ The table below explains the general syntax used throughout the user guide.
 | Syntax |  What it means |
 |----------|-------------|
 | `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
-| _italics_ | Italicised text indicates that the text has a definition specific to Homerce, or it is a caption for a Figure in the guide. |
+| _italics_ | Italicised text indicates that the text has a definition specific to NUSMaze, or it is a caption for a Figure in the guide. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
 |<div markdown="block" class="alert alert-danger"> :warning: </div> | A warning sign indicates that the following text is important. |
 
