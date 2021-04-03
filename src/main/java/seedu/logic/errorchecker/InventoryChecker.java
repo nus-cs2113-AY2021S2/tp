@@ -65,6 +65,7 @@ public class InventoryChecker extends MainChecker {
             }
         }
     }
+
     public static void checkDuplicate(String inputString) throws DuplicateDrugException {
         for (Inventory inventory : InventoryActions.list) {
             String drugName = inventory.getDrugName();
@@ -73,6 +74,7 @@ public class InventoryChecker extends MainChecker {
             }
         }
     }
+
     public static void checkQuantity(String number) throws WrongNumberException {
         try {
             Integer.parseInt(number);

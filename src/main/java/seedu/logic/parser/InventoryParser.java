@@ -11,7 +11,6 @@ import seedu.logic.command.inventory.InventoryReturn;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.ui.UI;
-
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class InventoryParser {
@@ -24,7 +23,9 @@ public class InventoryParser {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
         MainChecker.checkNumInput(fullCommand, 4, 1);
+
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
+
         Command c = null;
         checker = new InventoryChecker(inventories, stringTokens, numberOfTokens);
         switch (command) {
@@ -64,6 +65,7 @@ public class InventoryParser {
         }
         return c;
     }
+
     private String[] parseToAddFormat(String[] stringTokens) {
        String[] addFormat;
        addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3]};

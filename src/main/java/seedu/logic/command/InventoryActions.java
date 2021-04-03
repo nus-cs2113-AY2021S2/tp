@@ -11,6 +11,7 @@ public class InventoryActions {
 
     public InventoryActions() {
     }
+
     public InventoryActions(ArrayList<Inventory> load) {
      this.list = load;
     }
@@ -60,7 +61,8 @@ public class InventoryActions {
 
     public static void display(Inventory inventory) {
         System.out.println(
-                prettyPrint(inventory.getDrugName(), 15) + " | " + prettyPrint(inventory.getPrice(), 10) + " | "
+                prettyPrint(inventory.getDrugName(), 15) + " | "
+                        + prettyPrint(inventory.getPrice(), 10) + " | "
                         + prettyPrint(Integer.toString(inventory.getQuantity()), 5));
     }
 
