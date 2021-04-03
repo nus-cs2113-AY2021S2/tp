@@ -21,6 +21,7 @@
     3.3. [Finding The Shortest Route Feature](#33-finding-the-shortest-route-feature)  
     3.4. [Custom Aliases Feature](#34-custom-aliases-feature)  
     3.5. [History Feature](#35-history-feature)  
+    3.6. [Favourite Routes Feature](#36-favourite-routes-feature)
 4. [Appendix: Requirements](#4-appendix-requirements)  
     4.1. [Product Scope](#41-product-scope)  
     4.2. [User Stories](#42-user-stories)  
