@@ -23,7 +23,7 @@ public class DailyRouteStorage extends Storage {
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeDailyRoute(dailyRoute);
+            ArrayList<String> encodedData = encodeDailyRoute(dailyRoute);
             Files.write(filepath, encodedData);
         } catch (IOException e) {
             throw new SaveDataException();
@@ -36,7 +36,7 @@ public class DailyRouteStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
+                String[] decodedData = decodeData(encodedData);
                 ArrayList<String> schedule = new ArrayList<>();
                 for (int i = 1; i < decodedData.length; i++) {
                     schedule.add(decodedData[i]);
