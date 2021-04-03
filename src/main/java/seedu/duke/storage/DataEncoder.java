@@ -11,9 +11,9 @@ import seedu.duke.exception.InvalidIndexException;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class DataEncoder {
+public interface DataEncoder {
 
-    public ArrayList<String> encodeHistory(History history) throws InvalidIndexException {
+    default ArrayList<String> encodeHistory(History history) throws InvalidIndexException {
         ArrayList<String> encodedData = new ArrayList<>();
         for (int i = 0; i < history.getHistorySize(); i++) {
             String[] data = history.getSpecificEntry(i);
@@ -22,7 +22,7 @@ public class DataEncoder {
         return encodedData;
     }
 
-    public ArrayList<String> encodeAlias(BlockAlias alias) {
+    default ArrayList<String> encodeAlias(BlockAlias alias) {
         ArrayList<String> encodedData = new ArrayList<>();
         for (Map.Entry<String, String> aliasPair: alias.getAliasHashMap().entrySet()) {
             encodedData.add(aliasPair.getKey() + "/" + aliasPair.getValue());
@@ -30,7 +30,7 @@ public class DataEncoder {
         return encodedData;
     }
 
-    public ArrayList<String> encodeNotes(NusMap nusMap) {
+    default ArrayList<String> encodeNotes(NusMap nusMap) {
         ArrayList<String> encodedData = new ArrayList<>();
         for (Block block : nusMap.getValues()) {
             for (int i = 0; i < block.getNotes().size(); i++) {
@@ -40,7 +40,7 @@ public class DataEncoder {
         return encodedData;
     }
 
-    public ArrayList<String> encodeDailyRoute(DailyRoute dailyRoute) {
+    default ArrayList<String> encodeDailyRoute(DailyRoute dailyRoute) {
         ArrayList<String> encodedData = new ArrayList<>();
         for (String day : dailyRoute.getSelectableDays()) {
             StringBuilder schedule = new StringBuilder(day + "/");
@@ -52,7 +52,7 @@ public class DataEncoder {
         return encodedData;
     }
 
-    public ArrayList<String> encodeFavourite(Favourite favourite) throws InvalidIndexException {
+    default ArrayList<String> encodeFavourite(Favourite favourite) throws InvalidIndexException {
         ArrayList<String> encodedData = new ArrayList<>();
         for (int i = 0; i < favourite.getFavouriteSize(); i++) {
             String[] data = favourite.getSpecificEntry(i);

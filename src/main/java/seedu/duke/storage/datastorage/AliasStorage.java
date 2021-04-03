@@ -24,7 +24,7 @@ public class AliasStorage extends Storage {
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeAlias(blockAlias);
+            ArrayList<String> encodedData = encodeAlias(blockAlias);
             Files.write(filepath, encodedData);
         } catch (IOException e) {
             throw new SaveDataException();
@@ -37,7 +37,7 @@ public class AliasStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
+                String[] decodedData = decodeData(encodedData);
                 blockAlias.addAlias(decodedData[1], decodedData[0]);
             }
         } catch (IOException | InvalidAliasException e) {

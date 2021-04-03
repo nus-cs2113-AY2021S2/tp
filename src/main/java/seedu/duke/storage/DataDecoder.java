@@ -1,8 +1,8 @@
 package seedu.duke.storage;
 
-public class DataDecoder {
+public interface DataDecoder {
 
-    public String[] decodeData(String encodedData) {
+    default String[] decodeData(String encodedData) {
         return encodedData.split("/");
     }
 }
