@@ -1,6 +1,10 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.*;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidGenderException;
+import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.ui.UI;
 

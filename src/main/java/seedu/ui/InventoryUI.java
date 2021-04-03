@@ -33,18 +33,17 @@ public class InventoryUI extends UI{
         UI.printEmptyLine();
 
     }
-    public static void notEmptyInventoryListMessage() {
-        System.out.println("Here are the inventories currently in the inventory!");
-    }
 
     public static void deleteDrugMessage(String deletedDrug) {
         System.out.println("Noted. I've removed this drug: " + deletedDrug);
     }
 
     public static void inventoryMenuHeader() {
-        System.out.print("Welcome to Inventory Menu!\nType \"help\" for Inventory menu commands\n\n");
+        System.out.print("Welcome to Inventory Menu!\nType \"help\" for Inventory menu commands\n");
     }
 
-    public void showLoadingError() {
+    public void corruptedFileErrorMessage() {
+        System.out.println("The file (" + INVENTORY_FILE_PATH + ") is corrupted!\n" +
+                "Please exit the program and delete the corrupted file before trying to access Inventory Menu!");
     }
 }
