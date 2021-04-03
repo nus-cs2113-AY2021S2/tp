@@ -1,37 +1,42 @@
 # User Guide for NUSMaze
 
 ## Table of Contents
-1. [Introduction](#1-introduction)  
-2. [Quick start](#2-quick-start)  
+1. [Introduction](#1-introduction)
+2. [Quick start](#2-quick-start)
 3. [About](#3-about)  
-  3.1. [Structure of this document](#31-structure-of-this-document)  
-  3.2. [Reading this document](#32-reading-this-document)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax)    
+   3.1. [Structure of this document](#31-structure-of-this-document)  
+   3.2. [Reading this document](#32-reading-this-document)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax)
 4. [Features](#4-features)  
-  4.1. [Viewing Help](#41-viewing-help)  
-  4.2. [Routing](#42-routing)  
+   4.1. [Viewing Help](#41-viewing-help)  
+   4.2. [Routing](#42-routing)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.2.1. [Routing between blocks](#421-routing-between-blocks)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.2.2. [Routing to the closest eatery](#422-routing-to-the-closest-eatery)  
-  4.3. [History](#43-history)  
+   4.3. [History](#43-history)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Viewing History](#431-viewing-history)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Clearing History](#432-clearing-history)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Repeating History](#433-repeating-history)  
-  4.4. [Alias](#44-alias)  
+   4.4. [Alias](#44-alias)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Adding an alias for block name](#441-adding-an-alias-for-block-name)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Viewing all aliases](#442-viewing-all-aliases)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Deleting aliases](#443-deleting-aliases)  
-  4.5. [Daily Routes](#45-daily-routes)  
+   4.5. [Daily Routes](#45-daily-routes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route)  
-  4.6. [Notes](#46-notes)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route)
+   4.6. [Notes](#46-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)  
-  4.7. [Exiting the application](#47-exiting-the-application)  
-  4.8. [Saving the Data](#48-saving-the-data)  
-5. [FAQ](#5-faq)  
-6. [Glossary](#6-glossary)  
-7. [Command summary](#7-command-summary)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)
+   4.7. [Favourite Routes](#47-favourite-routes)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1 [Adding Favourite route](#471-adding-favourite-route)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3 [Repeating favourite route](#473-repeating-favourite-route)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4 [Deleting favourite route](#474-deleting-favourite-route)  
+   4.8. [Exiting the application](#48-exiting-the-application)  
+   4.9. [Saving the Data](#49-saving-the-data)
+5. [FAQ](#5-faq)
+6. [Glossary](#6-glossary)
+7. [Command summary](#7-command-summary)
 
 ## 1. Introduction
 
@@ -67,7 +72,7 @@ This section gives you step-by-step instructions on how to download and open the
 4. Double-click the file to start the app. If you are using Windows, please ensure that your Computer's Display Settings are set to 100%.
 
 5. A CLI similar to Figure 1 below should appear in a few seconds.  <br><br>
-   [img_1.png](img_1.png)
+
    _Figure 1 - CLI of NUSMaze_
 
 6. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
@@ -105,11 +110,11 @@ The table below explains the general syntax used throughout the user guide.
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
-1. Words in Upper_Case are parameters to be supplied by you. 
-<br/>Eg. in add note LOCATION/DESCRIPTION, LOCATION and DESCRIPTION are parameters which can be used as add note E1/CS2113T.
-    
+1. Words in Upper_Case are parameters to be supplied by you.
+   <br/>Eg. in add note LOCATION/DESCRIPTION, LOCATION and DESCRIPTION are parameters which can be used as add note E1/CS2113T.
+
 2. All the examples provided below are screenshots of expected user commands and outputs by NUSMaze.
-    
+
 3. In each example, lines starting with > signifies user command.
 
 <div markdown="block" class="alert alert-info">
@@ -242,13 +247,13 @@ Format : `show notes → LOCATION`
 #### 4.6.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note → LOCATION → NOTE INDEX`
-- When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`. 
-  
+- When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`.
+
 - The `LOCATION` must be one of the Engineering or Computing buildings.
-  
+
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE INDEX` of the note to be deleted,
-which is the index of the note in the location's notes list.
-  
+  which is the index of the note in the location's notes list.
+
 - The `NOTE INDEX` must be an integer within the total number of notes that the location has.
 
 ### 4.7 Favourite Routes
@@ -300,7 +305,6 @@ can be found on the second computer.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 7. Command summary
-***need to fix links***
 
 |Action | Format |
 |---------------|------------------------------------------------------------------|
@@ -317,5 +321,9 @@ can be found on the second computer.
 |[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
 |[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
-|[**Exiting the application**](#47-exiting-the-application)       | `bye` |
+|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING BLOCK → DESTINATION BLOCK` |
+|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
+|[**Show stored favourites**](#473-repeating-favourite-route)       | `repeat favourite → INDEX OF ROUTE` |
+|[**Show stored favourites**](#474-deleting-favourite-route)       | `delete favourite` |
+|[**Exiting the application**](#48-exiting-the-application)       | `bye` |
 
