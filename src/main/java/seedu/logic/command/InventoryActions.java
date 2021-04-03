@@ -39,7 +39,13 @@ public class InventoryActions {
             //ui.notEmptyInventoryListMessage();
             System.out.print(System.lineSeparator());
             ui.inventoryListHeader();
-            System.out.println(("-").repeat(60));
+            for (int i = 0; i < 60; i++) {
+                System.out.print("-");
+            }
+            System.out.println("\n");
+            /*String newString = "-";
+            System.out.println(newString.repeat(60));
+            */
             for (Inventory inventory : list) {
                 display(inventory);
             }

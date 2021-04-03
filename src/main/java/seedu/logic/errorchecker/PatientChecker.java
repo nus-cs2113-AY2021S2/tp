@@ -126,6 +126,7 @@ public class PatientChecker extends MainChecker{
 
     private void checkIDExistStorage(String userID) throws CorruptedFileException {
         if (isIDTakenStorage(userID)) {
+            System.out.println("There is a duplicate ID!");
             throw new CorruptedFileException("Patient");
         }
     }
@@ -134,6 +135,7 @@ public class PatientChecker extends MainChecker{
         for (Patient patient : patientArrayList) {
             String patientID = patient.getPatientID();
             if (patientID.equals(userID)) {
+                System.out.println("The duplicate ID is: " + userID);
                 return true;
             }
         }
