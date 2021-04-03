@@ -147,8 +147,8 @@ public class Review {
     }
 
     /**
-     * Returns the length of the description modulus 66.
-     * @return Length of description mod 66
+     * Returns the length of the description for printing in view command.
+     * @return length of description modulus the maximum number of characters allowed
      */
     public int getPrintDescriptionLength() {
         return description.length() % MAX_CHARS_VIEW;
