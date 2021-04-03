@@ -14,6 +14,7 @@ import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.NEW_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.DISPLAY_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.RECO_MODE_MESSAGE;
 import static seedu.connoisseur.messages.Messages.RECODONE_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.REVIEW_MODE_MESSAGE;
@@ -209,6 +210,13 @@ public class Ui {
      */
     public void printViewHelpMessage() {
         println(VIEW_HELP_MESSAGE);
+    }
+
+    /**
+     * Prints display method help message.
+     */
+    public void printDisplayHelpMessage() {
+        println(DISPLAY_HELP_MESSAGE);
     }
 
     /**

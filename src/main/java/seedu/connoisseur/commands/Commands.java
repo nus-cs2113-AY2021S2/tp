@@ -3,8 +3,6 @@ package seedu.connoisseur.commands;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
-import seedu.connoisseur.sorter.SortMethod;
-import seedu.connoisseur.sorter.Sorter;
 
 
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
@@ -61,6 +59,18 @@ public class Commands {
     }
 
     /**
+     * Changes display to stars or asterisks.
+     * @param displayType stars or asterisks
+     */
+    public void display(String displayType) {
+        if (isReviewMode) {
+            reviewList.changeDisplay(displayType);
+        } else {
+            ui.printCommandDoesNotExistInRecommendationMode();
+        }
+    }
+
+    /**
      * Print text to help user with using the application.
      *
      * @param arguments is the type of help determined by user input.
@@ -80,6 +90,8 @@ public class Commands {
             ui.printDeleteHelpMessage();
         } else if (arguments.equals("view")) {
             ui.printViewHelpMessage();
+        } else if (arguments.equals("display")) {
+            ui.printDisplayHelpMessage();
         } else if (arguments.equals("review")) {
             ui.printReviewModeHelpMessage();
         } else if (arguments.equals("reco")) {
@@ -104,8 +116,8 @@ public class Commands {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList.reviews, recommendationList.recommendations,
-                reviewList.sorter.getSortMethod());
+        storage.saveConnoisseurData(reviewList.sorter.getSortMethod(), reviewList.getDisplayStars(), 
+                reviewList.reviews, recommendationList.recommendations);
         ui.printExitMessage();
     }
 

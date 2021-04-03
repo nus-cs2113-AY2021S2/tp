@@ -9,6 +9,7 @@ public class Review {
     protected String dateAndTimeOfEntry;
     protected int rating;
     protected String description;
+    private static int MAX_CHARS_VIEW = 66;
     public static int MAX_NUM_OF_STARS = 5;
 
 
@@ -127,6 +128,33 @@ public class Review {
     }
 
     /**
+     * Print description to fit.
+     */
+    public String printDescription() {
+        String returnString;
+        if (description.length() > MAX_CHARS_VIEW) {
+            returnString = description.substring(0, MAX_CHARS_VIEW);
+            for (int i = 0; i < description.length() / MAX_CHARS_VIEW; i++) {
+                int currentIndex = (i + 1) * MAX_CHARS_VIEW;
+                returnString += " |\n|                       ";
+                returnString += description.substring(currentIndex, Integer.min(currentIndex + MAX_CHARS_VIEW, 
+                        description.length()));
+            }
+        } else {
+            returnString = description;
+        }
+        return returnString;
+    }
+
+    /**
+     * Returns the length of the description for printing in view command.
+     * @return length of description modulus the maximum number of characters allowed
+     */
+    public int getPrintDescriptionLength() {
+        return description.length() % MAX_CHARS_VIEW;
+    }
+
+    /**
      * Sets the description of the experience.
      *
      * @param description new description to be set
@@ -140,15 +168,15 @@ public class Review {
      *
      * @return rating of the experience as a string
      */
-    public String starRating() {
+    public String starRating(boolean displayStars) {
         String starRating = "";
         int stars = this.rating;
         assert stars >= 0 && stars <= 5 : "rating should be between 0 and 5";
         for (int i = 0; i < MAX_NUM_OF_STARS; i++) {
             if (stars > 0) {
-                starRating = starRating.concat("★ ");
+                starRating = (displayStars) ? starRating.concat("★ ") : starRating.concat("* ");
             } else {
-                starRating = starRating.concat("✰ ");
+                starRating = (displayStars) ? starRating.concat("✰ ") : starRating.concat("  ");
             }
             stars--;
         }

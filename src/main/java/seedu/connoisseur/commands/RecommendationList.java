@@ -295,6 +295,7 @@ public class RecommendationList {
                     ui.printInvalidRatingMessage();
                     continue;
                 }
+                r.setRating(rating);
                 break;
             }
             while (true) {

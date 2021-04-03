@@ -33,13 +33,14 @@ public class Messages {
             + "reco\t\tswitch over to recommendation mode\n"
             + "new/add\t\tadds a new review or recommendation\n"
             + "sort\t\tsets your preferred sorting method for your reviews\n"
+            + "display\t\tsets your preferred display method for your ratings\n"
             + "list\t\tlists your stored reviews or recommendations\n"
             + "edit\t\tedits an existing review or recommendation in your list\n"
             + "done\t\tmark a recommendation as done and add a review for it\n"
             + "delete\t\tdeletes a review or recommendation\n"
             + "exit/bye\texits connoisseur\n"
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
-    public static final String SORT_HELP_MESSAGE = "Sort will set your preferred sorting method for your reviews.\n"
+    public static final String SORT_HELP_MESSAGE = "Sort sets your preferred sorting method for your reviews.\n"
             + "This command is not available in the recommendation mode.\n\n"
             + "Currently recognised methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
             + "\nCommand syntax: sort <method>";
@@ -67,6 +68,10 @@ public class Messages {
     public static final String VIEW_HELP_MESSAGE = "View will allow you to view the details of a review entry you"
             + " made.\nYou can view the title, ratings, date and the full description of your experience.\n\n"
             + "Command Syntax: view <title of review>";
+    public static final String DISPLAY_HELP_MESSAGE = "Display sets your preferred display method for your ratings.\n"
+            + "This command is not available in the recommendation mode.\n\n"
+            + "Currently recognised methods are:\n\tstars\n\tasterisks\n"
+            + "\nCommand syntax: display <method>";
     public static final String RECODONE_HELP_MESSAGE = "Done will allow you to mark a recommendation as done and switch"
             + " it over as a review.\n"
             + "This can only be done in recommendation mode.\n"
@@ -108,7 +113,7 @@ public class Messages {
     public static final String AVAILABLE_SORT_METHODS = "Recognised methods are:\n\tTITLE\n\tCATEGORY\n"
             + "\tRATING\n\tEARLIEST\n\tLATEST\n";
     public static final String SORT_METHOD_PROMPT = "Use sort <method> to change sorting method";
-    public static final String INVALID_SORT_METHOD = " is not valid sorting method, please try again.";
+    public static final String INVALID_SORT_METHOD = " is not a valid sorting method, please try again.";
     public static final String SORT_METHOD_SUCCESS = "Success! Your preferred sorting method has been saved: ";
 
     // Delete
@@ -121,7 +126,7 @@ public class Messages {
     public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
     public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
 
-    //Edit
+    // Edit
     public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
     public static final String ANYTHING_ELSE = "Would you like to edit anything else? (y/n)";
     public static final String EDIT_PROMPT_REVIEW = "What would you like to edit (Title / Category / "
@@ -138,8 +143,12 @@ public class Messages {
     public static final String EDIT_DATE_PROMPT = "Would You like to update the date of entry for "
             + "the changes made(y/n)?";
 
-    //Convert
+    // Convert
     public static final String DETAILS_PROMPT = "Add in details of your experience? (y/n)";
     public static final String ENTER_DETAILS_PROMPT = "Enter the details of the review: ";
     public static final String CONVERT_SUCCESS = " has been made a review!";
+
+    // Display
+    public static final String DISPLAY_SUCCESS = "Success! Your preferred display method has been saved: ";
+    public static final String INVALID_DISPLAY_TYPE = " is not a valid display method, please try again.";
 }

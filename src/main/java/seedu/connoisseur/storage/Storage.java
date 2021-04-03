@@ -73,6 +73,10 @@ public class Storage {
         return fileAlreadyExists;
     }
 
+    /**
+     * Reads data from JSON file and creates a connoisseurData object. 
+     * @return connoisseurData object containing all the relavent data
+     */
     public ConnoisseurData loadConnoisseurData() {
         ConnoisseurData connoisseurData;
         try {
@@ -82,17 +86,24 @@ public class Storage {
             reviewsToLoad = connoisseurFileScanner.nextLine();
             JSONObject data = new JSONObject(reviewsToLoad);
             String sortMethod = data.getString("sortMethod");
+            boolean displayStars = Boolean.parseBoolean(data.getString("displayStars"));
             ArrayList<Review> reviewList = loadReviews(data.getJSONArray("reviews"));
             ArrayList<Recommendation> recommendationList = loadRecommendations(data.getJSONArray("recommendations"));
-            connoisseurData = new ConnoisseurData(sortMethod, reviewList, recommendationList);
+            connoisseurData = new ConnoisseurData(sortMethod, displayStars, reviewList, recommendationList);
             connoisseurFileScanner.close();
         } catch (FileNotFoundException | NoSuchElementException e) {
             ui.printErrorMessage(e);
-            connoisseurData = new ConnoisseurData("latest", new ArrayList<Review>(), new ArrayList<Recommendation>());
+            connoisseurData = new ConnoisseurData("latest", true, new ArrayList<Review>(), 
+                    new ArrayList<Recommendation>());
         }
         return connoisseurData;
     }
 
+    /**
+     * Loads reviews from a JSON array to a list of reviews. 
+     * @param reviews JSON array of reviews
+     * @return Arraylist of reviews
+     */
     public ArrayList<Review> loadReviews(JSONArray reviews) {
         ArrayList<Review> reviewList = new ArrayList<Review>();
         for (int i = 0; i < reviews.length(); i++) {
@@ -107,6 +118,11 @@ public class Storage {
         return reviewList;
     }
 
+    /**
+     * Loads reviews from a JSON array to a list of recommendations. 
+     * @param recommendations JSON array of recommendations
+     * @return Arraylist of recommendations
+     */
     public ArrayList<Recommendation> loadRecommendations(JSONArray recommendations) {
         ArrayList<Recommendation> recommendationList = new ArrayList<Recommendation>();
         for (int i = 0; i < recommendations.length(); i++) {
@@ -122,12 +138,20 @@ public class Storage {
         return recommendationList;
     }
 
-    public void saveConnoisseurData(ArrayList<Review> reviewList,
-                                    ArrayList<Recommendation> recommendationList, String sortMethod) {
+    /**
+     * Saves data to a JSON file. 
+     * @param sortMethod sort method
+     * @param displayStars display method
+     * @param reviewList list of reviews
+     * @param recommendationList list of recommendations
+     */
+    public void saveConnoisseurData(String sortMethod, boolean displayStars, ArrayList<Review> reviewList,
+                                    ArrayList<Recommendation> recommendationList) {
         JSONObject data = new JSONObject();
         JSONArray reviews = saveReviews(reviewList);
         JSONArray recommendations = saveRecommendations(recommendationList);
         data.put("sortMethod", sortMethod);
+        data.put("displayStars", Boolean.toString(displayStars));
         data.put("reviews", reviews);
         data.put("recommendations", recommendations);
         try {
@@ -139,6 +163,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Converts list of reviews to JSON array. 
+     * @param reviewList list of reviews
+     * @return JSON array of reviews
+     */
     public JSONArray saveReviews(ArrayList<Review> reviewList) {
         JSONArray reviews = new JSONArray();
         for (int i = 0; i < reviewList.size(); i++) {
@@ -154,6 +183,11 @@ public class Storage {
         return reviews;
     }
 
+    /**
+     * Converts list of recommendations to JSON array. 
+     * @param recommendationList list of recommendations
+     * @return JSON array of recommendations
+     */
     public JSONArray saveRecommendations(ArrayList<Recommendation> recommendationList) {
         JSONArray recommendations = new JSONArray();
         for (int i = 0; i < recommendationList.size(); i++) {
