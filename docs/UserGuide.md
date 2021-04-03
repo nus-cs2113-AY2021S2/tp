@@ -344,25 +344,25 @@ command: `exit` or `bye`
 
 ## 5. Command Summary
 
-|Action| Command | Examples | 
-|-----|--------|---------|
+|Action | Command | Examples |
+| ----- |--------|---------|
 |Enter Review Mode|`review`|`review`|
-|Add a Review|`add [QUICK/LONG]`<br />`new[QUICK/LONG]`|`add`<br />`new `<br />`add quick`<br />`new long`|
-|List Reviews|`list [SORTING_METHOD]`|`list`<br /> `list title`|
+|Add a Review|`add [QUICK/LONG]` `new[QUICK/LONG]`|`add`<br>`new `<br>`add quick`<br>`new long`|
+|List Reviews|`list [SORTING_METHOD]`|`list`<br> `list title`|
 |View Current Sorting Method|`sort`| `sort`|
 |Change Sorting Method|`sort [SORTING_METHOD]`| `sort title`|
 |View a Review|`view [TITLE_OF_REVIEW]`|`view Captain America`|
 |Edit a Review|`edit [TITLE_OF_REVIEW]`|`edit Armageddon`|
 |Delete a Review|`delete [TITLE_OF_REVIEW]`|`delete Armageddon 2`|
 |Enter Recommendation Mode|`reco`|`reco`|
-|Add a Recommendation|`add`<br />`new`|add`<br />`new`|
+|Add a Recommendation|`add`<br>`new`|`add`<br> `new`|
 |List Recommendations|`list`|`list`|
 |Edit a Recommendation|`edit [TITLE_OF_RECOMMENDATION]`|`edit Tipo Pasta`|
 |Delete a Recommendation|`delete [TITLE_OF_RECOMMENDATION]`|`delete Armageddon 3`|
 |Review a Recommendation|`done [TITLE_OF_RECOMMENDATION]`| `done Universal Studio`|
 |Help for General usage|`help`|`help`|
-|Help for a Specific function|`help [COMMAND_NAME]`|`help reco`<br />`help list`|
-|Exit & Save|`exit`<br />`bye`|`exit`<br />`bye`|
+|Help for a Specific function|`help [COMMAND_NAME]`|`help reco`<br>`help list`|
+|Exit & Save|`exit`<br>`bye`|`exit`<br>`bye`|
 
 ## 6. FAQ
 
