@@ -1,63 +1,42 @@
 # User Guide for NUSMaze
 
 ## Table of Contents
-1. [Introduction](#1-introduction)
-   
-2. [Quick start](#2-quick-start)
-   
-3. [About](#3-about)  
-   
-   3.1. [Structure of this document](#31-structure-of-this-document)  
-   
-   3.2. [Reading this document](#32-reading-this-document)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax)
-   
-4. [Features](#4-features)  
-   4.1. [Viewing Help](#41-viewing-help)  
-   
-   4.2. [Routing](#42-routing)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.1. [Routing between blocks](#421-routing-between-blocks)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.2. [Routing to the closest eatery](#422-routing-to-the-closest-eatery)  
-   
-   4.3. [History](#43-history)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Viewing History](#431-viewing-history)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Clearing History](#432-clearing-history)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Repeating History](#433-repeating-history)  
-   4.4. [Alias](#44-alias)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Adding an alias for block name](#441-adding-an-alias-for-block-name)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Viewing all aliases](#442-viewing-all-aliases)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Deleting aliases](#443-deleting-aliases)  
-   
-   4.5. [Daily Routes](#45-daily-routes)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route)
-   
-   4.6. [Notes](#46-notes)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)
-   
-   4.7. [Favourite Routes](#47-favourite-routes)  
-   
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1 [Adding Favourite route](#471-adding-favourite-route)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3 [Repeating favourite route](#473-repeating-favourite-route)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4 [Deleting favourite route](#474-deleting-favourite-route)  
-   
-   4.8. [Exiting the application](#48-exiting-the-application)  
-   
-   4.9. [Saving the Data](#49-saving-the-data)
-   
-5. [FAQ](#5-faq)
-   
-6. [Glossary](#6-glossary)
-   
-7. [Command summary](#7-command-summary)
+1. [Introduction](#1-introduction) <br>
+2. [Quick start](#2-quick-start) <br>
+3. [About](#3-about) <br>
+   3.1. [Structure of this document](#31-structure-of-this-document) <br>
+   3.2. [Reading this document](#32-reading-this-document) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax) <br>
+4. [Features](#4-features)  <br>
+   4.1. [Viewing Help](#41-viewing-help)<br>
+   4.2. [Routing](#42-routing) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.1. [Routing between blocks](#421-routing-between-blocks) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.2. [Routing to the closest eatery](#422-routing-to-the-closest-eatery) <br>
+   4.3. [History](#43-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Viewing History](#431-viewing-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Clearing History](#432-clearing-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Repeating History](#433-repeating-history) <br>
+   4.4. [Alias](#44-alias) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Adding an alias for block name](#441-adding-an-alias-for-block-name) <br>  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Viewing all aliases](#442-viewing-all-aliases) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Deleting aliases](#443-deleting-aliases) <br>
+   4.5. [Daily Routes](#45-daily-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route) <br>
+   4.6. [Notes](#46-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note) <br>
+   4.7. [Favourite Routes](#47-favourite-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1 [Adding Favourite route](#471-adding-favourite-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3 [Repeating favourite route](#473-repeating-favourite-route) <br> 
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4 [Deleting favourite route](#474-deleting-favourite-route) <br>
+   4.8. [Exiting the application](#48-exiting-the-application) <br>
+   4.9. [Saving the Data](#49-saving-the-data) <br>
+5. [FAQ](#5-faq) <br>
+6. [Glossary](#6-glossary) <br>
+7. [Command summary](#7-command-summary) <br>
 
 ## 1. Introduction
 
