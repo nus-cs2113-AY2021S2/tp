@@ -38,8 +38,9 @@ public class MovieMenu {
 	}
 
 
-	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Showtimes> ShowtimeDatabase,
-								  ArrayList<Cineplex> CineplexDatabase, int movieID, User user) {
+	public static void bookTicket(ArrayList<Movie> MovieDatabase, ArrayList<Cineplex> CineplexDatabase,
+								  int movieID, User user) {
+		ArrayList<Showtimes> ShowtimeDatabase = Database.ShowtimesDatabase;
 		String ms = "NOT FOUND";
 		for (Movie movie : MovieDatabase) {
 			if (movie.getMovieID() == movieID) {
@@ -206,9 +207,9 @@ public class MovieMenu {
 				}
 			}
 			seatChoice[b] = RC;
-			ShowtimeDatabase.get(index_st).setSeatStatus(row-1, col-1, true);
+			ShowtimeDatabase.get(index_st).setSeatStatus((row-1), (col-1), true);
 			ShowtimeDatabase.get(index_st).printSeats();
-			seatsBooked.add(ShowtimeDatabase.get(index_st).getSeat(row-1, col-1));
+			seatsBooked.add(ShowtimeDatabase.get(index_st).getSeat((row-1), (col-1)));
 		}
 
 		System.out.println("\nThe Transaction is made, total ticket number: "+ num_tic+" ");
@@ -217,12 +218,7 @@ public class MovieMenu {
 		} else{
 			((Admin)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
 		}
-
-
-
-
-// TODO: print seats
- 
+		Database.updateBookings();
 	}
 	
 	public static void addReview(Movie movie) {
@@ -269,8 +265,7 @@ public class MovieMenu {
 			case 1:
 				action = -1;
 					System.out.println("\n======== Book Ticket ========");
-					bookTicket(Database.MovieDatabase, Database.ShowtimesDatabase,
-							Database.CineplexDatabase, movie.getMovieID(), user);
+					bookTicket(Database.MovieDatabase, Database.CineplexDatabase, movie.getMovieID(), user);
 				break;	
 			case 2:
 				action = -1;
@@ -280,11 +275,12 @@ public class MovieMenu {
 				action = -1;
 				addReview(movie);
 				break;
+			case 4:
+				return;
 			default:
 				System.out.println("Please input a integer between 1 and 4.\n");
 			}			
 		} while (action != 4);
-		//TODO: Is this supposed to quit the app when action 4 is chosen?
 	}
 	
 }

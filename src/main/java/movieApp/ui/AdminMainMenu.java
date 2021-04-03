@@ -40,7 +40,7 @@ public class AdminMainMenu implements MainMenu{
 
 			switch(functionSelection) {
 			case 1:
-				Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase);
+				Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase, user.get(currentUserIndex));
 				if (movie != null) {
 					MovieMenu.movieAction(movie, user.get(currentUserIndex));
 				}
@@ -54,7 +54,7 @@ public class AdminMainMenu implements MainMenu{
 				break;
 			case 4:
 				choice = displayEditMovieMenu(Database.MovieDatabase);
-				int type = displayEditMovieSectionMenu(Database.MovieDatabase);
+				int type = displayEditMovieSectionMenu(Database.MovieDatabase, choice);
 				Database.editMovie(choice, type);
 				break;
 			case 5:
@@ -118,7 +118,7 @@ public class AdminMainMenu implements MainMenu{
 		return choice;
 	}
 
-	public static int displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase){
+	public static int displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase, int choice){
 		Movie selectedMovie = movieDatabase.get(choice - 1);
 		System.out.println("You have selected " + selectedMovie.getMovieTitle() + "\n");
 		Scanner select = new Scanner(System.in);
@@ -134,7 +134,6 @@ public class AdminMainMenu implements MainMenu{
 			type = select.nextInt();
 			if ((type < 1) || (type > 4)) {
 				System.out.println("Please input a integer between 1 and 3.\n");
-				continue;
 			}
 		}
 		return type;

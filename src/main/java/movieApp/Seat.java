@@ -3,6 +3,7 @@ package movieApp;
 import java.io.Serializable;
 
 public class Seat implements Serializable{
+	private static final long serialVersionUID = -6172861579975166925L;
 	private int row;
 	private int number;
 	private boolean status;
@@ -22,12 +23,11 @@ public class Seat implements Serializable{
 		return this.status;
 	}
 
-	/*
 	public int getRow() {
 		return this.row;
 	}
 
 	public int getColumn(){
 		return this.number;
-	}*/
+	}
 }

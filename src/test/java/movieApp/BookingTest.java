@@ -21,7 +21,7 @@ class BookingTest {
 
     @Test
     void testPrint() {
-        assertDoesNotThrow(() -> new Booking(showtimes, seats).print());
+        assertDoesNotThrow(() -> new Booking(showtimes, seats).printBookingDetails());
     }
 
     @Test
