@@ -689,3 +689,19 @@ Logout current admin user.
 ```
 > Logging out..
 ```
+
+## Command Summary  
+### Customer  
+| Action      | Input Example  |
+| :----------- | :----------- |
+| View Movies      | 1         |
+| Filter movies   | 1, [1-5 for adding filter, 6 to select choice, 7 to remove filters, 8 to return to main page]     |
+| Exit Application   | 2         |
+### Administrator
+| Action      | Input Example |
+| :----------- | :----------- |
+| View Movies      | 1       |
+| Add Movie      | 2, [key in response to prompts]       |
+| Delete Movie    | 3, [key in index of movie to be deleted]|
+| Update Movie   | 4, [1 for title,2 for director, 3 for synopsis], [key in response to prompts]      |
+| Logout   | 5        |
