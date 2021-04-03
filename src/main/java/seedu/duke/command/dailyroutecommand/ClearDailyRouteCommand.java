@@ -1,6 +1,7 @@
 package seedu.duke.command.dailyroutecommand;
 
 import seedu.duke.command.Command;
+import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.ui.DailyRouteUi;
 
@@ -17,17 +18,13 @@ public class ClearDailyRouteCommand extends Command {
 
     @Override
     public void execute() {
-        ArrayList<String> selectableDays = dailyRoute.getSelectableDays();
-        if (selectableDays.size() == 0) {
-            ui.showMessageWithDivider("There are no daily routes planned!");
-            return;
-        }
         try {
+            ArrayList<String> selectableDays = dailyRoute.getSelectableDays();
             int dayEntry = ui.getDayEntry(selectableDays);
             String selectedDay = selectableDays.get(dayEntry);
             dailyRoute.addDailyRoute(selectedDay, new ArrayList<>());
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS,selectedDay));
-        } catch (InvalidIndexException e) {
+        } catch (InvalidIndexException | EmptyDailyRouteException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }
