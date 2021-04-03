@@ -3,6 +3,7 @@
 package seedu.duke.ui;
 
 import seedu.duke.data.NusMap;
+import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 
@@ -33,15 +34,7 @@ public class DailyRouteUi extends UiManager {
         return false;
     }
 
-    public int getDayEntryForAdd(ArrayList<String> validDays) throws InvalidIndexException {
-        showListOfDays(validDays);
-        showMessage("SELECT ENTRY TO ADD:");
-        int dayIndex = getEntryFromUser(validDays);
-        showMessage(CommonMessage.DIVIDER);
-        return dayIndex;
-    }
-
-    public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException {
+    public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
         showMessage("SELECT ENTRY:");
         int dayIndex =  getEntryFromUser(selectableDays);
@@ -49,7 +42,10 @@ public class DailyRouteUi extends UiManager {
         return dayIndex;
     }
 
-    public void showListOfDays(ArrayList<String> days) {
+    public void showListOfDays(ArrayList<String> days) throws EmptyDailyRouteException {
+        if (days.size() == 0) {
+            throw new EmptyDailyRouteException();
+        }
         showMessage("Here are the available days:");
         for (int i = 0; i < days.size(); i++) {
             showMessage((i + 1) + ". " + days.get(i));

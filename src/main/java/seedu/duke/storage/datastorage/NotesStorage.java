@@ -24,7 +24,7 @@ public class NotesStorage extends Storage {
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeNotes(nusMap);
+            ArrayList<String> encodedData = encodeNotes(nusMap);
             Files.write(filepath, encodedData);
         } catch (IOException e) {
             throw new SaveDataException();
@@ -37,7 +37,7 @@ public class NotesStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
+                String[] decodedData = decodeData(encodedData);
                 nusMap.getBlock(decodedData[0]).addNote(decodedData[1]);
             }
         } catch (IOException e) {

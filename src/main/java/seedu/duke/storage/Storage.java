@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public abstract class Storage {
+public abstract class Storage implements DataEncoder, DataDecoder {
 
     protected final Path filepath;
 
