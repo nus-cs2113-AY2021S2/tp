@@ -95,7 +95,7 @@ This user guide will cover the following:
 
 <br/><br/>
 
-## 3. Getting Started</a>
+## 3. Getting Started
 
 ### 3.1 Introduction to Command Line Interface (CLI)
 
@@ -111,7 +111,7 @@ After keying in their input, the most common way to enter the response into the 
 
 
 
-### <a name="section2"> 3.2 Installation Guide</a>
+### <a name="section2"> 3.2 Installation Guide
 
 1. Ensure system has Java 11
 
@@ -127,7 +127,7 @@ After keying in their input, the most common way to enter the response into the 
    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
    - Example: `cd C:\Users\JohnDoe\Downloads`
-   - Run the following command: `java -jar jar [JAR file name]`
+   - Run the following command: `java -jar [JAR file name]`
   
 <br/><br/>
 
@@ -188,12 +188,12 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
->3. The age field input should be a positive integer
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
+>3. The age field input should be a positive integer starting from 0 but less than 150
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
@@ -217,7 +217,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Staff ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
@@ -340,13 +340,13 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
->2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters 
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F" or "Others"
->4. The age field input should be a positive integer not more than 150
+>4. The age field input should be a positive integer starting from 0 but less than 150
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -369,7 +369,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -413,6 +413,10 @@ When you first enter the Patient menu, you will be greeted with the following we
 >1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
+> 
+> The keyword input can be case insensitive and still find matches in the database.
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN"
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -471,13 +475,12 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >   
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F".
->4. The name field input should not have any non-Alphanumeric Characters.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
@@ -500,7 +503,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 > 
@@ -535,7 +538,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[DoctorID/ Appointment ID]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 > 
@@ -596,7 +599,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** least 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -624,7 +627,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -650,7 +653,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
@@ -791,7 +794,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 **Q**: Why is HealthVault telling me there is a Corrupted File?
 
-**A**: Corrupted Files are a result of editing the text file manually and causing unpermissible inputs into the data fields. As a result HealthVault is unable process and retrive the data.
+**A**: Corrupted Files are a result of editing the text file manually and causing unpermissible inputs into the data fields. As a result HealthVault is unable process and retrieve the data.
 
 
 **Q**: What do i do when HealthVault tells me there is a Corrupted File?
