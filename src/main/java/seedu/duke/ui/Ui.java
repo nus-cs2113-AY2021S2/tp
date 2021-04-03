@@ -39,9 +39,9 @@ public class Ui {
     private static final String MESSAGE_EXPENSE_SUCCESSFULLY_ADDED = "Expense has been added...";
     private static final String MESSAGE_LOAN_SUCCESSFULLY_ADDED = "Loan has been added...";
     private static final String MESSAGE_SAVING_SUCCESSFULLY_ADDED = "Saving has been added...";
-    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is ";
-    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is ";
-    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is ";
+    private static final String MESSAGE_TOTAL_EXPENSE = "The total amount for expense is $";
+    private static final String MESSAGE_TOTAL_LOAN = "The total amount for loan is $";
+    private static final String MESSAGE_TOTAL_SAVING = "The total amount for saving is $";
     private static final String MESSAGE_FAILED_INIT = "File or contents corrupted! Bad Init!\nSystem will now exit!";
 
 
@@ -270,6 +270,37 @@ public class Ui {
         }
         assert !(totalAmount.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
         System.out.println(MESSAGE_TOTAL_SAVING + totalAmount.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(DIVIDER);
+    }
+
+    /**
+     * Prints the amount of all record type in 2 decimal place.
+     *
+     * @param recordList contains the full list of records.
+     */
+    public void printTotalAmountAllType(RecordList recordList) {
+        System.out.println(DIVIDER);
+        BigDecimal totalExpense = new BigDecimal("0");
+        BigDecimal totalLoan = new BigDecimal("0");
+        BigDecimal totalSaving = new BigDecimal("0");
+        for (int i = 0; i < recordList.getRecordCount(); i++) {
+            Record currentRecord = recordList.getRecordAt(i);
+            if (currentRecord instanceof Expense) {
+                totalExpense = totalExpense.add(currentRecord.getAmount());
+            }
+            if (currentRecord instanceof Loan && !((Loan) currentRecord).isReturn()) {
+                totalLoan = totalLoan.add(currentRecord.getAmount());
+            }
+            if (currentRecord instanceof Saving) {
+                totalSaving = totalSaving.add(currentRecord.getAmount());
+            }
+        }
+        assert !(totalExpense.compareTo(BigDecimal.ZERO) == -1) : "Expenses cannot be negative!";
+        assert !(totalLoan.compareTo(BigDecimal.ZERO) == -1) : "Loans cannot be negative!";
+        assert !(totalSaving.compareTo(BigDecimal.ZERO) == -1) : "Savings cannot be negative!";
+        System.out.println(MESSAGE_TOTAL_EXPENSE + totalExpense.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_LOAN + totalLoan.setScale(2, RoundingMode.HALF_EVEN));
+        System.out.println(MESSAGE_TOTAL_SAVING + totalSaving.setScale(2, RoundingMode.HALF_EVEN));
         System.out.println(DIVIDER);
     }
 
