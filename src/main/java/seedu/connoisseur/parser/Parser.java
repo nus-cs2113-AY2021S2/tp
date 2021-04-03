@@ -58,6 +58,9 @@ public class Parser {
         case "view":
             commands.view(arguments);
             break;
+        case "display":
+            commands.display(arguments);
+            break;
         case "help":
             commands.printHelp(arguments);
             break;

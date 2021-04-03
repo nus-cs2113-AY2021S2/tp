@@ -168,15 +168,15 @@ public class Review {
      *
      * @return rating of the experience as a string
      */
-    public String starRating() {
+    public String starRating(boolean displayStars) {
         String starRating = "";
         int stars = this.rating;
         assert stars >= 0 && stars <= 5 : "rating should be between 0 and 5";
         for (int i = 0; i < MAX_NUM_OF_STARS; i++) {
             if (stars > 0) {
-                starRating = starRating.concat("★ ");
+                starRating = (displayStars) ? starRating.concat("★ ") : starRating.concat("* ");
             } else {
-                starRating = starRating.concat("✰ ");
+                starRating = (displayStars) ? starRating.concat("✰ ") : starRating.concat("  ");
             }
             stars--;
         }

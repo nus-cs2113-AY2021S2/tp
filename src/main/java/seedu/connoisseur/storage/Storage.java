@@ -82,13 +82,15 @@ public class Storage {
             reviewsToLoad = connoisseurFileScanner.nextLine();
             JSONObject data = new JSONObject(reviewsToLoad);
             String sortMethod = data.getString("sortMethod");
+            boolean displayStars = Boolean.parseBoolean(data.getString("displayStars"));
             ArrayList<Review> reviewList = loadReviews(data.getJSONArray("reviews"));
             ArrayList<Recommendation> recommendationList = loadRecommendations(data.getJSONArray("recommendations"));
-            connoisseurData = new ConnoisseurData(sortMethod, reviewList, recommendationList);
+            connoisseurData = new ConnoisseurData(sortMethod, displayStars, reviewList, recommendationList);
             connoisseurFileScanner.close();
         } catch (FileNotFoundException | NoSuchElementException e) {
             ui.printErrorMessage(e);
-            connoisseurData = new ConnoisseurData("latest", new ArrayList<Review>(), new ArrayList<Recommendation>());
+            connoisseurData = new ConnoisseurData("latest", true, new ArrayList<Review>(), 
+                    new ArrayList<Recommendation>());
         }
         return connoisseurData;
     }
@@ -122,12 +124,13 @@ public class Storage {
         return recommendationList;
     }
 
-    public void saveConnoisseurData(ArrayList<Review> reviewList,
-                                    ArrayList<Recommendation> recommendationList, String sortMethod) {
+    public void saveConnoisseurData(String sortMethod, boolean displayStars, ArrayList<Review> reviewList,
+                                    ArrayList<Recommendation> recommendationList) {
         JSONObject data = new JSONObject();
         JSONArray reviews = saveReviews(reviewList);
         JSONArray recommendations = saveRecommendations(recommendationList);
         data.put("sortMethod", sortMethod);
+        data.put("displayStars", Boolean.toString(displayStars));
         data.put("reviews", reviews);
         data.put("recommendations", recommendations);
         try {

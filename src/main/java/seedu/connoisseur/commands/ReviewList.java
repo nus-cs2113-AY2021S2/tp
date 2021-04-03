@@ -34,6 +34,8 @@ import static seedu.connoisseur.messages.Messages.EDIT_RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.EDIT_CATEGORY_PROMPT;
 import static seedu.connoisseur.messages.Messages.ENTER_DETAILS_PROMPT;
 import static seedu.connoisseur.messages.Messages.DUPLICATE_REVIEW;
+import static seedu.connoisseur.messages.Messages.DISPLAY_SUCCESS;
+import static seedu.connoisseur.messages.Messages.INVALID_DISPLAY_TYPE;
 
 /**
  * Class with methods for different commands in review mode.
@@ -42,6 +44,7 @@ public class ReviewList {
     public ArrayList<Review> reviews = new ArrayList<>();
     protected final Sorter sorter;
     private final Ui ui;
+    private boolean displayStars;
 
     /**
      * Constructor for ReviewList with stored data. 
@@ -52,6 +55,7 @@ public class ReviewList {
         this.ui = ui;
         this.reviews = connoisseurData.getReviews();
         sorter = new Sorter(Sorter.stringToSortMethod(connoisseurData.getSortMethod()));
+        this.displayStars = connoisseurData.getDisplayStars();
     }
 
     /**
@@ -61,6 +65,7 @@ public class ReviewList {
     public ReviewList(Ui ui) {
         this.ui = ui;
         sorter = new Sorter(SortMethod.LATEST);
+        this.displayStars = true;
     }
 
     /**
@@ -235,8 +240,8 @@ public class ReviewList {
             ui.printWhiteSpaceTitle(currentReview.getTitle().length());
             ui.print("| " + currentReview.getCategory());
             ui.printWhiteSpace(currentReview.getCategory().length());
-            ui.print("| " + currentReview.starRating());
-            ui.printWhiteSpace(currentReview.starRating().length());
+            ui.print("| " + currentReview.starRating(displayStars));
+            ui.printWhiteSpace(currentReview.starRating(displayStars).length());
             ui.print("| " + currentReview.getDateTime());
             ui.printWhiteSpaceDate(currentReview.getDateTime().length());
             ui.println("|");
@@ -261,8 +266,8 @@ public class ReviewList {
         ui.print("|Date & Time of Entry : " + currentReview.getDateTime());
         ui.printWhiteSpaceView(currentReview.getDateTime().length());
         ui.println("|");
-        ui.print("|Rating               : " + currentReview.starRating());
-        ui.printWhiteSpaceView(currentReview.starRating().length());
+        ui.print("|Rating               : " + currentReview.starRating(displayStars));
+        ui.printWhiteSpaceView(currentReview.starRating(displayStars).length());
         ui.println("|");
         ui.print("|Description          : " + currentReview.printDescription());
         ui.printWhiteSpaceView(currentReview.getPrintDescriptionLength());
@@ -545,5 +550,21 @@ public class ReviewList {
      */
     public void receiveConvert(Review r) {
         reviews.add(r);
+    }
+
+    public void changeDisplay(String displayType) {
+        if (displayType.equals("stars")) {
+            displayStars = true;
+            ui.println(DISPLAY_SUCCESS + displayType.toUpperCase());
+        } else if (displayType.equals("asterisks")) {
+            displayStars = false;
+            ui.println(DISPLAY_SUCCESS + displayType.toUpperCase());
+        } else {
+            ui.println(displayType.toUpperCase() + INVALID_DISPLAY_TYPE);
+        }
+    }
+
+    public boolean getDisplayStars() {
+        return displayStars;
     }
 }
