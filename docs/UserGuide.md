@@ -26,7 +26,7 @@
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1.6 [Delete a Review](#416-delete-a-review)
 
-   4.2 [Recommendation Mode](#52-recommendation-mode)
+   4.2 [Recommendation Mode](#42-recommendation-mode)
 
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2.1 [Add a Recommendation](#421-adding-a-recommendation)
 
@@ -40,7 +40,7 @@
 
    4.3 [View Help](#43-view-help)
 
-   4.4 [Exit & Save Connoisseur](#44-exit-&-save-connoisseur)
+   4.4 [Exit and Save](#4.4-Exit-&-Save-Connoisseur)
 5. [Command Summary](#5.-Command-Summary)
 6. [FAQ](#6.-FAQ)
 
@@ -104,7 +104,7 @@ and can be completed in a few simple steps. Follow the instructions below to try
    ![Figure 3 - Starting Connoisseur](./images/ug/downloading2.png)
    <p align="center">Figure 3. Starting Connoisseur</p>
 6. You may now use Connoisseur by typing in commands and pressing Enter to execute it. Refer to
-   the [Command summary](#5.-command-summary) for a list of recognised commands.
+   the [Command summary](#5.-Command-Summary) for a list of recognised commands.
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for
    Connoisseur is saved in `connoisseur.json` in the _data folder_.
 
@@ -115,7 +115,7 @@ This section covers all the commands that you can type into the Command Box of C
 
 The commands are categorised into the two modes offered by Connoisseur, Review and Recommendation mode. If it is the
 first time that you are using the command, we recommend that you refer
-to [How to use the Guide]((#2.2-How-to-use-the-Guide)) to better interpret the format of the commands.
+to [How to use the Guide](#22-how-to-use-this-guide) to better interpret the format of the commands.
 
 ### 4.1 Review Mode
 
@@ -264,6 +264,12 @@ it is located at as shown in Figure 14.
 <span>&#10071;</span>Price range should be entered separated by -. Otherwise, adding a recommendation will fail and you
 need to try again.
 
+<span>&#10071;</span> If you try to add a Recommendation title that already exists in your Review list, Connoisseur
+will warn you. Perhaps you had forgotten that you have already experienced and reviewed the item in the past! 
+Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. *Note that 
+invalid commands will display error message and exit automatically*.
+
+
 #### 4.2.2 List Recommendation
 
 This feature allows you to view a list of all your recommendations as shown in Figure 15.
@@ -272,6 +278,16 @@ Command: `list`
 
 ![img_15.png](./images/ug/list_reco.png)
 <p align="center">Figure 15. Viewing Recommendations</p>
+
+<span>&#10071;</span> Some terminals may not support the ★ and ✰ symbols. So if you face the error as shown in 
+Figure 16, where the ratings are not displayed correctly, input the command `display asterisks` as shown in Figure 17. 
+The error should be resolved, and the ratings will now be displayed using `*` symbol instead.
+
+![img_2.png](images/ug/invalid_rating_display.png)
+<p align="center">Figure 16. ★ and ✰ symbols not displayed</p>
+
+![img_3.png](images/ug/asterisks_display.png)
+<p align="center">Figure 17. display asterisks command</p>
 
 #### 4.2.3 Edit a Recommendation
 
@@ -285,23 +301,23 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 <span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of reviews.
 Otherwise, Connoisseur will prompt you saying that no such recommendation exits.
 
-As shown in Figure 16 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
+As shown in Figure 18 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
 Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .
 
 If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`.
 
 ![img_16.png](./images/ug/edit_reco.png)
-<p align="center">Figure 16. Editing Recommendations</p>
+<p align="center">Figure 18. Editing Recommendations</p>
 
 #### 4.2.4 Delete a Recommendation
 
-This feature allows you to delete a recommendation from your list as shown in Figure 17.
+This feature allows you to delete a recommendation from your list as shown in Figure 19.
 
 Command: `delete [TITLE_OF_RECOMMENDATION]`
 
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to delete.
 ![img_17.png](./images/ug/delete_review.png)
-<p align="center">Figure 17. Deleting a Recommendation</p>
+<p align="center">Figure 19. Deleting a Recommendation</p>
 
 <span>&#10071;</span>Ensure the title of the review you want to delete already exists in your lists of recommendations.
 Otherwise, Connoisseur will prompt you saying that no such recommendation exits.
@@ -313,57 +329,58 @@ review list.
 
 Command: `done [TITLE_OF_RECOMMENDATION]`
 
-As shown in Figure 18, Connoisseur will prompt you to rate the experience out of 5. You can also add in a description by
+As shown in Figure 20, Connoisseur will prompt you to rate the experience out of 5. You can also add in a description by
 inputting `y` or `n` otherwise. Figure 17 shows that the title 'Universal Studio' has been successfully transferred from
 recommendation to review list.
 
 ![img_18.png](./images/ug/reco_to_review.png)
-<p align="center">Figure 18. Reviewing a Recommendation</p>
+<p align="center">Figure 20. Reviewing a Recommendation</p>
 
 ### 4.3 View Help
 
 command: `help[COMMAND_NAME]` eg. `help reco` `help list` etc.
 
-If you encounter any issues using Connoisseur simply key in `help` for a generic help message as show in Figure 19.
+If you encounter any issues using Connoisseur simply key in `help` for a generic help message as show in Figure 21.
 ![img_19.png](./images/ug/generic_help.png)
-<p align="center">Figure 19. Generic Help message</p>
+<p align="center">Figure 21. Generic Help message</p>
 
-If you want help with a specific command simple key in `help` followed by the `[COMMAND_NAME]` as show in Figure 20.
+If you want help with a specific command simple key in `help` followed by the `[COMMAND_NAME]` as show in Figure 22.
 ![img_20.png](./images/ug/help_command.png)
-<p align="center">Figure 20. Help message for commands</p>
+<p align="center">Figure 22. Help message for commands</p>
 
-### 4.4 Exit & Save Connoisseur
+### 4.4 Exit & Save Connoisseur 
 
 This feature allows you to exit Connoisseur and all you review and recommendation list will be stored as
-`connoisseur.json` in the _data folder_ as shown in Figure 21.
+`connoisseur.json` in the _data folder_ as shown in Figure 23.
 
 command: `exit` or `bye`
 
 ![img_21.png](./images/ug/exit.png)
 
-<p align="center"> Figure 21. Exiting Connoisseur</p>
+<p align="center"> Figure 23. Exiting Connoisseur</p>
 
 ## 5. Command Summary
 
 |Action | Command | Examples |
 | ----------- | ---------- | -----------|
-|Enter Review Mode|`review`|`review`|
-|Add a Review|`add [QUICK/LONG]` `new[QUICK/LONG]`|`add`<br>`new `<br>`add quick`<br>`new long`|
-|List Reviews|`list [SORTING_METHOD]`|`list`<br> `list title`|
-|View Current Sorting Method|`sort`| `sort`|
-|Change Sorting Method|`sort [SORTING_METHOD]`| `sort title`|
-|View a Review|`view [TITLE_OF_REVIEW]`|`view Captain America`|
-|Edit a Review|`edit [TITLE_OF_REVIEW]`|`edit Armageddon`|
-|Delete a Review|`delete [TITLE_OF_REVIEW]`|`delete Armageddon 2`|
-|Enter Recommendation Mode|`reco`|`reco`|
-|Add a Recommendation|`add`<br>`new`|`add`<br> `new`|
-|List Recommendations|`list`|`list`|
-|Edit a Recommendation|`edit [TITLE_OF_RECOMMENDATION]`|`edit Tipo Pasta`|
-|Delete a Recommendation|`delete [TITLE_OF_RECOMMENDATION]`|`delete Armageddon 3`|
-|Review a Recommendation|`done [TITLE_OF_RECOMMENDATION]`| `done Universal Studio`|
-|Help for General usage|`help`|`help`|
-|Help for a Specific function|`help [COMMAND_NAME]`|`help reco`<br>`help list`|
-|Exit & Save|`exit`<br>`bye`|`exit`<br>`bye`|
+|[Enter Review Mode](#41-review-mode)|`review`|`review`|
+|[Add a Review](#411-adding-a-review)|`add [QUICK/LONG]` `new[QUICK/LONG]`|`add`<br>`new `<br>`add quick`<br>`new long`|
+|[List Reviews](#412-list-reviews)|`list [SORTING_METHOD]`|`list`<br> `list title`|
+|[Display ratings using Asterisks](#412-list-reviews)|`display asterisks`|`display asterisks`|
+|[View Current Sorting Method](#413-sort-reviews)|`sort`| `sort`|
+|[Change Sorting Method](#413-sort-reviews)|`sort [SORTING_METHOD]`| `sort title`|
+|[View a Review](#414-view-a-review)|`view [TITLE_OF_REVIEW]`|`view Captain America`|
+|[Edit a Review](#415-edit-a-review)|`edit [TITLE_OF_REVIEW]`|`edit Armageddon`|
+|[Delete a Review](#416-delete-a-review)|`delete [TITLE_OF_REVIEW]`|`delete Armageddon 2`<br>|
+|[Enter Recommendation Mode](#42-recommendation-mode)|`reco`|`reco`|
+|[Add a Recommendation](#421-adding-a-recommendation)|`add`<br>`new`|`add`<br> `new`|
+|[List Recommendations](#422-list-recommendation)|`list`|`list`|
+|[Edit a Recommendation](#423-edit-a-recommendation)|`edit [TITLE_OF_RECOMMENDATION]`|`edit Tipo Pasta`|
+|[Delete a Recommendation](#424-delete-a-recommendation)|`delete [TITLE_OF_RECOMMENDATION]`|`delete Armageddon 3`<br>|
+|[Review a Recommendation](#425-review-a-recommendation)|`done [TITLE_OF_RECOMMENDATION]`| `done Universal Studio`|
+|[Help for General usage](#43-view-help)|`help`|`help`|
+|[Help for a Specific function](#43-view-help)|`help [COMMAND_NAME]`|`help reco`<br>`help list`|
+|[Exit & Save](#4.4-Exit-&-Save-Connoisseur)|`exit`<br>`bye`|`exit`<br>`bye`|
 
 ## 6. FAQ
 
