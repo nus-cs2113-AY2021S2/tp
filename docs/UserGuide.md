@@ -108,9 +108,7 @@ java 11 and above<br>
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -181,9 +179,7 @@ Additionally, you can store your lecture notes in GULIO using the cheat-sheet fe
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -272,9 +268,7 @@ Lists all modules.
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -331,6 +325,14 @@ Adds a new lesson with specified lesson type and information to the current modu
 **Result** - Adds “tutorial” to the module's list of lessons, with specified details.
 
 > ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
+ 
+> 💡 To skip an input, leave a blank in between the field separators. For example, 
+> 
+> `add lesson tutorial ;; ;; ;; Prof Akshay ;; akshay@email.com` 
+> 
+> will add “tutorial” to the module's list of lessons with only the given teaching staff name and email. The fields “day & time” and “link” were skipped.
+> 
+> Note: “lesson type” cannot be skipped.
 
 ### Deleting a lesson : _delete lesson_
 
@@ -365,7 +367,7 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 | 1 | edit lesson | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
 | 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
 | 3 | 1 2 | Enter new time and day: |
-| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link |
+| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link: |
 | 5 | www.googleclassroom.com | Updated lesson link. |
 
 **Result** - Edits time and day, as well as lesson link of "lecture".
@@ -422,8 +424,8 @@ Lists all lessons for the module.
 Adds a new task with specified name and information to the current module.
 
 **Format:**<br>
-`add task <name> ;; <deadline>`<br>
-`add task <name> ;; <deadline> ;; <remarks>`
+`add task <task name> ;; <deadline>`<br>
+`add task <task name> ;; <deadline> ;; <remarks>`
 
 **Example:**
 
@@ -435,6 +437,8 @@ Adds a new task with specified name and information to the current module.
 **Result** - Adds “iP submission” to the module’s  list of tasks, with the specified details.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
+
+> 💡 When asked if the task is graded, both "y" and "Y" will work. Response is not case-sensitive for the user's convenience.
 
 ### Deleting a task : _delete task_
 
@@ -522,7 +526,7 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP Increment - 22 Feb 2021 |
+| 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP increments - 22 Feb 2021 |
 
 ### Adding a cheat-sheet : _add cheat-sheet_
 
@@ -590,9 +594,7 @@ Lists all cheat-sheets for the module.
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -624,9 +626,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -647,9 +647,7 @@ In the text editor, you can type in your notes in the text field. When done, rem
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
@@ -662,15 +660,11 @@ Here are some frequently asked questions that you may have regarding GULIO.
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
 
 # Command Summary
-
-> 💡 Fields surrounded by "[]" are optional.
 
 ### Dashboard Commands Summary
 
@@ -690,13 +684,13 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | help | `help` |
 | close | `close` |
 | info | `info` | 
-| add lesson | `add lesson <lesson type> ;; <day & time> ;; [link] ;; [teaching staff name] ;; [email]` |
+| add lesson | `add lesson <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>` |
 | delete lesson | `delete lesson` |
 | edit lesson | `edit lesson` |
 | link | `link` |
 | teacher | `teacher` |
 | lessons | `lessons` |
-| add task | `add task <name> ;; <deadline> ;; [remarks]` |
+| add task | `add task <task name> ;; <deadline> ;; <remarks>` |
 | delete task | `delete task` |
 | edit task | `edit task` |
 | mark | `mark` |
@@ -709,8 +703,6 @@ Here are some frequently asked questions that you may have regarding GULIO.
 
 &nbsp;
 
-----
-
-[Click to get back to **Table of Contents**](#table-of-contents)
+[🡅 Back to Table of Contents](#table-of-contents)
 
 ----
