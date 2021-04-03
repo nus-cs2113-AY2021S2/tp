@@ -543,14 +543,13 @@ Please indicate your choice:
 
 ###  Admin Main Menu
 
-
 > ======== Menu Choice =======   
 > 1 View Movies   
 > 2 Add Movie   
 > 3 Delete Movie   
 > 4 Update Movie   
 > 5 Logout  
-> ============================   
+============================\
 > Please indicate your choice:
 
 \
