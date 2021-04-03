@@ -49,7 +49,7 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 
 **Example**:
 1. Customer Account\
-   Input:
+   Input:\
    `ADMIN`  
    `password2`
 
