@@ -1,18 +1,17 @@
-//@@author SimBowen
 package seedu.duke.command.dailyroutecommand;
 
 import seedu.duke.command.Command;
-
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.ui.DailyRouteUi;
-import seedu.duke.router.Router;
+
 
 import java.util.ArrayList;
 
-public class ShowDailyRouteCommand extends Command {
+public class ClearDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
+    private static String MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
 
-    public ShowDailyRouteCommand() {
+    public ClearDailyRouteCommand() {
         this.ui = new DailyRouteUi();
     }
 
@@ -26,17 +25,8 @@ public class ShowDailyRouteCommand extends Command {
         try {
             int dayEntry = ui.getDayEntry(selectableDays);
             String selectedDay = selectableDays.get(dayEntry);
-            ArrayList<String> schedules = dailyRoute.getDailyRoute(selectedDay);
-            StringBuilder routedSchedule = new StringBuilder();
-            for (int i = 0; i < schedules.size() - 1; i++) {
-                String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
-                if (i < schedules.size() - 2) {
-                    routedSchedule.append(route).append("\n");
-                } else {
-                    routedSchedule.append(route);
-                }
-            }
-            ui.showMessageWithDivider(routedSchedule.toString());
+            dailyRoute.addDailyRoute(selectedDay, new ArrayList<>());
+            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS,selectedDay));
         } catch (InvalidIndexException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
