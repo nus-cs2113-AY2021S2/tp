@@ -1,6 +1,10 @@
 # Developer Guide
 
-## Design & implementation
+## Design 
+
+### Architecture
+![Architecture Diagram](ArchitectureDiagram.png) \
+The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.
 
 ### Class Diagram
 ![Class Diagram](CD.png)
