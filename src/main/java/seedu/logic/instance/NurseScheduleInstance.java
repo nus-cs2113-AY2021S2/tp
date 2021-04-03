@@ -1,6 +1,7 @@
 package seedu.logic.instance;
 
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.Command;
 import seedu.logic.command.NurseScheduleActions;
@@ -39,7 +40,7 @@ public class NurseScheduleInstance {
         try {
             nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
         } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
-                | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound e) {
+                | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound | InvalidDateException e) {
             ui.corruptedFileErrorMessage();
             logger.log(Level.SEVERE, "Error loading NurseSchedule.txt");
             return;

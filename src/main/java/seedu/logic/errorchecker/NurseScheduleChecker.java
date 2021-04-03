@@ -13,32 +13,23 @@ import seedu.storage.NurseScheduleStorage;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class NurseScheduleChecker extends MainChecker {
-    public boolean isValidDate(String datetime) throws InvalidDateException {
-        /* Check if date is 'null' */
-        if (!datetime.trim().equals("")) {
-            /*
-             * Set preferred date format,
-             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
-            SimpleDateFormat sdfrmt = new SimpleDateFormat("ddMMyyyy");
-            sdfrmt.setLenient(false);
-            /* Create Date object
-             * parse the string into date
-             */
-            try {
-                Date javaDate = sdfrmt.parse(datetime);
-                //System.out.println(datetime + " is valid date format");
-            }
-            /* Date format is invalid */
-            catch (ParseException e) {
-                throw new InvalidDateException();
-            }
+
+    public static void isValidDate(final String date) throws InvalidDateException {
+        try {
+            LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("ddMMuuuu")
+                        .withResolverStyle(ResolverStyle.STRICT));
+        } catch (DateTimeParseException e) {
+            throw new InvalidDateException();
         }
-        /* Return true if date format is valid */
-        return true;
     }
 
     public static void checkEmptyInput(String line) throws NoInputException {

@@ -13,10 +13,9 @@ class NurseScheduleCheckerTest {
     NurseScheduleChecker checker = new NurseScheduleChecker();
 
     @Test
-    void testValidDate() throws InvalidDateException {
+    void testValidDate() {
         String datetime = "30012020";
-        boolean result = checker.isValidDate(datetime);
-        assertTrue(result);
+        assertDoesNotThrow(() -> checker.isValidDate(datetime));
     }
 
     @Test
@@ -24,7 +23,7 @@ class NurseScheduleCheckerTest {
         String datetime = "091283109823092830";
         String message = "The date format is invalid!";
         try {
-            boolean result = checker.isValidDate(datetime);
+            checker.isValidDate(datetime);
             fail();
         } catch (Exception e) {
             assertEquals(message, e.getMessage());
