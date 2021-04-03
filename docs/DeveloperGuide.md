@@ -1,23 +1,50 @@
 # Developer Guide
 
-## Design & implementation
+## Design and Implementation
+
+### Architecture
+The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.\
+![Architecture Diagram](ArchitectureDiagram.png)
 
 ### Class Diagram
+Below is the diagram that represents the classes in our system
+as well as their interactions to the other classes.\
 ![Class Diagram](CD.png)
 
 ### Sequence Diagrams
-1. Database Sequence Diagram
-   ![Database](Database.png) 
+#### Database
+The process starts with the actor constructs a Database
+object. The Database then import the text data from the .txt
+files into array lists. Finally, according to the user's
+login credentials, the Database (of user) would direct the user into either
+the Customer, or the Admin interfaces.\
+![Database](Database.png) 
  
-2. Login Sequence Diagram
-   
-   ![Login](Login.png)
+#### Login
+The process starts with the actor calling the Login object.
+The login then read the user inputs on their name and password
+before authenticate these inputs to the user database.
+Authentication is done through password-based encryption
+provided by Java to improve security.   \
+![Login](Login.png)
  
-3. Admin Main Menu Sequence Diagram
-   ![Admin Main Menu](AdminMainMenu.png)
+#### Admin Main Menu
+The process starts with the actor calling the Admin Main Menu
+object (after logging into an admin account). The system
+would then display a few options for them to choose from.
+They can either view, add, delete, or update movies. 
+Based on their chosen options, the interface would then call
+the respective classes and functions to perform the actions.\
+![Admin Main Menu](AdminMainMenu.png)
 
-4. Customer Main Menu Sequence Diagram
-   ![Customer Main Menu](CustomerMainMenu.png)
+#### Customer Main Menu
+The process starts with the actor calling the Customer Main Menu
+object (after logging into an admin account). The system
+would then display a few options for them to choose from.
+To view the movies, customers may filter the movies based on
+several aspects. They can finally choose a movie and perform
+the chosen actions respectively.\
+![Customer Main Menu](CustomerMainMenu.png)
 
 Our team is going to use breadth-first iterative approach as it allows us to focus on all features in parallel throughout the version 1.0, 2.0 and 2.1.
 
@@ -104,4 +131,5 @@ displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase), and the database us
 
 ## Instructions for manual testing
 
-To run the JAR file, run `java -cp tp_original_v2.jar movieApp.app.MovieApp`
+To run the JAR file, run `java -cp tp_original_v2.jar movieApp.app.MovieApp` and
+make sure the `data` folder is downloaded inside the same directory as your .jar file.

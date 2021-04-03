@@ -48,19 +48,19 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 **Format**: `USERNAME  PASSWORD`
 
 **Example**:
-1. Customer Account
-   Input:
-   `alex`  
-   `12345`
+1. Customer Account\
+   Input:\
+   `ADMIN`  
+   `password2`
 
    Display:
 ```
  -------------------Login----------------
- Enter Name: alex
+ Enter Name: ADMIN
  Due to a bug in some IDEs, password masking is disabled. Please only run this
  program on the console!
- Enter Password : 12345       
- Welcome, alex  
+ Enter Password : password2       
+ Welcome, ADMIN  
  ======== Menu Choice =======
  1 View Movies
  2 Exit 
