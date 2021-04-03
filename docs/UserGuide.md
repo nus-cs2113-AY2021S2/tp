@@ -31,7 +31,7 @@ This is a cross-platform application, you can run it on any operating system as 
 > * Parameters of a command are denoted in `UPPER_CASE`. They must be supplied by the user, otherwise the command will not be recognized.
     >   The actual input of the parameters can be in any case.
     >
-    >   e.g. in `add XXX`, `XXX` is a parameter which can be used as ``.
+    >   e.g. in `add XXX`, `XXX` is a parameter which can be used as `xxx`.
 >
 >
 > * Redundant parameters for single-word commands (e.g. `help`) will be ignored.
@@ -46,7 +46,7 @@ This is a cross-platform application, you can run it on any operating system as 
 >
 
 ### Get help from instructions on how to use this app : `help`
-Adds a to-do type of task to the task list.
+Displays syntax for all commands.
 
 Format: `help`
 
