@@ -27,9 +27,14 @@
   4.6. [Notes](#46-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes)  
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)  
-  4.7. [Exiting the application](#48-exiting-the-application)  
-  4.8. [Saving the Data](#49-saving-the-data)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)
+  4.7. [Favourite Routes](#47-favourite-routes)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1 [Adding Favourite route](#471-adding-favourite-route)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3 [Repeating favourite route](#473-repeating-favourite-route)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4 [Deleting favourite route](#474-deleting-favourite-route)  
+  4.8. [Exiting the application](#48-exiting-the-application)  
+  4.9. [Saving the Data](#49-saving-the-data)  
 5. [FAQ](#5-faq)  
 6. [Glossary](#6-glossary)  
 7. [Command summary](#7-command-summary)  
@@ -68,7 +73,7 @@ This section gives you step-by-step instructions on how to download and open the
 4. Double-click the file to start the app. If you are using Windows, please ensure that your Computer's Display Settings are set to 100%.
 
 5. A CLI similar to Figure 1 below should appear in a few seconds.  <br><br>
-   [img_1.png](img_1.png)
+
    _Figure 1 - CLI of NUSMaze_
 
 6. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
@@ -312,7 +317,6 @@ can be found on the second computer.
 --------------------------------------------------------------------------------------------------------------------
 
 ## 7. Command summary
-***need to fix links***
 
 |Action | Format |
 |---------------|------------------------------------------------------------------|
@@ -326,8 +330,13 @@ can be found on the second computer.
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
+|[**Clearing a daily route**](#454-viewing-daily-route)       | `clear daily route → DAY_NUMBER` |
 |[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
 |[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
-|[**Exiting the application**](#47-exiting-the-application)       | `bye` |
+|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING BLOCK → DESTINATION BLOCK` |
+|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
+|[**Show stored favourites**](#473-repeating-favourite-route)       | `repeat favourite → INDEX OF ROUTE` |
+|[**Show stored favourites**](#474-deleting-favourite-route)       | `delete favourite` |
+|[**Exiting the application**](#48-exiting-the-application)       | `bye` |
 
