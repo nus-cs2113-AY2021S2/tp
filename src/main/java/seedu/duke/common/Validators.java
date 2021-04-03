@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+import java.time.temporal.ChronoField;
 
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
@@ -13,17 +16,37 @@ import static seedu.duke.common.Constant.FINUX_LOGGER;
 public class Validators {
     private static final String KEYWORD_TODAY = "today";
     private static final String LOGGER_OKAY_MESSAGE = "index validation success";
+    private static final long ERA_AD = 1;
 
-    // @@author marklowsk-reused
-    // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
     private static final DateTimeFormatter[] POSSIBLE_DATE_FORMATS = {
-        DateTimeFormatter.ofPattern("ddMMyyyy"),
-        DateTimeFormatter.ofPattern("d.M.yyyy"),
-        DateTimeFormatter.ofPattern("d-M-yyyy"),
-        DateTimeFormatter.ofPattern("d/M/yyyy"),
-        DateTimeFormatter.ofPattern("yyyy.M.d"),
-        DateTimeFormatter.ofPattern("yyyy-M-d"),
-        DateTimeFormatter.ofPattern("yyyy/M/d")
+        new DateTimeFormatterBuilder().appendPattern("ddMMyyyy")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("d.M.yyyy")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("d-M-yyyy")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("d/M/yyyy")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("yyyy.M.d")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("yyyy-M-d")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT),
+        new DateTimeFormatterBuilder().appendPattern("yyyy/M/d")
+                                      .parseDefaulting(ChronoField.ERA, ERA_AD)
+                                      .toFormatter()
+                                      .withResolverStyle(ResolverStyle.STRICT)
     };
 
     // @@author marklowsk-reused
@@ -38,7 +61,7 @@ public class Validators {
 
     // @@author marklowsk-reused
     // Reused from https://github.com/marklowsk/ip/blob/master/src/main/java/duke/common/Utils.java
-    // Utils.parseDate(String) with new additions.
+    //   Utils.parseDate(String) with new additions.
     /**
      * Parses dateInput into a LocalDateTime object.
      * Returns null if dateInput cannot be parsed into a LocalDateTime object.
@@ -58,7 +81,7 @@ public class Validators {
                 return date;
             }
         }
-        throw new DateTimeException("input \"" + dateInput + "\" is not an acceptable Date Format.");
+        throw new DateTimeException("input \"" + dateInput + "\" is an invalid date.");
     }
 
     /**
