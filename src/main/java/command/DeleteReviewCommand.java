@@ -43,8 +43,8 @@ public class DeleteReviewCommand extends Command {
         ArrayList<Store> stores = canteens.get(currentCanteenIndex).getStores();
         ArrayList<Review> reviews = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getReviews();
         averageRating = stores.get(currentStoreIndex).getAverageRating();
-        if(reviews.size()>0){
-            ui.showReviews(stores.get(currentStoreIndex).getStoreName(),reviews,averageRating);
+        if (reviews.size() > 0) {
+            ui.showReviews(stores.get(currentStoreIndex).getStoreName(), reviews, averageRating);
             ui.showDeleteReview();
 
             String line = ui.readCommand();
@@ -52,16 +52,15 @@ public class DeleteReviewCommand extends Command {
                 ui.showReviewNotDeleted();
                 return;
             }
-            int reviewNumber = parser.parseInt(line,1,
+            int reviewNumber = parser.parseInt(line, 1,
                     canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
 
             Canteen currentCanteen = canteens.get(currentCanteenIndex);
             Store store = currentCanteen.getStore(currentStoreIndex);
             store.deleteReview(reviewNumber);
             ui.reviewDeleted();
-            Storage.save(new FileWriter("data/storage.txt"),canteens);
-        }
-        else{
+            Storage.save(new FileWriter("data/storage.txt"), canteens);
+        } else {
             System.out.println("There are no reviews in this store!");
             System.out.println(LINESPACING);
         }
