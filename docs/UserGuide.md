@@ -23,12 +23,13 @@
   4.5. [Daily Routes](#45-daily-routes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route)  
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Clearing daily route](#453-clearing-daily-route)  
   4.6. [Notes](#46-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes)  
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note)  
-  4.7. [Exiting the application](#47-exiting-the-application)  
-  4.8. [Saving the Data](#48-saving-the-data)  
+  4.7. [Exiting the application](#48-exiting-the-application)  
+  4.8. [Saving the Data](#49-saving-the-data)  
 5. [FAQ](#5-faq)  
 6. [Glossary](#6-glossary)  
 7. [Command summary](#7-command-summary)  
@@ -216,6 +217,17 @@ Format : `add daily route → DAY_ENTRY → BLOCK/END`
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route → DAY_NUMBER`
+- When the day command is entered, the application will display the list of available days
+  for which daily routes have been saved.
+
+- NUSMaze will then prompt you for a `DAY_NUMBER`.
+
+- The `DAY_NUMBER` must be the index of one of the available days which has been
+  displayed.
+
+#### 4.5.3 Clearing daily route
+Clears the schedule of the selected day, if applicable.<br>
+Format : `clear daily route → DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 

@@ -195,20 +195,21 @@ Cons: Only highly effective when limited to use of one user. <br/>
 ### 3.2. Daily route planning feature
 #### Current Implementation
 The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
-`AddDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
-`DaySchedulePair` class is implemented to act as a pair between a day input String and schedule ArrayList.
-Additionally, they implement the following operations:
+`AddDailyRouteCommand`, `ClearDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
+Additionally, `DailyRoute` implements the following operations:
 
 `addDailyRoute(String ,ArrayList<String>)` — Maps the inputted day string to the inputted ArrayList of the schedule of the day in a hashmap . <br />
 `getDailyRoute(String)` — Returns the schedule of the day that is mapped to the inputted day. <br />
+`getSelectableDays()` — Returns the current days that have schedules mapped to them.<br />
+`getValidDays()` — Returns the days of the week.
 
-These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()` and `DailyRoute#getDailyRoute(String)`. <br />
+These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()`, `DailyRoute#getDailyRoute(String)`, `DailyRoute#getSelectableDay()`, `DailyRoute#getValidDay()`. <br />
 Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
 Step 1. The user launches the application.<br />
 Step 2. The user executes `add daily route` command. UI will then prompt the user `SELECT ENTRY TO ADD:`  to input a day index. <br />
 Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
 Step 4. Repeat step 3 until the word `END` is input by the user. <br /> 
-Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class <br />
+Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
 Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
 The following image shows the sequence diagram in which the add day command is implemented
@@ -217,13 +218,22 @@ The following image shows the sequence diagram in which the add day command is i
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
 Step 1. The user launches the application.<br />
-Step 2. The user executes `show daily route` command. UI will then prompt the user `SELECT ENTRY TO VIEW:`  to input a day index. This returns an arraylist of the day's schedule <br />
+Step 2. The user executes `show daily route` command. UI will then prompt the user `SELECT ENTRY:`  to input a day index. This returns an arraylist of the day's schedule. <br />
 Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the previous one. <br />
 Step 4. The String is output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the add day command is implemented
+The following image shows the sequence diagram in which the show day command is implemented
 ![img.png](images/showday.png)
 
+Given below is an example usage scenario and how the clearDailyRoute mechanism behaves at each step.
+
+Step 1. The user launches the application.<br />
+Step 2. The user executes `clear daily route` command. UI will then show the selectable days if applicable and prompt the user `SELECT ENTRY:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
+Step 3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object and the schedule mapped to the day is cleared.<br />
+Step 4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
+
+The following image shows the sequence diagram in which the clear day command is implemented
+![img.png](images/clearday.png)
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
 
