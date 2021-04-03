@@ -325,6 +325,14 @@ Adds a new lesson with specified lesson type and information to the current modu
 **Result** - Adds “tutorial” to the module's list of lessons, with specified details.
 
 > ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
+ 
+> 💡 To skip an input, leave a blank in between the field separators. For example, 
+> 
+> `add lesson tutorial ;; ;; ;; Prof Akshay ;; akshay@email.com` 
+> 
+> will add “tutorial” to the module's list of lessons with only the given teaching staff name and email. The fields “day & time” and “link” were skipped.
+> 
+> Note: “lesson type” cannot be skipped.
 
 ### Deleting a lesson : _delete lesson_
 
@@ -657,8 +665,6 @@ Here are some frequently asked questions that you may have regarding GULIO.
 ----
 
 # Command Summary
-
-> 💡 Fields surrounded by "[]" are optional.
 
 ### Dashboard Commands Summary
 
