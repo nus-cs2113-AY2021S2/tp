@@ -66,7 +66,6 @@ public class StaffChecker extends MainChecker {
         String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
         String[] field = {"ID", "name", "age", "specialisation"};
         for (int i = 0; i < cleanArray.length; i++) {
-            //cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;
