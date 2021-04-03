@@ -5,7 +5,10 @@ import exceptions.DukeExceptions;
 import org.junit.jupiter.api.Test;
 import ui.Ui;
 
+import java.io.ByteArrayInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -15,12 +18,19 @@ public class AddCanteenCommandTest {
 
     @Test
     public void execute_validCanteenName_success() throws IOException {
+        String canteenName = "Valid Canteen Name";
+
+        InputStream sysInBackup = System.in;
+        ByteArrayInputStream in = new ByteArrayInputStream(canteenName.getBytes());
+        System.setIn(in);
+
         ArrayList<Canteen> canteens = new ArrayList<>();
         Ui ui = new Ui();
-        String canteenName = "Valid Canteen Name";
-        AddCanteenCommand c = new AddCanteenCommand(canteenName);
+
+        AddCanteenCommand c = new AddCanteenCommand("dataTest/addTest.txt");
         c.execute(canteens, ui);
         assertEquals(canteens.get(0).getCanteenName(), canteenName);
+        FileWriter fw = new FileWriter("dataTest/addTest.txt"); // clears all entries
     }
 
 }
