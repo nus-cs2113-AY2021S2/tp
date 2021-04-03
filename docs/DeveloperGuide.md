@@ -72,7 +72,8 @@ list of icons:
 > 📝 It indicates that this is a tip and you may find it useful when using our application or guide.
 
 > 📝 Text that are blue like this [example(jumps to 1.2)](#12-using-this-guide), are clickable links
-> that will move you to the relevant section of the guide.
+> that will move you to the relevant section of the guide.\
+> 📝 Records refer to either expenses, loans or savings.
 
 ## 2. Setting Up
 
@@ -824,4 +825,138 @@ coding and typing can speed up the process of their finance management through f
 
 ---
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### D.1: Launch and Shutdown
+
+**Initial Launch**
+
+1. Download the jar file and copy it into an empty folder where the application will save its files in.
+1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
+1. Enter the command `java -jar Finux.jar` to launch Finux.
+1. Program will create a new save file if there are no existing one or load a previously saved file, thereafter Finux
+will be ready for use.
+   
+**Shutdown**
+
+1. To exit Finux, enter the `exit` command.
+
+### D.2: Adding an expense to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -e Plain bread loaf -a 2.50 -d 28/03/2021`
+   Expected: Adds an `expense` with the description '`Plain bread loaf`' with an amount of `2.50` dollars on `28th March 2021`.
+1. Test case: `add -e Gym equipment -a 500 -d 02/04/2021`
+   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500`. dollars on `2nd April 2021`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -e`
+   1. `add -e -a`
+   1. `add -e -a -d`
+   1. `add -e lunch -a x -d 28/03/2021`
+      (where `x` is a negative number or a word)
+
+### D.3: Adding a loan to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -l 1st loan to Mark -a 200 -d 20/03/2021 -p Mark`
+   Expected: Adds a `loan` with the description '`1st loan to Mark`' with an amount of `200` dollars on `20th March 2021`. 
+   The loan is associated with `Mark`.
+1. Test case: `add -l 1st loan to Jason -a 520 -d 01/04/2021 -p Jason`
+   Expected: Adds a `loan` with the description '`1st loan to Jason`' with an amount of `520` dollars on `1st April 2021`.
+   The loan is associated with `Jason`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -l`
+   1. `add -l -a`
+   1. `add -l -a -d`
+   1. `add -l -a -d -p`
+   1. `add -l loan to Andy -a x -d 28/03/2021 -p Andy`
+      (where `x` is a negative number or a word)
+
+### D.4: Adding a saving to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -s Savings from March -a 1000 -d 29/03/2021`
+   Expected: Adds a `saving` with the description '`Savings from March`' with an amount of `1000` dollars on `29th March 2021`.
+1. Test case: `add -s Savings from April -a 1200 -d 29/04/2021`
+   Expected: Adds a `saving` with the description '`Savings from April`' with an amount of `1200` dollars on `29th April 2021`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -s`
+   1. `add -s -a`
+   1. `add -s -a -d`
+   1. `add -s Savings from Intern -a x -d 30/05/2021`
+      (where `x` is a negative number or a word)
+   
+### D.5 Listing expense(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -e`
+   Expected: Lists all the `expenses` currently in the record list.
+
+### D.6 Listing loan(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -l`
+   Expected: Lists all the `loans` currently in the record list.
+
+### D.7 Listing saving(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -s`
+   Expected: Lists all the `savings` currently in the record list.
+
+### D.8 Listing all records in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -a`
+   Expected: Lists all the records currently in the record list.
+
+### D.9 Viewing total expense amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -e`
+   Expected: Views the total amount of expenses currently in the record list.
+
+### D.10 Viewing total loan amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -l`
+   Expected: Views the total amount of loans currently in the record list.
+
+### D.11 Viewing total saving amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -s`
+   Expected: Views the total amount of savings currently in the record list.
+
+### D.12 Viewing total record amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -a`
+   Expected: Views the total amount of all records currently in the record list.
+
+### D.13 Mark a loan as returned
+
+1. Prerequisite:
+   1. Assuming your current record list is empty.
+   1. The record list must contain a loan record.
+   1. Add a loan into the list `add -l Loan to Jason -a 500 -d 28/03/2021 -p Jason`
+1. Test case: `return -i 1 -d 02/04/2021`
+   Expected: The loan with index 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
+   in the record list.
+1. Other incorrect commands to try:
+   1. `return`
+   1. `return -i`
+   1. `return -i -d`
+   1. `return -i x -d y`
+      (where `x` is a negative number or a word, `y` is an invalid date)
+
+### D.14 Remove a record from the record list
+
+1. Prerequisite: None.
+1. Test case:
+1. Test case:
+1. Other incorrect commands to try:
+   1.
+   1.
+   1.
