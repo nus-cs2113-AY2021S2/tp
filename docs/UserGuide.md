@@ -40,9 +40,9 @@ This is a cross-platform application, you can run it on any operating system as 
 >
 > * After the application starts running, it checks if a `data` folder exists in the same directory where `tp.jar` is located.
     >   If the folder does not exist, the application will create a new folder `data`,
-    >   which is used to store the `data.txt` file which contains details of the user's data.
+    >   which is used to store the app system files which contains details of the user's data.
 >
-> * The text file `data.txt` will be automatically updated after each operation of the app.
+> * The text files will be automatically updated after each operation of the app.
 >
 
 ### Get help from instructions on how to use this app : `help`
@@ -861,7 +861,8 @@ Index        Date Set        Goal Type        Target        Progress
 
 Action | Format | Examples
 --- | --- | --- |
-Help | `help`
+Help | `help` | `help`
+Exit | `exit` | `exit`
 Input Exercise Data: `add` | `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]` | `add t/E a/running d/40`
 View Exercise Data: `view` | `view  t/E  [a/ACTIVITY_NAME]  [date/DD-MM-YYYY]` | `view t/E a/football`
 Delete Exercise Data: `delete` | `delete  t/E i/INDEX` | `Delete t/E i/1`
