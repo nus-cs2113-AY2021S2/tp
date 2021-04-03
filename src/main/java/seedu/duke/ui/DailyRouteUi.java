@@ -1,4 +1,5 @@
 //@@author SimBowen
+
 package seedu.duke.ui;
 
 import seedu.duke.data.NusMap;
