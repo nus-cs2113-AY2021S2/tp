@@ -58,22 +58,20 @@ public class NurseSchedulesParser {
         }
         switch (command) {
         case "ADD":
-            if (checker.isValidDate(parts[3])) {
-                MainChecker.checkNumInput(input, 4, 4);
-                details[0] = parts[1];
-                details[1] = parts[2];
-                details[2] = parts[3];
-                checker.illegalCharacterChecker(details[0], "Nurse ID");
-                checker.illegalCharacterChecker(details[1], "Patient ID");
-            }
+            checker.isValidDate(parts[3]);
+            MainChecker.checkNumInput(input, 4, 4);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            details[2] = parts[3];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
+            MainChecker.illegalCharacterChecker(details[1], "Patient ID");
             break;
         case "DELETE":
-            if (checker.isValidDate(parts[2])) {
-                MainChecker.checkNumInput(input, 3, 3);
-                details[0] = parts[1];
-                details[1] = parts[2];
-                checker.illegalCharacterChecker(details[0], "Nurse ID");
-            }
+            checker.isValidDate(parts[2]);
+            MainChecker.checkNumInput(input, 3, 3);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
             break;
         case "LIST":
             MainChecker.checkNumInput(input, 2, 2);
