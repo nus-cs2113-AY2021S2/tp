@@ -44,7 +44,7 @@ public class DoctorAppointmentStorage {
         while (fileReader.hasNextLine()) {
             try {
                 String input = fileReader.nextLine();
-                if (input.isBlank()) {
+                if (input.equals("")) {
                     throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
                 }
                 String[] data = input.split("\\s\\|\\s", 5);
