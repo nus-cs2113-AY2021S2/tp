@@ -2,8 +2,16 @@
 'https://plantuml.com/sequence-diagram
 !include style.puml
 
-Participant ":Storage" as Storage
+note left of Storage
+Methods called by the parseRawData
+method are omitted to reduce clutter
+in the sequence diagram.
+end note
+
 Participant ":Finux" as Finux
+Participant ":Storage" as Storage
+Participant ":RecordList" as RecordList
+Participant ":CreditScoreReturnedLoansMap" as CSRLM
 
 Finux -> Storage : loadFile()
 activate Storage
@@ -11,7 +19,25 @@ Storage -> Storage : parseRawData(rawData)
 activate Storage
 Storage -> Storage : processParsedObject(parsedObject)
 deactivate Storage
-Storage --> Finux
+alt is instance of Record
+    Storage -> RecordList : add(Record)
+    activate RecordList
+    Storage -[#white]> RecordList
+    Storage -[#white]> RecordList
+    destroy RecordList
+
+else instance of CreditScore
+    Storage -> CSRLM : put(BorrowerName)
+    activate CSRLM
+    Storage -[#white]> CSRLM
+    Storage -[#white]> CSRLM
+    destroy CSRLM
+end
+
+Finux -> Storage : getRecordListData()
+Storage -> Finux : recordList : RecordList
+Finux -> Storage : getMapData()
+Storage -> Finux : creditScoreReturnedLoansMap : creditScoreReturnedLoansMap
 destroy Storage
 
 @enduml
