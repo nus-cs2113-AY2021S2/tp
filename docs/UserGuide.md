@@ -12,11 +12,10 @@ If you can type fast, MovieApp can help you view and book movies conveniently.
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.0).
 3. Copy the file to the folder you want to use as the home folder for your MovieApp.
-4. Download all 4 files necessary to run the app from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/tree/master/data). 
-5. Make a folder `data` in the same directory as the app and place these files in it.
-6. Open your terminal / command prompt. Direct it to the folder which contains MovieApp file. Type `java -cp MovieApp.jar movieApp.app.MovieApp` to run the app. This interface should appear if you successfully run it.
+4. Download the data.zip and unzip it in the same directory as `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.0).
+5. Open your terminal / command prompt. Direct it to the folder which contains MovieApp file. Type `java -jar tp.jar` to run the app. This interface should appear if you successfully run it.
 
-7. To use the app, follow the instructions given in the app and type the menu of your choice. e.g
+6. To use the app, follow the instructions given in the app and type the menu of your choice. e.g
 
    ======== Menu Choice =======
 
