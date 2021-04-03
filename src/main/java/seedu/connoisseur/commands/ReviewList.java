@@ -264,8 +264,8 @@ public class ReviewList {
         ui.print("|Rating               : " + currentReview.starRating());
         ui.printWhiteSpaceView(currentReview.starRating().length());
         ui.println("|");
-        ui.print("|Description          : " + currentReview.getDescription());
-        ui.printWhiteSpaceView(currentReview.getDescription().length());
+        ui.print("|Description          : " + currentReview.printDescription());
+        ui.printWhiteSpaceView(currentReview.getPrintDescriptionLength());
         ui.println("|");
         ui.println("+---------------------+--------------------------------------------------------------------+");
     }
