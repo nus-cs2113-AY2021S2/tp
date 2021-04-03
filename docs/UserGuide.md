@@ -864,17 +864,17 @@ Action | Format | Examples
 Help | `help` | `help`
 Exit | `exit` | `exit`
 Input Exercise Data: `add` | `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]` | `add t/E a/running d/40`
-View Exercise Data: `view` | `view  t/E  [a/ACTIVITY_NAME]  [date/DD-MM-YYYY]` | `view t/E a/football`
-Delete Exercise Data: `delete` | `delete  t/E i/INDEX` | `Delete t/E i/1`
-Input Diet Data: `add` | `add  t/D f/FOOD_NAME  w/WEIGHT  [date/DD-MM-YYYY]` | `add t/D a/bread d/400`
-View Diet Data: `view` | `view  t/D  [a/FOOD_NAME]  [date/DD-MM-YYYY]` | `view t/D a/bread`
-Delete Diet Data: `delete` | `delete  t/D i/INDEX` | `Delete t/E i/1`
+View Exercise Data: `view` | `view  t/E  [a/ACTIVITY_NAME]  [date/DD-MM-YYYY]` | `view t/E a/cycling`
+Delete Exercise Data: `delete` | `delete  t/E i/INDEX` | `delete t/E i/1`
+Input Diet Data: `add` | `add t/D f/FOOD_CATEGORY w/WEIGHT [date/DD-MM-YYYY]` | `add t/D f/grain w/400`
+View Diet Data: `view` | `view  t/D  [a/FOOD_CATEGORY]  [date/DD-MM-YYYY]` | `view t/D f/grain`
+Delete Diet Data: `delete` | `delete  t/D i/INDEX` | `delete t/E i/1`
 Input Sleep Data: `add` | `add  t/S  d/DURATION  [date/DD-MM-YYYY]` | `add t/S d/7`
 View Sleep Data: `view` | `view  t/S  [date/DD-MM-YYYY]` | `view t/S`
-Delete Sleep Data: `delete` | `delete  t/S i/INDEX` | `Delete t/S i/1`
+Delete Sleep Data: `delete` | `delete  t/S i/INDEX` | `delete t/S i/1`
 Input bodyweight Data: `add` | `add  t/W w/WEIGHT [date/DD-MM-YYYY]` | `add t/W w/68.5 date/10-01-2021`
 View bodyweight Data: `view` | `view  t/W  [date/DD-MM-YYYY]` | `view t/W date/05-01-2020`
-Delete bodyweight Data: `delete` | `delete  t/W i/INDEX` | `Delete t/W i/1`
+Delete bodyweight Data: `delete` | `delete  t/W i/INDEX` | `delete t/W i/1`
 Set a Goal `set` | `set t/TAG p/[INTERVAL_TYPE] target/GOAL_TARGET` | `set t/S p/D target/8`
 Check Existing Goals: `check` | `check t/TAG p/[INTERVAL_TYPE]` | `check t/E p/D`
 Cancel a Goal: `cancel` | `cancel t/TAG i/INDEX` | `cancel t/E i/1`
