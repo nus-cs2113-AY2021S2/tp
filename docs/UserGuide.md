@@ -306,6 +306,17 @@ Output:
 
 ![view saving example output](img/ViewSavingExampleOutput.jpg)
 
+#### 3.3.4 View total amount in every category
+
+To see the amount of each category (`expense`, `loan` and `saving`) in a summarize format,
+you can use `view` and the option `-a`.
+
+Format: `view -a`
+
+Output:
+
+![view all example output](img/ViewAllExampleOutput.jpg)
+
 ### 3.4 Mark a loan as returned: `return`
 
 ---
