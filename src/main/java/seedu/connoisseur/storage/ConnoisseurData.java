@@ -12,6 +12,13 @@ public class ConnoisseurData {
     private final ArrayList<Recommendation> recoList;
 
 
+    /**
+     * Constructor for ConnoisseurData. 
+     * @param sortMethod default sort method to be used
+     * @param displayStars default star type to be used when displaying ratings
+     * @param reviewList review list
+     * @param recoList recommendation list
+     */
     public ConnoisseurData(String sortMethod, boolean displayStars, ArrayList<Review> reviewList, 
             ArrayList<Recommendation> recoList) {
         this.sortMethod = sortMethod;

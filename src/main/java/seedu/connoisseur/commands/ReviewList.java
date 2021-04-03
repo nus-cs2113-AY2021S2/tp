@@ -552,6 +552,10 @@ public class ReviewList {
         reviews.add(r);
     }
 
+    /**
+     * Changes display of rating. 
+     * @param displayType type of rating to be displayed
+     */
     public void changeDisplay(String displayType) {
         if (displayType.equals("stars")) {
             displayStars = true;
@@ -564,6 +568,10 @@ public class ReviewList {
         }
     }
 
+    /**
+     * Getter for displayStars to be used in storage. 
+     * @return displayStars
+     */
     public boolean getDisplayStars() {
         return displayStars;
     }
