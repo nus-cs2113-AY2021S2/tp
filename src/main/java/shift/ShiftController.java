@@ -91,6 +91,7 @@ public class ShiftController {
         System.out.println("Employee not found");
     }
 
+    @@justinaquak
     public static void viewAllShifts(ArrayList<Shift> shifts){
         for (Shift item : shifts){
             System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
