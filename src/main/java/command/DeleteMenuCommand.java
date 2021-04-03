@@ -2,6 +2,9 @@ package command;
 
 import canteens.Canteen;
 import exceptions.DukeExceptions;
+import menus.Menu;
+import nusfoodreviews.NusFoodReviews;
+import parser.Parser;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
@@ -13,21 +16,47 @@ import java.util.ArrayList;
 
 
 public class DeleteMenuCommand extends Command {
-    private int storeIndex;
-    private int menu;
-    private int canteenIndex;
+    private NusFoodReviews nusFoodReviews;
+    private Parser parser;
 
-    public DeleteMenuCommand(int canteenIndex, int storeIndex, int menu) {
-        this.canteenIndex = canteenIndex;
-        this.storeIndex = storeIndex;
-        this.menu = menu;
+    public DeleteMenuCommand(NusFoodReviews nusFoodReviews, Parser parser) {
+        this.nusFoodReviews = nusFoodReviews;
+        this.parser = parser;
     }
 
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
-        Canteen currentCanteen = canteens.get(canteenIndex);
-        Store store = currentCanteen.getStore(storeIndex);
-        String menuName = store.getMenus().get(menu).getItemName();
-        store.deleteMenu(menu);
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+        nusFoodReviews.setCanteenIndex();
+        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+        if (currentCanteenIndex == -1) {
+            ui.showMenuNotDeleted();
+            return;
+        }
+        ui.showDisplayStores(canteens.get(currentCanteenIndex));
+        ui.chooseStore();
+
+        String line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.showMenuNotDeleted();
+            return;
+        }
+        int currentStoreIndex = Integer.parseInt(line) - 1;
+        ArrayList<Menu> menus = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenus();
+        ui.showDisplayMenu(canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getStoreName(),
+                menus);
+        ui.chooseMenu();
+
+        line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.showMenuNotDeleted();
+            return;
+        }
+        int menuNumber = parser.parseInt(line,1,
+                canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenuCount()) - 1;
+
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+        Store store = currentCanteen.getStore(currentStoreIndex);
+        String menuName = store.getMenus().get(menuNumber).getItemName();
+        store.deleteMenu(menuNumber);
         ui.menuDeleted(menuName);
         Storage.save(new FileWriter("data/storage.txt"),canteens);
     }

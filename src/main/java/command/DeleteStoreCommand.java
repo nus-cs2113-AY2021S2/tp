@@ -1,6 +1,9 @@
 package command;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
+import nusfoodreviews.NusFoodReviews;
+import parser.Parser;
 import storage.Storage;
 import ui.Ui;
 
@@ -10,17 +13,32 @@ import java.util.ArrayList;
 
 public class DeleteStoreCommand extends Command {
 
-    private int canteenIndex;
-    private int storeIndex;
+    private Parser parser;
+    private NusFoodReviews nusFoodReviews;
 
-    public DeleteStoreCommand(int canteenIndex, int storeIndex) {
-        this.storeIndex = storeIndex;
-        this.canteenIndex = canteenIndex;
+    public DeleteStoreCommand(NusFoodReviews nusFoodReviews, Parser parser) {
+        this.nusFoodReviews = nusFoodReviews;
+        this.parser = parser;
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
-        Canteen currentCanteen = canteens.get(canteenIndex);
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+        nusFoodReviews.setCanteenIndex();
+        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+        if (currentCanteenIndex == -1) {
+            ui.showStoreNotDeleted();
+            return;
+        }
+        ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+        String line = ui.readCommand();
+        if (line.equals("cancel")) {
+            ui.showStoreNotAdded();
+            return;
+        }
+        int storeIndex = parser.parseInt(line, 1,
+                canteens.get(currentCanteenIndex).getNumStores()) - 1;
+
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
         String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
