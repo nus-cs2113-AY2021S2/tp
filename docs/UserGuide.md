@@ -323,7 +323,7 @@ can be found on the second computer.
 |[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
 |[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING BLOCK → DESTINATION BLOCK` |
 |[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
-|[**Show stored favourites**](#473-repeating-favourite-route)       | `repeat favourite → INDEX OF ROUTE` |
-|[**Show stored favourites**](#474-deleting-favourite-route)       | `delete favourite` |
+|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite → INDEX OF ROUTE` |
+|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite` |
 |[**Exiting the application**](#48-exiting-the-application)       | `bye` |
 
