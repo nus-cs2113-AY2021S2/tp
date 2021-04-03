@@ -1,5 +1,7 @@
 package seedu.model;
 
+import java.util.Locale;
+
 public class Patient {
     protected String patientID;
     protected String name;
