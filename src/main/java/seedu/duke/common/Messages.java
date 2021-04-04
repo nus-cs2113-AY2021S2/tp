@@ -35,8 +35,8 @@ public class Messages {
     
     //Parser messages
     public static final String MESSAGE_MODULE_CODE_EMPTY = "Module not specified.";
-    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code. "
-            + "Only valid NUS module codes are allowed.";
+    public static final String MESSAGE_INVALID_MODULE_CODE = "Invalid module code. " + NEWLINE
+            + "Please use the format [Subject][Catalog Number][Variant]. (E.g. CS2113T)";
 
     public static final String MESSAGE_LESSON_FIELDS_EMPTY = "Missing lesson details.";
     public static final String MESSAGE_INVALID_LESSON_TYPE = "Invalid lesson type entered.";

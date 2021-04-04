@@ -1,3 +1,4 @@
+<!--@@author ivanchongzhien-->
 # User guide
 
 **GULIO (Get Ur Life In Order)**  is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. GULIO is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
@@ -47,8 +48,8 @@ This guide is written for users like you, for reference when there is a particul
         * [Automatic Saving](#automatic-saving)
         * [Manual Editing Outside GULIO](#manual-editing-outside-of-gulio)
     * [Text Editor](#text-editor)
-    * [FAQ](#faq)
-    * [Command Summary](#command-summary)
+* [FAQ](#faq)
+* [Command Summary](#command-summary)
 
 &nbsp;
 
@@ -154,6 +155,8 @@ To identify which layer you are on, simply check the tag beside your input.
 </table>
 
 Each module can store two types of data: lesson and task. Lessons refer to your lectures, labs and tutorials, which are all recurring events. Meanwhile, tasks are used to store one-time events, like your homework, quizzes and any other activities with a deadline.
+
+<!--@@author isaharon-->
 
 ### Fields in a lesson:
 
@@ -291,6 +294,8 @@ Closes the current module and returns the user to the dashboard layer.
 **Format:**<br>
 `close`
 
+<!--@@author 8kdesign-->
+
 ### Showing module information : _info_
 
 Displays a summary of lessons and undone tasks for the module.
@@ -311,6 +316,7 @@ Displays a summary of lessons and undone tasks for the module.
 Adds a new lesson with specified lesson type and information to the current module.
 
 **Format:**<br>
+`add lsn <lesson type>`<br>
 `add lsn <lesson type> ;; <day & time>`<br>
 `add lsn <lesson type> ;; <day & time> ;; <link>`<br>
 `add lsn <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name>`<br>
@@ -438,6 +444,7 @@ Adds a new task with specified name and information to the current module.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
 
+<!--@@author aliciatay-zls-->
 
 ### Deleting a task : _del task_
 
@@ -581,6 +588,8 @@ Opens the specified cheat-sheet in the text editor.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
+<!--@@author H-horizon-->
+
 ### Listing all cheat-sheets : _cheat-sheets_
 
 Lists all cheat-sheets for the module.
@@ -687,13 +696,13 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | help | `help` |
 | close | `close` |
 | info | `info` | 
-| add lesson | `add lsn <lesson type> ;; <day & time> ;; [link] ;; [teaching staff name] ;; [email]` |
+| add lesson | `add lsn <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>` |
 | delete lesson | `del lsn` |
 | edit lesson | `edit lsn` |
 | link | `link` |
 | teacher | `tch` |
 | lessons | `lsn` |
-| add task | `add task <name> ;; <deadline> ;; [remarks]` |
+| add task | `add task <name> ;; <deadline> ;; <remarks>` |
 | delete task | `del task` |
 | edit task | `edit task` |
 | mark | `mark` |
