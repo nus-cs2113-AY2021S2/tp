@@ -1,13 +1,16 @@
 package seedu.fridgefriend.food;
 
 import java.util.ArrayList;
+
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 
 
 public class Fridge {
 
-
     private ArrayList<Food> fridge = new ArrayList<>();
+    private String overflowMessage = "Sorry my friend, "
+            + "You have exceeded the maximum quantity";
 
     //@@author Vinci-Hu
     /**
@@ -19,7 +22,7 @@ public class Fridge {
      * @param food food object to add obtained from parser.
      * @throws RepetitiveFoodIdentifierException as name suggests.
      */
-    public void add(Food food) throws RepetitiveFoodIdentifierException {
+    public void add(Food food) throws RepetitiveFoodIdentifierException, InvalidQuantityException {
         UniqueFoodnameChecker checker = new UniqueFoodnameChecker(fridge, food);
         if (checker.isFoodnameUnique()) {
             fridge.add(food);
@@ -49,12 +52,15 @@ public class Fridge {
     }
 
     //@@author Vinci-Hu
-    private void editFoodQuantity(Food newFood, Food existingFood) {
-        int deltaQuantity = newFood.getQuantity();
-        int oriQuantity = existingFood.getQuantity();
-        int newQuantity = deltaQuantity + oriQuantity;
-        newFood.setQuantity(newQuantity);
-        existingFood.setQuantity(newQuantity);
+    private void editFoodQuantity(Food newFood, Food existingFood) throws InvalidQuantityException {
+        long deltaQuantity = newFood.getQuantity();
+        long oriQuantity = existingFood.getQuantity();
+        long newQuantity = deltaQuantity + oriQuantity;
+        if (newQuantity >= Integer.MAX_VALUE) {
+            throw new InvalidQuantityException(overflowMessage);
+        }
+        newFood.setQuantity((int)newQuantity);
+        existingFood.setQuantity((int)newQuantity);
     }
 
     public ArrayList<Food> getFridge() {
@@ -72,19 +78,29 @@ public class Fridge {
      * @param foodCategory category to check
      * @return true if food in that category is running out, false otherwise
      */
-    public boolean isRunningOut(FoodCategory foodCategory) {
+    public boolean isRunningOut(FoodCategory foodCategory) throws InvalidQuantityException {
         int totalQuantity = getTotalQuantity(foodCategory);
         return totalQuantity < FoodCategory.getMinimumQuantity(foodCategory);
     }
 
     //@@author kwokyto
-    public int getTotalQuantity(FoodCategory foodCategory) {
-        int totalQuantity = 0;
+    public int getTotalQuantity(FoodCategory foodCategory) throws InvalidQuantityException {
+        long totalQuantity = 0;
         for (Food food : this.fridge) {
             if (food.getCategory() == foodCategory) {
                 totalQuantity += food.getQuantity();
             }
+            if (isOverFlow(totalQuantity)) {
+                throw new InvalidQuantityException(overflowMessage);
+            }
         }
-        return totalQuantity;
+        return (int)totalQuantity;
+    }
+
+    private boolean isOverFlow(long totalQuantity) {
+        if (totalQuantity >= Integer. MAX_VALUE) {
+            return true;
+        }
+        return false;
     }
 }

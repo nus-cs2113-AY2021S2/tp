@@ -23,18 +23,18 @@ public class RemoveCommand extends Command {
 
     //@@author Vinci-Hu
     /**
-     * Constructor which takes in foodname and quantity to remove.
-     * @param foodnameToEdit food name is identifier
+     * Constructor which takes in foodName and quantity to remove.
+     * @param foodNameToEdit food name is identifier
      * @param quantity integer value.
      */
-    public RemoveCommand(String foodnameToEdit, int quantity) {
-        this.foodNameToEdit = foodnameToEdit;
+    public RemoveCommand(String foodNameToEdit, int quantity) {
+        this.foodNameToEdit = foodNameToEdit;
         this.editQuantity = quantity;
     }
 
-    private Food findFoodByName(String foodnameToEdit) throws FoodNameNotFoundException {
+    private Food findFoodByName(String foodNameToEdit) throws FoodNameNotFoundException {
         for (Food food : fridge.getFridge()) {
-            if (food.getFoodName().equals(foodnameToEdit)) {
+            if (food.getFoodName().equals(foodNameToEdit)) {
                 return food;
             }
         }
@@ -101,7 +101,7 @@ public class RemoveCommand extends Command {
      * Checks if the amount of food left for that category is insufficient.
      * Appends a warning message to the user if true.
      */
-    private void checkRunningOut() {
+    private void checkRunningOut() throws InvalidQuantityException {
         FoodCategory foodCategory = foodToBeEditted.getCategory();
         if (fridge.isRunningOut(foodCategory)) {
             int totalQuantity = fridge.getTotalQuantity(foodCategory);

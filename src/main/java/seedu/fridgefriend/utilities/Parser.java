@@ -3,6 +3,7 @@ package seedu.fridgefriend.utilities;
 import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
 import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocation;
 
+import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -232,7 +233,6 @@ public class Parser {
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidIndexException if the index given in description is out of bounds
      */
     private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidQuantityException,
@@ -385,7 +385,7 @@ public class Parser {
      * @param description quantity description
      * @return integer quantity
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidQuantityException if the description is not a number
+     * @throws InvalidQuantityException if the description is not an integer or exceed max integer value
      */
     public static int parseIntegerQuantity(String description)
             throws EmptyDescriptionException, InvalidQuantityException {
@@ -394,8 +394,20 @@ public class Parser {
         }
 
         try {
-            int quantity = Integer.parseInt(description);
-            return quantity;
+            BigInteger bigIntegerQuantity = new BigInteger(description);
+            //Check if there is an overflow of integer
+            BigInteger maxInt = BigInteger.valueOf(Integer.MAX_VALUE);
+            if (bigIntegerQuantity.compareTo(maxInt) >= 0) {
+                throw new InvalidQuantityException("Sorry my friend, "
+                        + "You have exceeded the maximum quantity");
+            }
+            //Check if the integer is negative
+            BigInteger zero = BigInteger.valueOf(0);
+            if (bigIntegerQuantity.compareTo(zero) < 0) {
+                throw new InvalidQuantityException();
+            }
+            int quantityInteger = bigIntegerQuantity.intValue();
+            return quantityInteger;
         } catch (NumberFormatException numberFormatException) {
             throw new InvalidQuantityException();
         }

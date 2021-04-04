@@ -1,6 +1,7 @@
 package seedu.fridgefriend.command;
 
 //@@author kwokyto
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.utilities.Ui;
 
@@ -16,7 +17,7 @@ public class RunningLowCommand extends Command {
     }
 
     @Override
-    public void execute() {
+    public void execute() throws InvalidQuantityException {
         for (FoodCategory foodCategory : FoodCategory.values()) {
             updateMessage(foodCategory);
         }
@@ -26,7 +27,7 @@ public class RunningLowCommand extends Command {
         Ui.printMessage(message);
     }
 
-    private void updateMessage(FoodCategory foodCategory) {
+    private void updateMessage(FoodCategory foodCategory) throws InvalidQuantityException {
         if (fridge.isRunningOut(foodCategory)) {
             isStockedUp = false;
             int totalQuantity = fridge.getTotalQuantity(foodCategory);
