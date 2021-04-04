@@ -28,10 +28,13 @@ public class ShowDailyRouteCommand extends Command {
             StringBuilder routedSchedule = new StringBuilder();
             for (int i = 0; i < schedules.size() - 1; i++) {
                 String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
-                if (i < schedules.size() - 2) {
-                    routedSchedule.append(route).append("\n");
+                if (i > 0 && schedules.get(i).equals(schedules.get(i - 1))) {
+                    routedSchedule.append("The following destination is also ").append(schedules.get(i));
                 } else {
                     routedSchedule.append(route);
+                }
+                if (i < schedules.size() - 2) {
+                    routedSchedule.append("\n");
                 }
             }
             ui.showMessageWithDivider(routedSchedule.toString());
