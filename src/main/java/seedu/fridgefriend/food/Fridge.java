@@ -10,7 +10,7 @@ public class Fridge {
 
     private ArrayList<Food> fridge = new ArrayList<>();
     private String overflowMessage = "Sorry my friend, "
-            + "You have exceeded the maximum quantity";
+            + "You have exceeded the maximum quantity.";
 
     //@@author Vinci-Hu
     /**

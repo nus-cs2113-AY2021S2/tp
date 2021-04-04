@@ -399,7 +399,7 @@ public class Parser {
             BigInteger maxInt = BigInteger.valueOf(Integer.MAX_VALUE);
             if (bigIntegerQuantity.compareTo(maxInt) >= 0) {
                 throw new InvalidQuantityException("Sorry my friend, "
-                        + "You have exceeded the maximum quantity");
+                        + "You have exceeded the maximum quantity.");
             }
             //Check if the integer is negative
             BigInteger zero = BigInteger.valueOf(0);
