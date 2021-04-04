@@ -20,6 +20,7 @@ public abstract class Storage implements DataEncoder, DataDecoder {
 
     protected final Path filepath;
 
+    protected String storageName;
     protected NusMap nusMap;
     protected BlockAlias blockAlias;
     protected History history;
@@ -30,6 +31,10 @@ public abstract class Storage implements DataEncoder, DataDecoder {
         this.filepath = Paths.get(filepath);
         createDirectory();
         createFile();
+    }
+
+    public String getStorageName() {
+        return storageName;
     }
 
     public void createDirectory() throws InvalidFilePathException {

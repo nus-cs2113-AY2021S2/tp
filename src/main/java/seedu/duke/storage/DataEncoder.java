@@ -25,7 +25,7 @@ public interface DataEncoder {
     default ArrayList<String> encodeAlias(BlockAlias alias) {
         ArrayList<String> encodedData = new ArrayList<>();
         for (Map.Entry<String, String> aliasPair: alias.getAliasHashMap().entrySet()) {
-            encodedData.add(aliasPair.getKey() + "/" + aliasPair.getValue());
+            encodedData.add(aliasPair.getValue() + "/" + aliasPair.getKey());
         }
         return encodedData;
     }

@@ -18,6 +18,7 @@ import seedu.duke.storage.datastorage.FavouriteStorage;
 import seedu.duke.storage.datastorage.NotesStorage;
 import seedu.duke.storage.datastorage.HistoryStorage;
 import seedu.duke.storage.Storage;
+import seedu.duke.ui.CommonMessage;
 import seedu.duke.ui.UiManager;
 
 public class NusMaze {
@@ -29,11 +30,7 @@ public class NusMaze {
     private Favourite favourite;
     private DailyRoute dailyRoute;
 
-    private Storage aliasStorage;
-    private Storage historyStorage;
-    private Storage favouriteStorage;
-    private Storage dailyRouteStorage;
-    private Storage notesStorage;
+    private Storage[] storages;
 
     public static void main(String[] args) {
         new NusMaze().run();
@@ -41,8 +38,6 @@ public class NusMaze {
 
     private void run() {
         initializeNusMaze();
-        ui.showLogo();
-        ui.showGreetMessage();
         runCommandLoopUntilByeCommand();
     }
 
@@ -50,7 +45,10 @@ public class NusMaze {
         try {
             initializeData();
             initializeStorage();
+            setStorageData();
+            ui.showLogo();
             loadPreviousData();
+            ui.showGreetMessage();
         } catch (StorageOperationException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
@@ -82,35 +80,36 @@ public class NusMaze {
     }
 
     private void initializeStorage() throws InvalidFilePathException {
-        aliasStorage = new AliasStorage("data/aliasList.txt");
-        aliasStorage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
-
-        historyStorage = new HistoryStorage("data/history.txt");
-        historyStorage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
-
-        favouriteStorage = new FavouriteStorage("data/favouriteList.txt");
-        favouriteStorage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
-
-        dailyRouteStorage = new DailyRouteStorage("data/dailyRouteList.txt");
-        dailyRouteStorage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
-
-        notesStorage = new NotesStorage("data/noteList.txt");
-        notesStorage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
+        Storage aliasStorage = new AliasStorage("data/aliasList.txt");
+        Storage historyStorage = new HistoryStorage("data/history.txt");
+        Storage favouriteStorage = new FavouriteStorage("data/favouriteList.txt");
+        Storage dailyRouteStorage = new DailyRouteStorage("data/dailyRouteList.txt");
+        Storage notesStorage = new NotesStorage("data/noteList.txt");
+        storages = new Storage[]{aliasStorage, historyStorage, favouriteStorage, dailyRouteStorage, notesStorage};
     }
 
-    private void loadPreviousData() throws LoadDataException {
-        aliasStorage.loadData();
-        historyStorage.loadData();
-        favouriteStorage.loadData();
-        dailyRouteStorage.loadData();
-        notesStorage.loadData();
+    private void setStorageData() {
+        for (Storage storage : storages) {
+            storage.setData(nusMap, blockAlias, history, favourite, dailyRoute);
+        }
+    }
+
+    private void loadPreviousData() throws SaveDataException {
+        for (Storage storage : storages) {
+            try {
+                storage.loadData();
+                ui.showLoadSuccessMessage(storage.getStorageName());
+            } catch (LoadDataException e) {
+                ui.showMessage(String.format(e.getMessage(), storage.getStorageName()));
+                storage.saveData();
+            }
+        }
+        ui.showMessage(CommonMessage.DIVIDER);
     }
 
     private void saveCurrentData() throws SaveDataException {
-        aliasStorage.saveData();
-        historyStorage.saveData();
-        favouriteStorage.saveData();
-        dailyRouteStorage.saveData();
-        notesStorage.saveData();
+        for (Storage storage : storages) {
+            storage.saveData();
+        }
     }
 }

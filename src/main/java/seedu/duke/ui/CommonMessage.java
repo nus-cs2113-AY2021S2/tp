@@ -17,4 +17,5 @@ public class CommonMessage {
             + "|__/  \\__/ \\______/  \\______/ |__/     |__/ \\_______/|________/ \\_______/";
     public static final String GREETING_MESSAGE = "Hello! Welcome to NUSMaze" + LINE_SEPARATOR
             + "Where do you want to go today?";
+    public static final String SUCCESSFUL_LOAD = "[X] %s data has been successfully loaded!";
 }
