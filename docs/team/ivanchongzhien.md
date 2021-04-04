@@ -134,6 +134,8 @@ The `AddLessonCommand` class is responsible for the creation and addition of a n
 The creation process is facilitated by the `Parser` class, which parses the appropriate arguments from the user input and initialises the `Lesson` object attributes with the parsed values.
 
 ## Contributions to the User Guide (Extracts)
+Extract of contributions:
+
 ### Editing a lesson : _edit lsn_
 
 Lists all lessons for the module and asks the user for the index of the lesson to edit. Then, lists all editable fields and asks the user for the indices of the fields to edit. Lastly, for each selected field, the user inputs a new value.
