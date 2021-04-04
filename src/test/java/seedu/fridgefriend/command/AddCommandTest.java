@@ -25,18 +25,24 @@ class AddCommandTest {
     }
 
     @Test
-    public void addCommand_foodWithNegativeQuantity_invalidQuantityException() {
-        assertThrows(InvalidQuantityException.class, () -> {
-            new AddCommand("chicken", FoodCategory.MEAT,
-                    "31-12-2021", FoodStorageLocation.FREEZER, -200);
-        });
-    }
-
-    @Test
     public void addCommand_invalidDate_InvalidDateException() {
         assertThrows(InvalidDateException.class, () -> {
             new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER, 200);
+        });
+    }
+
+    @Test
+    public void addCommand_foodWithSameNameAndLargeQuantity_InvalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            AddCommand addCommand1 = new AddCommand("Milk", FoodCategory.DAIRY,
+                    "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 1);
+            addCommand1.setData(fridge);
+            addCommand1.execute();
+            AddCommand addCommand2 = new AddCommand("Milk", FoodCategory.DAIRY,
+                    "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, Integer.MAX_VALUE);
+            addCommand2.setData(fridge);
+            addCommand2.execute();
         });
     }
     //@@author
