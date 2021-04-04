@@ -316,11 +316,11 @@ public class ReviewList {
             ui.printInvalidSortMethodMessage();
         } else {
             if (sortMethod == null) {
-                sorter.sortReview(reviews);
+                sorter.sortReviews(reviews);
                 displayReviews(reviews);
             } else {
                 try {
-                    sorter.sortReview(reviews, sortMethod);
+                    sorter.sortReviews(reviews, sortMethod);
                     displayReviews(reviews);
                 } catch (ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidSortMethodMessage();
@@ -350,7 +350,7 @@ public class ReviewList {
      *
      * @param sortType sorting method to be used
      */
-    public void sortReview(String sortType) {
+    public void sortReviews(String sortType) {
         if (sortType == null || sortType.isBlank()) {
             String sortMethod = sorter.getSortMethod();
             ui.println(CURRENT_SORT_METHOD + sortMethod.toUpperCase());
