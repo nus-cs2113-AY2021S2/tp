@@ -3,7 +3,7 @@ package seedu.duke.common;
 import java.util.ArrayList;
 
 public class SanitiseInput {
-    //@H-horizon
+    //@@author H-horizon
     public static boolean sanitiseInput(String input) {
 
         ArrayList<String> invalidCharacters = new ArrayList<>();

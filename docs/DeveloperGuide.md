@@ -1,3 +1,4 @@
+<!--@@author ivanchongzhien-->
 # Developer Guide
 
 **GULIO (Get Ur Life In Order)** is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. It is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
@@ -112,6 +113,8 @@ This describes the software architecture and software design decisions for the i
 [🡅 Back to Table of Contents](#table-of-contents)
 
 ----
+
+<!--@@author isaharon-->
 
 ## Design
 
@@ -256,6 +259,8 @@ The `Task` class contains attributes related to an assignment, deadline or task 
 
 &nbsp;
 
+<!--@@author 8kdesign-->
+
 ### Storage component
 
 <p align="center">
@@ -382,6 +387,8 @@ The `Writer` class is responsible for writing any changes to the module’s data
 Whenever some data in a module changes, the command that made those changes would call the method `writeModule()` in `ModuleList` to update the change in the data file. This method would then call a method of the same name in the `Writer` class, which overwrites the existing data in the file with the new data.
 
 Due to how much data needs to be written each time, we decided to split the data file by module. That way, we only need to overwrite the module's data when changes are made.
+
+<!--@@author aliciatay-zls-->
 
 #### Loading of Data
 
@@ -519,7 +526,8 @@ Due to the 2-layer command system, you will need to identify which layer you are
      >Expected outcome: Input label changes to `GULIO`.
 1. Enter `exit`.<br>
    >Expected outcome: Prints exit message and program closes.
-
+   
+<!--@@author H-horizon-->
 
 ### Adding a Module
 
