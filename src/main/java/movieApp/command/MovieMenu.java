@@ -1,6 +1,10 @@
 package movieApp.command;
 
 import movieApp.*;
+import movieApp.Booking;
+import movieApp.Cineplex;
+import movieApp.Movie;
+import movieApp.Showtimes;
 import movieApp.storage.Database;
 import movieApp.user.Admin;
 import movieApp.user.Customer;

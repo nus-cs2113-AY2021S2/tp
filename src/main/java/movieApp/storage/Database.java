@@ -1,6 +1,9 @@
 package movieApp.storage;
 
-import movieApp.*;
+import movieApp.Cineplex;
+import movieApp.Movie;
+import movieApp.Review;
+import movieApp.Showtimes;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;

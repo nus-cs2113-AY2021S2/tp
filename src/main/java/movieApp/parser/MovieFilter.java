@@ -144,7 +144,7 @@ public class MovieFilter {
 		System.out.println("\nThe selected cut-off rating is: "+rating);
 		
 		while (i<movieList.size()) {
-			if (rating > (movieList.get(i).getOverallRating())){
+			if (movieList.get(i).getReviewSize() == 0 || rating > (movieList.get(i).calculateOverallRating())){
 				movieList.remove(i);
 				i--;
 			}

@@ -1,18 +1,16 @@
 package movieApp;
 
-import movieApp.Seat;
-
 import java.io.Serializable;
 
-public class Cinema implements Serializable{
+public class Cinema implements Serializable {
     private static final long serialVersionUID = 6815178382261501263L;
-    private int cineplexID;
-    private int capacity;
-    private String cinemaCode;
-    private int cinemaID;
-    private int rowNum;
-    private int colNum;
-    private Seat[][] seats;
+    private final int cineplexID;
+    private final int capacity;
+    private final String cinemaCode;
+    private final int cinemaID;
+    private final int rowNum;
+    private final int colNum;
+    private final Seat[][] seats;
 
     public Cinema(String cinemaCode, int cinemaID, int cineplexID, int capacity, int r, int c) {
         this.cinemaCode = cinemaCode;

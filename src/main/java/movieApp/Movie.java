@@ -50,12 +50,16 @@ public class Movie implements Serializable{
 	public int getMovieID() {
 		return movieID;
 	}
+
+	public int getReviewSize() {
+		return reviews.size();
+	}
 	
-	public float getOverallRating() {
+	public String getOverallRating(){
 		if(reviews.size()==0) {
-			return -1;
+			return "No ratings yet. You can start by adding one!";
 		}else{
-			return calculateOverallRating(); 
+			return Float.toString(calculateOverallRating());
 		}
 	}
 	
@@ -125,7 +129,7 @@ public class Movie implements Serializable{
 		reviews.add(r);
 	}
 	
-	private float calculateOverallRating() {
+	public float calculateOverallRating() {
 		int i; 
 		float total = 0; 
 		for(i=0;i<reviews.size();i++) {

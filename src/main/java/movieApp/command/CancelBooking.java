@@ -6,7 +6,6 @@ import movieApp.Showtimes;
 import movieApp.storage.Database;
 import movieApp.user.User;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Scanner;
 
