@@ -690,8 +690,10 @@ data from the saved file: `finux.txt`.
 ![SavingFeatureSequenceDiagram](img/StorageSequenceDiagramSave.png)
 *Figure x: Sequence Diagram for Storage's save function*
 
-Saving of `records` works differently, these `records` will be automatically saved into `finux.txt` only with a few 
-particular command calls, these calls are the commands that will alter the `records` in the `RecordList`.
+Saving of data works differently, the data will be automatically saved into `finux.txt` only with a few 
+particular command calls, these calls are the commands that will alter the `records` in the `RecordList`. As
+the `creditScoreReturnLoansMap` is also altered by changes in the `Loans` object. It will also be stored and updated
+together with the commands below.
 
 The following commands and scenarios where these `records` will be saved locally into the save file:
 * `add`
@@ -702,27 +704,56 @@ The sequence below will show you how the `Storage` class behaves at each step. A
 behave similarly in the way they call the `saveData` method, the following will be generalised to prevent repetition
 for all the three methods above.
 
-***Step 1***
+***Step 1***\
 Before the end of the `add`, `remove` or `return` command, the `saveData()` method will be invoked.
 
-***Step 2***
+***Step 2***\
 The `saveData()` method will then call on the `writeRecordListToSaveFile()` method. This method will pass the
 recordList back to the `RecordList` class to invoke the `getRecordAt()` method.
 
-***Step 3***
+***Step 3***\
 The `getRecordAt()` method will return the `record` that is identified by its index. With this `record`, the
 method `writeRecordListToSaveFile` will then call on the `convertFileFormat()` method in the `RecordList` class. This
 method will convert the `record` that is stored in the `recordList` into a text readable format.
 
-***Step 4***
+***Step 4***\
 The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter` write method.
 
-***Step 5***
+***Step 5***\
 The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`. And each 
 `record` will be written and separated by a newline.
 
+---
+
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
 *Figure x: Sequence Diagram for Storage's load function*
+
+Finux will automatically load the data from the save file: `finux.txt`. When the Finux application is launched, the
+data from the file will be loaded during the initialising phase, even before the welcome message is printed. The error
+and exception handling is omitted from the diagram above as the application will print a failed initialization message
+and terminate.
+
+***Step 1***\
+When the user launches the `finux.jar` application, in the `start` method. The `loadFile` method will be invoked.
+
+***Step 2***\
+The `loadFile` method will first check for the save file, if it exists it will then call upon the `parseRawData` method
+which will read and match the contents of the `finux.txt` file with the regex patterns. It will then call on the 
+respective methods to return the object type of it. (In this case, `Expense`, `Loan`, `Savings`, 
+`creditScoreReturnLoansMap`)
+
+***Step 3***\
+With the returned objects, they are now parsed into the `processParsedObject` method to be added into their respective
+classes. With the instances of `Record` being added into the `RecordList` and the `creditScoreReturnedLoansMap` into
+the `HashMap` of itself.
+
+***Step 4***\
+The `start` method in the `Finux` class will then call the `getRecordListData` method to retrieve the loaded 
+`RecordList` from the `Storage` class, this is also the same with the `creditScoreReturnedLoansMap` where the `start`
+method in the `Finux` class will call the `getMapData` method from the `Storage` class which will then return the
+`HashMap`.
+
+
 
 #### 4.6.2 Design Consideration
 This section will walk you through the design considerations taken when implementing the remove feature.
