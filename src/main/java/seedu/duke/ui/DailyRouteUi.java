@@ -11,27 +11,43 @@ import java.util.ArrayList;
 
 public class DailyRouteUi extends UiManager {
 
-    public ArrayList<String> getScheduleInfo() throws InvalidBlockException {
-        showMessage("Enter Location of the first activity of the day: ");
+    public ArrayList<String> getScheduleInfo() {
         ArrayList<String> dailyBlocks = new ArrayList<>();
-        String schedule = getUserInput().toUpperCase();
-        while (!isEnd(schedule)) {
-            dailyBlocks.add(schedule);
-            showMessage("Enter Location of the next activity of the day: ");
-            schedule = getUserInput().toUpperCase();
+        String block = "Invalid Block";
+        while (!isValidBlock(block)) {
+            showMessage("Enter location of the first activity of the day: ");
+            try {
+                block = getBlockEntry();
+            } catch (InvalidBlockException e) {
+                showMessage(e.getMessage());
+            }
+        }
+        while (!block.equals("END")) {
+            try {
+                dailyBlocks.add(block);
+                showMessage("Enter location of the next activity of the day: ");
+                block = getBlockEntry();
+            } catch (InvalidBlockException e) {
+                showMessage(e.getMessage());
+            }
         }
         showMessage(CommonMessage.DIVIDER);
         return dailyBlocks;
     }
 
-    public boolean isEnd(String schedule) throws InvalidBlockException {
+
+    public boolean isValidBlock(String block) {
         NusMap nusMap = new NusMap();
-        if (schedule.equals("END")) {
-            return true;
-        } else if (nusMap.getBlock(schedule) == null) {
+        return nusMap.getBlock(block) != null;
+    }
+
+    public String getBlockEntry() throws InvalidBlockException {
+        String block = getUserInput().toUpperCase();
+        if (isValidBlock(block) || block.equals("END")) {
+            return block;
+        } else {
             throw new InvalidBlockException();
         }
-        return false;
     }
 
     public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
