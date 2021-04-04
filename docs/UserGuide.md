@@ -582,7 +582,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentHelp.jpg" width = "850" >
 
 <br/><br/>
-### 5.4 Nurse Schedule
+### 5.4 Schedules for Nurses
 
 The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
@@ -598,12 +598,13 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
->
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** least 5 digits in the number following! 
+>1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
+>2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
+>3. Any input fields in HealthVault only accepts space and alphanumeric characters.
+>4. HealhVault currently only allows the adding of **1** schedule per patient per day.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
