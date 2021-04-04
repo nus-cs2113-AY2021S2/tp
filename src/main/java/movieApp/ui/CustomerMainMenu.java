@@ -20,7 +20,8 @@ public class CustomerMainMenu implements MainMenu{
 	public static void doOption(int option, User user) {
 		switch(option){
 		case 1:
-			Movie movie = MovieFilter.filter(Database.MovieDatabase, Database.CineplexDatabase, user);
+			ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
+			Movie movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user);
 			if (movie != null) {
 				MovieMenu.movieAction(movie, user);
 			}
