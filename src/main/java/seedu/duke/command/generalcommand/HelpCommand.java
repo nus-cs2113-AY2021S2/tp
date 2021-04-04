@@ -29,7 +29,13 @@ public class HelpCommand extends Command {
             + "\t" + "* list notes tagged to the given location\n"
             + "12. delete note:\n"
             + "\t" + "* deletes notes based on index number tagged to the given location\n"
-            + "13. bye:\n"
+            + "13. add favourite:\n"
+            + "\t" + "* adds a favourite route\n"
+            + "14. show favourite:\n"
+            + "\t" + "* lists all favourite routes that were previously created\n"
+            + "15. delete favourite:\n"
+            + "\t" + "* deletes a favourite route based on index number tagged to the route\n"
+            + "16. bye:\n"
             + "\t" + "* exits the application";
 
     public HelpCommand() {
