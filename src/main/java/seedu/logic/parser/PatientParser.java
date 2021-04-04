@@ -3,9 +3,10 @@ package seedu.logic.parser;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
-import seedu.logic.command.patient.*;
-import seedu.logic.errorchecker.PatientChecker;
 import seedu.logic.command.PatientActions;
+import seedu.logic.command.patient.*;
+import seedu.logic.errorchecker.MainChecker;
+import seedu.logic.errorchecker.PatientChecker;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -22,6 +23,8 @@ public class PatientParser {
         for (int i = 0; i < numberOfTokens; i++) {
             cleanString.add(UI.cleanseInput(stringTokens[i]));
         }*/
+
+        MainChecker.checkNumInput(fullCommand,7,1);
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
         checker = new PatientChecker(patients, stringTokens, command, numberOfTokens);

@@ -4,11 +4,10 @@ public class Constants {
 
 
     public static final String LINEBREAK = "____________________________________________________________";
-    public static final String LONGLINEBREAK = "________________________________________________________"
-            +"__________________________________________________________________________________________";
-    public static final String LONGLONGLINEBREAK = "____________________________________________________"
-            +"__________________________________________________________________________________________"
-            +"__________________________________";
+    public static final String LISTLINEBREAK = "________________________________________________________"
+            +"____________________________________________";
+    public static final String HELPLINEBREAK = "________________________________________________________"
+            +"__________________________________________________________________________________";
     public static final String LOGO =
             " __   __  ______  _______  _  ________  __   __  __  __  _______  __   __  _             __   \n"
              + "|  | |  ||   ___||   _   || ||___    _||  | |  ||  ||  ||   _   ||  | |  || | _   _     /  \\  \n"
@@ -23,6 +22,12 @@ public class Constants {
     public static final String INVENTORY_FILE_PATH = "data/Inventory.txt";
     public static final String STAFF_FILE_PATH = "data/Staff.txt";
     public static final String SCHEDULES_FILE_PATH = "data/NurseSchedule.txt";
+
+    public static final String PATIENT_LOGS_FILE_PATH = "";
+    public static final String APPOINTMENT_LOGS_FILE_PATH = "";
+    public static final String INVENTORY_LOGS_FILE_PATH = "";
+    public static final String STAFF_LOGS_FILE_PATH = "";
+    public static final String SCHEDULES_LOGS_FILE_PATH = "data/logs/NurseSchedules.log";
 
     public static final String TO_STAFF_INSTANCE = "staff";
     public static final String TO_PATIENT_INSTANCE = "patient";
@@ -76,7 +81,7 @@ public class Constants {
 
     // ADD FUNCTION FORMATTING
     public static final String STAFF_ADD_FORMAT = "add/[Staff ID]/[Name]/[Age]/[Specialisation]";
-    public static final String PATIENT_ADD_FORMAT = "add/[Patient ID]/[Name]/[Age]/[Gender][Illness][Medication Needed]";
+    public static final String PATIENT_ADD_FORMAT = "add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Medication Needed]";
     public static final String APPOINTMENTS_ADD_FORMAT = "add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]";
     public static final String SCHEDULES_ADD_FORMAT = "add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]";
     public static final String INVENTORY_ADD_FORMAT = "add/[Drug name]/[Price]/[Quantity]";
@@ -113,11 +118,11 @@ public class Constants {
 
     // FIND FUNCTION DESCRIPTION
     public static final String STAFF_FIND_DESCRIPTION = "Finds a matching Staff using a keyword or phrase!";
-    public static final String PATIENT_FIND_DESCRIPTION = "Finds a matching Patient using an ID!";
+    public static final String PATIENT_FIND_DESCRIPTION = "Finds a matching Patient using a keyword or phrase!";
 
     // FIND FUNCTION FORMATTING
     public static final String STAFF_FIND_FORMAT = "find/[keyword or phrase]";
-    public static final String PATIENT_FIND_FORMAT = "find/[Patient ID]";
+    public static final String PATIENT_FIND_FORMAT = "find/[keyword or phrase]";
 
 
 }

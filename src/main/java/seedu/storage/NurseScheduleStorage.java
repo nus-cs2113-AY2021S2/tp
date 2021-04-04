@@ -1,5 +1,6 @@
 package seedu.storage;
 
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.NurseScheduleActions;
 import seedu.logic.errorchecker.NurseScheduleChecker;
@@ -10,9 +11,9 @@ import seedu.ui.NurseScheduleUI;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
 
-import static seedu.duke.Constants.PATIENT_FILE_PATH;
-import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
+import static seedu.duke.Constants.*;
 
 public class NurseScheduleStorage {
 
@@ -32,7 +33,7 @@ public class NurseScheduleStorage {
     }
 
     private static ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidIDTypeException,
-            FileNotFoundException, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError {
+            FileNotFoundException, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, InvalidDateException {
         FileInputStream file = new FileInputStream(FILE_PATH);
         Scanner sc = new Scanner(file);
 
@@ -42,6 +43,7 @@ public class NurseScheduleStorage {
             NurseScheduleChecker.checkPatientDExist(details[1]);
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
+            NurseScheduleChecker.isValidDate(details[2]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             }
         return nurseSchedules;
@@ -61,10 +63,20 @@ public class NurseScheduleStorage {
         }
     }
 
-    public static ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidIDTypeException, NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError {
+    public static ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidIDTypeException, NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, InvalidDateException {
         createFile();
         nurseSchedules = readFile();
         return nurseSchedules;
+    }
+
+    public FileHandler initLogger() {
+        try {
+            FileHandler fileHandler = new FileHandler(SCHEDULES_LOGS_FILE_PATH);
+            return fileHandler;
+        } catch (IOException e) {
+            System.out.println("Error with logging file!");
+        }
+        return null;
     }
 
     public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException {

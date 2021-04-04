@@ -1,6 +1,12 @@
 package seedu.logic.instance;
 
 import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.NoInputException;
+import seedu.exceptions.inventory.DuplicateDrugException;
+import seedu.exceptions.inventory.WrongNumberException;
+import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.InventoryActions;
 import seedu.logic.parser.InventoryParser;
 import seedu.model.Inventory;
@@ -8,7 +14,6 @@ import seedu.storage.InventoryStorage;
 import seedu.logic.command.Command;
 import seedu.ui.InventoryUI;
 import seedu.ui.UI;
-
 import java.util.ArrayList;
 
 public class InventoryInstance {
@@ -21,32 +26,20 @@ public class InventoryInstance {
     private InventoryStorage inventoryStorage;
     private InventoryParser parser;
 
-    //protected ArrayList<Inventory> inventories;
-
     public InventoryInstance(String filePath) {
         ui = new InventoryUI();
         inventoryStorage = new InventoryStorage(filePath);
         parser = new InventoryParser();
-        /*
-        try {
-            //inventories = inventoryStorage.uploadDrugs();
-            inventory = new InventoryActions(inventoryStorage.loadInventory());
-        } catch (HealthVaultException e) {
-            ui.showLoadingError();
-            inventory = new InventoryActions();
-            //inventories = inventoryStorage.createNewFile();
-        }*/
     }
 
     public void run() {
         try {
-            //inventories = inventoryStorage.uploadDrugs();
             ArrayList<Inventory> list = inventoryStorage.loadInventory();
             inventory = new InventoryActions(list);
         } catch (HealthVaultException e) {
-            ui.showLoadingError();
+            ui.corruptedFileErrorMessage();
             inventory = new InventoryActions();
-            //inventories = inventoryStorage.createNewFile();
+            return;
         }
         InventoryUI.inventoryMenuHeader();
         boolean isReturnToStartMenu = false;
@@ -61,16 +54,19 @@ public class InventoryInstance {
                 if (isReturnToStartMenu) {
                     UI.returningToStartMenuMessage();
                 }
-                //UI.showLine();
-                UI.printEmptyLine();
             } catch (NullPointerException e) {
                 //Command C can return as null if an error is triggered in parser
                 //Null Pointer Exception may hence occur, the catch statement is to ensure it does not exit the loop.
+            } catch (WrongNumberException e) {
+                e.getError();
+            } catch (DuplicateDrugException e) {
+                e.getError("DrugStored");
+            } catch (IllegalCharacterException | InsufficientInputException |
+                    ExcessInputException | NoInputException e) {
+                System.out.println(e.getMessage());
+            } catch (HealthVaultException e) {
+                e.getError("");
             }
         }
-        //InventoryParser InventoryParser = new InventoryParser(inventories);
-        //InventoryParser.parseMethod();
-        //inventoryStorage.exitProgram();
     }
-
 }

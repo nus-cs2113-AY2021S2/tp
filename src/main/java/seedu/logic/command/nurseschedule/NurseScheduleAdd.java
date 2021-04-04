@@ -16,7 +16,7 @@ public class NurseScheduleAdd extends Command {
 
     @Override
     public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException,
-            NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
+            NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         nurseSchedules.addSchedule(argArr);
     }
 

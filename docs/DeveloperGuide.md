@@ -854,6 +854,9 @@ choice of listing all schedules or a specified nurse id's schedule. This
 is similar to a search function. This will access the
 NurseScheduleActions class.
 
+<img src="images/ListNurseIDSequenceDiagram.png">
+<p align = "center"> Sequence Diagram when list/N12345 inputted.</p>
+
 *list* \[Nurse ID\] or list \[all\]:
 
 Getting User Input
