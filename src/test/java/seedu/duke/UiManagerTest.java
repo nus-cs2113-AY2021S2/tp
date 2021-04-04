@@ -19,7 +19,8 @@ class UiManagerTest {
         ui.showLogo();
 
         String lineSeparator = System.lineSeparator();
-        String divider = "--------------------------------------------------------------------------";
+        String divider = "------------------------------------------------------"
+                + "------------------------------------------------------";
         String logo =  " /$$   /$$ /$$   /$$  /$$$$$$  /$$      /$$\n"
                 + "| $$$ | $$| $$  | $$ /$$__  $$| $$$    /$$$\n"
                 + "| $$$$| $$| $$  | $$| $$  \\__/| $$$$  /$$$$  /$$$$$$  /$$$$$$$$  /$$$$$$\n"
@@ -40,7 +41,8 @@ class UiManagerTest {
         ui.showGreetMessage();
 
         String lineSeparator = System.lineSeparator();
-        String divider = "--------------------------------------------------------------------------";
+        String divider = "------------------------------------------------------"
+                + "------------------------------------------------------";
         String greetingMessage = "Hello! Welcome to NUSMaze" + lineSeparator
                 + "Where do you want to go today?";
         assertEquals(greetingMessage + lineSeparator + divider, outContent.toString().trim());

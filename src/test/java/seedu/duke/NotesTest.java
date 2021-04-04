@@ -42,7 +42,8 @@ public class NotesTest {
             addNoteTest("TESCO SUPER-MART");
             addNoteTest("GRAND HALL");
         } catch (InvalidBlockException e) {
-            assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
+            assertEquals("Invalid block! Please check your start and destination block again :(",
+                    e.getMessage());
         }
     }
 
