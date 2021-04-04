@@ -34,9 +34,10 @@ public class MovieFilter {
 			System.out.println(" 4 Filter by cineplex");
 			System.out.println(" 5 Filter by title");
 			System.out.println(" 6 Select movie");
-			System.out.println(" 7 Clear all filters");
-			System.out.println(" 8 View Bookings");
-			System.out.println(" 9 Back to Main Menu");
+			System.out.println(" 7 List filtered movies");
+			System.out.println(" 8 Clear all filters");
+			System.out.println(" 9 View Bookings");
+			System.out.println(" 10 Back to Main Menu");
 			System.out.println("============================");
 			System.out.println("Please indicate your choice:");
 
@@ -46,8 +47,8 @@ public class MovieFilter {
 				continue;
 			} 
 			filter = sc.nextInt();
-			if ((filter < 1) ||(filter > 9)) {
-				System.out.println("Please input an integer between 1 and 9.\n");
+			if ((filter < 1) ||(filter > 10)) {
+				System.out.println("Please input an integer between 1 and 10.\n");
 			}
 		}
 		return filter;
@@ -305,12 +306,17 @@ public class MovieFilter {
 	}
 
 	////////////////////////////////////////////////////////////////////////////
+	public static void listMovie(ArrayList<Movie> movieList){
+		printMovieList(movieList);
+	}
+
+	////////////////////////////////////////////////////////////////////////////
 	public static Movie filter(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase, User user) {
 		int Filter;
 		loop: while (true) {
 
 				Filter = getFilter();
-				if(Filter==9) {
+				if(Filter==10) {
 					return null;
 				}
 				
@@ -340,13 +346,17 @@ public class MovieFilter {
 					movieList = selectMovie(movieList);
 					break loop;
 				case 7:
-					movieList = new ArrayList<>(Database.MovieDatabase);
+					System.out.println("======= Movie List =======");
+					listMovie(movieList);
 					break;
 				case 8:
+					movieList = new ArrayList<>(Database.MovieDatabase);
+					break;
+				case 9:
 					ViewBooking currentUserBookings = new ViewBooking(user);
 					currentUserBookings.printBookings();
 					break;
-				case 9:
+				case 10:
 					return null;
 				default:
 					System.out.println("Invalid input. Please try again.");
