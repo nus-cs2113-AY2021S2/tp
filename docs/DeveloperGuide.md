@@ -1,20 +1,37 @@
 # Developer Guide
 
-## Design and Implementation
+-------------------------
+## Design 
 
+-------------------------
 ### Architecture
-![Architecture Diagram](ArchitectureDiagram.png)\
-The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.\
+![Architecture Diagram](diagrams/images/ArchitectureDiagram.png)
+The **Architecture Diagram** given above explains the high-level design of the App. Given below is a quick overview of each component.
 
-* `App`: At app launch, loads data from database and allow users to log in as customer or admin.
-* `Command`: Executes the the actions users can perform on a selected movie.
-* `Parser`: Reads from users' input and returns the filtered movie list.
-* `Storage`: Reads data from, and writes data to, the hard disk.
+* `MainApp`: At app launch, loads data from the database and allow users to log in as customer or admin.
 * `UI`: The UI of the App.
-* `User`: Contains user information.
+* `Logic`: The command executor.
 * `Model`: Holds the data of the App in memory.
+* `Storage`: Reads data from, and writes data to, the hard disk.
 
-### Class Diagram
+
+#### UI component
+![UI Diagram](diagrams/images/UiClassDiagram.png)
+The UI consists of a Login class, and a MainMenu interface.
+AdminMainMenu and CustomerMainMenu inherit from the MainMenu interface.\
+The UI component:\
+Allows users to login using the Model data.\
+Executes user commands using the Logic component.
+
+#### Logic component
+![Logic Diagram](diagrams/images/LogicClassDiagram.png)
+1. Logic uses the `MovieMenu` class to read users inputs and execute the commands accordingly.
+2. The command execution can affect the Model.
+3. The result of the command execution is passed back to the Ui.
+
+#### Model component
+
+-------------
 Below is the diagram that represents the classes in our system
 as well as their interactions to the other classes.\
 ![Class Diagram](CD.png)

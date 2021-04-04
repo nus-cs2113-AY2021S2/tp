@@ -1,0 +1,33 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package UI <<Rectangle>>{
+Interface MainMenu <<Interface>>
+Class Login
+Class AdminMainMenu
+Class CustomerMainMenu
+}
+
+package Model <<Rectangle>> {
+Class HiddenModel #FFFFFF
+}
+
+package Logic <<Rectangle>> {
+Class HiddenLogic #FFFFFF
+}
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> Login
+
+Login -left- MainMenu
+AdminMainMenu -up-|> MainMenu
+CustomerMainMenu -up-|> MainMenu
+Login -right-> Model
+AdminMainMenu -down-> Logic
+CustomerMainMenu -down-> Logic
+
+
+@enduml
