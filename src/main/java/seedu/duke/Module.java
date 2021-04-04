@@ -69,7 +69,8 @@ public class Module {
 
     public String toString() {
         return "Name: " + getName() + "\n\nDescription:\n"
-                + getDescription() + "\n\nReview:\n" + getReview()
+                + getDescription() + "\n\nComponents:\n" + getComponentsToString()
+                + "\n\nReview:\n" + getReview()
                 + "\n\nModular Credit:\n" + getMc() + "\n\nGrade:\n" + getGrade()
                 + "\n\nZoom Link:\n" + getZoomLink();
     }
@@ -96,5 +97,13 @@ public class Module {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public String getComponentsToString() {
+        if (!components.isEmpty()) {
+            return components.toString();
+        } else {
+            return "You have not added components yet.";
+        }
     }
 }
