@@ -32,8 +32,7 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 ### Contributions to Developer Guide:
 
 1. Created the architecture diagram, as well as sequence diagrams for storage.
-   > I was assigned to do the architecture diagram from the developer
-   >'s guide for the design section. In the design section, I also did the part relating to storage. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams in it.
+   > I was assigned to do the architecture diagram for the design section. In the design section, I also did the part relating to storage. For the implementation section, I did the part on loading and storing of data, including the sequence diagrams in it.
 1. Added instruction for manual testing.
    > I did the section on manual testing.
 1. Converted developer guide from Google Docs into Markdown.
