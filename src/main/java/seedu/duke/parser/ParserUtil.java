@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -277,7 +279,7 @@ public class ParserUtil {
      *
      * @param input full user input string
      * @param max   the maximum accepted index
-     * @return an integer arraylist with valid indices
+     * @return a sorted integer arraylist with valid indices
      * @throws NumberFormatException if non-integer value is present in the input
      */
     public static ArrayList<Integer> checkIndices(String input, int max) {
@@ -286,6 +288,7 @@ public class ParserUtil {
 
         // assumption that input is non-null
         assert (input != null);
+        
         ArrayList<String> nonIntegers = parseIndicesFromString(rawIndices, input);
         if (nonIntegers.size() != 0) {
             printNonIntegerWarning(nonIntegers, ui);
@@ -298,6 +301,9 @@ public class ParserUtil {
         if (removed.size() != 0) {
             printOutOfBoundsWarning(removed, ui);
         }
+
+        // Sorts array list
+        Collections.sort(indices);
         return indices;
     }
 
