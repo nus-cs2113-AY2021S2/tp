@@ -12,7 +12,7 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 
 1. Implemented storage system, excluding cheat-sheets.<br>
    > I implemented the Writer, Loader and ModuleList class. The storage system in our project is designed to be editable even from the outside, on top of just being readable. I even included instructions that the user can follow in the file, if they want to edit the data file in an external text editor tool. To ensure that the storage system would work reliably even as the other team members change their parts, I implemented my own code to split up and read the data.
-1. Implemented of shortcut listener for text editor.
+1. Implemented shortcut listener for text editor.
    > To ensure that the text-editor is usable without a mouse, we needed a way to allow users to interact with it via the keyboard. Using KeyListener, I implemented shortcuts such as "esc" to close, "crtrl-s" to save and "ctrl-up/down" to adjust text size. The shortcuts would call methods that Hemrish created in the TextEditor class. It took some reading, but overall this part was relatively easy.
 1. Cleaned up code for most components.<br>
    > The first time we merged our parts, there were a lot of inconsistencies and duplicates. Hence, I decided to tidy everything up. This includes shifting of constants and messages to their respective classes, removing of duplicate methods, renaming of variables for greater consistency, etc... It was time consuming, but it made the code a lot more cohesive and easier to read.
