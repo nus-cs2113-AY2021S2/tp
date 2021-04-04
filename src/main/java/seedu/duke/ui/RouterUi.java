@@ -18,7 +18,7 @@ public class RouterUi extends UiManager {
         showMessage(CommonMessage.DIVIDER);
 
         if (startAndDestination[0].equals(startAndDestination[1])) {
-           throw new SameBlockException();
+            throw new SameBlockException();
         }
         return startAndDestination;
     }
