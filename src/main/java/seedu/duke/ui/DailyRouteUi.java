@@ -19,7 +19,7 @@ public class DailyRouteUi extends UiManager {
             showMessage("Enter location of the first activity of the day: ");
             try {
                 block = getBlockEntry(block);
-                if (block.equals("END")){
+                if (block.equals("END")) {
                     throw new InvalidBlockException();
                 }
                 dailyBlocks.add(block);
@@ -50,7 +50,7 @@ public class DailyRouteUi extends UiManager {
 
     public String getBlockEntry(String previousBlock) throws InvalidBlockException, RepeatedBlockException {
         String block = getUserInput().toUpperCase();
-        if (block.equals(previousBlock)){
+        if (block.equals(previousBlock)) {
             throw new RepeatedBlockException();
         }
         if (isValidBlock(block) || block.equals("END")) {
