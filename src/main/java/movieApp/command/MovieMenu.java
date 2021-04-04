@@ -70,16 +70,17 @@ public class MovieMenu {
 				showtime_index.add(i); 
 				n++; 
 			}
-			
 		}
 		
 		Scanner sc = new Scanner(System.in);
 		int choice = -1;
 		while ((choice < 0) || (choice > (n-1))) {
-			System.out.println("\n>>Please enter your choice: ");
+			System.out.println("\n>>Please enter your choice: (input \"back\" to go back)");
 			if (!sc.hasNextInt()) {
+				if (checkForBackKeyword(sc)){
+					return;
+				}
 				System.out.println("Please input an integer.\n");
-				sc.next();
 				continue;
 			} 
 			choice = sc.nextInt();
@@ -142,7 +143,6 @@ public class MovieMenu {
 					System.out.println("Please input a row number that is within the range.\n");
 				}
 			}
-
 			
 			int col = -1;
 			while ((col <1) || (col > max_column)) {
@@ -224,7 +224,15 @@ public class MovieMenu {
 		}
 		Database.updateBookings();
 	}
-	
+
+	private static boolean checkForBackKeyword(Scanner sc) {
+		if(sc.next().trim().toLowerCase().equals("back")){
+			return true;
+		}else {
+			return false;
+		}
+	}
+
 	public static void addReview(Movie movie) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Comment:");

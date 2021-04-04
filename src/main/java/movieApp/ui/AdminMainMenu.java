@@ -65,7 +65,7 @@ public class AdminMainMenu implements MainMenu{
 			default:
 				System.out.println("Invalid selection, please select again!");
 			}
-		}while(functionSelection != 8);
+		}while(functionSelection != 5);
 		return -1;
 	}
 
