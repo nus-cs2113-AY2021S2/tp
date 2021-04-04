@@ -137,7 +137,7 @@ public class Review {
             for (int i = 0; i < description.length() / MAX_CHARS_VIEW; i++) {
                 int currentIndex = (i + 1) * MAX_CHARS_VIEW;
                 returnString += " |\n|                       ";
-                returnString += description.substring(currentIndex, Integer.min(currentIndex + MAX_CHARS_VIEW, 
+                returnString += description.substring(currentIndex, Integer.min(currentIndex + MAX_CHARS_VIEW,
                         description.length()));
             }
         } else {
@@ -148,6 +148,7 @@ public class Review {
 
     /**
      * Returns the length of the description for printing in view command.
+     *
      * @return length of description modulus the maximum number of characters allowed
      */
     public int getPrintDescriptionLength() {

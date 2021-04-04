@@ -7,6 +7,7 @@ import seedu.connoisseur.ui.Ui;
 
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 
+
 /**
  * Class with methods for different commands.
  */
@@ -43,7 +44,7 @@ public class Commands {
     }
 
     /**
-     * Goes into review mode. 
+     * Goes into review mode.
      */
     public void reviewMode() {
         isReviewMode = true;
@@ -51,7 +52,7 @@ public class Commands {
     }
 
     /**
-     * Goes into recommendation mode. 
+     * Goes into recommendation mode.
      */
     public void recommendationMode() {
         isReviewMode = false;
@@ -60,6 +61,7 @@ public class Commands {
 
     /**
      * Changes display to stars or asterisks.
+     *
      * @param displayType stars or asterisks
      */
     public void display(String displayType) {
@@ -116,7 +118,7 @@ public class Commands {
      * Exits connoisseur.
      */
     public void exit() {
-        storage.saveConnoisseurData(reviewList.sorter.getSortMethod(), reviewList.getDisplayStars(), 
+        storage.saveConnoisseurData(reviewList.sorter.getSortMethod(), reviewList.getDisplayStars(),
                 reviewList.reviews, recommendationList.recommendations);
         ui.printExitMessage();
     }

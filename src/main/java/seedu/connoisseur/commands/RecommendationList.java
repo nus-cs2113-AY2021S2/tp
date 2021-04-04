@@ -9,29 +9,31 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
+import static seedu.connoisseur.messages.Messages.CHANGE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.DUPLICATE_RECOMMENDATION;
 import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.EDIT_RECBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_LOCATION_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
-import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
-import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.DETAILS_PROMPT;
 import static seedu.connoisseur.messages.Messages.ENTER_DETAILS_PROMPT;
+import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 import static seedu.connoisseur.messages.Messages.EDIT_PROMPT_RECO;
 import static seedu.connoisseur.messages.Messages.ANYTHING_ELSE;
 import static seedu.connoisseur.messages.Messages.EDIT_TITLE_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_LOCATION_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_RECBY_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.DUPLICATE_RECOMMENDATION;
+import static seedu.connoisseur.messages.Messages.ABANDON_RECO;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -151,6 +153,7 @@ public class RecommendationList {
      */
     public void addRecommendationDetails() throws DuplicateException, EmptyInputException {
         String title;
+        String input;
         String category;
         double priceLow = 0;
         double priceHigh = 0;
@@ -170,6 +173,26 @@ public class RecommendationList {
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
+            }
+            if (reviewList.checkAndPrintDuplicateReview(title)) {
+                ui.println(CHANGE_RECO_TITLE);
+                boolean invalidCommand;
+                do {
+                    ui.println(ABANDON_RECO);
+                    input = ui.readCommand().toLowerCase().trim();
+                    if (input.equals("y")) {
+                        return;
+                    } else if (input.equals("n")) {
+                        break;
+                    } else {
+                        ui.println(INVALID_COMMAND);
+                        invalidCommand = true;
+                    }
+                } while (invalidCommand);
+
+                if (input.equals("n")) {
+                    continue;
+                }
             }
             break;
         }
@@ -347,6 +370,7 @@ public class RecommendationList {
         int index = -1;
         if (title == null || title.isBlank()) {
             ui.println(MISSING_EDIT_TITLE);
+            return;
         } else {
             for (int i = 0; i < recommendations.size(); i++) {
                 if (recommendations.get(i).getTitle().equals(title)) {
