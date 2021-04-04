@@ -2,6 +2,7 @@ package seedu.duke;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Set;
 
 import static seedu.duke.ModuleInfo.viewAllModules;
 
@@ -39,17 +40,26 @@ public class Component {
             try {
                 componentName = userInput[0];
                 weightage = Integer.parseInt(userInput[1]);
-                component.put(componentName, weightage);
-
-                //System.out.println("TEST");
-                //System.out.println(component);
-
-                modules.get(moduleNumberInt).setComponents(component);
-                setComponentsHere(component);
-                //component.values()
-                System.out.println("Component and weightage added!");
+                checkHundredPercent(component, weightage);
+                Ui.printConfirmComponentsMessage();
+                int confirmation = Ui.readCommandToInt();
+                if (confirmation == 1) {
+                    component.put(componentName, weightage);
+                    modules.get(moduleNumberInt).setComponents(component);
+                    setComponentsHere(component);
+                    //component.values()
+                    System.out.println("Component and weightage added!");
+                } else {
+                    System.out.println("Component and weightage not added.");
+                }
 
             } catch (NumberFormatException e) {
+                System.out.println("Component name cannot be an integer "
+                        + "or weightage should be an integer.");
+            } catch (InvalidComponentException e) {
+                System.out.println("The components' weightage added should not be negative "
+                        + "or exceed 100 percent in total.");
+            } catch (ArrayIndexOutOfBoundsException e) {
                 Ui.printModuleComponentPrompt();
             }
 
@@ -83,16 +93,33 @@ public class Component {
 
     }
 
-    //
-    //    public static void deleteComponent(String component) {
-    //        components.remove(component);
-    //    }
+
+//        public static void deleteComponent(String component) {
+//            components.remove(component);
+//        }
 
 
     public static void setComponentsHere(Hashtable<String, Integer> components) {
         Component.components = components;
     }
 
+    public static void checkHundredPercent(Hashtable<String, Integer> components,
+                                           int newWeightage) throws InvalidComponentException {
 
+        Set<String> setOfComponents = components.keySet();
+        int total = 0;
+        for(String key : setOfComponents) {
+            total += Integer.parseInt(String.valueOf(components.get(key)));
+        }
+        total += newWeightage;
+
+        if (total > 100) {
+            throw new InvalidComponentException();
+        }
+
+        if (newWeightage < 0) {
+            throw new InvalidComponentException();
+        }
+    }
 
 }

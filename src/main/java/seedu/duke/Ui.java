@@ -682,4 +682,12 @@ public class Ui {
     public static void printFilesCouldNotBeSavedMessage() {
         System.out.println("files could not be auto-saved:(");
     }
+
+    public static void printConfirmComponentsMessage() {
+        System.out.println("Are you sure you have keyed in the correct name and weightage?");
+        System.out.println("Note: you may only change this by deleting the module associated with it.");
+        System.out.println("[1] --- Yes, I confirm my inputs.\n"
+                + "[2] --- No, I wish to key in my inputs again.");
+    }
+
 }

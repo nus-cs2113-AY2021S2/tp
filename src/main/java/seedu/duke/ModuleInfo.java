@@ -160,7 +160,9 @@ public class ModuleInfo {
         viewAllModules();
         System.out.println("Which module would you like to view?");
         int moduleNumberInt = Ui.readCommandToInt();
-        if (moduleNumberInt >= 1 && moduleNumberInt <= modules.size()) {
+        boolean isValidModuleNumber = (moduleNumberInt >= 1 && moduleNumberInt <= modules.size());
+
+        if (isValidModuleNumber) {
             moduleNumberInt--;
             Module module = modules.get(moduleNumberInt);
             System.out.println(module.toString()); //name, description, review, MCs, grade are printed

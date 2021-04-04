@@ -109,12 +109,14 @@ public class Storage {
 
             }
             //components = parseComponent(components);
-            components = components.substring(1, components.length() - 1);
-            String[] keyValuePairs = components.split(",");
             Hashtable<String, Integer> table = new Hashtable<>();
-            for (String pair : keyValuePairs) {
-                String[] entry = pair.split("=");
-                table.put(entry[0].trim(), Integer.parseInt(entry[1].trim()));
+            if (!components.equals("{}")) {
+                components = components.substring(1, components.length() - 1);
+                String[] keyValuePairs = components.split(",");
+                for (String pair : keyValuePairs) {
+                    String[] entry = pair.split("=");
+                    table.put(entry[0].trim(), Integer.parseInt(entry[1].trim()));
+                }
             }
             module.setComponents(table);
             module.setGrade(grade);
