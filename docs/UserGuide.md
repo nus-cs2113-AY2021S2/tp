@@ -40,9 +40,9 @@
 
    4.3 [View Help](#43-view-help)
 
-   4.4 [Exit and Save](#4.4-Exit-&-Save-Connoisseur)
-5. [Command Summary](#5.-Command-Summary)
-6. [FAQ](#6.-FAQ)
+   4.4 [Exit and Save](#44-exit-and-save-connoisseur)
+5. [Command Summary](#5-command-summary)
+6. [FAQ](#6-faq)
 
 ## 1. Introduction
 
@@ -59,7 +59,7 @@ be able to store and access your reviews & recommendation easily.
 ## 2. About this Guide
 
 This guide gives you an overview of the features in Connoisseur and shows you how to get started using Connoisseur.
-Choose a link in the [Feature](#Table-of-Contents) section to get a step-by-step instruction, and understand how to use
+Choose a link in the [Feature](#table-of-contents) section to get a step-by-step instruction, and understand how to use
 Connoisseur.
 
 ### 2.1 What is in Connoisseur
@@ -88,7 +88,7 @@ If you are tired of lengthy and problematic installation processes, Connoisseur 
 and can be completed in a few simple steps. Follow the instructions below to try it out!
 
 1. Ensure that you have Java 11 or above installed. The latest version of Java can be found
-   [here](https://java.com/en/download/)
+   [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
 2. Download the latest version of Connoisseur from [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/releases). To do
    so, look for the file connoisseur.jar and click on it. Please refer to Figure 1 if you require assistance with
    locating the file. Figure 1 shows how to download version 2.1 of Connoisseur. Connoisseur.jar has been highlighted in
@@ -104,7 +104,7 @@ and can be completed in a few simple steps. Follow the instructions below to try
    ![Figure 3 - Starting Connoisseur](./images/ug/downloading2.png)
    <p align="center">Figure 3. Starting Connoisseur</p>
 6. You may now use Connoisseur by typing in commands and pressing Enter to execute it. Refer to
-   the [Command summary](#5.-Command-Summary) for a list of recognised commands.
+   the [Command summary](#5.-command-summary) for a list of recognised commands.
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for
    Connoisseur is saved in `connoisseur.json` in the _data folder_.
 
@@ -180,7 +180,7 @@ This feature allows you to change the saved sorting method as shows in Figure 8.
 
 Command: `sort [SORTING METHOD]`
 
-`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-List-Reviews) for
+`[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-list-reviews) for
 a list of recognised sorting methods.
 
 ![img_9.png](./images/ug/save_sorting_method.png)
@@ -348,7 +348,7 @@ If you want help with a specific command simple key in `help` followed by the `[
 ![img_20.png](./images/ug/help_command.png)
 <p align="center">Figure 22. Help message for commands</p>
 
-### 4.4 Exit & Save Connoisseur 
+### 4.4 Exit and Save Connoisseur 
 
 This feature allows you to exit Connoisseur and all you review and recommendation list will be stored as
 `connoisseur.json` in the _data folder_ as shown in Figure 23.
