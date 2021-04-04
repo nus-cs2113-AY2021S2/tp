@@ -275,7 +275,7 @@ public class Ui {
      * Prints invalid rating message.
      */
     public void printInvalidPricingMessage() {
-        println("Invalid number please add in a valid pricing!");
+        println("Invalid price range! Please enter whole numbers between 0 and 9999, separated by -");
     }
 
     /**

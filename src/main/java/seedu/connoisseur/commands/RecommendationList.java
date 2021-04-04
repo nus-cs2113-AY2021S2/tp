@@ -215,6 +215,14 @@ public class RecommendationList {
             try {
                 int priceFirst = Integer.parseInt(priceRange.split("-", 2)[0].trim());
                 int priceSecond = Integer.parseInt(priceRange.split("-", 2)[1].trim());
+                if (priceFirst < 0 || priceSecond < 0) {
+                    ui.printInvalidPricingMessage();
+                    continue;
+                }
+                if (priceFirst > 9999 || priceSecond > 9999) {
+                    ui.printInvalidPricingMessage();
+                    continue;
+                }
                 if (priceFirst > priceSecond) {
                     priceLow = priceSecond;
                     priceHigh = priceFirst;
@@ -438,6 +446,14 @@ public class RecommendationList {
                 try {
                     int priceFirst = Integer.parseInt(newPriceRange.split("-", 2)[0].trim());
                     int priceSecond = Integer.parseInt(newPriceRange.split("-", 2)[1].trim());
+                    if (priceFirst < 0 || priceSecond < 0) {
+                        ui.printInvalidPricingMessage();
+                        continue;
+                    }
+                    if (priceFirst > 9999 || priceSecond > 9999) {
+                        ui.printInvalidPricingMessage();
+                        continue;
+                    }
                     if (priceFirst > priceSecond) {
                         newPriceLow = priceSecond;
                         newPriceHigh = priceFirst;
