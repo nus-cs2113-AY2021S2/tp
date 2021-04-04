@@ -4,6 +4,7 @@ import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.*;
+import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.model.Patient;
 import seedu.model.staff.Staff;
@@ -19,6 +20,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class NurseScheduleChecker extends MainChecker {
 
@@ -108,11 +110,35 @@ public class NurseScheduleChecker extends MainChecker {
         return numberOfIntegers;
     }
 
-    public static void checkDuplicatePatientID(String id, ArrayList<NurseSchedule> list) throws DuplicateIDException {
+    public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list) throws DuplicateScheduleException {
         for (NurseSchedule patient : list) {
             if (patient.getPatientID().equals(id)) {
-                throw new DuplicateIDException("Patient");
+                if (patient.getDatetime().equals(date)) {
+                    try {
+                        date = NurseSchedulesParser.formatDate(date);
+                    } catch (ParseException e) {}
+                    throw new DuplicateScheduleException(date);
+                }
             }
         }
+    }
+
+    /**
+     * Checks if nurseID exists within schedules.
+     *
+     * @param nurseSchedules List of all schedules
+     * @param id NurseID to check
+     * @return boolean
+     * @throws NurseIdNotFound if id does not exist
+     */
+    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) throws NurseIdNotFound {
+        int i = 0;
+        while (i < nurseSchedules.size()) {
+            if (nurseSchedules.get(i).getNurseID().equals(id)) {
+                return true;
+            }
+            i++;
+        }
+        throw new NurseIdNotFound();
     }
 }
