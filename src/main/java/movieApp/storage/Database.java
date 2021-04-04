@@ -1,9 +1,6 @@
 package movieApp.storage;
 
-import movieApp.Cineplex;
-import movieApp.Movie;
-import movieApp.Review;
-import movieApp.Showtimes;
+import movieApp.*;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
@@ -11,6 +8,8 @@ import movieApp.parser.MovieFilter;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Database {
@@ -75,8 +74,8 @@ public class Database {
         ObjectInputStream ois_movie = new ObjectInputStream(fis_movie);
 
         ArrayList<Movie> MList = (ArrayList<Movie>) ois_movie.readObject();
-        // System.out.println(MList);
         ois_movie.close();
+        //MList = updateMovieStatus(MList);
         return MList;
     }
 
@@ -86,7 +85,6 @@ public class Database {
         ObjectInputStream ois_cineplex = new ObjectInputStream(fis_cineplex);
 
         ArrayList<Cineplex> CPList = (ArrayList<Cineplex>) ois_cineplex.readObject();
-        // System.out.println(CPList);
         ois_cineplex.close();
         return CPList;
     }
@@ -97,9 +95,28 @@ public class Database {
         ObjectInputStream ois_showtime = new ObjectInputStream(fis_showtime);
 
         ArrayList<Showtimes> STList = (ArrayList<Showtimes>) ois_showtime.readObject();
-        // System.out.println(STList);
         ois_showtime.close();
         return STList;
+    }
+
+    private static ArrayList<Movie> updateMovieStatus(ArrayList<Movie> MList) {
+        Date currentDate = new Date();
+        Calendar startCalendar = null;
+        Calendar endCalendar = null;
+        for (int i = 0; i<MList.size(); i++){
+            startCalendar = MList.get(i).getStartDate();
+            endCalendar = MList.get(i).getStartDate();
+            Date startDate = startCalendar.getTime();
+            Date endDate = endCalendar.getTime();
+            if(currentDate.compareTo(startDate) < 0){
+                MList.get(i).setMovieStatus(1);
+            }else if(currentDate.compareTo(endDate) > 0){
+                MList.get(i).setMovieStatus(4);
+            }else{
+                MList.get(i).setMovieStatus(3);
+            }
+        }
+        return MList;
     }
 
     public static void deleteMovie(int choice) throws Exception {
