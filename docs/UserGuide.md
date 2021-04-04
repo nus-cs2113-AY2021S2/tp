@@ -14,6 +14,18 @@ If you can type fast, MovieApp can help you view and book movies conveniently.
 3. Copy the file to the folder you want to use as the home folder for your MovieApp.
 4. Download the data.zip and unzip it in the same directory as `MovieApp` from [here](https://github.com/AY2021S2-CS2113-T10-3/tp/releases/tag/v2.0).
 5. Open your terminal / command prompt. Direct it to the folder which contains MovieApp file. Type `java -jar tp.jar` to run the app. This interface should appear if you successfully run it.
+```
+___  ___           _       ___                    
+|  \/  |          (_)     / _ \                 
+| .  . | _____   ___  ___/ /_\ \_ __  _ __      
+| |\/| |/ _ \ \ / / |/ _ \  _  | '_ \| '_ \ 
+| |  | | (_) \ V /| |  __/ | | | |_) | |_) |     
+\_|  |_/\___/ \_/ |_|\___\_| |_/ .__/| .__/  
+                               | |   | |          
+                               |_|   |_|            
+-------------------Login----------------
+Enter Name: (input "out" to quit the application)
+```
 
 6. To use the app, follow the instructions given in the app and type the menu of your choice. e.g
 
@@ -34,12 +46,12 @@ The following will execute if you type:
 ## Features
 ### General User Guide
 
-
-> -------------------Login----------------  
-> Enter Name: (input "out" to quit the application)  
-> Due to a bug in some IDEs, password masking is disabled. Please only run this program on the console!
-> Enter Password :
-
+```
+-------------------Login----------------  
+Enter Name: (input "out" to quit the application)  
+Due to a bug in some IDEs, password masking is disabled. Please only run this program on the console!
+Enter Password :
+```
 
 **1. Login: `username password`**\
 Allowing to choose the mode “Admin” or “Customer” based on user’s account.

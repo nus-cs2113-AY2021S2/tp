@@ -12,17 +12,6 @@ import java.util.Scanner;
 public class CustomerMainMenu implements MainMenu{
 
 	public static int displayMenu(int currentUserIndex, ArrayList<User> user){
-		final String LOGO = "\n" +
-				"___  ___           _       ___                    \n" +
-				"|  \\/  |          (_)     / _ \\                 \n" +
-				"| .  . | _____   ___  ___/ /_\\ \\_ __  _ __      \n" +
-				"| |\\/| |/ _ \\ \\ / / |/ _ \\  _  | '_ \\| '_ \\ \n" +
-				"| |  | | (_) \\ V /| |  __/ | | | |_) | |_) |     \n" +
-				"\\_|  |_/\\___/ \\_/ |_|\\___\\_| |_/ .__/| .__/  \n" +
-				"                               | |   | |          \n" +
-				"                               |_|   |_|            ";
-
-		System.out.println(LOGO);
 		System.out.println("Welcome, " + user.get(currentUserIndex).getName());
 		getOption(user.get(currentUserIndex));
 		return -1;
