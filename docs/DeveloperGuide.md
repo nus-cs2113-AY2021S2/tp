@@ -999,10 +999,38 @@ will be ready for use.
 
 ### D.14 Remove a record from the record list
 
-1. Prerequisite: None.
-1. Test case:
-1. Test case:
+1. Prerequisite: 
+   1. Assuming your current record list is empty.
+   1. The record list must contain any instance of record (`Expense`, `Loan`, `Saving`)
+   1. Add a record into the list `add -e Chicken Rice Lunch at Deck -a 2.50 -d 30/03/2021`
+1. Test case: `remove -i 1` Expected: The record with index 1 will be removed from the record list.
 1. Other incorrect commands to try:
-   1.
-   1.
-   1.
+   1. `remove`
+   1. `remove -i`
+   1. `remove -i 0`
+   1. `remove -i -x` (where x is any integer)
+   1. `remove -i y` (where y is any integer that is greater than the size of the array)
+
+### D.15 Checking the CreditScore of a person
+
+1. Prerequisite:
+   1. Assuming your current record list is empty.
+   1. The record list must contain a loan record.
+   1. Add a loan into the list `add -l Loan to Jason -a 500 -d 28/03/2021 -p Jason`
+   1. Mark the loan as returned `return -i 1 -d 10/04/2021`
+1. Test case: `creditscore jason`
+   Expected: The credit score shown should be 90 instead of 100 (default).
+1. Other incorrect commands to try:
+   1. `creditscore`
+   1. `creditscore -p jason`
+   1. `creditscore -i x` (where x is any integer)
+   
+Note: The `creditscore` command will also calculate the person's credit score should the loan not be returned.
+
+### D.16 Displaying the help list
+1. Prerequisite: None.
+1. Test case: `help` Expected: The summary table of all commands and  format will be displayed.
+
+### D.17 Exiting Finux application
+1. Prerequisite: None.
+1. Test case: `exit` Expected: Finux application exits and displays the exit message.
