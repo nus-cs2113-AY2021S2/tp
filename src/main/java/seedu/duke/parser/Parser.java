@@ -13,6 +13,7 @@ import seedu.duke.command.favouritecommand.AddFavouriteCommand;
 import seedu.duke.command.favouritecommand.DeleteFavouriteCommand;
 import seedu.duke.command.favouritecommand.RepeatFavouriteCommand;
 import seedu.duke.command.favouritecommand.ShowFavouriteCommand;
+import seedu.duke.command.generalcommand.ShowVenuesCommand;
 import seedu.duke.command.historycommand.ClearHistoryCommand;
 import seedu.duke.command.historycommand.RepeatHistoryCommand;
 import seedu.duke.command.historycommand.ShowHistoryCommand;
@@ -27,58 +28,80 @@ public class Parser {
         assert userInput != null : "User input cannot be null";
         Command command;
         String filteredUserInput = userInput.trim().toLowerCase();
-        if (filteredUserInput.equals("bye")) {
+        switch (filteredUserInput) {
+        case "bye":
             command = new ByeCommand();
-        }  else if (filteredUserInput.equals("help")) {
+            break;
+        case "help":
             command = new HelpCommand();
+            break;
+        case "show venues":
+            command = new ShowVenuesCommand();
+            break;
 
             //route
-        } else if (filteredUserInput.equals("go")) {
+        case "go":
             command = new GoCommand();
+            break;
 
             //alias
-        } else if (filteredUserInput.equals("add alias")) {
+        case "add alias":
             command = new AddCustomAliasCommand();
-        } else if (filteredUserInput.equals("show alias")) {
+            break;
+        case "show alias":
             command = new ShowCustomAliasCommand();
-        } else if (filteredUserInput.equals("delete alias")) {
+            break;
+        case "delete alias":
             command = new DeleteCustomAliasCommand();
+            break;
 
             //history
-        } else if (filteredUserInput.equals("history")) {
+        case "history":
             command = new ShowHistoryCommand();
-        } else if (filteredUserInput.equals("repeat history")) {
+            break;
+        case "repeat history":
             command = new RepeatHistoryCommand();
-        } else if (filteredUserInput.equals("clear history")) {
+            break;
+        case "clear history":
             command = new ClearHistoryCommand();
+            break;
 
             //favourite
-        } else if (filteredUserInput.equals("show favourite")) {
+        case "show favourite":
             command = new ShowFavouriteCommand();
-        } else if (filteredUserInput.equals("add favourite")) {
+            break;
+        case "add favourite":
             command = new AddFavouriteCommand();
-        } else if (filteredUserInput.equals("delete favourite")) {
+            break;
+        case "delete favourite":
             command = new DeleteFavouriteCommand();
-        } else if (filteredUserInput.equals("repeat favourite")) {
+            break;
+        case "repeat favourite":
             command = new RepeatFavouriteCommand();
+            break;
 
             //daily route
-        }  else if (filteredUserInput.equals("add daily route")) {
+        case "add daily route":
             command = new AddDailyRouteCommand();
-        }  else if (filteredUserInput.equals("show daily route")) {
+            break;
+        case "show daily route":
             command = new ShowDailyRouteCommand();
-        }  else if (filteredUserInput.equals("clear daily route")) {
+            break;
+        case "clear daily route":
             command = new ClearDailyRouteCommand();
+            break;
 
             //note
-        } else if (filteredUserInput.equals("add note")) {
+        case "add note":
             command = new AddNoteCommand();
-        } else if (filteredUserInput.equals("show note")) {
+            break;
+        case "show note":
             command = new ShowNoteCommand();
-        } else if (filteredUserInput.equals("delete note")) {
+            break;
+        case "delete note":
             command = new DeleteNoteCommand();
-
-        } else {
+            break;
+        default:
             throw new InvalidCommandException();
         }
         return command;

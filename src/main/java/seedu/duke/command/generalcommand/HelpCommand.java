@@ -35,7 +35,9 @@ public class HelpCommand extends Command {
             + "\t" + "* lists all favourite routes that were previously created\n"
             + "15. delete favourite:\n"
             + "\t" + "* deletes a favourite route based on index number tagged to the route\n"
-            + "16. bye:\n"
+            + "16. show venues:\n"
+            + "\t" + "* lists all possible venues that can be used in the application (excluding user's alias)\n"
+            + "17. bye:\n"
             + "\t" + "* exits the application";
 
     public HelpCommand() {
