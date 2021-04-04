@@ -2,9 +2,11 @@
 
 -------------------------
 ## Introduction
+
 MovieApp is a desktop app for users to see the upcoming shows, book a movie and read movie reviews.\
 The app is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).\
 If you can type fast, MovieApp can help you view and book movies conveniently.
+
 -------------------------
 ## Design 
 
