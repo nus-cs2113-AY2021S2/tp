@@ -6,8 +6,6 @@ import seedu.duke.exception.InvalidFilePathException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.exception.LoadDataException;
 import seedu.duke.exception.SaveDataException;
-import seedu.duke.storage.DataDecoder;
-import seedu.duke.storage.DataEncoder;
 import seedu.duke.storage.Storage;
 
 import java.io.IOException;
@@ -18,6 +16,7 @@ import java.util.Scanner;
 public class HistoryStorage extends Storage {
     public HistoryStorage(String filepath) throws InvalidFilePathException {
         super(filepath);
+        storageName = "History";
     }
 
     @Override
@@ -36,7 +35,7 @@ public class HistoryStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = decodeData(encodedData);
+                String[] decodedData = decodeHistoryAndFavouriteData(encodedData, nusMap);
                 history.addHistory(decodedData[0], decodedData[1]);
             }
         } catch (IOException e) {
