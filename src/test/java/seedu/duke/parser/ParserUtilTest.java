@@ -31,10 +31,10 @@ class ParserUtilTest {
         String input4 = "10 3 99 2 10909 3 99 99 100 1 10"; // out of bounds, duplicates, unsorted
         assertEquals(expected, ParserUtil.checkIndices(input4, max));
 
-        String input5 = "10 1 -1 -99 -2 10918 2 3 -99 990 990 10 0 10"; // out of bounds (negative), duplicates, unsorted
+        String input5 = "10 1 -1 -99 -2 10918 2 3 -99 990 990 10 0 10"; // out of bounds, duplicates, unsorted
         assertEquals(expected, ParserUtil.checkIndices(input5, max));
 
-        String input6 = "10 2 3 3 -1 -99 -2 10918 2 3 1 abc"; // out of bounds (negative), duplicates, unsorted, non-integer
+        String input6 = "10 2 3 3 -1 -99 -2 10918 2 3 1 abc"; // out of bounds, duplicates, unsorted, non-integer
         assertEquals(expected, ParserUtil.checkIndices(input6, max));
     }
 }
