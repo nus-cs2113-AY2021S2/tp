@@ -636,8 +636,23 @@ behave similarly in the way they call the `saveData` method, the following will 
 for all the three methods above.
 
 ***Step 1***
+Before the end of the `add`, `remove` or `return` command, the `saveData()` method will be invoked.
 
 ***Step 2***
+The `saveData()` method will then call on the `writeRecordListToSaveFile()` method. This method will pass the
+recordList back to the `RecordList` class to invoke the `getRecordAt()` method.
+
+***Step 3***
+The `getRecordAt()` method will return the `record` that is identified by its index. With this `record`, the
+method `writeRecordListToSaveFile` will then call on the `convertFileFormat()` method in the `RecordList` class. This
+method will convert the `record` that is stored in the `recordList` into a text readable format.
+
+***Step 4***
+The text format of the `record` will then be written into the `finux.txt` file through the `FileWriter` write method.
+
+***Step 5***
+The `writeRecordListToSaveFile()` will repeat Steps 2 to 4 until the last `record` in the `recordList`. And each 
+`record` will be written and separated by a newline.
 
 ![LoadingFeatureSequenceDiagram](img/StorageSequenceDiagramLoad.png)
 *Figure x: Sequence Diagram for Storage's load function*

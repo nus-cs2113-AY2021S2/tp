@@ -13,7 +13,7 @@ calls the same saveData method,we will
 simplify it by grouping them together.
 end note
 
-XYZCommand -> Storage : saveData()
+XYZCommand -> Storage : saveData(recordList, (creditScoreReturnedLoansMap))
 activate Storage
 Storage -> Storage : writeRecordListToSaveFile(recordList)
 activate Storage
