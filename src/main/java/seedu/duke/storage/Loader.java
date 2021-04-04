@@ -58,10 +58,10 @@ public class Loader {
         ArrayList<String> moduleCodes = new ArrayList<>();
         File directory = new File(FOLDER_PATH);
         File[] files = directory.listFiles();
-        sortFilesByCreationTime(files);
         if (files == null) {
             return moduleCodes;
         }
+        sortFilesByCreationTime(files);
         for (File file : files) {
             if (file.isDirectory()) {
                 moduleCodes.add(file.getName());
