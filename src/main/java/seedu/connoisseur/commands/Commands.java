@@ -117,7 +117,7 @@ public class Commands {
     /**
      * Print invalid parameters text.
      */
-    public void InvalidParameters() {
+    public void invalidParameters() {
         ui.println("Invalid command. Please do not enter extra parameters.");
     }
 
@@ -142,7 +142,7 @@ public class Commands {
             if (input.equals("")) {
                 recommendationList.listRecommendations();
             } else {
-                InvalidParameters();
+                invalidParameters();
             }
         }
     }

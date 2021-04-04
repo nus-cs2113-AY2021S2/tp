@@ -34,14 +34,14 @@ public class Parser {
             if (arguments == null || arguments.isBlank()) {
                 commands.reviewMode();
             } else {
-                commands.InvalidParameters();
+                commands.invalidParameters();
             }
             break;
         case "reco":
             if (arguments == null || arguments.isBlank()) {
                 commands.recommendationMode();
             } else {
-                commands.InvalidParameters();
+                commands.invalidParameters();
             }
             break;
         case "list":
@@ -78,7 +78,7 @@ public class Parser {
                 commands.exit();
                 return true;
             } else {
-                commands.InvalidParameters();
+                commands.invalidParameters();
                 break;
             }
         default:
