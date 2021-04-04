@@ -83,7 +83,7 @@ public class Constants {
     public static final String UNMARK = "mark as undone";
 
     //Parser
-    public static final String FORMAT_MODULE_CODE = "([A-z]{2,3}[\\d]{4}[A-z]?)";
+    public static final String FORMAT_MODULE_CODE = "([A-z]{2,3}[\\d]{4}[A-z]{0,2})";
     public static final String FORMAT_EMAIL = "[A-z0-9_.-]+@[A-z.]+";
     public static final String FORMAT_LINK = "[(http(s)?):\\/\\/(www\\.)?a-zA-Z0-9@:%._\\-\\+~#=]{2,256}\\.[a-z]{2,6}"
             + "\\b([-a-zA-Z0-9@:%_\\+.~#?&//=]*)";
