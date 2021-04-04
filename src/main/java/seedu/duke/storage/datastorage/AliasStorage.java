@@ -6,8 +6,6 @@ import seedu.duke.exception.InvalidAliasException;
 import seedu.duke.exception.InvalidFilePathException;
 import seedu.duke.exception.LoadDataException;
 import seedu.duke.exception.SaveDataException;
-import seedu.duke.storage.DataDecoder;
-import seedu.duke.storage.DataEncoder;
 import seedu.duke.storage.Storage;
 
 import java.io.IOException;
@@ -19,12 +17,13 @@ public class AliasStorage extends Storage {
 
     public AliasStorage(String filepath) throws InvalidFilePathException {
         super(filepath);
+        storageName = "Alias";
     }
 
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeAlias(blockAlias);
+            ArrayList<String> encodedData = encodeAlias(blockAlias);
             Files.write(filepath, encodedData);
         } catch (IOException e) {
             throw new SaveDataException();
@@ -37,8 +36,8 @@ public class AliasStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
-                blockAlias.addAlias(decodedData[1], decodedData[0]);
+                String[] decodedData = decodeAliasAndNoteData(encodedData, nusMap);
+                blockAlias.addAlias(decodedData[0], decodedData[1]);
             }
         } catch (IOException | InvalidAliasException e) {
             throw new LoadDataException();

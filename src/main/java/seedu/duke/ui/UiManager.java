@@ -50,4 +50,8 @@ public class UiManager {
     public void showGreetMessage() {
         showMessageWithDivider(CommonMessage.GREETING_MESSAGE);
     }
+
+    public void showLoadSuccessMessage(String name) {
+        showMessage(String.format(CommonMessage.SUCCESSFUL_LOAD, name));
+    }
 }

@@ -6,8 +6,6 @@ import seedu.duke.exception.InvalidFilePathException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.exception.LoadDataException;
 import seedu.duke.exception.SaveDataException;
-import seedu.duke.storage.DataDecoder;
-import seedu.duke.storage.DataEncoder;
 import seedu.duke.storage.Storage;
 
 import java.io.IOException;
@@ -19,12 +17,13 @@ public class FavouriteStorage extends Storage {
 
     public FavouriteStorage(String filepath) throws InvalidFilePathException {
         super(filepath);
+        storageName = "Favourite";
     }
 
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeFavourite(favourite);
+            ArrayList<String> encodedData = encodeFavourite(favourite);
             Files.write(filepath, encodedData);
         } catch (IOException | InvalidIndexException e) {
             throw new SaveDataException();
@@ -37,7 +36,7 @@ public class FavouriteStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
+                String[] decodedData = decodeHistoryAndFavouriteData(encodedData, nusMap);
                 favourite.addFavourite(decodedData[0], decodedData[1]);
             }
         } catch (IOException e) {

@@ -1,6 +1,9 @@
+//@@author SimBowen
+
 package seedu.duke.ui;
 
 import seedu.duke.data.NusMap;
+import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 
@@ -8,46 +11,57 @@ import java.util.ArrayList;
 
 public class DailyRouteUi extends UiManager {
 
-    public ArrayList<String> getScheduleInfo() throws InvalidBlockException {
-        showMessage("Enter Location of the first activity of the day: ");
+    public ArrayList<String> getScheduleInfo() {
         ArrayList<String> dailyBlocks = new ArrayList<>();
-        String schedule = getUserInput().toUpperCase();
-        while (!isEnd(schedule)) {
-            dailyBlocks.add(schedule);
-            showMessage("Enter Location of the next activity of the day: ");
-            schedule = getUserInput().toUpperCase();
+        String block = "Invalid Block";
+        while (!isValidBlock(block)) {
+            showMessage("Enter location of the first activity of the day: ");
+            try {
+                block = getBlockEntry();
+            } catch (InvalidBlockException e) {
+                showMessage(e.getMessage());
+            }
+        }
+        while (!block.equals("END")) {
+            try {
+                dailyBlocks.add(block);
+                showMessage("Enter location of the next activity of the day: ");
+                block = getBlockEntry();
+            } catch (InvalidBlockException e) {
+                showMessage(e.getMessage());
+            }
         }
         showMessage(CommonMessage.DIVIDER);
         return dailyBlocks;
     }
 
-    public boolean isEnd(String schedule) throws InvalidBlockException {
+
+    public boolean isValidBlock(String block) {
         NusMap nusMap = new NusMap();
-        if (schedule.equals("END")) {
-            return true;
-        } else if (nusMap.getBlock(schedule) == null) {
+        return nusMap.getBlock(block) != null;
+    }
+
+    public String getBlockEntry() throws InvalidBlockException {
+        String block = getUserInput().toUpperCase();
+        if (isValidBlock(block) || block.equals("END")) {
+            return block;
+        } else {
             throw new InvalidBlockException();
         }
-        return false;
     }
 
-    public int getDayEntryForAdd(ArrayList<String> validDays) throws InvalidIndexException {
-        showListOfDays(validDays);
-        showMessage("SELECT ENTRY TO ADD:");
-        int dayIndex = getEntryFromUser(validDays);
-        showMessage(CommonMessage.DIVIDER);
-        return dayIndex;
-    }
-
-    public int getDayEntryForShow(ArrayList<String> selectableDays) throws InvalidIndexException {
+    public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
-        showMessage("SELECT ENTRY TO VIEW:");
+        showMessage("SELECT ENTRY:");
         int dayIndex =  getEntryFromUser(selectableDays);
         showMessage(CommonMessage.DIVIDER);
         return dayIndex;
     }
 
-    public void showListOfDays(ArrayList<String> days) {
+    public void showListOfDays(ArrayList<String> days) throws EmptyDailyRouteException {
+        if (days.size() == 0) {
+            throw new EmptyDailyRouteException();
+        }
         showMessage("Here are the available days:");
         for (int i = 0; i < days.size(); i++) {
             showMessage((i + 1) + ". " + days.get(i));

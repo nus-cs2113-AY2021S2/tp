@@ -5,8 +5,7 @@ package seedu.duke.storage.datastorage;
 import seedu.duke.exception.InvalidFilePathException;
 import seedu.duke.exception.LoadDataException;
 import seedu.duke.exception.SaveDataException;
-import seedu.duke.storage.DataDecoder;
-import seedu.duke.storage.DataEncoder;
+
 import seedu.duke.storage.Storage;
 
 import java.io.IOException;
@@ -19,12 +18,13 @@ public class NotesStorage extends Storage {
 
     public NotesStorage(String filepath) throws InvalidFilePathException {
         super(filepath);
+        storageName = "Note";
     }
 
     @Override
     public void saveData() throws SaveDataException {
         try {
-            ArrayList<String> encodedData = new DataEncoder().encodeNotes(nusMap);
+            ArrayList<String> encodedData = encodeNotes(nusMap);
             Files.write(filepath, encodedData);
         } catch (IOException e) {
             throw new SaveDataException();
@@ -37,7 +37,7 @@ public class NotesStorage extends Storage {
             Scanner s = new Scanner(filepath);
             while (s.hasNext()) {
                 String encodedData = s.nextLine();
-                String[] decodedData = new DataDecoder().decodeData(encodedData);
+                String[] decodedData = decodeAliasAndNoteData(encodedData, nusMap);
                 nusMap.getBlock(decodedData[0]).addNote(decodedData[1]);
             }
         } catch (IOException e) {
