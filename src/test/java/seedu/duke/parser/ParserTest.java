@@ -30,11 +30,11 @@ class ParserTest {
     public static final String ADD_MODULE = "add CS2113T";
     public static final String HELP = "help";
     public static final String OPEN_MODULE = "open cs1234";
-    public static final String DELETE_MODULE = "delete";
+    public static final String DELETE_MODULE = "del";
     public static final String ARBITRARY_STRING = "AakjhdLKLlkjlLJAAasldkj 12801 =123-=-';";
     public static final String INCORRECT_DASHBOARD1 = "help me!!";
     public static final String INCORRECT_DASHBOARD2 = "modules abc 123";
-    public static final String INCORRECT_DASHBOARD3 = "delete something";
+    public static final String INCORRECT_DASHBOARD3 = "del something";
 
         
     //@@author ivanchongzhien
