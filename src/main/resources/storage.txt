@@ -137,3 +137,4 @@ The Deck<>Noodles<>Curry Chicken Noodles<>2.30
 The Deck<>Noodles<>Pork Rib Noodles<>2.30
 The Deck<>Noodles<>Lor Mee<>2.30
 Techno Edge
+Techno Edge<>Western
