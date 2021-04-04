@@ -47,9 +47,10 @@ public class ReviewList {
     private boolean displayStars;
 
     /**
-     * Constructor for ReviewList with stored data. 
+     * Constructor for ReviewList with stored data.
+     *
      * @param connoisseurData locally stored data
-     * @param ui instance of ui for user interaction
+     * @param ui              instance of ui for user interaction
      */
     public ReviewList(ConnoisseurData connoisseurData, Ui ui) {
         this.ui = ui;
@@ -59,7 +60,8 @@ public class ReviewList {
     }
 
     /**
-     * Constructor for ReviewList without stored data. 
+     * Constructor for ReviewList without stored data.
+     *
      * @param ui instance of ui for user interaction
      */
     public ReviewList(Ui ui) {
@@ -249,7 +251,7 @@ public class ReviewList {
         ui.printTableEndBorderForReview();
     }
 
-    
+
     /**
      * Displays a single review.
      *
@@ -365,7 +367,8 @@ public class ReviewList {
     }
 
     /**
-     * Edit a review. 
+     * Edit a review.
+     *
      * @param title title of review to be edited
      */
     public void editReview(String title) {
@@ -418,6 +421,7 @@ public class ReviewList {
 
     /**
      * Edit specific fields of the review.
+     *
      * @param index index of the review to be edited
      */
     public boolean editReviewFields(int index) {
@@ -545,7 +549,8 @@ public class ReviewList {
     }
 
     /**
-     * Add converted recommendation to reviews. 
+     * Add converted recommendation to reviews.
+     *
      * @param r converted recommendation
      */
     public void receiveConvert(Review r) {
@@ -553,7 +558,8 @@ public class ReviewList {
     }
 
     /**
-     * Changes display of rating. 
+     * Changes display of rating.
+     *
      * @param displayType type of rating to be displayed
      */
     public void changeDisplay(String displayType) {
@@ -569,7 +575,8 @@ public class ReviewList {
     }
 
     /**
-     * Getter for displayStars to be used in storage. 
+     * Getter for displayStars to be used in storage.
+     *
      * @return displayStars
      */
     public boolean getDisplayStars() {

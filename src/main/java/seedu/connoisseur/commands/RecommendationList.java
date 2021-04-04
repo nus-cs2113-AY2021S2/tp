@@ -9,29 +9,31 @@ import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
 
+import static seedu.connoisseur.messages.Messages.CHANGE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.DUPLICATE_RECOMMENDATION;
 import static seedu.connoisseur.messages.Messages.RECO_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
 import static seedu.connoisseur.messages.Messages.PRICE_PROMPT;
+import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
+import static seedu.connoisseur.messages.Messages.EDIT_RECBY_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_CATEGORY_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_LOCATION_PROMPT;
+import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
-import static seedu.connoisseur.messages.Messages.ADD_SUCCESS;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
-import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
-import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.DETAILS_PROMPT;
 import static seedu.connoisseur.messages.Messages.ENTER_DETAILS_PROMPT;
+import static seedu.connoisseur.messages.Messages.CONVERT_SUCCESS;
+import static seedu.connoisseur.messages.Messages.MISSING_EDIT_TITLE;
 import static seedu.connoisseur.messages.Messages.EDIT_PROMPT_RECO;
 import static seedu.connoisseur.messages.Messages.ANYTHING_ELSE;
 import static seedu.connoisseur.messages.Messages.EDIT_TITLE_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_LOCATION_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_RECBY_PROMPT;
-import static seedu.connoisseur.messages.Messages.EDIT_CATEGORY_PROMPT;
-import static seedu.connoisseur.messages.Messages.DUPLICATE_RECOMMENDATION;
+import static seedu.connoisseur.messages.Messages.ABANDON_RECO;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -42,10 +44,11 @@ public class RecommendationList {
     private ReviewList reviewList;
 
     /**
-     * Constructor for RecommendationList with stored data. 
+     * Constructor for RecommendationList with stored data.
+     *
      * @param connoisseurData locally stored data
-     * @param ui instance of ui for user interaction
-     * @param reviewList instance of reviewlist
+     * @param ui              instance of ui for user interaction
+     * @param reviewList      instance of reviewlist
      */
     public RecommendationList(ConnoisseurData connoisseurData, Ui ui, ReviewList reviewList) {
         this.ui = ui;
@@ -55,7 +58,8 @@ public class RecommendationList {
 
     /**
      * Constructor for RecommendationList without stored data.
-     * @param ui instance of ui for user interaction
+     *
+     * @param ui         instance of ui for user interaction
      * @param reviewList instance of reviewlist
      */
     public RecommendationList(Ui ui, ReviewList reviewList) {
@@ -149,6 +153,7 @@ public class RecommendationList {
      */
     public void addRecommendationDetails() throws DuplicateException, EmptyInputException {
         String title;
+        String input;
         String category;
         int priceLow;
         int priceHigh;
@@ -168,6 +173,26 @@ public class RecommendationList {
             if (title.length() > 20) {
                 ui.printInputTooLongMessage_20Char();
                 continue;
+            }
+            if (reviewList.checkAndPrintDuplicateReview(title)) {
+                ui.println(CHANGE_RECO_TITLE);
+                boolean invalidCommand;
+                do {
+                    ui.println(ABANDON_RECO);
+                    input = ui.readCommand().toLowerCase().trim();
+                    if (input.equals("y")) {
+                        return;
+                    } else if (input.equals("n")) {
+                        break;
+                    } else {
+                        ui.println(INVALID_COMMAND);
+                        invalidCommand = true;
+                    }
+                } while (invalidCommand);
+
+                if (input.equals("n")) {
+                    continue;
+                }
             }
             break;
         }
@@ -258,7 +283,8 @@ public class RecommendationList {
     }
 
     /**
-     * Converts a recommendation to a review. 
+     * Converts a recommendation to a review.
+     *
      * @param title title of recommendation to be converted
      */
     public void convertRecommendation(String title) {
@@ -330,13 +356,15 @@ public class RecommendationList {
     }
 
     /**
-     * Edit a recommendation. 
+     * Edit a recommendation.
+     *
      * @param title title of recommendation to be edited
      */
     public void editRecommendation(String title) {
         int index = -1;
         if (title == null || title.isBlank()) {
             ui.println(MISSING_EDIT_TITLE);
+            return;
         } else {
             for (int i = 0; i < recommendations.size(); i++) {
                 if (recommendations.get(i).getTitle().equals(title)) {
@@ -372,7 +400,8 @@ public class RecommendationList {
     }
 
     /**
-     * Edit specific fields of the recommendation. 
+     * Edit specific fields of the recommendation.
+     *
      * @param index index of the recommendation to be edited
      */
     public boolean editRecommendationFields(int index) {
@@ -401,7 +430,7 @@ public class RecommendationList {
             recommendations.get(index).setTitle(newTitle);
             break;
         case "price range":
-            int newPriceLow;    
+            int newPriceLow;
             int newPriceHigh;
             while (true) {
                 ui.println(EDIT_RANGE_PROMPT);
