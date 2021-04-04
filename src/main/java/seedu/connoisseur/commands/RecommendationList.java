@@ -42,10 +42,11 @@ public class RecommendationList {
     private ReviewList reviewList;
 
     /**
-     * Constructor for RecommendationList with stored data. 
+     * Constructor for RecommendationList with stored data.
+     *
      * @param connoisseurData locally stored data
-     * @param ui instance of ui for user interaction
-     * @param reviewList instance of reviewlist
+     * @param ui              instance of ui for user interaction
+     * @param reviewList      instance of reviewlist
      */
     public RecommendationList(ConnoisseurData connoisseurData, Ui ui, ReviewList reviewList) {
         this.ui = ui;
@@ -55,7 +56,8 @@ public class RecommendationList {
 
     /**
      * Constructor for RecommendationList without stored data.
-     * @param ui instance of ui for user interaction
+     *
+     * @param ui         instance of ui for user interaction
      * @param reviewList instance of reviewlist
      */
     public RecommendationList(Ui ui, ReviewList reviewList) {
@@ -90,7 +92,7 @@ public class RecommendationList {
             ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
             ui.print("| " + currentRecommendation.priceRange());
-            ui.printWhiteSpace(currentRecommendation.priceRange().length());
+            ui.printWhiteSpace(currentRecommendation.priceRange().length()-2);
             ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
             ui.print("| " + currentRecommendation.getRecommendedBy());
@@ -150,8 +152,8 @@ public class RecommendationList {
     public void addRecommendationDetails() throws DuplicateException, EmptyInputException {
         String title;
         String category;
-        int priceLow;
-        int priceHigh;
+        double priceLow = 0;
+        double priceHigh = 0;
         String recommendedBy;
         String location;
         while (true) {
@@ -188,8 +190,12 @@ public class RecommendationList {
             ui.println(PRICE_PROMPT);
             String priceRange = ui.readCommand();
             try {
-                int priceFirst = Integer.parseInt(priceRange.split("-", 2)[0].trim());
-                int priceSecond = Integer.parseInt(priceRange.split("-", 2)[1].trim());
+                double priceFirst = Double.parseDouble(priceRange.split("-", 2)[0].trim());
+                double priceSecond = Double.parseDouble(priceRange.split("-", 2)[1].trim());
+                if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
+                    ui.printInvalidPriceRangeMessage();
+                    continue;
+                }
                 if (priceFirst > priceSecond) {
                     priceLow = priceSecond;
                     priceHigh = priceFirst;
@@ -229,6 +235,8 @@ public class RecommendationList {
             }
             break;
         }
+        priceLow = Math.round(priceLow * 100.0) / 100.0;
+        priceHigh = Math.round(priceHigh * 100.0) / 100.0;
         Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
         recommendations.add(r);
         ui.println(title + ADD_SUCCESS);
@@ -258,7 +266,8 @@ public class RecommendationList {
     }
 
     /**
-     * Converts a recommendation to a review. 
+     * Converts a recommendation to a review.
+     *
      * @param title title of recommendation to be converted
      */
     public void convertRecommendation(String title) {
@@ -330,7 +339,8 @@ public class RecommendationList {
     }
 
     /**
-     * Edit a recommendation. 
+     * Edit a recommendation.
+     *
      * @param title title of recommendation to be edited
      */
     public void editRecommendation(String title) {
@@ -372,7 +382,8 @@ public class RecommendationList {
     }
 
     /**
-     * Edit specific fields of the recommendation. 
+     * Edit specific fields of the recommendation.
+     *
      * @param index index of the recommendation to be edited
      */
     public boolean editRecommendationFields(int index) {
@@ -401,14 +412,18 @@ public class RecommendationList {
             recommendations.get(index).setTitle(newTitle);
             break;
         case "price range":
-            int newPriceLow;    
-            int newPriceHigh;
+            double newPriceLow;
+            double newPriceHigh;
             while (true) {
                 ui.println(EDIT_RANGE_PROMPT);
                 String newPriceRange = ui.readCommand();
                 try {
-                    int priceFirst = Integer.parseInt(newPriceRange.split("-", 2)[0].trim());
-                    int priceSecond = Integer.parseInt(newPriceRange.split("-", 2)[1].trim());
+                    double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
+                    double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
+                    if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
+                        ui.printInvalidPriceRangeMessage();
+                        continue;
+                    }
                     if (priceFirst > priceSecond) {
                         newPriceLow = priceSecond;
                         newPriceHigh = priceFirst;
@@ -416,14 +431,16 @@ public class RecommendationList {
                         newPriceLow = priceFirst;
                         newPriceHigh = priceSecond;
                     }
+                    newPriceLow = Math.round(newPriceLow * 100.0) / 100.0;
+                    newPriceHigh = Math.round(newPriceHigh * 100.0) / 100.0;
+                    recommendations.get(index).setPriceHigh(newPriceHigh);
+                    recommendations.get(index).setPriceLow(newPriceLow);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidPricingMessage();
                     continue;
                 }
                 break;
             }
-            recommendations.get(index).setPriceHigh(newPriceHigh);
-            recommendations.get(index).setPriceLow(newPriceLow);
             break;
         case "location":
             String newLocation;
@@ -481,5 +498,13 @@ public class RecommendationList {
             return false;
         }
         return true;
+    }
+
+    public boolean checkPriceValidity(double price) {
+        boolean isValid = false;
+        if (price >= 0 && price <= 9999.99) {
+            isValid = true;
+        }
+        return isValid;
     }
 }
