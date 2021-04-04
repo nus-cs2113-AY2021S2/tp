@@ -203,36 +203,16 @@ Staff, Patient, Doctor Appointments, Nurse Schedules, Drugs).
 
 **Staff Menu**
 
-[Implementation:]{.ul}
+1.  When "Staff" is given as input in the main menu, `duke.run()` will call `StaffParser.run()`
 
-1.  When "Staff" is given as input in the main menu, duke.run() will
-    > call StaffParser.run()
+2.  `StaffParser.run()` provides the user a huge range of functionalities to work with the Staff Objects.
 
-2.  StaffParser.run() provides the user a huge range of functionalities
-    > to work with the Staff Objects.
+3.  `StaffParser.run()` will request input from the user.
 
-3.  StaffParser.run() will request input from the user.
+4.  User input will determine the type of actions taken on Staff Objects.
 
-4.  User input will determine the type of actions taken on Staff
-    > Objects.
+5.  The details of the functionalities related to Staff Object is detailed in the section below under [Staff-related-Features](#staff-related-features).
 
-5.  The details of the functionalities related to Staff Object is
-    > detailed in the section below under [[Staff-related
-    > Features]{.ul}](#staff-related-features).
-
-**Staff Menu**
-
-This feature allows users to select the different menus for Patient /
-Staff / Doctor Appointments / Nurse Schedules and Drugs through
-inputting commands within the main menu. Failure to input a correct or
-recognized command will then prompt the program to generate an exception
-that will alert the user of what they have done wrongly, and also prompt
-the user to access the help list to view the correct set of commands and
-their proper syntaxes.
-
-If the user enters a correct and recognized command, they will be able
-to access the functionalities related to the specific Objects (i.e
-Staff, Patient, Doctor Appointments, Nurse Schedules, Drugs).
 
 **Doctor Appointment Menu**
 
@@ -266,128 +246,106 @@ patient details when they make an appointment with the doctor.
     > handle any additional user commands that are inputted to access
     > features within that particular instance.
 
+
 ### **Staff-related Features**
 
 **Adding a new Staff**
 
-[Implementation:]{.ul}
+**Implementation**
 
-When the user attempts to add a new staff, the StaffStorage, StaffList,
-UI, StaffUI classes will be accessed, and the following sequence of
-actions is called to prompt execution result to user:
+When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
-add \[Staff ID\] \[name\] \[age\] \[specialisation\]
+`add/[Staff ID]/[name]/[age]/[specialisation]`
 
-> Getting User Input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
 
-1.  User inputs add command which is processed by the Staff.Parser.run()
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.  User inputs add command which is processed by the `Staff.Parser.run()`
 
-2.  Parser.run() calls StaffUI.inputToCreateStaff() to receive user
-    > input for Staff object details.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  `Parser.run()` calls `StaffUI.inputToCreateStaff()` to receive user input for Staff object details.
 
-3.  StaffUI.inputToCreateStaff() calls UI.abortEnabledScanInput() to
-    > receive user input for each detail of a Staff Object.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  `StaffUI.inputToCreateStaff()` calls `UI.abortEnabledScanInput()` to receive user input for each detail of a Staff Object.
 
-> Creating Staff Object with User Input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Creating Staff Object with User Input**
 
-4.  As the user inputs the Staff ID, StaffUI.inputToCreateStaff() calls
-    > Parser.checkID() to ensure that the Staff ID input is valid.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  As the user inputs the Staff ID, `StaffUI.inputToCreateStaff()` calls `Parser.checkID()` to ensure that the Staff ID input is 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valid.
 
-5.  A Staff Object is created and stored in an existing
-    > ArrayList\<Staff\>, StaffList. which contains all the Staff
-    > Objects.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.  A Staff Object is created and stored in an existing ArrayList<Staff>, StaffList. which contains all the Staff Objects.
 
-> Saving Staff Objects into .txt file
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Saving Staff Objects into .txt file**
 
-6.  The Parser then calls StaffStorage.writeToFile() which starts the
-    > process of writing the details of all existing Staff Objects,
-    > within the StaffList into a specified .txt file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  The Parser then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing Staff 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Objects, within the StaffList into a specified .txt file.
 
-7.  StaffStorage.writeToFile() then calls createFile() which ensures
-    > that the specified .txt file exists.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.  `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 
-8.  Data is written and saved.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.  Data is written and saved.
 
 **Deleting a Staff**
 
-[Implementation:]{.ul}
+**Implementation**
 
-When the user attempts to delete a staff, the StaffStorage, StaffList,
-UI, StaffUI classes will be accessed, and the following sequence of
-actions is called to prompt execution result to user:
+When the user attempts to delete a staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
-delete Staff ID
+`delete/[Staff ID]`
 
-> Getting User Input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
 
-1.  User inputs delete \[Staff ID\] command
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.  User inputs `delete/[Staff ID]` command
 
-2.  Parser.run() calls checkEmptyInput() to ensure that input is not
-    > empty
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.  `Parser.run()` calls `checkEmptyInput()` to ensure that input is not empty
 
-3.  Parser.run() calls Parser.checkID() to ensure that the Staff ID
-    > input is valid.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.  `Parser.run()` calls `Parser.checkID()` to ensure that the Staff ID input  is valid.
 
-> Deleting Staff Object with specified Staff ID
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Deleting Staff Object with specified Staff ID**
 
-4.  Parser.run() calls StaffList.delete() to begin the deletion of the
-    > Staff with Staff ID specified.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.  `Parser.run()` calls `StaffList.delete()` to begin the deletion of the Staff with Staff ID specified.
 
-5.  StaffList.delete() iterates through the ArrayList\<Staff\>, list, to
-    > find the specified Staff Object.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.  `StaffList.delete()` iterates through the ArrayList\<Staff\>, list, to find the specified Staff Object.
 
-6.  If the specified Staff Object is found, it is deleted.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.  If the specified Staff Object is found, it is deleted.
 
-> Prompting result to user
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Prompting result to user**
 
-7.  If a deletion occurs, StaffList.delete() calls
-    > StaffUI.staffFiredOutput() to output a feedback message.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.  If a deletion occurs, `StaffList.delete()` calls `StaffUI.staffFiredOutput()` to  output a feedback message.
 
-8.  If no deletion occurs, StaffUI.staffDoesNotExist() is called instead
-    > fro a different feedback message.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.  If no deletion occurs, `StaffUI.staffDoesNotExist()` is called instead for a different feedback message.
 
-> Saving Staff Objects into .txt file
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Saving Staff Objects into .txt file**
 
-9.  The Parser then calls StaffStorage.writeToFile() which starts the
-    > process of writing the details of all existing Staff Objects,
-    > within the StaffList into a specified .txt file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9.  The Parser then calls StaffStorage.writeToFile() which starts the process of writing the details of all existing Staff Objects, 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; within the StaffList into a specified .txt file.
 
-10. StaffStorage.writeToFile() then calls createFile() which ensures
-    > that the specified .txt file exists.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10. StaffStorage.writeToFile() then calls createFile() which ensures that the specified .txt file exists.
 
-11. Data is written and saved.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11. Data is written and saved.
 
 **Viewing all Staff**
 
-[Implementation:]{.ul}
+**Implementation**
 
-When the user attempts to add a new staff, the StaffStorage, StaffList,
-UI, StaffUI classes will be accessed, and the following sequence of
-actions is called to prompt execution result to user:
+When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
 
-list \[doctors/nurses\]
+`list/<doctors/nurses>`
 
-> Getting User Input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Getting User Input**
 
-1.  User inputs list command
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  User inputs list command
 
-2.  Parser.run() calls Parser.checkListCommand() to ensure that input is
-    > valid (Otherwise, WrongListInputException is called).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  `Parser.run()` calls `Parser.checkListCommand()` to ensure that input is valid (Otherwise, WrongListInputException is 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; called).
 
-3.  Parser.run() calls StaffUI.staffListHeader() to format the output
-    > for readability.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  Parser.run() calls `StaffUI.staffListHeader()` to format the output for readability.
 
-> Displaying Staff Object details
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Displaying Staff Object details**
 
-4.  Parser.run() calls StaffList.list() to begin the process of
-    > displaying details of Staff Objects.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  `Parser.run()` calls StaffList.list() to begin the process of displaying details of Staff Objects.
 
-5.  Based on the optional input, StaffList.list() will iterate through
-    > the relevant Staff Objects and call StaffList.display() for each
-    > Object
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.  Based on the optional input, `StaffList.list()` will iterate through the relevant Staff Objects and call 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `StaffList.display()` for each Object
 
-6.  StaffList.display() will call UI.prettyPrint() to format the output
-    > to the console screen.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  `StaffList.display()` will call `UI.prettyPrint()` to format the output to the console screen.
+
 
 **Finding a Staff**
 
