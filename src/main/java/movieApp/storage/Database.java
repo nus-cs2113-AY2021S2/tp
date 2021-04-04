@@ -7,6 +7,8 @@ import movieApp.user.User;
 import movieApp.parser.MovieFilter;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -212,11 +214,15 @@ public class Database {
         int newStartMonth = getIntegerInput("Month (MM): ", 12);
         int newStartYear = getIntegerInput("Year (YYYY): ", 2100);
 
-
-        System.out.println("Enter movie end date ");
-        int newEndDate = getIntegerInput("Date (DD): ", 31);
-        int newEndMonth = getIntegerInput("Month (MM): ", 12);
-        int newEndYear = getIntegerInput("Year (YYYY): ", 2100);
+        int newEndDate;
+        int newEndMonth;
+        int newEndYear;
+        do {
+            System.out.println("Enter movie end date ");
+            newEndDate = getIntegerInput("Date (DD): ", 31);
+            newEndMonth = getIntegerInput("Month (MM): ", 12);
+            newEndYear = getIntegerInput("Year (YYYY): ", 2100);
+        }while(checkEndDateIsAfterStartDate(newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear));
 
 
         System.out.println("Movie director: ");
@@ -254,6 +260,23 @@ public class Database {
         }
         System.out.println("The new movie \"" + newMovie.getMovieTitle() + "\" have been saved to the database.");
 
+    }
+
+    private static boolean checkEndDateIsAfterStartDate(int newStartDate, int newStartMonth,
+                                                    int newStartYear, int newEndDate, int newEndMonth,
+                                                    int newEndYear) throws ParseException {
+        String sDate = newStartDate +"/"+ newStartMonth +"/"+ newStartYear;
+        Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+
+        String eDate = newEndDate +"/"+ newEndMonth +"/"+ newEndYear;
+        Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(eDate);
+
+        if(startDate.compareTo(endDate) <= 0){
+            return false;
+        }else{
+            System.out.println("End Date should not be before Start Date");
+            return true;
+        }
     }
 
     public static void updateBookings(){
