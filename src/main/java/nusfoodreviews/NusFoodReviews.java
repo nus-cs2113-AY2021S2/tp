@@ -140,6 +140,10 @@ public class NusFoodReviews {
     public void setStoreIndex() throws DukeExceptions {
         Canteen canteen = canteens.get(canteenIndex);
         ui.showDisplaySelectStores(canteen);
+        if (canteen.getNumStores() < 1) {
+            resetCanteenStoreIndex();
+            return;
+        }
         String line = ui.readCommand();
         if (line.equals("exit")) {
             ui.showGoodbye();
