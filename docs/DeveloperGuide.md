@@ -56,8 +56,8 @@ components. The Main Menu component allows direct access to other
 components as shown in the diagram.
 
 Shared functionalities are placed within the Common Classes component
-which will be elaborated on in the section [[Common
-Classes]{.ul}](#common-classes)
+which will be elaborated on in the section [Common
+Classes](#common-classes)
 
 ### 
 
@@ -828,7 +828,7 @@ NurseScheduleStorage, NurseScheduleActions, UI and NurseScheduleUI
 classes will be assessed, and the following sequence of actions is
 called to prompt execution results to user:
 
-*add* \[Nurse ID\] \[Date (DDMMYYYY)\]:
+`add/[Nurse ID]/[Date (DDMMYYYY)]`:
 
 Getting User Input:
 
@@ -853,7 +853,7 @@ choice of listing all schedules or a specified nurse id's schedule. This
 is similar to a search function. This will access the
 NurseScheduleActions class.
 
-*list* \[Nurse ID\] or list \[all\]:
+`list/[Nurse ID or list/all`:
 
 Getting User Input
 
@@ -874,7 +874,7 @@ Printing schedules
 
 When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed.
 
-*delete* \[Nurse ID\] \[Date (DDMMYYYY)\]:
+`delete/[Nurse ID]/[Date (DDMMYYYY)]`:
 
 Getting User Input
 
