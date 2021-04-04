@@ -26,7 +26,7 @@ The purpose of this User Guide is to assist you in the usage of the application.
 	1. [Staff](#51-staff)
 	2. [Patient](#52-patient)
 	3. [Doctor's Appointment](#53-doctors-appointment)
-	4. [Nurse Schedule](#54-nurse-schedule)
+	4. [Nurse Schedule](#54-schedules-for-nurses)
 	5. [Inventory](#55-inventory)
 6. [FAQ](#6-faq)
 7. [Command Summary](#7-command-summary)
