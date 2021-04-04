@@ -138,3 +138,4 @@ The Deck<>Noodles<>Pork Rib Noodles<>2.30
 The Deck<>Noodles<>Lor Mee<>2.30
 Techno Edge
 Techno Edge<>Western<>chicken chop<>4.50
+Techno Edge<>Western<>Fish & Chips<>4.50
