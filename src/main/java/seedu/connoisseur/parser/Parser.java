@@ -31,10 +31,18 @@ public class Parser {
 
         switch (command) {
         case "review":
-            commands.reviewMode();
+            if (arguments == null || arguments.isBlank()) {
+                commands.reviewMode();
+            } else {
+                commands.InvalidParameters();
+            }
             break;
         case "reco":
-            commands.recommendationMode();
+            if (arguments == null || arguments.isBlank()) {
+                commands.recommendationMode();
+            } else {
+                commands.InvalidParameters();
+            }
             break;
         case "list":
             commands.list(arguments);
@@ -66,8 +74,13 @@ public class Parser {
             break;
         case "exit":
         case "bye":
-            commands.exit();
-            return true;
+            if (arguments == null || arguments.isBlank()) {
+                commands.exit();
+                return true;
+            } else {
+                commands.InvalidParameters();
+                break;
+            }
         default:
             commands.invalidCommand();
         }

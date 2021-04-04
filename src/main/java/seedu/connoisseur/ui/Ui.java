@@ -329,4 +329,5 @@ public class Ui {
     public void printInputTooLongMessage_15Char() {
         println(INPUT_TOO_LONG_MESSAGE_15CHAR);
     }
+
 }

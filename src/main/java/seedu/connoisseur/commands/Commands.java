@@ -115,6 +115,13 @@ public class Commands {
     }
 
     /**
+     * Print invalid parameters text.
+     */
+    public void InvalidParameters() {
+        ui.println("Invalid command. Please do not enter extra parameters.");
+    }
+
+    /**
      * Exits connoisseur.
      */
     public void exit() {
@@ -132,7 +139,11 @@ public class Commands {
         if (isReviewMode) {
             reviewList.listReviews(input);
         } else {
-            recommendationList.listRecommendations();
+            if (input.equals("")) {
+                recommendationList.listRecommendations();
+            } else {
+                InvalidParameters();
+            }
         }
     }
 
