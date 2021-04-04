@@ -50,13 +50,10 @@ public class AdminMainMenu implements MainMenu{
 				Database.addMovie();
                 break;
 			case 3:
-				choice = AdminMainMenu.displayDeleteMovieMenu(Database.MovieDatabase);
-				Database.deleteMovie(choice);
+				displayDeleteMovieMenu(Database.MovieDatabase);
 				break;
 			case 4:
-				choice = displayEditMovieMenu(Database.MovieDatabase);
-				int type = displayEditMovieSectionMenu(Database.MovieDatabase, choice);
-				Database.editMovie(choice, type);
+				displayEditMovieMenu(Database.MovieDatabase);
 				break;
 			case 5:
 				System.out.println("Logging out..");
@@ -69,7 +66,11 @@ public class AdminMainMenu implements MainMenu{
 		return -1;
 	}
 
-	public static int displayDeleteMovieMenu(ArrayList<Movie> movieDatabase){
+	public static void displayDeleteMovieMenu(ArrayList<Movie> movieDatabase) throws Exception {
+		if (checkIfMovieListIsEmpty(movieDatabase)) {
+			return;
+		}
+
 		System.out.println("Select a movie to be deleted from the list (enter the number)");
 		int i = 1;
 		for(Movie movie : movieDatabase){
@@ -91,10 +92,14 @@ public class AdminMainMenu implements MainMenu{
 				System.out.println("Please input an integer within the range.\n");
 			}
 		}
-		return choice;
+		Database.deleteMovie(choice);
 	}
 
-	public static int displayEditMovieMenu(ArrayList<Movie> movieDatabase){
+	public static void displayEditMovieMenu(ArrayList<Movie> movieDatabase) throws Exception {
+		if (checkIfMovieListIsEmpty(movieDatabase)) {
+			return;
+		}
+
 		System.out.println("Select a movie to be edited from the list (enter the number)");
 		int i = 1;
 		for(Movie movie : movieDatabase){
@@ -116,10 +121,19 @@ public class AdminMainMenu implements MainMenu{
 				System.out.println("Please input an integer within the range.\n");
 			}
 		}
-		return choice;
+		displayEditMovieSectionMenu(Database.MovieDatabase, choice);
 	}
 
-	public static int displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase, int choice){
+	private static boolean checkIfMovieListIsEmpty(ArrayList<Movie> movieDatabase) {
+		if(movieDatabase.size()==0){
+			System.out.println("No movies available in the database.");
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	public static void displayEditMovieSectionMenu(ArrayList<Movie> movieDatabase, int choice) throws Exception {
 		Movie selectedMovie = movieDatabase.get(choice - 1);
 		System.out.println("You have selected " + selectedMovie.getMovieTitle() + "\n");
 		Scanner select = new Scanner(System.in);
@@ -137,6 +151,6 @@ public class AdminMainMenu implements MainMenu{
 				System.out.println("Please input a integer between 1 and 3.\n");
 			}
 		}
-		return type;
+		Database.editMovie(choice, type);
 	}
 }

@@ -217,12 +217,15 @@ public class Database {
         int newEndDate;
         int newEndMonth;
         int newEndYear;
+
         do {
             System.out.println("Enter movie end date ");
             newEndDate = getIntegerInput("Date (DD): ", 31);
             newEndMonth = getIntegerInput("Month (MM): ", 12);
             newEndYear = getIntegerInput("Year (YYYY): ", 2100);
-        }while(checkEndDateIsAfterStartDate(newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear));
+        }while(checkEndDateIsAfterStartDate(newStartDate, newStartMonth,
+                                            newStartYear, newEndDate,
+                                            newEndMonth, newEndYear));
 
 
         System.out.println("Movie director: ");
