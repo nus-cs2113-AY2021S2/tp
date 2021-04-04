@@ -18,7 +18,7 @@ public class NoteUi extends UiManager {
 
         showMessage(CommonMessage.DIVIDER);
 
-        if (noteInfo.length < 0) {
+        if (noteInfo[1].equals("")) {
             throw new InvalidNoteException();
         }
         return noteInfo;
