@@ -3,10 +3,11 @@ package seedu.duke.ui;
 import seedu.duke.data.Favourite;
 import seedu.duke.exception.EmptyFavouriteException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.SameBlockException;
 
 public class FavouriteUi extends UiManager {
 
-    public String[] getFavouriteInfo() {
+    public String[] getFavouriteInfo() throws SameBlockException {
         return new RouterUi().getRoutingInfo();
     }
 
