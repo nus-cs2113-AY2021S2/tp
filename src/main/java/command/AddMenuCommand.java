@@ -51,6 +51,10 @@ public class AddMenuCommand extends Command {
             currentStoreIndex = Integer.parseInt(line) - 1;
         }
 
+        if (currentStoreIndex < 1 | currentCanteenIndex > canteens.get(currentCanteenIndex).getNumStores()) {
+            throw new DukeExceptions("Store index not in range!");
+        }
+
         ui.enterMenuName();
         line = ui.readCommand();
         if (line.equals("cancel")) {
