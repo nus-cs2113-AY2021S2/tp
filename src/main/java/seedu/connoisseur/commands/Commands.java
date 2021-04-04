@@ -169,6 +169,7 @@ public class Commands {
      * @param title title of the review to be viewed.
      */
     public void view(String title) {
+        title = title.toLowerCase();
         if (isReviewMode) {
             reviewList.viewReview(title);
         } else {
