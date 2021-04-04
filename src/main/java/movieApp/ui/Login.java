@@ -23,7 +23,18 @@ public class Login {
 	public static int login(ArrayList<User> user) throws Exception {
 		int currentUserIndex;
 		
-		do {			
+		do {
+			final String LOGO = "\n" +
+					"___  ___           _       ___                    \n" +
+					"|  \\/  |          (_)     / _ \\                 \n" +
+					"| .  . | _____   ___  ___/ /_\\ \\_ __  _ __      \n" +
+					"| |\\/| |/ _ \\ \\ / / |/ _ \\  _  | '_ \\| '_ \\ \n" +
+					"| |  | | (_) \\ V /| |  __/ | | | |_) | |_) |     \n" +
+					"\\_|  |_/\\___/ \\_/ |_|\\___\\_| |_/ .__/| .__/  \n" +
+					"                               | |   | |          \n" +
+					"                               |_|   |_|            ";
+
+			System.out.println(LOGO);
 			System.out.println("-------------------Login----------------");
 			System.out.print("Enter Name: (input \"out\" to quit the application)\n");
 			name = sc.nextLine().toUpperCase();

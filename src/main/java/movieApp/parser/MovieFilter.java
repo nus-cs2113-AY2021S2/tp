@@ -299,6 +299,7 @@ public class MovieFilter {
 	////////////////////////////////////////////////////////////////////////////
 	public static ArrayList<Movie> selectMovie(ArrayList<Movie> movieList){
 		ArrayList<Movie> result = new ArrayList<>();
+		printMovieList(movieList);
 		result.add(movieList.get(getMovieChoice(movieList.size())));
 		return result;
 	}
@@ -306,8 +307,7 @@ public class MovieFilter {
 	////////////////////////////////////////////////////////////////////////////
 	public static Movie filter(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase, User user) {
 		int Filter;
-		while (movieList.size() != 1) {
-			ArrayList<Movie> movieListCopy = new ArrayList<>(movieList);
+		loop: while (true) {
 
 				Filter = getFilter();
 				if(Filter==9) {
@@ -340,7 +340,7 @@ public class MovieFilter {
 				case 6:
 					System.out.println("======= Select Movie =======");
 					movieList = selectMovie(movieList);
-					break;
+					break loop;
 				case 7:
 					movieList = new ArrayList<>(Database.MovieDatabase);
 					break;
@@ -357,8 +357,9 @@ public class MovieFilter {
 
 				if (movieList.size() == 0) {
 					System.out.println("\nSorry! We couldn't find any matches.");
+					System.out.println("We have reset the filters.");
 					System.out.println("Would you like to try something else?");
-					movieList = movieListCopy;
+					movieList = new ArrayList<>(Database.MovieDatabase);
 				} else {
 					printMovieList(movieList);
 				}
