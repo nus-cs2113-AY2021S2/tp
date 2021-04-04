@@ -1,0 +1,39 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package Model <<Rectangle>>{
+Class Booking
+Class Cinema
+Class Cineplex
+Class Movie
+Class Review
+Class Seat
+Class Showtimes
+
+Package User {
+Class Admin
+Class Customer
+Class "{abstract}\nUser" as User
+}
+
+}
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> Model
+
+Booking --> "1" Cinema
+Booking --> "1" Movie
+Booking --> "1" Showtimes
+Booking --> "1" Seat
+Cinema --o "1" Cineplex
+Seat --o Cinema
+Movie -- Showtimes
+Review -- Movie
+
+Admin --|> User
+Customer --|> User
+
+@enduml

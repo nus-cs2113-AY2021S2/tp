@@ -23,8 +23,8 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Login
 
 Login -left- MainMenu
-AdminMainMenu -up-|> MainMenu
-CustomerMainMenu -up-|> MainMenu
+AdminMainMenu .up.|> MainMenu
+CustomerMainMenu .up.|> MainMenu
 Login -right-> Model
 AdminMainMenu -down-> Logic
 CustomerMainMenu -down-> Logic
