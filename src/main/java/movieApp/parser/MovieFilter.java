@@ -312,8 +312,9 @@ public class MovieFilter {
 				Filter = getFilter();
 				if(Filter==9) {
 					return null;
+				} else if(Filter!=8) {
+					printMovieList(movieList);
 				}
-				printMovieList(movieList);
 				
 				switch(Filter) {
 				case 1:
@@ -346,7 +347,7 @@ public class MovieFilter {
 				case 8:
 					ViewBooking currentUserBookings = new ViewBooking(user);
 					currentUserBookings.printBookings();
-					break;
+					continue;
 				case 9:
 					return null;
 				default:

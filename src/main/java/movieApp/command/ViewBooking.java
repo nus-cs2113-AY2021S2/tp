@@ -20,8 +20,9 @@ public class ViewBooking {
     }
 
     public void printBookings() {
-        if (bookings == null){
-            System.out.println("There is no bookings available");
+        if (bookings.size()==0){
+            System.out.println("No bookings available.");
+            System.out.println();
         }else{
             printAllBookings();
             displayCancelBookingMenu(bookings);
