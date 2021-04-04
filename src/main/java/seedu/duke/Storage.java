@@ -3,7 +3,11 @@ package seedu.duke;
 import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.*;
+import seedu.duke.task.Assignment;
+import seedu.duke.task.FinalExam;
+import seedu.duke.task.Task;
+import seedu.duke.task.Midterm;
+import seedu.duke.task.TaskManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,7 +31,6 @@ public class Storage {
     public static String filePathForLinks = new File("").getAbsolutePath();
     public static String filePathForZoom = new File("").getAbsolutePath();
     public static String filePathForMcs = new File("").getAbsolutePath();
-    public static String filePathForComponents = new File("").getAbsolutePath();
 
     public static void saveAllFiles() throws IOException {
         modulesFileSaver();
@@ -106,10 +109,10 @@ public class Storage {
 
             }
             //components = parseComponent(components);
-            components = components.substring(1, components.length()-1);
+            components = components.substring(1, components.length() - 1);
             String[] keyValuePairs = components.split(",");
             Hashtable<String, Integer> table = new Hashtable<>();
-            for(String pair : keyValuePairs) {
+            for (String pair : keyValuePairs) {
                 String[] entry = pair.split("=");
                 table.put(entry[0].trim(), Integer.parseInt(entry[1].trim()));
             }
@@ -120,18 +123,7 @@ public class Storage {
             ModuleInfo.modules.add(module);
         }
     }
-/*
-    private static String parseComponent(String components) {
-        int indexOfStart = components.indexOf("{");
-        int indexOfEnd = components.indexOf("}");
-        for (int i = indexOfStart; i <= indexOfEnd; i++) {
-            if (components.indexOf("=", i) != -1) {
-                int indexOfEqual = components.indexOf("=", i);
-                String grade = components.substring(indexOfStart+1, indexOfEqual-1);
-            }
-        }
-    }
-*/
+
     /**
      * Writes tasks ArrayList data into modules.txt file on computer Delimiter is ' ~~ '
      *
@@ -587,49 +579,5 @@ public class Storage {
                 + HelpGraduation.getCurrentCap());
         fw.close();
     }
-/*
-    public static void loadComponentsInfoFile() {
-        filePathForComponents += "/UniTracker Data";
-        File data = new File(filePathForComponents);
-        if (!data.exists()) {
-            boolean isCreated = data.mkdir();
-            if (!isCreated) {
-                System.out.println("New directory could not be created:(");
-            }
-        }
 
-        try {
-            filePathForComponents += "/components.txt";
-            data = new File(filePathForComponents);
-            if (data.createNewFile()) {
-                return;
-            }
-            downloadComponents();
-        } catch (IOException e) {
-            System.out.println("There was an I/O error:(");
-        }
-    }
-
-    public static void downloadComponents() throws FileNotFoundException {
-        File f = new File(filePathForComponents);
-        Hashtable<String, Integer> components = new Hashtable<>();
-        Scanner scanner = new Scanner(f);
-        while (scanner.hasNext()) {
-            String[] part = scanner.nextLine().split("~~");
-            String componentName = part[0];
-            int weightage = Integer.parseInt(part[1]);
-            components.put(componentName, weightage);
-        }
-        Component.setComponentsHere(components);
-    }
-
-    public static void ComponentsSaver() throws IOException {
-        filePathForComponents += "/UniTracker Data";
-        filePathForComponents += "/components.txt";
-        //File data = new File(filePathForComponents);
-        FileWriter fw = new FileWriter(filePathForComponents);
-        fw.write(String.valueOf(Component.components));
-        fw.close();
-    }
-*/
 }
