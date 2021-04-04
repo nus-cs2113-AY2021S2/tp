@@ -48,8 +48,7 @@ There are 2 prerequisites for this project
 **Architecture**
 ----------------
 
-![](media/image2.png){width="6.267716535433071in"
-height="5.638888888888889in"}
+<img src="images/ArchitectureDiagram.png">
 
 Our application utilises many layers of abstraction which allows each
 individual component to be self contained yet able to work with other
