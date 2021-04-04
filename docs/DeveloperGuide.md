@@ -1,13 +1,11 @@
 # Developer Guide
 
--------------------------
 ## Introduction
 
 MovieApp is a desktop app for users to see the upcoming shows, book a movie and read movie reviews.\
 The app is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).\
 If you can type fast, MovieApp can help you view and book movies conveniently.
 
--------------------------
 ## Design 
 
 ### Architecture
@@ -44,7 +42,6 @@ The Model:
 4. Stores information related to Cinema, such as Seat and Cineplex.
 5. Does not depend on any of the other three components.
 
--------------
 ## Implementation
 Our team is going to use breadth-first iterative approach as it allows us to focus on all features in parallel throughout the version 1.0, 2.0 and 2.1.
 ### Main Logic
@@ -105,7 +102,6 @@ several aspects. They can finally choose a movie and perform
 the chosen actions respectively.\
 ![Customer Main Menu](CustomerMainMenu.png)
 
--------------
 ## Product scope
 ### Target user profile
 
@@ -117,7 +113,6 @@ The app is a single-user application that can computerize the processes of makin
 The app will help customers to make a movie schedule ahead of time, and enable a fast and intuitive ticket purchasing procedure.
 The app will help cinema administrators to update the movie information regularly through an intuitive interface.
 
--------------
 ## User Stories
 
 |Version| As a ... | I want to ... | So that I can ...|
@@ -139,7 +134,6 @@ The app will help cinema administrators to update the movie information regularl
 |v2.0|customer|view the reviews of the movies|make my decision to either watch them or not.|
 |v2.0|customer|filter the movies by type, director, actors...|quickly find the movie I like.|
 
--------------
 ## Non-Functional Requirements
 
 1. Usability Requirements
@@ -153,7 +147,6 @@ The app will help cinema administrators to update the movie information regularl
 3. Security Requirements
     1. All passwords must be hashed before it is stored.
 
--------------
 ## Glossary
 
 | Word | Definition |
@@ -169,7 +162,6 @@ The app will help cinema administrators to update the movie information regularl
 |Booking|Individual appointment where one seat of one showtime is assigned to one user|
 |Database|Offline text files that store information on cineplex, movie, showtime, and customer entities|
 
--------------
 ## Instructions for manual testing
 
 To run the JAR file, run `java -cp tp_original_v2.jar movieApp.app.MovieApp` and
