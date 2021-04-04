@@ -704,7 +704,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
 
-This is an example of the welcome screen for the Nurse Schedule Menu.
+This is an example of the welcome screen for the Inventory Menu.
 
 <img src="images/InventoryWelcomeHeader.PNG" width = "600">
 
@@ -724,6 +724,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters!
 >
 >3. Note that the examples for adding a new drug and increasing the quantity of an existing drug are related!
+>
+>4. Avoid using uppercase letters!
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(add a new drug)**:
 
@@ -765,6 +767,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 >:information_source: Important notes about the format
 >1. Note that the example from add(increasing quantity of existing drug) feature is used for this feature's example!
 >
+>2. Avoid using uppercase letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]/[Quantity]`
