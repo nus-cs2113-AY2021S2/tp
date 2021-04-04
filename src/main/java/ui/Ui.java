@@ -95,6 +95,11 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
+    public void chooseDeleteStore() {
+        System.out.println("Please select store to delete menu from.");
+        System.out.println(LINESPACING);
+    }
+
     public void enterMenuName() {
         System.out.println("Please enter name of menu.");
         System.out.println(LINESPACING);
@@ -155,6 +160,12 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
+    public void showEmptyCanteen() {
+        System.out.println(LINESPACING);
+        System.out.println("There are no stores in this canteen!");
+        System.out.println(LINESPACING);
+    }
+
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println(LINESPACING);
         int count = 1;
@@ -166,6 +177,12 @@ public class Ui {
         for (Menu menuItem: menus) {
             System.out.println(count++ + ")" + menuItem.toString());
         }
+    }
+
+    public void showNoMenuToDelete() {
+        System.out.println(LINESPACING);
+        System.out.println("There is no menus to delete!");
+        System.out.println(LINESPACING);
     }
 
     public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {

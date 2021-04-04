@@ -16,6 +16,8 @@ TechnoEdge<>western town<>not bad but very ex//2.5//2021-01-03
 TechnoEdge<>western town<>chicken chop<>5.5
 TechnoEdge<>western town<>fish and chip<>4.5
 TechnoEdge<>western town<>carbonara<>5.5
+TechnoEdge<>western town<>Testing Menu<>5.0
+TechnoEdge<>western town<>Testing Menu 2<>4.0
 TechnoEdge<>mala
 TechnoEdge<>mala<>Food is delicious but always very long queue//4.0//2021-01-04
 TechnoEdge<>mala<>very long queue but very nice//3.4//2021-01-24
