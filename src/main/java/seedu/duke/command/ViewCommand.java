@@ -15,12 +15,13 @@ import static seedu.duke.command.Utils.validateOptions;
 import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_SAVING;
+import static seedu.duke.common.Constant.OPTION_ALL;
 
 /**
  * Handles all operations related to the view command.
  */
 public class ViewCommand extends Command {
-    private static final String[] VALID_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING};
+    private static final String[] VALID_OPTIONS = {OPTION_EXPENSE, OPTION_LOAN, OPTION_SAVING, OPTION_ALL};
     private static final ArgumentType[] ARGUMENT_TYPE_ORDER = {
         ArgumentType.COMMAND,
         ArgumentType.OPTION,
@@ -53,8 +54,10 @@ public class ViewCommand extends Command {
             recordType = RecordType.LOAN;
         } else if (hasOption(arguments, OPTION_SAVING)) {
             recordType = RecordType.SAVING;
+        } else if (hasOption(arguments, OPTION_ALL)) {
+            recordType = RecordType.ALL;
         } else {
-            throw new CommandException("missing option: [-e | -l | -s]", COMMAND_VIEW);
+            throw new CommandException("missing option: [-e | -l | -s | -a]", COMMAND_VIEW);
         }
     }
 
@@ -76,9 +79,12 @@ public class ViewCommand extends Command {
             ui.printTotalAmountLoan(recordList);
             break;
         case SAVING:
+            ui.printTotalAmountSaving(recordList);
+            break;
+        case ALL:
             // Fallthrough
         default:
-            ui.printTotalAmountSaving(recordList);
+            ui.printTotalAmountAllType(recordList);
         }
     }
 }

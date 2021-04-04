@@ -14,8 +14,8 @@ class ValidatorsTest {
     @Test
     void validateDate_properDateFormat_success() {
         String[] dateStrings = {
-            "13122011", "13.1.2011", "13-1-2011", "13/1/2011",
-            "2011.1.13", "2011-1-13", "2011/1/13", "today"
+            "13122011", "13.1.2011", "13-1-2011", "13/1/2011", "30120001",
+            "2011.1.13", "2011-1-13", "2011/1/13", "2020.2.29", "today"
         };
         try {
             for (String d : dateStrings) {
@@ -28,11 +28,10 @@ class ValidatorsTest {
 
     @Test
     void validateDate_improperDateFormat() {
-        final int finalCount = 8;
         int counter = 0;
         String[] dateStrings = {
-            "12345678", "13.13.2011", "13-13-2011", "13 13 2011",
-            "2011 1 13", "2011-1/13", "2011/1.13", "today123"
+            "12345678", "13.13.2011", "13-13-2011", "13 13 2011", "30120000",
+            "2011 1 13", "2011-1/13", "2011/1.13", "2020.2.30", "today123"
         };
         for (String d : dateStrings) {
             try {
@@ -41,7 +40,7 @@ class ValidatorsTest {
                 counter++;
             }
         }
-        if (finalCount != counter) {
+        if (dateStrings.length != counter) {
             fail();
         }
     }

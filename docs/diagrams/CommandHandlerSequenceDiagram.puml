@@ -5,6 +5,7 @@ Participant ":Finux" as Finux
 Participant ":CommandHandler" as CommandHandler
 Participant ":XYZCommand" as XYZCommand
 
+activate Finux
 Finux -> CommandHandler : parseCommand(parsedArguments)
 activate CommandHandler
 CommandHandler -> CommandHandler :createCommand(parsedArguments)
@@ -20,12 +21,12 @@ alt parsedArguments[0] is "xyz"
     deactivate CommandHandler
     CommandHandler --> Finux : command : Command
     deactivate CommandHandler
-    else exception
-        Finux --[#white]> CommandHandler
+    else exception - argument error
+        Finux --[hidden]> CommandHandler
         activate CommandHandler
-        CommandHandler -[#white]> CommandHandler
+        CommandHandler -[hidden]> CommandHandler
         activate CommandHandler
-        CommandHandler --[#white]> XYZCommand
+        CommandHandler --[hidden]> XYZCommand
         activate XYZCommand
         XYZCommand --> CommandHandler : CommandException
         deactivate XYZCommand
@@ -35,19 +36,19 @@ alt parsedArguments[0] is "xyz"
         CommandHandler --> Finux : CommandException
         deactivate CommandHandler
     end
-else parsedArguments[0] is empty
-    Finux --[#white]> CommandHandler
+else parsedArguments[0] is empty string
+    Finux --[hidden]> CommandHandler
     activate CommandHandler
-    CommandHandler -[#white]> CommandHandler
+    CommandHandler -[hidden]> CommandHandler
     activate CommandHandler
     CommandHandler --> CommandHandler
     deactivate CommandHandler
     CommandHandler --> Finux : null
     deactivate CommandHandler
-else parsedArguments[0] is not valid command
-    Finux --[#white]> CommandHandler
+else exception - parsedArguments[0] invalid command
+    Finux --[hidden]> CommandHandler
     activate CommandHandler
-    CommandHandler -[#white]> CommandHandler
+    CommandHandler -[hidden]> CommandHandler
     activate CommandHandler
     CommandHandler --> CommandHandler
     deactivate CommandHandler

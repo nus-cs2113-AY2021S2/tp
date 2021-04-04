@@ -1,13 +1,18 @@
 @startuml
 hide circle
 skinparam monochrome false
+skinparam classAttributeIconSize 0
+
+note "Some private attributes and methods are omitted." as N1
 
 class Finux {
+
+    +main()
 }
 
 class Ui {
 }
 
-Finux -> Ui
+Finux -> "1"Ui
 
 @enduml

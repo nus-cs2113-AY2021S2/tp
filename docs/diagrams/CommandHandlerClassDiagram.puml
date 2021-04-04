@@ -2,19 +2,21 @@
 skinparam classAttributeIconSize 0
 hide circle
 
+note "Private attributes and methods are omitted." as N1
+
 class CommandHandler {
     -isExit : boolean
     +CommandHandler()
     +isExit() : boolean
-    +setExit(isExit: boolean)
-    +parseCommand(parsedArguments: ArrayList<String>, recordList: RecordList): Command
-    -createCommand(parsedArguments: ArrayList<String>, recordList: RecordList) : Command
+    +setExit(:boolean)
+    +parseCommand(:ArrayList<String>, :RecordList): Command
+    -createCommand(:ArrayList<String>, :RecordList): Command
 }
 
 class Finux {
-
+    +main()
 }
 
 CommandHandler"1" <-- Finux
-
+Finux -right> N1
 @enduml

@@ -28,7 +28,7 @@
    4.5 [Remove Feature](#45-remove-feature)\
    4.6 [Storage Feature](#46-storage-feature)\
    4.7 [Credit Score Feature](#47-credit-score-feature)
-5. [Documentation, Logging, Testing, and DevOps](#5-documentation-logging-testing-and-devops)\
+5. [Documentation, Logging, Testing, and DevOps](#5-documentation-logging-testing-and-devops)
 
 [Appendix A: Product Scope](#appendix-a-product-scope)\
 \
@@ -72,7 +72,8 @@ list of icons:
 > 📝 It indicates that this is a tip and you may find it useful when using our application or guide.
 
 > 📝 Text that are blue like this [example(jumps to 1.2)](#12-using-this-guide), are clickable links
-> that will move you to the relevant section of the guide.
+> that will move you to the relevant section of the guide.\
+> 📝 Records refer to either expenses, loans or savings.
 
 ## 2. Setting Up
 
@@ -84,7 +85,7 @@ Ensure that you have the following installed:
 * JDK 11
 * Intellij IDEA (Highly Recommended)
 
-Firstly, **fork** this repo and **clone** a copy into your computer.
+Firstly, **fork** this [repo](https://github.com/AY2021S2-CS2113T-W09-1/tp) and **clone** a copy into your computer.
 
 If you plan to use IntelliJ IDEA:
 1. **Ensure IntelliJ is configured to develop in JDK 11.**
@@ -137,11 +138,11 @@ _Figure 1: **Finux** Architecture Diagram_
 The _**Architecture Diagram**_ above details the high-level design of the **Finux** Application.
 Brief explanations of the components involved are given below.
 
-The `Finux` component contains only one class `Finux`, It is responsible for,
+The `Finux` component is the object class itself, It is responsible for,
 * At launch: Initializes the components in the correct sequence and attempts to load data from file.  
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
-The rest of the Application consists of six components.
+The rest of the Application consists of six main components.
 * `Ui`: The user interface (Ui) of the App which handles all user input and Application output.
 * `Parser`: The user input parser of the CLI.
 * `CommandHandler`: The handler of parsed arguments for conversion into appropriate `Commands`.
@@ -161,8 +162,9 @@ retrieval from storage file for creation of the `RecordList` object.
 ![Main program flow](img/CommandLooperSequenceDiagram.png)\
 _Figure 3: Main Application Loop & Exit Sequence_
 
-> 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML,
-> the lifeline reaches the end of diagram.
+> 💡 The lifeline all objects should end at the destroy marker (X) but due to a limitation of PlantUML, 
+> the lifeline reaches the end of diagram. This limitation persists throughout all sequence diagram in 
+> this guide.
 
 This sequence diagram follows suit after initialization in _Figure 2_.\
 This shows the main flow until the `exit` command is input by the user.
@@ -175,18 +177,18 @@ The following sections below will provide more details of each component.
 *Figure 4: **Ui** Class Diagram*
 
 The Ui Component consists of a `Ui` class which handles all user input and system output.
-The Ui is only dependent on the `Duke` class and does not interact directly with other classes,
+The Ui is only dependent on the `Finux` class and does not interact directly with other classes,
 ensuring a high level of cohesiveness, low level of coupling and separation of roles.
 
 The `Ui` component actively listens for:
 * the execution of commands to print the result of a `command`
 
 ### 3.3 Parser Component
-![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png) <br>
+![ParserHandlerClassDiagram](img/ParserHandlerClassDiagram.png)\
 _Figure 5: **ParserHandler** Class Diagram_
 
 #### Description
-The Parser component consist of 1 class called `ParserHandler`.
+The Parser component consist of one class called `ParserHandler`.
 The role of `ParserHandler` can be interpreted as a "manager" or "middle man" to parse
 the user input from the console into an `ArrayList<String>` format.
 
@@ -196,19 +198,16 @@ finalizing the startOptionArray, endOptionArray, and middleOptionArray. Whenever
 to parse a user input, the ParserHandler calls the method `getParseInput` and returns an `ArrayList<String>`.
 
 1. `getParseInput` will trim the leading white space before calling `startExtraction`.
-2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and 
+2. `startExtraction` will check if the trimmed input starts with option. If yes, extract the option and
    remove the option from the trimmed input before calling `extractSubsequencePart`.
-3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the 
-   trimmed input to the start of the next option index. This is the argument tagged after the option. 
+3. `extractSubsequencePart` will check for the next option index and extract whatever is in between the start of the
+   trimmed input to the start of the next option index. This is the argument tagged after the option.Afterward, 
+   the checking mechanism will loop until no valid next options are left in the input before calling `extractFinalPart`.
    * Any leading or trailing white space of the argument field will be removed.
    * If no argument is provided, the argument would be stored an empty string.
-
-   Afterward, the checking mechanism will loop until no valid next options are left in the input before calling
-   `extractFinalPart`.
-   * Valid next option format: `' <option> '` with 1 leading and trailing whitespace. e.g. `' -e '`
-4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and 
-   add an empty string as the argument, else just add the last trimmed input to the ArrayList. 
-5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will 
+4. `extractFinalPart` will check if the last trimmed input ends with option. If yes, extract the option and
+   add an empty string as the argument, else just add the last trimmed input to the ArrayList<String>.
+5. Finally, after the extraction to ArrayList<String> is complete, `extractFinalPart` will
    call `checkFirstBlock` for the final check to parse any `help` or `creditscore` in the first argument block.
    
 #### Parser Component Design Consideration
@@ -223,18 +222,18 @@ to parse a user input, the ParserHandler calls the method `getParseInput` and re
      e.g. `'-e '`
    * Ending option should be in the form of `' <option>'` with 1 leading whitespace and no trailing whitespace.
      e.g. `' -e'`
-   * During processing, next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
+   * During the extraction, the next option should be in the form of `' <option> '` with 1 leading and trailing whitespace.
      e.g. `' -e '`
-3. As rearrangement of options is allowed, option detection should cater to non-fixed option order. 
-   Apache Commons Lang, 3.11, providing the StringUtils class is used to cater to consideration 2.
-   * StringUtils.startsWithAny() - detection of start option with non-fixed order.
-   * StringUtils.endsWithAny()   - detection of end option with non-fixed order.
-   * StringUtils.indexOfAny()    - detection of during processing option with non-fixed order.
+3. As rearrangement of options is allowed, option detection should cater to non-fixed option order.
+   Apache Commons Lang, 3.11, providing the `StringUtils` class is used to cater to consideration 2.
+   * `StringUtils.startsWithAny()` - detection of start option with non-fixed order.
+   * `StringUtils.endsWithAny()`   - detection of end option with non-fixed order.
+   * `StringUtils.indexOfAny()`    - detection of during processing option with non-fixed order.
 4. As multiple whitespaces is allowed, options and arguments should be fully trimmed (leading and trailing).
 5. As the ArrayList<String> is passed back to the main program and is being used by CommandHandler,
    the argument field should compulsory and appended with empty string if empty to facilitate validations and option-argument
    pairwise logic.
-6. getParseInput should always return a new ArrayList<String> per new input.
+6. `getParseInput(String)` should always return a new ArrayList<String> per new input.
 
 
 ### 3.4 CommandHandler Component
@@ -267,23 +266,26 @@ Finally, if `parsedArguments[0]` cannot be mapped to any command, a `CommandExce
 thrown to `Finux` to handle.
 
 Not stated explicitly in the diagrams, when the `exit` command is entered, the `CommandHandler`
-sets the `isExit = true`, resulting in `Finux` proceeding to call `end()` to exit the Application.
+sets the `isExit = true`, ending control of the `commandLooper()` and resulting in `Finux` proceeding to call `end()` to exit the Application.
 
 ### 3.5 Command Component
-![CommandClassDiagram](img/CommandClassDiagram.png)
+![CommandClassDiagram](img/CommandClassDiagram.png)\
 _Figure 8: Command Class Diagram_
 
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
-These constants are used by the `CommandHandler` to map to each `Command`.
+These constants are used by the `CommandHandler` to map to each `Command`.\
+In the case of `AddCommand` in _Figure 8_, the resultant constant is `...final String COMMAND_ADD = "add";`.\
+More on the different types of commands and usages, please refer to our [User Guide](UserGuide.md).
 
 #### Description
-The `Command` component contains the `abstract Command` class and its extensions. The extensions 
-of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
+The `Command` component contains the `abstract Command` class and its extensions (child classes).
+Each child class inherits the `Command` class.
+The child classes of `Command` are the `AddCommand`, `CreditScoreCommand`, `ViewCommand`, etc...
 
 #### Design
-The only `abstract` method of `Command` is `execute(...)` where it is called everytime a `Command`
-object is created. Most of the input validation is done in the constructor of each Command object. 
+The only `abstract` method of `Command` is `execute(...)`, where it is called by `Finux` everytime a `Command`
+object is successfully created. Most of the input validation is done in the constructor of each Command object. 
 1. Firstly, arguments are checked for validity (if any):
    1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
@@ -292,6 +294,12 @@ object is created. Most of the input validation is done in the constructor of ea
 2. Secondly, option values are validated (if any):
    * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
      Each option value is validated based on the input validation methods for each data type.
+
+In the case of `AddCommand`, which supports options of `{-e | -l | -s}`, the constructor will check which option
+was given, and sets the `RecordType` enumeration, `recordType` to the following:
+* `-e` sets `recordType` to `EXPENSE`.
+* `-l` sets `recordType` to `LOAN`.
+* `-s` sets `recordType` to `SAVING`.
 
 If no violations are present in the arguments, then the subsequent `Command` object is returned.\
 If violations occur at any point of the input validation, the `Command` is not created and `CommandException` 
@@ -303,7 +311,7 @@ The `recordlist` class maintains an internal arraylist of record objects used th
 
 ### 3.7 Storage Component
 
-![StorageClassDiagram](img/StorageClassDiagram.png)
+![StorageClassDiagram](img/StorageClassDiagram.png)\
 _Figure X: Storage Class Diagram_
 
 #### Description
@@ -395,18 +403,80 @@ of some features in **Finux**.
 
 ### 4.1 Add Feature
 The `add` feature aims to allow users to add *expense*, *loan*, and *saving* records.
+
+#### 4.1.1 Current Implementation
+The `add` feature is facilitated by `AddCommand`.\
 When adding an expense `add -e bread loaf -a 2.50 -d today`, or\
 adding a savings `add -s week's savings -a 100 -d 28/03/2021`, or\
 adding a loan `add -l loan to gerard -a 200 -d 12012021 -p Gerard`,
 the `ParserHandler` will parse the input for `CommandHandler` to create the `AddCommand` object.
-By calling the `execute()` method, the respective `Expense`, `Saving` or `Loan` object is added 
-into the `RecordList`.
 
-#### 4.1.1 Current Implementation
-...
+By calling the `execute()` method,
+* the respective `Expense`, `Saving` or `Loan` object is added into the `RecordList` by invoking
+  `addRecord(Record)`.
+* Next, the `saveData(...)` from the `Storage` object is invoked to store the records to file.
+* Finally, a notification is printed onto the console with the help of `Ui`.
 
-#### 4.3.2 Design Consideration
-...
+![AddFeatureSequenceDiagram](img/AddFeatureSequenceDiagram.png)\
+_Figure x: Sequence Diagram for `add {-e | -l | -s}`_
+
+> 📝 The sequence diagram starts from Step 2 onward.
+
+Given below is an example usage scenario of how `AddCommand` behaves at each step.
+
+***Step 1:***\
+User executes the command `add -e Company lunch -a 20.00 -d 02-04-2021`.\
+The application invokes `ParserHandler#getParseInput()` to provide the parsed
+input to `CommandHandler#createCommand()`. This checks for the command type, `add`, and proceeds to validate the
+parsed input in the `new AddCommand()` constructor before returning the constructed `AddCommand` object to `Finux`.
+
+***Step 2:***\
+The application next invokes the `AddCommand#execute()` to execute the user's instruction.
+
+***Step 3:***\
+Inside the `AddCommand#execute()`, the method conducts a check on the `RecordType` enumeration before creating
+the `Record` object.
+> ✔️ `EXPENSE` type creates a `new Expense(String,LocalDate,String)`
+
+> ✔️ `LOAN` type creates a `new Loan(String,LocalDate,String,String)`
+
+> ✔️ `SAVING` type creates a `new Saving(String,LocalDate,String)`
+
+***Step 4:***\
+The `Record` object is added to into the `RecordList` object by invoking `RecordList#addRecord(Record)`.
+
+***Step 5:***\
+The `RecordList` object is written to file by invoking `Storage#saveData(RecordList, CreditScoreReturnedLoansMap)`.
+
+***Step 6:***\
+Lastly, a successful add message is printed by invoking `Ui#printSuccessfulAdd(Record,int)`.
+
+
+#### 4.1.2 Design Consideration
+This section shows the design considerations taken when implementing the add feature.
+
+Aspect: **How to manage so many different options**
+
+For record types such as `Expense` and `Saving`, they do not require additional options.
+But for `Loan` record type, it requires an extra option `-p` for the borrower name. Since the `add` command
+supports many different options and option ordering is not strict, this will complicate validation.
+
+The two choices to consider would be:
+* Use regular expressions (regex)
+* Use systematic validation
+
+|Approach | Pros | Cons| 
+|---------|------|-----|
+|Regular expressions|Less complicated validation procedure.|May need a very complicated regex String or multiple ones, for each Command|
+|Systematic validation|Option validation methods can be shared with other Commands|Many option violations to check|
+
+Having considered two of the approaches, we have decided to adopt the second approach.
+Systematic validation is better in the long run. It allows for code re-usability and addition for more
+modular changes,
+* i.e. addition of new options, tweaking validation procedures, etc...
+
+Other than increased complexity of regex Strings, any changes to command and option structure requires a completely
+new regex String. Therefore, systematic validation is the preferred approach, for the current and future developers.
 
 ### 4.2 List Feature
 The `list` feature allows Finux users to list records that they have entered into the system.
@@ -434,13 +504,10 @@ The `view` feature is facilitated by `ViewCommand`. By typing in `view` and foll
 `{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
-![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png) <br>
+![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
 _Figure x: Sequence Diagram for **`view -e`**_
 
 > 📝 The sequence diagram starts from Step 2 onward.
->
-> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
-> are given.
 
 Given below is an example usage scenario of how `ViewCommand` behaves at each step.
 
@@ -453,13 +520,13 @@ parsed input in the `new ViewCommand()` constructor before returning the constru
 The application next invokes the `ViewCommand#execute()` to execute the user's instruction.
 
 ***Step 3:***\
-Inside the `ViewCommand#execute()`, the method conducts a check on the object record type before executing the 
+Inside the `ViewCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the 
 respective method.
-> ✔️ `Expense` type invokes `Ui#printTotalAmountExpense()`
+> ✔️ `EXPENSE` type invokes `Ui#printTotalAmountExpense()`
 
-> ✔️ `Loan` type invokes `Ui#printTotalAmountLoan()`
+> ✔️ `LOAN` type invokes `Ui#printTotalAmountLoan()`
 
-> ✔️ `Saving` type invokes `Ui#printTotalAmountSaving()`
+> ✔️ `SAVING` type invokes `Ui#printTotalAmountSaving()`
 
 ***Step 4:***\
 The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
@@ -517,7 +584,7 @@ Example:
 `return -i 2 -d 2021-03-16`
 
 Output:
-Loan marked as returned: [L][2021-03-16] Loan to Tom [v]
+Loan marked as returned: `[L][2021-03-16] Loan to Tom [v]`
 
 
 ### 4.5 Remove Feature
@@ -530,8 +597,11 @@ allows them to amend their mistakes or edit their list with constraints.
 #### 4.5.1 Current Implementation
 
 The `remove` feature is facilitated by `RemoveCommand`. By running the command with required options and relevant 
-parameters, our `Parser` will construct the `RemoveCommand` object which will validate the input and provide
+parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
+
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+*Figure x: Sequence Diagram for `remove -i 1`*
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
 
@@ -566,11 +636,8 @@ The sequence diagram presented below depicts the interaction between the compone
 `remove -i 1`.
 > 📝 The sequence diagram starts from Step 2 onward.
 > 
-> 📝 The `CommandLooper` only serves as a user input reader here and takes certain actions when certain allowed commands
-> are given.
-
-![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
-*Figure x: Sequence Diagram for `remove -i 1`*
+> 📝 The `commandLooper()` only serves as a user input reader here and takes certain actions when certain allowed 
+> commands are given.
 
 #### 4.5.2 Design Consideration
 
@@ -773,10 +840,138 @@ coding and typing can speed up the process of their finance management through f
 
 ---
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+### D.1: Launch and Shutdown
 
-## Glossary
+**Initial Launch**
 
----
+1. Download the jar file and copy it into an empty folder where the application will save its files in.
+1. Open a new command prompt (Windows) or terminal (MacOS) and navigate to the directory containing `Finux.jar`.
+1. Enter the command `java -jar Finux.jar` to launch Finux.
+1. Program will create a new save file if there are no existing one or load a previously saved file, thereafter Finux
+will be ready for use.
+   
+**Shutdown**
 
-* *glossary item* - Definition
+1. To exit Finux, enter the `exit` command.
+
+### D.2: Adding an expense to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -e Plain bread loaf -a 2.50 -d 28/03/2021`
+   Expected: Adds an `expense` with the description '`Plain bread loaf`' with an amount of `2.50` dollars on `28th March 2021`.
+1. Test case: `add -e Gym equipment -a 500 -d 02/04/2021`
+   Expected: Adds an `expense` with the description '`Gym equipment`' with an amount of `500`. dollars on `2nd April 2021`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -e`
+   1. `add -e -a`
+   1. `add -e -a -d`
+   1. `add -e lunch -a x -d 28/03/2021`
+      (where `x` is a negative number or a word)
+
+### D.3: Adding a loan to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -l 1st loan to Mark -a 200 -d 20/03/2021 -p Mark`
+   Expected: Adds a `loan` with the description '`1st loan to Mark`' with an amount of `200` dollars on `20th March 2021`. 
+   The loan is associated with `Mark`.
+1. Test case: `add -l 1st loan to Jason -a 520 -d 01/04/2021 -p Jason`
+   Expected: Adds a `loan` with the description '`1st loan to Jason`' with an amount of `520` dollars on `1st April 2021`.
+   The loan is associated with `Jason`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -l`
+   1. `add -l -a`
+   1. `add -l -a -d`
+   1. `add -l -a -d -p`
+   1. `add -l loan to Andy -a x -d 28/03/2021 -p Andy`
+      (where `x` is a negative number or a word)
+
+### D.4: Adding a saving to the record list
+
+1. Prerequisite: None.
+1. Test case: `add -s Savings from March -a 1000 -d 29/03/2021`
+   Expected: Adds a `saving` with the description '`Savings from March`' with an amount of `1000` dollars on `29th March 2021`.
+1. Test case: `add -s Savings from April -a 1200 -d 29/04/2021`
+   Expected: Adds a `saving` with the description '`Savings from April`' with an amount of `1200` dollars on `29th April 2021`.
+1. Other incorrect commands to try:
+   1. `add`
+   1. `add -s`
+   1. `add -s -a`
+   1. `add -s -a -d`
+   1. `add -s Savings from Intern -a x -d 30/05/2021`
+      (where `x` is a negative number or a word)
+   
+### D.5 Listing expense(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -e`
+   Expected: Lists all the `expenses` currently in the record list.
+
+### D.6 Listing loan(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -l`
+   Expected: Lists all the `loans` currently in the record list.
+
+### D.7 Listing saving(s) in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -s`
+   Expected: Lists all the `savings` currently in the record list.
+
+### D.8 Listing all records in the record list
+
+1. Prerequisite: None.
+1. Test case: `list -a`
+   Expected: Lists all the records currently in the record list.
+
+### D.9 Viewing total expense amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -e`
+   Expected: Views the total amount of expenses currently in the record list.
+
+### D.10 Viewing total loan amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -l`
+   Expected: Views the total amount of loans currently in the record list.
+
+### D.11 Viewing total saving amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -s`
+   Expected: Views the total amount of savings currently in the record list.
+
+### D.12 Viewing total record amount in the record list
+
+1. Prerequisite: None.
+1. Test case: `view -a`
+   Expected: Views the total amount of all records currently in the record list.
+
+### D.13 Mark a loan as returned
+
+1. Prerequisite:
+   1. Assuming your current record list is empty.
+   1. The record list must contain a loan record.
+   1. Add a loan into the list `add -l Loan to Jason -a 500 -d 28/03/2021 -p Jason`
+1. Test case: `return -i 1 -d 02/04/2021`
+   Expected: The loan with index 1 will be marked as returned and will be indicated with `[v]` at the end of the entry
+   in the record list.
+1. Other incorrect commands to try:
+   1. `return`
+   1. `return -i`
+   1. `return -i -d`
+   1. `return -i x -d y`
+      (where `x` is a negative number or a word, `y` is an invalid date)
+
+### D.14 Remove a record from the record list
+
+1. Prerequisite: None.
+1. Test case:
+1. Test case:
+1. Other incorrect commands to try:
+   1.
+   1.
+   1.
