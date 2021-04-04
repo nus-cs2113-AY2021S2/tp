@@ -48,8 +48,7 @@ There are 2 prerequisites for this project
 **Architecture**
 ----------------
 
-![](media/image2.png){width="6.267716535433071in"
-height="5.638888888888889in"}
+<img src="images/ArchitectureDiagram.png">
 
 Our application utilises many layers of abstraction which allows each
 individual component to be self contained yet able to work with other
@@ -57,8 +56,8 @@ components. The Main Menu component allows direct access to other
 components as shown in the diagram.
 
 Shared functionalities are placed within the Common Classes component
-which will be elaborated on in the section [[Common
-Classes]{.ul}](#common-classes)
+which will be elaborated on in the section [Common
+Classes](#common-classes)
 
 ### 
 
@@ -829,7 +828,7 @@ NurseScheduleStorage, NurseScheduleActions, UI and NurseScheduleUI
 classes will be assessed, and the following sequence of actions is
 called to prompt execution results to user:
 
-*add* \[Nurse ID\] \[Date (DDMMYYYY)\]:
+`add/[Nurse ID]/[Date (DDMMYYYY)]`:
 
 Getting User Input:
 
@@ -854,10 +853,14 @@ choice of listing all schedules or a specified nurse id's schedule. This
 is similar to a search function. This will access the
 NurseScheduleActions class.
 
+<<<<<<< HEAD
 <img src="images/ListNurseIDSequenceDiagram.png">
 <p align = "center"> Sequence Diagram when list/N12345 inputted.</p>
 
 *list* \[Nurse ID\] or list \[all\]:
+=======
+`list/[Nurse ID or list/all`:
+>>>>>>> 2f631017a01910f95eb267dc2b5e27519af869d2
 
 Getting User Input
 
@@ -878,7 +881,7 @@ Printing schedules
 
 When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed.
 
-*delete* \[Nurse ID\] \[Date (DDMMYYYY)\]:
+`delete/[Nurse ID]/[Date (DDMMYYYY)]`:
 
 Getting User Input
 
