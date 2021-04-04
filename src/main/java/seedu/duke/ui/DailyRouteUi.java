@@ -6,6 +6,7 @@ import seedu.duke.data.NusMap;
 import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.RepeatedBlockException;
 
 import java.util.ArrayList;
 
@@ -17,17 +18,23 @@ public class DailyRouteUi extends UiManager {
         while (!isValidBlock(block)) {
             showMessage("Enter location of the first activity of the day: ");
             try {
-                block = getBlockEntry();
-            } catch (InvalidBlockException e) {
+                block = getBlockEntry(block);
+                if (block.equals("END")){
+                    throw new InvalidBlockException();
+                }
+                dailyBlocks.add(block);
+            } catch (InvalidBlockException | RepeatedBlockException e) {
                 showMessage(e.getMessage());
             }
         }
         while (!block.equals("END")) {
             try {
-                dailyBlocks.add(block);
                 showMessage("Enter location of the next activity of the day: ");
-                block = getBlockEntry();
-            } catch (InvalidBlockException e) {
+                block = getBlockEntry(block);
+                if (isValidBlock(block)) {
+                    dailyBlocks.add(block);
+                }
+            } catch (InvalidBlockException | RepeatedBlockException e) {
                 showMessage(e.getMessage());
             }
         }
@@ -41,8 +48,11 @@ public class DailyRouteUi extends UiManager {
         return nusMap.getBlock(block) != null;
     }
 
-    public String getBlockEntry() throws InvalidBlockException {
+    public String getBlockEntry(String previousBlock) throws InvalidBlockException, RepeatedBlockException {
         String block = getUserInput().toUpperCase();
+        if (block.equals(previousBlock)){
+            throw new RepeatedBlockException();
+        }
         if (isValidBlock(block) || block.equals("END")) {
             return block;
         } else {
