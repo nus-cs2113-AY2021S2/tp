@@ -23,11 +23,12 @@ public class Booking implements Serializable {
     public void printBookingDetails(){
         System.out.println("==========================================");
         System.out.println("Showtimes No:     " + showtimes.getMovieTitle());
-        System.out.println("Seats Booked:");
+        System.out.print("Seats Booked: ");
         for(int i = 0; i<seats.size(); i++){
-            System.out.println("[" + (seats.get(i).getRow()+1)
-                    + "," + (seats.get(i).getColumn()+1)+"]");
+            System.out.print("[" + (seats.get(i).getRow()+1)
+                    + "," + (seats.get(i).getColumn()+1)+"] ");
         }
+        System.out.println();
         System.out.println("Status:          "+ status);
         System.out.println("Date:          "+ date);
         System.out.println("==========================================");

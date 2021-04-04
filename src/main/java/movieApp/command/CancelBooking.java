@@ -7,6 +7,8 @@ import movieApp.storage.Database;
 import movieApp.user.User;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class CancelBooking {
@@ -22,10 +24,34 @@ public class CancelBooking {
 
     public void cancelOneBooking() {
         int thisBookingNumber = getBookingNumber();
-        resetSeatStatus(currentBookings.get(thisBookingNumber-1));
-        currentBookings.remove(thisBookingNumber-1);
-        System.out.println("Booking Number " + thisBookingNumber + " has been removed successfully.");
-        Database.updateBookings();
+        if(thisBookingNumber!=0) {
+            deleteThisBooking(thisBookingNumber);
+        }else{
+            System.out.println("No more bookings available.");
+            System.out.println();
+        }
+    }
+
+    private void deleteThisBooking(int thisBookingNumber) {
+        if(checkIfCurrDateOverBookingDate(currentBookings.get(thisBookingNumber - 1))){
+            System.out.println("The movie screening is over. Cancelling of booking is unsuccessful.");
+        }else{
+            resetSeatStatus(currentBookings.get(thisBookingNumber - 1));
+            currentBookings.remove(thisBookingNumber - 1);
+            System.out.println("Booking Number " + thisBookingNumber + " has been removed successfully.");
+            Database.updateBookings();
+        }
+    }
+
+    private boolean checkIfCurrDateOverBookingDate(Booking selectedBooking) {
+        Date currentDate = new Date();
+        Calendar calendar = selectedBooking.getShowtimes().getDateTime();
+        Date movieDate = calendar.getTime();
+        if (currentDate.compareTo(movieDate) > 0) {
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void resetSeatStatus(Booking booking) {
@@ -37,6 +63,8 @@ public class CancelBooking {
             seats.get(i).setStatus(false);
             System.out.println((seats.get(i).getRow()-1) + " , " + (seats.get(i).getRow()-1));
             System.out.println(showtimes.getShowtimeID());
+            System.out.println("Seat: "+(seats.get(j).getRow()) + " , " + (seats.get(j).getRow()) + " status: "
+                            + Database.ShowtimesDatabase.get(i).getSeat(seats.get(j).getRow(), seats.get(j).getRow()).getStatus());
         }
          */
         Showtimes showtimes = booking.getShowtimes();
@@ -46,8 +74,6 @@ public class CancelBooking {
                 for(int j=0;j<seats.size();j++){
                     showtimes.setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
                     Database.ShowtimesDatabase.get(i).setSeatStatus(seats.get(j).getRow(), seats.get(j).getRow(), false);
-                    System.out.println("Seat: "+(seats.get(j).getRow()) + " , " + (seats.get(j).getRow()) + " status: "
-                            + Database.ShowtimesDatabase.get(i).getSeat(seats.get(j).getRow(), seats.get(j).getRow()).getStatus());
                 }
             }
         }
@@ -55,6 +81,11 @@ public class CancelBooking {
 
     private int getBookingNumber() {
         int booking_choice=0;
+
+        if(checkIfBookingListIsEmpty()){
+            return booking_choice;
+        }
+
         while ((booking_choice < 1) || (booking_choice > currentBookings.size())) {
             System.out.println("Please indicate the booking number to cancel:");
             if (!sc.hasNextInt()) {
@@ -68,5 +99,13 @@ public class CancelBooking {
             }
         }
         return booking_choice;
+    }
+
+    private boolean checkIfBookingListIsEmpty() {
+        if(this.currentBookings.size()==0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
