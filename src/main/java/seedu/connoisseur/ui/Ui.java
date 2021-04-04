@@ -330,4 +330,7 @@ public class Ui {
         println(INPUT_TOO_LONG_MESSAGE_15CHAR);
     }
 
+    public void printInvalidRecommendation() {
+        println("Invalid recommendation title. Please try again.");
+    }
 }

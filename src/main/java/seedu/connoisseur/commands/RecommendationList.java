@@ -381,6 +381,7 @@ public class RecommendationList {
                 }
             }
             if (index == -1) {
+                ui.printInvalidRecommendation();
                 return;
             }
         }
