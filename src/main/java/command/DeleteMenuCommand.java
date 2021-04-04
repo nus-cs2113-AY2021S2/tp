@@ -31,8 +31,13 @@ public class DeleteMenuCommand extends Command {
             ui.showMenuNotDeleted();
             return;
         }
+        Canteen canteen = canteens.get(currentCanteenIndex);
+        if (canteen.getNumStores() < 1) {
+            ui.showEmptyCanteen();
+            return;
+        }
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
-        ui.chooseStore();
+        ui.chooseDeleteStore();
 
         String line = ui.readCommand();
         if (line.equals("cancel")) {
@@ -41,10 +46,14 @@ public class DeleteMenuCommand extends Command {
         }
         int currentStoreIndex = Integer.parseInt(line) - 1;
         ArrayList<Menu> menus = canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getMenus();
+        if (menus.size() < 1) {
+            ui.showNoMenuToDelete();
+            return;
+        }
         ui.showDisplayMenu(canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getStoreName(),
                 menus);
-        ui.chooseMenu();
 
+        ui.chooseMenu();
         line = ui.readCommand();
         if (line.equals("cancel")) {
             ui.showMenuNotDeleted();

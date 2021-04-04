@@ -32,6 +32,7 @@ public class AddMenuCommand extends Command {
     public void getMenu(ArrayList<Canteen> canteens, Ui ui) throws NumberFormatException, IOException, DukeExceptions {
         String menuName;
         double menuPrice;
+        Integer currentStoreIndex;
 
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
@@ -40,11 +41,18 @@ public class AddMenuCommand extends Command {
             return;
         }
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
+
         ui.chooseStore();
         String line = ui.readCommand();
         if (line.equals("cancel")) {
             ui.menuNotAdded();
             return;
+        } else {
+            currentStoreIndex = Integer.parseInt(line) - 1;
+        }
+
+        if (currentStoreIndex < 1 | currentCanteenIndex > canteens.get(currentCanteenIndex).getNumStores()) {
+            throw new DukeExceptions("Store index not in range!");
         }
 
         ui.enterMenuName();
@@ -55,6 +63,7 @@ public class AddMenuCommand extends Command {
         } else {
             menuName = line;
         }
+
         ui.enterMenuPrice();
         line = ui.readCommand();
         if (line.equals("cancel")) {
@@ -64,9 +73,7 @@ public class AddMenuCommand extends Command {
             menuPrice = Double.parseDouble(line);
         }
 
-        Integer currentStoreIndex = Integer.parseInt(line) - 1;
         Canteen canteen = canteens.get(currentCanteenIndex);
-
         Menu menu = new Menu(menuName,menuPrice);
         canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded();

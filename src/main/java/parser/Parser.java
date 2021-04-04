@@ -118,6 +118,9 @@ public class Parser {
         case "9":
             newCommand = new ExitCommand();
             break;
+        case "login":
+            newCommand = new LoginCommand(nusFoodReviews);
+            break;
         default:
             throw new DukeExceptions("Please enter a valid index!");
         }
