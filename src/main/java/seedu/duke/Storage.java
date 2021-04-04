@@ -3,17 +3,14 @@ package seedu.duke;
 import seedu.duke.capsimulator.HelpGraduation;
 import seedu.duke.link.LinkInfo;
 import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.task.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -30,6 +27,7 @@ public class Storage {
     public static String filePathForLinks = new File("").getAbsolutePath();
     public static String filePathForZoom = new File("").getAbsolutePath();
     public static String filePathForMcs = new File("").getAbsolutePath();
+    public static String filePathForComponents = new File("").getAbsolutePath();
 
     public static void saveAllFiles() throws IOException {
         modulesFileSaver();
@@ -41,6 +39,7 @@ public class Storage {
         linksFileSaver();
         zoomLinksFileSaver();
         modularCreditSaver();
+
     }
 
     public static void loadAllFiles() {
@@ -95,6 +94,7 @@ public class Storage {
             Module module = new Module(part[0], part[1]);
             int modularCredit = Integer.parseInt(part[2]);
             String grade = part[3];
+            String components = part[4];
             StringBuilder review = new StringBuilder();
             while (true) {
                 String line = s.nextLine();
@@ -105,13 +105,33 @@ public class Storage {
                 review.append(line).append("\n");
 
             }
+            //components = parseComponent(components);
+            components = components.substring(1, components.length()-1);
+            String[] keyValuePairs = components.split(",");
+            Hashtable<String, Integer> table = new Hashtable<>();
+            for(String pair : keyValuePairs) {
+                String[] entry = pair.split("=");
+                table.put(entry[0].trim(), Integer.parseInt(entry[1].trim()));
+            }
+            module.setComponents(table);
             module.setGrade(grade);
             module.setMc(modularCredit);
             module.setReview(review.toString());
             ModuleInfo.modules.add(module);
         }
     }
-
+/*
+    private static String parseComponent(String components) {
+        int indexOfStart = components.indexOf("{");
+        int indexOfEnd = components.indexOf("}");
+        for (int i = indexOfStart; i <= indexOfEnd; i++) {
+            if (components.indexOf("=", i) != -1) {
+                int indexOfEqual = components.indexOf("=", i);
+                String grade = components.substring(indexOfStart+1, indexOfEqual-1);
+            }
+        }
+    }
+*/
     /**
      * Writes tasks ArrayList data into modules.txt file on computer Delimiter is ' ~~ '
      *
@@ -123,8 +143,9 @@ public class Storage {
             fw.write(module.getName() + " ~~ "
                     + module.getDescription() + " ~~ "
                     + module.getMc() + " ~~ "
-                    + module.getGrade() + "\n"
-                    + module.getReview());
+                    + module.getGrade() + " ~~ ");
+            fw.write(module.getComponents().toString());
+            fw.write("\n" + module.getReview());
             fw.write(" -- end of module --");
             fw.write(System.lineSeparator());
         }
@@ -566,4 +587,49 @@ public class Storage {
                 + HelpGraduation.getCurrentCap());
         fw.close();
     }
+/*
+    public static void loadComponentsInfoFile() {
+        filePathForComponents += "/UniTracker Data";
+        File data = new File(filePathForComponents);
+        if (!data.exists()) {
+            boolean isCreated = data.mkdir();
+            if (!isCreated) {
+                System.out.println("New directory could not be created:(");
+            }
+        }
+
+        try {
+            filePathForComponents += "/components.txt";
+            data = new File(filePathForComponents);
+            if (data.createNewFile()) {
+                return;
+            }
+            downloadComponents();
+        } catch (IOException e) {
+            System.out.println("There was an I/O error:(");
+        }
+    }
+
+    public static void downloadComponents() throws FileNotFoundException {
+        File f = new File(filePathForComponents);
+        Hashtable<String, Integer> components = new Hashtable<>();
+        Scanner scanner = new Scanner(f);
+        while (scanner.hasNext()) {
+            String[] part = scanner.nextLine().split("~~");
+            String componentName = part[0];
+            int weightage = Integer.parseInt(part[1]);
+            components.put(componentName, weightage);
+        }
+        Component.setComponentsHere(components);
+    }
+
+    public static void ComponentsSaver() throws IOException {
+        filePathForComponents += "/UniTracker Data";
+        filePathForComponents += "/components.txt";
+        //File data = new File(filePathForComponents);
+        FileWriter fw = new FileWriter(filePathForComponents);
+        fw.write(String.valueOf(Component.components));
+        fw.close();
+    }
+*/
 }

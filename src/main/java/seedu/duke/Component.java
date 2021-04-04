@@ -28,20 +28,40 @@ public class Component {
 
         if (isModuleExist) {
             // prompts user for component and its weightage
+            int weightage;
+            String componentName;
             Ui.printModuleComponentPrompt();
             String[] userInput = Ui.readCommand().split(" ");
 
             //Test2 stores the old components and adds in the new component.
-            Hashtable<String, Integer> component = new Hashtable<>();
+            Hashtable<String, Integer> component;
             component = modules.get(moduleNumberInt).getComponents();
-            component.put(userInput[0], Integer.parseInt(userInput[1]));
-            modules.get(moduleNumberInt).setComponents(component);
+            try {
+                componentName = userInput[0];
+                weightage = Integer.parseInt(userInput[1]);
+                component.put(componentName, weightage);
 
+//                System.out.println("TEST");
+//                System.out.println(component);
 
-            System.out.println("Component and weightage added!");
+                modules.get(moduleNumberInt).setComponents(component);
+                setComponentsHere(component);
+                //component.values()
+                System.out.println("Component and weightage added!");
+
+            } catch (NumberFormatException e) {
+                Ui.printModuleComponentPrompt();
+            }
+
         } else {
             Ui.printModuleDoesNotExistMessage();
         }
+
+        //toStringComponent(modules.get(moduleNumberInt).getComponents());
+
+//        System.out.println("getComponent: ");
+//        System.out.println(getComponentsHere());
+
 
     }
 
@@ -64,6 +84,8 @@ public class Component {
         } else {
             Ui.printModuleDoesNotExistMessage();
         }
+
+
     }
 
     //
@@ -72,5 +94,20 @@ public class Component {
     //    }
 
 
+    public static void setComponentsHere(Hashtable<String, Integer> components) {
+        Component.components = components;
+    }
+
+    public static Hashtable<String, Integer> getComponentsHere() {
+        return components;
+    }
+
+    public static void toStringComponent(Hashtable<String, Integer> components) {
+
+        ArrayList<String> com = new ArrayList<>();
+        components.forEach((k,v)->com.add(k + " ~~ " + v));
+        System.out.println(com);
+
+    }
 
 }
