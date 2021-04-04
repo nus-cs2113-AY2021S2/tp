@@ -2,10 +2,11 @@ package seedu.duke.ui;
 
 import seedu.duke.data.Block;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.SameBlockException;
 
 public class RouterUi extends UiManager {
 
-    public String[] getRoutingInfo() {
+    public String[] getRoutingInfo() throws SameBlockException {
         String[] startAndDestination = new String[2];
 
         showMessage("Starting Block:");
@@ -15,6 +16,10 @@ public class RouterUi extends UiManager {
         startAndDestination[1] = getUserInput().toUpperCase();
 
         showMessage(CommonMessage.DIVIDER);
+
+        if (startAndDestination[0].equals(startAndDestination[1])) {
+           throw new SameBlockException();
+        }
         return startAndDestination;
     }
 
