@@ -73,7 +73,7 @@ public class Storage {
             writeRecordListToSaveFile(recordList);
             writeMapToSaveFile(creditScoreReturnedLoansMap);
         } catch (IOException e) {
-            System.out.println("Error in saveData()");
+            System.out.println("Error in saving data!");
         }
     }
 
