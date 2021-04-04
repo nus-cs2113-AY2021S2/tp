@@ -110,7 +110,7 @@ public class Ui {
     public static void printAddTaskMenu() {
         System.out.println("Please choose which type of task you would like to add"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -119,7 +119,7 @@ public class Ui {
     public static void printMarkTaskMenu() {
         System.out.println("Please choose which type of task you would like to mark/unmark as done"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -128,7 +128,7 @@ public class Ui {
     public static void printDeleteTaskMenu() {
         System.out.println("Please choose which type of task you would like to delete"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -137,7 +137,7 @@ public class Ui {
     public static void printPinTaskMenu() {
         System.out.println("Please choose which type of task you would like to pin"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -147,14 +147,11 @@ public class Ui {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println(
-                    "What is the module of the assignment you want to add? Enter the number:");
+            System.out.println("What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println(
-                    "What is the module of the midterm you want to add? Enter the number:");
+            System.out.println("What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println(
-                    "What is the module of the final exam you want to add? Enter the number:");
+            System.out.println("What is the module of the final exam you want to add? Enter the number:");
         }
         printEmptyLine();
     }
@@ -177,21 +174,21 @@ public class Ui {
 
     public static void printAddTaskDateMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the date of the assignment you want to add?");
+            System.out.println("What is the date of the assignment you want to add? Format of date is YYYY-MM-DD");
         } else if (taskType == 3) {
-            System.out.println("What is the date of the midterm you want to add?");
+            System.out.println("What is the date of the midterm you want to add? Format of date is YYYY-MM-DD");
         } else {
-            System.out.println("What is the date of the final exam you want to add?");
+            System.out.println("What is the date of the final exam you want to add? Format of date is YYYY-MM-DD");
         }
     }
 
     public static void printAddTaskTimeMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the time of the assignment you want to add?");
+            System.out.println("What is the time of the assignment you want to add? Format of time is HH:MM");
         } else if (taskType == 3) {
-            System.out.println("What is the time of the midterm you want to add?");
+            System.out.println("What is the time of the midterm you want to add? Format of time is HH:MM");
         } else {
-            System.out.println("What is the time of the final exam you want to add?");
+            System.out.println("What is the time of the final exam you want to add? Format of time is HH:MM");
         }
     }
 
@@ -271,12 +268,12 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-                + "Returning back to TaskManager menu now!");
+                + "Returning back to the menu now...");
         printHorizontalLine();
     }
 
     public static void printInvalidIntegerMessage() {
-        System.out.println("Please enter a valid integer from the menu.");
+        System.out.println("Invalid input! Please enter a valid integer from the list.");
     }
 
     public static void printInvalidTimeFormat() {
@@ -285,10 +282,6 @@ public class Ui {
 
     public static void printInvalidDateFormat() {
         System.out.println("Please enter a valid date format.");
-    }
-
-    public static void printInvalidTaskNumberMessage() {
-        System.out.println("Please input a valid task number.");
     }
 
     public static String readCommand() {
@@ -309,6 +302,13 @@ public class Ui {
         }
         printHorizontalLine();
         return command;
+    }
+
+    public static boolean userCommandIsEmpty(String command) {
+        if (command.equals("")) {
+            return true;
+        }
+        return false;
     }
 
     public static void printLinks(ArrayList<LinkInfo> linksList) {
@@ -629,8 +629,7 @@ public class Ui {
     }
 
     public static void printModuleNumberDoesNotExistMessage() {
-        System.out.println("A module for that number does not exist. "
-                + "Would you like to add a module? [Y/N]");
+        System.out.println("No such module! Would you like to add a module? [Y/N]");
     }
 
     public static void printModuleList() {
