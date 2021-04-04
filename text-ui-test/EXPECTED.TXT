@@ -8,11 +8,11 @@
 | $$ \  $$|  $$$$$$/|  $$$$$$/| $$ \/  | $$|  $$$$$$$ /$$$$$$$$|  $$$$$$$
 |__/  \__/ \______/  \______/ |__/     |__/ \_______/|________/ \_______/
 --------------------------------------------------------------------------
-> [X] Alias data has been successfully loaded!
-> [X] History data has been successfully loaded!
-> [X] Favourite data has been successfully loaded!
-> [X] Daily Route data has been successfully loaded!
-> [X] Note data has been successfully loaded!
+[X] Alias data has been successfully loaded!
+[X] History data has been successfully loaded!
+[X] Favourite data has been successfully loaded!
+[X] Daily Route data has been successfully loaded!
+[X] Note data has been successfully loaded!
 --------------------------------------------------------------------------
 Hello! Welcome to NUSMaze
 Where do you want to go today?
