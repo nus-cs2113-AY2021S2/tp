@@ -94,7 +94,7 @@ public class RecommendationList {
             ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
             ui.print("| " + currentRecommendation.priceRange());
-            ui.printWhiteSpace(currentRecommendation.priceRange().length()-2);
+            ui.printWhiteSpace(currentRecommendation.priceRange().length() - 2);
             ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
             ui.print("| " + currentRecommendation.getRecommendedBy());
