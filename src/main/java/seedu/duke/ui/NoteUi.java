@@ -10,22 +10,18 @@ public class NoteUi extends UiManager {
 
     public String[] getNoteInfo() throws InvalidNoteException {
         String[] noteInfo = new String[2];
-        showMessage("Enter Location:");
+        showMessage("Enter Block:");
         noteInfo[0] = getUserInput().toUpperCase();
 
         showMessage("Enter the Note:");
-        noteInfo[1] = getUserInput().trim();
+        noteInfo[1] = getUserInput();
 
         showMessage(CommonMessage.DIVIDER);
-
-        if (noteInfo[1].equals("")) {
-            throw new InvalidNoteException();
-        }
         return noteInfo;
     }
 
     public String getBlockInfo() {
-        showMessage("Enter Location:");
+        showMessage("Enter Block:");
         String block = getUserInput().toUpperCase();
         showMessage(CommonMessage.DIVIDER);
         return block;

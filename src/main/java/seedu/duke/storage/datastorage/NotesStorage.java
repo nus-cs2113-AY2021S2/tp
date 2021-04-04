@@ -3,6 +3,7 @@
 package seedu.duke.storage.datastorage;
 
 import seedu.duke.exception.InvalidFilePathException;
+import seedu.duke.exception.InvalidNoteException;
 import seedu.duke.exception.LoadDataException;
 import seedu.duke.exception.SaveDataException;
 
@@ -40,7 +41,7 @@ public class NotesStorage extends Storage {
                 String[] decodedData = decodeAliasAndNoteData(encodedData, nusMap);
                 nusMap.getBlock(decodedData[0]).addNote(decodedData[1]);
             }
-        } catch (IOException e) {
+        } catch (IOException | InvalidNoteException e) {
             throw new LoadDataException();
         }
     }

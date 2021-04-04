@@ -3,6 +3,7 @@
 package seedu.duke.data;
 
 import seedu.duke.exception.InvalidAliasException;
+import seedu.duke.exception.NoAliasNameException;
 
 import java.util.HashMap;
 
@@ -30,7 +31,10 @@ public class BlockAlias {
 
     public boolean isValidAlias(String alias) {
         NusMap nusMap = new NusMap();
-        return (!aliases.containsKey(alias) && nusMap.getBlock(alias) == null && !alias.equalsIgnoreCase("eatery"));
+        return (!aliases.containsKey(alias)
+                && nusMap.getBlock(alias) == null
+                && !alias.equalsIgnoreCase("eatery")
+                && !alias.equals(""));
     }
 
     public String[] changeAliasToBlock(String from, String to) {
@@ -44,11 +48,11 @@ public class BlockAlias {
         return blockNames;
     }
 
-    public void deleteAlias(String alias) throws InvalidAliasException {
+    public void deleteAlias(String alias) throws NoAliasNameException {
         if (aliases.containsKey(alias)) {
             aliases.remove(alias);
         } else {
-            throw new InvalidAliasException();
+            throw new NoAliasNameException();
         }
     }
 }

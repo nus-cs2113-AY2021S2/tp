@@ -16,7 +16,6 @@ public class RouterUi extends UiManager {
         startAndDestination[1] = getUserInput().toUpperCase();
 
         showMessage(CommonMessage.DIVIDER);
-
         if (startAndDestination[0].equals(startAndDestination[1])) {
             throw new SameBlockException();
         }
@@ -25,11 +24,9 @@ public class RouterUi extends UiManager {
 
     public int getEateryIndex(Block[] eateries) throws InvalidIndexException {
         showMessage("Here are the list of eateries(from closest to furthest):");
-
         for (int i = 0; i < eateries.length; i++) {
             showMessage((i + 1) + ". " + eateries[i].getName());
         }
-
         showMessage(
                 CommonMessage.DIVIDER,
                 "SELECT ENTRY TO GO:"

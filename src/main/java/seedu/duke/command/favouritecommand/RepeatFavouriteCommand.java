@@ -3,7 +3,6 @@
 package seedu.duke.command.favouritecommand;
 
 import seedu.duke.exception.EmptyFavouriteException;
-import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.router.Router;
 import seedu.duke.command.Command;

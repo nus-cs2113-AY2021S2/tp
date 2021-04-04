@@ -29,7 +29,6 @@ public class NusMaze {
     private History history;
     private Favourite favourite;
     private DailyRoute dailyRoute;
-
     private Storage[] storages;
 
     public static void main(String[] args) {
