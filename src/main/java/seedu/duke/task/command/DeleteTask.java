@@ -43,10 +43,8 @@ public class DeleteTask {
                     Ui.printInvalidIntegerMessage();
                 }
                 return;
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
                 Ui.printInvalidIntegerMessage();
-            } catch (IndexOutOfBoundsException e) {
-                Ui.printInvalidTaskNumberMessage();
             }
         }
     }

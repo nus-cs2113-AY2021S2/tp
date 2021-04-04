@@ -702,9 +702,9 @@ message being `Wow yay~`:
 For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
 The format for the date and time input is as follows:
 
-- Time: YYYY-MM-DD   
+- Date: YYYY-MM-DD   
   (Y stands for the year, M stands for the month and D stands for the day)
-- Date: HH:MM  
+- Time: HH:MM  
   (H stands for hour in 24H standard and M stands for minute)
 
 Example for adding a task of type `assignment` with the task description of `Work on user guide` and
@@ -720,7 +720,7 @@ Please choose which type of task you would like to add and enter the number:
 [2] --- Assignment
 [3] --- Midterm
 [4] --- Final Exam
-> 1
+> 2
 --------------------------------------------
 What is the module of the task you want to add? Enter the number:
 
@@ -748,8 +748,7 @@ Returning back to TaskManager menu now!
 > If you were to input an invalid module index when choosing the module of the task,
 > you will be asked if you want to add a new module:
 > ````
-> A module for that number does not exist.
-> Would you like to add a module? [Y/N]
+> "No such module! Would you like to add a module? [Y/N]
 > ````
 > 
 > Additionally, if you were to input an invalid date format, you will see the following error message to prompt you to try again:

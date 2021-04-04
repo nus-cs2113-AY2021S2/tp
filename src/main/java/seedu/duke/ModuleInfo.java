@@ -177,6 +177,7 @@ public class ModuleInfo {
 
     public static void printModuleTaskList(String module) {
         int taskNumber = 1;
+        boolean taskExists = false;
         System.out.println("\nThese are your tasks: ");
         for (Task task : TaskManager.tasks) {
             if (!task.getModule().equals(module)) {
@@ -184,14 +185,15 @@ public class ModuleInfo {
             }
             System.out.println(taskNumber + ". " + task.getTaskType() + task.toString());
             taskNumber++;
+            taskExists = true;
         }
         for (Assignment assignment : TaskManager.assignments) {
             if (!assignment.getModule().equals(module)) {
                 continue;
             }
-            System.out
-                    .println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
+            System.out.println(taskNumber + ". " + assignment.getTaskType() + assignment.toString());
             taskNumber++;
+            taskExists = true;
         }
         for (Midterm midterm : TaskManager.midterms) {
             if (!midterm.getModule().equals(module)) {
@@ -199,6 +201,7 @@ public class ModuleInfo {
             }
             System.out.println(taskNumber + ". " + midterm.getTaskType() + midterm.toString());
             taskNumber++;
+            taskExists = true;
         }
         for (FinalExam finalExam : TaskManager.finalExams) {
             if (!finalExam.getModule().equals(module)) {
@@ -206,6 +209,10 @@ public class ModuleInfo {
             }
             System.out.println(taskNumber + ". " + finalExam.getTaskType() + finalExam.toString());
             taskNumber++;
+            taskExists = true;
+        }
+        if (!taskExists) {
+            System.out.println("No tasks found!");
         }
     }
 

@@ -128,9 +128,9 @@ public class TaskManager {
             if (!isInvalidTaskType) {
                 return true;
             }
-            System.out.println("Please enter a valid integer from the list.");
+            Ui.printInvalidIntegerMessage();
         } catch (NumberFormatException n) {
-            System.out.println("Error! Enter an integer.");
+            Ui.printInvalidIntegerMessage();
         }
         return false;
     }
