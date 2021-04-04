@@ -41,8 +41,8 @@ public class Component {
                 weightage = Integer.parseInt(userInput[1]);
                 component.put(componentName, weightage);
 
-//                System.out.println("TEST");
-//                System.out.println(component);
+                //System.out.println("TEST");
+                //System.out.println(component);
 
                 modules.get(moduleNumberInt).setComponents(component);
                 setComponentsHere(component);
@@ -56,11 +56,6 @@ public class Component {
         } else {
             Ui.printModuleDoesNotExistMessage();
         }
-
-        //toStringComponent(modules.get(moduleNumberInt).getComponents());
-
-//        System.out.println("getComponent: ");
-//        System.out.println(getComponentsHere());
 
 
     }
@@ -98,16 +93,6 @@ public class Component {
         Component.components = components;
     }
 
-    public static Hashtable<String, Integer> getComponentsHere() {
-        return components;
-    }
 
-    public static void toStringComponent(Hashtable<String, Integer> components) {
-
-        ArrayList<String> com = new ArrayList<>();
-        components.forEach((k,v)->com.add(k + " ~~ " + v));
-        System.out.println(com);
-
-    }
 
 }
