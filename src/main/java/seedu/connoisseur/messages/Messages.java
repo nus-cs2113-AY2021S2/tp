@@ -91,7 +91,8 @@ public class Messages {
 
     // General
     public static final String DUPLICATE_REVIEW = "There is a review in your review list with the same title:";
-    public static final String DUPLICATE_RECOMMENDATION = "There is a recommendation in your list with the same title:";
+    public static final String DUPLICATE_RECOMMENDATION = "There is a recommendation in your recommendation "
+            + "list with the same title:";
     public static final String INPUT_TOO_LONG_MESSAGE_20CHAR = "Please enter an input with less than 20 characters.";
     public static final String INPUT_TOO_LONG_MESSAGE_15CHAR = "Please enter an input with less than 15 characters.";
     public static final String CHANGE_RECO_TITLE = "It seems like you have already experienced this!";

@@ -176,15 +176,22 @@ public class RecommendationList {
             }
             if (reviewList.checkAndPrintDuplicateReview(title)) {
                 ui.println(CHANGE_RECO_TITLE);
-                ui.println(ABANDON_RECO);
-                input = ui.readCommand().toLowerCase().trim();
-                if (input.equals("y")) {
-                    return;
-                } else if (input.equals("n")) {
+                boolean invalidCommand;
+                do {
+                    ui.println(ABANDON_RECO);
+                    input = ui.readCommand().toLowerCase().trim();
+                    if (input.equals("y")) {
+                        return;
+                    } else if (input.equals("n")) {
+                        break;
+                    } else {
+                        ui.println(INVALID_COMMAND);
+                        invalidCommand = true;
+                    }
+                } while (invalidCommand);
+
+                if (input.equals("n")) {
                     continue;
-                } else {
-                    ui.println(INVALID_COMMAND);
-                    return;
                 }
             }
             break;
