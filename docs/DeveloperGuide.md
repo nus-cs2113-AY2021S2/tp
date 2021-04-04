@@ -3,8 +3,16 @@
 ## Design and Implementation
 
 ### Architecture
+![Architecture Diagram](ArchitectureDiagram.png)\
 The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.\
-![Architecture Diagram](ArchitectureDiagram.png)
+
+* `App`: At app launch, loads data from database and allow users to log in as customer or admin.
+* `Command`: Executes the the actions users can perform on a selected movie.
+* `Parser`: Reads from users' input and returns the filtered movie list.
+* `Storage`: Reads data from, and writes data to, the hard disk.
+* `UI`: The UI of the App.
+* `User`: Contains user information.
+* `Model`: Holds the data of the App in memory.
 
 ### Class Diagram
 Below is the diagram that represents the classes in our system
