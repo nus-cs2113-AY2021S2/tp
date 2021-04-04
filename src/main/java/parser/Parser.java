@@ -20,21 +20,16 @@ import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
-import reviews.Review;
+import storage.Storage;
 import stores.Store;
-import menus.Menu;
 import ui.Ui;
-
-import java.util.ArrayList;
-
-import static stores.Store.averageRating;
 
 
 public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
-    private String savePath = "data/storage.txt";
+    private String savePath = Storage.fileName;
 
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;

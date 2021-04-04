@@ -42,6 +42,6 @@ public class DeleteStoreCommand extends Command {
         String storeName = currentCanteen.getStore(storeIndex).getStoreName();
         currentCanteen.deleteStore(storeIndex);
         ui.showDeleteStore(storeName);
-        Storage.save(new FileWriter("data/storage.txt"),canteens);
+        Storage.save(new FileWriter(Storage.fileName),canteens);
     }
 }

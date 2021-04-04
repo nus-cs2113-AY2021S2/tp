@@ -5,72 +5,83 @@ import menus.Menu;
 import reviews.Review;
 import stores.Store;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
-    private static String filePath;
+    private static BufferedReader reader;
     private static ArrayList<Canteen> canteens;
-    public static final String seperator = "<>";
+    public static final String separator = "<>";
+    public static final String  fileName = "./storage.txt";
 
-    public Storage(String filePath) {
-        this.filePath = filePath;
+    public Storage(BufferedReader reader) {
+        this.reader = reader;
         this.canteens = new ArrayList<Canteen>();
     }
 
-    public static ArrayList<Canteen> load() {
-        try {
-            File canteenFile = new File(filePath);
-            Scanner fileReader = new Scanner(canteenFile);
-            readFiles(fileReader);
-        } catch (FileNotFoundException e) {
-            System.out.println("File Path was not found!");
-        }
+    public static ArrayList<Canteen> load() throws IOException {
+        readFiles(reader);
         return canteens;
     }
 
-    private static void readFiles(Scanner fileReader) {
+    private static void readFiles(BufferedReader reader) throws IOException {
+        String line;
+        if (new File(fileName).exists()) {
+            Scanner sc = new Scanner(new File(fileName));
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                readFunc(line);
+            }
+        } else {
+
+            PrintWriter pw = new PrintWriter(new File(fileName));
+            while ((line = reader.readLine()) != null) {
+                pw.println(line);
+                readFunc(line);
+            }
+            pw.close();
+        }
+    }
+
+    private static void readFunc(String line) {
         Canteen canteen;
         Store store;
+        String[] storedLine = line.split("<>");
 
-        while (fileReader.hasNextLine()) {
-            String line = fileReader.nextLine();
-            String[] storedLine = line.split("<>");
-
-            switch (storedLine.length) {
-            case 1:
-                canteen = new Canteen(storedLine[0]);
-                canteens.add(canteen);
-                break;
-            case 2:
-                //check if canteen exist
-                canteen = findCanteen(storedLine[0]);
-                //add new store to canteen
-                store = new Store(storedLine[1]);
-                canteen.getStores().add(store);
-                break;
-            case 3:
-                String[] reviewDetails = storedLine[2].split("//");
-                //check if canteen exist
-                canteen = findCanteen(storedLine[0]);
-                //check if store exist
-                store = findStore(canteen, storedLine[1]);
-                store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1]),reviewDetails[2]));
-                break;
-            case 4:
-                //check if canteen exist
-                canteen = findCanteen(storedLine[0]);
-                //check if store exist
-                store = findStore(canteen, storedLine[1]);
-                store.addMenu(new Menu(storedLine[2], Double.parseDouble(storedLine[3])));
-                break;
-            default:
-                System.out.println("file corrupted!");
-            }
+        switch (storedLine.length) {
+        case 1:
+            canteen = new Canteen(storedLine[0]);
+            canteens.add(canteen);
+            break;
+        case 2:
+            //check if canteen exist
+            canteen = findCanteen(storedLine[0]);
+            //add new store to canteen
+            store = new Store(storedLine[1]);
+            canteen.getStores().add(store);
+            break;
+        case 3:
+            String[] reviewDetails = storedLine[2].split("//");
+            //check if canteen exist
+            canteen = findCanteen(storedLine[0]);
+            //check if store exist
+            store = findStore(canteen, storedLine[1]);
+            store.addReview(new Review(reviewDetails[0], Double.parseDouble(reviewDetails[1]),reviewDetails[2]));
+            break;
+        case 4:
+            //check if canteen exist
+            canteen = findCanteen(storedLine[0]);
+            //check if store exist
+            store = findStore(canteen, storedLine[1]);
+            store.addMenu(new Menu(storedLine[2], Double.parseDouble(storedLine[3])));
+            break;
+        default:
+            System.out.println("file corrupted!");
         }
     }
 
@@ -120,16 +131,16 @@ public class Storage {
             fw.write(canteen.getCanteenName() + "\n");
             for (Store store : canteen.getStores()) {
                 //print canteen  + store
-                fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + "\n");
+                fw.write(canteen.getCanteenName() + separator + store.getStoreName() + "\n");
                 for (Review review: store.getReviews()) {
                     //print canteen + store + review
-                    fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + seperator
+                    fw.write(canteen.getCanteenName() + separator + store.getStoreName() + separator
                             + review.getDescription() + "//" + review.getRating() + "//" + review.getDate() + "\n");
                 }
                 for (Menu menus : store.getMenus()) {
                     //print canteen + store + menuName + menuPrice
-                    fw.write(canteen.getCanteenName() + seperator + store.getStoreName() + seperator
-                            + menus.getItemName() + seperator + menus.getPrice() + "\n");
+                    fw.write(canteen.getCanteenName() + separator + store.getStoreName() + separator
+                            + menus.getItemName() + separator + menus.getPrice() + "\n");
                 }
             }
         }
@@ -142,22 +153,22 @@ public class Storage {
     }
 
     public static void saveStore(FileWriter fw, String canteenName, String storeName) throws IOException {
-        fw.write(canteenName + seperator + storeName + "\n");
+        fw.write(canteenName + separator + storeName + "\n");
         fw.close();
     }
 
     public static void saveMenu(FileWriter fw, String canteenName, String storeName,
                                 String menuName,String menuPrice) throws IOException {
-        fw.write(canteenName + seperator + storeName + seperator + menuName
-                    + seperator + menuPrice + "\n");
+        fw.write(canteenName + separator + storeName + separator + menuName
+                    + separator + menuPrice + "\n");
         fw.close();
     }
 
     public static void saveReview(FileWriter fw, Canteen canteen, Store store,
                                   String description, String rating, String date) throws IOException {
 
-        fw.write(canteen.getCanteenName() + seperator
-                + store.getStoreName() + seperator + description + "//" + rating + "//" + date + "\n");
+        fw.write(canteen.getCanteenName() + separator
+                + store.getStoreName() + separator + description + "//" + rating + "//" + date + "\n");
         fw.close();
     }
 

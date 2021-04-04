@@ -14,6 +14,10 @@ import canteens.Canteen;
 import ui.Ui;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,8 +27,14 @@ class ParserTest {
 
     Canteen canteen = new Canteen("The Deck");
     Store store = new Store("Techno Edge");
-    NusFoodReviews nusFoodReviews = new NusFoodReviews("\"data/storage.txt\"");
+    InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");
+    InputStreamReader streamReader = new InputStreamReader(inputStream);
+    BufferedReader reader = new BufferedReader(streamReader);
+    NusFoodReviews nusFoodReviews = new NusFoodReviews(reader);
     Ui ui = new Ui();
+
+    ParserTest() throws IOException {
+    }
 
     @Test
     public void parse_list_displayCommand() throws DukeExceptions {
