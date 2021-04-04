@@ -306,11 +306,6 @@ public class MovieFilter {
 	}
 
 	////////////////////////////////////////////////////////////////////////////
-	public static void listMovie(ArrayList<Movie> movieList){
-		printMovieList(movieList);
-	}
-
-	////////////////////////////////////////////////////////////////////////////
 	public static Movie filter(ArrayList<Movie> movieList, ArrayList<Cineplex> CineplexDatabase, User user) {
 		int Filter;
 		loop: while (true) {
@@ -346,8 +341,6 @@ public class MovieFilter {
 					movieList = selectMovie(movieList);
 					break loop;
 				case 7:
-					System.out.println("======= Movie List =======");
-					listMovie(movieList);
 					break;
 				case 8:
 					movieList = new ArrayList<>(Database.MovieDatabase);
@@ -355,7 +348,7 @@ public class MovieFilter {
 				case 9:
 					ViewBooking currentUserBookings = new ViewBooking(user);
 					currentUserBookings.printBookings();
-					break;
+					continue;
 				case 10:
 					return null;
 				default:
