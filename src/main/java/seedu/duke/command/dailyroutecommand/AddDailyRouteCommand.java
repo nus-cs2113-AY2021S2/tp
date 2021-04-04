@@ -31,7 +31,7 @@ public class AddDailyRouteCommand extends Command {
                 MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
             }
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, day));
-        } catch (InvalidBlockException | InvalidIndexException | EmptyDailyRouteException e) {
+        } catch (InvalidIndexException | EmptyDailyRouteException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

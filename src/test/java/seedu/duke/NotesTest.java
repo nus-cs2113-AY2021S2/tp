@@ -32,7 +32,7 @@ public class NotesTest {
             addNoteTest("COM1");
             addNoteTest("STARBUCKS");
         } catch (InvalidBlockException e) {
-            assertEquals("Invalid block! Please enter the command again to retry!", e.getMessage());
+            assertEquals("Invalid block! Please enter again to retry!", e.getMessage());
         }
     }
 
