@@ -47,7 +47,7 @@ class ValidatorsTest {
 
     @Test
     void validateAmount_properFormat_expectSuccess() {
-        String[] arrayOfAmount = {"0.1", "1.0", "1", "987654321", "0.987654321"};
+        String[] arrayOfAmount = {"1", "1.0", "1.00", "0.1", "0.10", "987654321"};
         try {
             for (String testAmount : arrayOfAmount) {
                 validateAmount(testAmount);
@@ -60,7 +60,7 @@ class ValidatorsTest {
     @Test
     void validateAmount_wrongFormat_expectFailure() {
         int numFailCase = 0;
-        String[] arrayOfAmount = {"0", "-1", "1num1word", "wordonly"};
+        String[] arrayOfAmount = {"0", "-1", "1num1word", "wordonly", ".50", "5.", "5.123"};
         for (String testAmount : arrayOfAmount) {
             try {
                 validateAmount(testAmount);

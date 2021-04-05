@@ -9,6 +9,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.time.temporal.ChronoField;
 
+import org.apache.commons.lang3.StringUtils;
 import seedu.duke.exception.CustomException;
 import seedu.duke.record.RecordList;
 import static seedu.duke.common.Constant.FINUX_LOGGER;
@@ -109,7 +110,7 @@ public class Validators {
      * @param stringAmount contains a string representing the amount entered.
      * @return a BigDecimal object.
      * @throws NumberFormatException when the stringAmount contains non numeric.
-     * @throws CustomException when the numeric amount is less than or equals to zero.
+     * @throws CustomException when the numeric amount is negative or incorrect format.
      */
     public static BigDecimal validateAmount(String stringAmount) throws NumberFormatException,
             CustomException {
@@ -117,7 +118,27 @@ public class Validators {
         if (!(amount.compareTo(new BigDecimal("0")) == 1)) {
             throw new CustomException("amount must be greater than 0.");
         }
+        if (amount.scale() > 2) {
+            throw new CustomException("amount should be at most 2 decimal place.");
+        }
+        if (StringUtils.countMatches(stringAmount,".") == 1) {
+            validateDollarAndCent(stringAmount);
+        }
         return amount;
     }
 
+    /**
+     * Validate that the dollar and cent are in proper format.
+     * @param stringAmount contains a string representing the amount entered.
+     * @throws CustomException when the dollar or cent amount is missing.
+     */
+    private static void validateDollarAndCent(String stringAmount) throws CustomException {
+        int decimalIndex = StringUtils.indexOf(stringAmount,".");
+        if (decimalIndex == 0) {
+            throw new CustomException("please enter the dollar amount.");
+        }
+        if (decimalIndex == stringAmount.length() - 1) {
+            throw new CustomException("please enter the cent amount.");
+        }
+    }
 }
