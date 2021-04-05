@@ -44,7 +44,7 @@ public class LinkInfo {
         linksList.add(linkDescription);
     }
 
-    public static void deleteLink(int deleteIndex) {
+    public static void deleteLink(int deleteIndex) throws NumberFormatException, IndexOutOfBoundsException {
         assert deleteIndex >= 0 : "Index is invalid";
         LinkInfo deletedLinkInfo = linksList.get(deleteIndex);
         linksList.remove(deleteIndex);
