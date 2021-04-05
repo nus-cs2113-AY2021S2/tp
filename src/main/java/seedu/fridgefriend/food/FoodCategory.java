@@ -49,8 +49,7 @@ public enum FoodCategory {
         String processedCategoryStr = rawCategoryStr.toUpperCase();
         if (FoodCategory.contains(processedCategoryStr)) {
             return FoodCategory.valueOf(processedCategoryStr);
-        }
-        else {
+        } else {
             throw new InvalidFoodCategoryException(rawCategoryStr);
         }
     }
