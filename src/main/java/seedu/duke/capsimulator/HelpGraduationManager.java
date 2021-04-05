@@ -55,10 +55,10 @@ public class HelpGraduationManager {
                 case 4:
                     return;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
             } catch (NumberFormatException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
                 Ui.printHorizontalLine();
             }
             try {

@@ -59,11 +59,11 @@ public class Duke {
                     link.execute();
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
 
             } catch (NumberFormatException n) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
         }
     }

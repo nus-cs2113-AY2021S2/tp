@@ -49,7 +49,7 @@ public class ExternalLinks extends Links {
                 Ui.printReturnToLinkMenuMessage();
                 return;
             default:
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();

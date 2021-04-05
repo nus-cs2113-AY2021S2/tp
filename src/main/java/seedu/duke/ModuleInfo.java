@@ -82,10 +82,10 @@ public class ModuleInfo {
                     Links.delete();
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
             } catch (NumberFormatException n) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();
@@ -115,7 +115,7 @@ public class ModuleInfo {
                 System.out.println("Module grade does not exist. ");
             }
         } else {
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
     }
 
@@ -135,7 +135,7 @@ public class ModuleInfo {
             int moduleCredits = Ui.readCommandToInt();
             modules.get(moduleNumberInt).setMc(moduleCredits);
         } else {
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
     }
 
@@ -185,7 +185,7 @@ public class ModuleInfo {
     public static boolean moduleNameIsAlphaNumeric(String s) {
         return s != null && s.matches("^[a-zA-Z0-9]*$");
     }
-
+    
     public static void viewAModule() {
         boolean listIsNotEmpty = viewAllModules();
         if (listIsNotEmpty) {
@@ -201,8 +201,9 @@ public class ModuleInfo {
 
                 Ui.printHorizontalLine();
             } else {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
+            Ui.printHorizontalLine();
         }
     }
 
@@ -287,7 +288,7 @@ public class ModuleInfo {
             String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
             modules.get(moduleNumberInt).setReview(review);
         } else {
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
     }
 
@@ -373,7 +374,7 @@ public class ModuleInfo {
             }
         } else {
             logger.log(Level.INFO, "You did not enter a valid integer.");
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
     }
 
@@ -456,7 +457,7 @@ public class ModuleInfo {
         } else if (addView == 2) {
             Component.viewComponent(modules);
         } else {
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
 
 

@@ -272,7 +272,11 @@ public class Ui {
         printHorizontalLine();
     }
 
-    public static void printInvalidIntegerMessage() {
+    public static void printInvalidInputMessage() {
+        System.out.println("Invalid input!");
+    }
+
+    public static void printRepeatInputUntilValidMessage() {
         System.out.println("Invalid input! Please enter a valid integer from the list.");
     }
 
@@ -449,7 +453,7 @@ public class Ui {
 
     public static void printTaskList(ArrayList<Task> tasks) {
         int taskNumber = 1;
-        System.out.println("This is the list of your tasks:");
+        System.out.println("This is the list of your normal tasks:");
         for (Task task : tasks) {
             System.out.println(taskNumber + ". " + task.toString());
             taskNumber++;
@@ -511,7 +515,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToMarkOrUnmarkMessage();
     }
@@ -531,7 +535,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToDeleteMessage();
     }
@@ -551,7 +555,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToPinMessage();
     }

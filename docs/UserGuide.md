@@ -57,7 +57,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. Delete a Zoom Link](#346-delete-zoom-link)  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[3.4.6. View Zoom Links](#347-view-zoom-links)
 
-[4. Command Summary](#4-command-summary)
+[4. Frequently Asked Questions (FAQ)](#4-frequently-asked-questions-faq)  
+
+[5. Command Summary](#5-command-summary)
 
 ---
 
@@ -113,10 +115,8 @@ Next, ensure that Java 11 is installed on your computer. You can download the la
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open your windows search bar and type `cmd` to open command prompt.
-4. Navigate to the folder you stored your Jar file in.
-
-- You can open a folder by typing `cd` followed by space then the name of your folder.
-
+4. Navigate to the folder you stored your Jar file in. 
+    - You can open a folder by typing `cd` followed by space then the name of your folder.  
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.2 Mac OS
@@ -125,9 +125,7 @@ Next, ensure that Java 11 is installed on your computer. You can download the la
 2. Save the Jar file into your desired folder.
 3. Open the terminal by clicking on `Launchpad`, then `Utilities`, then `terminal`.
 4. Navigate to the folder you stored your Jar file in.
-
-- You can open a folder by typing `cd` followed by space then the name of your folder.
-
+   - You can open a folder by typing `cd` followed by space then the name of your folder.  
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 #### 2.1.3 Linux
@@ -135,10 +133,8 @@ Next, ensure that Java 11 is installed on your computer. You can download the la
 1. Download the latest Jar file from [here](https://github.com/AY2021S2-CS2113T-F08-4/tp/releases).
 2. Save the Jar file into your desired folder.
 3. Open the terminal on linux.
-4. Navigate to the folder you stored your Jar file in.
-
-- You can open a folder by typing `cd` followed by space then the name of your folder.
-
+4. Navigate to the folder you stored your Jar file in. 
+   - You can open a folder by typing `cd` followed by space then the name of your folder.  
 5. Once you are in the folder, enter `java -jar duke.jar` to run the application.
 
 ### 2.2 Start Up
@@ -176,8 +172,8 @@ This section gives a detailed description of each feature, including examples to
 understanding.
 
 >**<span style="color: red"> WARNING! </span>**  
-> Ending the application abruptly may cause changes to be discarded!
->
+> 1. Ending the application abruptly may cause changes to be discarded!
+> 2. Please do not modify the UniTracker Data folder and its files if they exist.
 
 ### 3.1 Module Information
 
@@ -677,7 +673,7 @@ Key in a grade: [e.g. A+, B, B-]
 
 ### 3.3 Task Manager
 
-The task manager feature allows you to add, mark or unmark as done, delete, pin and view your tasks.
+The Task Manager feature allows you to add, mark or unmark as done, delete, pin and view your tasks.
 
 Task Manager menu:
 
@@ -691,20 +687,55 @@ Please choose which action you would like to do and enter the number:\n"
 [5] --- Pin a Task
 [6] --- Exit
 ````
+**Navigating to the Task Manager Menu**
+
+First, return to the main menu. You can then navigate to the Task Manager menu by
+inputting `3`.
+
+Here is a demonstration for navigating to the Task Manager menu from the main menu:
+> **Note!**  
+> In this example,
+> 1. No tasks have been pinned.
+> 2. User inputs are indicated via a preceding `>`.
+````
+This is the list of your pinned tasks:
+
+Main Menu:
+[1] Module Information
+[2] CAP Simulator/Calculator
+[3] Task Manager
+[4] External Links
+[5] Exit Program
+> 3
+--------------------------------------------
+Welcome to the Task Manager menu ^o^
+Please choose which action you would like to do and enter the number:
+[1] --- Add New Task
+[2] --- Mark/Unmark a Task as Done
+[3] --- Delete a Task
+[4] --- View All Tasks
+[5] --- Pin a Task
+[6] --- Exit
+````
 
 #### 3.3.1 Add New Task
 
-Adds a task of type `task`, `assignment`, `midterm` or `final exam` into the task list.
+Adds a task of type `normal task`, `assignment`, `midterm` or `final exam` into the task list.
 
-Example for adding a task of type `task` with the task description of `Work on user guide` and
+A `normal task` has the following 2 fields which cannot be empty:
+1) Description: the description of the task.
+2) Message: the message you will see upon [marking the task as done](#332-markunmark-a-task-as-done).
+
+Example for adding a task of type `normal task` with the task description of `Work on user guide` and
 message being `Wow yay~`:
 
 > **Note!**  
-> In this example, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
-
+> In this example,
+> 1. Module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+> 2. User inputs are indicated via a preceding `>`.
   ````
   Please choose which type of task you would like to add and enter the number:
-  [1] --- Task
+  [1] --- Normal Task
   [2] --- Assignment
   [3] --- Midterm
   [4] --- Final Exam
@@ -723,39 +754,38 @@ message being `Wow yay~`:
   > Wow yay~
   --------------------------------------------
   You've added this: [CS2113T][    ] Work on User Guide
-  Returning back to TaskManager menu now!
+  Returning back to the menu now!
   ````
 
-For adding an `assignment`, `midterm` or `task`, there will be an additional date and time option.
-The format for the date and time input is as follows:
+For adding an `assignment`, `midterm` or `final exam`, there will be two additional fields which cannot be empty:
 
-- Date: YYYY-MM-DD   
+1. Date: Format is YYYY-MM-DD.  
   (Y stands for the year, M stands for the month and D stands for the day)
-- Time: HH:MM  
+2. Time: Format is HH:MM.  
   (H stands for hour in 24H standard and M stands for minute)
 
 Example for adding a task of type `assignment` with the task description of `Work on user guide` and
 message being `Wow yay~`:
 
 > **Note!**  
-> In this example, module `CS2113T` has already been added through
-> the [add module](#311-add-a-module) feature.
-
+> In this example,
+> 1. Module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+> 2. User inputs are indicated via a preceding `>`.
   ````
 Please choose which type of task you would like to add and enter the number:
-[1] --- Task
+[1] --- Normal Task
 [2] --- Assignment
 [3] --- Midterm
 [4] --- Final Exam
 > 2
 --------------------------------------------
-What is the module of the task you want to add? Enter the number:
+What is the module of the assignment you want to add? Enter the number:
 
 This is the list of modules:
 [1] CS2113T
 > 1
 --------------------------------------------
-What is the description of the task you want to add?
+What is the description of the assignment you want to add?
 > Work on user guide
 --------------------------------------------
 What is the date of the assignment you want to add?
@@ -768,11 +798,11 @@ What is the message you would like to see after completing this?
 > Wow yay~
 --------------------------------------------
 You've added this: [CS2113T][    ] Work on User Guide (by: Mar 14 2021, 11:59 PM)
-Returning back to TaskManager menu now!
+Returning back to the menu now!
 ````
 
 > **Note!**  
-> If you were to input an invalid module index when choosing the module of the task,
+> If you were to input an invalid command when choosing the module of the task,
 > you will be asked if you want to add a new module:
 > ````
 > "No such module! Would you like to add a module? [Y/N]
@@ -787,19 +817,23 @@ Returning back to TaskManager menu now!
 > Please enter a valid time format.
 > ````
 
+After adding a task, you will return back to the module you accessed this feature from. This feature can be accessed
+from both the Task Manager and [Module Information](#31-module-information) menus. 
+
 #### 3.3.2 Mark/Unmark a Task as Done
 
-Marks a task of type `task`, `assignment`, `midterm` or `final exam` from the task list as done or undone, depending on its current status.
+Marks a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list as done or undone, depending on its current status.
 When a task is first added, its status will be undone by default.
 
 Upon marking a task is done, the message that you inputted when [adding a new task](#331-add-new-task) will be displayed. 
 
 > **Note!**  
-> In the following two examples, module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
+> In the following two examples, 
+> 1. `normal task` `[CS2113T][    ] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature.
+> 2. User inputs are indicated via a preceding `>`.
 
-Example for marking a task type `task` with a task description of `Work on user guide` as done and
+Example for marking a task type `normal task` with a task description of `Work on user guide` as done and
 message being `Wow yay~`:
-
 ````
   Please choose which type of task you would like to mark/unmark as done and enter the number:
   [1] --- Task
@@ -822,7 +856,7 @@ message being `Wow yay~`:
   Returning back to TaskManager menu now!
 ````
 
-Example for unmarking a task type `task` with a task description of `Work on user guide` as done and
+Example for unmarking a task of type `normal task` with a task description of `Work on user guide` as done and
 message being `Wow yay~`:
 ````
 Please choose which type of task you would like to mark/unmark as done and enter the number:
@@ -847,28 +881,27 @@ Returning back to TaskManager menu now!
 
 > **Note!**  
 > Your input to the confirmation of marking/unmarking the task is NOT case-sensitive. Both  `y` and `Y` are accepted as valid inputs. 
-> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu.
-> 
-> Additionally, if you were to input an invalid task index when choosing the task,
+> If you were to input `n` or `N`, UniTracker will return to the TaskManager menu. If you were to input an invalid command, you will see the following error message:
+> ````
+> Invalid input! Please input Y or N.
+> ````
+> Additionally, if you were to input an invalid command when choosing the task,
 > you will see the following error message:
 > ````
-> Please input a valid task number.
-> ````
-> If your input is not a number when choosing the task,
-> you will see the following error message:
-> ````
-> Please enter a valid integer from the menu.
+> Invalid input! Please enter a valid integer from the list.
 > ````
 
 #### 3.3.3 Delete a Task
 
-Deletes a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
+Deletes a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list.
 
-Example for deleting a task of type `task` with the task description of `Work on user guide`:
+Example for deleting a task of type `normal task` with the task description of `Work on user guide`:
 
 > **Note!**  
-> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> In this example, 
+> 1. The `normal task` `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
 > and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+> 2. User inputs are indicated via a preceding `>`.
 
   ````
   Please choose which type of task you would like to delete and enter the number:
@@ -888,15 +921,10 @@ Example for deleting a task of type `task` with the task description of `Work on
   Returning back to the menu now!
   ````
 > **Note!**  
-> If you were to input an invalid task index when choosing the task,
+> If you were to input an invalid command when choosing the task,
 > you will see the following error message:
 > ````
-> Please input a valid task number.
-> ````
-> If your input is not a number when choosing the task,
-> you will see the following error message:
-> ````
-> Please enter a valid integer from the menu.
+> Invalid input! Please enter a valid integer from the list.
 > ````
 
 
@@ -908,14 +936,16 @@ list.
 Example:
 
 > **Note!**  
-> In this example, the tasks `[CS2113T][DONE] Work on User Guide` and `[CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)`
+> In this example, 
+> 1. The `normal task` `[CS2113T][DONE] Work on User Guide` and `[CS2113T][DONE] Work on User Guide (by: Mar 14 2021, 11:49 PM)`
 > have already been added through the [add new task](#331-add-new-task) feature
 > and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+> 2. User inputs are indicated via a preceding `>`.
 
   ````  
   This is the list of your pinned tasks:  
 
-  This is the list of your tasks:  
+  This is the list of your normal tasks:  
   1. [CS2113T][DONE] Work on User Guide  
 
   This is the list of your assignments:  
@@ -928,13 +958,15 @@ Example:
 
 #### 3.3.5 Pin a Task
 
-Pins a task of type `task`, `assignment`, `midterm` or `final exam` from the task list.
+Pins a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list.
 
-Example of pinning a task of type `task` with the task description of `Work on user guide`:
+Example of pinning a task of type `normal task` with the task description of `Work on user guide`:
 
 > **Note!**  
-> In this example, the task `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
+> In this example,
+> 1. The `normal task` `[CS2113T][DONE] Work on User Guide` has already been added through the [add new task](#331-add-new-task) feature
 > and marked as done by the [mark/unmark a task](#332-markunmark-a-task-as-done) feature.
+> 2. User inputs are indicated via a preceding `>`.
 
   ````
   Please choose which type of task you would like to pin and enter the number:  
@@ -954,16 +986,11 @@ Example of pinning a task of type `task` with the task description of `Work on u
   Returning back to the menu now!
   ````
 > **Note!**  
-> If you were to input an invalid task index when choosing the task,
+> If you were to input an invalid command when choosing the task,
 > you will see the following error message:
 > ````
-> Please input a valid task number.
-> ````
-> If your input is not a number when choosing the task,
-> you will see the following error message:
-> ````
-> Please enter a valid integer from the menu.
-> ````
+> Invalid input! Please enter a valid integer from the list.
+> ```````
 
 Following this, if you were to [view all your tasks](#334-view-all-tasks), it will be updated accordingly:
 
@@ -1211,8 +1238,15 @@ Please choose which action you would like to do and enter the number:
 ````
 
 ---
+## 4. Frequently Asked Questions (FAQ)  
 
-## 4. Command Summary
+**Q:** Am I able to transfer data to another computer?  
+**A:** Yes, you can! Firstly, locate the UniTracker Jar file on your desired computer. If the folder already contains a 'UniTracker Data' folder, delete it.
+Then, copy the 'UniTracker Data' folder over from your current computer to the folder containing the Jar file on your desired computer.
+
+
+---
+## 5. Command Summary
 
 Features|Menu | Command to enter from the Main Menu
 ----|-----|-------
