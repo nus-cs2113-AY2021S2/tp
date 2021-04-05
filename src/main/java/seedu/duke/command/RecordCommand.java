@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Common;
 import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
@@ -8,9 +9,7 @@ import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
@@ -35,30 +34,10 @@ public class RecordCommand extends Command {
             throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
         }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
-        LocalDate date = null;
-        // TODO: More test cases to test out the "invalid dates"
-        try {
-            date = parseDate(dateString);
-        } catch (DateTimeParseException e) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE, e);
-        }
-        if (date.isAfter(LocalDate.now())) {
-            // We don't allow a record to be inserted for a future date
-            throw new InvalidInputException(InvalidInputException.Type.FUTURE_DATE);
-        }
+        LocalDate date = Common.parseDate(dateString);
         addRecord(patient, date);
         data.saveFile();
         printNewRecord(patient);
-    }
-
-    private LocalDate parseDate(String dateString) throws DateTimeParseException {
-        if (!dateString.isEmpty()) {
-            return LocalDate.parse(
-                dateString,
-                DateTimeFormatter.ofPattern(Constants.DATE_PATTERN).withResolverStyle(ResolverStyle.STRICT)
-            );
-        }
-        return LocalDate.now();
     }
 
     private void addRecord(Patient patient, LocalDate date) throws InvalidInputException {
