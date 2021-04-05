@@ -337,9 +337,7 @@ Format: `return -i <index_of_loan> -d <return_date>`
 * `<index_of_loan>` refers to the index number shown on the [displayed list of loans](#322-list-all-loan-records).
 * `<return_date>` refers to the date on which the borrower has returned the loan.
 
-Example: `return -i 2 -d 28/03/2021`\
-This example shows that you have entered a command that translates to the following:\
-"The second entry(presumably a loan) on the record list is returned on 28/03/2021."
+Example: `return -i 2 -d 28/03/2021`
 
 Output:
 
@@ -355,12 +353,8 @@ be the first record in the list.
 
 Format: `remove -i <index>`
 * `<index>` refers to the index number shown on the record list.
-* `<index>` must be a **positive integer** 1,2,3...
-* `<index>` must be referring to an existing record.
 
-Example: `remove -i 1`\
-This example shows that you have entered a command that translates to the following:\
-"Remove the first record on the list."
+Example: `remove -i 1`
 
 Output:
 
@@ -378,17 +372,10 @@ Let's say that Mark wants to borrow money from you again, but you will want to k
 
 Format: `creditscore <person>`
 
-> - `<person>` refers to existing borrower in the loan list
-> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
-
-Format: `creditscore <person>`
-
 * `<person>` refers to any person including those in the list and not in the list.
 * `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
-Example: `creditscore mark`\
-This example shows that you have entered a command that translates to the following:\
-"Show Mark's credit score."
+Example: `creditscore mark`
 
 Output:
 
@@ -413,16 +400,16 @@ Output:
 If you do not know how to use any of the features in Finux, and would like to know their specifications, simply type
 `help` followed by the command name of the available features listed below:
 
-* `add`: view the help section for `add` command.
-* `list`: view the help section for `list` command.
-* `view`: view the help section for `view` command.
-* `return`: view the help section for `return` command.
-* `remove`: view the help section for `remove` command.
-* `creditscore`: view the help section for `creditscore` command.
-* `exit`: view the help section for `exit` command.
-* `all`: view entire help section.
+* `add`: display the help section for `add` command.
+* `list`: display the help section for `list` command.
+* `view`: display the help section for `view` command.
+* `return`: display the help section for `return` command.
+* `remove`: display the help section for `remove` command.
+* `creditscore`: display the help section for `creditscore` command.
+* `exit`: display the help section for `exit` command.
+* `all`: display will all the features, brief description and format.
 
-💡 Just typing `help` will allow you to view the entire help section.
+💡 Typing `help` is also equivalent to typing `help all`.
  
 Each help section is divided into three parts:
 * `NAME` will show you the feature name and its brief description.
