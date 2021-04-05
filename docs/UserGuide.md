@@ -144,9 +144,23 @@ Format: `help`
 
 Finds the shortest route to go from one block to another.<br>
 Format: `go` → `STARTING_BLOCK` → `DESTINATION BLOCK`
+Example:
+```
+------------------------------------------------------------------------------------------------------------
+> go
+------------------------------------------------------------------------------------------------------------
+Starting Block:
+* e2
+  Destination Block:
+* com1
+------------------------------------------------------------------------------------------------------------
+Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 -> COM1
+------------------------------------------------------------------------------------------------------------
+```
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`.
-- Both parameters must be one of the Engineering or Computing buildings.
+  
+:warning: Both parameters must be one of the Engineering or Computing buildings.
 
 #### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
@@ -211,38 +225,105 @@ Format : `delete alias` → `ALIAS_NAME`
 #### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
 Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> add daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. WEDNESDAY
+4. THURSDAY
+5. FRIDAY
+6. SATURDAY
+7. SUNDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Enter location of the first activity of the day: 
+* e2
+Enter location of the next activity of the day: 
+* e7
+Enter location of the next activity of the day: 
+* ea
+Enter location of the next activity of the day: 
+* end
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully added MONDAY's schedule!
+------------------------------------------------------------------------------------------------------------
+```
 - You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
-
-- `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
-  (1 represents Monday and 7 represents Sunday).
 
 - You will then be prompted to enter the location of the activities(`BLOCK`) of the day one at
   a time.
 
 - NUSMaze will continuously ask for locations until you input `END`.
 
-- If `END` is input as the first block,the schedule of the day selected will be cleared.
+:warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
+(1 represents Monday and 7 represents Sunday).
+
+:warning: There must be at least one block entered for the schedule.
 
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route` → `DAY_NUMBER`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> show daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. FRIDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Location of activity 1: E2
+
+Location of activity 2: E7
+Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7
+
+Location of activity 3: EA
+Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
+------------------------------------------------------------------------------------------------------------
+```
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-- The `DAY_NUMBER` must be the index of one of the available days which has been
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
   displayed.
 
 #### 4.5.3 Clearing daily route
 Clears the schedule of the selected day, if applicable.<br>
-Format : `clear daily route` → `DAY_NUMBER`
+Format : `delete daily route` → `DAY_NUMBER`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> delete daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. FRIDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully cleared MONDAY's schedule!
+------------------------------------------------------------------------------------------------------------
+```
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-- The `DAY_NUMBER` must be the index of one of the available days which has been
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
   displayed.
 
 ### 4.6 Notes
@@ -275,24 +356,24 @@ Format : `delete note` → `LOCATION` → `NOTE INDEX`
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
-Format: `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
+Format : `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
 
 #### 4.7.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
-Format: `show favourite`
+Format : `show favourite`
 
 #### 4.7.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format: `repeat favourite` → `INDEX OF ROUTE`
+Format : `repeat favourite` → `INDEX OF ROUTE`
 
 #### 4.7.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format: `delete favourite` → `INDEX OF ROUTE`
+Format : `delete favourite` → `INDEX OF ROUTE`
 
 ### 4.8 Exiting the application
 
 Exits the application.<br>
-Format: `bye`
+Format : `bye`
 
 ### 4.9 Saving the Data
 
