@@ -44,15 +44,15 @@ class AddCommandTest {
 
     //@@author leeyp
     @Test
-    public void addCommand_foodWithOtherCategory() throws RepetitiveFoodIdentifierException,
+    public void addCommand_foodWithOtherCategoryLocation() throws RepetitiveFoodIdentifierException,
             InvalidQuantityException, InvalidDateException {
         AddCommand addCommand = new AddCommand("goose", FoodCategory.OTHER,
-                "30-07-2021", FoodStorageLocation.FREEZER, 1);
+                "30-07-2021", FoodStorageLocation.OTHER, 1);
         addCommand.setData(fridge);
         addCommand.execute();
         assertEquals("goose", fridge.getFood(0).getFoodName());
         assertEquals(FoodCategory.OTHER, fridge.getFood(0).getCategory());
-        assertEquals(FoodStorageLocation.FREEZER, fridge.getFood(0).getStorageLocation());
+        assertEquals(FoodStorageLocation.OTHER, fridge.getFood(0).getStorageLocation());
         assertEquals(1, fridge.getFood(0).getQuantity());
 
         ExpiryDate expiryDate = new ExpiryDate("30-07-2021");
@@ -60,7 +60,7 @@ class AddCommandTest {
 
         String expectedMessage = "Great! I have added goose into your fridge.\n"
                 + "Details: Food name: goose, category: OTHER, "
-                + "expiry: 30-07-2021, stored in: FREEZER, quantity: 1";
+                + "expiry: 30-07-2021, stored in: OTHER, quantity: 1";
         String actualMessage = addCommand.getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }

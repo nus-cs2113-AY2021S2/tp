@@ -23,7 +23,7 @@ public abstract class Command {
 
     //@@author SimJJ96
     public abstract void execute() throws InvalidInputException, RepetitiveFoodIdentifierException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException;
+            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException, InvalidFoodLocationException;
 
     //@@author Vinci-Hu
     public void setData(Fridge fridge) {

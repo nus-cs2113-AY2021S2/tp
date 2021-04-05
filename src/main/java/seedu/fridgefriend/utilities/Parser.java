@@ -18,12 +18,7 @@ import seedu.fridgefriend.command.RemoveCommand;
 import seedu.fridgefriend.command.RunningLowCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.command.SetLimitCommand;
-import seedu.fridgefriend.exception.EmptyDescriptionException;
-import seedu.fridgefriend.exception.FoodNameNotFoundException;
-import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidFoodCategoryException;
-import seedu.fridgefriend.exception.InvalidInputException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.*;
 import seedu.fridgefriend.food.FoodCategory;
 
 /**
@@ -76,7 +71,7 @@ public class Parser {
      */
     public static Command getCommand(String input)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
+            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -116,7 +111,7 @@ public class Parser {
      */
     public static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
+            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
         String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
@@ -174,7 +169,8 @@ public class Parser {
      */
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException {
+            InvalidDateException, InvalidQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         Command addCommand = parseAddDescription(description);
         return addCommand;
     }
@@ -195,7 +191,7 @@ public class Parser {
      */
     private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException {
+            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }

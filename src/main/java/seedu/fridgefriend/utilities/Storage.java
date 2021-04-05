@@ -1,13 +1,7 @@
 package seedu.fridgefriend.utilities;
 
 import seedu.fridgefriend.command.AddCommand;
-import seedu.fridgefriend.exception.EmptyDescriptionException;
-import seedu.fridgefriend.exception.InvalidDateException;
-import seedu.fridgefriend.exception.InvalidFoodCategoryException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
-import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
-import seedu.fridgefriend.exception.StorageLoadingException;
-import seedu.fridgefriend.exception.StorageSavingException;
+import seedu.fridgefriend.exception.*;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -79,7 +73,7 @@ public class Storage {
      */
     private static void checkFridgeDataDirectory() throws FileNotFoundException, InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
-            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
         Path path = Paths.get(DATA_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -97,7 +91,7 @@ public class Storage {
      */
     private static void readFridgeData() throws FileNotFoundException, InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
-            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
         File file = new File(DATA_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -117,7 +111,7 @@ public class Storage {
      */
     private static void populateFridge(String line) throws InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
-            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
         String[] parameters = line.split(":");
 
         String name = parameters[1].substring(1, parameters[1].indexOf((",")));

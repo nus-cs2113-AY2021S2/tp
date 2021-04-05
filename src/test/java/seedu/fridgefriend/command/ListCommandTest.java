@@ -3,6 +3,7 @@ package seedu.fridgefriend.command;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -73,7 +74,7 @@ class ListCommandTest {
 
     //@@author leeyp
     @Test
-    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
+    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() throws InvalidFoodLocationException {
         ListCommand listCommand = new ListCommand("LOWER_SHELF");
         listCommand.setData(fridge);
         String expectedMessage = "These are the food stored in LOWER_SHELF:\n"

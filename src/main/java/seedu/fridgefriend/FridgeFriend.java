@@ -59,7 +59,7 @@ public class FridgeFriend {
 
     private static void executeCommand(Command command) throws InvalidInputException,
             RepetitiveFoodIdentifierException, InvalidQuantityException,
-            FoodNameNotFoundException, InvalidFoodCategoryException {
+            FoodNameNotFoundException, InvalidFoodCategoryException, InvalidFoodLocationException {
         command.setData(fridge);
         command.execute();
     }
