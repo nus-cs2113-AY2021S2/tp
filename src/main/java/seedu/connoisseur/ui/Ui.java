@@ -275,7 +275,8 @@ public class Ui {
      * Prints invalid pricing message.
      */
     public void printInvalidPricingMessage() {
-        println("Invalid price range! Please enter whole numbers between 0 and 9999, separated by -");
+        println("Invalid price range! Please enter numbers up to 2 decimal places "
+                + "between 0.00 and 9999.99, separated by -");
     }
 
     /**
