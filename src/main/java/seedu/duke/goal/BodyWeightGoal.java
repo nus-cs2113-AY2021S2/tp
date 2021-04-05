@@ -16,7 +16,7 @@ public class BodyWeightGoal extends Goal {
      */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
-        if (targetBodyWeight < 0 || targetBodyWeight > 400) {
+        if (targetBodyWeight < 40 || targetBodyWeight > 400) {
             throw new NumberFormatException("Target weight invalid");
         }
         initializeProgress();
