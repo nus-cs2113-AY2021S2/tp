@@ -1,10 +1,13 @@
 package movieApp.storage;
 
-import movieApp.*;
+import movieApp.Cineplex;
+import movieApp.Movie;
+import movieApp.Review;
+import movieApp.Showtimes;
+import movieApp.parser.MovieFilter;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
-import movieApp.parser.MovieFilter;
 
 import java.io.*;
 import java.text.ParseException;
@@ -39,8 +42,7 @@ public class Database {
 
         ArrayList<User> users = new ArrayList<>();
 
-        while((line=br_user.readLine())!=null)
-        {
+        while ((line = br_user.readLine()) != null) {
             String[] userSplit = line.split("\\|");
             String username = userSplit[1].trim();
             String password = userSplit[2].trim();
@@ -105,16 +107,16 @@ public class Database {
         Date currentDate = new Date();
         Calendar startCalendar = null;
         Calendar endCalendar = null;
-        for (int i = 0; i<MList.size(); i++){
+        for (int i = 0; i < MList.size(); i++) {
             startCalendar = MList.get(i).getStartDate();
             endCalendar = MList.get(i).getStartDate();
             Date startDate = startCalendar.getTime();
             Date endDate = endCalendar.getTime();
-            if(currentDate.compareTo(startDate) < 0){
+            if (currentDate.compareTo(startDate) < 0) {
                 MList.get(i).setMovieStatus(1);
-            }else if(currentDate.compareTo(endDate) > 0){
+            } else if (currentDate.compareTo(endDate) > 0) {
                 MList.get(i).setMovieStatus(4);
-            }else{
+            } else {
                 MList.get(i).setMovieStatus(3);
             }
         }
@@ -130,9 +132,7 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The movie has been removed from the database.");
@@ -141,7 +141,7 @@ public class Database {
     public static void editMovie(int choice, int type) throws Exception {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
         Scanner select = new Scanner(System.in);
-        switch(type){
+        switch (type) {
             case 1:
                 System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
                 String newTitle = select.nextLine();
@@ -166,9 +166,7 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The changes have been saved to the database.");
@@ -189,12 +187,44 @@ public class Database {
                 continue;
             }
             integer_input = sc.nextInt();
-            if ((integer_input < 1) || (integer_input > maxValue))  {
+            if ((integer_input < 1) || (integer_input > maxValue)) {
                 System.out.println("Please input an integer in range 1 to " + maxValue + "\n");
             }
         }
 
         return integer_input;
+    }
+
+    private static boolean isValidDate(String input) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            format.setLenient(false);
+            format.parse(input);
+        } catch (ParseException e) {
+            System.out.println("Invalid Date. The format must be dd-MM-yyyy");
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid Date. The format must be dd-MM-yyyy");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static int[] getDateTime() throws Exception {
+        System.out.println("Input the date using the format dd-mm-yyyy");
+        Scanner scanner = new Scanner(System.in);
+        String date = scanner.nextLine();
+        while (!isValidDate(date)) {
+            date = scanner.nextLine();
+        }
+        Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+        int[] dates = new int[3];
+        dates[0] = date1.getDate();
+        dates[1] = date1.getMonth() + 1;
+        dates[2] = date1.getYear() + 1900;
+
+        return dates;
     }
 
     public static void addMovie() throws Exception {
@@ -203,29 +233,37 @@ public class Database {
 
         System.out.println("Movie title: ");
         String newTitle = select.nextLine();
-        System.out.println(newTitle);
 
         int newID = MovieDatabase.size() + 1;
-        System.out.println(newID);
 
-
-        System.out.println("Enter movie start date ");
-        int newStartDate = getIntegerInput("Date (DD): ", 31);
-        int newStartMonth = getIntegerInput("Month (MM): ", 12);
-        int newStartYear = getIntegerInput("Year (YYYY): ", 2100);
-
-        int newEndDate;
-        int newEndMonth;
-        int newEndYear;
+        int newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear;
 
         do {
+            System.out.println("Enter movie start date ");
+            int[] newStart = getDateTime();
+            newStartDate = newStart[0];
+            newStartMonth = newStart[1];
+            newStartYear = newStart[2];
+
             System.out.println("Enter movie end date ");
-            newEndDate = getIntegerInput("Date (DD): ", 31);
-            newEndMonth = getIntegerInput("Month (MM): ", 12);
-            newEndYear = getIntegerInput("Year (YYYY): ", 2100);
-        }while(checkEndDateIsAfterStartDate(newStartDate, newStartMonth,
-                                            newStartYear, newEndDate,
-                                            newEndMonth, newEndYear));
+            int[] newEnd = getDateTime();
+            newEndDate = newEnd[0];
+            newEndMonth = newEnd[1];
+            newEndYear = newEnd[2];
+
+            if (newEndYear < newStartYear) {
+                System.out.println("The end year cannot be earlier than the start year.");
+                continue;
+            } else if (newEndMonth < newStartMonth) {
+                System.out.println("The end month cannot be earlier than the start month.");
+                continue;
+            } else if (newEndDate < newStartDate) {
+                System.out.println("The end date cannot be earlier than the start date.");
+                continue;
+            }
+
+            break;
+        } while (true);
 
 
         System.out.println("Movie director: ");
@@ -256,40 +294,21 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The new movie \"" + newMovie.getMovieTitle() + "\" have been saved to the database.");
 
     }
 
-    private static boolean checkEndDateIsAfterStartDate(int newStartDate, int newStartMonth,
-                                                    int newStartYear, int newEndDate, int newEndMonth,
-                                                    int newEndYear) throws ParseException {
-        String sDate = newStartDate +"/"+ newStartMonth +"/"+ newStartYear;
-        Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
-
-        String eDate = newEndDate +"/"+ newEndMonth +"/"+ newEndYear;
-        Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(eDate);
-
-        if(startDate.compareTo(endDate) <= 0){
-            return false;
-        }else{
-            System.out.println("End Date should not be before Start Date");
-            return true;
-        }
-    }
-
-    public static void updateBookings(){
+    public static void updateBookings() {
         writeToFile("data/showtimeList.txt", ShowtimesDatabase);
         writeToFile("data/userSerialList.txt", users);
         writeToFile("data/cineplexList.txt", CineplexDatabase);
         writeToFile("data/movieList.txt", MovieDatabase);
     }
 
-    private static void writeToFile(String fileName, Object object){
+    private static void writeToFile(String fileName, Object object) {
         try {
             File f_movie = new File(fileName);
             FileOutputStream fos_movie = new FileOutputStream(f_movie);

@@ -102,7 +102,8 @@ public class MovieMenu {
 
 		 
 		int num_tic = -1;
-		while (num_tic < 0) {
+		while (num_tic < 1 || num_tic > ShowtimeDatabase.get(index_st).getEmptySeats()) {
+			System.out.println("There are " + ShowtimeDatabase.get(index_st).getEmptySeats() + " empty seats.");
 			System.out.println("How many tickets do you need? ");
 			if (!sc.hasNextInt()) {
 				System.out.println("Please input an integer.\n");
@@ -110,8 +111,8 @@ public class MovieMenu {
 				continue;
 			} 
 			num_tic = sc.nextInt();
-			if (num_tic < 0) {
-				System.out.println("Please input a positive integer.\n");
+			if (num_tic < 1 || num_tic > ShowtimeDatabase.get(index_st).getEmptySeats()) {
+				System.out.println("Please input a positive integer between 1 and " + ShowtimeDatabase.get(index_st).getEmptySeats() + ".\n");
 			}
 		}
 		
