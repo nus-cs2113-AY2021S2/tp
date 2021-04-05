@@ -2,14 +2,15 @@ package seedu.duke.ui;
 
 import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.InvalidNoteException;
 
 import java.util.ArrayList;
 
 public class NoteUi extends UiManager {
 
-    public String[] getNoteInfo() {
+    public String[] getNoteInfo() throws InvalidNoteException {
         String[] noteInfo = new String[2];
-        showMessage("Enter Location:");
+        showMessage("Enter Block:");
         noteInfo[0] = getUserInput().toUpperCase();
 
         showMessage("Enter the Note:");
@@ -20,7 +21,7 @@ public class NoteUi extends UiManager {
     }
 
     public String getBlockInfo() {
-        showMessage("Enter Location:");
+        showMessage("Enter Block:");
         String block = getUserInput().toUpperCase();
         showMessage(CommonMessage.DIVIDER);
         return block;

@@ -3,8 +3,8 @@
 package seedu.duke.command.aliascommand;
 
 import seedu.duke.command.Command;
+import seedu.duke.exception.NoAliasNameException;
 import seedu.duke.ui.AliasUi;
-import seedu.duke.exception.InvalidAliasException;
 
 public class DeleteCustomAliasCommand extends Command {
 
@@ -21,7 +21,7 @@ public class DeleteCustomAliasCommand extends Command {
             String aliasToDelete = ui.getDeleteAliasInfo();
             blockAlias.deleteAlias(aliasToDelete);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, aliasToDelete));
-        } catch (InvalidAliasException e) {
+        } catch (NoAliasNameException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

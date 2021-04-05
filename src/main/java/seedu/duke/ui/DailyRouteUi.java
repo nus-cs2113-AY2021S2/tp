@@ -5,7 +5,9 @@ package seedu.duke.ui;
 import seedu.duke.data.NusMap;
 import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidDailyRouteException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.RepeatedBlockException;
 
 import java.util.ArrayList;
 
@@ -17,43 +19,50 @@ public class DailyRouteUi extends UiManager {
         while (!isValidBlock(block)) {
             showMessage("Enter location of the first activity of the day: ");
             try {
-                block = getBlockEntry();
-            } catch (InvalidBlockException e) {
-                showMessage(e.getMessage());
+                block = getBlockEntry(block);
+                if (block.equals("END")) {
+                    throw new InvalidDailyRouteException();
+                }
+                dailyBlocks.add(block);
+            } catch (InvalidBlockException | RepeatedBlockException | InvalidDailyRouteException e) {
+                showMessageWithDivider(CommonMessage.DIVIDER, e.getMessage());
             }
         }
         while (!block.equals("END")) {
             try {
-                dailyBlocks.add(block);
                 showMessage("Enter location of the next activity of the day: ");
-                block = getBlockEntry();
-            } catch (InvalidBlockException e) {
-                showMessage(e.getMessage());
+                block = getBlockEntry(block);
+                if (isValidBlock(block)) {
+                    dailyBlocks.add(block);
+                }
+            } catch (InvalidBlockException | RepeatedBlockException e) {
+                showMessageWithDivider(CommonMessage.DIVIDER, e.getMessage());
             }
         }
         showMessage(CommonMessage.DIVIDER);
         return dailyBlocks;
     }
 
-
-    public boolean isValidBlock(String block) {
-        NusMap nusMap = new NusMap();
-        return nusMap.getBlock(block) != null;
-    }
-
-    public String getBlockEntry() throws InvalidBlockException {
+    public String getBlockEntry(String previousBlock) throws InvalidBlockException, RepeatedBlockException {
         String block = getUserInput().toUpperCase();
-        if (isValidBlock(block) || block.equals("END")) {
+        if (block.equals(previousBlock)) {
+            throw new RepeatedBlockException();
+        } else if (isValidBlock(block) || block.equals("END")) {
             return block;
         } else {
             throw new InvalidBlockException();
         }
     }
 
+    public boolean isValidBlock(String block) {
+        NusMap nusMap = new NusMap();
+        return nusMap.getBlock(block) != null;
+    }
+
     public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
         showMessage("SELECT ENTRY:");
-        int dayIndex =  getEntryFromUser(selectableDays);
+        int dayIndex = getEntryFromUser(selectableDays);
         showMessage(CommonMessage.DIVIDER);
         return dayIndex;
     }
@@ -79,5 +88,17 @@ public class DailyRouteUi extends UiManager {
         } catch (NumberFormatException e) {
             throw new InvalidIndexException();
         }
+    }
+
+    public void showDailyRoute(ArrayList<String> schedule, ArrayList<String> scheduleRoutes) {
+        for (int i = 0; i < schedule.size(); i++) {
+            showMessage("Location of activity " + (i + 1) + ": " + schedule.get(i));
+            if (i == 0 || i == schedule.size() - 1) {
+                showMessage(scheduleRoutes.get(i));
+            } else {
+                showMessage(scheduleRoutes.get(i) + CommonMessage.LINE_SEPARATOR);
+            }
+        }
+        showMessage(CommonMessage.DIVIDER);
     }
 }

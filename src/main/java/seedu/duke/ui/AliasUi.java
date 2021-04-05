@@ -4,12 +4,13 @@ package seedu.duke.ui;
 
 import seedu.duke.data.BlockAlias;
 import seedu.duke.exception.EmptyAliasesException;
+import seedu.duke.exception.InvalidAliasException;
 
 import java.util.Map;
 
 public class AliasUi extends UiManager {
 
-    public String[] getAliasInfo() {
+    public String[] getAliasInfo() throws InvalidAliasException {
         String[] blockAndAlias = new String[2];
         showMessage("Enter block: ");
         blockAndAlias[0] = getUserInput().toUpperCase();

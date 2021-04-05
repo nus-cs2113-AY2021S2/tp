@@ -19,7 +19,7 @@ public class EateryList {
     }
 
     public Block getSpecificEatery(int index) throws InvalidIndexException {
-        if (index > 5 || index < 0) {
+        if (index > 6 || index < 0) {
             throw new InvalidIndexException();
         } else {
             return eateries[index];

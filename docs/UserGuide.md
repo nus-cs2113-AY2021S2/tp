@@ -70,15 +70,17 @@ This section gives you step-by-step instructions on how to download and open the
 
 3. Copy the file to the folder you want to use as the _home folder_ **NUSMaze**.
 
-4. Double-click the file to start the app. If you are using Windows, please ensure that your Computer's Display Settings are set to 100%.
-
-5. A CLI similar to Figure 1 below should appear in a few seconds.  <br><br>
-
+4. Open your command line or terminal and navigate into the file directory where you saved the application. An easy way to do so is shown below for both Mac and Windows<br>
+   ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
+   Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
+5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
+6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
+   ![img.png](images/NUSMazecli.png)
    _Figure 1 - CLI of NUSMaze_
 
-6. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
+7. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
 
-7. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
+8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -117,6 +119,8 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 2. All the examples provided below are screenshots of expected user commands and outputs by NUSMaze.
 
 3. In each example, lines starting with > signifies user command.
+   
+4. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the  prompt.
 
 <div markdown="block" class="alert alert-info">
 
@@ -139,19 +143,19 @@ Format: `help`
 #### 4.2.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
-Format: `go → STARTING_BLOCK → DESTINATION BLOCK`
+Format: `go` → `STARTING_BLOCK` → `DESTINATION BLOCK`
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`.
 - Both parameters must be one of the Engineering or Computing buildings.
 
 #### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
-Format 1: `go → STARTING_BLOCK → EATERY_NAME`
+Format 1: `go` → `STARTING_BLOCK` → `EATERY_NAME`
 - By entering the name of the eatery that you wish to go in the `EATERY_NAME` parameter,
   NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
   desired eatery.
 
-Format 2: `go → STARTING_BLOCK → eatery → EATERY_NAME`
+Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_NAME`
 - It is also possible to see the list of Eateries, from closest to furthest by entering eatery
   when NUSMaze prompts for the destination block.
 
@@ -175,7 +179,7 @@ Format : `clear history`
 #### 4.3.3 Repeating History
 
 Repeats past route search history.<br>
-Format : `repeat history → REPEAT_ENTRY`
+Format : `repeat history` → `REPEAT_ENTRY`
 - When the repeat command is entered, NUSMaze will show a list of past route searches.
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
@@ -185,7 +189,7 @@ Format : `repeat history → REPEAT_ENTRY`
 ### 4.4 Alias
 #### 4.4.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
-Format : `add alias → BLOCK → ALIAS_NAME`
+Format : `add alias` → `BLOCK` → `ALIAS_NAME`
 - When add alias command is called, NUSMaze will prompt for the `BLOCK` that you
   wish to set the alias for.
 
@@ -199,14 +203,14 @@ Format : `show alias`
 
 #### 4.4.3 Deleting aliases
 Deletes an alias that was previously created.<br>
-Format : `delete alias → ALIAS_NAME`
+Format : `delete alias` → `ALIAS_NAME`
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
 
 ### 4.5 Daily Routes
 #### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
-Format : `add daily route → DAY_ENTRY → BLOCK/END`
+Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END`
 - You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
 
 - `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
@@ -221,7 +225,7 @@ Format : `add daily route → DAY_ENTRY → BLOCK/END`
 
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
-Format : `show daily route → DAY_NUMBER`
+Format : `show daily route` → `DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
@@ -232,7 +236,7 @@ Format : `show daily route → DAY_NUMBER`
 
 #### 4.5.3 Clearing daily route
 Clears the schedule of the selected day, if applicable.<br>
-Format : `clear daily route → DAY_NUMBER`
+Format : `clear daily route` → `DAY_NUMBER`
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
@@ -244,21 +248,21 @@ Format : `clear daily route → DAY_NUMBER`
 ### 4.6 Notes
 #### 4.6.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
-Format : `add note  → LOCATION -> NOTE`
+Format : `add note`  → `LOCATION` → `NOTE`
 - When the 'add note' command is given, NUSMaze will prompt you for a `LOCATION`.
 - The `LOCATION` must be one of the Engineering or Computing buildings.
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location.
 
 #### 4.6.2 Viewing notes
 Lists all notes which had been tagged to the given existing location, if applicable.<br/>
-Format : `show notes → LOCATION`
+Format : `show notes` → `LOCATION`
 - When the 'list notes' command is entered, NUSMaze will prompt you for a `LOCATION`.
 
 - The `LOCATION` must be one of the Engineering or Computing buildings.
 
 #### 4.6.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
-Format : `delete note → LOCATION → NOTE INDEX`
+Format : `delete note` → `LOCATION` → `NOTE INDEX`
 - When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`.
 
 - The `LOCATION` must be one of the Engineering or Computing buildings.
@@ -271,7 +275,7 @@ Format : `delete note → LOCATION → NOTE INDEX`
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
-Format: `add favourite → STARTING BLOCK → DESTINATION BLOCK`
+Format: `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
 
 #### 4.7.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
@@ -279,11 +283,11 @@ Format: `show favourite`
 
 #### 4.7.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format: `repeat favourite → INDEX OF ROUTE`
+Format: `repeat favourite` → `INDEX OF ROUTE`
 
 #### 4.7.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format: `delete favourite → INDEX OF ROUTE`
+Format: `delete favourite` → `INDEX OF ROUTE`
 
 ### 4.8 Exiting the application
 

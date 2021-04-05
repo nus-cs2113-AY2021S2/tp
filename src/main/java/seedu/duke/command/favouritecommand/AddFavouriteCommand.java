@@ -4,6 +4,7 @@ package seedu.duke.command.favouritecommand;
 
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.SameBlockException;
 import seedu.duke.ui.FavouriteUi;
 
 public class AddFavouriteCommand extends Command {
@@ -23,7 +24,7 @@ public class AddFavouriteCommand extends Command {
             nusMap.checkIfValidBlock(startAndDestination[1]);
             favourite.addFavourite(startAndDestination[0], startAndDestination[1]);
             ui.showMessageWithDivider(MESSAGE_SUCCESS);
-        } catch (InvalidBlockException e) {
+        } catch (InvalidBlockException | SameBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

@@ -9,11 +9,11 @@ import seedu.duke.ui.NoteUi;
 
 import java.util.ArrayList;
 
-public class ShowNotesCommand extends Command {
+public class ShowNoteCommand extends Command {
 
     protected NoteUi ui;
 
-    public ShowNotesCommand() {
+    public ShowNoteCommand() {
         this.ui = new NoteUi();
     }
 

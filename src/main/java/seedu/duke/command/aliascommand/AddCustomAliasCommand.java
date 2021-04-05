@@ -4,7 +4,6 @@ package seedu.duke.command.aliascommand;
 
 import seedu.duke.command.Command;
 import seedu.duke.ui.AliasUi;
-
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidAliasException;
 

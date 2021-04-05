@@ -5,6 +5,7 @@ package seedu.duke.command.notecommand;
 import seedu.duke.command.Command;
 import seedu.duke.data.Block;
 import seedu.duke.exception.InvalidBlockException;
+import seedu.duke.exception.InvalidNoteException;
 import seedu.duke.ui.NoteUi;
 
 public class AddNoteCommand extends Command {
@@ -25,7 +26,7 @@ public class AddNoteCommand extends Command {
             nusMap.checkIfValidBlock(noteInfo[0]);
             nusMap.getBlock(noteInfo[0]).addNote(noteInfo[1]);
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, noteInfo[0]));
-        } catch (InvalidBlockException e) {
+        } catch (InvalidBlockException | InvalidNoteException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }

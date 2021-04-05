@@ -4,7 +4,8 @@ package seedu.duke.ui;
 
 public class CommonMessage {
     public static final String LINE_SEPARATOR = System.lineSeparator();
-    public static final String DIVIDER = "--------------------------------------------------------------------------";
+    public static final String DIVIDER = "------------------------------------------------------"
+            + "------------------------------------------------------";
     public static final String COMMAND_INPUT_HEADER = "> ";
     public static final String INFO_INPUT_HEADER = "* ";
     public static final String LOGO = " /$$   /$$ /$$   /$$  /$$$$$$  /$$      /$$\n"

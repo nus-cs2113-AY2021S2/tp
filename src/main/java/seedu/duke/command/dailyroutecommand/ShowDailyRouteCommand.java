@@ -25,19 +25,12 @@ public class ShowDailyRouteCommand extends Command {
             int dayEntry = ui.getDayEntry(selectableDays);
             String selectedDay = selectableDays.get(dayEntry);
             ArrayList<String> schedules = dailyRoute.getDailyRoute(selectedDay);
-            StringBuilder routedSchedule = new StringBuilder();
+            ArrayList<String> scheduleRoutes = new ArrayList<>();
+            scheduleRoutes.add("");
             for (int i = 0; i < schedules.size() - 1; i++) {
-                String route = new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1));
-                if (i > 0 && schedules.get(i).equals(schedules.get(i - 1))) {
-                    routedSchedule.append("The following destination is also ").append(schedules.get(i));
-                } else {
-                    routedSchedule.append(route);
-                }
-                if (i < schedules.size() - 2) {
-                    routedSchedule.append("\n");
-                }
+                scheduleRoutes.add(new Router().execute(nusMap, schedules.get(i), schedules.get(i + 1)));
             }
-            ui.showMessageWithDivider(routedSchedule.toString());
+            ui.showDailyRoute(schedules, scheduleRoutes);
         } catch (InvalidIndexException | EmptyDailyRouteException e) {
             ui.showMessageWithDivider(e.getMessage());
         }

@@ -2,6 +2,7 @@ package seedu.duke.command.routecommand;
 
 import seedu.duke.data.EateryList;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.SameBlockException;
 import seedu.duke.router.Router;
 import seedu.duke.command.Command;
 import seedu.duke.exception.InvalidBlockException;
@@ -29,10 +30,13 @@ public class GoCommand extends Command {
                 nusMap.checkIfValidBlock(startAndDestination[1]);
             }
             assert startAndDestination[0] != null && startAndDestination[1] != null;
+            if (startAndDestination[0].equals(startAndDestination[1])) {
+                throw new SameBlockException();
+            }
             String route = new Router().execute(nusMap, startAndDestination[0], startAndDestination[1]);
             history.addHistory(startAndDestination[0], startAndDestination[1]);
             ui.showMessageWithDivider(route);
-        } catch (InvalidBlockException | InvalidIndexException e) {
+        } catch (InvalidBlockException | InvalidIndexException | SameBlockException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
     }
