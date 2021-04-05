@@ -10,6 +10,7 @@ import seedu.duke.model.Patient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
@@ -47,7 +48,10 @@ public class RecordCommand extends Command {
 
     private LocalDate parseDate(String dateString) throws DateTimeParseException {
         if (!dateString.isEmpty()) {
-            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
+            return LocalDate.parse(
+                dateString,
+                DateTimeFormatter.ofPattern(Constants.DATE_PATTERN).withResolverStyle(ResolverStyle.STRICT)
+            );
         }
         return LocalDate.now();
     }
