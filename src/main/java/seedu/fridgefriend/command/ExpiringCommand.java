@@ -9,10 +9,10 @@ import seedu.fridgefriend.utilities.Ui;
  */
 public class ExpiringCommand extends Command {
 
-    private String message_expiring = "These are the food expiring in the next week:";
-    private String message_expired = "These are the food that has aready expired:";
-    private String message_no_expiring = "These are no food expiring in the next week!";
-    private String message_no_expired = "No food has expired! Congratulations!";
+    private String messageExpiring = "These are the food expiring in the next week:";
+    private String messageExpired = "These are the food that has aready expired:";
+    private String messageNoExpiring = "These are no food expiring in the next week!";
+    private String messageNoExpired = "No food has expired! Congratulations!";
     private int index = 1;
     private boolean hasExpiring;
     private boolean hasExpired;
@@ -27,14 +27,14 @@ public class ExpiringCommand extends Command {
             updateMessage(fridge.getFood(i));
         }
         if (hasExpired) {
-            Ui.printMessage(message_expired);
+            Ui.printMessage(messageExpired);
         } else {
-            Ui.printMessage(message_no_expired);
+            Ui.printMessage(messageNoExpired);
         }
         if (hasExpiring) {
-            Ui.printMessage(message_expiring);
+            Ui.printMessage(messageExpiring);
         } else {
-            Ui.printMessage(message_no_expiring);
+            Ui.printMessage(messageNoExpiring);
         }
     }
 
@@ -62,13 +62,21 @@ public class ExpiringCommand extends Command {
      */
     private void addToExpiringMessage(Food food) {
         String entry = "\n" + index + ". " + food.toString();
-        message_expiring += entry;
+        messageExpiring += entry;
         index += 1;
     }
 
     private void addToExpiredMessage(Food food) {
         String entry = "\n" + index + ". " + food.toString();
-        message_expired += entry;
+        messageExpired += entry;
         index += 1;
+    }
+
+    public String messageForTesting() {
+        String message1 = "Expired message: ";
+        String expiredMessage = hasExpired ? messageExpired : messageNoExpired;
+        String message2 = "Expiring message: ";
+        String expiringMessage = hasExpiring ? messageExpiring : messageNoExpiring;
+        return message1 + expiredMessage + message2 + expiringMessage;
     }
 }
