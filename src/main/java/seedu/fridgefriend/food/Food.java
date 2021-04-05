@@ -65,6 +65,9 @@ public abstract class Food {
     public void setExpiryDate(String expiryString) throws InvalidDateException {
         ExpiryDate expiryDate = new ExpiryDate(expiryString);
         this.expiryDate = expiryDate;
+        if (this.hasExpired()) {
+            throw new InvalidDateException("Sorry, the food has already expired!");
+        }
         LoggingHandler.logInfo("Expiry date has been changed to "
                 + expiryDate + " in food object " + foodName);
     }
@@ -81,6 +84,12 @@ public abstract class Food {
 
     public boolean isExpiring() {
         LocalDate cutOff = LocalDate.now().plusDays(7);
+        LocalDate expiry = this.getExpiryDate().getExpiry();
+        return expiry.isBefore(cutOff);
+    }
+
+    public boolean hasExpired() {
+        LocalDate cutOff = LocalDate.now();
         LocalDate expiry = this.getExpiryDate().getExpiry();
         return expiry.isBefore(cutOff);
     }
