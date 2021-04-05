@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class RecordList {
     private final ArrayList<Record> records = new ArrayList<>();
     private final RecordType type;
+    private int lengthOfIndex;
+    private String separatorBetweenIndexAndContent;
 
     public RecordList(RecordType type) {
         this.type = type;
@@ -53,7 +55,23 @@ public class RecordList {
             StringBuilder recordStringBuilder = new StringBuilder();
             int i = 1;
             for (Record record : records) {
-                recordStringBuilder.append(i).append(record.getRecordData()).append("\n");
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                recordStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(record.getRecordData()).
+                        append("\n");
                 i++;
             }
             return recordStringBuilder.toString();
