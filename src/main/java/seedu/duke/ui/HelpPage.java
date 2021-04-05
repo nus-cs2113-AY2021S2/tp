@@ -8,24 +8,27 @@ import static seedu.duke.ui.Ui.DIVIDER;
 public class HelpPage {
     private static final String TAB_1SPACE = "\t";
     private static final String TAB_2SPACE = "\t\t";
-    private static final String MAN_HEADER_ADD = "add - add a record to the program";
+    private static final String MAN_HEADER_ADD = "add a record to the program";
     private static final String MAN_SYNOPSIS_ADD = "add [OPTION] [ARGUMENT]";
-    private static final String MAN_HEADER_LIST = "list - list all the records of chosen record type";
+    private static final String MAN_HEADER_LIST = "list all the records";
     private static final String MAN_SYNOPSIS_LIST = "list [OPTION]";
-    private static final String MAN_HEADER_VIEW = "view - view the total amount of chosen record type";
+    private static final String MAN_HEADER_VIEW = "view the total amount";
     private static final String MAN_SYNOPSIS_VIEW = "view [OPTION]";
-    private static final String MAN_HEADER_REMOVE = "remove - remove a record in the program";
+    private static final String MAN_HEADER_REMOVE = "remove a record in the program";
     private static final String MAN_SYNOPSIS_REMOVE = "remove [OPTION] [ARGUMENT]";
-    private static final String MAN_HEADER_RETURN = "return - record a loan as returned";
+    private static final String MAN_HEADER_RETURN = "record a loan as returned";
     private static final String MAN_SYNOPSIS_RETURN = "return [OPTION] [ARGUMENT]";
-    private static final String MAN_HEADER_EXIT = "exit - terminate the program";
+    private static final String MAN_HEADER_EXIT = "terminate the program";
     private static final String MAN_SYNOPSIS_EXIT = "exit (no option/argument needed)";
-    private static final String MAN_HEADER_CREDITSCORE = "creditscore - check a person credit rating";
+    private static final String MAN_HEADER_CREDITSCORE = "check a person credit rating";
     private static final String MAN_SYNOPSIS_CREDITSCORE = "creditscore [ARGUMENT]";
     private static final String MAN_OPTION_RECORD_TYPE = "-e, -l, -s";
+    private static final String MAN_OPTION_RECORD_TYPE_ALL = "-e, -l, -s, -a";
     private static final String MAN_OPTION_RECORD_TYPE_DESCRIPTION = "[ARGUMENT] used as record description";
-    private static final String MAN_OPTION_RECORD_TYPE_LISTING = "used to list the chosen record types";
-    private static final String MAN_OPTION_RECORD_TYPE_VIEWING = "used to view total amount of chosen record type";
+    private static final String MAN_OPTION_RECORD_TYPE_LISTING = "used to list the chosen record type, "
+            + "-a will list all records";
+    private static final String MAN_OPTION_RECORD_TYPE_VIEWING = "used to view total amount of chosen record type, "
+            + "-a will show all category amount";
     private static final String MAN_OPTION_AMOUNT = "-a";
     private static final String MAN_OPTION_AMOUNT_DESCRIPTION = "[ARGUMENT] positive non zero numeric "
             + "amount associated with the record";
@@ -40,6 +43,15 @@ public class HelpPage {
     private static final String MAN_OPTION_PERSON_IN_ADD_DESCRIPTION = ", use only with '-l' option";
     private static final String MAN_ARGUMENT_CREDITSCORE_DESCRIPTION = "[ARGUMENT] name of the person "
             + "to check their credit score";
+    private static final String MAN_FORMAT_ADD = "add {-e | -l | -s} <description> -a <amount> -d <date>";
+    private static final String MAN_FORMAT_LIST = "list {-e | -l | -s | -a}";
+    private static final String MAN_FORMAT_VIEW = "view {-e | -l | -s | -a}";
+    private static final String MAN_FORMAT_RETURN = "return -i <index_of_loan> -d <return_date>";
+    private static final String MAN_FORMAT_REMOVE = "remove -i <index>";
+    private static final String MAN_FORMAT_CREDITSCORE = "creditscore <person>";
+    private static final String MAN_FORMAT_EXIT = "exit";
+    private static final String MAN_HEADER_HELP = "see feature details";
+    private static final String MAN_FORMAT_HELP = "help <feature>";
 
     /**
      * Prints the respective help messages based on the command given.
@@ -48,7 +60,7 @@ public class HelpPage {
     public static void printHelp(String command) {
         switch (command) {
         case "all":
-            printManPageMaster();
+            printManPageAllShort();
             break;
         case "add":
             printManPageAdd();
@@ -80,6 +92,7 @@ public class HelpPage {
      * @param header contains the description of the command.
      */
     public static void printManHeader(String header) {
+        System.out.println(Ui.DIVIDER);
         System.out.println("NAME");
         System.out.println(TAB_1SPACE + header);
         System.out.println();
@@ -98,21 +111,26 @@ public class HelpPage {
     /**
      * Prints the entire man page for all commands.
      */
-    public static void printManPageMaster() {
-        printManPageAdd();
-        printManPageView();
-        printManPageList();
-        printManPageRemove();
-        printManPageReturn();
-        printManPageCreditscore();
-        printManPageExit();
+    public static void printManPageAllShort() {
+        System.out.println(Ui.DIVIDER);
+        System.out.printf("%-15s%-35s%-30s\n", "Command", "Description", "Format");
+        System.out.println(Ui.DIVIDER);
+        System.out.printf("%-15s%-35s%-30s\n", "add", MAN_HEADER_ADD, MAN_FORMAT_ADD);
+        System.out.printf("%-15s%-35s%-30s\n", "list", MAN_HEADER_LIST, MAN_FORMAT_LIST);
+        System.out.printf("%-15s%-35s%-30s\n", "view", MAN_HEADER_VIEW, MAN_FORMAT_VIEW);
+        System.out.printf("%-15s%-35s%-30s\n", "return", MAN_HEADER_RETURN, MAN_FORMAT_RETURN);
+        System.out.printf("%-15s%-35s%-30s\n", "remove", MAN_HEADER_REMOVE, MAN_FORMAT_REMOVE);
+        System.out.printf("%-15s%-35s%-30s\n", "creditscore", MAN_HEADER_CREDITSCORE, MAN_FORMAT_CREDITSCORE);
+        System.out.printf("%-15s%-35s%-30s\n", "exit", MAN_HEADER_EXIT, MAN_FORMAT_EXIT);
+        System.out.printf("%-15s%-35s%-30s\n", "help", MAN_HEADER_HELP, MAN_FORMAT_HELP);
+        System.out.println(Ui.DIVIDER);
     }
 
     /**
      * Prints the man page for add command.
      */
     public static void printManPageAdd() {
-        printManHeader(MAN_HEADER_ADD);
+        printManHeader("add - " + MAN_HEADER_ADD);
         printManSynopsis(MAN_SYNOPSIS_ADD);
         printManDescriptionAdd();
     }
@@ -137,7 +155,7 @@ public class HelpPage {
      * Prints the man page for list command.
      */
     public static void printManPageList() {
-        printManHeader(MAN_HEADER_LIST);
+        printManHeader("list - " + MAN_HEADER_LIST);
         printManSynopsis(MAN_SYNOPSIS_LIST);
         printManDescriptionList();
     }
@@ -147,7 +165,7 @@ public class HelpPage {
      */
     public static void printManDescriptionList() {
         System.out.println("DESCRIPTION");
-        System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE);
+        System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE_ALL);
         System.out.println((TAB_2SPACE + MAN_OPTION_RECORD_TYPE_LISTING));
         System.out.println(Ui.DIVIDER);
     }
@@ -156,7 +174,7 @@ public class HelpPage {
      * Prints the man page for view command.
      */
     public static void printManPageView() {
-        printManHeader(MAN_HEADER_VIEW);
+        printManHeader("view - " + MAN_HEADER_VIEW);
         printManSynopsis(MAN_SYNOPSIS_VIEW);
         printManDescriptionView();
     }
@@ -166,7 +184,7 @@ public class HelpPage {
      */
     public static void printManDescriptionView() {
         System.out.println("DESCRIPTION");
-        System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE);
+        System.out.println(TAB_1SPACE + MAN_OPTION_RECORD_TYPE_ALL);
         System.out.println((TAB_2SPACE + MAN_OPTION_RECORD_TYPE_VIEWING));
         System.out.println(DIVIDER);
     }
@@ -175,7 +193,7 @@ public class HelpPage {
      * Prints the man page for remove command.
      */
     public static void printManPageRemove() {
-        printManHeader(MAN_HEADER_REMOVE);
+        printManHeader("remove - " + MAN_HEADER_REMOVE);
         printManSynopsis(MAN_SYNOPSIS_REMOVE);
         printManDescriptionRemove();
     }
@@ -194,7 +212,7 @@ public class HelpPage {
      * Prints the man page for return command.
      */
     public static void printManPageReturn() {
-        printManHeader(MAN_HEADER_RETURN);
+        printManHeader("return - " + MAN_HEADER_RETURN);
         printManSynopsis(MAN_SYNOPSIS_RETURN);
         printManDescriptionReturn();
     }
@@ -215,7 +233,7 @@ public class HelpPage {
      * Prints the man page for creditscore command.
      */
     public static void printManPageCreditscore() {
-        printManHeader(MAN_HEADER_CREDITSCORE);
+        printManHeader("creditscore - " + MAN_HEADER_CREDITSCORE);
         printManSynopsis(MAN_SYNOPSIS_CREDITSCORE);
         printManDescriptionCreditscore();
     }
@@ -233,7 +251,7 @@ public class HelpPage {
      * Prints the man page for exit command.
      */
     public static void printManPageExit() {
-        printManHeader(MAN_HEADER_EXIT);
+        printManHeader("exit - " + MAN_HEADER_EXIT);
         System.out.println("SYNOPSIS");
         System.out.println(TAB_1SPACE + MAN_SYNOPSIS_EXIT);
         System.out.println(DIVIDER);
