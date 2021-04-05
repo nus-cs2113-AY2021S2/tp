@@ -188,7 +188,7 @@ Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_NAME`
 
 - NUSMaze then prompts for the entry of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
 
-:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
 :warning: `EATERY_ENTRY` must be an integer from 1 to 5.
 
 
@@ -207,7 +207,7 @@ Format : `clear history`
 
 Repeats past route search history.<br>
 Format : `repeat history` → `REPEAT_ENTRY`
-- When the `repeat` command is entered, NUSMaze will show a list of past route searches.
+- When the `repeat history` command is entered, NUSMaze will show a list of past route searches.
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
 
@@ -357,7 +357,7 @@ Got it! Successfully added and tagged note to STARBUCKS
 - When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`.
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location.
   
-:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 :warning: The `NOTE` will be invalid if it is empty.
 
 #### 4.6.2 Viewing notes
@@ -375,7 +375,7 @@ Here is the list of notes:
 1. give myself a treat of the new caramel macchiato flavour! :))
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the `show notes` command is entered, NUSMaze will prompt you for a `BLOCK`.
+- When the `show note` command is entered, NUSMaze will prompt you for a `BLOCK`.
   
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings.
 
