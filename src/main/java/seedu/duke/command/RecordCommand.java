@@ -9,7 +9,6 @@ import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
@@ -44,20 +43,20 @@ public class RecordCommand extends Command {
         String symptom = null;
         String diagnosis = null;
         String prescription = null;
-        boolean containsSymptom = arguments.containsKey(Constants.SYMPTOM_KEY);
-        boolean containsDiagnosis = arguments.containsKey(Constants.DIAGNOSIS_KEY);
-        boolean containsPrescription = arguments.containsKey(Constants.PRESCRIPTION_KEY);
-        if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
-            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
-        }
-        if (containsSymptom) {
+        if (arguments.containsKey(Constants.SYMPTOM_KEY)) {
             symptom = arguments.get(Constants.SYMPTOM_KEY);
         }
-        if (containsDiagnosis) {
+        if (arguments.containsKey(Constants.DIAGNOSIS_KEY)) {
             diagnosis = arguments.get(Constants.DIAGNOSIS_KEY);
         }
-        if (containsPrescription) {
+        if (arguments.containsKey(Constants.PRESCRIPTION_KEY)) {
             prescription = arguments.get(Constants.PRESCRIPTION_KEY);
+        }
+        boolean containsSymptom = symptom == null || symptom.isEmpty();
+        boolean containsDiagnosis = diagnosis == null || diagnosis.isEmpty();
+        boolean containsPrescription = prescription == null || prescription.isEmpty();
+        if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
+            throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
         }
         patient.addRecord(date, symptom, diagnosis, prescription);
     }
