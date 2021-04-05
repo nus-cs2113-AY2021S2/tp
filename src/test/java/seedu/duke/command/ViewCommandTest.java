@@ -31,7 +31,7 @@ class ViewCommandTest {
     @Test
     public void executeViewLoan_viewLoanCmd_success() {
         String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "The total amount for loan is $14.36" + System.lineSeparator()
+                + "The total amount for loan is $14.35" + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
         runViewCmdTest("executeViewLoan_viewLoanCmd_success", "loan", "view -l", expectedOutput);
     }
@@ -42,6 +42,16 @@ class ViewCommandTest {
                 + "The total amount for saving is $9876543211.54" + System.lineSeparator()
                 + "=========================================================" + System.lineSeparator();
         runViewCmdTest("executeViewSaving_viewSavingCmd_success", "saving", "view -s", expectedOutput);
+    }
+
+    @Test
+    public void executeViewSaving_viewAllCmd_success() {
+        String expectedOutput = "=========================================================" + System.lineSeparator()
+                + "The total amount for expense is $2.00" + System.lineSeparator()
+                + "The total amount for loan is $10.60" + System.lineSeparator()
+                + "The total amount for saving is $9876543210.54" + System.lineSeparator()
+                + "=========================================================" + System.lineSeparator();
+        runViewCmdTest("executeViewSaving_viewAllCmd_success", "all", "view -a", expectedOutput);
     }
 
     private void runViewCmdTest(String viewCmdTestName, String viewCmdTypeToTest,
@@ -70,19 +80,25 @@ class ViewCommandTest {
 
     private RecordList getPopulatedRecordList(String viewCmdTypeToTest) {
         RecordList records = new RecordList();
-        records.addRecord(new Expense(new BigDecimal("2"), validateDate("2020/01/01"), "electric bills"));
+
         if (viewCmdTypeToTest.equals("expense")) {
+            records.addRecord(new Expense(new BigDecimal("2"), validateDate("2020/01/01"), "electric bills"));
             records.addRecord(new Expense(new BigDecimal("10.88"), validateDate("2020/01/02"), "phone bills"));
         }
 
-        records.addRecord(new Loan(new BigDecimal("10.601"), validateDate("2020/01/01"), "loan to bob", "bob"));
         if (viewCmdTypeToTest.equals("loan")) {
-            records.addRecord(new Loan(new BigDecimal("3.755"), validateDate("2020/01/02"), "loan to alice", "alice"));
+            records.addRecord(new Loan(new BigDecimal("10.60"), validateDate("2020/01/01"), "loan to bob", "bob"));
+            records.addRecord(new Loan(new BigDecimal("3.75"), validateDate("2020/01/02"), "loan to alice", "alice"));
         }
 
-        records.addRecord(new Saving(new BigDecimal("9876543210.54"), validateDate("2020/01/01"), "red packet"));
         if (viewCmdTypeToTest.equals("saving")) {
-            records.addRecord(new Saving(new BigDecimal("1.004"), validateDate("2020/01/02"), "pocket money"));
+            records.addRecord(new Saving(new BigDecimal("9876543210.54"), validateDate("2020/01/01"), "red packet"));
+            records.addRecord(new Saving(new BigDecimal("1.00"), validateDate("2020/01/02"), "pocket money"));
+        }
+        if (viewCmdTypeToTest.equals("all")) {
+            records.addRecord(new Expense(new BigDecimal("2"), validateDate("2020/01/01"), "electric bills"));
+            records.addRecord(new Loan(new BigDecimal("10.60"), validateDate("2020/01/01"), "loan to bob", "bob"));
+            records.addRecord(new Saving(new BigDecimal("9876543210.54"), validateDate("2020/01/01"), "red packet"));
         }
         return records;
     }
