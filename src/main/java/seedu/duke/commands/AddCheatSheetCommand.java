@@ -19,6 +19,7 @@ import static seedu.duke.common.Constants.STRING_CHEATSHEET;
 import static seedu.duke.common.Constants.TXT_FORMAT;
 import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
+import static seedu.duke.common.Messages.MESSAGE_CLOSE_CHEATSHEET_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_FILE_NAME;
 import static seedu.duke.common.SanitiseInput.sanitiseInput;
 
@@ -52,15 +53,19 @@ public class AddCheatSheetCommand extends Command {
         if (Files.exists(path)) {
             ui.printMessage(MESSAGE_CHEAT_SHEET_ALREADY_EXISTS);
         } else {
+            if (!TextEditor.isNull()) {
+                //already open
+                ui.printMessage(MESSAGE_CLOSE_CHEATSHEET_FIRST);
+                return;
+            }
             try {
                 File file = new File(filePath);
                 file.createNewFile();
+                ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
+                TextEditor.createNew(filePath, fileName);
             } catch (NullPointerException | IOException e) {
                 ui.printMessage(MESSAGE_INVALID_FILE_NAME);
             }
-
-            ui.printMessage(String.format(MESSAGE_CHEATSHEET_ADDED, fileName));
-            TextEditor.createNew(filePath, fileName);
         }
     }
 

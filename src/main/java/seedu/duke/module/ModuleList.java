@@ -1,10 +1,12 @@
 package seedu.duke.module;
 
+import seedu.duke.lesson.Lesson;
 import seedu.duke.storage.Loader;
 import seedu.duke.storage.Writer;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 import static seedu.duke.common.CommonMethods.getDaysRemaining;
 
@@ -186,11 +188,6 @@ public class ModuleList {
      * Sorts lesson list by lesson type.
      */
     public static void sortLessons() {
-        selectedModule.getLessonList().sort((lesson1, lesson2) -> {
-            if (lesson1.getLessonType() != lesson2.getLessonType()) {
-                return lesson1.getLessonType().compareTo(lesson2.getLessonType());
-            }
-            return lesson1.getTime().compareTo(lesson2.getTime());
-        });
+        selectedModule.getLessonList().sort(Comparator.comparing(Lesson::getLessonType));
     }
 }
