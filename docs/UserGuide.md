@@ -6,9 +6,9 @@
 3. [About](#3-about) <br>
    3.1. [Structure of this document](#31-structure-of-this-document) <br>
    3.2. [Reading this document](#32-reading-this-document) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [Format of commands](#322-format-of-commands) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Technical terms](#323-technical-terms) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [Technical terms](#321-technical-terms) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [General Symbols and Syntax](#322-general-symbols-and-syntax) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Format of commands](#323-format-of-commands) <br>
 4. [Features](#4-features)  <br>
    4.1. [Viewing Help](#41-viewing-help)<br>
    4.2. [Routing](#42-routing) <br>
@@ -101,19 +101,28 @@ The following section, [Section 4 - Features](#4-features), documents the seven 
 This section introduces you to some technical terms, symbols and syntax that are used throughout the guide. You may want to
 familiarize yourself with them before moving to the next section.
 
+#### 3.2.1. Technical terms
 
-#### 3.2.1. General Symbols and Syntax
+The table below explains some technical terms that you may come across throughout the user guide.
+
+| Term |  What it means |
+|----------|-------------|
+| CLI |  The Command-Line Interface (or CLI for short) is the user interface in which NUSMaze is based on. Unlike traditional Graphical User Interface (GUI) base applications, it may be less intuitive to new users. However upon familiarisation, fast typists may find it faster to use.  |
+| Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
+|Parameter|Parameter refers to the user input required after the user is prompted by NUSMaze|
+
+#### 3.2.2. General Symbols and Syntax
 
 The table below explains the general syntax used throughout the user guide.
 
 | Syntax |  What it means |
 |----------|-------------|
-| `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
+| `command` |  A grey highlighted block specifies a executable command or parameters that can be entered into the command box.  |
 | _italics_ | Italicised text indicates that the text has a definition specific to NUSMaze, or it is a caption for a Figure in the guide. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
 |<div markdown="block" class="alert alert-danger"> :warning: </div> | A warning sign indicates that the following text is important. |
 
-#### 3.2.2. Format of commands
+#### 3.2.3. Format of commands
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
@@ -128,21 +137,12 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 
 5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
 
-#### 3.2.3. Technical terms
-
-The table below explains some technical terms that you may come across throughout the user guide.
-
-| Term |  What it means |
-|----------|-------------|
-| CLI |  The Command-Line Interface (or CLI for short) is the user interface in which NUSMaze is based on. Unlike traditional Graphical User Interface (GUI) base applications, it may be less intuitive to new users. However upon familiarisation, fast typists may find it faster to use.  |
-| Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
-You may enter a command into the _CLI_ to use each feature.
+You may enter a command into the CLI to use each feature.
 
 ### 4.1 Viewing Help
 
