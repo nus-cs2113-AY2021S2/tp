@@ -7,6 +7,8 @@
    3.1. [Structure of this document](#31-structure-of-this-document) <br>
    3.2. [Reading this document](#32-reading-this-document) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [Format of commands](#322-format-of-commands) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Technical terms](#323-technical-terms) <br>
 4. [Features](#4-features)  <br>
    4.1. [Viewing Help](#41-viewing-help)<br>
    4.2. [Routing](#42-routing) <br>
@@ -70,7 +72,8 @@ This section gives you step-by-step instructions on how to download and open the
 
 3. Copy the file to the folder you want to use as the _home folder_ **NUSMaze**.
 
-4. Open your command line or terminal and navigate into the file directory where you saved the application. An easy way to do so is shown below for both Mac and Windows<br>
+4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
+:information_source: An easy way to do so is shown below for both Mac and Windows<br>
    ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
    Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
@@ -99,7 +102,7 @@ This section introduces you to some technical terms, symbols and syntax that are
 familiarize yourself with them before moving to the next section.
 
 
-### 3.2.1. General Symbols and Syntax
+#### 3.2.1. General Symbols and Syntax
 
 The table below explains the general syntax used throughout the user guide.
 
@@ -110,23 +113,31 @@ The table below explains the general syntax used throughout the user guide.
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
 |<div markdown="block" class="alert alert-danger"> :warning: </div> | A warning sign indicates that the following text is important. |
 
+#### 3.2.2. Format of commands
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
 1. Words in Upper_Case are parameters to be supplied by you.
    <br/>Eg. in add note LOCATION/DESCRIPTION, LOCATION and DESCRIPTION are parameters which can be used as add note E1/CS2113T.
 
-2. All the examples provided below are screenshots of expected user commands and outputs by NUSMaze.
+2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt.
 
-3. In each example, lines starting with > signifies user command.
-   
-4. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the  prompt.
+3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze.
 
-<div markdown="block" class="alert alert-info">
+4. In each example, lines starting with > signifies user command.
 
+5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
 
-</div>
+#### 3.2.3. Technical terms
 
+The table below explains some technical terms that you may come across throughout the user guide.
+
+| Term |  What it means |
+|----------|-------------|
+| CLI |  The Command-Line Interface (or CLI for short) is the user interface in which NUSMaze is based on. Unlike traditional Graphical User Interface (GUI) base applications, it may be less intuitive to new users. However upon familiarisation, fast typists may find it faster to use.  |
+| Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## 4. Features
 
