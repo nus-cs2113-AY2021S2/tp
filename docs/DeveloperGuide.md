@@ -31,7 +31,7 @@
 
 [Appendix A: Product Scope](#a-appendix-a-product-scope)
 
-[Appendix B: User Stories](#b-user-stories)
+[Appendix B: User Stories](#b-appendix-b-user-stories)
 
 [Appendix C: Use Cases](#c-use-cases)
 
@@ -45,11 +45,48 @@
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
+
+HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Purpose and scope**
+
+The purpose of this developer guide is to describe the architecture and software design decisions for our application. This guide will cover our program architecture, the logical view of major components and how our functions work.
+
 ### 1.2 About the Developer Guide
 ## 2. How to use the guide
 ## 3. Getting Started
+
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Setting up**
+
+There are 2 prerequisites for this project
+
+1.  Java 11
+
+-   Launch your terminal and type "java -version" to ensure the correct version
+
+2.  Intellij IDEA
+
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Getting Started**
+
+1.  Fork this repo, and clone the fork into your computer.
+
+2.  Import the project as a gradle project
+
+3.  Run Duke.main and try a few commands
+
+4.  Run the tests to ensure they all pass.
+
 ## 4. Design
-### 4.1 Architecture
+
+###  4.1 Architecture
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/ArchitectureDiagram.png">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Our application utilises many layers of abstraction which allows each individual component to be self contained yet able to work with other components. The Main Menu component allows direct access to other components as shown in the diagram.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared functionalities are placed within the Common Classes component which will be elaborated on in the section [Common Classes](#common-classes)
+
 ### 4.2 UI component
 ### 4.3 Logic component
 ### 4.4 Model component
@@ -97,69 +134,6 @@
 ## g. Appendix G: Instructions for Manual Testing
 
 
-
-
-**Introduction**
-================
-
-### **What is HealthVault**
-
-HealthVault is a desktop app for managing doctor, nurse and patient
-information, optimised for use through the command line interface. This
-app is for the head nurse of a hospital, if the user can type fast, it
-is better than a traditional GUI app.
-
-
-
-### **Purpose and scope**
-
-The purpose of this developer guide is to describe the architecture and
-software design decisions for our application. This guide will cover our
-program architecture, the logical view of major components and how our
-functions work.
-
-**Setting Up and Getting Started**
-----------------------------------
-
-### **Setting up**
-
-There are 2 prerequisites for this project
-
-1.  Java 11
-
--   Launch your terminal and type "java -version" to ensure the correct
-    > version
-
-2.  Intellij IDEA
-
-### **Getting Started**
-
-1.  Fork this repo, and clone the fork into your computer.
-
-2.  Import the project as a gradle project
-
-3.  Run Duke.main and try a few commands
-
-4.  Run the tests to ensure they all pass.
-
-**Design**
-----------
-
-**Architecture**
-----------------
-
-<img src="images/ArchitectureDiagram.png">
-
-Our application utilises many layers of abstraction which allows each
-individual component to be self contained yet able to work with other
-components. The Main Menu component allows direct access to other
-components as shown in the diagram.
-
-Shared functionalities are placed within the Common Classes component
-which will be elaborated on in the section [Common
-Classes](#common-classes)
-
-### 
 
 ### **UI component**
 
