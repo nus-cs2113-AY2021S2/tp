@@ -107,5 +107,6 @@ as well as associated JUnit tests and helper function code.
     - Examples of Class Forum Contributions:
         - [Helping others](https://github.com/nus-cs2113-AY2021S2/forum/issues/3#issuecomment-762286714)
         - [Contributing to Discussion](https://github.com/nus-cs2113-AY2021S2/forum/issues/13#issuecomment-766749214)
-        - [Raising Public issues to Prof so that all can benefit]()
--   
+        - [Raising Public issues to Prof so that all can benefit](https://github.com/nus-cs2113-AY2021S2/forum/issues/42)
+- Contributing with correct answers frequently in tutorials
+- Discovered many bugs in peers' Team Project during PE-Dry Run
