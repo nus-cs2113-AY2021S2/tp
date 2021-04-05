@@ -3,8 +3,8 @@ package seedu.connoisseur.recommendation;
 public class Recommendation {
     protected String title;
     protected String category;
-    protected int priceLow;
-    protected int priceHigh;
+    protected double priceLow;
+    protected double priceHigh;
     protected String recommendedBy;
     protected String location;
 
@@ -18,7 +18,7 @@ public class Recommendation {
      * @param inputBy        description of the recommended person
      */
     public Recommendation(String inputTitle, String inputCategory,
-                          int inputPriceLow, int inputPriceHigh, String inputBy, String location) {
+                          double inputPriceLow, double inputPriceHigh, String inputBy, String location) {
         this.title = inputTitle;
         this.category = inputCategory;
         this.priceLow = inputPriceLow;
@@ -84,18 +84,18 @@ public class Recommendation {
     /**
      * Gets the lower bound price of the recommendation.
      *
-     * @return lower bound price of the recommendation as an integer
+     * @return lower bound price of the recommendation as an double
      */
-    public int getPriceLow() {
+    public double getPriceLow() {
         return priceLow;
     }
 
     /**
      * Gets the higher bound price of the recommendation.
      *
-     * @return higher bound price of the recommendation as an integer
+     * @return higher bound price of the recommendation as an double
      */
-    public int getPriceHigh() {
+    public double getPriceHigh() {
         return priceHigh;
     }
 
@@ -104,7 +104,7 @@ public class Recommendation {
      *
      * @param newPriceLow new low price of recommendation
      */
-    public void setPriceLow(int newPriceLow) {
+    public void setPriceLow(double newPriceLow) {
         this.priceLow = newPriceLow;
     }
 
@@ -113,7 +113,7 @@ public class Recommendation {
      *
      * @param newPriceHigh new high price of recommendation
      */
-    public void setPriceHigh(int newPriceHigh) {
+    public void setPriceHigh(double newPriceHigh) {
         this.priceHigh = newPriceHigh;
     }
 
