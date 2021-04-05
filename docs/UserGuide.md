@@ -192,7 +192,7 @@ Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 
 * The `FOODNAME` must be an existing food name (same with the first parameter during `add`) in the fridge.
 * If the `FOODNAME` is not found, `FridgeFriend` will give an error message.
-* The `QUANTITY_TO_REMOVE` must be lower to equal to the current quantity of the food.
+* The `QUANTITY_TO_REMOVE` must be lower than or equal to the current quantity of the food.
 * If the `QUANTITY_TO_REMOVE` is larger than current quantity of the food, `FridgeFriend` will give an error message.
 * If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole
 food item will be deleted by `FridgeFriend` (it will not appear on list either).
