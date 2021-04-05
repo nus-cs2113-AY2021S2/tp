@@ -15,7 +15,7 @@ It is written in Java, and has more than 4300 lines of code.
   * [List](#display-the-list-of-all-foods-list)
   * [List by Category](#display-the-list-of-foods-by-category-list-category)
   * [List by Location](#display-the-list-of-foods-by-storage-location-list-location)
-  * [Remove](#remove-a-food-item-remove)
+  * [Remove](#remove-a-food-item-by-quantity-remove)
   * [Search](#search-search)
   * [Expiring](#list-expiring-foods-expiring)
   * [Runninglow](#list-categories-with-food-running-low-runninglow)
