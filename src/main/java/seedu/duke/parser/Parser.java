@@ -39,12 +39,12 @@ public class Parser {
             command = new ShowVenuesCommand();
             break;
 
-        //route
+            //route
         case "go":
             command = new GoCommand();
             break;
 
-        //alias
+            //alias
         case "add alias":
             command = new AddCustomAliasCommand();
             break;
@@ -55,7 +55,7 @@ public class Parser {
             command = new DeleteCustomAliasCommand();
             break;
 
-        //history
+            //history
         case "history":
             command = new ShowHistoryCommand();
             break;
@@ -66,7 +66,7 @@ public class Parser {
             command = new ClearHistoryCommand();
             break;
 
-        //favourite
+            //favourite
         case "show favourite":
             command = new ShowFavouriteCommand();
             break;
@@ -80,7 +80,7 @@ public class Parser {
             command = new RepeatFavouriteCommand();
             break;
 
-        //daily route
+            //daily route
         case "add daily route":
             command = new AddDailyRouteCommand();
             break;
@@ -91,7 +91,7 @@ public class Parser {
             command = new ClearDailyRouteCommand();
             break;
 
-        //note
+            //note
         case "add note":
             command = new AddNoteCommand();
             break;
