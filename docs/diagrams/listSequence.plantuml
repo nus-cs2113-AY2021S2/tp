@@ -1,0 +1,62 @@
+@startuml List_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+activate Ui
+Ui -> Parser : determineCommand()
+activate Parser
+
+Parser -> Commands : list()
+activate Commands
+
+alt isReviewMode
+    Commands -> ReviewList : listReviews(sortMethod)
+    activate ReviewList
+
+    alt reviews.size() == 0
+        ReviewList --> Ui : printEmptyReviewListMessage()
+
+    else !validSortMethod
+        ReviewList --> Ui : printInvalidSortMethodMessage()
+
+    else else 
+        alt sortMethod == null
+            ReviewList -> Sorter : sortReviews()
+            activate Sorter
+            Sorter --> ReviewList : reviews
+            deactivate Sorter
+            ReviewList -> ReviewList : displayReviews()
+
+        else sortMethod != null
+            ReviewList -> Sorter : sortReviews(sortMethod)
+            activate Sorter
+            Sorter --> ReviewList : reviews
+            deactivate Sorter
+            ReviewList -> ReviewList : displayReviews()
+        end
+    end
+    ReviewList --> Commands
+    deactivate ReviewList
+
+else !isReviewMode
+    Commands -> RecommendationList : listRecommendations()
+    activate RecommendationList
+
+    alt recommendations.size() == 0
+        RecommendationList --> Ui : printEmptyRecommendationListMessage()
+
+    else else
+        RecommendationList -> RecommendationList : displayRecommendations()
+    end
+
+RecommendationList --> Commands
+deactivate RecommendationList
+
+end
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml

@@ -93,8 +93,8 @@ public class Sorter {
      * @param reviewList reviewList to be sorted
      * @return sorted review list
      */
-    public ArrayList<Review> sortReview(ArrayList<Review> reviewList) {
-        reviewList = sortReview(reviewList, sortMethodToString(this.sortMethod));
+    public ArrayList<Review> sortReviews(ArrayList<Review> reviewList) {
+        reviewList = sortReviews(reviewList, sortMethodToString(this.sortMethod));
         return reviewList;
     }
 
@@ -105,7 +105,7 @@ public class Sorter {
      * @param sortMethod method to sort
      * @return sorted review list
      */
-    public ArrayList<Review> sortReview(ArrayList<Review> reviewList, String sortMethod) {
+    public ArrayList<Review> sortReviews(ArrayList<Review> reviewList, String sortMethod) {
         switch (sortMethod) {
         case "rating":
             sortByRating(reviewList);

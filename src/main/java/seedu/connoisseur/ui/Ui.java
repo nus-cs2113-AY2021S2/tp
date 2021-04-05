@@ -76,11 +76,11 @@ public class Ui {
     public void printRecommendationListHeading() {
         println("Here are your recommendations: ");
         println("+-------------------------------+----------------+"
-                + "----------------+----------------+----------------+");
+                + "------------------+----------------+----------------+");
         println("|   Title                       | Category       |"
-                + " Price range    | Location       | Recommended By |");
+                + " Price range      | Location       | Recommended By |");
         println("+-------------------------------+----------------+"
-                + "----------------+----------------+----------------+");
+                + "------------------+----------------+----------------+");
     }
 
     /**
@@ -88,7 +88,7 @@ public class Ui {
      */
     public void printTableEndBorderForReco() {
         println("+-------------------------------+----------------+"
-                + "----------------+----------------+----------------+");
+                + "------------------+----------------+----------------+");
     }
 
     /**
@@ -272,10 +272,17 @@ public class Ui {
     }
 
     /**
-     * Prints invalid rating message.
+     * Prints invalid pricing message.
      */
     public void printInvalidPricingMessage() {
         println("Invalid price range! Please enter whole numbers between 0 and 9999, separated by -");
+    }
+
+    /**
+     * Prints invalid price range message.
+     */
+    public void printInvalidPriceRangeMessage() {
+        println("Number out of range! Price must be between 0 and 9999.99 inclusive.");
     }
 
     /**

@@ -151,7 +151,7 @@ public class Commands {
      */
     public void sort(String sortType) {
         if (isReviewMode) {
-            reviewList.sortReview(sortType);
+            reviewList.sortReviews(sortType);
         } else {
             ui.printCommandDoesNotExistInRecommendationMode();
         }
