@@ -2,6 +2,7 @@ package seedu.duke.data;
 
 import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.InvalidNoteException;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,10 @@ public class Block {
         this.distanceFromStart = distanceFromStart;
     }
 
-    public void addNote(String note) {
+    public void addNote(String note) throws InvalidNoteException {
+        if (note.equals("")) {
+            throw new InvalidNoteException();
+        }
         this.notes.add(note);
     }
 

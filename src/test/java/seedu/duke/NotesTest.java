@@ -7,6 +7,7 @@ import seedu.duke.data.NusMap;
 import seedu.duke.exception.EmptyNoteException;
 import seedu.duke.exception.InvalidBlockException;
 import seedu.duke.exception.InvalidIndexException;
+import seedu.duke.exception.InvalidNoteException;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NotesTest {
 
-    public void addNoteTest(String location) throws InvalidBlockException {
+    public void addNoteTest(String location) throws InvalidBlockException, InvalidNoteException {
         NusMap nusMap = new NusMap();
         nusMap.checkIfValidBlock(location);
         Block block = nusMap.getBlock(location);
@@ -31,7 +32,7 @@ public class NotesTest {
         try {
             addNoteTest("COM1");
             addNoteTest("STARBUCKS");
-        } catch (InvalidBlockException e) {
+        } catch (InvalidBlockException | InvalidNoteException e) {
             assertEquals("Invalid block! Please enter again to retry!", e.getMessage());
         }
     }
@@ -41,13 +42,13 @@ public class NotesTest {
         try {
             addNoteTest("TESCO SUPER-MART");
             addNoteTest("GRAND HALL");
-        } catch (InvalidBlockException e) {
-            assertEquals("Invalid block! Please check your start and destination block again :(",
+        } catch (InvalidBlockException | InvalidNoteException e) {
+            assertEquals("Invalid block! Please try again with a block that exists :(",
                     e.getMessage());
         }
     }
 
-    public void deleteNotesTest(int index) throws InvalidIndexException {
+    public void deleteNotesTest(int index) throws InvalidIndexException, InvalidNoteException {
         NusMap nusMap = new NusMap();
         Block block = nusMap.getBlock("MAXX COFFEE");
         block.addNote("Special event today at 12 noon :))");
@@ -80,7 +81,7 @@ public class NotesTest {
             deleteNotesTest(0);
             deleteNotesTest(1);
             deleteNotesTest(2);
-        } catch (InvalidIndexException e) {
+        } catch (InvalidIndexException | InvalidNoteException e) {
             assertEquals("Oops! You must enter an Integer that is within the bounds :(", e.getMessage());
         }
     }
@@ -90,7 +91,7 @@ public class NotesTest {
         try {
             deleteNotesTest(-1);
             deleteNotesTest(7);
-        } catch (InvalidIndexException e) {
+        } catch (InvalidIndexException | InvalidNoteException e) {
             assertEquals("Oops! You must enter an Integer that is within the bounds :(", e.getMessage());
         }
     }
@@ -111,7 +112,7 @@ public class NotesTest {
             NusMap nusMap = new NusMap();
             nusMap.getBlock("CENTRAL LIBRARY").addNote("Orbital project meeting at 2 :))");
             showNotesTest(nusMap);
-        } catch (EmptyNoteException e) {
+        } catch (EmptyNoteException | InvalidNoteException e) {
             assertEquals("Oops! There are no notes tagged to CENTRAL LIBRARY",
                     String.format(e.getMessage(), "CENTRAL LIBRARY")); //should not reach here
         }

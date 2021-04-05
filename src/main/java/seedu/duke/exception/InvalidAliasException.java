@@ -8,6 +8,7 @@ public class InvalidAliasException extends NusMazeException {
         return "Invalid alias! Please enter the command again to retry! \n"
                 + "Here are some possible reasons for this error:\n"
                 + "- Adding an alias name that already exits.\n"
-                + "- Adding a block name as an alias name";
+                + "- Adding a block name as an alias name.\n"
+                + "- Empty alias name";
     }
 }

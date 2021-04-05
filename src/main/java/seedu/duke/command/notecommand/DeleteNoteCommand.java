@@ -27,8 +27,6 @@ public class DeleteNoteCommand extends Command {
             ui.showNotes(block.getNotes());
             int deleteIndex = ui.getDeleteIndex();
             block.deleteNote(deleteIndex - 1);
-            assert (deleteIndex > 0 & deleteIndex <= nusMap.getBlock(deleteBlockInfo).getNotes().size()) :
-                    "Index is out of bounds";
             ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, deleteBlockInfo));
         } catch (EmptyNoteException e) {
             ui.showMessageWithDivider(String.format(e.getMessage(), deleteBlockInfo));

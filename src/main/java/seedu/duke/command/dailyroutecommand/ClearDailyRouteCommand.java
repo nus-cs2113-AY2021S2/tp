@@ -5,7 +5,6 @@ import seedu.duke.exception.EmptyDailyRouteException;
 import seedu.duke.exception.InvalidIndexException;
 import seedu.duke.ui.DailyRouteUi;
 
-
 import java.util.ArrayList;
 
 public class ClearDailyRouteCommand extends Command {
@@ -23,7 +22,7 @@ public class ClearDailyRouteCommand extends Command {
             int dayEntry = ui.getDayEntry(selectableDays);
             String selectedDay = selectableDays.get(dayEntry);
             dailyRoute.addDailyRoute(selectedDay, new ArrayList<>());
-            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS,selectedDay));
+            ui.showMessageWithDivider(String.format(MESSAGE_SUCCESS, selectedDay));
         } catch (InvalidIndexException | EmptyDailyRouteException e) {
             ui.showMessageWithDivider(e.getMessage());
         }
