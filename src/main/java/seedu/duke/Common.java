@@ -1,11 +1,19 @@
 package seedu.duke;
 
+import seedu.duke.exception.InvalidInputException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
+
 /**
  * This is a common class providing some miscellaneous functionalities.
  */
 public class Common {
     /**
      * Checks whether the patient's ID is valid.
+     *
      * @param id Unique identifier of the patient to be retrieved
      * @return Flag on whether the patient's ID is valid
      */
@@ -78,5 +86,32 @@ public class Common {
             }
         }
         return true;
+    }
+
+    /**
+     * Parses a string in the format dd/MM/yyyy, and returns its corresponding date.
+     *
+     * @param dateString the string to be parsed
+     * @return a LocalDate object corresponding to the input string
+     * @throws DateTimeParseException if the date provided is invalid
+     */
+    public static LocalDate parseDate(String dateString) throws InvalidInputException {
+        if (dateString.isEmpty()) {
+            return LocalDate.now();
+        }
+        LocalDate date = null;
+        try {
+            date = LocalDate.parse(
+                    dateString,
+                    DateTimeFormatter.ofPattern(Constants.DATE_PATTERN).withResolverStyle(ResolverStyle.STRICT)
+            );
+        } catch (DateTimeParseException e) {
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE, e);
+        }
+        if (date.isAfter(LocalDate.now())) {
+            // We don't allow a record to be inserted for a future date
+            throw new InvalidInputException(InvalidInputException.Type.FUTURE_DATE);
+        }
+        return date;
     }
 }
