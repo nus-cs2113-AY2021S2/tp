@@ -148,10 +148,12 @@ public class ModuleInfo {
                 if (!moduleNameIsAlphaNumeric(moduleName)) {
                     int yesOrNo = 2;
                     while (yesOrNo == 2) {
-                        System.out.println("Does your module name require non-alphanumeric characters (e.g. @,#,/,-,!) ? [Y/N]");
+                        System.out.println("Does your module name require "
+                                + "non-alphanumeric characters (e.g. @,#,/,-,!) ? [Y/N]");
                         yesOrNo = readYN(Ui.readCommand());
                         if (yesOrNo == 0) {
-                            System.out.println("Please enter valid alphanumeric characters for the module name (e.g. CS2113T).");
+                            System.out.println("Please enter valid alphanumeric "
+                                    + "characters for the module name (e.g. CS2113T).");
                         }
                     }
                     if (yesOrNo == 0) {
@@ -178,6 +180,7 @@ public class ModuleInfo {
         }
 
     }
+
     //Solution below reused from https://www.techiedelight.com/check-string-contains-alphanumeric-characters-java/
     public static boolean moduleNameIsAlphaNumeric(String s) {
         return s != null && s.matches("^[a-zA-Z0-9]*$");
@@ -521,19 +524,16 @@ public class ModuleInfo {
                     + "For " + module.getName() + ":\n"
                     + "Review:\n" + module.getReview());
             String command = Ui.readCommand();
-            int YesOrNo = readYN(command);
-            if (YesOrNo == 1) {
+            int yesOrNo = readYN(command);
+            if (yesOrNo == 1) {
                 printDeletedReviewMessage(module);
                 modules.get(moduleNumberInt).removeReview();
-            } else if (YesOrNo == 0) {
+            } else if (yesOrNo == 0) {
                 System.out.println("Ok. I did not delete this review:\n"
                         + "For " + module.getName() + ":\n"
                         + "Review:\n" + module.getReview());
             }
-        } //else {
-            //logger.log(Level.INFO, "You did not enter a valid integer.");
-          //  Ui.printInvalidIntegerMessage();
-        //}
+        }
     }
 
     public static void printDeletedReviewMessage(Module module) {

@@ -95,8 +95,6 @@ public class Storage {
         while (s.hasNext()) {
             String[] part = s.nextLine().split(" ~~ ");
             Module module = new Module(part[0], part[1]);
-            int modularCredit = Integer.parseInt(part[2]);
-            String grade = part[3];
             String components = part[4];
             StringBuilder review = new StringBuilder();
             while (true) {
@@ -118,6 +116,10 @@ public class Storage {
                     table.put(entry[0].trim(), Integer.parseInt(entry[1].trim()));
                 }
             }
+
+            int modularCredit = Integer.parseInt(part[2]);
+            String grade = part[3];
+
             module.setComponents(table);
             module.setGrade(grade);
             module.setMc(modularCredit);
