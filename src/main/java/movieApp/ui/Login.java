@@ -104,8 +104,8 @@ public class Login {
 
 	private static boolean validatePassword(char[] password, char[] goodHash) throws Exception {
 		String[] params = String.valueOf(goodHash).split("~");
-		byte[] salt = Base64.getDecoder().decode(params[0]);
-		byte[] hash = Base64.getDecoder().decode(params[1]);
+		byte[] salt = Base64.getDecoder().decode(params[0].trim());
+		byte[] hash = Base64.getDecoder().decode(params[1].trim());
 		byte[] testHash = generatePBKDF2(password, salt, hash.length);
 		return slowEquals(hash, testHash);
 	}
@@ -113,6 +113,7 @@ public class Login {
 	public static int authenticate(String name, char[] password, ArrayList<User> user) throws Exception {
 		for (int index = 0; index < user.size(); index++)
 		{
+			name = name.trim();
 			if (name.equals(user.get(index).getName())) {
 				if(validatePassword(password, user.get(index).getPassword().toCharArray())) {
 						return index;
