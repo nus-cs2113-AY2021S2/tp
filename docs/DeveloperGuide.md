@@ -1,6 +1,104 @@
 **Developer Guide**
 ===================
 
+## Content Page
+1. [Introduction](#1-introduction)
+	1. [What is HealthVault?](#11-what-is-healthvault)
+	2. [About the Developer Guide](#12-about-the-developer-guide)
+2. [How to use this guide](#2-how-to-use-the-guide)
+3. [Getting Started](#3-getting-started)
+4. [Design](#4-design)
+    1. [Architecture](#41-architecture)
+    2. [UI component](#42-ui-component)
+    3. [Logic component](#43-logic-component)
+    4. [Model component](#44-model-component)
+    5. [Storage component](#45-storage-component)
+    6. [Common classes](#46-common-classes)
+5. [Implementation](#5-implementation)
+    1. [Staff](#51-staff)
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#511-add)        , [Delete](#512-delete)        , [List](#513-list)        , [Find](#514-find))
+    2. [Patient](#52-patient)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#521-add)        , [Delete](#522-delete)        , [List](#523-list)        , [Find](#524-find))
+    3. [Doctor Appointment](#53-doctor-appointment)
+         &nbsp;&nbsp;&nbsp;&nbsp;([Add](#531-add)        , [Delete](#532-delete)        , [List](#533-list)        , [Find](#534-find))
+    4. [Nurse Schedule](#54-nurse-schedule)
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#541-add)        , [Delete](#542-delete)        , [List](#543-list)        , [Find](#544-find))
+    5. [Inventory](#55-inventory)
+        1. [Add](#551-add)
+        2. [Delete](#552-delete)
+        3. [List](#553-list)
+        4. [Find](#554-find)
+
+[Appendix A: Product Scope](#a-appendix-a-product-scope)
+
+[Appendix B: User Stories](#b-user-stories)
+
+[Appendix C: Use Cases](#c-use-cases)
+
+[Appendix D: Non Functional Requirements](#d-non-functional-requirements)
+
+[Appendix E: Glossary](#e-glossary)
+
+[Appendix F: Product Survey](#f-product-survey)
+
+[Appendix G: Instructions for Manual Testing](#g-instructions-for-manual-testing)
+
+## 1. Introduction
+### 1.1 What is HealthVault?
+### 1.2 About the Developer Guide
+## 2. How to use the guide
+## 3. Getting Started
+## 4. Design
+### 4.1 Architecture
+### 4.2 UI component
+### 4.3 Logic component
+### 4.4 Model component
+### 4.5 Storage component
+### 4.6 Common classes
+
+## 5. Implementation
+###  5.1 Staff
+#### 5.1.1 Add
+#### 5.1.2 Delete
+#### 5.1.3 List
+#### 5.1.4 Find
+
+###  5.2 Patient
+#### 5.2.1 Add
+#### 5.2.2 Delete
+#### 5.2.3 List
+#### 5.2.4 Find
+
+###  5.3 Doctor Appointment
+#### 5.3.1 Add
+#### 5.3.2 Delete
+#### 5.3.3 List
+#### 5.3.4 Find
+
+###  5.4 Nurse Schedule
+#### 5.4.1 Add
+#### 5.4.2 Delete
+#### 5.4.3 List
+#### 5.4.4 Find
+
+###  5.5 Inventory
+#### 5.5.1 Add
+#### 5.5.2 Delete
+#### 5.5.3 List
+#### 5.5.4 Find
+
+
+## a. Appendix A: Product Scope
+## b. Appendix B: User Stories
+## c. Appendix C: Use Cases
+## d. Appendix D: Non Functional Requirements
+## e. Appendix E: Glossary
+## f. Appendix F: Product Survey
+## g. Appendix G: Instructions for Manual Testing
+
+
+
+
 **Introduction**
 ================
 
@@ -10,6 +108,8 @@ HealthVault is a desktop app for managing doctor, nurse and patient
 information, optimised for use through the command line interface. This
 app is for the head nurse of a hospital, if the user can type fast, it
 is better than a traditional GUI app.
+
+
 
 ### **Purpose and scope**
 
@@ -274,8 +374,8 @@ When the user attempts to add a new staff, the StaffStorage, StaffList, UI, Staf
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Saving Staff Objects into .txt file**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  The Parser then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing Staff 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Objects, within the StaffList into a specified .txt file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  The Parser then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Staff Objects, within the StaffList into a specified .txt file.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.  `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 
