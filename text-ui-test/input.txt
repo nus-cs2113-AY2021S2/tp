@@ -7,7 +7,7 @@ add chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1
 add roast chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1
 add roast chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1000000000000
 list
-add pork /cat meat /exp 28-03-2021 /loc lower_shelf /qty 20000000000000000
+add pork /cat meat /exp 28-03-2021 /loc lower_shelf /qty -20000
 add pork /cat meat /exp 28-03-2021 /loc lower_shelf /qty 200
 add pork /cat meat /exp 30-06-2021 /loc lower_shelf /qty 20 !@# g!
 search chicken
