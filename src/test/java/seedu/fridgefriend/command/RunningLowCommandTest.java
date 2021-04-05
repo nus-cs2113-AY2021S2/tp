@@ -1,9 +1,11 @@
 package seedu.fridgefriend.command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
@@ -76,7 +78,32 @@ class RunningLowCommandTest {
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(icePack);
     }
-    
+
+    //@@author SimJJ96
+    public void populateFridgeWithLargeMeatQuantity() throws Exception {
+        fridge = new Fridge();
+        Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT, "31-07-2021",
+                FoodStorageLocation.LOWER_SHELF, 1000000);
+        fridge.add(chicken);
+
+        Food chicken1 = AddCommand.categoriseAndGenerateFood("chicken1", FoodCategory.MEAT, "31-07-2021",
+                FoodStorageLocation.LOWER_SHELF, 1000000);
+        fridge.add(chicken1);
+
+        Food chicken2 = AddCommand.categoriseAndGenerateFood("chicken2", FoodCategory.MEAT, "31-07-2021",
+                FoodStorageLocation.LOWER_SHELF, 1000000);
+        fridge.add(chicken2);
+
+        Food chicken3 = AddCommand.categoriseAndGenerateFood("chicken3", FoodCategory.MEAT, "31-07-2021",
+                FoodStorageLocation.LOWER_SHELF, 1000000);
+        fridge.add(chicken3);
+
+        Food chicken4 = AddCommand.categoriseAndGenerateFood("chicken1", FoodCategory.MEAT, "31-07-2021",
+                FoodStorageLocation.LOWER_SHELF, 10000000);
+        fridge.add(chicken4);
+    }
+    //@@author
+
     @Test
     public void runningLowCommand_isSemiPopulated_listCorrectly() throws Exception {
         semiPopulateFridge();
@@ -103,4 +130,16 @@ class RunningLowCommandTest {
         String actualMessage = runningLowCommand.getMessage();
         assertEquals(expectedMessage, actualMessage);
     }
+
+    //@@author SimJJ96
+    @Test
+    public void runningLowCommand_totalQuantityExceedMax_invalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            populateFridgeWithLargeMeatQuantity();
+            RunningLowCommand runningLowCommand = new RunningLowCommand();
+            runningLowCommand.setData(fridge);
+            runningLowCommand.execute();
+        });
+    }
+
 }

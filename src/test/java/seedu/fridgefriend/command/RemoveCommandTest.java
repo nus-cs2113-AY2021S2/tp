@@ -73,4 +73,10 @@ class RemoveCommandTest {
                 removeCommand.execute());
     }
 
+    @Test
+    public void removeCommand_LargeQuantity_invalidQuantityException() {
+        assertThrows(InvalidQuantityException.class, () ->
+                removeCommand.execute());
+    }
+
 }

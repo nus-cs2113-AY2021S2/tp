@@ -25,7 +25,7 @@ class AddCommandTest {
     }
 
     @Test
-    public void addCommand_invalidDate_InvalidDateException() {
+    public void addCommand_invalidDate_invalidDateException() {
         assertThrows(InvalidDateException.class, () -> {
             new AddCommand("chicken", FoodCategory.MEAT,
                     "abcd", FoodStorageLocation.FREEZER, 200);
@@ -33,7 +33,7 @@ class AddCommandTest {
     }
 
     @Test
-    public void addCommand_foodWithSameNameAndLargeQuantity_InvalidQuantityException() {
+    public void addCommand_foodWithSameNameAndLargeQuantity_invalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {
             AddCommand addCommand1 = new AddCommand("Milk", FoodCategory.DAIRY,
                     "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 1);
