@@ -123,7 +123,7 @@ public class Storage {
         String storageDelimiter = ", stored in: ";
         String quantityDelimiter = ", quantity: ";
 
-        String name = loadFoodDataFromLine(line, foodNameDelimiter, categoryDelimiter);
+        String name = loadFoodNameFromLine(line, foodNameDelimiter, categoryDelimiter);
 
         String categoryStr = loadFoodDataFromLine(line, categoryDelimiter, expiryDelimiter);
         FoodCategory category = FoodCategory.convertStringToFoodCategory(categoryStr);
@@ -145,8 +145,12 @@ public class Storage {
         return quantity.trim();
     }
 
+    private static String loadFoodNameFromLine(String line, String startIndex, String endIndex) {
+        return line.substring(line.indexOf(startIndex) + startIndex.length(), line.lastIndexOf((endIndex)));
+    }
+
     private static String loadFoodDataFromLine(String line, String startIndex, String endIndex) {
-        return line.substring(line.lastIndexOf(startIndex) + startIndex.length(), line.indexOf((endIndex)));
+        return line.substring(line.lastIndexOf(startIndex) + startIndex.length(), line.lastIndexOf((endIndex)));
     }
     //@@author
 
