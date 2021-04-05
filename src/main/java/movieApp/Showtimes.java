@@ -87,6 +87,20 @@ public class Showtimes implements Serializable {
         return seatPlan[row][col].getStatus();
     }
 
+    public int getEmptySeats() {
+        int num = 0;
+        int rownum = seatPlan.length;
+        int colnum = seatPlan[0].length;
+        for (int row = 0; row < rownum; row++) {
+            for (int col = 0; col < colnum; col++) {
+                if (!checkSeatTaken(row, col)) {
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+
     public void setSeatStatus(int row, int col, boolean status) {
         seatPlan[row][col].setStatus(status);
     }
