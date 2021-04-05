@@ -154,7 +154,7 @@ Format: `help`
 #### 4.2.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
-Format: `go` → `STARTING_BLOCK` → `DESTINATION BLOCK`
+Format: `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example:
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -176,18 +176,20 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
 #### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
 Format 1: `go` → `STARTING_BLOCK` → `EATERY_NAME`
-- By entering the name of the eatery that you wish to go in the `EATERY_NAME` parameter,
+- By entering the name of the eatery that you wish to go to in the `EATERY_NAME` parameter,
   NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
   desired eatery.
 
+:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
+
 Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_NAME`
-- It is also possible to see the list of Eateries, from closest to furthest by entering eatery
+- It is also possible to see the list of Eateries, from closest to furthest by entering `eatery`
   when NUSMaze prompts for the destination block.
 
-- When NUSMaze prompts for entry to the eatery, you can enter `EATERY_ENTRY` that you
-  wish to go.
+- NUSMaze then prompts for the entry of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
 
-- `EATERY_ENTRY` must be an integer from 1 to 5.
+:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
+:warning: `EATERY_ENTRY` must be an integer from 1 to 5.
 
 
 ### 4.3 History
@@ -205,7 +207,7 @@ Format : `clear history`
 
 Repeats past route search history.<br>
 Format : `repeat history` → `REPEAT_ENTRY`
-- When the repeat command is entered, NUSMaze will show a list of past route searches.
+- When the `repeat` command is entered, NUSMaze will show a list of past route searches.
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
 
@@ -215,7 +217,7 @@ Format : `repeat history` → `REPEAT_ENTRY`
 #### 4.4.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
 Format : `add alias` → `BLOCK` → `ALIAS_NAME`
-- When add alias command is called, NUSMaze will prompt for the `BLOCK` that you
+- When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
   wish to set the alias for.
 
 - NUSMaze then prompts you to input a desired `ALIAS_NAME`.
@@ -235,8 +237,8 @@ Format : `delete alias` → `ALIAS_NAME`
 ### 4.5 Daily Routes
 #### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
-Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END`
-Example :
+Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END` <br>
+Example : 
 ```
 ------------------------------------------------------------------------------------------------------------
 > add daily route
@@ -279,7 +281,7 @@ Got it! Successfully added MONDAY's schedule!
 
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
-Format : `show daily route` → `DAY_NUMBER`
+Format : `show daily route` → `DAY_NUMBER` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -302,17 +304,16 @@ Location of activity 3: EA
 Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the day command is entered, the application will display the list of available days
+- When the `show daily route` command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
-  displayed.
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
 #### 4.5.3 Clearing daily route
 Clears the schedule of the selected day, if applicable.<br>
-Format : `delete daily route` → `DAY_NUMBER`
+Format : `delete daily route` → `DAY_NUMBER` <br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -329,45 +330,87 @@ Select entry:
 Got it! Successfully cleared MONDAY's schedule!
 ------------------------------------------------------------------------------------------------------------
 ```
-- When the day command is entered, the application will display the list of available days
+- When the `delete daily route` command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
-  displayed.
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
 ### 4.6 Notes
 #### 4.6.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
-Format : `add note`  → `LOCATION` → `NOTE`
-- When the 'add note' command is given, NUSMaze will prompt you for a `LOCATION`.
-- The `LOCATION` must be one of the Engineering or Computing buildings.
+Format : `add note` → `BLOCK` → `NOTE` <br> 
+Example:
+```
+------------------------------------------------------------------------------------------------------------
+> add note
+------------------------------------------------------------------------------------------------------------
+Enter Block:
+* starbucks
+Enter the Note:
+* give myself a treat of the new caramel macchiato flavour! :))
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully added and tagged note to STARBUCKS
+------------------------------------------------------------------------------------------------------------
+```
+- When the `add note` command is entered, NUSMaze will prompt you for a `BLOCK`.
 - After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE` to be tagged to the location.
+  
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
+:warning: The `NOTE` will be invalid if it is empty.
 
 #### 4.6.2 Viewing notes
-Lists all notes which had been tagged to the given existing location, if applicable.<br/>
-Format : `show notes` → `LOCATION`
-- When the 'list notes' command is entered, NUSMaze will prompt you for a `LOCATION`.
-
-- The `LOCATION` must be one of the Engineering or Computing buildings.
+Lists all notes which had been tagged to the given location, if it exists.<br/>
+Format : `show note` → `BLOCK` <br>
+Example:
+```
+------------------------------------------------------------------------------------------------------------
+> show note
+------------------------------------------------------------------------------------------------------------
+Enter Block:
+* starbucks
+------------------------------------------------------------------------------------------------------------
+Here is the list of notes:
+1. give myself a treat of the new caramel macchiato flavour! :))
+------------------------------------------------------------------------------------------------------------
+```
+- When the `show notes` command is entered, NUSMaze will prompt you for a `BLOCK`.
+  
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
 
 #### 4.6.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
-Format : `delete note` → `LOCATION` → `NOTE INDEX`
-- When the 'delete note' command is entered, NUSMaze will then prompt you for a `LOCATION`.
-
-- The `LOCATION` must be one of the Engineering or Computing buildings.
-
-- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE INDEX` of the note to be deleted,
+Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
+Example:
+```
+------------------------------------------------------------------------------------------------------------
+> delete note
+------------------------------------------------------------------------------------------------------------
+Enter Block:
+* starbucks
+------------------------------------------------------------------------------------------------------------
+Here is the list of notes:
+1. give myself a treat of the new caramel macchiato flavour! :))
+------------------------------------------------------------------------------------------------------------
+Select Entry to delete:
+* 1
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully deleted note tagged to STARBUCKS
+------------------------------------------------------------------------------------------------------------
+```
+- When the `delete note` command is entered, NUSMaze will then prompt you for a `BLOCK`.
+- After a valid location is keyed in,  NUSMaze will prompt you for a `NOTE_INDEX` of the note to be deleted,
   which is the index of the note in the location's notes list.
+  
+:warning: The `BLOCK` must be one of the Engineering or Computing buildings.
 
-- The `NOTE INDEX` must be an integer within the total number of notes that the location has.
+:warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has.
 
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
-Format : `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
+Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK`
 
 #### 4.7.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
@@ -375,11 +418,11 @@ Format : `show favourite`
 
 #### 4.7.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format : `repeat favourite` → `INDEX OF ROUTE`
+Format : `repeat favourite` → `ROUTE_INDEX`
 
 #### 4.7.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format : `delete favourite` → `INDEX OF ROUTE`
+Format : `delete favourite` → `ROUTE_INDEX`
 
 ### 4.8 Exiting the application
 
@@ -421,18 +464,18 @@ can be found on the second computer.
 |[**Viewing history**](#431-viewing-history)     | `history` | 
 |[**Clearing history**](#432-clearing-history)       | `clear history` |
 |[**Repeating history**](#433-repeating-history)       | `repeat history → REPEAT_ENTRY` |
-|[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS`| 
+|[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS` | 
 |[**Showing all aliases**](#442-viewing-all-aliases)  | `show alias` | 
 |[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
 |[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
 |[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
 |[**Clearing a daily route**](#453-clearing-daily-route)       | `clear daily route → DAY_NUMBER` |
-|[**Adding notes**](#461-adding-notes)       | `add note → LOCATION → NOTE` |
-|[**Viewing notes**](#462-viewing-notes)      | `show notes → LOCATION`| 
-|[**Deleting notes**](#463-delete-note)       | `delete note → LOCATION → NOTE INDEX` |
-|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING BLOCK → DESTINATION BLOCK` |
+|[**Adding notes**](#461-adding-notes)       | `add note → BLOCK → NOTE` |
+|[**Viewing notes**](#462-viewing-notes)      | `show note → BLOCK` | 
+|[**Deleting notes**](#463-delete-note)       | `delete note → BLOCK → NOTE_INDEX` |
+|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING_BLOCK → DESTINATION_BLOCK` |
 |[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
-|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite → INDEX OF ROUTE` |
-|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite` |
+|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite → ROUTE_INDEX` |
+|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite → ROUTE_INDEX` |
 |[**Exiting the application**](#48-exiting-the-application)       | `bye` |
 
