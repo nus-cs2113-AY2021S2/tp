@@ -22,6 +22,9 @@ as well as associated JUnit tests and helper function code.
 
 **Code contributed**: More than 1200 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
 
+### Enhancements Implemented
+
+
 **Version 1.0**
 - Implemented the skeletal version of FridgeFriend.
 - Created preliminary J-Unit tests for the `Food` Class.
@@ -61,8 +64,10 @@ as well as associated JUnit tests and helper function code.
   - List Command
 
 
-**Documentation**
-- User Guide
+### Contributions to Documentation
+
+
+- **User Guide**
     - Added documentation for the command `search` ([#72](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/72))
     - Added documentation for `list` by storage location ([#93](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/93))  
     - Updated Contents Page ([#130](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/130))
@@ -70,7 +75,7 @@ as well as associated JUnit tests and helper function code.
     - Updated Command Summary ([#130](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/130))  
     - Added documentation for the command `history` ([#131](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/131))
     - Added documentation for the command `history clear` ([#131](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/131))
-- Developer Guide
+- **Developer Guide**
     - Added Overall Architecture Section ([#94](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/94))
     - Added Exception Section ([#119](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/119))
     - Added Design and Implementation Section ([#129](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/129))
@@ -78,9 +83,10 @@ as well as associated JUnit tests and helper function code.
         - Includes detailed testing instructions for all features in `FridgeFriend`
     - Added List Sequence Diagram and Implementation ([#148](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/148))
 
-**Community**
-- Review pull requests and help maintain group repo
-  - Pull Requests reviewed with non-trivial review comments:
+### Contributions to Team-based Tasks
+
+- **Review/Mentoring Contributions**
+  - Pull Requests reviewed with non-trivial review comments (non-exhaustive):
     - [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38),
     - [#41](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/41),
     - [#45](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45),
@@ -92,7 +98,14 @@ as well as associated JUnit tests and helper function code.
     - [#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134),
     - [#141](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/141),
     - [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147),
-- [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts) 
-  - Rank 1 on Class Leaderboard as of 5 April 2021.
 - Consolidated issues created during PE-D for the team and labelled issue trackers.
-- Gave suggestions and help debug in weekly meetings  
+- Gave suggestions and help debug in weekly meetings
+
+### Contributions beyond the project team:
+- [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts)
+  - Rank 1 on Class Leaderboard as of 5 April 2021.
+    - Examples of Class Forum Contributions:
+        - [Helping others](https://github.com/nus-cs2113-AY2021S2/forum/issues/3#issuecomment-762286714)
+        - [Contributing to Discussion](https://github.com/nus-cs2113-AY2021S2/forum/issues/13#issuecomment-766749214)
+        - [Raising Public issues to Prof so that all can benefit]()
+-   
