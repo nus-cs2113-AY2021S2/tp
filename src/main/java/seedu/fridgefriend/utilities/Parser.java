@@ -34,6 +34,7 @@ public class Parser {
 
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
+    private static final int MAX_ALLOWABLE_QUANTITY = 1000000;
 
     //@@author Vinci-Hu
     /**
@@ -62,6 +63,7 @@ public class Parser {
     private static final Pattern SET_LIMIT_ARGS_FORMAT =
             Pattern.compile("(?<foodCategory>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
+    public static final int GREATER = 1;
 
     //@@author SimJJ96
     /**
@@ -385,7 +387,7 @@ public class Parser {
      * @param description quantity description
      * @return integer quantity
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidQuantityException if the description is not an integer or exceed max integer value
+     * @throws InvalidQuantityException if the description is not a positive integer or exceed max quantity
      */
     public static int parseIntegerQuantity(String description)
             throws EmptyDescriptionException, InvalidQuantityException {
@@ -395,15 +397,13 @@ public class Parser {
 
         try {
             BigInteger bigIntegerQuantity = new BigInteger(description);
-            //Check if there is an overflow of integer
-            BigInteger maxInt = BigInteger.valueOf(Integer.MAX_VALUE);
-            if (bigIntegerQuantity.compareTo(maxInt) >= 0) {
-                throw new InvalidQuantityException("Sorry my friend, "
-                        + "You have exceeded the maximum quantity.");
-            }
-            //Check if the integer is negative
+            BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
             BigInteger zero = BigInteger.valueOf(0);
-            if (bigIntegerQuantity.compareTo(zero) < 0) {
+            if (bigIntegerQuantity.compareTo(maxQuantity) == GREATER) {
+                throw new InvalidQuantityException("Sorry my friend, "
+                        + "the quantity you have entered "
+                        + "has exceed the maximum allowable quantity.");
+            } else if (bigIntegerQuantity.compareTo(zero) < GREATER) {
                 throw new InvalidQuantityException();
             }
             int quantityInteger = bigIntegerQuantity.intValue();

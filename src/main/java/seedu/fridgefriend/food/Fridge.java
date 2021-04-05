@@ -9,8 +9,15 @@ import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 public class Fridge {
 
     private ArrayList<Food> fridge = new ArrayList<>();
-    private String overflowMessage = "Sorry my friend, "
-            + "You have exceeded the maximum quantity.";
+    private String exceedAddMessage = "Sorry my friend, "
+            + "the quantity you have entered "
+            + "has exceed the maximum allowable quantity.";
+    private String exceedTotalQuantityMessage = "Sorry my friend, "
+            + "the total quantity of a category "
+            + "has exceed the maximum quantity.\n"
+            + "Please remove food with large quantity.";
+    private static final int MAX_ALLOWABLE_QUANTITY = 1000000;
+    private static final int MAX_ALLOWABLE_TOTAL_QUANTITY = 10000000;
 
     //@@author Vinci-Hu
     /**
@@ -56,8 +63,8 @@ public class Fridge {
         long deltaQuantity = newFood.getQuantity();
         long oriQuantity = existingFood.getQuantity();
         long newQuantity = deltaQuantity + oriQuantity;
-        if (newQuantity >= Integer.MAX_VALUE) {
-            throw new InvalidQuantityException(overflowMessage);
+        if (newQuantity > MAX_ALLOWABLE_QUANTITY) {
+            throw new InvalidQuantityException(exceedAddMessage);
         }
         newFood.setQuantity((int)newQuantity);
         existingFood.setQuantity((int)newQuantity);
@@ -91,14 +98,15 @@ public class Fridge {
                 totalQuantity += food.getQuantity();
             }
             if (isOverFlow(totalQuantity)) {
-                throw new InvalidQuantityException(overflowMessage);
+                throw new InvalidQuantityException(exceedTotalQuantityMessage);
             }
         }
         return (int)totalQuantity;
     }
 
+    //@@author SimJJ96
     private boolean isOverFlow(long totalQuantity) {
-        if (totalQuantity >= Integer. MAX_VALUE) {
+        if (totalQuantity > MAX_ALLOWABLE_TOTAL_QUANTITY) {
             return true;
         }
         return false;
