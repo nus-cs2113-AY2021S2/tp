@@ -75,8 +75,10 @@ public class Messages {
             + "It should be an positive integer between 0 and 24, with the unit of hour.\nPlease try again.";
     public static final String MESSAGE_INVALID_WORKOUT_MIN = "The duration you entered is invalid.\n"
             + "It should be an positive integer between 0 and 1440, with the unit of minute.\nPlease try again.";
-    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is invalid.\n"
-            + "It should be an positive floating point number, with the unit of kilogram(kg).\nPlease try again.";
+    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is either too high or too low."
+            + "Keeping a moderate body weight is good for your health.\nAn acceptable value for body weight"
+            + " is a positive floating point number with the unit of kilogram(kg) within the range 30.0 - 400.0.\n"
+            + "Please try again.";
     public static final String MESSAGE_INVALID_FOOD_CATEGORY = "The food category you entered is invalid.\n"
             + "The acceptable food category list is:\n";
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
@@ -92,7 +94,7 @@ public class Messages {
             + "range 0 - 24.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is either too"
             + "high or too low. Keeping a moderate body weight is good for your health.\nThe acceptable target weight "
-            + "should be a floating point number, with the unit of kilogram (kg) within range 40 - 400.\n"
+            + "should be a floating point number, with the unit of kilogram (kg) within range 40.0 - 400.0.\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_WORKOUT_CATEGORY = "The workout category you entered is invalid.\n"
             + "The acceptable workout category list is:\n";
