@@ -8,7 +8,7 @@ public class BodyWeight extends Record {
     public BodyWeight(double weight, LocalDate date) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, date);
         this.weight = weight;
-        if (weight < 0 || weight > 400) {
+        if (weight < 30 || weight > 400) {
             throw new NumberFormatException("Body weight invalid");
         }
     }

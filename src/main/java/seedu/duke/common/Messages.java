@@ -4,7 +4,7 @@ package seedu.duke.common;
  * Container for commonly used messages.
  */
 public class Messages {
-    public static final String SPACING = "        ";
+    //public static final String SPACING = "        ";
     public static final String MESSAGE_VERSION = "V2.0";
     public static final String MESSAGE_FEATURES = "You can use the app by using command ADD, VIEW, and DELETE.";
     public static final String MESSAGE_WELCOME = "Healthier - your powerful personal fitness app.\n"
@@ -31,8 +31,8 @@ public class Messages {
             + "You have achieved all weekly goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
-    public static final String MESSAGE_CHECK_HEADER = "Index" + SPACING + "Date Set" + SPACING + "Goal Type" + SPACING
-            + "Target" + SPACING + "Progress\n";
+    public static final String MESSAGE_CHECK_HEADER = "Index    Date Set          Goal Type       "
+            + "Target          Progress\n";
     public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
             + "Duration        Calories\n";
     public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category       Weight"
@@ -75,8 +75,10 @@ public class Messages {
             + "It should be an positive integer between 0 and 24, with the unit of hour.\nPlease try again.";
     public static final String MESSAGE_INVALID_WORKOUT_MIN = "The duration you entered is invalid.\n"
             + "It should be an positive integer between 0 and 1440, with the unit of minute.\nPlease try again.";
-    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is invalid.\n"
-            + "It should be an positive floating point number, with the unit of kilogram(kg).\nPlease try again.";
+    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is either too high or too low."
+            + "Keeping a moderate body weight is good for your health.\nAn acceptable value for body weight"
+            + " is a positive floating point number with the unit of kilogram(kg) within the range 30.0 - 400.0.\n"
+            + "Please try again.";
     public static final String MESSAGE_INVALID_FOOD_CATEGORY = "The food category you entered is invalid.\n"
             + "The acceptable food category list is:\n";
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The weight of food you entered is invalid.\n"
@@ -92,9 +94,10 @@ public class Messages {
     public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid\n"
             + "The acceptable target duration should be a floating point number, with the unit of hour within"
             + "range 0 - 24.\nPlease try again.";
-    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is invalid\n"
-            + "The acceptable target weight should be a floating point number, with the unit of kilogram (kg) within"
-            + "range 0 - 400.\nPlease try again.";
+    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is either too"
+            + "high or too low. Keeping a moderate body weight is good for your health.\nThe acceptable target weight "
+            + "should be a floating point number, with the unit of kilogram (kg) within range 40.0 - 400.0.\n"
+            + "Please try again.";
     public static final String MESSAGE_INVALID_WORKOUT_CATEGORY = "The workout category you entered is invalid.\n"
             + "The acceptable workout category list is:\n";
     public static final String MESSAGE_INVALID_COMMAND = "Sorry, the command you entered cannot be recognized.\n\n";
