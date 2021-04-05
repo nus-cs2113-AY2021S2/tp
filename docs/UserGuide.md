@@ -132,7 +132,7 @@ Displays the list of food items under specified category stored in the fridge.
 
 Format: `list CATEGORY_NAME`
 
-* The `CATEGORY_NAME` can only be recognized if it is in the pre-defined categories:
+* The `CATEGORY_NAME` can only be recognised if it is in the pre-defined categories:
 `VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER`
 * The `CATEGORY_NAME` is case-insensitive.
 * If invalid input detected, `FridgeFriend` would give an error message.
@@ -161,7 +161,7 @@ Displays the list of food items under specified category stored in the fridge.
 
 Format: `list STORAGE_LOCATION_NAME`
 
-* The `STORAGE_LOCATION_NAME` can only be recognized if it is in the pre-defined categories:
+* The `STORAGE_LOCATION_NAME` can only be recognised if it is in the pre-defined categories:
   `FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER`
 * The `STORAGE_LOCATION_NAME` is case-insensitive.
 * If invalid input detected, `FridgeFriend` would give an error message.
