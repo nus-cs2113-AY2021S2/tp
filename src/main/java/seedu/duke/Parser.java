@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import seedu.exceptions.DeliveryAlreadyCompletedException;
 import seedu.exceptions.DeliveryOutOfBoundsException;
 
 import java.util.regex.Matcher;
@@ -79,8 +80,14 @@ public class Parser {
     }
 
     public void validateDeliveryNumber(int deliveryNumber) throws DeliveryOutOfBoundsException {
-        if (deliveryNumber > DeliveryList.deliveries.size() | deliveryNumber <= -1) {
+        if (deliveryNumber >= DeliveryList.deliveries.size() | deliveryNumber <= -1) {
             throw new DeliveryOutOfBoundsException();
+        }
+    }
+
+    public void validateCompleteDelivery(int deliveryNumber) throws DeliveryAlreadyCompletedException {
+        if (DeliveryList.deliveries.get(deliveryNumber).getIsComplete()) {
+            throw new DeliveryAlreadyCompletedException();
         }
     }
 }

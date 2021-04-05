@@ -1,6 +1,7 @@
 package seedu.duke;
 
 
+import seedu.exceptions.DeliveryAlreadyCompletedException;
 import seedu.exceptions.DeliveryOutOfBoundsException;
 
 import java.util.ArrayList;
@@ -172,9 +173,13 @@ public class Ui {
         int deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
         try {
             parser.validateDeliveryNumber(deliveryNumber);
+            parser.validateCompleteDelivery(deliveryNumber);
             Delivery.completeDelivery(deliveryman, deliveryNumber);
             showCompletedDelivery(deliveryNumber);
+            DataManager.saveDeliveries();
         } catch (DeliveryOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        } catch (DeliveryAlreadyCompletedException e) {
             System.out.println(e.getMessage());
         }
     }

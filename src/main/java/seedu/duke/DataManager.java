@@ -65,6 +65,24 @@ public class DataManager {
 		}
 	}
 
+	public static void saveDeliveries() {
+		FileWriter fw;
+		try {
+			fw = new FileWriter(PATH_TO_DELIVERY);
+			String prefix = "";
+			for (Delivery delivery : DeliveryList.deliveries) {
+				fw.write(prefix);
+				String deliveryData = delivery.saveFormat();
+				fw.write(deliveryData);
+				prefix = "\n";
+			}
+			fw.close();
+		} catch(IOException e) {
+			System.out.println(e.getMessage());
+			}
+
+	}
+
 	/**
 	 * @return list of deliveries to be stored in the static DeliveryList class
 	 */
@@ -79,7 +97,7 @@ public class DataManager {
 				String[] itemSplit = stringSplit[4].split(" , ");
 
 				ArrayList<Item> items = itemRetriever(itemSplit);
-				Delivery delivery = new Delivery(stringSplit[1], stringSplit[2], stringSplit[3], items);
+				Delivery delivery = new Delivery(stringSplit[0], stringSplit[1], stringSplit[2], stringSplit[3], items);
 				deliveries.add(delivery);
 			}
 			fileReader.close();
