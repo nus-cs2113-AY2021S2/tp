@@ -61,7 +61,7 @@ public class DailyRouteUi extends UiManager {
 
     public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
-        showMessage("SELECT ENTRY:");
+        showMessage("Select entry:");
         int dayIndex = getEntryFromUser(selectableDays);
         showMessage(CommonMessage.DIVIDER);
         return dayIndex;

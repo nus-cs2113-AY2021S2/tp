@@ -207,7 +207,7 @@ Additionally, `DailyRoute` implements the following operations:
 These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()`, `DailyRoute#getDailyRoute(String)`, `DailyRoute#getSelectableDay()`, `DailyRoute#getValidDay()`. <br />
 Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
 Step 1. The user launches the application.<br />
-Step 2. The user executes `add daily route` command. UI will then prompt the user `SELECT ENTRY TO ADD:`  to input a day index. <br />
+Step 2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br />
 Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
 Step 4. Repeat step 3 until the word `END` is input by the user. <br /> 
 Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
@@ -219,9 +219,9 @@ The following image shows the sequence diagram in which the add day command is i
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
 Step 1. The user launches the application.<br />
-Step 2. The user executes `show daily route` command. UI will then prompt the user `SELECT ENTRY:`  to input a day index. This returns an arraylist of the day's schedule. <br />
-Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the previous one. <br />
-Step 4. The String is output through Daily Route Ui <br />
+Step 2. The user executes `show daily route` command. UI will then prompt the user `Select entry:`  to input a day index. This returns an arraylist of the day's schedule. <br />
+Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the end of an Array list. <br />
+Step 4. The arraylist of the days schedule, and the arraylist that contains the routes from the routing algorithm are then output through Daily Route Ui <br />
 
 The following image shows the sequence diagram in which the show day command is implemented
 ![img.png](images/showday.png)
@@ -229,11 +229,11 @@ The following image shows the sequence diagram in which the show day command is 
 Given below is an example usage scenario and how the clearDailyRoute mechanism behaves at each step.
 
 Step 1. The user launches the application.<br />
-Step 2. The user executes `clear daily route` command. UI will then show the selectable days if applicable and prompt the user `SELECT ENTRY:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
-Step 3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object and the schedule mapped to the day is cleared.<br />
+Step 2. The user executes `delete daily route` command. UI will then show the selectable days if applicable and prompt the user `Select entry:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
+Step 3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object, and the schedule mapped to the day is cleared.<br />
 Step 4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the clear day command is implemented
+The following image shows the sequence diagram in which the DeleteDailyRoute command is implemented
 ![img.png](images/clearday.png)
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation

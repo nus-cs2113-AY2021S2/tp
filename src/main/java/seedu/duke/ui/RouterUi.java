@@ -29,7 +29,7 @@ public class RouterUi extends UiManager {
         }
         showMessage(
                 CommonMessage.DIVIDER,
-                "SELECT ENTRY TO GO:"
+                "Select entry to go:"
         );
         try {
             int eateryIndex = Integer.parseInt(getUserInput());

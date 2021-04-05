@@ -39,7 +39,7 @@ activate ":Router"
 return
 return
 
-"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi": showMessageWithDivider(String)
+"command:ShowDailyRouteCommand" -> "ui:DailyRouteUi": showDailyRoute(ArrayList<String>, ArrayList<String>)
 activate "ui:DailyRouteUi"
 return
 deactivate "ui:DailyRouteUi"

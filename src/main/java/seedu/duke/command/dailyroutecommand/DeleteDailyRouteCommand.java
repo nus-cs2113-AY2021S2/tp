@@ -1,3 +1,4 @@
+//@@author SimBowen
 package seedu.duke.command.dailyroutecommand;
 
 import seedu.duke.command.Command;
@@ -7,11 +8,11 @@ import seedu.duke.ui.DailyRouteUi;
 
 import java.util.ArrayList;
 
-public class ClearDailyRouteCommand extends Command {
+public class DeleteDailyRouteCommand extends Command {
     protected DailyRouteUi ui;
     private static String MESSAGE_SUCCESS = "Got it! Successfully cleared %s's schedule!";
 
-    public ClearDailyRouteCommand() {
+    public DeleteDailyRouteCommand() {
         this.ui = new DailyRouteUi();
     }
 

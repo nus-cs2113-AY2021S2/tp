@@ -1,6 +1,6 @@
 package seedu.duke.parser;
 
-import seedu.duke.command.dailyroutecommand.ClearDailyRouteCommand;
+import seedu.duke.command.dailyroutecommand.DeleteDailyRouteCommand;
 import seedu.duke.command.generalcommand.ByeCommand;
 import seedu.duke.command.Command;
 import seedu.duke.command.generalcommand.HelpCommand;
@@ -87,8 +87,8 @@ public class Parser {
         case "show daily route":
             command = new ShowDailyRouteCommand();
             break;
-        case "clear daily route":
-            command = new ClearDailyRouteCommand();
+        case "delete daily route":
+            command = new DeleteDailyRouteCommand();
             break;
 
             //note
