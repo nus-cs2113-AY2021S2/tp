@@ -118,7 +118,7 @@ public class Storage {
             InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
 
         String foodNameDelimiter = "Food name: ";
-        String categoryDelimiter= ", category: ";
+        String categoryDelimiter = ", category: ";
         String expiryDelimiter = ", expiry: ";
         String storageDelimiter = ", stored in: ";
         String quantityDelimiter = ", quantity: ";
