@@ -308,6 +308,13 @@ public class Ui {
         return command;
     }
 
+    public static String readReviewLine() {
+        String reviewLine;
+        Scanner input = new Scanner(System.in);
+        reviewLine = input.nextLine().trim();
+        return reviewLine;
+    }
+
     public static boolean userCommandIsEmpty(String command) {
         if (command.equals("")) {
             return true;
@@ -683,7 +690,7 @@ public class Ui {
     }
 
     public static void printFilesCouldNotBeSavedMessage() {
-        System.out.println("files could not be auto-saved:(");
+        System.out.println("UniTracker Data could not be auto-saved:(");
     }
 
     public static void printConfirmComponentsMessage() {

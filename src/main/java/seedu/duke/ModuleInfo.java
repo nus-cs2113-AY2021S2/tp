@@ -90,7 +90,7 @@ public class ModuleInfo {
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printReturnToModuleInfoMenuMessage();
         }
@@ -140,38 +140,70 @@ public class ModuleInfo {
     }
 
     public static void addNewModule() {
-        System.out.println("Enter name of the new module:");
-        String moduleName = Ui.readCommand();
-        for (Module module : modules) {
-            if (module.getName().trim().equalsIgnoreCase(moduleName)) {
-                System.out.println("Hey, you have already added this module!");
-                return;
+        while (true) {
+            System.out.println("Enter name of the new module:");
+            String moduleName = Ui.readCommand();
+            moduleName = moduleName.trim().toUpperCase();
+            if (!Ui.userCommandIsEmpty(moduleName)) {
+                if (!moduleNameIsAlphaNumeric(moduleName)) {
+                    int yesOrNo = 2;
+                    while (yesOrNo == 2) {
+                        System.out.println("Does your module name require "
+                                + "non-alphanumeric characters (e.g. @,#,/,-,!) ? [Y/N]");
+                        yesOrNo = readYN(Ui.readCommand());
+                        if (yesOrNo == 0) {
+                            System.out.println("Please enter valid alphanumeric "
+                                    + "characters for the module name (e.g. CS2113T).");
+                        }
+                    }
+                    if (yesOrNo == 0) {
+                        continue;
+                    }
+                }
+                for (Module module : modules) {
+                    if (module.getName().trim().equalsIgnoreCase(moduleName)) {
+                        System.out.println("Hey, you have already added this module!");
+                        return;
+                    }
+                }
+                System.out.println("Enter module description:");
+                String moduleDescription = Ui.readCommand();
+                if (!Ui.userCommandIsEmpty(moduleDescription)) {
+                    modules.add(new Module(moduleName, moduleDescription));
+                    System.out.println("New module added:\n" + moduleName + ":\n" + moduleDescription);
+                    Ui.printHorizontalLine();
+                    return;
+                }
             }
+
+            System.out.println("Module name/description cannot be empty! Please try again.");
         }
-        moduleName = moduleName.trim().toUpperCase();
-        System.out.println("Enter module description:");
-        String moduleDescription = Ui.readCommand();
-        modules.add(new Module(moduleName, moduleDescription));
-        System.out.println("New module added:\n" + moduleName + ":\n" + moduleDescription);
-        Ui.printHorizontalLine();
+
     }
 
+    //Solution below reused from https://www.techiedelight.com/check-string-contains-alphanumeric-characters-java/
+    public static boolean moduleNameIsAlphaNumeric(String s) {
+        return s != null && s.matches("^[a-zA-Z0-9]*$");
+    }
+    
     public static void viewAModule() {
-        viewAllModules();
-        System.out.println("Which module would you like to view?");
-        int moduleNumberInt = Ui.readCommandToInt();
-        boolean isValidModuleNumber = (moduleNumberInt >= 1 && moduleNumberInt <= modules.size());
+        boolean listIsNotEmpty = viewAllModules();
+        if (listIsNotEmpty) {
+            System.out.println("Which module would you like to view?");
+            int moduleNumberInt = Ui.readCommandToInt();
+            boolean isValidModuleNumber = (moduleNumberInt >= 1 && moduleNumberInt <= modules.size());
+            if (isValidModuleNumber) {
+                moduleNumberInt--;
+                Module module = modules.get(moduleNumberInt);
+                System.out.println(module.toString()); //name, description, review, MCs, grade are printed
+                printModuleTaskList(module.getName());
+                // add other methods to print other features of a module
 
-        if (isValidModuleNumber) {
-            moduleNumberInt--;
-            Module module = modules.get(moduleNumberInt);
-            System.out.println(module.toString()); //name, description, review, MCs, grade are printed
-            printModuleTaskList(module.getName());
-            // add other methods to print other features of a module
-
+                Ui.printHorizontalLine();
+            } else {
+                Ui.printInvalidInputMessage();
+            }
             Ui.printHorizontalLine();
-        } else {
-            Ui.printInvalidInputMessage();
         }
     }
 
@@ -248,7 +280,7 @@ public class ModuleInfo {
         }
         viewAllModules();
         System.out.println("Please choose which module you would like to review"
-                + " and enter the number:\n");
+                + " and enter the number:");
         int moduleNumberInt = Ui.readCommandToInt();
         moduleNumberInt--;
         boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
@@ -273,10 +305,9 @@ public class ModuleInfo {
             } else if (readYN(command) == 2) {
                 return module.getReview();
             }
-            assert readYN(command) == 1 : "readYN(command) should be 1 here";
+            //assert readYN(command) == 1 : "readYN(command) should be 1 here";
         }
-        System.out.println("After you finish your review, "
-                + "type '/end' to finish reviewing.");
+        System.out.println("Type '/end' to finish reviewing.");
         System.out.println("Enter your review for " + module.getName() + " below: ");
         return readReview();
     }
@@ -284,7 +315,7 @@ public class ModuleInfo {
     public static String readReview() {
         StringBuilder review = new StringBuilder();
         while (true) {
-            String input = Ui.readCommand();
+            String input = Ui.readReviewLine();
             review.append(input);
             review.append("\n");
             if (input.contains("/end")) {
@@ -494,17 +525,15 @@ public class ModuleInfo {
                     + "For " + module.getName() + ":\n"
                     + "Review:\n" + module.getReview());
             String command = Ui.readCommand();
-            if (readYN(command) == 1) {
+            int yesOrNo = readYN(command);
+            if (yesOrNo == 1) {
                 printDeletedReviewMessage(module);
                 modules.get(moduleNumberInt).removeReview();
-            } else if (readYN(command) == 0) {
+            } else if (yesOrNo == 0) {
                 System.out.println("Ok. I did not delete this review:\n"
                         + "For " + module.getName() + ":\n"
                         + "Review:\n" + module.getReview());
             }
-        } else {
-            logger.log(Level.INFO, "You did not enter a valid integer.");
-            Ui.printInvalidInputMessage();
         }
     }
 

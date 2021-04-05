@@ -154,14 +154,10 @@ This feature allows user to `add a review` for any of the modules they have take
 > This action will **overwrite** any existing reviews with the new review.
 
 
-E.g. Input:  
-`CS2113T is very fun:) I have learnt so many important concepts.`  
-`Overall 10/10 :)`  
-`/end`
-
-Output:
-
 ```
+> CS2113T is very fun:) I have learnt so many important concepts.
+> Overall 10/10 :)
+> /end
 Woohoo~ Review added:  
 CS2113T is very fun:) I have learnt so many important concepts.  
 Overall 10/10 :) 

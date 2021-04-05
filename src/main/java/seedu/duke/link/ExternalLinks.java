@@ -54,7 +54,7 @@ public class ExternalLinks extends Links {
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printExternalLinksMessage();
             linkIndex = Ui.readCommandToInt();

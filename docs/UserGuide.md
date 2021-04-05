@@ -177,12 +177,13 @@ understanding.
 
 ### 3.1 Module Information
 
-The Module Information feature allows you to add/edit/delete modules,  
-and add information or review for the module of your choice.
+The Module Information feature allows you to add/delete modules,  
+and add information to the module of your choice.
 
 Module Information menu:
 
 ```
+> 1
 Welcome to the module information menu ^~^
 Please choose which action you would like to do and enter the number:
 ----------------------
@@ -212,10 +213,16 @@ Please choose which action you would like to do and enter the number:
 #### 3.1.1 Add a Module
 
 Adds a new module to the modules list.
+> **Note!**   
+> Module name and description cannot be empty.   
+> You **cannot** modify a module's name or description.   
+>> If you entered an incorrect name or description, please **delete** the module and  
+>> add a new `module` with the correct name and description. 
 
 Example for adding a new module:
 
 ```
+> 1
 --------------------------------------------  
 Enter name of the new module:  
 > CS2113T  
@@ -240,6 +247,7 @@ Example of viewing a module:
 > Tasks have been added through the [add new task](#331-add-new-task) feature.
 
 ```   
+> 2
 --------------------------------------------  
 Here are the modules in your Modules List:  
 --------------------------------------------  
@@ -278,6 +286,8 @@ Example for listing all the modules:
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.
 
 ```
+> 3  
+--------------------------------------------   
 Here are the modules in your Modules List:    
 --------------------------------------------    
 [1] --- CS3243    
@@ -288,7 +298,8 @@ Here are the modules in your Modules List:
 #### 3.1.4 Delete a Module
 
 Deletes a module from the list of modules.
-
+>**<span style="color: red"> WARNING! </span>**  
+> Deleted modules cannot be retrieved.
 * Format: enter the index (integer) of the module that you want to delete.
 
 Example for deleting a module:
@@ -297,6 +308,8 @@ Example for deleting a module:
 > Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
 
 ```
+> 4  
+--------------------------------------------   
 Here are the modules in your Modules List:  
 --------------------------------------------  
 [1] --- CS3243  
@@ -326,6 +339,8 @@ Returning to module information menu...
 
 * Example for adding components and weightage to a module Input:  
 ````
+> 5  
+--------------------------------------------   
 Which action would you like to proceed with? Key in 1 or 2.
 [1] --- Add Component
 [2] --- View Component
@@ -353,6 +368,8 @@ Component and weightage added!
 * Example for viewing the components and weightage of an existing module Input:  
   
 ````
+> 5  
+--------------------------------------------   
 Which action would you like to proceed with? Key in 1 or 2.
 [1] --- Add Component
 [2] --- View Component
@@ -383,6 +400,7 @@ Example for adding grade to a module:
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
 
 ````
+> 7
 --------------------------------------------
 Here are the modules in your Modules List:
 --------------------------------------------
@@ -402,11 +420,18 @@ Adds a review for the module of your choice.
 
 * Format: Once you have finished typing your review, type `/end` and hit `Enter`
 
-Example for adding a review:
+Example for adding a review:  
+> **Note!**  
+> You may choose to keep or replace any existing reviews.  
+> > In this example, `CS2113T` has an existing review.  
+> 
+> (In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.)
 
 ``` 
-Here are the modules in your Modules List:  
+> 8  
 --------------------------------------------  
+Here are the modules in your Modules List:  
+--------------------------------------------    
 [1] --- CS3243  
 [2] --- CS2113T  
 --------------------------------------------    
@@ -421,7 +446,7 @@ Mar 31, 2021 3:08:31 AM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage
 WARNING: You will delete your old review. This cannot be undone.  
 > Y  
   
-After you finish your review, type '/end' to finish reviewing.  
+Type '/end' to finish reviewing.  
 Enter your review for CS3243 below:  
 > The lectures were very entertaining. I have learnt a lot of   
 > important algorithms.  
@@ -445,7 +470,8 @@ Example for listing all the modules' reviews:
 > In this example, modules `CS3243` and `CS2113T` have already been added through the [add module](#311-add-a-module) feature.  
 > Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
 
-```
+```  
+> 9
 --------------------------------------------  
 For CS3243:  
 The lectures were very entertaining. I have learnt a lot of important algorithms.  
@@ -470,6 +496,7 @@ Example of deleting a review of an existing module:
 > Reviews for these modules have already been added through the [add a review](#318-add-a-review) feature.
 
 ``` 
+> 10  
 --------------------------------------------  
 Here are the modules in your Modules List:    
 --------------------------------------------    
