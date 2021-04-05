@@ -29,27 +29,20 @@ This is a cross-platform application, you can run it on any operating system as 
 ## Features
 
 > **Note:**
-> * All commands should be input in `lower_case`. It is always the first word supplied by the user.
-    >
-    >   e.g. `add`, `view`, `delete` etc.
->
+> * All commands should be input in `lower_case`. It is always the first word supplied by the user.   
+    e.g. `add`, `view`, `delete` etc.
 >
 > * Parameters of a command are denoted in `UPPER_CASE`. They must be supplied by the user, otherwise the command will not be recognized.
-    >   The actual input of the parameters can be in any case.
-    >
-    >   e.g. in `add XXX`, `XXX` is a parameter which can be used as `xxx`.
+    The actual input of the parameters can be in any case.  
+    e.g. in `add XXX`, `XXX` is a parameter which can be used as `xxx`.
+> * Parameters surrounded by square brackets `[]` are optional. They may or may not be specified by the user.
 >
+> * Redundant parameters for single-word commands (e.g. `help`) will be ignored.  
+    e.g. if the command `help hahahaha` is input, it is equivalent to `help`.
 >
-> * Redundant parameters for single-word commands (e.g. `help`) will be ignored.
-    >
-    >    e.g. if the command `help hahahaha` is input, it is equivalent to `help`.
->
-> * After the application starts running, it checks if a `data` folder exists in the same directory where `tp.jar` is located.
-    >   If the folder does not exist, the application will create a new folder `data`,
-    >   which is used to store the app system files which contains details of the user's data.
+> * After the application starts running, it checks if a `data` folder exists in the same directory where `tp.jar` is located. If the folder does not exist, the application will create a new folder `data`, which is used to store the app system files which contains details of the user's data.
 >
 > * The text files will be automatically updated after each operation of the app.
->
 
 ### Get help from instructions on how to use this app : `help`
 
@@ -97,7 +90,7 @@ The syntax for view command is:
 
 The syntax for delete command is:
 1. Delete exercise records
-	delete t/E [a/ACTIVITY_NAME] [date/DD-MM-YYYY]
+	delete t/E i/index
 2. Delete diet records
 	delete t/D i/index
 3. Delete sleep records
@@ -318,7 +311,7 @@ Format: `add  t/D f/FOOD_CATEGORY  w/WEIGHT  [date/DD-MM-YYYY]`
 
 * The category and weight of the food must be specified. The category of the food should be a String.
 * The tag value should be `D` in the upper case, which specifies that the current record is for diet data.
-* The default unit of weight is in grams. An `integer` is expected for the duration, other formats are not acceptable.
+* The default unit of weight is in grams. A float point number is expected. Other formats are not acceptable.
 * The date of the diet record is optional. If not provided, the system date will be used.
 * The date should be less than or equal to the current date.
 * The date format should be `DD-MM-YYYY`, other formats are not acceptable.
@@ -346,7 +339,7 @@ Record summary:
 
 View existing diet records. The result can be filtered by specifying the food category and/or date.
 
-Format: `view  t/D  [a/FOOD_CATEGORY]  [date/DD-MM-YYYY]`
+Format: `view  t/D  [f/FOOD_CATEGORY]  [date/DD-MM-YYYY]`
 
 * The tag value should be `D` in the upper case, which specifies the output for records of diet data.
 * The food category and date are optional fields used for filtering the records that will be displayed. If not
@@ -936,7 +929,7 @@ View Exercise Data: `view` | `view  t/E  [a/ACTIVITY_NAME]  [date/DD-MM-YYYY]` |
 Delete Exercise Data: `delete` | `delete  t/E i/INDEX` | `delete t/E i/1`
 Input Diet Data: `add` | `add t/D f/FOOD_CATEGORY w/WEIGHT [date/DD-MM-YYYY]` | `add t/D f/grain w/400`
 View Diet Data: `view` | `view  t/D  [a/FOOD_CATEGORY]  [date/DD-MM-YYYY]` | `view t/D f/grain`
-Delete Diet Data: `delete` | `delete  t/D i/INDEX` | `delete t/E i/1`
+Delete Diet Data: `delete` | `delete  t/D i/INDEX` | `delete t/D i/1`
 Input Sleep Data: `add` | `add  t/S  d/DURATION  [date/DD-MM-YYYY]` | `add t/S d/7`
 View Sleep Data: `view` | `view  t/S  [date/DD-MM-YYYY]` | `view t/S`
 Delete Sleep Data: `delete` | `delete  t/S i/INDEX` | `delete t/S i/1`

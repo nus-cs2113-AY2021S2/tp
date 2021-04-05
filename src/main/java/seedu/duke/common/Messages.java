@@ -79,14 +79,16 @@ public class Messages {
             + "It should be an positive floating point number, with the unit of kilogram(kg).\nPlease try again.";
     public static final String MESSAGE_INVALID_FOOD_CATEGORY = "The food category you entered is invalid.\n"
             + "The acceptable food category list is:\n";
-    public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
-            + "The acceptable amount of food should be a floating point number, with the unit of gram(g).\n"
+    public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The weight of food you entered is invalid.\n"
+            + "The unit of food weight is gram(g).\n"
+            + "It should be a floating point number within range 0 - 3000.\n"
             + "Please try again.";
     public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current "
             + "or previous days.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
-            + "The acceptable target energy should be a floating point number, with the unit of K cal within"
-            + "range 0 - 10000.\nPlease try again.";
+            + "The acceptable target energy should be a floating point number.\n"
+            + "The unit of energy is Kcal. The value should be within range 0 - 10000.\n"
+            + "Please try again.";
     public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid\n"
             + "The acceptable target duration should be a floating point number, with the unit of hour within"
             + "range 0 - 24.\nPlease try again.";
@@ -116,7 +118,7 @@ public class Messages {
             + "3. View sleep records\n\tview t/S [date/DD-MM-YYYY]\n"
             + "4. View body weight records\n\tview t/W [date/DD-MM-YYYY]";
     public static final String MESSAGE_SYNTAX_DELETE_COMMAND = "The syntax for delete command is:\n"
-            + "1. Delete exercise records\n\tdelete t/E [a/ACTIVITY_NAME] [date/DD-MM-YYYY]\n"
+            + "1. Delete exercise records\n\tdelete t/E i/index\n"
             + "2. Delete diet records\n\tdelete t/D i/index\n"
             + "3. Delete sleep records\n\tdelete t/S i/index\n"
             + "4. Delete body weight records\n\tdelete t/W i/index";
