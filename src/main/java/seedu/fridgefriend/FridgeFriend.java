@@ -1,7 +1,12 @@
 package seedu.fridgefriend;
 
 import seedu.fridgefriend.command.Command;
-import seedu.fridgefriend.exception.*;
+import seedu.fridgefriend.exception.FoodNameNotFoundException;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
+import seedu.fridgefriend.exception.InvalidInputException;
+import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.Fridge;
 import seedu.fridgefriend.utilities.LoggingHandler;
 import seedu.fridgefriend.utilities.Parser;
