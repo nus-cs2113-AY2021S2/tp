@@ -80,9 +80,15 @@ public class Data {
      * This loads a patient to the currentPatient attribute.
      * Take note that currentPatient can still be null if there is no patients with this id in the hashmap.
      * @param id unique identifier of the patient to be loaded
+     * @return true if a patient is successfully loaded, otherwise false
      */
-    public void loadCurrentPatient(String id) {
-        currentPatient = getPatient(id);
+    public Boolean loadCurrentPatient(String id) {
+        Patient newCurrentPatient = getPatient(id);
+        if (newCurrentPatient == null) {
+            return false;
+        }
+        currentPatient = newCurrentPatient;
+        return true;
     }
 
     /**

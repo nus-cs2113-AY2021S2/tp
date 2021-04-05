@@ -54,7 +54,7 @@ The user guide includes symbols such as:
 1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
 
-1. Open a terminal/command line (cmd)/powershell. A Windows 10 OS' screenshot is here:\
+1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:\
    \
    ![PowerShell](./images/WindowsPowerShell.png)
 
@@ -95,6 +95,9 @@ The sequence of these two arguments blocks would not affect the result of the co
 record 01/05/2021 /s coughing, fever /d flu
 record 01/05/2021 /d flu /s coughing, fever
 ```
+
+> ❗ Note: The `DATE` is not an argument. It is the payload to the command since there is no `/` before it. Its position
+> is fixed, and it should follow directly behind `record`.
 
 However, we would still suggest you to input it using the sequence given in the following section. 
 This can prevent you from getting confused about the meaning of each argument.
@@ -187,6 +190,10 @@ Patient S1234567D has been added!
 ----------------------------------------------------------------------
 ```
 
+> ❗ Note: We perform IC number validity checking when you execute `add` command. Only IC numbers that have the correct
+> check digit (last digit of the IC number) will be added to the database. If you are just testing our system and would
+> not like to use your own one, you could use an IC generator, like [this one](https://samliew.com/nric-generator).
+
 ### Deleting a patient or a patient's consultation details: `delete`
 
 Deletes a patient from the list or deletes a patient's consultation details for a specific date.
@@ -221,7 +228,7 @@ Example output:
 ----------------------------------------------------------------------
 List of patients (in alphanumeric order):
 1. S1234567D
-2. S7654321B
+2. S7654321F
 ----------------------------------------------------------------------
 ```
 

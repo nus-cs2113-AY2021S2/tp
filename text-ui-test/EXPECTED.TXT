@@ -43,7 +43,7 @@ Input command and/or arguments are invalid:
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
-	Patient does not exist!
+	Patient with this IC number does not exist!
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been deleted!

@@ -24,7 +24,7 @@ public class StorageTest {
         patient.addRecord(date, "head pain, dizziness", "heat stroke", "cooling packs, medicine");
         patient.addRecord(date.plus(1, ChronoUnit.DAYS), "fainting", "severe heat stroke", "referral to hospital");
         data.setPatient(patient);
-        patient = new Patient("S7654321B");
+        patient = new Patient("S7654321F");
         patient.addRecord(date, "abdominal pain", "mild UTI", "antibiotics, referral to hospital");
         data.setPatient(patient);
 
@@ -52,7 +52,7 @@ public class StorageTest {
         });
 
         assertEquals("S1234567D" + System.lineSeparator()
-                + "S7654321B" + System.lineSeparator(), bos.toString());
+                + "S7654321F" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
     //TODO: better tests

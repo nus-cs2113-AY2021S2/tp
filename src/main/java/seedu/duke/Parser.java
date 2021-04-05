@@ -57,20 +57,24 @@ public class Parser {
     public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
         String[] tokens = fullCommand.split("\\s+");
 
-        // If tokenized command returns an empty array, raise an exception
+        // If tokenized command returns an empty array (entered a string with only white spaces),
+        // raise an exception
         if (tokens.length == 0) {
             throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
         }
         // If first token (command) is empty, there are empty spaces typed in at the front - so we remove it
         if (tokens[0].isEmpty()) {
             tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
-        }
-        if (tokens.length == 0) {
-            throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
+            // Check again to make sure it is not empty after removing first element
+            if (tokens.length == 0) {
+                throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
+            }
         }
 
         HashMap<String, String> arguments = new HashMap<>();
-        arguments.put("command", tokens[0]);
+        // Conver input command to lowercase to make it case insensitive
+        String command = tokens[0].toLowerCase();
+        arguments.put("command", command);
 
         // Default key is "payload"
         String key = "payload";
@@ -94,7 +98,7 @@ public class Parser {
         arguments.put(key, String.join(DELIMITER, values));
 
         // Initialize a respective class from the command (by capitalize first character)
-        String className = tokens[0] + "Command";
+        String className = command + "Command";
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
         className = Constants.COMMAND_CLASS_PREFIX + className;
         try {

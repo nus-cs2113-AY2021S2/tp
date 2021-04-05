@@ -10,6 +10,7 @@ import seedu.duke.model.Patient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.HashMap;
 
 public class RecordCommand extends Command {
@@ -35,10 +36,15 @@ public class RecordCommand extends Command {
         }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
         LocalDate date = null;
+        // TODO: More test cases to test out the "invalid dates"
         try {
             date = parseDate(dateString);
-        } catch (DateTimeParseException dateTimeParseException) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE);
+        } catch (DateTimeParseException e) {
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE, e);
+        }
+        if (date.isAfter(LocalDate.now())) {
+            // We don't allow a record to be inserted for a future date
+            throw new InvalidInputException(InvalidInputException.Type.FUTURE_DATE);
         }
         addRecord(patient, date);
         data.saveFile();
@@ -47,7 +53,10 @@ public class RecordCommand extends Command {
 
     private LocalDate parseDate(String dateString) throws DateTimeParseException {
         if (!dateString.isEmpty()) {
-            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
+            return LocalDate.parse(
+                dateString,
+                DateTimeFormatter.ofPattern(Constants.DATE_PATTERN).withResolverStyle(ResolverStyle.STRICT)
+            );
         }
         return LocalDate.now();
     }

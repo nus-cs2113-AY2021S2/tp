@@ -96,7 +96,7 @@ public class DeleteCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals("Patient does not exist!", exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, exception.getMessage());
     }
 
     @Test

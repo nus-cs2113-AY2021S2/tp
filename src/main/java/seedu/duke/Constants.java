@@ -58,12 +58,16 @@ public class Constants {
     public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
     public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
             "Please provide more details about the patient's visit!"
-                    + System.lineSeparator() + EXCEPTION_INDENT
-                    + "(At least one symptom, diagnosis or prescription must be specified)";
-    public static final String INVALID_INPUT_INVALID_DATE = "Please provide a valid date (format: dd/MM/yyyy).";
+            + System.lineSeparator() + EXCEPTION_INDENT
+            + "(At least one symptom, diagnosis or prescription must be specified)";
+    public static final String INVALID_INPUT_INVALID_DATE = 
+            "Please provide a valid date (format: dd/MM/yyyy)."
+            + System.lineSeparator() + EXCEPTION_INDENT
+            + "It should also be a valid date in the Gregorian calendar.";
+    public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT = "Kindly use /p or /r to indicate patient or "
             + "record, refer to help for more clarification!";
-    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient does not exist!";
+    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
@@ -97,7 +101,7 @@ public class Constants {
     public static final String PRESCRIPTION_KEY = "p";
 
     // Date format
-    public static final String DATE_PATTERN = "dd/MM/yyyy";
+    public static final String DATE_PATTERN = "dd/MM/uuuu";
 
     // Class path for command classes
     public static final String COMMAND_CLASS_PREFIX = "seedu.duke.command.";
