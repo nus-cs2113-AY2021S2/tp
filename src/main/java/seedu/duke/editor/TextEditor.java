@@ -82,6 +82,10 @@ public class TextEditor extends JFrame implements ActionListener {
         this.add(new JLabel(TEXT_EDITOR_INSTRUCTION));
     }
 
+    public static boolean isNull() {
+        return textEditor == null;
+    }
+    
     //@@author H-horizon
     private void loadFile(String filePath) {
         File file = new File(filePath);
