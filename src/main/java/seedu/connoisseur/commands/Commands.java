@@ -66,9 +66,6 @@ public class Commands {
      * @param displayType stars or asterisks
      */
     public void display(String displayType) {
-//        if (displayType == null) {
-//            throw new ConnoisseurException();
-//        }
         if (isReviewMode) {
             reviewList.changeDisplay(displayType);
         } else {
