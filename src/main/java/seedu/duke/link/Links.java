@@ -78,8 +78,8 @@ public class Links {
             ZoomLinkInfo.deleteZoomLink(deleteIndex);
             isInvalid = false;
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
-           Ui.printRepeatInputUntilValidMessage();
-           isInvalid = true;
+            Ui.printRepeatInputUntilValidMessage();
+            isInvalid = true;
         }
     }
 
