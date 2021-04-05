@@ -61,7 +61,7 @@ public class DailyRouteUi extends UiManager {
 
     public int getDayEntry(ArrayList<String> selectableDays) throws InvalidIndexException, EmptyDailyRouteException {
         showListOfDays(selectableDays);
-        showMessage("SELECT ENTRY:");
+        showMessage("Select entry:");
         int dayIndex = getEntryFromUser(selectableDays);
         showMessage(CommonMessage.DIVIDER);
         return dayIndex;
@@ -90,13 +90,16 @@ public class DailyRouteUi extends UiManager {
         }
     }
 
-    public void showDailyRoute(ArrayList<String> schedule, ArrayList<String> scheduleRoutes) {
+    public void showDailyRoute(ArrayList<String> schedule, ArrayList<String> routedSchedules) {
         for (int i = 0; i < schedule.size(); i++) {
             showMessage("Location of activity " + (i + 1) + ": " + schedule.get(i));
-            if (i == 0 || i == schedule.size() - 1) {
-                showMessage(scheduleRoutes.get(i));
-            } else {
-                showMessage(scheduleRoutes.get(i) + CommonMessage.LINE_SEPARATOR);
+            String route = "";
+            route = routedSchedules.get(i);
+            if (i > 0 && i < schedule.size() - 1) {
+                route += CommonMessage.LINE_SEPARATOR;
+            }
+            if (schedule.size() > 1) {
+                showMessage(route);
             }
         }
         showMessage(CommonMessage.DIVIDER);

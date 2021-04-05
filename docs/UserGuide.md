@@ -6,7 +6,9 @@
 3. [About](#3-about) <br>
    3.1. [Structure of this document](#31-structure-of-this-document) <br>
    3.2. [Reading this document](#32-reading-this-document) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [General Symbols and Syntax](#321-general-symbols-and-syntax) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.1. [Technical terms](#321-technical-terms) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.2. [General Symbols and Syntax](#322-general-symbols-and-syntax) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Format of commands](#323-format-of-commands) <br>
 4. [Features](#4-features)  <br>
    4.1. [Viewing Help](#41-viewing-help)<br>
    4.2. [Routing](#42-routing) <br>
@@ -70,7 +72,8 @@ This section gives you step-by-step instructions on how to download and open the
 
 3. Copy the file to the folder you want to use as the _home folder_ **NUSMaze**.
 
-4. Open your command line or terminal and navigate into the file directory where you saved the application. An easy way to do so is shown below for both Mac and Windows<br>
+4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
+:information_source: An easy way to do so is shown below for both Mac and Windows<br>
    ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
    Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
@@ -98,40 +101,48 @@ The following section, [Section 4 - Features](#4-features), documents the seven 
 This section introduces you to some technical terms, symbols and syntax that are used throughout the guide. You may want to
 familiarize yourself with them before moving to the next section.
 
+#### 3.2.1. Technical terms
 
-### 3.2.1. General Symbols and Syntax
+The table below explains some technical terms that you may come across throughout the user guide.
+
+| Term |  What it means |
+|----------|-------------|
+| CLI |  The Command-Line Interface (or CLI for short) is the user interface in which NUSMaze is based on. Unlike traditional Graphical User Interface (GUI) base applications, it may be less intuitive to new users. However upon familiarisation, fast typists may find it faster to use.  |
+| Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
+|Parameter|Parameter refers to the user input required after the user is prompted by NUSMaze|
+
+#### 3.2.2. General Symbols and Syntax
 
 The table below explains the general syntax used throughout the user guide.
 
 | Syntax |  What it means |
 |----------|-------------|
-| `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
+| `command` |  A grey highlighted block specifies a executable command or parameters that can be entered into the command box.  |
 | _italics_ | Italicised text indicates that the text has a definition specific to NUSMaze, or it is a caption for a Figure in the guide. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
 |<div markdown="block" class="alert alert-danger"> :warning: </div> | A warning sign indicates that the following text is important. |
 
+#### 3.2.3. Format of commands
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
 1. Words in Upper_Case are parameters to be supplied by you.
    <br/>Eg. in add note LOCATION/DESCRIPTION, LOCATION and DESCRIPTION are parameters which can be used as add note E1/CS2113T.
 
-2. All the examples provided below are screenshots of expected user commands and outputs by NUSMaze.
+2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt.
 
-3. In each example, lines starting with > signifies user command.
-   
-4. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the  prompt.
+3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze.
 
-<div markdown="block" class="alert alert-info">
+4. In each example, lines starting with > signifies user command.
 
+5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
 
-</div>
-
+--------------------------------------------------------------------------------------------------------------------
 
 ## 4. Features
 
 This section contains all the information about the features of **NUSMaze**.
-You may enter a command into the _CLI_ to use each feature.
+You may enter a command into the CLI to use each feature.
 
 ### 4.1 Viewing Help
 
@@ -144,9 +155,23 @@ Format: `help`
 
 Finds the shortest route to go from one block to another.<br>
 Format: `go` → `STARTING_BLOCK` → `DESTINATION BLOCK`
+Example:
+```
+------------------------------------------------------------------------------------------------------------
+> go
+------------------------------------------------------------------------------------------------------------
+Starting Block:
+* e2
+  Destination Block:
+* com1
+------------------------------------------------------------------------------------------------------------
+Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 -> COM1
+------------------------------------------------------------------------------------------------------------
+```
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`.
-- Both parameters must be one of the Engineering or Computing buildings.
+  
+:warning: Both parameters must be one of the Engineering or Computing buildings.
 
 #### 4.2.2 Routing to the closest eatery
 It is also possible to find the closest eatery using the go feature.<br>
@@ -211,38 +236,105 @@ Format : `delete alias` → `ALIAS_NAME`
 #### 4.5.1 Adding a daily route
 Adds a schedule for the selected day.<br>
 Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> add daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. WEDNESDAY
+4. THURSDAY
+5. FRIDAY
+6. SATURDAY
+7. SUNDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Enter location of the first activity of the day: 
+* e2
+Enter location of the next activity of the day: 
+* e7
+Enter location of the next activity of the day: 
+* ea
+Enter location of the next activity of the day: 
+* end
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully added MONDAY's schedule!
+------------------------------------------------------------------------------------------------------------
+```
 - You will be prompted to select the `DAY_ENTRY` of the day which you want to schedule.
-
-- `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
-  (1 represents Monday and 7 represents Sunday).
 
 - You will then be prompted to enter the location of the activities(`BLOCK`) of the day one at
   a time.
 
 - NUSMaze will continuously ask for locations until you input `END`.
 
-- If `END` is input as the first block,the schedule of the day selected will be cleared.
+:warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
+(1 represents Monday and 7 represents Sunday).
+
+:warning: There must be at least one block entered for the schedule.
 
 #### 4.5.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route` → `DAY_NUMBER`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> show daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. FRIDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Location of activity 1: E2
+
+Location of activity 2: E7
+Route: E2 -> E3 -> E4 -> E4A -> EW2 -> E6 -> E7
+
+Location of activity 3: EA
+Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
+------------------------------------------------------------------------------------------------------------
+```
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-- The `DAY_NUMBER` must be the index of one of the available days which has been
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
   displayed.
 
 #### 4.5.3 Clearing daily route
 Clears the schedule of the selected day, if applicable.<br>
-Format : `clear daily route` → `DAY_NUMBER`
+Format : `delete daily route` → `DAY_NUMBER`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> delete daily route
+------------------------------------------------------------------------------------------------------------
+Here are the available days:
+1. MONDAY
+2. TUESDAY
+3. FRIDAY
+------------------------------------------------------------------------------------------------------------
+Select entry:
+* 1
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully cleared MONDAY's schedule!
+------------------------------------------------------------------------------------------------------------
+```
 - When the day command is entered, the application will display the list of available days
   for which daily routes have been saved.
 
 - NUSMaze will then prompt you for a `DAY_NUMBER`.
 
-- The `DAY_NUMBER` must be the index of one of the available days which has been
+:warning: The `DAY_NUMBER` must be the index of one of the available days which has been
   displayed.
 
 ### 4.6 Notes
@@ -275,24 +367,24 @@ Format : `delete note` → `LOCATION` → `NOTE INDEX`
 ### 4.7 Favourite Routes
 #### 4.7.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
-Format: `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
+Format : `add favourite` → `STARTING BLOCK` → `DESTINATION BLOCK`
 
 #### 4.7.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
-Format: `show favourite`
+Format : `show favourite`
 
 #### 4.7.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
-Format: `repeat favourite` → `INDEX OF ROUTE`
+Format : `repeat favourite` → `INDEX OF ROUTE`
 
 #### 4.7.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
-Format: `delete favourite` → `INDEX OF ROUTE`
+Format : `delete favourite` → `INDEX OF ROUTE`
 
 ### 4.8 Exiting the application
 
 Exits the application.<br>
-Format: `bye`
+Format : `bye`
 
 ### 4.9 Saving the Data
 
