@@ -67,7 +67,7 @@ public class Constants {
     public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT = "Kindly use /p or /r to indicate patient or "
             + "record, refer to help for more clarification!";
-    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient does not exist!";
+    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";

@@ -57,16 +57,18 @@ public class Parser {
     public Command parse(String fullCommand) throws InvalidInputException, UnknownException {
         String[] tokens = fullCommand.split("\\s+");
 
-        // If tokenized command returns an empty array, raise an exception
+        // If tokenized command returns an empty array (entered a string with only white spaces),
+        // raise an exception
         if (tokens.length == 0) {
             throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
         }
         // If first token (command) is empty, there are empty spaces typed in at the front - so we remove it
         if (tokens[0].isEmpty()) {
             tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
-        }
-        if (tokens.length == 0) {
-            throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
+            // Check again to make sure it is not empty after removing first element
+            if (tokens.length == 0) {
+                throw new InvalidInputException(InvalidInputException.Type.EMPTY_STRING);
+            }
         }
 
         HashMap<String, String> arguments = new HashMap<>();

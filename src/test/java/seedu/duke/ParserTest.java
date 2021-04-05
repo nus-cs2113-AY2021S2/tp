@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.command.Command;
 import seedu.duke.command.EchoCommand;
 import seedu.duke.exception.InvalidInputException;
+import seedu.duke.exception.UnknownException;
 import seedu.duke.model.Patient;
 
 public class ParserTest {
@@ -43,12 +44,27 @@ public class ParserTest {
 
     @Test
     public void parse_emptyString_exceptionThrown() {
-        String fullCommand = "";
-        Exception e = assertThrows(InvalidInputException.class, () -> {
-            defaultParser.parse(fullCommand);
+        String fullCommand1 = "";
+        // Test out a string with only white spaces
+        String fullCommand2 = "     ";
+
+        InvalidInputException e1 = assertThrows(InvalidInputException.class, () -> {
+            defaultParser.parse(fullCommand1);
+        });
+        InvalidInputException e2 = assertThrows(InvalidInputException.class, () -> {
+            defaultParser.parse(fullCommand2);
         });
 
-        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e1.getMessage());
+        assertEquals(Constants.INVALID_INPUT_EMPTY_STRING, e2.getMessage());
+    }
+
+    @Test
+    public void parse_malformedCommand_exceptionThrown() {
+        String fullCommand = "malformed";
+        assertThrows(UnknownException.class, () -> {
+            defaultParser.parse(fullCommand);
+        });
     }
 
     @Test

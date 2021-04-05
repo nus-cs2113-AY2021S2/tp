@@ -26,10 +26,9 @@ public class LoadCommand extends Command {
             throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
         }
         id = id.toUpperCase();
-        if (data.loadCurrentPatient(id)) {
-            ui.printMessage("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
-        } else {
-            ui.printMessage("Patient\'s data is not found.");
+        if (!data.loadCurrentPatient(id)) {
+            throw new InvalidInputException(InvalidInputException.Type.PATIENT_NOT_FOUND);
         }
+        ui.printMessage("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
     }
 }
