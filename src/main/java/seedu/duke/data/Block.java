@@ -64,7 +64,7 @@ public class Block {
     }
 
     public void addNote(String note) throws InvalidNoteException {
-        if (note.equals("")) {
+        if (note.isBlank()) {
             throw new InvalidNoteException();
         }
         this.notes.add(note);
