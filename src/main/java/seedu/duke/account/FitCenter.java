@@ -255,7 +255,8 @@ public class FitCenter {
     }
 
     private boolean hasGoals(PeriodType periodType) {
-        return dietGoalList.isNotEmpty(periodType);
+        return dietGoalList.isNotEmpty(periodType) || exerciseGoalList.isNotEmpty(periodType)
+                || sleepGoalList.isNotEmpty(periodType) || bodyWeightGoalList.isNotEmpty(periodType);
     }
 
     /**
