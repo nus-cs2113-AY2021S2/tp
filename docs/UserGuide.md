@@ -264,11 +264,10 @@ it is located at as shown in Figure 14.
 <span>&#10071;</span>Price range should be entered separated by -. Otherwise, adding a recommendation will fail and you
 need to try again.
 
-<span>&#10071;</span> If you try to add a Recommendation title that already exists in your Review list, Connoisseur
-will warn you. Perhaps you had forgotten that you have already experienced and reviewed the item in the past! 
-Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. *Note that 
+<span>&#10071;</span> If you try to add a Recommendation title that already exists in your Review list, Connoisseur will
+warn you. Perhaps you had forgotten that you have already experienced and reviewed the item in the past!
+Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. *Note that
 invalid commands will display error message and exit automatically*.
-
 
 #### 4.2.2 List Recommendation
 
@@ -279,9 +278,9 @@ Command: `list`
 ![img_15.png](./images/ug/list_reco.png)
 <p align="center">Figure 15. Viewing Recommendations</p>
 
-<span>&#10071;</span> Some terminals may not support the ★ and ✰ symbols. So if you face the error as shown in 
-Figure 16, where the ratings are not displayed correctly, input the command `display asterisks` as shown in Figure 17. 
-The error should be resolved, and the ratings will now be displayed using `*` symbol instead.
+<span>&#10071;</span> Some terminals may not support the ★ and ✰ symbols. So if you face the error as shown in Figure
+16, where the ratings are not displayed correctly, input the command `display asterisks` as shown in Figure 17. The
+error should be resolved, and the ratings will now be displayed using `*` symbol instead.
 
 ![img_2.png](images/ug/invalid_rating_display.png)
 <p align="center">Figure 16. ★ and ✰ symbols not displayed</p>
@@ -348,7 +347,7 @@ If you want help with a specific command simple key in `help` followed by the `[
 ![img_20.png](./images/ug/help_command.png)
 <p align="center">Figure 22. Help message for commands</p>
 
-### 4.4 Exit and Save Connoisseur 
+### 4.4 Exit and Save Connoisseur
 
 This feature allows you to exit Connoisseur and all you review and recommendation list will be stored as
 `connoisseur.json` in the _data folder_ as shown in Figure 23.
