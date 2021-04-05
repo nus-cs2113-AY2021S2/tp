@@ -33,6 +33,14 @@ public class ParserTest {
         sampleArguments.put("keyC", "");
     }
 
+    private void checkAgainstSampleArguments(String fullCommand) {
+        assertDoesNotThrow(() -> {
+            Command command = defaultParser.parse(fullCommand);
+            assertTrue(command instanceof EchoCommand);
+            assertTrue(((EchoCommand) command).getArguments().equals(sampleArguments));
+        });
+    }
+
     @Test
     public void parse_emptyString_exceptionThrown() {
         String fullCommand = "";
@@ -65,23 +73,37 @@ public class ParserTest {
         // Command with separation of more than 1 spaces
         String fullCommand3 = "     echo     pVal1  pVal2   /keyA valA   /keyB valB1   valB2 /keyC    ";
 
-        assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand1);
-            assertTrue(command instanceof EchoCommand);
-            assertTrue(((EchoCommand) command).getArguments().equals(sampleArguments));
-        });
+        checkAgainstSampleArguments(fullCommand1);
+        checkAgainstSampleArguments(fullCommand2);
+        checkAgainstSampleArguments(fullCommand3);
+    }
 
-        assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand2);
-            assertTrue(command instanceof EchoCommand);
-            assertTrue(((EchoCommand) command).getArguments().equals(sampleArguments));
-        });
+    /**
+     * This test case checks whether command of any cases are valid. It needs to be case-insensitive.
+     */
+    @Test
+    public void parse_captilizedCommand_parsedSuccessfully() {
+        String fullCommand1 = "Echo pVal1 pVal2 /keyA valA /keyB valB1 valB2 /keyC";
+        String fullCommand2 = "eCHo pVal1 pVal2 /keyA valA /keyB valB1 valB2 /keyC";
+        String fullCommand3 = "echO pVal1 pVal2 /keyA valA /keyB valB1 valB2 /keyC";
 
-        assertDoesNotThrow(() -> {
-            Command command = defaultParser.parse(fullCommand3);
-            assertTrue(command instanceof EchoCommand);
-            assertTrue(((EchoCommand) command).getArguments().equals(sampleArguments));
-        });
+        checkAgainstSampleArguments(fullCommand1);
+        checkAgainstSampleArguments(fullCommand2);
+        checkAgainstSampleArguments(fullCommand3);
+    }
+
+    /**
+     * This test case checks whether swapped arguments location produce the same results.
+     */
+    @Test
+    public void parse_swappedArgument_parsedSuccessfully() {
+        String fullCommand1 = "echo pVal1 pVal2 /keyB valB1 valB2 /keyC /keyA valA";
+        String fullCommand2 = "echo pVal1 pVal2 /keyA valA /keyC /keyB valB1 valB2";
+        String fullCommand3 = "echo pVal1 pVal2 /keyC /keyB valB1 valB2 /keyA valA";
+
+        checkAgainstSampleArguments(fullCommand1);
+        checkAgainstSampleArguments(fullCommand2);
+        checkAgainstSampleArguments(fullCommand3);
     }
 
     /**

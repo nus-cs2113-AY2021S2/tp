@@ -70,7 +70,9 @@ public class Parser {
         }
 
         HashMap<String, String> arguments = new HashMap<>();
-        arguments.put("command", tokens[0]);
+        // Conver input command to lowercase to make it case insensitive
+        String command = tokens[0].toLowerCase();
+        arguments.put("command", command);
 
         // Default key is "payload"
         String key = "payload";
@@ -94,7 +96,7 @@ public class Parser {
         arguments.put(key, String.join(DELIMITER, values));
 
         // Initialize a respective class from the command (by capitalize first character)
-        String className = tokens[0] + "Command";
+        String className = command + "Command";
         className = className.substring(0, 1).toUpperCase() + className.substring(1);
         className = Constants.COMMAND_CLASS_PREFIX + className;
         try {
