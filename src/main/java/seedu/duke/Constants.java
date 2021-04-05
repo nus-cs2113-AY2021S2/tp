@@ -1,6 +1,10 @@
 package seedu.duke;
 
 public class Constants {
+    public static final String COMMAND_LIST_MESSAGE = "Here is a list of available commands:\n"
+            + "  add\n  delete\n  list\n  load\n  record\n  retrieve\n  current\n  exit\n"
+            + "Type 'help' followed by a command for more details about the command\n"
+            + "Example: help record";
     public static final String ADD_INFO_MESSAGE = "Add a patient to the list\n"
             + "Command prefix: add\n"
             + "Argument(s): IC number\n"
