@@ -64,6 +64,7 @@ public class Constants {
             "Please provide a valid date (format: dd/MM/yyyy)."
             + System.lineSeparator() + EXCEPTION_INDENT
             + "It should also be a valid date in the Gregorian calendar.";
+    public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT = "Kindly use /p or /r to indicate patient or "
             + "record, refer to help for more clarification!";
     public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient does not exist!";

@@ -38,8 +38,12 @@ public class RecordCommand extends Command {
         LocalDate date = null;
         try {
             date = parseDate(dateString);
-        } catch (DateTimeParseException dateTimeParseException) {
-            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE);
+        } catch (DateTimeParseException e) {
+            throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE, e);
+        }
+        if (date.isAfter(LocalDate.now())) {
+            // We don't allow a record to be inserted for a future date
+            throw new InvalidInputException(InvalidInputException.Type.FUTURE_DATE);
         }
         addRecord(patient, date);
         data.saveFile();
