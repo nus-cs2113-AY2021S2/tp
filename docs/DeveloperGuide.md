@@ -143,9 +143,9 @@ created for the FridgeFriend project, and stored inside the `Exceptions` compone
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
 
-The `Exceptions` component currently consists of nine (9) custom Exceptions, as of v2.0:
+The `Exceptions` component currently consists of eleven 11 custom Exceptions, as of v2.0:
 
-Among these ten custom exceptions, the `Exceptions` component can generally be
+Among these eleven custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
 
 _Exceptions related to invalid user input:_
@@ -174,6 +174,10 @@ _Exceptions related to Food:_
   where a valid `FoodCategory` is expected. Users can check `help` or the
   [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
   * Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
+* **`InvalidFoodLocationException`**: Is thrown when user input is not a valid `FoodLocation`,
+  where a valid `FoodLocation` is expected. Users can check `help` or the
+  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
+    * Error Message: `"Sorry my friend, FOOD_LOCATION is not a valid category."`    
 * **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a
   different location or with a different expiry date. This is not allowed as of v2.0.
   * Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
