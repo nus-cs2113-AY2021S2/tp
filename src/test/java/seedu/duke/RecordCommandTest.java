@@ -10,7 +10,9 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RecordCommandTest {
     @Test

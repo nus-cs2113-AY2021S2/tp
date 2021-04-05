@@ -9,8 +9,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RetrieveCommandTest {
     @Test
@@ -40,6 +41,8 @@ class RetrieveCommandTest {
         arguments.put("command", "record");
         arguments.put("payload", "31/03/2021");
         arguments.put("s", "coughing");
+        arguments.put("d", "cold");
+        arguments.put("p", "dextromethorphan 1 bottle 1 spoonful after each meal");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
         try {
@@ -54,17 +57,18 @@ class RetrieveCommandTest {
         System.setOut(new PrintStream(bos));
 
         RetrieveCommand retrieveCommand = new RetrieveCommand(ui, data, arguments);
-        try {
+        assertDoesNotThrow(() -> {
             retrieveCommand.execute();
-        } catch (Exception exception) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
         String expected = "Here are " + patient.getID() + "'s records:" + System.lineSeparator()
                 + "31/03/2021:" + System.lineSeparator()
                 + "Symptoms:" + System.lineSeparator()
                 + "\tcoughing" + System.lineSeparator()
                 + "Diagnoses:" + System.lineSeparator()
-                + "Prescriptions:" + System.lineSeparator() + System.lineSeparator();
+                + "\tcold" + System.lineSeparator()
+                + "Prescriptions:" + System.lineSeparator()
+                + "\tdextromethorphan 1 bottle 1 spoonful after each meal"
+                + System.lineSeparator() + System.lineSeparator();
         assertEquals(expected, bos.toString());
 
         // Bind System.out back to standard output
