@@ -55,7 +55,7 @@ public class ZoomLinkInfo {
         Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
 
-    public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {
+    public static void deleteZoomLink(int deleteIndex) throws NumberFormatException, IndexOutOfBoundsException {
         ZoomLinkInfo deletedZoomLink = zoomLinksList.get(deleteIndex);
         Module moduleInfo = ModuleInfo.getModule(deletedZoomLink.getModuleCode());
         moduleInfo.removeZoomLink();
