@@ -12,6 +12,7 @@ public class Links {
     private static final int DELETE_ZOOM_LINK_COMMAND = 3;
     private static final int VIEW_ZOOM_LINK_COMMAND = 4;
     private static final int EXIT_COMMAND = 5;
+    private static boolean isInvalid = false;
     protected int linkIndex;
 
     public Links(int linkIndex) {
@@ -36,6 +37,9 @@ public class Links {
             case DELETE_ZOOM_LINK_COMMAND:
                 // delete zoom links
                 delete();
+                if (isInvalid) {
+                    continue;
+                }
                 break;
             case VIEW_ZOOM_LINK_COMMAND:
                 // view zoom links
@@ -69,11 +73,13 @@ public class Links {
             return;
         }
         Ui.printLinkToDelete();
-        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
         try {
+            int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
             ZoomLinkInfo.deleteZoomLink(deleteIndex);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Oops you have entered an invalid index number...");
+            isInvalid = false;
+        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+            Ui.printRepeatInputUntilValidMessage();
+            isInvalid = true;
         }
     }
 
