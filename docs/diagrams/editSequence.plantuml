@@ -1,0 +1,51 @@
+@startuml Edit_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style strictuml
+
+activate Ui
+Ui -> Parser : determineCommand()
+activate Parser
+
+Parser -> Commands : edit()
+activate Commands
+
+alt isReviewMode
+    Commands -> ReviewList : editReview(title)
+    activate ReviewList
+
+    alt missing title
+        ReviewList --> Ui : missing title
+
+    else review does not exist
+        ReviewList --> Ui : invalid title
+
+    else review exists
+        ReviewList -> ReviewList : set details
+    end
+    ReviewList --> Commands
+    deactivate ReviewList
+
+else !isReviewMode
+    Commands --> RecommendationList : editRecommendation()
+    activate RecommendationList
+
+    alt missing title
+        RecommendationList --> Ui : missing title
+
+    else recommendation does not exist
+        RecommendationList --> Ui : invalid title
+
+    else recommendation exists
+        RecommendationList -> RecommendationList : editRecommendationFields()
+    end
+    RecommendationList --> Commands
+    deactivate RecommendationList
+end
+
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml

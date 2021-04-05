@@ -1,0 +1,91 @@
+@startuml Class_Diagram
+hide circle
+!define LIGHTGREEN
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam classAttributeIconSize 0
+
+together {
+    class Ui
+    class Parser
+    class Commands
+}
+
+together {
+    class RecommendationList
+    class ReviewList
+}
+
+together {
+    class Sorter
+    class SortMethod
+}
+
+class Ui {
+    + readCommand() : String
+}
+
+class Commands {
+    - boolean isReviewMode
+}
+
+class RecommendationList {
+    - ui : Ui
+    + recommendations : ArrayList<Recommendation>
+    + addRecommendation()
+    + listRecommendations()
+    + editRecommendation()
+    + deleteRecommendation()
+    + convertRecommendation()
+}
+
+class ReviewList {
+    - ui : Ui
+    + reviews : ArrayList<Reviews>
+    - displayStars : boolean
+    + addReview()
+    + sortReviews()
+    + listReviews()
+    + viewReview()
+    + editReview()
+    + deleteReview()
+    + changeDisplay(displayType : String)
+}
+
+class Parser {
+    + determineCommand(input : String)
+}
+
+class Sorter {
+    + sortMethod : SortMethod
+    + stringToSortMethod(sortMethod : String) : SortMethod
+    + sortMethodToString(sortMethod : SortMethod) : String
+    + getSortMethod() : String
+    + changeSortMethod(sortMethod : String)
+    + sortReviews(reviewList : ArrayList) : ArrayList
+}
+
+class Storage {
+    - Ui ui
+    + retrieveDataFile() : boolean
+    + loadConnoisseurData() : ConnoisseurData
+    + saveConnoisseurData()
+}
+
+enum SortMethod {
+    RATING
+    CATEGORY
+    TITLE
+    LATEST
+    EARLIEST
+}
+
+Ui - Parser : parse commands >
+Parser - Commands : execute commands >
+Commands -- Storage : store data >
+Commands -- ReviewList : execute on >
+Commands -- RecommendationList : execute on >
+RecommendationList - ReviewList : convert to >
+ReviewList -- Sorter : sort using >
+Sorter -- SortMethod
+
+@enduml
