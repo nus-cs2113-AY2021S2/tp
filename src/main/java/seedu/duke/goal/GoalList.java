@@ -10,6 +10,8 @@ import java.util.ArrayList;
  */
 public class GoalList {
     private final ArrayList<Goal> goals = new ArrayList<>();
+    private int lengthOfIndex;
+    private String separatorBetweenIndexAndContent;
 
     /**
      * Adds a new goal into the list.
@@ -48,8 +50,24 @@ public class GoalList {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    System.out.println("a");
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
                 if (goal.getPeriodType() == optionalPeriodType) {
-                    goalStringBuilder.append(i).append(goal.getGoalData());
+                    goalStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(goal.getGoalData());
                     i++;
                 }
             }
@@ -61,7 +79,23 @@ public class GoalList {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
-                goalStringBuilder.append(i).append(goal.getGoalData());
+                lengthOfIndex = ("" + i).length();
+                switch (lengthOfIndex) {
+                case 1:
+                    System.out.println("a");
+                    separatorBetweenIndexAndContent = "    ";
+                    break;
+                case 2:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                case 3:
+                    separatorBetweenIndexAndContent = "   ";
+                    break;
+                default:
+                    separatorBetweenIndexAndContent = " ";
+                    break;
+                }
+                goalStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(goal.getGoalData());
                 i++;
             }
             return Messages.MESSAGE_CHECK_HEADER + goalStringBuilder.toString();

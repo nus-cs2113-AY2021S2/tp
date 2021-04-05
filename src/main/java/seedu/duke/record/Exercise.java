@@ -58,7 +58,7 @@ public class Exercise extends Record {
 
     @Override
     public String getRecordData() {
-        return SEPARATOR_TAB + SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
+        return SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
                 + SEPARATOR_TAB + getWorkoutCategory()
                 + separatorBetweenActivityAndDuration + getDuration() + " " + getUnit()
                 + separatorBetweenDurationAndCalorie + getCalories() + " " + getCaloriesUnit();
