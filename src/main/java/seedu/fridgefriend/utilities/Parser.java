@@ -191,7 +191,8 @@ public class Parser {
      */
     private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
+            InvalidDateException, InvalidQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
