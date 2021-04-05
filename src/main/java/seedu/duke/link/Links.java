@@ -46,7 +46,7 @@ public class Links {
                 Ui.printReturnToMainMenuMessage();
                 return;
             default:
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();

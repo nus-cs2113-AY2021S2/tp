@@ -64,7 +64,7 @@ public class AddTask {
             addFinalExam(module, description, message, dateAndTime);
             break;
         default:
-            Ui.printInvalidIntegerMessage();
+            Ui.printRepeatInputUntilValidMessage();
         }
     }
 

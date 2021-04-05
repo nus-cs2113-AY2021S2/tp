@@ -4,8 +4,6 @@ import seedu.duke.Ui;
 import seedu.duke.task.Task;
 import seedu.duke.task.TaskManager;
 
-import java.util.ArrayList;
-
 public class DeleteTask {
 
     private static final int DELETE_TASK = 1;
@@ -40,11 +38,11 @@ public class DeleteTask {
                     findAndDeleteTask(taskNumber, FINAL_EXAM_TYPE);
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printRepeatInputUntilValidMessage();
                 }
                 return;
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printRepeatInputUntilValidMessage();
             }
         }
     }

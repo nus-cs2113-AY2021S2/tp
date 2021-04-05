@@ -63,10 +63,10 @@ public class TaskManager {
                 case EXIT_COMMAND:
                     return;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
             } catch (NumberFormatException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();
@@ -128,9 +128,9 @@ public class TaskManager {
             if (!isInvalidTaskType) {
                 return true;
             }
-            Ui.printInvalidIntegerMessage();
+            Ui.printRepeatInputUntilValidMessage();
         } catch (NumberFormatException n) {
-            Ui.printInvalidIntegerMessage();
+            Ui.printRepeatInputUntilValidMessage();
         }
         return false;
     }
@@ -163,7 +163,7 @@ public class TaskManager {
             isEmpty = finalExams.isEmpty();
             break;
         default:
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
         return isEmpty;
     }
