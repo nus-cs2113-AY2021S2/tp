@@ -2,23 +2,29 @@
 
 ## Introduction
 
-Healthier targets people who care about fitness, who exercise regularly (at least 3 times/week) and have diet plans. It is designed for users of age group 18-30.  
-This app is used via **Command Line Interface (CLI)**. If the user is proficient in using command-line tools & typing, then it could be very efficient to use. This app also provides several shortcut commands for advanced users for further efficient operations.
+Healthier targets people who care about fitness, who exercise regularly (at least 3 times/week) and have diet plans. It
+is designed for users of age group 18-30.  
+This app is used via **Command Line Interface (CLI)**. If the user is proficient in using command-line tools & typing,
+then it could be very efficient to use. This app also provides several shortcut commands for advanced users for further
+efficient operations.
 
 ---
-## Table of Content
-* [Quick start](README.md#quick-start)
-* [Features](README.md#features)
-* [Command summary](README.md#command-summary)
 
+## Table of Content
+
+* [Quick start](#quick-start)
+* [Features](#features)
+* [Command summary](#command-summary)
 
 ## Quick Start
+
 This is a cross-platform application, you can run it on any operating system as long as **Java 11** is installed.
 > To verify if you have **Java 11** installed, simply type command `java --version` in your terminal.
+
 1. Download the `tp.jar` file from the [latest release](https://github.com/AY2021S2-CS2113-F10-2/tp/releases).
-1. Open a new terminal at the folder where the `Tp.jar` file is located.
-1. Run the application use command `java -jar Tp.jar`
-1. Refer to the [Features](README.md#features) section below for more info on commands.
+1. Open a new terminal at the folder where the `tp.jar` file is located.
+1. Run the application use command `java -jar tp.jar`
+1. Refer to the [Features](#features) section below for more info on commands.
 
 ## Features
 
@@ -46,16 +52,18 @@ This is a cross-platform application, you can run it on any operating system as 
 >
 
 ### Get help from instructions on how to use this app : `help`
+
 Displays syntax for all commands.
 
 Format: `help`
 
-Example of Usage: 
+Example of Usage:
 
 Input:
 `help`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Thank you for choosing to be healthier with us.
@@ -133,16 +141,18 @@ The syntax for exit command is:
 ```
 
 ### Exit the app : `exit`
+
 Stop the execution of this application.
 
 Format: `exit`
 
-Example of Usage: 
+Example of Usage:
 
 Input:
 `exit`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Thank you for using this app. The app is exiting...
@@ -155,6 +165,7 @@ See you again soon :)
 ```
 
 ### Input Exercise Data: `add`
+
 Add one exercise record with workout activity, duration and date (optional).
 
 Format: `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]`
@@ -162,8 +173,10 @@ Format: `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]`
 * The name of workout activity `a/ACTIVITY_NAME` and duration `d/DURATION` **MUST** be specified.
 * The name of the workout should be a `String`.
 * The tag value should be `E` in the upper case, which specifies that the current record is for **exercise data**.
-* The default unit of duration is in **minutes**. An `integer` is expected for the duration, other formats are **not acceptable**.
-* The date of the exercise record `[date/DD-MM-YYYY]` is optional. If not provided, the system date of today will be used.
+* The default unit of duration is in **minutes**. An `integer` is expected for the duration, other formats are **not
+  acceptable**.
+* The date of the exercise record `[date/DD-MM-YYYY]` is optional. If not provided, the system date of today will be
+  used.
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are not acceptable.
 
@@ -172,12 +185,13 @@ Format: `add  t/E a/ACTIVITY_NAME  d/DURATION  [date/DD-MM-YYYY]`
 > `WALKING`, `RUNNING`, `CYCLING`, `ELLIPTICAL`, `ROWER`, `STAIRSTEPPER`  
 > `HIKING`, `HIIT`, `YOGA`, `DANCE`, `COOLDOWN`, `SWIMMING`, `CORETRAINING`
 
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `add t/E a/running d/40`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new EXERCISE record is added successfully!
@@ -190,6 +204,7 @@ Input:
 `add t/E a/cycling d/60 date/05-01-2020`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new EXERCISE record is added successfully!
@@ -199,24 +214,27 @@ Record summary:
 ```
 
 ### View Exercise Data: `view`
+
 View existing exercise records. The result can be filtered by specifying the workout activity name and/or date.
 
 Format: `view  t/E  [a/ACTIVITY_NAME]  [date/DD-MM-YYYY]`
 
 * The tag value should be `E` in the upper case, which specifies the output for records of exercise data.
-* The name and date of the exercise activity are optional fields used for filtering the records that will be displayed. If not specified, all existing records will be displayed.
-* The name of the workout activity may be specified to view records of the specified exercise activity. It should be a String.
+* The name and date of the exercise activity are optional fields used for filtering the records that will be displayed.
+  If not specified, all existing records will be displayed.
+* The name of the workout activity may be specified to view records of the specified exercise activity. It should be a
+  String.
 * The optional date field can be specified to view records on the given date.
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are **not acceptable**.
 
-
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `view t/E`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
@@ -235,6 +253,7 @@ Input:
 `view t/E a/cycling`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
@@ -248,6 +267,7 @@ Input:
 `view t/E date/03-04-2021`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible exercise records:
@@ -257,17 +277,17 @@ Index        Date          Activity        Duration        Calories
 --------------------------------------------------------------------
 ```
 
-
-
 ### Delete Exercise Data: `delete`
+
 Delete an existing exercise record.
 
 Format: `delete  t/E i/INDEX`
 
 * Delete a single exercise record using the index of the record.
 * The tag value should be `E` in the upper case, which specifies that the operation is for exercise data.
-* The index of the record **must** be specified. 
-* The index must be an `integer` within the range of the total number of records, index out of range or other formats are **not acceptable**.
+* The index of the record **must** be specified.
+* The index must be an `integer` within the range of the total number of records, index out of range or other formats
+  are **not acceptable**.
 
 Examples of Usage:
 
@@ -275,6 +295,7 @@ Input:
 `delete t/E i/1`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 You have successfully deleted the EXERCISE record of index 1!
@@ -312,6 +333,7 @@ Input:
 `add t/D f/grain w/400`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new DIET record is added successfully!
@@ -327,7 +349,8 @@ View existing diet records. The result can be filtered by specifying the food ca
 Format: `view  t/D  [a/FOOD_CATEGORY]  [date/DD-MM-YYYY]`
 
 * The tag value should be `D` in the upper case, which specifies the output for records of diet data.
-* The food category and date are optional fields used for filtering the records that will be displayed. If not specified, all existing records will be displayed.
+* The food category and date are optional fields used for filtering the records that will be displayed. If not
+  specified, all existing records will be displayed.
 * The food category may be specified to view records of the given food category. The food category should be a `String`.
 * The date should be less than or equal to the current date.
 * The date format should be `DD-MM-YYYY`, other formats are not acceptable.
@@ -338,6 +361,7 @@ Input:
 `view t/D`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible diet records:
@@ -355,6 +379,7 @@ Input:
 `view t/D f/grain`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible diet records:
@@ -368,6 +393,7 @@ Input:
 `view t/D date/03-04-2021`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible diet records:
@@ -385,8 +411,9 @@ Format: `delete t/D i/INDEX`
 
 * Delete a single diet record using the Index of the record.
 * The tag value should be `D` in the upper case, which specifies that the operation is for diet records.
-* The index of the record **must** be specified. 
-* The index must be an `integer` within the range of the total number of records, index out of range or other formats are **not acceptable**.
+* The index of the record **must** be specified.
+* The index must be an `integer` within the range of the total number of records, index out of range or other formats
+  are **not acceptable**.
 
 Examples of Usage:
 
@@ -394,6 +421,7 @@ Input:
 `delete t/D i/1`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 You have successfully deleted the DIET record of index 1!
@@ -408,23 +436,26 @@ Displaying current DIET records:
 ```
 
 ### Input Sleep Data: `add`
+
 Add one sleep record with duration and date (optional).
 
 Format: `add  t/S  d/DURATION  [date/DD-MM-YYYY]`
 
 * The duration of the sleep record `d/DURATION` **MUST** be specified.
 * The tag value should be `S` in the upper case, which specifies that the current record is for **sleep data**.
-* The default unit of duration is in **hours**. An `integer` is expected for the duration, other formats are **not acceptable**.
+* The default unit of duration is in **hours**. An `integer` is expected for the duration, other formats are **not
+  acceptable**.
 * The date of the sleep record `[date/DD-MM-YYYY]` is optional. If not provided, the system date of today will be used.
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are not acceptable.
 
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `add t/S d/8`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new SLEEP record is added successfully!
@@ -437,6 +468,7 @@ Input:
 `add t/S d/9 date/05-01-2020`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new SLEEP record is added successfully!
@@ -446,6 +478,7 @@ Record summary:
 ```
 
 ### View Sleep Data: `view`
+
 View existing sleep records. The result can be filtered by specifying date.
 
 Format: `view  t/S  [date/DD-MM-YYYY]`
@@ -455,13 +488,13 @@ Format: `view  t/S  [date/DD-MM-YYYY]`
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are **not acceptable**.
 
-
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `view t/S`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible sleep records:
@@ -479,6 +512,7 @@ Input:
 `view t/S date/01-04-2021`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible sleep records:
@@ -489,16 +523,17 @@ Index        Date              Duration
 --------------------------------------------------------------------
 ```
 
-
 ### Delete Sleep Data: `delete`
+
 Delete an existing sleep record.
 
 Format: `delete t/S i/INDEX`
 
 * Delete a single sleep record using the index of the record.
 * The tag value should be `S` in the upper case, which specifies that the operation is for sleep data.
-* The index of the record **must** be specified. 
-* The index must be an `integer` within the range of the total number of records, index out of range or other formats are **not acceptable**.
+* The index of the record **must** be specified.
+* The index must be an `integer` within the range of the total number of records, index out of range or other formats
+  are **not acceptable**.
 
 Examples of Usage:
 
@@ -506,6 +541,7 @@ Input:
 `delete t/S i/1`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 You have successfully deleted the SLEEP record of index 1!
@@ -520,6 +556,7 @@ Displaying current SLEEP records:
 ```
 
 ### Input Body Weight Data: `add`
+
 Add one body weight record with current body weight and date (optional).
 
 Format: `add  t/W  w/WEIGHT  [date/DD-MM-YYYY]`
@@ -527,16 +564,18 @@ Format: `add  t/W  w/WEIGHT  [date/DD-MM-YYYY]`
 * The weight of the body weight record `d/DURATION` **MUST** be specified.
 * The tag value should be `W` in the upper case, which specifies that the current record is for **bodyweight data**.
 * The default unit of duration is in **Kilogram**.
-* The date of the bodyweight record `[date/DD-MM-YYYY]` is optional. If not provided, the system date of today will be used.
+* The date of the bodyweight record `[date/DD-MM-YYYY]` is optional. If not provided, the system date of today will be
+  used.
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are not acceptable.
 
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `add t/W w/64`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new BODYWEIGHT record is added successfully!
@@ -549,6 +588,7 @@ Input:
 `add t/W w/40 date/05-01-2020`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new BODYWEIGHT record is added successfully!
@@ -558,6 +598,7 @@ Body weight 40.0 Kg on 05-01-2020
 ```
 
 ### View Body Weight Data: `view`
+
 View existing bodyweight records. The result can be filtered by specifying date.
 
 Format: `view  t/W  [date/DD-MM-YYYY]`
@@ -567,13 +608,13 @@ Format: `view  t/W  [date/DD-MM-YYYY]`
 * The date should be **less than or equal to** the current date.
 * The date format should be `DD-MM-YYYY`, other formats are **not acceptable**.
 
-
-Examples of Usage:  
+Examples of Usage:
 
 Input:
 `view t/W`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible body weight records:
@@ -589,6 +630,7 @@ Input:
 `view t/W date/01-04-2021`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Displaying all eligible body weight records:
@@ -598,16 +640,17 @@ Index        Date              Body Weight
 --------------------------------------------------------------------
 ```
 
-
 ### Delete Body Weight Data: `delete`
+
 Delete an existing bodyweight record.
 
 Format: `delete t/W i/INDEX`
 
 * Delete a single body weight record using the index of the record.
 * The tag value should be `W` in the upper case, which specifies that the operation is for bodyweight data.
-* The index of the record **must** be specified. 
-* The index must be an `integer` within the range of the total number of records, index out of range or other formats are **not acceptable**.
+* The index of the record **must** be specified.
+* The index must be an `integer` within the range of the total number of records, index out of range or other formats
+  are **not acceptable**.
 
 Examples of Usage:
 
@@ -615,6 +658,7 @@ Input:
 `delete t/W i/1`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 You have successfully deleted the BODY_WEIGHT record of index 1!
@@ -626,20 +670,23 @@ You can try adding records by using command 'add'.
 ```
 
 ### Set a daily or weekly goal for exercise: `set`
+
 Set a daily/weekly exercise goal with a target energy (in calories) to burn.
 
 Format: `set  t/E p/INTERVAL_TYPE target/ENERGY`
- 
-* The tag value should be `E` in the upper case, which specifies that the current goal is for **exercise data**.
-* The interval type can be `D`, and `W` corresponding to **daily and weekly**. 
-* The default unit of energy is in **kcal**. A **float number** is expected for the energy to burn, other formats are **not acceptable**.
 
-Example of usage:  
+* The tag value should be `E` in the upper case, which specifies that the current goal is for **exercise data**.
+* The interval type can be `D`, and `W` corresponding to **daily and weekly**.
+* The default unit of energy is in **kcal**. A **float number** is expected for the energy to burn, other formats are **
+  not acceptable**.
+
+Example of usage:
 
 Input:
 `set t/E p/D target/0.5`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new exercise goal is set successfully!
@@ -654,6 +701,7 @@ Input:
 `set t/E p/W target/10`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new exercise goal is set successfully!
@@ -665,13 +713,15 @@ Progress: 264.0 Kcal
 ```
 
 ### Set a daily or weekly goal for sleep: `set`
+
 Set a daily/weekly sleep goal with a target duration (in hours).
 
 Format: `set  t/S p/INTERVAL_TYPE target/DURATION`
- 
+
 * The tag value should be `S` in the upper case, which specifies that the current goal is for **sleep data**.
-* The interval type can be `D`, and `W` corresponding to **daily and weekly**. 
-* The default unit of duration is in **hours**. The format of the duration should be either `X` or `X.5`, where `X` is an integer between `0` and `23` and `0.5` means half an hour. Other formats are **not acceptable**.
+* The interval type can be `D`, and `W` corresponding to **daily and weekly**.
+* The default unit of duration is in **hours**. The format of the duration should be either `X` or `X.5`, where `X` is
+  an integer between `0` and `23` and `0.5` means half an hour. Other formats are **not acceptable**.
 
 Examples of Usage:
 
@@ -679,6 +729,7 @@ Input:
 `set t/S p/D target/8.5`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new sleep goal is set successfully!
@@ -693,6 +744,7 @@ Input:
 `set t/S p/W target/24`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new sleep goal is set successfully!
@@ -704,13 +756,15 @@ Progress: 0.0 hour(s)
 ```
 
 ### Set a daily or weekly goal for diet: `set`
+
 Set a daily/weekly diet goal with a target energy (in calories) to take in.
 
 Format: `set  t/D p/INTERVAL_TYPE target/ENERGY`
- 
+
 * The tag value should be `D` in the upper case, which specifies that the current goal is for **diet data**.
-* The interval type can be `D`, and `W` corresponding to **daily and weekly**. 
-* The default unit of energy is in **kcal**. A **float number** is expected for the energy take in, other formats are **not acceptable**.
+* The interval type can be `D`, and `W` corresponding to **daily and weekly**.
+* The default unit of energy is in **kcal**. A **float number** is expected for the energy take in, other formats are **
+  not acceptable**.
 
 Examples of Usage:
 
@@ -718,6 +772,7 @@ Input:
 `set t/D p/D target/0.2`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new diet goal is set successfully!
@@ -732,6 +787,7 @@ Input
 `set t/D p/W target/5`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new diet goal is set successfully!
@@ -743,13 +799,15 @@ Progress: 140000.0 Kcal
 ```
 
 ### Set a daily or weekly goal for body weight: `set`
+
 Set a daily/weekly body weight goal with a target weight (in kg).
 
 Format: `set  t/W p/INTERVAL_TYPE target/WEIGHT`
- 
+
 * The tag value should be `W` in the upper case, which specifies that the current goal is for **body weight data**.
-* The interval type can be `D`, and `W` corresponding to **daily and weekly**. 
-* The default unit of weight is in **kg**. A **float number** is expected for the weight, other formats are **not acceptable**.
+* The interval type can be `D`, and `W` corresponding to **daily and weekly**.
+* The default unit of weight is in **kg**. A **float number** is expected for the weight, other formats are **not
+  acceptable**.
 
 Examples of Usage:
 
@@ -757,6 +815,7 @@ Input:
 `set t/W p/D target/50`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new bodyweight goal is set successfully!
@@ -771,6 +830,7 @@ Input:
 `set t/W p/W target/50`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 A new bodyweight goal is set successfully!
@@ -782,11 +842,13 @@ Progress: 67.0Kg
 ```
 
 ### Check the progress of goals: `check`
+
 Check the current progress of goals set by the user.
 
 Format: `check  t/TAG [p/INTERVAL_TYPE]`
- 
-* The tag value should only be `E`, `S`, `D`, `W`. It specifies the kind of goal (exercise, sleep, diet and body weight) to check.
+
+* The tag value should only be `E`, `S`, `D`, `W`. It specifies the kind of goal (exercise, sleep, diet and body weight)
+  to check.
 * The interval type can be `D`, and `W`corresponding to **daily and weekly**. It is optional.
 
 Examples of Usage:
@@ -795,6 +857,7 @@ Input:
 `check t/E`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Checking the progress of eligible exercise goals:
@@ -811,6 +874,7 @@ Input:
 `check t/E p/W`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 Checking the progress of eligible exercise goals:
@@ -821,13 +885,16 @@ Index        Date Set        Goal Type        Target        Progress
 ```
 
 ### Cancel a goal: `cancel`
+
 Cancel a goal set by the user.
 
 Format: `cancel  t/TAG i/INDEX`
- 
-* The tag value should only be `E`, `S`, `D`, `W`. It specifies the kind of goal (exercise, sleep, diet and body weight) to check.
-* The index of the record **must** be specified. 
-* The index must be an `integer` within the range of the total number of records, index out of range or other formats are not acceptable.
+
+* The tag value should only be `E`, `S`, `D`, `W`. It specifies the kind of goal (exercise, sleep, diet and body weight)
+  to check.
+* The index of the record **must** be specified.
+* The index must be an `integer` within the range of the total number of records, index out of range or other formats
+  are not acceptable.
 
 Examples of Usage:
 
@@ -835,6 +902,7 @@ Input:
 `cancel t/E i/1`
 
 Expected Output:
+
 ```
 --------------------------------------------------------------------
 You have successfully canceled a goal for exercise!
