@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
@@ -143,23 +143,23 @@ public class Storage {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(Constants.DATE_PATTERN);
             final LocalDate dt = LocalDate.parse(splitString[0], dateTimeFormatter);
 
-            ArrayList<String> prescriptions = new ArrayList<>();
-            ArrayList<String> symptoms = new ArrayList<>();
-            ArrayList<String> diagnoses = new ArrayList<>();
+            LinkedHashSet<String> prescriptions = new LinkedHashSet<>();
+            LinkedHashSet<String> symptoms = new LinkedHashSet<>();
+            LinkedHashSet<String> diagnoses = new LinkedHashSet<>();
 
             String[] symptomSplitString = splitString[1].split(Constants.SYMPTOM_DELIMITER);
             if (!symptomSplitString[0].isEmpty()) {
-                symptoms = splitStringIntoArrayList(symptomSplitString[0]);
+                symptoms = splitDetailString(symptomSplitString[0]);
             }
 
             String[] diagnosisSplitString = symptomSplitString[1].split(Constants.DIAGNOSIS_DELIMITER);
             if (!diagnosisSplitString[0].isEmpty()) {
-                diagnoses = splitStringIntoArrayList(diagnosisSplitString[0]);
+                diagnoses = splitDetailString(diagnosisSplitString[0]);
             }
 
             String[] prescriptionSplitString = diagnosisSplitString[1].split(Constants.PRESCRIPTION_DELIMITER);
             if (prescriptionSplitString.length > 0) {
-                prescriptions = splitStringIntoArrayList(prescriptionSplitString[0]);
+                prescriptions = splitDetailString(prescriptionSplitString[0]);
             }
 
             Record record = new Record(symptoms, diagnoses, prescriptions);
@@ -170,9 +170,14 @@ public class Storage {
         return records;
     }
 
-    private ArrayList<String> splitStringIntoArrayList(String stringToSplit) {
+    /**
+     * This function splits a string using DETAILS_DELIMITER, then create a new arraylist and add it in.
+     * @param stringToSplit the string that is to be splitted using DETAILS_DELIMITER
+     * @return a LinkedHashSet containing the data
+     */
+    private LinkedHashSet<String> splitDetailString(String stringToSplit) {
         String[] stringArray = stringToSplit.split(Constants.DETAILS_DELIMITER);
-        ArrayList<String> arrayList = new ArrayList<>();
+        LinkedHashSet<String> arrayList = new LinkedHashSet<>();
         for (String string : stringArray) {
             arrayList.add(string);
         }

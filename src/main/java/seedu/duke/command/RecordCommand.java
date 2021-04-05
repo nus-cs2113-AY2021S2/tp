@@ -36,6 +36,7 @@ public class RecordCommand extends Command {
         }
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
         LocalDate date = null;
+        // TODO: More test cases to test out the "invalid dates"
         try {
             date = parseDate(dateString);
         } catch (DateTimeParseException e) {

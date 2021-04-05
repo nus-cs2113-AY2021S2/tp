@@ -2,30 +2,37 @@ package seedu.duke.model;
 
 import seedu.duke.Constants;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 /**
  * Each instance of this class represent a visit record. It can contain
  * medical diagnosis, prescription, test results, etc.
  */
 public class Record {
-    protected ArrayList<String> symptoms;
-    protected ArrayList<String> diagnoses;
-    protected ArrayList<String> prescriptions;
+    protected LinkedHashSet<String> symptoms;
+    protected LinkedHashSet<String> diagnoses;
+    protected LinkedHashSet<String> prescriptions;
 
     /**
      * Initialize a new visit record.
      */
     public Record() {
-        this.symptoms = new ArrayList<>();
-        this.diagnoses = new ArrayList<>();
-        this.prescriptions = new ArrayList<>();
+        this.symptoms = new LinkedHashSet<>();
+        this.diagnoses = new LinkedHashSet<>();
+        this.prescriptions = new LinkedHashSet<>();
     }
 
     /**
      * Generates a record with existing data.
+     * @param symptoms existing symptoms data
+     * @param diagnoses existing diagnoses data
+     * @param prescriptions existing prescriptions data
      */
-    public Record(ArrayList<String> symptoms, ArrayList<String> diagnoses, ArrayList<String> prescriptions) {
+    public Record(
+        LinkedHashSet<String> symptoms, 
+        LinkedHashSet<String> diagnoses, 
+        LinkedHashSet<String> prescriptions
+    ) {
         this.symptoms = symptoms;
         this.diagnoses = diagnoses;
         this.prescriptions = prescriptions;
