@@ -117,11 +117,11 @@ public class Storage {
             InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
         String[] parameters = line.split(":");
 
-        String name = parameters[1].substring(1, parameters[1].indexOf((",")));
-        String categoryStr = parameters[2].substring(1, parameters[2].indexOf((",")));
+        String name = parameters[1].substring(1, parameters[1].indexOf((", category")));
+        String categoryStr = parameters[2].substring(1, parameters[2].indexOf((", expiry")));
         FoodCategory category = FoodCategory.convertStringToFoodCategory(categoryStr);
-        String expiry = parameters[3].substring(1, parameters[3].indexOf((",")));
-        String storageStr = parameters[4].substring(1, parameters[4].indexOf((",")));
+        String expiry = parameters[3].substring(1, parameters[3].indexOf((", stored in")));
+        String storageStr = parameters[4].substring(1, parameters[4].indexOf((", quantity")));
         int quantity = Parser.parseIntegerQuantity(parameters[5].trim());
 
         FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
