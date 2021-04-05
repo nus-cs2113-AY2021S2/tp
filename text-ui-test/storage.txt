@@ -1,0 +1,141 @@
+The Deck<>Yong Tau Foo
+The Deck<>Yong Tau Foo<>6 Pieces Set<>2.0
+The Deck<>Yong Tau Foo<>7 Pieces Set<>2.30
+The Deck<>Yong Tau Foo<>8 Pieces Set<>2.60
+The Deck<>Yong Tau Foo<>9 Pieces Set<>2.90
+The Deck<>Yong Tau Foo<>10 Pieces Set<>3.20
+The Deck<>Chinese Cooked Food
+The Deck<>Chinese Cooked Food<>Set A: 1 Meat +1 Veg(w/Rice)<>2.20
+The Deck<>Chinese Cooked Food<>Set B: 1 Meat +2 Veg(w/Rice)<>2.70
+The Deck<>Chinese Cooked Food<>Set C: 1 Meat +3 Veg(w/Rice)<>3.10
+The Deck<>Chinese Cooked Food<>Set D: 2 Meat +1 Veg(w/Rice)<>3.00
+The Deck<>Chinese Cooked Food<>Set E: 2 Meat +2 Veg(w/Rice)<>3.40
+The Deck<>Chinese Cooked Food<>Set F: 3 Meat +1 Veg(w/Rice)<>3.80
+The Deck<>Chinese Cooked Food<>Set G: 3 Veg(w/Rice)<>2.10
+The Deck<>Japanese Cuisine
+The Deck<>Japanese Cuisine<>Chicken Teriyaki Don<>3.80
+The Deck<>Japanese Cuisine<>Chicken Katsu Don<>3.80
+The Deck<>Japanese Cuisine<>Chicken Katsu Curry Don<>3.80
+The Deck<>Japanese Cuisine<>Fish Fillet Don<>3.80
+The Deck<>Japanese Cuisine<>Ebi Curry Don<>4.30
+The Deck<>Japanese Cuisine<>Salmon Don<>4.50
+The Deck<>Japanese Cuisine<>Beef Don<>4.50
+The Deck<>Japanese Cuisine<>Chicken Tama Don<>4.30
+The Deck<>Japanese Cuisine<>Unagi Tama Don<>4.80
+The Deck<>Japanese Cuisine<>Salmon Tama Don<>4.80
+The Deck<>Japanese Cuisine<>Chicken & Salmon Mix Don<>4.80
+The Deck<>Japanese Cuisine<>Chicken & Ebi Mix Don<>4.80
+The Deck<>Japanese Cuisine<>Chicken & Fish Fillet Mix Don<>4.80
+The Deck<>Japanese Cuisine<>Ebi & Fish Fillet Mix Don<>4.80
+The Deck<>Snacks & Fried Kway Tiao
+The Deck<>Snacks & Fried Kway Tiao<>Fried Rice w/Fish Fillet & Taiwan Sausage<>3.30
+The Deck<>Snacks & Fried Kway Tiao<>Fried Been Hoon w/Fish Cake & Stir-Fried Vegatable<>3.30
+The Deck<>Snacks & Fried Kway Tiao<>Fried Carrot Cake w/Egg<>3.30
+The Deck<>Snacks & Fried Kway Tiao<>Single Flavor Waffles<>1.20
+The Deck<>Snacks & Fried Kway Tiao<>Double Flavor Waffles<>1.10
+The Deck<>Snacks & Fried Kway Tiao<>Carrot Cake<>2.50
+The Deck<>Snacks & Fried Kway Tiao<>Fried Kway Tiao<>1.0
+The Deck<>Snacks & Fried Kway Tiao<>Fried Rice<>1.50
+The Deck<>Snacks & Fried Kway Tiao<>Nasi Lemak<>2.20
+The Deck<>Snacks & Fried Kway Tiao<>Fried Hong Kong Mee<>1.50
+The Deck<>Snacks & Fried Kway Tiao<>Fried Bee Hoon<>1.00
+The Deck<>Putian Cuisine
+The Deck<>Western Cuisine
+The Deck<>Western Cuisine<>Salmon Filet<>6.0
+The Deck<>Western Cuisine<>AUS Sirloin Steak<>6.0
+The Deck<>Western Cuisine<>T-Bone Lamb Steak<>6.0
+The Deck<>Western Cuisine<>Grilled Dory Fish<>6.0
+The Deck<>Western Cuisine<>Chicken Chop<>4.50
+The Deck<>Western Cuisine<>Fish & Chips<>4.50
+The Deck<>Western Cuisine<>Fries<>1.00
+The Deck<>Western Cuisine<>Onion Rings<>1.00
+The Deck<>Western Cuisine<>Mashed Potatoes<>1.00
+The Deck<>Chicken Rice
+The Deck<>Chicken Rice<>Chicken Rice<>2.50
+The Deck<>Chicken Rice<>Chicken Drumstick Rice<>3.00
+The Deck<>Chicken Rice<>Char Siew w Rice<>2.50
+The Deck<>Chicken Rice<>Roast Pork w Rice<>2.50
+The Deck<>Chicken Rice<>Char Siew & Roast Pork w Rice<>3.00
+The Deck<>Chicken Rice<>Chicken Noodle/Hor Fun<>2.50
+The Deck<>Chicken Rice<>Wanton Noodle/Hor Fun<>2.50
+The Deck<>Chicken Rice<>Roast Pork Noodle/Hor Fun<>2.50
+The Deck<>Chicken Rice<>Char Siew & Roast Pork Noodle/Hor Fun<>3.00
+The Deck<>Vegetarian Cuisine
+The Deck<>Vegetarian Cuisine<>Grain Bowls(served with lettuce, 3 vegs,egg,croutons and choice of dressing)<>4.50
+The Deck<>Vegetarian Cuisine<>Char Siew Rice<>4.0
+The Deck<>Vegetarian Cuisine<>Char Siew Noodles<>3.0
+The Deck<>Vegetarian Cuisine<>Mala Glass Noodle Soup<>3.50
+The Deck<>Vegetarian Cuisine<>Miso Ramen<>4.0
+The Deck<>Vegetarian Cuisine<>Omelette Fried Rie<>3.50
+The Deck<>Vegetarian Cuisine<>Laksa Noodles<>4.0
+The Deck<>Vegetarian Cuisine<>Spaghetti Bolognese<>4.0
+The Deck<>Vegetarian Cuisine<>Salted Egg Yolk Rice<>4.0
+The Deck<>Vegetarian Cuisine<>Curry Udon<>4.0
+The Deck<>Indian Cooked Food
+The Deck<>Indian Cooked Food<>Thosai<>0.80
+The Deck<>Indian Cooked Food<>Maggi Goreng<>2.00
+The Deck<>Muslim Cooked Food
+The Deck<>Muslim Cooked Food<>Mee Soto<>2.00
+The Deck<>Muslim Cooked Food<>Mee Rebus<>2.00
+The Deck<>Muslim Cooked Food<>Mee Siam<>2.00
+The Deck<>Muslim Cooked Food<>Lontong<>2.00
+The Deck<>Muslim Cooked Food<>Tahu Goreng<>3.00
+The Deck<>Muslim Cooked Food<>Chicken Wing Nasi Lemak<>2.50
+The Deck<>Muslim Cooked Food<>Mee Goreng<>2.00
+The Deck<>Muslim Cooked Food<>Mee Siam Goreng<>2.00
+The Deck<>Muslim Cooked Food<>Kway Tiao Goreng<>2.00
+The Deck<>Fruits & Juices
+The Deck<>Fruits & Juices<>Apple, 1 Whole<>0.50
+The Deck<>Fruits & Juices<>Banana<>0.50
+The Deck<>Fruits & Juices<>Papaya, 1 Slice<>0.50
+The Deck<>Fruits & Juices<>Waterlemon, 1 Slice<>0.50
+The Deck<>Fruits & Juices<>Rock Melon, 1 Whole<>0.70
+The Deck<>Fruits & Juices<>Waterlemon Juice<>1.20
+The Deck<>Fruits & Juices<>Lime Juice<>1.20
+The Deck<>Fruits & Juices<>Soursop Juice<>1.60
+The Deck<>Fruits & Juices<>DragonFruit Juice<>1.60
+The Deck<>Fruits & Juices<>Red/Green Apple Juice<>1.60
+The Deck<>Fruits & Juices<>Orange Juice<>1.60
+The Deck<>Fruits & Juices<>PearJuice<>1.60
+The Deck<>Bubble Tea
+The Deck<>Bubble Tea<>Berries Osmanthus(Black Tea)<>3.50
+The Deck<>Bubble Tea<>Strawberry Osmanthus(Black Tea)<>3.50
+The Deck<>Bubble Tea<>Strawberry Flower BLossom(Green Tea)<>3.50
+The Deck<>Bubble Tea<>Pineapple Pear(Green Tea)<>3.50
+The Deck<>Bubble Tea<>Royal Greet Milk Tea<>2.80
+The Deck<>Bubble Tea<>Chocolate Milk Tea<>2.80
+The Deck<>Bubble Tea<>Brown Sugar Milk Tea<>2.80
+The Deck<>Liang Ban Gong Fu
+The Deck<>Liang Ban Gong Fu<>Mala Hotpot(price subjected)<>0
+The Deck<>Liang Ban Gong Fu<>Steamed Flower Roll<>1.00
+The Deck<>Liang Ban Gong Fu<>Steamed Mandarin Roll<>1.00
+The Deck<>Pasta Expess
+The Deck<>Pasta Expess<>Build Your Own Pasta(price subjected)<>0
+The Deck<>Pasta Expess<>Build Your Own Salad(price subjected)<>0
+The Deck<>Pasta Expess<>Carbonara<>5.30
+The Deck<>Pasta Expess<>Bolognese<>5.30
+The Deck<>Pasta Expess<>Chicken Alfredo<>5.30
+The Deck<>Pasta Expess<>Smoked Duck Aglio<>5.30
+The Deck<>Uncle Penyet
+The Deck<>Uncle Penyet<>Ayam Penyet Set<>4.80
+The Deck<>Uncle Penyet<>Ikan Dory Penyet Set<>4.80
+The Deck<>Uncle Penyet<>Ikan Pomfret Penyet Set<>7.80
+The Deck<>Uncle Penyet<>Ikan Grouper Penyet Set<>6.80
+The Deck<>Uncle Penyet<>Udang Penyet Set<>4.80
+The Deck<>Uncle Penyet<>Steamed Chicken with Brown Rice<>3.80
+The Deck<>Uncle Penyet<>Spicy Lemongrass Chicken Set<>3.80
+The Deck<>Uncle Penyet<>Bakso Soup<>4.80
+The Deck<>Uncle Penyet<>Curry Chicken Stew<>4.80
+The Deck<>Noodles
+The Deck<>Noodles<>Fish Ball Noodles<>2.30
+The Deck<>Noodles<>Fish Ball Soup<>1.50
+The Deck<>Noodles<>Meat Ball Soup<>1.50
+The Deck<>Noodles<>Mushroom Minced Meat Noodles<>2.30
+The Deck<>Noodles<>Prawn Mee<>2.30
+The Deck<>Noodles<>Shredded Noodles<>2.30
+The Deck<>Noodles<>Curry Chicken Noodles<>2.30
+The Deck<>Noodles<>Pork Rib Noodles<>2.30
+The Deck<>Noodles<>Lor Mee<>2.30
+Techno Edge
+Techno Edge<>Western<>chicken chop<>4.50
+Techno Edge<>Western<>Fish & Chips<>4.50
