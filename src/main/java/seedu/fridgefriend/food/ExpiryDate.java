@@ -17,8 +17,7 @@ public class ExpiryDate {
             LocalDate expiry = LocalDate.parse(string, formatter);
             this.expiry = expiry;            
         } catch (DateTimeParseException e) {
-            String message = e.getLocalizedMessage();
-            throw new InvalidDateException(message);
+            throw new InvalidDateException("Sorry my friend, the date must be in the form 'dd-mm-yyyy'.");
         }
     }
 
