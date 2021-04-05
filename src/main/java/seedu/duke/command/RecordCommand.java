@@ -52,9 +52,9 @@ public class RecordCommand extends Command {
         if (arguments.containsKey(Constants.PRESCRIPTION_KEY)) {
             prescription = arguments.get(Constants.PRESCRIPTION_KEY);
         }
-        boolean containsSymptom = symptom == null || symptom.isEmpty();
-        boolean containsDiagnosis = diagnosis == null || diagnosis.isEmpty();
-        boolean containsPrescription = prescription == null || prescription.isEmpty();
+        boolean containsSymptom = symptom != null && !symptom.isEmpty();
+        boolean containsDiagnosis = diagnosis != null && !diagnosis.isEmpty();
+        boolean containsPrescription = prescription != null && !prescription.isEmpty();
         if (!containsSymptom && !containsDiagnosis && !containsPrescription) {
             throw new InvalidInputException(InvalidInputException.Type.EMPTY_DESCRIPTION);
         }

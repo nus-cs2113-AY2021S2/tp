@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class RetrieveCommand extends Command {
-    
+
     /**
      * This is the constructor of the command. Arguments are passed to parent class.
      *

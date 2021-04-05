@@ -146,4 +146,23 @@ class RecordCommandTest {
         assertEquals(1, records.size());
     }
 
+    @Test
+    public void executeRecordCommand_emptyStringAsInputs_recordAdded() {
+        Data data = new Data();
+        Patient patient = new Patient("S1234567D");
+        data.setPatient(patient);
+        data.loadCurrentPatient(patient.getID());
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "record");
+        arguments.put("payload", "31/03/2021");
+        arguments.put("s", "");
+        arguments.put("p", "");
+        Ui ui = new Ui();
+        RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            recordCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, invalidInputException.getMessage());
+    }
+
 }
