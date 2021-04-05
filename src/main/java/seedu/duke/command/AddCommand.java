@@ -19,7 +19,7 @@ import static seedu.duke.common.Constant.OPTION_EXPENSE;
 import static seedu.duke.common.Constant.OPTION_LOAN;
 import static seedu.duke.common.Constant.OPTION_PERSON;
 import static seedu.duke.common.Constant.OPTION_SAVING;
-import static seedu.duke.common.Constant.FILE_DELIMITER;
+import static seedu.duke.common.Constant.FILE_DELIMITER_CHAR;
 import static seedu.duke.common.Validators.validateAmount;
 import static seedu.duke.common.Validators.validateDate;
 
@@ -112,8 +112,8 @@ public class AddCommand extends Command {
     private String getPerson(ArrayList<String> arguments) throws CommandException {
         if (recordType == RecordType.LOAN) {
             String borrowerName = getOptionValue(arguments, COMMAND_ADD, OPTION_PERSON);
-            if (borrowerName.contains(FILE_DELIMITER)) {
-                throw new CommandException("Borrower name cannot contain '" + FILE_DELIMITER + "' as input.",
+            if (borrowerName.contains(FILE_DELIMITER_CHAR)) {
+                throw new CommandException("Borrower name cannot contain '" + FILE_DELIMITER_CHAR + "' as input.",
                         COMMAND_ADD);
             }
             return borrowerName;

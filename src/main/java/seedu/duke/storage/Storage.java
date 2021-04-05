@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 import static seedu.duke.common.Constant.MAX_CREDIT_SCORE;
 import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
-import static seedu.duke.common.Constant.FILE_DELIMITER;
+import static seedu.duke.common.Constant.FILE_DELIMITER_CHAR;
 import static seedu.duke.common.Constant.FINUX_LOGGER;
 
 public class Storage {
@@ -37,7 +37,8 @@ public class Storage {
             "[L]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[01]\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_SAVING = "[S]\\s\\|\\s[^|]+\\s\\|\\s[^|]+\\s\\|\\s[^|]+";
     private static final String REGEX_PATTERN_MAP_ENTRY_RAW_DATA = "[^|]+\\s\\|\\s\\d{1,3}";
-    private static final String FILE_DELIMITER_REGEX = "\\|";
+    private static final String FILE_DELIMITER_CHAR_REGEX = "\\|";
+    private static final String WHITESPACE_CHAR = " ";
     private static final int BORROWER_NAME_INDEX = 0;
     private static final int CREDIT_SCORE_RETURNED_LOANS_INDEX = 1;
     private static final int INDEX_OF_DESCRIPTION = 1;
@@ -90,7 +91,8 @@ public class Storage {
         FileWriter fw = new FileWriter(dataFilePath.toString(), true);
         for (String borrowerName : creditScoreReturnedLoansMap.getBorrowersNames()) {
             int creditScore = creditScoreReturnedLoansMap.getCreditScoreOf(borrowerName);
-            fw.write(borrowerName + FILE_DELIMITER + creditScore + System.lineSeparator());
+            fw.write(borrowerName + WHITESPACE_CHAR + FILE_DELIMITER_CHAR + WHITESPACE_CHAR + creditScore
+                    + System.lineSeparator());
         }
         fw.close();
     }
@@ -155,7 +157,7 @@ public class Storage {
     }
 
     private String extractArg(String rawData, int index) throws InvalidFileInputException {
-        String[] args = rawData.split(FILE_DELIMITER_REGEX);
+        String[] args = rawData.split(FILE_DELIMITER_CHAR_REGEX);
         if (index < 0 || index > args.length) {
             throw new InvalidFileInputException();
         }
@@ -222,7 +224,7 @@ public class Storage {
     }
 
     private String[] loadMapEntryRawData(String rawData) throws InvalidFileInputException {
-        String[] mapEntryRawData = rawData.split(FILE_DELIMITER_REGEX);
+        String[] mapEntryRawData = rawData.split(FILE_DELIMITER_CHAR_REGEX);
         mapEntryRawData[BORROWER_NAME_INDEX] = mapEntryRawData[BORROWER_NAME_INDEX].strip();
         mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX] = mapEntryRawData[CREDIT_SCORE_RETURNED_LOANS_INDEX].strip();
         String borrowerNameInLowerCase = mapEntryRawData[BORROWER_NAME_INDEX].toLowerCase();
