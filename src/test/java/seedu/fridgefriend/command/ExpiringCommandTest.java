@@ -37,7 +37,9 @@ public class ExpiringCommandTest {
         expiringCommand.execute();
         String expectedMessage = "Expired message: No food has expired! Congratulations!"
                 + "Expiring message: These are the food expiring in the next week:\n"
-                + "1. Food name: pork, category: MEAT, expiry: 11-04-2021, stored in: "
+                + "1. Food name: lettuce, category: VEGETABLE, expiry: 12-04-2021, stored in: "
+                + "LOWER_SHELF, quantity: 100\n"
+                + "2. Food name: pork, category: MEAT, expiry: 11-04-2021, stored in: "
                 + "MIDDLE_SHELF, quantity: 500";
         String actualMessage = expiringCommand.messageForTesting();
         assertEquals(expectedMessage, actualMessage);
