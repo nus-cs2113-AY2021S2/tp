@@ -40,11 +40,11 @@ public class PinTask {
                     addTaskToPinnedTasks(TaskManager.finalExams.get(taskNumber - 1), FINAL_EXAM_TYPE);
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printRepeatInputUntilValidMessage();
                 }
                 return;
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printRepeatInputUntilValidMessage();
             }
         }
     }

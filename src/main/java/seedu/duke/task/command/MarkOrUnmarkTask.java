@@ -40,11 +40,11 @@ public class MarkOrUnmarkTask {
                     toggleTaskStatus(taskNumber, FINAL_EXAM_TYPE);
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printRepeatInputUntilValidMessage();
                 }
                 return;
             } catch (NumberFormatException | IndexOutOfBoundsException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printRepeatInputUntilValidMessage();
             }
         }
     }
@@ -56,27 +56,37 @@ public class MarkOrUnmarkTask {
         if (taskStatus.equals(DONE_STATUS)) {
             Ui.printTaskisDoneMessage();
             String input = Ui.readCommand().trim();
-            if (input.equalsIgnoreCase("Y")) {
-                assert input.equalsIgnoreCase("Y") : "input should be Y";
-                task.markAsUnDone();
-                boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(),
-                        task.getDescription(), task.getStatus(), task.getMessage());
-                markPinnedTaskAsUnDone(taskIsPinned, task);
-                assert task.getStatus().equals(NOT_DONE_STATUS) : "Task should not be marked as done";
-                Ui.printUnmarkedTaskMessage(task);
+            while (!input.equalsIgnoreCase("Y")) {
+                if (input.equalsIgnoreCase("N")) {
+                    return;
+                }
+                System.out.println("Invalid input! Please input Y or N.");
+                input = Ui.readCommand();
             }
+            assert input.equalsIgnoreCase("Y") : "input should be Y";
+            task.markAsUnDone();
+            boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(),
+                    task.getDescription(), task.getStatus(), task.getMessage());
+            markPinnedTaskAsUnDone(taskIsPinned, task);
+            assert task.getStatus().equals(NOT_DONE_STATUS) : "Task should not be marked as done";
+            Ui.printUnmarkedTaskMessage(task);
         } else if (taskStatus.equals(NOT_DONE_STATUS)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
-            if (input.equalsIgnoreCase("Y")) {
-                assert input.equalsIgnoreCase("Y") : "input should be Y";
-                task.markAsDone();
-                boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(),
-                        task.getDescription(), task.getStatus(), task.getMessage());
-                markPinnedTaskAsDone(taskIsPinned, task);
-                assert task.getStatus().equals(DONE_STATUS) : "Task should be marked as done";
-                Ui.printMarkedTaskMessage(task);
+            while (!input.equalsIgnoreCase("Y")) {
+                if (input.equalsIgnoreCase("N")) {
+                    return;
+                }
+                System.out.println("Invalid input! Please input Y or N.");
+                input = Ui.readCommand();
             }
+            assert input.equalsIgnoreCase("Y") : "input should be Y";
+            task.markAsDone();
+            boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(),
+                    task.getDescription(), task.getStatus(), task.getMessage());
+            markPinnedTaskAsDone(taskIsPinned, task);
+            assert task.getStatus().equals(DONE_STATUS) : "Task should be marked as done";
+            Ui.printMarkedTaskMessage(task);
         }
     }
 
