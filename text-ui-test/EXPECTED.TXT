@@ -65,6 +65,8 @@ Sorry my friend, the date must be in the form 'dd-mm-yyyy'.
 -----------------------------------------------------------------
 Sorry my friend, the quantity must be a positive number.
 -----------------------------------------------------------------
+Sorry my friend, ''mff'' is not a valid category.
+-----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
 -----------------------------------------------------------------
 Here are the items in your fridge:

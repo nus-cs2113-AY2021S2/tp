@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -42,7 +43,7 @@ class ListCommandTest {
 
     //@@author Vinci-Hu
     @Test
-    public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() {
+    public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() throws InvalidFoodCategoryException {
         ListCommand listCommand = new ListCommand("MEAT");
         listCommand.setData(fridge);
         String expectedMessage = "These are the MEAT in your fridge:\n"

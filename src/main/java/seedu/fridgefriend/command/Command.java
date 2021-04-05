@@ -1,9 +1,6 @@
 package seedu.fridgefriend.command;
 
-import seedu.fridgefriend.exception.FoodNameNotFoundException;
-import seedu.fridgefriend.exception.InvalidInputException;
-import seedu.fridgefriend.exception.InvalidQuantityException;
-import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
+import seedu.fridgefriend.exception.*;
 import seedu.fridgefriend.food.Fridge;
 
 /**
@@ -26,7 +23,7 @@ public abstract class Command {
 
     //@@author SimJJ96
     public abstract void execute() throws InvalidInputException, RepetitiveFoodIdentifierException,
-            InvalidQuantityException, FoodNameNotFoundException;
+            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException;
 
     //@@author Vinci-Hu
     public void setData(Fridge fridge) {

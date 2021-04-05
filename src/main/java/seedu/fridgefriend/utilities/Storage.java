@@ -78,7 +78,8 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      */
     private static void checkFridgeDataDirectory() throws FileNotFoundException, InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
         Path path = Paths.get(DATA_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -95,7 +96,8 @@ public class Storage {
      * @throws InvalidDateException if the date cannot be parsed
      */
     private static void readFridgeData() throws FileNotFoundException, InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
         File file = new File(DATA_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -114,7 +116,8 @@ public class Storage {
      * @throws InvalidFoodCategoryException if category in data file cannot be parsed
      */
     private static void populateFridge(String line) throws InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException {
         String[] parameters = line.split(":");
 
         String name = parameters[1].substring(1, parameters[1].indexOf((",")));
@@ -181,7 +184,8 @@ public class Storage {
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void checkLimitsDirectory()
-            throws FileNotFoundException, EmptyDescriptionException, InvalidQuantityException {
+            throws FileNotFoundException, EmptyDescriptionException,
+            InvalidQuantityException, InvalidFoodCategoryException {
         Path path = Paths.get(LIMITS_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -200,7 +204,8 @@ public class Storage {
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void readLimitsData()
-            throws FileNotFoundException, EmptyDescriptionException, InvalidQuantityException {
+            throws FileNotFoundException, EmptyDescriptionException,
+            InvalidQuantityException, InvalidFoodCategoryException {
         File file = new File(LIMITS_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -218,8 +223,8 @@ public class Storage {
      * @throws EmptyDescriptionException if quantity in data file is empty
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
-    private static void populateFoodCategory(String line) 
-            throws EmptyDescriptionException, InvalidQuantityException {
+    private static void populateFoodCategory(String line)
+            throws EmptyDescriptionException, InvalidQuantityException, InvalidFoodCategoryException {
         String[] parameters = line.split(":");
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(parameters[0]);
         int quantity = Parser.parseIntegerQuantity(parameters[1]);

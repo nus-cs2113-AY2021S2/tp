@@ -1,6 +1,9 @@
 package seedu.fridgefriend.food;
 
 //@@author Vinci-Hu
+
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+
 /**
  * Subject to changes with discussion.
  */
@@ -41,12 +44,14 @@ public enum FoodCategory {
     }
     //@author
 
-    public static FoodCategory convertStringToFoodCategory(String rawCategoryStr) {
+    public static FoodCategory convertStringToFoodCategory(String rawCategoryStr)
+            throws InvalidFoodCategoryException {
         String processedCategoryStr = rawCategoryStr.toUpperCase();
         if (FoodCategory.contains(processedCategoryStr)) {
             return FoodCategory.valueOf(processedCategoryStr);
-        } else {
-            return FoodCategory.OTHER;
+        }
+        else {
+            throw new InvalidFoodCategoryException(rawCategoryStr);
         }
     }
 

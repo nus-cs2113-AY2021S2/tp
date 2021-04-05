@@ -1,5 +1,6 @@
 package seedu.fridgefriend.command;
 
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -28,7 +29,7 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, InvalidFoodCategoryException {
         if (description.equals("")) {
             LoggingHandler.logInfo("Listing all food.");
             listAll();
@@ -76,7 +77,7 @@ public class ListCommand extends Command {
         return message.toString();
     }
 
-    private void listByCategory() {
+    private void listByCategory() throws InvalidFoodCategoryException {
         String message = getListByCategoryMessage();
         Ui.printMessage(message);
     }
@@ -86,7 +87,7 @@ public class ListCommand extends Command {
      *
      * @return string of food that match the category in the fridge
      */
-    public String getListByCategoryMessage() {
+    public String getListByCategoryMessage() throws InvalidFoodCategoryException {
         LoggingHandler.logInfo("Category detected:" + description);
         StringBuilder message = new StringBuilder("These are the " + description + " in your fridge:");
         for (int i = 0; i < fridge.getSize(); i++) {
@@ -101,7 +102,7 @@ public class ListCommand extends Command {
         return FoodCategory.contains(description);
     }
 
-    private String getMatchCategoryFoodDescription(int index) {
+    private String getMatchCategoryFoodDescription(int index) throws InvalidFoodCategoryException {
         String foodDescription = "";
         FoodCategory categoryToFind = FoodCategory.convertStringToFoodCategory(description);
         Food food = fridge.getFood(index);

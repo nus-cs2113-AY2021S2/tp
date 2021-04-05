@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import seedu.fridgefriend.exception.InvalidDateException;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.food.ExpiryDate;
@@ -41,9 +42,33 @@ class AddCommandTest {
     }
     //@@author
 
+    //@@author leeyp
+    @Test
+    public void addCommand_foodWithOtherCategory() throws RepetitiveFoodIdentifierException,
+            InvalidQuantityException, InvalidDateException {
+        AddCommand addCommand = new AddCommand("goose", FoodCategory.OTHER,
+                "30-07-2021", FoodStorageLocation.FREEZER, 1);
+        addCommand.setData(fridge);
+        addCommand.execute();
+        assertEquals("goose", fridge.getFood(0).getFoodName());
+        assertEquals(FoodCategory.OTHER, fridge.getFood(0).getCategory());
+        assertEquals(FoodStorageLocation.FREEZER, fridge.getFood(0).getStorageLocation());
+        assertEquals(1, fridge.getFood(0).getQuantity());
+
+        ExpiryDate expiryDate = new ExpiryDate("30-07-2021");
+        assertEquals(expiryDate.getExpiry(), fridge.getFood(0).getExpiryDate().getExpiry());
+
+        String expectedMessage = "Great! I have added goose into your fridge.\n"
+                + "Details: Food name: goose, category: OTHER, "
+                + "expiry: 30-07-2021, stored in: FREEZER, quantity: 1";
+        String actualMessage = addCommand.getMessagePrintedToUser();
+        assertEquals(expectedMessage, actualMessage);
+    }
+    //@@author
+
     //@@author Vinci-Hu
     @Test
-    public void addCommand_foodInCorrectFormat_successfullyAdded()
+    public void addCommand_foodCorrectFormat_successfullyAdded()
             throws InvalidDateException, RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);

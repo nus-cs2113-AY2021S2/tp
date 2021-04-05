@@ -174,7 +174,7 @@ public class Parser {
      */
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException {
         Command addCommand = parseAddDescription(description);
         return addCommand;
     }
@@ -195,7 +195,7 @@ public class Parser {
      */
     private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException, InvalidFoodCategoryException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -232,11 +232,10 @@ public class Parser {
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidIndexException if the index given in description is out of bounds
      */
     private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidQuantityException,
-            InvalidInputException, FoodNameNotFoundException {
+            InvalidInputException {
         Command removeCommand = parseRemoveDescription(description);
         return removeCommand;
     }
@@ -357,7 +356,7 @@ public class Parser {
         return clearCommand;
     }
 
-    //@@author kwokyto
+    //@@author leeyp
     /**
      * Returns a HistoryCommand object.
      *
