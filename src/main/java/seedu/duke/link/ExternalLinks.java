@@ -39,8 +39,13 @@ public class ExternalLinks extends Links {
             case DELETE_LINK_COMMAND:
                 viewLinks();
                 Ui.printLinkToDelete();
-                int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
-                LinkInfo.deleteLink(deleteIndex);
+                try {
+                    int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+                    LinkInfo.deleteLink(deleteIndex);
+                } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                    Ui.printRepeatInputUntilValidMessage();
+                    continue;
+                }
                 break;
             case VIEW_LINK_COMMAND:
                 viewLinks();

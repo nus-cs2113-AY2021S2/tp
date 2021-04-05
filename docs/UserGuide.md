@@ -174,7 +174,17 @@ understanding.
 >**<span style="color: red"> WARNING! </span>**  
 > 1. Ending the application abruptly may cause changes to be discarded!
 > 2. Please do not modify the UniTracker Data folder and its files if they exist.
+> 3. Unfortunately once you enter an action, you would have to complete it. There is currently no way of having a forced escape out of the action, but we will work on implementing that in future versions.
 
+Main Menu:
+````
+Main Menu:
+[1] Module Information
+[2] CAP Simulator/Calculator
+[3] Task Manager
+[4] External Links
+[5] Exit Program
+````
 ### 3.1 Module Information
 
 The Module Information feature allows you to add/delete modules,  
@@ -1016,6 +1026,8 @@ Following this, if you were to [view all your tasks](#334-view-all-tasks), it wi
 The Links feature allows you to add and keep track of http and https links, and the meeting
 password.
 
+To access this menu, please enter `4` from the Main Menu.
+
 Links menu:
 
 ````
@@ -1027,7 +1039,7 @@ Please choose which action you would like to do and enter the number:
 [4] --- Exit to main menu
 ````
 
-#### 3.4.1 External Links
+#### 3.4.1 External Links Menu
 
 Add, remove or view all your links (except zoom links) here.
 
@@ -1035,6 +1047,8 @@ By default, the External Links list has been populated with
 - https://www.reddit.com/r/nus
 - https://www.luminus.nus.edu.sg
 - https://www.myedu.rec.nus.edu.sg
+
+To access this menu, Please enter `4` to reach the Links Menu, then followed by `1`.
 
 External links menu:
 ````
@@ -1268,9 +1282,11 @@ Features|Menu | Command to enter from the Main Menu
 [Delete a new Task](#333-delete-a-task) | Task Manager | 3, 3 or 1, 12
 [View all Tasks](#334-view-all-tasks) | Task Manager | 3, 4
 [Pin a Task](#335-pin-a-task) | Task Manager | 3, 5
+[External Links Menu](#341-external-links-menu) | External Links | 4, 1
 [Add an External Link](#342-add-external-link) | External Links | 4, 1, 1
 [Remove an External Link](#343-remove-external-link) | External Links | 4, 1, 2
 [View all Links](#344-view-external-links) | External Links | 4, 1 , 3
+[Links Menu](#34-links-menu) | Links | 4
 [Add a Zoom Link](#345-add-zoom-link) | Links | 4, 2 or 1, 13
 [Delete Zoom Link](#346-delete-zoom-link) | Links | 4,3 or 1, 14
 [View Zoom Links](#347-view-zoom-links) | Links | 4, 3
