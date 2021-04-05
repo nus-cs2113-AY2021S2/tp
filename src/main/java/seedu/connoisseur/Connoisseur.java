@@ -1,7 +1,7 @@
 package seedu.connoisseur;
 
+import org.json.JSONException;
 import seedu.connoisseur.commands.Commands;
-import seedu.connoisseur.exceptions.DuplicateException;
 import seedu.connoisseur.parser.Parser;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -13,14 +13,18 @@ public class Connoisseur {
     /**
      * Main entry-point for the java.connoisseur.Connoisseur application.
      */
-    public static void main(String[] args) throws DuplicateException {
-        new Connoisseur();
+    public static void main(String[] args) {
+        try {
+            new Connoisseur();
+        } catch (JSONException je) {
+            System.out.println("Error loading file. Please try again.");
+        }
     }
 
     /**
      * Sets up required files for Connoisseur to start.
      */
-    public Connoisseur() throws DuplicateException {
+    public Connoisseur() {
         Ui ui = new Ui();
         Storage storage = new Storage(ui);
         Commands commands;

@@ -298,7 +298,7 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to edit.
 
 <span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of reviews.
-Otherwise, Connoisseur will prompt you saying that no such recommendation exits.
+Otherwise, Connoisseur will prompt you saying that no such recommendation exists.
 
 As shown in Figure 18 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
 Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .

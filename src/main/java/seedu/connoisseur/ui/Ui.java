@@ -275,7 +275,8 @@ public class Ui {
      * Prints invalid pricing message.
      */
     public void printInvalidPricingMessage() {
-        println("Invalid number please add in a valid pricing!");
+        println("Invalid price range! Please enter numbers up to 2 decimal places "
+                + "between 0.00 and 9999.99, separated by -");
     }
 
     /**
@@ -335,5 +336,9 @@ public class Ui {
 
     public void printInputTooLongMessage_15Char() {
         println(INPUT_TOO_LONG_MESSAGE_15CHAR);
+    }
+
+    public void printInvalidRecommendation() {
+        println("Invalid recommendation title. Please try again.");
     }
 }

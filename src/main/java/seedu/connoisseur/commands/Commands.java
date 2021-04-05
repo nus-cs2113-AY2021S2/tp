@@ -1,5 +1,6 @@
 package seedu.connoisseur.commands;
 
+import seedu.connoisseur.exceptions.ConnoisseurException;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
@@ -78,7 +79,7 @@ public class Commands {
      * @param arguments is the type of help determined by user input.
      */
     public void printHelp(String arguments) {
-        if (arguments == null) {
+        if (arguments == null || arguments.equals("")) {
             ui.printGeneralHelpMessage();
         } else if (arguments.equals("sort")) {
             ui.printSortHelpMessage();
@@ -112,6 +113,13 @@ public class Commands {
      */
     public void invalidCommand() {
         ui.println(INVALID_COMMAND);
+    }
+
+    /**
+     * Print invalid parameters text.
+     */
+    public void invalidParameters() {
+        ui.println("Invalid command. Please do not enter extra parameters or less parameters than required.");
     }
 
     /**
@@ -155,6 +163,7 @@ public class Commands {
      * @param title is the title of review or recommendation to be deleted.
      */
     public void delete(String title) {
+        title = title.toLowerCase();
         if (isReviewMode) {
             reviewList.deleteReview(title);
         } else {
@@ -169,6 +178,7 @@ public class Commands {
      * @param title title of the review to be viewed.
      */
     public void view(String title) {
+        title = title.toLowerCase();
         if (isReviewMode) {
             reviewList.viewReview(title);
         } else {
@@ -182,6 +192,7 @@ public class Commands {
      * @param title title of the review to be viewed.
      */
     public void done(String title) {
+        title = title.toLowerCase();
         if (isReviewMode) {
             ui.printCommandDoesNotExistInReviewMode();
         } else {
