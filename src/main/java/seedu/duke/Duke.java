@@ -32,7 +32,7 @@ public class Duke {
                     try {
                         Storage.saveAllFiles();
                     } catch (IOException e) {
-                        System.out.println("Files could not be saved:(");
+                        Ui.printFilesCouldNotBeSavedMessage();
                     }
                     break;
                 }
