@@ -44,6 +44,8 @@ It is written in Java, and has more than 4.3kLoC.
    * `bye`: Exits the app.
 6. Refer to the **Features** below for details of each command.
 
+:warning: Do ***NOT*** modify text files in the `/data` folder in order to prevent errors and loss of data.
+
 ## Features
 
 **Notes about the command format:**
