@@ -215,7 +215,18 @@ When the user attempts to add a new recommendation,
 ###8.2 Types of tests
 ##Appendix
 ###Appendix A: Product Scope
-###Appendix B: User Stores
+###Appendix B: User Stories
+|Version| As a ... | I want to ... | So that I can ...|
+|--------|----------|---------------|------------------|
+|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|user|see the number of recommendations I have|keep track of the number of reviews I've made|
+|v1.0|user|be able to save my previous recommendations|refer to the old entries that I have|
+|v1.0|busy user|be able to do quick ratings|save time|
+|v1.0|user|delete selected items that I no longer wish to recommend|edit my list according to my liking|
+|v1.0|busy user|have a template to guide my reviews|input my reviews quickly|
+|v2.0|indecisive user|change my review and opinnions on things|record my opinions accurately at all times|
+|v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
+|v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
 ###Appendix C: Use Cases
 ###Appendix D: Non-Functional Requirements
 ###Appendix E: Glossary
