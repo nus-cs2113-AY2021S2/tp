@@ -97,8 +97,8 @@ public class Messages {
     public static final String INPUT_TOO_LONG_MESSAGE_15CHAR = "Please enter an input with less than 15 characters.";
     public static final String CHANGE_RECO_TITLE = "It seems like you have already experienced this!";
     public static final String ABANDON_RECO = "Would you like to abandon adding this recommendation?(y/n)";
-    public static final String INVALIDPRICE_LOW = "Please input a price higher or equal to 0.00";
-    public static final String INVALIDPRICE_HIGH = "Please input a price lower than 9999.99";
+    public static final String INVALIDPRICE_LOW = "Please input a price higher than or equal to 0.00";
+    public static final String INVALIDPRICE_HIGH = "Please input a price lower than or equal to 9999.99";
 
     // Add
     public static final String QUICK_PROMPT = "Do you want to add a quick review? (y/n)";
