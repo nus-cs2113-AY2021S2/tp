@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -24,11 +25,9 @@ class AddCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             addCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals("Patient S1234567D has been added!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);

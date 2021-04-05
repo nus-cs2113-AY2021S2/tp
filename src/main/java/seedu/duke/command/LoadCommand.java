@@ -22,8 +22,7 @@ public class LoadCommand extends Command {
         // TODO: Replace printed string with actual details of the patient.
         String id = arguments.get("payload");
         id = id.toUpperCase();
-        data.loadCurrentPatient(id);
-        if (data.currentPatient != null) {
+        if (data.loadCurrentPatient(id)) {
             ui.printMessage("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
         } else {
             ui.printMessage("Patient\'s data is not found.");
