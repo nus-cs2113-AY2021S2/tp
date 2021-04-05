@@ -4,13 +4,16 @@ import movieApp.Cineplex;
 import movieApp.Movie;
 import movieApp.Review;
 import movieApp.Showtimes;
+import movieApp.parser.MovieFilter;
 import movieApp.user.Admin;
 import movieApp.user.Customer;
 import movieApp.user.User;
-import movieApp.parser.MovieFilter;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Database {
@@ -38,8 +41,7 @@ public class Database {
 
         ArrayList<User> users = new ArrayList<>();
 
-        while((line=br_user.readLine())!=null)
-        {
+        while ((line = br_user.readLine()) != null) {
             String[] userSplit = line.split("\\|");
             String username = userSplit[1].trim();
             String password = userSplit[2].trim();
@@ -111,9 +113,7 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The movie has been removed from the database.");
@@ -122,7 +122,7 @@ public class Database {
     public static void editMovie(int choice, int type) throws Exception {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
         Scanner select = new Scanner(System.in);
-        switch(type){
+        switch (type) {
             case 1:
                 System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
                 String newTitle = select.nextLine();
@@ -147,9 +147,7 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The changes have been saved to the database.");
@@ -170,12 +168,47 @@ public class Database {
                 continue;
             }
             integer_input = sc.nextInt();
-            if ((integer_input < 1) || (integer_input > maxValue))  {
+            if ((integer_input < 1) || (integer_input > maxValue)) {
                 System.out.println("Please input an integer in range 1 to " + maxValue + "\n");
             }
         }
 
         return integer_input;
+    }
+
+    private static boolean isValidDate(String input) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            format.setLenient(false);
+            format.parse(input);
+        } catch (ParseException e) {
+            System.out.println("Invalid Date. The format must be dd-MM-yyyy");
+            return false;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid Date. The format must be dd-MM-yyyy");
+            return false;
+        }
+
+        return true;
+    }
+
+    public static int[] getDateTime() throws Exception {
+        System.out.println("Input the date using the format dd-mm-yyyy");
+        Scanner scanner = new Scanner(System.in);
+        String date = scanner.nextLine();
+        while (!isValidDate(date)) {
+            date = scanner.nextLine();
+        }
+        Date date1 = new SimpleDateFormat("dd-MM-yyyy").parse(date);
+        int[] dates = new int[3];
+        dates[0] = date1.getDate();
+        dates[1] = date1.getMonth() + 1;
+        dates[2] = date1.getYear() + 1900;
+        System.out.println(dates[0]);
+        System.out.println(dates[1]);
+        System.out.println(dates[2]);
+
+        return dates;
     }
 
     public static void addMovie() throws Exception {
@@ -184,22 +217,39 @@ public class Database {
 
         System.out.println("Movie title: ");
         String newTitle = select.nextLine();
-        System.out.println(newTitle);
+        // System.out.println(newTitle);
 
         int newID = MovieDatabase.size() + 1;
-        System.out.println(newID);
+        // System.out.println(newID);
 
+        int newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear;
 
-        System.out.println("Enter movie start date ");
-        int newStartDate = getIntegerInput("Date (DD): ", 31);
-        int newStartMonth = getIntegerInput("Month (MM): ", 12);
-        int newStartYear = getIntegerInput("Year (YYYY): ", 2100);
+        do {
+            System.out.println("Enter movie start date ");
+            int[] newStart = getDateTime();
+            newStartDate = newStart[0];
+            newStartMonth = newStart[1];
+            newStartYear = newStart[2];
 
+            System.out.println("Enter movie end date ");
+            int[] newEnd = getDateTime();
+            newEndDate = newEnd[0];
+            newEndMonth = newEnd[1];
+            newEndYear = newEnd[2];
 
-        System.out.println("Enter movie end date ");
-        int newEndDate = getIntegerInput("Date (DD): ", 31);
-        int newEndMonth = getIntegerInput("Month (MM): ", 12);
-        int newEndYear = getIntegerInput("Year (YYYY): ", 2100);
+            if (newEndYear < newStartYear) {
+                System.out.println("The end year cannot be earlier than the start year.");
+                continue;
+            } else if (newEndMonth < newStartMonth) {
+                System.out.println("The end month cannot be earlier than the start month.");
+                continue;
+            } else if (newEndDate < newStartDate) {
+                System.out.println("The end date cannot be earlier than the start date.");
+                continue;
+            }
+
+            break;
+        } while (true);
 
 
         System.out.println("Movie director: ");
@@ -230,23 +280,21 @@ public class Database {
             oos_movie.writeObject(MovieDatabase);
             oos_movie.close();
             fos_movie.close();
-        }
-        catch (IOException ioe)
-        {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
         }
         System.out.println("The new movie \"" + newMovie.getMovieTitle() + "\" have been saved to the database.");
 
     }
 
-    public static void updateBookings(){
+    public static void updateBookings() {
         writeToFile("data/showtimeList.txt", ShowtimesDatabase);
         writeToFile("data/userSerialList.txt", users);
         writeToFile("data/cineplexList.txt", CineplexDatabase);
         writeToFile("data/movieList.txt", MovieDatabase);
     }
 
-    private static void writeToFile(String fileName, Object object){
+    private static void writeToFile(String fileName, Object object) {
         try {
             File f_movie = new File(fileName);
             FileOutputStream fos_movie = new FileOutputStream(f_movie);
