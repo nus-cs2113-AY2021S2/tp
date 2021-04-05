@@ -10,7 +10,10 @@ import stores.Store;
 import ui.Ui;
 import checkuser.CheckUser;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -24,19 +27,21 @@ public class NusFoodReviews {
     private static int canteenIndex = -1;
     private static int storeIndex = -1;
 
-    public NusFoodReviews(String filePath) {
+    public NusFoodReviews(BufferedReader reader) throws IOException {
         ui = new Ui();
         parser = new Parser(this, ui);
-        storage = new Storage(filePath);
+        storage = new Storage(reader);
         canteens = storage.load();
     }
 
     /**
      * Main entry-point for the java.nusfoodreviews.NusFoodReviews application.
      */
-    public static void main(String[] args) throws DukeExceptions {
-        new NusFoodReviews("data/storage.txt").run();
-
+    public static void main(String[] args) throws DukeExceptions, IOException {
+        InputStream inputStream = NusFoodReviews.class.getClassLoader().getResourceAsStream("storage.txt");
+        InputStreamReader streamReader = new InputStreamReader(inputStream);
+        BufferedReader reader = new BufferedReader(streamReader);
+        new NusFoodReviews(reader).run();
     }
 
     public void run() throws DukeExceptions {

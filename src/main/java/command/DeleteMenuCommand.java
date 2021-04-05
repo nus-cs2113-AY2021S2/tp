@@ -67,7 +67,7 @@ public class DeleteMenuCommand extends Command {
         String menuName = store.getMenus().get(menuNumber).getItemName();
         store.deleteMenu(menuNumber);
         ui.menuDeleted(menuName);
-        Storage.save(new FileWriter("data/storage.txt"),canteens);
+        Storage.save(new FileWriter(Storage.fileName),canteens);
     }
 
 }
