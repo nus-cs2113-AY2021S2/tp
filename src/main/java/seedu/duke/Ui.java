@@ -1,6 +1,8 @@
 package seedu.duke;
 
 
+import seedu.exceptions.DeliveryOutOfBoundsException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +15,6 @@ import java.util.Scanner;
  */
 public class Ui {
     protected static final String DIVIDER = "-------------------------------------";
-    // this is done because the HELP_MESSAGE is being printed in 2 places (welcome and help)
     protected static final String HELP_MESSAGE =
             "The following are several accepted commands by Diliveri:\n\n" +
                     "'help': Displays this help message\n" +
@@ -157,6 +158,35 @@ public class Ui {
         System.out.println(deliveryman);
     }
 
+    public void processViewDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
+        int deliveryNumber = Integer.parseInt(parser.parseInput("view", userArguments, deliveryman));
+        try {
+            parser.validateDeliveryNumber(deliveryNumber);
+            showDeliveryDetails(deliveryNumber);
+        } catch (DeliveryOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void processCompleteDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
+        int deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
+        try {
+            parser.validateDeliveryNumber(deliveryNumber);
+            Delivery.completeDelivery(deliveryman, deliveryNumber);
+            showCompletedDelivery(deliveryNumber);
+        } catch (DeliveryOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void processDeliveryRoute() {
+        Filter deliveryFilter = new Filter();
+        Map deliveryMap = new Map();
+        ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
+        ArrayList<Delivery> sortedDeliveries = deliveryMap.shortestPathGenerator(uncompletedDeliveries);
+        printMap(sortedDeliveries);
+    }
+
     /**
      * Method backbone for menu selection
      * Parser is only called for commands that require argument parsing
@@ -165,9 +195,7 @@ public class Ui {
     public void showLoopingMenuUntilExit(Deliveryman deliveryman) {
         Parser parser = new Parser();
         Scanner sc = new Scanner(System.in);
-        String userInput;
-        String userCommand;
-        String userArguments;
+        String userInput, userCommand, userArguments;
         int deliveryNumber;
         do {
             promptUserInput();
@@ -182,8 +210,6 @@ public class Ui {
                     showProfile(deliveryman);
                     break;
                 case "edit":
-                case "editprofile":
-                    // todo: extract the below as a method
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
                     deliveryman.updateProfile(inputProfileData);
                     break;
@@ -194,32 +220,23 @@ public class Ui {
                     showDeliveryList();
                     break;
                 case "view":
-                case "viewdelivery":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments, deliveryman));
-                    // todo: exception handling (delivery numbers that are out of range)
-                    showDeliveryDetails(deliveryNumber);
+                    processViewDelivery(userArguments, deliveryman, parser);
                     break;
                 case "complete":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
-                    // todo: exception handling (numbers that are already complete/out of range) !important
-                    Delivery.completeDelivery(deliveryman, deliveryNumber);
-                    showCompletedDelivery(deliveryNumber);
+                    processCompleteDelivery(userArguments, deliveryman, parser);
                     break;
                 case "record":
                     showRecords(deliveryman.getRecords());
                     break;
                 case "route":
                 case "deliveryroute":
-                    Filter deliveryFilter = new Filter();
-                    Map deliveryMap = new Map();
-                    ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
-                    ArrayList<Delivery> sortedDeliveries = deliveryMap.shortestPathGenerator(uncompletedDeliveries);
-                    printMap(sortedDeliveries);
+                    processDeliveryRoute();
                     break;
                 case "bye":
+                    showFarewellScreen();
                     break;
                 default:
-                    System.out.println("Incorrect entry"); // raise exception
+                    System.out.println("Please enter a valid command!");
             }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
