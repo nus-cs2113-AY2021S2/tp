@@ -3,11 +3,13 @@ package seedu.duke;
 public class Duke {
     public Ui ui;
     public Deliveryman deliveryman;
+    public Menu menu;
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public Duke() {
         ui = new Ui();
+        menu = new Menu();
     }
 
 
@@ -15,7 +17,7 @@ public class Duke {
         deliveryman = DataManager.loadProfile();
         Route.loadRoutes();
         ui.showWelcomeScreen();
-        ui.showLoopingMenuUntilExit(deliveryman);
+        menu.showLoopingMenuUntilExit(deliveryman);
         ui.showFarewellScreen();
     }
 
