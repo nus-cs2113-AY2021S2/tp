@@ -17,7 +17,7 @@ public class EmployeeController {
         System.out.println("Employee added");
     }
 
-    public static void addSchedule(ArrayList<Employee> employees){
+    public static void addSchedule(ArrayList<Employee> employees) {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
         for (Employee person : employees) {
@@ -64,7 +64,7 @@ public class EmployeeController {
         int i;
         System.out.println("Here is the employee list:");
         for (i = 0; i < employees.size(); i++) {
-            System.out.println(i+1 + ") " + employees.get(i).getName());
+            System.out.println(i + 1 + ") " + employees.get(i).getName());
         }
     }
 
@@ -89,7 +89,7 @@ public class EmployeeController {
     }
 
     public static Employee getEmployeeObjectByName(String name, ArrayList<Employee> employees) {
-        for (Employee person: employees) {
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 return person;
             }

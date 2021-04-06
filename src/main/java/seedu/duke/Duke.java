@@ -3,6 +3,7 @@ package seedu.duke;
 import controller.AppController;
 
 import java.io.IOException;
+
 import ui.ui;
 
 public class Duke {

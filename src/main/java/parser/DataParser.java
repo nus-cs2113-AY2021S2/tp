@@ -13,7 +13,7 @@ public class DataParser {
         Employee parsedEmployee = new Employee(null);
 
         parsedEmployee.setName(splitByHex[0]);
-        for (int scheduleIndex=1; scheduleIndex<splitByHex.length; scheduleIndex++) {
+        for (int scheduleIndex = 1; scheduleIndex < splitByHex.length; scheduleIndex++) {
             parsedEmployee.addSchedule(splitByHex[scheduleIndex]);
         }
 
@@ -30,7 +30,7 @@ public class DataParser {
         parsedShift.setShiftIndex(Integer.parseInt(splitByHex[2]));
 
         ArrayList<String> employeeNames = new ArrayList<>();
-        for (int shiftIndex=3; shiftIndex< splitByHex.length; shiftIndex++) {
+        for (int shiftIndex = 3; shiftIndex < splitByHex.length; shiftIndex++) {
             employeeNames.add(splitByHex[shiftIndex]);
         }
         parsedShift.setEmployees(employeeNames);
