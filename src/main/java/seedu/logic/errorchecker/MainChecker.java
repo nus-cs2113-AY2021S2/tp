@@ -24,6 +24,16 @@ public class MainChecker {
         }
     }
 
+    public static void checkNumInput2(String[] array, int max, int min) throws InsufficientInputException, ExcessInputException {
+
+        if (array.length < min) {
+            throw new InsufficientInputException();
+        }
+        if (array.length > max) {
+            throw new ExcessInputException();
+        }
+    }
+
     public static void checkDataNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
         if (line.split("\\|").length < min) {
             throw new InsufficientInputException();
@@ -46,6 +56,13 @@ public class MainChecker {
 
     public static void checkBlankInput(String line) throws NoInputException {
         String[] array = line.split("/");
+        for (String s : array) {
+            if (s.trim().equals("")) {
+                throw new NoInputException();
+            }
+        }
+    }
+    public static void checkBlankInput2(String[] array) throws NoInputException {
         for (String s : array) {
             if (s.trim().equals("")) {
                 throw new NoInputException();
