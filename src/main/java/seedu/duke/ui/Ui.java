@@ -63,7 +63,7 @@ public class Ui {
     /**
      * Prints the initialization error with the application UI.
      */
-    public static void printInitError() {
+    public void printInitError() {
         System.out.println(DIVIDER);
         System.out.println();
         System.out.println(MESSAGE_FAILED_INIT);
