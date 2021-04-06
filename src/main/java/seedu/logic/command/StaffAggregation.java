@@ -3,6 +3,7 @@ package seedu.logic.command;
 import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.Staff;
 import seedu.ui.StaffUI;
+import seedu.ui.UI;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,6 +15,8 @@ public class StaffAggregation {
     private static final String NURSE_TYPE = "N";
     private ArrayList<Staff> list = new ArrayList<>();
     protected static int numStaff = 0;
+    protected static int numDoctor = 0;
+    protected static int numNurse = 0;
     private StaffChecker staffChecker = new StaffChecker();
 
     public StaffAggregation() {
@@ -26,6 +29,11 @@ public class StaffAggregation {
 
     public void addStaff(Staff staff) {
         list.add(staff);
+        if (staff.getType().equals(NURSE_TYPE)) {
+            numNurse ++;
+        } else if (staff.getType().equals(DOCTOR_TYPE)) {
+            numDoctor ++;
+        }
         numStaff++;
     }
 
@@ -50,25 +58,30 @@ public class StaffAggregation {
     }
 
     public void list(String... parameter) {
-        if (getNumStaff() == 0){
-            StaffUI.emptyListOutput();
-        }
-        if (parameter[0] == (null)) {
+        if (parameter[0] == (null) && getNumStaff() != 0) {
             for (Staff staff : list) {
+                StaffUI.staffListHeader();
+                UI.showLine();
                 display(staff);
             }
-        } else if (parameter[0].equals("nurses")) {
+        } else if (parameter[0].equals("nurses") && getNumNurse() != 0 ) {
             for (Staff staff : list) {
                 if (staff.getType().equals(NURSE_TYPE)) {
+                    StaffUI.staffListHeader();
+                    UI.showLine();
                     display(staff);
                 }
             }
-        } else if (parameter[0].equals("doctors")) {
+        } else if (parameter[0].equals("doctors") && getNumDoctor() != 0 ) {
             for (Staff staff : list) {
                 if (staff.getType().equals(DOCTOR_TYPE)) {
+                    StaffUI.staffListHeader();
+                    UI.showLine();
                     display(staff);
                 }
             }
+        } else {
+            StaffUI.emptyListOutput();
         }
     }
 
@@ -113,5 +126,11 @@ public class StaffAggregation {
 
     public static int getNumStaff() {
         return numStaff;
+    }
+    public static int getNumNurse() {
+        return numNurse;
+    }
+    public static int getNumDoctor() {
+        return numDoctor;
     }
 }
