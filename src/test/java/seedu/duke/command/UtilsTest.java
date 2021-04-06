@@ -206,12 +206,8 @@ class UtilsTest {
         command2.add("creditscore");
         command2.add(verify2);
         try {
-            if (!verify1.equals(getValue(command1, COMMAND_CREDIT_SCORE))) {
-                throw new CommandException("verify1 not equal");
-            }
-            if (!verify2.equals(getValue(command2, COMMAND_CREDIT_SCORE))) {
-                throw new CommandException("verify2 not equal");
-            }
+            assertEquals(verify1, getValue(command1, COMMAND_CREDIT_SCORE));
+            assertEquals(verify2, getValue(command2, COMMAND_CREDIT_SCORE));
         } catch (CommandException e) {
             fail(e.getMessage());
         }
