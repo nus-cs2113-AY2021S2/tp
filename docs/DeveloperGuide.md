@@ -138,9 +138,11 @@ We have 5 main classes for our key features.
 
 ![Diagram](diagrams/MainArchitecture.png)
 
-### 3.2 UI Class
+### 3.2 UI Component
 
 This class handles the interactions with the user and contains the methods for system output.
+
+### 3.3 Features Component
 
 ---
 
