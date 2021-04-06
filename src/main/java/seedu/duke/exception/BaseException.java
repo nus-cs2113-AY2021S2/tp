@@ -25,8 +25,7 @@ public abstract class BaseException extends Exception {
         Throwable cause = this.getCause();
         if (cause != null) {
             s += System.lineSeparator()
-                    + "... and is caused by ..." + System.lineSeparator()
-                    + Constants.EXCEPTION_INDENT + cause.toString(); 
+                    + "Please enter \"help\"(without quotes) for a list of valid commands.";
         }
 
         return s;
