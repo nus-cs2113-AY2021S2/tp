@@ -1,5 +1,7 @@
-package seedu.duke;
+package seedu.duke.moduleInfo;
 
+import seedu.duke.Storage;
+import seedu.duke.Ui;
 import seedu.duke.capsimulator.ModuleGradeEnum;
 import seedu.duke.link.Links;
 import seedu.duke.task.Assignment;
@@ -99,6 +101,7 @@ public class ModuleInfo {
     private static void addModuleGrade() {
         if (modules.isEmpty()) {
             logger.log(Level.INFO, "You have not added any modules.");
+            //need to print this manually if logging into text file
             return;
         }
         viewAllModules();

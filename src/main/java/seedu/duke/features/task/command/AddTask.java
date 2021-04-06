@@ -1,6 +1,6 @@
 package seedu.duke.task.command;
 
-import seedu.duke.ModuleInfo;
+import seedu.duke.moduleInfo.ModuleInfo;
 import seedu.duke.Ui;
 import seedu.duke.task.Assignment;
 import seedu.duke.task.FinalExam;

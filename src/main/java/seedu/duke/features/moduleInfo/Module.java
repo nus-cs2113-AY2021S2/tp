@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.moduleInfo;
 
 import seedu.duke.task.Task;
 
