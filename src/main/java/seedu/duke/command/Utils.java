@@ -35,6 +35,10 @@ public class Utils {
     private static final String ERROR_TOO_MANY_ARGUMENTS = "too many arguments.";
     private static final String ERROR_TOO_FEW_ARGUMENTS = "not enough arguments.";
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
+    private static final String ERROR_INVALID_ORDER_OPTION = ERROR_INVALID_ORDER
+            + "expected an option instead of ";
+    private static final String ERROR_INVALID_ORDER_COMMAND = ERROR_INVALID_ORDER
+            + "expected command word.";
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
     private static final String ERROR_WRONG_HELP_TYPE = "invalid help type: ";
@@ -251,16 +255,15 @@ public class Utils {
             validateNotEmpty(argument, command);
             break;
         case OPTION:
-            if (isOption(argument)) {
-                break;
+            if (!isOption(argument)) {
+                throw new CommandException(ERROR_INVALID_ORDER_OPTION + argument, command);
             }
-            throw new CommandException(ERROR_INVALID_ORDER + "expected an option instead of " + argument,
-                    command);
+            break;
         case COMMAND:
-            if (argument.equals(command)) {
-                break;
+            if (!argument.equals(command)) {
+                throw new CommandException(ERROR_INVALID_ORDER_COMMAND, command);
             }
-            throw new CommandException(ERROR_INVALID_ORDER + "expected command word.");
+            break;
         case EMPTY_VALUE:
             // Fallthrough
         default:
