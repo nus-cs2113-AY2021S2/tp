@@ -8,10 +8,15 @@ import seedu.duke.task.Task;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.attribute.FileTime;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import static seedu.duke.common.CommonMethods.writeLog;
@@ -56,6 +61,7 @@ public class Loader {
         if (files == null) {
             return moduleCodes;
         }
+        sortFilesByCreationTime(files);
         for (File file : files) {
             if (file.isDirectory()) {
                 moduleCodes.add(file.getName());
@@ -210,6 +216,29 @@ public class Loader {
     private boolean getTrueFalse(String input) {
         //Default is false
         return input.equalsIgnoreCase(TRUE_STRING);
+    }
+
+    //@@author isaharon
+    /**
+     * Sorts array of files according to creation time.
+     *
+     * @param files array of files
+     */
+    private void sortFilesByCreationTime(File[] files) {
+        Arrays.sort(files, new Comparator<File>() {
+            @Override
+            public int compare(File file1, File file2) {
+                FileTime fileTime1 = null;
+                FileTime fileTime2 = null;
+                try {
+                    fileTime1 = (FileTime) Files.getAttribute(file1.toPath(), "creationTime");
+                    fileTime2 = (FileTime) Files.getAttribute(file2.toPath(), "creationTime");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return fileTime1.compareTo(fileTime2);
+            }
+        });
     }
 
 }
