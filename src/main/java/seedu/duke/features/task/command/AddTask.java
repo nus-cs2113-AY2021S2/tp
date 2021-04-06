@@ -1,6 +1,6 @@
 package seedu.duke.features.task.command;
 
-import seedu.duke.features.moduleInfo.ModuleInfo;
+import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.ui.Ui;
 import seedu.duke.features.task.Assignment;
 import seedu.duke.features.task.FinalExam;

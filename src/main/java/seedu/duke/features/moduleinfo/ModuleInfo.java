@@ -1,4 +1,4 @@
-package seedu.duke.features.moduleInfo;
+package seedu.duke.features.moduleinfo;
 
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -186,7 +186,7 @@ public class ModuleInfo {
 
     //Solution below reused from https://www.techiedelight.com/check-string-contains-alphanumeric-characters-java/
     public static boolean moduleNameIsAlphaNumeric(String s) {
-        return s != null && s.matches("^[a-zA-Z0-9]*$") && !s.contains("~~");
+        return s != null && s.matches("^[a-zA-Z0-9]*$");
     }
     
     public static void viewAModule() {

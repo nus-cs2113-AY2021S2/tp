@@ -1,7 +1,7 @@
 package seedu.duke.features.link;
 
-import seedu.duke.features.moduleInfo.Module;
-import seedu.duke.features.moduleInfo.ModuleInfo;
+import seedu.duke.features.moduleinfo.Module;
+import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;

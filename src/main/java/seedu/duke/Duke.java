@@ -2,7 +2,7 @@ package seedu.duke;
 
 import seedu.duke.features.capsimulator.HelpGraduationManager;
 import seedu.duke.features.link.Links;
-import seedu.duke.features.moduleInfo.ModuleInfo;
+import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.features.task.TaskManager;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
@@ -42,28 +42,28 @@ public class Duke {
                     }
 
                     switch (commandInt) {
-                        case 1:
-                            // moduleInfo
-                            ModuleInfo.moduleInfoMenu();
-                            break;
-                        case 2:
-                            // helpGraduation
-                            HelpGraduationManager.execute();
-                            break;
-                        case 3:
-                            // manageTask
-                            TaskManager.execute();
-                            break;
-                        case 4:
-                            // externalLinks
-                            int linkCommandNumber;
-                            Ui.printLinksMessage();
-                            linkCommandNumber = Ui.readCommandToInt();
-                            Links link = new Links(linkCommandNumber);
-                            link.execute();
-                            break;
-                        default:
-                            Ui.printInvalidInputMessage();
+                    case 1:
+                        // moduleInfo
+                        ModuleInfo.moduleInfoMenu();
+                        break;
+                    case 2:
+                        // helpGraduation
+                        HelpGraduationManager.execute();
+                        break;
+                    case 3:
+                        // manageTask
+                        TaskManager.execute();
+                        break;
+                    case 4:
+                        // externalLinks
+                        int linkCommandNumber;
+                        Ui.printLinksMessage();
+                        linkCommandNumber = Ui.readCommandToInt();
+                        Links link = new Links(linkCommandNumber);
+                        link.execute();
+                        break;
+                    default:
+                        Ui.printInvalidInputMessage();
                     }
 
                 } catch (NumberFormatException n) {

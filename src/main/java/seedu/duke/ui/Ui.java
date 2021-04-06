@@ -3,7 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.features.capsimulator.HelpGraduation;
 import seedu.duke.features.link.LinkInfo;
 import seedu.duke.features.link.ZoomLinkInfo;
-import seedu.duke.features.moduleInfo.ModuleInfo;
+import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.features.task.Assignment;
 import seedu.duke.features.task.FinalExam;
 import seedu.duke.features.task.Midterm;
