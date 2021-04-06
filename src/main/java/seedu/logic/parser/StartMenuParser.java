@@ -43,7 +43,6 @@ public class StartMenuParser {
                 c = new MainExit();
                 break;
             default:
-                System.out.println("john");
                 throw new UnrecognizedCommandException();
             }
         } catch (UnrecognizedCommandException e) {
