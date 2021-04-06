@@ -181,34 +181,33 @@ public class FileInfoReader {
         String[] contentParts = content.split(SEPARATOR);
         String activity = contentParts[0].trim();
         String durationString = contentParts[1].trim();
-        int duration = Integer.parseInt(durationString);
+        //int duration = Integer.parseInt(durationString);
         LocalDate recordDate = getDate(contentParts[2]);
-        return new Exercise(activity, duration, recordDate);
+        return new Exercise(activity, durationString, recordDate);
     }
 
     private Record getDietRecord(String content) throws ParseException, TypeException, NumberFormatException {
         String[] contentParts = content.split(SEPARATOR);
         String food = contentParts[0].trim();
         String amountString = contentParts[1].trim();
-        double amount = Double.parseDouble(amountString);
+        //double amount = Double.parseDouble(amountString);
         LocalDate recordDate = getDate(contentParts[2]);
-        return new Diet(food, amount, recordDate);
+        return new Diet(food, amountString, recordDate);
     }
 
     private Record getBodyWeightRecord(String content) throws ParseException, NumberFormatException {
         String[] contentParts = content.split(SEPARATOR);
         String weightString = contentParts[0].trim();
-        double weight = Double.parseDouble(weightString);
+        //double weight = Double.parseDouble(weightString);
         LocalDate recordDate = getDate(contentParts[1]);
-        return new BodyWeight(weight, recordDate);
+        return new BodyWeight(weightString, recordDate);
     }
 
     private Record getSleepRecord(String content) throws ParseException, NumberFormatException {
         String[] contentParts = content.split(SEPARATOR);
         String durationString = contentParts[0].trim();
-        double duration = Double.parseDouble(durationString);
         LocalDate recordDate = getDate(contentParts[1]);
-        return new Sleep(duration, recordDate);
+        return new Sleep(durationString, recordDate);
     }
 
     private String[] getGoalParams(String content) {

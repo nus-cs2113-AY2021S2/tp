@@ -141,12 +141,12 @@ public class CommandParser {
             }
 
             String rawPeriodType = rawParams[1];
-            if (!rawPeriodType.contains("p/")) {
+            if (!rawPeriodType.startsWith("p/")) {
                 return new InvalidCommand(SET);
             }
             rawPeriodType = rawPeriodType.trim().substring(2);
             String targetStr = rawParams[2];
-            if (!targetStr.contains("target/")) {
+            if (!targetStr.startsWith("target/")) {
                 return new InvalidCommand(SET);
             }
             targetStr = targetStr.trim().substring(7);
@@ -158,7 +158,7 @@ public class CommandParser {
                 return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
             params.put("periodType", periodType.toString());
-            params.put("target", String.valueOf(target));
+            params.put("target", targetStr);
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
             switch (e.getMessage()) {
@@ -242,6 +242,9 @@ public class CommandParser {
     }
 
     private CommandRecordType getCommandRecordType(String inputPart) {
+        if (!inputPart.startsWith("t/")) {
+            return INVALID;
+        }
         return CommandRecordType.getType("" + inputPart.trim().charAt(2));
     }
 
@@ -330,9 +333,6 @@ public class CommandParser {
             }
             duration = durationDate[0];
             date = durationDate[1];
-            if (isWorkoutMinutesInvalid(duration)) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
-            }
             params.put("activity", activity);
             params.put("duration", duration);
             params.put("date", date);
@@ -393,9 +393,6 @@ public class CommandParser {
             }
             weight = weightDate[0];
             date = weightDate[1];
-            if (isWeightInvalid(weight)) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
-            }
             params.put("weight", weight);
             params.put("date", date);
             return new AddCommand(BODY_WEIGHT, params);
@@ -526,24 +523,6 @@ public class CommandParser {
         try {
             int sleepDurationInHours = Integer.parseInt(duration);
             return sleepDurationInHours <= 0 || sleepDurationInHours >= 24;
-        } catch (NumberFormatException e) {
-            return true;
-        }
-    }
-
-    private boolean isWorkoutMinutesInvalid(String duration) {
-        try {
-            int workoutMin = Integer.parseInt(duration);
-            return workoutMin <= 0 || workoutMin > 1440;
-        } catch (NumberFormatException e) {
-            return true;
-        }
-    }
-
-    private boolean isWeightInvalid(String weight) {
-        try {
-            double weightInKg = Double.parseDouble(weight);
-            return !(weightInKg > 0);
         } catch (NumberFormatException e) {
             return true;
         }

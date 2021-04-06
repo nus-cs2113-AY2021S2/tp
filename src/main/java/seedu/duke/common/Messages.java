@@ -77,8 +77,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_WORKOUT_MIN = "The duration you entered is invalid.\n"
             + "It should be an positive integer within range 0 and 1440 (not including 0), with the unit of minute.\n"
             + "Please try again.";
-    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is either too high or too low. "
-            + "Keeping a moderate body weight is good for your health.\nAn acceptable value for body weight"
+    public static final String MESSAGE_INVALID_WEIGHT = "Keeping a moderate body weight is good for your health.\n"
+            + "An acceptable value for body weight"
             + " is a positive floating point number within the range 30.0 - 400.0, with the unit of kilogram(kg).\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_FOOD_CATEGORY = "The food category you entered is invalid.\n"
@@ -89,13 +89,13 @@ public class Messages {
     public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current "
             + "or previous days.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
-            + "The acceptable target energy should be a floating point number within"
+            + "An acceptable target energy should be a floating point number within"
             + "range 0.0 - 10000.0 (not including 0.0), with the unit of K cal.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid\n"
-            + "The acceptable target duration should be a floating point number  within "
+            + "An acceptable target duration should be a floating point number  within "
             + "the range 0.0 - 24.0 (not including 0.0), with the unit of hour.\nPlease try again.";
-    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is either too"
-            + "high or too low. Keeping a moderate body weight is good for your health.\nThe acceptable target weight "
+    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "Keeping a moderate body weight is good for "
+            + "your health.\nAn acceptable target weight "
             + "should be a floating point number within range 40.0 - 400.0, with the unit of kilogram (kg).\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_WORKOUT_CATEGORY = "The workout category you entered is invalid.\n"
