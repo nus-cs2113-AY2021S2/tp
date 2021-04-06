@@ -13,8 +13,10 @@ add pork /cat meat /exp 30-06-2021 /loc lower_shelf /qty 20 !@# g!
 search chicken
 add pork no param blabla
 add grouper /cat seafood /exp 04-05-2021 /loc freezer /qty 1
-add oyster /cat seafood /exp 32-46-9876 /loc idontknow /qty 10
-add oyster /cat seafood /exp 04-05-2021 /loc idontknow /qty abc
+add oyster /cat seafood /exp 32-46-9876 /loc freezer /qty 10
+add oyster /cat seafood /exp 04-05-2021 /loc IDONTKNOW /qty 100
+add oyster /cat seafood /exp 04-05-2021 /loc freezer /qty abc
+add goose /cat mff /exp 30-06-2021 /loc lower_shelf /qty 100
 add
 list
 list meat
