@@ -704,49 +704,89 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
 
-This is an example of the welcome screen for the Nurse Schedule Menu.
+This is an example of the welcome screen for the Inventory Menu.
 
 <img src="images/InventoryWelcomeHeader.PNG" width = "600">
 
 #### Adding a drug: `add`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a drug to the drug inventory.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new drug or increase the quantity of an existing drug in the drug inventory.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Name]/[Price]/[Quantity]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted price is valid!
+>1. Make sure that the inputted price is valid and does not have more than 2 decimal places!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `3`, `3.0`, `3.00`
 >   
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
+>2. Any input fields in HealthVault only accepts space and alphanumeric characters!
+>
+>3. Note that the examples for adding a new drug and increasing the quantity of an existing drug are related!
+>
+>4. Avoid using uppercase letters!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(add a new drug)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> add/paracetamol/3/90```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryAdd.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryAddDrug.PNG" width = "500">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 90   ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(increases quantity of existing drug)**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> add/paracetamol/3/50```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/inventoryIncreaseQuantity.PNG" width = "500">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 140   ```
 
 <br/><br/>
 
 #### Deleting a drug: `delete`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a drug from the inventory list.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Decreases the quantity of an existing drug in the inventory list.
 
+>:information_source: Important notes about the format
+>1. Note that the example from add(increasing quantity of existing drug) feature is used for this feature's example!
+>
+>2. Avoid using uppercase letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]/[Quantity]`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> delete/paracetamol```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> delete/paracetamol/20```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryDelete.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryDecreaseQuantity.PNG" width = "550">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 120   ```
 
 <br/><br/>
 
@@ -782,7 +822,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelpFinal.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelpNew.PNG" width = "600">
 
 <br/><br/>
 
@@ -844,8 +884,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Drugs Inventory** |                                                                                                            |
-| add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/$3/90`                                           |
-| delete              | `delete/[Name]`<br/><br/>`delete/paracetamol`                                                              |
+| add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/3/90`                                           |
+| delete              | `delete/[Name]/[Quantity]`<br/><br/>`delete/paracetamol/20`                                                              |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |

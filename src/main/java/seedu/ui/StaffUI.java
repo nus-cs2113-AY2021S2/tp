@@ -24,20 +24,15 @@ public class StaffUI extends UI {
         System.out.println(line.split("/")[1] + " has been fired :(");
     }
 
-    public static void emptyListOutput() {
-        System.out.println("OOPS! It seems like you have no staff in the list now!");
-    }
-
-
-
-    public static void staffDoesNotExist(String line) {
-        System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
-    }
-
     public static void staffListHeader() {
         System.out.println(
                 UI.prettyPrint("ID", 10) + " | " + UI.prettyPrint("Name", 10) + " | "
                         + UI.prettyPrint("Age", 5) + " | " + UI.prettyPrint("Specialisation", 20));
+    }
+
+    public static void staffMenuHeader() {
+        UI.showLine();
+        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
     }
 
     public static void printStaffHelpMessage() {
@@ -59,6 +54,12 @@ public class StaffUI extends UI {
 
     }
 
+
+
+    public static void staffNotFoundErrorMessage() {
+        System.out.println("There is no staff in the list that matches your keywords!");
+    }
+
     public static void corruptedFileErrorMessage() {
         System.out.println("File (data/Staff.txt) is corrupted. Please delete the file before running the Staff Menu.");
     }
@@ -67,12 +68,11 @@ public class StaffUI extends UI {
         System.out.println("The numeric input is invalid!");
     }
 
-    public static void staffMenuPrompt() {
-        System.out.print("Staff --> ");
+    public static void staffDoesNotExistErrorMessage(String line) {
+        System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
     }
 
-    public static void staffMenuHeader() {
-        UI.showLine();
-        System.out.print("Welcome to Staff Menu!\nType \"help\" for staff menu commands\n\n");
+    public static void emptyListErrorMessage() {
+        System.out.println("OOPS! It seems like you have no staff in the list now!");
     }
 }

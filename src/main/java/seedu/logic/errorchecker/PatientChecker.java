@@ -86,10 +86,10 @@ public class PatientChecker extends MainChecker{
         checkAgeRange(stringToken);
     }
 
-    private void checkAgeRange(String ageString) throws InvalidAgeException {
+    private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
         if (!(age >= 0 && age < 150)) {
-            throw new InvalidAgeException();
+            throw new InvalidPatientAgeException();
         }
     }
 

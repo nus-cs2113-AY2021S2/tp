@@ -14,6 +14,7 @@ import seedu.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 
@@ -45,11 +46,20 @@ public class NurseSchedulesParser {
         }
     }
 
+    private String[] trimInputs(String[] parts) {
+        String[] trimmedArray = new String[parts.length];
+        for (int i = 0; i< parts.length; i++) {
+            trimmedArray[i] = parts[i].trim();
+        }
+        return trimmedArray;
+    }
+
     public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
         String[] parts = input.split("/");
+        parts = trimInputs(parts);
 
         assert parts.length > 0;
 
