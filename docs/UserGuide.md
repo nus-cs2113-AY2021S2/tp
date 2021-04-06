@@ -262,7 +262,7 @@ These are the food expiring in the next week:
 
 ### List categories with food running low: `runninglow`
 
-Displays a list of food categories which total quantity is below a specified minimum limit.
+Displays a list of food categories which total quantity is below a specified minimum limit. This command also displays the existing quantities along with its limits for each category. Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
 
 Format: `runninglow`
 
@@ -286,7 +286,7 @@ You are running low on food in these categories:
 
 ### Modify the minimum quantity limits: `setlimit`
 
-Changes the minimum quantity limit for a specific food category.
+Changes the minimum quantity limit for a specific food category. To set remove a limit for a category, set its limit to -1.
 
 Format: `setlimit FOOD_CATEGORY /qty QUANTITY`
 
