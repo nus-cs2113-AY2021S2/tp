@@ -25,7 +25,7 @@ class ListCommandTest {
         fridge.add(chicken);
 
         Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
-                "17-03-2021", FoodStorageLocation.LOWER_SHELF, 100);
+                "17-05-2021", FoodStorageLocation.LOWER_SHELF, 100);
         fridge.add(lettuce);
 
         Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
@@ -62,7 +62,7 @@ class ListCommandTest {
                 + "\t1. Food name: chicken, category: MEAT, expiry: "
                 + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
                 + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
-                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100\n"
+                + "17-05-2021, stored in: LOWER_SHELF, quantity: 100\n"
                 + "\t3. Food name: pork, category: MEAT, expiry: "
                 + "31-07-2021, stored in: MIDDLE_SHELF, quantity: 500";
         String actualMessage = listCommand.getListAllMessage();
@@ -79,7 +79,7 @@ class ListCommandTest {
                 + "\t1. Food name: chicken, category: MEAT, expiry: "
                 + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
                 + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
-                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100";
+                + "17-05-2021, stored in: LOWER_SHELF, quantity: 100";
         String actualMessage = listCommand.getListByStorageLocationMessage();
         assertEquals(expectedMessage, actualMessage);
     }
