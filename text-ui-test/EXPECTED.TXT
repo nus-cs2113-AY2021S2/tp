@@ -69,7 +69,7 @@ Sorry my friend, the date must be in the form 'dd-mm-yyyy'.
 -----------------------------------------------------------------
 Sorry my friend, ''IDONTKNOW'' is not a valid location.
 -----------------------------------------------------------------
-Sorry my friend, the quantity must be a positive number.
+Sorry my friend, the quantity must be a positive integer.
 -----------------------------------------------------------------
 Sorry my friend, ''mff'' is not a valid category.
 -----------------------------------------------------------------
