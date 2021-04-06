@@ -325,7 +325,7 @@ Format : `delete alias` → `ALIAS_NAME`
 ### 4.6 Daily Routes
 #### 4.6.1 Adding a daily route
 Adds a schedule for the selected day.<br>
-Format : `add daily route` → `DAY_ENTRY` → `BLOCK/end` <br>
+Format : `add daily route` → `DAY_ENTRY` → `BLOCK` → ... → `end` <br>
 Example : 
 ```
 ------------------------------------------------------------------------------------------------------------
