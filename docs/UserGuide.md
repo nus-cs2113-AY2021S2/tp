@@ -11,31 +11,32 @@
    &nbsp;&nbsp;&nbsp;&nbsp; 3.2.3. [Format of commands](#323-format-of-commands) <br>
 4. [Features](#4-features)  <br>
    4.1. [Viewing Help](#41-viewing-help)<br>
-   4.2. [Routing](#42-routing) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.1. [Routing between blocks](#421-routing-between-blocks) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.2.2. [Routing to the closest eatery](#422-routing-to-the-closest-eatery) <br>
-   4.3. [History](#43-history) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Viewing History](#431-viewing-history) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Clearing History](#432-clearing-history) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Repeating History](#433-repeating-history) <br>
-   4.4. [Alias](#44-alias) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Adding an alias for block name](#441-adding-an-alias-for-block-name) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Viewing all aliases](#442-viewing-all-aliases) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Deleting aliases](#443-deleting-aliases) <br>
-   4.5. [Daily Routes](#45-daily-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route) <br>
-   4.6. [Notes](#46-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.3 [Delete note](#463-delete-note) <br>
-   4.7. [Favourite Routes](#47-favourite-routes) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1 [Adding Favourite route](#471-adding-favourite-route) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Show stored favourites](#472-show-stored-favourites) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3 [Repeating favourite route](#473-repeating-favourite-route) <br> 
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.4 [Deleting favourite route](#474-deleting-favourite-route) <br>
-   4.8. [Exiting the application](#48-exiting-the-application) <br>
-   4.9. [Saving the Data](#49-saving-the-data) <br>
+   4.2. [Viewing all venues](#42-viewing-all-venues) <br>
+   4.3. [Routing](#43-routing) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing between blocks](#432-routing-between-blocks) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Routing to the closest eatery](#433-routing-to-the-closest-eatery) <br>
+   4.4. [History](#44-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Viewing History](#441-viewing-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Clearing History](#442-clearing-history) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.4.3. [Repeating History](#443-repeating-history) <br>
+   4.5. [Alias](#45-alias) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding an alias for block name](#451-adding-an-alias-for-block-name) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing all aliases](#452-viewing-all-aliases) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting aliases](#453-deleting-aliases) <br>
+   4.6. [Daily Routes](#46-daily-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing daily route](#462-viewing-daily-route) <br>
+   4.7. [Notes](#47-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding notes](#471-adding-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Viewing notes](#472-viewing-notes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.7.3. [Delete note](#473-delete-note) <br>
+   4.8. [Favourite Routes](#48-favourite-routes) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.1. [Adding Favourite route](#481-adding-favourite-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.2. [Show stored favourites](#482-show-stored-favourites) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.3. [Repeating favourite route](#483-repeating-favourite-route) <br> 
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.8.4. [Deleting favourite route](#484-deleting-favourite-route) <br>
+   4.9. [Exiting the application](#49-exiting-the-application) <br>
+   4.10. [Saving the Data](#410-saving-the-data) <br>
 5. [FAQ](#5-faq) <br>
 6. [Glossary](#6-glossary) <br>
 7. [Command summary](#7-command-summary) <br>
@@ -51,14 +52,15 @@ Engineering and Computing buildings. The application allows users to find the sh
 from one block to another, locate the nearest eatery, add personal notes to the location and
 many more.
 
-The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands
-into a Command Box. If you are fast at typing, you can operate the application faster than other Graphical User Interface
+NUSMaze uses Command Line Interface (CLI); this means that you operate the application by typing commands
+into a Command Box. If your typing speed is fast, you can operate the application faster than other Graphical User Interface
 (GUI) applications; GUI applications allow users to interact with the application through graphical icons such as buttons.
 
-This user guide will take you through how various features of the NUSMaze can be utilised, all
-geared towards providing the best possible experience to the user.
+You do not have to worry at all even if you are new to CLI applications as this user guide will take you through step by
+step on how various features of the NUSMaze can be utilised, all geared towards providing the best possible experience to the user
 
-If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to learn how to start find your way through school with **NUSMaze**.
+If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to learn how to navigate around the campus using 
+**NUSMaze**.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -66,14 +68,17 @@ If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to lear
 
 This section gives you step-by-step instructions on how to download and open the application.
 
-1. Ensure you have Java `11` or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+1. Ensure you have `Java 11` or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
 
-2. Download the latest `NUSMaze.jar` [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases).
+2. Download the latest `NUSMaze.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases).
 
 3. Copy the file to the folder you want to use as the _home folder_ **NUSMaze**.
 
 4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
+<div markdown="block" class="alert alert-info">
 :information_source: An easy way to do so is shown below for both Mac and Windows<br>
+</div>
+
    ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
    Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
@@ -93,7 +98,8 @@ This section gives you step-by-step instructions on how to download and open the
 
 We have structured this User Guide in a way to help you find what you need easily and quickly.
 In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
-The following section, [Section 4 - Features](#4-features), documents the seven main features in **NUSMaze**, namely:
+The following section, [Section 4 - Features](#4-features), documents the main features of **NUSMaze** and provides explanation
+on how to utilise them.
 
 
 ### 3.2. Reading this document
@@ -106,7 +112,7 @@ familiarize yourself with them before moving to the next section.
 The table below explains some technical terms that you may come across throughout the user guide.
 
 | Term |  What it means |
-|----------|-------------|
+|:----------:|-------------|
 | CLI |  The Command-Line Interface (or CLI for short) is the user interface in which NUSMaze is based on. Unlike traditional Graphical User Interface (GUI) base applications, it may be less intuitive to new users. However upon familiarisation, fast typists may find it faster to use.  |
 | Command word| The Command word refers to the keywords which NUSMaze recognises to invoke specific commands. These command words will be indicated by `COMMAND WORD` in the various sections below.|
 |Parameter|Parameter refers to the user input required after the user is prompted by NUSMaze|
@@ -116,7 +122,7 @@ The table below explains some technical terms that you may come across throughou
 The table below explains the general syntax used throughout the user guide.
 
 | Syntax |  What it means |
-|----------|-------------|
+|:----------:|-------------|
 | `command` |  A grey highlighted block specifies a executable command or parameters that can be entered into the command box.  |
 | _italics_ | Italicised text indicates that the text has a definition specific to NUSMaze, or it is a caption for a Figure in the guide. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
@@ -126,16 +132,15 @@ The table below explains the general syntax used throughout the user guide.
 The following points explain the format of a command.
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
-1. Words in Upper_Case are parameters to be supplied by you.
-   <br/>Eg. in add note LOCATION/DESCRIPTION, LOCATION and DESCRIPTION are parameters which can be used as add note E1/CS2113T.
+1. Words in `UPPER_CASE` are parameters to be supplied by you.
 
-2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt.
+2. In all formats shown in features, `→` denotes a prompt from the CLI. A user input is expected after the prompt.
 
 3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze.
 
-4. In each example, lines starting with > signifies user command.
+4. In each example, lines starting with `>` signifies user command.
 
-5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
+5. In each example, lines starting with `*` signifies a user input after being prompted by NUSMaze.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -149,72 +154,154 @@ You may enter a command into the CLI to use each feature.
 Lists all commands and functions of each feature.<br>
 Format: `help`
 
-### 4.2 Routing
+#### 4.2 Viewing all venues
 
-#### 4.2.1 Routing between blocks
+List all the venues in Engineering and Computing campus. <br>
+Format: `show venues`
+
+<div markdown="block" class="alert alert-info">
+:information_source: These are the venue names that can be used in the features below. 
+</div>
+
+
+### 4.3 Routing
+#### 4.3.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
 Format: `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
 Example:
 ```
-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 > go
-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 Starting Block:
 * e2
-  Destination Block:
+Destination Block:
 * com1
-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 -> COM1
-------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 ```
 - When the `go` command is given NUSMaze will prompt you for the `STARTING_BLOCK`
   followed by the `DESTINATION BLOCK`.
-  
-:warning: Both parameters must be one of the Engineering or Computing buildings.
 
-#### 4.2.2 Routing to the closest eatery
-It is also possible to find the closest eatery using the go feature.<br>
-Format 1: `go` → `STARTING_BLOCK` → `EATERY_NAME`
+<div markdown="block" class="alert alert-info">
+:information_source: All the parameters for the Routing feature are **case-insensitive**. 
+</div>
+  
+<div markdown="block" class="alert alert-warning">
+:warning: Both parameters must be one of the Engineering or Computing venues.
+</div>
+
+#### 4.3.2 Routing to the closest eatery
+It is also possible to find the shortest route to an eatery using the go feature.<br>
+Format 1: `go` → `STARTING_BLOCK` → `EATERY_NAME` <br>
+Example: 
+```
+--------------------------------------------------------------------------------------------
+> go
+--------------------------------------------------------------------------------------------
+Starting Block:
+* e1
+Destination Block:
+* starbucks
+--------------------------------------------------------------------------------------------
+Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+--------------------------------------------------------------------------------------------
+```
+
 - By entering the name of the eatery that you wish to go to in the `EATERY_NAME` parameter,
   NUSMaze will display the shortest route to go from the `STARTING_BLOCK` to the
   desired eatery.
 
+<div markdown="block" class="alert alert-warning">
 :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
+</div>
 
-Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_NAME`
-- It is also possible to see the list of Eateries, from closest to furthest by entering `eatery`
-  when NUSMaze prompts for the destination block.
+NUSMaze can also provide you with a list of eateries from closest to furthest if you are unsure which eatery to go.
 
-- NUSMaze then prompts for the entry of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
+Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` <br>
+Example:
+```
+--------------------------------------------------------------------------------------------
+> go
+--------------------------------------------------------------------------------------------
+Starting Block:
+* e1
+Destination Block:
+* eatery
+--------------------------------------------------------------------------------------------
+Here are the list of eateries(from closest to furthest):
+1. TECHNO EDGE CANTEEN
+2. CHEERS MINIMART
+3. PLATYPUS FOOD BAR
+4. SPINELLI COFFEE
+5. STARBUCKS
+6. ARISE & SHINE
+7. MAXX COFFEE
+--------------------------------------------------------------------------------------------
+Select entry to go:
+* 5
+--------------------------------------------------------------------------------------------
+Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+--------------------------------------------------------------------------------------------
+```
 
-:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
-:warning: `EATERY_ENTRY` must be an integer from 1 to 5.
+- By entering `eatery` as `DESTINATION_BLOCK` parameter, you can see the list of eatery to choose from. 
 
+- NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
 
-### 4.3 History
-#### 4.3.1 Viewing History
+<div markdown="block" class="alert alert-warning">
+:warning: **Points to watch out** <br>
+- The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
+- `EATERY_ENTRY` must be an integer from 1 to 7.
+</div>
+
+### 4.4 History
+#### 4.4.1 Viewing History
 
 Lists the past 10 route searches.<br>
-Format : `history`
+Format: `history`
 
-#### 4.3.2 Clearing History
+<div markdown="block" class="alert alert-info">
+:information_source: NUSMaze will automatically update your history to the most recent 10 searches.
+</div>
+
+#### 4.4.2 Clearing History
 
 Deletes all histories (past route searches).<br>
-Format : `clear history`
+Format: `clear history`
 
-#### 4.3.3 Repeating History
+#### 4.4.3 Repeating History
 
 Repeats past route search history.<br>
-Format : `repeat history` → `REPEAT_ENTRY`
+Format: `repeat history` → `REPEAT_ENTRY`<br>
+Example: 
+```
+--------------------------------------------------------------------------------------------
+> repeat history
+--------------------------------------------------------------------------------------------
+There are 2 records in your history: 
+1. E2 -> COM1
+2. E1 -> STARBUCKS
+--------------------------------------------------------------------------------------------
+Select Entry to Repeat:
+* 2
+--------------------------------------------------------------------------------------------
+Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+--------------------------------------------------------------------------------------------
+```
+
 - When the `repeat history` command is entered, NUSMaze will show a list of past route searches.
 
 - Followed by a prompt asking for the `REPEAT_ENTRY` index that you want to repeat.
 
-- `REPEAT_ENTRY` must be an integer number within the numbered list.
+<div markdown="block" class="alert alert-warning">
+:warning: `REPEAT_ENTRY` must be an integer that is within the bounds of the history list shown.
+</div>
 
-### 4.4 Alias
-#### 4.4.1 Adding an alias for block name
+### 4.5 Alias
+#### 4.5.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
 Format : `add alias` → `BLOCK` → `ALIAS_NAME`
 - When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
@@ -224,18 +311,18 @@ Format : `add alias` → `BLOCK` → `ALIAS_NAME`
 
 - Note that there cannot be multiple blocks sharing the same alias.
 
-#### 4.4.2 Viewing all aliases
+#### 4.5.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
 Format : `show alias`
 
-#### 4.4.3 Deleting aliases
+#### 4.5.3 Deleting aliases
 Deletes an alias that was previously created.<br>
 Format : `delete alias` → `ALIAS_NAME`
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
 
-### 4.5 Daily Routes
-#### 4.5.1 Adding a daily route
+### 4.6 Daily Routes
+#### 4.6.1 Adding a daily route
 Adds a schedule for the selected day.<br>
 Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END` <br>
 Example : 
@@ -279,7 +366,7 @@ Got it! Successfully added MONDAY's schedule!
 
 :warning: There must be at least one block entered for the schedule.
 
-#### 4.5.2 Viewing daily route
+#### 4.6.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
 Format : `show daily route` → `DAY_NUMBER` <br>
 Example :
@@ -311,7 +398,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
-#### 4.5.3 Clearing daily route
+#### 4.6.3 Clearing daily route
 Clears the schedule of the selected day, if applicable.<br>
 Format : `delete daily route` → `DAY_NUMBER` <br>
 Example :
@@ -337,8 +424,8 @@ Got it! Successfully cleared MONDAY's schedule!
 
 :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
-### 4.6 Notes
-#### 4.6.1 Adding notes
+### 4.7 Notes
+#### 4.7.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
 Format : `add note` → `BLOCK` → `NOTE` <br> 
 Example:
@@ -360,7 +447,7 @@ Got it! Successfully added and tagged note to STARBUCKS
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings. <br>
 :warning: The `NOTE` will be invalid if it is empty.
 
-#### 4.6.2 Viewing notes
+#### 4.7.2 Viewing notes
 Lists all notes which had been tagged to the given location, if it exists.<br/>
 Format : `show note` → `BLOCK` <br>
 Example:
@@ -379,7 +466,7 @@ Here is the list of notes:
   
 :warning: The `BLOCK` must be one of the Engineering or Computing buildings.
 
-#### 4.6.3 Delete note
+#### 4.7.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
 Example:
@@ -407,29 +494,29 @@ Got it! Successfully deleted note tagged to STARBUCKS
 
 :warning: The `NOTE_INDEX` must be an integer within the total number of notes that the location has.
 
-### 4.7 Favourite Routes
-#### 4.7.1 Adding Favourite Route
+### 4.8 Favourite Routes
+#### 4.8.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
 Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK`
 
-#### 4.7.2 Show stored favourites
+#### 4.8.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
 Format : `show favourite`
 
-#### 4.7.3 Repeating favourite route
+#### 4.8.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
 Format : `repeat favourite` → `ROUTE_INDEX`
 
-#### 4.7.4 Deleting favourite route
+#### 4.8.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
 Format : `delete favourite` → `ROUTE_INDEX`
 
-### 4.8 Exiting the application
+### 4.9 Exiting the application
 
 Exits the application.<br>
 Format : `bye`
 
-### 4.9 Saving the Data
+### 4.10 Saving the Data
 
 NUSMaze data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
