@@ -7,7 +7,6 @@ import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.ui.Ui;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
@@ -515,7 +514,7 @@ public class ReviewList {
         }
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if (reviews.get(i).getTitle().compareToIgnoreCase(title.toLowerCase()) == 0) {
+            if (reviews.get(i).getTitle().compareToIgnoreCase(title) == 0) {
                 reviewIndex = i;
                 break;
             }
@@ -537,7 +536,7 @@ public class ReviewList {
     public boolean checkAndPrintDuplicateReview(String title) {
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if ((reviews.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+            if (reviews.get(i).getTitle().compareToIgnoreCase(title) == 0) {
                 reviewIndex = i;
             }
         }
