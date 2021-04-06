@@ -147,7 +147,7 @@ class RecordCommandTest {
     }
 
     @Test
-    public void executeRecordCommand_emptyStringAsInputs_recordAdded() {
+    public void executeRecordCommand_emptyStringAsInputs_exceptionThrown() {
         Data data = new Data();
         Patient patient = new Patient("S1234567D");
         data.setPatient(patient);
