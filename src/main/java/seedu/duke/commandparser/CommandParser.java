@@ -43,6 +43,9 @@ public class CommandParser {
         String commandWord = getCommandWord(inputParts);
         switch (commandWord) {
         case "help":
+            if (inputParts.length > 1) {
+                return invalidCommandWord();
+            }
             return new HelpCommand();
         case "add":
             return prepareAdd(inputParts);
@@ -57,10 +60,17 @@ public class CommandParser {
         case "cancel":
             return prepareCancel(inputParts);
         case "exit":
+            if (inputParts.length > 1) {
+                return invalidCommandWord();
+            }
             return new ExitCommand();
         default:
-            return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND + Messages.MESSAGE_HELP_PROMPT);
+            return invalidCommandWord();
         }
+    }
+
+    private Command invalidCommandWord() {
+        return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND + Messages.MESSAGE_HELP_PROMPT);
     }
 
     public void clearParserParams() {
@@ -136,7 +146,7 @@ public class CommandParser {
                 return new InvalidCommand(SET);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 3) {
+            if (rawParams.length != 3) {
                 return new InvalidCommand(SET);
             }
 
@@ -186,7 +196,7 @@ public class CommandParser {
                 return new InvalidCommand(CHECK);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 1) {
+            if (rawParams.length != 1 && rawParams.length != 2) {
                 return new InvalidCommand(CHECK);
             }
 
@@ -220,7 +230,7 @@ public class CommandParser {
                 return new InvalidCommand(CANCEL);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 2) {
+            if (rawParams.length != 2) {
                 return new InvalidCommand(CANCEL);
             }
 
