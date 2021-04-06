@@ -1,6 +1,6 @@
 package seedu.fridgefriend.command;
 
-//@@author kwokyto
+//@@author Vinci-Hu
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.utilities.Ui;
 
@@ -9,13 +9,12 @@ import seedu.fridgefriend.utilities.Ui;
  */
 public class ExpiringCommand extends Command {
 
-    private String messageExpiring = "These are the food expiring in the next week:";
-    private String messageExpired = "These are the food that has aready expired:";
-    private String messageNoExpiring = "These are no food expiring in the next week!";
-    private String messageNoExpired = "No food has expired! Congratulations!";
-    private int index = 1;
-    private boolean hasExpiring;
-    private boolean hasExpired;
+    private String messageExpiring = "These are the food expiring in the following week:";
+    private String messageExpired = "\n\nThese are the food that has already expired, please consider removing them:";
+    private String messageNoExpiring = "There are no food expiring in 7 days time!";
+    private String fullMessage = "";
+    private int indexExpiring = 0;
+    private int indexExpired = 0;
 
     public ExpiringCommand() {
         super();
@@ -24,34 +23,39 @@ public class ExpiringCommand extends Command {
     @Override
     public void execute() {
         for (int i = 0; i < fridge.getSize(); i += 1) {
-            updateMessage(fridge.getFood(i));
+            updateExpiringMessage(fridge.getFood(i));
         }
-        if (hasExpired) {
-            Ui.printMessage(messageExpired);
-        } else {
-            Ui.printMessage(messageNoExpired);
+        for (int i = 0; i < fridge.getSize(); i += 1) {
+            updateExpiredMessage(fridge.getFood(i));
         }
-        if (hasExpiring) {
-            Ui.printMessage(messageExpiring);
+        if (indexExpiring > 0) {
+            fullMessage += messageExpiring;
         } else {
-            Ui.printMessage(messageNoExpiring);
+            fullMessage += messageNoExpiring;
+        }
+        if (indexExpired > 0) {
+            fullMessage += messageExpired;
+        }
+        Ui.printMessage(fullMessage);
+    }
+
+    /**
+     * This getter must be called after .execute() .
+     * @return the fullMessage string.
+     */
+    public String getMessage() {
+        return fullMessage;
+    }
+
+    private void updateExpiringMessage(Food food) {
+        if (food.isExpiring()) {
+            addToExpiringMessage(food);
         }
     }
 
-    //@@author Vinci-Hu
-    /**
-     * Updates the message to be shown to the user based on the food's expiry date.
-     * 
-     * @param food food item in the fridge
-     */
-    private void updateMessage(Food food) {
+    private void updateExpiredMessage(Food food) {
         if (food.hasExpired()) {
             addToExpiredMessage(food);
-            hasExpired = true;
-        }
-        if (food.isExpiring()) {
-            addToExpiringMessage(food);
-            hasExpiring = true;
         }
     }
 
@@ -61,22 +65,15 @@ public class ExpiringCommand extends Command {
      * @param food food item that is expiring in a week
      */
     private void addToExpiringMessage(Food food) {
-        String entry = "\n" + index + ". " + food.toString();
+        indexExpiring++;
+        String entry = "\n" + indexExpiring + ". " + food.toString();
         messageExpiring += entry;
-        index += 1;
     }
 
     private void addToExpiredMessage(Food food) {
-        String entry = "\n" + index + ". " + food.toString();
+        indexExpired++;
+        String entry = "\n" + indexExpired + ". " + food.toString();
         messageExpired += entry;
-        index += 1;
     }
 
-    public String messageForTesting() {
-        String message1 = "Expired message: ";
-        String expiredMessage = hasExpired ? messageExpired : messageNoExpired;
-        String message2 = "Expiring message: ";
-        String expiringMessage = hasExpiring ? messageExpiring : messageNoExpiring;
-        return message1 + expiredMessage + message2 + expiringMessage;
-    }
 }
