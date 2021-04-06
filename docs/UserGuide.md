@@ -22,6 +22,7 @@ It is written in Java, and has more than 4300 lines of code.
   * [Setlimit](#modify-the-minimum-quantity-limits-setlimit)
   * [History](#list-history-of-items-added-history)
   * [Clear history](#clear-list-history-of-items-added-history-clear)
+  * [Clear](#empty-fridge-clear)
   * [Bye](#exit-the-application-bye)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
@@ -371,6 +372,8 @@ This is the full history of items you've added in the fridge:
 
 Wipes the data from the history text file.
 
+:warning: This command will permanently erase the entire history log and this action ***cannot*** be reversed.
+
 Format: `history clear`
 
 Example of usage:
@@ -381,6 +384,24 @@ History successfully cleared!
 
 >> history 
 This is the full history of items you've added in the fridge:
+```
+
+### Empty fridge: `clear`
+
+Removes all food items in the fridge.
+
+:warning: This command will permanently empty the fridge and this action ***cannot*** be reversed.
+
+Format `clear`
+
+Example of usage:
+
+```lang-none
+>> clear
+Fridge has been cleared!
+
+>> list
+Here are the items in your fridge:
 ```
 
 ### Exit the application: `bye`
