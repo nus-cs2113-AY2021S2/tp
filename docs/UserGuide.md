@@ -34,13 +34,9 @@ It is written in Java, and has more than 4300 lines of code.
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
    `FridgeFriend` with `java -jar FridgeFriend.jar`.
-5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a
-   list of all current food. Some example commands you can try:
+5. Type the command in the command box and press Enter to execute it. For example, typing `list` and pressing Enter will show a list of all current food. Some example commands you can try:
+   * `help`: Displays a help message
    * `list`: Lists all food.
-   * `add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 100`: Adds a `chicken` with category of `meat`,
-     expiry date of `30-06-2021`, location of `lower_shelf`, and quantity of `100` to the Fridge.
-   * `search chicken`: Searches for the chicken in the fridge and returns its location (currently: `lower_shelf`).
-   * `remove chicken /qty 50`: Removes a quantity of `50` from the `chicken` stored in the fridge.
    * `bye`: Exits the app.
 6. Refer to the **Features** below for details of each command.
 
@@ -50,7 +46,7 @@ It is written in Java, and has more than 4300 lines of code.
 
 :information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is a parameter.
 
-:information_source: Commands that do not require parameters will still execute as normal if additional parameters are given. For example, `help me` will execute as `help`.
+:information_source: Extraneous parameters for commands that do not take in parameters will be ignored. For example, `help me` will execute as `help`.
 
 ### Get help message: `help`
 
@@ -421,20 +417,20 @@ Bye! Hope to see you again soon!
 
 **Q**: How do I transfer my data to another computer?
 
-**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder.
-As long as the target computer satisfies our project prerequisites, it can run with the saved data as before.
+**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder. As long as the target computer satisfies the application prerequisites, it can execute with the saved data as before.
 
 **Q**: What if I forget the correct format of a command?
 
 **A**: You will get a tip if you use any of the command keywords incorrectly.
-Plus, you are always welcomed to use `help` command.
+Plus, you are always welcome to use `help` command.
 
 **Q**: How do I report a bug?
 
-**A**: You can either create a pull request or state in the issues.
+**A**: You can create a new issue [here](https://github.com/AY2021S2-CS2113-T10-1/tp/issues).
 
 ## Command Summary
 
+* Get help message `help`
 * Add food `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 * List food `list`
 * List food by category `list CATEGORY_NAME`
@@ -445,6 +441,6 @@ Plus, you are always welcomed to use `help` command.
 * List categories with food running low: `runninglow`
 * Modify the minimum quantity limits: `setlimit FOOD_CATEGORY /qty QUANTITY`
 * List history of items added: `history`  
-* Clear list history of items added: `history clear`  
-* Get help message `help`
+* Clear list history of items added: `history clear`
+* Empty fridge: `clear`
 * Exit application `bye`
