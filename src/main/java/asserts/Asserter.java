@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Asserter {
     public static void assertIncrementScheduleSize(int originalScheduleLength, Employee person) {
-        assert originalScheduleLength == person.getSchedules().size() + 1 : "1 schedule " +
-                "is supposed to be dropped.";
+        assert originalScheduleLength == person.getSchedules().size() + 1 : "1 schedule "
+                + "is supposed to be dropped.";
     }
 
     public static void assertPositiveVacancies(int vacancy) {

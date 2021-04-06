@@ -13,7 +13,7 @@ public class ShiftController {
         System.out.println("Enter Shift date (in dd/MM/yyyy):");
         Scanner sc = new Scanner(System.in);
         String date = sc.nextLine();
-        LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        final LocalDate shiftDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         System.out.println("Enter Shift index:");
         int shiftIndex = Integer.parseInt(sc.nextLine());
         System.out.println("Enter vacancy for this shift:");

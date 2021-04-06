@@ -5,7 +5,7 @@ import employee.EmployeeController;
 import io.FileManager;
 import shift.Shift;
 import shift.ShiftController;
-import ui.ui;
+import ui.Ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,10 +71,11 @@ public class AppController {
                 EmployeeController.listAllEmployees(employees);
                 break;
             case "help":
-                ui.printHelpMessage();
+                Ui.printHelpMessage();
                 break;
             case "quit":
                 System.out.println("bye");
+                sc.close();
                 fileManager.saveEmployees(employees);
                 fileManager.saveShifts(shifts);
                 return;

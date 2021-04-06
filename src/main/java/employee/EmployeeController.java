@@ -80,11 +80,12 @@ public class EmployeeController {
     public static void viewEmployeeSchedule(ArrayList<Employee> employees) {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        for (Employee person : employees)
+        for (Employee person : employees) {
             if (person.getName().equals(name)) {
                 System.out.println(person.getSchedules());
                 return;
             }
+        }
         System.out.println("Employee not found");
     }
 
