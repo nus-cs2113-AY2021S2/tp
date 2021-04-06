@@ -277,22 +277,17 @@ There are three variations of the `list` command.
 2. List by category
 3. List by storage location
 
-The first command, list all food, is implemented by iterating through the collection
-of food in the fridge. The names of all the food is concatenated using a Java StringBuilder,
-and the final result, containing the list of all food, is returned to the main program.
+The first command, list all food, is implemented by iterating through the collection of food in the fridge.
+The names of all the food is concatenated using a Java StringBuilder, and the final result, containing the list of all food, is returned to the main program.
 
-The second and third commands, list by category or storage location, is also implemented by iterating through
-the collection of food in the fridge. However, there is an additional check to verify if the given
-food contains the correct category/storage location attribute as requested by the user.
-
-If the category/storage location is as requested, the name of the food will be concatenated to the
-result using a Java StringBuilder. Otherwise, the name of the food would not be part of the result.
-The final result, containing the list of all food belonging to the category/storage location,
-is returned to the main program.
-
-The sequence diagram shows how the `list` operation works:
+The sequence diagram below shows how this `list` operation works:
 
 ![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
+
+The second and third commands, list by category or storage location, is also implemented by iterating through the collection of food in the fridge.
+However, there would be an additional check to verify if the given food item contains the correct category/storage location attribute as requested by the user, before being returned to the `ListCommand`.
+If it does not match the required attribute that food item would not be part of the result.
+The final result, containing the list of all food belonging to the category/storage location, would then be returned to the main program.
 
 ### History Command
 
