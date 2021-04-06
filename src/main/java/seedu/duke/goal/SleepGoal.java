@@ -15,9 +15,16 @@ public class SleepGoal extends Goal {
      */
     public SleepGoal(PeriodType periodType, double targetDuration) throws NumberFormatException {
         super(RecordType.SLEEP, periodType, targetDuration);
-        if (targetDuration < 0 || targetDuration > 24) {
-            throw new NumberFormatException("Target duration invalid");
+        if (periodType.equals(PeriodType.DAILY)) {
+            if (targetDuration <= 0 || targetDuration > 24) {
+                throw new NumberFormatException("Target duration invalid");
+            }
+        } else {
+            if (targetDuration <= 0 || targetDuration > 168) {
+                throw new NumberFormatException("Target duration invalid");
+            }
         }
+
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
