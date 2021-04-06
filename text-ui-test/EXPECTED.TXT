@@ -5,7 +5,7 @@ Welcome to the Patient Manager.
 Please input a command: 
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
-	Invalid command is provided!
+	Invalid command provided
 ... and is caused by ...
 	java.lang.ClassNotFoundException: seedu.duke.command.Invalid_commandCommand
 ----------------------------------------------------------------------
@@ -26,7 +26,7 @@ List of patients (in alphanumeric order):
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
-	Please key in a valid NRIC number!
+	Please key in a valid NRIC number
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S1234567D has been added!
@@ -39,7 +39,7 @@ List of patients (in alphanumeric order):
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
-	Kindly use /p or /r to indicate patient or record, refer to help for more clarification!
+	Kindly use /p or /r to indicate patient or record, refer to help for more clarification
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
