@@ -290,7 +290,7 @@ public class ReviewList {
         assert title != null : "title should not be empty";
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if (reviews.get(i).getTitle().equals(title)) {
+            if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
                 reviewIndex = i;
                 break;
             }
@@ -514,7 +514,7 @@ public class ReviewList {
         }
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if (reviews.get(i).getTitle().compareTo(title) == 0) {
+            if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
                 reviewIndex = i;
                 break;
             }
@@ -536,7 +536,7 @@ public class ReviewList {
     public boolean checkAndPrintDuplicateReview(String title) {
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if ((reviews.get(i).getTitle().toLowerCase()).compareTo(title.toLowerCase()) == 0) {
+            if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
                 reviewIndex = i;
             }
         }
