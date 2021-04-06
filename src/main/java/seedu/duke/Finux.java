@@ -3,7 +3,6 @@ package seedu.duke;
 import seedu.duke.command.CreditScoreReturnedLoansMap;
 import seedu.duke.command.Command;
 import seedu.duke.command.CommandHandler;
-import seedu.duke.command.ExitCommand;
 import seedu.duke.exception.FileLoadingException;
 import seedu.duke.parser.ParserHandler;
 import seedu.duke.record.RecordList;
