@@ -79,8 +79,8 @@ Given below are my contributions to the project
 
 ### Community
 
-- Pull Requests reviewed with non-trivial review comments (
-    [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38),
+- Pull Requests reviewed with non-trivial review comments
+    ([#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38),
     [#54](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/54),
     [#56](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/56)
     [#61](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/61),
@@ -91,12 +91,13 @@ Given below are my contributions to the project
     [#119](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/119),
     [#131](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/131),
     [#140](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/140),
-    [#202](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/202))
-- Contributed to forum discussions (
-    [1](https://github.com/nus-cs2113-AY2021S2/forum/issues/23),
+    [#202](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/202)
+    [#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
+- Contributed to forum discussions
+    ([1](https://github.com/nus-cs2113-AY2021S2/forum/issues/23),
     [2](https://github.com/nus-cs2113-AY2021S2/forum/issues/30),
     [3](https://github.com/nus-cs2113-AY2021S2/forum/issues/45),
     [4](https://github.com/nus-cs2113-AY2021S2/forum/issues/49),
     [5](https://github.com/nus-cs2113-AY2021S2/forum/issues/53))
-- Reported bugs and suggestions for other teams in the class (
-    [1](https://github.com/nus-cs2113-AY2021S2/tp/pull/64))
+- Reported bugs and suggestions for other teams in the class
+    ([1](https://github.com/nus-cs2113-AY2021S2/tp/pull/64))
