@@ -29,7 +29,7 @@ class RecordCommandTest {
         Exception exception = assertThrows(InvalidInputException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals("No patient loaded!", exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_NO_PATIENT_LOADED, exception.getMessage());
     }
 
     @Test

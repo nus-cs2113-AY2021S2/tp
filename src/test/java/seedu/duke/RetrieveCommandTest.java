@@ -28,7 +28,7 @@ class RetrieveCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             retrieveCommand.execute();
         });
-        assertEquals("No patient loaded!", exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_NO_PATIENT_LOADED, exception.getMessage());
     }
 
     @Test
@@ -45,11 +45,9 @@ class RetrieveCommandTest {
         arguments.put("p", "dextromethorphan 1 bottle 1 spoonful after each meal");
         Ui ui = new Ui();
         RecordCommand recordCommand = new RecordCommand(ui, data, arguments);
-        try {
+        assertDoesNotThrow(() -> {
             recordCommand.execute();
-        } catch (Exception exception) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         // Bind System.out to a ByteArrayOutputStream
         final PrintStream originalOut = System.out;

@@ -106,12 +106,16 @@ public class Parser {
             Constructor<?> constructor = cls.getDeclaredConstructor(Ui.class, Data.class, HashMap.class);
             Object obj = constructor.newInstance(ui, data, arguments);
             return (Command) obj;
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException classNotFoundException) {
             // *Command class cannot be found!
-            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, e);
-        } catch (Exception e) {
+            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, classNotFoundException);
+        } catch (NoSuchMethodException noSuchMethodException) {
+            // *Command class can be found, but doesn't contain a constructor
+            throw new InvalidInputException(InvalidInputException.Type.UNKNOWN_COMMAND, noSuchMethodException);
+        } catch (Exception exception) {
             // Some other weird error occurred here
-            throw new UnknownException(e);
+            // We should NEVER reach this block, if we do, log under the highest level
+            throw new UnknownException(exception);
         }
     }
 }
