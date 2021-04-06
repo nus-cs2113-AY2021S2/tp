@@ -114,4 +114,14 @@ public class Common {
         }
         return date;
     }
+
+    /**
+     * Converts the specified date into a string following the format dd/MM/yyyy.
+     *
+     * @param date the date to be formatted
+     * @return a string representation of the date, in the format dd/MM/yyyy
+     */
+    public static String formatDate(LocalDate date) {
+        return date.format(DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
+    }
 }
