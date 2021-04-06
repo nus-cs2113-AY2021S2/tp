@@ -16,6 +16,7 @@ package Exceptions <<Rectangle>> {
     package "Related to Food" as food <<Rectangle>> {
         class FoodNameNotFoundException
         class InvalidFoodCategoryException
+        class InvalidFoodLocationException
         class RepetitiveFoodIdentifierException
     }
 

@@ -2,6 +2,8 @@ package seedu.fridgefriend.command;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -25,7 +27,7 @@ class ListCommandTest {
         fridge.add(chicken);
 
         Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
-                "17-03-2021", FoodStorageLocation.LOWER_SHELF, 100);
+                "17-05-2021", FoodStorageLocation.LOWER_SHELF, 100);
         fridge.add(lettuce);
 
         Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
@@ -42,7 +44,7 @@ class ListCommandTest {
 
     //@@author Vinci-Hu
     @Test
-    public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() {
+    public void listCommand_listAValidCategory_ListTheCategoryInCorrectSequence() throws InvalidFoodCategoryException {
         ListCommand listCommand = new ListCommand("MEAT");
         listCommand.setData(fridge);
         String expectedMessage = "These are the MEAT in your fridge:\n"
@@ -62,7 +64,7 @@ class ListCommandTest {
                 + "\t1. Food name: chicken, category: MEAT, expiry: "
                 + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
                 + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
-                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100\n"
+                + "17-05-2021, stored in: LOWER_SHELF, quantity: 100\n"
                 + "\t3. Food name: pork, category: MEAT, expiry: "
                 + "31-07-2021, stored in: MIDDLE_SHELF, quantity: 500";
         String actualMessage = listCommand.getListAllMessage();
@@ -72,14 +74,14 @@ class ListCommandTest {
 
     //@@author leeyp
     @Test
-    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() {
+    public void listCommand_listAValidLocation_ListTheLocationInCorrectSequence() throws InvalidFoodLocationException {
         ListCommand listCommand = new ListCommand("LOWER_SHELF");
         listCommand.setData(fridge);
         String expectedMessage = "These are the food stored in LOWER_SHELF:\n"
                 + "\t1. Food name: chicken, category: MEAT, expiry: "
                 + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
                 + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
-                + "17-03-2021, stored in: LOWER_SHELF, quantity: 100";
+                + "17-05-2021, stored in: LOWER_SHELF, quantity: 100";
         String actualMessage = listCommand.getListByStorageLocationMessage();
         assertEquals(expectedMessage, actualMessage);
     }

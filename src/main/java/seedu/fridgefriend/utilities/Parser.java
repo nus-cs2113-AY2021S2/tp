@@ -3,6 +3,7 @@ package seedu.fridgefriend.utilities;
 import static seedu.fridgefriend.food.FoodCategory.convertStringToFoodCategory;
 import static seedu.fridgefriend.food.FoodStorageLocation.convertStringToLocation;
 
+import java.math.BigInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,9 +20,9 @@ import seedu.fridgefriend.command.RunningLowCommand;
 import seedu.fridgefriend.command.SearchCommand;
 import seedu.fridgefriend.command.SetLimitCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
-import seedu.fridgefriend.exception.FoodNameNotFoundException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.FoodCategory;
@@ -33,6 +34,7 @@ public class Parser {
 
     private static final int COMMAND_WORD_INDEX = 0;
     private static final int NUMBER_OF_PHRASES = 2;
+    private static final int MAX_ALLOWABLE_QUANTITY = 1000000;
 
     //@@author Vinci-Hu
     /**
@@ -61,6 +63,8 @@ public class Parser {
     private static final Pattern SET_LIMIT_ARGS_FORMAT =
             Pattern.compile("(?<foodCategory>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
+    public static final int GREATER = 1;
+    public static final int EQUAL_TO = 0;
 
     //@@author SimJJ96
     /**
@@ -76,7 +80,7 @@ public class Parser {
      */
     public static Command getCommand(String input)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
+            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -116,7 +120,7 @@ public class Parser {
      */
     public static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
+            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
         String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
@@ -174,7 +178,8 @@ public class Parser {
      */
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         Command addCommand = parseAddDescription(description);
         return addCommand;
     }
@@ -195,7 +200,8 @@ public class Parser {
      */
     private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
-            InvalidDateException, InvalidQuantityException {
+            InvalidDateException, InvalidQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         if (foodDescription.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -232,11 +238,10 @@ public class Parser {
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidIndexException if the index given in description is out of bounds
      */
     private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidQuantityException,
-            InvalidInputException, FoodNameNotFoundException {
+            InvalidInputException {
         Command removeCommand = parseRemoveDescription(description);
         return removeCommand;
     }
@@ -331,7 +336,7 @@ public class Parser {
             throw new InvalidFoodCategoryException(foodCategoryString);
         }
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);
-        int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
+        int quantity = parseSetLimitIntegerQuantity(matcherRemove.group("quantity"));
         return new SetLimitCommand(foodCategory, quantity);
     }
 
@@ -357,11 +362,11 @@ public class Parser {
         return clearCommand;
     }
 
-    //@@author kwokyto
+    //@@author leeyp
     /**
      * Returns a HistoryCommand object.
      *
-     * @return ClearCommand object
+     * @return HistoryCommand object
      */
     private static Command getHistoryCommand(String description) {
         Command historyCommand = new HistoryCommand(description);
@@ -385,20 +390,61 @@ public class Parser {
      * @param description quantity description
      * @return integer quantity
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidQuantityException if the description is not a number
+     * @throws InvalidQuantityException if the description is not a positive integer or exceed max quantity
      */
     public static int parseIntegerQuantity(String description)
             throws EmptyDescriptionException, InvalidQuantityException {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-
         try {
-            int quantity = Integer.parseInt(description);
-            return quantity;
+            BigInteger bigIntegerQuantity = new BigInteger(description);
+            BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
+            BigInteger zero = BigInteger.valueOf(0);
+            if (bigIntegerQuantity.compareTo(maxQuantity) == GREATER) {
+                throw new InvalidQuantityException("Sorry my friend, "
+                        + "the quantity you have entered "
+                        + "has exceed the maximum allowable quantity.");
+            } else if (bigIntegerQuantity.compareTo(zero) < GREATER) {
+                throw new InvalidQuantityException();
+            }
+            int quantityInteger = bigIntegerQuantity.intValue();
+            return quantityInteger;
+        } catch (NumberFormatException numberFormatException) {
+            throw new InvalidQuantityException();
+        }
+    }
+
+    /**
+     * Parses the description of quantity to set limit integer.
+     *
+     * @param description set limit quantity description
+     * @return set limit integer quantity
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidQuantityException if the description exceed the max quantity or less than -1
+     */
+    public static int parseSetLimitIntegerQuantity(String description)
+            throws EmptyDescriptionException, InvalidQuantityException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        try {
+            BigInteger bigIntegerQuantity = new BigInteger(description);
+            BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
+            BigInteger minQuantity = BigInteger.valueOf(-1);
+            if (bigIntegerQuantity.compareTo(maxQuantity) == GREATER) {
+                throw new InvalidQuantityException("Sorry my friend, "
+                        + "the quantity you have entered "
+                        + "has exceed the maximum allowable quantity.");
+            } else if (bigIntegerQuantity.compareTo(minQuantity) < EQUAL_TO) {
+                throw new InvalidQuantityException();
+            }
+            int quantityInteger = bigIntegerQuantity.intValue();
+            return quantityInteger;
         } catch (NumberFormatException numberFormatException) {
             throw new InvalidQuantityException();
         }
     }
     //@author
+
 }

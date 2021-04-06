@@ -4,6 +4,7 @@ import seedu.fridgefriend.command.AddCommand;
 import seedu.fridgefriend.exception.EmptyDescriptionException;
 import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.exception.StorageLoadingException;
@@ -78,7 +79,8 @@ public class Storage {
      * @throws FileNotFoundException if file does not exist
      */
     private static void checkFridgeDataDirectory() throws FileNotFoundException, InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
         Path path = Paths.get(DATA_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -95,7 +97,8 @@ public class Storage {
      * @throws InvalidDateException if the date cannot be parsed
      */
     private static void readFridgeData() throws FileNotFoundException, InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
         File file = new File(DATA_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -105,6 +108,7 @@ public class Storage {
         scanner.close();
     }
 
+    //@@author leeyp
     /**
      * Adds a food item to a fridge based on saved data.
      * 
@@ -114,21 +118,47 @@ public class Storage {
      * @throws InvalidFoodCategoryException if category in data file cannot be parsed
      */
     private static void populateFridge(String line) throws InvalidDateException,
-            InvalidQuantityException, EmptyDescriptionException, RepetitiveFoodIdentifierException {
-        String[] parameters = line.split(":");
+            InvalidQuantityException, EmptyDescriptionException,
+            RepetitiveFoodIdentifierException, InvalidFoodCategoryException, InvalidFoodLocationException {
 
-        String name = parameters[1].substring(1, parameters[1].indexOf((",")));
-        String categoryStr = parameters[2].substring(1, parameters[2].indexOf((",")));
+        String foodNameDelimiter = "Food name: ";
+        String categoryDelimiter = ", category: ";
+        String expiryDelimiter = ", expiry: ";
+        String storageDelimiter = ", stored in: ";
+        String quantityDelimiter = ", quantity: ";
+
+        String name = loadFoodNameFromLine(line, foodNameDelimiter, categoryDelimiter);
+
+        String categoryStr = loadFoodDataFromLine(line, categoryDelimiter, expiryDelimiter);
         FoodCategory category = FoodCategory.convertStringToFoodCategory(categoryStr);
-        String expiry = parameters[3].substring(1, parameters[3].indexOf((",")));
-        String storageStr = parameters[4].substring(1, parameters[4].indexOf((",")));
-        int quantity = Parser.parseIntegerQuantity(parameters[5].trim());
 
+        String expiry = loadFoodDataFromLine(line, expiryDelimiter, storageDelimiter);
+
+        String storageStr = loadFoodDataFromLine(line, storageDelimiter, quantityDelimiter);
         FoodStorageLocation storage = FoodStorageLocation.convertStringToLocation(storageStr);
+
+        int quantity = Parser.parseIntegerQuantity(getQuantityFromLine(line, quantityDelimiter));
+
+
         Food food = AddCommand.categoriseAndGenerateFood(name, category, expiry, storage, quantity);
         fridge.add(food);
     }
 
+    private static String getQuantityFromLine(String line, String quantityDelimiter) {
+        String quantity = line.substring(line.lastIndexOf(quantityDelimiter) + quantityDelimiter.length());
+        return quantity.trim();
+    }
+
+    private static String loadFoodNameFromLine(String line, String startIndex, String endIndex) {
+        return line.substring(line.indexOf(startIndex) + startIndex.length(), line.lastIndexOf((endIndex)));
+    }
+
+    private static String loadFoodDataFromLine(String line, String startIndex, String endIndex) {
+        return line.substring(line.lastIndexOf(startIndex) + startIndex.length(), line.lastIndexOf((endIndex)));
+    }
+    
+
+    //@@author kwokyto
     /**
      * Saves food in the fridge into the datafile.
      * 
@@ -181,7 +211,8 @@ public class Storage {
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void checkLimitsDirectory()
-            throws FileNotFoundException, EmptyDescriptionException, InvalidQuantityException {
+            throws FileNotFoundException, EmptyDescriptionException,
+            InvalidQuantityException, InvalidFoodCategoryException {
         Path path = Paths.get(LIMITS_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -200,7 +231,8 @@ public class Storage {
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
     private static void readLimitsData()
-            throws FileNotFoundException, EmptyDescriptionException, InvalidQuantityException {
+            throws FileNotFoundException, EmptyDescriptionException,
+            InvalidQuantityException, InvalidFoodCategoryException {
         File file = new File(LIMITS_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -218,11 +250,11 @@ public class Storage {
      * @throws EmptyDescriptionException if quantity in data file is empty
      * @throws InvalidQuantityException if quantity in data file cannot be parsed
      */
-    private static void populateFoodCategory(String line) 
-            throws EmptyDescriptionException, InvalidQuantityException {
+    private static void populateFoodCategory(String line)
+            throws EmptyDescriptionException, InvalidQuantityException, InvalidFoodCategoryException {
         String[] parameters = line.split(":");
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(parameters[0]);
-        int quantity = Parser.parseIntegerQuantity(parameters[1]);
+        int quantity = Parser.parseSetLimitIntegerQuantity(parameters[1]);
         FoodCategory.setMinimumQuantity(foodCategory, quantity);
     }
 
