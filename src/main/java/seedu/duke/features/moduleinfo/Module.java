@@ -1,6 +1,6 @@
-package seedu.duke;
+package seedu.duke.features.moduleinfo;
 
-import seedu.duke.task.Task;
+import seedu.duke.features.task.Task;
 
 import java.util.ArrayList;
 import java.util.Hashtable;

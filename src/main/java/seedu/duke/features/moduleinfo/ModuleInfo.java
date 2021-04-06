@@ -1,13 +1,15 @@
-package seedu.duke;
+package seedu.duke.features.moduleinfo;
 
-import seedu.duke.capsimulator.ModuleGradeEnum;
-import seedu.duke.link.Links;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
-import seedu.duke.task.command.DeleteTask;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.capsimulator.ModuleGradeEnum;
+import seedu.duke.features.link.Links;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
+import seedu.duke.features.task.command.DeleteTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,14 +33,14 @@ public class ModuleInfo {
     public static void moduleInfoMenu() {
         while (true) {
             Ui.printModuleInfoMessage();
-            String command = Ui.readCommand();
+            int command = Ui.readCommandToInt();
             try {
-                int taskNumber = Integer.parseInt(command);
-                if (taskNumber == 15) {
+                //int taskNumber = Integer.parseInt(command);
+                if (command == 15) {
                     Ui.printReturnToMainMenuMessage();
                     break; // exit to Main Menu
                 }
-                switch (taskNumber) {
+                switch (command) {
                 case 1:
                     addNewModule();
                     break;
@@ -99,6 +101,7 @@ public class ModuleInfo {
     private static void addModuleGrade() {
         if (modules.isEmpty()) {
             logger.log(Level.INFO, "You have not added any modules.");
+            //need to print this manually if logging into text file
             return;
         }
         viewAllModules();

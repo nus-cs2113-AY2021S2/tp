@@ -1,8 +1,8 @@
-package seedu.duke.task.command;
+package seedu.duke.features.task.command;
 
-import seedu.duke.Ui;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;
 

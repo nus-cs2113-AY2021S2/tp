@@ -1,13 +1,14 @@
-package seedu.duke;
+package seedu.duke.ui;
 
-import seedu.duke.capsimulator.HelpGraduation;
-import seedu.duke.link.LinkInfo;
-import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.features.capsimulator.HelpGraduation;
+import seedu.duke.features.link.LinkInfo;
+import seedu.duke.features.link.ZoomLinkInfo;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -291,7 +292,15 @@ public class Ui {
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine().trim();
+        while (true) {
+            command = input.nextLine().trim();
+            if (command.contains(" ~~ ")) {
+                System.out.println("Restricted character present in input. PLease try again.");
+                printHorizontalLine();
+            } else {
+                break;
+            }
+        }
         printHorizontalLine();
         return command;
     }

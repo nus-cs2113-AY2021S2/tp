@@ -1,8 +1,8 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
 import java.util.logging.Logger;
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 import java.util.logging.Level;

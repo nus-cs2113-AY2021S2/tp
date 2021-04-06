@@ -1,12 +1,12 @@
-package seedu.duke.task.command;
+package seedu.duke.features.task.command;
 
-import seedu.duke.ModuleInfo;
-import seedu.duke.Ui;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

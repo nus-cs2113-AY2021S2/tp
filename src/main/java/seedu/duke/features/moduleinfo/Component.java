@@ -1,10 +1,12 @@
-package seedu.duke;
+package seedu.duke.features.moduleinfo;
+
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 
-import static seedu.duke.ModuleInfo.viewAllModules;
+import static seedu.duke.features.moduleinfo.ModuleInfo.viewAllModules;
 
 public class Component {
     //String moduleName;

@@ -1,11 +1,13 @@
 package seedu.duke;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.features.moduleinfo.Module;
+import seedu.duke.features.moduleinfo.ModuleInfo;
 
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.duke.ModuleInfo.checkIfIndexIsWithinBounds;
+import static seedu.duke.features.moduleinfo.ModuleInfo.checkIfIndexIsWithinBounds;
 
 class ModuleInfoTest {
     @Test
