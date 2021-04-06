@@ -228,7 +228,7 @@ public class Storage {
             throws EmptyDescriptionException, InvalidQuantityException, InvalidFoodCategoryException {
         String[] parameters = line.split(":");
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(parameters[0]);
-        int quantity = Parser.parseIntegerQuantity(parameters[1]);
+        int quantity = Parser.parseSetLimitIntegerQuantity(parameters[1]);
         FoodCategory.setMinimumQuantity(foodCategory, quantity);
     }
 
