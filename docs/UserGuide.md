@@ -86,20 +86,16 @@ Throughout the guide, you will come across various symbols, each has a different
 
 ### 2.2 Explanation for Command formats
 
-Commands in Finux follow these argument orders (depending on the command):
-> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
-> * `CMD -OPT`
-> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
-> * `CMD <FIELD>`
-> * `CMD [<FIELD>]`
-> * `CMD`
-
-Argument types and notation:
+There are the argument types and notation used in Finux:
 > * `CMD` - a valid command.
-> * `-OPT` - an option, a letter preceded by a dash. E.g. "-i".
+> * `-OPT` - an option, a letter preceded by a dash. E.g. `-i`.
 > * `<FIELD>` - an area where data is required.
-> * `[...]` - optional argument(s).
-> * `{ ... | ... | ... }` - mutually exclusive arguments, e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+ 
+The Commands in Finux follow these argument orders (depending on the command):
+> * `CMD -OPT <FIELD>`
+> * `CMD -OPT <FIELD> -OPT <FIELD> ...`
+> * `CMD <FIELD>`
+> * `CMD`
 
 ---
 
@@ -133,45 +129,49 @@ Finux supports multiple Date formats, for ease of use:
 
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
-The output format used by Finux in displaying an expense, loan and saving record is as follows:
+The general output format used by Finux in displaying an expense and saving record is as follows:
 
-`[<record_type_symbol>][<issue_date>] <description> [<return_status>]`
+`[record_type][issue_date][amount] description`
 
-> * record_type_symbol
->    * A one character symbol denoting the type of the record. 
->    * 'E' for expense record, 'L' for loan record and 'S' for saving record.
+Whereas the general output format for loan record is:
+
+`[record_type][issue_date][amount] description [return_status]`
+
+> * record_type
+>    * A single character denoting the type of the record. 
+>    * `E` for expense record, `L` for loan record and `S` for saving record.
 > * issue_date
->    * Date of the record.
+>    * Date of record supplied by the user.
 > * description
->    * Description of the record.
+>    * Description of the record supplied by the user.
 > * return_status
 >    * This field is only applicable to loan records.
->    * A one character symbol denoting the return status of the loan record.
->    * 'v' for returned loan record and ' ' for unreturned loan record.
+>    * A character denoting the return status of the loan record.
+>    * `v` for returned loan record and ` ` (an empty space) for unreturned loan record.
 
-For example, let's say you bought a plain loaf of bread on 3rd March 2021. The output format of this *expense* record 
+For example, let's say you bought a plain loaf of bread for $2.75 on 3rd March 2021. The output format of this *expense* record 
 will be:
 
-`[E][2021-03-20] Plain bread loaf`
+`[E][2021-03-20][2.75] Plain bread loaf`
 
-Another example is suppose you made a loan to Mark on 20th March 2021. The output format of this *unreturned loan* 
+Another example is suppose you made a loan $500 to Mark on 20th March 2021. The output format of this *unreturned loan* 
 record will be:
 
-`[L][2021-03-20] 1st loan to Mark [ ]`
+`[L][2021-03-20][500] 1st loan to Mark [ ]`
 
 After Mark returns this loan to you, the output format of this *returned loan* record will be:
 
-`[L][2021-03-20] 1st loan to Mark [v]`
+`[L][2021-03-20][500] 1st loan to Mark [v]`
 
 For the `add` and `list` commands, each displayed record will be preceded with a number, referred to as the *index* of
 the record with respect to the combined list of expense, loan, and saving records. Let's say you have added the records
 shown above to Finux one after another, then doing a `list -l` operation will display the above loan record to you as
 follows:
 
-`2. [L][2021-03-20] 1st loan to Mark [v]`
+`2. [L][2021-03-20][500] 1st loan to Mark [v]`
 
-This means that the loan you have made to Mark on 20th March 2021 has been returned and this loan is the second record 
-added to Finux.
+This means that the $500 loan you have made to Mark on 20th March 2021 has been returned and this loan is the second 
+record added to Finux.
 
 ## 3. Features
 
