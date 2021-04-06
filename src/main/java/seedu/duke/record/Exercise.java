@@ -17,19 +17,21 @@ public class Exercise extends Record {
     private int lengthOfActivity;
     private int lengthOfDuration;
 
-    public Exercise(String activityStr, int duration, LocalDate date) throws TypeException, NumberFormatException {
+    public Exercise(String activityStr, String durationStr, LocalDate date) throws TypeException, NumberFormatException {
         super(RecordType.EXERCISE, date);
         try {
             workoutCategory = WorkoutCategory.valueOf(activityStr.toUpperCase());
             if (workoutCategory == INVALID) {
                 throw new IllegalArgumentException();
             }
+            this.duration = Integer.parseInt(durationStr);
+            if (duration <= 0 || duration >= 1440) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Exercise time invalid");
         } catch (IllegalArgumentException e) {
             throw new TypeException("workout type exception");
-        }
-        this.duration = duration;
-        if (duration <= 0 || duration > 1440) {
-            throw new NumberFormatException("Exercise time invalid");
         }
         this.calories = duration * workoutCategory.getCaloriePerMin();
         lengthOfActivity = workoutCategory.toString().length();

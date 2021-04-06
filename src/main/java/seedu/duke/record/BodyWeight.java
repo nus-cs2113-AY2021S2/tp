@@ -5,10 +5,14 @@ import java.time.LocalDate;
 public class BodyWeight extends Record {
     private final double weight;
 
-    public BodyWeight(double weight, LocalDate date) throws NumberFormatException {
+    public BodyWeight(String weightStr, LocalDate date) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, date);
-        this.weight = weight;
-        if (weight < 30 || weight > 400) {
+        try {
+            this.weight = Double.parseDouble(weightStr);
+            if (weight < 30 || weight > 400) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
             throw new NumberFormatException("Body weight invalid");
         }
     }

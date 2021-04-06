@@ -21,19 +21,18 @@ public class Diet extends Record {
     private int lengthOfFood;
     private int lengthOfAmount;
 
-    /**
-     * Initializes the object with given record type and date.
-     *
-     * @param date the date of the record.
-     */
-    public Diet(String foodString, double amount, LocalDate date) throws TypeException, NumberFormatException {
+    public Diet(String foodString, String amountStr, LocalDate date) throws TypeException, NumberFormatException {
         super(DIET, date);
         foodCategory = FoodCategory.getFoodCategory(foodString);
         if (foodCategory == INVALID) {
             throw new TypeException("food type exception");
         }
-        this.amount = amount;
-        if (amount < 0 || amount > 3000) {
+        try {
+            this.amount = Double.parseDouble(amountStr);
+            if (amount <= 0 || amount > 3000) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
             throw new NumberFormatException("Food amount invalid");
         }
         calorie = amount * foodCategory.getCaloriePer100g();
