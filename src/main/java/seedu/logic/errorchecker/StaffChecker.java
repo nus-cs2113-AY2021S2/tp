@@ -2,6 +2,7 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.*;
 import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.StaffAggregation;
@@ -21,23 +22,38 @@ public class StaffChecker extends MainChecker {
         }
     }
 
-    public void checkValidDataForAdd(String line, StaffAggregation staffAggregation) throws
+    public String[] getTrimInput(String line) throws InsufficientInputException, ExcessInputException {
+        String[] array = line.trim().split("/");
+        checkNumInput2(array, 5, 5);
+        array = Arrays.copyOfRange(array, 1, 5);
+        for (int i = 0; i<array.length; i++) {
+            array[i] = array[i].trim();
+        }
+        return array;
+    }
+
+
+    public String[] checkValidDataForAdd(String line, StaffAggregation staffAggregation) throws
             NoInputException, WrongStaffIdException, InvalidIntegerException,
-            ExcessInputException, InsufficientInputException, DuplicateIDException {
-        checkNumInput(line,5,5);
-        checkStaffID(line.split("/")[1]);
-        checkDuplicateStaffID(line.split("/")[1],staffAggregation.getList());
-        checkNumericInput(line.split("/")[3]);
-        checkBlankInput(line);
+            ExcessInputException, InsufficientInputException, DuplicateIDException,
+            InvalidStaffAgeException, IllegalCharacterException {
+        String[] array = getTrimInput(line);
+        checkStaffID(array[0]);
+        checkDuplicateStaffID(array[0], staffAggregation.getList());
+        checkStaffAge(array[2]);
+        checkBlankInput2(array);
+        invalidCharactersStaffChecker(array);
+        return array;
     }
 
     public void checkValidDataFromStorage(String line, ArrayList<Staff> list) throws NoInputException,
-            WrongStaffIdException, InvalidIntegerException,
-            ExcessInputException, InsufficientInputException, DuplicateIDException {
+            WrongStaffIdException, InvalidIntegerException, ExcessInputException,
+            InsufficientInputException, DuplicateIDException, InvalidStaffAgeException {
+
         checkDataNumInput(line,4,4);
         checkStaffID(line.split("\\|")[0]);
         checkDuplicateStaffID(line.split("\\|")[0], list);
-        checkNumericInput(line.split("\\|")[2]);
+        checkStaffAge(line.split("\\|")[2]);
         checkBlankInputForStorage(line);
     }
 
@@ -62,31 +78,44 @@ public class StaffChecker extends MainChecker {
         }
     }
 
-    public String[] invalidCharactersStaffChecker(String line) throws IllegalCharacterException {
-        String [] cleanArray = Arrays.copyOfRange(line.split("/"), 1, 5);
-        String[] field = {"ID", "name", "age", "specialisation"};
-        for (int i = 0; i < cleanArray.length; i++) {
-            //cleanArray[i] = UI.cleanseInput(cleanArray[i]);
-            illegalCharacterChecker(cleanArray[i], field[i]);
+    public static void checkStaffAge(String number) throws NumberFormatException,
+            InvalidIntegerException, InvalidStaffAgeException {
+        checkNumericInput(number);
+        if (Integer.parseInt(number) < 18 || Integer.parseInt(number) > 150) {
+            throw new InvalidStaffAgeException();
         }
-        return cleanArray;
+    }
+
+    public void invalidCharactersStaffChecker(String[] array) throws IllegalCharacterException {
+        String[] field = {"ID", "name", "age", "specialisation"};
+        for (int i = 0; i < array.length; i++) {
+            illegalCharacterChecker(array[i], field[i]);
+        }
     }
 
     public String[] invalidCharactersStaffCheckerForStorage(String line) throws IllegalCharacterException {
         String [] cleanArray = line.split("\\|");
         String[] field = {"ID", "name", "age", "specialisation"};
         for (int i = 0; i < (cleanArray.length); i++) {
-            //cleanArray[i] = UI.cleanseInput(cleanArray[i]);
             illegalCharacterChecker(cleanArray[i], field[i]);
         }
         return cleanArray;
     }
 
-    public void checkListCommand(String line) throws WrongListInputException {
+    public boolean isEqualNurses(String input) {
+        return input.trim().equalsIgnoreCase("nurses");
+    }
 
-        if ((line.split("/").length > 1) &&
-                !((line.split("/")[1].equals("nurses") || line.split("/")[1].equals("doctors")))) {
+    public boolean isEqualDoctors(String input) {
+        return input.trim().equalsIgnoreCase("doctors");
+    }
+
+    public String[] checkListCommand(String line) throws WrongListInputException {
+        String[] array = line.split("/");
+        if ((array.length > 1) &&
+                !(isEqualNurses(array[1]) || isEqualDoctors(array[1]) )) {
             throw new WrongListInputException();
         }
+        return array;
     }
 }

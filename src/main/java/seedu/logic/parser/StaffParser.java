@@ -2,6 +2,7 @@ package seedu.logic.parser;
 
 import seedu.exceptions.*;
 import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.command.Command;
@@ -22,30 +23,31 @@ public class StaffParser {
     public Command commandHandler(String line, StaffAggregation staffAggregation) throws
             WrongStaffIdException, WrongListInputException, ExcessInputException,
             InsufficientInputException, NoInputException, NumberFormatException,
-            InvalidIntegerException, DuplicateIDException, IllegalCharacterException {
+            InvalidIntegerException, DuplicateIDException, IllegalCharacterException,
+            InvalidStaffAgeException {
         Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
             return new StaffReturn();
         }
+        String[] array;
         staffChecker.checkNumInput(line, 5,1);
         switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
         case ("add"):
-            staffChecker.checkValidDataForAdd(line, staffAggregation);
-            String[] arr = staffChecker.invalidCharactersStaffChecker(line);
-            StaffUI.staffHiredOutput(arr[0], arr[1]);
-            c = new StaffAdd(arr);
+            array = staffChecker.checkValidDataForAdd(line, staffAggregation);
+            StaffUI.staffHiredOutput(array[0], array[1]);
+            c = new StaffAdd(array);
             break;
 
         case ("list"):
-            staffChecker.checkListCommand(line);
-            MainChecker.checkNumInput(line,2,1);
-            c = new StaffList(line);
+            array = staffChecker.checkListCommand(line);
+            MainChecker.checkNumInput2(array,2,1);
+            c = new StaffList(array);
             break;
 
         case ("delete"):
-            staffChecker.checkNumInput(line,2,2);
+            MainChecker.checkNumInput(line,2,2);
             staffChecker.checkStaffID(line.split("/")[1]);
             c = new StaffDelete(line);
             break;
@@ -55,7 +57,7 @@ public class StaffParser {
             break;
 
         case ("find"):
-            staffChecker.checkNumInput(line,2,2);
+            MainChecker.checkNumInput(line,2,2);
             c = new StaffFind(line);
             break;
 

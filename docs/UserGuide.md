@@ -26,7 +26,7 @@ The purpose of this User Guide is to assist you in the usage of the application.
 	1. [Staff](#51-staff)
 	2. [Patient](#52-patient)
 	3. [Doctor's Appointment](#53-doctors-appointment)
-	4. [Nurse Schedule](#54-nurse-schedule)
+	4. [Schedules for Nurses](#54-schedules-for-nurses)
 	5. [Inventory](#55-inventory)
 6. [FAQ](#6-faq)
 7. [Command Summary](#7-command-summary)
@@ -95,7 +95,7 @@ This user guide will cover the following:
 
 <br/><br/>
 
-## 3. Getting Started</a>
+## 3. Getting Started
 
 ### 3.1 Introduction to Command Line Interface (CLI)
 
@@ -111,7 +111,7 @@ After keying in their input, the most common way to enter the response into the 
 
 
 
-### <a name="section2"> 3.2 Installation Guide</a>
+### <a name="section2"> 3.2 Installation Guide
 
 1. Ensure system has Java 11
 
@@ -127,7 +127,7 @@ After keying in their input, the most common way to enter the response into the 
    - For example:  (C:\Users\JohnDoe\Downloads), where JohnDoe is the user’s name
    - Then, run the following command: `cd [File Path]`
    - Example: `cd C:\Users\JohnDoe\Downloads`
-   - Run the following command: `java -jar jar [JAR file name]`
+   - Run the following command: `java -jar [JAR file name]`
   
 <br/><br/>
 
@@ -188,12 +188,12 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Staff ID]/[Name]/[Age]/[Specialisation]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
->3. The age field input should be a positive integer
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
+>3. The age field input should be a positive integer starting from 0 but less than 150
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
@@ -217,7 +217,7 @@ This is an example of the welcome screen for Staff Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[Staff ID]`
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `D54321`
 >   
@@ -340,13 +340,13 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
->2. Excluding the delimiter "/" HealthVault only accepts space and alphanumeric characters 
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F" or "Others"
->4. The age field input should be a positive integer not more than 150
+>4. The age field input should be a positive integer starting from 0 but less than 150
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -369,7 +369,7 @@ When you first enter the Patient menu, you will be greeted with the following we
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted user ID starts with a P and has at least 5 digits in the number following! 
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `P12345`, `P54321`
 >
@@ -413,6 +413,10 @@ When you first enter the Patient menu, you will be greeted with the following we
 >1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/19`, `find/P12345`
+> 
+> The keyword input can be case insensitive and still find matches in the database.
+> 
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `find/john` is able to match with a name field "John" or "JOHN"
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
@@ -471,13 +475,12 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `add/[Doctor ID]/[Appointment ID]/[Patient’s Name]/[Gender]/[DDMMYYYY]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 >   
 >2. Any input fields in HealthVault only accepts space and alphanumeric characters
 >3. The gender field input should only be "M", "F".
->4. The name field input should not have any non-Alphanumeric Characters.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
@@ -500,7 +503,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `delete/[DoctorID/ Appointment ID]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 > 
@@ -535,7 +538,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `list/[DoctorID/ Appointment ID]` 
 
 >:information_source: Important notes about the input format
->1. Make sure that the inputted doctor/appointment ID starts with a D/A and has at least 5 digits in the number following! 
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `D12345`, `A54321`
 > 
@@ -579,7 +582,7 @@ This is an example of the welcome screen for Doctors' Appointments Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DoctorAppointmentHelp.jpg" width = "850" >
 
 <br/><br/>
-### 5.4 Nurse Schedule
+### 5.4 Schedules for Nurses
 
 The functions in the Nurse Schedule menu allow you, the head nurse, to add, view, and delete schedules of your nurses.
 
@@ -595,18 +598,19 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]`
 
 >:information_source: Important notes about the input format
->
->1. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and has at least 5 digits in the number following! 
+>1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
+>2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
+>3. Any input fields in HealthVault only accepts space and alphanumeric characters.
+>4. HealhVault currently only allows the adding of **1** schedule per patient per day.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:<br/>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adding a schedule for Nurse ID N12345 to visit P12345 on 30/01/2020
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add N12345 P12345 30012020 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> add/N12345/P12345/30012020 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
@@ -624,7 +628,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 >
@@ -634,7 +638,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a schedule with the specified Nurse ID and Date.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete N12345 30012020 ```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ``` NSchedule --> delete/N12345/30012020 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
@@ -650,7 +654,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted Nurse ID starts with a N for Nurse, and has at least 5 digits in the number following! 
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
 >
 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `N12345`, `P54321`
 
@@ -700,49 +704,89 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 The functions in the Inventory menu allow you, the head nurse, to add, view, and delete drugs existing in your inventory.
 
-This is an example of the welcome screen for the Nurse Schedule Menu.
+This is an example of the welcome screen for the Inventory Menu.
 
 <img src="images/InventoryWelcomeHeader.PNG" width = "600">
 
 #### Adding a drug: `add`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a drug to the drug inventory.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Adds a new drug or increase the quantity of an existing drug in the drug inventory.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `add/[Name]/[Price]/[Quantity]`
 
 >:information_source: Important notes about the input format
 >
->1. Make sure that the inputted price is valid!
+>1. Make sure that the inputted price is valid and does not have more than 2 decimal places!
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example**: `3`, `3.0`, `3.00`
 >   
->2. Any input fields in HealthVault only accepts space and alphanumeric characters
+>2. Any input fields in HealthVault only accepts space and alphanumeric characters!
+>
+>3. Note that the examples for adding a new drug and increasing the quantity of an existing drug are related!
+>
+>4. Avoid using uppercase letters!
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(add a new drug)**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> add/paracetamol/3/90```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryAdd.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryAddDrug.PNG" width = "500">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 90   ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **1. Example of usage(increases quantity of existing drug)**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> add/paracetamol/3/50```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/inventoryIncreaseQuantity.PNG" width = "500">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 140   ```
 
 <br/><br/>
 
 #### Deleting a drug: `delete`
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deletes a drug from the inventory list.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Decreases the quantity of an existing drug in the inventory list.
 
+>:information_source: Important notes about the format
+>1. Note that the example from add(increasing quantity of existing drug) feature is used for this feature's example!
+>
+>2. Avoid using uppercase letters
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Format**: 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  `delete/[Name]/[Quantity]`
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Example of usage**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> delete/paracetamol```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```Inventory --> delete/paracetamol/20```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryDelete.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryDecreaseQuantity.PNG" width = "550">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **List example**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```DrugName        | Price      | Quantity```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```------------------------------------------------------------```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ```paracetamol     | 3.00       | 120   ```
 
 <br/><br/>
 
@@ -778,7 +822,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected Outcome**:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelpFinal.PNG" width = "600">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/InventoryHelpNew.PNG" width = "600">
 
 <br/><br/>
 
@@ -791,7 +835,7 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 
 **Q**: Why is HealthVault telling me there is a Corrupted File?
 
-**A**: Corrupted Files are a result of editing the text file manually and causing unpermissible inputs into the data fields. As a result HealthVault is unable process and retrive the data.
+**A**: Corrupted Files are a result of editing the text file manually and causing unpermissible inputs into the data fields. As a result HealthVault is unable process and retrieve the data.
 
 
 **Q**: What do i do when HealthVault tells me there is a Corrupted File?
@@ -840,8 +884,8 @@ This is an example of the welcome screen for the Nurse Schedule Menu.
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |
 | **Drugs Inventory** |                                                                                                            |
-| add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/$3/90`                                           |
-| delete              | `delete/[Name]`<br/><br/>`delete/paracetamol`                                                              |
+| add                 | `add/[Name]/[Price]/[Quantity]`<br/><br/>`add/paracetamol/3/90`                                           |
+| delete              | `delete/[Name]/[Quantity]`<br/><br/>`delete/paracetamol/20`                                                              |
 | list                | `list`                                                                                                     |
 | help                | `help`                                                                                                     |
 | return              | `return`                                                                                                   |

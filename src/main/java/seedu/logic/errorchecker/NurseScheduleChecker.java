@@ -4,6 +4,7 @@ import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.*;
+import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.NurseSchedule;
 import seedu.model.Patient;
 import seedu.model.staff.Staff;
@@ -13,32 +14,24 @@ import seedu.storage.NurseScheduleStorage;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class NurseScheduleChecker extends MainChecker {
-    public boolean isValidDate(String datetime) throws InvalidDateException {
-        /* Check if date is 'null' */
-        if (!datetime.trim().equals("")) {
-            /*
-             * Set preferred date format,
-             * For example MM-dd-yyyy, MM.dd.yyyy,dd.MM.yyyy etc.*/
-            SimpleDateFormat sdfrmt = new SimpleDateFormat("ddMMyyyy");
-            sdfrmt.setLenient(false);
-            /* Create Date object
-             * parse the string into date
-             */
-            try {
-                Date javaDate = sdfrmt.parse(datetime);
-                //System.out.println(datetime + " is valid date format");
-            }
-            /* Date format is invalid */
-            catch (ParseException e) {
-                throw new InvalidDateException();
-            }
+
+    public static void isValidDate(final String date) throws InvalidDateException {
+        try {
+            LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("ddMMuuuu")
+                        .withResolverStyle(ResolverStyle.STRICT));
+        } catch (DateTimeParseException e) {
+            throw new InvalidDateException();
         }
-        /* Return true if date format is valid */
-        return true;
     }
 
     public static void checkEmptyInput(String line) throws NoInputException {
@@ -117,11 +110,35 @@ public class NurseScheduleChecker extends MainChecker {
         return numberOfIntegers;
     }
 
-    public static void checkDuplicatePatientID(String id, ArrayList<NurseSchedule> list) throws DuplicateIDException {
+    public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list) throws DuplicateScheduleException {
         for (NurseSchedule patient : list) {
             if (patient.getPatientID().equals(id)) {
-                throw new DuplicateIDException("Patient");
+                if (patient.getDatetime().equals(date)) {
+                    try {
+                        date = NurseSchedulesParser.formatDate(date);
+                    } catch (ParseException e) {}
+                    throw new DuplicateScheduleException(date);
+                }
             }
         }
+    }
+
+    /**
+     * Checks if nurseID exists within schedules.
+     *
+     * @param nurseSchedules List of all schedules
+     * @param id NurseID to check
+     * @return boolean
+     * @throws NurseIdNotFound if id does not exist
+     */
+    private boolean isValidNurseID(List<NurseSchedule> nurseSchedules, String id) throws NurseIdNotFound {
+        int i = 0;
+        while (i < nurseSchedules.size()) {
+            if (nurseSchedules.get(i).getNurseID().equals(id)) {
+                return true;
+            }
+            i++;
+        }
+        throw new NurseIdNotFound();
     }
 }

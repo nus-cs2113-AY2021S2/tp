@@ -14,6 +14,7 @@ import seedu.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 
@@ -45,11 +46,20 @@ public class NurseSchedulesParser {
         }
     }
 
+    private String[] trimInputs(String[] parts) {
+        String[] trimmedArray = new String[parts.length];
+        for (int i = 0; i< parts.length; i++) {
+            trimmedArray[i] = parts[i].trim();
+        }
+        return trimmedArray;
+    }
+
     public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
         String[] parts = input.split("/");
+        parts = trimInputs(parts);
 
         assert parts.length > 0;
 
@@ -58,22 +68,20 @@ public class NurseSchedulesParser {
         }
         switch (command) {
         case "ADD":
-            if (checker.isValidDate(parts[3])) {
-                MainChecker.checkNumInput(input, 4, 4);
-                details[0] = parts[1];
-                details[1] = parts[2];
-                details[2] = parts[3];
-                checker.illegalCharacterChecker(details[0], "Nurse ID");
-                checker.illegalCharacterChecker(details[1], "Patient ID");
-            }
+            checker.isValidDate(parts[3]);
+            MainChecker.checkNumInput(input, 4, 4);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            details[2] = parts[3];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
+            MainChecker.illegalCharacterChecker(details[1], "Patient ID");
             break;
         case "DELETE":
-            if (checker.isValidDate(parts[2])) {
-                MainChecker.checkNumInput(input, 3, 3);
-                details[0] = parts[1];
-                details[1] = parts[2];
-                checker.illegalCharacterChecker(details[0], "Nurse ID");
-            }
+            checker.isValidDate(parts[2]);
+            MainChecker.checkNumInput(input, 3, 3);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
             break;
         case "LIST":
             MainChecker.checkNumInput(input, 2, 2);

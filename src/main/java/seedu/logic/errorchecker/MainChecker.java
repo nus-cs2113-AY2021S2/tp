@@ -1,6 +1,10 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.*;
+import seedu.exceptions.ExcessInputException;
+import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidGenderException;
+import seedu.exceptions.InvalidIntegerException;
+import seedu.exceptions.NoInputException;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.ui.UI;
 
@@ -16,6 +20,16 @@ public class MainChecker {
             throw new InsufficientInputException();
         }
         if (line.split("/").length > max) {
+            throw new ExcessInputException();
+        }
+    }
+
+    public static void checkNumInput2(String[] array, int max, int min) throws InsufficientInputException, ExcessInputException {
+
+        if (array.length < min) {
+            throw new InsufficientInputException();
+        }
+        if (array.length > max) {
             throw new ExcessInputException();
         }
     }
@@ -48,6 +62,13 @@ public class MainChecker {
             }
         }
     }
+    public static void checkBlankInput2(String[] array) throws NoInputException {
+        for (String s : array) {
+            if (s.trim().equals("")) {
+                throw new NoInputException();
+            }
+        }
+    }
 
     public static void checkBlankInputForStorage(String line) throws NoInputException {
         String[] array = line.split("\\|");
@@ -67,7 +88,7 @@ public class MainChecker {
 
     public static void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
 
-        String cleanedInput = UI.cleanseInput(stringToken);
+        String cleanedInput = UI.cleanseInput(stringToken.trim());
         if (!stringToken.equals(cleanedInput)){
             throw new IllegalCharacterException(fieldInput);
         }

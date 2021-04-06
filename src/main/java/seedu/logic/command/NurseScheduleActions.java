@@ -36,10 +36,10 @@ public class NurseScheduleActions {
     }
 
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException,
-            NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError {
+            NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         try {
             NurseScheduleChecker.checkValidNurseID(details[0]);
-            NurseScheduleChecker.checkDuplicatePatientID(details[1], nurseSchedules);
+            NurseScheduleChecker.checkDuplicatePatientID(details[1], details[2], nurseSchedules);
             NurseScheduleChecker.checkNurseIDExist(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
             NurseScheduleChecker.checkPatientDExist(details[1]);
@@ -99,10 +99,10 @@ public class NurseScheduleActions {
      *
      * @param details nurseID to delete
      */
-    public void deleteSchedule(String[] details) throws NurseIdNotFound {
+    public void deleteSchedule(String[] details) throws NurseIdNotFound, InvalidScheduleException {
         int i = 0;
         while (i < nurseSchedules.size()) {
-            if(!isValidNurseID(nurseSchedules, details[0])) {
+            if(!isValidNurseID(nurseSchedules, details[0]) | !isValidSchedule(nurseSchedules, details[0], details[1])) {
                 break;
             }
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
@@ -128,7 +128,7 @@ public class NurseScheduleActions {
         try {
             Collections.sort(findSchedules);
             System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
     }
 
     /**
@@ -171,6 +171,19 @@ public class NurseScheduleActions {
             i++;
         }
         throw new NurseIdNotFound();
+    }
+
+    private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date) throws InvalidScheduleException {
+        int i = 0;
+        while (i < nurseSchedules.size()) {
+            if (nurseSchedules.get(i).getNurseID().equals(id)) {
+                if (nurseSchedules.get(i).getDatetime().equals(date)) {
+                    return true;
+                }
+            }
+            i++;
+        }
+        throw new InvalidScheduleException();
     }
 
     public int getSize() {
