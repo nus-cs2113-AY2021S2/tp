@@ -1,55 +1,102 @@
 # Developer Guide
 ## Table of Contents
-[1.Preface](#1.-Preface) <br>
-[2.How to use this document](#2.-How-to-use-this-document)<br>
-[3.Setting up](#3.-Setting-up)<br />
-&nbsp;&nbsp;[3.1. Prerequisites](#Prerequisites) <br>
-&nbsp;&nbsp;[3.2. Setting up the project in your computer](#Setting-up-the-project-in-your-computer) <br>
-&nbsp;&nbsp;[3.3. Verifying the setup](#Verifying-the-setup) <br>
-&nbsp;&nbsp;[3.4. Configure coding style](#Configure-the-coding-style) <br>
-[4. Design](#Design) <br> 
-&nbsp;&nbsp;[4.1. Architecture: High Level View](#Architecture:-High-Level-View)<br />
-&nbsp;&nbsp;[4.2. UI & Messages component](#UI-component)<br />
-&nbsp;&nbsp;[4.3. Parser component](#Parser-component)<br />
-&nbsp;&nbsp;[4.4. Review component](#Review-componenet)<br />
-&nbsp;&nbsp;[4.5. Recommendation component](#Review-componenet)<br />
-&nbsp;&nbsp;[4.6. Commands component](#Commands-component)<br />
-&nbsp;&nbsp;[4.7. Sorter component](#Sorter-component)<br />
-&nbsp;&nbsp;[4.8. Storage component](#Storage-component)<br />
-[5. Implementation](#Implementation) <br>
-&nbsp;&nbsp;[5.1. Mode Switch Feature](#Mode-switch-feature) <br>
-&nbsp;&nbsp;[5.2. Review Mode](#Review-Mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.1. Add a Review Feature](#Add-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.2. List Reviews Feature](#List-Reviews-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.3. Sort Reviews Feature](#Sort-Reviews-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.4. View a Review Feature](#View-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.5. Edit a Review Feature](#Edit-a-Review-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.6. Delete a Review Feature](#Delete-a-Review-feature) <br>
-&nbsp;&nbsp;[5.3. Recommendation Mode](#43-notebook-mode) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.3.1. Add a Recommendation Feature](#Add-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.3.2. List Recommendation Feature](#List-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.3.3. Edit a Recommendation Feature](#Edit-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.5. Delete a Recommendation Feature](#Delete-a-Recommendation-feature) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.2.6. Review a Recommendation Feature](#Review-a-Recommendation-feature) <br>
-&nbsp;&nbsp;[5.4. Storage](#44-storage) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.4.1. Storage Format](#441-storage-format) <br>
-&nbsp;&nbsp;&nbsp;&nbsp;[5.4.2. Implementation](#442-implementation) <br>
-&nbsp;&nbsp;[5.5. Error handling](#45-error-handling) <br>
-&nbsp;&nbsp;[5.6. Personalised Messages](#46-personalised-messages) <br>
-[6. Planned Features](#Planned-Features) <br>
-[7. Documentation](#5-documentation) <br>
-&nbsp;&nbsp;[7.1. Setting up and maintaining the project website](#51-setting-up-and-maintaining-the-project-website) <br>
-&nbsp;&nbsp;[7.2. Style guidance](#52-style-guidance) <br>
-&nbsp;&nbsp;[7.3. Diagrams](#53-diagrams) <br>
-[8. Testing](#6-testing) <br>
-&nbsp;&nbsp;[8.1. Running tests](#61-running-tests) <br>
-&nbsp;&nbsp;[8.2. Types of tests](#62-types-of-tests) <br>
-[Appendix A: Product Scope](#appendix-a-product-scope) <br>
-[Appendix B: User Stores](#appendix-b-user-stories) <br>
-[Appendix C: Use Cases](#appendix-c-use-cases) <br>
-[Appendix D: Non-Functional Requirements](#appendix-d-non-functional-requirements) <br>
-[Appendix E: Glossary](#appendix-e-glossary) <br>
-[Appendix F: Instructions for manual testing](#appendix-e-glossary) <br>
+
+1. [Preface](#1-preface)
+   
+2. [How to use this document](#2-how-to-use-this-document)
+   
+3. [Setting up](#3-setting-up)
+    
+    3.1 [Prerequisites](#31-prerequisites)
+   
+    3.2 [Setting up the project in your computer](#32-setting-up-the-project-in-your-computer)
+   
+    3.3 [Verifying the setup](#33-verifying-the-setup)
+    3.4 [Configure coding style](#34-configure-the-coding-style)
+   
+4. [Design](#4-design)
+    
+    4.1 [Architecture: High Level View](#41-architecture-high-level-view)
+    
+    4.2 [UI and Messages component](#42-ui-and-component)
+    
+    4.3 [Parser component](#43-parser-component)
+    
+    4.4 [Review component](#44-review-componenet)
+    
+    4.5 [Recommendation component](#45-review-componenet)
+    
+    4.6 [Commands component](#46-commands-component)
+    
+    4.7 [Sorter component](#47-sorter-component)
+    
+    4.8 [Storage component](#48-storage-component)
+    
+5. [Implementation](#5-implementation)
+
+    5.1 [Mode Switch Feature](#51-mode-switch-feature)
+   
+    5.2 [Review Mode](#52-review-Mode)
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.1 [Add a Review Feature](#521-add-a-review-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.2 [List Reviews Feature](#522-list-reviews-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.3 [Sort Reviews Feature](#523-sort-reviews-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.4 [View a Review Feature](#524-view-a-review-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.5 [Edit a Review Feature](#525-edit-a-review-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.2.6 [Delete a Review Feature](#526-delete-a-review-feature)
+   
+   5.3 [Recommendation Mode](#53-recommendation-mode)
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.1 [Add a Recommendation Feature](#531-add-a-recommendation-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.2 [List Recommendation Feature](#532-list-recommendation-feature) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.3.3 [Edit a Recommendation Feature](#533-edit-a-recommendation-feature) 
+   
+    5.4 [Storage](#54-storage)
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.1 [Storage Format](#541-storage-format) 
+   
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.4.2 [Implementation](#542-implementation) 
+   
+    5.5 [Error handling](#55-error-handling) 
+   
+    5.6 [Personalised Messages](#56-personalised-messages) 
+   
+6. [Planned Features](#6-planned-features) 
+   
+7. [Documentation](#7-documentation) 
+   
+    7.1 [Setting up and maintaining the project website](#71-setting-up-and-maintaining-the-project-website) 
+   
+    7.2 [Style guidance](#72-style-guidance) 
+    
+    7.3 [Diagrams](#73-diagrams)
+    
+8. [Testing](#8-testing) 
+
+    8.1 [Running tests](#81-running-tests) 
+    
+    8.2 [Types of tests](#82-types-of-tests) 
+    
+9. [Appendix](#appendix) 
+    
+    Appendix A: [Product Scope](#appendix-a-product-scope) 
+       
+    Appendix B: [User Stores](#appendix-b-user-stories)
+    
+    Appendix C: [Use Cases](#appendix-c-use-cases) 
+       
+    Appendix D: [Non-Functional Requirements](#appendix-d-non-functional-requirements)
+       
+    Appendix E: [Glossary](#appendix-e-glossary) 
+       
+    Appendix F: [Instructions for manual testing](#appendix-e-glossary)
    
 ##1. Preface
 Connoisseur is a desktop application for managing and storing a list of personal reviews on experiences, and a list of 
@@ -115,7 +162,7 @@ Input from user is passed to the `parser` component, which is interpreted as a c
 Either `Storage`, `ReviewList` or `RecommendationList` component executes the command input by the user. These components 
 may produce outputs which are passed to the `UI` component and seen by the user. This is explained in more detail in the following sections.
 
-###4.2 UI & Messages component
+###4.2 UI and Messages component
 
 The user interface of Connoisseur is provided by the classes UI & Messages.
 It is instantiated once in the connoisseur() method.<br>
@@ -132,3 +179,55 @@ It is instantiated once in the connoisseur() method.<br>
 ###4.6. Commands component
 ###4.7. Sorter component
 ###4.8. Storage component
+
+##5. Implementation
+###5.1 Mode Switch Feature
+###5.2 Review Mode
+###5.2.1 Add a Review Feature
+###5.2.2 List Reviews Feature 
+###5.2.3 Sort Reviews Feature
+###5.2.4 View a Review Feature
+###5.2.5 Edit a Review Feature
+###5.2.6 Delete a Review Feature
+
+
+###5.3 Recommendation Mode
+###5.3.1 Add a Recommendation Feature
+
+When the user attempts to add a new recommendation, 
+###5.3.2 List Recommendation Feature
+###5.3.3 Edit a Recommendation Feature
+###5.3.4 Delete a Recommendation Feature
+###5.3.5 Review a Recommendation Feature
+
+###5.4 Storage
+###5.4.1 Storage Format
+###5.4.2 Implementation
+###5.5 Error handling
+###5.6 Personalised Messages
+##6. Planned Features
+##7. Documentation
+###7.1 Setting up and maintaining the project website
+###7.2 Style guidance
+###7.3 Diagrams
+##8. Testing
+###8.1 Running tests
+###8.2 Types of tests
+##Appendix
+###Appendix A: Product Scope
+###Appendix B: User Stories
+|Version| As a ... | I want to ... | So that I can ...|
+|--------|----------|---------------|------------------|
+|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|user|see the number of recommendations I have|keep track of the number of reviews I've made|
+|v1.0|user|be able to save my previous recommendations|refer to the old entries that I have|
+|v1.0|busy user|be able to do quick ratings|save time|
+|v1.0|user|delete selected items that I no longer wish to recommend|edit my list according to my liking|
+|v1.0|busy user|have a template to guide my reviews|input my reviews quickly|
+|v2.0|indecisive user|change my review and opinnions on things|record my opinions accurately at all times|
+|v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
+|v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
+###Appendix C: Use Cases
+###Appendix D: Non-Functional Requirements
+###Appendix E: Glossary
+###Appendix F: Instructions for manual testing
