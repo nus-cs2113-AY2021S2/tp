@@ -58,12 +58,12 @@ public class Ui {
     }
 
     /**
-     * Prints the exception message specified in @param.
+     * Prints a detailed error message for the exception specified in @param.
      *
-     * @param e Exception to be printed
+     * @param exception Exception to be printed
      */
-    public void printException(Exception e) {
-        String errorMessage = e.getMessage();
+    public void printException(Exception exception) {
+        String errorMessage = exception.getMessage();
         String[] errorLines = errorMessage.split("\n");
         for (String errorLine : errorLines) {
             printMessage(Constants.EXCEPTION_INDENT + errorLine);
