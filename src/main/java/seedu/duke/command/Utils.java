@@ -117,10 +117,10 @@ public class Utils {
         assert arguments != null : "arguments is null!";
         boolean isValuable = (arguments.size() > VALUE_INDEX)
                 && (arguments.get(VALUE_INDEX).length() != 0);
-        if (isValuable) {
-            return arguments.get(VALUE_INDEX);
+        if (!isValuable) {
+            throw new CommandException(ERROR_MISSING_VALUE, command);
         }
-        throw new CommandException(ERROR_MISSING_VALUE, command);
+        return arguments.get(VALUE_INDEX);
     }
 
     // This hasOption method is only meant to improve readability.
@@ -162,8 +162,8 @@ public class Utils {
      * @param validOptions valid options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains an invalid or a duplicate option.
      */
-    public static void checkInvalidOptions(ArrayList<String> arguments, String command,
-                                           String... validOptions) throws CommandException {
+    private static void checkInvalidOptions(ArrayList<String> arguments, String command,
+                                            String... validOptions) throws CommandException {
         Set<String> nonDuplicates = new HashSet<>();
         for (String arg : arguments) {
             if (!isOption(arg)) {
@@ -186,8 +186,8 @@ public class Utils {
      * @param orOptions conflict options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains a conflict option.
      */
-    public static void checkOptionConflict(ArrayList<String> arguments, String command,
-                                           String... orOptions) throws CommandException {
+    private static void checkOptionConflict(ArrayList<String> arguments, String command,
+                                            String... orOptions) throws CommandException {
         String option = null;
         for (String arg : arguments) {
             if (!isOption(arg)) {
