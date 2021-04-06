@@ -133,7 +133,7 @@ Finux supports multiple Date formats, for ease of use:
 
 ### 2.4 Explanation for Expense, Loan, and Saving record output formats
 
-In general, the output format used by Finux in displaying an expense, loan and saving record is as follows:
+The output format used by Finux in displaying an expense, loan and saving record is as follows:
 
 `[<record_type_symbol>][<issue_date>] <description> [<return_status>]`
 
@@ -378,11 +378,6 @@ Let's say that Mark wants to borrow money from you again, but you will want to k
 
 Format: `creditscore <person>`
 
-> - `<person>` refers to existing borrower in the loan list
-> - `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
-
-Format: `creditscore <person>`
-
 * `<person>` refers to any person including those in the list and not in the list.
 * `<person>` is case-insensitive, e.g. `jason` is the same as `Jason`
 
@@ -393,6 +388,13 @@ This example shows that you have entered a command that translates to the follow
 Output:
 
 ![creditscore example output](img/CreditScoreExampleOutput.jpg)
+
+> 💡 The credit score of a person will be calculated according to the duration it takes for the borrower to return his 
+> or her loan. 
+>
+> As of version 2.1, a score of `5` will be added if returned within a week, `10`, `20` and `50` will be deducted
+> when a loan is returned after one week and before the second week, two weeks and before the fourth week and 
+> after four weeks respectively.
 
 ### 3.7 Exit the program: `exit`
 
