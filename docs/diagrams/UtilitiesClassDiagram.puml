@@ -23,9 +23,6 @@ package "/data" <<folder>> {
 package Food <<Rectangle>> FOOD_COLOR {
 }
 
-package Exception <<Rectangle>> EXCEPTION_COLOR {
-}
-
 package Command <<Rectangle>> COMMAND_COLOR {
 }
 
@@ -70,23 +67,18 @@ LoggerHandler -left[hidden]-> Ui
 LoggerHandler -down[hidden]-> Parser
 Parser -left[hidden]-> Storage
 Ui -down[hidden]-> Storage
-Command -right[hidden]-> Exception
 "/data" -right[hidden]-> Food
-Food -right[hidden]-> Exception
-Exception -right[hidden]-> Command
 Parser -down[hidden]-> "/data"
 
-User -down-> Ui : interacts with
-FridgeFriend -right-> Ui : prints with
-FridgeFriend -right-> Storage : uses
+User -down-> Ui : interacts with >
+FridgeFriend -right-> Ui : prints with >
+FridgeFriend -right-> Storage : uses >
 
-Storage .up.> Ui : prints with
-Storage .right.> Parser : uses
-Storage -down-> "/data" : creates and writes
-Storage .down.> Food : loads and saves
-Storage .down.> Exception : throws
-Parser .down.> Exception : throws
-Parser .down.> Command : gets
+Storage .up.> Ui : prints with >
+Storage .right.> Parser : uses >
+Storage -down-> "/data" : creates and writes >
+Storage .down.> Food : loads and saves >
+Parser .down.> Command : gets >
 
 note top of LoggerHandler : Used by all other classes\nfor logging purposes
 
