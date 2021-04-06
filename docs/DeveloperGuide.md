@@ -150,43 +150,15 @@ The `Exceptions` component currently consists of nine (9) custom Exceptions, as 
 Among these ten custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
 
-_Exceptions related to invalid user input:_
-
-* **`EmptyDescriptionException`**: Is thrown when an empty input string is detected by `Parser`, where
-  an input is expected.
-  * Error Message: `"Sorry my friend, the description cannot be empty."`
-* **`InvalidDateException`**: Is thrown when user input, where a date is expected, does not
-  match the `dd-mm-yy` format.
-  * Error Message: `"Sorry my friend, the date must be in the form 'dd-mm-yy'."`
-* **`InvalidInputException`**: Is thrown when an unrecognised command is input into FridgeFriend,
-  or when the List Command does not recognise the secondary input string.
-  * Error Message: `"Sorry my friend, please give a valid input."`
-* **`InvalidQuantityException`**: Is thrown when user input is not an integer where an integer is expected for
-  `Quantity` related functions, or when excess quantity of food is removed from the Fridge, where the quantity
-  of food in the fridge remaining would be negative.
-  * Error Message: `"Sorry my friend, the quantity QUANTITY_INPUT must be a number."`
-  * Error Message: `"Not enough in fridge to remove!"`
-
-_Exceptions related to Food:_
-
-* **`FoodNameNotFoundException`**: Is thrown when the input string contains the name of a Food that is
-  not found in the Fridge, where the name of a food existing in the Fridge is expected.
-  * Error Message: `"Food specified not found."`
-* **`InvalidFoodCategoryException`**: Is thrown when user input is not a valid `FoodCategory`,
-  where a valid `FoodCategory` is expected. Users can check `help` or the
-  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
-  * Error Message: `"Sorry my friend, FOOD_CATEGORY is not a valid category."`
-* **`RepetitiveFoodIdentifierException`**: Is thrown when user attempts to add duplicate Food to the Fridge in a
-  different location or with a different expiry date. This is not allowed as of v2.0.
-  * Error Message: `"Sorry my friend, you have added this food before but in a different location or have different expiry dates.
-      Please specify another foodname."`
-
-_Exceptions related to file storage:_
-
-* **`StorageLoadingException`**: Is thrown when an error occurred during loading of the saved data.
-  * Error Message: `"There was an error loading the data for FridgeFriend!"`
-* **`StorageSavingException`**: Is thrown when an error occurred during saving of the current data.
-  * Error Message: `"There was an error saving the data for FridgeFriend!"`
+* Invalid User Input
+  * Thrown when a raw user input cannot be parsed into a valid value
+  * Includes: `EmptyDescriptionException`, `InvalidDateException`, `InvalidInputException`, `InvalidQuantityException`
+* Food Errors
+  * Thrown when a parameter for a food item is invalid
+  * Includes: `FoodNameNotFoundException`, `InvalidFoodCategoryException`, `RepetitiveFoodIdentifierException`
+* File Storage Errors
+  * Thrown when there are errors occur during the file loading and saving processes
+  * Include: `StorageLoadingException`, `StorageSavingException`
 
 ## Implementation
 
@@ -336,7 +308,7 @@ The implementation of the `history` command is as follows:
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
-### Future Development
+## Future Development
 
 As previously seen in [Food Component](#food-component), the food categories are implemented as separate classes. This is in preparation for further features to be implemented in the future, especially if such features require food category specific behaviour. For example, two features that was planned to be implemented was a `Recipe` and `Financial Tracker`.
 
