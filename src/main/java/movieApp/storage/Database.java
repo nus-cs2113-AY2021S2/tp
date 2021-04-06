@@ -145,16 +145,28 @@ public class Database {
             case 1:
                 System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
                 String newTitle = select.nextLine();
+                while (newTitle == ""){
+                    System.out.println("Insert new title: ");
+                    newTitle = select.nextLine();
+                }
                 selectedMovie.setMovieTitle(newTitle);
                 break;
             case 2:
                 System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
                 String newDirector = select.nextLine();
+                while (newDirector == ""){
+                    System.out.println("Insert new director: ");
+                    newDirector = select.nextLine();
+                }
                 selectedMovie.setDirector(newDirector);
                 break;
             case 3:
                 System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
                 String newSynopsis = select.nextLine();
+                while (newSynopsis == ""){
+                    System.out.println("Insert new synopsis: ");
+                    newSynopsis = select.nextLine();
+                }
                 selectedMovie.setSynopsis(newSynopsis);
                 break;
         }
@@ -233,6 +245,10 @@ public class Database {
 
         System.out.println("Movie title: ");
         String newTitle = select.nextLine();
+        while (newTitle == ""){
+            System.out.println("Movie title: ");
+            newTitle = select.nextLine();
+        }
 
         int newID = MovieDatabase.size() + 1;
 
@@ -268,13 +284,27 @@ public class Database {
 
         System.out.println("Movie director: ");
         String newDirector = select.nextLine();
-        System.out.println("Movie casts (separated with comma) : ");
+        while (newDirector == ""){
+            System.out.println("Movie director: ");
+            newDirector = select.nextLine();
+        }
+        System.out.println("Movie casts (separated with comma): ");
         String casts = select.nextLine();
+        while (casts == ""){
+            System.out.println("Movie casts (separated with comma): ");
+            casts = select.nextLine();
+        }
 
         String[] castList = casts.split(",");
         String newGenre = MovieFilter.getGenre();
+
         System.out.println("Movie synopsis: ");
         String newSynopsis = select.nextLine();
+        while (newSynopsis == ""){
+            System.out.println("Movie synopsis: ");
+            newSynopsis = select.nextLine();
+        }
+
         int newStatus = 1;
         ArrayList<Review> newReview = new ArrayList<>();
 
