@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.storage;
 
 import seedu.duke.features.capsimulator.HelpGraduation;
 import seedu.duke.features.link.LinkInfo;

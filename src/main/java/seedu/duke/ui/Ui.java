@@ -1,4 +1,4 @@
-package seedu.duke;
+package seedu.duke.ui;
 
 import seedu.duke.features.capsimulator.HelpGraduation;
 import seedu.duke.features.link.LinkInfo;
@@ -292,7 +292,15 @@ public class Ui {
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine().trim();
+        while (true) {
+            command = input.nextLine().trim();
+            if (command.contains(" ~~ ")) {
+                System.out.println("Restricted character present in input. PLease try again.");
+                printHorizontalLine();
+            } else {
+                break;
+            }
+        }
         printHorizontalLine();
         return command;
     }

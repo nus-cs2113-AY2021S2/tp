@@ -1,11 +1,11 @@
-package seedu.duke.task;
+package seedu.duke.features.task;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
-import seedu.duke.task.command.AddTask;
-import seedu.duke.task.command.DeleteTask;
-import seedu.duke.task.command.MarkOrUnmarkTask;
-import seedu.duke.task.command.PinTask;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.command.AddTask;
+import seedu.duke.features.task.command.DeleteTask;
+import seedu.duke.features.task.command.MarkOrUnmarkTask;
+import seedu.duke.features.task.command.PinTask;
 
 import java.io.IOException;
 import java.util.ArrayList;

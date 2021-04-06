@@ -1,13 +1,12 @@
-package seedu.duke.moduleInfo;
+package seedu.duke.features.moduleInfo;
 
-import seedu.duke.InvalidComponentException;
-import seedu.duke.Ui;
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 
-import static seedu.duke.moduleInfo.ModuleInfo.viewAllModules;
+import static seedu.duke.features.moduleInfo.ModuleInfo.viewAllModules;
 
 public class Component {
     //String moduleName;

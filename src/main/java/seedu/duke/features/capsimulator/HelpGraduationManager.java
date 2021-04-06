@@ -1,7 +1,7 @@
-package seedu.duke.capsimulator;
+package seedu.duke.features.capsimulator;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 

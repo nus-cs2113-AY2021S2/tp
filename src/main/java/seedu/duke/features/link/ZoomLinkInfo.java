@@ -1,11 +1,11 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
-import seedu.duke.moduleInfo.Module;
-import seedu.duke.moduleInfo.ModuleInfo;
-import seedu.duke.Ui;
+import seedu.duke.features.moduleInfo.Module;
+import seedu.duke.features.moduleInfo.ModuleInfo;
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
-import seedu.duke.task.command.AddTask;
+import seedu.duke.features.task.command.AddTask;
 
 public class ZoomLinkInfo {
 

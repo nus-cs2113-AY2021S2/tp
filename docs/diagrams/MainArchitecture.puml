@@ -6,17 +6,27 @@ hide circle
 class Duke
 class Ui
 class ModuleInfo
-class helpGraduation
+class HelpGraduation
 class TaskManager
 class Links
 class Storage
 
-Duke --> Ui
-Duke --> Storage
-Ui --> ModuleInfo
-Ui --> helpGraduation
-Ui --> TaskManager
-Ui --> Links
+Duke -- Ui
+Duke --> ModuleInfo
+ModuleInfo --> Storage
+ModuleInfo -- Ui
 
+Duke --> HelpGraduation
+HelpGraduation -- Ui
+HelpGraduation --> Storage
+
+Duke --> TaskManager
+TaskManager -- Ui
+TaskManager --> Storage
+
+
+Duke --> Links
+Links -- Ui
+Links --> Storage
 
 @enduml

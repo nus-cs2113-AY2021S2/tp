@@ -1,7 +1,7 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 
@@ -55,7 +55,7 @@ public class Links {
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printLinksMessage();
             linkIndex = Ui.readCommandToInt();

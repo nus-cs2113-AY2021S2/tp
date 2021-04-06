@@ -1,14 +1,13 @@
 package seedu.duke;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.duke.link.LinkInfo.linksList;
-import static seedu.duke.link.ZoomLinkInfo.zoomLinksList;
+import static seedu.duke.features.link.LinkInfo.linksList;
+import static seedu.duke.features.link.ZoomLinkInfo.zoomLinksList;
 
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
-import seedu.duke.link.LinkInfo;
-import seedu.duke.link.Links;
-import seedu.duke.link.ZoomLinkInfo;
+import seedu.duke.features.link.LinkInfo;
+import seedu.duke.features.link.ZoomLinkInfo;
 
 public class LinkTest {
 

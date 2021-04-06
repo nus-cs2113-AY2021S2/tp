@@ -1,4 +1,4 @@
-package seedu.duke.task;
+package seedu.duke.features.task;
 
 public class FinalExam extends Task {
     protected String on;

@@ -1,4 +1,4 @@
-package seedu.duke.capsimulator;
+package seedu.duke.features.capsimulator;
 
 public enum ModuleGradeEnum {
     A_PLUS("A+", 5.0),
