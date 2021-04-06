@@ -37,7 +37,6 @@ The user may use the `delete daily route` command to activate the delete daily r
 
 **Justification:** <br>
 This is an extension of the routing function and serves to help store the daily schedule of users. This function was implemented to help our main target audience who are freshmen and may not remember their schedule clearly.
-
 <br>
 
 ### Contributions to the UG
@@ -47,6 +46,20 @@ I contributed to the overall formatting of the document and wrote the content pa
 I contributed to the parts of the DG that describe and explain the implementation of Finding The Shortest Route Feature and Daily route planning feature, including the UML diagrams.
 
 ### Contributions to team-based tasks:
-* Vetted .
-* I maintained the cohesiveness in language and formatting of the documentations.
+I vetted issues and assigned to members accordingly. <br>
+I maintained the cohesiveness in language and formatting of the documentations.
 
+###Review contributions
+The link to PR reviews by me can be found [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3ASimBowen+).
+
+### Contributions beyond the project team:
+I contributed in helping to identify bugs for other teams which can be found [here](https://github.com/AY2021S2-CS2113-T10-3/tp/issues) (
+[1](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/60)
+[2](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/59)
+[3](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/58)
+[4](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/57)
+[5](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/56)
+[6](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/55)
+[7](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/54)
+[8](https://github.com/AY2021S2-CS2113-T10-3/tp/issues/53)
+)
