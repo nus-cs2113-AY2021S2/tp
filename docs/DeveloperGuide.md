@@ -41,10 +41,11 @@ This section focuses on the general architecture of the application as well as t
 
 ### Architecture
 
+The ***Architecture Diagram*** given below explains the high-level design of the App.
+
 ![Architecture Diagram](diagrams/diagram_images/ArchitectureDiagram.png)
 
-The ***Architecture Diagram*** given above explains the high-level design of the App.
-Given below is a quick overview of each component.
+:information_source: The user interacts with the `Ui` class which is part of the `Utilities` component.
 
 The Main driver class for the FridgeFriend app is
 named **[`FridgeFriend`](https://github.com/AY2021S2-CS2113-T10-1/tp/blob/master/src/main/java/seedu/fridgefriend/FridgeFriend.java)**.
