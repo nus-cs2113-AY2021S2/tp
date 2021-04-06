@@ -144,7 +144,7 @@ class RunningLowCommandTest {
         semiPopulateFridge();
         RunningLowCommand runningLowCommand = new RunningLowCommand();
         runningLowCommand.setData(fridge);
-        String expectedMessage = "Running low command is turn off.\n"
+        String expectedMessage = "Running low command is turned off.\n"
                 + "Please set at least one food category limit to a positive integer.";
         runningLowCommand.execute();
         String actualMessage = runningLowCommand.getMessage();

@@ -9,7 +9,7 @@ public class RunningLowCommand extends Command {
 
     private String message = "You are running low on food in these categories:";
     private String stockedUpMessage = "Congrats! You are all stocked up on food! :D";
-    private String turnOffMessage = "Running low command is turn off.\n"
+    private String turnOffMessage = "Running low command is turned off.\n"
             + "Please set at least one food category limit to a positive integer.";
     private boolean isStockedUp = true;
     private static final int TURN_OFF = -1;
