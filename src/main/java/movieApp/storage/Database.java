@@ -79,7 +79,7 @@ public class Database {
 
         ArrayList<Movie> MList = (ArrayList<Movie>) ois_movie.readObject();
         ois_movie.close();
-        //MList = updateMovieStatus(MList);
+        MList = updateMovieStatus(MList);
         return MList;
     }
 
@@ -109,7 +109,7 @@ public class Database {
         Calendar endCalendar = null;
         for (int i = 0; i < MList.size(); i++) {
             startCalendar = MList.get(i).getStartDate();
-            endCalendar = MList.get(i).getStartDate();
+            endCalendar = MList.get(i).getEndDate();
             Date startDate = startCalendar.getTime();
             Date endDate = endCalendar.getTime();
             if (currentDate.compareTo(startDate) < 0) {
@@ -202,6 +202,7 @@ public class Database {
             Calendar endDate = Calendar.getInstance();
             endDate.set(newEndYear, newEndMonth-1, newEndDate,0,0,0);
             selectedMovie.setEndDate(endDate);
+            MovieDatabase = updateMovieStatus(MovieDatabase);
             break;
         case 5:
             System.out.println("Insert new movie casts (separated with comma): ");
@@ -362,6 +363,7 @@ public class Database {
                 newSynopsis, newStatus, newReview);
 
         MovieDatabase.add(newMovie);
+        MovieDatabase = updateMovieStatus(MovieDatabase);
 
         try {
             File f_movie = new File("data/movieList.txt");
