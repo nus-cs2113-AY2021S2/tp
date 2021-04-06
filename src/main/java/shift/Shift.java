@@ -21,8 +21,7 @@ public class Shift {
         this.vacancy = vacancy;
         if (shiftIndex < 1 || shiftIndex > 6) {
             System.out.println("Shift Index value not accepted. Values should be 1 to 6.");
-        }
-        else {
+        } else {
             this.shiftIndex = shiftIndex;
         }
     }
@@ -31,7 +30,9 @@ public class Shift {
         return employees;
     }
 
-    public ArrayList<String> getEmployeeList() { return employeeList; }
+    public ArrayList<String> getEmployeeList() {
+        return employeeList;
+    }
 
     public void setEmployees(ArrayList<String> employees) {
         this.employeeList = employees;
@@ -43,8 +44,7 @@ public class Shift {
             this.vacancy--;
             Asserter.assertPositiveVacancies(this.vacancy);
             System.out.println("Employee " + e.getName() + " assigned.");
-        }
-        else {
+        } else {
             System.out.println("Shift is full!");
         }
     }
@@ -70,8 +70,7 @@ public class Shift {
     public void setShiftIndex(int shiftIndex) {
         if (shiftIndex < 1 || shiftIndex > 6) {
             System.out.println("Shift Index value not accepted. Values should be 1 to 6.");
-        }
-        else {
+        } else {
             this.shiftIndex = shiftIndex;
         }
     }
@@ -99,6 +98,6 @@ public class Shift {
             formattedString.append("#");
             formattedString.append(employee.getName());
         }
-        return formattedString +"\n";
+        return formattedString + "\n";
     }
 }

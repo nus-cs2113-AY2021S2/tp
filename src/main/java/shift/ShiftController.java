@@ -91,8 +91,8 @@ public class ShiftController {
         System.out.println("Employee not found");
     }
 
-    public static void viewAllShifts(ArrayList<Shift> shifts){
-        for (Shift item : shifts){
+    public static void viewAllShifts(ArrayList<Shift> shifts) {
+        for (Shift item : shifts) {
             System.out.println("On " + item.getShiftDate() + ", the employees scheduled are: " + item.getEmployees());
         }
     }
@@ -109,12 +109,13 @@ public class ShiftController {
                 int shiftIndex = Integer.parseInt(sc.nextLine());
                 if (item.getShiftIndex() == shiftIndex) {
                     System.out.println("The people assigned to the shift are:" + item.getEmployees());
+                } else {
+                    System.out.println("Shift Index selected is not available");
                 }
-                else {System.out.println("Shift Index selected is not available");}
                 dateFound = true;
             }
         }
-        if (!dateFound){
+        if (!dateFound) {
             System.out.println("Date chosen has no shifts");
         }
     }
