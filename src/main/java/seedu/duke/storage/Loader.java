@@ -218,6 +218,7 @@ public class Loader {
         return input.equalsIgnoreCase(TRUE_STRING);
     }
 
+    //@@author isaharon
     /**
      * Sorts array of files according to creation time.
      *
