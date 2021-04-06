@@ -15,7 +15,7 @@ public class DietGoal extends Goal {
      */
     public DietGoal(PeriodType periodType, double targetEnergy) throws NumberFormatException {
         super(RecordType.DIET, periodType, targetEnergy);
-        if (targetEnergy < 0 || targetEnergy > 10000) {
+        if (targetEnergy <= 0 || targetEnergy > 10000) {
             throw new NumberFormatException("Target calorie invalid");
         }
         initializeProgress();
@@ -52,7 +52,7 @@ public class DietGoal extends Goal {
 
     @Override
     public String getGoalData() {
-        return SEPATATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPATATOR_TAB + SEPATATOR_TAB
+        return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
                 + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                 + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
