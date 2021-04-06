@@ -163,7 +163,6 @@ public class Commands {
      * @param title is the title of review or recommendation to be deleted.
      */
     public void delete(String title) {
-        title = title.toLowerCase();
         if (isReviewMode) {
             reviewList.deleteReview(title);
         } else {
@@ -192,7 +191,6 @@ public class Commands {
      * @param title title of the review to be viewed.
      */
     public void done(String title) {
-        title = title.toLowerCase();
         if (isReviewMode) {
             ui.printCommandDoesNotExistInReviewMode();
         } else {

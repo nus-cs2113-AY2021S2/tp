@@ -273,17 +273,17 @@ public class RecommendationList {
             ui.println(MISSING_DELETE_TITLE);
             return;
         }
-        int reviewIndex = -1;
+        int recommendationIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
-                reviewIndex = i;
+            if (recommendations.get(i).getTitle().compareToIgnoreCase(title.toLowerCase()) == 0) {
+                recommendationIndex = i;
                 break;
             }
         }
-        if (reviewIndex == -1) {
+        if (recommendationIndex == -1) {
             ui.println(INVALID_DELETE_RECO_TITLE);
         } else {
-            recommendations.remove(reviewIndex);
+            recommendations.remove(recommendationIndex);
             ui.println(title + DELETE_SUCCESS);
         }
     }
@@ -303,7 +303,7 @@ public class RecommendationList {
         }
         int recommendationIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if (recommendations.get(i).getTitle().compareTo(title) == 0) {
+            if (recommendations.get(i).getTitle().toLowerCase().compareTo(title.toLowerCase()) == 0) {
                 recommendationIndex = i;
                 break;
             }
@@ -313,7 +313,7 @@ public class RecommendationList {
         } else {
             category = recommendations.get(recommendationIndex).getCategory();
             description = "No description entered.";
-            Review r = new Review(title, category, 0, description);
+            Review r = new Review(recommendations.get(recommendationIndex).getTitle(), category, 0, description);
 
             while (true) {
                 ui.println(RATING_PROMPT);
@@ -355,8 +355,8 @@ public class RecommendationList {
                 break;
             }
             reviewList.receiveConvert(r);
+            ui.println(recommendations.get(recommendationIndex).getTitle() + CONVERT_SUCCESS);
             recommendations.remove(recommendationIndex);
-            ui.println(title + CONVERT_SUCCESS);
         }
 
     }
@@ -373,7 +373,7 @@ public class RecommendationList {
             return;
         } else {
             for (int i = 0; i < recommendations.size(); i++) {
-                if (recommendations.get(i).getTitle().equals(title)) {
+                if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
                     index = i;
                     break;
                 }
