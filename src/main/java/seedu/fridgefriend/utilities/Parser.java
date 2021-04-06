@@ -64,6 +64,7 @@ public class Parser {
             Pattern.compile("(?<foodCategory>[^/]+)"
                     + " /qty (?<quantity>[^/]+)");
     public static final int GREATER = 1;
+    public static final int EQUAL_TO = 0;
 
     //@@author SimJJ96
     /**
@@ -333,7 +334,7 @@ public class Parser {
             throw new InvalidFoodCategoryException(foodCategoryString);
         }
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(foodCategoryString);
-        int quantity = parseIntegerQuantity(matcherRemove.group("quantity"));
+        int quantity = parseSetLimitIntegerQuantity(matcherRemove.group("quantity"));
         return new SetLimitCommand(foodCategory, quantity);
     }
 
@@ -394,7 +395,6 @@ public class Parser {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
-
         try {
             BigInteger bigIntegerQuantity = new BigInteger(description);
             BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
@@ -412,5 +412,37 @@ public class Parser {
             throw new InvalidQuantityException();
         }
     }
+
+    /**
+     * Parses the description of quantity to set limit integer.
+     *
+     * @param description set limit quantity description
+     * @return set limit integer quantity
+     * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidQuantityException if the description exceed the max quantity or less than -1
+     */
+    public static int parseSetLimitIntegerQuantity(String description)
+            throws EmptyDescriptionException, InvalidQuantityException {
+        if (description.isEmpty()) {
+            throw new EmptyDescriptionException();
+        }
+        try {
+            BigInteger bigIntegerQuantity = new BigInteger(description);
+            BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
+            BigInteger minQuantity = BigInteger.valueOf(-1);
+            if (bigIntegerQuantity.compareTo(maxQuantity) == GREATER) {
+                throw new InvalidQuantityException("Sorry my friend, "
+                        + "the quantity you have entered "
+                        + "has exceed the maximum allowable quantity.");
+            } else if (bigIntegerQuantity.compareTo(minQuantity) < EQUAL_TO) {
+                throw new InvalidQuantityException();
+            }
+            int quantityInteger = bigIntegerQuantity.intValue();
+            return quantityInteger;
+        } catch (NumberFormatException numberFormatException) {
+            throw new InvalidQuantityException();
+        }
+    }
     //@author
+
 }
