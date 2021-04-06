@@ -345,11 +345,11 @@ Select entry:
 ------------------------------------------------------------------------------------------------------------
 Enter location of the first activity of the day: 
 * e2
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * e7
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * ea
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * end
 ------------------------------------------------------------------------------------------------------------
 Got it! Successfully added MONDAY's schedule!
