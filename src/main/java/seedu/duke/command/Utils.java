@@ -50,13 +50,13 @@ public class Utils {
     /**
      * Checks {@code value} to see if it is not {@code null} and not empty.
      *
-     * @param value        the String to check.
-     * @param errorMessage the exception message to print.
+     * @param value   the String to check.
+     * @param command the name of the {@code Command} calling it.
      * @throws CommandException if {@code value} is {@code null} or empty.
      */
-    private static void validateNotEmpty(String value, String errorMessage) throws CommandException {
+    private static void validateNotEmpty(String value, String command) throws CommandException {
         if (value == null || value.length() == 0) {
-            throw new CommandException(errorMessage);
+            throw new CommandException(ERROR_MISSING_ARGUMENT_VALUE, command);
         }
     }
 
@@ -245,11 +245,10 @@ public class Utils {
      */
     private static void validateArgument(String argument, ArgumentType argumentType, String command)
             throws CommandException {
-        assert argument != null : "argument is null!";
         assert argumentType != null : "argumentType is null!";
         switch (argumentType) {
         case VALUE:
-            validateNotEmpty(argument, ERROR_MISSING_ARGUMENT_VALUE);
+            validateNotEmpty(argument, command);
             break;
         case OPTION:
             if (isOption(argument)) {

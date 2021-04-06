@@ -111,6 +111,18 @@ class UtilsTest {
         String expected2 = COMMAND_HELP + " Command - too many arguments.";
         validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
                 expected2, COMMAND_HELP);
+
+        command.clear();
+        command.add("help");
+        command.add(null);
+        String expected3 = COMMAND_HELP + " Command - missing argument value.";
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected3, COMMAND_HELP);
+
+        command.remove(1);
+        command.add("");
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected3, COMMAND_HELP);
     }
 
     @DisplayName("[validateArguments] - view Command - success:")
@@ -180,16 +192,20 @@ class UtilsTest {
     @Test
     public void validateOptions_invalidOptions() {
         ParserHandler parserHandler = new ParserHandler();
+
         ArrayList<String> command1 = parserHandler.getParseInput("view -l -z");
-        ArrayList<String> command2 = parserHandler.getParseInput("add -s -a 200.00 -d -d");
-        ArrayList<String> command3 = parserHandler.getParseInput("add -a -s -s -d");
-        ArrayList<String> command4 = parserHandler.getParseInput("add -a 200.00 -d 20/1/2021 -s -l savings");
         assertThrows(CommandException.class, () ->
                 validateOptions(command1, COMMAND_VIEW, OR_OPTIONS, OR_OPTIONS));
+
+        ArrayList<String> command2 = parserHandler.getParseInput("add -s -a 200.00 -d -d");
         assertThrows(CommandException.class, () ->
                 validateOptions(command2, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+        
+        ArrayList<String> command3 = parserHandler.getParseInput("add -a -s -s -d");
         assertThrows(CommandException.class, () ->
                 validateOptions(command3, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+
+        ArrayList<String> command4 = parserHandler.getParseInput("add -a 200.00 -d 20/1/2021 -s -l savings");
         assertThrows(CommandException.class, () ->
                 validateOptions(command4, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
     }
@@ -252,6 +268,8 @@ class UtilsTest {
                 getOptionValue(command1, COMMAND_ADD, "-d"));
         assertThrows(CommandException.class, () ->
                 getOptionValue(command1, COMMAND_ADD, "-s"));
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command1, COMMAND_ADD, "-p"));
 
         ArrayList<String> command2 = parserHandler.getParseInput("add -a 200.00 -d -s savings");
         assertThrows(CommandException.class, () ->
