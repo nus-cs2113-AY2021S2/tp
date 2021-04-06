@@ -25,6 +25,7 @@ It is written in Java, and has more than 4300 lines of code.
   * [Expiring Command](#expiring-command)
   * [List Command](#list-command)
   * [History Command](#history-command)
+  * [Future Development](#future-development)
 * [Product Scope](#product-scope)
   * [Target User Profile](#target-user-profile)
   * [Value Proposition](#value-proposition)
@@ -124,7 +125,7 @@ This is to facilitate different manipulations on different food categories.
 
 ![Food Class Diagram](diagrams/diagram_images/FoodClassDiagram.png)
 
-The ***Food Class Diagram*** given above shows all the classes derived from Food or 
+The ***Food Class Diagram*** given above shows all the classes derived from Food or
 used in Food operations.
 
 ### Exception Component
@@ -337,6 +338,14 @@ The implementation of the `history` command is as follows:
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
+### Future Development
+
+As previously seen in [Food Component](#food-component), the food categories are implemented as separate classes. This is in preparation for further features to be implemented in the future, especially if such features require food category specific behaviour. For example, two features that was planned to be implemented was a `Recipe` and `Financial Tracker`.
+
+In `Recipe`, `FridgeFriend` would not only store recipes, but also allow for user-centric features such as a custom shopping list based on selected recipes and the amount of food inside the fridge. However, in order to implement this, more specific categories and behaviours would have to be defined within the category classes to account for specific foods. For example, different meat types such as chicken, pork, and beef should be handled differently.
+
+For the `Financial Tracker`, details such as brands and prices for individual food items would be needed to be recorded. Hence, different food categories would also have different brands that produce that food, as well as different average costs and budgeting which would have to be handled individually.
+
 ## Product Scope
 
 ### Target User Profile
@@ -352,9 +361,9 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 
 This app allows user to monitor their food in a fridge faster than a typical mouse/GUI driven app.
 It includes features such as ability to check for the foods that are expiring in a week, and the food item
-that requires to top up. It will help new homeowners to keep track of their food into different food 
-categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to 
-keep track of past food items that has been added to the fridge. 
+that requires to top up. It will help new homeowners to keep track of their food into different food
+categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to
+keep track of past food items that has been added to the fridge.
 
 ## User Stories
 
@@ -545,20 +554,20 @@ If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
 * Test case: `search chicken`
 
-  * Expected: 
- 
+  * Expected:
+
   ```lang-none
   These are the chicken in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
   ```
   
 * Test case: `search pear`
-    * Expected: `You do not have pear in your fridge.`
-    
+  * Expected: `You do not have pear in your fridge.`
+
 * Test case: `search chick`
 
   * Expected:
-     
+
   ```lang-none
   These are the chick in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
