@@ -389,12 +389,13 @@ Output:
 
 ![creditscore example output](img/CreditScoreExampleOutput.jpg)
 
-> 💡 The credit score of a person will be calculated according to the duration it takes for the borrower to return his 
-> or her loan. 
->
-> As of version 2.1, a score of `5` will be added if returned within a week, `10`, `20` and `50` will be deducted
+> 📝 As of version 2.1, a score of `5` will be added if returned within a week, `10`, `20` and `50` will be deducted
 > when a loan is returned after one week and before the second week, two weeks and before the fourth week and 
 > after four weeks respectively.
+
+> 💡 A credit score of `100` will be shown from a person who has not borrowed money from you as they can still
+> considered trustworthy. The Finux application will display a credit score of `100` for people whom you have not added 
+> any loans prior.
 
 ### 3.7 Exit the program: `exit`
 
