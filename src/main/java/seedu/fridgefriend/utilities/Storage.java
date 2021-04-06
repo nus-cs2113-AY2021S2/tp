@@ -32,7 +32,7 @@ public class Storage {
     private static final String LIMITS_FILE_PATH = "data/limitsData.txt";
     private static final String DIRECTORY = "data";
     private static Fridge fridge;
-    private static String history;
+    private static String history = "";
 
     //@@author kwokyto
     /**
