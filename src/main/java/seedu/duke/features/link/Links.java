@@ -1,12 +1,16 @@
 package seedu.duke.features.link;
 
+import java.util.logging.Logger;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Links {
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static final int EXTERNAL_LINK_COMMAND = 1;
     private static final int ADD_ZOOM_LINK_COMMAND = 2;
     private static final int DELETE_ZOOM_LINK_COMMAND = 3;
@@ -56,6 +60,7 @@ public class Links {
                 Storage.saveAllFiles();
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
+                logger.log(Level.WARNING, "Saving error");
             }
             Ui.printLinksMessage();
             linkIndex = Ui.readCommandToInt();
@@ -78,14 +83,14 @@ public class Links {
             ZoomLinkInfo.deleteZoomLink(deleteIndex);
             isInvalid = false;
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
-            Ui.printRepeatInputUntilValidMessage();
+            logger.log(Level.INFO, "You have entered an invalid input! Please try again.");
             isInvalid = true;
         }
     }
 
     public static void viewLinks() {
         if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
-            Ui.printListIsEmpty();
+            logger.log(Level.INFO, "");
             return;
         }
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);
