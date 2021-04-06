@@ -58,9 +58,7 @@ public class UI {
         }
         int temp;
         for (int i = 0; i < commands.length; i++) {
-            System.out.println(commands[i]);
             temp = checkCommandDifference(commands[i], input);
-            System.out.println(temp);
             if (temp < diff) {
                 diff = temp;
                 index = i;
