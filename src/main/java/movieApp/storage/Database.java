@@ -145,7 +145,7 @@ public class Database {
             case 1:
                 System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
                 String newTitle = select.nextLine();
-                while (newTitle == ""){
+                while (newTitle.equals("")){
                     System.out.println("Insert new title: ");
                     newTitle = select.nextLine();
                 }
@@ -154,7 +154,7 @@ public class Database {
             case 2:
                 System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
                 String newDirector = select.nextLine();
-                while (newDirector == ""){
+                while (newDirector.equals("")){
                     System.out.println("Insert new director: ");
                     newDirector = select.nextLine();
                 }
@@ -163,7 +163,7 @@ public class Database {
             case 3:
                 System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
                 String newSynopsis = select.nextLine();
-                while (newSynopsis == ""){
+                while (newSynopsis.equals("")){
                     System.out.println("Insert new synopsis: ");
                     newSynopsis = select.nextLine();
                 }
@@ -245,7 +245,7 @@ public class Database {
 
         System.out.println("Movie title: ");
         String newTitle = select.nextLine();
-        while (newTitle == ""){
+        while (newTitle.equals("")){
             System.out.println("Movie title: ");
             newTitle = select.nextLine();
         }
@@ -284,13 +284,13 @@ public class Database {
 
         System.out.println("Movie director: ");
         String newDirector = select.nextLine();
-        while (newDirector == ""){
+        while (newDirector.equals("")){
             System.out.println("Movie director: ");
             newDirector = select.nextLine();
         }
         System.out.println("Movie casts (separated with comma): ");
         String casts = select.nextLine();
-        while (casts == ""){
+        while (casts.equals("")){
             System.out.println("Movie casts (separated with comma): ");
             casts = select.nextLine();
         }
@@ -300,7 +300,7 @@ public class Database {
 
         System.out.println("Movie synopsis: ");
         String newSynopsis = select.nextLine();
-        while (newSynopsis == ""){
+        while (newSynopsis.equals("")){
             System.out.println("Movie synopsis: ");
             newSynopsis = select.nextLine();
         }
