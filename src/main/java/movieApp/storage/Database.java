@@ -48,14 +48,14 @@ public class Database {
             String password = userSplit[2].trim();
             String type = userSplit[0].trim().toUpperCase();
             switch (type) {
-                case "USER":
-                    users.add(new Customer(username, password));
-                    break;
-                case "ADMIN":
-                    users.add(new Admin(username, password));
-                    break;
-                default:
-                    throw new Exception(type);
+            case "USER":
+                users.add(new Customer(username, password));
+                break;
+            case "ADMIN":
+                users.add(new Admin(username, password));
+                break;
+            default:
+                throw new Exception(type);
             }
         }
         r_user.close();
@@ -142,33 +142,79 @@ public class Database {
         Movie selectedMovie = MovieDatabase.get(choice - 1);
         Scanner select = new Scanner(System.in);
         switch (type) {
-            case 1:
-                System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
-                String newTitle = select.nextLine();
-                while (newTitle.equals("")){
-                    System.out.println("Insert new title: ");
-                    newTitle = select.nextLine();
+        case 1:
+            System.out.println("Current title: " + selectedMovie.getMovieTitle() + "\nInsert new title:");
+            String newTitle = select.nextLine();
+            while (newTitle.equals("")) {
+                System.out.println("Insert new title: ");
+                newTitle = select.nextLine();
+            }
+            selectedMovie.setMovieTitle(newTitle);
+            break;
+        case 2:
+            System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
+            String newDirector = select.nextLine();
+            while (newDirector.equals("")) {
+                System.out.println("Insert new director: ");
+                newDirector = select.nextLine();
+            }
+            selectedMovie.setDirector(newDirector);
+            break;
+        case 3:
+            System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
+            String newSynopsis = select.nextLine();
+            while (newSynopsis.equals("")) {
+                System.out.println("Insert new synopsis: ");
+                newSynopsis = select.nextLine();
+            }
+            selectedMovie.setSynopsis(newSynopsis);
+            break;
+        case 4:
+            int newStartDate, newStartMonth, newStartYear, newEndDate, newEndMonth, newEndYear;
+            do {
+                System.out.println("Insert new start date:");
+                int[] newStart = getDateTime();
+                newStartDate = newStart[0];
+                newStartMonth = newStart[1];
+                newStartYear = newStart[2];
+
+                System.out.println("Insert new end date:");
+                int[] newEnd = getDateTime();
+                newEndDate = newEnd[0];
+                newEndMonth = newEnd[1];
+                newEndYear = newEnd[2];
+
+                if (newEndYear < newStartYear) {
+                    System.out.println("The end year cannot be earlier than the start year.");
+                    continue;
+                } else if (newEndMonth < newStartMonth) {
+                    System.out.println("The end month cannot be earlier than the start month.");
+                    continue;
+                } else if (newEndDate < newStartDate) {
+                    System.out.println("The end date cannot be earlier than the start date.");
+                    continue;
                 }
-                selectedMovie.setMovieTitle(newTitle);
                 break;
-            case 2:
-                System.out.println("Current director: " + selectedMovie.getDirector() + "\nInsert new director:");
-                String newDirector = select.nextLine();
-                while (newDirector.equals("")){
-                    System.out.println("Insert new director: ");
-                    newDirector = select.nextLine();
-                }
-                selectedMovie.setDirector(newDirector);
-                break;
-            case 3:
-                System.out.println("Current synopsis: " + selectedMovie.getSynopsis() + "\nInsert new synopsis:");
-                String newSynopsis = select.nextLine();
-                while (newSynopsis.equals("")){
-                    System.out.println("Insert new synopsis: ");
-                    newSynopsis = select.nextLine();
-                }
-                selectedMovie.setSynopsis(newSynopsis);
-                break;
+            } while (true);
+            Calendar startDate = Calendar.getInstance();
+            startDate.set(newStartYear, newStartMonth-1, newStartDate,0,0,0);
+            selectedMovie.setStartDate(startDate);
+            Calendar endDate = Calendar.getInstance();
+            endDate.set(newEndYear, newEndMonth-1, newEndDate,0,0,0);
+            selectedMovie.setEndDate(endDate);
+            break;
+        case 5:
+            System.out.println("Insert new movie casts (separated with comma): ");
+            String casts = select.nextLine();
+            while (casts.equals("")) {
+                System.out.println("Movie casts (separated with comma): ");
+                casts = select.nextLine();
+            }
+            String[] castList = casts.split(",");
+            selectedMovie.setCast(castList);
+            break;
+        default:
+            System.out.println("Please input a integer between 1 and 5.\n");
         }
 
         try {
@@ -245,7 +291,7 @@ public class Database {
 
         System.out.println("Movie title: ");
         String newTitle = select.nextLine();
-        while (newTitle.equals("")){
+        while (newTitle.equals("")) {
             System.out.println("Movie title: ");
             newTitle = select.nextLine();
         }
@@ -284,23 +330,23 @@ public class Database {
 
         System.out.println("Movie director: ");
         String newDirector = select.nextLine();
-        while (newDirector.equals("")){
+        while (newDirector.equals("")) {
             System.out.println("Movie director: ");
             newDirector = select.nextLine();
         }
         System.out.println("Movie casts (separated with comma): ");
         String casts = select.nextLine();
-        while (casts.equals("")){
+        while (casts.equals("")) {
             System.out.println("Movie casts (separated with comma): ");
             casts = select.nextLine();
         }
-
         String[] castList = casts.split(",");
+
         String newGenre = MovieFilter.getGenre();
 
         System.out.println("Movie synopsis: ");
         String newSynopsis = select.nextLine();
-        while (newSynopsis.equals("")){
+        while (newSynopsis.equals("")) {
             System.out.println("Movie synopsis: ");
             newSynopsis = select.nextLine();
         }

@@ -137,17 +137,17 @@ public class AdminMainMenu implements MainMenu {
         System.out.println("You have selected " + selectedMovie.getMovieTitle() + "\n");
         Scanner select = new Scanner(System.in);
         int type = -1;
-        while ((type < 1) || (type > 4)) {
+        while ((type < 1) || (type > 5)) {
             System.out.println("======= Edit Movie =======");
-            System.out.println(" 1 Edit title\n 2 Edit director\n 3 Edit synopsis\n ============================\nPlease indicate your choice:");
+            System.out.println(" 1 Edit title\n 2 Edit director\n 3 Edit synopsis\n 4 Edit start / end date\n 5 Edit casts\n============================\nPlease indicate your choice:");
             if (!select.hasNextInt()) {
                 System.out.println("Please input an integer.\n");
                 select.next();
                 continue;
             }
             type = select.nextInt();
-            if ((type < 1) || (type > 4)) {
-                System.out.println("Please input a integer between 1 and 3.\n");
+            if ((type < 1) || (type > 5)) {
+                System.out.println("Please input a integer between 1 and 5.\n");
             }
         }
         Database.editMovie(choice, type);
