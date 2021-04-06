@@ -205,30 +205,39 @@ public class Ui {
         do {
             promptUserInput();
             userInput = sc.nextLine();
+            if (userInput.isBlank()){
+                userInput = "INVALID";
+            }
             userCommand = parser.parseCommand(userInput);
             userArguments = parser.parseArguments(userInput);
-            switch (userCommand) {
-                case "help":
-                    showHelpMessage();
-                    break;
-                case "profile":
-                    showProfile(deliveryman);
-                    break;
+            if (!userArguments.isEmpty()){
+                switch (userCommand){
                 case "edit":
                     String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
                     deliveryman.updateProfile(inputProfileData);
-                    break;
-                case "start":
-                    DeliveryList.load();
-                    break;
-                case "list":
-                    showDeliveryList();
                     break;
                 case "view":
                     processViewDelivery(userArguments, deliveryman, parser);
                     break;
                 case "complete":
                     processCompleteDelivery(userArguments, deliveryman, parser);
+                    break;
+                default:
+                    System.out.println("Please enter a valid command!");
+                }
+            } else{
+                switch (userCommand) {
+                case "help":
+                    showHelpMessage();
+                    break;
+                case "profile":
+                    showProfile(deliveryman);
+                    break;
+                case "start":
+                    DeliveryList.load();
+                    break;
+                case "list":
+                    showDeliveryList();
                     break;
                 case "record":
                     showRecords(deliveryman.getRecords());
@@ -242,6 +251,7 @@ public class Ui {
                     break;
                 default:
                     System.out.println("Please enter a valid command!");
+                }
             }
         } while (!userCommand.equalsIgnoreCase("bye"));
     }
