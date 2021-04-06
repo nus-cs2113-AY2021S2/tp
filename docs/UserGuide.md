@@ -11,6 +11,7 @@ It is written in Java, and has more than 4300 lines of code.
 * [Introduction](#introduction)
 * [Quick Start](#quick-start)
 * [Features](#features)
+  * [Help](#get-help-message-help)
   * [Add](#adding-a-food-item-add)
   * [List](#display-the-list-of-all-foods-list)
   * [List by Category](#display-the-list-of-foods-by-category-list-category)
@@ -22,7 +23,6 @@ It is written in Java, and has more than 4300 lines of code.
   * [Setlimit](#modify-the-minimum-quantity-limits-setlimit)
   * [History](#list-history-of-items-added-history)
   * [Clear history](#clear-list-history-of-items-added-history-clear)
-  * [Help](#get-help-message-help)
   * [Bye](#exit-the-application-bye)
 * [FAQ](#faq)
 * [Command Summary](#command-summary)
@@ -44,14 +44,39 @@ It is written in Java, and has more than 4300 lines of code.
    * `bye`: Exits the app.
 6. Refer to the **Features** below for details of each command.
 
-:warning: Do ***NOT*** modify text files in the `/data` folder in order to prevent errors and loss of data.
+:warning: Do ***NOT*** modify any of text files in the `/data` folder in order to prevent errors and loss of data.
 
 ## Features
 
-**Notes about the command format:**
-
-* Words in UPPER_CASE are the parameters to be supplied by the user.\
+:information_source: Words in UPPER_CASE are the parameters to be supplied by the user.\
   e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
+
+### Get help message: `help`
+
+Prints a list of available commands and formats.
+
+Format: `help`
+
+Example of usage:
+
+```lang-none
+>> help
+These are the list of available commands:
+        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
+        list
+        list categoryName
+        remove index
+        search searchString
+        expiring
+        help
+        bye
+
+This is the list of food categories:
+        [VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER]
+
+This is the list of storage locations:
+        [FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
+```
   
 ### Adding a food item: `add`
 
@@ -356,33 +381,6 @@ History successfully cleared!
 
 >> history 
 This is the full history of items you've added in the fridge:
-```
-
-### Get help message: `help`
-
-Prints a list of available commands and formats.
-
-Format: `help`
-
-Example of usage:
-
-```lang-none
->> help
-These are the list of available commands:
-        add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
-        list
-        list categoryName
-        remove index
-        search searchString
-        expiring
-        help
-        bye
-
-This is the list of food categories:
-        [VEGETABLE, FRUIT, MEAT, SEAFOOD, EGG, DAIRY, BEVERAGE, COOKED_DISH, READY_TO_EAT, FROZEN, OTHER]
-
-This is the list of storage locations:
-        [FREEZER, UPPER_SHELF, MIDDLE_SHELF, LOWER_SHELF, DRAWERS, FRIDGE_DOOR, OTHER]
 ```
 
 ### Exit the application: `bye`
