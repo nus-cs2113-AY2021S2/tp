@@ -28,7 +28,7 @@ public class Exercise extends Record {
             throw new TypeException("workout type exception");
         }
         this.duration = duration;
-        if (duration < 0 || duration > 1440) {
+        if (duration <= 0 || duration > 1440) {
             throw new NumberFormatException("Exercise time invalid");
         }
         this.calories = duration * workoutCategory.getCaloriePerMin();
