@@ -52,7 +52,7 @@ public class Finux {
             creditScoreReturnedLoansMap = new CreditScoreReturnedLoansMap(storage.getMapData());
             ui.printWelcomeMessage();
         } catch (FileLoadingException e) {
-            Ui.printInitError();
+            ui.printInitError();
             FINUX_LOGGER.logWarning("Unable to load finux.txt!");
             System.exit(-1);
         }
