@@ -225,14 +225,11 @@ Given below is the sequence diagram for the AddCommand workflow.
 
 ![AddCommandSequenceDiagram](diagrams/diagram_images/AddSequenceDiagram.png)
 
-Notes:
-
-* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
-* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
-
 :information_source: Information:
 
+* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
 * The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
+* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
 ### Remove Command
 
