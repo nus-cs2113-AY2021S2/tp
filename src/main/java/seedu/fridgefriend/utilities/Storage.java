@@ -152,7 +152,7 @@ public class Storage {
     private static String loadFoodDataFromLine(String line, String startIndex, String endIndex) {
         return line.substring(line.lastIndexOf(startIndex) + startIndex.length(), line.lastIndexOf((endIndex)));
     }
-    //@@author
+    
 
     //@@author kwokyto
     /**
