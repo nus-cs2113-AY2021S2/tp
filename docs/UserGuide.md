@@ -153,11 +153,84 @@ You may enter a command into the CLI to use each feature.
 
 Lists all commands and functions of each feature.<br>
 Format: `help`
+Example:
+```
+--------------------------------------------------------------------------------------------
+> help
+--------------------------------------------------------------------------------------------
+1.  go:
+	* finds the route to go from one block to another block or eatery
+2.  history:
+	* lists past 10 route searches
+3.  clear history:
+	* deletes all past route searches from history
+4.  repeat history:
+	* repeats the past route search of your choice
+5.  add alias:
+	* creates an alias for an existing block
+6.  show alias:
+	* lists all aliases that are currently active
+7.  delete alias:
+	* deletes an alias that was previously created
+8.  add daily route:
+	* adds a schedule for the selected day
+9.  show daily route:
+	* shows the generated route for the schedule of the selected day
+10. delete daily route:
+	* deletes the stored schedule based on the index number tagged to the day
+11. add note:
+	* adds and tags a note to a particular location
+12. show notes:
+	* list notes tagged to the given location
+13. delete note:
+	* deletes notes based on index number tagged to the given location
+14. add favourite:
+	* adds a favourite route
+15. show favourite:
+	* lists all favourite routes that were previously created
+16. delete favourite:
+	* deletes a favourite route based on index number tagged to the route
+17. show venues:
+	* lists all possible venues that can be used in the application (excluding user's alias)
+18. bye:
+	* exits the application
+------------------------------------------------------------------------------------------------------------
+```
 
 #### 4.2 Viewing all venues
 
 List all the venues in Engineering and Computing campus. <br>
 Format: `show venues`
+Example:
+```
+--------------------------------------------------------------------------------------------
+> show venues
+--------------------------------------------------------------------------------------------
+Venues in Engineering faculty:
+1. E1   | 7.  E4  | 13. EW1  | 19. LT6         | 
+2. E1A  | 8.  E4A | 14. EW1A | 20. LT7         | 
+3. E2   | 9.  E5  | 15. EW2  | 21. LT7A        | 
+4. E2A  | 10. E6  | 16. LT1  | 22. IT          | 
+5. E3   | 11. E7  | 17. LT2  | 23. T-LAB       | 
+6. E3A  | 12. EA  | 18. LT5  | 24. TECHNO EDGE | 
+
+Links between Engineering and Computing faculties:
+1. LT3 | 4. CENTRAL LIBRARY | 
+2. LT4 | 5. CHINESE LIBRARY | 
+3. AS6 | 
+
+Venues in Computing faculty:
+1. COM1 | 4. LT16 | 
+2. COM2 | 5. LT17 | 
+3. COM3 | 
+
+Eateries:
+1. TECHNO EDGE CANTEEN | 5. SPINELLI COFFEE | 
+2. CHEERS MINIMART     | 6. MAXX COFFEE     | 
+3. ARISE & SHINE       | 7. STARBUCKS       | 
+4. PLATYPUS FOOD BAR   | 
+--------------------------------------------------------------------------------------------
+```
 
 <div markdown="block" class="alert alert-info">
 :information_source: These are the venue names that can be used in the features below. 
@@ -547,22 +620,23 @@ can be found on the second computer.
 |Action | Format |
 |---------------|------------------------------------------------------------------|
 |[**Viewing help**](#41-viewing-help)        | `help` | 
-|[**Finding the route**](#42-routing)       | `go → START → DESTINATION` or `go → START → eatery → EATERY_ENTRY` |
-|[**Viewing history**](#431-viewing-history)     | `history` | 
-|[**Clearing history**](#432-clearing-history)       | `clear history` |
-|[**Repeating history**](#433-repeating-history)       | `repeat history → REPEAT_ENTRY` |
-|[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS` | 
-|[**Showing all aliases**](#442-viewing-all-aliases)  | `show alias` | 
-|[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
-|[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
-|[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
-|[**Clearing a daily route**](#453-clearing-daily-route)       | `clear daily route → DAY_NUMBER` |
-|[**Adding notes**](#461-adding-notes)       | `add note → BLOCK → NOTE` |
-|[**Viewing notes**](#462-viewing-notes)      | `show note → BLOCK` | 
-|[**Deleting notes**](#463-delete-note)       | `delete note → BLOCK → NOTE_INDEX` |
-|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING_BLOCK → DESTINATION_BLOCK` |
-|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
-|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite → ROUTE_INDEX` |
-|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite → ROUTE_INDEX` |
-|[**Exiting the application**](#48-exiting-the-application)       | `bye` |
+|[**Viewing all venues**](#42-viewing-all-venues)        | `show venues` | 
+|[**Finding the route**](#43-routing)       | `go → START → DESTINATION` or `go → START → eatery → EATERY_ENTRY` |
+|[**Viewing history**](#441-viewing-history)     | `history` | 
+|[**Clearing history**](#442-clearing-history)       | `clear history` |
+|[**Repeating history**](#443-repeating-history)       | `repeat history → REPEAT_ENTRY` |
+|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS` | 
+|[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
+|[**Deleting alias**](#453-deleting-aliases)       | `delete alias → ALIAS` |
+|[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
+|[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
+|[**Clearing a daily route**](#463-clearing-daily-route)       | `clear daily route → DAY_NUMBER` |
+|[**Adding notes**](#471-adding-notes)       | `add note → BLOCK → NOTE` |
+|[**Viewing notes**](#472-viewing-notes)      | `show note → BLOCK` | 
+|[**Deleting notes**](#473-delete-note)       | `delete note → BLOCK → NOTE_INDEX` |
+|[**Adding Favourite Route**](#481-adding-favourite-route)       | `add favourite → STARTING_BLOCK → DESTINATION_BLOCK` |
+|[**Show stored favourites**](#482-show-stored-favourites)       | `show favourite` |
+|[**Repeating favourite route**](#483-repeating-favourite-route)       | `repeat favourite → ROUTE_INDEX` |
+|[**Deleting favourite route**](#484-deleting-favourite-route)       | `delete favourite → ROUTE_INDEX` |
+|[**Exiting the application**](#49-exiting-the-application)       | `bye` |
 
