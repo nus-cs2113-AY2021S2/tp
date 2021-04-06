@@ -79,14 +79,6 @@ class RunningLowCommandTest {
         fridge.add(icePack);
     }
 
-    //@@author SimJJ96
-    public void setLimitOff() {
-        for (FoodCategory foodCategory : FoodCategory.values()) {
-            FoodCategory.setMinimumQuantity(foodCategory, -1);
-        }
-    }
-
-
     public void populateFridgeWithLargeMeatQuantity() throws Exception {
         fridge = new Fridge();
         Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT, "31-07-2021",
@@ -109,6 +101,14 @@ class RunningLowCommandTest {
                 FoodStorageLocation.LOWER_SHELF, 10000000);
         fridge.add(chicken4);
     }
+
+    //@@author SimJJ96
+    public void setLimitOff() {
+        for (FoodCategory foodCategory : FoodCategory.values()) {
+            FoodCategory.setMinimumQuantity(foodCategory, -1);
+        }
+    }
+
     //@@author
 
     @Test
@@ -138,8 +138,9 @@ class RunningLowCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+    //@@author SimJJ96
     @Test
-    public void runningLowCommand_setLimitOff_emptyList() throws Exception {
+    public void runningLowCommand_setLimitOff_turnOffMessage() throws Exception {
         setLimitOff();
         semiPopulateFridge();
         RunningLowCommand runningLowCommand = new RunningLowCommand();
@@ -151,7 +152,6 @@ class RunningLowCommandTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
-    //@@author SimJJ96
     @Test
     public void runningLowCommand_totalQuantityExceedMax_invalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {
@@ -161,5 +161,6 @@ class RunningLowCommandTest {
             runningLowCommand.execute();
         });
     }
+    //@@author
 
 }

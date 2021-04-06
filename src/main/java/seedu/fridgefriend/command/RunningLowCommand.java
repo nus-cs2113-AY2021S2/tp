@@ -53,6 +53,7 @@ public class RunningLowCommand extends Command {
         return message;
     }
 
+    //@@author SimJJ96
     private boolean isTurnOff() {
         if (numberOfCategoryTurnOff == 11) {
             return true;
