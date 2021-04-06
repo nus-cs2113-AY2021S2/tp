@@ -40,32 +40,32 @@ public class ReturnCommandTest {
     private void runReturnCmdTest(String expectedOutput, String returnCmdInput, String testName) {
         Ui ui = new Ui();
         Storage storage = new Storage();
-        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap =
-                new CreditScoreReturnedLoansMap(new HashMap<>());
         RecordList loans = getLoanList();
-        CommandHandler commandHandler = new CommandHandler();
-        ByteArrayOutputStream returnCmdBos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(returnCmdBos));
-
+        CreditScoreReturnedLoansMap creditScoreReturnedLoansMap = new CreditScoreReturnedLoansMap(new HashMap<>());
         ParserHandler parserHandler = new ParserHandler();
-        Command command = commandHandler.parseCommand(parserHandler.getParseInput(returnCmdInput), loans);
+        CommandHandler commandHandler = new CommandHandler();
 
-        assertTrue(command instanceof ReturnCommand,
-                String.format("Failed test '%s' command object "
+        Command command = commandHandler.parseCommand(parserHandler.getParseInput(returnCmdInput), loans);
+        assertTrue(command instanceof ReturnCommand, String.format("Failed test '%s' command object "
                         + "returned by parseCommand() is not an instance of ReturnCommand", testName));
 
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream tempBos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(tempBos));
         command.execute(loans, ui, storage, creditScoreReturnedLoansMap);
-        System.setOut(System.out);
-        assertTrue(returnCmdBos.toString().equals(expectedOutput), String.format("Failed test "
+        System.setOut(originalOut);
+        assertTrue(tempBos.toString().equals(expectedOutput), String.format("Failed test "
             + "'%s', wrong output.", testName));
-
     }
 
     private RecordList getLoanList() {
         RecordList loans = new RecordList();
-        loans.addRecord(new Loan(new BigDecimal("43.28"), validateDate("2021/03/15"), "Loan to Andy", "Andy"));
-        loans.addRecord(new Loan(new BigDecimal("89.23"), validateDate("2021/03/17"), "Loan to Mark", "Mark"));
-        loans.addRecord(new Loan(new BigDecimal("5.67"), validateDate("2021/03/16"), "Loan to Jason", "Jason"));
+        loans.addRecord(new Loan(new BigDecimal("43.28"), validateDate("2021/03/15"),
+                "Loan to Andy", "Andy"));
+        loans.addRecord(new Loan(new BigDecimal("89.23"), validateDate("2021/03/17"),
+                "Loan to Mark", "Mark"));
+        loans.addRecord(new Loan(new BigDecimal("5.67"), validateDate("2021/03/16"),
+                "Loan to Jason", "Jason"));
         return loans;
     }
 }
