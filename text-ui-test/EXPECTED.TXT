@@ -13,6 +13,7 @@ What can I do for you?
 Sorry my friend, please give a valid input.
 -----------------------------------------------------------------
 These are the list of available commands:
+	help
 	add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
 	list
 	list categoryName
@@ -21,8 +22,9 @@ These are the list of available commands:
 	expiring
 	runninglow
 	setlimit foodCategory /qty newLimit
+	history
+	history clear
 	clear
-	help
 	bye
 
 This is the list of food categories:
