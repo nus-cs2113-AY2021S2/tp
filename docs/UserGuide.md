@@ -8,7 +8,6 @@ It is written in Java, and has more than 4300 lines of code.
 
 ## Contents
 
-* [Introduction](#introduction)
 * [Quick Start](#quick-start)
 * [Features](#features)
   * [Help](#get-help-message-help)
