@@ -55,7 +55,7 @@ public class Links {
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printLinksMessage();
             linkIndex = Ui.readCommandToInt();
