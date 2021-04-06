@@ -120,7 +120,7 @@ public class Parser {
      */
     public static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, FoodNameNotFoundException, InvalidFoodCategoryException {
+            InvalidQuantityException, InvalidFoodCategoryException {
         String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
@@ -214,7 +214,9 @@ public class Parser {
                     convertStringToLocation(matcherQuantity.group("storageLocation")),
                     quantity);
         } else {
-            throw new InvalidInputException();
+            String errorMessage = "Sorry my friend, the correct format for add command is:\n"
+                    + "add foodName /cat category /exp dd-mm-yyyy /loc location /qty quantity";
+            throw new InvalidInputException(errorMessage);
         }
     }
     //@@author
@@ -239,7 +241,7 @@ public class Parser {
      */
     private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidQuantityException,
-            InvalidInputException, FoodNameNotFoundException {
+            InvalidInputException {
         Command removeCommand = parseRemoveDescription(description);
         return removeCommand;
     }
