@@ -22,7 +22,7 @@ class RunningLowCommandTest {
                 FoodStorageLocation.LOWER_SHELF, 200);
         fridge.add(chicken);
 
-        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE, "17-03-2021",
+        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 100);
         fridge.add(lettuce);
 
@@ -38,43 +38,43 @@ class RunningLowCommandTest {
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(chicken);
 
-        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE, "17-03-2021",
+        Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(lettuce);
 
-        Food apple = AddCommand.categoriseAndGenerateFood("apple", FoodCategory.FRUIT, "17-03-2021",
+        Food apple = AddCommand.categoriseAndGenerateFood("apple", FoodCategory.FRUIT, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(apple);
 
-        Food fish = AddCommand.categoriseAndGenerateFood("fish", FoodCategory.SEAFOOD, "17-03-2021",
+        Food fish = AddCommand.categoriseAndGenerateFood("fish", FoodCategory.SEAFOOD, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(fish);
 
-        Food egg = AddCommand.categoriseAndGenerateFood("egg", FoodCategory.EGG, "17-03-2021",
+        Food egg = AddCommand.categoriseAndGenerateFood("egg", FoodCategory.EGG, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(egg);
 
-        Food cheese = AddCommand.categoriseAndGenerateFood("cheese", FoodCategory.DAIRY, "17-03-2021",
+        Food cheese = AddCommand.categoriseAndGenerateFood("cheese", FoodCategory.DAIRY, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(cheese);
 
-        Food coke = AddCommand.categoriseAndGenerateFood("coke", FoodCategory.BEVERAGE, "17-03-2021",
+        Food coke = AddCommand.categoriseAndGenerateFood("coke", FoodCategory.BEVERAGE, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(coke);
 
-        Food soup = AddCommand.categoriseAndGenerateFood("soup", FoodCategory.COOKED_DISH, "17-03-2021",
+        Food soup = AddCommand.categoriseAndGenerateFood("soup", FoodCategory.COOKED_DISH, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(soup);
 
-        Food sandwich = AddCommand.categoriseAndGenerateFood("sandwich", FoodCategory.READY_TO_EAT, "17-03-2021",
+        Food sandwich = AddCommand.categoriseAndGenerateFood("sandwich", FoodCategory.READY_TO_EAT, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(sandwich);
 
-        Food iceCream = AddCommand.categoriseAndGenerateFood("iceCream", FoodCategory.FROZEN, "17-03-2021",
+        Food iceCream = AddCommand.categoriseAndGenerateFood("iceCream", FoodCategory.FROZEN, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(iceCream);
 
-        Food icePack = AddCommand.categoriseAndGenerateFood("icePack", FoodCategory.OTHER, "17-03-2021",
+        Food icePack = AddCommand.categoriseAndGenerateFood("icePack", FoodCategory.OTHER, "17-05-2021",
                 FoodStorageLocation.LOWER_SHELF, 1000);
         fridge.add(icePack);
     }

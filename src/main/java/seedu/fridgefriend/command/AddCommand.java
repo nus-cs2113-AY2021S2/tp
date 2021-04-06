@@ -52,8 +52,8 @@ public class AddCommand extends Command {
 
     private void addFood() throws RepetitiveFoodIdentifierException, InvalidQuantityException {
         assert foodToAdd != null : "Unable to add a null food";
-        Storage.saveHistoryData(foodToAdd);
         fridge.add(foodToAdd);
+        Storage.saveHistoryData(foodToAdd);
     }
 
     private void showResults() {

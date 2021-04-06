@@ -31,7 +31,7 @@ class RemoveCommandTest {
         fridge.add(chicken);
 
         Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF, 100);
+                "17-05-2021", FoodStorageLocation.MIDDLE_SHELF, 100);
         fridge.add(lettuce);
 
         Food pork = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.MEAT,
@@ -69,12 +69,6 @@ class RemoveCommandTest {
 
     @Test
     public void removeCommand_invalidQuantity_invalidQuantityException() {
-        assertThrows(InvalidQuantityException.class, () ->
-                removeCommand.execute());
-    }
-
-    @Test
-    public void removeCommand_LargeQuantity_invalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () ->
                 removeCommand.execute());
     }
