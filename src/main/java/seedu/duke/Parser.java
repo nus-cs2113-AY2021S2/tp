@@ -1,5 +1,8 @@
 package seedu.duke;
 
+import seedu.exceptions.DeliveryAlreadyCompletedException;
+import seedu.exceptions.DeliveryOutOfBoundsException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,7 +51,6 @@ public class Parser {
         String parsedData = null;
         switch (commandWord) {
             case "edit":
-            case "editprofile":
                // TEST: edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/2
                 Matcher editProfileMatcher = DRIVER_PROFILE_EDIT_FORMAT.matcher(arguments.trim());
                 if (!editProfileMatcher.matches()){
@@ -65,17 +67,27 @@ public class Parser {
                 }
                 break;
             case "view":
-            case "viewdelivery":
             case "complete":
-                arguments = Integer.toString(Integer.parseInt(arguments) - 1);
-                // display list starts from 1 while array index starts from 0, hence the decrement
+                try {
+                    arguments = Integer.toString(Integer.parseInt(arguments) - 1);
+                } catch (NumberFormatException e) {
+                    arguments = "-1";
+                }
                 parsedData = arguments;
-                break;
-            default:
-                System.out.println("You shouldn't have been able to get here..");
-                // consider setting parsedData to a flagger value and handling from there
                 break;
         }
         return parsedData;
+    }
+
+    public void validateDeliveryNumber(int deliveryNumber) throws DeliveryOutOfBoundsException {
+        if (deliveryNumber >= DeliveryList.deliveries.size() | deliveryNumber <= -1) {
+            throw new DeliveryOutOfBoundsException();
+        }
+    }
+
+    public void validateCompleteDelivery(int deliveryNumber) throws DeliveryAlreadyCompletedException {
+        if (DeliveryList.deliveries.get(deliveryNumber).getIsComplete()) {
+            throw new DeliveryAlreadyCompletedException();
+        }
     }
 }

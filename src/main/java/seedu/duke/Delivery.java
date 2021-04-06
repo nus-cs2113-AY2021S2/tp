@@ -22,12 +22,12 @@ public class Delivery implements Comparable<Delivery>{
      * @param recipient name of the delivery's recipient
      * @param items items contained in the delivery
      */
-    public Delivery(String deliveryID, String address, String recipient, ArrayList<Item> items) {
+    public Delivery(String deliveryStatus, String deliveryID, String address, String recipient, ArrayList<Item> items) {
         this.deliveryID = deliveryID;
         this.address = address;
         this. recipient = recipient;
         this.items = items;
-        this.isComplete = false;
+        this.isComplete = !deliveryStatus.equals("N");
         for (Item item : items) {
             this.weight += item.getItemWeight();
         }
@@ -92,6 +92,28 @@ public class Delivery implements Comparable<Delivery>{
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         deliveryman.completeDelivery(delivery);
         delivery.setDeliveryAsComplete();
+    }
+
+    public String saveFormat() {
+        StringBuilder format = new StringBuilder();
+        format.append(getDeliveryStatusSymbol().replace("]", "").replace("[", ""))
+                .append(" / ")
+                .append(getDeliveryID())
+                .append(" / ")
+                .append(getAddress())
+                .append(" / ")
+                .append(getRecipient())
+                .append(" / ");
+        String prefix = "";
+        for (Item item : this.getItems()) {
+            format.append(prefix)
+                    .append(item.getItemNumber())
+                    .append("-")
+                    .append(item.getItemWeight());
+            prefix = " , ";
+        }
+
+        return format.toString();
     }
 
     /**

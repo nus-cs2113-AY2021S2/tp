@@ -25,7 +25,7 @@ public class UiTest {
         Route.routes = DataManager.loadRoutes();
         // create testing items and delivery
         items.add(new Item(1, 5));
-        delivery = new Delivery("1001", "NTU Hall 1", "Manika", items);
+        delivery = new Delivery("N", "1001", "NTU Hall 1", "Manika", items);
         listOfDeliveries.add(delivery);
         DeliveryList.deliveries = listOfDeliveries;
     }
