@@ -145,9 +145,9 @@ created for the FridgeFriend project, and stored inside the `Exceptions` compone
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
 
-The `Exceptions` component currently consists of nine (9) custom Exceptions, as of v2.0:
+The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
 
-Among these ten custom exceptions, the `Exceptions` component can generally be
+Among these eleven custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
 
 * Invalid User Input
@@ -158,7 +158,7 @@ classified into three broad categories:
   * Includes: `FoodNameNotFoundException`, `InvalidFoodCategoryException`, `RepetitiveFoodIdentifierException`
 * File Storage Errors
   * Thrown when there are errors occur during the file loading and saving processes
-  * Include: `StorageLoadingException`, `StorageSavingException`
+  * Includes: `StorageLoadingException`, `StorageSavingException`
 
 ## Implementation
 

@@ -2,6 +2,8 @@ package seedu.fridgefriend;
 
 import seedu.fridgefriend.command.Command;
 import seedu.fridgefriend.exception.FoodNameNotFoundException;
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
@@ -61,7 +63,8 @@ public class FridgeFriend {
     }
 
     private static void executeCommand(Command command) throws InvalidInputException,
-            RepetitiveFoodIdentifierException, InvalidQuantityException, FoodNameNotFoundException {
+            RepetitiveFoodIdentifierException, InvalidQuantityException,
+            FoodNameNotFoundException, InvalidFoodCategoryException, InvalidFoodLocationException {
         command.setData(fridge);
         command.execute();
     }
