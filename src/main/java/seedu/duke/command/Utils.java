@@ -20,6 +20,11 @@ import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
  * Provides common validation methods for {@code Command} validation.
  */
 public class Utils {
+    private static final String[] HELP_TYPES = {
+        AddCommand.COMMAND_ADD, CreditScoreCommand.COMMAND_CREDIT_SCORE,
+        ExitCommand.COMMAND_EXIT, ListCommand.COMMAND_LIST, RemoveCommand.COMMAND_REMOVE,
+        ReturnCommand.COMMAND_RETURN, ViewCommand.COMMAND_VIEW, "all"
+    };
     private static final String ERROR_MISSING_OPTION = "missing option: ";
     private static final String ERROR_INVALID_OPTION = "invalid option: ";
     private static final String ERROR_MISSING_OPTION_VALUE = "value of option %s is missing.";
@@ -119,6 +124,13 @@ public class Utils {
     }
 
     // This hasOption method is only meant to improve readability.
+    /**
+     * Checks if the {@code arguments} contains the {@code option}.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param option    the option String to find in {@code arguments}.
+     * @return {@code true}  if {@code arguments} contains the {@code option}, false otherwise.
+     */
     public static boolean hasOption(ArrayList<String> arguments, String option) {
         assert arguments != null : "arguments is null!";
         return arguments.contains(option);
@@ -184,11 +196,10 @@ public class Utils {
             if (!ArrayUtils.contains(orOptions, arg)) {
                 continue;
             }
-            if (option == null) {
-                option = arg;
-            } else {
+            if (option != null) {
                 throw new CommandException(ERROR_CONFLICT_OPTION + option + ", " + arg, command);
             }
+            option = arg;
         }
     }
 
@@ -234,6 +245,8 @@ public class Utils {
      */
     private static void validateArgument(String argument, ArgumentType argumentType, String command)
             throws CommandException {
+        assert argument != null : "argument is null!";
+        assert argumentType != null : "argumentType is null!";
         switch (argumentType) {
         case VALUE:
             validateNotEmpty(argument, ERROR_MISSING_ARGUMENT_VALUE);
@@ -258,15 +271,22 @@ public class Utils {
         }
     }
 
-    protected static String validateHelpType(ArrayList<String> argument, String command)
+    /**
+     * Checks and returns a valid {@code helpType} in the {@code HelpCommand arguments}.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command   the name of the {@code Command} calling it.
+     * @return the {@code helpType} String.
+     * @throws CommandException if {@code helpType} is invalid.
+     */
+    protected static String validateHelpType(ArrayList<String> arguments, String command)
             throws CommandException {
-        String helpType = argument.get(1);
-        if (StringUtils.equalsAny(helpType, "all", "add", "creditscore", "exit",
-            "list", "remove", "return", "view")) {
-            return helpType;
-        } else {
+        assert arguments != null : "argument is null!";
+        String helpType = getValue(arguments, command);
+        if (!StringUtils.equalsAny(helpType, HELP_TYPES)) {
             throw new CommandException(ERROR_WRONG_HELP_TYPE + helpType, command);
         }
+        return helpType;
     }
 
     /**
