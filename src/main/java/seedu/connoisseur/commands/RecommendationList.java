@@ -112,7 +112,7 @@ public class RecommendationList {
     public boolean checkAndPrintDuplicateRecommendation(String title) {
         int recIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if (recommendations.get(i).getTitle().compareToIgnoreCase(title) == 0) {
+            if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
                 recIndex = i;
             }
         }
@@ -275,7 +275,7 @@ public class RecommendationList {
         }
         int recommendationIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if (recommendations.get(i).getTitle().compareToIgnoreCase(title) == 0) {
+            if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
                 recommendationIndex = i;
                 break;
             }
@@ -303,7 +303,7 @@ public class RecommendationList {
         }
         int recommendationIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if (recommendations.get(i).getTitle().compareToIgnoreCase(title) == 0) {
+            if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
                 recommendationIndex = i;
                 break;
             }
