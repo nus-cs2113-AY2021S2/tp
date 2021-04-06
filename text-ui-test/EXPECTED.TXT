@@ -83,9 +83,7 @@ These are the food stored in LOWER_SHELF:
 -----------------------------------------------------------------
 Sorry my friend, please enter a valid food category or storage location.
 -----------------------------------------------------------------
-No food has expired! Congratulations!
------------------------------------------------------------------
-These are the food expiring in the next week:
+These are the food expiring in the following week:
 1. Food name: chicken, category: MEAT, expiry: 11-04-2021, stored in: LOWER_SHELF, quantity: 200
 -----------------------------------------------------------------
 Sorry my friend, the description cannot be empty.
