@@ -37,8 +37,8 @@ public class Employee {
         if (schedule.length() != 10) {
             return false;
         }
-        if (!schedule.substring("dd".length(), "dd/".length()).equals("/") ||
-                !schedule.substring("dd/mm".length(), "dd/mm/".length()).equals("/")) {
+        if (!schedule.substring("dd".length(), "dd/".length()).equals("/")
+                || !schedule.substring("dd/mm".length(), "dd/mm/".length()).equals("/")) {
             return false;
         }
         String day = schedule.substring(0, "dd".length());

@@ -1,6 +1,6 @@
 package ui;
 
-public class ui {
+public class Ui {
     public static void printWelcomeMessage() {
         System.out.println("Welcome to fast scheduler!");
     }
