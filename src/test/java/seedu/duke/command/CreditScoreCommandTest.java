@@ -27,7 +27,7 @@ public class CreditScoreCommandTest {
         runCredScoreCmdTest(expectedOutput, credScoreCmdInput, testName);
     }
 
-    private void runCredScoreCmdTest (String expectedOutput, String credScoreCmdInput, String testName) {
+    private void runCredScoreCmdTest(String expectedOutput, String credScoreCmdInput, String testName) {
         Ui ui = new Ui();
         Storage storage = new Storage();
         RecordList loans = getLoanList();
