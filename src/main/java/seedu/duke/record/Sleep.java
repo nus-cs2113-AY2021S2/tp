@@ -14,7 +14,7 @@ public class Sleep extends Record {
     public Sleep(double duration, LocalDate date) throws NumberFormatException {
         super(RecordType.SLEEP, date);
         this.duration = duration;
-        if (duration < 0 || duration > 1440) {
+        if (duration <= 0 || duration > 1440) {
             throw new NumberFormatException("Sleep duration invalid");
         }
     }
@@ -40,7 +40,7 @@ public class Sleep extends Record {
 
     @Override
     public String getRecordData() {
-        return SEPARATOR_TAB + SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
+        return SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
                 + SEPARATOR_TAB + SEPARATOR_TAB + getDuration() + " " + getUnit();
     }
 

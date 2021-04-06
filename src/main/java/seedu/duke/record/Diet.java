@@ -33,7 +33,7 @@ public class Diet extends Record {
             throw new TypeException("food type exception");
         }
         this.amount = amount;
-        if (amount < 0 || amount > 2000) {
+        if (amount < 0 || amount > 3000) {
             throw new NumberFormatException("Food amount invalid");
         }
         calorie = amount * foodCategory.getCaloriePer100g();
@@ -89,7 +89,7 @@ public class Diet extends Record {
      */
     @Override
     public String getRecordData() {
-        return SEPARATOR_TAB + SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
+        return SEPARATOR_TAB + SEPARATOR_TAB + getDate().format(DATE_FORMATTER)
                 + SEPARATOR_TAB + getFoodCategory()
                 + separatorBetweenFoodAndWeight + getAmount() + " " + getUnit()
                 + separatorBetweenWeightAndCalorie + getCalorie() + " " + getCaloriesUnit();

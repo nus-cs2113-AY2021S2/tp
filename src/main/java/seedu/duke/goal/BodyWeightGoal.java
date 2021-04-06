@@ -16,7 +16,7 @@ public class BodyWeightGoal extends Goal {
      */
     public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) throws NumberFormatException {
         super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
-        if (targetBodyWeight < 0 || targetBodyWeight > 400) {
+        if (targetBodyWeight < 40 || targetBodyWeight > 400) {
             throw new NumberFormatException("Target weight invalid");
         }
         initializeProgress();
@@ -71,12 +71,12 @@ public class BodyWeightGoal extends Goal {
     @Override
     public String getGoalData() {
         if (progress == -1) {
-            return SEPATATOR_TAB + SEPATATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPATATOR_TAB + SEPATATOR_TAB
+            return SEPATATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPATATOR_TAB + SEPATATOR_TAB
                     + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + MESSAGE_NO_BODY_WEIGHT_PROGRESS + getAchieved() + "\n";
         } else {
-            return SEPATATOR_TAB + SEPATATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPATATOR_TAB + SEPATATOR_TAB
+            return SEPATATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPATATOR_TAB + SEPATATOR_TAB
                     + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
