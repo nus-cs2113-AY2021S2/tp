@@ -25,6 +25,7 @@
    4.5. [Daily Routes](#45-daily-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.1. [Adding a daily route](#451-adding-a-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.5.2. [Viewing daily route](#452-viewing-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting daily route](#453-deleting-daily-route) <br>
    4.6. [Notes](#46-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1 [Adding notes](#461-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing notes](#462-viewing-notes) <br>
@@ -74,12 +75,14 @@ This section gives you step-by-step instructions on how to download and open the
 
 4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
 :information_source: An easy way to do so is shown below for both Mac and Windows<br>
-   ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
-   Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
+
+| Windows |  Mac |
+|----------|-------------|
+|![img.png](images/windowsterminal.png)<br><p align="center">Key in `cmd` and press enter.</p>| ![img.png](images/macterminal.png)<br><p align="center">Right click on the folder and click on "New Terminal at Folder"</p>|<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
-   _Figure 1 - CLI of NUSMaze_
+   <p align="center">_Figure 1 - CLI of NUSMaze_</p>
 
 7. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
 
@@ -311,7 +314,7 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
-#### 4.5.3 Clearing daily route
+#### 4.5.3 Deleting daily route
 Clears the schedule of the selected day, if applicable.<br>
 Format : `delete daily route` → `DAY_NUMBER` <br>
 Example :
