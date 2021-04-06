@@ -2,6 +2,7 @@
 ===================
 
 ## Content Page
+
 1. [Introduction](#1-introduction)
 	1. [What is HealthVault?](#11-what-is-healthvault)
 	2. [About the Developer Guide](#12-about-the-developer-guide)
@@ -16,6 +17,8 @@
     6. [Common classes](#46-common-classes)
 5. [Implementation](#5-implementation)
     1. [Staff](#51-staff)
+
+
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#511-add)        , [Delete](#512-delete)        , [List](#513-list)        , [Find](#514-find))
     2. [Patient](#52-patient)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#521-add)        , [Delete](#522-delete)        , [List](#523-list)        , [Find](#524-find))
@@ -42,6 +45,14 @@
 [Appendix F: Product Survey](#f-product-survey)
 
 [Appendix G: Instructions for Manual Testing](#g-instructions-for-manual-testing)
+
+
+function fancyAlert(arg) {
+      if(arg) {
+        $.facebox({div:'#foo'})
+      }
+    }
+
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
@@ -349,7 +360,7 @@ When the user attempts to add a new staff, the StaffStorage, StaffList, UI, Staf
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Saving Staff Objects into .txt file**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  The Parser then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Staff Objects, within the StaffList into a specified .txt file.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Staff Objects, within the StaffList into a specified .txt file.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.  `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 
