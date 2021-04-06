@@ -1,6 +1,7 @@
 package seedu.logic.command;
 
 import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.inventory.InvalidQuantityException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.exceptions.HealthVaultException;
 import seedu.storage.StaffStorage;
@@ -28,7 +29,7 @@ public abstract class Command {
     public void execute(StaffAggregation staff, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
     }
 
-    public void execute (InventoryActions drugs, InventoryUI ui) {
+    public void execute (InventoryActions drugs, InventoryUI ui) throws InvalidQuantityException {
     }
 
     public void execute (AppointmentActions appointment, DoctorAppointmentUI ui) throws HealthVaultException, IOException, Exception {
