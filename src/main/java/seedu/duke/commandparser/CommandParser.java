@@ -158,7 +158,7 @@ public class CommandParser {
                 return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
             params.put("periodType", periodType.toString());
-            params.put("target", targetStr);
+            params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
             switch (e.getMessage()) {
