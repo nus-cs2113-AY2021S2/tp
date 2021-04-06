@@ -1,8 +1,8 @@
-package seedu.duke.capsimulator;
+package seedu.duke.features.capsimulator;
 
-import seedu.duke.Module;
-import seedu.duke.ModuleInfo;
-import seedu.duke.Ui;
+import seedu.duke.features.moduleinfo.Module;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 

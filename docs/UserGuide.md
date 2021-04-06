@@ -328,7 +328,7 @@ Here are the modules in your Modules List:
 Enter the module number to be deleted:  
 > 1  
 Are you sure you want to delete CS3243? [Y/N]  
-Mar 31, 2021 3:04:34 AM seedu.duke.ModuleInfo deleteModule  
+Mar 31, 2021 3:04:34 AM seedu.duke.features.moduleinfo.ModuleInfo deleteModule  
 WARNING: You are making a change that cannot be undone.  
 > Y  
 You've deleted this: CS3243   
@@ -452,7 +452,7 @@ Very very very difficult for me:( But, very important to know!
 5/5  
 
 Would you like to replace this with another review? [Y/N]  
-Mar 31, 2021 3:08:31 AM seedu.duke.ModuleInfo printAlreadyAddedReviewMessage  
+Mar 31, 2021 3:08:31 AM seedu.duke.features.moduleinfo.ModuleInfo printAlreadyAddedReviewMessage  
 WARNING: You will delete your old review. This cannot be undone.  
 > Y  
   
@@ -516,7 +516,7 @@ Here are the modules in your Modules List:
 Enter the module number to delete review:  
 > 1  
 --------------------------------------------  
-Mar 31, 2021 3:15:51 AM seedu.duke.ModuleInfo deleteReview  
+Mar 31, 2021 3:15:51 AM seedu.duke.features.moduleinfo.ModuleInfo deleteReview  
 WARNING: You are making a change that cannot be undone.  
 Are you sure you want to delete this review? [Y/N]  
 For CS2113T:  

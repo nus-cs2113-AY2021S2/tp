@@ -1,10 +1,10 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.duke.Ui;
+import seedu.duke.ui.Ui;
 
 public class LinkInfo {
 

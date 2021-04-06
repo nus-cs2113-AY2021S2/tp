@@ -1,4 +1,4 @@
-package seedu.duke.task;
+package seedu.duke.features.task;
 
 public class Assignment extends Task {
     protected String by;
