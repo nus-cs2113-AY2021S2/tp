@@ -53,16 +53,11 @@ public class Fridge {
         return fridge.get(i);
     }
 
-    //@@author kwokyto
-    public void removeByIndex(int index) {
-        fridge.remove(index);
-    }
-
     //@@author Vinci-Hu
     private void editFoodQuantity(Food newFood, Food existingFood) throws InvalidQuantityException {
         long deltaQuantity = newFood.getQuantity();
-        long oriQuantity = existingFood.getQuantity();
-        long newQuantity = deltaQuantity + oriQuantity;
+        long originalQuantity = existingFood.getQuantity();
+        long newQuantity = deltaQuantity + originalQuantity;
         if (newQuantity > MAX_ALLOWABLE_QUANTITY) {
             throw new InvalidQuantityException(exceedAddMessage);
         }

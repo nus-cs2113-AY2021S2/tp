@@ -9,7 +9,11 @@ public class RunningLowCommand extends Command {
 
     private String message = "You are running low on food in these categories:";
     private String stockedUpMessage = "Congrats! You are all stocked up on food! :D";
+    private String turnOffMessage = "Running low command is turn off.\n"
+            + "Please set at least one food category limit to a positive integer.";
     private boolean isStockedUp = true;
+    private static final int TURN_OFF = -1;
+    private int numberOfCategoryTurnOff = 0;
     private int index = 1;
     
     public RunningLowCommand() {
@@ -19,10 +23,17 @@ public class RunningLowCommand extends Command {
     @Override
     public void execute() throws InvalidQuantityException {
         for (FoodCategory foodCategory : FoodCategory.values()) {
+            if (FoodCategory.getMinimumQuantity(foodCategory) == TURN_OFF) {
+                numberOfCategoryTurnOff++;
+                continue;
+            }
             updateMessage(foodCategory);
         }
         if (isStockedUp) {
             message = stockedUpMessage;
+        }
+        if (isTurnOff()) {
+            message = turnOffMessage;
         }
         Ui.printMessage(message);
     }
@@ -40,5 +51,12 @@ public class RunningLowCommand extends Command {
 
     public String getMessage() {
         return message;
+    }
+
+    private boolean isTurnOff () {
+        if (numberOfCategoryTurnOff == 11) {
+            return true;
+        }
+        return false;
     }
 }
