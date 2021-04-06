@@ -24,7 +24,9 @@ public class StaffAggregation {
 
     public void resetList() {
         this.list.clear();
-        numStaff=0;
+        numStaff = 0;
+        numDoctor = 0;
+        numNurse = 0;
     }
 
     public void addStaff(Staff staff) {
@@ -57,39 +59,54 @@ public class StaffAggregation {
         return this.list;
     }
 
-    public void list(String... parameter) {
-        if (parameter[0] == (null) && getNumStaff() != 0) {
+    public void list(String[] array) {
+        if (array.length == 1 && getNumStaff() != 0) {
+            StaffUI.staffListHeader();
+            UI.showLine();
             for (Staff staff : list) {
-                StaffUI.staffListHeader();
-                UI.showLine();
+
                 display(staff);
             }
-        } else if (parameter[0].equals("nurses") && getNumNurse() != 0 ) {
+        } else if (array[1].equals("nurses") && getNumNurse() != 0 ) {
+            System.out.println(getNumNurse());
+            StaffUI.staffListHeader();
+            UI.showLine();
             for (Staff staff : list) {
                 if (staff.getType().equals(NURSE_TYPE)) {
-                    StaffUI.staffListHeader();
-                    UI.showLine();
                     display(staff);
+                    return;
                 }
             }
-        } else if (parameter[0].equals("doctors") && getNumDoctor() != 0 ) {
+        } else if (array[1].equals("doctors") && getNumDoctor() != 0 ) {
+            System.out.println(getNumDoctor());
+            StaffUI.staffListHeader();
+            UI.showLine();
             for (Staff staff : list) {
                 if (staff.getType().equals(DOCTOR_TYPE)) {
-                    StaffUI.staffListHeader();
-                    UI.showLine();
                     display(staff);
+                    return;
                 }
             }
         } else {
-            StaffUI.emptyListOutput();
+            StaffUI.emptyListErrorMessage();
         }
     }
 
     public void find(String keyword) {
+        boolean isFirstItemFound = false;
         for (Staff staff : list) {
             if (search(keyword, staff)) {
+                if (!isFirstItemFound) {
+                    UI.printEmptyLine();
+                    StaffUI.staffListHeader();
+                    UI.showLine();
+                    isFirstItemFound = true;
+                }
                 display(staff);
             }
+        }
+        if (!isFirstItemFound) {
+            StaffUI.staffNotFoundErrorMessage();
         }
     }
 
@@ -108,13 +125,18 @@ public class StaffAggregation {
             if (staff.getId().equals(line.split("/")[1])) {
                 iterator.remove();
                 numStaff--;
+                if (staff.getType() == NURSE_TYPE) {
+                    numNurse--;
+                } else {
+                    numDoctor--;
+                }
                 isExistingID = true;
             }
         }
         if (isExistingID) {
             StaffUI.staffFiredOutput(line);
         } else {
-            StaffUI.staffDoesNotExist(line);
+            StaffUI.staffDoesNotExistErrorMessage(line);
         }
     }
 
