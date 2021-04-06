@@ -48,8 +48,9 @@ It is written in Java, and has more than 4300 lines of code.
 
 ## Features
 
-:information_source: Words in UPPER_CASE are the parameters to be supplied by the user.\
-  e.g. `add FOOD_NAME`, `FOOD_NAME` is a parameter which can be used as `add chicken`.
+:information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is a parameter.
+
+:information_source: Commands that do not require parameters will still execute as normal if additional parameters are given. For example, `help me` will execute as `help`.
 
 ### Get help message: `help`
 
