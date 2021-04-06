@@ -13,8 +13,8 @@
    4.1. [Viewing Help](#41-viewing-help)<br>
    4.2. [Viewing all venues](#42-viewing-all-venues) <br>
    4.3. [Routing](#43-routing) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing between blocks](#432-routing-between-blocks) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.3. [Routing to the closest eatery](#433-routing-to-the-closest-eatery) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Routing between blocks](#431-routing-between-blocks) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to the closest eatery](#432-routing-to-the-closest-eatery) <br>
    4.4. [History](#44-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Viewing History](#441-viewing-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Clearing History](#442-clearing-history) <br>
@@ -26,6 +26,7 @@
    4.6. [Daily Routes](#46-daily-routes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.1. [Adding a daily route](#461-adding-a-daily-route) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.6.2. [Viewing daily route](#462-viewing-daily-route) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.5.3. [Deleting daily route](#463-deleting-daily-route) <br>
    4.7. [Notes](#47-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.1. [Adding notes](#471-adding-notes) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.7.2. [Viewing notes](#472-viewing-notes) <br>
@@ -38,8 +39,7 @@
    4.9. [Exiting the application](#49-exiting-the-application) <br>
    4.10. [Saving the Data](#410-saving-the-data) <br>
 5. [FAQ](#5-faq) <br>
-6. [Glossary](#6-glossary) <br>
-7. [Command summary](#7-command-summary) <br>
+6. [Command summary](#6-command-summary) <br>
 
 
 ## 1. Introduction
@@ -68,25 +68,27 @@ If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to lear
 
 This section gives you step-by-step instructions on how to download and open the application.
 
-1. Ensure you have `Java 11` or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
+1. Ensure you have **Java 11** or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
 
-2. Download the latest `NUSMaze.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases).
+2. Download the latest **NUSMaze.jar** from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ **NUSMaze**.
+3. Copy the file to the folder you want to use as the _home folder_ of **NUSMaze**.
 
 4. Open your command line or terminal and navigate into the file directory where you saved the application. <br>
+
 <div markdown="block" class="alert alert-info">
 :information_source: An easy way to do so is shown below for both Mac and Windows<br>
 </div>
 
-   ![img.png](images/windowsterminal.png) ![img.png](images/macterminal.png)<br>
-   Press enter on Windows or click on "New Terminal at Folder" on Mac to launch the command line or terminal<br>
+| Windows |  Mac |
+|----------|-------------|
+|![img.png](images/windowsterminal.png)<br><p align="center">Key in `cmd` and press enter.</p>| ![img.png](images/macterminal.png)<br><p align="center">Right click on the folder and click on "New Terminal at Folder"</p>|<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
-   _Figure 1 - CLI of NUSMaze_
+   <p align="center">_Figure 1 - CLI of NUSMaze_</p>
 
-7. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
+7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
 8. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
@@ -134,13 +136,13 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 
 1. Words in `UPPER_CASE` are parameters to be supplied by you.
 
-2. In all formats shown in features, `→` denotes a prompt from the CLI. A user input is expected after the prompt.
+2. In all formats shown in features, → denotes a prompt from the CLI. A user input is expected after the prompt.
 
 3. All the examples provided below are simulation scenarios of expected user commands and outputs by NUSMaze.
 
-4. In each example, lines starting with `>` signifies user command.
+4. In each example, lines starting with > signifies user command.
 
-5. In each example, lines starting with `*` signifies a user input after being prompted by NUSMaze.
+5. In each example, lines starting with * signifies a user input after being prompted by NUSMaze.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -154,7 +156,7 @@ You may enter a command into the CLI to use each feature.
 Lists all commands and functions of each feature.<br>
 Format: `help`
 
-#### 4.2 Viewing all venues
+### 4.2 Viewing all venues
 
 List all the venues in Engineering and Computing campus. <br>
 Format: `show venues`
@@ -263,9 +265,8 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 Lists the past 10 route searches.<br>
 Format: `history`
 
-<div markdown="block" class="alert alert-info">
 :information_source: NUSMaze will automatically update your history to the most recent 10 searches.
-</div>
+
 
 #### 4.4.2 Clearing History
 
@@ -324,7 +325,7 @@ Format : `delete alias` → `ALIAS_NAME`
 ### 4.6 Daily Routes
 #### 4.6.1 Adding a daily route
 Adds a schedule for the selected day.<br>
-Format : `add daily route` → `DAY_ENTRY` → `BLOCK/END` <br>
+Format : `add daily route` → `DAY_ENTRY` → `BLOCK` → ... → `end` <br>
 Example : 
 ```
 ------------------------------------------------------------------------------------------------------------
@@ -344,11 +345,11 @@ Select entry:
 ------------------------------------------------------------------------------------------------------------
 Enter location of the first activity of the day: 
 * e2
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * e7
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * ea
-Enter location of the next activity of the day: 
+Enter location of the next activity of the day: (Enter "end" to stop)
 * end
 ------------------------------------------------------------------------------------------------------------
 Got it! Successfully added MONDAY's schedule!
@@ -359,7 +360,7 @@ Got it! Successfully added MONDAY's schedule!
 - You will then be prompted to enter the location of the activities(`BLOCK`) of the day one at
   a time.
 
-- NUSMaze will continuously ask for locations until you input `END`.
+- NUSMaze will continuously ask for locations until you input `end`.
 
 :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
 (1 represents Monday and 7 represents Sunday).
@@ -398,7 +399,9 @@ Route: E7 -> E6 -> EW2 -> E4A -> E4 -> E3 -> E2 -> EA
 
 :warning: The `DAY_NUMBER` must be the index of one of the available days which has been displayed.
 
-#### 4.6.3 Clearing daily route
+
+#### 4.6.3 Deleting daily route
+
 Clears the schedule of the selected day, if applicable.<br>
 Format : `delete daily route` → `DAY_NUMBER` <br>
 Example :
@@ -524,8 +527,8 @@ NUSMaze data is saved in the hard disk automatically after any command that chan
 
 ## 5. FAQ
 
-**Q**: Do I lose all my personalised routes and preferences when i close the application? <br>
-**A**: Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry so you do not lose any data.
+**Q**: Do I lose all my personalised routes and preferences when I close the application? <br>
+**A**: Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry, so you do not lose any data.
 
 **Q**: How do I transfer my personalised routes and preferences to another computer? <br>
 **A**: Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
@@ -534,35 +537,28 @@ can be found on the second computer.
 
 
 --------------------------------------------------------------------------------------------------------------------
-
-## 6. Glossary
-
-* **Alphanumeric**: Alphanumeric does not include special characters, it only includes letters a to z (uppercase and lowercase) and digits 0 to 9.
-* **Special Characters**: Refers to any of the characters within these set of characters: +!#$%&'*+/=?\`{}~^.-&#124;
-
---------------------------------------------------------------------------------------------------------------------
-
-## 7. Command summary
+## 6. Command summary
 
 |Action | Format |
 |---------------|------------------------------------------------------------------|
 |[**Viewing help**](#41-viewing-help)        | `help` | 
-|[**Finding the route**](#42-routing)       | `go → START → DESTINATION` or `go → START → eatery → EATERY_ENTRY` |
-|[**Viewing history**](#431-viewing-history)     | `history` | 
-|[**Clearing history**](#432-clearing-history)       | `clear history` |
-|[**Repeating history**](#433-repeating-history)       | `repeat history → REPEAT_ENTRY` |
-|[**Adding alias for block names**](#441-adding-an-alias-for-block-name)| `add alias → BLOCK → ALIAS` | 
-|[**Showing all aliases**](#442-viewing-all-aliases)  | `show alias` | 
-|[**Deleting alias**](#443-deleting-aliases)       | `delete alias → ALIAS` |
-|[**Adding a daily route**](#451-adding-a-daily-route)     | `add daily route → DAY_NUMBER → BLOCK → … → BLOCK → END` | 
-|[**Showing a daily route**](#452-viewing-daily-route)       | `show daily route → DAY_NUMBER` |
-|[**Clearing a daily route**](#453-clearing-daily-route)       | `clear daily route → DAY_NUMBER` |
-|[**Adding notes**](#461-adding-notes)       | `add note → BLOCK → NOTE` |
-|[**Viewing notes**](#462-viewing-notes)      | `show note → BLOCK` | 
-|[**Deleting notes**](#463-delete-note)       | `delete note → BLOCK → NOTE_INDEX` |
-|[**Adding Favourite Route**](#471-adding-favourite-route)       | `add favourite → STARTING_BLOCK → DESTINATION_BLOCK` |
-|[**Show stored favourites**](#472-show-stored-favourites)       | `show favourite` |
-|[**Repeating favourite route**](#473-repeating-favourite-route)       | `repeat favourite → ROUTE_INDEX` |
-|[**Deleting favourite route**](#474-deleting-favourite-route)       | `delete favourite → ROUTE_INDEX` |
-|[**Exiting the application**](#48-exiting-the-application)       | `bye` |
+|[**Viewing all venues**](#42-viewing-all-venues)        | `help` | 
+|[**Finding the route**](#43-routing)       | `go` → `START` → `DESTINATION` or `go` → `START` → `eatery` → `EATERY_ENTRY` |
+|[**Viewing history**](#441-viewing-history)     | `history` | 
+|[**Clearing history**](#442-clearing-history)       | `clear history` |
+|[**Repeating history**](#443-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
+|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS` | 
+|[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
+|[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS` |
+|[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
+|[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route` → `DAY_NUMBER` |
+|[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |
+|[**Adding notes**](#471-adding-notes)       | `add note` → `BLOCK` → `NOTE` |
+|[**Viewing notes**](#472-viewing-notes)      | `show note` → `BLOCK` | 
+|[**Deleting notes**](#473-delete-note)       | `delete note` → `BLOCK` → `NOTE_INDEX` |
+|[**Adding Favourite Route**](#481-adding-favourite-route)       | `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK` |
+|[**Show stored favourites**](#482-show-stored-favourites)       | `show favourite` |
+|[**Repeating favourite route**](#483-repeating-favourite-route)       | `repeat favourite` → `ROUTE_INDEX` |
+|[**Deleting favourite route**](#484-deleting-favourite-route)       | `delete favourite` → `ROUTE_INDEX` |
+|[**Exiting the application**](#49-exiting-the-application)       | `bye` |
 
