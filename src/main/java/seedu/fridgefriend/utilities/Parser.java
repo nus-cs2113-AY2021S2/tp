@@ -362,7 +362,7 @@ public class Parser {
     /**
      * Returns a HistoryCommand object.
      *
-     * @return ClearCommand object
+     * @return HistoryCommand object
      */
     private static Command getHistoryCommand(String description) {
         Command historyCommand = new HistoryCommand(description);

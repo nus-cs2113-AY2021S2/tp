@@ -143,7 +143,7 @@ created for the FridgeFriend project, and stored inside the `Exceptions` compone
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
 
-The `Exceptions` component currently consists of eleven 11 custom Exceptions, as of v2.0:
+The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
 
 Among these eleven custom exceptions, the `Exceptions` component can generally be
 classified into three broad categories:
