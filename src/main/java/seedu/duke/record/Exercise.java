@@ -17,7 +17,8 @@ public class Exercise extends Record {
     private int lengthOfActivity;
     private int lengthOfDuration;
 
-    public Exercise(String activityStr, String durationStr, LocalDate date) throws TypeException, NumberFormatException {
+    public Exercise(String activityStr, String durationStr, LocalDate date) throws TypeException,
+            NumberFormatException {
         super(RecordType.EXERCISE, date);
         try {
             workoutCategory = WorkoutCategory.valueOf(activityStr.toUpperCase());

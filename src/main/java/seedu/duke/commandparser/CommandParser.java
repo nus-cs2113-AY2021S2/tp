@@ -527,7 +527,7 @@ public class CommandParser {
             return true;
         }
     }
-    
+
     private String getCommandWord(String[] inputParts) {
         return inputParts[0];
     }
