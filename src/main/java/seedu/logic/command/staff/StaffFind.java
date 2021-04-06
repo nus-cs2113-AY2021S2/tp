@@ -18,9 +18,7 @@ public class StaffFind extends Command {
 
     @Override
     public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
-        UI.printEmptyLine();
-        StaffUI.staffListHeader();
-        UI.showLine();
+
         staffAggregation.find(this.input.split("/")[1]);
         UI.printEmptyLine();
     }

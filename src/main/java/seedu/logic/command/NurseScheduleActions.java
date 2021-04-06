@@ -128,7 +128,7 @@ public class NurseScheduleActions {
         try {
             Collections.sort(findSchedules);
             System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
-        } catch (Exception e) {}
+        } catch (Exception ignored) {}
     }
 
     /**
