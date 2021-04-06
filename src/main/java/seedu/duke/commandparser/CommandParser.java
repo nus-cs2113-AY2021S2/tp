@@ -442,6 +442,9 @@ public class CommandParser {
             }
             if (!hasDate) {
                 params.put("activity", activity);
+                if (optionalParams.split("\\s+").length > 1) {
+                    return new InvalidCommand(VIEW);
+                }
                 return new ViewCommand(EXERCISE, params);
             }
             String[] activityDate = getDurationAndDate(activity);
@@ -477,6 +480,9 @@ public class CommandParser {
             }
             if (!hasDate) {
                 params.put("food", food);
+                if (optionalParams.split("\\s+").length > 1) {
+                    return new InvalidCommand(VIEW);
+                }
                 return new ViewCommand(DIET, params);
             }
             String[] foodDate = getDurationAndDate(food);
@@ -516,7 +522,7 @@ public class CommandParser {
     }
 
     private boolean isDateInvalid(String dateString) {
-        return !dateString.startsWith("date/") || dateString.length() <= 5;
+        return !dateString.startsWith("date/") || dateString.length() <= 5 || dateString.length() > 15;
     }
 
     private boolean isSleepHoursInvalid(String duration) {
@@ -564,12 +570,11 @@ public class CommandParser {
     }
 
     private String getOptionalParamsForView(String typeContent) {
-        String[] rawInput = typeContent.split("\\s+", 2);
-        if (rawInput.length == 1) {
+        if (typeContent.length() == 3) {
             return "";
-        } else {
-            return rawInput[1].trim();
         }
+        String rawInput = typeContent.substring(3);
+        return rawInput.trim();
     }
 
     private String parseExerciseActivityString(String activityRawInput) {
