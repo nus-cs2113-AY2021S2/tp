@@ -22,28 +22,28 @@ This guide is written for users like you, for reference when there is a particul
         * [Exiting the program : `exit`](#exiting-the-program--exit)
         * [Opening a module : `open`](#opening-a-module--open)
         * [Adding a module : `add`](#adding-a-module--add)
-        * [Deleting a module : `delete`](#deleting-a-module--delete)
-        * [Listing all modules : `modules`](#listing-all-modules--modules)
+        * [Deleting a module : `del`](#deleting-a-module--delete)
+        * [Listing all modules : `mods`](#listing-all-modules--modules)
     * [Module Commands](#module-commands)
         * [Listing all module commands : `help`](#listing-all-module-commands--help)
         * [Closing a module : `close`](#closing-a-module--close)
         * [Showing module information : `info`](#showing-module-information--info)
-        * [Adding a lesson : `add lesson`](#adding-a-lesson--add-lesson)
-        * [Deleting a lesson : `delete lesson`](#deleting-a-lesson--delete-lesson)
-        * [Editing a lesson : `edit lesson`](#editing-a-lesson--edit-lesson)
+        * [Adding a lesson : `add lsn`](#adding-a-lesson--add-lesson)
+        * [Deleting a lesson : `del lsn`](#deleting-a-lesson--delete-lesson)
+        * [Editing a lesson : `edit lsn`](#editing-a-lesson--edit-lesson)
         * [Opening lesson link : `link`](#opening-lesson-link--link)
-        * [Listing all teaching staff : `teacher`](#listing-all-teaching-staff--teacher)
-        * [Listing all lessons : `lessons`](#listing-all-lessons--lessons)
+        * [Listing all teaching staff : `tch`](#listing-all-teaching-staff--teacher)
+        * [Listing all lessons : `lsn`](#listing-all-lessons--lessons)
         * [Adding a task : `add task`](#adding-a-task--add-task)
-        * [Deleting a task : `delete task`](#deleting-a-task--delete-task)
+        * [Deleting a task : `del task`](#deleting-a-task--delete-task)
         * [Editing a task : `edit task`](#editing-a-task--edit-task)
         * [Marking task as done : `mark`](#marking-task-as-done--mark)
         * [Marking task as undone : `unmark`](#marking-task-as-undone--unmark)
-        * [Listing all tasks : `tasks`](#listing-all-tasks--tasks)
-        * [Adding a cheat-sheet : `add cheat-sheet`](#adding-a-cheat-sheet--add-cheat-sheet)
-        * [Deleting a cheat-sheet : `delete cheat-sheet`](#deleting-a-cheat-sheet--delete-cheat-sheet)
-        * [Editing a cheat-sheet : `edit cheat-sheet`](#editing-a-cheat-sheet--edit-cheat-sheet)
-        * [Listing all cheat-sheets : `cheat-sheets`](#listing-all-cheat-sheets--cheat-sheets)
+        * [Listing all tasks : `task`](#listing-all-tasks--tasks)
+        * [Adding a cheat-sheet : `add cs`](#adding-a-cheat-sheet--add-cheat-sheet)
+        * [Deleting a cheat-sheet : `del cs`](#deleting-a-cheat-sheet--delete-cheat-sheet)
+        * [Editing a cheat-sheet : `edit cs`](#editing-a-cheat-sheet--edit-cheat-sheet)
+        * [Listing all cheat-sheets : `cs`](#listing-all-cheat-sheets--cheat-sheets)
     * [Data & Storage](#data--storage)
         * [Automatic Saving](#automatic-saving)
         * [Manual Editing Outside GULIO](#manual-editing-outside-of-gulio)
@@ -524,18 +524,18 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
-### Listing all tasks : _tasks_
+### Listing all tasks : _task_
 
 Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
 
 **Format:**<br>
-`tasks`
+`task`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP increments - 22 Feb 2021 |
+| 1 | task | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP increments - 22 Feb 2021 |
 
 ### Adding a cheat-sheet : _add cs_
 
@@ -590,7 +590,7 @@ Opens the specified cheat-sheet in the text editor.
 
 <!--@@author H-horizon-->
 
-### Listing all cheat-sheets : _cheat-sheets_
+### Listing all cheat-sheets : _cs_
 
 Lists all cheat-sheets for the module.
 

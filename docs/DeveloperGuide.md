@@ -100,13 +100,9 @@ On start up, the user will be on the dashboard layer and has an overview of all 
 
 Currently, GULIO is a basic university module manager intended to provide students with an overview and consolidated workspace for all of their modules, lessons, tasks and cheat-sheets. Going forward, we feel that GULIO has the potential for many more features to be added, some of which are proposed in the [Implementation section](#implementation).
 
-### Purpose
-
-This document describes the architecture and implementation details of the command line application, GULIO.
-
 ### Scope
 
-This describes the software architecture and software design decisions for the implementation of GULIO. The intended audience of this document is the developers, designers, and software testers of GULIO.
+This document describes the software architecture and software design decisions for the implementation of GULIO. The intended audience of this document is the developers, designers, and software testers of GULIO.
 
 &nbsp;
 
