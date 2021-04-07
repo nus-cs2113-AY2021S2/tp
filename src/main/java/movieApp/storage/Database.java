@@ -379,7 +379,7 @@ public class Database {
 
     }
 
-    public static void updateBookings() {
+    public static void updateDatabase() {
         writeToFile("data/showtimeList.txt", ShowtimesDatabase);
         writeToFile("data/userSerialList.txt", users);
         writeToFile("data/cineplexList.txt", CineplexDatabase);

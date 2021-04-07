@@ -53,7 +53,7 @@ public class MovieMenu {
 			}
 		}
 		if(!ms.equals("PREORDER") && !ms.equals("NOWSHOWING")) {
-			System.out.println("The movie is not available for sale. COMING SOON");
+			System.out.println("The movie is not available for sale. Status: " + ms);
 			return; 
 		}
 			
@@ -223,7 +223,7 @@ public class MovieMenu {
 		} else{
 			((Admin)user).addNewBooking(new Booking(ShowtimeDatabase.get(index_st), seatsBooked));
 		}
-		Database.updateBookings();
+		Database.updateDatabase();
 	}
 
 	private static boolean checkForBackKeyword(Scanner sc) {
@@ -244,6 +244,7 @@ public class MovieMenu {
 				" have been successfully added to the movie " + movie.getMovieTitle() + ".");
 		System.out.println("Thank you for your review!");
 		System.out.println();
+		Database.updateDatabase();
 	}
 	
 	public static int ratingVerification() {
@@ -269,7 +270,7 @@ public class MovieMenu {
 		movie.displayMovie();
 	}
 
-	public static void movieAction(Movie movie, User user) {
+	public static Boolean movieAction(Movie movie, User user) {
 		int action;
 		do {
 			action = getAction();
@@ -289,11 +290,11 @@ public class MovieMenu {
 				addReview(movie);
 				break;
 			case 4:
-				return;
+				return true;
 			default:
 				System.out.println("Please input a integer between 1 and 4.\n");
 			}			
 		} while (action != 4);
+		return false;
 	}
-	
 }
