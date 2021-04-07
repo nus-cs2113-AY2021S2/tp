@@ -4,7 +4,7 @@ import seedu.duke.command.CommandRecordType;
 import seedu.duke.common.Messages;
 import seedu.duke.goal.GoalList;
 import seedu.duke.goal.Goal;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 import seedu.duke.goal.timemanager.TimeController;
 import seedu.duke.record.Record;
 import seedu.duke.record.RecordList;
@@ -18,8 +18,8 @@ import static seedu.duke.command.CommandRecordType.EXERCISE;
 import static seedu.duke.command.CommandRecordType.DIET;
 import static seedu.duke.command.CommandRecordType.SLEEP;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
-import static seedu.duke.goal.PeriodType.DAILY;
-import static seedu.duke.goal.PeriodType.WEEKLY;
+import static seedu.duke.goal.IntervalType.DAILY;
+import static seedu.duke.goal.IntervalType.WEEKLY;
 
 /**
  * Manages the fitness of a user through list of records.
@@ -65,15 +65,15 @@ public class FitCenter {
     }
 
     /**
-     * Resets the progress for goals of a given period type (daily/weekly).
+     * Resets the progress for goals of a given interval type (daily/weekly).
      *
-     * @param periodType the period type of the goals (daily/weekly).
+     * @param intervalType the interval type of the goals (daily/weekly).
      */
-    public void resetGoalProgress(PeriodType periodType) {
-        exerciseGoalList.initializeGoalProgress(periodType);
-        dietGoalList.initializeGoalProgress(periodType);
-        sleepGoalList.initializeGoalProgress(periodType);
-        bodyWeightGoalList.initializeGoalProgress(periodType);
+    public void resetGoalProgress(IntervalType intervalType) {
+        exerciseGoalList.initializeGoalProgress(intervalType);
+        dietGoalList.initializeGoalProgress(intervalType);
+        sleepGoalList.initializeGoalProgress(intervalType);
+        bodyWeightGoalList.initializeGoalProgress(intervalType);
     }
 
     /**
@@ -217,34 +217,34 @@ public class FitCenter {
     }
 
     /**
-     * Gets a printable string of the list of goals of a selected type and can be filtered by a optional period type.
+     * Gets a printable string of the list of goals of a selected type and can be filtered by a optional interval type.
      *
      * @param type               the type of the goals.
-     * @param optionalPeriodType an optional period type that filter the list of goals.
+     * @param optionalIntervalType an optional interval type that filter the list of goals.
      * @return a printable string of the list of goals of a selected type and can be filtered
-     *     by a optional period type.
+     *     by a optional interval type.
      */
-    public String getGoalListString(CommandRecordType type, PeriodType optionalPeriodType) {
+    public String getGoalListString(CommandRecordType type, IntervalType optionalIntervalType) {
         GoalList list = getGoalListByType(type);
         if (list != null) {
-            return list.getGoalsToPrint(optionalPeriodType);
+            return list.getGoalsToPrint(optionalIntervalType);
         }
         return Messages.MESSAGE_CANT_CHECK_GOAL;
     }
 
-    private boolean isGoalAchieved(PeriodType periodType) {
+    private boolean isGoalAchieved(IntervalType intervalType) {
         boolean isAchieved = true;
         if (dietGoalList.isNotEmpty()) {
-            isAchieved = dietGoalList.isGoalAchieved(periodType);
+            isAchieved = dietGoalList.isGoalAchieved(intervalType);
         }
         if (exerciseGoalList.isNotEmpty()) {
-            isAchieved = exerciseGoalList.isGoalAchieved(periodType);
+            isAchieved = exerciseGoalList.isGoalAchieved(intervalType);
         }
         if (sleepGoalList.isNotEmpty()) {
-            isAchieved = sleepGoalList.isGoalAchieved(periodType);
+            isAchieved = sleepGoalList.isGoalAchieved(intervalType);
         }
         if (bodyWeightGoalList.isNotEmpty()) {
-            isAchieved = bodyWeightGoalList.isGoalAchieved(periodType);
+            isAchieved = bodyWeightGoalList.isGoalAchieved(intervalType);
         }
         return isAchieved;
     }
@@ -254,9 +254,9 @@ public class FitCenter {
                 || sleepGoalList.isNotEmpty() || bodyWeightGoalList.isNotEmpty();
     }
 
-    private boolean hasGoals(PeriodType periodType) {
-        return dietGoalList.isNotEmpty(periodType) || exerciseGoalList.isNotEmpty(periodType)
-                || sleepGoalList.isNotEmpty(periodType) || bodyWeightGoalList.isNotEmpty(periodType);
+    private boolean hasGoals(IntervalType intervalType) {
+        return dietGoalList.isNotEmpty(intervalType) || exerciseGoalList.isNotEmpty(intervalType)
+                || sleepGoalList.isNotEmpty(intervalType) || bodyWeightGoalList.isNotEmpty(intervalType);
     }
 
     /**
@@ -291,22 +291,22 @@ public class FitCenter {
         return null;
     }
 
-    private void getUnachievedGoalsString(StringBuilder stringBuilder, PeriodType periodType) {
-        if (dietGoalList.isNotEmpty() && !dietGoalList.isGoalAchieved(periodType)) {
+    private void getUnachievedGoalsString(StringBuilder stringBuilder, IntervalType intervalType) {
+        if (dietGoalList.isNotEmpty() && !dietGoalList.isGoalAchieved(intervalType)) {
             stringBuilder.append("Diet Goals\n");
-            stringBuilder.append(getGoalListString(DIET, periodType));
+            stringBuilder.append(getGoalListString(DIET, intervalType));
         }
-        if (exerciseGoalList.isNotEmpty() && !exerciseGoalList.isGoalAchieved(periodType)) {
+        if (exerciseGoalList.isNotEmpty() && !exerciseGoalList.isGoalAchieved(intervalType)) {
             stringBuilder.append("Exercise Goals\n");
-            stringBuilder.append(getGoalListString(EXERCISE, periodType));
+            stringBuilder.append(getGoalListString(EXERCISE, intervalType));
         }
-        if (sleepGoalList.isNotEmpty() && !sleepGoalList.isGoalAchieved(periodType)) {
+        if (sleepGoalList.isNotEmpty() && !sleepGoalList.isGoalAchieved(intervalType)) {
             stringBuilder.append("Sleep Goals\n");
-            stringBuilder.append(getGoalListString(SLEEP, periodType));
+            stringBuilder.append(getGoalListString(SLEEP, intervalType));
         }
-        if (bodyWeightGoalList.isNotEmpty() && !bodyWeightGoalList.isGoalAchieved(periodType)) {
+        if (bodyWeightGoalList.isNotEmpty() && !bodyWeightGoalList.isGoalAchieved(intervalType)) {
             stringBuilder.append("Body Weight Goals\n");
-            stringBuilder.append(getGoalListString(BODY_WEIGHT, periodType));
+            stringBuilder.append(getGoalListString(BODY_WEIGHT, intervalType));
         }
     }
 

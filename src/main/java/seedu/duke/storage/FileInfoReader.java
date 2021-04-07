@@ -15,7 +15,7 @@ import seedu.duke.goal.ExerciseGoal;
 import seedu.duke.goal.BodyWeightGoal;
 import seedu.duke.goal.SleepGoal;
 import seedu.duke.goal.Goal;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,8 +30,8 @@ import static seedu.duke.command.CommandRecordType.EXERCISE;
 import static seedu.duke.command.CommandRecordType.DIET;
 import static seedu.duke.command.CommandRecordType.BODY_WEIGHT;
 import static seedu.duke.command.CommandRecordType.SLEEP;
-import static seedu.duke.goal.PeriodType.WEEKLY;
-import static seedu.duke.goal.PeriodType.DAILY;
+import static seedu.duke.goal.IntervalType.WEEKLY;
+import static seedu.duke.goal.IntervalType.DAILY;
 
 /**
  * Reads information from text file and converts to usable objects.
@@ -148,23 +148,23 @@ public class FileInfoReader {
             Goal goal;
             String[] params = getGoalParams(content);
             LocalDate setDay = getDate(params[0]);
-            PeriodType periodType = getPeriodType(params[1]);
+            IntervalType intervalType = getIntervalType(params[1]);
             double target = Double.parseDouble(params[2]);
             switch (typeContent[0]) {
             case "E":
-                goal = new ExerciseGoal(periodType, target, setDay);
+                goal = new ExerciseGoal(intervalType, target, setDay);
                 fitCenter.addGoalToList(EXERCISE, goal);
                 break;
             case "D":
-                goal = new DietGoal(periodType, target, setDay);
+                goal = new DietGoal(intervalType, target, setDay);
                 fitCenter.addGoalToList(DIET, goal);
                 break;
             case "W":
-                goal = new BodyWeightGoal(periodType, target, setDay);
+                goal = new BodyWeightGoal(intervalType, target, setDay);
                 fitCenter.addGoalToList(BODY_WEIGHT, goal);
                 break;
             case "S":
-                goal = new SleepGoal(periodType, target, setDay);
+                goal = new SleepGoal(intervalType, target, setDay);
                 fitCenter.addGoalToList(SLEEP, goal);
                 break;
             default:
@@ -223,14 +223,14 @@ public class FileInfoReader {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    private PeriodType getPeriodType(String type) throws TypeException {
+    private IntervalType getIntervalType(String type) throws TypeException {
         switch (type) {
         case "DAILY":
             return DAILY;
         case "WEEKLY":
             return WEEKLY;
         default:
-            throw new TypeException("period type");
+            throw new TypeException("interval type");
         }
     }
 }

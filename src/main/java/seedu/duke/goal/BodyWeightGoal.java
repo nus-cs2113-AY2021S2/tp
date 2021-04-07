@@ -11,11 +11,11 @@ public class BodyWeightGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType       the period type of the goal which can be daily or weekly.
+     * @param intervalType       the interval type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      */
-    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight) throws NumberFormatException {
-        super(RecordType.BODYWEIGHT, periodType, targetBodyWeight);
+    public BodyWeightGoal(IntervalType intervalType, double targetBodyWeight) throws NumberFormatException {
+        super(RecordType.BODYWEIGHT, intervalType, targetBodyWeight);
         if (targetBodyWeight < 40 || targetBodyWeight > 400) {
             throw new NumberFormatException("Target weight invalid");
         }
@@ -27,12 +27,12 @@ public class BodyWeightGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType       the period type of the goal which can be daily or weekly.
+     * @param intervalType       the interval type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      * @param daySet           the date when the goal is set.
      */
-    public BodyWeightGoal(PeriodType periodType, double targetBodyWeight, LocalDate daySet) {
-        super(RecordType.BODYWEIGHT, periodType, targetBodyWeight, daySet);
+    public BodyWeightGoal(IntervalType intervalType, double targetBodyWeight, LocalDate daySet) {
+        super(RecordType.BODYWEIGHT, intervalType, targetBodyWeight, daySet);
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
@@ -57,12 +57,12 @@ public class BodyWeightGoal extends Goal {
     public String getGoalSummary() {
         if (progress == -1) {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
-                    + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                    + "Goal Type: " + getIntervalType().toString() + " " + getType().toString().toLowerCase() + "\n"
                     + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                     + "Progress: " + MESSAGE_NO_BODY_WEIGHT_PROGRESS;
         } else {
             return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
-                    + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                    + "Goal Type: " + getIntervalType().toString() + " " + getType().toString().toLowerCase() + "\n"
                     + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                     + "Progress: " + getProgress() + getProgressUnit();
         }
@@ -72,12 +72,12 @@ public class BodyWeightGoal extends Goal {
     public String getGoalData() {
         if (progress == -1) {
             return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
-                    + getPeriodType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
+                    + getIntervalType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + MESSAGE_NO_BODY_WEIGHT_PROGRESS + getAchieved() + "\n";
         } else {
             return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
-                    + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                    + getIntervalType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                     + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
         }
@@ -85,7 +85,7 @@ public class BodyWeightGoal extends Goal {
 
     @Override
     public String getGoalDataToStore() {
-        return "W" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+        return "W" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + intervalType + SEPARATOR + target;
     }
 
     private int getLengthOfTarget() {

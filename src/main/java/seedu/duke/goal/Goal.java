@@ -14,10 +14,10 @@ public abstract class Goal {
     protected static final int SPACES_FOR_TARGET = 16;
     protected LocalDate daySet;
     protected RecordType type;
-    protected PeriodType periodType;
+    protected IntervalType intervalType;
     protected double target;
     protected double progress;
-    protected int lengthOfPeriodType;
+    protected int lengthOfIntervalType;
     protected int lengthOfTarget;
     protected String separatorBetweenTypeAndTarget;
     protected String separatorBetweenTargetAndProgress;
@@ -25,47 +25,47 @@ public abstract class Goal {
     protected static final String SEPARATOR_TAB = "    ";
 
     /**
-     * Initializes the instance with goal type and period type.
+     * Initializes the instance with goal type and interval type.
      *
      * @param type       the type of the goal which corresponds to the type of health records.
-     * @param periodType the period type of the goal which can be daily or weekly.
+     * @param intervalType the interval type of the goal which can be daily or weekly.
      */
-    public Goal(RecordType type, PeriodType periodType) {
+    public Goal(RecordType type, IntervalType intervalType) {
         this.type = type;
-        this.periodType = periodType;
+        this.intervalType = intervalType;
         daySet = LocalDate.now();
-        lengthOfPeriodType = getLengthOfPeriodType();
+        lengthOfIntervalType = getLengthOfIntervalType();
     }
 
     /**
-     * Initializes the instance with goal type and period type and target value.
+     * Initializes the instance with goal type and interval type and target value.
      *
      * @param type       the type of the goal which corresponds to the type of health records.
-     * @param periodType the period type of the goal which can be daily or weekly.
+     * @param intervalType the interval type of the goal which can be daily or weekly.
      * @param target     the target value of the goal in double.
      */
-    public Goal(RecordType type, PeriodType periodType, double target) {
+    public Goal(RecordType type, IntervalType intervalType, double target) {
         this.type = type;
-        this.periodType = periodType;
+        this.intervalType = intervalType;
         daySet = LocalDate.now();
         this.target = target;
-        lengthOfPeriodType = getLengthOfPeriodType();
+        lengthOfIntervalType = getLengthOfIntervalType();
     }
 
     /**
-     * Initializes the instance with goal type and period type and target value and date set.
+     * Initializes the instance with goal type and interval type and target value and date set.
      *
      * @param type       the type of the goal which corresponds to the type of health records.
-     * @param periodType the period type of the goal which can be daily or weekly.
+     * @param intervalType the interval type of the goal which can be daily or weekly.
      * @param target     the target value of the goal in double.
      * @param date       the date when the goal is set in LocalDate
      */
-    public Goal(RecordType type, PeriodType periodType, double target, LocalDate date) {
+    public Goal(RecordType type, IntervalType intervalType, double target, LocalDate date) {
         this.type = type;
-        this.periodType = periodType;
+        this.intervalType = intervalType;
         daySet = date;
         this.target = target;
-        lengthOfPeriodType = getLengthOfPeriodType();
+        lengthOfIntervalType = getLengthOfIntervalType();
     }
 
     /**
@@ -121,12 +121,12 @@ public abstract class Goal {
     }
 
     /**
-     * Gets the period type of a goal.
+     * Gets the interval type of a goal.
      *
-     * @return the period type of the goal which can be daily or weekly.
+     * @return the interval type of the goal which can be daily or weekly.
      */
-    public PeriodType getPeriodType() {
-        return periodType;
+    public IntervalType getIntervalType() {
+        return intervalType;
     }
 
     /**
@@ -177,7 +177,7 @@ public abstract class Goal {
 
     protected void setSeparatorBetweenTypeAndTarget() {
         separatorBetweenTypeAndTarget = "";
-        for (int i = 0; i < SPACES_FOR_TYPE - lengthOfPeriodType; i++) {
+        for (int i = 0; i < SPACES_FOR_TYPE - lengthOfIntervalType; i++) {
             separatorBetweenTypeAndTarget += " ";
         }
     }
@@ -189,8 +189,8 @@ public abstract class Goal {
         }
     }
 
-    private int getLengthOfPeriodType() {
-        return periodType.toString().length();
+    private int getLengthOfIntervalType() {
+        return intervalType.toString().length();
     }
 
     protected void setSeparator() {

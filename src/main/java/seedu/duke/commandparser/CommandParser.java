@@ -14,7 +14,7 @@ import seedu.duke.command.ExitCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -150,11 +150,11 @@ public class CommandParser {
                 return new InvalidCommand(SET);
             }
 
-            String rawPeriodType = rawParams[1];
-            if (!rawPeriodType.startsWith("p/")) {
+            String rawIntervalType = rawParams[1];
+            if (!rawIntervalType.startsWith("p/")) {
                 return new InvalidCommand(SET);
             }
-            rawPeriodType = rawPeriodType.trim().substring(2);
+            rawIntervalType = rawIntervalType.trim().substring(2);
             String targetStr = rawParams[2];
             if (!targetStr.startsWith("target/")) {
                 return new InvalidCommand(SET);
@@ -163,11 +163,11 @@ public class CommandParser {
 
             double target = Double.parseDouble(targetStr);
 
-            PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
-            if (periodType == PeriodType.INVALID) {
+            IntervalType intervalType = IntervalType.parseIntervalType(rawIntervalType);
+            if (intervalType == IntervalType.INVALID) {
                 return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
-            params.put("periodType", periodType.toString());
+            params.put("intervalType", intervalType.toString());
             params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
@@ -201,18 +201,18 @@ public class CommandParser {
             }
 
             if (rawParams.length == 2) {
-                String rawPeriodType = rawParams[1];
-                if (!rawPeriodType.contains("p/")) {
+                String rawIntervalType = rawParams[1];
+                if (!rawIntervalType.contains("p/")) {
                     return new InvalidCommand(CHECK);
                 }
-                rawPeriodType = rawPeriodType.trim().substring(2);
-                PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
-                if (periodType == PeriodType.INVALID) {
+                rawIntervalType = rawIntervalType.trim().substring(2);
+                IntervalType intervalType = IntervalType.parseIntervalType(rawIntervalType);
+                if (intervalType == IntervalType.INVALID) {
                     return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
                 }
-                params.put("periodType", periodType.toString());
+                params.put("intervalType", intervalType.toString());
             } else {
-                params.put("periodType", null);
+                params.put("intervalType", null);
             }
             return new CheckCommand(recordType, params);
         } catch (Exception e) {
