@@ -10,8 +10,8 @@ import java.io.IOException;
 public class StaffDelete extends Command {
     private String input;
 
-    public StaffDelete (String line) {
-        this.input = line;
+    public StaffDelete (String input) {
+        this.input = input;
     }
 
     @Override

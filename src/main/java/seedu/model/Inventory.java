@@ -13,12 +13,22 @@ public class Inventory {
         this.quantity = quantity;
 
     }
+    public void addQuantity(int input) {
+        this.quantity += input;
+    }
+
+    public void removeQuantity(int input) {
+        this.quantity -= input;
+    }
 
     public String getDrugName() {
         return this.name;
     }
+    public Double getDoublePrice() {
+        return this.price;
+    }
 
-    public String getPrice() {
+    public String getStringPrice() {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(price);
     }

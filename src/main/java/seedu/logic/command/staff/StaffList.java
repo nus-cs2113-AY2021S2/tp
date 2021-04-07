@@ -6,26 +6,16 @@ import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
 
-import java.util.Arrays;
-
 public class StaffList extends Command {
-    private String input;
+    private String[] input;
 
-    public StaffList (String line) {
-        this.input = line;
+    public StaffList (String[] array) {
+        this.input = array;
     }
 
     public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
         UI.printEmptyLine();
-        if (StaffAggregation.getNumStaff() == 0) {
-            StaffUI.emptyListOutput();
-            UI.printEmptyLine();
-            return;
-        }
-        StaffUI.staffListHeader();
-        UI.showLine();
-        String[] string = Arrays.copyOfRange(this.input.split("/"), 1, 2);
-        staffAggregation.list(string);
+        staffAggregation.list(this.input);
         UI.printEmptyLine();
     }
 

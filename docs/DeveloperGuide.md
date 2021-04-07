@@ -2,6 +2,7 @@
 ===================
 
 ## Content Page
+
 1. [Introduction](#1-introduction)
 	1. [What is HealthVault?](#11-what-is-healthvault)
 	2. [About the Developer Guide](#12-about-the-developer-guide)
@@ -15,33 +16,51 @@
     5. [Storage component](#45-storage-component)
     6. [Common classes](#46-common-classes)
 5. [Implementation](#5-implementation)
-    1. [Staff](#51-staff)
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#511-add)        , [Delete](#512-delete)        , [List](#513-list)        , [Find](#514-find))
+    1. [Staff](#51-staff) 
+    	1. [Staff Menu](#511-staff-menu)
+    	2. [Add](#512-add)
+    	3. [Delete](#513-delete)
+    	4. [List](#514-list)
+    	5. [Find](#515-find)
     2. [Patient](#52-patient)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#521-add)        , [Delete](#522-delete)        , [List](#523-list)        , [Find](#524-find))
+    	1. [Patient Menu](#521-patient-menu)
+    	2. [Add](#522-add)
+    	3. [Delete](#523-delete)
+    	4. [List](#524-list)
+    	5. [Find](#525-find)
     3. [Doctor Appointment](#53-doctor-appointment)
-         &nbsp;&nbsp;&nbsp;&nbsp;([Add](#531-add)        , [Delete](#532-delete)        , [List](#533-list)        , [Find](#534-find))
+    	1. [Doctor Appointment Menu](#531-doctor-appointment-menu)
+    	2. [Add](#532-add)
+    	3. [Delete](#533-delete)
+    	4. [List](#534-list)
+    	5. [Find](#535-find)
     4. [Nurse Schedule](#54-nurse-schedule)
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#541-add)        , [Delete](#542-delete)        , [List](#543-list)        , [Find](#544-find))
+    	1. [Nurse Schedule Menu](#541-nurse-schedule-menu)
+    	2. [Add](#542-add)
+    	3. [Delete](#543-delete)
+    	4. [List](#544-list)
+    	5. [Find](#545-find)
     5. [Inventory](#55-inventory)
-        1. [Add](#551-add)
-        2. [Delete](#552-delete)
-        3. [List](#553-list)
-        4. [Find](#554-find)
+        1. [Inventory Menu](#551-inventory-menu)
+    	2. [Add](#552-add)
+    	3. [Delete](#553-delete)
+    	4. [List](#554-list)
+    	5. [Find](#555-find)
 
 [Appendix A: Product Scope](#a-appendix-a-product-scope)
 
 [Appendix B: User Stories](#b-appendix-b-user-stories)
 
-[Appendix C: Use Cases](#c-use-cases)
+[Appendix C: Use Cases](#c-appendix-c-use-cases)
 
-[Appendix D: Non Functional Requirements](#d-non-functional-requirements)
+[Appendix D: Non Functional Requirements](#d-appendix-d-non-functional-requirements)
 
-[Appendix E: Glossary](#e-glossary)
+[Appendix E: Glossary](#e-appendix-e-glossary)
 
-[Appendix F: Product Survey](#f-product-survey)
+[Appendix F: Product Survey](#f-appendix-f-product-survey)
 
-[Appendix G: Instructions for Manual Testing](#g-instructions-for-manual-testing)
+[Appendix G: Instructions for Manual Testing](#g-appendix-g-instructions-for-manual-testing)
+
 
 ## 1. Introduction
 ### 1.1 What is HealthVault?
@@ -54,7 +73,13 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 The purpose of this developer guide is to describe the architecture and software design decisions for our application. This guide will cover our program architecture, the logical view of major components and how our functions work.
 
 ### 1.2 About the Developer Guide
+
+<br>
+
 ## 2. How to use the guide
+
+<br>
+
 ## 3. Getting Started
 
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Setting up**
@@ -77,6 +102,10 @@ There are 2 prerequisites for this project
 
 4.  Run the tests to ensure they all pass.
 
+
+<br>
+
+
 ## 4. Design
 
 ###  4.1 Architecture
@@ -93,45 +122,261 @@ There are 2 prerequisites for this project
 ### 4.5 Storage component
 ### 4.6 Common classes
 
+<br>
+
 ## 5. Implementation
+
+
 ###  5.1 Staff
-#### 5.1.1 Add
-#### 5.1.2 Delete
-#### 5.1.3 List
-#### 5.1.4 Find
+
+### 5.1.1 Staff Menu
+
+Similar to the Start Menu, the Staff Menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Staff Menu, the following steps will occur.
+
+**Launching Staff Menu**
+
+1. `ToStaffInstance.execute()` will create and call `StaffInstance.run()`
+2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+3. `StaffInstance.run()` will then repeatedly call `commandHandler()`.
+
+**Getting User Input**
+
+4. `StaffInstance.run()` will repeatedly request for user input and call `StaffParser.commandHandler()`.
+5. `commandHandler()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+6. Based on the recognised command by the system, the relevant commands will be carried out.
+
+<br>
+
+### 5.1.2 Add
+
+**Implementation:**
+
+The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAdd Command object is created. StaffAdd command object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
+
+Invalid Input includes:
+
+> 
+	- Invalid Staff ID format
+	- Duplicated Staff ID
+	- Age that < 18 or > 150
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
+
+`add/[Staff ID]/[name]/[age]/[specialisation]`
+
+<img src="images/SD Staff Add.png">
+
+**Check validity of the data input**
+
+1. If the command recognised is the add command, `commandHandler()` calls `staffChecker.checkValidDataForAdd()` to ensure data entered is valid
+2. `checkValidDataForAdd()` will call the following function in sequence:
+
+	- checkStaffID()	
+	- checkDuplicateStaffID()
+	- checkStaffAge()
+	- checkBlankInput2()
+	- invalidCharactersStaffChecker()
+
+**Creating StaffAdd command**
+
+2. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
+3. The StaffAdd Command object is returned to `StaffInstance.run()`
+
+**Creating Staff Object with User Input**
+
+4. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+
+5. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+
+6. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+
+**Saving Staff Objects into .txt file**
+
+7. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+9. Data is written and saved.
+10. Control is then returned to StaffInstance.
+
+<br>
+
+### 5.1.3 Delete
+
+**Implementation:**
+
+The function Delete takes in 1 compulsory field (Staff ID) to identity and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDelete Command object is created. StaffDelete command object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Invalid Staff ID format
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
+
+`delete/Staff ID`
+
+
+**Check validity of the data input**
+
+1. If the command recognised is the delete command, `commandHandler()` calls `staffChecker.checkDeleteCommand()` to ensure that there are valid and sufficient inputs
+
+**Creating StaffDelete command**
+
+2. If the input data is valid, a StaffDelete Command object is created 
+3. The StaffAdd Command object is returned to `StaffInstance.run()`
+
+**Deleting Staff Object using User Input**
+
+4. StaffInstance then executes the StaffDelete Command object to begin the process of deleting the referenced Staff object
+5. `StaffDelete.execute()` will call the function `staffAggregation.delete()`
+6. `staffAggregation.delete()` will iterate through the objects in ArrayList<Staff> StaffList. The Staff Object referenced by the input given by the user will be deleted.
+
+**Saving changed Staff Objects into .txt file**
+
+7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
+
+8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+
+9. Data is written and saved.
+
+10. Control is then returned to StaffInstance.
+
+<br>
+
+### 5.1.4 List
+
+**Implementation:**
+
+The function list takes in 1 option field (nurses/doctors) to identity and list the category of Staff Objects required from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffList Command object is created. StaffList command object will be executed to iterate through the aggregation of Staff Objects. Staff Objects will then be displayed based on the user given input.
+
+Invalid Input includes:
+
+> 
+	- Any input apart from Blank Input (i.e Empty input) OR "doctors" OR "nurses"
+
+`list/<doctors/nurses>`
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `commandHandler()` calls `staffChecker.checkListCommand()` to check and verify the validity of inputs accompanied by the list command, if any.
+
+**Creating StaffList command**
+
+2. If the input data is valid, a StaffList Command object is created 
+3. The StaffList Command object is returned to `StaffInstance.run()` 
+
+**Viewing Staff Objects**
+
+4. StaffInstance then executes the StaffList Command object to begin the process of displaying all Staff objects.
+5. `StaffList.execute()` will call the function `staffAggregation.list()`
+6. `staffAggregation.list()` will iterate through the objects in ArrayList<Staff> StaffList. 
+7. Depending on the input given by the user, the relevant Staff Objects will be displayed.
+8. Control is then returned to StaffInstance.
+
+<br>
+
+### 5.1.5 Find
+
+**Implementation:**
+
+The function Add takes in 1 compulsory field (keyword) to find the relvant Staff Objects within the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Blank input (i.e Empty inputs)
+
+`find/[keyword]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the find command, `commandHandler()` calls `MainChecker.checkNumInput()`. `MainChecker.checkNumInput()` does a simple check to ensure there is an accompanying input given by the user together with the find command.
+
+**Creating StaffFind command**
+
+2. If the input data exist, a StaffFind Command object is created 
+3. The StaffFind Command object is returned to `StaffInstance.run()` 
+
+**Finding relevant Staff Objects**
+
+4. StaffInstance then executes the StaffList Command object to begin the process of finding and displaying relevant Staff objects.
+5. `StaffFind.execute()` will call the function `staffAggregation.find()`
+6. `staffAggregation.find()` will iterate through the objects in ArrayList<Staff> StaffList. 
+7. `staffAggregation.find()` will utilise a search function in StaffAggregation to find any Staff Objects that matches the given keyword by the user. 
+8. The relevant Staff Objects are then displayed.
+9. Control is then returned to StaffInstance.
+
+<br>
 
 ###  5.2 Patient
-#### 5.2.1 Add
-#### 5.2.2 Delete
-#### 5.2.3 List
-#### 5.2.4 Find
+
+### 5.2.1 Staff Menu
+### 5.2.2 Add
+### 5.2.3 Delete
+### 5.2.4 List
+### 5.2.5 Find
+
+<br>
 
 ###  5.3 Doctor Appointment
-#### 5.3.1 Add
-#### 5.3.2 Delete
-#### 5.3.3 List
-#### 5.3.4 Find
+
+### 5.3.1 Doctor Appointment Menu
+### 5.3.2 Add
+### 5.3.3 Delete
+### 5.3.4 List
+### 5.3.5 Find
+
+<br>
 
 ###  5.4 Nurse Schedule
-#### 5.4.1 Add
-#### 5.4.2 Delete
-#### 5.4.3 List
-#### 5.4.4 Find
+
+### 5.4.1 Nurse Schedule Menu
+### 5.4.2 Add
+### 5.4.3 Delete
+### 5.4.4 List
+### 5.4.5 Find
+
+<br>
 
 ###  5.5 Inventory
-#### 5.5.1 Add
-#### 5.5.2 Delete
-#### 5.5.3 List
-#### 5.5.4 Find
+
+### 5.5.1 Inventory Menu
+### 5.5.2 Add
+### 5.5.3 Delete
+### 5.5.4 List
+### 5.5.5 Find
+
+<br>
 
 
 ## a. Appendix A: Product Scope
+
+<br>
+
 ## b. Appendix B: User Stories
+
+<br>
+
 ## c. Appendix C: Use Cases
+
+<br>
+
 ## d. Appendix D: Non Functional Requirements
+
+<br>
+
 ## e. Appendix E: Glossary
+
+<br>
+
 ## f. Appendix F: Product Survey
+
+<br>
+
 ## g. Appendix G: Instructions for Manual Testing
+
+<br>
 
 
 
@@ -319,142 +564,6 @@ patient details when they make an appointment with the doctor.
 9.  The selected instance handler will then have its own menu that may
     > handle any additional user commands that are inputted to access
     > features within that particular instance.
-
-
-### **Staff-related Features**
-
-**Adding a new Staff**
-
-**Implementation**
-
-When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
-
-`add/[Staff ID]/[name]/[age]/[specialisation]`
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.  User inputs add command which is processed by the `Staff.Parser.run()`
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  `Parser.run()` calls `StaffUI.inputToCreateStaff()` to receive user input for Staff object details.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  `StaffUI.inputToCreateStaff()` calls `UI.abortEnabledScanInput()` to receive user input for each detail of a Staff Object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Creating Staff Object with User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  As the user inputs the Staff ID, `StaffUI.inputToCreateStaff()` calls `Parser.checkID()` to ensure that the Staff ID input is 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; valid.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.  A Staff Object is created and stored in an existing ArrayList<Staff>, StaffList. which contains all the Staff Objects.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Saving Staff Objects into .txt file**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  The Parser then calls `StaffStorage.writeToFile()` which starts the process of writing the details of all existing 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Staff Objects, within the StaffList into a specified .txt file.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.  `StaffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.  Data is written and saved.
-
-**Deleting a Staff**
-
-**Implementation**
-
-When the user attempts to delete a staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
-
-`delete/[Staff ID]`
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.  User inputs `delete/[Staff ID]` command
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.  `Parser.run()` calls `checkEmptyInput()` to ensure that input is not empty
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.  `Parser.run()` calls `Parser.checkID()` to ensure that the Staff ID input  is valid.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Deleting Staff Object with specified Staff ID**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.  `Parser.run()` calls `StaffList.delete()` to begin the deletion of the Staff with Staff ID specified.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.  `StaffList.delete()` iterates through the ArrayList\<Staff\>, list, to find the specified Staff Object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.  If the specified Staff Object is found, it is deleted.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Prompting result to user**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.  If a deletion occurs, `StaffList.delete()` calls `StaffUI.staffFiredOutput()` to  output a feedback message.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.  If no deletion occurs, `StaffUI.staffDoesNotExist()` is called instead for a different feedback message.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Saving Staff Objects into .txt file**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9.  The Parser then calls StaffStorage.writeToFile() which starts the process of writing the details of all existing Staff Objects, 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; within the StaffList into a specified .txt file.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10. StaffStorage.writeToFile() then calls createFile() which ensures that the specified .txt file exists.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;11. Data is written and saved.
-
-**Viewing all Staff**
-
-**Implementation**
-
-When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
-
-`list/<doctors/nurses>`
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  User inputs list command
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.  `Parser.run()` calls `Parser.checkListCommand()` to ensure that input is valid (Otherwise, WrongListInputException is 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; called).
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.  Parser.run() calls `StaffUI.staffListHeader()` to format the output for readability.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Displaying Staff Object details**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.  `Parser.run()` calls StaffList.list() to begin the process of displaying details of Staff Objects.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.  Based on the optional input, `StaffList.list()` will iterate through the relevant Staff Objects and call 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; `StaffList.display()` for each Object
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.  `StaffList.display()` will call `UI.prettyPrint()` to format the output to the console screen.
-
-
-**Finding a Staff**
-
-[Implementation:]{.ul}
-
-When the user attempts to find a staff using a certain keyword, the
-StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the
-following sequence of actions is called to prompt execution result to
-user:
-
-find \[keyword\]
-
-> Getting User Input
-
-1.  User inputs find command with a keyword input.
-
-2.  Parser.run() calls checkEmptyInput() to ensure that keyword input is
-    > not empty.
-
-3.  Parser.run() calls StaffUI.staffListHeader() to format the output
-    > for readability.
-
-> Finding Staff Objects that matches keyword
-
-4.  Parser.run() calls StaffList.find() to begin the process of finding
-    > relevant Staff Objects.
-
-5.  StaffList.find() will iterate through all Staff Objects and call
-    > StaffList.search() for each Object
-
-6.  StaffList.search() indicates which Staff Object has details that
-    > matches the relevant keyword input
-
-7.  For each relevant Staff Object, StaffList.display() will be called
-    > to display the Staff Object details to user
 
 **Return to main menu**
 

@@ -46,7 +46,7 @@ public class StartMenuParser {
                 throw new UnrecognizedCommandException();
             }
         } catch (UnrecognizedCommandException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
         return c;
     }
