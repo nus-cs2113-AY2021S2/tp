@@ -5,7 +5,6 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
-import seedu.exceptions.inventory.InvalidQuantityException;
 import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.logic.command.InventoryActions;
@@ -65,8 +64,6 @@ public class InventoryInstance {
             } catch (IllegalCharacterException | InsufficientInputException |
                     ExcessInputException | NoInputException e) {
                 System.out.println(e.getMessage());
-            } catch (InvalidQuantityException e) {
-                e.getError();
             } catch (HealthVaultException e) {
                 e.getError("");
             }

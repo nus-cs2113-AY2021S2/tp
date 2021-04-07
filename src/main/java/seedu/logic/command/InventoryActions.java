@@ -1,6 +1,5 @@
 package seedu.logic.command;
 
-import seedu.exceptions.inventory.InvalidQuantityException;
 import seedu.model.Inventory;
 import seedu.ui.InventoryUI;
 import java.util.ArrayList;
@@ -18,46 +17,36 @@ public class InventoryActions {
     }
 
     public void addDrugs(String[] argArr) {
-        for(int i=0; i<list.size(); i++) {
-            Inventory inventoryTemp = list.get(i);
-            String tempName = inventoryTemp.getDrugName();
-            Double tempPrice = inventoryTemp.getDoublePrice();
-            if(tempName.equals(argArr[0]) && tempPrice.equals(Double.parseDouble(argArr[1]))) {
-                inventoryTemp.addQuantity(Integer.parseInt(argArr[2]));
-                return;
-            }
-        }
         Inventory newInventory = new Inventory(argArr[0], Double.parseDouble(argArr[1]), Integer.parseInt(argArr[2]));
         list.add(newInventory);
     }
 
-    public void deleteDrugs(String[] argArr) throws InvalidQuantityException {
+    public void deleteDrugs(String inputName) {
+        String drugName = null;
         for (int i = 0; i< list.size(); i++) {
-            String name = argArr[1];
-            String quantityDelete = argArr[2];
             Inventory inventoryTemp = list.get(i);
             String tempName = inventoryTemp.getDrugName();
-            int tempQuantity = inventoryTemp.getQuantity();
-            if (tempName.equals(name) && tempQuantity>=Integer.parseInt(quantityDelete)) {
-                inventoryTemp.removeQuantity(Integer.parseInt(quantityDelete));
-                return;
-            } else if (tempName.equals(name) && tempQuantity<Integer.parseInt(quantityDelete)) {
-                //inventoryTemp.removeQuantity(tempQuantity);
-                throw new InvalidQuantityException();
+            if (tempName.equals(inputName)) {
+                list.remove(inventoryTemp);
+                drugName = tempName;
+                InventoryUI.deleteDrugMessage(drugName);
             }
         }
     }
-    
+
     public void listDrugs() {
         int numberOfDrugs = list.size();
         if (numberOfDrugs != 0) {
+            //ui.notEmptyInventoryListMessage();
             System.out.print(System.lineSeparator());
             ui.inventoryListHeader();
             for (int i = 0; i < 60; i++) {
                 System.out.print("-");
             }
             System.out.println("\n");
-
+            /*String newString = "-";
+            System.out.println(newString.repeat(60));
+            */
             for (Inventory inventory : list) {
                 display(inventory);
             }
@@ -79,7 +68,7 @@ public class InventoryActions {
     public static void display(Inventory inventory) {
         System.out.println(
                 prettyPrint(inventory.getDrugName(), 15) + " | "
-                        + prettyPrint(inventory.getStringPrice(), 10) + " | "
+                        + prettyPrint(inventory.getPrice(), 10) + " | "
                         + prettyPrint(Integer.toString(inventory.getQuantity()), 5));
     }
 

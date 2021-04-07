@@ -36,7 +36,7 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens[2], "quantity");
         checkPrice(stringTokens[1]);
         checkQuantity(stringTokens[2]);
-        checkDuplicate(stringTokens[0], Double.parseDouble(stringTokens[1]));
+        checkDuplicate(stringTokens[0]);
     }
 
     public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException, seedu.exceptions.patient.IllegalCharacterException {
@@ -44,7 +44,7 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens[3], "quantity");
         checkPrice(stringTokens[2]);
         checkQuantity(stringTokens[3]);
-        checkDuplicate(stringTokens[1], Double.parseDouble(stringTokens[2]));
+        checkDuplicate(stringTokens[1]);
     }
 
     public void checkDelete() throws IllegalCharacterException, NonExistentDrugException {
@@ -66,11 +66,10 @@ public class InventoryChecker extends MainChecker {
         }
     }
 
-    public static void checkDuplicate(String inputString, Double price) throws DuplicateDrugException {
+    public static void checkDuplicate(String inputString) throws DuplicateDrugException {
         for (Inventory inventory : InventoryActions.list) {
             String drugName = inventory.getDrugName();
-            Double drugPrice = inventory.getDoublePrice();
-            if (drugName.equals(inputString) && !drugPrice.equals(price)) {
+            if (drugName.equals(inputString)) {
                 throw new DuplicateDrugException();
             }
         }

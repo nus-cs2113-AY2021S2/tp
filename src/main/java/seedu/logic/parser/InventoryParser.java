@@ -25,6 +25,7 @@ public class InventoryParser {
         MainChecker.checkNumInput(fullCommand, 4, 1);
 
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
+
         Command c = null;
         checker = new InventoryChecker(inventories, stringTokens, numberOfTokens);
         switch (command) {
@@ -42,11 +43,11 @@ public class InventoryParser {
             c = new InventoryAdd(addFormat);
             break;
         case "delete":
-            numberOfInputs = 3;
+            numberOfInputs = 2;
             MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
             MainChecker.checkBlankInput(fullCommand);
             checker.checkDelete();
-            c = new InventoryDelete(stringTokens);
+            c = new InventoryDelete(stringTokens[1]);
             break;
         case "help":
             numberOfInputs = 1;
