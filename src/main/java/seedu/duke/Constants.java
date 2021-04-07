@@ -107,13 +107,13 @@ public class Constants {
             "Deletes the Patient with the specified ID from the list!";
     public static final String APPOINTMENTS_DELETE_DESCRIPTION = "Deletes the Appointment with the specified ID from the list!";
     public static final String SCHEDULES_DELETE_DESCRIPTION = "Deletes the Schedule with the specified ID from the list!";
-    public static final String INVENTORY_DELETE_DESCRIPTION = "Deletes the Inventory item from the list!";
+    public static final String INVENTORY_DELETE_DESCRIPTION = "Decreases the quantity of an Inventory Item from the list!";
     // DELETE FUNCTION FORMATTING
     public static final String STAFF_DELETE_FORMAT = "delete/[Staff ID]";
     public static final String PATIENT_DELETE_FORMAT = "delete/[Patient ID]";
     public static final String APPOINTMENTS_DELETE_FORMAT = "delete/[DoctorID/Appointment ID]";
     public static final String SCHEDULES_DELETE_FORMAT = "delete/[Nurse ID]/[Date (DDMMYYYY)]";
-    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]";
+    public static final String INVENTORY_DELETE_FORMAT = "delete/[Drug Name]/[Quantity]";
 
 
     // FIND FUNCTION DESCRIPTION
