@@ -1,6 +1,6 @@
 package seedu.ui;
 
-import seedu.model.DoctorAppointment;
+import seedu.model.doctorappointment.DoctorAppointment;
 
 import java.text.ParseException;
 

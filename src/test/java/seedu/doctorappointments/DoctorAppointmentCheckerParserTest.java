@@ -1,17 +1,15 @@
 package seedu.doctorappointments;
 
 import org.junit.jupiter.api.Test;
-import seedu.logic.command.AppointmentActions;
-import seedu.logic.command.Command;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
 import seedu.logic.parser.DoctorAppointmentParser;
-import seedu.ui.DoctorAppointmentUI;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DoctorAppointmentCheckerParserTest {
     private DoctorAppointmentParser parser;
-    private AppointmentActions actions;
+    private AppointmentList actions;
 
     @Test
     public void ValidGender(){

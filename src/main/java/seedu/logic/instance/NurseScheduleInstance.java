@@ -4,7 +4,7 @@ import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.logic.command.Command;
-import seedu.logic.command.NurseScheduleActions;
+import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class NurseScheduleInstance {
 
     private NurseSchedulesParser parser;
-    private NurseScheduleActions nurseSchedules;
+    private NurseScheduleList nurseSchedules;
     private NurseScheduleStorage storage;
     private NurseScheduleUI ui;
     public static Logger logger;
@@ -38,7 +38,7 @@ public class NurseScheduleInstance {
     /** Reads the user command and executes it, until the user issues the exit command. */
     public void runCommandLoopUntilExit() {
         try {
-            nurseSchedules = new NurseScheduleActions(NurseScheduleStorage.load());
+            nurseSchedules = new NurseScheduleList(NurseScheduleStorage.load());
         } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
                 | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound | InvalidDateException e) {
             ui.corruptedFileErrorMessage();

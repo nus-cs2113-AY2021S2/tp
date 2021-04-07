@@ -1,95 +1,74 @@
 package seedu.staff;
 
 import org.junit.jupiter.api.Test;
-import seedu.exceptions.*;
-import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.exceptions.staff.InvalidStaffAgeException;
-import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
 import seedu.logic.command.staff.*;
 import seedu.logic.parser.StaffParser;
+import seedu.model.staff.StaffList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StaffParserTest {
         private StaffParser parser;
-        private StaffAggregation staffAggregation;
+        private StaffList staffList;
 
     public StaffParserTest() {
         this.parser = new StaffParser();
-        this.staffAggregation = new StaffAggregation();
+        this.staffList = new StaffList();
     }
 
     @Test
-    public void ValidAddCommand() throws ExcessInputException,
-            InvalidIntegerException, WrongStaffIdException, WrongListInputException,
-            InsufficientInputException, DuplicateIDException, NoInputException,
-            IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidAddCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("add/D12345/Owen/20/Surgeon", staffAggregation);
+        c = this.parser.commandHandler("add/D12345/Owen/20/Surgeon", staffList);
         assertTrue(c instanceof StaffAdd);
     }
     @Test
-    public void ValidHelpCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidHelpCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("help", staffAggregation);
+        c = this.parser.commandHandler("help", staffList);
         assertTrue(c instanceof StaffHelp);
     }
     @Test
-    public void ValidListAllCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidListAllCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("list", staffAggregation);
-        assertTrue(c instanceof StaffList);
+        c = this.parser.commandHandler("list", staffList);
+        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
     }
 
     @Test
-    public void ValidListNurseCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidListNurseCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("list/nurses", staffAggregation);
-        assertTrue(c instanceof StaffList);
+        c = this.parser.commandHandler("list/nurses", staffList);
+        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
     }
     @Test
-    public void ValidListDoctorCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidListDoctorCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("list/doctors", staffAggregation);
-        assertTrue(c instanceof StaffList);
+        c = this.parser.commandHandler("list/doctors", staffList);
+        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
     }
 
     @Test
-    public void ValidReturnCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidReturnCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("return", staffAggregation);
+        c = this.parser.commandHandler("return", staffList);
         assertTrue(c instanceof StaffReturn);
     }
 
     @Test
-    public void ValidDeleteCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidDeleteCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("add/D12345/Owen/20/Surgeon", staffAggregation);
-        c = this.parser.commandHandler("delete/D12345", staffAggregation);
+        c = this.parser.commandHandler("add/D12345/Owen/20/Surgeon", staffList);
+        c = this.parser.commandHandler("delete/D12345", staffList);
         assertTrue(c instanceof StaffDelete);
     }
 
     @Test
-    public void ValidFindCommand() throws ExcessInputException, InvalidIntegerException,
-            WrongStaffIdException, WrongListInputException, InsufficientInputException,
-            DuplicateIDException, NoInputException, IllegalCharacterException, InvalidStaffAgeException {
+    public void ValidFindCommand() throws HealthVaultException {
         Command c;
-        c = this.parser.commandHandler("find/D12345", staffAggregation);
+        c = this.parser.commandHandler("find/D12345", staffList);
         assertTrue(c instanceof StaffFind);
     }
 }

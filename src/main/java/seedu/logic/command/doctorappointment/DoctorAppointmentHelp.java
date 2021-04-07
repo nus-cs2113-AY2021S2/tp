@@ -1,14 +1,14 @@
 package seedu.logic.command.doctorappointment;
 
-import seedu.logic.command.AppointmentActions;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
 
 public class DoctorAppointmentHelp extends Command {
 
     @Override
-    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) {
-        AppointmentActions.helpAppointment();
+    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) {
+        AppointmentList.helpAppointment();
     }
 
     @Override

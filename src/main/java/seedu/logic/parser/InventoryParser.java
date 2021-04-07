@@ -2,11 +2,10 @@ package seedu.logic.parser;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.logic.command.inventory.InventoryAdd;
 import seedu.logic.command.inventory.InventoryDelete;
 import seedu.logic.command.inventory.InventoryHelp;
-import seedu.logic.command.inventory.InventoryList;
 import seedu.logic.command.inventory.InventoryReturn;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
@@ -17,7 +16,7 @@ public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
     private InventoryChecker checker;
 
-    public Command inventoryParse(String fullCommand, InventoryActions inventories)
+    public Command inventoryParse(String fullCommand, InventoryList inventories)
             throws ArrayIndexOutOfBoundsException,
             HealthVaultException {
         String[] stringTokens = fullCommand.trim().split("/");
@@ -32,7 +31,7 @@ public class InventoryParser {
         case "list":
             int numberOfInputs = 1;
             MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            c = new InventoryList();
+            c = new seedu.logic.command.inventory.InventoryList();
             break;
         case "add":
             numberOfInputs = 4;

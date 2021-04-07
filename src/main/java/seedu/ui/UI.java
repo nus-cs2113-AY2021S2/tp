@@ -56,6 +56,7 @@ public class UI {
         if (input.length() >= maxLengthCommand+ALLOWANCE || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
+
         int temp;
         for (int i = 0; i < commands.length; i++) {
             temp = checkCommandDifference(commands[i], input);

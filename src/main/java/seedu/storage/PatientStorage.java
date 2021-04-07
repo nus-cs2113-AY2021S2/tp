@@ -2,8 +2,8 @@ package seedu.storage;
 
 import seedu.exceptions.*;
 import seedu.logic.errorchecker.PatientChecker;
-import seedu.model.Patient;
-import seedu.logic.command.PatientActions;
+import seedu.model.patient.Patient;
+import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
 import java.io.FileWriter;
@@ -91,7 +91,7 @@ public class PatientStorage {
      *
      * @param saveInput current files to be stored
      */
-    public void storePatients(PatientActions saveInput) {
+    public void storePatients(PatientList saveInput) {
         fileInit();
         try {
             //creates a new file writer to write to text file
