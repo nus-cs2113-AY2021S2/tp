@@ -216,13 +216,13 @@ Opens the specified module.
 <table>
     <tr>
         <td>Step #1</td>
-        <td>When you enter</td>
+        <td style="text-align: center">When you enter</td>
         <td><code>open CS2113T</code></td>
     </tr>
     <tr>
         <td></td>
-        <td>You will get</td>
-        <td><pre> Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
+        <td style="text-align: center">You will get</td>
+        <td><pre>Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
     </tr>
 </table>
 
