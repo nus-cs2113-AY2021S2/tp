@@ -39,7 +39,7 @@ This guide is written for users like you, for reference when there is a particul
         * [Editing a task : `edit task`](#editing-a-task--edit-task)
         * [Marking task as done : `mark`](#marking-task-as-done--mark)
         * [Marking task as undone : `unmark`](#marking-task-as-undone--unmark)
-        * [Listing all tasks : `tasks`](#listing-all-tasks--tasks)
+        * [Listing all tasks : `task`](#listing-all-tasks--tasks)
         * [Adding a cheat-sheet : `add cheat-sheet`](#adding-a-cheat-sheet--add-cheat-sheet)
         * [Deleting a cheat-sheet : `delete cheat-sheet`](#deleting-a-cheat-sheet--delete-cheat-sheet)
         * [Editing a cheat-sheet : `edit cheat-sheet`](#editing-a-cheat-sheet--edit-cheat-sheet)
@@ -524,18 +524,18 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
-### Listing all tasks : _tasks_
+### Listing all tasks : _task_
 
 Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
 
 **Format:**<br>
-`tasks`
+`task`
 
 **Example:**
 
 | Step | When You Enter This: | You Get This: |
 | --- | --- | --- |
-| 1 | tasks | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP increments - 22 Feb 2021 |
+| 1 | task | Tasks for CS2113T:<br><br>\[Undone]<br>You have completed all your tasks.<br><br>\[Done]<br>1.  iP increments - 22 Feb 2021 |
 
 ### Adding a cheat-sheet : _add cs_
 
