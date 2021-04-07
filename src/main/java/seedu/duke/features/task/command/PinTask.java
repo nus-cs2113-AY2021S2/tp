@@ -1,8 +1,8 @@
-package seedu.duke.task.command;
+package seedu.duke.features.task.command;
 
-import seedu.duke.Ui;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;
 
@@ -40,13 +40,11 @@ public class PinTask {
                     addTaskToPinnedTasks(TaskManager.finalExams.get(taskNumber - 1), FINAL_EXAM_TYPE);
                     break;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printRepeatInputUntilValidMessage();
                 }
                 return;
-            } catch (NumberFormatException e) {
-                Ui.printInvalidIntegerMessage();
-            } catch (IndexOutOfBoundsException e) {
-                Ui.printInvalidTaskNumberMessage();
+            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                Ui.printRepeatInputUntilValidMessage();
             }
         }
     }

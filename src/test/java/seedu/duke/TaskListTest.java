@@ -2,14 +2,14 @@ package seedu.duke;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
-import seedu.duke.task.command.AddTask;
-import seedu.duke.task.command.DeleteTask;
-import seedu.duke.task.command.PinTask;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
+import seedu.duke.features.task.command.AddTask;
+import seedu.duke.features.task.command.DeleteTask;
+import seedu.duke.features.task.command.PinTask;
 
 import java.time.format.DateTimeParseException;
 

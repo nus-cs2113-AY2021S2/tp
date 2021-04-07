@@ -1,17 +1,22 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import java.util.logging.Logger;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Links {
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static final int EXTERNAL_LINK_COMMAND = 1;
     private static final int ADD_ZOOM_LINK_COMMAND = 2;
     private static final int DELETE_ZOOM_LINK_COMMAND = 3;
     private static final int VIEW_ZOOM_LINK_COMMAND = 4;
     private static final int EXIT_COMMAND = 5;
+    private static boolean isInvalid = false;
     protected int linkIndex;
 
     public Links(int linkIndex) {
@@ -36,6 +41,9 @@ public class Links {
             case DELETE_ZOOM_LINK_COMMAND:
                 // delete zoom links
                 delete();
+                if (isInvalid) {
+                    continue;
+                }
                 break;
             case VIEW_ZOOM_LINK_COMMAND:
                 // view zoom links
@@ -46,12 +54,13 @@ public class Links {
                 Ui.printReturnToMainMenuMessage();
                 return;
             default:
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
+                logger.log(Level.WARNING, "Saving error");
             }
             Ui.printLinksMessage();
             linkIndex = Ui.readCommandToInt();
@@ -69,17 +78,19 @@ public class Links {
             return;
         }
         Ui.printLinkToDelete();
-        int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
         try {
+            int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
             ZoomLinkInfo.deleteZoomLink(deleteIndex);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Oops you have entered an invalid index number...");
+            isInvalid = false;
+        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+            logger.log(Level.INFO, "You have entered an invalid input! Please try again.");
+            isInvalid = true;
         }
     }
 
     public static void viewLinks() {
         if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
-            Ui.printListIsEmpty();
+            logger.log(Level.INFO, "");
             return;
         }
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);

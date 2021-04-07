@@ -1,7 +1,7 @@
-package seedu.duke.capsimulator;
+package seedu.duke.features.capsimulator;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 
@@ -55,16 +55,16 @@ public class HelpGraduationManager {
                 case 4:
                     return;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
             } catch (NumberFormatException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
                 Ui.printHorizontalLine();
             }
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printReturnToHelpGraduationMenuMessage();
         }

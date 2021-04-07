@@ -1,7 +1,7 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 
@@ -39,8 +39,13 @@ public class ExternalLinks extends Links {
             case DELETE_LINK_COMMAND:
                 viewLinks();
                 Ui.printLinkToDelete();
-                int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
-                LinkInfo.deleteLink(deleteIndex);
+                try {
+                    int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
+                    LinkInfo.deleteLink(deleteIndex);
+                } catch (NumberFormatException | IndexOutOfBoundsException e) {
+                    Ui.printRepeatInputUntilValidMessage();
+                    continue;
+                }
                 break;
             case VIEW_LINK_COMMAND:
                 viewLinks();
@@ -49,12 +54,12 @@ public class ExternalLinks extends Links {
                 Ui.printReturnToLinkMenuMessage();
                 return;
             default:
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
-                System.out.println("modules.txt file could not be auto-saved:(");
+                Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printExternalLinksMessage();
             linkIndex = Ui.readCommandToInt();

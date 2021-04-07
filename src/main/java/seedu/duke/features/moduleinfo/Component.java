@@ -1,10 +1,12 @@
-package seedu.duke;
+package seedu.duke.features.moduleinfo;
+
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Set;
 
-import static seedu.duke.ModuleInfo.viewAllModules;
+import static seedu.duke.features.moduleinfo.ModuleInfo.viewAllModules;
 
 public class Component {
     //String moduleName;
@@ -92,11 +94,10 @@ public class Component {
 
 
     }
-
-
-//        public static void deleteComponent(String component) {
-//            components.remove(component);
-//        }
+    /*
+    public static void deleteComponent(String component) {
+        components.remove(component);
+    }*/
 
 
     public static void setComponentsHere(Hashtable<String, Integer> components) {
@@ -108,7 +109,7 @@ public class Component {
 
         Set<String> setOfComponents = components.keySet();
         int total = 0;
-        for(String key : setOfComponents) {
+        for (String key : setOfComponents) {
             total += Integer.parseInt(String.valueOf(components.get(key)));
         }
         total += newWeightage;

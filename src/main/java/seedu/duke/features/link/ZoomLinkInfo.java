@@ -1,11 +1,11 @@
-package seedu.duke.link;
+package seedu.duke.features.link;
 
-import seedu.duke.Module;
-import seedu.duke.ModuleInfo;
-import seedu.duke.Ui;
+import seedu.duke.features.moduleinfo.Module;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.ui.Ui;
 
 import java.util.ArrayList;
-import seedu.duke.task.command.AddTask;
+import seedu.duke.features.task.command.AddTask;
 
 public class ZoomLinkInfo {
 
@@ -55,7 +55,7 @@ public class ZoomLinkInfo {
         Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
 
-    public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {
+    public static void deleteZoomLink(int deleteIndex) throws NumberFormatException, IndexOutOfBoundsException {
         ZoomLinkInfo deletedZoomLink = zoomLinksList.get(deleteIndex);
         Module moduleInfo = ModuleInfo.getModule(deletedZoomLink.getModuleCode());
         moduleInfo.removeZoomLink();

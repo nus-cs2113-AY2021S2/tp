@@ -5,18 +5,13 @@ hide circle
 
 class Duke
 class Ui
-class ModuleInfo
-class helpGraduation
-class TaskManager
-class Links
 class Storage
-
-Duke --> Ui
-Duke --> Storage
-Ui --> ModuleInfo
-Ui --> helpGraduation
-Ui --> TaskManager
-Ui --> Links
+class features
+Duke --> features
+Duke <--> Ui
+features <--> Ui
+Duke <--> Storage
+features --> Storage
 
 
 @enduml

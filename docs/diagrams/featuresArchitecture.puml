@@ -1,0 +1,26 @@
+@startuml
+hide members
+hide circle
+
+package Cap_Simulator {
+
+}
+
+package Module_Info {
+
+}
+
+package Task {
+
+}
+
+package Link {
+  Class ExternalLinks
+  Class LinkInfo
+  Class Links
+  Class ZoomLinkInfo
+
+ExternalLinks --|> Links
+}
+
+@enduml

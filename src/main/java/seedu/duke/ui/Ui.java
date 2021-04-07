@@ -1,13 +1,14 @@
-package seedu.duke;
+package seedu.duke.ui;
 
-import seedu.duke.capsimulator.HelpGraduation;
-import seedu.duke.link.LinkInfo;
-import seedu.duke.link.ZoomLinkInfo;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.features.capsimulator.HelpGraduation;
+import seedu.duke.features.link.LinkInfo;
+import seedu.duke.features.link.ZoomLinkInfo;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -110,7 +111,7 @@ public class Ui {
     public static void printAddTaskMenu() {
         System.out.println("Please choose which type of task you would like to add"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -119,7 +120,7 @@ public class Ui {
     public static void printMarkTaskMenu() {
         System.out.println("Please choose which type of task you would like to mark/unmark as done"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -128,7 +129,7 @@ public class Ui {
     public static void printDeleteTaskMenu() {
         System.out.println("Please choose which type of task you would like to delete"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -137,7 +138,7 @@ public class Ui {
     public static void printPinTaskMenu() {
         System.out.println("Please choose which type of task you would like to pin"
                 + " and enter the number:\n"
-                + "[1] --- Task\n"
+                + "[1] --- Normal Task\n"
                 + "[2] --- Assignment\n"
                 + "[3] --- Midterm\n"
                 + "[4] --- Final Exam");
@@ -147,14 +148,11 @@ public class Ui {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println(
-                    "What is the module of the assignment you want to add? Enter the number:");
+            System.out.println("What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println(
-                    "What is the module of the midterm you want to add? Enter the number:");
+            System.out.println("What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println(
-                    "What is the module of the final exam you want to add? Enter the number:");
+            System.out.println("What is the module of the final exam you want to add? Enter the number:");
         }
         printEmptyLine();
     }
@@ -177,21 +175,21 @@ public class Ui {
 
     public static void printAddTaskDateMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the date of the assignment you want to add?");
+            System.out.println("What is the date of the assignment you want to add? Format of date is YYYY-MM-DD");
         } else if (taskType == 3) {
-            System.out.println("What is the date of the midterm you want to add?");
+            System.out.println("What is the date of the midterm you want to add? Format of date is YYYY-MM-DD");
         } else {
-            System.out.println("What is the date of the final exam you want to add?");
+            System.out.println("What is the date of the final exam you want to add? Format of date is YYYY-MM-DD");
         }
     }
 
     public static void printAddTaskTimeMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the time of the assignment you want to add?");
+            System.out.println("What is the time of the assignment you want to add? Format of time is HH:MM");
         } else if (taskType == 3) {
-            System.out.println("What is the time of the midterm you want to add?");
+            System.out.println("What is the time of the midterm you want to add? Format of time is HH:MM");
         } else {
-            System.out.println("What is the time of the final exam you want to add?");
+            System.out.println("What is the time of the final exam you want to add? Format of time is HH:MM");
         }
     }
 
@@ -271,12 +269,16 @@ public class Ui {
 
     public static void printTaskListIsEmptyMessage() {
         System.out.println("Task list is empty!\n"
-                + "Returning back to TaskManager menu now!");
+                + "Returning back to the menu now...");
         printHorizontalLine();
     }
 
-    public static void printInvalidIntegerMessage() {
-        System.out.println("Please enter a valid integer from the menu.");
+    public static void printInvalidInputMessage() {
+        System.out.println("Invalid input!");
+    }
+
+    public static void printRepeatInputUntilValidMessage() {
+        System.out.println("Invalid input! Please enter a valid integer from the list.");
     }
 
     public static void printInvalidTimeFormat() {
@@ -287,14 +289,18 @@ public class Ui {
         System.out.println("Please enter a valid date format.");
     }
 
-    public static void printInvalidTaskNumberMessage() {
-        System.out.println("Please input a valid task number.");
-    }
-
     public static String readCommand() {
         String command;
         Scanner input = new Scanner(System.in);
-        command = input.nextLine().trim();
+        while (true) {
+            command = input.nextLine().trim();
+            if (command.contains(" ~~ ")) {
+                System.out.println("Restricted character present in input. PLease try again.");
+                printHorizontalLine();
+            } else {
+                break;
+            }
+        }
         printHorizontalLine();
         return command;
     }
@@ -309,6 +315,20 @@ public class Ui {
         }
         printHorizontalLine();
         return command;
+    }
+
+    public static String readReviewLine() {
+        String reviewLine;
+        Scanner input = new Scanner(System.in);
+        reviewLine = input.nextLine().trim();
+        return reviewLine;
+    }
+
+    public static boolean userCommandIsEmpty(String command) {
+        if (command.equals("")) {
+            return true;
+        }
+        return false;
     }
 
     public static void printLinks(ArrayList<LinkInfo> linksList) {
@@ -442,7 +462,7 @@ public class Ui {
 
     public static void printTaskList(ArrayList<Task> tasks) {
         int taskNumber = 1;
-        System.out.println("This is the list of your tasks:");
+        System.out.println("This is the list of your normal tasks:");
         for (Task task : tasks) {
             System.out.println(taskNumber + ". " + task.toString());
             taskNumber++;
@@ -504,7 +524,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToMarkOrUnmarkMessage();
     }
@@ -524,7 +544,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToDeleteMessage();
     }
@@ -544,7 +564,7 @@ public class Ui {
             printFinalExamList(TaskManager.finalExams);
             break;
         default:
-            printInvalidIntegerMessage();
+            printInvalidInputMessage();
         }
         printSelectTaskNumberToPinMessage();
     }
@@ -629,8 +649,7 @@ public class Ui {
     }
 
     public static void printModuleNumberDoesNotExistMessage() {
-        System.out.println("A module for that number does not exist. "
-                + "Would you like to add a module? [Y/N]");
+        System.out.println("No such module! Would you like to add a module? [Y/N]");
     }
 
     public static void printModuleList() {
@@ -680,7 +699,7 @@ public class Ui {
     }
 
     public static void printFilesCouldNotBeSavedMessage() {
-        System.out.println("files could not be auto-saved:(");
+        System.out.println("UniTracker Data could not be auto-saved:(");
     }
 
     public static void printConfirmComponentsMessage() {

@@ -1,11 +1,11 @@
-package seedu.duke.task;
+package seedu.duke.features.task;
 
-import seedu.duke.Storage;
-import seedu.duke.Ui;
-import seedu.duke.task.command.AddTask;
-import seedu.duke.task.command.DeleteTask;
-import seedu.duke.task.command.MarkOrUnmarkTask;
-import seedu.duke.task.command.PinTask;
+import seedu.duke.storage.Storage;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.command.AddTask;
+import seedu.duke.features.task.command.DeleteTask;
+import seedu.duke.features.task.command.MarkOrUnmarkTask;
+import seedu.duke.features.task.command.PinTask;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,10 +63,10 @@ public class TaskManager {
                 case EXIT_COMMAND:
                     return;
                 default:
-                    Ui.printInvalidIntegerMessage();
+                    Ui.printInvalidInputMessage();
                 }
             } catch (NumberFormatException e) {
-                Ui.printInvalidIntegerMessage();
+                Ui.printInvalidInputMessage();
             }
             try {
                 Storage.saveAllFiles();
@@ -128,9 +128,9 @@ public class TaskManager {
             if (!isInvalidTaskType) {
                 return true;
             }
-            System.out.println("Please enter a valid integer from the list.");
+            Ui.printRepeatInputUntilValidMessage();
         } catch (NumberFormatException n) {
-            System.out.println("Error! Enter an integer.");
+            Ui.printRepeatInputUntilValidMessage();
         }
         return false;
     }
@@ -163,7 +163,7 @@ public class TaskManager {
             isEmpty = finalExams.isEmpty();
             break;
         default:
-            Ui.printInvalidIntegerMessage();
+            Ui.printInvalidInputMessage();
         }
         return isEmpty;
     }

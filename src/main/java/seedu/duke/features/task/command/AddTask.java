@@ -1,12 +1,12 @@
-package seedu.duke.task.command;
+package seedu.duke.features.task.command;
 
-import seedu.duke.ModuleInfo;
-import seedu.duke.Ui;
-import seedu.duke.task.Assignment;
-import seedu.duke.task.FinalExam;
-import seedu.duke.task.Midterm;
-import seedu.duke.task.Task;
-import seedu.duke.task.TaskManager;
+import seedu.duke.features.moduleinfo.ModuleInfo;
+import seedu.duke.ui.Ui;
+import seedu.duke.features.task.Assignment;
+import seedu.duke.features.task.FinalExam;
+import seedu.duke.features.task.Midterm;
+import seedu.duke.features.task.Task;
+import seedu.duke.features.task.TaskManager;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -43,12 +43,12 @@ public class AddTask {
         }
 
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
-        String description = Ui.readCommand();
+        String description = getDescription();
         if (taskTypeNumber != 1) {
             dateAndTime = getDate(taskTypeNumber) + ", " + getTime(taskTypeNumber);
         }
         Ui.printAddMessageAfterCompletedTask();
-        String message = Ui.readCommand();
+        String message = getMessage();
 
         switch (taskTypeNumber) {
         case ADD_TASK_COMMAND:
@@ -64,8 +64,26 @@ public class AddTask {
             addFinalExam(module, description, message, dateAndTime);
             break;
         default:
-            Ui.printInvalidIntegerMessage();
+            Ui.printRepeatInputUntilValidMessage();
         }
+    }
+
+    private static String getDescription() {
+        String description = Ui.readCommand();
+        while (Ui.userCommandIsEmpty(description)) {
+            System.out.println("Description should not be empty! Please try again.");
+            description = Ui.readCommand();
+        }
+        return description;
+    }
+
+    private static String getMessage() {
+        String message = Ui.readCommand();
+        while (Ui.userCommandIsEmpty(message)) {
+            System.out.println("Message should not be empty! Please try again.");
+            message = Ui.readCommand();
+        }
+        return message;
     }
 
     public static void addTask(String module, String description, String message) {
@@ -124,9 +142,13 @@ public class AddTask {
         } catch (IndexOutOfBoundsException | NumberFormatException e) {
             Ui.printModuleNumberDoesNotExistMessage();
         }
-        String input = Ui.readCommand().trim();
-        if (input.equalsIgnoreCase("N")) {
-            return "";
+        String input = Ui.readCommand();
+        while (!input.equalsIgnoreCase("Y")) {
+            if (input.equalsIgnoreCase("N")) {
+                return "";
+            }
+            System.out.println("Invalid input! Please input Y or N.");
+            input = Ui.readCommand();
         }
         ModuleInfo.addNewModule();
         String module = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();

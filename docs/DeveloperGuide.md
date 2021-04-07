@@ -138,9 +138,11 @@ We have 5 main classes for our key features.
 
 ![Diagram](diagrams/MainArchitecture.png)
 
-### 3.2 UI Class
+### 3.2 UI Component
 
 This class handles the interactions with the user and contains the methods for system output.
+
+### 3.3 Features Component
 
 ---
 
@@ -154,14 +156,10 @@ This feature allows user to `add a review` for any of the modules they have take
 > This action will **overwrite** any existing reviews with the new review.
 
 
-E.g. Input:  
-`CS2113T is very fun:) I have learnt so many important concepts.`  
-`Overall 10/10 :)`  
-`/end`
-
-Output:
-
 ```
+> CS2113T is very fun:) I have learnt so many important concepts.
+> Overall 10/10 :)
+> /end
 Woohoo~ Review added:  
 CS2113T is very fun:) I have learnt so many important concepts.  
 Overall 10/10 :) 
@@ -377,23 +375,21 @@ can keep track of commonly accessed information while keeping track of the tasks
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|
+|v1.0|student|add external links| refer to them more easily
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-
+|v2.0|user| store my information | view them later without having to re-type them again 
 ---
 
 ## 7. Non-Functional Requirements
 
 1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.
-
+2. Must be able to work completely offline
 
 ---
 
 ## 8. Glossary
 
-*[This section will be completed in the future.]* <br>
-
-* *glossary item* - Definition
-
+* Mainstream OS: Windows, Linux, macOS
 ---
 
 ## 9. Instructions for manual testing
