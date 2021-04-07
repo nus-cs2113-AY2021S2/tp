@@ -1,9 +1,22 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+Welcome to fast scheduler!
+Command options available:
 
-What is your name?
-Hello James Gosling
+add employee (add a new employee to the database)
+add schedule (add a new schedule to an employee)
+drop schedule (drop an existing schedule from an employee)
+add shift (add a new shift for the restaurant)
+assign employee (assign an employee to a shift)
+unassign employee (unassign an employee from a shift)
+view employee schedule (displays all schedules of an employee)
+view shift status (displays all shifts and the name of the employees on the shifts)
+view one shift (displays the name of the employees on a shift)
+list (displays the name of all employees)
+quit (quit the application)
+Save data loaded!
+Employee cactus assigned.
+----------------------------------------------------------------------------
+
+Enter command:			(type 'help' for all command options)
+enter Employee name
+Employee added
+Enter command:			(type 'help' for all command options)
