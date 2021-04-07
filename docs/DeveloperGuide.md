@@ -184,7 +184,7 @@ Upon start, the `Duke` (main) class calls `run()` which enters a while loop and 
 
 **API**: `Command.java`
 
-The _Command_ component consist of an abstract `Command` class, as well as its subclasses. Each subclass handles a specifc command in GULIO. The abstract `Command` class contains methods that these commands inherit from. They can be further distinguished by commands that are used when the user is at the dashboard or when the user is within a module specified.
+The _Command_ component consist of an abstract `Command` class, as well as its subclasses. Each subclass handles a specific command in GULIO. The abstract `Command` class contains methods that these commands inherit from.
 
 Steps for command execution:
 
@@ -635,6 +635,8 @@ Due to the 2-layer command system, you will need to identify which layer you are
 | add | `add <module code>` |
 | delete | `delete  <module name>` |
 | modules | `modules` |
+
+<div style="page-break-after: always;"></div>
 
 ### Module Commands Summary
 
