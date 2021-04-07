@@ -345,8 +345,7 @@ Returning to module information menu...
 #### 3.1.5 Add/View Components and Their Weightages
 
 > **Note!**  
-> This feature has no storage functionality! Components added will be erase after end of program. [Work in progress]
-
+> Components' weightages is only accepting integer values which is usually the convention.
 * Example for adding components and weightage to a module Input:  
 ````
 > 5  

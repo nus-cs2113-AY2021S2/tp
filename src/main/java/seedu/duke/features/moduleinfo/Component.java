@@ -41,6 +41,7 @@ public class Component {
             component = modules.get(moduleNumberInt).getComponents();
             try {
                 componentName = userInput[0];
+                isNumeric(componentName);
                 weightage = Integer.parseInt(userInput[1]);
                 checkHundredPercent(component, weightage);
                 Ui.printConfirmComponentsMessage();
@@ -70,6 +71,13 @@ public class Component {
         }
 
 
+    }
+
+    private static void isNumeric(String componentName) throws NumberFormatException {
+        boolean isNumeric = componentName.chars().allMatch( Character::isDigit);
+        if (isNumeric) {
+            throw new NumberFormatException();
+        }
     }
 
     public static void viewComponent(ArrayList<Module> modules) {
