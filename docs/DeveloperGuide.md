@@ -17,30 +17,35 @@
     6. [Common classes](#46-common-classes)
 5. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
-    	1. [Add](#511-add)
-    	2. [Delete](#512-delete)
-    	3. [List](#513-list)
-    	4. [Find](#514-find)
+    	1. [Staff Menu](#511-staff-menu)
+    	2. [Add](#512-add)
+    	3. [Delete](#513-delete)
+    	4. [List](#514-list)
+    	5. [Find](#515-find)
     2. [Patient](#52-patient)
-    	1. [Add](#521-add)
-    	2. [Delete](#522-delete)
-    	3. [List](#523-list)
-    	4. [Find](#524-find)
+    	1. [Patient Menu](#521-patient-menu)
+    	2. [Add](#522-add)
+    	3. [Delete](#523-delete)
+    	4. [List](#524-list)
+    	5. [Find](#525-find)
     3. [Doctor Appointment](#53-doctor-appointment)
-    	1. [Add](#531-add)
-    	2. [Delete](#532-delete)
-    	3. [List](#533-list)
-    	4. [Find](#534-find)
+    	1. [Doctor Appointment Menu](#531-doctor-appointment-menu)
+    	2. [Add](#532-add)
+    	3. [Delete](#533-delete)
+    	4. [List](#534-list)
+    	5. [Find](#535-find)
     4. [Nurse Schedule](#54-nurse-schedule)
-    	1. [Add](#541-add)
-    	2. [Delete](#542-delete)
-    	3. [List](#543-list)
-    	4. [Find](#544-find)
+    	1. [Nurse Schedule Menu](#541-nurse-schedule-menu)
+    	2. [Add](#542-add)
+    	3. [Delete](#543-delete)
+    	4. [List](#544-list)
+    	5. [Find](#545-find)
     5. [Inventory](#55-inventory)
-        1. [Add](#551-add)
-        2. [Delete](#552-delete)
-        3. [List](#553-list)
-        4. [Find](#554-find)
+        1. [Inventory Menu](#551-inventory-menu)
+    	2. [Add](#552-add)
+    	3. [Delete](#553-delete)
+    	4. [List](#554-list)
+    	5. [Find](#555-find)
 
 [Appendix A: Product Scope](#a-appendix-a-product-scope)
 
@@ -121,22 +126,43 @@ There are 2 prerequisites for this project
 
 ## 5. Implementation
 
+
+###  5.1 Staff
+
+### 5.1.1 Staff Menu
+
 Similar to the Start Menu, the Staff Menu will repeatedly request user input until the `return` command is given.
 
 Whenever a user input is given to the Staff Menu, the following steps will occur.
 
+**Launching Staff Menu**
+
+1. `ToStaffInstance.execute()` will create and call `StaffInstance.run()`
+2. `StaffInstance.run()` will start by loading/creating the Staff data .txt file for Staff database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+3. `StaffInstance.run()` will then repeatedly call `commandHandler()`.
+
 **Getting User Input**
 
-1. `StaffInstance.run()` will call `StaffParser.commandHandler()` after receiving user input
-2. `commandHandler()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
-3. Based on the recognised command by the system, the relevant commands will be carried out.
+4. `StaffInstance.run()` will repeatedly request for user input and call `StaffParser.commandHandler()`.
+5. `commandHandler()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+6. Based on the recognised command by the system, the relevant commands will be carried out.
 
+<br>
 
-###  5.1 Staff
-#### 5.1.1 Add
+### 5.1.2 Add
 
-Implementation:
-When the user attempts to add a new staff, the StaffParser, StaffInstance, StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+**Implementation:**
+
+The function Add takes in 4 compulsory fields (Staff ID, Name, Age, Specialisation) to create the Staff Object and adds it to an aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A StaffAdd Command object is created. StaffAdd command object will be executed to create the Staff Object which will be added to the aggregation of Staff Objects.
+
+Invalid Input includes:
+
+> 
+	- Invalid Staff ID format
+	- Duplicated Staff ID
+	- Age that < 18 or > 150
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
 
 `add/[Staff ID]/[name]/[age]/[specialisation]`
 
@@ -175,10 +201,18 @@ When the user attempts to add a new staff, the StaffParser, StaffInstance, Staff
 
 <br>
 
-#### 5.1.2 Delete
+### 5.1.3 Delete
 
-Implementation:
-When the user attempts to delete a staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+**Implementation:**
+
+The function Delete takes in 1 compulsory field (Staff ID) to identity and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDelete Command object is created. StaffDelete command object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Invalid Staff ID format
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
 
 `delete/Staff ID`
 
@@ -210,10 +244,16 @@ When the user attempts to delete a staff, the StaffStorage, StaffList, UI, Staff
 
 <br>
 
-#### 5.1.3 List
+### 5.1.4 List
 
-Implementation:
-When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+**Implementation:**
+
+The function list takes in 1 option field (nurses/doctors) to identity and list the category of Staff Objects required from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffList Command object is created. StaffList command object will be executed to iterate through the aggregation of Staff Objects. Staff Objects will then be displayed based on the user given input.
+
+Invalid Input includes:
+
+> 
+	- Any input apart from Blank Input (i.e Empty input) OR "doctors" OR "nurses"
 
 `list/<doctors/nurses>`
 
@@ -236,10 +276,16 @@ When the user attempts to add a new staff, the StaffStorage, StaffList, UI, Staf
 
 <br>
 
-#### 5.1.4 Find
+### 5.1.5 Find
 
-Implementation:
-When the user attempts to find a staff using a certain keyword, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+**Implementation:**
+
+The function Add takes in 1 compulsory field (keyword) to find the relvant Staff Objects within the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Staff Object. If there is a match, the Staff Object will be displayed. Else, an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Blank input (i.e Empty inputs)
 
 `find/[keyword]`
 
@@ -261,38 +307,45 @@ When the user attempts to find a staff using a certain keyword, the StaffStorage
 8. The relevant Staff Objects are then displayed.
 9. Control is then returned to StaffInstance.
 
-
 <br>
 
 ###  5.2 Patient
-#### 5.2.1 Add
-#### 5.2.2 Delete
-#### 5.2.3 List
-#### 5.2.4 Find
+
+### 5.2.1 Staff Menu
+### 5.2.2 Add
+### 5.2.3 Delete
+### 5.2.4 List
+### 5.2.5 Find
 
 <br>
 
 ###  5.3 Doctor Appointment
-#### 5.3.1 Add
-#### 5.3.2 Delete
-#### 5.3.3 List
-#### 5.3.4 Find
+
+### 5.3.1 Doctor Appointment Menu
+### 5.3.2 Add
+### 5.3.3 Delete
+### 5.3.4 List
+### 5.3.5 Find
 
 <br>
 
 ###  5.4 Nurse Schedule
-#### 5.4.1 Add
-#### 5.4.2 Delete
-#### 5.4.3 List
-#### 5.4.4 Find
+
+### 5.4.1 Nurse Schedule Menu
+### 5.4.2 Add
+### 5.4.3 Delete
+### 5.4.4 List
+### 5.4.5 Find
 
 <br>
 
 ###  5.5 Inventory
-#### 5.5.1 Add
-#### 5.5.2 Delete
-#### 5.5.3 List
-#### 5.5.4 Find
+
+### 5.5.1 Inventory Menu
+### 5.5.2 Add
+### 5.5.3 Delete
+### 5.5.4 List
+### 5.5.5 Find
 
 <br>
 
