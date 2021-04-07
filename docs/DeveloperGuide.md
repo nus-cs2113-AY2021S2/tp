@@ -312,6 +312,26 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
+### 4.09 Add External Links 
+
+This feature allows users to add and store their favourite links.
+
+Given below is the sequence diagram for the feature:
+![Diagram](diagrams/addLink.png)
+
+A general 2-step explanation of how this feature works is shown below:
+
+Step 1. The Ui#printEnterLinkMessage() method prompts the user to enter the link and Ui#readCommand captures the input.
+
+Step 2. If the link is valid and is not a duplicate, then LinkInfo#addLink() is called, which creates an object LinkInfo with the link description and adds it into the links list.
+
+> 📝 **Note!**
+> The program is case-sensitive and only accepts links that start with https and http, followed by "://www." + domain name + top level domain
+> 
+> For example: https://www.youtube.com or http://www.imf.org would be accepted. Other variations that do not follow these guidelines might not work!
+
+The program checks for duplicates by doing a simple linear search of all LinkInfo objects in the links list. If the object can be found within the list, then a duplicate link must exist.
+
 ### 4.09 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
@@ -390,6 +410,8 @@ can keep track of commonly accessed information while keeping track of the tasks
 ## 8. Glossary
 
 * Mainstream OS: Windows, Linux, macOS
+* Domain name: The actual name of the website. For example, 'google' in 'google.com' is the domain name
+* Top-level domain: .com , .net, .org , .edu etc.
 ---
 
 ## 9. Instructions for manual testing
