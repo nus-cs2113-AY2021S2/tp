@@ -360,12 +360,12 @@ classes will be accessed. Data input will be first checked to ensure validty. An
 Invalid Input include:
 
 >
-	-Invalid Nurse ID or Patient ID format
-	-Non-existent Nurse ID or Patient ID
-	-Blank input
-	-Illegal Characters
-	-Illegal date format
-	-Duplicate schedules (i.e similar Patient ID and date)
+	- Invalid Nurse ID or Patient ID format
+	- Non-existent Nurse ID or Patient ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
+	- Duplicate schedules (i.e similar Patient ID and date)
 	
 `add/[Nurse ID]/[Date (DDMMYYYY)]`
 
@@ -396,11 +396,11 @@ When the user wants to delete a specified nurse schedule, the NurseScheduleActio
 Invalid Input include:
 
 >
-	-Invalid Nurse ID format
-	-Non-existent Nurse ID
-	-Blank input
-	-Illegal Characters
-	-Illegal date format
+	- Invalid Nurse ID format
+	- Non-existent Nurse ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
 	
 `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
