@@ -12,7 +12,7 @@ public class HelpGraduationManager {
         while (true) {
             Ui.printHelpGraduationMenu();
             String command = Ui.readCommand();
-            Ui.printHorizontalLine();
+
             try {
                 int helpGraduationIndex = Integer.parseInt(command);
                 switch (helpGraduationIndex) {
