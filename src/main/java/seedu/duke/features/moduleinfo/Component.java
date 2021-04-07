@@ -86,7 +86,7 @@ public class Component {
         if (isModuleExist) {
             //System.out.println(Component.components);
             System.out.println("From Module object: " + modules.get(moduleNumberInt).getName());
-            System.out.println(modules.get(moduleNumberInt).getComponents());
+            System.out.println(modules.get(moduleNumberInt).getComponentsToString());
 
         } else {
             Ui.printModuleDoesNotExistMessage();
