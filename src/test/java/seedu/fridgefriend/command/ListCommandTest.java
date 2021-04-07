@@ -85,6 +85,40 @@ class ListCommandTest {
         String actualMessage = listCommand.getListByStorageLocationMessage();
         assertEquals(expectedMessage, actualMessage);
     }
+
+    @Test
+    public void listCommand_listByOthersCategoryAndStorageLocation() throws Exception {
+        ListCommand listCommand = new ListCommand("OTHER");
+
+        Fridge fridgeOther = new Fridge();
+
+        Food chickenOther = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.OTHER,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 200);
+        fridgeOther.add(chickenOther);
+
+        Food lettuceOther = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
+                "17-05-2021", FoodStorageLocation.OTHER, 100);
+        fridgeOther.add(lettuceOther);
+
+        Food porkOther = AddCommand.categoriseAndGenerateFood("pork", FoodCategory.OTHER,
+                "31-07-2021", FoodStorageLocation.OTHER, 500);
+        fridgeOther.add(porkOther);
+
+        Food duckNotOther = AddCommand.categoriseAndGenerateFood("duck", FoodCategory.MEAT,
+                "31-07-2021", FoodStorageLocation.LOWER_SHELF, 500);
+        fridgeOther.add(duckNotOther);
+
+        listCommand.setData(fridgeOther);
+        String expectedMessage = "These are the food that belong to OTHERS:\n"
+                + "\t1. Food name: chicken, category: OTHER, expiry: "
+                + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
+                + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "
+                + "17-05-2021, stored in: OTHER, quantity: 100\n"
+                + "\t3. Food name: pork, category: OTHER, expiry: "
+                + "31-07-2021, stored in: OTHER, quantity: 500";
+        String actualMessage = listCommand.getListByOthersMessage();
+        assertEquals(expectedMessage, actualMessage);
+    }
     //@@author
 
 }
