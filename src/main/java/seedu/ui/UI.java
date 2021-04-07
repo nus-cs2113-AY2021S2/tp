@@ -59,7 +59,7 @@ public class UI {
         int temp;
         for (int i = 0; i < commands.length; i++) {
             temp = checkCommandDifference(commands[i], input);
-            if (temp < diff) {
+            if (temp < diff ) {
                 diff = temp;
                 index = i;
             }

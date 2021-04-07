@@ -60,31 +60,31 @@ public class StaffAggregation {
     }
 
     public void list(String[] array) {
-        if (array.length == 1 && getNumStaff() != 0) {
+        if (getNumStaff() == 0) {
+            StaffUI.emptyListErrorMessage();
+            return;
+        }
+
+        if (array.length == 1) {
             StaffUI.staffListHeader();
             UI.showLine();
             for (Staff staff : list) {
-
                 display(staff);
             }
         } else if (array[1].equals("nurses") && getNumNurse() != 0 ) {
-            System.out.println(getNumNurse());
             StaffUI.staffListHeader();
             UI.showLine();
             for (Staff staff : list) {
                 if (staff.getType().equals(NURSE_TYPE)) {
                     display(staff);
-                    return;
                 }
             }
         } else if (array[1].equals("doctors") && getNumDoctor() != 0 ) {
-            System.out.println(getNumDoctor());
             StaffUI.staffListHeader();
             UI.showLine();
             for (Staff staff : list) {
                 if (staff.getType().equals(DOCTOR_TYPE)) {
                     display(staff);
-                    return;
                 }
             }
         } else {
@@ -118,11 +118,11 @@ public class StaffAggregation {
 
 
 
-    public void delete(String line) {
+    public void delete(String input) {
         boolean isExistingID = false;
         for (Iterator<Staff> iterator = list.iterator(); iterator.hasNext(); ) {
             Staff staff = iterator.next();
-            if (staff.getId().equals(line.split("/")[1])) {
+            if (staff.getId().equals(input)) {
                 iterator.remove();
                 numStaff--;
                 if (staff.getType() == NURSE_TYPE) {
@@ -134,9 +134,9 @@ public class StaffAggregation {
             }
         }
         if (isExistingID) {
-            StaffUI.staffFiredOutput(line);
+            StaffUI.staffFiredOutput(input);
         } else {
-            StaffUI.staffDoesNotExistErrorMessage(line);
+            StaffUI.staffDoesNotExistErrorMessage(input);
         }
     }
 
