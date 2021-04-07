@@ -71,9 +71,9 @@ Architecture Components of NUSMaze:
 * [**`UIManager`**](#22-uimanager-component): The user interface of the app
 * [**`Parser`**](#23-parser-component): Processes commands inputted by the user
 * [**`Command`**](#24-command-component): Executes the user command 
-* [**`Router`**](#25-router-component): Searches shortest router
+* [**`Router`**](#25-router-component): Searches the shortest route
 * [**`Data`**](#26-data-component): Holds the data of the app in memory
-* [**`Storage`**](#27-storage-component): Reads data from and write data to external text files
+* [**`Storage`**](#27-storage-component): Reads app data from and writes the app data to created text files
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
 chapters of the developer guide.
@@ -144,50 +144,64 @@ the shortest route.
 On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
 further elaborated in the following section.
 
-### 2.7. Storage Component  
-
+### 2.7. Storage Component
+![img.png](images/StorageComponent.png)
+The **Storage Component** reads app's data from and writes the app's data to created text files in **Data component**.
+The **Storage Component**:
+- loads the app's data from the relevant text file using the `filepath` into the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects.
+- saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.
 ---------------------------------------------------------------------------------------------
 
 ## *3. Implementation*
 ### 3.1. Save feature
 #### Current Implementation
-The save mechanism is facilitated by `AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage`, `FavouriteLocationsStorage` subclasses. </br>
-They extend `Storage` (superclass) with a feature to save the block aliases, history of visited routes, tagged notes, daily routes and favourite locations, stored internally as a `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. <br />
+The save mechanism is facilitated by `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` subclasses. </br>
+They extend `Storage` (superclass) with a feature to save the blocks' aliases, daily routes, favourite locations, history of visited routes and tagged notes, stored internally as `aliasList`,  `dailyRouteList`, `favouriteList`, `history`, `noteList` text files. <br />
 Additionally, they implement the following operations: <br/>
-- `AliasStorage#overwriteAliasListFile()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
-- `AliasStorage#loadAlias()`   —  Restores all aliases given by user to blocks from `aliasList`. <br />
-- `HistoryRouteStorage#overwriteHistoryListFile()` —  Saves the current list of the 10 most recently visited routes in its history into `historyList`. <br />
-- `HistoryRouteStorage#loadHistory()` —  Restores the previous list of the 10 most recently visited routes in its history from `historyList`. <br />
-- `NotesStorage#overwriteNotesListFile()` —  Saves all notes tagged to a location into `notesList`. <br />
-- `NotesStorage#loadNotes()` —  Restores all notes tagged to a location from `notesList`. <br />
-- `DailyRouteStorage#loadDailyRoute()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
-- `DailyRouteStorage#overwriteDailyRouteFile()` Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
-- `FavouriteLocationsStorage#overwriteFavouritesListFile()` —  Saves the current list of all the locations that the users are interested in keeping in `favouritesList`. <br />
-- `FavouriteLocationsStorage#loadFavourites()` —  Restores the previous list of the all the locations that the users are interested in keeping from `favouritesList`. <br />
+- `AliasStorage#saveData()` —  Saves all aliases given by user to blocks into `aliasList`. <br />
+- `AliasStorage#loadData()` —  Restores all aliases given by user to blocks from `aliasList`. <br />
+- `DailyRouteStorage#saveData()` —  Saves all the daily routes that user wants to see for each day of the week into `dailyRouteList`. <br />
+- `DailyRouteStorage#loadData()` —  Restores all the daily routes that user wants to see from `dailyRouteList`. <br />
+- `FavouriteStorage#saveData()` —  Saves the current list of all the routes that the users are interested in keeping in `favouriteList`. <br />
+- `FavouriteStorage#loadData()` —  Restores the previous list of all the routes that the users are interested in keeping from `favouriteList`. <br />
+- `HistoryStorage#saveData()` —  Saves the current list of the 10 most recently visited routes in its history into `history`. <br />
+- `HistoryStorage#loadData()` —  Restores the previous list of the 10 most recently visited routes in its history from `history`. <br />
+- `NotesStorage#saveData()` —  Saves all notes tagged to a location into `noteList`. <br />
+- `NotesStorage#loadData()` —  Restores all notes tagged to a location from `noteList`. <br />
 
-These operations are exposed in the `Storage` class  as `Storage#loadAlias()`, `Storage#overwriteAliasListFile()`, `Storage#loadHistory()`, `Storage#overwriteHistoryListFile()` , `Storage#loadNotes()`, `Storage#overwriteNotesListFile()`, `Storage#loadDailyRoute()`, `Storage#overwriteDailyRouteFile()` , `Storage#loadFavourites()` and `Storage#overwriteFavouritesListFile()`. <br />
-The image below shows an overview for the storage component, which consist of Storage class and its four subclasses.
-![img.png](images/Overview%20for%20Safe%20Feature.png)
+These 'saveData()' operations are exposed in the `DataEncoder` interface as `DataEncoder#encodeAlias(:BlockAlias) `, `DataEncoder#encodeDailyRoute(:DailyRoute)`, `DataEncoder#encodeFavourite(:Favourite)`, `DataEncoder#encodeHistory(:History)` and `DataEncoder#encodeNotes(:NusMap)` respectively.<br />
+These 'loadData()' operations are exposed in the `DataDecoder` interface as `DataDecoder#decodeAliasAndNoteData()`, `DataDecoder#decodeDailyRouteData()` and `DataDecoder#decodeHistoryAndFavouriteData()`.
+The image below shows an overview for how the storage component is used when each of the features are executed. <br/>
+![img.png](images/SaveFeatureSequence.png)
+
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
-Step 1. The user launches the application for the first time. 
-`AliasStorage`, `HistoryRouteStorage`, `NotesStorage`, `DailyRouteStorage` and `FavouriteLocationsStorage` 
-will be initialized with the respective file paths of `aliasList`,  `historyList`, `notesList`, `dailyRouteList` and `favouritesList`. 
-The lists will be initialized by calling `AliasStorage#loadAlias()`, `HistoryRouteStorage#loadHistory()`, `NotesStorage#loadNotes()` `DailyRouteStorage#loadDailyRoute()` and `FavouriteLocationsStorage#loadFavourites()` with the initial state of the application. <br /> 
-This is done only once for each time the application is launched. <br />
-![img.png](images/Storage%20Feature%20Sequence%20.png)
-<br />
-Step 2. The user executes `go` command to show the route from starting location to final location. <br /> 
-The `go` command calls `HistoryRouteStorage#overwriteHistoryListFile()`, 
-causing the modified state of the `historyList` in the application after the `go` command executes to be saved in the `routesHistoryList.txt`. <br />
-Step 3. The user executes `add note E4/...` to tag a note to that location. <br /> 
-The `add note` command calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
-Step 4. The user executes `delete note E4/1` to remove a note with the given note index from that location, assuming that it exists. <br /> 
-The `delete note` command also calls `NotesStorage#overwriteNotesListFile()`, causing  the modified state of the `notesList` to be saved into the `notesList.txt`. <br />
-Step 5. The user executes `like E4` command to add a location to favourites. <br /> The `like` command calls `FavouriteLocationsStorage#save()`, causing the modified state of the `favouritesList` to be saved into the `favouritesList.txt`. <br />
-Step 6. At any point when a command is called, the `AliasStorage#overwriteAliasListFile()`, `HistoryRouteStorage#overwriteHistoryListFile()`, `NotesStorage#overwriteNotesListFile()`, `DailyRouteStorage#overwriteDailyRouteFile()` and `FavouriteLocationsStorage#overwriteFavouritesListFile()` methods will be executed, 
-but not all files will be modified. The above steps explains which lists will be modified after the commands listed above are called.
-For all other commands, they also call the overwrite functions, but they do not modify the state of any of the lists `aliasList`,  `historyList`, `notesList`,  `dailyRouteList` and `favouritesList`. 
-Thus, the `aliasList.txt`, `routesHistoryList.txt`, `notesList.txt`, `dailyRouteList.txt`  and `favouritesList.txt` inside the created `data` folder remains unchanged. <br/>
+Step 1. The user launches the application for the first time.
+`AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects 
+will be initialized with the filepaths of `aliasList`,  `dailyRouteList`, `favouriteList`, `history` and `noteList` text files respectively. <br>
+The `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object in `NusMaze` class will be initialised using the initial state of the respective text file, 
+by calling `AliasStorage#loadData()`, `DailyRouteStorage#loadData()`, `FavouriteStorage#loadData()` `HistoryStorage#loadData()` and `NotesStorage#loadData()`. <br> 
+This is done only once for each time the application is launched. <br>
+![img.png](images/SaveFeatureStep1ref1.png)
+![img.png](images/SaveFeatureStep1.png)
+![img.png](images/SaveFeatureStep1ref2.png) <br>
+Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continously. <br>
+`AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
+When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
+![img_1.png](images/SaveFeatureStep2.png)
+
+[NOTE]
+At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+but not all text files will be modified.
+- The `history` text file is modified by the `go`, `clear history` and `repeat history` commands.
+- The `aliasList` text file is modified by the `add alias` and `delete alias` commands.
+- The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands.
+- The `noteList` text file is modified by the `add note` and `delete note` commands.
+- The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+
+[NOTE]
+If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+
 #### Design Consideration
 Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
 Pros: Easy to implement. <br/>

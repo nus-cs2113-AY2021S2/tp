@@ -1,0 +1,83 @@
+@startuml
+'https://plantuml.com/class-diagram
+!include Style.puml
+
+package Data <<rectangle>> DATA_COLOR {
+}
+package Storage <<rectangle>> {
+        interface DataEncoder <<interface>> STORAGE_COLOR
+        interface DataDecoder <<interface>> STORAGE_COLOR
+        abstract class "{abstract}\nStorage" STORAGE_COLOR {
+            #filepath:Path
+            #nusMap:NusMap;
+            #blockAlias:BlockAlias;
+            #history:History;
+            #favourite:Favourite;
+            #dailyRoute:DailyRoute;
+            +setData(:NusMap, :BlockAlias, :History, :Favourite, :DailyRoute)
+            +saveData()
+            +loadData()
+        }
+
+         class AliasStorage STORAGE_COLOR {
+             +saveData()
+             +loadData()
+         }
+         class DailyRouteStorage STORAGE_COLOR {
+             +saveData()
+             +loadData()
+         }
+         class FavouriteStorage STORAGE_COLOR {
+             +saveData()
+             +loadData()
+         }
+         class HistoryStorage STORAGE_COLOR {
+             +saveData()
+             +loadData()
+         }
+         class NotesStorage STORAGE_COLOR {
+             +saveData()
+             +loadData()
+         }
+
+
+}
+
+
+
+class NusMaze NUSMAZE_COLOR {
+}
+
+
+"{abstract}\nStorage" ..up|> DataEncoder
+"{abstract}\nStorage" ..up|> DataDecoder
+AliasStorage --up|> "{abstract}\nStorage"
+DailyRouteStorage --up|> "{abstract}\nStorage"
+FavouriteStorage --up|> "{abstract}\nStorage"
+HistoryStorage --up|> "{abstract}\nStorage"
+NotesStorage --up|> "{abstract}\nStorage"
+
+AliasStorage "**1**" <.. NusMaze : creates <
+DailyRouteStorage "**1**" <.. NusMaze : creates <
+FavouriteStorage  "**1**" <.. NusMaze : creates <
+HistoryStorage  "**1**" <.. NusMaze : creates <
+NotesStorage  "**1**" <.. NusMaze : creates <
+
+AliasStorage --up> Data
+DailyRouteStorage --up> Data
+FavouriteStorage --up> Data
+HistoryStorage --up> Data
+NotesStorage --up> Data
+
+skinparam classAttributeIconSize 0
+hide AliasStorage attributes
+hide DailyRouteStorage attributes
+hide FavouriteStorage attributes
+hide HistoryStorage attributes
+hide NotesStorage attributes
+hide NusMaze members
+hide DataDecoder members
+hide DataEncoder members
+hide circle
+
+@enduml
