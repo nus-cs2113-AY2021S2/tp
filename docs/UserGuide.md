@@ -217,7 +217,7 @@ Opens the specified module.
     <tr>
         <td>Step #1</td>
         <td style="text-align: center">When you enter</td>
-        <td><code>open CS2113T</code></td>
+        <td><pre>open CS2113T</pre></td>
     </tr>
     <tr>
         <td></td>
@@ -239,9 +239,18 @@ Adds a module with the specified module name.
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | add CS2113T | Added CS2113T to the module list. |
+<table>
+    <tr>
+        <td>Step #1</td>
+        <td style="text-align: center">When you enter</td>
+        <td><pre>add CS2113T</pre></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: center">You will get</td>
+        <td><pre>Added CS2113T to the module list.</pre></td>
+    </tr>
+</table>
 
 **Result** - A new module called CS2113T is added.
 
