@@ -18,7 +18,8 @@ public class GoalIntervalTypeComparator implements Comparator<Goal> {
             } else {
                 return 0;
             }
-        } else if (IntervalType.getIntervalTypeWeight(intervalType1) < IntervalType.getIntervalTypeWeight(intervalType2)) {
+        } else if (IntervalType.getIntervalTypeWeight(intervalType1) <
+                IntervalType.getIntervalTypeWeight(intervalType2)) {
             return -1;
         } else {
             return 1;

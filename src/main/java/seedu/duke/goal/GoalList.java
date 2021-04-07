@@ -104,7 +104,8 @@ public class GoalList {
      * @param intervalType the interval type of the goal.
      */
     public void initializeGoalProgress(IntervalType intervalType) {
-        assert intervalType == IntervalType.INVALID || intervalType == null : "A interval type is expected but not received!";
+        assert intervalType == IntervalType.INVALID || intervalType == null
+                : "A interval type is expected but not received!";
         if (goals.isEmpty()) {
             return;
         }
@@ -133,7 +134,7 @@ public class GoalList {
      * Updates the progress of goals of a given interval type with given progress value.
      *
      * @param intervalType the interval type of goals.
-     * @param progress   the new value of the progress in double.
+     * @param progress     the new value of the progress in double.
      */
     public void updateProgress(IntervalType intervalType, double progress) {
         for (Goal goal : goals) {
