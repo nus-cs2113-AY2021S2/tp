@@ -125,6 +125,8 @@ public class NusFoodReviews {
         return canteenIndex;
     }
 
+    public int getUserIndex() { return userIndex; }
+
     public void setCanteenIndex() throws DukeExceptions {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
@@ -172,5 +174,4 @@ public class NusFoodReviews {
     public ArrayList<Canteen> getCanteens() {
         return canteens;
     }
-
 }
