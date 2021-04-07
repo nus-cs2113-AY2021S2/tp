@@ -4,7 +4,7 @@ import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
 import seedu.duke.goal.Goal;
 import seedu.duke.goal.ExerciseGoal;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 import seedu.duke.goal.SleepGoal;
 import seedu.duke.goal.BodyWeightGoal;
 import seedu.duke.goal.DietGoal;
@@ -20,20 +20,20 @@ public class SetCommand extends Command {
 
     public SetCommand(CommandRecordType recordType, HashMap<String, String> params) throws NumberFormatException {
         this.recordType = recordType;
-        PeriodType periodType = PeriodType.valueOf(params.get("periodType"));
+        IntervalType intervalType = IntervalType.valueOf(params.get("intervalType"));
         double target = Double.parseDouble(params.get("target"));
         switch (recordType) {
         case EXERCISE:
-            goal = new ExerciseGoal(periodType, target);
+            goal = new ExerciseGoal(intervalType, target);
             break;
         case SLEEP:
-            goal = new SleepGoal(periodType, target);
+            goal = new SleepGoal(intervalType, target);
             break;
         case DIET:
-            goal = new DietGoal(periodType, target);
+            goal = new DietGoal(intervalType, target);
             break;
         case BODY_WEIGHT:
-            goal = new BodyWeightGoal(periodType, target);
+            goal = new BodyWeightGoal(intervalType, target);
             break;
         default:
             goal = null;

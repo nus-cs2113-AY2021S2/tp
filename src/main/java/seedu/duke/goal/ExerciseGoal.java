@@ -9,11 +9,11 @@ public class ExerciseGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param intervalType   the interval type of the goal which can be daily or weekly.
      * @param targetEnergy the target energy to be burnt.
      */
-    public ExerciseGoal(PeriodType periodType, double targetEnergy) throws NumberFormatException {
-        super(RecordType.EXERCISE, periodType, targetEnergy);
+    public ExerciseGoal(IntervalType intervalType, double targetEnergy) throws NumberFormatException {
+        super(RecordType.EXERCISE, intervalType, targetEnergy);
         if (targetEnergy <= 0 || targetEnergy > 10000) {
             throw new NumberFormatException("Target calorie invalid");
         }
@@ -25,12 +25,12 @@ public class ExerciseGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param periodType   the period type of the goal which can be daily or weekly.
+     * @param intervalType   the interval type of the goal which can be daily or weekly.
      * @param targetEnergy the target energy to be burnt.
      * @param daySet       the date when the goal is set.
      */
-    public ExerciseGoal(PeriodType periodType, double targetEnergy, LocalDate daySet) {
-        super(RecordType.EXERCISE, periodType, targetEnergy, daySet);
+    public ExerciseGoal(IntervalType intervalType, double targetEnergy, LocalDate daySet) {
+        super(RecordType.EXERCISE, intervalType, targetEnergy, daySet);
         initializeProgress();
         lengthOfTarget = getLengthOfTarget();
         setSeparator();
@@ -45,7 +45,7 @@ public class ExerciseGoal extends Goal {
     @Override
     public String getGoalSummary() {
         return "Date Set: " + getDaySet().format(DATE_FORMATTER) + "\n"
-                + "Goal Type: " + getPeriodType().toString() + " " + getType().toString().toLowerCase() + "\n"
+                + "Goal Type: " + getIntervalType().toString() + " " + getType().toString().toLowerCase() + "\n"
                 + "Target: " + getTarget() + " " + getProgressUnit() + "\n"
                 + "Progress: " + getProgress() + " " + getProgressUnit();
     }
@@ -53,14 +53,14 @@ public class ExerciseGoal extends Goal {
     @Override
     public String getGoalData() {
         return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
-                + getPeriodType().toString().toLowerCase() + separatorBetweenTypeAndTarget
+                + getIntervalType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                 + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
                 + getProgress() + " " + getProgressUnit() + getAchieved() + "\n";
     }
 
     @Override
     public String getGoalDataToStore() {
-        return "E" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + periodType + SEPARATOR + target;
+        return "E" + SEPARATOR + getDaySet().format(DATE_FORMATTER) + SEPARATOR + intervalType + SEPARATOR + target;
     }
 
     private int getLengthOfTarget() {
