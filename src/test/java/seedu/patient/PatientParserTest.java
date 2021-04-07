@@ -3,13 +3,13 @@ package seedu.patient;
 import org.junit.jupiter.api.Test;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.PatientActions;
+import seedu.model.patient.PatientList;
 import seedu.logic.parser.PatientParser;
 
 public class PatientParserTest {
 
     private PatientParser parser;
-    private PatientActions patients;
+    private PatientList patients;
 
     @Test
     public void testReturnCommand() throws HealthVaultException {

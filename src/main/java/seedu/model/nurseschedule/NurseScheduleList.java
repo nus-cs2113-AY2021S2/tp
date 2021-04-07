@@ -1,14 +1,9 @@
-package seedu.logic.command;
+package seedu.model.nurseschedule;
 
-import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.logic.errorchecker.NurseScheduleChecker;
-import seedu.model.NurseSchedule;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
-
-import static seedu.logic.instance.NurseScheduleInstance.logger;
-import static seedu.ui.UI.prettyPrint;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -16,7 +11,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 
-public class NurseScheduleActions {
+import static seedu.logic.instance.NurseScheduleInstance.logger;
+import static seedu.ui.UI.prettyPrint;
+
+public class NurseScheduleList {
 
     private static ArrayList<NurseSchedule> findSchedules = new ArrayList<>();
     private static ArrayList<String> nursesFound = new ArrayList<String>();
@@ -24,12 +22,12 @@ public class NurseScheduleActions {
 
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
-    public NurseScheduleActions(ArrayList<NurseSchedule> load) {
+    public NurseScheduleList(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
         logger.info("Creating a NurseSchedule list");
     }
 
-    public NurseScheduleActions() { }
+    public NurseScheduleList() { }
 
     public void clearSchedules() {
         nurseSchedules.clear();

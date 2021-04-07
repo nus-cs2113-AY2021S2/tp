@@ -1,7 +1,6 @@
-package seedu.logic.command;
+package seedu.model.staff;
 
 import seedu.logic.errorchecker.StaffChecker;
-import seedu.model.staff.Staff;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
 
@@ -10,7 +9,7 @@ import java.util.Iterator;
 
 import static seedu.ui.UI.prettyPrint;
 
-public class StaffAggregation {
+public class StaffList {
     private static final String DOCTOR_TYPE = "D";
     private static final String NURSE_TYPE = "N";
     private ArrayList<Staff> list = new ArrayList<>();
@@ -19,7 +18,7 @@ public class StaffAggregation {
     protected static int numNurse = 0;
     private StaffChecker staffChecker = new StaffChecker();
 
-    public StaffAggregation() {
+    public StaffList() {
     }
 
     public void resetList() {

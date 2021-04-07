@@ -1,4 +1,4 @@
-package seedu.model;
+package seedu.model.inventory;
 
 import java.text.DecimalFormat;
 

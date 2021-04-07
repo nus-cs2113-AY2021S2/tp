@@ -1,9 +1,9 @@
 package seedu.storage;
 
 import seedu.exceptions.HealthVaultException;
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.logic.errorchecker.InventoryChecker;
-import seedu.model.Inventory;
+import seedu.model.inventory.Inventory;
 import seedu.ui.InventoryUI;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -81,7 +81,7 @@ public class InventoryStorage {
         fileScanner.close();
         return inventories;
     }
-    public void storeInventory(InventoryActions saveInput) {
+    public void storeInventory(InventoryList saveInput) {
         fileInit();
         try {
             //creates a new file writer to write to text file

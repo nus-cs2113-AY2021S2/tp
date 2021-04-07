@@ -1,6 +1,6 @@
 package seedu.logic.command.inventory;
 
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.ui.InventoryUI;
 import seedu.logic.command.Command;
 
@@ -12,7 +12,7 @@ public class InventoryDelete extends Command {
         this.args = args;
     }
 
-    public void execute(InventoryActions drugs, InventoryUI ui) {
+    public void execute(InventoryList drugs, InventoryUI ui) {
         drugs.deleteDrugs(args);
     }
     @Override

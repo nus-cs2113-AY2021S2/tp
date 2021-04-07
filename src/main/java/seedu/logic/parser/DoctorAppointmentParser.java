@@ -3,7 +3,7 @@ package seedu.logic.parser;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
-import seedu.logic.command.AppointmentActions;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.logic.command.doctorappointment.*;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
@@ -13,7 +13,7 @@ import static seedu.ui.UI.smartCommandRecognition;
 
 public class DoctorAppointmentParser {
 
-    public static Command parse(String input, AppointmentActions details) throws HealthVaultException {
+    public static Command parse(String input, AppointmentList details) throws HealthVaultException {
         final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
 
         String[] inputArray = input.split("/");

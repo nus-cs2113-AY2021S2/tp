@@ -7,17 +7,17 @@ import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.NonExistentDrugException;
 import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.logic.command.InventoryActions;
-import seedu.model.Inventory;
+import seedu.model.inventory.InventoryList;
+import seedu.model.inventory.Inventory;
 import java.util.ArrayList;
 
 public class InventoryChecker extends MainChecker {
-    private InventoryActions inventory;
+    private InventoryList inventory;
     private ArrayList<Inventory> inventoryArrayList;
     private String[] stringTokens;
     private int numberOfTokens;
 
-    public InventoryChecker(InventoryActions inventory, String[] stringTokens, int numberOfTokens) {
+    public InventoryChecker(InventoryList inventory, String[] stringTokens, int numberOfTokens) {
         this.inventory = inventory;
         this.stringTokens = stringTokens;
         this.numberOfTokens = numberOfTokens;
@@ -67,7 +67,7 @@ public class InventoryChecker extends MainChecker {
     }
 
     public static void checkDuplicate(String inputString) throws DuplicateDrugException {
-        for (Inventory inventory : InventoryActions.list) {
+        for (Inventory inventory : InventoryList.list) {
             String drugName = inventory.getDrugName();
             if (drugName.equals(inputString)) {
                 throw new DuplicateDrugException();
@@ -98,7 +98,7 @@ public class InventoryChecker extends MainChecker {
         return false;
     }
 
-    public void isNameExist(String userInput, InventoryActions drugs) throws NonExistentDrugException{
+    public void isNameExist(String userInput, InventoryList drugs) throws NonExistentDrugException{
        if (!drugs.isDrugStored(userInput)) {
            throw new NonExistentDrugException("NameDoesNotExist");
        }
