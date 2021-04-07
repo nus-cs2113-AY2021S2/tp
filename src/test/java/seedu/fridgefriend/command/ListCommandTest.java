@@ -109,7 +109,7 @@ class ListCommandTest {
         fridgeOther.add(duckNotOther);
 
         listCommand.setData(fridgeOther);
-        String expectedMessage = "These are the food that belong to OTHERS:\n"
+        String expectedMessage = "These are the food that belong to OTHER:\n"
                 + "\t1. Food name: chicken, category: OTHER, expiry: "
                 + "31-07-2021, stored in: LOWER_SHELF, quantity: 200\n"
                 + "\t2. Food name: lettuce, category: VEGETABLE, expiry: "

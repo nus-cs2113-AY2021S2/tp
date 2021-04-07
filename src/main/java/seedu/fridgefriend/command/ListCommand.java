@@ -168,7 +168,7 @@ public class ListCommand extends Command {
      */
     public String getListByOthersMessage() {
         LoggingHandler.logInfo("Searching for 'Others'.");
-        StringBuilder message = new StringBuilder("These are the food that belong to OTHERS:");
+        StringBuilder message = new StringBuilder("These are the food that belong to OTHER:");
         for (int i = 0; i < fridge.getSize(); i++) {
             message.append(getMatchOthersFoodDescription(i));
         }
