@@ -5,10 +5,8 @@ import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.*;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
 import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.logic.command.AppointmentActions;
-import seedu.logic.parser.DoctorAppointmentParser;
-import seedu.model.DoctorAppointment;
+import seedu.model.doctorappointment.AppointmentList;
+import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.UI;
@@ -147,7 +145,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         checkAptID(appointmentID);
         illegalCharacterChecker(appointmentID, "Appointment ID");
         if (character[0].equals("A")) {
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
+            for (DoctorAppointment id : AppointmentList.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
                     throw new DuplicateIDException(appointmentID);
                 }
@@ -161,7 +159,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         String[] character = appointmentID.split("");
 
         if (character[0].equals("A")) {
-            for (DoctorAppointment id : AppointmentActions.appointmentList) {
+            for (DoctorAppointment id : AppointmentList.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
                     return true;
                 }
@@ -192,7 +190,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     public static boolean isValidIDToDelete(String ID) {
         String[] IDKeyword = ID.split("");
 
-        for (DoctorAppointment doc : AppointmentActions.appointmentList) {
+        for (DoctorAppointment doc : AppointmentList.appointmentList) {
             if (IDKeyword[0].equals("A")) {
                 if (doc.getAppointmentId().equals(ID)) {
                     return true;

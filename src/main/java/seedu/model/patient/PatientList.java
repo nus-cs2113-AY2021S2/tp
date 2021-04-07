@@ -1,20 +1,17 @@
-package seedu.logic.command;
+package seedu.model.patient;
 
-import seedu.model.Patient;
 import seedu.ui.PatientUI;
-import seedu.ui.UI;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class PatientActions {
+public class PatientList {
 
     private static ArrayList<Patient> patients = new ArrayList<Patient>();
 
-    public PatientActions() {
+    public PatientList() {
     }
 
-    public PatientActions(ArrayList<Patient> load) {
+    public PatientList(ArrayList<Patient> load) {
         this.patients = load;
     }
 

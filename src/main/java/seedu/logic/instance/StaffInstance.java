@@ -2,7 +2,7 @@ package seedu.logic.instance;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.logic.parser.StaffParser;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
@@ -10,7 +10,7 @@ import seedu.ui.UI;
 
 public class StaffInstance {
     private StaffUI staffUI;
-    private StaffAggregation staffAggregation;
+    private StaffList staffList;
     private StaffStorage staffStorage;
     private StaffParser staffParser;
 
@@ -18,13 +18,13 @@ public class StaffInstance {
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
         staffParser = new StaffParser();
-        staffAggregation = new StaffAggregation();
+        staffList = new StaffList();
     }
 
 
     public void run() {
         try {
-            staffStorage.fileHandling(staffAggregation);
+            staffStorage.fileHandling(staffList);
         } catch (HealthVaultException e) {
             StaffUI.corruptedFileErrorMessage();
             return;
@@ -34,11 +34,11 @@ public class StaffInstance {
             String line;
             line = staffUI.getInput("Staff");
             try {
-                Command c = staffParser.commandHandler(line, staffAggregation);
+                Command c = staffParser.commandHandler(line, staffList);
                 if (c == null){
                     continue;
                 }
-                c.execute(staffAggregation, staffUI, staffStorage);
+                c.execute(staffList, staffUI, staffStorage);
                 if (c.isExit()) {
                     System.out.println("Returning to start Menu!\n");
                     break;

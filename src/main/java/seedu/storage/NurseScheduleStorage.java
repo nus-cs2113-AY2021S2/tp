@@ -2,10 +2,10 @@ package seedu.storage;
 
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.nurseschedules.*;
-import seedu.logic.command.NurseScheduleActions;
+import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.logic.errorchecker.NurseScheduleChecker;
-import seedu.model.NurseSchedule;
-import seedu.model.Patient;
+import seedu.model.nurseschedule.NurseSchedule;
+import seedu.model.patient.Patient;
 import seedu.ui.NurseScheduleUI;
 
 import java.io.*;
@@ -49,7 +49,7 @@ public class NurseScheduleStorage {
         return nurseSchedules;
     }
 
-    public void writeToFile(NurseScheduleActions nurseSchedules) {
+    public void writeToFile(NurseScheduleList nurseSchedules) {
         try {
             File file = new File(FILE_PATH);
             FileWriter writer = new FileWriter(file);

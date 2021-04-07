@@ -1,4 +1,4 @@
-package seedu.model;
+package seedu.model.patient;
 
 import java.util.Locale;
 

@@ -1,8 +1,7 @@
-package seedu.logic.command;
+package seedu.model.doctorappointment;
 
 
 import seedu.exceptions.HealthVaultException;
-import seedu.model.DoctorAppointment;
 import seedu.exceptions.EmptyListException;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
@@ -12,10 +11,10 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-public class AppointmentActions {
+public class AppointmentList {
     public static ArrayList<DoctorAppointment> appointmentList;
 
-    public AppointmentActions(ArrayList<DoctorAppointment> loadAppointments) {
+    public AppointmentList(ArrayList<DoctorAppointment> loadAppointments) {
         appointmentList = loadAppointments;
     }
 

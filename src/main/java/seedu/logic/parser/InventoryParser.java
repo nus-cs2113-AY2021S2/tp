@@ -2,11 +2,10 @@ package seedu.logic.parser;
 
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.logic.command.inventory.InventoryAdd;
 import seedu.logic.command.inventory.InventoryDelete;
 import seedu.logic.command.inventory.InventoryHelp;
-import seedu.logic.command.inventory.InventoryList;
 import seedu.logic.command.inventory.InventoryReturn;
 import seedu.logic.errorchecker.InventoryChecker;
 import seedu.logic.errorchecker.MainChecker;
@@ -17,7 +16,7 @@ public class InventoryParser {
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
     private InventoryChecker checker;
 
-    public Command inventoryParse(String fullCommand, InventoryActions inventories)
+    public Command inventoryParse(String fullCommand, InventoryList inventories)
             throws ArrayIndexOutOfBoundsException,
             HealthVaultException {
         String[] stringTokens = fullCommand.trim().split("/");
@@ -25,13 +24,14 @@ public class InventoryParser {
         MainChecker.checkNumInput(fullCommand, 4, 1);
 
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
+
         Command c = null;
         checker = new InventoryChecker(inventories, stringTokens, numberOfTokens);
         switch (command) {
         case "list":
             int numberOfInputs = 1;
             MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            c = new InventoryList();
+            c = new seedu.logic.command.inventory.InventoryList();
             break;
         case "add":
             numberOfInputs = 4;
@@ -42,11 +42,11 @@ public class InventoryParser {
             c = new InventoryAdd(addFormat);
             break;
         case "delete":
-            numberOfInputs = 3;
+            numberOfInputs = 2;
             MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
             MainChecker.checkBlankInput(fullCommand);
             checker.checkDelete();
-            c = new InventoryDelete(stringTokens);
+            c = new InventoryDelete(stringTokens[1]);
             break;
         case "help":
             numberOfInputs = 1;
