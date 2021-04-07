@@ -1,0 +1,261 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+participant NusMaze
+
+participant ":AliasStorage"
+participant ":DailyRouteStorage"
+participant ":FavouriteStorage"
+participant ":HistoryStorage"
+participant ":NotesStorage"
+participant ":DataEncoder"
+participant ":DataDecoder"
+
+participant ":BlockAlias"
+participant ":DailyRoute"
+participant ":Favourite"
+participant ":History"
+participant ":NusMap"
+participant ":Block"
+
+participant ":Files"
+
+NusMaze --> NusMaze: initializeData()
+activate NusMaze #DarkSalmon
+NusMaze --> ":BlockAlias": BlockAlias()
+activate ":BlockAlias"
+deactivate ":BlockAlias"
+NusMaze --> ":DailyRoute": DailyRoute()
+activate ":DailyRoute"
+deactivate ":DailyRoute"
+NusMaze --> ":Favourite": Favourite()
+activate ":Favourite"
+deactivate ":Favourite"
+NusMaze --> ":History": History()
+activate ":History"
+deactivate ":History"
+NusMaze --> ":NusMap": NusMap()
+activate ":NusMap"
+deactivate ":NusMap"
+deactivate NusMaze
+
+NusMaze --> NusMaze: initialiseStorage()
+activate NusMaze #DarkSalmon
+NusMaze --> ":AliasStorage": ":AliasStorage"("data/aliasList.txt")
+activate ":AliasStorage"
+deactivate ":AliasStorage"
+NusMaze --> ":DailyRouteStorage": ":DailyRouteStorage"("data/dailyRouteList.txt")
+activate ":DailyRouteStorage"
+deactivate ":DailyRouteStorage"
+NusMaze --> ":FavouriteStorage": ":FavouriteStorage"("data/favouriteList.txt")
+activate ":FavouriteStorage"
+deactivate ":FavouriteStorage"
+NusMaze --> ":HistoryStorage": ":HistoryStorage"("data/history.txt")
+activate ":HistoryStorage"
+deactivate ":HistoryStorage"
+NusMaze --> ":NotesStorage": ":NotesStorage"("data/noteList.txt")
+activate ":NotesStorage"
+deactivate ":NotesStorage"
+deactivate NusMaze #DarkSalmon
+
+NusMaze --> NusMaze: setStorageData()
+activate NusMaze #DarkSalmon
+NusMaze --> ":AliasStorage" : setData(":NusMap", blockAlias, history, favourite, dailyRoute)
+activate ":AliasStorage"
+deactivate ":AliasStorage"
+NusMaze --> ":DailyRouteStorage": setData(":NusMap", blockAlias, history, favourite, dailyRoute)
+activate ":DailyRouteStorage"
+deactivate ":DailyRouteStorage"
+NusMaze --> ":FavouriteStorage": setData(":NusMap", blockAlias, history, favourite, dailyRoute)
+activate ":FavouriteStorage"
+deactivate ":FavouriteStorage"
+NusMaze --> ":HistoryStorage": setData(":NusMap", blockAlias, history, favourite, dailyRoute)
+activate ":HistoryStorage"
+deactivate ":HistoryStorage"
+NusMaze --> ":NotesStorage": setData(":NusMap", blockAlias, history, favourite, dailyRoute)
+activate ":NotesStorage"
+deactivate ":NotesStorage"
+deactivate NusMaze #DarkSalmon
+
+NusMaze --> NusMaze: loadPreviousData()
+activate NusMaze #DarkSalmon
+
+NusMaze --> ":AliasStorage": loadData()
+activate ":AliasStorage"
+":AliasStorage" ---> ":DataDecoder": decodeAliasAndNoteData(encodedData, ":NusMap")
+activate ":DataDecoder"
+":DataDecoder" ---> ":AliasStorage": decodedData
+deactivate ":DataDecoder"
+":AliasStorage" --> ":BlockAlias": addAlias(decodedData[0], decodedData[1])
+activate  ":BlockAlias"
+deactivate ":BlockAlias"
+":AliasStorage" --> NusMaze
+deactivate ":AliasStorage"
+
+NusMaze --> ":DailyRouteStorage": loadData()
+activate ":DailyRouteStorage"
+":DailyRouteStorage" ---> ":DataDecoder": decodeDailyRouteData(encodedData, ":NusMap", dailyRoute)
+activate ":DataDecoder"
+":DataDecoder" ---> ":DailyRouteStorage": decodedData
+deactivate ":DataDecoder"
+":DailyRouteStorage" --> ":DailyRoute": addDailyRoute(decodedData[0], schedule)
+activate  ":DailyRoute"
+deactivate ":DailyRoute"
+":DailyRouteStorage" --> NusMaze
+deactivate ":DailyRouteStorage"
+
+NusMaze --> ":FavouriteStorage": loadData()
+activate ":FavouriteStorage"
+":FavouriteStorage" ---> ":DataDecoder": decodeHistoryAndFavouriteData(encodedData, ":NusMap");
+activate ":DataDecoder"
+":DataDecoder" ---> ":FavouriteStorage": decodedData
+deactivate ":DataDecoder"
+":FavouriteStorage" --> ":Favourite": addFavourite(decodedData[0], decodedData[1])
+activate  ":Favourite"
+deactivate ":Favourite"
+":FavouriteStorage" --> NusMaze
+deactivate ":FavouriteStorage"
+
+NusMaze --> ":HistoryStorage": loadData()
+activate ":HistoryStorage"
+":HistoryStorage" ---> ":DataDecoder": decodeHistoryAndFavouriteData(encodedData, ":NusMap")
+activate ":DataDecoder"
+":DataDecoder" ---> ":HistoryStorage": decodedData
+deactivate ":DataDecoder"
+":HistoryStorage" --> ":History": addHistory(decodedData[0], decodedData[1])
+activate  ":History"
+deactivate ":History"
+":HistoryStorage" --> NusMaze
+deactivate ":HistoryStorage"
+
+NusMaze --> ":NotesStorage": loadData()
+activate ":NotesStorage"
+":NotesStorage" ---> ":DataDecoder": decodeAliasAndNoteData(encodedData, ":NusMap")
+activate ":DataDecoder"
+":DataDecoder" ---> ":NotesStorage": decodedData
+deactivate ":DataDecoder"
+":NotesStorage" --> ":NusMap": getBlock(decodedData[0])
+activate  ":NusMap"
+":NusMap" --> ":Block": addNote(decodedData[1])
+activate ":Block"
+deactivate ":Block"
+deactivate ":NusMap"
+":NotesStorage" --> NusMaze
+deactivate ":NotesStorage"
+
+deactivate NusMaze #DarkSalmon
+
+loop till bye command
+    NusMaze --> NusMaze: saveCurrentData()
+    activate NusMaze #DarkSalmon
+
+    NusMaze --> ":AliasStorage": saveData()
+    activate ":AliasStorage"
+    ":AliasStorage" ---> ":DataEncoder": encodeAlias(blockAlias)
+    activate ":DataEncoder"
+    group loop[through all entries in HashMap]
+    ":DataEncoder" ---> ":BlockAlias": getAliasHashMap().entrySet()
+    activate ":BlockAlias"
+    end
+    ":BlockAlias" ---> ":DataEncoder": data [ ]
+    deactivate ":BlockAlias"
+    ":DataEncoder" ---> ":AliasStorage": encodedData
+    deactivate ":DataEncoder"
+    ":AliasStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":AliasStorage" --> NusMaze
+    deactivate ":AliasStorage"
+
+    NusMaze --> ":DailyRouteStorage": saveData()
+    activate ":DailyRouteStorage"
+    ":DailyRouteStorage" ---> ":DataEncoder": encodeDailyRoute(dailyRoute)
+    activate ":DataEncoder"
+    group loop[through all entries in HashMap]
+        ":DataEncoder" ---> ":DailyRoute": getFavouriteSize()
+        activate ":DailyRoute"
+        deactivate ":DailyRoute"
+        ":DataEncoder" ---> ":DailyRoute": getSpecificEntry(i)
+        activate ":DailyRoute"
+        deactivate ":DailyRoute"
+    end
+    ":DataEncoder" ---> ":DailyRouteStorage": encodedData
+    deactivate ":DataEncoder"
+    ":DailyRouteStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":DailyRouteStorage" --> NusMaze
+    deactivate ":DailyRouteStorage"
+
+    NusMaze --> ":FavouriteStorage": saveData()
+    activate ":FavouriteStorage"
+    ":FavouriteStorage" ---> ":DataEncoder": encodeFavourite(favourite)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":Favourite": getSelectableDays()
+        activate ":Favourite"
+        deactivate ":Favourite"
+        deactivate ":Favourite"
+        ":DataEncoder" ---> ":Favourite": getDailyRoute(day)
+        activate ":Favourite"
+        deactivate ":Favourite"
+    end
+    ":DataEncoder" ---> ":FavouriteStorage": encodedData
+    deactivate ":DataEncoder"
+    ":FavouriteStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":FavouriteStorage" --> NusMaze
+    deactivate ":FavouriteStorage"
+
+    NusMaze --> ":HistoryStorage": saveData()
+    activate ":HistoryStorage"
+    ":HistoryStorage" ---> ":DataEncoder": encodeHistory(history)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":History": getHistorySize()
+        activate ":History"
+        deactivate ":History"
+        deactivate ":History"
+        ":DataEncoder" ---> ":History": getSpecificEntry(i)
+        activate ":History"
+        deactivate ":History"
+    end
+    ":DataEncoder" ---> ":HistoryStorage": encodedData
+    deactivate ":DataEncoder"
+    ":HistoryStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":HistoryStorage" --> NusMaze
+    deactivate ":HistoryStorage"
+
+    NusMaze --> ":NotesStorage": saveData()
+    activate ":NotesStorage"
+    ":NotesStorage" ---> ":DataEncoder": encodeNotes(nusMap)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":NusMap": getValues()
+        activate ":NusMap"
+        deactivate ":NusMap"
+        ":DataEncoder" ---> ":Block": getNotes().size()
+        activate ":Block"
+        deactivate ":Block"
+        ":DataEncoder" ---> ":Block": getName()
+        activate ":Block"
+        deactivate ":Block"
+        ":DataEncoder" ---> ":Block": getNotes().get(i)
+        activate ":Block"
+        deactivate ":Block"
+    end
+    ":DataEncoder" ---> ":NotesStorage": encodedData
+    deactivate ":DataEncoder"
+    ":NotesStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":NotesStorage" --> NusMaze
+    deactivate ":NotesStorage"
+
+end
+deactivate NusMaze #DarkSalmon
+@enduml

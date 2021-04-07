@@ -1,0 +1,139 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant NusMaze
+
+participant ":AliasStorage"
+participant ":DailyRouteStorage"
+participant ":FavouriteStorage"
+participant ":HistoryStorage"
+participant ":NotesStorage"
+participant ":DataEncoder"
+participant ":DataDecoder"
+
+participant ":BlockAlias"
+participant ":DailyRoute"
+participant ":Favourite"
+participant ":History"
+participant ":NusMap"
+participant ":Block"
+
+participant ":Files"
+
+
+group sd saveData
+loop till bye command
+    NusMaze --> NusMaze: saveCurrentData()
+    activate NusMaze #DarkSalmon
+
+    NusMaze --> ":AliasStorage": saveData()
+    activate ":AliasStorage"
+    ":AliasStorage" ---> ":DataEncoder": encodeAlias(blockAlias)
+    activate ":DataEncoder"
+    group loop[through all entries in HashMap]
+    ":DataEncoder" ---> ":BlockAlias": getAliasHashMap().entrySet()
+    activate ":BlockAlias"
+    end
+    ":BlockAlias" ---> ":DataEncoder": data [ ]
+    deactivate ":BlockAlias"
+    ":DataEncoder" ---> ":AliasStorage": encodedData
+    deactivate ":DataEncoder"
+    ":AliasStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":AliasStorage" --> NusMaze
+    deactivate ":AliasStorage"
+
+    NusMaze --> ":DailyRouteStorage": saveData()
+    activate ":DailyRouteStorage"
+    ":DailyRouteStorage" ---> ":DataEncoder": encodeDailyRoute(dailyRoute)
+    activate ":DataEncoder"
+    group loop[through all entries in HashMap]
+        ":DataEncoder" ---> ":DailyRoute": getFavouriteSize()
+        activate ":DailyRoute"
+        deactivate ":DailyRoute"
+        ":DataEncoder" ---> ":DailyRoute": getSpecificEntry(i)
+        activate ":DailyRoute"
+        deactivate ":DailyRoute"
+    end
+    ":DataEncoder" ---> ":DailyRouteStorage": encodedData
+    deactivate ":DataEncoder"
+    ":DailyRouteStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":DailyRouteStorage" --> NusMaze
+    deactivate ":DailyRouteStorage"
+
+    NusMaze --> ":FavouriteStorage": saveData()
+    activate ":FavouriteStorage"
+    ":FavouriteStorage" ---> ":DataEncoder": encodeFavourite(favourite)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":Favourite": getSelectableDays()
+        activate ":Favourite"
+        deactivate ":Favourite"
+        deactivate ":Favourite"
+        ":DataEncoder" ---> ":Favourite": getDailyRoute(day)
+        activate ":Favourite"
+        deactivate ":Favourite"
+    end
+    ":DataEncoder" ---> ":FavouriteStorage": encodedData
+    deactivate ":DataEncoder"
+    ":FavouriteStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":FavouriteStorage" --> NusMaze
+    deactivate ":FavouriteStorage"
+
+    NusMaze --> ":HistoryStorage": saveData()
+    activate ":HistoryStorage"
+    ":HistoryStorage" ---> ":DataEncoder": encodeHistory(history)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":History": getHistorySize()
+        activate ":History"
+        deactivate ":History"
+        deactivate ":History"
+        ":DataEncoder" ---> ":History": getSpecificEntry(i)
+        activate ":History"
+        deactivate ":History"
+    end
+    ":DataEncoder" ---> ":HistoryStorage": encodedData
+    deactivate ":DataEncoder"
+    ":HistoryStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":HistoryStorage" --> NusMaze
+    deactivate ":HistoryStorage"
+
+    NusMaze --> ":NotesStorage": saveData()
+    activate ":NotesStorage"
+    ":NotesStorage" ---> ":DataEncoder": encodeNotes(nusMap)
+    activate ":DataEncoder"
+    group loop[for all of objects' array]
+        ":DataEncoder" ---> ":NusMap": getValues()
+        activate ":NusMap"
+        deactivate ":NusMap"
+        ":DataEncoder" ---> ":Block": getNotes().size()
+        activate ":Block"
+        deactivate ":Block"
+        ":DataEncoder" ---> ":Block": getName()
+        activate ":Block"
+        deactivate ":Block"
+        ":DataEncoder" ---> ":Block": getNotes().get(i)
+        activate ":Block"
+        deactivate ":Block"
+    end
+    ":DataEncoder" ---> ":NotesStorage": encodedData
+    deactivate ":DataEncoder"
+    ":NotesStorage" ---> ":Files": write(filepath, encodedData);
+    activate ":Files"
+    deactivate ":Files"
+    ":NotesStorage" --> NusMaze
+    deactivate ":NotesStorage"
+
+end
+
+deactivate NusMaze #DarkSalmon
+end
+@enduml

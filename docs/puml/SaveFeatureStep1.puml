@@ -1,0 +1,52 @@
+@startuml
+participant NusMaze
+
+participant ":AliasStorage"
+participant ":DailyRouteStorage"
+participant ":FavouriteStorage"
+participant ":HistoryStorage"
+participant ":NotesStorage"
+
+ref over NusMaze, ":NotesStorage": initData
+
+NusMaze --> NusMaze: initialiseStorage()
+activate NusMaze #DarkSalmon
+NusMaze --> ":AliasStorage": ":AliasStorage"("data/aliasList.txt")
+activate ":AliasStorage"
+deactivate ":AliasStorage"
+NusMaze --> ":DailyRouteStorage": ":DailyRouteStorage"("data/dailyRouteList.txt")
+activate ":DailyRouteStorage"
+deactivate ":DailyRouteStorage"
+NusMaze --> ":FavouriteStorage": ":FavouriteStorage"("data/favouriteList.txt")
+activate ":FavouriteStorage"
+deactivate ":FavouriteStorage"
+NusMaze --> ":HistoryStorage": ":HistoryStorage"("data/history.txt")
+activate ":HistoryStorage"
+deactivate ":HistoryStorage"
+NusMaze --> ":NotesStorage": ":NotesStorage"(data/noteList.txt")
+activate ":NotesStorage"
+deactivate ":NotesStorage"
+deactivate NusMaze #DarkSalmon
+
+NusMaze --> NusMaze: setStorageData()
+activate NusMaze #DarkSalmon
+NusMaze --> ":AliasStorage" : setData(nusMap, blockAlias, history, favourite, dailyRoute)
+activate ":AliasStorage"
+deactivate ":AliasStorage"
+NusMaze --> ":DailyRouteStorage": setData(nusMap, blockAlias, history, favourite, dailyRoute)
+activate ":DailyRouteStorage"
+deactivate ":DailyRouteStorage"
+NusMaze --> ":FavouriteStorage": setData(nusMap, blockAlias, history, favourite, dailyRoute)
+activate ":FavouriteStorage"
+deactivate ":FavouriteStorage"
+NusMaze --> ":HistoryStorage": setData(nusMap, blockAlias, history, favourite, dailyRoute)
+activate ":HistoryStorage"
+deactivate ":HistoryStorage"
+NusMaze --> ":NotesStorage": setData(nusMap, blockAlias, history, favourite, dailyRoute)
+activate ":NotesStorage"
+deactivate ":NotesStorage"
+deactivate NusMaze #DarkSalmon
+
+ref over NusMaze, ":NotesStorage": loadData
+ref over NusMaze, ":NotesStorage": saveData
+@enduml
