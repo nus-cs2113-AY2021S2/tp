@@ -332,8 +332,92 @@ Invalid Input includes:
 ###  5.4 Nurse Schedule
 
 ### 5.4.1 Nurse Schedule Menu
+
+Similar to the start menu, the Nurse Schedule menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Nurse Schedule Menu, the following steps will occur
+
+**Launching Nurse Schedule Menu**
+
+1.`ToNurseScheduleInstance.execute()` will create and call `NurseScheduleInstance.runCommandLoopUntilExit()`.
+2.`runCommandLoopUntilExit()` will start by loading/creating the NurseSchedule.txt for database records. It will check for any signs of file corruption when loading. An exception will be thrown if any corruption is present.
+3.`runCommandLoopUntilExit()` will then repeatedly call nurseParse().
+
+**Getting User Input**
+
+4.User inputs are repeatedly requested by `runCommandLoopUntilExit`.
+5.`nurseParse()` will call `smartCommandRecognition` to assess the given user input and determine which command is the most similar to the input.
+6.Based on the recognised command, the relevant execution will be carried out.
+
 ### 5.4.2 Add
+
+**Implementation**
+
+When the user attempts to add a new nurse schedule, the
+NurseScheduleInstance, NurseScheduleParser, NurseScheduleChecker, NurseScheduleActions and Nurse Schedule Command
+classes will be accessed. Data input will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAdd Command object is created and executed which will create a NurseSchedule object to be added.
+
+Invalid Inputs include:
+
+>
+	- Invalid Nurse ID or Patient ID format
+	- Non-existent Nurse ID or Patient ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
+	- Duplicate schedules (i.e similar Patient ID and date)
+	
+`add/[Nurse ID]/[Date (DDMMYYYY)]`
+
+**Checking validity of data input**
+
+1.If the command recognised is the add command, the parameters will first be checked for their validity. The following functios will be called in sequence:
+	-isValidDate()
+	-checkNumInput()
+	-illegalCharacterChecker()
+	
+**Creating NurseScheduleAdd object with User Input**
+
+2.If the parameters are valid, a NurseScheduleAdd Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+3.The Command objected is then executed and `NurseScheduleActions.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+
+**Saving NurseSchedule objects into .txt file**
+
+4.The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+5.Control is then returned to NurseScheduleInstance.
+
+
 ### 5.4.3 Delete
+
+**Implementation**
+
+When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed. It takes in Nurse ID and date to identify and delete the Nurse Schedule object. Any invalid input detected will result in an exception thrown and command will be aborted. Else, a NurseScheduleDelete Command object is created and executed.
+
+Invalid Inputs include:
+
+>
+	- Invalid Nurse ID format
+	- Non-existent Nurse ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
+	
+`delete/[Nurse ID]/[Date (DDMMYYYY)]`
+
+**Checking validity of data input**
+
+1. If the command is recognised as a delete command, the parameters provided will first be checked for its validity.
+
+**Creating NurseScheduleDelete object**
+
+2. If the parameters are valid, a NurseScheduleDelete Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleActions.deleteSchedule()`.
+4. `deleteSchedule` iterates through the arraylist and removes the first object that matches the user input given.
+
+**Saving updated NurseSchedule objects into .txt file**
+5. `runCommandLoopUntilExit()` will then call `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+6. Control is then returned to NurseScheduleInstance.
+
 ### 5.4.4 List
 ### 5.4.5 Find
 
