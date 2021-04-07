@@ -377,7 +377,24 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 ### 4.5 Alias
 #### 4.5.1 Adding an alias for block name
 Creates an alias for existing blocks.<br>
-Format : `add alias` → `BLOCK` → `ALIAS_NAME`
+Format : `add alias` → `BLOCK` → `ALIAS_NAME`<br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> add alias
+------------------------------------------------------------------------------------------------------------
+Enter block: 
+* techno edge
+Enter the alias name: 
+* food
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully added FOOD as TECHNO EDGE's alias
+------------------------------------------------------------------------------------------------------------
+```
+<div markdown="block" class="alert alert-warning">
+:warning: Aliases cannot be used in the `Daily route feature`.
+</div>
+
 - When `add alias` command is called, NUSMaze will prompt for the `BLOCK` that you
   wish to set the alias for.
 
@@ -387,11 +404,31 @@ Format : `add alias` → `BLOCK` → `ALIAS_NAME`
 
 #### 4.5.2 Viewing all aliases
 Lists all aliases that are currently active.<br>
-Format : `show alias`
+Format : `show alias` <br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> show alias
+------------------------------------------------------------------------------------------------------------
+Here are your aliases:
+1. FOOD - TECHNO EDGE
+------------------------------------------------------------------------------------------------------------
+```
 
 #### 4.5.3 Deleting aliases
 Deletes an alias that was previously created.<br>
 Format : `delete alias` → `ALIAS_NAME`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> delete alias
+------------------------------------------------------------------------------------------------------------
+Enter the alias name that you wish to delete: 
+* food
+------------------------------------------------------------------------------------------------------------
+Got it! Successfully deleted FOOD from alias list!
+------------------------------------------------------------------------------------------------------------
+```
 - When the `delete alias` command is given, NUSMaze will prompt you for the
   `ALIAS_NAME` that you wish to delete.
 
