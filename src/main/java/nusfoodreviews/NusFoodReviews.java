@@ -134,6 +134,9 @@ public class NusFoodReviews {
         } else if (line.equals("cancel")) {
             canteenIndex = -1;
             return;
+        } else if (line.equals("login")) {
+            resetAllIndex();
+            return;
         }
         canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
     }
@@ -154,7 +157,13 @@ public class NusFoodReviews {
             ui.showGoodbye();
             System.exit(0);
         } else if (line.equals("cancel")) {
-            storeIndex = -1;
+            resetCanteenStoreIndex();
+            return;
+        } else if (line.equals("login")) {
+            resetAllIndex();
+            return;
+        } else if (line.equals("home")) {
+            resetCanteenStoreIndex();
             return;
         }
         storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
