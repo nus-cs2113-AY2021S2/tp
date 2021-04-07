@@ -6,6 +6,7 @@ import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PatientChecker extends MainChecker{
 
@@ -36,7 +37,7 @@ public class PatientChecker extends MainChecker{
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[4], "Illness");
         illegalCharacterChecker(stringTokens[5], "medication required");
-        checkGender(stringTokens[3]);
+        checkGender(stringTokens[3].toLowerCase());
     }
 
     public void checkAdd() throws HealthVaultException, NumberFormatException {
@@ -47,7 +48,7 @@ public class PatientChecker extends MainChecker{
         illegalCharacterChecker(stringTokens[2], "name");
         illegalCharacterChecker(stringTokens[5], "Illness");
         illegalCharacterChecker(stringTokens[6], "medication required");
-        checkGender(stringTokens[4]);
+        checkGender(stringTokens[4].toLowerCase());
     }
 
     public void checkFind() throws HealthVaultException {
@@ -88,7 +89,7 @@ public class PatientChecker extends MainChecker{
 
     private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
-        if (!(age >= 0 && age < 150)) {
+        if (!(age >= 0 && age <= 150)) {
             throw new InvalidPatientAgeException();
         }
     }
