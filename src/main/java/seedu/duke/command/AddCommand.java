@@ -95,7 +95,11 @@ public class AddCommand extends Command {
      */
     private LocalDate getDate(ArrayList<String> arguments) throws CommandException {
         try {
-            return validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+            LocalDate issueDate = validateDate(getOptionValue(arguments, COMMAND_ADD, OPTION_DATE));
+            if (issueDate.compareTo(LocalDate.now()) > 0) {
+                throw new CommandException("Issue date cannot be in the future!", COMMAND_ADD);
+            }
+            return issueDate;
         } catch (DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_ADD);
         }
