@@ -1,3 +1,7 @@
-theme: jekyll-theme-cayman
+title: "NUSMaze"
+theme: jekyll-theme-midnight
+
+markdown: kramdown
+
 plugins:
   - jemoji

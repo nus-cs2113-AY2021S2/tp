@@ -417,7 +417,7 @@ Here are your aliases:
 
 #### 4.5.3 Deleting aliases
 Deletes an alias that was previously created.<br>
-Format : `delete alias` → `ALIAS_NAME`
+Format : `delete alias` → `ALIAS_NAME`<br>
 Example :
 ```
 ------------------------------------------------------------------------------------------------------------
