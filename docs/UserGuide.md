@@ -554,7 +554,9 @@ Refer to [this section](#346-delete-zoom-link).
 ### 3.2 CAP Simulator/Calculator
 
 The CAP Simulator/Calculator allows you to calculate your future CAP base on your current CAP and
-modules you have taken before.
+modules you have taken before.  
+
+To enter CAP Simulator/Calculator, type `2` from the main menu.
 
 CAP Simulator/Calculator menu:
 
