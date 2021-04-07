@@ -1,14 +1,18 @@
-# About us
+# ABOUT US
 
-Display | Name | Github Profile | Portfolio 
+We are a team based in [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg/).
+
+## Project Team
+
+Display | Name | Github Profile | Portfolio
 ----------|:------:|:--------------:|:---------:
 
-![](https://avatars.githubusercontent.com/u/61216523?s=400&u=14d1ea6c1c7a2dc388293b299eb860859388b309&v=4) | Ryan Kwok | [Github](https://github.com/kwokyto) | [Portfolio](docs/team/kwokyto.md)
+![Hu Wen Qi](team/profile_pictures/hwq_pic.png) | Hu Wenqi | [Github](https://github.com/Vinci-Hu) | [Portfolio](team/wenqihu.md)
 
-![alt text](team/hwq_pic.png) | Hu Wenqi | [Github](https://github.com/Vinci-Hu) | [Portfolio](docs/team/wenqihu.md)
+![Kim Joohwan](team/profile_pictures/jw_pic.png) | Kim Joohwan | [Github](https://github.com/joohwan58) | [Portfolio](team/joohwan.md)
 
-![](https://via.placeholder.com/100.png?text=Photo) | Kim Joohwan | [Github](https://github.com/joohwan58) | [Portfolio](docs/team/joohwan.md)
+![Lee Yang Peng](team/profile_pictures/lyp_pic.png)| Lee Yang Peng | [Github](https://github.com/Leeyp) | [Portfolio](team/leeyp.md)
 
-![img.png](team/lyp_pic.png)| Lee Yang Peng | [Github](https://github.com/Leeyp) | [Portfolio](docs/team/leeyp.md)
+![Ryan Kwok](team/profile_pictures/kwokyto_pic.jpg) | Ryan Kwok | [Github](https://github.com/kwokyto) | [Portfolio](team/kwokyto.md)
 
-![](https://via.placeholder.com/100.png?text=Photo) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](docs/team/simjingjie.md)
+![Sim Jing Jie](team/profile_pictures/sjj_pic.png) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)

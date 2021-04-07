@@ -1,0 +1,37 @@
+@startuml ExceptionClassDiagram
+allow_mixing
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor EXCEPTION_COLOR_T4
+skinparam classBackgroundColor EXCEPTION_COLOR
+
+package Exceptions <<Rectangle>> {
+    package "Related to User Input" as ui <<Rectangle>> {
+        class EmptyDescriptionException
+        class InvalidDateException
+        class InvalidInputException
+        class InvalidQuantityException
+    }
+
+    package "Related to Food" as food <<Rectangle>> {
+        class FoodNameNotFoundException
+        class InvalidFoodCategoryException
+        class InvalidFoodLocationException
+        class RepetitiveFoodIdentifierException
+    }
+
+    package "Related to Storage" as storage <<Rectangle>> {
+        class StorageLoadingException
+        class StorageSavingException
+    }
+}
+
+' Basic Layout `
+ui -[hidden]down--> storage
+ui -[hidden]up> food
+storage -[hidden]up-> food
+Exceptions -down-|> Exception
+note top of Exception : All Exception Classes\nin the Exception component \ninherit from standard Java Exception.
+
+
+@enduml

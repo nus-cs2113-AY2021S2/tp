@@ -1,0 +1,87 @@
+@startuml ListCommandSequenceDiagram
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+
+box "Command\n" COMMAND_COLOR_T1
+Participant ":ListCommand" as list COMMAND_COLOR
+end box
+
+box "Food\n" FOOD_COLOR_T1
+Participant ":Fridge" as fridge FOOD_COLOR
+Participant ":Food" as food FOOD_COLOR
+end box
+
+-> list: execute()
+activate list
+
+alt list all
+        list -> list: getListAllMessage()
+        activate list
+        loop food in fridge
+            list-> fridge: getFoodDescription()
+            activate fridge
+
+            fridge -> food: getFood()
+                activate food
+                return
+                return
+                deactivate food
+
+            deactivate fridge
+        end
+        list --> list: list of all Food
+
+
+deactivate list
+<--list
+else list by category
+
+        list -> list: getListByCategoryMessage()
+        activate list
+        loop food in fridge
+            list-> fridge: getMatchCategoryFoodDescription()
+            activate fridge
+
+            fridge -> food: getFood()
+                activate food
+                return
+                opt food matches category
+                return
+                end
+                deactivate food
+
+            deactivate fridge
+        end
+        list --> list: list of Food in Category
+
+deactivate list
+<--list
+
+else list by location
+        list -> list: getListByStorageLocationMessage()
+        activate list
+        loop food in fridge
+            list-> fridge: getMatchStorageFoodDescription()
+            activate fridge
+
+            fridge -> food: getFood()
+                activate food
+                return
+                opt food matches storage location
+                return
+                end
+                deactivate food
+
+            deactivate fridge
+        end
+        list --> list: list of Food in Storage Location
+
+deactivate list
+<--list
+
+end
+
+deactivate list
+
+@enduml

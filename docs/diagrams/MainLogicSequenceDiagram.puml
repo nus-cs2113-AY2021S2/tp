@@ -1,0 +1,53 @@
+@startuml MainLogicSequenceDiagram
+!include style.puml
+
+box "FridgeFriend\n" FRIDGEFRIEND_COLOR_T1
+Participant ":FridgeFriend" as fridgefriend FRIDGEFRIEND_COLOR
+end box
+
+box Utilities UTILITIES_COLOR_T1
+Participant ":Ui" as ui UTILITIES_COLOR
+Participant ":Parser" as parser UTILITIES_COLOR
+end box
+
+box Command COMMAND_COLOR_T1
+Participant "command:Command" as command COMMAND_COLOR
+end box
+
+box Exception EXCEPTION_COLOR_T1
+Participant "e:Exception" as exception EXCEPTION_COLOR
+end box
+
+autoactivate on
+fridgefriend->fridgefriend: run()
+
+loop !isExit
+    fridgefriend -> ui: getNextLine()
+    return userInput
+
+    fridgefriend -> parser: getCommand(userInput)
+    create command
+    parser -> command: constructor()
+    return command
+    return command
+    destroy parser
+
+    note right of command
+    Both //contructor()// and //execute()//
+    of the //Command// object can
+    throw an //Exception// object
+    up to //FridgeFriend//.
+    end note
+
+    fridgefriend -> fridgefriend: executeCommand()
+    fridgefriend -> command: execute()
+    return
+    destroy command
+    return
+
+    end
+
+fridgefriend --> fridgefriend
+
+
+@enduml

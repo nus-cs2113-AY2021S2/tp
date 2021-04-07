@@ -1,0 +1,77 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+box Command COMMAND_COLOR_T1
+participant ":AddCommand" as AddCommand COMMAND_COLOR
+end box
+box Food FOOD_COLOR_T1
+participant "foodToAdd:Food" as NewFood FOOD_COLOR
+participant "fridge:Fridge" as Fridge FOOD_COLOR_T3
+participant "checker:UniqueFoodnameChecker" as Checker FOOD_COLOR_T2
+participant ":Food" as Food FOOD_COLOR
+end box
+
+'autoactivate on
+
+-> AddCommand: create
+activate AddCommand
+AddCommand -> AddCommand: categoriseAndGenerateFood(params)
+activate AddCommand
+AddCommand -> NewFood **: create
+activate NewFood
+return foodToAdd
+deactivate AddCommand
+return command
+
+-> AddCommand: execute()
+activate AddCommand
+AddCommand -> AddCommand: addFood()
+activate AddCommand
+AddCommand-> Fridge: add(foodToAdd)
+activate Fridge
+
+Fridge -> Checker **: create
+activate Checker
+return checker
+Fridge -> Checker: checker.isFoodnameUnique()
+activate Checker
+Checker -> Fridge: getFridge()
+activate Fridge
+return
+loop food in fridge
+    Checker -> Food: getFoodName()
+    activate Food
+    return existingFoodName
+    opt equals newFoodName
+        Checker --> Fridge: true
+    end
+    return false
+end
+
+alt Foodname is unique (add new food))
+    Fridge --> AddCommand: food added to fridge
+
+else add to existing food, update quantity
+    Fridge -> Checker: checker.isParamIdentical()
+    activate Checker
+    return boolean
+    note right
+    If foodname already exist but
+    different location or expiry are specified,
+    a RepetitiveFoodName exception will be thrown
+    end note
+    Fridge -> Fridge: editFoodQuantity()
+    activate Fridge
+    return
+    Fridge --> AddCommand: update quantity on existing food in fridge
+    deactivate Fridge
+    deactivate AddCommand
+end
+
+destroy Checker
+
+<--AddCommand:
+deactivate AddCommand
+
+@enduml

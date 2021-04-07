@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+!include style.puml
+
+box "Command\n" COMMAND_COLOR_T1
+participant ":ExpiringCommand" as ExpiringCommand COMMAND_COLOR
+end box
+
+box Food FOOD_COLOR_T1
+participant "fridge:Fridge" as Fridge FOOD_COLOR
+participant "food:Food" as Food FOOD_COLOR_T3
+end box
+
+-> ExpiringCommand: execute()
+activate ExpiringCommand
+
+loop food in fridge
+    ExpiringCommand-> Fridge: getFood()
+    activate Fridge
+    opt isExpiring
+        Fridge -> Food: isExpiring()
+        activate Food
+        return
+    end
+    return food
+end
+
+<--ExpiringCommand
+deactivate ExpiringCommand
+
+@enduml

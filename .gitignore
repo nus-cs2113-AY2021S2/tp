@@ -11,8 +11,13 @@
 # eclipse files
 /.settings
 
+# local data
+/data
+/text-ui-test/data
+
 # Gradle build files
 /.gradle/
+/gradle
 /build/
 src/main/resources/docs/
 
