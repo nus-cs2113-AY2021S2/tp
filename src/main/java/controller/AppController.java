@@ -74,7 +74,6 @@ public class AppController {
                 Ui.printHelpMessage();
                 break;
             case "quit":
-                System.out.println("bye");
                 sc.close();
                 fileManager.saveEmployees(employees);
                 fileManager.saveShifts(shifts);
