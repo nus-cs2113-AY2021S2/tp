@@ -6,7 +6,6 @@ import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Links {
 
@@ -60,7 +59,7 @@ public class Links {
                 Storage.saveAllFiles();
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
-                logger.log(Level.WARNING, "Saving error");
+                logger.log(Level.WARNING, "Saving error in zoom links");
             }
             Ui.printLinksMessage();
             linkIndex = Ui.readCommandToInt();
@@ -82,15 +81,15 @@ public class Links {
             int deleteIndex = Integer.parseInt(Ui.readCommand()) - 1;
             ZoomLinkInfo.deleteZoomLink(deleteIndex);
             isInvalid = false;
-        } catch (IndexOutOfBoundsException | NumberFormatException e) {
-            logger.log(Level.INFO, "You have entered an invalid input! Please try again.");
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            System.out.println("You have entered an invalid input! Please try again.");
             isInvalid = true;
         }
     }
 
     public static void viewLinks() {
         if (ZoomLinkInfo.zoomLinksList.isEmpty()) {
-            logger.log(Level.INFO, "");
+            Ui.printListIsEmpty();
             return;
         }
         Ui.printZoomLinks(ZoomLinkInfo.zoomLinksList);

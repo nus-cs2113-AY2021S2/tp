@@ -1,12 +1,14 @@
 package seedu.duke.features.link;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
-
 import java.io.IOException;
 
 public class ExternalLinks extends Links {
 
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static final int ADD_LINK_COMMAND = 1;
     private static final int DELETE_LINK_COMMAND = 2;
     private static final int VIEW_LINK_COMMAND = 3;
@@ -59,6 +61,7 @@ public class ExternalLinks extends Links {
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
+                logger.log(Level.WARNING, "Saving error in external links");
                 Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printExternalLinksMessage();

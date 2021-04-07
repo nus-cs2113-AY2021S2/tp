@@ -1,0 +1,30 @@
+@startuml
+
+hide footbox
+
+participant ":Links"
+":Links" -> ":ExternalLinks" : execute()
+activate ":ExternalLinks"
+":ExternalLinks" -> ":Ui" : printEnterLinkMessage()
+activate ":Ui"
+":Ui" --> ":ExternalLinks"
+deactivate ":Ui"
+":ExternalLinks" -> ":Ui" : readCommand()
+activate ":Ui"
+":Ui" --> ":ExternalLinks"
+deactivate ":Ui"
+
+opt isValidLink() && !isDuplicate()
+
+":ExternalLinks" -> ":LinkInfo" : addLink()
+activate ":LinkInfo"
+":LinkInfo" --> ":ExternalLinks"
+deactivate ":LinkInfo"
+":ExternalLinks" -> ":Ui" : printAddLinkMessage()
+activate ":Ui"
+":Ui" --> ":ExternalLinks"
+deactivate ":Ui"
+":ExternalLinks" --> ":Links"
+deactivate ":ExternalLinks"
+end
+@enduml
