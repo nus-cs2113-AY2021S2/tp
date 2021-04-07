@@ -63,6 +63,11 @@ as well as associated JUnit tests and helper function code.
   - What it does: Invalid Food Category or Food Storage Location inputted by users will be rejected.
   - Justification: Improves clarity in application usage and reduces confusion by users.
   - Pull request: ([#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
+
+- Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command.
+  - What it does: Fixed the issue where user uses `list other` and the list only searches by Food category 'Other'.
+  - Justification: Improves accuracy in the `list` command.
+  - Pull request: ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
   
 **Enhancements to existing features**  
 - Created JUnit tests & defensive code for:
