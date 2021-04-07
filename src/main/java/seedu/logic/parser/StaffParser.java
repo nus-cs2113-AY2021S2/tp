@@ -42,14 +42,12 @@ public class StaffParser {
 
         case ("list"):
             array = staffChecker.checkListCommand(line);
-            MainChecker.checkNumInput2(array,2,1);
             c = new StaffList(array);
             break;
 
         case ("delete"):
-            MainChecker.checkNumInput(line,2,2);
-            staffChecker.checkStaffID(line.split("/")[1]);
-            c = new StaffDelete(line);
+            String input = staffChecker.checkDeleteCommand(line);
+            c = new StaffDelete(input);
             break;
 
         case ("help"):

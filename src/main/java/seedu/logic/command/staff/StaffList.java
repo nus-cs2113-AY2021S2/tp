@@ -15,11 +15,6 @@ public class StaffList extends Command {
 
     public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
         UI.printEmptyLine();
-        if (StaffAggregation.getNumStaff() == 0) {
-            StaffUI.emptyListErrorMessage();
-            UI.printEmptyLine();
-            return;
-        }
         staffAggregation.list(this.input);
         UI.printEmptyLine();
     }

@@ -110,12 +110,22 @@ public class StaffChecker extends MainChecker {
         return input.trim().equalsIgnoreCase("doctors");
     }
 
-    public String[] checkListCommand(String line) throws WrongListInputException {
+    public String[] checkListCommand(String line) throws WrongListInputException,
+            ExcessInputException, InsufficientInputException {
         String[] array = line.split("/");
         if ((array.length > 1) &&
                 !(isEqualNurses(array[1]) || isEqualDoctors(array[1]) )) {
             throw new WrongListInputException();
         }
+        MainChecker.checkNumInput2(array,2,1);
         return array;
+    }
+
+    public String checkDeleteCommand(String line) throws ExcessInputException,
+            InsufficientInputException, InvalidIntegerException, WrongStaffIdException {
+        checkNumInput2(line.split("/"),2,2);
+        String input = line.split("/")[1];
+        checkStaffID(input);
+        return input;
     }
 }

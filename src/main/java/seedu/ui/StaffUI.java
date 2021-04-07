@@ -20,8 +20,8 @@ public class StaffUI extends UI {
         }
     }
 
-    public static void staffFiredOutput(String line) {
-        System.out.println(line.split("/")[1] + " has been fired :(");
+    public static void staffFiredOutput(String input) {
+        System.out.println(input + " has been fired :(");
     }
 
     public static void staffListHeader() {
@@ -68,8 +68,8 @@ public class StaffUI extends UI {
         System.out.println("The numeric input is invalid!");
     }
 
-    public static void staffDoesNotExistErrorMessage(String line) {
-        System.out.println("Staff with ID: " + line.split("/")[1] + " does not exist");
+    public static void staffDoesNotExistErrorMessage(String input) {
+        System.out.println("Staff with ID: " + input + " does not exist");
     }
 
     public static void emptyListErrorMessage() {
