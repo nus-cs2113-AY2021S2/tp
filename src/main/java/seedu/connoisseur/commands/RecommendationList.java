@@ -7,6 +7,7 @@ import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.ui.Ui;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static seedu.connoisseur.messages.Messages.CHANGE_RECO_TITLE;
@@ -161,7 +162,7 @@ public class RecommendationList {
         String location;
         while (true) {
             ui.println(RECO_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateRecommendation(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
@@ -258,9 +259,10 @@ public class RecommendationList {
             }
             break;
         }
-        priceLow = Math.round(priceLow * 100.0) / 100.0;
-        priceHigh = Math.round(priceHigh * 100.0) / 100.0;
-        Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
+        DecimalFormat df = new DecimalFormat("0.00");
+        String PriceLow = df.format(priceLow);
+        String PriceHigh = df.format(priceHigh);
+        Recommendation r = new Recommendation(title, category, PriceLow, PriceHigh, recommendedBy, location);
         recommendations.add(r);
         ui.println(title + ADD_SUCCESS);
     }
@@ -456,10 +458,11 @@ public class RecommendationList {
                         newPriceLow = priceFirst;
                         newPriceHigh = priceSecond;
                     }
-                    newPriceLow = Math.round(newPriceLow * 100.0) / 100.0;
-                    newPriceHigh = Math.round(newPriceHigh * 100.0) / 100.0;
-                    recommendations.get(index).setPriceHigh(newPriceHigh);
-                    recommendations.get(index).setPriceLow(newPriceLow);
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    String PriceLow = df.format(newPriceLow);
+                    String PriceHigh = df.format(newPriceHigh);
+                    recommendations.get(index).setPriceHigh(PriceHigh);
+                    recommendations.get(index).setPriceLow(PriceLow);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidPricingMessage();
                     continue;

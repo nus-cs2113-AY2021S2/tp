@@ -111,7 +111,7 @@ public class ReviewList {
         int rating;
         while (true) {
             ui.println(REVIEW_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateReview(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
@@ -170,7 +170,7 @@ public class ReviewList {
         String description;
         while (true) {
             ui.println(REVIEW_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateReview(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
