@@ -80,7 +80,7 @@ This section gives you step-by-step instructions on how to download and open the
 :information_source: An easy way to do so is shown below for both Mac and Windows<br>
 </div>
 
- Windows |  Mac |
+ Windows |  Mac 
 :----------:|:-------------:
 ![img.png](images/windowsterminal.png)<br>Key in `cmd` and press enter.| ![img.png](images/macterminal.png)<br>Right click on the folder and click on "New Terminal at Folder"
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
