@@ -14,7 +14,7 @@ public class InventoryAdd extends Command {
 
     public void execute(InventoryActions drugs, InventoryUI ui) {
         drugs.addDrugs(argArr);
-        ui.drugAddedMessage(argArr[0]);
+        ui.drugAddedMessage(argArr[0], argArr[2]);
     }
 
     @Override
