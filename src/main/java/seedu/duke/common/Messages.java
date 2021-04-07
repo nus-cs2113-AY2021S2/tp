@@ -27,7 +27,7 @@ public class Messages {
     public static final String MESSAGE_UNACHIEVED_GOALS = "You have unachieved goals.\n";
     public static final String MESSAGE_GOALS_DONE_TODAY = "Congratulations!\n"
             + "You have achieved all daily goals for today!";
-    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "Congratulations!\n"
+    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "\nCongratulations!\n"
             + "You have achieved all weekly goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
@@ -57,7 +57,7 @@ public class Messages {
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
-    public static final String MESSAGE_NO_BODY_WEIGHT_RECORD = "You haven't added any body weight record. "
+    public static final String MESSAGE_NO_BODY_WEIGHT_RECORD = "You haven't added any body weight record.\n"
             + "Use add command to track the change of your body weight.";
     public static final String MESSAGE_NO_BODY_WEIGHT_PROGRESS = "You haven't added any body weight record.";
     public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "

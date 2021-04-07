@@ -11,7 +11,7 @@ public class BodyWeightGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param intervalType       the interval type of the goal which can be daily or weekly.
+     * @param intervalType     the interval type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      */
     public BodyWeightGoal(IntervalType intervalType, double targetBodyWeight) throws NumberFormatException {
@@ -27,7 +27,7 @@ public class BodyWeightGoal extends Goal {
     /**
      * Initialize an instance of an exercise goal.
      *
-     * @param intervalType       the interval type of the goal which can be daily or weekly.
+     * @param intervalType     the interval type of the goal which can be daily or weekly.
      * @param targetBodyWeight the target body weight.
      * @param daySet           the date when the goal is set.
      */
@@ -72,9 +72,9 @@ public class BodyWeightGoal extends Goal {
     public String getGoalData() {
         if (progress == -1) {
             return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
-                    + getIntervalType().toString().toLowerCase() + getAchieved() + separatorBetweenTypeAndTarget
+                    + getIntervalType().toString().toLowerCase() + separatorBetweenTypeAndTarget
                     + getTarget() + " " + getProgressUnit() + separatorBetweenTargetAndProgress
-                    + MESSAGE_NO_BODY_WEIGHT_PROGRESS + getAchieved() + "\n";
+                    + MESSAGE_NO_BODY_WEIGHT_PROGRESS + "\n";
         } else {
             return SEPARATOR_TAB + getDaySet().format(DATE_FORMATTER) + SEPARATOR_TAB + SEPARATOR_TAB
                     + getIntervalType().toString().toLowerCase() + separatorBetweenTypeAndTarget

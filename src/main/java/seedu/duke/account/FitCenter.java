@@ -219,7 +219,7 @@ public class FitCenter {
     /**
      * Gets a printable string of the list of goals of a selected type and can be filtered by a optional interval type.
      *
-     * @param type               the type of the goals.
+     * @param type                 the type of the goals.
      * @param optionalIntervalType an optional interval type that filter the list of goals.
      * @return a printable string of the list of goals of a selected type and can be filtered
      *     by a optional interval type.
@@ -233,20 +233,28 @@ public class FitCenter {
     }
 
     private boolean isGoalAchieved(IntervalType intervalType) {
-        boolean isAchieved = true;
+        int notAchievedCount = 0;
         if (dietGoalList.isNotEmpty()) {
-            isAchieved = dietGoalList.isGoalAchieved(intervalType);
+            if (!dietGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (exerciseGoalList.isNotEmpty()) {
-            isAchieved = exerciseGoalList.isGoalAchieved(intervalType);
+            if (!exerciseGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (sleepGoalList.isNotEmpty()) {
-            isAchieved = sleepGoalList.isGoalAchieved(intervalType);
+            if (!sleepGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (bodyWeightGoalList.isNotEmpty()) {
-            isAchieved = bodyWeightGoalList.isGoalAchieved(intervalType);
+            if (!bodyWeightGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
-        return isAchieved;
+        return notAchievedCount == 0;
     }
 
     private boolean hasGoals() {
