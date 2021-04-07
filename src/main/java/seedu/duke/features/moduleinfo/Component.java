@@ -74,7 +74,7 @@ public class Component {
     }
 
     private static void isNumeric(String componentName) throws NumberFormatException {
-        boolean isNumeric = componentName.chars().allMatch( Character::isDigit);
+        boolean isNumeric = componentName.chars().allMatch(Character::isDigit);
         if (isNumeric) {
             throw new NumberFormatException();
         }
