@@ -88,8 +88,6 @@ class ListCommandTest {
 
     @Test
     public void listCommand_listByOthersCategoryAndStorageLocation() throws Exception {
-        ListCommand listCommand = new ListCommand("OTHER");
-
         Fridge fridgeOther = new Fridge();
 
         Food chickenOther = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.OTHER,
@@ -107,6 +105,8 @@ class ListCommandTest {
         Food duckNotOther = AddCommand.categoriseAndGenerateFood("duck", FoodCategory.MEAT,
                 "31-07-2021", FoodStorageLocation.LOWER_SHELF, 500);
         fridgeOther.add(duckNotOther);
+
+        ListCommand listCommand = new ListCommand("OTHER");
 
         listCommand.setData(fridgeOther);
         String expectedMessage = "These are the food that belong to OTHER:\n"
