@@ -16,16 +16,26 @@
     5. [Storage component](#45-storage-component)
     6. [Common classes](#46-common-classes)
 5. [Implementation](#5-implementation)
-    1. [Staff](#51-staff)
-
-
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#511-add)        , [Delete](#512-delete)        , [List](#513-list)        , [Find](#514-find))
+    1. [Staff](#51-staff) 
+    	1. [Add](#511-add)
+    	2. [Delete](#512-delete)
+    	3. [List](#513-list)
+    	4. [Find](#514-find)
     2. [Patient](#52-patient)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#521-add)        , [Delete](#522-delete)        , [List](#523-list)        , [Find](#524-find))
+    	1. [Add](#521-add)
+    	2. [Delete](#522-delete)
+    	3. [List](#523-list)
+    	4. [Find](#524-find)
     3. [Doctor Appointment](#53-doctor-appointment)
-         &nbsp;&nbsp;&nbsp;&nbsp;([Add](#531-add)        , [Delete](#532-delete)        , [List](#533-list)        , [Find](#534-find))
+    	1. [Add](#531-add)
+    	2. [Delete](#532-delete)
+    	3. [List](#533-list)
+    	4. [Find](#534-find)
     4. [Nurse Schedule](#54-nurse-schedule)
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Add](#541-add)        , [Delete](#542-delete)        , [List](#543-list)        , [Find](#544-find))
+    	1. [Add](#541-add)
+    	2. [Delete](#542-delete)
+    	3. [List](#543-list)
+    	4. [Find](#544-find)
     5. [Inventory](#55-inventory)
         1. [Add](#551-add)
         2. [Delete](#552-delete)
@@ -36,22 +46,15 @@
 
 [Appendix B: User Stories](#b-appendix-b-user-stories)
 
-[Appendix C: Use Cases](#c-use-cases)
+[Appendix C: Use Cases](#c-appendix-c-use-cases)
 
-[Appendix D: Non Functional Requirements](#d-non-functional-requirements)
+[Appendix D: Non Functional Requirements](#d-appendix-d-non-functional-requirements)
 
-[Appendix E: Glossary](#e-glossary)
+[Appendix E: Glossary](#e-appendix-e-glossary)
 
-[Appendix F: Product Survey](#f-product-survey)
+[Appendix F: Product Survey](#f-appendix-f-product-survey)
 
-[Appendix G: Instructions for Manual Testing](#g-instructions-for-manual-testing)
-
-
-function fancyAlert(arg) {
-      if(arg) {
-        $.facebox({div:'#foo'})
-      }
-    }
+[Appendix G: Instructions for Manual Testing](#g-appendix-g-instructions-for-manual-testing)
 
 
 ## 1. Introduction
@@ -65,7 +68,13 @@ HealthVault is a desktop app for managing doctor, nurse and patient information,
 The purpose of this developer guide is to describe the architecture and software design decisions for our application. This guide will cover our program architecture, the logical view of major components and how our functions work.
 
 ### 1.2 About the Developer Guide
+
+<br>
+
 ## 2. How to use the guide
+
+<br>
+
 ## 3. Getting Started
 
 &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Setting up**
@@ -88,6 +97,10 @@ There are 2 prerequisites for this project
 
 4.  Run the tests to ensure they all pass.
 
+
+<br>
+
+
 ## 4. Design
 
 ###  4.1 Architecture
@@ -104,12 +117,143 @@ There are 2 prerequisites for this project
 ### 4.5 Storage component
 ### 4.6 Common classes
 
+<br>
+
 ## 5. Implementation
+
+Similar to the Start Menu, the Staff Menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Staff Menu, the following steps will occur.
+
+**Getting User Input**
+
+1. `StaffInstance.run()` will call `StaffParser.commandHandler()` after receiving user input
+2. `commandHandler()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+3. Based on the recognised command by the system, the relevant commands will be carried out.
+
+
 ###  5.1 Staff
 #### 5.1.1 Add
+
+Implementation:
+When the user attempts to add a new staff, the StaffParser, StaffInstance, StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+
+`add/[Staff ID]/[name]/[age]/[specialisation]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the add command, `commandHandler()` calls `staffChecker.checkValidDataForAdd()` to ensure data entered is valid
+
+**Creating StaffAdd command**
+
+2. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
+3. The StaffAdd Command object is returned to `StaffInstance.run()`
+
+**Creating Staff Object with User Input**
+
+4. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+
+5. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+
+6. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+
+**Saving Staff Objects into .txt file**
+
+7. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+9. Data is written and saved.
+10. Control is then returned to StaffInstance.
+
+<br>
+
 #### 5.1.2 Delete
+
+Implementation:
+When the user attempts to delete a staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+
+`delete/Staff ID`
+
+
+**Check validity of the data input**
+
+1. If the command recognised is the delete command, `commandHandler()` calls `staffChecker.checkDeleteCommand()` to ensure that there are valid and sufficient inputs
+
+**Creating StaffDelete command**
+
+2. If the input data is valid, a StaffDelete Command object is created 
+3. The StaffAdd Command object is returned to `StaffInstance.run()`
+
+**Deleting Staff Object using User Input**
+
+4. StaffInstance then executes the StaffDelete Command object to begin the process of deleting the referenced Staff object
+5. `StaffDelete.execute()` will call the function `staffAggregation.delete()`
+6. `staffAggregation.delete()` will iterate through the objects in ArrayList<Staff> StaffList. The Staff Object referenced by the input given by the user will be deleted.
+
+**Saving changed Staff Objects into .txt file**
+
+7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
+
+8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+
+9. Data is written and saved.
+
+10. Control is then returned to StaffInstance.
+
+<br>
+
 #### 5.1.3 List
+
+Implementation:
+When the user attempts to add a new staff, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+
+`list/<doctors/nurses>`
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `commandHandler()` calls `staffChecker.checkListCommand()` to check and verify the validity of inputs accompanied by the list command, if any.
+
+**Creating StaffList command**
+
+2. If the input data is valid, a StaffList Command object is created 
+3. The StaffList Command object is returned to `StaffInstance.run()` 
+
+**Viewing Staff Objects**
+
+4. StaffInstance then executes the StaffList Command object to begin the process of displaying all Staff objects.
+5. `StaffList.execute()` will call the function `staffAggregation.list()`
+6. `staffAggregation.list()` will iterate through the objects in ArrayList<Staff> StaffList. 
+7. Depending on the input given by the user, the relevant Staff Objects will be displayed.
+8. Control is then returned to StaffInstance.
+
+<br>
+
 #### 5.1.4 Find
+
+Implementation:
+When the user attempts to find a staff using a certain keyword, the StaffStorage, StaffList, UI, StaffUI classes will be accessed, and the following sequence of actions is called to prompt execution result to user:
+
+`find/[keyword]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the find command, `commandHandler()` calls `MainChecker.checkNumInput()`. `MainChecker.checkNumInput()` does a simple check to ensure there is an accompanying input given by the user together with the find command.
+
+**Creating StaffFind command**
+
+2. If the input data exist, a StaffFind Command object is created 
+3. The StaffFind Command object is returned to `StaffInstance.run()` 
+
+**Finding relevant Staff Objects**
+
+4. StaffInstance then executes the StaffList Command object to begin the process of finding and displaying relevant Staff objects.
+5. `StaffFind.execute()` will call the function `staffAggregation.find()`
+6. `staffAggregation.find()` will iterate through the objects in ArrayList<Staff> StaffList. 
+7. `staffAggregation.find()` will utilise a search function in StaffAggregation to find any Staff Objects that matches the given keyword by the user. 
+8. The relevant Staff Objects are then displayed.
+9. Control is then returned to StaffInstance.
+
+
+<br>
 
 ###  5.2 Patient
 #### 5.2.1 Add
@@ -117,11 +261,15 @@ There are 2 prerequisites for this project
 #### 5.2.3 List
 #### 5.2.4 Find
 
+<br>
+
 ###  5.3 Doctor Appointment
 #### 5.3.1 Add
 #### 5.3.2 Delete
 #### 5.3.3 List
 #### 5.3.4 Find
+
+<br>
 
 ###  5.4 Nurse Schedule
 #### 5.4.1 Add
@@ -129,20 +277,44 @@ There are 2 prerequisites for this project
 #### 5.4.3 List
 #### 5.4.4 Find
 
+<br>
+
 ###  5.5 Inventory
 #### 5.5.1 Add
 #### 5.5.2 Delete
 #### 5.5.3 List
 #### 5.5.4 Find
 
+<br>
+
 
 ## a. Appendix A: Product Scope
+
+<br>
+
 ## b. Appendix B: User Stories
+
+<br>
+
 ## c. Appendix C: Use Cases
+
+<br>
+
 ## d. Appendix D: Non Functional Requirements
+
+<br>
+
 ## e. Appendix E: Glossary
+
+<br>
+
 ## f. Appendix F: Product Survey
+
+<br>
+
 ## g. Appendix G: Instructions for Manual Testing
+
+<br>
 
 
 
