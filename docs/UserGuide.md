@@ -82,11 +82,11 @@ This section gives you step-by-step instructions on how to download and open the
 
 | Windows |  Mac |
 |----------|-------------|
-|![img.png](images/windowsterminal.png)<br><p align="center">Key in `cmd` and press enter.</p>| ![img.png](images/macterminal.png)<br><p align="center">Right click on the folder and click on "New Terminal at Folder"</p>|<br>
+|![img.png](images/windowsterminal.png)<br>Key in `cmd` and press enter.| ![img.png](images/macterminal.png)<br>Right click on the folder and click on "New Terminal at Folder"|<br>
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
-   <p align="center">_Figure 1 - CLI of NUSMaze_</p>
+   <p align="center">Figure 1 - CLI of NUSMaze</p>
 
 7. Type your command into the command box at the bottom of the screen, and press Enter on your keyboard to execute it. E.g. typing `help` and pressing Enter will open a help window.<br>
 
@@ -154,7 +154,7 @@ You may enter a command into the CLI to use each feature.
 ### 4.1 Viewing Help
 
 Lists all commands and functions of each feature.<br>
-Format: `help`
+Format: `help` <br>
 Example:
 ```
 --------------------------------------------------------------------------------------------
