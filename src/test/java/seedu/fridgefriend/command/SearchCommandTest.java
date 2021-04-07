@@ -21,16 +21,16 @@ class SearchCommandTest {
         fridge = new Fridge();
 
         Food chicken = AddCommand.categoriseAndGenerateFood("chicken", FoodCategory.MEAT,
-                "27-03-2021", FoodStorageLocation.LOWER_SHELF, 300);
+                "27-03-2022", FoodStorageLocation.LOWER_SHELF, 300);
         fridge.add(chicken);
 
         Food lettuce = AddCommand.categoriseAndGenerateFood("lettuce", FoodCategory.VEGETABLE,
-                "17-03-2021", FoodStorageLocation.MIDDLE_SHELF, 100);
+                "17-03-2022", FoodStorageLocation.MIDDLE_SHELF, 100);
 
         fridge.add(lettuce);
 
         Food roastChicken = AddCommand.categoriseAndGenerateFood("roast chicken", FoodCategory.READY_TO_EAT,
-                "31-12-2021", FoodStorageLocation.UPPER_SHELF, 1);
+                "31-12-2022", FoodStorageLocation.UPPER_SHELF, 1);
         fridge.add(roastChicken);
     }
 
@@ -44,9 +44,9 @@ class SearchCommandTest {
     public void searchCommand_foodInFridge_foodFound() throws EmptyDescriptionException {
         String expectedMessage = "These are the chicken in your fridge:"
                 + "\n\t1. Food name: chicken, category: MEAT, "
-                + "expiry: 27-03-2021, stored in: LOWER_SHELF, quantity: 300"
+                + "expiry: 27-03-2022, stored in: LOWER_SHELF, quantity: 300"
                 + "\n\t2. Food name: roast chicken, category: READY_TO_EAT, "
-                + "expiry: 31-12-2021, stored in: UPPER_SHELF, quantity: 1";
+                + "expiry: 31-12-2022, stored in: UPPER_SHELF, quantity: 1";
         String actualMessage = searchCommand("chicken").getMessagePrintedToUser();
         assertEquals(expectedMessage, actualMessage);
     }

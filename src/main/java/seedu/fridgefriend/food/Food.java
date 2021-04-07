@@ -62,6 +62,11 @@ public abstract class Food {
         return expiryDate;
     }
 
+    /**
+     * Parse the exipry string to date object while creating Food.
+     * @param expiryString should be according to the formatter
+     * @throws InvalidDateException for strings that cannot be correctly parsed
+     */
     public void setExpiryDate(String expiryString) throws InvalidDateException {
         ExpiryDate expiryDate = new ExpiryDate(expiryString);
         this.expiryDate = expiryDate;
@@ -81,6 +86,13 @@ public abstract class Food {
 
     public boolean isExpiring() {
         LocalDate cutOff = LocalDate.now().plusDays(7);
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate expiry = this.getExpiryDate().getExpiry();
+        return expiry.isBefore(cutOff) && yesterday.isBefore(expiry);
+    }
+
+    public boolean hasExpired() {
+        LocalDate cutOff = LocalDate.now();
         LocalDate expiry = this.getExpiryDate().getExpiry();
         return expiry.isBefore(cutOff);
     }

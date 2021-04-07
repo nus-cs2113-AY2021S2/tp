@@ -18,17 +18,20 @@ It is written in Java, and has more than 4.3kLoC.
 * [Implementation](#implementation)
   * [Main Logic](#main-logic)
   * [Add Command](#add-command)
-  * [List Command](#list-command)
   * [Remove Command](#remove-command)
   * [Search Command](#search-command)
-  * [Storage](#storage-command)
+  * [Running Low Command](#running-low-command)
+  * [Set Limit Command](#set-limit-command)
+  * [Expiring Command](#expiring-command)
+  * [List Command](#list-command)
+  * [History Command](#history-command)
 * [Product Scope](#product-scope)
   * [Target User Profile](#target-user-profile)
   * [Value Proposition](#value-proposition)
 * [User Stories](#user-stories)
 * [Non-Functional Requirements](#non-functional-requirements)
 * [Glossary](#glossary)
-* [Instructions for Manual Testing](#instructions-for-manual-testing)
+* [Instructions for Manual Testing](#appendix-instructions-for-manual-testing)
 * [Attribution](#attribution)
 
 ## Design
@@ -109,6 +112,21 @@ The Command Component consist of 11 sub class which each command represents a fe
 * **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
 * **`ByeCommand`**: Indicate to the main method to exit the program.
 
+### Food Component
+
+The Food component represents the basic `Food` object and related class in FridgeFriend.
+
+* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
+This is to facilitate different manipulations on different food categories.
+* `Fridge` maintains the list of `Food`s and have methods to add, remove or modify the foods.
+* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
+* Whenever a `Food` object is created or called, exceptions may be thrown.
+
+![Food Class Diagram](diagrams/diagram_images/FoodClassDiagram.png)
+
+The ***Food Class Diagram*** given above shows all the classes derived from Food or 
+used in Food operations.
+
 ### Exception Component
 
 The Exception component represents a collection of classes that represent potential
@@ -116,6 +134,7 @@ exception events that may occur during the usage of `FridgeFriend`.
 
 The `Exception` component facilitates the return of exceptions to the `UI` class
 in `Utilities`, which will display the corresponding error message to the user.
+
 ![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
 
 The ***Exception Class Diagram*** given above shows the custom `Exceptions`
@@ -209,6 +228,10 @@ Notes:
 * The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
 * Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
 
+:information_source: Information:
+
+* The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
+
 ### Remove Command
 
 When the user specify to remove a portion of a food item in the fridge, the `remove` command
@@ -223,6 +246,10 @@ will execute the remove operation by:
 The sequence diagram below shows how the `remove` operation works:
 
 ![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
+
+:information_source: Information:
+
+The lifeline for `Food` should end at the destroy marker. However, due to a limitation of PlantUML, the lifeline reach the end of the diagram.
 
 ### Search Command
 
@@ -314,6 +341,7 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 
 ### Target User Profile
 
+* is a new homeowner who cooks
 * has a needs to manage a significant number of foods in the fridge
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
@@ -322,10 +350,11 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 
 ### Value Proposition
 
-* Provides ease of monitoring of food in the fridge which allows user to know which food is expiring
-  soon and what requires topping up
-* Allows for easier search of food in fridge
-* Allows tracking of past food items in the fridge
+This app allows user to monitor their food in a fridge faster than a typical mouse/GUI driven app.
+It includes features such as ability to check for the foods that are expiring in a week, and the food item
+that requires to top up. It will help new homeowners to keep track of their food into different food 
+categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to 
+keep track of past food items that has been added to the fridge. 
 
 ## User Stories
 
@@ -409,7 +438,7 @@ It is very easy for a user to use the system. There is a detailed user guide pro
 
 Given below are instructions to test the app manually.
 
-**Note:** These instructions only provide a starting point for testers to work on, testers are expected to do more *exploratory* testing.
+:information_source: **Note:** These instructions only provide a starting point for testers to work on, testers are expected to do more *exploratory* testing.
 
 ### Launch and shutdown
 
@@ -417,7 +446,7 @@ Given below are instructions to test the app manually.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+   `FridgeFriend` with `java -jar FridgeFriend_v2.0.jar` (or the latest version).
 5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
    list of all current food.
 6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with
@@ -458,9 +487,9 @@ The latter two commands will return an output that is a subset of the first comm
 
 No items will be listed if no food in the fridge match the conditions specified in the command.
 
-1. Test case: `list`
+* Test case: `list`
 
-* Expected:
+  * Expected:
 
   ```lang-none
   Here are the items in your fridge:
@@ -470,18 +499,18 @@ No items will be listed if no food in the fridge match the conditions specified 
     4. Food name: squid, category: SEAFOOD, expiry: 15-08-2021, stored in: FREEZER, quantity: 100
   ```
   
-2. Test case: `list meat`
+* Test case: `list meat`
 
-* Expected:
+  * Expected:
 
   ```lang-none
   These are the MEAT in your fridge:
     1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
   ```
 
-3. Test case: `list freezer`
+* Test case: `list freezer`
 
-* Expected:
+  * Expected:
 
   ```lang-none
   These are the food stored in FREEZER:
@@ -511,15 +540,29 @@ Removing a food while all foods are being shown.
 
 ### Searching for a food
 
-Checks if a food is in the fridge, and if it is found, outputs the location of the food.
+Checks if a food is in the fridge, and if it is found, outputs all the food in a list that match the search query.
 If it is not found, outputs `You do not have FOOD_INPUT in your fridge.`
 
-1. Test case: `search chicken`
-    * Expected: `You have chicken stored in LOWER_SHELF of your fridge.`
-2. Test case: `search pear`
+* Test case: `search chicken`
+
+  * Expected: 
+ 
+  ```lang-none
+  These are the chicken in your fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```
+  
+* Test case: `search pear`
     * Expected: `You do not have pear in your fridge.`
-3. Test case: `search chick`
-    * Expected: `You do not have chick in your fridge.`
+    
+* Test case: `search chick`
+
+  * Expected:
+     
+  ```lang-none
+  These are the chick in your fridge:
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 100
+  ```
 
 ### Expiring food
 

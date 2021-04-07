@@ -45,6 +45,7 @@ class HistoryCommandTest {
         addCommand4.setData(fridge);
         addCommand4.execute();
 
+        //the fourth add command updates the quantity of Milk.
         String expectedMessage = "This is the full history of items you've added in the fridge:\n"
                 + "\t1. Food name: Coke, category: BEVERAGE, expiry: "
                 + "30-06-2021, stored in: FREEZER, quantity: 5\n"
@@ -53,7 +54,7 @@ class HistoryCommandTest {
                 + "\t3. Food name: Milk, category: DAIRY, expiry: "
                 + "31-12-2021, stored in: FRIDGE_DOOR, quantity: 2\n"
                 + "\t4. Food name: Milk, category: DAIRY, expiry: "
-                + "31-12-2021, stored in: FRIDGE_DOOR, quantity: 3";
+                + "31-12-2021, stored in: FRIDGE_DOOR, quantity: 5";
 
         String actualMessage = HistoryCommand.getHistoryMessage();
         assertEquals(expectedMessage, actualMessage);

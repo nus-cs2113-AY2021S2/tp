@@ -54,19 +54,7 @@ end
 
 deactivate RemoveCommand
 destroy Food
-
-
-
 <-- RemoveCommand:
 deactivate RemoveCommand
 
 @enduml
-
-box Exception EXCEPTION_COLOUR
-participant ":Exception" as Exception
-end box
-
-else exception
-    RemoveCommand -> Exception: throw
-    activate Exception
-    return

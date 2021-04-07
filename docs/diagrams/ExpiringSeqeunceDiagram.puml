@@ -25,7 +25,6 @@ loop food in fridge
     end
     return food
 end
-destroy Food
 
 <--ExpiringCommand
 deactivate ExpiringCommand

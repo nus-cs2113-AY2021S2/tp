@@ -33,7 +33,7 @@ It is written in Java, and has more than 4.3kLoC.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
 4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+   `FridgeFriend` with `java -jar FridgeFriend_v2.0.jar` (or the latest version).
 5. Type the command in the command box and press Enter to execute it. e.g. typing `list` and pressing Enter will show a
    list of all current food. Some example commands you can try:
    * `list`: Lists all food.
@@ -65,8 +65,8 @@ Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
 * The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
 * The `FOOD_QUANTITY` must be a positive integer.
-  
-**Tip:**
+
+:bulb: **Tip:**
 
 * If you want to add more to the same batch of food (same category, same location and same
 expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`,
@@ -74,7 +74,7 @@ expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`E
 * The food names should not repeat unless it is the same batch as described above.
 Otherwise, you will be prompted to retry the `add` command.
 
-Additional info:
+:information_source: Additional info:
 
 * Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
@@ -221,7 +221,7 @@ Example of usage:
 
 ### Search: `search`
 
-Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food's storage location.
+Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food that matches the search query.
 
 Format: `search FOOD_NAME`
 
