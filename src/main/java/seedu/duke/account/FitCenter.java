@@ -206,7 +206,7 @@ public class FitCenter {
      * @param date          the date of records.
      * @param optionalParam optional parameters that can filter the list of record.
      * @return a printable string of the list of record of a selected type on a specific date and
-     *     filtered by optional parameters.
+     * filtered by optional parameters.
      */
     public String getRecordListString(CommandRecordType type, LocalDate date, String optionalParam) {
         RecordList list = getRecordListByType(type);
@@ -219,10 +219,10 @@ public class FitCenter {
     /**
      * Gets a printable string of the list of goals of a selected type and can be filtered by a optional interval type.
      *
-     * @param type               the type of the goals.
+     * @param type                 the type of the goals.
      * @param optionalIntervalType an optional interval type that filter the list of goals.
      * @return a printable string of the list of goals of a selected type and can be filtered
-     *     by a optional interval type.
+     * by a optional interval type.
      */
     public String getGoalListString(CommandRecordType type, IntervalType optionalIntervalType) {
         GoalList list = getGoalListByType(type);
@@ -233,20 +233,28 @@ public class FitCenter {
     }
 
     private boolean isGoalAchieved(IntervalType intervalType) {
-        boolean isAchieved = true;
+        int notAchievedCount = 0;
         if (dietGoalList.isNotEmpty()) {
-            isAchieved = dietGoalList.isGoalAchieved(intervalType);
+            if (!dietGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (exerciseGoalList.isNotEmpty()) {
-            isAchieved = exerciseGoalList.isGoalAchieved(intervalType);
+            if (!exerciseGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (sleepGoalList.isNotEmpty()) {
-            isAchieved = sleepGoalList.isGoalAchieved(intervalType);
+            if (!sleepGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
         if (bodyWeightGoalList.isNotEmpty()) {
-            isAchieved = bodyWeightGoalList.isGoalAchieved(intervalType);
+            if (!bodyWeightGoalList.isGoalAchieved(intervalType)) {
+                notAchievedCount++;
+            }
         }
-        return isAchieved;
+        return notAchievedCount == 0;
     }
 
     private boolean hasGoals() {
