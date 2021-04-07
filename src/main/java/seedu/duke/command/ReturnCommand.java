@@ -97,6 +97,10 @@ public class ReturnCommand extends Command {
             if (currentRecord.getIssueDate().compareTo(returnDate) > 0) {
                 throw new CommandException("Return date cannot be before Loan's issue date!", COMMAND_RETURN);
             }
+            if (returnDate.compareTo(LocalDate.now()) > 0) {
+                throw new CommandException("Return date cannot be in the future!", COMMAND_RETURN);
+            }
+
             return returnDate;
         } catch (DateTimeException e) {
             throw new CommandException(e.getMessage(), COMMAND_RETURN);
