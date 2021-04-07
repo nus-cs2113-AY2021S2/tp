@@ -260,9 +260,9 @@ public class RecommendationList {
             break;
         }
         DecimalFormat df = new DecimalFormat("0.00");
-        String PriceLow = df.format(priceLow);
-        String PriceHigh = df.format(priceHigh);
-        Recommendation r = new Recommendation(title, category, PriceLow, PriceHigh, recommendedBy, location);
+        String newPriceLow = df.format(priceLow);
+        String newPriceHigh = df.format(priceHigh);
+        Recommendation r = new Recommendation(title, category, newPriceLow, newPriceHigh, recommendedBy, location);
         recommendations.add(r);
         ui.println(title + ADD_SUCCESS);
     }
@@ -459,10 +459,10 @@ public class RecommendationList {
                         newPriceHigh = priceSecond;
                     }
                     DecimalFormat df = new DecimalFormat("0.00");
-                    String PriceLow = df.format(newPriceLow);
-                    String PriceHigh = df.format(newPriceHigh);
-                    recommendations.get(index).setPriceHigh(PriceHigh);
-                    recommendations.get(index).setPriceLow(PriceLow);
+                    String priceLow = df.format(newPriceLow);
+                    String priceHigh = df.format(newPriceHigh);
+                    recommendations.get(index).setPriceHigh(priceHigh);
+                    recommendations.get(index).setPriceLow(priceLow);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidPricingMessage();
                     continue;
