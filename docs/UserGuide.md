@@ -215,12 +215,11 @@ Opens the specified module.
 
 <table>
     <tr>
-        <td>Step #1</td>
+        <td rowspan="2">Step #1</td>
         <td style="text-align: center">When you enter</td>
         <td><pre>open CS2113T</pre></td>
     </tr>
     <tr>
-        <td></td>
         <td style="text-align: center">You will get</td>
         <td><pre>Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
     </tr>
@@ -241,12 +240,11 @@ Adds a module with the specified module name.
 
 <table>
     <tr>
-        <td>Step #1</td>
+        <td rowspan="2">Step #1</td>
         <td style="text-align: center">When you enter</td>
         <td><pre>add CS2113T</pre></td>
     </tr>
     <tr>
-        <td></td>
         <td style="text-align: center">You will get</td>
         <td><pre>Added CS2113T to the module list.</pre></td>
     </tr>
