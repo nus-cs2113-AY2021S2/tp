@@ -1,15 +1,11 @@
 package seedu.logic.parser;
 
-import seedu.exceptions.*;
-import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.exceptions.staff.InvalidStaffAgeException;
-import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
 import seedu.logic.command.staff.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.StaffChecker;
+import seedu.model.staff.StaffList;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
 
@@ -20,11 +16,7 @@ public class StaffParser {
     private StaffChecker staffChecker = new StaffChecker();
 
 
-    public Command commandHandler(String line, StaffAggregation staffAggregation) throws
-            WrongStaffIdException, WrongListInputException, ExcessInputException,
-            InsufficientInputException, NoInputException, NumberFormatException,
-            InvalidIntegerException, DuplicateIDException, IllegalCharacterException,
-            InvalidStaffAgeException {
+    public Command commandHandler(String line, StaffList staffList) throws HealthVaultException, NumberFormatException {
         Command c = null;
         if (line.equals(" ")) {
             UI.noCommandErrorMessage();
@@ -35,14 +27,14 @@ public class StaffParser {
         switch (smartCommandRecognition(COMMANDS, line.split("/")[0])) {
 
         case ("add"):
-            array = staffChecker.checkValidDataForAdd(line, staffAggregation);
+            array = staffChecker.checkValidDataForAdd(line, staffList);
             StaffUI.staffHiredOutput(array[0], array[1]);
             c = new StaffAdd(array);
             break;
 
         case ("list"):
             array = staffChecker.checkListCommand(line);
-            c = new StaffList(array);
+            c = new seedu.logic.command.staff.StaffList(array);
             break;
 
         case ("delete"):

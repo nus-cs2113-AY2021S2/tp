@@ -2,20 +2,20 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.*;
 import seedu.exceptions.patient.*;
-import seedu.logic.command.PatientActions;
-import seedu.model.Patient;
+import seedu.model.patient.PatientList;
+import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
 
 public class PatientChecker extends MainChecker{
 
-    private PatientActions patients;
+    private PatientList patients;
     private ArrayList<Patient> patientArrayList;
     private String[] stringTokens;
     private String command;
     private int numberOfTokens;
 
-    public PatientChecker(PatientActions patients, String[] stringTokens, String command, int numberOfTokens) {
+    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
         this.stringTokens = stringTokens;
         this.command = command;
@@ -142,7 +142,7 @@ public class PatientChecker extends MainChecker{
         return false;
     }
 
-    private void checkIDExist(String userID, PatientActions patients, String command) throws IDNotFoundException,
+    private void checkIDExist(String userID, PatientList patients, String command) throws IDNotFoundException,
             DuplicateIDException {
         if (patients.isIDTaken(userID)) {
             if (command.equals("add")) {

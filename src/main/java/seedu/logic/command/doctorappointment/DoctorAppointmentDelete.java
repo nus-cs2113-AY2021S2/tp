@@ -1,7 +1,7 @@
 package seedu.logic.command.doctorappointment;
 
 
-import seedu.logic.command.AppointmentActions;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
 
@@ -19,8 +19,8 @@ public class DoctorAppointmentDelete extends Command {
     }
 
     @Override
-    public void execute(AppointmentActions appointment, DoctorAppointmentUI ui) throws IOException {
-        AppointmentActions.deleteAppointment(ID);
+    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException {
+        AppointmentList.deleteAppointment(ID);
     }
 
     @Override

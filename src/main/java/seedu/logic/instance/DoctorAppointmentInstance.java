@@ -5,7 +5,7 @@ import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.parser.DoctorAppointmentParser;
-import seedu.logic.command.AppointmentActions;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.ui.DoctorAppointmentUI;
 import seedu.ui.UI;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class DoctorAppointmentInstance {
 
     private DoctorAppointmentUI ui;
-    private AppointmentActions details;
+    private AppointmentList details;
     private DoctorAppointmentStorage doctorAppointmentStorage;
 
     public DoctorAppointmentInstance(String filepath) {

@@ -1,25 +1,22 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.*;
 import seedu.logic.parser.NurseSchedulesParser;
-import seedu.model.NurseSchedule;
-import seedu.model.Patient;
+import seedu.model.nurseschedule.NurseSchedule;
+import seedu.model.patient.Patient;
 import seedu.model.staff.Staff;
 import seedu.storage.DoctorAppointmentStorage;
 import seedu.storage.NurseScheduleStorage;
 
 import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class NurseScheduleChecker extends MainChecker {

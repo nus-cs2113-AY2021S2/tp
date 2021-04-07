@@ -3,19 +3,19 @@ package seedu.logic.instance;
 import seedu.exceptions.HealthVaultException;
 import seedu.logic.command.Command;
 import seedu.logic.parser.PatientParser;
-import seedu.logic.command.PatientActions;
+import seedu.model.patient.PatientList;
 import seedu.storage.PatientStorage;
 import seedu.ui.PatientUI;
 import seedu.ui.UI;
 
-public class PatientCommandInstance {
+public class PatientInstance {
 
     private PatientUI ui;
-    private PatientActions patients;
+    private PatientList patients;
     private PatientStorage patientStorage;
     private PatientParser parser;
 
-    public PatientCommandInstance(String filepath) {
+    public PatientInstance(String filepath) {
         ui = new PatientUI();
         patientStorage = new PatientStorage(filepath);
         parser = new PatientParser();
@@ -23,10 +23,10 @@ public class PatientCommandInstance {
 
     public void run() {
         try {
-            patients = new PatientActions(patientStorage.loadPatients());
+            patients = new PatientList(patientStorage.loadPatients());
         } catch (HealthVaultException | NumberFormatException e) {
             ui.corruptedFileErrorMessage();
-            patients = new PatientActions();
+            patients = new PatientList();
             return;
         }
         PatientUI.patientCommandWelcome();

@@ -1,7 +1,7 @@
 package seedu.logic.command.inventory;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.ui.InventoryUI;
 
 public class InventoryAdd extends Command {
@@ -12,9 +12,9 @@ public class InventoryAdd extends Command {
         this.argArr = args;
     }
 
-    public void execute(InventoryActions drugs, InventoryUI ui) {
+    public void execute(InventoryList drugs, InventoryUI ui) {
         drugs.addDrugs(argArr);
-        ui.drugAddedMessage(argArr[0], argArr[2]);
+        ui.drugAddedMessage(argArr[0]);
     }
 
     @Override

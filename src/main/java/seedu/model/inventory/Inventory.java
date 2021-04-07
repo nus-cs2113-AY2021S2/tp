@@ -1,4 +1,4 @@
-package seedu.model;
+package seedu.model.inventory;
 
 import java.text.DecimalFormat;
 
@@ -13,22 +13,12 @@ public class Inventory {
         this.quantity = quantity;
 
     }
-    public void addQuantity(int input) {
-        this.quantity += input;
-    }
-
-    public void removeQuantity(int input) {
-        this.quantity -= input;
-    }
 
     public String getDrugName() {
         return this.name;
     }
-    public Double getDoublePrice() {
-        return this.price;
-    }
 
-    public String getStringPrice() {
+    public String getPrice() {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(price);
     }

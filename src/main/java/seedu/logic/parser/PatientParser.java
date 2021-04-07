@@ -3,7 +3,7 @@ package seedu.logic.parser;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
-import seedu.logic.command.PatientActions;
+import seedu.model.patient.PatientList;
 import seedu.logic.command.patient.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.PatientChecker;
@@ -15,7 +15,7 @@ public class PatientParser {
     protected static final String[] COMMANDS = {"add", "delete", "list", "find", "return", "help"};
     private PatientChecker checker;
 
-    public Command patientParse(String fullCommand, PatientActions patients) throws ArrayIndexOutOfBoundsException,
+    public Command patientParse(String fullCommand, PatientList patients) throws ArrayIndexOutOfBoundsException,
             HealthVaultException, NumberFormatException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
@@ -31,7 +31,7 @@ public class PatientParser {
         switch (command) {
         case "list":
             checker.checkLength();
-            c = new PatientList();
+            c = new seedu.logic.command.patient.PatientList();
             break;
         case "add":
             checker.checkAdd();

@@ -1,7 +1,7 @@
 package seedu.logic.command.patient;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.PatientActions;
+import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
 public class PatientAdd extends Command {
@@ -12,7 +12,7 @@ public class PatientAdd extends Command {
         argArr = args;
     }
 
-    public void execute(PatientActions patients, PatientUI ui) {
+    public void execute(PatientList patients, PatientUI ui) {
         patients.addPatient(argArr);
         ui.patientAddedMessage(argArr[1]);
     }
