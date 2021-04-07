@@ -1,5 +1,5 @@
-CS2113T ~~ software engineering ~~ 4 ~~ A ~~ {b=2, a=1, finalss=5, h=2, f=2, e=5, z=60, d=4}
+CS2113T ~~ software engineering ~~ 4 ~~ A ~~ {b=2, a=1, h=2, finalss=5, f=2, e=5, d=4, z=60}
 Very fun module! Java is a very fun language:)
 Overall 10/10 -- end of module --
-CG1112 ~~ epp2 ~~ 0 ~~ null ~~ {finals=40}
+CG1112 ~~ epp2 ~~ 8 ~~ A ~~ {finals=40}
 You have not reviewed this module yet. -- end of module --

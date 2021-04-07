@@ -4,6 +4,7 @@ import seedu.duke.features.moduleinfo.Module;
 import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.ui.Ui;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class HelpGraduation {
@@ -197,8 +198,10 @@ public class HelpGraduation {
 
         calculatedCap = (calculatedCap + currentCap * numberOfGradedMCsTaken)
                 / (totalMCs + numberOfGradedMCsTaken);
-        System.out.println("The simulated cumulative average point you have is: ");
-        System.out.println(calculatedCap);
+        System.out.println("The simulated cumulative average point (rounded to 2 d.p) you have is: ");
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedCap = df.format(calculatedCap);
+        System.out.println(formattedCap);
         return calculatedCap;
     }
 

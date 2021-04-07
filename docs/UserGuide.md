@@ -612,7 +612,7 @@ Returning to CAP simulator/calculator menu...
 
 #### 3.2.3 Simulate future CAP
 
-This feature simulates future CAP base on the current CAP and MCs counted into the CAP.  
+This feature simulates future CAP base on the current CAP and MCs counted into the CAP. The CAP calculated with be rounded to 2 decimal places.   
 Once done, enter `ok` when prompt with entering a new grade again.
 
 There are two versions of CAP Simulator:
