@@ -9,8 +9,6 @@ import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.utilities.Ui;
 import seedu.fridgefriend.utilities.LoggingHandler;
 
-import java.util.Locale;
-
 //@@author SimJJ96
 /**
  * Represents a command to list the items in the fridge to the user.
