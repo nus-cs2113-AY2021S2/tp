@@ -25,7 +25,7 @@ public abstract class BaseException extends Exception {
         Throwable cause = this.getCause();
         if (cause != null) {
             s += System.lineSeparator()
-                    + "Please enter \"help\"(without quotes) for a list of valid commands.";
+                    + "Please enter \"help\"(without quotes) for a list commands and how to use them.";
         }
 
         return s;

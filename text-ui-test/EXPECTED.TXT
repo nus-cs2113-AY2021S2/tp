@@ -6,7 +6,7 @@ Please input a command:
 ----------------------------------------------------------------------
 Input command and/or arguments are invalid:
 	Invalid command is provided!
-Please enter "help"(without quotes) for a list of valid commands.
+Please enter "help"(without quotes) for a list commands and how to use them.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been added!
