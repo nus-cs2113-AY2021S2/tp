@@ -357,7 +357,7 @@ When the user attempts to add a new nurse schedule, the
 NurseScheduleInstance, NurseScheduleParser, NurseScheduleChecker, NurseScheduleActions and Nurse Schedule Command
 classes will be accessed. Data input will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAdd Command object is created and executed which will create a NurseSchedule object to be added.
 
-Invalid Input include:
+Invalid Inputs include:
 
 >
 	- Invalid Nurse ID or Patient ID format
@@ -393,7 +393,7 @@ Invalid Input include:
 
 When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed. It takes in Nurse ID and date to identify and delete the Nurse Schedule object. Any invalid input detected will result in an exception thrown and command will be aborted. Else, a NurseScheduleDelete Command object is created and executed.
 
-Invalid Input include:
+Invalid Inputs include:
 
 >
 	- Invalid Nurse ID format
