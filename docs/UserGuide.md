@@ -217,7 +217,7 @@ Opens the specified module.
     <tr>
         <td rowspan="2">Step #1</td>
         <td style="text-align: center">When you enter</td>
-        <td><pre>open CS2113T</pre></td>
+        <td><code>open CS2113T</code></td>
     </tr>
     <tr>
         <td style="text-align: center">You will get</td>
@@ -242,7 +242,7 @@ Adds a module with the specified module name.
     <tr>
         <td rowspan="2">Step #1</td>
         <td style="text-align: center">When you enter</td>
-        <td><pre>add CS2113T</pre></td>
+        <td><code>add CS2113T</code></td>
     </tr>
     <tr>
         <td style="text-align: center">You will get</td>
@@ -263,10 +263,26 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | del | Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space. |
-| 2 | 1 3 | Removed CS2107 from the module list.<br>Removed CS2101 from the module list. |
+<table>
+    <tr>
+        <td rowspan="2">Step #1</td>
+        <td style="text-align: center">When you enter</td>
+        <td><code>del</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center">You will get</td>
+        <td><pre>Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.</pre></td>
+    </tr>
+<tr>
+        <td rowspan="2">Step #2</td>
+        <td style="text-align: center">When you enter</td>
+        <td><code>1 3</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center">You will get</td>
+        <td><pre>Removed CS2107 from the module list.<br>Removed CS2101 from the module list.</pre></td>
+    </tr>
+</table>
 
 **Result** - Modules CS2107 and CS2101 are removed from the module list.
 
@@ -281,9 +297,17 @@ Lists all modules.
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | mods | Modules in your list:<br>1. CS2101<br>2. CS2113T |
+<table>
+    <tr>
+        <td rowspan="2">Step #1</td>
+        <td style="text-align: center">When you enter</td>
+        <td><code>mods</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center">You will get</td>
+        <td><pre>Modules in your list:<br>1. CS2101<br>2. CS2113T</pre></td>
+    </tr>
+</table>
 
 &nbsp;
 
