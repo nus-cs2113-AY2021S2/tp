@@ -13,9 +13,9 @@ that allows the saving and loading of data. This allows all parameters of the da
 
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `nusfoodreviews.jar` from [here](https://github.com/AY2021S2-CS2113-T10-4/tp/releases).
-3. Download the data folder from [here](https://github.com/AY2021S2-CS2113-T10-4/tp/releases) as well. Remember to unzip it.
-4. Copy the `nusfoodreviews.jar` file and data folder to the same folder.
-5. For Windows users, open up **Command Prompt**.
+3. Copy the `nusfoodreviews.jar` file to an empty folder.
+4. For Windows users, open up **Command Prompt**.
+5. Enter java -jar nusfoodreviews.jar
    
    For Mac users, open up **Terminal**.
    
@@ -27,7 +27,7 @@ and menus through numbers with some commands needed when accessing certain
 features as shown below.
 
 ## ! Very important
-Password for Admin is `Password`. With that, have fun!
+Password for Admin is `Password`.
 
 ## Features
 
@@ -163,10 +163,9 @@ This function allows admin to delete a menu in a chosen store.
 
 ## FAQ
 
-**Q**: There are red words that appear right after I opened the application,
-why is that so?
+**Q**: 
 
-**A**: Those are just for logging purposes, no worries!
+**A**: 
 
 ## Command Summary
 
