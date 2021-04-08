@@ -1,6 +1,7 @@
 package seedu.model.nurseschedule;
 
 import seedu.exceptions.nurseschedules.*;
+import seedu.logger.HealthVaultLogger;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
@@ -10,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.prettyPrint;
 
 public class NurseScheduleList {
@@ -19,12 +20,13 @@ public class NurseScheduleList {
     private static ArrayList<NurseSchedule> findSchedules = new ArrayList<>();
     private static ArrayList<String> nursesFound = new ArrayList<String>();
     private String nurseID = null;
+    public Logger logger = HealthVaultLogger.getLogger();
 
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
     public NurseScheduleList(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
-        logger.info("Creating a NurseSchedule list");
+        logger.log(Level.INFO,"Creating a NurseSchedule list");
     }
 
     public NurseScheduleList() { }
