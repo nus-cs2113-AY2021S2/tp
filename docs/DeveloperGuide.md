@@ -423,6 +423,7 @@ Invalid Inputs include:
 4. `deleteSchedule` iterates through the arraylist and removes the first object that matches the user input given.
 
 **Saving updated NurseSchedule objects into .txt file**
+
 5. `runCommandLoopUntilExit()` will then call `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
 
 6. Control is then returned to NurseScheduleInstance.
