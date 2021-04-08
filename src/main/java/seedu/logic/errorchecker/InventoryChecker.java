@@ -7,8 +7,9 @@ import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.NonExistentDrugException;
 import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.model.inventory.InventoryList;
 import seedu.model.inventory.Inventory;
+import seedu.model.inventory.InventoryList;
+
 import java.util.ArrayList;
 
 public class InventoryChecker extends MainChecker {
@@ -36,7 +37,7 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens[2], "quantity");
         checkPrice(stringTokens[1]);
         checkQuantity(stringTokens[2]);
-        checkDuplicate(stringTokens[0]);
+        checkDuplicate(stringTokens[0], Double.parseDouble(stringTokens[1]));
     }
 
     public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException, seedu.exceptions.patient.IllegalCharacterException {
@@ -44,7 +45,7 @@ public class InventoryChecker extends MainChecker {
         illegalCharacterChecker(stringTokens[3], "quantity");
         checkPrice(stringTokens[2]);
         checkQuantity(stringTokens[3]);
-        checkDuplicate(stringTokens[1]);
+        checkDuplicate(stringTokens[1], Double.parseDouble(stringTokens[2]));
     }
 
     public void checkDelete() throws IllegalCharacterException, NonExistentDrugException {
@@ -66,10 +67,11 @@ public class InventoryChecker extends MainChecker {
         }
     }
 
-    public static void checkDuplicate(String inputString) throws DuplicateDrugException {
+    public static void checkDuplicate(String inputString, Double price) throws DuplicateDrugException {
         for (Inventory inventory : InventoryList.list) {
             String drugName = inventory.getDrugName();
-            if (drugName.equals(inputString)) {
+            Double drugPrice = inventory.getDoublePrice();
+            if (drugName.equals(inputString) && !drugPrice.equals(price)) {
                 throw new DuplicateDrugException();
             }
         }
@@ -99,10 +101,9 @@ public class InventoryChecker extends MainChecker {
     }
 
     public void isNameExist(String userInput, InventoryList drugs) throws NonExistentDrugException{
-       if (!drugs.isDrugStored(userInput)) {
-           throw new NonExistentDrugException("NameDoesNotExist");
-       }
+        if (!drugs.isDrugStored(userInput)) {
+            throw new NonExistentDrugException("NameDoesNotExist");
+        }
     }
 
 }
-
