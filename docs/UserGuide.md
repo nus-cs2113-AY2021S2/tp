@@ -75,7 +75,7 @@ This guide is written for users like you, for reference when there is a particul
 >> <table>
 >>   <tr>
 >>     <td><i>Step number</i></td>
->>     <td><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></td>
+>>     <td><pre><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></pre></td>
 >>   </tr>
 >> </table>
 >>
