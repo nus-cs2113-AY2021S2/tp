@@ -1,0 +1,19 @@
+@startuml
+skinparam style strictuml
+participant ":ModuleInfo" as ModuleInfo
+participant ":Ui" as Ui
+participant ":Module" as Module
+[-> ModuleInfo:
+activate ModuleInfo
+
+    ModuleInfo -> ModuleInfo++ :  addReview()
+        ref over ModuleInfo, Module, Ui : viewAllModules()
+        ModuleInfo -> Ui++ : readCommandToInt()
+        return moduleNumber
+        ref over ModuleInfo : readReview()
+        ModuleInfo -> Module++ : setReview(reviewString)
+        return
+    return
+return
+
+@enduml

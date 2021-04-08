@@ -1,0 +1,22 @@
+@startuml
+skinparam style strictuml
+participant ":ModuleInfo" as ModuleInfo
+participant ":Ui" as Ui
+participant ":Module" as Module
+[-> ModuleInfo:
+activate ModuleInfo
+
+    ModuleInfo -> ModuleInfo++ :  addNewModule()
+        ref over ModuleInfo : isNotAlphaNumeric()
+        ref over ModuleInfo : checkIfModuleExists()
+        ModuleInfo -> Ui++ : readCommand()
+        return moduleName
+        ModuleInfo -> Ui++ : readCommand()
+        return moduleDescription
+        ModuleInfo -> Module++ : Module(moduleName, moduleDescription)
+        return
+        ref over ModuleInfo : modules.add()
+    return
+return
+
+@enduml

@@ -13,20 +13,24 @@
 [3. Design](#3-design)  
 
 &nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Class](#32-ui-class)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Component](#32-ui-component)
 
 [4. Implementation](#4-implementation)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Review](#401-add-new-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.02 Delete a Review](#402-delete-a-review)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.03 Add New Task](#403-add-new-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Mark/Unmark a Task as Done](#404-markunmark-a-task-as-done)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Delete a Task](#405-delete-a-task)   
-&nbsp;&nbsp;&nbsp;&nbsp;[4.06 View All Tasks](#406-view-all-tasks)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Pin A Task](#407-pin-a-task)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Add Zoom Link](#408-add-zoom-link)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Add Module Components](#409-add-module-components)  
-&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View Module Components](#410-view-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.01 Add New Module](#401-add-new-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.02 View a Module](#402-view-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.03 View All Modules](#403-view-all-modules)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.04 Delete a Module](#404-delete-a-module)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.05 Add New Review](#405-add-new-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.06 Delete a Review](#406-delete-a-review)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.07 Add New Task](#407-add-new-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.08 Mark/Unmark a Task as Done](#408-markunmark-a-task-as-done)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.09 Delete a Task](#409-delete-a-task)   
+&nbsp;&nbsp;&nbsp;&nbsp;[4.10 View All Tasks](#410-view-all-tasks)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.11 Pin A Task](#411-pin-a-task)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.12 Add Zoom Link](#412-add-zoom-link)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.13 Add Module Components](#413-add-module-components)  
+&nbsp;&nbsp;&nbsp;&nbsp;[4.14 View Module Components](#414-view-module-components)  
 
 [5. Product scope](#5-product-scope)    
 
@@ -97,7 +101,7 @@ navigate to specific sections to explore and learn about our different features 
 8. Locate the `build.gradle` file, select it and click `OK`.
 9. If asked, choose to `Open as Project`.
 10. Click `OK` to accept the default settings.
-11. Right click on the `Duke.java` file and select `Run Duke.main()`.
+11. Right-click on the `Duke.java` file and select `Run Duke.main()`.
 12. If the set up was done right, you should see this welcome message:
     ````  
      Welcome to 
@@ -148,8 +152,35 @@ This class handles the interactions with the user and contains the methods for s
 
 ## 4. Implementation
 
-### 4.01 Add New Review
+### 4.01 Add New Module
+This feature is for users to add any modules from their university course into the list of modules.  
+All modules are stored in an `ArrayList` called `modules`.  
+Given below is the sequence diagram for the feature:  
+![Diagram](diagrams/moduleInfo/module/addNewModule.png)  
+A general explanation of how this feature works:  
 
+1. When user types in a `module name`, it will be checked for:
+   1. illegal characters entered,  
+   1. if it is an empty string, and  
+   1. if a module with that exact name exists in the `ArrayList` of `modules`
+1. When `module name` is valid, and when user types in a `module description`, it will be checked if it is an empty string.
+
+### 4.02 View a Module
+This feature allows users to view all the important information regarding a particular `module` (e.g. `MCs`, `Grade`, `Links`, `Tasks`, etc. ).
+
+A general explanation of how this feature works:  
+
+1. When a `module` is chosen from the list, there will be a method within the `Module` class itself that gets the relevant class-level attributes. 
+1. This will print the important information regarding the module.
+
+### 4.03 View all Modules
+This feature prints out the `name` String attribute of the `module` objects in the `ArrayList` of `modules`.  
+
+### 4.04 Delete a Module
+This feature deletes a `module` object from the `ArrayList` of `modules`.  
+Just before a successful deletion, the deleted `module`'s relevant information (e.g. `reviews`, `module description`, etc.) will be printed out for the user's reference.
+
+### 4.05 Add New Review
 This feature allows user to `add a review` for any of the modules they have taken.
 
 > 📝 **Note!**  
@@ -167,31 +198,29 @@ Overall 10/10 :)
 Returning to module information menu...
   ```
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/addNewReview.png)  
+![Diagram](diagrams/moduleInfo/addNewReview.png)  
 A general explanation of how this feature works:
 
-**Problem**: When the user wants to review a module, he/she should be able to type ___multiple lines
-of input___, as reviews are generally long and detailed.
-
-**Solution**: A `while` loop is used to take in multiple lines of input until the input contains
+A `while` loop is used to take in multiple lines of input until the input contains
 the `/end` symbol. Anything typed after this `/end` symbol will be erased.
 
 **When overwriting this review with a new review**: The old review will be printed for user
-reference. The user will also be alerted that this action will delete his/her old review via a log.
-The log is printed out as a warning.
+reference. The user will also be alerted that this action will delete his/her old review.
 
 
-### 4.02 Delete a Review
-
-This feature allows user to delete a review from the `module`.
+### 4.06 Delete a Review  
+This feature allows user to delete a `review` from the `module`.
 
 A general explanation of how this feature works:
 
-Deleting a review would __reset__ the `Review` *String* attribute of a `module` to a default value
+Deleting a `review` would __reset__ the `review` *String* attribute of a `module` to a default value
 of:  
-`"You have not reviewed this module yet."`
+`"You have not reviewed this module yet."`  
 
-### 4.03 Add New Task
+If this default string value already existed when `deleteAReview` is called (i.e. if the user has not reviewed the module yet), 
+this same string will be printed out as a warning to the user. 
+
+### 4.07 Add New Task
 
 This feature allows the user to add tasks of type `normal task`, `assignment`, `midterm`, `final exam` to a
 task list.
@@ -206,7 +235,7 @@ creation:
 5) `Message` <br> Example: `Good job!`  
 
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/addNewTask.png)
+![Diagram](diagrams/tasks/addNewTask.png)
 
 A general explanation of how this feature works:
 
@@ -222,12 +251,12 @@ user. Using the example above,
 The user input for `Message` (argument 5 above) will be printed out when the user deleted the task,
 signalling completion.
 
-### 4.04 Mark/Unmark a Task as Done
+### 4.08 Mark/Unmark a Task as Done
 
 This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/markUnmarkTask.png)
+![Diagram](diagrams/tasks/markUnmarkTask.png)
 
 A general explanation of how this feature works:
 
@@ -241,13 +270,13 @@ Depending on the current status of the task, the user will be informed of the cu
 Upon marking a task as done, the `Message` that the user inputted upon creation of this particular task will then be printed out.
 
 
-### 4.05 Delete a Task
+### 4.09 Delete a Task
 
 This feature allows the user to delete a task of type `task`, `assignment`, `midterm`, `final exam`
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/deleteATask.png)
+![Diagram](diagrams/tasks/deleteATask.png)
 
 A general explanation of how this feature works:
 
@@ -257,25 +286,25 @@ tasks in the `ArrayList` for the task type they chose will then be printed out, 
 input the index of the task they want to delete. The task they select will then be deleted from
 the `ArrayList`.
 
-### 4.06 View All Tasks
+### 4.10 View All Tasks
 
 This feature allows the user to view all their existing tasks for all task types.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/viewAllTasks.png)
+![Diagram](diagrams/tasks/viewAllTasks.png)
 
 A general explanation of how this feature works:
 
 When the user calls this feature, the application will first iterate through and print out the pinned task list.
 This is then followed by the `task` list, `assignment` list, `midterm` list and `final exam` list.
 
-### 4.07 Pin a Task
+### 4.11 Pin a Task
 
 This feature allows the user to pin a task of type `task`, `assignment`, `midterm`, `final exam`
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/pinTask.png)
+![Diagram](diagrams/tasks/pinTask.png)
 
 A general explanation of how this feature works:
 
@@ -288,10 +317,10 @@ The pinned task list is stored using a HashMap, with the key being the __task ty
 The task the user selected will then be added to the respective pinned task
 ArrayList corresponding to the __task type__ they chose.
 
-### 4.08 Add Zoom Link
+### 4.12 Add Zoom Link
 
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/addZoomLink.png)
+![Diagram](diagrams/links/addZoomLink.png)
 
 A general 4-step explanation of how this feature works is shown below:
 
@@ -312,12 +341,12 @@ the module object which is stored in the ModuleInfo class.
 Step 4. Module#setZoomLink then sets the `zoomLink` attribute of the module object to the zoom link
 that was entered.
 
-### 4.09 Add External Links 
+### 4.13 Add External Links 
 
 This feature allows users to add and store their favourite links.
 
 Given below is the sequence diagram for the feature:
-![Diagram](diagrams/addLink.png)
+![Diagram](diagrams/links/addLink.png)
 
 A general 2-step explanation of how this feature works is shown below:
 
@@ -344,10 +373,10 @@ with 2 decimal places of precision, and total number of graded modular credits.
 
 Given below is the sequence diagram for the feature:  
 
-![Diagram](diagrams/addCapAndMcs.png)
+![Diagram](diagrams/capCalculator/addCapAndMcs.png)
 
 How the feature works:
-The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class and a call to the class is performed
+The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class, and a call to the class is performed
 upon entering this sequence of numbers from the main menu:  
 `2`, `1`.
 
@@ -361,7 +390,7 @@ Step 2.
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
-![Diagram](diagrams/addComponent.png)  
+![Diagram](diagrams/moduleInfo/addComponent.png)  
 How the feature works:  
 The feature is facilitated by the `Component` class and a call to `addComponent()` is performed upon
 expected user input to add a new component to a module.
@@ -396,7 +425,7 @@ Improvement: the total weightage (in whole numbers) of the module should not exc
 ### 5.1 Target user profile
 
 This product is for NUS students to help them to keep track/add/edit module information, and
-deadlines. This product is for users who prefer CLI over GUI.
+deadlines. This product is for users who prefer CLI to GUI.
 
 ### 5.2 Value proposition
 
@@ -422,7 +451,7 @@ can keep track of commonly accessed information while keeping track of the tasks
 |v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|
 |v1.0|student|add external links| refer to them more easily|  
 |v1.0|student|add deadlines to some tasks|record when a task needs to be done|
-|v1.0|student|catergorize my tasks|know whether a task is a normal task, assignment or exam|
+|v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam|
 |v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 |v2.0|user| store my information | view them later without having to re-type them again|
