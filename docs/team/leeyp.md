@@ -20,7 +20,7 @@ Given below are my contributions to the project:
 `v2.0 tasks`: Convert Food category into classes, Added History Command, Added List by Storage Location Command,
 as well as associated JUnit tests and helper function code.
 
-**Code contributed**: More than 1200 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
+**Code contributed**: More than 1300 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
 
 ### New Features Implemented
 
