@@ -1,10 +1,10 @@
 package seedu.duke;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.duke.features.link.LinkInfo.linksList;
 import static seedu.duke.features.link.ZoomLinkInfo.zoomLinksList;
 
-import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import seedu.duke.features.link.LinkInfo;
 import seedu.duke.features.link.ZoomLinkInfo;
@@ -14,6 +14,7 @@ public class LinkTest {
     @Test
     public void isValidLink_invalidLinks_false() {
         assertEquals(false, LinkInfo.isValidLink("https://ww.youtube.com"));
+        assertEquals(false, LinkInfo.isValidLink("https:/www.youtube.com"));
         assertEquals(false, LinkInfo.isValidLink("https:/www.youtube.com"));
         assertEquals(false, LinkInfo.isValidLink(null));
     }
@@ -25,10 +26,25 @@ public class LinkTest {
         assertEquals(true, LinkInfo.isValidLink("https://www.imf.org"));
     }
 
+    public boolean isDuplicate(String linkToCheck) {
+        for (LinkInfo link : LinkInfo.linksList) {
+            if (linkToCheck.equals(link.getLink())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Test
-    public void testLinkConstructorsAndGetters() {
-        LinkInfo link = new LinkInfo("https://www.reddit.com");
-        assertEquals("https://www.reddit.com", link.getLink());
+    public void isDuplicate_duplicates_true() {
+        linksList.add(new LinkInfo("https://www.youtube.com"));
+        assertEquals(true, isDuplicate("https://www.youtube.com"));
+    }
+
+    @Test
+    public void isDuplicate_notDuplicates_false() {
+        linksList.add(new LinkInfo("https://www.youtube.com"));
+        assertEquals(false, isDuplicate("https://www.youtube.co"));
     }
 
     @Test
@@ -46,42 +62,11 @@ public class LinkTest {
     public void deleteZoomLink_isInvalidIndex_exceptionThrown() {
         zoomLinksList.add(new ZoomLinkInfo("testlink", "cs1010"));
         zoomLinksList.add(new ZoomLinkInfo("testlink2", "cs2020"));
-        try {
-            ZoomLinkInfo.deleteZoomLink(15);
-        } catch (IndexOutOfBoundsException e) {
-            assertEquals("Index 15 out of bounds for length 2", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testZoomLinkConstructorsAndGetters() {
-        ZoomLinkInfo link1 = new ZoomLinkInfo(
-                "https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09",
-                "cs2101", "secret");
-        assertEquals("https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09",
-                link1.getDescription());
-        assertEquals("cs2101", link1.getModuleCode());
-        assertEquals("secret", link1.getPassword());
-
-        ZoomLinkInfo link2 = new ZoomLinkInfo(
-                "https://nus-sg.zoom.us/j/87226556676?pwd=aDNXWkNtRWRGdFM0SHFPQnpJM2gzUT09",
-                "cs2113t");
-        assertEquals("https://nus-sg.zoom.us/j/87226556676?pwd=aDNXWkNtRWRGdFM0SHFPQnpJM2gzUT09",
-                link2.getDescription());
-        assertEquals("cs2113t", link2.getModuleCode());
-    }
-
-    @Test
-    public void testAddZoomLink() {
-        ZoomLinkInfo link1 = new ZoomLinkInfo(
-                "https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09",
-                "cs2101", "secret");
-        ArrayList<ZoomLinkInfo> zoomLinksList = new ArrayList<>();
-        zoomLinksList.add(link1);
-        assertEquals("secret", zoomLinksList.get(0).getPassword());
-        assertEquals("cs2101", zoomLinksList.get(0).getModuleCode());
-        assertEquals("https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09",
-                zoomLinksList.get(0).getDescription());
+        assertThrows(IndexOutOfBoundsException.class,
+                () -> {
+                    ZoomLinkInfo.deleteZoomLink(15);
+                });
+        zoomLinksList.clear();
     }
 }
 
