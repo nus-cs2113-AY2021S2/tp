@@ -213,23 +213,23 @@ Invalid Input includes:
 
 **Creating StaffAdd command**
 
-2. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
-3. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
+4. The StaffAdd Command object is returned to `StaffInstance.run()`
 
 **Creating Staff Object with User Input**
 
-4. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
 
-5. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+6. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
 
-6. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+7. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
 
 **Saving Staff Objects into .txt file**
 
-7. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-9. Data is written and saved.
-10. Control is then returned to StaffInstance.
+8. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+9. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+10. Data is written and saved.
+11. Control is then returned to StaffInstance.
 
 <br>
 
@@ -269,9 +269,7 @@ Invalid Input includes:
 7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
 
 8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-
 9. Data is written and saved.
-
 10. Control is then returned to StaffInstance.
 
 <br>
