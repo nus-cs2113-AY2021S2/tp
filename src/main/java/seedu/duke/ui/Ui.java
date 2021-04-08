@@ -309,8 +309,9 @@ public class Ui {
         int command;
         Scanner input = new Scanner(System.in);
         try {
-            command = Integer.parseInt(input.nextLine());
+            command = Integer.parseInt(input.nextLine().trim());
         } catch (NumberFormatException e) {
+            printHorizontalLine();
             return -1;
         }
         printHorizontalLine();
@@ -709,4 +710,7 @@ public class Ui {
                 + "[2] --- No, I wish to key in my inputs again.");
     }
 
+    public static void printInvalidInputForYOrNMessage() {
+        System.out.println("Invalid input! Please input Y or N.");
+    }
 }

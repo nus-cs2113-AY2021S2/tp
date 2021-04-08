@@ -156,13 +156,13 @@ class TaskListTest {
 
     @Test
     public void isValidTaskType_validTasktype_success() {
-        String invalidTaskType = "1";
-        assertTrue(TaskManager.isValidTaskType(invalidTaskType));
+        int validTaskType = 1;
+        assertTrue(TaskManager.isValidTaskType(validTaskType));
     }
 
     @Test
     public void isValidTaskType_invalidTasktype_printErrorMessage() {
-        String invalidTaskType = "5";
+        int invalidTaskType = 5;
         assertFalse(TaskManager.isValidTaskType(invalidTaskType));
     }
 

@@ -175,6 +175,7 @@ understanding.
 > 1. Ending the application abruptly may cause changes to be discarded!
 > 2. Please do not modify the UniTracker Data folder and its files if they exist.
 > 3. Unfortunately once you enter an action, you would have to complete it. There is currently no way of having a forced escape out of the action, but we will work on implementing that in future versions.
+> 4. Please note that ' ~~ ' is a restricted character and will not be allowed as an input!
 
 Main Menu:
 ````
@@ -708,6 +709,7 @@ Here is a demonstration for navigating to the Task Manager menu from the main me
 > In this example,
 > 1. No tasks have been pinned.
 > 2. User inputs are indicated via a preceding `>`.
+
 ````
 This is the list of your pinned tasks:
 
@@ -733,9 +735,9 @@ Please choose which action you would like to do and enter the number:
 
 Adds a task of type `normal task`, `assignment`, `midterm` or `final exam` into the task list.
 
-A `normal task` has the following 2 fields which cannot be empty:
-1) Description: the description of the task.
-2) Message: the message you will see upon [marking the task as done](#332-markunmark-a-task-as-done).
+A `normal task` has the following 2 fields which cannot be empty:  
+1) Description: the description of the task.  
+2) Message: the message you will see upon [marking the task as done](#332-markunmark-a-task-as-done).  
 
 Example for adding a task of type `normal task` with the task description of `Work on user guide` and
 message being `Wow yay~`:
@@ -744,6 +746,7 @@ message being `Wow yay~`:
 > In this example,
 > 1. Module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
 > 2. User inputs are indicated via a preceding `>`.
+
   ````
   Please choose which type of task you would like to add and enter the number:
   [1] --- Normal Task
@@ -782,6 +785,7 @@ message being `Wow yay~`:
 > In this example,
 > 1. Module `CS2113T` has already been added through the [add module](#311-add-a-module) feature.
 > 2. User inputs are indicated via a preceding `>`.
+
   ````
 Please choose which type of task you would like to add and enter the number:
 [1] --- Normal Task
@@ -969,7 +973,8 @@ Example:
 
 #### 3.3.5 Pin a Task
 
-Pins a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list.
+Pins a task of type `normal task`, `assignment`, `midterm` or `final exam` from the task list. The list of pinned tasks will be displayed whenever you enter the main menu or want to 
+[view all your tasks](#334-view-all-tasks).
 
 Example of pinning a task of type `normal task` with the task description of `Work on user guide`:
 
@@ -1019,6 +1024,20 @@ Following this, if you were to [view all your tasks](#334-view-all-tasks), it wi
   
   This is the list of your final exams:  
   ````
+
+You can also see your pinned tasks in the main menu:
+
+````
+This is the list of your pinned tasks:
+1. [CS2113T][DONE] Work on User Guide
+
+Main Menu:
+[1] Module Information
+[2] CAP Simulator/Calculator
+[3] Task Manager
+[4] External Links
+[5] Exit Program
+````
 
 ---
 
