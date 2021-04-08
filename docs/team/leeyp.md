@@ -9,7 +9,7 @@ I am one of the contributors to the FridgeFriend project.
 
 FridgeFriend is an app for managing food in the fridge, optimised for use via a Command Line Interface (CLI).
 If you can type fast, FridgeFriend can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java.
+It is written in Java, and has more than 5500 lines of code.
 
 
 ## Summary of Contributions
@@ -20,9 +20,11 @@ Given below are my contributions to the project:
 `v2.0 tasks`: Convert Food category into classes, Added History Command, Added List by Storage Location Command,
 as well as associated JUnit tests and helper function code.
 
+`v2.1 tasks`: Feature enhancements by fixing bugs in the application.
+
 **Code contributed**: More than 1300 lines of code: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=leeyp)
 
-### New Features Implemented
+### Enhancements Implemented
 
 
 **Version 1.0**
@@ -118,6 +120,7 @@ as well as associated JUnit tests and helper function code.
     - [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147),
 - Consolidated issues created during PE-D for the team and labelled issue trackers.
 - Gave suggestions and help debug in weekly meetings
+- Coordinating communications between instructors on MSTeams and teammates
 
 ### Contributions beyond the project team:
 - [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts)
