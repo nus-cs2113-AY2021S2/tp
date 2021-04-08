@@ -216,11 +216,11 @@ Opens the specified module.
 <table>
     <tr>
         <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center">When you enter</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
         <td><code>open CS2113T</code></td>
     </tr>
     <tr>
-        <td style="text-align: center">You will get</td>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
         <td><pre>Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
     </tr>
 </table>
@@ -241,11 +241,11 @@ Adds a module with the specified module name.
 <table>
     <tr>
         <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center">When you enter</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
         <td><code>add CS2113T</code></td>
     </tr>
     <tr>
-        <td style="text-align: center">You will get</td>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
         <td><pre>Added CS2113T to the module list.</pre></td>
     </tr>
 </table>
@@ -266,20 +266,20 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 <table>
     <tr>
         <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center">When you enter</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
         <td><code>del</code></td>
     </tr>
     <tr>
-        <td style="text-align: center">You will get</td>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
         <td><pre>Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.</pre></td>
     </tr>
 <tr>
         <td rowspan="2" style="text-align: center">Step<br>#2</td>
-        <td style="text-align: center">When you enter</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
         <td><code>1 3</code></td>
     </tr>
     <tr>
-        <td style="text-align: center">You will get</td>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
         <td><pre>Removed CS2107 from the module list.<br>Removed CS2101 from the module list.</pre></td>
     </tr>
 </table>
@@ -300,11 +300,11 @@ Lists all modules.
 <table>
     <tr>
         <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center">When you enter</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
         <td><code>mods</code></td>
     </tr>
     <tr>
-        <td style="text-align: center">You will get</td>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
         <td><pre>Modules in your list:<br>1. CS2101<br>2. CS2113T</pre></td>
     </tr>
 </table>
@@ -345,9 +345,17 @@ Displays a summary of lessons and undone tasks for the module.
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | info | \<Overview for CS2113T><br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days) |
+<table>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>info</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days)</pre></td>
+    </tr>
+</table>
 
 **Result** - Prints overview of module, including lesson and undone tasks.
 
@@ -364,9 +372,17 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc | Added tutorial to lesson list. |
+<table>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Added tutorial to lesson list.</pre></td>
+    </tr>
+</table>
 
 **Result** - Adds “tutorial” to the module's list of lessons, with specified details.
 
