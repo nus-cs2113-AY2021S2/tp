@@ -3,15 +3,17 @@ package seedu.logic.instance;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.nurseschedules.*;
+import seedu.logger.HealthVaultLogger;
 import seedu.logic.command.Command;
-import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.logic.parser.NurseSchedulesParser;
+import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.storage.NurseScheduleStorage;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
-import java.util.logging.*;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Main entry-point for the NurseSchedules instance.
@@ -22,35 +24,30 @@ public class NurseScheduleInstance {
     private NurseScheduleList nurseSchedules;
     private NurseScheduleStorage storage;
     private NurseScheduleUI ui;
-    public static Logger logger;
+    public Logger logger = HealthVaultLogger.getLogger();
 
     public NurseScheduleInstance() {
         parser = new NurseSchedulesParser();
         storage = new NurseScheduleStorage();
         ui = new NurseScheduleUI();
-
-        logger = Logger.getLogger(this.getClass().getName());
-        LogManager.getLogManager().reset();
-        logger.addHandler(storage.initLogger());
-        logger.info("NurseSchedule instantiated");
     }
 
     /** Reads the user command and executes it, until the user issues the exit command. */
     public void runCommandLoopUntilExit() {
         try {
-            nurseSchedules = new NurseScheduleList(NurseScheduleStorage.load());
+            nurseSchedules = new NurseScheduleList(storage.load());
         } catch (IOException | NullPointerException | ArrayIndexOutOfBoundsException
                 | NurseIdNotFound | InvalidIDTypeException | PatientIdNotFound | InvalidDateException e) {
             ui.corruptedFileErrorMessage();
-            logger.log(Level.SEVERE, "Error loading NurseSchedule.txt");
+            logger.log(Level.WARNING, "Error loading NurseSchedule.txt");
             return;
         } catch (NurseCrossValidationError e) {
             System.out.println(e.getMessage());
-            logger.log(Level.SEVERE,"Error loading Staff.txt");
+            logger.log(Level.WARNING,"Error loading Staff.txt");
             return;
         } catch (PatientCrossValidationError e) {
             System.out.println(e.getMessage());
-            logger.log(Level.SEVERE,"Error loading Patients.txt");
+            logger.log(Level.WARNING,"Error loading Patients.txt");
             return;
         }
         ui.printNurseScheduleWelcomeMessage();

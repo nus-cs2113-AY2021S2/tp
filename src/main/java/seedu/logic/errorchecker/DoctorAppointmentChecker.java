@@ -4,7 +4,7 @@ import seedu.duke.Constants;
 import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.*;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
