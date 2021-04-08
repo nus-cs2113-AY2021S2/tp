@@ -28,11 +28,9 @@ public class StorageTest {
         patient.addRecord(date, "abdominal pain", "mild UTI", "antibiotics, referral to hospital");
         data.setPatient(patient);
 
-        try {
+        assertDoesNotThrow(() -> {
             data.saveFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
     }
 
     @Test

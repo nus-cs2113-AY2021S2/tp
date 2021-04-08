@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExitCommandTest {
@@ -23,13 +24,11 @@ public class ExitCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             exitCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
-        assertEquals("Goodbye, we hope to see you again!" + System.lineSeparator(), bos.toString());
+        assertEquals(Constants.EXIT_MESSAGE + System.lineSeparator(), bos.toString());
 
         System.setOut(originalOut);
     }

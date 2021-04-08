@@ -1,5 +1,6 @@
 package seedu.duke.command;
 
+import seedu.duke.Common;
 import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
@@ -8,7 +9,6 @@ import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 
@@ -67,7 +67,7 @@ public class DeleteCommand extends Command {
     private void deleteRecord(Patient patient, String dateString) throws InvalidInputException {
         LocalDate date = null;
         try {
-            date = parseDate(dateString);
+            date = Common.parseDate(dateString);
         } catch (DateTimeParseException dateTimeParseException) {
             throw new InvalidInputException(InvalidInputException.Type.INVALID_DATE);
         }
@@ -78,12 +78,5 @@ public class DeleteCommand extends Command {
             ui.printMessage("Record for " + date + " does not exist!");
         }
 
-    }
-
-    private LocalDate parseDate(String dateString) throws DateTimeParseException {
-        if (!dateString.isEmpty()) {
-            return LocalDate.parse(dateString, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
-        }
-        return LocalDate.now();
     }
 }

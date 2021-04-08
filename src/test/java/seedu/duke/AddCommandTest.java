@@ -2,6 +2,7 @@ package seedu.duke;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.AddCommand;
+import seedu.duke.exception.InvalidInputException;
 
 import java.util.HashMap;
 import java.io.ByteArrayOutputStream;
@@ -45,7 +46,7 @@ class AddCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             addCommand.execute();
         });
-        assertEquals("Please key in a valid NRIC number!", exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC, exception.getMessage());
     }
 
     @Test
@@ -57,15 +58,13 @@ class AddCommandTest {
         arguments.put("payload", "S1234567D");
         AddCommand addCommand = new AddCommand(ui, data, arguments);
 
-        try {
-            addCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
-
-        Exception exception = assertThrows(Exception.class, () -> {
+        assertDoesNotThrow(() -> {
             addCommand.execute();
         });
-        assertEquals("Patient already exists!", exception.getMessage());
+
+        InvalidInputException invalidInputException = assertThrows(InvalidInputException.class, () -> {
+            addCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_PATIENT_EXISTED, invalidInputException.getMessage());
     }
 }
