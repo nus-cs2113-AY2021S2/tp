@@ -41,9 +41,8 @@ public class TaskManager {
     public static void execute() {
         while (true) {
             Ui.printTaskManagerMenu();
-            String command = Ui.readCommand();
             try {
-                int taskNumber = Integer.parseInt(command);
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskNumber) {
                 case ADD_NEW_TASK_COMMAND:
                     addNewTask();
@@ -120,11 +119,9 @@ public class TaskManager {
         DeleteTask.execute(taskTypeNumber);
     }
 
-    public static boolean isValidTaskType(String command) {
+    public static boolean isValidTaskType(int taskNumber) {
         try {
-            int taskNumber = Integer.parseInt(command);
             boolean isInvalidTaskType = (taskNumber <= 0) || (taskNumber >= 5);
-            assert !command.isBlank() : "Task number cannot be empty";
             if (!isInvalidTaskType) {
                 return true;
             }
@@ -138,9 +135,9 @@ public class TaskManager {
     public static int getTaskNumber() {
         int taskNumber;
         while (true) {
-            String command = Ui.readCommand();
+            int command = Ui.readCommandToInt();
             if (isValidTaskType(command)) {
-                taskNumber = Integer.parseInt(command);
+                taskNumber = command;
                 break;
             }
         }

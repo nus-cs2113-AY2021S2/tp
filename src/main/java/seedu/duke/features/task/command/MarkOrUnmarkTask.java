@@ -25,7 +25,7 @@ public class MarkOrUnmarkTask {
         Ui.printSelectTaskNumberToMarkOrUnmark(taskTypeNumber);
         while (true) {
             try {
-                int taskNumber = Integer.parseInt(Ui.readCommand());
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskTypeNumber) {
                 case TOGGLE_TASK_COMMAND:
                     toggleTaskStatus(taskNumber, TASK_TYPE);
@@ -60,7 +60,7 @@ public class MarkOrUnmarkTask {
                 if (input.equalsIgnoreCase("N")) {
                     return;
                 }
-                System.out.println("Invalid input! Please input Y or N.");
+                Ui.printInvalidInputForYOrNMessage();
                 input = Ui.readCommand();
             }
             assert input.equalsIgnoreCase("Y") : "input should be Y";
@@ -77,7 +77,7 @@ public class MarkOrUnmarkTask {
                 if (input.equalsIgnoreCase("N")) {
                     return;
                 }
-                System.out.println("Invalid input! Please input Y or N.");
+                Ui.printInvalidInputForYOrNMessage();
                 input = Ui.readCommand();
             }
             assert input.equalsIgnoreCase("Y") : "input should be Y";

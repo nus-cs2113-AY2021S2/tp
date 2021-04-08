@@ -193,17 +193,17 @@ of:
 
 ### 4.03 Add New Task
 
-This feature allows the user to add tasks of type `task`, `assignment`, `midterm`, `final exam` to a
+This feature allows the user to add tasks of type `normal task`, `assignment`, `midterm`, `final exam` to a
 task list.
 
-All task types (except `Task`, which contains arguments 1, 2 and 5) contain 5 arguments upon
+All task types (except `normal task`, which contains arguments 1, 2 and 5 only) contain 5 arguments upon
 creation:
 
-1) `Module Code` <br> Example: `CS2113T`
-2) `Task Description` <br> Example: `Finish v2.0`
-3) `Date` <br> Example: `2021-03-21`
-4) `Time` <br> Example: `23:59`
-5) `Message` <br> Example: `Good job!`
+1) `Module Code` <br> Example: `CS2113T`  
+2) `Task Description` <br> Example: `Finish v2.0`  
+3) `Date` <br> Example: `2021-03-21`  
+4) `Time` <br> Example: `23:59`  
+5) `Message` <br> Example: `Good job!`  
 
 Given below is the sequence diagram for the feature:  
 ![Diagram](diagrams/addNewTask.png)
@@ -420,15 +420,18 @@ can keep track of commonly accessed information while keeping track of the tasks
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
 |v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|
-|v1.0|student|add external links| refer to them more easily
+|v1.0|student|add external links| refer to them more easily|  
+|v1.0|student|add deadlines to some tasks|record when a task needs to be done|
+|v1.0|student|catergorize my tasks|know whether a task is a normal task, assignment or exam|
+|v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-|v2.0|user| store my information | view them later without having to re-type them again 
+|v2.0|user| store my information | view them later without having to re-type them again|
 ---
 
 ## 7. Non-Functional Requirements
 
 1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.
-2. Must be able to work completely offline
+2. Must be able to work completely offline.
 
 ---
 

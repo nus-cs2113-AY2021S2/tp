@@ -23,7 +23,7 @@ public class DeleteTask {
         Ui.printSelectTaskNumberToDelete(taskTypeNumber);
         while (true) {
             try {
-                int taskNumber = Integer.parseInt(Ui.readCommand());
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskTypeNumber) {
                 case DELETE_TASK:
                     findAndDeleteTask(taskNumber, TASK_TYPE);
