@@ -393,7 +393,7 @@ Any invalid input such as decimals or alphabets will result in
 ## *4. Appendix: Requirements*
 ### 4.1. Product Scope
 
-NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
+NUSMaze is targeted at NUS engineering freshmen, to help new students find their way to their destination blocks.
 
 The engineering block is extremely huge, and the layout of the blocks may be confusing for new students. To reduce the time wasted on navigating the numerous blocks in Engineering, NUSMaze will provide the shortest route available for students to take.
 
