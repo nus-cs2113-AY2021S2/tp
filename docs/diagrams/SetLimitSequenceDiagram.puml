@@ -7,14 +7,14 @@ participant ":SetLimitCommand" as SetLimitCommand COMMAND_COLOR
 end box
 
 box Food FOOD_COLOR_T1
-participant "foodCategory:FoodCategory" as FoodCategory FOOD_COLOR_T3
+participant ":MinimumQuantity" as MinimumQuantity FOOD_COLOR_T3
 end box
 
 -> SetLimitCommand: execute()
 activate SetLimitCommand
 
-SetLimitCommand-> FoodCategory: setMinimumQuantity(parameters)
-activate FoodCategory
+SetLimitCommand-> MinimumQuantity: setMinimumQuantity(parameters)
+activate MinimumQuantity
 return
 return
 

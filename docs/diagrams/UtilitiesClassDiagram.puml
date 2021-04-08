@@ -7,8 +7,10 @@ skinparam classBackgroundColor UTILITIES_COLOR
 skinparam classAttributeIconSize 0
 
 actor User
+class FridgeFriend FRIDGEFRIEND_COLOR {
+}
 
-package Utilities <<Rectangle>> {
+package "Utilities Component" <<Rectangle>> {
     class Ui
     class LoggerHandler
     class Storage

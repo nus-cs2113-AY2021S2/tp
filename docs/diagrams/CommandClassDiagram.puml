@@ -7,7 +7,7 @@ skinparam arrowColor COMMAND_COLOR_T4
 skinparam classBackgroundColor COMMAND_COLOR_T2
 skinparam classAttributeIconSize 0
 
-package Command <<Rectangle>> {
+package "Command Component" <<Rectangle>> {
     class "{abstract}\nCommand" as Command
     class AddCommand
     class RemoveCommand

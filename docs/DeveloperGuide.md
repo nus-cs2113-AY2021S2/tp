@@ -252,8 +252,8 @@ The sequence diagram shows how the `runninglow` operation works:
 
 The `setlimit` command is implemented by:
 
-1. Calling a setter method in FoodCategory.
-2. The setter method will change the FoodCategory predefined minimum number of quantity.
+1. Calling a setter method in MinimumQuantity.
+2. The setter method will change the FoodCategory's predefined minimum number of quantity.
 3. The FoodCategory and new minimum number of quantity is specified by the user.
 
 The sequence diagram shows how the `setlimit` operation works:
