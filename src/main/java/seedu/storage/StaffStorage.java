@@ -1,7 +1,7 @@
 package seedu.storage;
 
 import seedu.exceptions.*;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logger.HealthVaultLogger;

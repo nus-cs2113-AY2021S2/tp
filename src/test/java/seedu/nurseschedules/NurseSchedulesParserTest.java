@@ -6,7 +6,7 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;

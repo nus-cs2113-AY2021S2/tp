@@ -5,7 +5,7 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;
@@ -14,7 +14,6 @@ import seedu.ui.NurseScheduleUI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 

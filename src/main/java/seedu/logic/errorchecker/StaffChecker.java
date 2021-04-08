@@ -1,7 +1,7 @@
 package seedu.logic.errorchecker;
 
 import seedu.exceptions.*;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
@@ -71,6 +71,9 @@ public class StaffChecker extends MainChecker {
     public void checkStaffID(String id) throws WrongStaffIdException, InvalidIntegerException {
         logger.log(Level.INFO, "Checking Staff ID.");
         try {
+            if (id.length() < 5) {
+                throw new WrongStaffIdException();
+            }
             if (Integer.parseInt(id.substring(1)) < 0) {
                 throw new InvalidIntegerException();
             }

@@ -1,6 +1,4 @@
-package seedu.exceptions.patient;
-
-import seedu.exceptions.HealthVaultException;
+package seedu.exceptions;
 
 public class IllegalCharacterException extends HealthVaultException {
 

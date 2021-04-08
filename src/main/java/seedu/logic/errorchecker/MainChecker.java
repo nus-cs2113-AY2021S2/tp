@@ -5,7 +5,7 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidGenderException;
 import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.logger.HealthVaultLogger;
 import seedu.ui.UI;
 
