@@ -7,22 +7,22 @@ package logic{
 package command{
 Class "{abstract}\nCommand" as Command
 package doctorappointment {
-Command <|--up ABCCommand
+Command <|-- ABCCommand
 }
 package inventory {
-Command <|--up DEFCommand
+Command <|-- DEFCommand
 }
 package nurseschedule {
-Command <|--up GHICommand
+Command <|-- GHICommand
 }
 package patient {
-Command <|--up JKLCommand
+Command <|-- JKLCommand
 }
 package staff {
-Command <|--up MNOCommand
+Command <|-- MNOCommand
 }
 package startmenu {
-Command <|--up PQRCommand
+Command <|-- PQRCommand
 }
 }
 package errorchecker{
@@ -31,18 +31,19 @@ Class XYZChecker
 
 package parser{
 Class PQRParser
-PQRParser -down> XYZChecker
+PQRParser .left.> XYZChecker : creates >
+PQRParser .up.> ABCCommand : creates >
+PQRParser .up.> DEFCommand : creates >
+PQRParser .up.> GHICommand : creates >
+PQRParser .up.> JKLCommand : creates >
+PQRParser .up.> MNOCommand : creates >
+PQRParser .up.> PQRCommand : creates >
 }
 
 package instance {
 Class ABCInstance
-ABCInstance --down> ABCCommand
-ABCInstance --down> DEFCommand
-ABCInstance --down> GHICommand
-ABCInstance --down> JKLCommand
-ABCInstance --down> MNOCommand
-ABCInstance --down> PQRCommand
-ABCInstance --left> PQRParser
+ABCInstance .RIGHT.> PQRParser : creates >
+ABCInstance .RIGHT.> Command : executes >
 }
 
 }
