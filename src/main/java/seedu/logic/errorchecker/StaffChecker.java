@@ -4,7 +4,7 @@ import seedu.exceptions.*;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.staff.WrongStaffIDException;
 import seedu.model.staff.Staff;
 import seedu.model.staff.StaffList;
 
@@ -35,7 +35,7 @@ public class StaffChecker extends MainChecker {
 
 
     public String[] checkValidDataForAdd(String line, StaffList staffList) throws
-            NoInputException, WrongStaffIdException, InvalidIntegerException,
+            NoInputException, WrongStaffIDException, InvalidIntegerException,
             ExcessInputException, InsufficientInputException, DuplicateIDException,
             InvalidStaffAgeException, IllegalCharacterException {
         logger.log(Level.INFO, "Checking Staff Data before adding.");
@@ -49,7 +49,7 @@ public class StaffChecker extends MainChecker {
     }
 
     public void checkValidDataFromStorage(String line, ArrayList<Staff> list) throws NoInputException,
-            WrongStaffIdException, InvalidIntegerException, ExcessInputException,
+            WrongStaffIDException, InvalidIntegerException, ExcessInputException,
             InsufficientInputException, DuplicateIDException, InvalidStaffAgeException {
         logger.log(Level.INFO, "Checking Staff Data before loading.");
         checkDataNumInput(line,4,4);
@@ -68,21 +68,22 @@ public class StaffChecker extends MainChecker {
         }
     }
 
-    public void checkStaffID(String id) throws WrongStaffIdException, InvalidIntegerException {
+    public void checkStaffID(String id) throws WrongStaffIDException {
         logger.log(Level.INFO, "Checking Staff ID.");
         try {
             if (id.length() < 5) {
-                throw new WrongStaffIdException();
+                throw new WrongStaffIDException();
+            }
+            if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N') || (id.length()) != 6) {
+                throw new WrongStaffIDException();
             }
             if (Integer.parseInt(id.substring(1)) < 0) {
-                throw new InvalidIntegerException();
+                throw new WrongStaffIDException();
             }
         } catch (NumberFormatException e) {
-            throw new WrongStaffIdException();
+            throw new WrongStaffIDException();
         }
-        if (!(id.charAt(0) == 'D' || id.charAt(0) == 'N') || (id.length()) != 6) {
-            throw new WrongStaffIdException();
-        }
+
     }
 
     public void checkStaffAge(String number) throws NumberFormatException,
@@ -131,7 +132,7 @@ public class StaffChecker extends MainChecker {
     }
 
     public String checkDeleteCommand(String line) throws ExcessInputException,
-            InsufficientInputException, InvalidIntegerException, WrongStaffIdException {
+            InsufficientInputException, InvalidIntegerException, WrongStaffIDException {
         checkNumInput(line.split("/"),2,2);
         String input = line.split("/")[1];
         checkStaffID(input);

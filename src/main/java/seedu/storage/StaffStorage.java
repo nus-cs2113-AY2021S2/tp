@@ -3,7 +3,7 @@ package seedu.storage;
 import seedu.exceptions.*;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.staff.WrongStaffIDException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.staff.StaffList;
 import seedu.logic.errorchecker.StaffChecker;
@@ -30,7 +30,7 @@ public class StaffStorage {
 
 
     public void fileHandling(StaffList staffList) throws
-            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            ExcessInputException, InvalidIntegerException, WrongStaffIDException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
         try {
@@ -42,7 +42,7 @@ public class StaffStorage {
     }
 
     public void loadStaff(StaffList staffList, String line) throws
-            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            ExcessInputException, InvalidIntegerException, WrongStaffIDException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
         staffChecker.checkValidDataFromStorage(line, staffList.getList());
@@ -51,7 +51,7 @@ public class StaffStorage {
     }
 
     public void loadFile(StaffList staffList) throws FileNotFoundException,
-            ExcessInputException, InvalidIntegerException, WrongStaffIdException,
+            ExcessInputException, InvalidIntegerException, WrongStaffIDException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
         File f = new File(filePath);           // create a File for the given file path

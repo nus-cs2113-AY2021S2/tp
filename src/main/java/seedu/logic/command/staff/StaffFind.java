@@ -18,7 +18,6 @@ public class StaffFind extends Command {
 
     @Override
     public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
-
         staffList.find(this.input.split("/")[1]);
         UI.printEmptyLine();
     }

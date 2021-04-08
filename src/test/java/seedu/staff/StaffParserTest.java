@@ -85,15 +85,6 @@ public class StaffParserTest {
         assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
                 "Please ensure that the age is an integer between 18 and 150 inclusive!");
     }
-    @Test
-    public void commandHandler_ageMoreThan150_invalidStaffAgeExceptionReturned() {
-        HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
-                this.parser.commandHandler("add/D12345/Owen/151/Surgeon", staffList));
-        assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
-                "Please ensure that the age is an integer between 18 and 150 inclusive!");
-    }
-
-
 
 
 
