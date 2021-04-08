@@ -349,7 +349,7 @@ since it was last cleared.
 
 :information_source: The data is saved to disk in a text file, with default location as `data/historyData.txt`.
 
-:warning: Do NOT modify the data file as this might lead to corruption.
+:warning: Do NOT modify the data file as this might lead to corruption and loss of the data.
 
 * In the event that the data in the text file is corrupted or in an unreadable format, the   `history` command may fail to output the contents of the file. Users may have to manually inspect the file to delete the invalid content, or wipe the contents of the file with the [`history clear`](#clear-list-history-of-items-added-history-clear) command, to resume normal function.
   * The execution of the FridgeFriend program, however, will not be interrupted.
