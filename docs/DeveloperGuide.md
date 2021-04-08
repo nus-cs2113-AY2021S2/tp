@@ -3,18 +3,18 @@
 
 ## Content Page
 
-1. [Introduction](#1-introduction)
-	1. [What is HealthVault?](#11-what-is-healthvault)
+1. [Introduction](#1-introduction) (jia en)
+	1. [What is HealthVault?](#11-what-is-healthvault) 
 	2. [About the Developer Guide](#12-about-the-developer-guide)
-2. [How to use this guide](#2-how-to-use-the-guide)
-3. [Getting Started](#3-getting-started)
-4. [Design](#4-design)
-    1. [Architecture](#41-architecture)
-    2. [UI component](#42-ui-component)
-    3. [Logic component](#43-logic-component)
-    4. [Model component](#44-model-component)
-    5. [Storage component](#45-storage-component)
-    6. [Common classes](#46-common-classes)
+2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
+3. [Getting Started](#3-getting-started) (Owen)
+4. [Design](#4-design) 
+    1. [Architecture](#41-architecture) (owen)
+    2. [UI component](#42-ui-component) (ms)
+    3. [Logic component](#43-logic-component) (jiaen)
+    4. [Model component](#44-model-component) (alex)
+    5. [Storage component](#45-storage-component) (sarrah)
+    6. [Common classes](#46-common-classes) (owen)
 5. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -47,19 +47,15 @@
     	4. [List](#554-list)
     	5. [Find](#555-find)
 
-[Appendix A: Product Scope](#a-appendix-a-product-scope)
+[Appendix A: Product Scope](#a-appendix-a-product-scope) (jiaen)
 
-[Appendix B: User Stories](#b-appendix-b-user-stories)
+[Appendix B: User Stories](#b-appendix-b-user-stories) (alex)
 
-[Appendix C: Use Cases](#c-appendix-c-use-cases)
+[Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements) (mingshun)
 
-[Appendix D: Non Functional Requirements](#d-appendix-d-non-functional-requirements)
+[Appendix D: Glossary](#d-appendix-d-glossary) (oen)
 
-[Appendix E: Glossary](#e-appendix-e-glossary)
-
-[Appendix F: Product Survey](#f-appendix-f-product-survey)
-
-[Appendix G: Instructions for Manual Testing](#g-appendix-g-instructions-for-manual-testing)
+[Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing) (sarrah)
 
 
 ## 1. Introduction
@@ -101,6 +97,42 @@ There are 2 prerequisites for this project
 3.  Run Duke.main and try a few commands
 
 4.  Run the tests to ensure they all pass.
+
+
+
+
+
+Setting up the project in your computer
+:exclamation: Caution: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
+First, fork this repo, and clone the fork into your computer.
+
+If you plan to use Intellij IDEA (highly recommended):
+
+Configure the JDK: Follow the guide [se-edu/guides] IDEA: Configuring the JDK to to ensure Intellij is configured to use JDK 11.
+Import the project as a Gradle project: Follow the guide [se-edu/guides] IDEA: Importing a Gradle project to import the project into IDEA.
+:exclamation: Note: Importing a Gradle project is slightly different from importing a normal Java project.
+Verify the setup:
+Run the seedu.address.Main and try a few commands.
+Run the tests to ensure they all pass.
+Before writing code
+Configure the coding style
+
+If using IDEA, follow the guide [se-edu/guides] IDEA: Configuring the code style to set up IDEA’s coding style to match ours.
+
+:bulb: Tip: Optionally, you can follow the guide [se-edu/guides] Using Checkstyle to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
+Set up CI
+
+This project comes with a GitHub Actions config files (in .github/workflows folder). When GitHub detects those files, it will run the CI for your project automatically at each push to the master branch or to any PR. No set up required.
+
+Learn the design
+
+When you are ready to start coding, we recommend that you get some sense of the overall design by reading about AddressBook’s architecture.
+
+Do the tutorials These tutorials will help you get acquainted with the codebase.
+
+Tracing code
+Removing fields
+Adding a new command
 
 
 <br>
@@ -181,23 +213,23 @@ Invalid Input includes:
 
 **Creating StaffAdd command**
 
-2. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
-3. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
+4. The StaffAdd Command object is returned to `StaffInstance.run()`
 
 **Creating Staff Object with User Input**
 
-4. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
 
-5. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+6. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
 
-6. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+7. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
 
 **Saving Staff Objects into .txt file**
 
-7. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-9. Data is written and saved.
-10. Control is then returned to StaffInstance.
+8. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+9. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+10. Data is written and saved.
+11. Control is then returned to StaffInstance.
 
 <br>
 
@@ -237,9 +269,7 @@ Invalid Input includes:
 7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
 
 8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-
 9. Data is written and saved.
-
 10. Control is then returned to StaffInstance.
 
 <br>
@@ -358,23 +388,15 @@ Invalid Input includes:
 
 <br>
 
-## c. Appendix C: Use Cases
+## c. Appendix C: Non Functional Requirements
 
 <br>
 
-## d. Appendix D: Non Functional Requirements
+## d. Appendix D: Glossary
 
 <br>
 
-## e. Appendix E: Glossary
-
-<br>
-
-## f. Appendix F: Product Survey
-
-<br>
-
-## g. Appendix G: Instructions for Manual Testing
+## e. Appendix E: Instructions for Manual Testing
 
 <br>
 
