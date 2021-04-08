@@ -34,74 +34,70 @@ public class ModuleInfo {
         while (true) {
             Ui.printModuleInfoMessage();
             int command = Ui.readCommandToInt();
-            try {
-                //int taskNumber = Integer.parseInt(command);
-                if (command == 15) {
-                    Ui.printReturnToMainMenuMessage();
-                    break; // exit to Main Menu
-                }
-                switch (command) {
-                case 1:
-                    addNewModule();
-                    break;
-                case 2:
-                    viewAModule();
-                    break;
-                case 3:
-                    viewAllModules();
-                    break;
-                case 4:
-                    deleteModule();
-                    break;
-                case 5:
-                    getComponents();
-                    break;
-                case 6:
-                    addModuleMC();
-                    break;
-                case 7:
-                    addModuleGrade();
-                    break;
-                case 8:
-                    addReview();
-                    break;
-                case 9:
-                    viewAllReviews();
-                    break;
-                case 10:
-                    deleteReview();
-                    break;
-                case 11:
-                    TaskManager.addNewTask();
-                    break;
-                case 12:
-                    TaskManager.deleteTask();
-                    break;
-                case 13:
-                    Links.add();
-                    break;
-                case 14:
-                    Links.delete();
-                    break;
-                default:
-                    Ui.printInvalidInputMessage();
-                }
-            } catch (NumberFormatException n) {
+            if (command == 15) {
+                Ui.printReturnToMainMenuMessage();
+                break; // exit to Main Menu
+            }
+            switch (command) {
+            case 1:
+                addNewModule();
+                break;
+            case 2:
+                viewAModule();
+                break;
+            case 3:
+                viewAllModules();
+                break;
+            case 4:
+                deleteModule();
+                break;
+            case 5:
+                getComponents();
+                break;
+            case 6:
+                addModuleMC();
+                break;
+            case 7:
+                addModuleGrade();
+                break;
+            case 8:
+                addReview();
+                break;
+            case 9:
+                viewAllReviews();
+                break;
+            case 10:
+                deleteReview();
+                break;
+            case 11:
+                TaskManager.addNewTask();
+                break;
+            case 12:
+                TaskManager.deleteTask();
+                break;
+            case 13:
+                Links.add();
+                break;
+            case 14:
+                Links.delete();
+                break;
+            default:
                 Ui.printInvalidInputMessage();
             }
+
             try {
                 Storage.saveAllFiles();
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
             }
+
             Ui.printReturnToModuleInfoMenuMessage();
         }
     }
 
     private static void addModuleGrade() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
-            //need to print this manually if logging into text file
+            System.out.println("You have not added any modules.");
             return;
         }
         viewAllModules();
@@ -124,7 +120,7 @@ public class ModuleInfo {
 
     private static void addModuleMC() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return;
         }
         viewAllModules();
@@ -148,27 +144,8 @@ public class ModuleInfo {
             String moduleName = Ui.readCommand();
             moduleName = moduleName.trim().toUpperCase();
             if (!Ui.userCommandIsEmpty(moduleName)) {
-                if (!moduleNameIsAlphaNumeric(moduleName)) {
-                    int yesOrNo = 2;
-                    while (yesOrNo == 2) {
-                        System.out.println("Does your module name require "
-                                + "non-alphanumeric characters (e.g. @,#,/,-,!) ? [Y/N]");
-                        yesOrNo = readYN(Ui.readCommand());
-                        if (yesOrNo == 0) {
-                            System.out.println("Please enter valid alphanumeric "
-                                    + "characters for the module name (e.g. CS2113T).");
-                        }
-                    }
-                    if (yesOrNo == 0) {
-                        continue;
-                    }
-                }
-                for (Module module : modules) {
-                    if (module.getName().trim().equalsIgnoreCase(moduleName)) {
-                        System.out.println("Hey, you have already added this module!");
-                        return;
-                    }
-                }
+                if (!isAlphaNumeric(moduleName)) continue;
+                if (checkIfModuleExists(moduleName)) return;
                 System.out.println("Enter module description:");
                 String moduleDescription = Ui.readCommand();
                 if (!Ui.userCommandIsEmpty(moduleDescription)) {
@@ -184,6 +161,33 @@ public class ModuleInfo {
 
     }
 
+    private static boolean checkIfModuleExists(String moduleName) {
+        for (Module module : modules) {
+            if (module.getName().trim().equalsIgnoreCase(moduleName)) {
+                System.out.println("Hey, you have already added this module!");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isAlphaNumeric(String moduleName) {
+        if (!moduleNameIsAlphaNumeric(moduleName)) {
+            int yesOrNo = 2;
+            while (yesOrNo == 2) {
+                System.out.println("Does your module name require "
+                        + "non-alphanumeric characters (e.g. @,#,/,-,!) ? [Y/N]");
+                yesOrNo = readYN(Ui.readCommand());
+                if (yesOrNo == 0) { //if no (non-alphanumeric characters allowed by user)
+                    System.out.println("Please enter valid alphanumeric "
+                            + "characters for the module name (e.g. CS2113T).");
+                    return false;
+                }
+            }
+        }
+        return true; //if yes (non-alphanumeric characters allowed by user)
+    }
+
     //Solution below reused from https://www.techiedelight.com/check-string-contains-alphanumeric-characters-java/
     public static boolean moduleNameIsAlphaNumeric(String s) {
         return s != null && s.matches("^[a-zA-Z0-9]*$");
@@ -191,22 +195,25 @@ public class ModuleInfo {
     
     public static void viewAModule() {
         boolean listIsNotEmpty = viewAllModules();
-        if (listIsNotEmpty) {
-            System.out.println("Which module would you like to view?");
-            int moduleNumberInt = Ui.readCommandToInt();
-            boolean isValidModuleNumber = (moduleNumberInt >= 1 && moduleNumberInt <= modules.size());
-            if (isValidModuleNumber) {
-                moduleNumberInt--;
-                Module module = modules.get(moduleNumberInt);
-                System.out.println(module.toString()); //name, description, review, MCs, grade are printed
-                printModuleTaskList(module.getName());
-                // add other methods to print other features of a module
+        while (true) {
+            if (listIsNotEmpty) {
+                System.out.println("Which module would you like to view?");
+                int moduleNumberInt = Ui.readCommandToInt();
+                boolean isValidModuleNumber = (moduleNumberInt >= 1 && moduleNumberInt <= modules.size());
+                if (isValidModuleNumber) {
+                    moduleNumberInt--;
+                    Module module = modules.get(moduleNumberInt);
+                    System.out.println(module.toString()); //name, description, review, MCs, grade are printed
+                    printModuleTaskList(module.getName());
+                    // add other methods to print other features of a module
+                    Ui.printHorizontalLine();
+                    break;
+                } else {
+                    Ui.printInvalidInputMessage();
+                }
 
                 Ui.printHorizontalLine();
-            } else {
-                Ui.printInvalidInputMessage();
             }
-            Ui.printHorizontalLine();
         }
     }
 
@@ -264,7 +271,7 @@ public class ModuleInfo {
 
     public static boolean viewAllModules() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return false;
         }
         System.out.println("Here are the modules in your Modules List:");
@@ -278,20 +285,23 @@ public class ModuleInfo {
 
     public static void addReview() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return;
         }
         viewAllModules();
-        System.out.println("Please choose which module you would like to review"
-                + " and enter the number:");
-        int moduleNumberInt = Ui.readCommandToInt();
-        moduleNumberInt--;
-        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
-        if (isValidInt) {
-            String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
-            modules.get(moduleNumberInt).setReview(review);
-        } else {
-            Ui.printInvalidInputMessage();
+        while (true) {
+            System.out.println("Please choose which module you would like to review"
+                    + " and enter the number:");
+            int moduleNumberInt = Ui.readCommandToInt();
+            moduleNumberInt--;
+            boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+            if (isValidInt) {
+                String review = printAlreadyAddedReviewMessage(modules.get(moduleNumberInt));
+                modules.get(moduleNumberInt).setReview(review);
+                break;
+            } else {
+                Ui.printInvalidInputMessage();
+            }
         }
     }
 
@@ -301,6 +311,7 @@ public class ModuleInfo {
             System.out.println(module.getReview());
             System.out.println("Would you like to replace this with another review? [Y/N]");
             logger.log(Level.WARNING, "You will delete your old review. This cannot be undone.");
+            System.out.println("You will delete your old review. This cannot be undone.");
             String command = Ui.readCommand();
             if (readYN(command) == 0) {
                 System.out.println("Okay:) You still have the same review!");
@@ -343,7 +354,7 @@ public class ModuleInfo {
 
     public static void viewAllReviews() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return;
         }
         for (Module module : modules) {
@@ -355,29 +366,36 @@ public class ModuleInfo {
 
     public static void deleteModule() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return;
         }
         viewAllModules();
-        int moduleNumberInt = readModuleNumberToBeDeleted("module");
-        boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
-        if (isValidInt) {
-            logger.log(Level.WARNING, "You are making a change that cannot be undone.");
-            System.out.println("Are you sure you want to delete "
-                    + modules.get(moduleNumberInt).getName()
-                    + "? [Y/N]");
-            String command = Ui.readCommand();
-            if (readYN(command) == 1) {
-                printDeletedModuleMessage(modules.get(moduleNumberInt));
-                deleteTasksforModule(modules.get(moduleNumberInt).getName());
-                testDeleteModule(moduleNumberInt);
-            } else if (readYN(command) == 0) {
-                System.out.println("Ok. I did not delete "
-                        + modules.get(moduleNumberInt).getName());
+        while (true) {
+            int moduleNumberInt = readModuleNumberToBeDeleted("module");
+            boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+            if (isValidInt) {
+                while (true) {
+                    System.out.println("Are you sure you want to delete "
+                            + modules.get(moduleNumberInt).getName()
+                            + "? [Y/N]");
+                    String command = Ui.readCommand();
+                    int yesOrNo = readYN(command);
+                    if (yesOrNo == 1) {
+                        printDeletedModuleMessage(modules.get(moduleNumberInt));
+                        deleteTasksforModule(modules.get(moduleNumberInt).getName());
+                        testDeleteModule(moduleNumberInt);
+                        break;
+                    } else if (yesOrNo == 0) {
+                        System.out.println("Ok. I did not delete "
+                                + modules.get(moduleNumberInt).getName());
+                        break;
+                    }
+                }
+                break;
+            } else {
+                logger.log(Level.INFO, "You did not enter a valid module number to delete.");
+                Ui.printInvalidInputMessage();
             }
-        } else {
-            logger.log(Level.INFO, "You did not enter a valid integer.");
-            Ui.printInvalidInputMessage();
         }
     }
 
@@ -512,7 +530,7 @@ public class ModuleInfo {
 
     public static void deleteReview() {
         if (modules.isEmpty()) {
-            logger.log(Level.INFO, "You have not added any modules.");
+            System.out.println("You have not added any modules.");
             return;
         }
         viewAllModules();
@@ -523,7 +541,7 @@ public class ModuleInfo {
                 System.out.println(EMPTY_REVIEW_MESSAGE);
                 return;
             }
-            logger.log(Level.WARNING, "You are making a change that cannot be undone.");
+            logger.log(Level.WARNING, "You are deleting a review. This cannot be undone.");
             System.out.println("Are you sure you want to delete this review? [Y/N]\n"
                     + "For " + module.getName() + ":\n"
                     + "Review:\n" + module.getReview());
