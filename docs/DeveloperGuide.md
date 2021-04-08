@@ -208,9 +208,9 @@ so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dail
 </div>
 
 #### Design Consideration
-Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
-Pros: Easy to implement. <br/>
-Cons: Only highly effective when limited to use of one user. <br/>
+**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: Only highly effective when limited to use of one user. <br/>
 
 ### 3.2. Daily route planning feature
 #### Current Implementation
