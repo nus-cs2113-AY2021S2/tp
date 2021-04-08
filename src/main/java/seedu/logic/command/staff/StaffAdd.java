@@ -1,7 +1,7 @@
 package seedu.logic.command.staff;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 
@@ -16,11 +16,11 @@ public class StaffAdd extends Command {
     }
 
     @Override
-    public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
+    public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) {
 
-        staffAggregation.add(argArr);
+        staffList.add(argArr);
         try {
-            staffStorage.writeToFile(staffAggregation);
+            staffStorage.writeToFile(staffList);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -17,3 +17,6 @@ bin/
 text-ui-test/EXPECTED-UNIX.TXT
 duke.txt
 data/DrugsInventoryList.txt
+data/Patients.txt
+data/Staff.txt
+data/logs/HealthVaultLogs.log

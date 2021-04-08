@@ -7,10 +7,12 @@ import java.util.Scanner;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
+import static seedu.duke.Constants.*;
 
 public class UI {
-    static final int LARGE_NUMBER = 100;
-    static final String UNKNOWN_COMMAND = "unknown";
+    static final int LARGE_NUMBER = 100; // Just a large number
+    static final int ALLOWANCE = 2;     // How strict smart command should be
+    static final String UNKNOWN_COMMAND = "unknown";    // Returns this when input is not recognised
     static Scanner scanner = new Scanner(System.in);
 
     public static String scanInput() {
@@ -29,25 +31,45 @@ public class UI {
         return input.replaceAll("\\s+", " ").trim();
     }
 
+    public static int findMax(String[] commands) {
+        int max = 0;
+        for (int i = 0; i < commands.length; i++) {
+            if (commands[i].length() > max) {
+                max = commands[i].length();
+            }
+        }
+        return max;
+    }
+
     public static String smartCommandRecognition(String[] commands, String input) {
+        // To store the most similar command difference score and the index
         int diff = LARGE_NUMBER;
         int index = -1;
+        int maxLengthCommand = findMax(commands);
         List<String> list = Arrays.asList(commands);
 
-        if(list.contains(input)) {
+        // If the input exactly matches any command in the list of commands
+        if( list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8 || input.length() < 1){
+        // If the input is too large/too small
+        if (input.length() >= maxLengthCommand+ALLOWANCE || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
-        for (int i = 0; i<commands.length; i++) {
-            int temp = checkCommandDifference(commands[i], input);
-            if (temp < diff) {
+        int temp;
+        for (int i = 0; i < commands.length; i++) {
+            temp = checkCommandDifference(commands[i], input);
+            if (temp < diff ) {
                 diff = temp;
                 index = i;
             }
         }
+        // When input is not remotely similar to any given command
+        if (diff == 100) {
+            return UNKNOWN_COMMAND;
+        }
+        // Checks if user meant for the recognised command
         if (isTypo(commands[index])) {
             return commands[index];
         }
@@ -69,7 +91,7 @@ public class UI {
         Arrays.sort(first);
         Arrays.sort(second);
         int numDiff = 0;
-        int lengthDiff = abs(first.length-second.length);
+        int lengthDiff = abs(first.length -second.length);
         if (lengthDiff > 2) {
             return LARGE_NUMBER;
         }
@@ -82,9 +104,10 @@ public class UI {
                 i++;
             }
         } else {
-            while (i<second.length-1) {
+            while (i < second.length - 1) {
                 if (first[i] != (second[i]) && lengthDiff > 0) {
-                    i++; numDiff++; lengthDiff--;
+                    i++; numDiff++;
+                    lengthDiff--;
                     continue;
                 } else if (first[i] != second[i]) {
                     numDiff++;
@@ -96,7 +119,7 @@ public class UI {
     }
 
     public static String cleanseInput(String input) {
-        return input.replaceAll("[^A-Za-z0-9]","");
+        return  input.replaceAll("[^a-zA-Z0-9\\s]", "");
     }
 
     public static void invalidCommandErrorMessage() {
@@ -111,13 +134,11 @@ public class UI {
         System.out.println("OOPS! Please check to see if your command is properly formatted! ");
     }
 
-
-
     public static void showLine() {
         System.out.println(Constants.LINEBREAK);
     }
     public static void showLongLine() {
-        System.out.println(Constants.LONGLINEBREAK);
+        System.out.println(Constants.LISTLINEBREAK);
     }
 
     public static void printEmptyLine() {
@@ -130,15 +151,22 @@ public class UI {
     }
 
     public static void printStartMenu() {
-        System.out.println("Start Menu");
-        System.out.println("Commands:");
-        System.out.println("\"staff\" to go to staff");
-        System.out.println("\"patient\" to go to patients");
-        System.out.println("\"appointments\" to go to doctors appointments");
-        System.out.println("\"schedules\" to go to nurse schedules");
-        System.out.println("\"inventory\" to go to inventories inventory");
-        System.out.println("\"help\" to see what each of the sections contain");
-        System.out.println("\"bye\" to exit the application");
+
+        UI.printEmptyLine();
+
+        UI.printEmptyLine();
+        int[] lengthPara = {15,40,10};
+        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
+        UI.showLongLine();
+        printer(new String[]{TO_STAFF_INSTANCE, TO_STAFF_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_PATIENT_INSTANCE, TO_PATIENT_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_APPOINTMENTS_INSTANCE, TO_APPOINTMENTS_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_SCHEDULES_INSTANCE, TO_SCHEDULES_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{TO_INVENTORY_INSTANCE, TO_INVENTORY_INSTANCE_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{HELP_COMMAND, HELP_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{EXIT_COMMAND, EXIT_COMMAND_DESCRIPTION, MARK_BLANK}, lengthPara);
+        UI.printEmptyLine();
+
     }
 
     public static void printGoodbye() {
@@ -148,6 +176,10 @@ public class UI {
     public static void returningToStartMenuMessage() {
         System.out.println("Returning to start menu!");
     }
+    public static void unidentifiedErrorMessage() {
+        System.out.println("Something went wrong!\n");
+    }
+
 
     public void showLoadingError() {
         System.out.println("OOPS! There was an error loading the file!");

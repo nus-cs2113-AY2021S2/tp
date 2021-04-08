@@ -1,55 +1,62 @@
 package seedu.logic.instance;
 
-import seedu.exceptions.*;
-import seedu.exceptions.staff.WrongStaffIdException;
+import seedu.exceptions.HealthVaultException;
+import seedu.logger.HealthVaultLogger;
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
 import seedu.logic.parser.StaffParser;
+import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StaffInstance {
     private StaffUI staffUI;
-    private StaffAggregation staffAggregation;
+    private StaffList staffList;
     private StaffStorage staffStorage;
     private StaffParser staffParser;
+    public Logger logger = HealthVaultLogger.getLogger();
 
-    public StaffInstance(String filepath){
+    public StaffInstance(String filepath) {
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
         staffParser = new StaffParser();
-        staffAggregation = new StaffAggregation();
+        staffList = new StaffList();
     }
 
 
-    public void run(){
+    public void run() {
         try {
-            staffStorage.fileHandling(staffAggregation);
-        } catch (ExcessInputException | InvalidIntegerException |
-                WrongStaffIdException |
-                InsufficientInputException | NoInputException e) {
+            staffStorage.fileHandling(staffList);
+        } catch (HealthVaultException e) {
+            logger.log(Level.WARNING, "Staff file corrupted.");
             StaffUI.corruptedFileErrorMessage();
+            return;
         }
         StaffUI.staffMenuHeader();
+        logger.log(Level.INFO, "Staff instance accessed.");
         while (true) {
             String line;
             line = staffUI.getInput("Staff");
             try {
-                Command c = staffParser.commandHandler(line);
-                if (c==null){
+                Command c = staffParser.commandHandler(line, staffList);
+                if (c == null){
                     continue;
                 }
-                c.execute(staffAggregation, staffUI, staffStorage);
+                c.execute(staffList, staffUI, staffStorage);
                 if (c.isExit()) {
                     System.out.println("Returning to start Menu!\n");
+                    logger.log(Level.WARNING, "Handling HealthVaultException.");
                     break;
                 }
             } catch (HealthVaultException e) {
                 System.out.println(e.getMessage());
+                logger.log(Level.WARNING, "Handling HealthVaultException.");
             } catch (NumberFormatException e) {
                 StaffUI.invalidNumericErrorMessage();
+                logger.log(Level.WARNING, "Handling NumberFormatException.");
             } catch (IOException e) {
                 e.printStackTrace();
             }

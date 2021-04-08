@@ -2,20 +2,22 @@ package seedu.logic.parser;
 
 import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.InsufficientInputException;
+import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
-import seedu.exceptions.staff.BlankInputException;
-
+import seedu.logger.HealthVaultLogger;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
-import seedu.ui.UI;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -24,6 +26,7 @@ public class NurseSchedulesParser {
     static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
+    public Logger logger = HealthVaultLogger.getLogger();
 
     /**
      * Returns the command of user.
@@ -44,34 +47,47 @@ public class NurseSchedulesParser {
         }
     }
 
-    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException {
+    private String[] trimInputs(String[] parts) {
+        String[] trimmedArray = new String[parts.length];
+        for (int i = 0; i< parts.length; i++) {
+            trimmedArray[i] = parts[i].trim();
+        }
+        return trimmedArray;
+    }
+
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
-        String text = input.toUpperCase();
         String[] details = new String[3];
 
-        String[] parts = text.split("/", 0);
+        String[] parts = input.split("/");
+        parts = trimInputs(parts);
 
         assert parts.length > 0;
 
         if (parts.length <= 1) {
             throw new WrongInputsException();
         }
-        if (command.equals("ADD")) {
-            if (checker.isValidDate(parts[3])) {
-                MainChecker.checkNumInput(text, 4, 4);
-                details[0] = UI.cleanseInput(parts[1]);
-                details[1] = UI.cleanseInput(parts[2]);
-                details[2] = UI.cleanseInput(parts[3]);
-            }
-        } else if (command.equals("DELETE")) {
-            if (checker.isValidDate(parts[2])) {
-                MainChecker.checkNumInput(text, 3, 3);
-                details[0] = UI.cleanseInput(parts[1]);
-                details[1] = UI.cleanseInput(parts[2]);
-            }
-        } else if (command.equals("LIST")) {
-            MainChecker.checkNumInput(text, 2, 2);
-            details[0] = UI.cleanseInput(parts[1]);
+        switch (command) {
+        case "ADD":
+            checker.isValidDate(parts[3]);
+            MainChecker.checkNumInput(input, 4, 4);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            details[2] = parts[3];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
+            MainChecker.illegalCharacterChecker(details[1], "Patient ID");
+            break;
+        case "DELETE":
+            checker.isValidDate(parts[2]);
+            MainChecker.checkNumInput(input, 3, 3);
+            details[0] = parts[1];
+            details[1] = parts[2];
+            MainChecker.illegalCharacterChecker(details[0], "Nurse ID");
+            break;
+        case "LIST":
+            MainChecker.checkNumInput(input, 2, 2);
+            details[0] = parts[1];
+            break;
         }
         return details;
     }
@@ -84,13 +100,17 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String line, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException {
-        assert line != null : "user input should not be null";
-        assert !(line.isEmpty()) : "user input should not be empty";
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
+        assert input != null : "user input should not be null";
+        assert !(input.isEmpty()) : "user input should not be empty";
 
+        logger.log(Level.INFO,"Parsing command...");
         NurseSchedulesParser parser = new NurseSchedulesParser();
-        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line).toUpperCase());
+        String line = input.toUpperCase();
+        String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line));
         Command c = null;
+
+        logger.log(Level.INFO, "Command recognised as " + command);
 
         switch (command) {
         case "ADD":
@@ -100,6 +120,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in add command!");
             }
             break;
         case "LIST":
@@ -109,6 +130,7 @@ public class NurseSchedulesParser {
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in list command!");
             }
             break;
         case "DELETE":
@@ -118,6 +140,7 @@ public class NurseSchedulesParser {
             } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
+                logger.log(Level.WARNING, "Parameter error in delete command!");
             }
             break;
         case "HELP":
@@ -127,9 +150,11 @@ public class NurseSchedulesParser {
             c = new NurseScheduleReturn();
             break;
         default:
+            logger.log(Level.WARNING, "Command not successfully parsed!");
             ui.invalidInputsMessage();
             break;
         }
+        logger.log(Level.INFO,"command object returning to instance");
         return c;
     }
 }

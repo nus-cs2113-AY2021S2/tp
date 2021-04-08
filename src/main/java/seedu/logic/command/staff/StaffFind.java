@@ -1,7 +1,7 @@
 package seedu.logic.command.staff;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
@@ -17,11 +17,9 @@ public class StaffFind extends Command {
     }
 
     @Override
-    public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
-        UI.printEmptyLine();
-        StaffUI.staffListHeader();
-        UI.showLine();
-        staffAggregation.find(this.input.split("/")[1]);
+    public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
+
+        staffList.find(this.input.split("/")[1]);
         UI.printEmptyLine();
     }
 

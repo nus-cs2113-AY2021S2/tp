@@ -1,7 +1,7 @@
 package seedu.logic.command.staff;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 
@@ -10,14 +10,14 @@ import java.io.IOException;
 public class StaffDelete extends Command {
     private String input;
 
-    public StaffDelete (String line) {
-        this.input = line;
+    public StaffDelete (String input) {
+        this.input = input;
     }
 
     @Override
-    public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
-        staffAggregation.delete(input);
-        staffStorage.writeToFile(staffAggregation);
+    public void execute(StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) throws IOException {
+        staffList.delete(input);
+        staffStorage.writeToFile(staffList);
     }
 
     @Override

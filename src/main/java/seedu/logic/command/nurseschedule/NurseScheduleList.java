@@ -3,7 +3,6 @@ package seedu.logic.command.nurseschedule;
 import seedu.exceptions.nurseschedules.EmptyListException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.Command;
-import seedu.logic.command.NurseScheduleActions;
 import seedu.ui.NurseScheduleUI;
 
 public class NurseScheduleList extends Command {
@@ -15,7 +14,7 @@ public class NurseScheduleList extends Command {
     }
 
     @Override
-    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) {
+    public void execute(seedu.model.nurseschedule.NurseScheduleList nurseSchedules, NurseScheduleUI ui) {
         try {
             nurseSchedules.listSchedules(argArr);
         } catch (EmptyListException e) {

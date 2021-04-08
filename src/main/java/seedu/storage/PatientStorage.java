@@ -1,8 +1,11 @@
 package seedu.storage;
 
-import seedu.exceptions.HealthVaultException;
-import seedu.model.Patient;
-import seedu.logic.command.PatientActions;
+import seedu.exceptions.*;
+import seedu.logger.HealthVaultLogger;
+import seedu.logic.errorchecker.PatientChecker;
+import seedu.model.patient.Patient;
+import seedu.model.patient.PatientList;
+import seedu.ui.PatientUI;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -10,16 +13,23 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PatientStorage {
 
     static File saveFile;
-    static ArrayList<Patient> patients = new ArrayList<>();
+    static ArrayList<Patient> patients;
     static String filePath;
+    static PatientUI ui;
+    static PatientChecker checker;
+    public Logger logger = HealthVaultLogger.getLogger();
 
     public PatientStorage(String filepath) {
         filePath = filepath;
         saveFile = new File(filepath);
+        ui = new PatientUI();
+        patients = new ArrayList<>();
     }
 
     /**
@@ -37,8 +47,10 @@ public class PatientStorage {
             if (!(saveFile.exists())) {
                 saveFile.getParentFile().mkdirs();
                 saveFile.createNewFile();
+                logger.log(Level.INFO, "New Patient file and directory created");
             }
         } catch (IOException e) {
+            logger.log(Level.WARNING, "Unable to create file");
             System.out.println("OOPS! I can't create the directory or file!");
         }
     }
@@ -51,26 +63,34 @@ public class PatientStorage {
      */
     public ArrayList<Patient> loadPatients() throws HealthVaultException {
         fileInit();
+        // initializing file scanner to scan the file
+        Scanner fileScanner = null;
         try {
-            // initializing file scanner to scan the file
-            Scanner fileScanner = new Scanner(saveFile);
-
-            while (fileScanner.hasNext()) {
-                String currentScan = fileScanner.nextLine();
-                //splits the string into sections for storing in the ArrayList
-                String[] taskSave = currentScan.trim().split(" \\| ");
-                if (taskSave.length != 6) {
-                    throw new HealthVaultException("loadFile");
-                }
-                Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
-                        taskSave[3], taskSave[4], taskSave[5]);
-                patients.add(tempPatient);
-            }
+            fileScanner = new Scanner(saveFile);
         } catch (FileNotFoundException e) {
-            throw new HealthVaultException("OOPS! I can't read the save file!");
-        } catch (HealthVaultException e) {
-            e.getError("loadFile");
+            logger.log(Level.WARNING, "Unable to find file");
+            ui.showLoadingError();
         }
+        while (fileScanner.hasNext()) {
+            String currentScan = fileScanner.nextLine();
+            //splits the string into sections for storing in the ArrayList
+            String[] taskSave = currentScan.trim().split(" \\| ");
+            int numberOfTokens = taskSave.length;
+            if (numberOfTokens == 0) {
+                logger.log(Level.WARNING, "patient file unable to open due to wrong number of tokens");
+                throw new CorruptedFileException("Patient");
+            }
+            /*ArrayList<String> cleanString = new ArrayList<>();*/
+            for (int i = 0; i < numberOfTokens; i++) {
+                taskSave[i] = taskSave[i].trim().replaceAll("\\s{2,}", " ");
+            }
+            checker = new PatientChecker(patients, taskSave, numberOfTokens);
+            checker.checkStorage();
+            Patient tempPatient = new Patient(taskSave[0], taskSave[1], Integer.parseInt(taskSave[2]),
+                    taskSave[3], taskSave[4], taskSave[5]);
+            patients.add(tempPatient);
+        }
+        fileScanner.close();
         return patients;
     }
 
@@ -79,7 +99,7 @@ public class PatientStorage {
      *
      * @param saveInput current files to be stored
      */
-    public void storePatients(PatientActions saveInput) {
+    public void storePatients(PatientList saveInput) {
         fileInit();
         try {
             //creates a new file writer to write to text file
@@ -88,8 +108,11 @@ public class PatientStorage {
             for (int i = 0; i < saveInput.getSize(); i++) {
                 fileWriter.write(saveInput.toSaveFile(i) + "\n");
             }
+            fileWriter.flush();
             fileWriter.close();
-        } catch (java.io.IOException e) {
+            logger.log(Level.INFO, "Patient file save successful");
+        } catch (IOException e) {
+            logger.log(Level.WARNING, "Unable to save file due to IOException");
             System.out.println("☹ OOPS!!! The file can't be saved :-(");
         }
     }

@@ -1,22 +1,19 @@
 package seedu.patient;
 
 import org.junit.jupiter.api.Test;
-
 import seedu.exceptions.HealthVaultException;
+import seedu.logic.command.Command;
+import seedu.model.patient.PatientList;
 import seedu.logic.parser.PatientParser;
-import seedu.logic.command.PatientActions;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class PatientParserTest {
 
     private PatientParser parser;
-    private PatientActions patients;
+    private PatientList patients;
 
     @Test
     public void testReturnCommand() throws HealthVaultException {
-        boolean output = parser.patientParse("return", patients);
-        assertTrue(output);
+        Command output = parser.patientParse("return", patients);
     }
 
     @Test
@@ -24,8 +21,7 @@ public class PatientParserTest {
         String input = "add X12345 Johnny 30 M Covid19 Paracetamol";
         String expected = "OOPS! Looks like your ID type is incorrect! \n" +
                 "Please ensure that the ID starts with \"P\"!";
-        boolean output = parser.patientParse(input, patients);
-        assertFalse(output);
+        Command output = parser.patientParse(input, patients);
     }
 
 }

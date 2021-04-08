@@ -1,12 +1,12 @@
 package seedu.exceptions.inventory;
+
 import seedu.exceptions.HealthVaultException;
+
 public class DuplicateDrugException extends HealthVaultException {
-    public DuplicateDrugException(String error) {
-        this.error = error;
+    public DuplicateDrugException() {
     }
-    @Override
     public void getError(String input) {
-        super.getError(input);
+        System.out.println("OOPS! This drug already exists in the Inventory!");
     }
 
 }

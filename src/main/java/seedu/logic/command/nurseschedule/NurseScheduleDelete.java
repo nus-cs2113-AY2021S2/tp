@@ -1,8 +1,9 @@
 package seedu.logic.command.nurseschedule;
 
+import seedu.exceptions.nurseschedules.InvalidScheduleException;
 import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.Command;
-import seedu.logic.command.NurseScheduleActions;
+import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.ui.NurseScheduleUI;
 
 public class NurseScheduleDelete extends Command {
@@ -14,10 +15,10 @@ public class NurseScheduleDelete extends Command {
     }
 
     @Override
-    public void execute(NurseScheduleActions nurseSchedules, NurseScheduleUI ui) {
+    public void execute(NurseScheduleList nurseSchedules, NurseScheduleUI ui) {
         try {
             nurseSchedules.deleteSchedule(argArr);
-        } catch (NurseIdNotFound e) {
+        } catch (NurseIdNotFound | InvalidScheduleException e) {
             System.out.println(e.getMessage());
         }
     }

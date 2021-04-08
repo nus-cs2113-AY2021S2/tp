@@ -7,6 +7,7 @@ import seedu.logic.command.startmenu.*;
 import java.util.Locale;
 
 import static seedu.duke.Constants.*;
+import static seedu.ui.UI.cleanseInput;
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class StartMenuParser {
@@ -19,7 +20,7 @@ public class StartMenuParser {
         Command c = null;
         try {
             String formattedMessage = userInput.toLowerCase(Locale.ROOT).trim();
-            switch (smartCommandRecognition(COMMANDS, formattedMessage)) {
+            switch (smartCommandRecognition(COMMANDS, cleanseInput(formattedMessage))) {
             case TO_STAFF_INSTANCE:
                 c = new ToStaffInstance();
                 break;
@@ -45,7 +46,7 @@ public class StartMenuParser {
                 throw new UnrecognizedCommandException();
             }
         } catch (UnrecognizedCommandException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
         return c;
     }
