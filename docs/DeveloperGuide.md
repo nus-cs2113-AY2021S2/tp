@@ -72,8 +72,9 @@ Architecture Components of NUSMaze:
 * [**`Parser`**](#23-parser-component): Processes commands inputted by the user
 * [**`Command`**](#24-command-component): Executes the user command 
 * [**`Router`**](#25-router-component): Searches the shortest route
-* [**`Data`**](#26-data-component): Holds the data of the app in memory
+* [**`Data`**](#26-data-component): Holds the data of the app to be used 
 * [**`Storage`**](#27-storage-component): Reads app data from and writes the app data to created text files
+* [**`Text Files`**](#28-text-file-component): Holds the data of the app in memory
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
 chapters of the developer guide.
@@ -141,12 +142,13 @@ The **Data Component** is where all the data that are needed to execute a comman
 command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
 the shortest route.
 
-On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
+On the other hand, the **Storage Component** is responsible for saving from and loading data into stored in the **Data Component**. This will be
 further elaborated in the following section.
 
 ### 2.7. Storage Component
 ![img.png](images/StorageComponent.png)
-The **Storage Component** reads app's data from and writes the app's data to created text files in **Data component**.
+The **Storage Component** reads app's data from the objects of the **Data Component** and writes to the **Text File component**. 
+It reads the app's data from the **Text File component** and writes the app's data into the objects of the **Data component**. <br>
 The **Storage Component**:
 - loads the app's data from the relevant text file using the `filepath` into the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects.
 - saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.
@@ -184,28 +186,31 @@ This is done only once for each time the application is launched. <br>
 ![img.png](images/SaveFeatureStep1ref1.png)
 ![img.png](images/SaveFeatureStep1.png)
 ![img.png](images/SaveFeatureStep1ref2.png) <br>
-Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continously. <br>
+Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
 `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
 When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
 ![img_1.png](images/SaveFeatureStep2.png)
 
-[NOTE]
-At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
-but not all text files will be modified.
-- The `history` text file is modified by the `go`, `clear history` and `repeat history` commands.
-- The `aliasList` text file is modified by the `add alias` and `delete alias` commands.
-- The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands.
-- The `noteList` text file is modified by the `add note` and `delete note` commands.
-- The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+<div markdown="block" class="alert alert-info">
+**:information_source:** At any point when a command is called, the `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` will be executed,
+but not all text files will be modified. <br>
+* The `history` text file is modified by the `go`, `clear history` and `repeat history` commands. <br>
+* The `aliasList` text file is modified by the `add alias` and `delete alias` commands. <br>
+* The `dailyRouteList` text file is modified by the `add daily route` and `delete daily route` commands. <br>
+* The `noteList` text file is modified by the `add note` and `delete note` commands. <br>
+* The `favouriteList` text file is modified by the `add favourite`, `repeat favourite` and `delete favourite` commands <br>
+</div>
+<br>
 
-[NOTE]
-If a command fails its execution, it will not call `#saveData()` for all the storage objects,
+<div markdown="block" class="alert alert-info">
+**:information_source:** If a command fails its execution, it will not call `#saveData()` for all the storage objects,
 so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects will not be saved into the text files.
+</div>
 
 #### Design Consideration
-Alternative 1 (current choice): Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
-Pros: Easy to implement. <br/>
-Cons: Only highly effective when limited to use of one user. <br/>
+**Alternative 1 (current choice):** Saves the entire list of block aliases, visited routes, tagged notes, daily routes and favourite locations. <br/>
+- Pros: Easy to implement. <br/>
+- Cons: Only highly effective when limited to use of one user. <br/>
 
 ### 3.2. Daily route planning feature
 #### Current Implementation
@@ -388,7 +393,7 @@ Any invalid input such as decimals or alphabets will result in
 ## *4. Appendix: Requirements*
 ### 4.1. Product Scope
 
-NUSMaze is targeted at NUS engineering freshman, to help new students find their way to their destination blocks.
+NUSMaze is targeted at NUS engineering freshmen, to help new students find their way to their destination blocks.
 
 The engineering block is extremely huge, and the layout of the blocks may be confusing for new students. To reduce the time wasted on navigating the numerous blocks in Engineering, NUSMaze will provide the shortest route available for students to take.
 
