@@ -35,13 +35,32 @@ public class AddReviewCommand extends Command {
     }
 
 
-    public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException {
+    public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException, DukeExceptions {
         String description;
         String line;
         double rating = 0.0;
         ui.enterReview();
         line = ui.readCommand();
         if (line.equals("cancel")) {
+            ui.reviewNotAdded();
+            return;
+        } else if (line.contains("/")) {
+            ui.reviewNotAdded();
+            return;
+        } else if (line.contains("\n")) {
+            ui.reviewNotAdded();
+            return;
+        } else if (line.equals("")) {
+            System.out.println("Input cannot be empty");
+            ui.reviewNotAdded();
+            return;
+        } else if (line.contains("<")) {
+            ui.reviewNotAdded();
+            return;
+        } else if (line.contains(">")) {
+            ui.reviewNotAdded();
+            return;
+        } else if (line.contains("\\")) {
             ui.reviewNotAdded();
             return;
         } else {

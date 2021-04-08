@@ -1,10 +1,11 @@
 package checkuser;
 
+import exceptions.DukeExceptions;
 import ui.Ui;
 
 public class CheckUser {
 
-    public static boolean checkUserType(Ui ui) {
+    public static boolean checkUserType(Ui ui) throws DukeExceptions {
         while (true) {
             String input = ui.readCommand();
             if (input.equals("1")) {

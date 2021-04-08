@@ -1,6 +1,7 @@
 package command;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
 import storage.Storage;
 import ui.Ui;
 
@@ -17,7 +18,7 @@ public class AddCanteenCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
         String canteenName;
         ui.showAddCanteen();
         String line = ui.readCommand();
