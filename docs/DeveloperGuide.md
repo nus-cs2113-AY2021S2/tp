@@ -443,13 +443,13 @@ Invalid Inputs include:
 
 1. If the command recognised is the list command, the number of fields in inputs will first be checked.
 
-**Creating NurseScheduleList command
+**Creating NurseScheduleList command**
 
 2. If the input is valid, a NurseScheduleList Command object is created.
 
 3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-**Viewing Nurse Schedule objects
+**Viewing Nurse Schedule objects**
 
 4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
 
@@ -475,13 +475,13 @@ Invalid Inputs include:
 
 1. If the command recognised is the list command, the number of fields in inputs will first be checked.
 
-**Creating NurseScheduleList command
+**Creating NurseScheduleList command**
 
 2. If the input is valid, a NurseScheduleList Command object is created.
 
 3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-**Viewing Nurse Schedule objects
+**Viewing Nurse Schedule objects**
 
 4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
 
