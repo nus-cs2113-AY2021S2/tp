@@ -51,15 +51,11 @@
 
 [Appendix B: User Stories](#b-appendix-b-user-stories)
 
-[Appendix C: Use Cases](#c-appendix-c-use-cases)
+[Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements)
 
-[Appendix D: Non Functional Requirements](#d-appendix-d-non-functional-requirements)
+[Appendix D: Glossary](#d-appendix-d-glossary)
 
-[Appendix E: Glossary](#e-appendix-e-glossary)
-
-[Appendix F: Product Survey](#f-appendix-f-product-survey)
-
-[Appendix G: Instructions for Manual Testing](#g-appendix-g-instructions-for-manual-testing)
+[Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing)
 
 
 ## 1. Introduction
@@ -358,23 +354,15 @@ Invalid Input includes:
 
 <br>
 
-## c. Appendix C: Use Cases
+## c. Appendix C: Non Functional Requirements
 
 <br>
 
-## d. Appendix D: Non Functional Requirements
+## d. Appendix D: Glossary
 
 <br>
 
-## e. Appendix E: Glossary
-
-<br>
-
-## f. Appendix F: Product Survey
-
-<br>
-
-## g. Appendix G: Instructions for Manual Testing
+## e. Appendix E: Instructions for Manual Testing
 
 <br>
 
