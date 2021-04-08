@@ -25,7 +25,6 @@ It is written in Java, and has more than 5500 lines of code.
   * [Expiring Command](#expiring-command)
   * [List Command](#list-command)
   * [History Command](#history-command)
-  * [Future Development](#future-development)
 * [Product Scope](#product-scope)
   * [Target User Profile](#target-user-profile)
   * [Value Proposition](#value-proposition)
@@ -305,14 +304,6 @@ The implementation of the `history` command is as follows:
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
-## Future Development
-
-As previously seen in [Food Component](#food-component), the food categories are implemented as separate classes. This is in preparation for further features to be implemented in the future, especially if such features require food category specific behaviour. For example, two features that was planned to be implemented was a `Recipe` and `Financial Tracker`.
-
-In `Recipe`, `FridgeFriend` would not only store recipes, but also allow for user-centric features such as a custom shopping list based on selected recipes and the amount of food inside the fridge. However, in order to implement this, more specific categories and behaviours would have to be defined within the category classes to account for specific foods. For example, different meat types such as chicken, pork, and beef should be handled differently.
-
-For the `Financial Tracker`, details such as brands and prices for individual food items would be needed to be recorded. Hence, different food categories would also have different brands that produce that food, as well as different average costs and budgeting which would have to be handled individually.
-
 ## Product Scope
 
 ### Target User Profile
@@ -355,6 +346,9 @@ keep track of past food items that has been added to the fridge.
 |v2.0|forgetful user|receive warnings when certain food items are running low after I remove a food item|not personally check for food quantity|
 |v2.0|lazy user|request for a list of food items running low or expiring|easily create a shopping list|
 |v2.0|health conscious user|view the history of food items that I have bought in the past|better track my food habits|
+|Future|forgetful user|store recipes|retrieve my recipes without having to memorise them|
+|Future|lazy user|request a shopping list based on multiple recipes|buy missing food items I need for a few days|
+|Future|financially conscious user|calculate estimated monthly expenses spent on food|keep track of my monthly budget|
 
 ## Non-Functional Requirements
 
