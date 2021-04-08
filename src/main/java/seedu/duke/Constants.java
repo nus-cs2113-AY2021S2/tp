@@ -52,7 +52,8 @@ public class Constants {
 
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter something for me to process!";
-    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided! Please enter \"help\"(without quotes) for a list of commands and how to use them.";
+    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command is provided! Please enter \"help\""
+            + "(without quotes) for a list of commands and how to use them.";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number!";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists!";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED = "No patient loaded!";
