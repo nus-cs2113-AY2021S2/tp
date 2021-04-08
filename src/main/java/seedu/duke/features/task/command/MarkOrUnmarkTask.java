@@ -4,6 +4,9 @@ import seedu.duke.ui.Ui;
 import seedu.duke.features.task.Task;
 import seedu.duke.features.task.TaskManager;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class MarkOrUnmarkTask {
 
     private static final int TOGGLE_TASK_COMMAND = 1;
@@ -16,16 +19,18 @@ public class MarkOrUnmarkTask {
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
     private static final String DONE_STATUS = "[DONE] ";
     private static final String NOT_DONE_STATUS = "[    ] ";
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
+            logger.log(Level.INFO, "task list is empty, marking/unmarking is impossible");
             return;
         }
         Ui.printSelectTaskNumberToMarkOrUnmark(taskTypeNumber);
         while (true) {
             try {
-                int taskNumber = Integer.parseInt(Ui.readCommand());
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskTypeNumber) {
                 case TOGGLE_TASK_COMMAND:
                     toggleTaskStatus(taskNumber, TASK_TYPE);
@@ -42,8 +47,13 @@ public class MarkOrUnmarkTask {
                 default:
                     Ui.printRepeatInputUntilValidMessage();
                 }
+                logger.log(Level.FINE, "mark/unmark task successfully executed");
                 return;
-            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
+                logger.log(Level.WARNING, "NumberFormatException, task number is not a number");
+                Ui.printRepeatInputUntilValidMessage();
+            } catch (IndexOutOfBoundsException e) {
+                logger.log(Level.WARNING, "IndexOutOfBoundsException, task number is not a valid number");
                 Ui.printRepeatInputUntilValidMessage();
             }
         }
@@ -60,7 +70,8 @@ public class MarkOrUnmarkTask {
                 if (input.equalsIgnoreCase("N")) {
                     return;
                 }
-                System.out.println("Invalid input! Please input Y or N.");
+                Ui.printInvalidInputForYOrNMessage();
+                logger.log(Level.INFO, "user input is not Y or N");
                 input = Ui.readCommand();
             }
             assert input.equalsIgnoreCase("Y") : "input should be Y";
@@ -70,6 +81,7 @@ public class MarkOrUnmarkTask {
             markPinnedTaskAsUnDone(taskIsPinned, task);
             assert task.getStatus().equals(NOT_DONE_STATUS) : "Task should not be marked as done";
             Ui.printUnmarkedTaskMessage(task);
+            logger.log(Level.FINE, "task successfully marked as not done");
         } else if (taskStatus.equals(NOT_DONE_STATUS)) {
             Ui.printTaskisNotDoneMessage();
             String input = Ui.readCommand().trim();
@@ -77,7 +89,8 @@ public class MarkOrUnmarkTask {
                 if (input.equalsIgnoreCase("N")) {
                     return;
                 }
-                System.out.println("Invalid input! Please input Y or N.");
+                Ui.printInvalidInputForYOrNMessage();
+                logger.log(Level.INFO, "user input is not Y or N");
                 input = Ui.readCommand();
             }
             assert input.equalsIgnoreCase("Y") : "input should be Y";
@@ -87,6 +100,7 @@ public class MarkOrUnmarkTask {
             markPinnedTaskAsDone(taskIsPinned, task);
             assert task.getStatus().equals(DONE_STATUS) : "Task should be marked as done";
             Ui.printMarkedTaskMessage(task);
+            logger.log(Level.FINE, "task successfully marked as done");
         }
     }
 

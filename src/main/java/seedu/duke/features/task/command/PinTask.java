@@ -5,6 +5,8 @@ import seedu.duke.features.task.Task;
 import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PinTask {
 
@@ -16,16 +18,18 @@ public class PinTask {
     private static final String ASSIGNMENT_TYPE = "[Assignment]";
     private static final String MIDTERM_TYPE = "[Midterm]";
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
+            logger.log(Level.INFO, "task list is empty, pinning is impossible");
             return;
         }
         Ui.printSelectTaskNumberToPin(taskTypeNumber);
         while (true) {
             try {
-                int taskNumber = Integer.parseInt(Ui.readCommand());
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskTypeNumber) {
                 case PIN_TASK_COMMAND:
                     addTaskToPinnedTasks(TaskManager.tasks.get(taskNumber - 1), TASK_TYPE);
@@ -42,8 +46,13 @@ public class PinTask {
                 default:
                     Ui.printRepeatInputUntilValidMessage();
                 }
+                logger.log(Level.FINE, "pinning task successfully executed");
                 return;
-            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
+                logger.log(Level.WARNING, "NumberFormatException, task number is not a number");
+                Ui.printRepeatInputUntilValidMessage();
+            } catch (IndexOutOfBoundsException e) {
+                logger.log(Level.WARNING, "IndexOutOfBoundsException, task number is not a valid number");
                 Ui.printRepeatInputUntilValidMessage();
             }
         }
@@ -53,10 +62,12 @@ public class PinTask {
         TaskManager.pinnedTasks.computeIfAbsent(taskTypeName, k -> new ArrayList<>());
         if (TaskManager.pinnedTasks.get(taskTypeName).contains((task))) {
             Ui.printTaskAlreadyPinnedMessage();
+            logger.log(Level.INFO, "task is already pinned, cannot pin again");
             return;
         }
         TaskManager.pinnedTasks.get(taskTypeName).add(task);
         assert TaskManager.pinnedTasks.get(taskTypeName).contains(task) : "Task was not added to pinned list";
         Ui.printPinnedTaskMessage(task);
+        logger.log(Level.FINE, "task was successfully pinned");
     }
 }

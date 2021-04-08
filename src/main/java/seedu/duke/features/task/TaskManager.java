@@ -10,6 +10,8 @@ import seedu.duke.features.task.command.PinTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class TaskManager {
 
@@ -23,6 +25,7 @@ public class TaskManager {
     private static final String ASSIGNMENT_TYPE = "[Assignment]";
     private static final String MIDTERM_TYPE = "[Midterm]";
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static ArrayList<Task> tasks;
     public static ArrayList<Assignment> assignments;
@@ -41,9 +44,8 @@ public class TaskManager {
     public static void execute() {
         while (true) {
             Ui.printTaskManagerMenu();
-            String command = Ui.readCommand();
             try {
-                int taskNumber = Integer.parseInt(command);
+                int taskNumber = Ui.readCommandToInt();
                 switch (taskNumber) {
                 case ADD_NEW_TASK_COMMAND:
                     addNewTask();
@@ -74,6 +76,7 @@ public class TaskManager {
                 Ui.printFilesCouldNotBeSavedMessage();
             }
             Ui.printReturnToTaskManagerMenuMessage();
+            logger.log(Level.FINE, "command successfully executed");
         }
     }
 
@@ -120,27 +123,27 @@ public class TaskManager {
         DeleteTask.execute(taskTypeNumber);
     }
 
-    public static boolean isValidTaskType(String command) {
+    public static boolean isValidTaskType(int taskNumber) {
         try {
-            int taskNumber = Integer.parseInt(command);
             boolean isInvalidTaskType = (taskNumber <= 0) || (taskNumber >= 5);
-            assert !command.isBlank() : "Task number cannot be empty";
             if (!isInvalidTaskType) {
+                logger.log(Level.INFO, "task number is valid");
                 return true;
             }
             Ui.printRepeatInputUntilValidMessage();
         } catch (NumberFormatException n) {
             Ui.printRepeatInputUntilValidMessage();
         }
+        logger.log(Level.INFO, "task number is NOT valid");
         return false;
     }
 
     public static int getTaskNumber() {
         int taskNumber;
         while (true) {
-            String command = Ui.readCommand();
+            int command = Ui.readCommandToInt();
             if (isValidTaskType(command)) {
-                taskNumber = Integer.parseInt(command);
+                taskNumber = command;
                 break;
             }
         }
@@ -174,9 +177,11 @@ public class TaskManager {
             boolean isSameDescription = task.getDescription().equals(description);
             boolean isSameStatus = task.getStatus().equals(status);
             if (isSameModule && isSameDescription && isSameStatus) {
+                logger.log(Level.INFO, "task already exists in task list");
                 return true;
             }
         }
+        logger.log(Level.INFO, "task does not exist in task list");
         return false;
     }
 
@@ -188,9 +193,11 @@ public class TaskManager {
             boolean isSameDateAndTime = assignment.getBy().equals(dateAndTime);
             boolean isSameStatus = assignment.getStatus().equals(status);
             if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
+                logger.log(Level.INFO, "assignment already exists in assignment list");
                 return true;
             }
         }
+        logger.log(Level.INFO, "assignment does not exist in assignment list");
         return false;
     }
 
@@ -202,9 +209,11 @@ public class TaskManager {
             boolean isSameDateAndTime = midterm.getOn().equals(dateAndTime);
             boolean isSameStatus = midterm.getStatus().equals(status);
             if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
+                logger.log(Level.INFO, "midterm already exists in midterm list");
                 return true;
             }
         }
+        logger.log(Level.INFO, "midterm does not exist in midterm list");
         return false;
     }
 
@@ -216,9 +225,11 @@ public class TaskManager {
             boolean isSameDateAndTime = finalExam.getOn().equals(dateAndTime);
             boolean isSameStatus = finalExam.getStatus().equals(status);
             if (isSameModule && isSameDescription && isSameDateAndTime && isSameStatus) {
+                logger.log(Level.INFO, "final already exists in final exam list");
                 return true;
             }
         }
+        logger.log(Level.INFO, "final does not exist in final exam list");
         return false;
     }
 
@@ -250,6 +261,7 @@ public class TaskManager {
                 return task;
             }
         }
+        logger.log(Level.WARNING, "task should exist!");
         return null;
     }
 
@@ -265,9 +277,11 @@ public class TaskManager {
             boolean isSameStatus = task.getStatus().equals(status);
             boolean isSameMessage = task.getMessage().equals(message);
             if (isSameModule && isSameDescription && isSameStatus && isSameMessage) {
+                logger.log(Level.INFO, "pinned task already exists in pinned task list");
                 return true;
             }
         }
+        logger.log(Level.INFO, "pinned task does not exist in pinned task list");
         return false;
     }
 }
