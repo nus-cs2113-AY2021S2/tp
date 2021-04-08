@@ -619,83 +619,27 @@ during testing, and see if they correspond.
 _Dealing with missing/corrupted data files._
 
 All data is stored in the `/data` folder in the same folder as `FridgeFriend.jar`.
-
 Three (3) text files will be generated in the folder during usual execution of `FridgeFriend`.
-These text files are used to store data in the disk for various commands during the usual operation of `FridgeFriend`.
+These files are `fridgeData.txt`, `limitsData.txt`, and `historyData.txt`, and are used to store data in the disk for various commands during the usual operation of `FridgeFriend`.
 
-1. `fridgeData.txt`
-    * Contains the food stored in the fridge.
-    * Is automatically loaded when `FridgeFriend` starts. Food in the text file will be stored in the fridge.
-    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
-    using the `bye` command.
-    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
-    such as when the runtime is interrupted with `Ctrl+C`.
-    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
-    The fridge at program launch will be empty. No further action needed.
-    * _Corrupted data file:_ Upon program launch, `FridgeFriend` will throw an exception with
-      an accompanying error message:
+Details of Files:
 
-        ```lang-none
-        There was an error loading the data for FridgeFriend!
-        Index 1 out of bounds for length 1
-        ```
+* Are automatically loaded when `FridgeFriend` starts, with the exception of `historyData.txt` which is loaded only when `history` command is invoked.
+* Are updated when the `FridgeFriend` application is terminated using the `bye` command, with the exception of `historyData.txt` which is updated whenever a successful add command is executed.
+* Both `fridgeData.txt` and `limitsData.txt` will **not** be updated if `FridgeFriend` is not terminated with the `bye` command, such as when the runtime is interrupted with `Ctrl+C`.
+* _Missing data file_: A new, blank file will automatically be created upon launching `FridgeFriend`.
+The fridge at program launch will be empty, and the limits of all food categories will be reset to the default of 500 . No further action needed.
+* _Corrupted data file_: The table below outlines the different behaviours according to different cases.
 
-      * `FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid
-        data is encountered.
-      * User can recover the contents of the file by manually inspecting the text file and removing invalid content.  
-2. `limitsData.txt`
-    * Contains the food quantities used to determine which food is running low in `setlimit` and `runninglow`.
-    * Is automatically loaded when `FridgeFriend` starts. The loaded content can be viewed with `runninglow`.
-    * The text file will be updated with the contents of the fridge when the `FridgeFriend` application is terminated
-     using the `bye` command.
-    * The text file will **not** be updated if `FridgeFriend` is not terminated with the `bye` command,
-     such as when the runtime is interrupted with `Ctrl+C`.
-    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon launching `FridgeFriend`.
-          The limits of all food categories will be reset to the default of 500. No further action needed.  
-    * _Corrupted data file:_
-        * Test case: Corrupted categories.
-           * If the corrupted category is readable: No error message will be shown. User can only identify that data
-             has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to
-             corruption will be reset to `500`.
-           * If the corrupted category is unreadable:
-
-            ```lang-none
-            There was an error loading the data for FridgeFriend!
-            Index 1 out of bounds for length 1
-            ```
-
-              * The quantity limits will be parsed up until the corrupted unreadable category.
-                Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.
-        * Test case: Corrupted quantities.
-          * If the corrupted quantity is an integer: No error message will be shown. User can only identify that
-            data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted
-            value.
-          * If the corrupted quantity is **not** an integer: Error message will be shown.
-
-            ```lang-none
-            There was an error loading the data for FridgeFriend!
-            Sorry my friend, the quantity must be a number.
-            ```
-
-            * The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits
-                in the file would not be parsed, and will be reset to the default of `500`.
-3. `historyData.txt`
-    * Contains the logs of food added to the fridge using `add` command.
-    * Is automatically updated whenever a successful `add` command is invoked.  
-    * Content is loaded from disk only when `history` command is invoked.
-    * _Missing data file:_ A new, blank `fridgeData.txt` will automatically be created upon executing the `history`
-      command. No further action needed.
-    * _Corrupted data file:_
-       * Test case: If corrupted data is readable. No error message will be shown. User can only identify that data
-             has been corrupted when using the `history` command. The `history` command will continue to print out
-            the contents of the file, including the corrupted data.
-            * While this corrupted data would not affect program flow, it may create unexpected output. If necessary,
-              users can manually inspect the file and remove unwanted data at their own discretion.
-       * Test case: If corrupted data is unreadable. No error message will be shown. User can only identify that
-         data has been corrupted when using the `history` command. The contents of the entire file will not be parsed,
-         even if there is valid content in some parts of the file.
-            * The contents of the file will not be affected. If necessary,
-              users can manually inspect the file and remove corrupted data, in order to salvage any valid data.
+|Corruption Type| Error Message| Behaviour|
+|---------------|--------------|----------|
+|Corrupted `fridgeData.txt` file| `There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1`|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
+|Corrupted readable categories in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to corruption will be reset to `500`.|
+|Corrupted unreadable categories in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1`|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted integer quantities in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted value.|
+|Corrupted non-integer quantities in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Sorry my friend, the quantity must be a number.`|The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted readable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The `history` command will continue to print out the contents of the file, including the corrupted data. While this corrupted data would not affect program flow, it may create unexpected output. If necessary, users can manually inspect the file and remove unwanted data at their own discretion.|
+|Corrupted unreadable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The contents of the entire file will not be parsed, even if there is valid content in some parts of the file. The contents of the file will not be affected. If necessary, users can manually inspect the file and remove corrupted data, in order to salvage any valid data.|
 
 ## Attribution
 
