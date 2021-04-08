@@ -216,7 +216,7 @@ Opens the specified module.
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>GULIO >> <b style="color: red">open CS2113T</b><br><br>Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
+        <td><pre>GULIO >> <b style="color: limegreen">open CS2113T</b><br><br>Opening CS2113T.<br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments<br>2. Weekly exercises</pre></td>
     </tr>
 </table>
 
@@ -236,7 +236,7 @@ Adds a module with the specified module name.
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>GULIO >> <b style="color: red">add CS2113T</b><br><br>Added CS2113T to the module list.</pre></td>
+        <td><pre>GULIO >> <b style="color: limegreen">add CS2113T</b><br><br>Added CS2113T to the module list.</pre></td>
     </tr>
 </table>
 
@@ -256,11 +256,11 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>GULIO >> <b style="color: red">del</b><br><br>Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.</pre></td>
+        <td><pre>GULIO >> <b style="color: limegreen">del</b><br><br>Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.</pre></td>
     </tr>
 <tr>
-        <td style="text-align: center">Step<br>#2</td>
-        <td><pre><b style="color: red">1 3</b><br>Removed CS2107 from the module list.<br>Removed CS2101 from the module list.</pre></td>
+        <td style="text-align: center">Step #2</td>
+        <td><pre><b style="color: limegreen">1 3</b><br>Removed CS2107 from the module list.<br>Removed CS2101 from the module list.</pre></td>
     </tr>
 
 </table>
@@ -280,13 +280,8 @@ Lists all modules.
 
 <table>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>mods</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Modules in your list:<br>1. CS2101<br>2. CS2113T</pre></td>
+        <td style="text-align: center">Step #1</td>
+        <td><pre>GULIO >> <b style="color: limegreen">mods</b><br><br>Modules in your list:<br>1. CS2101<br>2. CS2113T</pre></td>
     </tr>
 </table>
 
@@ -328,13 +323,8 @@ Displays a summary of lessons and undone tasks for the module.
 
 <table>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>info</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days)</pre></td>
+        <td style="text-align: center">Step #1</td>
+        <td><pre>CS2113T >> <b style="color: limegreen">info</b><br><br>&lt;Overview for CS2113T&gt;<br>Lecture - Friday 4pm - 6pm<br>Tutorial - Wednesday 9am - 10am<br><br>Undone tasks:<br>1. iP increments - 22 Feb 2021 (Overdue by 32 days)</pre></td>
     </tr>
 </table>
 
@@ -355,13 +345,8 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 <table>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Added tutorial to lesson list.</pre></td>
+        <td style="text-align: center">Step #1</td>
+        <td><pre>CS2113T >> <b style="color: limegreen">add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc</b><br><br>Added tutorial to lesson list.</pre></td>
     </tr>
 </table>
 
@@ -388,22 +373,12 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 
 <table>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>del lsn</code></td>
+        <td style="text-align: center">Step #1</td>
+        <td><pre>CS2113T >> <b style="color: limegreen">del lsn</b><br><br>Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.</pre></td>
     </tr>
     <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.</pre></td>
-    </tr>
-    <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#2</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>1 2</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Removed lecture.<br>Removed tutorial.</pre></td>
+        <td style="text-align: center">Step #2</td>
+        <td><pre><b style="color: limegreen">1 2</b><br>Removed lecture.<br>Removed tutorial.</pre></td>
     </tr>
 </table>
 
@@ -422,41 +397,22 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 
 <table>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#1</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>edit lsn</code></td>
+        <td style="text-align: center">Step #1</td>
+        <td><pre>CS2113T >> <b style="color: limegreen">edit lsn</b><br><br>Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com</pre></td>
     </tr>
     <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com</pre></td>
+        <td style="text-align: center">Step #2</td>
+        <td><pre><b style="color: limegreen">1</b><br><br>Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space.</pre></td>
     </tr>
     <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#2</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>1</code></td>
+        <td style="text-align: center">Step #3</td>
+        <td><pre><b style="color: limegreen">1</b><br><br>Enter new time and day:</pre></td>
     </tr>
     <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space.</pre></td>
+        <td style="text-align: center">Step #4</td>
+        <td><pre><b style="color: limegreen">Thursday 9am</b><br>Updated time and day.</pre></td>
     </tr>
-    <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#3</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>1</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Enter new time and day:</pre></td>
-    </tr>
-    <tr>
-        <td rowspan="2" style="text-align: center">Step<br>#4</td>
-        <td style="text-align: center; white-space: nowrap">When you enter</td>
-        <td><code>Thursday 9am</code></td>
-    </tr>
-    <tr>
-        <td style="text-align: center; white-space: nowrap">You will get</td>
-        <td><pre>Updated time and day.</pre></td>
-    </tr>
+
 </table>
 
 **Result** - Edits time and day of "lecture".
