@@ -24,11 +24,11 @@ public class ReadReviewsCommand extends Command {
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
-        if(reviews.size()>0){
+        if (reviews.size() > 0) {
             averageRating = store.getAverageRating();
             String storeName = store.getStoreName();
             ui.showReviews(storeName, reviews, averageRating);
-        } else{
+        } else {
             System.out.println("There are no reviews yet!");
             System.out.println(LINESPACING);
         }
