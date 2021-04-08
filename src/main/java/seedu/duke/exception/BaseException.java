@@ -27,6 +27,6 @@ public abstract class BaseException extends Exception {
             errorString += Constants.EXCEPTION_INDENT + errorLine;
         }
 
-        return s;
+        return errorString;
     }
 }
