@@ -20,6 +20,11 @@ import static seedu.duke.common.Constant.MIN_CREDIT_SCORE;
  * Provides common validation methods for {@code Command} validation.
  */
 public class Utils {
+    private static final String[] HELP_TYPES = {
+        AddCommand.COMMAND_ADD, CreditScoreCommand.COMMAND_CREDIT_SCORE,
+        ExitCommand.COMMAND_EXIT, ListCommand.COMMAND_LIST, RemoveCommand.COMMAND_REMOVE,
+        ReturnCommand.COMMAND_RETURN, ViewCommand.COMMAND_VIEW, "all"
+    };
     private static final String ERROR_MISSING_OPTION = "missing option: ";
     private static final String ERROR_INVALID_OPTION = "invalid option: ";
     private static final String ERROR_MISSING_OPTION_VALUE = "value of option %s is missing.";
@@ -30,6 +35,10 @@ public class Utils {
     private static final String ERROR_TOO_MANY_ARGUMENTS = "too many arguments.";
     private static final String ERROR_TOO_FEW_ARGUMENTS = "not enough arguments.";
     private static final String ERROR_INVALID_ORDER = "invalid command order, ";
+    private static final String ERROR_INVALID_ORDER_OPTION = ERROR_INVALID_ORDER
+            + "expected an option instead of ";
+    private static final String ERROR_INVALID_ORDER_COMMAND = ERROR_INVALID_ORDER
+            + "expected command word.";
     private static final String ERROR_INVALID_INPUT = "invalid input: ";
     private static final String REGEX_OPTION = "^-[a-zA-Z]$";
     private static final String ERROR_WRONG_HELP_TYPE = "invalid help type: ";
@@ -45,13 +54,13 @@ public class Utils {
     /**
      * Checks {@code value} to see if it is not {@code null} and not empty.
      *
-     * @param value        the String to check.
-     * @param errorMessage the exception message to print.
+     * @param value   the String to check.
+     * @param command the name of the {@code Command} calling it.
      * @throws CommandException if {@code value} is {@code null} or empty.
      */
-    private static void validateNotEmpty(String value, String errorMessage) throws CommandException {
+    private static void validateNotEmpty(String value, String command) throws CommandException {
         if (value == null || value.length() == 0) {
-            throw new CommandException(errorMessage);
+            throw new CommandException(ERROR_MISSING_ARGUMENT_VALUE, command);
         }
     }
 
@@ -112,13 +121,20 @@ public class Utils {
         assert arguments != null : "arguments is null!";
         boolean isValuable = (arguments.size() > VALUE_INDEX)
                 && (arguments.get(VALUE_INDEX).length() != 0);
-        if (isValuable) {
-            return arguments.get(VALUE_INDEX);
+        if (!isValuable) {
+            throw new CommandException(ERROR_MISSING_VALUE, command);
         }
-        throw new CommandException(ERROR_MISSING_VALUE, command);
+        return arguments.get(VALUE_INDEX);
     }
 
     // This hasOption method is only meant to improve readability.
+    /**
+     * Checks if the {@code arguments} contains the {@code option}.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param option    the option String to find in {@code arguments}.
+     * @return {@code true}  if {@code arguments} contains the {@code option}, false otherwise.
+     */
     public static boolean hasOption(ArrayList<String> arguments, String option) {
         assert arguments != null : "arguments is null!";
         return arguments.contains(option);
@@ -150,8 +166,8 @@ public class Utils {
      * @param validOptions valid options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains an invalid or a duplicate option.
      */
-    public static void checkInvalidOptions(ArrayList<String> arguments, String command,
-                                           String... validOptions) throws CommandException {
+    private static void checkInvalidOptions(ArrayList<String> arguments, String command,
+                                            String... validOptions) throws CommandException {
         Set<String> nonDuplicates = new HashSet<>();
         for (String arg : arguments) {
             if (!isOption(arg)) {
@@ -174,8 +190,8 @@ public class Utils {
      * @param orOptions conflict options pertaining to {@code command}.
      * @throws CommandException if {@code arguments} contains a conflict option.
      */
-    public static void checkOptionConflict(ArrayList<String> arguments, String command,
-                                           String... orOptions) throws CommandException {
+    private static void checkOptionConflict(ArrayList<String> arguments, String command,
+                                            String... orOptions) throws CommandException {
         String option = null;
         for (String arg : arguments) {
             if (!isOption(arg)) {
@@ -184,11 +200,10 @@ public class Utils {
             if (!ArrayUtils.contains(orOptions, arg)) {
                 continue;
             }
-            if (option == null) {
-                option = arg;
-            } else {
+            if (option != null) {
                 throw new CommandException(ERROR_CONFLICT_OPTION + option + ", " + arg, command);
             }
+            option = arg;
         }
     }
 
@@ -234,21 +249,21 @@ public class Utils {
      */
     private static void validateArgument(String argument, ArgumentType argumentType, String command)
             throws CommandException {
+        assert argumentType != null : "argumentType is null!";
         switch (argumentType) {
         case VALUE:
-            validateNotEmpty(argument, ERROR_MISSING_ARGUMENT_VALUE);
+            validateNotEmpty(argument, command);
             break;
         case OPTION:
-            if (isOption(argument)) {
-                break;
+            if (!isOption(argument)) {
+                throw new CommandException(ERROR_INVALID_ORDER_OPTION + argument, command);
             }
-            throw new CommandException(ERROR_INVALID_ORDER + "expected an option instead of " + argument,
-                    command);
+            break;
         case COMMAND:
-            if (argument.equals(command)) {
-                break;
+            if (!argument.equals(command)) {
+                throw new CommandException(ERROR_INVALID_ORDER_COMMAND, command);
             }
-            throw new CommandException(ERROR_INVALID_ORDER + "expected command word.");
+            break;
         case EMPTY_VALUE:
             // Fallthrough
         default:
@@ -258,15 +273,22 @@ public class Utils {
         }
     }
 
-    protected static String validateHelpType(ArrayList<String> argument, String command)
+    /**
+     * Checks and returns a valid {@code helpType} in the {@code HelpCommand arguments}.
+     *
+     * @param arguments an {@code ArrayList} containing {@code Command} arguments.
+     * @param command   the name of the {@code Command} calling it.
+     * @return the {@code helpType} String.
+     * @throws CommandException if {@code helpType} is invalid.
+     */
+    protected static String validateHelpType(ArrayList<String> arguments, String command)
             throws CommandException {
-        String helpType = argument.get(1);
-        if (StringUtils.equalsAny(helpType, "all", "add", "creditscore", "exit",
-            "list", "remove", "return", "view")) {
-            return helpType;
-        } else {
+        assert arguments != null : "argument is null!";
+        String helpType = getValue(arguments, command);
+        if (!StringUtils.equalsAny(helpType, HELP_TYPES)) {
             throw new CommandException(ERROR_WRONG_HELP_TYPE + helpType, command);
         }
+        return helpType;
     }
 
     /**
