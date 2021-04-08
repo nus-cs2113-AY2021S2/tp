@@ -20,71 +20,73 @@ public class StaffParserTest {
     }
 
     @Test
-    public void ValidAddCommand() throws HealthVaultException {
+    public void commandHandler_lowerBoundaryAgeForAddCommand_staffAddCommandReturned()
+            throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("add/D12345/Owen/18/Surgeon", staffList);
         assertTrue(c instanceof StaffAdd);
     }
     @Test
-    public void ValidAddCommand2() throws HealthVaultException {
+    public void commandHandler_upperBoundaryAgeForAddCommand_staffAddCommandReturned()
+            throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("add/D12345/Owen/150/Surgeon", staffList);
         assertTrue(c instanceof StaffAdd);
     }
     @Test
-    public void invalidAddCommand1() {
+    public void commandHandler_excessLengthStaffID_wrongStaffIdExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D123456/Owen/20/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
     @Test
-    public void invalidAddCommand2() {
+    public void commandHandler_insufficientLengthStaffID_wrongStaffIdExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D1234/Owen/20/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
 
     @Test
-    public void invalidAddCommand3() {
+    public void commandHandler_whitespaceStaffID_wrongStaffIdExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/ /Owen/20/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
 
     @Test
-    public void invalidAddCommand4() {
+    public void commandHandler_noStaffID_wrongStaffIdExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add//Owen/20/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Error in Staff ID input\nPlease input with the following format [D/N][5 digit ID number]");
     }
 
     @Test
-    public void invalidAddCommand5() {
+    public void commandHandler_illegalCharactersInName_illegalCharacterExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D12345/Owen./20/Surgeon", staffList));
         assertEquals(exception.getMessage(), "You have an illegal character in your: name");
     }
     @Test
-    public void invalidAddCommand6() {
+    public void commandHandler_illegalCharactersInSpecialisation_illegalCharacterExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D12345/Owen/20/Surgeon.", staffList));
         assertEquals(exception.getMessage(), "You have an illegal character in your: specialisation");
     }
     @Test
-    public void invalidAddCommand7() {
+    public void commandHandler_excessInputFields_excessInputExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D12345/Owen/20/Sur/geon", staffList));
         assertEquals(exception.getMessage(), "OOPS! There are too many inputs for this command");
     }
     @Test
-    public void invalidAddCommand8() {
+    public void commandHandler_ageLessThan18_invalidStaffAgeExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D12345/Owen/17/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
                 "Please ensure that the age is an integer between 18 and 150 inclusive!");
     }
     @Test
-    public void invalidAddCommand9() {
+    public void commandHandler_ageMoreThan150_invalidStaffAgeExceptionReturned() {
         HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
                 this.parser.commandHandler("add/D12345/Owen/151/Surgeon", staffList));
         assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
@@ -96,7 +98,7 @@ public class StaffParserTest {
 
 
     @Test
-    public void ValidHelpCommand() throws HealthVaultException {
+    public void commandHandler_validListCommand_staffListCommandReturned() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("help", staffList);
         assertTrue(c instanceof StaffHelp);
