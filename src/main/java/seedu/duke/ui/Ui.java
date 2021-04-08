@@ -356,7 +356,7 @@ public class Ui {
 
     public static void printEnterLinkMessage() {
         System.out.println("Please enter the link in this format:\n"
-                + "<scheme>www.<domain name>.<TLD>/<path name>\n"
+                + "<scheme>://www.<domain name>.<TLD>\n"
                 + "Supported schemes: https, http only\n"
                 + "Supported TLD: .com, .org, .sg, .edu, .gov\n");
     }

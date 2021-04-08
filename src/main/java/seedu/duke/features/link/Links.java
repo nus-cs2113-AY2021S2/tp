@@ -16,6 +16,7 @@ public class Links {
     private static final int VIEW_ZOOM_LINK_COMMAND = 4;
     private static final int EXIT_COMMAND = 5;
     private static boolean isInvalid = false;
+    private static boolean isInitialised = false;
     protected int linkIndex;
 
     public Links(int linkIndex) {
@@ -27,7 +28,10 @@ public class Links {
         while (true) {
             switch (linkIndex) {
             case EXTERNAL_LINK_COMMAND:
-                LinkInfo.initialiseList();
+                if (!isInitialised) {
+                    LinkInfo.initialiseList();
+                    isInitialised = true;
+                }
                 Ui.printExternalLinksMessage();
                 externalLinksCommandNumber = Ui.readCommandToInt();
                 ExternalLinks externalLinks = new ExternalLinks(externalLinksCommandNumber);
