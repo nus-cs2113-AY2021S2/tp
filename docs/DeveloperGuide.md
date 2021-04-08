@@ -72,8 +72,9 @@ Architecture Components of NUSMaze:
 * [**`Parser`**](#23-parser-component): Processes commands inputted by the user
 * [**`Command`**](#24-command-component): Executes the user command 
 * [**`Router`**](#25-router-component): Searches the shortest route
-* [**`Data`**](#26-data-component): Holds the data of the app in memory
+* [**`Data`**](#26-data-component): Holds the data of the app to be used 
 * [**`Storage`**](#27-storage-component): Reads app data from and writes the app data to created text files
+* [**`Text Files`**](#28-text-file-component): Holds the data of the app in memory
 
 Explanations on how each component is designed and how it functions are further elaborated in the following 
 chapters of the developer guide.
@@ -141,12 +142,13 @@ The **Data Component** is where all the data that are needed to execute a comman
 command is executed, the `GoCommand`object will use data stored in `NusMap`, `EateryList` and `BlockAlias` in order to find
 the shortest route.
 
-On the other hand, `Storage` is responsible for saving and loading data stored in the **Data Component**. This will be
+On the other hand, the **Storage Component** is responsible for saving from and loading data into stored in the **Data Component**. This will be
 further elaborated in the following section.
 
 ### 2.7. Storage Component
 ![img.png](images/StorageComponent.png)
-The **Storage Component** reads app's data from and writes the app's data to created text files in **Data component**.
+The **Storage Component** reads app's data from the objects of the **Data Component** and writes to the **Text File component**. 
+It reads the app's data from the **Text File component** and writes the app's data into the objects of the **Data component**. <br>
 The **Storage Component**:
 - loads the app's data from the relevant text file using the `filepath` into the `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects.
 - saves the app's data from `nusMap`, `blockAlias`, `history`, `favourite`, or `dailyRoute` objects into the relevant text file using the `filepath`.

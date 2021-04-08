@@ -4,6 +4,15 @@
 
 package Data <<rectangle>> DATA_COLOR {
 }
+
+package TextFiles <<rectangle>> {
+    class aliasList FILES_COLOR
+    class dailyRouteList FILES_COLOR
+    class favouriteList FILES_COLOR
+    class history FILES_COLOR
+    class noteList FILES_COLOR
+}
+
 package Storage <<rectangle>> {
         interface DataEncoder <<interface>> STORAGE_COLOR
         interface DataDecoder <<interface>> STORAGE_COLOR
@@ -20,24 +29,14 @@ package Storage <<rectangle>> {
         }
 
          class AliasStorage STORAGE_COLOR {
-             +saveData()
-             +loadData()
          }
          class DailyRouteStorage STORAGE_COLOR {
-             +saveData()
-             +loadData()
          }
          class FavouriteStorage STORAGE_COLOR {
-             +saveData()
-             +loadData()
          }
          class HistoryStorage STORAGE_COLOR {
-             +saveData()
-             +loadData()
          }
          class NotesStorage STORAGE_COLOR {
-             +saveData()
-             +loadData()
          }
 
 
@@ -63,11 +62,18 @@ FavouriteStorage  "**1**" <.. NusMaze : creates <
 HistoryStorage  "**1**" <.. NusMaze : creates <
 NotesStorage  "**1**" <.. NusMaze : creates <
 
-AliasStorage --up> Data
-DailyRouteStorage --up> Data
-FavouriteStorage --up> Data
-HistoryStorage --up> Data
-NotesStorage --up> Data
+AliasStorage --down[ARROW_DATA_COLOR]> Data
+DailyRouteStorage --down[ARROW_DATA_COLOR]> Data
+FavouriteStorage --down[ARROW_DATA_COLOR]> Data
+HistoryStorage --down[ARROW_DATA_COLOR]> Data
+NotesStorage --down[ARROW_DATA_COLOR]> Data
+
+
+AliasStorage --left[ARROW_FILES_COLOR]> aliasList
+DailyRouteStorage --left[ARROW_FILES_COLOR]> dailyRouteList
+FavouriteStorage --left[ARROW_FILES_COLOR]> favouriteList
+HistoryStorage --left[ARROW_FILES_COLOR]> history
+NotesStorage --left[ARROW_FILES_COLOR]> noteList
 
 skinparam classAttributeIconSize 0
 hide AliasStorage attributes
@@ -76,8 +82,18 @@ hide FavouriteStorage attributes
 hide HistoryStorage attributes
 hide NotesStorage attributes
 hide NusMaze members
+hide AliasStorage members
+hide DailyRouteStorage members
+hide FavouriteStorage members
+hide HistoryStorage members
+hide NotesStorage members
 hide DataDecoder members
 hide DataEncoder members
+hide aliasList members
+hide dailyRouteList members
+hide favouriteList members
+hide history members
+hide noteList members
 hide circle
 
 @enduml
