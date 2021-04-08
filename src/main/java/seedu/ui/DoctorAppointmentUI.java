@@ -48,9 +48,8 @@ public class DoctorAppointmentUI extends UI {
     }
 
     public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
-        if (indicator.equals("D")) {
-           // System.out.print(doc.getDoctorId());
-           //printEmptyCell(doc.getDoctorId());
+        if (indicator.equals("all")) {
+            printEmptyCell(doc.getDoctorId());
         }
         printEmptyCell(doc.getAppointmentId());
         printEmptyCell(doc.getPatientsName());
@@ -61,7 +60,7 @@ public class DoctorAppointmentUI extends UI {
     }
 
     public static void AptPrintList(String indicator) {
-        if (indicator.equals("D")) {
+        if (indicator.equals("D") || indicator.equals("all")) {
             System.out.println(
                     UI.prettyPrint("Doctor ID", 14) + " | " + UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name", 14) + " | "
                             + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date", 14));
