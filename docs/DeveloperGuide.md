@@ -429,6 +429,10 @@ Invalid Inputs include:
 6. Control is then returned to NurseScheduleInstance.
 
 ### 5.4.4 List
+
+**Implementation**
+
+
 ### 5.4.5 Find
 
 <br>
