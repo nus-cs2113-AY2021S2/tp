@@ -82,7 +82,7 @@ public class Fridge {
      */
     public boolean isRunningOut(FoodCategory foodCategory) throws InvalidQuantityException {
         int totalQuantity = getTotalQuantity(foodCategory);
-        return totalQuantity < FoodCategory.getMinimumQuantity(foodCategory);
+        return totalQuantity < MinimumQuantity.getMinimumQuantity(foodCategory);
     }
 
     //@@author kwokyto

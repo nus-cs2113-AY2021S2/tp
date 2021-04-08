@@ -10,6 +10,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.food.MinimumQuantity;
 
 class RunningLowCommandTest {
     
@@ -105,7 +106,7 @@ class RunningLowCommandTest {
     //@@author SimJJ96
     public void setLimitOff() {
         for (FoodCategory foodCategory : FoodCategory.values()) {
-            FoodCategory.setMinimumQuantity(foodCategory, -1);
+            MinimumQuantity.setMinimumQuantity(foodCategory, -1);
         }
     }
 
