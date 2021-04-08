@@ -3,8 +3,8 @@ package seedu.connoisseur.recommendation;
 public class Recommendation {
     protected String title;
     protected String category;
-    protected double priceLow;
-    protected double priceHigh;
+    protected String priceLow;
+    protected String priceHigh;
     protected String recommendedBy;
     protected String location;
 
@@ -18,7 +18,7 @@ public class Recommendation {
      * @param inputBy        description of the recommended person
      */
     public Recommendation(String inputTitle, String inputCategory,
-                          double inputPriceLow, double inputPriceHigh, String inputBy, String location) {
+                          String inputPriceLow, String inputPriceHigh, String inputBy, String location) {
         this.title = inputTitle;
         this.category = inputCategory;
         this.priceLow = inputPriceLow;
@@ -86,7 +86,7 @@ public class Recommendation {
      *
      * @return lower bound price of the recommendation as an double
      */
-    public double getPriceLow() {
+    public String getPriceLow() {
         return priceLow;
     }
 
@@ -95,7 +95,7 @@ public class Recommendation {
      *
      * @return higher bound price of the recommendation as an double
      */
-    public double getPriceHigh() {
+    public String getPriceHigh() {
         return priceHigh;
     }
 
@@ -104,7 +104,7 @@ public class Recommendation {
      *
      * @param newPriceLow new low price of recommendation
      */
-    public void setPriceLow(double newPriceLow) {
+    public void setPriceLow(String newPriceLow) {
         this.priceLow = newPriceLow;
     }
 
@@ -113,7 +113,7 @@ public class Recommendation {
      *
      * @param newPriceHigh new high price of recommendation
      */
-    public void setPriceHigh(double newPriceHigh) {
+    public void setPriceHigh(String newPriceHigh) {
         this.priceHigh = newPriceHigh;
     }
 
