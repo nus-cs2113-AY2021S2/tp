@@ -1,5 +1,7 @@
 package seedu.fridgefriend.command;
 
+import seedu.fridgefriend.exception.InvalidFoodCategoryException;
+import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
@@ -28,7 +30,8 @@ public class ListCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         if (description.equals("")) {
             LoggingHandler.logInfo("Listing all food.");
             listAll();
@@ -76,7 +79,7 @@ public class ListCommand extends Command {
         return message.toString();
     }
 
-    private void listByCategory() {
+    private void listByCategory() throws InvalidFoodCategoryException {
         String message = getListByCategoryMessage();
         Ui.printMessage(message);
     }
@@ -86,7 +89,7 @@ public class ListCommand extends Command {
      *
      * @return string of food that match the category in the fridge
      */
-    public String getListByCategoryMessage() {
+    public String getListByCategoryMessage() throws InvalidFoodCategoryException {
         LoggingHandler.logInfo("Category detected:" + description);
         StringBuilder message = new StringBuilder("These are the " + description + " in your fridge:");
         for (int i = 0; i < fridge.getSize(); i++) {
@@ -101,7 +104,7 @@ public class ListCommand extends Command {
         return FoodCategory.contains(description);
     }
 
-    private String getMatchCategoryFoodDescription(int index) {
+    private String getMatchCategoryFoodDescription(int index) throws InvalidFoodCategoryException {
         String foodDescription = "";
         FoodCategory categoryToFind = FoodCategory.convertStringToFoodCategory(description);
         Food food = fridge.getFood(index);
@@ -115,7 +118,7 @@ public class ListCommand extends Command {
     //@author
 
     //@@author leeyp
-    private void listByStorageLocation() {
+    private void listByStorageLocation() throws InvalidFoodLocationException {
         String message = getListByStorageLocationMessage();
         Ui.printMessage(message);
     }
@@ -125,7 +128,7 @@ public class ListCommand extends Command {
      *
      * @return string of food that match the storage location in the fridge
      */
-    public String getListByStorageLocationMessage() {
+    public String getListByStorageLocationMessage() throws InvalidFoodLocationException {
         LoggingHandler.logInfo("Storage Location detected:" + description);
         StringBuilder message = new StringBuilder("These are the food stored in " + description + ":");
         for (int i = 0; i < fridge.getSize(); i++) {
@@ -140,7 +143,7 @@ public class ListCommand extends Command {
         return FoodStorageLocation.contains(description);
     }
 
-    private String getMatchStorageFoodDescription(int index) {
+    private String getMatchStorageFoodDescription(int index) throws InvalidFoodLocationException {
         String foodDescription = "";
         FoodStorageLocation locationToFind = FoodStorageLocation.convertStringToLocation(description);
         Food food = fridge.getFood(index);
