@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AddTask {
 
@@ -21,6 +23,7 @@ public class AddTask {
     private static final int ADD_FINAL_EXAM_COMMAND = 4;
     private static final String EMPTY_STRING = "";
     private static final String NOT_DONE_STATUS = "[    ] ";
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void execute(int taskTypeNumber) {
         String dateAndTime = EMPTY_STRING;
@@ -66,6 +69,7 @@ public class AddTask {
         default:
             Ui.printRepeatInputUntilValidMessage();
         }
+        logger.log(Level.FINE, "add task successfully executed");
     }
 
     private static String getDescription() {
@@ -74,6 +78,7 @@ public class AddTask {
             System.out.println("Description should not be empty! Please try again.");
             description = Ui.readCommand();
         }
+        logger.log(Level.INFO, "description is not an empty string");
         return description;
     }
 
@@ -83,6 +88,7 @@ public class AddTask {
             System.out.println("Message should not be empty! Please try again.");
             message = Ui.readCommand();
         }
+        logger.log(Level.INFO, "message is not an empty string");
         return message;
     }
 
@@ -90,11 +96,13 @@ public class AddTask {
         Task task = new Task(module, description, message);
         if (TaskManager.findIfTaskExists(module, description, NOT_DONE_STATUS)) {
             Ui.printTaskAlreadyExistsMessage(task);
+            logger.log(Level.INFO, "task already added, will not be added again");
             return;
         }
         TaskManager.tasks.add(task);
         assert TaskManager.tasks.contains(task) : "Task was not added to task list";
         Ui.printAddedTaskMessage(task);
+        logger.log(Level.FINE, "task successfully added");
     }
 
     public static void addAssignment(String module, String description,
@@ -102,11 +110,13 @@ public class AddTask {
         Assignment assignment = new Assignment(module, description, message, dateAndTime);
         if (TaskManager.findIfAssignmentExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
             Ui.printTaskAlreadyExistsMessage(assignment);
+            logger.log(Level.INFO, "assignment already added, will not be added again");
             return;
         }
         TaskManager.assignments.add(assignment);
         assert TaskManager.assignments.contains(assignment) : "Assignment was not added to assignment list";
         Ui.printAddedTaskMessage(assignment);
+        logger.log(Level.FINE, "assignment successfully added");
     }
 
     public static void addMidterm(String module, String description,
@@ -114,11 +124,13 @@ public class AddTask {
         Midterm midterm = new Midterm(module, description, message, dateAndTime);
         if (TaskManager.findIfMidtermExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
             Ui.printTaskAlreadyExistsMessage(midterm);
+            logger.log(Level.INFO, "midterm already added, will not be added again");
             return;
         }
         TaskManager.midterms.add(midterm);
         assert TaskManager.midterms.contains(midterm) : "Midterm was not added to midterm list";
         Ui.printAddedTaskMessage(midterm);
+        logger.log(Level.FINE, "midterm successfully added");
     }
 
     public static void addFinalExam(String module, String description,
@@ -126,11 +138,13 @@ public class AddTask {
         FinalExam finalExam = new FinalExam(module, description, message, dateAndTime);
         if (TaskManager.findIfFinalExamExists(module, description, dateAndTime, NOT_DONE_STATUS)) {
             Ui.printTaskAlreadyExistsMessage(finalExam);
+            logger.log(Level.INFO, "final exam already added, will not be added again");
             return;
         }
         TaskManager.finalExams.add(finalExam);
         assert TaskManager.finalExams.contains(finalExam) : "Final exam was not added to final exam list";
         Ui.printAddedTaskMessage(finalExam);
+        logger.log(Level.FINE, "final exam successfully added");
     }
 
     public static String printAndGetModule() {
@@ -139,7 +153,11 @@ public class AddTask {
             int moduleNumber = Integer.parseInt(Ui.readCommand());
             String module = ModuleInfo.modules.get(moduleNumber - 1).getName();
             return module;
-        } catch (IndexOutOfBoundsException | NumberFormatException e) {
+        } catch (IndexOutOfBoundsException e) {
+            logger.log(Level.WARNING, "IndexOutOfBoundsException, number is out of range of task list");
+            Ui.printModuleNumberDoesNotExistMessage();
+        } catch (NumberFormatException e) {
+            logger.log(Level.WARNING, "NumberFormatException, user input was not a number");
             Ui.printModuleNumberDoesNotExistMessage();
         }
         String input = Ui.readCommand();
@@ -152,6 +170,7 @@ public class AddTask {
         }
         ModuleInfo.addNewModule();
         String module = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();
+        logger.log(Level.INFO, "module successfully added");
         return module;
     }
 
@@ -163,6 +182,7 @@ public class AddTask {
                 assert !time.isBlank() : "Time field cannot be empty";
                 return time;
             } catch (DateTimeParseException e) {
+                logger.log(Level.WARNING, "DateTimeParseException, time format is not valid");
                 Ui.printInvalidTimeFormat();
             }
         }
@@ -173,9 +193,10 @@ public class AddTask {
             try {
                 Ui.printAddTaskDateMessage(taskNumber);
                 String date = validDate(Ui.readCommand());
-                assert !date.isBlank() : "Time field cannot be empty";
+                assert !date.isBlank() : "Date field cannot be empty";
                 return date;
             } catch (DateTimeParseException e) {
+                logger.log(Level.WARNING, "DateTimeParseException, date format is not valid");
                 Ui.printInvalidDateFormat();
             }
         }

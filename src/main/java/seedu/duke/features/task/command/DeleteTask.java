@@ -4,6 +4,9 @@ import seedu.duke.ui.Ui;
 import seedu.duke.features.task.Task;
 import seedu.duke.features.task.TaskManager;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class DeleteTask {
 
     private static final int DELETE_TASK = 1;
@@ -14,10 +17,12 @@ public class DeleteTask {
     private static final String ASSIGNMENT_TYPE = "[Assignment]";
     private static final String MIDTERM_TYPE = "[Midterm]";
     private static final String FINAL_EXAM_TYPE = "[Final Exam]";
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static void execute(int taskTypeNumber) {
         if (TaskManager.taskListIsEmpty(taskTypeNumber)) {
             Ui.printTaskListIsEmptyMessage();
+            logger.log(Level.INFO, "task list is empty, deleting is impossible");
             return;
         }
         Ui.printSelectTaskNumberToDelete(taskTypeNumber);
@@ -40,8 +45,13 @@ public class DeleteTask {
                 default:
                     Ui.printRepeatInputUntilValidMessage();
                 }
+                logger.log(Level.FINE, "delete task successfully executed");
                 return;
-            } catch (NumberFormatException | IndexOutOfBoundsException e) {
+            } catch (NumberFormatException e) {
+                logger.log(Level.WARNING, "NumberFormatException, task number is not a number");
+                Ui.printRepeatInputUntilValidMessage();
+            } catch (IndexOutOfBoundsException e) {
+                logger.log(Level.WARNING, "IndexOutOfBoundsException, task number is not a valid number");
                 Ui.printRepeatInputUntilValidMessage();
             }
         }
@@ -50,6 +60,7 @@ public class DeleteTask {
     public static void findAndDeleteTask(int taskNumber, String taskType) {
         Task task = TaskManager.getTask(taskType, taskNumber);
         deleteTask(taskType, task);
+        logger.log(Level.FINE, "task was successfully deleted");
         boolean typeTaskIsPinned = TaskManager.pinnedTasks.containsKey(taskType);
         if (typeTaskIsPinned) {
             assert TaskManager.pinnedTasks.containsKey(taskType) : "Pinned task list for task should exist";
@@ -84,10 +95,12 @@ public class DeleteTask {
         boolean taskIsPinned = TaskManager.findTaskInPinnedTasks(taskType, task.getModule(), task.getDescription(),
                 task.getStatus(), task.getMessage());
         if (taskIsPinned) {
+            logger.log(Level.INFO, "this task is pinned");
             assert !TaskManager.pinnedTasks.get(taskType).isEmpty() : "Pinned task list should not be empty";
             Task pinnedTask = TaskManager.getPinnedTask(taskType, task.getModule(), task.getDescription(),
                     task.getStatus(), task.getMessage());
             TaskManager.pinnedTasks.get(taskType).remove(pinnedTask);
+            logger.log(Level.FINE, "pinned task was successfully deleted");
         }
     }
 }
