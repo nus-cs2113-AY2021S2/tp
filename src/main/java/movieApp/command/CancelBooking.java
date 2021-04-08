@@ -39,7 +39,7 @@ public class CancelBooking {
             resetSeatStatus(currentBookings.get(thisBookingNumber - 1));
             currentBookings.remove(thisBookingNumber - 1);
             System.out.println("Booking Number " + thisBookingNumber + " has been removed successfully.");
-            Database.updateBookings();
+            Database.updateDatabase();
         }
     }
 

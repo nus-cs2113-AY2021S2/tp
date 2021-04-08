@@ -7,3 +7,4 @@ Hi. My name is Leonardo Irvin Pratama. You can call me Irvin. Our group is T10-3
 * Implemented Movie-related functions
 * Implemented OOP refactoring
 * Implemented Developer guide document
+* Implemented the login and hashing function

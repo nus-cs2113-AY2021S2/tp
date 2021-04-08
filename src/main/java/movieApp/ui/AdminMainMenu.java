@@ -20,6 +20,10 @@ public class AdminMainMenu implements MainMenu {
     public static int displayMenu(int currentUserIndex, ArrayList<User> user) throws Exception {
         System.out.println("\nWelcome, " + user.get(currentUserIndex).getName());
 
+        ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
+        boolean goBack = false;
+        Movie movie;
+
         do {
             System.out.println("======== Menu Choice =======");
             System.out.println(" 1 View Movies");
@@ -39,11 +43,12 @@ public class AdminMainMenu implements MainMenu {
 
             switch (functionSelection) {
                 case 1:
-                    ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
-                    Movie movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user.get(currentUserIndex));
-                    if (movie != null) {
-                        MovieMenu.movieAction(movie, user.get(currentUserIndex));
-                    }
+                    do{
+                        movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user.get(currentUserIndex));
+                        if (movie != null) {
+                            goBack = MovieMenu.movieAction(movie, user.get(currentUserIndex));
+                        }
+                    } while (goBack && movie != null);
                     break;
                 case 2:
                     Database.addMovie();

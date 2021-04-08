@@ -18,13 +18,18 @@ public class CustomerMainMenu implements MainMenu {
     }
 
     public static void doOption(int option, User user) {
+        ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
+        boolean goBack = false;
+        Movie movie;
+
         switch (option) {
             case 1:
-                ArrayList<Movie> movieList = new ArrayList<>(Database.MovieDatabase);
-                Movie movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user);
-                if (movie != null) {
-                    MovieMenu.movieAction(movie, user);
-                }
+                do{
+                    movie = MovieFilter.filter(movieList, Database.CineplexDatabase, user);
+                    if (movie != null) {
+                        goBack = MovieMenu.movieAction(movie, user);
+                    }
+                } while (goBack && movie != null);
                 break;
             case 2:
                 exit();
