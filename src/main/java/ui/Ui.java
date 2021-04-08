@@ -44,7 +44,6 @@ public class Ui {
     public void userShowWelcome() {
         System.out.println(LINESPACING);
         System.out.println("Welcome to our amazing canteen review application!!");
-        System.out.println(LINESPACING);
     }
 
     public void adminShowWelcome() {
@@ -66,7 +65,7 @@ public class Ui {
     }
 
     public void showAdminOptions() {
-        System.out.println("Please select task:");
+        System.out.println("Please select task: (Enter 'login' to go back to login page)");
         System.out.println("1. View canteens");
         System.out.println("2. Add canteen");
         System.out.println("3. Add store in canteen");
@@ -74,7 +73,8 @@ public class Ui {
         System.out.println("5. Delete canteen");
         System.out.println("6. Delete store in canteen");
         System.out.println("7. Delete reviews");
-        System.out.println("8. Exit");
+        System.out.println("8. Delete menu");
+        System.out.println("9. Exit");
         System.out.println(LINESPACING);
     }
 
@@ -84,23 +84,26 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void showAddStore() {
-        System.out.println("Please enter the new store's name");
+
+    public void chooseStore() {
+        System.out.println("Please select store to add menu to. (Enter 'cancel' to go back)");
         System.out.println(LINESPACING);
     }
 
-    public void chooseStore() {
-        System.out.println("Please select store to add menu to.");
+    public void chooseDeleteStore() {
+        System.out.println("Please select store to delete menu from. (Enter 'cancel' to go back)");
         System.out.println(LINESPACING);
     }
 
     public void enterMenuName() {
-        System.out.println("Please enter name of menu.");
+        System.out.println(LINESPACING);
+        System.out.println("Please enter name of menu. (Enter 'cancel' to go back)");
         System.out.println(LINESPACING);
     }
 
     public void enterMenuPrice() {
-        System.out.println("Please enter price of menu.");
+        System.out.println(LINESPACING);
+        System.out.println("Please enter price of menu. (Enter 'cancel' to go back)");
         System.out.println(LINESPACING);
     }
 
@@ -154,25 +157,49 @@ public class Ui {
         System.out.println(Ui.LINESPACING);
     }
 
+    public void showEmptyCanteen() {
+        System.out.println(LINESPACING);
+        System.out.println("There are no stores in this canteen!");
+        System.out.println(LINESPACING);
+    }
+
     public void showDisplayMenu(String storeName, ArrayList<Menu> menus) {
         System.out.println(LINESPACING);
+        int count = 1;
         if (menus.size() == 0) {
             System.out.println("This store has no menus yet!");
             return;
         }
         System.out.println("Here are the menus of the " + storeName + ":");
         for (Menu menuItem: menus) {
-            System.out.println(menuItem.toString());
+            System.out.println(count++ + ")" + menuItem.toString());
         }
+        System.out.println(LINESPACING);
+    }
+
+    public void showNoMenuToDelete() {
+        System.out.println(LINESPACING);
+        System.out.println("There is no menus to delete!");
+        System.out.println(LINESPACING);
     }
 
     public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
-        System.out.println("Select one of the following NUS canteens to " + action + ":");
-        for (int i = 0; i < canteens.size(); i++) {
-            System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+        if (action.equals("delete")) {
+            System.out.println("Select one of the following NUS canteens to " + action
+                    + ": (Enter 'cancel' to go back)");
+            for (int i = 0; i < canteens.size(); i++) {
+                System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+            }
+            System.out.println(LINESPACING);
+        } else {
+            System.out.println("Select one of the following NUS canteens to " + action
+                    + ": (Enter 'login' to go back to login page)");
+            for (int i = 0; i < canteens.size(); i++) {
+                System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
+            }
+            System.out.println(LINESPACING);
         }
-        System.out.println(LINESPACING);
     }
 
     public void showDisplayCanteens(ArrayList<Canteen> canteens) {
@@ -194,6 +221,12 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
+    public void showDeleteStore(String storeName) {
+        System.out.println(LINESPACING);
+        System.out.println("Store, " + "(" + storeName + ")" + " has been deleted.");
+        System.out.println(LINESPACING);
+    }
+
     public void showReviews(String storeName, ArrayList<Review> reviews,double averageRating) {
         System.out.println(LINESPACING);
         System.out.println("Here are the reviews of the " + storeName + ":");
@@ -210,7 +243,6 @@ public class Ui {
     }
 
     public void showStoreOptions(String canteenName, String storeName) {
-        System.out.println(LINESPACING);
         System.out.println("You are now viewing: " + canteenName + ": " + storeName);
         System.out.println("Please Enter your command:");
         System.out.println("If you need help then Enter 'help' to view all the commands");
@@ -219,51 +251,110 @@ public class Ui {
 
     public void enterReview() {
         System.out.println(LINESPACING);
-        System.out.println("Please type your review:");
+        System.out.println("Please type your review: (Enter 'cancel' to go back)");
     }
 
     public void enterRating() {
         System.out.println(LINESPACING);
-        System.out.println("Please give your rating from 1 to 5");
+        System.out.println("Please give your rating from 1 to 5 (Enter 'cancel' to go back)");
     }
 
     public void reviewAdded() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully added!");
+        System.out.println(LINESPACING);
     }
 
-    public void menuAdded() {
+    public void menuAdded(String menuName,String menuPrice) {
         System.out.println(LINESPACING);
-        System.out.println("Menu successfully added!");
+        System.out.println("The menu " + "'" + menuName + "," + "$" + menuPrice + "'" + "successfully added!");
         System.out.println(LINESPACING);
     }
 
     public void reviewNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Review not added");
+        System.out.println(LINESPACING);
     }
 
     public void menuNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Menu not added");
+        System.out.println(LINESPACING);
     }
 
     public void showDeleteReview() {
+        System.out.println("Please enter review number to be deleted (Enter 'cancel' to go back)");
         System.out.println(LINESPACING);
-        System.out.println("Please enter review number to be deleted");
     }
 
     public void reviewDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Review successfully deleted!");
+        System.out.println(LINESPACING);
     }
+
+    public void menuDeleted(String menuName) {
+        System.out.println(LINESPACING);
+        System.out.println("Menu, " + "(" + menuName + ")" + " has been deleted.");
+        System.out.println(LINESPACING);
+    }
+
+    public void chooseMenu() {
+        System.out.println(LINESPACING);
+        System.out.println("Enter menu to be deleted. (Enter 'cancel' to go back)");
+        System.out.println(LINESPACING);
+    }
+
 
     public void showAddCanteen() {
         System.out.println(LINESPACING);
-        System.out.println("Please type the name of the new canteen:");
+        System.out.println("Please enter the name of the new canteen: (Enter 'cancel' to go back)");
+        System.out.println(LINESPACING);
+    }
+
+    public void showAddStore() {
+        System.out.println("Please enter the name of the new store: (Enter 'cancel' to go back)");
+        System.out.println(LINESPACING);
     }
 
     public void showAddCanteenSuccess(String canteenName) {
         System.out.println("The canteen '" + canteenName + "' has been added!");
+    }
+
+    public void showCanteenNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Canteen not added");
+        System.out.println(LINESPACING);
+    }
+
+    public void showStoreNotAdded() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Store not added");
+        System.out.println(LINESPACING);
+    }
+
+    public void showCanteenNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Canteen not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public void showStoreNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Store not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public void showReviewNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Review not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public void showMenuNotDeleted() {
+        System.out.println(LINESPACING);
+        System.out.println("Cancelling.... Menu not Deleted");
+        System.out.println(LINESPACING);
     }
 }

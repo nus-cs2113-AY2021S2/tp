@@ -1,6 +1,8 @@
 package command;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
+import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import ui.Ui;
 
@@ -10,20 +12,31 @@ import java.util.ArrayList;
 
 public class AddStoreCommand extends Command {
 
-    private int canteenIndex;
-    private String storeName;
+    private NusFoodReviews nusFoodReviews;
 
-    public AddStoreCommand(int canteenIndex, String storeName) {
-        this.canteenIndex = canteenIndex;
-        this.storeName = storeName;
+    public AddStoreCommand(NusFoodReviews nusFoodReviews) {
+        this.nusFoodReviews = nusFoodReviews;
     }
 
     @Override
-    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException {
-        canteens.get(canteenIndex).addStore(storeName);
+    public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
+        nusFoodReviews.setCanteenIndex();
+        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+        if (currentCanteenIndex == -1) {
+            ui.showStoreNotAdded();
+            return;
+        }
+        ui.showDisplayStores(canteens.get(currentCanteenIndex));
+        ui.showAddStore();
+        String storeName = ui.readCommand();
+        if (storeName.equals("cancel")) {
+            ui.showStoreNotAdded();
+            return;
+        }
+        canteens.get(currentCanteenIndex).addStore(storeName);
         ui.printStoreAdded(storeName);
-        Storage.saveStore(new FileWriter("data/storage.txt",true),
-                canteens.get(canteenIndex).getCanteenName(),storeName);
+        Storage.saveStore(new FileWriter(Storage.fileName,true),
+                canteens.get(currentCanteenIndex).getCanteenName(),storeName);
     }
 
 }

@@ -12,9 +12,10 @@ that allows the saving and loading of data. This allows all parameters of the da
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed.
-2. Download the latest version of `nusfoodreviews.jar` from [here](http://link.to/duke).
-3. Copy the `nusfoodreviews.jar` file to a folder
+2. Download the latest version of `nusfoodreviews.jar` from [here](https://github.com/AY2021S2-CS2113-T10-4/tp/releases).
+3. Copy the `nusfoodreviews.jar` file to an empty folder.
 4. For Windows users, open up **Command Prompt**.
+5. Enter java -jar nusfoodreviews.jar
    
    For Mac users, open up **Terminal**.
    
@@ -26,7 +27,7 @@ and menus through numbers with some commands needed when accessing certain
 features as shown below.
 
 ## ! Very important
-Password for Admin is `Password`. With that, have fun!
+Password for Admin is `Password`.
 
 ## Features
 
@@ -35,7 +36,7 @@ Display commands that users can enter
 
 Format: `help`
 
-*There should be no arguments after `help`
+* There should be no arguments after `help`
 
 Expected outcome:
 ```text
@@ -121,12 +122,50 @@ Example of usage:
 
 `exit`
 
+## Admin Functions: `admin`
+
+Password for admin is "Password".
+
+Admin has the following functions:
+1. View canteens
+2. Add canteen
+3. Add store in canteen
+4. Add Menu
+5. Delete canteen
+6. Delete store in canteen
+7. Delete reviews
+8. Delete menu
+9. Exit
+
+### View canteens: `view canteens`
+This function displays all the canteens in the system.
+
+### Add canteens: `add canteen`
+This function allows admin to add a new canteen to the application.
+
+### Add store in canteen: `add store`
+This function allows admin to add a new store to the chosen canteen.
+
+### Add menu in store: `add menu`
+This function allows admin to add a new menu to the chosen store.
+
+### Delete Canteen: `delete canteen`
+This function allows admin to delete a chosen canteen.
+
+### Delete store in canteen: `delete store`
+This function allows admin to delete a store in the chosen canteen.
+
+### Delete review: `delete review`
+This function allows admin to delete a review in a chosen store.
+
+### Delete menu: `delete menu`
+This function allows admin to delete a menu in a chosen store.
+
 ## FAQ
 
-**Q**: There are red words that appear right after I opened the application,
-why is that so?
+**Q**: 
 
-**A**: Those are just for logging purposes, no worries!
+**A**: 
 
 ## Command Summary
 
