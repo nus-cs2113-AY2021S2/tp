@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import seedu.duke.features.capsimulator.HelpGraduationManager;
+import seedu.duke.features.link.LinkLoadException;
 import seedu.duke.features.link.Links;
 import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.features.task.TaskManager;
@@ -78,7 +79,10 @@ public class Duke {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("UniTracker Error. Please delete UniTracker Data and restart program.");
+            System.out.println(
+                    "UniTracker Error. Please delete UniTracker Data and restart program.");
+        } catch (LinkLoadException e) {
+            System.out.println(e);
         }
     }
 
