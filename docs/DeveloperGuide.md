@@ -153,7 +153,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI diagram.png"  width = "850">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI diagram.png"  width = "1000">
 
 ### 4.3 Instance Component
 ### 4.4 Parser Component
