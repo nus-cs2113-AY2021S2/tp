@@ -74,15 +74,24 @@ public class ParserTest {
     @Test
     public void parse_largeQuantity_InvalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {
-            Parser.parseIntegerQuantity("1000000000");
+            Parser.parseIntegerQuantity("1000001");
         });
     }
 
     @Test
-    public void parse_negativeQuantity_InvalidQuantityException() {
+    public void parse_zeroQuantity_InvalidQuantityException() {
         assertThrows(InvalidQuantityException.class, () -> {
-            Parser.parseIntegerQuantity("-1000");
+            Parser.parseIntegerQuantity("0");
+        });
+    }
+
+    @Test
+    public void parse_setLimitNegativeQuantity_InvalidSetLimitQuantityException() {
+        assertThrows(InvalidQuantityException.class, () -> {
+            Parser.parseIntegerQuantity("-1");
         });
     }
 
 }
+
+
