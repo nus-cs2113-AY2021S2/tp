@@ -186,7 +186,7 @@ This is done only once for each time the application is launched. <br>
 ![img.png](images/SaveFeatureStep1ref1.png)
 ![img.png](images/SaveFeatureStep1.png)
 ![img.png](images/SaveFeatureStep1ref2.png) <br>
-Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continously. <br>
+Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
 `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
 When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
 ![img_1.png](images/SaveFeatureStep2.png)
