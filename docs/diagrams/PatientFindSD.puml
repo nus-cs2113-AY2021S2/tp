@@ -1,0 +1,47 @@
+@startuml
+
+actor user
+
+user -> PatientInstance : "find"
+
+PatientInstance -> PatientParser: patientParse()
+
+ref over PatientChecker, MainChecker, UI : parsing user input
+
+create PatientFind_Command
+PatientParser -> PatientFind_Command
+
+PatientFind_Command --> PatientParser : Command
+
+PatientParser -> PatientInstance : Command
+
+PatientInstance -> PatientFind_Command : execute
+
+PatientFind_Command -> PatientList : findPatients()
+
+loop for all Patients in PatientList
+    PatientList -> Patient_Model : getPatientDetails()
+
+    Patient_Model --> PatientList : patient's_details
+
+        alt patient details contains string
+            PatientList -> PatientUI : printPatientDetails()
+
+            PatientUI --> PatientList : user shown message
+        end
+end
+
+PatientList --> PatientFind_Command
+
+PatientFind_Command --> PatientInstance
+
+PatientInstance -> PatientStorage : storePatients()
+
+PatientStorage --> PatientInstance
+
+PatientInstance --> user : user sees find result
+
+
+
+
+@enduml
