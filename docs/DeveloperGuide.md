@@ -33,7 +33,7 @@
     	2. [Add](#532-add)
     	3. [Delete](#533-delete)
     	4. [List All](#534-list-all)
-    	5. [List by Doctor ID/ Appointment ID](#535-list-by-doctor-id-/-appointment-id)
+    	5. [List by Doctor ID or Appointment ID](#535-list-by-doctor-id-or-appointment-id)
     4. [Nurse Schedule](#54-nurse-schedule)
     	1. [Nurse Schedule Menu](#541-nurse-schedule-menu)
     	2. [Add](#542-add)
@@ -463,7 +463,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.3.5 List by Doctor ID/ Appointment ID
+### 5.3.5 List by Doctor ID or Appointment ID
 
 **Implementation:**
 
