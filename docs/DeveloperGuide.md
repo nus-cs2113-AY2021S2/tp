@@ -304,6 +304,8 @@ The implementation of the `history` command is as follows:
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
+:warning: Direct modification of the `historyData.txt` file may lead to corruption and loss of the data.
+
 ## Product Scope
 
 ### Target User Profile
