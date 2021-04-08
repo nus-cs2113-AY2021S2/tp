@@ -332,7 +332,32 @@ Step 2. If the link is valid and is not a duplicate, then LinkInfo#addLink() is 
 
 The program checks for duplicates by doing a simple linear search of all LinkInfo objects in the links list. If the object can be found within the list, then a duplicate link must exist.
 
-### 4.09 Add Module Components
+### 4.4 CAP Simulator/Calculator
+
+This section explains the implementation and design considerations of the
+set of features under CAP Simulator/Calculator. 
+For more information on CAP Simulator/Calculator, you may refer to __Section 3.2__ under [*User Guide*](UserGuide.md).
+
+#### 4.4.1 Add CAP and Number of MCs graded taken
+This feature allows user to add cumulative average point, that ranges between 0 - 5,
+with 2 decimal places of precision, and total number of graded modular credits.
+
+Given below is the sequence diagram for the feature:  
+
+![Diagram](diagrams/addCapAndMcs.png)
+
+How the feature works:
+The feature is facilitated by the `AddCapAndMcs` method in the `HelpGraduationManager` class and a call to the class is performed
+upon entering this sequence of numbers from the main menu:  
+`2`, `1`.
+
+A general 2-step explanation of how this feature works is shown below:
+
+Step 1.
+
+Step 2.
+
+### 4.10 Add Module Components
 This feature allows user to add user-defined module components and its related weightage for an
 existing module.
 
@@ -354,7 +379,7 @@ Here, there are two possible routes:
 Assuming the first route is well executed, the component (and its weightage) is stored in a
 Hashtable format in the `Module` object specified by the user previously*.
 
-### 4.10 View Module Components
+### 4.11 View Module Components
 
 How the feature works:  
 The feature is an extension of the `Component` feature.

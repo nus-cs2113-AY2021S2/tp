@@ -27,12 +27,14 @@ public class HelpGraduation {
         HelpGraduation.currentCap = currentCap;
     }
 
-    public static void setNumberOfGradedMCsTaken(int numberOfGradedMCsTaken) {
+    public static void setTotalMcs(int numberOfGradedMCsTaken) {
         HelpGraduation.numberOfGradedMCsTaken = numberOfGradedMCsTaken;
     }
 
     public static Double getCurrentCap() {
-        return currentCap;
+        DecimalFormat df = new DecimalFormat("#.##");
+        String formattedCap = df.format(currentCap);
+        return Double.parseDouble(formattedCap);
     }
 
     public static int getNumberOfGradedMCsTaken() {

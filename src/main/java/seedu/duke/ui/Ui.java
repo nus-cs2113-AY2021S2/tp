@@ -635,7 +635,7 @@ public class Ui {
     }
 
     public static void printRegisteredCapAndMCsTakenMessage() {
-        System.out.println("Current CAP: " + HelpGraduation.getCurrentCap());
+        System.out.println("Current CAP: " + HelpGraduation.getCurrentCap() + " (rounded to 2dp)");
         System.out.println("Number of Graded MCs Taken: "
                 + HelpGraduation.getNumberOfGradedMCsTaken());
     }
