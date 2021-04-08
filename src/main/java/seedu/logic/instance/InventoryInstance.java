@@ -6,7 +6,7 @@ import seedu.exceptions.ExcessInputException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.WrongNumberException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
 import seedu.model.inventory.InventoryList;
 import seedu.logic.parser.InventoryParser;
 import seedu.model.inventory.Inventory;
