@@ -60,7 +60,7 @@ public class ZoomLinkInfo {
     }
 
     /**
-     * Removes the zoom link object from the zoomLinksList
+     * Removes the zoom link object from the zoomLinksList.
      *
      * @param deleteIndex is the index of the object to be deleted
      * @throws IndexOutOfBoundsException if the index specified is out of bounds

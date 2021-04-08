@@ -96,8 +96,8 @@ public class Links {
     }
 
     /**
-     * checks for duplicate links in the links list
-     * @return true if linkToCheck is a duplicate
+     * checks for duplicate links in the links list.
+     * @return true if linkToCheck is a duplicate.
      */
     public boolean isDuplicate(String linkToCheck) {
         for (LinkInfo link : LinkInfo.linksList) {
