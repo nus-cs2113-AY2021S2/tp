@@ -77,7 +77,8 @@ public class Ui {
     }
 
     public void showAdminOptions() {
-        System.out.println("Please enter the index of the task you would like to choose : (Enter 'login' to go back to login page)");
+        System.out.println("Please enter the index of the task you would like to choose : "
+                + "(Enter 'login' to go back to login page)");
         System.out.println("1. View canteens");
         System.out.println("2. Add canteen");
         System.out.println("3. Add a store in a canteen");
