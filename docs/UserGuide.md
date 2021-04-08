@@ -1085,7 +1085,7 @@ Please choose which action you would like to do and enter the number:
 
 Adds an external link that follows the format to the external links list.
 
-Format: `<scheme>www.<domain name>.<TLD>`
+Format: `<scheme>://www.<domain name>.<TLD>`
 
 Supported schemes include: https, http only
 
