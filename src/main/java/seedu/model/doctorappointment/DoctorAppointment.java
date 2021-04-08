@@ -1,10 +1,19 @@
 package seedu.model.doctorappointment;
 
+import seedu.model.nurseschedule.NurseSchedule;
+import seedu.ui.DoctorAppointmentUI;
+
+import javax.print.Doc;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
-public class DoctorAppointment {
+import static seedu.ui.UI.prettyPrint;
+
+public class DoctorAppointment implements Comparable<DoctorAppointment>{
     protected String doctorId;
     protected String appointmentID;
     protected String patientsName;
@@ -54,5 +63,16 @@ public class DoctorAppointment {
         return doctorId + " | " + appointmentID + " | "+ patientsName + " | " + gender + " | " + date;
     }
 
+    @Override
+    public int compareTo(DoctorAppointment o) {
+        int numDoctorId = Integer.parseInt(getDoctorId());
+        int compareNumDoctorId = Integer.parseInt(o.getDoctorId());
 
+        return Integer.compare(numDoctorId, compareNumDoctorId);
+    }
+
+    public String toFind() {
+        //return getFormattedDatetime() + " " + patientID;
+        return prettyPrint(doctorId, 10) + " | " + prettyPrint(appointmentID, 10);
+    }
 }

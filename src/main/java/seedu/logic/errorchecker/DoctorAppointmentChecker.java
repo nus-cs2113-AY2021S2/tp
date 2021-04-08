@@ -14,6 +14,10 @@ import seedu.ui.UI;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -41,13 +45,14 @@ public class DoctorAppointmentChecker extends MainChecker {
         if (!isValidGender(gender)) {
             throw new InvalidGenderException();
         }
-        if (!isValidDate(date)) {
-            throw new seedu.exceptions.InvalidDateException();
-        }
+        checkValidDate(date);
     }
 
-    public static void checkValidDataForList(String[] input) throws seedu.exceptions.InvalidIDException {
+    public static void checkValidDataForList(String[] input) throws HealthVaultException {
         ID = input[1];
+
+        if (AppointmentList.appointmentList.size() ==0) throw new EmptyListException();
+        if (ID.equals("all")) return;
         if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
             throw new seedu.exceptions.InvalidIDException();
         }
@@ -91,7 +96,8 @@ public class DoctorAppointmentChecker extends MainChecker {
         illegalCharacterNameCheckerForStorage(inputArray[2]);
         illegalCharacterNameCheckerForStorage(inputArray[1]);
         checkDuplicateAptIDFromStorage(inputArray[1], storageList);
-        if (!isValidGender(inputArray[3]) || !isValidDate(inputArray[4])) {
+        checkValidDate(inputArray[4]);
+        if (!isValidGender(inputArray[3])) {
             throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
         }
 
@@ -173,18 +179,14 @@ public class DoctorAppointmentChecker extends MainChecker {
         return gender.equals("M") || gender.equals("F");
     }
 
-    public static boolean isValidDate(String datetime) {
-        if (!datetime.trim().equals("")) {
-            SimpleDateFormat sdfrmt = new SimpleDateFormat("ddMMyyyy");
-            sdfrmt.setLenient(false);
-            try {
-                Date javaDate = sdfrmt.parse(datetime);
-            } catch (ParseException e) {
-                System.out.println(datetime + " is Invalid Date format");
-                return false;
-            }
+    public static void checkValidDate(final String date) throws InvalidDateException {
+        try {
+            LocalDate.parse(date,
+                    DateTimeFormatter.ofPattern("ddMMuuuu")
+                            .withResolverStyle(ResolverStyle.STRICT));
+        } catch (DateTimeParseException e) {
+            throw new InvalidDateException();
         }
-        return true;
     }
 
     public static boolean isValidIDToDelete(String ID) {
