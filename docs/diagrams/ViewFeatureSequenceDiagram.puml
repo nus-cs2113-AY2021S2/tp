@@ -5,6 +5,10 @@
 [-> ":ViewCommand": execute()
 activate ":ViewCommand"
 
+note right
+    Parameters in execute() are omitted for brevity.
+end note
+
 alt EXPENSE
 
     ":ViewCommand" -> ":Ui": printTotalAmountExpense(:RecordList)
@@ -22,6 +26,13 @@ else LOAN
 else SAVING
 
     ":ViewCommand" -> ":Ui": printTotalAmountSaving(:RecordList)
+    activate ":Ui"
+    ":Ui" --> ":ViewCommand"
+    deactivate ":Ui"
+
+else ALL
+
+    ":ViewCommand" -> ":Ui": printTotalAmountAllType(:RecordList)
     activate ":Ui"
     ":Ui" --> ":ViewCommand"
     deactivate ":Ui"

@@ -500,8 +500,8 @@ category of *expense*, *loan*, and *saving* of the added records.
 
 #### 4.3.1 Current Implementation
 
-The `view` feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
-`{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
+The `view` feature is facilitated by `ViewCommand`. By typing in `view` and followed up with the available options, 
+`{-e, -l, -s, -a}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
@@ -521,22 +521,26 @@ The application next invokes the `ViewCommand#execute()` to execute the user's i
 
 ***Step 3:***\
 Inside the `ViewCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the 
-respective method.
+respective method. The `RecordType` enumeration is used to identify the category such that the correct method would be
+called. The following are the support types found in `RecordType` enumeration:
 > ✔️ `EXPENSE` type invokes `Ui#printTotalAmountExpense()`
 
 > ✔️ `LOAN` type invokes `Ui#printTotalAmountLoan()`
 
 > ✔️ `SAVING` type invokes `Ui#printTotalAmountSaving()`
 
+> ✔️ `ALL` type invokes `Ui#printTotalAmountAllType()` 
+
 ***Step 4:***\
 The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
 iterate through the `recordList` and will only add to the `totalAmount` if it is an instance of the respective
 record type.
 > 📝 The `Ui#printTotalAmountLoan()` will imposed additional check on whether the record is returned.
-> Only records that are not returned will be added to the `totalAmount`
+> Only records that are not returned will be added to the `totalAmount`.
+> `for` loop is omitted for brevity in the sequence diagram. 
 
 ***Step 5:***\
-Finally, the `totalAmount` will be rounded off to two decimal place before printing onto the console.
+Finally, the `totalAmount` will set to two decimal place before printing onto the console.
 
 #### 4.3.2 Design Consideration
 
@@ -558,20 +562,6 @@ Having considered two of the approaches, we have decided to adopt the second app
 The deterministic factor was the possibility of very large number such as 1000 billions. Thus, covering more than
 what the integer data type provided can cater to higher flexibility of the application.
 
-Aspect: **When to round off the amount to two decimal place**
-
-As the user can enter decimal into the amount field, the `ViewCommand` has two options of when to round off the value:
-* When assigning value to the amount variable
-* When printing the final computed value
-
-|Approach|Pros|Cons|
-|--------|----|----|
-|Assigning value to the amount variable|Round off early to avoid complication|Additional time per assignment to round off|
-|Printing the final computed value|Only round off once|Rounding off might be couple to other method which needs the amount field|
-
-With the two approaches considered, we have decided to adopt the second approach as it is more efficient to round off
-at the end and to preserve the accuracy for two decimal place. Since no other method is accessing the amount variable,
-is it possible avoid rounding off during each value assignment until new or existing features requires it.
 
 ### 4.4 Return Feature
 The `return` feature allows Finux users to mark a loan as returned.
@@ -600,7 +590,7 @@ The `remove` feature is facilitated by `RemoveCommand`. By running the command w
 parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
 
-![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
 *Figure x: Sequence Diagram for `remove -i 1`*
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
@@ -818,8 +808,8 @@ Credit score for Tom is 90
 
 #### A.2.1 Problem Identification
 Problems faced by students that Finux aim to assist with.
-> * [Problem] Wastage of time due to connection/latency issues went accessing finance tracking website.
-> * [Solution] Use a local based application.
+> * [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
+> * [Solution] Provide a non website dependent application.
 
 > * [Problem] Hassle to use different applications to keep track of various stuff.
 > * [Solution] Provide an integrated platform to record any expenses, loans, or saving.
@@ -827,8 +817,8 @@ Problems faced by students that Finux aim to assist with.
 > * [Problem] Disorganization issues arising from keep multiple tracking applications.
 > * [Solution] Provide the option to view each category of records within an integrated platform.
 
-> * [Problem] Spending time to gauge whether to borrow money to a friend.
-> * [Solution] Provide a soft gauge through credit score indicators.
+> * [Problem] Spending additional time to gauge whether to lend money to a friend.
+> * [Solution] Provide a soft gauge through credit score meter.
 
 #### A.2.2 Value Adding
 
@@ -837,7 +827,7 @@ websites and using different applications to keep track various movement such as
 provide an all-in-one platform for students who are usually in front of their computers. The student's expertises in 
 coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
 
-> ❗ **CAUTION:** Finux does not provide any finance advise.
+> ❗ Finux does not provide any finance advise.
 
 
 ## Appendix B: User Stories
