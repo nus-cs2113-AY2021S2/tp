@@ -154,7 +154,7 @@ classified into three broad categories:
   * Includes: `EmptyDescriptionException`, `InvalidDateException`, `InvalidInputException`, `InvalidQuantityException`
 * Food Errors
   * Thrown when a parameter for a food item is invalid
-  * Includes: `FoodNameNotFoundException`, `InvalidFoodCategoryException`, `RepetitiveFoodIdentifierException`
+  * Includes: `FoodNameNotFoundException`, `InvalidFoodCategoryException`, `RepetitiveFoodIdentifierException`, `InvalidFoodLocationException`
 * File Storage Errors
   * Thrown when there are errors occur during the file loading and saving processes
   * Includes: `StorageLoadingException`, `StorageSavingException`
