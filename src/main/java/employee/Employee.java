@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class Employee {
     private String name;
     private ArrayList<String> schedules = new ArrayList<>();
-    private static final int MAX_DAY_OF_MONTH = 31;
+    private static final int MAX_DAY_OF_ODD_MONTH = 31;
+    private static final int MAX_DAY_OF_EVEN_MONTH = 30;
+    private static final int MAX_DAY_OF_FEB = 28;
     private static final int MIN_DAY_OF_MONTH = 1;
     private static final int MAX_MONTH_OF_YEAR = 12;
     private static final int MIN_MONTH_OF_YEAR = 1;
@@ -56,7 +58,23 @@ public class Employee {
         if (mm < MIN_MONTH_OF_YEAR || mm > MAX_MONTH_OF_YEAR) {
             return false;
         }
-        return dd >= MIN_DAY_OF_MONTH && dd <= MAX_DAY_OF_MONTH;
+        if (dd < MIN_DAY_OF_MONTH){
+            return false;
+        }
+        if (mm % 2 == 1){
+            if(dd > MAX_DAY_OF_ODD_MONTH){
+                return false;
+            }
+        }else if(mm != 2){
+            if(dd >MAX_DAY_OF_EVEN_MONTH){
+                return false;
+            }
+        }else{
+            if(dd >MAX_DAY_OF_FEB){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void dropSchedule(String schedule) {

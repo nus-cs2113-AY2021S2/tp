@@ -23,4 +23,11 @@ public class Ui {
         System.out.println("list (displays the name of all employees)");
         System.out.println("quit (quit the application)");
     }
+
+    public static void printInvalidScheduleFeedbackMessage(){
+        System.out.println("schedule must be in the format: dd/mm/yyyy");
+        System.out.println("dd must be an integer between 1-31 for odd months, 1-30 for even months, 1-28 for Feb");
+        System.out.println("mm must be an integer between 1-12");
+        System.out.println("yyyy must be an integer between 2021-2099");
+    }
 }

@@ -1,6 +1,7 @@
 package employee;
 
 import asserts.Asserter;
+import ui.Ui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -28,7 +29,8 @@ public class EmployeeController {
                 if (isScheduleValid) {
                     System.out.println("schedule added");
                 } else {
-                    System.out.println("Please enter a valid schedule in this format: dd/mm/yyyy");
+                    System.out.println("The schedule is invalid");
+                    Ui.printInvalidScheduleFeedbackMessage();
                 }
                 return;
             }
