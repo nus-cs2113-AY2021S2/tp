@@ -25,14 +25,10 @@ public class DeleteStoreCommand extends Command {
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-        if (currentCanteenIndex == -1) {
-            ui.showStoreNotDeleted();
-            return;
-        }
         ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
         String line = ui.readCommand();
         if (line.equals("cancel")) {
-            ui.showStoreNotAdded();
+            ui.showStoreNotDeleted();
             return;
         }
         int storeIndex = parser.parseInt(line, 1,

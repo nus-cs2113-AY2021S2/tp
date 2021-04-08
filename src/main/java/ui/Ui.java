@@ -193,7 +193,8 @@ public class Ui {
             }
             System.out.println(LINESPACING);
         } else {
-            System.out.println("Select one of the following NUS canteens to " + action + ":");
+            System.out.println("Select one of the following NUS canteens to " + action
+                    + ": (Enter 'login' to go back to login page)");
             for (int i = 0; i < canteens.size(); i++) {
                 System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
             }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static stores.Store.averageRating;
+import static ui.Ui.LINESPACING;
 
 
 public class ReadReviewsCommand extends Command {
@@ -23,8 +24,14 @@ public class ReadReviewsCommand extends Command {
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) {
         ArrayList<Review> reviews = store.getReviews();
-        averageRating = store.getAverageRating();
-        String storeName = store.getStoreName();
-        ui.showReviews(storeName, reviews, averageRating);
+        if (reviews.size() > 0) {
+            averageRating = store.getAverageRating();
+            String storeName = store.getStoreName();
+            ui.showReviews(storeName, reviews, averageRating);
+        } else {
+            System.out.println("There are no reviews yet!");
+            System.out.println(LINESPACING);
+        }
+
     }
 }
