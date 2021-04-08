@@ -32,8 +32,7 @@ It is written in Java, and has more than 5500 lines of code.
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.  
-4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend.jar`.
+4. Open your Command Line Terminal in the folder where the `jar` file is located, and run `FridgeFriend` with `java -jar FridgeFriend_vx.x.jar` where `vx.x` is the `FridgeFriend` version that you have downloaded.
 5. Type the command in the command box and press Enter to execute it. For example, typing `list` and pressing Enter will show a list of all current food. Some example commands you can try:
    * `help`: Displays a help message
    * `list`: Lists all food.
