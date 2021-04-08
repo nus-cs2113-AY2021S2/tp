@@ -37,8 +37,8 @@ public class AddReviewCommand extends Command {
 
     public void getReviewFromUser(Ui ui) throws NumberFormatException, IOException {
         String description;
-        double rating;
         String line;
+        double rating = 0.0;
         ui.enterReview();
         line = ui.readCommand();
         if (line.equals("cancel")) {
@@ -54,12 +54,16 @@ public class AddReviewCommand extends Command {
             return;
         } else {
             rating = Double.parseDouble(line);
+            if (rating < 1.0 || rating > 5.0) {
+                System.out.println("Please enter valid rating");
+                return;
+            }
         }
         store.addReview(new Review(description, rating));
         ui.reviewAdded();
         Date dateTime = new Date();
         Format formatter = new SimpleDateFormat("yyy-MM-dd");
-        Storage.saveReview(new FileWriter("data/storage.txt",true),canteen,store,description,line,
+        Storage.saveReview(new FileWriter(Storage.fileName,true),canteen,store,description,line,
                 formatter.format(dateTime));
     }
 }
