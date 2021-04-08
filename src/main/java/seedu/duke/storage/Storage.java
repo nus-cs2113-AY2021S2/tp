@@ -574,7 +574,7 @@ public class Storage {
             String[] part = scanner.nextLine().split("~~");
             int modularCredit = Integer.parseInt(part[0]);
             double cap = Double.parseDouble(part[1]);
-            HelpGraduation.setNumberOfGradedMCsTaken(modularCredit);
+            HelpGraduation.setTotalMcs(modularCredit);
             HelpGraduation.setCurrentCap(cap);
         }
     }
