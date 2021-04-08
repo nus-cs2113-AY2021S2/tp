@@ -51,7 +51,7 @@ The Main driver class for the FridgeFriend app is
 named **[`FridgeFriend`](https://github.com/AY2021S2-CS2113-T10-1/tp/blob/master/src/main/java/seedu/fridgefriend/FridgeFriend.java)**.
 It is responsible for,
 
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+* At app launch: Initialises the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
 The rest of the App consists of four components.
@@ -164,6 +164,8 @@ classified into three broad categories:
 
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
+:information_source: For simplicity, where there are exceptions being thrown, they will be represented in the diagrams as comments. In the actual implementation, exception objects are being initialised and executed.
+
 ### Main Logic
 
 The main application logic underlines the main executable conditions that make up the bulk of the application. Below is the outline of the logic:
@@ -188,7 +190,7 @@ Given below is the sequence diagram for the interactions within the main applica
 
 ### Add Command
 
-AddCommand class is initialized whenever the parser recognize the `add` keyword.
+AddCommand class is initialised whenever the parser recognise the `add` keyword.
 
 1. The constructor should create a new Food object according to the parsed user input.
 2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
