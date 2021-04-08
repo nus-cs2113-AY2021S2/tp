@@ -60,7 +60,7 @@ The arraylist of schedules contains all of the employee's schedules. Each schedu
 
 A schedule must be in the format: dd/mm/yyyy
 
-dd must be an integer between 1-31
+dd must be an integer between 1-31 for odd months, 1-30 for even months, 1-28 for Feb
 
 mm must be an integer between 1-12
 
