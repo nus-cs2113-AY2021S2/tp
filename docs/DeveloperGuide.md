@@ -53,7 +53,7 @@
 
 [Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements) (mingshun)
 
-[Appendix D: Glossary](#d-appendix-d-glossary) (oen)
+[Appendix D: Glossary](#d-appendix-d-glossary) (owen)
 
 [Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing) (sarrah)
 
@@ -74,66 +74,38 @@ The purpose of this developer guide is to describe the architecture and software
 
 ## 2. How to use the guide
 
+:exclamation:
+
+<> - means that ...
+
+[] - means that ...
+
+invalid input is shown with:
+
+> 
+	- Invalid input 1
+	- Invalide input 2
+
 <br>
 
 ## 3. Getting Started
 
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Setting up**
-
-There are 2 prerequisites for this project
-
-1.  Java 11
-
--   Launch your terminal and type "java -version" to ensure the correct version
-
-2.  Intellij IDEA
-
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Getting Started**
-
-1.  Fork this repo, and clone the fork into your computer.
-
-2.  Import the project as a gradle project
-
-3.  Run Duke.main and try a few commands
-
-4.  Run the tests to ensure they all pass.
-
-
-
-
-
-Setting up the project in your computer
 :exclamation: Caution: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
-First, fork this repo, and clone the fork into your computer.
 
-If you plan to use Intellij IDEA (highly recommended):
+First fork this repo, and clone the fork into your computer.
 
-Configure the JDK: Follow the guide [se-edu/guides] IDEA: Configuring the JDK to to ensure Intellij is configured to use JDK 11.
-Import the project as a Gradle project: Follow the guide [se-edu/guides] IDEA: Importing a Gradle project to import the project into IDEA.
-:exclamation: Note: Importing a Gradle project is slightly different from importing a normal Java project.
-Verify the setup:
-Run the seedu.address.Main and try a few commands.
-Run the tests to ensure they all pass.
-Before writing code
-Configure the coding style
+**Setting up the project in your computer**
 
-If using IDEA, follow the guide [se-edu/guides] IDEA: Configuring the code style to set up IDEA’s coding style to match ours.
+1. Configuring the JDK to to ensure Intellij is configured to use JDK 11.
+2. Import the project as a Gradle project.
+3. Run the seedu.duke.HealthVault and try a few commands as stated in the User Guide.
+4. Run the tests to ensure they all pass.
+5. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
-:bulb: Tip: Optionally, you can follow the guide [se-edu/guides] Using Checkstyle to find how to use the CheckStyle within IDEA e.g., to report problems as you write code.
-Set up CI
+**Before writing code**
 
-This project comes with a GitHub Actions config files (in .github/workflows folder). When GitHub detects those files, it will run the CI for your project automatically at each push to the master branch or to any PR. No set up required.
-
-Learn the design
-
-When you are ready to start coding, we recommend that you get some sense of the overall design by reading about AddressBook’s architecture.
-
-Do the tutorials These tutorials will help you get acquainted with the codebase.
-
-Tracing code
-Removing fields
-Adding a new command
-
+1. If using IDEA, configuring the code style to set up IDEA’s coding style to match ours.
+2. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
 <br>
 
