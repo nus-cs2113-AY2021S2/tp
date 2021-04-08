@@ -1,20 +1,24 @@
 **Developer Guide**
 ===================
 
+
 ## Content Page
 
-1. [Introduction](#1-introduction)
-	1. [What is HealthVault?](#11-what-is-healthvault)
+1. [Introduction](#1-introduction) (jia en)
+	1. [What is HealthVault?](#11-what-is-healthvault) 
 	2. [About the Developer Guide](#12-about-the-developer-guide)
-2. [How to use this guide](#2-how-to-use-the-guide)
-3. [Getting Started](#3-getting-started)
-4. [Design](#4-design)
-    1. [Architecture](#41-architecture)
-    2. [UI component](#42-ui-component)
-    3. [Logic component](#43-logic-component)
-    4. [Model component](#44-model-component)
-    5. [Storage component](#45-storage-component)
-    6. [Common classes](#46-common-classes)
+2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
+3. [Getting Started](#3-getting-started) (Owen)
+4. [Design](#4-design) 
+    1. [Architecture](#41-architecture) (owen)
+    2. [UI component](#42-ui-component) (ms)
+    3. [Instance Component](#43-instance-component) (jiaen)
+    4. [Parser Component](#44-parser-component) (jien)
+    5. [Error Checker Component](#45-error-checker-component) (jiaen)
+    6. [Commands Component](#46-commands-component) (jiaen)
+    7. [Exceptions Component](#47-exceptions-component) (jiaen)
+    8. [Model component](#48-model-component) (alex)
+    9. [Storage component](#49-storage-component) (sarrah)
 5. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -32,14 +36,14 @@
     	1. [Doctor Appointment Menu](#531-doctor-appointment-menu)
     	2. [Add](#532-add)
     	3. [Delete](#533-delete)
-    	4. [List](#534-list)
-    	5. [Find](#535-find)
+    	4. [List All](#534-list-all)
+    	5. [List by Doctor ID or Appointment ID](#535-list-by-doctor-id-or-appointment-id)
     4. [Nurse Schedule](#54-nurse-schedule)
     	1. [Nurse Schedule Menu](#541-nurse-schedule-menu)
     	2. [Add](#542-add)
     	3. [Delete](#543-delete)
-    	4. [List](#544-list)
-    	5. [Find](#545-find)
+    	4. [List All](#544-list-all)
+    	5. [List by Nurse ID](#545-list-by-nurse-id)
     5. [Inventory](#55-inventory)
         1. [Inventory Menu](#551-inventory-menu)
     	2. [Add](#552-add)
@@ -47,19 +51,15 @@
     	4. [List](#554-list)
     	5. [Find](#555-find)
 
-[Appendix A: Product Scope](#a-appendix-a-product-scope)
+[Appendix A: Product Scope](#a-appendix-a-product-scope) (jiaen)
 
-[Appendix B: User Stories](#b-appendix-b-user-stories)
+[Appendix B: User Stories](#b-appendix-b-user-stories) (alex)
 
-[Appendix C: Use Cases](#c-appendix-c-use-cases)
+[Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements) (mingshun)
 
-[Appendix D: Non Functional Requirements](#d-appendix-d-non-functional-requirements)
+[Appendix D: Glossary](#d-appendix-d-glossary) (owen)
 
-[Appendix E: Glossary](#e-appendix-e-glossary)
-
-[Appendix F: Product Survey](#f-appendix-f-product-survey)
-
-[Appendix G: Instructions for Manual Testing](#g-appendix-g-instructions-for-manual-testing)
+[Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing) (sarrah)
 
 
 ## 1. Introduction
@@ -78,30 +78,38 @@ The purpose of this developer guide is to describe the architecture and software
 
 ## 2. How to use the guide
 
+:exclamation:
+
+<> - means that ...
+
+[] - means that ...
+
+invalid input is shown with:
+
+> 
+	- Invalid input 1
+	- Invalide input 2
+
 <br>
 
 ## 3. Getting Started
 
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Setting up**
+:exclamation: Caution: Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.
 
-There are 2 prerequisites for this project
+First fork this repo, and clone the fork into your computer.
 
-1.  Java 11
+**Setting up the project in your computer**
 
--   Launch your terminal and type "java -version" to ensure the correct version
+1. Configuring the JDK to to ensure Intellij is configured to use JDK 11.
+2. Import the project as a Gradle project.
+3. Run the seedu.duke.HealthVault and try a few commands as stated in the User Guide.
+4. Run the tests to ensure they all pass.
+5. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
-2.  Intellij IDEA
+**Before writing code**
 
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; **Getting Started**
-
-1.  Fork this repo, and clone the fork into your computer.
-
-2.  Import the project as a gradle project
-
-3.  Run Duke.main and try a few commands
-
-4.  Run the tests to ensure they all pass.
-
+1. If using IDEA, configuring the code style to set up IDEA’s coding style to match ours.
+2. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
 <br>
 
@@ -110,17 +118,50 @@ There are 2 prerequisites for this project
 
 ###  4.1 Architecture
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/ArchitectureDiagram.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Architecture Diagram.png">
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Our application utilises many layers of abstraction which allows each individual component to be self contained yet able to work with other components. The Main Menu component allows direct access to other components as shown in the diagram.
+**Overview Architecture:**
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared functionalities are placed within the Common Classes component which will be elaborated on in the section [Common Classes](#common-classes)
+Our application utilises many layers of abstraction which allows each individual component to be self contained yet able to work with other components. Each component has been absracted and grouped together based on its function and purpose in the system.
+
+The above diagram shows how each component interacts with the other components. The directed arrows represent the direction in which functions of each component is called and used. For example, the Instance Component utilises the Storage Component.
+
+<br>
+
+**Brief Description of Components:**
+
+**UI Component:** Controls all the User Interface. All input and output is handled by the UI component.
+
+
+**Logic Component:**
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instance Component: Represents all Menu Instances.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Parser Component: Parses user input to obtain control flow decisions.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Error Checker Component: Contains functions to check validity of user input.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Commands Component: Command Class Objects which executes specified actions.
+
+**Exceptions Component:** All possible Exceptions identified.
+
+**Model Component:** Consist of the base objects and its collection.
+
+**Storage Component:** Manages all file I/O.
+
+
 
 ### 4.2 UI component
-### 4.3 Logic component
-### 4.4 Model component
-### 4.5 Storage component
-### 4.6 Common classes
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI Diagram resize.png">
+
+### 4.3 Instance Component
+### 4.4 Parser Component
+### 4.5 Error Checker Component
+### 4.6 Commands Component
+### 4.7 Exceptions Component
+### 4.8 Model component
+### 4.9 Storage component
 
 <br>
 
@@ -181,23 +222,23 @@ Invalid Input includes:
 
 **Creating StaffAdd command**
 
-2. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
-3. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. If the input data is valid, a StaffAdd Command object is created. Else a relevant error is thrown.
+4. The StaffAdd Command object is returned to `StaffInstance.run()`
 
 **Creating Staff Object with User Input**
 
-4. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
+5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
 
-5. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+6. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
 
-6. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+7. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
 
 **Saving Staff Objects into .txt file**
 
-7. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-9. Data is written and saved.
-10. Control is then returned to StaffInstance.
+8. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+9. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+10. Data is written and saved.
+11. Control is then returned to StaffInstance.
 
 <br>
 
@@ -237,9 +278,7 @@ Invalid Input includes:
 7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
 
 8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-
 9. Data is written and saved.
-
 10. Control is then returned to StaffInstance.
 
 <br>
@@ -322,20 +361,334 @@ Invalid Input includes:
 ###  5.3 Doctor Appointment
 
 ### 5.3.1 Doctor Appointment Menu
+
+Similar to the Start Menu, the Doctor Appointment Menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Doctor Appointment Menu, the following steps will occur.
+
+**Launching Doctor Appointment Menu**
+
+1. `ToDoctorAppointment.execute()` will create and call `DoctorAppointmentInstance.run()`
+2. `DoctorAppointmentInstance.run()` will start by loading/creating the DoctorAppointment data .txt file for database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+3. `DoctorAppointmentInstance.run()` will then repeatedly call `DoctorAppointmentParser.parse()`.
+
+**Getting User Input**
+
+4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
+5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+6. Based on the recognised command by the system, the relevant commands will be carried out.
+
+<br>
+
 ### 5.3.2 Add
+
+**Implementation:**
+
+The function Add takes in 5 compulsory fields (Doctor ID, Appointment ID, Patient's Name, Gender, Date) to create the DoctorAppointment Object to be added. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A DoctorAppointmentAdd Command object is created and executed to create the DoctorAppointment Object to be added.
+
+Invalid Input includes:
+
+> 
+	- Invalid Doctor ID format
+	- Non-existent Doctor ID 
+	- Invalid Appointment ID format
+	- Duplicated Appointment ID
+	- Illegal Characters for Names
+	- Invalid Gender format
+	- Invalid Date format
+	- Blank input (i.e Empty inputs)
+
+`add/[Doctor ID]/[Appointment ID]/[Patient's Name]/[Gender]/[Date]`
+
+
+**Check validity of the data input**
+
+1. If the command recognised is the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
+2. `checkValidDataForAdd()` will call the following function in sequence:
+
+	- isValidDocID()	
+	- isValidAppointmentID()
+	- illegalCharacterChecker()
+	- isValidGender()
+	- checkValidDate(); 
+
+**Creating DoctorAppointmentAdd command**
+
+3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise a relevant error will be thrown.
+4. The Command object is returned to `DoctorAppoitmentInstance.run()`
+
+**Creating DoctorAppointment Object with User Input**
+
+5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAdd.execute()`.
+6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
+
+**Saving DoctorAppointment Objects into .txt file**
+
+7. `AppointmentList.addAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which all existing DoctorAppointment Objects within the appointmentList is written into a DoctorAppointment.txt file.
+8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
+9. Control is then returned to DoctorAppointmentInstance.
+
+<br>
+
 ### 5.3.3 Delete
-### 5.3.4 List
-### 5.3.5 Find
+
+**Implementation:**
+
+The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDelete Command object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Invalid Doctor ID format
+	- Non-existent Doctor ID
+	- Invalid Appointment ID format
+	- Non-existent Appointment ID
+	- Blank input (i.e Empty inputs)
+
+`delete/[Doctor ID/ Appointment ID]`
+
+
+**Check validity of the data input**
+
+1. If the command is recognised as the delete command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForDelete()` to ensure that the inputs are valid.
+
+**Creating DoctorAppointmentDelete command**
+
+2. A DoctorAppointmentDelete Command object is created if the inputs are valid. 
+3. The Command object is returned to `DoctorAppointmentInstance.run()`
+
+**Deleting DoctorAppointment Object using User Input**
+
+4. DoctorAppointmentInstance then executes the DoctorAppointmentDelete Command object by running `DoctorAppointmentDelete.execute()`.
+5. `AppointmentList.deleteAppointment()` is called, which iterates through the objects in ArrayList<DoctorAppointment> appointmentList. The DoctorAppointment Object matching the input given by the user will be removed from the array list.
+
+**Saving changed DoctorAppointment Objects into .txt file**
+
+6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
+7. Control is then returned to StaffInstance.
+
+<br>
+
+### 5.3.4 List all
+
+**Implementation:**
+
+The function lists all Doctor Appointment Objects currently in ArrayList <DoctorAppointment> appointmentList. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display all DoctorAppoinment Objects currently within the array list.
+
+Invalid Input includes:
+
+> 
+	- Any input apart from Blank Input (i.e Empty input) OR "all" OR "Appointment ID" OR "Doctor ID" 
+
+`list/all`
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
+
+**Creating DoctorAppointmentList command**
+
+2. A DoctorAppointmentList Command object is created if the inputs are valid.
+3. The Command object is returned to `DoctorAppointmentInstance.run()`
+
+**Viewing DoctorAppointment Objects**
+
+4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
+5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
+6. All DoctorAppointment Objects in the array list will be displayed.
+7. Control is then returned to DoctorAppointmentInstance.
+
+<br>
+
+### 5.3.5 List by Doctor ID or Appointment ID
+
+**Implementation:**
+
+The function list takes in 1 compulsory field (keyword) to list the relevant DoctorAppoitment Objects currently in ArrayList <DoctorAppointment> appointmentList.Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentList Command object is created and executed in which the program will iterate and display the DoctorAppoinment Objects matching the user input currently within the array list.
+Invalid Input includes:
+
+> 
+	- Any input apart from Blank Input (i.e Empty input) OR "all" OR "Appointment ID" OR "Doctor ID" 
+
+`list/[Doctor ID/ Appointment ID]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForList()` to check and verify the validity of inputs accompanied by the list command, if any.
+
+**Creating DoctorAppointmentList command**
+
+2. A DoctorAppointmentList Command object is created if the inputs are valid.
+3. The Command object is returned to `DoctorAppointmentInstance.run()`
+
+**Viewing DoctorAppointment Objects**
+
+4. DoctorAppointmentInstance then executes the DoctorAppointmentList Command object by running `DoctorAppointmentList.execute()`.
+5. `AppointmentList.listAppointment()` is called, and will iterate through the objects in ArrayList<DoctorAppointment> appointmentList.
+6. DoctorAppointment Objects matching the user input present in the array list will be displayed.
+7. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
 ###  5.4 Nurse Schedule
 
 ### 5.4.1 Nurse Schedule Menu
+
+Similar to the start menu, the Nurse Schedule menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Nurse Schedule Menu, the following steps will occur
+
+**Launching Nurse Schedule Menu**
+
+1.`ToNurseScheduleInstance.execute()` will create and call `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+2.`runCommandLoopUntilExit()` will start by loading/creating the NurseSchedule.txt for database records. It will check for any signs of file corruption when loading. An exception will be thrown if any corruption is present.
+
+3.`runCommandLoopUntilExit()` will then repeatedly call nurseParse().
+
+**Getting User Input**
+
+4.User inputs are repeatedly requested by `runCommandLoopUntilExit`.
+
+5.`nurseParse()` will call `smartCommandRecognition` to assess the given user input and determine which command is the most similar to the input.
+
+6.Based on the recognised command, the relevant execution will be carried out.
+
 ### 5.4.2 Add
+
+**Implementation**
+
+The function Add takes in 3 compulsory fields (Nurse ID, Patient ID, Date) to create a new Nurse Schedule object to be added. The Nurse ID, Patient ID and Date inputs will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAdd Command object is created and executed which will create a NurseSchedule object to be added.
+
+Invalid Inputs include:
+
+>
+	- Invalid Nurse ID or Patient ID format
+	- Non-existent Nurse ID or Patient ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
+	- Duplicate schedules (i.e similar Patient ID and date)
+	
+`add/[Nurse ID]/[Date (DDMMYYYY)]`
+
+**Checking validity of data input**
+
+1.If the command recognised is the add command, the parameters will first be checked for their validity. The following functios will be called in sequence:
+	- isValidDate()
+	- checkNumInput()
+	- illegalCharacterChecker()
+	
+**Creating NurseScheduleAdd object with User Input**
+
+2.If the parameters are valid, a NurseScheduleAdd Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+3.The Command objected is then executed and `NurseScheduleActions.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+
+**Saving NurseSchedule objects into .txt file**
+
+4.The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+
+5.Control is then returned to NurseScheduleInstance.
+
+
 ### 5.4.3 Delete
-### 5.4.4 List
-### 5.4.5 Find
+
+**Implementation**
+
+The delete function takes in 2 compulsory field (Nurse ID, Date) to identify and delete the Nurse Schedule object from the arraylist of Nurse Schedule objects. The Nurse ID and date will first be checked for its validity. Any invalid input detected will result in an exception thrown and command will be aborted. Else, a NurseScheduleDelete Command object is created and executed.
+
+Invalid Inputs include:
+
+>
+	- Invalid Nurse ID format
+	- Non-existent Nurse ID
+	- Blank input
+	- Illegal Characters
+	- Illegal date format
+	
+`delete/[Nurse ID]/[Date (DDMMYYYY)]`
+
+**Checking validity of data input**
+
+1. If the command is recognised as a delete command, the parameters provided will first be checked for its validity.
+
+**Creating NurseScheduleDelete object**
+
+2. If the parameters are valid, a NurseScheduleDelete Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleActions.deleteSchedule()`.
+
+4. `deleteSchedule` iterates through the arraylist and removes the first object that matches the user input given.
+
+**Saving updated NurseSchedule objects into .txt file**
+
+5. `runCommandLoopUntilExit()` will then call `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+
+6. Control is then returned to NurseScheduleInstance.
+
+### 5.4.4 List all
+
+**Implementation**
+
+This function lists all Nurse Schedule objects, sorted by earliest added Nurse ID, then sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleList Command object is created. NurseScheduleList command object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule Objects will then be displayed.
+
+Invalid Inputs include:
+
+>
+	- Any input apart from "all" OR "NurseID"
+
+`list/all`
+
+**Checking validity of data input**
+
+1. If the command recognised is the list command, the number of fields in inputs will first be checked.
+
+**Creating NurseScheduleList command**
+
+2. If the input is valid, a NurseScheduleList Command object is created.
+
+3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+**Viewing Nurse Schedule objects**
+
+4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
+
+5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `listAllSchedules()`.
+
+6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
+
+
+### 5.4.5 List by Nurse ID
+
+**Implementation**
+
+This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleList Command object is created. NurseScheduleList command object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule Objects will then be displayed.
+
+Invalid Inputs include:
+
+>
+	- Any input apart from "all" OR "NurseID"
+
+`list/[Nurse ID]`
+
+**Checking validity of data input**
+
+1. If the command recognised is the list command, the number of fields in inputs will first be checked.
+
+**Creating NurseScheduleList command**
+
+2. If the input is valid, a NurseScheduleList Command object is created.
+
+3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+**Viewing Nurse Schedule objects**
+
+4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
+
+5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
+
+6. `getSchedulesByID` iterates through the arraylist of Nurse Schedule objects, printing schedules of the relevant Nurse ID.
 
 <br>
 
@@ -358,23 +711,15 @@ Invalid Input includes:
 
 <br>
 
-## c. Appendix C: Use Cases
+## c. Appendix C: Non Functional Requirements
 
 <br>
 
-## d. Appendix D: Non Functional Requirements
+## d. Appendix D: Glossary
 
 <br>
 
-## e. Appendix E: Glossary
-
-<br>
-
-## f. Appendix F: Product Survey
-
-<br>
-
-## g. Appendix G: Instructions for Manual Testing
+## e. Appendix E: Instructions for Manual Testing
 
 <br>
 
@@ -940,109 +1285,6 @@ a.  patientParse returns true to PatientCommandInstance and this causes
     > the PatientCommandInstance to break out of its input loop. Thereby
     > returning to the main menu from the PatientCommandInstance.
 
-## **Nurse Schedule-related Features**
-
-When the user accesses an instance of Nurse Schedules, the
-NurseScheduleParser, NurseScheduleActions and NurseScheduleStorage
-classes will be accessed. If data is found on the NurseSchedules text
-file, it will be loaded into the arraylist, else a new text file is
-created.
-
-### Implementation:
-
-1.  User types in a command
-
-2.  NurseScheduleInstance calls UI.getInput() to receive user input.
-
-3.  NurseScheduleInstance passes the input to nurseParse().
-
-4.  nurseParse() creates a Command object with the relevant parameters and returns it to NurseScheduleInstance.
-
-5.  NurseScheduleInstance executes the object by calling the objects execute method.
-
-### **Adding a new Nurse Schedule**
-
-### Implementation
-
-When the user attempts to add a new nurse schedule, the
-NurseScheduleInstance, NurseScheduleParser, NurseScheduleChecker, NurseScheduleActions and Nurse Schedule Command
-classes will be accessed, and the following sequence of actions is
-called to prompt execution results to user:
-
-`add/[Nurse ID]/[Date (DDMMYYYY)]`:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. User inputs command which is received by NurseScheduleInstance.runCommandLoopUntilExit().
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. User input is the passed to NurseScheduleParser.nurseParse() which returns a Command Add object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Creating NurseSchedule object with User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. NurseScheduleInstance then executes the Command Add object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. addSchedule() from NurseScheduleActions will then be called which creates the 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NurseSchedule object and adds it into the arraylist.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Saving NurseSchedule objects into .txt file**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. The command loop then calls NurseScheduleStorage.writeToFile() which starts the process of 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; writing details of all existing Nurse Schedule objects within the ArrayList to the specified .txt file
-
-### **Listing Nurse Schedules**
-
-### Implementation:
-
-When the user attempts to list nurse schedules, they will have the
-choice of listing all schedules or a specified nurse id's schedule. This
-is similar to a search function. This will access the
-NurseScheduleActions class.
-
-<img src="images/ListNurseIDSequenceDiagram.png">
-<p align = "center"> Sequence Diagram when list/N12345 inputted.</p>
-
-`list/[Nurse ID or list/all`:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. User inputs command which is received by NurseScheduleInstance.runCommandLoopUntilExit().
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. User input is the passed to NurseScheduleParser.nurseParse() which returns a Command List object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Gathering necessary schedules**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. NurseScheduleInstance then executes Command List object, which calls listSchedules() from NurseScheduleActions.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. listSchedules() will call listAllSchedules() if the user inputs all, else it will check if Nurse ID is valid and 
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; call getNurseSchedulesById().
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Printing schedules**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5. printSchedules() is then called to print all schedules.
-
-### **Deleting Nurse Schedules**
-
-### Implementation:
-
-When the user wants to delete a specified nurse schedule, the NurseScheduleActions and NurseScheduleStorage classes will be accessed.
-
-`delete/[Nurse ID]/[Date (DDMMYYYY)]`:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Getting User Input**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. User inputs command which is received by NurseScheduleInstance.runCommandLoopUntilExit().
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. User input is the passed to NurseScheduleParser.nurseParse() which returns a Command Delete object.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Deleting Schedule**
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. NurseSchedule then executes Command Delete object, which calls deleteSchedule() from NurseScheduleActions.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. deleteSchedule() loops through the arraylist of schedules and calls remove() to delete the specified schedule. 
-
 ### **Doctor Appointment-related Features**
 
 [Implementation:]{.ul}
@@ -1319,9 +1561,24 @@ Changed section: saved here just in case
 
 {Give non-functional requirements}
 
+<br>
+
 ## Glossary
 
-* *glossary item* - Definition
+* *Illegal Characters* - Non-alphanumeric characters
+* 
+* *Aggregation* - Any collection of objects. In this case, we utilise an ArrayList to store all our objects. 
+* 
+* *Features* - In this case, we refer to the entire interaction with the various types of objects. E.g. any interaction with Staff/Patient/Doctor Appointment/Nurse Schedules/Inventory.
+* 
+* *Functionalities* - Any command that is given to the feature. E.g. `help` command, `list` command.
+* 
+* *Blank Input* - Refers to any whitespace input. E.g. " ", "\t".
+* 
+* *No Input* - Refers to no input given.
+* 
+
+<br>
 
 ## Instructions for manual testing
 

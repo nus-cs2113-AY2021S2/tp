@@ -4,8 +4,8 @@ import static seedu.duke.Constants.*;
 
 public class InventoryUI extends UI{
 
-    public static void drugAddedMessage(String name) {
-        System.out.println(name + " is added into Inventory!");
+    public static void drugAddedMessage(String addedDrugName, String addedDrugQuantity) {
+        System.out.println(addedDrugQuantity + " " + addedDrugName + " is added into Inventory!");
     }
 
     public static void emptyInventoryListMessage() {
@@ -34,8 +34,8 @@ public class InventoryUI extends UI{
 
     }
 
-    public static void deleteDrugMessage(String deletedDrug) {
-        System.out.println("Noted. I've removed this drug: " + deletedDrug);
+    public static void deleteDrugMessage(String deletedDrug, String deletedDrugQuantity) {
+        System.out.println("Noted. I've removed " + deletedDrugQuantity + " " + deletedDrug);
     }
 
     public static void inventoryMenuHeader() {

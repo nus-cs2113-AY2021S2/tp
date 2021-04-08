@@ -24,50 +24,49 @@ public class InventoryParser {
         MainChecker.checkNumInput(fullCommand, 4, 1);
 
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
-
         Command c = null;
         checker = new InventoryChecker(inventories, stringTokens, numberOfTokens);
         switch (command) {
-        case "list":
-            int numberOfInputs = 1;
-            MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            c = new seedu.logic.command.inventory.InventoryList();
-            break;
-        case "add":
-            numberOfInputs = 4;
-            MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            MainChecker.checkBlankInput(fullCommand);
-            checker.checkAdd();
-            String[] addFormat = parseToAddFormat(stringTokens);
-            c = new InventoryAdd(addFormat);
-            break;
-        case "delete":
-            numberOfInputs = 2;
-            MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            MainChecker.checkBlankInput(fullCommand);
-            checker.checkDelete();
-            c = new InventoryDelete(stringTokens[1]);
-            break;
-        case "help":
-            numberOfInputs = 1;
-            MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            c = new InventoryHelp();
-            break;
-        case "return":
-            numberOfInputs = 1;
-            MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
-            c = new InventoryReturn();
-            break;
-        default:
-            UI.invalidCommandErrorMessage();
-            break;
+            case "list":
+                int numberOfInputs = 1;
+                MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                c = new seedu.logic.command.inventory.InventoryList();
+                break;
+            case "add":
+                numberOfInputs = 4;
+                MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                MainChecker.checkBlankInput(fullCommand);
+                checker.checkAdd();
+                String[] addFormat = parseToAddFormat(stringTokens);
+                c = new InventoryAdd(addFormat);
+                break;
+            case "delete":
+                numberOfInputs = 3;
+                MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                MainChecker.checkBlankInput(fullCommand);
+                checker.checkDelete();
+                c = new InventoryDelete(stringTokens);
+                break;
+            case "help":
+                numberOfInputs = 1;
+                MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                c = new InventoryHelp();
+                break;
+            case "return":
+                numberOfInputs = 1;
+                MainChecker.checkNumInput(fullCommand, numberOfInputs, numberOfInputs);
+                c = new InventoryReturn();
+                break;
+            default:
+                UI.invalidCommandErrorMessage();
+                break;
         }
         return c;
     }
 
     private String[] parseToAddFormat(String[] stringTokens) {
-       String[] addFormat;
-       addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3]};
-       return addFormat;
+        String[] addFormat;
+        addFormat = new String[] {stringTokens[1], stringTokens[2], stringTokens[3]};
+        return addFormat;
     }
 }
