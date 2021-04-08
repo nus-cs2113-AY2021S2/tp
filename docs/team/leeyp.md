@@ -53,19 +53,19 @@ as well as associated JUnit tests and helper function code.
     ([#143](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/143))
 
 **Version 2.1**
-- Overhauled the `Storage` class in the `Utilities` component to improve input validation
-  - What it does: Loads the data from the `fridgeData.txt`according to the appropriate format.
-  - Justification: Allows users to input a wider range of characters as input strings (Food Name) while
-    protecting the application from unexpected behaviour with modified data files.
-  - Pull request: ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
-
 - Improved the validation of Food Category and Food Storage Location when user inputs data.
   - What it does: Invalid Food Category or Food Storage Location inputted by users will be rejected.
   - Justification: Improves clarity in application usage and reduces confusion by users.
   - Pull request: ([#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
 
+- Overhauled the `Storage` class in the `Utilities` component to improve input validation
+  - What it does: Loads the data from the `fridgeData.txt`according to the appropriate format.
+  - Justification: Allows users to input a wider range of characters as input strings (Food Name) while
+    protecting the application from unexpected behaviour with modified data files.
+  - Pull request: ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
+  
 - Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command.
-  - What it does: Fixed the issue where user uses `list other` and the list only searches by Food category 'Other'.
+  - What it does: Fixed the issue where user uses `list other` but does not output correct results.
   - Justification: Improves accuracy in the `list` command.
   - Pull request: ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
   
