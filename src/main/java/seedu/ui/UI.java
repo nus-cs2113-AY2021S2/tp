@@ -10,8 +10,9 @@ import static java.lang.Math.max;
 import static seedu.duke.Constants.*;
 
 public class UI {
-    static final int LARGE_NUMBER = 100;
-    static final String UNKNOWN_COMMAND = "unknown";
+    static final int LARGE_NUMBER = 100; // Just a large number
+    static final int ALLOWANCE = 2;     // How strict smart command should be
+    static final String UNKNOWN_COMMAND = "unknown";    // Returns this when input is not recognised
     static Scanner scanner = new Scanner(System.in);
 
     public static String scanInput() {
@@ -30,25 +31,45 @@ public class UI {
         return input.replaceAll("\\s+", " ").trim();
     }
 
+    public static int findMax(String[] commands) {
+        int max = 0;
+        for (int i = 0; i < commands.length; i++) {
+            if (commands[i].length() > max) {
+                max = commands[i].length();
+            }
+        }
+        return max;
+    }
+
     public static String smartCommandRecognition(String[] commands, String input) {
+        // To store the most similar command difference score and the index
         int diff = LARGE_NUMBER;
         int index = -1;
+        int maxLengthCommand = findMax(commands);
         List<String> list = Arrays.asList(commands);
 
+        // If the input exactly matches any command in the list of commands
         if( list.contains(input)) {
             return input;
         }
-        if (input.length() >= 8 || input.length() < 1) {
+        // If the input is too large/too small
+        if (input.length() >= maxLengthCommand+ALLOWANCE || input.length() < 1) {
             return UNKNOWN_COMMAND;
         }
 
+        int temp;
         for (int i = 0; i < commands.length; i++) {
-            int temp = checkCommandDifference(commands[i], input);
-            if (temp < diff) {
+            temp = checkCommandDifference(commands[i], input);
+            if (temp < diff ) {
                 diff = temp;
                 index = i;
             }
         }
+        // When input is not remotely similar to any given command
+        if (diff == 100) {
+            return UNKNOWN_COMMAND;
+        }
+        // Checks if user meant for the recognised command
         if (isTypo(commands[index])) {
             return commands[index];
         }

@@ -3,9 +3,9 @@ package seedu.storage;
 import seedu.duke.Constants;
 import seedu.exceptions.CorruptedFileException;
 import seedu.exceptions.HealthVaultException;
-import seedu.logic.command.AppointmentActions;
+import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.errorchecker.DoctorAppointmentChecker;
-import seedu.model.DoctorAppointment;
+import seedu.model.doctorappointment.DoctorAppointment;
 import seedu.model.staff.Staff;
 
 import java.io.File;
@@ -35,7 +35,7 @@ public class DoctorAppointmentStorage {
         file.createNewFile();
     }
 
-    public AppointmentActions loadFile() throws FileNotFoundException, HealthVaultException {
+    public AppointmentList loadFile() throws FileNotFoundException, HealthVaultException {
         ArrayList<DoctorAppointment> loadAppointments = new ArrayList<>();
         ArrayList<String> checkStorage = new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class DoctorAppointmentStorage {
             }
         }
         fileReader.close();
-        return new AppointmentActions(loadAppointments);
+        return new AppointmentList(loadAppointments);
     }
 
     public static void writeToFile(ArrayList<DoctorAppointment> taskList) throws IOException {

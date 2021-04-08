@@ -4,7 +4,7 @@ import seedu.exceptions.*;
 import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.logic.errorchecker.StaffChecker;
 
 import java.io.File;
@@ -25,42 +25,42 @@ public class StaffStorage {
     }
 
 
-    public void fileHandling(StaffAggregation staffAggregation) throws
+    public void fileHandling(StaffList staffList) throws
             ExcessInputException, InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
         try {
-            loadFile(staffAggregation);
+            loadFile(staffList);
         } catch (FileNotFoundException e) {
             createFile();
         }
     }
 
-    public void loadTask(StaffAggregation staffAggregation, String line) throws
+    public void loadTask(StaffList staffList, String line) throws
             ExcessInputException, InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
-        staffChecker.checkValidDataFromStorage(line, staffAggregation.getList());
+        staffChecker.checkValidDataFromStorage(line, staffList.getList());
         String[] arr = staffChecker.invalidCharactersStaffCheckerForStorage(line);
-        staffAggregation.add(arr);
+        staffList.add(arr);
     }
 
-    public void loadFile(StaffAggregation staffAggregation) throws FileNotFoundException,
+    public void loadFile(StaffList staffList) throws FileNotFoundException,
             ExcessInputException, InvalidIntegerException, WrongStaffIdException,
             InsufficientInputException, NoInputException, DuplicateIDException,
             IllegalCharacterException, InvalidStaffAgeException {
         File f = new File(filePath);           // create a File for the given file path
         Scanner s = new Scanner(f);            // create a Scanner using the File as the source
         while (s.hasNext()) {
-            loadTask(staffAggregation, s.nextLine());
+            loadTask(staffList, s.nextLine());
         }
     }
 
-    public void writeToFile(StaffAggregation staffAggregation) throws IOException {
+    public void writeToFile(StaffList staffList) throws IOException {
         createFile();
         FileWriter fw = new FileWriter(filePath);
-        for (int i = 0; i < StaffAggregation.getNumStaff(); i++) {
-            fw.write(staffAggregation.getList().get(i).formWriteData());
+        for (int i = 0; i < StaffList.getNumStaff(); i++) {
+            fw.write(staffList.getList().get(i).formWriteData());
         }
         fw.close();
     }

@@ -1,7 +1,6 @@
 package seedu.logic.command.staff;
 
 import seedu.logic.command.Command;
-import seedu.logic.command.StaffAggregation;
 import seedu.storage.StaffStorage;
 import seedu.ui.StaffUI;
 import seedu.ui.UI;
@@ -13,14 +12,9 @@ public class StaffList extends Command {
         this.input = array;
     }
 
-    public void execute(StaffAggregation staffAggregation, StaffUI staffUI, StaffStorage staffStorage) {
+    public void execute(seedu.model.staff.StaffList staffList, StaffUI staffUI, StaffStorage staffStorage) {
         UI.printEmptyLine();
-        if (StaffAggregation.getNumStaff() == 0) {
-            StaffUI.emptyListErrorMessage();
-            UI.printEmptyLine();
-            return;
-        }
-        staffAggregation.list(this.input);
+        staffList.list(this.input);
         UI.printEmptyLine();
     }
 

@@ -7,9 +7,9 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.WrongNumberException;
 import seedu.exceptions.patient.IllegalCharacterException;
-import seedu.logic.command.InventoryActions;
+import seedu.model.inventory.InventoryList;
 import seedu.logic.parser.InventoryParser;
-import seedu.model.Inventory;
+import seedu.model.inventory.Inventory;
 import seedu.storage.InventoryStorage;
 import seedu.logic.command.Command;
 import seedu.ui.InventoryUI;
@@ -22,7 +22,7 @@ public class InventoryInstance {
      * Main entry-point for the java.duke.DrugInstance application.
      */
     private InventoryUI ui;
-    private InventoryActions inventory;
+    private InventoryList inventory;
     private InventoryStorage inventoryStorage;
     private InventoryParser parser;
 
@@ -35,10 +35,10 @@ public class InventoryInstance {
     public void run() {
         try {
             ArrayList<Inventory> list = inventoryStorage.loadInventory();
-            inventory = new InventoryActions(list);
+            inventory = new InventoryList(list);
         } catch (HealthVaultException e) {
             ui.corruptedFileErrorMessage();
-            inventory = new InventoryActions();
+            inventory = new InventoryList();
             return;
         }
         InventoryUI.inventoryMenuHeader();

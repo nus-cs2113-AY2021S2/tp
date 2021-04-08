@@ -1,18 +1,17 @@
-package seedu.logic.command;
+package seedu.model.inventory;
 
-import seedu.model.Inventory;
 import seedu.ui.InventoryUI;
 import java.util.ArrayList;
 import static seedu.ui.UI.prettyPrint;
 
-public class InventoryActions {
+public class InventoryList {
     private InventoryUI ui;
     public static ArrayList<Inventory> list = new ArrayList<>();
 
-    public InventoryActions() {
+    public InventoryList() {
     }
 
-    public InventoryActions(ArrayList<Inventory> load) {
+    public InventoryList(ArrayList<Inventory> load) {
      this.list = load;
     }
 

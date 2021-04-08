@@ -2,16 +2,13 @@ package seedu.nurseschedules;
 
 import org.junit.jupiter.api.Test;
 import seedu.exceptions.nurseschedules.InvalidIDTypeException;
-import seedu.logic.command.NurseScheduleActions;
-import seedu.model.NurseSchedule;
-
-import java.util.ArrayList;
+import seedu.model.nurseschedule.NurseScheduleList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NurseScheduleActionsTest {
+class NurseScheduleListTest {
 
-    NurseScheduleActions actions = new NurseScheduleActions();
+    NurseScheduleList actions = new NurseScheduleList();
     //ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
     @Test

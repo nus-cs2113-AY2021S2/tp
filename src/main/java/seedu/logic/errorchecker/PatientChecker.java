@@ -2,20 +2,21 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.*;
 import seedu.exceptions.patient.*;
-import seedu.logic.command.PatientActions;
-import seedu.model.Patient;
+import seedu.model.patient.PatientList;
+import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class PatientChecker extends MainChecker{
 
-    private PatientActions patients;
+    private PatientList patients;
     private ArrayList<Patient> patientArrayList;
     private String[] stringTokens;
     private String command;
     private int numberOfTokens;
 
-    public PatientChecker(PatientActions patients, String[] stringTokens, String command, int numberOfTokens) {
+    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
         this.stringTokens = stringTokens;
         this.command = command;
@@ -36,7 +37,7 @@ public class PatientChecker extends MainChecker{
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[4], "Illness");
         illegalCharacterChecker(stringTokens[5], "medication required");
-        checkGender(stringTokens[3]);
+        checkGender(stringTokens[3].toLowerCase());
     }
 
     public void checkAdd() throws HealthVaultException, NumberFormatException {
@@ -47,7 +48,7 @@ public class PatientChecker extends MainChecker{
         illegalCharacterChecker(stringTokens[2], "name");
         illegalCharacterChecker(stringTokens[5], "Illness");
         illegalCharacterChecker(stringTokens[6], "medication required");
-        checkGender(stringTokens[4]);
+        checkGender(stringTokens[4].toLowerCase());
     }
 
     public void checkFind() throws HealthVaultException {
@@ -88,7 +89,7 @@ public class PatientChecker extends MainChecker{
 
     private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
-        if (!(age >= 0 && age < 150)) {
+        if (!(age >= 0 && age <= 150)) {
             throw new InvalidPatientAgeException();
         }
     }
@@ -142,7 +143,7 @@ public class PatientChecker extends MainChecker{
         return false;
     }
 
-    private void checkIDExist(String userID, PatientActions patients, String command) throws IDNotFoundException,
+    private void checkIDExist(String userID, PatientList patients, String command) throws IDNotFoundException,
             DuplicateIDException {
         if (patients.isIDTaken(userID)) {
             if (command.equals("add")) {

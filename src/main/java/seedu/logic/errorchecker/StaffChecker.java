@@ -5,7 +5,7 @@ import seedu.exceptions.patient.IllegalCharacterException;
 import seedu.exceptions.staff.InvalidStaffAgeException;
 import seedu.exceptions.staff.WrongListInputException;
 import seedu.exceptions.staff.WrongStaffIdException;
-import seedu.logic.command.StaffAggregation;
+import seedu.model.staff.StaffList;
 import seedu.model.staff.Staff;
 
 import java.util.ArrayList;
@@ -33,13 +33,13 @@ public class StaffChecker extends MainChecker {
     }
 
 
-    public String[] checkValidDataForAdd(String line, StaffAggregation staffAggregation) throws
+    public String[] checkValidDataForAdd(String line, StaffList staffList) throws
             NoInputException, WrongStaffIdException, InvalidIntegerException,
             ExcessInputException, InsufficientInputException, DuplicateIDException,
             InvalidStaffAgeException, IllegalCharacterException {
         String[] array = getTrimInput(line);
         checkStaffID(array[0]);
-        checkDuplicateStaffID(array[0], staffAggregation.getList());
+        checkDuplicateStaffID(array[0], staffList.getList());
         checkStaffAge(array[2]);
         checkBlankInput2(array);
         invalidCharactersStaffChecker(array);
@@ -110,12 +110,22 @@ public class StaffChecker extends MainChecker {
         return input.trim().equalsIgnoreCase("doctors");
     }
 
-    public String[] checkListCommand(String line) throws WrongListInputException {
+    public String[] checkListCommand(String line) throws WrongListInputException,
+            ExcessInputException, InsufficientInputException {
         String[] array = line.split("/");
         if ((array.length > 1) &&
                 !(isEqualNurses(array[1]) || isEqualDoctors(array[1]) )) {
             throw new WrongListInputException();
         }
+        MainChecker.checkNumInput2(array,2,1);
         return array;
+    }
+
+    public String checkDeleteCommand(String line) throws ExcessInputException,
+            InsufficientInputException, InvalidIntegerException, WrongStaffIdException {
+        checkNumInput2(line.split("/"),2,2);
+        String input = line.split("/")[1];
+        checkStaffID(input);
+        return input;
     }
 }
