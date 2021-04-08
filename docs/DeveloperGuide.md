@@ -350,11 +350,202 @@ Invalid Input includes:
 
 ###  5.2 Patient
 
-### 5.2.1 Staff Menu
+### 5.2.1 Patient Menu
+
+The Patient Menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Patient Menu, the following steps will occur.
+
+**Launching Patient Menu**
+
+1. `ToPatientInstance.execute()` will create and call `PatientInstance.run()`
+2. `PatientInstance.run()` will start by loading/creating the Patient data .txt file for Patient database records. It will check for any signs of corrupted file when loading and exception will be thrown if any corruption is detected.
+3. `PatientInstance.run()` will then enters its running for loop and repeatedly take in user inputs for data processing.
+
+**Getting User Input**
+
+4. `PatientInstance.run()` will repeatedly request for user input and call `PatientParser.patientParse()`.
+5. `patientParse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input.
+6. The most relevant command is then returned to the parser and the parser then scans the input thoroughly based on the command returned. Relevant errors in the input are detected and the appropriate exceptions thrown.
+7. Only after scanning the input for errors, will the proper command be returned to `PatientInstance` where it will then be executed.
+8. After getting an input, and parsing it into string tokens, a new instance of PatientChecker class `checker` is instantiated to perform error checking.
+
+<br>
+
 ### 5.2.2 Add
+
+
+**Implementation:**
+
+The function Add takes in 6 compulsory fields (Patient ID, Name, Age, Gender, Illness and Medication Required) to create the Patient Object and adds it to a list of Patient Objects.
+Data input is first checked to ensure validity. Any invalid input detected will result in an exception thrown and command aborted. If there are no exceptions thrown, a PatientAdd Command object is created.
+The PatientAdd command object will be executed to create the Patient Object which will be added to the list of Patient Objects.
+
+Invalid Input includes:
+
+>
+	- Invalid Patient ID format
+	- Duplicated Patient ID
+	- Age that < 0 or > 150
+	- Invalid Gender Input
+	- Blank input (i.e Empty inputs)
+	- Inputs that only consist of spaces
+	- Illegal Characters
+
+**Format**
+`add/[Patient ID]/[name]/[age]/[gender]/[illness]/[medication required]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the add command, `patientParse()` calls `checker.checkAdd()` to ensure data entered is valid.
+2. `checkAdd()` will call the following methods in sequence:
+
+	- emptySpaceCheck();
+		- checkLength();
+		- checkID();
+		- checkAge();
+		- illegalCharacterChecker();
+		- checkGender();
+
+**Creating PatientAdd command**
+
+3. If the input data is valid, a PatientAdd Command object is created. Else a relevant error is thrown.
+4. The StaffAdd Command object is returned to `PatientInstance.run()`
+
+**Creating Patient Object with User Input**
+
+5. PatientInstance then executes the PatientAdd Command object to begin the process of creating the Patient object
+
+6. `PatientAdd.execute()` will call the function in `PatientList.add()`
+
+7. `PatientList.add()` will instantiate a new Staff object and add it to the ArrayList<Patient> PatientList. which contains all the Patient Objects.
+
+**Saving Patient Objects into .txt file**
+
+8. PatientInstance then calls `PatientStorage.storePatients()` which starts the process of writing the details of all existing Patient Objects, within the PatientList into a specified .txt file.
+9. `PatientStorage.storePatients()` then calls `fileInit()` which ensures that the specified .txt file exists.
+10. Data is written and saved.
+11. Control is then returned to PatientInstance.
+
+<br>
+
 ### 5.2.3 Delete
+
+**Implementation:**
+
+The function Delete takes in 1 compulsory field (Patient ID) to identity and delete the Patient Object from the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientDelete Command object is created. The PatientDelete command object will be executed to iterate through the list of Patient Objects. If Patient Object exists, it will be removed. Else an error message will be displayed.
+
+Invalid Input includes:
+
+>
+	- Invalid Patient ID format
+	- Blank input (i.e Empty inputs)
+	- Inputs that only consist of spaces
+
+**Format**
+`delete/[Patient ID]`
+
+**Check validity of the data input**
+
+1. If the command recognised is the delete command, `patientParse()` calls `checker.checkLength()` and `checker.checkID()` to ensure data entered is valid.
+
+**Creating PatientDelete command**
+
+2. If the input data is valid, a PatientDelete Command object is created
+3. The PatientDelete Command object is returned to `PatientInstance.run()`
+
+**Deleting Patient Object using User Input**
+
+4. PatientInstance then executes the PatientDelete Command object to begin the process of deleting the referenced Patient object
+5. `PatientDelete.execute()` will call the function `PatientList.deletePatient()`
+6. `PatientList.deletePatient()` will iterate through the objects in ArrayList<Patient> PatientList. The Patient Object referenced by the input given by the user will be deleted.
+
+**Saving changed Staff Objects into .txt file**
+
+7. PatientInstance then calls `PatientStorage.storePatients()` which starts the process of writing the details of all existing Patient Objects, within the PatientList into a specified .txt file.
+8. `PatientStorage.storePatients()` then calls `fileInit()` which ensures that the specified .txt file exists.
+9. Data is written and saved.
+10. Control is then returned to PatientInstance.
+
+<br>
+
 ### 5.2.4 List
+
+**Implementation:**
+
+The function List does not take in any additional inputs, in order to show the user a list of current Patient objects in the database. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a PatientList Command object is created. PatientList command object will be executed to iterate through the list of Patient Objects. Patient Objects will then be displayed based on the user given input.
+
+Invalid Input includes:
+
+>
+	- Any input apart from Blank Input or a single delimiting slash.
+
+**Format**
+`list`
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `patientParse()` calls `checker.checkLength()` to ensure data entered is valid.
+
+**Creating PatientList command**
+
+2. If the input data is valid, a PatientList Command object is created
+3. The PatientList Command object is returned to `PatientInstance.run()`
+
+**Viewing Patient Objects**
+
+4. PatientInstance then executes the PatientList Command object to begin the process of displaying all Patient objects.
+5. `PatientList.execute()` will call the function `PatientList.listPatients()`
+6. `PatientList.listPatients()` will iterate through the objects in ArrayList<Patient> PatientList.
+7. Patient Objects will be displayed.
+8. Control is then returned to PatientInstance.
+
+<br>
+
 ### 5.2.5 Find
+
+**Implementation:**
+
+The function Find takes in 1 compulsory field (keyword) to find the relvant Patient Objects within the list of Patient Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. The given input is used to match with every single field of the Patient Object. If there is a match, the Patient Object will be displayed. Else, an error message will be displayed.
+
+Invalid Input includes:
+
+>
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
+	- Inputs that only consist of spaces
+
+**Format**
+`find/[keyword]`
+
+<img src="diagrams/PatientFindSD.png">
+
+**sub-diagram to show the ref**
+
+<img src="diagrams/PatientFindParseSD.png">
+
+**Check validity of the data input**
+
+1. If the command recognised is the find command, `patientParse()` calls `checker.checkFind()` to ensure data entered is valid.
+2. `checkFind()` will call the following methods in sequence:
+
+	- emptySpaceCheck();
+		- checkLength();
+		- illegalCharacterChecker();
+
+**Creating PatientFind command**
+
+3. If the input data exist, a PatientFind Command object is created
+4. The PatientFind Command object is returned to `PatientInstance.run()`
+
+**Finding relevant Patient Objects**
+
+5. PatientInstance then executes the PatientFind Command object to begin the process of finding and displaying relevant Patient objects.
+6. `PatientFind.execute()` will call the function `PatientList.findPatient()`
+7. `PatientList.findPatient()` will iterate through the objects in ArrayList<Patient> PatientList.
+8. `PatientList.findPatient()` will compare the the patient details of every Patient Object in the current list of Patient Objects with the keywork inputted by the user and discover any matches.
+9. The relevant Patient Objects are then displayed.
+10. Control is then returned to PatientInstance.
 
 <br>
 
