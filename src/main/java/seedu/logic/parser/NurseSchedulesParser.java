@@ -5,6 +5,7 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
 import seedu.exceptions.nurseschedules.WrongInputsException;
+import seedu.logger.HealthVaultLogger;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.command.Command;
 import seedu.logic.command.nurseschedule.*;
@@ -16,8 +17,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static seedu.logic.instance.NurseScheduleInstance.logger;
 import static seedu.ui.UI.smartCommandRecognition;
 
 public class NurseSchedulesParser {
@@ -25,6 +26,7 @@ public class NurseSchedulesParser {
     static final String[] COMMANDS = {"ADD", "DELETE", "LIST", "RETURN", "HELP"};
 
     NurseScheduleChecker checker = new NurseScheduleChecker();
+    public Logger logger = HealthVaultLogger.getLogger();
 
     /**
      * Returns the command of user.
@@ -102,12 +104,13 @@ public class NurseSchedulesParser {
         assert input != null : "user input should not be null";
         assert !(input.isEmpty()) : "user input should not be empty";
 
+        logger.log(Level.INFO,"Parsing command...");
         NurseSchedulesParser parser = new NurseSchedulesParser();
         String line = input.toUpperCase();
         String command = smartCommandRecognition(COMMANDS, parser.getFirstWord(line));
         Command c = null;
 
-        logger.info("Parsing command...");
+        logger.log(Level.INFO, "Command recognised as " + command);
 
         switch (command) {
         case "ADD":
@@ -151,6 +154,7 @@ public class NurseSchedulesParser {
             ui.invalidInputsMessage();
             break;
         }
+        logger.log(Level.INFO,"command object returning to instance");
         return c;
     }
 }

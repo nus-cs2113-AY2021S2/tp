@@ -459,9 +459,9 @@ When you first enter the Patient menu, you will be greeted with the following we
 <br/><br/>
 ### 5.3 Doctor's Appointment
 
-The functions in the Doctor's Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
+The functions in the Doctors' Appointment menu allow you, the head nurse, to add, view, and delete appointments made with a specific doctor.
 
-This is an example of the welcome screen for Doctors' Appointments Menu.
+This is an example of the welcome screen for Doctors' Appointment Menu.
 
 <img src="images/DoctorAppointmentWelcome.jpg" width = "800">
 
