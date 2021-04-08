@@ -14,6 +14,7 @@ Sorry my friend, you have entered an invalid input.
 Enter 'help' for more information about the correct input format.
 -----------------------------------------------------------------
 These are the list of available commands:
+	help
 	add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
 	list
 	list categoryName
@@ -22,8 +23,9 @@ These are the list of available commands:
 	expiring
 	runninglow
 	setlimit foodCategory /qty newLimit
+	history
+	history clear
 	clear
-	help
 	bye
 
 This is the list of food categories:

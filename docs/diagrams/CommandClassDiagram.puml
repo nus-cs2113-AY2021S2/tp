@@ -1,4 +1,4 @@
-@startuml
+@startuml CommandClassDiagram
 'https://plantuml.com/class-diagram
 !include style.puml
 
@@ -7,7 +7,7 @@ skinparam arrowColor COMMAND_COLOR_T4
 skinparam classBackgroundColor COMMAND_COLOR_T2
 skinparam classAttributeIconSize 0
 
-package Command <<Rectangle>> {
+package "Command Component" <<Rectangle>> {
     class "{abstract}\nCommand" as Command
     class AddCommand
     class RemoveCommand
@@ -124,9 +124,9 @@ class HistoryCommand {
   -printHistory(): void
 }
 
-Command ---.down> Fridge: uses
-Command ---.down> UI: prints with
-FridgeFriend ---.down> Command: execute >
+Command ---.down> Fridge: uses >
+Command ---.down> UI: prints with >
+FridgeFriend ---.down> Command: executes >
 AddCommand --right|> Command
 RemoveCommand --down|> Command
 ListCommand ---down|> Command

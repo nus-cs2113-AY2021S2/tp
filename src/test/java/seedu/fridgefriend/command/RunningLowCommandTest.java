@@ -10,6 +10,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.food.MinimumQuantity;
 
 class RunningLowCommandTest {
     
@@ -105,7 +106,7 @@ class RunningLowCommandTest {
     //@@author SimJJ96
     public void setLimitDisabled() {
         for (FoodCategory foodCategory : FoodCategory.values()) {
-            FoodCategory.setMinimumQuantity(foodCategory, 0);
+            MinimumQuantity.setMinimumQuantity(foodCategory, 0);
         }
     }
 
@@ -140,13 +141,14 @@ class RunningLowCommandTest {
 
     //@@author SimJJ96
     @Test
-    public void runningLowCommand_setLimitOff_turnOffMessage() throws Exception {
+    public void runningLowCommand_setLimitDisable_DisabledMessage() throws Exception {
         setLimitDisabled();
         semiPopulateFridge();
         RunningLowCommand runningLowCommand = new RunningLowCommand();
         runningLowCommand.setData(fridge);
-        String expectedMessage = "Running low command is disabled.\n"
-                + "Please set at least one food category quantity limit to a positive integer.";
+        String expectedMessage = "All of your limits has been set to 0.\n"
+                + "Please use setlimit command to set at least one food category quantity "
+                + "limit to a positive integer.";
         runningLowCommand.execute();
         String actualMessage = runningLowCommand.getMessage();
         assertEquals(expectedMessage, actualMessage);

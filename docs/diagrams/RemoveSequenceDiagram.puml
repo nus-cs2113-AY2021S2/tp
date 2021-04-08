@@ -1,4 +1,4 @@
-@startuml
+@startuml RemoveSequenceDiagram
 'https://plantuml.com/sequence-diagram
 !include style.puml
 

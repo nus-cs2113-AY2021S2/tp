@@ -13,6 +13,7 @@ import seedu.fridgefriend.utilities.Ui;
 public class HelpCommand extends Command {
 
     private static final String COMMANDS = "These are the list of available commands:\n"
+            + "\thelp\n"
             + "\tadd foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity\n"
             + "\tlist\n"
             + "\tlist categoryName\n"
@@ -21,8 +22,9 @@ public class HelpCommand extends Command {
             + "\texpiring\n"
             + "\trunninglow\n"
             + "\tsetlimit foodCategory /qty newLimit\n"
+            + "\thistory\n"
+            + "\thistory clear\n"
             + "\tclear\n"
-            + "\thelp\n"
             + "\tbye";
     
     private static final String CATEGORIES = "This is the list of food categories:\n\t"

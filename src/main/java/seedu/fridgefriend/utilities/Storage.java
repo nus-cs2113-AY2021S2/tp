@@ -14,6 +14,7 @@ import seedu.fridgefriend.food.Food;
 import seedu.fridgefriend.food.FoodCategory;
 import seedu.fridgefriend.food.FoodStorageLocation;
 import seedu.fridgefriend.food.Fridge;
+import seedu.fridgefriend.food.MinimumQuantity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -273,7 +274,7 @@ public class Storage {
         String[] parameters = line.split(":");
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(parameters[0]);
         int quantity = Parser.parseSetLimitIntegerQuantity(parameters[1]);
-        FoodCategory.setMinimumQuantity(foodCategory, quantity);
+        MinimumQuantity.setMinimumQuantity(foodCategory, quantity);
     }
 
     //@@author kwokyto
@@ -299,7 +300,7 @@ public class Storage {
     private static void populateLimitsDataFile() throws IOException {
         FileWriter fileWriter = new FileWriter(LIMITS_FILE_PATH, true); // create a FileWriter in append mode
         for (FoodCategory foodCategory : FoodCategory.values()) {
-            int quantity = FoodCategory.getMinimumQuantity(foodCategory);
+            int quantity = MinimumQuantity.getMinimumQuantity(foodCategory);
             String line = foodCategory.toString() + ":" + quantity;
             fileWriter.write(line + "\n");
         }

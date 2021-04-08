@@ -3,6 +3,7 @@ package seedu.fridgefriend.command;
 //@@author kwokyto
 import seedu.fridgefriend.exception.InvalidQuantityException;
 import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.MinimumQuantity;
 import seedu.fridgefriend.utilities.Ui;
 
 public class RunningLowCommand extends Command {
@@ -26,7 +27,7 @@ public class RunningLowCommand extends Command {
     @Override
     public void execute() throws InvalidQuantityException {
         for (FoodCategory foodCategory : FoodCategory.values()) {
-            if (FoodCategory.getMinimumQuantity(foodCategory) == DISABLED) {
+            if (MinimumQuantity.getMinimumQuantity(foodCategory) == DISABLED) {
                 numberOfCategoryDisabled++;
                 continue;
             }
@@ -46,7 +47,7 @@ public class RunningLowCommand extends Command {
             isStockedUp = false;
             int totalQuantity = fridge.getTotalQuantity(foodCategory);
             String entry = "\n" + index + ". " + foodCategory.toString() + " quantity: " + totalQuantity
-                    + " out of " + FoodCategory.getMinimumQuantity(foodCategory);
+                    + " out of " + MinimumQuantity.getMinimumQuantity(foodCategory);
             message += entry;
             index += 1;
         }

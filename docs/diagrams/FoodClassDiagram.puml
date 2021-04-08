@@ -1,4 +1,4 @@
-@startuml
+@startuml FoodClassDiagram
 !include style.puml
 allow_mixing
 skinparam arrowThickness 1.1
@@ -8,26 +8,14 @@ skinparam classBackgroundColor FOOD_COLOR_T1
 skinparam classAttributeIconSize 0
 skinparam groupInheritance 3
 
-package food <<Rectangle>> {
+package "Food Component" <<Rectangle>> {
   abstract class Food
-  package categories <<Rectangle>> {
-  class Beverage
-  class CookedDish
-  class Dairy
-  class Egg
-  class Frozen
-  class Fruit
-  class Meat
-  class ReadyToEat
-  class Seafood
-  class Vegetable
-  class Other
-  }
   enum FoodCategory
   enum FoodStorageLocation
   class ExpiryDate
   class Fridge
   class UniqueFoodnameChecker
+  class MinimumQuantity
 }
 
 abstract class Food {
@@ -50,20 +38,6 @@ abstract class Food {
   + int getQuantity()
 }
 
-
-
-Food <|-- Beverage
-Food <|-- CookedDish
-Food <|-- Dairy
-Food <|-- Egg
-Food <|-- Frozen
-Food <|-- Fruit
-Food <|-- Meat
-Food <|-- ReadyToEat
-Food <|-- Seafood
-Food <|-- Vegetable
-Food <|-- Other
-
 class ExpiryDate {
     - {static} DateTimeFormatter formatter
     # LocalDate expiry
@@ -72,7 +46,7 @@ class ExpiryDate {
     + String toString()
 }
 
-Food .right.> ExpiryDate
+Food ..> ExpiryDate
 
 class Fridge {
     - ArrayList<Food> fridge
@@ -86,7 +60,7 @@ class Fridge {
     + int getTotalQuantity(FoodCategory)
 }
 
-Fridge -down-> "*" Food : maintains
+Fridge --> "*" Food : maintains >
 
 class UniqueFoodnameChecker {
     - ArrayList<Food> fridge
@@ -98,9 +72,9 @@ class UniqueFoodnameChecker {
     + boolean isParamIdentical()
 }
 
-Fridge *-right- "UniqueFoodnameChecker" : use
+Fridge *-right- "UniqueFoodnameChecker" : uses <
 
-enum FoodStorageLocation {
+enum FoodStorageLocation <<enumuration>> {
     FREEZER
     UPPER_SHELF
     MIDDLE_SHELF
@@ -114,7 +88,7 @@ enum FoodStorageLocation {
 
 Food .right.> FoodStorageLocation
 
-enum FoodCategory {
+enum FoodCategory <<enumuration>> {
     VEGETABLE
     FRUIT
     MEAT
@@ -126,6 +100,14 @@ enum FoodCategory {
     READY_TO_EAT
     FROZEN
     OTHER
+    + {static} boolean contains(String)
+    + {static} FoodCategory convertStringToFoodCategory(String)
+    + {static} boolean isValidCategory(String)
+}
+
+Food .left.> FoodCategory
+
+class MinimumQuantity {
     - {static} int vegetableMinimumQuantity
     - {static} int fruitMinimumQuantity
     - {static} int meatMinimumQuantity
@@ -137,21 +119,10 @@ enum FoodCategory {
     - {static} int readyMinimumQuantity
     - {static} int frozenMinimumQuantity
     - {static} int otherMinimumQuantity
-    + {static} boolean contains(String)
-    + {static} FoodCategory convertStringToFoodCategory(String)
-    + {static} boolean isValidCategory(String)
     + {static} int getMinimumQuantity(FoodCategory)
     + {static} void setMinimumQuantity(FoodCategory, int)
 }
 
-Food .left.> FoodCategory
-
-package Exception <<Rectangle>> {
-
-}
-
-food ..> Exception
-
-'show circle
+Food ..> MinimumQuantity
 
 @enduml
