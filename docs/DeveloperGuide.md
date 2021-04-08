@@ -132,8 +132,6 @@ The above diagram shows how each component interacts with the other components. 
 
 **UI Component:** Controls all the User Interface. All input and output is handled by the UI component.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI diagram.png">
-
 
 **Logic Component:**
 
@@ -154,6 +152,9 @@ The above diagram shows how each component interacts with the other components. 
 
 
 ### 4.2 UI component
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI diagram.png"  width = "850">
+
 ### 4.3 Instance Component
 ### 4.4 Parser Component
 ### 4.5 Error Checker Component
