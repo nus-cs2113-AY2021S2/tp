@@ -19,12 +19,12 @@ public class PatientParser {
             HealthVaultException, NumberFormatException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-        /*ArrayList<String> cleanString = new ArrayList<>();
-        for (int i = 0; i < numberOfTokens; i++) {
-            cleanString.add(UI.cleanseInput(stringTokens[i]));
-        }*/
-
+        //check for number of inputs
         MainChecker.checkNumInput(fullCommand,7,1);
+        //trim the inputs and alters greedy white spaces
+        for (int i = 0; i < numberOfTokens; i++) {
+            stringTokens[i] = stringTokens[i].trim().replaceAll("\\s{2,}", " ");
+        }
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
         checker = new PatientChecker(patients, stringTokens, command, numberOfTokens);
