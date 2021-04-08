@@ -27,6 +27,10 @@ public class ZoomLinkInfo {
         password = "no password entered";
     }
 
+    /**
+     * Gets the password (if required),zoom link and password from the user and creates a
+     * ZoomLinkInfo object using those parameters and adds the object to the zoomLinksList.
+     */
     public static void addZoomLink() {
         Ui.printPsMessage(ModuleInfo.modules.size());
         String moduleCode = AddTask.printAndGetModule();
@@ -55,10 +59,21 @@ public class ZoomLinkInfo {
         Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
 
-    public static void deleteZoomLink(int deleteIndex) throws NumberFormatException, IndexOutOfBoundsException {
+    /**
+     * Removes the zoom link object from the zoomLinksList
+     *
+     * @param deleteIndex is the index of the object to be deleted
+     * @throws IndexOutOfBoundsException if the index specified is out of bounds
+     */
+    public static void deleteZoomLink(int deleteIndex) throws IndexOutOfBoundsException {
         ZoomLinkInfo deletedZoomLink = zoomLinksList.get(deleteIndex);
         Module moduleInfo = ModuleInfo.getModule(deletedZoomLink.getModuleCode());
-        moduleInfo.removeZoomLink();
+        try {
+            moduleInfo.removeZoomLink();
+        } catch (NullPointerException e) {
+            System.out.println(
+                    "Whoops that zoom link didn't have a module tagged to it... I'll delete it anyway!");
+        }
         zoomLinksList.remove(deleteIndex);
         Ui.printZoomLinkDeleted(deletedZoomLink);
     }
