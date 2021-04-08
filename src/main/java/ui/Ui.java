@@ -1,6 +1,7 @@
 package ui;
 
 import canteens.Canteen;
+import exceptions.DukeExceptions;
 import menus.Menu;
 import reviews.Review;
 import stores.Store;
@@ -32,11 +33,22 @@ public class Ui {
                 + "Welcome to NUS FOOD REVIEW");
     }
 
-    public String readCommand() {
+    public String readCommand() throws DukeExceptions {
         try {
             line = userInputScanner.nextLine();
+            if (line.contains("/")) {
+                throw new DukeExceptions("Input cannot contain Delimiters");
+            } else if (line.contains("<")) {
+                throw new DukeExceptions("Input cannot contain Delimiters");
+            } else if (line.contains(">")) {
+                throw new DukeExceptions("Input cannot contain Delimiters");
+            } else if (line.contains("\\")) {
+                throw new DukeExceptions("Input cannot contain Delimiters");
+            }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
+        } catch (DukeExceptions e) {
+            System.out.println(e.getMessage());
         }
         return line;
     }
@@ -357,4 +369,5 @@ public class Ui {
         System.out.println("Cancelling.... Menu not Deleted");
         System.out.println(LINESPACING);
     }
+
 }

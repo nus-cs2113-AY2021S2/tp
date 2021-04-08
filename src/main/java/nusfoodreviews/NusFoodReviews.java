@@ -61,7 +61,7 @@ public class NusFoodReviews {
         }
     }
 
-    public int chooseUser() {
+    public int chooseUser() throws DukeExceptions {
         ui.showLoginPage();
         boolean isPublicUser = CheckUser.checkUserType(ui);
         if (isPublicUser) {
