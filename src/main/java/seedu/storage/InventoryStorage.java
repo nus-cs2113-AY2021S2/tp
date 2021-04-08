@@ -37,24 +37,6 @@ public class InventoryStorage {
         }
     }
 
-   /* public ArrayList<Inventory> createNewFile() {
-        File drugsFile = new File(getFilepath());
-        try {
-            if (drugsFile.createNewFile()) {
-                System.out.println("\tTo save your task locally,\n" +
-                        "\tA new file has been created at:\n\t" +
-                        drugsFile.getAbsolutePath() + "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("\tThere was an I/O error:\nBye!\n");
-            e.printStackTrace();
-        }
-        return inventories;
-    }
-
-    public String getFilepath() {
-        return this.filepath;
-    }*/
     public ArrayList<Inventory> loadInventory() throws HealthVaultException {
         fileInit();
         Scanner fileScanner = null;
@@ -94,34 +76,6 @@ public class InventoryStorage {
             System.out.println("☹ OOPS!!! The file can't be saved :-(");
         }
     }
-   /* public ArrayList<Inventory> uploadDrugs() throws FileNotFoundException {
-        File f = new File(getFilepath());
-        Scanner s = new Scanner(f);
-        while (s.hasNext()) {
-            String[] part = s.nextLine().split(" | ");
-            Drugs.add(new Inventory(part[0], Double.parseDouble(part[1]), part[2]));
-        }
-        return Drugs;
-    }*/
-
-   /* public void saveDrugs() throws IOException {
-        FileWriter fw = new FileWriter(getFilepath());
-        for (Inventory Inventory : inventories) {
-            fw.write(Inventory.stringToSave());
-            fw.write(System.lineSeparator());
-        }
-        fw.close();
-    }*/
-
-    /*public void exitProgram() {
-        System.out.println("Returning to start menu!");
-        try {
-            saveDrugs();
-        } catch (IOException e) {
-            System.out.println("No file was saved due to an I/O error.\n");
-        }
-    }*/
-
 }
 
 
