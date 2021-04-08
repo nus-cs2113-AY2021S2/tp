@@ -21,6 +21,16 @@ public class MovieFilter {
         System.out.println("===========================\n");
     }
 
+    public static void printMovieListRating(ArrayList<Movie> MovieList) {
+        int i;
+        System.out.println("\n===========================");
+        System.out.println("Movie List:");
+        for (i = 0; i < MovieList.size(); i++) {
+            System.out.println((i + 1) + ". " + MovieList.get(i).getMovieTitle() + " ("
+                    + MovieList.get(i).getOverallRating().substring(0,3) + ")");
+        }
+        System.out.println("===========================\n");
+    }
 
     public static int getFilter() {
         int filter = -1;
@@ -324,7 +334,8 @@ public class MovieFilter {
                 case 2:
                     System.out.println("===== Filter by Rating =====");
                     movieList = filterByRating(movieList);
-                    break;
+                    printMovieListRating(movieList);
+                    continue;
                 case 3:
                     System.out.println("= Filter by Showing Status =");
                     movieList = filterByShowingStatus(movieList);
