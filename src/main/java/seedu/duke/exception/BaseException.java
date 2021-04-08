@@ -22,12 +22,6 @@ public abstract class BaseException extends Exception {
         String s = classMessage + ":" + System.lineSeparator()
                 + Constants.EXCEPTION_INDENT + getMessage();
 
-        Throwable cause = this.getCause();
-        if (cause != null) {
-            s += System.lineSeparator()
-                    + "Please enter \"help\"(without quotes) for a list commands and how to use them.";
-        }
-
         return s;
     }
 }
