@@ -1063,7 +1063,7 @@ Please choose which action you would like to do and enter the number:
 
 Add, remove or view all your links (except zoom links) here.
 
-By default, the External Links list has been populated with 
+By default on the application start-up, the External Links list has been populated once with 
 - https://www.reddit.com/r/nus
 - https://www.luminus.nus.edu.sg
 - https://www.myedu.rec.nus.edu.sg
@@ -1085,7 +1085,7 @@ Please choose which action you would like to do and enter the number:
 
 Adds an external link that follows the format to the external links list.
 
-Format: `<scheme>www.<domain name>.<TLD>/<path name>`
+Format: `<scheme>www.<domain name>.<TLD>`
 
 Supported schemes include: https, http only
 
@@ -1094,14 +1094,15 @@ Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
 > **Note!**  
 > 1. While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
 > 2. This feature accepts uppercase characters too and converts it to lowercase for your convenience. Hence, a link like: `HTTPS//WWW.YOUTUBE.COM` would become `https://www.youtube.com`
-> 
+> 3. The application checks for duplicate links, so any duplicates that you add will be automatically removed!
+
 Example for adding an external link:
 
 ````
 > 1
 --------------------------------------------
 Please enter the link in this format:
-<scheme>www.<domain name>.<TLD>/<path name>
+<scheme>://www.<domain name>.<TLD>
 Supported schemes: https, http only
 Supported TLD: .com, .org, .sg, .edu, .gov
 
@@ -1115,9 +1116,6 @@ Please choose which action you would like to do and enter the number:
 [3] --- View links
 [4] --- Exit to links menu
 ````
-
-> **Note!**  
-> The application checks for duplicate links, so any duplicates that you add will be automatically removed!
 
 #### 3.4.3 Remove External Link
 
