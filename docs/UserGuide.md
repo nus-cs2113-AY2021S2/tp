@@ -298,7 +298,7 @@ You are running low on food in these categories:
 
 ### Modify the minimum quantity limits: `setlimit`
 
-Changes the minimum quantity limit for a specific food category. To set remove a limit for a category, set its limit to -1.
+Changes the minimum quantity limit for a specific food category. To set remove a limit for a category, set its limit to 0.
 
 Format: `setlimit FOOD_CATEGORY /qty QUANTITY`
 
@@ -320,8 +320,8 @@ You are running low on food in these categories:
 >> setlimit ready_to_eat /qty 600 
 Okie dokie! The new minimum quantity for category 'READY_TO_EAT' is 600
 
->> setlimit vegetable /qty -1
-Okie dokie! The new minimum quantity for category 'VEGETABLE' is -1
+>> setlimit vegetable /qty 0
+Okie dokie! The new minimum quantity for category 'VEGETABLE' is 0
 
 >> runninglow
 You are running low on food in these categories:
