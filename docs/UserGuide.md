@@ -405,11 +405,26 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | del lsn |  Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space. |
-| 2 | 1 2 | Removed lecture.<br>Removed tutorial. |
-
+<table>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>del lsn</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.</pre></td>
+    </tr>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#2</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>1 2</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Removed lecture.<br>Removed tutorial.</pre></td>
+    </tr>
+</table>
 
 **Result** - The lessons “lecture” and “tutorial” are removed from the list of lessons.
 
@@ -424,15 +439,46 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 
 **Example:**
 
-| Step | When You Enter This: | You Get This: |
-| --- | --- | --- |
-| 1 | edit lsn | Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com |
-| 2 | 1 | Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space. |
-| 3 | 1 2 | Enter new time and day: |
-| 4 | Thursday 9am | Updated time and day.<br>Enter new lesson link: |
-| 5 | www.googleclassroom.com | Updated lesson link. |
+<table>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>edit lsn</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com</pre></td>
+    </tr>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#2</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>1</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Editing: LECTURE<br>Which fields would you like to edit?<br>1. Time and day<br>2. Lesson link<br>3. Teaching staff name<br>4. Teaching staff email<br><br>Separate indices with a blank space.</pre></td>
+    </tr>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#3</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>1</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Enter new time and day:</pre></td>
+    </tr>
+    <tr>
+        <td rowspan="2" style="text-align: center">Step<br>#4</td>
+        <td style="text-align: center; white-space: nowrap">When you enter</td>
+        <td><code>Thursday 9am</code></td>
+    </tr>
+    <tr>
+        <td style="text-align: center; white-space: nowrap">You will get</td>
+        <td><pre>Updated time and day.</pre></td>
+    </tr>
+</table>
 
-**Result** - Edits time and day, as well as lesson link of "lecture".
+**Result** - Edits time and day of "lecture".
 
 > 💡 While only one lesson can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
 
