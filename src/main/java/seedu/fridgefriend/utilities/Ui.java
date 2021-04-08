@@ -8,6 +8,8 @@ import java.util.Scanner;
  */
 public class Ui {
     private static final Scanner scanner = new Scanner(System.in);
+    private static final String interruptMessage = "Application has been interrupted.\n"
+            + "Exiting application...";
 
     /**
      * Retrieves the next line of input provided by the user.
@@ -49,8 +51,13 @@ public class Ui {
     }
 
     public static void printExceptionMessage(Exception exception) {
-        String exceptionMessage = exception.getMessage();
-        printMessage(exceptionMessage);
+        if (exception instanceof RuntimeException) {
+            printMessage(interruptMessage);
+            System.exit(0);
+        } else {
+            String exceptionMessage = exception.getMessage();
+            printMessage(exceptionMessage);
+        }
     }
     
 }
