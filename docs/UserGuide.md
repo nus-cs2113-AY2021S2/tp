@@ -351,7 +351,7 @@ Adds a new lesson with specified lesson type and information to the current modu
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">add lsn tutorial ;; Wednesday 9 am - 10am ;; https://nus-sg.zoom.us/j/abc</b><br><br>Added tutorial to lesson list.</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">add lsn tutorial ;; Wednesday 9 am - 10am ;; https://zoom.us/</b><br><br>Added tutorial to lesson list.</pre></td>
     </tr>
 </table>
 
@@ -493,7 +493,7 @@ Adds a new task with specified name and information to the current module.
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">add task iP submission ;; 3-3-2021 ;; Remember to attach the jar file.</b><br><br>Is this task graded? (Y / N)</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">add task iP submission ;; 3-3-2021 ;; Attach JAR</b><br><br>Is this task graded? (Y / N)</pre></td>
     </tr>
     <tr>
         <td style="text-align: center">Step #2</td>
