@@ -132,6 +132,9 @@ The above diagram shows how each component interacts with the other components. 
 
 **UI Component:** Controls all the User Interface. All input and output is handled by the UI component.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI diagram.png">
+
+
 **Logic Component:**
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Instance Component: Represents all Menu Instances.
