@@ -60,13 +60,14 @@ Given below are my contributions to the project
 
 ### Documentation
 
-- User Guide
+- [User Guide](../UserGuide.md)
   - Added introduction ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Added documentation for the feature `expiring` ([#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69))
   - Added documentation for the features `remove`, `help`, and `bye` ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Standardised input/output format for existing documentation of all features ([#75](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/75/))
   - Added documentation for the features `runninglow` and `setlimit` ([#106](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/106))
-- Developer Guide
+  - Fixed bugs ([#204](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/204))
+- [Developer Guide](../DeveloperGuide.md)
   - Added implementation details of the `Utilities` component ([#106](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/106))
     - [Utilities Class Diagram](../diagrams/diagram_images/UtilitiesClassDiagram.png)
   - Added implementation details of the main application logic ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
@@ -74,7 +75,8 @@ Given below are my contributions to the project
   - Added User Stories ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
   - Added a contents list ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
   - Adjusted Diagram Sizes ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
-- README.md
+  - Fixed bugs ([#204](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/204))
+- [README.md](../README.md)
   - Wrote all project details and contents ([#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134))
 
 ### Community
@@ -100,4 +102,9 @@ Given below are my contributions to the project
     [4](https://github.com/nus-cs2113-AY2021S2/forum/issues/49),
     [5](https://github.com/nus-cs2113-AY2021S2/forum/issues/53))
 - Reported bugs and suggestions for other teams in the class
-    ([1](https://github.com/nus-cs2113-AY2021S2/tp/pull/64))
+    ([1](https://github.com/nus-cs2113-AY2021S2/tp/pull/64)
+    [2](https://github.com/kwokyto/ped/issues/1)
+    [3](https://github.com/kwokyto/ped/issues/2)
+    [4](https://github.com/kwokyto/ped/issues/3)
+    [5](https://github.com/kwokyto/ped/issues/4)
+    [6](https://github.com/kwokyto/ped/issues/5))
