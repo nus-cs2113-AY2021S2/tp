@@ -62,10 +62,9 @@ public class LinkTest {
     public void deleteZoomLink_isInvalidIndex_exceptionThrown() {
         zoomLinksList.add(new ZoomLinkInfo("testlink", "cs1010"));
         zoomLinksList.add(new ZoomLinkInfo("testlink2", "cs2020"));
-        assertThrows(IndexOutOfBoundsException.class,
-                () -> {
-                    ZoomLinkInfo.deleteZoomLink(15);
-                });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            ZoomLinkInfo.deleteZoomLink(15);
+        });
         zoomLinksList.clear();
     }
 }
