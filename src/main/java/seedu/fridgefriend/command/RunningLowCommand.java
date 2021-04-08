@@ -12,8 +12,9 @@ public class RunningLowCommand extends Command {
 
     private String message = "You are running low on food in these categories:";
     private String stockedUpMessage = "Congrats! You are all stocked up on food! :D";
-    private String disabledMessage = "Running low command is disabled.\n"
-            + "Please set at least one food category quantity limit to a positive integer.";
+    private String disabledMessage = "All of your limits has been set to 0.\n"
+            + "Please use setlimit command to set at least one food category quantity "
+            + "limit to a positive integer.";
     private boolean isStockedUp = true;
     private int numberOfCategoryDisabled = 0;
     private int index = 1;
