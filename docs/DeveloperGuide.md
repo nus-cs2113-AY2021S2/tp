@@ -325,7 +325,7 @@ Invalid Input includes:
 
 ### 5.3.1 Doctor Appointment Menu
 
-Similar to the Start Menu, the Doctor Appointment Menu will repeatedly request user input until the `return` command is given.
+Similar to the Start Menu, the Doctor Appointment Menu will repeatedly request for user input until the `return` command is given.
 
 Whenever a user input is given to the Doctor Appointment Menu, the following steps will occur.
 
@@ -338,8 +338,8 @@ Whenever a user input is given to the Doctor Appointment Menu, the following ste
 **Getting User Input**
 
 4. `DoctorAppointmentInstance.run()` will repeatedly, requesting for user input and calling `DoctorAppointmentParser.parse()`.
-5. `parse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
-6. Based on the recognised command by the system, the relevant commands will be carried out.
+5. `parse()` will call the `smartCommandRecognition()` function to assess the given user input and determine which command is most similar to the input
+6. Based on the command recognised by the system, the relevant commands will be carried out.
 
 <br>
 
@@ -366,7 +366,7 @@ Invalid Input includes:
 
 **Check validity of the data input**
 
-1. If the command recognised is the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
+1. If the command is recognised as the add command, `DoctorAppointmentParser.parse()` calls `MainChecker.checkNumInput()` and `DoctorAppointmentChecker.checkValidDataForAdd()` to ensure data entered is valid.
 2. `checkValidDataForAdd()` will call the following function in sequence:
 
 	- isValidDocID()	
@@ -378,18 +378,17 @@ Invalid Input includes:
 **Creating DoctorAppointmentAdd command**
 
 3. If the input data is valid, a DoctorAppointment Command object is created. Otherwise a relevant error will be thrown.
-4. The Command object is returned to `DoctorAppoitmentInstance.run()`
+4. The Command object is returned to `DoctorAppointmentInstance.run()`
 
 **Creating DoctorAppointment Object with User Input**
 
-5. DoctorAppointmentInstance then executes the DoctorAppointment Add Command object by running `DoctorAppointmentAdd.execute()`.
+5. DoctorAppointmentInstance then executes the DoctorAppointmentAdd Command object by running `DoctorAppointmentAdd.execute()`.
 6. `AppointmentList.addAppointment()` will be called in which a DoctorAppointment object will be created and added into the ArrayList<DoctorAppointment> appointmentList, which contains all the DoctorAppointment Objects. 
 
 **Saving DoctorAppointment Objects into .txt file**
 
-7. `AppointmentList.addAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which all existing DoctorAppointment Objects within the appointmentList is written into a DoctorAppointment.txt file.
-8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
-9. Control is then returned to DoctorAppointmentInstance.
+7. `AppointmentList.addAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` in which all existing DoctorAppointment Objects within the ArrayList <DoctorAppointment> appointmentList is written into a DoctorAppointment.txt file.
+8. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
@@ -397,7 +396,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDelete Command object is created and executed in which the program will iterate through appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
+The delete function takes in 1 compulsory field (Doctor ID/ Appointment ID) to identity and delete the corresponding DoctorAppointment Object from ArrayList <DoctorAppointment> appointmentList . Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a DoctorAppointmentDelete Command object is created and executed in which the program will iterate through ArrayList <DoctorAppointment> appointmentList. If the desired DoctorID or Appointment ID exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -427,8 +426,8 @@ Invalid Input includes:
 
 **Saving changed DoctorAppointment Objects into .txt file**
 
-6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated appointmentList into the DoctorAppointment.txt file.
-7. Control is then returned to StaffInstance.
+6. `AppointmentList.deleteAppointment()` then calls `DoctorAppointmentStorage.writeToFile()` which rewrites the updated ArrayList <DoctorAppointment> appointmentList into the DoctorAppointment.txt file.
+7. Control is then returned to DoctorAppointmentInstance.
 
 <br>
 
