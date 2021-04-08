@@ -1,0 +1,50 @@
+@startuml
+
+hide members
+hide circle
+skinparam classAttributeIconSize 0
+package logic{
+package command{
+Class "{abstract}\nCommand" as Command
+package doctorappointment {
+Command <|--up ABCCommand
+}
+package inventory {
+Command <|--up DEFCommand
+}
+package nurseschedule {
+Command <|--up GHICommand
+}
+package patient {
+Command <|--up JKLCommand
+}
+package staff {
+Command <|--up MNOCommand
+}
+package startmenu {
+Command <|--up PQRCommand
+}
+}
+package errorchecker{
+Class XYZChecker
+}
+
+package parser{
+Class PQRParser
+PQRParser -down> XYZChecker
+}
+
+package instance {
+Class ABCInstance
+ABCInstance --down> ABCCommand
+ABCInstance --down> DEFCommand
+ABCInstance --down> GHICommand
+ABCInstance --down> JKLCommand
+ABCInstance --down> MNOCommand
+ABCInstance --down> PQRCommand
+ABCInstance --left> PQRParser
+}
+
+}
+
+@enduml
