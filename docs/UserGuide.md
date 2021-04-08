@@ -215,7 +215,7 @@ Opens the specified module.
 
 <table>
     <tr>
-        <td rowspan="2">Step #1</td>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
         <td style="text-align: center">When you enter</td>
         <td><code>open CS2113T</code></td>
     </tr>
@@ -240,7 +240,7 @@ Adds a module with the specified module name.
 
 <table>
     <tr>
-        <td rowspan="2">Step #1</td>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
         <td style="text-align: center">When you enter</td>
         <td><code>add CS2113T</code></td>
     </tr>
@@ -265,7 +265,7 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 
 <table>
     <tr>
-        <td rowspan="2">Step #1</td>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
         <td style="text-align: center">When you enter</td>
         <td><code>del</code></td>
     </tr>
@@ -274,7 +274,7 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
         <td><pre>Which modules would you like to delete?<br>1. CS2107<br>2. CS2113T<br>3. CS2101<br><br>Please enter the indices of the modules you would like to delete.<br>Separate indices with a blank space.</pre></td>
     </tr>
 <tr>
-        <td rowspan="2">Step #2</td>
+        <td rowspan="2" style="text-align: center">Step<br>#2</td>
         <td style="text-align: center">When you enter</td>
         <td><code>1 3</code></td>
     </tr>
@@ -299,7 +299,7 @@ Lists all modules.
 
 <table>
     <tr>
-        <td rowspan="2">Step #1</td>
+        <td rowspan="2" style="text-align: center">Step<br>#1</td>
         <td style="text-align: center">When you enter</td>
         <td><code>mods</code></td>
     </tr>
