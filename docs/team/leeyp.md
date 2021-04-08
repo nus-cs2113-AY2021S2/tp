@@ -121,6 +121,7 @@ as well as associated JUnit tests and helper function code.
 - Consolidated issues created during PE-D for the team and labelled issue trackers.
 - Gave suggestions and help debug in weekly meetings
 - Coordinating communications between instructors on MSTeams and teammates
+- Streaming the execution and usage of the application in Project Demo Video
 
 ### Contributions beyond the project team:
 - [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts)
