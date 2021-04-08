@@ -26,7 +26,7 @@ public class ExternalLinks extends Links {
             switch (linkIndex) {
             case ADD_LINK_COMMAND:
                 Ui.printEnterLinkMessage();
-                String linkDescription = Ui.readCommand();
+                String linkDescription = Ui.readCommand().toLowerCase();
                 if (!LinkInfo.isValidLink(linkDescription)) {
                     Ui.printInvalidLinkMessage();
                     continue;

@@ -1073,8 +1073,9 @@ Supported schemes include: https, http only
 Supported Top Level Domain(TLD) include: .com, .org, .sg, .edu, .gov
 
 > **Note!**  
-> While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
-
+> 1. While using other TLDs that have not been included in the list above might work, the intended behaviour is not guaranteed and might vary in such cases.
+> 2. This feature accepts uppercase characters too and converts it to lowercase for your convenience. Hence, a link like: `HTTPS//WWW.YOUTUBE.COM` would become `https://www.youtube.com`
+> 
 Example for adding an external link:
 
 ````

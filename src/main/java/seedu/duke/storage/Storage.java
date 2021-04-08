@@ -1,7 +1,10 @@
 package seedu.duke.storage;
 
+import static seedu.duke.features.link.LinkInfo.isValidLink;
+
 import seedu.duke.features.capsimulator.HelpGraduation;
 import seedu.duke.features.link.LinkInfo;
+import seedu.duke.features.link.LinkLoadException;
 import seedu.duke.features.link.ZoomLinkInfo;
 import seedu.duke.features.moduleinfo.Module;
 import seedu.duke.features.moduleinfo.ModuleInfo;
@@ -47,7 +50,7 @@ public class Storage {
 
     }
 
-    public static void loadAllFiles() {
+    public static void loadAllFiles() throws LinkLoadException {
         loadModuleInfoFile();
         loadTasksFile();
         loadAssignmentsFile();
@@ -462,7 +465,7 @@ public class Storage {
         fw.close();
     }
 
-    public static void loadLinkInfoFile() {
+    public static void loadLinkInfoFile() throws LinkLoadException {
         filePathForLinks += "/UniTracker Data";
         File data = new File(filePathForLinks);
         if (!data.exists()) {
@@ -484,11 +487,24 @@ public class Storage {
         }
     }
 
-    public static void downloadLinks() throws FileNotFoundException {
+    /**
+     * Creates a link object from the string in the text file and adds it into the links list.
+     * Checks for a valid link first before adding into the list, and blank lines are accepted(not
+     * viewed as bugs)
+     *
+     * @throws FileNotFoundException if there was problem opening the file
+     * @throws LinkLoadException     if the link entered in the text file was invalid
+     */
+    public static void downloadLinks() throws FileNotFoundException, LinkLoadException {
         File f = new File(filePathForLinks); // create a File for the given file path
         Scanner s = new Scanner(f); // create a Scanner using the File as the source
         while (s.hasNext()) {
-            LinkInfo link = new LinkInfo(s.nextLine());
+            String line = s.nextLine().toLowerCase().trim();
+            if (!isValidLink(line) && !line.isBlank()) {
+                throw new LinkLoadException(
+                        "Link information is corrupted! Please delete and try again");
+            }
+            LinkInfo link = new LinkInfo(line);
             LinkInfo.addLink(link);
         }
     }
