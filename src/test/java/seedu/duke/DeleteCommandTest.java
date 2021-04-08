@@ -10,8 +10,9 @@ import java.util.HashMap;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DeleteCommandTest {
     @Test
@@ -30,11 +31,9 @@ public class DeleteCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             deleteCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals("Patient S1234567D has been deleted!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
@@ -48,7 +47,7 @@ public class DeleteCommandTest {
         data.loadCurrentPatient(patient.getID());
         String date = "29/03/2021";
         LocalDate parseDate = LocalDate.parse(date, DateTimeFormatter.ofPattern(Constants.DATE_PATTERN));
-        patient.addRecord(parseDate, "coughing", "","");
+        patient.addRecord(parseDate, "coughing", "", "");
         HashMap<String, String> arguments = new HashMap<>();
         arguments.put("command", "delete");
         arguments.put("r", "29/03/2021");
@@ -59,11 +58,9 @@ public class DeleteCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             deleteCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals("Record for 2021-03-29 has been deleted!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
@@ -80,8 +77,7 @@ public class DeleteCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals("Kindly use /p or /r to indicate patient or record, refer to help for more clarification!",
-                exception.getMessage());
+        assertEquals(Constants.INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT, exception.getMessage());
     }
 
     @Test
@@ -115,11 +111,9 @@ public class DeleteCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             deleteCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals("Record for 2021-03-29 does not exist!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);

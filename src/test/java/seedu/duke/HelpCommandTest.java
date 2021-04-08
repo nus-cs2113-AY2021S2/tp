@@ -7,6 +7,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HelpCommandTest {
@@ -23,15 +24,13 @@ public class HelpCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             helpCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals(Constants.LIST_INFO_MESSAGE + System.lineSeparator()
                 + Constants.ADD_INFO_MESSAGE + System.lineSeparator()
-                + Constants.EXIT_INFO_MESSAGE  + System.lineSeparator(), bos.toString());
+                + Constants.EXIT_INFO_MESSAGE + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -48,11 +47,9 @@ public class HelpCommandTest {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(bos));
 
-        try {
+        assertDoesNotThrow(() -> {
             helpCommand.execute();
-        } catch (Exception e) {
-            System.out.println("An error occurred while running tests");
-        }
+        });
 
         assertEquals(Constants.LIST_INFO_MESSAGE + System.lineSeparator()
                 + Constants.ADD_INFO_MESSAGE + System.lineSeparator()

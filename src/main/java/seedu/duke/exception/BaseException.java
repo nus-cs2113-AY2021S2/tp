@@ -19,16 +19,21 @@ public abstract class BaseException extends Exception {
 
     @Override
     public String toString() {
-        String s = classMessage + ":" + System.lineSeparator()
-                + Constants.EXCEPTION_INDENT + getMessage();
+        String errorString = classMessage + ":" + System.lineSeparator();
+
+        String errorMessage = getMessage();
+        String[] errorLines = errorMessage.split("\n");
+        for (String errorLine : errorLines) {
+            errorString += Constants.EXCEPTION_INDENT + errorLine;
+        }
 
         Throwable cause = this.getCause();
         if (cause != null) {
-            s += System.lineSeparator()
+            errorString += System.lineSeparator()
                     + "... and is caused by ..." + System.lineSeparator()
                     + Constants.EXCEPTION_INDENT + cause.toString(); 
         }
 
-        return s;
+        return errorString;
     }
 }

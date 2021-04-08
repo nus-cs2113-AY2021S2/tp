@@ -28,7 +28,8 @@ public class ListCommand extends Command {
         String list = "List of patients (in alphanumeric order):";
 
         for (String patientID : patients.keySet()) {
-            list += "\n" + ++patientCount + ". " + patientID;
+            patientCount = patientCount + 1;
+            list += System.lineSeparator() + patientCount + ". " + patientID;
         }
 
         if (patientCount == 0) {
