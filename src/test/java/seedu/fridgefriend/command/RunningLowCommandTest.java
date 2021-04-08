@@ -103,9 +103,9 @@ class RunningLowCommandTest {
     }
 
     //@@author SimJJ96
-    public void setLimitOff() {
+    public void setLimitDisabled() {
         for (FoodCategory foodCategory : FoodCategory.values()) {
-            FoodCategory.setMinimumQuantity(foodCategory, -1);
+            FoodCategory.setMinimumQuantity(foodCategory, 0);
         }
     }
 
@@ -141,12 +141,12 @@ class RunningLowCommandTest {
     //@@author SimJJ96
     @Test
     public void runningLowCommand_setLimitOff_turnOffMessage() throws Exception {
-        setLimitOff();
+        setLimitDisabled();
         semiPopulateFridge();
         RunningLowCommand runningLowCommand = new RunningLowCommand();
         runningLowCommand.setData(fridge);
-        String expectedMessage = "Running low command is turned off.\n"
-                + "Please set at least one food category limit to a positive integer.";
+        String expectedMessage = "Running low command is disabled.\n"
+                + "Please set at least one food category quantity limit to a positive integer.";
         runningLowCommand.execute();
         String actualMessage = runningLowCommand.getMessage();
         assertEquals(expectedMessage, actualMessage);

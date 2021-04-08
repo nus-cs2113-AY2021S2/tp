@@ -6,6 +6,7 @@ import seedu.fridgefriend.exception.InvalidDateException;
 import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.InvalidSetLimitQuantityException;
 import seedu.fridgefriend.exception.RepetitiveFoodIdentifierException;
 import seedu.fridgefriend.exception.StorageLoadingException;
 import seedu.fridgefriend.exception.StorageSavingException;
@@ -74,9 +75,14 @@ public class Storage {
 
     /**
      * Creates a textfile and the folder directory if it does not already exist.
-     * 
-     * @throws InvalidDateException if the date cannot be parsed
+     *
      * @throws FileNotFoundException if file does not exist
+     * @throws InvalidDateException if the date in data file cannot be parsed
+     * @throws InvalidQuantityException if the quantity in data file cannot be parsed
+     * @throws EmptyDescriptionException if the description in data file is empty
+     * @throws RepetitiveFoodIdentifierException if the foodName in data file is not unique
+     * @throws InvalidFoodCategoryException if the category in data file cannot be parsed
+     * @throws InvalidFoodLocationException if the location in data file cannot be parsed
      */
     private static void checkFridgeDataDirectory() throws FileNotFoundException, InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
@@ -92,9 +98,14 @@ public class Storage {
 
     /**
      * Reads the data from the textfile.
-     * 
+     *
      * @throws FileNotFoundException if file does not exist
-     * @throws InvalidDateException if the date cannot be parsed
+     * @throws InvalidDateException if the date in data file cannot be parsed
+     * @throws InvalidQuantityException if the quantity in data file cannot be parsed
+     * @throws EmptyDescriptionException if the description in data file is empty
+     * @throws RepetitiveFoodIdentifierException if the foodName in data file is not unique
+     * @throws InvalidFoodCategoryException if the category in data file cannot be parsed
+     * @throws InvalidFoodLocationException if the location in data file cannot be parsed
      */
     private static void readFridgeData() throws FileNotFoundException, InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
@@ -108,14 +119,18 @@ public class Storage {
         scanner.close();
     }
 
+
     //@@author leeyp
     /**
      * Adds a food item to a fridge based on saved data.
-     * 
+     *
      * @param line string in data file to be read
-     * @throws InvalidDateException if date in data file cannot be parsed
-     * @throws InvalidQuantityException if quantity in data file cannot be parsed
+     * @throws InvalidDateException if the date in data file be parsed
+     * @throws InvalidQuantityException if the quantity in data file be parsed
+     * @throws EmptyDescriptionException if the description in data file is empty
+     * @throws RepetitiveFoodIdentifierException if the foodName in data file is not unique
      * @throws InvalidFoodCategoryException if category in data file cannot be parsed
+     * @throws InvalidFoodLocationException if the location in data file cannot be parsed
      */
     private static void populateFridge(String line) throws InvalidDateException,
             InvalidQuantityException, EmptyDescriptionException,
@@ -205,14 +220,15 @@ public class Storage {
     //@@author kwokyto
     /**
      * Creates a limits data textfile and the folder directory if it does not already exist.
-     * 
+     *
      * @throws FileNotFoundException if file does not exist
      * @throws EmptyDescriptionException if quantity in data file is empty
-     * @throws InvalidQuantityException if quantity in data file cannot be parsed
+     * @throws InvalidSetLimitQuantityException if set limit quantity in data file cannot be parsed
+     * @throws InvalidFoodCategoryException if category in data file cannot be parsed
      */
     private static void checkLimitsDirectory()
             throws FileNotFoundException, EmptyDescriptionException,
-            InvalidQuantityException, InvalidFoodCategoryException {
+            InvalidSetLimitQuantityException, InvalidFoodCategoryException {
         Path path = Paths.get(LIMITS_FILE_PATH); //creates Path instance
         try {
             Files.createDirectories(Paths.get(DIRECTORY));
@@ -225,14 +241,15 @@ public class Storage {
     //@@author kwokyto
     /**
      * Reads the limits data from the textfile.
-     * 
+     *
      * @throws FileNotFoundException if file does not exist
      * @throws EmptyDescriptionException if quantity in data file is empty
-     * @throws InvalidQuantityException if quantity in data file cannot be parsed
+     * @throws InvalidSetLimitQuantityException if set limit quantity in data file cannot be parsed
+     * @throws InvalidFoodCategoryException if category in data file cannot be parsed
      */
     private static void readLimitsData()
             throws FileNotFoundException, EmptyDescriptionException,
-            InvalidQuantityException, InvalidFoodCategoryException {
+            InvalidSetLimitQuantityException, InvalidFoodCategoryException {
         File file = new File(LIMITS_FILE_PATH);
         Scanner scanner = new Scanner(file); // create a Scanner using the File as the source
         while (scanner.hasNext()) {
@@ -245,13 +262,14 @@ public class Storage {
     //@@author kwokyto
     /**
      * Sets minimum quantity of a FoodCategory based on saved limits data.
-     * 
+     *
      * @param line string in data file to be processed
      * @throws EmptyDescriptionException if quantity in data file is empty
-     * @throws InvalidQuantityException if quantity in data file cannot be parsed
+     * @throws InvalidSetLimitQuantityException if quantity in data file cannot be parsed
+     * @throws InvalidFoodCategoryException if category in data file cannot be parsed
      */
     private static void populateFoodCategory(String line)
-            throws EmptyDescriptionException, InvalidQuantityException, InvalidFoodCategoryException {
+            throws EmptyDescriptionException, InvalidSetLimitQuantityException, InvalidFoodCategoryException {
         String[] parameters = line.split(":");
         FoodCategory foodCategory = FoodCategory.convertStringToFoodCategory(parameters[0]);
         int quantity = Parser.parseSetLimitIntegerQuantity(parameters[1]);
@@ -346,6 +364,7 @@ public class Storage {
      * Appends food item to history data textfile.
      * Is called after every AddCommand.
      *
+     * @param foodInput the food added into fridge
      */
     public static void saveHistoryData(Food foodInput) {
         try {
