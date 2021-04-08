@@ -6,7 +6,10 @@ import seedu.exceptions.NoInputException;
 import seedu.exceptions.inventory.DuplicateDrugException;
 import seedu.exceptions.inventory.NonExistentDrugException;
 import seedu.exceptions.inventory.WrongNumberException;
-import seedu.exceptions.patient.IllegalCharacterException;
+
+import seedu.exceptions.IllegalCharacterException;
+import seedu.model.inventory.InventoryList;
+
 import seedu.model.inventory.Inventory;
 import seedu.model.inventory.InventoryList;
 
@@ -40,7 +43,7 @@ public class InventoryChecker extends MainChecker {
         checkDuplicate(stringTokens[0], Double.parseDouble(stringTokens[1]));
     }
 
-    public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException, seedu.exceptions.patient.IllegalCharacterException {
+    public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException, IllegalCharacterException {
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[3], "quantity");
         checkPrice(stringTokens[2]);

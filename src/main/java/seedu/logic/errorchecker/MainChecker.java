@@ -5,17 +5,19 @@ import seedu.exceptions.InsufficientInputException;
 import seedu.exceptions.InvalidGenderException;
 import seedu.exceptions.InvalidIntegerException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.patient.IllegalCharacterException;
+import seedu.exceptions.IllegalCharacterException;
+import seedu.logger.HealthVaultLogger;
 import seedu.ui.UI;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
 import static seedu.duke.Constants.VALID_GENDER_INPUT;
 
 public class MainChecker {
+    public Logger logger = HealthVaultLogger.getLogger();
 
     public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
-
         if (line.split("/").length < min) {
             throw new InsufficientInputException();
         }
@@ -24,7 +26,7 @@ public class MainChecker {
         }
     }
 
-    public static void checkNumInput2(String[] array, int max, int min) throws InsufficientInputException, ExcessInputException {
+    public static void checkNumInput(String[] array, int max, int min) throws InsufficientInputException, ExcessInputException {
 
         if (array.length < min) {
             throw new InsufficientInputException();
@@ -62,7 +64,7 @@ public class MainChecker {
             }
         }
     }
-    public static void checkBlankInput2(String[] array) throws NoInputException {
+    public static void checkBlankInput(String[] array) throws NoInputException {
         for (String s : array) {
             if (s.trim().equals("")) {
                 throw new NoInputException();
