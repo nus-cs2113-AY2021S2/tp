@@ -65,14 +65,30 @@
 ## 1. Introduction
 ### 1.1 What is HealthVault?
 
-HealthVault is a desktop app for managing doctor, nurse and patient information, optimised for use through the command line interface. This app is for the head nurse of a hospital, if the user can type fast, it is better than a traditional GUI app.
-
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Purpose and scope**
-
-The purpose of this developer guide is to describe the architecture and software design decisions for our application. This guide will cover our program architecture, the logical view of major components and how our functions work.
+In light of the recent COVID-19 pandemic. The weakness of modern healthcare systems has surfaced. 
+Many of which are unsatisfactory in coping with the current needs.
+HealthVault was thus created to improve the efficiency of hospital and healthcare information management.
+<br>
+**HealthVault** is a desktop application made for healthcare workers as their one stop application for recording and 
+accessing critical patient or staff information.
+It is optimized for the Command Line Interface, where an experienced typist will be able to 
+make full use of the informative and minimalistic GUI to achieve significant gains in efficiency
 
 ### 1.2 About the Developer Guide
+
+The HealthVault Developer guide is made specifically for those who are interested in the specifics of how HealthVault is 
+implemented. Such personnel may include: students, technical support staff, web developers, healthcare professionals.
+
+This Developer guide seeks to inform and instruct readers on the architecture and specific implementation of the various
+functions within HealthVault. So that if they wish to make any fixes or edits to improve on the code for their own 
+usage, they will be well equipped with both the knowledge and expertise to do so. 
+
+The Developer Guide hopes to impart to you the following:
+1. Properly set up for HealthVault
+2. HealthVault's system architecture
+3. The implementation method for HealthVault's various functions and their considerations
+
+We hope you will have a fruitful time learning about HealthVault.
 
 <br>
 
@@ -156,6 +172,10 @@ The above diagram shows how each component interacts with the other components. 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI Diagram resize.png">
 
 ### 4.3 Instance Component
+**image for logic**
+
+<img src="diagrams/LogicComponent.png">
+
 ### 4.4 Parser Component
 ### 4.5 Error Checker Component
 ### 4.6 Commands Component
