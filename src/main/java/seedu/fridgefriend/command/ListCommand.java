@@ -35,6 +35,9 @@ public class ListCommand extends Command {
         if (description.equals("")) {
             LoggingHandler.logInfo("Listing all food.");
             listAll();
+        } else if ((description).equalsIgnoreCase("other")) {
+            LoggingHandler.logInfo("Listing by 'Others' Category and Storage Location");
+            listByOthers();
         } else if (checkIsValidCategory()) {
             LoggingHandler.logInfo("Listing by category.");
             listByCategory();
@@ -153,6 +156,48 @@ public class ListCommand extends Command {
             ++indexShownToUser;
         }
         return foodDescription;
+    }
+
+    /**
+     * Returns the food that match either the category and storage location "others" or both.
+     * Special method needed because it is an edge case in List Command.
+     *
+     * @return string of food that match "others" category or storage location in the fridge
+     */
+    public String getListByOthersMessage() {
+        LoggingHandler.logInfo("Searching for 'Others'.");
+        StringBuilder message = new StringBuilder("These are the food that belong to OTHER:");
+        for (int i = 0; i < fridge.getSize(); i++) {
+            message.append(getMatchOthersFoodDescription(i));
+        }
+
+        assert message != null : "message string should not be null";
+        return message.toString();
+    }
+
+    private String getMatchOthersFoodDescription(int index) {
+        String foodDescription = "";
+        Food food = fridge.getFood(index);
+        FoodStorageLocation storageLocation = food.getStorageLocation();
+        FoodCategory category = food.getCategory();
+        if (isOthersStorageLocation(storageLocation) || isOthersCategory(category)) {
+            foodDescription = "\n\t" + indexShownToUser + ". " + food.toString();
+            ++indexShownToUser;
+        }
+        return foodDescription;
+    }
+
+    private void listByOthers() {
+        String message = getListByOthersMessage();
+        Ui.printMessage(message);
+    }
+
+    private boolean isOthersCategory(FoodCategory category) {
+        return category.equals((FoodCategory.OTHER));
+    }
+
+    private boolean isOthersStorageLocation(FoodStorageLocation storageLocation) {
+        return storageLocation.equals((FoodStorageLocation.OTHER));
     }
 
 }
