@@ -144,8 +144,12 @@ public class ModuleInfo {
             String moduleName = Ui.readCommand();
             moduleName = moduleName.trim().toUpperCase();
             if (!Ui.userCommandIsEmpty(moduleName)) {
-                if (!isAlphaNumeric(moduleName)) continue;
-                if (checkIfModuleExists(moduleName)) return;
+                if (!isAlphaNumeric(moduleName)) {
+                    continue;
+                }
+                if (checkIfModuleExists(moduleName)) {
+                    return;
+                }
                 System.out.println("Enter module description:");
                 String moduleDescription = Ui.readCommand();
                 if (!Ui.userCommandIsEmpty(moduleDescription)) {
