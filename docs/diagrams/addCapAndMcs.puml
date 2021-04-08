@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant Duke
+Duke -> HelpGraduationManager : execute()
+activate HelpGraduationManager
+HelpGraduationManager -> HelpGraduationManager : addCapAndMcs()
+activate HelpGraduationManager
+HelpGraduationManager -> Ui : readCommand()
+activate Ui
+Ui --> HelpGraduationManager : cap
+deactivate Ui
+HelpGraduationManager -> Ui: readCommand()
+activate Ui
+Ui --> HelpGraduationManager : totalMcs
+deactivate Ui
+HelpGraduationManager -> Storage : setCurrentCap()
+activate Storage
+Storage --> HelpGraduationManager
+deactivate Storage
+HelpGraduationManager -> Storage : setTotalMcs()
+activate Storage
+Storage --> HelpGraduationManager
+deactivate Storage
+deactivate HelpGraduationManager
+return
+@enduml
