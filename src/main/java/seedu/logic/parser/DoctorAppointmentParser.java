@@ -25,6 +25,16 @@ public class DoctorAppointmentParser {
     public static Logger logger = HealthVaultLogger.getLogger();
     static final String[] COMMANDS = {"add", "delete", "list", "return", "help"};
 
+    /**
+     * Returns a Command Object which dictates the actions to be carried out on the DoctorAppointment objects.
+     *
+     * @param input   Entire input command.
+     * @param details AppointmentList object that contains all AppointmentList.
+     * @return Command object.
+     * @throws HealthVaultException         If any invalid input given.
+     * @throws UnrecognizedCommandException If the input is not recognized by the system.
+     */
+
     public static Command parse(String input, AppointmentList details) throws HealthVaultException {
 
         String[] inputArray = input.split("/");
@@ -32,7 +42,7 @@ public class DoctorAppointmentParser {
         assert inputArray.length < 7;
         Command c = null;
         MainChecker.checkBlankInput(input);
-        MainChecker.checkNumInput(input, 6,1);
+        MainChecker.checkNumInput(input, 6, 1);
         switch (smartCommandRecognition(COMMANDS, input.split("/")[0])) {
         case "add": {
             logger.log(Level.INFO, "Parsing Add command");
