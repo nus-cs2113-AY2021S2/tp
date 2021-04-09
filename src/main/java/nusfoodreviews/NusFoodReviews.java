@@ -8,8 +8,7 @@ import parser.Parser;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
-import checkuser.CheckUser;
-
+import checkuser.UserChecker;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,7 +62,7 @@ public class NusFoodReviews {
 
     public int chooseUser() throws DukeExceptions {
         ui.showLoginPage();
-        boolean isPublicUser = CheckUser.checkUserType(ui);
+        boolean isPublicUser = UserChecker.checkUserType(ui);
         if (isPublicUser) {
             ui.userShowWelcome();
             return 0;
