@@ -29,11 +29,7 @@ public class DoctorAppointmentUI extends UI {
     public void printAppointmentMenuPrompt() {
         System.out.println("Type 'help' for appointment menu commands\n");
     }
-
-    public static void invalidCommandPrompt() {
-        System.out.println("Sorry, I don't know what that means :(");
-        UI.showLine();
-    }
+    
 
     public static void printAddedAppointment() {
         System.out.println("Appointment Added");
