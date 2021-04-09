@@ -3,10 +3,13 @@ hide footbox
 
 ":Links" -> ":ZoomLinkInfo" : addZoomLink()
 activate ":ZoomLinkInfo"
+
+opt !ModuleInfo.modules.isEmpty()
 ":ZoomLinkInfo" -> ":AddTask" : printAndGetModule()
 activate ":AddTask"
 ":AddTask" --> ":ZoomLinkInfo"
 deactivate ":AddTask"
+end
 ":ZoomLinkInfo" -> ":Ui" : printEnterZoomLinkMessage()
 activate ":Ui"
 ":Ui" --> ":ZoomLinkInfo"

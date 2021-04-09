@@ -32,8 +32,17 @@ public class ZoomLinkInfo {
      * ZoomLinkInfo object using those parameters and adds the object to the zoomLinksList.
      */
     public static void addZoomLink() {
-        Ui.printPsMessage(ModuleInfo.modules.size());
-        String moduleCode = AddTask.printAndGetModule();
+        String moduleCode;
+        if (!ModuleInfo.modules.isEmpty()) {
+            Ui.printChooseModule();
+            moduleCode = AddTask.printAndGetModule();
+            if (searchListForExistingLink(moduleCode)) {
+                Ui.printModuleAlreadyHasZoomLink();
+                return;
+            }
+        } else {
+            moduleCode = addModuleWhenModuleIsEmpty();
+        }
         Ui.printEnterZoomLinkMessage();
         String linkDescription = Ui.readCommand();
         String passwordCommand = Ui.printEnterRequirePassword();
@@ -88,5 +97,35 @@ public class ZoomLinkInfo {
 
     public String getPassword() {
         return password;
+    }
+
+    public static void deleteModuleCode(String moduleToDelete) {
+        for (ZoomLinkInfo link : zoomLinksList) {
+            if (link.getModuleCode().equals(moduleToDelete)) {
+                link.moduleCode = "Zoom link has no module code";
+            }
+        }
+    }
+
+    public static String addModuleWhenModuleIsEmpty() {
+        String moduleCode;
+        Ui.printNoModulesMessage();
+        String input = Ui.readCommand().trim();
+        if (input.equalsIgnoreCase("N")) {
+            moduleCode = "";
+        } else {
+            ModuleInfo.addNewModule();
+            moduleCode = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();
+        }
+        return moduleCode;
+    }
+
+    public static boolean searchListForExistingLink(String linkToCompare) {
+        for (ZoomLinkInfo link : zoomLinksList) {
+            if (link.moduleCode.equals(linkToCompare)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

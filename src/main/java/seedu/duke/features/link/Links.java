@@ -71,7 +71,6 @@ public class Links {
     }
 
     public static void add() {
-        Ui.printEnterZoomLinkMessage();
         ZoomLinkInfo.addZoomLink();
     }
 

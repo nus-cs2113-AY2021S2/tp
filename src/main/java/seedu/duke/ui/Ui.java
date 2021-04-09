@@ -19,6 +19,7 @@ import java.util.Scanner;
  * Deals with all interactions with the user.
  */
 public class Ui {
+
     private static final String longHorizontalLine = "--------------------------------------------";
     private static final String shortHorizontalLine = "----------------------";
 
@@ -148,11 +149,14 @@ public class Ui {
         if (taskType == 1) {
             System.out.println("What is the module of the task you want to add? Enter the number:");
         } else if (taskType == 2) {
-            System.out.println("What is the module of the assignment you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the assignment you want to add? Enter the number:");
         } else if (taskType == 3) {
-            System.out.println("What is the module of the midterm you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the midterm you want to add? Enter the number:");
         } else {
-            System.out.println("What is the module of the final exam you want to add? Enter the number:");
+            System.out.println(
+                    "What is the module of the final exam you want to add? Enter the number:");
         }
         printEmptyLine();
     }
@@ -175,21 +179,27 @@ public class Ui {
 
     public static void printAddTaskDateMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the date of the assignment you want to add? Format of date is YYYY-MM-DD");
+            System.out.println(
+                    "What is the date of the assignment you want to add? Format of date is YYYY-MM-DD");
         } else if (taskType == 3) {
-            System.out.println("What is the date of the midterm you want to add? Format of date is YYYY-MM-DD");
+            System.out.println(
+                    "What is the date of the midterm you want to add? Format of date is YYYY-MM-DD");
         } else {
-            System.out.println("What is the date of the final exam you want to add? Format of date is YYYY-MM-DD");
+            System.out.println(
+                    "What is the date of the final exam you want to add? Format of date is YYYY-MM-DD");
         }
     }
 
     public static void printAddTaskTimeMessage(int taskType) {
         if (taskType == 2) {
-            System.out.println("What is the time of the assignment you want to add? Format of time is HH:MM");
+            System.out.println(
+                    "What is the time of the assignment you want to add? Format of time is HH:MM");
         } else if (taskType == 3) {
-            System.out.println("What is the time of the midterm you want to add? Format of time is HH:MM");
+            System.out.println(
+                    "What is the time of the midterm you want to add? Format of time is HH:MM");
         } else {
-            System.out.println("What is the time of the final exam you want to add? Format of time is HH:MM");
+            System.out.println(
+                    "What is the time of the final exam you want to add? Format of time is HH:MM");
         }
     }
 
@@ -660,22 +670,15 @@ public class Ui {
         }
     }
 
-    public static void printPsMessage(int size) {
-        System.out.println(
-                "PS: If the module you are finding is not available, please enter " + (size + 1)
-                        + " if you would like to add a module for the link...\n"
-                        + "OR if you would like the zoom link to be a standalone ^~^\n");
-    }
-
     public static void printDuplicateMessage() {
         System.out.println("Duplicate detected! You have already entered this link before");
         System.out.println("Please enter another link...");
     }
 
     /**
-     * Prints message containing two choices of simulating CAP score.
-     * First choice calculates CAP score base on the MCs and Grades from existing module.
-     * Second choice calculates CAP score base on user input.
+     * Prints message containing two choices of simulating CAP score. First choice calculates CAP
+     * score base on the MCs and Grades from existing module. Second choice calculates CAP score
+     * base on user input.
      */
     public static void printCapSimulatorSetting() {
         System.out.println("Welcome to CAP Simulator!");
@@ -705,12 +708,22 @@ public class Ui {
 
     public static void printConfirmComponentsMessage() {
         System.out.println("Are you sure you have keyed in the correct name and weightage?");
-        System.out.println("Note: you may only change this by deleting the module associated with it.");
+        System.out.println(
+                "Note: you may only change this by deleting the module associated with it.");
         System.out.println("[1] --- Yes, I confirm my inputs.\n"
                 + "[2] --- No, I wish to key in my inputs again.");
     }
 
     public static void printInvalidInputForYOrNMessage() {
         System.out.println("Invalid input! Please input Y or N.");
+    }
+
+    public static void printChooseModule() {
+        System.out.println("Please enter the number of the module you wish to add");
+    }
+
+    public static void printModuleAlreadyHasZoomLink() {
+        System.out.println(
+                "The module you specified already has a zoom link! Bringing you back to the links menu...");
     }
 }
