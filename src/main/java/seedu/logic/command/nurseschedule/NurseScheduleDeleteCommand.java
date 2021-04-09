@@ -6,11 +6,11 @@ import seedu.logic.command.Command;
 import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.ui.NurseScheduleUI;
 
-public class NurseScheduleDelete extends Command {
+public class NurseScheduleDeleteCommand extends Command {
 
     private String[] argArr;
 
-    public NurseScheduleDelete(String [] args) {
+    public NurseScheduleDeleteCommand(String [] args) {
         argArr = args;
     }
 

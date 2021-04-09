@@ -110,7 +110,7 @@ public class NurseScheduleChecker extends MainChecker {
     public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list) throws DuplicateScheduleException {
         for (NurseSchedule patient : list) {
             if (patient.getPatientID().equals(id)) {
-                if (patient.getDatetime().equals(date)) {
+                if (patient.getDate().equals(date)) {
                     try {
                         date = NurseSchedulesParser.formatDate(date);
                     } catch (ParseException e) {}

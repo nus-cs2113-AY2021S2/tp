@@ -116,7 +116,7 @@ public class NurseSchedulesParser {
         case "ADD":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleAdd(details);
+                c = new NurseScheduleAddCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
@@ -126,7 +126,7 @@ public class NurseSchedulesParser {
         case "LIST":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleList(details);
+                c = new NurseScheduleListCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
@@ -136,7 +136,7 @@ public class NurseSchedulesParser {
         case "DELETE":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleDelete(details);
+                c = new NurseScheduleDeleteCommand(details);
             } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
@@ -144,10 +144,10 @@ public class NurseSchedulesParser {
             }
             break;
         case "HELP":
-            c = new NurseScheduleHelp();
+            c = new NurseScheduleHelpCommand();
             break;
         case "RETURN":
-            c = new NurseScheduleReturn();
+            c = new NurseScheduleReturnCommand();
             break;
         default:
             logger.log(Level.WARNING, "Command not successfully parsed!");
