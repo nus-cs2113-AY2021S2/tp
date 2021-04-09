@@ -122,7 +122,7 @@ java 11 and above<br>
 
 ## Overview
 
-GULIO has a 2-layer system, consisting of the dashboard layer and the module layer. In both layers, you have access to a different set of commands. 
+GULIO has a 2-layer system, consisting of the dashboard layer, and the module layer. In both layers, you have access to a different set of commands. 
 
 <p align="center">
     <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
@@ -167,9 +167,9 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 
 | Field | Description |
 | --- | --- |
-| Lesson type | Lecture, lab or tutorial. |
+| Lesson type | Lecture, Lab or Tutorial. |
 | Day & time | Information on when the lesson happens. |
-| Link | Online meeting link for lesson. |
+| Link | Online meeting link for the lesson. |
 | Teaching staff name | Name of the lesson's teacher. |
 | Teaching staff email | Email of the lesson's teacher. |
 
@@ -194,13 +194,16 @@ Additionally, you can store your lecture notes in GULIO using the cheat-sheet fe
 ## Dashboard Commands
 These are commands used on the dashboard layer, when no modules have been selected. Commands here deal with the creation of modules, as well as accessing modules.
 
+&nbsp;
 
 ### Listing all dashboard commands : _help_
 
-Lists out all commands that are available from the dashboard layer. Includes format and description for each command.
+Lists out all commands that are available from the dashboard layer. Includes the format and description for each command.
 
 **Format:**<br>
 `help`
+
+&nbsp;
 
 ### Exiting the program : _exit_
 
@@ -208,6 +211,8 @@ Exits the program.
 
 **Format:**<br>
 `exit`
+
+&nbsp;
 
 ### Opening a module : _open_
 
@@ -229,6 +234,8 @@ Opens the specified module.
 
 > 💡 Module name is auto-converted to uppercase, hence is not case-sensitive.
 
+&nbsp;
+
 ### Adding a module : _add_
 
 Adds a module with the specified module name.
@@ -248,6 +255,8 @@ Adds a module with the specified module name.
 **Result** - A new module called CS2113T is added.
 
 > 💡 Module name is auto-converted to uppercase, hence is not case-sensitive.
+
+&nbsp;
 
 ### Deleting a module : _del_
 
@@ -273,6 +282,8 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 **Result** - Modules CS2107 and CS2101 are removed from the module list.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
 
 ### Listing all modules : _mods_
 
@@ -300,13 +311,17 @@ Lists all modules.
 
 These are commands used on the module layer, when a module has been selected. Commands here deal with modifying the data corresponding to the specified module.
 
+&nbsp;
+
 ### Listing all module commands : _help_
 
 Lists out all commands that are available from the module layer.
-Includes format and description for each command.
+Includes the format and description for each command.
 
 **Format:**<br>
 `help`
+
+&nbsp;
 
 ### Closing a module : _close_
 
@@ -314,6 +329,8 @@ Closes the current module and returns the user to the dashboard layer.
 
 **Format:**<br>
 `close`
+
+&nbsp;
 
 <!--@@author 8kdesign-->
 
@@ -333,7 +350,9 @@ Displays a summary of lessons and undone tasks for the module.
     </tr>
 </table>
 
-**Result** - Prints overview of module, including lesson and undone tasks.
+**Result** - Prints overview of module, including lessons and undone tasks.
+
+&nbsp;
 
 ### Adding a lesson : _add lsn_
 
@@ -351,21 +370,25 @@ Adds a new lesson with specified lesson type and information to the current modu
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">add lsn tutorial ;; Wednesday 9 am - 10am ;; https://zoom.us/</b><br><br>Added tutorial to lesson list.</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">add lsn tutorial ;; Wednesday 9am - 10am ;; https://zoom.us/</b><br><br>Added Tutorial to lesson list.</pre></td>
     </tr>
 </table>
 
-**Result** - Adds “tutorial” to the module's list of lessons, with specified details.
+**Result** - Adds “Tutorial” to the module's list of lessons, with specified details.
 
-> ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
+> ⚠ Only accepts 3 lesson types: “Lecture”, “Lab” and “Tutorial”.
+
+> 💡 "lesson type" is auto-capitalised when displayed, hence input for the field is not case-sensitive.
  
 > 💡 To skip an input, leave a blank in between the field separators. For example, 
 > 
 > `add lesson tutorial ;; ;; ;; Prof Akshay ;; akshay@email.com` 
 > 
-> will add “tutorial” to the module's list of lessons with only the given teaching staff name and email. The fields “day & time” and “link” were skipped.
+> will add “Tutorial” to the module's list of lessons with only the given teaching staff name and email. The fields “day & time” and “link” were skipped.
 > 
 > Note: “lesson type” cannot be skipped.
+
+&nbsp;
 
 ### Deleting a lesson : _del lsn_
 
@@ -379,17 +402,19 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">del lsn</b><br><br>Which lessons would you like to delete?<br>1. lecture<br>2. tutorial<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">del lsn</b><br><br>Which lessons would you like to delete?<br>1. Lecture (Teaching staff name: Prof Isa)<br>2. Tutorial (Wednesday 9am - 10am)<br><br>Please enter the indices of the lessons you would like to delete.<br>Separate indices with a blank space.</pre></td>
     </tr>
     <tr>
         <td style="text-align: center">Step #2</td>
-        <td><pre><b style="color: forestgreen">1 2</b><br>Removed lecture.<br>Removed tutorial.</pre></td>
+        <td><pre><b style="color: forestgreen">1 2</b><br>Removed Lecture.<br>Removed Tutorial.</pre></td>
     </tr>
 </table>
 
-**Result** - The lessons “lecture” and “tutorial” are removed from the list of lessons.
+**Result** - The lessons “Lecture” and “Tutorial” are removed from the list of lessons.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
 
 ### Editing a lesson : _edit lsn_
 
@@ -403,7 +428,7 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">edit lsn</b><br><br>Which lessons would you like to edit?<br>1. lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">edit lsn</b><br><br>Which lessons would you like to edit?<br>1. Lecture - Wed 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;www.zoom.com <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Isa<br>&nbsp;&nbsp;&nbsp;&nbsp;isa@gmail.com</pre></td>
     </tr>
     <tr>
         <td style="text-align: center">Step #2</td>
@@ -419,9 +444,11 @@ Lists all lessons for the module and asks the user for the index of the lesson t
     </tr>
 </table>
 
-**Result** - Edits time and day of "lecture".
+**Result** - Edits time and day of "Lecture".
 
 > 💡 While only one lesson can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
+
+&nbsp;
 
 ### Opening lesson link : _link_
 
@@ -436,7 +463,7 @@ Then, opens the links of the lessons specified.
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">link</b><br><br>Which lesson’s link would you like to open?<br>1. lecture<br>2. tutorial</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">link</b><br><br>Which lesson’s link would you like to open?<br>1. Lecture<br>2. Tutorial</pre></td>
     </tr>
     <tr>
         <td style="text-align: center">Step #2</td>
@@ -448,7 +475,9 @@ Then, opens the links of the lessons specified.
 
 > 💡 Multiple links can be opened at once. As such, separate indices with a space. Invalid indices will be ignored.
 
-> ⚠ Web protocol must be included in lesson link for security purpose. Links without protocol (e.g. no https nor http at the start) will be deemed invalid.
+> ⚠ Web protocol must be included in lesson link for security purposes. Links without protocol (e.g. no https nor http at the start) will be deemed invalid.
+
+&nbsp;
 
 ### Listing all teaching staff : _tch_
 
@@ -466,6 +495,8 @@ Lists all teaching staff for the module.
     </tr>
 </table>
 
+&nbsp;
+
 ### Listing all lessons : _lsn_
 
 Lists all lessons for the module.
@@ -478,9 +509,11 @@ Lists all lessons for the module.
 <table>
     <tr>
         <td style="text-align: center">Step #1</td>
-        <td><pre>CS2113T >> <b style="color: forestgreen">lsn</b><br><br>Lessons for CS2113T:<br>1. lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm</pre></td>
+        <td><pre>CS2113T >> <b style="color: forestgreen">lsn</b><br><br>Lessons for CS2113T:<br>1. Lecture - Friday 4pm - 6pm<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/def <br>&nbsp;&nbsp;&nbsp;&nbsp;Prof Akshay<br>&nbsp;&nbsp;&nbsp;&nbsp;profakshay@email.com<br>2. Tutorial - Wednesday 9am - 10am<br>&nbsp;&nbsp;&nbsp;&nbsp;https://nus-sg.zoom.us/j/abc <br>&nbsp;&nbsp;&nbsp;&nbsp;meeting - Wednesday 2pm - 4pm</pre></td>
     </tr>
 </table>
+
+&nbsp;
 
 ### Adding a task : _add task_
 
@@ -507,12 +540,13 @@ Adds a new task with specified name and information to the current module.
 
 > 💡 Deadline has to be in the DD-MM-YYYY format.
 
+> 💡 When asked if the task is graded, both "y" and "Y" will work. Response is not case-sensitive for the user's convenience.
+
+&nbsp;
+
 <!--@@author aliciatay-zls-->
 
 ### Deleting a task : _del task_
-
-> 💡 When asked if the task is graded, both "y" and "Y" will work. Response is not case-sensitive for the user's convenience.
-
 
 Lists all tasks for the module and asks the user for indices of tasks to delete. Then, deletes tasks corresponding to the indices specified.
 
@@ -535,6 +569,8 @@ Lists all tasks for the module and asks the user for indices of tasks to delete.
 **Result** - The tasks “weekly exercise” and “iP submission” are removed from the list of tasks.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
 
 ### Editing a task : _edit task_
 
@@ -568,6 +604,8 @@ Lists all tasks for the module and asks the user for the index of the task to ed
 
 > 💡 While only one task can be edited at a time, you can edit multiple fields simultaneously. As such, separate multiple indices with a space. Invalid indices will be ignored.
 
+&nbsp;
+
 ### Marking task as done : _mark_
 
 Lists undone tasks for the module and asks the user for the indices of tasks to mark as done. Then, marks all tasks corresponding to indices specified as done.
@@ -591,6 +629,8 @@ Lists undone tasks for the module and asks the user for the indices of tasks to 
 **Result** - The tasks “weekly exercise” and “lecture quiz” are marked as done.
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
+
+&nbsp;
 
 ### Marking task as undone : _unmark_
 
@@ -616,6 +656,8 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 > 💡 Separate indices with a space. Invalid indices will be ignored.
 
+&nbsp;
+
 ### Listing all tasks : _task_
 
 Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
@@ -631,6 +673,8 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
         <td><pre>CS2113T >> <b style="color: forestgreen">task</b><br><br>Tasks for CS2113T:<br><br>[Undone]<br>You have completed all your tasks.<br><br>[Done]<br>1.  iP increments - 22 Feb 2021</pre></td>
     </tr>
 </table>
+
+&nbsp;
 
 ### Adding a cheat-sheet : _add cs_
 
@@ -652,6 +696,8 @@ Adds a new cheat-sheet with specified name to the module.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
+&nbsp;
+
 ### Deleting a cheat-sheet : _del cs_
 
 Deletes the specified cheat-sheet from the module.
@@ -672,6 +718,8 @@ Deletes the specified cheat-sheet from the module.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
 
+&nbsp;
+
 ### Editing a cheat-sheet : _edit cs_
 
 Opens the specified cheat-sheet in the text editor.
@@ -691,6 +739,8 @@ Opens the specified cheat-sheet in the text editor.
 **Result** - Opens cheat-sheet “lecture notes” in text editor.
 
 > ⚠ Please do not include any file extension in the cheat-sheet name.
+
+&nbsp;
 
 <!--@@author H-horizon-->
 
@@ -733,7 +783,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 1. `lesson | <type> | <Day & Time> | <Link> | <Teaching Staff Name>`
 1. `lesson | <type> | <Day & Time> | <Link> | <Teaching Staff Name> | <Teaching Staff Email>`
 
-> ⚠ Only accepts 3 lesson types: “lecture”, “lab” and “tutorial”.
+> ⚠ Only accepts 3 lesson types: “Lecture”, “Lab” and “Tutorial”.
 
 #### Format for Tasks:
 
@@ -761,7 +811,7 @@ In the text editor, you can type in your notes in the text field. When done, rem
 | ctrl-down | Shrink text. |
 | esc | Exit test editor |
 
-> ⚠ Do not include file extension (e.g. .”.txt”) when creating or editing the cheat-sheet.
+> ⚠ Do not include file extension (e.g. ”.txt”) when creating or editing the cheat-sheet.
 
 &nbsp;
 
@@ -815,7 +865,7 @@ Here are some frequently asked questions that you may have regarding GULIO.
 | edit task | `edit task` |
 | mark | `mark` |
 | unmark | `unmark` |
-| tasks | `tasks` |
+| tasks | `task` |
 | add cheat-sheet | `add cs <cheat-sheet name>` |
 | delete cheat-sheet | `del cs <cheat-sheet name>` |
 | edit cheat-sheet | `edit cs <cheat-sheet name>` |
