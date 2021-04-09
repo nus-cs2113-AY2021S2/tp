@@ -8,8 +8,10 @@
 	1. [What is HealthVault?](#11-what-is-healthvault) 
 	2. [About the Developer Guide](#12-about-the-developer-guide)
 2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
-3. [Getting Started](#3-getting-started) (Owen)
-4. [Design](#4-design) 
+	1. [Technical Terms](#21-technical-terms)
+	2. [Symbols & Icons](#22-symbols-&-icons)
+4. [Getting Started](#3-getting-started) (Owen)
+5. [Design](#4-design) 
     1. [Architecture](#41-architecture) (owen)
     2. [UI component](#42-ui-component) (ms)
     3. [Instance Component](#43-instance-component) (jiaen)
@@ -19,7 +21,7 @@
     7. [Exceptions Component](#47-exceptions-component) (jiaen)
     8. [Model component](#48-model-component) (alex)
     9. [Storage component](#49-storage-component) (sarrah)
-5. [Implementation](#5-implementation)
+6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
     	2. [Add](#512-add)
@@ -49,7 +51,6 @@
     	2. [Add](#552-add)
     	3. [Delete](#553-delete)
     	4. [List](#554-list)
-    	5. [Find](#555-find)
 
 [Appendix A: Product Scope](#a-appendix-a-product-scope) (jiaen)
 
@@ -93,18 +94,29 @@ We hope you will have a fruitful time learning about HealthVault.
 <br>
 
 ## 2. How to use the guide
+### 2.1 Technical Terms
 
-:exclamation:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Command Line Interface** - Accessing the functionalities of a computer program in the form of lines of text.
 
-<> - means that ...
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
 
-[] - means that ...
+### 2.2 Symbols & Icons
 
-invalid input is shown with:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Angles quotation marks for optional user inputs.
 
-> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **[]** - Square brackets for compulsory user inputs.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :information_source: This icon denotes a important information to note.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :exclamation: Warning sign to inform user against doing certain actions 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Invalid input is shown with:
+
+>
 	- Invalid input 1
-	- Invalide input 2
+	- Invalid input 2
+	- Invalid input 3
+
 
 <br>
 
