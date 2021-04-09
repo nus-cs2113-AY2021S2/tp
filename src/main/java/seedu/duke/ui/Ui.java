@@ -670,13 +670,6 @@ public class Ui {
         }
     }
 
-    public static void printPsMessage() {
-        System.out.println(
-                "PS: If the number of the module you are finding is not available, you can enter any other single characters (e.g A)"
-                        + " if you would like to add a module for the link...\n"
-                        + "OR if you would like the zoom link to be a standalone ^~^\n");
-    }
-
     public static void printDuplicateMessage() {
         System.out.println("Duplicate detected! You have already entered this link before");
         System.out.println("Please enter another link...");
