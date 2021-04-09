@@ -3,6 +3,6 @@ package seedu.exceptions;
 public class DeliveryAlreadyCompletedException extends Exception {
     @Override
     public String getMessage() {
-        return "Delivery is already completed! Please choose a different delivery number!";
+        return "Been already completed, the delivery number you entered has. Be paid extra, you will not.";
     }
 }
