@@ -11,7 +11,7 @@ import java.io.IOException;
  * StaffDelete Command executes the necessary action for deleting a Staff object.
  */
 
-public class StaffDelete extends Command {
+public class StaffDeleteCommand extends Command {
     private String input;
 
     /**
@@ -19,7 +19,7 @@ public class StaffDelete extends Command {
      *
      * @param input String input for identifying Staff object to be deleted.
      */
-    public StaffDelete (String input) {
+    public StaffDeleteCommand(String input) {
         this.input = input;
     }
 

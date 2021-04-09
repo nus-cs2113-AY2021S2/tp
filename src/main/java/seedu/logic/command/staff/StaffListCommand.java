@@ -8,7 +8,7 @@ import seedu.ui.UI;
 /**
  * StaffList Command executes the necessary action for displaying relevant Staff objects.
  */
-public class StaffList extends Command {
+public class StaffListCommand extends Command {
     private String[] input;
 
     /**
@@ -16,7 +16,7 @@ public class StaffList extends Command {
      *
      * @param array Array of inputs for StaffList comamnd.
      */
-    public StaffList (String[] array) {
+    public StaffListCommand(String[] array) {
         this.input = array;
     }
 

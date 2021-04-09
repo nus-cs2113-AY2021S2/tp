@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * StaffAdd Command executes the necessary action for finding a Staff object within a StaffList.
  */
-public class StaffFind extends Command {
+public class StaffFindCommand extends Command {
 
     private String input;
 
@@ -20,7 +20,7 @@ public class StaffFind extends Command {
      *
      * @param line Inputs to find Staff object.
      */
-    public StaffFind (String line) {
+    public StaffFindCommand(String line) {
         this.input = line;
     }
 
