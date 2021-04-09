@@ -20,6 +20,15 @@ public class StaffParser {
     private StaffChecker staffChecker = new StaffChecker();
     public Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Returns a Command Object which dictates the actions to be carried out on the Staff objects.
+     *
+     * @param line  Entire input command.
+     * @param staffList StaffList object that contains all Staff objects.
+     * @return Command object.
+     * @throws HealthVaultException  If any invalid input given.
+     * @throws NumberFormatException  If any invalid input given to a field expecting numeral input.
+     */
     public Command commandHandler(String line, StaffList staffList) throws HealthVaultException, NumberFormatException {
         Command c = null;
         if (line.equals(" ")) {

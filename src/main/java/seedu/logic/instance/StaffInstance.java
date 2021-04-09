@@ -19,6 +19,11 @@ public class StaffInstance {
     private StaffParser staffParser;
     public Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Constructor for StaffInstance.
+     *
+     * @param filepath String of the filepath for StaffStorage.
+     */
     public StaffInstance(String filepath) {
         staffUI = new StaffUI();
         staffStorage = new StaffStorage(filepath);
@@ -26,7 +31,9 @@ public class StaffInstance {
         staffList = new StaffList();
     }
 
-
+    /**
+     * Executes the Staff Menu.
+     */
     public void run() {
         try {
             staffStorage.fileHandling(staffList);
