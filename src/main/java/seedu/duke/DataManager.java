@@ -28,8 +28,12 @@ public class DataManager {
 			File directory = new File(TXT_FILE_DIRECTORY);
 			File saveFile = new File(PATH_TO_PROFILE);
 			if (!directory.exists()) {
+				System.out.println("First time user, you are.... ");
+				System.out.println("Creating new files, I am");
 				directory.mkdirs();
 				saveFile.createNewFile();
+				new File(PATH_TO_DELIVERY).createNewFile();
+				new File(PATH_TO_ROUTES).createNewFile();
 			}
 			Scanner sc = new Scanner(saveFile);
 			while(sc.hasNext()){
