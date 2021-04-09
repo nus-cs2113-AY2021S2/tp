@@ -2,6 +2,8 @@
 skinparam classAttributeIconSize 0
 hide circle
 
+note "Private methods are omitted.\nexecute() parameters omitted for brevity." as N1
+
 abstract class "{abstract}\nCommand" as Command {
     {abstract} +execute()
 }
@@ -23,15 +25,34 @@ class AddCommand {
     +execute()
 }
 
-note right of Command::execute
-    Parameters omitted for brevity.
-end note
+class CreditScoreCommand {
+    {static} #COMMAND_CREDIT_SCORE: String
+    -borrowerName: String
+    +CreditScoreCommand(:ArrayList<String>)
+    +execute()
+}
+
+class ExitCommand {
+    {static} #COMMAND_EXIT: String
+    +ExitCommand(:ArrayList<String>)
+    +execute()
+}
+
+class HelpCommand {
+    {static} #COMMAND_HELP: String
+    -helpType: String
+    +HelpCommand(:ArrayList<String>)
+    +execute()
+}
+
+skinparam linetype polyline
+skinparam groupInheritance 3
 
 Command <|-- AddCommand
+Command <|-- CreditScoreCommand
+Command <|-- ExitCommand
+Command <|-- HelpCommand
 
 hide RecordType empty members
-Command -left[hidden] RecordType
-
-note "Other child Command objects omitted for brevity.\nPrivate methods are omitted." as N1
 
 @enduml

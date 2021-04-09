@@ -270,9 +270,12 @@ sets the `isExit = true`, ending control of the `commandLooper()` and resulting 
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
-_Figure 8: Command Class Diagram_
+_Figure 8: Command Class Diagram (Part 1)_
 
-All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
+![CommandClassDiagram2](img/CommandClassDiagram2.png)\
+_Figure 9: Command Class Diagram (Part 2)_
+
+All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8 & 9_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.\
 In the case of `AddCommand` in _Figure 8_, the resultant constant is `...final String COMMAND_ADD = "add";`.\
