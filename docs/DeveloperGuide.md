@@ -43,7 +43,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Adding a Lesson](#adding-a-lesson)
     * [Deleting a Lesson](#deleting-a-lesson)
     * [Opening a Link](#opening-a-link)
-* Appendix: Command Summary
+* [Appendix: Command Summary](#command-summary)
 
 &nbsp;
 
@@ -634,8 +634,8 @@ Due to the 2-layer command system, you will need to identify which layer you are
 | exit | `exit` |
 | open | `open <module code>`|
 | add | `add <module code>` |
-| delete | `delete  <module name>` |
-| modules | `modules` |
+| delete | `del  <module name>` |
+| modules | `mods` |
 
 <div style="page-break-after: always;"></div>
 
@@ -646,22 +646,22 @@ Due to the 2-layer command system, you will need to identify which layer you are
 | help | `help` |
 | close | `close` |
 | info | `info` | 
-| add lesson | `add lesson <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>` |
-| delete lesson | `delete lesson` |
-| edit lesson | `edit lesson` |
+| add lesson | `add lsn <lesson type> ;; <day & time> ;; <link> ;; <teaching staff name> ;; <email>` |
+| delete lesson | `del lsn` |
+| edit lesson | `edit lsn` |
 | link | `link` |
-| teacher | `teacher` |
-| lessons | `lessons` |
+| teacher | `tch` |
+| lessons | `lsn` |
 | add task | `add task <task name> ;; <deadline> ;; <remarks>` |
-| delete task | `delete task` |
+| delete task | `del task` |
 | edit task | `edit task` |
 | mark | `mark` |
 | unmark | `unmark` |
-| tasks | `tasks` |
-| add cheat-sheet | `add cheat-sheet <cheat-sheet name>` |
-| delete cheat-sheet | `delete cheat-sheet <cheat-sheet name>` |
-| edit cheat-sheet | `edit cheat-sheet <cheat-sheet name>` |
-| cheat-sheets | `cheat-sheets` |
+| tasks | `task` |
+| add cheat-sheet | `add cs <cheat-sheet name>` |
+| delete cheat-sheet | `del cs <cheat-sheet name>` |
+| edit cheat-sheet | `edit cs <cheat-sheet name>` |
+| cheat-sheets | `cs` |
 
 &nbsp;
 
