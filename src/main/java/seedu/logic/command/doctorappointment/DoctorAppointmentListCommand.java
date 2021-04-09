@@ -8,19 +8,20 @@ import seedu.ui.DoctorAppointmentUI;
 
 import java.text.ParseException;
 
-public class DoctorAppointmentList extends Command {
+public class DoctorAppointmentListCommand extends Command {
 
     private String[] input;
-    private String ID;
+    private String Id;
 
-    public DoctorAppointmentList(String[] parsedInput) {
-        ID = parsedInput[1];
+    public DoctorAppointmentListCommand(String[] parsedInput) {
+        Id = parsedInput[1];
         input = parsedInput;
     }
 
     @Override
-    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws ParseException, EmptyListException, HealthVaultException {
-        AppointmentList.listAppointment(ID);
+    public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws ParseException,
+            HealthVaultException {
+        AppointmentList.listAppointment(Id);
     }
 
     @Override

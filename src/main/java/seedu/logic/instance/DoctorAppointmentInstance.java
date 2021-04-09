@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running
+ * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running.
  */
 
 public class DoctorAppointmentInstance {
