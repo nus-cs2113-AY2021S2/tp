@@ -829,7 +829,7 @@ Invalid Inputs include:
 
 2.If the parameters are valid, a NurseScheduleAddCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3.The Command objected is then executed and `NurseScheduleActions.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+3.The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
 
 **Saving NurseSchedule objects into .txt file**
 
@@ -863,7 +863,7 @@ Invalid Inputs include:
 
 2. If the parameters are valid, a NurseScheduleDeleteCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleActions.deleteSchedule()`.
+3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleList.deleteSchedule()`.
 
 4. `deleteSchedule` iterates through the arraylist and removes the first object that matches the user input given.
 
