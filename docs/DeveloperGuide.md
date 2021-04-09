@@ -401,18 +401,20 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.2. User Stories
 
-|Version| As a ... | I want to ... | So that I ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|
-|v1.0|user|have a clear path to my destination|will not get lost|
-|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|
-|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|
-|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|
-|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|
-|v2.0|user|have a list of favorite locations|can access directions to them quickly|
-|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|
-|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|
-|v2.0|user|be able to store my routing for my daily activities|can access it easily|
+Below is our analysis of our target user and the importance in which he/she would place on the potential user stories we have chosen.
+
+|Version| As a ... | I want to ... | So that I ...|Importance|
+|--------|----------|---------------|------------------|----|
+|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|HIGH|
+|v1.0|user|have a clear path to my destination|will not get lost|HIGH|
+|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|MEDIUM|
+|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|MEDIUM|
+|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|HIGH|
+|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|HIGH|
+|v2.0|user|have a list of favorite locations|can access directions to them quickly|MEDIUM|
+|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|MEDIUM|
+|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|MEDIUM|
+|v2.0|user|be able to store my routing for my daily activities|can access it easily|MEDIUM|
 
 ### 4.3. Use Cases
 
