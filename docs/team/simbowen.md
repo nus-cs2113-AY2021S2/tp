@@ -43,11 +43,12 @@ This is an extension of the routing function and serves to help store the daily 
 I contributed to the overall formatting of the document and wrote the content page, Sections 2, 3, 4.5, 5, 6 and 7.
 
 ### Contributions to the DG
-I contributed to the parts of the DG that describe and explain the implementation of Finding The Shortest Route Feature and Daily route planning feature, including the UML diagrams.
+I contributed to the parts of the DG that describe and explain the implementation of finding the shortest route feature and daily route planning feature, including the UML diagrams.
 
 ### Contributions to team-based tasks:
+I Managed release v1.0 (1 release) on GitHub <br>
 I vetted issues and assigned to members accordingly. <br>
-I maintained the cohesiveness in language and formatting of the documentations.
+I maintained the cohesiveness in language and formatting of the documentations. <br>
 
 ###Review contributions
 The link to PR reviews by me can be found [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3ASimBowen+).
