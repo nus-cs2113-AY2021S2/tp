@@ -84,11 +84,7 @@ public class Commands {
             ui.println(MISSING_DISPLAY_TYPE);
             return;
         }
-        if (isReviewMode) {
-            reviewList.changeDisplay(displayType);
-        } else {
-            ui.printCommandDoesNotExistInRecommendationMode();
-        }
+        reviewList.changeDisplay(displayType);
     }
 
     /**
