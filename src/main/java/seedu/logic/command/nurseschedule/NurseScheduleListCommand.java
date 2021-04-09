@@ -5,11 +5,11 @@ import seedu.exceptions.nurseschedules.NurseIdNotFound;
 import seedu.logic.command.Command;
 import seedu.ui.NurseScheduleUI;
 
-public class NurseScheduleList extends Command {
+public class NurseScheduleListCommand extends Command {
 
     private String[] argArr;
 
-    public NurseScheduleList(String [] args) {
+    public NurseScheduleListCommand(String [] args) {
         argArr = args;
     }
 
