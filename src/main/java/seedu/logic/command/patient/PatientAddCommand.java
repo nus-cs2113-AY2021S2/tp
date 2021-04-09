@@ -4,17 +4,17 @@ import seedu.logic.command.Command;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
-public class PatientFind extends Command {
+public class PatientAddCommand extends Command {
 
-    private String args;
+    private String[] argArr;
 
-    public PatientFind(String args) {
-        this.args = args;
+    public PatientAddCommand(String[] args) {
+        argArr = args;
     }
 
-    @Override
     public void execute(PatientList patients, PatientUI ui) {
-        patients.findPatient(args);
+        patients.addPatient(argArr);
+        ui.patientAddedMessage(argArr[1]);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package seedu.model.patient;
 
-import java.util.Locale;
-
 public class Patient {
     protected String patientID;
     protected String name;
@@ -22,7 +20,7 @@ public class Patient {
     }
 
     public String[] getPatientDetailsArray() {
-        return (patientDetails) ;
+        return (patientDetails);
     }
 
     public String getPatientDetailsString() {

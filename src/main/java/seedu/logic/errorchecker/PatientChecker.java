@@ -1,7 +1,15 @@
 package seedu.logic.errorchecker;
 
-import seedu.exceptions.*;
-import seedu.exceptions.patient.*;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.IDNotFoundException;
+import seedu.exceptions.NoInputException;
+import seedu.exceptions.patient.InvalidFieldsNumberException;
+import seedu.exceptions.patient.InvalidIdLengthException;
+import seedu.exceptions.patient.InvalidIdTypeException;
+import seedu.exceptions.patient.InvalidIdValueException;
+import seedu.exceptions.patient.InvalidPatientAgeException;
 import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
@@ -15,14 +23,14 @@ public class PatientChecker extends MainChecker{
     private String command;
     private int numberOfTokens;
 
-    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens) {
+    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens){
         this.patients = patients;
         this.stringTokens = stringTokens;
         this.command = command;
         this.numberOfTokens = numberOfTokens;
     }
 
-    public PatientChecker(ArrayList<Patient> patients, String[] stringTokens, int numberOfTokens) {
+    public PatientChecker(ArrayList<Patient> patients, String[] stringTokens, int numberOfTokens){
         patientArrayList = patients;
         this.stringTokens = stringTokens;
         this.numberOfTokens = numberOfTokens;
@@ -31,7 +39,7 @@ public class PatientChecker extends MainChecker{
     public void checkStorage() throws HealthVaultException {
         emptySpaceCheck();
         checkStorageLength();
-        checkIDStorage();
+        checkIdStorage();
         checkAge(stringTokens[2]);
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[4], "Illness");
@@ -42,7 +50,7 @@ public class PatientChecker extends MainChecker{
     public void checkAdd() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
         checkLength();
-        checkID();
+        checkId();
         checkAge(stringTokens[3]);
         illegalCharacterChecker(stringTokens[2], "name");
         illegalCharacterChecker(stringTokens[5], "Illness");
@@ -93,14 +101,14 @@ public class PatientChecker extends MainChecker{
         }
     }
 
-    public void checkID() throws HealthVaultException {
-        checkValidID(stringTokens[1]);
-        checkIDExist(stringTokens[1], patients, command);
+    public void checkId() throws HealthVaultException {
+        checkValidId(stringTokens[1]);
+        checkIdExist(stringTokens[1], patients, command);
     }
 
-    public void checkIDStorage() throws HealthVaultException {
-        checkValidID(stringTokens[0]);
-        checkIDExistStorage(stringTokens[0]);
+    public void checkIdStorage() throws HealthVaultException {
+        checkValidId(stringTokens[0]);
+        checkIdExistStorage(stringTokens[0]);
     }
 
     private int numberOfIntegersInString(String userInput) {
@@ -113,25 +121,25 @@ public class PatientChecker extends MainChecker{
         return numberOfIntegers;
     }
 
-    private void checkValidID(String userID) throws InvalidIDLengthException, InvalidIDTypeException,
-            InvalidIDValueException {
+    private void checkValidId(String userID) throws InvalidIdLengthException, InvalidIdTypeException,
+            InvalidIdValueException {
         if (userID.length() != 6) {
-            throw new InvalidIDLengthException("IDLength");
+            throw new InvalidIdLengthException("IDLength");
         } else if (!(userID.charAt(0) == 'P')) {
-            throw new InvalidIDTypeException("IDType");
+            throw new InvalidIdTypeException("IDType");
         } else if (numberOfIntegersInString(userID) != 5) {
-            throw new InvalidIDValueException("IDValue");
+            throw new InvalidIdValueException("IDValue");
         }
     }
 
-    private void checkIDExistStorage(String userID) throws CorruptedFileException {
-        if (isIDTakenStorage(userID)) {
+    private void checkIdExistStorage(String userID) throws CorruptedFileException {
+        if (isIdTakenStorage(userID)) {
             System.out.println("There is a duplicate ID!");
             throw new CorruptedFileException("Patient");
         }
     }
 
-    private boolean isIDTakenStorage(String userID) {
+    private boolean isIdTakenStorage(String userID) {
         for (Patient patient : patientArrayList) {
             String patientID = patient.getPatientID();
             if (patientID.equals(userID)) {
@@ -142,9 +150,9 @@ public class PatientChecker extends MainChecker{
         return false;
     }
 
-    private void checkIDExist(String userID, PatientList patients, String command) throws IDNotFoundException,
+    private void checkIdExist(String userID, PatientList patients, String command) throws IDNotFoundException,
             DuplicateIDException {
-        if (patients.isIDTaken(userID)) {
+        if (patients.isIdTaken(userID)) {
             if (command.equals("add")) {
                 throw new DuplicateIDException("Patient");
             }

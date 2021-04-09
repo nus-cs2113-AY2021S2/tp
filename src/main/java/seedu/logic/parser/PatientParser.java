@@ -31,29 +31,29 @@ public class PatientParser {
         switch (command) {
         case "list":
             checker.checkLength();
-            c = new seedu.logic.command.patient.PatientList();
+            c = new PatientListCommand();
             break;
         case "add":
             checker.checkAdd();
             String[] addFormat = parseToAddFormat(stringTokens);
-            c = new PatientAdd(addFormat);
+            c = new PatientAddCommand(addFormat);
             break;
         case "delete":
             checker.checkLength();
-            checker.checkID();
-            c = new PatientDelete(stringTokens[1]);
+            checker.checkId();
+            c = new PatientDeleteCommand(stringTokens[1]);
             break;
         case "find":
             checker.checkFind();
-            c = new PatientFind(stringTokens[1]);
+            c = new PatientFindCommand(stringTokens[1]);
             break;
         case "help":
             checker.checkLength();
-            c = new PatientHelp();
+            c = new PatientHelpCommand();
             break;
         case "return":
             checker.checkLength();
-            c = new PatientReturn();
+            c = new PatientReturnCommand();
             break;
         default:
             throw new UnrecognizedCommandException();
