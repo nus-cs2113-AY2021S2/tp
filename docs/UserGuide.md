@@ -1,8 +1,16 @@
+<style type="text/css">
+OL { counter-reset: item }
+LI { display: block }
+LI:before { content: counters(item, ".") " "; counter-increment: item }
+</style>
+
 # Patient Manager User Guide
 
-Patient Manager is a _Command Line Interface_ (CLI) application for **_general practitioners_** (GP)
-who work in government polyclinics to manage their patient list. This includes a recording/retrieval of
-past record of visit, scheduling of the next appointment, and some other features listed below.
+Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP) 
+to manage their patient list. Patient Manger allows you to easily register new patients to your clinic
+with their NRIC or FIN number. Once a patient's records have been loaded, you can easily add new medical
+records and retrieve a summary of past records
+
 With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
 to organize the records of their patients.
 
@@ -13,23 +21,23 @@ to organize the records of their patients.
 ## Table of Contents
 
 <!-- TODO: Description -->
-* [User Guide Information](#user-guide-information)
-* [Quick Start](#quick-start)
-* [About Command Input](#about-command-input)
-  * [Spacing](#spacing)
-  * [Order of Arguments](#order-of-arguments)
-* [Features](#features)
-  * [Print a help message: `help`](#print-a-help-message-help)
-  * [Adding a patient: `add`](#adding-a-patient-add)
-  * [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
-  * [Listing all patients: `list`](#listing-all-patients-list)
-  * [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
-  * [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
-  * [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
-  * [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
-  * [Exiting the program: `exit`](#exiting-the-program-exit)
-* [Frequently Asked Questions](#frequently-asked-questions)
-* [Command Summary](#command-summary)
+1. [User Guide Information](#user-guide-information)
+1. [Quick Start](#quick-start)
+1. [About Command Input](#about-command-input)
+    1. [Spacing](#spacing)
+    1. [Order of Arguments](#order-of-arguments)
+1. [Features](#features)
+    1. [Print a help message: `help`](#print-a-help-message-help)
+    1. [Adding a patient: `add`](#adding-a-patient-add)
+    1. [Deleting a patient or a patient's consultation details: `delete`](#deleting-a-patient-or-a-patients-consultation-details-delete)
+    1. [Listing all patients: `list`](#listing-all-patients-list)
+    1. [Loading a patient's medical records: `load`](#loading-a-patients-medical-records-load)
+    1. [Displaying the current loaded patient: `current`](#displaying-the-current-loaded-patient-current)
+    1. [Recording a patient's consultation details: `record`](#recording-a-patients-consultation-details-record)
+    1. [Retrieving a patient's consultation details: `retrieve`](#retrieving-a-patients-consultation-details-retrieve)
+    1. [Exiting the program: `exit`](#exiting-the-program-exit)
+1. [Frequently Asked Questions](#frequently-asked-questions)
+1. [Command Summary](#command-summary)
 
 ---
 ## User Guide Information
