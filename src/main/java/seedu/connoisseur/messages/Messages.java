@@ -15,7 +15,7 @@ public class Messages {
             + "Enter 'review' or 'reco' to change mode when prompted:) ";
 
     public static final String COMMAND_PROMPT = "_____________________________________________________________________"
-            + "______________________\n"
+            + "________________________\n"
             + "Please enter a command: ";
 
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
@@ -25,7 +25,7 @@ public class Messages {
     // Help
     public static final String HELP_MESSAGE = "Connoisseur is an application to keep track of all your reviews and"
             + " recommendations!\n"
-            + "There are two modes, which are review mode and recommendations mode.\n"
+            + "There are two modes, which are review mode and recommendation mode.\n"
             + "This application is in review mode by default.\n\n"
             + "Commands:\n"
             + "help\t\tdisplays help on commands recognised by connoisseur\n"
@@ -42,14 +42,14 @@ public class Messages {
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort sets your preferred sorting method for your reviews.\n"
             + "This command is not available in the recommendation mode.\n\n"
-            + "Currently recognised methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
+            + "Posisible sorting methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews or recommendations.\n"
             + "You will list the reviews/recommendations depending on the mode you are in.\n\n"
             + "Command syntax: list";
     public static final String EDIT_HELP_MESSAGE = "Edit will allow you to edit an existing review or recommendation"
             + " in your list.\n\n"
-            + "Command syntax: edit <title of review or recommendation to be edited>";
+            + "Command syntax: edit <title of review/recommendation to be edited>";
     public static final String EXIT_HELP_MESSAGE = "Exit/bye will allow you to exit the application.\n\n"
             + "Command syntax: bye/exit";
     public static final String NEW_HELP_MESSAGE = "New and Add are interchangeable. "
@@ -72,15 +72,16 @@ public class Messages {
             + "This command is not available in the recommendation mode.\n\n"
             + "Currently recognised methods are:\n\tstars\n\tasterisks\n"
             + "\nCommand syntax: display <method>";
-    public static final String RECODONE_HELP_MESSAGE = "Done will allow you to mark a recommendation as done and switch"
-            + " it over as a review.\n"
+    public static final String RECODONE_HELP_MESSAGE = "Done will allow you to mark a recommendation as done and "
+            + "convert it to a review.\n"
             + "This can only be done in recommendation mode.\n"
             + "Follow the prompts on screen to convert your recommendation to a review\n\n"
             + "Command syntax: done <title of recommendation>";
     public static final String REVIEW_MODE_MESSAGE = "Review will allow you to switch over to review mode. The default"
             + " mode of this application is review mode.\n\nCommand syntax: review";
-    public static final String RECO_MODE_MESSAGE = "Reco will allow you to switch over to recommendations mode. The"
+    public static final String RECO_MODE_MESSAGE = "Reco will allow you to switch over to recommendation mode. The"
             + " default mode of this application is review mode.\n\nCommand syntax: reco";
+    public static final String INVALID_HELP_MESSAGE = "Invalid help command!";
 
     // Storage
     public static final String FILE_ALREADY_EXISTS = "Data file already exists";
@@ -121,17 +122,17 @@ public class Messages {
     public static final String SORT_METHOD_SUCCESS = "Success! Your preferred sorting method has been saved: ";
 
     // Delete
-    public static final String MISSING_DELETE_TITLE = "Please specify title of review to be deleted";
-    public static final String INVALID_DELETE_REVIEW_TITLE = "Specified review does not exist!";
-    public static final String INVALID_DELETE_RECO_TITLE = "Specified recommendation does not exist!";
+    public static final String MISSING_DELETE_TITLE = "Use delete <title> to delete a review/recommendation";
+    public static final String INVALID_REVIEW_TITLE = "Specified review does not exist!";
+    public static final String INVALID_RECO_TITLE = "Specified recommendation does not exist!";
     public static final String DELETE_SUCCESS = " has been deleted.";
 
     // View
     public static final String INVALID_VIEW_TITLE = "Specified review does not exist!";
-    public static final String MISSING_VIEW_TITLE = "Please specify title of review you would like to view";
+    public static final String MISSING_VIEW_TITLE = "Use view <title> to view a review";
 
     // Edit
-    public static final String MISSING_EDIT_TITLE = "Please specify title of review you would like to edit";
+    public static final String MISSING_EDIT_TITLE = "Use edit <title> to edit a review/recommendation";
     public static final String ANYTHING_ELSE = "Would you like to edit anything else? (y/n)";
     public static final String EDIT_PROMPT_REVIEW = "What would you like to edit (Title / Category / "
             + "Rating / Description)?";
@@ -148,11 +149,13 @@ public class Messages {
             + "the changes made(y/n)?";
 
     // Convert
+    public static final String MISSING_DONE_TITLE = "Use done <title> to convert a recommendation to a review";
     public static final String DETAILS_PROMPT = "Add in details of your experience? (y/n)";
     public static final String ENTER_DETAILS_PROMPT = "Enter the details of the review: ";
     public static final String CONVERT_SUCCESS = " has been made a review!";
 
     // Display
+    public static final String MISSING_DISPLAY_TYPE = "Use display <stars/asterisks> to change your display symbol";
     public static final String DISPLAY_SUCCESS = "Success! Your preferred display method has been saved: ";
     public static final String INVALID_DISPLAY_TYPE = " is not a valid display method, please try again.";
 }

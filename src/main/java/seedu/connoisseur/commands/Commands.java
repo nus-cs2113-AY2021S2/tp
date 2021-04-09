@@ -1,12 +1,26 @@
 package seedu.connoisseur.commands;
 
-import seedu.connoisseur.exceptions.ConnoisseurException;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.storage.Storage;
 import seedu.connoisseur.ui.Ui;
 
 
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.SORT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.LIST_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.EDIT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.NEW_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.DELETE_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.VIEW_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.DISPLAY_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.REVIEW_MODE_MESSAGE;
+import static seedu.connoisseur.messages.Messages.RECO_MODE_MESSAGE;
+import static seedu.connoisseur.messages.Messages.RECODONE_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.EXIT_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.INVALID_HELP_MESSAGE;
+import static seedu.connoisseur.messages.Messages.MISSING_DISPLAY_TYPE;
+import static seedu.connoisseur.messages.Messages.EXIT_MESSAGE;
 
 
 /**
@@ -66,11 +80,11 @@ public class Commands {
      * @param displayType stars or asterisks
      */
     public void display(String displayType) {
-        if (isReviewMode) {
-            reviewList.changeDisplay(displayType);
-        } else {
-            ui.printCommandDoesNotExistInRecommendationMode();
+        if (displayType == null || displayType.isBlank()) {
+            ui.println(MISSING_DISPLAY_TYPE);
+            return;
         }
+        reviewList.changeDisplay(displayType);
     }
 
     /**
@@ -80,31 +94,31 @@ public class Commands {
      */
     public void printHelp(String arguments) {
         if (arguments == null || arguments.equals("")) {
-            ui.printGeneralHelpMessage();
+            ui.println(HELP_MESSAGE);
         } else if (arguments.equals("sort")) {
-            ui.printSortHelpMessage();
+            ui.println(SORT_HELP_MESSAGE);
         } else if (arguments.equals("list")) {
-            ui.printListHelpMessage();
+            ui.println(LIST_HELP_MESSAGE);
         } else if (arguments.equals("edit")) {
-            ui.printEditHelpMessage();
+            ui.println(EDIT_HELP_MESSAGE);
         } else if (arguments.equals("new") || arguments.equals("add")) {
-            ui.printNewHelpMessage();
+            ui.println(NEW_HELP_MESSAGE);
         } else if (arguments.equals("delete")) {
-            ui.printDeleteHelpMessage();
+            ui.println(DELETE_HELP_MESSAGE);
         } else if (arguments.equals("view")) {
-            ui.printViewHelpMessage();
+            ui.println(VIEW_HELP_MESSAGE);
         } else if (arguments.equals("display")) {
-            ui.printDisplayHelpMessage();
+            ui.println(DISPLAY_HELP_MESSAGE);
         } else if (arguments.equals("review")) {
-            ui.printReviewModeHelpMessage();
+            ui.println(REVIEW_MODE_MESSAGE);
         } else if (arguments.equals("reco")) {
-            ui.printRecommendationModeHelpMessage();
+            ui.println(RECO_MODE_MESSAGE);
         } else if (arguments.equals("done")) {
-            ui.printRecoDoneHelpMessage();
+            ui.println(RECODONE_HELP_MESSAGE);
         } else if (arguments.equals("exit") || arguments.equals("bye")) {
-            ui.printExitHelpMessage();
+            ui.println(EXIT_HELP_MESSAGE);
         } else {
-            ui.printInvalidHelpMessage();
+            ui.println(INVALID_HELP_MESSAGE);
         }
     }
 
@@ -128,7 +142,7 @@ public class Commands {
     public void exit() {
         storage.saveConnoisseurData(reviewList.sorter.getSortMethod(), reviewList.getDisplayStars(),
                 reviewList.reviews, recommendationList.recommendations);
-        ui.printExitMessage();
+        ui.println(EXIT_MESSAGE);
     }
 
     /**
@@ -209,7 +223,11 @@ public class Commands {
         if (isReviewMode) {
             reviewList.addReview(input);
         } else {
-            recommendationList.addRecommendation();
+            if (input == null || input.isBlank()) {
+                recommendationList.addRecommendation();
+            } else {
+                invalidParameters();
+            }
         }
     }
 
