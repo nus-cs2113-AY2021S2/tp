@@ -40,7 +40,7 @@ public abstract class Command {
     public void execute (AppointmentList appointment, DoctorAppointmentUI ui) throws HealthVaultException, IOException, Exception {
     }
 
-    public void execute (NurseScheduleList nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidIDTypeException, NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
+    public void execute (NurseScheduleList nurseSchedule, NurseScheduleUI ui) throws NurseIdNotFound, InvalidiDTypeException, NurseCrossValidationError, DuplicateIDException, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
     }
 
     public abstract boolean isExit();

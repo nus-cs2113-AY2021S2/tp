@@ -8,7 +8,11 @@ import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logger.HealthVaultLogger;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.command.Command;
-import seedu.logic.command.nurseschedule.*;
+import seedu.logic.command.nurseschedule.NurseScheduleAddCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleDeleteCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleHelpCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleListCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleReturnCommand;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
@@ -49,13 +53,15 @@ public class NurseSchedulesParser {
 
     private String[] trimInputs(String[] parts) {
         String[] trimmedArray = new String[parts.length];
-        for (int i = 0; i< parts.length; i++) {
+        for (int i = 0; i < parts.length; i++) {
             trimmedArray[i] = parts[i].trim();
         }
         return trimmedArray;
     }
 
-    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException,
+            ExcessInputException, InsufficientInputException,
+            IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
@@ -88,6 +94,8 @@ public class NurseSchedulesParser {
             MainChecker.checkNumInput(input, 2, 2);
             details[0] = parts[1];
             break;
+        default:
+            break;
         }
         return details;
     }
@@ -100,7 +108,9 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException,
+            InsufficientInputException, ExcessInputException,
+            IllegalCharacterException, InvalidDateException {
         assert input != null : "user input should not be null";
         assert !(input.isEmpty()) : "user input should not be empty";
 
@@ -116,7 +126,7 @@ public class NurseSchedulesParser {
         case "ADD":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleAdd(details);
+                c = new NurseScheduleAddCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
@@ -126,7 +136,7 @@ public class NurseSchedulesParser {
         case "LIST":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleList(details);
+                c = new NurseScheduleListCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
@@ -136,18 +146,18 @@ public class NurseSchedulesParser {
         case "DELETE":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleDelete(details);
-            } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
+                c = new NurseScheduleDeleteCommand(details);
+            } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
                 logger.log(Level.WARNING, "Parameter error in delete command!");
             }
             break;
         case "HELP":
-            c = new NurseScheduleHelp();
+            c = new NurseScheduleHelpCommand();
             break;
         case "RETURN":
-            c = new NurseScheduleReturn();
+            c = new NurseScheduleReturnCommand();
             break;
         default:
             logger.log(Level.WARNING, "Command not successfully parsed!");

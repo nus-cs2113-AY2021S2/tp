@@ -1,6 +1,13 @@
 package seedu.model.nurseschedule;
 
-import seedu.exceptions.nurseschedules.*;
+import seedu.exceptions.nurseschedules.DuplicateScheduleException;
+import seedu.exceptions.nurseschedules.EmptyListException;
+import seedu.exceptions.nurseschedules.InvalidScheduleException;
+import seedu.exceptions.nurseschedules.InvalidiDTypeException;
+import seedu.exceptions.nurseschedules.NurseCrossValidationError;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.PatientCrossValidationError;
+import seedu.exceptions.nurseschedules.PatientIdNotFound;
 import seedu.logger.HealthVaultLogger;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
@@ -29,25 +36,25 @@ public class NurseScheduleList {
         logger.log(Level.INFO,"Creating a NurseSchedule list");
     }
 
-    public NurseScheduleList() { }
+    public NurseScheduleList() {
+    }
 
     public void clearSchedules() {
         nurseSchedules.clear();
     }
 
-    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException,
+    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidiDTypeException,
             NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         try {
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkDuplicatePatientID(details[1], details[2], nurseSchedules);
-            NurseScheduleChecker.checkNurseIDExist(details[0]);
+            NurseScheduleChecker.checkNurseiDExist(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
-            NurseScheduleChecker.checkPatientDExist(details[1]);
+            NurseScheduleChecker.checkPatientiDExist(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
             logger.info("Schedule successfully added");
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             System.out.println(e.getMessage());
             logger.log(Level.WARNING, "Failed to add schedule");
         }
@@ -102,13 +109,14 @@ public class NurseScheduleList {
     public void deleteSchedule(String[] details) throws NurseIdNotFound, InvalidScheduleException {
         int i = 0;
         while (i < nurseSchedules.size()) {
-            if(!isValidNurseID(nurseSchedules, details[0]) | !isValidSchedule(nurseSchedules, details[0], details[1])) {
+            if (!isValidNurseID(nurseSchedules, details[0])
+                    | !isValidSchedule(nurseSchedules, details[0], details[1])) {
                 break;
             }
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
-                    && nurseSchedules.get(i).getDatetime().equals(details[1])) {
+                    && nurseSchedules.get(i).getDate().equals(details[1])) {
                 NurseScheduleUI.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),
-                        nurseSchedules.get(i).getFormattedDatetime());
+                        nurseSchedules.get(i).getFormattedDate());
                 nurseSchedules.remove(i);
                 logger.info("Schedule successfully removed");
                 break;
@@ -128,7 +136,8 @@ public class NurseScheduleList {
         try {
             Collections.sort(findSchedules);
             System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     /**
@@ -173,11 +182,12 @@ public class NurseScheduleList {
         throw new NurseIdNotFound();
     }
 
-    private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date) throws InvalidScheduleException {
+    private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date)
+            throws InvalidScheduleException {
         int i = 0;
         while (i < nurseSchedules.size()) {
             if (nurseSchedules.get(i).getNurseID().equals(id)) {
-                if (nurseSchedules.get(i).getDatetime().equals(date)) {
+                if (nurseSchedules.get(i).getDate().equals(date)) {
                     return true;
                 }
             }

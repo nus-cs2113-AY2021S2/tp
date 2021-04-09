@@ -13,7 +13,7 @@ import java.util.List;
 
 import static seedu.ui.UI.prettyPrint;
 
-public class DoctorAppointment implements Comparable<DoctorAppointment>{
+public class DoctorAppointment implements Comparable<DoctorAppointment> {
     protected String doctorId;
     protected String appointmentID;
     protected String patientsName;
@@ -60,7 +60,7 @@ public class DoctorAppointment implements Comparable<DoctorAppointment>{
     }
 
     public String saveTask() {
-        return doctorId + " | " + appointmentID + " | "+ patientsName + " | " + gender + " | " + date;
+        return doctorId + " | " + appointmentID + " | " + patientsName + " | " + gender + " | " + date;
     }
 
     @Override

@@ -1,8 +1,8 @@
-package seedu.logic.command.doctorappointment;
+package seedu.logic.command.nurseschedule;
 
 import seedu.logic.command.Command;
 
-public class DoctorAppointmentReturn extends Command {
+public class NurseScheduleReturnCommand extends Command {
 
     @Override
     public boolean isExit() {

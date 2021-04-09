@@ -1,7 +1,11 @@
 package seedu.storage;
 
 import seedu.exceptions.InvalidDateException;
-import seedu.exceptions.nurseschedules.*;
+import seedu.exceptions.nurseschedules.InvalidiDTypeException;
+import seedu.exceptions.nurseschedules.NurseCrossValidationError;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.PatientCrossValidationError;
+import seedu.exceptions.nurseschedules.PatientIdNotFound;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.logic.errorchecker.NurseScheduleChecker;
@@ -9,14 +13,19 @@ import seedu.model.nurseschedule.NurseSchedule;
 import seedu.model.patient.Patient;
 import seedu.ui.NurseScheduleUI;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.PATIENT_FILE_PATH;
+import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
+
 
 public class NurseScheduleStorage {
 
@@ -36,20 +45,21 @@ public class NurseScheduleStorage {
         }
     }
 
-    private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidIDTypeException,
-            FileNotFoundException, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, InvalidDateException {
+    private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
+            FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
+            PatientCrossValidationError, InvalidDateException {
         FileInputStream file = new FileInputStream(FILE_PATH);
         Scanner sc = new Scanner(file);
 
         while (sc.hasNextLine()) {
             String[] details = sc.nextLine().split("\\|", 0);
-            NurseScheduleChecker.checkNurseIDExist(details[0]);
-            NurseScheduleChecker.checkPatientDExist(details[1]);
+            NurseScheduleChecker.checkNurseiDExist(details[0]);
+            NurseScheduleChecker.checkPatientiDExist(details[1]);
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
             NurseScheduleChecker.isValidDate(details[2]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
-            }
+        }
         logger.log(Level.INFO,"Nurse Schedule file loaded");
         return nurseSchedules;
     }
@@ -58,7 +68,7 @@ public class NurseScheduleStorage {
         try {
             File file = new File(FILE_PATH);
             FileWriter writer = new FileWriter(file);
-            for (int i = 0; i<nurseSchedules.getSize(); i++) {
+            for (int i = 0; i < nurseSchedules.getSize(); i++) {
                 writer.write(nurseSchedules.toSaveFile(i));
                 writer.write("\r\n");
             }
@@ -69,7 +79,9 @@ public class NurseScheduleStorage {
         logger.log(Level.INFO, "Nurse Schedule file saved");
     }
 
-    public ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidIDTypeException, NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, InvalidDateException {
+    public ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidiDTypeException,
+            NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound,
+            PatientCrossValidationError, InvalidDateException {
         createFile();
         nurseSchedules = readFile();
         return nurseSchedules;

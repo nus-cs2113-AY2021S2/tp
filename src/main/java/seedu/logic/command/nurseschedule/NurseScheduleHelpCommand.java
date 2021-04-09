@@ -4,7 +4,7 @@ import seedu.logic.command.Command;
 import seedu.model.nurseschedule.NurseScheduleList;
 import seedu.ui.NurseScheduleUI;
 
-public class NurseScheduleHelp extends Command {
+public class NurseScheduleHelpCommand extends Command {
 
     @Override
     public void execute(NurseScheduleList nurseSchedules, NurseScheduleUI ui) {

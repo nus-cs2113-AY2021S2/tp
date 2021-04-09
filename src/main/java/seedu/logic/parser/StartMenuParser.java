@@ -1,12 +1,18 @@
 package seedu.logic.parser;
 
+import seedu.duke.Constants;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
-import seedu.logic.command.startmenu.*;
+import seedu.logic.command.startmenu.ToDoctorAppointmentInstance;
+import seedu.logic.command.startmenu.ToNurseScheduleInstance;
+import seedu.logic.command.startmenu.ToPatientInstance;
+import seedu.logic.command.startmenu.ToStaffInstance;
+import seedu.logic.command.startmenu.ToInventoryInstance;
+import seedu.logic.command.startmenu.MainExit;
+import seedu.logic.command.startmenu.MainHelp;
 
 import java.util.Locale;
 
-import static seedu.duke.Constants.*;
 import static seedu.ui.UI.cleanseInput;
 import static seedu.ui.UI.smartCommandRecognition;
 
@@ -21,25 +27,25 @@ public class StartMenuParser {
         try {
             String formattedMessage = userInput.toLowerCase(Locale.ROOT).trim();
             switch (smartCommandRecognition(COMMANDS, cleanseInput(formattedMessage))) {
-            case TO_STAFF_INSTANCE:
+            case Constants.TO_STAFF_INSTANCE:
                 c = new ToStaffInstance();
                 break;
-            case TO_PATIENT_INSTANCE:
+            case Constants.TO_PATIENT_INSTANCE:
                 c = new ToPatientInstance();
                 break;
-            case TO_SCHEDULES_INSTANCE:
+            case Constants.TO_SCHEDULES_INSTANCE:
                 c = new ToNurseScheduleInstance();
                 break;
-            case TO_APPOINTMENTS_INSTANCE:
+            case Constants.TO_APPOINTMENTS_INSTANCE:
                 c = new ToDoctorAppointmentInstance();
                 break;
-            case TO_INVENTORY_INSTANCE:
+            case Constants.TO_INVENTORY_INSTANCE:
                 c = new ToInventoryInstance();
                 break;
-            case HELP_COMMAND:
+            case Constants.HELP_COMMAND:
                 c = new MainHelp();
                 break;
-            case EXIT_COMMAND:
+            case Constants.EXIT_COMMAND:
                 c = new MainExit();
                 break;
             default:
