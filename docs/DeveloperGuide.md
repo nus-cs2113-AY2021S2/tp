@@ -936,6 +936,24 @@ Invalid Inputs include:
 
 ## c. Appendix C: Non Functional Requirements
 
+* Should work on any mainstream OS if it has Java 11 or above installed.
+
+* Database should be able to hold up to 1000 patients, staff, appointments, nurses’ schedules, and drugs inventory without feeling a noticeable lag in the program. 
+
+* A user with above average typing speed should be able to accomplish most of the tasks faster using commands than using the mouse.
+
+* The data retrieval time should return near instant without feeling a pause in between command and output.
+
+* New features for example, auto generation of nurses’ schedules and personalized account login are currently in the works to demonstrate that this program is still being developed to be better and accommodate more of the concerns medical personnel have. 
+
+* Application would be affordable to the general masses
+
+* The security and accessibility of the system is relatively secure, but authorization and authentication scheme is in consideration to be implemented for greater protection.
+
+* All data process and management is in accordance to Singapore IMDA and MOH policy
+
+* Healthvault is not accountable for any data lost due to individuals computer failure. 
+
 <br>
 
 ## d. Appendix D: Glossary
