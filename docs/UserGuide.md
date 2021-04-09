@@ -239,7 +239,7 @@ Not enough in fridge to remove!
 
 >> remove pork /qty 500
 Noted! I've removed pork from your fridge.
-Now you have 2 food in the fridge.
+Now you have 3 food in the fridge.
 
 >> remove chicken /qty 500
 Noted! I've removed 500 of the food chicken from your fridge.
@@ -264,7 +264,7 @@ Example of usage:
 ```lang-none
 >> search chicken
 These are the chicken in your fridge:
-        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 800
+        1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 300
         2. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
 
 >> search oyster
@@ -289,13 +289,13 @@ These are the food that has already expired, please consider removing them:
 
 >> remove lettuce /qty 3
 Noted! I've removed lettuce from your fridge.
-Now you have 1 food in the fridge.
+Now you have 2 food in the fridge.
 WARNING! You are running low on VEGETABLE
 Total VEGETABLE quantity: 0
 
 >> expiring
 These are the food expiring in the following week:
-1. Food name: chicken wings, category: READY_TO_EAT, expiry: 11-04-2021, stored in: UPPER_SHELF, quantity: 500
+1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
 ```
 
 ### List categories with food running low: `runninglow`
@@ -430,7 +430,6 @@ Example of usage:
 Here are the items in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 300
         2. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: UPPER_SHELF, quantity: 500
-        3. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 
 >> clear
 Fridge has been cleared!
