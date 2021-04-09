@@ -1,7 +1,7 @@
 <style type="text/css">
 OL { counter-reset: item }
 LI { display: block }
-LI:before { content: counters(item, ".") " "; counter-increment: item }
+LI:before { content: counters(item, ".") ". "; counter-increment: item }
 </style>
 
 # Patient Manager User Guide
