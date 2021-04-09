@@ -660,9 +660,9 @@ public class Ui {
         }
     }
 
-    public static void printPsMessage(int size) {
+    public static void printPsMessage() {
         System.out.println(
-                "PS: If the module you are finding is not available, please enter " + (size + 1)
+                "PS: If the number of the module you are finding is not available, you can enter any other single characters (e.g A)"
                         + " if you would like to add a module for the link...\n"
                         + "OR if you would like the zoom link to be a standalone ^~^\n");
     }
@@ -712,5 +712,13 @@ public class Ui {
 
     public static void printInvalidInputForYOrNMessage() {
         System.out.println("Invalid input! Please input Y or N.");
+    }
+
+    public static void printChooseModule() {
+        System.out.println("Please enter the number of the module you wish to add");
+    }
+
+    public static void printModuleAlreadyHasZoomLink() {
+        System.out.println("The module you specified already has a zoom link! Bringing you back to the links menu...");
     }
 }

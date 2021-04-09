@@ -1178,15 +1178,15 @@ Please choose which action you would like to do and enter the number:
 Adds a zoom link, and tags it to a module of your choice together with the meeting password (if
 available).
 
+**Note!**
+> The system currently only allows you to add one zoom link per module.
+
 Example for adding a zoom link:
 
 ````
 > 2
 --------------------------------------------
-Please enter the zoom link below
-PS: If the module you are finding is not available, please enter 8 if you would like to add a module for the link...
-OR if you would like the zoom link to be a standalone ^~^
-
+Please enter the number of the module you wish to add
 This is the list of modules:
 [1] CS2113T
 [2] CG1112
@@ -1207,7 +1207,7 @@ Please enter your password below!
 > itsasecret
 --------------------------------------------
 Woohoo~ Zoom link added:
-https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
+> https://nus-sg.zoom.us/j/82190325074?pwd=M2NjZTRtQVpRc0loMnVIaUpsRU5TZz09 for CS1231
 
 Welcome to the links menu ^~^
 Please choose which action you would like to do and enter the number:
@@ -1217,9 +1217,6 @@ Please choose which action you would like to do and enter the number:
 [4] --- View Zoom links
 [5] --- Exit to main menu
 ````
-
-> **Note!**  
-> If the module code of the zoom link has not been reflected in the list, you can enter the respective number stated in the program which will lead you through to create a new module for you. In this example, the number to enter is `8`.
 
 #### 3.4.6 Delete Zoom Link
 

@@ -1,5 +1,6 @@
 package seedu.duke.features.moduleinfo;
 
+import seedu.duke.features.link.ZoomLinkInfo;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 import seedu.duke.features.capsimulator.ModuleGradeEnum;
@@ -471,6 +472,8 @@ public class ModuleInfo {
                 i--;
             }
         }
+        // changes the module code attribute of the zoom link object when you delete a module
+        ZoomLinkInfo.deleteModuleCode(module);
     }
 
     private static void getComponents() {
