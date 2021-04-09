@@ -2,10 +2,10 @@ package seedu.duke.features.task.command;
 
 import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.ui.Ui;
-import seedu.duke.features.task.Assignment;
-import seedu.duke.features.task.FinalExam;
-import seedu.duke.features.task.Midterm;
-import seedu.duke.features.task.Task;
+import seedu.duke.features.task.tasktypes.Assignment;
+import seedu.duke.features.task.tasktypes.FinalExam;
+import seedu.duke.features.task.tasktypes.Midterm;
+import seedu.duke.features.task.tasktypes.Task;
 import seedu.duke.features.task.TaskManager;
 
 import java.time.LocalDate;
@@ -35,8 +35,7 @@ public class AddTask {
             if (input.equalsIgnoreCase("N")) {
                 return;
             }
-            ModuleInfo.addNewModule();
-            module = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();
+            module = getModuleForTask();
         } else {
             Ui.printAddTaskModuleMessage(taskTypeNumber);
             module = printAndGetModule();
@@ -48,7 +47,7 @@ public class AddTask {
         Ui.printAddTaskDescriptionMessage(taskTypeNumber);
         String description = getDescription();
         if (taskTypeNumber != 1) {
-            dateAndTime = getDate(taskTypeNumber) + ", " + getTime(taskTypeNumber);
+            dateAndTime = getDateAndTime(taskTypeNumber);
         }
         Ui.printAddMessageAfterCompletedTask();
         String message = getMessage();
@@ -70,6 +69,19 @@ public class AddTask {
             Ui.printRepeatInputUntilValidMessage();
         }
         logger.log(Level.FINE, "add task successfully executed");
+    }
+
+    private static String getDateAndTime(int taskTypeNumber) {
+        String dateAndTime;
+        dateAndTime = getDate(taskTypeNumber) + ", " + getTime(taskTypeNumber);
+        return dateAndTime;
+    }
+
+    private static String getModuleForTask() {
+        String module;
+        ModuleInfo.addNewModule();
+        module = ModuleInfo.modules.get(ModuleInfo.modules.size() - 1).getName();
+        return module;
     }
 
     private static String getDescription() {

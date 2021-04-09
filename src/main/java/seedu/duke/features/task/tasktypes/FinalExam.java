@@ -1,9 +1,9 @@
-package seedu.duke.features.task;
+package seedu.duke.features.task.tasktypes;
 
-public class Midterm extends Task {
+public class FinalExam extends Task {
     protected String on;
 
-    public Midterm(String module, String description, String message, String on) {
+    public FinalExam(String module, String description, String message, String on) {
         super(module, description, message);
         this.on = on;
     }
@@ -14,7 +14,7 @@ public class Midterm extends Task {
 
     @Override
     public String getTaskType() {
-        return "[Midterm]";
+        return "[Final Exam]";
     }
 
     @Override

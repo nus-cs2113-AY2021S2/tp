@@ -91,6 +91,8 @@ navigate to specific sections to explore, learn and use UniTracker.
 
 ### 1.4 Conventions in This User Guide
 
+In this developer guide, all text that appears on the CLI or in code will be written in a `code block`.
+
 In the example code for each feature, all user inputs will start with an angle bracket.
 E.g. `> user input`
 > **Note!**  
@@ -822,7 +824,10 @@ Returning back to the menu now!
 > ````
 > "No such module! Would you like to add a module? [Y/N]
 > ````
-> 
+> If there are no existing modules, you will see this message instead:
+> ````
+> There are no modules! Would you like to add a module? [Y/N]
+> ````  
 > Additionally, if you were to input an invalid date format, you will see the following error message to prompt you to try again:
 > ````
 > Please enter a valid date format.
