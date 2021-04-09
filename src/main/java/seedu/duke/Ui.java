@@ -5,7 +5,6 @@ import seedu.exceptions.DeliveryAlreadyCompletedException;
 import seedu.exceptions.DeliveryOutOfBoundsException;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Handles general user interaction aspects of Diliveri, including
@@ -26,7 +25,8 @@ public class Ui {
                     "'view <number>': Displays details of the selected delivery\n" +
                     "'complete <number>': Marks the selected delivery as completed\n" +
                     "'record': Displays the list of completed deliveries and the respective income earned\n" +
-                    "'route': Displays optimised delivery path";
+                    "'route': Displays optimised delivery path\n" +
+                    "'bye': Ends Deliviri App ";
 
     /**
      * Empty constructor for the Ui object

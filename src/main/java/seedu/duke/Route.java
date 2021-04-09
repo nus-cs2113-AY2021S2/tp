@@ -71,4 +71,13 @@ public class Route {
         }
         return match;
     }
+
+    public String saveFormat() {
+        return getLocation() +
+                " | " +
+                getDeliveryFee() +
+                " | " +
+                getDistance() +
+                " | ";
+    }
 }

@@ -12,6 +12,10 @@ public class Controller {
 		case "profile":
 			ui.showProfile(deliveryman);
 			break;
+		case "edit":
+			System.out.println("Please use the format: n/name v/vehicle model l/license plate w/weight");
+			System.out.println("i.e. edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/5");
+			break;
 		case "start":
 			DeliveryList.load();
 			break;

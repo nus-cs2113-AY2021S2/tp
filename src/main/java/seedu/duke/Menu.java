@@ -12,6 +12,7 @@ public class Menu {
 		Parser parser = new Parser();
 		Ui ui = new Ui();
 		Scanner sc = new Scanner(System.in);
+		DataManager dataManager = new DataManager();
 		String userInput, userCommand, userArguments;
 		Controller controller =  new Controller();
 		do {
@@ -27,6 +28,7 @@ public class Menu {
 			} else{
 				controller.controllerForCommandsOnly(userCommand,deliveryman);
 			}
+			dataManager.saveAll(deliveryman);
 		} while (!userCommand.equalsIgnoreCase("bye"));
 	}
 }
