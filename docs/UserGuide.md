@@ -8,9 +8,6 @@ LI {
 LI:before {
     content: counters(item, ".") ". "; counter-increment: item
 }
-.img-container {
-    text-align: center;
-}
 </style>
 
 # Patient Manager User Guide
@@ -81,32 +78,26 @@ and file names.
 ## Quick Start
 
 > ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
-> Terminal/Command Prompt/PowerShell. For reference, a guide to open the Command Prompt in
-> Windows 10 is shown here:
+> console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Command
+> Prompt in Windows 10 is shown here:
 > 
-> <img src="./images/WindowsPowerShell.png" width="400">
+> <img src="./images/WindowsPowerShell.png" width="600">
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
    > 💡 You can check the version of Java installed on your local computer by entering\
-   > `java -version` into
-   your console of choice.
-
-
-1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
+   > `java -version` into your console of choice.
+   
+1. Obtain a copy of the latest version of the Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
 
-1. Open a terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:\
-   \
-   ![PowerShell](./images/WindowsPowerShell.png)
+1. Open the console, enter `java -jar tp.jar`, and press `ENTER` to start Patient Manager.
 
-1. Execute `java -jar tp.jar` to start Patient Manager.
+1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
+   and hit `ENTER` at the end to execute the command.
 
-1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit
-   `ENTER` at the end.
-
-1. Refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
+1. Please refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
 
 ---
 
