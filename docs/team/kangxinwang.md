@@ -16,5 +16,5 @@ interacts with it using CLI.
   * Contributions to documentation:
   * Contributions to DG: ReadReviews, DeleteCanteens, DeleteStores
   * Contributions to team-based tasks:
-    1. Setting up the Github team org/repo
-    2. Release Management 
+    * Setting up the Github team org/repo
+    * Release Management 

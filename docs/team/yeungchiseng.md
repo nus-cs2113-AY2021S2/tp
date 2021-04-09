@@ -15,5 +15,5 @@ interacts with it using CLI.
   * Contributions to documentation: 
   * Contributions to DG: CheckUser,AddMenu,DeleteMenu,LoginCommand,Storage,
   * Contributions to team-based tasks:
-    1. Reorganise and restructure the App for the team.
+    * Reorganise and restructure the App for the team.
 
