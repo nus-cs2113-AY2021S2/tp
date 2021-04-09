@@ -343,6 +343,11 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
+    public void showInvalidStorePrompt(String storeName) {
+        System.out.println("The store name '" + storeName + "' is already taken! Please enter another name:");
+    }
+
+
     public void showStoreNotAdded() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Store not added");

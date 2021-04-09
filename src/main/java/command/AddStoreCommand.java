@@ -4,6 +4,7 @@ import canteens.Canteen;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
+import stores.Store;
 import ui.Ui;
 
 import java.io.FileWriter;
@@ -26,14 +27,33 @@ public class AddStoreCommand extends Command {
             ui.showStoreNotAdded();
             return;
         }
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+        boolean isNameValid;
+        String storeName;
+
+        //display what canteens are in the store
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
         ui.showAddStore();
-        String storeName = ui.readCommand();
-        if (storeName.equals("cancel")) {
-            ui.showStoreNotAdded();
-            return;
-        }
-        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+
+        //get store name from user
+        do {
+            isNameValid = true;
+            storeName = ui.readCommand();
+            if (storeName.equals("cancel")) {
+                ui.showStoreNotAdded();
+                return;
+            } else {
+                for (Store store : currentCanteen.getStores()) {
+                    if (store.getStoreName().equals(storeName)) {
+                        isNameValid = false;
+                        ui.showInvalidStorePrompt(store.getStoreName());
+                        break;
+                    }
+                }
+            }
+        } while (!isNameValid);
+
+        //add store to canteen
         currentCanteen.addStore(storeName);
         ui.printStoreAdded(storeName, currentCanteen.getCanteenName());
         Storage.saveStore(new FileWriter(Storage.fileName,true),
