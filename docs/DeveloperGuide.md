@@ -119,7 +119,7 @@ The Food component represents the basic `Food` object and related class in Fridg
 
 * `Food` is an abstract class which has multiple child Food classes, distinguished by category.
 This is to facilitate different manipulations on different food categories.
-* `Fridge` maintains the list of `Food`s and have methods to add, remove or modify the foods.
+* `Fridge` maintains the list of `Food` and have methods to add, remove or modify the foods.
 * `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
 * Whenever a `Food` object is created or called, exceptions may be thrown.
 

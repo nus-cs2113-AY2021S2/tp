@@ -304,7 +304,7 @@ Displays a list of food categories which total quantity is below a specified min
 This command also displays the existing quantities along with its limits for each category. 
 Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
 
-:information: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
+:information_source: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
 `FridgeFriend` would prompt the user to set at least one of the food category to be more than 0.
 
 Format: `runninglow`
