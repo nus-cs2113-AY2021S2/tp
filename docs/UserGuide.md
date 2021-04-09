@@ -141,10 +141,9 @@ This can prevent you from getting confused about the meaning of each argument.
 > ❗ Notes about the command format:
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
     e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
-    (sample command: `add S1234567D`)
 >
 >
-> - Parameters in square brackets are optional.\
+> - Parameters in square brackets (`[]`) are optional.\
     e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
     both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
 >
@@ -153,9 +152,11 @@ This can prevent you from getting confused about the meaning of each argument.
     e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
 >
 >
-> - Parameters can be given in any order.\
+> - Parameters starting with a slash (`/`) can be given in any order.\
     e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-    `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.
+    `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
+>   However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
+>   For first-time users, we recommend that you follow the sequence given in this section.
 >
 >
 > - If a parameter is expected only once in the command, but you specify it multiple times, only the last occurrence of
@@ -167,8 +168,9 @@ This can prevent you from getting confused about the meaning of each argument.
     e.g. if the command given is `list 123`, it will be interpreted as `list`.
 >
 >
-> - Dates must be specified in the format `dd/MM/yyyy`, for example, `05/03/2021`. All dates given must be valid,
-    according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+> - Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.\
+>   All dates given must be valid, according to the rules of the
+>   [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
 <!-- TODO: Order | explain why help command is the 1st -->
 ### Print a help message: `help`
