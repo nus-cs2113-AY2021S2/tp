@@ -65,7 +65,7 @@ Extract of contributions:
 ### Model component
 
 <p align="center">
-    <img width="973" src="developerGuideImages/designModel.png" alt="Class Diagram of Model"><br>
+    <img width="973" src="../developerGuideImages/designModel.png" alt="Class Diagram of Model"><br>
     Figure 5 - Class Diagram of Model
 </p>
 
@@ -127,7 +127,7 @@ The `Task` class contains attributes related to an assignment, deadline or task 
 The `AddLessonCommand` class is responsible for the creation and addition of a new `Lesson` object to the lesson list of a given module. The following sequence diagrams shows how a new `Lesson` is created and added to the lesson list.
 
 <p align="center">
-    <img width="973" src="developerGuideImages/addLesson1.png" alt="parse() Sequence Diagram"><br>
+    <img width="973" src="../developerGuideImages/addLesson1.png" alt="parse() Sequence Diagram"><br>
     Figure 7 - parse() Sequence Diagram
 </p>
 
