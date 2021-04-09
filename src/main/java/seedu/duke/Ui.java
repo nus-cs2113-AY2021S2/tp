@@ -5,7 +5,6 @@ import seedu.exceptions.DeliveryAlreadyCompletedException;
 import seedu.exceptions.DeliveryOutOfBoundsException;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Handles general user interaction aspects of Diliveri, including

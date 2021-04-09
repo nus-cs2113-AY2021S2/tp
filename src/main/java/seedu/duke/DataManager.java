@@ -18,10 +18,11 @@ public class DataManager {
 	 * @return deliveryman object with the default name settings
 	 */
 	public static Deliveryman loadProfile(){
-		String driverName = "Obi Wan";
-		String vehicleModel = "YT-1300";
-		String licensePlate = "HIGHGROUND";
-		int maxWeight = 4;
+		String driverName;
+		String vehicleModel ;
+		String licensePlate;
+		int maxWeight;
+		Deliveryman deliverymanProfile = null;
 
 		try {
 			File directory = new File(TXT_FILE_DIRECTORY);
@@ -38,6 +39,7 @@ public class DataManager {
 				vehicleModel = userInfo[2];
 				licensePlate = userInfo[1];
 				maxWeight = Integer.parseInt(userInfo[3]);
+				deliverymanProfile = new Deliveryman(driverName, licensePlate, vehicleModel, maxWeight);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -46,7 +48,13 @@ public class DataManager {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return new Deliveryman(driverName, licensePlate, vehicleModel, maxWeight);
+
+		if (deliverymanProfile == null){
+			Generator generator = new Generator();
+			deliverymanProfile = generator.profileGenerator();
+		}
+
+		return deliverymanProfile;
 	}
 
 	/**
@@ -84,6 +92,7 @@ public class DataManager {
 	}
 
 	/**
+	 * Method to load list of deliveries
 	 * @return list of deliveries to be stored in the static DeliveryList class
 	 */
 	public static ArrayList<Delivery> loadDeliveryList() {
@@ -106,6 +115,10 @@ public class DataManager {
 			System.exit(0);
 		}
 		System.out.println("File loaded boi...lets gooooooo!");
+		if(deliveries.isEmpty()){
+			Generator generator =  new Generator();
+			deliveries = generator.deliveriesGenerator();
+		}
 		return deliveries;
 	}
 
@@ -114,7 +127,7 @@ public class DataManager {
 	 * @param itemList item list provided in each line of the .txt file
 	 * @return ArrayList of items as dictated in the .txt
 	 */
-	private static ArrayList<Item> itemRetriever(String[] itemList){
+	public static ArrayList<Item> itemRetriever(String[] itemList){
 		ArrayList<Item> itemsArray = new ArrayList<>();
 		for (String s : itemList) {
 			String[] itemIndexes = s.split("-");
@@ -126,6 +139,10 @@ public class DataManager {
 		return itemsArray;
 	}
 
+	/**
+	 * Method to load list of routes
+	 * @return list of routes to be tagged to Delivery object
+	 */
 	public static ArrayList<Route> loadRoutes() {
 		ArrayList<Route> routes = new ArrayList<>();
 		try {
@@ -143,6 +160,11 @@ public class DataManager {
 			System.out.println("Cannot load file...you are clapped! Please load a file.");
 			System.exit(0);
 		}
+		if (routes.isEmpty()){
+			Generator generator = new Generator();
+			routes = generator.routesGenerator();
+		}
+
 		return routes;
 	}
 }
