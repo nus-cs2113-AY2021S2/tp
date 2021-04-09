@@ -1,7 +1,6 @@
 package seedu.duke.commands;
 
 import seedu.duke.lesson.Lesson;
-import seedu.duke.lesson.LessonType;
 import seedu.duke.module.Module;
 import seedu.duke.module.ModuleList;
 import seedu.duke.ui.UI;

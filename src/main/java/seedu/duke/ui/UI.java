@@ -52,8 +52,6 @@ public class UI {
      * @return String of input.
      */
     public String readUserInput() {
-        // assert that user is entering input with "\n" and not signals like Ctrl+D
-        assert scanner.hasNextLine();
         return scanner.nextLine();
     }
 

@@ -27,7 +27,6 @@ import seedu.duke.commands.PrintHelpCommand;
 import seedu.duke.commands.ViewTeachingStaffCommand;
 import seedu.duke.common.DashboardCommands;
 import seedu.duke.common.ModuleCommands;
-import seedu.duke.exception.CommandException;
 import seedu.duke.exception.ParserException;
 import seedu.duke.lesson.Lesson;
 import seedu.duke.module.ModuleList;
@@ -50,7 +49,7 @@ public class Parser {
      * @return command object based on user input
      * @throws ParserException if valid command cannot be parsed from user input
      */
-    public Command parse(String input) throws CommandException, ParserException {
+    public Command parse(String input) throws ParserException {
         Command parsedCommand;
 
         if (ModuleList.hasSelectedModule()) {
@@ -119,7 +118,7 @@ public class Parser {
      * @return in-module command object based on user input
      * @throws ParserException if valid command cannot be parsed from user input
      */
-    private Command parseInModule(String input) throws CommandException, ParserException {
+    private Command parseInModule(String input) throws ParserException {
         String[] commandWordAndArgs = ParserUtil.getModuleCommandWordAndArgs(input);
         String commandWord = commandWordAndArgs[INDEX_COMMAND_WORD];
         String commandArgs = commandWordAndArgs[INDEX_COMMAND_ARGS].trim();
