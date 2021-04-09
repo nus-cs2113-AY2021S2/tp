@@ -70,19 +70,26 @@ public class Deliveryman {
     public void updateProfile(String inputProfileData) {
         if(!inputProfileData.equals("fail")){
             String[] splitInputProfileData = inputProfileData.split(" \\| ");
+            Ui.printDivider();
             System.out.println("Based on your input:");
-            System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n Max Weight: %s\n ",
+            System.out.printf(" Name: %s\n Vehicle Model: %s\n License plate: %s\n Max Weight: %s\n",
                     splitInputProfileData[0],
                     splitInputProfileData[1],
                     splitInputProfileData[2],
                     splitInputProfileData[3]
             );
-            editProfile(
-                    splitInputProfileData[0],
-                    splitInputProfileData[1],
-                    splitInputProfileData[2],
-                    Integer.parseInt(splitInputProfileData[3])
-            );
+            try{
+                editProfile(
+                        splitInputProfileData[0],
+                        splitInputProfileData[1],
+                        splitInputProfileData[2],
+                        Integer.parseInt(splitInputProfileData[3])
+                );
+            } catch (NumberFormatException e){
+                System.out.println("You have entered an invalid integer for weight!!");
+                System.out.println("If you require any assistance with regards to what an integer is...");
+                System.out.println("Please visit: https://www.mathsisfun.com/definitions/integer.html");
+            }
             DataManager.saveProfile(this);
         }
 

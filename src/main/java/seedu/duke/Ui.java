@@ -36,7 +36,7 @@ public class Ui {
     /**
      * This method is only callable from within the Ui class
      */
-    protected void printDivider() {
+    protected static void printDivider() {
         System.out.println(DIVIDER);
     }
 
@@ -48,7 +48,6 @@ public class Ui {
         printDivider();
         System.out.println("Welcome to Diliveri");
         System.out.println(HELP_MESSAGE);
-        printDivider();
     }
 
     /**
@@ -66,7 +65,6 @@ public class Ui {
     public void showHelpMessage() {
         printDivider();
         System.out.println(HELP_MESSAGE);
-        printDivider();
     }
 
     /**
@@ -82,7 +80,7 @@ public class Ui {
      * Prints list of deliveries present in delivery list
      */
     public void showDeliveryList() {
-
+        printDivider();
         System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
@@ -96,6 +94,7 @@ public class Ui {
      * @param records the ArrayList of completed deliveries to print
      */
     public void showRecords(ArrayList<Delivery> records) {
+        printDivider();
         System.out.println("Congratulations on completing the following deliveries:");
         System.out.println(" Number | ID | Location | Earned Amount ");
         int i = 1;
@@ -115,6 +114,7 @@ public class Ui {
      * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
      */
     public void showDeliveryDetails(int deliveryNumber) {
+        printDivider();
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         System.out.println(delivery);
         int i = 1;
@@ -122,6 +122,7 @@ public class Ui {
             System.out.println(i + ": \n" + item);
             i++;
         }
+
     }
 
     /**
@@ -156,6 +157,7 @@ public class Ui {
      * @param deliveryman deliveryman to show details about
      */
     public void showProfile(Deliveryman deliveryman) {
+        printDivider();
         System.out.println(deliveryman);
     }
 
@@ -170,6 +172,7 @@ public class Ui {
     }
 
     public void processCompleteDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
+        printDivider();
         int deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
         try {
             parser.validateDeliveryNumber(deliveryNumber);
@@ -185,6 +188,7 @@ public class Ui {
     }
 
     public void processDeliveryRoute() {
+        printDivider();
         Filter deliveryFilter = new Filter();
         Map deliveryMap = new Map();
         ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
