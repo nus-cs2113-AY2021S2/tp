@@ -788,19 +788,19 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 **Launching Nurse Schedule Menu**
 
-1.`ToNurseScheduleInstance.execute()` will create and call `NurseScheduleInstance.runCommandLoopUntilExit()`.
+1. `ToNurseScheduleInstance.execute()` will create and call `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-2.`runCommandLoopUntilExit()` will start by loading/creating the NurseSchedule.txt for database records. It will check for any signs of file corruption when loading. An exception will be thrown if any corruption is present.
+2. `runCommandLoopUntilExit()` will start by loading/creating the NurseSchedule.txt for database records. It will check for any signs of file corruption when loading. An exception will be thrown if any corruption is present.
 
-3.`runCommandLoopUntilExit()` will then repeatedly call nurseParse().
+3. `runCommandLoopUntilExit()` will then repeatedly call nurseParse().
 
 **Getting User Input**
 
-4.User inputs are repeatedly requested by `runCommandLoopUntilExit`.
+4. User inputs are repeatedly requested by `runCommandLoopUntilExit`.
 
-5.`nurseParse()` will call `smartCommandRecognition` to assess the given user input and determine which command is the most similar to the input.
+5. `nurseParse()` will call `smartCommandRecognition` to assess the given user input and determine which command is the most similar to the input.
 
-6.Based on the recognised command, the relevant execution will be carried out.
+6. Based on the recognised command, the relevant execution will be carried out.
 
 ### 5.4.2 Add
 
@@ -822,22 +822,22 @@ Invalid Inputs include:
 
 **Checking validity of data input**
 
-1.If the command recognised is the add command, the parameters will first be checked for their validity. The following functios will be called in sequence:
+1. If the command recognised is the add command, the parameters will first be checked for their validity. The following functios will be called in sequence:
 	- isValidDate()
 	- checkNumInput()
 	- illegalCharacterChecker()
 	
 **Creating NurseScheduleAddCommand object with User Input**
 
-2.If the parameters are valid, a NurseScheduleAddCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+2. If the parameters are valid, a NurseScheduleAddCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3.The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+3. The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
 
 **Saving NurseSchedule objects into .txt file**
 
-4.The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
+4. The command loop then calls `NurseScheduleStorage.writeToFile()` which starts the process of writing detials of all existing Nurse Schedule objects within the Arraylist into a specific .txt file.
 
-5.Control is then returned to NurseScheduleInstance.
+5. Control is then returned to NurseScheduleInstance.
 
 
 ### 5.4.3 Delete
