@@ -4,7 +4,6 @@ import canteens.Canteen;
 import exceptions.DukeExceptions;
 import menus.Menu;
 import nusfoodreviews.NusFoodReviews;
-import stores.Store;
 import storage.Storage;
 import ui.Ui;
 

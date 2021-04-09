@@ -10,10 +10,7 @@ import stores.Store;
 import ui.Ui;
 import checkuser.CheckUser;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 
@@ -42,6 +39,8 @@ public class NusFoodReviews {
         InputStreamReader streamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(streamReader);
         new NusFoodReviews(reader).run();
+        File filePath = new File("");
+
     }
 
     public void run() throws DukeExceptions {

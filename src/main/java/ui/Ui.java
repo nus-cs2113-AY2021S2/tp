@@ -78,7 +78,7 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void printStoreAdded(String storeName) {
+    public void printStoreAdded(String storeName) { // pass in canteen
         System.out.println(LINESPACING);
         System.out.println("Got it ! Successfully added " + storeName + " to The Deck");
         System.out.println(LINESPACING);
@@ -123,7 +123,6 @@ public class Ui {
     public void showError(String errorMessage) {
         System.out.println(LINESPACING);
         System.out.println(errorMessage);
-        System.out.println(LINESPACING);
     }
 
     public void showDisplaySelectStores(Canteen canteen) {
@@ -193,7 +192,8 @@ public class Ui {
             }
             System.out.println(LINESPACING);
         } else {
-            System.out.println("Select one of the following NUS canteens to " + action + ":");
+            System.out.println("Select one of the following NUS canteens to " + action
+                    + ": (Enter 'login' to go back to login page)");
             for (int i = 0; i < canteens.size(); i++) {
                 System.out.println(i + 1 + ". " + canteens.get(i).getCanteenName());
             }
@@ -251,6 +251,7 @@ public class Ui {
     public void enterReview() {
         System.out.println(LINESPACING);
         System.out.println("Please type your review: (Enter 'cancel' to go back)");
+        System.out.println(LINESPACING);
     }
 
     public void enterRating() {
