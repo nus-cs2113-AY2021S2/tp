@@ -62,6 +62,7 @@ These are the list of available commands:
         add foodName /cat categoryName /exp dd-mm-yyyy /loc storageLocation /qty foodQuantity
         list
         list categoryName
+        list storageLocation
         remove foodName /qty removeQuantity
         search searchString
         expiring
@@ -117,7 +118,9 @@ Great! I have added chicken into your fridge.
 Details: Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 800
 
 >> add chicken /cat meat /exp 07-10-2021 /loc freezer /qty 200
-Sorry my friend, you have added this food before but in a different location or have different expiry dates. Please specify another foodname.
+Sorry my friend, you have added this food before.
+It is in a different category or location or have a different expiry date.
+Please specify another foodname.
 
 >> add chicken /cat meat /exp 30-06-2021 /loc lower_shelf /qty 200
 Great! I have added chicken into your fridge.
@@ -130,6 +133,10 @@ Details: Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER
 >> add chicken wings /cat ready_to_eat /exp 17-04-2021 /loc upper_shelf /qty 500
 Great! I have added chicken wings into your fridge.
 Details: Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+
+>> add lettuce /cat vegetable /exp 08-04-2021 /loc lower_shelf /qty 3
+Great! I have added lettuce into your fridge.
+Details: Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 ```
 
 ### Display the list of all foods: `list`
@@ -148,6 +155,7 @@ Here are the items in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
         2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
         3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 ```
 
 ### Display the list of foods by category: `list <CATEGORY>`
@@ -218,6 +226,7 @@ Here are the items in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
         2. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
         3. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+        4. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 
 >> remove chicken /qty 200
 Noted! I've removed 200 of the food chicken from your fridge.
@@ -262,7 +271,7 @@ You do not have oyster in your fridge.
 
 ### List expiring foods: `expiring`
 
-Displays a list of food items that are expiring within a week.
+Displays a list of food items that has expired and are expiring within a week.
 
 Format: `expiring`
 
@@ -272,11 +281,19 @@ Example of usage:
 >> expiring
 These are the food expiring in the next week:
 1. Food name: chicken wings, category: READY_TO_EAT, expiry: 17-04-2021, stored in: UPPER_SHELF, quantity: 500
+
+These are the food that has already expired, please consider removing them:
+1. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 ```
 
 ### List categories with food running low: `runninglow`
 
-Displays a list of food categories which total quantity is below a specified minimum limit. This command also displays the existing quantities along with its limits for each category. Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
+Displays a list of food categories which total quantity is below a specified minimum limit. 
+This command also displays the existing quantities along with its limits for each category. 
+Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
+
+:information: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
+`FridgeFriend` would prompt the user to set at least one of the food category to be more than 0.
 
 Format: `runninglow`
 
@@ -298,7 +315,7 @@ You are running low on food in these categories:
 
 ### Modify the minimum quantity limits: `setlimit`
 
-Changes the minimum quantity limit for a specific food category. To set remove a limit for a category, set its limit to 0.
+Changes the minimum quantity limit for a specific food category. To remove a limit for a category, set its limit to 0.
 
 Format: `setlimit FOOD_CATEGORY /qty QUANTITY`
 
@@ -365,6 +382,7 @@ This is the full history of items you've added in the fridge:
         2. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 1000
         3. Food name: pork, category: MEAT, expiry: 04-07-2021, stored in: FREEZER, quantity: 500
         4. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: UPPER_SHELF, quantity: 500
+        5. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 ```
 
 ### Clear list history of items added: `history clear`
@@ -400,6 +418,7 @@ Example of usage:
 Here are the items in your fridge:
         1. Food name: chicken, category: MEAT, expiry: 30-06-2021, stored in: LOWER_SHELF, quantity: 300
         2. Food name: chicken wings, category: READY_TO_EAT, expiry: 09-04-2021, stored in: UPPER_SHELF, quantity: 500
+        3. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
 
 >> clear
 Fridge has been cleared!
