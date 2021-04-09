@@ -1,7 +1,16 @@
 <style type="text/css">
-OL { counter-reset: item }
-LI { display: block }
-LI:before { content: counters(item, ".") ". "; counter-increment: item }
+OL {
+    counter-reset: item
+}
+LI {
+    display: block
+}
+LI:before {
+    content: counters(item, ".") ". "; counter-increment: item
+}
+.img-container {
+    text-align: center;
+}
 </style>
 
 # Patient Manager User Guide
@@ -72,14 +81,16 @@ and file names.
 ## Quick Start
 
 > ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
-> terminal/Command Prompt (cmd)/PowerShell. For reference, a screenshot from Windows 10 is provided here:
+> Terminal/Command Prompt/PowerShell. For reference, a guide to open the Command Prompt in
+> Windows 10 is shown here:
 > 
-> ![PowerShell](./images/WindowsPowerShell.png)
+> <img src="./images/WindowsPowerShell.png" width="400">
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
-   > 💡 You can check the version of Java installed on your local computer by entering `java -version` into
+   > 💡 You can check the version of Java installed on your local computer by entering\
+   > `java -version` into
    your console of choice.
 
 
