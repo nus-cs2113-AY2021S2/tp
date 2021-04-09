@@ -38,48 +38,50 @@ public class AppController {
         String input;
         while (true) {
             System.out.println("Enter command:\t\t\t(type 'help' for all command options)");
-            input = sc.nextLine();
-            switch (input.toLowerCase()) {
-            case "add employee":
-                EmployeeController.addEmployee(employees);
-                break;
-            case "add schedule":
-                EmployeeController.addSchedule(employees);
-                break;
-            case "drop schedule":
-                EmployeeController.dropSchedule(employees);
-                break;
-            case "add shift":
-                ShiftController.addShift(employees, shifts);
-                break;
-            case "assign employee":
-                ShiftController.assignEmployee(employees, shifts);
-                break;
-            case "unassign employee":
-                ShiftController.unassignEmployee(employees, shifts);
-                break;
-            case "view employee schedule":
-                EmployeeController.viewEmployeeSchedule(employees);
-                break;
-            case "view shift status":
-                ShiftController.viewAllShifts(shifts);
-                break;
-            case "view one shift":
-                ShiftController.viewOneShift(shifts);
-                break;
-            case "list":
-                EmployeeController.listAllEmployees(employees);
-                break;
-            case "help":
-                Ui.printHelpMessage();
-                break;
-            case "quit":
-                sc.close();
-                fileManager.saveEmployees(employees);
-                fileManager.saveShifts(shifts);
-                return;
-            default:
-                System.out.println("invalid command");
+            if (sc.hasNextLine()) {
+                input = sc.nextLine();
+                switch (input.toLowerCase()) {
+                case "add employee":
+                    EmployeeController.addEmployee(employees);
+                    break;
+                case "add schedule":
+                    EmployeeController.addSchedule(employees);
+                    break;
+                case "drop schedule":
+                    EmployeeController.dropSchedule(employees);
+                    break;
+                case "add shift":
+                    ShiftController.addShift(employees, shifts);
+                    break;
+                case "assign employee":
+                    ShiftController.assignEmployee(employees, shifts);
+                    break;
+                case "unassign employee":
+                    ShiftController.unassignEmployee(employees, shifts);
+                    break;
+                case "view employee schedule":
+                    EmployeeController.viewEmployeeSchedule(employees);
+                    break;
+                case "view shift status":
+                    ShiftController.viewAllShifts(shifts);
+                    break;
+                case "view one shift":
+                    ShiftController.viewOneShift(shifts);
+                    break;
+                case "list":
+                    EmployeeController.listAllEmployees(employees);
+                    break;
+                case "help":
+                    Ui.printHelpMessage();
+                    break;
+                case "quit":
+                    sc.close();
+                    fileManager.saveEmployees(employees);
+                    fileManager.saveShifts(shifts);
+                    return;
+                default:
+                    System.out.println("invalid command");
+                }
             }
         }
     }

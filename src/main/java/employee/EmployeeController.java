@@ -13,18 +13,18 @@ public class EmployeeController {
     public static void addEmployee(ArrayList<Employee> employees) {
         System.out.println("enter Employee name");
         String name = sc.nextLine();
-        if(isEmployeeDuplicate(employees, name) == true){
+        if (isEmployeeDuplicate(employees, name)) {
             System.out.println("This employee already exist in the database");
-        }else{
+        } else {
             Employee newEmployee = new Employee(name);
             employees.add(newEmployee);
             System.out.println("Employee added");
         }
     }
 
-    private static boolean isEmployeeDuplicate(ArrayList<Employee> employees, String name){
-        for(Employee employee : employees){
-            if(employee.getName().equals(name)){
+    private static boolean isEmployeeDuplicate(ArrayList<Employee> employees, String name) {
+        for (Employee employee : employees) {
+            if (employee.getName().equals(name)) {
                 return true;
             }
         }
@@ -38,7 +38,7 @@ public class EmployeeController {
             if (person.getName().equals(name)) {
                 System.out.println("enter Employee schedule");
                 String schedule = sc.nextLine();
-                if(isScheduleDuplicate(person, schedule)==true){
+                if (isScheduleDuplicate(person, schedule)) {
                     System.out.println("This schedule already exist in the database");
                     return;
                 }
@@ -55,10 +55,10 @@ public class EmployeeController {
         System.out.println("Employee not found");
     }
 
-    private static boolean isScheduleDuplicate(Employee employee, String newSchedule){
+    private static boolean isScheduleDuplicate(Employee employee, String newSchedule) {
         ArrayList<String> employeeSchedules = employee.getSchedules();
-        for(String schedule : employeeSchedules){
-            if(schedule.equals(newSchedule)){
+        for (String schedule : employeeSchedules) {
+            if (schedule.equals(newSchedule)) {
                 return true;
             }
         }
@@ -126,5 +126,4 @@ public class EmployeeController {
         }
         return null;
     }
-
 }

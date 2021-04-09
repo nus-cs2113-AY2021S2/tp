@@ -58,23 +58,16 @@ public class Employee {
         if (mm < MIN_MONTH_OF_YEAR || mm > MAX_MONTH_OF_YEAR) {
             return false;
         }
-        if (dd < MIN_DAY_OF_MONTH){
+        if (dd < MIN_DAY_OF_MONTH) {
             return false;
         }
-        if (mm % 2 == 1){
-            if(dd > MAX_DAY_OF_ODD_MONTH){
-                return false;
-            }
-        }else if(mm != 2){
-            if(dd >MAX_DAY_OF_EVEN_MONTH){
-                return false;
-            }
-        }else{
-            if(dd >MAX_DAY_OF_FEB){
-                return false;
-            }
+        if (mm % 2 == 1) {
+            return dd <= MAX_DAY_OF_ODD_MONTH;
+        } else if (mm != 2) {
+            return dd <= MAX_DAY_OF_EVEN_MONTH;
+        } else {
+            return dd <= MAX_DAY_OF_FEB;
         }
-        return true;
     }
 
     public void dropSchedule(String schedule) {
