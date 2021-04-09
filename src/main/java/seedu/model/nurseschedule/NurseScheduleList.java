@@ -106,9 +106,9 @@ public class NurseScheduleList {
                 break;
             }
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
-                    && nurseSchedules.get(i).getDatetime().equals(details[1])) {
+                    && nurseSchedules.get(i).getDate().equals(details[1])) {
                 NurseScheduleUI.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),
-                        nurseSchedules.get(i).getFormattedDatetime());
+                        nurseSchedules.get(i).getFormattedDate());
                 nurseSchedules.remove(i);
                 logger.info("Schedule successfully removed");
                 break;
@@ -177,7 +177,7 @@ public class NurseScheduleList {
         int i = 0;
         while (i < nurseSchedules.size()) {
             if (nurseSchedules.get(i).getNurseID().equals(id)) {
-                if (nurseSchedules.get(i).getDatetime().equals(date)) {
+                if (nurseSchedules.get(i).getDate().equals(date)) {
                     return true;
                 }
             }

@@ -6,7 +6,7 @@ import seedu.model.nurseschedule.NurseScheduleList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class NurseScheduleListTest {
+class NurseScheduleListCommandTest {
 
     NurseScheduleList actions = new NurseScheduleList();
     //ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
