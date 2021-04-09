@@ -4,11 +4,14 @@ import seedu.logic.command.Command;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
-public class PatientAdd extends Command {
+/**
+ *
+ */
+public class PatientAddCommand extends Command {
 
     private String[] argArr;
 
-    public PatientAdd(String[] args) {
+    public PatientAddCommand(String[] args) {
         argArr = args;
     }
 

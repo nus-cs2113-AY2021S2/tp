@@ -4,7 +4,23 @@ import seedu.logic.parser.NurseSchedulesParser;
 
 import java.text.ParseException;
 
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.ADD_COMMAND;
+import static seedu.duke.Constants.LIST_COMMAND;
+import static seedu.duke.Constants.DELETE_COMMAND;
+import static seedu.duke.Constants.RETURN_COMMAND;
+import static seedu.duke.Constants.SCHEDULES_HELP_DESCRIPTION;
+import static seedu.duke.Constants.SCHEDULES_ADD_DESCRIPTION;
+import static seedu.duke.Constants.SCHEDULES_LIST_DESCRIPTION;
+import static seedu.duke.Constants.SCHEDULES_DELETE_DESCRIPTION;
+import static seedu.duke.Constants.RETURN_DESCRIPTION;
+import static seedu.duke.Constants.MARK_BLANK;
+import static seedu.duke.Constants.SCHEDULES_ADD_FORMAT;
+import static seedu.duke.Constants.SCHEDULES_LIST_FORMAT;
+import static seedu.duke.Constants.SCHEDULES_DELETE_FORMAT;
 
 public class NurseScheduleUI extends UI {
 
@@ -63,7 +79,8 @@ public class NurseScheduleUI extends UI {
 
     public static void nurseListHeader() {
         System.out.println(
-                UI.prettyPrint("Nurse ID", 10) + " | " + UI.prettyPrint("Patient ID", 10) + " | "
+                UI.prettyPrint("Nurse ID", 10) + " | " + UI.prettyPrint("Patient ID", 10)
+                        + " | "
                         + UI.prettyPrint("Date", 10));
     }
 
@@ -72,7 +89,8 @@ public class NurseScheduleUI extends UI {
     }
 
     public void corruptedFileErrorMessage() {
-        System.out.println("File (data/NurseSchedule.txt) is corrupted. Please delete the file before running the Staff Menu.");
+        System.out.println("File (data/NurseSchedule.txt) is corrupted. "
+                + "Please delete the file before running the Staff Menu.");
     }
 
     public static void corruptedStaffFile() {

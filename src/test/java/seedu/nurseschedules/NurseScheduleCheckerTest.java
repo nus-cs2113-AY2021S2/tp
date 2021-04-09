@@ -1,9 +1,8 @@
 package seedu.nurseschedules;
 
 import org.junit.jupiter.api.Test;
-import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.nurseschedules.InvalidIDTypeException;
+import seedu.exceptions.nurseschedules.InvalidiDTypeException;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -52,42 +51,42 @@ class NurseScheduleCheckerTest {
     @Test
     void testInvalidNurseID_WrongLength() {
         String userID = "N123456789";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidNurseID_WrongIdentifier() {
         String userID = "A12345";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidNurseID_WrongData() {
         String userID = "NABCDE";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongLength() {
         String userID = "P123456789";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongIdentifier() {
         String userID = "A12345";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 
     @Test
     void testInvalidPatientID_WrongData() {
         String userID = "PABCDE";
-        assertThrows(InvalidIDTypeException.class,
+        assertThrows(InvalidiDTypeException.class,
                 () -> NurseScheduleChecker.checkValidNurseID(userID));
     }
 }

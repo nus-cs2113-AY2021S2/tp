@@ -1,7 +1,5 @@
 package seedu.model.patient;
 
-import java.util.Locale;
-
 public class Patient {
     protected String patientID;
     protected String name;
@@ -22,11 +20,21 @@ public class Patient {
     }
 
     public String[] getPatientDetailsArray() {
-        return (patientDetails) ;
+        return (patientDetails);
     }
 
     public String getPatientDetailsString() {
-        return(patientID + " | " + name + " | " + age + " | " + gender + " | " + illness + " | " + medicationNeeded);
+        return (patientID
+                + " | "
+                + name
+                + " | "
+                + age
+                + " | "
+                + gender
+                + " | "
+                + illness
+                + " | "
+                + medicationNeeded);
     }
 
     public String getPatientID() {
@@ -38,7 +46,16 @@ public class Patient {
     }
 
     public String toSaveFormat() {
-        return (patientID + " | " + name + " | " + age + " | " +
-                gender + " | " + illness + " | " + medicationNeeded);
+        return (patientID
+                + " | "
+                + name
+                + " | "
+                + age
+                + " | "
+                + gender
+                + " | "
+                + illness
+                + " | "
+                + medicationNeeded);
     }
 }

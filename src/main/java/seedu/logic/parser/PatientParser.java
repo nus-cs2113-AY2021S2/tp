@@ -3,8 +3,13 @@ package seedu.logic.parser;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
+import seedu.logic.command.patient.PatientAddCommand;
+import seedu.logic.command.patient.PatientDeleteCommand;
+import seedu.logic.command.patient.PatientFindCommand;
+import seedu.logic.command.patient.PatientHelpCommand;
+import seedu.logic.command.patient.PatientListCommand;
+import seedu.logic.command.patient.PatientReturnCommand;
 import seedu.model.patient.PatientList;
-import seedu.logic.command.patient.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.PatientChecker;
 
@@ -31,29 +36,29 @@ public class PatientParser {
         switch (command) {
         case "list":
             checker.checkLength();
-            c = new seedu.logic.command.patient.PatientList();
+            c = new PatientListCommand();
             break;
         case "add":
             checker.checkAdd();
             String[] addFormat = parseToAddFormat(stringTokens);
-            c = new PatientAdd(addFormat);
+            c = new PatientAddCommand(addFormat);
             break;
         case "delete":
             checker.checkLength();
-            checker.checkID();
-            c = new PatientDelete(stringTokens[1]);
+            checker.checkId();
+            c = new PatientDeleteCommand(stringTokens[1]);
             break;
         case "find":
             checker.checkFind();
-            c = new PatientFind(stringTokens[1]);
+            c = new PatientFindCommand(stringTokens[1]);
             break;
         case "help":
             checker.checkLength();
-            c = new PatientHelp();
+            c = new PatientHelpCommand();
             break;
         case "return":
             checker.checkLength();
-            c = new PatientReturn();
+            c = new PatientReturnCommand();
             break;
         default:
             throw new UnrecognizedCommandException();

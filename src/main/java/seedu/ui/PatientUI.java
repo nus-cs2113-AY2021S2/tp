@@ -1,8 +1,29 @@
 package seedu.ui;
 
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.ADD_COMMAND;
+import static seedu.duke.Constants.DELETE_COMMAND;
+import static seedu.duke.Constants.FIND_COMMAND;
+import static seedu.duke.Constants.HELPLINEBREAK;
+import static seedu.duke.Constants.HELP_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_COMMAND;
+import static seedu.duke.Constants.HELP_HEADER_DESCRIPTION;
+import static seedu.duke.Constants.HELP_HEADER_FORMAT;
+import static seedu.duke.Constants.LISTLINEBREAK;
+import static seedu.duke.Constants.LIST_COMMAND;
+import static seedu.duke.Constants.MARK_BLANK;
+import static seedu.duke.Constants.PATIENT_ADD_DESCRIPTION;
+import static seedu.duke.Constants.PATIENT_ADD_FORMAT;
+import static seedu.duke.Constants.PATIENT_DELETE_DESCRIPTION;
+import static seedu.duke.Constants.PATIENT_DELETE_FORMAT;
+import static seedu.duke.Constants.PATIENT_FILE_PATH;
+import static seedu.duke.Constants.PATIENT_FIND_DESCRIPTION;
+import static seedu.duke.Constants.PATIENT_FIND_FORMAT;
+import static seedu.duke.Constants.PATIENT_HELP_DESCRIPTION;
+import static seedu.duke.Constants.PATIENT_LIST_DESCRIPTION;
+import static seedu.duke.Constants.RETURN_COMMAND;
+import static seedu.duke.Constants.RETURN_DESCRIPTION;
 
-public class PatientUI extends UI{
+public class PatientUI extends UI {
 
     public static void printPatientHelpList() {
         UI.printEmptyLine();
@@ -23,12 +44,12 @@ public class PatientUI extends UI{
 
     public static void patientListHeader() {
         System.out.println(
-                UI.prettyPrint("ID", 8) + " | " +
-                        UI.prettyPrint("Name", 20) + " | " +
-                        UI.prettyPrint("Age", 6) + " | " +
-                        UI.prettyPrint("Gender", 8) + " | " +
-                        UI.prettyPrint("Illness", 20) + " | " +
-                        UI.prettyPrint("Medication Required", 20));
+                UI.prettyPrint("ID", 8) + " | "
+                        + UI.prettyPrint("Name", 20) + " | "
+                        + UI.prettyPrint("Age", 6) + " | "
+                        + UI.prettyPrint("Gender", 8) + " | "
+                        + UI.prettyPrint("Illness", 20) + " | "
+                        + UI.prettyPrint("Medication Required", 20));
         System.out.println(LISTLINEBREAK);
     }
 
@@ -38,12 +59,12 @@ public class PatientUI extends UI{
 
     public static void printPatientList(String[] patientDetails) {
         System.out.println(
-                UI.prettyPrint(patientDetails[0], 8) + " | " +
-                        UI.prettyPrint(patientDetails[1], 20) + " | " +
-                        UI.prettyPrint(patientDetails[2], 6) + " | " +
-                        UI.prettyPrint(patientDetails[3], 8) + " | " +
-                        UI.prettyPrint(patientDetails[4], 20) + " | " +
-                        UI.prettyPrint(patientDetails[5], 20));
+                UI.prettyPrint(patientDetails[0], 8) + " | "
+                        + UI.prettyPrint(patientDetails[1], 20) + " | "
+                        + UI.prettyPrint(patientDetails[2], 6) + " | "
+                        + UI.prettyPrint(patientDetails[3], 8) + " | "
+                        + UI.prettyPrint(patientDetails[4], 20) + " | "
+                        + UI.prettyPrint(patientDetails[5], 20));
     }
 
     public static void emptyPatientListMessage() {
@@ -65,8 +86,8 @@ public class PatientUI extends UI{
     }
 
     public void corruptedFileErrorMessage() {
-        System.out.println("The file (" + PATIENT_FILE_PATH + ") is corrupted!\n" +
-                "Please exit the program and delete the corrupted file before trying to access Patient Menu!");
+        System.out.println("The file (" + PATIENT_FILE_PATH + ") is corrupted!\n"
+                + "Please exit the program and delete the corrupted file before trying to access Patient Menu!");
     }
 
     public static void patientNotFoundMessage() {

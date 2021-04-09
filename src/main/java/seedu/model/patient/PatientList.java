@@ -16,7 +16,8 @@ public class PatientList {
     }
 
     public void addPatient(String[] argArr) {
-        Patient newPatient = new Patient(argArr[0], argArr[1], Integer.parseInt(argArr[2]), argArr[3], argArr[4], argArr[5]);
+        Patient newPatient = new Patient(argArr[0], argArr[1], Integer.parseInt(argArr[2]),
+                argArr[3], argArr[4], argArr[5]);
         patients.add(newPatient);
     }
 
@@ -41,7 +42,7 @@ public class PatientList {
         }
     }
 
-    public boolean isIDTaken(String inputString) {
+    public boolean isIdTaken(String inputString) {
         for (Patient patient : patients) {
             String patientID = patient.getPatientID();
             if (patientID.equals(inputString)) {
