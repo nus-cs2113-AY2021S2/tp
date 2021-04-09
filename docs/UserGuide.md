@@ -286,6 +286,16 @@ These are the food expiring in the next week:
 
 These are the food that has already expired, please consider removing them:
 1. Food name: lettuce, category: VEGETABLE, expiry: 08-04-2021, stored in: LOWER_SHELF, quantity: 3
+
+>> remove lettuce /qty 3
+Noted! I've removed lettuce from your fridge.
+Now you have 1 food in the fridge.
+WARNING! You are running low on VEGETABLE
+Total VEGETABLE quantity: 0
+
+>> expiring
+These are the food expiring in the following week:
+1. Food name: chicken wings, category: READY_TO_EAT, expiry: 11-04-2021, stored in: UPPER_SHELF, quantity: 500
 ```
 
 ### List categories with food running low: `runninglow`
