@@ -98,7 +98,7 @@ public class Ui {
         }
         int formattedIndex = index - 1;
         System.out.println();
-        printId(formattedIndex);
+        getId(formattedIndex);
         System.out.println(recordAdded);
         System.out.println();
         System.out.println(DIVIDER);
@@ -157,8 +157,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
-                printId(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -175,8 +174,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
-                printId(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -193,8 +191,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
-                printId(i);
-                System.out.println(currentRecord);
+                System.out.println(getId(i) + currentRecord);
             }
         }
         System.out.println(DIVIDER);
@@ -210,8 +207,7 @@ public class Ui {
         System.out.println("Here is you Records list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
-            printId(i);
-            System.out.println(currentRecord);
+            System.out.println(getId(i) + currentRecord);
         }
         System.out.println(DIVIDER);
     }
@@ -309,8 +305,8 @@ public class Ui {
      *
      * @param index is the index of the record.
      */
-    public void printId(int index) {
+    public String getId(int index) {
         int formattedIndex = index + 1;
-        System.out.print("[ID: " + formattedIndex + "] ");
+        return "[ID: " + formattedIndex + "] ";
     }
 }
