@@ -1065,15 +1065,15 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 <br>
 
 
-## a. Appendix A: Product Scope
+## Appendix A: Product Scope
 
 <br>
 
-## b. Appendix B: User Stories
+## Appendix B: User Stories
 
 <br>
 
-## c. Appendix C: Non Functional Requirements
+## Appendix C: Non Functional Requirements
 
 * Should work on any mainstream OS if it has Java 11 or above installed.
 
@@ -1095,7 +1095,7 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 <br>
 
-## d. Appendix D: Glossary
+## Appendix D: Glossary
 
 * *Illegal Characters* - Non-alphanumeric characters
  
@@ -1111,7 +1111,7 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 <br>
 
-## e. Appendix E: Instructions for Manual Testing
+## Appendix E: Instructions for Manual Testing
 
 <br>
 
