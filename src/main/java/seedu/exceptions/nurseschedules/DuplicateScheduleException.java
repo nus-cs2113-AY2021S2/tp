@@ -4,7 +4,8 @@ import seedu.exceptions.HealthVaultException;
 
 public class DuplicateScheduleException extends HealthVaultException {
 
-    String date = null;
+    String date;
+
     public DuplicateScheduleException(String date) {
         this.date = date;
     }
