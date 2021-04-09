@@ -56,7 +56,9 @@ We designed GULIO, a CLI-based module planner intended to help users keep track 
    1. [Review on Wen Hao's PR to use singleton class](https://github.com/AY2021S2-CS2113T-W09-3/tp/pull/123)
 
 ### Contributions beyond the project team
-1. 
+1. [Raised question on forum](https://github.com/nus-cs2113-AY2021S2/forum/issues/15)
+1. [Completed code quality PR Review](https://github.com/nus-cs2113-AY2021S2/ip/pull/31#pullrequestreview-581980950)
+1. [Reported bugs during PE Dry Run](https://github.com/ivanchongzhien/ped/issues)
 
 ### Contributions to the Developer Guide (Extracts)
 
