@@ -195,6 +195,12 @@ public class Ui {
 
     public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
+        if (canteens.size() <= 0) {
+            System.out.println("There are no canteens yet! Log in as admin to add a new canteen.");
+            System.out.println("Enter 'login' to switch to Admin.");
+            System.out.println(LINESPACING);
+            return;
+        }
         if (action.equals("delete")) {
             System.out.println("Select one of the following NUS canteens to " + action
                     + ": (Enter 'cancel' to go back)");
