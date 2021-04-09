@@ -24,7 +24,7 @@ import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.DETAILS_PROMPT;
@@ -35,6 +35,7 @@ import static seedu.connoisseur.messages.Messages.EDIT_PROMPT_RECO;
 import static seedu.connoisseur.messages.Messages.ANYTHING_ELSE;
 import static seedu.connoisseur.messages.Messages.EDIT_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.ABANDON_RECO;
+import static seedu.connoisseur.messages.Messages.MISSING_DONE_TITLE;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -95,7 +96,7 @@ public class RecommendationList {
             ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
             ui.print("| " + currentRecommendation.priceRange());
-            ui.printWhiteSpace(currentRecommendation.priceRange().length() - 2);
+            ui.printWhiteSpacePrice(currentRecommendation.priceRange().length());
             ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
             ui.print("| " + currentRecommendation.getRecommendedBy());
@@ -127,12 +128,12 @@ public class RecommendationList {
             ui.print(" ");
         }
         ui.print(currentRecommendation.getTitle());
-        ui.printWhiteSpace(currentRecommendation.getTitle().length());
+        ui.print(" | ");
         ui.print(currentRecommendation.getCategory());
-        ui.printWhiteSpace(currentRecommendation.getCategory().length());
+        ui.print(" | ");
         ui.print(currentRecommendation.priceRange());
-        ui.printWhiteSpace(currentRecommendation.priceRange().length());
-        ui.println(currentRecommendation.getRecommendedBy());
+        ui.print(" | ");
+        ui.println(currentRecommendation.getRecommendedBy() + "\n");
         return true;
     }
 
@@ -217,7 +218,7 @@ public class RecommendationList {
                 double priceFirst = Double.parseDouble(priceRange.split("-", 2)[0].trim());
                 double priceSecond = Double.parseDouble(priceRange.split("-", 2)[1].trim());
                 if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
-                    ui.printInvalidPriceRangeMessage();
+                    ui.printInvalidPricingMessage();
                     continue;
                 }
                 if (priceFirst > priceSecond) {
@@ -283,7 +284,7 @@ public class RecommendationList {
             }
         }
         if (recommendationIndex == -1) {
-            ui.println(INVALID_DELETE_RECO_TITLE);
+            ui.println(INVALID_RECO_TITLE);
         } else {
             recommendations.remove(recommendationIndex);
             ui.println(title + DELETE_SUCCESS);
@@ -300,7 +301,7 @@ public class RecommendationList {
         int rating;
         String description;
         if (title == null || title.isBlank()) {
-            ui.println(MISSING_DELETE_TITLE);
+            ui.println(MISSING_DONE_TITLE);
             return;
         }
         int recommendationIndex = -1;
@@ -311,7 +312,7 @@ public class RecommendationList {
             }
         }
         if (recommendationIndex == -1) {
-            ui.println(INVALID_DELETE_RECO_TITLE);
+            ui.println(INVALID_RECO_TITLE);
         } else {
             category = recommendations.get(recommendationIndex).getCategory();
             description = "No description entered.";
@@ -381,7 +382,7 @@ public class RecommendationList {
                 }
             }
             if (index == -1) {
-                ui.printInvalidRecommendation();
+                ui.println(INVALID_RECO_TITLE);
                 return;
             }
         }
@@ -448,7 +449,7 @@ public class RecommendationList {
                     double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
                     double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
                     if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
-                        ui.printInvalidPriceRangeMessage();
+                        ui.printInvalidPricingMessage();
                         continue;
                     }
                     if (priceFirst > priceSecond) {

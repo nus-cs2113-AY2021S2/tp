@@ -17,7 +17,7 @@ public class Connoisseur {
         try {
             new Connoisseur();
         } catch (JSONException je) {
-            System.out.println("Error loading file. Please try again.");
+            System.out.println("Data file corrupted. Please delete the file and try again.");
         }
     }
 
