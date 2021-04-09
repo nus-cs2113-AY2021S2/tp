@@ -29,23 +29,7 @@ public class ViewStoreCommand extends Command {
             return;
         }
         ui.showDisplayStores(canteens.get(currentCanteenIndex));
-        System.out.println("Please enter the keyword:" + "'back' " + "to go back to the previous page");
-        System.out.println(LINESPACING);
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        boolean check = true;
-        while (check) {
-            if (input.equals("back")) {
-                check = false;
-                System.out.println(LINESPACING);
-                return;
-            } else {
-                System.out.println(LINESPACING);
-                System.out.println("Please Input correctly");
-                System.out.println(LINESPACING);
-                input = sc.nextLine();
-            }
-        }
+
     }
 
 }
