@@ -102,17 +102,28 @@ class ByeCommand {
 }
 
 class RunningLowCommand {
+  -index: int
+  -numberOfCategoryDisabled: int
+  -isStockedUp: boolean
   +execute(): void
   +getMessage(): String
   -updateMessage(foodCategory: FoodCategory): void
+  -increaseNumberOfCategoryDisabled():void
+  -isAllCategoryDisabled():boolean
 }
 
 class ExpiringCommand {
-  -message: String
-  -index: int
+  -messageExpired: String
+  -messageExpiring: String
+  -messageNoExpiring: String
+  -fullMessage: String
+  -indexExpiring: int
+  -indexExpired: int
   +execute(): void
-  +updateMessage(food: Food): void
-  +addToMessage(food: Food): void
+  +updateExpiringMessage(food: Food): void
+  +addToExpiringMessage(food: Food): void
+  +updateExpiredMessage(food: Food): void
+  +addToExpiredMessage(food: Food): void
 }
 
 class HistoryCommand {
@@ -127,13 +138,13 @@ class HistoryCommand {
 Command ---.down> Fridge: uses >
 Command ---.down> UI: prints with >
 FridgeFriend ---.down> Command: executes >
-AddCommand --right|> Command
+AddCommand ---up|> Command
 RemoveCommand --down|> Command
 ListCommand ---down|> Command
-SearchCommand ---up|> Command
+SearchCommand ---right|> Command
 SetLimitCommand ---down|> Command
-HelpCommand --up|> Command
 ClearCommand --up|> Command
+HelpCommand ---up|> Command
 ByeCommand --down|> Command
 RunningLowCommand --left|> Command
 ExpiringCommand ---up|> Command

@@ -24,8 +24,6 @@ public class ExpiringCommand extends Command {
     public void execute() {
         for (int i = 0; i < fridge.getSize(); i += 1) {
             updateExpiringMessage(fridge.getFood(i));
-        }
-        for (int i = 0; i < fridge.getSize(); i += 1) {
             updateExpiredMessage(fridge.getFood(i));
         }
         if (indexExpiring > 0) {
