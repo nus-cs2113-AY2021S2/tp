@@ -18,9 +18,9 @@ import static seedu.duke.common.Messages.NEWLINE;
 class ListLessonsCommandTest extends LessonCommandTest {
 
     public static final String EXPECTED_OUTPUT = String.format(MESSAGE_LESSONS_TO_LIST, MODULE_CODE) + NEWLINE
-            + "1. lab - " + TIME1 + NEWLINE + INDENTATION + ONLINE_LINK1 + NEWLINE + INDENTATION
+            + "1. Lab - " + TIME1 + NEWLINE + INDENTATION + ONLINE_LINK1 + NEWLINE + INDENTATION
             + TEACHER_NAME1 + NEWLINE + INDENTATION + TEACHER_EMAIL1 + NEWLINE
-            + "2. tutorial - " + TIME + NEWLINE + INDENTATION + ONLINE_LINK + NEWLINE + INDENTATION
+            + "2. Tutorial - " + TIME + NEWLINE + INDENTATION + ONLINE_LINK + NEWLINE + INDENTATION
             + TEACHER_NAME + NEWLINE + INDENTATION + TEACHER_EMAIL + NEWLINE;
 
     //@@author H-horizon

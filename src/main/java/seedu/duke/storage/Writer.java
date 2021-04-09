@@ -162,7 +162,7 @@ public class Writer {
     private void writeLessons(FileWriter fileWriter, Module module) throws IOException {
         for (Lesson lesson : module.getLessonList()) {
             String entry = KEYWORD_LESSON;
-            entry += lesson.getLessonTypeString() + DIVIDER_WRITE;
+            entry += lesson.getLessonTypeString().toLowerCase() + DIVIDER_WRITE;
             entry += lesson.getTime() + DIVIDER_WRITE;
             entry += lesson.getOnlineLink() + DIVIDER_WRITE;
             entry += lesson.getTeachingStaff().getName() + DIVIDER_WRITE;

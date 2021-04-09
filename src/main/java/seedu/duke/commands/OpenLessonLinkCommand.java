@@ -84,7 +84,7 @@ public class OpenLessonLinkCommand extends Command {
         for (int index : indices) {
             Lesson lesson = lessonList.get(index - 1);
             String lessonType = lesson.getLessonTypeString();
-            ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType));
+            ui.printMessage(String.format(MESSAGE_OPENED_LESSON_LINK, lessonType.toLowerCase()));
             String lessonLink = lesson.getOnlineLink();
             validateLessonLink(ui, lessonLink);
         }
