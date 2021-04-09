@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
-    public static final String LINESPACING = "=====================================================";
+    public static final String LINESPACING = "====================================================";
     private static Scanner userInputScanner;
     private static String line;
 
