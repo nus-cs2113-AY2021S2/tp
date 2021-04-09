@@ -517,7 +517,8 @@ Removing a food while all foods are being shown.
     * Expected: `Not enough in fridge to remove!` User attempted to remove a greater quantity than what was
       available in the fridge. Error message was thrown. No food is removed.
 6. Test case: `remove chicken`
-    * Expected: `Sorry my friend, please give a valid input.` It is required to specify the quantity to be removed with
+    * Expected: `Sorry my friend, you have entered an invalid input.
+      Enter 'help' for more information about the correct input format.` It is required to specify the quantity to be removed with
       `/qty`.
 
 ### Searching for a food
@@ -570,7 +571,7 @@ By default, the `limits` for all food is set at `500`. Use `setlimit` to modify 
 
 1. Preparation: Change the limits for `meat`, `dairy`, `beverage`, `seafood`, since they are the categories of food
    we have added to the fridge so far.
-    * `setlimit meat /qty 200`
+    * `setlimit meat /qty 0`
     * `setlimit dairy /qty 5`
     * `setlimit beverage /qty 3`
     * `setlimit seafood /qty 50`
@@ -581,16 +582,15 @@ By default, the `limits` for all food is set at `500`. Use `setlimit` to modify 
    You are running low on food in these categories:
    1. VEGETABLE quantity: 0 out of 500
    2. FRUIT quantity: 0 out of 500
-   3. MEAT quantity: 100 out of 200
-   4. EGG quantity: 0 out of 500
-   5. DAIRY quantity: 2 out of 5
-   6. COOKED_DISH quantity: 0 out of 500
-   7. READY_TO_EAT quantity: 0 out of 500
-   8. FROZEN quantity: 0 out of 500
-   9. OTHER quantity: 0 out of 500
+   3. EGG quantity: 0 out of 500
+   4. DAIRY quantity: 2 out of 5
+   5. COOKED_DISH quantity: 0 out of 500
+   6. READY_TO_EAT quantity: 0 out of 500
+   7. FROZEN quantity: 0 out of 500
+   8. OTHER quantity: 0 out of 500
     ```
 
-Note that `SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+Note that `MEAT`,`SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
 as they are not "running low". There is sufficient food from the given category in the
 fridge, because it is above the quantity we have specified by `setlimit`.
 
