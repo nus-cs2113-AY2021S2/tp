@@ -12,9 +12,9 @@ CLI. It is written in Java,
  
 * **Summary of contributions**
   * Code contributed: 
-  * Enhancements implemented: DeleteCanteens and DeleteStores
+  * Enhancements implemented: DeleteStores and DeleteReviews
   * Contributions to documentation: 
-  * Contributions to DG: ReadReviews, DeleteCanteens, DeleteStores
+  * Contributions to DG: ReadReviews, DeleteStores, DeleteReviews
   * Contributions to team-based tasks: 
     1. Setting up the Github team org/repo
     2. Release Management 

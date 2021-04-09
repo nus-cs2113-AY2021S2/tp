@@ -80,13 +80,13 @@ public class Ui {
         System.out.println("1. View canteens");
         System.out.println("2. Add canteen");
         System.out.println("3. Add a store in a canteen");
-        System.out.println("4. Add Menu");
+        System.out.println("4. Add Menu to a store");
         System.out.println("5. Delete canteen");
         System.out.println("6. Delete a store in a canteen");
-        System.out.println("7. Delete reviews");
-        System.out.println("8. Delete menu");
+        System.out.println("7. Delete reviews in a store");
+        System.out.println("8. Delete menu in a store");
         System.out.println("9. View stores in a canteen");
-        System.out.println("10. Exit");
+        System.out.println("0. Exit");
         System.out.println(LINESPACING);
     }
 

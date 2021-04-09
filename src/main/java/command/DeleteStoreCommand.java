@@ -11,6 +11,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static ui.Ui.LINESPACING;
+
 public class DeleteStoreCommand extends Command {
 
     private Parser parser;
@@ -23,21 +25,27 @@ public class DeleteStoreCommand extends Command {
 
     @Override
     public void execute(ArrayList<Canteen> canteens, Ui ui) throws IOException, DukeExceptions {
-        nusFoodReviews.setCanteenIndex();
-        int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-        ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
-        String line = ui.readCommand();
-        if (line.equals("cancel")) {
-            ui.showStoreNotDeleted();
-            return;
-        }
-        int storeIndex = parser.parseInt(line, 1,
-                canteens.get(currentCanteenIndex).getNumStores()) - 1;
+        if (canteens.size() > 0) {
+            nusFoodReviews.setCanteenIndex();
+            int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+            ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+            String line = ui.readCommand();
+            if (line.equals("cancel")) {
+                ui.showStoreNotDeleted();
+                return;
+            }
+            int storeIndex = parser.parseInt(line, 1,
+                    canteens.get(currentCanteenIndex).getNumStores()) - 1;
 
-        Canteen currentCanteen = canteens.get(currentCanteenIndex);
-        String storeName = currentCanteen.getStore(storeIndex).getStoreName();
-        currentCanteen.deleteStore(storeIndex);
-        ui.showDeleteStore(storeName);
-        Storage.save(new FileWriter(Storage.fileName),canteens);
+            Canteen currentCanteen = canteens.get(currentCanteenIndex);
+            String storeName = currentCanteen.getStore(storeIndex).getStoreName();
+            currentCanteen.deleteStore(storeIndex);
+            ui.showDeleteStore(storeName);
+            Storage.save(new FileWriter(Storage.fileName), canteens);
+        } else {
+            System.out.println("There are no canteens left for you to delete any stores!");
+            System.out.println(LINESPACING);
+        }
+
     }
 }
