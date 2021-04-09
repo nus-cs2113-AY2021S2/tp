@@ -1,4 +1,4 @@
-@startuml
+@startuml CommandClassDiagram
 'https://plantuml.com/class-diagram
 !include style.puml
 
@@ -7,7 +7,7 @@ skinparam arrowColor COMMAND_COLOR_T4
 skinparam classBackgroundColor COMMAND_COLOR_T2
 skinparam classAttributeIconSize 0
 
-package Command <<Rectangle>> {
+package "Command Component" <<Rectangle>> {
     class "{abstract}\nCommand" as Command
     class AddCommand
     class RemoveCommand
@@ -102,17 +102,28 @@ class ByeCommand {
 }
 
 class RunningLowCommand {
+  -index: int
+  -numberOfCategoryDisabled: int
+  -isStockedUp: boolean
   +execute(): void
   +getMessage(): String
   -updateMessage(foodCategory: FoodCategory): void
+  -increaseNumberOfCategoryDisabled():void
+  -isAllCategoryDisabled():boolean
 }
 
 class ExpiringCommand {
-  -message: String
-  -index: int
+  -messageExpired: String
+  -messageExpiring: String
+  -messageNoExpiring: String
+  -fullMessage: String
+  -indexExpiring: int
+  -indexExpired: int
   +execute(): void
-  +updateMessage(food: Food): void
-  +addToMessage(food: Food): void
+  +updateExpiringMessage(food: Food): void
+  +addToExpiringMessage(food: Food): void
+  +updateExpiredMessage(food: Food): void
+  +addToExpiredMessage(food: Food): void
 }
 
 class HistoryCommand {
@@ -124,16 +135,16 @@ class HistoryCommand {
   -printHistory(): void
 }
 
-Command ---.down> Fridge: uses
-Command ---.down> UI: prints with
-FridgeFriend ---.down> Command: execute >
-AddCommand --right|> Command
+Command ---.down> Fridge: uses >
+Command ---.down> UI: prints with >
+FridgeFriend ---.down> Command: executes >
+AddCommand ---up|> Command
 RemoveCommand --down|> Command
 ListCommand ---down|> Command
-SearchCommand ---up|> Command
+SearchCommand ---right|> Command
 SetLimitCommand ---down|> Command
-HelpCommand --up|> Command
 ClearCommand --up|> Command
+HelpCommand ---up|> Command
 ByeCommand --down|> Command
 RunningLowCommand --left|> Command
 ExpiringCommand ---up|> Command

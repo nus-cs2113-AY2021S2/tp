@@ -1,18 +1,23 @@
 James Gosling
 help
 clear
+setlimit meat /qty -1
 add chicken /cat meat /exp 11-04-2021 /loc lower_shelf /qty 200
 add chicken /cat meat /exp 11-04-2022 /loc lower_shelf /qty 100
 add chicken /cat ready_to_eat /exp 31-12-2022 /loc upper_shelf /qty 1
 add roast chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1
+add roast chicken /cat ready_to_eat /exp 31-12-2021 /loc upper_shelf /qty 1000000000000
 list
+add pork /cat meat /exp 28-03-2021 /loc lower_shelf /qty 0
 add pork /cat meat /exp 28-05-2021 /loc lower_shelf /qty 200
 add pork /cat meat /exp 30-06-2021 /loc lower_shelf /qty 20 !@# g!
 search chicken
 add pork no param blabla
 add grouper /cat seafood /exp 04-05-2021 /loc freezer /qty 1
-add oyster /cat seafood /exp 32-46-9876 /loc idontknow /qty 10
-add oyster /cat seafood /exp 04-05-2021 /loc idontknow /qty abc
+add oyster /cat seafood /exp 32-46-9876 /loc freezer /qty 10
+add oyster /cat seafood /exp 04-05-2021 /loc IDONTKNOW /qty 100
+add oyster /cat seafood /exp 04-05-2021 /loc freezer /qty abc
+add goose /cat mff /exp 30-06-2021 /loc lower_shelf /qty 100
 add
 list
 list meat

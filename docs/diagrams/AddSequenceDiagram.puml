@@ -1,4 +1,4 @@
-@startuml
+@startuml AddSequenceDiagram
 'https://plantuml.com/sequence-diagram
 
 !include style.puml

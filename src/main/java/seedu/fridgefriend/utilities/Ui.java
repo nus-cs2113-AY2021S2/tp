@@ -49,8 +49,15 @@ public class Ui {
     }
 
     public static void printExceptionMessage(Exception exception) {
-        String exceptionMessage = exception.getMessage();
-        printMessage(exceptionMessage);
+        if (exception instanceof RuntimeException) {
+            String interruptMessage = "Application has been interrupted.\n"
+                    + "Exiting application...";
+            printMessage(interruptMessage);
+            System.exit(0);
+        } else {
+            String exceptionMessage = exception.getMessage();
+            printMessage(exceptionMessage);
+        }
     }
     
 }

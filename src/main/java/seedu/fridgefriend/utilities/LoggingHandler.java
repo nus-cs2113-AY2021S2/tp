@@ -12,6 +12,8 @@ public class LoggingHandler {
     
     /**
      * Logs a message at level INFO.
+     *
+     * @param message the message for the logger
      */
     public static void logInfo(String message) {
         logger.setLevel(Level.WARNING);
@@ -20,14 +22,19 @@ public class LoggingHandler {
 
     /**
      * Logs a message at level INFO with an exception.
+     *
+     * @param message the message for the logger
+     * @param thrown the throwable associated with the log message
      */
-    public static void logInfo(String message, Throwable e) {
+    public static void logInfo(String message, Throwable thrown) {
         logger.setLevel(Level.WARNING);
-        logger.log(Level.INFO, message, e);
+        logger.log(Level.INFO, message, thrown);
     }
 
     /**
      * Logs a message at level WARNING.
+     *
+     * @param message the message for the logger
      */
     public static void logWarning(String message) {
         logger.log(Level.WARNING, message);
@@ -35,13 +42,18 @@ public class LoggingHandler {
 
     /**
      * Logs a message at level WARNING with an exception.
+     *
+     * @param message the message for the logger
+     * @param thrown the throwable associated with the log message
      */
-    public static void logWarning(String message, Throwable e) {
-        logger.log(Level.WARNING, message, e);
+    public static void logWarning(String message, Throwable thrown) {
+        logger.log(Level.WARNING, message, thrown);
     }
 
     /**
      * Logs a message at level SEVERE.
+     *
+     * @param message the message for the logger
      */
     public static void logSevere(String message) {
         logger.log(Level.SEVERE, message);
@@ -49,8 +61,11 @@ public class LoggingHandler {
 
     /**
      * Logs a message at level SEVERE with an exception.
+     *
+     * @param message the message for the logger
+     * @param thrown the throwable associated with the log message
      */
-    public static void logSevere(String message, Throwable e) {
-        logger.log(Level.SEVERE, message, e);
+    public static void logSevere(String message, Throwable thrown) {
+        logger.log(Level.SEVERE, message, thrown);
     }
 }

@@ -33,11 +33,7 @@ public class AddCommand extends Command {
 
     public AddCommand(String foodName, FoodCategory category, String expiryString,
                       FoodStorageLocation location, int quantity)
-            throws InvalidDateException, InvalidQuantityException {
-
-        if (quantity <= 0) {
-            throw new InvalidQuantityException();
-        }
+            throws InvalidDateException {
         assert category != null : "category should not be null";
         LoggingHandler.logInfo("Adding food: " + foodName + " with parameters: ");
         LoggingHandler.logInfo("Category: " + category);
@@ -49,12 +45,12 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute() throws RepetitiveFoodIdentifierException {
+    public void execute() throws RepetitiveFoodIdentifierException, InvalidQuantityException {
         addFood();
         showResults();
     }
 
-    private void addFood() throws RepetitiveFoodIdentifierException {
+    private void addFood() throws RepetitiveFoodIdentifierException, InvalidQuantityException {
         assert foodToAdd != null : "Unable to add a null food";
         fridge.add(foodToAdd);
         Storage.saveHistoryData(foodToAdd);
