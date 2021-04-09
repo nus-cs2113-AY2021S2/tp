@@ -927,6 +927,18 @@ Invalid Inputs include:
 
 ## d. Appendix D: Glossary
 
+* *Illegal Characters* - Non-alphanumeric characters
+ 
+* *Aggregation* - Any collection of objects. In this case, we utilise an ArrayList to store all our objects. 
+ 
+* *Features* - In this case, we refer to the entire interaction with the various types of objects. E.g. any interaction with Staff/Patient/Doctor Appointment/Nurse Schedules/Inventory.
+ 
+* *Functionalities* - Any command that is given to the feature. E.g. `help` command, `list` command.
+ 
+* *Blank Input* - Refers to any whitespace input. E.g. " ", "\t".
+ 
+* *No Input* - Refers to no input given. 
+
 <br>
 
 ## e. Appendix E: Instructions for Manual Testing
@@ -1773,20 +1785,7 @@ Changed section: saved here just in case
 
 <br>
 
-## Glossary
 
-* *Illegal Characters* - Non-alphanumeric characters
-* 
-* *Aggregation* - Any collection of objects. In this case, we utilise an ArrayList to store all our objects. 
-* 
-* *Features* - In this case, we refer to the entire interaction with the various types of objects. E.g. any interaction with Staff/Patient/Doctor Appointment/Nurse Schedules/Inventory.
-* 
-* *Functionalities* - Any command that is given to the feature. E.g. `help` command, `list` command.
-* 
-* *Blank Input* - Refers to any whitespace input. E.g. " ", "\t".
-* 
-* *No Input* - Refers to no input given.
-* 
 
 <br>
 
