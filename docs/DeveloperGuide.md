@@ -249,13 +249,13 @@ Invalid Input includes:
 
 5. StaffInstance then executes the StaffAdd Command object to begin the process of creating the Staff object
 
-6. `StaffAdd.execute()` will call the function in `staffAggregation.add()`
+6. `StaffAdd.execute()` will call the function in `StaffList.add()`
 
-7. `staffAggregation.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
+7. `StaffList.add()` will instantiate a new Staff object and add it to the ArrayList<Staff> StaffList. which contains all the Staff Objects. 
 
 **Saving Staff Objects into .txt file**
 
-8. `staffAggregation.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
+8. `StaffList.add()` then calls `staffStorage.writeToFile()` which starts the process of writing the details of all existing Staff Objects, within the StaffList into a specified .txt file.
 9. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 10. Data is written and saved.
 11. Control is then returned to StaffInstance.
@@ -266,7 +266,7 @@ Invalid Input includes:
 
 **Implementation:**
 
-The function Delete takes in 1 compulsory field (Staff ID) to identity and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDelete Command object is created. StaffDelete command object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
+The function Delete takes in 1 compulsory field (Staff ID) to identify and delete the Staff Object from the aggregation of Staff Objects. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a StaffDelete Command object is created. StaffDelete command object will be executed to iterate through the aggregation of Staff Objects. If Staff Object exists, it will be removed. Else an error message will be displayed.
 
 Invalid Input includes:
 
@@ -285,17 +285,17 @@ Invalid Input includes:
 **Creating StaffDelete command**
 
 2. If the input data is valid, a StaffDelete Command object is created 
-3. The StaffAdd Command object is returned to `StaffInstance.run()`
+3. The StaffDelete Command object is returned to `StaffInstance.run()`
 
 **Deleting Staff Object using User Input**
 
 4. StaffInstance then executes the StaffDelete Command object to begin the process of deleting the referenced Staff object
-5. `StaffDelete.execute()` will call the function `staffAggregation.delete()`
-6. `staffAggregation.delete()` will iterate through the objects in ArrayList<Staff> StaffList. The Staff Object referenced by the input given by the user will be deleted.
+5. `StaffDelete.execute()` will call the function `StaffList.delete()`
+6. `StaffList.delete()` will iterate through the objects in ArrayList<Staff> StaffList. The Staff Object referenced by the input given by the user will be deleted.
 
 **Saving changed Staff Objects into .txt file**
 
-7. `staffAggregation.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
+7. `StaffList.delete()` then calls staffStorage.writeToFile() which starts the process of writing the changed details of Staff Objects, within the StaffList into a specified .txt file.
 
 8. `staffStorage.writeToFile()` then calls `createFile()` which ensures that the specified .txt file exists.
 9. Data is written and saved.
@@ -328,8 +328,8 @@ Invalid Input includes:
 **Viewing Staff Objects**
 
 4. StaffInstance then executes the StaffList Command object to begin the process of displaying all Staff objects.
-5. `StaffList.execute()` will call the function `staffAggregation.list()`
-6. `staffAggregation.list()` will iterate through the objects in ArrayList<Staff> StaffList. 
+5. `StaffList.execute()` will call the function `StaffList.list()`
+6. `StaffList.list()` will iterate through the objects in ArrayList<Staff> StaffList. 
 7. Depending on the input given by the user, the relevant Staff Objects will be displayed.
 8. Control is then returned to StaffInstance.
 
@@ -360,9 +360,9 @@ Invalid Input includes:
 **Finding relevant Staff Objects**
 
 4. StaffInstance then executes the StaffList Command object to begin the process of finding and displaying relevant Staff objects.
-5. `StaffFind.execute()` will call the function `staffAggregation.find()`
-6. `staffAggregation.find()` will iterate through the objects in ArrayList<Staff> StaffList. 
-7. `staffAggregation.find()` will utilise a search function in StaffAggregation to find any Staff Objects that matches the given keyword by the user. 
+5. `StaffFind.execute()` will call the function `StaffList.find()`
+6. `StaffList.find()` will iterate through the objects in ArrayList<Staff> StaffList. 
+7. `StaffList.find()` will utilise a search function in StaffList to find any Staff Objects that matches the given keyword by the user. 
 8. The relevant Staff Objects are then displayed.
 9. Control is then returned to StaffInstance.
 
