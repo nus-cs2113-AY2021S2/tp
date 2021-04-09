@@ -87,16 +87,12 @@ and file names.
    of Java installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
    > 💡 You can check the version of Java installed on your local computer by entering\
-   > `java -version` into your console of choice.
-   
+   > `java -version` into your console and then pressing `ENTER`.
 1. Obtain a copy of the latest version of the Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
-
 1. Open the console, enter `java -jar tp.jar`, and press `ENTER` to start Patient Manager.
-
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
    and hit `ENTER` at the end to execute the command.
-
 1. Please refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
 
 ---
