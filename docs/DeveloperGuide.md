@@ -135,7 +135,7 @@ In this developer guide, all text that appears on the CLI or in code will be wri
 ![Diagram](diagrams/MainArchitecture.png)  
 *Figure 1*
 
-The Architecture Design in figure 1 above shows the design of Unitracker.
+The Architecture Design in figure 1 above shows the design of UniTracker.
 
 Given below are quick overviews of UniTracker's 4 main components:
 
@@ -232,7 +232,7 @@ Overall 10/10 :)
 Returning to module information menu...
   ```
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/moduleInfo/addNewReview.png)  
+![Diagram](diagrams/moduleInfo/addNewReview.png)    
 A general explanation of how this feature works:
 
 A `while` loop is used to take in multiple lines of input until the input contains
@@ -474,37 +474,67 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ---
 
-## 6. User Stories
-
-Version| As a ... | I want to ... | So that I can ...
---------|----------|---------------|------------------
-v1.0|new user|see usage instructions|refer to them when I forget how to use the application
-v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email
-v1.0|student|add external links| refer to them more easily 
-v1.0|student|add deadlines to some tasks|record when a task needs to be done
-v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam
-v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next
-v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list
-v2.0|user| store my information | view them later without having to re-type them again
-
----
-
-## 7. Non-Functional Requirements
-
-1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.
-2. Must be able to work completely offline.
+## 6. User Stories  
+  
+|Version| As a ... | I want to ... | So that I can ...  
+|--------|----------|---------------|------------------  
+|v1.0|new user|have a list of command suggestions to choose from|navigate the platform easily  
+|v1.0|new user|see usage instructions|refer to them when I forget how to use the application  
+|v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email  
+|v1.0|student|add external links| refer to them more easily  
+|v1.0|student|add deadlines to some tasks|record when a task needs to be done  
+|v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam  
+|v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next    
+|v1.0|student|add personal reviews on modules I have taken|know what to recommend to my peers  
+|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list    
+|v2.0|user| store my information | view them later without having to re-type them again  
 
 ---
 
-## 8. Glossary
+## 7. Non-Functional Requirements  
 
-* Mainstream OS: Windows, Linux, macOS
-* Domain name: The actual name of the website. For example, 'google' in 'google.com' is the domain name
-* Top-level domain: .com , .net, .org , .edu etc.
+1. Must be able to work on any Mainstream OS as long as Java 11 (or above) is installed.  
+2. Must be able to work completely offline.  
+
+---
+
+## 8. Glossary  
+
+* Mainstream OS: Windows, Linux, macOS  
+* Domain name: The actual name of the website. For example, 'google' in 'google.com' is the domain name  
+* Top-level domain: .com , .net, .org , .edu etc.  
 ---
 
 ## 9. Instructions for manual testing
 
-*[This section will be completed in the future.]* <br>
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used
-for testing}
+###Initial Launch  
+1. Download the jar file and copy into an empty folder.  
+1. Refer to [this website](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#2-quick-start) to set up the application.  
+
+###Adding/Deleting a Module  
+1. You may add a module by the following commands: `1`, `1` (from main menu). Enter the `module name` and `description`. You may choose to keep illegal characters in your module name.  
+    1. For example, by entering `CS2113T@NUS` as the `module name`, the `@` symbol is seen as a non-alphanumeric character. You will be prompted to confirm the use of such characters.    
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#311-add-a-module) for more instructions.  
+1. You may delete a module by the following commands: `1`,`4` (from main menu). Enter the number of the `module` from the list you want to delete.    
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#314-delete-a-module) for more instructions.    
+###Adding/Deleting a Task  
+1. You may add a `task` to a `module` by the following commands: `1`, `11` OR `3`, `1` (from main menu). Select the `task type` and the `module`.     
+   1. If you want to add a `task` to a **new** `module`, type a number that is NOT in the list of modules.  
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#331-add-new-task) for more instructions.  
+1. You may delete a task by the following commands: `1`, `12` OR `3`, `3` (from main menu).  
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#333-delete-a-task)  
+###Adding/Deleting Zoom Links  
+1. You may add a `zoom link` to a `module` by the following commands: `1`, `13` OR `4`, `2` (from main menu). Select the `module` and enter the `zoom link` (and password).    
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#345-add-zoom-link) for more instructions.    
+1. You may delete a `zoom link` by the following commands: `1`, `14` OR `4`, `3` (from main menu).   
+    1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#346-delete-zoom-link) for more instructions.  
+
+###Calculating CAP  
+1. To calculate **actual** `CAP` score - enter `1`, `2`, `1` (from main menu). This will calculate your CAP based on the grades you have entered for each `module`.  
+1. To simulate **expected** `CAP` score - enter `1`, `2`, `2` (from main menu). This will prompt you to enter the `grade` and `MCs` for the simulated `modules`.  
+    1. Type `ok` to end simulation and print out your simulated `CAP` score.  
+1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#323-simulate-future-cap) for more instructions.  
+
+###Saving Data  
+1. All information related to UniTracker will be stored in the root folder of the jar file, under the `UniTracker Data` folder.  
+1. In the event of a corrupted file or if a file is tampered with, UniTracker will print an `error` message, and you may not be able to run the application. To resolve this, please delete the `UniTracker Data` folder. The program will create a **new** `UniTracker Data` folder.  

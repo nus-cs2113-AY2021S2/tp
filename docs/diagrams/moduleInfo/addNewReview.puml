@@ -7,7 +7,7 @@ participant ":Module" as Module
 activate ModuleInfo
 
     ModuleInfo -> ModuleInfo++ :  addReview()
-        ref over ModuleInfo, Module, Ui : viewAllModules()
+        ref over ModuleInfo : viewAllModules()
         ModuleInfo -> Ui++ : readCommandToInt()
         return moduleNumber
         ref over ModuleInfo : readReview()
