@@ -205,7 +205,9 @@ These are the food stored in DRAWERS:
 
 ### Remove a food item by quantity: `remove`
 
-Removes a food item based on its index. Additionally, if a removal results in a food category falling below the specified limit (as per in [`setlimit`](modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is [`runninglow`](list-categories-with-food-running-low-runninglow) on food.
+Removes a food item based on its index. Additionally, if a removal results in a food category falling below the specified limit 
+(as per in [`setlimit`](#modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is 
+[`runninglow`](#list-categories-with-food-running-low-runninglow) on food.
 
 Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 
