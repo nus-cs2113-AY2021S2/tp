@@ -278,7 +278,33 @@ _Figure 9: Command Class Diagram (Part 2)_
 All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8 & 9_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.\
-In the case of `AddCommand` in _Figure 8_, the resultant constant is `...final String COMMAND_ADD = "add";`.\
+
+![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
+_Figure 10: AddCommand Class Diagram_
+
+In the case of `AddCommand` in the above _Figure 10_,\
+the resultant constant is `...final String COMMAND_ADD = "add";`.
+
+Below shows the command format the user has to type into the Application.
+
+>_**Commands in Finux follow these argument orders (depending on the command):**_
+> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
+> * `CMD -OPT`
+> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
+> * `CMD <FIELD>`
+> * `CMD [<FIELD>]`
+> * `CMD`
+> 
+>_**Argument types and notation:**_
+> * `CMD` - a valid command.
+> * `-OPT` - an option, a letter preceded by a dash. E.g. "`-i`".
+> * `<FIELD>` - an area where data is required.
+> * `[...]` - optional argument(s).
+> * `{ ... | ... | ... }` - mutually exclusive arguments,\
+    e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+
+_Figure 11: Command Input Format and Argument Types_
+
 More on the different types of commands and usages, please refer to our [User Guide](UserGuide.md).
 
 #### Description
@@ -293,10 +319,18 @@ object is successfully created. Most of the input validation is done in the cons
    1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
    3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
-      E.g. ViewCommand implements `{-e | -l | -s}` options, `view -s -l` is considered a conflict of options.
+      E.g. ViewCommand implements `{-e | -l | -s | -a}` options, `view -s -l` is considered a conflict of options.
 2. Secondly, option values are validated (if any):
    * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
      Each option value is validated based on the input validation methods for each data type.
+
+> 💡 The Command classes uses static validation methods from the
+> [Utils](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/src/main/java/seedu/duke/command/Utils.java)
+> class. Some notable methods used are:
+> * `validateOptions(...)`: Checks arguments for invalid, duplicate and conflict options.
+> * `validateArguments(...)`: Used to check for strict argument type ordering. Still requires `validateOptions(...)`
+>   to check for argument validity.
+> * `getOptionValue(...)`: Extracts the option's value from arguments.
 
 In the case of `AddCommand`, which supports options of `{-e | -l | -s}`, the constructor will check which option
 was given, and sets the `RecordType` enumeration, `recordType` to the following:
