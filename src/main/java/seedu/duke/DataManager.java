@@ -171,4 +171,27 @@ public class DataManager {
 
 		return routes;
 	}
+
+	public void saveAll(Deliveryman deliveryman){
+		saveDeliveries();
+		saveProfile(deliveryman);
+		saveRoutes();
+	}
+
+	public static void saveRoutes() {
+		FileWriter fw;
+		try {
+			fw = new FileWriter(PATH_TO_ROUTES);
+			String prefix = "";
+			for (Route route : Route.routes) {
+				fw.write(prefix);
+				String deliveryData = route.saveFormat();
+				fw.write(deliveryData);
+				prefix = "\n";
+			}
+			fw.close();
+		} catch(IOException e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
