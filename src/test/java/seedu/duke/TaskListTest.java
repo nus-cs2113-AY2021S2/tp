@@ -2,10 +2,10 @@ package seedu.duke;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import seedu.duke.features.task.Assignment;
-import seedu.duke.features.task.FinalExam;
-import seedu.duke.features.task.Midterm;
-import seedu.duke.features.task.Task;
+import seedu.duke.features.task.tasktypes.Assignment;
+import seedu.duke.features.task.tasktypes.FinalExam;
+import seedu.duke.features.task.tasktypes.Midterm;
+import seedu.duke.features.task.tasktypes.Task;
 import seedu.duke.features.task.TaskManager;
 import seedu.duke.features.task.command.AddTask;
 import seedu.duke.features.task.command.DeleteTask;

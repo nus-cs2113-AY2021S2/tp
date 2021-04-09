@@ -1,5 +1,9 @@
 package seedu.duke.features.task;
 
+import seedu.duke.features.task.tasktypes.Assignment;
+import seedu.duke.features.task.tasktypes.FinalExam;
+import seedu.duke.features.task.tasktypes.Midterm;
+import seedu.duke.features.task.tasktypes.Task;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
 import seedu.duke.features.task.command.AddTask;
