@@ -259,9 +259,9 @@ public class Ui {
     }
 
     public void showStoreOptions(String canteenName, String storeName) {
-        System.out.println("You are now viewing: " + canteenName + ": " + storeName);
-        System.out.println("Please Enter your command:");
-        System.out.println("If you need help then Enter 'help' to view all the commands");
+        System.out.println("You are now viewing the store: " + storeName + " in the canteen: " + canteenName);
+        System.out.println("Please enter your command:");
+        System.out.println("If you need help, enter 'help' to view all the commands");
         System.out.println(LINESPACING);
     }
 
