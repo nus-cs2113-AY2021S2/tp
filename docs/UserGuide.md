@@ -53,7 +53,7 @@ as well as their input formats.
 If you have any questions about Patient Manager, please check out [Frequently Asked Questions](#frequently-asked-questions)
 for a list of common questions.
 
-Finally, for returning users who may have forgotten the input format for a command, you can view 
+Finally, for returning users who are not sure about the input format for a command, you can check 
 [Command Summary](#command-summary) for a table of valid commands, and their input format.
 
 
@@ -64,18 +64,17 @@ and file names.
 >
 > 💡 The light bulb denotes tips and tricks for using Patient Manager.
 >
-> ℹ️The information symbol highlights useful information to take note of.
+> ℹ️ The information symbol highlights useful information to take note of.
 >
 > ❗ The exclamation mark highlights important things to take note of.
 
 ---
 ## Quick Start
 
-> ℹ️Patient Manager is a Command-Line application, and all commands need to be run from the
+> ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
 > terminal/Command Prompt (cmd)/PowerShell. For reference, a screenshot from Windows 10 is provided here:
 > 
 > ![PowerShell](./images/WindowsPowerShell.png)
-
 
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, Java 11 can be downloaded from
