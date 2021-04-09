@@ -4,6 +4,9 @@ import seedu.logic.command.Command;
 import seedu.model.patient.PatientList;
 import seedu.ui.PatientUI;
 
+/**
+ *
+ */
 public class PatientAddCommand extends Command {
 
     private String[] argArr;
