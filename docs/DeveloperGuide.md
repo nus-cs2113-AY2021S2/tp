@@ -52,15 +52,15 @@
     	3. [Delete](#553-delete)
     	4. [List](#554-list)
 
-[Appendix A: Product Scope](#a-appendix-a-product-scope) (jiaen)
+[Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
 
-[Appendix B: User Stories](#b-appendix-b-user-stories) (alex)
+[Appendix B: User Stories](#appendix-b-user-stories) (alex)
 
-[Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements) (mingshun)
+[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements) (mingshun)
 
-[Appendix D: Glossary](#d-appendix-d-glossary) (owen)
+[Appendix D: Glossary](#appendix-d-glossary) (owen)
 
-[Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing) (sarrah)
+[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing) (sarrah)
 
 
 ## 1. Introduction
