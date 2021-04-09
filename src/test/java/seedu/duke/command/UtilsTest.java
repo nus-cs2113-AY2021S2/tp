@@ -15,8 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.duke.command.AddCommand.COMMAND_ADD;
+import static seedu.duke.command.CreditScoreCommand.COMMAND_CREDIT_SCORE;
 import static seedu.duke.command.HelpCommand.COMMAND_HELP;
 import static seedu.duke.command.Utils.getOptionValue;
+import static seedu.duke.command.Utils.getValue;
 import static seedu.duke.command.Utils.isOption;
 import static seedu.duke.command.Utils.validateArguments;
 import static seedu.duke.command.Utils.validateOptions;
@@ -52,13 +54,8 @@ class UtilsTest {
             () -> assertTrue(isOption("-d")),
             () -> assertTrue(isOption("-a")),
             () -> assertTrue(isOption("-i")),
-            () -> assertTrue(isOption("-E")),
-            () -> assertTrue(isOption("-L")),
-            () -> assertTrue(isOption("-S")),
-            () -> assertTrue(isOption("-D")),
-            () -> assertTrue(isOption("-A")),
-            () -> assertTrue(isOption("-I")),
-            () -> assertTrue(isOption("-p"))
+            () -> assertTrue(isOption("-p")),
+            () -> assertTrue(isOption("-E"))
         );
     }
 
@@ -103,7 +100,29 @@ class UtilsTest {
     @DisplayName("[validateArguments] - help Command - failure:")
     @Test
     public void validateArguments_improperHelp() {
-        // new test case to be written.
+        ArrayList<String> command = new ArrayList<>();
+        command.add("help");
+        String expected1 = COMMAND_HELP + " Command - not enough arguments.";
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected1, COMMAND_HELP);
+
+        command.add("me");
+        command.add("oi");
+        String expected2 = COMMAND_HELP + " Command - too many arguments.";
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected2, COMMAND_HELP);
+
+        command.clear();
+        command.add("help");
+        command.add(null);
+        String expected3 = COMMAND_HELP + " Command - missing argument value.";
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected3, COMMAND_HELP);
+
+        command.remove(1);
+        command.add("");
+        validateArguments_improperCommand_helper(command, ARG_TYPE_ORDER_CMD_HELP,
+                expected3, COMMAND_HELP);
     }
 
     @DisplayName("[validateArguments] - view Command - success:")
@@ -173,15 +192,51 @@ class UtilsTest {
     @Test
     public void validateOptions_invalidOptions() {
         ParserHandler parserHandler = new ParserHandler();
+
         ArrayList<String> command1 = parserHandler.getParseInput("view -l -z");
-        ArrayList<String> command2 = parserHandler.getParseInput("add -s -a 200.00 -d -d");
-        ArrayList<String> command3 = parserHandler.getParseInput("add -a -s -s -d");
         assertThrows(CommandException.class, () ->
                 validateOptions(command1, COMMAND_VIEW, OR_OPTIONS, OR_OPTIONS));
+
+        ArrayList<String> command2 = parserHandler.getParseInput("add -s -a 200.00 -d -d");
         assertThrows(CommandException.class, () ->
                 validateOptions(command2, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+        
+        ArrayList<String> command3 = parserHandler.getParseInput("add -a -s -s -d");
         assertThrows(CommandException.class, () ->
                 validateOptions(command3, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+
+        ArrayList<String> command4 = parserHandler.getParseInput("add -a 200.00 -d 20/1/2021 -s -l savings");
+        assertThrows(CommandException.class, () ->
+                validateOptions(command4, COMMAND_ADD, VALID_OPTIONS_ADD, OR_OPTIONS));
+    }
+
+    @DisplayName("[getValue] - Value exists - success:")
+    @Test
+    public void getValue_valueExists_success() {
+        ArrayList<String> command1 = new ArrayList<>();
+        String verify1 = "abc";
+        command1.add("help");
+        command1.add(verify1);
+        ArrayList<String> command2 = new ArrayList<>();
+        String verify2 = "mark";
+        command2.add("creditscore");
+        command2.add(verify2);
+        try {
+            assertEquals(verify1, getValue(command1, COMMAND_CREDIT_SCORE));
+            assertEquals(verify2, getValue(command2, COMMAND_CREDIT_SCORE));
+        } catch (CommandException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @DisplayName("[getValue] - Value missing - failure:")
+    @Test
+    public void getValue_valueMissing() {
+        ArrayList<String> command1 = new ArrayList<>();
+        command1.add("help");
+        assertThrows(CommandException.class, () -> getValue(command1, COMMAND_HELP));
+        command1.add("");
+        assertThrows(CommandException.class, () -> getValue(command1, COMMAND_HELP));
     }
 
     @DisplayName("[getOptionValue] - Option exists - success:")
@@ -213,6 +268,8 @@ class UtilsTest {
                 getOptionValue(command1, COMMAND_ADD, "-d"));
         assertThrows(CommandException.class, () ->
                 getOptionValue(command1, COMMAND_ADD, "-s"));
+        assertThrows(CommandException.class, () ->
+                getOptionValue(command1, COMMAND_ADD, "-p"));
 
         ArrayList<String> command2 = parserHandler.getParseInput("add -a 200.00 -d -s savings");
         assertThrows(CommandException.class, () ->
