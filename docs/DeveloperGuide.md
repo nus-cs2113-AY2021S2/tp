@@ -940,7 +940,8 @@ Invalid Inputs include:
 
 <br>
 
-**Inventory-related features**
+###  5.5 Inventory
+###  5.5.1 Nurse Schedule
 
 Similar to the Start Menu, the Inventory Menu will repeatedly request user input until the `return` command is given.
 
@@ -960,7 +961,7 @@ Whenever a user input is given to the Inventory Menu, the following steps will o
 
 <br>
 
-### 5.1.2 Add
+### 5.5.2 Add
 
 **Implementation:**
 
@@ -1012,7 +1013,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.1.3 Delete
+### 5.5.3 Delete
 
 **Implementation:**
 
@@ -1051,7 +1052,7 @@ Invalid Input includes:
 
 <br>
 
-### 5.1.4 List
+### 5.5.4 List
 
 **Implementation:**
 
@@ -1138,5 +1139,563 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ## Appendix E: Instructions for Manual Testing
 
-<br>
+Given below are instructions to test HealthVault manually.
 
+> * These instructions only provide a starting point for testers to work on;
+> testers are expected to do more *exploratory* testing.
+> * You can refer to the [User Guide]() for further information regarding the command formats.
+
+### Launching HealthVault
+1. Initial launch of HealthVault
+    1.1 Download the jar file [here](https://github.com/AY2021S2-CS2113T-FO8-2/tp/releases) and copy into an empty folder.
+    1.2 Open up a command window to that folder with the jar file.
+    1.3 Run the command `java -jar tp.jar` 
+        
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** HealthVault will be loaded, and a welcome message will be shown. Ensure that the version number in the welcome matches version of the jar file downloaded.
+
+### Start Menu
+1. Choose a directory from the Start Menu
+    > Ensure that the location that you are trying to access is in the Start Menu or else 
+    > error message will pop up
+    >
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.1 **Test case:** `staff` (where you will be directed to the Staff Menu)
+
+&nbsp&;nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+	
+	```
+	Welcome to Staff Menu!
+	Type "help" for staff menu commands
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.2 **Test case:** `patient` (where you will be directed to the Patient Menu)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+	
+	```
+	Welcome to the patient Commands section!
+	Type "help" for patient menu command
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.3 **Test case:** `appointments` (where you will be directed to the Appointments' Menu)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	Welcome to the Appointments' Menu!
+	Type 'help' for appointment menu commands
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.4 **Test case:** `schedules` (where you will be directed to the Schedules' Menu)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+	
+	```
+	Welcome to Nurse Schedules!
+	Type "help" to for nurse schedules commands
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.5 **Test case:** `inventory` (where you will be directed to the Staff Menu)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+	```
+	Welcome to Inventory Menu!
+	Type "help" for Inventory menu commands
+	```
+	
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.6 **Test case:** `help` (where you will be directed to the Help Menu)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	Commands       Description                             Format    
+	____________________________________________________________________________________________________
+	staff          To go to staff                          -         
+	patient        To go to patients                       -         
+	appointments   To go to doctors appointments           -         
+	schedules      To go to nurse schedules                -         
+	inventory      To go to inventory                      -         
+	help           To see what commands for Start Menu     -         
+	exit           To exit the application                 -         
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.7 **Test case:** `exit` (where you will exit the program)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Goodbye! Have a nice day!```
+	 
+<br/><br/>
+
+### Choose which feature you want to use from Staff Menu	 
+1. Adding a new staff
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!   
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
+>3. The age field input should be a positive integer starting from 0 but less than 150
+>
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following!   
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
+>3. The age field input should be a positive integer starting from 0 but less than 150
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/MingShun/30/Pediatrician```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Doctor MingShun hired :)```
+
+<br/><br/>
+ 
+2. Deleting staff
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted user ID starts with a D (for doctor ID) or N (for nurse ID)  and has **exactly** 5 digits in the number following! 
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/D12345```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```D12345 has been fired :(```
+
+<br/><br/>
+
+3. Listing all doctors and nurses
+
+>:information_source: Important notes about the input format
+>1. <> implies that the inputs are optional
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/nurses ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	ID         | Name       | Age   | Specialisation      
+	____________________________________________________________
+	N12345     | Sarrah     | 30    | Emergency    
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/doctors ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	ID         | Name       | Age   | Specialisation      
+	____________________________________________________________
+	D12345     | MingShun   | 30    | Pediatrician    
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+		
+	```
+	ID         | Name       | Age   | Specialisation      
+	____________________________________________________________
+	N12345     | Sarrah     | 30    | Emergency  
+	D12345     | MingShun   | 30    | Pediatrician    
+	D12355     | Alex       | 28    | Oncology
+	```		
+	
+<br/><br/>
+
+4. Finding a staff
+
+>:information_source: Important notes about the input format
+>1. Any keyword input will be searched through every field of Staff details. i.e. It can be used to search Staff ID, name, age and specialisation.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```find/Oncology```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+	
+	```
+	ID         | Name       | Age   | Specialisation      
+	____________________________________________________________
+	D12355     | Alex       | 28    | Oncology            
+
+	Staff -->
+	```
+
+<br/><br/>
+
+5. Returning to Start Menu
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+
+<br/><br/>
+
+6. Directing to help function
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```help```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	Here is a list of Staff commands: 
+	
+	Commands  Description                                                 Format                                            
+	____________________________________________________________________________________________________
+	help      Brings up the list of commands for Staff!                   -                                                 
+	add       Adds Staff details to the Staff database!                   add/[Staff ID]/[Name]/[Age]/[Specialisation]      
+	list      Brings up the list of all current Staff in database!        list/<input>, where input == doctor or nurse      
+	delete    Deletes the Staff with the specified ID from the list!      delete/[Staff ID]                                 
+	find      Finds a matching Staff using a keyword or phrase!           find/[keyword or phrase]                          
+	return    Returns you to the Start Menu!                              -                                 
+	```
+
+<br/><br/>
+
+### Choose which feature you want to use from Patient Menu	 
+1. Adding a new patient
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
+>2. Any input field in HealthVault only accepts space and alphanumeric characters
+>3. The gender field input should only be "M", "F" or "Others"
+>4. The age field input should be a positive integer starting from 0 but less than 150
+>
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/P55555/Sam/40/M/Fever/Paracetamol```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Sam is now a patient here!```
+
+<br/><br/>
+ 
+2. Deleting a patient
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted user ID starts with a P and has **exactly** 5 digits in the number following! 
+  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/P55555```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	Noted. I've removed this patient: 
+	Sam
+	Now you have 0 patients in the list
+	```
+
+<br/><br/>
+
+3. Listing all patients
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```list```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	Here are the patients currently in the list!
+	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
+	____________________________________________________________________________________________________
+	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
+	P12345   | Amy                  | 35     | F        | Flu                  | Panadol
+	```
+	
+<br/><br/>
+
+4. Finding a staff
+
+>:information_source: Important notes about the input format
+>1. Any keyword input will be searched through every field of Patient details. i.e. It can be used to search Patient ID, name, age, illness, medication required.
+> The keyword input can be case insensitive and still find matches in the database.
+> 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. **Test case:** ```find/P55555```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
+	____________________________________________________________________________________________________
+	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
+	```
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. **Test case:** ```find/Sam```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+	
+	```
+	ID       | Name                 | Age    | Gender   | Illness              | Medication Required 
+	____________________________________________________________________________________________________
+	P55555   | Sam                  | 40     | M        | Fever                | Paracetamol    
+	```
+<br/><br/>
+
+5. Returning to Start Menu
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+
+<br/><br/>
+
+6. Directing to help function
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```help```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+	```
+	Here is a list of Patient commands: 
+
+	Commands  Description                                                 Format                                                                
+	__________________________________________________________________________________________________________________________________________
+	help      Brings up the list of commands for Patient!                 -                                                                     
+	add       Adds Patient details to the Patient database!               add/[Patient ID]/[Name]/[Age]/[Gender]/[Illness]/[Medication Needed]  
+	list      Brings up the list of all current Patient in database!      -                                                                     
+	delete    Deletes the Patient with the specified ID from the list!    delete/[Patient ID]                                                   
+	find      Finds a matching Patient using a keyword or phrase!         find/[keyword or phrase]                                              
+	return    Returns you to the Start Menu!                              -                                
+	```
+
+<br/><br/>
+
+### Choose which feature you want to use from Appointments' Menu
+
+1. Adding a new appointment
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following!  
+>2. Any input fields in HealthVault only accepts space and alphanumeric characters.
+>3. The gender field input should only be "M", "F".
+>4. This function **allows** the adding of past appointments.
+     
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/D12345/A12345/Alex/M/21012021```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Appointment Added```
+	
+<br/><br/>
+ 
+2. Deleting staff
+
+>:information_source: Important notes about the input format
+>1. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.1 **Test case:** ```delete/D12345```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.2 **Test case:** ```delete/A12346```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```DoctorID / Appointment ID: D12345/A12345 has been deleted!```
+
+<br/><br/>
+
+3. Listing all doctors and nurses
+
+>:information_source: Important notes about the input format
+>1. Make sure the input `all` is lower caps.
+>2. Make sure that the inputted doctor/appointment ID starts with a D/A and have **exactly** 5 digits in the number following! 
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/all```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	____________________________________________________________
+	D11111         | A54321         | Owen           | M              | 01/04/2021
+	D12345         | A12345         | Alex           | M              | 21/01/2021  
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/D12345```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	____________________________________________________________
+	D12345         | A12345         | Alex           | M              | 21/01/2021  
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.3 **Test case:** ```list/A12345 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	Doctor ID      | Appointment ID | Name           | Gender         | Date          
+	____________________________________________________________
+	D12345         | A12345         | Alex           | M              | 21/01/2021  
+	```		
+	
+<br/><br/>
+
+4. Returning to Start Menu
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+
+<br/><br/>
+
+5. Directing to help function
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```help```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	Here is a list of Doctor Appointments Commands: 
+	Commands  Description                                                           Format                                            
+	____________________________________________________________________________________________________
+	help      Brings up the list of commands for Doctor Appointments!               -                                                 
+	add       Adds Doctor Appointment details to the database!                      add/[Doctor ID]/[Appointment ID]/[Name]/[Gender]/[Date (DDMMYYYY)]
+	list      Brings up the list of all current Doctors' Appointments in database!  list/[DoctorID/AppointmentID]                     
+	delete    Deletes the Appointment with the specified ID from the list!          delete/[DoctorID/Appointment ID]                  
+	return    Returns you to the Start Menu!                   
+	```
+
+<br/><br/>
+
+### Choose which feature you want to use from Schedules' Menu	 
+1. Adding a new schedule
+
+>:information_source: Important notes about the input format
+>1. Make sure Nurse ID exists in Staff and Patient ID exists in Patients before adding.
+>2. Make sure that the inputted user ID starts with a N for Nurse, P for Patient and have **exactly** 5 digits in the number following! 
+>3. Any input fields in HealthVault only accepts space and alphanumeric characters.
+>4. HealhVault currently only allows the adding of **1** schedule per patient per day.
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/N12345/P12345/30012020```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ````Trip to P12345 on 30/01/2020 added!```
+	
+<br/><br/>
+ 
+2. Deleting schedule
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+>2. HealthVault only accepts valid Date inputs.
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/N12345/30012020```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Trip to P12345 on 30/01/2020 has been cancelled!```
+
+<br/><br/>
+
+3. Listing schedules
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted Nurse ID starts with a N for Nurse, and have **exactly** 5 digits in the number following! 
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.1 **Test case:** ```list/N12345 ```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+	```
+	Nurse ID   | Patient ID | Date      
+	____________________________________________________________
+	N12345     | P12345     | 30/01/2020 
+	```
+	
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.2 **Test case:** ```list/all```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+	```
+	Nurse ID   | Patient ID | Date      
+	____________________________________________________________
+	N12345     | P12345     | 30/01/2020
+	N55555     | P55555     | 30/01/2020   
+	```
+		
+<br/><br/>
+
+4. Returning to Start Menu
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start menu!```
+
+<br/><br/>
+
+5. Directing to help function
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```help```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** 
+
+	```
+	Here is a list of Nurse Schedule commands: 
+	Commands  Description                                                      Format                                            
+	____________________________________________________________________________________________________
+	help      Brings up the list of commands for Nurse Schedule!               -                                                 
+	add       Adds Nurse Schedule details to the database!                     add/[Nurse ID]/[Patient ID]/[Date (DDMMYYYY)]     
+	list      Brings up the list of all current Nurse Schedules in database!   list/[NurseID/all]                                
+	delete    Deletes the Schedule with the specified ID from the list!        delete/[Nurse ID]/[Date (DDMMYYYY)]               
+	return    Returns you to the Start Menu!                                   -    
+	```
+
+<br/><br/>
+
+### Choose which feature you want to use from Inventory Menu	 
+1. Adding a new drug or increasing quantity of current drug
+
+>:information_source: Important notes about the input format
+>
+>1. Make sure that the inputted price is valid and does not have more than 2 decimal places!   
+>2. Any input fields in HealthVault only accepts space and alphanumeric characters!
+>3. Avoid using uppercase letters!
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```add/paracetamol/3/90```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```90 paracetamol is added into Inventory!```
+
+<br/><br/>
+ 
+2. Decreasing quantity of drugs
+
+>:information_source: Important notes about the format
+>1. Avoid using uppercase letters
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```delete/paracetamol/20```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Noted. I've removed 20 paracetamol```
+
+<br/><br/>
+
+3. Listing all drugs
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```list```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	DrugName        | Price      | Quantity
+	------------------------------------------------------------
+
+	paracetamol     | 3.00       | 70   
+	Panadol         | 4.80       | 36 
+	```		
+	
+<br/><br/>
+
+4. Returning to Start Menu
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```return```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:** ```Returning to start Menu!```
+
+<br/><br/>
+
+4. Directing to help function
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test case:** ```help```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Expected:**
+
+	```
+	Here is a list of Inventory commands: 
+
+	Commands  Description                                                 Format                                            
+	____________________________________________________________________________________________________
+	help      Brings up the list of commands for Inventory!               -                                                 
+	add       Adds Inventory details to the database!                     add/[Drug name]/[Price]/[Quantity]                
+	list      Brings up the list of all current Inventory in database!    list                                              
+	delete    Deletes the Inventory item from the list!                   delete/[Drug Name]                                
+	return    Returns you to the Start Menu!                              -            
+	```
+
+<br/><br/>
