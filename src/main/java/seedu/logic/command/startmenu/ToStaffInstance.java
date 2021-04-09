@@ -11,6 +11,7 @@ public class ToStaffInstance extends Command {
         StaffInstance staffInstance = new StaffInstance(STAFF_FILE_PATH);
         staffInstance.run();
     }
+
     @Override
     public boolean isExit() {
         return false;
