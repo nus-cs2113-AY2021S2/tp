@@ -15,7 +15,7 @@ import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
 
-public class PatientChecker extends MainChecker{
+public class PatientChecker extends MainChecker {
 
     private PatientList patients;
     private ArrayList<Patient> patientArrayList;
@@ -23,14 +23,14 @@ public class PatientChecker extends MainChecker{
     private String command;
     private int numberOfTokens;
 
-    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens){
+    public PatientChecker(PatientList patients, String[] stringTokens, String command, int numberOfTokens) {
         this.patients = patients;
         this.stringTokens = stringTokens;
         this.command = command;
         this.numberOfTokens = numberOfTokens;
     }
 
-    public PatientChecker(ArrayList<Patient> patients, String[] stringTokens, int numberOfTokens){
+    public PatientChecker(ArrayList<Patient> patients, String[] stringTokens, int numberOfTokens) {
         patientArrayList = patients;
         this.stringTokens = stringTokens;
         this.numberOfTokens = numberOfTokens;

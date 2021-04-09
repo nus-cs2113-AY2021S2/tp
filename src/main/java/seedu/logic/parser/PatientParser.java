@@ -3,8 +3,13 @@ package seedu.logic.parser;
 import seedu.exceptions.HealthVaultException;
 import seedu.exceptions.UnrecognizedCommandException;
 import seedu.logic.command.Command;
+import seedu.logic.command.patient.PatientAddCommand;
+import seedu.logic.command.patient.PatientDeleteCommand;
+import seedu.logic.command.patient.PatientFindCommand;
+import seedu.logic.command.patient.PatientHelpCommand;
+import seedu.logic.command.patient.PatientListCommand;
+import seedu.logic.command.patient.PatientReturnCommand;
 import seedu.model.patient.PatientList;
-import seedu.logic.command.patient.*;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.PatientChecker;
 

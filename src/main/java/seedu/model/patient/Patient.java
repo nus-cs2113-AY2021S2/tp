@@ -24,7 +24,17 @@ public class Patient {
     }
 
     public String getPatientDetailsString() {
-        return(patientID + " | " + name + " | " + age + " | " + gender + " | " + illness + " | " + medicationNeeded);
+        return (patientID
+                + " | "
+                + name
+                + " | "
+                + age
+                + " | "
+                + gender
+                + " | "
+                + illness
+                + " | "
+                + medicationNeeded);
     }
 
     public String getPatientID() {
@@ -36,7 +46,16 @@ public class Patient {
     }
 
     public String toSaveFormat() {
-        return (patientID + " | " + name + " | " + age + " | " +
-                gender + " | " + illness + " | " + medicationNeeded);
+        return (patientID
+                + " | "
+                + name
+                + " | "
+                + age
+                + " | "
+                + gender
+                + " | "
+                + illness
+                + " | "
+                + medicationNeeded);
     }
 }

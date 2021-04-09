@@ -23,9 +23,9 @@ import static seedu.duke.Constants.PATIENT_LIST_DESCRIPTION;
 import static seedu.duke.Constants.RETURN_COMMAND;
 import static seedu.duke.Constants.RETURN_DESCRIPTION;
 
-public class PatientUI extends UI{
+public class PatientUI extends UI {
 
-    public static void printPatientHelpList(){
+    public static void printPatientHelpList() {
         UI.printEmptyLine();
         System.out.println("Here is a list of Patient commands: ");
 
@@ -42,7 +42,7 @@ public class PatientUI extends UI{
         UI.printEmptyLine();
     }
 
-    public static void patientListHeader(){
+    public static void patientListHeader() {
         System.out.println(
                 UI.prettyPrint("ID", 8) + " | "
                         + UI.prettyPrint("Name", 20) + " | "
@@ -57,7 +57,7 @@ public class PatientUI extends UI{
         System.out.println(name + " is now a patient here!");
     }
 
-    public static void printPatientList(String[] patientDetails){
+    public static void printPatientList(String[] patientDetails) {
         System.out.println(
                 UI.prettyPrint(patientDetails[0], 8) + " | "
                         + UI.prettyPrint(patientDetails[1], 20) + " | "
@@ -67,11 +67,11 @@ public class PatientUI extends UI{
                         + UI.prettyPrint(patientDetails[5], 20));
     }
 
-    public static void emptyPatientListMessage(){
+    public static void emptyPatientListMessage() {
         System.out.println("OOPS! It seems like you have no patients in the list now!");
     }
 
-    public static void notEmptyPatientListMessage(){
+    public static void notEmptyPatientListMessage() {
         System.out.println("Here are the patients currently in the list!");
     }
 
@@ -80,17 +80,17 @@ public class PatientUI extends UI{
         System.out.println("Now you have " + inputInt + " patients in the list");
     }
 
-    public static void patientCommandWelcome(){
+    public static void patientCommandWelcome() {
         System.out.println("Welcome to the patient Commands section!");
         System.out.println("Type \"help\" for patient menu command");
     }
 
-    public void corruptedFileErrorMessage(){
+    public void corruptedFileErrorMessage() {
         System.out.println("The file (" + PATIENT_FILE_PATH + ") is corrupted!\n"
                 + "Please exit the program and delete the corrupted file before trying to access Patient Menu!");
     }
 
-    public static void patientNotFoundMessage(){
+    public static void patientNotFoundMessage() {
         System.out.println("There is no patient in the list that matches your keywords!");
     }
 }
