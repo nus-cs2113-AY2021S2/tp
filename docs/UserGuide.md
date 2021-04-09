@@ -399,6 +399,8 @@ Then, opens the links of the lessons specified.
 
 > 💡 Multiple links can be opened at once. As such, separate indices with a space. Invalid indices will be ignored.
 
+> ⚠ Web protocol must be included in lesson link for security purpose. Links without protocol (e.g. no https nor http at the start) will be deemed invalid.
+
 ### Listing all teaching staff : _tch_
 
 Lists all teaching staff for the module.

@@ -21,6 +21,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
     * [Command Component](#command-component)
     * [Model Component](#model-component)
     * [Storage Component](#storage-component)
+    * [Editor Component](#editor-component)
     * [Common Classes](#common-classes)
 * [Implementation](#implementation)
     * [Add Lesson](#add-lesson)

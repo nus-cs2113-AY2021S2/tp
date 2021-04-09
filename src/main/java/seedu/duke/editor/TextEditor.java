@@ -50,7 +50,6 @@ public class TextEditor extends JFrame implements ActionListener {
         setTextEditorTitle(fileName);
         setCloseIcon();
         setTextEditorDimension();
-        setFontStyleIcon();
         setSaveIcon();
         setTextArea();
         setTextAreaToVoid();
