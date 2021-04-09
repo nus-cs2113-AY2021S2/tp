@@ -97,13 +97,13 @@ public class Delivery implements Comparable<Delivery>{
     public String saveFormat() {
         StringBuilder format = new StringBuilder();
         format.append(getDeliveryStatusSymbol().replace("]", "").replace("[", ""))
-                .append(" | ")
+                .append(" / ")
                 .append(getDeliveryID())
-                .append(" | ")
+                .append(" / ")
                 .append(getAddress())
-                .append(" | ")
+                .append(" / ")
                 .append(getRecipient())
-                .append(" | ");
+                .append(" / ");
         String prefix = "";
         for (Item item : this.getItems()) {
             format.append(prefix)
