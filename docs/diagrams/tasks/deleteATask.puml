@@ -1,71 +1,41 @@
 @startuml
 
-activate ":Duke"
-":Duke" -> ":TaskManager"++ : execute
+-> ":DeleteTask"
+activate ":DeleteTask"
 
-loop true
-
-":TaskManager" -> ":Ui"++ : printTaskManagerMenu
+opt TaskManager.taskListIsEmpty(taskTypeNumber)
+":DeleteTask" -> ":Ui"++ : printTaskListIsEmptyMessage()
 return
-":TaskManager" -> ":Ui"++ : readCommand
-return
-
-alt Integer.parseInt(command)
-    opt command.equals(EXIT_COMMAND)
-    ":TaskManager" --> ":Duke"
-    end
-
-":TaskManager" -> ":TaskManager"++ : deleteTask
-":TaskManager" -> ":Ui"++ : printDeleteTaskMenu
-return
-":TaskManager" -> ":TaskManager"++ : getTaskNumber
-return
-":TaskManager" -> ":DeleteTask"++ : execute
-    opt TaskManager.taskListIsEmpty(taskTypeNumber)
-    ":DeleteTask" -> ":Ui"++ : printTaskListIsEmptyMessage
-    return
-    ":DeleteTask" --> ":TaskManager"
-    end
-    ":DeleteTask" -> ":Ui"++ : printSelectTaskNumberToDelete
-    return
-    alt DELETE_TASK
-    ":DeleteTask" -> ":DeleteTask"++ : findAndDeleteTask
-    return
-    else DELETE_ASSIGNMENT
-    ":DeleteTask" -> ":DeleteTask"++ : findAndDeleteAssignment
-    return
-    else DELETE_MIDTERM
-    ":DeleteTask" -> ":DeleteTask"++ : findAndDeleteMidterm
-    return
-    else DELETE_FINAL_EXAM
-    ":DeleteTask" -> ":DeleteTask"++ : findAndDeleteFinalExam
-    return
-    else default
-    ":DeleteTask" -> ":Ui"++ : printInvalidIntegerMessage
-    return
-    end
-
-else NumberFormatException
-":DeleteTask" -> ":Ui"++ : printInvalidIntegerMessage
-return
-
-else IndexOutOfBoundsException
-":DeleteTask" -> ":Ui"++ : printInvalidTaskNumberMessage
-return
+<---- ":DeleteTask"
 end
 
-return
+":DeleteTask" -> ":Ui"++ : printSelectTaskNumberToDelete(taskTypeNumber)
 return
 
-alt
-":TaskManager" -> ":Storage"++ : saveAllFiles
+loop
+":DeleteTask" -> ":Ui"++ : readCommandToInt()
+return taskNumber
+
+alt DELETE_TASK
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteTask(taskNumber, TASK_TYPE)
 return
-else IOException
-":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
+<--- ":DeleteTask"
+else DELETE_ASSIGNMENT
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteAssignment(taskNumber, ASSIGNMENT_TYPE)
+return
+<--- ":DeleteTask"
+else DELETE_MIDTERM
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteMidterm(taskNumber, MIDTERM_TYPE)
+return
+<--- ":DeleteTask"
+else DELETE_FINAL_EXAM
+":DeleteTask" -> ":DeleteTask"++ : findAndDeleteFinalExam(taskNumber, FINAL_EXAM_TYPE)
+return
+<--- ":DeleteTask"
+else default
+":DeleteTask" -> ":Ui"++ : printRepeatInputUntilValidMessage()
 return
 end
-
-return
 
 end
 

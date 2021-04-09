@@ -2,12 +2,30 @@
 hide members
 hide circle
 
-package Cap_Simulator {
+package "Cap Simulator" {
 
 }
 
 package Task {
-    Class Task
+    package command {
+        Class AddTask
+        Class DeleteTask
+        Class MarkOrUnmarkTask
+        Class PinTask
+    }
+    Class TaskManager
+    command -- TaskManager
+    tasktypes <-- TaskManager
+    package tasktypes {
+            Class Assignment
+            Class FinalExam
+            Class Midterm
+            Class Task
+
+            Assignment --|> Task
+            Midterm --|> Task
+            FinalExam --|> Task
+        }
 }
 
 package Link {

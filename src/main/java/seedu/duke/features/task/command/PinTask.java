@@ -1,7 +1,7 @@
 package seedu.duke.features.task.command;
 
 import seedu.duke.ui.Ui;
-import seedu.duke.features.task.Task;
+import seedu.duke.features.task.tasktypes.Task;
 import seedu.duke.features.task.TaskManager;
 
 import java.util.ArrayList;

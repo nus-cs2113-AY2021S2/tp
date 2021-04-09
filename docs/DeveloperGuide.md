@@ -12,8 +12,10 @@
 
 [3. Design](#3-design)  
 
-&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)  
-&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Component](#32-ui-component)
+&nbsp;&nbsp;&nbsp;&nbsp;[3.1 Architecture](#31-architecture)    
+&nbsp;&nbsp;&nbsp;&nbsp;[3.2 UI Component](#32-ui-component)  
+&nbsp;&nbsp;&nbsp;&nbsp;[3.3 Features Component](#33-features-component)    
+&nbsp;&nbsp;&nbsp;&nbsp;[3.4 Storage Component](#34-storage-component)    
 
 [4. Implementation](#4-implementation)  
 
@@ -74,6 +76,8 @@ navigate to specific sections to explore and learn about our different features 
 
 ### 1.3 Conventions in This Developer Guide
 
+In this developer guide, all text that appears on the CLI or in code will be written in a `code block`.
+
 > 📝 **Note!**  
 > This is a note section. Additional useful information will be written in sections such as this one.
 
@@ -128,25 +132,55 @@ navigate to specific sections to explore and learn about our different features 
 
 ### 3.1 Architecture
 
-The `Duke` class contains the main method of our application.
+![Diagram](diagrams/MainArchitecture.png)  
+*Figure 1*
 
-- At the start of the application, it initializes all the classes in sequence.
+The Architecture Design in figure 1 above shows the design of UniTracker.
 
-We have 5 main classes for our key features.
+Given below are quick overviews of UniTracker's 4 main components:
 
-- `ModuleInfo`: contains methods for our module information features.
-- `HelpGraduation`: contains methods for our SU calculator/simulator.
-- `TaskManager`: contains methods for our task management features.
-- `Links`: contains methods for our links features.
-- `Storage`: Write data to, and loads data to hard disk
+1. The `Duke` class contains the main method of our application.
+    - At the start of the application, it initializes all the classes in sequence.
 
-![Diagram](diagrams/MainArchitecture.png)
+2. The Ui component handles interactions with the user and contains the methods for system output.
+
+3. The Features component contains the main classes our 4 key features.
+    - `ModuleInfo`: contains methods for our module information features.
+    - `HelpGraduation`: contains methods for our SU calculator/simulator.
+    - `TaskManager`: contains methods for our task management features.
+    - `Links`: contains methods for our links features.
+
+4. The Storage component writes data to, and loads data from the hard disk.
+
 
 ### 3.2 UI Component
 
-This class handles the interactions with the user and contains the methods for system output.
+![Diagram](diagrams/uiArchitecture.png)    
+*Figure 2*
+
+The class diagram of the Ui component can be seen in figure 2.
+
+The Ui class handles user input and also contains the methods for user interface.
+- `longHorizontalLine` organises our system output by distinguishing user input and system output.
+- `readCommand()` reads user input and returns it in the form of a string.
+- `readCommandToInt` also reads user input but returns it in the form of an integer.
+- `printMainMenu()` prints the main menu for UniTracker. The Ui class also contains all the menus for our other features.
+- `printInvalidInputMessage()` prints the error message for invalid user inputs. The Ui class also contains other error messages.
 
 ### 3.3 Features Component
+
+blank
+
+### 3.4 Storage Component
+
+![Diagram](diagrams/storageArchitecture.png)    
+*Figure 4*
+
+The storage component, as seen in figure 3, stores data in a folder named `UniTracker Data` on the user's hard disk.
+It also loads the data upon startup. 
+- `saveAllFiles()` saves all the data from the features component into its respective text files in `UniTracker Data`.
+  This method is called at the end of every execution of a command.
+- `loadAllFiles()` loads the data from the text files in `UniTracker Data` folder from the user's hard disk. If the folder and text files does not exist, it will be created for the user.
 
 ---
 
@@ -228,92 +262,89 @@ task list.
 All task types (except `normal task`, which contains arguments 1, 2 and 5 only) contain 5 arguments upon
 creation:
 
-1) `Module Code` <br> Example: `CS2113T`  
-2) `Task Description` <br> Example: `Finish v2.0`  
-3) `Date` <br> Example: `2021-03-21`  
-4) `Time` <br> Example: `23:59`  
-5) `Message` <br> Example: `Good job!`  
+1) Module Code <br> Example: `CS2113T`  
+2) Task Description <br> Example: `Finish v2.0`  
+3) Date <br> Example: `2021-03-21`  
+4) Time <br> Example: `23:59`  
+5) Message <br> Example: `Good job!`  
 
 Given below is the sequence diagram for the feature:  
-![Diagram](diagrams/tasks/addNewTask.png)
+![Diagram](diagrams/tasks/addNewTask1.png)
 
 A general explanation of how this feature works:
 
-When the user calls this feature, the application will prompt them to input the arguments required
-for task creation. This new task will then be stored into an `ArrayList` for future reference. The
-user has to input a valid format for the __date__ and __time__ field (refer to section 3.3.1 of User
+1. When the user calls this feature, the application will prompt them to input the arguments required
+for task creation.
+2. If there are no existing modules, the user can either exit the command or create a new module. Otherwise, the user can select the module from the existing list of modules. ![Diagram](diagrams/tasks/getModuleListRef1.png)  *Figure ?*
+3. The user has to input a valid format for the __date__ and __time__ field (refer to section 3.3.1 of User
 Guide or the example above), and our application will convert it to a more readable format for the
 user. Using the example above,
-
-- `2021-03-21` will be outputted as `Mar 21 2021`
-- `23:59` will be outputted as `11:59 PM`
-
-The user input for `Message` (argument 5 above) will be printed out when the user deleted the task,
+    - `2021-03-21` will be outputted as `Mar 21 2021`
+    - `23:59` will be outputted as `11:59 PM`
+4. The user input for __message__ (argument 5 above) will be printed out when the user marks the task as done,
 signalling completion.
+5. This new task will then be stored into an `ArrayList` for its task type for future reference.
 
 ### 4.08 Mark/Unmark a Task as Done
 
 This feature allows the user to mark or unmark tasks of type `task`, `assignment`, `midterm`, `final exam` as done.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/markUnmarkTask.png)
+![Diagram](diagrams/tasks/markUnmarkTask1.png)
 
 A general explanation of how this feature works:
 
-When the user calls this feature, the application will prompt them to choose the __task
-type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to mark/unmark. All existing
-tasks in the ArrayList for the task type they chose will then be printed out, and the user has to
+1. When the user calls this feature, the application will prompt them to choose the __task
+type__ (`normal task`, `assignment`, `midterm`, `final exam`) of the task they want to mark/unmark. 
+2. All existing tasks in the ArrayList for the task type they chose will then be printed out, and the user has to
 input the index of the task they want to mark/unmark. 
-
-Depending on the current status of the task, the user will be informed of the current status of the task and be asked if they want to change it.
-
-Upon marking a task as done, the `Message` that the user inputted upon creation of this particular task will then be printed out.
+3. Depending on the current status of the task, the user will be informed of the current status of the task and be asked if they want to change it.
+4. Upon marking a task as done, the message that the user inputted upon creation of this particular task will then be printed out.
 
 
 ### 4.09 Delete a Task
 
-This feature allows the user to delete a task of type `task`, `assignment`, `midterm`, `final exam`
+This feature allows the user to delete a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/deleteATask.png)
+![Diagram](diagrams/tasks/deleteATask1.png)
 
 A general explanation of how this feature works:
 
-When the user calls this feature, the application will prompt them to choose the __task
-type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to delete. All existing
-tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
-input the index of the task they want to delete. The task they select will then be deleted from
-the `ArrayList`.
+1. When the user calls this feature, the application will prompt them to choose the __task
+type__ (`normal task`, `assignment`, `midterm`, `final exam`) of the task they want to delete.
+2. All existing tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
+input the index of the task they want to delete. 
+3. The task they select will then be deleted from the `ArrayList`.
 
 ### 4.10 View All Tasks
 
 This feature allows the user to view all their existing tasks for all task types.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/viewAllTasks.png)
+![Diagram](diagrams/tasks/viewAllTasks1.png)
 
 A general explanation of how this feature works:
 
-When the user calls this feature, the application will first iterate through and print out the pinned task list.
-This is then followed by the `task` list, `assignment` list, `midterm` list and `final exam` list.
+1. When the user calls this feature, the application will first iterate through and print out the pinned task list.
+2. This is then followed by the `normal task` list, `assignment` list, `midterm` list and `final exam` list.
 
 ### 4.11 Pin a Task
 
-This feature allows the user to pin a task of type `task`, `assignment`, `midterm`, `final exam`
+This feature allows the user to pin a task of type `normal task`, `assignment`, `midterm`, `final exam`
 from a task list.
 
 Given below is the sequence diagram for this feature:
-![Diagram](diagrams/tasks/pinTask.png)
+![Diagram](diagrams/tasks/pinTask1.png)
 
 A general explanation of how this feature works:
 
-When the user calls this feature, the application will prompt them to choose the __task
-type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to pin. All existing
-tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
+1. When the user calls this feature, the application will prompt them to choose the __task
+type__ (`task`, `assignment`, `midterm`, `final exam`) of the task they want to pin.
+2. All existing tasks in the `ArrayList` for the task type they chose will then be printed out, and the user has to
 input the index of the task they want to pin. 
-
-The pinned task list is stored using a HashMap, with the key being the __task type__ and value being an ArrayList.
+3. The pinned task list is stored using a HashMap, with the key being the __task type__ and value being an ArrayList.
 The task the user selected will then be added to the respective pinned task
 ArrayList corresponding to the __task type__ they chose.
 
@@ -445,18 +476,19 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ## 6. User Stories  
   
-|Version| As a ... | I want to ... | So that I can ...|  
-|--------|----------|---------------|------------------|  
-|v1.0|new user|have a list of command suggestions to choose from|navigate the platform easily|  
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|  
-|v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email|  
-|v1.0|student|add external links| refer to them more easily|  
-|v1.0|student|add deadlines to some tasks|record when a task needs to be done|  
-|v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam|  
-|v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next|  
-|v1.0|student|add personal reviews on modules I have taken|know what to recommend to my peers|  
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|  
-|v2.0|user| store my information | view them later without having to re-type them again|  
+|Version| As a ... | I want to ... | So that I can ...  
+|--------|----------|---------------|------------------  
+|v1.0|new user|have a list of command suggestions to choose from|navigate the platform easily  
+|v1.0|new user|see usage instructions|refer to them when I forget how to use the application  
+|v1.0|student|add zoom links| find them more quickly without always having to log into LumiNUS or checking the email  
+|v1.0|student|add external links| refer to them more easily  
+|v1.0|student|add deadlines to some tasks|record when a task needs to be done  
+|v1.0|student|categorize my tasks|know whether a task is a normal task, assignment or exam  
+|v1.0|student|add messages that will print when I complete a task|encourage or remind myself of what I need to do next    
+|v1.0|student|add personal reviews on modules I have taken|know what to recommend to my peers  
+|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list    
+|v2.0|user| store my information | view them later without having to re-type them again  
+
 ---
 
 ## 7. Non-Functional Requirements  

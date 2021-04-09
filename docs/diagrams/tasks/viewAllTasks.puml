@@ -1,57 +1,29 @@
 @startuml
 
-activate ":Duke"
-":Duke" -> ":TaskManager"++ : execute
-
-loop true
-
-":TaskManager" -> ":Ui"++ : printTaskManagerMenu
+activate ":TaskManager"
+":TaskManager" -> ":TaskManager"++ : viewAllTasks()
+":TaskManager" -> ":Ui"++ : printPinnedTaskList(pinnedTasks)
 return
-":TaskManager" -> ":Ui"++ : readCommand
+":TaskManager" -> ":Ui"++ : printEmptyLine()
 return
-
-alt Integer.parseInt(command)
-    opt command.equals(EXIT_COMMAND)
-    ":TaskManager" --> ":Duke"
-    end
-":TaskManager" -> ":TaskManager"++ : viewAllTasks
-":TaskManager" -> ":Ui"++ : printPinnedTaskList
+":TaskManager" -> ":Ui"++ : printTaskList(tasks)
 return
-":TaskManager" -> ":Ui"++ : printEmptyLine
+":TaskManager" -> ":Ui"++ : printEmptyLine()
 return
-":TaskManager" -> ":Ui"++ : printTaskList
+":TaskManager" -> ":Ui"++ : printAssignmentList(assignments)
 return
-":TaskManager" -> ":Ui"++ : printEmptyLine
+":TaskManager" -> ":Ui"++ : printEmptyLine()
 return
-":TaskManager" -> ":Ui"++ : printAssignmentList
+":TaskManager" -> ":Ui"++ : printMidtermList(midterms)
 return
-":TaskManager" -> ":Ui"++ : printEmptyLine
+":TaskManager" -> ":Ui"++ : printEmptyLine()
 return
-":TaskManager" -> ":Ui"++ : printMidtermList
+":TaskManager" -> ":Ui"++ : printFinalExamList(finalExams)
 return
-":TaskManager" -> ":Ui"++ : printEmptyLine
+":TaskManager" -> ":Ui"++ : printEmptyLine()
 return
-":TaskManager" -> ":Ui"++ : printFinalExamList
-return
-":TaskManager" -> ":Ui"++ : printEmptyLine
-return
-
-else NumberFormatException
-":TaskManager" -> ":Ui"++ : printInvalidIntegerMessage
-return
-end
-return
-
-alt
-":TaskManager" -> ":Storage"++ : saveAllFiles
-return
-else IOException
-":TaskManager" -> ":Ui"++ : printFilesCouldNotBeSavedMessage
-return
-end
+":TaskManager" -> ":Ui"++ : printHorizontalLine()
 
 return
-
-end
 
 @enduml
