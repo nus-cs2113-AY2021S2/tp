@@ -52,15 +52,15 @@
     	3. [Delete](#553-delete)
     	4. [List](#554-list)
 
-[Appendix A: Product Scope](#a-appendix-a-product-scope) (jiaen)
+[Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
 
-[Appendix B: User Stories](#b-appendix-b-user-stories) (alex)
+[Appendix B: User Stories](#appendix-b-user-stories) (alex)
 
-[Appendix C: Non Functional Requirements](#c-appendix-c-non-functional-requirements) (mingshun)
+[Appendix C: Non Functional Requirements](#appendix-c-non-functional-requirements) (mingshun)
 
-[Appendix D: Glossary](#d-appendix-d-glossary) (owen)
+[Appendix D: Glossary](#appendix-d-glossary) (owen)
 
-[Appendix E: Instructions for Manual Testing](#e-appendix-e-instructions-for-manual-testing) (sarrah)
+[Appendix E: Instructions for Manual Testing](#appendix-e-instructions-for-manual-testing) (sarrah)
 
 
 ## 1. Introduction
@@ -205,6 +205,17 @@ The UI of this program can be found under the package named UI. It consists of `
 ### 4.6 Commands Component
 ### 4.7 Exceptions Component
 ### 4.8 Model component
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
+
+The `Model`, consists of 5 different types of lists.
+
+- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to modify the list with objects.
+- InventoryList stores Inventory objects. InventoryList also has methods to modify the list with objects.
+- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods to modify the list with objects.
+- PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
+- StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
+
 ### 4.9 Storage component
 
 <br>
@@ -793,7 +804,7 @@ Whenever a user input is given to the Nurse Schedule Menu, the following steps w
 
 **Implementation**
 
-The function Add takes in 3 compulsory fields (Nurse ID, Patient ID, Date) to create a new Nurse Schedule object to be added. The Nurse ID, Patient ID and Date inputs will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAdd Command object is created and executed which will create a NurseSchedule object to be added.
+The function Add takes in 3 compulsory fields (Nurse ID, Patient ID, Date) to create a new Nurse Schedule object to be added. The Nurse ID, Patient ID and Date inputs will be first checked to ensure validty. Any invalid input detected will result in an Exception thrown and command will be aborted. Else, a NurseScheduleAddCommand object is created and executed which will create a NurseSchedule object to be added.
 
 Invalid Inputs include:
 
@@ -814,11 +825,11 @@ Invalid Inputs include:
 	- checkNumInput()
 	- illegalCharacterChecker()
 	
-**Creating NurseScheduleAdd object with User Input**
+**Creating NurseScheduleAddCommand object with User Input**
 
-2.If the parameters are valid, a NurseScheduleAdd Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+2.If the parameters are valid, a NurseScheduleAddCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3.The Command objected is then executed and `NurseScheduleActions.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
+3.The Command objected is then executed and `NurseScheduleList.addSchedule()` will be called which creates a NurseSchedule object an adds it into the array list.
 
 **Saving NurseSchedule objects into .txt file**
 
@@ -831,7 +842,7 @@ Invalid Inputs include:
 
 **Implementation**
 
-The delete function takes in 2 compulsory field (Nurse ID, Date) to identify and delete the Nurse Schedule object from the arraylist of Nurse Schedule objects. The Nurse ID and date will first be checked for its validity. Any invalid input detected will result in an exception thrown and command will be aborted. Else, a NurseScheduleDelete Command object is created and executed.
+The delete function takes in 2 compulsory field (Nurse ID, Date) to identify and delete the Nurse Schedule object from the arraylist of Nurse Schedule objects. The Nurse ID and date will first be checked for its validity. Any invalid input detected will result in an exception thrown and command will be aborted. Else, a NurseScheduleDeleteCommand object is created and executed.
 
 Invalid Inputs include:
 
@@ -848,11 +859,11 @@ Invalid Inputs include:
 
 1. If the command is recognised as a delete command, the parameters provided will first be checked for its validity.
 
-**Creating NurseScheduleDelete object**
+**Creating NurseScheduleDeleteCommand object**
 
-2. If the parameters are valid, a NurseScheduleDelete Command object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+2. If the parameters are valid, a NurseScheduleDeleteCommand object is created, which will be passed back to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
-3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleActions.deleteSchedule()`.
+3. `NurseScheduleDelete.execute()` will call the function `NurseScheduleList.deleteSchedule()`.
 
 4. `deleteSchedule` iterates through the arraylist and removes the first object that matches the user input given.
 
@@ -866,7 +877,7 @@ Invalid Inputs include:
 
 **Implementation**
 
-This function lists all Nurse Schedule objects, sorted by earliest added Nurse ID, then sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleList Command object is created. NurseScheduleList command object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule Objects will then be displayed.
+This function lists all Nurse Schedule objects, sorted by earliest added Nurse ID, then sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule Objects will then be displayed.
 
 Invalid Inputs include:
 
@@ -879,11 +890,11 @@ Invalid Inputs include:
 
 1. If the command recognised is the list command, the number of fields in inputs will first be checked.
 
-**Creating NurseScheduleList command**
+**Creating NurseScheduleListCommand object**
 
-2. If the input is valid, a NurseScheduleList Command object is created.
+2. If the input is valid, a NurseScheduleListCommand object is created.
 
-3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
 **Viewing Nurse Schedule objects**
 
@@ -898,7 +909,7 @@ Invalid Inputs include:
 
 **Implementation**
 
-This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleList Command object is created. NurseScheduleList command object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule Objects will then be displayed.
+This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule objects will then be displayed.
 
 Invalid Inputs include:
 
@@ -911,15 +922,15 @@ Invalid Inputs include:
 
 1. If the command recognised is the list command, the number of fields in inputs will first be checked.
 
-**Creating NurseScheduleList command**
+**Creating NurseScheduleListCommand object**
 
-2. If the input is valid, a NurseScheduleList Command object is created.
+2. If the input is valid, a NurseScheduleListCommand object is created.
 
-3. The NurseScheduleList object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
 
 **Viewing Nurse Schedule objects**
 
-4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
+4. NurseScheduleInstance then executes the NurseScheduleListCommand object to begin the process of displaying Nurse Schedule objects.
 
 5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
 
@@ -1071,6 +1082,18 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ## Appendix B: User Stories
 
+| Priority | As a... |                          I want to...                         |                 So that I can...                 |
+|:--------:|:-------:|:-------------------------------------------------------------:|:------------------------------------------------:|
+|   * * *  |  nurse  |              quickly refer to usage instructions              |      quickly get on track with the workflow      |
+|   * * *  |  nurse  |                    add a new staff/patient                    |                                                  |
+|   * * *  |  nurse  |                     delete staff/patients                     |          remove entries i no longer need         |
+|   * * *  |  nurse  |                         view all staff                        |                                                  |
+|   * * *  |  nurse  | quickly add schedules for nurses and appointments for doctors |       reduce the waiting time for patients       |
+|   * * *  |  nurse  |     quickly look up schedules for both nurses and doctors     |              plan my schedule better             |
+|   * * *  |  nurse  |                 delete schedules/appointments                 |        eliminate wasted time and resources       |
+|   * * *  |  nurse  |              quickly add/delete drug inventories              |           manage our inventories better          |
+|   * * *  |  nurse  |                quickly look up drug inventories               |  plan what and when to restock our drug supplies |
+|     *    |  nurse  |       have the program recognize slight errors in typing      | have leeway working in a high-stress environment |
 <br>
 
 ## Appendix C: Non Functional Requirements
