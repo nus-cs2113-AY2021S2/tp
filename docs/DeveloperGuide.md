@@ -914,13 +914,140 @@ Invalid Inputs include:
 
 <br>
 
-###  5.5 Inventory
+**Inventory-related features**
 
-### 5.5.1 Inventory Menu
-### 5.5.2 Add
-### 5.5.3 Delete
-### 5.5.4 List
-### 5.5.5 Find
+Similar to the Start Menu, the Inventory Menu will repeatedly request user input until the `return` command is given.
+
+Whenever a user input is given to the Inventory Menu, the following steps will occur.
+
+**Launching Inventory Menu**
+
+1. `ToInventoryInstance.execute()` will create and call `InventoryInstance.run()`
+2. `InventoryInstance.run()` will start by loading/creating the Inventory data .txt file for Inventory database records. It will check for any signs of corrupted file when loading. Exception will be thrown if any corruption occurs.
+3. `InventoryInstance.run()` will then repeatedly call `InventoryParser()`.
+
+**Getting User Input**
+
+4. `InventoryInstance.run()` will repeatedly request for user input and call `InventoryParser.inventoryParse()`.
+5. `inventoryParse()` will call the `smartCommandRecognition()` to assess the given user input and determine which command is most similar to the input
+6. Based on the recognised command by the system, the relevant commands will be carried out.
+
+<br>
+
+### 5.1.2 Add
+
+**Implementation:**
+
+The function Add takes in 3 compulsory fields (Drug Name, Price, Quantity) to create the Inventory Object to be added.  Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. A InventoryAdd Command object is created. InventoryAdd command object will be executed to create the Inventory Object to be added.
+
+Invalid Input includes:
+
+> 
+	- Invalid Price 
+	- Invalid Quantity
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
+
+`add/[Drug Name]/[Price]/[Quantity]`
+
+*upload diagram*
+
+**Check validity of the data input**
+
+1. If the command recognised is the add command, `InventoryParser.parse()` calls `InventoryChecker.checkAdd()`, `MainChecker.checkNumInput()`, and `MainChecker.checkBlankInput()` to ensure data entered is valid
+2. `checkAdd()` will call the following function in sequence:
+
+	- emptySpaceCheck()	
+	- checkStorageLength()
+	- illegalCharacterChecker()
+	- checkPrice()
+	- checkQuantity()
+	- checkDuplicate()
+
+**Creating InventoryAdd command**
+
+3. If the input data is valid, a InventoryAdd Command object is created. Otherwise a relevant error is thrown.
+4. The InventoryAdd Command object is returned to `InventoryInstance.run()`
+
+**Creating Inventory Object with User Input**
+
+5. InventoryInstance then executes the InventoryAdd Command object by running `InventoryAdd.execute()`.
+
+6. `InventoryList.addDrugs()` will be called in which a Inventory object will be created and added into the ArrayList<Inventory> inventoryList which contains all the Inventory Objects. 
+
+7. If the list already contains data with the same Drug Name and Price, the Quantity of the Drug will be increased in the list by the value in the user input Quantity field. `InventoryList.addDrugs()` will call `Inventory.addQuantity`. This will modify the Quantity of that specified Drug.
+ 
+**Saving Inventory Objects into .txt file**
+
+7. `InventoryInstance` then calls `InventoryStorage.storeInventory()` which starts the process of writing the details of all existing Inventory Objects, within the InventoryList into a specified .txt file.
+8. `InventoryStorage.writeToFile()` then calls `fileInit()` which ensures that the specified .txt file exists.
+9. Data is written and saved.
+10. Control is then returned to InventoryInstance.
+
+<br>
+
+### 5.1.3 Delete
+
+**Implementation:**
+
+The function Delete takes in 2 compulsory field (Drug Name, Quantity) to identify and decrease the Quantity of the Inventory Object from ArrayList<Inventory> list. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a InventoryDelete Command object is created. InventoryDelete command object will be executed to iterate through the ArrayList<Inventory> InventoryList. If Inventory Object exists, its Quantity will be decreased by the Quantity indicated in the user input. Else an error message will be displayed.
+
+Invalid Input includes:
+
+> 
+	- Invalid Quantity
+	- Invalid Name
+	- Blank input (i.e Empty inputs)
+	- Illegal Characters
+
+`delete/Drug Name/Quantity`
+
+**Check validity of the data input**
+
+1. If the command recognised is the delete command, `InventoryParser.parse()` calls `InventoryChecker.checkDelete()`, `MainChecker.checkNumInput()`, and `MainChecker.checkBlankInput()` to ensure that there are valid and sufficient inputs
+
+**Creating StaffDelete command**
+
+2. If the input data is valid, a InventoryDelete Command object is created 
+3. The Command object is returned to `InventoryInstance.run()`
+
+**Deleting Quantity from a Inventory Object using User Input**
+
+4. InventoryInstance then executes the InventoryDelete Command object to begin the process of deleting the referenced Quantitiy of the Inventory object
+5. `InventoryList.deleteDrugs()` is called, which iterate through the objects in ArrayList<Inventory> InventoryList. The Inventory Object referenced by the input given by the user, will have its Quanitity reduced by the Quantity indicated in the user input.
+
+**Saving changed Inventory Objects into .txt file**
+
+7. `InventoryInstance` then calls `InventoryStorage.storeInventory()` which starts the process of writing the details of all existing Inventory Objects, within the InventoryList into a specified .txt file.
+8. `InventoryStorage.writeToFile()` then calls `fileInit()` which ensures that the specified .txt file exists.
+9. Data is written and saved.
+10. Control is then returned to InventoryInstance.
+
+<br>
+
+### 5.1.4 List
+
+**Implementation:**
+
+This function lists all the Inventories currently in the ArrayList<Inventory> InventoryList. A InventoryList Command object is created. InventoryList command object will be executed to iterate through the list of Inventory Objects. Inventory Objects will then be displayed based on the user given input.
+
+**Check validity of the data input**
+
+1. If the command recognised is the list command, `InventoryParser.parse()` calls `MainChecker.checkNumInput()` to check and verify the validity of inputs accompanied by the list command, if any.
+
+**Creating InventoryList command**
+
+2. If the input data is valid, a InventoryList Command object is created 
+3. The InventoryList Command object is returned to `InventoryInstance.run()` 
+
+**Viewing Inventory Objects**
+
+4. InventoryInstance then executes the InventoryList Command object to begin the process of displaying all Inventory objects.
+5. `InventoryList.execute()` will call `InventoryList.listInventory()` and will iterate through the objects in ArrayList<Inventory> InventoryList.
+7. Depending on the input given by the user, the relevant Inventory Objects will be displayed.
+8. Control is then returned to InventoryInstance.
+
+
 
 <br>
 
