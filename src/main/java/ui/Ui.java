@@ -90,9 +90,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void printStoreAdded(String storeName) {
+    public void printStoreAdded(String storeName, String canteenName) {
         System.out.println(LINESPACING);
-        System.out.println("Got it ! Successfully added " + storeName + " to The Deck");
+        System.out.println("Got it ! Successfully added " + storeName + " to " + canteenName + ".");
         System.out.println(LINESPACING);
     }
 

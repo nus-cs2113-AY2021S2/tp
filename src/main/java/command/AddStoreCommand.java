@@ -33,8 +33,9 @@ public class AddStoreCommand extends Command {
             ui.showStoreNotAdded();
             return;
         }
-        canteens.get(currentCanteenIndex).addStore(storeName);
-        ui.printStoreAdded(storeName);
+        Canteen currentCanteen = canteens.get(currentCanteenIndex);
+        currentCanteen.addStore(storeName);
+        ui.printStoreAdded(storeName, currentCanteen.getCanteenName());
         Storage.saveStore(new FileWriter(Storage.fileName,true),
                 canteens.get(currentCanteenIndex).getCanteenName(),storeName);
     }
