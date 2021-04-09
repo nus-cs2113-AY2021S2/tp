@@ -6,7 +6,6 @@ import seedu.model.patient.PatientList;
 import seedu.model.patient.Patient;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class PatientChecker extends MainChecker{
 

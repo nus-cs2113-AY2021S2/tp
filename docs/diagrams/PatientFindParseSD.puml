@@ -1,0 +1,25 @@
+@startuml
+
+mainframe <b> sub diagram </b> parsing user input in patient instance
+
+    PatientParser -> MainChecker: checkNumInput()
+
+    MainChecker --> PatientParser
+
+    PatientParser -> UI :smartCommandRecognition()
+
+    UI --> PatientParser :String_Intended_Command
+
+    create PatientChecker
+
+    PatientParser -> PatientChecker : checkFind()
+
+    PatientChecker -> PatientChecker : emptySpaceCheck()
+
+    PatientChecker -> PatientChecker : checkLength()
+
+    PatientChecker -> PatientChecker : illegalCharacterChecker()
+
+    PatientChecker --> PatientParser
+
+@enduml

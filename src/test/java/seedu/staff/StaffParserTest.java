@@ -24,14 +24,14 @@ public class StaffParserTest {
             throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("add/D12345/Owen/18/Surgeon", staffList);
-        assertTrue(c instanceof StaffAdd);
+        assertTrue(c instanceof StaffAddCommand);
     }
     @Test
     public void commandHandler_upperBoundaryAgeForAddCommand_staffAddCommandReturned()
             throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("add/D12345/Owen/150/Surgeon", staffList);
-        assertTrue(c instanceof StaffAdd);
+        assertTrue(c instanceof StaffAddCommand);
     }
     @Test
     public void commandHandler_excessLengthStaffID_wrongStaffIdExceptionReturned() {
@@ -85,15 +85,6 @@ public class StaffParserTest {
         assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
                 "Please ensure that the age is an integer between 18 and 150 inclusive!");
     }
-    @Test
-    public void commandHandler_ageMoreThan150_invalidStaffAgeExceptionReturned() {
-        HealthVaultException exception = assertThrows(HealthVaultException.class, () ->
-                this.parser.commandHandler("add/D12345/Owen/151/Surgeon", staffList));
-        assertEquals(exception.getMessage(), "Your age input is invalid! \n" +
-                "Please ensure that the age is an integer between 18 and 150 inclusive!");
-    }
-
-
 
 
 
@@ -101,7 +92,7 @@ public class StaffParserTest {
     public void commandHandler_validListCommand_staffListCommandReturned() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("help", staffList);
-        assertTrue(c instanceof StaffHelp);
+        assertTrue(c instanceof StaffHelpCommand);
     }
 
 
@@ -112,7 +103,7 @@ public class StaffParserTest {
     public void ValidListAllCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("list", staffList);
-        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
+        assertTrue(c instanceof StaffListCommand);
     }
     @Test
     public void invalidListCommand1() {
@@ -145,13 +136,13 @@ public class StaffParserTest {
     public void ValidListNurseCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("list/nurses", staffList);
-        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
+        assertTrue(c instanceof StaffListCommand);
     }
     @Test
     public void ValidListDoctorCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("list/doctors", staffList);
-        assertTrue(c instanceof seedu.logic.command.staff.StaffList);
+        assertTrue(c instanceof StaffListCommand);
     }
 
 
@@ -160,7 +151,7 @@ public class StaffParserTest {
     public void ValidReturnCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("return", staffList);
-        assertTrue(c instanceof StaffReturn);
+        assertTrue(c instanceof StaffReturnCommand);
     }
 
 
@@ -170,7 +161,7 @@ public class StaffParserTest {
     public void ValidDeleteCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("delete/D12345", staffList);
-        assertTrue(c instanceof StaffDelete);
+        assertTrue(c instanceof StaffDeleteCommand);
     }
 
     @Test
@@ -188,19 +179,19 @@ public class StaffParserTest {
     public void ValidFindCommand() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("find/D12345", staffList);
-        assertTrue(c instanceof StaffFind);
+        assertTrue(c instanceof StaffFindCommand);
     }
     @Test
     public void ValidFindCommand2() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("find/19", staffList);
-        assertTrue(c instanceof StaffFind);
+        assertTrue(c instanceof StaffFindCommand);
     }
     @Test
     public void ValidFindCommand3() throws HealthVaultException {
         Command c;
         c = this.parser.commandHandler("find/Owen", staffList);
-        assertTrue(c instanceof StaffFind);
+        assertTrue(c instanceof StaffFindCommand);
     }
 
 }

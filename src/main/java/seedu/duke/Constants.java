@@ -68,7 +68,8 @@ public class Constants {
     // HELP FUNCTION DESCRIPTION
     public static final String STAFF_HELP_DESCRIPTION = "Brings up the list of commands for Staff!";
     public static final String PATIENT_HELP_DESCRIPTION = "Brings up the list of commands for Patient!";
-    public static final String APPOINTMENTS_HELP_DESCRIPTION = "Brings up the list of commands for Doctor Appointments!";
+    public static final String APPOINTMENTS_HELP_DESCRIPTION =
+            "Brings up the list of commands for Doctor Appointments!";
     public static final String SCHEDULES_HELP_DESCRIPTION = "Brings up the list of commands for Nurse Schedule!";
     public static final String INVENTORY_HELP_DESCRIPTION = "Brings up the list of commands for Inventory!";
 
