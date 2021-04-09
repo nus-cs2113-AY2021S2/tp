@@ -7,8 +7,10 @@ skinparam classBackgroundColor UTILITIES_COLOR
 skinparam classAttributeIconSize 0
 
 actor User
+class FridgeFriend FRIDGEFRIEND_COLOR {
+}
 
-package Utilities <<Rectangle>> {
+package "Utilities Component" <<Rectangle>> {
     class Ui
     class LoggerHandler
     class Storage
@@ -18,12 +20,10 @@ package Utilities <<Rectangle>> {
 package "/data" <<folder>> {
     file limitsData UTILITIES_COLOR_T1
     file fridgeData UTILITIES_COLOR_T1
+    file historyData UTILITIES_COLOR_T1
 }
 
 package Food <<Rectangle>> FOOD_COLOR {
-}
-
-package Exception <<Rectangle>> EXCEPTION_COLOR {
 }
 
 package Command <<Rectangle>> COMMAND_COLOR {
@@ -63,6 +63,7 @@ class Parser {
   - {static} Command parseRemoveDescription(String removeDescription)
   - {static} Command parseSetLimitDescription(String description)
   + {static} int parseIntegerQuantity(String description)
+  + {static} int parseSetLimitQuantity(String description)
 }
 
 ' Basic Layout '
@@ -70,23 +71,18 @@ LoggerHandler -left[hidden]-> Ui
 LoggerHandler -down[hidden]-> Parser
 Parser -left[hidden]-> Storage
 Ui -down[hidden]-> Storage
-Command -right[hidden]-> Exception
 "/data" -right[hidden]-> Food
-Food -right[hidden]-> Exception
-Exception -right[hidden]-> Command
 Parser -down[hidden]-> "/data"
 
-User -down-> Ui : interacts with
-FridgeFriend -right-> Ui : prints with
-FridgeFriend -right-> Storage : uses
+User -down-> Ui : interacts with >
+FridgeFriend -right-> Ui : prints with >
+FridgeFriend -right-> Storage : uses >
 
-Storage .up.> Ui : prints with
-Storage .right.> Parser : uses
-Storage -down-> "/data" : creates and writes
-Storage .down.> Food : loads and saves
-Storage .down.> Exception : throws
-Parser .down.> Exception : throws
-Parser .down.> Command : gets
+Storage .up.> Ui : prints with >
+Storage .right.> Parser : uses >
+Storage -down-> "/data" : creates and writes >
+Storage .down.> Food : loads and saves >
+Parser .down.> Command : gets >
 
 note top of LoggerHandler : Used by all other classes\nfor logging purposes
 

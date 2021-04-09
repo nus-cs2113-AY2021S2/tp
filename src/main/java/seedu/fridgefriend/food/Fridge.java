@@ -26,8 +26,10 @@ public class Fridge {
      * checks if its quantity can be added to existing food item.
      * If foodname exists but storage or expiry information are not identical,
      * will throw an exception to ask user to use a different foodname.
+     *
      * @param food food object to add obtained from parser.
      * @throws RepetitiveFoodIdentifierException as name suggests.
+     * @throws InvalidQuantityException if the quantity input exceed 1000000
      */
     public void add(Food food) throws RepetitiveFoodIdentifierException, InvalidQuantityException {
         UniqueFoodnameChecker checker = new UniqueFoodnameChecker(fridge, food);
@@ -79,10 +81,11 @@ public class Fridge {
      * 
      * @param foodCategory category to check
      * @return true if food in that category is running out, false otherwise
+     * @throws InvalidQuantityException if the quantity input exceed 10000000
      */
     public boolean isRunningOut(FoodCategory foodCategory) throws InvalidQuantityException {
         int totalQuantity = getTotalQuantity(foodCategory);
-        return totalQuantity < FoodCategory.getMinimumQuantity(foodCategory);
+        return totalQuantity < MinimumQuantity.getMinimumQuantity(foodCategory);
     }
 
     //@@author kwokyto

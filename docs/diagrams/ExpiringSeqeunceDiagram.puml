@@ -1,4 +1,4 @@
-@startuml
+@startuml ExpiringSequenceDiagram
 'https://plantuml.com/sequence-diagram
 
 !include style.puml
@@ -16,14 +16,31 @@ end box
 activate ExpiringCommand
 
 loop food in fridge
+    ExpiringCommand-> ExpiringCommand: updateExpiringMessage()
+    activate ExpiringCommand
     ExpiringCommand-> Fridge: getFood()
     activate Fridge
+    Fridge -> Food: isExpiring()
+    activate Food
     opt isExpiring
-        Fridge -> Food: isExpiring()
-        activate Food
         return
+        return expiring food
+
     end
-    return food
+
+    return
+    ExpiringCommand -> ExpiringCommand: updateExpiredMessage()
+    activate ExpiringCommand
+    ExpiringCommand-> Fridge: getFood()
+    activate Fridge
+    Fridge -> Food: hasExpired()
+    activate Food
+    opt hasExpired
+        return
+        return expired food
+    end
+    return
+
 end
 
 <--ExpiringCommand

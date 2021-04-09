@@ -2,6 +2,7 @@ package seedu.fridgefriend.command;
 
 //@@author kwokyto
 import seedu.fridgefriend.food.FoodCategory;
+import seedu.fridgefriend.food.MinimumQuantity;
 import seedu.fridgefriend.utilities.Ui;
 
 public class SetLimitCommand extends Command {
@@ -16,7 +17,7 @@ public class SetLimitCommand extends Command {
 
     @Override
     public void execute() {
-        FoodCategory.setMinimumQuantity(foodCategory, quantity);
+        MinimumQuantity.setMinimumQuantity(foodCategory, quantity);
         String message = getSetLimitMessage();
         Ui.printMessage(message);
     }
