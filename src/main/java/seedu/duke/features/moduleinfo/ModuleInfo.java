@@ -314,17 +314,19 @@ public class ModuleInfo {
         if (!module.getReview().equals(EMPTY_REVIEW_MESSAGE)) {
             System.out.println("You already have added a review:");
             System.out.println(module.getReview());
-            System.out.println("Would you like to replace this with another review? [Y/N]");
-            logger.log(Level.WARNING, "You will delete your old review. This cannot be undone.");
-            System.out.println("You will delete your old review. This cannot be undone.");
-            String command = Ui.readCommand();
-            if (readYN(command) == 0) {
-                System.out.println("Okay:) You still have the same review!");
-                return module.getReview();
-            } else if (readYN(command) == 2) {
-                return module.getReview();
+            logger.log(Level.WARNING, "This will delete your old review. This cannot be undone.");
+            int yesOrNo = 2;
+            while (yesOrNo == 2) {
+                System.out.println("Would you like to replace this with another review? [Y/N]");
+                System.out.println("This will delete your old review. This cannot be undone.");
+                String command = Ui.readCommand();
+                yesOrNo = readYN(command);
+                if (yesOrNo == 0) {
+                    System.out.println("Okay:) You still have the same review!");
+                    return module.getReview();
+                }
+                assert yesOrNo == 1 : "yesOrNo should be 1 here";
             }
-            //assert readYN(command) == 1 : "readYN(command) should be 1 here";
         }
         System.out.println("Type '/end' to finish reviewing.");
         System.out.println("Enter your review for " + module.getName() + " below: ");
@@ -541,32 +543,44 @@ public class ModuleInfo {
             return;
         }
         viewAllModules();
-        int moduleNumberInt = readModuleNumberToBeDeleted("review");
-        if (moduleNumberInt >= 0 && moduleNumberInt < modules.size()) {
-            Module module = modules.get(moduleNumberInt);
-            if (module.getReview().equals(EMPTY_REVIEW_MESSAGE)) {
-                System.out.println(EMPTY_REVIEW_MESSAGE);
-                return;
-            }
-            logger.log(Level.WARNING, "You are deleting a review. This cannot be undone.");
-            System.out.println("Are you sure you want to delete this review? [Y/N]\n"
-                    + "For " + module.getName() + ":\n"
-                    + "Review:\n" + module.getReview());
-            String command = Ui.readCommand();
-            int yesOrNo = readYN(command);
-            if (yesOrNo == 1) {
-                printDeletedReviewMessage(module);
-                modules.get(moduleNumberInt).removeReview();
-            } else if (yesOrNo == 0) {
-                System.out.println("Ok. I did not delete this review:\n"
-                        + "For " + module.getName() + ":\n"
-                        + "Review:\n" + module.getReview());
+        while (true) {
+            int moduleNumberInt = readModuleNumberToBeDeleted("review");
+            boolean isValidInt = checkIfIndexIsWithinBounds(moduleNumberInt);
+            if (isValidInt) {
+                Module module = modules.get(moduleNumberInt);
+                if (module.getReview().equals(EMPTY_REVIEW_MESSAGE)) {
+                    System.out.println(EMPTY_REVIEW_MESSAGE);
+                    return;
+                }
+                while (true) {
+                    logger.log(Level.WARNING, "You are deleting a review. This cannot be undone.");
+                    System.out.println("Are you sure you want to delete this review? [Y/N]\n"
+                            + "For " + module.getName() + ":\n"
+                            + "Review:\n" + module.getReview());
+                    String command = Ui.readCommand();
+                    int yesOrNo = readYN(command);
+                    if (yesOrNo == 1) {
+                        printDeletedReviewMessage(module);
+                        modules.get(moduleNumberInt).removeReview();
+                        break;
+                    } else if (yesOrNo == 0) {
+                        System.out.println("Ok. I did not delete this review:\n"
+                                + "For " + module.getName() + ":\n"
+                                + "Review:\n" + module.getReview());
+                        break;
+                    }
+                }
+                break;
+            } else {
+                logger.log(Level.INFO, "You did not enter a valid module number to delete.");
+                Ui.printInvalidInputMessage();
             }
         }
     }
 
     public static void printDeletedReviewMessage(Module module) {
-        System.out.println("You've deleted this review: " + module.getReview());
+        System.out.println("For this module: " + module.getName()
+                + " -\nYou've deleted this review: " + module.getReview());
         Ui.printHorizontalLine();
     }
 
