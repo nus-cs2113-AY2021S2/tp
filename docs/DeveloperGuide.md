@@ -120,7 +120,6 @@ First fork this repo, and clone the fork into your computer.
 2. Import the project as a Gradle project.
 3. Run the seedu.duke.HealthVault and try a few commands as stated in the User Guide.
 4. Run the tests to ensure they all pass.
-5. When you are ready to start coding, we recommend that you get some sense of the overall design by reading about HealthVault’s architecture.
 
 **Before writing code**
 
