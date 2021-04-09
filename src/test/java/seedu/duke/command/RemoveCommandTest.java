@@ -42,9 +42,12 @@ class RemoveCommandTest {
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "This record will be removed: [E][2020-01-01] electric bills " + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "This record will be removed: [ID: 1] [E] [2020-01-01] [$220.50] electric bills "
+                + System.lineSeparator()
+                + "====================================================================="
+                + System.lineSeparator();
         command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveExpense_removeExpenseCmd_success', wrong output.");
@@ -74,9 +77,12 @@ class RemoveCommandTest {
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "This record will be removed: [L][2020-01-01] loan to bob [ ]" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "This record will be removed: [ID: 3] [L] [2020-01-01] [$100.00] loan to bob [ ]"
+                + System.lineSeparator()
+                + "====================================================================="
+                + System.lineSeparator();
         command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveLoan_removeLoanCmd_success', wrong output.");
@@ -105,9 +111,12 @@ class RemoveCommandTest {
         ByteArrayOutputStream removeCmdBos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(removeCmdBos));
         PrintStream originalOut = System.out;
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "This record will be removed: [S][2020-01-01] red packet " + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "This record will be removed: [ID: 4] [S] [2020-01-01] [$20.00] red packet "
+                + System.lineSeparator()
+                + "====================================================================="
+                + System.lineSeparator();
         command.execute(records, ui, storage, creditScoreReturnedLoansMap);
         assertTrue(removeCmdBos.toString().equals(expectedOutput), "Failed test "
                 + "'executeRemoveSaving_removeSavingCmd_success', wrong output.");

@@ -21,31 +21,34 @@ class ListCommandTest {
 
     @Test
     public void executeListExpense_listExpenseCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "Here is your Expense list:" + System.lineSeparator()
-                + "1. [E][2020-01-01] electric bills " + System.lineSeparator()
-                + "2. [E][2020-01-02] phone bills " + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "[ID: 1] [E] [2020-01-01] [$220.50] electric bills " + System.lineSeparator()
+                + "[ID: 2] [E] [2020-01-02] [$420.50] phone bills " + System.lineSeparator()
+                + "=====================================================================" + System.lineSeparator();
         runListCmdTest("executeListExpense_listExpenseCmd_success", "expense", "list -e", expectedOutput);
     }
 
     @Test
     public void executeListLoan_listLoanCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "Here is your Loan list:" + System.lineSeparator()
-                + "2. [L][2020-01-01] loan to bob [ ]" + System.lineSeparator()
-                + "3. [L][2020-01-02] loan to alice [ ]" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "[ID: 2] [L] [2020-01-01] [$100.00] loan to bob [ ]" + System.lineSeparator()
+                + "[ID: 3] [L] [2020-01-02] [$300.00] loan to alice [ ]" + System.lineSeparator()
+                + "=====================================================================" + System.lineSeparator();
         runListCmdTest("executeListLoan_listLoanCmd_success", "loan", "list -l", expectedOutput);
     }
 
     @Test
     public void executeListSaving_listSavingCmd_success() {
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "Here is your Saving list:" + System.lineSeparator()
-                + "3. [S][2020-01-01] red packet " + System.lineSeparator()
-                + "4. [S][2020-01-02] pocket money " + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "[ID: 3] [S] [2020-01-01] [$20.00] red packet " + System.lineSeparator()
+                + "[ID: 4] [S] [2020-01-02] [$40.00] pocket money " + System.lineSeparator()
+                + "=====================================================================" + System.lineSeparator();
         runListCmdTest("executeListSaving_listSavingCmd_success", "saving", "list -s", expectedOutput);
     }
 

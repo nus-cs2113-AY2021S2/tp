@@ -20,9 +20,12 @@ public class ReturnCommandTest {
     @Test
     public void executeReturnCommand_returnCmd_success() {
         String testName = "executeReturnCommand_returnCmd_success";
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "Loan marked as returned: [L][2021-03-15] Loan to Andy [v]" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "Loan marked as returned: [ID: 1] [L] [2021-03-15] [$43.28] Loan to Andy [v]"
+                + System.lineSeparator()
+                + "====================================================================="
+                + System.lineSeparator();
         String returnCmdInput = "return -i 1 -d 2021-03-16";
         runReturnCmdTest(expectedOutput, returnCmdInput, testName);
     }
@@ -30,9 +33,12 @@ public class ReturnCommandTest {
     @Test
     public void executeReturnCommand_returnCmdTwo_success() {
         String testName = "executeReturnCommand_returnCmdTwo_success";
-        String expectedOutput = "=========================================================" + System.lineSeparator()
-                + "Loan marked as returned: [L][2021-03-16] Loan to Jason [v]" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
+                + "Loan marked as returned: [ID: 3] [L] [2021-03-16] [$5.67] Loan to Jason [v]"
+                + System.lineSeparator()
+                + "====================================================================="
+                + System.lineSeparator();
         String returnCmdInput = "return -i 3 -d 2021-03-16";
         runReturnCmdTest(expectedOutput, returnCmdInput, testName);
     }
