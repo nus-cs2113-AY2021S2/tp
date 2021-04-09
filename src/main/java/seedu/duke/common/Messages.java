@@ -87,6 +87,7 @@ public class Messages {
     public static final String MESSAGE_LESSONS_LIST_EMPTY = "Your list of lessons is empty.";
 
     //Task messages
+    public static final String FORMAT_DAY_REMAINING = " (1 day remaining)";
     public static final String FORMAT_DAYS_REMAINING = " (%d days remaining)";
     public static final String FORMAT_OVERDUE = " (Overdue by %d days)";
     public static final String FORMAT_DUE_TODAY = " (Due today)";
