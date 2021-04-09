@@ -45,8 +45,6 @@ public class Ui {
             }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
-        } catch (DukeExceptions e) {
-            System.out.println(e.getMessage());
         }
         return line;
     }
@@ -90,9 +88,9 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
-    public void printStoreAdded(String storeName) {
+    public void printStoreAdded(String storeName, String canteenName) {
         System.out.println(LINESPACING);
-        System.out.println("Got it ! Successfully added " + storeName + " to The Deck");
+        System.out.println("Got it ! Successfully added " + storeName + " to " + canteenName + ".");
         System.out.println(LINESPACING);
     }
 
@@ -197,6 +195,12 @@ public class Ui {
 
     public void showDisplaySelectCanteens(ArrayList<Canteen> canteens, String action) {
         System.out.println(LINESPACING);
+        if (canteens.size() <= 0) {
+            System.out.println("There are no canteens yet! Log in as admin to add a new canteen.");
+            System.out.println("Enter 'login' to switch to Admin.");
+            System.out.println(LINESPACING);
+            return;
+        }
         if (action.equals("delete")) {
             System.out.println("Select one of the following NUS canteens to " + action
                     + ": (Enter 'cancel' to go back)");
@@ -255,9 +259,9 @@ public class Ui {
     }
 
     public void showStoreOptions(String canteenName, String storeName) {
-        System.out.println("You are now viewing: " + canteenName + ": " + storeName);
-        System.out.println("Please Enter your command:");
-        System.out.println("If you need help then Enter 'help' to view all the commands");
+        System.out.println("You are now viewing the store: " + storeName + " in the canteen: " + canteenName);
+        System.out.println("Please enter your command:");
+        System.out.println("If you need help, enter 'help' to view all the commands");
         System.out.println(LINESPACING);
     }
 
@@ -332,6 +336,11 @@ public class Ui {
 
     public void showAddCanteenSuccess(String canteenName) {
         System.out.println("The canteen '" + canteenName + "' has been added!");
+        System.out.println(LINESPACING);
+    }
+
+    public void showInvalidCanteenPrompt(String canteenName) {
+        System.out.println("The canteen name '" + canteenName + "' is already taken! Please enter another name:");
     }
 
     public void showCanteenNotAdded() {
@@ -339,6 +348,11 @@ public class Ui {
         System.out.println("Cancelling.... Canteen not added");
         System.out.println(LINESPACING);
     }
+
+    public void showInvalidStorePrompt(String storeName) {
+        System.out.println("The store name '" + storeName + "' is already taken! Please enter another name:");
+    }
+
 
     public void showStoreNotAdded() {
         System.out.println(LINESPACING);

@@ -141,7 +141,10 @@ public class NusFoodReviews {
             resetAllIndex();
             return;
         }
-        canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+
+        if (canteens.size() > 0) {
+            canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+        }
     }
 
     public int getStoreIndex() {
