@@ -271,7 +271,7 @@ You do not have oyster in your fridge.
 
 ### List expiring foods: `expiring`
 
-Displays a list of food items that has expired and are expiring within a week.
+Displays a list of food items that are expiring within a week. An additional message will be displayed, if there are food items that have already expired.  
 
 Format: `expiring`
 
