@@ -72,7 +72,7 @@ and file names.
 ## Quick Start
 
 > ℹ️Patient Manager is a Command-Line application, and all commands need to be run from the
-> terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:
+> terminal/Command Prompt (cmd)/PowerShell. For reference, a screenshot from Windows 10 is provided here:
 > 
 > ![PowerShell](./images/WindowsPowerShell.png)
 
@@ -80,6 +80,8 @@ and file names.
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
    of Java installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
+   > 💡 You can check the version of Java installed on your local computer by entering `java -version` into
+   your console of choice.
 
 
 1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
