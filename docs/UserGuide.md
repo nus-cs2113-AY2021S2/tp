@@ -57,28 +57,30 @@ Finally, for returning users who may have forgotten the input format for a comma
 [Command Summary](#command-summary) for a table of valid commands, and their input format.
 
 
-<div markdown="block" class="alert alert-info">
-Please take note of the following symbols and formatting in this User Guide
-
-`Code blocks` are used to denote commands in the command line, user input, output from Patient Manager
+> Please take note of the following symbols and formatting in this User Guide
+>
+> `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager
 and file names.
-
-💡 The light bulb denotes tips and tricks for using Patient Manager.
-
-ℹ️The information symbol highlights useful information to take note of.
-
-❗ The exclamation mark highlights important things to take note of.
-
-</div>
+>
+> 💡 The light bulb denotes tips and tricks for using Patient Manager.
+>
+> ℹ️The information symbol highlights useful information to take note of.
+>
+> ❗ The exclamation mark highlights important things to take note of.
 
 ---
 ## Quick Start
 
+> ℹ️Patient Manager is a Command-Line application, and all commands need to be run from the
+> terminal/Command Prompt (cmd)/PowerShell. A Windows 10 OS' screenshot is here:
+> 
+> ![PowerShell](./images/WindowsPowerShell.png)
+
+
 1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
-   of Java installed, `Java 11` can be downloaded from
+   of Java installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
-   You can check the version of Java installed on your local computer by entering `java -version` into
-   your console of choice.
+
 
 1. Obtain a copy of the latest version of the Patient Manager (tp.jar) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
