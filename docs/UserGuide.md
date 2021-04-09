@@ -10,8 +10,7 @@ Not just the men, but the women and children too!
 {Give steps to get started quickly}
 
 1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Diliveri` from [here](http://link.to/duke).
-3. Download the latest version of required .txt files from [here](http://link.to)
+2. Down the latest version of `Diliveri` from [here](http://link.to/duke).
 
 ## Features 
 
@@ -38,7 +37,7 @@ Format: `editprofile n/NAME v/VEHICLE_MODEL l/LICENSE_PLATE w/WEIGHT`
 
 Example of usage: 
 
-`edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/2`
+`edit n/Obi-Wan v/BMW X-Wing l/SJU7606F w/20`
 
 `edit n/General Kenobi v/Jedi Interceptor l/SKJ9856H w/60`
 
@@ -83,12 +82,21 @@ the amount earned thus far.
 
 Format: `record`
 
+### Display Recommened Route for Delivery: `route`
+Displays best route available from undelivered deliveries.
+
+Format: `route`
+
+### End application: `bye`
+Terminates user session
+
+Format: `bye`
+
 ## FAQ
 
 **Q**: How do I get started? 
 
-**A**: Please head on over to our GitHub to first download the
-routes.txt , profile.txt , delivery.txt 
+**A**: Type start to load deliveries
 
 ## Command Summary
 
