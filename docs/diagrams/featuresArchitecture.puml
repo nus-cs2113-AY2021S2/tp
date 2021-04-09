@@ -6,12 +6,8 @@ package Cap_Simulator {
 
 }
 
-package Module_Info {
-
-}
-
 package Task {
-
+    Class Task
 }
 
 package Link {
@@ -22,5 +18,16 @@ package Link {
 
 ExternalLinks --|> Links
 }
+
+package Module_Info {
+    Class ModuleInfo
+    Class Module
+    Class Component
+
+    ModuleInfo -> Module
+    ModuleInfo -> Task
+    ModuleInfo -> ZoomLinkInfo
+}
+
 
 @enduml
