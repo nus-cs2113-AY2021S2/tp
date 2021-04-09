@@ -1,22 +1,26 @@
 package seedu.logic.command.doctorappointment;
 
+
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
 
 import java.io.IOException;
 
-public class DoctorAppointmentAdd extends Command {
+public class DoctorAppointmentDeleteCommand extends Command {
 
     private String[] input;
+    private String Id;
 
-    public DoctorAppointmentAdd(String[] parsedInput) {
+
+    public DoctorAppointmentDeleteCommand(String[] parsedInput) {
+        Id = parsedInput[1];
         input = parsedInput;
     }
 
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException {
-        AppointmentList.addAppointment(input);
+        AppointmentList.deleteAppointment(Id);
     }
 
     @Override

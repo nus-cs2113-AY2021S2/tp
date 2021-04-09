@@ -1,10 +1,16 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
-import seedu.exceptions.*;
-import seedu.exceptions.doctorappointment.*;
+import seedu.exceptions.EmptyListException;
+import seedu.exceptions.HealthVaultException;
+import seedu.exceptions.IDNotFoundException;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.InvalidDateException;
+import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.doctorappointment.DocIdNotFoundException;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
 import seedu.exceptions.IllegalCharacterException;
+import seedu.exceptions.doctorappointment.WrongAptIDFormatException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -38,7 +44,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         date = input[5];
         logger.log(Level.INFO, "Checking for Valid data after add command");
         if (!isValidDocID(doctorID)) {
-            throw new DocIDNotFoundException(doctorID);
+            throw new DocIdNotFoundException(doctorID);
         }
         if (!isValidAppointmentID(appointmentID)) {
             throw new IDNotFoundException(appointmentID);
@@ -53,7 +59,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     public static void checkValidDataForList(String[] input) throws HealthVaultException {
         ID = input[1];
 
-        if (AppointmentList.appointmentList.size() ==0) throw new EmptyListException();
+        if (AppointmentList.appointmentList.size() == 0) throw new EmptyListException();
         if (ID.equals("all")) return;
         logger.log(Level.INFO, "Checking for Valid data after list command");
         if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
@@ -64,7 +70,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     public static void checkValidDataForDelete(String[] input) throws seedu.exceptions.InvalidIDException {
         ID = input[1];
         logger.log(Level.INFO, "Checking for Valid data after delete command");
-        if (!isValidIDToDelete(ID)) {
+        if (!isValidIdToDelete(ID)) {
             throw new seedu.exceptions.InvalidIDException();
         }
     }
@@ -101,7 +107,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         checkID(inputArray[0], inputArray[1]);
         illegalCharacterNameCheckerForStorage(inputArray[2]);
         illegalCharacterNameCheckerForStorage(inputArray[1]);
-        checkDuplicateAptIDFromStorage(inputArray[1], storageList);
+        checkDuplicateAptIdFromStorage(inputArray[1], storageList);
         checkValidDate(inputArray[4]);
         logger.log(Level.INFO, "Checking Validity of storage data ");
         if (!isValidGender(inputArray[3])) {
@@ -110,10 +116,12 @@ public class DoctorAppointmentChecker extends MainChecker {
 
     }
 
-    public static void checkDuplicateAptIDFromStorage(String appointmentID, ArrayList<String> storageList) throws HealthVaultException {
-        for (String storageID : storageList){
-            if (storageID.equals(appointmentID))
+    public static void checkDuplicateAptIdFromStorage(String appointmentID, ArrayList<String> storageList)
+            throws HealthVaultException {
+        for (String storageID : storageList) {
+            if (storageID.equals(appointmentID)) {
                 throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
+            }
         }
     }
 
@@ -135,7 +143,7 @@ public class DoctorAppointmentChecker extends MainChecker {
 
     public static boolean isValidDocID(String doctorID) {
         try {
-            String[] character = doctorID.split("");
+            final String[] character = doctorID.split("");
             logger.log(Level.INFO, "Checking Validity Doctor ID during program commands ");
             if (character[0].equals("D")) {
                 ArrayList<Staff> doctorList;
@@ -148,13 +156,13 @@ public class DoctorAppointmentChecker extends MainChecker {
                 }
             }
         } catch (FileNotFoundException e) {
-
+            System.out.println(e.getMessage());
         }
         return false;
     }
 
-    public static boolean isValidAppointmentID(String appointmentID) throws HealthVaultException{
-        String[] character = appointmentID.split("");
+    public static boolean isValidAppointmentID(String appointmentID) throws HealthVaultException {
+        final String[] character = appointmentID.split("");
 
         checkAptID(appointmentID);
         logger.log(Level.INFO, "Checking Validity Appointment ID during ADD command ");
@@ -201,22 +209,21 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
     }
 
-    public static boolean isValidIDToDelete(String ID) {
-        String[] IDKeyword = ID.split("");
+    public static boolean isValidIdToDelete(String Id) {
+        String[] IdKeyword = Id.split("");
         logger.log(Level.INFO, "Checking Validity of Doctor/ Appointment ID to be deleted");
 
         for (DoctorAppointment doc : AppointmentList.appointmentList) {
-            if (IDKeyword[0].equals("A")) {
-                if (doc.getAppointmentId().equals(ID)) {
+            if (IdKeyword[0].equals("A")) {
+                if (doc.getAppointmentId().equals(Id)) {
                     return true;
                 }
-            } else if (IDKeyword[0].equals("D")) {
-                if (doc.getDoctorId().equals(ID)) {
+            } else if (IdKeyword[0].equals("D")) {
+                if (doc.getDoctorId().equals(Id)) {
                     return true;
                 }
             }
         }
         return false;
     }
-
 }

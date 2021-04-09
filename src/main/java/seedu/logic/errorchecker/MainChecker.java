@@ -17,7 +17,8 @@ import static seedu.duke.Constants.VALID_GENDER_INPUT;
 public class MainChecker {
     public Logger logger = HealthVaultLogger.getLogger();
 
-    public static void checkNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
+    public static void checkNumInput(String line, int max, int min) throws InsufficientInputException,
+            ExcessInputException {
         if (line.split("/").length < min) {
             throw new InsufficientInputException();
         }
@@ -26,7 +27,8 @@ public class MainChecker {
         }
     }
 
-    public static void checkNumInput(String[] array, int max, int min) throws InsufficientInputException, ExcessInputException {
+    public static void checkNumInput(String[] array, int max, int min) throws InsufficientInputException,
+            ExcessInputException {
 
         if (array.length < min) {
             throw new InsufficientInputException();
@@ -36,7 +38,8 @@ public class MainChecker {
         }
     }
 
-    public static void checkDataNumInput(String line, int max, int min) throws InsufficientInputException, ExcessInputException {
+    public static void checkDataNumInput(String line, int max, int min) throws InsufficientInputException,
+            ExcessInputException {
         if (line.split("\\|").length < min) {
             throw new InsufficientInputException();
         }
@@ -64,6 +67,7 @@ public class MainChecker {
             }
         }
     }
+
     public static void checkBlankInput(String[] array) throws NoInputException {
         for (String s : array) {
             if (s.trim().equals("")) {
@@ -88,10 +92,11 @@ public class MainChecker {
         }
     }
 
-    public static void illegalCharacterChecker(String stringToken, String fieldInput) throws IllegalCharacterException {
+    public static void illegalCharacterChecker(String stringToken, String fieldInput)
+            throws IllegalCharacterException {
 
         String cleanedInput = UI.cleanseInput(stringToken.trim());
-        if (!stringToken.equals(cleanedInput)){
+        if (!stringToken.equals(cleanedInput)) {
             throw new IllegalCharacterException(fieldInput);
         }
     }

@@ -4,7 +4,7 @@ import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
 import seedu.ui.DoctorAppointmentUI;
 
-public class DoctorAppointmentHelp extends Command {
+public class DoctorAppointmentHelpCommand extends Command {
 
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) {
