@@ -12,6 +12,7 @@ public class DeliveryList {
      * Constructor to load static list of deliveries from a .txt file
      */
     public static void load() {
+        Ui.printDivider();
         deliveries = DataManager.loadDeliveryList();
         calculateCombinedWeight();
         checkWeight();
