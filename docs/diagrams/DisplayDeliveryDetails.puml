@@ -1,0 +1,16 @@
+@startuml
+!include ../Style.puml
+'https://plantuml.com/sequence-diagram
+
+
+[-> ":Controller" :controllerForCommandsAndArguments()
+activate ":Controller"
+":Controller" -> ":Ui": processViewDelivery()
+    activate ":Ui"
+    ":Ui" -> ":Ui": showDeliveryDetails()
+    activate ":Ui"
+    deactivate ":Ui"
+    ":Ui" --> ":Controller"
+    deactivate ":Ui"
+
+@enduml
