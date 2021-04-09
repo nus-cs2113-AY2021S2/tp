@@ -6,7 +6,7 @@ LI:before { content: counters(item, ".") ". "; counter-increment: item }
 
 # Patient Manager User Guide
 
-Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP) 
+Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP)
 to manage their patient list. Patient Manger allows you to easily register new patients to your clinic
 with their NRIC or FIN number. Once a patient's records have been loaded, you can easily add new medical
 records and retrieve a summary of past records
@@ -42,13 +42,34 @@ to organize the records of their patients.
 ---
 ## User Guide Information
 
-This user guide explains how our application works and acts as a guide on how to use our application. It
-also explains how inputs are registered and the correct ways of inputting information. Finally, the user guide also
-includes a summary of all the commands and instructions on how to use each command.
+The aim of this user guide is to familiarise you with the features of Patient Manager, and to guide
+you on how to set up and start using Patient Manager.
 
-The user guide includes symbols such as:
+You may refer to [Quick Start](#quick-start) for help on setting up and getting started with Patient Manager
+
+[Features](#features) contains a detailed explanation of the commands that are available in Patient Manager,
+as well as their input formats.
+
+If you have any questions about Patient Manager, please check out [Frequently Asked Questions](#frequently-asked-questions)
+for a list of common questions.
+
+Finally, for returning users who may have forgotten the input format for a command, you can view 
+[Command Summary](#command-summary) for a table of valid commands, and their input format.
+
+
+<div markdown="block" class="alert alert-info">
+Please take note of the following symbols and formatting in this User Guide
+
+`Code blocks` are used to denote commands in the command line, user input, output from Patient Manager
+and file names.
+
+💡 The light bulb denotes tips and tricks for using Patient Manager.
+
+ℹ️The information symbol highlights useful information to take note of.
 
 ❗ The exclamation mark highlights important things to take note of.
+
+</div>
 
 ---
 ## Quick Start
@@ -68,7 +89,7 @@ The user guide includes symbols such as:
 
 1. Execute `java -jar tp.jar` to start Patient Manager.
 
-1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit 
+1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help)) and hit
    `ENTER` at the end.
 
 1. Refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
@@ -80,7 +101,7 @@ The user guide includes symbols such as:
 <!-- TODO: Too Technical -->
 ### Spacing
 
-Due to the design of our command parser, we are able to understand your input for any number of spaces between words 
+Due to the design of our command parser, we are able to understand your input for any number of spaces between words
 (even before the command itself). So all these commands are actually understandable and will be treated the same:
 ```
 record 01/05/2021 /s coughing, fever
@@ -90,12 +111,12 @@ record 01/05/2021  /s   coughing,       fever
 ```
 
 ❗ This is important: treating all these four the same means any number of spaces in between words will only be
-considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and 
+considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and
 `fever`, it will go into the database as `coughing, fever` - same as every other lines do.
 
 ### Order of Arguments
 
-Words or characters starts with `/` mark the beginning of an argument. 
+Words or characters starts with `/` mark the beginning of an argument.
 An argument block continues until the other one is found.
 For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
 The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
@@ -107,42 +128,42 @@ record 01/05/2021 /d flu /s coughing, fever
 > ❗ Note: The `DATE` is not an argument. It is the payload to the command since there is no `/` before it. Its position
 > is fixed, and it should follow directly behind `record`.
 
-However, we would still suggest you to input it using the sequence given in the following section. 
+However, we would still suggest you to input it using the sequence given in the following section.
 This can prevent you from getting confused about the meaning of each argument.
 
 ## Features
 
 > ❗ Notes about the command format:
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
-e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
-(sample command: `add S1234567D`)
-> 
-> 
+    e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
+    (sample command: `add S1234567D`)
+>
+>
 > - Parameters in square brackets are optional.\
-e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
-both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
+    e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
+    both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
 >
 >
 > - Parameters with `...` allow multiple parameters (including zero) to be specified.\
-e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
+    e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
 >
 >
 > - Parameters can be given in any order.\
-e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-`/p PRESCTIPTION /s SYMPTOMS` is also acceptable.
+    e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
+    `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.
 >
 >
 > - If a parameter is expected only once in the command, but you specify it multiple times, only the last occurrence of
-the parameter will be taken.\
-e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
+    the parameter will be taken.\
+    e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
 >
 >
 > - Extraneous parameters for commands that do not take in parameters (such as `list` and `exit`) will be ignored.\
-e.g. if the command given is `list 123`, it will be interpreted as `list`.
+    e.g. if the command given is `list 123`, it will be interpreted as `list`.
 >
 >
 > - Dates must be specified in the format `dd/MM/yyyy`, for example, `05/03/2021`. All dates given must be valid,
-according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+    according to the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
 <!-- TODO: Order | explain why help command is the 1st -->
 ### Print a help message: `help`
