@@ -23,7 +23,9 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static seedu.duke.Constants.*;
+import static seedu.duke.Constants.PATIENT_FILE_PATH;
+import static seedu.duke.Constants.SCHEDULES_FILE_PATH;
+
 
 public class NurseScheduleStorage {
 
