@@ -2,7 +2,12 @@ package seedu.logic.errorchecker;
 
 import seedu.exceptions.InvalidDateException;
 import seedu.exceptions.NoInputException;
-import seedu.exceptions.nurseschedules.*;
+import seedu.exceptions.nurseschedules.DuplicateScheduleException;
+import seedu.exceptions.nurseschedules.InvalidiDTypeException;
+import seedu.exceptions.nurseschedules.NurseCrossValidationError;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.PatientCrossValidationError;
+import seedu.exceptions.nurseschedules.PatientIdNotFound;
 import seedu.logic.parser.NurseSchedulesParser;
 import seedu.model.nurseschedule.NurseSchedule;
 import seedu.model.patient.Patient;
@@ -40,7 +45,7 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static void checkNurseIDExist(String nurseID) throws NurseIdNotFound, NurseCrossValidationError {
+    public static void checkNurseiDExist(String nurseID) throws NurseIdNotFound, NurseCrossValidationError {
         try {
             ArrayList<Staff> doctorList;
             doctorList = DoctorAppointmentStorage.loadDoctorFile();
@@ -58,7 +63,7 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static void checkPatientDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
+    public static void checkPatientiDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
         try {
             ArrayList<Patient> patientList;
             patientList = NurseScheduleStorage.loadPatientFile();
@@ -76,24 +81,24 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
-    public static void checkValidNurseID(String userID) throws InvalidIDTypeException {
+    public static void checkValidNurseID(String userID) throws InvalidiDTypeException {
         if (userID.length() != 6) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         } else if (!(userID.charAt(0) == 'N')) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         }
 
     }
 
-    public static void checkValidPatientID(String userID) throws InvalidIDTypeException {
+    public static void checkValidPatientID(String userID) throws InvalidiDTypeException {
         if (userID.length() != 6) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         }  else if (!(userID.charAt(0) == 'P')) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         } else if (numberOfIntegersInString(userID) != 5) {
-            throw new InvalidIDTypeException();
+            throw new InvalidiDTypeException();
         }
     }
 
@@ -107,13 +112,15 @@ public class NurseScheduleChecker extends MainChecker {
         return numberOfIntegers;
     }
 
-    public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list) throws DuplicateScheduleException {
+    public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list)
+            throws DuplicateScheduleException {
         for (NurseSchedule patient : list) {
             if (patient.getPatientID().equals(id)) {
                 if (patient.getDate().equals(date)) {
                     try {
                         date = NurseSchedulesParser.formatDate(date);
-                    } catch (ParseException e) {}
+                    } catch (ParseException ignored) {
+                    }
                     throw new DuplicateScheduleException(date);
                 }
             }
