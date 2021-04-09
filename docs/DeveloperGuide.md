@@ -1071,6 +1071,15 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ## Appendix B: User Stories
 
+| Priority |  As a... |                      I want to...                     |                 So that I can...                 |
+|:--------:|:--------:|:-----------------------------------------------------:|:------------------------------------------------:|
+|   * * *  | new user |          quickly refer to usage instructions          |      quickly get on track with the workflow      |
+|   * * *  |   user   |                add a new staff/patient                |                                                  |
+|   * * *  |   user   |                 delete staff/patients                 |          remove entries i no longer need         |
+|   * * *  |   user   | quickly look up schedules for both nurses and doctors |              plan my schedule better             |
+|   * * *  |   user   |            quickly look up drug inventories           |  plan what and when to restock our drug supplies |
+|     *    |   user   |   have the program recognize slight errors in typing  | have leeway working in a high-stress environment |
+
 <br>
 
 ## Appendix C: Non Functional Requirements
