@@ -735,14 +735,15 @@ can be found on the second computer.
 |Action | Format |
 |---------------|------------------------------------------------------------------|
 |[**Viewing help**](#41-viewing-help)        | `help` | 
-|[**Viewing all venues**](#42-viewing-all-venues)        | `help` | 
-|[**Finding the route**](#43-routing)       | `go` → `START` → `DESTINATION` or `go` → `START` → `eatery` → `EATERY_ENTRY` |
+|[**Viewing all venues**](#42-viewing-all-venues)        | `show venues` | 
+|[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
+|[**Finding the route**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
 |[**Viewing history**](#441-viewing-history)     | `history` | 
 |[**Clearing history**](#442-clearing-history)       | `clear history` |
 |[**Repeating history**](#443-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
-|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS` | 
+|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
 |[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
-|[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS` |
+|[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS_NAME` |
 |[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
 |[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route` → `DAY_NUMBER` |
 |[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |
