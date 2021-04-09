@@ -17,10 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AddCanteenCommandTest {
 
     @Test
-    public void execute_validCanteenName_success() throws IOException {
+    public void execute_validCanteenName_success() throws IOException, DukeExceptions {
         String canteenName = "Valid Canteen Name";
 
-        InputStream sysInBackup = System.in;
         ByteArrayInputStream in = new ByteArrayInputStream(canteenName.getBytes());
         System.setIn(in);
 

@@ -18,11 +18,14 @@ import command.HomeCommand;
 import command.LoginCommand;
 import command.ReadReviewsCommand;
 import command.ResetStoreCommand;
+import command.ViewStoreCommand;
 import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
+
+import java.util.Scanner;
 
 
 public class Parser {
@@ -111,6 +114,9 @@ public class Parser {
             newCommand = new DeleteMenuCommand(nusFoodReviews, this);
             break;
         case "9":
+            newCommand = new ViewStoreCommand(nusFoodReviews);
+            break;
+        case "10":
             newCommand = new ExitCommand();
             break;
         case "login":

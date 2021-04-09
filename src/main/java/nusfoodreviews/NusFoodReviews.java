@@ -8,9 +8,11 @@ import parser.Parser;
 import storage.Storage;
 import stores.Store;
 import ui.Ui;
-import checkuser.CheckUser;
-
-import java.io.*;
+import checkuser.UserChecker;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -39,8 +41,6 @@ public class NusFoodReviews {
         InputStreamReader streamReader = new InputStreamReader(inputStream);
         BufferedReader reader = new BufferedReader(streamReader);
         new NusFoodReviews(reader).run();
-        File filePath = new File("");
-
     }
 
     public void run() throws DukeExceptions {
@@ -60,9 +60,9 @@ public class NusFoodReviews {
         }
     }
 
-    public int chooseUser() {
+    public int chooseUser() throws DukeExceptions {
         ui.showLoginPage();
-        boolean isPublicUser = CheckUser.checkUserType(ui);
+        boolean isPublicUser = UserChecker.checkUserType(ui);
         if (isPublicUser) {
             ui.userShowWelcome();
             return 0;
@@ -124,6 +124,10 @@ public class NusFoodReviews {
         return canteenIndex;
     }
 
+    public int getUserIndex() {
+        return userIndex;
+    }
+
     public void setCanteenIndex() throws DukeExceptions {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
@@ -133,8 +137,14 @@ public class NusFoodReviews {
         } else if (line.equals("cancel")) {
             canteenIndex = -1;
             return;
+        } else if (line.equals("login")) {
+            resetAllIndex();
+            return;
         }
-        canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+
+        if (canteens.size() > 0) {
+            canteenIndex = parser.parseInt(line, 1, canteens.size()) - 1;
+        }
     }
 
     public int getStoreIndex() {
@@ -153,7 +163,13 @@ public class NusFoodReviews {
             ui.showGoodbye();
             System.exit(0);
         } else if (line.equals("cancel")) {
-            storeIndex = -1;
+            resetCanteenStoreIndex();
+            return;
+        } else if (line.equals("login")) {
+            resetAllIndex();
+            return;
+        } else if (line.equals("home")) {
+            resetCanteenStoreIndex();
             return;
         }
         storeIndex = parser.parseInt(line, 1, canteen.getNumStores()) - 1;
@@ -162,5 +178,4 @@ public class NusFoodReviews {
     public ArrayList<Canteen> getCanteens() {
         return canteens;
     }
-
 }

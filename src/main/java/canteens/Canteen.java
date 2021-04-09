@@ -18,11 +18,11 @@ public class Canteen {
     public Canteen(String canteenName) {
         this.canteenName = canteenName;
         stores = new ArrayList<>();
-        logger.log(Level.INFO, "New Canteen object " + canteenName + " created");
+        logger.log(Level.FINER, "New Canteen object " + canteenName + " created");
     }
 
     public void addStore(String storeName) {
-        logger.log(Level.INFO, "Creating new store in " + canteenName);
+        logger.log(Level.FINER, "Creating new store in " + canteenName);
         Store newStore = new Store(storeName);
         stores.add(newStore);
     }

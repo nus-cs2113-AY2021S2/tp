@@ -22,7 +22,7 @@ public class Store {
         this.storeName = storeName;
         menus = new ArrayList<>();
         reviews = new ArrayList<>();
-        logger.log(Level.INFO, "New Store object " + storeName + " created");
+        logger.log(Level.FINER, "New Store object " + storeName + " created");
     }
 
     public void displayStore() {
