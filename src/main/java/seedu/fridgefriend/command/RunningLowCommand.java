@@ -28,17 +28,16 @@ public class RunningLowCommand extends Command {
     public void execute() throws InvalidQuantityException {
         for (FoodCategory foodCategory : FoodCategory.values()) {
             if (MinimumQuantity.getMinimumQuantity(foodCategory) == DISABLED) {
-                numberOfCategoryDisabled++;
+                increaseNumberOfCategoryDisabled();
                 continue;
             }
             updateMessage(foodCategory);
         }
-        if (isDisabled()) {
+        if (isAllCategoryDisabled()) {
             message = disabledMessage;
         } else if (isStockedUp) {
             message = stockedUpMessage;
         }
-
         Ui.printMessage(message);
     }
 
@@ -58,7 +57,11 @@ public class RunningLowCommand extends Command {
     }
 
     //@@author SimJJ96
-    private boolean isDisabled() {
+    private void increaseNumberOfCategoryDisabled() {
+        numberOfCategoryDisabled++;
+    }
+
+    private boolean isAllCategoryDisabled() {
         if (numberOfCategoryDisabled == MAX_NUMBER_OF_CATEGORY_TYPE) {
             return true;
         }
