@@ -287,7 +287,7 @@ the resultant constant is `...final String COMMAND_ADD = "add";`.
 
 Below shows the command format the user has to type into the Application.
 
->_**Commands in Finux follow these argument orders (depending on the command):**_
+> _**Commands in Finux follow these argument orders (depending on the command):**_
 > * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
 > * `CMD -OPT`
 > * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
@@ -295,13 +295,18 @@ Below shows the command format the user has to type into the Application.
 > * `CMD [<FIELD>]`
 > * `CMD`
 > 
->_**Argument types and notation:**_
+> _**Argument types and notation:**_
 > * `CMD` - a valid command.
 > * `-OPT` - an option, a letter preceded by a dash. E.g. "`-i`".
 > * `<FIELD>` - an area where data is required.
 > * `[...]` - optional argument(s).
 > * `{ ... | ... | ... }` - mutually exclusive arguments,\
     e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+> 
+> _**Non-strict argument order:**_\
+> The `add` and `return` commands do not require strict ordering for options.\
+> E.g. For the case of `add`, option `-a` can come before/after option `-d`.
+
 
 _Figure 11: Command Input Format and Argument Types_
 

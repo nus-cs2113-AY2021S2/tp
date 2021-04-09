@@ -182,7 +182,7 @@ record added to Finux.
 ---
 
 > 📝 For the `add` command, there is no strict ordering for options.\
-> i.e. options `-a` can come before/after option `-d`.
+> i.e. option `-a` can come before/after option `-d`.
 
 #### 3.1.1 Add an expense record
 
@@ -327,6 +327,9 @@ Output:
 ### 3.4 Mark a loan as returned: `return`
 
 ---
+
+> 📝 For the `return` command, there is no strict ordering for options.\
+> i.e. option `-d` can come before/after option `-i`.
 
 Let's say Mark returns the loan he borrowed on 20th March 2021, and his `loan` record is the second record in the 
 combined list of expense, loan and saving records.
