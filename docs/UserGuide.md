@@ -104,7 +104,12 @@ Format: `list`
 Expected output:
 
 ```
-
+-------------------------------------
+No. || Delivery ID || Status || Address || Recipient
+1. 1001 [N] NTU Hall 5 Jethro
+2. 1002 [N] NTU Hall 3 Manika
+3. 1003 [N] NTU Hall Oween Calvin
+-------------------------------------
 ```
 
 ### Display Recommended Travel Route: `route`
