@@ -205,6 +205,17 @@ The UI of this program can be found under the package named UI. It consists of `
 ### 4.6 Commands Component
 ### 4.7 Exceptions Component
 ### 4.8 Model component
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
+
+The `Model`, consists of 5 different types of lists.
+
+	- AppointmentList stores DoctorAppointment objects. AppointmentList also has methods needed to modify the list with objects.
+	- InventoryList stores Inventory objects. InventoryList also has methods to modify the list with objects.
+	- NurseScheduleList stores NurseSchedule objects. NurseScheduleList also has methods to modify the list with objects.
+	- PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
+	- StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
+
 ### 4.9 Storage component
 
 <br>
