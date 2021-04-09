@@ -1,2 +1,1 @@
-CS2113T ~~ [    ]  ~~ yes ~~ woo
-CS1010 ~~ [    ]  ~~ test2 ~~ testingagain
+CS2113T ~~ [    ]  ~~ study week 10 topics ~~ good job

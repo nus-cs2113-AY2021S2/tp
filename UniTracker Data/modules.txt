@@ -1,16 +1,5 @@
-CS2113T ~~ software engineering
+CS2113T ~~ software engineering ~~ 4 ~~ A ~~ {b=2, a=1, finalss=5, h=2, f=2, e=5, z=60, d=4}
 Very fun module! Java is a very fun language:)
-I think I am enjoying this module:)
-Overall 10/10 -- end of module -- 
-CG1112 ~~ engineering principle 2
-You have not reviewed this module yet. -- end of module -- 
-CS1010 ~~ programming methodology
-You have not reviewed this module yet. -- end of module -- 
-CS1231 ~~ discrete maths
-You have not reviewed this module yet. -- end of module -- 
-CS3243 ~~ Introduction to AI
-You have not reviewed this module yet. -- end of module -- 
-EC1301 ~~ Principles of Economics
-You have not reviewed this module yet. -- end of module -- 
-CG2028 ~~ Computer Organisation
-You have not reviewed this module yet. -- end of module -- 
+Overall 10/10 -- end of module --
+CG1112 ~~ epp2 ~~ 8 ~~ A ~~ {finals=40}
+You have not reviewed this module yet. -- end of module --
