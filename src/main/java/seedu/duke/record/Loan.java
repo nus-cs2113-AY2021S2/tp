@@ -85,7 +85,7 @@ public class Loan extends Record {
      */
     @Override
     public String toString() {
-        String formattedRecordType = "[" + TYPE_LOAN + "]";
+        String formattedRecordType = "[" + TYPE_LOAN + "] ";
         String formattedLoanStatus = "[" + (isReturn ? "v" : " ") + "]";
         return formattedRecordType + super.toString() + formattedLoanStatus;
     }

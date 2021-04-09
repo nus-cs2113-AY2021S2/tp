@@ -16,14 +16,14 @@ import java.util.Scanner;
  * Handles all user interactions and printing of text to the console.
  */
 public class Ui {
-    protected static final String DIVIDER = "=========================================================";
-    private static final String logo = "=========================================================\n"
-            + "||    $$$$$$  $$$$$$  $$    $$  $$    $$   $$    $$    ||\n"
-            + "||    $$        $$    $$$   $$  $$    $$    $$  $$     ||\n"
-            + "||    $$$$$$    $$    $$ $$ $$  $$    $$      $$       ||\n"
-            + "||    $$        $$    $$   $$$  $$    $$    $$  $$     ||\n"
-            + "||    $$      $$$$$$  $$    $$   $$$$$$    $$    $$    ||\n"
-            + "=========================================================";
+    protected static final String DIVIDER = "=====================================================================";
+    private static final String logo = "=====================================================================\n"
+            + "||          $$$$$$  $$$$$$  $$    $$  $$    $$   $$    $$          ||\n"
+            + "||          $$        $$    $$$   $$  $$    $$    $$  $$           ||\n"
+            + "||          $$$$$$    $$    $$ $$ $$  $$    $$      $$             ||\n"
+            + "||          $$        $$    $$   $$$  $$    $$    $$  $$           ||\n"
+            + "||          $$      $$$$$$  $$    $$   $$$$$$    $$    $$          ||\n"
+            + "=====================================================================";
 
     private static final String MESSAGE_GOODBYE =
             "=====================================================================\n"
@@ -98,7 +98,7 @@ public class Ui {
         }
         int formattedIndex = index - 1;
         System.out.println();
-        printIndex(formattedIndex);
+        printId(formattedIndex);
         System.out.println(recordAdded);
         System.out.println();
         System.out.println(DIVIDER);
@@ -157,7 +157,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Expense) {
-                printIndex(i);
+                printId(i);
                 System.out.println(currentRecord);
             }
         }
@@ -175,7 +175,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Loan) {
-                printIndex(i);
+                printId(i);
                 System.out.println(currentRecord);
             }
         }
@@ -193,7 +193,7 @@ public class Ui {
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
             if (currentRecord instanceof Saving) {
-                printIndex(i);
+                printId(i);
                 System.out.println(currentRecord);
             }
         }
@@ -210,7 +210,7 @@ public class Ui {
         System.out.println("Here is you Records list:");
         for (int i = 0; i < recordList.getRecordCount(); i++) {
             Record currentRecord = recordList.getRecordAt(i);
-            printIndex(i);
+            printId(i);
             System.out.println(currentRecord);
         }
         System.out.println(DIVIDER);
@@ -309,8 +309,8 @@ public class Ui {
      *
      * @param index is the index of the record.
      */
-    public void printIndex(int index) {
+    public void printId(int index) {
         int formattedIndex = index + 1;
-        System.out.print(formattedIndex + ". ");
+        System.out.print("[ID: " + formattedIndex + "] ");
     }
 }
