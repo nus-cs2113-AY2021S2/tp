@@ -47,8 +47,6 @@ public class Ui {
             }
         } catch (NullPointerException e) {
             System.out.println("Input cannot be empty.");
-        } catch (DukeExceptions e) {
-            System.out.println(e.getMessage());
         }
         return line;
     }
@@ -334,6 +332,11 @@ public class Ui {
 
     public void showAddCanteenSuccess(String canteenName) {
         System.out.println("The canteen '" + canteenName + "' has been added!");
+        System.out.println(LINESPACING);
+    }
+
+    public void showInvalidCanteenPrompt(String canteenName) {
+        System.out.println("The canteen name '" + canteenName + "' is already taken! Please enter another name:");
     }
 
     public void showCanteenNotAdded() {
