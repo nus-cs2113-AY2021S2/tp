@@ -118,11 +118,11 @@ public class DataManager {
 			System.out.println("Cannot load file...you are clapped! Please load a file.");
 			System.exit(0);
 		}
-		System.out.println("File loaded boi...lets gooooooo!");
-		if(deliveries.isEmpty()){
+		if(deliveries.size() < 1){
 			Generator generator =  new Generator();
 			deliveries = generator.deliveriesGenerator();
 		}
+		System.out.println("File loaded boi...lets gooooooo!");
 		return deliveries;
 	}
 

@@ -2,6 +2,8 @@ package seedu.duke;
 
 import java.util.ArrayList;
 
+import static seedu.duke.DataManager.itemRetriever;
+
 public class Generator {
 
 	/**
@@ -12,7 +14,7 @@ public class Generator {
 		String driverName = "Obi Wan";
 		String vehicleModel = "YT-1300";
 		String licensePlate = "HIGHGROUND";
-		int maxWeight = 4;
+		int maxWeight = 40;
 
 		return new Deliveryman(driverName, licensePlate, vehicleModel,maxWeight);
 	}
@@ -22,7 +24,6 @@ public class Generator {
 	 * @return list of deliveries
 	 */
 	public ArrayList<Delivery> deliveriesGenerator(){
-		DataManager dataManager = new DataManager();
 		ArrayList<Delivery> deliveries = new ArrayList<>();
 		String deliveryStatus = "N";
 		String[] deliveryIds = {"1001", "1002", "1003", "1004", "1005", "1006", "1007"};
@@ -30,7 +31,7 @@ public class Generator {
 		String[] recipients = {"Jethro", "Manika", "Calvin", "Zhi fah", "Anakin", "Jeremy", "Kenobi"};
 		String[][] itemsList = {{"13-2", "14-3"}, {"13-5", "16-2"}, {"13-5", "16-2"}, {"13-5", "16-2"}, {"13-5", "16-2"}, {"13-5", "16-2"}, {"13-5", "16-2"}};
 		for (int i = 0; i < 7; i++){
-			ArrayList<Item> items = dataManager.itemRetriever(itemsList[i]);
+			ArrayList<Item> items = itemRetriever(itemsList[i]);
 			deliveries.add(new Delivery(deliveryStatus, deliveryIds[i], addresses[i], recipients[i], items));
 		}
 		return deliveries;
