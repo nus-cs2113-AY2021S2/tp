@@ -228,9 +228,9 @@ public class Commands {
             reviewList.addReview(input);
         } else {
             if (input == null || input.isBlank()) {
-                invalidParameters();
-            } else {
                 recommendationList.addRecommendation();
+            } else {
+                invalidParameters();
             }
         }
     }
