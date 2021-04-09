@@ -46,9 +46,10 @@ I contributed to the overall formatting of the document and wrote the content pa
 I contributed to the parts of the DG that describe and explain the implementation of finding the shortest route feature and daily route planning feature, including the UML diagrams.
 
 ### Contributions to team-based tasks:
-I Managed release v1.0 (1 release) on GitHub <br>
+I managed release v1.0 (1 release) on GitHub <br>
 I vetted issues and assigned to members accordingly. <br>
 I maintained the cohesiveness in language and formatting of the documentations. <br>
+I contributed to developer testing for NUSMaze by creating JUnit tests to ensure that the behaviour of the application does not defer from intended.
 
 ###Review contributions
 The link to PR reviews by me can be found [here](https://github.com/AY2021S2-CS2113T-T09-2/tp/pulls?q=is%3Apr+is%3Aclosed+reviewed-by%3ASimBowen+).
