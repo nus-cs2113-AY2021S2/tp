@@ -260,7 +260,7 @@ Invalid Input includes:
 	- Blank input (i.e Empty inputs)
 	- Illegal Characters
 
-`add/[Staff ID]/[name]/[age]/[specialisation]`
+**Format** `add/[Staff ID]/[name]/[age]/[specialisation]`
 
 <img src="images/SD Staff Add.png">
 
@@ -310,7 +310,7 @@ Invalid Input includes:
 	- Blank input (i.e Empty inputs)
 	- Illegal Characters
 
-`delete/Staff ID`
+**Format** `delete/Staff ID`
 
 
 **Check validity of the data input**
@@ -349,7 +349,7 @@ Invalid Input includes:
 > 
 	- Any input apart from Blank Input (i.e Empty input) OR "doctors" OR "nurses"
 
-`list/<doctors/nurses>`
+**Format** `list/<doctors/nurses>`
 
 **Check validity of the data input**
 
@@ -381,7 +381,7 @@ Invalid Input includes:
 > 
 	- Blank input (i.e Empty inputs)
 
-`find/[keyword]`
+**Format** `find/[keyword]`
 
 **Check validity of the data input**
 
@@ -645,6 +645,8 @@ Invalid Input includes:
 	- Blank input (i.e Empty inputs)
 
 `add/[Doctor ID]/[Appointment ID]/[Patient's Name]/[Gender]/[Date]`
+
+<img src="images/DG DoctorAppSequencePlant.png">
 
 
 **Check validity of the data input**

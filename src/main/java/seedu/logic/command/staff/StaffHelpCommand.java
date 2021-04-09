@@ -8,7 +8,7 @@ import seedu.ui.StaffUI;
 /**
  * StaffHelp Command executes the necessary action for displaying the help message.
  */
-public class StaffHelp extends Command {
+public class StaffHelpCommand extends Command {
 
     /**
      * Displays the help message for Staff Menu.

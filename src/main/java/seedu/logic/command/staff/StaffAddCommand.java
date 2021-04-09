@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * StaffAdd Command executes the necessary action for adding a Staff object.
  */
-public class StaffAdd extends Command {
+public class StaffAddCommand extends Command {
 
     private String[] argArr;
 
@@ -19,7 +19,7 @@ public class StaffAdd extends Command {
      *
      * @param args Array of inputs for Staff object.
      */
-    public StaffAdd(String[] args) {
+    public StaffAddCommand(String[] args) {
         argArr = args;
     }
 

@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * StaffReturn Command executes resets given StaffList and exits the Staff Menu.
  */
-public class StaffReturn extends Command {
+public class StaffReturnCommand extends Command {
 
     /**
      * Resets the given StaffList object.
