@@ -46,6 +46,7 @@ public class HistoryCommand extends Command {
 
     public static String getHistoryMessage() {
         StringBuilder message = new StringBuilder("This is the full history of items you've added in the fridge:");
+
         message.append(Storage.loadHistoryData());
 
         assert message != null : "message string should not be null";

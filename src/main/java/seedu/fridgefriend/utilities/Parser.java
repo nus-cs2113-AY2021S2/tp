@@ -25,6 +25,7 @@ import seedu.fridgefriend.exception.InvalidFoodCategoryException;
 import seedu.fridgefriend.exception.InvalidFoodLocationException;
 import seedu.fridgefriend.exception.InvalidInputException;
 import seedu.fridgefriend.exception.InvalidQuantityException;
+import seedu.fridgefriend.exception.InvalidSetLimitQuantityException;
 import seedu.fridgefriend.food.FoodCategory;
 
 /**
@@ -76,11 +77,14 @@ public class Parser {
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
-     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
+     * @throws InvalidSetLimitQuantityException if the set limit quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the category input cannot be parsed
+     * @throws InvalidFoodLocationException if the location input cannot be parsed
      */
     public static Command getCommand(String input)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
+            InvalidQuantityException, InvalidSetLimitQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         String[] parsedInput = parseInput(input);
         Command command = parseCommand(parsedInput);
         return command;
@@ -116,11 +120,14 @@ public class Parser {
      * @throws InvalidInputException if the command is not recognised
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
-     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
+     * @throws InvalidSetLimitQuantityException if set limit quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the category input cannot be parsed
+     * @throws InvalidFoodLocationException if the location input cannot be parsed
      */
     public static Command parseCommand(String[] parsedInput)
             throws EmptyDescriptionException, InvalidInputException, InvalidDateException,
-            InvalidQuantityException, InvalidFoodCategoryException, InvalidFoodLocationException {
+            InvalidQuantityException, InvalidSetLimitQuantityException,
+            InvalidFoodCategoryException, InvalidFoodLocationException {
         String commandString = parsedInput[COMMAND_WORD_INDEX];
         String description = parsedInput[1];
         Command command;
@@ -175,6 +182,8 @@ public class Parser {
      * @throws InvalidInputException if the description cannot parse
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the category input cannot be parsed
+     * @throws InvalidFoodLocationException if the location input cannot be parsed
      */
     private static Command getAddCommand(String description)
             throws EmptyDescriptionException, InvalidInputException,
@@ -197,6 +206,8 @@ public class Parser {
      * @throws InvalidInputException if the description cannot parsed
      * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
+     * @throws InvalidFoodCategoryException if the category input cannot be parsed
+     * @throws InvalidFoodLocationException if the location input cannot be parsed
      */
     private static Command parseAddDescription(String foodDescription)
             throws EmptyDescriptionException, InvalidInputException,
@@ -238,6 +249,8 @@ public class Parser {
      * @param description description for command
      * @return RemoveCommand object
      * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidInputException if the description cannot parsed
+     * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     private static Command getRemoveCommand(String description)
             throws EmptyDescriptionException, InvalidQuantityException,
@@ -256,7 +269,6 @@ public class Parser {
      * @return a new RemoveCommand for Food
      * @throws EmptyDescriptionException if the description is empty
      * @throws InvalidInputException if the description cannot parsed
-     * @throws InvalidDateException if the date input cannot be parsed
      * @throws InvalidQuantityException if the quantity input cannot be parsed
      */
     private static Command parseRemoveDescription(String removeDescription)
@@ -310,20 +322,21 @@ public class Parser {
     //@@author kwokyto
     /**
      * Returns a SetLimitCommand object.
-     * @throws InvalidFoodCategoryException if the catgory input cannot be parsed
+     *
      * @throws EmptyDescriptionException if the description is empty
+     * @throws InvalidFoodCategoryException if the category input cannot be parsed
      * @throws InvalidInputException if the description cannot parsed
-     * @throws InvalidQuantityException if the quantity input cannot be parsed
+     * @throws InvalidSetLimitQuantityException if the set limit quantity input cannot be parsed
      */
     private static Command getSetLimitCommand(String description) throws EmptyDescriptionException,
-            InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
+            InvalidSetLimitQuantityException, InvalidInputException, InvalidFoodCategoryException {
         Command setLimitCommand = parseSetLimitDescription(description);
         return setLimitCommand;
     }
 
     //@@author kwokyto
     private static Command parseSetLimitDescription(String description) throws EmptyDescriptionException,
-            InvalidQuantityException, InvalidInputException, InvalidFoodCategoryException {
+            InvalidSetLimitQuantityException, InvalidInputException, InvalidFoodCategoryException {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
@@ -421,28 +434,28 @@ public class Parser {
      * @param description set limit quantity description
      * @return set limit integer quantity
      * @throws EmptyDescriptionException if the description is empty
-     * @throws InvalidQuantityException if the description exceed the max quantity or less than -1
+     * @throws InvalidSetLimitQuantityException if the description exceed the max quantity or less than 0
      */
     public static int parseSetLimitIntegerQuantity(String description)
-            throws EmptyDescriptionException, InvalidQuantityException {
+            throws EmptyDescriptionException, InvalidSetLimitQuantityException {
         if (description.isEmpty()) {
             throw new EmptyDescriptionException();
         }
         try {
             BigInteger bigIntegerQuantity = new BigInteger(description);
             BigInteger maxQuantity = BigInteger.valueOf(MAX_ALLOWABLE_QUANTITY);
-            BigInteger minQuantity = BigInteger.valueOf(-1);
+            BigInteger zero = BigInteger.valueOf(0);
             if (bigIntegerQuantity.compareTo(maxQuantity) == GREATER) {
-                throw new InvalidQuantityException("Sorry my friend, "
+                throw new InvalidSetLimitQuantityException("Sorry my friend, "
                         + "the quantity you have entered "
                         + "has exceed the maximum allowable quantity.");
-            } else if (bigIntegerQuantity.compareTo(minQuantity) < EQUAL_TO) {
-                throw new InvalidQuantityException();
+            } else if (bigIntegerQuantity.compareTo(zero) < EQUAL_TO) {
+                throw new InvalidSetLimitQuantityException();
             }
             int quantityInteger = bigIntegerQuantity.intValue();
             return quantityInteger;
         } catch (NumberFormatException numberFormatException) {
-            throw new InvalidQuantityException();
+            throw new InvalidSetLimitQuantityException();
         }
     }
     //@author

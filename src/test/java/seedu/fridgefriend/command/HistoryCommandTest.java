@@ -18,13 +18,8 @@ class HistoryCommandTest {
     private Fridge fridge;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws InvalidDateException, InvalidQuantityException, RepetitiveFoodIdentifierException {
         fridge = new Fridge();
-    }
-
-    @Test
-    public void historyCommand_SuccessfullyReadHistory() throws InvalidDateException,
-            RepetitiveFoodIdentifierException, InvalidQuantityException {
         AddCommand addCommand1 = new AddCommand("Coke", FoodCategory.BEVERAGE,
                 "30-06-2021", FoodStorageLocation.FREEZER, 5);
         addCommand1.setData(fridge);
@@ -44,8 +39,10 @@ class HistoryCommandTest {
                 "31-12-2021", FoodStorageLocation.FRIDGE_DOOR, 3);
         addCommand4.setData(fridge);
         addCommand4.execute();
+    }
 
-        //the fourth add command updates the quantity of Milk.
+    @Test
+    public void historyCommand_SuccessfullyReadHistory() {
         String expectedMessage = "This is the full history of items you've added in the fridge:\n"
                 + "\t1. Food name: Coke, category: BEVERAGE, expiry: "
                 + "30-06-2021, stored in: FREEZER, quantity: 5\n"

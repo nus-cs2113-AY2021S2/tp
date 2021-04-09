@@ -9,7 +9,10 @@ end box
 box Food FOOD_COLOR_T1
 participant "fridge:Fridge" as Fridge FOOD_COLOR
 participant ":Food" as Food FOOD_COLOR_T3
+participant ":Minimum" as Minimum FOOD_COLOR_T2
 end box
+
+
 
 -> RemoveCommand: execute()
 activate RemoveCommand
@@ -27,10 +30,10 @@ loop food in fridge
     end
     return food
 end
+return
 
-deactivate RemoveCommand
 RemoveCommand -> RemoveCommand: removePortion()
-    activate RemoveCommand
+activate RemoveCommand
 
 alt newQuantity > 0
     RemoveCommand -> Fridge: getFood()
@@ -39,22 +42,43 @@ alt newQuantity > 0
     activate Food
     return
     return
-    deactivate Fridge
+
 else newQuantity == 0
     RemoveCommand -> Fridge: remove()
     activate Fridge
-    return
-    deactivate Fridge
     note right
     if newQuantity is <0
     InvalidQuantityExpcetion
     will be thrown
     end note
+    return
 end
+return
 
-deactivate RemoveCommand
-destroy Food
-<-- RemoveCommand:
-deactivate RemoveCommand
+RemoveCommand -> RemoveCommand: checkRunningOut()
+activate RemoveCommand
+RemoveCommand -> Fridge: isRunningOut()
+activate Fridge
+Fridge -> Fridge: getTotalQuantity()
+activate Fridge
+loop food in fridge
+    Fridge -> Food: getCategory(foodCategory)
+    activate Food
+    return
+    opt foodCategory1 equals foodCategory
+        Fridge -> Food: getQuantity()
+        activate Food
+        return
+    end
+end
+return
+Fridge -> Minimum: getMinimumQuantity()
+activate Minimum
+return
+opt totalQuantity < MinimumQuantity
+    return
+end
+return
+return
 
 @enduml

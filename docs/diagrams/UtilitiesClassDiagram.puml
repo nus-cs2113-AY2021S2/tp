@@ -20,6 +20,7 @@ package "Utilities Component" <<Rectangle>> {
 package "/data" <<folder>> {
     file limitsData UTILITIES_COLOR_T1
     file fridgeData UTILITIES_COLOR_T1
+    file historyData UTILITIES_COLOR_T1
 }
 
 package Food <<Rectangle>> FOOD_COLOR {
@@ -62,6 +63,7 @@ class Parser {
   - {static} Command parseRemoveDescription(String removeDescription)
   - {static} Command parseSetLimitDescription(String description)
   + {static} int parseIntegerQuantity(String description)
+  + {static} int parseSetLimitQuantity(String description)
 }
 
 ' Basic Layout '

@@ -91,6 +91,7 @@ public class ListCommand extends Command {
      * Returns the food that match the category that was specified.
      *
      * @return string of food that match the category in the fridge
+     * @throws InvalidFoodCategoryException if the string of food input does not match any category in the fridge
      */
     public String getListByCategoryMessage() throws InvalidFoodCategoryException {
         LoggingHandler.logInfo("Category detected:" + description);
@@ -130,6 +131,7 @@ public class ListCommand extends Command {
      * Returns the food that match the storage location that was specified.
      *
      * @return string of food that match the storage location in the fridge
+     * @throws InvalidFoodLocationException if string of food input does not match any storage location in the fridge
      */
     public String getListByStorageLocationMessage() throws InvalidFoodLocationException {
         LoggingHandler.logInfo("Storage Location detected:" + description);

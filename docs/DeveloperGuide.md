@@ -151,7 +151,7 @@ classified into three broad categories:
 
 * Invalid User Input
   * Thrown when a raw user input cannot be parsed into a valid value
-  * Includes: `EmptyDescriptionException`, `InvalidDateException`, `InvalidInputException`, `InvalidQuantityException`
+  * Includes: `EmptyDescriptionException`, `InvalidDateException`, `InvalidInputException`, `InvalidQuantityException`, `InvalidSetLimitQuantityException`
 * Food Errors
   * Thrown when a parameter for a food item is invalid
   * Includes: `FoodNameNotFoundException`, `InvalidFoodCategoryException`, `RepetitiveFoodIdentifierException`, `InvalidFoodLocationException`
@@ -210,10 +210,13 @@ When the user specify to remove a portion of a food item in the fridge, the `rem
 will execute the remove operation by:
 
 1. Searching of the food item in the fridge by looping through each food item.  
-2. If the food item exist, check if removing the quantity will reduce the quantity to zero.
-3. If it does not reduce to zero, then proceed to remove the required quantity.
-4. If it does reduce to zero, then remove the food item completely.
-5. Otherwise, throw an exception to FridgeFriend.
+2. If the food item exist, check if the quantity is greater than the available quantity in the fridge.
+3. If it is greater, an exception will be thrown to FridgeFriend.
+4. Otherwise, check if removing the quantity will reduce the quantity to zero.
+5. If it does not reduce to zero, proceed to remove the required quantity.
+6. If it does reduce to zero, then remove the food item completely.
+7. Afterwards, check that by removing the food, the total quantity of that FoodCategory will not be lower than the minimum quantity.
+8. Return a warning message if the total quantity is lower than the minimum quantity to inform the user .
 
 The sequence diagram below shows how the `remove` operation works:
 
@@ -240,10 +243,13 @@ The sequence diagram shows how the `search` operation works:
 
 The `runningLow` command is implemented by:
 
-1. Checking the total quantity of each FoodCategory in the fridge.
-2. Follow by comparing with the default minimum number of quantity in each FoodCategory.
-3. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message
-4. Otherwise, return isStockUp message.
+1. Checking the setlimit of each category in the FoodCategory.
+2. If the limit is set to 0, the calculation of the totalQuantity of the category can be omitted.
+3. If all the FoodCategory is set to 0, return disabled message.   
+4. Otherwise, if any of the FoodCategory limit is non-zero, proceed to check the total quantity of that FoodCategory in the fridge.
+5. Follow by comparing with the default minimum number of quantity in each FoodCategory.
+6. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message
+7. Otherwise, return stockedUp message.
 
 The sequence diagram shows how the `runninglow` operation works:
 
@@ -264,11 +270,15 @@ The sequence diagram shows how the `setlimit` operation works:
 ### Expiring Command
 
 The `expiring` command is implemented through looping of the food items in the fridge and
-return the food item if the expiry date is within one week of calling the command.
+return the food item that are expired and expiring.
+
+:information: Information:
+*Food is considered expired if the expiry date is one day before calling the command.
+*Food is considered expiring if the expiry date is within one week of calling the command.
 
 The sequence diagram shows how the `expiring` operation works:
 
-![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSeqeunceDiagram.png)
+![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
 
 ### List Command
 
@@ -507,7 +517,8 @@ Removing a food while all foods are being shown.
     * Expected: `Not enough in fridge to remove!` User attempted to remove a greater quantity than what was
       available in the fridge. Error message was thrown. No food is removed.
 6. Test case: `remove chicken`
-    * Expected: `Sorry my friend, please give a valid input.` It is required to specify the quantity to be removed with
+    * Expected: `Sorry my friend, you have entered an invalid input.
+      Enter 'help' for more information about the correct input format.` It is required to specify the quantity to be removed with
       `/qty`.
 
 ### Searching for a food
@@ -560,7 +571,7 @@ By default, the `limits` for all food is set at `500`. Use `setlimit` to modify 
 
 1. Preparation: Change the limits for `meat`, `dairy`, `beverage`, `seafood`, since they are the categories of food
    we have added to the fridge so far.
-    * `setlimit meat /qty 200`
+    * `setlimit meat /qty 0`
     * `setlimit dairy /qty 5`
     * `setlimit beverage /qty 3`
     * `setlimit seafood /qty 50`
@@ -571,16 +582,15 @@ By default, the `limits` for all food is set at `500`. Use `setlimit` to modify 
    You are running low on food in these categories:
    1. VEGETABLE quantity: 0 out of 500
    2. FRUIT quantity: 0 out of 500
-   3. MEAT quantity: 100 out of 200
-   4. EGG quantity: 0 out of 500
-   5. DAIRY quantity: 2 out of 5
-   6. COOKED_DISH quantity: 0 out of 500
-   7. READY_TO_EAT quantity: 0 out of 500
-   8. FROZEN quantity: 0 out of 500
-   9. OTHER quantity: 0 out of 500
+   3. EGG quantity: 0 out of 500
+   4. DAIRY quantity: 2 out of 5
+   5. COOKED_DISH quantity: 0 out of 500
+   6. READY_TO_EAT quantity: 0 out of 500
+   7. FROZEN quantity: 0 out of 500
+   8. OTHER quantity: 0 out of 500
     ```
 
-Note that `SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
+Note that `MEAT`,`SEAFOOD` AND `BEVERAGE` category are omitted from the above list,
 as they are not "running low". There is sufficient food from the given category in the
 fridge, because it is above the quantity we have specified by `setlimit`.
 

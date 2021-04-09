@@ -11,6 +11,7 @@ package "Exceptions Component" <<Rectangle>> {
         class InvalidDateException
         class InvalidInputException
         class InvalidQuantityException
+        class InvalidSetLimitQuantityException
     }
 
     package "Related to Food" as food <<Rectangle>> {

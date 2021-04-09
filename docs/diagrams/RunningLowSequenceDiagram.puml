@@ -21,8 +21,14 @@ loop foodCategory in FoodCategory
     RunningLowCommand -> FoodCategory: getFoodCategory()
     return foodCategory
 
-    RunningLowCommand -> Fridge: isRunningOut(foodCategory)
-    Fridge -> Fridge: getTotalQuantity()
+    RunningLowCommand -> MinimumQuantity: getMinimumQuantity()
+    return
+    alt minimumQuantity == 0
+        RunningLowCommand -> RunningLowCommand: increaseNumberOfCategoryDisabled
+        return
+    else minimumQuantity > 0
+        RunningLowCommand -> Fridge: isRunningOut(foodCategory)
+        Fridge -> Fridge: getTotalQuantity()
     loop food in Fridge
         Fridge -> Food: getFoodCategory()
         return foodCategory1
@@ -32,16 +38,26 @@ loop foodCategory in FoodCategory
         end
     end
     return totalQuantity
-    
-    Fridge -> MinimumQuantity: getMinimumQuantity()
-    return
 
-    alt totalQuantity < MinimumQuantity
+    opt totalQuantity < MinimumQuantity
         return
-    else isStockUp
-        RunningLowCommand -> RunningLowCommand: message
+        RunningLowCommand -> RunningLowCommand: updateMessage()
         return
     end
+    end
 end
+
+    alt isAllCategoryDisabled
+        RunningLowCommand -> RunningLowCommand: disabledMessage
+        return
+    else isStockedUp
+        RunningLowCommand -> RunningLowCommand: stockedUpMessage
+        return
+    end
+
 return
 @enduml
+
+    alt minimumQuantity == 0
+
+    else minimumQuantity > 0
