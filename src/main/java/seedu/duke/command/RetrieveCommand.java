@@ -30,14 +30,15 @@ public class RetrieveCommand extends Command {
     @Override
     public void execute() throws InvalidInputException, DataException {
         assert ui != null : "Ui must not be null";
+        assert arguments.containsKey("payload") : "Arguments must contain a value for the `payload` key";
         String records = null;
-        if (arguments.containsKey(Constants.PAYLOAD_KEY)) {
-            String dateString = arguments.get(Constants.PAYLOAD_KEY);
-            LocalDate date = Common.parseDate(dateString);
-            records = data.getRecords(date);
+        String dateString = arguments.get(Constants.PAYLOAD_KEY);
+        if (dateString.isEmpty()) {
+            records = data.getRecords();
         }
         else {
-            records = data.getRecords();
+            LocalDate date = Common.parseDate(dateString);
+            records = data.getRecords(date);
         }
         assert records != null : "Data class must not return a null value for the patient's records";
         ui.printMessage(records);

@@ -54,7 +54,7 @@ public class Constants {
     // Exception messages
     public static final String INDENT = "\t";
 
-    public static final String INVALID_INPUT = "Input command and/or arguments are invalid.";
+    public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process.";
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";

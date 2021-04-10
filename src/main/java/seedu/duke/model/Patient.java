@@ -87,7 +87,7 @@ public class Patient {
         this.diagnosis = diagnosis;
         this.prescription = prescription;
         String recentDetails = "Added new details to patient "
-                + id + "'s consultation at"
+                + id + "'s consultation at "
                 + Common.formatDate(date) + System.lineSeparator();
         if (symptom != null) {
             recentDetails += "Symptom: " + symptom + System.lineSeparator();
