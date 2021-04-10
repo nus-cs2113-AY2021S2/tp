@@ -93,7 +93,7 @@ Finally, for returning users who are not sure about the input format for a comma
    > `java -version` into your console and then pressing `ENTER`.
 1. Obtain a copy of the latest version of Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
-   > ❗ The folder should not be read-only. Otherwise, Patient Manager may encounter issues when saving
+   > ❗ The folder must not be read-only. Otherwise, Patient Manager may encounter issues when saving
    > records to disk.
 1. Open the console, enter `java -jar PatientManager.jar`, and press `ENTER` to start Patient Manager.
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
@@ -106,15 +106,15 @@ Finally, for returning users who are not sure about the input format for a comma
 >
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
 > e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
-> Parameters in square brackets (`[]`) are optional.\
-> - e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
+> Parameters in square brackets (`[]`) are optional.
+> - e.g. for `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`,
 > both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
 > - Parameters with `...` allow multiple parameters (including zero) to be specified.\
 > e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
 > - Parameters starting with a slash (`/`) can be given in any order.\
 > e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
 > `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
-> However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
+> However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is **not** acceptable.\
 > For first-time users, we recommend that you follow the sequence given in this section.
 > - If a parameter is expected only once in the command, but you specify it multiple times,
 > only the last occurrence of the parameter will be taken.\
