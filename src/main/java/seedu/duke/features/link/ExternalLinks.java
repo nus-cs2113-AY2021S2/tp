@@ -80,4 +80,17 @@ public class ExternalLinks extends Links {
         }
         Ui.printLinks(LinkInfo.linksList);
     }
+
+    /**
+     * checks for duplicate links in the links list.
+     * @return true if linkToCheck is a duplicate.
+     */
+    public boolean isDuplicate(String linkToCheck) {
+        for (LinkInfo link : LinkInfo.linksList) {
+            if (linkToCheck.equals(link.getLink())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
