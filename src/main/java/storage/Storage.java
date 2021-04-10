@@ -4,6 +4,7 @@ import canteens.Canteen;
 import menus.Menu;
 import reviews.Review;
 import stores.Store;
+import ui.Ui;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -17,7 +18,8 @@ public class Storage {
     private static BufferedReader reader;
     private static ArrayList<Canteen> canteens;
     public static final String separator = "<>";
-    public static final String  fileName = "./storage.txt";
+    public static final String  DEFAULT_STORAGE_FILEPATH = "data/DoNotEdit.txt";
+    private static final String DEFAULT_STORAGE_DIRECTORY = "data";
 
     public Storage(BufferedReader reader) {
         this.reader = reader;
@@ -31,15 +33,19 @@ public class Storage {
 
     private static void readFiles(BufferedReader reader) throws IOException {
         String line;
-        if (new File(fileName).exists()) {
-            Scanner sc = new Scanner(new File(fileName));
+        if (new File(DEFAULT_STORAGE_FILEPATH).exists()) {
+            Ui.showDirectoryFound();
+            Scanner sc = new Scanner(new File(DEFAULT_STORAGE_FILEPATH));
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 readFunc(line);
             }
         } else {
-
-            PrintWriter pw = new PrintWriter(new File(fileName));
+            File d = new File(DEFAULT_STORAGE_DIRECTORY);
+            if(d.mkdir()){
+                Ui.showDirectoryCreated();
+            }
+            PrintWriter pw = new PrintWriter(DEFAULT_STORAGE_FILEPATH);
             while ((line = reader.readLine()) != null) {
                 pw.println(line);
                 readFunc(line);

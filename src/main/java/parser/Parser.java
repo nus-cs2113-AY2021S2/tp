@@ -32,7 +32,7 @@ public class Parser {
 
     private NusFoodReviews nusFoodReviews;
     private Ui ui;
-    private String savePath = Storage.fileName;
+    private String savePath = Storage.DEFAULT_STORAGE_FILEPATH;
 
     public Parser(NusFoodReviews nusFoodReviews, Ui ui) {
         this.nusFoodReviews = nusFoodReviews;

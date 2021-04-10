@@ -384,4 +384,18 @@ public class Ui {
         System.out.println(LINESPACING);
     }
 
+    public static void showDirectoryCreated(){
+        System.out.println(LINESPACING);
+        System.out.println("Directory not found...New directory created.");
+        System.out.println("New database file created...");
+        System.out.println(LINESPACING);
+    }
+
+    public static void showDirectoryFound(){
+        System.out.println(LINESPACING);
+        System.out.println("Directory found!...");
+        System.out.println("Data loaded successfully...");
+        System.out.println(LINESPACING);
+    }
+
 }

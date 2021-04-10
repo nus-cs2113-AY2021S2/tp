@@ -76,7 +76,7 @@ public class AddMenuCommand extends Command {
         Menu menu = new Menu(menuName,menuPrice);
         canteen.getStore(currentStoreIndex).addMenu(menu);
         ui.menuAdded(menuName,line);
-        Storage.saveMenu(new FileWriter(Storage.fileName,true),
+        Storage.saveMenu(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),
                 canteen.getCanteenName(),canteen.getStore(currentStoreIndex).getStoreName(),menuName,line);
     }
 
