@@ -401,12 +401,27 @@ Command : `edit [TITLE_OF_RECOMMENDATION] `
 <span>&#10071;</span>Ensure the title of the recommendation you want to edit already exists in your lists of recommendations.
 Otherwise, Connoisseur will prompt you saying that no such recommendation exists. When typing the title you want to edit, ensure spelling and the number of blank spaces in between words is the same as the title in the list.
 
+<span>&#10071;</span> The command 'edit' is case-insensitive.<br>
+
+<span>&#10071;</span> Connoisseur will ignore the extra blank spaces typed in between the 'edit' and
+'TITLE_OF_RECOMMENDATION' in the command. <br>
+
 As shown in Figure 18 below, Connoisseur will prompt you asking whether you would like to make changes to Title/
-Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy` .
+Category/ Price range/ Location/ RecBy. Input either `Title`,`Category`, `Price range`,`Location` or `RecBy`.
+
+<span>&#10071;</span> These inputs are case-insensitive and Connoisseur will ignore black spaces typed before or after the inputs.<br>
+
+<span>&#10071;</span> When editing the title, Connoisseur will check for duplicates in the review list. If the changes
+made to the recommendation title is a duplicate and already exists in the review list, Connoisseur will prompt you to enter a unique title.
 
 If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`.
 
+<span>&#10071;</span> Inputs 'y' and 'n' are case-insensitive. <br>
 
+<span>&#10071;</span> Ensure when typing 'y' or 'n' command do not type any additional blank spaces. Otherwise, Connoisseur will
+detect an invalid command and prompt you to enter 'y' or 'n' again <br>
+
+![img_1.png](images/ug/edit_reco.png)
 <p align="center">Figure 18. Editing Recommendations</p>
 
 #### 4.2.4 Delete a Recommendation
@@ -417,10 +432,20 @@ Command: `delete [TITLE_OF_RECOMMENDATION]`
 
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to delete.
 
+![img_2.png](img_2.png)
 <p align="center">Figure 19. Deleting a Recommendation</p>
 
 <span>&#10071;</span>Ensure the title of the review you want to delete already exists in your lists of recommendations.
-Otherwise, Connoisseur will prompt you saying that no such recommendation exits.
+Otherwise, Connoisseur will prompt you saying that no such recommendation exits. When typing the title you want to delete,
+ensure spelling and the number of blank spaces in between words is the same as the title in the list.
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
+typed before the command, Connoisseur will detect it as an invalid command.
+
+<span>&#10071;</span> The command 'delete' is case-insensitive.<br>
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the 'delete' and
+'TITLE_OF_REVIEW' in the command. <br>
 
 #### 4.2.5 Review a Recommendation
 
@@ -430,10 +455,10 @@ review list.
 Command: `done [TITLE_OF_RECOMMENDATION]`
 
 As shown in Figure 20, Connoisseur will prompt you to rate the experience out of 5. You can also add in a description by
-inputting `y` or `n` otherwise. Figure 17 shows that the title 'Universal Studio' has been successfully transferred from
+inputting `y` or `n` otherwise. Figure 20 shows that the title 'Tipo Pasta' has been successfully transferred from
 recommendation to review list.
 
-
+![img_3.png](images/ug/done_reco.png)
 <p align="center">Figure 20. Reviewing a Recommendation</p>
 
 ### 4.3 View Help
@@ -441,12 +466,14 @@ recommendation to review list.
 command: `help[COMMAND_NAME]` eg. `help reco` `help list` etc.
 
 If you encounter any issues using Connoisseur simply key in `help` for a generic help message as show in Figure 21.
-![img_19.png](./images/ug/generic_help.png)
+![img_4.png](images/ug/genericHelp.png)
 <p align="center">Figure 21. Generic Help message</p>
 
 If you want help with a specific command simple key in `help` followed by the `[COMMAND_NAME]` as show in Figure 22.
-![img_20.png](./images/ug/help_command.png)
+![img_5.png](images/ug/help_command.png)
 <p align="center">Figure 22. Help message for commands</p>
+
+<span>&#10071;</span> The command 'help' is case-insensitive. On the other hand, when inputting command name ensure it is in lower case.<br>
 
 ### 4.4 Exit and Save Connoisseur
 
@@ -454,8 +481,9 @@ This feature allows you to exit Connoisseur and all you review and recommendatio
 `connoisseur.json` in the _data folder_ as shown in Figure 23.
 
 command: `exit` or `bye`
-
+![img_6.png](images/ug/exit.png)
 <p align="center"> Figure 23. Exiting Connoisseur</p>
+<span>&#10071;</span> The commands are case-insensitive.
 
 ## 5. Command Summary
 
