@@ -15,17 +15,18 @@ public class Common {
      * Checks whether the patient's ID is valid.
      *
      * @param id Unique identifier of the patient to be retrieved
-     * @throws InvalidInputException
+     * @throws InvalidInputException when an invalid input has been given
      */
     public static void checkID(String id) throws InvalidInputException {
 
         char[] st = {'J', 'Z', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
         char[] fg = {'X', 'W', 'U', 'T', 'R', 'Q', 'P', 'N', 'M', 'L', 'K'};
 
-        char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
-        char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
         int stringLength = id.length();
         int checksum = 0;
+
+        char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
+        char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
 
         // Checks if ID has 9 characters
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
