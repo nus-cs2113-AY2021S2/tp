@@ -33,6 +33,11 @@ public class DeleteStoreCommand extends Command {
 
         nusFoodReviews.setCanteenIndex();
         int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
+
+        if (canteens.get(currentCanteenIndex).getStores().size() == 0) {
+           throw new DukeExceptions("There are current no stores in the canteen");
+        }
+
         ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
         String line = ui.readCommand();
         if (line.equals("cancel")) {
