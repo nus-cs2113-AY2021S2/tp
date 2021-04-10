@@ -61,7 +61,7 @@ This guide is written for users like you, for reference when there is a particul
 
 #### Icons used in this guide:
 
-💡 - Indicates a tip that may be useful to you.<br>
+💡 - indicates a tip that may be useful to you.<br>
 ⚠ - indicates a warning that you should take note of.
 
 #### Commands will be presented in the following format:

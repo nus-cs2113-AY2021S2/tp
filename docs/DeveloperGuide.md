@@ -56,7 +56,7 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 
 #### Icons & labels used in this guide:
 
-💡 - Indicates a tip that may be useful to you.<br>
+💡 - indicates a tip that may be useful to you.<br>
 ⚠ - indicates a warning that you should take note of.<br>
 
 _Italic_ - Indicates that the content is a component.<br>
