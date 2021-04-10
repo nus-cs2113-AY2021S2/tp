@@ -5,8 +5,8 @@ package seedu.fridgefriend.exception;
  * Signal that the new foodname user wants to add cannot be used.
  */
 public class RepetitiveFoodIdentifierException extends Exception {
-    private static final String errorMessage = "Sorry my friend, you have added this food before "
-            + "but in a different location or have different expiry dates. "
+    private static final String errorMessage = "Sorry my friend, you have added this food before.\n"
+            + "It is in a different category or location or have a different expiry date.\n"
             + "Please specify another foodname.";
 
     public RepetitiveFoodIdentifierException() {
