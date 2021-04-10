@@ -384,7 +384,7 @@ Given below are instructions to test the app manually.
 ### Adding food
 
 When adding food, the `FridgeFriend` application requires a very specific format, so that all attributes of
-a given food can be added to the Fridge. This might be very troublesome for manual testing.
+a given food can be added to the Fridge.
 
 Here are some inputs you can try:
 
@@ -413,7 +413,6 @@ The `list` command in `FridgeFriend` has three (3) variations:
 * List all food of a certain storage location in the fridge.
 
 The latter two commands will return an output that is a subset of the first command (_List all food_).
-
 No items will be listed if no food in the fridge match the conditions specified in the command.
 
 * Test case: `list`
@@ -586,11 +585,11 @@ The fridge at program launch will be empty, and the limits of all food categorie
 
 |Corruption Type| Error Message| Behaviour|
 |---------------|--------------|----------|
-|Corrupted `fridgeData.txt` file| `There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1`|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
+|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
 |Corrupted readable categories in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to corruption will be reset to `500`.|
-|Corrupted unreadable categories in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1`|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted unreadable categories in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted integer quantities in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted value.|
-|Corrupted non-integer quantities in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Sorry my friend, the quantity must be a number.`|The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted non-integer quantities in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Sorry my friend, the quantity must be a number.```|The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted readable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The `history` command will continue to print out the contents of the file, including the corrupted data. While this corrupted data would not affect program flow, it may create unexpected output. If necessary, users can manually inspect the file and remove unwanted data at their own discretion.|
 |Corrupted unreadable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The contents of the entire file will not be parsed, even if there is valid content in some parts of the file. The contents of the file will not be affected. If necessary, users can manually inspect the file and remove corrupted data, in order to salvage any valid data.|
 
