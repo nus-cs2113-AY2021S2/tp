@@ -1,5 +1,6 @@
 package seedu.duke;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,20 +19,26 @@ public class Menu {
         String userCommand;
         String userArguments;
         Controller controller = new Controller();
-        do {
-            ui.promptUserInput();
-            userInput = sc.nextLine();
-            if (userInput.isBlank()) {
-                userInput = "INVALID";
-            }
-            userCommand = parser.parseCommand(userInput);
-            userArguments = parser.parseArguments(userInput);
-            if (!userArguments.isEmpty()) {
-                controller.controllerForCommandsAndArguments(userCommand, userArguments, deliveryman);
-            } else {
-                controller.controllerForCommandsOnly(userCommand, deliveryman);
-            }
-            dataManager.saveAll(deliveryman);
-        } while (!userCommand.equalsIgnoreCase("bye"));
+        try {
+            do {
+                ui.promptUserInput();
+                {
+                    userInput = sc.nextLine();
+                    if (userInput.isBlank()) {
+                        userInput = "INVALID";
+                    }
+                    userCommand = parser.parseCommand(userInput);
+                    userArguments = parser.parseArguments(userInput);
+                    if (!userArguments.isEmpty()) {
+                        controller.controllerForCommandsAndArguments(userCommand, userArguments, deliveryman);
+                    } else {
+                        controller.controllerForCommandsOnly(userCommand, deliveryman);
+                    }
+                }
+                dataManager.saveAll(deliveryman);
+            } while (!userCommand.equalsIgnoreCase("bye"));
+        } catch (NoSuchElementException e) {
+            System.out.println("Please enter a valid command!");
+        }
     }
 }
