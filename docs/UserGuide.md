@@ -107,7 +107,6 @@ Finally, for returning users who are not sure about the input format for a comma
 
 > ℹ️ Notes about the command format:
 >
->
 > - Words in `UPPER_CASE` are parameters supplied by the user.\
 > e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 > Parameters in square brackets (`[]`) are optional.\
@@ -129,7 +128,6 @@ Finally, for returning users who are not sure about the input format for a comma
 
 
 > ❗ Notes on valid and invalid user input:
->
 >
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
 > to be used as part of any input:\
@@ -180,8 +178,17 @@ Usage: exit
 
 ### Adding a patient: `add`
 
-Adds a patient to the list by entering their IC number so that consultation details for the patient can be recorded.
+Adds a patient to the system based on their NRIC/FIN number so that consultation details for the
+patient can be recorded.
+
+If the patient already exists in the system, the `add` command will not add the patient in and
+it will display a message to inform you that the patient already exists in the system.
+
 <!-- So that ..., This means that ... -->
+
+> ❗ Note: Patient Manager will automatically validate the NRIC/FIN number based on the check digit
+> before it adds the patient. For testing purposes, you may want to use an NRIC/FIN number generator to
+> create valid NRIC/FIN numbers, like [this one](https://samliew.com/nric-generator).
 
 Usage: `add IC_NUMBER`
 
@@ -199,18 +206,17 @@ Patient S1234567D has been added!
 ----------------------------------------------------------------------
 ```
 
-> ❗ Note: We perform IC number validity checking when you execute `add` command. Only IC numbers that have the correct
-> check digit (last digit of the IC number) will be added to the database. If you are just testing our system and would
-> not like to use your own one, you could use an IC generator, like [this one](https://samliew.com/nric-generator).
-
 ### Deleting a patient or a patient's consultation details: `delete`
 
-Deletes a patient from the list or deletes a patient's consultation details for a specific date. The command to delete a
-record requires that a patient has been loaded with the
-[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
-error message.
+Deletes a patient from the list or deletes a patient's consultation details for a specific date.\
+The `/p` flag is used to delete patients based on their NRIC/FIN number, while the `/r` flag
+is used to delete records from a certain date.
 
-Usage: `delete [/p IC_NUMBER]`
+> ❗ Note: Before deleting a patient's record, you must have previously loaded a patient with the
+> [`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager
+> will print an error message.
+
+Usage: `delete [/p IC_NUMBER] [/r DATE]`
 
 Example of usage:
 
@@ -218,12 +224,24 @@ Example of usage:
 delete /p S1234567D
 ```
 
-Usage: `delete [/r DATE]`
+Expected output:
+```
+----------------------------------------------------------------------
+Patient S1234567D has been deleted!
+----------------------------------------------------------------------
+```
 
 Example of usage:
 
 ```
 delete /r 26/03/2021
+```
+
+Expected output:
+```
+----------------------------------------------------------------------
+Record for 2021-04-10 has been deleted!
+----------------------------------------------------------------------
 ```
 
 ### Listing all patients: `list`
