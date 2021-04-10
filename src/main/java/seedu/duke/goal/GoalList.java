@@ -1,7 +1,7 @@
 package seedu.duke.goal;
 
 import seedu.duke.common.Messages;
-import seedu.duke.goal.comparator.GoalPeriodTypeComparator;
+import seedu.duke.goal.comparator.GoalIntervalTypeComparator;
 
 import java.util.ArrayList;
 
@@ -10,8 +10,6 @@ import java.util.ArrayList;
  */
 public class GoalList {
     private final ArrayList<Goal> goals = new ArrayList<>();
-    private int lengthOfIndex;
-    private String separatorBetweenIndexAndContent;
 
     /**
      * Adds a new goal into the list.
@@ -20,7 +18,7 @@ public class GoalList {
      */
     public void addGoal(Goal newGoal) {
         goals.add(newGoal);
-        goals.sort(new GoalPeriodTypeComparator());
+        goals.sort(new GoalIntervalTypeComparator());
     }
 
     /**
@@ -38,15 +36,17 @@ public class GoalList {
     }
 
     /**
-     * Gets a printable string of goals that can be filtered by an optional period type given.
+     * Gets a printable string of goals that can be filtered by an optional interval type given.
      *
-     * @param optionalPeriodType an optional period type for filtering the result.
-     * @return a printable string of goals that can be filtered by an optional period type given.
+     * @param optionalIntervalType an optional interval type for filtering the result.
+     * @return a printable string of goals that can be filtered by an optional interval type given.
      */
-    public String getGoalsToPrint(PeriodType optionalPeriodType) {
+    public String getGoalsToPrint(IntervalType optionalIntervalType) {
+        int lengthOfIndex;
+        String separatorBetweenIndexAndContent;
         if (goals.isEmpty()) {
             return Messages.MESSAGE_NO_GOAL;
-        } else if (optionalPeriodType != null) {
+        } else if (optionalIntervalType != null) {
             StringBuilder goalStringBuilder = new StringBuilder();
             int i = 1;
             for (Goal goal : goals) {
@@ -57,8 +57,6 @@ public class GoalList {
                     separatorBetweenIndexAndContent = "    ";
                     break;
                 case 2:
-                    separatorBetweenIndexAndContent = "   ";
-                    break;
                 case 3:
                     separatorBetweenIndexAndContent = "   ";
                     break;
@@ -66,7 +64,7 @@ public class GoalList {
                     separatorBetweenIndexAndContent = " ";
                     break;
                 }
-                if (goal.getPeriodType() == optionalPeriodType) {
+                if (goal.getIntervalType() == optionalIntervalType) {
                     goalStringBuilder.append(i).append(separatorBetweenIndexAndContent).append(goal.getGoalData());
                     i++;
                 }
@@ -86,8 +84,6 @@ public class GoalList {
                     separatorBetweenIndexAndContent = "    ";
                     break;
                 case 2:
-                    separatorBetweenIndexAndContent = "   ";
-                    break;
                 case 3:
                     separatorBetweenIndexAndContent = "   ";
                     break;
@@ -103,18 +99,19 @@ public class GoalList {
     }
 
     /**
-     * Initializes the progress of goals of a given period type in the list.
+     * Initializes the progress of goals of a given interval type in the list.
      *
-     * @param periodType the period type of the goal.
+     * @param intervalType the interval type of the goal.
      */
-    public void initializeGoalProgress(PeriodType periodType) {
-        assert periodType == PeriodType.INVALID || periodType == null : "A period type is expected but not received!";
+    public void initializeGoalProgress(IntervalType intervalType) {
+        assert intervalType == IntervalType.INVALID || intervalType == null
+                : "A interval type is expected but not received!";
         if (goals.isEmpty()) {
             return;
         }
 
         for (Goal goal : goals) {
-            if (goal.getPeriodType().equals(periodType)) {
+            if (goal.getIntervalType().equals(intervalType)) {
                 goal.initializeProgress();
             }
         }
@@ -134,14 +131,14 @@ public class GoalList {
     }
 
     /**
-     * Updates the progress of goals of a given period type with given progress value.
+     * Updates the progress of goals of a given interval type with given progress value.
      *
-     * @param periodType the period type of goals.
-     * @param progress   the new value of the progress in double.
+     * @param intervalType the interval type of goals.
+     * @param progress     the new value of the progress in double.
      */
-    public void updateProgress(PeriodType periodType, double progress) {
+    public void updateProgress(IntervalType intervalType, double progress) {
         for (Goal goal : goals) {
-            if (goal.getPeriodType().equals(periodType)) {
+            if (goal.getIntervalType().equals(intervalType)) {
                 goal.setProgress(progress);
             }
         }
@@ -157,18 +154,18 @@ public class GoalList {
     }
 
     /**
-     * Checks if the goal list has goals of a specified period type.
+     * Checks if the goal list has goals of a specified interval type.
      *
-     * @param periodType the period type of goals.
-     * @return true if the goal list has goals of a specified period type, otherwise false.
+     * @param intervalType the interval type of goals.
+     * @return true if the goal list has goals of a specified interval type, otherwise false.
      */
-    public boolean isNotEmpty(PeriodType periodType) {
+    public boolean isNotEmpty(IntervalType intervalType) {
         if (goals.size() == 0) {
             return false;
         } else {
             int num = 0;
             for (Goal goal : goals) {
-                if (goal.getPeriodType().equals(periodType)) {
+                if (goal.getIntervalType().equals(intervalType)) {
                     num++;
                 }
             }
@@ -177,14 +174,14 @@ public class GoalList {
     }
 
     /**
-     * Checks if all goals of a specified period type in the list are achieved.
+     * Checks if all goals of a specified interval type in the list are achieved.
      *
-     * @param periodType the period type of goals.
-     * @return true if all goals of a specified period type in the list are achieved, otherwise false.
+     * @param intervalType the interval type of goals.
+     * @return true if all goals of a specified interval type in the list are achieved, otherwise false.
      */
-    public boolean isGoalAchieved(PeriodType periodType) {
+    public boolean isGoalAchieved(IntervalType intervalType) {
         for (Goal goal : goals) {
-            if (goal.getPeriodType().equals(periodType) && !goal.isAchieved()) {
+            if (goal.getIntervalType().equals(intervalType) && !goal.isAchieved()) {
                 return false;
             }
         }

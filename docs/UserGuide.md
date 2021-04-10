@@ -32,13 +32,12 @@ This is a cross-platform application, you can run it on any operating system as 
 > * All commands should be input in `lower_case`. It is always the first word supplied by the user.   
     e.g. `add`, `view`, `delete` etc.
 >
-> * Parameters of a command are denoted in `UPPER_CASE`. They must be supplied by the user, otherwise the command will not be recognized.
-    The actual input of the parameters can be in any case.  
+> * Parameters of a command are denoted in `UPPER_CASE`. They must be supplied by the user, otherwise the command will not be recognized. The actual input of the parameters can be in any case.  
     e.g. in `add XXX`, `XXX` is a parameter which can be used as `xxx`.
 > * Parameters surrounded by square brackets `[]` are optional. They may or may not be specified by the user.
 >
-> * Redundant parameters for single-word commands (e.g. `help`) will be ignored.  
-    e.g. if the command `help hahahaha` is input, it is equivalent to `help`.
+> * Commands with redundant parameters not specified in this user guide will be seen as invalid.  
+    e.g. if the command `help hahahaha` is input, it is invalid. Only `help` will be accepted.
 >
 > * After the application starts running, it checks if a `data` folder exists in the same directory where `tp.jar` is located. If the folder does not exist, the application will create a new folder `data`, which is used to store the app system files which contains details of the user's data.
 >
