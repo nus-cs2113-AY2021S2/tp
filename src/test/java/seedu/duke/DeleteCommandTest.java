@@ -62,7 +62,7 @@ public class DeleteCommandTest {
             deleteCommand.execute();
         });
 
-        assertEquals("Record for 2021-03-29 has been deleted!" + System.lineSeparator(), bos.toString());
+        assertEquals("Record for 29/03/2021 has been deleted!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 
@@ -115,7 +115,7 @@ public class DeleteCommandTest {
             deleteCommand.execute();
         });
 
-        assertEquals("Record for 2021-03-29 does not exist!" + System.lineSeparator(), bos.toString());
+        assertEquals("Record for 29/03/2021 does not exist!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
 }
