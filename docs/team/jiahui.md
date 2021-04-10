@@ -1,4 +1,4 @@
-# Huachen - Project Portfolio Page
+# Jia Hui - Project Portfolio Page
 
 ## Overview
 

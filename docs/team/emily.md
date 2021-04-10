@@ -1,4 +1,4 @@
-# Huachen - Project Portfolio Page
+# Emily - Project Portfolio Page
 
 ## Overview
 
