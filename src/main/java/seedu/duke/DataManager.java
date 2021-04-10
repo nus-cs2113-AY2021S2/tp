@@ -77,6 +77,9 @@ public class DataManager {
 		}
 	}
 
+	/**
+	 * Method to save all the deliveries - required in order to reflect the updated status (isComplete)
+	 */
 	public static void saveDeliveries() {
 		FileWriter fw;
 		try {
@@ -172,12 +175,19 @@ public class DataManager {
 		return routes;
 	}
 
+	/**
+	 * to save the deliveries, profile and routes data
+	 * @param deliveryman object to attribute the saves
+	 */
 	public void saveAll(Deliveryman deliveryman){
 		saveDeliveries();
 		saveProfile(deliveryman);
 		saveRoutes();
 	}
 
+	/**
+	 * to save all the Routes data
+	 */
 	public static void saveRoutes() {
 		FileWriter fw;
 		try {

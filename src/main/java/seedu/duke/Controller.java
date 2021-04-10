@@ -37,6 +37,12 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * primary controller for handling the user commands and arguments - passed from the Ui class
+	 * @param userCommand refers to the command input by the user that requires further processing
+	 * @param userArguments refers to the arguments following the main command
+	 * @param deliveryman object to attribute possible following actions to
+	 */
 	public void controllerForCommandsAndArguments(String userCommand, String userArguments, Deliveryman deliveryman){
 		switch (userCommand){
 		case "edit":
