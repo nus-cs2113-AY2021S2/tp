@@ -161,6 +161,12 @@ public class Ui {
         System.out.println(deliveryman);
     }
 
+    /**
+     * Method to view details about a particular delivery
+     * @param userArguments the user input arguments to the command
+     * @param deliveryman object to attribute the delivery to
+     * @param parser object to handle the user arguments
+     */
     public void processViewDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
         int deliveryNumber = Integer.parseInt(parser.parseInput("view", userArguments, deliveryman));
         try {
@@ -170,7 +176,12 @@ public class Ui {
             System.out.println(e.getMessage());
         }
     }
-
+    /**
+     * Method to complete a particular delivery
+     * @param userArguments the user input arguments to the command
+     * @param deliveryman object to attribute the delivery to
+     * @param parser object to handle the user arguments
+     */
     public void processCompleteDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
         printDivider();
         int deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
@@ -187,6 +198,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Method to determine and print a map of deliveries by order of distance
+     */
     public void processDeliveryRoute() {
         printDivider();
         Filter deliveryFilter = new Filter();

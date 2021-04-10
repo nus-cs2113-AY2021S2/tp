@@ -72,6 +72,9 @@ public class Route {
         return match;
     }
 
+    /**
+     * @return a String containing the format which the Routes are saved in the database
+     */
     public String saveFormat() {
         return getLocation() +
                 " | " +
