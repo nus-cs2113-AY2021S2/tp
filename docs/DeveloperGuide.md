@@ -14,13 +14,9 @@
 5. [Design](#4-design) 
     1. [Architecture](#41-architecture) (owen)
     2. [UI component](#42-ui-component) (ms)
-    3. [Instance Component](#43-instance-component) (jiaen)
-    4. [Parser Component](#44-parser-component) (jien)
-    5. [Error Checker Component](#45-error-checker-component) (jiaen)
-    6. [Commands Component](#46-commands-component) (jiaen)
-    7. [Exceptions Component](#47-exceptions-component) (jiaen)
-    8. [Model component](#48-model-component) (alex)
-    9. [Storage component](#49-storage-component) (sarrah)
+    3. [Logic Component](#43-logic-component) (jiaen)
+    4. [Model component](#44-model-component) (alex)
+    5. [Storage component](#45-storage-component) (sarrah)
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -88,6 +84,7 @@ The Developer Guide hopes to impart to you the following:
 1. Properly set up for HealthVault
 2. HealthVault's system architecture
 3. The implementation method for HealthVault's various functions and their considerations
+4. Instructions for manual testing of the application
 
 We hope you will have a fruitful time learning about HealthVault.
 
@@ -195,16 +192,13 @@ The UI of this program can be found under the package named UI. It consists of `
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is responsible for handling all input and output of the program. 
 
 
-### 4.3 Instance Component
-**image for logic**
+### 4.3 Logic Component
 
-<img src="diagrams/LogicComponent.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/LogicComponent.png">
 
-### 4.4 Parser Component
-### 4.5 Error Checker Component
-### 4.6 Commands Component
-### 4.7 Exceptions Component
-### 4.8 Model component
+<br>
+
+### 4.4 Model component
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
 
@@ -216,12 +210,15 @@ The `Model`, consists of 5 different types of lists.
 - PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
 - StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
 
-### 4.9 Storage component
+<br>
+
+### 4.5 Storage component
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/StorageUML.png">
 <br>
 
 ## 5. Implementation
 
+In this section, we will introduce the implementation of the different functions within each feature.
 
 ###  5.1 Staff
 
@@ -1081,7 +1078,25 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ## Appendix A: Product Scope
 
+**Target user profile:**
 <br>
+HealtVault targets users who work primarily in the healthcare industry. Such users include: Nurses, Hospital 
+Administrative Staff and Hospital Management Staff. Its features optimize it for users seeking:
+* Speed in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
+* A cohesive database that records the critical information of everyone in the hospital, staff and patients included.
+* A desktop CLI application that has a minimalistic GUI.
+
+**Value Proposition:**
+<br>
+With its organized and portable database and its features to improve efficiency,
+HealthVault aspires to help its users achieve the following results:
+* Improve working speed of healthcare staff, as they can store and retrieve critical information quickly and accurately.
+* Minimize administrative errors with its inbuilt cross validation.
+* Easy implementation within a hospital environment with minimal setup steps and data reusability.
+<br>
+  
+Every second matters in the healthcare industry when patient lives are at stake. We believe that HealthVault can help
+its users save those precious seconds.
 
 ## Appendix B: User Stories
 
