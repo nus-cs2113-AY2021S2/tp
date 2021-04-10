@@ -46,11 +46,7 @@ public class Parser {
             }
             break;
         case "list":
-            if (arguments == null || arguments.isBlank()) {
-                commands.list(arguments);
-            } else {
-                commands.invalidParameters();
-            }
+            commands.list(arguments);
             break;
         case "edit":
             commands.edit(arguments);
