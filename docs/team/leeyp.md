@@ -70,7 +70,7 @@ as well as associated JUnit tests and helper function code.
   - Proofread Documentations
   - Test final jar file for bugs
  
-- **Review/Mentoring Contributions**  
+**Review/Mentoring Contributions**  
   - Gave suggestions and help debug in weekly meetings
   - Pull Requests reviewed with non-trivial review comments (non-exhaustive):
     - [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38), [#41](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/41), [#45](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45), [#58](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/58), [#64](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/64), [#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66), [#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69), [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108), [#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134), [#141](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/141), [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147)
