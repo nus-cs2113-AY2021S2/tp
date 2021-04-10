@@ -105,12 +105,32 @@ ease of use for deliverymen around the world
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
+Application should work on any mainstream OS if it has Java 11 or above installed.
+
+A user with above average typing speed for English text should be able to accomplish majority of the tasks faster using commands than using the mouse.
+
+The database implemented should be able to hold up to 1000 deliverymen details without experiencing a noticeable lag in the program.
+
+The data retrieval time should return near instant without experiencing a delay in between command and output.
+
+Application would be affordable and easily accessible to the general public.
+
+The accessibility of the system is relatively secure, but further authorization schemes are in consideration to be implemented for greater security to protect user data.
+
+Deliveri is not accountable for any data lost in the case of the user's computer failure.
 
 ## Glossary
 
-* *glossary item* - Definition
+Mainstream OS: Windows, Linux, Unix, OS-X
 
 ## Instructions for manual testing
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+Given below are the instructions to test Deliveri manually. Do note that these instructions merely provide a starting point for testers to work on and they are expected to do more exploratory testing on their own will. You can refer to the User Guide for further information regarding the command formats.
+
+### Launching Deliveri
+1. Initial launch of HealthVault 2.
+2. Download the jar file and copy into an empty folder.
+3. Open up a command pormpt window and change directory to that folder with the jar file. 
+4. Run the command java -jar tp.jar.
+
+Expected: Deliveri will be loaded, and a welcome message will be displayed. Do ensure that the version number in the welcome matches version of the jar file downloaded.
