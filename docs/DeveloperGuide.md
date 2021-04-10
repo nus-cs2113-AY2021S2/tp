@@ -8,7 +8,6 @@ It is written in Java, and has more than 6000 lines of code.
 
 ## Contents
 
-* [Introduction](#introduction)
 * [Design](#design)
   * [Architecture](#architecture)
   * [Utilities Component](#utilities-component)
@@ -47,11 +46,11 @@ The ***Architecture Diagram*** given below explains the high-level design of the
 :information_source: The user interacts with the `Ui` class which is part of the `Utilities` component.
 
 The Main driver class for the FridgeFriend app is
-named **[`FridgeFriend`](https://github.com/AY2021S2-CS2113-T10-1/tp/blob/master/src/main/java/seedu/fridgefriend/FridgeFriend.java)**.
+named `FridgeFriend`**.
 It is responsible for,
 
-* At app launch: Initialises the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+* At app launch: Initialising the components in the correct sequence, and connecting them up with each other.
+* At shut down: Shutting down the components and invoking cleanup methods where necessary.
 
 The rest of the App consists of four components.
 
@@ -60,13 +59,13 @@ The rest of the App consists of four components.
 
 * [**`Command`**](#command-component): Executes commands based on the input obtained
   and processed from `Parser` in `Utilities`. The list of executable commands can be found in our
-  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
+  User Guide.
 
-* [**`Food`**](#food-component) represents a collection of classes used by the FridgeFriend application.
+* [**`Food`**](#food-component) contains a collection of classes used by the FridgeFriend application to represent food items.
   Food objects are instantiated by the `Command` Component. Once a `Food` object is created,
-  it may be stored to disk using the `Storage` function in `Utilities`.
+  it will be stored to disk using the `Storage` function in `Utilities`.
 
-* [**`Exception`**](#exception-component) represents a collection of classes that represent potential
+* [**`Exception`**](#exception-component) contains a collection of classes that represent potential
   exception events that may occur during the usage of `FridgeFriend`. The `Exception` component
   facilitates the return of exceptions to the `UI` class in `Utilities`, which will display
   the error message to the user.
@@ -79,7 +78,7 @@ The Utilities component contains the main classes that run the main functions of
 
 The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
 
-The Utilities Component consists for 4 classes.
+The Utilities Component consists of 4 classes.
 
 * **`LoggingHandler`**: Logs information during execution to the console.
 * **`Parser`**: Breaks down user input into relevant objects.
@@ -90,43 +89,42 @@ The Utilities Component consists for 4 classes.
 
 The Command component contains the sub classes of the features that will be executed.
 
-The command Object is executed by the main method in FridgeFriend.
+The command object is executed by the main method in `FridgeFriend`.
 The execution of the command can affect the fridge.
-After the execution, the results of the command object is pass to the UI.
-The results of the command instruct the Ui to display the message return to the user.
+After the execution, the results of the command object is passed to the `Ui` which displays the message to the user.
 
 ![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
-The ***Command Class Diagram*** given above shows how the Command interacts with Fridge class.
+The ***Command Class Diagram*** given above shows how the Command interacts with `Fridge` class.
 
-The Command Component consist of 11 sub class which each command represents a features.
+The Command Component consists of 11 subclasses where each class represents a command feature.
 
 * **`AddCommand`**: Add a new food object to the fridge or add the quantity of existing food item with same parameters when executed.
-* **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
+* **`RemoveCommand`**: Remove a portion of food from a particular food in the fridge when executed.
 * **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
 * **`SearchCommand`**: Search for the food that contains a particular food name.
-* **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed.
-* **`ClearCommand`**: Clear the list of food objects in the fridge object.
-* **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
-* **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
+* **`ExpiringCommand`**: Provide the list of items that are expiring in a week.
+* **`ClearCommand`**: Clear the list of food items in the fridge object.
+* **`HelpCommand`**: List all the commands in `FridgeFriend`.
+* **`RunningLowCommand`**: Provide the food categories that are running low compared to the limit set for that category.
 * **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
-* **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
-* **`ByeCommand`**: Indicate to the main method to exit the program.
+* **`HistoryCommand`**: Display the history of all food item additions in the fridge.  
+* **`ByeCommand`**: Exit the application.
 
 ### Food Component
 
-The Food component represents the basic `Food` object and related class in FridgeFriend.
-
-* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
-This is to facilitate different manipulations on different food categories.
-* `Fridge` maintains the list of `Food` and have methods to add, remove or modify the foods.
-* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
-* Whenever a `Food` object is created or called, exceptions may be thrown.
+The Food component represents the basic `Food` object and related objects in FridgeFriend.
 
 ![Food Class Diagram](diagrams/diagram_images/FoodClassDiagram.png)
 
 The ***Food Class Diagram*** given above shows all the classes derived from Food or
 used in Food operations.
+
+* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
+This is to facilitate different manipulations on different food categories.
+* `Fridge` maintains the list of `Food` and has methods to add, remove or modify the foods.
+* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
+* Whenever a `Food` object is created or called, exceptions may be thrown.
 
 ### Exception Component
 
