@@ -154,7 +154,11 @@ public class Commands {
         if (isReviewMode) {
             reviewList.listReviews(input);
         } else {
-            recommendationList.listRecommendations();
+            if (input == null || input.isBlank()) {
+                recommendationList.listRecommendations();
+            } else {
+                invalidParameters();
+            }
         }
     }
 
