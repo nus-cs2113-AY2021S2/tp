@@ -826,8 +826,17 @@ In the text editor, you can type in your notes in the text field. When done, rem
 
 Here are some frequently asked questions that you may have regarding GULIO.
 
+**Q:** How do I open GULIO?<br>
+**A:** Please refer to the steps [here](#quick-start).
+
 **Q:** Why am I unable to open cheat-sheet in Windows Subsystem for Linux (WSL)?<br>
 **A:** GULIO's cheat-sheet feature requires the usage of GUI, which is not available on WSL.
+
+**Q:** Where can I find the data files for GULIO?<br>
+**A:** Data used by GULIO are stored in the `Data` directory, which is created in the same location that the `GULIO.jar` file is in. 
+
+**Q:** Where can I submit any feedback or issues regarding GULIO?<br>
+**A:** You can create an issue [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/issues). Thank you very much.
 
 &nbsp;
 
