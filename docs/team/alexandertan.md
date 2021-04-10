@@ -23,6 +23,8 @@ Given below are my contributions to the project.
 
 - **Code contributed**: [*RepoSense* Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=AlexanderTanJunAn).
 
-- **Contributions to documentation:
+- **Contributions to documentation**:
   - User Guide:
-    - Added documentation for the features `add`, `delete, `list`, `return, `help` in Schedules for Nurses
+    - Added documentation for the features `add`, `delete, `list`, `return`, `help` in Schedules for Nurses. [\#196]()
+    - Added command summary
+    - Added application logo
