@@ -144,10 +144,10 @@ public class RecommendationList {
      * @param index index of title that is being edited by the user.
      * @return true if there is a duplicate, and false if there are no duplicates.
      */
-    public boolean checkDuplicateRecommendationWhenEditing(String title,int index) {
+    public boolean checkDuplicateRecommendationWhenEditing(String title, int index) {
         int recIndex = -1;
         for (int i = 0; i < recommendations.size(); i++) {
-            if(i == index){
+            if (i == index) {
                 continue;
             }
             if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
@@ -471,10 +471,12 @@ public class RecommendationList {
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
                     continue;
-                }if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
+                }
+                if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
                     ui.println(CHANGE_RECO_TITLE);
                     continue;
-                }if (checkDuplicateRecommendationWhenEditing(newTitle,index)) {
+                }
+                if (checkDuplicateRecommendationWhenEditing(newTitle, index)) {
                     ui.printNoUniqueTitleMessage();
                     continue;
                 }

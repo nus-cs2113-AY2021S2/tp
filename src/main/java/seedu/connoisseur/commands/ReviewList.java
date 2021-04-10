@@ -448,7 +448,8 @@ public class ReviewList {
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
                     continue;
-                }if (checkDuplicateReviewWhenEditing(newTitle,index)) {
+                }
+                if (checkDuplicateReviewWhenEditing(newTitle, index)) {
                     ui.printNoUniqueTitleMessage();
                     continue;
                 }
@@ -562,13 +563,13 @@ public class ReviewList {
      * @param index index of title that is being edited by the user.
      * @return true if there is a duplicate, and false if there are no duplicates.
      */
-    public boolean checkDuplicateReviewWhenEditing(String title,int index) {
+    public boolean checkDuplicateReviewWhenEditing(String title, int index) {
         int reviewIndex = -1;
         for (int i = 0; i < reviews.size(); i++) {
-            if(i == index){
+            if (i == index) {
                 continue;
             }
-            if (reviews.get(i).getTitle().equalsIgnoreCase(title)){
+            if (reviews.get(i).getTitle().equalsIgnoreCase(title)) {
                 reviewIndex = i;
             }
         }
