@@ -25,8 +25,8 @@ public class Common {
         int stringLength = id.length();
         int checksum = 0;
 
-        char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
-        char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
+        final char firstLetter = id.charAt(Constants.INDEX_OF_FIRST_CHARACTER);
+        final char lastLetter = id.charAt(Constants.INDEX_OF_LAST_CHARACTER);
 
         // Checks if ID has 9 characters
         if (stringLength != Constants.ID_NUMBER_OF_CHARACTERS) {
