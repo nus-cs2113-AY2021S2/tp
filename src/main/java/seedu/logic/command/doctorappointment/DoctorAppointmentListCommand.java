@@ -1,6 +1,5 @@
 package seedu.logic.command.doctorappointment;
 
-import seedu.exceptions.EmptyListException;
 import seedu.exceptions.HealthVaultException;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.logic.command.Command;
@@ -14,7 +13,7 @@ import java.text.ParseException;
 public class DoctorAppointmentListCommand extends Command {
 
     private String[] input;
-    private String Id;
+    private String iD;
 
     /**
      * Constructor for DoctorAppointmentListCommand.
@@ -22,7 +21,7 @@ public class DoctorAppointmentListCommand extends Command {
      * @param parsedInput Array of inputs for DoctorAppointment object.
      */
     public DoctorAppointmentListCommand(String[] parsedInput) {
-        Id = parsedInput[1];
+        iD = parsedInput[1];
         input = parsedInput;
     }
 
@@ -36,7 +35,7 @@ public class DoctorAppointmentListCommand extends Command {
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws ParseException,
             HealthVaultException {
-        AppointmentList.listAppointment(Id);
+        AppointmentList.listAppointment(iD);
     }
 
     @Override

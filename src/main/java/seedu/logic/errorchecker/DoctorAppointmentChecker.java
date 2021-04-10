@@ -10,7 +10,7 @@ import seedu.exceptions.DuplicateIDException;
 import seedu.exceptions.doctorappointment.DocIdNotFoundException;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
 import seedu.exceptions.IllegalCharacterException;
-import seedu.exceptions.doctorappointment.WrongAptIDFormatException;
+import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
 import seedu.model.doctorappointment.DoctorAppointment;
@@ -72,8 +72,12 @@ public class DoctorAppointmentChecker extends MainChecker {
     public static void checkValidDataForList(String[] input) throws HealthVaultException {
         ID = input[1];
 
-        if (AppointmentList.appointmentList.size() == 0) throw new EmptyListException();
-        if (ID.equals("all")) return;
+        if (AppointmentList.appointmentList.size() == 0) {
+            throw new EmptyListException();
+        }
+        if (ID.equals("all")) {
+            return;
+        }
         logger.log(Level.INFO, "Checking for Valid data after list command");
         if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
             throw new seedu.exceptions.InvalidIDException();
@@ -99,18 +103,18 @@ public class DoctorAppointmentChecker extends MainChecker {
      * Checks if the Appointment ID is in the correct format.
      *
      * @param id The input Appointment Id.
-     * @throws WrongAptIDFormatException If the data does not fit the parameters.
+     * @throws WrongAptIdFormatException If the data does not fit the parameters.
      */
 
-    public static void checkAptID(String id) throws WrongAptIDFormatException {
+    public static void checkAptID(String id) throws WrongAptIdFormatException {
         try {
             Integer.parseInt(id.substring(1));
             logger.log(Level.INFO, "Checking for Valid Appointment ID");
         } catch (NumberFormatException e) {
-            throw new WrongAptIDFormatException();
+            throw new WrongAptIdFormatException();
         }
         if (!(id.charAt(0) == 'A') || (id.length()) != 6) {
-            throw new WrongAptIDFormatException();
+            throw new WrongAptIdFormatException();
         }
     }
 
@@ -312,20 +316,20 @@ public class DoctorAppointmentChecker extends MainChecker {
     /**
      * Checks if the input date is valid.
      *
-     * @param Id appointment/doctor Id to be checked.
-     * @return true if the corresponding Id exists in teh appointmentList.
+     * @param iD appointment/doctor iD to be checked.
+     * @return true if the corresponding iD exists in teh appointmentList.
      */
-    public static boolean isValidIdToDelete(String Id) {
-        String[] IdKeyword = Id.split("");
+    public static boolean isValidIdToDelete(String iD) {
+        String[] idKeyword = iD.split("");
         logger.log(Level.INFO, "Checking Validity of Doctor/ Appointment ID to be deleted");
 
         for (DoctorAppointment doc : AppointmentList.appointmentList) {
-            if (IdKeyword[0].equals("A")) {
-                if (doc.getAppointmentId().equals(Id)) {
+            if (idKeyword[0].equals("A")) {
+                if (doc.getAppointmentId().equals(iD)) {
                     return true;
                 }
-            } else if (IdKeyword[0].equals("D")) {
-                if (doc.getDoctorId().equals(Id)) {
+            } else if (idKeyword[0].equals("D")) {
+                if (doc.getDoctorId().equals(iD)) {
                     return true;
                 }
             }

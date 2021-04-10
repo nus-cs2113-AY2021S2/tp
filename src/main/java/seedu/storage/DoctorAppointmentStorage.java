@@ -22,10 +22,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DoctorAppointmentStorage {
-    private final static String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
+    private static final String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
     private final String filePath;
     private final File file;
-    private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
+    private static final String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
     public static Logger logger = HealthVaultLogger.getLogger();
 
     /**
