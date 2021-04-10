@@ -6,7 +6,6 @@ This is a student project for university software development course.
 I am one of the contributors to FridgeFriend project.
 
 ## Summary of Contributions
-
 Version 1  
 
   - In charge of basic features
@@ -40,17 +39,13 @@ Version 2
   
 Version 2.1
 
-  - Fixed bugs related to quantity parameter
+  - Fixed bugs related to quantity parameter and allow `RunningLowCommand` to be disable
     - `Parser` Modification
     - `Storage` Modification
     - `Fridge` Modification
-  - Allow `RunningLowCommand` to be disable
-    - `Parser` Modification
-    - `Storage` Modification
     - `RunningLowCommand` Modification
-    - `Fridge` Modification 
     - `InvalidSetLimitQuantityException`
-  - Fixed bug not producing any message when exit with ctrl + c
+  - Fixed bug not returning any message when exit with ctrl + c
     - `Ui` Modification
     - `FridgeFriend` Modification
   - JUnit-Test for `Parser`
