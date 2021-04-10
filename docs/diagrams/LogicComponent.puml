@@ -8,27 +8,21 @@ package command{
 Class "{abstract}\nCommand" as Command
 package doctorappointment {
 Command <|-- ABCCommand
-note right: ABCCommand = DoctorAppointmentAddCommand, \n DoctorAppointmentDeleteCommand,\n DoctorAppointmentHelpCommand,\n DoctorAppointmentListCommand, \n DoctorAppointmentReturnCommand
 }
 package inventory {
 Command <|-- DEFCommand
-note right: DEFCommand = InventoryAddCommand, \n InventoryDeleteCommand,\n InventoryHelpCommand,\n InventoryListCommand, \n InventoryReturnCommand
 }
 package nurseschedule {
 Command <|-- GHICommand
-note right: GHICommand = NurseScheduleAddCommand, \n NurseScheduleDeleteCommand,\n NurseScheduleHelpCommand,\n NurseScheduleListCommand, \n NurseScheduleReturnCommand
 }
 package patient {
 Command <|-- JKLCommand
-note right: JKLCommand = PatientAddCommand, \n PatientDeleteCommand, \n PatientFindCommand, \n PatientHelpCommand,\n PatientListCommand, \n PatientReturnCommand
 }
 package staff {
 Command <|-- MNOCommand
-note right: MNOCommand = StaffAddCommand, \n StaffDeleteCommand, \n StaffFindCommand, \n StaffHelpCommand,\n StaffListCommand, \n StaffReturnCommand
 }
 package startmenu {
 Command <|-- PQRCommand
-note right: PQRCommand = MainExit, \n MainHelp,\n ToDoctorAppointmentInstance,\n ToInventoryInstance, \n ToNurseScheduleInstance, \n ToPatientInstance, \n ToStaffInstance
 }
 }
 package errorchecker{
