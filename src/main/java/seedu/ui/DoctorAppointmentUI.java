@@ -15,17 +15,17 @@ public class DoctorAppointmentUI extends UI {
         System.out.println("Here is a list of Doctor Appointments Commands: ");
 
         int[] lengthPara = {10, 70, 50};
-        printer(new String[]{Constants.HELP_HEADER_COMMAND,
-                Constants.HELP_HEADER_DESCRIPTION, Constants.HELP_HEADER_FORMAT}, lengthPara);
+        printer(new String[]{Constants.HELP_HEADER_COMMAND, Constants.HELP_HEADER_DESCRIPTION, Constants.HELP_HEADER_FORMAT},
+                lengthPara);
         UI.showLongLine();
         printer(new String[]{Constants.HELP_COMMAND, Constants.APPOINTMENTS_HELP_DESCRIPTION, Constants.MARK_BLANK},
                 lengthPara);
-        printer(new String[]{Constants.ADD_COMMAND,
-                Constants.APPOINTMENTS_ADD_DESCRIPTION, Constants.APPOINTMENTS_ADD_FORMAT}, lengthPara);
-        printer(new String[]{Constants.LIST_COMMAND,
-                Constants.APPOINTMENTS_LIST_DESCRIPTION, Constants.APPOINTMENTS_LIST_FORMAT}, lengthPara);
-        printer(new String[]{Constants.DELETE_COMMAND,
-                Constants.APPOINTMENTS_DELETE_DESCRIPTION, Constants.APPOINTMENTS_DELETE_FORMAT}, lengthPara);
+        printer(new String[]{Constants.ADD_COMMAND, Constants.APPOINTMENTS_ADD_DESCRIPTION, Constants.APPOINTMENTS_ADD_FORMAT},
+                lengthPara);
+        printer(new String[]{Constants.LIST_COMMAND, Constants.APPOINTMENTS_LIST_DESCRIPTION, Constants.APPOINTMENTS_LIST_FORMAT},
+                lengthPara);
+        printer(new String[]{Constants.DELETE_COMMAND, Constants.APPOINTMENTS_DELETE_DESCRIPTION, Constants.APPOINTMENTS_DELETE_FORMAT},
+                lengthPara);
         printer(new String[]{Constants.RETURN_COMMAND, Constants.RETURN_DESCRIPTION, Constants.MARK_BLANK},
                 lengthPara);
         UI.printEmptyLine();
