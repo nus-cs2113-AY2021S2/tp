@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DoctorAppointmentDeleteCommand extends Command {
 
     private String[] input;
-    private String Id;
+    private String iD;
     /**
      * Constructor for DoctorAppointmentDeleteCommand.
      *
@@ -21,7 +21,7 @@ public class DoctorAppointmentDeleteCommand extends Command {
      */
 
     public DoctorAppointmentDeleteCommand(String[] parsedInput) {
-        Id = parsedInput[1];
+        iD = parsedInput[1];
         input = parsedInput;
     }
 
@@ -35,7 +35,7 @@ public class DoctorAppointmentDeleteCommand extends Command {
 
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException {
-        AppointmentList.deleteAppointment(Id);
+        AppointmentList.deleteAppointment(iD);
     }
 
     /**
