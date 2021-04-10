@@ -62,8 +62,8 @@ If you have any questions about Patient Manager, please check
 out [Frequently Asked Questions](#frequently-asked-questions)
 for a list of common questions.
 
-Finally, for returning users who are not sure about the input format for a command, you can check
-[Command Summary](#command-summary) for a table of valid commands, and their input format.
+Finally, for returning users, you can check [Command Summary](#command-summary) for a table of valid commands
+and their input format.
 
 
 > Please take note of the following symbols and formatting in this User Guide
