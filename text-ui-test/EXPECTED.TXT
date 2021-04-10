@@ -38,7 +38,7 @@ Please use exactly one of /p or /r to indicate whether to delete a patient or a 
 You may use the help command for more clarification.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
-Patient with this IC number does not exist.
+The patient with this IC number does not exist.
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
 Patient S7654321F has been deleted!
