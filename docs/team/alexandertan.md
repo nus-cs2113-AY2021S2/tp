@@ -39,5 +39,8 @@ Given below are my contributions to the project.
   - Fix Java CI
   - Maintained issue tracker with creation of some labels
 
+- **Review/Mentoring contributions**:
+  - PR's reviewed: #35, #334, #333
+
 - **Contributions beyond the team**:
   - Helped find and reported bugs in other team's application
