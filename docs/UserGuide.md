@@ -165,7 +165,7 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 
 | Field | Description |
 | --- | --- |
-| Lesson type | Lecture, Lab or Tutorial. |
+| Lesson type | Lecture, lab or tutorial. |
 | Day & time | Information on when the lesson happens. |
 | Link | Online meeting link for the lesson. |
 | Teaching staff name | Name of the lesson's teacher. |
@@ -196,7 +196,7 @@ These are commands used on the dashboard layer, when no modules have been select
 
 ### Listing all dashboard commands : _help_
 
-Use this command to see all the commands you have access to from the dashboard layer, including the format and description of each command.
+Use this command to view all commands accessible from the dashboard layer.
 
 **Format:**<br>
 `help`
@@ -287,7 +287,7 @@ Upon entering the command, GULIO will show the list of current modules. Then, sp
 
 ### Listing all modules : _mods_
 
-Use this command to see all existing modules.
+Use this command to view all existing modules.
 
 **Format:**<br>
 `mods`
@@ -315,7 +315,7 @@ These are commands used on the module layer, when a module has been selected. Co
 
 ### Listing all module commands : _help_
 
-Use this command to see all the commands you have access to from the module layer, including the format and description of each command.
+Use this command to view all commands accessible from the module layer.
 
 **Format:**<br>
 `help`
@@ -457,7 +457,7 @@ Upon entering the command, GULIO will show the list of lessons in the module. Se
 
 Use this command to open your lesson links.
 
-Upon entering the command, GULIO will show the list of lessons in the module. Then, specify the lessons whose links you would like to open.
+Upon entering the command, GULIO will show the list of lessons in the module. Then, specify the indices corresponding to the lessons whose links you would like to open.
 
 **Format:**<br>
 `link`
@@ -485,7 +485,7 @@ Upon entering the command, GULIO will show the list of lessons in the module. Th
 
 ### Listing all teaching staff : _tch_
 
-Use this command to see all teaching staff in the module.
+Use this command to view all teaching staff in the module.
 
 **Format:**<br>
 `tch`
@@ -503,7 +503,7 @@ Use this command to see all teaching staff in the module.
 
 ### Listing all lessons : _lsn_
 
-Use this command to see all lessons in the module.
+Use this command to view all lessons in the module.
 
 **Format:**<br>
 `lsn`
@@ -620,7 +620,7 @@ Upon entering the command, GULIO will show the list of tasks in the module. Sele
 
 Use this command to mark tasks as done.
 
-Upon entering the command, GULIO will show the list of tasks that are undone in the module. Then, specify the indices corresponding to the tasks you would like to mark as done.
+Upon entering the command, GULIO will show the list of tasks in the module that are undone. Then, specify the indices corresponding to the tasks you would like to mark as done.
 
 **Format:**<br>
 `mark`
@@ -648,7 +648,7 @@ Upon entering the command, GULIO will show the list of tasks that are undone in 
 
 Use this command to mark tasks as undone.
 
-Upon entering the command, GULIO will show the list of tasks that are done in the module. Then, specify the indices corresponding to the tasks you would like to mark as undone.
+Upon entering the command, GULIO will show the list of tasks in the module that are done. Then, specify the indices corresponding to the tasks you would like to mark as undone.
 
 **Format:**<br>
 `unmark`
@@ -674,7 +674,7 @@ Upon entering the command, GULIO will show the list of tasks that are done in th
 
 ### Listing all tasks : _task_
 
-Use this command to see all the tasks in the module.
+Use this command to view all the tasks in the module.
 
 Done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
 
@@ -762,7 +762,7 @@ Use this command to open and edit the specified cheat-sheet in the text editor.
 
 ### Listing all cheat-sheets : _cs_
 
-Use this command to see the list of cheat-sheets you have for the module.
+Use this command to view the list of cheat-sheets you have for the module.
 
 **Format:**<br>
 `cs`
