@@ -1,11 +1,19 @@
 package seedu.model.nurseschedule;
 
-import seedu.exceptions.nurseschedules.*;
+import seedu.exceptions.nurseschedules.DuplicateScheduleException;
+import seedu.exceptions.nurseschedules.EmptyListException;
+import seedu.exceptions.nurseschedules.InvalidScheduleException;
+import seedu.exceptions.nurseschedules.InvalidiDTypeException;
+import seedu.exceptions.nurseschedules.NurseCrossValidationError;
+import seedu.exceptions.nurseschedules.NurseIdNotFound;
+import seedu.exceptions.nurseschedules.PatientCrossValidationError;
+import seedu.exceptions.nurseschedules.PatientIdNotFound;
 import seedu.logger.HealthVaultLogger;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,30 +32,49 @@ public class NurseScheduleList {
 
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
+    /**
+     * Constructor of NurseScheduleList.
+     *
+     * @param load populated array list from storage
+     */
     public NurseScheduleList(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
         logger.log(Level.INFO,"Creating a NurseSchedule list");
     }
 
-    public NurseScheduleList() { }
+    public NurseScheduleList() {
+    }
 
+    /**
+     * Empties arraylist.
+     */
     public void clearSchedules() {
         nurseSchedules.clear();
     }
 
-    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidIDTypeException,
+    /**
+     * adds schedule to arraylist.
+     *
+     * @param details array of relevant information
+     * @throws NurseIdNotFound if nurseID does not exist
+     * @throws InvalidiDTypeException if ID is invalid
+     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound if patientID does not exit
+     * @throws PatientCrossValidationError if Patients.txt cannot be loaded
+     * @throws DuplicateScheduleException if schedules are duplicated
+     */
+    public void addSchedule(String[] details) throws NurseIdNotFound, InvalidiDTypeException,
             NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         try {
             NurseScheduleChecker.checkValidNurseID(details[0]);
             NurseScheduleChecker.checkDuplicatePatientID(details[1], details[2], nurseSchedules);
-            NurseScheduleChecker.checkNurseIDExist(details[0]);
+            NurseScheduleChecker.checkNurseiDExist(details[0]);
             NurseScheduleChecker.checkValidPatientID(details[1]);
-            NurseScheduleChecker.checkPatientDExist(details[1]);
+            NurseScheduleChecker.checkPatientiDExist(details[1]);
             nurseSchedules.add(new NurseSchedule(details[0], details[1], details[2]));
             NurseScheduleUI.printAddedSchedule(details[1], details[2]);
             logger.info("Schedule successfully added");
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             System.out.println(e.getMessage());
             logger.log(Level.WARNING, "Failed to add schedule");
         }
@@ -102,13 +129,14 @@ public class NurseScheduleList {
     public void deleteSchedule(String[] details) throws NurseIdNotFound, InvalidScheduleException {
         int i = 0;
         while (i < nurseSchedules.size()) {
-            if(!isValidNurseID(nurseSchedules, details[0]) | !isValidSchedule(nurseSchedules, details[0], details[1])) {
+            if (!isValidNurseID(nurseSchedules, details[0])
+                    | !isValidSchedule(nurseSchedules, details[0], details[1])) {
                 break;
             }
             if ((nurseSchedules.get(i).getNurseID()).equals(details[0])
-                    && nurseSchedules.get(i).getDatetime().equals(details[1])) {
+                    && nurseSchedules.get(i).getDate().equals(details[1])) {
                 NurseScheduleUI.printDeletedSchedule(nurseSchedules.get(i).getPatientID(),
-                        nurseSchedules.get(i).getFormattedDatetime());
+                        nurseSchedules.get(i).getFormattedDate());
                 nurseSchedules.remove(i);
                 logger.info("Schedule successfully removed");
                 break;
@@ -117,6 +145,12 @@ public class NurseScheduleList {
         }
     }
 
+    /**
+     * finds and stores all schedules of specified nurse id.
+     *
+     * @param nurseSchedules arraylist of nurseschedules
+     * @param id specified nurse id to be found
+     */
     private void getNurseSchedulesByID(List<NurseSchedule> nurseSchedules, String id) {
         int i = 0;
         while (i < nurseSchedules.size()) {
@@ -128,7 +162,9 @@ public class NurseScheduleList {
         try {
             Collections.sort(findSchedules);
             System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
-        } catch (Exception ignored) {}
+        } catch (Exception e) {
+            //exception ignored
+        }
     }
 
     /**
@@ -145,6 +181,13 @@ public class NurseScheduleList {
         }
     }
 
+    /**
+     * checks if nurse has been found.
+     *
+     * @param nurseSchedules arraylist of nurse schedules
+     * @param i index
+     * @return boolean for found or not
+     */
     private boolean isNurseDone(List<NurseSchedule> nurseSchedules, int i) {
         if (nursesFound.contains(nurseSchedules.get(i).getNurseID())) {
             return true;
@@ -173,11 +216,21 @@ public class NurseScheduleList {
         throw new NurseIdNotFound();
     }
 
-    private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date) throws InvalidScheduleException {
+    /**
+     * checks if schedule is valid to be deleted.
+     *
+     * @param nurseSchedules arraylist of nurse schedules
+     * @param id specified id
+     * @param date specified date
+     * @return boolean if its valid
+     * @throws InvalidScheduleException if schedule does not exist
+     */
+    private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date)
+            throws InvalidScheduleException {
         int i = 0;
         while (i < nurseSchedules.size()) {
             if (nurseSchedules.get(i).getNurseID().equals(id)) {
-                if (nurseSchedules.get(i).getDatetime().equals(date)) {
+                if (nurseSchedules.get(i).getDate().equals(date)) {
                     return true;
                 }
             }
@@ -186,10 +239,21 @@ public class NurseScheduleList {
         throw new InvalidScheduleException();
     }
 
+    /**
+     * returns size of array list.
+     *
+     * @return size
+     */
     public int getSize() {
         return nurseSchedules.size();
     }
 
+    /**
+     * returns format of data to be saved.
+     *
+     * @param i index in arraylist
+     * @return string of data
+     */
     public String toSaveFile(int i) {
         return nurseSchedules.get(i).toSave();
     }

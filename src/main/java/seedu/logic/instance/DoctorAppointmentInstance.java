@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running
+ * Doctor Appointment Instance where the functionality of Doctor Appointment Menu Starts Running.
  */
 
 public class DoctorAppointmentInstance {
@@ -27,12 +27,20 @@ public class DoctorAppointmentInstance {
     private DoctorAppointmentStorage doctorAppointmentStorage;
     public Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Constructor for DoctorAppointmentInstance.
+     *
+     * @param filepath String of the filepath for DoctorAppointmentStorage.
+     */
 
     public DoctorAppointmentInstance(String filepath) {
         ui = new DoctorAppointmentUI();
         doctorAppointmentStorage = new DoctorAppointmentStorage(filepath);
     }
 
+    /**
+     * Executes the DoctorAppointment Menu.
+     */
     public void run() {
         try {
             details = doctorAppointmentStorage.loadFile();

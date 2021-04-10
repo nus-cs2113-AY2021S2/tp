@@ -13,13 +13,26 @@ import java.util.List;
 
 import static seedu.ui.UI.prettyPrint;
 
-public class DoctorAppointment implements Comparable<DoctorAppointment>{
+/**
+ * DoctorAppointment class contains the information of all the Appointments made with the Hospital.
+ */
+
+public class DoctorAppointment {
     protected String doctorId;
     protected String appointmentID;
     protected String patientsName;
     protected String gender;
     protected String date;
 
+    /**
+     * Constructor for DoctorAppointment object.
+     *
+     * @param doctorId      doctor Id.
+     * @param appointmentID appointment Id,
+     * @param name          name.
+     * @param gender        gender.
+     * @param date          date.
+     */
     public DoctorAppointment(String doctorId, String appointmentID, String name, String gender, String date) {
         this.doctorId = doctorId;
         this.appointmentID = appointmentID;
@@ -60,19 +73,6 @@ public class DoctorAppointment implements Comparable<DoctorAppointment>{
     }
 
     public String saveTask() {
-        return doctorId + " | " + appointmentID + " | "+ patientsName + " | " + gender + " | " + date;
-    }
-
-    @Override
-    public int compareTo(DoctorAppointment o) {
-        int numDoctorId = Integer.parseInt(getDoctorId());
-        int compareNumDoctorId = Integer.parseInt(o.getDoctorId());
-
-        return Integer.compare(numDoctorId, compareNumDoctorId);
-    }
-
-    public String toFind() {
-        //return getFormattedDatetime() + " " + patientID;
-        return prettyPrint(doctorId, 10) + " | " + prettyPrint(appointmentID, 10);
+        return doctorId + " | " + appointmentID + " | " + patientsName + " | " + gender + " | " + date;
     }
 }

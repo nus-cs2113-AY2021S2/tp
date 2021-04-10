@@ -1,11 +1,10 @@
 package seedu.ui;
 
+import seedu.duke.Constants;
 import seedu.model.doctorappointment.DoctorAppointment;
 
 import java.text.ParseException;
 
-import static seedu.duke.Constants.*;
-import static seedu.duke.Constants.MARK_BLANK;
 
 public class DoctorAppointmentUI extends UI {
     public static void doctorAppointmentsWelcome() {
@@ -16,13 +15,13 @@ public class DoctorAppointmentUI extends UI {
         System.out.println("Here is a list of Doctor Appointments Commands: ");
 
         int[] lengthPara = {10, 70, 50};
-        printer(new String[]{HELP_HEADER_COMMAND, HELP_HEADER_DESCRIPTION, HELP_HEADER_FORMAT}, lengthPara);
+        printer(new String[]{Constants.HELP_HEADER_COMMAND, Constants.HELP_HEADER_DESCRIPTION, Constants.HELP_HEADER_FORMAT}, lengthPara);
         UI.showLongLine();
-        printer(new String[]{HELP_COMMAND, APPOINTMENTS_HELP_DESCRIPTION, MARK_BLANK}, lengthPara);
-        printer(new String[]{ADD_COMMAND, APPOINTMENTS_ADD_DESCRIPTION, APPOINTMENTS_ADD_FORMAT}, lengthPara);
-        printer(new String[]{LIST_COMMAND, APPOINTMENTS_LIST_DESCRIPTION, APPOINTMENTS_LIST_FORMAT}, lengthPara);
-        printer(new String[]{DELETE_COMMAND, APPOINTMENTS_DELETE_DESCRIPTION, APPOINTMENTS_DELETE_FORMAT}, lengthPara);
-        printer(new String[]{RETURN_COMMAND, RETURN_DESCRIPTION, MARK_BLANK}, lengthPara);
+        printer(new String[]{Constants.HELP_COMMAND, Constants.APPOINTMENTS_HELP_DESCRIPTION, Constants.MARK_BLANK}, lengthPara);
+        printer(new String[]{Constants.ADD_COMMAND, Constants.APPOINTMENTS_ADD_DESCRIPTION, Constants.APPOINTMENTS_ADD_FORMAT}, lengthPara);
+        printer(new String[]{Constants.LIST_COMMAND, Constants.APPOINTMENTS_LIST_DESCRIPTION, Constants.APPOINTMENTS_LIST_FORMAT}, lengthPara);
+        printer(new String[]{Constants.DELETE_COMMAND, Constants.APPOINTMENTS_DELETE_DESCRIPTION, Constants.APPOINTMENTS_DELETE_FORMAT}, lengthPara);
+        printer(new String[]{Constants.RETURN_COMMAND, Constants.RETURN_DESCRIPTION, Constants.MARK_BLANK}, lengthPara);
         UI.printEmptyLine();
     }
 
@@ -30,21 +29,17 @@ public class DoctorAppointmentUI extends UI {
         System.out.println("Type 'help' for appointment menu commands\n");
     }
 
-    public static void invalidCommandPrompt() {
-        System.out.println("Sorry, I don't know what that means :(");
-        UI.showLine();
-    }
 
     public static void printAddedAppointment() {
         System.out.println("Appointment Added");
     }
 
-    public static void deletedDocID(String DocID, String AptID) {
-        System.out.println("DoctorID / Appointment ID: " + DocID + "/" + AptID + " has been deleted!");
+    public static void deletedDocID(String doctorId, String appointmentId) {
+        System.out.println("DoctorID / Appointment ID: " + doctorId + "/" + appointmentId + " has been deleted!");
     }
 
-    public static void deletedAptID(String AptID) {
-        System.out.println("Appointment ID: " + AptID + " has been deleted!");
+    public static void deletedAptID(String appointmentId) {
+        System.out.println("Appointment ID: " + appointmentId + " has been deleted!");
     }
 
     public static void printList(DoctorAppointment doc, String indicator) throws ParseException {
@@ -59,17 +54,22 @@ public class DoctorAppointmentUI extends UI {
 
     }
 
-    public static void AptPrintList(String indicator) {
+    public static void appointmentPrintList(String indicator) {
         if (indicator.equals("D") || indicator.equals("all")) {
             System.out.println(
-                    UI.prettyPrint("Doctor ID", 14) + " | " + UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name", 14) + " | "
-                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date", 14));
+                    UI.prettyPrint("Doctor ID", 14) + " | " + UI.prettyPrint("Appointment ID",
+                            14) + " | " + UI.prettyPrint("Name", 14) + " | "
+                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date",
+                            14));
         } else {
             System.out.println(
-                    UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name", 14) + " | "
-                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date", 14));
+                    UI.prettyPrint("Appointment ID", 14) + " | " + UI.prettyPrint("Name",
+                            14) + " | "
+                            + UI.prettyPrint("Gender", 14) + " | " + UI.prettyPrint("Date",
+                            14));
         }
     }
+
     public static void printEmptyCell(String s) {
         System.out.print(UI.prettyPrint(s, 14) + " | ");
     }

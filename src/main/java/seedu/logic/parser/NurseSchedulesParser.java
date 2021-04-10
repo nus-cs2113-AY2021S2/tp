@@ -8,7 +8,11 @@ import seedu.exceptions.nurseschedules.WrongInputsException;
 import seedu.logger.HealthVaultLogger;
 import seedu.exceptions.IllegalCharacterException;
 import seedu.logic.command.Command;
-import seedu.logic.command.nurseschedule.*;
+import seedu.logic.command.nurseschedule.NurseScheduleAddCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleDeleteCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleHelpCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleListCommand;
+import seedu.logic.command.nurseschedule.NurseScheduleReturnCommand;
 import seedu.logic.errorchecker.MainChecker;
 import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
@@ -47,15 +51,36 @@ public class NurseSchedulesParser {
         }
     }
 
+    /**
+     * Returns array with trimmed inputs.
+     *
+     * @param parts Array of raw user inputs
+     * @return trimmedArray
+     */
     private String[] trimInputs(String[] parts) {
         String[] trimmedArray = new String[parts.length];
-        for (int i = 0; i< parts.length; i++) {
+        for (int i = 0; i < parts.length; i++) {
             trimmedArray[i] = parts[i].trim();
         }
         return trimmedArray;
     }
 
-    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException, ExcessInputException, InsufficientInputException, IllegalCharacterException, InvalidDateException {
+    /**
+     * Splits user input based on command to extract relevant information.
+     *
+     * @param input raw user input
+     * @param command Command to be executed, i.e first word
+     * @return array of valid details
+     * @throws WrongInputsException If any inputs are missing
+     * @throws NoInputException If any inputs are empty
+     * @throws ExcessInputException If too many inputs are included
+     * @throws InsufficientInputException If too little inputs are included
+     * @throws IllegalCharacterException If illegal characters are in inputs
+     * @throws InvalidDateException If date is incorrect
+     */
+    public String[] getDetails(String input, String command) throws WrongInputsException, NoInputException,
+            ExcessInputException, InsufficientInputException,
+            IllegalCharacterException, InvalidDateException {
         NurseScheduleChecker.checkEmptyInput(input);
         String[] details = new String[3];
 
@@ -88,10 +113,19 @@ public class NurseSchedulesParser {
             MainChecker.checkNumInput(input, 2, 2);
             details[0] = parts[1];
             break;
+        default:
+            break;
         }
         return details;
     }
 
+    /**
+     * Formats String date into Date object.
+     *
+     * @param datetime string date
+     * @return Date object
+     * @throws ParseException if string is unparseable
+     */
     public static String formatDate(String datetime) throws ParseException {
         SimpleDateFormat parser = new SimpleDateFormat("ddMMyyyy");
         Date date = parser.parse(datetime);
@@ -100,7 +134,21 @@ public class NurseSchedulesParser {
         return formatter.format(date);
     }
 
-    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException, InsufficientInputException, ExcessInputException, IllegalCharacterException, InvalidDateException {
+    /**
+     * Returns a command object to be executed.
+     *
+     * @param input raw user input
+     * @param ui Program outputs
+     * @return Command object
+     * @throws NoInputException If any inputs are empty
+     * @throws InsufficientInputException If too little inputs are included
+     * @throws ExcessInputException If too many inputs are included
+     * @throws IllegalCharacterException If illegal characters are in inputs
+     * @throws InvalidDateException If date is incorrect
+     */
+    public Command nurseParse(String input, NurseScheduleUI ui) throws NoInputException,
+            InsufficientInputException, ExcessInputException,
+            IllegalCharacterException, InvalidDateException {
         assert input != null : "user input should not be null";
         assert !(input.isEmpty()) : "user input should not be empty";
 
@@ -116,7 +164,7 @@ public class NurseSchedulesParser {
         case "ADD":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleAdd(details);
+                c = new NurseScheduleAddCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.addHelpMessage();
@@ -126,7 +174,7 @@ public class NurseSchedulesParser {
         case "LIST":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleList(details);
+                c = new NurseScheduleListCommand(details);
             } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.listHelpMessage();
@@ -136,18 +184,18 @@ public class NurseSchedulesParser {
         case "DELETE":
             try {
                 String[] details = parser.getDetails(line, command);
-                c = new NurseScheduleDelete(details);
-            } catch(ArrayIndexOutOfBoundsException | WrongInputsException e) {
+                c = new NurseScheduleDeleteCommand(details);
+            } catch (ArrayIndexOutOfBoundsException | WrongInputsException e) {
                 ui.formatHelpMessage();
                 ui.deleteHelpMessage();
                 logger.log(Level.WARNING, "Parameter error in delete command!");
             }
             break;
         case "HELP":
-            c = new NurseScheduleHelp();
+            c = new NurseScheduleHelpCommand();
             break;
         case "RETURN":
-            c = new NurseScheduleReturn();
+            c = new NurseScheduleReturnCommand();
             break;
         default:
             logger.log(Level.WARNING, "Command not successfully parsed!");

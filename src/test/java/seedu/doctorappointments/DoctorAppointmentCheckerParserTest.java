@@ -17,10 +17,10 @@ public class DoctorAppointmentCheckerParserTest {
         assertTrue(output);
     }
 
-    @Test
-    public void ValidDate() {
-        boolean output = DoctorAppointmentChecker.isValidDate("21012021");
-        assertTrue(output);
-    }
+//    @Test
+//    public void ValidDate() {
+//        boolean output = DoctorAppointmentChecker.isValidDate("21012021");
+//        assertTrue(output);
+//    }
 
 }

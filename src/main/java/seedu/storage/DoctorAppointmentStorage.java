@@ -22,17 +22,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DoctorAppointmentStorage {
-    private static String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
+    private final static String staticFilePath = Constants.APPOINTMENT_FILE_PATH;
     private final String filePath;
     private final File file;
     private final static String STAFF_FILE_PATH = Constants.STAFF_FILE_PATH;
     public static Logger logger = HealthVaultLogger.getLogger();
 
+    /**
+     * Constructor for DoctorAppointment Storage.
+     *
+     * @param filePath filePath for DoctorAppointment text file.
+     */
 
     public DoctorAppointmentStorage(String filePath) {
         this.filePath = filePath;
         this.file = new File(filePath);
     }
+
+    /**
+     * Create a new file.
+     *
+     * @throws IOException if the file cannot be created.
+     */
 
     public void createFile() throws IOException {
         Path pathToFile = Paths.get(filePath);
@@ -40,6 +51,14 @@ public class DoctorAppointmentStorage {
         file.createNewFile();
         logger.log(Level.INFO, "Creating new file");
     }
+
+    /**
+     * Loads the data in the Doctor Appointment text file into an array list to be returned.
+     *
+     * @return a new Appointment List object with an array list of appointments.
+     * @throws FileNotFoundException if there is no such file that exists.
+     * @throws HealthVaultException  if the data is invalid.
+     */
 
     public AppointmentList loadFile() throws FileNotFoundException, HealthVaultException {
         ArrayList<DoctorAppointment> loadAppointments = new ArrayList<>();
@@ -58,7 +77,7 @@ public class DoctorAppointmentStorage {
                 DoctorAppointmentChecker.checkDataFromStorage(input, checkStorage);
                 checkStorage.add(data[1]);
                 loadAppointments.add(new DoctorAppointment(data[0], data[1], data[2], data[3], data[4]));
-            }catch (Exception e){
+            } catch (Exception e) {
                 logger.log(Level.WARNING, "Corrupted File Detected during loadFile");
                 throw new CorruptedFileException(Constants.APPOINTMENT_FILE_PATH);
             }
@@ -67,6 +86,13 @@ public class DoctorAppointmentStorage {
         logger.log(Level.INFO, "File Successfully loaded into program");
         return new AppointmentList(loadAppointments);
     }
+
+    /**
+     * Writing to file.
+     *
+     * @param taskList Array list of all current doctor appointments.
+     * @throws IOException if the file cannot be written.
+     */
 
     public static void writeToFile(ArrayList<DoctorAppointment> taskList) throws IOException {
         FileWriter fileWriter = new FileWriter(staticFilePath, false);
@@ -78,6 +104,13 @@ public class DoctorAppointmentStorage {
         logger.log(Level.INFO, "Successfully written data to file ");
 
     }
+
+    /**
+     * Loading the doctor information from the staff database.
+     *
+     * @return the array list of existing doctors in the hospital.
+     * @throws FileNotFoundException if the file does not exists.
+     */
 
     public static ArrayList<Staff> loadDoctorFile() throws FileNotFoundException {
         ArrayList<Staff> loadDoctorList = new ArrayList<>();

@@ -1,6 +1,7 @@
 package seedu.storage;
 
-import seedu.exceptions.*;
+import seedu.exceptions.CorruptedFileException;
+import seedu.exceptions.HealthVaultException;
 import seedu.logger.HealthVaultLogger;
 import seedu.logic.errorchecker.PatientChecker;
 import seedu.model.patient.Patient;
@@ -33,7 +34,7 @@ public class PatientStorage {
     }
 
     /**
-     * Instantiates a storage handler by taking in the filepath
+     * Instantiates a storage handler by taking in the filepath.
      *
      * @param filePath the filepath where the file will be created
      */
@@ -56,7 +57,7 @@ public class PatientStorage {
     }
 
     /**
-     * Loads the saved list of patients from save location
+     * Loads the saved list of patients from save location.
      *
      * @return Populated patients arraylist
      * @throws HealthVaultException if there is an error in loading
@@ -95,7 +96,7 @@ public class PatientStorage {
     }
 
     /**
-     * Saves all tasks to text file
+     * Saves all tasks to text file.
      *
      * @param saveInput current files to be stored
      */
