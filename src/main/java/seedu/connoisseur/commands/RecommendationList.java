@@ -7,6 +7,7 @@ import seedu.connoisseur.review.Review;
 import seedu.connoisseur.storage.ConnoisseurData;
 import seedu.connoisseur.ui.Ui;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static seedu.connoisseur.messages.Messages.CHANGE_RECO_TITLE;
@@ -23,7 +24,7 @@ import static seedu.connoisseur.messages.Messages.EDIT_RANGE_PROMPT;
 import static seedu.connoisseur.messages.Messages.RECOBY_PROMPT;
 import static seedu.connoisseur.messages.Messages.LOCATION_PROMPT;
 import static seedu.connoisseur.messages.Messages.MISSING_DELETE_TITLE;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_RECO_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_RECO_TITLE;
 import static seedu.connoisseur.messages.Messages.DELETE_SUCCESS;
 import static seedu.connoisseur.messages.Messages.RATING_PROMPT;
 import static seedu.connoisseur.messages.Messages.DETAILS_PROMPT;
@@ -34,6 +35,7 @@ import static seedu.connoisseur.messages.Messages.EDIT_PROMPT_RECO;
 import static seedu.connoisseur.messages.Messages.ANYTHING_ELSE;
 import static seedu.connoisseur.messages.Messages.EDIT_TITLE_PROMPT;
 import static seedu.connoisseur.messages.Messages.ABANDON_RECO;
+import static seedu.connoisseur.messages.Messages.MISSING_DONE_TITLE;
 
 /**
  * Class with methods for different commands in recommendation mode.
@@ -94,7 +96,7 @@ public class RecommendationList {
             ui.print("| " + currentRecommendation.getCategory());
             ui.printWhiteSpace(currentRecommendation.getCategory().length());
             ui.print("| " + currentRecommendation.priceRange());
-            ui.printWhiteSpace(currentRecommendation.priceRange().length() - 2);
+            ui.printWhiteSpacePrice(currentRecommendation.priceRange().length());
             ui.print("| " + currentRecommendation.getLocation());
             ui.printWhiteSpace(currentRecommendation.getLocation().length());
             ui.print("| " + currentRecommendation.getRecommendedBy());
@@ -126,12 +128,12 @@ public class RecommendationList {
             ui.print(" ");
         }
         ui.print(currentRecommendation.getTitle());
-        ui.printWhiteSpace(currentRecommendation.getTitle().length());
+        ui.print(" | ");
         ui.print(currentRecommendation.getCategory());
-        ui.printWhiteSpace(currentRecommendation.getCategory().length());
+        ui.print(" | ");
         ui.print(currentRecommendation.priceRange());
-        ui.printWhiteSpace(currentRecommendation.priceRange().length());
-        ui.println(currentRecommendation.getRecommendedBy());
+        ui.print(" | ");
+        ui.println(currentRecommendation.getRecommendedBy() + "\n");
         return true;
     }
 
@@ -161,7 +163,7 @@ public class RecommendationList {
         String location;
         while (true) {
             ui.println(RECO_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateRecommendation(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
@@ -216,7 +218,7 @@ public class RecommendationList {
                 double priceFirst = Double.parseDouble(priceRange.split("-", 2)[0].trim());
                 double priceSecond = Double.parseDouble(priceRange.split("-", 2)[1].trim());
                 if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
-                    ui.printInvalidPriceRangeMessage();
+                    ui.printInvalidPricingMessage();
                     continue;
                 }
                 if (priceFirst > priceSecond) {
@@ -258,9 +260,10 @@ public class RecommendationList {
             }
             break;
         }
-        priceLow = Math.round(priceLow * 100.0) / 100.0;
-        priceHigh = Math.round(priceHigh * 100.0) / 100.0;
-        Recommendation r = new Recommendation(title, category, priceLow, priceHigh, recommendedBy, location);
+        DecimalFormat df = new DecimalFormat("0.00");
+        String newPriceLow = df.format(priceLow);
+        String newPriceHigh = df.format(priceHigh);
+        Recommendation r = new Recommendation(title, category, newPriceLow, newPriceHigh, recommendedBy, location);
         recommendations.add(r);
         ui.println(title + ADD_SUCCESS);
     }
@@ -281,7 +284,7 @@ public class RecommendationList {
             }
         }
         if (recommendationIndex == -1) {
-            ui.println(INVALID_DELETE_RECO_TITLE);
+            ui.println(INVALID_RECO_TITLE);
         } else {
             recommendations.remove(recommendationIndex);
             ui.println(title + DELETE_SUCCESS);
@@ -298,7 +301,7 @@ public class RecommendationList {
         int rating;
         String description;
         if (title == null || title.isBlank()) {
-            ui.println(MISSING_DELETE_TITLE);
+            ui.println(MISSING_DONE_TITLE);
             return;
         }
         int recommendationIndex = -1;
@@ -309,7 +312,7 @@ public class RecommendationList {
             }
         }
         if (recommendationIndex == -1) {
-            ui.println(INVALID_DELETE_RECO_TITLE);
+            ui.println(INVALID_RECO_TITLE);
         } else {
             category = recommendations.get(recommendationIndex).getCategory();
             description = "No description entered.";
@@ -379,7 +382,7 @@ public class RecommendationList {
                 }
             }
             if (index == -1) {
-                ui.printInvalidRecommendation();
+                ui.println(INVALID_RECO_TITLE);
                 return;
             }
         }
@@ -446,7 +449,7 @@ public class RecommendationList {
                     double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
                     double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
                     if (!checkPriceValidity(priceFirst) || !checkPriceValidity(priceSecond)) {
-                        ui.printInvalidPriceRangeMessage();
+                        ui.printInvalidPricingMessage();
                         continue;
                     }
                     if (priceFirst > priceSecond) {
@@ -456,10 +459,11 @@ public class RecommendationList {
                         newPriceLow = priceFirst;
                         newPriceHigh = priceSecond;
                     }
-                    newPriceLow = Math.round(newPriceLow * 100.0) / 100.0;
-                    newPriceHigh = Math.round(newPriceHigh * 100.0) / 100.0;
-                    recommendations.get(index).setPriceHigh(newPriceHigh);
-                    recommendations.get(index).setPriceLow(newPriceLow);
+                    DecimalFormat df = new DecimalFormat("0.00");
+                    String priceLow = df.format(newPriceLow);
+                    String priceHigh = df.format(newPriceHigh);
+                    recommendations.get(index).setPriceHigh(priceHigh);
+                    recommendations.get(index).setPriceLow(priceLow);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
                     ui.printInvalidPricingMessage();
                     continue;

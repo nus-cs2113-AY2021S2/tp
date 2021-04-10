@@ -153,6 +153,8 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
+![Class_Diagram.png](./diagrams/Class_Diagram.png)<br>
+Figure 1. Class Diagram of Connoisseur <br>
 
 Figure 1. Architecture Diagram of Connoisseur <br>
 //TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
@@ -224,27 +226,29 @@ The following is the Sequence diagram to `add a recommendation`.
 The 
 
 When the user attempts to add a new recommendation, 
-###5.3.2 List Recommendation Feature
-###5.3.3 Edit a Recommendation Feature
-###5.3.4 Delete a Recommendation Feature
-###5.3.5 Review a Recommendation Feature
+### 5.3.2 List Recommendation Feature
+### 5.3.3 Edit a Recommendation Feature
+### 5.3.4 Delete a Recommendation Feature
+### 5.3.5 Review a Recommendation Feature
 
-###5.4 Storage
-###5.4.1 Storage Format
-###5.4.2 Implementation
-###5.5 Error handling
-###5.6 Personalised Messages
-##6. Planned Features
-##7. Documentation
-###7.1 Setting up and maintaining the project website
-###7.2 Style guidance
-###7.3 Diagrams
-##8. Testing
-###8.1 Running tests
-###8.2 Types of tests
-##Appendix
-###Appendix A: Product Scope
-###Appendix B: User Stories
+### 5.4 Storage
+### 5.4.1 Storage Format
+### 5.4.2 Implementation
+### 5.5 Error handling
+#### Invalid Input Format
+#### Invalid File
+### 5.6 Personalised Messages
+## 6. Planned Features
+## 7. Documentation
+### 7.1 Setting up and maintaining the project website
+### 7.2 Style guidance
+### 7.3 Diagrams
+## 8. Testing
+### 8.1 Running tests
+### 8.2 Types of tests
+## Appendix
+### Appendix A: Product Scope
+### Appendix B: User Stories
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
 |v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
@@ -256,7 +260,7 @@ When the user attempts to add a new recommendation,
 |v2.0|indecisive user|change my review and opinnions on things|record my opinions accurately at all times|
 |v2.0|forgetful user|be prompted of an existing review|avoid duplicates in my list|
 |v2.0|lazy user|have my sorting preferences saved|avoid having to input my preferred sorting method all the time|
-###Appendix C: Use Cases
-###Appendix D: Non-Functional Requirements
-###Appendix E: Glossary
-###Appendix F: Instructions for manual testing
+### Appendix C: Use Cases
+### Appendix D: Non-Functional Requirements
+### Appendix E: Glossary
+### Appendix F: Instructions for manual testing

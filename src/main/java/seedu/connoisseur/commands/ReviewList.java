@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static seedu.connoisseur.messages.Messages.INVALID_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.MISSING_VIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
-import static seedu.connoisseur.messages.Messages.INVALID_DELETE_REVIEW_TITLE;
+import static seedu.connoisseur.messages.Messages.INVALID_REVIEW_TITLE;
 import static seedu.connoisseur.messages.Messages.INVALID_SORT_METHOD;
 import static seedu.connoisseur.messages.Messages.CURRENT_SORT_METHOD;
 import static seedu.connoisseur.messages.Messages.AVAILABLE_SORT_METHODS;
@@ -77,16 +77,20 @@ public class ReviewList {
      */
     public void addReview(String input) {
         if (input == null || input.isBlank()) {
-            ui.println(QUICK_PROMPT);
-            switch (ui.readCommand().toLowerCase()) {
-            case "y":
-                addQuickReview();
+            while (true) {
+                ui.println(QUICK_PROMPT);
+                switch (ui.readCommand().toLowerCase()) {
+                case "y":
+                    addQuickReview();
+                    break;
+                case "n":
+                    addFullReview();
+                    break;
+                default:
+                    ui.println(INVALID_COMMAND);
+                    continue;
+                }
                 break;
-            case "n":
-                addFullReview();
-                break;
-            default:
-                ui.println(INVALID_COMMAND);
             }
         } else {
             switch (input) {
@@ -111,7 +115,7 @@ public class ReviewList {
         int rating;
         while (true) {
             ui.println(REVIEW_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateReview(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
@@ -170,7 +174,7 @@ public class ReviewList {
         String description;
         while (true) {
             ui.println(REVIEW_TITLE_PROMPT);
-            title = ui.readCommand();
+            title = ui.readCommand().trim();
             if (checkAndPrintDuplicateReview(title)) {
                 ui.printNoUniqueTitleMessage();
                 continue;
@@ -315,7 +319,7 @@ public class ReviewList {
         if (reviews.size() == 0) {
             ui.printEmptyReviewListMessage();
         } else if (!validSortMethod(sortMethod)) {
-            ui.printInvalidSortMethodMessage();
+            ui.println(sortMethod.toUpperCase() + INVALID_SORT_METHOD);
         } else {
             if (sortMethod == null) {
                 sorter.sortReviews(reviews);
@@ -325,7 +329,7 @@ public class ReviewList {
                     sorter.sortReviews(reviews, sortMethod);
                     displayReviews(reviews);
                 } catch (ArrayIndexOutOfBoundsException e) {
-                    ui.printInvalidSortMethodMessage();
+                    ui.printErrorMessage(e);
                 }
             }
         }
@@ -520,7 +524,7 @@ public class ReviewList {
             }
         }
         if (reviewIndex == -1) {
-            ui.println(INVALID_DELETE_REVIEW_TITLE);
+            ui.println(INVALID_REVIEW_TITLE);
         } else {
             reviews.remove(reviewIndex);
             ui.println(title + DELETE_SUCCESS);

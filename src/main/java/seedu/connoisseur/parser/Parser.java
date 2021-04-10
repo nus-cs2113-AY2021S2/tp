@@ -46,11 +46,7 @@ public class Parser {
             }
             break;
         case "list":
-            if (arguments == null || arguments.isBlank()) {
-                commands.list(arguments);
-            } else {
-                commands.invalidParameters();
-            }
+            commands.list(arguments);
             break;
         case "edit":
             commands.edit(arguments);
@@ -63,32 +59,16 @@ public class Parser {
             commands.add(arguments);
             break;
         case "delete":
-            if (arguments == null || arguments.isBlank()) {
-                commands.invalidParameters();
-            } else {
-                commands.delete(arguments);
-            }
+            commands.delete(arguments);
             break;
         case "done":
-            if (arguments == null || arguments.isBlank()) {
-                commands.invalidParameters();
-            } else {
-                commands.done(arguments);
-            }
+            commands.done(arguments);
             break;
         case "view":
-            if (arguments == null || arguments.isBlank()) {
-                commands.invalidParameters();
-            } else {
-                commands.view(arguments);
-            }
+            commands.view(arguments);
             break;
         case "display":
-            if (arguments == null || arguments.isBlank()) {
-                commands.invalidParameters();
-            } else {
-                commands.display(arguments);
-            }
+            commands.display(arguments);
             break;
         case "help":
             commands.printHelp(arguments);

@@ -74,7 +74,8 @@ public class Storage {
     }
 
     /**
-     * Reads data from JSON file and creates a connoisseurData object. 
+     * Reads data from JSON file and creates a connoisseurData object.
+     *
      * @return connoisseurData object containing all the relavent data
      */
     public ConnoisseurData loadConnoisseurData() {
@@ -93,14 +94,15 @@ public class Storage {
             connoisseurFileScanner.close();
         } catch (FileNotFoundException | NoSuchElementException e) {
             ui.printErrorMessage(e);
-            connoisseurData = new ConnoisseurData("latest", true, new ArrayList<Review>(), 
+            connoisseurData = new ConnoisseurData("latest", true, new ArrayList<Review>(),
                     new ArrayList<Recommendation>());
         }
         return connoisseurData;
     }
 
     /**
-     * Loads reviews from a JSON array to a list of reviews. 
+     * Loads reviews from a JSON array to a list of reviews.
+     *
      * @param reviews JSON array of reviews
      * @return Arraylist of reviews
      */
@@ -119,7 +121,8 @@ public class Storage {
     }
 
     /**
-     * Loads reviews from a JSON array to a list of recommendations. 
+     * Loads reviews from a JSON array to a list of recommendations.
+     *
      * @param recommendations JSON array of recommendations
      * @return Arraylist of recommendations
      */
@@ -128,8 +131,8 @@ public class Storage {
         for (int i = 0; i < recommendations.length(); i++) {
             String title = recommendations.getJSONObject(i).getString("title");
             String category = recommendations.getJSONObject(i).getString("category");
-            int priceLow = recommendations.getJSONObject(i).getInt("priceLow");
-            int priceHigh = recommendations.getJSONObject(i).getInt("priceHigh");
+            String priceLow = recommendations.getJSONObject(i).getString("priceLow");
+            String priceHigh = recommendations.getJSONObject(i).getString("priceHigh");
             String referrer = recommendations.getJSONObject(i).getString("referrer");
             String location = recommendations.getJSONObject(i).getString("location");
             Recommendation reco = new Recommendation(title, category, priceLow, priceHigh, referrer, location);
@@ -139,10 +142,11 @@ public class Storage {
     }
 
     /**
-     * Saves data to a JSON file. 
-     * @param sortMethod sort method
-     * @param displayStars display method
-     * @param reviewList list of reviews
+     * Saves data to a JSON file.
+     *
+     * @param sortMethod         sort method
+     * @param displayStars       display method
+     * @param reviewList         list of reviews
      * @param recommendationList list of recommendations
      */
     public void saveConnoisseurData(String sortMethod, boolean displayStars, ArrayList<Review> reviewList,
@@ -164,7 +168,8 @@ public class Storage {
     }
 
     /**
-     * Converts list of reviews to JSON array. 
+     * Converts list of reviews to JSON array.
+     *
      * @param reviewList list of reviews
      * @return JSON array of reviews
      */
@@ -184,7 +189,8 @@ public class Storage {
     }
 
     /**
-     * Converts list of recommendations to JSON array. 
+     * Converts list of recommendations to JSON array.
+     *
      * @param recommendationList list of recommendations
      * @return JSON array of recommendations
      */
