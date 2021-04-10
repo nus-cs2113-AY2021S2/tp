@@ -194,7 +194,36 @@ The UI of this program can be found under the package named UI. It consists of `
 
 ### 4.3 Logic Component
 
+The `Logic` component is responsible for the following tasks:
+
+- Run each instance that accepts user inputs in order to access various functionalities.
+- Converts user inputs into data that is usable by the HealthVault.
+- Executes the Command based on interpreted data.
+
+To accomplish the above, the `Logic` component, follows the following sequence of steps:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Interpreting user input**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The `Instance` component runs the main super loop to accept user input. It creates a `Parser` to interpret user inputs. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Checking User Input**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The `Parser` creates an `ErrorChecker` class and uses it to check the user input for any erronous and unacceptable inputs,
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Executing Command**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With the interpreted `Command` from the `Parser`, the `Instance` component then executes the `Command`.
+
+The following class diagram illustrates the interactions between various logic components
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/LogicComponent.png">
+
+>:information_source: Similar classes are represented by abbreviations ie. ABCCommand.
+> 
+>1. ABCInstance represents the different `Instance` classes.
+>2. PQRParser represents the different `Parser` classes.
+>3. XYZChecker represents the different `ErrorChecker` classes.
+>4. The "XXX"Command in each package under the `Command` package represent the different commands relating to each individual feature.
 
 <br>
 
