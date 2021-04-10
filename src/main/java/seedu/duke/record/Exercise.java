@@ -4,14 +4,16 @@ import seedu.duke.exception.TypeException;
 
 import java.time.LocalDate;
 
+import static seedu.duke.common.Messages.HEADER_FOR_EXERCISE_RECORD_ACTIVITY;
+import static seedu.duke.common.Messages.HEADER_FOR_EXERCISE_RECORD_DURATION;
 import static seedu.duke.record.WorkoutCategory.INVALID;
 
 public class Exercise extends Record {
-    private static final int SPACES_FOR_ACTIVITY = 16;
-    private static final int SPACES_FOR_DURATION = 16;
+    private static final int SPACES_FOR_ACTIVITY = HEADER_FOR_EXERCISE_RECORD_ACTIVITY.length();
+    private static final int SPACES_FOR_DURATION = HEADER_FOR_EXERCISE_RECORD_DURATION.length();
     private double calories;
     private final WorkoutCategory workoutCategory;
-    private final int duration;
+    private final double duration;
     private String separatorBetweenActivityAndDuration;
     private String separatorBetweenDurationAndCalorie;
     private int lengthOfActivity;
@@ -25,7 +27,7 @@ public class Exercise extends Record {
             if (workoutCategory == INVALID) {
                 throw new IllegalArgumentException();
             }
-            this.duration = Integer.parseInt(durationStr);
+            this.duration = Double.parseDouble(durationStr);
             if (duration <= 0 || duration >= 1440) {
                 throw new NumberFormatException();
             }
@@ -49,7 +51,7 @@ public class Exercise extends Record {
         return workoutCategory;
     }
 
-    public int getDuration() {
+    public double getDuration() {
         return duration;
     }
 
@@ -81,6 +83,7 @@ public class Exercise extends Record {
     }
 
     private int getDurationLength() {
+        int length = ("" + duration).length();
         return ("" + duration).length() + getUnit().length() + 1;
     }
 

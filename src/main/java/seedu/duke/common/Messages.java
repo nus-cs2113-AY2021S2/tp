@@ -5,6 +5,10 @@ package seedu.duke.common;
  */
 public class Messages {
     //public static final String SPACING = "        ";
+    public static final String HEADER_FOR_EXERCISE_RECORD_ACTIVITY = "Activity        ";
+    public static final String HEADER_FOR_EXERCISE_RECORD_DURATION = "Duration          ";
+    public static final String HEADER_FOR_DIET_RECORD_FOOD = "Food Category       ";
+    public static final String HEADER_FOR_DIET_RECORD_WEIGHT = "Weight      ";
     public static final String MESSAGE_VERSION = "V2.0";
     public static final String MESSAGE_FEATURES = "You can use the app by using command ADD, VIEW, and DELETE.";
     public static final String MESSAGE_WELCOME = "Healthier - your powerful personal fitness app.\n"
@@ -33,10 +37,10 @@ public class Messages {
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
     public static final String MESSAGE_CHECK_HEADER = "Index    Date Set          Goal Type       "
             + "Target          Progress\n";
-    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          Activity        "
-            + "Duration        Calories\n";
-    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          Food Category       Weight"
-            + "      Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_EXERCISE = "Index        Date          " + HEADER_FOR_EXERCISE_RECORD_ACTIVITY
+            + HEADER_FOR_EXERCISE_RECORD_DURATION + "Calories\n";
+    public static final String MESSAGE_VIEW_HEADER_DIET = "Index        Date          " + HEADER_FOR_DIET_RECORD_FOOD
+            + HEADER_FOR_DIET_RECORD_WEIGHT + "Calories\n";
     public static final String MESSAGE_VIEW_HEADER_SLEEP = "Index        Date              Duration\n";
     public static final String MESSAGE_VIEW_HEADER_WEIGHT = "Index        Date              Body Weight\n";
     public static final String MESSAGE_NO_RECORD = "Sorry, no records found.\n"
@@ -75,7 +79,7 @@ public class Messages {
             + "It should be an positive floating point number within range 0.0 - 24.0 (not including 0.0), "
             + "with the unit of hour.\nPlease try again.";
     public static final String MESSAGE_INVALID_WORKOUT_MIN = "The duration you entered is invalid.\n"
-            + "It should be an positive integer within range 0 and 1440 (not including 0), with the unit of minute.\n"
+            + "It should be an positive floating point within range 0 and 1440 (not including 0), with the unit of minute.\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_WEIGHT = "Keeping a moderate body weight is good for your health.\n"
             + "An acceptable value for body weight"
