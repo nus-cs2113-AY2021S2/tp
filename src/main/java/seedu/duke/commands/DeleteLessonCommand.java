@@ -58,7 +58,10 @@ public class DeleteLessonCommand extends Command {
     }
 
     /**
-     * Prints list of lessons in specified module.
+     * Prints list of lessons in specified module. 
+     * For each lesson, prints lesson type and exactly one detail (a field that was successfully added) 
+     * to differentiate same lesson types (e.g. multiple tutorials).
+     * Does not print any detail for the lesson if none of its fields have been filled yet.
      *
      * @param lessonList ArrayList of lessons in specified module.
      * @param ui         Instance of UI.

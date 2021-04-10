@@ -3,7 +3,7 @@
 <!--@@author ivanchongzhien-->
 # User guide
 
-**GULIO (Get Ur Life In Order)**  is a desktop app that provides a single consolidated and personalised workspace for NUS SOC students to organize their modules. GULIO is optimized for use via a Command Line Interface (CLI) which SOC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
+**GULIO (Get Ur Life In Order)**  is a desktop app that provides a single consolidated and personalised workspace for NUS SoC students to organize their modules. GULIO is optimized for use via a Command Line Interface (CLI) which SoC students will be familiar with typing in, instead of a Graphical User Interface (GUI).
 
 If you are having difficulties managing your schedule, lesson links and notes, GULIO is the app for you. With the ability to store lesson details, tasks, notes and more, GULIO is a one-stop solution for all your university scheduling needs.
 
