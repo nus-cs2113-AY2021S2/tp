@@ -30,7 +30,7 @@
 ## **Design**
 ### Project-Overview
 NusFoodReviews is a application that is built using Java. It has cross-platform ability and is able to run on MAC-OS, 
-Windows and Linux. When run, NusFoodReviews allows user to view selected canteens, stores with their menus and reviews. In addition,
+Windows and Linux. When run, NusFoodReviews allows user to view selected canteens, stores with their menus, reviews and ratings. In addition,
 user is able to leave reviews and ratings to the stores. On the other hand the user can choose to run as admin, and the
 password is `Password`. When run as admin the user is able to `add` or `remove` canteens, stores, menu and reviews. These admin
 functions allows the app to be moderated and maintained by the person in charge. For future development we have had ideas of
