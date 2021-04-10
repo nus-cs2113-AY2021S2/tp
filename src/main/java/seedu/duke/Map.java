@@ -8,9 +8,11 @@ import java.util.Collections;
  */
 public class Map {
 	public ArrayList<Delivery> shortestPathGenerator(ArrayList<Delivery> uncompletedDeliveries){
-		ArrayList<Delivery> sortedDeliveryList;
+		ArrayList<Delivery> sortedDeliveryList = null;
 		sortedDeliveryList = (ArrayList<Delivery>) uncompletedDeliveries.clone();
+		assert sortedDeliveryList != null : "List of uncompleted Deliveries not cloned properly";
 		Collections.sort(sortedDeliveryList);
+		assert sortedDeliveryList != null : "Sorted Delivery List is null";
 		return sortedDeliveryList;
 	}
 }

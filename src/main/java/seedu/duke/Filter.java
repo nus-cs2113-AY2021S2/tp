@@ -14,6 +14,7 @@ public class Filter {
 				uncompletedDeliveries.add(delivery);
 			}
 		}
+		assert uncompletedDeliveries != null : "List of uncompleted deliveries is null";
 		return uncompletedDeliveries;
 	}
 }

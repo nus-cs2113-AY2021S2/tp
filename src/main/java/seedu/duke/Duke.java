@@ -15,6 +15,7 @@ public class Duke {
 
     public void run() {
         deliveryman = DataManager.loadProfile();
+        assert deliveryman != null : "Profile not properly loaded";
         Route.loadRoutes();
         ui.showWelcomeScreen();
         menu.showLoopingMenuUntilExit(deliveryman);

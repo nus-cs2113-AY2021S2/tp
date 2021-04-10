@@ -57,7 +57,7 @@ public class DataManager {
 			Generator generator = new Generator();
 			deliverymanProfile = generator.profileGenerator();
 		}
-
+		assert deliverymanProfile != null : "!!Missing profile";
 		return deliverymanProfile;
 	}
 
@@ -125,6 +125,7 @@ public class DataManager {
 			Generator generator =  new Generator();
 			deliveries = generator.deliveriesGenerator();
 		}
+		assert deliveries != null : "!! Deliveries are null";
 		System.out.println("File loaded boi...lets gooooooo!");
 		return deliveries;
 	}
@@ -141,8 +142,10 @@ public class DataManager {
 			int itemNumber = Integer.parseInt(itemIndexes[0]);
 			int itemWeight = Integer.parseInt(itemIndexes[1]);
 			Item item = new Item(itemNumber, itemWeight);
+			assert item != null : "!! Item not created";
 			itemsArray.add(item);
 		}
+		assert itemsArray != null : "!! List of items for Delivery object is null";
 		return itemsArray;
 	}
 
@@ -171,7 +174,7 @@ public class DataManager {
 			Generator generator = new Generator();
 			routes = generator.routesGenerator();
 		}
-
+		assert routes != null : "!! Routes are null";
 		return routes;
 	}
 

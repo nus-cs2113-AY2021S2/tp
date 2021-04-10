@@ -44,6 +44,7 @@ public class Controller {
 	 * @param deliveryman object to attribute possible following actions to
 	 */
 	public void controllerForCommandsAndArguments(String userCommand, String userArguments, Deliveryman deliveryman){
+		assert userArguments != null : "!! Argument is null";
 		switch (userCommand){
 		case "edit":
 			String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
