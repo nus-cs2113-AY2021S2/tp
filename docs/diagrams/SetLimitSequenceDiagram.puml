@@ -13,7 +13,7 @@ end box
 -> SetLimitCommand: execute()
 activate SetLimitCommand
 
-SetLimitCommand-> MinimumQuantity: setMinimumQuantity(parameters)
+SetLimitCommand-> MinimumQuantity: setMinimumQuantity(foodCategory, quantity)
 activate MinimumQuantity
 return
 return

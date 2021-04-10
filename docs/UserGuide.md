@@ -15,7 +15,7 @@ It is written in Java, and has more than 6000 lines of code.
   * [List](#display-the-list-of-all-foods-list)
   * [List by Category](#display-the-list-of-foods-by-category-list-category)
   * [List by Location](#display-the-list-of-foods-by-storage-location-list-location)
-  * [Remove](#remove-a-food-item-by-quantity-remove)
+  * [Remove](#remove-a-food-item-remove)
   * [Search](#search-search)
   * [Expiring](#list-expiring-foods-expiring)
   * [Runninglow](#list-categories-with-food-running-low-runninglow)
@@ -43,7 +43,7 @@ It is written in Java, and has more than 6000 lines of code.
 
 ## Features
 
-:information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is a parameter.
+:information_source: Words in UPPER_CASE are the parameters to be supplied by the user. For example, `add FOOD_NAME` should be executed as `add chicken` where `FOOD_NAME` is the parameter.
 
 :information_source: Extraneous parameters for commands that do not take in parameters will be ignored. For example, `help me` will execute as `help`.
 
@@ -84,18 +84,18 @@ This is the list of storage locations:
 
 Adds a food item into the fridge.
 
-If a particular FOOD_NAME is in the fridge, the other fields have to be same in order to
-add the quantity. Otherwise, a unique FOOD_NAME has to be used to add the food into the FridgeFriend.
+If a particular `FOOD_NAME` is in the fridge, the other fields have to be same in order to
+add the quantity. Otherwise, a unique `FOOD_NAME` has to be used to add the food into the FridgeFriend.
 
 Format: `add FOOD_NAME /cat FOOD_CATEGORY /exp EXPIRY_DATE /loc LOCATION_IN_THE_FRIDGE /qty FOOD_QUANTITY`
 
-* The `FOOD_NAME` can be the name of a food but not an empty description.
-* The `FOOD_CATEGORY` can be the basic food groups otherwise it will be categorised as others.
+* The `FOOD_NAME` is the name of a food but not an empty description.
+* The `FOOD_CATEGORY` must be one of the available food categories.
 * The `EXPIRY_DATE` must be in the format `dd-mm-yyyy`.
-* The `LOCATION_IN_THE_FRIDGE` can be a general compartment in a fridge.
+* The `LOCATION_IN_THE_FRIDGE` must be one of the available storage locations.
 * The `FOOD_QUANTITY` must be a positive integer.
 
-:bulb: **Tip:**
+:bulb: **Tips:**
 
 * If you want to add more to the same batch of food (same category, same location and same
 expiry date), you should specify exactly the same `FOOD_NAME`,`FOOD_CATEGORY`,`EXPIRY_DATE`,
@@ -105,10 +105,11 @@ Otherwise, you will be prompted to retry the `add` command.
 
 :information_source: Additional info:
 
-* Basic Food Groups: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
+* Available Food Categories: `MEAT`, `SEAFOOD`, `EGG`, `DAIRY`, `VEGETABLE`, `FRUIT`,
   `BEVERAGE`, `COOKED_DISH`, `READY_TO_EAT`, `FROZEN`, `OTHERS`
-* Basic Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
+* Available Fridge Location: `FREEZER`, `UPPER_SHELF`, `MIDDLE_SHELF`, `LOWER_SHELF`,
   `DRAWERS`, `FRIDGE_DOOR`, `OTHERS`
+* The list of available `FOOD_CATEGORY` and `LOCATION_IN_THE_FRIDGE` can be found using the [`help`](#get-help-message-help) command.
 
 Example of usage:
 
@@ -203,22 +204,18 @@ These are the food stored in FREEZER:
 These are the food stored in DRAWERS:
 ```
 
-### Remove a food item by quantity: `remove`
+### Remove a food item: `remove`
 
-Removes a food item based on its index. Additionally, if a removal results in a food category falling below the specified limit 
-(as per in [`setlimit`](#modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is 
-[`runninglow`](#list-categories-with-food-running-low-runninglow) on food.
+Removes a food item by quantity. Additionally, if a removal results in a food category falling below the specified limit (as per in [`setlimit`](#modify-the-minimum-quantity-limits-setlimit)), this command will also give a warning that the category is [`runninglow`](#list-categories-with-food-running-low-runninglow) on food.
 
 Format: `remove FOODNAME /qty QUANITTY_TO_REMOVE`
 
-* The `FOODNAME` must be an existing food name (same with the first parameter during `add`) in the fridge.
-* If the `FOODNAME` is not found, `FridgeFriend` will give an error message.
+* The `FOODNAME` must be an existing food name (same with the first parameter during [`add`](#adding-a-food-item-add)) in the fridge.
+  * If the `FOODNAME` is not found, `FridgeFriend` will give an error message.
 * The `QUANTITY_TO_REMOVE` must be lower than or equal to the current quantity of the food.
-* If the `QUANTITY_TO_REMOVE` is larger than current quantity of the food, `FridgeFriend` will give an error message.
-* If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole
-food item will be deleted by `FridgeFriend` (it will not appear on list either).
-* If the `QUANTITY_TO_REMOVE` is lower than current quantity of the food, it means there is still some food left
-of this item. The quantity of food will be updated.
+  * If the `QUANTITY_TO_REMOVE` is larger than current quantity of the food, `FridgeFriend` will give an error message.
+  * If the `QUANTITY_TO_REMOVE` is equal to current quantity of the food, it means food is depleted and thus the whole food item will be deleted by `FridgeFriend` (it will not appear on [list](#display-the-list-of-all-foods-list) either).
+  * If the `QUANTITY_TO_REMOVE` is lower than current quantity of the food, it means there is still some food left of this item. The quantity of food will be updated.
 
 Example of usage:
 
@@ -250,14 +247,12 @@ Total MEAT quantity: 300
 
 ### Search: `search`
 
-Checks if a certain food item is inside the fridge, and if the item is found, informs user of the food that matches the search query.
+Checks if a certain food item is inside the fridge. If the item is found, `FridgeFriend` will inform the user of the food items that matches the search query.
 
 Format: `search FOOD_NAME`
 
-* The `FOOD_NAME` can be the name of a food but not an empty description.
-* The command requires the user to input the name of the food item `FOOD_NAME` to be searched for.
-  The names of food items stored in the fridge can be determined with `list`.
-* If there are multiple items that contain the food name, the search function will display all of those food items.
+* The `FOOD_NAME` can be a partial or full name of a food item but not an empty description.
+* If there are multiple food items which names contain the same partial name, the search function will display all of those food items.
 
 Example of usage:
 
@@ -300,9 +295,10 @@ These are the food expiring in the following week:
 
 ### List categories with food running low: `runninglow`
 
-Displays a list of food categories which total quantity is below a specified minimum limit. 
-This command also displays the existing quantities along with its limits for each category. 
-Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
+Displays a list of food categories which total quantity is below a specified minimum limit
+This command also displays the existing quantities along with its limits for each category.
+
+:bulb: These limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
 
 :information_source: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
 `FridgeFriend` would prompt the user to set at least one of the food category to be more than 0.
@@ -367,21 +363,13 @@ You are running low on food in these categories:
 
 ### List history of items added: `history`
 
-Displays a history of food items that have been added to the Fridge
-since it was last cleared.
-
-* The Fridge keeps track of all Food items added in its lifetime automatically.
-* Unlike adding Food to a Fridge, which merges the quantity of duplicate Foods together,
-  the history command will not merge the quantities of food.
-  * Thus, the user can use this command to keep track of all occurrences where Food
-  has been added to the Fridge.
+Displays a history of food items that have been added to `FridgeFriend`. `FridgeFriend` keeps track of all food items added in automatically. Unlike using the [add](#adding-a-food-item-add) command, the history command records each addition separately. Thus, the user can use this command to keep track of all occurrences where food has been added to `FridgeFriend`.
 
 :information_source: The data is saved to disk in a text file, with default location as `data/historyData.txt`.
 
 :warning: Do NOT modify the data file as this might lead to corruption and loss of the data.
 
-* In the event that the data in the text file is corrupted or in an unreadable format, the   `history` command may fail to output the contents of the file. Users may have to manually inspect the file to delete the invalid content, or wipe the contents of the file with the [`history clear`](#clear-list-history-of-items-added-history-clear) command, to resume normal function.
-  * The execution of the FridgeFriend program, however, will not be interrupted.
+:warning: In the event that the data in the text file is corrupted or in an unreadable format, the `history` command may fail to output the contents of the file. Users may have to manually inspect the file to delete the invalid content, or wipe the contents of the file with the [`history clear`](#clear-list-history-of-items-added-history-clear) command, to resume normal function. The execution of the `FridgeFriend` program, however, will not be interrupted.
 
 Format: `history`
 
@@ -401,7 +389,7 @@ This is the full history of items you've added in the fridge:
 
 Wipes the data from the history text file.
 
-:warning: This command will permanently erase the entire history log and this action ***cannot*** be reversed.
+:warning: This command will ***permanently*** erase the entire history log and this action ***cannot*** be reversed.
 
 Format: `history clear`
 
@@ -419,7 +407,7 @@ This is the full history of items you've added in the fridge:
 
 Removes all food items in the fridge.
 
-:warning: This command will permanently empty the fridge and this action ***cannot*** be reversed.
+:warning: This command will ***permanently*** empty the fridge and this action ***cannot*** be reversed.
 
 Format `clear`
 
@@ -453,18 +441,11 @@ Bye! Hope to see you again soon!
 
 ## FAQ
 
-**Q**: How do I transfer my data to another computer?
-
-**A**: Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder. As long as the target computer satisfies the application prerequisites, it can execute with the saved data as before.
-
-**Q**: What if I forget the correct format of a command?
-
-**A**: You will get a tip if you use any of the command keywords incorrectly.
-Plus, you are always welcome to use `help` command.
-
-**Q**: How do I report a bug?
-
-**A**: You can create a new issue [here](https://github.com/AY2021S2-CS2113-T10-1/tp/issues).
+|Index| Question| Answer|
+|-----|---------|-------|
+|1|How do I transfer my data to another computer?|Copy the `.jar` file along with `data` folder to the target computer and place them together into an empty folder. As long as the target computer satisfies the application prerequisites, it can execute with the saved data as before.|
+|2|What if I forget the correct format of a command?|You will get a tip if you use any of the command keywords incorrectly. Plus, you are always welcome to use `help` command.|
+|3|How do I report a bug in the appplication?|You can create a new issue [here](https://github.com/AY2021S2-CS2113-T10-1/tp/issues) on the project repository. Do state the type of bugs as well as give a clear description of the bug supported with appropriate screenshots.|
 
 ## Command Summary
 

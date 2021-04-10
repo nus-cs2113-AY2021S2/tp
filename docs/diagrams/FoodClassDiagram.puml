@@ -72,7 +72,7 @@ class UniqueFoodnameChecker {
     + boolean isParamIdentical()
 }
 
-Fridge *-right- "UniqueFoodnameChecker" : uses <
+Fridge *-right- "UniqueFoodnameChecker" : uses >
 
 enum FoodStorageLocation <<enumuration>> {
     FREEZER

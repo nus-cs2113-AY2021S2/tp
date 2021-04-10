@@ -24,6 +24,7 @@ fridgefriend->fridgefriend: run()
 loop !isExit
     fridgefriend -> ui: getNextLine()
     return userInput
+    destroy ui
 
     fridgefriend -> parser: getCommand(userInput)
     create command

@@ -8,7 +8,6 @@ It is written in Java, and has more than 6000 lines of code.
 
 ## Contents
 
-* [Introduction](#introduction)
 * [Design](#design)
   * [Architecture](#architecture)
   * [Utilities Component](#utilities-component)
@@ -18,12 +17,12 @@ It is written in Java, and has more than 6000 lines of code.
 * [Implementation](#implementation)
   * [Main Logic](#main-logic)
   * [Add Command](#add-command)
+  * [List Command](#list-command)
   * [Remove Command](#remove-command)
   * [Search Command](#search-command)
   * [Running Low Command](#running-low-command)
   * [Set Limit Command](#set-limit-command)
   * [Expiring Command](#expiring-command)
-  * [List Command](#list-command)
   * [History Command](#history-command)
 * [Product Scope](#product-scope)
   * [Target User Profile](#target-user-profile)
@@ -47,11 +46,11 @@ The ***Architecture Diagram*** given below explains the high-level design of the
 :information_source: The user interacts with the `Ui` class which is part of the `Utilities` component.
 
 The Main driver class for the FridgeFriend app is
-named **[`FridgeFriend`](https://github.com/AY2021S2-CS2113-T10-1/tp/blob/master/src/main/java/seedu/fridgefriend/FridgeFriend.java)**.
+named `FridgeFriend`**.
 It is responsible for,
 
-* At app launch: Initialises the components in the correct sequence, and connects them up with each other.
-* At shut down: Shuts down the components and invokes cleanup methods where necessary.
+* At app launch: Initialising the components in the correct sequence, and connecting them up with each other.
+* At shut down: Shutting down the components and invoking cleanup methods where necessary.
 
 The rest of the App consists of four components.
 
@@ -60,13 +59,13 @@ The rest of the App consists of four components.
 
 * [**`Command`**](#command-component): Executes commands based on the input obtained
   and processed from `Parser` in `Utilities`. The list of executable commands can be found in our
-  [User Guide](https://ay2021s2-cs2113-t10-1.github.io/tp/UserGuide.html).
+  User Guide.
 
-* [**`Food`**](#food-component) represents a collection of classes used by the FridgeFriend application.
+* [**`Food`**](#food-component) contains a collection of classes used by the FridgeFriend application to represent food items.
   Food objects are instantiated by the `Command` Component. Once a `Food` object is created,
-  it may be stored to disk using the `Storage` function in `Utilities`.
+  it will be stored to disk using the `Storage` function in `Utilities`.
 
-* [**`Exception`**](#exception-component) represents a collection of classes that represent potential
+* [**`Exception`**](#exception-component) contains a collection of classes that represent potential
   exception events that may occur during the usage of `FridgeFriend`. The `Exception` component
   facilitates the return of exceptions to the `UI` class in `Utilities`, which will display
   the error message to the user.
@@ -79,7 +78,7 @@ The Utilities component contains the main classes that run the main functions of
 
 The ***Utilities Class Diagram*** given above shows how the classes in the Utilities component interact with each other and classes from other component.
 
-The Utilities Component consists for 4 classes.
+The Utilities Component consists of 4 classes.
 
 * **`LoggingHandler`**: Logs information during execution to the console.
 * **`Parser`**: Breaks down user input into relevant objects.
@@ -90,60 +89,56 @@ The Utilities Component consists for 4 classes.
 
 The Command component contains the sub classes of the features that will be executed.
 
-The command Object is executed by the main method in FridgeFriend.
+The command object is executed by the main method in `FridgeFriend`.
 The execution of the command can affect the fridge.
-After the execution, the results of the command object is pass to the UI.
-The results of the command instruct the Ui to display the message return to the user.
+After the execution, the results of the command object is passed to the `Ui` which displays the message to the user.
 
 ![Command Class Diagram](diagrams/diagram_images/CommandClassDiagram.png)
 
-The ***Command Class Diagram*** given above shows how the Command interacts with Fridge class.
+The ***Command Class Diagram*** given above shows how the Command interacts with `Fridge` class.
 
-The Command Component consist of 11 sub class which each command represents a features.
+The Command Component consists of 11 subclasses where each class represents a command feature.
 
 * **`AddCommand`**: Add a new food object to the fridge or add the quantity of existing food item with same parameters when executed.
-* **`RemoveCommand`**: Remove a portion of food quantity from a particular food in the fridge when executed.
+* **`RemoveCommand`**: Remove a portion of food from a particular food in the fridge when executed.
 * **`ListCommand`**: List details of food either by a category, storage location or all off it when executed.
 * **`SearchCommand`**: Search for the food that contains a particular food name.
-* **`ExpiringCommand`**: Provide the list of item that is expiring in a week when executed.
-* **`ClearCommand`**: Clear the list of food objects in the fridge object.
-* **`HelpCommand`**: List the instruction on how to use all the commands in FridgeFriend.
-* **`RunningLowCommand`**: Provide the food category that are running low compare to the limit set in the Food Category.
+* **`ExpiringCommand`**: Provide the list of items that are expiring in a week.
+* **`ClearCommand`**: Clear the list of food items in the fridge object.
+* **`HelpCommand`**: List all the commands in `FridgeFriend`.
+* **`RunningLowCommand`**: Provide the food categories that are running low compared to the limit set for that category.
 * **`SetLimitCommand`**: Change the default quantity limit in that particular Food Category.
-* **`HistoryCommand`**: Display the details of food items that has been added to the fridge.  
-* **`ByeCommand`**: Indicate to the main method to exit the program.
+* **`HistoryCommand`**: Display the history of all food item additions in the fridge.  
+* **`ByeCommand`**: Exit the application.
 
 ### Food Component
 
-The Food component represents the basic `Food` object and related class in FridgeFriend.
-
-* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
-This is to facilitate different manipulations on different food categories.
-* `Fridge` maintains the list of `Food` and have methods to add, remove or modify the foods.
-* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
-* Whenever a `Food` object is created or called, exceptions may be thrown.
+The Food component represents the basic `Food` object and related objects in FridgeFriend.
 
 ![Food Class Diagram](diagrams/diagram_images/FoodClassDiagram.png)
 
 The ***Food Class Diagram*** given above shows all the classes derived from Food or
 used in Food operations.
 
+* `Food` is an abstract class which has multiple child Food classes, distinguished by category.
+This is to facilitate different manipulations on different food categories.
+* `Fridge` maintains the list of `Food` and has methods to add, remove or modify the foods.
+* `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
+* Whenever a `Food` object is created or called, exceptions may be thrown.
+
 ### Exception Component
 
 The Exception component represents a collection of classes that represent potential
 exception events that may occur during the usage of `FridgeFriend`.
-
 The `Exception` component facilitates the return of exceptions to the `UI` class
 in `Utilities`, which will display the corresponding error message to the user.
 
 ![Exception Class Diagram](diagrams/diagram_images/ExceptionClassDiagram.png)
 
 The ***Exception Class Diagram*** given above shows the custom `Exceptions`
-created for the FridgeFriend project, and stored inside the `Exceptions` component.
-
+used by `FridgeFriend`, and stored inside the `Exceptions` component.
 All exceptions extend from the Java default `Exception` class. They only differ with regard
 to the throwable error message.
-
 The `Exceptions` component currently consists of eleven (11) custom Exceptions, as of v2.0:
 
 Among these eleven custom exceptions, the `Exceptions` component can generally be
@@ -164,6 +159,7 @@ classified into three broad categories:
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
 :information_source: For simplicity, where there are exceptions being thrown, they will be represented in the diagrams as comments. In the actual implementation, exception objects are being initialised and executed.
+:information_source: Due to simplicity, some function calls that are not essential to the execution of commmands are not covered in the diagram. Hence, the `Command` objects will not be destroyed at the end of the diagrams.
 
 ### Main Logic
 
@@ -175,24 +171,20 @@ The main application logic underlines the main executable conditions that make u
 4. Following that, `FridgeFriend` then self-invokes a method that executes the `Command` object.
 5. In this method, the `Command` object  executes its specified action.
 6. From steps 2 to 5, should there be an error thrown, the `Command` class would construct an `Exception` object.
-7. Lastly, the `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
+7. The `Exception` would be thrown back to `FridgeFriend`, which will then use the `Ui` class to display an error message to the user.
 
 Given below is the sequence diagram for the interactions within the main application logic.
 
 ![MainLogicSequenceDiagram](diagrams/diagram_images/MainLogicSequenceDiagram.png)
 
-:information_source: Information:
-
-* The lifeline for `Parser`, `Command`, and `Exception` should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
-* Due to the lack of a standard to represent try-catch blocks in UML, the `alt` frame in this diagram is used to indicate a try-catch block.
-  Additionally, while the diagram shows the `Exception` object being initialised by `FridgeFriend`, it is actually initialised in the `Parser` or `Command` class and thrown to `FridgeFriend`
+:information_source: The lifeline for `Ui`, `Parser`, and `Command`, should end at the destroy marker. However, due to a limitation of PlantUML, the three lifelines reach the end of the diagram.
 
 ### Add Command
 
-AddCommand class is initialised whenever the parser recognise the `add` keyword.
+AddCommand class is initialised whenever `Parser` recognises the `add` keyword.
 
-1. The constructor should create a new Food object according to the parsed user input.
-2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
+1. The constructor should create a new `Food` object according to the parsed user input.
+2. The `UniqueFoodnameChecker` will be called from `Fridge` class to decide whether to add a new `Food` or edit on an existing `Food` object.
 
 Given below is the sequence diagram for the AddCommand workflow.
 
@@ -200,35 +192,49 @@ Given below is the sequence diagram for the AddCommand workflow.
 
 :information_source: Information:
 
-* The `UniqueFoodnameChecker` object will be destructed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
+* The `UniqueFoodnameChecker` object will be destroyed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
 * The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
-* Some function calls such as showResults() in `Command` is not covered in this diagram. So the `Command` object will only be destructed after all function calls on that iteration.
+
+### List Command
+
+There are three variations of the `list` command.
+
+1. List all food
+2. List by category
+3. List by storage location
+
+The first variation is implemented by iterating through the collection of food items in the fridge.
+The names of all the food are concatenated using a Java `StringBuilder`, and the final result, containing the list of all food items, is returned to the main program.
+
+The sequence diagram below shows how this `list` operation works:
+
+![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
+
+The second and third variations are also implemented by iterating through the collection of food in the fridge.
+However, there would be an additional check to verify if the given food item contains the correct category or storage location attribute as requested by the user, before being returned to the `ListCommand`.
+If it does not match the required attribute, then that food item would be excluded from the result.
+The final result would then be returned to the main program.
 
 ### Remove Command
 
-When the user specify to remove a portion of a food item in the fridge, the `remove` command
-will execute the remove operation by:
+When the user requests to remove a portion of a food item in the fridge, the `remove` command will execute the remove operation by:
 
-1. Searching of the food item in the fridge by looping through each food item.  
-2. If the food item exist, check if the quantity is greater than the available quantity in the fridge.
-3. If it is greater, an exception will be thrown to FridgeFriend.
+1. Searching for the food item in the fridge by looping through each food item.  
+2. If the food item exists, check if the quantity to be removed is greater than the available quantity in the fridge.
+3. If it is greater, an exception will be thrown to `FridgeFriend`.
 4. Otherwise, check if removing the quantity will reduce the quantity to zero.
 5. If it does not reduce to zero, proceed to remove the required quantity.
 6. If it does reduce to zero, then remove the food item completely.
-7. Afterwards, check that by removing the food, the total quantity of that FoodCategory will not be lower than the minimum quantity.
-8. Return a warning message if the total quantity is lower than the minimum quantity to inform the user .
+7. Afterwards, check that by removing the food, the total quantity of that `FoodCategory` will not be lower than the minimum quantity.
+8. Return a warning message if the total quantity is lower than the minimum quantity.
 
 The sequence diagram below shows how the `remove` operation works:
 
 ![RemoveSequenceDiagram](diagrams/diagram_images/RemoveSequenceDiagram.png)
 
-:information_source: Information:
-
-The lifeline for `Food` should end at the destroy marker. However, due to a limitation of PlantUML, the lifeline reach the end of the diagram.
-
 ### Search Command
 
-When the user specify to search a food item in the fridge, the `search` command will execute
+When the user requests to search a food item in the fridge, the `search` command will execute
 search operation by:
 
 1. Searching the list of foods in the fridge by that contain the food name entered by the user
@@ -243,13 +249,13 @@ The sequence diagram shows how the `search` operation works:
 
 The `runningLow` command is implemented by:
 
-1. Checking the setlimit of each category in the FoodCategory.
-2. If the limit is set to 0, the calculation of the totalQuantity of the category can be omitted.
-3. If all the FoodCategory is set to 0, return disabled message.   
-4. Otherwise, if any of the FoodCategory limit is non-zero, proceed to check the total quantity of that FoodCategory in the fridge.
-5. Follow by comparing with the default minimum number of quantity in each FoodCategory.
-6. Then return all the FoodCategory that has quantity lower than the default minimum number of quantity as a warning message
-7. Otherwise, return stockedUp message.
+1. Checking the limit of each category in the `MinimumQuantity`.
+2. If the limit is set to 0, the calculation of the total quantity of the category can be omitted.
+3. If all the `FoodCategory` are set to 0, return the "disabled message".
+4. Otherwise, if any of the `FoodCategory` limits are non-zero, proceed to check the total quantity of that `FoodCategory` in the fridge.
+5. Follow up by comparing the total quantity with the default minimum number of quantity in each `FoodCategory`.
+6. Then return all the `FoodCategory` that have quantities lower than the default limit in the warning message.
+7. Otherwise, return a "stockedUp message".
 
 The sequence diagram shows how the `runninglow` operation works:
 
@@ -259,9 +265,8 @@ The sequence diagram shows how the `runninglow` operation works:
 
 The `setlimit` command is implemented by:
 
-1. Calling a setter method in MinimumQuantity.
-2. The setter method will change the FoodCategory's predefined minimum number of quantity.
-3. The FoodCategory and new minimum number of quantity is specified by the user.
+1. Calling a setter method in `MinimumQuantity`.
+2. The setter method will change the `FoodCategory`'s predefined minimum quantity.
 
 The sequence diagram shows how the `setlimit` operation works:
 
@@ -269,48 +274,28 @@ The sequence diagram shows how the `setlimit` operation works:
 
 ### Expiring Command
 
-The `expiring` command is implemented through looping of the food items in the fridge and
-return the food item that are expired and expiring.
+The `expiring` command is implemented by looping of the food items in the fridge and
+returning the food items that are expired and expiring.
 
-:information: Information:
-*Food is considered expired if the expiry date is one day before calling the command.
-*Food is considered expiring if the expiry date is within one week of calling the command.
+:information_source: Information:
+
+* A `Food` item is considered expiring if the expiry date is within one week of calling the command.
+* A `Food` item is considered expired if the expiry date is earlier than the day of calling the command. `Food` items will not be considered expired if the command is called on the same day as its expiry.
 
 The sequence diagram shows how the `expiring` operation works:
 
 ![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
 
-### List Command
-
-There are three variations of the `list` command.
-
-1. List all food
-2. List by category
-3. List by storage location
-
-The first command, list all food, is implemented by iterating through the collection of food in the fridge.
-The names of all the food is concatenated using a Java StringBuilder, and the final result, containing the list of all food, is returned to the main program.
-
-The sequence diagram below shows how this `list` operation works:
-
-![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
-
-The second and third commands, list by category or storage location, is also implemented by iterating through the collection of food in the fridge.
-However, there would be an additional check to verify if the given food item contains the correct category/storage location attribute as requested by the user, before being returned to the `ListCommand`.
-If it does not match the required attribute that food item would not be part of the result.
-The final result, containing the list of all food belonging to the category/storage location, would then be returned to the main program.
-
 ### History Command
 
-The code related to persistent storage for the `history` command is implemented under the `Storage` class
-under the `Utilities` component.
+The code related to the `history` command is implemented by the `Storage` class in the `Utilities` component.
 
 The implementation of the `history` command is as follows:
 
 1. After every `add` command, a copy of the added food will be appended to `historyData.txt`
 2. When the user invokes the `history` command, `historyData.txt` will be read, line by line.
-3. The line-by-line contents of `historyData.txt` are concatenated into a single output string  
-4. The output string that contains the history data will be output to the user.
+3. The line-by-line contents of `historyData.txt` are concatenated into a single output string.  
+4. The output string that contains the history data will be displayed to the user.
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
@@ -325,15 +310,16 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI app
+* is reasonably comfortable using the command line interface (CLI)
 
 ### Value Proposition
 
-This app allows user to monitor their food in a fridge faster than a typical mouse/GUI driven app.
-It includes features such as ability to check for the foods that are expiring in a week, and the food item
-that requires to top up. It will help new homeowners to keep track of their food into different food
-categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to
-keep track of past food items that has been added to the fridge.
+This application allows users to monitor their food in a fridge faster than a typical mouse/GUI driven app.
+It includes features such as the ability to check for the foods that are expiring in a week, and the food items
+that require replenishing. It will help new homeowners to keep track of their food into different food
+categories and storage locations which provides additional ease of searching for their food items.
+In addition, our users will be abe to keep track of past food items that has been added to the fridge
+to analyse patterns in their purchasing of food.
 
 ## User Stories
 
@@ -364,53 +350,15 @@ keep track of past food items that has been added to the fridge.
 
 ## Non-Functional Requirements
 
-### Performance and scalability
-
-* Single-User
-
-The product should be for a single user i.e. (not a multi-user product).
-
-**Reason**: multi-user systems are hard to test, which is unfair for peer testers who will be graded based on the number of bugs they find.
-
-* Typing-Preferred
-
-The product should be targeting users who can type fast and prefer typing over other means of input.
-
-**Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
-
-### Portability and compatibility
-
-* Platform-Independent
-
-The software should work on the Windows, Linux, and OS-X platforms.
-
-**Reason**: Peer testers should be able to use any of these platforms.
-
-* Java-Version
-
-The software should work on a computer that has version 11 of Java i.e., no other Java version installed.
-
-### Reliability, availability, maintainability
-
- As it is a locally-runned command line application, there will be no down time for users.
- It should be available anytime and anywhere.
-
-* No-Remote-Server
-
-The software should not depend on any remote servers.
-
-### Security
-
-* Human-Editable-File
-
-The data should be stored locally and should be in a human editable text file.
-Thus the data is not protected by nature.
-
-**Reason**: To allow advanced users to manipulate the data by editing the data file.
-
-### Usability
-
-It is very easy for a user to use the system. There is a detailed user guide provided as well as a help command. The user guide can be accessed [here](UserGuide.md)
+|Type|Requirement|Description|Reason|
+|----|-----------|-----------|------|
+|Performance and Scalability|Single User|The product should be for a single user i.e. (not a multi-user product).|Multi-user systems are hard to test, which is unfair for peer testers who will be graded based on the number of bugs they find.|
+|Performance and Scalability|Typing Preferred|The product should be targeting users who can type fast and prefer typing over other means of input.|To increase comparability of products, and to make feature evaluation easier for peer evaluators.|
+|Portability and Compatibility|Platform Independent|The software should work on the Windows, Linux, and OS-X platforms.|Peer testers should be able to use any of these platforms.|
+|Portability and Compatibility|Java -Version|The software should work on a computer that has version 11 of Java i.e., no other Java version installed.|-|
+|Reliability, Availability, and Maintainability|No Remote Servers|The software should not depend on any remote servers.|As it is a locally-runned command line application, there will be no down time for users. It should be available anytime and anywhere.|
+|Security|Human Editable File|The data should be stored locally and should be in a human editable text file. Thus the data is not protected by nature.|To allow advanced users to manipulate the data by editing the data file.|
+|Usability|Easy to Use|It should be very easy for a user to use the system.| There is a detailed user guide provided as well as a help command. The user guide can be accessed [here](UserGuide.md).|
 
 ## Glossary
 
@@ -427,8 +375,7 @@ Given below are instructions to test the app manually.
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
-4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend_v2.0.jar` (or the latest version).
+4. Open your Command Line Terminal in the folder where the `jar` file is located, and run `FridgeFriend` with `java -jar FridgeFriend_vx.x.jar` where `vx.x` is the `FridgeFriend` version that you have downloaded.
 5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
    list of all current food.
 6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with
@@ -437,7 +384,7 @@ Given below are instructions to test the app manually.
 ### Adding food
 
 When adding food, the `FridgeFriend` application requires a very specific format, so that all attributes of
-a given food can be added to the Fridge. This might be very troublesome for manual testing.
+a given food can be added to the Fridge.
 
 Here are some inputs you can try:
 
@@ -466,7 +413,6 @@ The `list` command in `FridgeFriend` has three (3) variations:
 * List all food of a certain storage location in the fridge.
 
 The latter two commands will return an output that is a subset of the first command (_List all food_).
-
 No items will be listed if no food in the fridge match the conditions specified in the command.
 
 * Test case: `list`
@@ -639,11 +585,11 @@ The fridge at program launch will be empty, and the limits of all food categorie
 
 |Corruption Type| Error Message| Behaviour|
 |---------------|--------------|----------|
-|Corrupted `fridgeData.txt` file| `There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1`|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
+|Corrupted `fridgeData.txt` file| ```There was an error loading the data for FridgeFriend!Index 1 out of bounds for length 1```|`FridgeFriend` will load the contents of the text file until the point in the file where corrupted/invalid data is encountered. User can recover the contents of the file by manually inspecting the text file and removing invalid content.|
 |Corrupted readable categories in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The quantity of the invalid categories due to corruption will be reset to `500`.|
-|Corrupted unreadable categories in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1`|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted unreadable categories in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Index 1 out of bounds for length 1```|The quantity limits will be parsed up until the corrupted unreadable category. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted integer quantities in `limitsData.txt`|No error message|User can only identify that data has been corrupted when using the `runninglow` command. The limit will be updated to the corrupted value.|
-|Corrupted non-integer quantities in `limitsData.txt`|`There was an error loading the data for FridgeFriend! Sorry my friend, the quantity must be a number.`|The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
+|Corrupted non-integer quantities in `limitsData.txt`|```There was an error loading the data for FridgeFriend! Sorry my friend, the quantity must be a number.```|The quantity limits will be parsed up until the corrupted non-integer value. Subsequent quantity limits in the file would not be parsed, and will be reset to the default of `500`.|
 |Corrupted readable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The `history` command will continue to print out the contents of the file, including the corrupted data. While this corrupted data would not affect program flow, it may create unexpected output. If necessary, users can manually inspect the file and remove unwanted data at their own discretion.|
 |Corrupted unreadable categories in `historyData.txt`|No error message|User can only identify that data has been corrupted when using the `history` command. The contents of the entire file will not be parsed, even if there is valid content in some parts of the file. The contents of the file will not be affected. If necessary, users can manually inspect the file and remove corrupted data, in order to salvage any valid data.|
 
