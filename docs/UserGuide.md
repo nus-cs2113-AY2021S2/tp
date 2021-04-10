@@ -76,13 +76,13 @@ record your thoughts on how good or bad the experience was.
 
 The following formats are used in this document:
 
-* A grey highlight (called a mark-up) indicates a keyword. It is often used to indicate i) a field or command that can be typed into the 
+* A highlight (called a mark-up) indicates a keyword. It is often used to indicate i) a field or command that can be typed into the 
   command line and executed by Connoisseur; or ii) the prompts displayed by Connoisseur. <br> e.g.`list [SORTING METHOD]`
 * Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user.<br> e.g.
   in `list [SORTING METHOD]`
   SORTING METHOD is the field input by the user and examples of valid commands are:`list rating`,`list title` etc.
-* Word in lower case are given commands. <br> e.g. in `new [quick | long]` the user can input either the command
-  `new quick`or `new long`
+* Word in lower case are given commands. <br> e.g. in `new [quick | full]` the user can input either the command
+  `new quick`or `new full`
 * <span>&#10071;</span> symbol will be followed by additional information to take note of for that section.
 * A light blue font color indicates a Hyperlink that you can click on and be transferred to the corresponding section 
   in Connoisseur.<br> e.g. [How to use this Guide](#22-how-to-use-this-guide) 
@@ -95,21 +95,25 @@ and can be completed in a few simple steps. Follow the instructions below to try
 1. Ensure that you have Java 11 or above installed. The latest version of Java can be found
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
 2. Download the latest version of Connoisseur from [here](https://github.com/AY2021S2-CS2113T-F08-3/tp/releases). To do
-   so, look for the file connoisseur.jar and click on it. Please refer to Figure 1 if you require assistance with
-   locating the file. Figure 1 shows how to download version 2.1 of Connoisseur. Connoisseur.jar has been highlighted in
+   so, look for the file CS2113T-F08-3.Connoisseur.jar and click on it. Please refer to Figure 1 if you require assistance with
+   locating the file. Figure 1 shows how to download version 2.1 of Connoisseur. CS2113T-F08-3.Connoisseur.jar has been highlighted in
    red for your convenience.   
    ![Figure 1 - How to download Connoisseur](./images/ug/jarfile.png)
    Figure 1. How to download Connoisseur
 
 3. Copy the file to the folder you want to use as the _home folder_ for Connoisseur
+   
    ![Figure 2 - Copying connoisseur.jar into a folder](./images/ug/downloading1.PNG)
    <p align="center">Figure 2. Copying connoisseur.jar into a folder</p>
+   
 4. Open terminal and navigate to the directory of the folder you just copied into.
-5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur.
+5. In your terminal, type `java -jar CS2113T-F08-3.Connoisseur.jar` and press enter. This should start Connoisseur.
+   
    ![Figure 3 - Starting Connoisseur](images/ug/downloading2.png)
    <p align="center">Figure 3. Starting Connoisseur</p>
+   
 6. You may now use Connoisseur by typing in commands and pressing Enter to execute it. Refer to
-   the [Command summary](#5.-command-summary) for a list of recognised commands.
+   the [Command summary](#5-command-summary) for a list of recognised commands.
 7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3 The data for
    Connoisseur is saved in `connoisseur.json` in the _data folder_.
 
@@ -119,7 +123,7 @@ This section covers all the commands that you can type into the Command Box of C
 `Please enter a command: `
 
 The commands are categorised into the two modes offered by Connoisseur, Review and Recommendation mode. If it is the
-first time that you are using the command, we recommend that you refer
+first time that you are using the commands, we recommend that you refer
 to [How to use the Guide](#22-how-to-use-this-guide) to better interpret the format of the commands.
 
 ### 4.1 Review Mode
@@ -129,10 +133,10 @@ category. The review mode can be accessed using the `review` command as shown in
 
 ![img_1.png](images/ug/review_mode.png)
 <p align="center">Figure 4. Entering 'Review' mode</p>
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are 
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> This command is case-insensitive.
+
 #### 4.1.1 Adding a Review
 
 This feature allows you to add a new review. There is a choice of quick review or full review.
@@ -142,8 +146,7 @@ Command: `add [quick | full]`, `new [quick | full]`<br>
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the two words in the command. <br>
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 If quick review is specified, Connoisseur will then prompt you to enter the title, category and rating of the review, as
 shows in _Figure 5_.<br />
@@ -159,16 +162,8 @@ If you do not specify `[quick | full]` and simply input the command: `add` or `n
 specify if you would like to input a quick review. Input the command: `y` for quick review or `n` for full review
  as shown in _Figure 7_.<br />
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the 'add' or 'new' command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
-
-<span>&#10071;</span> The commands are case-insensitive. <br>
-
-<span>&#10071;</span> Ensure when typing 'y' or 'n' command do not type any additional blank spaces. Otherwise, Connoisseur will 
-detect an invalid command and prompt you to enter y/n again <br>
-
 ![img_4.png](images/ug/add_Review.png)
-<p align="center">Figure 7. Adding a quick or long review </p>
+<p align="center">Figure 7. Adding a quick or full review </p>
 
 <span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0 and is not an invalid number.
 If you input an invalid number Connoisseur will prompt you until a valid number is input. <br />
@@ -197,8 +192,7 @@ allow Connoisseur to use the saved _sort method_ (refer to [4.1.3](#413-sort-rev
 * `earliest`
 * `latest`
   
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the commmand. If blank spaces are
-  typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'list' is case-insensitive. On the other hand, when inputting sorting method ensure it is in lower case.<br>
 
@@ -233,8 +227,7 @@ Command: `sort [SORTING METHOD]`
 `[SORTING METHOD]` : sort method to be used. Default sorting method is `latest`. Refer [above](#4.1.2-list-reviews) for
 a list of recognised sorting methods.
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'sort' is case-insensitive. On the other hand, when inputting sorting method ensure it is in lower case.<br>
 
@@ -252,13 +245,12 @@ Command: `view [TITLE_OF_REVIEW]`
 
 `[TITLE_OF_REVIEW]` : title of review that you want to view.
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'view' is case-insensitive.<br>
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the 'view' and 
-'TITLE_OF_REVIEW'  in the command. <br>
+'TITLE_OF_REVIEW' in the command. <br>
 
 ![img_10.png](images/ug/view_review.png)
 <p align="center">Figure 12. Viewing a Review </p>
@@ -279,13 +271,11 @@ Command : `edit [TITLE_OF_REVIEW] `
 <span>&#10071;</span> Ensure the title of the review you want to edit already exists in your lists of reviews.
 Otherwise, Connoisseur will prompt you saying that no such review exits. When typing the title you want to edit, ensure spelling and the number of blank spaces in between words is the same as the title in the list.
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'edit' is case-insensitive.<br>
 
-<span>&#10071;</span> When extra blank spaces are typed in between the 'edit' and
-'TITLE_OF_REVIEW' in the command, Connoisseur will detect it as an invalid command. <br>
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces are typed in between the 'edit' and 'TITLE_OF_REVIEW' in the command.
 
 As shown in Figure 13 below, Connoisseur will prompt you asking whether you would like to make changes to Title /
 Category / Rating / Description. Input either `Title`,`Category`, `Rating` or `Description`.<br>
@@ -300,10 +290,7 @@ If you would like to continue to make edits to the review, input `y`. Otherwise,
 Before exiting the _edit_ feature, you have the option to update the date of entry to reflect the date and timing in
 which the edit was made. Input `y` if you would like to do so. Otherwise, input`n`.
 
-<span>&#10071;</span> Inputs 'y' and 'n' are case-insensitive. <br>
-
-<span>&#10071;</span> Ensure when typing 'y' or 'n' command do not type any additional blank spaces. Otherwise, Connoisseur will
-detect an invalid command and prompt you to enter 'y' or 'n' again <br>
+<span>&#10071;</span> Inputs 'y' and 'n' are case-insensitive and Connoisseur will ignore blank spaces before or after the command.<bre>
 
 ![img_12.png](images/ug/edit_Review.png)
 <p align="center">Figure 13. Editing a Review </p>
@@ -316,9 +303,7 @@ Command: `delete [TITLE_OF_REVIEW]`
 
 `[TITLE_OF_REVIEW]` : title of review that you want to delete.
 
-
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'delete' is case-insensitive.<br>
 
@@ -351,8 +336,7 @@ This feature allows you to add a new recommendation.
 
 Command: `add ` or `new `
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> Commands 'add' and 'new' are case-insensitive.
 
@@ -372,7 +356,7 @@ to enter a unique title. <br>
 
 <span>&#10071;</span> If you try to add a Recommendation title that already exists in your Review list, Connoisseur will
 warn you. Perhaps you had forgotten that you have already experienced and reviewed the item in the past!
-Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. 
+Not to worry, Connoisseur will ask you if you want to exit *adding a recommendation*. Input `y` to exit. Input `n` to continue adding a recommendation. 
 
 #### 4.2.2 List Recommendation
 
@@ -383,8 +367,7 @@ Command: `list`
 ![img_19.png](images/ug/list_Reco.png)
 <p align="center">Figure 17. Listing Recommendations</p>
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> 'list' command is case-insensitive.
 
@@ -416,10 +399,7 @@ made to the recommendation title is a duplicate and already exists in the review
 
 If you would like to continue to make edits to the recommendation, input `y`. Otherwise, input `n`.
 
-<span>&#10071;</span> Inputs 'y' and 'n' are case-insensitive. <br>
-
-<span>&#10071;</span> Ensure when typing 'y' or 'n' command do not type any additional blank spaces. Otherwise, Connoisseur will
-detect an invalid command and prompt you to enter 'y' or 'n' again <br>
+<span>&#10071;</span> Inputs 'y' and 'n' are case-insensitive and Connoisseur will ignore any extra blank spaces typed. <br>
 
 ![img_1.png](images/ug/edit_reco.png)
 <p align="center">Figure 18. Editing Recommendations</p>
@@ -432,20 +412,19 @@ Command: `delete [TITLE_OF_RECOMMENDATION]`
 
 `[TITLE_OF_RECOMMENDATION]` : title of recommendation that you want to delete.
 
-![img_2.png](img_2.png)
+![delete_Reco.png](images/ug/delete_Reco.png)
 <p align="center">Figure 19. Deleting a Recommendation</p>
 
-<span>&#10071;</span>Ensure the title of the review you want to delete already exists in your lists of recommendations.
+<span>&#10071;</span>Ensure the title of the recommendation you want to delete already exists in your lists of recommendations.
 Otherwise, Connoisseur will prompt you saying that no such recommendation exits. When typing the title you want to delete,
 ensure spelling and the number of blank spaces in between words is the same as the title in the list.
 
-<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
-typed before the command, Connoisseur will detect it as an invalid command.
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
 
 <span>&#10071;</span> The command 'delete' is case-insensitive.<br>
 
 <span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the 'delete' and
-'TITLE_OF_REVIEW' in the command. <br>
+'TITLE_OF_RECOMMENDATION' in the command. <br>
 
 #### 4.2.5 Review a Recommendation
 
@@ -457,6 +436,17 @@ Command: `done [TITLE_OF_RECOMMENDATION]`
 As shown in Figure 20, Connoisseur will prompt you to rate the experience out of 5. You can also add in a description by
 inputting `y` or `n` otherwise. Figure 20 shows that the title 'Tipo Pasta' has been successfully transferred from
 recommendation to review list.
+
+<span>&#10071;</span>Ensure the title of the recommendation you want to review already exists in your lists of recommendations.
+Otherwise, Connoisseur will prompt you saying that no such recommendation exits. When typing the title you want to review,
+ensure spelling and the number of blank spaces in between words is the same as the title in the recommendation list.
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed before or after the command.
+
+<span>&#10071;</span> The command 'done' is case-insensitive.<br>
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the 'done' and
+'TITLE_OF_RECOMMENDATION' in the command. <br>
 
 ![img_3.png](images/ug/done_reco.png)
 <p align="center">Figure 20. Reviewing a Recommendation</p>

@@ -138,6 +138,42 @@ public class RecommendationList {
     }
 
     /**
+     * Check for duplicate recommendation titles in existing recommendation list during editing.
+     *
+     * @param title recommendation title input by user.
+     * @param index index of title that is being edited by the user.
+     * @return true if there is a duplicate, and false if there are no duplicates.
+     */
+    public boolean checkDuplicateRecommendationWhenEditing(String title, int index) {
+        int recIndex = -1;
+        for (int i = 0; i < recommendations.size(); i++) {
+            if (i == index) {
+                continue;
+            }
+            if (recommendations.get(i).getTitle().equalsIgnoreCase(title)) {
+                recIndex = i;
+            }
+        }
+        if (recIndex == -1) {
+            return false;
+        }
+        ui.println(DUPLICATE_RECOMMENDATION);
+        Recommendation currentRecommendation = recommendations.get(recIndex);
+        ui.print((recommendations.indexOf(currentRecommendation) + 1) + ". ");
+        if (recommendations.indexOf(currentRecommendation) < 9) {
+            ui.print(" ");
+        }
+        ui.print(currentRecommendation.getTitle());
+        ui.print(" | ");
+        ui.print(currentRecommendation.getCategory());
+        ui.print(" | ");
+        ui.print(currentRecommendation.priceRange());
+        ui.print(" | ");
+        ui.println(currentRecommendation.getRecommendedBy() + "\n");
+        return true;
+    }
+
+    /**
      * Adds a recommendation.
      */
     public void addRecommendation() {
@@ -394,7 +430,7 @@ public class RecommendationList {
             while (true) {
                 ui.println(ANYTHING_ELSE);
                 String answer = ui.readCommand();
-                switch (answer.toLowerCase()) {
+                switch (answer.toLowerCase().trim()) {
                 case "y":
                     break;
                 case "n":
@@ -426,13 +462,21 @@ public class RecommendationList {
             String newTitle;
             while (true) {
                 ui.println(EDIT_TITLE_PROMPT);
-                newTitle = ui.readCommand();
+                newTitle = ui.readCommand().trim();
                 if (newTitle.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
                 }
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
+                    continue;
+                }
+                if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
+                    ui.println(CHANGE_RECO_TITLE);
+                    continue;
+                }
+                if (checkDuplicateRecommendationWhenEditing(newTitle, index)) {
+                    ui.printNoUniqueTitleMessage();
                     continue;
                 }
                 break;
@@ -444,7 +488,7 @@ public class RecommendationList {
             double newPriceHigh;
             while (true) {
                 ui.println(EDIT_RANGE_PROMPT);
-                String newPriceRange = ui.readCommand();
+                String newPriceRange = ui.readCommand().trim();
                 try {
                     double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
                     double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
@@ -475,7 +519,7 @@ public class RecommendationList {
             String newLocation;
             while (true) {
                 ui.println(EDIT_LOCATION_PROMPT);
-                newLocation = ui.readCommand();
+                newLocation = ui.readCommand().trim();
                 if (newLocation.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -492,7 +536,7 @@ public class RecommendationList {
             String newCategory;
             while (true) {
                 ui.println(EDIT_CATEGORY_PROMPT);
-                newCategory = ui.readCommand();
+                newCategory = ui.readCommand().trim();
                 if (newCategory.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -509,7 +553,7 @@ public class RecommendationList {
             String newRecBy;
             while (true) {
                 ui.println(EDIT_RECBY_PROMPT);
-                newRecBy = ui.readCommand();
+                newRecBy = ui.readCommand().trim();
                 if (newRecBy.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
