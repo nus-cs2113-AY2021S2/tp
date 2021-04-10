@@ -192,7 +192,36 @@ It is instantiated once in the connoisseur() method.<br>
 
 
 ###5.3 Recommendation Mode
+
+This section provides details on the implementation of the various commands that occurs in the recommendation mode.
+This mode allows users to keep a list of recommendations that they have not tried/completed.
+This mode implements the following features:
+
+*`add`/`new` - Add a Recommendation
+*`list` - List Recommendations
+*`edit [TITLE_OF_RECOMMENDATION]` - Edit a Recommendation
+*`delete [TITLE_OF_RECOMMENDATION]` - Delete a Recommendation
+*`done [TITLE_OF_RECOMMENDATION]` - Review a Recommendation
+
 ###5.3.1 Add a Recommendation Feature
+
+This feature allows user to add a recommendation for any of the activities that they have not completed.
+
+<span>&#10071;</span> Title of a new recommendation cannot exist in current list of reviews. An error message would be printed out.
+
+The mechanism to add a recommendation is facilitated by the `RecommendationList` class. The user is able to add in a new recommendation using `new` or `add` command.
+`addRecommendation#execute` and `addRecommendationDetails#execute` are called.
+`Recommendation` add by the user would be added into `recommendations`
+
+The following is the Sequence diagram to `add a recommendation`.
+
+![add reco seq](./diagrams/Add_Reco_Sequence_Diagram.png)
+<p align="center">Figure !!. Sequence Diagram for add recommendations</p>
+
+![add_reco](./images/ug/add_reco.png)
+<p align="center">Figure !!. Adding a Recommendation</p>
+
+The 
 
 When the user attempts to add a new recommendation, 
 ###5.3.2 List Recommendation Feature

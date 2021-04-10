@@ -1,0 +1,35 @@
+@startuml Add_Reco_Sequence_Diagram
+!define LIGHTBLUE
+!includeurl https://raw.githubusercontent.com/Drakemor/RedDress-PlantUML/master/style.puml
+skinparam style  strictuml
+
+activate Ui
+Ui -> Parser : determineCommand("new"or"add")
+activate Parser
+
+Parser -> Commands : add()
+activate Commands
+
+    Commands -> RecommendationList : addRecommendation()
+    activate RecommendationList
+
+    RecommendationList -> RecommendationList : add Recommendation
+
+    break DuplicateException
+        RecommendationList --> Ui : printNoUniqueTitleMessage()
+    end
+
+    break EmptyInputException
+        RecommendationList --> Ui : printEmptyInputMessage()
+    end
+
+RecommendationList --> Commands
+deactivate RecommendationList
+
+
+Commands --> Parser
+deactivate Commands
+Parser --> Ui
+deactivate Parser
+
+@enduml

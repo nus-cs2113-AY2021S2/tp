@@ -98,7 +98,7 @@ and can be completed in a few simple steps. Follow the instructions below to try
 
 3. Copy the file to the folder you want to use as the _home folder_ for Connoisseur
    ![Figure 2 - Copying connoisseur.jar into a folder](./images/ug/downloading1.PNG)
-   <p align="center">Figure 2. Copying connoisseur.jar into a folder</p>
+   <p text-align="center">Figure 2. Copying connoisseur.jar into a folder</p>
 4. Open terminal and navigate to the directory of the folder you just copied into.
 5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur.
    ![Figure 3 - Starting Connoisseur](./images/ug/downloading2.png)
@@ -379,7 +379,7 @@ command: `exit` or `bye`
 |[Review a Recommendation](#425-review-a-recommendation)|`done [TITLE_OF_RECOMMENDATION]`| `done Universal Studio`|
 |[Help for General usage](#43-view-help)|`help`|`help`|
 |[Help for a Specific function](#43-view-help)|`help [COMMAND_NAME]`|`help reco`<br>`help list`|
-|[Exit & Save](#4.4-Exit-&-Save-Connoisseur)|`exit`<br>`bye`|`exit`<br>`bye`|
+|[Exit & Save](#44-exit-and-save-connoisseur)|`exit`<br>`bye`|`exit`<br>`bye`|
 
 ## 6. FAQ
 
