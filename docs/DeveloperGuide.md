@@ -523,9 +523,9 @@ Invalid Input includes:
 11. Control is then returned to PatientInstance.
 
 **Design Considerations**
-<br>
+
 Using an ArrayList over a List as the main data structure:
-<br>
+
 Option 1 (Final choice): Using an ArrayList
 * Pros: Able to access a patient given the index and allows for more flexibility in the methods used.
 * Cons: Slow accessing when storing and loading as an ArrayList takes more resources than a List.
@@ -574,9 +574,9 @@ Invalid Input includes:
 10. Control is then returned to PatientInstance.
 
 **Design Considerations**
-<br>
+
 Using an iterator to store the location of the item being deleted:
-<br>
+
 Option 1 (Final choice): Not using an iterator
 * Pros: Using the inbuilt commands to iterate through to find the item to delete seems more straightforward.
 * Cons: The flexibility of the data manipulation may be restrictive and this may result in future functions being harder to implement.
@@ -618,9 +618,9 @@ Invalid Input includes:
 8. Control is then returned to PatientInstance.
 
 **Design Considerations**
-<br>
+
 Using pretty print to display the listed objects:
-<br>
+
 Option 1 (Final choice): Using pretty print
 * Pros: Visually appealing and neatly puts patients in rows with columns to display attributes. Better for larger lists.
 * Cons: Harder to implement and sometimes causes visual errors when the names or display text become too large.
@@ -676,9 +676,9 @@ Invalid Input includes:
 10. Control is then returned to PatientInstance.
 
 **Design Considerations**
-<br>
+
 Allowing `find` function to accept case-insensitive inputs:
-<br>
+
 Option 1 (Final choice): Allowing case-insensitive inputs.
 * Pros: Provides the user with greater flexibility when querying the list for specific data.
 * Cons: Harder to implement and may result in unwanted data being shown.
