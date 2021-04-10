@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SanitiseInput {
     //@@author H-horizon
-    public static boolean sanitiseInput(String input) {
+    public static boolean isInvalidFileName(String input) {
 
         ArrayList<String> invalidCharacters = new ArrayList<>();
         initialiseInvalidCharactersList(invalidCharacters);
