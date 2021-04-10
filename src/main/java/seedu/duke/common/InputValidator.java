@@ -2,7 +2,7 @@ package seedu.duke.common;
 
 import java.util.ArrayList;
 
-public class SanitiseInput {
+public class InputValidator {
     //@@author H-horizon
     public static boolean isInvalidFileName(String input) {
 

@@ -19,12 +19,12 @@ import static seedu.duke.common.Constants.PATH_DELIMITER;
 import static seedu.duke.common.Messages.MESSAGE_EMPTY_CHEAT_SHEET_DIRECTORY;
 import static seedu.duke.common.Messages.MESSAGE_LIST_OF_CHEAT_SHEETS;
 
-public class ListCheatSheetCommand extends Command {
+public class ListCheatSheetsCommand extends Command {
     protected static String directoryPath;
     protected static Path directoryAbsolutePath;
 
     //@@author H-horizon
-    public ListCheatSheetCommand() {
+    public ListCheatSheetsCommand() {
         directoryPath = FOLDER_PATH + PATH_DELIMITER + ModuleList.getSelectedModuleCode() + PATH_DELIMITER
                 + STRING_CHEATSHEET + PATH_DELIMITER;
         directoryAbsolutePath = Paths.get(directoryPath);

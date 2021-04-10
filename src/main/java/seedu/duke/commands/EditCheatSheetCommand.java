@@ -34,7 +34,7 @@ public class EditCheatSheetCommand extends DeleteCheatSheetCommand {
             }
         } else {
             ui.printMessage(String.format(MESSAGE_FILE_DOES_NOT_EXIST, fileName));
-            Command command = new ListCheatSheetCommand();
+            Command command = new ListCheatSheetsCommand();
             try {
                 command.execute(ui);
             } catch (CommandException e) {

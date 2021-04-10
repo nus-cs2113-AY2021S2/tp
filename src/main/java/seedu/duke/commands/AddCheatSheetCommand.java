@@ -21,7 +21,7 @@ import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
 import static seedu.duke.common.Messages.MESSAGE_CLOSE_CHEATSHEET_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_FILE_NAME;
-import static seedu.duke.common.SanitiseInput.isInvalidFileName;
+import static seedu.duke.common.InputValidator.isInvalidFileName;
 
 public class AddCheatSheetCommand extends Command {
     public static String fileName;
