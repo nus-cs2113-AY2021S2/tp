@@ -1,6 +1,6 @@
 package seedu.logic.command.nurseschedule;
 
-import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.DuplicateIdException;
 import seedu.exceptions.nurseschedules.DuplicateScheduleException;
 import seedu.exceptions.nurseschedules.InvalidiDTypeException;
 import seedu.exceptions.nurseschedules.NurseCrossValidationError;
@@ -32,7 +32,7 @@ public class NurseScheduleAddCommand extends Command {
      * @throws NurseIdNotFound if nurseID does not exist
      * @throws InvalidiDTypeException if ID is invalid
      * @throws NurseCrossValidationError if Staff.txt cannot be loaded
-     * @throws DuplicateIDException if id has been taken
+     * @throws DuplicateIdException if id has been taken
      * @throws PatientIdNotFound if patientID does not exit
      * @throws PatientCrossValidationError if Patients.txt cannot be loaded
      * @throws DuplicateScheduleException if schedules are duplicated
@@ -40,7 +40,7 @@ public class NurseScheduleAddCommand extends Command {
     @Override
     public void execute(NurseScheduleList nurseSchedules, NurseScheduleUI ui)
             throws NurseIdNotFound, InvalidiDTypeException,
-            NurseCrossValidationError, DuplicateIDException,
+            NurseCrossValidationError, DuplicateIdException,
             PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         nurseSchedules.addSchedule(argArr);
     }

@@ -2,7 +2,7 @@ package seedu.staff;
 
 import org.junit.jupiter.api.Test;
 import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.staff.WrongStaffIDException;
+import seedu.exceptions.staff.WrongStaffIdException;
 import seedu.logic.errorchecker.StaffChecker;
 import seedu.model.staff.Staff;
 
@@ -33,7 +33,7 @@ public class StaffCheckerTest {
 
     @Test
     public void checkStaffID_negativeNumberSectionInID_WrongStaffIDExceptionReturned() {
-        WrongStaffIDException exception = assertThrows(WrongStaffIDException.class, () -> {
+        WrongStaffIdException exception = assertThrows(WrongStaffIdException.class, () -> {
             staffChecker.checkStaffID("D-1234");
         });
 

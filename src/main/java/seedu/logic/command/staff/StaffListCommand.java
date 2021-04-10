@@ -23,7 +23,8 @@ public class StaffListCommand extends Command {
     /**
      * Lists all relevant Staff object from the StaffList.
      *
-     * @param staffList  Instance of StaffList (Model) used by the StaffList (Command) command to display all Staff objects.
+     * @param staffList  Instance of StaffList (Model) used by the StaffList
+     *                   (Command) command to display all Staff objects.
      * @param staffUI Instance of StaffUI used by the StaffList command for output.
      * @param staffStorage Not utilised here.
      */
