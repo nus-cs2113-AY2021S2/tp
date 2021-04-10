@@ -9,7 +9,7 @@
 	2. [About the Developer Guide](#12-about-the-developer-guide)
 2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
 	1. [Technical Terms](#21-technical-terms)
-	2. [Symbols & Icons](#22-symbols-&-icons)
+	2. [Symbols & Icons](#22-symbols-and-icons)
 4. [Getting Started](#3-getting-started) (Owen)
 5. [Design](#4-design) 
     1. [Architecture](#41-architecture) (owen)
@@ -101,7 +101,7 @@ We hope you will have a fruitful time learning about HealthVault.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
 
-### 2.2 Symbols & Icons
+### 2.2 Symbols and Icons
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Angles quotation marks for optional user inputs.
 
@@ -302,7 +302,7 @@ Invalid Input includes:
 
 **Format** `add/[Staff ID]/[name]/[age]/[specialisation]`
 
-<img src="images/SD Staff Add.png">
+<img src="diagrams/StaffAddSD.png">
 
 **Check validity of the data input**
 
