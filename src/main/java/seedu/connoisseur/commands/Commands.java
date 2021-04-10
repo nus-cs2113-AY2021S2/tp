@@ -6,6 +6,7 @@ import seedu.connoisseur.ui.Ui;
 
 
 import static seedu.connoisseur.messages.Messages.INVALID_COMMAND;
+import static seedu.connoisseur.messages.Messages.INVALID_PARAMETERS;
 import static seedu.connoisseur.messages.Messages.HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.SORT_HELP_MESSAGE;
 import static seedu.connoisseur.messages.Messages.LIST_HELP_MESSAGE;
@@ -133,7 +134,7 @@ public class Commands {
      * Print invalid parameters text.
      */
     public void invalidParameters() {
-        ui.println("Invalid command. Please do not enter extra parameters or less parameters than required.");
+        ui.println(INVALID_PARAMETERS);
     }
 
     /**

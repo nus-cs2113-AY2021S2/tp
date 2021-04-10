@@ -21,6 +21,8 @@ public class Messages {
     public static final String EXIT_MESSAGE = "Thanks for using Connoisseur, see you again!";
     public static final String ERROR_MESSAGE = "An error has occured";
     public static final String INVALID_COMMAND = "Invalid command, please try again.";
+    public static final String INVALID_PARAMETERS = "Invalid command. Please do not enter extra parameters or less " +
+            "parameters than required.";
 
     // Help
     public static final String HELP_MESSAGE = "Connoisseur is an application to keep track of all your reviews and"
