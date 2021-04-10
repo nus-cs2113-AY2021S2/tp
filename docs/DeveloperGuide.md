@@ -1,11 +1,15 @@
 # Developer Guide
 
-## Design 
 
 ## Table of Contents
-*[Setup](#setup)
-    *[Prerequisites](#prerequisites)
-    *[Get Started](#getting-started)
+* [Setup](#setup)
+    * [Prerequisites](#prerequisites)
+    * [Get Started](#getting-started)
+* [Design](#design)
+    * [Project Overview](#project-overview)
+    * [Architecture](#architecture)
+    * [UI Component](#ui-component)
+    * [Logic Component](#logic-component)
 
 ## **Setup**
 ### Prerequisites
@@ -22,6 +26,30 @@
 5. Import the project as a Gradle project by selecting build.gradle. 
 6. Verify the setup: Run the nusfoodreviews and test a few commands. 
 7. Run the gradle Checks and Tests to ensure they all pass.
+
+## **Design**
+### Project-Overview
+NusFoodReviews is a application that is built using Java. It has cross-platform ability and is able to run on MAC-OS, 
+Windows and Linux. When run, NusFoodReviews allows user to view selected canteens, stores with their menus and reviews. In addition,
+user is able to leave reviews and ratings to the stores. On the other hand the user can choose to run as admin, and the
+password is `Password`. When run as admin the user is able to `add` or `remove` canteens, stores, menu and reviews. These admin
+functions allows the app to be moderated and maintained by the person in charge. For future development we have had ideas of
+implementing a more secured credential verification for admin login. 
+
+### Architecture
+![Architecture Diagram](./img/architecture diagram2.png)
+The Architecture Diagram shown above explains the high-level design of NusFoodReviews Application. The following is a brief overview of each component.
+
+*Main* is responsible for,
++ At app launch: Initializes the components in the correct sequence, and connects them up with each other.
++ At shut down: Shuts down the components and invokes cleanup methods where necessary.
+*Commons* represents a collection of classes used by multiple other components.
+  
+The rest of the App consists of four components.
+1. UI: The UI of the App. 
+2. Logic: The command executor.
+3. Model: Holds the data of the In-App memory.
+4. Storage: Reads data from, and writes data to, the textfile.
 
 ##Implementation
 For public users, the list of commands is shown below:
