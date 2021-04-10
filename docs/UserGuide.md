@@ -66,37 +66,60 @@ Allowing to choose the mode “Admin” or “Customer” based on user’s acco
 
    Display:
 ```
+ ___  ___           _       ___                    
+ |  \/  |          (_)     / _ \                 
+ | .  . | _____   ___  ___/ /_\ \_ __  _ __      
+ | |\/| |/ _ \ \ / / |/ _ \  _  | '_ \| '_ \ 
+ | |  | | (_) \ V /| |  __/ | | | |_) | |_) |     
+ \_|  |_/\___/ \_/ |_|\___\_| |_/ .__/| .__/  
+                                | |   | |          
+                                |_|   |_|            
  -------------------Login----------------
- Enter Name: ADMIN
- Due to a bug in some IDEs, password masking is disabled. Please only run this
- program on the console!
- Enter Password : password2       
- Welcome, ADMIN  
+ Enter Name: (input "out" to quit the application)
+ customer1
+ Due to a bug in some IDEs, password masking is disabled. Please only run this program on the console!
+ Enter Password :
+ password1
+ 
+ Welcome, CUSTOMER1
+ 
  ======== Menu Choice =======
- 1 View Movies
- 2 Exit 
-============================
+  1 View Movies
+  2 Exit
+ ============================
  Please indicate your choice:
 ```
 
 2. Admin Account
    Input:
-   `IRVIN`  
+   `admin1`  
    `password1`
 
    Display:
 ```
+  ___  ___           _       ___                    
+  |  \/  |          (_)     / _ \                 
+  | .  . | _____   ___  ___/ /_\ \_ __  _ __      
+  | |\/| |/ _ \ \ / / |/ _ \  _  | '_ \| '_ \ 
+  | |  | | (_) \ V /| |  __/ | | | |_) | |_) |     
+  \_|  |_/\___/ \_/ |_|\___\_| |_/ .__/| .__/  
+                                 | |   | |          
+                                 |_|   |_|            
   -------------------Login----------------
-  Enter Name: IRVIN
+  Enter Name: (input "out" to quit the application)
+  admin1
   Due to a bug in some IDEs, password masking is disabled. Please only run this program on the console!
-  Enter Password : password1      
-  Welcome, IRVIN
+  Enter Password :
+  password1
+  
+  Welcome, ADMIN1
+  
   ======== Menu Choice =======
-  1 View Movies
-  2 Add Movie
-  3 Delete Movie
-  4 Update Movie
-  5 Logout 
+   1 View Movies
+   2 Add Movie
+   3 Delete Movie
+   4 Update Movie
+   5 Logout
   ============================
   Please indicate your choice:
 ```

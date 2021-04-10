@@ -164,5 +164,4 @@ The app will help cinema administrators to update the movie information regularl
 
 ## Instructions for manual testing
 
-To run the JAR file, run `java -cp tp_original_v2.jar movieApp.app.MovieApp` and
-make sure the `data` folder is downloaded inside the same directory as your .jar file.
+To run the JAR file, run `java -jar [CS2113-T10-3][MovieApp].jar`
