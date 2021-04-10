@@ -35,16 +35,18 @@ public class DeleteReviewCommand extends Command {
             if (currentStoreIndex == -1) {
                 return;
             }
-            ArrayList<Store> stores = canteens.get(currentCanteenIndex).getStores();
-            ArrayList<Review> reviews = stores.get(currentStoreIndex).getReviews();
-            averageRating = stores.get(currentStoreIndex).getAverageRating();
+            Canteen currentCanteen = canteens.get(currentCanteenIndex);
+            Store store = currentCanteen.getStore(currentStoreIndex);
+            ArrayList<Review> reviews = store.getReviews();
+            averageRating = store.getAverageRating();
             if (reviews.size() <= 0) {
                 System.out.println(LINESPACING);
                 System.out.println("There are currently no reviews in this store to delete!");
                 System.out.println(LINESPACING);
                 return;
             }
-            ui.showReviews(stores.get(currentStoreIndex).getStoreName(), reviews, averageRating);
+            String storeName = store.getStoreName();
+            ui.showReviews(storeName, reviews, averageRating);
             ui.showDeleteReview();
 
             String line = ui.readCommand();
@@ -52,12 +54,8 @@ public class DeleteReviewCommand extends Command {
                 ui.showReviewNotDeleted();
                 return;
             }
-            int reviewNumber = parser.parseInt(line, 1,
-                    canteens.get(currentCanteenIndex).getStore(currentStoreIndex).getRatingCount()) - 1;
-
-            Canteen currentCanteen = canteens.get(currentCanteenIndex);
-            Store store = currentCanteen.getStore(currentStoreIndex);
-            store.deleteReview(reviewNumber);
+            int reviewIndex = parser.parseInt(line, 1, reviews.size()) - 1;
+            store.deleteReview(reviewIndex);
             ui.reviewDeleted();
             Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
         } else {
