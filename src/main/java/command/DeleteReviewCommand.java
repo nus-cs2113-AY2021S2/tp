@@ -58,7 +58,7 @@ public class DeleteReviewCommand extends Command {
             Store store = currentCanteen.getStore(currentStoreIndex);
             store.deleteReview(reviewNumber);
             ui.reviewDeleted();
-            Storage.save(new FileWriter(Storage.fileName), canteens);
+            Storage.save(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH), canteens);
         } else {
             System.out.println("There are no canteens for you to delete reviews for any stores!");
             System.out.println(LINESPACING);
