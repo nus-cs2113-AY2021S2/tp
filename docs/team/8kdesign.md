@@ -22,7 +22,7 @@ GULIO is a module planner designed for efficiency when used by someone that can 
 ### Contributions to Documentation:
 
 1. Added many of the command information.
-   > I created the draft for most of the commands in the command section (for the commands we originally had), which the team edits whenever they make some changes
+   > I created the draft for most of the commands in the command section (for the commands we originally had), which the team edits whenever they make some changes. As such, I am responsible for how the commands are presented. For the "Example" part of each command, I had to change all the tables' format multiple times, which took quite a bit of time.
 1. Added data & storage section.
    > As the one responsible for the storage, I did the part explaining to the user  how the storage system of GULIO works and what they can do with it.
 1. Converted user guide from Google Docs into Markdown.
@@ -61,6 +61,11 @@ GULIO is a module planner designed for efficiency when used by someone that can 
    > I gave suggestions on how to improve the text editor features (e.g. removal of text customization) and provided help to Hemrish whenever he faced difficulties regarding the text editor. (Which was how I ended up doing the shortcuts.) 
 
 ### Contributions Beyond the Team
+1. Identified bugs during dry run PE. Click [here](https://github.com/8kdesign/ped/issues) to view.
+1. Answered a few question on the forum.
+   > Examples:
+   > 1. https://github.com/nus-cs2113-AY2021S2/forum/issues/2
+   > 1. https://github.com/nus-cs2113-AY2021S2/forum/issues/11
 
 ## [Optional] Contributions to User Guide
 
