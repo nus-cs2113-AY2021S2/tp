@@ -5,9 +5,9 @@ import seedu.duke.Constants;
 @SuppressWarnings("serial")
 public class DataException extends BaseException {
     public static enum Type {
-        NO_PATIENT_LOADED(Constants.INVALID_INPUT_NO_PATIENT_LOADED),
-        PATIENT_NOT_FOUND(Constants.INVALID_INPUT_PATIENT_NOT_FOUND),
-        EMPTY_DESCRIPTION(Constants.INVALID_INPUT_EMPTY_DESCRIPTION),
+        NO_PATIENT_LOADED(Constants.DATA_NO_PATIENT_LOADED),
+        PATIENT_NOT_FOUND(Constants.DATA_PATIENT_NOT_FOUND),
+        EMPTY_DESCRIPTION(Constants.DATA_EMPTY_DESCRIPTION),
         NO_RECORD_FOUND(Constants.DATA_NO_RECORD_FOUND);
 
         public final String message;

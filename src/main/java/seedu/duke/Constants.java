@@ -59,11 +59,6 @@ public class Constants {
     public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists.";
-    public static final String INVALID_INPUT_NO_PATIENT_LOADED =
-            "Please load a patient with the load command before adding or viewing records.";
-    public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
-            "Please provide more details about the patient's visit.\n"
-                    + "(At least one symptom, diagnosis or prescription must be specified.)";
     public static final String INVALID_INPUT_INVALID_DATE =
             "Please provide a valid date (format: dd/MM/yyyy).\n"
                     + "It should also be a valid date in the Gregorian calendar.";
@@ -71,12 +66,17 @@ public class Constants {
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT =
             "Please use exactly one of /p or /r to indicate whether to delete a patient or a record.\n"
                     + "You may use the help command for more clarification.";
-    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist.";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
 
     public static final String DATA_NO_RECORD_FOUND = "No records found for the specified date.";
+    public static final String DATA_NO_PATIENT_LOADED =
+            "Please load a patient with the load command before adding or viewing records.";
+    public static final String DATA_EMPTY_DESCRIPTION =
+            "Please provide more details about the patient's visit.\n"
+                    + "(At least one symptom, diagnosis or prescription must be specified.)";
+    public static final String DATA_PATIENT_NOT_FOUND = "The patient with this IC number does not exist.";
 
-    public static final String STORAGE = "Something wrong happen when trying to save/load data";
+    public static final String STORAGE = "Something wrong happened when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";
     public static final String STORAGE_FILE_WRITE_FAIL = "Failed to write content to the save file.";
     public static final String STORAGE_FILE_NOT_FOUND = "Save file does not exist so we use an empty patient list!";

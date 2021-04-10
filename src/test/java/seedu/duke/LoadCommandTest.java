@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 import seedu.duke.command.LoadCommand;
 import seedu.duke.exception.DataException;
-import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
 public class LoadCommandTest {
@@ -43,6 +42,6 @@ public class LoadCommandTest {
             loadCommand.execute();
         });
 
-        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, dataException.getMessage());
+        assertEquals(Constants.DATA_PATIENT_NOT_FOUND, dataException.getMessage());
     }
 }

@@ -94,7 +94,7 @@ public class DeleteCommandTest {
         DataException dataException = assertThrows(DataException.class, () -> {
             deleteCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, dataException.getMessage());
+        assertEquals(Constants.DATA_PATIENT_NOT_FOUND, dataException.getMessage());
     }
 
     @Test

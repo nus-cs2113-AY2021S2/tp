@@ -28,7 +28,7 @@ class RetrieveCommandTest {
         Exception exception = assertThrows(Exception.class, () -> {
             retrieveCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_NO_PATIENT_LOADED, exception.getMessage());
+        assertEquals(Constants.DATA_NO_PATIENT_LOADED, exception.getMessage());
     }
 
     @Test

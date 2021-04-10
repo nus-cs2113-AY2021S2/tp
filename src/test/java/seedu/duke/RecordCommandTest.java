@@ -3,7 +3,6 @@ package seedu.duke;
 import org.junit.jupiter.api.Test;
 import seedu.duke.command.RecordCommand;
 import seedu.duke.exception.DataException;
-import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
 
@@ -30,7 +29,7 @@ class RecordCommandTest {
         Exception exception = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_NO_PATIENT_LOADED, exception.getMessage());
+        assertEquals(Constants.DATA_NO_PATIENT_LOADED, exception.getMessage());
     }
 
     @Test
@@ -47,7 +46,7 @@ class RecordCommandTest {
         DataException dataException = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, dataException.getMessage());
+        assertEquals(Constants.DATA_EMPTY_DESCRIPTION, dataException.getMessage());
     }
 
     @Test
@@ -163,7 +162,7 @@ class RecordCommandTest {
         DataException dataException = assertThrows(DataException.class, () -> {
             recordCommand.execute();
         });
-        assertEquals(Constants.INVALID_INPUT_EMPTY_DESCRIPTION, dataException.getMessage());
+        assertEquals(Constants.DATA_EMPTY_DESCRIPTION, dataException.getMessage());
     }
 
 }

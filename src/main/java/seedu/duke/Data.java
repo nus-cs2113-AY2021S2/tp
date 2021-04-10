@@ -5,7 +5,6 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import seedu.duke.exception.DataException;
-import seedu.duke.exception.InvalidInputException;
 import seedu.duke.exception.StorageException;
 import seedu.duke.model.Patient;
 
@@ -23,7 +22,7 @@ public class Data {
      * Before modification, if not loaded, it needs to call loadCurrentPatient(id) to load the patient.
      * After modification, saveCurrentPatient() needs to be called to write back any changes on this attribute.
      */
-    public Patient currentPatient;
+    private Patient currentPatient;
 
     /**
      * This initializes an empty data instance with no storage instance.
@@ -56,6 +55,10 @@ public class Data {
         currentPatient = null;
     }
 
+    /**
+     * Helper methods to check if there is a patient, or if a patient has been previously added to the list.
+     * If they fail, they will throw a DataException with the corresponding error message.
+     */
     private void checkLoadedPatient() throws DataException {
         if (currentPatient == null) {
             throw new DataException(DataException.Type.NO_PATIENT_LOADED);

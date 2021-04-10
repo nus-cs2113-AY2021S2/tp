@@ -1,6 +1,5 @@
 package seedu.duke.model;
 
-import seedu.duke.Common;
 import seedu.duke.Constants;
 
 import java.util.LinkedHashSet;
