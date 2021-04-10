@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class InputValidator {
     //@@author H-horizon
-    public static boolean isInvalidFileName(String input) {
+    public static boolean hasInvalidCharacter(String input) {
 
         ArrayList<String> invalidCharacters = new ArrayList<>();
         initialiseInvalidCharactersList(invalidCharacters);

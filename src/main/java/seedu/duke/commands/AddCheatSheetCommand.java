@@ -21,7 +21,7 @@ import static seedu.duke.common.Messages.MESSAGE_CHEATSHEET_ADDED;
 import static seedu.duke.common.Messages.MESSAGE_CHEAT_SHEET_ALREADY_EXISTS;
 import static seedu.duke.common.Messages.MESSAGE_CLOSE_CHEATSHEET_FIRST;
 import static seedu.duke.common.Messages.MESSAGE_INVALID_FILE_NAME;
-import static seedu.duke.common.InputValidator.isInvalidFileName;
+import static seedu.duke.common.InputValidator.hasInvalidCharacter;
 
 public class AddCheatSheetCommand extends Command {
     public static String fileName;
@@ -34,7 +34,8 @@ public class AddCheatSheetCommand extends Command {
     @Override
     public void execute(UI ui) throws CommandException {
         Module module = ModuleList.getSelectedModule();
-        if (fileName.isEmpty() || isInvalidFileName(fileName)) {
+        boolean isInvalidFileName = hasInvalidCharacter(fileName);
+        if (fileName.isEmpty() || isInvalidFileName) {
             throw new CommandException(MESSAGE_INVALID_FILE_NAME);
         }
         try {
