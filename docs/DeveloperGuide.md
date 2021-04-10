@@ -9,7 +9,7 @@
 	2. [About the Developer Guide](#12-about-the-developer-guide)
 2. [How to use this guide](#2-how-to-use-the-guide) (sarrah)
 	1. [Technical Terms](#21-technical-terms)
-	2. [Symbols & Icons](#22-symbols-&-icons)
+	2. [Symbols & Icons](#22-symbols-and-icons)
 4. [Getting Started](#3-getting-started) (Owen)
 5. [Design](#4-design) 
     1. [Architecture](#41-architecture) (owen)
@@ -47,6 +47,10 @@
     	2. [Add](#552-add)
     	3. [Delete](#553-delete)
     	4. [List](#554-list)
+    6. [Proposed Features](#56-proposed-features)
+    	1. [Auto Schedule Generator for Nurses](#561-auto-schedule-generator-for-nurses)
+    	2. [Personalized Account Login](#562-personalized-account-login)
+    	3. [Inventory Alerts](#563-inventory-alerts)
 
 [Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
 
@@ -97,7 +101,7 @@ We hope you will have a fruitful time learning about HealthVault.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **User Input** - Any information or data sent to a computer by the user using the application.
 
-### 2.2 Symbols & Icons
+### 2.2 Symbols and Icons
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **<>** - Angles quotation marks for optional user inputs.
 
@@ -298,7 +302,7 @@ Invalid Input includes:
 
 **Format** `add/[Staff ID]/[name]/[age]/[specialisation]`
 
-<img src="images/SD Staff Add.png">
+<img src="diagrams/StaffAddSD.png">
 
 **Check validity of the data input**
 
@@ -726,7 +730,7 @@ Invalid Input includes:
 
 `add/[Doctor ID]/[Appointment ID]/[Patient's Name]/[Gender]/[Date]`
 
-<img src="diagrams/DG DoctorAppSequencePlantUpdated.png">
+<img src="diagrams/DG DoctorAppSequencePlantLatest.png">
 
 
 **Check validity of the data input**
@@ -1156,10 +1160,35 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 7. Depending on the input given by the user, the relevant Inventory Objects will be displayed.
 8. Control is then returned to InventoryInstance.
 
-
-
 <br>
 
+### 5.6 Proposed Features
+
+### 5.6.1 Auto Schedule Generator for Nurses
+
+This feature will be able to generate the daily schedule for individual nurses with the schedules in the database. This will allow nurses to have a clear view of their daily tasks, allowing them to plan their day better. Hence this feature has been proposed as one of the goals of HealthVault is to improve the efficiency of hospital and healthcare information management, something we believe this feature will do.
+
+**Brief Implementation**
+
+1. User specifies which Nurse ID a schedule should be generated for.
+2. Program will sort all schedules tied to specified Nurse ID.
+3. A schedule will be generated based on the earliest schedule.
+
+### 5.6.2 Personalized Account Login
+
+This feature will allow medical personnel to have a personalized account within HealthVault, enabling them to only access relevant functionalities of the app. By cutting down on the unnecessary information one has to deal with, the team believes this will aid medical personnel working in a high-stress environment.
+
+### 5.6.3 Inventory Alerts
+
+This feature will alert nurses whenever an inventory of a drug is low. This ensures that essential drugs will never be unavailable as nurses will always have up to date information on which specific drug needs to be restocked.
+
+**Brief Implementation**
+
+1. User adds a threshold stock quantity for when an alert should be raised.
+2. Program checks inventory database everytime inventory is accessed.
+3. Alert will be raised, reminding the nurses that the drug is low on inventory level.
+
+<br>
 
 ## Appendix A: Product Scope
 

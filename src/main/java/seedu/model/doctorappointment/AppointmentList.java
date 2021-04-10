@@ -60,7 +60,7 @@ public class AppointmentList {
         String indicator = "A";
         String doctorID;
         String[] inputArray = input.split("");
-        String iD = inputArray[0];
+        String id = inputArray[0];
         if (appointmentList.size() == 0) {
             throw new EmptyListException();
         } else {
@@ -79,7 +79,7 @@ public class AppointmentList {
                         printSchedules(extraList);
                     }*/
                 }
-            } else if (iD.equals("A")) {
+            } else if (id.equals("A")) {
                 DoctorAppointmentUI.appointmentPrintList(indicator);
                 UI.showLine();
                 for (DoctorAppointment doc : appointmentList) {
@@ -87,7 +87,7 @@ public class AppointmentList {
                         DoctorAppointmentUI.printList(doc, indicator);
                     }
                 }
-            } else if (iD.equals("D")) {
+            } else if (id.equals("D")) {
                 indicator = "D";
                 DoctorAppointmentUI.appointmentPrintList(indicator);
                 UI.showLine();
@@ -105,6 +105,7 @@ public class AppointmentList {
             }
         }
     }
+
     /**
      * Deletes an appointment from the array list.
      *
@@ -113,9 +114,9 @@ public class AppointmentList {
      */
 
     public static void deleteAppointment(String inputID) throws IOException {
-        String[] iD = inputID.split("");
+        String[] id = inputID.split("");
 
-        if (iD[0].equals("A")) {
+        if (id[0].equals("A")) {
             for (int i = 0; i < appointmentList.size(); i++) {
                 if (appointmentList.get(i).getAppointmentId().equals(inputID)) {
                     DoctorAppointmentUI.deletedAptID(appointmentList.get(i).getAppointmentId());
@@ -123,7 +124,7 @@ public class AppointmentList {
                     DoctorAppointmentStorage.writeToFile(appointmentList);
                 }
             }
-        } else if (iD[0].equals("D")) {
+        } else if (id[0].equals("D")) {
             for (int i = appointmentList.size() - 1; i >= 0; i--) {
                 if (appointmentList.get(i).getDoctorId().equals(inputID)) {
                     DoctorAppointmentUI.deletedDocID(appointmentList.get(i).getDoctorId(),
