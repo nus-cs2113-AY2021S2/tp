@@ -134,18 +134,23 @@ Finally, for returning users who are not sure about the input format for a comma
 > - Due to how Patient Manager stores its records to disk, the following ASCII characters are not allowed
 > to be used as part of any input:\
 ```
-~\`%#@!
+~`%#@!
 ```
-> - Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.
-    >   All dates given must be valid, according to the rules of the
-    >   [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+> If any of these characters are used as an input value, they will be replaced with a space when saving to
+> disk, and will not show up if Patient Manager is closed and reopened.
+> - Dates must be specified in the format `dd/mm/yyyy` with leading zeroes, for example, `05/03/2021`.
+> All dates given must be valid, according to the rules of the
+> [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 <!-- TODO: Order | explain why help command is the 1st -->
 
 ### Print a help message: `help`
 
 If you need help at any point in time, you may use the `help` command. \
-This prints out the help message with a brief explanation of the available commands. If one or more commands are
-provided as arguments, the info messages for the indicated commands will be printed.
+This prints out the help message with a brief explanation of the available commands.
+
+Furthermore, you may request for the help messages for specific command(s) by
+providing one or more valid commands as arguments. If invalid commands are provided as
+arguments, `help` will show an error message to inform you which commands are invalid.
 
 Usage: `help [OPTIONAL_COMMAND]...`
 
