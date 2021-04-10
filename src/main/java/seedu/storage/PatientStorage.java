@@ -45,10 +45,10 @@ public class PatientStorage {
             if (!(saveFile.exists())) {
                 saveFile.getParentFile().mkdirs();
                 saveFile.createNewFile();
-                logger.log(Level.INFO, "New Patient file and directory created");
+                logger.log(Level.INFO, "New Patient file and directory created.");
             }
         } catch (IOException e) {
-            logger.log(Level.WARNING, "Unable to create file");
+            logger.log(Level.WARNING, "Unable to create file.");
             System.out.println("OOPS! I can't create the directory or file!");
         }
     }
@@ -61,12 +61,13 @@ public class PatientStorage {
      */
     public ArrayList<Patient> loadPatients() throws HealthVaultException {
         fileInit();
+        logger.log(Level.INFO, "loading patients from storage.");
         // initializing file scanner to scan the file
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(saveFile);
         } catch (FileNotFoundException e) {
-            logger.log(Level.WARNING, "Unable to find file");
+            logger.log(Level.WARNING, "Unable to find file.");
             ui.showLoadingError();
         }
         while (fileScanner.hasNext()) {
@@ -75,7 +76,7 @@ public class PatientStorage {
             String[] taskSave = currentScan.trim().split("\\|");
             int numberOfTokens = taskSave.length;
             if (numberOfTokens == 0) {
-                logger.log(Level.WARNING, "patient file unable to open due to wrong number of tokens");
+                logger.log(Level.WARNING, "patient file unable to open due to wrong number of tokens.");
                 throw new CorruptedFileException("Patient");
             }
             for (int i = 0; i < numberOfTokens; i++) {
@@ -88,6 +89,7 @@ public class PatientStorage {
             patients.add(tempPatient);
         }
         fileScanner.close();
+        logger.log(Level.INFO, "returning patients from storage.");
         return patients;
     }
 
@@ -98,6 +100,7 @@ public class PatientStorage {
      */
     public void storePatients(PatientList saveInput) {
         fileInit();
+        logger.log(Level.INFO, "storing patients to storage.");
         try {
             //creates a new file writer to write to text file
             FileWriter fileWriter = new FileWriter(filePath);
@@ -108,7 +111,7 @@ public class PatientStorage {
             fileWriter.close();
             logger.log(Level.INFO, "Patient file save successful");
         } catch (IOException e) {
-            logger.log(Level.WARNING, "Unable to save file due to IOException");
+            logger.log(Level.WARNING, "Unable to save file due to IOException.");
             System.out.println("☹ OOPS!!! The file can't be saved :-(");
         }
     }
