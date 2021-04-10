@@ -65,22 +65,27 @@ Connoisseur.
 ### 2.1 What is in Connoisseur
 
 In our Review mode, you can add a review about an experience, rate it out of 5 stars, delete or edit a review, view the
-entire list of your reviews or one particular review. You can also sort the list from the highest to lowest rating, by
+entire list of your reviews or one particular review. You can also sort the list from the highest to the lowest rating, by
 category, title and date of entry.
 
 For our Recommendation mode, you can have a list of things you would like to try, the location and the price range of
-the experience! Already tried out the experience? Nice! You can now move it to your review list in the review mode and
-record your thoughts on how good or bad the experience was!
+the experience. Already tried out the experience? You can now move it to your review list in the review mode and
+record your thoughts on how good or bad the experience was.
 
 ### 2.2 How to use this Guide
 
 The following formats are used in this document:
 
-* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user. e.g.
+* A grey highlight (called a mark-up) indicates a keyword. It is often used to indicate i) a field or command that can be typed into the 
+  command line and executed by Connoisseur; or ii) the prompts displayed by Connoisseur. <br> e.g.`list [SORTING METHOD]`
+* Words in UPPER CASE in square bracket [USER INPUT] are the fields to be supplied by the user.<br> e.g.
   in `list [SORTING METHOD]`
   SORTING METHOD is the field input by the user and examples of valid commands are:`list rating`,`list title` etc.
-* Word in lower case are given commands. <br /> e.g. in `new [quick | long]` the user can input either the command
+* Word in lower case are given commands. <br> e.g. in `new [quick | long]` the user can input either the command
   `new quick`or `new long`
+* <span>&#10071;</span> symbol will be followed by additional information to take note of for that section.
+* A light blue font color indicates a Hyperlink that you can click on and be transferred to the corresponding section 
+  in Connoisseur.<br> e.g. [How to use this Guide](#22-how-to-use-this-guide) 
 
 ## 3. Quick Start
 
@@ -101,11 +106,11 @@ and can be completed in a few simple steps. Follow the instructions below to try
    <p align="center">Figure 2. Copying connoisseur.jar into a folder</p>
 4. Open terminal and navigate to the directory of the folder you just copied into.
 5. In your terminal, type `java -jar Connoisseur.jar` and press enter. This should start Connoisseur.
-   ![Figure 3 - Starting Connoisseur](./images/ug/downloading2.png)
+   ![Figure 3 - Starting Connoisseur](images/ug/downloading2.png)
    <p align="center">Figure 3. Starting Connoisseur</p>
 6. You may now use Connoisseur by typing in commands and pressing Enter to execute it. Refer to
    the [Command summary](#5.-command-summary) for a list of recognised commands.
-7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3. The data for
+7. You should notice a new _data folder_ created in the _home folder_ you have chosen in step 3 The data for
    Connoisseur is saved in `connoisseur.json` in the _data folder_.
 
 ## 4. Features
@@ -123,13 +128,18 @@ Connoisseur is in Review mode by default. In this mode you can maintain a list o
 category. The review mode can be accessed using the `review` command as shown in the figure below.
 ![img.png](./images/ug/review_mode.png)
 <p align="center">Figure 4. Entering 'Review' mode</p>
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are 
+typed before the command, Connoisseur will detect it as an invalid command.
 
+<span>&#10071;</span> This command is case-insensitive.
 #### 4.1.1 Adding a Review
 
 This feature allows you to add a new review. There is a choice of quick review or long review.
 
-Command: `add [quick | long]`, `new [quick | long]`<br />
-`[quick | long]` : optional arguments to specify quick or long review.
+Command: `add [quick | full]`, `new [quick | full]`<br>
+`[quick | full]` : optional arguments to specify quick or long review. <br>
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed in between the two words in the command. <br>
 
 If quick review is specified, Connoisseur will then prompt you to enter the title, category and rating of the review, as
 shows in _Figure 5_.<br />
@@ -137,23 +147,39 @@ shows in _Figure 5_.<br />
 ![img_5.png](./images/ug/quick_review.png)
 <p align="center">Figure 5. Adding a quick review </p>
 
-If long review is specified, there is an additional prompt to input description of the experience as shown in _Figure 6_
+If full review is specified, there is an additional prompt to input description of the experience as shown in _Figure 6_
 ![img_6.png](./images/ug/long_review.png)
-<p align="center">Figure 6. Adding a long review </p>
+<p align="center">Figure 6. Adding a full review </p>
 
-If you do not specify `[quick | long ]` and simply input the command: `add` or `new`, Connoisseur will ask you to
+If you do not specify `[quick | full ]` and simply input the command: `add` or `new`, Connoisseur will ask you to
 specify if you would like to input a quick review. Input the command: `y` for quick review or `n` for long review
 instead, as shown in _Figure 7_.<br />
+
+<span>&#10071;</span> Connoisseur will ignore extra blank spaces that are typed after the command. If blank spaces are
+typed before the command, Connoisseur will detect it as an invalid command.
+
+<span>&#10071;</span> The commands 'y' and 'n' are case-insensitive<br>
+
 ![img_7.png](./images/ug/add_review.png)
 <p align="center">Figure 7. Adding a quick or long review </p>
 
+<span>&#10071;</span> If optional arguments are not specified, command is case-insensitive.<br>
 
-<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Otherwise, Connoisseur will display
-error message and adding the review will fail. You can try again.<br />
+<span>&#10071;</span> Ensure the rating is an integer whole number from 0 to 5. Inputting -0 is treated as 0 and is not an invalid number.
+If you input an invalid number Connoisseur will prompt you until a valid number is input. <br />
 
-<span>&#10071;</span> Ensure the title of the review added is unique and does not already exist in the list. If you
-attempt to add a pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list.
-Adding the review will fail. You can try again.
+<span>&#10071;</span> Ensure the title of the review added is unique and does not already exist in the list. Connoisseur 
+checks for duplicate by comparing spelling, and the number of blank spaces in between words in the title. Refer to table 1 below for examples.
+If you attempt to add a pre-existing review title, Connoisseur will prompt you of the existence of duplicate in the list and ask you 
+to enter a unique title. <br>
+
+|Title input by user | Pre-existing title in list | Duplicate / Unique | Explanation |
+| ----------- | ---------- | -----------|-----------|
+| CapTaiN AmeRICA | captain america | Duplicate|Spelling & number of spaces in between words in <br> the title are the same|
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CapTaiN AmeRICA <br> CapTaiN AmeRICA     | captain america | Duplicate| The difference between title input by user and the <br> pre-existing title in the list are the presence of blank <br> spaces before and after the title. Nonetheless, the <br> spelling and & number of spaces in between words in <br> are the same. Hence, the title input by <br> the user is duplicate |
+| captain &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; america | captain america | Unique|Although spelling is the same, the number of spaces in <br> between words in the title are different|
+| CapTaiN AmeRICA2 | captain america | Unique|Different spelling|
+Table 1. Guidelines on duplicate and unique title
 
 #### 4.1.2 List Reviews
 
