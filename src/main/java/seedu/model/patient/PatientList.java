@@ -4,6 +4,9 @@ import seedu.ui.PatientUI;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the list of all patients in the hospital.
+ */
 public class PatientList {
 
     private static ArrayList<Patient> patients = new ArrayList<Patient>();
@@ -15,12 +18,22 @@ public class PatientList {
         this.patients = load;
     }
 
-    public void addPatient(String[] argArr) {
-        Patient newPatient = new Patient(argArr[0], argArr[1], Integer.parseInt(argArr[2]),
-                argArr[3], argArr[4], argArr[5]);
+    /**
+     * Adds a patient to the list of patients.
+     *
+     * @param patientDetailsArr the details of the patient to be added.
+     */
+    public void addPatient(String[] patientDetailsArr) {
+        Patient newPatient = new Patient(patientDetailsArr[0], patientDetailsArr[1], Integer.parseInt(patientDetailsArr[2]),
+                patientDetailsArr[3], patientDetailsArr[4], patientDetailsArr[5]);
         patients.add(newPatient);
     }
 
+    /**
+     * Finds a patient with details macthing the keyword inputted by the user.
+     *
+     * @param inputString the specific keyword that the user is searching for.
+     */
     public void findPatient(String inputString) {
         int numberOfPatients = patients.size();
         boolean isFound = false;
@@ -42,6 +55,12 @@ public class PatientList {
         }
     }
 
+    /**
+     * Checks through the list of patients for a matching ID.
+     *
+     * @param inputString the ID that the method is trying to find.
+     * @return true if there is a matching ID found, false if there is not.
+     */
     public boolean isIdTaken(String inputString) {
         for (Patient patient : patients) {
             String patientID = patient.getPatientID();
@@ -52,6 +71,9 @@ public class PatientList {
         return false;
     }
 
+    /**
+     * Lists all patients currently in the list.
+     */
     public void listPatients() {
         int numberOfPatients = patients.size();
         if (numberOfPatients == 0) {
@@ -65,6 +87,11 @@ public class PatientList {
         }
     }
 
+    /**
+     * Deletes a patient from the list of current patients.
+     *
+     * @param inputID the ID of the patients who is supposed to be removed.
+     */
     public void deletePatient(String inputID) {
         int patientIndex = 0;
         String patientName = null;

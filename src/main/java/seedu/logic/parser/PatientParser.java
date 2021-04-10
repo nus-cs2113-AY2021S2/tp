@@ -15,23 +15,37 @@ import seedu.logic.errorchecker.PatientChecker;
 
 import static seedu.ui.UI.smartCommandRecognition;
 
+/**
+ * Parses the user inputs for patient related features into a format usable by the program.
+ */
 public class PatientParser {
 
     protected static final String[] COMMANDS = {"add", "delete", "list", "find", "return", "help"};
     private PatientChecker checker;
 
+    /**
+     * Converts the user input into usable and non-volatile data.
+     *
+     * @param fullCommand the string inputted by the user.
+     * @param patients the current list of patients in the database.
+     * @return the command that the user is trying to utilize.
+     * @throws ArrayIndexOutOfBoundsException
+     * @throws HealthVaultException
+     * @throws NumberFormatException
+     */
     public Command patientParse(String fullCommand, PatientList patients) throws ArrayIndexOutOfBoundsException,
             HealthVaultException, NumberFormatException {
         String[] stringTokens = fullCommand.trim().split("/");
         int numberOfTokens = stringTokens.length;
-        //check for number of inputs
+        //check for number of inputs.
         MainChecker.checkNumInput(fullCommand,7,1);
-        //trim the inputs and alters greedy white spaces
+        //trim the inputs and alters greedy white spaces.
         for (int i = 0; i < numberOfTokens; i++) {
             stringTokens[i] = stringTokens[i].trim().replaceAll("\\s{2,}", " ");
         }
         String command = smartCommandRecognition(COMMANDS, stringTokens[0]);
         Command c = null;
+        //checker class will sanitize the user's input.
         checker = new PatientChecker(patients, stringTokens, command, numberOfTokens);
         switch (command) {
         case "list":

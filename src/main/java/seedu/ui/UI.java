@@ -19,15 +19,24 @@ public class UI {
         return scanner.nextLine().trim();
     }
 
+
+    /**
+     * This function scans the user input and returns it to the calling function.
+     *
+     * @param requestMenu the Menu that accepts the input from the user.
+     * @return the user input that has been cleared of all greedy white spaces.
+     */
     public String getInput(String requestMenu) {
         System.out.print(requestMenu + " --> ");
         String input = scanner.nextLine();
 
+        //clears empty inputs
         while (input.trim().isEmpty()) {
             System.out.print(requestMenu + " --> ");
             input = scanner.nextLine();
         }
 
+        //clears greedy white spaces
         return input.replaceAll("\\s+", " ").trim();
     }
 
