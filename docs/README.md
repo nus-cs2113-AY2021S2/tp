@@ -4,7 +4,7 @@
 <img src="images/HealthVaultLogo.png" width = "200">
 </p>
 
-HealthVault is a desktop application made for healthcare personnel as their one stop application for recording and accessing critical patient or staff information. It is optimized for the Command Line Interface, where an experienced typist will beable to make full use of the informative and minimalistic GUI to achieve significant gains in efficiency
+HealthVault is a desktop application made for healthcare personnel as their one stop application for recording and accessing critical patient or staff information. It is optimized for the Command Line Interface, where an experienced typist will be able to make full use of the informative and minimalistic GUI to achieve significant gains in efficiency.
 
 Useful links:
 * For Users, see our [User Guide](UserGuide.md)
