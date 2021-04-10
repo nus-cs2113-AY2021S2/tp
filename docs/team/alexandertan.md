@@ -22,3 +22,7 @@ Given below are my contributions to the project.
   - Highlights: Due to the modular nature of our application, the loading of data files of other types was easy to implement. However, extra care had to be taken to ensure that these files were not corrupted as well.
 
 - **Code contributed**: [*RepoSense* Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=AlexanderTanJunAn).
+
+- **Contributions to documentation:
+  - User Guide:
+    - Added documentation for the features `add`, `delete, `list`, `return, `help` in Schedules for Nurses
