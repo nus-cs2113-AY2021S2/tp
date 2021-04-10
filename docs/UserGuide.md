@@ -4,7 +4,7 @@
 
 `FridgeFriend` is an app for managing food in the fridge that is optimised for use via a Command Line Interface (CLI) and is targeted at new homeowners who cook.
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 5500 lines of code.
+It is written in Java, and has more than 6000 lines of code.
 
 ## Contents
 
@@ -304,7 +304,7 @@ Displays a list of food categories which total quantity is below a specified min
 This command also displays the existing quantities along with its limits for each category. 
 Note that these limits can be modified with the [`setlimit`](#modify-the-minimum-quantity-limits-setlimit) command.
 
-:information: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
+:information_source: If the user tries to run the `runninglow` command with all the food categories limit set to 0,
 `FridgeFriend` would prompt the user to set at least one of the food category to be more than 0.
 
 Format: `runninglow`

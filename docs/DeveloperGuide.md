@@ -4,7 +4,7 @@
 
 `FridgeFriend` is an app for managing food in the fridge that is optimised for use via a Command Line Interface (CLI) and is targeted at new homeowners who cook.
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
-It is written in Java, and has more than 5500 lines of code.
+It is written in Java, and has more than 6000 lines of code.
 
 ## Contents
 
@@ -119,7 +119,7 @@ The Food component represents the basic `Food` object and related class in Fridg
 
 * `Food` is an abstract class which has multiple child Food classes, distinguished by category.
 This is to facilitate different manipulations on different food categories.
-* `Fridge` maintains the list of `Food`s and have methods to add, remove or modify the foods.
+* `Fridge` maintains the list of `Food` and have methods to add, remove or modify the foods.
 * `Fridge` uses `UniqueFoodnameChecker` to perform add tasks under different user input scenarios.
 * Whenever a `Food` object is created or called, exceptions may be thrown.
 
