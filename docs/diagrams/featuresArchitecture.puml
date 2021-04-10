@@ -1,6 +1,7 @@
 @startuml
 hide members
 hide circle
+
 package Features {
 
 package Task {
@@ -38,10 +39,16 @@ Links --> ZoomLinkInfo
 }
 
 package "Cap Simulator" {
-  Class HelpGraduation
-  Class HelpGraduationManager
+  Class AcademicRecords
+  Class CapSimulatorManager
+  Enum "<<enumeration>>\nModuleGradeEnum"
+  Enum "<<enumeration>>\nModularCreditEnum"
 
-HelpGraduationManager --> HelpGraduation
+
+
+AcademicRecords --> "<<enumeration>>\nModularCreditEnum"
+AcademicRecords --> "<<enumeration>>\nModuleGradeEnum"
+CapSimulatorManager --> AcademicRecords
 }
 
 package Module_Info {
@@ -51,8 +58,10 @@ package Module_Info {
 
     ModuleInfo -> Module
     ModuleInfo -> Task
+
     ModuleInfo <-> ZoomLinkInfo
-    ModuleInfo -> HelpGraduation
+    Component -> Module
+    Module <- AcademicRecords
 }
 
 }
