@@ -1,18 +1,15 @@
 package seedu.duke;
 
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
-import seedu.duke.features.capsimulator.HelpGraduationManager;
+import seedu.duke.features.capsimulator.CapSimulatorManager;
 import seedu.duke.features.link.LinkLoadException;
 import seedu.duke.features.link.Links;
 import seedu.duke.features.moduleinfo.ModuleInfo;
 import seedu.duke.features.task.TaskManager;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.Ui;
+
 import java.io.IOException;
+import java.util.logging.*;
 
 public class Duke {
 
@@ -56,7 +53,7 @@ public class Duke {
                         break;
                     case 2:
                         // helpGraduation
-                        HelpGraduationManager.execute();
+                        CapSimulatorManager.execute();
                         break;
                     case 3:
                         // manageTask

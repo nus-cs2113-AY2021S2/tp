@@ -5,7 +5,7 @@ import seedu.duke.ui.Ui;
 
 import java.io.IOException;
 
-public class HelpGraduationManager {
+public class CapSimulatorManager {
 
     public static void execute() {
 
@@ -24,8 +24,8 @@ public class HelpGraduationManager {
                     Ui.printRegisteredCapAndMCsTakenMessage();
                     break;
                 case 3:
-                    HelpGraduation helpGraduation = new HelpGraduation();
-                    helpGraduation.capSimulator();
+                    AcademicRecords academicRecords = new AcademicRecords();
+                    academicRecords.capSimulator();
                     break;
                 case 4:
                     return;
@@ -41,7 +41,7 @@ public class HelpGraduationManager {
             } catch (IOException e) {
                 Ui.printFilesCouldNotBeSavedMessage();
             }
-            Ui.printReturnToHelpGraduationMenuMessage();
+            Ui.printReturnToCapSimulatorMenuMessage();
         }
     }
 
@@ -64,8 +64,8 @@ public class HelpGraduationManager {
         int totalMcs = Integer.parseInt(Ui.readCommand());
         if (((cap > 0 && cap <= 5.0) && (totalMcs > 0 && totalMcs <= 180))
                 || ((cap == 0) && (totalMcs == 0))) {
-            HelpGraduation.setCurrentCap(cap);
-            HelpGraduation.setTotalMcs(totalMcs);
+            AcademicRecords.setCurrentCap(cap);
+            AcademicRecords.setTotalMcs(totalMcs);
         } else {
             System.out.println("Invalid MCs. Entries is not registered.\n");
         }

@@ -2,7 +2,7 @@ package seedu.duke.storage;
 
 import static seedu.duke.features.link.LinkInfo.isValidLink;
 
-import seedu.duke.features.capsimulator.HelpGraduation;
+import seedu.duke.features.capsimulator.AcademicRecords;
 import seedu.duke.features.link.LinkInfo;
 import seedu.duke.features.link.LinkLoadException;
 import seedu.duke.features.link.ZoomLinkInfo;
@@ -590,15 +590,15 @@ public class Storage {
             String[] part = scanner.nextLine().split("~~");
             int modularCredit = Integer.parseInt(part[0]);
             double cap = Double.parseDouble(part[1]);
-            HelpGraduation.setTotalMcs(modularCredit);
-            HelpGraduation.setCurrentCap(cap);
+            AcademicRecords.setTotalMcs(modularCredit);
+            AcademicRecords.setCurrentCap(cap);
         }
     }
 
     public static void modularCreditSaver() throws IOException {
         FileWriter fw = new FileWriter(filePathForMcs);
-        fw.write(HelpGraduation.getNumberOfGradedMCsTaken() + "~~"
-                + HelpGraduation.getCurrentCap());
+        fw.write(AcademicRecords.getNumberOfGradedMCsTaken() + "~~"
+                + AcademicRecords.getCurrentCap());
         fw.close();
     }
 
