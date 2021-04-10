@@ -1,47 +1,55 @@
 @startuml
 
+hide footbox
 actor user
+participant ":PatientInstance"
+participant ":PatientParser"
+participant ":PatientChecker"
+participant ":MainChecker"
+participant ":UI"
+participant ":PatientFindCommand"
+participant ":PatientList"
+participant ":Patient"
+participant ":PatientUI"
+participant ":PatientStorage"
 
-user -> PatientInstance : "find"
+user -> ":PatientInstance" : "find"
 
-PatientInstance -> PatientParser: patientParse()
+":PatientInstance" -> ":PatientParser": patientParse()
 
-ref over PatientChecker, MainChecker, UI : parsing user input
+ref over ":PatientChecker", ":MainChecker", ":UI" : parsing user input
 
-create PatientFind_Command
-PatientParser -> PatientFind_Command
+create ":PatientFindCommand"
+":PatientParser" -> ":PatientFindCommand"
 
-PatientFind_Command --> PatientParser : Command
+":PatientFindCommand" --> ":PatientParser" : Command
 
-PatientParser -> PatientInstance : Command
+":PatientParser" -> ":PatientInstance" : Command
 
-PatientInstance -> PatientFind_Command : execute
+":PatientInstance" -> ":PatientFindCommand" : execute
 
-PatientFind_Command -> PatientList : findPatients()
+":PatientFindCommand" -> ":PatientList" : findPatients()
 
 loop for all Patients in PatientList
-    PatientList -> Patient_Model : getPatientDetails()
+    ":PatientList" -> ":Patient" : getPatientDetails()
 
-    Patient_Model --> PatientList : patient's_details
+    ":Patient" --> ":PatientList" : patient's_details
 
-        alt patient details contains string
-            PatientList -> PatientUI : printPatientDetails()
+        alt patient details contains input string
+            ":PatientList" -> ":PatientUI" : printPatientDetails()
 
-            PatientUI --> PatientList : user shown message
+            ":PatientUI" --> ":PatientList" : user shown message
         end
 end
 
-PatientList --> PatientFind_Command
+":PatientList" --> ":PatientFindCommand"
 
-PatientFind_Command --> PatientInstance
+":PatientFindCommand" --> ":PatientInstance"
 
-PatientInstance -> PatientStorage : storePatients()
+":PatientInstance" -> ":PatientStorage" : storePatients()
 
-PatientStorage --> PatientInstance
+":PatientStorage" --> ":PatientInstance"
 
-PatientInstance --> user : user sees find result
-
-
-
+":PatientInstance" --> user : user sees find result
 
 @enduml
