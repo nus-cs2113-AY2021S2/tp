@@ -4,13 +4,14 @@
 
 ## Project: NusFoodReviews
 
-NusFoodReviews is a java console based application used to allow
-users to be familarised with the different food places around nus and be able
-to leave reviews for other users to view. The user interacts with it using
-CLI. It is written in Java, 
+NusFoodReviews is a java console based application that allows
+users to familiarized with the different food places around nus and be able
+to leave reviews for other users to view. It is written in Java and the user
+interacts with it using CLI.
 
- 
+
 * **Summary of contributions**
+
   * Code contributed: 
   * Enhancements implemented: DeleteStores and DeleteReviews
   * Contributions to documentation: 
