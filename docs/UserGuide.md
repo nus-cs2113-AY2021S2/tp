@@ -801,7 +801,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
 
 <p align="center">
-    <img width="600" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
+    <img width="400" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
     Figure 4 - GULIO Text Editor
 </p>
 
