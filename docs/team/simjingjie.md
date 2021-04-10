@@ -5,9 +5,9 @@ This is a student project for university software development course.
 
 I am one of the contributors to FridgeFriend project.
 
-### Summary of Contributions
+## Summary of Contributions
 
-####Version 1  
+###Version 1  
 
   - In charge of basic features
     - `add`
@@ -25,7 +25,7 @@ I am one of the contributors to FridgeFriend project.
     ([#79](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/79))
     
   
-####Version 2
+###Version 2
 
   - In charge of implementation of quantity parameter
     - `Food` modification
@@ -38,7 +38,7 @@ I am one of the contributors to FridgeFriend project.
   - Pull Request: ([#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108))
     ([#133](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/133))
   
-####Version 2.1
+###Version 2.1
 
   - Fixed bugs related to quantity parameter
     - `Parser` Modification
@@ -59,9 +59,9 @@ I am one of the contributors to FridgeFriend project.
     ([#213](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/213))
     ([#216](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/216))
     
-####Code contributed: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=Simjj96)
+###Code contributed: [RepoSense Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=Simjj96)
 
-####Documentation
+###Documentation
   - User Guide
     - Added documentation for the command `add`
     - Update documentation for the command `add`, `list`, `expiring`, `runninglow`
@@ -85,9 +85,9 @@ I am one of the contributors to FridgeFriend project.
       ([#213](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/213))
       ([#214](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/214))
   
-- **Community**
-    - Review pull requests and maintain group repo
-    - Reported bugs and suggestions for other teams in the class
+###Community
+  - Review pull requests and maintain group repo
+  - Reported bugs and suggestions for other teams in the class
       ([1](https://github.com/SimJJ96/ped/issues/1),
       [2](https://github.com/SimJJ96/ped/issues/2),
       [3](https://github.com/SimJJ96/ped/issues/3),
