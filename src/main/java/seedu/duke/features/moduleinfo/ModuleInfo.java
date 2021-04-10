@@ -133,6 +133,11 @@ public class ModuleInfo {
             moduleNumberInt--;
             System.out.println("Enter the number of MCs for this module: ");
             int moduleCredits = Ui.readCommandToInt();
+            System.out.println("The current MCs associated with "
+                    + modules.get(moduleNumberInt).getName() + " is: "
+                    + modules.get(moduleNumberInt).getMc());
+            System.out.println("Overwriting current MCs for "
+                    + modules.get(moduleNumberInt).getName() + " to: " + moduleCredits);
             modules.get(moduleNumberInt).setMc(moduleCredits);
         } else {
             Ui.printInvalidInputMessage();
