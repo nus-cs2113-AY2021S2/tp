@@ -9,4 +9,4 @@ HealthVault is a desktop application made for healthcare personnel as their one 
 Useful links:
 * For Users, see our [User Guide](UserGuide.md)
 * For Developers, see our [Developer Guide](DeveloperGuide.md)
-* Find our more about the team behind HealthVault in [About Us](AboutUs.md)
+* Find out more about the team behind HealthVault in [About Us](AboutUs.md)
