@@ -1,0 +1,52 @@
+@startuml
+hide footbox
+
+actor       User       as User
+
+participant ":StaffInstance"
+participant ":StaffParser"
+participant ":MainChecker"
+participant ":UI"
+participant ":StaffChecker"
+participant ":StaffAddCommand"
+participant ":StaffList"
+
+User-> ":StaffInstance": "add"
+
+== Getting User Input ==
+
+":StaffInstance" -> ":StaffParser": commandHandler()
+
+":StaffParser" -> ":UI": smartCommandRecognition()
+return String intended_command
+
+== Check validity of the data input ==
+
+":StaffParser" -> ":StaffChecker": checkValidDataForAdd()
+
+
+":StaffChecker" -> ":StaffChecker": checkStaffID()
+":StaffChecker" -> ":StaffChecker": checkDuplicateStaffID()
+":StaffChecker" -> ":StaffChecker": checkStaffAge()
+":StaffChecker" -> ":StaffChecker": checkBlankInput()
+":StaffChecker" -> ":StaffChecker": invalidCharactersStaffChecker()
+
+
+":StaffChecker" --> ":StaffParser"
+
+== Creating StaffAddCommand ==
+":StaffParser" --> ":StaffInstance": StaffAddCommand
+
+== Creating Staff Object with User Input ==
+
+":StaffInstance" -> ":StaffAddCommand": execute()
+
+":StaffAddCommand" -> ":StaffList": add() 
+
+== Saving Staff Objects into .txt file ==
+
+":StaffAddCommand" -> ":StaffStorage": writeToFile()
+return
+
+":StaffAddCommand" --> ":StaffInstance":
+@enduml
