@@ -14,7 +14,7 @@ import seedu.duke.command.ExitCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exception.FutureDateException;
 import seedu.duke.exception.TypeException;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -43,6 +43,9 @@ public class CommandParser {
         String commandWord = getCommandWord(inputParts);
         switch (commandWord) {
         case "help":
+            if (inputParts.length > 1) {
+                return invalidCommandWord();
+            }
             return new HelpCommand();
         case "add":
             return prepareAdd(inputParts);
@@ -57,10 +60,17 @@ public class CommandParser {
         case "cancel":
             return prepareCancel(inputParts);
         case "exit":
+            if (inputParts.length > 1) {
+                return invalidCommandWord();
+            }
             return new ExitCommand();
         default:
-            return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND + Messages.MESSAGE_HELP_PROMPT);
+            return invalidCommandWord();
         }
+    }
+
+    private Command invalidCommandWord() {
+        return new InvalidCommand(Messages.MESSAGE_INVALID_COMMAND + Messages.MESSAGE_HELP_PROMPT);
     }
 
     public void clearParserParams() {
@@ -136,28 +146,28 @@ public class CommandParser {
                 return new InvalidCommand(SET);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 3) {
+            if (rawParams.length != 3) {
                 return new InvalidCommand(SET);
             }
 
-            String rawPeriodType = rawParams[1];
-            if (!rawPeriodType.contains("p/")) {
+            String rawIntervalType = rawParams[1];
+            if (!rawIntervalType.startsWith("p/")) {
                 return new InvalidCommand(SET);
             }
-            rawPeriodType = rawPeriodType.trim().substring(2);
+            rawIntervalType = rawIntervalType.trim().substring(2);
             String targetStr = rawParams[2];
-            if (!targetStr.contains("target/")) {
+            if (!targetStr.startsWith("target/")) {
                 return new InvalidCommand(SET);
             }
             targetStr = targetStr.trim().substring(7);
 
             double target = Double.parseDouble(targetStr);
 
-            PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
-            if (periodType == PeriodType.INVALID) {
+            IntervalType intervalType = IntervalType.parseIntervalType(rawIntervalType);
+            if (intervalType == IntervalType.INVALID) {
                 return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
             }
-            params.put("periodType", periodType.toString());
+            params.put("intervalType", intervalType.toString());
             params.put("target", String.valueOf(target));
             return new SetCommand(recordType, params);
         } catch (NumberFormatException e) {
@@ -186,23 +196,23 @@ public class CommandParser {
                 return new InvalidCommand(CHECK);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 1) {
+            if (rawParams.length != 1 && rawParams.length != 2) {
                 return new InvalidCommand(CHECK);
             }
 
             if (rawParams.length == 2) {
-                String rawPeriodType = rawParams[1];
-                if (!rawPeriodType.contains("p/")) {
+                String rawIntervalType = rawParams[1];
+                if (!rawIntervalType.contains("p/")) {
                     return new InvalidCommand(CHECK);
                 }
-                rawPeriodType = rawPeriodType.trim().substring(2);
-                PeriodType periodType = PeriodType.parsePeriodType(rawPeriodType);
-                if (periodType == PeriodType.INVALID) {
+                rawIntervalType = rawIntervalType.trim().substring(2);
+                IntervalType intervalType = IntervalType.parseIntervalType(rawIntervalType);
+                if (intervalType == IntervalType.INVALID) {
                     return new InvalidCommand(Messages.MESSAGE_INVALID_INTERVAL_TYPE);
                 }
-                params.put("periodType", periodType.toString());
+                params.put("intervalType", intervalType.toString());
             } else {
-                params.put("periodType", null);
+                params.put("intervalType", null);
             }
             return new CheckCommand(recordType, params);
         } catch (Exception e) {
@@ -220,7 +230,7 @@ public class CommandParser {
                 return new InvalidCommand(CANCEL);
             }
             String[] rawParams = inputParts[1].split("\\s+");
-            if (rawParams.length < 2) {
+            if (rawParams.length != 2) {
                 return new InvalidCommand(CANCEL);
             }
 
@@ -242,6 +252,9 @@ public class CommandParser {
     }
 
     private CommandRecordType getCommandRecordType(String inputPart) {
+        if (!inputPart.startsWith("t/")) {
+            return INVALID;
+        }
         return CommandRecordType.getType("" + inputPart.trim().charAt(2));
     }
 
@@ -330,9 +343,6 @@ public class CommandParser {
             }
             duration = durationDate[0];
             date = durationDate[1];
-            if (isWorkoutMinutesInvalid(duration)) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_WORKOUT_MIN);
-            }
             params.put("activity", activity);
             params.put("duration", duration);
             params.put("date", date);
@@ -393,9 +403,6 @@ public class CommandParser {
             }
             weight = weightDate[0];
             date = weightDate[1];
-            if (isWeightInvalid(weight)) {
-                return new InvalidCommand(Messages.MESSAGE_INVALID_WEIGHT);
-            }
             params.put("weight", weight);
             params.put("date", date);
             return new AddCommand(BODY_WEIGHT, params);
@@ -445,6 +452,9 @@ public class CommandParser {
             }
             if (!hasDate) {
                 params.put("activity", activity);
+                if (optionalParams.split("\\s+").length > 1) {
+                    return new InvalidCommand(VIEW);
+                }
                 return new ViewCommand(EXERCISE, params);
             }
             String[] activityDate = getDurationAndDate(activity);
@@ -480,6 +490,9 @@ public class CommandParser {
             }
             if (!hasDate) {
                 params.put("food", food);
+                if (optionalParams.split("\\s+").length > 1) {
+                    return new InvalidCommand(VIEW);
+                }
                 return new ViewCommand(DIET, params);
             }
             String[] foodDate = getDurationAndDate(food);
@@ -519,31 +532,13 @@ public class CommandParser {
     }
 
     private boolean isDateInvalid(String dateString) {
-        return !dateString.startsWith("date/") || dateString.length() <= 5;
+        return !dateString.startsWith("date/") || dateString.length() <= 5 || dateString.length() > 15;
     }
 
     private boolean isSleepHoursInvalid(String duration) {
         try {
             int sleepDurationInHours = Integer.parseInt(duration);
             return sleepDurationInHours <= 0 || sleepDurationInHours >= 24;
-        } catch (NumberFormatException e) {
-            return true;
-        }
-    }
-
-    private boolean isWorkoutMinutesInvalid(String duration) {
-        try {
-            int workoutMin = Integer.parseInt(duration);
-            return workoutMin <= 0 || workoutMin > 1440;
-        } catch (NumberFormatException e) {
-            return true;
-        }
-    }
-
-    private boolean isWeightInvalid(String weight) {
-        try {
-            double weightInKg = Double.parseDouble(weight);
-            return !(weightInKg > 0);
         } catch (NumberFormatException e) {
             return true;
         }
@@ -585,12 +580,11 @@ public class CommandParser {
     }
 
     private String getOptionalParamsForView(String typeContent) {
-        String[] rawInput = typeContent.split("\\s+", 2);
-        if (rawInput.length == 1) {
+        if (typeContent.length() == 3) {
             return "";
-        } else {
-            return rawInput[1].trim();
         }
+        String rawInput = typeContent.substring(3);
+        return rawInput.trim();
     }
 
     private String parseExerciseActivityString(String activityRawInput) {

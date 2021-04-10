@@ -27,7 +27,7 @@ public class Messages {
     public static final String MESSAGE_UNACHIEVED_GOALS = "You have unachieved goals.\n";
     public static final String MESSAGE_GOALS_DONE_TODAY = "Congratulations!\n"
             + "You have achieved all daily goals for today!";
-    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "Congratulations!\n"
+    public static final String MESSAGE_GOALS_DONE_THIS_WEEK = "\nCongratulations!\n"
             + "You have achieved all weekly goals for this week!";
     public static final String MESSAGE_VIEW_TITLE = "Displaying all eligible %s records:\n";
     public static final String MESSAGE_CHECK_TITLE = "Checking the progress of eligible %s goals:\n";
@@ -57,7 +57,7 @@ public class Messages {
     public static final String MESSAGE_CANT_SET_GOAL = "Sorry, you cannot set goal for an unrecognized type.";
     public static final String MESSAGE_CANT_VIEW_LIST = "Sorry, you cannot view a record list "
             + "of an incorrect record type.";
-    public static final String MESSAGE_NO_BODY_WEIGHT_RECORD = "You haven't added any body weight record. "
+    public static final String MESSAGE_NO_BODY_WEIGHT_RECORD = "You haven't added any body weight record.\n"
             + "Use add command to track the change of your body weight.";
     public static final String MESSAGE_NO_BODY_WEIGHT_PROGRESS = "You haven't added any body weight record.";
     public static final String MESSAGE_CANT_CHECK_GOAL = "Sorry, you cannot check a goal list "
@@ -72,31 +72,33 @@ public class Messages {
     public static final String MESSAGE_INVALID_DATE_FORMAT = "The date format is incorrect or the date is invalid. "
             + "Please try again.\n";
     public static final String MESSAGE_INVALID_SLEEP_HOUR = "The duration you entered is invalid.\n"
-            + "It should be an positive integer within range 0 - 24 (not including 0), with the unit of hour.\n"
-            + "Please try again.";
+            + "It should be an positive floating point number within range 0.0 - 24.0 (not including 0.0), "
+            + "with the unit of hour.\nPlease try again.";
     public static final String MESSAGE_INVALID_WORKOUT_MIN = "The duration you entered is invalid.\n"
             + "It should be an positive integer within range 0 and 1440 (not including 0), with the unit of minute.\n"
             + "Please try again.";
-    public static final String MESSAGE_INVALID_WEIGHT = "The weight you entered is either too high or too low. "
-            + "Keeping a moderate body weight is good for your health.\nAn acceptable value for body weight"
+    public static final String MESSAGE_INVALID_WEIGHT = "Keeping a moderate body weight is good for your health.\n"
+            + "An acceptable value for body weight"
             + " is a positive floating point number within the range 30.0 - 400.0, with the unit of kilogram(kg).\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_FOOD_CATEGORY = "The food category you entered is invalid.\n"
             + "The acceptable food category list is:\n";
     public static final String MESSAGE_INVALID_FOOD_AMOUNT = "The amount you entered is invalid.\n"
-            + "The acceptable amount of food should be a floating point number within the range 0.0 - 3000.0 (not including"
-            + " 0.0), with the unit of gram(g).\nPlease try again.";
+            + "The acceptable amount of food should be a floating point number within the range 0.0 - 3000.0 "
+            + "(not including 0.0), with the unit of gram(g).\nPlease try again.";
     public static final String MESSAGE_FUTURE_DATE_RECORD = "You are only allowed to add records for current "
             + "or previous days.\nPlease try again.";
     public static final String MESSAGE_INVALID_TARGET_ENERGY = "The target energy you entered is invalid\n"
-            + "The acceptable target energy should be a floating point number within"
+            + "An acceptable target energy should be a floating point number within"
             + "range 0.0 - 10000.0 (not including 0.0), with the unit of K cal.\nPlease try again.";
-    public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid\n"
-            + "The acceptable target duration should be a floating point number  within " +
-            "the range 0.0 - 24.0 (not including 0.0), with the unit of hour.\nPlease try again.";
-    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "The target weight you entered is either too"
-            + "high or too low. Keeping a moderate body weight is good for your health.\nThe acceptable target weight "
-            + "should be a floating point number within range 40.0 - 400.0, with the unit of kilogram (kg).\n"
+    public static final String MESSAGE_INVALID_TARGET_SLEEP_DURATION = "The target duration you entered is invalid!\n"
+            + "The target duration should be a positive floating point number.\n"
+            + "For daily sleep goals, the duration range is 0.0 - 24.0\n"
+            + "For weekly sleep goals, the duration range is 0.0 - 168.0\n"
+            + "The unit of target duration is in hour.\nPlease try again.";
+    public static final String MESSAGE_INVALID_TARGET_BODY_WEIGHT = "Keeping a moderate body weight is good for "
+            + "your health.\nAn acceptable target weight "
+            + "should be a floating point number\nwithin range 40.0 - 400.0, with the unit of kilogram (kg).\n"
             + "Please try again.";
     public static final String MESSAGE_INVALID_WORKOUT_CATEGORY = "The workout category you entered is invalid.\n"
             + "The acceptable workout category list is:\n";

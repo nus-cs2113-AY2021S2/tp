@@ -2,7 +2,7 @@ package seedu.duke.goal.timemanager;
 
 import seedu.duke.account.FitCenter;
 import seedu.duke.common.Messages;
-import seedu.duke.goal.PeriodType;
+import seedu.duke.goal.IntervalType;
 import seedu.duke.storage.Storage;
 import seedu.duke.ui.UI;
 
@@ -56,7 +56,7 @@ public class TimeController {
         if (isTodayANewDay()) {
             appToday = LocalDate.now();
             toUpdateFile = true;
-            fitCenter.resetGoalProgress(PeriodType.DAILY);
+            fitCenter.resetGoalProgress(IntervalType.DAILY);
             UI.printMessage(Messages.MESSAGE_NEW_DAY + Messages.MESSAGE_CHECK_GOALS_PROMPT);
         } else {
             if (!isInitialStart) {
@@ -67,7 +67,7 @@ public class TimeController {
         if (isThisWeekANewWeek()) {
             appWeekOfYear = getSystemWeekOfYear();
             toUpdateFile = true;
-            fitCenter.resetGoalProgress(PeriodType.WEEKLY);
+            fitCenter.resetGoalProgress(IntervalType.WEEKLY);
             UI.printMessage(String.format(Messages.MESSAGE_NEW_WEEK, appWeekOfYear)
                     + Messages.MESSAGE_CHECK_GOALS_PROMPT);
         }

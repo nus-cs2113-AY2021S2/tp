@@ -8,13 +8,17 @@ public class Sleep extends Record {
     /**
      * Represents a record of sleeping data.
      *
-     * @param duration the duration of the sleep.
+     * @param durationStr the duration of the sleep.
      * @param date     the date of the sleep.
      */
-    public Sleep(double duration, LocalDate date) throws NumberFormatException {
+    public Sleep(String durationStr, LocalDate date) throws NumberFormatException {
         super(RecordType.SLEEP, date);
-        this.duration = duration;
-        if (duration <= 0 || duration > 1440) {
+        try {
+            this.duration = Double.parseDouble(durationStr);
+            if (duration <= 0 || duration > 24) {
+                throw new NumberFormatException();
+            }
+        } catch (NumberFormatException e) {
             throw new NumberFormatException("Sleep duration invalid");
         }
     }

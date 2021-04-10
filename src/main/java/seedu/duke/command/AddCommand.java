@@ -44,16 +44,16 @@ public class AddCommand extends Command {
         }
         switch (recordType) {
         case EXERCISE:
-            record = new Exercise(params.get("activity"), Integer.parseInt(params.get("duration")), recordDate);
+            record = new Exercise(params.get("activity"), params.get("duration"), recordDate);
             break;
         case DIET:
-            record = new Diet(params.get("food"), Double.parseDouble(params.get("weight")), recordDate);
+            record = new Diet(params.get("food"), params.get("weight"), recordDate);
             break;
         case SLEEP:
-            record = new Sleep(Double.parseDouble(params.get("duration")), recordDate);
+            record = new Sleep(params.get("duration"), recordDate);
             break;
         case BODY_WEIGHT:
-            record = new BodyWeight(Double.parseDouble(params.get("weight")), recordDate);
+            record = new BodyWeight(params.get("weight"), recordDate);
             break;
         default:
             record = null;
