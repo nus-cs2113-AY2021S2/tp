@@ -55,6 +55,8 @@ public class FridgeFriend {
                 Command command = Parser.getCommand(input);
                 executeCommand(command);
                 isExit = command.isExit();
+            } catch (RuntimeException runtimeException) {
+                safeExit();
             } catch (Exception exception) {
                 Ui.printExceptionMessage(exception);
                 LoggingHandler.logInfo("Error found.", exception);
@@ -69,4 +71,14 @@ public class FridgeFriend {
         command.setData(fridge);
         command.execute();
     }
+
+    //@@author SimJJ96
+    private static void safeExit() {
+        String interruptMessage = "Application has been interrupted.\n"
+                + "Exiting application...";
+        Ui.printMessage(interruptMessage);
+        Storage.save(fridge);
+        System.exit(0);
+    }
+
 }
