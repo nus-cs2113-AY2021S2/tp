@@ -35,7 +35,7 @@ public class Diet extends Record {
         } catch (NumberFormatException e) {
             throw new NumberFormatException("Food amount invalid");
         }
-        calorie = amount * foodCategory.getCaloriePer100g();
+        calorie = amount * foodCategory.getCaloriePer100g() / 100;
         this.date = date;
         formattedDate = date.format(DATE_FORMATTER);
         lengthOfFood = foodCategory.toString().length();
@@ -104,7 +104,7 @@ public class Diet extends Record {
     }
 
     private String getCaloriesUnit() {
-        return "K cal";
+        return "Kcal";
     }
 
     private int getWeightLength() {
