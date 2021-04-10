@@ -42,7 +42,7 @@ public class Messages {
             + "\nType <help> followed by <command> to learn more about how each command can be used.";
     public static final String SORT_HELP_MESSAGE = "Sort sets your preferred sorting method for your reviews.\n"
             + "This command is not available in the recommendation mode.\n\n"
-            + "Posisible sorting methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
+            + "Possible sorting methods are:\n\ttitle\n\tcategory\n\trating\n\tearliest\n\tlatest\n"
             + "\nCommand syntax: sort <method>";
     public static final String LIST_HELP_MESSAGE = "List will allow you to list all your reviews or recommendations.\n"
             + "You will list the reviews/recommendations depending on the mode you are in.\n\n"
