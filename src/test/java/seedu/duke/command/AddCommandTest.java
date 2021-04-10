@@ -16,13 +16,14 @@ public class AddCommandTest {
     @Test
     public void executeAddCommand_addExpenseCmd_success() {
         String testName = "executeAddExpense_addExpenseCmd_success";
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + System.lineSeparator()
                 + "Expense has been added..." + System.lineSeparator()
                 + System.lineSeparator()
-                + "1. [E][2021-04-07] Dinner " + System.lineSeparator()
+                + "[ID: 1] [E] [2021-04-07] [$5.00] Dinner " + System.lineSeparator()
                 + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "=====================================================================" + System.lineSeparator();
         String addExpInput = "add -e Dinner -a 5.00 -d 07/04/2021";
         runAddExpTest(expectedOutput, addExpInput, testName);
     }

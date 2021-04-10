@@ -270,12 +270,46 @@ sets the `isExit = true`, ending control of the `commandLooper()` and resulting 
 
 ### 3.5 Command Component
 ![CommandClassDiagram](img/CommandClassDiagram.png)\
-_Figure 8: Command Class Diagram_
+_Figure 8: Command Class Diagram (Part 1)_
 
-All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8_),\
+![CommandClassDiagram2](img/CommandClassDiagram2.png)\
+_Figure 9: Command Class Diagram (Part 2)_
+
+All Commands contain a command word constant named as `COMMAND_*` (as underlined in _Figure 8 & 9_),\
 e.g. `protected static final String COMMAND_XYZ = "xyz";`\
 These constants are used by the `CommandHandler` to map to each `Command`.\
-In the case of `AddCommand` in _Figure 8_, the resultant constant is `...final String COMMAND_ADD = "add";`.\
+
+![AddCommandClassDiagram](img/AddCommandClassDiagram.png)\
+_Figure 10: AddCommand Class Diagram_
+
+In the case of `AddCommand` in the above _Figure 10_,\
+the resultant constant is `...final String COMMAND_ADD = "add";`.
+
+Below shows the command format the user has to type into the Application.
+
+> _**Commands in Finux follow these argument orders (depending on the command):**_
+> * `CMD -OPT <FIELD> [-OPT <FIELD>...]`
+> * `CMD -OPT`
+> * `CMD { -OPT_1 ... | -OPT_2 ... | ... } ...`
+> * `CMD <FIELD>`
+> * `CMD [<FIELD>]`
+> * `CMD`
+> 
+> _**Argument types and notation:**_
+> * `CMD` - a valid command.
+> * `-OPT` - an option, a letter preceded by a dash. E.g. "`-i`".
+> * `<FIELD>` - an area where data is required.
+> * `[...]` - optional argument(s).
+> * `{ ... | ... | ... }` - mutually exclusive arguments,\
+    e.g. `{ -e | -l | -s }` means that `view -e -s` has a conflict with options `-e` and `-s`.
+> 
+> _**Non-strict argument order:**_\
+> The `add` and `return` commands do not require strict ordering for options.\
+> E.g. For the case of `add`, option `-a` can come before/after option `-d`.
+
+
+_Figure 11: Command Input Format and Argument Types_
+
 More on the different types of commands and usages, please refer to our [User Guide](UserGuide.md).
 
 #### Description
@@ -290,10 +324,18 @@ object is successfully created. Most of the input validation is done in the cons
    1. Valid options: options only for each `Command`. E.g. `-a` for the amount `add` is valid.
    2. No duplicate options: options are not repeated. E.g. `-a 200 -a 200` or `-l -l` is invalid.
    3. No conflict options: mutually exclusive options, options that cannot be input at the same time.
-      E.g. ViewCommand implements `{-e | -l | -s}` options, `view -s -l` is considered a conflict of options.
+      E.g. ViewCommand implements `{-e | -l | -s | -a}` options, `view -s -l` is considered a conflict of options.
 2. Secondly, option values are validated (if any):
    * E.g. The input `return -i 2 -d 20122012` has option values of `"2"` for `-i` and `"20122012"` for `-d`.
      Each option value is validated based on the input validation methods for each data type.
+
+> 💡 The Command classes uses static validation methods from the
+> [Utils](https://github.com/AY2021S2-CS2113T-W09-1/tp/blob/master/src/main/java/seedu/duke/command/Utils.java)
+> class. Some notable methods used are:
+> * `validateOptions(...)`: Checks arguments for invalid, duplicate and conflict options.
+> * `validateArguments(...)`: Used to check for strict argument type ordering. Still requires `validateOptions(...)`
+>   to check for argument validity.
+> * `getOptionValue(...)`: Extracts the option's value from arguments.
 
 In the case of `AddCommand`, which supports options of `{-e | -l | -s}`, the constructor will check which option
 was given, and sets the `RecordType` enumeration, `recordType` to the following:
@@ -500,8 +542,8 @@ category of *expense*, *loan*, and *saving* of the added records.
 
 #### 4.3.1 Current Implementation
 
-The `view` feature is facilitated by `ViewCommand`. By typing in `view` and following up with the record type, 
-`{-e, -l, -s}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
+The `view` feature is facilitated by `ViewCommand`. By typing in `view` and followed up with the available options, 
+`{-e, -l, -s, -a}`, the `ParserHandler` will parse the input for `CommandHandler` to create the `ViewCommand` object.
 By calling the `execute()` method, the total amount will be printed onto the console with the help of `Ui`.
 
 ![ViewFeatureSequenceDiagram](img/ViewFeatureSequenceDiagram.png)\
@@ -521,22 +563,26 @@ The application next invokes the `ViewCommand#execute()` to execute the user's i
 
 ***Step 3:***\
 Inside the `ViewCommand#execute()`, the method conducts a check on the `RecordType` enumeration before executing the 
-respective method.
+respective method. The `RecordType` enumeration is used to identify the category such that the correct method would be
+called. The following are the support types found in `RecordType` enumeration:
 > ✔️ `EXPENSE` type invokes `Ui#printTotalAmountExpense()`
 
 > ✔️ `LOAN` type invokes `Ui#printTotalAmountLoan()`
 
 > ✔️ `SAVING` type invokes `Ui#printTotalAmountSaving()`
 
+> ✔️ `ALL` type invokes `Ui#printTotalAmountAllType()` 
+
 ***Step 4:***\
 The `Ui` will handle the respective invocation call. The basis for the three methods utilizes the `for` loop to
 iterate through the `recordList` and will only add to the `totalAmount` if it is an instance of the respective
 record type.
 > 📝 The `Ui#printTotalAmountLoan()` will imposed additional check on whether the record is returned.
-> Only records that are not returned will be added to the `totalAmount`
+> Only records that are not returned will be added to the `totalAmount`.
+> `for` loop is omitted for brevity in the sequence diagram. 
 
 ***Step 5:***\
-Finally, the `totalAmount` will be rounded off to two decimal place before printing onto the console.
+Finally, the `totalAmount` will set to two decimal place before printing onto the console.
 
 #### 4.3.2 Design Consideration
 
@@ -558,20 +604,6 @@ Having considered two of the approaches, we have decided to adopt the second app
 The deterministic factor was the possibility of very large number such as 1000 billions. Thus, covering more than
 what the integer data type provided can cater to higher flexibility of the application.
 
-Aspect: **When to round off the amount to two decimal place**
-
-As the user can enter decimal into the amount field, the `ViewCommand` has two options of when to round off the value:
-* When assigning value to the amount variable
-* When printing the final computed value
-
-|Approach|Pros|Cons|
-|--------|----|----|
-|Assigning value to the amount variable|Round off early to avoid complication|Additional time per assignment to round off|
-|Printing the final computed value|Only round off once|Rounding off might be couple to other method which needs the amount field|
-
-With the two approaches considered, we have decided to adopt the second approach as it is more efficient to round off
-at the end and to preserve the accuracy for two decimal place. Since no other method is accessing the amount variable,
-is it possible avoid rounding off during each value assignment until new or existing features requires it.
 
 ### 4.4 Return Feature
 The `return` feature allows Finux users to mark a loan as returned.
@@ -600,7 +632,7 @@ The `remove` feature is facilitated by `RemoveCommand`. By running the command w
 parameters, our `CommandHandler` will construct the `RemoveCommand` object which will validate the input and provide
 relevant parameters that will be used in the execute function.
 
-![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)
+![RemoveFeatureSequenceDiagram](img/RemoveFeatureSequenceDiagram.png)\
 *Figure x: Sequence Diagram for `remove -i 1`*
 
 Given below is an example usage scenario of how `RemoveCommand` behaves at each step.
@@ -818,8 +850,8 @@ Credit score for Tom is 90
 
 #### A.2.1 Problem Identification
 Problems faced by students that Finux aim to assist with.
-> * [Problem] Wastage of time due to connection/latency issues went accessing finance tracking website.
-> * [Solution] Use a local based application.
+> * [Problem] Wastage of time due to poor connection/latency issues when accessing finance tracking website.
+> * [Solution] Provide a non website dependent application.
 
 > * [Problem] Hassle to use different applications to keep track of various stuff.
 > * [Solution] Provide an integrated platform to record any expenses, loans, or saving.
@@ -827,8 +859,8 @@ Problems faced by students that Finux aim to assist with.
 > * [Problem] Disorganization issues arising from keep multiple tracking applications.
 > * [Solution] Provide the option to view each category of records within an integrated platform.
 
-> * [Problem] Spending time to gauge whether to borrow money to a friend.
-> * [Solution] Provide a soft gauge through credit score indicators.
+> * [Problem] Spending additional time to gauge whether to lend money to a friend.
+> * [Solution] Provide a soft gauge through credit score meter.
 
 #### A.2.2 Value Adding
 
@@ -837,7 +869,7 @@ websites and using different applications to keep track various movement such as
 provide an all-in-one platform for students who are usually in front of their computers. The student's expertises in 
 coding and typing can speed up the process of their finance management through familiarity with the CLI interface.
 
-> ❗ **CAUTION:** Finux does not provide any finance advise.
+> ❗ Finux does not provide any finance advise.
 
 
 ## Appendix B: User Stories

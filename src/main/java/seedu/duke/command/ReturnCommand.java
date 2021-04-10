@@ -128,7 +128,9 @@ public class ReturnCommand extends Command {
             creditScore = computeCreditScore(daysDifference, creditScore, currentLoan.isReturn());
             creditScoreReturnedLoansMap.insertCreditScoreOf(borrowerNameInLowerCase, creditScore);
         }
-        ui.printMessage("Loan marked as returned: " + currentLoan);
+        ui.printMessage(System.lineSeparator() + "Loan marked as returned:"
+                + System.lineSeparator() + System.lineSeparator()
+                + ui.getId(recordNumberInt) + currentLoan + System.lineSeparator());
         storage.saveData(recordList, creditScoreReturnedLoansMap);
     }
 }

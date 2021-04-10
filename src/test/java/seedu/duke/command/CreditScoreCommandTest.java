@@ -20,9 +20,10 @@ public class CreditScoreCommandTest {
     @Test
     public void executeCredScoreCommand_returnCmd_success() {
         String testName = "executeCredScoreCommand_returnCmd_success";
-        String expectedOutput = "=========================================================" + System.lineSeparator()
+        String expectedOutput = "====================================================================="
+                + System.lineSeparator()
                 + "Credit score for andy is: 50" + System.lineSeparator()
-                + "=========================================================" + System.lineSeparator();
+                + "=====================================================================" + System.lineSeparator();
         String credScoreCmdInput = "creditscore andy";
         runCredScoreCmdTest(expectedOutput, credScoreCmdInput, testName);
     }
