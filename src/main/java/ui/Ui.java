@@ -351,7 +351,7 @@ public class Ui {
     }
 
     public void showInvalidStorePrompt(String storeName) {
-        System.out.println("The store name '" + storeName + "' is already taken! Please enter another name:");
+        System.out.println("The store name '" + storeName + "' already exist! Please enter again:");
     }
 
 
@@ -382,6 +382,20 @@ public class Ui {
     public void showMenuNotDeleted() {
         System.out.println(LINESPACING);
         System.out.println("Cancelling.... Menu not Deleted");
+        System.out.println(LINESPACING);
+    }
+
+    public static void showDirectoryCreated() {
+        System.out.println(LINESPACING);
+        System.out.println("Directory not found...New directory created.");
+        System.out.println("New database file created...");
+        System.out.println(LINESPACING);
+    }
+
+    public static void showDirectoryFound() {
+        System.out.println(LINESPACING);
+        System.out.println("Directory found!...");
+        System.out.println("Data loaded successfully...");
         System.out.println(LINESPACING);
     }
 

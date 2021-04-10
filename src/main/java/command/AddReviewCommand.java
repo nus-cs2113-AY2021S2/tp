@@ -85,7 +85,7 @@ public class AddReviewCommand extends Command {
         ui.reviewAdded();
         Date dateTime = new Date();
         Format formatter = new SimpleDateFormat("yyy-MM-dd");
-        Storage.saveReview(new FileWriter(Storage.fileName,true),canteen,store,description,line,
+        Storage.saveReview(new FileWriter(Storage.DEFAULT_STORAGE_FILEPATH,true),canteen,store,description,line,
                 formatter.format(dateTime));
     }
 }

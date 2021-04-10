@@ -16,5 +16,6 @@ public class HelpCommand extends Command {
         System.out.println("Enter 'list' to select a new store");
         System.out.println("Enter 'login' to re-access the app as a public/admin user");
         System.out.println("Enter 'exit' to exit the application");
+        System.out.println(Ui.LINESPACING);
     }
 }

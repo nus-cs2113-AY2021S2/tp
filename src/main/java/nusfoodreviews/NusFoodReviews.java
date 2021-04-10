@@ -131,6 +131,7 @@ public class NusFoodReviews {
     public void setCanteenIndex() throws DukeExceptions {
         ui.showDisplaySelectCanteens(canteens, "view");
         String line = ui.readCommand();
+
         if (line.equals("exit")) {
             ui.showGoodbye();
             System.exit(0);
