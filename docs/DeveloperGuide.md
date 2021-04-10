@@ -181,7 +181,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI latest diagram.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UML UI.png">
 
 **API :** `UI.java`
 
@@ -522,6 +522,17 @@ Invalid Input includes:
 10. Data is written and saved.
 11. Control is then returned to PatientInstance.
 
+**Design Considerations**
+<br>
+Using an ArrayList over a List as the main data structure:
+<br>
+Option 1 (Final choice): Using an ArrayList
+* Pros: Able to access a patient given the index and allows for more flexibility in the methods used.
+* Cons: Slow accessing when storing and loading as an ArrayList takes more resources than a List.
+
+Option 2 : Using a List
+* Pros: Able to load and store very fast and also able to perform functions like "list" fast.
+* Cons: No random access and thus made certain functions more troublesome code wise.
 <br>
 
 ### 5.2.3 Delete
@@ -562,8 +573,19 @@ Invalid Input includes:
 9. Data is written and saved.
 10. Control is then returned to PatientInstance.
 
+**Design Considerations**
 <br>
+Using an iterator to store the location of the item being deleted:
+<br>
+Option 1 (Final choice): Not using an iterator
+* Pros: Using the inbuilt commands to iterate through to find the item to delete seems more straightforward.
+* Cons: The flexibility of the data manipulation may be restrictive and this may result in future functions being harder to implement.
 
+Option 2 : Using an iterator
+* Pros: An iterator allows for more flexible data access as it allows for more efficient deletion of a block of data and it helps to keep the location of where data was manipulated.
+* Cons: Maintenance of the iterator is very difficult and it may not be worth the effort to implement when solutions exist that only require inbuilt functions.
+  <br>
+  
 ### 5.2.4 List
 
 **Implementation:**
@@ -595,7 +617,18 @@ Invalid Input includes:
 7. Patient Objects will be displayed.
 8. Control is then returned to PatientInstance.
 
+**Design Considerations**
 <br>
+Using pretty print to display the listed objects:
+<br>
+Option 1 (Final choice): Using pretty print
+* Pros: Visually appealing and neatly puts patients in rows with columns to display attributes. Better for larger lists.
+* Cons: Harder to implement and sometimes causes visual errors when the names or display text become too large.
+
+Option 2 : Printing the patients in blocks with no common rows or columns.
+* Pros: Easy to implement and may be easier to show a single patient.
+* Cons: Very difficult to view when the list of patients became increasingly large.
+  <br>
 
 ### 5.2.5 Find
 
@@ -642,7 +675,18 @@ Invalid Input includes:
 9. The relevant Patient Objects are then displayed.
 10. Control is then returned to PatientInstance.
 
+**Design Considerations**
 <br>
+Allowing `find` function to accept case-insensitive inputs:
+<br>
+Option 1 (Final choice): Allowing case-insensitive inputs.
+* Pros: Provides the user with greater flexibility when querying the list for specific data.
+* Cons: Harder to implement and may result in unwanted data being shown.
+
+Option 2 : Only allowing case-sensitive inputs.
+* Pros: Easy to implement and can be more specific.
+* Cons: Harder to consistently type and very punishing for users who don't know if what they are searching for has capital letters.
+  <br>
 
 ###  5.3 Doctor Appointment
 

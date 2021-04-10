@@ -33,6 +33,7 @@ Given below are my contributions to the project.
     - Added implementation details of Nurse Schedules, including all of its features. [\#330](), [\#305](), [\#288]()
     - Added User Stories table [\#324]()
     - Added Model Component with diagram [\#324]()
+    - Added Proposed Features section [\#364]()
 
 - **Contributions to Team-Based Tasks**:
   - General code enhancements
