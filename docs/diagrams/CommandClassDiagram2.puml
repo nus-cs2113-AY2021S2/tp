@@ -12,6 +12,7 @@ enum RecordType <<enumeration>> {
     EXPENSE
     LOAN
     SAVING
+    ALL
 }
 
 class ListCommand {
