@@ -50,6 +50,36 @@ class AddCommandTest {
     }
 
     @Test
+    public void executeAddCommand_invalidFirstLetter_exceptionThrown() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "add");
+        arguments.put("payload", "P1234567A");
+        AddCommand addCommand = new AddCommand(ui, data, arguments);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            addCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_FIRST_LETTER, exception.getMessage());
+    }
+
+    @Test
+    public void executeAddCommand_invalidChecksum_exceptionThrown() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "add");
+        arguments.put("payload", "S1234567A");
+        AddCommand addCommand = new AddCommand(ui, data, arguments);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            addCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_INVALID_NRIC_CHECKSUM, exception.getMessage());
+    }
+
+    @Test
     public void executeAddCommand_patientAlreadyExists_exceptionThrown() {
         Data data = new Data();
         Ui ui = new Ui();

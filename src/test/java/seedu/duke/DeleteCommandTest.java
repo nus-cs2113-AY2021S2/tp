@@ -118,4 +118,37 @@ public class DeleteCommandTest {
         assertEquals("Record for 2021-03-29 does not exist!" + System.lineSeparator(), bos.toString());
         System.setOut(originalOut);
     }
+
+    @Test
+    public void executeDeleteCommand_emptyNRICArgument() {
+        Data data = new Data();
+        Ui ui = new Ui();
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "delete");
+        arguments.put("p", "");
+        DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            deleteCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_EMPTY_NRIC_ARGUMENT, exception.getMessage());
+    }
+
+    @Test
+    public void executeDeleteCommand_emptyRecordArgument() {
+        Data data = new Data();
+        Patient patient = new Patient("S1234567D");
+        data.setPatient(patient);
+        data.loadCurrentPatient(patient.getID());
+        HashMap<String, String> arguments = new HashMap<>();
+        arguments.put("command", "delete");
+        arguments.put("r", "");
+        Ui ui = new Ui();
+        DeleteCommand deleteCommand = new DeleteCommand(ui, data, arguments);
+
+        Exception exception = assertThrows(Exception.class, () -> {
+            deleteCommand.execute();
+        });
+        assertEquals(Constants.INVALID_INPUT_EMPTY_DATE_ARGUMENT, exception.getMessage());
+    }
 }
