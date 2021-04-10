@@ -29,9 +29,9 @@ public class PatientParser {
      * @param fullCommand the string inputted by the user.
      * @param patients the current list of patients in the database.
      * @return the command that the user is trying to utilize.
-     * @throws ArrayIndexOutOfBoundsException
-     * @throws HealthVaultException
-     * @throws NumberFormatException
+     * @throws ArrayIndexOutOfBoundsException when there is more or less than the required number of tokens.
+     * @throws HealthVaultException collection of exceptions from previous checks.
+     * @throws NumberFormatException when the value inputted by the user is not an integer.
      */
     public Command patientParse(String fullCommand, PatientList patients) throws ArrayIndexOutOfBoundsException,
             HealthVaultException, NumberFormatException {

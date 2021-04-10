@@ -24,8 +24,9 @@ public class PatientList {
      * @param patientDetailsArr the details of the patient to be added.
      */
     public void addPatient(String[] patientDetailsArr) {
-        Patient newPatient = new Patient(patientDetailsArr[0], patientDetailsArr[1], Integer.parseInt(patientDetailsArr[2]),
-                patientDetailsArr[3], patientDetailsArr[4], patientDetailsArr[5]);
+        Patient newPatient = new Patient(patientDetailsArr[0], patientDetailsArr[1],
+                Integer.parseInt(patientDetailsArr[2]), patientDetailsArr[3], patientDetailsArr[4],
+                patientDetailsArr[5]);
         patients.add(newPatient);
     }
 

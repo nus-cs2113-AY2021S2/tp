@@ -58,7 +58,7 @@ public class PatientChecker extends MainChecker {
      * Uses methods to check the input from the storage.
      * Throws an exception if there is a violation found.
      *
-     * @throws HealthVaultException
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     public void checkStorage() throws HealthVaultException {
         emptySpaceCheck();
@@ -75,7 +75,7 @@ public class PatientChecker extends MainChecker {
      * Uses methods to check the input from the user using the add command.
      * Throws an exception if there is a violation found.
      *
-     * @throws HealthVaultException
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     public void checkAdd() throws HealthVaultException, NumberFormatException {
         emptySpaceCheck();
@@ -92,7 +92,7 @@ public class PatientChecker extends MainChecker {
      * Uses methods to check the input from the user using the find command.
      * Throws an exception if there is a violation found.
      *
-     * @throws HealthVaultException
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     public void checkFind() throws HealthVaultException {
         emptySpaceCheck();
@@ -103,7 +103,7 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the number of tokens in the split input from the storage is acceptable.
      *
-     * @throws CorruptedFileException
+     * @throws CorruptedFileException when file is corrupted.
      */
     public void checkStorageLength() throws HealthVaultException {
         if (numberOfTokens != 6) {
@@ -114,7 +114,7 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the number of tokens in the split input from the storage is acceptable for the given command.
      *
-     * @throws InvalidFieldsNumberException
+     * @throws InvalidFieldsNumberException when the number of input fields is incorrect.
      */
     public void checkLength() throws HealthVaultException {
         if (command.equals("add") && numberOfTokens != 7) {
@@ -130,7 +130,7 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks in the user has inputted an empty string or no text into an input field.
      *
-     * @throws NoInputException
+     * @throws NoInputException when the user has omitted a required field.
      */
     private void emptySpaceCheck() throws NoInputException {
         for (int i = 0; i < numberOfTokens; i++) {
@@ -144,8 +144,8 @@ public class PatientChecker extends MainChecker {
      * Checks if the Age of the patient is appropriate.
      *
      * @param stringToken the age of the user.
-     * @throws NumberFormatException
-     * @throws HealthVaultException
+     * @throws NumberFormatException when the input from the user is not an integer.
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     private void checkAge(String stringToken) throws NumberFormatException, HealthVaultException {
         checkNumericInput(stringToken);
@@ -156,7 +156,7 @@ public class PatientChecker extends MainChecker {
      * Checks if the age of the patient is within the appropriate range.
      *
      * @param ageString the age of the patient.
-     * @throws InvalidPatientAgeException
+     * @throws InvalidPatientAgeException when the patient's age is not acceptable.
      */
     private void checkAgeRange(String ageString) throws InvalidPatientAgeException {
         int age = Integer.parseInt(ageString);
@@ -168,7 +168,7 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the ID of the patient from the parser is acceptable.
      *
-     * @throws HealthVaultException
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     public void checkId() throws HealthVaultException {
         checkValidId(stringTokens[1]);
@@ -178,7 +178,7 @@ public class PatientChecker extends MainChecker {
     /**
      * Checks if the ID of the patient from the storage is acceptable.
      *
-     * @throws HealthVaultException
+     * @throws HealthVaultException collection of exceptions from checks.
      */
     public void checkIdStorage() throws HealthVaultException {
         checkValidId(stringTokens[0]);
@@ -205,9 +205,9 @@ public class PatientChecker extends MainChecker {
      * Checks if the ID is of the proper format.
      *
      * @param userID the string containing the ID of the patient.
-     * @throws InvalidIdLengthException
-     * @throws InvalidIdTypeException
-     * @throws InvalidIdValueException
+     * @throws InvalidIdLengthException when the length of the ID is unacceptable.
+     * @throws InvalidIdTypeException when the type of the ID is unacceptable.
+     * @throws InvalidIdValueException when the value of the ID is unacceptable.
      */
     private void checkValidId(String userID) throws InvalidIdLengthException, InvalidIdTypeException,
             InvalidIdValueException {
@@ -224,7 +224,7 @@ public class PatientChecker extends MainChecker {
      * Checks if there is a matching ID in the patient list retrieved from storage.
      *
      * @param userID the string containing the ID of the patient.
-     * @throws CorruptedFileException
+     * @throws CorruptedFileException when file is corrupted.
      */
     private void checkIdExistStorage(String userID) throws CorruptedFileException {
         if (isIdTakenStorage(userID)) {
@@ -254,8 +254,8 @@ public class PatientChecker extends MainChecker {
      * @param userID the string containing the ID of the patient.
      * @param patients the current list of patients.
      * @param command the command that the user is trying to access.
-     * @throws IDNotFoundException
-     * @throws DuplicateIDException
+     * @throws IDNotFoundException when the ID does not exist in the patient list
+     * @throws DuplicateIDException when there is already an existing ID in the patient list.
      */
     private void checkIdExist(String userID, PatientList patients, String command) throws IDNotFoundException,
             DuplicateIDException {
