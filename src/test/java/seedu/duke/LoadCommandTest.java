@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.HashMap;
 
 import seedu.duke.command.LoadCommand;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 
@@ -38,10 +39,10 @@ public class LoadCommandTest {
         data.setPatient(new Patient("S1234567D"));
 
         LoadCommand loadCommand = new LoadCommand(new Ui(), data, arguments);
-        InvalidInputException e = assertThrows(InvalidInputException.class, () -> {
+        DataException dataException = assertThrows(DataException.class, () -> {
             loadCommand.execute();
         });
 
-        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, e.getMessage());
+        assertEquals(Constants.INVALID_INPUT_PATIENT_NOT_FOUND, dataException.getMessage());
     }
 }

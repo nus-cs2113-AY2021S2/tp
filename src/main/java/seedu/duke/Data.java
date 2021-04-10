@@ -156,20 +156,54 @@ public class Data {
         return recentDetails;
     }
 
+    /**
+     * Retrieves the currently loaded patient's medical records for a specific date.
+     *
+     * @param date the date of the patient's consultation
+     * @return a string containing the records of the patient's visit on the date
+     * @throws DataException if there is no loaded patient
+     */
     public String getRecords(LocalDate date) throws DataException {
         checkLoadedPatient();
         String records = currentPatient.getRecord(date);
         return records;
     }
 
+    /**
+     * Retrieves all of the currently loaded patient's medical records. If a patient does not have any records,
+     * the returned string will notify the user that there are no records.
+     *
+     * @return a string containing all the records of the patient
+     * @throws DataException if there is no loaded patient
+     */
     public String getRecords() throws DataException {
         checkLoadedPatient();
         String records = currentPatient.getRecord();
         return records;
     }
 
+    /**
+     * Deletes the patient's medical record for a specific date.
+     *
+     * @param date Appointment date of record to delete
+     * @throws DataException if there is no loaded patient, or the patient does not have any medical records for the
+     *                       specified date
+     */
     public void deleteRecord(LocalDate date) throws DataException {
         checkLoadedPatient();
         currentPatient.deleteRecord(date);
+    }
+
+    /**
+     * Loads a patient based on their ID number.
+     *
+     * @param id ID number of the patient to be loaded
+     * @return a string containing a confirmation message
+     * @throws DataException if the patient with the specified ID number does not exist
+     */
+    public String loadPatient(String id) throws DataException {
+        checkPatientExists(id);
+        currentPatient = patients.get(id);
+        return "Patient " + currentPatient.getID() + "\'s data has been found and loaded.";
     }
 }

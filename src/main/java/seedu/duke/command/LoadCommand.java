@@ -3,6 +3,7 @@ package seedu.duke.command;
 import seedu.duke.Common;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 
 import java.util.HashMap;
@@ -20,15 +21,13 @@ public class LoadCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, DataException {
         String id = arguments.get("payload");
         if (!Common.isValidID(id)) {
             throw new InvalidInputException(InvalidInputException.Type.INVALID_NRIC);
         }
         id = id.toUpperCase();
-        if (!data.loadCurrentPatient(id)) {
-            throw new InvalidInputException(InvalidInputException.Type.PATIENT_NOT_FOUND);
-        }
-        ui.printMessage("Patient " + data.currentPatient.getID() + "\'s data has been found and loaded.");
+        String loadMessage = data.loadPatient(id);
+        ui.printMessage(loadMessage);
     }
 }
