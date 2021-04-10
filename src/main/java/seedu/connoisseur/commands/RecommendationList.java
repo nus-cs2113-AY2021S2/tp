@@ -426,13 +426,16 @@ public class RecommendationList {
             String newTitle;
             while (true) {
                 ui.println(EDIT_TITLE_PROMPT);
-                newTitle = ui.readCommand();
+                newTitle = ui.readCommand().trim();
                 if (newTitle.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
                 }
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
+                    continue;
+                }if (reviewList.checkAndPrintDuplicateReview(newTitle)) {
+                    ui.println(CHANGE_RECO_TITLE);
                     continue;
                 }
                 break;
@@ -444,7 +447,7 @@ public class RecommendationList {
             double newPriceHigh;
             while (true) {
                 ui.println(EDIT_RANGE_PROMPT);
-                String newPriceRange = ui.readCommand();
+                String newPriceRange = ui.readCommand().trim();
                 try {
                     double priceFirst = Double.parseDouble(newPriceRange.split("-", 2)[0].trim());
                     double priceSecond = Double.parseDouble(newPriceRange.split("-", 2)[1].trim());
@@ -475,7 +478,7 @@ public class RecommendationList {
             String newLocation;
             while (true) {
                 ui.println(EDIT_LOCATION_PROMPT);
-                newLocation = ui.readCommand();
+                newLocation = ui.readCommand().trim();
                 if (newLocation.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -492,7 +495,7 @@ public class RecommendationList {
             String newCategory;
             while (true) {
                 ui.println(EDIT_CATEGORY_PROMPT);
-                newCategory = ui.readCommand();
+                newCategory = ui.readCommand().trim();
                 if (newCategory.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -509,7 +512,7 @@ public class RecommendationList {
             String newRecBy;
             while (true) {
                 ui.println(EDIT_RECBY_PROMPT);
-                newRecBy = ui.readCommand();
+                newRecBy = ui.readCommand().trim();
                 if (newRecBy.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;

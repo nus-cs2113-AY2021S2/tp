@@ -440,13 +440,16 @@ public class ReviewList {
             String newTitle;
             while (true) {
                 ui.println(EDIT_TITLE_PROMPT);
-                newTitle = ui.readCommand();
+                newTitle = ui.readCommand().trim();
                 if (newTitle.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
                 }
                 if (newTitle.length() > 20) {
                     ui.printInputTooLongMessage_20Char();
+                    continue;
+                }if (checkAndPrintDuplicateReview(newTitle)) {
+                    ui.printNoUniqueTitleMessage();
                     continue;
                 }
                 break;
@@ -475,7 +478,7 @@ public class ReviewList {
             String newDescription;
             while (true) {
                 ui.println(ENTER_DETAILS_PROMPT);
-                newDescription = ui.readCommand();
+                newDescription = ui.readCommand().trim();
                 if (newDescription.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
@@ -488,7 +491,7 @@ public class ReviewList {
             String newCategory;
             while (true) {
                 ui.println(EDIT_CATEGORY_PROMPT);
-                newCategory = ui.readCommand();
+                newCategory = ui.readCommand().trim();
                 if (newCategory.isBlank()) {
                     ui.printEmptyInputMessage();
                     continue;
