@@ -15,4 +15,4 @@ Display | Name | Github Profile | Portfolio
 
 ![Ryan Kwok](team/profile_pictures/kwokyto_pic.jpg) | Ryan Kwok | [Github](https://github.com/kwokyto) | [Portfolio](team/kwokyto.md)
 
-![Sim Jing Jie](team/profile_pictures/sjj_pic.png) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjingjie.md)
+![Sim Jing Jie](team/profile_pictures/sjj_pic.png) | Sim Jing Jie | [Github](https://github.com/SimJJ96/) | [Portfolio](team/simjj96.md)

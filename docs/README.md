@@ -14,4 +14,4 @@ Useful links:
   * [Kim Joohwan](team/joohwan.md)
   * [Lee Yang Peng](team/leeyp.md)
   * [Ryan Kwok](team/kwokyto.md)
-  * [Sim Jing Jie](team/simjingjie.md)
+  * [Sim Jing Jie](team/simjj96.md)
