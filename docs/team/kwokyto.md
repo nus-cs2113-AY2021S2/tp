@@ -1,12 +1,7 @@
 # Ryan Kwok - Project Portfolio Page
 
-## Overview
-
 This is a student project for university software development course.
 I am one of the contributors to the `FridgeFriend` project.
-
-## Project: `FridgeFriend`
-
 `FridgeFriend` is an app for managing food in the fridge that is optimised for use via a Command Line Interface (CLI) and is targeted at new homeowners who cook.
 If you can type fast, `FridgeFriend` can track your cold or frozen groceries faster and easier than any other apps.
 It is written in Java, and has more than 6000 lines of code.
@@ -47,12 +42,7 @@ Given below are my contributions to the project
 ### Enhancements to Existing Features
 
 - Wrote and refactored major classes ([#44](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45))
-  - `Fridge`
-  - `Parser`
-  - `Ui`
-  - `ByeCommand`
-  - `InvalidIndexException`
-  - `InvalidInputException`
+  - `Fridge`, `Parser`, `Ui`, `ByeCommand`, `InvalidIndexException`, and `InvalidInputException`
 - Wrote additional tests for `Parser` class ([#47](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/47))
 - Wrote `Logger` class ([#51](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/51))
 - Wrote logging for `FridgeFriend` ([#52](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/52))
