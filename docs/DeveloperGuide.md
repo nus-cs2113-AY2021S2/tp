@@ -125,19 +125,13 @@ ease of use for deliverymen around the world
 
 ## Non-Functional Requirements
 
-Application should work on any mainstream OS if it has Java 11 or above installed.
-
-A user with above average typing speed for English text should be able to accomplish majority of the tasks faster using commands than using the mouse.
-
-The database implemented should be able to hold up to 1000 deliverymen details without experiencing a noticeable lag in the program.
-
-The data retrieval time should return near instant without experiencing a delay in between command and output.
-
-Application would be affordable and easily accessible to the general public.
-
-The accessibility of the system is relatively secure, but further authorization schemes are in consideration to be implemented for greater security to protect user data.
-
-Deliveri is not accountable for any data lost in the case of the user's computer failure.
+1. Application should work on any mainstream OS if it has Java 11 or above installed.
+2. A user with above average typing speed for English text should be able to accomplish majority of the tasks faster using commands than using the mouse.
+3. The database implemented should be able to hold up to 1000 deliverymen details without experiencing a noticeable lag in the program.
+4. The data retrieval time should return near instant without experiencing a delay in between command and output.
+5. Application would be affordable and easily accessible to the general public.
+6. The accessibility of the system is relatively secure, but further authorization schemes are in consideration to be implemented for greater security to protect user data.
+7. Deliveri is not accountable for any data lost in the case of the user's computer failure.
 
 ## Glossary
 
