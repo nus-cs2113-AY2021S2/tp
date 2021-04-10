@@ -5,7 +5,7 @@ UniTrack is a one-stop university tracker designed and created to help NUS stude
 It also includes helpful features such as a CAP simulator and a task manager. The user can interact with it using a Command Line Interface (CLI).
 UniTracker was created with Java, and has about 7 kLOC.
 
-##Summary of Contributions
+### Summary of Contributions
 
 **Features:** Implemented the Links feature.
 - What it does: Allows the user to add, delete and view external links and their zoom links. 
