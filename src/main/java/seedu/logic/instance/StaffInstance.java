@@ -49,7 +49,7 @@ public class StaffInstance {
             line = staffUI.getInput("Staff");
             try {
                 Command c = staffParser.commandHandler(line, staffList);
-                if (c == null){
+                if (c == null) {
                     continue;
                 }
                 c.execute(staffList, staffUI, staffStorage);

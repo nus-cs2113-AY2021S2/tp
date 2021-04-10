@@ -2,7 +2,7 @@ package seedu.ui;
 
 import static seedu.duke.Constants.*;
 
-public class InventoryUI extends UI{
+public class InventoryUI extends UI {
 
     public static void drugAddedMessage(String addedDrugName, String addedDrugQuantity) {
         System.out.println(addedDrugQuantity + " " + addedDrugName + " is added into Inventory!");
@@ -11,11 +11,14 @@ public class InventoryUI extends UI{
     public static void emptyInventoryListMessage() {
         System.out.println("You do not have any Drugs in your inventory:(");
     }
+
     public static void inventoryListHeader() {
         System.out.println(
-                UI.prettyPrint("DrugName", 15) + " | " + UI.prettyPrint("Price", 10) + " | "
-                        + UI.prettyPrint("Quantity", 5)) ;
+                UI.prettyPrint("DrugName", 15) + " | "
+                        + UI.prettyPrint("Price", 10) + " | "
+                        + UI.prettyPrint("Quantity", 5));
     }
+
     public static void printInventoryHelpMessage() {
 
         UI.printEmptyLine();
@@ -43,7 +46,7 @@ public class InventoryUI extends UI{
     }
 
     public void corruptedFileErrorMessage() {
-        System.out.println("The file (" + INVENTORY_FILE_PATH + ") is corrupted!\n" +
-                "Please exit the program and delete the corrupted file before trying to access Inventory Menu!");
+        System.out.println("The file (" + INVENTORY_FILE_PATH + ") is corrupted!\n"
+                + "Please exit the program and delete the corrupted file before trying to access Inventory Menu!");
     }
 }

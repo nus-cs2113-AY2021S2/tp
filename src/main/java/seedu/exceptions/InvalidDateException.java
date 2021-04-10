@@ -3,7 +3,7 @@ package seedu.exceptions;
 /**
  * Exception to handle invalid date format.
  */
-public class InvalidDateException extends HealthVaultException{
+public class InvalidDateException extends HealthVaultException {
 
     /**
      * Returns date format error message.

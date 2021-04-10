@@ -181,7 +181,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI latest diagram.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UML UI.png">
 
 **API :** `UI.java`
 
@@ -241,7 +241,7 @@ The following class diagram illustrates the group of Commands under the doctorap
 
 ### 4.4 Model component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/UML Model.png">
 
 The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
 

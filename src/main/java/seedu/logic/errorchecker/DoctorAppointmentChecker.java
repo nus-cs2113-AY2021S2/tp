@@ -1,15 +1,9 @@
 package seedu.logic.errorchecker;
 
 import seedu.duke.Constants;
-import seedu.exceptions.EmptyListException;
-import seedu.exceptions.HealthVaultException;
-import seedu.exceptions.IDNotFoundException;
-import seedu.exceptions.CorruptedFileException;
-import seedu.exceptions.InvalidDateException;
-import seedu.exceptions.DuplicateIDException;
+import seedu.exceptions.*;
 import seedu.exceptions.doctorappointment.DocIdNotFoundException;
 import seedu.exceptions.doctorappointment.InvalidGenderException;
-import seedu.exceptions.IllegalCharacterException;
 import seedu.exceptions.doctorappointment.WrongAptIdFormatException;
 import seedu.logger.HealthVaultLogger;
 import seedu.model.doctorappointment.AppointmentList;
@@ -54,7 +48,7 @@ public class DoctorAppointmentChecker extends MainChecker {
             throw new DocIdNotFoundException(doctorID);
         }
         if (!isValidAppointmentID(appointmentID)) {
-            throw new IDNotFoundException(appointmentID);
+            throw new IdNotFoundException(appointmentID);
         }
         illegalCharacterChecker(name, "name");
         if (!isValidGender(gender)) {
@@ -80,7 +74,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         }
         logger.log(Level.INFO, "Checking for Valid data after list command");
         if (!isValidDocID(id) && !isValidListAppointmentID(id)) {
-            throw new seedu.exceptions.InvalidIDException();
+            throw new InvalidIdException();
         }
     }
 
@@ -88,14 +82,14 @@ public class DoctorAppointmentChecker extends MainChecker {
      * Checks the data is valid to execute the Delete command.
      *
      * @param input String Array from Input.
-     * @throws seedu.exceptions.InvalidIDException If the data to execute delete command does not fit the parameters.
+     * @throws InvalidIdException If the data to execute delete command does not fit the parameters.
      */
 
-    public static void checkValidDataForDelete(String[] input) throws seedu.exceptions.InvalidIDException {
+    public static void checkValidDataForDelete(String[] input) throws InvalidIdException {
         id = input[1];
         logger.log(Level.INFO, "Checking for Valid data after delete command");
         if (!isValidIdToDelete(id)) {
-            throw new seedu.exceptions.InvalidIDException();
+            throw new InvalidIdException();
         }
     }
 
@@ -254,7 +248,7 @@ public class DoctorAppointmentChecker extends MainChecker {
         if (character[0].equals("A")) {
             for (DoctorAppointment id : AppointmentList.appointmentList) {
                 if (id.getAppointmentId().equals(appointmentID)) {
-                    throw new DuplicateIDException(appointmentID);
+                    throw new DuplicateIdException(appointmentID);
                 }
             }
             return true;
