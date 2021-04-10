@@ -1,11 +1,14 @@
 <style type="text/css">
-OL {
+ol {
     counter-reset: item
 }
-LI {
+ol > li {
+    counter-increment: item;
+}
+ol ol > li {
     display: block
 }
-LI:before {
+ol ol > li:before {
     content: counters(item, ".") ". "; counter-increment: item
 }
 </style>
@@ -13,12 +16,12 @@ LI:before {
 # Patient Manager User Guide
 
 Patient Manager is a **Command Line Interface** (CLI) application for **general practitioners** (GP)
-to manage their patient list. Patient Manger allows you to easily register new patients to your clinic
-with their NRIC or FIN number. Once a patient's records have been loaded, you can easily add new medical
-records and retrieve a summary of past records
+to manage their patient list. Patient Manger allows you to easily register new patients to your clinic with their NRIC
+or FIN number. Once a patient's records have been loaded, you can easily add new medical records and retrieve a summary
+of past records
 
-With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way
-to organize the records of their patients.
+With the Patient Manager, GPs will be able to reduce paperwork and have a more efficient way to organize the records of
+their patients.
 
 <!-- TODO: Explain How to use this guide -->
 
@@ -27,6 +30,7 @@ to organize the records of their patients.
 ## Table of Contents
 
 <!-- TODO: Description -->
+
 1. [User Guide Information](#user-guide-information)
 1. [Quick Start](#quick-start)
 1. [About Command Input](#about-command-input)
@@ -46,27 +50,28 @@ to organize the records of their patients.
 1. [Command Summary](#command-summary)
 
 ---
+
 ## User Guide Information
 
-The aim of this user guide is to familiarise you with the features of Patient Manager, and to guide
-you on how to set up and start using Patient Manager.
+The aim of this user guide is to familiarise you with the features of Patient Manager, and to guide you on how to set up
+and start using Patient Manager.
 
 You may refer to [Quick Start](#quick-start) for help on setting up and getting started with Patient Manager
 
 The [Features](#features) section contains a detailed explanation of the commands that are available in Patient Manager,
 as well as their input formats.
 
-If you have any questions about Patient Manager, please check out [Frequently Asked Questions](#frequently-asked-questions)
+If you have any questions about Patient Manager, please check
+out [Frequently Asked Questions](#frequently-asked-questions)
 for a list of common questions.
 
-Finally, for returning users who are not sure about the input format for a command, you can check 
+Finally, for returning users who are not sure about the input format for a command, you can check
 [Command Summary](#command-summary) for a table of valid commands, and their input format.
 
 
 > Please take note of the following symbols and formatting in this User Guide
 >
-> `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager
-and file names.
+> `Code blocks` are used to denote commands in the command line, user input, output from Patient Manager and file names.
 >
 > 💡 The light bulb denotes tips and tricks for using Patient Manager.
 >
@@ -75,16 +80,17 @@ and file names.
 > ❗ The exclamation mark highlights important things to take note of.
 
 ---
+
 ## Quick Start
 
 > ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
 > console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Windows
 > Powershell in Windows 10 is shown below:
-> 
+>
 > <img src="./images/WindowsPowerShell.png" width="600">
 
-1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version
-   of Java installed, Java 11 can be downloaded from
+1. Ensure that you have Java 11 installed on your local computer. If you do not have the correct version of Java
+   installed, Java 11 can be downloaded from
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
    > 💡 You can check the version of Java installed on your local computer by entering\
    > `java -version` into your console and then pressing `ENTER`.
@@ -93,52 +99,42 @@ and file names.
 1. Open the console, enter `java -jar tp.jar`, and press `ENTER` to start Patient Manager.
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
    and hit `ENTER` at the end to execute the command.
-1. Please refer to [Features](#features) below for more detailed explanations and
-   usage of the available commands.
-   
+1. Please refer to [Features](#features) below for more detailed explanations and usage of the available commands.
+
 ## Features
 
 > ❗ Notes about the command format:
-> Words in `UPPER_CASE` are parameters supplied by the user.\
-> e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 >
 >
+> - Words in `UPPER_CASE` are parameters supplied by the user.\
+>   e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 > Parameters in square brackets (`[]`) are optional.\
-> e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command, 
-> both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
->
->
-> Parameters with `...` allow multiple parameters (including zero) to be specified.\
-> e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
->
->
-> Parameters starting with a slash (`/`) can be given in any order.\
-> e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-> `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
-> However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
-> For first-time users, we recommend that you follow the sequence given in this section.
->
-> 
-> If a parameter is expected only once in the command, but you specify it multiple times,
-> only the last occurrence of the parameter will be taken.\
-> e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
->
->
-> Extraneous parameters for commands that do not take in parameters (such as `list` 
-> and `exit`) will be ignored.\
-> e.g. if the command given is `list 123`, it will be interpreted as `list`.
->
->
-> Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.\
-> All dates given must be valid, according to the rules of the 
-> [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+> - e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
+>   both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
+> - Parameters with `...` allow multiple parameters (including zero) to be specified.\
+>   e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
+> - Parameters starting with a slash (`/`) can be given in any order.\
+>   e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
+>   `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
+>   However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
+>   For first-time users, we recommend that you follow the sequence given in this section.
+> - If a parameter is expected only once in the command, but you specify it multiple times,
+>   only the last occurrence of the parameter will be taken.\
+>   e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
+> - Extraneous parameters for commands that do not take in parameters (such as `list`
+>   and `exit`) will be ignored.\
+>   e.g. if the command given is `list 123`, it will be interpreted as `list`.
+> - Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.
+>   All dates given must be valid, according to the rules of the
+>   [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
 <!-- TODO: Order | explain why help command is the 1st -->
+
 ### Print a help message: `help`
 
 If you need help at any point in time, you may use the `help` command. \
-This prints out the help message with a brief explanation of the available commands. If one or more
-commands are provided as arguments, the info messages for the indicated commands will be printed.
+This prints out the help message with a brief explanation of the available commands. If one or more commands are
+provided as arguments, the info messages for the indicated commands will be printed.
 
 Usage: `help [OPTIONAL_COMMAND]...`
 
@@ -193,10 +189,10 @@ Patient S1234567D has been added!
 
 ### Deleting a patient or a patient's consultation details: `delete`
 
-Deletes a patient from the list or deletes a patient's consultation details for a specific date.
-The command to delete a record requires that a patient has been loaded with the
-[`load`](#loading-a-patients-medical-records-load) command.
-If no patient has been loaded, Patient Manager will print an error message.
+Deletes a patient from the list or deletes a patient's consultation details for a specific date. The command to delete a
+record requires that a patient has been loaded with the
+[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
+error message.
 
 Usage: `delete [/p IC_NUMBER]`
 
@@ -209,6 +205,7 @@ delete /p S1234567D
 Usage: `delete [/r DATE]`
 
 Example of usage:
+
 ```
 delete /r 26/03/2021
 ```
@@ -231,8 +228,8 @@ List of patients (in alphanumeric order):
 
 ### Loading a patient's medical records: `load`
 
-Finds the patient whose IC number matches the given search query and loads their medical records.
-If none of the patients' IC numbers match the search query, it will print an error message.
+Finds the patient whose IC number matches the given search query and loads their medical records. If none of the
+patients' IC numbers match the search query, it will print an error message.
 
 Usage: `load IC_NUMBER`
 
@@ -252,8 +249,8 @@ Patient S1234567D's data has been found and loaded.
 
 ### Displaying the current loaded patient: `current`
 
-Displays the patient that has been loaded through the [`load`](#loading-a-patients-medical-records-load) command.
-If no patient has been loaded, it will inform the user that there is no loaded patient.
+Displays the patient that has been loaded through the [`load`](#loading-a-patients-medical-records-load) command. If no
+patient has been loaded, it will inform the user that there is no loaded patient.
 
 Usage: `current`
 
@@ -267,14 +264,14 @@ The currently loaded patient's ID is S1234567D.
 
 ### Recording a patient's consultation details: `record`
 
-Adds a patient's consultation details to the patient's records.
-This command requires that a patient has been loaded with the
-[`load`](#loading-a-patients-medical-records-load) command.
-If no patient has been loaded, Patient Manager will print an error message.
+Adds a patient's consultation details to the patient's records. This command requires that a patient has been loaded
+with the
+[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
+error message.
 
-An optional `DATE` argument may be provided to modify previous visit records,
-or to create a new record with the specified date. If the `DATE` parameter is
-not specified, Patient Manager will execute the command with the current system date.
+An optional `DATE` argument may be provided to modify previous visit records, or to create a new record with the
+specified date. If the `DATE` parameter is not specified, Patient Manager will execute the command with the current
+system date.
 
 Usage: `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]`
 
@@ -295,10 +292,8 @@ Symptom: fever and slight cough
 
 ### Retrieving a patient's consultation details: `retrieve`
 
-Retrieves all consultation details of a patient.
-This command requires that a patient has been loaded with the
-[`load`](#loading-a-patients-medical-records-load) command.
-If no patient has been loaded, Patient Manager will print an
+Retrieves all consultation details of a patient. This command requires that a patient has been loaded with the
+[`load`](#loading-a-patients-medical-records-load) command. If no patient has been loaded, Patient Manager will print an
 error message.
 
 Usage: `retrieve`
@@ -338,15 +333,15 @@ Usage: `exit`
 ## Frequently Asked Questions
 
 **Q**: Can I transfer the data to a different device? \
-**A**: Yes, simply copy the `pm` folder that is found in the same folder as `tp.jar` from the original device
-and place it in the folder `tp.jar` is found in on the new device.
+**A**: Yes, simply copy the `pm` folder that is found in the same folder as `tp.jar` from the original device and place
+it in the folder `tp.jar` is found in on the new device.
 
 **Q**: Will I have to manually save? \
 **A**: No, the data is saved automatically after every command that modifies the data.
 
 **Q**: Can I edit the data file? \
-**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is not
-recommended to do so as invalid formats in the data file will result in errors.
+**A**: Patient Manager data is saved as a text file. While it is possible to edit the data file, it is not recommended
+to do so as invalid formats in the data file will result in errors.
 
 ---
 
