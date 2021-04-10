@@ -42,7 +42,7 @@ public class Storage {
             }
         } else {
             File d = new File(DEFAULT_STORAGE_DIRECTORY);
-            if(d.mkdir()){
+            if (d.mkdir()) {
                 Ui.showDirectoryCreated();
             }
             PrintWriter pw = new PrintWriter(DEFAULT_STORAGE_FILEPATH);
