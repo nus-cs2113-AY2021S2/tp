@@ -45,6 +45,18 @@ public class NurseScheduleStorage {
         }
     }
 
+    /**
+     * Reads NurseSchedule.txt.
+     *
+     * @return arraylist populated with valid data
+     * @throws NurseIdNotFound if nurseID does not exist
+     * @throws InvalidiDTypeException if ID is invalid
+     * @throws FileNotFoundException if file does not exist
+     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound if patientID does not exit
+     * @throws PatientCrossValidationError if Patients.txt cannot be loaded
+     * @throws InvalidDateException if date is invalid
+     */
     private ArrayList<NurseSchedule> readFile() throws NurseIdNotFound, InvalidiDTypeException,
             FileNotFoundException, NurseCrossValidationError, PatientIdNotFound,
             PatientCrossValidationError, InvalidDateException {
@@ -64,6 +76,11 @@ public class NurseScheduleStorage {
         return nurseSchedules;
     }
 
+    /**
+     * Writes objects in nurseSchedules to NurseSchedule.txt.
+     *
+     * @param nurseSchedules arraylist of objects
+     */
     public void writeToFile(NurseScheduleList nurseSchedules) {
         try {
             File file = new File(FILE_PATH);
@@ -79,6 +96,18 @@ public class NurseScheduleStorage {
         logger.log(Level.INFO, "Nurse Schedule file saved");
     }
 
+    /**
+     * Function creates, read and loads NurseSchedule.txt.
+     *
+     * @return populated arraylist
+     * @throws NurseIdNotFound if nurseID does not exist
+     * @throws InvalidiDTypeException if ID is invalid
+     * @throws FileNotFoundException if file does not exist
+     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound if patientID does not exit
+     * @throws PatientCrossValidationError if Patients.txt cannot be loaded
+     * @throws InvalidDateException if date is invalid
+     */
     public ArrayList<NurseSchedule> load() throws FileNotFoundException, InvalidiDTypeException,
             NurseIdNotFound, NurseCrossValidationError, PatientIdNotFound,
             PatientCrossValidationError, InvalidDateException {
@@ -87,6 +116,12 @@ public class NurseScheduleStorage {
         return nurseSchedules;
     }
 
+    /**
+     * Loads patientFile for cross-validation function.
+     *
+     * @return populated patientlist
+     * @throws FileNotFoundException if file not found
+     */
     public static ArrayList<Patient> loadPatientFile() throws FileNotFoundException {
         ArrayList<Patient> patientList = new ArrayList<>();
 

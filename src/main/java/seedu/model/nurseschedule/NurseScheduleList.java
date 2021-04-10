@@ -13,6 +13,7 @@ import seedu.logic.errorchecker.NurseScheduleChecker;
 import seedu.ui.NurseScheduleUI;
 import seedu.ui.UI;
 
+import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,6 +32,11 @@ public class NurseScheduleList {
 
     private static ArrayList<NurseSchedule> nurseSchedules = new ArrayList<>();
 
+    /**
+     * Constructor of NurseScheduleList.
+     *
+     * @param load populated array list from storage
+     */
     public NurseScheduleList(ArrayList<NurseSchedule> load) {
         nurseSchedules = load;
         logger.log(Level.INFO,"Creating a NurseSchedule list");
@@ -39,10 +45,24 @@ public class NurseScheduleList {
     public NurseScheduleList() {
     }
 
+    /**
+     * Empties arraylist.
+     */
     public void clearSchedules() {
         nurseSchedules.clear();
     }
 
+    /**
+     * adds schedule to arraylist.
+     *
+     * @param details array of relevant information
+     * @throws NurseIdNotFound if nurseID does not exist
+     * @throws InvalidiDTypeException if ID is invalid
+     * @throws NurseCrossValidationError if Staff.txt cannot be loaded
+     * @throws PatientIdNotFound if patientID does not exit
+     * @throws PatientCrossValidationError if Patients.txt cannot be loaded
+     * @throws DuplicateScheduleException if schedules are duplicated
+     */
     public void addSchedule(String[] details) throws NurseIdNotFound, InvalidiDTypeException,
             NurseCrossValidationError, PatientIdNotFound, PatientCrossValidationError, DuplicateScheduleException {
         try {
@@ -125,6 +145,12 @@ public class NurseScheduleList {
         }
     }
 
+    /**
+     * finds and stores all schedules of specified nurse id.
+     *
+     * @param nurseSchedules arraylist of nurseschedules
+     * @param id specified nurse id to be found
+     */
     private void getNurseSchedulesByID(List<NurseSchedule> nurseSchedules, String id) {
         int i = 0;
         while (i < nurseSchedules.size()) {
@@ -136,7 +162,8 @@ public class NurseScheduleList {
         try {
             Collections.sort(findSchedules);
             System.out.println(prettyPrint(id, 10) + " | " + findSchedules.get(0).toFind());
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            //exception ignored
         }
     }
 
@@ -154,6 +181,13 @@ public class NurseScheduleList {
         }
     }
 
+    /**
+     * checks if nurse has been found.
+     *
+     * @param nurseSchedules arraylist of nurse schedules
+     * @param i index
+     * @return boolean for found or not
+     */
     private boolean isNurseDone(List<NurseSchedule> nurseSchedules, int i) {
         if (nursesFound.contains(nurseSchedules.get(i).getNurseID())) {
             return true;
@@ -182,6 +216,15 @@ public class NurseScheduleList {
         throw new NurseIdNotFound();
     }
 
+    /**
+     * checks if schedule is valid to be deleted.
+     *
+     * @param nurseSchedules arraylist of nurse schedules
+     * @param id specified id
+     * @param date specified date
+     * @return boolean if its valid
+     * @throws InvalidScheduleException if schedule does not exist
+     */
     private boolean isValidSchedule(List<NurseSchedule> nurseSchedules, String id, String date)
             throws InvalidScheduleException {
         int i = 0;
@@ -196,10 +239,21 @@ public class NurseScheduleList {
         throw new InvalidScheduleException();
     }
 
+    /**
+     * returns size of array list.
+     *
+     * @return size
+     */
     public int getSize() {
         return nurseSchedules.size();
     }
 
+    /**
+     * returns format of data to be saved.
+     *
+     * @param i index in arraylist
+     * @return string of data
+     */
     public String toSaveFile(int i) {
         return nurseSchedules.get(i).toSave();
     }
