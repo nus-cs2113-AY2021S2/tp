@@ -43,4 +43,6 @@ Given below are my contributions to the project.
   - PR's reviewed: #35, #171, #334, #333, #343, #349
 
 - **Contributions beyond the team**:
-  - Helped find and reported bugs in other team's application
+  - Helped find and reported bugs on other products such as [iGraduate](https://github.com/AY2021S2-CS2113T-W09-2/tp)
+  - Recommended possible solutions for bugs
+  - Peer reviewed User Guides and Developer Guides of other teams and provided constructive feedback for improvement
