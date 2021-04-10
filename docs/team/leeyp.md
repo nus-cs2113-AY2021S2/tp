@@ -73,17 +73,15 @@ as well as associated JUnit tests and helper function code.
 - **Review/Mentoring Contributions**
   - Pull Requests reviewed with non-trivial review comments (non-exhaustive):
     - [#38](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/38), [#41](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/41), [#45](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/45), [#58](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/58), [#64](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/64), [#66](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/66), [#69](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/69), [#108](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/108), [#134](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/134), [#141](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/141), [#147](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/147),
-- Consolidated issues created during PE-D for the team and labelled issue trackers.
-- Gave suggestions and help debug in weekly meetings
-- Coordinating communications between instructors on MSTeams and teammates
-- Streaming the execution and usage of the application in Project Demo Video
+  - Consolidated issues created during PE-D for the team and labelled issue trackers.
+  - Gave suggestions and help debug in weekly meetings
+  - Coordinating communications between instructors on MSTeams and teammates
+  - Streaming the execution and usage of the application in Project Demo Video
 
 ### Contributions beyond the project team:
 - [Contributed to Class forum discussions](https://nus-cs2113-ay2021s2.github.io/dashboards/contents/forum-activities.html#1-lee-peng-leeyp-21-posts)
   - Rank 1 on Class Leaderboard as of 5 April 2021.
     - Examples of Class Forum Contributions:
-        - [Helping others](https://github.com/nus-cs2113-AY2021S2/forum/issues/3#issuecomment-762286714)
-        - [Contributing to Discussion](https://github.com/nus-cs2113-AY2021S2/forum/issues/13#issuecomment-766749214)
-        - [Raising Public issues to Prof so that all can benefit](https://github.com/nus-cs2113-AY2021S2/forum/issues/42)
+        - [Helping others](https://github.com/nus-cs2113-AY2021S2/forum/issues/3#issuecomment-762286714), [Contributing to Discussion](https://github.com/nus-cs2113-AY2021S2/forum/issues/13#issuecomment-766749214), [Raising Public issues to Prof so that all can benefit](https://github.com/nus-cs2113-AY2021S2/forum/issues/42)
 - Contributing with correct answers frequently in tutorials
 - Discovered many bugs in peers' Team Project during PE-Dry Run
