@@ -5,6 +5,7 @@ import exceptions.DukeExceptions;
 import nusfoodreviews.NusFoodReviews;
 import parser.Parser;
 import storage.Storage;
+import stores.Store;
 import ui.Ui;
 
 import java.io.FileWriter;
@@ -28,7 +29,8 @@ public class DeleteStoreCommand extends Command {
         if (canteens.size() > 0) {
             nusFoodReviews.setCanteenIndex();
             int currentCanteenIndex = nusFoodReviews.getCanteenIndex();
-            ui.showDisplaySelectStores(canteens.get(currentCanteenIndex));
+            Canteen currentCanteen = canteens.get(currentCanteenIndex);
+            ui.showDisplaySelectStores(currentCanteen);
             String line = ui.readCommand();
             if (line.equals("cancel")) {
                 ui.showStoreNotDeleted();
@@ -36,9 +38,8 @@ public class DeleteStoreCommand extends Command {
             }
             int storeIndex = parser.parseInt(line, 1,
                     canteens.get(currentCanteenIndex).getNumStores()) - 1;
-
-            Canteen currentCanteen = canteens.get(currentCanteenIndex);
-            String storeName = currentCanteen.getStore(storeIndex).getStoreName();
+            Store store = currentCanteen.getStore(storeIndex);
+            String storeName = store.getStoreName();
             currentCanteen.deleteStore(storeIndex);
             ui.showDeleteStore(storeName);
             Storage.save(new FileWriter(Storage.fileName), canteens);
