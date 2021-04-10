@@ -1,11 +1,13 @@
 package seedu.duke;
 
 
+import seedu.exceptions.DeliveryAlreadyCompletedException;
+import seedu.exceptions.DeliveryOutOfBoundsException;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
- * Handles general user interaction aspects of Diliveri, including
+ * Handles general user interaction aspects of Diliveri, including.
  *
  * @author Manika Hennedige
  * @version 1
@@ -13,42 +15,44 @@ import java.util.Scanner;
  */
 public class Ui {
     protected static final String DIVIDER = "-------------------------------------";
-    // this is done because the HELP_MESSAGE is being printed in 2 places (welcome and help)
     protected static final String HELP_MESSAGE =
-            "The following are several accepted commands by Diliveri:\n\n" +
-                    "'help': Displays this help message\n" +
-                    "'profile': Displays your profile\n" +
-                    "'editprofile': Allows you to edit your profile details\n" +
-                    "'start': Loads up an allocated delivery assignment into the delivery list\n" +
-                    "'list': Displays the list of deliveries in your assignment\n" +
-                    "'viewdelivery <number>': Displays details of the selected delivery\n" +
-                    "'complete <number>': Marks the selected delivery as completed";
+        "The following are several accepted commands by Diliveri:\n\n"
+            + "'help': Displays this help message\n"
+            + "'profile': Displays your profile\n"
+            + "'edit': Allows you to edit your profile details\n"
+            + "'start': Loads up an allocated delivery assignment into the delivery list\n"
+            + "'list': Displays the list of deliveries in your assignment\n"
+            + "'view <number>': Displays details of the selected delivery\n"
+            + "'complete <number>': Marks the selected delivery as completed\n"
+            + "'record': Displays the list of completed deliveries and the respective income earned\n"
+            + "'route': Displays optimised delivery path\n"
+            + "'bye': Ends Deliviri App ";
 
     /**
-     * Empty constructor for the Ui object
+     * Empty constructor for the Ui object.
      */
-    public Ui() {}
+    public Ui() {
+    }
 
     /**
-     * This method is only callable from within the Ui class
+     * This method is only callable from within the Ui class.
      */
-    protected void printDivider() {
+    protected static void printDivider() {
         System.out.println(DIVIDER);
     }
 
 
     /**
-     * Prints welcome screen
+     * Prints welcome screen.
      */
     public void showWelcomeScreen() {
         printDivider();
         System.out.println("Welcome to Diliveri");
         System.out.println(HELP_MESSAGE);
-        printDivider();
     }
 
     /**
-     * Prints goodbye screen
+     * Prints goodbye screen.
      */
     public void showFarewellScreen() {
         printDivider();
@@ -57,16 +61,15 @@ public class Ui {
     }
 
     /**
-     * Shows help message with accepted commands
+     * Shows help message with accepted commands.
      */
     public void showHelpMessage() {
         printDivider();
         System.out.println(HELP_MESSAGE);
-        printDivider();
     }
 
     /**
-     * Asks for user input
+     * Asks for user input.
      */
     public void promptUserInput() {
         printDivider();
@@ -75,9 +78,10 @@ public class Ui {
     }
 
     /**
-     * Prints list of deliveries present in delivery list
+     * Prints list of deliveries present in delivery list.
      */
     public void showDeliveryList() {
+        printDivider();
         System.out.println("No. || Delivery ID || Status || Address || Recipient");
         int i = 1;
         for (Delivery delivery : DeliveryList.deliveries) {
@@ -87,10 +91,12 @@ public class Ui {
     }
 
     /**
-     * shows deliveryman's completed deliveries together with total earnings
+     * Method to show deliveryman's completed deliveries together with total earnings.
+     *
      * @param records the ArrayList of completed deliveries to print
      */
     public void showRecords(ArrayList<Delivery> records) {
+        printDivider();
         System.out.println("Congratulations on completing the following deliveries:");
         System.out.println(" Number | ID | Location | Earned Amount ");
         int i = 1;
@@ -98,18 +104,20 @@ public class Ui {
         for (Delivery delivery : records) {
             total += delivery.getDeliveryFee();
             System.out.println(i + " | "
-                    + delivery.getDeliveryID() + " | "
-                    + delivery.getAddress() + " | " + delivery.getDeliveryFee());
+                + delivery.getDeliveryID() + " | "
+                + delivery.getAddress() + " | " + delivery.getDeliveryFee());
             i++;
         }
         System.out.println("Total Earnings: " + total);
     }
 
     /**
-     * Shows details about a single delivery order
+     * Method to show details about a single delivery order.
+     *
      * @param deliveryNumber is the index of the delivery in the ArrayList that is to be displayed
      */
     public void showDeliveryDetails(int deliveryNumber) {
+        printDivider();
         Delivery delivery = DeliveryList.deliveries.get(deliveryNumber);
         System.out.println(delivery);
         int i = 1;
@@ -117,10 +125,12 @@ public class Ui {
             System.out.println(i + ": \n" + item);
             i++;
         }
+
     }
 
     /**
-     * Displays to a user that a delivery has been completed
+     * Method to display to a user that a delivery has been completed.
+     *
      * @param deliveryNumber is the index of the delivery to be marked as completed
      */
     public void showCompletedDelivery(int deliveryNumber) {
@@ -130,68 +140,83 @@ public class Ui {
     }
 
     /**
+     * Method to prints shortest path for the driver.
+     *
+     * @param sortedDeliveries list of deliveries sorted by distance
+     */
+    public void printMap(ArrayList<Delivery> sortedDeliveries) {
+        for (int i = 0; i < sortedDeliveries.size(); i++) {
+            System.out.println(sortedDeliveries.get(i).getAddress());
+            System.out.println("\t|");
+            System.out.println("\tV");
+            if (i + 1 >= sortedDeliveries.size()) {
+                System.out.println("END OF JOB!!");
+            }
+        }
+        if (sortedDeliveries.size() < 1) {
+            System.out.println("No deliveries loaded!!");
+        }
+    }
+
+    /**
+     * Method to print deliveryman profile.
+     *
      * @param deliveryman deliveryman to show details about
      */
     public void showProfile(Deliveryman deliveryman) {
+        printDivider();
         System.out.println(deliveryman);
     }
 
     /**
-     * Method backbone for menu selection
-     * Parser is only called for commands that require argument parsing
-     * @param deliveryman is the currently loaded profile
+     * Method to view details about a particular delivery.
+     *
+     * @param userArguments the user input arguments to the command
+     * @param parser        object to handle the user arguments
      */
-    public void showLoopingMenuUntilExit(Deliveryman deliveryman) {
-        Parser parser = new Parser();
-        Scanner sc = new Scanner(System.in);
-        String userInput;
-        String userCommand;
-        String userArguments;
-        int deliveryNumber;
-        do {
-            promptUserInput();
-            userInput = sc.nextLine();
-            userCommand = parser.parseCommand(userInput);
-            userArguments = parser.parseArguments(userInput);
-            switch (userCommand) {
-                case "help":
-                    showHelpMessage();
-                    break;
-                case "profile":
-                    showProfile(deliveryman);
-                    break;
-                case "edit":
-                case "editprofile":
-                    // todo: extract the below as a method
-                    String inputProfileData = parser.parseInput("edit", userArguments,deliveryman);
-                    deliveryman.updateProfile(inputProfileData);
-                    break;
-                case "start":
-                    DeliveryList.load();
-                    break;
-                case "list":
-                    showDeliveryList();
-                    break;
-                case "view":
-                case "viewdelivery":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("viewdelivery", userArguments, deliveryman));
-                    // todo: exception handling (delivery numbers that are out of range)
-                    showDeliveryDetails(deliveryNumber);
-                    break;
-                case "complete":
-                    deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments, deliveryman));
-                    // todo: exception handling (numbers that are already complete/out of range) !important
-                    Delivery.completeDelivery(deliveryman, deliveryNumber);
-                    showCompletedDelivery(deliveryNumber);
-                    break;
-                case "record":
-                    showRecords(deliveryman.getRecords());
-                case "bye":
-                    break;
-                default:
-                    System.out.println("Incorrect entry"); // raise exception
-            }
-        } while (!userCommand.equalsIgnoreCase("bye"));
+    public void processViewDelivery(String userArguments, Parser parser) {
+        int deliveryNumber = Integer.parseInt(parser.parseInput("view", userArguments));
+        try {
+            parser.validateDeliveryNumber(deliveryNumber);
+            showDeliveryDetails(deliveryNumber);
+        } catch (DeliveryOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Method to complete a particular delivery.
+     *
+     * @param userArguments the user input arguments to the command
+     * @param deliveryman   object to attribute the delivery to
+     * @param parser        object to handle the user arguments
+     */
+    public void processCompleteDelivery(String userArguments, Deliveryman deliveryman, Parser parser) {
+        printDivider();
+        int deliveryNumber = Integer.parseInt(parser.parseInput("complete", userArguments));
+        try {
+            parser.validateDeliveryNumber(deliveryNumber);
+            parser.validateCompleteDelivery(deliveryNumber);
+            Delivery.completeDelivery(deliveryman, deliveryNumber);
+            showCompletedDelivery(deliveryNumber);
+            DataManager.saveDeliveries();
+        } catch (DeliveryOutOfBoundsException e) {
+            System.out.println(e.getMessage());
+        } catch (DeliveryAlreadyCompletedException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Method to determine and print a map of deliveries by order of distance.
+     */
+    public void processDeliveryRoute() {
+        printDivider();
+        Filter deliveryFilter = new Filter();
+        Map deliveryMap = new Map();
+        ArrayList<Delivery> uncompletedDeliveries = deliveryFilter.uncompletedDeliveriesFilter(DeliveryList.deliveries);
+        ArrayList<Delivery> sortedDeliveries = deliveryMap.shortestPathGenerator(uncompletedDeliveries);
+        printMap(sortedDeliveries);
     }
 
 

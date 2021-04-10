@@ -2,7 +2,7 @@ package seedu.duke;
 
 import java.util.ArrayList;
 
-public class Delivery {
+public class Delivery implements Comparable<Delivery> {
     
     private final String deliveryID;
     private final String address; // todo implement enums?
@@ -11,6 +11,7 @@ public class Delivery {
     private final double deliveryFee;
     private final int distance;
     private final ArrayList<Item> items;
+
     private boolean isComplete;
 
     /**
@@ -21,12 +22,12 @@ public class Delivery {
      * @param recipient name of the delivery's recipient
      * @param items items contained in the delivery
      */
-    public Delivery(String deliveryID, String address, String recipient, ArrayList<Item> items) {
+    public Delivery(String deliveryStatus, String deliveryID, String address, String recipient, ArrayList<Item> items) {
         this.deliveryID = deliveryID;
         this.address = address;
         this. recipient = recipient;
         this.items = items;
-        this.isComplete = false;
+        this.isComplete = !deliveryStatus.equals("N");
         for (Item item : items) {
             this.weight += item.getItemWeight();
         }
@@ -57,6 +58,10 @@ public class Delivery {
         return items;
     }
 
+    public boolean getIsComplete() {
+        return isComplete;
+    }
+
     public void setDeliveryAsComplete() {
         this.isComplete = true;
     }
@@ -72,14 +77,13 @@ public class Delivery {
     public String getDeliveryStatusSymbol() {
         if (this.isComplete) {
             return "[Y]";
-        }
-        else {
+        } else {
             return "[N]";
         }
     }
 
     /**
-     * Marks a delivery as completed and also adds the delivery to the deliveryman's record
+     * Method to mark a delivery as completed and also adds the delivery to the deliveryman's record.
      * @param deliveryman deliveryman that completed the delivery
      * @param deliveryNumber corresponding index of the delivery in the DeliveryList.deliveries
      */
@@ -89,7 +93,31 @@ public class Delivery {
         delivery.setDeliveryAsComplete();
     }
 
+    public String saveFormat() {
+        StringBuilder format = new StringBuilder();
+        format.append(getDeliveryStatusSymbol().replace("]", "").replace("[", ""))
+                .append(" / ")
+                .append(getDeliveryID())
+                .append(" / ")
+                .append(getAddress())
+                .append(" / ")
+                .append(getRecipient())
+                .append(" / ");
+        String prefix = "";
+        for (Item item : this.getItems()) {
+            format.append(prefix)
+                    .append(item.getItemNumber())
+                    .append("-")
+                    .append(item.getItemWeight());
+            prefix = " , ";
+        }
+
+        return format.toString();
+    }
+
     /**
+     * Method to convert Delivery object to proper format for printing.
+     *
      * @return formatted line used in Ui.java methods
      */
     @Override
@@ -100,6 +128,12 @@ public class Delivery {
                 + this.getRecipient();
     }
 
+    @Override
+    public int compareTo(Delivery compareDelivery) {
 
+        int compareDistance = compareDelivery.getDistance();
 
+        return this.distance - compareDistance;
+
+    }
 }

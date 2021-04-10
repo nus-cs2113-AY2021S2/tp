@@ -1,0 +1,18 @@
+@startuml
+!include ../Style.puml
+'https://plantuml.com/sequence-diagram
+
+
+activate ":Ui"
+":Ui" -> ":Delivery": completeDelivery()
+
+    activate ":Delivery"
+    ":Delivery" -> ":Deliveryman": completeDelivery()
+
+        activate ":Deliveryman"
+        ":Deliveryman" -> ":Delivery"
+        deactivate ":Deliveryman"
+
+    ":Delivery" --> ":Ui"
+    deactivate ":Delivery"
+@enduml

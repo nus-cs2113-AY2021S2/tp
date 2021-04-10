@@ -12,6 +12,7 @@ public class DeliveryList {
      * Constructor to load static list of deliveries from a .txt file
      */
     public static void load() {
+        Ui.printDivider();
         deliveries = DataManager.loadDeliveryList();
         calculateCombinedWeight();
         checkWeight();
@@ -28,7 +29,7 @@ public class DeliveryList {
     public static void checkWeight() {
         int deliveryManMaxWeight = deliveryman.getMaxWeight();
         while (combinedWeight > deliveryManMaxWeight) {
-            deliveries.remove(deliveries.size()-1); // remove the last delivery that causes the weight to exceed
+            deliveries.remove(deliveries.size() - 1); // remove the last delivery that causes the weight to exceed
             calculateCombinedWeight();
         }
     }

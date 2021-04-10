@@ -3,22 +3,25 @@ package seedu.duke;
 public class Duke {
     public Ui ui;
     public Deliveryman deliveryman;
+    public Menu menu;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public Duke() {
         ui = new Ui();
-    }
-
-
-    public void run() {
-        deliveryman = DataManager.loadProfile();
-        Route.loadRoutes();
-        ui.showWelcomeScreen();
-        ui.showLoopingMenuUntilExit(deliveryman);
+        menu = new Menu();
     }
 
     public static void main(String[] args) {
         new Duke().run();
+    }
+
+    public void run() {
+        deliveryman = DataManager.loadProfile();
+        assert deliveryman != null : "Profile not properly loaded";
+        Route.loadRoutes();
+        ui.showWelcomeScreen();
+        menu.showLoopingMenuUntilExit(deliveryman);
     }
 }
