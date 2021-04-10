@@ -17,6 +17,7 @@ public class InventoryDelete extends Command {
         drugs.deleteDrugs(argArr);
         ui.deleteDrugMessage(argArr[1], argArr[2]);
     }
+
     @Override
     public boolean isExit() {
         return false;

@@ -25,6 +25,7 @@ public class InventoryStorage {
         this.filePath = filePath;
         saveFile = new File(filePath);
     }
+
     public void fileInit() {
         try {
             //makes file directory if it doesnt exist in the system.
@@ -54,7 +55,8 @@ public class InventoryStorage {
                 }
                 checker = new InventoryChecker(inventories, taskSave, numberOfTokens);
                 checker.checkStorage();
-                Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]), Integer.parseInt(taskSave[2]));
+                Inventory tempInventory = new Inventory(taskSave[0], Double.parseDouble(taskSave[1]),
+                        Integer.parseInt(taskSave[2]));
                 inventories.add(tempInventory);
             }
         } catch (FileNotFoundException e) {
@@ -63,6 +65,7 @@ public class InventoryStorage {
         fileScanner.close();
         return inventories;
     }
+
     public void storeInventory(InventoryList saveInput) {
         fileInit();
         try {

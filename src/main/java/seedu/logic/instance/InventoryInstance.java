@@ -62,8 +62,8 @@ public class InventoryInstance {
                 e.getError();
             } catch (DuplicateDrugException e) {
                 e.getError("DrugStored");
-            } catch (IllegalCharacterException | InsufficientInputException |
-                    ExcessInputException | NoInputException e) {
+            } catch (IllegalCharacterException | InsufficientInputException
+                    | ExcessInputException | NoInputException e) {
                 System.out.println(e.getMessage());
             } catch (InvalidQuantityException e) {
                 e.getError();

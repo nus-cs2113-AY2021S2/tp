@@ -13,15 +13,15 @@ public class InventoryList {
     }
 
     public InventoryList(ArrayList<Inventory> load) {
-     this.list = load;
+        this.list = load;
     }
 
     public void addDrugs(String[] argArr) {
-        for(int i=0; i<list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             Inventory inventoryTemp = list.get(i);
             String tempName = inventoryTemp.getDrugName();
             Double tempPrice = inventoryTemp.getDoublePrice();
-            if(tempName.equals(argArr[0]) && tempPrice.equals(Double.parseDouble(argArr[1]))) {
+            if (tempName.equals(argArr[0]) && tempPrice.equals(Double.parseDouble(argArr[1]))) {
                 inventoryTemp.addQuantity(Integer.parseInt(argArr[2]));
                 return;
             }
@@ -31,16 +31,16 @@ public class InventoryList {
     }
 
     public void deleteDrugs(String[] argArr) throws InvalidQuantityException {
-        for (int i = 0; i< list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             String name = argArr[1];
             String quantityDelete = argArr[2];
             Inventory inventoryTemp = list.get(i);
             String tempName = inventoryTemp.getDrugName();
             int tempQuantity = inventoryTemp.getQuantity();
-            if (tempName.equals(name) && tempQuantity>=Integer.parseInt(quantityDelete)) {
+            if (tempName.equals(name) && tempQuantity >= Integer.parseInt(quantityDelete)) {
                 inventoryTemp.removeQuantity(Integer.parseInt(quantityDelete));
                 return;
-            } else if (tempName.equals(name) && tempQuantity<Integer.parseInt(quantityDelete)) {
+            } else if (tempName.equals(name) && tempQuantity < Integer.parseInt(quantityDelete)) {
                 //inventoryTemp.removeQuantity(tempQuantity);
                 throw new InvalidQuantityException();
             }

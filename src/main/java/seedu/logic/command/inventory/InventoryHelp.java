@@ -10,6 +10,7 @@ public class InventoryHelp extends Command {
     public void execute(InventoryList drugs, InventoryUI ui) {
         ui.printInventoryHelpMessage();
     }
+
     @Override
     public boolean isExit() {
         return false;

@@ -43,7 +43,7 @@ public class InventoryChecker extends MainChecker {
         checkDuplicate(stringTokens[0], Double.parseDouble(stringTokens[1]));
     }
 
-    public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException, IllegalCharacterException {
+    public void checkAdd() throws DuplicateDrugException, WrongNumberException, IllegalCharacterException {
         illegalCharacterChecker(stringTokens[1], "name");
         illegalCharacterChecker(stringTokens[3], "quantity");
         checkPrice(stringTokens[2]);
@@ -103,7 +103,7 @@ public class InventoryChecker extends MainChecker {
         return false;
     }
 
-    public void isNameExist(String userInput, InventoryList drugs) throws NonExistentDrugException{
+    public void isNameExist(String userInput, InventoryList drugs) throws NonExistentDrugException {
         if (!drugs.isDrugStored(userInput)) {
             throw new NonExistentDrugException("NameDoesNotExist");
         }
