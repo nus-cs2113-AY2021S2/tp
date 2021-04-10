@@ -511,34 +511,34 @@ can keep track of commonly accessed information while keeping track of the tasks
 
 ## 9. Instructions for manual testing
 
-###Initial Launch  
+### Initial Launch  
 1. Download the jar file and copy into an empty folder.  
 1. Refer to [this website](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#2-quick-start) to set up the application.  
 
-###Adding/Deleting a Module  
+### Adding/Deleting a Module  
 1. You may add a module by the following commands: `1`, `1` (from main menu). Enter the `module name` and `description`. You may choose to keep illegal characters in your module name.  
     1. For example, by entering `CS2113T@NUS` as the `module name`, the `@` symbol is seen as a non-alphanumeric character. You will be prompted to confirm the use of such characters.    
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#311-add-a-module) for more instructions.  
 1. You may delete a module by the following commands: `1`,`4` (from main menu). Enter the number of the `module` from the list you want to delete.    
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#314-delete-a-module) for more instructions.    
-###Adding/Deleting a Task  
+### Adding/Deleting a Task  
 1. You may add a `task` to a `module` by the following commands: `1`, `11` OR `3`, `1` (from main menu). Select the `task type` and the `module`.     
    1. If you want to add a `task` to a **new** `module`, type a number that is NOT in the list of modules.  
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#331-add-new-task) for more instructions.  
 1. You may delete a task by the following commands: `1`, `12` OR `3`, `3` (from main menu).  
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#333-delete-a-task)  
-###Adding/Deleting Zoom Links  
+### Adding/Deleting Zoom Links  
 1. You may add a `zoom link` to a `module` by the following commands: `1`, `13` OR `4`, `2` (from main menu). Select the `module` and enter the `zoom link` (and password).    
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#345-add-zoom-link) for more instructions.    
 1. You may delete a `zoom link` by the following commands: `1`, `14` OR `4`, `3` (from main menu).   
     1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#346-delete-zoom-link) for more instructions.  
 
-###Calculating CAP  
+### Calculating CAP  
 1. To calculate **actual** `CAP` score - enter `1`, `2`, `1` (from main menu). This will calculate your CAP based on the grades you have entered for each `module`.  
 1. To simulate **expected** `CAP` score - enter `1`, `2`, `2` (from main menu). This will prompt you to enter the `grade` and `MCs` for the simulated `modules`.  
     1. Type `ok` to end simulation and print out your simulated `CAP` score.  
 1. Refer to this [link](https://ay2021s2-cs2113t-f08-4.github.io/tp/UserGuide.html#323-simulate-future-cap) for more instructions.  
 
-###Saving Data  
+### Saving Data  
 1. All information related to UniTracker will be stored in the root folder of the jar file, under the `UniTracker Data` folder.  
 1. In the event of a corrupted file or if a file is tampered with, UniTracker will print an `error` message, and you may not be able to run the application. To resolve this, please delete the `UniTracker Data` folder. The program will create a **new** `UniTracker Data` folder.  
