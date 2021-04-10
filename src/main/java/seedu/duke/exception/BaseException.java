@@ -26,14 +26,6 @@ public abstract class BaseException extends Exception {
         for (String errorLine : errorLines) {
             errorString += Constants.INDENT + errorLine;
         }
-
-        Throwable cause = this.getCause();
-        if (cause != null) {
-            errorString += System.lineSeparator()
-                    + "... and is caused by ..." + System.lineSeparator()
-                    + Constants.INDENT + cause.toString();
-        }
-
         return errorString;
     }
 }
