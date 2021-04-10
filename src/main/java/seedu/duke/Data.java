@@ -56,6 +56,12 @@ public class Data {
         currentPatient = null;
     }
 
+    private void checkLoadedPatient() throws DataException {
+        if (currentPatient == null) {
+            throw new DataException(DataException.Type.NO_PATIENT_LOADED);
+        }
+    }
+
     /**
      * This retrieves the full hashmap of patients.
      *
@@ -149,9 +155,15 @@ public class Data {
         return recentDetails;
     }
 
-    private void checkLoadedPatient() throws DataException {
-        if (currentPatient == null) {
-            throw new DataException(DataException.Type.NO_PATIENT_LOADED);
-        }
+    public String getRecords(LocalDate date) throws DataException {
+        checkLoadedPatient();
+        String records = currentPatient.getRecord(date);
+        return records;
+    }
+
+    public String getRecords() throws DataException {
+        checkLoadedPatient();
+        String records = currentPatient.getRecord();
+        return records;
     }
 }

@@ -52,26 +52,28 @@ public class Constants {
     public static final String LONG_LINE = "----------------------------------------------------------------------";
 
     // Exception messages
-    public static final String EXCEPTION_INDENT = "\t";
+    public static final String INDENT = "\t";
 
-    public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
-    public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process";
-    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided";
-    public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number";
-    public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists";
+    public static final String INVALID_INPUT = "Input command and/or arguments are invalid.";
+    public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process.";
+    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided.";
+    public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number.";
+    public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists.";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED =
-            "Please load a patient with the load command before adding or viewing records";
+            "Please load a patient with the load command before adding or viewing records.";
     public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
-            "Please provide more details about the patient's visit!\n"
-                    + "(At least one symptom, diagnosis or prescription must be specified)";
+            "Please provide more details about the patient's visit.\n"
+                    + "(At least one symptom, diagnosis or prescription must be specified.)";
     public static final String INVALID_INPUT_INVALID_DATE =
             "Please provide a valid date (format: dd/MM/yyyy).\n"
                     + "It should also be a valid date in the Gregorian calendar.";
     public static final String INVALID_FUTURE_DATE = "You cannot save a visit record for a future date.";
     public static final String INVALID_INPUT_UNKNOWN_DELETE_ARGUMENT =
-            "Kindly use /p or /r to indicate patient or record, refer to help for more clarification";
-    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist!";
+            "Kindly use /p or /r to indicate patient or record, refer to help for more clarification.";
+    public static final String INVALID_INPUT_PATIENT_NOT_FOUND = "Patient with this IC number does not exist.";
     public static final String INVALID_INPUT_END_OF_FILE = "End of file reached, exiting application.";
+
+    public static final String DATA_NO_RECORD_FOUND = "No records found for the specified date.";
 
     public static final String STORAGE = "Something wrong happen when trying to save/load data";
     public static final String STORAGE_FILE_CREATION_FAIL = "Failed to create a save file.";

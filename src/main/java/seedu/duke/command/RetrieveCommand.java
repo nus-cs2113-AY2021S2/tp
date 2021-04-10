@@ -4,6 +4,7 @@ import seedu.duke.Common;
 import seedu.duke.Constants;
 import seedu.duke.Data;
 import seedu.duke.Ui;
+import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
 import seedu.duke.model.Patient;
 import seedu.duke.model.Record;
@@ -27,23 +28,19 @@ public class RetrieveCommand extends Command {
     }
 
     @Override
-    public void execute() throws InvalidInputException {
+    public void execute() throws InvalidInputException, DataException {
         assert ui != null : "Ui must not be null";
-        Patient patient = data.currentPatient;
-        if (patient == null) {
-            throw new InvalidInputException(InvalidInputException.Type.NO_PATIENT_LOADED);
+        String records = null;
+        if (arguments.containsKey(Constants.PAYLOAD_KEY)) {
+            String dateString = arguments.get(Constants.PAYLOAD_KEY);
+            LocalDate date = Common.parseDate(dateString);
+            records = data.getRecords(date);
         }
-        TreeMap<LocalDate, Record> records = patient.getRecords();
-        ui.printMessage("Here are " + patient.getID() + "'s records:");
-        for (Map.Entry<LocalDate, Record> entry : records.entrySet()) {
-            LocalDate date = entry.getKey();
-            Record record = entry.getValue();
-            printRecord(date, record);
+        else {
+            records = data.getRecords();
         }
+        assert records != null : "Data class must not return a null value for the patient's records";
+        ui.printMessage(records);
     }
 
-    private void printRecord(LocalDate date, Record record) {
-        ui.printMessage(Common.formatDate(date) + ":");
-        ui.printMessage(record.toString());
-    }
 }

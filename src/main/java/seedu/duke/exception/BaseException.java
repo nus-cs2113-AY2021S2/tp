@@ -24,14 +24,14 @@ public abstract class BaseException extends Exception {
         String errorMessage = getMessage();
         String[] errorLines = errorMessage.split("\n");
         for (String errorLine : errorLines) {
-            errorString += Constants.EXCEPTION_INDENT + errorLine;
+            errorString += Constants.INDENT + errorLine;
         }
 
         Throwable cause = this.getCause();
         if (cause != null) {
             errorString += System.lineSeparator()
                     + "... and is caused by ..." + System.lineSeparator()
-                    + Constants.EXCEPTION_INDENT + cause.toString(); 
+                    + Constants.INDENT + cause.toString();
         }
 
         return errorString;

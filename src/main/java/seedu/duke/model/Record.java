@@ -1,5 +1,6 @@
 package seedu.duke.model;
 
+import seedu.duke.Common;
 import seedu.duke.Constants;
 
 import java.util.LinkedHashSet;
@@ -24,14 +25,15 @@ public class Record {
 
     /**
      * Generates a record with existing data.
-     * @param symptoms existing symptoms data
-     * @param diagnoses existing diagnoses data
+     *
+     * @param symptoms      existing symptoms data
+     * @param diagnoses     existing diagnoses data
      * @param prescriptions existing prescriptions data
      */
     public Record(
-        LinkedHashSet<String> symptoms, 
-        LinkedHashSet<String> diagnoses, 
-        LinkedHashSet<String> prescriptions
+            LinkedHashSet<String> symptoms,
+            LinkedHashSet<String> diagnoses,
+            LinkedHashSet<String> prescriptions
     ) {
         this.symptoms = symptoms;
         this.diagnoses = diagnoses;
@@ -45,23 +47,33 @@ public class Record {
      */
     public String getConsultationDetail() {
         String consultationDetail = "";
-        consultationDetail += "Symptoms:" + System.lineSeparator();
-        for (String symptom : symptoms) {
-            consultationDetail += "\t" + symptom + System.lineSeparator();
+        if (!symptoms.isEmpty()) {
+            consultationDetail += extractField("Symptoms", symptoms);
         }
-        consultationDetail += "Diagnoses:" + System.lineSeparator();
-        for (String diagnosis : diagnoses) {
-            consultationDetail += "\t" + diagnosis + System.lineSeparator();
+        if (!diagnoses.isEmpty()) {
+            consultationDetail += extractField("Diagnoses", diagnoses);
         }
-        consultationDetail += "Prescriptions:" + System.lineSeparator();
-        for (String prescription : prescriptions) {
-            consultationDetail += "\t" + prescription + System.lineSeparator();
+        if (!prescriptions.isEmpty()) {
+            consultationDetail += extractField("Prescriptions", prescriptions);
         }
         return consultationDetail;
     }
 
+    private String extractField(String fieldName, LinkedHashSet<String> field) {
+        String fieldString = "";
+        if (field.isEmpty()) {
+            return fieldString;
+        }
+        fieldString += fieldName + ":" + System.lineSeparator();
+        for (String string : field) {
+            fieldString += Constants.INDENT + string + System.lineSeparator();
+        }
+        return fieldString;
+    }
+
     /**
      * Obtain a print-friendly consultation detail of this record for the storage file.
+     *
      * @return A String containing the consultation details contained in this record, separated by delimiters.
      */
     public String printFileConsultationDetail() {
@@ -88,8 +100,9 @@ public class Record {
 
     /**
      * This adds 3 different type of details into this record.
-     * @param symptom symptoms of the patient
-     * @param diagnosis diagnosis based on patient's symptoms and other tests
+     *
+     * @param symptom      symptoms of the patient
+     * @param diagnosis    diagnosis based on patient's symptoms and other tests
      * @param prescription prescription given for this visit
      */
     public void addDetails(String symptom, String diagnosis, String prescription) {

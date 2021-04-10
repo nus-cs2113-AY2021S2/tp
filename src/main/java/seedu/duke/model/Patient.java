@@ -1,8 +1,12 @@
 package seedu.duke.model;
 
 import seedu.duke.Common;
+import seedu.duke.Data;
+import seedu.duke.exception.DataException;
 
 import java.time.LocalDate;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -95,6 +99,44 @@ public class Patient {
             recentDetails += "Prescription: " + prescription + System.lineSeparator();
         }
         return recentDetails;
+    }
+
+    /**
+     * Checks if the patient has a visit from the specified date, and returns the records from that date.
+     *
+     * @param date the date of the patient's consultation
+     * @return a string containing the records of the patient's visit on the date
+     * @throws DataException if the patient has no visit record from the specified date
+     */
+    public String getRecord(LocalDate date) throws DataException {
+        if (!records.containsKey(date)) {
+            throw new DataException(DataException.Type.NO_RECORD_FOUND);
+        }
+        Record record = records.get(date);
+        String recordString = "Here are " + id + "'s records:" + System.lineSeparator()
+                + Common.formatDate(date) + ":" + System.lineSeparator()
+                + record.toString();
+        return recordString;
+    }
+
+    /**
+     * Returns all the medical records of a patient. If a patient does not have any records,
+     * the returned string will notify the user that there are no records
+     *
+     * @return a string containing all the records of the patient
+     */
+    public String getRecord() {
+        if (records.isEmpty()) {
+            return id + " has no medical records.";
+        }
+        String recordString = "Here are " + id + "'s records:" + System.lineSeparator();
+        for (Map.Entry<LocalDate, Record> recordIterator : records.entrySet()) {
+            LocalDate date = recordIterator.getKey();
+            Record record = recordIterator.getValue();
+            recordString += Common.formatDate(date) + ":" + System.lineSeparator()
+                    + record.toString();
+        }
+        return recordString;
     }
 
     /**
