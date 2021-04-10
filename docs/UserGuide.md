@@ -53,7 +53,7 @@ you on how to set up and start using Patient Manager.
 
 You may refer to [Quick Start](#quick-start) for help on setting up and getting started with Patient Manager
 
-[Features](#features) contains a detailed explanation of the commands that are available in Patient Manager,
+The [Features](#features) section contains a detailed explanation of the commands that are available in Patient Manager,
 as well as their input formats.
 
 If you have any questions about Patient Manager, please check out [Frequently Asked Questions](#frequently-asked-questions)
@@ -78,8 +78,8 @@ and file names.
 ## Quick Start
 
 > ℹ️ Patient Manager is a Command-Line application, and all commands need to be run from the
-> console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Command
-> Prompt in Windows 10 is shown here:
+> console (e.g. Terminal/Command Prompt/PowerShell). For reference, a guide to open the Windows
+> Powershell in Windows 10 is shown below:
 > 
 > <img src="./images/WindowsPowerShell.png" width="600">
 
@@ -88,85 +88,50 @@ and file names.
    [here](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html). \
    > 💡 You can check the version of Java installed on your local computer by entering\
    > `java -version` into your console and then pressing `ENTER`.
-1. Obtain a copy of the latest version of the Patient Manager (`PatientManager.jar`) from
+1. Obtain a copy of the latest version of Patient Manager (`PatientManager.jar`) from
    [here](https://github.com/AY2021S2-CS2113T-W09-4/tp/releases) and place it in an empty folder.
 1. Open the console, enter `java -jar tp.jar`, and press `ENTER` to start Patient Manager.
 1. Once the welcome message appears, simply type in a command (e.g. [`help`](#print-a-help-message-help))
    and hit `ENTER` at the end to execute the command.
-1. Please refer to the [Features section](#features) below for more detailed explanations and usage of the available commands.
-
----
-
-## About Command Input
-
-<!-- TODO: Too Technical -->
-### Spacing
-
-Due to the design of our command parser, we are able to understand your input for any number of spaces between words
-(even before the command itself). So all these commands are actually understandable and will be treated the same:
-```
-record 01/05/2021 /s coughing, fever
-record   01/05/2021  /s       coughing, fever
-record 01/05/2021  /s   coughing,       fever
-      record 01/05/2021 /s coughing, fever
-```
-
-❗ This is important: treating all these four the same means any number of spaces in between words will only be
-considered as **ONE**. Take a look at the third input. Despite there are multiple spaces between `coughing,` and
-`fever`, it will go into the database as `coughing, fever` - same as every other lines do.
-
-### Order of Arguments
-
-Words or characters starts with `/` mark the beginning of an argument.
-An argument block continues until the other one is found.
-For example, `record 01/05/2021 /s coughing, fever /d flu` has two argument blocks - `/s coughing, fever` and `/d flu`.
-The sequence of these two arguments blocks would not affect the result of the command. These two are equivalent:
-```
-record 01/05/2021 /s coughing, fever /d flu
-record 01/05/2021 /d flu /s coughing, fever
-```
-
-> ❗ Note: The `DATE` is not an argument. It is the payload to the command since there is no `/` before it. Its position
-> is fixed, and it should follow directly behind `record`.
-
-However, we would still suggest you to input it using the sequence given in the following section.
-This can prevent you from getting confused about the meaning of each argument.
-
+1. Please refer to [Features](#features) below for more detailed explanations and
+   usage of the available commands.
+   
 ## Features
 
 > ❗ Notes about the command format:
-> - Words in `UPPER_CASE` are parameters supplied by the user.\
-    e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
+> Words in `UPPER_CASE` are parameters supplied by the user.\
+> e.g. in `add IC_NUMBER`, `IC_NUMBER` is a parameter that has to be specified.\
 >
 >
-> - Parameters in square brackets (`[]`) are optional.\
-    e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command,
-    both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
+> Parameters in square brackets (`[]`) are optional.\
+> e.g. for the `record [DATE] [/s SYMPTOM] [/d DIAGNOSIS] [/p PRESCRIPTION]` command, 
+> both `record 26/03/2021 /s coughing` and `record /s fever /p panadol` are valid commands.
 >
 >
-> - Parameters with `...` allow multiple parameters (including zero) to be specified.\
-    e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
+> Parameters with `...` allow multiple parameters (including zero) to be specified.\
+> e.g. for `help [OPTIONAL_COMMAND]...` both `help` and `help add delete` are valid commands.
 >
 >
-> - Parameters starting with a slash (`/`) can be given in any order.\
-    e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
-    `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
->   However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
->   For first-time users, we recommend that you follow the sequence given in this section.
+> Parameters starting with a slash (`/`) can be given in any order.\
+> e.g. if a command specifies `/s SYMPTOMS /p PRESCTIPTION` as its parameters,
+> `/p PRESCTIPTION /s SYMPTOMS` is also acceptable.\
+> However, for `record DATE /s SYMPTOMS`, `record /s SYMPTOMS DATE` is not acceptable.\
+> For first-time users, we recommend that you follow the sequence given in this section.
+>
+> 
+> If a parameter is expected only once in the command, but you specify it multiple times,
+> only the last occurrence of the parameter will be taken.\
+> e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
 >
 >
-> - If a parameter is expected only once in the command, but you specify it multiple times, only the last occurrence of
-    the parameter will be taken.\
-    e.g. if you specify `/s coughing /s fever`, only `/s fever` will be taken.
+> Extraneous parameters for commands that do not take in parameters (such as `list` 
+> and `exit`) will be ignored.\
+> e.g. if the command given is `list 123`, it will be interpreted as `list`.
 >
 >
-> - Extraneous parameters for commands that do not take in parameters (such as `list` and `exit`) will be ignored.\
-    e.g. if the command given is `list 123`, it will be interpreted as `list`.
->
->
-> - Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.\
->   All dates given must be valid, according to the rules of the
->   [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
+> Dates must be specified in the format `dd/MM/yyyy` with leading zeroes, for example, `05/03/2021`.\
+> All dates given must be valid, according to the rules of the 
+> [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar).
 
 <!-- TODO: Order | explain why help command is the 1st -->
 ### Print a help message: `help`
