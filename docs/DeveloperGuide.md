@@ -17,12 +17,12 @@ It is written in Java, and has more than 6000 lines of code.
 * [Implementation](#implementation)
   * [Main Logic](#main-logic)
   * [Add Command](#add-command)
+  * [List Command](#list-command)
   * [Remove Command](#remove-command)
   * [Search Command](#search-command)
   * [Running Low Command](#running-low-command)
   * [Set Limit Command](#set-limit-command)
   * [Expiring Command](#expiring-command)
-  * [List Command](#list-command)
   * [History Command](#history-command)
 * [Product Scope](#product-scope)
   * [Target User Profile](#target-user-profile)
@@ -195,6 +195,26 @@ Given below is the sequence diagram for the AddCommand workflow.
 * Due to simplicity, some function calls that are not essential to the execution are not covered in this diagram. Hence, the `Command` object will not be destroyed at the end of this diagram.
 * The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
 
+### List Command
+
+There are three variations of the `list` command.
+
+1. List all food
+2. List by category
+3. List by storage location
+
+The first variation is implemented by iterating through the collection of food items in the fridge.
+The names of all the food are concatenated using a Java `StringBuilder`, and the final result, containing the list of all food items, is returned to the main program.
+
+The sequence diagram below shows how this `list` operation works:
+
+![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
+
+The second and third variations are also implemented by iterating through the collection of food in the fridge.
+However, there would be an additional check to verify if the given food item contains the correct category or storage location attribute as requested by the user, before being returned to the `ListCommand`.
+If it does not match the required attribute, then that food item would be excluded from the result.
+The final result would then be returned to the main program.
+
 ### Remove Command
 
 When the user requests to remove a portion of a food item in the fridge, the `remove` command will execute the remove operation by:
@@ -246,7 +266,7 @@ The sequence diagram shows how the `runninglow` operation works:
 The `setlimit` command is implemented by:
 
 1. Calling a setter method in `MinimumQuantity`.
-2. The setter method will change the `FoodCategory`'s predefined minimum number of quantity.
+2. The setter method will change the `FoodCategory`'s predefined minimum quantity.
 
 The sequence diagram shows how the `setlimit` operation works:
 
@@ -254,48 +274,28 @@ The sequence diagram shows how the `setlimit` operation works:
 
 ### Expiring Command
 
-The `expiring` command is implemented through looping of the food items in the fridge and
-return the food item that are expired and expiring.
+The `expiring` command is implemented by looping of the food items in the fridge and
+returning the food items that are expired and expiring.
 
-:information: Information:
-*Food is considered expired if the expiry date is one day before calling the command.
-*Food is considered expiring if the expiry date is within one week of calling the command.
+:information_source: Information:
+
+* A `Food` item is considered expiring if the expiry date is within one week of calling the command.
+* A `Food` item is considered expired if the expiry date is earlier than the day of calling the command. `Food` items will not be considered expired if the command is called on the same day as its expiry.
 
 The sequence diagram shows how the `expiring` operation works:
 
 ![ExpiringSequenceDiagram](diagrams/diagram_images/ExpiringSequenceDiagram.png)
 
-### List Command
-
-There are three variations of the `list` command.
-
-1. List all food
-2. List by category
-3. List by storage location
-
-The first command, list all food, is implemented by iterating through the collection of food in the fridge.
-The names of all the food is concatenated using a Java StringBuilder, and the final result, containing the list of all food, is returned to the main program.
-
-The sequence diagram below shows how this `list` operation works:
-
-![ListCommandSequenceDiagram](diagrams/diagram_images/ListCommandSequenceDiagram.png)
-
-The second and third commands, list by category or storage location, is also implemented by iterating through the collection of food in the fridge.
-However, there would be an additional check to verify if the given food item contains the correct category/storage location attribute as requested by the user, before being returned to the `ListCommand`.
-If it does not match the required attribute that food item would not be part of the result.
-The final result, containing the list of all food belonging to the category/storage location, would then be returned to the main program.
-
 ### History Command
 
-The code related to persistent storage for the `history` command is implemented under the `Storage` class
-under the `Utilities` component.
+The code related to the `history` command is implemented by the `Storage` class in the `Utilities` component.
 
 The implementation of the `history` command is as follows:
 
 1. After every `add` command, a copy of the added food will be appended to `historyData.txt`
 2. When the user invokes the `history` command, `historyData.txt` will be read, line by line.
-3. The line-by-line contents of `historyData.txt` are concatenated into a single output string  
-4. The output string that contains the history data will be output to the user.
+3. The line-by-line contents of `historyData.txt` are concatenated into a single output string.  
+4. The output string that contains the history data will be displayed to the user.
 
 Additionally, the command `history clear` deletes the contents of `historyData.txt` on the disk.
 
@@ -310,15 +310,16 @@ Additionally, the command `history clear` deletes the contents of `historyData.t
 * has a tendency to forget expiry date and location of the food stored
 * can type fast
 * prefers typing to mouse interactions
-* is reasonably comfortable using CLI app
+* is reasonably comfortable using the command line interface (CLI)
 
 ### Value Proposition
 
-This app allows user to monitor their food in a fridge faster than a typical mouse/GUI driven app.
-It includes features such as ability to check for the foods that are expiring in a week, and the food item
-that requires to top up. It will help new homeowners to keep track of their food into different food
-categories and storage location which provide ease of searching it. In addition, new homeowners will be abe to
-keep track of past food items that has been added to the fridge.
+This application allows users to monitor their food in a fridge faster than a typical mouse/GUI driven app.
+It includes features such as the ability to check for the foods that are expiring in a week, and the food items
+that require replenishing. It will help new homeowners to keep track of their food into different food
+categories and storage locations which provides additional ease of searching for their food items.
+In addition, our users will be abe to keep track of past food items that has been added to the fridge
+to analyse patterns in their purchasing of food.
 
 ## User Stories
 
@@ -349,53 +350,15 @@ keep track of past food items that has been added to the fridge.
 
 ## Non-Functional Requirements
 
-### Performance and scalability
-
-* Single-User
-
-The product should be for a single user i.e. (not a multi-user product).
-
-**Reason**: multi-user systems are hard to test, which is unfair for peer testers who will be graded based on the number of bugs they find.
-
-* Typing-Preferred
-
-The product should be targeting users who can type fast and prefer typing over other means of input.
-
-**Reason**: to increase comparability of products, and to make feature evaluation easier for peer evaluators.
-
-### Portability and compatibility
-
-* Platform-Independent
-
-The software should work on the Windows, Linux, and OS-X platforms.
-
-**Reason**: Peer testers should be able to use any of these platforms.
-
-* Java-Version
-
-The software should work on a computer that has version 11 of Java i.e., no other Java version installed.
-
-### Reliability, availability, maintainability
-
- As it is a locally-runned command line application, there will be no down time for users.
- It should be available anytime and anywhere.
-
-* No-Remote-Server
-
-The software should not depend on any remote servers.
-
-### Security
-
-* Human-Editable-File
-
-The data should be stored locally and should be in a human editable text file.
-Thus the data is not protected by nature.
-
-**Reason**: To allow advanced users to manipulate the data by editing the data file.
-
-### Usability
-
-It is very easy for a user to use the system. There is a detailed user guide provided as well as a help command. The user guide can be accessed [here](UserGuide.md)
+|Type|Requirement|Description|Reason|
+|----|-----------|-----------|------|
+|Performance and Scalability|Single User|The product should be for a single user i.e. (not a multi-user product).|Multi-user systems are hard to test, which is unfair for peer testers who will be graded based on the number of bugs they find.|
+|Performance and Scalability|Typing Preferred|The product should be targeting users who can type fast and prefer typing over other means of input.|To increase comparability of products, and to make feature evaluation easier for peer evaluators.|
+|Portability and Compatibility|Platform Independent|The software should work on the Windows, Linux, and OS-X platforms.|Peer testers should be able to use any of these platforms.|
+|Portability and Compatibility|Java -Version|The software should work on a computer that has version 11 of Java i.e., no other Java version installed.|-|
+|Reliability, Availability, and Maintainability|No Remote Servers|The software should not depend on any remote servers.|As it is a locally-runned command line application, there will be no down time for users. It should be available anytime and anywhere.|
+|Security|Human Editable File|The data should be stored locally and should be in a human editable text file. Thus the data is not protected by nature.|To allow advanced users to manipulate the data by editing the data file.|
+|Usability|Easy to Use|It should be very easy for a user to use the system.| There is a detailed user guide provided as well as a help command. The user guide can be accessed [here](UserGuide.md).|
 
 ## Glossary
 
@@ -412,8 +375,7 @@ Given below are instructions to test the app manually.
 1. Ensure that you have Java 11 or above installed.
 2. Download the latest version of `FridgeFriend` from [here](https://github.com/AY2021S2-CS2113-T10-1/tp/releases/latest).
 3. Copy the file to the folder you want to use as the home folder for your `FridgeFriend`.
-4. Open your Command Line Terminal in the folder where `FridgeFriend.jar` is located, and run
-   `FridgeFriend` with `java -jar FridgeFriend_v2.0.jar` (or the latest version).
+4. Open your Command Line Terminal in the folder where the `jar` file is located, and run `FridgeFriend` with `java -jar FridgeFriend_vx.x.jar` where `vx.x` is the `FridgeFriend` version that you have downloaded.
 5. Type the command in the command box and press Enter to execute it. e.g. typing list and pressing Enter will show a
    list of all current food.
 6. To terminate the app, use the `bye` command. It is also acceptable to interrupt the Command Line Terminal with
