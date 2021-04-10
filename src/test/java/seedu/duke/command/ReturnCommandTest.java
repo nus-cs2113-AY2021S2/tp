@@ -21,9 +21,11 @@ public class ReturnCommandTest {
     public void executeReturnCommand_returnCmd_success() {
         String testName = "executeReturnCommand_returnCmd_success";
         String expectedOutput = "====================================================================="
-                + System.lineSeparator()
-                + "Loan marked as returned: [ID: 1] [L] [2021-03-15] [$43.28] Loan to Andy [v]"
-                + System.lineSeparator()
+                + System.lineSeparator() + System.lineSeparator()
+                + "Loan marked as returned:"
+                + System.lineSeparator() + System.lineSeparator()
+                + "[ID: 1] [L] [2021-03-15] [$43.28] Loan to Andy [v]"
+                + System.lineSeparator() + System.lineSeparator()
                 + "====================================================================="
                 + System.lineSeparator();
         String returnCmdInput = "return -i 1 -d 2021-03-16";
@@ -34,9 +36,11 @@ public class ReturnCommandTest {
     public void executeReturnCommand_returnCmdTwo_success() {
         String testName = "executeReturnCommand_returnCmdTwo_success";
         String expectedOutput = "====================================================================="
-                + System.lineSeparator()
-                + "Loan marked as returned: [ID: 3] [L] [2021-03-16] [$5.67] Loan to Jason [v]"
-                + System.lineSeparator()
+                + System.lineSeparator() + System.lineSeparator()
+                + "Loan marked as returned:"
+                + System.lineSeparator() + System.lineSeparator()
+                + "[ID: 3] [L] [2021-03-16] [$5.67] Loan to Jason [v]"
+                + System.lineSeparator() + System.lineSeparator()
                 + "====================================================================="
                 + System.lineSeparator();
         String returnCmdInput = "return -i 3 -d 2021-03-16";

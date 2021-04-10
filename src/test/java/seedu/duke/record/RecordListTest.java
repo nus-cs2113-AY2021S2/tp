@@ -14,13 +14,13 @@ public class RecordListTest {
         assertEquals(3, records.getRecordCount(),
                 "Failed test 'addRecord_expenseLoanSavingObjs_success', expected a record count of 3 but "
                         + "RecordList::getRecordCount() returned " + records.getRecordCount());
-        assertEquals("[E][2020-01-01] electric bills ", records.getRecordAt(0).toString(),
+        assertEquals("[E] [2020-01-01] [$220.50] electric bills ", records.getRecordAt(0).toString(),
                 "Failed test 'addRecord_expenseLoanSavingObjs_success', wrong record object at index 0 of "
                         + "record list");
-        assertEquals("[L][2020-01-01] loan to bob [ ]", records.getRecordAt(1).toString(),
+        assertEquals("[L] [2020-01-01] [$100.00] loan to bob [ ]", records.getRecordAt(1).toString(),
                 "Failed test 'addRecord_expenseLoanSavingObjs_success', wrong record object at index 1 of "
                         + "record list");
-        assertEquals("[S][2020-01-01] red packet ", records.getRecordAt(2).toString(),
+        assertEquals("[S] [2020-01-01] [$20.00] red packet ", records.getRecordAt(2).toString(),
                 "Failed test 'addRecord_expenseLoanSavingObjs_success', wrong record object at index 2 of "
                         + "record list");
     }
@@ -32,10 +32,10 @@ public class RecordListTest {
         assertEquals(2, records.getRecordCount(),
                 "Failed test 'deleteRecordAt_indexOfAddedRecordToDelete_success', expected a record count of 2 but "
                         + "RecordList::getRecordCount() returned " + records.getRecordCount());
-        assertEquals("[E][2020-01-01] electric bills ", records.getRecordAt(0).toString(),
+        assertEquals("[E] [2020-01-01] [$220.50] electric bills ", records.getRecordAt(0).toString(),
                 "Failed test 'deleteRecordAt_indexOfAddedRecordToDelete_success', wrong record object at index 0 of "
                         + "record list");
-        assertEquals("[S][2020-01-01] red packet ", records.getRecordAt(1).toString(),
+        assertEquals("[S] [2020-01-01] [$20.00] red packet ", records.getRecordAt(1).toString(),
                 "Failed test 'deleteRecordAt_indexOfAddedRecordToDelete_success', wrong record object at index 1 of "
                         + "record list");
     }
