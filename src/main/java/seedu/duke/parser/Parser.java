@@ -15,7 +15,7 @@ import seedu.duke.commands.EditTaskCommand;
 import seedu.duke.commands.EnterModuleCommand;
 import seedu.duke.commands.ExitModuleCommand;
 import seedu.duke.commands.ExitProgramCommand;
-import seedu.duke.commands.ListCheatSheetCommand;
+import seedu.duke.commands.ListCheatSheetsCommand;
 import seedu.duke.commands.ListLessonsCommand;
 import seedu.duke.commands.ListModulesCommand;
 import seedu.duke.commands.ListTasksCommand;
@@ -174,7 +174,7 @@ public class Parser {
         case DELETE_TASK:
             return new DeleteTaskCommand();
         case LIST_CHEAT_SHEET:
-            return new ListCheatSheetCommand();
+            return new ListCheatSheetsCommand();
         case EDIT_TASK:
             return new EditTaskCommand();
         case EDIT_LESSON:
