@@ -6,7 +6,8 @@ It also includes helpful features such as a CAP simulator and a task manager. Th
 UniTracker was created with Java, and has about 7 kLOC.
 
 ##Summary of Contributions
-**Features** Implemented the Links feature.
+
+**Features:** Implemented the Links feature.
 - What it does: Allows the user to add, delete and view external links and their zoom links. 
 - Justification: This feature helps the user keep track of their links by putting it in one convenient location.
 - Highlights: The zoom links are also tagged to their module codes and can be viewed on the ModuleInfo menu under `View A Module`
