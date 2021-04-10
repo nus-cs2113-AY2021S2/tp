@@ -129,13 +129,13 @@ _Duke_ contains the main method which is required by Java to run the application
 
 Apart from _Duke_, the application consists of the following components:
 
-* _UI_: Handles reading and printing
-* _Parser_: Validates and checks user input
-* _Command_: Executes commands
-* _Model_: Consists of data related to the application
-* _Storage_: Handles loading and storing of data into text files
-* _Editor_: Graphical interface for users to type
-* _Common_: collection of classes used by multiple components.
+* _UI_ : Handles reading and printing
+* _Parser_ : Validates and checks user input
+* _Command_ : Executes commands
+* _Model_ : Consists of data related to the application
+* _Storage_ : Handles loading and storing of data into text files
+* _Editor_ : Graphical interface for users to type
+* _Common_ : collection of classes used by multiple components.
 
 
 GULIO is a local application that stores its application data using readable text files, allowing users the flexibility of viewing and editing data locally.
@@ -147,11 +147,11 @@ The way GULIO runs and handles user input can be described as follows:
     Figure 3 - GULIO Sequence Diagram
 </p>
 
-Upon start, the `Duke` (main) class calls `run()` which enters a while loop and reads in user input. In the loop, the _Parser_ component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
+Upon starting up GULIO, the `Duke` (main) class calls `run()` which enters a while loop and reads in user input. In the loop, the _Parser_ component processes the user input into various commands implemented in GULIO. The loop ends when the user enters exit.
 
 &nbsp;
 
-### UI component
+### UI Component
 
 **API**: `UI.java`
 
@@ -163,7 +163,7 @@ Upon start, the `Duke` (main) class calls `run()` which enters a while loop and 
 
 &nbsp;
 
-### Parser component
+### Parser Component
 
 **API**: `Parser.java`
 
@@ -179,7 +179,7 @@ Upon start, the `Duke` (main) class calls `run()` which enters a while loop and 
 
 &nbsp;
 
-### Command component
+### Command Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/command-component-level.png" alt="Dual Layer Command System"><br>
@@ -201,7 +201,7 @@ Steps for command execution:
 
 &nbsp;
 
-### Model component
+### Model Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/designModel.png" alt="Class Diagram of Model"><br>
@@ -261,7 +261,7 @@ The `Task` class contains attributes related to an assignment, deadline or task 
 
 <!--@@author 8kdesign-->
 
-### Storage component
+### Storage Component
 
 <p align="center">
     <img width="973" src="developerGuideImages/storage.png" alt="Storage Structure"><br>
@@ -284,7 +284,7 @@ The _Storage_ component is responsible for creating and loading modules and thei
 
 &nbsp;
 
-### Editor component
+### Editor Component
 
 **API**: `TextEditor.java`
 
@@ -305,7 +305,7 @@ The _Editor_ component is responsible for opening the text editor to add or edit
 
 &nbsp;
 
-### Common classes
+### Common Classes
 
 Classes that are used by multiple components:
 * `CommonMethods`: Stores methods that are used by multiple components
