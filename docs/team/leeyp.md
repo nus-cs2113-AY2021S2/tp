@@ -39,7 +39,8 @@ as well as associated JUnit tests and helper function code.
 - Improved the validation of Food Category and Food Storage Location when user inputs data. ([#207](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/207))
 - Overhauled the `Storage` class in the `Utilities` component to improve input validation. ([#208](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/208))
 - Fine-tuned the ability to search by 'Others' category or storage location when user invokes `list` command. ([#212](https://github.com/AY2021S2-CS2113-T10-1/tp/pull/212))
-  
+
+<br/>
 **Enhancements to existing features**  
 - Created JUnit tests & defensive code (for Add Command, List Command, Search Command, History Command).
 - Refactored and improved Code Quality (for Storage Class, Add Command, List Command).
