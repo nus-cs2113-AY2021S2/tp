@@ -47,6 +47,10 @@
     	2. [Add](#552-add)
     	3. [Delete](#553-delete)
     	4. [List](#554-list)
+    6. [Proposed Features](#56-proposed-features)
+    	1. Auto Schedule Generator for Nurses
+    	2. Personalized Account Login
+    	3. Inventory Alerts
 
 [Appendix A: Product Scope](#appendix-a-product-scope) (jiaen)
 
@@ -1112,9 +1116,15 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 7. Depending on the input given by the user, the relevant Inventory Objects will be displayed.
 8. Control is then returned to InventoryInstance.
 
-
-
 <br>
+
+### 5.6 Proposed Features
+
+### 5.6.1
+
+### 5.6.2
+
+### 5.6.3
 
 
 ## Appendix A: Product Scope
