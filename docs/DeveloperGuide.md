@@ -180,7 +180,7 @@ Given below is the sequence diagram for the interactions within the main applica
 
 ### Add Command
 
-AddCommand class is initialised whenever the parser recognise the `add` keyword.
+AddCommand class is initialised whenever `Parser` recognises the `add` keyword.
 
 1. The constructor should create a new Food object according to the parsed user input.
 2. The UniqueFoodnameChecker will be called from Fridge class to decide whether to add a new `Food` or edit on existing `Food`.
