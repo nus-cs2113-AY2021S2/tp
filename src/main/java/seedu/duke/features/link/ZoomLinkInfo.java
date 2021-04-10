@@ -9,9 +9,9 @@ import seedu.duke.features.task.command.AddTask;
 
 public class ZoomLinkInfo {
 
-    private String linkDescription;
+    private final String linkDescription;
     private String moduleCode;
-    private String password;
+    private final String password;
 
     public static ArrayList<ZoomLinkInfo> zoomLinksList = new ArrayList<>();
 
@@ -64,6 +64,7 @@ public class ZoomLinkInfo {
             return;
         }
         Module moduleInfo = getModule(moduleCode);
+        assert moduleInfo != null : "module array is empty";
         moduleInfo.setZoomLink(linkDescription);
         Ui.printZoomLinksAdded(linkDescription, moduleCode);
     }
