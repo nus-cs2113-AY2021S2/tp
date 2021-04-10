@@ -159,6 +159,7 @@ classified into three broad categories:
 This section covers the application flow and more specific interactions between classes and their methods. A overview of the main application logic would be covered first, before addressing several specific application commands.
 
 :information_source: For simplicity, where there are exceptions being thrown, they will be represented in the diagrams as comments. In the actual implementation, exception objects are being initialised and executed.
+:information_source: Due to simplicity, some function calls that are not essential to the execution of commmands are not covered in the diagram. Hence, the `Command` objects will not be destroyed at the end of the diagrams.
 
 ### Main Logic
 
@@ -192,7 +193,6 @@ Given below is the sequence diagram for the AddCommand workflow.
 :information_source: Information:
 
 * The `UniqueFoodnameChecker` object will be destroyed after use, but the `Food` object and `Fridge` object will still exist after the command finishes.
-* Due to simplicity, some function calls that are not essential to the execution are not covered in this diagram. Hence, the `Command` object will not be destroyed at the end of this diagram.
 * The lifeline for `UniqueFoodnameCheck` should end at the destroy marker. However, due to a limitation of PlantUML, the lifelines reach the end of the diagram.
 
 ### List Command
