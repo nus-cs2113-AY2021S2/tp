@@ -7,8 +7,7 @@ box DeleteStores
 
 ->":DeleteStoresCommand": execute(canteens,ui)
 activate ":DeleteStoresCommand"
-alt canteens.size()>0
-    ":DeleteStoresCommand"->":ArrayList<Canteen> canteens":get(canteenIndex)
+    ":DeleteStoresCommand"->":ArrayList<Canteen> canteens":get(currentCanteenIndex)
     activate ":ArrayList<Canteen> canteens"
     ":ArrayList<Canteen> canteens"-->":DeleteStoresCommand":currentCanteen
     deactivate ":ArrayList<Canteen> canteens"
@@ -46,7 +45,6 @@ alt canteens.size()>0
     activate ":Storage"
     ":Storage" -->":DeleteStoresCommand"
     deactivate ":Storage"
-end
 <--":DeleteStoresCommand"
 deactivate ":DeleteStoresCommand"
 @enduml
