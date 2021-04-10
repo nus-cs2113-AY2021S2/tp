@@ -87,23 +87,21 @@ This guide is written for users like you, for reference when there is a particul
 
 # Quick Start
 
-Download the latest version of GULIO from here:<br>
-https://github.com/AY2021S2-CS2113T-W09-3/tp/releases
+Download the latest version of GULIO from [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/releases).
 
 ### Requirements:
 
-java 11 and above<br>
+Java 11 and above<br>
 
 > 💡 Verify this by running the command “java --version” in command prompt (for Windows users) or Terminal (for Mac and Linux users).
 
 ### Steps:
 
-1. Move the GULIO.jar file to your preferred directory.
+1. Move the `GULIO.jar` file to your preferred directory.
 1. Open command prompt (for Windows users) or Terminal (for Mac and Linux users),
 1. Navigate to the directory of your GULIO.jar file.
 1. Run the command “java -jar gulio.jar” to start GULIO.
-
-> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar work here.
+> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar works in step 4.
 
 &nbsp;
 
@@ -125,15 +123,15 @@ java 11 and above<br>
 GULIO has a 2-layer system, consisting of the dashboard layer, and the module layer. In both layers, you have access to a different set of commands. 
 
 <p align="center">
-    <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
+    <img width="800" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
     Figure 2 - Visualisation of GULIO’s 2-layer system
 </p>
 
 On start up, you will be on the dashboard layer where you have an overview of all your modules. You have access to module management commands like adding, deleting or opening a particular module.
 
-Opening a module will put you on the module layer where you can interact with the data within the module.
-
 > 💡 Please refer to the section [Dashboard Commands](#dashboard-commands) for information regarding commands at the dashboard layer.<br>
+
+Opening a module puts you on the module layer where you can interact with data within the module.
 
 > 💡 Please refer to the section [Module Commands](#module-commands) for information regarding commands at the module layer.
 
@@ -801,6 +799,11 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 # Text Editor
 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
+
+<p align="center">
+    <img width="800" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
+    Figure 4 - GULIO Text Editor
+</p>
 
 In the text editor, you can type in your notes in the text field. When done, remember to save any changes via the “ctrl-s” shortcut. To close the text editor, simply press the escape key on your keyboard. Using “ctrl-up” and “ctrl-down”, you can enlarge or shrink text respectively.
 
