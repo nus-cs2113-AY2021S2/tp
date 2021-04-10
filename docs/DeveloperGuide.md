@@ -3,8 +3,9 @@
 * Do not remove this line (it will not be displayed)
 {:toc}
 
- ## Introduction 
- ### What is Diliveri
+## Introduction 
+
+### What is Diliveri
 Diliveri is desktop application built on Java and has cross platform abilities across different operating systems. 
 With the rise of demand for deliveryman due to the pandemic, this app optimises the delivery route for each delivery 
 man taking into account the number of deliveries per location and distances between locations, we improve the time and 
