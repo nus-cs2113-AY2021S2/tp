@@ -4,6 +4,7 @@ public class Duke {
     public Ui ui;
     public Deliveryman deliveryman;
     public Menu menu;
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
@@ -12,6 +13,9 @@ public class Duke {
         menu = new Menu();
     }
 
+    public static void main(String[] args) {
+        new Duke().run();
+    }
 
     public void run() {
         deliveryman = DataManager.loadProfile();
@@ -19,9 +23,5 @@ public class Duke {
         Route.loadRoutes();
         ui.showWelcomeScreen();
         menu.showLoopingMenuUntilExit(deliveryman);
-    }
-
-    public static void main(String[] args) {
-        new Duke().run();
     }
 }
