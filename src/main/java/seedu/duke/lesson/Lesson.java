@@ -80,6 +80,11 @@ public class Lesson {
     }
 
     //@@author aliciatay-zls
+    /** 
+     * Returns the value of a filled field as a string, in this order of availability: 
+     * day and time, link, teacher's name, teacher's email. 
+     * Returns null if none of the lesson's fields have been filled by the user yet.
+     */
     public String getDetailsStringIfAny() {
         if (!this.time.isEmpty()) {
             return this.time;
