@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Accesses patient details from storage and stores patient details to storage.
+ */
 public class PatientStorage {
 
     static File saveFile;
@@ -34,12 +37,6 @@ public class PatientStorage {
     }
 
     /**
-     * Instantiates a storage handler by taking in the filepath.
-     *
-     * @param filePath the filepath where the file will be created
-     */
-
-    /**
      * Checks if the file exists and initializes one if there is not.
      */
     public void fileInit() {
@@ -48,10 +45,10 @@ public class PatientStorage {
             if (!(saveFile.exists())) {
                 saveFile.getParentFile().mkdirs();
                 saveFile.createNewFile();
-                logger.log(Level.INFO, "New Patient file and directory created");
+                logger.log(Level.INFO, "New Patient file and directory created.");
             }
         } catch (IOException e) {
-            logger.log(Level.WARNING, "Unable to create file");
+            logger.log(Level.WARNING, "Unable to create file.");
             System.out.println("OOPS! I can't create the directory or file!");
         }
     }
@@ -59,29 +56,29 @@ public class PatientStorage {
     /**
      * Loads the saved list of patients from save location.
      *
-     * @return Populated patients arraylist
-     * @throws HealthVaultException if there is an error in loading
+     * @return Populated patients arraylist.
+     * @throws HealthVaultException if there is an error in loading.
      */
     public ArrayList<Patient> loadPatients() throws HealthVaultException {
         fileInit();
+        logger.log(Level.INFO, "loading patients from storage.");
         // initializing file scanner to scan the file
         Scanner fileScanner = null;
         try {
             fileScanner = new Scanner(saveFile);
         } catch (FileNotFoundException e) {
-            logger.log(Level.WARNING, "Unable to find file");
+            logger.log(Level.WARNING, "Unable to find file.");
             ui.showLoadingError();
         }
         while (fileScanner.hasNext()) {
             String currentScan = fileScanner.nextLine();
             //splits the string into sections for storing in the ArrayList
-            String[] taskSave = currentScan.trim().split(" \\| ");
+            String[] taskSave = currentScan.trim().split("\\|");
             int numberOfTokens = taskSave.length;
             if (numberOfTokens == 0) {
-                logger.log(Level.WARNING, "patient file unable to open due to wrong number of tokens");
+                logger.log(Level.WARNING, "patient file unable to open due to wrong number of tokens.");
                 throw new CorruptedFileException("Patient");
             }
-            /*ArrayList<String> cleanString = new ArrayList<>();*/
             for (int i = 0; i < numberOfTokens; i++) {
                 taskSave[i] = taskSave[i].trim().replaceAll("\\s{2,}", " ");
             }
@@ -92,19 +89,20 @@ public class PatientStorage {
             patients.add(tempPatient);
         }
         fileScanner.close();
+        logger.log(Level.INFO, "returning patients from storage.");
         return patients;
     }
 
     /**
-     * Saves all tasks to text file.
+     * Saves all patients to text file.
      *
-     * @param saveInput current files to be stored
+     * @param saveInput current patient details to be stored.
      */
     public void storePatients(PatientList saveInput) {
         fileInit();
+        logger.log(Level.INFO, "storing patients to storage.");
         try {
             //creates a new file writer to write to text file
-
             FileWriter fileWriter = new FileWriter(filePath);
             for (int i = 0; i < saveInput.getSize(); i++) {
                 fileWriter.write(saveInput.toSaveFile(i) + "\n");
@@ -113,7 +111,7 @@ public class PatientStorage {
             fileWriter.close();
             logger.log(Level.INFO, "Patient file save successful");
         } catch (IOException e) {
-            logger.log(Level.WARNING, "Unable to save file due to IOException");
+            logger.log(Level.WARNING, "Unable to save file due to IOException.");
             System.out.println("☹ OOPS!!! The file can't be saved :-(");
         }
     }

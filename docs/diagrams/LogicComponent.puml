@@ -27,11 +27,13 @@ Command <|-- PQRCommand
 }
 package errorchecker{
 Class XYZChecker
+note right: XYZChecker = DoctorAppointmentChecker, \n InventoryChecker, \n MainChecker, \n NurseScheduleChecker, \n PatientChecker, \n StaffChecker
 }
 
 package parser{
 Class PQRParser
-PQRParser .left.> XYZChecker : creates >
+note right: PQRParser = DoctorAppointmentParser, \n InventoryParser, \n NurseScheduleParser, \n PatientParser, \n StaffParser, \n StartMenuParser
+PQRParser .down.> XYZChecker : creates >
 PQRParser .up.> ABCCommand : creates >
 PQRParser .up.> DEFCommand : creates >
 PQRParser .up.> GHICommand : creates >
@@ -42,6 +44,7 @@ PQRParser .up.> PQRCommand : creates >
 
 package instance {
 Class ABCInstance
+note left: PQRParser = DoctorAppointmentInstance, \n InventoryInstance, \n NurseScheduleInstance, \n StaffInstance, \n StartMenuInstance
 ABCInstance .RIGHT.> PQRParser : creates >
 ABCInstance .RIGHT.> Command : executes >
 }

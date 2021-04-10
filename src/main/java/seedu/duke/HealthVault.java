@@ -14,9 +14,9 @@ public class HealthVault {
     }
 
     /**
-     * Calls for the running of a new Duke instance.
+     * Calls for the running of a new HealthVault instance.
      *
-     * @param args Runtime arguments are unused
+     * @param args Runtime arguments are unused.
      */
     public static void main(String[] args) {
         new HealthVault().run();

@@ -1,5 +1,8 @@
 package seedu.model.patient;
 
+/**
+ * Represents a Patient within the hospital's database.
+ */
 public class Patient {
     protected String patientID;
     protected String name;
@@ -47,15 +50,15 @@ public class Patient {
 
     public String toSaveFormat() {
         return (patientID
-                + " | "
+                + "|"
                 + name
-                + " | "
+                + "|"
                 + age
-                + " | "
+                + "|"
                 + gender
-                + " | "
+                + "|"
                 + illness
-                + " | "
+                + "|"
                 + medicationNeeded);
     }
 }

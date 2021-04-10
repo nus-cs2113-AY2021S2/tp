@@ -14,13 +14,9 @@
 5. [Design](#4-design) 
     1. [Architecture](#41-architecture) (owen)
     2. [UI component](#42-ui-component) (ms)
-    3. [Instance Component](#43-instance-component) (jiaen)
-    4. [Parser Component](#44-parser-component) (jien)
-    5. [Error Checker Component](#45-error-checker-component) (jiaen)
-    6. [Commands Component](#46-commands-component) (jiaen)
-    7. [Exceptions Component](#47-exceptions-component) (jiaen)
-    8. [Model component](#48-model-component) (alex)
-    9. [Storage component](#49-storage-component) (sarrah)
+    3. [Logic Component](#43-logic-component) (jiaen)
+    4. [Model component](#44-model-component) (alex)
+    5. [Storage component](#45-storage-component) (sarrah)
 6. [Implementation](#5-implementation)
     1. [Staff](#51-staff) 
     	1. [Staff Menu](#511-staff-menu)
@@ -88,6 +84,7 @@ The Developer Guide hopes to impart to you the following:
 1. Properly set up for HealthVault
 2. HealthVault's system architecture
 3. The implementation method for HealthVault's various functions and their considerations
+4. Instructions for manual testing of the application
 
 We hope you will have a fruitful time learning about HealthVault.
 
@@ -180,7 +177,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG diagram updated.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI latest diagram.png">
 
 **API :** `UI.java`
 
@@ -195,18 +192,54 @@ The UI of this program can be found under the package named UI. It consists of `
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Is responsible for handling all input and output of the program. 
 
 
-### 4.3 Instance Component
-**image for logic**
+### 4.3 Logic Component
 
-<img src="diagrams/LogicComponent.png">
+The `Logic` component is responsible for the following tasks:
 
-### 4.4 Parser Component
-### 4.5 Error Checker Component
-### 4.6 Commands Component
-### 4.7 Exceptions Component
-### 4.8 Model component
+- Run each instance that accepts user inputs in order to access various functionalities.
+- Converts user inputs into data that is usable by the HealthVault.
+- Executes the Command based on interpreted data.
+
+To accomplish the above, the `Logic` component, follows the following sequence of steps:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Interpreting user input**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The `Instance` component runs the main super loop to accept user input. It creates a `Parser` to interpret user inputs. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Checking User Input**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The `Parser` creates an `ErrorChecker` class and uses it to check the user input for any erroneous and unacceptable inputs. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Creating Command**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; After checking the input, the `Parser` component then creates the `Command` that corresponds to the user input.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Executing Command**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; With the interpreted `Command` from the `Parser`, the `Instance` component then executes the `Command`.
+
+The following class diagram illustrates the interactions between various logic components
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/LogicComponent.png">
+
+The following class diagram illustrates the group of Commands under the doctorappointment package. Due to the similar Commands in each of the Command packages, the information in the doctorappointment package should be representative of the other Command packages.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="diagrams/ExampleCommandPackage.png">
+
+>:information_source: Similar classes are represented by abbreviations ie. ABCCommand. The actual class names are written in the notes beside the classes. 
+> 
+>1. ABCInstance represents the different `Instance` classes.
+>2. PQRParser represents the different `Parser` classes.
+>3. XYZChecker represents the different `ErrorChecker` classes.
+>4. The "XXX"Command in each package under the `Command` package represent the different commands relating to each individual feature.
+
+<br>
+
+### 4.4 Model component
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/Model.png">
+
+The Model component consists of classes that represents the tasks and things that a nurse has to do in the real world. 
 
 The `Model`, consists of 5 different types of lists.
 
@@ -216,12 +249,15 @@ The `Model`, consists of 5 different types of lists.
 - PatientList stores Patient objects. PatientList also has methods to modify the list with objects.
 - StaffList stores Staff objects. StaffList also has methods to modify the list with objects.
 
-### 4.9 Storage component
+<br>
+
+### 4.5 Storage component
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/StorageUML.png">
 <br>
 
 ## 5. Implementation
 
+In this section, we will introduce the implementation of the different functions within each feature.
 
 ###  5.1 Staff
 
@@ -646,7 +682,7 @@ Invalid Input includes:
 
 `add/[Doctor ID]/[Appointment ID]/[Patient's Name]/[Gender]/[Date]`
 
-<img src="images/DG DoctorAppSequencePlant.png">
+<img src="diagrams/DG DoctorAppSequencePlantLatest.png">
 
 
 **Check validity of the data input**
@@ -818,7 +854,7 @@ Invalid Inputs include:
 	- Illegal date format
 	- Duplicate schedules (i.e similar Patient ID and date)
 	
-`add/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `add/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -855,7 +891,7 @@ Invalid Inputs include:
 	- Illegal Characters
 	- Illegal date format
 	
-`delete/[Nurse ID]/[Date (DDMMYYYY)]`
+**Format**: `delete/[Nurse ID]/[Date (DDMMYYYY)]`
 
 **Checking validity of data input**
 
@@ -886,39 +922,9 @@ Invalid Inputs include:
 >
 	- Any input apart from "all" OR "NurseID"
 
-`list/all`
+**Format**: `list/all`
 
-**Checking validity of data input**
-
-1. If the command recognised is the list command, the number of fields in inputs will first be checked.
-
-**Creating NurseScheduleListCommand object**
-
-2. If the input is valid, a NurseScheduleListCommand object is created.
-
-3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
-
-**Viewing Nurse Schedule objects**
-
-4. NurseScheduleInstance then executes the NurseScheduleList Command object to begin the process of displaying Nurse Schedule objects.
-
-5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `listAllSchedules()`.
-
-6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
-
-
-### 5.4.5 List by Nurse ID
-
-**Implementation**
-
-This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule objects will then be displayed.
-
-Invalid Inputs include:
-
->
-	- Any input apart from "all" OR "NurseID"
-
-`list/[Nurse ID]`
+<img src="diagrams/NurseScheduleListSD.png">
 
 **Checking validity of data input**
 
@@ -934,7 +940,39 @@ Invalid Inputs include:
 
 4. NurseScheduleInstance then executes the NurseScheduleListCommand object to begin the process of displaying Nurse Schedule objects.
 
-5. `NurseScheduleList.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
+5. `NurseScheduleListCommand.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `listAllSchedules()`.
+
+6. `listAllSchedules()` iterates through the arraylist of Nurse Schedule objects, printing all schedules.
+
+
+### 5.4.5 List by Nurse ID
+
+**Implementation**
+
+This function lists specified Nurse Schedule objects, sorted by earliest date. Data input is first checked to ensure validity. Any invalid input detected will result in an Exception thrown and command aborted. After validation, a NurseScheduleListCommand object is created. NurseScheduleListCommand object will be executed to iterate through the arraylist of Nurse Schedule objects. Nurse Schedule objects will then be displayed.
+
+Invalid Inputs include:
+
+>
+	- Any input apart from "all" OR "NurseID"
+
+**Format**: `list/[Nurse ID]`
+
+**Checking validity of data input**
+
+1. If the command recognised is the list command, the number of fields in inputs will first be checked.
+
+**Creating NurseScheduleListCommand object**
+
+2. If the input is valid, a NurseScheduleListCommand object is created.
+
+3. The NurseScheduleListCommand object is returned to `NurseScheduleInstance.runCommandLoopUntilExit()`.
+
+**Viewing Nurse Schedule objects**
+
+4. NurseScheduleInstance then executes the NurseScheduleListCommand object to begin the process of displaying Nurse Schedule objects.
+
+5. `NurseScheduleListCommand.execute()` will call the function `NurseScheduleList.listSchedules()` which calls `getSchedulesByID`.
 
 6. `getSchedulesByID` iterates through the arraylist of Nurse Schedule objects, printing schedules of the relevant Nurse ID.
 
@@ -1081,7 +1119,25 @@ This function lists all the Inventories currently in the ArrayList<Inventory> In
 
 ## Appendix A: Product Scope
 
+**Target user profile:**
 <br>
+HealtVault targets users who work primarily in the healthcare industry. Such users include: Nurses, Hospital 
+Administrative Staff and Hospital Management Staff. Its features optimize it for users seeking:
+* Speed in recording down new details relating to critical healthcare services like nurse schedules and doctors appointments.
+* A cohesive database that records the critical information of everyone in the hospital, staff and patients included.
+* A desktop CLI application that has a minimalistic GUI.
+
+**Value Proposition:**
+<br>
+With its organized and portable database and its features to improve efficiency,
+HealthVault aspires to help its users achieve the following results:
+* Improve working speed of healthcare staff, as they can store and retrieve critical information quickly and accurately.
+* Minimize administrative errors with its inbuilt cross validation.
+* Easy implementation within a hospital environment with minimal setup steps and data reusability.
+<br>
+  
+Every second matters in the healthcare industry when patient lives are at stake. We believe that HealthVault can help
+its users save those precious seconds.
 
 ## Appendix B: User Stories
 

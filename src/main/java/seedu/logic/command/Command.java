@@ -25,6 +25,9 @@ import seedu.ui.StaffUI;
 
 import java.io.IOException;
 
+/**
+ * Abstract class that represents a command to be executed.
+ */
 public abstract class Command {
 
     public Command() {
