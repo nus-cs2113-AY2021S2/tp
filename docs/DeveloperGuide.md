@@ -8,7 +8,6 @@ man taking into account the number of deliveries per location and distances betw
 efficiency of deliveries. This app aims to be a one stop solution and more for to meet all the needs of a deliverymen.  
 
 ## Design & implementation
-### [Implementation] : Feature [1]
 
 ### [Implementation] : Recording Completed Deliveries
 
@@ -71,6 +70,27 @@ The general interaction between the abovementioned classes are briefly illustrat
 shown below. 
 
 ![Retrieve Records](diagrams/List.png "Retrieving Records Sequence Diagram")
+
+### [Implementation] : Print Shortest Delivery Path
+
+Every deliverymen would want to the most efficient path for their deliveries so that they can save time and fuel.
+Furthermore, the quicker their delivery turnover, the more deliveries they can complete.
+
+The primary class involved in executing this function is `Map`.
+
+Whenever the user requests for the delivery route, the `Ui` class will call the `processDeliveryRoute` method.
+
+Subsequently, the `processDeliveryRoute` method will call the `uncompletedDeliveriesFilter` method in the `Filter` class.
+This method returns an arrayList of `Delivery` objects which the user has not completed.
+
+Upon receiving the list, the `processDeliveryRoute` method will call the `shortestPathGenerator` method in the `Map` class.
+This method will take an arrayList of `Delivery` objects and sort them based on the distance attribute. 
+The objects are sorted in an ascending order before being returned to the `processDeliveryRoute` method.
+
+Finally,the `printMap` method within the `Ui` class is called. 
+The method will iterate through the arrayList and shortest route available.
+
+![Generate Map](diagrams/deliveryRoute.png "Generating Shortest Path Map Sequence Diagram")
 
 ## Product scope
 
