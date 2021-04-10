@@ -56,6 +56,12 @@ public class Patient {
         return id;
     }
 
+    private void checkRecordExists(LocalDate date) throws DataException {
+        if (!records.containsKey(date)) {
+            throw new DataException(DataException.Type.NO_RECORD_FOUND);
+        }
+    }
+
     /* Functionals for manipulating records */
 
     /**
@@ -109,9 +115,7 @@ public class Patient {
      * @throws DataException if the patient has no visit record from the specified date
      */
     public String getRecord(LocalDate date) throws DataException {
-        if (!records.containsKey(date)) {
-            throw new DataException(DataException.Type.NO_RECORD_FOUND);
-        }
+        checkRecordExists(date);
         Record record = records.get(date);
         String recordString = "Here are " + id + "'s records:" + System.lineSeparator()
                 + Common.formatDate(date) + ":" + System.lineSeparator()
@@ -140,26 +144,12 @@ public class Patient {
     }
 
     /**
-     * Checks if a record exists from the patient's record list.
-     *
-     * @param date Appointment date of record to check
-     * @return Boolean for whether the record exists
-     */
-    public boolean recordExist(LocalDate date) {
-        if (records.containsKey(date)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Deletes a record from the patient's record list.
      *
      * @param date Appointment date of record to delete
      */
-    public void deleteRecord(LocalDate date) {
+    public void deleteRecord(LocalDate date) throws DataException {
+        checkRecordExists(date);
         records.remove(date);
     }
-
 }

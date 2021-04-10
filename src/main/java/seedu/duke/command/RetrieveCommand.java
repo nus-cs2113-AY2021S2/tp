@@ -6,13 +6,9 @@ import seedu.duke.Data;
 import seedu.duke.Ui;
 import seedu.duke.exception.DataException;
 import seedu.duke.exception.InvalidInputException;
-import seedu.duke.model.Patient;
-import seedu.duke.model.Record;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class RetrieveCommand extends Command {
 
@@ -35,8 +31,7 @@ public class RetrieveCommand extends Command {
         String dateString = arguments.get(Constants.PAYLOAD_KEY);
         if (dateString.isEmpty()) {
             records = data.getRecords();
-        }
-        else {
+        } else {
             LocalDate date = Common.parseDate(dateString);
             records = data.getRecords(date);
         }

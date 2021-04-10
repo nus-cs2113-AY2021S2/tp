@@ -62,6 +62,12 @@ public class Data {
         }
     }
 
+    private void checkPatientExists(String id) throws DataException {
+        if (!patients.containsKey(id)) {
+            throw new DataException(DataException.Type.PATIENT_NOT_FOUND);
+        }
+    }
+
     /**
      * This retrieves the full hashmap of patients.
      *
@@ -110,16 +116,11 @@ public class Data {
      * This removes a patient from the hashmap of this database.
      *
      * @param id unique identifier of the patient to be loaded
+     * @throws DataException if the patient has not been added to the database previously
      */
-    public void deletePatient(String id) {
+    public void deletePatient(String id) throws DataException {
+        checkPatientExists(id);
         patients.remove(id);
-    }
-
-    /**
-     * This saves the patient in currentPatient attribute back to the hashmap.
-     */
-    public void saveCurrentPatient() {
-        setPatient(currentPatient);
     }
 
     /**
@@ -165,5 +166,10 @@ public class Data {
         checkLoadedPatient();
         String records = currentPatient.getRecord();
         return records;
+    }
+
+    public void deleteRecord(LocalDate date) throws DataException {
+        checkLoadedPatient();
+        currentPatient.deleteRecord(date);
     }
 }

@@ -63,7 +63,11 @@ public class Ui {
      * @param exception Exception to be printed
      */
     public void printException(Exception exception) {
-        printMessage(exception.toString());
+        String exceptionMessage = exception.getMessage();
+        String[] messageLines = exceptionMessage.split("\n");
+        for (String line : messageLines) {
+            printMessage(line);
+        }
     }
 
     /**

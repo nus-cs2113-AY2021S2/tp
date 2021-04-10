@@ -6,9 +6,9 @@ import seedu.duke.Constants;
 public class DataException extends BaseException {
     public static enum Type {
         NO_PATIENT_LOADED(Constants.INVALID_INPUT_NO_PATIENT_LOADED),
+        PATIENT_NOT_FOUND(Constants.INVALID_INPUT_PATIENT_NOT_FOUND),
         EMPTY_DESCRIPTION(Constants.INVALID_INPUT_EMPTY_DESCRIPTION),
-        NO_RECORD_FOUND(Constants.DATA_NO_RECORD_FOUND),
-        FUTURE_DATE(Constants.INVALID_FUTURE_DATE);
+        NO_RECORD_FOUND(Constants.DATA_NO_RECORD_FOUND);
 
         public final String message;
 
