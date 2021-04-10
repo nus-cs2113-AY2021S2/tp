@@ -1,4 +1,4 @@
-# Kwek Ming Shun - Project Portfolio Page
+# Kwek Ming Shun's Project Portfolio Page
 
 ## Overview
 HealthVault is a hospital information recording system made for nurses. HealthVault is a desktop app for managing doctor, nurse, patient and inventory information, optimised for use through the command line interface. A user with fast typing skills would be able to navigate through the application with ease and at greater efficiency as compared to a normal database application. The program is written entirely in Java.
@@ -7,9 +7,9 @@ HealthVault is a hospital information recording system made for nurses. HealthVa
 
 Given below are my contributions to the project
 
-- **New Feature**:Created the Doctors' Appointment menu and functionality from scratch
+- **New Feature**: Created the Doctors' Appointment menu and functionality from scratch
     - What it does: To allow current and new patients to make a doctor's appointment with a doctor registered in the hospital.
-    - Justification:This functionality is created to optimize the appointment making process in hospital
+    - Justification: This functionality is created to optimize the appointment making process in hospital
     - Highlights: This feature has been developed as a database where appointment information is easily accessible by the user and desired information is displayed in a easily readable and user-friendly format.
 
 - **New Feature**: Added the feature of save and load
@@ -19,7 +19,7 @@ Given below are my contributions to the project
 
 - **New Feature**: Added Cross-Validation
     - What it does: Ensures that all appointments added into the system is assigned to a doctor that is registered and present in the hospital (i.e present within the database). The system will reject the addition of an appointment if the Doctor's ID is not found in the staff database.
-    - Justification: This is to prevent as miscommunication between the hospitals and the patients, ensuring that all appointments made will be seen through without arising issues (i.e the doctor is not on duty that day or the desired doctor is not working at the queried hospital).
+    - Justification: This is to prevent as miscommunication between the hospitals and the patients, ensuring that all appointments made will be seen through without issues (i.e the doctor is not on duty that day or the desired doctor is not working at the queried hospital).
     - Highlights: The program includes a staff database that is implemented by other team members, making the use of cross validation easier to implement and more applicable to today's issue. This demonstrates a cohesive system. However, this feature depends on the staff data in the system and will prevent addition of appointment if there is corrupted staff data.
 
 - **Code contributed**: [*RepoSense* Link](https://nus-cs2113-ay2021s2.github.io/tp-dashboard/?search=MingShun98).
