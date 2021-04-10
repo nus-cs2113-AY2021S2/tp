@@ -140,3 +140,6 @@ Techno Edge
 Techno Edge<>Western<>chicken chop<>4.50
 Techno Edge<>Western<>Fish & Chips<>4.50
 Techno Edge<>Western<>pasta<>4.50
+The Deck<>Yong Tau Foo<>I love this food//5//2021-04-11
+The Deck<>Yong Tau Foo<>Awesome place //3//2021-04-11
+cancel 
