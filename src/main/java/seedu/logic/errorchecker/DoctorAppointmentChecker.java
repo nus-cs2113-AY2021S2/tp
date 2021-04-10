@@ -31,7 +31,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     private static String doctorID;
     private static String appointmentID;
     private static String name;
-    private static String ID;
+    private static String id;
     private static String gender;
     private static String date;
     public static Logger logger = HealthVaultLogger.getLogger();
@@ -70,16 +70,16 @@ public class DoctorAppointmentChecker extends MainChecker {
      * @throws HealthVaultException If the data to execute list command does not fit the parameters.
      */
     public static void checkValidDataForList(String[] input) throws HealthVaultException {
-        ID = input[1];
+        id = input[1];
 
         if (AppointmentList.appointmentList.size() == 0) {
             throw new EmptyListException();
         }
-        if (ID.equals("all")) {
+        if (id.equals("all")) {
             return;
         }
         logger.log(Level.INFO, "Checking for Valid data after list command");
-        if (!isValidDocID(ID) && !isValidListAppointmentID(ID)) {
+        if (!isValidDocID(id) && !isValidListAppointmentID(id)) {
             throw new seedu.exceptions.InvalidIDException();
         }
     }
@@ -92,9 +92,9 @@ public class DoctorAppointmentChecker extends MainChecker {
      */
 
     public static void checkValidDataForDelete(String[] input) throws seedu.exceptions.InvalidIDException {
-        ID = input[1];
+        id = input[1];
         logger.log(Level.INFO, "Checking for Valid data after delete command");
-        if (!isValidIdToDelete(ID)) {
+        if (!isValidIdToDelete(id)) {
             throw new seedu.exceptions.InvalidIDException();
         }
     }
@@ -149,7 +149,7 @@ public class DoctorAppointmentChecker extends MainChecker {
     }
 
     /**
-     * Checks data that is being read from storage
+     * Checks data that is being read from storage.
      *
      * @param input       input
      * @param storageList Current loaded files of data.
@@ -316,20 +316,20 @@ public class DoctorAppointmentChecker extends MainChecker {
     /**
      * Checks if the input date is valid.
      *
-     * @param iD appointment/doctor iD to be checked.
+     * @param id appointment/doctor iD to be checked.
      * @return true if the corresponding iD exists in teh appointmentList.
      */
-    public static boolean isValidIdToDelete(String iD) {
-        String[] idKeyword = iD.split("");
+    public static boolean isValidIdToDelete(String id) {
+        String[] idKeyword = id.split("");
         logger.log(Level.INFO, "Checking Validity of Doctor/ Appointment ID to be deleted");
 
         for (DoctorAppointment doc : AppointmentList.appointmentList) {
             if (idKeyword[0].equals("A")) {
-                if (doc.getAppointmentId().equals(iD)) {
+                if (doc.getAppointmentId().equals(id)) {
                     return true;
                 }
             } else if (idKeyword[0].equals("D")) {
-                if (doc.getDoctorId().equals(iD)) {
+                if (doc.getDoctorId().equals(id)) {
                     return true;
                 }
             }

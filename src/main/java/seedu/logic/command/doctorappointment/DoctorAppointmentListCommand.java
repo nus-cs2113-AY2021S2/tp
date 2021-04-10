@@ -13,7 +13,7 @@ import java.text.ParseException;
 public class DoctorAppointmentListCommand extends Command {
 
     private String[] input;
-    private String iD;
+    private String id;
 
     /**
      * Constructor for DoctorAppointmentListCommand.
@@ -21,21 +21,20 @@ public class DoctorAppointmentListCommand extends Command {
      * @param parsedInput Array of inputs for DoctorAppointment object.
      */
     public DoctorAppointmentListCommand(String[] parsedInput) {
-        iD = parsedInput[1];
+        id = parsedInput[1];
         input = parsedInput;
     }
 
     /**
      * Lists the DoctorAppointment objects in the appointmentList.
      *
-     * @param appointment  Instance of AppointmentList used by the DoctorAppointmentListCommand to list objects.
-     * @param ui Not utilised here.
-     *
+     * @param appointment Instance of AppointmentList used by the DoctorAppointmentListCommand to list objects.
+     * @param ui          Not utilised here.
      */
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws ParseException,
             HealthVaultException {
-        AppointmentList.listAppointment(iD);
+        AppointmentList.listAppointment(id);
     }
 
     @Override

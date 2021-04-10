@@ -24,11 +24,11 @@ public class DoctorAppointmentAddCommand extends Command {
     }
 
     /**
-     * Adds a DoctorAppointment object to the appointmentList and write the DoctorAppointment object data to a text file.
+     * Adds a DoctorAppointment object to the appointmentList and write the DoctorAppointment
+     * object data to a text file.
      *
-     * @param appointment  Instance of AppointmentList used by the AppointmentAddCommand.
-     * @param ui Not utilised here.
-     *
+     * @param appointment Instance of AppointmentList used by the AppointmentAddCommand.
+     * @param ui          Not utilised here.
      */
     @Override
     public void execute(AppointmentList appointment, DoctorAppointmentUI ui) throws IOException {
