@@ -54,13 +54,13 @@ This guide is for developers looking to modify GULIO. For users of GULIO, please
 
 ## How to Use This Guide
 
-> Icons & labels used in this guide:<br>
-> <br>
-> 💡 - Indicates a tip that may be useful to you.<br>
-> ⚠ - indicates a warning that you should take note of.
-> 
-> _Italic_ - Indicates that the content is a component.<br>
-> `Inline code` - Indicates that the content is a class, method or input by the user.
+#### Icons & labels used in this guide:
+
+💡 - Indicates a tip that may be useful to you.<br>
+⚠ - indicates a warning that you should take note of.<br>
+
+_Italic_ - Indicates that the content is a component.<br>
+`Inline code` - Indicates that the content is a class, method or input by the user.
 
 &nbsp;
 

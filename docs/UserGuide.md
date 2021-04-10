@@ -59,29 +59,29 @@ This guide is written for users like you, for reference when there is a particul
 
 # How to Use This Guide
 
-> Icons used in this guide:<br>
-> <br>
-> 💡 - Indicates a tip that may be useful to you.<br>
-> ⚠ - indicates a warning that you should take note of.
+#### Icons used in this guide:
+
+💡 - Indicates a tip that may be useful to you.<br>
+⚠ - indicates a warning that you should take note of.
+
+#### Commands will be presented in the following format:
+
+> ### Command function : *keyword*
 >
-> Commands will be presented in the following format:
+> Summary of actions involved.
 >
->> ### Command function : *keyword*
->>
->> Summary of actions involved.
->>
->> **Format:**<br>
->> `command format`
->>
->> **Example:** (if any)<br>
->> <table>
->>   <tr>
->>     <td><i>Step number</i></td>
->>     <td><pre><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></pre></td>
->>   </tr>
->> </table>
->>
->> **Result** - _Outcome of command_ (if any)
+> **Format:**<br>
+> `command format`
+>
+> **Example:** (if any)<br>
+> <table>
+>   <tr>
+>     <td><i>Step number</i></td>
+>     <td><pre><i>Label</i> >> <b style="color: forestgreen">What you input</b><br><i>What you will get.</i></pre></td>
+>   </tr>
+> </table>
+>
+> **Result** - _Outcome of command_ (if any)
 
 &nbsp;
 
@@ -89,23 +89,21 @@ This guide is written for users like you, for reference when there is a particul
 
 # Quick Start
 
-Download the latest version of GULIO from here:<br>
-https://github.com/AY2021S2-CS2113T-W09-3/tp/releases
+Download the latest version of GULIO from [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/releases).
 
 ### Requirements:
 
-java 11 and above<br>
+Java 11 and above<br>
 
 > 💡 Verify this by running the command “java --version” in command prompt (for Windows users) or Terminal (for Mac and Linux users).
 
 ### Steps:
 
-1. Move the GULIO.jar file to your preferred directory.
+1. Move the `GULIO.jar` file to your preferred directory.
 1. Open command prompt (for Windows users) or Terminal (for Mac and Linux users),
 1. Navigate to the directory of your GULIO.jar file.
 1. Run the command “java -jar gulio.jar” to start GULIO.
-
-> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar work here.
+> 💡 The file name is not case-sensitive, so both gulio.jar and GULIO.jar works in step 4.
 
 &nbsp;
 
@@ -133,9 +131,9 @@ GULIO has a 2-layer system, consisting of the dashboard layer, and the module la
 
 On start up, you will be on the dashboard layer where you have an overview of all your modules. You have access to module management commands like adding, deleting or opening a particular module.
 
-Opening a module will put you on the module layer where you can interact with the data within the module.
-
 > 💡 Please refer to the section [Dashboard Commands](#dashboard-commands) for information regarding commands at the dashboard layer.<br>
+
+Opening a module puts you on the module layer where you can interact with data within the module.
 
 > 💡 Please refer to the section [Module Commands](#module-commands) for information regarding commands at the module layer.
 
@@ -169,7 +167,7 @@ Each module can store two types of data: lesson and task. Lessons refer to your 
 
 | Field | Description |
 | --- | --- |
-| Lesson type | Lecture, Lab or Tutorial. |
+| Lesson type | Lecture, lab or tutorial. |
 | Day & time | Information on when the lesson happens. |
 | Link | Online meeting link for the lesson. |
 | Teaching staff name | Name of the lesson's teacher. |
@@ -200,7 +198,7 @@ These are commands used on the dashboard layer, when no modules have been select
 
 ### Listing all dashboard commands : _help_
 
-Lists out all commands that are available from the dashboard layer. Includes the format and description for each command.
+Use this command to view all commands accessible from the dashboard layer.
 
 **Format:**<br>
 `help`
@@ -209,7 +207,7 @@ Lists out all commands that are available from the dashboard layer. Includes the
 
 ### Exiting the program : _exit_
 
-Exits the program.
+Use this command to exit GULIO.
 
 **Format:**<br>
 `exit`
@@ -218,7 +216,7 @@ Exits the program.
 
 ### Opening a module : _open_
 
-Opens the specified module.
+Use this command to open an existing module.
 
 **Format:**<br>
 `open <module code>`
@@ -240,7 +238,7 @@ Opens the specified module.
 
 ### Adding a module : _add_
 
-Adds a module with the specified module name.
+Use this command to add a new module with the specified name.
 
 **Format:**<br>
 `add <module code>`
@@ -262,7 +260,9 @@ Adds a module with the specified module name.
 
 ### Deleting a module : _del_
 
-Lists all modules and asks the user for indices of modules to delete. Then, deletes modules corresponding to indices specified.
+Use this command to delete existing modules. 
+
+Upon entering the command, GULIO will show the list of current modules. Then, specify the indices corresponding to the modules you would like to delete.
 
 **Format:**<br>
 `del`
@@ -289,7 +289,7 @@ Lists all modules and asks the user for indices of modules to delete. Then, dele
 
 ### Listing all modules : _mods_
 
-Lists all modules.
+Use this command to view all existing modules.
 
 **Format:**<br>
 `mods`
@@ -317,8 +317,7 @@ These are commands used on the module layer, when a module has been selected. Co
 
 ### Listing all module commands : _help_
 
-Lists out all commands that are available from the module layer.
-Includes the format and description for each command.
+Use this command to view all commands accessible from the module layer.
 
 **Format:**<br>
 `help`
@@ -327,7 +326,7 @@ Includes the format and description for each command.
 
 ### Closing a module : _close_
 
-Closes the current module and returns the user to the dashboard layer.
+Use this command to close the current module and go back to the dashboard layer.
 
 **Format:**<br>
 `close`
@@ -338,7 +337,7 @@ Closes the current module and returns the user to the dashboard layer.
 
 ### Showing module information : _info_
 
-Displays a summary of lessons and undone tasks for the module.
+Use this command to get a summary of the module, including lessons and undone tasks.
 
 **Format:**<br>
 `info`
@@ -358,7 +357,9 @@ Displays a summary of lessons and undone tasks for the module.
 
 ### Adding a lesson : _add lsn_
 
-Adds a new lesson with specified lesson type and information to the current module.
+Use this command to add a new lesson to the module. 
+
+Choose from one of the three lesson types: `lecture`,`lab` or `tutorial`. Follow one of the following formats to include additional information with the lesson.
 
 **Format:**<br>
 `add lsn <lesson type>`<br>
@@ -378,9 +379,7 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 **Result** - Adds “Tutorial” to the module's list of lessons, with specified details.
 
-> ⚠ Only accepts 3 lesson types: “Lecture”, “Lab” and “Tutorial”.
-
-> 💡 "lesson type" is auto-capitalised when displayed, hence input for the field is not case-sensitive.
+> ⚠ Only accepts 3 lesson types: `Lecture`, `Lab` and `Tutorial`. Lesson type is auto-capitalised when displayed, hence input for the field is not case-sensitive.
  
 > 💡 To skip an input, leave a blank in between the field separators. For example, 
 > 
@@ -394,7 +393,9 @@ Adds a new lesson with specified lesson type and information to the current modu
 
 ### Deleting a lesson : _del lsn_
 
-Lists all lessons for the module and asks the user for indices of lessons to delete. Then, deletes lessons corresponding to the indices specified.
+Use this command to delete lessons from the module. 
+
+Upon entering the command, GULIO will show the list of lessons in the module. Then, specify the indices corresponding to the lessons you would like to delete.
 
 **Format:**<br>
 `del lsn`
@@ -420,7 +421,9 @@ Lists all lessons for the module and asks the user for indices of lessons to del
 
 ### Editing a lesson : _edit lsn_
 
-Lists all lessons for the module and asks the user for the index of the lesson to edit. Then, lists all editable fields and asks the user for the indices of the fields to edit. Lastly, for each selected field, the user inputs a new value.
+Use this command to edit a lesson in the module.
+
+Upon entering the command, GULIO will show the list of lessons in the module. Select the lesson you would like to edit by entering its index. Then, you will see a list of fields you can edit. Specify the indices of the fields you would like to edit. Finally, for each field you have selected, enter a new value.
 
 **Format:**<br>
 `edit lsn`
@@ -454,8 +457,9 @@ Lists all lessons for the module and asks the user for the index of the lesson t
 
 ### Opening lesson link : _link_
 
-Lists all lessons in the module and asks the user for the indices of lesson links to open.
-Then, opens the links of the lessons specified.
+Use this command to open your lesson links.
+
+Upon entering the command, GULIO will show the list of lessons in the module. Then, specify the indices corresponding to the lessons whose links you would like to open.
 
 **Format:**<br>
 `link`
@@ -483,7 +487,7 @@ Then, opens the links of the lessons specified.
 
 ### Listing all teaching staff : _tch_
 
-Lists all teaching staff for the module.
+Use this command to view all teaching staff in the module.
 
 **Format:**<br>
 `tch`
@@ -501,7 +505,7 @@ Lists all teaching staff for the module.
 
 ### Listing all lessons : _lsn_
 
-Lists all lessons for the module.
+Use this command to view all lessons in the module.
 
 **Format:**<br>
 `lsn`
@@ -519,7 +523,9 @@ Lists all lessons for the module.
 
 ### Adding a task : _add task_
 
-Adds a new task with specified name and information to the current module.
+Use this command to add a new task to the module. 
+
+Follow one of the two formats below.
 
 **Format:**<br>
 `add task <task name> ;; <deadline>`<br>
@@ -550,7 +556,9 @@ Adds a new task with specified name and information to the current module.
 
 ### Deleting a task : _del task_
 
-Lists all tasks for the module and asks the user for indices of tasks to delete. Then, deletes tasks corresponding to the indices specified.
+Use this command to delete tasks from the module. 
+
+Upon entering the command, GULIO will show the list of tasks in the module. Then, specify the indices corresponding to the tasks you would like to delete.
 
 **Format:**<br>
 `del task`
@@ -576,7 +584,9 @@ Lists all tasks for the module and asks the user for indices of tasks to delete.
 
 ### Editing a task : _edit task_
 
-Lists all tasks for the module and asks the user for the index of the task to edit. Then, lists all editable fields and asks the user for the indices of fields to edit. Lastly, for each selected field, the user inputs a new value.
+Use this command to edit a task in the module. 
+
+Upon entering the command, GULIO will show the list of tasks in the module. Select the task you would like to edit by entering its index. Then, you will see a list of fields you can edit. Specify the indices of the fields you would like to edit. Finally, for each field you have selected, enter a new value.
 
 **Format:**<br>
 `edit task`
@@ -610,7 +620,9 @@ Lists all tasks for the module and asks the user for the index of the task to ed
 
 ### Marking task as done : _mark_
 
-Lists undone tasks for the module and asks the user for the indices of tasks to mark as done. Then, marks all tasks corresponding to indices specified as done.
+Use this command to mark tasks as done.
+
+Upon entering the command, GULIO will show the list of tasks in the module that are undone. Then, specify the indices corresponding to the tasks you would like to mark as done.
 
 **Format:**<br>
 `mark`
@@ -636,7 +648,9 @@ Lists undone tasks for the module and asks the user for the indices of tasks to 
 
 ### Marking task as undone : _unmark_
 
-Lists done tasks for the module and asks the user for the indices of tasks to mark as undone. Then, mark all tasks corresponding to indices specified as undone.
+Use this command to mark tasks as undone.
+
+Upon entering the command, GULIO will show the list of tasks in the module that are done. Then, specify the indices corresponding to the tasks you would like to mark as undone.
 
 **Format:**<br>
 `unmark`
@@ -662,7 +676,9 @@ Lists done tasks for the module and asks the user for the indices of tasks to ma
 
 ### Listing all tasks : _task_
 
-Lists all tasks for the module, where done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
+Use this command to view all the tasks in the module.
+
+Done and undone tasks are separated. Undone tasks are sorted by earliest deadline.
 
 **Format:**<br>
 `task`
@@ -680,7 +696,7 @@ Lists all tasks for the module, where done and undone tasks are separated. Undon
 
 ### Adding a cheat-sheet : _add cs_
 
-Adds a new cheat-sheet with specified name to the module.
+Use this command to add a new cheat-sheet to the module and open it in the text editor.
 
 **Format:**<br>
 `add cs <cheat-sheet name>`
@@ -702,7 +718,7 @@ Adds a new cheat-sheet with specified name to the module.
 
 ### Deleting a cheat-sheet : _del cs_
 
-Deletes the specified cheat-sheet from the module.
+Use this command to delete the specified cheat-sheet from the module.
 
 **Format:**<br>
 `del cs <cheat-sheet name>`
@@ -724,7 +740,7 @@ Deletes the specified cheat-sheet from the module.
 
 ### Editing a cheat-sheet : _edit cs_
 
-Opens the specified cheat-sheet in the text editor.
+Use this command to open and edit the specified cheat-sheet in the text editor.
 
 **Format:**<br>
 `edit cs <cheat-sheet name>`
@@ -748,7 +764,7 @@ Opens the specified cheat-sheet in the text editor.
 
 ### Listing all cheat-sheets : _cs_
 
-Lists all cheat-sheets for the module.
+Use this command to view the list of cheat-sheets you have for the module.
 
 **Format:**<br>
 `cs`
@@ -772,7 +788,7 @@ Lists all cheat-sheets for the module.
 
 ### Automatic Saving
 
-Data for each module is stored in their respective module’s text file, located in a folder called “Data” created in the same directory as the GULIO.jar file. When moving this folder, please ensure that it is placed in the same directory as your GULIO.jar file. After every modification, changes are automatically saved to the file. 
+Data for each module is stored in their respective module’s text file, located in a folder called `Data` created in the same directory as the `GULIO.jar` file. When moving this folder, please ensure that it is placed in the same directory as your `GULIO.jar` file. After every modification, changes are automatically saved to the file. 
 
 ### Manual Editing Outside of GULIO
 
@@ -802,16 +818,21 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 
 # Text Editor
 
-GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
+GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the `Cheatsheet` directory within their respective module directories as `.txt` files.
 
-In the text editor, you can type in your notes in the text field. When done, remember to save any changes via the “ctrl-s” shortcut. To close the text editor, simply press the escape key on your keyboard. Using “ctrl-up” and “ctrl-down”, you can enlarge or shrink text respectively.
+<p align="center">
+    <img width="400" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
+    Figure 4 - GULIO Text Editor
+</p>
+
+In the text editor, you can type in your notes in the text field. When done, remember to save any changes via the `ctrl-s` shortcut. To close the text editor, simply press the escape key on your keyboard. Using `ctrl-up` and `ctrl-down`, you can enlarge or shrink text respectively.
 
 | Shortcuts | Actions |
 | --- | --- |
-| ctrl-s | Save cheat-sheet. | 
-| ctrl-up | Enlarge text. |
-| ctrl-down | Shrink text. |
-| esc | Exit test editor |
+| `ctrl-s` | Save cheat-sheet. | 
+| `ctrl-up` | Enlarge text. |
+| `ctrl-down` | Shrink text. |
+| `esc` | Exit test editor |
 
 > ⚠ Do not include file extension (e.g. ”.txt”) when creating or editing the cheat-sheet.
 
@@ -825,8 +846,17 @@ In the text editor, you can type in your notes in the text field. When done, rem
 
 Here are some frequently asked questions that you may have regarding GULIO.
 
+**Q:** How do I open GULIO?<br>
+**A:** Please refer to the steps [here](#quick-start).
+
 **Q:** Why am I unable to open cheat-sheet in Windows Subsystem for Linux (WSL)?<br>
 **A:** GULIO's cheat-sheet feature requires the usage of GUI, which is not available on WSL.
+
+**Q:** Where can I find the data files for GULIO?<br>
+**A:** Data used by GULIO are stored in the `Data` directory, which is created in the same location that the `GULIO.jar` file is in. 
+
+**Q:** Where can I submit any feedback or issues regarding GULIO?<br>
+**A:** You can create an issue [here](https://github.com/AY2021S2-CS2113T-W09-3/tp/issues). Thank you very much.
 
 &nbsp;
 
