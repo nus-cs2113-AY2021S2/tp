@@ -26,6 +26,12 @@ import java.util.List;
 
 public class NurseScheduleChecker extends MainChecker {
 
+    /**
+     * checks if date is valid.
+     *
+     * @param date string date
+     * @throws InvalidDateException if date is not valid
+     */
     public static void isValidDate(final String date) throws InvalidDateException {
         try {
             LocalDate.parse(date,
@@ -36,6 +42,12 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
+    /**
+     * checks if input is empty.
+     *
+     * @param line raw user input
+     * @throws NoInputException if input is empty
+     */
     public static void checkEmptyInput(String line) throws NoInputException {
         String[] array = line.split("/");
         for (String s : array) {
@@ -45,6 +57,13 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
+    /**
+     * checks if nurseID exists in staff database.
+     *
+     * @param nurseID id to be checked
+     * @throws NurseIdNotFound if id does not exist
+     * @throws NurseCrossValidationError if staff database cannot be loaded
+     */
     public static void checkNurseiDExist(String nurseID) throws NurseIdNotFound, NurseCrossValidationError {
         try {
             ArrayList<Staff> doctorList;
@@ -63,6 +82,13 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
+    /**
+     * checks if patientID exists in patient database.
+     *
+     * @param patientID id to be checked
+     * @throws PatientIdNotFound if id does not exist
+     * @throws PatientCrossValidationError if patient database cannot be loaded
+     */
     public static void checkPatientiDExist(String patientID) throws PatientIdNotFound, PatientCrossValidationError {
         try {
             ArrayList<Patient> patientList;
@@ -81,6 +107,12 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
+    /**
+     * checks if nurse id is of correct format.
+     *
+     * @param userID user inputted id
+     * @throws InvalidiDTypeException if id is not valid
+     */
     public static void checkValidNurseID(String userID) throws InvalidiDTypeException {
         if (userID.length() != 6) {
             throw new InvalidiDTypeException();
@@ -92,6 +124,12 @@ public class NurseScheduleChecker extends MainChecker {
 
     }
 
+    /**
+     * checks if patient id is of correct format.
+     *
+     * @param userID user inputted id
+     * @throws InvalidiDTypeException if id is not valid
+     */
     public static void checkValidPatientID(String userID) throws InvalidiDTypeException {
         if (userID.length() != 6) {
             throw new InvalidiDTypeException();
@@ -102,6 +140,12 @@ public class NurseScheduleChecker extends MainChecker {
         }
     }
 
+    /**
+     * checks the number of integers in id.
+     *
+     * @param userInput user inputted id
+     * @return number of integers
+     */
     private static int numberOfIntegersInString(String userInput) {
         int numberOfIntegers = 0;
         for (int i = 0; i < userInput.length(); i++) {
@@ -112,6 +156,14 @@ public class NurseScheduleChecker extends MainChecker {
         return numberOfIntegers;
     }
 
+    /**
+     * checks if patientID is duplicated.
+     *
+     * @param id patient id
+     * @param date date of schedule
+     * @param list arraylist of nurseschedules
+     * @throws DuplicateScheduleException if patient already has a schedule on that date
+     */
     public static void checkDuplicatePatientID(String id, String date, ArrayList<NurseSchedule> list)
             throws DuplicateScheduleException {
         for (NurseSchedule patient : list) {
@@ -120,6 +172,7 @@ public class NurseScheduleChecker extends MainChecker {
                     try {
                         date = NurseSchedulesParser.formatDate(date);
                     } catch (ParseException ignored) {
+                        //Exception ignored
                     }
                     throw new DuplicateScheduleException(date);
                 }
