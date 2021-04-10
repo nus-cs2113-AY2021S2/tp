@@ -14,7 +14,8 @@
    4.2. [Viewing all venues](#42-viewing-all-venues) <br>
    4.3. [Routing](#43-routing) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.3.1. [Routing between blocks](#431-routing-between-blocks) <br>
-   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to the closest eatery](#432-routing-to-the-closest-eatery) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to an eatery](#432-routing-to-an-eatery) <br>
+   &nbsp;&nbsp;&nbsp;&nbsp; 4.3.2. [Routing to the closest eatery](#433-routing-to-the-closest-eatery) <br>
    4.4. [History](#44-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.1. [Viewing History](#441-viewing-history) <br>
    &nbsp;&nbsp;&nbsp;&nbsp; 4.4.2. [Clearing History](#442-clearing-history) <br>
@@ -80,9 +81,11 @@ This section gives you step-by-step instructions on how to download and open the
 :information_source: An easy way to do so is shown below for both Mac and Windows<br>
 </div>
 
- Windows |  Mac 
-:----------:|:-------------:
-![img.png](images/windowsterminal.png)<br>Key in `cmd` and press enter.| ![img.png](images/macterminal.png)<br>Right click on the folder and click on "New Terminal at Folder"
+![img.png](images/howtolaunch.png)
+
+| Windows |  Mac |
+|:----------:|-------------|
+|Key in `cmd` and press enter.|Right click on the folder and click on "New Terminal at Folder"|
 5. Key in `java -jar NUSMaze.jar` and press enter to launch the NUSMaze application.<br>
 6. A CLI similar to Figure 1 below should appear in a few seconds.  <br>
    ![img.png](images/NUSMazecli.png)
@@ -154,8 +157,8 @@ You may enter a command into the CLI to use each feature.
 ### 4.1 Viewing Help
 
 Lists all commands and functions of each feature.<br>
-Format: `help` <br>
-Example:
+Format : `help` <br>
+Example :
 ```
 --------------------------------------------------------------------------------------------
 > help
@@ -202,8 +205,8 @@ Example:
 ### 4.2 Viewing all venues
 
 List all the venues in Engineering and Computing campus. <br>
-Format: `show venues`
-Example:
+Format : `show venues` <br>
+Example :
 ```
 --------------------------------------------------------------------------------------------
 > show venues
@@ -243,8 +246,8 @@ Eateries:
 #### 4.3.1 Routing between blocks
 
 Finds the shortest route to go from one block to another.<br>
-Format: `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
-Example:
+Format : `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK` <br>
+Example :
 ```
 --------------------------------------------------------------------------------------------
 > go
@@ -268,10 +271,10 @@ Route: E2 -> E3 -> E4 -> E5 -> LT3 -> CHINESE LIBRARY -> CENTRAL LIBRARY -> AS6 
 :warning: Both parameters must be one of the Engineering or Computing venues.
 </div>
 
-#### 4.3.2 Routing to the closest eatery
+#### 4.3.2 Routing to an eatery
 It is also possible to find the shortest route to an eatery using the go feature.<br>
-Format 1: `go` → `STARTING_BLOCK` → `EATERY_NAME` <br>
-Example: 
+Format : `go` → `STARTING_BLOCK` → `EATERY_NAME` <br>
+Example : 
 ```
 --------------------------------------------------------------------------------------------
 > go
@@ -293,10 +296,10 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 :warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings.
 </div>
 
-NUSMaze can also provide you with a list of eateries from closest to furthest if you are unsure which eatery to go.
-
-Format 2: `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` <br>
-Example:
+#### 4.3.3 Routing to the closest eatery
+NUSMaze can also provide you with a list of eateries from closest to furthest if you are unsure which eatery to go.<br>
+Format : `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` <br>
+Example :
 ```
 --------------------------------------------------------------------------------------------
 > go
@@ -327,30 +330,49 @@ Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
 - NUSMaze then prompts for the index of the eatery that you wish to go to. This is when you can enter `EATERY_ENTRY`.
 
 <div markdown="block" class="alert alert-warning">
-:warning: **Points to watch out** <br>
-- The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
-- `EATERY_ENTRY` must be an integer from 1 to 7.
+:warning: The `STARTING_BLOCK` must be one of the Engineering or Computing buildings. <br>
+:warning: `EATERY_ENTRY` must be an integer from 1 to 7.
 </div>
 
 ### 4.4 History
 #### 4.4.1 Viewing History
 
 Lists the past 10 route searches.<br>
-Format: `history`
-
+Format : `history`<br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> go
+------------------------------------------------------------------------------------------------------------
+Starting Block:
+* e1
+  Destination Block:
+* starbucks
+------------------------------------------------------------------------------------------------------------
+Route: E1 -> LT5 -> TECHNO EDGE -> STARBUCKS
+------------------------------------------------------------------------------------------------------------
+```
 :information_source: NUSMaze will automatically update your history to the most recent 10 searches.
 
 
 #### 4.4.2 Clearing History
 
 Deletes all histories (past route searches).<br>
-Format: `clear history`
+Format : `clear history`<br>
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> clear history
+------------------------------------------------------------------------------------------------------------
+Your history has been successfully cleared
+------------------------------------------------------------------------------------------------------------
+```
 
 #### 4.4.3 Repeating History
 
 Repeats past route search history.<br>
-Format: `repeat history` → `REPEAT_ENTRY`<br>
-Example: 
+Format : `repeat history` → `REPEAT_ENTRY`<br>
+Example : 
 ```
 --------------------------------------------------------------------------------------------
 > repeat history
@@ -472,10 +494,13 @@ Got it! Successfully added MONDAY's schedule!
 
 - NUSMaze will continuously ask for locations until you input `end`.
 
+<div markdown="block" class="alert alert-warning">
 :warning: `DAY_ENTRY` must be an integer between 1 and 7, each representing a day of the week
 (1 represents Monday and 7 represents Sunday).
-
 :warning: There must be at least one block entered for the schedule.
+:warning: Entries must be the original block names. Aliases are not allowed.
+
+</div>
 
 #### 4.6.2 Viewing daily route
 Shows the generated route for the schedule of the selected day, if applicable.<br>
@@ -541,7 +566,7 @@ Got it! Successfully cleared MONDAY's schedule!
 #### 4.7.1 Adding notes
 Tags a note to a particular existing location of your choice.<br/>
 Format : `add note` → `BLOCK` → `NOTE` <br> 
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > add note
@@ -563,7 +588,7 @@ Got it! Successfully added and tagged note to STARBUCKS
 #### 4.7.2 Viewing notes
 Lists all notes which had been tagged to the given location, if it exists.<br/>
 Format : `show note` → `BLOCK` <br>
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > show note
@@ -582,7 +607,7 @@ Here is the list of notes:
 #### 4.7.3 Delete note
 Delete the specified note based on index number tagged to the given existing location.<br/>
 Format : `delete note` → `BLOCK` → `NOTE_INDEX` <br>
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > delete note
@@ -611,7 +636,7 @@ Got it! Successfully deleted note tagged to STARBUCKS
 #### 4.8.1 Adding Favourite Route
 You can add a route to favourites to easily access it in the future.<br>
 Format : `add favourite` → `STARTING_BLOCK` → `DESTINATION_BLOCK`
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > add favourite
@@ -628,7 +653,7 @@ Got it! Successfully added new favourite route!
 #### 4.8.2 Show stored favourites
 You can request NUSMaze to display all the saved favourites, if you have stored at least one route to favourites.<br>
 Format : `show favourite`
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > show favourite
@@ -641,7 +666,7 @@ Here are your favourite routes:
 #### 4.8.3 Repeating favourite route
 You can execute and obtain the route to take for your favourite routes.<br>
 Format : `repeat favourite` → `ROUTE_INDEX`
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > repeat favourite
@@ -659,7 +684,7 @@ Route: EA -> E2 -> E3 -> E4
 #### 4.8.4 Deleting favourite route
 You can delete a favourite route if it is not frequently used anymore.<br>
 Format : `delete favourite` → `ROUTE_INDEX`
-Example:
+Example :
 ```
 ------------------------------------------------------------------------------------------------------------
 > delete favourite
@@ -678,6 +703,14 @@ Got it! Successfully deleted favourite route :)
 
 Exits the application.<br>
 Format : `bye`
+Example :
+```
+------------------------------------------------------------------------------------------------------------
+> bye
+------------------------------------------------------------------------------------------------------------
+Bye. Hope to see you again soon!
+------------------------------------------------------------------------------------------------------------
+```
 
 ### 4.10 Saving the Data
 
@@ -687,11 +720,11 @@ NUSMaze data is saved in the hard disk automatically after any command that chan
 
 ## 5. FAQ
 
-**Q**: Do I lose all my personalised routes and preferences when I close the application? <br>
-**A**: Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry, so you do not lose any data.
+**Q** : Do I lose all my personalised routes and preferences when I close the application? <br>
+**A** : Aliases, daily scheduled routes, history and notes are all stored once you exit the app and loaded upon next entry, so you do not lose any data.
 
-**Q**: How do I transfer my personalised routes and preferences to another computer? <br>
-**A**: Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
+**Q** : How do I transfer my personalised routes and preferences to another computer? <br>
+**A** : Copy the entire data folder that can be found together with the NUSMaze.jar file on the first computer and copy it over to the same directory where the NUSMaze.jar file
 can be found on the second computer.
 
 
@@ -702,14 +735,15 @@ can be found on the second computer.
 |Action | Format |
 |---------------|------------------------------------------------------------------|
 |[**Viewing help**](#41-viewing-help)        | `help` | 
-|[**Viewing all venues**](#42-viewing-all-venues)        | `help` | 
-|[**Finding the route**](#43-routing)       | `go` → `START` → `DESTINATION` or `go` → `START` → `eatery` → `EATERY_ENTRY` |
+|[**Viewing all venues**](#42-viewing-all-venues)        | `show venues` | 
+|[**Finding the route**](#431-routing-between-blocks)       | `go` → `STARTING_BLOCK` → `DESTINATION_BLOCK`|
+|[**Finding the route**](#433-routing-to-the-closest-eatery)       | `go` → `STARTING_BLOCK` → `eatery` → `EATERY_ENTRY` |
 |[**Viewing history**](#441-viewing-history)     | `history` | 
 |[**Clearing history**](#442-clearing-history)       | `clear history` |
 |[**Repeating history**](#443-repeating-history)       | `repeat history` → `REPEAT_ENTRY` |
-|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS` | 
+|[**Adding alias for block names**](#451-adding-an-alias-for-block-name)| `add alias` → `BLOCK` → `ALIAS_NAME` | 
 |[**Showing all aliases**](#452-viewing-all-aliases)  | `show alias` | 
-|[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS` |
+|[**Deleting alias**](#453-deleting-aliases)       | `delete alias` → `ALIAS_NAME` |
 |[**Adding a daily route**](#461-adding-a-daily-route)     | `add daily route` → `DAY_NUMBER` → `BLOCK` → … → `BLOCK` → `end` | 
 |[**Showing a daily route**](#462-viewing-daily-route)       | `show daily route` → `DAY_NUMBER` |
 |[**Deleting a daily route**](#463-deleting-daily-route)       | `delete daily route` → `DAY_NUMBER` |

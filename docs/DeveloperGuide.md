@@ -41,14 +41,14 @@ NUSMaze is a Command Line Interface (CLI) based application that aims to simplif
 The purpose of this developer guide is to aid any curious or interested contributor in developing NUSMaze further by providing more insight on how the features were implemented.
 
 ### 1.2. Setting up and getting started 
-Step 1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
-Step 2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
-Step 3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
-Step 4. Import the project as a Gradle project.
-Step 5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
-Step 6. Click on Import Project and select the build.gradle file.  
-Step 7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
-Step 8. Press run on the `Main()` method of NUSMaze.
+1. Ensure that Java 11 and IntelliJ Idea (or your preferred Java IDE) are installed in your computer.  
+2. Fork the NUSMaze repo from [here](https://github.com/AY2021S2-CS2113T-T09-2/tp), and clone the fork into your computer.    
+3. Configure the JDK in IntelliJ Idea to use JDK 11 by following instructions from [here](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk).    
+4. Import the project as a Gradle project.
+5. If you had previously disabled the Gradle plugin, go to `File → Settings → Plugins` to re-enable them.  
+6. Click on Import Project and select the build.gradle file.  
+7. Navigate to the NUSMaze class via the path `src → main → java → seedu.duke → NUSMaze` and right click on it.  
+8. Press run on the `Main()` method of NUSMaze.
 
 If the set up process had been completed successfully, you should see the following message:  
 ![Screenshot 2021-03-25 at 7 03 08 PM](https://user-images.githubusercontent.com/60348727/113017279-e14b9d00-91b1-11eb-8ec3-37c0c3f80475.png)
@@ -177,7 +177,7 @@ The image below shows an overview for how the storage component is used when eac
 ![img.png](images/SaveFeatureSequence.png)
 
 Given below is an example usage scenario and how the save mechanism behaves at each step. <br />
-Step 1. The user launches the application for the first time.
+1. The user launches the application for the first time.
 `AliasStorage`, `DailyRouteStorage`, `FavouriteStorage`, `HistoryStorage` and `NotesStorage` objects 
 will be initialized with the filepaths of `aliasList`,  `dailyRouteList`, `favouriteList`, `history` and `noteList` text files respectively. <br>
 The `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object in `NusMaze` class will be initialised using the initial state of the respective text file, 
@@ -186,7 +186,7 @@ This is done only once for each time the application is launched. <br>
 ![img.png](images/SaveFeatureStep1ref1.png)
 ![img.png](images/SaveFeatureStep1.png)
 ![img.png](images/SaveFeatureStep1ref2.png) <br>
-Step 2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
+2. For all valid commands called before the last user input 'bye' or before program is terminated, the following process is executed continuously. <br>
 `AliasStorage#saveData()`, `DailyRouteStorage#saveData()`, `FavouriteStorage#saveData()`, `HistoryStorage#saveData()`, `NotesStorage#saveData()` are called.
 When `#saveData()` for each of the storage objects are called, data from the `blockAlias`, `dailyRoute`, `favourite`, `history` or `nusMap` object is saved into the respective text file. <br>
 ![img_1.png](images/SaveFeatureStep2.png)
@@ -214,8 +214,8 @@ so the content from the `nusMap`, `blockAlias`, `history`, `favourite`, or `dail
 
 ### 3.2. Daily route planning feature
 #### Current Implementation
-The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand` and `ShowDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
-`AddDailyRouteCommand`, `ClearDailyRouteCommand` and `ShowDailyRouteCommand` extend `Command` (superclass), where `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object and `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. <br />
+The current implementation is facilitated by `DailyRoute` class, with the `AddDailyRouteCommand`, `ShowDailyRouteCommand` and `DeleteDailyRouteCommand` subclasses invoking methods that the `DailyRoute` class provides. </br>
+`AddDailyRouteCommand`, `ClearDailyRouteCommand` and `DeleteDailyRouteCommand` extend `Command` (superclass). `AddDailyRouteCommand` implements the feature of adding the schedule of the day to the `DailyRoute` object. `ShowDailyRouteCommand` accesses the `DailyRoute` object to retrieve an ArrayList with the location schedule provided from the `AddDailyRouteCommand` and run the routing algorithm present in the `Router` object. `DeleteDailyRouteCommand` clears the schedule mapped to the selected day.<br />
 Additionally, `DailyRoute` implements the following operations:
 
 `addDailyRoute(String ,ArrayList<String>)` — Maps the inputted day string to the inputted ArrayList of the schedule of the day in a hashmap . <br />
@@ -224,36 +224,38 @@ Additionally, `DailyRoute` implements the following operations:
 `getValidDays()` — Returns the days of the week.
 
 These operations are exposed in the `DailyRoute` class  as `DailyRoute#addDailyRoute()`, `DailyRoute#getDailyRoute(String)`, `DailyRoute#getSelectableDay()`, `DailyRoute#getValidDay()`. <br />
-Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
-Step 1. The user launches the application.<br />
-Step 2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br />
-Step 3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
-Step 4. Repeat step 3 until the word `END` is input by the user. <br /> 
-Step 5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
-Step 6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
 
-The following image shows the sequence diagram in which the add day command is implemented
+Given below is an example usage scenario and how the addDailyRoute mechanism behaves at each step. <br />
+1. The user launches the application.<br />
+2. The user executes `add daily route` command. UI will then prompt the user `Select entry to add:`  to input a day index. <br />
+3. The UI then prompts the user to input the next block that is in the day's schedule.  <br /> The inputted location will be appended to an ArrayList. <br />
+4. Repeat step 3 until the word `END` is input by the user. <br /> 
+5. The inputted day, and the filled Arraylist from step 3 is then passed into the DailyRoute object<br /> This done using the addDailyRoute method from the DailyRoute class. The selectableDay boolean flag for the selected day is also set to true. <br />
+6. The day and filled Arraylist passed in step 5 is then saved in a hashmap that the DailyRoute object contains. <br /> 
+
+The following image shows the sequence diagram in which the addDailyRoute command is executed.
 ![img.png](images/addday.png)
 
 Given below is an example usage scenario and how the showDailyRoute mechanism behaves at each step.
 
-Step 1. The user launches the application.<br />
-Step 2. The user executes `show daily route` command. UI will then prompt the user `Select entry:`  to input a day index. This returns an arraylist of the day's schedule. <br />
-Step 3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the end of an Array list. <br />
-Step 4. The arraylist of the days schedule, and the arraylist that contains the routes from the routing algorithm are then output through Daily Route Ui <br />
+1. The user launches the application.<br />
+2. The user executes `show daily route` command. UI will then prompt the user `Select entry:`  to input a day index. This returns an arraylist of the day's schedule. <br />
+3. The routing algorithm is now performed for each of the blocks in the array list in order. Each execution of the routing algorithm returns a string which is then appended to the end of an Array list. <br />
+4. The arraylist of the days schedule, and the arraylist that contains the routes from the routing algorithm are then output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the show day command is implemented
+The following image shows the sequence diagram in which the showDailyRoute command is executed.
 ![img.png](images/showday.png)
 
-Given below is an example usage scenario and how the clearDailyRoute mechanism behaves at each step.
+Given below is an example usage scenario and how the deleteDailyRoute mechanism behaves at each step.
 
-Step 1. The user launches the application.<br />
-Step 2. The user executes `delete daily route` command. UI will then show the selectable days if applicable and prompt the user `Select entry:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
-Step 3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object, and the schedule mapped to the day is cleared.<br />
-Step 4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
+1. The user launches the application.<br />
+2. The user executes `delete daily route` command. UI will then show the selectable days if applicable and prompt the user `Select entry:`  to input a day index. If there are no days scheduled, the UI will print `"There are no daily routes planned!"` <br />
+3. The `addDailyRoute(day, schedule)` method is then called with the selected day as day, and an empty array list as the schedule. The selectable day boolean flag for the day is set to false in the DailyRoute object, and the schedule mapped to the day is cleared.<br />
+4. The String `"Got it! Successfully cleared [DAY]'s schedule!"` is output through Daily Route Ui <br />
 
-The following image shows the sequence diagram in which the DeleteDailyRoute command is implemented
+The following image shows the sequence diagram in which the deleteDailyRoute command is executed.
 ![img.png](images/clearday.png)
+
 ### 3.3. Finding The Shortest Route Feature
 #### Current Implementation
 
@@ -267,12 +269,12 @@ The image below depicts how the `GoCommand` is implemented.
 
 Given below is an example scenario of how the routing algorithm functions.
 
-Step 1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
-Step 2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
-Step 3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
-Step 4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
-Step 5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
-Step 6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
+1. User executes `GoCommand` and the `RouterUi` reads in the starting location and destination.<br />
+2. `GoCommand` will then check if the second entry is eatery. If it is not "EATERY", step 3 and 4 are skipped for step 5.<br />
+3. `GoCommand` will then create an instance of `EateryList` and invokes its method `sortEateriesByDistance()` which returns a list of eateries in order of the closest distance.<br />
+4. `GoCommand` then takes in the selection of eatery that the user is chosen and sets the destination.<br/>
+5. The Router will then run the `findShortestRoute()` method which is a routing algorithm based on breath-first search. This returns the shortest route as a string<br />
+6. The `RouterUi` will then show the shortest route to the user through `showMessageWithDivider()` method.<br />
 
 Shown below is the sequence diagram when a valid block is entered for the starting location and destination.
 ![img.png](images/routersequencediagram.png)
@@ -295,15 +297,15 @@ The hashmap will have the `custom alias name` as the `key` and the `block name` 
 
 Given below is an example usage scenario and how the add/view/delete mechanism behaves at each step:
 
-Step 1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
+1. The user launches the application for the first time. If there is a storage file with pre-existing alias-block pairs, then the hashmap in `BlockAlias` class will be initialized with those data, and an empty hashmap if it does not exist.  
 
-Step 2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
+2. The user executes `add alias` command. The user input will be parsed by the `Parser` which will create a new `AddCustomAliasCommand` command. This will invoke the UI which will prompt the user `Enter the block:` to input the block name and `Enter the alias name:` to input the alias name that the user wants. The UI parser will then check if the entered block and alias are valid and throw an exception if they are not.  
 
-Step 3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
+3. The entered alias and block pair will then be put into a temporary hashmap which will then be merged with the main hashmap in the instance of the BlockAlias.  
 
-Step 4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
+4. The user executes `show alias` command. The user input will be parsed by the `Parser` which will create a new `ShowCustomAliasCommand` command. The new command will then invoke the UI which will print `It seems that you do not have any aliases` if the hashmap is empty, or it will print the alias-block pairs in new lines when the hashmap has been previously populated.  
 
-Step 5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
+5. The user executes `delete alias` command. The user input will be parsed by the `Parser` which will create a new `DeleteCustomAliasCommand` command. The new command will then invoke the UI which will prompt the user `Enter the alias name that you wish to delete:` where the user will enter the alias name that the wish to remove. The user input for the alias to be removed will be checked against the hashmap and return an exception if the key does not exist. If the alias to be removed exists in the hashmap, the key-value pair will be removed and a success message will be displayed to the user.
 
 Shown below is the sequence diagram when a valid block name and alias are added:
 ![img.png](images/AliasFeatureSequence.png)
@@ -399,18 +401,20 @@ The engineering block is extremely huge, and the layout of the blocks may be con
 
 ### 4.2. User Stories
 
-|Version| As a ... | I want to ... | So that I ...|
-|--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|
-|v1.0|user|have a clear path to my destination|will not get lost|
-|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|
-|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|
-|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|
-|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|
-|v2.0|user|have a list of favorite locations|can access directions to them quickly|
-|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|
-|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|
-|v2.0|user|be able to store my routing for my daily activities|can access it easily|
+Below is our analysis of our target user and the importance in which he/she would place on the potential user stories we have chosen.
+
+|Version| As a ... | I want to ... | So that I ...|Importance|
+|--------|----------|---------------|------------------|----|
+|v1.0|new user|see usage instructions|can refer to them when I forget how to use the application|HIGH|
+|v1.0|user|have a clear path to my destination|will not get lost|HIGH|
+|v1.0|user|be able to pin a note to certain locations as a reminder|do not forget|MEDIUM|
+|v1.0|user|keep track of my search history|don't have to repeatedly search for the same route.|MEDIUM|
+|v1.0|user|have a clear interface in which I can enter my commands|can have a good user experience|HIGH|
+|v2.0|user|find the nearest eatery|do not have to starve for longer than necessary|HIGH|
+|v2.0|user|have a list of favorite locations|can access directions to them quickly|MEDIUM|
+|v2.0|user|have my list of favourites and history stored|can access it every time I start the app|MEDIUM|
+|v2.0|user|be able to set custom aliases to blocks|can access the blocks more conveniently|MEDIUM|
+|v2.0|user|be able to store my routing for my daily activities|can access it easily|MEDIUM|
 
 ### 4.3. Use Cases
 
