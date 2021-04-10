@@ -44,15 +44,9 @@ as well as associated JUnit tests and helper function code.
   
 **Enhancements to existing features**  
 - Created JUnit tests & defensive code for:
-  - Add Command
-  - List Command
-  - Search Command
-  - History Command
-
+  - Add Command, List Command, Search Command, History Command
 - Refactored and improved Code Quality for:
-  - Storage Class
-  - Add Command
-  - List Command
+  - Storage Class, Add Command, List Command
 
 
 ### Contributions to Documentation
