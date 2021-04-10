@@ -180,7 +180,7 @@ The above diagram shows how each component interacts with the other components. 
 
 ### 4.2 UI component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG diagram updated.png">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="images/DG UI latest diagram.png">
 
 **API :** `UI.java`
 
