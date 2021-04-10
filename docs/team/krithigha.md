@@ -1,4 +1,4 @@
-# Huachen - Project Portfolio Page
+# Krithigha - Project Portfolio Page
 
 ## Overview
 
