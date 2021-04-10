@@ -56,11 +56,13 @@ public class Constants {
 
     public static final String INVALID_INPUT = "Input command and/or arguments are invalid";
     public static final String INVALID_INPUT_EMPTY_STRING = "Please enter a command for me to process";
-    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided";
+    public static final String INVALID_INPUT_UNKNOWN_COMMAND = "Invalid command provided. Please enter \"help\""
+            + "(without quotes) for a list of commands and how to use them";
     public static final String INVALID_INPUT_INVALID_NRIC = "Please key in a valid NRIC number";
     public static final String INVALID_INPUT_PATIENT_EXISTED = "Patient already exists";
     public static final String INVALID_INPUT_NO_PATIENT_LOADED =
             "Please load a patient with the load command before adding or viewing records";
+
     public static final String INVALID_INPUT_EMPTY_DESCRIPTION =
             "Please provide more details about the patient's visit!\n"
                     + "(At least one symptom, diagnosis or prescription must be specified)";
