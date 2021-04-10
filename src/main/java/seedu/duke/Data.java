@@ -206,4 +206,11 @@ public class Data {
         currentPatient = patients.get(id);
         return "Patient " + currentPatient.getID() + "\'s data has been found and loaded.";
     }
+
+    public String getCurrentPatientDetails() {
+        if (currentPatient == null) {
+            return "There is no patient being loaded now.";
+        }
+        return "The currently loaded patient's ID is " + currentPatient.getID() + ".";
+    }
 }
