@@ -153,14 +153,14 @@ understandable. However, you may wish to consult [[CS2113/T] Modeling](https://n
 
 The following Figure 1, provides a rough overview of how **Connoisseur** is built.<br>
 
+![Class_Diagram.png](./diagrams/Class_Diagram.png)<br>
+Figure 1. Class Diagram of Connoisseur <br>
 
-Figure 1. Architecture Diagram of Connoisseur <br>
-//TODO ADD PLANTUML DIAGRAM !missing! sorter component// <br>
+As shown in Figure 1, the user interacts with the`UI` class and inputs commands. The input is parsed using the `Parser` class, which then executes the corresponding command in the `Commands` class. Depending on whether Connoisseur is in review or recommendation mode, the `Commands` class will execute the respective commands in the `ReviewList` and `RecommendationList` classes. In the case of a storing data, `Commands` will interact directly with the `Storage` class. 
 
-As shown in Figure 1, the user interacts with the`UI` component and types in input. Messages displayed to the user by the `UI` component comes from the `Messages` component.
-Input from user is passed to the `parser` component, which is interpreted as a command and passed to the `Commands` component.
-Either `Storage`, `ReviewList` or `RecommendationList` component executes the command input by the user. These components 
-may produce outputs which are passed to the `UI` component and seen by the user. This is explained in more detail in the following sections.
+The `ReviewList` class has sorting functions which requires `Sorter`. The entire reviews ArrayList will be passed to `Sorter` to be sorted, which then returns the sorted reviews back to `ReviewList`. 
+
+`RecommendationList` also interacts with `ReviewList` for converting Recomendations to Reviews. 
 
 ### 4.2 UI and Messages component
 
