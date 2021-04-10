@@ -123,7 +123,7 @@ Java 11 and above<br>
 GULIO has a 2-layer system, consisting of the dashboard layer, and the module layer. In both layers, you have access to a different set of commands. 
 
 <p align="center">
-    <img width="800" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
+    <img width="973" src="userGuideImages/2-layer.jpg" alt="2-Layer System"><br>
     Figure 2 - Visualisation of GULIO’s 2-layer system
 </p>
 
@@ -801,7 +801,7 @@ Files can be modified outside of the program. Invalid inputs will not be loaded 
 GULIO comes with a built-in text-editor that allows you to edit cheat sheets directly. This text editor can be accessed via the add and edit cheat sheet commands. Cheat-sheets are stored in the “Cheatsheet” directory within their respective module directories as “.txt” files.
 
 <p align="center">
-    <img width="800" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
+    <img width="600" src="userGuideImages/TextEditor.png" alt="Text Editor"><br>
     Figure 4 - GULIO Text Editor
 </p>
 
